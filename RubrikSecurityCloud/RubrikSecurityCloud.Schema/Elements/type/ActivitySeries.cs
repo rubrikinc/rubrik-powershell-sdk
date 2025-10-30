@@ -180,6 +180,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("progress")]
         public System.String? Progress { get; set; }
 
+        //      C# -> System.String? SlaDomainName
+        // GraphQL -> slaDomainName: String (scalar)
+        [JsonProperty("slaDomainName")]
+        public System.String? SlaDomainName { get; set; }
+
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
@@ -274,6 +279,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OrgId = null,
         System.String? OrgName = null,
         System.String? Progress = null,
+        System.String? SlaDomainName = null,
         DateTime? StartTime = null,
         System.String? UrlMetadata = null,
         System.String? Username = null,
@@ -377,6 +383,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Progress != null ) {
             this.Progress = Progress;
+        }
+        if ( SlaDomainName != null ) {
+            this.SlaDomainName = SlaDomainName;
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
@@ -696,6 +705,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "progress\n" ;
             } else {
                 s += ind + "progress\n" ;
+            }
+        }
+        //      C# -> System.String? SlaDomainName
+        // GraphQL -> slaDomainName: String (scalar)
+        if (this.SlaDomainName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "slaDomainName\n" ;
+            } else {
+                s += ind + "slaDomainName\n" ;
             }
         }
         //      C# -> DateTime? StartTime
@@ -1311,6 +1329,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Progress != null && ec.Excludes("progress",true))
         {
             this.Progress = null;
+        }
+        //      C# -> System.String? SlaDomainName
+        // GraphQL -> slaDomainName: String (scalar)
+        if (ec.Includes("slaDomainName",true))
+        {
+            if(this.SlaDomainName == null) {
+
+                this.SlaDomainName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SlaDomainName != null && ec.Excludes("slaDomainName",true))
+        {
+            this.SlaDomainName = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

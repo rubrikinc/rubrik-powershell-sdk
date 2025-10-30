@@ -1,6 +1,5 @@
 ### IoFilterStatus
-Supported in v5.1+
-  Status of Rubrik Io Filter on Cluster.
+Supported in v5.1+. Status of Rubrik Io Filter on Cluster.
 
 - IO_FILTER_STATUS_INCONSISTENT
 - IO_FILTER_STATUS_INSTALL_ERROR

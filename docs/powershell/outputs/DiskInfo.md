@@ -12,4 +12,3 @@ Supported in v5.0+
 - isResizable: System.Boolean
   - Supported in v8.1+
 - diskStatus: DiskStatus
-  - 

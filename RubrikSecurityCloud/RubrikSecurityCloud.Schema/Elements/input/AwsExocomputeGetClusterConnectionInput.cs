@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.Boolean? IsPrivateExocompute
+        // GraphQL -> isPrivateExocompute: Boolean (scalar)
+        [JsonProperty("isPrivateExocompute")]
+        public System.Boolean? IsPrivateExocompute { get; set; }
+
 
         #endregion
 

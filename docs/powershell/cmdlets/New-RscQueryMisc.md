@@ -308,6 +308,12 @@ List of the Cloud Direct Sites accessible by the current user.
 
 - The clouddirectsites subcommand takes no arguments.
 - Returns list of CloudDirectSites.
+### clouddirectsitesettings
+ListCloudDirectSiteSettings retrieves site configuration settings
+for Cloud Direct deployments.
+
+- There is a single argument of type ListCloudDirectSiteSettingsReq.
+- Returns ListCloudDirectSiteSettingsResp.
 ### clouddirectsystems
 Retrieve systems managed by the Cloud Direct site.
 
@@ -383,6 +389,11 @@ Returns permissions associated with a path.
     - skipResolveSids - System.Boolean: Skip converting SIDs in response to friendly names
     - filters - SddlRequestFiltersInput: Filter for resolving security descriptor.
 - Returns QuerySDDLReply.
+### datapreview
+Retrieve the list of data previews.
+
+- There is a single argument of type GetDataPreviewRequest.
+- Returns GetDataPreviewReply.
 ### decryptexporturl
 Decrypt Export URL.
 
@@ -602,7 +613,7 @@ Get global multifactor authentication (MFA) for an account.
 - The globalmfasetting subcommand takes no arguments.
 - Returns GetMfaSettingReply.
 ### globalsearchresults
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -610,6 +621,7 @@ Get global multifactor authentication (MFA) for an account.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
+    - objectTypeFilterParams - list of ManagedObjectTypes: List of object types to filter by. If not provided, uses default global search types.
 - Returns HierarchyObjectConnection.
 ### groupsincurrentanddescendantorganization
 Retrieve groups from current and descendant organizations based on the specified filters.
@@ -698,6 +710,12 @@ Lists IOC entries for a threat feed.
 ### ipwhitelist
 - The ipwhitelist subcommand takes no arguments.
 - Returns GetWhitelistReply.
+### isclouddirectsharepathvalid
+IsCloudDirectSharePathValid validates if a share path is
+accessible on the specified system.
+
+- There is a single argument of type CloudDirectValidateSharePathReq.
+- Returns CloudDirectValidateSharePathResp.
 ### isipmienabled
 Check if IPMI is enabled on the cluster.
 
@@ -772,6 +790,16 @@ A knowledge base article.
 
 - There is a single argument of type System.String.
 - Returns KnowledgeBaseArticle.
+### lacpconfigurations
+Check if the cluster has at least 1 node with its bond interfaces configured with LACP mode.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - clusterUuids - list of System.Strings: List of cluster UUIDs.
+- Returns LacpPresenceCheckConnection.
 ### lambdasettings
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
@@ -1004,10 +1032,13 @@ Get the health metric for the radar pipeline covering the backup, indexing, and 
 ### policydetails
 Returns active policies for an account.
 
-- There are 3 arguments.
+- There are 6 arguments.
     - dataCategoryIds - list of System.Strings: Filter for data category IDs.
     - dataTypeIds - list of System.Strings: Data type IDs to filter.
     - dataCategoryType - DataCategoryType: Filter for data category type.
+    - documentTypeIds - list of System.Strings: Document type IDs to filter.
+    - sortBy - PoliciesDetailSortByField: Field to sort policies detail entries by.
+    - sortOrder - SortOrder: Sorts the order of results.
 - Returns PolicyDetailConnection.
 ### policyobj
 Returns details for one policy object.
@@ -1020,7 +1051,7 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 44 arguments.
+- There are 45 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -1061,6 +1092,7 @@ Returns status for all objects at a specified timestamp.
     - violationSeverityFilter - list of ViolationSeveritys: Violation Severity list input arg.
     - exposureFilter - list of OpenAccessTypes: Exposure to filter.
     - accessTypeFilter - list of AccessVias: Access types to filter by.
+    - accessGrantingIdFilter - System.String: Filter policy objects by access granting identity ID. This filter should only be applied when an identity ID filter is also present, as access granting entities are only relevant in the context of specific identities.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1154,6 +1186,12 @@ specified SaaS app type.
 
 - There is a single argument of type SaasWorkloadMetadataTypesReq.
 - Returns SaasWorkloadMetadataTypesReply.
+### scriptsformanualpermissionvalidation
+GetScriptsForManualPermissionValidation returns the bash and powershell
+scripts for non-OAuth permissions validation.
+
+- There is a single argument of type GetScriptsForManualPermissionValidationReq.
+- Returns GetScriptsForManualPermissionValidationReply.
 ### searchfilebyprefix
 Search file under given folder and with given prefix.
 
@@ -1231,12 +1269,14 @@ Details of a taskchain.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns TaskDetailGroupByConnection.
 ### taskdetaillist
+Get task details.
+
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - filter - TaskDetailFilterInput: Filter task summary by input.
+    - filter - TaskDetailFilterInput: Filter task detail by input.
     - sortBy - TaskDetailSortByEnum: Sort task detail by field.
     - sortOrder - SortOrder: Task detail sort order.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
@@ -1452,6 +1492,12 @@ Checks whether the tenant org name is valid and unique.
 
 - There is a single argument of type ValidateOrgNameInput.
 - Returns ValidateOrgNameReply.
+### validregionsfordynamodbrecovery
+GetValidRegionsForDynamoDBRecovery returns a list of regions where the
+provided cloud accounts have Exocompute configured for DynamoDB recovery.
+
+- There is a single argument of type GetValidRegionsForDynamoDbRecoveryReq.
+- Returns GetValidRegionsForDynamoDbRecoveryReply.
 ### vcdorgs
 Paginated list of vCloud Director orgs.
 

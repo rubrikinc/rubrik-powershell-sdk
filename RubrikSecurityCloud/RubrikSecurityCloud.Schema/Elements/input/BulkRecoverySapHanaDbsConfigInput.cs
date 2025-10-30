@@ -19,24 +19,12 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> DateTime? RecoveryPoint
-        // GraphQL -> recoveryPoint: DateTime (scalar)
-        [JsonProperty("recoveryPoint")]
-        public DateTime? RecoveryPoint { get; set; }
-
         //      C# -> List<System.String>? DbIds
         // GraphQL -> dbIds: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("dbIds")]
         public List<System.String>? DbIds { get; set; }
-
-        //      C# -> System.Boolean? IsAfter
-        // GraphQL -> isAfter: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("isAfter")]
-        public System.Boolean? IsAfter { get; set; }
 
         //      C# -> List<SapHanaSystemCopyConfigInput>? SapHanaSystemCopyMap
         // GraphQL -> sapHanaSystemCopyMap: [SapHanaSystemCopyConfigInput!] (input)
@@ -49,6 +37,18 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldInitializeLogArea")]
         public System.Boolean? ShouldInitializeLogArea { get; set; }
+
+        //      C# -> DateTime? RecoveryPoint
+        // GraphQL -> recoveryPoint: DateTime (scalar)
+        [JsonProperty("recoveryPoint")]
+        public DateTime? RecoveryPoint { get; set; }
+
+        //      C# -> System.Boolean? IsAfter
+        // GraphQL -> isAfter: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("isAfter")]
+        public System.Boolean? IsAfter { get; set; }
 
 
         #endregion

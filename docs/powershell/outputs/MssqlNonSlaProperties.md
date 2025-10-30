@@ -1,5 +1,5 @@
 ### MssqlNonSlaProperties
-Supported in v5.0
+Non-SLA-Domain properties of a SQL Server object.
 
 - copyOnly: System.Boolean
   - Supported in v5.0

@@ -26,14 +26,20 @@
   - Specifies the Oracle database Sensitive Data Monitoring details.
 - rbaPackageUpgradeInfo: System.String
   - Specifies the Rubrik Backup Service (RBS) upgrade status on the host.
+- rbsUpgradeStatus: RbsUpgradeStatus
+  - RBS upgrade status of the host.
 - oracleSettings: OracleSettings
   - The Oracle settings, such as the SEPS configuration associated with this host.
 - resourceInfo: System.String
   - Resource information associated with this physical host as a JSON string.
+- networkThrottle: System.String
+  - Network throttle information associated with this physical host.
 - isMssqlHost: System.Boolean
   - Specifies if the physical host is a SQL Server database host.
 - isExchangeHost: System.Boolean
   - Specifies if the physical host is a Microsoft Exchange host.
+- adDomain: System.String
+  - Active Directory domain name for Windows hosts.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean
@@ -69,7 +75,7 @@
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -97,7 +103,7 @@
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

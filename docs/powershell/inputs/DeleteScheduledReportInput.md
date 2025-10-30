@@ -1,5 +1,5 @@
 ### DeleteScheduledReportInput
-Input for deleting a scheduled report.
+Input for deleting scheduled report.
 
 - id: System.Int32
   - ID of the report schedule to be deleted.

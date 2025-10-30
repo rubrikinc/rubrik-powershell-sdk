@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? ShouldSddViaRba
+        // GraphQL -> shouldSddViaRba: Boolean! (scalar)
+        [JsonProperty("shouldSddViaRba")]
+        public System.Boolean? ShouldSddViaRba { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public OracleSddDetail Set(
+        System.Boolean? ShouldSddViaRba = null,
         System.String? Username = null,
         System.String? WalletPath = null
     ) 
     {
+        if ( ShouldSddViaRba != null ) {
+            this.ShouldSddViaRba = ShouldSddViaRba;
+        }
         if ( Username != null ) {
             this.Username = Username;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? ShouldSddViaRba
+        // GraphQL -> shouldSddViaRba: Boolean! (scalar)
+        if (this.ShouldSddViaRba != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldSddViaRba\n" ;
+            } else {
+                s += ind + "shouldSddViaRba\n" ;
+            }
+        }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? ShouldSddViaRba
+        // GraphQL -> shouldSddViaRba: Boolean! (scalar)
+        if (ec.Includes("shouldSddViaRba",true))
+        {
+            if(this.ShouldSddViaRba == null) {
+
+                this.ShouldSddViaRba = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldSddViaRba != null && ec.Excludes("shouldSddViaRba",true))
+        {
+            this.ShouldSddViaRba = null;
+        }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (ec.Includes("username",true))

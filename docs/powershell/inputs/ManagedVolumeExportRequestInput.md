@@ -10,4 +10,4 @@ Supported in v7.0+
   - Supported in v9.4+
       ID of the location from which the snapshot must be downloaded for export.
 - managedVolumeExportConfig: ManagedVolumeExportConfigInput
-  - 
+  - Configuration for a Managed Volume Export.

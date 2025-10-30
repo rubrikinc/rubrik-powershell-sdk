@@ -150,6 +150,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOWNLOAD_ANOMALY_FORENSICS")]
         DOWNLOAD_ANOMALY_FORENSICS,
 
+        [EnumMember(Value = "DOWNLOAD_ENTRA_ID_SECRETS")]
+        DOWNLOAD_ENTRA_ID_SECRETS,
+
         [EnumMember(Value = "DOWNLOAD_FROM_ARCHIVAL_LOCATION")]
         DOWNLOAD_FROM_ARCHIVAL_LOCATION,
 
@@ -252,6 +255,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_CHATBOT")]
         MANAGE_CHATBOT,
 
+        [EnumMember(Value = "MANAGE_CHILD_ACCOUNTS")]
+        MANAGE_CHILD_ACCOUNTS,
+
         [EnumMember(Value = "MANAGE_CLUSTER_DISKS")]
         MANAGE_CLUSTER_DISKS,
 
@@ -303,6 +309,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_MIGRATION_DASHBOARD")]
         MANAGE_MIGRATION_DASHBOARD,
 
+        [EnumMember(Value = "MANAGE_MODEL_ROUTER")]
+        MANAGE_MODEL_ROUTER,
+
         [EnumMember(Value = "MANAGE_OAUTH_APPLICATIONS")]
         MANAGE_OAUTH_APPLICATIONS,
 
@@ -341,6 +350,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_SERVICE_ACCOUNT")]
         MANAGE_SERVICE_ACCOUNT,
+
+        [EnumMember(Value = "MANAGE_SERVICE_ACCOUNT_CREDENTIALS")]
+        MANAGE_SERVICE_ACCOUNT_CREDENTIALS,
 
         [EnumMember(Value = "MANAGE_SLA")]
         MANAGE_SLA,
@@ -408,6 +420,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MOUNT_NUTANIX_VDISK")]
         MOUNT_NUTANIX_VDISK,
 
+        [EnumMember(Value = "PREVIEW_DATA_CLASSIFICATION_SAMPLES")]
+        PREVIEW_DATA_CLASSIFICATION_SAMPLES,
+
         [EnumMember(Value = "PROVISION_ON_INFRASTRUCTURE")]
         PROVISION_ON_INFRASTRUCTURE,
 
@@ -444,6 +459,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SELF_SERVICE_RESTORE")]
         SELF_SERVICE_RESTORE,
 
+        [EnumMember(Value = "SEND_LICENSE_NOTIFICATION")]
+        SEND_LICENSE_NOTIFICATION,
+
         [EnumMember(Value = "TAKE_ON_DEMAND_SNAPSHOT")]
         TAKE_ON_DEMAND_SNAPSHOT,
 
@@ -458,6 +476,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "TRANSFER_ACCOUNT_OWNERSHIP")]
         TRANSFER_ACCOUNT_OWNERSHIP,
+
+        [EnumMember(Value = "UNKNOWN_OPERATION")]
+        UNKNOWN_OPERATION,
+
+        [EnumMember(Value = "UNRECOGNIZED")]
+        UNRECOGNIZED,
 
         [EnumMember(Value = "UPDATE_ACCOUNT_OWNERSHIP")]
         UPDATE_ACCOUNT_OWNERSHIP,
@@ -509,6 +533,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_CHATBOT")]
         VIEW_CHATBOT,
+
+        [EnumMember(Value = "VIEW_CHILD_ACCOUNTS")]
+        VIEW_CHILD_ACCOUNTS,
 
         [EnumMember(Value = "VIEW_CLUSTER")]
         VIEW_CLUSTER,
@@ -572,6 +599,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_LICENSE_DASHBOARD")]
         VIEW_LICENSE_DASHBOARD,
+
+        [EnumMember(Value = "VIEW_MODEL_ROUTER")]
+        VIEW_MODEL_ROUTER,
 
         [EnumMember(Value = "VIEW_NETWORK_THROTTLE_SETTINGS")]
         VIEW_NETWORK_THROTTLE_SETTINGS,

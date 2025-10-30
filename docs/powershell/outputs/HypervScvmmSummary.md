@@ -19,6 +19,7 @@ Supported in v5.0+
   - Supported in v9.0+
   Version of SCVMM.
 - statusEnum: HostRbsConnectionStatus
-  - 
+  - Supported in v9.2+
+  Specifies the connect status of the SCVMM server in enum format.
 - slaAssignable: SlaAssignable
   - 

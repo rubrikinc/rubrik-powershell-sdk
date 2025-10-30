@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vendor")]
         public CcpVendorType? Vendor { get; set; }
 
+        //      C# -> System.String? CloudAccountIdV2
+        // GraphQL -> cloudAccountIdV2: String (scalar)
+        [JsonProperty("cloudAccountIdV2")]
+        public System.String? CloudAccountIdV2 { get; set; }
+
 
         #endregion
 

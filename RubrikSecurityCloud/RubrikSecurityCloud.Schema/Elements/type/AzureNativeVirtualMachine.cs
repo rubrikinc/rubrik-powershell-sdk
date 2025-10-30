@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPreOrPostScriptEnabled")]
         public System.Boolean? IsPreOrPostScriptEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        [JsonProperty("isProtectable")]
+        public System.Boolean? IsProtectable { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -441,6 +446,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsFileIndexingEnabled = null,
         System.Boolean? IsPreOrPostScriptEnabled = null,
+        System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.String? NativeName = null,
@@ -540,6 +546,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsPreOrPostScriptEnabled != null ) {
             this.IsPreOrPostScriptEnabled = IsPreOrPostScriptEnabled;
+        }
+        if ( IsProtectable != null ) {
+            this.IsProtectable = IsProtectable;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -859,6 +868,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isPreOrPostScriptEnabled\n" ;
             } else {
                 s += ind + "isPreOrPostScriptEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (this.IsProtectable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProtectable\n" ;
+            } else {
+                s += ind + "isProtectable\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1648,6 +1666,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsPreOrPostScriptEnabled != null && ec.Excludes("isPreOrPostScriptEnabled",true))
         {
             this.IsPreOrPostScriptEnabled = null;
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (ec.Includes("isProtectable",true))
+        {
+            if(this.IsProtectable == null) {
+
+                this.IsProtectable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProtectable != null && ec.Excludes("isProtectable",true))
+        {
+            this.IsProtectable = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

@@ -29,6 +29,8 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
   - Specifies whether exocompute is configured for the region in which the Managed Disk exists or not. When the value is true, exocompute can be used to perform tasks like file indexing.
 - isFileIndexingEnabled: System.Boolean
   - Specifies whether file indexing is enabled for this managed disk or not. When enabled, Rubrik scans the file structure within the managed disk in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
+- isProtectable: System.Boolean
+  - Specifies whether the managed disk is protectable. When the value is true, the managed disk can be protected by assigning sla.
 - cloudNativeId: System.String
   - Native ID of the Managed Disk.
 - nativeName: System.String
@@ -54,7 +56,7 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -82,7 +84,7 @@ An Azure Native Managed Disk that refers to the block storage designed to be use
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

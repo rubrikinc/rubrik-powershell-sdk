@@ -1,6 +1,5 @@
 ### VirtualMachineTemplateType
-Supported in v9.1+
-  Virtual machine template type.
+Supported in v9.1+. Virtual machine template type.
 
 - VIRTUAL_MACHINE_TEMPLATE_TYPE_LIBRARY_ITEM - Virtual Machine Template type library item.
 - VIRTUAL_MACHINE_TEMPLATE_TYPE_TEMPLATE - Virtual Machine Template type.

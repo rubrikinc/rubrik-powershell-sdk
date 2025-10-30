@@ -157,6 +157,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// # REQUIRED
     /// $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.awsNativeProtectionFeatures = @(
+    /// 	$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -422,6 +426,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -651,6 +657,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
     /// 		@{
@@ -1018,6 +1026,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1583,6 +1593,7 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
         //     accountFilters: AwsNativeAccountFilters
         //     authorizedOperationFilter: Operation
         //     awsNativeProtectionFeature: AwsNativeProtectionFeature!
+        //     awsNativeProtectionFeatures: [AwsNativeProtectionFeature!]
         //   ): AwsNativeAccountConnection!
         internal void InitQueryAwsNativeAccounts()
         {
@@ -1596,12 +1607,13 @@ $query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [
                 Tuple.Create("accountFilters", "AwsNativeAccountFilters"),
                 Tuple.Create("authorizedOperationFilter", "Operation"),
                 Tuple.Create("awsNativeProtectionFeature", "AwsNativeProtectionFeature!"),
+                Tuple.Create("awsNativeProtectionFeatures", "[AwsNativeProtectionFeature!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAwsNativeAccounts",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeAccountSortFields,$sortOrder: SortOrder,$accountFilters: AwsNativeAccountFilters,$authorizedOperationFilter: Operation,$awsNativeProtectionFeature: AwsNativeProtectionFeature!,$awsNativeProtectionFeatures: [AwsNativeProtectionFeature!])",
                 "AwsNativeAccountConnection",
                 Query.AwsNativeAccounts,
                 Query.AwsNativeAccountsFieldSpec,
@@ -1642,7 +1654,11 @@ $query.Var.accountFilters = @{
 # OPTIONAL
 $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 # REQUIRED
-$query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values."
+$query.Var.awsNativeProtectionFeature = $someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+# OPTIONAL
+$query.Var.awsNativeProtectionFeatures = @(
+	$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+)"
             );
         }
 
@@ -1886,6 +1902,8 @@ $query.Var.ebsVolumeFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2124,6 +2142,8 @@ $query.Var.ec2InstanceFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 	# OPTIONAL
 	hierarchyFilters = @(
 		@{
@@ -2504,6 +2524,8 @@ $query.Var.rdsInstanceFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

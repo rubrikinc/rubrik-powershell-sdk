@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 7
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'Google Cloud Platform Native' API domain:
-    /// Disk, Disks, GceInstance, GceInstances, Project, Projects, or StoredDiskLocations.
+    /// Disk, Disks, GceInstance, GceInstances, Project, Projects, Root, or StoredDiskLocations.
     /// </summary>
     /// <description>
     /// New-RscQueryGcpNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 7 operations
+    /// There are 8 operations
     /// in the 'Google Cloud Platform Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Disk, Disks, GceInstance, GceInstances, Project, Projects, or StoredDiskLocations.
+    /// one of: Disk, Disks, GceInstance, GceInstances, Project, Projects, Root, or StoredDiskLocations.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -444,6 +444,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Root operation
+    /// of the 'Google Cloud Platform Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    GcpNative
+    /// # API Operation: Root
+    /// 
+    /// $query = New-RscQueryGcpNative -Operation Root
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GcpNativeRoot
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the StoredDiskLocations operation
     /// of the 'Google Cloud Platform Native' API domain.
     /// <code>
@@ -493,6 +520,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GceInstances",
                 "Project",
                 "Projects",
+                "Root",
                 "StoredDiskLocations",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -526,6 +554,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Projects":
                         this.ProcessRecord_Projects();
+                        break;
+                    case "Root":
+                        this.ProcessRecord_Root();
                         break;
                     case "StoredDiskLocations":
                         this.ProcessRecord_StoredDiskLocations();
@@ -592,6 +623,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Projects";
             // Create new graphql operation gcpNativeProjects
             InitQueryGcpNativeProjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // gcpNativeRoot.
+        internal void ProcessRecord_Root()
+        {
+            this._logger.name += " -Root";
+            // Create new graphql operation gcpNativeRoot
+            InitQueryGcpNativeRoot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -966,6 +1006,24 @@ $query.Var.projectFilters = @{
 $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 # OPTIONAL
 $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // gcpNativeRoot: GcpNativeRoot!
+        internal void InitQueryGcpNativeRoot()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGcpNativeRoot",
+                "",
+                "GcpNativeRoot",
+                Query.GcpNativeRoot,
+                Query.GcpNativeRootFieldSpec,
+                @""
             );
         }
 

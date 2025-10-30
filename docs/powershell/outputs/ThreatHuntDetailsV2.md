@@ -17,6 +17,10 @@ Details for the threat hunt.
   - Total number of unique paths for which malware was found.
 - hasFileVersionInfo: System.Boolean
   - Specifies whether the hunt has file version information.
+- hashCatalogLimitExceeded: System.Boolean
+  - Flag indicating if the hash catalog hits limit has been breached for
+the threat hunt. This can be used to provide a warning for turbo threat
+hunts that the hunt is not conclusive.
 - baseConfig: ThreatHuntBaseConfig
   - The configuration of the threat hunt.
 - clusters: list of Clusters

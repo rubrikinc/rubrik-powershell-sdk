@@ -57,6 +57,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Failover")]
         FAILOVER,
 
+        [EnumMember(Value = "IDENTITY_ALERT")]
+        IDENTITY_ALERT,
+
+        [EnumMember(Value = "IDENTITY_VIOLATION")]
+        IDENTITY_VIOLATION,
+
         [EnumMember(Value = "ISOLATED_RECOVERY")]
         ISOLATED_RECOVERY,
 
@@ -83,6 +89,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "Recovery")]
         RECOVERY,
+
+        [EnumMember(Value = "STAGED_UPGRADE")]
+        STAGED_UPGRADE,
 
         [EnumMember(Value = "Search")]
         SEARCH,

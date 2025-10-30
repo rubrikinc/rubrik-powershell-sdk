@@ -108,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE")]
         GOOGLE_WORKSPACE_USER_DRIVE,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX")]
+        GOOGLE_WORKSPACE_USER_MAILBOX,
+
         [EnumMember(Value = "GcpNativeDisk")]
         GCP_NATIVE_DISK,
 
@@ -212,6 +215,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365Teams")]
         O365_TEAMS,
+
+        [EnumMember(Value = "OKTA_TENANT")]
+        OKTA_TENANT,
+
+        [EnumMember(Value = "OLVM_VIRTUAL_MACHINE")]
+        OLVM_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,

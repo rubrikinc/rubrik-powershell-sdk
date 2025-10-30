@@ -99,6 +99,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreNodes = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		caCertificateId = $someString
     /// 		# REQUIRED
     /// 		opsManagerApiToken = $someString
     /// 		# REQUIRED
@@ -361,6 +363,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreNodes = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		caCertificateId = $someString
     /// 		# REQUIRED
     /// 		opsManagerApiToken = $someString
     /// 	}
@@ -514,6 +518,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		isRestoreWithIndex = $someBoolean
     /// 		# OPTIONAL
+    /// 		isRestoreFromCdm = $someBoolean
+    /// 		# OPTIONAL
     /// 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 		# REQUIRED
     /// 		sourceMongoClusterId = $someString
@@ -557,6 +563,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreNodes = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		caCertificateId = $someString
     /// 		# REQUIRED
     /// 		opsManagerApiToken = $someString
     /// 		# REQUIRED
@@ -872,6 +880,8 @@ $query.Var.input = @{
 		ignoreNodes = @(
 			$someString
 		)
+		# OPTIONAL
+		caCertificateId = $someString
 		# REQUIRED
 		opsManagerApiToken = $someString
 		# REQUIRED
@@ -1087,6 +1097,8 @@ $query.Var.input = @{
 		ignoreNodes = @(
 			$someString
 		)
+		# OPTIONAL
+		caCertificateId = $someString
 		# REQUIRED
 		opsManagerApiToken = $someString
 	}
@@ -1216,6 +1228,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		isRestoreWithIndex = $someBoolean
 		# OPTIONAL
+		isRestoreFromCdm = $someBoolean
+		# OPTIONAL
 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 		# REQUIRED
 		sourceMongoClusterId = $someString
@@ -1251,6 +1265,8 @@ $query.Var.input = @{
 		ignoreNodes = @(
 			$someString
 		)
+		# OPTIONAL
+		caCertificateId = $someString
 		# REQUIRED
 		opsManagerApiToken = $someString
 		# REQUIRED

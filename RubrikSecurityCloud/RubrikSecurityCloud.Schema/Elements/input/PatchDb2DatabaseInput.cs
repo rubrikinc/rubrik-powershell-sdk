@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> Db2DatabaseConfigInput? Db2DatabaseConfig
-        // GraphQL -> db2DatabaseConfig: Db2DatabaseConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("db2DatabaseConfig")]
-        public Db2DatabaseConfigInput? Db2DatabaseConfig { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> Db2DatabaseConfigInput? Db2DatabaseConfig
+        // GraphQL -> db2DatabaseConfig: Db2DatabaseConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("db2DatabaseConfig")]
+        public Db2DatabaseConfigInput? Db2DatabaseConfig { get; set; }
 
 
         #endregion

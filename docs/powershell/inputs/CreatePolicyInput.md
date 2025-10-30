@@ -9,3 +9,5 @@
 - updateDescription: System.Boolean
 - updateMode: System.Boolean
 - updateAnalyzerIds: System.Boolean
+- documentTypeIds: list of System.Strings
+  - List of document type UUIDs to associate with the policy.

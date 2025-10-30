@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Gateway
-        // GraphQL -> gateway: String (scalar)
-        [JsonProperty("gateway")]
-        public System.String? Gateway { get; set; }
-
-        //      C# -> System.String? Alias
-        // GraphQL -> alias: String (scalar)
-        [JsonProperty("alias")]
-        public System.String? Alias { get; set; }
-
         //      C# -> List<NodeIpInput>? Interfaces
         // GraphQL -> interfaces: [NodeIpInput!]! (input)
         [Required]
@@ -49,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("vlan")]
         public System.Int32? Vlan { get; set; }
+
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String (scalar)
+        [JsonProperty("gateway")]
+        public System.String? Gateway { get; set; }
+
+        //      C# -> System.String? Alias
+        // GraphQL -> alias: String (scalar)
+        [JsonProperty("alias")]
+        public System.String? Alias { get; set; }
 
 
         #endregion

@@ -1,7 +1,9 @@
 ### CloudDirectCheckSharePathReq
 CloudDirectCheckSharePathReq represents a request to check if a share path is accessible.
 
-- protocol: CloudDirectCheckShareProtocolType
+- clusterId: System.String
+  - The UUID of the cluster to use for validation.
+- protocol: CloudDirectNasProtocolType
   - Protocol of the export to check
 - host: System.String
   - The host or server address to check.

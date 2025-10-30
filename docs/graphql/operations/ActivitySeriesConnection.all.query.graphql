@@ -33,6 +33,7 @@ fragment ActivitySeriesConnectionFragment1 on ActivitySeriesConnection {
       objectType
       severity
       progress
+      slaDomainName
       cluster {
         id
         name

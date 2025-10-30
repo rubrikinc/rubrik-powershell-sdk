@@ -14,3 +14,4 @@ Specifies which certificate usages to exclude.
 - EXCLUDE_USAGES_MSSQL_SENSITIVE_DATA_DISCOVERY - Exclude MSSQL Sensitive Data Discovery usages.
 - EXCLUDE_USAGES_RBS - Exclude RBS usages.
 - EXCLUDE_USAGES_RUBRIK_CLUSTER_CERTIFICATE_AUTHORITY - Exclude Rubrik Cluster Certificate Authority usages.
+- EXCLUDE_USAGES_MONGO_SOURCE - Exclude MongoDB source usages.

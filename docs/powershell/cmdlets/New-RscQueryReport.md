@@ -1,11 +1,11 @@
 # New-RscQueryReport
 ## Subcommands
 ### clustermigrationcount
-Retrieve the counts of the Rubrik cluster reports migration.
+Retrieve details of the Rubrik clusters' reports migration.
 
 - There are 2 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
     - status - list of CdmReportMigrationStatuss: Rubrik cluster report migration status.
+    - clusterUuid - System.String: The Rubrik cluster ID.
 - Returns ReportsMigrationCount.
 ### clustermigrationjobstatus
 Retrieve the status of the cluster report migration job.
@@ -24,6 +24,18 @@ Retrieve details of the Rubrik clusters' reports migration.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ReportMigrationStatusConnection.
 ### custom
+Retrieves reports created by users with pagination support.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - CustomReportsFilter: Filter criteria for custom reports.
+    - sortBy - CustomReportSortByField: Field used to sort custom reports.
+    - sortOrder - SortOrder: Sort order (ascending or descending).
+- Returns CustomReportInfoConnection.
+### customreports
 Retrieve reports created by users.
 
 - There is a single argument of type AllCustomReportsInput.
@@ -60,7 +72,7 @@ Retrieve reports created by users.
 Get the database log backup delay information
 
 Supported in v5.3+
-v5.3: 
+v5.3:
 v6.0+: Get the database log backup delay information.
 
 - There is a single argument of type QueryLogReportInput.
@@ -95,6 +107,12 @@ Retrieve details of scheduled reports. If the reportId is None, return schedules
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - ScheduledReportFilterInput: Filter report schedules.
 - Returns ScheduledReportConnection.
+### skippedteamssite
+GetSkippedTeamsSiteReport returns back a report of the skipped teams
+sites for sharepoint bulk recovery.
+
+- There is a single argument of type GetSkippedTeamsSiteReportReq.
+- Returns GetSkippedTeamsSiteReportResp.
 ### sonar
 Returns groupBy for SonarReport.
 

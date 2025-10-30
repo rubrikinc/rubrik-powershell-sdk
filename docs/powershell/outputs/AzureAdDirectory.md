@@ -33,6 +33,12 @@ Details of the Azure AD directory object.
   - Authentication Strengths count from the latest snapshot.
 - latestAdministrativeUnitsCount: System.Int32
   - Count of administrative units from the latest snapshot.
+- latestDeviceCount: System.Int32
+  - Count of devices from the latest snapshot.
+- latestBitLockerKeyCount: System.Int32
+  - Count of bitLocker keys from the latest snapshot.
+- latestLocalAdminPasswordCount: System.Int32
+  - Count of local admin passwords from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime
@@ -47,6 +53,12 @@ Details of the Azure AD directory object.
   - Time of the first snapshot with scope enabled for Role Assignments.
 - firstZeusSnapshotTime: DateTime
   - When enabled, time of the first snapshot saved to the Zeus store.
+- migratedFromColossus: System.Boolean
+  - Specifies whether the tenant was migrated from Colossus to the Zeusstore.
+- firstDeviceSnapshotTime: DateTime
+  - When enabled, time of the first snapshot that includes devices.
+- isJitEnabled: System.Boolean
+  - Specifies whether the tenant was onboarded using the Just In Time permissions feature.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String
@@ -80,7 +92,7 @@ Details of the Azure AD directory object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

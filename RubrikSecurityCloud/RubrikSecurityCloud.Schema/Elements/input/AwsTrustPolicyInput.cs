@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleChainingAccountId")]
         public System.String? RoleChainingAccountId { get; set; }
 
+        //      C# -> System.Boolean? PersistRoleChainingMapping
+        // GraphQL -> persistRoleChainingMapping: Boolean (scalar)
+        [JsonProperty("persistRoleChainingMapping")]
+        public System.Boolean? PersistRoleChainingMapping { get; set; }
+
 
         #endregion
 

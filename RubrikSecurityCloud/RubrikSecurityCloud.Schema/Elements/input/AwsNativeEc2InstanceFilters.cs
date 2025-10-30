@@ -104,6 +104,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeIsEligibleForEc2ProtectionFilter")]
         public AwsNativeIsEligibleForEc2ProtectionFilter? AwsNativeIsEligibleForEc2ProtectionFilter { get; set; }
 
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
+
         //      C# -> List<Filter>? HierarchyFilters
         // GraphQL -> hierarchyFilters: [Filter!] (input)
         [JsonProperty("hierarchyFilters")]

@@ -3,11 +3,13 @@ User audit object type.
 
 - ArchivalLocation - Archival location type.
 - TPR_POLICY - TPR policy type.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - OPENSTACK_ENVIRONMENT - Openstack Environment.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
+- OLVM_HOST - OLVM Host.
 - OracleRac - Oracle RAC type.
 - MYSQLDB_INSTANCE - MySQL Instance.
 - IpWhitelist - IP whitelist type.
@@ -62,6 +64,7 @@ User audit object type.
 - AzureNativeVm - Azure native virtual machine type.
 - ORGANIZATION - Organization type.
 - O365Team - Office 365 team type.
+- OLVM_MANAGER - OLVM Manager.
 - WindowsFileset - Windows fileset type.
 - CloudNativeTagRule - Cloud native tag rule type.
 - StorageArray - Storage array type.
@@ -101,6 +104,7 @@ User audit object type.
 - Vcd - VCD type.
 - RSC_TAG - RSC tag type.
 - AzureSqlDatabase - Azure SQL database type.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
 - LinuxFileset - Linux fileset type.
 - VmwareMount - VMware mount type.
 - NasHost - NAS host type.
@@ -111,6 +115,7 @@ User audit object type.
 - K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace type.
 - VcdVapp - VCD vApp type.
 - O365SharepointDrive - Office 365 SharePoint drive type.
+- OLVM_DATACENTER - OLVM Datacenter.
 - UserRole - User role type.
 - WindowsHost - Windows host type.
 - O365SharepointList - Office 365 SharePoint list type.
@@ -125,6 +130,7 @@ User audit object type.
 - StorageArrayVolumeGroup - Storage array volume group type.
 - StorageSettings - Storage settings type.
 - GcpNativeGceInstance - GCP native GCE instance type.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
 - Cluster - Rubrik cluster type.
 - Unknown - Unknown type.
 - AppBlueprint - App blueprint type.

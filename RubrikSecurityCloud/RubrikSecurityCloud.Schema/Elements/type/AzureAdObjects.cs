@@ -45,15 +45,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdAuthenticationStrength")]
         public AzureAdAuthenticationStrength? AzureAdAuthenticationStrength { get; set; }
 
+        //      C# -> AzureAdBitLockerKey? AzureAdBitLockerKey
+        // GraphQL -> azureAdBitLockerKey: AzureAdBitLockerKey (type)
+        [JsonProperty("azureAdBitLockerKey")]
+        public AzureAdBitLockerKey? AzureAdBitLockerKey { get; set; }
+
         //      C# -> AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy
         // GraphQL -> azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy (type)
         [JsonProperty("azureAdConditionalAccessPolicy")]
         public AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy { get; set; }
 
+        //      C# -> AzureAdDevice? AzureAdDevice
+        // GraphQL -> azureAdDevice: AzureAdDevice (type)
+        [JsonProperty("azureAdDevice")]
+        public AzureAdDevice? AzureAdDevice { get; set; }
+
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         [JsonProperty("azureAdGroup")]
         public AzureAdGroup? AzureAdGroup { get; set; }
+
+        //      C# -> AzureAdLocalAdminPassword? AzureAdLocalAdminPassword
+        // GraphQL -> azureAdLocalAdminPassword: AzureAdLocalAdminPassword (type)
+        [JsonProperty("azureAdLocalAdminPassword")]
+        public AzureAdLocalAdminPassword? AzureAdLocalAdminPassword { get; set; }
 
         //      C# -> AzureAdNamedLocation? AzureAdNamedLocation
         // GraphQL -> azureAdNamedLocation: AzureAdNamedLocation (type)
@@ -100,8 +115,11 @@ namespace RubrikSecurityCloud.Types
         AzureAdApplication? AzureAdApplication = null,
         AzureAdAuthenticationContext? AzureAdAuthenticationContext = null,
         AzureAdAuthenticationStrength? AzureAdAuthenticationStrength = null,
+        AzureAdBitLockerKey? AzureAdBitLockerKey = null,
         AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy = null,
+        AzureAdDevice? AzureAdDevice = null,
         AzureAdGroup? AzureAdGroup = null,
+        AzureAdLocalAdminPassword? AzureAdLocalAdminPassword = null,
         AzureAdNamedLocation? AzureAdNamedLocation = null,
         AzureAdRole? AzureAdRole = null,
         AzureAdRoleAssignment? AzureAdRoleAssignment = null,
@@ -125,11 +143,20 @@ namespace RubrikSecurityCloud.Types
         if ( AzureAdAuthenticationStrength != null ) {
             this.AzureAdAuthenticationStrength = AzureAdAuthenticationStrength;
         }
+        if ( AzureAdBitLockerKey != null ) {
+            this.AzureAdBitLockerKey = AzureAdBitLockerKey;
+        }
         if ( AzureAdConditionalAccessPolicy != null ) {
             this.AzureAdConditionalAccessPolicy = AzureAdConditionalAccessPolicy;
         }
+        if ( AzureAdDevice != null ) {
+            this.AzureAdDevice = AzureAdDevice;
+        }
         if ( AzureAdGroup != null ) {
             this.AzureAdGroup = AzureAdGroup;
+        }
+        if ( AzureAdLocalAdminPassword != null ) {
+            this.AzureAdLocalAdminPassword = AzureAdLocalAdminPassword;
         }
         if ( AzureAdNamedLocation != null ) {
             this.AzureAdNamedLocation = AzureAdNamedLocation;
@@ -223,6 +250,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdBitLockerKey? AzureAdBitLockerKey
+        // GraphQL -> azureAdBitLockerKey: AzureAdBitLockerKey (type)
+        if (this.AzureAdBitLockerKey != null) {
+            var fspec = this.AzureAdBitLockerKey.AsFieldSpec(conf.Child("azureAdBitLockerKey"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdBitLockerKey" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy
         // GraphQL -> azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy (type)
         if (this.AzureAdConditionalAccessPolicy != null) {
@@ -235,6 +274,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdDevice? AzureAdDevice
+        // GraphQL -> azureAdDevice: AzureAdDevice (type)
+        if (this.AzureAdDevice != null) {
+            var fspec = this.AzureAdDevice.AsFieldSpec(conf.Child("azureAdDevice"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdDevice" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (this.AzureAdGroup != null) {
@@ -244,6 +295,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdLocalAdminPassword? AzureAdLocalAdminPassword
+        // GraphQL -> azureAdLocalAdminPassword: AzureAdLocalAdminPassword (type)
+        if (this.AzureAdLocalAdminPassword != null) {
+            var fspec = this.AzureAdLocalAdminPassword.AsFieldSpec(conf.Child("azureAdLocalAdminPassword"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdLocalAdminPassword" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -421,6 +484,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AzureAdAuthenticationStrength = null;
         }
+        //      C# -> AzureAdBitLockerKey? AzureAdBitLockerKey
+        // GraphQL -> azureAdBitLockerKey: AzureAdBitLockerKey (type)
+        if (ec.Includes("azureAdBitLockerKey",false))
+        {
+            if(this.AzureAdBitLockerKey == null) {
+
+                this.AzureAdBitLockerKey = new AzureAdBitLockerKey();
+                this.AzureAdBitLockerKey.ApplyExploratoryFieldSpec(ec.NewChild("azureAdBitLockerKey"));
+
+            } else {
+
+                this.AzureAdBitLockerKey.ApplyExploratoryFieldSpec(ec.NewChild("azureAdBitLockerKey"));
+
+            }
+        }
+        else if (this.AzureAdBitLockerKey != null && ec.Excludes("azureAdBitLockerKey",false))
+        {
+            this.AzureAdBitLockerKey = null;
+        }
         //      C# -> AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy
         // GraphQL -> azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy (type)
         if (ec.Includes("azureAdConditionalAccessPolicy",false))
@@ -440,6 +522,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AzureAdConditionalAccessPolicy = null;
         }
+        //      C# -> AzureAdDevice? AzureAdDevice
+        // GraphQL -> azureAdDevice: AzureAdDevice (type)
+        if (ec.Includes("azureAdDevice",false))
+        {
+            if(this.AzureAdDevice == null) {
+
+                this.AzureAdDevice = new AzureAdDevice();
+                this.AzureAdDevice.ApplyExploratoryFieldSpec(ec.NewChild("azureAdDevice"));
+
+            } else {
+
+                this.AzureAdDevice.ApplyExploratoryFieldSpec(ec.NewChild("azureAdDevice"));
+
+            }
+        }
+        else if (this.AzureAdDevice != null && ec.Excludes("azureAdDevice",false))
+        {
+            this.AzureAdDevice = null;
+        }
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (ec.Includes("azureAdGroup",false))
@@ -458,6 +559,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdGroup != null && ec.Excludes("azureAdGroup",false))
         {
             this.AzureAdGroup = null;
+        }
+        //      C# -> AzureAdLocalAdminPassword? AzureAdLocalAdminPassword
+        // GraphQL -> azureAdLocalAdminPassword: AzureAdLocalAdminPassword (type)
+        if (ec.Includes("azureAdLocalAdminPassword",false))
+        {
+            if(this.AzureAdLocalAdminPassword == null) {
+
+                this.AzureAdLocalAdminPassword = new AzureAdLocalAdminPassword();
+                this.AzureAdLocalAdminPassword.ApplyExploratoryFieldSpec(ec.NewChild("azureAdLocalAdminPassword"));
+
+            } else {
+
+                this.AzureAdLocalAdminPassword.ApplyExploratoryFieldSpec(ec.NewChild("azureAdLocalAdminPassword"));
+
+            }
+        }
+        else if (this.AzureAdLocalAdminPassword != null && ec.Excludes("azureAdLocalAdminPassword",false))
+        {
+            this.AzureAdLocalAdminPassword = null;
         }
         //      C# -> AzureAdNamedLocation? AzureAdNamedLocation
         // GraphQL -> azureAdNamedLocation: AzureAdNamedLocation (type)

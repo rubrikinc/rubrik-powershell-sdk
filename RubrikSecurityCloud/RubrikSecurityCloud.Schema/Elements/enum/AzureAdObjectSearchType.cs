@@ -30,14 +30,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUTHENTICATION_STRENGTH_NAME")]
         AUTHENTICATION_STRENGTH_NAME,
 
+        [EnumMember(Value = "BIT_LOCKER_KEY_DEVICE_NAME")]
+        BIT_LOCKER_KEY_DEVICE_NAME,
+
         [EnumMember(Value = "CONDITIONAL_ACCESS_POLICY_NAME")]
         CONDITIONAL_ACCESS_POLICY_NAME,
+
+        [EnumMember(Value = "DEVICE_NAME")]
+        DEVICE_NAME,
 
         [EnumMember(Value = "GROUP_NAME")]
         GROUP_NAME,
 
         [EnumMember(Value = "GROUP_TYPE")]
         GROUP_TYPE,
+
+        [EnumMember(Value = "LOCAL_ADMIN_PASSWORD_DEVICE_NAME")]
+        LOCAL_ADMIN_PASSWORD_DEVICE_NAME,
 
         [EnumMember(Value = "NAMED_LOCATION_NAME")]
         NAMED_LOCATION_NAME,

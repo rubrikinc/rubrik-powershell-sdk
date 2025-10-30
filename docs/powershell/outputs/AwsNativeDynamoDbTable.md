@@ -25,6 +25,8 @@ AWS native DynamoDB Table.
   - AWS native account details.
 - s3BackupBucket: System.String
   - S3 backup bucket for the DynamoDB table.
+- isProtectable: System.Boolean
+  - Indicates whether this DynamoDB table is protectable or not.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsAccount: AwsNativeAccount
@@ -34,7 +36,7 @@ AWS native DynamoDB Table.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -62,7 +64,7 @@ AWS native DynamoDB Table.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

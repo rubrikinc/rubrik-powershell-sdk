@@ -15,3 +15,6 @@ Entra ID object types.
 - AUTHENTICATION_STRENGTH - Object type is Entra ID authentication strength.
 - ADMINISTRATIVE_UNIT - Object type is Entra ID administrative unit.
 - ROLE_ASSIGNMENT - Object type is Entra ID role assignment.
+- DEVICE - Object type is Entra ID device.
+- BIT_LOCKER_KEY - Object type is Entra ID BitLocker key.
+- LOCAL_ADMIN_PASSWORD - Object type is Entra ID local administrator password.

@@ -2,6 +2,6 @@
 
 
 - fqdnInfo: FullyQualifiedDomainNameInfoInput
-  - Required. 
+  - Required.
 - id: System.String
   - Required. ID of the VMware compute cluster.

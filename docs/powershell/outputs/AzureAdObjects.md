@@ -1,29 +1,35 @@
 ### AzureAdObjects
-Azure AD object type.
+Entra ID object.
 
 - azureAdUser: AzureAdUser
-  - Azure AD user type.
+  - Entra ID user object.
 - azureAdGroup: AzureAdGroup
-  - Azure AD group type.
+  - Entra ID group object.
 - azureAdRole: AzureAdRole
-  - Azure AD role type.
+  - Entra ID role object.
 - azureAdApplication: AzureAdApplication
-  - Azure AD application type.
+  - Entra ID application object.
 - azureAdServicePrincipal: AzureAdServicePrincipal
-  - Azure AD service principal type.
+  - Entra ID service principal object.
 - azureAdAppRoleAssignment: AzureAdAppRoleAssignment
-  - Azure AD app role assignment type.
+  - Entra ID app role assignment object.
 - azureAdConditionalAccessPolicy: AzureAdConditionalAccessPolicy
-  - Azure AD conditional access policy type.
+  - Entra ID conditional access policy object.
 - azureAdTermsOfUse: AzureAdTermsOfUse
-  - Azure AD terms of use type.
+  - Entra ID terms of use object.
 - azureAdAuthenticationContext: AzureAdAuthenticationContext
-  - Azure AD authentication context type.
+  - Entra ID authentication context object.
 - azureAdNamedLocation: AzureAdNamedLocation
-  - Azure AD named location type.
+  - Entra ID named location object.
 - azureAdAuthenticationStrength: AzureAdAuthenticationStrength
-  - Azure AD authentication strength type.
+  - Entra ID authentication strength object.
 - azureAdAdministrativeUnit: AzureAdAdministrativeUnit
-  - Azure AD administrative unit type.
+  - Entra ID administrative unit object.
 - azureAdRoleAssignment: AzureAdRoleAssignment
-  - Azure AD role assignment type.
+  - Entra ID role assignment object.
+- azureAdDevice: AzureAdDevice
+  - Entra ID device object.
+- azureAdBitLockerKey: AzureAdBitLockerKey
+  - Entra ID BitLocker key object.
+- azureAdLocalAdminPassword: AzureAdLocalAdminPassword
+  - Entra ID local administrator password object.

@@ -35,7 +35,8 @@ Supported in v5.0+
 - vcenterPatch: VcenterPatch
   - 
 - conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz
-  - 
+  - Supported in v5.0+
+  Set to 'AllowAutoConflictResolution' to link the relic virtual machine objects of a virtual machine to the current object for the virtual machine or to 'NoConflictResolution' to prevent linking. The Rubrik cluster generates a unique ID for each virtual machine when a vCenter Server is added. When a virtual machine changes to another vCenter Server or unregisters and registers with the same vCenter Server, a new unique ID is generated for that virtual machine. When this happens, the virtual machine object associated with the original ID becomes a relic. This option links relic virtual machine objects with the current virtual machine object of a specific virtual machine, and makes the collective snapshot history available through the current object. Default value is 'NoConflictResolution'.
 - computeVisibilityFilter: list of ClusterVisibilityInfos
   - Supported in v6.0+
   Compute clusters that are visible to this Rubrik Cluster. All other compute resources are hidden. If 'computeVisibilityFilter' is not specified, all resources are visible. If 'hostGroupFilter' is not specified for a compute cluster, all compute resources in the compute cluster are visible. If a 'hostGroupFilter' is specified for a compute cluster, only vms that currently reside on these hosts are visible.

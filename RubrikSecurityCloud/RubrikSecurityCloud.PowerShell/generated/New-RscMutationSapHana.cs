@@ -92,23 +92,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	sapHanaSystem = @{
-    /// 		# OPTIONAL
-    /// 		azureFeatureId = $someString
-    /// 		# OPTIONAL
-    /// 		backupTriggerType = $someSapHanaSystemConfigBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemConfigBackupTriggerType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		authTypeSpec = @{
-    /// 			# REQUIRED
-    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		dataPathSpec = @{
-    /// 			# OPTIONAL
-    /// 			dataPathType = $someSapHanaDataPathType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaDataPathType]) for enum values.
-    /// 		}
     /// 		# REQUIRED
     /// 		hostIds = @(
     /// 			$someString
@@ -119,8 +103,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		sid = $someString
+    /// 		# REQUIRED
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		dataPathSpec = @{
+    /// 			# OPTIONAL
+    /// 			dataPathType = $someSapHanaDataPathType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaDataPathType]) for enum values.
+    /// 		}
     /// 		# OPTIONAL
     /// 		sslInfo = @{
+    /// 			# REQUIRED
+    /// 			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
+    /// 			# REQUIRED
+    /// 			keyStorePath = $someString
     /// 			# OPTIONAL
     /// 			cryptoLibPath = $someString
     /// 			# OPTIONAL
@@ -131,14 +126,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldValidateCertificate = $someBoolean
     /// 			# OPTIONAL
     /// 			trustStorePath = $someString
-    /// 			# REQUIRED
-    /// 			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
-    /// 			# REQUIRED
-    /// 			keyStorePath = $someString
     /// 		}
-    /// 		# REQUIRED
-    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		backupTriggerType = $someSapHanaSystemConfigBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemConfigBackupTriggerType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		authTypeSpec = @{
+    /// 			# REQUIRED
+    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		azureFeatureId = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -170,14 +170,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		recoveryPoint = $someDateTime
     /// 		# REQUIRED
     /// 		dbIds = @(
     /// 			$someString
     /// 		)
-    /// 		# REQUIRED
-    /// 		isAfter = $someBoolean
     /// 		# OPTIONAL
     /// 		sapHanaSystemCopyMap = @(
     /// 			@{
@@ -189,6 +185,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# REQUIRED
     /// 		shouldInitializeLogArea = $someBoolean
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = $someDateTime
+    /// 		# REQUIRED
+    /// 		isAfter = $someBoolean
     /// 	}
     /// }
     /// 
@@ -220,12 +220,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	sourceConfig = @{
     /// 		# OPTIONAL
     /// 		snappableId = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -291,18 +291,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
     /// 		# OPTIONAL
     /// 		baseOnDemandSnapshotConfig = @{
     /// 			# OPTIONAL
     /// 			slaId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -332,13 +332,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -465,10 +465,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	afterTime = $someDateTime
     /// 	# OPTIONAL
     /// 	beforeTime = $someDateTime
-    /// 	# OPTIONAL
-    /// 	shouldExpireLogsOnly = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldExpireLogsOnly = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -499,8 +499,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	updateProperties = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
@@ -517,16 +515,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		username = $someString
     /// 		# OPTIONAL
-    /// 		azureFeatureId = $someString
-    /// 		# OPTIONAL
-    /// 		backupTriggerType = $someSapHanaSystemPatchBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemPatchBackupTriggerType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		authTypeSpec = @{
-    /// 			# REQUIRED
-    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-    /// 		}
-    /// 		# OPTIONAL
     /// 		sslInfo = @{
+    /// 			# REQUIRED
+    /// 			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
+    /// 			# REQUIRED
+    /// 			keyStorePath = $someString
     /// 			# OPTIONAL
     /// 			cryptoLibPath = $someString
     /// 			# OPTIONAL
@@ -537,12 +530,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldValidateCertificate = $someBoolean
     /// 			# OPTIONAL
     /// 			trustStorePath = $someString
-    /// 			# REQUIRED
-    /// 			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
-    /// 			# REQUIRED
-    /// 			keyStorePath = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		backupTriggerType = $someSapHanaSystemPatchBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemPatchBackupTriggerType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		authTypeSpec = @{
+    /// 			# REQUIRED
+    /// 			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		azureFeatureId = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -576,15 +576,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		remoteLocationId = $someString
-    /// 		# REQUIRED
-    /// 		dbId = $someString
-    /// 		# REQUIRED
-    /// 		fullSnapshotId = $someString
     /// 		# OPTIONAL
     /// 		sourceDbConfig = @{
     /// 			# OPTIONAL
     /// 			snappableId = $someString
     /// 		}
+    /// 		# REQUIRED
+    /// 		dbId = $someString
+    /// 		# REQUIRED
+    /// 		fullSnapshotId = $someString
     /// 	}
     /// }
     /// 
@@ -618,16 +618,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
-    /// 		recoveryPoint = $someDateTime
-    /// 		# REQUIRED
-    /// 		dbId = $someString
-    /// 		# REQUIRED
-    /// 		shouldInitializeLogArea = $someBoolean
-    /// 		# OPTIONAL
     /// 		sourceDbConfig = @{
     /// 			# OPTIONAL
     /// 			snappableId = $someString
     /// 		}
+    /// 		# REQUIRED
+    /// 		shouldInitializeLogArea = $someBoolean
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = $someDateTime
+    /// 		# REQUIRED
+    /// 		dbId = $someString
     /// 	}
     /// }
     /// 
@@ -659,12 +659,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshotId = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -965,23 +965,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	sapHanaSystem = @{
-		# OPTIONAL
-		azureFeatureId = $someString
-		# OPTIONAL
-		backupTriggerType = $someSapHanaSystemConfigBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemConfigBackupTriggerType]) for enum values.
-		# OPTIONAL
-		authTypeSpec = @{
-			# REQUIRED
-			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-		}
-		# OPTIONAL
-		dataPathSpec = @{
-			# OPTIONAL
-			dataPathType = $someSapHanaDataPathType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaDataPathType]) for enum values.
-		}
 		# REQUIRED
 		hostIds = @(
 			$someString
@@ -992,8 +976,19 @@ $query.Var.input = @{
 		password = $someString
 		# REQUIRED
 		sid = $someString
+		# REQUIRED
+		username = $someString
+		# OPTIONAL
+		dataPathSpec = @{
+			# OPTIONAL
+			dataPathType = $someSapHanaDataPathType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaDataPathType]) for enum values.
+		}
 		# OPTIONAL
 		sslInfo = @{
+			# REQUIRED
+			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
+			# REQUIRED
+			keyStorePath = $someString
 			# OPTIONAL
 			cryptoLibPath = $someString
 			# OPTIONAL
@@ -1004,14 +999,19 @@ $query.Var.input = @{
 			shouldValidateCertificate = $someBoolean
 			# OPTIONAL
 			trustStorePath = $someString
-			# REQUIRED
-			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
-			# REQUIRED
-			keyStorePath = $someString
 		}
-		# REQUIRED
-		username = $someString
+		# OPTIONAL
+		backupTriggerType = $someSapHanaSystemConfigBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemConfigBackupTriggerType]) for enum values.
+		# OPTIONAL
+		authTypeSpec = @{
+			# REQUIRED
+			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+		}
+		# OPTIONAL
+		azureFeatureId = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1035,14 +1035,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		recoveryPoint = $someDateTime
 		# REQUIRED
 		dbIds = @(
 			$someString
 		)
-		# REQUIRED
-		isAfter = $someBoolean
 		# OPTIONAL
 		sapHanaSystemCopyMap = @(
 			@{
@@ -1054,6 +1050,10 @@ $query.Var.input = @{
 		)
 		# REQUIRED
 		shouldInitializeLogArea = $someBoolean
+		# OPTIONAL
+		recoveryPoint = $someDateTime
+		# REQUIRED
+		isAfter = $someBoolean
 	}
 }"
             );
@@ -1077,12 +1077,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	sourceConfig = @{
 		# OPTIONAL
 		snappableId = $someString
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -1132,18 +1132,18 @@ $query.Var.input = @{
                 Mutation.CreateOnDemandSapHanaDataBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	config = @{
-		# OPTIONAL
-		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
 		# OPTIONAL
 		baseOnDemandSnapshotConfig = @{
 			# OPTIONAL
 			slaId = $someString
 		}
+		# OPTIONAL
+		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1165,13 +1165,13 @@ $query.Var.input = @{
                 Mutation.CreateOnDemandSapHanaStorageSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	config = @{
 		# OPTIONAL
 		slaId = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1266,10 +1266,10 @@ $query.Var.input = @{
 	afterTime = $someDateTime
 	# OPTIONAL
 	beforeTime = $someDateTime
-	# OPTIONAL
-	shouldExpireLogsOnly = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	shouldExpireLogsOnly = $someBoolean
 }"
             );
         }
@@ -1292,8 +1292,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	updateProperties = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
@@ -1310,16 +1308,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		username = $someString
 		# OPTIONAL
-		azureFeatureId = $someString
-		# OPTIONAL
-		backupTriggerType = $someSapHanaSystemPatchBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemPatchBackupTriggerType]) for enum values.
-		# OPTIONAL
-		authTypeSpec = @{
-			# REQUIRED
-			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
-		}
-		# OPTIONAL
 		sslInfo = @{
+			# REQUIRED
+			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
+			# REQUIRED
+			keyStorePath = $someString
 			# OPTIONAL
 			cryptoLibPath = $someString
 			# OPTIONAL
@@ -1330,12 +1323,19 @@ $query.Var.input = @{
 			shouldValidateCertificate = $someBoolean
 			# OPTIONAL
 			trustStorePath = $someString
-			# REQUIRED
-			encryptionProvider = $someSapHanaSslInfoEncryptionProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSslInfoEncryptionProvider]) for enum values.
-			# REQUIRED
-			keyStorePath = $someString
 		}
+		# OPTIONAL
+		backupTriggerType = $someSapHanaSystemPatchBackupTriggerType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemPatchBackupTriggerType]) for enum values.
+		# OPTIONAL
+		authTypeSpec = @{
+			# REQUIRED
+			authType = $someSapHanaSystemAuthTypeSpecAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaSystemAuthTypeSpecAuthType]) for enum values.
+		}
+		# OPTIONAL
+		azureFeatureId = $someString
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -1361,15 +1361,15 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		remoteLocationId = $someString
-		# REQUIRED
-		dbId = $someString
-		# REQUIRED
-		fullSnapshotId = $someString
 		# OPTIONAL
 		sourceDbConfig = @{
 			# OPTIONAL
 			snappableId = $someString
 		}
+		# REQUIRED
+		dbId = $someString
+		# REQUIRED
+		fullSnapshotId = $someString
 	}
 }"
             );
@@ -1395,16 +1395,16 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# OPTIONAL
-		recoveryPoint = $someDateTime
-		# REQUIRED
-		dbId = $someString
-		# REQUIRED
-		shouldInitializeLogArea = $someBoolean
-		# OPTIONAL
 		sourceDbConfig = @{
 			# OPTIONAL
 			snappableId = $someString
 		}
+		# REQUIRED
+		shouldInitializeLogArea = $someBoolean
+		# OPTIONAL
+		recoveryPoint = $someDateTime
+		# REQUIRED
+		dbId = $someString
 	}
 }"
             );
@@ -1428,12 +1428,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshotId = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

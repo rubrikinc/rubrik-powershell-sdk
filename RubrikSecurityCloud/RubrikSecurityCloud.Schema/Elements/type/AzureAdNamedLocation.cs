@@ -30,10 +30,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationType")]
         public AzureAdNamedLocationEnumType? LocationType { get; set; }
 
+        //      C# -> DateTime? CreatedDateTime
+        // GraphQL -> createdDateTime: DateTime (scalar)
+        [JsonProperty("createdDateTime")]
+        public DateTime? CreatedDateTime { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
         public System.String? DisplayName { get; set; }
+
+        //      C# -> DateTime? ModifiedDateTime
+        // GraphQL -> modifiedDateTime: DateTime (scalar)
+        [JsonProperty("modifiedDateTime")]
+        public DateTime? ModifiedDateTime { get; set; }
 
 
         #endregion
@@ -47,7 +57,9 @@ namespace RubrikSecurityCloud.Types
     public AzureAdNamedLocation Set(
         AzureAdNamedLocationIsTrustedEnumType? IsTrusted = null,
         AzureAdNamedLocationEnumType? LocationType = null,
-        System.String? DisplayName = null
+        DateTime? CreatedDateTime = null,
+        System.String? DisplayName = null,
+        DateTime? ModifiedDateTime = null
     ) 
     {
         if ( IsTrusted != null ) {
@@ -56,8 +68,14 @@ namespace RubrikSecurityCloud.Types
         if ( LocationType != null ) {
             this.LocationType = LocationType;
         }
+        if ( CreatedDateTime != null ) {
+            this.CreatedDateTime = CreatedDateTime;
+        }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
+        }
+        if ( ModifiedDateTime != null ) {
+            this.ModifiedDateTime = ModifiedDateTime;
         }
         return this;
     }
@@ -91,6 +109,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "locationType\n" ;
             }
         }
+        //      C# -> DateTime? CreatedDateTime
+        // GraphQL -> createdDateTime: DateTime (scalar)
+        if (this.CreatedDateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdDateTime\n" ;
+            } else {
+                s += ind + "createdDateTime\n" ;
+            }
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
@@ -98,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "displayName\n" ;
             } else {
                 s += ind + "displayName\n" ;
+            }
+        }
+        //      C# -> DateTime? ModifiedDateTime
+        // GraphQL -> modifiedDateTime: DateTime (scalar)
+        if (this.ModifiedDateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "modifiedDateTime\n" ;
+            } else {
+                s += ind + "modifiedDateTime\n" ;
             }
         }
         return s;
@@ -141,6 +177,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LocationType = null;
         }
+        //      C# -> DateTime? CreatedDateTime
+        // GraphQL -> createdDateTime: DateTime (scalar)
+        if (ec.Includes("createdDateTime",true))
+        {
+            if(this.CreatedDateTime == null) {
+
+                this.CreatedDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedDateTime != null && ec.Excludes("createdDateTime",true))
+        {
+            this.CreatedDateTime = null;
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (ec.Includes("displayName",true))
@@ -157,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DisplayName != null && ec.Excludes("displayName",true))
         {
             this.DisplayName = null;
+        }
+        //      C# -> DateTime? ModifiedDateTime
+        // GraphQL -> modifiedDateTime: DateTime (scalar)
+        if (ec.Includes("modifiedDateTime",true))
+        {
+            if(this.ModifiedDateTime == null) {
+
+                this.ModifiedDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModifiedDateTime != null && ec.Excludes("modifiedDateTime",true))
+        {
+            this.ModifiedDateTime = null;
         }
     }
 

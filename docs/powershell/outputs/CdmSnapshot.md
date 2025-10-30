@@ -78,6 +78,6 @@
 - snappableId: System.String
   - The workload ID of the snapshot.
 - isQuarantineProcessing: System.Boolean
-  - Specifies whether the snapshot is being processed processed to determine its quarantine state.
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.

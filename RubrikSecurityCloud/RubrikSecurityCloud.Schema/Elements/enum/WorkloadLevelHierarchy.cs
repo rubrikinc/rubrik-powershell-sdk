@@ -57,6 +57,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE")]
+        GOOGLE_WORKSPACE_SHARED_DRIVE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE")]
+        GOOGLE_WORKSPACE_USER_DRIVE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX")]
+        GOOGLE_WORKSPACE_USER_MAILBOX,
+
+        [EnumMember(Value = "GcpNativeDisk")]
+        GCP_NATIVE_DISK,
+
         [EnumMember(Value = "GcpNativeGCEInstance")]
         GCP_NATIVE_GCE_INSTANCE,
 
@@ -88,7 +100,10 @@ namespace RubrikSecurityCloud.Types
         O365_SITE,
 
         [EnumMember(Value = "O365Teams")]
-        O365_TEAMS
+        O365_TEAMS,
+
+        [EnumMember(Value = "OKTA_TENANT")]
+        OKTA_TENANT
 
 
     } // enum WorkloadLevelHierarchy

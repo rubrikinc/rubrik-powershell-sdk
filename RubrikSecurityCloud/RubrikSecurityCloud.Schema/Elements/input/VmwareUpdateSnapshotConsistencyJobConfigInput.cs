@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate? SnapshotConsistencyMandate
-        // GraphQL -> snapshotConsistencyMandate: VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("snapshotConsistencyMandate")]
-        public VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
-
         //      C# -> List<System.String>? Ids
         // GraphQL -> ids: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
+
+        //      C# -> VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("snapshotConsistencyMandate")]
+        public VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
 
 
         #endregion

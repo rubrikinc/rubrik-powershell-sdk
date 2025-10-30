@@ -19,5 +19,7 @@ Input to query unmanaged objects.
   - Regions to filter.
 - cloudAccountIds: list of System.Strings
   - Cloud account IDs to filter.
+- backupCopyType: BackupCopyType
+  - Backup copy type to filter.
 - managedBy: CloudVendor
   - Managed by to filter.

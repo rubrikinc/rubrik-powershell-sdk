@@ -1,6 +1,6 @@
 ### HostFilterStatus
 Supported in v5.1+
-  Status of Rubrik Io Filter on Hosts.
+Status of Rubrik Io Filter on Hosts.
 
 - HOST_FILTER_STATUS_INSTALLED
 - HOST_FILTER_STATUS_OUT_OF_DATE

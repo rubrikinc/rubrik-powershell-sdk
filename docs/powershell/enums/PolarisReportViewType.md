@@ -31,3 +31,9 @@ PolarisReportViewType is the template type for a report.
 - USER_REPORT - User report.
 - IDENTITY_RISKS_REPORT - Identity Risks report.
 - ACTIVE_DIRECTORY_FOREST_RECOVERY_REPORT - Active Directory forest recovery report.
+- CNP_OBJECT_CAPACITY_REPORT - Cloud Native Protection Object Capacity Report.
+
+This report presents capacity metrics for cloud-native protection
+features, specifically for resources managed under customer-onboarded
+cloud accounts (e.g., Azure, AWS, GCP).
+- LOG_TASKS_REPORT - Log Tasks report.

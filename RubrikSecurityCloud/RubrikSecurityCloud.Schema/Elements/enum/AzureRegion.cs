@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CANADA_EAST")]
         CANADA_EAST,
 
+        [EnumMember(Value = "CHILE_CENTRAL")]
+        CHILE_CENTRAL,
+
         [EnumMember(Value = "CHINA_EAST")]
         CHINA_EAST,
 
@@ -105,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INDIA_WEST")]
         INDIA_WEST,
 
+        [EnumMember(Value = "INDONESIA_CENTRAL")]
+        INDONESIA_CENTRAL,
+
         [EnumMember(Value = "ISRAEL_CENTRAL")]
         ISRAEL_CENTRAL,
 
@@ -123,8 +129,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KOREA_SOUTH")]
         KOREA_SOUTH,
 
+        [EnumMember(Value = "MALAYSIA_WEST")]
+        MALAYSIA_WEST,
+
         [EnumMember(Value = "MEXICO_CENTRAL")]
         MEXICO_CENTRAL,
+
+        [EnumMember(Value = "NEW_ZEALAND_NORTH")]
+        NEW_ZEALAND_NORTH,
 
         [EnumMember(Value = "NORWAY_EAST")]
         NORWAY_EAST,

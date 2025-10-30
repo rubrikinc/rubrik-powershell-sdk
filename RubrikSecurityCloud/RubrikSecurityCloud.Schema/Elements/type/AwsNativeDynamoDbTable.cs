@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isExocomputeConfigured")]
         public System.Boolean? IsExocomputeConfigured { get; set; }
 
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        [JsonProperty("isProtectable")]
+        public System.Boolean? IsProtectable { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -350,6 +355,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsAwsContinuousBackupEnabled = null,
         System.Boolean? IsExocomputeConfigured = null,
+        System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.String? NativeName = null,
@@ -420,6 +426,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
+        }
+        if ( IsProtectable != null ) {
+            this.IsProtectable = IsProtectable;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -652,6 +661,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isExocomputeConfigured\n" ;
             } else {
                 s += ind + "isExocomputeConfigured\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (this.IsProtectable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProtectable\n" ;
+            } else {
+                s += ind + "isProtectable\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1219,6 +1237,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
         {
             this.IsExocomputeConfigured = null;
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (ec.Includes("isProtectable",true))
+        {
+            if(this.IsProtectable == null) {
+
+                this.IsProtectable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProtectable != null && ec.Excludes("isProtectable",true))
+        {
+            this.IsProtectable = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdApp")]
         public AzureAdApp? AzureAdApp { get; set; }
 
+        //      C# -> PermissionAccessMode? PermissionAccessMode
+        // GraphQL -> permissionAccessMode: PermissionAccessMode (enum)
+        [JsonProperty("permissionAccessMode")]
+        public PermissionAccessMode? PermissionAccessMode { get; set; }
+
 
         #endregion
 

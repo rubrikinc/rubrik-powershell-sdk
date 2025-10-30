@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
         //      C# -> System.String? StorageAccountId
         // GraphQL -> storageAccountId: String! (scalar)
         [JsonProperty("storageAccountId")]
@@ -45,11 +55,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DetailedPrivateEndpointConnection Set(
+        System.String? Description = null,
+        System.String? Name = null,
         System.String? StorageAccountId = null,
         PageInfo? PageInfo = null,
         PrivateEndpointConnection? PrivateEndpointConnection = null
     ) 
     {
+        if ( Description != null ) {
+            this.Description = Description;
+        }
+        if ( Name != null ) {
+            this.Name = Name;
+        }
         if ( StorageAccountId != null ) {
             this.StorageAccountId = StorageAccountId;
         }
@@ -73,6 +91,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
+        }
         //      C# -> System.String? StorageAccountId
         // GraphQL -> storageAccountId: String! (scalar)
         if (this.StorageAccountId != null) {
@@ -113,6 +149,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (ec.Includes("description",true))
+        {
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (ec.Includes("name",true))
+        {
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
+        }
         //      C# -> System.String? StorageAccountId
         // GraphQL -> storageAccountId: String! (scalar)
         if (ec.Includes("storageAccountId",true))

@@ -14,4 +14,6 @@ Supported in v5.0+
   v5.0-v5.2: Size of the Volume in bytes
   v5.3+: The size of the volume in bytes.
 - fileSystemType: FileSystemType
-  - 
+  - Required. Supported in v5.0+
+  v5.0-v5.2: The file system used by this Volume
+  v5.3+: The filesystem of the volume included in the snapshot. Supported filesystems are NTFS and ReFS.

@@ -99,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,
 
+        [EnumMember(Value = "K8S_PROTECTION_SET")]
+        K8S_PROTECTION_SET,
+
         [EnumMember(Value = "K8S_ROOT")]
         K8S_ROOT,
 
@@ -167,6 +170,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SALESFORCE_OBJECT")]
         SALESFORCE_OBJECT,
+
+        [EnumMember(Value = "SALESFORCE_ORGANIZATION")]
+        SALESFORCE_ORGANIZATION,
+
+        [EnumMember(Value = "SALESFORCE_ROOT")]
+        SALESFORCE_ROOT,
 
         [EnumMember(Value = "SHARE_FILESET")]
         SHARE_FILESET,

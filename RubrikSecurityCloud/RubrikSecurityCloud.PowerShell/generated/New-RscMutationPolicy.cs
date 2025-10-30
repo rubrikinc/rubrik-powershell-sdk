@@ -155,6 +155,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	updateMode = $someBoolean
     /// 	# OPTIONAL
     /// 	updateAnalyzerIds = $someBoolean
+    /// 	# OPTIONAL
+    /// 	documentTypeIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -306,6 +310,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	hasDetailedStatus = $someBoolean
     /// 	# OPTIONAL
@@ -316,8 +322,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	policyIds = @(
     /// 		$someString
     /// 	)
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -599,8 +603,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	runRequest = @{
     /// 		# OPTIONAL
     /// 		nodeIds = @(
@@ -611,6 +613,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -693,6 +697,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	updateMode = $someBoolean
     /// 	# OPTIONAL
     /// 	updateAnalyzerIds = $someBoolean
+    /// 	# OPTIONAL
+    /// 	documentTypeIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1086,6 +1094,10 @@ $query.Var.input = @{
 	updateMode = $someBoolean
 	# OPTIONAL
 	updateAnalyzerIds = $someBoolean
+	# OPTIONAL
+	documentTypeIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -1206,6 +1218,8 @@ $query.Var.input = @{
                 Mutation.GetHealthMonitorPolicyStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	hasDetailedStatus = $someBoolean
 	# OPTIONAL
@@ -1216,8 +1230,6 @@ $query.Var.input = @{
 	policyIds = @(
 		$someString
 	)
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }
@@ -1459,8 +1471,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	runRequest = @{
 		# OPTIONAL
 		nodeIds = @(
@@ -1471,6 +1481,8 @@ $query.Var.input = @{
 			$someString
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1537,6 +1549,10 @@ $query.Var.input = @{
 	updateMode = $someBoolean
 	# OPTIONAL
 	updateAnalyzerIds = $someBoolean
+	# OPTIONAL
+	documentTypeIds = @(
+		$someString
+	)
 }"
             );
         }

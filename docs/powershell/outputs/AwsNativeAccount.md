@@ -37,12 +37,14 @@ AWS native account.
   - List of all RDS Instances under this AWS Native account.
 - awsRegions: AwsNativeRegionHierarchyObjectConnection
   - Paginated list of AWS native regions in this account.
+- isProtectable: System.Boolean
+  - Whether the AWS account is protectable for the specified protection features.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -70,7 +72,7 @@ AWS native account.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

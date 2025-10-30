@@ -1,4 +1,5 @@
 ### ObjectTypeEnum
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - KuprNamespace
 - SALESFORCE_OBJECT - Salesforce object.
 - MssqlDatabaseBatchMaintenance
@@ -55,7 +56,9 @@
 - CASSANDRA_COLUMN_FAMILY - Cassandra Column Family.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - ManagedVolume - Managed Volume.
+- OKTA_TENANT - Okta tenant.
 - AzureNativeManagedDisk
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
 - LinuxFileset
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - O365Site
@@ -70,7 +73,7 @@
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
-- AZURE_DEVOPS_REPOSITORY - Azure Devops Repository.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint
 - OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.

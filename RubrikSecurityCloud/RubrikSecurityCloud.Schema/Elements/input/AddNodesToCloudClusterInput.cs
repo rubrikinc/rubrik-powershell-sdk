@@ -45,9 +45,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? GcpImageId { get; set; }
 
         //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> cloudAccountId: UUID (scalar)
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
@@ -71,6 +69,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldKeepResourcesOnFailure")]
         public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
+
+        //      C# -> System.String? CloudAccountIdV2
+        // GraphQL -> cloudAccountIdV2: String (scalar)
+        [JsonProperty("cloudAccountIdV2")]
+        public System.String? CloudAccountIdV2 { get; set; }
+
+        //      C# -> GcpTestImage? GcpTestImage
+        // GraphQL -> gcpTestImage: GcpTestImage (input)
+        [JsonProperty("gcpTestImage")]
+        public GcpTestImage? GcpTestImage { get; set; }
 
 
         #endregion

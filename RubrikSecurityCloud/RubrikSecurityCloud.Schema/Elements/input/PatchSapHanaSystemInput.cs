@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> SapHanaSystemPatchInput? UpdateProperties
         // GraphQL -> updateProperties: SapHanaSystemPatchInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("updateProperties")]
         public SapHanaSystemPatchInput? UpdateProperties { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

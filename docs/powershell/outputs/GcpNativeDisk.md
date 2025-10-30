@@ -17,13 +17,19 @@
   - Replica zones of the disk.
 - kmsKey: System.String
   - KMS key for the disk.
+- attachmentSpecs: list of GcpNativeDiskAttachmentSpecs
+  - List of GCE instance details to which the disk is attached.
 - isRelic: System.Boolean
   - Relic status of the disk.
 - labels: list of Labels
   - Labels attached to the disk.
+- gcpNativeProjectDetails: GcpNativeProjectDetails
+  - Project details of the disk.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - gcpNativeProject: GcpNativeProject
+  - GCP Project of the disk.
+- gcpProject: GcpNativeProject
   - GCP Project of the disk.
 - attachedInstances: list of GcpNativeAttachmentDetailss
   - Instances to which the disk is attached.
@@ -34,7 +40,7 @@
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -62,7 +68,7 @@
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
@@ -83,3 +89,7 @@
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
+- cloudNativeId: System.String
+  - GCP Native ID of the object.
+- nativeName: System.String
+  - GCP Native name of the object.

@@ -35,6 +35,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - List of Exocompute configurations for the Azure subscription.
 - cloudSlabDns: System.String
   - CloudSlab DNS that must be in the allowlist to protect object store workloads.
+- isProtectable: System.Boolean
+  - Whether the subscription is protectable for the specified protection features.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
 - rscNativeObjectPendingSla: CompactSlaDomain
@@ -42,7 +44,7 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -70,7 +72,7 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

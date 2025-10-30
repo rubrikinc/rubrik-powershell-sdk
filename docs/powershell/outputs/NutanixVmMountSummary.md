@@ -50,4 +50,5 @@ Supported in v6.0+
   - Supported in v7.0+
   The status of the migration job for the mounted virtual machine. Valid values are 'REQUESTED', 'RUNNING', 'SUCCEEDED', and 'FAILED'. An unspecified value indicates that no migration job has been initiated for the mounted virtual machine.
 - mountStatus: NutanixVmMountStatus
-  - 
+  - Supported in v9.1+
+  Specifies the Live Mount status.

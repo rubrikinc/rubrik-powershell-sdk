@@ -241,7 +241,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	ociImageId = $someString
     /// 	# OPTIONAL
     /// 	gcpImageId = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
     /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
@@ -249,6 +249,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	shouldKeepResourcesOnFailure = $someBoolean
+    /// 	# OPTIONAL
+    /// 	cloudAccountIdV2 = $someString
+    /// 	# OPTIONAL
+    /// 	gcpTestImage = @{
+    /// 		# OPTIONAL
+    /// 		project = $someString
+    /// 		# OPTIONAL
+    /// 		imageName = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -282,6 +291,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	routeConfig = @{
+    /// 		# OPTIONAL
+    /// 		networkZoneName = $someString
     /// 		# REQUIRED
     /// 		netmask = $someString
     /// 		# REQUIRED
@@ -605,6 +616,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsRegion = $someString
     /// 	# REQUIRED
     /// 	shouldDisableAwsApiTermination = $someBoolean
+    /// 	# OPTIONAL
+    /// 	gcpVmConfig = @{
+    /// 		# OPTIONAL
+    /// 		cdmVersion = $someString
+    /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		nodeSizeGb = $someInt
+    /// 		# OPTIONAL
+    /// 		imageId = $someString
+    /// 		# OPTIONAL
+    /// 		labels = $someString
+    /// 		# OPTIONAL
+    /// 		serviceAccounts = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 				# OPTIONAL
+    /// 				email = $someString
+    /// 				# OPTIONAL
+    /// 				scopes = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		instanceType = $someGcpInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpInstanceType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		deleteProtection = $someBoolean
+    /// 		# OPTIONAL
+    /// 		networkConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				network = $someString
+    /// 				# OPTIONAL
+    /// 				hostProject = $someString
+    /// 				# OPTIONAL
+    /// 				region = $someString
+    /// 				# OPTIONAL
+    /// 				name = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		testImage = @{
+    /// 			# OPTIONAL
+    /// 			project = $someString
+    /// 			# OPTIONAL
+    /// 			imageName = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	gcpZone = $someString
     /// 	# REQUIRED
     /// 	shouldKeepClusterOnFailure = $someBoolean
     /// 	# OPTIONAL
@@ -769,6 +832,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudAccountId = $someString
     /// 	# OPTIONAL
     /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	cloudAccountIdV2 = $someString
     /// }
     /// 
     /// # Execute the query
@@ -986,8 +1051,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	ntpServerConfigs = @(
     /// 		@{
     /// 			# REQUIRED
@@ -1003,6 +1066,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1627,7 +1692,7 @@ $query.Var.input = @{
 	ociImageId = $someString
 	# OPTIONAL
 	gcpImageId = $someString
-	# REQUIRED
+	# OPTIONAL
 	cloudAccountId = $someString
 	# REQUIRED
 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
@@ -1635,6 +1700,15 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	shouldKeepResourcesOnFailure = $someBoolean
+	# OPTIONAL
+	cloudAccountIdV2 = $someString
+	# OPTIONAL
+	gcpTestImage = @{
+		# OPTIONAL
+		project = $someString
+		# OPTIONAL
+		imageName = $someString
+	}
 }"
             );
         }
@@ -1660,6 +1734,8 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	routeConfig = @{
+		# OPTIONAL
+		networkZoneName = $someString
 		# REQUIRED
 		netmask = $someString
 		# REQUIRED
@@ -1935,6 +2011,58 @@ $query.Var.input = @{
 	awsRegion = $someString
 	# REQUIRED
 	shouldDisableAwsApiTermination = $someBoolean
+	# OPTIONAL
+	gcpVmConfig = @{
+		# OPTIONAL
+		cdmVersion = $someString
+		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
+		nodeSizeGb = $someInt
+		# OPTIONAL
+		imageId = $someString
+		# OPTIONAL
+		labels = $someString
+		# OPTIONAL
+		serviceAccounts = @(
+			@{
+				# OPTIONAL
+				name = $someString
+				# OPTIONAL
+				email = $someString
+				# OPTIONAL
+				scopes = @(
+					$someString
+				)
+			}
+		)
+		# OPTIONAL
+		instanceType = $someGcpInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpInstanceType]) for enum values.
+		# OPTIONAL
+		deleteProtection = $someBoolean
+		# OPTIONAL
+		networkConfig = @(
+			@{
+				# OPTIONAL
+				network = $someString
+				# OPTIONAL
+				hostProject = $someString
+				# OPTIONAL
+				region = $someString
+				# OPTIONAL
+				name = $someString
+			}
+		)
+		# OPTIONAL
+		testImage = @{
+			# OPTIONAL
+			project = $someString
+			# OPTIONAL
+			imageName = $someString
+		}
+	}
+	# OPTIONAL
+	gcpZone = $someString
 	# REQUIRED
 	shouldKeepClusterOnFailure = $someBoolean
 	# OPTIONAL
@@ -2069,6 +2197,8 @@ $query.Var.input = @{
 	cloudAccountId = $someString
 	# OPTIONAL
 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+	# OPTIONAL
+	cloudAccountIdV2 = $someString
 }"
             );
         }
@@ -2239,8 +2369,6 @@ $query.Var.clusterLocation = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	ntpServerConfigs = @(
 		@{
 			# REQUIRED
@@ -2256,6 +2384,8 @@ $query.Var.input = @{
 			}
 		}
 	)
+	# REQUIRED
+	id = $someString
 }"
             );
         }

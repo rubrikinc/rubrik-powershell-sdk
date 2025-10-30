@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isDefault")]
         public System.Boolean? IsDefault { get; set; }
 
+        //      C# -> System.Boolean? IsParent
+        // GraphQL -> isParent: Boolean! (scalar)
+        [JsonProperty("isParent")]
+        public System.Boolean? IsParent { get; set; }
+
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)
         [JsonProperty("label")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public SaasWorkloadField Set(
         List<System.String>? DistinctValues = null,
         System.Boolean? IsDefault = null,
+        System.Boolean? IsParent = null,
         System.String? Label = null,
         System.String? Name = null,
         System.String? Type = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsDefault != null ) {
             this.IsDefault = IsDefault;
+        }
+        if ( IsParent != null ) {
+            this.IsParent = IsParent;
         }
         if ( Label != null ) {
             this.Label = Label;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isDefault\n" ;
             } else {
                 s += ind + "isDefault\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsParent
+        // GraphQL -> isParent: Boolean! (scalar)
+        if (this.IsParent != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isParent\n" ;
+            } else {
+                s += ind + "isParent\n" ;
             }
         }
         //      C# -> System.String? Label
@@ -176,6 +194,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsDefault != null && ec.Excludes("isDefault",true))
         {
             this.IsDefault = null;
+        }
+        //      C# -> System.Boolean? IsParent
+        // GraphQL -> isParent: Boolean! (scalar)
+        if (ec.Includes("isParent",true))
+        {
+            if(this.IsParent == null) {
+
+                this.IsParent = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsParent != null && ec.Excludes("isParent",true))
+        {
+            this.IsParent = null;
         }
         //      C# -> System.String? Label
         // GraphQL -> label: String! (scalar)

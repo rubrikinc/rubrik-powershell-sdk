@@ -20,4 +20,5 @@ Supported in v5.2+
   - Required. Supported in v5.2+
   GUID of the recovery fork attached to the LSN.
 - backupType: MssqlBackupType
-  - 
+  - Required. Supported in v5.2+
+  The type of backup. Backup types can be snapshots or logs.

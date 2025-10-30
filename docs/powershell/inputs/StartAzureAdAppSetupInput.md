@@ -7,3 +7,5 @@ Configuration to initiate Azure AD Application creation.
   - Azure region name.
 - azureAdApp: AzureAdApp
   - Azure AD application details.
+- permissionAccessMode: PermissionAccessMode
+  - Access mode for the Azure AD app.

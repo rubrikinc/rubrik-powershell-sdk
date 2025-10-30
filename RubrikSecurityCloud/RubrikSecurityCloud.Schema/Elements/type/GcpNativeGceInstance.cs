@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region GcpNativeGceInstance
  
-    public class GcpNativeGceInstance: BaseType, GcpNativeProjectDescendantType, GcpNativeProjectLogicalChildType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
+    public class GcpNativeGceInstance: BaseType, GcpNativeHierarchyObject, GcpNativeProjectDescendantType, GcpNativeProjectLogicalChildType, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 
@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
+
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        [JsonProperty("cloudNativeId")]
+        public System.String? CloudNativeId { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -146,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("attachedDisks")]
         public List<GcpNativeAttachmentDetails>? AttachedDisks { get; set; }
 
+        //      C# -> List<GcpNativeDiskAttachmentSpec>? AttachmentSpecs
+        // GraphQL -> attachmentSpecs: [GcpNativeDiskAttachmentSpec!]! (type)
+        [JsonProperty("attachmentSpecs")]
+        public List<GcpNativeDiskAttachmentSpec>? AttachmentSpecs { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -155,6 +165,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeProject: GcpNativeProject! (type)
         [JsonProperty("gcpNativeProject")]
         public GcpNativeProject? GcpNativeProject { get; set; }
+
+        //      C# -> GcpNativeProjectDetails? GcpNativeProjectDetails
+        // GraphQL -> gcpNativeProjectDetails: GcpNativeProjectDetails (type)
+        [JsonProperty("gcpNativeProjectDetails")]
+        public GcpNativeProjectDetails? GcpNativeProjectDetails { get; set; }
+
+        //      C# -> GcpNativeProject? GcpProject
+        // GraphQL -> gcpProject: GcpNativeProject (type)
+        [JsonProperty("gcpProject")]
+        public GcpNativeProject? GcpProject { get; set; }
 
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)
@@ -344,6 +364,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? CloudNativeId = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         System.String? MachineType = null,
@@ -361,8 +382,11 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         List<GcpNativeAttachmentDetails>? AttachedDisks = null,
+        List<GcpNativeDiskAttachmentSpec>? AttachmentSpecs = null,
         PathNode? EffectiveSlaSourceObject = null,
         GcpNativeProject? GcpNativeProject = null,
+        GcpNativeProjectDetails? GcpNativeProjectDetails = null,
+        GcpNativeProject? GcpProject = null,
         List<Label>? Labels = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -402,6 +426,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( CloudNativeId != null ) {
+            this.CloudNativeId = CloudNativeId;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -454,11 +481,20 @@ namespace RubrikSecurityCloud.Types
         if ( AttachedDisks != null ) {
             this.AttachedDisks = AttachedDisks;
         }
+        if ( AttachmentSpecs != null ) {
+            this.AttachmentSpecs = AttachmentSpecs;
+        }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
         if ( GcpNativeProject != null ) {
             this.GcpNativeProject = GcpNativeProject;
+        }
+        if ( GcpNativeProjectDetails != null ) {
+            this.GcpNativeProjectDetails = GcpNativeProjectDetails;
+        }
+        if ( GcpProject != null ) {
+            this.GcpProject = GcpProject;
         }
         if ( Labels != null ) {
             this.Labels = Labels;
@@ -598,6 +634,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        if (this.CloudNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudNativeId\n" ;
+            } else {
+                s += ind + "cloudNativeId\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -762,6 +807,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<GcpNativeDiskAttachmentSpec>? AttachmentSpecs
+        // GraphQL -> attachmentSpecs: [GcpNativeDiskAttachmentSpec!]! (type)
+        if (this.AttachmentSpecs != null) {
+            var fspec = this.AttachmentSpecs.AsFieldSpec(conf.Child("attachmentSpecs"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "attachmentSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
@@ -783,6 +840,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "gcpNativeProject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpNativeProjectDetails? GcpNativeProjectDetails
+        // GraphQL -> gcpNativeProjectDetails: GcpNativeProjectDetails (type)
+        if (this.GcpNativeProjectDetails != null) {
+            var fspec = this.GcpNativeProjectDetails.AsFieldSpec(conf.Child("gcpNativeProjectDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpNativeProjectDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpNativeProject? GcpProject
+        // GraphQL -> gcpProject: GcpNativeProject (type)
+        if (this.GcpProject != null) {
+            var fspec = this.GcpProject.AsFieldSpec(conf.Child("gcpProject"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpProject" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1118,6 +1199,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaDomain = null;
         }
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        if (ec.Includes("cloudNativeId",true))
+        {
+            if(this.CloudNativeId == null) {
+
+                this.CloudNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudNativeId != null && ec.Excludes("cloudNativeId",true))
+        {
+            this.CloudNativeId = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1413,6 +1511,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AttachedDisks = null;
         }
+        //      C# -> List<GcpNativeDiskAttachmentSpec>? AttachmentSpecs
+        // GraphQL -> attachmentSpecs: [GcpNativeDiskAttachmentSpec!]! (type)
+        if (ec.Includes("attachmentSpecs",false))
+        {
+            if(this.AttachmentSpecs == null) {
+
+                this.AttachmentSpecs = new List<GcpNativeDiskAttachmentSpec>();
+                this.AttachmentSpecs.ApplyExploratoryFieldSpec(ec.NewChild("attachmentSpecs"));
+
+            } else {
+
+                this.AttachmentSpecs.ApplyExploratoryFieldSpec(ec.NewChild("attachmentSpecs"));
+
+            }
+        }
+        else if (this.AttachmentSpecs != null && ec.Excludes("attachmentSpecs",false))
+        {
+            this.AttachmentSpecs = null;
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (ec.Includes("effectiveSlaSourceObject",false))
@@ -1450,6 +1567,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.GcpNativeProject != null && ec.Excludes("gcpNativeProject",false))
         {
             this.GcpNativeProject = null;
+        }
+        //      C# -> GcpNativeProjectDetails? GcpNativeProjectDetails
+        // GraphQL -> gcpNativeProjectDetails: GcpNativeProjectDetails (type)
+        if (ec.Includes("gcpNativeProjectDetails",false))
+        {
+            if(this.GcpNativeProjectDetails == null) {
+
+                this.GcpNativeProjectDetails = new GcpNativeProjectDetails();
+                this.GcpNativeProjectDetails.ApplyExploratoryFieldSpec(ec.NewChild("gcpNativeProjectDetails"));
+
+            } else {
+
+                this.GcpNativeProjectDetails.ApplyExploratoryFieldSpec(ec.NewChild("gcpNativeProjectDetails"));
+
+            }
+        }
+        else if (this.GcpNativeProjectDetails != null && ec.Excludes("gcpNativeProjectDetails",false))
+        {
+            this.GcpNativeProjectDetails = null;
+        }
+        //      C# -> GcpNativeProject? GcpProject
+        // GraphQL -> gcpProject: GcpNativeProject (type)
+        if (ec.Includes("gcpProject",false))
+        {
+            if(this.GcpProject == null) {
+
+                this.GcpProject = new GcpNativeProject();
+                this.GcpProject.ApplyExploratoryFieldSpec(ec.NewChild("gcpProject"));
+
+            } else {
+
+                this.GcpProject.ApplyExploratoryFieldSpec(ec.NewChild("gcpProject"));
+
+            }
+        }
+        else if (this.GcpProject != null && ec.Excludes("gcpProject",false))
+        {
+            this.GcpProject = null;
         }
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)

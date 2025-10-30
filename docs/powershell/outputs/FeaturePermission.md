@@ -1,11 +1,11 @@
 ### FeaturePermission
-Feature along with permissions serialized in JSON format.
+Represents the permissions for a feature.
 
 - feature: CloudAccountFeature
-  - Feature name, for example, CLOUD_NATIVE_PROTECTION, CLOUD_NATIVE_ARCHIVAL.
+  - Represents the feature for which the permissions are returned.
 - permissionJson: System.String
-  - The permissions required for supporting the feature given by the feature field.
+  - Represents the json string of the permissions.
 - version: System.Int32
-  - Feature permission version.
+  - Represents the version of the permissions.
 - permissionsGroupVersions: list of PermissionsGroupWithVersions
-  - Permissions group versions.
+  - Represents the version of the permissions groups.

@@ -6,3 +6,4 @@ Entity type for Threat Monitoring.
 - CLOUD_NATIVE_ROOT - The root of a cloud-native hierarchy, which can be an AWS account,
 an Azure subscription, or a GCP project.
 - MICROSOFT_365 - Microsoft 365 subscription.
+- CLOUD_DIRECT_CLUSTER - NAS Cloud Direct.

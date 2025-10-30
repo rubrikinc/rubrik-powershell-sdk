@@ -9,3 +9,5 @@ Input to retrieve the AWS trust policy.
   - IDs for the native AWS accounts.
 - roleChainingAccountId: System.String
   - UUID of the account used for role chaining.
+- persistRoleChainingMapping: System.Boolean
+  - Flag to persist the existing role chaining mapping.

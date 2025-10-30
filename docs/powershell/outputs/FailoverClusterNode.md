@@ -11,4 +11,5 @@ Supported in v5.2+
   - Supported in v5.3+
   Operating system of the node in the failover cluster.
 - connectionStatus: FailoverClusterNodeConnectionStatus
-  - 
+  - Required. Supported in v5.2+
+  Connectivity status of the node in the failover cluster.

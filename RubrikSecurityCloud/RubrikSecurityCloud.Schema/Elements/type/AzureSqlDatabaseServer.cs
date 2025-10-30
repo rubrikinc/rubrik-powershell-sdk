@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        [JsonProperty("isProtectable")]
+        public System.Boolean? IsProtectable { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -203,6 +208,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? Id = null,
+        System.Boolean? IsProtectable = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? ServerName = null,
@@ -250,6 +256,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsProtectable != null ) {
+            this.IsProtectable = IsProtectable;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -413,6 +422,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (this.IsProtectable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProtectable\n" ;
+            } else {
+                s += ind + "isProtectable\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -811,6 +829,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (ec.Includes("isProtectable",true))
+        {
+            if(this.IsProtectable == null) {
+
+                this.IsProtectable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProtectable != null && ec.Excludes("isProtectable",true))
+        {
+            this.IsProtectable = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

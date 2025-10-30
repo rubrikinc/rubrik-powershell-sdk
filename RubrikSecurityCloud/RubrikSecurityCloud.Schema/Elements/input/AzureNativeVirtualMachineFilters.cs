@@ -114,6 +114,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureNativeIsEligibleForVmProtectionFilter")]
         public AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter { get; set; }
 
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
+
 
         #endregion
 

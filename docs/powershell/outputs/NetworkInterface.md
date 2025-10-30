@@ -20,4 +20,5 @@ Supported in v5.0+
   - Supported in v6.0+
   Hostname of the node.
 - interfaceType: NetworkInterfaceType
-  - 
+  - Required. Supported in v5.0+
+  Network interface type.

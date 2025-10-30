@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACR_CONNECTIVITY")]
         ACR_CONNECTIVITY,
 
+        [EnumMember(Value = "ADDITIONAL_CONNECTIVITY")]
+        ADDITIONAL_CONNECTIVITY,
+
         [EnumMember(Value = "ARCHIVAL_LOCATION_CONNECTIVITY_OPTIONAL")]
         ARCHIVAL_LOCATION_CONNECTIVITY_OPTIONAL,
 

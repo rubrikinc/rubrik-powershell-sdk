@@ -59,3 +59,6 @@ Azure cloud account region Enum.
 - MEXICOCENTRAL - Azure Cloud account region is Mexico Central.
 - BRAZILSOUTHEAST - Azure Cloud account region is Brazil Southeast.
 - SWEDENSOUTH - Azure Cloud account region is Sweden South.
+- CHILECENTRAL - Azure Cloud account region is Chile Central.
+- INDONESIACENTRAL - Azure Cloud account region is Indonesia Central.
+- MALAYSIAWEST - Azure Cloud account region is Malaysia West.

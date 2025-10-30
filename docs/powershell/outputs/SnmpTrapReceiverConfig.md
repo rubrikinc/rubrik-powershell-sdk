@@ -13,4 +13,5 @@ Supported in v5.0+
   - Supported in v5.2+
   Specifies the user for the SNMP trap receiver host. A valid user is required in order to use SNMP v3. The specified user must be a valid user in the users field of the SNMP configuration. When no user is specified, SNMP v2c traps are sent to the SNMP trap receiver host. If a trap receiver user is specified, the trap receiver security level must also be specified.
 - securityLevel: SnmpSecurityLevel
-  - 
+  - Supported in v5.2+
+  Specifies the security level for the SNMP trap receiver host. If a trap receiver user is specified, a securityLevel must be specified.

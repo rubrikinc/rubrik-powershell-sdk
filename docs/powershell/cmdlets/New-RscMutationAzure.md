@@ -20,6 +20,14 @@ Backs up the Azure AD directory.
 
 - There is a single argument of type BackupAzureAdDirectoryInput.
 - Returns list of CreateOnDemandJobReplys.
+### cloudaccountaddwithcustomerappinitiate
+AzureCloudAccountAddWithCustomerAppInitiate adds a cloud account using customer app
+credentials without requiring interactive user consent.
+This process uses the user's app ID and secret key to assign roles to the
+service principal of the Rubrik multi-tenant app.
+
+- There is a single argument of type AzureCloudAccountAddWithCustomerAppInitiateInput.
+- Returns AzureCloudAccountAddWithCustomerAppInitiateReply.
 ### completeadappsetup
 Completes the creation flow for an Azure AD app.
 

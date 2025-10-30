@@ -22,6 +22,7 @@ fragment EventDetailFragment on ActivitySeries {
   objectId
   objectName
   objectType
+  slaDomainName
   cluster {
     id
     name

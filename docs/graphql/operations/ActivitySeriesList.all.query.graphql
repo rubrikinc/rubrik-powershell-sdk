@@ -28,6 +28,7 @@ fragment ActivitySeriesFragment on ActivitySeries {
   lastActivityType
   lastActivityStatus
   isPolarisEventSeries
+  slaDomainName
   cluster {
     id
     name

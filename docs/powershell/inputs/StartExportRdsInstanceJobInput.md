@@ -55,3 +55,5 @@ Input to trigger AWS native RDS Instance export job.
   - Version of the database engine.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot.
+- shouldResurrectSnapshot: System.Boolean
+  - Specifies whether to resurrect an archived snapshot.

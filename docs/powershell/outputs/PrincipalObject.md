@@ -1,9 +1,9 @@
 ### PrincipalObject
-Azure AD object to which the role is assigned.
+Entra ID object to which the role is assigned.
 
 - azureAdUser: AzureAdUser
-  - Azure AD user type.
+  - Entra ID user assigned to this role.
 - azureAdGroup: AzureAdGroup
-  - Azure AD group type.
+  - Entra ID group assigned to this role.
 - azureAdServicePrincipal: AzureAdServicePrincipal
-  - Azure AD service principal type.
+  - Entra ID service principal assigned to this role.

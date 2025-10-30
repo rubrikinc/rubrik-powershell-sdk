@@ -10,6 +10,11 @@ Enable or disable Threat Monitoring on a Rubrik cluster.
 
 - There is a single argument of type EnableThreatMonitoringInput.
 - Returns System.String.
+### quarantinehuntmatches
+Quarantine matches identified during a threat hunt.
+
+- There is a single argument of type QuarantineThreatHuntMatchesInput.
+- Returns QuarantineThreatHuntMatchesReply.
 ### startbulkhunt
 Start a new bulk threat hunt.
 

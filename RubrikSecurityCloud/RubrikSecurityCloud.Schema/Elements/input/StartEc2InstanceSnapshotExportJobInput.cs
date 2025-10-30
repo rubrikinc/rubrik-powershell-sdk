@@ -113,6 +113,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshotId")]
         public System.String? ArchivedSnapshotId { get; set; }
 
+        //      C# -> System.String? DedicatedHostId
+        // GraphQL -> dedicatedHostId: String (scalar)
+        [JsonProperty("dedicatedHostId")]
+        public System.String? DedicatedHostId { get; set; }
+
+        //      C# -> System.Boolean? ShouldResurrectSnapshot
+        // GraphQL -> shouldResurrectSnapshot: Boolean (scalar)
+        [JsonProperty("shouldResurrectSnapshot")]
+        public System.Boolean? ShouldResurrectSnapshot { get; set; }
+
 
         #endregion
 

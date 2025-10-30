@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region GcpNativeProject
  
-    public class GcpNativeProject: BaseType, HierarchyObject, PolarisHierarchyObject
+    public class GcpNativeProject: BaseType, GcpNativeHierarchyObject, HierarchyObject, PolarisHierarchyObject
     {
         #region members
 
@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        [JsonProperty("cloudNativeId")]
+        public System.String? CloudNativeId { get; set; }
+
         //      C# -> System.Int32? DiskCount
         // GraphQL -> diskCount: Int! (scalar)
         [JsonProperty("diskCount")]
@@ -75,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        [JsonProperty("isRelic")]
+        public System.Boolean? IsRelic { get; set; }
 
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
@@ -111,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("projectNumber")]
         public System.String? ProjectNumber { get; set; }
 
+        //      C# -> System.String? Region
+        // GraphQL -> region: String! (scalar)
+        [JsonProperty("region")]
+        public System.String? Region { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -140,6 +155,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpNativeGceInstanceConnection: GcpNativeGceInstanceConnection! (type)
         [JsonProperty("gcpNativeGceInstanceConnection")]
         public GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection { get; set; }
+
+        //      C# -> List<Label>? Labels
+        // GraphQL -> labels: [Label!]! (type)
+        [JsonProperty("labels")]
+        public List<Label>? Labels { get; set; }
 
         //      C# -> GcpNativeProjectLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: GcpNativeProjectLogicalChildTypeConnection! (type)
@@ -244,8 +264,10 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? CloudAccountId = null,
+        System.String? CloudNativeId = null,
         System.Int32? DiskCount = null,
         System.String? Id = null,
+        System.Boolean? IsRelic = null,
         DateTime? LastRefreshedAt = null,
         System.String? Name = null,
         System.String? NativeId = null,
@@ -253,12 +275,14 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.String? OrganizationName = null,
         System.String? ProjectNumber = null,
+        System.String? Region = null,
         System.Boolean? SlaPauseStatus = null,
         System.Int32? VmCount = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
         GcpNativeGceInstanceConnection? GcpNativeGceInstanceConnection = null,
+        List<Label>? Labels = null,
         GcpNativeProjectLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
@@ -295,11 +319,17 @@ namespace RubrikSecurityCloud.Types
         if ( CloudAccountId != null ) {
             this.CloudAccountId = CloudAccountId;
         }
+        if ( CloudNativeId != null ) {
+            this.CloudNativeId = CloudNativeId;
+        }
         if ( DiskCount != null ) {
             this.DiskCount = DiskCount;
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsRelic != null ) {
+            this.IsRelic = IsRelic;
         }
         if ( LastRefreshedAt != null ) {
             this.LastRefreshedAt = LastRefreshedAt;
@@ -322,6 +352,9 @@ namespace RubrikSecurityCloud.Types
         if ( ProjectNumber != null ) {
             this.ProjectNumber = ProjectNumber;
         }
+        if ( Region != null ) {
+            this.Region = Region;
+        }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
@@ -339,6 +372,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GcpNativeGceInstanceConnection != null ) {
             this.GcpNativeGceInstanceConnection = GcpNativeGceInstanceConnection;
+        }
+        if ( Labels != null ) {
+            this.Labels = Labels;
         }
         if ( LogicalChildConnection != null ) {
             this.LogicalChildConnection = LogicalChildConnection;
@@ -468,6 +504,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cloudAccountId\n" ;
             }
         }
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        if (this.CloudNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudNativeId\n" ;
+            } else {
+                s += ind + "cloudNativeId\n" ;
+            }
+        }
         //      C# -> System.Int32? DiskCount
         // GraphQL -> diskCount: Int! (scalar)
         if (this.DiskCount != null) {
@@ -484,6 +529,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRelic\n" ;
+            } else {
+                s += ind + "isRelic\n" ;
             }
         }
         //      C# -> DateTime? LastRefreshedAt
@@ -549,6 +603,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "projectNumber\n" ;
             }
         }
+        //      C# -> System.String? Region
+        // GraphQL -> region: String! (scalar)
+        if (this.Region != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
@@ -612,6 +675,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "gcpNativeGceInstanceConnection" + "\n(" + this.Vars.GcpNativeGceInstanceConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<Label>? Labels
+        // GraphQL -> labels: [Label!]! (type)
+        if (this.Labels != null) {
+            var fspec = this.Labels.AsFieldSpec(conf.Child("labels"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "labels" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -880,6 +955,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CloudAccountId = null;
         }
+        //      C# -> System.String? CloudNativeId
+        // GraphQL -> cloudNativeId: String! (scalar)
+        if (ec.Includes("cloudNativeId",true))
+        {
+            if(this.CloudNativeId == null) {
+
+                this.CloudNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudNativeId != null && ec.Excludes("cloudNativeId",true))
+        {
+            this.CloudNativeId = null;
+        }
         //      C# -> System.Int32? DiskCount
         // GraphQL -> diskCount: Int! (scalar)
         if (ec.Includes("diskCount",true))
@@ -913,6 +1005,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (ec.Includes("isRelic",true))
+        {
+            if(this.IsRelic == null) {
+
+                this.IsRelic = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRelic != null && ec.Excludes("isRelic",true))
+        {
+            this.IsRelic = null;
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
@@ -1033,6 +1142,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ProjectNumber = null;
         }
+        //      C# -> System.String? Region
+        // GraphQL -> region: String! (scalar)
+        if (ec.Includes("region",true))
+        {
+            if(this.Region == null) {
+
+                this.Region = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (ec.Includes("slaPauseStatus",true))
@@ -1142,6 +1268,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GcpNativeGceInstanceConnection != null && ec.Excludes("gcpNativeGceInstanceConnection",false))
         {
             this.GcpNativeGceInstanceConnection = null;
+        }
+        //      C# -> List<Label>? Labels
+        // GraphQL -> labels: [Label!]! (type)
+        if (ec.Includes("labels",false))
+        {
+            if(this.Labels == null) {
+
+                this.Labels = new List<Label>();
+                this.Labels.ApplyExploratoryFieldSpec(ec.NewChild("labels"));
+
+            } else {
+
+                this.Labels.ApplyExploratoryFieldSpec(ec.NewChild("labels"));
+
+            }
+        }
+        else if (this.Labels != null && ec.Excludes("labels",false))
+        {
+            this.Labels = null;
         }
         //      C# -> GcpNativeProjectLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: GcpNativeProjectLogicalChildTypeConnection! (type)

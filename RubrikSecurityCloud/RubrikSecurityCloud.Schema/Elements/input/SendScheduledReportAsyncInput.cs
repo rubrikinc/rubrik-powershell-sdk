@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? RubrikUserIds
+        // GraphQL -> rubrikUserIds: [String!] (scalar)
+        [JsonProperty("rubrikUserIds")]
+        public List<System.String>? RubrikUserIds { get; set; }
+
         //      C# -> System.Int32? ReportId
         // GraphQL -> reportId: Int! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("reportId")]
         public System.Int32? ReportId { get; set; }
-
-        //      C# -> List<System.String>? RubrikUserIds
-        // GraphQL -> rubrikUserIds: [String!] (scalar)
-        [JsonProperty("rubrikUserIds")]
-        public List<System.String>? RubrikUserIds { get; set; }
 
         //      C# -> List<System.String>? NonRubrikUserEmails
         // GraphQL -> nonRubrikUserEmails: [String!] (scalar)

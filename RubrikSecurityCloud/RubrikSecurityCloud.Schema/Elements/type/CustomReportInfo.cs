@@ -30,10 +30,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportViewType")]
         public PolarisReportViewType? ReportViewType { get; set; }
 
-        //      C# -> ReportRoom? Room
-        // GraphQL -> room: ReportRoom! (enum)
+        //      C# -> ReportRoomType? Room
+        // GraphQL -> room: ReportRoomType! (enum)
         [JsonProperty("room")]
-        public ReportRoom? Room { get; set; }
+        public ReportRoomType? Room { get; set; }
+
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        [JsonProperty("createdAt")]
+        public DateTime? CreatedAt { get; set; }
+
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String! (scalar)
+        [JsonProperty("createdBy")]
+        public System.String? CreatedBy { get; set; }
 
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -44,6 +54,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> DateTime? UpdatedAt
+        // GraphQL -> updatedAt: DateTime (scalar)
+        [JsonProperty("updatedAt")]
+        public DateTime? UpdatedAt { get; set; }
+
+        //      C# -> System.String? UpdatedBy
+        // GraphQL -> updatedBy: String! (scalar)
+        [JsonProperty("updatedBy")]
+        public System.String? UpdatedBy { get; set; }
 
         //      C# -> List<FilterOutput>? ReportFilters
         // GraphQL -> reportFilters: [FilterOutput!]! (type)
@@ -62,9 +82,13 @@ namespace RubrikSecurityCloud.Types
     public CustomReportInfo Set(
         ReportCategory? ReportCategory = null,
         PolarisReportViewType? ReportViewType = null,
-        ReportRoom? Room = null,
+        ReportRoomType? Room = null,
+        DateTime? CreatedAt = null,
+        System.String? CreatedBy = null,
         System.Int64? Id = null,
         System.String? Name = null,
+        DateTime? UpdatedAt = null,
+        System.String? UpdatedBy = null,
         List<FilterOutput>? ReportFilters = null
     ) 
     {
@@ -77,11 +101,23 @@ namespace RubrikSecurityCloud.Types
         if ( Room != null ) {
             this.Room = Room;
         }
+        if ( CreatedAt != null ) {
+            this.CreatedAt = CreatedAt;
+        }
+        if ( CreatedBy != null ) {
+            this.CreatedBy = CreatedBy;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( UpdatedAt != null ) {
+            this.UpdatedAt = UpdatedAt;
+        }
+        if ( UpdatedBy != null ) {
+            this.UpdatedBy = UpdatedBy;
         }
         if ( ReportFilters != null ) {
             this.ReportFilters = ReportFilters;
@@ -118,13 +154,31 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "reportViewType\n" ;
             }
         }
-        //      C# -> ReportRoom? Room
-        // GraphQL -> room: ReportRoom! (enum)
+        //      C# -> ReportRoomType? Room
+        // GraphQL -> room: ReportRoomType! (enum)
         if (this.Room != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "room\n" ;
             } else {
                 s += ind + "room\n" ;
+            }
+        }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        if (this.CreatedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdAt\n" ;
+            } else {
+                s += ind + "createdAt\n" ;
+            }
+        }
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String! (scalar)
+        if (this.CreatedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdBy\n" ;
+            } else {
+                s += ind + "createdBy\n" ;
             }
         }
         //      C# -> System.Int64? Id
@@ -143,6 +197,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> DateTime? UpdatedAt
+        // GraphQL -> updatedAt: DateTime (scalar)
+        if (this.UpdatedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedAt\n" ;
+            } else {
+                s += ind + "updatedAt\n" ;
+            }
+        }
+        //      C# -> System.String? UpdatedBy
+        // GraphQL -> updatedBy: String! (scalar)
+        if (this.UpdatedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "updatedBy\n" ;
+            } else {
+                s += ind + "updatedBy\n" ;
             }
         }
         //      C# -> List<FilterOutput>? ReportFilters
@@ -198,13 +270,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReportViewType = null;
         }
-        //      C# -> ReportRoom? Room
-        // GraphQL -> room: ReportRoom! (enum)
+        //      C# -> ReportRoomType? Room
+        // GraphQL -> room: ReportRoomType! (enum)
         if (ec.Includes("room",true))
         {
             if(this.Room == null) {
 
-                this.Room = new ReportRoom();
+                this.Room = new ReportRoomType();
 
             } else {
 
@@ -214,6 +286,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Room != null && ec.Excludes("room",true))
         {
             this.Room = null;
+        }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        if (ec.Includes("createdAt",true))
+        {
+            if(this.CreatedAt == null) {
+
+                this.CreatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
+        {
+            this.CreatedAt = null;
+        }
+        //      C# -> System.String? CreatedBy
+        // GraphQL -> createdBy: String! (scalar)
+        if (ec.Includes("createdBy",true))
+        {
+            if(this.CreatedBy == null) {
+
+                this.CreatedBy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedBy != null && ec.Excludes("createdBy",true))
+        {
+            this.CreatedBy = null;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -248,6 +354,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> DateTime? UpdatedAt
+        // GraphQL -> updatedAt: DateTime (scalar)
+        if (ec.Includes("updatedAt",true))
+        {
+            if(this.UpdatedAt == null) {
+
+                this.UpdatedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
+        {
+            this.UpdatedAt = null;
+        }
+        //      C# -> System.String? UpdatedBy
+        // GraphQL -> updatedBy: String! (scalar)
+        if (ec.Includes("updatedBy",true))
+        {
+            if(this.UpdatedBy == null) {
+
+                this.UpdatedBy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UpdatedBy != null && ec.Excludes("updatedBy",true))
+        {
+            this.UpdatedBy = null;
         }
         //      C# -> List<FilterOutput>? ReportFilters
         // GraphQL -> reportFilters: [FilterOutput!]! (type)

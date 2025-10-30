@@ -19,26 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AzureFeatureId
-        // GraphQL -> azureFeatureId: String (scalar)
-        [JsonProperty("azureFeatureId")]
-        public System.String? AzureFeatureId { get; set; }
-
-        //      C# -> SapHanaSystemConfigBackupTriggerType? BackupTriggerType
-        // GraphQL -> backupTriggerType: SapHanaSystemConfigBackupTriggerType (enum)
-        [JsonProperty("backupTriggerType")]
-        public SapHanaSystemConfigBackupTriggerType? BackupTriggerType { get; set; }
-
-        //      C# -> SapHanaSystemAuthTypeSpecInput? AuthTypeSpec
-        // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpecInput (input)
-        [JsonProperty("authTypeSpec")]
-        public SapHanaSystemAuthTypeSpecInput? AuthTypeSpec { get; set; }
-
-        //      C# -> SapHanaSystemDataPathSpecInput? DataPathSpec
-        // GraphQL -> dataPathSpec: SapHanaSystemDataPathSpecInput (input)
-        [JsonProperty("dataPathSpec")]
-        public SapHanaSystemDataPathSpecInput? DataPathSpec { get; set; }
-
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!]! (scalar)
         [Required]
@@ -67,17 +47,37 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sid")]
         public System.String? Sid { get; set; }
 
-        //      C# -> SapHanaSslInfoInput? SslInfo
-        // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
-        [JsonProperty("sslInfo")]
-        public SapHanaSslInfoInput? SslInfo { get; set; }
-
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
+        //      C# -> SapHanaSystemDataPathSpecInput? DataPathSpec
+        // GraphQL -> dataPathSpec: SapHanaSystemDataPathSpecInput (input)
+        [JsonProperty("dataPathSpec")]
+        public SapHanaSystemDataPathSpecInput? DataPathSpec { get; set; }
+
+        //      C# -> SapHanaSslInfoInput? SslInfo
+        // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
+        [JsonProperty("sslInfo")]
+        public SapHanaSslInfoInput? SslInfo { get; set; }
+
+        //      C# -> SapHanaSystemConfigBackupTriggerType? BackupTriggerType
+        // GraphQL -> backupTriggerType: SapHanaSystemConfigBackupTriggerType (enum)
+        [JsonProperty("backupTriggerType")]
+        public SapHanaSystemConfigBackupTriggerType? BackupTriggerType { get; set; }
+
+        //      C# -> SapHanaSystemAuthTypeSpecInput? AuthTypeSpec
+        // GraphQL -> authTypeSpec: SapHanaSystemAuthTypeSpecInput (input)
+        [JsonProperty("authTypeSpec")]
+        public SapHanaSystemAuthTypeSpecInput? AuthTypeSpec { get; set; }
+
+        //      C# -> System.String? AzureFeatureId
+        // GraphQL -> azureFeatureId: String (scalar)
+        [JsonProperty("azureFeatureId")]
+        public System.String? AzureFeatureId { get; set; }
 
 
         #endregion

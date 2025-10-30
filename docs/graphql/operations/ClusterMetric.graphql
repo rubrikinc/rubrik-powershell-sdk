@@ -9,5 +9,6 @@ fragment ClusterMetricFragment_All on ClusterMetric {
   physicalSnapshotStorage
   ingestedArchivalStorage
   physicalArchivalStorage
+  immutabilityOverhead
   lastUpdateTime
 }

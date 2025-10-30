@@ -43,3 +43,4 @@ Name of product.
 - RADAR_O365 - Anomaly Detection on Office 365.
 - DSPM_O365 - DSPM for O365 workloads.
 - DSPM_CLOUD - DSPM for Cloud workloads.
+- SENSITIVE_DATA_MONITORING_CLOUD_UNSTRUCTURED - Sensitive Data Monitoring on Cloud Unstructured.

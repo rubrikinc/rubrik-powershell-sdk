@@ -51,6 +51,6 @@
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - isQuarantineProcessing: System.Boolean
-  - Specifies whether the snapshot is being processed processed to determine its quarantine state.
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
 - isAnomaly: System.Boolean
   - Flag if the snapshot is an anomaly.

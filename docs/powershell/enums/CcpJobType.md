@@ -10,3 +10,4 @@ Type of cluster job.
 - CLUSTER_OPS - The general Rubrik cluster operation job.
 - MIGRATE_NODES - Migrate cloud cluster nodes to new configuration.
 - MIGRATE_CLUSTER_TO_MANAGED_IDENTITY - Migrate cloud cluster to use managed identity.
+- MANUAL_ADD_NODES - Manual add node(s) to a Rubrik cluster.

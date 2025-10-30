@@ -1,6 +1,7 @@
 ### HierarchyObjectTypeEnum
 Type of hierarchy object.
 
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - OPENSTACK_ENVIRONMENT - OpenStack Environment.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
 - K8S_CLUSTER - Kubernetes cluster.
@@ -11,6 +12,7 @@ Type of hierarchy object.
 - HostShare
 - SALESFORCE_OBJECT - Salesforce object.
 - MssqlDatabaseBatchMaintenance
+- OLVM_HOST - OLVM Host.
 - OracleRac
 - MYSQLDB_INSTANCE - MySQL Instance.
 - NUTANIX_CATEGORY - Nutanix Category.
@@ -80,8 +82,9 @@ Type of hierarchy object.
 - OPENSTACK_PROJECT - OpenStack Project.
 - VSphereFolder
 - AzureNativeVm
-- AZURE_DEVOPS_PROJECT - Azure Devops Project.
+- AZURE_DEVOPS_PROJECT - Azure DevOps Project.
 - AZURE_SQL_DATABASE_DB
+- OLVM_MANAGER - OLVM Manager.
 - AzureSqlManagedInstanceServer
 - WindowsFileset
 - CloudNativeTagRule
@@ -99,7 +102,7 @@ Type of hierarchy object.
 - Fileset
 - NasSystem
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
-- AZURE_DEVOPS_ORGANIZATION - Azure Devops Organization.
+- AZURE_DEVOPS_ORGANIZATION - Azure DevOps Organization.
 - NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
 - D365_DATAVERSE_TABLE - D365 Dataverse Table.
 - O365Calendar
@@ -118,9 +121,11 @@ Type of hierarchy object.
 - VcdCatalog
 - EXCHANGE_SERVER - Exchange Server.
 - ManagedVolume - Managed Volume.
+- OKTA_TENANT - Okta tenant.
 - Vcd
 - AzureNativeManagedDisk
 - Db2Instance
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
 - LinuxFileset
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - MSSQL_HOST - MSSQL Host.
@@ -133,6 +138,7 @@ Type of hierarchy object.
 - NasShare
 - VcdVapp
 - VSphereDatastore
+- OLVM_DATACENTER - OLVM Datacenter.
 - VSphereTag
 - ExchangeDatabase - Exchange Database.
 - MssqlAvailabilityGroup
@@ -152,7 +158,8 @@ Type of hierarchy object.
 - OPENSTACK_REGION - OpenStack Region.
 - StorageArrayVolumeGroup
 - SnapMirrorCloud
-- AZURE_DEVOPS_REPOSITORY - Azure Devops Repository.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
 - HypervSCVMM
 - SALESFORCE_FIXED_OBJECT - Salesforce metadata.
 - AppBlueprint

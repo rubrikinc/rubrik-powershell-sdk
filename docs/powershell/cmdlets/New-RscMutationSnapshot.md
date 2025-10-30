@@ -96,6 +96,14 @@ Initiates a job to restore Active Directory snapshots to their corresponding Dom
 
 - There is a single argument of type RestoreDomainControllerSnapshotInput.
 - Returns AsyncRequestStatus.
+### restoreopenstackvmfiles
+Restore files from an OpenStack virtual machine snapshot
+
+Supported in v9.5
+Start an asynchronous job to restore files and folders from a specified OpenStack virtual machine snapshot to the source virtual machine or a different target virtual machine.
+
+- There is a single argument of type RestoreOpenstackVmSnapshotFilesInput.
+- Returns AsyncRequestStatus.
 ### restorevolumegroupfiles
 Restore files from the Volume Group snapshot
 

@@ -24,6 +24,8 @@
   - Violation ID to filter the paths.
 - exposureFilter: list of OpenAccessTypes
   - List to exposure types to filter the paths.
+- accessVia: AccessVia
+  - Filter results by access type.
 - fileType: FileCountType
 - documentTypesFilter: list of System.Strings
   - List of document type IDs to filter the paths.

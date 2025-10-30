@@ -7,4 +7,4 @@ Supported in v7.0+
   - Supported in v7.0+
       Specifies whether the current request is synchronous or asynchronous. By default the value of isAsync will be true. In other words, when a value is not specified, the request is asynchronous.
 - managedVolumeSnapshotReferenceWrapper: ManagedVolumeSnapshotReferenceWrapperInput
-  - 
+  - A wrapper around ManagedVolumeSnapshotReference.

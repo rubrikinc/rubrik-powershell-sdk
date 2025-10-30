@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> LockMethod? CurrentLockMethod
+        // GraphQL -> currentLockMethod: LockMethod! (enum)
+        [JsonProperty("currentLockMethod")]
+        public LockMethod? CurrentLockMethod { get; set; }
+
         //      C# -> LockMethod? LockMethod
         // GraphQL -> lockMethod: LockMethod! (enum)
         [JsonProperty("lockMethod")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public LockoutState Set(
+        LockMethod? CurrentLockMethod = null,
         LockMethod? LockMethod = null,
         UnlockMethod? UnlockMethod = null,
         System.Boolean? IsLocked = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         DateTime? UnlockedAt = null
     ) 
     {
+        if ( CurrentLockMethod != null ) {
+            this.CurrentLockMethod = CurrentLockMethod;
+        }
         if ( LockMethod != null ) {
             this.LockMethod = LockMethod;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> LockMethod? CurrentLockMethod
+        // GraphQL -> currentLockMethod: LockMethod! (enum)
+        if (this.CurrentLockMethod != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "currentLockMethod\n" ;
+            } else {
+                s += ind + "currentLockMethod\n" ;
+            }
+        }
         //      C# -> LockMethod? LockMethod
         // GraphQL -> lockMethod: LockMethod! (enum)
         if (this.LockMethod != null) {
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> LockMethod? CurrentLockMethod
+        // GraphQL -> currentLockMethod: LockMethod! (enum)
+        if (ec.Includes("currentLockMethod",true))
+        {
+            if(this.CurrentLockMethod == null) {
+
+                this.CurrentLockMethod = new LockMethod();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentLockMethod != null && ec.Excludes("currentLockMethod",true))
+        {
+            this.CurrentLockMethod = null;
+        }
         //      C# -> LockMethod? LockMethod
         // GraphQL -> lockMethod: LockMethod! (enum)
         if (ec.Includes("lockMethod",true))

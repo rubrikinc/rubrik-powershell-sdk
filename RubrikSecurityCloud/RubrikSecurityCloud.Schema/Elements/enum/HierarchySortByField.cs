@@ -294,6 +294,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_PROJECT_ORG_NAME")]
         GCP_PROJECT_ORG_NAME,
 
+        [EnumMember(Value = "GWS_USER_EMAIL_ADDRESS")]
+        GWS_USER_EMAIL_ADDRESS,
+
+        [EnumMember(Value = "GWS_USER_ORG_UNIT")]
+        GWS_USER_ORG_UNIT,
+
         [EnumMember(Value = "ID")]
         ID,
 

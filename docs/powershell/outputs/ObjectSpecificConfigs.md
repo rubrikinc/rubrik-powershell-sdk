@@ -33,3 +33,7 @@ Object-specific configurations.
   - SLA Domain configuration for NAS Cloud Direct object.
 - informixSlaConfig: InformixSlaConfig
   - SLA Domain configuration for Informix object.
+- gcpCloudSqlConfig: GcpCloudSqlConfig
+  - SLA Domain configuration for GCP Cloud SQL object.
+- awsNativeDynamoDbSlaConfig: AwsNativeDynamoDbSlaConfig
+  - SLA Domain configuration for AWS DynamoDB table.

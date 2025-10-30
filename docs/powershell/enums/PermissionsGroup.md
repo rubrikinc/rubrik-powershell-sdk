@@ -18,8 +18,10 @@ protection feature.
 operation. These permissions are applicable to the cloud native archival
 encryption feature.
 - RECOVERY - Represents the set of permissions required for all recovery
-operations. These permissions are applicable to the cloud native
-SQL DB and SQL MI features.
+operations. These permissions are applicable to the following features:
+- SQL DB
+- SQL MI features
+- Azure Devops Repository.
 - BACKUP_V2 - Represents the set of permissions required for immutable backup V2
 operations. These permissions are applicable to the cloud native SQL DB
 and SQL MI features.
@@ -63,3 +65,9 @@ These permissions apply only to the Azure Exocompute feature.
 from customer hosted storage account.
 These permissions apply only for Azure cloud type.
 - AUTOMATED_NETWORKING_SETUP - Represents the permissions required to setup networking for exocompute.
+- SERVICE_ENDPOINT_AUTOMATION - Represents the permissions for service endpoint automation.
+- AKS_CUSTOM_PRIVATE_DNS_ZONE - Represents the permissions required to use custom private DNS zones for
+private AKS clusters.
+- EXPORT_AND_RESTORE_POWER_OFF_VM - Represents the set of permissions required for export and restore
+power off operations. These permissions are applicable to the cloud
+native protection feature.

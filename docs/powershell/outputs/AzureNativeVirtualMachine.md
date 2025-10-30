@@ -39,6 +39,8 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
   - Specifies whether exocompute is configured for the region in which the virtual machine (VM) exists, or not. When the value is true, exocompute can be used to perform tasks like file indexing.
 - isFileIndexingEnabled: System.Boolean
   - Specifies whether file indexing is enabled for this virtual machine or not. When enabled, Rubrik scans the file structure within the virtual machine in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.
+- isProtectable: System.Boolean
+  - Specifies whether the virtual machine is protectable. When the value is true, the virtual machine can be protected by assigning sla.
 - privateIp: System.String
   - Private IP address of the virtual machine.
 - cloudNativeId: System.String
@@ -68,7 +70,7 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -96,7 +98,7 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

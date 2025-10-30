@@ -30,4 +30,6 @@ Filters for list of Azure disks.
 - orgFilter: OrgFilter
   - Filter by organization ID.
 - azureNativeIsEligibleForManagedDiskProtectionFilter: AzureNativeIsEligibleForManagedDiskProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.

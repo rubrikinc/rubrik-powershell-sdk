@@ -38,4 +38,6 @@ Filters for list of Azure virtual machines.
 - hierarchyFilters: list of Filters
   - Filter by hierarchy.
 - azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.

@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOnboarding")]
         public System.Boolean? IsOnboarding { get; set; }
 
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        [JsonProperty("isProtectable")]
+        public System.Boolean? IsProtectable { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -367,6 +372,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsOnboarding = null,
+        System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsVersioningEnabled = null,
         System.String? Name = null,
@@ -444,6 +450,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOnboarding != null ) {
             this.IsOnboarding = IsOnboarding;
+        }
+        if ( IsProtectable != null ) {
+            this.IsProtectable = IsProtectable;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -697,6 +706,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isOnboarding\n" ;
             } else {
                 s += ind + "isOnboarding\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (this.IsProtectable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProtectable\n" ;
+            } else {
+                s += ind + "isProtectable\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1310,6 +1328,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsOnboarding != null && ec.Excludes("isOnboarding",true))
         {
             this.IsOnboarding = null;
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (ec.Includes("isProtectable",true))
+        {
+            if(this.IsProtectable == null) {
+
+                this.IsProtectable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProtectable != null && ec.Excludes("isProtectable",true))
+        {
+            this.IsProtectable = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

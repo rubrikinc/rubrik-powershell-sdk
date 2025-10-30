@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP")]
         BACKUP,
 
+        [EnumMember(Value = "ON_DEMAND_SNAPSHOT")]
+        ON_DEMAND_SNAPSHOT,
+
         [EnumMember(Value = "UNSPECIFIED")]
         UNSPECIFIED
 

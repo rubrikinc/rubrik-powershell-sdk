@@ -19,6 +19,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SapHanaSslInfoEncryptionProvider? EncryptionProvider
+        // GraphQL -> encryptionProvider: SapHanaSslInfoEncryptionProvider! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("encryptionProvider")]
+        public SapHanaSslInfoEncryptionProvider? EncryptionProvider { get; set; }
+
+        //      C# -> System.String? KeyStorePath
+        // GraphQL -> keyStorePath: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("keyStorePath")]
+        public System.String? KeyStorePath { get; set; }
+
         //      C# -> System.String? CryptoLibPath
         // GraphQL -> cryptoLibPath: String (scalar)
         [JsonProperty("cryptoLibPath")]
@@ -43,20 +57,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> trustStorePath: String (scalar)
         [JsonProperty("trustStorePath")]
         public System.String? TrustStorePath { get; set; }
-
-        //      C# -> SapHanaSslInfoEncryptionProvider? EncryptionProvider
-        // GraphQL -> encryptionProvider: SapHanaSslInfoEncryptionProvider! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("encryptionProvider")]
-        public SapHanaSslInfoEncryptionProvider? EncryptionProvider { get; set; }
-
-        //      C# -> System.String? KeyStorePath
-        // GraphQL -> keyStorePath: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("keyStorePath")]
-        public System.String? KeyStorePath { get; set; }
 
 
         #endregion

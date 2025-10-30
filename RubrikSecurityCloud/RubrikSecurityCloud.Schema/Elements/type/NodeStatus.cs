@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipAddress")]
         public System.String? IpAddress { get; set; }
 
+        //      C# -> System.String? Role
+        // GraphQL -> role: String (scalar)
+        [JsonProperty("role")]
+        public System.String? Role { get; set; }
+
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         [JsonProperty("status")]
@@ -75,6 +80,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Hostname = null,
         System.String? Id = null,
         System.String? IpAddress = null,
+        System.String? Role = null,
         System.String? Status = null,
         System.String? SubStatus = null,
         SupportTunnelInfo? SupportTunnel = null
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IpAddress != null ) {
             this.IpAddress = IpAddress;
+        }
+        if ( Role != null ) {
+            this.Role = Role;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ipAddress\n" ;
             } else {
                 s += ind + "ipAddress\n" ;
+            }
+        }
+        //      C# -> System.String? Role
+        // GraphQL -> role: String (scalar)
+        if (this.Role != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "role\n" ;
+            } else {
+                s += ind + "role\n" ;
             }
         }
         //      C# -> System.String? Status
@@ -284,6 +302,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
         {
             this.IpAddress = null;
+        }
+        //      C# -> System.String? Role
+        // GraphQL -> role: String (scalar)
+        if (ec.Includes("role",true))
+        {
+            if(this.Role == null) {
+
+                this.Role = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",true))
+        {
+            this.Role = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)

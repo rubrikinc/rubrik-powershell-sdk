@@ -21,6 +21,7 @@ fragment AllEventsPerTimePeriodFragment on ActivitySeriesConnection {
         progress
         isCancelable
         isPolarisEventSeries
+        slaDomainName
         cluster {
           id
           name

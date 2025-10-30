@@ -8,6 +8,11 @@ Initiates a job to download a snapshot from the specified location when the snap
 
 - There is a single argument of type DownloadActiveDirectorySnapshotFromLocationInput.
 - Returns AsyncRequestStatus.
+### anomalydetailscsv
+Trigger asynchronous Anomaly Details CSV file download.
+
+- There is a single argument of type DownloadAnomalyDetailsCsvInput.
+- Returns DownloadAnomalyDetailsCsvReply.
 ### auditlogcsvasync
 Download audit log in CSV format asynchronously.
 
@@ -60,6 +65,14 @@ Schedule a download CSV job for objects list.
 
 - There is a single argument of type DownloadObjectsListCsvInput.
 - Returns DownloadCsvReply.
+### openstacksnapshotfromlocation
+Download a snapshot from a remote target
+
+Supported in v9.5
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If no SLA Domain is selected, the snapshot is retained forever.
+
+- There is a single argument of type DownloadOpenstackSnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
 ### reportcsvasync
 Download a report in CSV format asynchronously.
 

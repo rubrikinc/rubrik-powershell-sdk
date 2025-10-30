@@ -17,7 +17,7 @@ Supported in v5.0+
       v5.3: The network adapter type of this NIC.
       v6.0+: The network adapter type of the NIC.
 - addressingMode: VappVmIpAddressingMode
-  - Addressing mode of the virtual machine network connection.
+  - Required. Addressing mode of the virtual machine network connection.
 - isConnected: System.Boolean
   - Required. Supported in v5.0+
       Boolean value that indicates whether the specified vApp network connection is enabled. Set the value to 'true' to enable the connection or 'false' to disable the connection.

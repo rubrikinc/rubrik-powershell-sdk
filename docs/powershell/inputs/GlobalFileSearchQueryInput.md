@@ -3,7 +3,7 @@ Supported in v5.1+
 
 - regex: System.String
   - Required. Supported in v5.1+
-      Regex to match.
+Regex to match.
 - snappableIds: list of System.Strings
   - Required. Supported in v5.1+
-      Managed IDs of snappables to search across.
+Managed IDs of snappables to search across.

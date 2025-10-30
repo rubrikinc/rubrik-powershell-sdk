@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupType")]
         public AnalyzerGroupTypeEnum? GroupType { get; set; }
 
+        //      C# -> List<System.String>? DocumentTypeIds
+        // GraphQL -> documentTypeIds: [String!]! (scalar)
+        [JsonProperty("documentTypeIds")]
+        public List<System.String>? DocumentTypeIds { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public AnalyzerGroup Set(
         AnalyzerGroupTypeEnum? GroupType = null,
+        List<System.String>? DocumentTypeIds = null,
         System.String? Id = null,
         System.String? Name = null,
         List<Analyzer>? Analyzers = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( GroupType != null ) {
             this.GroupType = GroupType;
+        }
+        if ( DocumentTypeIds != null ) {
+            this.DocumentTypeIds = DocumentTypeIds;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "groupType\n" ;
             } else {
                 s += ind + "groupType\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DocumentTypeIds
+        // GraphQL -> documentTypeIds: [String!]! (scalar)
+        if (this.DocumentTypeIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "documentTypeIds\n" ;
+            } else {
+                s += ind + "documentTypeIds\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -144,6 +162,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.GroupType != null && ec.Excludes("groupType",true))
         {
             this.GroupType = null;
+        }
+        //      C# -> List<System.String>? DocumentTypeIds
+        // GraphQL -> documentTypeIds: [String!]! (scalar)
+        if (ec.Includes("documentTypeIds",true))
+        {
+            if(this.DocumentTypeIds == null) {
+
+                this.DocumentTypeIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DocumentTypeIds != null && ec.Excludes("documentTypeIds",true))
+        {
+            this.DocumentTypeIds = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

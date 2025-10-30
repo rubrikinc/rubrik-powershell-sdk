@@ -7,7 +7,7 @@ Retrieves all custom reports with filtering options.
   - Optional filter by report view type.
 - reportCategory: ReportCategory
   - Optional filter by report category.
-- reportRoom: ReportRoom
+- reportRoom: ReportRoomType
   - Optional filter by report room.
 - createdBy: System.String
   - Optional filter by creator user ID.

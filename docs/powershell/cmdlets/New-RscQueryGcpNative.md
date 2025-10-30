@@ -53,6 +53,11 @@ List of GCP projects.
     - authorizedOperationFilter - Operation
     - workloadHierarchy - WorkloadLevelHierarchy: Provide optional workload hierarchy for RBAC and SLA, none value is assumed to be All workload hierarchy.
 - Returns GcpNativeProjectConnection.
+### root
+Root of GCP native hierarchy.
+
+- The root subcommand takes no arguments.
+- Returns GcpNativeRoot.
 ### storeddisklocations
 lists distinct regions and zones of the GCP disks stored with Polaris
 

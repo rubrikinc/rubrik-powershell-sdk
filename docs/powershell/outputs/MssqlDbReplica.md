@@ -31,4 +31,5 @@ Supported in v5.0+
   - Required. Supported in v5.0+
   The state of the replica.
 - recoveryModel: MssqlDbReplicaRecoveryModel
-  - 
+  - Required. Supported in v5.0+
+  The recovery model of the replica.

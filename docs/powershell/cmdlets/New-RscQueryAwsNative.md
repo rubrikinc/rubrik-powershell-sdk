@@ -10,7 +10,7 @@ Refers to the AWS Native account that serves as a container for all your AWS res
 ### accounts
 Paginated list of all AWS Native accounts.
 
-- There are 9 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -20,6 +20,7 @@ Paginated list of all AWS Native accounts.
     - accountFilters - AwsNativeAccountFilters
     - authorizedOperationFilter - Operation
     - awsNativeProtectionFeature - AwsNativeProtectionFeature: Cloud native protection feature.
+    - awsNativeProtectionFeatures - list of AwsNativeProtectionFeatures: List of cloud native protection features.
 - Returns AwsNativeAccountConnection.
 ### amitypeforarchivedsnapshotexport
 Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.

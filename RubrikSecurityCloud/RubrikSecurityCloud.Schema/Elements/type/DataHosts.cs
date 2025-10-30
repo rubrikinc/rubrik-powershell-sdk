@@ -20,15 +20,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
+        [JsonProperty("protocol")]
+        public CloudDirectNasProtocolType? Protocol { get; set; }
+
         //      C# -> List<System.String>? Hosts
         // GraphQL -> hosts: [String!]! (scalar)
         [JsonProperty("hosts")]
         public List<System.String>? Hosts { get; set; }
-
-        //      C# -> System.String? Protocol
-        // GraphQL -> protocol: String! (scalar)
-        [JsonProperty("protocol")]
-        public System.String? Protocol { get; set; }
 
 
         #endregion
@@ -40,15 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DataHosts Set(
-        List<System.String>? Hosts = null,
-        System.String? Protocol = null
+        CloudDirectNasProtocolType? Protocol = null,
+        List<System.String>? Hosts = null
     ) 
     {
-        if ( Hosts != null ) {
-            this.Hosts = Hosts;
-        }
         if ( Protocol != null ) {
             this.Protocol = Protocol;
+        }
+        if ( Hosts != null ) {
+            this.Hosts = Hosts;
         }
         return this;
     }
@@ -64,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
+        if (this.Protocol != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protocol\n" ;
+            } else {
+                s += ind + "protocol\n" ;
+            }
+        }
         //      C# -> List<System.String>? Hosts
         // GraphQL -> hosts: [String!]! (scalar)
         if (this.Hosts != null) {
@@ -73,15 +82,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "hosts\n" ;
             }
         }
-        //      C# -> System.String? Protocol
-        // GraphQL -> protocol: String! (scalar)
-        if (this.Protocol != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "protocol\n" ;
-            } else {
-                s += ind + "protocol\n" ;
-            }
-        }
         return s;
     }
 
@@ -89,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
+        if (ec.Includes("protocol",true))
+        {
+            if(this.Protocol == null) {
+
+                this.Protocol = new CloudDirectNasProtocolType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Protocol != null && ec.Excludes("protocol",true))
+        {
+            this.Protocol = null;
+        }
         //      C# -> List<System.String>? Hosts
         // GraphQL -> hosts: [String!]! (scalar)
         if (ec.Includes("hosts",true))
@@ -105,23 +122,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.Hosts != null && ec.Excludes("hosts",true))
         {
             this.Hosts = null;
-        }
-        //      C# -> System.String? Protocol
-        // GraphQL -> protocol: String! (scalar)
-        if (ec.Includes("protocol",true))
-        {
-            if(this.Protocol == null) {
-
-                this.Protocol = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.Protocol != null && ec.Excludes("protocol",true))
-        {
-            this.Protocol = null;
         }
     }
 

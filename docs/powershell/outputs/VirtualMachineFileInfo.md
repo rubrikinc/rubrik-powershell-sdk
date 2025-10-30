@@ -8,4 +8,4 @@ Virtual Machine file info.
   - Required. Supported in v9.0+
   The file size, in bytes.
 - fileType: VirtualMachineFileType
-  - Virtual Machine file type.
+  - Required. Virtual Machine file type.

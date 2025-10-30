@@ -1,0 +1,93 @@
+### GcpCloudSqlInstance
+Represents a GCP Cloud SQL instance.
+
+- projectId: System.String
+  - ID of the GCP project containing this instance.
+- instanceId: System.String
+  - Rubrik-generated unique identifier for the Cloud SQL instance.
+- nativeId: System.String
+  - Cloud provider's native ID for the instance.
+- nativeName: System.String
+  - Display name of the Cloud SQL instance.
+- region: System.String
+  - Region where the instance is deployed.
+- zone: System.String
+  - Zone where the instance is deployed.
+- databaseVersion: System.String
+  - Database version (e.g., MYSQL_5_7, POSTGRES_13).
+- isRelic: System.Boolean
+  - Indicates if the instance is archived/deleted.
+- kmsKey: System.String
+  - KMS key used for encryption, if any.
+- storageSizeGb: System.Int32
+  - Size of allocated storage in GB.
+- state: System.String
+  - Current operational state of the instance.
+- gcpNativeProjectDetails: GcpNativeProjectDetails
+  - Project details of the Cloud SQL instance.
+- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- gcpProject: GcpNativeProject
+  - GCP Project of the Cloud SQL instance.
+- engineType: GcpCloudSqlEngineType
+  - Type of database engine running on the instance.
+- availabilityType: GcpCloudSqlAvailabilityType
+  - High availability configuration type.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
+- cloudNativeId: System.String
+  - GCP Native ID of the object.
+- labels: list of Labels
+  - List of labels that are assigned to the object.

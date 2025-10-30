@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> NutanixVmSubObject? NutanixVmSubObj
+        // GraphQL -> nutanixVmSubObj: NutanixVmSubObject (type)
+        [JsonProperty("nutanixVmSubObj")]
+        public NutanixVmSubObject? NutanixVmSubObj { get; set; }
+
+        //      C# -> OlvmVmSubObject? OlvmVmSubObj
+        // GraphQL -> olvmVmSubObj: OlvmVmSubObject (type)
+        [JsonProperty("olvmVmSubObj")]
+        public OlvmVmSubObject? OlvmVmSubObj { get; set; }
+
         //      C# -> OpenstackVmSubObject? OpenstackVmSubObj
         // GraphQL -> openstackVmSubObj: OpenstackVmSubObject (type)
         [JsonProperty("openstackVmSubObj")]
@@ -45,11 +55,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotSubObj Set(
+        NutanixVmSubObject? NutanixVmSubObj = null,
+        OlvmVmSubObject? OlvmVmSubObj = null,
         OpenstackVmSubObject? OpenstackVmSubObj = null,
         VmwareVmSubObject? VmwareVmSubObj = null,
         VolumeGroupSubObject? VolumeGroupSubObj = null
     ) 
     {
+        if ( NutanixVmSubObj != null ) {
+            this.NutanixVmSubObj = NutanixVmSubObj;
+        }
+        if ( OlvmVmSubObj != null ) {
+            this.OlvmVmSubObj = OlvmVmSubObj;
+        }
         if ( OpenstackVmSubObj != null ) {
             this.OpenstackVmSubObj = OpenstackVmSubObj;
         }
@@ -73,6 +91,30 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> NutanixVmSubObject? NutanixVmSubObj
+        // GraphQL -> nutanixVmSubObj: NutanixVmSubObject (type)
+        if (this.NutanixVmSubObj != null) {
+            var fspec = this.NutanixVmSubObj.AsFieldSpec(conf.Child("nutanixVmSubObj"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nutanixVmSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> OlvmVmSubObject? OlvmVmSubObj
+        // GraphQL -> olvmVmSubObj: OlvmVmSubObject (type)
+        if (this.OlvmVmSubObj != null) {
+            var fspec = this.OlvmVmSubObj.AsFieldSpec(conf.Child("olvmVmSubObj"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "olvmVmSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> OpenstackVmSubObject? OpenstackVmSubObj
         // GraphQL -> openstackVmSubObj: OpenstackVmSubObject (type)
         if (this.OpenstackVmSubObj != null) {
@@ -116,6 +158,44 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> NutanixVmSubObject? NutanixVmSubObj
+        // GraphQL -> nutanixVmSubObj: NutanixVmSubObject (type)
+        if (ec.Includes("nutanixVmSubObj",false))
+        {
+            if(this.NutanixVmSubObj == null) {
+
+                this.NutanixVmSubObj = new NutanixVmSubObject();
+                this.NutanixVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmSubObj"));
+
+            } else {
+
+                this.NutanixVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("nutanixVmSubObj"));
+
+            }
+        }
+        else if (this.NutanixVmSubObj != null && ec.Excludes("nutanixVmSubObj",false))
+        {
+            this.NutanixVmSubObj = null;
+        }
+        //      C# -> OlvmVmSubObject? OlvmVmSubObj
+        // GraphQL -> olvmVmSubObj: OlvmVmSubObject (type)
+        if (ec.Includes("olvmVmSubObj",false))
+        {
+            if(this.OlvmVmSubObj == null) {
+
+                this.OlvmVmSubObj = new OlvmVmSubObject();
+                this.OlvmVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("olvmVmSubObj"));
+
+            } else {
+
+                this.OlvmVmSubObj.ApplyExploratoryFieldSpec(ec.NewChild("olvmVmSubObj"));
+
+            }
+        }
+        else if (this.OlvmVmSubObj != null && ec.Excludes("olvmVmSubObj",false))
+        {
+            this.OlvmVmSubObj = null;
+        }
         //      C# -> OpenstackVmSubObject? OpenstackVmSubObj
         // GraphQL -> openstackVmSubObj: OpenstackVmSubObject (type)
         if (ec.Includes("openstackVmSubObj",false))

@@ -1,7 +1,7 @@
 ### PastDurationEnum
 All valid time ranges in the reporting table.
 
-- NONE
+- NONE - Signifies that a past duration selection was not made.
 - PAST_24_HOURS - Enum used to filter data in the past 24 hours.
 - PAST_7_DAYS - Enum used to filter data in the past 7 days.
 - PAST_30_DAYS - Enum used to filter data in the past 30 days.

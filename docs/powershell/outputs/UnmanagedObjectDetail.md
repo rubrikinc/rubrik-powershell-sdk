@@ -37,6 +37,8 @@ UnmanagedObjectDetails.
   - Cloud account ID of the AWS account associated with the object.
 - cloudAccountName: System.String
   - Cloud account name of the AWS account associated with the object.
+- backupCopyType: BackupCopyType
+  - Backup copy type of the object (PRIMARY, REPLICA, RECOVERED, UNSPECIFIED).
 - effectiveSlaDomain: SlaDomain
   - The effective SLA Domain of the unmanaged object.
 - cluster: Cluster

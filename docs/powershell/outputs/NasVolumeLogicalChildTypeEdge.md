@@ -2,6 +2,6 @@
 Wrapper around the NasVolumeLogicalChildType object. This wrapper is used for pagination.
 
 - cursor: System.String
-  - String used to identify this edge
+  - String used to identify this edge.
 - node: NasVolumeLogicalChildType
-  - String used to identify this edge
+  - The actual NasVolumeLogicalChildType object wrapped by this edge.

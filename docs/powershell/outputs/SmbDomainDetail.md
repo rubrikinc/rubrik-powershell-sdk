@@ -11,5 +11,5 @@ Supported in v5.0+
   - Supported in v5.0+
   Specifies the service principal name (SPN) used for joining the Active Directory domain.
 - status: SmbDomainStatus
-  - Supported in v5.0+
+  - Required. Supported in v5.0+
   State of the domain.

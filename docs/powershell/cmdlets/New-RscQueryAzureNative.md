@@ -74,7 +74,7 @@ Retrieves a paginated list of all Azure Native Managed Disks.
 ### regions
 Retrieves a paginated list of all Azure Native Regions.
 
-- There are 9 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -83,6 +83,7 @@ Retrieves a paginated list of all Azure Native Regions.
     - sortOrder - SortOrder: Sorts the order of results.
     - regionFilters - AzureNativeRegionFilters: Filters for list of Azure regions.
     - subscriptionId - System.String: Subscription ID.
+    - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
     - authorizedOperationFilter - Operation: Filters according to the operation given.
 - Returns AzureNativeRegionManagedObjectConnection.
 ### resourcegroup
@@ -109,7 +110,7 @@ Retrieves a paginated list of all Azure Native Resource Groups.
     - sortOrder - SortOrder: Sorts the order of results.
     - commonResourceGroupFilters - AzureNativeCommonResourceGroupFilters: Filters for listing Azure resource groups.
     - protectedObjectTypes - list of WorkloadLevelHierarchys: List of protected object types.
-    - azureNativeProtectionFeatures - list of AzureNativeProtectionFeatures: The type of Azure Native features that Polaris supports.
+    - azureNativeProtectionFeatures - list of AzureNativeProtectionFeatures: The type of Azure Native features that RSC supports.
 - Returns AzureNativeResourceGroupConnection.
 ### resourcegroupsinfoifexist
 Retrieves a list of resource groups with the specified names which exist in the specified account.
@@ -150,7 +151,7 @@ Retrieves an Azure Native Subscription. Refers to the logical entity that provid
 ### subscriptions
 Retrieves a paginated list of all Azure Native Subscriptions.
 
-- There are 10 arguments.
+- There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -160,7 +161,8 @@ Retrieves a paginated list of all Azure Native Subscriptions.
     - subscriptionFilters - AzureNativeSubscriptionFilters
     - authorizedOperationFilter - Operation: Filters according to the operation given.
     - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
-    - azureNativeProtectionFeature - AzureNativeProtectionFeature: The type of Azure Native feature that Polaris supports.
+    - azureNativeProtectionFeature - AzureNativeProtectionFeature: The type of Azure Native feature that RSC supports.
+    - azureNativeProtectionFeatures - list of AzureNativeProtectionFeatures: The type of Azure Native features that RSC supports.
 - Returns AzureNativeSubscriptionConnection.
 ### validatesqldatabasedbnameforexport
 Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.

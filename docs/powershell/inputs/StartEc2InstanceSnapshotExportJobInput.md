@@ -33,3 +33,7 @@ Input to initiate an export job for an AWS native EC2 instance.
   - ARN of the IAM instance profile to be attached to the exported EC2 instance.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
+- dedicatedHostId: System.String
+  - ID of the AWS Dedicated Host to be used for export. If specified, the tenancy of the exported EC2 instance will be set to `host`, else it will be set to `default`. This field is required for `mac` instance types.
+- shouldResurrectSnapshot: System.Boolean
+  - Specifies whether to resurrect an archived snapshot.

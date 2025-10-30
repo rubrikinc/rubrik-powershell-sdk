@@ -21,6 +21,8 @@ NAS share instance of a registered NAS system.
   - Object ID.
 - nasSystem: NasSystem
   - The NAS System to which this NAS Share belongs.
+- nasNamespace: NasNamespace
+  - The NAS Namespace to which this NAS Share belongs.
 - nasVolume: NasVolume
   - The NAS Volume to which this NAS Share belongs.
 - primaryFileset: NasFileset
@@ -82,7 +84,7 @@ NAS share instance of a registered NAS system.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

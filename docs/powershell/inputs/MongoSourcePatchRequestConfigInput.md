@@ -7,13 +7,15 @@ Supported in v8.1+
       Path to the CA certificate file.
 - ignoreSecondaries: list of System.Strings
   - Supported in v8.1+
-      List of secondaries that should be ignored.
+      v8.1-v9.2: List of secondaries that should be ignored.
+      v9.3+: List of secondary nodes that should be ignored during backup in the format hostname:port.
 - sourceDriverPassword: System.String
   - Supported in v8.1+
       Password of the mongod driver user account.
 - sourceDriverUser: System.String
   - Supported in v8.1+
-      Username of mongod driver user account.
+      v8.1-v9.2: Username of mongod driver user account.
+      v9.3+: Username of the mongod driver user account.
 - sslKeyfilePath: System.String
   - Supported in v8.1+
       Path to the SSL key file.

@@ -21,11 +21,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_API_METRICS_CSV")]
         CDM_API_METRICS_CSV,
 
+        [EnumMember(Value = "ENTRA_ID_DOWNLOAD_SNAPSHOT")]
+        ENTRA_ID_DOWNLOAD_SNAPSHOT,
+
         [EnumMember(Value = "REPORT")]
         REPORT,
 
         [EnumMember(Value = "SAAS_APPS")]
         SAAS_APPS,
+
+        [EnumMember(Value = "TABLE_EXPORT_CSV")]
+        TABLE_EXPORT_CSV,
 
         [EnumMember(Value = "THREAT_HUNT_RESULT_CSV")]
         THREAT_HUNT_RESULT_CSV,

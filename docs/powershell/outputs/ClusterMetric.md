@@ -27,5 +27,7 @@ Metrics of a Rubrik cluster.
   - Physical bytes for archived snapshots.
 - averageDailyGrowth: System.Int64
   - Average storage growth per day, in bytes.
+- immutabilityOverhead: System.Int64
+  - Bytes used by immutability overhead in the cluster.
 - lastUpdateTime: DateTime
   - Time when the Rubrik cluster metrics was last updated.

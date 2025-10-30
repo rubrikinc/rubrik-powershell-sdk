@@ -31,4 +31,4 @@ Supported in v6.0+
   - Supported in v8.1+
       The IDs of the Nutanix networks used to create NICs on the exported virtual machine.
 - shouldDisableMigration: System.Boolean
-  - Specifies whether the migration option should not be enabled for the live mount. When set to true, the Rubrik cluster will serve as the external repository for the mounted virtual machine, and storage migration to the Nutanix cluster will be not be enabled. When set to false, a storage container on the Nutanix cluster must be specified, and a storage migration otion will be available for the live mount when it succeeds.
+  - Required. Specifies whether the migration option should not be enabled for the live mount. When set to true, the Rubrik cluster will serve as the external repository for the mounted virtual machine, and storage migration to the Nutanix cluster will be not be enabled. When set to false, a storage container on the Nutanix cluster must be specified, and a storage migration otion will be available for the live mount when it succeeds.

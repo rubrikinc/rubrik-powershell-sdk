@@ -101,6 +101,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		privateKey = $someString
     /// 		# OPTIONAL
     /// 		isTrusted = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isInternal = $someBoolean
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# REQUIRED
@@ -750,6 +752,8 @@ $query.Var.input = @{
 		privateKey = $someString
 		# OPTIONAL
 		isTrusted = $someBoolean
+		# OPTIONAL
+		isInternal = $someBoolean
 		# REQUIRED
 		name = $someString
 		# REQUIRED

@@ -1417,8 +1417,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	loginInfo = @{
     /// 		# REQUIRED
     /// 		ip = $someString
@@ -1427,6 +1425,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		username = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1732,10 +1732,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	orgNetworkId = $someString
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	orgNetworkId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3519,8 +3519,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	loginInfo = @{
 		# REQUIRED
 		ip = $someString
@@ -3529,6 +3527,8 @@ $query.Var.input = @{
 		# REQUIRED
 		username = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -3786,10 +3786,10 @@ $query.Var.input = @{
                 Mutation.VsphereVmRegisterAgentFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	orgNetworkId = $someString
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	orgNetworkId = $someString
 }"
             );
         }

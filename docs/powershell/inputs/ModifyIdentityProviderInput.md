@@ -1,6 +1,8 @@
 ### ModifyIdentityProviderInput
-Identity Provider to be modified.
+Attributes to add for an organization's identity provider.
 
+- idpId: System.String
+  - ID of the identity provider.
 - name: System.String
   - Name of the identity provider.
 - entityId: System.String
@@ -13,5 +15,3 @@ Identity Provider to be modified.
   - Specifies if the identity provider should be set as the default.
 - idpClaimAttributes: list of IdpClaimAttributes
   - Custom claims for the identity provider.
-- idpId: System.String
-  - ID of the identity provider.

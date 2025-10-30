@@ -21,7 +21,6 @@
 - YEAR - Group by year.
 - SlaDomain
 - UserAuditStatus
-- Object
 - Source
 - TIME_ISSUES
 - WEEK - Group by week.

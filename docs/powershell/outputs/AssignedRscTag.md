@@ -11,3 +11,5 @@ Details of an RSC tag.
   - Time the RSC tag was last modified.
 - slaDomainId: System.String
   - SLA Domain ID applied to the RSC tag.
+- isArchived: System.Boolean
+  - Specifies whether the tag is archived.

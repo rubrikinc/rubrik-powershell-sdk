@@ -1,9 +1,12 @@
 ### UpgradeInfoSortByEnum
-- ClusterName
-- ClusterLocation
+Enum defining the available sorting fields for cluster upgrade information queries.
+
+- UpgradeType - Rubrik cluster upgrade type preference.
+- ClusterName - Name of the Rubrik cluster.
+- ClusterLocation - Location of the Rubrik cluster.
 - VersionStatus
-- ClusterType
-- InstalledVersion
+- ClusterType - Type of the Rubrik cluster.
+- InstalledVersion - Version of the installed Rubrik cluster.
 - DownloadedVersion
-- RegisteredAt
+- RegisteredAt - Registration date of the Rubrik cluster.
 - ClusterJobStatus

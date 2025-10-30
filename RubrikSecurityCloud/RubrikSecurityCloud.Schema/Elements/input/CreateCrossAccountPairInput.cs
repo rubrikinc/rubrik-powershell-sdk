@@ -19,13 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Code
-        // GraphQL -> code: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("code")]
-        public System.String? Code { get; set; }
-
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         [Required]
@@ -33,17 +26,24 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("state")]
         public System.String? State { get; set; }
 
+        //      C# -> System.Boolean? IsRefresh
+        // GraphQL -> isRefresh: Boolean (scalar)
+        [JsonProperty("isRefresh")]
+        public System.Boolean? IsRefresh { get; set; }
+
+        //      C# -> System.String? Code
+        // GraphQL -> code: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("code")]
+        public System.String? Code { get; set; }
+
         //      C# -> System.String? Fqdn
         // GraphQL -> fqdn: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("fqdn")]
         public System.String? Fqdn { get; set; }
-
-        //      C# -> System.Boolean? IsRefresh
-        // GraphQL -> isRefresh: Boolean (scalar)
-        [JsonProperty("isRefresh")]
-        public System.Boolean? IsRefresh { get; set; }
 
 
         #endregion

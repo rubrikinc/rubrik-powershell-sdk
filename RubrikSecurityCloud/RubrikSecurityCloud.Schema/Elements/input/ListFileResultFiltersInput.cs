@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exposureFilter")]
         public List<OpenAccessType>? ExposureFilter { get; set; }
 
+        //      C# -> AccessVia? AccessVia
+        // GraphQL -> accessVia: AccessVia (enum)
+        [JsonProperty("accessVia")]
+        public AccessVia? AccessVia { get; set; }
+
         //      C# -> FileCountType? FileType
         // GraphQL -> fileType: FileCountType! (enum)
         [Required]

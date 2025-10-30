@@ -5,7 +5,7 @@ Request for SetCloudDirectGlobalSmbSettings.
   - NCD cluster UUID.
 - shouldSupportSystemFiles: System.Boolean
   - Whether to support system files.
-Default value is true.
+Default value is false.
 - offlineFilesBehaviour: CloudDirectOfflineFilesBehaviour
   - Mode for offline files.
-Default value is READ.
+Default value is SKIP.

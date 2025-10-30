@@ -1,6 +1,7 @@
 ### O365SharepointList
 - objectId: System.String
 - naturalId: System.String
+  - The natural ID of the SharePoint list.
 - parentId: System.String
 - siteChildId: System.String
   - The child ID of the object used for full SharePoint.
@@ -40,7 +41,7 @@
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

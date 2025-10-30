@@ -2,6 +2,6 @@
 Wrapper around the MssqlInstanceLogicalChildType object. This wrapper is used for pagination.
 
 - cursor: System.String
-  - String used to identify this edge
+  - String used to identify this edge.
 - node: MssqlInstanceLogicalChildType
-  - String used to identify this edge
+  - The actual MssqlInstanceLogicalChildType object wrapped by this edge.

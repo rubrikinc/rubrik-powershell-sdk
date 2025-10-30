@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Report' API domain:
-    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, HealthCheckError, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, HealthCheckError, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// </summary>
     /// <description>
     /// New-RscQueryReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 16 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, HealthCheckError, ScheduledReport, ScheduledReports, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, HealthCheckError, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -90,11 +90,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQueryReport -Operation ClusterMigrationCount
     /// 
     /// # OPTIONAL
-    /// $query.Var.clusterUuid = $someString
-    /// # REQUIRED
     /// $query.Var.status = @(
     /// 	$someCdmReportMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
     /// )
+    /// # OPTIONAL
+    /// $query.Var.clusterUuid = $someString
     /// 
     /// # Execute the query
     /// 
@@ -189,6 +189,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryReport -Operation Custom
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	searchTerm = $someString
+    /// 	# OPTIONAL
+    /// 	reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
+    /// 	# OPTIONAL
+    /// 	reportRoom = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	createdBy = $someString
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someCustomReportSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CustomReportSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CustomReportInfoConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CustomReports operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: CustomReports
+    /// 
+    /// $query = New-RscQueryReport -Operation CustomReports
+    /// 
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
@@ -198,7 +249,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
     /// 	# OPTIONAL
-    /// 	reportRoom = $someReportRoom # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoom]) for enum values.
+    /// 	reportRoom = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
     /// 	# OPTIONAL
     /// 	createdBy = $someString
     /// }
@@ -247,7 +298,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	@{
     /// 		# REQUIRED
     /// 		name = $someString
-    /// 		# REQUIRED
+    /// 		# OPTIONAL
     /// 		values = @(
     /// 			$someString
     /// 		)
@@ -299,6 +350,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# OPTIONAL
     /// 	name = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	logBackupDelay = $someInt
     /// 	# OPTIONAL
@@ -308,15 +361,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	effectiveSlaDomainId = $someString
     /// 	# OPTIONAL
-    /// 	databaseType = $someString
+    /// 	sortOrder = $someV1QueryLogReportRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortOrder]) for enum values.
     /// 	# OPTIONAL
-    /// 	location = $someString
+    /// 	databaseType = $someString
     /// 	# OPTIONAL
     /// 	sortBy = $someV1QueryLogReportRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortBy]) for enum values.
     /// 	# OPTIONAL
-    /// 	sortOrder = $someV1QueryLogReportRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortOrder]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
+    /// 	location = $someString
     /// }
     /// 
     /// # Execute the query
@@ -457,6 +508,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ScheduledReportConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SkippedTeamsSite operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: SkippedTeamsSite
+    /// 
+    /// $query = New-RscQueryReport -Operation SkippedTeamsSite
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	groupIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetSkippedTeamsSiteReportResp
     /// 
     /// 
     /// 
@@ -641,6 +725,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
     /// 	# OPTIONAL
     /// 	searchTerm = $someString
+    /// 	# OPTIONAL
+    /// 	reportRoom = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -675,12 +761,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ClusterMigrationJobStatus",
                 "ClusterMigrationStatus",
                 "Custom",
+                "CustomReports",
                 "Data",
                 "DatabaseLogForCluster",
                 "DatabaseLogingPropertiesForCluster",
                 "HealthCheckError",
                 "ScheduledReport",
                 "ScheduledReports",
+                "SkippedTeamsSite",
                 "Sonar",
                 "SonarContent",
                 "SonarRow",
@@ -712,6 +800,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Custom":
                         this.ProcessRecord_Custom();
                         break;
+                    case "CustomReports":
+                        this.ProcessRecord_CustomReports();
+                        break;
                     case "Data":
                         this.ProcessRecord_Data();
                         break;
@@ -729,6 +820,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ScheduledReports":
                         this.ProcessRecord_ScheduledReports();
+                        break;
+                    case "SkippedTeamsSite":
+                        this.ProcessRecord_SkippedTeamsSite();
                         break;
                     case "Sonar":
                         this.ProcessRecord_Sonar();
@@ -780,10 +874,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // allCustomReports.
+        // customReports.
         internal void ProcessRecord_Custom()
         {
             this._logger.name += " -Custom";
+            // Create new graphql operation customReports
+            InitQueryCustomReports();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allCustomReports.
+        internal void ProcessRecord_CustomReports()
+        {
+            this._logger.name += " -CustomReports";
             // Create new graphql operation allCustomReports
             InitQueryAllCustomReports();
         }
@@ -843,6 +946,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // skippedTeamsSiteReport.
+        internal void ProcessRecord_SkippedTeamsSite()
+        {
+            this._logger.name += " -SkippedTeamsSite";
+            // Create new graphql operation skippedTeamsSiteReport
+            InitQuerySkippedTeamsSiteReport();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // sonarReport.
         internal void ProcessRecord_Sonar()
         {
@@ -880,27 +992,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
-        // clusterReportMigrationCount(clusterUuid: UUID, status: [CdmReportMigrationStatus!]!): ReportsMigrationCount!
+        // clusterReportMigrationCount(status: [CdmReportMigrationStatus!], clusterUuid: UUID): ReportsMigrationCount!
         internal void InitQueryClusterReportMigrationCount()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("status", "[CdmReportMigrationStatus!]"),
                 Tuple.Create("clusterUuid", "UUID"),
-                Tuple.Create("status", "[CdmReportMigrationStatus!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryClusterReportMigrationCount",
-                "($clusterUuid: UUID,$status: [CdmReportMigrationStatus!]!)",
+                "($status: [CdmReportMigrationStatus!],$clusterUuid: UUID)",
                 "ReportsMigrationCount",
                 Query.ClusterReportMigrationCount,
                 Query.ClusterReportMigrationCountFieldSpec,
                 @"# OPTIONAL
-$query.Var.clusterUuid = $someString
-# REQUIRED
 $query.Var.status = @(
 	$someCdmReportMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmReportMigrationStatus]) for enum values.
-)"
+)
+# OPTIONAL
+$query.Var.clusterUuid = $someString"
             );
         }
 
@@ -969,6 +1081,63 @@ $query.Var.before = $someString"
         }
 
         // Create new GraphQL Query:
+        // customReports(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: CustomReportsFilter
+        //     sortBy: CustomReportSortByField
+        //     sortOrder: SortOrder
+        //   ): CustomReportInfoConnection!
+        internal void InitQueryCustomReports()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "CustomReportsFilter"),
+                Tuple.Create("sortBy", "CustomReportSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCustomReports",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: CustomReportsFilter,$sortBy: CustomReportSortByField,$sortOrder: SortOrder)",
+                "CustomReportInfoConnection",
+                Query.CustomReports,
+                Query.CustomReportsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	searchTerm = $someString
+	# OPTIONAL
+	reportViewType = $somePolarisReportViewType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolarisReportViewType]) for enum values.
+	# OPTIONAL
+	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
+	# OPTIONAL
+	reportRoom = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
+	# OPTIONAL
+	createdBy = $someString
+}
+# OPTIONAL
+$query.Var.sortBy = $someCustomReportSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CustomReportSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
         // allCustomReports(input: AllCustomReportsInput!): [CustomReportInfo!]!
         internal void InitQueryAllCustomReports()
         {
@@ -992,7 +1161,7 @@ $query.Var.input = @{
 	# OPTIONAL
 	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
 	# OPTIONAL
-	reportRoom = $someReportRoom # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoom]) for enum values.
+	reportRoom = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
 	# OPTIONAL
 	createdBy = $someString
 }"
@@ -1059,7 +1228,7 @@ $query.Var.filters = @(
 	@{
 		# REQUIRED
 		name = $someString
-		# REQUIRED
+		# OPTIONAL
 		values = @(
 			$someString
 		)
@@ -1103,6 +1272,8 @@ $query.Var.timezone = $someString"
 $query.Var.input = @{
 	# OPTIONAL
 	name = $someString
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	logBackupDelay = $someInt
 	# OPTIONAL
@@ -1112,15 +1283,13 @@ $query.Var.input = @{
 	# OPTIONAL
 	effectiveSlaDomainId = $someString
 	# OPTIONAL
-	databaseType = $someString
+	sortOrder = $someV1QueryLogReportRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortOrder]) for enum values.
 	# OPTIONAL
-	location = $someString
+	databaseType = $someString
 	# OPTIONAL
 	sortBy = $someV1QueryLogReportRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortBy]) for enum values.
 	# OPTIONAL
-	sortOrder = $someV1QueryLogReportRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryLogReportRequestSortOrder]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
+	location = $someString
 }"
             );
         }
@@ -1232,6 +1401,31 @@ $query.Var.before = $someString
 $query.Var.filter = @{
 	# OPTIONAL
 	reportId = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // skippedTeamsSiteReport(input: GetSkippedTeamsSiteReportReq!): GetSkippedTeamsSiteReportResp!
+        internal void InitQuerySkippedTeamsSiteReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetSkippedTeamsSiteReportReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySkippedTeamsSiteReport",
+                "($input: GetSkippedTeamsSiteReportReq!)",
+                "GetSkippedTeamsSiteReportResp",
+                Query.SkippedTeamsSiteReport,
+                Query.SkippedTeamsSiteReportFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	groupIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -1431,6 +1625,8 @@ $query.Var.input = @{
 	reportCategory = $someReportCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportCategory]) for enum values.
 	# OPTIONAL
 	searchTerm = $someString
+	# OPTIONAL
+	reportRoom = $someReportRoomType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportRoomType]) for enum values.
 }"
             );
         }

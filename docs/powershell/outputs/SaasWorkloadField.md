@@ -13,3 +13,5 @@ SaaS workload table field.
   - Distinct values of the field, limited to a maximum of 100 values.
 Currently, this is non-empty only in the case of a D365 Metadata type
 field.
+- isParent: System.Boolean
+  - Indicates whether this field acts as a parent for other records.

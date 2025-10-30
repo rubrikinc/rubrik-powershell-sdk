@@ -23,6 +23,10 @@ Rubrik cluster node.
   - Rear view position of the Rubrik cluster node.
 - platformType: ClusterNodePlatformType
   - Platform type of the Rubrik cluster node.
+- role: ClusterNodeRole
+  - Role of the node in a dynamic scaling cluster (NONE, STATIC, or DYNAMIC).
+- subStatus: ClusterNodeSubStatus
+  - Sub-status of the Rubrik cluster node providing additional status details.
 - id: System.String
   - Node ID.
 - interfaceCidrs: list of ClusterNodeInterfaceCidrs

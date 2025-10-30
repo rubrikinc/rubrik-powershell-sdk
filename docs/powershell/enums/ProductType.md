@@ -5,4 +5,4 @@ Type of product.
 - REVENUE - Revenue product.
 - POC - POC product.
 - TRIAL - Trial product.
-- PAG_TRIAL
+- PAG_TRIAL - PAG trial product.

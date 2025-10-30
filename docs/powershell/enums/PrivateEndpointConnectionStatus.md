@@ -1,8 +1,8 @@
 ### PrivateEndpointConnectionStatus
-Private endpoint connection status for an RCV archival location.
+Status of a private endpoint connection.
 
-- UNSPECIFIED_PE_CONNECTION_STATUS - Not specified RCV private endpoint connection.
-- PENDING - RCV private endpoint connection is in pending state.
-- APPROVED - RCV private endpoint connection is in approved state.
-- REJECTED - RCV private endpoint connection is in rejected state.
-- REMOVED - RCV private endpoint connection is in removed state.
+- UNSPECIFIED_PE_CONNECTION_STATUS - The private endpoint connection status is unspecified.
+- PENDING - The private endpoint connection is pending approval.
+- APPROVED - The private endpoint connection is approved.
+- REJECTED - The private endpoint connection is rejected.
+- REMOVED - The private endpoint connection is removed.

@@ -7,6 +7,8 @@
 - userPrincipalName: System.String
 - preferredDataLocation: System.String
   - The preferred data location of the OneDrive.
+- naturalId: System.String
+  - The natural ID of the OneDrive.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String
@@ -40,7 +42,7 @@
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

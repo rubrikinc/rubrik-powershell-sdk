@@ -31,3 +31,5 @@ Cluster statistics data.
   - Amount of physical archival storage in the cluster.
 - averageDailyGrowth: System.Single
   - Average daily growth of storage in the cluster.
+- immutabilityOverhead: System.Int64
+  - Bytes used by immutability overhead in the cluster.

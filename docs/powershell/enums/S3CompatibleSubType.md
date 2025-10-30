@@ -12,3 +12,46 @@ of a S3Compatible location.
 - DEFAULT_BUCKET_IMMUTABLE - Default bucket immutable subtype.
 - PURE_FB - PureFlashBlade subtype.
 - WASABI - Wasabi subtype.
+- BACKBLAZE - Backblaze subtype.
+- CLOUDIAN - Cloudian subtype.
+- CYNNY_SPACE - Cynny Space subtype.
+- DATACORE - DataCore subtype.
+- DELL_POWERSCALE - Dell PowerScale subtype.
+- DEUTSCHE_TELEKOM - Deutsche Telekom subtype.
+- DIMENSION_DATA - Dimension Data subtype.
+- EXOSCALE - Exoscale subtype.
+- FASTWEB - Fastweb subtype.
+- HITACHI_ACCESS - Hitachi Access subtype.
+- HITACHI_HCP - Hitachi HCP subtype.
+- HITACHI_HCP_OVA - Hitachi HCP OVA subtype.
+- HITACHI_HCS - Hitachi HCS subtype.
+- HUAWEI_FUSIONSTORAGE - Huawei FusionStorage subtype.
+- HUAWEI_OBS - Huawei OBS subtype.
+- HUAWEI_OCEANSTOR - Huawei OceanStor subtype.
+- IBM_SPECTRUM - IBM Spectrum subtype.
+- IIJ_GIO - IIJ GIO subtype.
+- ILAND_CLOUD - Iland Cloud subtype.
+- MINIO - MinIO subtype.
+- NETAPP_ONTAP - NetApp ONTAP subtype.
+- NUTANIX_OBJECTS - Nutanix Objects subtype.
+- OPENIO - OpenIO subtype.
+- ORACLE_OCI - Oracle OCI subtype.
+- ORANGE_BUSINESS - Orange Business subtype.
+- OVHCLOUD - OVHcloud subtype.
+- QSTAR_KALEIDOS - QStar Kaleidos subtype.
+- RED_HAT_CEPH - Red Hat Ceph subtype.
+- RSTOR - RStor subtype.
+- SCALITY_ARTESCA - Scality Artesca subtype.
+- SEAGATE_LYVE - Seagate Lyve subtype.
+- SPC_CLOUD - SPC Cloud subtype.
+- STONEFLY - StoneFly subtype.
+- STORDATA - StorData subtype.
+- SWIFTSTACK - SwiftStack subtype.
+- SWISSCOM - Swisscom subtype.
+- TELEFONICA - Telefonica subtype.
+- UGLOO - Ugloo subtype.
+- VAST_DATA - Vast Data subtype.
+- VIRTUSTREAM - Virtustream subtype.
+- VIVO_OPEN_CLOUD - Vivo Open Cloud subtype.
+- WESTERN_DIGITAL - Western Digital subtype.
+- ZADARA - Zadara subtype.

@@ -30,7 +30,7 @@ Represents a GCP project.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -58,8 +58,16 @@ Represents a GCP project.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- cloudNativeId: System.String
+  - GCP Native ID of the object.
+- region: System.String
+  - The GCP region to which the object belongs.
+- labels: list of Labels
+  - List of labels that are assigned to the object.
+- isRelic: System.Boolean
+  - Whether the object is a relic.

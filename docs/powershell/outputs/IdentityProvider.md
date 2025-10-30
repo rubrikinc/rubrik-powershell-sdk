@@ -7,6 +7,8 @@ Identity Provider is an entity responsible for authenticating a user account.
   - URL of single sign-on endpoint.
 - entityId: System.String
   - EntityId of the Identity provider.
+- expirationDate: DateTime
+  - Expiration date of the identity providers metadata.
 - spInitiatedSignInUrl: System.String
   - URL of service provider initiated single sign-on.
 - spInitiatedTestUrl: System.String
@@ -19,15 +21,13 @@ Identity Provider is an entity responsible for authenticating a user account.
   - Metadata of the identity provider in JSON format.
 - signingCertificate: System.String
   - Signing certificate of the identity provider.
+- id: System.String
+  - Unique identifier of the identity provider.
 - isDefault: System.Boolean
   - Specifies whether the identity provider is the default.
 - authorizedGroupsCount: System.Int32
   - Number of authorized groups for the identity provider.
 - activeUserCount: System.Int32
   - Number of users from the identity provider that have an active session.
-- expirationDate: DateTime
-  - Expiration date of the identity providers metadata.
-- id: System.String
-  - Unique identifier of the identity provider.
 - idpClaimAttributes: list of IdpClaimAttributeTypes
   - List of claim attributes of the identity provider.

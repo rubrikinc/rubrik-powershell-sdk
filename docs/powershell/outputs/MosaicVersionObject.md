@@ -42,4 +42,5 @@ Supported in m3.2.0-m4.2.0
   - Supported in m3.2.0-m4.2.0
   Timestamp of the version.
 - versionState: MosaicVersionObjectVersionState
-  - 
+  - Supported in m3.2.0-m4.2.0
+  Status of the version.

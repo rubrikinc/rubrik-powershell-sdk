@@ -6,4 +6,4 @@ Input parameters for creating service accounts.
 - description: System.String
   - Optional description of the service account.
 - roleIds: list of System.Strings
-  - List of role IDs to assign to the service account.
+  - List of the role IDs to assign to the service account.

@@ -53,3 +53,6 @@ Inventory Card options that the user can select as a workload.
 - OPENSTACK - Inventory card is OpenStack.
 - GOOGLE_WORKSPACE - Inventory Card is Google Workspace.
 - INFORMIX - Inventory card is Informix.
+- OLVM - Inventory card is Oracle OLVM.
+- AZURE_DEVOPS - Inventory card is Azure DevOps.
+- OKTA - Inventory card is Okta.

@@ -15,3 +15,4 @@ Different types of usages of a certificate on a Rubrik cluster.
 - RBA - Rubrik Backup Agent (RBA).
 - MSSQL_SDD - Data Discovery and Classification for SQL Server databases.
 - RCCA - Rubrik Cluster Certificate Authority (RCCA).
+- MONGO_SOURCE - MongoDB source managed by Ops Manager.

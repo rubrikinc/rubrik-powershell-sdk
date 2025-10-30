@@ -155,7 +155,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
@@ -182,6 +182,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
     /// 			# OPTIONAL
     /// 			externalArtifactValue = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	featuresWithPermissionsGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
     /// 		}
     /// 	)
     /// }
@@ -523,6 +534,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				resourceGroup = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			endpointSuffix = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		awsEsConfig = @{
@@ -555,6 +568,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldCreateBucket = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		dynamicNumNodes = $someInt
+    /// 		# OPTIONAL
+    /// 		dynamicScalingEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	vmConfig = @{
@@ -2939,7 +2956,7 @@ $query.Var.input = @{
                 Mutation.AddAwsIamUserBasedCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
@@ -2966,6 +2983,17 @@ $query.Var.input = @{
 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
 			# OPTIONAL
 			externalArtifactValue = $someString
+		}
+	)
+	# OPTIONAL
+	featuresWithPermissionsGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
 		}
 	)
 }"
@@ -3259,6 +3287,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				resourceGroup = $someString
 			}
+			# OPTIONAL
+			endpointSuffix = $someString
 		}
 		# OPTIONAL
 		awsEsConfig = @{
@@ -3291,6 +3321,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			shouldCreateBucket = $someBoolean
 		}
+		# OPTIONAL
+		dynamicNumNodes = $someInt
+		# OPTIONAL
+		dynamicScalingEnabled = $someBoolean
 	}
 	# OPTIONAL
 	vmConfig = @{

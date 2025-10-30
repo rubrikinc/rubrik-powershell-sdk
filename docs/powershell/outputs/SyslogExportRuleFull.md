@@ -12,8 +12,8 @@ Supported in v5.1+
   - Supported in v5.2+
   The ID corresponding to the imported certificate used by the syslog server.
 - facility: SyslogFacility
-  - Supported in v5.1+
+  - Required. Supported in v5.1+
 - protocol: TransportLayerProtocol
-  - Supported in v5.1+
+  - Required. Supported in v5.1+
 - severity: SyslogSeverity
-  - Supported in v5.1+
+  - Required. Supported in v5.1+

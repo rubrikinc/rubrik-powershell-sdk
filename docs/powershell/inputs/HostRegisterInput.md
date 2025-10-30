@@ -25,12 +25,15 @@ Supported in v5.0+
 - oracleSddWalletPath: System.String
   - Supported in v9.3+
       Contains the wallet path on the Oracle host which is used to authenticate remote connections to oracle databases during Sensitive Data Discovery.
-- shouldSddThroughRba: System.Boolean
-  - Supported in v9.5
-      A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow through RBA.
+- shouldOracleSddThroughRba: System.Boolean
+  - Supported in v9.4+
+      A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for Oracle host through RBA.
 - orgNetworkId: System.String
   - Supported in v8.1+
       The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.
+- shouldMssqlSddThroughRba: System.Boolean
+  - Supported in v9.4+
+      A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for SQL Server host through RBA.
 - osType: HostRegisterOsType
   - Supported in v8.1+
       Operating system of the specified host.

@@ -9,6 +9,8 @@ Managed Volume Export details object.
   - Logical size used by the Managed Volume in bytes.
 - channels: list of ManagedVolumeExportChannels
   - Channel metadata of the Managed Volume mount.
+- smbShareOpt: ManagedVolumeSmbShare
+  - SMB share details of the Managed Volume Mount.
 - managedVolume: ManagedVolume
   - Managed Volume for the export.
 - sourceSnapshot: CdmSnapshot
@@ -40,7 +42,7 @@ Managed Volume Export details object.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

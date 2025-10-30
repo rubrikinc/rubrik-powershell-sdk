@@ -1,9 +1,9 @@
 ### IdpClaimAttribute
-The name and type of the IdP claim.
+Name and type of the IdP claim.
 
 - name: System.String
-  - The name of the claim. It depends on your IdP.
+  - Name of the claim. The claim name depends on your IdP.
 - type: System.String
-  - The type of claim, for example, email or group.
+  - Type of claim. For example email or group.
 - attributeType: SamlAttributeType
   - SAML attribute type enum.

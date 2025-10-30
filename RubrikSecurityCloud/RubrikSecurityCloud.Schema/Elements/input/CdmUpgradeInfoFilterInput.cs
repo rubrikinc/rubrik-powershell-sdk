@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("productType")]
         public List<ClusterProductEnum>? ProductType { get; set; }
 
+        //      C# -> List<System.String>? UpgradeStatusCategory
+        // GraphQL -> upgradeStatusCategory: [String!] (scalar)
+        [JsonProperty("upgradeStatusCategory")]
+        public List<System.String>? UpgradeStatusCategory { get; set; }
+
 
         #endregion
 

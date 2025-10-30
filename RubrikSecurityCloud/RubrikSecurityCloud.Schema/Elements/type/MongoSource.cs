@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeCollectionCount")]
         public System.Int32? ActiveCollectionCount { get; set; }
 
+        //      C# -> System.String? CaCertificateId
+        // GraphQL -> caCertificateId: UUID (scalar)
+        [JsonProperty("caCertificateId")]
+        public System.String? CaCertificateId { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -474,6 +479,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.Int32? ActiveCollectionCount = null,
+        System.String? CaCertificateId = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? ClusterUuid = null,
@@ -563,6 +569,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActiveCollectionCount != null ) {
             this.ActiveCollectionCount = ActiveCollectionCount;
+        }
+        if ( CaCertificateId != null ) {
+            this.CaCertificateId = CaCertificateId;
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
@@ -860,6 +869,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "activeCollectionCount\n" ;
             } else {
                 s += ind + "activeCollectionCount\n" ;
+            }
+        }
+        //      C# -> System.String? CaCertificateId
+        // GraphQL -> caCertificateId: UUID (scalar)
+        if (this.CaCertificateId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "caCertificateId\n" ;
+            } else {
+                s += ind + "caCertificateId\n" ;
             }
         }
         //      C# -> System.String? CdmId
@@ -1643,6 +1661,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActiveCollectionCount != null && ec.Excludes("activeCollectionCount",true))
         {
             this.ActiveCollectionCount = null;
+        }
+        //      C# -> System.String? CaCertificateId
+        // GraphQL -> caCertificateId: UUID (scalar)
+        if (ec.Includes("caCertificateId",true))
+        {
+            if(this.CaCertificateId == null) {
+
+                this.CaCertificateId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CaCertificateId != null && ec.Excludes("caCertificateId",true))
+        {
+            this.CaCertificateId = null;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)

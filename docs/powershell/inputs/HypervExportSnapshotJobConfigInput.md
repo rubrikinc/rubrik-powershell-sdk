@@ -19,4 +19,4 @@ Supported in v5.0+
 - vmName: System.String
   - Name of the new virtual machine being exported.
 - path: System.String
-  - Destination path for the new virtual machine virtual disks.
+  - Required. Destination path for the new virtual machine virtual disks.

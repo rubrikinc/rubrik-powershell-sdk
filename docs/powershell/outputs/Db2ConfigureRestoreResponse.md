@@ -3,7 +3,7 @@ Supported in v9.1+
 
 - statusMessage: System.String
   - Supported in v9.1+
-  Status message for any failure scenarios.
+Status message for any failure scenarios.
 - status: Db2ConfigureRestoreResponseStatus
-  - Supported in v9.1+
-  Return status for the API call.
+  - Required. Supported in v9.1+
+Return status for the API call.

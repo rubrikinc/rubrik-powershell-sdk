@@ -15,7 +15,21 @@ UI status attributes.
   - End time for the UI status operation.
 - upgradeScheduledTime: System.String
   - Scheduled upgrade timestamp.
+- ruCurrentNodeIndex: System.Int32
+  - One-based index of the node undergoing rolling upgrade.
 - ruDoneNodesCount: System.Int32
   - Number of nodes where rolling upgrade is complete.
 - ruTotalNodesCount: System.Int32
   - Total number of nodes in the Rubrik cluster performing rolling upgrade.
+- firstRecommendation: System.String
+  - First recommended version for the upgrade.
+- secondRecommendation: System.String
+  - Second recommended version for the upgrade.
+- stateName: System.String
+  - Name of the current state of the upgrade.
+- taskName: System.String
+  - Name of the current task of the upgrade.
+- upgradeMode: System.String
+  - Upgrade mode for the upgrade.
+- errorMsg: System.String
+  - Error message for the upgrade.

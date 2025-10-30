@@ -100,7 +100,7 @@ Enum representing all the possible object types which generate events.
 - MONGODB_COLLECTION - MongoDB collection.
 - MONGODB_DATABASE - MongoDB database.
 - MONGODB_SOURCE - MongoDB source.
-- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS export.
+- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
 - MONGO_COLLECTION - MongoDB collection.
 - MONGO_DATABASE - MongoDB database.
 - MONGO_SOURCE - MongoDB source.
@@ -158,6 +158,10 @@ Enum representing all the possible object types which generate events.
 - PRINCIPAL_ORG_WIDE - Org wide principal type.
 - PRINCIPAL_GPO - GPO principal type.
 - PRINCIPAL_COMPUTER - Computer principal type.
+- PRINCIPAL_CONTACT - Contact principal type.
+- PRINCIPAL_CONTAINER - Container principal type.
+- PRINCIPAL_OU - OU principal type.
+- PRINCIPAL_ACCESS_POLICY - Access Policy principal type.
 - IDP_ON_PREM_AD - On-prem AD IDP type.
 - IDP_AWS - AWS IDP type.
 - IDP_ENTRA_ID - Entra ID IDP type.
@@ -168,3 +172,20 @@ Enum representing all the possible object types which generate events.
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
+- AZURE_DEVOPS_ORGANIZATION - Azure DevOps Organisation.
+- AZURE_DEVOPS_PROJECT - Azure DevOps Project.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
+- CLOUD_DIRECT_NAS_SYSTEM - NAS Cloud Direct system.
+- CLOUD_ACCOUNT - Cloud Account
+- CLOUD_DIRECT_NAS_NAMESPACE - NAS Cloud Direct namespace.
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
+- OLVM_MANAGER - OLVM Manager.
+- OLVM_DATACENTER - OLVM Datacenter.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- OLVM_HOST - OLVM Host.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- OKTA_TENANT - Okta tenant.
+- AZURE_NATIVE_RESOURCE_GROUP - Azure Native Resource Group.
+- AZURE_NATIVE_REGION - Azure native region.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.

@@ -20,7 +20,7 @@ Input for patching the Nutanix Prism Central.
   - Supported in v9.2+
       Specifies whether Nutanix DR support is enabled for the the Prism Central object.
 - decommissionedNutanixClusters: list of NutanixClustersListElementInputs
-  - The list of Nutanix Clusters to be removed from this Prism Central. These clusters will no longer be managed by this Prism Central instance. Clusters must not have any active VM mounts and must currently exist in the Prism Central's cluster list.
+  - The list of Nutanix Clusters to be removed from this Prism Central. These clusters will no longer be managed by this Prism Central instance. Clusters must not have any active virtual machine mounts and must currently exist in the Prism Central's cluster list.
 - nutanixClusters: list of NutanixClustersListElementInputs
   - Supported in v9.1+
       The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.

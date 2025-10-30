@@ -105,6 +105,7 @@ Supported in v5.0+
 - unprotectableReasonsV95: list of System.Strings
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - recoveryModel: MssqlDbSummaryRecoveryModel
-  - 
+  - Supported in v5.0+
+  This field is deprecated. Use the recoveryModel field on the replicas list instead. This field will continue to work for non-availability databases, but it is meaningless for availability databases.
 - snappable: CdmWorkload
   - 

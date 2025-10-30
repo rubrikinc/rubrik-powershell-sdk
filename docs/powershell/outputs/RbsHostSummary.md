@@ -17,5 +17,5 @@ Supported in v6.0+
   - Supported in v6.0+
   Type of the operating system that the host is running.
 - status: HostRbsStatus
-  - Supported in v6.0+
+  - Required. Supported in v6.0+
   The status of the Rubrik Backup Service on the host.

@@ -453,6 +453,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -516,6 +518,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// }
     /// # OPTIONAL
     /// $query.Var.subscriptionId = $someString
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// # OPTIONAL
     /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 
@@ -895,6 +899,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// # OPTIONAL
     /// $query.Var.azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.azureNativeProtectionFeatures = @(
+    /// 	$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -1253,6 +1261,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -2024,6 +2034,8 @@ $query.Var.diskFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2040,6 +2052,7 @@ $query.Var.includeSecurityMetadata = $someBoolean"
         //     sortOrder: SortOrder
         //     regionFilters: AzureNativeRegionFilters
         //     subscriptionId: UUID
+        //     workloadHierarchy: WorkloadLevelHierarchy
         //     authorizedOperationFilter: Operation
         //   ): AzureNativeRegionManagedObjectConnection!
         internal void InitQueryAzureNativeRegions()
@@ -2053,13 +2066,14 @@ $query.Var.includeSecurityMetadata = $someBoolean"
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("regionFilters", "AzureNativeRegionFilters"),
                 Tuple.Create("subscriptionId", "UUID"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
                 Tuple.Create("authorizedOperationFilter", "Operation"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeRegions",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeRegionSortFields,$sortOrder: SortOrder,$regionFilters: AzureNativeRegionFilters,$subscriptionId: UUID,$authorizedOperationFilter: Operation)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeRegionSortFields,$sortOrder: SortOrder,$regionFilters: AzureNativeRegionFilters,$subscriptionId: UUID,$workloadHierarchy: WorkloadLevelHierarchy,$authorizedOperationFilter: Operation)",
                 "AzureNativeRegionManagedObjectConnection",
                 Query.AzureNativeRegions,
                 Query.AzureNativeRegionsFieldSpec,
@@ -2097,6 +2111,8 @@ $query.Var.regionFilters = @{
 }
 # OPTIONAL
 $query.Var.subscriptionId = $someString
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 # OPTIONAL
 $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
             );
@@ -2381,6 +2397,7 @@ $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetVal
         //     authorizedOperationFilter: Operation
         //     workloadHierarchy: WorkloadLevelHierarchy
         //     azureNativeProtectionFeature: AzureNativeProtectionFeature
+        //     azureNativeProtectionFeatures: [AzureNativeProtectionFeature!]
         //   ): AzureNativeSubscriptionConnection!
         internal void InitQueryAzureNativeSubscriptions()
         {
@@ -2395,12 +2412,13 @@ $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetVal
                 Tuple.Create("authorizedOperationFilter", "Operation"),
                 Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
                 Tuple.Create("azureNativeProtectionFeature", "AzureNativeProtectionFeature"),
+                Tuple.Create("azureNativeProtectionFeatures", "[AzureNativeProtectionFeature!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureNativeSubscriptions",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeSubscriptionSortFields,$sortOrder: SortOrder,$subscriptionFilters: AzureNativeSubscriptionFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$azureNativeProtectionFeature: AzureNativeProtectionFeature)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureNativeSubscriptionSortFields,$sortOrder: SortOrder,$subscriptionFilters: AzureNativeSubscriptionFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$azureNativeProtectionFeature: AzureNativeProtectionFeature,$azureNativeProtectionFeatures: [AzureNativeProtectionFeature!])",
                 "AzureNativeSubscriptionConnection",
                 Query.AzureNativeSubscriptions,
                 Query.AzureNativeSubscriptionsFieldSpec,
@@ -2436,7 +2454,11 @@ $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([
 # OPTIONAL
 $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 # OPTIONAL
-$query.Var.azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values."
+$query.Var.azureNativeProtectionFeature = $someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+# OPTIONAL
+$query.Var.azureNativeProtectionFeatures = @(
+	$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+)"
             );
         }
 
@@ -2776,6 +2798,8 @@ $query.Var.virtualMachineFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

@@ -94,8 +94,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	crossAccountId = $someString
     /// 	# REQUIRED
-    /// 	fqdn = $someString
-    /// 	# REQUIRED
     /// 	serviceConsumerSa = @{
     /// 		# OPTIONAL
     /// 		clientId = $someString
@@ -106,6 +104,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	isRefresh = $someBoolean
+    /// 	# REQUIRED
+    /// 	fqdn = $someString
     /// }
     /// 
     /// # Execute the query
@@ -136,13 +136,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	code = $someString
-    /// 	# REQUIRED
     /// 	state = $someString
-    /// 	# REQUIRED
-    /// 	fqdn = $someString
     /// 	# OPTIONAL
     /// 	isRefresh = $someBoolean
+    /// 	# REQUIRED
+    /// 	code = $someString
+    /// 	# REQUIRED
+    /// 	fqdn = $someString
     /// }
     /// 
     /// # Execute the query
@@ -335,8 +335,6 @@ $query.Var.input = @{
 	# REQUIRED
 	crossAccountId = $someString
 	# REQUIRED
-	fqdn = $someString
-	# REQUIRED
 	serviceConsumerSa = @{
 		# OPTIONAL
 		clientId = $someString
@@ -347,6 +345,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	isRefresh = $someBoolean
+	# REQUIRED
+	fqdn = $someString
 }"
             );
         }
@@ -369,13 +369,13 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	code = $someString
-	# REQUIRED
 	state = $someString
-	# REQUIRED
-	fqdn = $someString
 	# OPTIONAL
 	isRefresh = $someBoolean
+	# REQUIRED
+	code = $someString
+	# REQUIRED
+	fqdn = $someString
 }"
             );
         }

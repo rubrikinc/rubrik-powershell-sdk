@@ -127,6 +127,14 @@ v9.1+: Launches a job to restore the Kubernetes resources from a protection set 
 
 - There is a single argument of type CreateK8sRestoreJobInput.
 - Returns AsyncRequestStatus.
+### startdiagnosticsjob
+Triggers an on-demand diagnostic job
+
+Supported in v9.5
+Triggers an on-demand diagnostic job for the specified Kubernetes cluster.
+
+- There is a single argument of type StartK8sDiagnosticsJobInput.
+- Returns AsyncRequestStatus.
 ### updatecluster
 Update a Kubernetes cluster
 

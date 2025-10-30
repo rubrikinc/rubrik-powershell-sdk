@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzers")]
         public List<CreateCustomAnalyzerInput>? Analyzers { get; set; }
 
+        //      C# -> List<System.String>? DocumentTypeIds
+        // GraphQL -> documentTypeIds: [String!] (scalar)
+        [JsonProperty("documentTypeIds")]
+        public List<System.String>? DocumentTypeIds { get; set; }
+
 
         #endregion
 

@@ -14,10 +14,13 @@ Supported in v5.2+
 - failoverClusterAppConfig: FailoverClusterAppConfig
   - 
 - connectionStatus: FailoverClusterAppConnectionStatus
-  - 
+  - Required. Supported in v5.2+
+  Connectivity status of the failover cluster app.
 - operatingSystemType: FailoverClusterOsType
-  - 
+  - Supported in v5.3+
+  Failover cluster operating system type.
 - slaAssignment: SlaAssignment
-  - 
+  - Supported in v5.2+
+  SLA Domain assignment for failover cluster app.
 - slaAssignable: SlaAssignable
   - 

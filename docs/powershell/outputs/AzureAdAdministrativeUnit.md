@@ -1,11 +1,11 @@
 ### AzureAdAdministrativeUnit
-Azure AD administrative unit.
+Entra ID administrative unit.
 
 - displayName: System.String
-  - Display name of the Azure AD administrative unit.
+  - Display name of the Entra ID administrative unit.
 - description: System.String
-  - Description of the Azure AD administrative unit.
+  - Description of the Entra ID administrative unit.
 - restrictedManagement: System.Boolean
-  - Restricted management of the Azure AD administrative unit.
+  - Restricted management of the Entra ID administrative unit.
 - membershipType: AzureAdAdminUnitMembershipEnumType
-  - Membership type of the Azure AD administrative unit.
+  - Membership type of the Entra ID administrative unit.

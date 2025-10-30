@@ -2,6 +2,6 @@
 Wrapper around the CloudDirectNasNamespaceLogicalChildType object. This wrapper is used for pagination.
 
 - cursor: System.String
-  - String used to identify this edge
+  - String used to identify this edge.
 - node: CloudDirectNasNamespaceLogicalChildType
-  - String used to identify this edge
+  - The actual CloudDirectNasNamespaceLogicalChildType object wrapped by this edge.

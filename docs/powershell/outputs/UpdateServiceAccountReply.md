@@ -8,4 +8,4 @@ Updated service account details.
 - description: System.String
   - Description of the service account.
 - lastLogin: DateTime
-  - Timestamp of the last login done using the service account.
+  - Last login timestamp of the service account.

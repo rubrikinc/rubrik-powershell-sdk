@@ -36,4 +36,5 @@ Supported in v5.0+
   - Supported in v9.2+
   This field indicates the time of mounting.
 - powerStatus: HypervVirtualMachineMountSummaryPowerStatus
-  - 
+  - Required. Supported in v5.0+
+  The power status of the mounted VM(ON,OFF,SLEEP etc.).

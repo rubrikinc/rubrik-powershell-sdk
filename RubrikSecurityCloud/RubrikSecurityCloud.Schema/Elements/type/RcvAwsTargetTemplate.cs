@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
         [JsonProperty("region")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
 
     public RcvAwsTargetTemplate Set(
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
+        RcvRedundancy? Redundancy = null,
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
         RcsTierEnumType? Tier = null
@@ -59,6 +65,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CloudNativeLocTemplateType != null ) {
             this.CloudNativeLocTemplateType = CloudNativeLocTemplateType;
+        }
+        if ( Redundancy != null ) {
+            this.Redundancy = Redundancy;
         }
         if ( Region != null ) {
             this.Region = Region;
@@ -90,6 +99,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
             } else {
                 s += ind + "cloudNativeLocTemplateType\n" ;
+            }
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (this.Redundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancy\n" ;
+            } else {
+                s += ind + "redundancy\n" ;
             }
         }
         //      C# -> RcsRegionEnumType? Region
@@ -142,6 +160,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
         {
             this.CloudNativeLocTemplateType = null;
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (ec.Includes("redundancy",true))
+        {
+            if(this.Redundancy == null) {
+
+                this.Redundancy = new RcvRedundancy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Redundancy != null && ec.Excludes("redundancy",true))
+        {
+            this.Redundancy = null;
         }
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)

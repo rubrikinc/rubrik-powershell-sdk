@@ -15,10 +15,13 @@ Supported in v5.2+
 - effectiveSlaHolder: EffectiveSlaHolder
   - 
 - connectionStatus: FailoverClusterConnectionStatus
-  - 
+  - Required. Supported in v5.2+
+  Connectivity status of the failover cluster.
 - operatingSystemType: FailoverClusterOsType
-  - 
+  - Supported in v5.2+
+  Operating system type of the nodes in the failover cluster.
 - slaAssignment: SlaAssignment
-  - 
+  - Supported in v5.2+
+  SLA Domain assignment for failover cluster.
 - slaAssignable: SlaAssignable
   - 

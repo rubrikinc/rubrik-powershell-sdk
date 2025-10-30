@@ -117,7 +117,7 @@ Represents all the object types for which we expect to see audits.
 - TPR_CONFIG - TPR configuration.
 - OAUTH_TOKEN - OAuth token.
 - EXOCOMPUTE - Exocompute.
-- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS export.
+- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
 - DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
 - CROSS_ACCOUNT_PAIR - Cross-account pair.
 - SALESFORCE_ORGANIZATION - Salesforce organization.
@@ -156,4 +156,17 @@ Represents all the object types for which we expect to see audits.
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
-- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS share.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
+- AZURE_DEVOPS_ORGANIZATION - Azure DevOps Organisation.
+- AZURE_DEVOPS_PROJECT - Azure DevOps Project.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
+- CLOUD_DIRECT_NAS_SYSTEM - NAS Cloud Direct system.
+- CLOUD_DIRECT_NAS_NAMESPACE - NAS Cloud Direct namespace.
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
+- OLVM_MANAGER - OLVM Manager.
+- OLVM_DATACENTER - OLVM Datacenter.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- OLVM_HOST - OLVM Host.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- OKTA_TENANT - Okta tenant.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.

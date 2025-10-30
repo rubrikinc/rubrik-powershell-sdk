@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureNativeIsEligibleForSqlDatabaseDbProtectionFilter")]
         public AzureNativeIsEligibleForSqlDatabaseDbProtectionFilter? AzureNativeIsEligibleForSqlDatabaseDbProtectionFilter { get; set; }
 
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
+
 
         #endregion
 

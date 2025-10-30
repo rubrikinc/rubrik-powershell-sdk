@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LDAP")]
         LDAP,
 
+        [EnumMember(Value = "MONGO_SOURCE")]
+        MONGO_SOURCE,
+
         [EnumMember(Value = "MSSQL_SDD")]
         MSSQL_SDD,
 

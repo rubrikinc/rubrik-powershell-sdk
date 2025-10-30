@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureCloudType")]
         public AzureCloudType? AzureCloudType { get; set; }
 
+        //      C# -> AzureRubrikAppUseCase? AzureRubrikAppUseCase
+        // GraphQL -> azureRubrikAppUseCase: AzureRubrikAppUseCase (enum)
+        [JsonProperty("azureRubrikAppUseCase")]
+        public AzureRubrikAppUseCase? AzureRubrikAppUseCase { get; set; }
+
 
         #endregion
 

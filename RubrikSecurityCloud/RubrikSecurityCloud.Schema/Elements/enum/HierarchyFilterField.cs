@@ -48,6 +48,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_FEATURE_CONNECTED_STATUS")]
         AWS_NATIVE_FEATURE_CONNECTED_STATUS,
 
+        [EnumMember(Value = "AWS_NATIVE_IS_ELIGIBLE_FOR_DYNAMODB_PROTECTION")]
+        AWS_NATIVE_IS_ELIGIBLE_FOR_DYNAMODB_PROTECTION,
+
+        [EnumMember(Value = "AWS_NATIVE_IS_ELIGIBLE_FOR_EBS_PROTECTION")]
+        AWS_NATIVE_IS_ELIGIBLE_FOR_EBS_PROTECTION,
+
         [EnumMember(Value = "AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION")]
         AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION,
 
@@ -312,6 +318,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS")]
         DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS,
 
+        [EnumMember(Value = "DEVOPS_NATIVE_ID")]
+        DEVOPS_NATIVE_ID,
+
         [EnumMember(Value = "DOES_NAS_SHARE_HAVE_RELIC_FILESETS")]
         DOES_NAS_SHARE_HAVE_RELIC_FILESETS,
 
@@ -483,6 +492,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_REGION")]
         GCP_REGION,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE_ORG_UNIT")]
+        GOOGLE_WORKSPACE_ORG_UNIT,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE_ORG_UNIT")]
+        GOOGLE_WORKSPACE_SHARED_DRIVE_ORG_UNIT,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE_ORG_UNIT")]
+        GOOGLE_WORKSPACE_USER_DRIVE_ORG_UNIT,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_NAME_OR_EMAIL_ADDRESS")]
+        GOOGLE_WORKSPACE_USER_NAME_OR_EMAIL_ADDRESS,
+
         [EnumMember(Value = "GUEST_OS_TYPE_FOR_FILE_RESTORE")]
         GUEST_OS_TYPE_FOR_FILE_RESTORE,
 
@@ -536,6 +557,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INCLUDE_INDEPENDENT_REPLICA")]
         INCLUDE_INDEPENDENT_REPLICA,
+
+        [EnumMember(Value = "INFORMIX_HOST_CONNECTION_STATUS")]
+        INFORMIX_HOST_CONNECTION_STATUS,
 
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
@@ -614,6 +638,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_CLUSTER_ID")]
         K8S_CLUSTER_ID,
+
+        [EnumMember(Value = "K8S_CLUSTER_ID_ON_LABEL")]
+        K8S_CLUSTER_ID_ON_LABEL,
 
         [EnumMember(Value = "K8S_CLUSTER_ID_ON_NAMESPACE")]
         K8S_CLUSTER_ID_ON_NAMESPACE,

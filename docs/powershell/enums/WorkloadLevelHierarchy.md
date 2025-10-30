@@ -1,4 +1,5 @@
 ### WorkloadLevelHierarchy
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - KuprNamespace
 - O365Teams
 - O365Onedrive
@@ -18,8 +19,12 @@
 - AwsNativeEbsVolume
 - AzureSqlDatabaseDb
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
+- OKTA_TENANT - Okta tenant.
 - AzureNativeManagedDisk
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
 - O365Site
 - M365_BACKUP_STORAGE_SHAREPOINT_SITE - Microsoft 365 Backup Storage SharePoint site.
 - AzureNativeVirtualMachine
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
+- GcpNativeDisk - GCP Native Disk.

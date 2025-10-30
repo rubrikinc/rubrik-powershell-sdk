@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osType")]
         public GuestOsType? OsType { get; set; }
 
+        //      C# -> RbsUpgradeStatus? RbsUpgradeStatus
+        // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
+        [JsonProperty("rbsUpgradeStatus")]
+        public RbsUpgradeStatus? RbsUpgradeStatus { get; set; }
+
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
@@ -70,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
+
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        [JsonProperty("adDomain")]
+        public System.String? AdDomain { get; set; }
 
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
@@ -155,6 +165,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nasVendorType: String (scalar)
         [JsonProperty("nasVendorType")]
         public System.String? NasVendorType { get; set; }
+
+        //      C# -> System.String? NetworkThrottle
+        // GraphQL -> networkThrottle: String! (scalar)
+        [JsonProperty("networkThrottle")]
+        public System.String? NetworkThrottle { get; set; }
 
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
@@ -359,12 +374,14 @@ namespace RubrikSecurityCloud.Types
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         GuestOsType? OsType = null,
+        RbsUpgradeStatus? RbsUpgradeStatus = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? AdDomain = null,
         System.String? AgentId = null,
         System.String? CbtStatus = null,
         System.String? CdmId = null,
@@ -382,6 +399,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NasApiHostname = null,
         System.String? NasMigrationInfo = null,
         System.String? NasVendorType = null,
+        System.String? NetworkThrottle = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? OsName = null,
         System.String? RbaPackageUpgradeInfo = null,
@@ -424,6 +442,9 @@ namespace RubrikSecurityCloud.Types
         if ( OsType != null ) {
             this.OsType = OsType;
         }
+        if ( RbsUpgradeStatus != null ) {
+            this.RbsUpgradeStatus = RbsUpgradeStatus;
+        }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
         }
@@ -441,6 +462,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( AdDomain != null ) {
+            this.AdDomain = AdDomain;
         }
         if ( AgentId != null ) {
             this.AgentId = AgentId;
@@ -492,6 +516,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NasVendorType != null ) {
             this.NasVendorType = NasVendorType;
+        }
+        if ( NetworkThrottle != null ) {
+            this.NetworkThrottle = NetworkThrottle;
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
@@ -627,6 +654,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "osType\n" ;
             }
         }
+        //      C# -> RbsUpgradeStatus? RbsUpgradeStatus
+        // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
+        if (this.RbsUpgradeStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbsUpgradeStatus\n" ;
+            } else {
+                s += ind + "rbsUpgradeStatus\n" ;
+            }
+        }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
@@ -699,6 +735,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "replicatedObjects" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        if (this.AdDomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "adDomain\n" ;
+            } else {
+                s += ind + "adDomain\n" ;
             }
         }
         //      C# -> System.String? AgentId
@@ -852,6 +897,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nasVendorType\n" ;
             } else {
                 s += ind + "nasVendorType\n" ;
+            }
+        }
+        //      C# -> System.String? NetworkThrottle
+        // GraphQL -> networkThrottle: String! (scalar)
+        if (this.NetworkThrottle != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkThrottle\n" ;
+            } else {
+                s += ind + "networkThrottle\n" ;
             }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
@@ -1244,6 +1298,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.OsType = null;
         }
+        //      C# -> RbsUpgradeStatus? RbsUpgradeStatus
+        // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
+        if (ec.Includes("rbsUpgradeStatus",true))
+        {
+            if(this.RbsUpgradeStatus == null) {
+
+                this.RbsUpgradeStatus = new RbsUpgradeStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbsUpgradeStatus != null && ec.Excludes("rbsUpgradeStatus",true))
+        {
+            this.RbsUpgradeStatus = null;
+        }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (ec.Includes("slaAssignment",true))
@@ -1375,6 +1446,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
         {
             this.ReplicatedObjects = null;
+        }
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        if (ec.Includes("adDomain",true))
+        {
+            if(this.AdDomain == null) {
+
+                this.AdDomain = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AdDomain != null && ec.Excludes("adDomain",true))
+        {
+            this.AdDomain = null;
         }
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
@@ -1664,6 +1752,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NasVendorType != null && ec.Excludes("nasVendorType",true))
         {
             this.NasVendorType = null;
+        }
+        //      C# -> System.String? NetworkThrottle
+        // GraphQL -> networkThrottle: String! (scalar)
+        if (ec.Includes("networkThrottle",true))
+        {
+            if(this.NetworkThrottle == null) {
+
+                this.NetworkThrottle = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkThrottle != null && ec.Excludes("networkThrottle",true))
+        {
+            this.NetworkThrottle = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)

@@ -17,4 +17,4 @@ Supported in v5.2+
   - Required. Supported in v5.2+
   Retention information for snapshots at the local, archival, and replication locations.
 - snapshotType: UnmanagedSnapshotType
-  - 
+  - Required. Supported in v5.2+

@@ -7,3 +7,5 @@ Virtual group object for SQL Server databases.
   - The list of linked FIDs of AGs that are already linked.
 - databases: list of MssqlDatabases
   - List of databases in the virtual group.
+- activeDbFid: System.String
+  - Forever ID of the active database.

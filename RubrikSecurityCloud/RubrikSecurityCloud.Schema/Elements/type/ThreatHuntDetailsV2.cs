@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasFileVersionInfo")]
         public System.Boolean? HasFileVersionInfo { get; set; }
 
+        //      C# -> System.Boolean? HashCatalogLimitExceeded
+        // GraphQL -> hashCatalogLimitExceeded: Boolean! (scalar)
+        [JsonProperty("hashCatalogLimitExceeded")]
+        public System.Boolean? HashCatalogLimitExceeded { get; set; }
+
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
@@ -83,6 +88,7 @@ namespace RubrikSecurityCloud.Types
         ThreatHuntStatus? Status = null,
         DateTime? EndTime = null,
         System.Boolean? HasFileVersionInfo = null,
+        System.Boolean? HashCatalogLimitExceeded = null,
         DateTime? StartTime = null,
         System.Int64? TotalMatchedSnapshots = null,
         System.Int64? TotalObjectFids = null,
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HasFileVersionInfo != null ) {
             this.HasFileVersionInfo = HasFileVersionInfo;
+        }
+        if ( HashCatalogLimitExceeded != null ) {
+            this.HashCatalogLimitExceeded = HashCatalogLimitExceeded;
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasFileVersionInfo\n" ;
             } else {
                 s += ind + "hasFileVersionInfo\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HashCatalogLimitExceeded
+        // GraphQL -> hashCatalogLimitExceeded: Boolean! (scalar)
+        if (this.HashCatalogLimitExceeded != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hashCatalogLimitExceeded\n" ;
+            } else {
+                s += ind + "hashCatalogLimitExceeded\n" ;
             }
         }
         //      C# -> DateTime? StartTime
@@ -289,6 +307,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasFileVersionInfo != null && ec.Excludes("hasFileVersionInfo",true))
         {
             this.HasFileVersionInfo = null;
+        }
+        //      C# -> System.Boolean? HashCatalogLimitExceeded
+        // GraphQL -> hashCatalogLimitExceeded: Boolean! (scalar)
+        if (ec.Includes("hashCatalogLimitExceeded",true))
+        {
+            if(this.HashCatalogLimitExceeded == null) {
+
+                this.HashCatalogLimitExceeded = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HashCatalogLimitExceeded != null && ec.Excludes("hashCatalogLimitExceeded",true))
+        {
+            this.HashCatalogLimitExceeded = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

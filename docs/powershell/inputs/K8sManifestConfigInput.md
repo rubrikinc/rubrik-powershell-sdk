@@ -14,9 +14,13 @@ Supported in v9.2+
 - pullSecret: System.String
   - Supported in v9.2+
       The pull secret required for pulling Rubrik container images.
+- nadName: System.String
+  - The name of the network attachment definition object.
 - isAutoPsCreationEnabled: System.Boolean
   - Supported in v9.2+
       Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
+- nadNamespace: System.String
+  - The namespace to which the network attachment definition object belongs.
 - distribution: System.String
   - Required. Supported in v9.2+
       Distribution of the Kubernetes cluster to be added.

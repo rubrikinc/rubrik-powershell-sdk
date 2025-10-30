@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataCategoryResult")]
         public DataCategoryResult? DataCategoryResult { get; set; }
 
+        //      C# -> List<DocumentAttribute>? DocumentTypes
+        // GraphQL -> documentTypes: [DocumentAttribute!]! (type)
+        [JsonProperty("documentTypes")]
+        public List<DocumentAttribute>? DocumentTypes { get; set; }
+
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
         [JsonProperty("hierarchyObjectConnection")]
@@ -178,6 +183,7 @@ namespace RubrikSecurityCloud.Types
         AssignmentResourceDetailsConnection? AssignmentResources = null,
         User? Creator = null,
         DataCategoryResult? DataCategoryResult = null,
+        List<DocumentAttribute>? DocumentTypes = null,
         HierarchyObjectConnection? HierarchyObjectConnection = null,
         List<ObjectStatus>? ObjectStatuses = null,
         List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists = null
@@ -230,6 +236,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DataCategoryResult != null ) {
             this.DataCategoryResult = DataCategoryResult;
+        }
+        if ( DocumentTypes != null ) {
+            this.DocumentTypes = DocumentTypes;
         }
         if ( HierarchyObjectConnection != null ) {
             this.HierarchyObjectConnection = HierarchyObjectConnection;
@@ -411,6 +420,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "dataCategoryResult" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<DocumentAttribute>? DocumentTypes
+        // GraphQL -> documentTypes: [DocumentAttribute!]! (type)
+        if (this.DocumentTypes != null) {
+            var fspec = this.DocumentTypes.AsFieldSpec(conf.Child("documentTypes"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "documentTypes" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -738,6 +759,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataCategoryResult != null && ec.Excludes("dataCategoryResult",false))
         {
             this.DataCategoryResult = null;
+        }
+        //      C# -> List<DocumentAttribute>? DocumentTypes
+        // GraphQL -> documentTypes: [DocumentAttribute!]! (type)
+        if (ec.Includes("documentTypes",false))
+        {
+            if(this.DocumentTypes == null) {
+
+                this.DocumentTypes = new List<DocumentAttribute>();
+                this.DocumentTypes.ApplyExploratoryFieldSpec(ec.NewChild("documentTypes"));
+
+            } else {
+
+                this.DocumentTypes.ApplyExploratoryFieldSpec(ec.NewChild("documentTypes"));
+
+            }
+        }
+        else if (this.DocumentTypes != null && ec.Excludes("documentTypes",false))
+        {
+            this.DocumentTypes = null;
         }
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)

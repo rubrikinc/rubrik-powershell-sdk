@@ -14,4 +14,5 @@ Supported in v5.2+
   - Required. Supported in v5.2+
   Name of the failover cluster app.
 - failoverClusterType: FailoverClusterType
-  - 
+  - Required. Supported in v5.2+
+  Cluster type of the failover cluster app.

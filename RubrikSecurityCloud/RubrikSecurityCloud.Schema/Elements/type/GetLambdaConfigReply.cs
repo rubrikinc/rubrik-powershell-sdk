@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxSnapshotsToUploadAutomatically")]
         public System.Int32? MaxSnapshotsToUploadAutomatically { get; set; }
 
+        //      C# -> System.Boolean? OrionYaraRemoteProcessingEnabled
+        // GraphQL -> orionYaraRemoteProcessingEnabled: Boolean! (scalar)
+        [JsonProperty("orionYaraRemoteProcessingEnabled")]
+        public System.Boolean? OrionYaraRemoteProcessingEnabled { get; set; }
+
 
         #endregion
 
@@ -77,7 +82,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? EnableFmdUploadForAllResources = null,
         System.Boolean? EnableThreatMonitoringFullScan = null,
         System.Boolean? IsThreatMonitoringEnabled = null,
-        System.Int32? MaxSnapshotsToUploadAutomatically = null
+        System.Int32? MaxSnapshotsToUploadAutomatically = null,
+        System.Boolean? OrionYaraRemoteProcessingEnabled = null
     ) 
     {
         if ( AccountId != null ) {
@@ -103,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MaxSnapshotsToUploadAutomatically != null ) {
             this.MaxSnapshotsToUploadAutomatically = MaxSnapshotsToUploadAutomatically;
+        }
+        if ( OrionYaraRemoteProcessingEnabled != null ) {
+            this.OrionYaraRemoteProcessingEnabled = OrionYaraRemoteProcessingEnabled;
         }
         return this;
     }
@@ -188,6 +197,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "maxSnapshotsToUploadAutomatically\n" ;
             } else {
                 s += ind + "maxSnapshotsToUploadAutomatically\n" ;
+            }
+        }
+        //      C# -> System.Boolean? OrionYaraRemoteProcessingEnabled
+        // GraphQL -> orionYaraRemoteProcessingEnabled: Boolean! (scalar)
+        if (this.OrionYaraRemoteProcessingEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orionYaraRemoteProcessingEnabled\n" ;
+            } else {
+                s += ind + "orionYaraRemoteProcessingEnabled\n" ;
             }
         }
         return s;
@@ -332,6 +350,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MaxSnapshotsToUploadAutomatically != null && ec.Excludes("maxSnapshotsToUploadAutomatically",true))
         {
             this.MaxSnapshotsToUploadAutomatically = null;
+        }
+        //      C# -> System.Boolean? OrionYaraRemoteProcessingEnabled
+        // GraphQL -> orionYaraRemoteProcessingEnabled: Boolean! (scalar)
+        if (ec.Includes("orionYaraRemoteProcessingEnabled",true))
+        {
+            if(this.OrionYaraRemoteProcessingEnabled == null) {
+
+                this.OrionYaraRemoteProcessingEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrionYaraRemoteProcessingEnabled != null && ec.Excludes("orionYaraRemoteProcessingEnabled",true))
+        {
+            this.OrionYaraRemoteProcessingEnabled = null;
         }
     }
 

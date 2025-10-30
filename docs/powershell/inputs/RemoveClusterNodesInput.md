@@ -14,6 +14,8 @@ Request parameters for removing nodes from a cluster.
 - resetAfterRemoveType: ResetAfterRemoveType
   - Type of reset to perform after removing the node.
 - cloudAccountId: System.String
-  - UUID of the customer cloud account.
+  - UUID of the customer cloud account. This is not supported for OCI.
 - vendor: CcpVendorType
   - Cloud vendor type.
+- cloudAccountIdV2: System.String
+  - ID of the customer cloud account.

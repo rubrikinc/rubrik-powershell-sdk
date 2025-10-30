@@ -75,9 +75,9 @@ Supported in v5.0+
 - mvType: CdmManagedVolumeType
   - Type of the Managed Volume (SlaBased / AlwaysMounted).
 - shareType: ManagedVolumeShareType
-  - Specifies if the Managed Volume is exported over NFS or SMB.
+  - Required. Specifies if the Managed Volume is exported over NFS or SMB.
 - state: ManagedVolumeState
-  - Supported in v5.0+
+  - Required. Supported in v5.0+
   v5.0-v5.3: Managed volume state like exported, resetting etc.,
   v6.0: Managed volume state like exported, resetting etc.,.
   v7.0: State of the Managed Volume. For example, exported, resetting etc.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> BackupCopyType? BackupCopyType
+        // GraphQL -> backupCopyType: BackupCopyType! (enum)
+        [JsonProperty("backupCopyType")]
+        public BackupCopyType? BackupCopyType { get; set; }
+
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType! (enum)
         [JsonProperty("objectType")]
@@ -140,6 +145,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UnmanagedObjectDetail Set(
+        BackupCopyType? BackupCopyType = null,
         ManagedObjectType? ObjectType = null,
         UnmanagedObjectAvailabilityFilter? UnmanagedStatus = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -164,6 +170,9 @@ namespace RubrikSecurityCloud.Types
         WorkloadRegion? Region = null
     ) 
     {
+        if ( BackupCopyType != null ) {
+            this.BackupCopyType = BackupCopyType;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -244,6 +253,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> BackupCopyType? BackupCopyType
+        // GraphQL -> backupCopyType: BackupCopyType! (enum)
+        if (this.BackupCopyType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupCopyType\n" ;
+            } else {
+                s += ind + "backupCopyType\n" ;
+            }
+        }
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType! (enum)
         if (this.ObjectType != null) {
@@ -469,6 +487,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> BackupCopyType? BackupCopyType
+        // GraphQL -> backupCopyType: BackupCopyType! (enum)
+        if (ec.Includes("backupCopyType",true))
+        {
+            if(this.BackupCopyType == null) {
+
+                this.BackupCopyType = new BackupCopyType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupCopyType != null && ec.Excludes("backupCopyType",true))
+        {
+            this.BackupCopyType = null;
+        }
         //      C# -> ManagedObjectType? ObjectType
         // GraphQL -> objectType: ManagedObjectType! (enum)
         if (ec.Includes("objectType",true))

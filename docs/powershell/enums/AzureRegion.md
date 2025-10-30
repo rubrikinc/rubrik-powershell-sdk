@@ -62,3 +62,7 @@ Regions for Azure.
 - BRAZIL_SOUTHEAST - Azure region is Brazil Southeast.
 - SWEDEN_SOUTH - Azure region is Sweden South.
 - GERMANY_NORTH - Azure region is Germany North.
+- INDONESIA_CENTRAL - Azure region is Indonesia Central.
+- MALAYSIA_WEST - Azure region is Malaysia West.
+- NEW_ZEALAND_NORTH - Azure region is Newzealand North.
+- CHILE_CENTRAL - Azure region is Chile Central.

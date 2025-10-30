@@ -1630,10 +1630,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	vlan = $someInt
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	vlan = $someInt
     /// }
     /// 
     /// # Execute the query
@@ -1787,6 +1787,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	productType = @(
     /// 		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	upgradeStatusCategory = @(
+    /// 		$someString
     /// 	)
     /// }
     /// # OPTIONAL
@@ -3709,10 +3713,10 @@ $query.Var.input = @{
                 Query.ClusterVlansFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	vlan = $someInt
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	vlan = $someInt
 }"
             );
         }
@@ -3856,6 +3860,10 @@ $query.Var.upgradeFilter = @{
 	# OPTIONAL
 	productType = @(
 		$someClusterProductEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterProductEnum]) for enum values.
+	)
+	# OPTIONAL
+	upgradeStatusCategory = @(
+		$someString
 	)
 }
 # OPTIONAL

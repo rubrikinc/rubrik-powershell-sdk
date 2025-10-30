@@ -35,10 +35,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("statusEnum")]
         public HostRbsConnectionStatus? StatusEnum { get; set; }
 
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        [JsonProperty("adDomain")]
+        public System.String? AdDomain { get; set; }
+
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
         [JsonProperty("agentId")]
         public System.String? AgentId { get; set; }
+
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        [JsonProperty("agentPrimaryClusterUuid")]
+        public System.String? AgentPrimaryClusterUuid { get; set; }
 
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)
@@ -128,7 +138,9 @@ namespace RubrikSecurityCloud.Types
         MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus = null,
         MssqlCbtStatusType? MssqlCbtEnabled = null,
         HostRbsConnectionStatus? StatusEnum = null,
+        System.String? AdDomain = null,
         System.String? AgentId = null,
+        System.String? AgentPrimaryClusterUuid = null,
         System.String? Alias = null,
         System.String? Hostname = null,
         System.String? Id = null,
@@ -155,8 +167,14 @@ namespace RubrikSecurityCloud.Types
         if ( StatusEnum != null ) {
             this.StatusEnum = StatusEnum;
         }
+        if ( AdDomain != null ) {
+            this.AdDomain = AdDomain;
+        }
         if ( AgentId != null ) {
             this.AgentId = AgentId;
+        }
+        if ( AgentPrimaryClusterUuid != null ) {
+            this.AgentPrimaryClusterUuid = AgentPrimaryClusterUuid;
         }
         if ( Alias != null ) {
             this.Alias = Alias;
@@ -244,6 +262,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "statusEnum\n" ;
             }
         }
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        if (this.AdDomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "adDomain\n" ;
+            } else {
+                s += ind + "adDomain\n" ;
+            }
+        }
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
         if (this.AgentId != null) {
@@ -251,6 +278,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "agentId\n" ;
             } else {
                 s += ind + "agentId\n" ;
+            }
+        }
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        if (this.AgentPrimaryClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "agentPrimaryClusterUuid\n" ;
+            } else {
+                s += ind + "agentPrimaryClusterUuid\n" ;
             }
         }
         //      C# -> System.String? Alias
@@ -455,6 +491,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.StatusEnum = null;
         }
+        //      C# -> System.String? AdDomain
+        // GraphQL -> adDomain: String (scalar)
+        if (ec.Includes("adDomain",true))
+        {
+            if(this.AdDomain == null) {
+
+                this.AdDomain = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AdDomain != null && ec.Excludes("adDomain",true))
+        {
+            this.AdDomain = null;
+        }
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
         if (ec.Includes("agentId",true))
@@ -471,6 +524,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AgentId != null && ec.Excludes("agentId",true))
         {
             this.AgentId = null;
+        }
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        if (ec.Includes("agentPrimaryClusterUuid",true))
+        {
+            if(this.AgentPrimaryClusterUuid == null) {
+
+                this.AgentPrimaryClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentPrimaryClusterUuid != null && ec.Excludes("agentPrimaryClusterUuid",true))
+        {
+            this.AgentPrimaryClusterUuid = null;
         }
         //      C# -> System.String? Alias
         // GraphQL -> alias: String (scalar)

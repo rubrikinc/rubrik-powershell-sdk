@@ -5,3 +5,5 @@ Input for api call to update a Managed Volume.
   - Required. ID of managed volume.
 - update: ManagedVolumeUpdateInput
   - Required. Properties to update.
+- userNote: System.String
+  - Required. User note to associate with audits.

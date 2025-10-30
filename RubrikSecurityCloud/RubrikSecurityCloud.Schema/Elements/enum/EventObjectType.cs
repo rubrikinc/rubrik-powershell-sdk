@@ -63,8 +63,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_DEVOPS_ORGANIZATION")]
+        AZURE_DEVOPS_ORGANIZATION,
+
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT")]
+        AZURE_DEVOPS_PROJECT,
+
+        [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
+        AZURE_DEVOPS_REPOSITORY,
+
         [EnumMember(Value = "AZURE_NATIVE_DISK")]
         AZURE_NATIVE_DISK,
+
+        [EnumMember(Value = "AZURE_NATIVE_REGION")]
+        AZURE_NATIVE_REGION,
+
+        [EnumMember(Value = "AZURE_NATIVE_RESOURCE_GROUP")]
+        AZURE_NATIVE_RESOURCE_GROUP,
 
         [EnumMember(Value = "AZURE_NATIVE_SUBSCRIPTION")]
         AZURE_NATIVE_SUBSCRIPTION,
@@ -105,8 +120,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CERTIFICATE_MANAGEMENT")]
         CERTIFICATE_MANAGEMENT,
 
+        [EnumMember(Value = "CLOUD_ACCOUNT")]
+        CLOUD_ACCOUNT,
+
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_BUCKET")]
+        CLOUD_DIRECT_NAS_BUCKET,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
+
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_NAMESPACE")]
+        CLOUD_DIRECT_NAS_NAMESPACE,
+
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SHARE")]
+        CLOUD_DIRECT_NAS_SHARE,
+
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SYSTEM")]
+        CLOUD_DIRECT_NAS_SYSTEM,
 
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
@@ -182,6 +212,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE")]
         GOOGLE_WORKSPACE_USER_DRIVE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX")]
+        GOOGLE_WORKSPACE_USER_MAILBOX,
 
         [EnumMember(Value = "HOST")]
         HOST,
@@ -381,6 +414,24 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_TYPE_VOLUME_GROUP")]
         OBJECT_TYPE_VOLUME_GROUP,
 
+        [EnumMember(Value = "OKTA_TENANT")]
+        OKTA_TENANT,
+
+        [EnumMember(Value = "OLVM_COMPUTE_CLUSTER")]
+        OLVM_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "OLVM_DATACENTER")]
+        OLVM_DATACENTER,
+
+        [EnumMember(Value = "OLVM_HOST")]
+        OLVM_HOST,
+
+        [EnumMember(Value = "OLVM_MANAGER")]
+        OLVM_MANAGER,
+
+        [EnumMember(Value = "OLVM_VIRTUAL_MACHINE")]
+        OLVM_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,
 
@@ -408,11 +459,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
+        [EnumMember(Value = "PRINCIPAL_ACCESS_POLICY")]
+        PRINCIPAL_ACCESS_POLICY,
+
         [EnumMember(Value = "PRINCIPAL_ASSUMABLE_IDENTITY")]
         PRINCIPAL_ASSUMABLE_IDENTITY,
 
         [EnumMember(Value = "PRINCIPAL_COMPUTER")]
         PRINCIPAL_COMPUTER,
+
+        [EnumMember(Value = "PRINCIPAL_CONTACT")]
+        PRINCIPAL_CONTACT,
+
+        [EnumMember(Value = "PRINCIPAL_CONTAINER")]
+        PRINCIPAL_CONTAINER,
 
         [EnumMember(Value = "PRINCIPAL_EXTERNAL_ACCOUNT")]
         PRINCIPAL_EXTERNAL_ACCOUNT,
@@ -428,6 +488,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRINCIPAL_ORG_WIDE")]
         PRINCIPAL_ORG_WIDE,
+
+        [EnumMember(Value = "PRINCIPAL_OU")]
+        PRINCIPAL_OU,
 
         [EnumMember(Value = "PRINCIPAL_PUBLIC")]
         PRINCIPAL_PUBLIC,

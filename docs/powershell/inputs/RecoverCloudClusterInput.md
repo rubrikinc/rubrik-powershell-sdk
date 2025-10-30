@@ -19,6 +19,10 @@ Recover a Rubrik Cloud Cluster.
   - AWS region.
 - shouldDisableAwsApiTermination: System.Boolean
   - Should disable AWS API termination.
+- gcpVmConfig: GcpVmConfigInput
+  - GCP virtual machine configuration.
+- gcpZone: System.String
+  - GCP zone.
 - shouldKeepClusterOnFailure: System.Boolean
   - Should keep Cloud Cluster on failure.
 - ntpServers: list of System.Strings

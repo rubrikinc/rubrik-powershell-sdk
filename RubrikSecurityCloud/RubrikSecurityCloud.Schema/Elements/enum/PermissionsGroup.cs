@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AKS_CUSTOM_PRIVATE_DNS_ZONE")]
+        AKS_CUSTOM_PRIVATE_DNS_ZONE,
+
         [EnumMember(Value = "AUTOMATED_NETWORKING_SETUP")]
         AUTOMATED_NETWORKING_SETUP,
 
@@ -54,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXPORT_AND_RESTORE")]
         EXPORT_AND_RESTORE,
 
+        [EnumMember(Value = "EXPORT_AND_RESTORE_POWER_OFF_VM")]
+        EXPORT_AND_RESTORE_POWER_OFF_VM,
+
         [EnumMember(Value = "FILE_LEVEL_RECOVERY")]
         FILE_LEVEL_RECOVERY,
 
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAP_HANA_SS_RECOVERY")]
         SAP_HANA_SS_RECOVERY,
+
+        [EnumMember(Value = "SERVICE_ENDPOINT_AUTOMATION")]
+        SERVICE_ENDPOINT_AUTOMATION,
 
         [EnumMember(Value = "SNAPSHOT_PRIVATE_ACCESS")]
         SNAPSHOT_PRIVATE_ACCESS,

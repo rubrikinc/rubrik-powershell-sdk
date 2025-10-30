@@ -3,6 +3,7 @@ Enum representing different type of activities.
 
 - Storage
 - THREAT_MONITORING - Threat monitoring activity event type.
+- PERMISSION_ASSESSMENT - Activity representing the permission assessment event type.
 - Tpr
 - Classification
 - LegalHold
@@ -28,6 +29,7 @@ Enum representing different type of activities.
 - Conversion
 - AuthDomain
 - UnknownEventType
+- QUARANTINE - Activity representing quarantine event type.
 - CloudNativeVirtualMachine
 - Discovery
 - Replication

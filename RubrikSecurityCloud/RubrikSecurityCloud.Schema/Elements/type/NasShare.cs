@@ -191,6 +191,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> NasNamespace? NasNamespace
+        // GraphQL -> nasNamespace: NasNamespace (type)
+        [JsonProperty("nasNamespace")]
+        public NasNamespace? NasNamespace { get; set; }
+
         //      C# -> NasSystem? NasSystem
         // GraphQL -> nasSystem: NasSystem (type)
         [JsonProperty("nasSystem")]
@@ -329,6 +334,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         NasShareLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        NasNamespace? NasNamespace = null,
         NasSystem? NasSystem = null,
         NasVolume? NasVolume = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
@@ -441,6 +447,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( NasNamespace != null ) {
+            this.NasNamespace = NasNamespace;
         }
         if ( NasSystem != null ) {
             this.NasSystem = NasSystem;
@@ -833,6 +842,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NasNamespace? NasNamespace
+        // GraphQL -> nasNamespace: NasNamespace (type)
+        if (this.NasNamespace != null) {
+            var fspec = this.NasNamespace.AsFieldSpec(conf.Child("nasNamespace"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "nasNamespace" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1576,6 +1597,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> NasNamespace? NasNamespace
+        // GraphQL -> nasNamespace: NasNamespace (type)
+        if (ec.Includes("nasNamespace",false))
+        {
+            if(this.NasNamespace == null) {
+
+                this.NasNamespace = new NasNamespace();
+                this.NasNamespace.ApplyExploratoryFieldSpec(ec.NewChild("nasNamespace"));
+
+            } else {
+
+                this.NasNamespace.ApplyExploratoryFieldSpec(ec.NewChild("nasNamespace"));
+
+            }
+        }
+        else if (this.NasNamespace != null && ec.Excludes("nasNamespace",false))
+        {
+            this.NasNamespace = null;
         }
         //      C# -> NasSystem? NasSystem
         // GraphQL -> nasSystem: NasSystem (type)

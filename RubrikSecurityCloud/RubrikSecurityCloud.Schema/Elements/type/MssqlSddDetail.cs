@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.Boolean? ShouldSddViaRba
+        // GraphQL -> shouldSddViaRba: Boolean! (scalar)
+        [JsonProperty("shouldSddViaRba")]
+        public System.Boolean? ShouldSddViaRba { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public MssqlSddDetail Set(
         System.String? CertId = null,
         System.String? ClusterUuid = null,
+        System.Boolean? ShouldSddViaRba = null,
         System.String? Username = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
+        }
+        if ( ShouldSddViaRba != null ) {
+            this.ShouldSddViaRba = ShouldSddViaRba;
         }
         if ( Username != null ) {
             this.Username = Username;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterUuid\n" ;
             } else {
                 s += ind + "clusterUuid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldSddViaRba
+        // GraphQL -> shouldSddViaRba: Boolean! (scalar)
+        if (this.ShouldSddViaRba != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldSddViaRba\n" ;
+            } else {
+                s += ind + "shouldSddViaRba\n" ;
             }
         }
         //      C# -> System.String? Username
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
         {
             this.ClusterUuid = null;
+        }
+        //      C# -> System.Boolean? ShouldSddViaRba
+        // GraphQL -> shouldSddViaRba: Boolean! (scalar)
+        if (ec.Includes("shouldSddViaRba",true))
+        {
+            if(this.ShouldSddViaRba == null) {
+
+                this.ShouldSddViaRba = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldSddViaRba != null && ec.Excludes("shouldSddViaRba",true))
+        {
+            this.ShouldSddViaRba = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

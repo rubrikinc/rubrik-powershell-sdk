@@ -176,6 +176,13 @@ All supported Rubrik managed objects.
 - AZURE_DEVOPS_ORGANIZATION - Azure DevOps organization.
 - AZURE_DEVOPS_PROJECT - Azure DevOps project.
 - AZURE_DEVOPS_REPOSITORY - Azure DevOps repository.
+- OLVM_MANAGER - OLVM Manager.
+- OLVM_DATACENTER - OLVM Datacenter.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- OLVM_HOST - OLVM Host.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- OKTA_TENANT - Okta tenant.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

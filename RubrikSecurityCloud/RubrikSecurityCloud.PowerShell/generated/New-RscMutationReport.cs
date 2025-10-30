@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'Report' API domain:
-    /// CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
+    /// CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// </summary>
     /// <description>
     /// New-RscMutationReport creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 8 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateCustom, CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateCustom, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
+    /// one of: CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationReport -CreateCustom).Info().
+    /// (New-RscMutationReport -CreateScheduled).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,216 +70,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationReport -CreateCustom).Info().
+    /// (New-RscMutationReport -CreateScheduled).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
-    ///
-    /// <example>
-    /// Runs the CreateCustom operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: CreateCustom
-    /// 
-    /// $query = New-RscMutationReport -Operation CreateCustom
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	name = $someString
-    /// 	# REQUIRED
-    /// 	focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-    /// 	# OPTIONAL
-    /// 	charts = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-    /// 			# OPTIONAL
-    /// 			groupBy = @(
-    /// 				$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-    /// 			)
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	tables = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-    /// 			# OPTIONAL
-    /// 			groupBy = @(
-    /// 				$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-    /// 			)
-    /// 			# REQUIRED
-    /// 			selectedColumns = @(
-    /// 				$someReportTableColumnEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportTableColumnEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			sortBy = $someSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortByFieldEnum]) for enum values.
-    /// 			# OPTIONAL
-    /// 			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// 		}
-    /// 	)
-    /// 	# REQUIRED
-    /// 	filters = @{
-    /// 		# OPTIONAL
-    /// 		activityObjectType = @(
-    /// 			$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		objectType = @(
-    /// 			$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		excludedObjectTypes = @(
-    /// 			$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		lastActivityStatus = @(
-    /// 			$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		lastActivityType = @(
-    /// 			$someActivityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		slaDomainId = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		clusterType = @(
-    /// 			$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		clusterId = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		timeRange = @{
-    /// 			# OPTIONAL
-    /// 			relativeTimeRange = @{
-    /// 				# REQUIRED
-    /// 				magnitude = $someInt
-    /// 				# REQUIRED
-    /// 				unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			absoluteTimeRange = @{
-    /// 				# REQUIRED
-    /// 				start = $someDateTime
-    /// 				# REQUIRED
-    /// 				end = $someDateTime
-    /// 			}
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
-    /// 		# OPTIONAL
-    /// 		orgId = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		managedId = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isAnomaly = $someBoolean
-    /// 		# OPTIONAL
-    /// 		searchTerm = $someString
-    /// 		# OPTIONAL
-    /// 		complianceStatus = @(
-    /// 			$someComplianceStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ComplianceStatusEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		protectionStatus = @(
-    /// 			$someProtectionStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProtectionStatusEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		failoverStatus = @(
-    /// 			$someFailoverStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverStatusEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		failoverType = $someFailoverTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverTypeEnum]) for enum values.
-    /// 		# OPTIONAL
-    /// 		source = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		targetSite = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		userAuditObjectType = @(
-    /// 			$someUserAuditObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditObjectTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		userAuditType = @(
-    /// 			$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		userAuditStatus = @(
-    /// 			$someUserAuditStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditStatusEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		replicationSource = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		clusterLocation = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		taskCategory = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		taskStatus = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		taskType = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		policyId = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		sonarObjectTypes = @(
-    /// 			$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		shouldApplyWhitelists = $someBoolean
-    /// 		# OPTIONAL
-    /// 		date = $someDateTime
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	isHidden = $someBoolean
-    /// 	# OPTIONAL
-    /// 	isReadOnly = $someBoolean
-    /// }
-    /// # OPTIONAL
-    /// $query.Var.reportRoom = $someString
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: CreateCustomReportReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
     ///
     /// <example>
     /// Runs the CreateScheduled operation
@@ -462,12 +257,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	reportId = $someInt
     /// 	# OPTIONAL
     /// 	rubrikUserIds = @(
     /// 		$someString
     /// 	)
+    /// 	# REQUIRED
+    /// 	reportId = $someInt
     /// 	# OPTIONAL
     /// 	nonRubrikUserEmails = @(
     /// 		$someString
@@ -518,214 +313,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: StartClusterReportMigrationJobReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the UpdateCustom operation
-    /// of the 'Report' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Report
-    /// # API Operation: UpdateCustom
-    /// 
-    /// $query = New-RscMutationReport -Operation UpdateCustom
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someInt
-    /// 	# REQUIRED
-    /// 	config = @{
-    /// 		# REQUIRED
-    /// 		name = $someString
-    /// 		# REQUIRED
-    /// 		focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-    /// 		# OPTIONAL
-    /// 		charts = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				name = $someString
-    /// 				# REQUIRED
-    /// 				focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-    /// 				# OPTIONAL
-    /// 				groupBy = @(
-    /// 					$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-    /// 				)
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		tables = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				name = $someString
-    /// 				# REQUIRED
-    /// 				focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-    /// 				# OPTIONAL
-    /// 				groupBy = @(
-    /// 					$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-    /// 				)
-    /// 				# REQUIRED
-    /// 				selectedColumns = @(
-    /// 					$someReportTableColumnEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportTableColumnEnum]) for enum values.
-    /// 				)
-    /// 				# OPTIONAL
-    /// 				sortBy = $someSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortByFieldEnum]) for enum values.
-    /// 				# OPTIONAL
-    /// 				sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// 			}
-    /// 		)
-    /// 		# REQUIRED
-    /// 		filters = @{
-    /// 			# OPTIONAL
-    /// 			activityObjectType = @(
-    /// 				$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			objectType = @(
-    /// 				$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			excludedObjectTypes = @(
-    /// 				$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			lastActivityStatus = @(
-    /// 				$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			lastActivityType = @(
-    /// 				$someActivityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			slaDomainId = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			clusterType = @(
-    /// 				$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			clusterId = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			timeRange = @{
-    /// 				# OPTIONAL
-    /// 				relativeTimeRange = @{
-    /// 					# REQUIRED
-    /// 					magnitude = $someInt
-    /// 					# REQUIRED
-    /// 					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-    /// 				}
-    /// 				# OPTIONAL
-    /// 				absoluteTimeRange = @{
-    /// 					# REQUIRED
-    /// 					start = $someDateTime
-    /// 					# REQUIRED
-    /// 					end = $someDateTime
-    /// 				}
-    /// 			}
-    /// 			# OPTIONAL
-    /// 			slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
-    /// 			# OPTIONAL
-    /// 			orgId = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			managedId = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			isAnomaly = $someBoolean
-    /// 			# OPTIONAL
-    /// 			searchTerm = $someString
-    /// 			# OPTIONAL
-    /// 			complianceStatus = @(
-    /// 				$someComplianceStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ComplianceStatusEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			protectionStatus = @(
-    /// 				$someProtectionStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProtectionStatusEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			failoverStatus = @(
-    /// 				$someFailoverStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverStatusEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			failoverType = $someFailoverTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverTypeEnum]) for enum values.
-    /// 			# OPTIONAL
-    /// 			source = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			targetSite = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			userAuditObjectType = @(
-    /// 				$someUserAuditObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditObjectTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			userAuditType = @(
-    /// 				$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			userAuditStatus = @(
-    /// 				$someUserAuditStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditStatusEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			replicationSource = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			clusterLocation = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			taskCategory = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			taskStatus = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			taskType = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			policyId = @(
-    /// 				$someString
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			sonarObjectTypes = @(
-    /// 				$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			shouldApplyWhitelists = $someBoolean
-    /// 			# OPTIONAL
-    /// 			date = $someDateTime
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		isHidden = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isReadOnly = $someBoolean
-    /// 	}
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: UpdateCustomReportReply
     /// 
     /// 
     /// 
@@ -857,14 +444,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
-                "CreateCustom",
                 "CreateScheduled",
                 "DeleteCustom",
                 "DeleteScheduledReport",
                 "SendPdf",
                 "SendScheduledReportAsync",
                 "StartClusterMigrationJob",
-                "UpdateCustom",
                 "UpdateDatabaseLogingPropertiesForCluster",
                 "UpdateScheduledReport",
                 IgnoreCase = true)]
@@ -882,9 +467,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
-                    case "CreateCustom":
-                        this.ProcessRecord_CreateCustom();
-                        break;
                     case "CreateScheduled":
                         this.ProcessRecord_CreateScheduled();
                         break;
@@ -903,9 +485,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "StartClusterMigrationJob":
                         this.ProcessRecord_StartClusterMigrationJob();
                         break;
-                    case "UpdateCustom":
-                        this.ProcessRecord_UpdateCustom();
-                        break;
                     case "UpdateDatabaseLogingPropertiesForCluster":
                         this.ProcessRecord_UpdateDatabaseLogingPropertiesForCluster();
                         break;
@@ -920,15 +499,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // createCustomReport.
-        internal void ProcessRecord_CreateCustom()
-        {
-            this._logger.name += " -CreateCustom";
-            // Create new graphql operation createCustomReport
-            InitMutationCreateCustomReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -986,15 +556,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // updateCustomReport.
-        internal void ProcessRecord_UpdateCustom()
-        {
-            this._logger.name += " -UpdateCustom";
-            // Create new graphql operation updateCustomReport
-            InitMutationUpdateCustomReport();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // updateDatabaseLogReportingPropertiesForCluster.
         internal void ProcessRecord_UpdateDatabaseLogingPropertiesForCluster()
         {
@@ -1012,204 +573,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateScheduledReport();
         }
 
-
-        // Create new GraphQL Mutation:
-        // createCustomReport(input: CreateCustomReportInput!, reportRoom: String): CreateCustomReportReply!
-        internal void InitMutationCreateCustomReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateCustomReportInput!"),
-                Tuple.Create("reportRoom", "String"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateCustomReport",
-                "($input: CreateCustomReportInput!,$reportRoom: String)",
-                "CreateCustomReportReply",
-                Mutation.CreateCustomReport,
-                Mutation.CreateCustomReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	name = $someString
-	# REQUIRED
-	focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-	# OPTIONAL
-	charts = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-			# OPTIONAL
-			groupBy = @(
-				$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-			)
-		}
-	)
-	# OPTIONAL
-	tables = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-			# OPTIONAL
-			groupBy = @(
-				$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-			)
-			# REQUIRED
-			selectedColumns = @(
-				$someReportTableColumnEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportTableColumnEnum]) for enum values.
-			)
-			# OPTIONAL
-			sortBy = $someSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortByFieldEnum]) for enum values.
-			# OPTIONAL
-			sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-		}
-	)
-	# REQUIRED
-	filters = @{
-		# OPTIONAL
-		activityObjectType = @(
-			$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		objectType = @(
-			$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		excludedObjectTypes = @(
-			$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		lastActivityStatus = @(
-			$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
-		)
-		# OPTIONAL
-		lastActivityType = @(
-			$someActivityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		slaDomainId = @(
-			$someString
-		)
-		# OPTIONAL
-		clusterType = @(
-			$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		clusterId = @(
-			$someString
-		)
-		# OPTIONAL
-		timeRange = @{
-			# OPTIONAL
-			relativeTimeRange = @{
-				# REQUIRED
-				magnitude = $someInt
-				# REQUIRED
-				unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-			}
-			# OPTIONAL
-			absoluteTimeRange = @{
-				# REQUIRED
-				start = $someDateTime
-				# REQUIRED
-				end = $someDateTime
-			}
-		}
-		# OPTIONAL
-		slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
-		# OPTIONAL
-		orgId = @(
-			$someString
-		)
-		# OPTIONAL
-		managedId = @(
-			$someString
-		)
-		# OPTIONAL
-		isAnomaly = $someBoolean
-		# OPTIONAL
-		searchTerm = $someString
-		# OPTIONAL
-		complianceStatus = @(
-			$someComplianceStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ComplianceStatusEnum]) for enum values.
-		)
-		# OPTIONAL
-		protectionStatus = @(
-			$someProtectionStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProtectionStatusEnum]) for enum values.
-		)
-		# OPTIONAL
-		failoverStatus = @(
-			$someFailoverStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverStatusEnum]) for enum values.
-		)
-		# OPTIONAL
-		failoverType = $someFailoverTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverTypeEnum]) for enum values.
-		# OPTIONAL
-		source = @(
-			$someString
-		)
-		# OPTIONAL
-		targetSite = @(
-			$someString
-		)
-		# OPTIONAL
-		userAuditObjectType = @(
-			$someUserAuditObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditObjectTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		userAuditType = @(
-			$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		userAuditStatus = @(
-			$someUserAuditStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditStatusEnum]) for enum values.
-		)
-		# OPTIONAL
-		replicationSource = @(
-			$someString
-		)
-		# OPTIONAL
-		clusterLocation = @(
-			$someString
-		)
-		# OPTIONAL
-		taskCategory = @(
-			$someString
-		)
-		# OPTIONAL
-		taskStatus = @(
-			$someString
-		)
-		# OPTIONAL
-		taskType = @(
-			$someString
-		)
-		# OPTIONAL
-		policyId = @(
-			$someString
-		)
-		# OPTIONAL
-		sonarObjectTypes = @(
-			$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-		)
-		# OPTIONAL
-		shouldApplyWhitelists = $someBoolean
-		# OPTIONAL
-		date = $someDateTime
-	}
-	# OPTIONAL
-	isHidden = $someBoolean
-	# OPTIONAL
-	isReadOnly = $someBoolean
-}
-# OPTIONAL
-$query.Var.reportRoom = $someString"
-            );
-        }
 
         // Create new GraphQL Mutation:
         // createScheduledReport(input: CreateScheduledReportInput!): CreateScheduledReportReply!
@@ -1362,12 +725,12 @@ $query.Var.input = @{
                 Mutation.SendScheduledReportAsyncFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	reportId = $someInt
 	# OPTIONAL
 	rubrikUserIds = @(
 		$someString
 	)
+	# REQUIRED
+	reportId = $someInt
 	# OPTIONAL
 	nonRubrikUserEmails = @(
 		$someString
@@ -1403,206 +766,6 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# OPTIONAL
 	shouldDeleteCdmSchedules = $someBoolean
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateCustomReport(input: UpdateCustomReportInput!): UpdateCustomReportReply!
-        internal void InitMutationUpdateCustomReport()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateCustomReportInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateCustomReport",
-                "($input: UpdateCustomReportInput!)",
-                "UpdateCustomReportReply",
-                Mutation.UpdateCustomReport,
-                Mutation.UpdateCustomReportFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	id = $someInt
-	# REQUIRED
-	config = @{
-		# REQUIRED
-		name = $someString
-		# REQUIRED
-		focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-		# OPTIONAL
-		charts = @(
-			@{
-				# REQUIRED
-				name = $someString
-				# REQUIRED
-				focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-				# OPTIONAL
-				groupBy = @(
-					$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-				)
-			}
-		)
-		# OPTIONAL
-		tables = @(
-			@{
-				# REQUIRED
-				name = $someString
-				# REQUIRED
-				focus = $someReportFocusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportFocusEnum]) for enum values.
-				# OPTIONAL
-				groupBy = @(
-					$someGroupByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GroupByFieldEnum]) for enum values.
-				)
-				# REQUIRED
-				selectedColumns = @(
-					$someReportTableColumnEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportTableColumnEnum]) for enum values.
-				)
-				# OPTIONAL
-				sortBy = $someSortByFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortByFieldEnum]) for enum values.
-				# OPTIONAL
-				sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-			}
-		)
-		# REQUIRED
-		filters = @{
-			# OPTIONAL
-			activityObjectType = @(
-				$someActivityObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityObjectTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			objectType = @(
-				$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			excludedObjectTypes = @(
-				$someObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ObjectTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			lastActivityStatus = @(
-				$someActivityStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityStatusEnum]) for enum values.
-			)
-			# OPTIONAL
-			lastActivityType = @(
-				$someActivityTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActivityTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			slaDomainId = @(
-				$someString
-			)
-			# OPTIONAL
-			clusterType = @(
-				$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			clusterId = @(
-				$someString
-			)
-			# OPTIONAL
-			timeRange = @{
-				# OPTIONAL
-				relativeTimeRange = @{
-					# REQUIRED
-					magnitude = $someInt
-					# REQUIRED
-					unit = $someTimeUnitEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TimeUnitEnum]) for enum values.
-				}
-				# OPTIONAL
-				absoluteTimeRange = @{
-					# REQUIRED
-					start = $someDateTime
-					# REQUIRED
-					end = $someDateTime
-				}
-			}
-			# OPTIONAL
-			slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
-			# OPTIONAL
-			orgId = @(
-				$someString
-			)
-			# OPTIONAL
-			managedId = @(
-				$someString
-			)
-			# OPTIONAL
-			isAnomaly = $someBoolean
-			# OPTIONAL
-			searchTerm = $someString
-			# OPTIONAL
-			complianceStatus = @(
-				$someComplianceStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ComplianceStatusEnum]) for enum values.
-			)
-			# OPTIONAL
-			protectionStatus = @(
-				$someProtectionStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProtectionStatusEnum]) for enum values.
-			)
-			# OPTIONAL
-			failoverStatus = @(
-				$someFailoverStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverStatusEnum]) for enum values.
-			)
-			# OPTIONAL
-			failoverType = $someFailoverTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverTypeEnum]) for enum values.
-			# OPTIONAL
-			source = @(
-				$someString
-			)
-			# OPTIONAL
-			targetSite = @(
-				$someString
-			)
-			# OPTIONAL
-			userAuditObjectType = @(
-				$someUserAuditObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditObjectTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			userAuditType = @(
-				$someUserAuditTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			userAuditStatus = @(
-				$someUserAuditStatusEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UserAuditStatusEnum]) for enum values.
-			)
-			# OPTIONAL
-			replicationSource = @(
-				$someString
-			)
-			# OPTIONAL
-			clusterLocation = @(
-				$someString
-			)
-			# OPTIONAL
-			taskCategory = @(
-				$someString
-			)
-			# OPTIONAL
-			taskStatus = @(
-				$someString
-			)
-			# OPTIONAL
-			taskType = @(
-				$someString
-			)
-			# OPTIONAL
-			policyId = @(
-				$someString
-			)
-			# OPTIONAL
-			sonarObjectTypes = @(
-				$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-			)
-			# OPTIONAL
-			shouldApplyWhitelists = $someBoolean
-			# OPTIONAL
-			date = $someDateTime
-		}
-		# OPTIONAL
-		isHidden = $someBoolean
-		# OPTIONAL
-		isReadOnly = $someBoolean
-	}
 }"
             );
         }

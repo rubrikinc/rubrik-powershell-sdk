@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdpCapacity")]
         public System.Int64? CdpCapacity { get; set; }
 
+        //      C# -> System.Int64? ImmutabilityOverhead
+        // GraphQL -> immutabilityOverhead: Long! (scalar)
+        [JsonProperty("immutabilityOverhead")]
+        public System.Int64? ImmutabilityOverhead { get; set; }
+
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)
         [JsonProperty("ingestedArchivalStorage")]
@@ -103,6 +108,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? AvailableCapacity = null,
         System.Int64? AverageDailyGrowth = null,
         System.Int64? CdpCapacity = null,
+        System.Int64? ImmutabilityOverhead = null,
         System.Int64? IngestedArchivalStorage = null,
         System.Int64? IngestedSnapshotStorage = null,
         DateTime? LastUpdateTime = null,
@@ -124,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdpCapacity != null ) {
             this.CdpCapacity = CdpCapacity;
+        }
+        if ( ImmutabilityOverhead != null ) {
+            this.ImmutabilityOverhead = ImmutabilityOverhead;
         }
         if ( IngestedArchivalStorage != null ) {
             this.IngestedArchivalStorage = IngestedArchivalStorage;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdpCapacity\n" ;
             } else {
                 s += ind + "cdpCapacity\n" ;
+            }
+        }
+        //      C# -> System.Int64? ImmutabilityOverhead
+        // GraphQL -> immutabilityOverhead: Long! (scalar)
+        if (this.ImmutabilityOverhead != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "immutabilityOverhead\n" ;
+            } else {
+                s += ind + "immutabilityOverhead\n" ;
             }
         }
         //      C# -> System.Int64? IngestedArchivalStorage
@@ -355,6 +373,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CdpCapacity != null && ec.Excludes("cdpCapacity",true))
         {
             this.CdpCapacity = null;
+        }
+        //      C# -> System.Int64? ImmutabilityOverhead
+        // GraphQL -> immutabilityOverhead: Long! (scalar)
+        if (ec.Includes("immutabilityOverhead",true))
+        {
+            if(this.ImmutabilityOverhead == null) {
+
+                this.ImmutabilityOverhead = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ImmutabilityOverhead != null && ec.Excludes("immutabilityOverhead",true))
+        {
+            this.ImmutabilityOverhead = null;
         }
         //      C# -> System.Int64? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Long! (scalar)

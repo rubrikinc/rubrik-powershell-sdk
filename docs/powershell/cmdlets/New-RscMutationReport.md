@@ -1,12 +1,5 @@
 # New-RscMutationReport
 ## Subcommands
-### createcustom
-Create a custom report.
-
-- There are 2 arguments.
-    - input - CreateCustomReportInput
-    - reportRoom - System.String: Room of the report.
-- Returns CreateCustomReportReply.
 ### createscheduled
 Create a scheduled report.
 
@@ -37,11 +30,6 @@ Start a job to migrate reports from Rubrik cluster to RSC.
 
 - There is a single argument of type StartClusterReportMigrationJobInput.
 - Returns StartClusterReportMigrationJobReply.
-### updatecustom
-Update a custom report.
-
-- There is a single argument of type UpdateCustomReportInput.
-- Returns UpdateCustomReportReply.
 ### updatedatabaselogingpropertiesforcluster
 Update the database log backup report properties
 

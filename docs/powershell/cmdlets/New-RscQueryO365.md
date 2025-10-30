@@ -42,6 +42,11 @@ List of O365 Groups in the O365Org.
     - o365OrgId - System.String: The FID for the O365 organization.
     - snappableType - SnappableType
 - Returns O365GroupConnection.
+### hasaccesstoobjects
+HasAccessToO365Objects returns if user has access to any o365 objects.
+
+- The hasaccesstoobjects subcommand takes no arguments.
+- Returns HasAccessToO365ObjectsResp.
 ### license
 Retrieve o365 licence details.
 

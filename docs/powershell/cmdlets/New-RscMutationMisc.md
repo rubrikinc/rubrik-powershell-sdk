@@ -5,6 +5,21 @@ Add AD Groups to O365 hierarchy.
 
 - There is a single argument of type AddAdGroupsToHierarchyInput.
 - Returns RequestStatus.
+### addclouddirectkerberoscredential
+AddCloudDirectKerberosCredential creates a new Kerberos credential for NCD systems.
+
+- There is a single argument of type AddCloudDirectKerberosCredentialInput.
+- Returns AddCloudDirectKerberosCredentialReply.
+### addclouddirectsharestosystem
+Add shares (NFS, NFS4, or SMB) to an existing system.
+
+- There is a single argument of type AddCloudDirectSharesToSystemInput.
+- Returns AddCloudDirectSharesToSystemReply.
+### addclouddirectsystem
+AddCloudDirectSystem is used to add a new system to the NCD cluster.
+
+- There is a single argument of type AddCloudDirectSystemInput.
+- Returns AddCloudDirectSystemReply.
 ### addconfiguredgrouptohierarchy
 Add a Configured Group to the O365 hierarchy.
 
@@ -25,11 +40,6 @@ Add account level inventory workloads.
 
 - There is a single argument of type AddInventoryWorkloadsInput.
 - Returns System.Boolean.
-### addkerberoscredential
-AddKerberosCredential creates a new Kerberos credential for NCD systems.
-
-- There is a single argument of type AddKerberosCredentialInput.
-- Returns AddKerberosCredentialReply.
 ### addroleassignments
 - There are 3 arguments.
     - userIds - list of System.Strings: List of user IDs.
@@ -69,6 +79,11 @@ Assign protection to cassandra objects.
 ### batchdeassignrolefromusergroups
 - There is a single argument of type list of UserGroupToRolesInputs.
 - Returns System.Boolean.
+### batchquarantineoperations
+Quarantines or releases from quarantine at workload and file version.
+
+- There is a single argument of type BatchQuarantineOperationsInput.
+- Returns System.String.
 ### batchtriggerexocomputehealthcheck
 Initiates an on-demand Exocompute health check for a batch of exocompute configurations across regions.
 
@@ -123,6 +138,11 @@ CloudDirectAddSubdirBackup is used to add Details of Subdir for backup.
 
 - There is a single argument of type CloudDirectAddSubdirBackupInput.
 - Returns CloudDirectAddSubdirBackupReply.
+### clouddirectsetkerberosenforceconfig
+CloudDirectSetKerberosEnforceConfig sets the Kerberos enforcement configuration for a specific protocol.
+
+- There is a single argument of type CloudDirectSetKerberosEnforceConfigInput.
+- Returns CloudDirectSetKerberosEnforceConfigReply.
 ### clouddirectsetwanthrottlesettings
 CloudDirectSetWanThrottleSettings is used to set WAN Throttle Settings for the NCD cluster.
 
@@ -207,6 +227,11 @@ Delete AD Groups from O365 hierarchy.
 
 - There is a single argument of type DeleteAdGroupsFromHierarchyInput.
 - Returns RequestStatus.
+### deleteclouddirectkerberoscredential
+DeleteCloudDirectKerberosCredential deletes an existing Kerberos credential for NCD systems.
+
+- There is a single argument of type DeleteCloudDirectKerberosCredentialInput.
+- Returns System.String.
 ### deletedistributionlistdigestbatch
 Delete specific distribution list digests.
 
@@ -385,6 +410,14 @@ Manage protection for linked objects, allowing objects to be linked or unlinked 
 
 - There is a single argument of type ManageProtectionForLinkedObjectsInput.
 - Returns CreateOnDemandJobReply.
+### migratevmdatastore
+Migrate datastore of a Live Mount
+
+Supported in v9.4+
+Triggers a datastore migration job to migrate the datastore of a Hyper-V virtual machine Live Mount.
+
+- There is a single argument of type MigrateVmDataStoreInput.
+- Returns AsyncRequestStatus.
 ### modifydistributionlistdigestbatch
 Modify distribution list digests.
 
@@ -442,7 +475,7 @@ Initiates an on-demand refresh job of a specified Active Directory domain.
 - There is a single argument of type System.String.
 - Returns GlobalManagerConnectivity.
 ### removedisk
-Marks the disk removed and updates cluster metadata
+Marks the disk removed and updates cluster metadata.
 
 - There is a single argument of type RemoveDiskInput.
 - Returns ResponseSuccess.
@@ -559,6 +592,11 @@ namespace already added to the NCD cluster.
 
 - There is a single argument of type SetCloudDirectNamespaceOverrideInput.
 - Returns System.String.
+### setclouddirectshareexclusions
+Sets exclusions to a specific share.
+
+- There is a single argument of type SetCloudDirectShareExclusionsInput.
+- Returns System.String.
 ### setclouddirectsystemoverride
 SetCloudDirectSystemOverride is used to override properties of a
 system already added to the NCD cluster.
@@ -588,18 +626,13 @@ Sets the Private Container Registry (PCR) details for an Exocompute cloud accoun
 
 - There is a single argument of type SetPrivateContainerRegistryInput.
 - Returns System.String.
-### setshareexclusions
-Sets exclusions to a specific share.
-
-- There is a single argument of type SetShareExclusionsInput.
-- Returns System.String.
 ### settotpconfig
 Setup TOTP configuration for a user. Return true when the operation succeeds.
 
 - There is a single argument of type SetTotpConfigInput.
 - Returns System.Boolean.
 ### setupdisk
-Setup an unformatted disk
+Setup an unformatted disk.
 
 - There is a single argument of type SetupDiskInput.
 - Returns DiskInfo.
@@ -695,6 +728,12 @@ Moves an M365 organization product from day-to-day mode to onboarding mode.
 
 - There is a single argument of type SwitchProductToOnboardingModeInput.
 - Returns System.String.
+### triggerblimigration
+TriggerBLIMigration triggers blob immutability migration for a list
+of RCV Azure locations.
+
+- There is a single argument of type TriggerBliMigrationInput.
+- Returns TriggerBliMigrationReply.
 ### triggercloudcomputeconnectivitycheck
 Trigger cloud compute connectivity check
 
@@ -775,6 +814,11 @@ Find bad disk of a node in the CDM cluster.
 
 - There is a single argument of type UpdateBadDiskLedStatusInput.
 - Returns UpdateBadDiskLedStatusReply.
+### updateclouddirectkerberoscredential
+UpdateCloudDirectKerberosCredential updates an existing Kerberos credential for NCD systems.
+
+- There is a single argument of type UpdateCloudDirectKerberosCredentialInput.
+- Returns UpdateCloudDirectKerberosCredentialReply.
 ### updateconfiguredgroup
 Update the configuration, name, or deletion status of a configured group.
 

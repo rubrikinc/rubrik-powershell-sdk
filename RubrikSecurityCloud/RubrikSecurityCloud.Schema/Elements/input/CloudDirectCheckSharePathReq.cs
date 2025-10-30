@@ -19,12 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> CloudDirectCheckShareProtocolType? Protocol
-        // GraphQL -> protocol: CloudDirectCheckShareProtocolType! (enum)
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterId")]
+        public System.String? ClusterId { get; set; }
+
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("protocol")]
-        public CloudDirectCheckShareProtocolType? Protocol { get; set; }
+        public CloudDirectNasProtocolType? Protocol { get; set; }
 
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)

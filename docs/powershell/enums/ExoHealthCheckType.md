@@ -16,3 +16,4 @@ ExoHealthCheckType represents the type of health check.
 - HOST_CONNECTIVITY - RSC sub-domain connectivity check from Exocompute.
 - EKS_CONNECTIVITY - AWS EKS connectivity check.
 - ECR_CONNECTIVITY - AWS ECR connectivity check.
+- ADDITIONAL_CONNECTIVITY - Additional connectivity check from Exocompute.

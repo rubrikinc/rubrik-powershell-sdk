@@ -1,5 +1,7 @@
 ### TimeRangeInput
+A range of time.
+
 - start: DateTime
-  - Start time of the range.
+  - The start of the time range.
 - end: DateTime
-  - End time of the range.
+  - The end of the time range.

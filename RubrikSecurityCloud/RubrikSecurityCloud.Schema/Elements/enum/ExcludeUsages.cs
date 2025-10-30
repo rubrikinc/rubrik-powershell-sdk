@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCLUDE_USAGES_LDAP")]
         EXCLUDE_USAGES_LDAP,
 
+        [EnumMember(Value = "EXCLUDE_USAGES_MONGO_SOURCE")]
+        EXCLUDE_USAGES_MONGO_SOURCE,
+
         [EnumMember(Value = "EXCLUDE_USAGES_MSSQL_SENSITIVE_DATA_DISCOVERY")]
         EXCLUDE_USAGES_MSSQL_SENSITIVE_DATA_DISCOVERY,
 

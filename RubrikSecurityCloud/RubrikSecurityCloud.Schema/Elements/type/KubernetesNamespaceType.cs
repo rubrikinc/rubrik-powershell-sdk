@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region KubernetesNamespaceType
  
-    public class KubernetesNamespaceType: BaseType, CdmHierarchyObject, HierarchyObject, KubernetesClusterDescendant
+    public class KubernetesNamespaceType: BaseType, CdmHierarchyObject, HierarchyObject, KubernetesClusterDescendant, KubernetesLabelDescendant
     {
         #region members
 
@@ -90,6 +90,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> k8sClusterUuid: UUID! (scalar)
         [JsonProperty("k8sClusterUuid")]
         public System.String? K8sClusterUuid { get; set; }
+
+        //      C# -> List<System.String>? K8sLabelIds
+        // GraphQL -> k8sLabelIds: [UUID!]! (scalar)
+        [JsonProperty("k8sLabelIds")]
+        public List<System.String>? K8sLabelIds { get; set; }
+
+        //      C# -> System.String? K8sProtectionLabelFid
+        // GraphQL -> k8sProtectionLabelFid: String (scalar)
+        [JsonProperty("k8sProtectionLabelFid")]
+        public System.String? K8sProtectionLabelFid { get; set; }
+
+        //      C# -> System.String? K8sProtectionLabelName
+        // GraphQL -> k8sProtectionLabelName: String (scalar)
+        [JsonProperty("k8sProtectionLabelName")]
+        public System.String? K8sProtectionLabelName { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -267,6 +282,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? K8sClusterName = null,
         System.String? K8sClusterUuid = null,
+        List<System.String>? K8sLabelIds = null,
+        System.String? K8sProtectionLabelFid = null,
+        System.String? K8sProtectionLabelName = null,
         System.String? Name = null,
         System.String? NamespaceName = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -331,6 +349,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( K8sClusterUuid != null ) {
             this.K8sClusterUuid = K8sClusterUuid;
+        }
+        if ( K8sLabelIds != null ) {
+            this.K8sLabelIds = K8sLabelIds;
+        }
+        if ( K8sProtectionLabelFid != null ) {
+            this.K8sProtectionLabelFid = K8sProtectionLabelFid;
+        }
+        if ( K8sProtectionLabelName != null ) {
+            this.K8sProtectionLabelName = K8sProtectionLabelName;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -553,6 +580,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "k8sClusterUuid\n" ;
             } else {
                 s += ind + "k8sClusterUuid\n" ;
+            }
+        }
+        //      C# -> List<System.String>? K8sLabelIds
+        // GraphQL -> k8sLabelIds: [UUID!]! (scalar)
+        if (this.K8sLabelIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "k8sLabelIds\n" ;
+            } else {
+                s += ind + "k8sLabelIds\n" ;
+            }
+        }
+        //      C# -> System.String? K8sProtectionLabelFid
+        // GraphQL -> k8sProtectionLabelFid: String (scalar)
+        if (this.K8sProtectionLabelFid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "k8sProtectionLabelFid\n" ;
+            } else {
+                s += ind + "k8sProtectionLabelFid\n" ;
+            }
+        }
+        //      C# -> System.String? K8sProtectionLabelName
+        // GraphQL -> k8sProtectionLabelName: String (scalar)
+        if (this.K8sProtectionLabelName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "k8sProtectionLabelName\n" ;
+            } else {
+                s += ind + "k8sProtectionLabelName\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1063,6 +1117,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.K8sClusterUuid != null && ec.Excludes("k8sClusterUuid",true))
         {
             this.K8sClusterUuid = null;
+        }
+        //      C# -> List<System.String>? K8sLabelIds
+        // GraphQL -> k8sLabelIds: [UUID!]! (scalar)
+        if (ec.Includes("k8sLabelIds",true))
+        {
+            if(this.K8sLabelIds == null) {
+
+                this.K8sLabelIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.K8sLabelIds != null && ec.Excludes("k8sLabelIds",true))
+        {
+            this.K8sLabelIds = null;
+        }
+        //      C# -> System.String? K8sProtectionLabelFid
+        // GraphQL -> k8sProtectionLabelFid: String (scalar)
+        if (ec.Includes("k8sProtectionLabelFid",true))
+        {
+            if(this.K8sProtectionLabelFid == null) {
+
+                this.K8sProtectionLabelFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.K8sProtectionLabelFid != null && ec.Excludes("k8sProtectionLabelFid",true))
+        {
+            this.K8sProtectionLabelFid = null;
+        }
+        //      C# -> System.String? K8sProtectionLabelName
+        // GraphQL -> k8sProtectionLabelName: String (scalar)
+        if (ec.Includes("k8sProtectionLabelName",true))
+        {
+            if(this.K8sProtectionLabelName == null) {
+
+                this.K8sProtectionLabelName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.K8sProtectionLabelName != null && ec.Excludes("k8sProtectionLabelName",true))
+        {
+            this.K8sProtectionLabelName = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

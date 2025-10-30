@@ -96,6 +96,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsIamPairId")]
         public System.String? AwsIamPairId { get; set; }
 
+        //      C# -> System.String? AwsKmsKeyId
+        // GraphQL -> awsKmsKeyId: String (scalar)
+        [JsonProperty("awsKmsKeyId")]
+        public System.String? AwsKmsKeyId { get; set; }
+
+        //      C# -> System.String? AwsKmsKeyManager
+        // GraphQL -> awsKmsKeyManager: String (scalar)
+        [JsonProperty("awsKmsKeyManager")]
+        public System.String? AwsKmsKeyManager { get; set; }
+
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String! (scalar)
         [JsonProperty("bucket")]
@@ -226,6 +236,8 @@ namespace RubrikSecurityCloud.Types
         UpgradeStatus? UpgradeStatus = null,
         CloudAccount? CloudAccount = null,
         System.String? AwsIamPairId = null,
+        System.String? AwsKmsKeyId = null,
+        System.String? AwsKmsKeyManager = null,
         System.String? Bucket = null,
         System.Boolean? BypassProxy = null,
         System.String? ClusterName = null,
@@ -293,6 +305,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AwsIamPairId != null ) {
             this.AwsIamPairId = AwsIamPairId;
+        }
+        if ( AwsKmsKeyId != null ) {
+            this.AwsKmsKeyId = AwsKmsKeyId;
+        }
+        if ( AwsKmsKeyManager != null ) {
+            this.AwsKmsKeyManager = AwsKmsKeyManager;
         }
         if ( Bucket != null ) {
             this.Bucket = Bucket;
@@ -508,6 +526,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "awsIamPairId\n" ;
             } else {
                 s += ind + "awsIamPairId\n" ;
+            }
+        }
+        //      C# -> System.String? AwsKmsKeyId
+        // GraphQL -> awsKmsKeyId: String (scalar)
+        if (this.AwsKmsKeyId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsKmsKeyId\n" ;
+            } else {
+                s += ind + "awsKmsKeyId\n" ;
+            }
+        }
+        //      C# -> System.String? AwsKmsKeyManager
+        // GraphQL -> awsKmsKeyManager: String (scalar)
+        if (this.AwsKmsKeyManager != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsKmsKeyManager\n" ;
+            } else {
+                s += ind + "awsKmsKeyManager\n" ;
             }
         }
         //      C# -> System.String? Bucket
@@ -985,6 +1021,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsIamPairId != null && ec.Excludes("awsIamPairId",true))
         {
             this.AwsIamPairId = null;
+        }
+        //      C# -> System.String? AwsKmsKeyId
+        // GraphQL -> awsKmsKeyId: String (scalar)
+        if (ec.Includes("awsKmsKeyId",true))
+        {
+            if(this.AwsKmsKeyId == null) {
+
+                this.AwsKmsKeyId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsKmsKeyId != null && ec.Excludes("awsKmsKeyId",true))
+        {
+            this.AwsKmsKeyId = null;
+        }
+        //      C# -> System.String? AwsKmsKeyManager
+        // GraphQL -> awsKmsKeyManager: String (scalar)
+        if (ec.Includes("awsKmsKeyManager",true))
+        {
+            if(this.AwsKmsKeyManager == null) {
+
+                this.AwsKmsKeyManager = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsKmsKeyManager != null && ec.Excludes("awsKmsKeyManager",true))
+        {
+            this.AwsKmsKeyManager = null;
         }
         //      C# -> System.String? Bucket
         // GraphQL -> bucket: String! (scalar)

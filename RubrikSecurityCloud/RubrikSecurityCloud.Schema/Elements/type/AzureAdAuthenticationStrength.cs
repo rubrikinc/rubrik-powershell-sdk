@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AzureAdAuthenticationMethod>? AuthenticationMethods
+        // GraphQL -> authenticationMethods: [AzureAdAuthenticationMethod!]! (enum)
+        [JsonProperty("authenticationMethods")]
+        public List<AzureAdAuthenticationMethod>? AuthenticationMethods { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdAuthenticationStrength Set(
+        List<AzureAdAuthenticationMethod>? AuthenticationMethods = null,
         System.String? DisplayName = null
     ) 
     {
+        if ( AuthenticationMethods != null ) {
+            this.AuthenticationMethods = AuthenticationMethods;
+        }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AzureAdAuthenticationMethod>? AuthenticationMethods
+        // GraphQL -> authenticationMethods: [AzureAdAuthenticationMethod!]! (enum)
+        if (this.AuthenticationMethods != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authenticationMethods\n" ;
+            } else {
+                s += ind + "authenticationMethods\n" ;
+            }
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<AzureAdAuthenticationMethod>? AuthenticationMethods
+        // GraphQL -> authenticationMethods: [AzureAdAuthenticationMethod!]! (enum)
+        if (ec.Includes("authenticationMethods",true))
+        {
+            if(this.AuthenticationMethods == null) {
+
+                this.AuthenticationMethods = new List<AzureAdAuthenticationMethod>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthenticationMethods != null && ec.Excludes("authenticationMethods",true))
+        {
+            this.AuthenticationMethods = null;
+        }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         if (ec.Includes("displayName",true))

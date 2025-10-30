@@ -22,4 +22,6 @@ Filters for list of Azure SQL Managed Instance Databases.
 - serverId: System.String
   - Filter by managed object ID of the server.
 - azureNativeIsEligibleForSqlMiDbProtectionFilter: AzureNativeIsEligibleForSqlMiDbProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.

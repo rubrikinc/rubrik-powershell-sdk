@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 19
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Cloud Native' API domain:
-    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagValues, or WorkloadVersionedFiles.
+    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 19 operations
+    /// There are 20 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagValues, or WorkloadVersionedFiles.
+    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -623,6 +623,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the TagRulesObjectType operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: TagRulesObjectType
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation TagRulesObjectType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	objectId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetCloudNativeTagRulesObjectTypeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TagValues operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -723,6 +754,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SqlServerSetupScript",
                 "TagKeys",
                 "TagRules",
+                "TagRulesObjectType",
                 "TagValues",
                 "WorkloadVersionedFiles",
                 IgnoreCase = true)]
@@ -790,6 +822,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "TagRules":
                         this.ProcessRecord_TagRules();
+                        break;
+                    case "TagRulesObjectType":
+                        this.ProcessRecord_TagRulesObjectType();
                         break;
                     case "TagValues":
                         this.ProcessRecord_TagValues();
@@ -958,6 +993,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -TagRules";
             // Create new graphql operation cloudNativeTagRules
             InitQueryCloudNativeTagRules();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudNativeTagRulesObjectType.
+        internal void ProcessRecord_TagRulesObjectType()
+        {
+            this._logger.name += " -TagRulesObjectType";
+            // Create new graphql operation cloudNativeTagRulesObjectType
+            InitQueryCloudNativeTagRulesObjectType();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1428,6 +1472,29 @@ $query.Var.filters = @(
 $query.Var.sortBy = $someCloudNativeTagRuleSortByFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagRuleSortByFields]) for enum values.
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudNativeTagRulesObjectType(input: GetCloudNativeTagRulesObjectTypeReq!): GetCloudNativeTagRulesObjectTypeReply!
+        internal void InitQueryCloudNativeTagRulesObjectType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetCloudNativeTagRulesObjectTypeReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeTagRulesObjectType",
+                "($input: GetCloudNativeTagRulesObjectTypeReq!)",
+                "GetCloudNativeTagRulesObjectTypeReply",
+                Query.CloudNativeTagRulesObjectType,
+                Query.CloudNativeTagRulesObjectTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	objectId = $someString
+}"
             );
         }
 

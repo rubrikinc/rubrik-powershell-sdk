@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOnDemandSnapshot")]
         public System.Boolean? IsOnDemandSnapshot { get; set; }
 
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        [JsonProperty("isQuarantineProcessing")]
+        public System.Boolean? IsQuarantineProcessing { get; set; }
+
+        //      C# -> System.Boolean? IsQuarantined
+        // GraphQL -> isQuarantined: Boolean! (scalar)
+        [JsonProperty("isQuarantined")]
+        public System.Boolean? IsQuarantined { get; set; }
+
 
         #endregion
 
@@ -47,7 +57,9 @@ namespace RubrikSecurityCloud.Types
     public CloudNativeSnapshotInfo Set(
         DateTime? Date = null,
         System.String? Id = null,
-        System.Boolean? IsOnDemandSnapshot = null
+        System.Boolean? IsOnDemandSnapshot = null,
+        System.Boolean? IsQuarantineProcessing = null,
+        System.Boolean? IsQuarantined = null
     ) 
     {
         if ( Date != null ) {
@@ -58,6 +70,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOnDemandSnapshot != null ) {
             this.IsOnDemandSnapshot = IsOnDemandSnapshot;
+        }
+        if ( IsQuarantineProcessing != null ) {
+            this.IsQuarantineProcessing = IsQuarantineProcessing;
+        }
+        if ( IsQuarantined != null ) {
+            this.IsQuarantined = IsQuarantined;
         }
         return this;
     }
@@ -98,6 +116,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isOnDemandSnapshot\n" ;
             } else {
                 s += ind + "isOnDemandSnapshot\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        if (this.IsQuarantineProcessing != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantineProcessing\n" ;
+            } else {
+                s += ind + "isQuarantineProcessing\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsQuarantined
+        // GraphQL -> isQuarantined: Boolean! (scalar)
+        if (this.IsQuarantined != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isQuarantined\n" ;
+            } else {
+                s += ind + "isQuarantined\n" ;
             }
         }
         return s;
@@ -157,6 +193,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsOnDemandSnapshot != null && ec.Excludes("isOnDemandSnapshot",true))
         {
             this.IsOnDemandSnapshot = null;
+        }
+        //      C# -> System.Boolean? IsQuarantineProcessing
+        // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
+        if (ec.Includes("isQuarantineProcessing",true))
+        {
+            if(this.IsQuarantineProcessing == null) {
+
+                this.IsQuarantineProcessing = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantineProcessing != null && ec.Excludes("isQuarantineProcessing",true))
+        {
+            this.IsQuarantineProcessing = null;
+        }
+        //      C# -> System.Boolean? IsQuarantined
+        // GraphQL -> isQuarantined: Boolean! (scalar)
+        if (ec.Includes("isQuarantined",true))
+        {
+            if(this.IsQuarantined == null) {
+
+                this.IsQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
+        {
+            this.IsQuarantined = null;
         }
     }
 

@@ -1,6 +1,6 @@
 ### EventSeverity
-Enum representing the severity of the event.
+Enum representing all the possible event severities.
 
-- SEVERITY_INFO - Severity Informational.
-- SEVERITY_CRITICAL - Severity Critical.
-- SEVERITY_WARNING - Severity Warning.
+- SEVERITY_INFO - Informational severity.
+- SEVERITY_CRITICAL - Critical severity.
+- SEVERITY_WARNING - Warning severity.

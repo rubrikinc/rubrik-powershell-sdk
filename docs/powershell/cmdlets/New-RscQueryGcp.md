@@ -1,5 +1,10 @@
 # New-RscQueryGcp
 ## Subcommands
+### cloudaccountgetproject
+GcpCloudAccountGetProject gets the GCP project corresponding to the requested project id.
+
+- There is a single argument of type GcpCloudAccountGetProjectReq.
+- Returns GcpCloudAccountGetProjectResponse.
 ### cloudaccountmissingpermissionsforaddition
 Check GCP projects permissions for addition.
 
@@ -24,6 +29,17 @@ List of GCP projects to add after successful authorization.
     - features - list of CloudAccountFeatures: Cloud account features.
     - checkPermissions - System.Boolean: Specfies whether to check permission of projects required for addition.
 - Returns list of GcpCloudAccountProjectForOauths.
+### cloudsqlinstance
+Get details of a GCP Cloud SQL instance.
+
+- There is a single argument of type System.String.
+- Returns GcpCloudSqlInstance.
+### exocomputeconfigs
+Gets the exocompute configuration for the given project given filters of
+cloud account IDs, regions and status.
+
+- There is a single argument of type GcpGetExocomputeConfigsReq.
+- Returns GcpGetExocomputeConfigsReply.
 ### featurepermissionsforcloudaccount
 List of permissions required to enable the given feature.
 

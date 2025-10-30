@@ -104,6 +104,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshotId")]
         public System.String? ArchivedSnapshotId { get; set; }
 
+        //      C# -> System.Boolean? ShouldResurrectSnapshot
+        // GraphQL -> shouldResurrectSnapshot: Boolean (scalar)
+        [JsonProperty("shouldResurrectSnapshot")]
+        public System.Boolean? ShouldResurrectSnapshot { get; set; }
+
 
         #endregion
 

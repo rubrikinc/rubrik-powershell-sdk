@@ -6,4 +6,4 @@ Supported in v8.0+
   - Required. Supported in v8.0+
   ID of the archival location.
 - cloudStorageTier: SnapshotCloudStorageTier
-  - 
+  - Required. Supported in v8.0+

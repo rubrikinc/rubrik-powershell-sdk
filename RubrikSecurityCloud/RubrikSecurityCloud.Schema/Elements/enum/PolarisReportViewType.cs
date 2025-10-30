@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_STRIKES_REPORT")]
         BACKUP_STRIKES_REPORT,
 
+        [EnumMember(Value = "CNP_OBJECT_CAPACITY_REPORT")]
+        CNP_OBJECT_CAPACITY_REPORT,
+
         [EnumMember(Value = "COMPLIANCE_REPORT")]
         COMPLIANCE_REPORT,
 
@@ -47,6 +50,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INFRASTRUCTURE_REPORT")]
         INFRASTRUCTURE_REPORT,
+
+        [EnumMember(Value = "LOG_TASKS_REPORT")]
+        LOG_TASKS_REPORT,
 
         [EnumMember(Value = "OBJECT_AUDIT_REPORT")]
         OBJECT_AUDIT_REPORT,

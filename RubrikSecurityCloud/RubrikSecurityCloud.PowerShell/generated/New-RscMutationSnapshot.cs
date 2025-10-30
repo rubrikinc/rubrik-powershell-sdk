@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, Deletes, DeletesOfObjects, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, Deletes, DeletesOfObjects, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 23 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, Deletes, DeletesOfObjects, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, Deletes, DeletesOfObjects, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -729,6 +729,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestoreOpenstackVmFiles operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: RestoreOpenstackVmFiles
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation RestoreOpenstackVmFiles
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				path = $someString
+    /// 				# REQUIRED
+    /// 				restorePath = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		targetVmId = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RestoreVolumeGroupFiles operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -830,6 +875,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	iamInstanceProfileArn = $someString
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	dedicatedHostId = $someString
+    /// 	# OPTIONAL
+    /// 	shouldResurrectSnapshot = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1041,6 +1090,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
                 "RestoreDomainController",
+                "RestoreOpenstackVmFiles",
                 "RestoreVolumeGroupFiles",
                 "StartEc2InstanceExportJob",
                 "StartRecoverS3Job",
@@ -1109,6 +1159,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreDomainController":
                         this.ProcessRecord_RestoreDomainController();
+                        break;
+                    case "RestoreOpenstackVmFiles":
+                        this.ProcessRecord_RestoreOpenstackVmFiles();
                         break;
                     case "RestoreVolumeGroupFiles":
                         this.ProcessRecord_RestoreVolumeGroupFiles();
@@ -1280,6 +1333,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RestoreDomainController";
             // Create new graphql operation restoreDomainControllerSnapshot
             InitMutationRestoreDomainControllerSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreOpenstackVmSnapshotFiles.
+        internal void ProcessRecord_RestoreOpenstackVmFiles()
+        {
+            this._logger.name += " -RestoreOpenstackVmFiles";
+            // Create new graphql operation restoreOpenstackVmSnapshotFiles
+            InitMutationRestoreOpenstackVmSnapshotFiles();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1862,6 +1924,43 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // restoreOpenstackVmSnapshotFiles(input: RestoreOpenstackVmSnapshotFilesInput!): AsyncRequestStatus!
+        internal void InitMutationRestoreOpenstackVmSnapshotFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreOpenstackVmSnapshotFilesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreOpenstackVmSnapshotFiles",
+                "($input: RestoreOpenstackVmSnapshotFilesInput!)",
+                "AsyncRequestStatus",
+                Mutation.RestoreOpenstackVmSnapshotFiles,
+                Mutation.RestoreOpenstackVmSnapshotFilesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = $someString
+				# REQUIRED
+				restorePath = $someString
+			}
+		)
+		# OPTIONAL
+		targetVmId = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // restoreVolumeGroupSnapshotFiles(input: RestoreVolumeGroupSnapshotFilesInput!): AsyncRequestStatus!
         internal void InitMutationRestoreVolumeGroupSnapshotFiles()
         {
@@ -1957,6 +2056,10 @@ $query.Var.input = @{
 	iamInstanceProfileArn = $someString
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	dedicatedHostId = $someString
+	# OPTIONAL
+	shouldResurrectSnapshot = $someBoolean
 }"
             );
         }

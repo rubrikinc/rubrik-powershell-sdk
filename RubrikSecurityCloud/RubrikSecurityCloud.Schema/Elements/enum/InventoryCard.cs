@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_STORAGE")]
         AZURE_BLOB_STORAGE,
 
+        [EnumMember(Value = "AZURE_DEVOPS")]
+        AZURE_DEVOPS,
+
         [EnumMember(Value = "AZURE_SQL_DB")]
         AZURE_SQL_DB,
 
@@ -125,6 +128,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_AHV")]
         NUTANIX_AHV,
+
+        [EnumMember(Value = "OKTA")]
+        OKTA,
+
+        [EnumMember(Value = "OLVM")]
+        OLVM,
 
         [EnumMember(Value = "ON_PREM_AD")]
         ON_PREM_AD,

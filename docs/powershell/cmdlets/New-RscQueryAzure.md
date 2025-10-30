@@ -192,11 +192,28 @@ List all managed identities for Azure resources.
 
 - There is a single argument of type AzureManagedIdentitiesRequest.
 - Returns list of AzureManagedIdentitys.
+### marketplacetermsinfo
+Check Azure marketplace terms acceptance status for a given CDM version.
+
+- There is a single argument of type CheckAzureMarketplaceTermsReq.
+- Returns CheckAzureMarketplaceTermsReply.
 ### nsgs
 Get all available network security groups for Azure.
 
 - There is a single argument of type AzureNsgRequest.
 - Returns list of System.Strings.
+### rcvblimigrationdetails
+ListRCVAzureBLIMigrationDetails lists blob immutability migration details
+of RCV Azure locations.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - BliMigrationDetailsFilter - RcvBliMigrationFilter: Filters for listing BLI migration details
+for RCV Azure BLI migration details.
+- Returns RcvBliMigrationDetailsConnection.
 ### regions
 Gets the Azure regions for the given subscription.
 

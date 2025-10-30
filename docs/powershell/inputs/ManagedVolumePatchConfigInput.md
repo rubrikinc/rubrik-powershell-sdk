@@ -27,7 +27,8 @@ Supported in v5.0+
   - Supported in v5.0+
       v5.0-v5.3: List of valid usersnames in the domain that can access the SMB share for this managed volume. This parameter is required when the value of shareType is SMB
       v6.0: List of valid usersnames in the domain that can access the SMB share for this managed volume. This parameter is required when the value of shareType is SMB.
-      v7.0+: List of valid usersnames in the domain that can access the SMB share for this Managed Volume. This parameter is required when the value of shareType is SMB.
+      v7.0-v9.4: List of valid usersnames in the domain that can access the SMB share for this Managed Volume. This parameter is required when the value of shareType is SMB.
+      v9.5: List of valid usernames and Active Directory groups in the domain that can access the SMB share for this Managed Volume. Active Directory groups must be prefixed with a '+' symbol. This parameter is required when the value of shareType is SMB.
 - nfsSettings: ManagedVolumeNFSSettingsInput
   - Supported in v9.3+
       Settings related to NFS for the Managed Volume.

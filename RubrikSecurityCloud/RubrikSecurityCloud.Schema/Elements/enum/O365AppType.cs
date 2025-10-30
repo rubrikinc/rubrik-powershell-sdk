@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ONEDRIVE")]
         ONEDRIVE,
 
+        [EnumMember(Value = "PURVIEW")]
+        PURVIEW,
+
         [EnumMember(Value = "SPOINT")]
         SPOINT,
 

@@ -11,3 +11,5 @@ User account lockout details.
   - The time at which the account was previously locked.
 - unlockedAt: DateTime
   - The time at which the account was previously unlocked.
+- currentLockMethod: LockMethod
+  - Current lock method for the account.

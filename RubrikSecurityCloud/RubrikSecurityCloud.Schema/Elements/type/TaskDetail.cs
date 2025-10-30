@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? ArchivalTarget
-        // GraphQL -> archivalTarget: String (scalar)
+        // GraphQL -> archivalTarget: String! (scalar)
         [JsonProperty("archivalTarget")]
         public System.String? ArchivalTarget { get; set; }
 
@@ -46,22 +46,22 @@ namespace RubrikSecurityCloud.Types
         public System.String? ClusterUuid { get; set; }
 
         //      C# -> System.Single? DataReduction
-        // GraphQL -> dataReduction: Float (scalar)
+        // GraphQL -> dataReduction: Float! (scalar)
         [JsonProperty("dataReduction")]
         public System.Single? DataReduction { get; set; }
 
         //      C# -> System.Int64? DataTransferred
-        // GraphQL -> dataTransferred: Long (scalar)
+        // GraphQL -> dataTransferred: Long! (scalar)
         [JsonProperty("dataTransferred")]
         public System.Int64? DataTransferred { get; set; }
 
         //      C# -> System.Single? DedupRatio
-        // GraphQL -> dedupRatio: Float (scalar)
+        // GraphQL -> dedupRatio: Float! (scalar)
         [JsonProperty("dedupRatio")]
         public System.Single? DedupRatio { get; set; }
 
         //      C# -> System.String? DirectArchive
-        // GraphQL -> directArchive: String (scalar)
+        // GraphQL -> directArchive: String! (scalar)
         [JsonProperty("directArchive")]
         public System.String? DirectArchive { get; set; }
 
@@ -76,7 +76,7 @@ namespace RubrikSecurityCloud.Types
         public DateTime? EndTime { get; set; }
 
         //      C# -> System.String? FailureReason
-        // GraphQL -> failureReason: String (scalar)
+        // GraphQL -> failureReason: String! (scalar)
         [JsonProperty("failureReason")]
         public System.String? FailureReason { get; set; }
 
@@ -91,17 +91,17 @@ namespace RubrikSecurityCloud.Types
         public System.String? Location { get; set; }
 
         //      C# -> System.Int64? LogicalBytes
-        // GraphQL -> logicalBytes: Long (scalar)
+        // GraphQL -> logicalBytes: Long! (scalar)
         [JsonProperty("logicalBytes")]
         public System.Int64? LogicalBytes { get; set; }
 
         //      C# -> System.Single? LogicalDataReduction
-        // GraphQL -> logicalDataReduction: Float (scalar)
+        // GraphQL -> logicalDataReduction: Float! (scalar)
         [JsonProperty("logicalDataReduction")]
         public System.Single? LogicalDataReduction { get; set; }
 
         //      C# -> System.Single? LogicalDedupRatio
-        // GraphQL -> logicalDedupRatio: Float (scalar)
+        // GraphQL -> logicalDedupRatio: Float! (scalar)
         [JsonProperty("logicalDedupRatio")]
         public System.Single? LogicalDedupRatio { get; set; }
 
@@ -121,42 +121,42 @@ namespace RubrikSecurityCloud.Types
         public System.String? ObjectType { get; set; }
 
         //      C# -> System.String? OrgId
-        // GraphQL -> orgId: String (scalar)
+        // GraphQL -> orgId: String! (scalar)
         [JsonProperty("orgId")]
         public System.String? OrgId { get; set; }
 
         //      C# -> System.String? OrgName
-        // GraphQL -> orgName: String (scalar)
+        // GraphQL -> orgName: String! (scalar)
         [JsonProperty("orgName")]
         public System.String? OrgName { get; set; }
 
         //      C# -> System.Int64? PhysicalBytes
-        // GraphQL -> physicalBytes: Long (scalar)
+        // GraphQL -> physicalBytes: Long! (scalar)
         [JsonProperty("physicalBytes")]
         public System.Int64? PhysicalBytes { get; set; }
 
         //      C# -> System.String? ProtectedVolume
-        // GraphQL -> protectedVolume: String (scalar)
+        // GraphQL -> protectedVolume: String! (scalar)
         [JsonProperty("protectedVolume")]
         public System.String? ProtectedVolume { get; set; }
 
         //      C# -> System.String? RecoveryPoint
-        // GraphQL -> recoveryPoint: String (scalar)
+        // GraphQL -> recoveryPoint: String! (scalar)
         [JsonProperty("recoveryPoint")]
         public System.String? RecoveryPoint { get; set; }
 
         //      C# -> System.String? RecoveryPointType
-        // GraphQL -> recoveryPointType: String (scalar)
+        // GraphQL -> recoveryPointType: String! (scalar)
         [JsonProperty("recoveryPointType")]
         public System.String? RecoveryPointType { get; set; }
 
         //      C# -> System.String? ReplicationSource
-        // GraphQL -> replicationSource: String (scalar)
+        // GraphQL -> replicationSource: String! (scalar)
         [JsonProperty("replicationSource")]
         public System.String? ReplicationSource { get; set; }
 
         //      C# -> System.String? ReplicationTarget
-        // GraphQL -> replicationTarget: String (scalar)
+        // GraphQL -> replicationTarget: String! (scalar)
         [JsonProperty("replicationTarget")]
         public System.String? ReplicationTarget { get; set; }
 
@@ -176,7 +176,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? SlaDomainName { get; set; }
 
         //      C# -> System.String? SnapshotConsistency
-        // GraphQL -> snapshotConsistency: String (scalar)
+        // GraphQL -> snapshotConsistency: String! (scalar)
         [JsonProperty("snapshotConsistency")]
         public System.String? SnapshotConsistency { get; set; }
 
@@ -201,12 +201,12 @@ namespace RubrikSecurityCloud.Types
         public System.String? TaskType { get; set; }
 
         //      C# -> System.Int64? TotalFilesTransferred
-        // GraphQL -> totalFilesTransferred: Long (scalar)
+        // GraphQL -> totalFilesTransferred: Long! (scalar)
         [JsonProperty("totalFilesTransferred")]
         public System.Int64? TotalFilesTransferred { get; set; }
 
         //      C# -> System.String? UserName
-        // GraphQL -> userName: String (scalar)
+        // GraphQL -> userName: String! (scalar)
         [JsonProperty("userName")]
         public System.String? UserName { get; set; }
 
@@ -398,7 +398,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.String? ArchivalTarget
-        // GraphQL -> archivalTarget: String (scalar)
+        // GraphQL -> archivalTarget: String! (scalar)
         if (this.ArchivalTarget != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "archivalTarget\n" ;
@@ -443,7 +443,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Single? DataReduction
-        // GraphQL -> dataReduction: Float (scalar)
+        // GraphQL -> dataReduction: Float! (scalar)
         if (this.DataReduction != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "dataReduction\n" ;
@@ -452,7 +452,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int64? DataTransferred
-        // GraphQL -> dataTransferred: Long (scalar)
+        // GraphQL -> dataTransferred: Long! (scalar)
         if (this.DataTransferred != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "dataTransferred\n" ;
@@ -461,7 +461,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Single? DedupRatio
-        // GraphQL -> dedupRatio: Float (scalar)
+        // GraphQL -> dedupRatio: Float! (scalar)
         if (this.DedupRatio != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "dedupRatio\n" ;
@@ -470,7 +470,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? DirectArchive
-        // GraphQL -> directArchive: String (scalar)
+        // GraphQL -> directArchive: String! (scalar)
         if (this.DirectArchive != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "directArchive\n" ;
@@ -497,7 +497,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? FailureReason
-        // GraphQL -> failureReason: String (scalar)
+        // GraphQL -> failureReason: String! (scalar)
         if (this.FailureReason != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "failureReason\n" ;
@@ -524,7 +524,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int64? LogicalBytes
-        // GraphQL -> logicalBytes: Long (scalar)
+        // GraphQL -> logicalBytes: Long! (scalar)
         if (this.LogicalBytes != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "logicalBytes\n" ;
@@ -533,7 +533,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Single? LogicalDataReduction
-        // GraphQL -> logicalDataReduction: Float (scalar)
+        // GraphQL -> logicalDataReduction: Float! (scalar)
         if (this.LogicalDataReduction != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "logicalDataReduction\n" ;
@@ -542,7 +542,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Single? LogicalDedupRatio
-        // GraphQL -> logicalDedupRatio: Float (scalar)
+        // GraphQL -> logicalDedupRatio: Float! (scalar)
         if (this.LogicalDedupRatio != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "logicalDedupRatio\n" ;
@@ -578,7 +578,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? OrgId
-        // GraphQL -> orgId: String (scalar)
+        // GraphQL -> orgId: String! (scalar)
         if (this.OrgId != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "orgId\n" ;
@@ -587,7 +587,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? OrgName
-        // GraphQL -> orgName: String (scalar)
+        // GraphQL -> orgName: String! (scalar)
         if (this.OrgName != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "orgName\n" ;
@@ -596,7 +596,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int64? PhysicalBytes
-        // GraphQL -> physicalBytes: Long (scalar)
+        // GraphQL -> physicalBytes: Long! (scalar)
         if (this.PhysicalBytes != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "physicalBytes\n" ;
@@ -605,7 +605,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? ProtectedVolume
-        // GraphQL -> protectedVolume: String (scalar)
+        // GraphQL -> protectedVolume: String! (scalar)
         if (this.ProtectedVolume != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "protectedVolume\n" ;
@@ -614,7 +614,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? RecoveryPoint
-        // GraphQL -> recoveryPoint: String (scalar)
+        // GraphQL -> recoveryPoint: String! (scalar)
         if (this.RecoveryPoint != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "recoveryPoint\n" ;
@@ -623,7 +623,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? RecoveryPointType
-        // GraphQL -> recoveryPointType: String (scalar)
+        // GraphQL -> recoveryPointType: String! (scalar)
         if (this.RecoveryPointType != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "recoveryPointType\n" ;
@@ -632,7 +632,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? ReplicationSource
-        // GraphQL -> replicationSource: String (scalar)
+        // GraphQL -> replicationSource: String! (scalar)
         if (this.ReplicationSource != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "replicationSource\n" ;
@@ -641,7 +641,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? ReplicationTarget
-        // GraphQL -> replicationTarget: String (scalar)
+        // GraphQL -> replicationTarget: String! (scalar)
         if (this.ReplicationTarget != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "replicationTarget\n" ;
@@ -677,7 +677,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? SnapshotConsistency
-        // GraphQL -> snapshotConsistency: String (scalar)
+        // GraphQL -> snapshotConsistency: String! (scalar)
         if (this.SnapshotConsistency != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "snapshotConsistency\n" ;
@@ -722,7 +722,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int64? TotalFilesTransferred
-        // GraphQL -> totalFilesTransferred: Long (scalar)
+        // GraphQL -> totalFilesTransferred: Long! (scalar)
         if (this.TotalFilesTransferred != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "totalFilesTransferred\n" ;
@@ -731,7 +731,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? UserName
-        // GraphQL -> userName: String (scalar)
+        // GraphQL -> userName: String! (scalar)
         if (this.UserName != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "userName\n" ;
@@ -759,7 +759,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.String? ArchivalTarget
-        // GraphQL -> archivalTarget: String (scalar)
+        // GraphQL -> archivalTarget: String! (scalar)
         if (ec.Includes("archivalTarget",true))
         {
             if(this.ArchivalTarget == null) {
@@ -844,7 +844,7 @@ namespace RubrikSecurityCloud.Types
             this.ClusterUuid = null;
         }
         //      C# -> System.Single? DataReduction
-        // GraphQL -> dataReduction: Float (scalar)
+        // GraphQL -> dataReduction: Float! (scalar)
         if (ec.Includes("dataReduction",true))
         {
             if(this.DataReduction == null) {
@@ -861,7 +861,7 @@ namespace RubrikSecurityCloud.Types
             this.DataReduction = null;
         }
         //      C# -> System.Int64? DataTransferred
-        // GraphQL -> dataTransferred: Long (scalar)
+        // GraphQL -> dataTransferred: Long! (scalar)
         if (ec.Includes("dataTransferred",true))
         {
             if(this.DataTransferred == null) {
@@ -878,7 +878,7 @@ namespace RubrikSecurityCloud.Types
             this.DataTransferred = null;
         }
         //      C# -> System.Single? DedupRatio
-        // GraphQL -> dedupRatio: Float (scalar)
+        // GraphQL -> dedupRatio: Float! (scalar)
         if (ec.Includes("dedupRatio",true))
         {
             if(this.DedupRatio == null) {
@@ -895,7 +895,7 @@ namespace RubrikSecurityCloud.Types
             this.DedupRatio = null;
         }
         //      C# -> System.String? DirectArchive
-        // GraphQL -> directArchive: String (scalar)
+        // GraphQL -> directArchive: String! (scalar)
         if (ec.Includes("directArchive",true))
         {
             if(this.DirectArchive == null) {
@@ -946,7 +946,7 @@ namespace RubrikSecurityCloud.Types
             this.EndTime = null;
         }
         //      C# -> System.String? FailureReason
-        // GraphQL -> failureReason: String (scalar)
+        // GraphQL -> failureReason: String! (scalar)
         if (ec.Includes("failureReason",true))
         {
             if(this.FailureReason == null) {
@@ -997,7 +997,7 @@ namespace RubrikSecurityCloud.Types
             this.Location = null;
         }
         //      C# -> System.Int64? LogicalBytes
-        // GraphQL -> logicalBytes: Long (scalar)
+        // GraphQL -> logicalBytes: Long! (scalar)
         if (ec.Includes("logicalBytes",true))
         {
             if(this.LogicalBytes == null) {
@@ -1014,7 +1014,7 @@ namespace RubrikSecurityCloud.Types
             this.LogicalBytes = null;
         }
         //      C# -> System.Single? LogicalDataReduction
-        // GraphQL -> logicalDataReduction: Float (scalar)
+        // GraphQL -> logicalDataReduction: Float! (scalar)
         if (ec.Includes("logicalDataReduction",true))
         {
             if(this.LogicalDataReduction == null) {
@@ -1031,7 +1031,7 @@ namespace RubrikSecurityCloud.Types
             this.LogicalDataReduction = null;
         }
         //      C# -> System.Single? LogicalDedupRatio
-        // GraphQL -> logicalDedupRatio: Float (scalar)
+        // GraphQL -> logicalDedupRatio: Float! (scalar)
         if (ec.Includes("logicalDedupRatio",true))
         {
             if(this.LogicalDedupRatio == null) {
@@ -1099,7 +1099,7 @@ namespace RubrikSecurityCloud.Types
             this.ObjectType = null;
         }
         //      C# -> System.String? OrgId
-        // GraphQL -> orgId: String (scalar)
+        // GraphQL -> orgId: String! (scalar)
         if (ec.Includes("orgId",true))
         {
             if(this.OrgId == null) {
@@ -1116,7 +1116,7 @@ namespace RubrikSecurityCloud.Types
             this.OrgId = null;
         }
         //      C# -> System.String? OrgName
-        // GraphQL -> orgName: String (scalar)
+        // GraphQL -> orgName: String! (scalar)
         if (ec.Includes("orgName",true))
         {
             if(this.OrgName == null) {
@@ -1133,7 +1133,7 @@ namespace RubrikSecurityCloud.Types
             this.OrgName = null;
         }
         //      C# -> System.Int64? PhysicalBytes
-        // GraphQL -> physicalBytes: Long (scalar)
+        // GraphQL -> physicalBytes: Long! (scalar)
         if (ec.Includes("physicalBytes",true))
         {
             if(this.PhysicalBytes == null) {
@@ -1150,7 +1150,7 @@ namespace RubrikSecurityCloud.Types
             this.PhysicalBytes = null;
         }
         //      C# -> System.String? ProtectedVolume
-        // GraphQL -> protectedVolume: String (scalar)
+        // GraphQL -> protectedVolume: String! (scalar)
         if (ec.Includes("protectedVolume",true))
         {
             if(this.ProtectedVolume == null) {
@@ -1167,7 +1167,7 @@ namespace RubrikSecurityCloud.Types
             this.ProtectedVolume = null;
         }
         //      C# -> System.String? RecoveryPoint
-        // GraphQL -> recoveryPoint: String (scalar)
+        // GraphQL -> recoveryPoint: String! (scalar)
         if (ec.Includes("recoveryPoint",true))
         {
             if(this.RecoveryPoint == null) {
@@ -1184,7 +1184,7 @@ namespace RubrikSecurityCloud.Types
             this.RecoveryPoint = null;
         }
         //      C# -> System.String? RecoveryPointType
-        // GraphQL -> recoveryPointType: String (scalar)
+        // GraphQL -> recoveryPointType: String! (scalar)
         if (ec.Includes("recoveryPointType",true))
         {
             if(this.RecoveryPointType == null) {
@@ -1201,7 +1201,7 @@ namespace RubrikSecurityCloud.Types
             this.RecoveryPointType = null;
         }
         //      C# -> System.String? ReplicationSource
-        // GraphQL -> replicationSource: String (scalar)
+        // GraphQL -> replicationSource: String! (scalar)
         if (ec.Includes("replicationSource",true))
         {
             if(this.ReplicationSource == null) {
@@ -1218,7 +1218,7 @@ namespace RubrikSecurityCloud.Types
             this.ReplicationSource = null;
         }
         //      C# -> System.String? ReplicationTarget
-        // GraphQL -> replicationTarget: String (scalar)
+        // GraphQL -> replicationTarget: String! (scalar)
         if (ec.Includes("replicationTarget",true))
         {
             if(this.ReplicationTarget == null) {
@@ -1286,7 +1286,7 @@ namespace RubrikSecurityCloud.Types
             this.SlaDomainName = null;
         }
         //      C# -> System.String? SnapshotConsistency
-        // GraphQL -> snapshotConsistency: String (scalar)
+        // GraphQL -> snapshotConsistency: String! (scalar)
         if (ec.Includes("snapshotConsistency",true))
         {
             if(this.SnapshotConsistency == null) {
@@ -1371,7 +1371,7 @@ namespace RubrikSecurityCloud.Types
             this.TaskType = null;
         }
         //      C# -> System.Int64? TotalFilesTransferred
-        // GraphQL -> totalFilesTransferred: Long (scalar)
+        // GraphQL -> totalFilesTransferred: Long! (scalar)
         if (ec.Includes("totalFilesTransferred",true))
         {
             if(this.TotalFilesTransferred == null) {
@@ -1388,7 +1388,7 @@ namespace RubrikSecurityCloud.Types
             this.TotalFilesTransferred = null;
         }
         //      C# -> System.String? UserName
-        // GraphQL -> userName: String (scalar)
+        // GraphQL -> userName: String! (scalar)
         if (ec.Includes("userName",true))
         {
             if(this.UserName == null) {

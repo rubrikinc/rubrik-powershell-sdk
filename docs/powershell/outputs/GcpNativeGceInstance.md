@@ -21,9 +21,15 @@ Represents a GCP GCE instance.
   - Specifies whether the GCP GCE instance is relic or not.
 - labels: list of Labels
   - List of labels attached to the GCP instance.
+- attachmentSpecs: list of GcpNativeDiskAttachmentSpecs
+  - List of GCP disk details attached to the instance.
+- gcpNativeProjectDetails: GcpNativeProjectDetails
+  - Project details of the GCE instance.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - gcpNativeProject: GcpNativeProject
+  - GCP Project of the GCE Instance.
+- gcpProject: GcpNativeProject
   - GCP Project of the GCE Instance.
 - attachedDisks: list of GcpNativeAttachmentDetailss
   - List of attached GCP native disks.
@@ -34,7 +40,7 @@ Represents a GCP GCE instance.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -62,7 +68,7 @@ Represents a GCP GCE instance.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
@@ -83,3 +89,5 @@ Represents a GCP GCE instance.
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
+- cloudNativeId: System.String
+  - GCP Native ID of the object.

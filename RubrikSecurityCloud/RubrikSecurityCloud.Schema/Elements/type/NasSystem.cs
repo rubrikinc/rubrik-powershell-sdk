@@ -106,6 +106,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isSmbSupported")]
         public System.Boolean? IsSmbSupported { get; set; }
 
+        //      C# -> System.Boolean? IsUserSuppliedSmbCredentials
+        // GraphQL -> isUserSuppliedSmbCredentials: Boolean! (scalar)
+        [JsonProperty("isUserSuppliedSmbCredentials")]
+        public System.Boolean? IsUserSuppliedSmbCredentials { get; set; }
+
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
         [JsonProperty("lastRefreshTime")]
@@ -312,6 +317,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsNfsSupported = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsSmbSupported = null,
+        System.Boolean? IsUserSuppliedSmbCredentials = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
         System.Int32? NamespaceCount = null,
@@ -390,6 +396,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsSmbSupported != null ) {
             this.IsSmbSupported = IsSmbSupported;
+        }
+        if ( IsUserSuppliedSmbCredentials != null ) {
+            this.IsUserSuppliedSmbCredentials = IsUserSuppliedSmbCredentials;
         }
         if ( LastRefreshTime != null ) {
             this.LastRefreshTime = LastRefreshTime;
@@ -654,6 +663,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isSmbSupported\n" ;
             } else {
                 s += ind + "isSmbSupported\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsUserSuppliedSmbCredentials
+        // GraphQL -> isUserSuppliedSmbCredentials: Boolean! (scalar)
+        if (this.IsUserSuppliedSmbCredentials != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isUserSuppliedSmbCredentials\n" ;
+            } else {
+                s += ind + "isUserSuppliedSmbCredentials\n" ;
             }
         }
         //      C# -> DateTime? LastRefreshTime
@@ -1263,6 +1281,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsSmbSupported != null && ec.Excludes("isSmbSupported",true))
         {
             this.IsSmbSupported = null;
+        }
+        //      C# -> System.Boolean? IsUserSuppliedSmbCredentials
+        // GraphQL -> isUserSuppliedSmbCredentials: Boolean! (scalar)
+        if (ec.Includes("isUserSuppliedSmbCredentials",true))
+        {
+            if(this.IsUserSuppliedSmbCredentials == null) {
+
+                this.IsUserSuppliedSmbCredentials = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUserSuppliedSmbCredentials != null && ec.Excludes("isUserSuppliedSmbCredentials",true))
+        {
+            this.IsUserSuppliedSmbCredentials = null;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)

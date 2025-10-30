@@ -87,7 +87,8 @@ Supported in v5.0+
   - Supported in v9.4+
   Boolean value specifying whether to use secure thrift as the data transfer mechanism between the Rubrik cluster and the Oracle database instead of NFS. The default data transfer mechanism is NFS.
 - dataGuardType: CdmDataGuardType
-  - 
+  - Supported in v6.0+
+  Indicates whether this object is a non-Data Guard database, Data Guard member database, or Data Guard group.
 - infraPath: list of ManagedHierarchyObjectAncestors
   - Required. Supported in v5.0+
   An array that contains information about the objects in the infrastructure path of a specified Oracle database.

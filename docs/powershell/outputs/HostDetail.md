@@ -43,9 +43,9 @@ Supported in v5.0+
 - oracleSddWalletPath: System.String
   - Supported in v9.3+
   Specifies the wallet path on the Oracle host which is used to authenticate remote connections to oracle databases during Sensitive Data Discovery.
-- shouldSddThroughRba: System.Boolean
-  - Supported in v9.5
-  A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow through RBA.
+- shouldOracleSddThroughRba: System.Boolean
+  - Supported in v9.4+
+  A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for Oracle host through RBA.
 - mssqlSddUsername: System.String
   - Supported in v9.2+
   Specifies the username configured for the SQL server instance for sensitive data discovery.
@@ -57,13 +57,19 @@ Supported in v5.0+
   - Supported in v9.0+
   v9.0-v9.1: Id of the Active Directory Domain if the windows host has domain controller hosted.
   v9.2+: (DEPRECATED) This field is deprecate in favor of activeDirectoryAdditionalInfo. Id of the Active Directory Domain if the windows host has domain controller hosted.
+- shouldMssqlSddThroughRba: System.Boolean
+  - Supported in v9.4+
+  A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for SQL Server host through RBA.
 - oracleSddUsername: System.String
   - Supported in v9.3+
   Specifies the username configured for the Oracle host for sensitive data discovery.
 - hostVfdDriverState: HostVfdState
-  - 
+  - Required. Supported in v5.0+
+  v5.0-v6.0: Specifies the installation status of the VFD driver on a Windows host. The value is 'NotInstalled' when the driver is absent. The value is 'Installed' when the driver is present. The value is 'RestartRequred' when the driver is present but requires a restart of the Windows host in order to function.
+  v7.0+: Specifies the installation status of the VFD driver on a Windows host. The value is - 'NotInstalled' when the driver is absent. - 'Installed' when the driver is present. - 'InstalledButRestartRequred' when the driver is present but requires a restart of the Windows host. - 'InstalledButTwoRestartsRequred' when the driver is updated but requires two restarts of the Window host. - 'UninstalledButRestartRequired' when the driver is uninstalled but requires a restart of the Windows host to remove the driver.
 - hostVfdEnabled: HostVfdInstallConfig
-  - 
+  - Supported in v5.0+
+  Specifies the status of VFD-based volume backups on Windows hosts. The value is 'Enabled' when VFD-based volume backups are enabled. The value is 'Disabled' when VFD-based volume backups are disabled.
 - oracleSepsSettings: OracleSepsWalletSettings
   - Supported in v9.4+
   Oracle SEPS settings for the host.

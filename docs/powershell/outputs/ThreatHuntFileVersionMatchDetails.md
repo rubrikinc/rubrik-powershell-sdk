@@ -9,5 +9,7 @@ File version match details information containing time-related metadata.
   - Latest snapshot date containing a match.
 - latestSnapshotWithoutVersionTime: DateTime
   - Latest snapshot date without this version.
-- matchedSnapshots: list of MatchedSnapshots
-  - Information about the snapshots where the file was matched.
+- isPathQuarantined: System.Boolean
+  - Specifies whether the matched file version is quarantined.
+- snapshotDetail: list of ThreatHuntSnapshotDetailss
+  - Details of the snapshot.

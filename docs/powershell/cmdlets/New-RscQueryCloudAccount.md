@@ -48,6 +48,11 @@ Lists certificates mapped to a given cloud account and cloud type.
     - cloudNativeAccountId - System.String: Cloud-native account ID.
     - cloudType - CloudType: Cloud provider type, such as AWS, Azure, or GCP.
 - Returns ListCertificateCloudAccountMappingsResp.
+### listcertificateusages
+Lists certificate usage for a specified cloud account and type.
+
+- There is a single argument of type ListCertificateUsagesForCloudAccountInput.
+- Returns ListCertificateUsagesForCloudAccountResp.
 ### withexocomputemappings
 Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 

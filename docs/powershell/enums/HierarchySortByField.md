@@ -155,3 +155,11 @@ Fields for sorting hierarchy objects.
 +mo:sort:db:table=aws_native_hierarchy_region
 +mo:sort:db:column=dynamo_db_table_count
 +mo:sort:db:index:key=NULL
+- GWS_USER_EMAIL_ADDRESS - Sort Google Workspace users by primary email address.
++mo:sort:db:table=saasapps_google_workspace_users
++mo:sort:db:column=primary_email
++mo:sort:db:index:key=NULL
+- GWS_USER_ORG_UNIT - Sort Google Workspace users by organization unit name.
++mo:sort:db:table=saasapps_google_workspace_org_units
++mo:sort:db:column=name
++mo:sort:db:index:key=NULL

@@ -31,3 +31,6 @@ Represents audit types.
 - ANOMALY - Anomaly audit.
 - THREAT_FEED - Threat feed audit object.
 - DATA_RISKS - Data Risks audit
+- IDENTITY_VIOLATION - Identity violations audit.
+- IDENTITY_ALERT - Identity alert audit.
+- STAGED_UPGRADE - Upgrade audit.

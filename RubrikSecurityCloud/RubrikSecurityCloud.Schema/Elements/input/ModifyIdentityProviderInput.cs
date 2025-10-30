@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? IdpId
+        // GraphQL -> idpId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("idpId")]
+        public System.String? IdpId { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
@@ -48,13 +55,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> idpClaimAttributes: [IdpClaimAttribute!] (input)
         [JsonProperty("idpClaimAttributes")]
         public List<IdpClaimAttribute>? IdpClaimAttributes { get; set; }
-
-        //      C# -> System.String? IdpId
-        // GraphQL -> idpId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("idpId")]
-        public System.String? IdpId { get; set; }
 
 
         #endregion

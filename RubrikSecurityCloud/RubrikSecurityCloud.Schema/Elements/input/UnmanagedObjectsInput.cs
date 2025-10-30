@@ -72,6 +72,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountIds")]
         public List<System.String>? CloudAccountIds { get; set; }
 
+        //      C# -> BackupCopyType? BackupCopyType
+        // GraphQL -> backupCopyType: BackupCopyType (enum)
+        [JsonProperty("backupCopyType")]
+        public BackupCopyType? BackupCopyType { get; set; }
+
         //      C# -> CloudVendor? ManagedBy
         // GraphQL -> managedBy: CloudVendor (enum)
         [JsonProperty("managedBy")]

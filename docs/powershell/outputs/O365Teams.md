@@ -1,6 +1,7 @@
 ### O365Teams
 - orgID: System.String
 - naturalId: System.String
+  - The natural ID of the team.
 - teamName: System.String
 - isRelic: System.Boolean
 - membersCount: System.Int32
@@ -37,7 +38,7 @@
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

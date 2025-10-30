@@ -1,7 +1,7 @@
 ### CloudDirectCluster
-Cloud Direct cluster location details.
+Cloud direct cluster information.
 
 - id: System.String
-  - The Cloud Direct cluster ID.
+  - Cloud direct cluster ID.
 - name: System.String
-  - The Cloud Direct cluster name.
+  - Cloud direct cluster name.

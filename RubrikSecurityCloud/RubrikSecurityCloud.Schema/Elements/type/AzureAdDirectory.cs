@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeId")]
         public System.String? ExocomputeId { get; set; }
 
+        //      C# -> DateTime? FirstDeviceSnapshotTime
+        // GraphQL -> firstDeviceSnapshotTime: DateTime (scalar)
+        [JsonProperty("firstDeviceSnapshotTime")]
+        public DateTime? FirstDeviceSnapshotTime { get; set; }
+
         //      C# -> DateTime? FirstScopeSnapshotTime
         // GraphQL -> firstScopeSnapshotTime: DateTime (scalar)
         [JsonProperty("firstScopeSnapshotTime")]
@@ -100,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsJitEnabled
+        // GraphQL -> isJitEnabled: Boolean! (scalar)
+        [JsonProperty("isJitEnabled")]
+        public System.Boolean? IsJitEnabled { get; set; }
 
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)
@@ -131,15 +141,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestAuthenticationStrengthsCount")]
         public System.Int32? LatestAuthenticationStrengthsCount { get; set; }
 
+        //      C# -> System.Int32? LatestBitLockerKeyCount
+        // GraphQL -> latestBitLockerKeyCount: Int! (scalar)
+        [JsonProperty("latestBitLockerKeyCount")]
+        public System.Int32? LatestBitLockerKeyCount { get; set; }
+
         //      C# -> System.Int32? LatestConditionalAccessPoliciesCount
         // GraphQL -> latestConditionalAccessPoliciesCount: Int! (scalar)
         [JsonProperty("latestConditionalAccessPoliciesCount")]
         public System.Int32? LatestConditionalAccessPoliciesCount { get; set; }
 
+        //      C# -> System.Int32? LatestDeviceCount
+        // GraphQL -> latestDeviceCount: Int! (scalar)
+        [JsonProperty("latestDeviceCount")]
+        public System.Int32? LatestDeviceCount { get; set; }
+
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         [JsonProperty("latestGroupCount")]
         public System.Int32? LatestGroupCount { get; set; }
+
+        //      C# -> System.Int32? LatestLocalAdminPasswordCount
+        // GraphQL -> latestLocalAdminPasswordCount: Int! (scalar)
+        [JsonProperty("latestLocalAdminPasswordCount")]
+        public System.Int32? LatestLocalAdminPasswordCount { get; set; }
 
         //      C# -> System.Int32? LatestNamedLocationsCount
         // GraphQL -> latestNamedLocationsCount: Int! (scalar)
@@ -170,6 +195,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestUserCount: Int! (scalar)
         [JsonProperty("latestUserCount")]
         public System.Int32? LatestUserCount { get; set; }
+
+        //      C# -> System.Boolean? MigratedFromColossus
+        // GraphQL -> migratedFromColossus: Boolean! (scalar)
+        [JsonProperty("migratedFromColossus")]
+        public System.Boolean? MigratedFromColossus { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -404,23 +434,29 @@ namespace RubrikSecurityCloud.Types
         System.String? DirectoryId = null,
         System.String? DomainName = null,
         System.String? ExocomputeId = null,
+        DateTime? FirstDeviceSnapshotTime = null,
         DateTime? FirstScopeSnapshotTime = null,
         DateTime? FirstZeusSnapshotTime = null,
         System.String? Id = null,
+        System.Boolean? IsJitEnabled = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
         System.Int32? LatestAdministrativeUnitsCount = null,
         System.Int32? LatestApplicationsCount = null,
         System.Int32? LatestAuthenticationContextsCount = null,
         System.Int32? LatestAuthenticationStrengthsCount = null,
+        System.Int32? LatestBitLockerKeyCount = null,
         System.Int32? LatestConditionalAccessPoliciesCount = null,
+        System.Int32? LatestDeviceCount = null,
         System.Int32? LatestGroupCount = null,
+        System.Int32? LatestLocalAdminPasswordCount = null,
         System.Int32? LatestNamedLocationsCount = null,
         System.Int32? LatestRolesCount = null,
         System.Int32? LatestServicePrincipalsCount = null,
         DateTime? LatestSnapshotTime = null,
         System.Int32? LatestTermsOfUseCount = null,
         System.Int32? LatestUserCount = null,
+        System.Boolean? MigratedFromColossus = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -484,6 +520,9 @@ namespace RubrikSecurityCloud.Types
         if ( ExocomputeId != null ) {
             this.ExocomputeId = ExocomputeId;
         }
+        if ( FirstDeviceSnapshotTime != null ) {
+            this.FirstDeviceSnapshotTime = FirstDeviceSnapshotTime;
+        }
         if ( FirstScopeSnapshotTime != null ) {
             this.FirstScopeSnapshotTime = FirstScopeSnapshotTime;
         }
@@ -492,6 +531,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsJitEnabled != null ) {
+            this.IsJitEnabled = IsJitEnabled;
         }
         if ( IsProvisioned != null ) {
             this.IsProvisioned = IsProvisioned;
@@ -511,11 +553,20 @@ namespace RubrikSecurityCloud.Types
         if ( LatestAuthenticationStrengthsCount != null ) {
             this.LatestAuthenticationStrengthsCount = LatestAuthenticationStrengthsCount;
         }
+        if ( LatestBitLockerKeyCount != null ) {
+            this.LatestBitLockerKeyCount = LatestBitLockerKeyCount;
+        }
         if ( LatestConditionalAccessPoliciesCount != null ) {
             this.LatestConditionalAccessPoliciesCount = LatestConditionalAccessPoliciesCount;
         }
+        if ( LatestDeviceCount != null ) {
+            this.LatestDeviceCount = LatestDeviceCount;
+        }
         if ( LatestGroupCount != null ) {
             this.LatestGroupCount = LatestGroupCount;
+        }
+        if ( LatestLocalAdminPasswordCount != null ) {
+            this.LatestLocalAdminPasswordCount = LatestLocalAdminPasswordCount;
         }
         if ( LatestNamedLocationsCount != null ) {
             this.LatestNamedLocationsCount = LatestNamedLocationsCount;
@@ -534,6 +585,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestUserCount != null ) {
             this.LatestUserCount = LatestUserCount;
+        }
+        if ( MigratedFromColossus != null ) {
+            this.MigratedFromColossus = MigratedFromColossus;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -744,6 +798,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "exocomputeId\n" ;
             }
         }
+        //      C# -> DateTime? FirstDeviceSnapshotTime
+        // GraphQL -> firstDeviceSnapshotTime: DateTime (scalar)
+        if (this.FirstDeviceSnapshotTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "firstDeviceSnapshotTime\n" ;
+            } else {
+                s += ind + "firstDeviceSnapshotTime\n" ;
+            }
+        }
         //      C# -> DateTime? FirstScopeSnapshotTime
         // GraphQL -> firstScopeSnapshotTime: DateTime (scalar)
         if (this.FirstScopeSnapshotTime != null) {
@@ -769,6 +832,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsJitEnabled
+        // GraphQL -> isJitEnabled: Boolean! (scalar)
+        if (this.IsJitEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isJitEnabled\n" ;
+            } else {
+                s += ind + "isJitEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsProvisioned
@@ -825,6 +897,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestAuthenticationStrengthsCount\n" ;
             }
         }
+        //      C# -> System.Int32? LatestBitLockerKeyCount
+        // GraphQL -> latestBitLockerKeyCount: Int! (scalar)
+        if (this.LatestBitLockerKeyCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestBitLockerKeyCount\n" ;
+            } else {
+                s += ind + "latestBitLockerKeyCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LatestConditionalAccessPoliciesCount
         // GraphQL -> latestConditionalAccessPoliciesCount: Int! (scalar)
         if (this.LatestConditionalAccessPoliciesCount != null) {
@@ -834,6 +915,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestConditionalAccessPoliciesCount\n" ;
             }
         }
+        //      C# -> System.Int32? LatestDeviceCount
+        // GraphQL -> latestDeviceCount: Int! (scalar)
+        if (this.LatestDeviceCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestDeviceCount\n" ;
+            } else {
+                s += ind + "latestDeviceCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (this.LatestGroupCount != null) {
@@ -841,6 +931,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestGroupCount\n" ;
             } else {
                 s += ind + "latestGroupCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestLocalAdminPasswordCount
+        // GraphQL -> latestLocalAdminPasswordCount: Int! (scalar)
+        if (this.LatestLocalAdminPasswordCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestLocalAdminPasswordCount\n" ;
+            } else {
+                s += ind + "latestLocalAdminPasswordCount\n" ;
             }
         }
         //      C# -> System.Int32? LatestNamedLocationsCount
@@ -895,6 +994,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestUserCount\n" ;
             } else {
                 s += ind + "latestUserCount\n" ;
+            }
+        }
+        //      C# -> System.Boolean? MigratedFromColossus
+        // GraphQL -> migratedFromColossus: Boolean! (scalar)
+        if (this.MigratedFromColossus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "migratedFromColossus\n" ;
+            } else {
+                s += ind + "migratedFromColossus\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1395,6 +1503,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ExocomputeId = null;
         }
+        //      C# -> DateTime? FirstDeviceSnapshotTime
+        // GraphQL -> firstDeviceSnapshotTime: DateTime (scalar)
+        if (ec.Includes("firstDeviceSnapshotTime",true))
+        {
+            if(this.FirstDeviceSnapshotTime == null) {
+
+                this.FirstDeviceSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FirstDeviceSnapshotTime != null && ec.Excludes("firstDeviceSnapshotTime",true))
+        {
+            this.FirstDeviceSnapshotTime = null;
+        }
         //      C# -> DateTime? FirstScopeSnapshotTime
         // GraphQL -> firstScopeSnapshotTime: DateTime (scalar)
         if (ec.Includes("firstScopeSnapshotTime",true))
@@ -1445,6 +1570,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsJitEnabled
+        // GraphQL -> isJitEnabled: Boolean! (scalar)
+        if (ec.Includes("isJitEnabled",true))
+        {
+            if(this.IsJitEnabled == null) {
+
+                this.IsJitEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsJitEnabled != null && ec.Excludes("isJitEnabled",true))
+        {
+            this.IsJitEnabled = null;
         }
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)
@@ -1548,6 +1690,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestAuthenticationStrengthsCount = null;
         }
+        //      C# -> System.Int32? LatestBitLockerKeyCount
+        // GraphQL -> latestBitLockerKeyCount: Int! (scalar)
+        if (ec.Includes("latestBitLockerKeyCount",true))
+        {
+            if(this.LatestBitLockerKeyCount == null) {
+
+                this.LatestBitLockerKeyCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestBitLockerKeyCount != null && ec.Excludes("latestBitLockerKeyCount",true))
+        {
+            this.LatestBitLockerKeyCount = null;
+        }
         //      C# -> System.Int32? LatestConditionalAccessPoliciesCount
         // GraphQL -> latestConditionalAccessPoliciesCount: Int! (scalar)
         if (ec.Includes("latestConditionalAccessPoliciesCount",true))
@@ -1565,6 +1724,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestConditionalAccessPoliciesCount = null;
         }
+        //      C# -> System.Int32? LatestDeviceCount
+        // GraphQL -> latestDeviceCount: Int! (scalar)
+        if (ec.Includes("latestDeviceCount",true))
+        {
+            if(this.LatestDeviceCount == null) {
+
+                this.LatestDeviceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestDeviceCount != null && ec.Excludes("latestDeviceCount",true))
+        {
+            this.LatestDeviceCount = null;
+        }
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (ec.Includes("latestGroupCount",true))
@@ -1581,6 +1757,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestGroupCount != null && ec.Excludes("latestGroupCount",true))
         {
             this.LatestGroupCount = null;
+        }
+        //      C# -> System.Int32? LatestLocalAdminPasswordCount
+        // GraphQL -> latestLocalAdminPasswordCount: Int! (scalar)
+        if (ec.Includes("latestLocalAdminPasswordCount",true))
+        {
+            if(this.LatestLocalAdminPasswordCount == null) {
+
+                this.LatestLocalAdminPasswordCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestLocalAdminPasswordCount != null && ec.Excludes("latestLocalAdminPasswordCount",true))
+        {
+            this.LatestLocalAdminPasswordCount = null;
         }
         //      C# -> System.Int32? LatestNamedLocationsCount
         // GraphQL -> latestNamedLocationsCount: Int! (scalar)
@@ -1683,6 +1876,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestUserCount != null && ec.Excludes("latestUserCount",true))
         {
             this.LatestUserCount = null;
+        }
+        //      C# -> System.Boolean? MigratedFromColossus
+        // GraphQL -> migratedFromColossus: Boolean! (scalar)
+        if (ec.Includes("migratedFromColossus",true))
+        {
+            if(this.MigratedFromColossus == null) {
+
+                this.MigratedFromColossus = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MigratedFromColossus != null && ec.Excludes("migratedFromColossus",true))
+        {
+            this.MigratedFromColossus = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

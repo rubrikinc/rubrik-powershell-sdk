@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedIdentity")]
         public AzureManagedIdentityName? ManagedIdentity { get; set; }
 
+        //      C# -> System.String? EndpointSuffix
+        // GraphQL -> endpointSuffix: String (scalar)
+        [JsonProperty("endpointSuffix")]
+        public System.String? EndpointSuffix { get; set; }
+
 
         #endregion
 

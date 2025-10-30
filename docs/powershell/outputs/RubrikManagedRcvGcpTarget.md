@@ -3,8 +3,8 @@ Specific information for Rubrik Cloud Vault (RCV)GCP target created on Rubrik.
 
 - bucket: System.String
   - Specifies the bucket for the RCV GCP archival target.
-- serviceAccountName: System.String
-  - Service account name for the RCV GCP archival target.
+- serviceAccountNativeId: System.String
+  - Native id of the service account for the RCV GCP archival target.
 - exocloudId: System.String
   - Exocloud instance ID used to provision resources for the RCV GCP archival target.
 - syncStatus: TargetSyncStatus

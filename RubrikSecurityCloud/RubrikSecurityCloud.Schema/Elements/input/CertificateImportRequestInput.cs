@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isTrusted")]
         public System.Boolean? IsTrusted { get; set; }
 
+        //      C# -> System.Boolean? IsInternal
+        // GraphQL -> isInternal: Boolean (scalar)
+        [JsonProperty("isInternal")]
+        public System.Boolean? IsInternal { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]

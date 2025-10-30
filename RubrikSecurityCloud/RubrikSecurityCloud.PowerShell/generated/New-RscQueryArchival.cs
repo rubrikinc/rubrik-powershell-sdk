@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Archival' API domain:
-    /// FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 11 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -243,6 +243,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RcsAzureArchivalLocationsConsumptionStatsOutput
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ReaderInfo operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: ReaderInfo
+    /// 
+    /// $query = New-RscQueryArchival -Operation ReaderInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetArchivalReaderInfoResp
     /// 
     /// 
     /// 
@@ -457,6 +488,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "IsTotpMandatoryInTargetVersion",
                 "PerObjectInfo",
                 "RcsLocationsConsumptionStats",
+                "ReaderInfo",
                 "StorageUsage",
                 "Target",
                 "TargetMapping",
@@ -491,6 +523,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RcsLocationsConsumptionStats":
                         this.ProcessRecord_RcsLocationsConsumptionStats();
+                        break;
+                    case "ReaderInfo":
+                        this.ProcessRecord_ReaderInfo();
                         break;
                     case "StorageUsage":
                         this.ProcessRecord_StorageUsage();
@@ -560,6 +595,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RcsLocationsConsumptionStats";
             // Create new graphql operation rcsArchivalLocationsConsumptionStats
             InitQueryRcsArchivalLocationsConsumptionStats();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalReaderInfo.
+        internal void ProcessRecord_ReaderInfo()
+        {
+            this._logger.name += " -ReaderInfo";
+            // Create new graphql operation archivalReaderInfo
+            InitQueryArchivalReaderInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -754,6 +798,29 @@ $query.Var.rcsAzureTargetConsumptionStatsRequest = @{
 	metricName = $someRcsConsumptionMetricNameType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsConsumptionMetricNameType]) for enum values.
 	# OPTIONAL
 	doForecasting = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalReaderInfo(input: GetArchivalReaderInfoReq!): GetArchivalReaderInfoResp!
+        internal void InitQueryArchivalReaderInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetArchivalReaderInfoReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalReaderInfo",
+                "($input: GetArchivalReaderInfoReq!)",
+                "GetArchivalReaderInfoResp",
+                Query.ArchivalReaderInfo,
+                Query.ArchivalReaderInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }

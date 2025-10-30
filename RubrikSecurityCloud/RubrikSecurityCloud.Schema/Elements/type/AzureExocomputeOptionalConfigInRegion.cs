@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AksClusterAccessType? AksClusterAccessType
+        // GraphQL -> aksClusterAccessType: AKSClusterAccessType! (enum)
+        [JsonProperty("aksClusterAccessType")]
+        public AksClusterAccessType? AksClusterAccessType { get; set; }
+
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier! (enum)
         [JsonProperty("aksClusterTier")]
@@ -34,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> additionalWhitelistIps: [String!]! (scalar)
         [JsonProperty("additionalWhitelistIps")]
         public List<System.String>? AdditionalWhitelistIps { get; set; }
+
+        //      C# -> System.String? AksCustomPrivateDnsZoneId
+        // GraphQL -> aksCustomPrivateDnsZoneId: String! (scalar)
+        [JsonProperty("aksCustomPrivateDnsZoneId")]
+        public System.String? AksCustomPrivateDnsZoneId { get; set; }
 
         //      C# -> System.String? AksNodeRgPrefix
         // GraphQL -> aksNodeRgPrefix: String! (scalar)
@@ -70,9 +80,11 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureExocomputeOptionalConfigInRegion Set(
+        AksClusterAccessType? AksClusterAccessType = null,
         AksProvisionTier? AksClusterTier = null,
         AksNodeCountBucket? AksNodeCountBucket = null,
         List<System.String>? AdditionalWhitelistIps = null,
+        System.String? AksCustomPrivateDnsZoneId = null,
         System.String? AksNodeRgPrefix = null,
         System.Boolean? DiskEncryptionAtHost = null,
         System.Boolean? EnableUserDefinedRouting = null,
@@ -80,6 +92,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? ShouldWhitelistRubrikIps = null
     ) 
     {
+        if ( AksClusterAccessType != null ) {
+            this.AksClusterAccessType = AksClusterAccessType;
+        }
         if ( AksClusterTier != null ) {
             this.AksClusterTier = AksClusterTier;
         }
@@ -88,6 +103,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AdditionalWhitelistIps != null ) {
             this.AdditionalWhitelistIps = AdditionalWhitelistIps;
+        }
+        if ( AksCustomPrivateDnsZoneId != null ) {
+            this.AksCustomPrivateDnsZoneId = AksCustomPrivateDnsZoneId;
         }
         if ( AksNodeRgPrefix != null ) {
             this.AksNodeRgPrefix = AksNodeRgPrefix;
@@ -118,6 +136,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AksClusterAccessType? AksClusterAccessType
+        // GraphQL -> aksClusterAccessType: AKSClusterAccessType! (enum)
+        if (this.AksClusterAccessType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "aksClusterAccessType\n" ;
+            } else {
+                s += ind + "aksClusterAccessType\n" ;
+            }
+        }
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier! (enum)
         if (this.AksClusterTier != null) {
@@ -143,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "additionalWhitelistIps\n" ;
             } else {
                 s += ind + "additionalWhitelistIps\n" ;
+            }
+        }
+        //      C# -> System.String? AksCustomPrivateDnsZoneId
+        // GraphQL -> aksCustomPrivateDnsZoneId: String! (scalar)
+        if (this.AksCustomPrivateDnsZoneId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "aksCustomPrivateDnsZoneId\n" ;
+            } else {
+                s += ind + "aksCustomPrivateDnsZoneId\n" ;
             }
         }
         //      C# -> System.String? AksNodeRgPrefix
@@ -197,6 +233,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AksClusterAccessType? AksClusterAccessType
+        // GraphQL -> aksClusterAccessType: AKSClusterAccessType! (enum)
+        if (ec.Includes("aksClusterAccessType",true))
+        {
+            if(this.AksClusterAccessType == null) {
+
+                this.AksClusterAccessType = new AksClusterAccessType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksClusterAccessType != null && ec.Excludes("aksClusterAccessType",true))
+        {
+            this.AksClusterAccessType = null;
+        }
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier! (enum)
         if (ec.Includes("aksClusterTier",true))
@@ -247,6 +300,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AdditionalWhitelistIps != null && ec.Excludes("additionalWhitelistIps",true))
         {
             this.AdditionalWhitelistIps = null;
+        }
+        //      C# -> System.String? AksCustomPrivateDnsZoneId
+        // GraphQL -> aksCustomPrivateDnsZoneId: String! (scalar)
+        if (ec.Includes("aksCustomPrivateDnsZoneId",true))
+        {
+            if(this.AksCustomPrivateDnsZoneId == null) {
+
+                this.AksCustomPrivateDnsZoneId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AksCustomPrivateDnsZoneId != null && ec.Excludes("aksCustomPrivateDnsZoneId",true))
+        {
+            this.AksCustomPrivateDnsZoneId = null;
         }
         //      C# -> System.String? AksNodeRgPrefix
         // GraphQL -> aksNodeRgPrefix: String! (scalar)

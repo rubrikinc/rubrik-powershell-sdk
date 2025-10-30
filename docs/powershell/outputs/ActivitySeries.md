@@ -57,6 +57,8 @@ A series of activities on either the RSC or a Rubrik cluster.
   - Specifies whether the event series is a transaction log event.
 - username: System.String
   - The user who triggered the related job.
+- slaDomainName: System.String
+  - The name of the SLA Domain associated with this activity series.
 - activitySeriesId: System.String
   - The ID of the activity series.
 - progress: System.String

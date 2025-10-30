@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRestoreWithIndex")]
         public System.Boolean? IsRestoreWithIndex { get; set; }
 
+        //      C# -> System.Boolean? IsRestoreFromCdm
+        // GraphQL -> isRestoreFromCdm: Boolean (scalar)
+        [JsonProperty("isRestoreFromCdm")]
+        public System.Boolean? IsRestoreFromCdm { get; set; }
+
         //      C# -> MongoAuthenticationType? TargetAuthenticationType
         // GraphQL -> targetAuthenticationType: MongoAuthenticationType (enum)
         [JsonProperty("targetAuthenticationType")]

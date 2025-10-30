@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nodeId")]
         public System.String? NodeId { get; set; }
 
+        //      C# -> DataAndManagementVlans? DataAndManagementVlans
+        // GraphQL -> dataAndManagementVlans: DataAndManagementVlans (type)
+        [JsonProperty("dataAndManagementVlans")]
+        public DataAndManagementVlans? DataAndManagementVlans { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterId = null,
         System.String? DataIpAddress = null,
         System.String? IpmiIpAddress = null,
-        System.String? NodeId = null
+        System.String? NodeId = null,
+        DataAndManagementVlans? DataAndManagementVlans = null
     ) 
     {
         if ( ClusterId != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NodeId != null ) {
             this.NodeId = NodeId;
+        }
+        if ( DataAndManagementVlans != null ) {
+            this.DataAndManagementVlans = DataAndManagementVlans;
         }
         return this;
     }
@@ -116,6 +125,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nodeId\n" ;
             } else {
                 s += ind + "nodeId\n" ;
+            }
+        }
+        //      C# -> DataAndManagementVlans? DataAndManagementVlans
+        // GraphQL -> dataAndManagementVlans: DataAndManagementVlans (type)
+        if (this.DataAndManagementVlans != null) {
+            var fspec = this.DataAndManagementVlans.AsFieldSpec(conf.Child("dataAndManagementVlans"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "dataAndManagementVlans" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,6 +213,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NodeId != null && ec.Excludes("nodeId",true))
         {
             this.NodeId = null;
+        }
+        //      C# -> DataAndManagementVlans? DataAndManagementVlans
+        // GraphQL -> dataAndManagementVlans: DataAndManagementVlans (type)
+        if (ec.Includes("dataAndManagementVlans",false))
+        {
+            if(this.DataAndManagementVlans == null) {
+
+                this.DataAndManagementVlans = new DataAndManagementVlans();
+                this.DataAndManagementVlans.ApplyExploratoryFieldSpec(ec.NewChild("dataAndManagementVlans"));
+
+            } else {
+
+                this.DataAndManagementVlans.ApplyExploratoryFieldSpec(ec.NewChild("dataAndManagementVlans"));
+
+            }
+        }
+        else if (this.DataAndManagementVlans != null && ec.Excludes("dataAndManagementVlans",false))
+        {
+            this.DataAndManagementVlans = null;
         }
     }
 

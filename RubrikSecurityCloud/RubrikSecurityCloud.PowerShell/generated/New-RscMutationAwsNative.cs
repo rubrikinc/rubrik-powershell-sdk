@@ -262,6 +262,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	shouldResurrectSnapshot = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -689,6 +691,8 @@ $query.Var.input = @{
 	snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	shouldResurrectSnapshot = $someBoolean
 }"
             );
         }

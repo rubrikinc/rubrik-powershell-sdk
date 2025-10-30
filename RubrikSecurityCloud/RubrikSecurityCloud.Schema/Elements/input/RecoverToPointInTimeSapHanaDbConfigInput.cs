@@ -19,6 +19,18 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SapHanaRestoreSourceConfigInput? SourceDbConfig
+        // GraphQL -> sourceDbConfig: SapHanaRestoreSourceConfigInput (input)
+        [JsonProperty("sourceDbConfig")]
+        public SapHanaRestoreSourceConfigInput? SourceDbConfig { get; set; }
+
+        //      C# -> System.Boolean? ShouldInitializeLogArea
+        // GraphQL -> shouldInitializeLogArea: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldInitializeLogArea")]
+        public System.Boolean? ShouldInitializeLogArea { get; set; }
+
         //      C# -> DateTime? RecoveryPoint
         // GraphQL -> recoveryPoint: DateTime (scalar)
         [JsonProperty("recoveryPoint")]
@@ -30,18 +42,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("dbId")]
         public System.String? DbId { get; set; }
-
-        //      C# -> System.Boolean? ShouldInitializeLogArea
-        // GraphQL -> shouldInitializeLogArea: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldInitializeLogArea")]
-        public System.Boolean? ShouldInitializeLogArea { get; set; }
-
-        //      C# -> SapHanaRestoreSourceConfigInput? SourceDbConfig
-        // GraphQL -> sourceDbConfig: SapHanaRestoreSourceConfigInput (input)
-        [JsonProperty("sourceDbConfig")]
-        public SapHanaRestoreSourceConfigInput? SourceDbConfig { get; set; }
 
 
         #endregion

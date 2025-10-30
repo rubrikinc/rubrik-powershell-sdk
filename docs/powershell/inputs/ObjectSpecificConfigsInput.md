@@ -33,3 +33,7 @@ Object-specific configurations.
   - Input to configure the SLA Domain for NAS Cloud Direct.
 - informixConfigInput: InformixSlaConfigInput
   - Input to configure the SLA Domain for Informix.
+- gcpCloudSqlConfigInput: GcpCloudSqlConfigInput
+  - Input to configure the SLA Domain for GCP Cloud SQL.
+- awsNativeDynamoDbSlaConfigInput: AwsNativeDynamoDbSlaConfigInput
+  - Input to configure the SLA Domain configuration for AWS DynamoDB table.

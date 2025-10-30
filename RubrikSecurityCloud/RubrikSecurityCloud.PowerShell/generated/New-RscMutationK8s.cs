@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 20
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Kubernetes' API domain:
-    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
+    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, UpdateCluster, or UpdateProtectionSet.
     /// </summary>
     /// <description>
     /// New-RscMutationK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 20 operations
+    /// There are 21 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, UpdateCluster, or UpdateProtectionSet.
+    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, UpdateCluster, or UpdateProtectionSet.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -108,11 +108,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
+    /// 		nadName = $someString
+    /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
     /// 		isAutoPsCreationEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		clientSecret = $someString
+    /// 		# OPTIONAL
+    /// 		nadNamespace = $someString
     /// 		# OPTIONAL
     /// 		accessToken = $someString
     /// 		# OPTIONAL
@@ -638,7 +642,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
+    /// 		nadName = $someString
+    /// 		# OPTIONAL
     /// 		isAutoPsCreationEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		nadNamespace = $someString
     /// 		# REQUIRED
     /// 		distribution = $someString
     /// 		# REQUIRED
@@ -872,6 +880,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartDiagnosticsJob operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: StartDiagnosticsJob
+    /// 
+    /// $query = New-RscMutationK8s -Operation StartDiagnosticsJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	jobConfig = @{
+    /// 		# REQUIRED
+    /// 		isBackupCheckEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		isRestoreCheckEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		isRegistryCheckEnabled = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateCluster operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -897,11 +945,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
+    /// 		nadName = $someString
+    /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
     /// 		isAutoPsCreationEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		clientSecret = $someString
+    /// 		# OPTIONAL
+    /// 		nadNamespace = $someString
     /// 		# OPTIONAL
     /// 		accessToken = $someString
     /// 		# OPTIONAL
@@ -1008,6 +1060,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RegenerateManifest",
                 "RestoreNamespace",
                 "RestoreProtectionSetSnapshot",
+                "StartDiagnosticsJob",
                 "UpdateCluster",
                 "UpdateProtectionSet",
                 IgnoreCase = true)]
@@ -1078,6 +1131,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreProtectionSetSnapshot":
                         this.ProcessRecord_RestoreProtectionSetSnapshot();
+                        break;
+                    case "StartDiagnosticsJob":
+                        this.ProcessRecord_StartDiagnosticsJob();
                         break;
                     case "UpdateCluster":
                         this.ProcessRecord_UpdateCluster();
@@ -1258,6 +1314,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // startK8sDiagnosticsJob.
+        internal void ProcessRecord_StartDiagnosticsJob()
+        {
+            this._logger.name += " -StartDiagnosticsJob";
+            // Create new graphql operation startK8sDiagnosticsJob
+            InitMutationStartK8sDiagnosticsJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateK8sCluster.
         internal void ProcessRecord_UpdateCluster()
         {
@@ -1310,11 +1375,15 @@ $query.Var.input = @{
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
+		nadName = $someString
+		# OPTIONAL
 		transport = $someString
 		# OPTIONAL
 		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		clientSecret = $someString
+		# OPTIONAL
+		nadNamespace = $someString
 		# OPTIONAL
 		accessToken = $someString
 		# OPTIONAL
@@ -1744,7 +1813,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
+		nadName = $someString
+		# OPTIONAL
 		isAutoPsCreationEnabled = $someBoolean
+		# OPTIONAL
+		nadNamespace = $someString
 		# REQUIRED
 		distribution = $someString
 		# REQUIRED
@@ -1928,6 +2001,38 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // startK8sDiagnosticsJob(input: StartK8sDiagnosticsJobInput!): AsyncRequestStatus!
+        internal void InitMutationStartK8sDiagnosticsJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartK8sDiagnosticsJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartK8sDiagnosticsJob",
+                "($input: StartK8sDiagnosticsJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.StartK8sDiagnosticsJob,
+                Mutation.StartK8sDiagnosticsJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	jobConfig = @{
+		# REQUIRED
+		isBackupCheckEnabled = $someBoolean
+		# REQUIRED
+		isRestoreCheckEnabled = $someBoolean
+		# REQUIRED
+		isRegistryCheckEnabled = $someBoolean
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // updateK8sCluster(input: UpdateK8sClusterInput!): ResponseSuccess!
         internal void InitMutationUpdateK8sCluster()
         {
@@ -1955,11 +2060,15 @@ $query.Var.input = @{
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
+		nadName = $someString
+		# OPTIONAL
 		transport = $someString
 		# OPTIONAL
 		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		clientSecret = $someString
+		# OPTIONAL
+		nadNamespace = $someString
 		# OPTIONAL
 		accessToken = $someString
 		# OPTIONAL

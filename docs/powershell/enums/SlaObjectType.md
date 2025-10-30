@@ -42,3 +42,8 @@ Type of objects managed by SLA Domains.
 - AWS_DYNAMODB_OBJECT_TYPE - AWS DynamoDB object.
 - OPENSTACK_OBJECT_TYPE
 - GOOGLE_WORKSPACE_OBJECT_TYPE - Google Workspace object.
+- INFORMIX_INSTANCE_OBJECT_TYPE - Informix object.
+- AZURE_DEVOPS_OBJECT_TYPE - Azure DevOps object.
+- OLVM_OBJECT_TYPE - OLVM object.
+- OKTA_OBJECT_TYPE - Okta object.
+- GCP_CLOUD_SQL_OBJECT_TYPE - GCP Cloud SQL object.

@@ -39,10 +39,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pullSecret")]
         public System.String? PullSecret { get; set; }
 
+        //      C# -> System.String? NadName
+        // GraphQL -> nadName: String (scalar)
+        [JsonProperty("nadName")]
+        public System.String? NadName { get; set; }
+
         //      C# -> System.Boolean? IsAutoPsCreationEnabled
         // GraphQL -> isAutoPsCreationEnabled: Boolean (scalar)
         [JsonProperty("isAutoPsCreationEnabled")]
         public System.Boolean? IsAutoPsCreationEnabled { get; set; }
+
+        //      C# -> System.String? NadNamespace
+        // GraphQL -> nadNamespace: String (scalar)
+        [JsonProperty("nadNamespace")]
+        public System.String? NadNamespace { get; set; }
 
         //      C# -> System.String? Distribution
         // GraphQL -> distribution: String! (scalar)

@@ -33,6 +33,8 @@ Information about MongoDB Source.
   - Metadata of the MongoDB source.
 - isArchived: System.Boolean
   - Specifies whether the MongoDB source is deleted.
+- caCertificateId: System.String
+  - Certificate ID referencing the certificate imported by using Rubrik's certificate management framework.
 - descendantConnection: MongoSourceDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: MongoSourcePhysicalChildTypeConnection
@@ -46,7 +48,7 @@ Information about MongoDB Source.
 - dataHosts: PhysicalHostConnection
   - The list of data hosts associated with this MongoDB source.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -74,7 +76,7 @@ Information about MongoDB Source.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

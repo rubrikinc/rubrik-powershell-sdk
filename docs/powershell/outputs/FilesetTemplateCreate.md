@@ -28,10 +28,9 @@ Supported in v5.0+
   - Supported in v7.0+
   Specifies whether this is created by a Kupr Host.
 - isCreatedByPolarisNas: System.Boolean
-  - Supported in v7.0+
-  Specifies whether the template was created for Polaris NAS.
+  - Specifies whether the template was created for Rubrik Security Cloud NAS.
 - filesetOptions: FilesetOptions
-  - 
+  - Fileset options.
 - templateBlocklistedFilesystemPaths: System.String
   - Supported in v9.5
   Comma-separated list of blocklisted filesystem paths specific to this template.
@@ -42,6 +41,7 @@ Supported in v5.0+
   - Supported in v9.5
   Specifies whether to override the cluster-wide blocklisted filesystem paths.
 - operatingSystemType: FilesetTemplateCreateOperatingSystemType
-  - 
+  - Supported in v5.0+
+  Operating system type of filesets created by template.
 - shareType: FilesetTemplateCreateShareType
-  - 
+  - Supported in v5.0+

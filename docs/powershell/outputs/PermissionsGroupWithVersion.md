@@ -1,7 +1,7 @@
 ### PermissionsGroupWithVersion
-Permissions group with accompanying version number.
+Represents a permissions group with its version.
 
 - permissionsGroup: PermissionsGroup
-  - Cloud account permissions group.
+  - Represents the permissions group.
 - version: System.Int32
-  - Version of the permissions group.
+  - Represents the version of the permissions group.

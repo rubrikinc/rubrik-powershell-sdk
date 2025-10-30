@@ -24,4 +24,6 @@ Filters for list of Azure SQL Databases.
 - serverId: System.String
   - Filter by managed object ID of the server.
 - azureNativeIsEligibleForSqlDatabaseDbProtectionFilter: AzureNativeIsEligibleForSqlDatabaseDbProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.

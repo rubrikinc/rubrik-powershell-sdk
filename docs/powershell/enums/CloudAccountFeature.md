@@ -36,5 +36,9 @@ Cloud account features.
 - ROLE_CHAINING - Cloud account feature is Role Chaining.
 - CLOUD_DISCOVERY - Cloud account feature is Cloud Discovery.
 - CLOUD_SQL_PROTECTION - Cloud account feature is Cloud SQL Protection.
+- AZURE_DEVOPS_PROTECTION - AZURE_DEVOPS_PROTECTION refers to the feature enabling protection
+of Azure DevOps and related workload.
+- AZURE_DEVOPS_REPOSITORY_PROTECTION - AZURE_DEVOPS_REPOSITORY_PROTECTION refers to the feature enabling
+protection of Azure DevOps repositories and related workload.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

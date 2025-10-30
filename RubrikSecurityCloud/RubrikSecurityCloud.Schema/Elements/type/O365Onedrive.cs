@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        [JsonProperty("naturalId")]
+        public System.String? NaturalId { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
@@ -322,6 +327,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRansomwareInvestigationEnabled = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
+        System.String? NaturalId = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.String? PreferredDataLocation = null,
@@ -381,6 +387,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( NaturalId != null ) {
+            this.NaturalId = NaturalId;
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
@@ -580,6 +589,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        if (this.NaturalId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "naturalId\n" ;
+            } else {
+                s += ind + "naturalId\n" ;
             }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
@@ -1069,6 +1087,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        if (ec.Includes("naturalId",true))
+        {
+            if(this.NaturalId == null) {
+
+                this.NaturalId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NaturalId != null && ec.Excludes("naturalId",true))
+        {
+            this.NaturalId = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.Int64? ImmutabilityOverhead
+        // GraphQL -> immutabilityOverhead: Long! (scalar)
+        [JsonProperty("immutabilityOverhead")]
+        public System.Int64? ImmutabilityOverhead { get; set; }
+
         //      C# -> System.Single? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Float! (scalar)
         [JsonProperty("ingestedArchivalStorage")]
@@ -109,6 +114,7 @@ namespace RubrikSecurityCloud.Types
         System.Single? AverageDailyGrowth = null,
         System.Single? CdpCapacity = null,
         System.String? ClusterUuid = null,
+        System.Int64? ImmutabilityOverhead = null,
         System.Single? IngestedArchivalStorage = null,
         System.Single? IngestedSnapshotStorage = null,
         DateTime? LastUpdateTime = null,
@@ -133,6 +139,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
+        }
+        if ( ImmutabilityOverhead != null ) {
+            this.ImmutabilityOverhead = ImmutabilityOverhead;
         }
         if ( IngestedArchivalStorage != null ) {
             this.IngestedArchivalStorage = IngestedArchivalStorage;
@@ -215,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterUuid\n" ;
             } else {
                 s += ind + "clusterUuid\n" ;
+            }
+        }
+        //      C# -> System.Int64? ImmutabilityOverhead
+        // GraphQL -> immutabilityOverhead: Long! (scalar)
+        if (this.ImmutabilityOverhead != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "immutabilityOverhead\n" ;
+            } else {
+                s += ind + "immutabilityOverhead\n" ;
             }
         }
         //      C# -> System.Single? IngestedArchivalStorage
@@ -390,6 +408,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
         {
             this.ClusterUuid = null;
+        }
+        //      C# -> System.Int64? ImmutabilityOverhead
+        // GraphQL -> immutabilityOverhead: Long! (scalar)
+        if (ec.Includes("immutabilityOverhead",true))
+        {
+            if(this.ImmutabilityOverhead == null) {
+
+                this.ImmutabilityOverhead = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ImmutabilityOverhead != null && ec.Excludes("immutabilityOverhead",true))
+        {
+            this.ImmutabilityOverhead = null;
         }
         //      C# -> System.Single? IngestedArchivalStorage
         // GraphQL -> ingestedArchivalStorage: Float! (scalar)

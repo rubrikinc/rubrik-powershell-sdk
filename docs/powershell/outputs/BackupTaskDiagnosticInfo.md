@@ -8,4 +8,5 @@ Supported in v5.1+
   - Supported in v5.1+
   The scheduled start time of the task.
 - taskStatus: DiagnosticTaskStatus
-  - 
+  - Required. Supported in v5.1+
+  Status of the task.

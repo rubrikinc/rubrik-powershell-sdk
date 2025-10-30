@@ -2,10 +2,7 @@
 Supported in v5.0+
 
 - configuredSlaDomainId: System.String
-  - Supported in v5.0+
-  v5.0-v5.1: Assign this VM to the given SLA domain.
-  v5.2-v8.0: Assign this VM to the given SLA domain. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
-  v8.1+: Assigns this virtual machine to the given SLA domain. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
+  - Assigns this virtual machine to the given SLA domain. Existing snapshots of the object will be retained with the configuration of specified SLA Domain.
 - excludedDiskIds: list of System.Strings
   - Supported in v5.0+
   A list of virtual disks IDs to exclude from the backup for this virtual machine.
@@ -21,4 +18,6 @@ Supported in v5.0+
 - preBackupScript: NutanixVirtualMachineScriptDetail
   - Supported in v6.0+
 - snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
-  - 
+  - Supported in v5.0+
+  v5.0-v8.0: Consistency level mandated for this VM.
+  v8.1+: Consistency level mandated for this virtual machine.

@@ -18,7 +18,6 @@
 - SnapshotTime
 - SnapshotDate
 - Path
-- NumOfCanceled
 - ClusterName
 - ClusterLocation
 - TotalFileTransferred
@@ -38,7 +37,6 @@
 - NumViolatedFiles
 - StartTime
 - TaskType
-- NumOfSucceeded
 - ArchiveStorage
 - EndTime
 - WorkloadName
@@ -51,7 +49,6 @@
 - UserAuditStatus
 - AppBlueprintName
 - NumViolations
-- NumOfExpected
 - SlaDomainName
 - RecoveryPointType
 - ReplicationSource
@@ -66,7 +63,6 @@
 - ProtectedVolume
 - EncryptionEnabled
 - PolicyName
-- StartDate
 - TotalCapacity
 - ActivityStatus
 - UserAuditType
@@ -79,11 +75,9 @@
 - Cluster
 - FilesCreated
 - TotalSnapshots
-- EndDate
 - ObjectType
 - ReplicationTarget
 - TargetSite
-- NumOfFailed
 - PreviousSnapshotDate
 - LastTestTime
 - PolicyStatus

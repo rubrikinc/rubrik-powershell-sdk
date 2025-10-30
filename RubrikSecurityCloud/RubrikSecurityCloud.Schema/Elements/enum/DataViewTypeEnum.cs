@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LATEST_GLOBAL_OBJECTS")]
         LATEST_GLOBAL_OBJECTS,
 
+        [EnumMember(Value = "LOG_TASKS")]
+        LOG_TASKS,
+
         [EnumMember(Value = "MONITORING_ALL")]
         MONITORING_ALL,
 

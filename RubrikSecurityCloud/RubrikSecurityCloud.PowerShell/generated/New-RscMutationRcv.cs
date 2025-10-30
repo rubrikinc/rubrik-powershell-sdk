@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'RCV' API domain:
-    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
+    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, UpdateEncryptionKeyForMigration, UpdatePrivateEndpoint, or UpdateTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 6 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, or UpdateTarget.
+    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, UpdateEncryptionKeyForMigration, UpdatePrivateEndpoint, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -197,6 +197,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	privateEndpointId = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
     /// }
     /// 
     /// # Execute the query
@@ -204,6 +208,76 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateRcvPrivateEndpointApprovalRequestReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateEncryptionKeyForMigration operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: UpdateEncryptionKeyForMigration
+    /// 
+    /// $query = New-RscMutationRcv -Operation UpdateEncryptionKeyForMigration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateEncryptionKeyForRcvMigrationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdatePrivateEndpoint operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: UpdatePrivateEndpoint
+    /// 
+    /// $query = New-RscMutationRcv -Operation UpdatePrivateEndpoint
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// 	# OPTIONAL
+    /// 	privateEndpointId = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateRcvPrivateEndpointReply
     /// 
     /// 
     /// 
@@ -278,6 +352,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ApprovePrivateEndpoint",
                 "CreateLocationsFromTemplate",
                 "CreatePrivateEndpointApprovalRequest",
+                "UpdateEncryptionKeyForMigration",
+                "UpdatePrivateEndpoint",
                 "UpdateTarget",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -302,6 +378,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreatePrivateEndpointApprovalRequest":
                         this.ProcessRecord_CreatePrivateEndpointApprovalRequest();
+                        break;
+                    case "UpdateEncryptionKeyForMigration":
+                        this.ProcessRecord_UpdateEncryptionKeyForMigration();
+                        break;
+                    case "UpdatePrivateEndpoint":
+                        this.ProcessRecord_UpdatePrivateEndpoint();
                         break;
                     case "UpdateTarget":
                         this.ProcessRecord_UpdateTarget();
@@ -341,6 +423,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreatePrivateEndpointApprovalRequest";
             // Create new graphql operation createRcvPrivateEndpointApprovalRequest
             InitMutationCreateRcvPrivateEndpointApprovalRequest();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateEncryptionKeyForRcvMigration.
+        internal void ProcessRecord_UpdateEncryptionKeyForMigration()
+        {
+            this._logger.name += " -UpdateEncryptionKeyForMigration";
+            // Create new graphql operation updateEncryptionKeyForRcvMigration
+            InitMutationUpdateEncryptionKeyForRcvMigration();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateRcvPrivateEndpoint.
+        internal void ProcessRecord_UpdatePrivateEndpoint()
+        {
+            this._logger.name += " -UpdatePrivateEndpoint";
+            // Create new graphql operation updateRcvPrivateEndpoint
+            InitMutationUpdateRcvPrivateEndpoint();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -460,6 +560,64 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	privateEndpointId = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	description = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateEncryptionKeyForRcvMigration(input: UpdateEncryptionKeyForRcvMigrationInput!): UpdateEncryptionKeyForRcvMigrationReply!
+        internal void InitMutationUpdateEncryptionKeyForRcvMigration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateEncryptionKeyForRcvMigrationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateEncryptionKeyForRcvMigration",
+                "($input: UpdateEncryptionKeyForRcvMigrationInput!)",
+                "UpdateEncryptionKeyForRcvMigrationReply",
+                Mutation.UpdateEncryptionKeyForRcvMigration,
+                Mutation.UpdateEncryptionKeyForRcvMigrationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	locationId = $someString
+	# OPTIONAL
+	rsaKey = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateRcvPrivateEndpoint(input: UpdateRcvPrivateEndpointInput!): UpdateRcvPrivateEndpointReply!
+        internal void InitMutationUpdateRcvPrivateEndpoint()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateRcvPrivateEndpointInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateRcvPrivateEndpoint",
+                "($input: UpdateRcvPrivateEndpointInput!)",
+                "UpdateRcvPrivateEndpointReply",
+                Mutation.UpdateRcvPrivateEndpoint,
+                Mutation.UpdateRcvPrivateEndpointFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	locationId = $someString
+	# OPTIONAL
+	privateEndpointId = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	description = $someString
 }"
             );
         }

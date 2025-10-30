@@ -129,8 +129,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OWNERSHIP")]
         OWNERSHIP,
 
+        [EnumMember(Value = "PERMISSION_ASSESSMENT")]
+        PERMISSION_ASSESSMENT,
+
         [EnumMember(Value = "PROTECTED_OBJECT_DELETION")]
         PROTECTED_OBJECT_DELETION,
+
+        [EnumMember(Value = "QUARANTINE")]
+        QUARANTINE,
 
         [EnumMember(Value = "RadarAnalysis")]
         RADAR_ANALYSIS,

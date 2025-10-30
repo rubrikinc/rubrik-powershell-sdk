@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Threat' API domain:
-    /// CancelHunt, EnableMonitoring, StartBulkHunt, StartHunt, StartHuntV2, or StartTurboHunt.
+    /// CancelHunt, EnableMonitoring, QuarantineHuntMatches, StartBulkHunt, StartHunt, StartHuntV2, or StartTurboHunt.
     /// </summary>
     /// <description>
     /// New-RscMutationThreat creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'Threat' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CancelHunt, EnableMonitoring, StartBulkHunt, StartHunt, StartHuntV2, or StartTurboHunt.
+    /// one of: CancelHunt, EnableMonitoring, QuarantineHuntMatches, StartBulkHunt, StartHunt, StartHuntV2, or StartTurboHunt.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -144,6 +144,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the QuarantineHuntMatches operation
+    /// of the 'Threat' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Threat
+    /// # API Operation: QuarantineHuntMatches
+    /// 
+    /// $query = New-RscMutationThreat -Operation QuarantineHuntMatches
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	threatHuntFid = $someString
+    /// 	# REQUIRED
+    /// 	workloadFids = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: QuarantineThreatHuntMatchesReply
     /// 
     /// 
     /// 
@@ -675,6 +710,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "CancelHunt",
                 "EnableMonitoring",
+                "QuarantineHuntMatches",
                 "StartBulkHunt",
                 "StartHunt",
                 "StartHuntV2",
@@ -699,6 +735,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "EnableMonitoring":
                         this.ProcessRecord_EnableMonitoring();
+                        break;
+                    case "QuarantineHuntMatches":
+                        this.ProcessRecord_QuarantineHuntMatches();
                         break;
                     case "StartBulkHunt":
                         this.ProcessRecord_StartBulkHunt();
@@ -738,6 +777,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -EnableMonitoring";
             // Create new graphql operation enableThreatMonitoring
             InitMutationEnableThreatMonitoring();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // quarantineThreatHuntMatches.
+        internal void ProcessRecord_QuarantineHuntMatches()
+        {
+            this._logger.name += " -QuarantineHuntMatches";
+            // Create new graphql operation quarantineThreatHuntMatches
+            InitMutationQuarantineThreatHuntMatches();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -832,6 +880,33 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isBatchEnabled = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // quarantineThreatHuntMatches(input: QuarantineThreatHuntMatchesInput!): QuarantineThreatHuntMatchesReply!
+        internal void InitMutationQuarantineThreatHuntMatches()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QuarantineThreatHuntMatchesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationQuarantineThreatHuntMatches",
+                "($input: QuarantineThreatHuntMatchesInput!)",
+                "QuarantineThreatHuntMatchesReply",
+                Mutation.QuarantineThreatHuntMatches,
+                Mutation.QuarantineThreatHuntMatchesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	threatHuntFid = $someString
+	# REQUIRED
+	workloadFids = @(
+		$someString
+	)
 }"
             );
         }

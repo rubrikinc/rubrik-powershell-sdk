@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Host
+        // GraphQL -> host: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("host")]
+        public System.String? Host { get; set; }
+
         //      C# -> System.String? Password
         // GraphQL -> password: String (scalar)
         [JsonProperty("password")]
@@ -29,24 +36,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("port")]
         public System.Int32? Port { get; set; }
 
-        //      C# -> System.String? Username
-        // GraphQL -> username: String (scalar)
-        [JsonProperty("username")]
-        public System.String? Username { get; set; }
-
-        //      C# -> System.String? Host
-        // GraphQL -> host: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("host")]
-        public System.String? Host { get; set; }
-
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("protocol")]
         public System.String? Protocol { get; set; }
+
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        [JsonProperty("username")]
+        public System.String? Username { get; set; }
 
 
         #endregion

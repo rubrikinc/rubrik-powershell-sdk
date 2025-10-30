@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sizeInBytes")]
         public System.Int64? SizeInBytes { get; set; }
 
+        //      C# -> QuarantineInfo? QuarantineInfo
+        // GraphQL -> quarantineInfo: QuarantineInfo (type)
+        [JsonProperty("quarantineInfo")]
+        public QuarantineInfo? QuarantineInfo { get; set; }
+
         //      C# -> CloudNativeSnapshotInfo? Snapshot
         // GraphQL -> snapshot: CloudNativeSnapshotInfo! (type)
         [JsonProperty("snapshot")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         FileModeEnum? FileMode = null,
         DateTime? LastModified = null,
         System.Int64? SizeInBytes = null,
+        QuarantineInfo? QuarantineInfo = null,
         CloudNativeSnapshotInfo? Snapshot = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SizeInBytes != null ) {
             this.SizeInBytes = SizeInBytes;
+        }
+        if ( QuarantineInfo != null ) {
+            this.QuarantineInfo = QuarantineInfo;
         }
         if ( Snapshot != null ) {
             this.Snapshot = Snapshot;
@@ -107,6 +116,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sizeInBytes\n" ;
             } else {
                 s += ind + "sizeInBytes\n" ;
+            }
+        }
+        //      C# -> QuarantineInfo? QuarantineInfo
+        // GraphQL -> quarantineInfo: QuarantineInfo (type)
+        if (this.QuarantineInfo != null) {
+            var fspec = this.QuarantineInfo.AsFieldSpec(conf.Child("quarantineInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "quarantineInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudNativeSnapshotInfo? Snapshot
@@ -178,6 +199,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SizeInBytes != null && ec.Excludes("sizeInBytes",true))
         {
             this.SizeInBytes = null;
+        }
+        //      C# -> QuarantineInfo? QuarantineInfo
+        // GraphQL -> quarantineInfo: QuarantineInfo (type)
+        if (ec.Includes("quarantineInfo",false))
+        {
+            if(this.QuarantineInfo == null) {
+
+                this.QuarantineInfo = new QuarantineInfo();
+                this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+
+            } else {
+
+                this.QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("quarantineInfo"));
+
+            }
+        }
+        else if (this.QuarantineInfo != null && ec.Excludes("quarantineInfo",false))
+        {
+            this.QuarantineInfo = null;
         }
         //      C# -> CloudNativeSnapshotInfo? Snapshot
         // GraphQL -> snapshot: CloudNativeSnapshotInfo! (type)

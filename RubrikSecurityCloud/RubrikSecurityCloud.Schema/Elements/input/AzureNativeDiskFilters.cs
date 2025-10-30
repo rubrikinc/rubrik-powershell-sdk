@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureNativeIsEligibleForManagedDiskProtectionFilter")]
         public AzureNativeIsEligibleForManagedDiskProtectionFilter? AzureNativeIsEligibleForManagedDiskProtectionFilter { get; set; }
 
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
+
 
         #endregion
 

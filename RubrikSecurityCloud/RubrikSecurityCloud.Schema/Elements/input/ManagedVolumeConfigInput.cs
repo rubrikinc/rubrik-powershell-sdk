@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("applicationTag")]
         public ManagedVolumeApplicationTag? ApplicationTag { get; set; }
 
+        //      C# -> ManagedVolumeFilesystemType? FilesystemType
+        // GraphQL -> filesystemType: ManagedVolumeFilesystemType (enum)
+        [JsonProperty("filesystemType")]
+        public ManagedVolumeFilesystemType? FilesystemType { get; set; }
+
         //      C# -> CdmManagedVolumeType? MvType
         // GraphQL -> mvType: CdmManagedVolumeType (enum)
         [JsonProperty("mvType")]

@@ -775,6 +775,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? BatchQuarantineOperations
+        // GraphQL -> batchQuarantineOperations: Void (scalar)
+        public static string BatchQuarantineOperations(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "batchQuarantineOperations" + args + "\n";
+        }
+        public static object BatchQuarantineOperationsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? BulkDeleteNasShares
         // GraphQL -> bulkDeleteNasShares: Void (scalar)
         public static string BulkDeleteNasShares(object fsObj)
@@ -1187,6 +1205,24 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return true ;
+        }
+
+        //      C# -> System.String? DeleteCloudDirectKerberosCredential
+        // GraphQL -> deleteCloudDirectKerberosCredential: Void (scalar)
+        public static string DeleteCloudDirectKerberosCredential(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteCloudDirectKerberosCredential" + args + "\n";
+        }
+        public static object DeleteCloudDirectKerberosCredentialFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
         }
 
         //      C# -> System.String? DeleteCloudNativeLabelRule
@@ -2575,6 +2611,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? SetCloudDirectShareExclusions
+        // GraphQL -> setCloudDirectShareExclusions: Void (scalar)
+        public static string SetCloudDirectShareExclusions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setCloudDirectShareExclusions" + args + "\n";
+        }
+        public static object SetCloudDirectShareExclusionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? SetCloudDirectSystemOverride
         // GraphQL -> setCloudDirectSystemOverride: Void (scalar)
         public static string SetCloudDirectSystemOverride(object fsObj)
@@ -2602,6 +2656,24 @@ namespace RubrikSecurityCloud.Types
             return "setCustomerTags" + args + "\n";
         }
         public static object SetCustomerTagsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? SetGcpExocomputeConfigs
+        // GraphQL -> setGcpExocomputeConfigs: Void (scalar)
+        public static string SetGcpExocomputeConfigs(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setGcpExocomputeConfigs" + args + "\n";
+        }
+        public static object SetGcpExocomputeConfigsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -2692,24 +2764,6 @@ namespace RubrikSecurityCloud.Types
             return "setPrivateContainerRegistry" + args + "\n";
         }
         public static object SetPrivateContainerRegistryFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            // there is no field spec for scalar types, but we still
-            // populate the fieldSpec so that caller can see the type 
-            return "FETCH" ;
-        }
-
-        //      C# -> System.String? SetShareExclusions
-        // GraphQL -> setShareExclusions: Void (scalar)
-        public static string SetShareExclusions(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "setShareExclusions" + args + "\n";
-        }
-        public static object SetShareExclusionsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -3016,6 +3070,24 @@ namespace RubrikSecurityCloud.Types
             return "updateCertificateCloudAccountMappings" + args + "\n";
         }
         public static object UpdateCertificateCloudAccountMappingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? UpdateCertificateUsagesForCloudAccount
+        // GraphQL -> updateCertificateUsagesForCloudAccount: Void (scalar)
+        public static string UpdateCertificateUsagesForCloudAccount(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateCertificateUsagesForCloudAccount" + args + "\n";
+        }
+        public static object UpdateCertificateUsagesForCloudAccountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -3673,6 +3745,60 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AddCloudDirectKerberosCredentialReply? AddCloudDirectKerberosCredential
+        // GraphQL -> addCloudDirectKerberosCredential: AddCloudDirectKerberosCredentialReply! (type)
+        public static string AddCloudDirectKerberosCredential(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addCloudDirectKerberosCredential" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddCloudDirectKerberosCredentialFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddCloudDirectKerberosCredentialReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AddCloudDirectSharesToSystemReply? AddCloudDirectSharesToSystem
+        // GraphQL -> addCloudDirectSharesToSystem: AddCloudDirectSharesToSystemReply! (type)
+        public static string AddCloudDirectSharesToSystem(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addCloudDirectSharesToSystem" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddCloudDirectSharesToSystemFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddCloudDirectSharesToSystemReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AddCloudDirectSystemReply? AddCloudDirectSystem
+        // GraphQL -> addCloudDirectSystem: AddCloudDirectSystemReply! (type)
+        public static string AddCloudDirectSystem(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addCloudDirectSystem" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddCloudDirectSystemFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddCloudDirectSystemReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AddCloudNativeSqlServerBackupCredentialsReply? AddCloudNativeSqlServerBackupCredentials
         // GraphQL -> addCloudNativeSqlServerBackupCredentials: AddCloudNativeSqlServerBackupCredentialsReply! (type)
         public static string AddCloudNativeSqlServerBackupCredentials(object fsObj)
@@ -3885,24 +4011,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new K8sProtectionSetSummary() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> AddKerberosCredentialReply? AddKerberosCredential
-        // GraphQL -> addKerberosCredential: AddKerberosCredentialReply! (type)
-        public static string AddKerberosCredential(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "addKerberosCredential" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object AddKerberosCredentialFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new AddKerberosCredentialReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -4159,6 +4267,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AssignCloudAccountToClusterReply? AssignCloudAccountToCluster
+        // GraphQL -> assignCloudAccountToCluster: AssignCloudAccountToClusterReply! (type)
+        public static string AssignCloudAccountToCluster(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "assignCloudAccountToCluster" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AssignCloudAccountToClusterFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AssignCloudAccountToClusterReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ResponseSuccess? AssignMssqlSlaDomainProperties
         // GraphQL -> assignMssqlSlaDomainProperties: ResponseSuccess! (type)
         public static string AssignMssqlSlaDomainProperties(object fsObj)
@@ -4335,6 +4461,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsExocomputeClusterConnectReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureCloudAccountAddWithCustomerAppInitiateReply? AzureCloudAccountAddWithCustomerAppInitiate
+        // GraphQL -> azureCloudAccountAddWithCustomerAppInitiate: AzureCloudAccountAddWithCustomerAppInitiateReply! (type)
+        public static string AzureCloudAccountAddWithCustomerAppInitiate(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "azureCloudAccountAddWithCustomerAppInitiate" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureCloudAccountAddWithCustomerAppInitiateFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureCloudAccountAddWithCustomerAppInitiateReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -5131,6 +5275,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> BulkRegisterSecondaryHostsReply? BulkRegisterSecondaryHosts
+        // GraphQL -> bulkRegisterSecondaryHosts: BulkRegisterSecondaryHostsReply! (type)
+        public static string BulkRegisterSecondaryHosts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "bulkRegisterSecondaryHosts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BulkRegisterSecondaryHostsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new BulkRegisterSecondaryHostsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? BulkTierExistingSnapshots
         // GraphQL -> bulkTierExistingSnapshots: AsyncRequestStatus! (type)
         public static string BulkTierExistingSnapshots(object fsObj)
@@ -5505,6 +5667,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSetGlobalSmbAuthReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectSetKerberosEnforceConfigReply? CloudDirectSetKerberosEnforceConfig
+        // GraphQL -> cloudDirectSetKerberosEnforceConfig: CloudDirectSetKerberosEnforceConfigReply! (type)
+        public static string CloudDirectSetKerberosEnforceConfig(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectSetKerberosEnforceConfig" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectSetKerberosEnforceConfigFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectSetKerberosEnforceConfigReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -6027,24 +6207,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new Analyzer() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> CreateCustomReportReply? CreateCustomReport
-        // GraphQL -> createCustomReport: CreateCustomReportReply! (type)
-        public static string CreateCustomReport(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\nreportRoom: $reportRoom\n)";
-            return "createCustomReport" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object CreateCustomReportFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new CreateCustomReportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7903,6 +8065,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadAnomalyDetailsCsvReply? DownloadAnomalyDetailsCsv
+        // GraphQL -> downloadAnomalyDetailsCsv: DownloadAnomalyDetailsCsvReply! (type)
+        public static string DownloadAnomalyDetailsCsv(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadAnomalyDetailsCsv" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadAnomalyDetailsCsvFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadAnomalyDetailsCsvReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncDownloadReply? DownloadAuditLogCsvAsync
         // GraphQL -> downloadAuditLogCsvAsync: AsyncDownloadReply! (type)
         public static string DownloadAuditLogCsvAsync(object fsObj)
@@ -8385,6 +8565,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new DownloadCsvReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? DownloadOpenstackSnapshotFromLocation
+        // GraphQL -> downloadOpenstackSnapshotFromLocation: AsyncRequestStatus! (type)
+        public static string DownloadOpenstackSnapshotFromLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadOpenstackSnapshotFromLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadOpenstackSnapshotFromLocationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9271,6 +9469,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> BatchAsyncJobStatus? GcpCloudAccountDeleteProjectsV2
+        // GraphQL -> gcpCloudAccountDeleteProjectsV2: BatchAsyncJobStatus! (type)
+        public static string GcpCloudAccountDeleteProjectsV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "gcpCloudAccountDeleteProjectsV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GcpCloudAccountDeleteProjectsV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new BatchAsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GcpCloudAccountOauthCompleteReply? GcpCloudAccountOauthComplete
         // GraphQL -> gcpCloudAccountOauthComplete: GcpCloudAccountOauthCompleteReply! (type)
         public static string GcpCloudAccountOauthComplete(object fsObj)
@@ -10063,6 +10279,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? MigrateVmDataStore
+        // GraphQL -> migrateVmDataStore: AsyncRequestStatus! (type)
+        public static string MigrateVmDataStore(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "migrateVmDataStore" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MigrateVmDataStoreFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ModifyIpmiReply? ModifyIpmi
         // GraphQL -> modifyIpmi: ModifyIpmiReply! (type)
         public static string ModifyIpmi(object fsObj)
@@ -10473,6 +10707,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new PutSmbConfigurationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> QuarantineThreatHuntMatchesReply? QuarantineThreatHuntMatches
+        // GraphQL -> quarantineThreatHuntMatches: QuarantineThreatHuntMatchesReply! (type)
+        public static string QuarantineThreatHuntMatches(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "quarantineThreatHuntMatches" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object QuarantineThreatHuntMatchesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new QuarantineThreatHuntMatchesReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11539,6 +11791,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? RestoreOpenstackVmSnapshotFiles
+        // GraphQL -> restoreOpenstackVmSnapshotFiles: AsyncRequestStatus! (type)
+        public static string RestoreOpenstackVmSnapshotFiles(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "restoreOpenstackVmSnapshotFiles" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RestoreOpenstackVmSnapshotFilesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? RestoreOracleLogs
         // GraphQL -> restoreOracleLogs: AsyncRequestStatus! (type)
         public static string RestoreOracleLogs(object fsObj)
@@ -12511,6 +12781,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? StartK8sDiagnosticsJob
+        // GraphQL -> startK8sDiagnosticsJob: AsyncRequestStatus! (type)
+        public static string StartK8sDiagnosticsJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startK8sDiagnosticsJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartK8sDiagnosticsJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PrechecksJobReply? StartPeriodicUpgradePrechecksOnDemandJob
         // GraphQL -> startPeriodicUpgradePrechecksOnDemandJob: PrechecksJobReply! (type)
         public static string StartPeriodicUpgradePrechecksOnDemandJob(object fsObj)
@@ -12907,6 +13195,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> TriggerBliMigrationReply? TriggerBliMigration
+        // GraphQL -> triggerBliMigration: TriggerBliMigrationReply! (type)
+        public static string TriggerBliMigration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "triggerBliMigration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TriggerBliMigrationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new TriggerBliMigrationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? TriggerCloudComputeConnectivityCheck
         // GraphQL -> triggerCloudComputeConnectivityCheck: AsyncRequestStatus! (type)
         public static string TriggerCloudComputeConnectivityCheck(object fsObj)
@@ -13285,6 +13591,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> UpdateCloudDirectKerberosCredentialReply? UpdateCloudDirectKerberosCredential
+        // GraphQL -> updateCloudDirectKerberosCredential: UpdateCloudDirectKerberosCredentialReply! (type)
+        public static string UpdateCloudDirectKerberosCredential(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateCloudDirectKerberosCredential" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateCloudDirectKerberosCredentialFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateCloudDirectKerberosCredentialReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> UpdateCloudNativeAwsStorageSettingReply? UpdateCloudNativeAwsStorageSetting
         // GraphQL -> updateCloudNativeAwsStorageSetting: UpdateCloudNativeAwsStorageSettingReply! (type)
         public static string UpdateCloudNativeAwsStorageSetting(object fsObj)
@@ -13465,24 +13789,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> UpdateCustomReportReply? UpdateCustomReport
-        // GraphQL -> updateCustomReport: UpdateCustomReportReply! (type)
-        public static string UpdateCustomReport(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "updateCustomReport" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object UpdateCustomReportFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new UpdateCustomReportReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> UpdateCustomerAppPermissionsReply? UpdateCustomerAppPermissions
         // GraphQL -> updateCustomerAppPermissions: UpdateCustomerAppPermissionsReply! (type)
         public static string UpdateCustomerAppPermissions(object fsObj)
@@ -13551,6 +13857,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ResponseSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateEncryptionKeyForRcvMigrationReply? UpdateEncryptionKeyForRcvMigration
+        // GraphQL -> updateEncryptionKeyForRcvMigration: UpdateEncryptionKeyForRcvMigrationReply! (type)
+        public static string UpdateEncryptionKeyForRcvMigration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateEncryptionKeyForRcvMigration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateEncryptionKeyForRcvMigrationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateEncryptionKeyForRcvMigrationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14235,6 +14559,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new TargetMapping() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateRcvPrivateEndpointReply? UpdateRcvPrivateEndpoint
+        // GraphQL -> updateRcvPrivateEndpoint: UpdateRcvPrivateEndpointReply! (type)
+        public static string UpdateRcvPrivateEndpoint(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateRcvPrivateEndpoint" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateRcvPrivateEndpointFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateRcvPrivateEndpointReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

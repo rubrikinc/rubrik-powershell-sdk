@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.Int32? LogBackupDelay
         // GraphQL -> logBackupDelay: Int (scalar)
         [JsonProperty("logBackupDelay")]
@@ -44,32 +51,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomainId")]
         public System.String? EffectiveSlaDomainId { get; set; }
 
+        //      C# -> V1QueryLogReportRequestSortOrder? SortOrder
+        // GraphQL -> sortOrder: V1QueryLogReportRequestSortOrder (enum)
+        [JsonProperty("sortOrder")]
+        public V1QueryLogReportRequestSortOrder? SortOrder { get; set; }
+
         //      C# -> System.String? DatabaseType
         // GraphQL -> databaseType: String (scalar)
         [JsonProperty("databaseType")]
         public System.String? DatabaseType { get; set; }
-
-        //      C# -> System.String? Location
-        // GraphQL -> location: String (scalar)
-        [JsonProperty("location")]
-        public System.String? Location { get; set; }
 
         //      C# -> V1QueryLogReportRequestSortBy? SortBy
         // GraphQL -> sortBy: V1QueryLogReportRequestSortBy (enum)
         [JsonProperty("sortBy")]
         public V1QueryLogReportRequestSortBy? SortBy { get; set; }
 
-        //      C# -> V1QueryLogReportRequestSortOrder? SortOrder
-        // GraphQL -> sortOrder: V1QueryLogReportRequestSortOrder (enum)
-        [JsonProperty("sortOrder")]
-        public V1QueryLogReportRequestSortOrder? SortOrder { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String (scalar)
+        [JsonProperty("location")]
+        public System.String? Location { get; set; }
 
 
         #endregion

@@ -15,3 +15,5 @@ ES storage for Azure account.
   - Specifies whether to enable support for immutable filesystem in SDFS.
 - managedIdentity: AzureManagedIdentityName
   - Azure managed identity information.
+- endpointSuffix: System.String
+  - Storage account endpoint suffix.

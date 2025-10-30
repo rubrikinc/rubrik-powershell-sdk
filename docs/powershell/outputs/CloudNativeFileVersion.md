@@ -9,3 +9,5 @@ Contains metadata fields of a file specific to the version of the file in a snap
   - Size of the file, in bytes.
 - fileMode: FileModeEnum
   - File mode (directory, file, symlink, or unknown).
+- quarantineInfo: QuarantineInfo
+  - Quarantine information corresponding to the path.

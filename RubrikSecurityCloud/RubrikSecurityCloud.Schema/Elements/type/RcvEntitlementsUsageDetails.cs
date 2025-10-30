@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Single? ExpectedUsedCapacity
+        // GraphQL -> expectedUsedCapacity: Float! (scalar)
+        [JsonProperty("expectedUsedCapacity")]
+        public System.Single? ExpectedUsedCapacity { get; set; }
+
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)
         [JsonProperty("usedCapacity")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RcvEntitlementsUsageDetails Set(
+        System.Single? ExpectedUsedCapacity = null,
         System.Single? UsedCapacity = null,
         RcvEntitlement? Entitlement = null
     ) 
     {
+        if ( ExpectedUsedCapacity != null ) {
+            this.ExpectedUsedCapacity = ExpectedUsedCapacity;
+        }
         if ( UsedCapacity != null ) {
             this.UsedCapacity = UsedCapacity;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Single? ExpectedUsedCapacity
+        // GraphQL -> expectedUsedCapacity: Float! (scalar)
+        if (this.ExpectedUsedCapacity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "expectedUsedCapacity\n" ;
+            } else {
+                s += ind + "expectedUsedCapacity\n" ;
+            }
+        }
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)
         if (this.UsedCapacity != null) {
@@ -92,6 +110,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Single? ExpectedUsedCapacity
+        // GraphQL -> expectedUsedCapacity: Float! (scalar)
+        if (ec.Includes("expectedUsedCapacity",true))
+        {
+            if(this.ExpectedUsedCapacity == null) {
+
+                this.ExpectedUsedCapacity = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpectedUsedCapacity != null && ec.Excludes("expectedUsedCapacity",true))
+        {
+            this.ExpectedUsedCapacity = null;
+        }
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)
         if (ec.Includes("usedCapacity",true))

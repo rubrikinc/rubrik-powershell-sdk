@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdRelationshipEnumType? RelatedItemType
+        // GraphQL -> relatedItemType: AzureAdRelationshipEnumType! (enum)
+        [JsonProperty("relatedItemType")]
+        public AzureAdRelationshipEnumType? RelatedItemType { get; set; }
+
         //      C# -> AzureAdRelationshipEnumType? RelationshipType
         // GraphQL -> relationshipType: AzureAdRelationshipEnumType! (enum)
         [JsonProperty("relationshipType")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdRelatedItemCount Set(
+        AzureAdRelationshipEnumType? RelatedItemType = null,
         AzureAdRelationshipEnumType? RelationshipType = null,
         System.Int32? Count = null
     ) 
     {
+        if ( RelatedItemType != null ) {
+            this.RelatedItemType = RelatedItemType;
+        }
         if ( RelationshipType != null ) {
             this.RelationshipType = RelationshipType;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdRelationshipEnumType? RelatedItemType
+        // GraphQL -> relatedItemType: AzureAdRelationshipEnumType! (enum)
+        if (this.RelatedItemType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "relatedItemType\n" ;
+            } else {
+                s += ind + "relatedItemType\n" ;
+            }
+        }
         //      C# -> AzureAdRelationshipEnumType? RelationshipType
         // GraphQL -> relationshipType: AzureAdRelationshipEnumType! (enum)
         if (this.RelationshipType != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureAdRelationshipEnumType? RelatedItemType
+        // GraphQL -> relatedItemType: AzureAdRelationshipEnumType! (enum)
+        if (ec.Includes("relatedItemType",true))
+        {
+            if(this.RelatedItemType == null) {
+
+                this.RelatedItemType = new AzureAdRelationshipEnumType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RelatedItemType != null && ec.Excludes("relatedItemType",true))
+        {
+            this.RelatedItemType = null;
+        }
         //      C# -> AzureAdRelationshipEnumType? RelationshipType
         // GraphQL -> relationshipType: AzureAdRelationshipEnumType! (enum)
         if (ec.Includes("relationshipType",true))

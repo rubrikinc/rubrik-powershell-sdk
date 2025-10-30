@@ -1,71 +1,72 @@
 ### DataGovObjectType
-TODO: SPARK-150447 - Deprecate this enum to use managed object type
-Filters objects by object type.
-Note: All the object types, except CDM, are granular object types.
+Represents object types.
 
 - OBJECT_TYPE_UNSPECIFIED - Unknown object type.
 - CDM - Represents all the object types that belong to CDM. This is the default
 value and is added for maintaining backward compatability.
-- O365_ONEDRIVE - Represents O365 OneDrive objects.
-- O365_SHAREPOINT_DRIVE - Represents O365 SharePoint Drive objects.
-- VSPHERE_VIRTUAL_MACHINE - Represents vSphere Virtual Machine objects.
-- LINUX_FILESET - Represents Linux Fileset objects.
-- SHARE_FILESET - Represents Share Fileset objects.
-- WINDOWS_FILESET - Represents Windows Fileset objects.
-- NUTANIX_VIRTUAL_MACHINE - Represents Nutanix Virtual Machine objects.
-- HYPERV_VIRTUAL_MACHINE - Represents Hyper-V Virtual Machine objects.
-- VOLUME_GROUP - Represents Volume Group objects.
+- O365_ONEDRIVE - Represents the O365 OneDrive object.
+- O365_SHAREPOINT_DRIVE - Represents the O365 SharePoint Drive object.
+- VSPHERE_VIRTUAL_MACHINE - Represents the vSphere Virtual Machine object.
+- LINUX_FILESET - Represents the Linux Fileset object.
+- SHARE_FILESET - Represents the Share Fileset object.
+- WINDOWS_FILESET - Represents the Windows Fileset object.
+- NUTANIX_VIRTUAL_MACHINE - Represents the Nutanix virtual machine object.
+- HYPERV_VIRTUAL_MACHINE - Represents the Hyper-V virtual machine object.
+- VOLUME_GROUP - Represents the Volume Group object.
 - AZURE_NATIVE_VIRTUAL_MACHINE - Represents an Azure-native virtual machine.
 - AZURE_NATIVE_MANAGED_DISK - Represents an Azure-native managed disk.
-- CLOUD_DIRECT_NAS_EXPORT - Represents NAS Cloud Direct objects.
-- VSPHERE_VCENTER - Represents VMWARE VSPHERE_VCENTER.
-- VSPHERE_COMPUTE_CLUSTER - Represent VMWARE compute cluster.
-- VSPHERE_FOLDER - Represents VMWARE VSPHERE_FOLDER.
-- VSPHERE_TAG - Represents VSPHERE VMWARE_TAG.
-- PHYSICAL_HOST - Represents Physical host.
-- HYPERV_CLUSTER - Represents Hyper-V cluster.
-- NUTANIX_CLUSTER - Represents Nutanix cluster.
-- O365_ORGANIZATION - Represents O365 organization.
-- O365_GROUP - Represents O365 group.
-- AZURE_SUBSCRIPTION - Represents Azure subscription.
-- AZURE_RESOURCE_GROUP - Represents Azure common resource group.
-- CLOUD_NATIVE_TAG_RULE - Represents Azure Cloud tag rule.
-- O365_SHAREPOINT_SITE - Represents O365 SharePoint Site objects.
-- AZURE_NATIVE_ROOT - Represents Microsoft Azure native root.
-- LINUX_HOST_ROOT - Represents Linux host root.
-- WINDOWS_HOST_ROOT - Represents Windows host root.
-- VSPHERE_ROOT - Represents vSphere root.
+- CLOUD_DIRECT_NAS_EXPORT - Represents the NAS Cloud Direct object.
+- VSPHERE_VCENTER - Represents the VMware vSphere Vcenter.
+- VSPHERE_COMPUTE_CLUSTER - Represents the VMware compute cluster.
+- VSPHERE_FOLDER - Represents the VMware vSphere folder.
+- VSPHERE_TAG - Represents the vSphere VMware tag.
+- PHYSICAL_HOST - Represents the Physical host.
+- HYPERV_CLUSTER - Represents the Hyper-V cluster.
+- NUTANIX_CLUSTER - Represents the Nutanix cluster.
+- O365_ORGANIZATION - Represents the O365 organization.
+- O365_GROUP - Represents the O365 group.
+- AZURE_SUBSCRIPTION - Represents the Azure subscription.
+- AZURE_RESOURCE_GROUP - Represents the Azure common resource group.
+- CLOUD_NATIVE_TAG_RULE - Represents the Azure Cloud tag rule.
+- O365_SHAREPOINT_SITE - Represents the O365 SharePoint Site object.
+- AZURE_NATIVE_ROOT - Represents the Microsoft Azure native root.
+- LINUX_HOST_ROOT - Represents the Linux host root.
+- WINDOWS_HOST_ROOT - Represents the Windows host root.
+- VSPHERE_ROOT - Represents the vSphere root.
 - HYPERV_ROOT - Represents Hyper-V root.
-- O365_ROOT - Represents Microsoft Office 365 root.
-- NUTANIX_ROOT - Represents Nutanix root.
-- CDM_CLUSTER - Represents Rubrik CDM cluster.
-- NAS_FILESET - Represents RSC NAS Filesets.
-- VMWARE_DATACENTER - Represents VMware Data Center.
-- VMWARE_HOST - Represents VMware Host.
-- VMWARE_TAG_CATEGORY - Represents VMware Tag Category.
-- HYPERV_SCVMM - Represents HyperV SCVMM.
-- HYPERV_SERVER - Represents HyperV Server.
-- VMWARE_RESOURCE_POOL - Represents VMware resource pool.
-- MSSQL_DATABASE - Represents MSSQL Database.
-- MSSQL_ROOT - Represents MSSQL Root.
-- VSPHERE_DATACENTER_FOLDER - Represents VMWARE VSPHERE_DATACENTER_FOLDER.
-- AWS_NATIVE_S3_BUCKET - Represents AWS S3 bucket.
-- AWS_NATIVE_EBS_VOLUME - Represents AWS EBS volume.
-- AWS_NATIVE_RDS_INSTANCE - Represents AWS RDS Instance.
-- AWS_NATIVE_EC2_INSTANCE - Represents AWS EC2 Instance.
+- O365_ROOT - Represents the Microsoft Office 365 root.
+- NUTANIX_ROOT - Represents the Nutanix root.
+- CDM_CLUSTER - Represents the Rubrik CDM cluster.
+- NAS_FILESET - Represents the RSC NAS Fileset.
+- VMWARE_DATACENTER - Represents the VMware Data Center.
+- VMWARE_HOST - Represents the VMware Host.
+- VMWARE_TAG_CATEGORY - Represents the VMware Tag Category.
+- HYPERV_SCVMM - Represents the HyperV SCVMM.
+- HYPERV_SERVER - Represents the HyperV Server.
+- VMWARE_RESOURCE_POOL - Represents the VMware resource pool.
+- MSSQL_DATABASE - Represents the MSSQL Database.
+- MSSQL_ROOT - Represents the MSSQL Root.
+- VSPHERE_DATACENTER_FOLDER - Represents the VMware vSphere Datacenter folder.
+- AWS_NATIVE_S3_BUCKET - Represents the AWS S3 bucket.
+- AWS_NATIVE_EBS_VOLUME - Represents the AWS EBS volume.
+- AWS_NATIVE_RDS_INSTANCE - Represents the AWS RDS Instance.
+- AWS_NATIVE_EC2_INSTANCE - Represents the AWS EC2 Instance.
 - AZURE_NATIVE_STORAGE_ACCOUNT - Represents an Azure Native Storage Account.
-- AZURE_NATIVE_SQL_DATABASE_DB - Represents an Azure SQL Database DB.
-- AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB - Represents an Azure SQL Managed Instance DB.
+- AZURE_NATIVE_SQL_DATABASE_DB - Represents an Azure SQL Database.
+- AZURE_NATIVE_SQL_MANAGED_INSTANCE_DB - Represents an Azure SQL Managed Instance database.
 - CLOUD_DIRECT_NAS_SHARE - Represents a NAS Cloud Direct share.
-- ORACLE_DATABASE - Represents Oracle Database.
-- ORACLE_ROOT - Represents Oracle Root.
-- ORACLE_DATA_GUARD_GROUP - Represents Oracle Data Guard Group
-- K8S_VIRTUAL_MACHINE - Represents Kubernetes Virtual Machine.
+- ORACLE_DATABASE - Represents the Oracle database.
+- ORACLE_ROOT - Represents the Oracle root.
+- ORACLE_DATA_GUARD_GROUP - Represents the Oracle Data Guard Group.
+- K8S_VIRTUAL_MACHINE - Represents the Kubernetes virtual machine.
 - CLOUD_DIRECT_NAS_BUCKET - Represents a NAS Cloud Direct bucket.
-- O365_MAILBOX - Represents O365 mailbox.
-- K8S_ROOT - Represents Kubernetes Root.
-- K8S_CLUSTER - Represents Kubernetes Cluster.
-- K8S_NAMESPACE_V2 - Represents Kubernetes Namespace.
-- GCP_NATIVE_GCE_INSTANCE - Represents GCP Native GCE Instance.
-- GCP_NATIVE_DISK - Represents GCP Native Disk.
-- SALESFORCE_OBJECT - Represents Salesforce object.
+- O365_MAILBOX - Represents the O365 mailbox.
+- K8S_ROOT - Represents the Kubernetes root.
+- K8S_CLUSTER - Represents the Kubernetes cluster.
+- K8S_NAMESPACE_V2 - Represents the Kubernetes namespace.
+- GCP_NATIVE_GCE_INSTANCE - Represents the GCP Native GCE Instance.
+- GCP_NATIVE_DISK - Represents the native GCP disk.
+- SALESFORCE_OBJECT - Represents the Salesforce object.
+- K8S_PROTECTION_SET - Represents a Kubernetes protection set.
+- SALESFORCE_ROOT - Represents the Salesforce root.
+- SALESFORCE_ORGANIZATION - Represents the Salesforce organization.

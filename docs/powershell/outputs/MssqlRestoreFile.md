@@ -15,4 +15,4 @@ Supported in v5.0+
   v5.0-v5.2: Original path of the database file to be restored.
   v5.3+: Original path to the database file to be restored.
 - fileType: MssqlDatabaseFileType
-  - 
+  - Required. Supported in v5.0+

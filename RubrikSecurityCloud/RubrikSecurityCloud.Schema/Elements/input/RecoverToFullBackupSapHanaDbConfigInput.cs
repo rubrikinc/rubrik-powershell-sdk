@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("remoteLocationId")]
         public System.String? RemoteLocationId { get; set; }
 
+        //      C# -> SapHanaRestoreSourceConfigInput? SourceDbConfig
+        // GraphQL -> sourceDbConfig: SapHanaRestoreSourceConfigInput (input)
+        [JsonProperty("sourceDbConfig")]
+        public SapHanaRestoreSourceConfigInput? SourceDbConfig { get; set; }
+
         //      C# -> System.String? DbId
         // GraphQL -> dbId: String! (scalar)
         [Required]
@@ -37,11 +42,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("fullSnapshotId")]
         public System.String? FullSnapshotId { get; set; }
-
-        //      C# -> SapHanaRestoreSourceConfigInput? SourceDbConfig
-        // GraphQL -> sourceDbConfig: SapHanaRestoreSourceConfigInput (input)
-        [JsonProperty("sourceDbConfig")]
-        public SapHanaRestoreSourceConfigInput? SourceDbConfig { get; set; }
 
 
         #endregion

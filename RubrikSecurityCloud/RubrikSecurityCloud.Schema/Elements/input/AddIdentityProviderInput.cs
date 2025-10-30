@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<IdpClaimAttribute>? IdpClaimAttributes
-        // GraphQL -> idpClaimAttributes: [IdpClaimAttribute!] (input)
-        [JsonProperty("idpClaimAttributes")]
-        public List<IdpClaimAttribute>? IdpClaimAttributes { get; set; }
-
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -58,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("isTemp")]
         public System.Boolean? IsTemp { get; set; }
+
+        //      C# -> List<IdpClaimAttribute>? IdpClaimAttributes
+        // GraphQL -> idpClaimAttributes: [IdpClaimAttribute!] (input)
+        [JsonProperty("idpClaimAttributes")]
+        public List<IdpClaimAttribute>? IdpClaimAttributes { get; set; }
 
 
         #endregion

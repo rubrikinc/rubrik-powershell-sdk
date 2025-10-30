@@ -9,3 +9,4 @@ Platform stores the platform type of the asset.
 - PLATFORM_SNOWFLAKE - Snowflake platform.
 - PLATFORM_M365 - M365 platform.
 - PLATFORM_GCP_WORKSPACE - GCP Workspace platform.
+- PLATFORM_SALESFORCE - Salesforce platform.

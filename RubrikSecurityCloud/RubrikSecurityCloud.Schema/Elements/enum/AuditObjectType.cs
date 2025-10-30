@@ -69,6 +69,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_DEVOPS_ORGANIZATION")]
+        AZURE_DEVOPS_ORGANIZATION,
+
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT")]
+        AZURE_DEVOPS_PROJECT,
+
+        [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
+        AZURE_DEVOPS_REPOSITORY,
+
         [EnumMember(Value = "AZURE_NATIVE_DISK")]
         AZURE_NATIVE_DISK,
 
@@ -105,11 +114,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CHATBOT")]
         CHATBOT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_BUCKET")]
+        CLOUD_DIRECT_NAS_BUCKET,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_NAMESPACE")]
+        CLOUD_DIRECT_NAS_NAMESPACE,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_SHARE")]
         CLOUD_DIRECT_NAS_SHARE,
+
+        [EnumMember(Value = "CLOUD_DIRECT_NAS_SYSTEM")]
+        CLOUD_DIRECT_NAS_SYSTEM,
 
         [EnumMember(Value = "CLOUD_NATIVE_TAG_RULE")]
         CLOUD_NATIVE_TAG_RULE,
@@ -194,6 +212,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE")]
         GOOGLE_WORKSPACE_USER_DRIVE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX")]
+        GOOGLE_WORKSPACE_USER_MAILBOX,
 
         [EnumMember(Value = "HOST")]
         HOST,
@@ -353,6 +374,24 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OAUTH_TOKEN")]
         OAUTH_TOKEN,
+
+        [EnumMember(Value = "OKTA_TENANT")]
+        OKTA_TENANT,
+
+        [EnumMember(Value = "OLVM_COMPUTE_CLUSTER")]
+        OLVM_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "OLVM_DATACENTER")]
+        OLVM_DATACENTER,
+
+        [EnumMember(Value = "OLVM_HOST")]
+        OLVM_HOST,
+
+        [EnumMember(Value = "OLVM_MANAGER")]
+        OLVM_MANAGER,
+
+        [EnumMember(Value = "OLVM_VIRTUAL_MACHINE")]
+        OLVM_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,

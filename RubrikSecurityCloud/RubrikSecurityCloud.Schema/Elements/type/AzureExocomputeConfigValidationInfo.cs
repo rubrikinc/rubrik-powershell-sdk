@@ -35,6 +35,31 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasRestrictedAddressRangeOverlap")]
         public System.Boolean? HasRestrictedAddressRangeOverlap { get; set; }
 
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAksCustomPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        [JsonProperty("isAksCustomPrivateDnsZoneDoesNotExist")]
+        public System.Boolean? IsAksCustomPrivateDnsZoneDoesNotExist { get; set; }
+
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAksCustomPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        [JsonProperty("isAksCustomPrivateDnsZoneInDifferentSubscription")]
+        public System.Boolean? IsAksCustomPrivateDnsZoneInDifferentSubscription { get; set; }
+
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneInvalid
+        // GraphQL -> isAksCustomPrivateDnsZoneInvalid: Boolean! (scalar)
+        [JsonProperty("isAksCustomPrivateDnsZoneInvalid")]
+        public System.Boolean? IsAksCustomPrivateDnsZoneInvalid { get; set; }
+
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAksCustomPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        [JsonProperty("isAksCustomPrivateDnsZoneNotLinkedToVnet")]
+        public System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet { get; set; }
+
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled
+        // GraphQL -> isAksCustomPrivateDnsZonePermissionsGroupNotEnabled: Boolean! (scalar)
+        [JsonProperty("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled")]
+        public System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled { get; set; }
+
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
         // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
         [JsonProperty("isClusterSubnetSizeTooSmall")]
@@ -113,6 +138,11 @@ namespace RubrikSecurityCloud.Types
         System.String? ErrorMessage = null,
         System.Boolean? HasBlockedSecurityRules = null,
         System.Boolean? HasRestrictedAddressRangeOverlap = null,
+        System.Boolean? IsAksCustomPrivateDnsZoneDoesNotExist = null,
+        System.Boolean? IsAksCustomPrivateDnsZoneInDifferentSubscription = null,
+        System.Boolean? IsAksCustomPrivateDnsZoneInvalid = null,
+        System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet = null,
+        System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null,
         System.Boolean? IsClusterSubnetSizeTooSmall = null,
         System.Boolean? IsPodAndClusterSubnetSame = null,
         System.Boolean? IsPodAndClusterVnetDifferent = null,
@@ -136,6 +166,21 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HasRestrictedAddressRangeOverlap != null ) {
             this.HasRestrictedAddressRangeOverlap = HasRestrictedAddressRangeOverlap;
+        }
+        if ( IsAksCustomPrivateDnsZoneDoesNotExist != null ) {
+            this.IsAksCustomPrivateDnsZoneDoesNotExist = IsAksCustomPrivateDnsZoneDoesNotExist;
+        }
+        if ( IsAksCustomPrivateDnsZoneInDifferentSubscription != null ) {
+            this.IsAksCustomPrivateDnsZoneInDifferentSubscription = IsAksCustomPrivateDnsZoneInDifferentSubscription;
+        }
+        if ( IsAksCustomPrivateDnsZoneInvalid != null ) {
+            this.IsAksCustomPrivateDnsZoneInvalid = IsAksCustomPrivateDnsZoneInvalid;
+        }
+        if ( IsAksCustomPrivateDnsZoneNotLinkedToVnet != null ) {
+            this.IsAksCustomPrivateDnsZoneNotLinkedToVnet = IsAksCustomPrivateDnsZoneNotLinkedToVnet;
+        }
+        if ( IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null ) {
+            this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled;
         }
         if ( IsClusterSubnetSizeTooSmall != null ) {
             this.IsClusterSubnetSizeTooSmall = IsClusterSubnetSizeTooSmall;
@@ -215,6 +260,51 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasRestrictedAddressRangeOverlap\n" ;
             } else {
                 s += ind + "hasRestrictedAddressRangeOverlap\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAksCustomPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (this.IsAksCustomPrivateDnsZoneDoesNotExist != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksCustomPrivateDnsZoneDoesNotExist\n" ;
+            } else {
+                s += ind + "isAksCustomPrivateDnsZoneDoesNotExist\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAksCustomPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (this.IsAksCustomPrivateDnsZoneInDifferentSubscription != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksCustomPrivateDnsZoneInDifferentSubscription\n" ;
+            } else {
+                s += ind + "isAksCustomPrivateDnsZoneInDifferentSubscription\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneInvalid
+        // GraphQL -> isAksCustomPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (this.IsAksCustomPrivateDnsZoneInvalid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksCustomPrivateDnsZoneInvalid\n" ;
+            } else {
+                s += ind + "isAksCustomPrivateDnsZoneInvalid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAksCustomPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (this.IsAksCustomPrivateDnsZoneNotLinkedToVnet != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksCustomPrivateDnsZoneNotLinkedToVnet\n" ;
+            } else {
+                s += ind + "isAksCustomPrivateDnsZoneNotLinkedToVnet\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled
+        // GraphQL -> isAksCustomPrivateDnsZonePermissionsGroupNotEnabled: Boolean! (scalar)
+        if (this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
+            } else {
+                s += ind + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
@@ -394,6 +484,91 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasRestrictedAddressRangeOverlap != null && ec.Excludes("hasRestrictedAddressRangeOverlap",true))
         {
             this.HasRestrictedAddressRangeOverlap = null;
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAksCustomPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (ec.Includes("isAksCustomPrivateDnsZoneDoesNotExist",true))
+        {
+            if(this.IsAksCustomPrivateDnsZoneDoesNotExist == null) {
+
+                this.IsAksCustomPrivateDnsZoneDoesNotExist = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksCustomPrivateDnsZoneDoesNotExist != null && ec.Excludes("isAksCustomPrivateDnsZoneDoesNotExist",true))
+        {
+            this.IsAksCustomPrivateDnsZoneDoesNotExist = null;
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAksCustomPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (ec.Includes("isAksCustomPrivateDnsZoneInDifferentSubscription",true))
+        {
+            if(this.IsAksCustomPrivateDnsZoneInDifferentSubscription == null) {
+
+                this.IsAksCustomPrivateDnsZoneInDifferentSubscription = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksCustomPrivateDnsZoneInDifferentSubscription != null && ec.Excludes("isAksCustomPrivateDnsZoneInDifferentSubscription",true))
+        {
+            this.IsAksCustomPrivateDnsZoneInDifferentSubscription = null;
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneInvalid
+        // GraphQL -> isAksCustomPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (ec.Includes("isAksCustomPrivateDnsZoneInvalid",true))
+        {
+            if(this.IsAksCustomPrivateDnsZoneInvalid == null) {
+
+                this.IsAksCustomPrivateDnsZoneInvalid = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksCustomPrivateDnsZoneInvalid != null && ec.Excludes("isAksCustomPrivateDnsZoneInvalid",true))
+        {
+            this.IsAksCustomPrivateDnsZoneInvalid = null;
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAksCustomPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (ec.Includes("isAksCustomPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            if(this.IsAksCustomPrivateDnsZoneNotLinkedToVnet == null) {
+
+                this.IsAksCustomPrivateDnsZoneNotLinkedToVnet = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksCustomPrivateDnsZoneNotLinkedToVnet != null && ec.Excludes("isAksCustomPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            this.IsAksCustomPrivateDnsZoneNotLinkedToVnet = null;
+        }
+        //      C# -> System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled
+        // GraphQL -> isAksCustomPrivateDnsZonePermissionsGroupNotEnabled: Boolean! (scalar)
+        if (ec.Includes("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled",true))
+        {
+            if(this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled == null) {
+
+                this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null && ec.Excludes("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled",true))
+        {
+            this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null;
         }
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
         // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)

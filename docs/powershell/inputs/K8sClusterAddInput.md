@@ -20,6 +20,8 @@ Supported in v9.0+
 - pullSecret: System.String
   - Supported in v9.1+
       The pull secret required for pulling Rubrik container images.
+- nadName: System.String
+  - The name of the network attachment definition object.
 - transport: System.String
   - Supported in v9.1+
       The transport type used for communication with the Kubernetes cluster.
@@ -29,6 +31,8 @@ Supported in v9.0+
 - clientSecret: System.String
   - Supported in v9.1+
       The client secret for the service account.
+- nadNamespace: System.String
+  - The namespace to which the network attachment definition object belongs.
 - accessToken: System.String
   - Supported in v9.1+
       The access token for the service account.

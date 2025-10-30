@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int64? SequenceNumber
+        // GraphQL -> sequenceNumber: Long! (scalar)
+        [JsonProperty("sequenceNumber")]
+        public System.Int64? SequenceNumber { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         [JsonProperty("snapshotId")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdSnapshotDetails Set(
+        System.Int64? SequenceNumber = null,
         System.String? SnapshotId = null,
         DateTime? SnapshotTime = null
     ) 
     {
+        if ( SequenceNumber != null ) {
+            this.SequenceNumber = SequenceNumber;
+        }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int64? SequenceNumber
+        // GraphQL -> sequenceNumber: Long! (scalar)
+        if (this.SequenceNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sequenceNumber\n" ;
+            } else {
+                s += ind + "sequenceNumber\n" ;
+            }
+        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Int64? SequenceNumber
+        // GraphQL -> sequenceNumber: Long! (scalar)
+        if (ec.Includes("sequenceNumber",true))
+        {
+            if(this.SequenceNumber == null) {
+
+                this.SequenceNumber = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SequenceNumber != null && ec.Excludes("sequenceNumber",true))
+        {
+            this.SequenceNumber = null;
+        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: UUID! (scalar)
         if (ec.Includes("snapshotId",true))

@@ -123,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAPHANA")]
         SAPHANA,
 
+        [EnumMember(Value = "SENSITIVE_DATA_MONITORING_CLOUD_UNSTRUCTURED")]
+        SENSITIVE_DATA_MONITORING_CLOUD_UNSTRUCTURED,
+
         [EnumMember(Value = "SONAR")]
         SONAR,
 

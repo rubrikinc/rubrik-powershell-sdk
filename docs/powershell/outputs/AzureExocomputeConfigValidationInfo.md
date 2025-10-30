@@ -31,5 +31,15 @@ Contains validation information, such as blockers or errors encountered in valid
   - Specifies that the private DNS zone provided for Exocompute configuration does not exist on Azure.
 - isPrivateDnsZoneNotLinkedToVnet: System.Boolean
   - Specifies that the private DNS zone provided for Exocompute configuration is not linked to the Exocompute VNet on Azure.
+- isAksCustomPrivateDnsZoneInvalid: System.Boolean
+  - Specifies that the Azure resource ID of the AKS custom private DNS zone ID provided for Exocompute configuration is invalid. Currently, the DNS zone is considered invalid if the DNS zone name is not of the form 'privatelink.<region>.azmk8s.io' or '<subzone>.privatelink.<region>.azmk8s.io'.
+- isAksCustomPrivateDnsZoneDoesNotExist: System.Boolean
+  - Specifies that the AKS custom private DNS zone provided for Exocompute configuration does not exist on Azure.
+- isAksCustomPrivateDnsZoneInDifferentSubscription: System.Boolean
+  - Specifies that the AKS custom private DNS zone provided for Exocompute configuration belongs to a different subscription than the Exocompute VNet. This is not supported as the RSC app may not have sufficient permissions to read this DNS zone.
+- isAksCustomPrivateDnsZoneNotLinkedToVnet: System.Boolean
+  - Specifies that the AKS custom private DNS zone provided for Exocompute configuration is not linked to the Exocompute VNet on Azure.
+- isAksCustomPrivateDnsZonePermissionsGroupNotEnabled: System.Boolean
+  - Specifies that the AKS custom private DNS zone permissions group is not enabled in the Exocompute feature.
 - errorMessage: System.String
   - Error received while validating Exocompute configuration.

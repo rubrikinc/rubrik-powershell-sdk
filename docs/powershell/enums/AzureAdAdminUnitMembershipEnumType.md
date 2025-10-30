@@ -1,5 +1,5 @@
 ### AzureAdAdminUnitMembershipEnumType
-Specifies if the Entra ID administrative unit membership type.
+Specifies the Entra ID administrative unit membership type.
 
 - UNSPECIFIED - Entra ID administrative unit membership type is unspecified.
 - ASSIGNED - Entra ID administrative unit membership type is assigned.

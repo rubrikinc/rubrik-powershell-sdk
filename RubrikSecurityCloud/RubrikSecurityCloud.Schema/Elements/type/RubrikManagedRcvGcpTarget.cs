@@ -116,10 +116,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("runningTasks")]
         public System.Int32? RunningTasks { get; set; }
 
-        //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String! (scalar)
-        [JsonProperty("serviceAccountName")]
-        public System.String? ServiceAccountName { get; set; }
+        //      C# -> System.String? ServiceAccountNativeId
+        // GraphQL -> serviceAccountNativeId: String! (scalar)
+        [JsonProperty("serviceAccountNativeId")]
+        public System.String? ServiceAccountNativeId { get; set; }
 
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
@@ -170,7 +170,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsArchived = null,
         System.String? Name = null,
         System.Int32? RunningTasks = null,
-        System.String? ServiceAccountName = null,
+        System.String? ServiceAccountNativeId = null,
         System.String? SyncFailureReason = null,
         Cluster? Cluster = null,
         TargetMappingBasic? TargetMapping = null,
@@ -234,8 +234,8 @@ namespace RubrikSecurityCloud.Types
         if ( RunningTasks != null ) {
             this.RunningTasks = RunningTasks;
         }
-        if ( ServiceAccountName != null ) {
-            this.ServiceAccountName = ServiceAccountName;
+        if ( ServiceAccountNativeId != null ) {
+            this.ServiceAccountNativeId = ServiceAccountNativeId;
         }
         if ( SyncFailureReason != null ) {
             this.SyncFailureReason = SyncFailureReason;
@@ -434,13 +434,13 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "runningTasks\n" ;
             }
         }
-        //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String! (scalar)
-        if (this.ServiceAccountName != null) {
+        //      C# -> System.String? ServiceAccountNativeId
+        // GraphQL -> serviceAccountNativeId: String! (scalar)
+        if (this.ServiceAccountNativeId != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "serviceAccountName\n" ;
+                s += conf.Prefix + "serviceAccountNativeId\n" ;
             } else {
-                s += ind + "serviceAccountName\n" ;
+                s += ind + "serviceAccountNativeId\n" ;
             }
         }
         //      C# -> System.String? SyncFailureReason
@@ -818,22 +818,22 @@ namespace RubrikSecurityCloud.Types
         {
             this.RunningTasks = null;
         }
-        //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String! (scalar)
-        if (ec.Includes("serviceAccountName",true))
+        //      C# -> System.String? ServiceAccountNativeId
+        // GraphQL -> serviceAccountNativeId: String! (scalar)
+        if (ec.Includes("serviceAccountNativeId",true))
         {
-            if(this.ServiceAccountName == null) {
+            if(this.ServiceAccountNativeId == null) {
 
-                this.ServiceAccountName = "FETCH";
+                this.ServiceAccountNativeId = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.ServiceAccountName != null && ec.Excludes("serviceAccountName",true))
+        else if (this.ServiceAccountNativeId != null && ec.Excludes("serviceAccountNativeId",true))
         {
-            this.ServiceAccountName = null;
+            this.ServiceAccountNativeId = null;
         }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)

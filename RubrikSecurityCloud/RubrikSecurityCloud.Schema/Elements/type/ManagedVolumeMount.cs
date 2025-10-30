@@ -171,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         public SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> ManagedVolumeSmbShare? SmbShareOpt
+        // GraphQL -> smbShareOpt: ManagedVolumeSmbShare (type)
+        [JsonProperty("smbShareOpt")]
+        public ManagedVolumeSmbShare? SmbShareOpt { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -244,6 +249,7 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
         SecurityMetadata? SecurityMetadata = null,
+        ManagedVolumeSmbShare? SmbShareOpt = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshot? SourceSnapshot = null
     ) 
@@ -337,6 +343,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SecurityMetadata != null ) {
             this.SecurityMetadata = SecurityMetadata;
+        }
+        if ( SmbShareOpt != null ) {
+            this.SmbShareOpt = SmbShareOpt;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -687,6 +696,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "securityMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ManagedVolumeSmbShare? SmbShareOpt
+        // GraphQL -> smbShareOpt: ManagedVolumeSmbShare (type)
+        if (this.SmbShareOpt != null) {
+            var fspec = this.SmbShareOpt.AsFieldSpec(conf.Child("smbShareOpt"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "smbShareOpt" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1288,6 +1309,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SecurityMetadata != null && ec.Excludes("securityMetadata",false))
         {
             this.SecurityMetadata = null;
+        }
+        //      C# -> ManagedVolumeSmbShare? SmbShareOpt
+        // GraphQL -> smbShareOpt: ManagedVolumeSmbShare (type)
+        if (ec.Includes("smbShareOpt",false))
+        {
+            if(this.SmbShareOpt == null) {
+
+                this.SmbShareOpt = new ManagedVolumeSmbShare();
+                this.SmbShareOpt.ApplyExploratoryFieldSpec(ec.NewChild("smbShareOpt"));
+
+            } else {
+
+                this.SmbShareOpt.ApplyExploratoryFieldSpec(ec.NewChild("smbShareOpt"));
+
+            }
+        }
+        else if (this.SmbShareOpt != null && ec.Excludes("smbShareOpt",false))
+        {
+            this.SmbShareOpt = null;
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

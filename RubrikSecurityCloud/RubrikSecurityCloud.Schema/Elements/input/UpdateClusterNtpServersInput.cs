@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> List<NtpServerConfigurationInput>? NtpServerConfigs
         // GraphQL -> ntpServerConfigs: [NtpServerConfigurationInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("ntpServerConfigs")]
         public List<NtpServerConfigurationInput>? NtpServerConfigs { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

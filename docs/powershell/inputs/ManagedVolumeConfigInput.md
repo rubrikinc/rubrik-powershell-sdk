@@ -17,6 +17,9 @@ Supported in v5.0+
   - Supported in v5.0+
       v5.0-v6.0: Application whose data will be stored by this managed volume, like - Oracle, SAP Hana, MS SQL, etc.
       v7.0+: Application whose data this Managed Volume will store. For example, Oracle, SAP Hana, MS SQL, etc.
+- filesystemType: ManagedVolumeFilesystemType
+  - Supported in v9.5
+      Type of filesystem used internally for the Managed Volume Stack.
 - mvType: CdmManagedVolumeType
   - Supported in v5.3+
       v5.3-v8.0: 

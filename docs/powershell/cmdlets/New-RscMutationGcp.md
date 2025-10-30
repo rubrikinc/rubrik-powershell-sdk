@@ -20,6 +20,12 @@ Delete cloud account for the given GCP project cloud account IDs and feature.
 
 - There is a single argument of type GcpCloudAccountDeleteProjectsInput.
 - Returns GcpCloudAccountDeleteProjectsReply.
+### cloudaccountdeleteprojectsv2
+Delete some features for some GCP cloud accounts. The Rubrik objects in the
+return value are of the form <GCP project Rubrik ID>:<FEATURE_NAME>.
+
+- There is a single argument of type GcpCloudAccountDeleteProjectsV2Input.
+- Returns BatchAsyncJobStatus.
 ### cloudaccountoauthcomplete
 Complete the OAuth flow and pass the authorization code.
 
@@ -48,6 +54,13 @@ Sets the default GCP service account authorization key.
 
 - There is a single argument of type GcpSetDefaultServiceAccountJwtConfigInput.
 - Returns System.Boolean.
+### setexocomputeconfigs
+Upsert the exocompute configuration for the given GCP project
+based on the provided configs of cloud account ID, VPC and regional
+subnets.
+
+- There is a single argument of type SetGcpExocomputeConfigsInput.
+- Returns System.String.
 ### updatetarget
 - There is a single argument of type UpdateGcpTargetInput.
 - Returns Target.

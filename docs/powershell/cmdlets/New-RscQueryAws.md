@@ -137,6 +137,11 @@ List of encryption keys in the specified region on the specified AWS Native acco
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of KmsEncryptionKeys.
+### marketplacesubscriptioninfo
+Check AWS marketplace subscription status for a given CDM version.
+
+- There is a single argument of type CheckAwsMarketplaceSubscriptionReq.
+- Returns CheckAwsMarketplaceSubscriptionReply.
 ### optiongroupsbyregion
 List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 
@@ -210,6 +215,12 @@ Validates aws cluster create input.
 
 - There is a single argument of type CreateAwsClusterInput.
 - Returns ValidationReply.
+### validatepermissions
+AwsValidatePermissions validates the permissions for the
+given AWS cloud accounts.
+
+- There is a single argument of type AwsValidatePermissionsReq.
+- Returns AwsValidatePermissionsReply.
 ### vpcs
 List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 

@@ -15,11 +15,20 @@ namespace RubrikSecurityCloud.Types
 {
     public enum PrincipalRiskySummaryPrincipalType
     {
+        [EnumMember(Value = "ACCESS_POLICY")]
+        ACCESS_POLICY,
+
         [EnumMember(Value = "ASSUMABLE_IDENTITY")]
         ASSUMABLE_IDENTITY,
 
         [EnumMember(Value = "COMPUTER")]
         COMPUTER,
+
+        [EnumMember(Value = "CONTACT")]
+        CONTACT,
+
+        [EnumMember(Value = "CONTAINER")]
+        CONTAINER,
 
         [EnumMember(Value = "EXTERNAL_ACCOUNT")]
         EXTERNAL_ACCOUNT,
@@ -35,6 +44,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORG_WIDE")]
         ORG_WIDE,
+
+        [EnumMember(Value = "OU")]
+        OU,
 
         [EnumMember(Value = "PUBLIC")]
         PUBLIC,

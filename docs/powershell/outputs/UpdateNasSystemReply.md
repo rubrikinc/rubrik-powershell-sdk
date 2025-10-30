@@ -14,4 +14,4 @@ Supported in v7.0+
 - connectionStatus: HostRbsConnectionStatus
   - Connection status of the NAS system.
 - vendorType: NasVendorType
-  - Vendor type of the updated NAS system.
+  - Required. Vendor type of the updated NAS system.

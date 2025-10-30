@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Google Cloud Platform' API domain:
-    /// CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// </summary>
     /// <description>
     /// New-RscQueryGcp creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 21 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// one of: CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryGcp -CloudAccountMissingPermissionsForAddition).Info().
+    /// (New-RscQueryGcp -CloudAccountGetProject).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryGcp -CloudAccountMissingPermissionsForAddition).Info().
+    /// (New-RscQueryGcp -CloudAccountGetProject).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the CloudAccountGetProject operation
+    /// of the 'Google Cloud Platform' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Gcp
+    /// # API Operation: CloudAccountGetProject
+    /// 
+    /// $query = New-RscQueryGcp -Operation CloudAccountGetProject
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	projectId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GcpCloudAccountGetProjectResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CloudAccountMissingPermissionsForAddition operation
@@ -171,6 +202,71 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;GcpCloudAccountProjectForOauth&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudSqlInstance operation
+    /// of the 'Google Cloud Platform' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Gcp
+    /// # API Operation: CloudSqlInstance
+    /// 
+    /// $query = New-RscQueryGcp -Operation CloudSqlInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.gcpCloudSqlInstanceRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GcpCloudSqlInstance
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExocomputeConfigs operation
+    /// of the 'Google Cloud Platform' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Gcp
+    /// # API Operation: ExocomputeConfigs
+    /// 
+    /// $query = New-RscQueryGcp -Operation ExocomputeConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	accountId = $someString
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	regions = @(
+    /// 		$someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GcpGetExocomputeConfigsReply
     /// 
     /// 
     /// 
@@ -647,9 +743,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "CloudAccountGetProject",
                 "CloudAccountMissingPermissionsForAddition",
                 "CloudAccountProjectsByFeature",
                 "CloudAccountProjectsForOauth",
+                "CloudSqlInstance",
+                "ExocomputeConfigs",
                 "FeaturePermissionsForCloudAccount",
                 "GetDefaultCredentialsServiceAccount",
                 "GetResourceSetupTemplate",
@@ -680,6 +779,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "CloudAccountGetProject":
+                        this.ProcessRecord_CloudAccountGetProject();
+                        break;
                     case "CloudAccountMissingPermissionsForAddition":
                         this.ProcessRecord_CloudAccountMissingPermissionsForAddition();
                         break;
@@ -688,6 +790,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CloudAccountProjectsForOauth":
                         this.ProcessRecord_CloudAccountProjectsForOauth();
+                        break;
+                    case "CloudSqlInstance":
+                        this.ProcessRecord_CloudSqlInstance();
+                        break;
+                    case "ExocomputeConfigs":
+                        this.ProcessRecord_ExocomputeConfigs();
                         break;
                     case "FeaturePermissionsForCloudAccount":
                         this.ProcessRecord_FeaturePermissionsForCloudAccount();
@@ -745,6 +853,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // gcpCloudAccountGetProject.
+        internal void ProcessRecord_CloudAccountGetProject()
+        {
+            this._logger.name += " -CloudAccountGetProject";
+            // Create new graphql operation gcpCloudAccountGetProject
+            InitQueryGcpCloudAccountGetProject();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allGcpCloudAccountMissingPermissionsForAddition.
         internal void ProcessRecord_CloudAccountMissingPermissionsForAddition()
         {
@@ -769,6 +886,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudAccountProjectsForOauth";
             // Create new graphql operation allGcpCloudAccountProjectsForOauth
             InitQueryAllGcpCloudAccountProjectsForOauth();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // gcpCloudSqlInstance.
+        internal void ProcessRecord_CloudSqlInstance()
+        {
+            this._logger.name += " -CloudSqlInstance";
+            // Create new graphql operation gcpCloudSqlInstance
+            InitQueryGcpCloudSqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // gcpExocomputeConfigs.
+        internal void ProcessRecord_ExocomputeConfigs()
+        {
+            this._logger.name += " -ExocomputeConfigs";
+            // Create new graphql operation gcpExocomputeConfigs
+            InitQueryGcpExocomputeConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -908,6 +1043,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
+        // gcpCloudAccountGetProject(input: GcpCloudAccountGetProjectReq!): GcpCloudAccountGetProjectResponse!
+        internal void InitQueryGcpCloudAccountGetProject()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GcpCloudAccountGetProjectReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGcpCloudAccountGetProject",
+                "($input: GcpCloudAccountGetProjectReq!)",
+                "GcpCloudAccountGetProjectResponse",
+                Query.GcpCloudAccountGetProject,
+                Query.GcpCloudAccountGetProjectFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	projectId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allGcpCloudAccountMissingPermissionsForAddition(sessionId: String!, projectIds: [String!]!): [GcpCloudAccountMissingPermissionsForAddition!]!
         internal void InitQueryAllGcpCloudAccountMissingPermissionsForAddition()
         {
@@ -993,6 +1151,55 @@ $query.Var.features = @(
 )
 # REQUIRED
 $query.Var.checkPermissions = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // gcpCloudSqlInstance(gcpCloudSqlInstanceRubrikId: UUID!): GcpCloudSqlInstance!
+        internal void InitQueryGcpCloudSqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("gcpCloudSqlInstanceRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGcpCloudSqlInstance",
+                "($gcpCloudSqlInstanceRubrikId: UUID!)",
+                "GcpCloudSqlInstance",
+                Query.GcpCloudSqlInstance,
+                Query.GcpCloudSqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.gcpCloudSqlInstanceRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // gcpExocomputeConfigs(input: GcpGetExocomputeConfigsReq!): GcpGetExocomputeConfigsReply!
+        internal void InitQueryGcpExocomputeConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GcpGetExocomputeConfigsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGcpExocomputeConfigs",
+                "($input: GcpGetExocomputeConfigsReq!)",
+                "GcpGetExocomputeConfigsReply",
+                Query.GcpExocomputeConfigs,
+                Query.GcpExocomputeConfigsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	accountId = $someString
+	# REQUIRED
+	cloudAccountId = $someString
+	# OPTIONAL
+	regions = @(
+		$someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
+	)
+}"
             );
         }
 

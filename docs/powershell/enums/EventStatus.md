@@ -8,7 +8,7 @@ Enum representing all the possible event statuses.
 - CANCELED - Canceled.
 - RUNNING - Running.
 - WARNING - Warning.
-- CANCELING - Cancelling.
+- CANCELING - Canceling.
 - TASK_SUCCESS - Task success status.
 - QUEUED - Queued status.
 - TASK_FAILURE - Task failure status.

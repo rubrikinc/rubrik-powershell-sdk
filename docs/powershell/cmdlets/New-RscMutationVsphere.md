@@ -45,6 +45,11 @@ Export snapshot of a virtual machine to standalone ESXi server.
 - There is a single argument of type VsphereExportSnapshotToStandaloneHostV2Input.
 - Returns AsyncRequestStatus.
 ### ondemandsnapshot
+Create an on-demand snapshot for a VM
+
+Supported in v5.0+
+Use the ID of a virtual machine to create an on-demand snapshot.
+
 - There is a single argument of type VsphereOnDemandSnapshotInput.
 - Returns AsyncRequestStatus.
 ### snapshotconsistency

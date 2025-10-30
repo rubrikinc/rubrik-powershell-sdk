@@ -102,6 +102,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		applicationTag = $someManagedVolumeApplicationTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeApplicationTag]) for enum values.
     /// 		# OPTIONAL
+    /// 		filesystemType = $someManagedVolumeFilesystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeFilesystemType]) for enum values.
+    /// 		# OPTIONAL
     /// 		mvType = $someCdmManagedVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmManagedVolumeType]) for enum values.
     /// 		# REQUIRED
     /// 		exportConfig = @{
@@ -273,6 +275,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -430,6 +434,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -724,6 +730,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldDisablePreBackupScript = $someBoolean
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -964,6 +972,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		applicationTag = $someManagedVolumeApplicationTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeApplicationTag]) for enum values.
 		# OPTIONAL
+		filesystemType = $someManagedVolumeFilesystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeFilesystemType]) for enum values.
+		# OPTIONAL
 		mvType = $someCdmManagedVolumeType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmManagedVolumeType]) for enum values.
 		# REQUIRED
 		exportConfig = @{
@@ -1119,6 +1129,8 @@ $query.Var.input = @{
 	preserveSnapshots = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1244,6 +1256,8 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	snapshotId = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1498,6 +1512,8 @@ $query.Var.input = @{
 			shouldDisablePreBackupScript = $someBoolean
 		}
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

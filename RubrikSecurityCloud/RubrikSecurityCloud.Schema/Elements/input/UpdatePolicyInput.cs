@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updateAnalyzerIds")]
         public System.Boolean? UpdateAnalyzerIds { get; set; }
 
+        //      C# -> List<System.String>? DocumentTypeIds
+        // GraphQL -> documentTypeIds: [UUID!] (scalar)
+        [JsonProperty("documentTypeIds")]
+        public List<System.String>? DocumentTypeIds { get; set; }
+
 
         #endregion
 

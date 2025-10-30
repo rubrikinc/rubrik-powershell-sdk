@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("expirationDate")]
         public DateTime? ExpirationDate { get; set; }
 
+        //      C# -> System.Boolean? IsReplaced
+        // GraphQL -> isReplaced: Boolean! (scalar)
+        [JsonProperty("isReplaced")]
+        public System.Boolean? IsReplaced { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         RcvTier? Tier = null,
         System.Single? Capacity = null,
         DateTime? CreatedAt = null,
-        DateTime? ExpirationDate = null
+        DateTime? ExpirationDate = null,
+        System.Boolean? IsReplaced = null
     ) 
     {
         if ( Bundle != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExpirationDate != null ) {
             this.ExpirationDate = ExpirationDate;
+        }
+        if ( IsReplaced != null ) {
+            this.IsReplaced = IsReplaced;
         }
         return this;
     }
@@ -170,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "expirationDate\n" ;
             } else {
                 s += ind + "expirationDate\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplaced
+        // GraphQL -> isReplaced: Boolean! (scalar)
+        if (this.IsReplaced != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplaced\n" ;
+            } else {
+                s += ind + "isReplaced\n" ;
             }
         }
         return s;
@@ -297,6 +315,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
         {
             this.ExpirationDate = null;
+        }
+        //      C# -> System.Boolean? IsReplaced
+        // GraphQL -> isReplaced: Boolean! (scalar)
+        if (ec.Includes("isReplaced",true))
+        {
+            if(this.IsReplaced == null) {
+
+                this.IsReplaced = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplaced != null && ec.Excludes("isReplaced",true))
+        {
+            this.IsReplaced = null;
         }
     }
 

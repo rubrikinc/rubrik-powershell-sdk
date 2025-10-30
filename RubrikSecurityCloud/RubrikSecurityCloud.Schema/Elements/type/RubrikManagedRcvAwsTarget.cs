@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("readerRetrievalMethod")]
         public ReaderRetrievalMethod? ReaderRetrievalMethod { get; set; }
 
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        [JsonProperty("redundancy")]
+        public RcvRedundancy? Redundancy { get; set; }
+
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)
         [JsonProperty("region")]
@@ -155,6 +160,7 @@ namespace RubrikSecurityCloud.Types
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
+        RcvRedundancy? Redundancy = null,
         RcsRegionEnumType? Region = null,
         ArchivalLocationStatus? Status = null,
         TargetSyncStatus? SyncStatus = null,
@@ -188,6 +194,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReaderRetrievalMethod != null ) {
             this.ReaderRetrievalMethod = ReaderRetrievalMethod;
+        }
+        if ( Redundancy != null ) {
+            this.Redundancy = Redundancy;
         }
         if ( Region != null ) {
             this.Region = Region;
@@ -297,6 +306,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "readerRetrievalMethod\n" ;
             } else {
                 s += ind + "readerRetrievalMethod\n" ;
+            }
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (this.Redundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "redundancy\n" ;
+            } else {
+                s += ind + "redundancy\n" ;
             }
         }
         //      C# -> RcsRegionEnumType? Region
@@ -562,6 +580,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReaderRetrievalMethod != null && ec.Excludes("readerRetrievalMethod",true))
         {
             this.ReaderRetrievalMethod = null;
+        }
+        //      C# -> RcvRedundancy? Redundancy
+        // GraphQL -> redundancy: RcvRedundancy! (enum)
+        if (ec.Includes("redundancy",true))
+        {
+            if(this.Redundancy == null) {
+
+                this.Redundancy = new RcvRedundancy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Redundancy != null && ec.Excludes("redundancy",true))
+        {
+            this.Redundancy = null;
         }
         //      C# -> RcsRegionEnumType? Region
         // GraphQL -> region: RcsRegionEnumType! (enum)

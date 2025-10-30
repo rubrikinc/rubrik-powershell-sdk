@@ -60,6 +60,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILE_DOWNLOAD")]
         FILE_DOWNLOAD,
 
+        [EnumMember(Value = "IDENTITY_ALERT")]
+        IDENTITY_ALERT,
+
+        [EnumMember(Value = "IDENTITY_VIOLATION")]
+        IDENTITY_VIOLATION,
+
         [EnumMember(Value = "INDEX")]
         INDEX,
 
@@ -95,6 +101,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SLA_MODIFICATION")]
         SLA_MODIFICATION,
+
+        [EnumMember(Value = "STAGED_UPGRADE")]
+        STAGED_UPGRADE,
 
         [EnumMember(Value = "SYNC")]
         SYNC,

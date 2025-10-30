@@ -15,7 +15,8 @@ Supported in m3.2.0-m4.2.0
   - Supported in m3.2.0-m4.2.0
   Url for nfs server.
 - storeType: MosaicStoreObjectStoreType
-  - 
+  - Required. Supported in m3.2.0-m4.2.0
+  Type of the store on mosaic.
 - storeMetadata: StoreMetadata
   - Supported in m3.2.0-m4.2.0
   Metadata information for store.

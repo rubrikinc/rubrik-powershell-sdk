@@ -15,4 +15,4 @@ Supported in v5.0+
 - username: System.String
   - Required. Supported in v5.0+
 - arrayType: StorageArrayType
-  - 
+  - Required. Supported in v5.0+

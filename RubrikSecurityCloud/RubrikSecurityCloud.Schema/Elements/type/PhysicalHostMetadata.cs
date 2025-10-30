@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osType")]
         public GuestOsType? OsType { get; set; }
 
+        //      C# -> RbsUpgradeStatus? RbsUpgradeStatus
+        // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
+        [JsonProperty("rbsUpgradeStatus")]
+        public RbsUpgradeStatus? RbsUpgradeStatus { get; set; }
+
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)
         [JsonProperty("cbtStatus")]
@@ -50,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.String? NetworkThrottle
+        // GraphQL -> networkThrottle: String! (scalar)
+        [JsonProperty("networkThrottle")]
+        public System.String? NetworkThrottle { get; set; }
+
         //      C# -> System.String? OsName
         // GraphQL -> osName: String (scalar)
         [JsonProperty("osName")]
@@ -61,7 +71,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? ResourceInfo { get; set; }
 
         //      C# -> HostConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: HostConnectionStatus (type)
+        // GraphQL -> connectionStatus: HostConnectionStatus! (type)
         [JsonProperty("connectionStatus")]
         public HostConnectionStatus? ConnectionStatus { get; set; }
 
@@ -91,11 +101,13 @@ namespace RubrikSecurityCloud.Types
 
     public PhysicalHostMetadata Set(
         GuestOsType? OsType = null,
+        RbsUpgradeStatus? RbsUpgradeStatus = null,
         System.String? CbtStatus = null,
         System.String? CdmId = null,
         System.Boolean? DefaultCbt = null,
         List<System.String>? IpAddresses = null,
         System.Boolean? IsArchived = null,
+        System.String? NetworkThrottle = null,
         System.String? OsName = null,
         System.String? ResourceInfo = null,
         HostConnectionStatus? ConnectionStatus = null,
@@ -106,6 +118,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( OsType != null ) {
             this.OsType = OsType;
+        }
+        if ( RbsUpgradeStatus != null ) {
+            this.RbsUpgradeStatus = RbsUpgradeStatus;
         }
         if ( CbtStatus != null ) {
             this.CbtStatus = CbtStatus;
@@ -121,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
+        }
+        if ( NetworkThrottle != null ) {
+            this.NetworkThrottle = NetworkThrottle;
         }
         if ( OsName != null ) {
             this.OsName = OsName;
@@ -161,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "osType\n" ;
             } else {
                 s += ind + "osType\n" ;
+            }
+        }
+        //      C# -> RbsUpgradeStatus? RbsUpgradeStatus
+        // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
+        if (this.RbsUpgradeStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbsUpgradeStatus\n" ;
+            } else {
+                s += ind + "rbsUpgradeStatus\n" ;
             }
         }
         //      C# -> System.String? CbtStatus
@@ -208,6 +235,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isArchived\n" ;
             }
         }
+        //      C# -> System.String? NetworkThrottle
+        // GraphQL -> networkThrottle: String! (scalar)
+        if (this.NetworkThrottle != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkThrottle\n" ;
+            } else {
+                s += ind + "networkThrottle\n" ;
+            }
+        }
         //      C# -> System.String? OsName
         // GraphQL -> osName: String (scalar)
         if (this.OsName != null) {
@@ -227,7 +263,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> HostConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: HostConnectionStatus (type)
+        // GraphQL -> connectionStatus: HostConnectionStatus! (type)
         if (this.ConnectionStatus != null) {
             var fspec = this.ConnectionStatus.AsFieldSpec(conf.Child("connectionStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -297,6 +333,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsType != null && ec.Excludes("osType",true))
         {
             this.OsType = null;
+        }
+        //      C# -> RbsUpgradeStatus? RbsUpgradeStatus
+        // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
+        if (ec.Includes("rbsUpgradeStatus",true))
+        {
+            if(this.RbsUpgradeStatus == null) {
+
+                this.RbsUpgradeStatus = new RbsUpgradeStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbsUpgradeStatus != null && ec.Excludes("rbsUpgradeStatus",true))
+        {
+            this.RbsUpgradeStatus = null;
         }
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)
@@ -383,6 +436,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArchived = null;
         }
+        //      C# -> System.String? NetworkThrottle
+        // GraphQL -> networkThrottle: String! (scalar)
+        if (ec.Includes("networkThrottle",true))
+        {
+            if(this.NetworkThrottle == null) {
+
+                this.NetworkThrottle = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkThrottle != null && ec.Excludes("networkThrottle",true))
+        {
+            this.NetworkThrottle = null;
+        }
         //      C# -> System.String? OsName
         // GraphQL -> osName: String (scalar)
         if (ec.Includes("osName",true))
@@ -418,7 +488,7 @@ namespace RubrikSecurityCloud.Types
             this.ResourceInfo = null;
         }
         //      C# -> HostConnectionStatus? ConnectionStatus
-        // GraphQL -> connectionStatus: HostConnectionStatus (type)
+        // GraphQL -> connectionStatus: HostConnectionStatus! (type)
         if (ec.Includes("connectionStatus",false))
         {
             if(this.ConnectionStatus == null) {

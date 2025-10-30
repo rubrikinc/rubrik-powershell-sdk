@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 33
+    /// Create a new RscQuery object for any of the 35
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 33 operations
+    /// There are 35 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, ComputeSettings, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -632,6 +632,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	exocomputeConfigId = $someString
     /// 	# OPTIONAL
     /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	isPrivateExocompute = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -729,6 +731,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;KmsEncryptionKey&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the MarketplaceSubscriptionInfo operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: MarketplaceSubscriptionInfo
+    /// 
+    /// $query = New-RscQueryAws -Operation MarketplaceSubscriptionInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	region = $someString
+    /// 	# OPTIONAL
+    /// 	cdmVersion = $someString
+    /// 	# OPTIONAL
+    /// 	accountCredentials = @{
+    /// 		# OPTIONAL
+    /// 		accessKey = $someString
+    /// 		# OPTIONAL
+    /// 		secretKey = $someString
+    /// 		# OPTIONAL
+    /// 		token = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CheckAwsMarketplaceSubscriptionReply
     /// 
     /// 
     /// 
@@ -1068,6 +1114,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	roleChainingAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	persistRoleChainingMapping = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1154,6 +1202,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				resourceGroup = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			endpointSuffix = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		awsEsConfig = @{
@@ -1186,6 +1236,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldCreateBucket = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		dynamicNumNodes = $someInt
+    /// 		# OPTIONAL
+    /// 		dynamicScalingEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	vmConfig = @{
@@ -1238,6 +1292,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ValidationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ValidatePermissions operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: ValidatePermissions
+    /// 
+    /// $query = New-RscQueryAws -Operation ValidatePermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	accountReqs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			cloudAccountId = $someString
+    /// 			# OPTIONAL
+    /// 			featureReqs = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 					# OPTIONAL
+    /// 					roleReqs = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							roleType = $someRoleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RoleType]) for enum values.
+    /// 							# OPTIONAL
+    /// 							actionReqs = @(
+    /// 								@{
+    /// 									# OPTIONAL
+    /// 									action = $someString
+    /// 								}
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsValidatePermissionsReply
     /// 
     /// 
     /// 
@@ -1339,6 +1450,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "InstanceProfileNames",
                 "IsS3BucketNameAvailable",
                 "KmsEncryptionKeysByRegion",
+                "MarketplaceSubscriptionInfo",
                 "OptionGroupsByRegion",
                 "PermissionPolicies",
                 "RdsInstanceDetails",
@@ -1350,6 +1462,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SupportedRdsDatabaseInstanceClasses",
                 "TrustPolicy",
                 "ValidateCreateClusterInput",
+                "ValidatePermissions",
                 "Vpcs",
                 "VpcsByRegion",
                 IgnoreCase = true)]
@@ -1427,6 +1540,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "KmsEncryptionKeysByRegion":
                         this.ProcessRecord_KmsEncryptionKeysByRegion();
                         break;
+                    case "MarketplaceSubscriptionInfo":
+                        this.ProcessRecord_MarketplaceSubscriptionInfo();
+                        break;
                     case "OptionGroupsByRegion":
                         this.ProcessRecord_OptionGroupsByRegion();
                         break;
@@ -1459,6 +1575,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ValidateCreateClusterInput":
                         this.ProcessRecord_ValidateCreateClusterInput();
+                        break;
+                    case "ValidatePermissions":
+                        this.ProcessRecord_ValidatePermissions();
                         break;
                     case "Vpcs":
                         this.ProcessRecord_Vpcs();
@@ -1657,6 +1776,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // awsMarketplaceSubscriptionInfo.
+        internal void ProcessRecord_MarketplaceSubscriptionInfo()
+        {
+            this._logger.name += " -MarketplaceSubscriptionInfo";
+            // Create new graphql operation awsMarketplaceSubscriptionInfo
+            InitQueryAwsMarketplaceSubscriptionInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allOptionGroupsByRegionFromAws.
         internal void ProcessRecord_OptionGroupsByRegion()
         {
@@ -1753,6 +1881,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ValidateCreateClusterInput";
             // Create new graphql operation validateCreateAwsClusterInput
             InitQueryValidateCreateAwsClusterInput();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // awsValidatePermissions.
+        internal void ProcessRecord_ValidatePermissions()
+        {
+            this._logger.name += " -ValidatePermissions";
+            // Create new graphql operation awsValidatePermissions
+            InitQueryAwsValidatePermissions();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2247,6 +2384,8 @@ $query.Var.input = @{
 	exocomputeConfigId = $someString
 	# OPTIONAL
 	clusterUuid = $someString
+	# OPTIONAL
+	isPrivateExocompute = $someBoolean
 }"
             );
         }
@@ -2317,6 +2456,42 @@ $query.Var.awsAccountRubrikId = $someString"
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
 $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsMarketplaceSubscriptionInfo(input: CheckAwsMarketplaceSubscriptionReq!): CheckAwsMarketplaceSubscriptionReply!
+        internal void InitQueryAwsMarketplaceSubscriptionInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CheckAwsMarketplaceSubscriptionReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsMarketplaceSubscriptionInfo",
+                "($input: CheckAwsMarketplaceSubscriptionReq!)",
+                "CheckAwsMarketplaceSubscriptionReply",
+                Query.AwsMarketplaceSubscriptionInfo,
+                Query.AwsMarketplaceSubscriptionInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	region = $someString
+	# OPTIONAL
+	cdmVersion = $someString
+	# OPTIONAL
+	accountCredentials = @{
+		# OPTIONAL
+		accessKey = $someString
+		# OPTIONAL
+		secretKey = $someString
+		# OPTIONAL
+		token = $someString
+	}
+}"
             );
         }
 
@@ -2610,6 +2785,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	roleChainingAccountId = $someString
+	# OPTIONAL
+	persistRoleChainingMapping = $someBoolean
 }"
             );
         }
@@ -2688,6 +2865,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				resourceGroup = $someString
 			}
+			# OPTIONAL
+			endpointSuffix = $someString
 		}
 		# OPTIONAL
 		awsEsConfig = @{
@@ -2720,6 +2899,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			shouldCreateBucket = $someBoolean
 		}
+		# OPTIONAL
+		dynamicNumNodes = $someInt
+		# OPTIONAL
+		dynamicScalingEnabled = $someBoolean
 	}
 	# OPTIONAL
 	vmConfig = @{
@@ -2764,6 +2947,55 @@ $query.Var.input = @{
 	# OPTIONAL
 	validations = @(
 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsValidatePermissions(input: AwsValidatePermissionsReq!): AwsValidatePermissionsReply!
+        internal void InitQueryAwsValidatePermissions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AwsValidatePermissionsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsValidatePermissions",
+                "($input: AwsValidatePermissionsReq!)",
+                "AwsValidatePermissionsReply",
+                Query.AwsValidatePermissions,
+                Query.AwsValidatePermissionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	accountReqs = @(
+		@{
+			# OPTIONAL
+			cloudAccountId = $someString
+			# OPTIONAL
+			featureReqs = @(
+				@{
+					# OPTIONAL
+					feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+					# OPTIONAL
+					roleReqs = @(
+						@{
+							# OPTIONAL
+							roleType = $someRoleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RoleType]) for enum values.
+							# OPTIONAL
+							actionReqs = @(
+								@{
+									# OPTIONAL
+									action = $someString
+								}
+							)
+						}
+					)
+				}
+			)
+		}
 	)
 }"
             );

@@ -113,9 +113,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
-    /// 			shouldSddThroughRba = $someBoolean
+    /// 			shouldOracleSddThroughRba = $someBoolean
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
     /// 			# OPTIONAL
@@ -1969,9 +1971,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			oracleSddWalletPath = $someString
 			# OPTIONAL
-			shouldSddThroughRba = $someBoolean
+			shouldOracleSddThroughRba = $someBoolean
 			# OPTIONAL
 			orgNetworkId = $someString
+			# OPTIONAL
+			shouldMssqlSddThroughRba = $someBoolean
 			# OPTIONAL
 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
 			# OPTIONAL

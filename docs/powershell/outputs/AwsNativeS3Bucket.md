@@ -29,6 +29,8 @@ AWS native S3 Bucket.
   - Total size of the bucket in bytes.
 - isOnboarding: System.Boolean
   - Flag to specify if the S3 bucket is being onboarded for backup.
+- isProtectable: System.Boolean
+  - Indicates whether this S3 bucket is protectable or not.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
@@ -40,7 +42,7 @@ AWS native S3 Bucket.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -68,7 +70,7 @@ AWS native S3 Bucket.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

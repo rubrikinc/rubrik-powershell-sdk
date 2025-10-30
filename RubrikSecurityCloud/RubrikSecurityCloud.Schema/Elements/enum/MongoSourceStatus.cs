@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_SOURCE_SUCCESSFUL")]
         ADD_SOURCE_SUCCESSFUL,
 
+        [EnumMember(Value = "DISCOVERY_FAILED")]
+        DISCOVERY_FAILED,
+
         [EnumMember(Value = "_UNSUPPORTED")]
         UNSUPPORTED
 

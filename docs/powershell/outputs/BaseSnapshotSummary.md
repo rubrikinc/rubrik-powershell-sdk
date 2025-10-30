@@ -48,7 +48,7 @@ Supported in v5.0+
   - Supported in v5.2+
   ID of the parent snapshot if the current snapshot is a child snapshot. Child snapshots are snapshots of objects that are part of an app, either a vCloud Director vApp or an AppBlueprint. Snapshots of the app are parent snapshots.
 - cloudStorageTier: SnapshotCloudStorageTier
-  - 
+  - Supported in v5.1+
 - snapshotRetentionInfo: SnapshotRetentionInfo
   - Supported in v5.2+
   Snapshot retention related information for local, archival and replication locations.

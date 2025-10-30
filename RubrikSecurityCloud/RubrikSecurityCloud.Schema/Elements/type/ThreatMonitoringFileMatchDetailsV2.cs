@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("matchedFileSha256")]
         public System.String? MatchedFileSha256 { get; set; }
 
+        //      C# -> DateTime? Mtime
+        // GraphQL -> mtime: DateTime (scalar)
+        [JsonProperty("mtime")]
+        public DateTime? Mtime { get; set; }
+
         //      C# -> List<IocDetails>? IocDetails
         // GraphQL -> iocDetails: [IOCDetails!]! (type)
         [JsonProperty("iocDetails")]
@@ -83,6 +88,7 @@ namespace RubrikSecurityCloud.Types
         System.String? MatchedFileMd5 = null,
         System.String? MatchedFileSha1 = null,
         System.String? MatchedFileSha256 = null,
+        DateTime? Mtime = null,
         List<IocDetails>? IocDetails = null
     ) 
     {
@@ -109,6 +115,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MatchedFileSha256 != null ) {
             this.MatchedFileSha256 = MatchedFileSha256;
+        }
+        if ( Mtime != null ) {
+            this.Mtime = Mtime;
         }
         if ( IocDetails != null ) {
             this.IocDetails = IocDetails;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "matchedFileSha256\n" ;
             } else {
                 s += ind + "matchedFileSha256\n" ;
+            }
+        }
+        //      C# -> DateTime? Mtime
+        // GraphQL -> mtime: DateTime (scalar)
+        if (this.Mtime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mtime\n" ;
+            } else {
+                s += ind + "mtime\n" ;
             }
         }
         //      C# -> List<IocDetails>? IocDetails
@@ -353,6 +371,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MatchedFileSha256 != null && ec.Excludes("matchedFileSha256",true))
         {
             this.MatchedFileSha256 = null;
+        }
+        //      C# -> DateTime? Mtime
+        // GraphQL -> mtime: DateTime (scalar)
+        if (ec.Includes("mtime",true))
+        {
+            if(this.Mtime == null) {
+
+                this.Mtime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Mtime != null && ec.Excludes("mtime",true))
+        {
+            this.Mtime = null;
         }
         //      C# -> List<IocDetails>? IocDetails
         // GraphQL -> iocDetails: [IOCDetails!]! (type)

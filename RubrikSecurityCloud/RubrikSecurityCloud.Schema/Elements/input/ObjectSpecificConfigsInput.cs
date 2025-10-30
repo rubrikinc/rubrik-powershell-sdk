@@ -99,6 +99,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("informixConfigInput")]
         public InformixSlaConfigInput? InformixConfigInput { get; set; }
 
+        //      C# -> GcpCloudSqlConfigInput? GcpCloudSqlConfigInput
+        // GraphQL -> gcpCloudSqlConfigInput: GcpCloudSqlConfigInput (input)
+        [JsonProperty("gcpCloudSqlConfigInput")]
+        public GcpCloudSqlConfigInput? GcpCloudSqlConfigInput { get; set; }
+
+        //      C# -> AwsNativeDynamoDbSlaConfigInput? AwsNativeDynamoDbSlaConfigInput
+        // GraphQL -> awsNativeDynamoDbSlaConfigInput: AwsNativeDynamoDbSlaConfigInput (input)
+        [JsonProperty("awsNativeDynamoDbSlaConfigInput")]
+        public AwsNativeDynamoDbSlaConfigInput? AwsNativeDynamoDbSlaConfigInput { get; set; }
+
 
         #endregion
 

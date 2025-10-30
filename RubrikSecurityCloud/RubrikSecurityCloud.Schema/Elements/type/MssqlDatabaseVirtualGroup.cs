@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ActiveDbFid
+        // GraphQL -> activeDbFid: UUID (scalar)
+        [JsonProperty("activeDbFid")]
+        public System.String? ActiveDbFid { get; set; }
+
         //      C# -> List<System.String>? LinkedFids
         // GraphQL -> linkedFids: [UUID!]! (scalar)
         [JsonProperty("linkedFids")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MssqlDatabaseVirtualGroup Set(
+        System.String? ActiveDbFid = null,
         List<System.String>? LinkedFids = null,
         System.String? Name = null,
         List<MssqlDatabase>? Databases = null
     ) 
     {
+        if ( ActiveDbFid != null ) {
+            this.ActiveDbFid = ActiveDbFid;
+        }
         if ( LinkedFids != null ) {
             this.LinkedFids = LinkedFids;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ActiveDbFid
+        // GraphQL -> activeDbFid: UUID (scalar)
+        if (this.ActiveDbFid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "activeDbFid\n" ;
+            } else {
+                s += ind + "activeDbFid\n" ;
+            }
+        }
         //      C# -> List<System.String>? LinkedFids
         // GraphQL -> linkedFids: [UUID!]! (scalar)
         if (this.LinkedFids != null) {
@@ -110,6 +128,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? ActiveDbFid
+        // GraphQL -> activeDbFid: UUID (scalar)
+        if (ec.Includes("activeDbFid",true))
+        {
+            if(this.ActiveDbFid == null) {
+
+                this.ActiveDbFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActiveDbFid != null && ec.Excludes("activeDbFid",true))
+        {
+            this.ActiveDbFid = null;
+        }
         //      C# -> List<System.String>? LinkedFids
         // GraphQL -> linkedFids: [UUID!]! (scalar)
         if (ec.Includes("linkedFids",true))

@@ -29,3 +29,5 @@ Filters for the cluster list.
 - upgradeScheduled: System.Boolean
 - productType: list of ClusterProductEnums
   - Product type of Rubrik cluster.
+- upgradeStatusCategory: list of System.Strings
+  - Upgrade status categories for filtering clusters. Valid values are defined in the GPS service.

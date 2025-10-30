@@ -5,5 +5,5 @@ Supported in v5.0+
   - Supported in v5.0+
   Details about the object status. Will be populated if the status is "BadlyConfigured".
 - status: RefreshableObjectConnectionStatusType
-  - Supported in v5.0+
+  - Required. Supported in v5.0+
   Status of the refreshable object.

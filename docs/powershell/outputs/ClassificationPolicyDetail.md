@@ -23,6 +23,8 @@ Detailed view of a data classification policy.
   - 
 - dataCategoryResult: DataCategoryResult
   - Data category classification result.
+- documentTypes: list of DocumentAttributes
+  - Document types associated with the policy.
 - creator: User
 - hierarchyObjectConnection: HierarchyObjectConnection
   - Connection on hierarchy objects.

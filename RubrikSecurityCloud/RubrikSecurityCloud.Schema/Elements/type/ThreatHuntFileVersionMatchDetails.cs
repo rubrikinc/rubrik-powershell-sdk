@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("earliestMatchedSnapshotTime")]
         public DateTime? EarliestMatchedSnapshotTime { get; set; }
 
+        //      C# -> System.Boolean? IsPathQuarantined
+        // GraphQL -> isPathQuarantined: Boolean! (scalar)
+        [JsonProperty("isPathQuarantined")]
+        public System.Boolean? IsPathQuarantined { get; set; }
+
         //      C# -> DateTime? LatestMatchedSnapshotTime
         // GraphQL -> latestMatchedSnapshotTime: DateTime (scalar)
         [JsonProperty("latestMatchedSnapshotTime")]
@@ -40,10 +45,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mtime")]
         public DateTime? Mtime { get; set; }
 
-        //      C# -> List<MatchedSnapshot>? MatchedSnapshots
-        // GraphQL -> matchedSnapshots: [MatchedSnapshot!]! (type)
-        [JsonProperty("matchedSnapshots")]
-        public List<MatchedSnapshot>? MatchedSnapshots { get; set; }
+        //      C# -> List<ThreatHuntSnapshotDetails>? SnapshotDetail
+        // GraphQL -> snapshotDetail: [ThreatHuntSnapshotDetails!]! (type)
+        [JsonProperty("snapshotDetail")]
+        public List<ThreatHuntSnapshotDetails>? SnapshotDetail { get; set; }
 
 
         #endregion
@@ -56,14 +61,18 @@ namespace RubrikSecurityCloud.Types
 
     public ThreatHuntFileVersionMatchDetails Set(
         DateTime? EarliestMatchedSnapshotTime = null,
+        System.Boolean? IsPathQuarantined = null,
         DateTime? LatestMatchedSnapshotTime = null,
         DateTime? LatestSnapshotWithoutVersionTime = null,
         DateTime? Mtime = null,
-        List<MatchedSnapshot>? MatchedSnapshots = null
+        List<ThreatHuntSnapshotDetails>? SnapshotDetail = null
     ) 
     {
         if ( EarliestMatchedSnapshotTime != null ) {
             this.EarliestMatchedSnapshotTime = EarliestMatchedSnapshotTime;
+        }
+        if ( IsPathQuarantined != null ) {
+            this.IsPathQuarantined = IsPathQuarantined;
         }
         if ( LatestMatchedSnapshotTime != null ) {
             this.LatestMatchedSnapshotTime = LatestMatchedSnapshotTime;
@@ -74,8 +83,8 @@ namespace RubrikSecurityCloud.Types
         if ( Mtime != null ) {
             this.Mtime = Mtime;
         }
-        if ( MatchedSnapshots != null ) {
-            this.MatchedSnapshots = MatchedSnapshots;
+        if ( SnapshotDetail != null ) {
+            this.SnapshotDetail = SnapshotDetail;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "earliestMatchedSnapshotTime\n" ;
             } else {
                 s += ind + "earliestMatchedSnapshotTime\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPathQuarantined
+        // GraphQL -> isPathQuarantined: Boolean! (scalar)
+        if (this.IsPathQuarantined != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPathQuarantined\n" ;
+            } else {
+                s += ind + "isPathQuarantined\n" ;
             }
         }
         //      C# -> DateTime? LatestMatchedSnapshotTime
@@ -127,15 +145,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "mtime\n" ;
             }
         }
-        //      C# -> List<MatchedSnapshot>? MatchedSnapshots
-        // GraphQL -> matchedSnapshots: [MatchedSnapshot!]! (type)
-        if (this.MatchedSnapshots != null) {
-            var fspec = this.MatchedSnapshots.AsFieldSpec(conf.Child("matchedSnapshots"));
+        //      C# -> List<ThreatHuntSnapshotDetails>? SnapshotDetail
+        // GraphQL -> snapshotDetail: [ThreatHuntSnapshotDetails!]! (type)
+        if (this.SnapshotDetail != null) {
+            var fspec = this.SnapshotDetail.AsFieldSpec(conf.Child("snapshotDetail"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "matchedSnapshots" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "snapshotDetail" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -162,6 +180,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EarliestMatchedSnapshotTime != null && ec.Excludes("earliestMatchedSnapshotTime",true))
         {
             this.EarliestMatchedSnapshotTime = null;
+        }
+        //      C# -> System.Boolean? IsPathQuarantined
+        // GraphQL -> isPathQuarantined: Boolean! (scalar)
+        if (ec.Includes("isPathQuarantined",true))
+        {
+            if(this.IsPathQuarantined == null) {
+
+                this.IsPathQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPathQuarantined != null && ec.Excludes("isPathQuarantined",true))
+        {
+            this.IsPathQuarantined = null;
         }
         //      C# -> DateTime? LatestMatchedSnapshotTime
         // GraphQL -> latestMatchedSnapshotTime: DateTime (scalar)
@@ -214,24 +249,24 @@ namespace RubrikSecurityCloud.Types
         {
             this.Mtime = null;
         }
-        //      C# -> List<MatchedSnapshot>? MatchedSnapshots
-        // GraphQL -> matchedSnapshots: [MatchedSnapshot!]! (type)
-        if (ec.Includes("matchedSnapshots",false))
+        //      C# -> List<ThreatHuntSnapshotDetails>? SnapshotDetail
+        // GraphQL -> snapshotDetail: [ThreatHuntSnapshotDetails!]! (type)
+        if (ec.Includes("snapshotDetail",false))
         {
-            if(this.MatchedSnapshots == null) {
+            if(this.SnapshotDetail == null) {
 
-                this.MatchedSnapshots = new List<MatchedSnapshot>();
-                this.MatchedSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("matchedSnapshots"));
+                this.SnapshotDetail = new List<ThreatHuntSnapshotDetails>();
+                this.SnapshotDetail.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDetail"));
 
             } else {
 
-                this.MatchedSnapshots.ApplyExploratoryFieldSpec(ec.NewChild("matchedSnapshots"));
+                this.SnapshotDetail.ApplyExploratoryFieldSpec(ec.NewChild("snapshotDetail"));
 
             }
         }
-        else if (this.MatchedSnapshots != null && ec.Excludes("matchedSnapshots",false))
+        else if (this.SnapshotDetail != null && ec.Excludes("snapshotDetail",false))
         {
-            this.MatchedSnapshots = null;
+            this.SnapshotDetail = null;
         }
     }
 

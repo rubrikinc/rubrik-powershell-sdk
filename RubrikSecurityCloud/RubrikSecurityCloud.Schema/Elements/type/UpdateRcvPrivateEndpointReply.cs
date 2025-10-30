@@ -1,0 +1,261 @@
+// UpdateRcvPrivateEndpointReply.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using RubrikSecurityCloud;
+
+namespace RubrikSecurityCloud.Types
+{
+    #region UpdateRcvPrivateEndpointReply
+    public class UpdateRcvPrivateEndpointReply: BaseType
+    {
+        #region members
+
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
+        //      C# -> System.String? StorageAccountId
+        // GraphQL -> storageAccountId: String! (scalar)
+        [JsonProperty("storageAccountId")]
+        public System.String? StorageAccountId { get; set; }
+
+        //      C# -> PrivateEndpointConnection? PrivateEndpointConnection
+        // GraphQL -> privateEndpointConnection: PrivateEndpointConnection (type)
+        [JsonProperty("privateEndpointConnection")]
+        public PrivateEndpointConnection? PrivateEndpointConnection { get; set; }
+
+
+        #endregion
+
+    #region methods
+
+    public override string GetGqlTypeName() {
+        return "UpdateRcvPrivateEndpointReply";
+    }
+
+    public UpdateRcvPrivateEndpointReply Set(
+        System.String? Description = null,
+        System.String? Name = null,
+        System.String? StorageAccountId = null,
+        PrivateEndpointConnection? PrivateEndpointConnection = null
+    ) 
+    {
+        if ( Description != null ) {
+            this.Description = Description;
+        }
+        if ( Name != null ) {
+            this.Name = Name;
+        }
+        if ( StorageAccountId != null ) {
+            this.StorageAccountId = StorageAccountId;
+        }
+        if ( PrivateEndpointConnection != null ) {
+            this.PrivateEndpointConnection = PrivateEndpointConnection;
+        }
+        return this;
+    }
+
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
+    {
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        if (this.IsComposite() && ! conf.IgnoreComposition) {
+            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
+        }
+        string ind = conf.IndentStr();
+        string s = "";
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "description\n" ;
+            } else {
+                s += ind + "description\n" ;
+            }
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? StorageAccountId
+        // GraphQL -> storageAccountId: String! (scalar)
+        if (this.StorageAccountId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageAccountId\n" ;
+            } else {
+                s += ind + "storageAccountId\n" ;
+            }
+        }
+        //      C# -> PrivateEndpointConnection? PrivateEndpointConnection
+        // GraphQL -> privateEndpointConnection: PrivateEndpointConnection (type)
+        if (this.PrivateEndpointConnection != null) {
+            var fspec = this.PrivateEndpointConnection.AsFieldSpec(conf.Child("privateEndpointConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "privateEndpointConnection" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        return s;
+    }
+
+
+    
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
+    {
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (ec.Includes("description",true))
+        {
+            if(this.Description == null) {
+
+                this.Description = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Description != null && ec.Excludes("description",true))
+        {
+            this.Description = null;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (ec.Includes("name",true))
+        {
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
+        }
+        //      C# -> System.String? StorageAccountId
+        // GraphQL -> storageAccountId: String! (scalar)
+        if (ec.Includes("storageAccountId",true))
+        {
+            if(this.StorageAccountId == null) {
+
+                this.StorageAccountId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageAccountId != null && ec.Excludes("storageAccountId",true))
+        {
+            this.StorageAccountId = null;
+        }
+        //      C# -> PrivateEndpointConnection? PrivateEndpointConnection
+        // GraphQL -> privateEndpointConnection: PrivateEndpointConnection (type)
+        if (ec.Includes("privateEndpointConnection",false))
+        {
+            if(this.PrivateEndpointConnection == null) {
+
+                this.PrivateEndpointConnection = new PrivateEndpointConnection();
+                this.PrivateEndpointConnection.ApplyExploratoryFieldSpec(ec.NewChild("privateEndpointConnection"));
+
+            } else {
+
+                this.PrivateEndpointConnection.ApplyExploratoryFieldSpec(ec.NewChild("privateEndpointConnection"));
+
+            }
+        }
+        else if (this.PrivateEndpointConnection != null && ec.Excludes("privateEndpointConnection",false))
+        {
+            this.PrivateEndpointConnection = null;
+        }
+    }
+
+
+    #endregion
+
+    } // class UpdateRcvPrivateEndpointReply
+    
+    #endregion
+
+    public static class ListUpdateRcvPrivateEndpointReplyExtensions
+    {
+        // This SDK uses the convention of defining field specs as
+        // the collection of properties that are not null in an object.
+        // When creating a field spec for an object, we look at whether
+        // the object is a list or not, and whether it implements an interface
+        // or not. The following are the possible combinations:
+        // S or L: single object or list object
+        // SD or II: self-defined or interface-implementing
+        // | S/L | SD/II | How fied spec is created
+        // |-----|-------|-------------------------
+        // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
+        // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
+        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
+        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        //
+        // Note that L-II means that each item in the list is II (not the list itself).
+        // This function handles L-SD and L-II cases.
+        public static string AsFieldSpec(
+            this List<UpdateRcvPrivateEndpointReply> list,
+            FieldSpecConfig? conf=null)
+        {
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
+        }
+
+        public static List<string> SelectedFields(this List<UpdateRcvPrivateEndpointReply> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
+        public static void ApplyExploratoryFieldSpec(
+            this List<UpdateRcvPrivateEndpointReply> list, 
+            AutofieldContext ec)
+        {
+            if ( list.Count == 0 ) {
+                list.Add(new UpdateRcvPrivateEndpointReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void SelectForRetrieval(this List<UpdateRcvPrivateEndpointReply> list)
+        {
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
+        }
+    }
+
+
+} // namespace RubrikSecurityCloud.Types

@@ -33,6 +33,14 @@ RCS Azure archival location consumption stats.
 
 - There is a single argument of type RcsConsumptionStatsInput.
 - Returns RcsAzureArchivalLocationsConsumptionStatsOutput.
+### readerinfo
+GetArchivalReaderInfo returns information about the requested
+location that is required in the UI for the reader connection flow,
+the reader refresh, or the delete flow. The requested location can be
+an owner location or a reader location.
+
+- There is a single argument of type GetArchivalReaderInfoReq.
+- Returns GetArchivalReaderInfoResp.
 ### storageusage
 Storage usage of an archival location.
 

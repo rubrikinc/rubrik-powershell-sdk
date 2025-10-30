@@ -23,4 +23,4 @@ Supported in v5.0+
   v5.3: The network adapter type of this NIC.
   v6.0+: The network adapter type of the NIC.
 - addressingMode: VappVmIpAddressingMode
-  - Addressing mode of the virtual machine network connection.
+  - Required. Addressing mode of the virtual machine network connection.

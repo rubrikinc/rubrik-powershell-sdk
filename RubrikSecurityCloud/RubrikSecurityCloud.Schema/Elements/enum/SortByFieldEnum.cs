@@ -81,14 +81,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DataReduction")]
         DATA_REDUCTION,
 
-        [EnumMember(Value = "Date")]
-        DATE,
-
         [EnumMember(Value = "ESTIMATED_RUNWAY")]
         ESTIMATED_RUNWAY,
-
-        [EnumMember(Value = "EndTime")]
-        END_TIME,
 
         [EnumMember(Value = "FILES_CREATED_COUNT")]
         FILES_CREATED_COUNT,
@@ -164,18 +158,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "Name")]
         NAME,
-
-        [EnumMember(Value = "NumCanceled")]
-        NUM_CANCELED,
-
-        [EnumMember(Value = "NumExpected")]
-        NUM_EXPECTED,
-
-        [EnumMember(Value = "NumFailed")]
-        NUM_FAILED,
-
-        [EnumMember(Value = "NumSucceeded")]
-        NUM_SUCCEEDED,
 
         [EnumMember(Value = "OBJECT_NAME")]
         OBJECT_NAME,

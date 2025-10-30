@@ -13,7 +13,11 @@ Represents optional parameters that are to be configured during the configuratio
   - Determines whether Rubrik IPs are whitelisted for the Kubernetes API server of the AKS cluster.
 - privateDnsZoneId: System.String
   - Azure resource ID of the private DNS zone which will be used to resolve private endpoints if using private access to snapshots.
+- aksCustomPrivateDnsZoneId: System.String
+  - Azure resource ID of the private DNS zone which will be used to resolve the API server URL for private exoclusters.
 - aksClusterTier: AKSProvisionTier
   - Cluster tier of the provisioned aks cluster.
 - aksNodeCountBucket: AKSNodeCountBucket
   - Bucket to determine the node count in the aks cluster.
+- aksClusterAccessType: AKSClusterAccessType
+  - Access type of the AKS cluster, whether it is public or private.

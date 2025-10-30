@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? OrgNetworkId
-        // GraphQL -> orgNetworkId: String (scalar)
-        [JsonProperty("orgNetworkId")]
-        public System.String? OrgNetworkId { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.String? OrgNetworkId
+        // GraphQL -> orgNetworkId: String (scalar)
+        [JsonProperty("orgNetworkId")]
+        public System.String? OrgNetworkId { get; set; }
 
 
         #endregion

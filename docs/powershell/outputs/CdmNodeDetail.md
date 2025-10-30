@@ -9,3 +9,5 @@ The node details of a Rubrik CDM cluster.
   - Data IP address of the Rubrik cluster node.
 - ipmiIpAddress: System.String
   - IPMI IP address of the Rubrik cluster node. Not available for virtual or cloud cluster nodes.
+- dataAndManagementVlans: DataAndManagementVlans
+  - Data and management VLANs of the Rubrik cluster node.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsNativeDynamoDbSlaConfig? AwsNativeDynamoDbSlaConfig
+        // GraphQL -> awsNativeDynamoDbSlaConfig: AwsNativeDynamoDbSlaConfig (type)
+        [JsonProperty("awsNativeDynamoDbSlaConfig")]
+        public AwsNativeDynamoDbSlaConfig? AwsNativeDynamoDbSlaConfig { get; set; }
+
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
         [JsonProperty("awsNativeS3SlaConfig")]
@@ -49,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> db2Config: Db2Config (type)
         [JsonProperty("db2Config")]
         public Db2Config? Db2Config { get; set; }
+
+        //      C# -> GcpCloudSqlConfig? GcpCloudSqlConfig
+        // GraphQL -> gcpCloudSqlConfig: GcpCloudSqlConfig (type)
+        [JsonProperty("gcpCloudSqlConfig")]
+        public GcpCloudSqlConfig? GcpCloudSqlConfig { get; set; }
 
         //      C# -> InformixSlaConfig? InformixSlaConfig
         // GraphQL -> informixSlaConfig: InformixSlaConfig (type)
@@ -110,12 +120,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ObjectSpecificConfigs Set(
+        AwsNativeDynamoDbSlaConfig? AwsNativeDynamoDbSlaConfig = null,
         AwsNativeS3SlaConfig? AwsNativeS3SlaConfig = null,
         AwsRdsConfig? AwsRdsConfig = null,
         AzureBlobConfig? AzureBlobConfig = null,
         AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig = null,
         AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig = null,
         Db2Config? Db2Config = null,
+        GcpCloudSqlConfig? GcpCloudSqlConfig = null,
         InformixSlaConfig? InformixSlaConfig = null,
         ManagedVolumeSlaConfig? ManagedVolumeSlaConfig = null,
         MongoConfig? MongoConfig = null,
@@ -128,6 +140,9 @@ namespace RubrikSecurityCloud.Types
         VmwareVmConfig? VmwareVmConfig = null
     ) 
     {
+        if ( AwsNativeDynamoDbSlaConfig != null ) {
+            this.AwsNativeDynamoDbSlaConfig = AwsNativeDynamoDbSlaConfig;
+        }
         if ( AwsNativeS3SlaConfig != null ) {
             this.AwsNativeS3SlaConfig = AwsNativeS3SlaConfig;
         }
@@ -145,6 +160,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Db2Config != null ) {
             this.Db2Config = Db2Config;
+        }
+        if ( GcpCloudSqlConfig != null ) {
+            this.GcpCloudSqlConfig = GcpCloudSqlConfig;
         }
         if ( InformixSlaConfig != null ) {
             this.InformixSlaConfig = InformixSlaConfig;
@@ -190,6 +208,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsNativeDynamoDbSlaConfig? AwsNativeDynamoDbSlaConfig
+        // GraphQL -> awsNativeDynamoDbSlaConfig: AwsNativeDynamoDbSlaConfig (type)
+        if (this.AwsNativeDynamoDbSlaConfig != null) {
+            var fspec = this.AwsNativeDynamoDbSlaConfig.AsFieldSpec(conf.Child("awsNativeDynamoDbSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "awsNativeDynamoDbSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
         if (this.AwsNativeS3SlaConfig != null) {
@@ -259,6 +289,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "db2Config" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpCloudSqlConfig? GcpCloudSqlConfig
+        // GraphQL -> gcpCloudSqlConfig: GcpCloudSqlConfig (type)
+        if (this.GcpCloudSqlConfig != null) {
+            var fspec = this.GcpCloudSqlConfig.AsFieldSpec(conf.Child("gcpCloudSqlConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpCloudSqlConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -389,6 +431,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsNativeDynamoDbSlaConfig? AwsNativeDynamoDbSlaConfig
+        // GraphQL -> awsNativeDynamoDbSlaConfig: AwsNativeDynamoDbSlaConfig (type)
+        if (ec.Includes("awsNativeDynamoDbSlaConfig",false))
+        {
+            if(this.AwsNativeDynamoDbSlaConfig == null) {
+
+                this.AwsNativeDynamoDbSlaConfig = new AwsNativeDynamoDbSlaConfig();
+                this.AwsNativeDynamoDbSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeDynamoDbSlaConfig"));
+
+            } else {
+
+                this.AwsNativeDynamoDbSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("awsNativeDynamoDbSlaConfig"));
+
+            }
+        }
+        else if (this.AwsNativeDynamoDbSlaConfig != null && ec.Excludes("awsNativeDynamoDbSlaConfig",false))
+        {
+            this.AwsNativeDynamoDbSlaConfig = null;
+        }
         //      C# -> AwsNativeS3SlaConfig? AwsNativeS3SlaConfig
         // GraphQL -> awsNativeS3SlaConfig: AwsNativeS3SlaConfig (type)
         if (ec.Includes("awsNativeS3SlaConfig",false))
@@ -502,6 +563,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Db2Config != null && ec.Excludes("db2Config",false))
         {
             this.Db2Config = null;
+        }
+        //      C# -> GcpCloudSqlConfig? GcpCloudSqlConfig
+        // GraphQL -> gcpCloudSqlConfig: GcpCloudSqlConfig (type)
+        if (ec.Includes("gcpCloudSqlConfig",false))
+        {
+            if(this.GcpCloudSqlConfig == null) {
+
+                this.GcpCloudSqlConfig = new GcpCloudSqlConfig();
+                this.GcpCloudSqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("gcpCloudSqlConfig"));
+
+            } else {
+
+                this.GcpCloudSqlConfig.ApplyExploratoryFieldSpec(ec.NewChild("gcpCloudSqlConfig"));
+
+            }
+        }
+        else if (this.GcpCloudSqlConfig != null && ec.Excludes("gcpCloudSqlConfig",false))
+        {
+            this.GcpCloudSqlConfig = null;
         }
         //      C# -> InformixSlaConfig? InformixSlaConfig
         // GraphQL -> informixSlaConfig: InformixSlaConfig (type)

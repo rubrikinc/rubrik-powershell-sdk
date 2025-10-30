@@ -23,6 +23,8 @@ An Azure storage account that contains Azure storage data objects including blob
   - The Storage Account type.
 - isHierarchicalNamespaceEnabled: System.Boolean
   - Specifies whether hierarchical namespace is enabled for the storage account or not. When the value is true, hierarchical namespace is enabled.
+- isProtectable: System.Boolean
+  - Specifies whether the storage account is protectable. When the value is true, the storage account can be protected by assigning sla.
 - azureNativeResourceGroupAndSubscriptionDetails: AzureNativeResourceGroupAndSubscriptionDetails
   - Azure native resource group and subscription details.
 - azureResourceGroupDetails: AzureResourceGroupDetails
@@ -38,7 +40,7 @@ An Azure storage account that contains Azure storage data objects including blob
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -66,7 +68,7 @@ An Azure storage account that contains Azure storage data objects including blob
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

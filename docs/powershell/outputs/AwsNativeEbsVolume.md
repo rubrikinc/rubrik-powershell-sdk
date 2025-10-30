@@ -37,6 +37,8 @@ AWS native EBS volume.
   - AWS Native name of the object.
 - awsNativeAccountDetails: AwsNativeAccountDetails
   - AWS native account details.
+- isProtectable: System.Boolean
+  - Indicates whether this EBS volume is protectable or not.
 - fileIndexingStatus: FileIndexingStatus
   - Specifies the file indexing status for this EBS volume. When enabled, Rubrik scans the file structure within the EBS volume in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
@@ -52,7 +54,7 @@ AWS native EBS volume.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -80,7 +82,7 @@ AWS native EBS volume.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

@@ -43,9 +43,12 @@ Supported in v5.0+
 - oracleSddWalletPath: System.String
   - Supported in v9.3+
       Contains the wallet path on the Oracle host which is used to authenticate the client trying to make remote connections to oracle databases during Sensitive Data Discovery.
-- shouldSddThroughRba: System.Boolean
-  - Supported in v9.5
-      A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow through RBA.
+- shouldOracleSddThroughRba: System.Boolean
+  - Supported in v9.4+
+      A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for Oracle host through RBA.
+- shouldMssqlSddThroughRba: System.Boolean
+  - Supported in v9.4+
+      A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for SQL Server host through RBA.
 - hostVfdEnabled: HostVfdInstallConfig
   - Supported in v5.0+
 - mssqlCbtEnabled: MssqlCbtStatusType

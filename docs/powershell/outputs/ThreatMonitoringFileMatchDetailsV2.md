@@ -19,3 +19,5 @@ Reply to ThreatMonitoringFileMatchDetailsV2.
   - Filepath that was matched.
 - fileName: System.String
   - Name of the file that was matched.
+- mtime: DateTime
+  - Modified time of the matched file.

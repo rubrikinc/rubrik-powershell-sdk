@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureSubscriptions")]
         public List<AzureSubscriptionThreatAnalyticsEnablement>? AzureSubscriptions { get; set; }
 
+        //      C# -> List<CloudDirectClusterThreatAnalyticsEnablement>? CloudDirectClusters
+        // GraphQL -> cloudDirectClusters: [CloudDirectClusterThreatAnalyticsEnablement!]! (type)
+        [JsonProperty("cloudDirectClusters")]
+        public List<CloudDirectClusterThreatAnalyticsEnablement>? CloudDirectClusters { get; set; }
+
         //      C# -> List<GcpProjectThreatAnalyticsEnablement>? GcpProjects
         // GraphQL -> gcpProjects: [GcpProjectThreatAnalyticsEnablement!]! (type)
         [JsonProperty("gcpProjects")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         List<ThreatAnalyticsEnablementItem>? AllEnablementItems = null,
         List<AwsAccountThreatAnalyticsEnablement>? AwsAccounts = null,
         List<AzureSubscriptionThreatAnalyticsEnablement>? AzureSubscriptions = null,
+        List<CloudDirectClusterThreatAnalyticsEnablement>? CloudDirectClusters = null,
         List<GcpProjectThreatAnalyticsEnablement>? GcpProjects = null,
         List<M365SubscriptionThreatAnalyticsEnablement>? M365Subscriptions = null
     ) 
@@ -89,6 +95,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureSubscriptions != null ) {
             this.AzureSubscriptions = AzureSubscriptions;
+        }
+        if ( CloudDirectClusters != null ) {
+            this.CloudDirectClusters = CloudDirectClusters;
         }
         if ( GcpProjects != null ) {
             this.GcpProjects = GcpProjects;
@@ -143,6 +152,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureSubscriptions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CloudDirectClusterThreatAnalyticsEnablement>? CloudDirectClusters
+        // GraphQL -> cloudDirectClusters: [CloudDirectClusterThreatAnalyticsEnablement!]! (type)
+        if (this.CloudDirectClusters != null) {
+            var fspec = this.CloudDirectClusters.AsFieldSpec(conf.Child("cloudDirectClusters"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudDirectClusters" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -233,6 +254,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureSubscriptions != null && ec.Excludes("azureSubscriptions",false))
         {
             this.AzureSubscriptions = null;
+        }
+        //      C# -> List<CloudDirectClusterThreatAnalyticsEnablement>? CloudDirectClusters
+        // GraphQL -> cloudDirectClusters: [CloudDirectClusterThreatAnalyticsEnablement!]! (type)
+        if (ec.Includes("cloudDirectClusters",false))
+        {
+            if(this.CloudDirectClusters == null) {
+
+                this.CloudDirectClusters = new List<CloudDirectClusterThreatAnalyticsEnablement>();
+                this.CloudDirectClusters.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectClusters"));
+
+            } else {
+
+                this.CloudDirectClusters.ApplyExploratoryFieldSpec(ec.NewChild("cloudDirectClusters"));
+
+            }
+        }
+        else if (this.CloudDirectClusters != null && ec.Excludes("cloudDirectClusters",false))
+        {
+            this.CloudDirectClusters = null;
         }
         //      C# -> List<GcpProjectThreatAnalyticsEnablement>? GcpProjects
         // GraphQL -> gcpProjects: [GcpProjectThreatAnalyticsEnablement!]! (type)

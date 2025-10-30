@@ -34,10 +34,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("reportCategory")]
         public ReportCategory? ReportCategory { get; set; }
 
-        //      C# -> ReportRoom? ReportRoom
-        // GraphQL -> reportRoom: ReportRoom (enum)
+        //      C# -> ReportRoomType? ReportRoom
+        // GraphQL -> reportRoom: ReportRoomType (enum)
         [JsonProperty("reportRoom")]
-        public ReportRoom? ReportRoom { get; set; }
+        public ReportRoomType? ReportRoom { get; set; }
 
         //      C# -> System.String? CreatedBy
         // GraphQL -> createdBy: String (scalar)

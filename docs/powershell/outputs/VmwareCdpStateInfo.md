@@ -8,6 +8,8 @@ Supported in v5.3+
   - Required. Supported in v5.3+
   The ID of the virtual machine for which the cluster is retrieving CDP state information.
 - localStatus: CdpLocalStatus
-  - 
+  - Supported in v5.3+
+  The local status of CDP for this virtual machine.
 - replicationStatus: CdpReplicationStatus
-  - 
+  - Supported in v5.3+
+  The replication status of CDP for this virtual machine.

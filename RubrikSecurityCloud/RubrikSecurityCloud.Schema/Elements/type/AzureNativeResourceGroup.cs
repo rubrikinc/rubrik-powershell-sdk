@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        [JsonProperty("isProtectable")]
+        public System.Boolean? IsProtectable { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -213,12 +218,19 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
     public class InlineVars {
+        public RscGqlVars IsProtectable { get; set; }
+
         public RscGqlVars NumWorkloadDescendants { get; set; }
 
         public RscGqlVars AzureNativeVirtualMachines { get; set; }
 
 
         public InlineVars() {
+            Tuple<string, string>[] isProtectableArgs = {
+                    Tuple.Create("azureNativeProtectionFeatures", "[AzureNativeProtectionFeature!]"),
+                };
+            this.IsProtectable =
+                new RscGqlVars(null, isProtectableArgs, null, true);
             Tuple<string, string>[] numWorkloadDescendantsArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -266,6 +278,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AzureSubscriptionRubrikId = null,
         System.Int32? DisksCount = null,
         System.String? Id = null,
+        System.Boolean? IsProtectable = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Boolean? SlaPauseStatus = null,
@@ -332,6 +345,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsProtectable != null ) {
+            this.IsProtectable = IsProtectable;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -552,6 +568,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (this.IsProtectable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProtectable\n" ;
+            } else {
+                s += ind + "isProtectable\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1083,6 +1108,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (ec.Includes("isProtectable",true))
+        {
+            if(this.IsProtectable == null) {
+
+                this.IsProtectable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProtectable != null && ec.Excludes("isProtectable",true))
+        {
+            this.IsProtectable = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -749,6 +749,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		gcpCloudSqlConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		awsNativeDynamoDbSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			cmkAliasForPrimaryBackup = $someString
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -1586,6 +1601,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		gcpCloudSqlConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		awsNativeDynamoDbSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			cmkAliasForPrimaryBackup = $someString
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -2643,6 +2673,21 @@ $query.Var.input = @{
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
 		}
+		# OPTIONAL
+		gcpCloudSqlConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		awsNativeDynamoDbSlaConfigInput = @{
+			# OPTIONAL
+			cmkAliasForPrimaryBackup = $someString
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -3441,6 +3486,21 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+		}
+		# OPTIONAL
+		gcpCloudSqlConfigInput = @{
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		awsNativeDynamoDbSlaConfigInput = @{
+			# OPTIONAL
+			cmkAliasForPrimaryBackup = $someString
 		}
 	}
 	# OPTIONAL

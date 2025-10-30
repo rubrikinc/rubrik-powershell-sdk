@@ -27,6 +27,8 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Azure native resource group and subscription details.
 - azureResourceGroupDetails: AzureResourceGroupDetails
   - Azure native resource group and subscription details.
+- isProtectable: System.Boolean
+  - Specifies whether the SQL managed instance server is protectable. When the value is true, the SQL managed instance server can be protected by assigning sla.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup
@@ -38,7 +40,7 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -66,7 +68,7 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

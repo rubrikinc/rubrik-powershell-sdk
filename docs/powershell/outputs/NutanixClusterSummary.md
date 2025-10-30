@@ -25,7 +25,8 @@ Supported in v5.0+
   - Supported in v9.1+
   Last refresh time of the Nutanix cluster.
 - snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
-  - 
+  - Supported in v9.1+
+  Consistency level mandated for this Nutanix cluster.
 - pendingSlaDomain: ManagedObjectPendingSlaInfo
   - Supported in v5.3+
   Describes any pending SLA Domain assignment on this object.

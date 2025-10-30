@@ -74,6 +74,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("gcpEsConfig")]
         public GcpEsConfigInput? GcpEsConfig { get; set; }
 
+        //      C# -> System.Int32? DynamicNumNodes
+        // GraphQL -> dynamicNumNodes: Int (scalar)
+        [JsonProperty("dynamicNumNodes")]
+        public System.Int32? DynamicNumNodes { get; set; }
+
+        //      C# -> System.Boolean? DynamicScalingEnabled
+        // GraphQL -> dynamicScalingEnabled: Boolean (scalar)
+        [JsonProperty("dynamicScalingEnabled")]
+        public System.Boolean? DynamicScalingEnabled { get; set; }
+
 
         #endregion
 

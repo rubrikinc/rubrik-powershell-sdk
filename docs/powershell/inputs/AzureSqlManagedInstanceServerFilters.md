@@ -14,4 +14,6 @@ Filters for list of Azure SQL Managed Instance Servers.
 - tagFilter: AzureNativeTagFilter
   - Filter by tag.
 - azureNativeIsEligibleForSqlMiServerProtectionFilter: AzureNativeIsEligibleForSqlMiServerProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.

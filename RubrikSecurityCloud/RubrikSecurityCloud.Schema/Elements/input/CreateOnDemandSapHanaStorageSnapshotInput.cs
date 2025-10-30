@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> BaseOnDemandSnapshotConfigInput? Config
-        // GraphQL -> config: BaseOnDemandSnapshotConfigInput (input)
-        [JsonProperty("config")]
-        public BaseOnDemandSnapshotConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> BaseOnDemandSnapshotConfigInput? Config
+        // GraphQL -> config: BaseOnDemandSnapshotConfigInput (input)
+        [JsonProperty("config")]
+        public BaseOnDemandSnapshotConfigInput? Config { get; set; }
 
 
         #endregion

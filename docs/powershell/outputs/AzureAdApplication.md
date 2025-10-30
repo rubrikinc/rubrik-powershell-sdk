@@ -1,15 +1,15 @@
 ### AzureAdApplication
-Azure AD application.
+Entra ID application.
 
 - displayName: System.String
-  - Display name of the Azure AD application.
+  - Display name of the Entra ID application.
 - appId: System.String
-  - App ID of the Azure AD application.
+  - App ID of the Entra ID application.
 - createdDateTime: DateTime
-  - Created date and time of the Azure AD application.
+  - Created date and time of the Entra ID application.
 - secretsExpired: System.Boolean
-  - Specifies if the secrets of the Azure AD application have expired.
+  - Specifies if the secrets of the Entra ID application have expired.
 - appRoles: list of AzureAdAppRoles
-  - List of App Roles associated with the Azure AD application.
+  - List of App Roles associated with the Entra ID application.
 - appRolesCount: System.Int32
-  - Number of App Roles associated with the Azure AD application.
+  - Number of App Roles associated with the Entra ID application.

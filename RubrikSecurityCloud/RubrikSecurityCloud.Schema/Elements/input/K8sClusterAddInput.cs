@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pullSecret")]
         public System.String? PullSecret { get; set; }
 
+        //      C# -> System.String? NadName
+        // GraphQL -> nadName: String (scalar)
+        [JsonProperty("nadName")]
+        public System.String? NadName { get; set; }
+
         //      C# -> System.String? Transport
         // GraphQL -> transport: String (scalar)
         [JsonProperty("transport")]
@@ -63,6 +68,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clientSecret: String (scalar)
         [JsonProperty("clientSecret")]
         public System.String? ClientSecret { get; set; }
+
+        //      C# -> System.String? NadNamespace
+        // GraphQL -> nadNamespace: String (scalar)
+        [JsonProperty("nadNamespace")]
+        public System.String? NadNamespace { get; set; }
 
         //      C# -> System.String? AccessToken
         // GraphQL -> accessToken: String (scalar)

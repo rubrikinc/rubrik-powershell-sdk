@@ -26,4 +26,4 @@ Supported in v5.3+
   - Required. Supported in v5.3+
   The name of the vCenter that contains the HotAdd proxy virtual machine.
 - status: HotAddProxyVmStatusType
-  - Supported in v5.3+
+  - Required. Supported in v5.3+

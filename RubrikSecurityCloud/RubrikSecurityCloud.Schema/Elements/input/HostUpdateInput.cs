@@ -79,10 +79,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSddWalletPath")]
         public System.String? OracleSddWalletPath { get; set; }
 
-        //      C# -> System.Boolean? ShouldSddThroughRba
-        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
-        [JsonProperty("shouldSddThroughRba")]
-        public System.Boolean? ShouldSddThroughRba { get; set; }
+        //      C# -> System.Boolean? ShouldOracleSddThroughRba
+        // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
+        [JsonProperty("shouldOracleSddThroughRba")]
+        public System.Boolean? ShouldOracleSddThroughRba { get; set; }
+
+        //      C# -> System.Boolean? ShouldMssqlSddThroughRba
+        // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
+        [JsonProperty("shouldMssqlSddThroughRba")]
+        public System.Boolean? ShouldMssqlSddThroughRba { get; set; }
 
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)

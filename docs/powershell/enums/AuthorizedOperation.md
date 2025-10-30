@@ -110,8 +110,8 @@ Authorized operations on an object.
 - EDIT_QUARANTINE
 - RECOVER_FROM_QUARANTINE
 - DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET
-- VIEW_WEBHOOKS
-- MANAGE_WEBHOOKS
+- VIEW_WEBHOOKS - View webhooks configuration.
+- MANAGE_WEBHOOKS - Manage webhook configuration.
 - RESIZE_MANAGED_VOLUME - Operation to Resize Managed Volume.
 - VIEW_DATA_SECURITY_DETAILS - View account-wide data security risk metrics, scores, and recommendations.
 - VIEW_SMB_DOMAIN - The operation to view the SMB domain.
@@ -214,8 +214,16 @@ Authorized operations on an object.
 - ADD_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Add AWS Role Chaining cloud account.
 - EDIT_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Edit AWS Role Chaining cloud account.
 - DELETE_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Delete AWS Role Chaining cloud account.
+- VIEW_MODEL_ROUTER - View model router configurations.
+- MANAGE_MODEL_ROUTER - Manage model router configurations.
+- PREVIEW_DATA_CLASSIFICATION_SAMPLES - Preview samples from customers data from classification results.
+- VIEW_CHILD_ACCOUNTS - View child accounts.
+- MANAGE_CHILD_ACCOUNTS - Manage child accounts.
+- DOWNLOAD_ENTRA_ID_SECRETS - Download Entra ID secrets.
+- MANAGE_SERVICE_ACCOUNT_CREDENTIALS - Rotate service account secret.
+- SEND_LICENSE_NOTIFICATION - Send license notification.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION
 - CATEGORY_RECOVERY
-- UNKNOWN_OPERATION
+- UNKNOWN_OPERATION - Unknown operation.

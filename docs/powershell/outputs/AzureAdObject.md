@@ -1,19 +1,17 @@
 ### AzureAdObject
-Response to the azureAdObjectsByType API.
+Represents a search result for a generic Entra ID object.
 
 - objectId: System.String
-  - ID of the Azure AD object.
-- snapshotId: System.String
-  - ID of the snapshot containing Azure AD Object.
-- relationships: Map
-  - Relationships of the Azure AD object.
-- reverseRelationships: list of AzureAdReverseRelationships
-  - Reverse relationships of the Azure Active Directory object.
-- azureAdObjects: AzureAdObjects
-  - Populate either AzureAdUser or AzureAdGroup.
+  - ID of the Entra ID object.
 - type: AzureAdObjectType
-  - Azure AD object type.
+  - Entra ID object type.
+- snapshotId: System.String
+  - ID of the snapshot containing Entra ID Object.
+- reverseRelationships: list of AzureAdReverseRelationships
+  - Reverse relationships of the Entra ID object.
 - relatedItemCount: list of AzureAdRelatedItemCounts
   - Represents count of related items for relationship type.
 - snapshotRange: AzureAdSnapshotRange
-  - Snapshot range containing the Azure AD object.
+  - Snapshot range containing the Entra ID object.
+- azureAdObjects: AzureAdObjects
+  - The Entra ID object.

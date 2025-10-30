@@ -14,4 +14,5 @@ Supported in v8.0+
   - Required. Supported in v8.0+
   Name of the Exchange DAG.
 - backupPreference: ExchangeBackupPreference
-  - 
+  - Required. Supported in v8.0+
+  Backup Preference assigned to the Exchange DAG.

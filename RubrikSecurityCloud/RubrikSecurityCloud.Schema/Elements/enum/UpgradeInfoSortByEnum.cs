@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RegisteredAt")]
         REGISTERED_AT,
 
+        [EnumMember(Value = "UpgradeType")]
+        UPGRADE_TYPE,
+
         [EnumMember(Value = "VersionStatus")]
         VERSION_STATUS
 

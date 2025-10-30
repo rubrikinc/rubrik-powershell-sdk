@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("diskStorageTier")]
         public System.String? DiskStorageTier { get; set; }
 
+        //      C# -> System.String? HyperVgeneration
+        // GraphQL -> hyperVGeneration: String (scalar)
+        [JsonProperty("hyperVGeneration")]
+        public System.String? HyperVgeneration { get; set; }
+
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)
         [JsonProperty("isOsDisk")]
@@ -68,6 +73,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DiskName = null,
         System.String? DiskResourceGroupName = null,
         System.String? DiskStorageTier = null,
+        System.String? HyperVgeneration = null,
         System.Boolean? IsOsDisk = null,
         System.Int32? Lun = null,
         System.String? SnapshotNativeId = null,
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DiskStorageTier != null ) {
             this.DiskStorageTier = DiskStorageTier;
+        }
+        if ( HyperVgeneration != null ) {
+            this.HyperVgeneration = HyperVgeneration;
         }
         if ( IsOsDisk != null ) {
             this.IsOsDisk = IsOsDisk;
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "diskStorageTier\n" ;
             } else {
                 s += ind + "diskStorageTier\n" ;
+            }
+        }
+        //      C# -> System.String? HyperVgeneration
+        // GraphQL -> hyperVGeneration: String (scalar)
+        if (this.HyperVgeneration != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hyperVGeneration\n" ;
+            } else {
+                s += ind + "hyperVGeneration\n" ;
             }
         }
         //      C# -> System.Boolean? IsOsDisk
@@ -229,6 +247,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DiskStorageTier != null && ec.Excludes("diskStorageTier",true))
         {
             this.DiskStorageTier = null;
+        }
+        //      C# -> System.String? HyperVgeneration
+        // GraphQL -> hyperVGeneration: String (scalar)
+        if (ec.Includes("hyperVGeneration",true))
+        {
+            if(this.HyperVgeneration == null) {
+
+                this.HyperVgeneration = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HyperVgeneration != null && ec.Excludes("hyperVGeneration",true))
+        {
+            this.HyperVgeneration = null;
         }
         //      C# -> System.Boolean? IsOsDisk
         // GraphQL -> isOsDisk: Boolean! (scalar)

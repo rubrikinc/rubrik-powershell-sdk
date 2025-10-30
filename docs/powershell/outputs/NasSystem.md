@@ -22,6 +22,8 @@ Instance of a registered NAS system.
 - isNetAppMetroClusterEnabled: System.Boolean
 - netAppMetroClusterInfo: NasSystemNetAppMetroClusterInfo
   - Optional NetApp Metro Cluster info for the NAS system.
+- isUserSuppliedSmbCredentials: System.Boolean
+  - Specifies whether SMB credentials are manually provided by the user.
 - id: System.String
   - Object ID.
 - descendantConnection: NasSystemDescendantTypeConnection
@@ -81,7 +83,7 @@ Instance of a registered NAS system.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

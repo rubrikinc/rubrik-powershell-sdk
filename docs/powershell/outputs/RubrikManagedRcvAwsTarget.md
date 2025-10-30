@@ -11,6 +11,8 @@ Specific information for Rubrik Cloud Vault (RCV)AWS target created on Rubrik.
   - Region of RCV AWS target.
 - tier: RcsTierEnumType
   - Tiers for RCV AWS target.
+- redundancy: RcvRedundancy
+  - Redundancy for RCV Azure target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
 - encryptionType: TargetEncryptionTypeEnum

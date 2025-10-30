@@ -81,9 +81,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EncryptionEnabled")]
         ENCRYPTION_ENABLED,
 
-        [EnumMember(Value = "EndDate")]
-        END_DATE,
-
         [EnumMember(Value = "EndTime")]
         END_TIME,
 
@@ -143,18 +140,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NumHighRiskLocations")]
         NUM_HIGH_RISK_LOCATIONS,
-
-        [EnumMember(Value = "NumOfCanceled")]
-        NUM_OF_CANCELED,
-
-        [EnumMember(Value = "NumOfExpected")]
-        NUM_OF_EXPECTED,
-
-        [EnumMember(Value = "NumOfFailed")]
-        NUM_OF_FAILED,
-
-        [EnumMember(Value = "NumOfSucceeded")]
-        NUM_OF_SUCCEEDED,
 
         [EnumMember(Value = "NumViolatedFiles")]
         NUM_VIOLATED_FILES,
@@ -236,9 +221,6 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "Source")]
         SOURCE,
-
-        [EnumMember(Value = "StartDate")]
-        START_DATE,
 
         [EnumMember(Value = "StartTime")]
         START_TIME,

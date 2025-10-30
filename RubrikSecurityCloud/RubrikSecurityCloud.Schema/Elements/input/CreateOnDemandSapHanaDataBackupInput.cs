@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> SapHanaOnDemandBackupConfigInput? Config
-        // GraphQL -> config: SapHanaOnDemandBackupConfigInput (input)
-        [JsonProperty("config")]
-        public SapHanaOnDemandBackupConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> SapHanaOnDemandBackupConfigInput? Config
+        // GraphQL -> config: SapHanaOnDemandBackupConfigInput (input)
+        [JsonProperty("config")]
+        public SapHanaOnDemandBackupConfigInput? Config { get; set; }
 
 
         #endregion

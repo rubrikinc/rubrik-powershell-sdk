@@ -2,3 +2,4 @@
 Reply Object for UpdateSnmpConfig.
 
 - output: SnmpConfiguration
+  - 

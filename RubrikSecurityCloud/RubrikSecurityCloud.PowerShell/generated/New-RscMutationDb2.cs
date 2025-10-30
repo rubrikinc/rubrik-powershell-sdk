@@ -92,8 +92,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	db2InstanceRequestConfig = @{
     /// 		# REQUIRED
     /// 		hostIds = @(
@@ -106,6 +104,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		username = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -341,6 +341,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
@@ -348,8 +350,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -421,10 +421,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	afterTime = $someDateTime
     /// 	# OPTIONAL
     /// 	beforeTime = $someDateTime
-    /// 	# OPTIONAL
-    /// 	shouldExpireLogsOnly = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldExpireLogsOnly = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -455,14 +455,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	db2DatabaseConfig = @{
     /// 		# OPTIONAL
     /// 		backupParallelism = $someInt
     /// 		# OPTIONAL
     /// 		backupSessions = $someInt
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -781,8 +781,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	db2InstanceRequestConfig = @{
 		# REQUIRED
 		hostIds = @(
@@ -795,6 +793,8 @@ $query.Var.input = @{
 		# REQUIRED
 		username = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -974,6 +974,8 @@ $query.Var.input = @{
                 Mutation.DownloadDb2SnapshotV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL
@@ -981,8 +983,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }
@@ -1038,10 +1038,10 @@ $query.Var.input = @{
 	afterTime = $someDateTime
 	# OPTIONAL
 	beforeTime = $someDateTime
-	# OPTIONAL
-	shouldExpireLogsOnly = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	shouldExpireLogsOnly = $someBoolean
 }"
             );
         }
@@ -1064,14 +1064,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	db2DatabaseConfig = @{
 		# OPTIONAL
 		backupParallelism = $someInt
 		# OPTIONAL
 		backupSessions = $someInt
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

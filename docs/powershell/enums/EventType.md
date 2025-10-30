@@ -61,8 +61,9 @@ Enum representing all the possible event types.
 - TENANT_QUOTA - Tenant quota event type.
 - USER_INTELLIGENCE - User intelligence event type.
 - PROTECTED_OBJECT_DELETION - Protected object deletion event type.
-- SECURITY_VIOLATION - SECURITY_VIOLATION captures life cycle of security violations raised
-by PolicyEngine component.
+- SECURITY_VIOLATION - SECURITY_VIOLATION captures life cycle of security violations raised by PolicyEngine component.
 - SEEDING - Sandbox seeding event type.
 - IDENTITY_ALERTS - Identity alerts type.
-- IDENTITY_VIOLATION - Identity violation event type.
+- IDENTITY_VIOLATION - Identity violation event type. Captures life cycle of identity violations raised by PolicyEngine component.
+- QUARANTINE - Quarantine event type.
+- PERMISSION_ASSESSMENT - Permission assessment event type.

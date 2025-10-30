@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 3
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'Cloud Account' API domain:
-    /// MapExocomputeAccount, UnmapExocomputeAccount, or UpdateCertificateMappings.
+    /// AssignToCluster, MapExocomputeAccount, UnmapExocomputeAccount, UpdateCertificateMappings, or UpdateCertificateUsages.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudAccount creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 3 operations
+    /// There are 5 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: MapExocomputeAccount, UnmapExocomputeAccount, or UpdateCertificateMappings.
+    /// one of: AssignToCluster, MapExocomputeAccount, UnmapExocomputeAccount, UpdateCertificateMappings, or UpdateCertificateUsages.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCloudAccount -MapExocomputeAccount).Info().
+    /// (New-RscMutationCloudAccount -AssignToCluster).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCloudAccount -MapExocomputeAccount).Info().
+    /// (New-RscMutationCloudAccount -AssignToCluster).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the AssignToCluster operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: AssignToCluster
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation AssignToCluster
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	vendor = $someVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VendorType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AssignCloudAccountToClusterReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the MapExocomputeAccount operation
@@ -192,6 +225,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateCertificateUsages operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: UpdateCertificateUsages
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation UpdateCertificateUsages
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudNativeAccountId = $someString
+    /// 	# REQUIRED
+    /// 	selectedCertificateIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -208,9 +280,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "AssignToCluster",
                 "MapExocomputeAccount",
                 "UnmapExocomputeAccount",
                 "UpdateCertificateMappings",
+                "UpdateCertificateUsages",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -226,6 +300,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "AssignToCluster":
+                        this.ProcessRecord_AssignToCluster();
+                        break;
                     case "MapExocomputeAccount":
                         this.ProcessRecord_MapExocomputeAccount();
                         break;
@@ -235,6 +312,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UpdateCertificateMappings":
                         this.ProcessRecord_UpdateCertificateMappings();
                         break;
+                    case "UpdateCertificateUsages":
+                        this.ProcessRecord_UpdateCertificateUsages();
+                        break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
                 }
@@ -243,6 +323,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // assignCloudAccountToCluster.
+        internal void ProcessRecord_AssignToCluster()
+        {
+            this._logger.name += " -AssignToCluster";
+            // Create new graphql operation assignCloudAccountToCluster
+            InitMutationAssignCloudAccountToCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -272,6 +361,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateCertificateCloudAccountMappings();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // updateCertificateUsagesForCloudAccount.
+        internal void ProcessRecord_UpdateCertificateUsages()
+        {
+            this._logger.name += " -UpdateCertificateUsages";
+            // Create new graphql operation updateCertificateUsagesForCloudAccount
+            InitMutationUpdateCertificateUsagesForCloudAccount();
+        }
+
+
+        // Create new GraphQL Mutation:
+        // assignCloudAccountToCluster(input: AssignCloudAccountToClusterInput!): AssignCloudAccountToClusterReply!
+        internal void InitMutationAssignCloudAccountToCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AssignCloudAccountToClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAssignCloudAccountToCluster",
+                "($input: AssignCloudAccountToClusterInput!)",
+                "AssignCloudAccountToClusterReply",
+                Mutation.AssignCloudAccountToCluster,
+                Mutation.AssignCloudAccountToClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterUuid = $someString
+	# OPTIONAL
+	vendor = $someVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VendorType]) for enum values.
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // mapCloudAccountExocomputeAccount(input: MapCloudAccountExocomputeAccountInput!): MapCloudAccountExocomputeAccountReply!
@@ -358,6 +481,37 @@ $query.Var.input = @{
 			# REQUIRED
 			name = $someString
 		}
+	)
+	# OPTIONAL
+	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCertificateUsagesForCloudAccount(input: UpdateCertificateUsagesForCloudAccountInput!): Void
+        internal void InitMutationUpdateCertificateUsagesForCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCertificateUsagesForCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCertificateUsagesForCloudAccount",
+                "($input: UpdateCertificateUsagesForCloudAccountInput!)",
+                "System.String",
+                Mutation.UpdateCertificateUsagesForCloudAccount,
+                Mutation.UpdateCertificateUsagesForCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	cloudNativeAccountId = $someString
+	# REQUIRED
+	selectedCertificateIds = @(
+		$someString
 	)
 	# OPTIONAL
 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.

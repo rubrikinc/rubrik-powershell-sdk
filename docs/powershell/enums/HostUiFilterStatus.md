@@ -1,6 +1,6 @@
 ### HostUiFilterStatus
 Supported in v5.1+
-  Status of Rubrik Io Filter on ESX Host.
+Status of Rubrik Io Filter on ESX Host.
 
 - HOST_UI_FILTER_STATUS_CHECK_VCENTER
 - HOST_UI_FILTER_STATUS_ERROR_CONTACT_SUPPORT

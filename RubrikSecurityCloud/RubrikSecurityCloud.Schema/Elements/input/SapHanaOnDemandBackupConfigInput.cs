@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> SapHanaOnDemandBackupConfigBackupType? BackupType
-        // GraphQL -> backupType: SapHanaOnDemandBackupConfigBackupType (enum)
-        [JsonProperty("backupType")]
-        public SapHanaOnDemandBackupConfigBackupType? BackupType { get; set; }
-
         //      C# -> BaseOnDemandSnapshotConfigInput? BaseOnDemandSnapshotConfig
         // GraphQL -> baseOnDemandSnapshotConfig: BaseOnDemandSnapshotConfigInput (input)
         [JsonProperty("baseOnDemandSnapshotConfig")]
         public BaseOnDemandSnapshotConfigInput? BaseOnDemandSnapshotConfig { get; set; }
+
+        //      C# -> SapHanaOnDemandBackupConfigBackupType? BackupType
+        // GraphQL -> backupType: SapHanaOnDemandBackupConfigBackupType (enum)
+        [JsonProperty("backupType")]
+        public SapHanaOnDemandBackupConfigBackupType? BackupType { get; set; }
 
 
         #endregion

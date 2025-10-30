@@ -15,3 +15,5 @@ Azure Virtual Machine attached disks snapshot.
   - Logical Unit Number(LUN) of the attached disk.
 - sourceDiskUniqueNativeId: System.String
   - Source Disk Unique Native ID of the attached disk.
+- hyperVGeneration: System.String
+  - The hypervisor generation of the disk. Only applicable to OS disks.

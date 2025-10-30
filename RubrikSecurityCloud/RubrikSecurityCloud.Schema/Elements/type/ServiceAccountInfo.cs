@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clientId")]
         public System.String? ClientId { get; set; }
 
+        //      C# -> System.Boolean? IsK8Serror
+        // GraphQL -> isK8SError: Boolean (scalar)
+        [JsonProperty("isK8SError")]
+        public System.Boolean? IsK8Serror { get; set; }
+
         //      C# -> System.String? ServiceAccountName
         // GraphQL -> serviceAccountName: String! (scalar)
         [JsonProperty("serviceAccountName")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public ServiceAccountInfo Set(
         System.String? AccessToken = null,
         System.String? ClientId = null,
+        System.Boolean? IsK8Serror = null,
         System.String? ServiceAccountName = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClientId != null ) {
             this.ClientId = ClientId;
+        }
+        if ( IsK8Serror != null ) {
+            this.IsK8Serror = IsK8Serror;
         }
         if ( ServiceAccountName != null ) {
             this.ServiceAccountName = ServiceAccountName;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clientId\n" ;
             } else {
                 s += ind + "clientId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsK8Serror
+        // GraphQL -> isK8SError: Boolean (scalar)
+        if (this.IsK8Serror != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isK8SError\n" ;
+            } else {
+                s += ind + "isK8SError\n" ;
             }
         }
         //      C# -> System.String? ServiceAccountName
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClientId != null && ec.Excludes("clientId",true))
         {
             this.ClientId = null;
+        }
+        //      C# -> System.Boolean? IsK8Serror
+        // GraphQL -> isK8SError: Boolean (scalar)
+        if (ec.Includes("isK8SError",true))
+        {
+            if(this.IsK8Serror == null) {
+
+                this.IsK8Serror = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsK8Serror != null && ec.Excludes("isK8SError",true))
+        {
+            this.IsK8Serror = null;
         }
         //      C# -> System.String? ServiceAccountName
         // GraphQL -> serviceAccountName: String! (scalar)

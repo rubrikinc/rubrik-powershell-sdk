@@ -2,6 +2,6 @@
 Wrapper around the FilesetTemplatePhysicalChildType object. This wrapper is used for pagination.
 
 - cursor: System.String
-  - String used to identify this edge
+  - String used to identify this edge.
 - node: FilesetTemplatePhysicalChildType
-  - String used to identify this edge
+  - The actual FilesetTemplatePhysicalChildType object wrapped by this edge.

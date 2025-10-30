@@ -1,8 +1,6 @@
 ### AddIdentityProviderInput
 Identity provider to add.
 
-- idpClaimAttributes: list of IdpClaimAttributes
-  - Custom claims for the identity provider.
 - name: System.String
   - Name of the identity provider.
 - entityId: System.String
@@ -13,3 +11,5 @@ Identity provider to add.
   - Signing certificate for the identity provider.
 - isTemp: System.Boolean
   - Specifies if the identity provider should be set as the temporary identity provider.
+- idpClaimAttributes: list of IdpClaimAttributes
+  - Custom claims for the identity provider.

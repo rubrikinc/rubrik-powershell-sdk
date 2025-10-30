@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_OBJECT_TYPE")]
         AZURE_BLOB_OBJECT_TYPE,
 
+        [EnumMember(Value = "AZURE_DEVOPS_OBJECT_TYPE")]
+        AZURE_DEVOPS_OBJECT_TYPE,
+
         [EnumMember(Value = "AZURE_OBJECT_TYPE")]
         AZURE_OBJECT_TYPE,
 
@@ -66,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_OBJECT_TYPE")]
         FILESET_OBJECT_TYPE,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_OBJECT_TYPE")]
+        GCP_CLOUD_SQL_OBJECT_TYPE,
+
         [EnumMember(Value = "GCP_OBJECT_TYPE")]
         GCP_OBJECT_TYPE,
 
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "HYPERV_OBJECT_TYPE")]
         HYPERV_OBJECT_TYPE,
+
+        [EnumMember(Value = "INFORMIX_INSTANCE_OBJECT_TYPE")]
+        INFORMIX_INSTANCE_OBJECT_TYPE,
 
         [EnumMember(Value = "K8S_OBJECT_TYPE")]
         K8S_OBJECT_TYPE,
@@ -110,6 +119,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365_OBJECT_TYPE")]
         O365_OBJECT_TYPE,
+
+        [EnumMember(Value = "OKTA_OBJECT_TYPE")]
+        OKTA_OBJECT_TYPE,
+
+        [EnumMember(Value = "OLVM_OBJECT_TYPE")]
+        OLVM_OBJECT_TYPE,
 
         [EnumMember(Value = "OPENSTACK_OBJECT_TYPE")]
         OPENSTACK_OBJECT_TYPE,

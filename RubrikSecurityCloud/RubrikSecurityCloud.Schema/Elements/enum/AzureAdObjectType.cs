@@ -36,11 +36,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_OBJECT_TYPE_UNKNOWN")]
         AZURE_AD_OBJECT_TYPE_UNKNOWN,
 
+        [EnumMember(Value = "BIT_LOCKER_KEY")]
+        BIT_LOCKER_KEY,
+
         [EnumMember(Value = "CONDITIONAL_ACCESS_POLICY")]
         CONDITIONAL_ACCESS_POLICY,
 
+        [EnumMember(Value = "DEVICE")]
+        DEVICE,
+
         [EnumMember(Value = "GROUP")]
         GROUP,
+
+        [EnumMember(Value = "LOCAL_ADMIN_PASSWORD")]
+        LOCAL_ADMIN_PASSWORD,
 
         [EnumMember(Value = "NAMED_LOCATION")]
         NAMED_LOCATION,

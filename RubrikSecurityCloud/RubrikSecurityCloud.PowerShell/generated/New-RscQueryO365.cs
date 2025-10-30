@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 40
+    /// Create a new RscQuery object for any of the 41
     /// operations in the 'Office 365' API domain:
-    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
+    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, HasAccessToObjects, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 40 operations
+    /// There are 41 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
+    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, HasAccessToObjects, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -282,6 +282,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: O365GroupConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HasAccessToObjects operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: HasAccessToObjects
+    /// 
+    /// $query = New-RscQueryO365 -Operation HasAccessToObjects
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HasAccessToO365ObjectsResp
     /// 
     /// 
     /// 
@@ -1943,6 +1970,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Calendar",
                 "Consumption",
                 "Groups",
+                "HasAccessToObjects",
                 "License",
                 "ListApps",
                 "Mailbox",
@@ -2007,6 +2035,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Groups":
                         this.ProcessRecord_Groups();
+                        break;
+                    case "HasAccessToObjects":
+                        this.ProcessRecord_HasAccessToObjects();
                         break;
                     case "License":
                         this.ProcessRecord_License();
@@ -2166,6 +2197,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Groups";
             // Create new graphql operation o365Groups
             InitQueryO365Groups();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hasAccessToO365Objects.
+        internal void ProcessRecord_HasAccessToObjects()
+        {
+            this._logger.name += " -HasAccessToObjects";
+            // Create new graphql operation hasAccessToO365Objects
+            InitQueryHasAccessToO365Objects();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2685,6 +2725,24 @@ $query.Var.filter = @(
 $query.Var.o365OrgId = $someString
 # REQUIRED
 $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // hasAccessToO365Objects: HasAccessToO365ObjectsResp!
+        internal void InitQueryHasAccessToO365Objects()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHasAccessToO365Objects",
+                "",
+                "HasAccessToO365ObjectsResp",
+                Query.HasAccessToO365Objects,
+                Query.HasAccessToO365ObjectsFieldSpec,
+                @""
             );
         }
 

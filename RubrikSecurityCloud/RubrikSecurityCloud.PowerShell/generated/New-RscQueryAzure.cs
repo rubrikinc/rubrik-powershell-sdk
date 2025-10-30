@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 56
+    /// Create a new RscQuery object for any of the 58
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 56 operations
+    /// There are 58 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, Nsgs, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1096,6 +1096,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the MarketplaceTermsInfo operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: MarketplaceTermsInfo
+    /// 
+    /// $query = New-RscQueryAzure -Operation MarketplaceTermsInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	cdmVersion = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CheckAzureMarketplaceTermsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Nsgs operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1121,6 +1154,77 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RcvBliMigrationDetails operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: RcvBliMigrationDetails
+    /// 
+    /// $query = New-RscQueryAzure -Operation RcvBliMigrationDetails
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.BliMigrationDetailsFilter = @{
+    /// 	# OPTIONAL
+    /// 	migrationStatuses = @(
+    /// 		$someBliMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BliMigrationStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	clusterIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	tiers = @(
+    /// 		$someRcvTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvTier]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	regions = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			cloudSpecificRegion = @{
+    /// 				# OPTIONAL
+    /// 				azureRegion = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				awsRegion = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				gcpRegion = $someGcpRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpRegion]) for enum values.
+    /// 			}
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	locationStatuses = @(
+    /// 		$someArchivalLocationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	unavailabilityReasons = @(
+    /// 		$someMigrationUnavailabilityReason # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MigrationUnavailabilityReason]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RcvBliMigrationDetailsConnection
     /// 
     /// 
     /// 
@@ -1487,6 +1591,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1608,6 +1714,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1747,6 +1855,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1904,6 +2014,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2281,9 +2393,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				privateDnsZoneId = $someString
     /// 				# OPTIONAL
+    /// 				aksCustomPrivateDnsZoneId = $someString
+    /// 				# OPTIONAL
     /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
     /// 				# OPTIONAL
     /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+    /// 				# OPTIONAL
+    /// 				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
     /// 			}
     /// 		}
     /// 	)
@@ -2367,6 +2483,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				resourceGroup = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			endpointSuffix = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		awsEsConfig = @{
@@ -2399,6 +2517,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldCreateBucket = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		dynamicNumNodes = $someInt
+    /// 		# OPTIONAL
+    /// 		dynamicScalingEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	vmConfig = @{
@@ -2497,7 +2619,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "IsStorageAccountNameAvailable",
                 "KeyVaultsByRegion",
                 "ManagedIdentities",
+                "MarketplaceTermsInfo",
                 "Nsgs",
+                "RcvBliMigrationDetails",
                 "Regions",
                 "RegionsWithAzDetails",
                 "ResourceGroups",
@@ -2624,8 +2748,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ManagedIdentities":
                         this.ProcessRecord_ManagedIdentities();
                         break;
+                    case "MarketplaceTermsInfo":
+                        this.ProcessRecord_MarketplaceTermsInfo();
+                        break;
                     case "Nsgs":
                         this.ProcessRecord_Nsgs();
+                        break;
+                    case "RcvBliMigrationDetails":
+                        this.ProcessRecord_RcvBliMigrationDetails();
                         break;
                     case "Regions":
                         this.ProcessRecord_Regions();
@@ -2971,12 +3101,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureMarketplaceTermsInfo.
+        internal void ProcessRecord_MarketplaceTermsInfo()
+        {
+            this._logger.name += " -MarketplaceTermsInfo";
+            // Create new graphql operation azureMarketplaceTermsInfo
+            InitQueryAzureMarketplaceTermsInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAzureNsgs.
         internal void ProcessRecord_Nsgs()
         {
             this._logger.name += " -Nsgs";
             // Create new graphql operation allAzureNsgs
             InitQueryAllAzureNsgs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // rcvAzureBliMigrationDetails.
+        internal void ProcessRecord_RcvBliMigrationDetails()
+        {
+            this._logger.name += " -RcvBliMigrationDetails";
+            // Create new graphql operation rcvAzureBliMigrationDetails
+            InitQueryRcvAzureBliMigrationDetails();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4093,6 +4241,31 @@ $query.Var.managedIdentitiesRequest = @{
         }
 
         // Create new GraphQL Query:
+        // azureMarketplaceTermsInfo(input: CheckAzureMarketplaceTermsReq!): CheckAzureMarketplaceTermsReply!
+        internal void InitQueryAzureMarketplaceTermsInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CheckAzureMarketplaceTermsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureMarketplaceTermsInfo",
+                "($input: CheckAzureMarketplaceTermsReq!)",
+                "CheckAzureMarketplaceTermsReply",
+                Query.AzureMarketplaceTermsInfo,
+                Query.AzureMarketplaceTermsInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	cdmVersion = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureNsgs(nsgRequest: AzureNsgRequest!): [String!]!
         internal void InitQueryAllAzureNsgs()
         {
@@ -4113,6 +4286,79 @@ $query.Var.nsgRequest = @{
 	cloudAccountId = $someString
 	# OPTIONAL
 	resourceGroup = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // rcvAzureBliMigrationDetails(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     BliMigrationDetailsFilter: RcvBliMigrationFilter
+        //   ): RcvBliMigrationDetailsConnection!
+        internal void InitQueryRcvAzureBliMigrationDetails()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("BliMigrationDetailsFilter", "RcvBliMigrationFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRcvAzureBliMigrationDetails",
+                "($first: Int,$after: String,$last: Int,$before: String,$BliMigrationDetailsFilter: RcvBliMigrationFilter)",
+                "RcvBliMigrationDetailsConnection",
+                Query.RcvAzureBliMigrationDetails,
+                Query.RcvAzureBliMigrationDetailsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.BliMigrationDetailsFilter = @{
+	# OPTIONAL
+	migrationStatuses = @(
+		$someBliMigrationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BliMigrationStatus]) for enum values.
+	)
+	# OPTIONAL
+	clusterIds = @(
+		$someString
+	)
+	# OPTIONAL
+	tiers = @(
+		$someRcvTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvTier]) for enum values.
+	)
+	# OPTIONAL
+	regions = @(
+		@{
+			# OPTIONAL
+			cloudSpecificRegion = @{
+				# OPTIONAL
+				azureRegion = $someAzureRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRegion]) for enum values.
+				# OPTIONAL
+				awsRegion = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+				# OPTIONAL
+				gcpRegion = $someGcpRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpRegion]) for enum values.
+			}
+		}
+	)
+	# OPTIONAL
+	locationStatuses = @(
+		$someArchivalLocationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationStatus]) for enum values.
+	)
+	# OPTIONAL
+	unavailabilityReasons = @(
+		$someMigrationUnavailabilityReason # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MigrationUnavailabilityReason]) for enum values.
+	)
 }"
             );
         }
@@ -4443,6 +4689,8 @@ $query.Var.azureSqlDatabaseServerFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }"
             );
         }
@@ -4572,6 +4820,8 @@ $query.Var.azureSqlDatabaseFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -4712,6 +4962,8 @@ $query.Var.azureSqlManagedInstanceDatabaseFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -4867,6 +5119,8 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }"
             );
         }
@@ -5202,9 +5456,13 @@ $query.Var.input = @{
 				# OPTIONAL
 				privateDnsZoneId = $someString
 				# OPTIONAL
+				aksCustomPrivateDnsZoneId = $someString
+				# OPTIONAL
 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
 				# OPTIONAL
 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
+				# OPTIONAL
+				aksClusterAccessType = $someAKSClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSClusterAccessType]) for enum values.
 			}
 		}
 	)
@@ -5280,6 +5538,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				resourceGroup = $someString
 			}
+			# OPTIONAL
+			endpointSuffix = $someString
 		}
 		# OPTIONAL
 		awsEsConfig = @{
@@ -5312,6 +5572,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			shouldCreateBucket = $someBoolean
 		}
+		# OPTIONAL
+		dynamicNumNodes = $someInt
+		# OPTIONAL
+		dynamicScalingEnabled = $someBoolean
 	}
 	# OPTIONAL
 	vmConfig = @{

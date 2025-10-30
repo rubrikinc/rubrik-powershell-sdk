@@ -5,9 +5,11 @@ User audit type.
 - Classification
 - SlaModification
 - LegalHold
+- IDENTITY_ALERT - Audit type for identity alerts.
 - THREAT_FEED - Audit type for Intel feed.
+- IDENTITY_VIOLATION - Audit type for identity violations.
 - BULK_RECOVERY - Audit type for bulk recovery use cases.
-- DATA_RISKS
+- DATA_RISKS - Audit type for data risks.
 - THREAT_HUNT - Audit type for threat hunt use cases.
 - ISOLATED_RECOVERY
 - Configuration
@@ -15,6 +17,7 @@ User audit type.
 - RECOVERY_SCHEDULE - Audit type for recovery schedule use cases.
 - QUARANTINE - Audit type for quarantine usecases.
 - Login
+- STAGED_UPGRADE - Audit type for upgrade operations.
 - LOCAL_RECOVERY
 - Failover
 - Diagnostic

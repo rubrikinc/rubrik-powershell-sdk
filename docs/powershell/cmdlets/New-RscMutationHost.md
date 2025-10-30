@@ -24,6 +24,11 @@ Register multiple hosts and perform discovery for databases and Microsoft SQL Se
 
 - There is a single argument of type BulkRegisterHostAsyncInput.
 - Returns BulkRegisterHostAsyncReply.
+### bulkregistersecondary
+BulkRegisterSecondaryHosts is used to register secondary hosts in bulk.
+
+- There is a single argument of type BulkRegisterSecondaryHostsInput.
+- Returns BulkRegisterSecondaryHostsReply.
 ### bulkupdate
 - There is a single argument of type BulkUpdateHostInput.
 - Returns BulkUpdateHostReply.

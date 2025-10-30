@@ -29,5 +29,7 @@ Filters for list of AWS EBS volumes.
   - Filter by organization ID.
 - awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter
   - Filter by connected status for the AWS native feature.
-- awsNativeIsEligibleForEbsProtectionFilter: AwsNativeIsEligibleForEc2ProtectionFilter
+- awsNativeIsEligibleForEbsProtectionFilter: AwsNativeIsEligibleForEbsProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).
+- isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.

@@ -33,6 +33,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("privateEndpointId")]
         public System.String? PrivateEndpointId { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
+
 
         #endregion
 

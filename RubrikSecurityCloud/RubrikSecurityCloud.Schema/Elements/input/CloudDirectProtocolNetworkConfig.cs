@@ -19,12 +19,12 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> CloudDirectNetworkOverrideProtocol? Protocol
-        // GraphQL -> protocol: CloudDirectNetworkOverrideProtocol! (enum)
+        //      C# -> CloudDirectNasProtocolType? Protocol
+        // GraphQL -> protocol: CloudDirectNasProtocolType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("protocol")]
-        public CloudDirectNetworkOverrideProtocol? Protocol { get; set; }
+        public CloudDirectNasProtocolType? Protocol { get; set; }
 
         //      C# -> List<System.String>? HostAddresses
         // GraphQL -> hostAddresses: [String!]! (scalar)

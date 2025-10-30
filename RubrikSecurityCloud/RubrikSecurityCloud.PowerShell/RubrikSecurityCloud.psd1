@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: This entry is generated.
-Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20250804-26 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20251013-103 .'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.0.0'

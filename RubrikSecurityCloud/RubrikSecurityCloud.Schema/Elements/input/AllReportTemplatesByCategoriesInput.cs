@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("searchTerm")]
         public System.String? SearchTerm { get; set; }
 
+        //      C# -> ReportRoomType? ReportRoom
+        // GraphQL -> reportRoom: ReportRoomType (enum)
+        [JsonProperty("reportRoom")]
+        public ReportRoomType? ReportRoom { get; set; }
+
 
         #endregion
 

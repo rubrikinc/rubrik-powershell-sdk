@@ -24,11 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("diskSerial")]
         public System.String? DiskSerial { get; set; }
 
-        //      C# -> System.Boolean? TurnOff
-        // GraphQL -> turnOff: Boolean (scalar)
-        [JsonProperty("turnOff")]
-        public System.Boolean? TurnOff { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -42,6 +37,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("nodeId")]
         public System.String? NodeId { get; set; }
+
+        //      C# -> System.Boolean? TurnOff
+        // GraphQL -> turnOff: Boolean (scalar)
+        [JsonProperty("turnOff")]
+        public System.Boolean? TurnOff { get; set; }
 
 
         #endregion

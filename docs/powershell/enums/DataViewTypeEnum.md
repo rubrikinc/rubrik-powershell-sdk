@@ -1,23 +1,27 @@
 ### DataViewTypeEnum
 All reporting table schemas.
 
-- MONITORING_IN_PROGRESS
-- MONITORING_FAILED
-- MONITORING_COMPLETED
-- MONITORING_SCHEDULED
-- MONITORING_CANCELED
-- MONITORING_ALL
-- MONITORING_RETRYABLE_FAILED
-- MONITORING_RETRYABLE_CANCELED
-- BACKUP_COMPLIANCE
-- INDEXING
+- MONITORING_IN_PROGRESS - Monitoring in progress database schema.
+- MONITORING_FAILED - Monitoring failed database schema.
+- MONITORING_COMPLETED - Monitoring completed database schema.
+- MONITORING_SCHEDULED - Monitoring scheduled database schema.
+- MONITORING_CANCELED - Monitoring cancelled database schema.
+- MONITORING_ALL - Monitoring all table database schema.
+- MONITORING_RETRYABLE_FAILED - Monitoring retryable failed database schema.
+- MONITORING_RETRYABLE_CANCELED - Monitoring retryable cancelled database schema.
+- BACKUP_COMPLIANCE - Backup compliance database schema.
+- INDEXING - Indexing database schema.
 - OBJECT_AUDIT_LIST
 - OBJECT_AUDIT_DETAIL
-- SLA_AUDIT_LIST
-- SLA_AUDIT_DETAIL
-- MONITORING_TASK_COUNT_TIME_SERIES
-- SLA_COMPLIANCE
-- CDM_UPGRADES
+- SLA_AUDIT_LIST - The DataView, which queries Audits DB table, lists the latest SLA
+audits for each SLA in the NG Alpha report framework.
+It will be deprecated after migrating this report to NG framework.
+- SLA_AUDIT_DETAIL - The DataView, which queries Audits DB table, lists all SLA audits
+for the single SLA in the NG Alpha report framework.
+It will be deprecated after migrating this report to NG framework.
+- MONITORING_TASK_COUNT_TIME_SERIES - Monitoring task count over time.
+- SLA_COMPLIANCE - Sla Compliance.
+- CDM_UPGRADES - Cdm upgrades.
 - PROTECTION_TASK_DETAILS
 - TASK_DETAILS - Specifies the Protection Task Detail report information.
 - GLOBAL_OBJECT - Global object database table schema.
@@ -32,15 +36,15 @@ All reporting table schemas.
 - OBJECT_PROTECTION_AUDIT_LIST_EXPORT - Specifies the protection audit information for all protected workloads.
 - OBJECT_PROTECTION_AUDIT_DETAIL - Specifies all protection audit information for the single protected workload.
 - QAUTH_OBJECTS - Specifies the database schema for QAuth objects.
-- QAUTH_ROLES -  Specifies the database schema for QAuth roles.
+- QAUTH_ROLES - Specifies the database schema for QAuth roles.
 - OBJECT_BACKUP_TASK_SUMMARY - Specifies the database schema for the object backup task summary.
 - AUDIT_LIST - Specifies the database schema for audits.
 - ANOMALIES - Specifies the Readable Snapshots report information.
 - NF_ANOMALIES - Specifies the Unreadable Objects report information.
 - CLUSTERS - Clusters database table schema.
-- ACTIVITY_SERIES - Deprecated. Use EVENT_SERIES.
-- EVENT_SERIES - Specified the Events report information.
-- BACKUP_STRIKES - Specifies the legacy backup strikes information.
+- ACTIVITY_SERIES - Specifies the Events report information.
+- EVENT_SERIES - Specifies the Events report information.
+- BACKUP_STRIKES - Specifies the backup strikes information.
 - DATAGOV_TIMELINE - Specifies Rubrik DSPM information for a given workload over time.
 - SERVICE_ACCOUNT - Specifies the database schema for service account.
 - SSO_GROUP - Specifies the database schema for SSO groups.
@@ -49,3 +53,4 @@ All reporting table schemas.
 - IDENTITY_RISKS - Specifies the Identity Risks report information.
 - BACKUP_STRIKES_V2 - Specifies the backup strikes information.
 - ACTIVE_DIRECTORY_FOREST_RECOVERY - Specifies the Active Directory forest recovery report information.
+- LOG_TASKS - Specifies the Log Tasks Report information.

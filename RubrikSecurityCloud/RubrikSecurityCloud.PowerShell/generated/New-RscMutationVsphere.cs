@@ -373,11 +373,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
-    /// 		snapshotConsistencyMandate = $someVmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate]) for enum values.
-    /// 		# REQUIRED
     /// 		ids = @(
     /// 			$someString
     /// 		)
+    /// 		# REQUIRED
+    /// 		snapshotConsistencyMandate = $someVmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate]) for enum values.
     /// 	}
     /// }
     /// 
@@ -1109,11 +1109,11 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# REQUIRED
-		snapshotConsistencyMandate = $someVmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate]) for enum values.
-		# REQUIRED
 		ids = @(
 			$someString
 		)
+		# REQUIRED
+		snapshotConsistencyMandate = $someVmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmwareUpdateSnapshotConsistencyJobConfigSnapshotConsistencyMandate]) for enum values.
 	}
 }"
             );

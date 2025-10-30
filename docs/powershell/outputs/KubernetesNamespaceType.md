@@ -13,6 +13,12 @@ Kubernetes namespace.
   - UUID of the Kubernetes Cluster.
 - k8sClusterName: System.String
   - Name of the Kubernetes Cluster.
+- k8sLabelIds: list of System.Strings
+  - List of Kubernetes label IDs.
+- k8sProtectionLabelFid: System.String
+  - Protection label FID of the Kubernetes namespace.
+- k8sProtectionLabelName: System.String
+  - Protection label name of the Kubernetes namespace.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - descendantConnection: KubernetesNamespaceDescendantConnection
@@ -20,7 +26,7 @@ Kubernetes namespace.
 - kubernetesDescendantVirtualMachines: KubernetesVirtualMachineConnection
   - Kubernetes Virtual Machines belonging to the Kubernetes namespace.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -48,7 +54,7 @@ Kubernetes namespace.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

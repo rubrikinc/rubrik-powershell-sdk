@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 26
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 26 operations
+    /// There are 28 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -700,6 +700,66 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the NewestForCloudDirectObject operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: NewestForCloudDirectObject
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation NewestForCloudDirectObject
+    /// 
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # OPTIONAL
+    /// $query.Var.cloudDirectTargetId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshot
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the OldestForCloudDirectObject operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: OldestForCloudDirectObject
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation OldestForCloudDirectObject
+    /// 
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// # OPTIONAL
+    /// $query.Var.cloudDirectTargetId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshot
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the OnedriveSearch operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1163,6 +1223,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.ignoreActiveWorkloadCheck = $someBoolean
     /// # OPTIONAL
     /// $query.Var.showSnapshotRetentionInfo = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.includeOnlySourceSnapshots = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1239,6 +1301,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// }
     /// # OPTIONAL
     /// $query.Var.ignoreActiveWorkloadCheck = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.includeOnlySourceSnapshots = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1505,6 +1569,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Fileset",
                 "FilesetFiles",
                 "LegalHoldSnappable",
+                "NewestForCloudDirectObject",
+                "OldestForCloudDirectObject",
                 "OnedriveSearch",
                 "Polaris",
                 "PossibleLocationsForObjects",
@@ -1567,6 +1633,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LegalHoldSnappable":
                         this.ProcessRecord_LegalHoldSnappable();
+                        break;
+                    case "NewestForCloudDirectObject":
+                        this.ProcessRecord_NewestForCloudDirectObject();
+                        break;
+                    case "OldestForCloudDirectObject":
+                        this.ProcessRecord_OldestForCloudDirectObject();
                         break;
                     case "OnedriveSearch":
                         this.ProcessRecord_OnedriveSearch();
@@ -1720,6 +1792,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LegalHoldSnappable";
             // Create new graphql operation legalHoldSnapshotsForSnappable
             InitQueryLegalHoldSnapshotsForSnappable();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // newestSnapshotForCloudDirectObject.
+        internal void ProcessRecord_NewestForCloudDirectObject()
+        {
+            this._logger.name += " -NewestForCloudDirectObject";
+            // Create new graphql operation newestSnapshotForCloudDirectObject
+            InitQueryNewestSnapshotForCloudDirectObject();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // oldestSnapshotForCloudDirectObject.
+        internal void ProcessRecord_OldestForCloudDirectObject()
+        {
+            this._logger.name += " -OldestForCloudDirectObject";
+            // Create new graphql operation oldestSnapshotForCloudDirectObject
+            InitQueryOldestSnapshotForCloudDirectObject();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2515,6 +2605,52 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // newestSnapshotForCloudDirectObject(workloadId: UUID!, cloudDirectTargetId: UUID): CloudDirectSnapshot
+        internal void InitQueryNewestSnapshotForCloudDirectObject()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("cloudDirectTargetId", "UUID"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryNewestSnapshotForCloudDirectObject",
+                "($workloadId: UUID!,$cloudDirectTargetId: UUID)",
+                "CloudDirectSnapshot",
+                Query.NewestSnapshotForCloudDirectObject,
+                Query.NewestSnapshotForCloudDirectObjectFieldSpec,
+                @"# REQUIRED
+$query.Var.workloadId = $someString
+# OPTIONAL
+$query.Var.cloudDirectTargetId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // oldestSnapshotForCloudDirectObject(workloadId: UUID!, cloudDirectTargetId: UUID): CloudDirectSnapshot
+        internal void InitQueryOldestSnapshotForCloudDirectObject()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadId", "UUID!"),
+                Tuple.Create("cloudDirectTargetId", "UUID"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryOldestSnapshotForCloudDirectObject",
+                "($workloadId: UUID!,$cloudDirectTargetId: UUID)",
+                "CloudDirectSnapshot",
+                Query.OldestSnapshotForCloudDirectObject,
+                Query.OldestSnapshotForCloudDirectObjectFieldSpec,
+                @"# REQUIRED
+$query.Var.workloadId = $someString
+# OPTIONAL
+$query.Var.cloudDirectTargetId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // snapshotOnedriveSearch(
         //     first: Int
         //     after: String
@@ -2920,6 +3056,7 @@ $query.Var.cloudDirectTargetId = $someString"
         //     timeRange: TimeRangeInput
         //     ignoreActiveWorkloadCheck: Boolean
         //     showSnapshotRetentionInfo: Boolean
+        //     includeOnlySourceSnapshots: Boolean
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfAsnappableConnection()
         {
@@ -2935,12 +3072,13 @@ $query.Var.cloudDirectTargetId = $someString"
                 Tuple.Create("timeRange", "TimeRangeInput"),
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
                 Tuple.Create("showSnapshotRetentionInfo", "Boolean"),
+                Tuple.Create("includeOnlySourceSnapshots", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfAsnappableConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean,$includeOnlySourceSnapshots: Boolean)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfAsnappableConnection,
                 Query.SnapshotOfAsnappableConnectionFieldSpec,
@@ -2993,7 +3131,9 @@ $query.Var.timeRange = @{
 # OPTIONAL
 $query.Var.ignoreActiveWorkloadCheck = $someBoolean
 # OPTIONAL
-$query.Var.showSnapshotRetentionInfo = $someBoolean"
+$query.Var.showSnapshotRetentionInfo = $someBoolean
+# OPTIONAL
+$query.Var.includeOnlySourceSnapshots = $someBoolean"
             );
         }
 
@@ -3009,6 +3149,7 @@ $query.Var.showSnapshotRetentionInfo = $someBoolean"
         //     sortBy: SnapshotQuerySortByField
         //     timeRange: TimeRangeInput
         //     ignoreActiveWorkloadCheck: Boolean
+        //     includeOnlySourceSnapshots: Boolean
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfSnappablesConnection()
         {
@@ -3023,12 +3164,13 @@ $query.Var.showSnapshotRetentionInfo = $someBoolean"
                 Tuple.Create("sortBy", "SnapshotQuerySortByField"),
                 Tuple.Create("timeRange", "TimeRangeInput"),
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
+                Tuple.Create("includeOnlySourceSnapshots", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfSnappablesConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$includeOnlySourceSnapshots: Boolean)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfSnappablesConnection,
                 Query.SnapshotOfSnappablesConnectionFieldSpec,
@@ -3081,7 +3223,9 @@ $query.Var.timeRange = @{
 	end = $someDateTime
 }
 # OPTIONAL
-$query.Var.ignoreActiveWorkloadCheck = $someBoolean"
+$query.Var.ignoreActiveWorkloadCheck = $someBoolean
+# OPTIONAL
+$query.Var.includeOnlySourceSnapshots = $someBoolean"
             );
         }
 

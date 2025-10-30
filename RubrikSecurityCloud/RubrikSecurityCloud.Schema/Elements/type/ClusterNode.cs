@@ -30,10 +30,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("position")]
         public ClusterNodePosition? Position { get; set; }
 
+        //      C# -> ClusterNodeRole? Role
+        // GraphQL -> role: ClusterNodeRole! (enum)
+        [JsonProperty("role")]
+        public ClusterNodeRole? Role { get; set; }
+
         //      C# -> ClusterNodeStatus? Status
         // GraphQL -> status: ClusterNodeStatus (enum)
         [JsonProperty("status")]
         public ClusterNodeStatus? Status { get; set; }
+
+        //      C# -> ClusterNodeSubStatus? SubStatus
+        // GraphQL -> subStatus: ClusterNodeSubStatus (enum)
+        [JsonProperty("subStatus")]
+        public ClusterNodeSubStatus? SubStatus { get; set; }
 
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
@@ -102,7 +112,9 @@ namespace RubrikSecurityCloud.Types
     public ClusterNode Set(
         ClusterNodePlatformType? PlatformType = null,
         ClusterNodePosition? Position = null,
+        ClusterNodeRole? Role = null,
         ClusterNodeStatus? Status = null,
+        ClusterNodeSubStatus? SubStatus = null,
         System.String? BrikId = null,
         System.String? ClusterId = null,
         System.Int32? CpuCores = null,
@@ -122,8 +134,14 @@ namespace RubrikSecurityCloud.Types
         if ( Position != null ) {
             this.Position = Position;
         }
+        if ( Role != null ) {
+            this.Role = Role;
+        }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( SubStatus != null ) {
+            this.SubStatus = SubStatus;
         }
         if ( BrikId != null ) {
             this.BrikId = BrikId;
@@ -190,6 +208,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "position\n" ;
             }
         }
+        //      C# -> ClusterNodeRole? Role
+        // GraphQL -> role: ClusterNodeRole! (enum)
+        if (this.Role != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "role\n" ;
+            } else {
+                s += ind + "role\n" ;
+            }
+        }
         //      C# -> ClusterNodeStatus? Status
         // GraphQL -> status: ClusterNodeStatus (enum)
         if (this.Status != null) {
@@ -197,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> ClusterNodeSubStatus? SubStatus
+        // GraphQL -> subStatus: ClusterNodeSubStatus (enum)
+        if (this.SubStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subStatus\n" ;
+            } else {
+                s += ind + "subStatus\n" ;
             }
         }
         //      C# -> System.String? BrikId
@@ -345,6 +381,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Position = null;
         }
+        //      C# -> ClusterNodeRole? Role
+        // GraphQL -> role: ClusterNodeRole! (enum)
+        if (ec.Includes("role",true))
+        {
+            if(this.Role == null) {
+
+                this.Role = new ClusterNodeRole();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Role != null && ec.Excludes("role",true))
+        {
+            this.Role = null;
+        }
         //      C# -> ClusterNodeStatus? Status
         // GraphQL -> status: ClusterNodeStatus (enum)
         if (ec.Includes("status",true))
@@ -361,6 +414,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> ClusterNodeSubStatus? SubStatus
+        // GraphQL -> subStatus: ClusterNodeSubStatus (enum)
+        if (ec.Includes("subStatus",true))
+        {
+            if(this.SubStatus == null) {
+
+                this.SubStatus = new ClusterNodeSubStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubStatus != null && ec.Excludes("subStatus",true))
+        {
+            this.SubStatus = null;
         }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)

@@ -18,8 +18,9 @@ Supported in v7.0+
 - userSelectedSmbInterfaces: list of System.Strings
   - List of hostnames or IP addresses used for Fileset jobs on SMB shares in the NAS system.
 - isNetAppMetroClusterEnabled: System.Boolean
-  - Supported in v9.4+
-      Enables the Metro Cluster feature for the NetApp NAS system. If the NetApp cluster is operating in the Metro Cluster environment and this flag is not enabled, the NAS protections on this NAS system will not seamlessly move when switchover or switchback occurs.
+  - Supported in v8.1, v9.1+
+      v8.1: Enables the Metro Cluster feature for the NetApp NAS system. If the NetApp cluster is operating in the Metro Cluster environment and this flag is not enabled, the NAS protections on this NAS system will not seamlessly move when switchover or switchback occurs.
+      v9.1+: Enables the Metro Cluster feature for the NetApp NAS system. If the NetApp cluster is operating in the Metro Cluster environment and this flag is not enabled, the NAS protections on this NAS system will not seamlessly move when switchover or switchback occurs.
 - shouldGrantNfsShareRootAccess: System.Boolean
   - Supported in v8.1+
       Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.

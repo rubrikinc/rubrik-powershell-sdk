@@ -39,6 +39,10 @@ Specific information for Amazon Web Services (AWS) target created on Rubrik.
   - Connected/Disconnected status of the AWS target.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
+- awsKmsKeyManager: System.String
+  - Name of the AWS KMS key manager.
+- awsKmsKeyId: System.String
+  - AWS KMS key ID.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType

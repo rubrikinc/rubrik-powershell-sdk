@@ -118,6 +118,12 @@ Cloud native tag rules.
     - sortBy - CloudNativeTagRuleSortByFields
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns GetCloudNativeTagRulesReply.
+### tagrulesobjecttype
+GetCloudNativeTagRulesObjectType returns the object type of the cloud
+native tag rule.
+
+- There is a single argument of type GetCloudNativeTagRulesObjectTypeReq.
+- Returns GetCloudNativeTagRulesObjectTypeReply.
 ### tagvalues
 List of cloud native tag values matched by substring.
 

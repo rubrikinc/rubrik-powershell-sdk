@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PLATFORM_M365")]
         PLATFORM_M365,
 
+        [EnumMember(Value = "PLATFORM_SALESFORCE")]
+        PLATFORM_SALESFORCE,
+
         [EnumMember(Value = "PLATFORM_SNOWFLAKE")]
         PLATFORM_SNOWFLAKE,
 

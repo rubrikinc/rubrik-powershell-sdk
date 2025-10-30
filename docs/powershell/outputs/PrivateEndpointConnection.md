@@ -1,7 +1,7 @@
 ### PrivateEndpointConnection
-RCV private endpoint connection details.
+Basic cloud related information about RCV private endpoint connection.
 
 - privateEndpointId: System.String
-  - RCV private endpoint Azure Resource ID.
+  - Unique identifier of the private endpoint from cloud provider.
 - privateEndpointConnectionStatus: PrivateEndpointConnectionStatus
-  - RCV private endpoint connection status.
+  - Current status of the private endpoint connection.

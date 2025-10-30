@@ -26,13 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crossAccountId")]
         public System.String? CrossAccountId { get; set; }
 
-        //      C# -> System.String? Fqdn
-        // GraphQL -> fqdn: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("fqdn")]
-        public System.String? Fqdn { get; set; }
-
         //      C# -> CrossAccountSaInput? ServiceConsumerSa
         // GraphQL -> serviceConsumerSa: CrossAccountSaInput! (input)
         [Required]
@@ -44,6 +37,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRefresh: Boolean (scalar)
         [JsonProperty("isRefresh")]
         public System.Boolean? IsRefresh { get; set; }
+
+        //      C# -> System.String? Fqdn
+        // GraphQL -> fqdn: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("fqdn")]
+        public System.String? Fqdn { get; set; }
 
 
         #endregion

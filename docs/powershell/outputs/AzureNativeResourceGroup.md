@@ -35,6 +35,8 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Azure Native Subscription of the Resource Group.
 - azureSubscription: AzureNativeSubscription
   - Azure Native Subscription of the Resource Group.
+- isProtectable: System.Boolean
+  - Whether the resource group is protectable for the specified protection features.
 - azureNativeVirtualMachines: AzureNativeVirtualMachineConnection
   - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
 - rscNativeObjectPendingSla: CompactSlaDomain
@@ -42,7 +44,7 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
-  - FID of the hierarchy object.
+  - ID of the hierarchy object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -70,7 +72,7 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
-  - Rsc tags to which this hierarchy object is assigned.
+  - RSC tags to which this hierarchy object is assigned.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus

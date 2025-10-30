@@ -475,12 +475,63 @@ connection status.
 - AWS_NATIVE_IS_ELIGIBLE_FOR_EC2_PROTECTION - Filter EC2 workloads by their eligibility for protection.
 Eligibility is determined by whether the AWS native account is not
 archived and has the protection feature enabled for EC2.
++mo:filter:db:table=aws_native_accounts
++mo:filter:db:column=account_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=aws_customer_features
++mo:filter:db:column=aws_account_id
++mo:filter:db:index:key=aws_customer_features_fk2
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=feature_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
 - AWS_NATIVE_IS_ELIGIBLE_FOR_RDS_PROTECTION - Filter RDS workloads by their eligibility for protection.
 Eligibility is determined by whether the AWS native account is not
 archived and has the protection feature enabled for RDS.
++mo:filter:db:table=aws_native_accounts
++mo:filter:db:column=account_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=aws_customer_features
++mo:filter:db:column=aws_account_id
++mo:filter:db:index:key=aws_customer_features_fk2
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=feature_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
 - AWS_NATIVE_IS_ELIGIBLE_FOR_S3_PROTECTION - Filter S3 workloads by their eligibility for protection.
 Eligibility is determined by whether the AWS native account is not
 archived and has the protection feature enabled for S3.
++mo:filter:db:table=aws_native_accounts
++mo:filter:db:column=account_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=aws_customer_features
++mo:filter:db:column=aws_account_id
++mo:filter:db:index:key=aws_customer_features_fk2
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=feature_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
 - PHYSICAL_HOST_RBS_UPGRADE_STATUS - Filter by the RBS upgrade of the physical host.
 +mo:filter:db:table=cdm_host
 +mo:filter:db:column=rba_package_upgrade_info
@@ -576,25 +627,116 @@ are greater than zero.
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_VM_PROTECTION - Filter Virtual Machine workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for Virtual Machine.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_MANAGED_DISK_PROTECTION - Filter Managed Disk workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for Managed Disk.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_BLOB_PROTECTION - Filter Blob storage workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for Blob.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_DATABASE_DB_PROTECTION - Filter SQL Database DB workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for SQL Database DB.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_DATABASE_SERVER_PROTECTION - Filter SQL Database server workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for SQL Database
 server.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_MI_DB_PROTECTION - Filter SQL MI DB workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for SQL MI DB.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - AZURE_NATIVE_IS_ELIGIBLE_FOR_SQL_MI_SERVER_PROTECTION - Filter SQL MI server workloads by their eligibility for protection.
 Eligibility is determined by whether the Azure native subscription is
 not archived and has the protection feature enabled for SQL MI server.
++mo:filter:db:table=azure_native_subscriptions
++mo:filter:db:column=subscription_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=azure_customer_features
++mo:filter:db:column=azure_customer_subscription_id
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=subscription_feature_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - DOMAIN_CONTROLLER_BY_GUID - Filters Active Directory domain controllers by their GUID.
 +mo:filter:db:table=cdm_active_directory_domain_controller
 +mo:filter:db:column=domain_controller_guid
@@ -602,3 +744,100 @@ not archived and has the protection feature enabled for SQL MI server.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
+- GOOGLE_WORKSPACE_USER_NAME_OR_EMAIL_ADDRESS - Filter Google Workspace users by name or primary email address.
++mo:filter:db:table=saasapps_google_workspace_users
++mo:filter:db:column=name
++mo:filter:db:column=primary_email
++mo:filter:db:index:key=natural_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- GOOGLE_WORKSPACE_ORG_UNIT - Filter Google Workspace users by organization unit ID.
++mo:filter:db:table=saasapps_google_workspace_users
++mo:filter:db:column=org_unit_id
++mo:filter:db:index:key=users_to_org_unit_fk
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- K8S_CLUSTER_ID_ON_LABEL - Filter according to the ID of the Kubernetes cluster on the Kubernetes labels.
++mo:filter:db:table=cdm_k8s_labels
++mo:filter:db:column=k8s_cluster_uuid
++mo:filter:db:column=cluster_uuid
++mo:filter:db:table=cdm_k8s_cluster
++mo:filter:db:column=fid
++mo:filter:db:column=id
++mo:filter:db:column=cluster_uuid
+- DEVOPS_NATIVE_ID - Filter by the native ID field of the DevOps object.
++mo:filter:db:table=(devops specific table based on the object type)
++mo:filter:db:column=native_id
++mo:filter:db:index:key=native_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- GOOGLE_WORKSPACE_SHARED_DRIVE_ORG_UNIT - Filter Google Workspace shared drives by organization unit ID.
++mo:filter:db:table=saasapps_google_workspace_shared_drives
++mo:filter:db:column=org_unit_id
++mo:filter:db:index:key=shared_drive_to_org_unit_fk
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AWS_NATIVE_IS_ELIGIBLE_FOR_EBS_PROTECTION - Filter EBS workloads by their eligibility for protection.
+Eligibility is determined by whether the AWS native account is not
+archived and has the protection feature enabled for EBS.
++mo:filter:db:table=aws_native_accounts
++mo:filter:db:column=account_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=aws_customer_features
++mo:filter:db:column=aws_account_id
++mo:filter:db:index:key=aws_customer_features_fk2
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=feature_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AWS_NATIVE_IS_ELIGIBLE_FOR_DYNAMODB_PROTECTION - Filter DynamoDB workloads by their eligibility for protection.
+Eligibility is determined by whether the AWS native account is not
+archived and has the protection feature enabled for DynamoDB.
++mo:filter:db:table=aws_native_accounts
++mo:filter:db:column=account_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=aws_customer_features
++mo:filter:db:column=aws_account_id
++mo:filter:db:index:key=aws_customer_features_fk2
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:column=feature_id
++mo:filter:db:index:key=feature_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- GOOGLE_WORKSPACE_USER_DRIVE_ORG_UNIT - Filter Google Workspace user drives by organization unit ID.
++mo:filter:db:table=saasapps_google_workspace_user_drives
++mo:filter:db:column=user_id
++mo:filter:db:index:key=user_drives_to_user_fk
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- INFORMIX_HOST_CONNECTION_STATUS - Filters Informix instances by their host connection status.
++mo:filter:db:table=cdm_informix_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true

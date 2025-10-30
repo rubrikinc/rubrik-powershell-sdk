@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("endTime")]
         public DateTime? EndTime { get; set; }
 
+        //      C# -> System.Boolean? HashCatalogLimitExceeded
+        // GraphQL -> hashCatalogLimitExceeded: Boolean! (scalar)
+        [JsonProperty("hashCatalogLimitExceeded")]
+        public System.Boolean? HashCatalogLimitExceeded { get; set; }
+
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public ThreatHuntDetails Set(
         System.String? CdmId = null,
         DateTime? EndTime = null,
+        System.Boolean? HashCatalogLimitExceeded = null,
         DateTime? StartTime = null,
         Cluster? Cluster = null,
         ThreatHuntConfig? Config = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EndTime != null ) {
             this.EndTime = EndTime;
+        }
+        if ( HashCatalogLimitExceeded != null ) {
+            this.HashCatalogLimitExceeded = HashCatalogLimitExceeded;
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "endTime\n" ;
             } else {
                 s += ind + "endTime\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HashCatalogLimitExceeded
+        // GraphQL -> hashCatalogLimitExceeded: Boolean! (scalar)
+        if (this.HashCatalogLimitExceeded != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hashCatalogLimitExceeded\n" ;
+            } else {
+                s += ind + "hashCatalogLimitExceeded\n" ;
             }
         }
         //      C# -> DateTime? StartTime
@@ -203,6 +221,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EndTime != null && ec.Excludes("endTime",true))
         {
             this.EndTime = null;
+        }
+        //      C# -> System.Boolean? HashCatalogLimitExceeded
+        // GraphQL -> hashCatalogLimitExceeded: Boolean! (scalar)
+        if (ec.Includes("hashCatalogLimitExceeded",true))
+        {
+            if(this.HashCatalogLimitExceeded == null) {
+
+                this.HashCatalogLimitExceeded = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HashCatalogLimitExceeded != null && ec.Excludes("hashCatalogLimitExceeded",true))
+        {
+            this.HashCatalogLimitExceeded = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

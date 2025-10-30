@@ -29,17 +29,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("beforeTime")]
         public DateTime? BeforeTime { get; set; }
 
-        //      C# -> System.Boolean? ShouldExpireLogsOnly
-        // GraphQL -> shouldExpireLogsOnly: Boolean (scalar)
-        [JsonProperty("shouldExpireLogsOnly")]
-        public System.Boolean? ShouldExpireLogsOnly { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? ShouldExpireLogsOnly
+        // GraphQL -> shouldExpireLogsOnly: Boolean (scalar)
+        [JsonProperty("shouldExpireLogsOnly")]
+        public System.Boolean? ShouldExpireLogsOnly { get; set; }
 
 
         #endregion

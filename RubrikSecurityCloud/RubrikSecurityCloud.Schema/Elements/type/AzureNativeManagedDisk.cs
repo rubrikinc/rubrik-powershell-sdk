@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isFileIndexingEnabled")]
         public System.Boolean? IsFileIndexingEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        [JsonProperty("isProtectable")]
+        public System.Boolean? IsProtectable { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -407,6 +412,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAdeEnabled = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsFileIndexingEnabled = null,
+        System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
         System.String? NativeName = null,
@@ -501,6 +507,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsFileIndexingEnabled != null ) {
             this.IsFileIndexingEnabled = IsFileIndexingEnabled;
+        }
+        if ( IsProtectable != null ) {
+            this.IsProtectable = IsProtectable;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -805,6 +814,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isFileIndexingEnabled\n" ;
             } else {
                 s += ind + "isFileIndexingEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (this.IsProtectable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isProtectable\n" ;
+            } else {
+                s += ind + "isProtectable\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1533,6 +1551,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsFileIndexingEnabled != null && ec.Excludes("isFileIndexingEnabled",true))
         {
             this.IsFileIndexingEnabled = null;
+        }
+        //      C# -> System.Boolean? IsProtectable
+        // GraphQL -> isProtectable: Boolean! (scalar)
+        if (ec.Includes("isProtectable",true))
+        {
+            if(this.IsProtectable == null) {
+
+                this.IsProtectable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsProtectable != null && ec.Excludes("isProtectable",true))
+        {
+            this.IsProtectable = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

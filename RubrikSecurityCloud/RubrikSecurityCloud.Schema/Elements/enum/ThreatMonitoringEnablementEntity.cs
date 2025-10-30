@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_CLUSTER")]
         CDM_CLUSTER,
 
+        [EnumMember(Value = "CLOUD_DIRECT_CLUSTER")]
+        CLOUD_DIRECT_CLUSTER,
+
         [EnumMember(Value = "CLOUD_NATIVE_ROOT")]
         CLOUD_NATIVE_ROOT,
 

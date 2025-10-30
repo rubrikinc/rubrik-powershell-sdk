@@ -36,7 +36,8 @@ Supported in v5.0+
   - Supported in v9.2+
   Indicates whether backup, archiving, and replication are paused for this Volume Group.
 - rbsConnectionStatus: HostRbsConnectionStatus
-  - 
+  - Supported in v9.2+
+  Specifies the connection status of the host. The value is Refreshing when discovery is running and Connected after the discovery succeeds and the host is available.
 - volumes: list of HostVolumeSummarys
   - Supported in v9.2+
   Configuration details for the volumes in the Volume Group.

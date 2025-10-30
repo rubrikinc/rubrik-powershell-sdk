@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? DiskMode
+        // GraphQL -> diskMode: String (scalar)
+        [JsonProperty("diskMode")]
+        public System.String? DiskMode { get; set; }
+
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
         [JsonProperty("diskType")]
@@ -40,10 +45,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEncrypted")]
         public System.Boolean? IsEncrypted { get; set; }
 
+        //      C# -> System.String? Manufacturer
+        // GraphQL -> manufacturer: String (scalar)
+        [JsonProperty("manufacturer")]
+        public System.String? Manufacturer { get; set; }
+
+        //      C# -> System.String? ModelNumber
+        // GraphQL -> modelNumber: String (scalar)
+        [JsonProperty("modelNumber")]
+        public System.String? ModelNumber { get; set; }
+
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         [JsonProperty("nodeId")]
         public System.String? NodeId { get; set; }
+
+        //      C# -> System.String? RaidError
+        // GraphQL -> raidError: String (scalar)
+        [JsonProperty("raidError")]
+        public System.String? RaidError { get; set; }
+
+        //      C# -> System.String? RaidStatus
+        // GraphQL -> raidStatus: String (scalar)
+        [JsonProperty("raidStatus")]
+        public System.String? RaidStatus { get; set; }
+
+        //      C# -> System.String? RaidType
+        // GraphQL -> raidType: String (scalar)
+        [JsonProperty("raidType")]
+        public System.String? RaidType { get; set; }
+
+        //      C# -> System.String? SerialNumber
+        // GraphQL -> serialNumber: String (scalar)
+        [JsonProperty("serialNumber")]
+        public System.String? SerialNumber { get; set; }
 
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
@@ -60,14 +95,24 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DiskStatus Set(
+        System.String? DiskMode = null,
         System.String? DiskType = null,
         System.String? Id = null,
         System.Boolean? IsDegraded = null,
         System.Boolean? IsEncrypted = null,
+        System.String? Manufacturer = null,
+        System.String? ModelNumber = null,
         System.String? NodeId = null,
+        System.String? RaidError = null,
+        System.String? RaidStatus = null,
+        System.String? RaidType = null,
+        System.String? SerialNumber = null,
         System.String? Status = null
     ) 
     {
+        if ( DiskMode != null ) {
+            this.DiskMode = DiskMode;
+        }
         if ( DiskType != null ) {
             this.DiskType = DiskType;
         }
@@ -80,8 +125,26 @@ namespace RubrikSecurityCloud.Types
         if ( IsEncrypted != null ) {
             this.IsEncrypted = IsEncrypted;
         }
+        if ( Manufacturer != null ) {
+            this.Manufacturer = Manufacturer;
+        }
+        if ( ModelNumber != null ) {
+            this.ModelNumber = ModelNumber;
+        }
         if ( NodeId != null ) {
             this.NodeId = NodeId;
+        }
+        if ( RaidError != null ) {
+            this.RaidError = RaidError;
+        }
+        if ( RaidStatus != null ) {
+            this.RaidStatus = RaidStatus;
+        }
+        if ( RaidType != null ) {
+            this.RaidType = RaidType;
+        }
+        if ( SerialNumber != null ) {
+            this.SerialNumber = SerialNumber;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -100,6 +163,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? DiskMode
+        // GraphQL -> diskMode: String (scalar)
+        if (this.DiskMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "diskMode\n" ;
+            } else {
+                s += ind + "diskMode\n" ;
+            }
+        }
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
         if (this.DiskType != null) {
@@ -136,6 +208,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isEncrypted\n" ;
             }
         }
+        //      C# -> System.String? Manufacturer
+        // GraphQL -> manufacturer: String (scalar)
+        if (this.Manufacturer != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "manufacturer\n" ;
+            } else {
+                s += ind + "manufacturer\n" ;
+            }
+        }
+        //      C# -> System.String? ModelNumber
+        // GraphQL -> modelNumber: String (scalar)
+        if (this.ModelNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "modelNumber\n" ;
+            } else {
+                s += ind + "modelNumber\n" ;
+            }
+        }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId != null) {
@@ -143,6 +233,42 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nodeId\n" ;
             } else {
                 s += ind + "nodeId\n" ;
+            }
+        }
+        //      C# -> System.String? RaidError
+        // GraphQL -> raidError: String (scalar)
+        if (this.RaidError != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidError\n" ;
+            } else {
+                s += ind + "raidError\n" ;
+            }
+        }
+        //      C# -> System.String? RaidStatus
+        // GraphQL -> raidStatus: String (scalar)
+        if (this.RaidStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidStatus\n" ;
+            } else {
+                s += ind + "raidStatus\n" ;
+            }
+        }
+        //      C# -> System.String? RaidType
+        // GraphQL -> raidType: String (scalar)
+        if (this.RaidType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidType\n" ;
+            } else {
+                s += ind + "raidType\n" ;
+            }
+        }
+        //      C# -> System.String? SerialNumber
+        // GraphQL -> serialNumber: String (scalar)
+        if (this.SerialNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serialNumber\n" ;
+            } else {
+                s += ind + "serialNumber\n" ;
             }
         }
         //      C# -> System.String? Status
@@ -161,6 +287,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? DiskMode
+        // GraphQL -> diskMode: String (scalar)
+        if (ec.Includes("diskMode",true))
+        {
+            if(this.DiskMode == null) {
+
+                this.DiskMode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskMode != null && ec.Excludes("diskMode",true))
+        {
+            this.DiskMode = null;
+        }
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
         if (ec.Includes("diskType",true))
@@ -229,6 +372,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsEncrypted = null;
         }
+        //      C# -> System.String? Manufacturer
+        // GraphQL -> manufacturer: String (scalar)
+        if (ec.Includes("manufacturer",true))
+        {
+            if(this.Manufacturer == null) {
+
+                this.Manufacturer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Manufacturer != null && ec.Excludes("manufacturer",true))
+        {
+            this.Manufacturer = null;
+        }
+        //      C# -> System.String? ModelNumber
+        // GraphQL -> modelNumber: String (scalar)
+        if (ec.Includes("modelNumber",true))
+        {
+            if(this.ModelNumber == null) {
+
+                this.ModelNumber = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ModelNumber != null && ec.Excludes("modelNumber",true))
+        {
+            this.ModelNumber = null;
+        }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (ec.Includes("nodeId",true))
@@ -245,6 +422,74 @@ namespace RubrikSecurityCloud.Types
         else if (this.NodeId != null && ec.Excludes("nodeId",true))
         {
             this.NodeId = null;
+        }
+        //      C# -> System.String? RaidError
+        // GraphQL -> raidError: String (scalar)
+        if (ec.Includes("raidError",true))
+        {
+            if(this.RaidError == null) {
+
+                this.RaidError = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidError != null && ec.Excludes("raidError",true))
+        {
+            this.RaidError = null;
+        }
+        //      C# -> System.String? RaidStatus
+        // GraphQL -> raidStatus: String (scalar)
+        if (ec.Includes("raidStatus",true))
+        {
+            if(this.RaidStatus == null) {
+
+                this.RaidStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidStatus != null && ec.Excludes("raidStatus",true))
+        {
+            this.RaidStatus = null;
+        }
+        //      C# -> System.String? RaidType
+        // GraphQL -> raidType: String (scalar)
+        if (ec.Includes("raidType",true))
+        {
+            if(this.RaidType == null) {
+
+                this.RaidType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidType != null && ec.Excludes("raidType",true))
+        {
+            this.RaidType = null;
+        }
+        //      C# -> System.String? SerialNumber
+        // GraphQL -> serialNumber: String (scalar)
+        if (ec.Includes("serialNumber",true))
+        {
+            if(this.SerialNumber == null) {
+
+                this.SerialNumber = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SerialNumber != null && ec.Excludes("serialNumber",true))
+        {
+            this.SerialNumber = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)

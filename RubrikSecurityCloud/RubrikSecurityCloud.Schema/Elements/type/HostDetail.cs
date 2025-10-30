@@ -100,10 +100,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSysDbaUser")]
         public System.String? OracleSysDbaUser { get; set; }
 
-        //      C# -> System.Boolean? ShouldSddThroughRba
-        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
-        [JsonProperty("shouldSddThroughRba")]
-        public System.Boolean? ShouldSddThroughRba { get; set; }
+        //      C# -> System.Boolean? ShouldMssqlSddThroughRba
+        // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
+        [JsonProperty("shouldMssqlSddThroughRba")]
+        public System.Boolean? ShouldMssqlSddThroughRba { get; set; }
+
+        //      C# -> System.Boolean? ShouldOracleSddThroughRba
+        // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
+        [JsonProperty("shouldOracleSddThroughRba")]
+        public System.Boolean? ShouldOracleSddThroughRba { get; set; }
 
         //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
         // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)
@@ -146,7 +151,8 @@ namespace RubrikSecurityCloud.Types
         System.String? OracleSddUsername = null,
         System.String? OracleSddWalletPath = null,
         System.String? OracleSysDbaUser = null,
-        System.Boolean? ShouldSddThroughRba = null,
+        System.Boolean? ShouldMssqlSddThroughRba = null,
+        System.Boolean? ShouldOracleSddThroughRba = null,
         ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo = null,
         HostSummary? HostSummary = null,
         OracleSepsWalletSettings? OracleSepsSettings = null
@@ -200,8 +206,11 @@ namespace RubrikSecurityCloud.Types
         if ( OracleSysDbaUser != null ) {
             this.OracleSysDbaUser = OracleSysDbaUser;
         }
-        if ( ShouldSddThroughRba != null ) {
-            this.ShouldSddThroughRba = ShouldSddThroughRba;
+        if ( ShouldMssqlSddThroughRba != null ) {
+            this.ShouldMssqlSddThroughRba = ShouldMssqlSddThroughRba;
+        }
+        if ( ShouldOracleSddThroughRba != null ) {
+            this.ShouldOracleSddThroughRba = ShouldOracleSddThroughRba;
         }
         if ( ActiveDirectoryAdditionalInfo != null ) {
             this.ActiveDirectoryAdditionalInfo = ActiveDirectoryAdditionalInfo;
@@ -370,13 +379,22 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "oracleSysDbaUser\n" ;
             }
         }
-        //      C# -> System.Boolean? ShouldSddThroughRba
-        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
-        if (this.ShouldSddThroughRba != null) {
+        //      C# -> System.Boolean? ShouldMssqlSddThroughRba
+        // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
+        if (this.ShouldMssqlSddThroughRba != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "shouldSddThroughRba\n" ;
+                s += conf.Prefix + "shouldMssqlSddThroughRba\n" ;
             } else {
-                s += ind + "shouldSddThroughRba\n" ;
+                s += ind + "shouldMssqlSddThroughRba\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldOracleSddThroughRba
+        // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
+        if (this.ShouldOracleSddThroughRba != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldOracleSddThroughRba\n" ;
+            } else {
+                s += ind + "shouldOracleSddThroughRba\n" ;
             }
         }
         //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
@@ -694,22 +712,39 @@ namespace RubrikSecurityCloud.Types
         {
             this.OracleSysDbaUser = null;
         }
-        //      C# -> System.Boolean? ShouldSddThroughRba
-        // GraphQL -> shouldSddThroughRba: Boolean (scalar)
-        if (ec.Includes("shouldSddThroughRba",true))
+        //      C# -> System.Boolean? ShouldMssqlSddThroughRba
+        // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
+        if (ec.Includes("shouldMssqlSddThroughRba",true))
         {
-            if(this.ShouldSddThroughRba == null) {
+            if(this.ShouldMssqlSddThroughRba == null) {
 
-                this.ShouldSddThroughRba = true;
+                this.ShouldMssqlSddThroughRba = true;
 
             } else {
 
 
             }
         }
-        else if (this.ShouldSddThroughRba != null && ec.Excludes("shouldSddThroughRba",true))
+        else if (this.ShouldMssqlSddThroughRba != null && ec.Excludes("shouldMssqlSddThroughRba",true))
         {
-            this.ShouldSddThroughRba = null;
+            this.ShouldMssqlSddThroughRba = null;
+        }
+        //      C# -> System.Boolean? ShouldOracleSddThroughRba
+        // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
+        if (ec.Includes("shouldOracleSddThroughRba",true))
+        {
+            if(this.ShouldOracleSddThroughRba == null) {
+
+                this.ShouldOracleSddThroughRba = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldOracleSddThroughRba != null && ec.Excludes("shouldOracleSddThroughRba",true))
+        {
+            this.ShouldOracleSddThroughRba = null;
         }
         //      C# -> ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo
         // GraphQL -> activeDirectoryAdditionalInfo: ActiveDirectoryAdditionalInfo (type)

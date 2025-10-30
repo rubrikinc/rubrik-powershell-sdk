@@ -8,4 +8,4 @@ Supported in v8.1+
   - Required. Supported in v8.1+
   The NFS export point or SMB share name for the NAS share.
 - shareType: NasShareDetailShareType
-  - Type of the NAS share.
+  - Required. Type of the NAS share.

@@ -1,5 +1,5 @@
 ### GcpNativeKmsCryptoKey
-Represents a fully qualified GCP native KMS crypto key.
+A fully qualified GCP native KMS crypto key.
 
 - projectNativeId: System.String
   - GCP project native ID.

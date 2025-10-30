@@ -27,6 +27,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL")]
         ARCHIVAL,
 
+        [EnumMember(Value = "AZURE_DEVOPS_PROTECTION")]
+        AZURE_DEVOPS_PROTECTION,
+
+        [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY_PROTECTION")]
+        AZURE_DEVOPS_REPOSITORY_PROTECTION,
+
         [EnumMember(Value = "AZURE_LAMINAR_OUTPOST_APPLICATION")]
         AZURE_LAMINAR_OUTPOST_APPLICATION,
 

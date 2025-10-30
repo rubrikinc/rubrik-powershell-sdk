@@ -70,6 +70,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldDisableAwsApiTermination")]
         public System.Boolean? ShouldDisableAwsApiTermination { get; set; }
 
+        //      C# -> GcpVmConfigInput? GcpVmConfig
+        // GraphQL -> gcpVmConfig: GcpVmConfigInput (input)
+        [JsonProperty("gcpVmConfig")]
+        public GcpVmConfigInput? GcpVmConfig { get; set; }
+
+        //      C# -> System.String? GcpZone
+        // GraphQL -> gcpZone: String (scalar)
+        [JsonProperty("gcpZone")]
+        public System.String? GcpZone { get; set; }
+
         //      C# -> System.Boolean? ShouldKeepClusterOnFailure
         // GraphQL -> shouldKeepClusterOnFailure: Boolean! (scalar)
         [Required]

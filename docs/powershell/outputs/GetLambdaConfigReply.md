@@ -17,3 +17,5 @@ Lambda configuration details of the Rubrik cluster.
   - Enable or disable threat monitoring.
 - enableThreatMonitoringFullScan: System.Boolean
   - Enable or disable full scans for threat monitoring.
+- orionYaraRemoteProcessingEnabled: System.Boolean
+  - Enable or disable yara remote processing (sandboxing).

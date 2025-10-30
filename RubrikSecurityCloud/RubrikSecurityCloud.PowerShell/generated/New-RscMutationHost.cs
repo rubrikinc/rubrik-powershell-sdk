@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Host' API domain:
-    /// BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, ClearRbsNetworkLimit, Refresh, or SetRbsNetworkLimit.
+    /// BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkRegisterSecondary, BulkUpdate, ChangeVfd, ClearRbsNetworkLimit, Refresh, or SetRbsNetworkLimit.
     /// </summary>
     /// <description>
     /// New-RscMutationHost creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'Host' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkUpdate, ChangeVfd, ClearRbsNetworkLimit, Refresh, or SetRbsNetworkLimit.
+    /// one of: BulkDelete, BulkRefresh, BulkRegister, BulkRegisterAsync, BulkRegisterSecondary, BulkUpdate, ChangeVfd, ClearRbsNetworkLimit, Refresh, or SetRbsNetworkLimit.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -181,9 +181,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
-    /// 			shouldSddThroughRba = $someBoolean
+    /// 			shouldOracleSddThroughRba = $someBoolean
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
     /// 			# OPTIONAL
@@ -312,9 +314,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
-    /// 			shouldSddThroughRba = $someBoolean
+    /// 			shouldOracleSddThroughRba = $someBoolean
     /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 			# OPTIONAL
     /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
     /// 			# OPTIONAL
@@ -407,6 +411,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the BulkRegisterSecondary operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: BulkRegisterSecondary
+    /// 
+    /// $query = New-RscMutationHost -Operation BulkRegisterSecondary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	secondaryClusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	hosts = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			hostFid = $someString
+    /// 			# REQUIRED
+    /// 			primaryClusterUuid = $someString
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkRegisterSecondaryHostsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the BulkUpdate operation
     /// of the 'Host' API domain.
     /// <code>
@@ -453,7 +499,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				oracleSddWalletPath = $someString
     /// 				# OPTIONAL
-    /// 				shouldSddThroughRba = $someBoolean
+    /// 				shouldOracleSddThroughRba = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldMssqlSddThroughRba = $someBoolean
     /// 				# OPTIONAL
     /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
     /// 				# OPTIONAL
@@ -708,6 +756,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkRefresh",
                 "BulkRegister",
                 "BulkRegisterAsync",
+                "BulkRegisterSecondary",
                 "BulkUpdate",
                 "ChangeVfd",
                 "ClearRbsNetworkLimit",
@@ -739,6 +788,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "BulkRegisterAsync":
                         this.ProcessRecord_BulkRegisterAsync();
+                        break;
+                    case "BulkRegisterSecondary":
+                        this.ProcessRecord_BulkRegisterSecondary();
                         break;
                     case "BulkUpdate":
                         this.ProcessRecord_BulkUpdate();
@@ -799,6 +851,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -BulkRegisterAsync";
             // Create new graphql operation bulkRegisterHostAsync
             InitMutationBulkRegisterHostAsync();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkRegisterSecondaryHosts.
+        internal void ProcessRecord_BulkRegisterSecondary()
+        {
+            this._logger.name += " -BulkRegisterSecondary";
+            // Create new graphql operation bulkRegisterSecondaryHosts
+            InitMutationBulkRegisterSecondaryHosts();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -938,9 +999,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			oracleSddWalletPath = $someString
 			# OPTIONAL
-			shouldSddThroughRba = $someBoolean
+			shouldOracleSddThroughRba = $someBoolean
 			# OPTIONAL
 			orgNetworkId = $someString
+			# OPTIONAL
+			shouldMssqlSddThroughRba = $someBoolean
 			# OPTIONAL
 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
 			# OPTIONAL
@@ -1061,9 +1124,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			oracleSddWalletPath = $someString
 			# OPTIONAL
-			shouldSddThroughRba = $someBoolean
+			shouldOracleSddThroughRba = $someBoolean
 			# OPTIONAL
 			orgNetworkId = $someString
+			# OPTIONAL
+			shouldMssqlSddThroughRba = $someBoolean
 			# OPTIONAL
 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
 			# OPTIONAL
@@ -1146,6 +1211,40 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // bulkRegisterSecondaryHosts(input: BulkRegisterSecondaryHostsInput!): BulkRegisterSecondaryHostsReply!
+        internal void InitMutationBulkRegisterSecondaryHosts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkRegisterSecondaryHostsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkRegisterSecondaryHosts",
+                "($input: BulkRegisterSecondaryHostsInput!)",
+                "BulkRegisterSecondaryHostsReply",
+                Mutation.BulkRegisterSecondaryHosts,
+                Mutation.BulkRegisterSecondaryHostsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	secondaryClusterUuid = $someString
+	# REQUIRED
+	hosts = @(
+		@{
+			# REQUIRED
+			hostFid = $someString
+			# REQUIRED
+			primaryClusterUuid = $someString
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // bulkUpdateHost(input: BulkUpdateHostInput!): BulkUpdateHostReply!
         internal void InitMutationBulkUpdateHost()
         {
@@ -1194,7 +1293,9 @@ $query.Var.input = @{
 				# OPTIONAL
 				oracleSddWalletPath = $someString
 				# OPTIONAL
-				shouldSddThroughRba = $someBoolean
+				shouldOracleSddThroughRba = $someBoolean
+				# OPTIONAL
+				shouldMssqlSddThroughRba = $someBoolean
 				# OPTIONAL
 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
 				# OPTIONAL

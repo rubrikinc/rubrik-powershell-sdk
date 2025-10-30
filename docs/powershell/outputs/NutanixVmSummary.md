@@ -23,11 +23,15 @@ Supported in v5.0+
 - snappable: CdmWorkload
   - 
 - agentConnectStatus: AgentConnectStatus
-  - 
+  - Supported in v9.2+
+  The agent connection status.
 - operatingSystemType: OperatingSystemType
-  - 
+  - Supported in v5.0+
+  The type of the operating system running on the Nutanix virtual machine.
 - snapshotConsistencyMandate: CdmNutanixSnapshotConsistencyMandate
-  - 
+  - Required. Supported in v5.0+
+  v5.0-v8.0: Consistency level mandated for this VM.
+  v8.1+: Consistency level mandated for this virtual machine.
 - agentStatus: CdmAgentStatus
   - Supported in v5.0+
   The status of the Rubrik Backup Service agent for Nutanix virtual machines.

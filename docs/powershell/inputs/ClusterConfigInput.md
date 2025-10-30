@@ -23,3 +23,7 @@ ClusterConfig for new CDM cloud cluster.
   - OCI bucket details.
 - gcpEsConfig: GcpEsConfigInput
   - GCP storage bucket details.
+- dynamicNumNodes: System.Int32
+  - Number of dynamic nodes in the dynamic-scaled cluster.
+- dynamicScalingEnabled: System.Boolean
+  - Enable dynamic scaling in Rubrik Cloud Cluster ES.

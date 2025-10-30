@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("privateDnsZoneId")]
         public System.String? PrivateDnsZoneId { get; set; }
 
+        //      C# -> System.String? AksCustomPrivateDnsZoneId
+        // GraphQL -> aksCustomPrivateDnsZoneId: String (scalar)
+        [JsonProperty("aksCustomPrivateDnsZoneId")]
+        public System.String? AksCustomPrivateDnsZoneId { get; set; }
+
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
         [JsonProperty("aksClusterTier")]
@@ -58,6 +63,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> aksNodeCountBucket: AKSNodeCountBucket (enum)
         [JsonProperty("aksNodeCountBucket")]
         public AksNodeCountBucket? AksNodeCountBucket { get; set; }
+
+        //      C# -> AksClusterAccessType? AksClusterAccessType
+        // GraphQL -> aksClusterAccessType: AKSClusterAccessType (enum)
+        [JsonProperty("aksClusterAccessType")]
+        public AksClusterAccessType? AksClusterAccessType { get; set; }
 
 
         #endregion

@@ -2,7 +2,7 @@
 On-prem sync information for Entra ID user or group.
 
 - onPremSyncStatus: AzureAdOnPremSyncStatus
-  - On-prem sync status of the Azure AD group.
+  - On-prem sync status of the Entra ID group.
 - isSourceOnPremAdProtected: System.Boolean
   - Specifies whether the source on-prem AD of the object is protected by Rubrik.
 - onPremSecurityId: System.String

@@ -1,5 +1,5 @@
 ### SnappableSlaAssignment
-
+SnappableSlaAssigment.
 
 - SNAPPABLE_SLA_ASSIGNMENT_DERIVED
 - SNAPPABLE_SLA_ASSIGNMENT_DIRECT

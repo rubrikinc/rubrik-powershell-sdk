@@ -114,6 +114,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_ROOT")]
         O365_ROOT,
 
+        [EnumMember(Value = "OKTA_ROOT")]
+        OKTA_ROOT,
+
+        [EnumMember(Value = "OLVM_ROOT")]
+        OLVM_ROOT,
+
         [EnumMember(Value = "OPENSTACK_ROOT")]
         OPENSTACK_ROOT,
 

@@ -10,3 +10,4 @@ Type of O365 app.
 - TEAMS - Identifies the Azure AD app used by Teams to interact with customer's O365 account.
 - M365MGMT - Identifies the Azure AD app used by refresh operation for the customer's M365 account.
 - AADSAAS - Identifies the Azure Active Directory (AAD) application used by AAD to interact with the user's AAD.
+- PURVIEW - Identifies the Azure AD app used by Microsoft Purview to interact with customer's Microsoft Purview account.
