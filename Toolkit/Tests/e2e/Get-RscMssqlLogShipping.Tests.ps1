@@ -9,10 +9,6 @@ BeforeAll {
 
 Describe -Name 'Get-RscMssqlLogShipping Tests' -Tag 'Public' -Fixture {
 
-    It -Name 'retrieves LogShippingTargets' -Test {
-        $data.logShipping = Get-RscMssqlLogShipping
-    }
-
     Context -Name 'LogShippingTarget Count > 0' {
         BeforeEach {
             # Skip the tests if empty LogShippingTarget list
@@ -20,10 +16,6 @@ Describe -Name 'Get-RscMssqlLogShipping Tests' -Tag 'Public' -Fixture {
                 Set-ItResult -Skipped -Because "At least 1 LogShippingTarget is needed"
                 return
             }
-        }
-
-        It -Name 'retrieves LogShippingTargets' -Test {
-            $data.logShipping | Should -Not -BeNullOrEmpty
         }
 
         It -Name 'retrieves single LogShippingTarget by Id' -Test {

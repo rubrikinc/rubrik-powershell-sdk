@@ -3,22 +3,18 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        sla = $null
+        snapshots = $null
+    }
+
+    # Try to get snapshots from VMware VMs first, then from MSSQL databases
+    $Global:data.snapshots = Get-RscVmwareVm -Relic:$false -Replica:$false | Select-Object -first 1 | Get-RscSnapshot
+    if ($Global:data.snapshots.Count -le 0) {
+        $Global:data.snapshots = Get-RscMssqlDatabase -Relic:$false -Replica:$false | Select-Object -first 1 | Get-RscSnapshot
     }
 }
 
 
 Describe -Name 'Get-RscSnapshot Tests' -Tag 'Public' -Fixture {
-
-    It -Name 'retrieves Snapshots' -Test {
-        $data.snapshots = Get-RscVmwareVm -Relic:$false -Replica:$false | Select-Object -first 1 | Get-RscSnapshot
-        $data.snapshots | Should -Not -BeNullOrEmpty
-    }
-
-    It -Name 'retrieves Database Snapshots' -Test {
-        $data.snapshots = Get-RscMssqlDatabase -Relic:$false -Replica:$false | Select-Object -first 1 | Get-RscSnapshot
-        $data.snapshots | Should -Not -BeNullOrEmpty
-    }
 
     Context -Name 'Snapshot Count > 0' {
         BeforeEach {

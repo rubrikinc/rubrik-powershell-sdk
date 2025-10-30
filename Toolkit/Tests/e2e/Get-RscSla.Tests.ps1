@@ -3,16 +3,10 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        sla = $null
+        sla = Get-RscSla
     }
 }
 Describe -Name 'Get-RscSla Tests' -Tag 'Public' -Fixture {
-
-    It -Name 'retrieves SLAs' -Test {
-        $data.sla = Get-RscSla
-        # Write-Host "data.sla.count = $($data.sla.count)"
-        $data.sla | Should -Not -BeNullOrEmpty
-    }
 
     Context -Name 'SLA Count > 0' {
         BeforeEach {

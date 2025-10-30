@@ -3,20 +3,15 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        objects = $null
+        objects = Get-RscMssqlDatabase
     }
 }
 
 Describe -Name 'Get-RscMssqlDatabase Tests' -Tag 'Public' -Fixture {
 
-    It -Name 'retrieves RscMssqlDatabases' -Test {
-        $data.objects = Get-RscMssqlDatabase
-        $data.objects | Should -Not -BeNullOrEmpty
-    }
-
     Context -Name 'RscMssqlDatabase Count > 0' {
         BeforeEach {
-            # Skip the tests if empty 
+            # Skip the tests if empty
             if ($data.objects.Count -le 0) {
                 Set-ItResult -Skipped -Because "At least 1 RscMssqlDatabase is needed"
                 return

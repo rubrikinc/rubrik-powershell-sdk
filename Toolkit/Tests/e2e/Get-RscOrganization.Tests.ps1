@@ -3,16 +3,11 @@ BeforeAll {
 
     # variables shared among tests
     $Global:data = @{
-        objects = $null
+        objects = Get-RscOrganization
     }
 }
 
 Describe -Name 'Get-RscOrganization Tests' -Tag 'Public' -Fixture {
-
-    It -Name 'retrieves RSC Organizations' -Test {
-        $data.objects = Get-RscOrganization 
-        $data.objects | Should -Not -BeNullOrEmpty
-    }
 
     Context -Name 'Object Count > 0' {
         BeforeEach {

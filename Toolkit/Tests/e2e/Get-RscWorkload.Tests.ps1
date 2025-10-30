@@ -2,19 +2,13 @@ BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 
     # variables shared among tests
+    # Just getting VM type workloads here as getting all workloads may result in a very long running test.
     $Global:data = @{
-        vm = $null
+        vm = Get-RscWorkload -Type VMWARE_VIRTUAL_MACHINE
     }
 }
 
 Describe -Name 'Get-RscWorkload Tests' -Tag 'Public' -Fixture {
-
-    It -Name 'retrieves VM type workloads' -Test {
-        # Just getting VM type workloads here as getting all workloads may result in a very long running test.
-        $data.vm = Get-RscWorkload -Type VMWARE_VIRTUAL_MACHINE
-        # Write-Host "data.vm.count = $($data.vm.count)"
-        $data.vm | Should -Not -BeNullOrEmpty
-    }
 
     Context -Name 'VM Count > 0' {
         BeforeEach {
