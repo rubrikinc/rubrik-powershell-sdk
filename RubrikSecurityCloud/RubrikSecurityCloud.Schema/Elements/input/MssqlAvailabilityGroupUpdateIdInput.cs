@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AvailabilityGroupId
-        // GraphQL -> availabilityGroupId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("availabilityGroupId")]
-        public System.String? AvailabilityGroupId { get; set; }
-
         //      C# -> MssqlAvailabilityGroupUpdateInput? UpdateProperties
         // GraphQL -> updateProperties: MssqlAvailabilityGroupUpdateInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("updateProperties")]
         public MssqlAvailabilityGroupUpdateInput? UpdateProperties { get; set; }
+
+        //      C# -> System.String? AvailabilityGroupId
+        // GraphQL -> availabilityGroupId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("availabilityGroupId")]
+        public System.String? AvailabilityGroupId { get; set; }
 
 
         #endregion

@@ -97,16 +97,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		csrId = $someString
     /// 		# OPTIONAL
     /// 		description = $someString
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 		# REQUIRED
+    /// 		pemFile = $someString
     /// 		# OPTIONAL
     /// 		privateKey = $someString
     /// 		# OPTIONAL
     /// 		isTrusted = $someBoolean
     /// 		# OPTIONAL
     /// 		isInternal = $someBoolean
-    /// 		# REQUIRED
-    /// 		name = $someString
-    /// 		# REQUIRED
-    /// 		pemFile = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -748,16 +748,16 @@ $query.Var.input = @{
 		csrId = $someString
 		# OPTIONAL
 		description = $someString
+		# REQUIRED
+		name = $someString
+		# REQUIRED
+		pemFile = $someString
 		# OPTIONAL
 		privateKey = $someString
 		# OPTIONAL
 		isTrusted = $someBoolean
 		# OPTIONAL
 		isInternal = $someBoolean
-		# REQUIRED
-		name = $someString
-		# REQUIRED
-		pemFile = $someString
 	}
 	# REQUIRED
 	clusterUuid = $someString

@@ -1,6 +1,6 @@
 ### HostRbsConnectionStatus
 Supported in v9.1+
-  The connection status of the Rubrik Backup Service (RBS) on the host.
+The connection status of the Rubrik Backup Service (RBS) on the host.
 
 - HOST_RBS_CONNECTION_STATUS_CONNECTED - The host is connected to the Rubrik Cluster.
 - HOST_RBS_CONNECTION_STATUS_CONNECTING - The host is connecting to the Rubrik Cluster.

@@ -305,12 +305,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.after = $someString
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	recoveryTime = $someDateTime
     /// 	# REQUIRED
     /// 	recoveryType = $someV1GetCompatibleMssqlInstancesV1RequestRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1GetCompatibleMssqlInstancesV1RequestRecoveryType]) for enum values.
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.sortBy = @{
@@ -504,14 +504,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	lsn = $someString
     /// 	# OPTIONAL
     /// 	recoveryForkGuid = $someString
     /// 	# OPTIONAL
     /// 	time = $someDateTime
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -541,14 +541,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	lsn = $someString
     /// 	# OPTIONAL
     /// 	recoveryForkGuid = $someString
     /// 	# OPTIONAL
     /// 	time = $someDateTime
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -779,6 +779,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	limit = $someInt
     /// 	# OPTIONAL
@@ -797,8 +799,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	sortOrder = $someV2QueryLogShippingConfigurationsV2RequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestSortOrder]) for enum values.
     /// 	# OPTIONAL
     /// 	status = $someV2QueryLogShippingConfigurationsV2RequestStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestStatus]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1461,12 +1461,12 @@ $query.Var.first = $someInt
 $query.Var.after = $someString
 # REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	recoveryTime = $someDateTime
 	# REQUIRED
 	recoveryType = $someV1GetCompatibleMssqlInstancesV1RequestRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1GetCompatibleMssqlInstancesV1RequestRecoveryType]) for enum values.
-	# REQUIRED
-	id = $someString
 }
 # OPTIONAL
 $query.Var.sortBy = @{
@@ -1628,14 +1628,14 @@ $query.Var.input = @{
                 Query.MssqlDatabaseRestoreEstimateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	lsn = $someString
 	# OPTIONAL
 	recoveryForkGuid = $someString
 	# OPTIONAL
 	time = $someDateTime
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1657,14 +1657,14 @@ $query.Var.input = @{
                 Query.AllMssqlDatabaseRestoreFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	lsn = $someString
 	# OPTIONAL
 	recoveryForkGuid = $someString
 	# OPTIONAL
 	time = $someDateTime
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1857,6 +1857,8 @@ $query.Var.input = @{
                 Query.MssqlLogShippingTargetsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	limit = $someInt
 	# OPTIONAL
@@ -1875,8 +1877,6 @@ $query.Var.input = @{
 	sortOrder = $someV2QueryLogShippingConfigurationsV2RequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestSortOrder]) for enum values.
 	# OPTIONAL
 	status = $someV2QueryLogShippingConfigurationsV2RequestStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2QueryLogShippingConfigurationsV2RequestStatus]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? SlaId
-        // GraphQL -> slaId: String (scalar)
-        [JsonProperty("slaId")]
-        public System.String? SlaId { get; set; }
-
         //      C# -> MssqlRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: MssqlRecoveryPointInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("recoveryPoint")]
         public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
+
+        //      C# -> System.String? SlaId
+        // GraphQL -> slaId: String (scalar)
+        [JsonProperty("slaId")]
+        public System.String? SlaId { get; set; }
 
 
         #endregion

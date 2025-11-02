@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountName")]
         public System.String? ServiceAccountName { get; set; }
 
+        //      C# -> KuprServerProxyConfigInput? KuprServerProxyConfig
+        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfigInput (input)
+        [JsonProperty("kuprServerProxyConfig")]
+        public KuprServerProxyConfigInput? KuprServerProxyConfig { get; set; }
+
         //      C# -> System.String? PullSecret
         // GraphQL -> pullSecret: String (scalar)
         [JsonProperty("pullSecret")]
@@ -78,11 +83,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clientId: String (scalar)
         [JsonProperty("clientId")]
         public System.String? ClientId { get; set; }
-
-        //      C# -> KuprServerProxyConfigInput? KuprServerProxyConfig
-        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfigInput (input)
-        [JsonProperty("kuprServerProxyConfig")]
-        public KuprServerProxyConfigInput? KuprServerProxyConfig { get; set; }
 
 
         #endregion

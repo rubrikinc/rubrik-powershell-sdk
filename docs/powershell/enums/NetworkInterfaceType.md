@@ -1,6 +1,6 @@
 ### NetworkInterfaceType
 Supported in v5.0+
-  Type of network interfaces.
+Type of network interfaces.
 
 - NETWORK_INTERFACE_TYPE_DATA
 - NETWORK_INTERFACE_TYPE_MANAGEMENT

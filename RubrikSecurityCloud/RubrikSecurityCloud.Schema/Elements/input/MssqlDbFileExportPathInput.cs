@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? NewFilename
-        // GraphQL -> newFilename: String (scalar)
-        [JsonProperty("newFilename")]
-        public System.String? NewFilename { get; set; }
-
-        //      C# -> System.String? NewLogicalName
-        // GraphQL -> newLogicalName: String (scalar)
-        [JsonProperty("newLogicalName")]
-        public System.String? NewLogicalName { get; set; }
-
         //      C# -> System.String? ExportPath
         // GraphQL -> exportPath: String! (scalar)
         [Required]
@@ -42,6 +32,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("logicalName")]
         public System.String? LogicalName { get; set; }
+
+        //      C# -> System.String? NewFilename
+        // GraphQL -> newFilename: String (scalar)
+        [JsonProperty("newFilename")]
+        public System.String? NewFilename { get; set; }
+
+        //      C# -> System.String? NewLogicalName
+        // GraphQL -> newLogicalName: String (scalar)
+        [JsonProperty("newLogicalName")]
+        public System.String? NewLogicalName { get; set; }
 
 
         #endregion

@@ -1,6 +1,6 @@
 ### SyslogSeverity
 Supported in v5.1+
-  The syslog message severity based on RFC 5424.
+The syslog message severity based on RFC 5424.
 
 - SYSLOG_SEVERITY_ALERT
 - SYSLOG_SEVERITY_ALL

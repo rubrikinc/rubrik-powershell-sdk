@@ -96,16 +96,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				exportConfig = @{
+    /// 					# REQUIRED
+    /// 					containerNaturalId = $someString
     /// 					# OPTIONAL
     /// 					nutanixClusterId = $someString
     /// 					# OPTIONAL
@@ -120,11 +114,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					nicNetworkUuids = @(
     /// 						$someString
     /// 					)
-    /// 					# REQUIRED
-    /// 					containerNaturalId = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -162,20 +162,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				mountConfig = @{
     /// 					# OPTIONAL
     /// 					containerNaturalId = $someString
     /// 					# OPTIONAL
     /// 					nutanixClusterId = $someString
+    /// 					# REQUIRED
+    /// 					shouldDisableMigration = $someBoolean
     /// 					# OPTIONAL
     /// 					shouldMigrateImmediately = $someBoolean
     /// 					# OPTIONAL
@@ -192,11 +186,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					nicNetworkUuids = @(
     /// 						$someString
     /// 					)
-    /// 					# REQUIRED
-    /// 					shouldDisableMigration = $someBoolean
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -276,8 +276,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	nutanixClusterConfig = @{
     /// 		# REQUIRED
     /// 		caCerts = $someString
@@ -290,6 +288,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		username = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -506,9 +506,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	location = $someInternalDeleteNutanixSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteNutanixSnapshotRequestLocation]) for enum values.
-    /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	location = $someInternalDeleteNutanixSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteNutanixSnapshotRequestLocation]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -571,17 +571,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		paths = @(
-    /// 			$someString
-    /// 		)
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -618,22 +618,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		paths = @(
-    /// 			$someString
-    /// 		)
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -769,6 +769,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		containerNaturalId = $someString
     /// 		# OPTIONAL
     /// 		nutanixClusterId = $someString
     /// 		# OPTIONAL
@@ -783,8 +785,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nicNetworkUuids = @(
     /// 			$someString
     /// 		)
-    /// 		# REQUIRED
-    /// 		containerNaturalId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -818,6 +818,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		powerOn = $someBoolean
@@ -826,8 +828,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		containerNaturalId = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -894,6 +894,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		containerNaturalId = $someString
     /// 		# OPTIONAL
     /// 		nutanixClusterId = $someString
+    /// 		# REQUIRED
+    /// 		shouldDisableMigration = $someBoolean
     /// 		# OPTIONAL
     /// 		shouldMigrateImmediately = $someBoolean
     /// 		# OPTIONAL
@@ -910,8 +912,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nicNetworkUuids = @(
     /// 			$someString
     /// 		)
-    /// 		# REQUIRED
-    /// 		shouldDisableMigration = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -945,22 +945,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		shouldMigrateImmediately = $someBoolean
-    /// 		# OPTIONAL
-    /// 		containerNaturalId = $someString
-    /// 		# REQUIRED
-    /// 		shouldDisableMigration = $someBoolean
     /// 		# REQUIRED
     /// 		targetVirtualMachineId = $someString
     /// 		# REQUIRED
     /// 		virtualDiskIds = @(
     /// 			$someString
     /// 		)
+    /// 		# REQUIRED
+    /// 		shouldDisableMigration = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldMigrateImmediately = $someBoolean
+    /// 		# OPTIONAL
+    /// 		containerNaturalId = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1121,8 +1121,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		targetVirtualMachineId = $someString
     /// 		# REQUIRED
     /// 		restoreConfig = @(
     /// 			@{
@@ -1132,6 +1130,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				restorePath = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		targetVirtualMachineId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1166,8 +1166,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		targetVirtualMachineId = $someString
     /// 		# REQUIRED
     /// 		restoreConfig = @(
     /// 			@{
@@ -1177,11 +1175,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				restorePath = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		targetVirtualMachineId = $someString
     /// 	}
     /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1212,8 +1212,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	patchProperties = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
@@ -1228,6 +1226,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1272,31 +1272,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		username = $someString
     /// 		# OPTIONAL
-    /// 		isDrEnabled = $someBoolean
-    /// 		# OPTIONAL
     /// 		decommissionedNutanixClusters = @(
     /// 			@{
+    /// 				# REQUIRED
+    /// 				clusterUuid = $someString
     /// 				# OPTIONAL
     /// 				name = $someString
     /// 				# OPTIONAL
     /// 				password = $someString
     /// 				# OPTIONAL
     /// 				username = $someString
-    /// 				# REQUIRED
-    /// 				clusterUuid = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
+    /// 		isDrEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		nutanixClusters = @(
     /// 			@{
+    /// 				# REQUIRED
+    /// 				clusterUuid = $someString
     /// 				# OPTIONAL
     /// 				name = $someString
     /// 				# OPTIONAL
     /// 				password = $someString
     /// 				# OPTIONAL
     /// 				username = $someString
-    /// 				# REQUIRED
-    /// 				clusterUuid = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -1329,8 +1329,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// 	# REQUIRED
     /// 	vmPatchProperties = @{
     /// 		# OPTIONAL
@@ -1371,6 +1369,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			timeoutMs = $someInt64
     /// 		}
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1839,16 +1839,10 @@ $query.Var.input = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				exportConfig = @{
+					# REQUIRED
+					containerNaturalId = $someString
 					# OPTIONAL
 					nutanixClusterId = $someString
 					# OPTIONAL
@@ -1863,11 +1857,17 @@ $query.Var.input = @{
 					nicNetworkUuids = @(
 						$someString
 					)
-					# REQUIRED
-					containerNaturalId = $someString
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
@@ -1897,20 +1897,14 @@ $query.Var.input = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				mountConfig = @{
 					# OPTIONAL
 					containerNaturalId = $someString
 					# OPTIONAL
 					nutanixClusterId = $someString
+					# REQUIRED
+					shouldDisableMigration = $someBoolean
 					# OPTIONAL
 					shouldMigrateImmediately = $someBoolean
 					# OPTIONAL
@@ -1927,11 +1921,17 @@ $query.Var.input = @{
 					nicNetworkUuids = @(
 						$someString
 					)
-					# REQUIRED
-					shouldDisableMigration = $someBoolean
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
@@ -1995,8 +1995,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	nutanixClusterConfig = @{
 		# REQUIRED
 		caCerts = $someString
@@ -2009,6 +2007,8 @@ $query.Var.input = @{
 		# REQUIRED
 		username = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -2177,9 +2177,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	location = $someInternalDeleteNutanixSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteNutanixSnapshotRequestLocation]) for enum values.
-	# REQUIRED
 	id = $someString
+	# REQUIRED
+	location = $someInternalDeleteNutanixSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteNutanixSnapshotRequestLocation]) for enum values.
 }"
             );
         }
@@ -2226,17 +2226,17 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		zipPassword = $someString
+		# REQUIRED
+		paths = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		paths = @(
-			$someString
-		)
+		# OPTIONAL
+		zipPassword = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -2265,22 +2265,22 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		zipPassword = $someString
+		# REQUIRED
+		paths = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		paths = @(
-			$someString
-		)
+		# OPTIONAL
+		zipPassword = $someString
 	}
 	# REQUIRED
-	locationId = $someString
-	# REQUIRED
 	snapshotId = $someString
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }
@@ -2384,6 +2384,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		containerNaturalId = $someString
 		# OPTIONAL
 		nutanixClusterId = $someString
 		# OPTIONAL
@@ -2398,8 +2400,6 @@ $query.Var.input = @{
 		nicNetworkUuids = @(
 			$someString
 		)
-		# REQUIRED
-		containerNaturalId = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -2425,6 +2425,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		powerOn = $someBoolean
@@ -2433,8 +2435,6 @@ $query.Var.input = @{
 		# REQUIRED
 		containerNaturalId = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -2485,6 +2485,8 @@ $query.Var.input = @{
 		containerNaturalId = $someString
 		# OPTIONAL
 		nutanixClusterId = $someString
+		# REQUIRED
+		shouldDisableMigration = $someBoolean
 		# OPTIONAL
 		shouldMigrateImmediately = $someBoolean
 		# OPTIONAL
@@ -2501,8 +2503,6 @@ $query.Var.input = @{
 		nicNetworkUuids = @(
 			$someString
 		)
-		# REQUIRED
-		shouldDisableMigration = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2528,22 +2528,22 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
-		# OPTIONAL
-		shouldMigrateImmediately = $someBoolean
-		# OPTIONAL
-		containerNaturalId = $someString
-		# REQUIRED
-		shouldDisableMigration = $someBoolean
 		# REQUIRED
 		targetVirtualMachineId = $someString
 		# REQUIRED
 		virtualDiskIds = @(
 			$someString
 		)
+		# REQUIRED
+		shouldDisableMigration = $someBoolean
+		# OPTIONAL
+		shouldMigrateImmediately = $someBoolean
+		# OPTIONAL
+		containerNaturalId = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -2664,8 +2664,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		targetVirtualMachineId = $someString
 		# REQUIRED
 		restoreConfig = @(
 			@{
@@ -2675,6 +2673,8 @@ $query.Var.input = @{
 				restorePath = $someString
 			}
 		)
+		# OPTIONAL
+		targetVirtualMachineId = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -2701,8 +2701,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		targetVirtualMachineId = $someString
 		# REQUIRED
 		restoreConfig = @(
 			@{
@@ -2712,11 +2710,13 @@ $query.Var.input = @{
 				restorePath = $someString
 			}
 		)
+		# OPTIONAL
+		targetVirtualMachineId = $someString
 	}
 	# REQUIRED
-	locationId = $someString
-	# REQUIRED
 	snapshotId = $someString
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }
@@ -2739,8 +2739,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	patchProperties = @{
 		# OPTIONAL
 		caCerts = $someString
@@ -2755,6 +2753,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		snapshotConsistencyMandate = $someCdmNutanixSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmNutanixSnapshotConsistencyMandate]) for enum values.
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -2791,31 +2791,31 @@ $query.Var.input = @{
 		# OPTIONAL
 		username = $someString
 		# OPTIONAL
-		isDrEnabled = $someBoolean
-		# OPTIONAL
 		decommissionedNutanixClusters = @(
 			@{
+				# REQUIRED
+				clusterUuid = $someString
 				# OPTIONAL
 				name = $someString
 				# OPTIONAL
 				password = $someString
 				# OPTIONAL
 				username = $someString
-				# REQUIRED
-				clusterUuid = $someString
 			}
 		)
 		# OPTIONAL
+		isDrEnabled = $someBoolean
+		# OPTIONAL
 		nutanixClusters = @(
 			@{
+				# REQUIRED
+				clusterUuid = $someString
 				# OPTIONAL
 				name = $someString
 				# OPTIONAL
 				password = $someString
 				# OPTIONAL
 				username = $someString
-				# REQUIRED
-				clusterUuid = $someString
 			}
 		)
 	}
@@ -2840,8 +2840,6 @@ $query.Var.input = @{
                 Mutation.UpdateNutanixVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	id = $someString
 	# REQUIRED
 	vmPatchProperties = @{
 		# OPTIONAL
@@ -2882,6 +2880,8 @@ $query.Var.input = @{
 			timeoutMs = $someInt64
 		}
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

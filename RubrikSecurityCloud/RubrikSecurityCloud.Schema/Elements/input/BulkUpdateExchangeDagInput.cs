@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> List<ExchangeDagUpdateConfigInput>? DagUpdateProperties
         // GraphQL -> dagUpdateProperties: [ExchangeDagUpdateConfigInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("dagUpdateProperties")]
         public List<ExchangeDagUpdateConfigInput>? DagUpdateProperties { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

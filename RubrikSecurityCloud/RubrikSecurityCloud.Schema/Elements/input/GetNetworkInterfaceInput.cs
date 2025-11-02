@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Interface
-        // GraphQL -> interface: String (scalar)
-        [JsonProperty("interface")]
-        public System.String? Interface { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.String? Interface
+        // GraphQL -> interface: String (scalar)
+        [JsonProperty("interface")]
+        public System.String? Interface { get; set; }
 
 
         #endregion

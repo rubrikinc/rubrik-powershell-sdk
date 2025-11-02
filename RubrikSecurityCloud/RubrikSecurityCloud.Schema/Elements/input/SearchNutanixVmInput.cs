@@ -24,17 +24,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cursor")]
         public System.String? Cursor { get; set; }
 
-        //      C# -> System.Int32? Limit
-        // GraphQL -> limit: Int (scalar)
-        [JsonProperty("limit")]
-        public System.Int32? Limit { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Int32? Limit
+        // GraphQL -> limit: Int (scalar)
+        [JsonProperty("limit")]
+        public System.Int32? Limit { get; set; }
 
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)

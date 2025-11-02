@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbMaintenanceWindow")]
         public System.String? DbMaintenanceWindow { get; set; }
 
+        //      C# -> System.String? DbName
+        // GraphQL -> dbName: String! (scalar)
+        [JsonProperty("dbName")]
+        public System.String? DbName { get; set; }
+
         //      C# -> System.String? DbParameterGroupName
         // GraphQL -> dbParameterGroupName: String! (scalar)
         [JsonProperty("dbParameterGroupName")]
@@ -143,6 +148,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DbInstanceClass = null,
         System.String? DbInstanceStatus = null,
         System.String? DbMaintenanceWindow = null,
+        System.String? DbName = null,
         System.String? DbParameterGroupName = null,
         System.String? DbSubnetGroupName = null,
         System.String? EngineVersion = null,
@@ -181,6 +187,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DbMaintenanceWindow != null ) {
             this.DbMaintenanceWindow = DbMaintenanceWindow;
+        }
+        if ( DbName != null ) {
+            this.DbName = DbName;
         }
         if ( DbParameterGroupName != null ) {
             this.DbParameterGroupName = DbParameterGroupName;
@@ -305,6 +314,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dbMaintenanceWindow\n" ;
             } else {
                 s += ind + "dbMaintenanceWindow\n" ;
+            }
+        }
+        //      C# -> System.String? DbName
+        // GraphQL -> dbName: String! (scalar)
+        if (this.DbName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dbName\n" ;
+            } else {
+                s += ind + "dbName\n" ;
             }
         }
         //      C# -> System.String? DbParameterGroupName
@@ -566,6 +584,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DbMaintenanceWindow != null && ec.Excludes("dbMaintenanceWindow",true))
         {
             this.DbMaintenanceWindow = null;
+        }
+        //      C# -> System.String? DbName
+        // GraphQL -> dbName: String! (scalar)
+        if (ec.Includes("dbName",true))
+        {
+            if(this.DbName == null) {
+
+                this.DbName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DbName != null && ec.Excludes("dbName",true))
+        {
+            this.DbName = null;
         }
         //      C# -> System.String? DbParameterGroupName
         // GraphQL -> dbParameterGroupName: String! (scalar)

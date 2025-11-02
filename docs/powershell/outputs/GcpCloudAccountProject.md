@@ -19,3 +19,5 @@ GCP Cloud Account Project.
   - Specifies if the project is archived.
 - effectiveServiceAccount: System.String
   - Service account that will be used to make cloud calls for this project.
+- projectManagedObjectId: System.String
+  - The managed object id of the project in the authz service.

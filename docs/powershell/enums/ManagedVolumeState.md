@@ -1,6 +1,6 @@
 ### ManagedVolumeState
 Supported in v5.0+
-  State of a managed volume.
+State of a managed volume.
 
 - MANAGED_VOLUME_STATE_DESTROYED - Specifies that the Managed Volume is in destroyed state.
 - MANAGED_VOLUME_STATE_EXPORT_REQUESTED - Specifies that export has been requested for the Managed Volume.

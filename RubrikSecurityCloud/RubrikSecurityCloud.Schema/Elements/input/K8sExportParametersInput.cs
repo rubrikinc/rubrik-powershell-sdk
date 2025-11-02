@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? TargetNamespaceName
+        // GraphQL -> targetNamespaceName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetNamespaceName")]
+        public System.String? TargetNamespaceName { get; set; }
+
         //      C# -> System.String? Filter
         // GraphQL -> filter: String (scalar)
         [JsonProperty("filter")]
@@ -34,6 +41,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("virtualMachineRunStrategy")]
         public System.String? VirtualMachineRunStrategy { get; set; }
 
+        //      C# -> System.String? TargetClusterId
+        // GraphQL -> targetClusterId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetClusterId")]
+        public System.String? TargetClusterId { get; set; }
+
         //      C# -> System.Boolean? ShouldDeleteNamespaceIfExportFailed
         // GraphQL -> shouldDeleteNamespaceIfExportFailed: Boolean (scalar)
         [JsonProperty("shouldDeleteNamespaceIfExportFailed")]
@@ -48,20 +62,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldKeepVirtualMachineMacAddresses: Boolean (scalar)
         [JsonProperty("shouldKeepVirtualMachineMacAddresses")]
         public System.Boolean? ShouldKeepVirtualMachineMacAddresses { get; set; }
-
-        //      C# -> System.String? TargetClusterId
-        // GraphQL -> targetClusterId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetClusterId")]
-        public System.String? TargetClusterId { get; set; }
-
-        //      C# -> System.String? TargetNamespaceName
-        // GraphQL -> targetNamespaceName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetNamespaceName")]
-        public System.String? TargetNamespaceName { get; set; }
 
 
         #endregion

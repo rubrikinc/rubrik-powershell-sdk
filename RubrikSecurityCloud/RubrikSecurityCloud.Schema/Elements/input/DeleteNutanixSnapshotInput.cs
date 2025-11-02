@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> InternalDeleteNutanixSnapshotRequestLocation? Location
-        // GraphQL -> location: InternalDeleteNutanixSnapshotRequestLocation! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("location")]
-        public InternalDeleteNutanixSnapshotRequestLocation? Location { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> InternalDeleteNutanixSnapshotRequestLocation? Location
+        // GraphQL -> location: InternalDeleteNutanixSnapshotRequestLocation! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("location")]
+        public InternalDeleteNutanixSnapshotRequestLocation? Location { get; set; }
 
 
         #endregion

@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ContainerNaturalId
+        // GraphQL -> containerNaturalId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("containerNaturalId")]
+        public System.String? ContainerNaturalId { get; set; }
+
         //      C# -> System.String? NutanixClusterId
         // GraphQL -> nutanixClusterId: String (scalar)
         [JsonProperty("nutanixClusterId")]
@@ -48,13 +55,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nicNetworkUuids: [String!] (scalar)
         [JsonProperty("nicNetworkUuids")]
         public List<System.String>? NicNetworkUuids { get; set; }
-
-        //      C# -> System.String? ContainerNaturalId
-        // GraphQL -> containerNaturalId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("containerNaturalId")]
-        public System.String? ContainerNaturalId { get; set; }
 
 
         #endregion

@@ -114,8 +114,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			configuredSlaDomainIdDeprecated = $someString
     /// 			# OPTIONAL
-    /// 			shouldDistributeBackupsAutomatically = $someBoolean
-    /// 			# OPTIONAL
     /// 			nodeOrder = @(
     /// 				@{
     /// 					# REQUIRED
@@ -124,6 +122,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					order = $someInt
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldDistributeBackupsAutomatically = $someBoolean
     /// 			# OPTIONAL
     /// 			oracleUpdateCommon = @{
     /// 				# OPTIONAL
@@ -201,8 +201,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			configuredSlaDomainIdDeprecated = $someString
     /// 			# OPTIONAL
-    /// 			shouldDistributeBackupsAutomatically = $someBoolean
-    /// 			# OPTIONAL
     /// 			nodeOrder = @(
     /// 				@{
     /// 					# REQUIRED
@@ -211,6 +209,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					order = $someInt
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldDistributeBackupsAutomatically = $someBoolean
     /// 			# OPTIONAL
     /// 			oracleUpdateCommon = @{
     /// 				# OPTIONAL
@@ -288,8 +288,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			configuredSlaDomainIdDeprecated = $someString
     /// 			# OPTIONAL
-    /// 			shouldDistributeBackupsAutomatically = $someBoolean
-    /// 			# OPTIONAL
     /// 			nodeOrder = @(
     /// 				@{
     /// 					# REQUIRED
@@ -298,6 +296,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					order = $someInt
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldDistributeBackupsAutomatically = $someBoolean
     /// 			# OPTIONAL
     /// 			oracleUpdateCommon = @{
     /// 				# OPTIONAL
@@ -495,9 +495,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -527,6 +527,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
@@ -534,8 +536,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -569,12 +569,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	request = @{
     /// 		# REQUIRED
     /// 		config = @{
+    /// 			# REQUIRED
+    /// 			recoveryPoint = @{
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
+    /// 				# OPTIONAL
+    /// 				timestampMs = $someInt64
+    /// 				# OPTIONAL
+    /// 				scn = $someInt64
+    /// 			}
     /// 			# OPTIONAL
     /// 			restoreFilesPath = $someString
     /// 			# OPTIONAL
     /// 			shouldRestoreFilesOnly = $someBoolean
     /// 			# OPTIONAL
     /// 			targetMountPath = $someString
+    /// 			# REQUIRED
+    /// 			targetOracleHostOrRacId = $someString
     /// 			# OPTIONAL
     /// 			advancedRecoveryConfigBase64 = $someString
     /// 			# OPTIONAL
@@ -605,17 +616,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			targetRacPrimaryHostId = $someString
     /// 			# OPTIONAL
     /// 			shouldAllowRenameToSource = $someBoolean
-    /// 			# REQUIRED
-    /// 			recoveryPoint = @{
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				timestampMs = $someInt64
-    /// 				# OPTIONAL
-    /// 				scn = $someInt64
-    /// 			}
-    /// 			# REQUIRED
-    /// 			targetOracleHostOrRacId = $someString
     /// 		}
     /// 		# REQUIRED
     /// 		id = $someString
@@ -660,8 +660,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		exposeAllLogs = $someBoolean
     /// 		# REQUIRED
     /// 		auxiliaryDestinationPath = $someString
     /// 		# REQUIRED
@@ -675,6 +673,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# REQUIRED
     /// 		tablespaceName = $someString
+    /// 		# OPTIONAL
+    /// 		exposeAllLogs = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -709,10 +709,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		numChannels = $someInt
-    /// 		# OPTIONAL
-    /// 		shouldSkipDropDbInUndo = $someBoolean
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
@@ -722,6 +718,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			scn = $someInt64
     /// 		}
+    /// 		# OPTIONAL
+    /// 		numChannels = $someInt
+    /// 		# OPTIONAL
+    /// 		shouldSkipDropDbInUndo = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -758,10 +758,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	request = @{
     /// 		# REQUIRED
     /// 		config = @{
+    /// 			# REQUIRED
+    /// 			recoveryPoint = @{
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
+    /// 				# OPTIONAL
+    /// 				timestampMs = $someInt64
+    /// 				# OPTIONAL
+    /// 				scn = $someInt64
+    /// 			}
     /// 			# OPTIONAL
     /// 			shouldMountFilesOnly = $someBoolean
     /// 			# OPTIONAL
     /// 			targetMountPath = $someString
+    /// 			# REQUIRED
+    /// 			targetOracleHostOrRacId = $someString
     /// 			# OPTIONAL
     /// 			advancedRecoveryConfigBase64 = $someString
     /// 			# OPTIONAL
@@ -790,17 +801,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			targetRacPrimaryHostId = $someString
     /// 			# OPTIONAL
     /// 			shouldAllowRenameToSource = $someBoolean
-    /// 			# REQUIRED
-    /// 			recoveryPoint = @{
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				timestampMs = $someInt64
-    /// 				# OPTIONAL
-    /// 				scn = $someInt64
-    /// 			}
-    /// 			# REQUIRED
-    /// 			targetOracleHostOrRacId = $someString
     /// 		}
     /// 		# REQUIRED
     /// 		id = $someString
@@ -876,17 +876,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		targetMountPath = $someString
     /// 		# REQUIRED
     /// 		oracleLogRecoveryRange = @{
-    /// 			# OPTIONAL
-    /// 			oracleScnRange = @{
-    /// 				# REQUIRED
-    /// 				endScn = $someInt64
-    /// 				# REQUIRED
-    /// 				startScn = $someInt64
-    /// 			}
     /// 			# OPTIONAL
     /// 			oracleTimeRange = @{
     /// 				# OPTIONAL
@@ -894,9 +885,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				startTime = $someDateTime
     /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleScnRange = @{
+    /// 				# REQUIRED
+    /// 				startScn = $someInt64
+    /// 				# REQUIRED
+    /// 				endScn = $someInt64
+    /// 			}
     /// 		}
     /// 		# REQUIRED
     /// 		shouldMountFilesOnly = $someBoolean
+    /// 		# OPTIONAL
+    /// 		targetMountPath = $someString
     /// 		# REQUIRED
     /// 		targetOracleHostOrRacId = $someString
     /// 	}
@@ -1006,8 +1006,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	updateProperties = @{
     /// 		# OPTIONAL
     /// 		preferredDgMemberUniqueNames = @(
@@ -1015,10 +1013,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldBackupFromPrimaryOnly = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldUseSepsWallet = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldForceDisableDgDiscovery = $someBoolean
     /// 		# OPTIONAL
     /// 		oracleUpdateCommon = @{
     /// 			# OPTIONAL
@@ -1042,7 +1036,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isPaused = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUseSepsWallet = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldForceDisableDgDiscovery = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1115,12 +1115,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		numChannels = $someInt
-    /// 		# OPTIONAL
-    /// 		sgaMaxSizeInMb = $someInt64
-    /// 		# OPTIONAL
-    /// 		targetMountPath = $someString
-    /// 		# OPTIONAL
-    /// 		targetOracleHome = $someString
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
@@ -1130,6 +1124,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			scn = $someInt64
     /// 		}
+    /// 		# OPTIONAL
+    /// 		sgaMaxSizeInMb = $someInt64
+    /// 		# OPTIONAL
+    /// 		targetMountPath = $someString
+    /// 		# OPTIONAL
+    /// 		targetOracleHome = $someString
     /// 		# REQUIRED
     /// 		targetOracleHostOrRacId = $someString
     /// 	}
@@ -1491,8 +1491,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			configuredSlaDomainIdDeprecated = $someString
 			# OPTIONAL
-			shouldDistributeBackupsAutomatically = $someBoolean
-			# OPTIONAL
 			nodeOrder = @(
 				@{
 					# REQUIRED
@@ -1501,6 +1499,8 @@ $query.Var.input = @{
 					order = $someInt
 				}
 			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = $someBoolean
 			# OPTIONAL
 			oracleUpdateCommon = @{
 				# OPTIONAL
@@ -1570,8 +1570,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			configuredSlaDomainIdDeprecated = $someString
 			# OPTIONAL
-			shouldDistributeBackupsAutomatically = $someBoolean
-			# OPTIONAL
 			nodeOrder = @(
 				@{
 					# REQUIRED
@@ -1580,6 +1578,8 @@ $query.Var.input = @{
 					order = $someInt
 				}
 			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = $someBoolean
 			# OPTIONAL
 			oracleUpdateCommon = @{
 				# OPTIONAL
@@ -1649,8 +1649,6 @@ $query.Var.input = @{
 			# OPTIONAL
 			configuredSlaDomainIdDeprecated = $someString
 			# OPTIONAL
-			shouldDistributeBackupsAutomatically = $someBoolean
-			# OPTIONAL
 			nodeOrder = @(
 				@{
 					# REQUIRED
@@ -1659,6 +1657,8 @@ $query.Var.input = @{
 					order = $someInt
 				}
 			)
+			# OPTIONAL
+			shouldDistributeBackupsAutomatically = $someBoolean
 			# OPTIONAL
 			oracleUpdateCommon = @{
 				# OPTIONAL
@@ -1816,9 +1816,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	locationId = $someString
-	# REQUIRED
 	snapshotId = $someString
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }
@@ -1840,6 +1840,8 @@ $query.Var.input = @{
                 Mutation.DownloadOracleSnapshotFromLocationV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL
@@ -1847,8 +1849,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }
@@ -1874,12 +1874,23 @@ $query.Var.input = @{
 	request = @{
 		# REQUIRED
 		config = @{
+			# REQUIRED
+			recoveryPoint = @{
+				# OPTIONAL
+				snapshotId = $someString
+				# OPTIONAL
+				timestampMs = $someInt64
+				# OPTIONAL
+				scn = $someInt64
+			}
 			# OPTIONAL
 			restoreFilesPath = $someString
 			# OPTIONAL
 			shouldRestoreFilesOnly = $someBoolean
 			# OPTIONAL
 			targetMountPath = $someString
+			# REQUIRED
+			targetOracleHostOrRacId = $someString
 			# OPTIONAL
 			advancedRecoveryConfigBase64 = $someString
 			# OPTIONAL
@@ -1910,17 +1921,6 @@ $query.Var.input = @{
 			targetRacPrimaryHostId = $someString
 			# OPTIONAL
 			shouldAllowRenameToSource = $someBoolean
-			# REQUIRED
-			recoveryPoint = @{
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				timestampMs = $someInt64
-				# OPTIONAL
-				scn = $someInt64
-			}
-			# REQUIRED
-			targetOracleHostOrRacId = $someString
 		}
 		# REQUIRED
 		id = $someString
@@ -1957,8 +1957,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		exposeAllLogs = $someBoolean
 		# REQUIRED
 		auxiliaryDestinationPath = $someString
 		# REQUIRED
@@ -1972,6 +1970,8 @@ $query.Var.input = @{
 		}
 		# REQUIRED
 		tablespaceName = $someString
+		# OPTIONAL
+		exposeAllLogs = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -1998,10 +1998,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		numChannels = $someInt
-		# OPTIONAL
-		shouldSkipDropDbInUndo = $someBoolean
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
@@ -2011,6 +2007,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			scn = $someInt64
 		}
+		# OPTIONAL
+		numChannels = $someInt
+		# OPTIONAL
+		shouldSkipDropDbInUndo = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2039,10 +2039,21 @@ $query.Var.input = @{
 	request = @{
 		# REQUIRED
 		config = @{
+			# REQUIRED
+			recoveryPoint = @{
+				# OPTIONAL
+				snapshotId = $someString
+				# OPTIONAL
+				timestampMs = $someInt64
+				# OPTIONAL
+				scn = $someInt64
+			}
 			# OPTIONAL
 			shouldMountFilesOnly = $someBoolean
 			# OPTIONAL
 			targetMountPath = $someString
+			# REQUIRED
+			targetOracleHostOrRacId = $someString
 			# OPTIONAL
 			advancedRecoveryConfigBase64 = $someString
 			# OPTIONAL
@@ -2071,17 +2082,6 @@ $query.Var.input = @{
 			targetRacPrimaryHostId = $someString
 			# OPTIONAL
 			shouldAllowRenameToSource = $someBoolean
-			# REQUIRED
-			recoveryPoint = @{
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				timestampMs = $someInt64
-				# OPTIONAL
-				scn = $someInt64
-			}
-			# REQUIRED
-			targetOracleHostOrRacId = $someString
 		}
 		# REQUIRED
 		id = $someString
@@ -2141,17 +2141,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		targetMountPath = $someString
 		# REQUIRED
 		oracleLogRecoveryRange = @{
-			# OPTIONAL
-			oracleScnRange = @{
-				# REQUIRED
-				endScn = $someInt64
-				# REQUIRED
-				startScn = $someInt64
-			}
 			# OPTIONAL
 			oracleTimeRange = @{
 				# OPTIONAL
@@ -2159,9 +2150,18 @@ $query.Var.input = @{
 				# OPTIONAL
 				startTime = $someDateTime
 			}
+			# OPTIONAL
+			oracleScnRange = @{
+				# REQUIRED
+				startScn = $someInt64
+				# REQUIRED
+				endScn = $someInt64
+			}
 		}
 		# REQUIRED
 		shouldMountFilesOnly = $someBoolean
+		# OPTIONAL
+		targetMountPath = $someString
 		# REQUIRED
 		targetOracleHostOrRacId = $someString
 	}
@@ -2247,8 +2247,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	updateProperties = @{
 		# OPTIONAL
 		preferredDgMemberUniqueNames = @(
@@ -2256,10 +2254,6 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldBackupFromPrimaryOnly = $someBoolean
-		# OPTIONAL
-		shouldUseSepsWallet = $someBoolean
-		# OPTIONAL
-		shouldForceDisableDgDiscovery = $someBoolean
 		# OPTIONAL
 		oracleUpdateCommon = @{
 			# OPTIONAL
@@ -2283,7 +2277,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			isPaused = $someBoolean
 		}
+		# OPTIONAL
+		shouldUseSepsWallet = $someBoolean
+		# OPTIONAL
+		shouldForceDisableDgDiscovery = $someBoolean
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -2340,12 +2340,6 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		numChannels = $someInt
-		# OPTIONAL
-		sgaMaxSizeInMb = $someInt64
-		# OPTIONAL
-		targetMountPath = $someString
-		# OPTIONAL
-		targetOracleHome = $someString
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
@@ -2355,6 +2349,12 @@ $query.Var.input = @{
 			# OPTIONAL
 			scn = $someInt64
 		}
+		# OPTIONAL
+		sgaMaxSizeInMb = $someInt64
+		# OPTIONAL
+		targetMountPath = $someString
+		# OPTIONAL
+		targetOracleHome = $someString
 		# REQUIRED
 		targetOracleHostOrRacId = $someString
 	}

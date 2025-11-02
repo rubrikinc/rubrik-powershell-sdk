@@ -24,17 +24,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignoreNodes")]
         public List<System.String>? IgnoreNodes { get; set; }
 
-        //      C# -> System.String? CaCertificateId
-        // GraphQL -> caCertificateId: String (scalar)
-        [JsonProperty("caCertificateId")]
-        public System.String? CaCertificateId { get; set; }
-
         //      C# -> System.String? OpsManagerApiToken
         // GraphQL -> opsManagerApiToken: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("opsManagerApiToken")]
         public System.String? OpsManagerApiToken { get; set; }
+
+        //      C# -> System.String? CaCertificateId
+        // GraphQL -> caCertificateId: String (scalar)
+        [JsonProperty("caCertificateId")]
+        public System.String? CaCertificateId { get; set; }
 
 
         #endregion

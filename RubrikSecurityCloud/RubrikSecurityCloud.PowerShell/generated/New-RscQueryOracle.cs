@@ -531,8 +531,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	pdbDetailsRequest = @{
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
@@ -544,6 +542,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			scn = $someInt64
     /// 		}
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -636,10 +636,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	afterTime = $someDateTime
     /// 	# OPTIONAL
     /// 	beforeTime = $someDateTime
-    /// 	# OPTIONAL
-    /// 	shouldIncludeDbSnapshotSummaries = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldIncludeDbSnapshotSummaries = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1426,8 +1426,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	pdbDetailsRequest = @{
 		# REQUIRED
 		recoveryPoint = @{
@@ -1439,6 +1437,8 @@ $query.Var.input = @{
 			scn = $someInt64
 		}
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -1507,10 +1507,10 @@ $query.Var.input = @{
 	afterTime = $someDateTime
 	# OPTIONAL
 	beforeTime = $someDateTime
-	# OPTIONAL
-	shouldIncludeDbSnapshotSummaries = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	shouldIncludeDbSnapshotSummaries = $someBoolean
 }"
             );
         }

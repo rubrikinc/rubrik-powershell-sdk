@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("configId")]
         public System.String? ConfigId { get; set; }
 
+        //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
+        // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus (type)
+        [JsonProperty("healthCheckStatus")]
+        public ExocomputeHealthCheckStatus? HealthCheckStatus { get; set; }
+
         //      C# -> RegionalExocomputeConfig? RegionalExocomputeConfig
         // GraphQL -> regionalExocomputeConfig: RegionalExocomputeConfig (type)
         [JsonProperty("regionalExocomputeConfig")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public GcpExocomputeConfig Set(
         System.String? ConfigId = null,
+        ExocomputeHealthCheckStatus? HealthCheckStatus = null,
         RegionalExocomputeConfig? RegionalExocomputeConfig = null
     ) 
     {
         if ( ConfigId != null ) {
             this.ConfigId = ConfigId;
+        }
+        if ( HealthCheckStatus != null ) {
+            this.HealthCheckStatus = HealthCheckStatus;
         }
         if ( RegionalExocomputeConfig != null ) {
             this.RegionalExocomputeConfig = RegionalExocomputeConfig;
@@ -71,6 +80,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "configId\n" ;
             } else {
                 s += ind + "configId\n" ;
+            }
+        }
+        //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
+        // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus (type)
+        if (this.HealthCheckStatus != null) {
+            var fspec = this.HealthCheckStatus.AsFieldSpec(conf.Child("healthCheckStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "healthCheckStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> RegionalExocomputeConfig? RegionalExocomputeConfig
@@ -108,6 +129,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConfigId != null && ec.Excludes("configId",true))
         {
             this.ConfigId = null;
+        }
+        //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
+        // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus (type)
+        if (ec.Includes("healthCheckStatus",false))
+        {
+            if(this.HealthCheckStatus == null) {
+
+                this.HealthCheckStatus = new ExocomputeHealthCheckStatus();
+                this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+
+            } else {
+
+                this.HealthCheckStatus.ApplyExploratoryFieldSpec(ec.NewChild("healthCheckStatus"));
+
+            }
+        }
+        else if (this.HealthCheckStatus != null && ec.Excludes("healthCheckStatus",false))
+        {
+            this.HealthCheckStatus = null;
         }
         //      C# -> RegionalExocomputeConfig? RegionalExocomputeConfig
         // GraphQL -> regionalExocomputeConfig: RegionalExocomputeConfig (type)

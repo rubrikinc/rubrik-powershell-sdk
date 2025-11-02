@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
         //      C# -> DateTime? RecoveryTime
         // GraphQL -> recoveryTime: DateTime (scalar)
         [JsonProperty("recoveryTime")]
@@ -30,13 +37,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("recoveryType")]
         public V1GetCompatibleMssqlInstancesV1RequestRecoveryType? RecoveryType { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
 
         #endregion

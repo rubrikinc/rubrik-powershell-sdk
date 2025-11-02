@@ -2058,10 +2058,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.filter = @(
     /// 	@{
-    /// 		# OPTIONAL
-    /// 		text = $someString
     /// 		# REQUIRED
     /// 		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		text = $someString
     /// }
     /// )
     /// # REQUIRED
@@ -2107,10 +2107,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.filter = @(
     /// 	@{
-    /// 		# OPTIONAL
-    /// 		text = $someString
     /// 		# REQUIRED
     /// 		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		text = $someString
     /// }
     /// )
     /// # REQUIRED
@@ -5171,10 +5171,10 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 # REQUIRED
 $query.Var.filter = @(
 	@{
-		# OPTIONAL
-		text = $someString
 		# REQUIRED
 		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+		# OPTIONAL
+		text = $someString
 }
 )
 # REQUIRED
@@ -5228,10 +5228,10 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 # REQUIRED
 $query.Var.filter = @(
 	@{
-		# OPTIONAL
-		text = $someString
 		# REQUIRED
 		field = $someStorageAccountContainersFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageAccountContainersFilterField]) for enum values.
+		# OPTIONAL
+		text = $someString
 }
 )
 # REQUIRED

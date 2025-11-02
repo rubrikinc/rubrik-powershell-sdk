@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> FilesetArraySpecInput? ArraySpec
+        // GraphQL -> arraySpec: FilesetArraySpecInput (input)
+        [JsonProperty("arraySpec")]
+        public FilesetArraySpecInput? ArraySpec { get; set; }
+
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         [JsonProperty("hostId")]
@@ -33,6 +38,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shareId: String (scalar)
         [JsonProperty("shareId")]
         public System.String? ShareId { get; set; }
+
+        //      C# -> System.String? TemplateId
+        // GraphQL -> templateId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("templateId")]
+        public System.String? TemplateId { get; set; }
 
         //      C# -> System.Boolean? EnableHardlinkSupport
         // GraphQL -> enableHardlinkSupport: Boolean (scalar)
@@ -68,18 +80,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isPolarisNasModel: Boolean (scalar)
         [JsonProperty("isPolarisNasModel")]
         public System.Boolean? IsPolarisNasModel { get; set; }
-
-        //      C# -> FilesetArraySpecInput? ArraySpec
-        // GraphQL -> arraySpec: FilesetArraySpecInput (input)
-        [JsonProperty("arraySpec")]
-        public FilesetArraySpecInput? ArraySpec { get; set; }
-
-        //      C# -> System.String? TemplateId
-        // GraphQL -> templateId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("templateId")]
-        public System.String? TemplateId { get; set; }
 
 
         #endregion

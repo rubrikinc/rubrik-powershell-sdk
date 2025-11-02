@@ -34,27 +34,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxDataStreams")]
         public System.Int32? MaxDataStreams { get; set; }
 
-        //      C# -> System.String? TargetDataFilePath
-        // GraphQL -> targetDataFilePath: String (scalar)
-        [JsonProperty("targetDataFilePath")]
-        public System.String? TargetDataFilePath { get; set; }
-
-        //      C# -> System.String? TargetLogFilePath
-        // GraphQL -> targetLogFilePath: String (scalar)
-        [JsonProperty("targetLogFilePath")]
-        public System.String? TargetLogFilePath { get; set; }
-
-        //      C# -> System.Boolean? PreserveCdcMetadata
-        // GraphQL -> preserveCdcMetadata: Boolean (scalar)
-        [JsonProperty("preserveCdcMetadata")]
-        public System.Boolean? PreserveCdcMetadata { get; set; }
-
         //      C# -> MssqlRecoveryPointInput? RecoveryPoint
         // GraphQL -> recoveryPoint: MssqlRecoveryPointInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("recoveryPoint")]
         public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
+
+        //      C# -> System.String? TargetDataFilePath
+        // GraphQL -> targetDataFilePath: String (scalar)
+        [JsonProperty("targetDataFilePath")]
+        public System.String? TargetDataFilePath { get; set; }
 
         //      C# -> System.String? TargetDatabaseName
         // GraphQL -> targetDatabaseName: String! (scalar)
@@ -74,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetInstanceId")]
         public System.String? TargetInstanceId { get; set; }
+
+        //      C# -> System.String? TargetLogFilePath
+        // GraphQL -> targetLogFilePath: String (scalar)
+        [JsonProperty("targetLogFilePath")]
+        public System.String? TargetLogFilePath { get; set; }
+
+        //      C# -> System.Boolean? PreserveCdcMetadata
+        // GraphQL -> preserveCdcMetadata: Boolean (scalar)
+        [JsonProperty("preserveCdcMetadata")]
+        public System.Boolean? PreserveCdcMetadata { get; set; }
 
 
         #endregion

@@ -43,3 +43,5 @@ RDS DB Instance details from AWS.
   - Username of the master user.
 - address: System.String
   - Connection address of the RDS database.
+- dbName: System.String
+  - Name/Identifier of the database.

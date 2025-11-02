@@ -24,24 +24,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignoreNodes")]
         public List<System.String>? IgnoreNodes { get; set; }
 
-        //      C# -> System.String? CaCertificateId
-        // GraphQL -> caCertificateId: String (scalar)
-        [JsonProperty("caCertificateId")]
-        public System.String? CaCertificateId { get; set; }
-
         //      C# -> System.String? OpsManagerApiToken
         // GraphQL -> opsManagerApiToken: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("opsManagerApiToken")]
         public System.String? OpsManagerApiToken { get; set; }
-
-        //      C# -> System.String? OpsManagerClusterId
-        // GraphQL -> opsManagerClusterId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("opsManagerClusterId")]
-        public System.String? OpsManagerClusterId { get; set; }
 
         //      C# -> System.String? OpsManagerGroupId
         // GraphQL -> opsManagerGroupId: String! (scalar)
@@ -50,12 +38,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("opsManagerGroupId")]
         public System.String? OpsManagerGroupId { get; set; }
 
-        //      C# -> List<System.String>? OpsManagerNodes
-        // GraphQL -> opsManagerNodes: [String!]! (scalar)
+        //      C# -> System.String? OpsManagerClusterId
+        // GraphQL -> opsManagerClusterId: String! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("opsManagerNodes")]
-        public List<System.String>? OpsManagerNodes { get; set; }
+        [JsonProperty("opsManagerClusterId")]
+        public System.String? OpsManagerClusterId { get; set; }
 
         //      C# -> System.String? SourceName
         // GraphQL -> sourceName: String! (scalar)
@@ -63,6 +51,18 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sourceName")]
         public System.String? SourceName { get; set; }
+
+        //      C# -> List<System.String>? OpsManagerNodes
+        // GraphQL -> opsManagerNodes: [String!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("opsManagerNodes")]
+        public List<System.String>? OpsManagerNodes { get; set; }
+
+        //      C# -> System.String? CaCertificateId
+        // GraphQL -> caCertificateId: String (scalar)
+        [JsonProperty("caCertificateId")]
+        public System.String? CaCertificateId { get; set; }
 
 
         #endregion

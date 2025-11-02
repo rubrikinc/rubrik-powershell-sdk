@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? TargetMountPath
-        // GraphQL -> targetMountPath: String (scalar)
-        [JsonProperty("targetMountPath")]
-        public System.String? TargetMountPath { get; set; }
-
         //      C# -> OracleLogRecoveryRangeInput? OracleLogRecoveryRange
         // GraphQL -> oracleLogRecoveryRange: OracleLogRecoveryRangeInput! (input)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldMountFilesOnly")]
         public System.Boolean? ShouldMountFilesOnly { get; set; }
+
+        //      C# -> System.String? TargetMountPath
+        // GraphQL -> targetMountPath: String (scalar)
+        [JsonProperty("targetMountPath")]
+        public System.String? TargetMountPath { get; set; }
 
         //      C# -> System.String? TargetOracleHostOrRacId
         // GraphQL -> targetOracleHostOrRacId: String! (scalar)

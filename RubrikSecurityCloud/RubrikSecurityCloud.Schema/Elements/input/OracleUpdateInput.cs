@@ -54,15 +54,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("configuredSlaDomainIdDeprecated")]
         public System.String? ConfiguredSlaDomainIdDeprecated { get; set; }
 
-        //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
-        // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
-        [JsonProperty("shouldDistributeBackupsAutomatically")]
-        public System.Boolean? ShouldDistributeBackupsAutomatically { get; set; }
-
         //      C# -> List<OracleNodeOrderInput>? NodeOrder
         // GraphQL -> nodeOrder: [OracleNodeOrderInput!] (input)
         [JsonProperty("nodeOrder")]
         public List<OracleNodeOrderInput>? NodeOrder { get; set; }
+
+        //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
+        // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
+        [JsonProperty("shouldDistributeBackupsAutomatically")]
+        public System.Boolean? ShouldDistributeBackupsAutomatically { get; set; }
 
         //      C# -> OracleUpdateCommonInput? OracleUpdateCommon
         // GraphQL -> oracleUpdateCommon: OracleUpdateCommonInput (input)

@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("projectId")]
         public System.String? ProjectId { get; set; }
 
+        //      C# -> System.String? ProjectManagedObjectId
+        // GraphQL -> projectManagedObjectId: String! (scalar)
+        [JsonProperty("projectManagedObjectId")]
+        public System.String? ProjectManagedObjectId { get; set; }
+
         //      C# -> System.Int64? ProjectNumber
         // GraphQL -> projectNumber: Long! (scalar)
         [JsonProperty("projectNumber")]
@@ -81,6 +86,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.String? OrganizationName = null,
         System.String? ProjectId = null,
+        System.String? ProjectManagedObjectId = null,
         System.Int64? ProjectNumber = null,
         System.String? RoleId = null,
         System.Boolean? UsesGlobalConfig = null
@@ -103,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProjectId != null ) {
             this.ProjectId = ProjectId;
+        }
+        if ( ProjectManagedObjectId != null ) {
+            this.ProjectManagedObjectId = ProjectManagedObjectId;
         }
         if ( ProjectNumber != null ) {
             this.ProjectNumber = ProjectNumber;
@@ -179,6 +188,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "projectId\n" ;
             } else {
                 s += ind + "projectId\n" ;
+            }
+        }
+        //      C# -> System.String? ProjectManagedObjectId
+        // GraphQL -> projectManagedObjectId: String! (scalar)
+        if (this.ProjectManagedObjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "projectManagedObjectId\n" ;
+            } else {
+                s += ind + "projectManagedObjectId\n" ;
             }
         }
         //      C# -> System.Int64? ProjectNumber
@@ -316,6 +334,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProjectId != null && ec.Excludes("projectId",true))
         {
             this.ProjectId = null;
+        }
+        //      C# -> System.String? ProjectManagedObjectId
+        // GraphQL -> projectManagedObjectId: String! (scalar)
+        if (ec.Includes("projectManagedObjectId",true))
+        {
+            if(this.ProjectManagedObjectId == null) {
+
+                this.ProjectManagedObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectManagedObjectId != null && ec.Excludes("projectManagedObjectId",true))
+        {
+            this.ProjectManagedObjectId = null;
         }
         //      C# -> System.Int64? ProjectNumber
         // GraphQL -> projectNumber: Long! (scalar)

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ManagedVolumePatchConfigInput? Config
+        // GraphQL -> config: ManagedVolumePatchConfigInput (input)
+        [JsonProperty("config")]
+        public ManagedVolumePatchConfigInput? Config { get; set; }
+
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         [JsonProperty("configuredSlaDomainId")]
@@ -34,20 +39,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("volumeSize")]
         public System.Int64? VolumeSize { get; set; }
 
-        //      C# -> System.String? Subnet
-        // GraphQL -> subnet: String (scalar)
-        [JsonProperty("subnet")]
-        public System.String? Subnet { get; set; }
-
-        //      C# -> ManagedVolumePatchConfigInput? Config
-        // GraphQL -> config: ManagedVolumePatchConfigInput (input)
-        [JsonProperty("config")]
-        public ManagedVolumePatchConfigInput? Config { get; set; }
-
         //      C# -> ManagedVolumePatchSlaClientConfigInput? SlaClientConfig
         // GraphQL -> slaClientConfig: ManagedVolumePatchSlaClientConfigInput (input)
         [JsonProperty("slaClientConfig")]
         public ManagedVolumePatchSlaClientConfigInput? SlaClientConfig { get; set; }
+
+        //      C# -> System.String? Subnet
+        // GraphQL -> subnet: String (scalar)
+        [JsonProperty("subnet")]
+        public System.String? Subnet { get; set; }
 
 
         #endregion

@@ -39,6 +39,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excludes")]
         public List<System.String>? Excludes { get; set; }
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!] (scalar)
         [JsonProperty("includes")]
@@ -48,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> FilesetTemplatePatchOperatingSystemType? OperatingSystemType
+        // GraphQL -> operatingSystemType: FilesetTemplatePatchOperatingSystemType (enum)
+        [JsonProperty("operatingSystemType")]
+        public FilesetTemplatePatchOperatingSystemType? OperatingSystemType { get; set; }
 
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
@@ -59,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preBackupScript")]
         public System.String? PreBackupScript { get; set; }
 
+        //      C# -> FilesetTemplatePatchShareType? ShareType
+        // GraphQL -> shareType: FilesetTemplatePatchShareType (enum)
+        [JsonProperty("shareType")]
+        public FilesetTemplatePatchShareType? ShareType { get; set; }
+
         //      C# -> System.Boolean? IsCreatedByKupr
         // GraphQL -> isCreatedByKupr: Boolean (scalar)
         [JsonProperty("isCreatedByKupr")]
@@ -68,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isCreatedByPolarisNas: Boolean (scalar)
         [JsonProperty("isCreatedByPolarisNas")]
         public System.Boolean? IsCreatedByPolarisNas { get; set; }
+
+        //      C# -> FilesetOptionsInput? FilesetOptions
+        // GraphQL -> filesetOptions: FilesetOptionsInput (input)
+        [JsonProperty("filesetOptions")]
+        public FilesetOptionsInput? FilesetOptions { get; set; }
 
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
         // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
@@ -83,28 +105,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean (scalar)
         [JsonProperty("shouldOverrideClusterWideBlocklistedFilesystemPaths")]
         public System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths { get; set; }
-
-        //      C# -> FilesetTemplatePatchOperatingSystemType? OperatingSystemType
-        // GraphQL -> operatingSystemType: FilesetTemplatePatchOperatingSystemType (enum)
-        [JsonProperty("operatingSystemType")]
-        public FilesetTemplatePatchOperatingSystemType? OperatingSystemType { get; set; }
-
-        //      C# -> FilesetTemplatePatchShareType? ShareType
-        // GraphQL -> shareType: FilesetTemplatePatchShareType (enum)
-        [JsonProperty("shareType")]
-        public FilesetTemplatePatchShareType? ShareType { get; set; }
-
-        //      C# -> FilesetOptionsInput? FilesetOptions
-        // GraphQL -> filesetOptions: FilesetOptionsInput (input)
-        [JsonProperty("filesetOptions")]
-        public FilesetOptionsInput? FilesetOptions { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
 
         #endregion

@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldUpdateComputeVisibilityFilter
-        // GraphQL -> shouldUpdateComputeVisibilityFilter: Boolean (scalar)
-        [JsonProperty("shouldUpdateComputeVisibilityFilter")]
-        public System.Boolean? ShouldUpdateComputeVisibilityFilter { get; set; }
-
         //      C# -> VcenterConfigInput? VcenterConfig
         // GraphQL -> vcenterConfig: VcenterConfigInput (input)
         [JsonProperty("vcenterConfig")]
         public VcenterConfigInput? VcenterConfig { get; set; }
+
+        //      C# -> System.Boolean? ShouldUpdateComputeVisibilityFilter
+        // GraphQL -> shouldUpdateComputeVisibilityFilter: Boolean (scalar)
+        [JsonProperty("shouldUpdateComputeVisibilityFilter")]
+        public System.Boolean? ShouldUpdateComputeVisibilityFilter { get; set; }
 
 
         #endregion

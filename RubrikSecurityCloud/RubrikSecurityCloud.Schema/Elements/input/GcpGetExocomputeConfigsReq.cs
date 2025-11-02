@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regions")]
         public List<GcpCloudAccountRegion>? Regions { get; set; }
 
+        //      C# -> System.Boolean? ShowHealthCheckStatus
+        // GraphQL -> showHealthCheckStatus: Boolean (scalar)
+        [JsonProperty("showHealthCheckStatus")]
+        public System.Boolean? ShowHealthCheckStatus { get; set; }
+
 
         #endregion
 

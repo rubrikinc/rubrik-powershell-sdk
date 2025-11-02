@@ -229,6 +229,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	description = $someString
     /// 	# OPTIONAL
@@ -242,19 +244,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	name = $someString
     /// 	# OPTIONAL
-    /// 	isInternal = $someBoolean
+    /// 	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
     /// 	# OPTIONAL
-    /// 	pemFile = $someString
+    /// 	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
     /// 	# OPTIONAL
     /// 	excludeUsages = @(
     /// 		$someExcludeUsages # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludeUsages]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
+    /// 	isInternal = $someBoolean
     /// 	# OPTIONAL
-    /// 	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
+    /// 	pemFile = $someString
     /// }
     /// 
     /// # Execute the query
@@ -875,6 +875,8 @@ $query.Var.searchTerm = $someString"
                 Query.ClusterCertificatesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	description = $someString
 	# OPTIONAL
@@ -888,19 +890,17 @@ $query.Var.input = @{
 	# OPTIONAL
 	name = $someString
 	# OPTIONAL
-	isInternal = $someBoolean
+	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
 	# OPTIONAL
-	pemFile = $someString
+	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
 	# OPTIONAL
 	excludeUsages = @(
 		$someExcludeUsages # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExcludeUsages]) for enum values.
 	)
 	# OPTIONAL
-	sortBy = $someV1QueryCertificatesRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortBy]) for enum values.
+	isInternal = $someBoolean
 	# OPTIONAL
-	sortOrder = $someV1QueryCertificatesRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryCertificatesRequestSortOrder]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
+	pemFile = $someString
 }"
             );
         }

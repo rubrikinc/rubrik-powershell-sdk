@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? SourceMongoClusterId
+        // GraphQL -> sourceMongoClusterId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceMongoClusterId")]
+        public System.String? SourceMongoClusterId { get; set; }
+
         //      C# -> DateTime? RestoreTime
         // GraphQL -> restoreTime: DateTime (scalar)
         [JsonProperty("restoreTime")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oplogDumpDirPath: String (scalar)
         [JsonProperty("oplogDumpDirPath")]
         public System.String? OplogDumpDirPath { get; set; }
-
-        //      C# -> System.String? SourceMongoClusterId
-        // GraphQL -> sourceMongoClusterId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceMongoClusterId")]
-        public System.String? SourceMongoClusterId { get; set; }
 
         //      C# -> System.String? TargetMongoClusterId
         // GraphQL -> targetMongoClusterId: String! (scalar)

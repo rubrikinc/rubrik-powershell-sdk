@@ -19,6 +19,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("serviceAccountName")]
+        public System.String? ServiceAccountName { get; set; }
+
+        //      C# -> System.String? ClientSecret
+        // GraphQL -> clientSecret: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clientSecret")]
+        public System.String? ClientSecret { get; set; }
+
         //      C# -> System.String? AccessToken
         // GraphQL -> accessToken: String! (scalar)
         [Required]
@@ -32,20 +46,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clientId")]
         public System.String? ClientId { get; set; }
-
-        //      C# -> System.String? ClientSecret
-        // GraphQL -> clientSecret: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clientSecret")]
-        public System.String? ClientSecret { get; set; }
-
-        //      C# -> System.String? ServiceAccountName
-        // GraphQL -> serviceAccountName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("serviceAccountName")]
-        public System.String? ServiceAccountName { get; set; }
 
 
         #endregion

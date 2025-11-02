@@ -614,6 +614,8 @@ Set datastore freespace thresholds.
 - There is a single argument of type SetDatastoreFreespaceThresholdsInput.
 - Returns SetDatastoreFreespaceThresholdsReply.
 ### setipwhitelistenabled
+Enable or disable the IP allowlist for the given organization.
+
 - There is a single argument of type System.Boolean.
 - Returns System.Boolean.
 ### setmfasetting
@@ -878,9 +880,11 @@ Update IOC status.
 - There is a single argument of type list of UpdateIocStatusInputs.
 - Returns System.String.
 ### updateipwhitelist
+Update the IP allowlist for the given organization.
+
 - There are 2 arguments.
-    - whitelistMode - WhitelistModeEnum
-    - ipCidrs - list of System.Strings
+    - whitelistMode - WhitelistModeEnum: The mode of the IP allowlist.
+    - ipCidrs - list of System.Strings: The list of IP addresses in the allowlist.
 - Returns System.Boolean.
 ### updatelambdasettings
 - There are 3 arguments.

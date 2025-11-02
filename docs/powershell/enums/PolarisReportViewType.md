@@ -37,3 +37,4 @@ This report presents capacity metrics for cloud-native protection
 features, specifically for resources managed under customer-onboarded
 cloud accounts (e.g., Azure, AWS, GCP).
 - LOG_TASKS_REPORT - Log Tasks report.
+- THREAT_MONITORING_COMPLIANCE_REPORT - Threat Monitoring Compliance report.

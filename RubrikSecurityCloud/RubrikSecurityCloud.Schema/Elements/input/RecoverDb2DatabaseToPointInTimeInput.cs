@@ -1,4 +1,4 @@
-// OptionalHealthChecks.cs
+// RecoverDb2DatabaseToPointInTimeInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,26 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region OptionalHealthChecks
+    #region RecoverDb2DatabaseToPointInTimeInput
 
-    public class OptionalHealthChecks: IInput
+    public class RecoverDb2DatabaseToPointInTimeInput: IInput
     {
         #region members
 
-        //      C# -> List<ArchivalParameters>? ArchivalHealthCheckParams
-        // GraphQL -> archivalHealthCheckParams: [ArchivalParameters!] (input)
-        [JsonProperty("archivalHealthCheckParams")]
-        public List<ArchivalParameters>? ArchivalHealthCheckParams { get; set; }
-
-        //      C# -> System.Boolean? RunCloudslabCheck
-        // GraphQL -> runCloudslabCheck: Boolean (scalar)
-        [JsonProperty("runCloudslabCheck")]
-        public System.Boolean? RunCloudslabCheck { get; set; }
-
-        //      C# -> System.Boolean? RunGcsConnectivityCheck
-        // GraphQL -> runGcsConnectivityCheck: Boolean (scalar)
-        [JsonProperty("runGcsConnectivityCheck")]
-        public System.Boolean? RunGcsConnectivityCheck { get; set; }
+        //      C# -> RecoverToPointInTimeDb2DbConfigInput? Config
+        // GraphQL -> config: RecoverToPointInTimeDb2DbConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public RecoverToPointInTimeDb2DbConfigInput? Config { get; set; }
 
 
         #endregion
@@ -60,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class OptionalHealthChecks
+    } // class RecoverDb2DatabaseToPointInTimeInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

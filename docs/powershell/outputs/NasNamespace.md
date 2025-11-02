@@ -7,6 +7,14 @@ NAS namespace instance associated with registered NAS system.
   - Determines whether the NAS namespace is read-only.
 - netAppMetroClusterInfo: NasNamespaceNetAppMetroClusterInfo
   - Optional NetApp Metro Cluster info for the NAS namespace.
+- userSelectedNfsInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for NFS operations on the namespace.
+- userSelectedSmbInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for SMB operations on the namespace.
+- nfsDataAddresses: list of System.Strings
+  - Specifies all available NFS data interfaces for the namespace.
+- smbDataAddresses: list of System.Strings
+  - Specifies all available SMB data interfaces for the namespace.
 - id: System.String
   - Object ID.
 - descendantConnection: NasNamespaceDescendantTypeConnection

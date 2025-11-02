@@ -8,4 +8,3 @@ Supported in v5.0+
 - verbose: FilesetSnapshotVerbose
   - Supported in v5.0+
 - filesetSnapshotSummary: FilesetSnapshotSummary
-  - 

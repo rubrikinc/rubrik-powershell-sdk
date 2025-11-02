@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> InstantRecoveryJobConfigV2Input? Config
+        // GraphQL -> config: InstantRecoveryJobConfigV2Input! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public InstantRecoveryJobConfigV2Input? Config { get; set; }
+
         //      C# -> DateTime? SnapshotAfterDate
         // GraphQL -> snapshotAfterDate: DateTime (scalar)
         [JsonProperty("snapshotAfterDate")]
@@ -33,13 +40,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotId: String (scalar)
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
-
-        //      C# -> InstantRecoveryJobConfigV2Input? Config
-        // GraphQL -> config: InstantRecoveryJobConfigV2Input! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public InstantRecoveryJobConfigV2Input? Config { get; set; }
 
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)

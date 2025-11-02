@@ -5,6 +5,10 @@
   - Filter all the snapshots after a date.
 - beforeDate: DateTime
   - Filter all the snapshots before a date.
+- clusterUuid: System.String
+  - Required. UUID used to identify the cluster the request goes to.
+- id: System.String
+  - Required. ID of a object.
 - limit: System.Int32
   - Limit the number of matches returned.
 - offset: System.Int32
@@ -17,7 +21,3 @@
   - Sort by given attribute.
 - sortOrder: V1QueryUnmanagedObjectSnapshotsV1RequestSortOrder
   - The sort order. The default sort order is ascending.
-- clusterUuid: System.String
-  - Required. UUID used to identify the cluster the request goes to.
-- id: System.String
-  - Required. ID of a object.

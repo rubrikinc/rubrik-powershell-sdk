@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("apiToken")]
         public System.String? ApiToken { get; set; }
 
+        //      C# -> List<HdfsHostInput>? Hosts
+        // GraphQL -> hosts: [HdfsHostInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("hosts")]
+        public List<HdfsHostInput>? Hosts { get; set; }
+
         //      C# -> System.String? KerberosTicket
         // GraphQL -> kerberosTicket: String (scalar)
         [JsonProperty("kerberosTicket")]
@@ -38,13 +45,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> username: String (scalar)
         [JsonProperty("username")]
         public System.String? Username { get; set; }
-
-        //      C# -> List<HdfsHostInput>? Hosts
-        // GraphQL -> hosts: [HdfsHostInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("hosts")]
-        public List<HdfsHostInput>? Hosts { get; set; }
 
 
         #endregion

@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("snapshotId")]
+        public System.String? SnapshotId { get; set; }
+
         //      C# -> OracleSnapshotDownloadRequestInput? DownloadConfig
         // GraphQL -> downloadConfig: OracleSnapshotDownloadRequestInput (input)
         [JsonProperty("downloadConfig")]
@@ -30,13 +37,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("locationId")]
         public System.String? LocationId { get; set; }
-
-        //      C# -> System.String? SnapshotId
-        // GraphQL -> snapshotId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("snapshotId")]
-        public System.String? SnapshotId { get; set; }
 
 
         #endregion

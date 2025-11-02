@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> List<System.String>? UserSelectedInterfaces
+        // GraphQL -> userSelectedInterfaces: [String!]! (scalar)
+        [JsonProperty("userSelectedInterfaces")]
+        public List<System.String>? UserSelectedInterfaces { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -325,6 +330,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.String? ShareType = null,
         System.Boolean? SlaPauseStatus = null,
+        List<System.String>? UserSelectedInterfaces = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -420,6 +426,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( UserSelectedInterfaces != null ) {
+            this.UserSelectedInterfaces = UserSelectedInterfaces;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -735,6 +744,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UserSelectedInterfaces
+        // GraphQL -> userSelectedInterfaces: [String!]! (scalar)
+        if (this.UserSelectedInterfaces != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userSelectedInterfaces\n" ;
+            } else {
+                s += ind + "userSelectedInterfaces\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1426,6 +1444,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> List<System.String>? UserSelectedInterfaces
+        // GraphQL -> userSelectedInterfaces: [String!]! (scalar)
+        if (ec.Includes("userSelectedInterfaces",true))
+        {
+            if(this.UserSelectedInterfaces == null) {
+
+                this.UserSelectedInterfaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSelectedInterfaces != null && ec.Excludes("userSelectedInterfaces",true))
+        {
+            this.UserSelectedInterfaces = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numChannels")]
         public System.Int32? NumChannels { get; set; }
 
+        //      C# -> OracleRecoveryPointInput? RecoveryPoint
+        // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("recoveryPoint")]
+        public OracleRecoveryPointInput? RecoveryPoint { get; set; }
+
         //      C# -> System.Int64? SgaMaxSizeInMb
         // GraphQL -> sgaMaxSizeInMb: Long (scalar)
         [JsonProperty("sgaMaxSizeInMb")]
@@ -38,13 +45,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetOracleHome: String (scalar)
         [JsonProperty("targetOracleHome")]
         public System.String? TargetOracleHome { get; set; }
-
-        //      C# -> OracleRecoveryPointInput? RecoveryPoint
-        // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("recoveryPoint")]
-        public OracleRecoveryPointInput? RecoveryPoint { get; set; }
 
         //      C# -> System.String? TargetOracleHostOrRacId
         // GraphQL -> targetOracleHostOrRacId: String! (scalar)

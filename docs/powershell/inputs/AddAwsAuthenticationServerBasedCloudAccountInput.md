@@ -23,3 +23,5 @@ Input to add authentication server-based AWS cloud account for native protection
   - Certificate ID for authentication server CA certificate. If a CA certificate ID is not provided, authentication server will be trusted on first use.
 - awsCaCertId: AwsAuthServerCertificateIdInput
   - Certificate ID for AWS CA certificate. If a CA certificate ID is not provided, AWS server will be trusted on first use.
+- featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss
+  - List of cloud account features with specific permissions groups.

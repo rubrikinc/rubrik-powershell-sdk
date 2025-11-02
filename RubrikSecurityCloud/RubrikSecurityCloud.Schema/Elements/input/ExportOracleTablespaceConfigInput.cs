@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ExposeAllLogs
-        // GraphQL -> exposeAllLogs: Boolean (scalar)
-        [JsonProperty("exposeAllLogs")]
-        public System.Boolean? ExposeAllLogs { get; set; }
-
         //      C# -> System.String? AuxiliaryDestinationPath
         // GraphQL -> auxiliaryDestinationPath: String! (scalar)
         [Required]
@@ -44,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("tablespaceName")]
         public System.String? TablespaceName { get; set; }
+
+        //      C# -> System.Boolean? ExposeAllLogs
+        // GraphQL -> exposeAllLogs: Boolean (scalar)
+        [JsonProperty("exposeAllLogs")]
+        public System.Boolean? ExposeAllLogs { get; set; }
 
 
         #endregion

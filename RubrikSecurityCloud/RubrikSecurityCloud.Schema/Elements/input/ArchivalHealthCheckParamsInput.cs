@@ -27,9 +27,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? LocationId { get; set; }
 
         //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 

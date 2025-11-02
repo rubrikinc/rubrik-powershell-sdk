@@ -15,6 +15,9 @@ Supported in v5.0+
   - Supported in v5.0+
 - mountedVmName: System.String
   - Supported in v5.0+
+- powerStatus: HypervVirtualMachineMountSummaryPowerStatus
+  - Required. Supported in v5.0+
+The power status of the mounted VM(ON,OFF,SLEEP etc.).
 - snapshotDate: DateTime
   - Required. Supported in v5.0+
 - unmountRequestId: System.String
@@ -25,16 +28,13 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - targetVmName: System.String
   - Supported in v9.1+
-  The name of the target virtual machine.
+The name of the target virtual machine.
 - attachedDiskCount: System.Int32
   - Supported in v9.1+
-  The number of disks attached to the target virtual machine, if the mount is a disk-level mount.
+The number of disks attached to the target virtual machine, if the mount is a disk-level mount.
 - isDiskLevelMount: System.Boolean
   - Supported in v9.1+
-  A boolean field that indicates whether the mount is a disk-level mount.
+A boolean field that indicates whether the mount is a disk-level mount.
 - mountTime: DateTime
   - Supported in v9.2+
-  This field indicates the time of mounting.
-- powerStatus: HypervVirtualMachineMountSummaryPowerStatus
-  - Required. Supported in v5.0+
-  The power status of the mounted VM(ON,OFF,SLEEP etc.).
+This field indicates the time of mounting.

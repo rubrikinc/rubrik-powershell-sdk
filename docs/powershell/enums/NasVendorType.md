@@ -1,6 +1,6 @@
 ### NasVendorType
 Supported in v5.2+
-  NAS Vendor Type.
+NAS Vendor Type.
 
 - NAS_VENDOR_TYPE_FLASHBLADE
 - NAS_VENDOR_TYPE_GENERIC

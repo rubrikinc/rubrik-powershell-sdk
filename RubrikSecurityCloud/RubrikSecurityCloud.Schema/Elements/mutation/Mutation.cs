@@ -7471,6 +7471,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? DeleteK8sVmMount
+        // GraphQL -> deleteK8sVmMount: AsyncRequestStatus! (type)
+        public static string DeleteK8sVmMount(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteK8sVmMount" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DeleteK8sVmMountFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DeleteLogShipping
         // GraphQL -> deleteLogShipping: AsyncRequestStatus! (type)
         public static string DeleteLogShipping(object fsObj)
@@ -12790,6 +12808,24 @@ namespace RubrikSecurityCloud.Types
             return "startK8sDiagnosticsJob" + args + "\n{\n" + fs + "}\n";
         }
         public static object StartK8sDiagnosticsJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? StartK8sVmMountJob
+        // GraphQL -> startK8sVmMountJob: AsyncRequestStatus! (type)
+        public static string StartK8sVmMountJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startK8sVmMountJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartK8sVmMountJobFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();

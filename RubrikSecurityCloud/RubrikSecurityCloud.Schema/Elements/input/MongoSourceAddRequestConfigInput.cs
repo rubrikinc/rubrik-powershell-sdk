@@ -29,6 +29,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignoreSecondaries")]
         public List<System.String>? IgnoreSecondaries { get; set; }
 
+        //      C# -> List<MongoClientHostInput>? MongoClientHosts
+        // GraphQL -> mongoClientHosts: [MongoClientHostInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("mongoClientHosts")]
+        public List<MongoClientHostInput>? MongoClientHosts { get; set; }
+
+        //      C# -> MongoType? MongoType
+        // GraphQL -> mongoType: MongoType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("mongoType")]
+        public MongoType? MongoType { get; set; }
+
         //      C# -> System.String? SourceDriverPassword
         // GraphQL -> sourceDriverPassword: String (scalar)
         [JsonProperty("sourceDriverPassword")]
@@ -38,6 +52,18 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceDriverUser: String (scalar)
         [JsonProperty("sourceDriverUser")]
         public System.String? SourceDriverUser { get; set; }
+
+        //      C# -> System.String? SourceName
+        // GraphQL -> sourceName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceName")]
+        public System.String? SourceName { get; set; }
+
+        //      C# -> MongoSslCertificateRequirement? SslCertificateRequired
+        // GraphQL -> sslCertificateRequired: MongoSslCertificateRequirement (enum)
+        [JsonProperty("sslCertificateRequired")]
+        public MongoSslCertificateRequirement? SslCertificateRequired { get; set; }
 
         //      C# -> System.String? SslKeyfilePath
         // GraphQL -> sslKeyfilePath: String (scalar)
@@ -49,36 +75,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslCertfilePath")]
         public System.String? SslCertfilePath { get; set; }
 
-        //      C# -> MongoType? MongoType
-        // GraphQL -> mongoType: MongoType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("mongoType")]
-        public MongoType? MongoType { get; set; }
-
         //      C# -> MongoAuthenticationType? SourceAuthenticationType
         // GraphQL -> sourceAuthenticationType: MongoAuthenticationType (enum)
         [JsonProperty("sourceAuthenticationType")]
         public MongoAuthenticationType? SourceAuthenticationType { get; set; }
-
-        //      C# -> MongoSslCertificateRequirement? SslCertificateRequired
-        // GraphQL -> sslCertificateRequired: MongoSslCertificateRequirement (enum)
-        [JsonProperty("sslCertificateRequired")]
-        public MongoSslCertificateRequirement? SslCertificateRequired { get; set; }
-
-        //      C# -> List<MongoClientHostInput>? MongoClientHosts
-        // GraphQL -> mongoClientHosts: [MongoClientHostInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("mongoClientHosts")]
-        public List<MongoClientHostInput>? MongoClientHosts { get; set; }
-
-        //      C# -> System.String? SourceName
-        // GraphQL -> sourceName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceName")]
-        public System.String? SourceName { get; set; }
 
 
         #endregion

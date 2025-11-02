@@ -19,10 +19,12 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> V2BulkDeleteMosaicSourcesRequestSourceType? SourceType
-        // GraphQL -> sourceType: V2BulkDeleteMosaicSourcesRequestSourceType (enum)
-        [JsonProperty("sourceType")]
-        public V2BulkDeleteMosaicSourcesRequestSourceType? SourceType { get; set; }
+        //      C# -> BulkDeleteSourceRequestInput? SourceData
+        // GraphQL -> sourceData: BulkDeleteSourceRequestInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceData")]
+        public BulkDeleteSourceRequestInput? SourceData { get; set; }
 
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
@@ -31,12 +33,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
-        //      C# -> BulkDeleteSourceRequestInput? SourceData
-        // GraphQL -> sourceData: BulkDeleteSourceRequestInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceData")]
-        public BulkDeleteSourceRequestInput? SourceData { get; set; }
+        //      C# -> V2BulkDeleteMosaicSourcesRequestSourceType? SourceType
+        // GraphQL -> sourceType: V2BulkDeleteMosaicSourcesRequestSourceType (enum)
+        [JsonProperty("sourceType")]
+        public V2BulkDeleteMosaicSourcesRequestSourceType? SourceType { get; set; }
 
 
         #endregion

@@ -3,7 +3,7 @@ Supported in v5.0+
 
 - hasFingerprint: System.Boolean
   - Required. Supported in v5.0+
-  Whether or not the fileset snapshot has fingerprint info.
+Whether or not the fileset snapshot has fingerprint info.
 - partitionPaths: list of System.Strings
   - Required. Supported in v5.0+
-  List a partition paths for the fileset snapshot.
+List a partition paths for the fileset snapshot.

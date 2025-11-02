@@ -209,7 +209,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLabelObjectType]) for enum values.
     /// 	# REQUIRED
     /// 	labelRuleName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	label = @{
     /// 		# REQUIRED
     /// 		labelKey = $someString
@@ -239,6 +239,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	applyToAllCloudAccounts = $someBoolean
+    /// 	# OPTIONAL
+    /// 	labelConditions = @{
+    /// 		# REQUIRED
+    /// 		tagPairs = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				values = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				matchAllTagValues = $someBoolean
+    /// 			}
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -272,7 +288,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
     /// 	# REQUIRED
     /// 	tagRuleName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	tag = @{
     /// 		# REQUIRED
     /// 		tagKey = $someString
@@ -302,6 +318,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	applyToAllCloudAccounts = $someBoolean
+    /// 	# OPTIONAL
+    /// 	tagConditions = @{
+    /// 		# REQUIRED
+    /// 		tagPairs = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				values = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				matchAllTagValues = $someBoolean
+    /// 			}
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1041,7 +1073,7 @@ $query.Var.input = @{
 	objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLabelObjectType]) for enum values.
 	# REQUIRED
 	labelRuleName = $someString
-	# REQUIRED
+	# OPTIONAL
 	label = @{
 		# REQUIRED
 		labelKey = $someString
@@ -1071,6 +1103,22 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	applyToAllCloudAccounts = $someBoolean
+	# OPTIONAL
+	labelConditions = @{
+		# REQUIRED
+		tagPairs = @(
+			@{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				values = @(
+					$someString
+				)
+				# REQUIRED
+				matchAllTagValues = $someBoolean
+			}
+		)
+	}
 }"
             );
         }
@@ -1096,7 +1144,7 @@ $query.Var.input = @{
 	objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
 	# REQUIRED
 	tagRuleName = $someString
-	# REQUIRED
+	# OPTIONAL
 	tag = @{
 		# REQUIRED
 		tagKey = $someString
@@ -1126,6 +1174,22 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	applyToAllCloudAccounts = $someBoolean
+	# OPTIONAL
+	tagConditions = @{
+		# REQUIRED
+		tagPairs = @(
+			@{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				values = @(
+					$someString
+				)
+				# REQUIRED
+				matchAllTagValues = $someBoolean
+			}
+		)
+	}
 }"
             );
         }

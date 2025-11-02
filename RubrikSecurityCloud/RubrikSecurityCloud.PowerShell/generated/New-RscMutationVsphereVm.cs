@@ -92,22 +92,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				config = @{
+    /// 					# REQUIRED
+    /// 					datastoreId = $someString
     /// 					# OPTIONAL
     /// 					hostId = $someString
     /// 					# OPTIONAL
@@ -119,15 +111,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					resourcePoolId = $someString
     /// 					# OPTIONAL
+    /// 					vNicBindings = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							backingNetworkInfo = @{
+    /// 								# REQUIRED
+    /// 								moid = $someString
+    /// 								# REQUIRED
+    /// 								name = $someString
+    /// 							}
+    /// 							# REQUIRED
+    /// 							networkDeviceInfo = @{
+    /// 								# REQUIRED
+    /// 								key = $someInt
+    /// 								# REQUIRED
+    /// 								name = $someString
+    /// 							}
+    /// 						}
+    /// 					)
+    /// 					# OPTIONAL
     /// 					shouldUseHotAddProxy = $someBoolean
-    /// 					# OPTIONAL
-    /// 					folderId = $someString
-    /// 					# OPTIONAL
-    /// 					contentLibraryId = $someString
-    /// 					# OPTIONAL
-    /// 					shouldConvertToTemplate = $someBoolean
-    /// 					# REQUIRED
-    /// 					datastoreId = $someString
     /// 					# OPTIONAL
     /// 					mountExportSnapshotJobCommonOptionsV2 = @{
     /// 						# OPTIONAL
@@ -149,30 +152,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						snapshotId = $someString
     /// 					}
     /// 					# OPTIONAL
-    /// 					vNicBindings = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							backingNetworkInfo = @{
-    /// 								# REQUIRED
-    /// 								moid = $someString
-    /// 								# REQUIRED
-    /// 								name = $someString
-    /// 							}
-    /// 							# REQUIRED
-    /// 							networkDeviceInfo = @{
-    /// 								# REQUIRED
-    /// 								key = $someInt
-    /// 								# REQUIRED
-    /// 								name = $someString
-    /// 							}
-    /// 						}
-    /// 					)
+    /// 					folderId = $someString
+    /// 					# OPTIONAL
+    /// 					contentLibraryId = $someString
+    /// 					# OPTIONAL
+    /// 					shouldConvertToTemplate = $someBoolean
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -209,18 +209,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				config = @{
     /// 					# OPTIONAL
     /// 					clusterId = $someString
+    /// 					# OPTIONAL
+    /// 					diskDeviceKeyToStorageId = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							deviceKey = $someInt
+    /// 							# OPTIONAL
+    /// 							storageLocationId = $someString
+    /// 						}
+    /// 					)
     /// 					# OPTIONAL
     /// 					hostId = $someString
     /// 					# OPTIONAL
@@ -234,18 +235,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					unregisterVm = $someBoolean
     /// 					# OPTIONAL
-    /// 					folderId = $someString
-    /// 					# OPTIONAL
-    /// 					contentLibraryId = $someString
-    /// 					# OPTIONAL
-    /// 					shouldConvertToTemplate = $someBoolean
-    /// 					# OPTIONAL
-    /// 					diskDeviceKeyToStorageId = @(
+    /// 					vNicBindings = @(
     /// 						@{
-    /// 							# OPTIONAL
-    /// 							storageLocationId = $someString
     /// 							# REQUIRED
-    /// 							deviceKey = $someInt
+    /// 							backingNetworkInfo = @{
+    /// 								# REQUIRED
+    /// 								moid = $someString
+    /// 								# REQUIRED
+    /// 								name = $someString
+    /// 							}
+    /// 							# REQUIRED
+    /// 							networkDeviceInfo = @{
+    /// 								# REQUIRED
+    /// 								key = $someInt
+    /// 								# REQUIRED
+    /// 								name = $someString
+    /// 							}
     /// 						}
     /// 					)
     /// 					# OPTIONAL
@@ -269,27 +274,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						snapshotId = $someString
     /// 					}
     /// 					# OPTIONAL
-    /// 					vNicBindings = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							backingNetworkInfo = @{
-    /// 								# REQUIRED
-    /// 								moid = $someString
-    /// 								# REQUIRED
-    /// 								name = $someString
-    /// 							}
-    /// 							# REQUIRED
-    /// 							networkDeviceInfo = @{
-    /// 								# REQUIRED
-    /// 								key = $someInt
-    /// 								# REQUIRED
-    /// 								name = $someString
-    /// 							}
-    /// 						}
-    /// 					)
+    /// 					folderId = $someString
+    /// 					# OPTIONAL
+    /// 					contentLibraryId = $someString
+    /// 					# OPTIONAL
+    /// 					shouldConvertToTemplate = $someBoolean
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -323,24 +323,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				config = @{
     /// 					# OPTIONAL
     /// 					shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
-    /// 					# OPTIONAL
-    /// 					shouldPowerOn = $someBoolean
     /// 					# OPTIONAL
     /// 					requiredRecoveryParameters = @{
     /// 						# OPTIONAL
@@ -348,12 +338,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						# OPTIONAL
     /// 						snapshotId = $someString
     /// 					}
+    /// 					# OPTIONAL
+    /// 					shouldPowerOn = $someBoolean
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -384,9 +384,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	location = $someDeleteVmwareSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVmwareSnapshotRequestLocation]) for enum values.
-    /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	location = $someDeleteVmwareSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVmwareSnapshotRequestLocation]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -531,6 +531,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		datastoreId = $someString
     /// 		# OPTIONAL
     /// 		hostId = $someString
     /// 		# OPTIONAL
@@ -542,15 +544,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		resourcePoolId = $someString
     /// 		# OPTIONAL
+    /// 		vNicBindings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				backingNetworkInfo = @{
+    /// 					# REQUIRED
+    /// 					moid = $someString
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				networkDeviceInfo = @{
+    /// 					# REQUIRED
+    /// 					key = $someInt
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		shouldUseHotAddProxy = $someBoolean
-    /// 		# OPTIONAL
-    /// 		folderId = $someString
-    /// 		# OPTIONAL
-    /// 		contentLibraryId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldConvertToTemplate = $someBoolean
-    /// 		# REQUIRED
-    /// 		datastoreId = $someString
     /// 		# OPTIONAL
     /// 		mountExportSnapshotJobCommonOptionsV2 = @{
     /// 			# OPTIONAL
@@ -572,24 +585,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		vNicBindings = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				backingNetworkInfo = @{
-    /// 					# REQUIRED
-    /// 					moid = $someString
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 				# REQUIRED
-    /// 				networkDeviceInfo = @{
-    /// 					# REQUIRED
-    /// 					key = $someInt
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 			}
-    /// 		)
+    /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		contentLibraryId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldConvertToTemplate = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -627,6 +627,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		clusterId = $someString
     /// 		# OPTIONAL
+    /// 		diskDeviceKeyToStorageId = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				deviceKey = $someInt
+    /// 				# OPTIONAL
+    /// 				storageLocationId = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		hostId = $someString
     /// 		# OPTIONAL
     /// 		resourcePoolId = $someString
@@ -639,18 +648,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		unregisterVm = $someBoolean
     /// 		# OPTIONAL
-    /// 		folderId = $someString
-    /// 		# OPTIONAL
-    /// 		contentLibraryId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldConvertToTemplate = $someBoolean
-    /// 		# OPTIONAL
-    /// 		diskDeviceKeyToStorageId = @(
+    /// 		vNicBindings = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				storageLocationId = $someString
     /// 				# REQUIRED
-    /// 				deviceKey = $someInt
+    /// 				backingNetworkInfo = @{
+    /// 					# REQUIRED
+    /// 					moid = $someString
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				networkDeviceInfo = @{
+    /// 					# REQUIRED
+    /// 					key = $someInt
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -674,24 +687,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		vNicBindings = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				backingNetworkInfo = @{
-    /// 					# REQUIRED
-    /// 					moid = $someString
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 				# REQUIRED
-    /// 				networkDeviceInfo = @{
-    /// 					# REQUIRED
-    /// 					key = $someInt
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 			}
-    /// 		)
+    /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		contentLibraryId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldConvertToTemplate = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -726,6 +726,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		datastoreId = $someString
     /// 		# OPTIONAL
     /// 		hostId = $someString
     /// 		# OPTIONAL
@@ -737,15 +739,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		resourcePoolId = $someString
     /// 		# OPTIONAL
+    /// 		vNicBindings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				backingNetworkInfo = @{
+    /// 					# REQUIRED
+    /// 					moid = $someString
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				networkDeviceInfo = @{
+    /// 					# REQUIRED
+    /// 					key = $someInt
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		shouldUseHotAddProxy = $someBoolean
-    /// 		# OPTIONAL
-    /// 		folderId = $someString
-    /// 		# OPTIONAL
-    /// 		contentLibraryId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldConvertToTemplate = $someBoolean
-    /// 		# REQUIRED
-    /// 		datastoreId = $someString
     /// 		# OPTIONAL
     /// 		mountExportSnapshotJobCommonOptionsV2 = @{
     /// 			# OPTIONAL
@@ -767,24 +780,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		vNicBindings = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				backingNetworkInfo = @{
-    /// 					# REQUIRED
-    /// 					moid = $someString
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 				# REQUIRED
-    /// 				networkDeviceInfo = @{
-    /// 					# REQUIRED
-    /// 					key = $someInt
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 			}
-    /// 		)
+    /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		contentLibraryId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldConvertToTemplate = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -818,18 +818,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				config = @{
     /// 					# OPTIONAL
@@ -845,36 +837,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					resourcePoolId = $someString
     /// 					# OPTIONAL
-    /// 					shouldMigrateImmediately = $someBoolean
-    /// 					# OPTIONAL
-    /// 					migrationConfig = @{
-    /// 						# OPTIONAL
-    /// 						storageLocationId = $someString
-    /// 						# OPTIONAL
-    /// 						computeClusterId = $someString
-    /// 						# OPTIONAL
-    /// 						hostId = $someString
-    /// 						# OPTIONAL
-    /// 						resourcePoolId = $someString
-    /// 						# OPTIONAL
-    /// 						diskDeviceKeyToStorageId = @(
-    /// 							@{
-    /// 								# OPTIONAL
-    /// 								storageLocationId = $someString
+    /// 					vNicBindings = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							backingNetworkInfo = @{
     /// 								# REQUIRED
-    /// 								deviceKey = $someInt
+    /// 								moid = $someString
+    /// 								# REQUIRED
+    /// 								name = $someString
     /// 							}
-    /// 						)
-    /// 						# OPTIONAL
-    /// 						networkDeviceKeyToNetworkName = @(
-    /// 							@{
+    /// 							# REQUIRED
+    /// 							networkDeviceInfo = @{
     /// 								# REQUIRED
-    /// 								deviceKey = $someInt
+    /// 								key = $someInt
     /// 								# REQUIRED
-    /// 								networkName = $someString
+    /// 								name = $someString
     /// 							}
-    /// 						)
-    /// 					}
+    /// 						}
+    /// 					)
     /// 					# OPTIONAL
     /// 					mountExportSnapshotJobCommonOptionsV2 = @{
     /// 						# OPTIONAL
@@ -896,30 +876,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						snapshotId = $someString
     /// 					}
     /// 					# OPTIONAL
-    /// 					vNicBindings = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							backingNetworkInfo = @{
+    /// 					migrationConfig = @{
+    /// 						# OPTIONAL
+    /// 						diskDeviceKeyToStorageId = @(
+    /// 							@{
     /// 								# REQUIRED
-    /// 								moid = $someString
-    /// 								# REQUIRED
-    /// 								name = $someString
+    /// 								deviceKey = $someInt
+    /// 								# OPTIONAL
+    /// 								storageLocationId = $someString
     /// 							}
-    /// 							# REQUIRED
-    /// 							networkDeviceInfo = @{
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						storageLocationId = $someString
+    /// 						# OPTIONAL
+    /// 						computeClusterId = $someString
+    /// 						# OPTIONAL
+    /// 						hostId = $someString
+    /// 						# OPTIONAL
+    /// 						networkDeviceKeyToNetworkName = @(
+    /// 							@{
     /// 								# REQUIRED
-    /// 								key = $someInt
+    /// 								deviceKey = $someInt
     /// 								# REQUIRED
-    /// 								name = $someString
+    /// 								networkName = $someString
     /// 							}
-    /// 						}
-    /// 					)
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						resourcePoolId = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					shouldMigrateImmediately = $someBoolean
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -950,20 +950,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				config = @{
     /// 					# OPTIONAL
@@ -981,30 +971,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					resourcePoolId = $someString
     /// 					# OPTIONAL
-    /// 					shouldMigrateImmediately = $someBoolean
-    /// 					# OPTIONAL
-    /// 					folderId = $someString
-    /// 					# OPTIONAL
-    /// 					unmountTimeOpt = $someInt64
+    /// 					vNicBindings = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							backingNetworkInfo = @{
+    /// 								# REQUIRED
+    /// 								moid = $someString
+    /// 								# REQUIRED
+    /// 								name = $someString
+    /// 							}
+    /// 							# REQUIRED
+    /// 							networkDeviceInfo = @{
+    /// 								# REQUIRED
+    /// 								key = $someInt
+    /// 								# REQUIRED
+    /// 								name = $someString
+    /// 							}
+    /// 						}
+    /// 					)
     /// 					# OPTIONAL
     /// 					migrationConfig = @{
+    /// 						# OPTIONAL
+    /// 						diskDeviceKeyToStorageId = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								deviceKey = $someInt
+    /// 								# OPTIONAL
+    /// 								storageLocationId = $someString
+    /// 							}
+    /// 						)
     /// 						# OPTIONAL
     /// 						storageLocationId = $someString
     /// 						# OPTIONAL
     /// 						computeClusterId = $someString
     /// 						# OPTIONAL
     /// 						hostId = $someString
-    /// 						# OPTIONAL
-    /// 						resourcePoolId = $someString
-    /// 						# OPTIONAL
-    /// 						diskDeviceKeyToStorageId = @(
-    /// 							@{
-    /// 								# OPTIONAL
-    /// 								storageLocationId = $someString
-    /// 								# REQUIRED
-    /// 								deviceKey = $someInt
-    /// 							}
-    /// 						)
     /// 						# OPTIONAL
     /// 						networkDeviceKeyToNetworkName = @(
     /// 							@{
@@ -1014,7 +1015,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 								networkName = $someString
     /// 							}
     /// 						)
+    /// 						# OPTIONAL
+    /// 						resourcePoolId = $someString
     /// 					}
+    /// 					# OPTIONAL
+    /// 					shouldMigrateImmediately = $someBoolean
     /// 					# OPTIONAL
     /// 					mountExportSnapshotJobCommonOptionsV2 = @{
     /// 						# OPTIONAL
@@ -1036,30 +1041,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						snapshotId = $someString
     /// 					}
     /// 					# OPTIONAL
-    /// 					vNicBindings = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							backingNetworkInfo = @{
-    /// 								# REQUIRED
-    /// 								moid = $someString
-    /// 								# REQUIRED
-    /// 								name = $someString
-    /// 							}
-    /// 							# REQUIRED
-    /// 							networkDeviceInfo = @{
-    /// 								# REQUIRED
-    /// 								key = $someInt
-    /// 								# REQUIRED
-    /// 								name = $someString
-    /// 							}
-    /// 						}
-    /// 					)
+    /// 					folderId = $someString
+    /// 					# OPTIONAL
+    /// 					unmountTimeOpt = $someInt64
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1138,14 +1138,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
     /// 		# OPTIONAL
-    /// 		shouldPowerOn = $someBoolean
-    /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
     /// 			# OPTIONAL
     /// 			recoveryPoint = $someDateTime
     /// 			# OPTIONAL
     /// 			snapshotId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldPowerOn = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1193,36 +1193,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		resourcePoolId = $someString
     /// 		# OPTIONAL
-    /// 		shouldMigrateImmediately = $someBoolean
-    /// 		# OPTIONAL
-    /// 		migrationConfig = @{
-    /// 			# OPTIONAL
-    /// 			storageLocationId = $someString
-    /// 			# OPTIONAL
-    /// 			computeClusterId = $someString
-    /// 			# OPTIONAL
-    /// 			hostId = $someString
-    /// 			# OPTIONAL
-    /// 			resourcePoolId = $someString
-    /// 			# OPTIONAL
-    /// 			diskDeviceKeyToStorageId = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					storageLocationId = $someString
+    /// 		vNicBindings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				backingNetworkInfo = @{
     /// 					# REQUIRED
-    /// 					deviceKey = $someInt
+    /// 					moid = $someString
+    /// 					# REQUIRED
+    /// 					name = $someString
     /// 				}
-    /// 			)
-    /// 			# OPTIONAL
-    /// 			networkDeviceKeyToNetworkName = @(
-    /// 				@{
+    /// 				# REQUIRED
+    /// 				networkDeviceInfo = @{
     /// 					# REQUIRED
-    /// 					deviceKey = $someInt
+    /// 					key = $someInt
     /// 					# REQUIRED
-    /// 					networkName = $someString
+    /// 					name = $someString
     /// 				}
-    /// 			)
-    /// 		}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		mountExportSnapshotJobCommonOptionsV2 = @{
     /// 			# OPTIONAL
@@ -1244,24 +1232,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		vNicBindings = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				backingNetworkInfo = @{
+    /// 		migrationConfig = @{
+    /// 			# OPTIONAL
+    /// 			diskDeviceKeyToStorageId = @(
+    /// 				@{
     /// 					# REQUIRED
-    /// 					moid = $someString
-    /// 					# REQUIRED
-    /// 					name = $someString
+    /// 					deviceKey = $someInt
+    /// 					# OPTIONAL
+    /// 					storageLocationId = $someString
     /// 				}
-    /// 				# REQUIRED
-    /// 				networkDeviceInfo = @{
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			storageLocationId = $someString
+    /// 			# OPTIONAL
+    /// 			computeClusterId = $someString
+    /// 			# OPTIONAL
+    /// 			hostId = $someString
+    /// 			# OPTIONAL
+    /// 			networkDeviceKeyToNetworkName = @(
+    /// 				@{
     /// 					# REQUIRED
-    /// 					key = $someInt
+    /// 					deviceKey = $someInt
     /// 					# REQUIRED
-    /// 					name = $someString
+    /// 					networkName = $someString
     /// 				}
-    /// 			}
-    /// 		)
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			resourcePoolId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldMigrateImmediately = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1311,30 +1311,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		resourcePoolId = $someString
     /// 		# OPTIONAL
-    /// 		shouldMigrateImmediately = $someBoolean
-    /// 		# OPTIONAL
-    /// 		folderId = $someString
-    /// 		# OPTIONAL
-    /// 		unmountTimeOpt = $someInt64
+    /// 		vNicBindings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				backingNetworkInfo = @{
+    /// 					# REQUIRED
+    /// 					moid = $someString
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				networkDeviceInfo = @{
+    /// 					# REQUIRED
+    /// 					key = $someInt
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 				}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		migrationConfig = @{
+    /// 			# OPTIONAL
+    /// 			diskDeviceKeyToStorageId = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					deviceKey = $someInt
+    /// 					# OPTIONAL
+    /// 					storageLocationId = $someString
+    /// 				}
+    /// 			)
     /// 			# OPTIONAL
     /// 			storageLocationId = $someString
     /// 			# OPTIONAL
     /// 			computeClusterId = $someString
     /// 			# OPTIONAL
     /// 			hostId = $someString
-    /// 			# OPTIONAL
-    /// 			resourcePoolId = $someString
-    /// 			# OPTIONAL
-    /// 			diskDeviceKeyToStorageId = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					storageLocationId = $someString
-    /// 					# REQUIRED
-    /// 					deviceKey = $someInt
-    /// 				}
-    /// 			)
     /// 			# OPTIONAL
     /// 			networkDeviceKeyToNetworkName = @(
     /// 				@{
@@ -1344,7 +1355,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					networkName = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			resourcePoolId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldMigrateImmediately = $someBoolean
     /// 		# OPTIONAL
     /// 		mountExportSnapshotJobCommonOptionsV2 = @{
     /// 			# OPTIONAL
@@ -1366,24 +1381,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			snapshotId = $someString
     /// 		}
     /// 		# OPTIONAL
-    /// 		vNicBindings = @(
-    /// 			@{
-    /// 				# REQUIRED
-    /// 				backingNetworkInfo = @{
-    /// 					# REQUIRED
-    /// 					moid = $someString
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 				# REQUIRED
-    /// 				networkDeviceInfo = @{
-    /// 					# REQUIRED
-    /// 					key = $someInt
-    /// 					# REQUIRED
-    /// 					name = $someString
-    /// 				}
-    /// 			}
-    /// 		)
+    /// 		folderId = $someString
+    /// 		# OPTIONAL
+    /// 		unmountTimeOpt = $someInt64
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1495,22 +1495,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		diskDeviceKeyToStorageId = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				deviceKey = $someInt
+    /// 				# OPTIONAL
+    /// 				storageLocationId = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		storageLocationId = $someString
     /// 		# OPTIONAL
     /// 		computeClusterId = $someString
     /// 		# OPTIONAL
     /// 		hostId = $someString
-    /// 		# OPTIONAL
-    /// 		resourcePoolId = $someString
-    /// 		# OPTIONAL
-    /// 		diskDeviceKeyToStorageId = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				storageLocationId = $someString
-    /// 				# REQUIRED
-    /// 				deviceKey = $someInt
-    /// 			}
-    /// 		)
     /// 		# OPTIONAL
     /// 		networkDeviceKeyToNetworkName = @(
     /// 			@{
@@ -1520,6 +1518,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				networkName = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		resourcePoolId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1554,10 +1554,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		shouldForce = $someBoolean
     /// 		# REQUIRED
     /// 		powerStatus = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldForce = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1665,6 +1665,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		password = $someString
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				restorePathPair = @{
+    /// 					# REQUIRED
+    /// 					path = $someString
+    /// 					# OPTIONAL
+    /// 					restorePath = $someString
+    /// 				}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		shouldSaveCredentials = $someBoolean
     /// 		# OPTIONAL
@@ -1681,18 +1693,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		description = $someString
     /// 		# OPTIONAL
     /// 		shouldUseMountDisks = $someBoolean
-    /// 		# REQUIRED
-    /// 		restoreConfig = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				restorePathPair = @{
-    /// 					# OPTIONAL
-    /// 					restorePath = $someString
-    /// 					# REQUIRED
-    /// 					path = $someString
-    /// 				}
-    /// 			}
-    /// 		)
     /// 	}
     /// 	# OPTIONAL
     /// 	deltaRequest = @{
@@ -1801,15 +1801,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	vmUpdateProperties = @{
-    /// 		# OPTIONAL
-    /// 		shouldRefreshCacheAfterUpdate = $someBoolean
-    /// 		# OPTIONAL
-    /// 		guestCredentialId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldUseAgent = $someBoolean
     /// 		# OPTIONAL
     /// 		guestCredential = @{
     /// 			# REQUIRED
@@ -1818,7 +1810,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			username = $someString
     /// 		}
     /// 		# OPTIONAL
+    /// 		shouldRefreshCacheAfterUpdate = $someBoolean
+    /// 		# OPTIONAL
+    /// 		guestCredentialId = $someString
+    /// 		# OPTIONAL
     /// 		virtualMachineUpdate = @{
+    /// 			# OPTIONAL
+    /// 			cloudInstantiationSpec = @{
+    /// 				# REQUIRED
+    /// 				imageRetentionInSeconds = $someInt64
+    /// 			}
     /// 			# OPTIONAL
     /// 			configuredSlaDomainId = $someString
     /// 			# OPTIONAL
@@ -1827,15 +1828,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isVmPaused = $someBoolean
     /// 			# OPTIONAL
     /// 			maxNestedVsphereSnapshots = $someInt
-    /// 			# OPTIONAL
-    /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
-    /// 			# OPTIONAL
-    /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
-    /// 			# OPTIONAL
-    /// 			cloudInstantiationSpec = @{
-    /// 				# REQUIRED
-    /// 				imageRetentionInSeconds = $someInt64
-    /// 			}
     /// 			# OPTIONAL
     /// 			postBackupScript = @{
     /// 				# REQUIRED
@@ -1864,6 +1856,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				timeoutMs = $someInt64
     /// 			}
     /// 			# OPTIONAL
+    /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
+    /// 			# OPTIONAL
     /// 			throttlingSettings = @{
     /// 				# OPTIONAL
     /// 				cpuUtilizationThreshold = $someInt
@@ -1872,8 +1866,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				ioLatencyThreshold = $someInt
     /// 			}
+    /// 			# OPTIONAL
+    /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUseAgent = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2322,22 +2322,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				config = @{
+					# REQUIRED
+					datastoreId = $someString
 					# OPTIONAL
 					hostId = $someString
 					# OPTIONAL
@@ -2349,15 +2341,26 @@ $query.Var.input = @{
 					# OPTIONAL
 					resourcePoolId = $someString
 					# OPTIONAL
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = $someString
+								# REQUIRED
+								name = $someString
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = $someInt
+								# REQUIRED
+								name = $someString
+							}
+						}
+					)
+					# OPTIONAL
 					shouldUseHotAddProxy = $someBoolean
-					# OPTIONAL
-					folderId = $someString
-					# OPTIONAL
-					contentLibraryId = $someString
-					# OPTIONAL
-					shouldConvertToTemplate = $someBoolean
-					# REQUIRED
-					datastoreId = $someString
 					# OPTIONAL
 					mountExportSnapshotJobCommonOptionsV2 = @{
 						# OPTIONAL
@@ -2379,30 +2382,27 @@ $query.Var.input = @{
 						snapshotId = $someString
 					}
 					# OPTIONAL
-					vNicBindings = @(
-						@{
-							# REQUIRED
-							backingNetworkInfo = @{
-								# REQUIRED
-								moid = $someString
-								# REQUIRED
-								name = $someString
-							}
-							# REQUIRED
-							networkDeviceInfo = @{
-								# REQUIRED
-								key = $someInt
-								# REQUIRED
-								name = $someString
-							}
-						}
-					)
+					folderId = $someString
+					# OPTIONAL
+					contentLibraryId = $someString
+					# OPTIONAL
+					shouldConvertToTemplate = $someBoolean
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -2431,18 +2431,19 @@ $query.Var.input = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				config = @{
 					# OPTIONAL
 					clusterId = $someString
+					# OPTIONAL
+					diskDeviceKeyToStorageId = @(
+						@{
+							# REQUIRED
+							deviceKey = $someInt
+							# OPTIONAL
+							storageLocationId = $someString
+						}
+					)
 					# OPTIONAL
 					hostId = $someString
 					# OPTIONAL
@@ -2456,18 +2457,22 @@ $query.Var.input = @{
 					# OPTIONAL
 					unregisterVm = $someBoolean
 					# OPTIONAL
-					folderId = $someString
-					# OPTIONAL
-					contentLibraryId = $someString
-					# OPTIONAL
-					shouldConvertToTemplate = $someBoolean
-					# OPTIONAL
-					diskDeviceKeyToStorageId = @(
+					vNicBindings = @(
 						@{
-							# OPTIONAL
-							storageLocationId = $someString
 							# REQUIRED
-							deviceKey = $someInt
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = $someString
+								# REQUIRED
+								name = $someString
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = $someInt
+								# REQUIRED
+								name = $someString
+							}
 						}
 					)
 					# OPTIONAL
@@ -2491,27 +2496,22 @@ $query.Var.input = @{
 						snapshotId = $someString
 					}
 					# OPTIONAL
-					vNicBindings = @(
-						@{
-							# REQUIRED
-							backingNetworkInfo = @{
-								# REQUIRED
-								moid = $someString
-								# REQUIRED
-								name = $someString
-							}
-							# REQUIRED
-							networkDeviceInfo = @{
-								# REQUIRED
-								key = $someInt
-								# REQUIRED
-								name = $someString
-							}
-						}
-					)
+					folderId = $someString
+					# OPTIONAL
+					contentLibraryId = $someString
+					# OPTIONAL
+					shouldConvertToTemplate = $someBoolean
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
@@ -2537,24 +2537,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
 				# REQUIRED
 				config = @{
 					# OPTIONAL
 					shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
-					# OPTIONAL
-					shouldPowerOn = $someBoolean
 					# OPTIONAL
 					requiredRecoveryParameters = @{
 						# OPTIONAL
@@ -2562,12 +2552,22 @@ $query.Var.input = @{
 						# OPTIONAL
 						snapshotId = $someString
 					}
+					# OPTIONAL
+					shouldPowerOn = $someBoolean
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -2590,9 +2590,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	location = $someDeleteVmwareSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVmwareSnapshotRequestLocation]) for enum values.
-	# REQUIRED
 	id = $someString
+	# REQUIRED
+	location = $someDeleteVmwareSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeleteVmwareSnapshotRequestLocation]) for enum values.
 }"
             );
         }
@@ -2705,6 +2705,8 @@ $query.Var.input = @(
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		datastoreId = $someString
 		# OPTIONAL
 		hostId = $someString
 		# OPTIONAL
@@ -2716,15 +2718,26 @@ $query.Var.input = @{
 		# OPTIONAL
 		resourcePoolId = $someString
 		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = $someString
+					# REQUIRED
+					name = $someString
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = $someInt
+					# REQUIRED
+					name = $someString
+				}
+			}
+		)
+		# OPTIONAL
 		shouldUseHotAddProxy = $someBoolean
-		# OPTIONAL
-		folderId = $someString
-		# OPTIONAL
-		contentLibraryId = $someString
-		# OPTIONAL
-		shouldConvertToTemplate = $someBoolean
-		# REQUIRED
-		datastoreId = $someString
 		# OPTIONAL
 		mountExportSnapshotJobCommonOptionsV2 = @{
 			# OPTIONAL
@@ -2746,24 +2759,11 @@ $query.Var.input = @{
 			snapshotId = $someString
 		}
 		# OPTIONAL
-		vNicBindings = @(
-			@{
-				# REQUIRED
-				backingNetworkInfo = @{
-					# REQUIRED
-					moid = $someString
-					# REQUIRED
-					name = $someString
-				}
-				# REQUIRED
-				networkDeviceInfo = @{
-					# REQUIRED
-					key = $someInt
-					# REQUIRED
-					name = $someString
-				}
-			}
-		)
+		folderId = $someString
+		# OPTIONAL
+		contentLibraryId = $someString
+		# OPTIONAL
+		shouldConvertToTemplate = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2793,6 +2793,15 @@ $query.Var.input = @{
 		# OPTIONAL
 		clusterId = $someString
 		# OPTIONAL
+		diskDeviceKeyToStorageId = @(
+			@{
+				# REQUIRED
+				deviceKey = $someInt
+				# OPTIONAL
+				storageLocationId = $someString
+			}
+		)
+		# OPTIONAL
 		hostId = $someString
 		# OPTIONAL
 		resourcePoolId = $someString
@@ -2805,18 +2814,22 @@ $query.Var.input = @{
 		# OPTIONAL
 		unregisterVm = $someBoolean
 		# OPTIONAL
-		folderId = $someString
-		# OPTIONAL
-		contentLibraryId = $someString
-		# OPTIONAL
-		shouldConvertToTemplate = $someBoolean
-		# OPTIONAL
-		diskDeviceKeyToStorageId = @(
+		vNicBindings = @(
 			@{
-				# OPTIONAL
-				storageLocationId = $someString
 				# REQUIRED
-				deviceKey = $someInt
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = $someString
+					# REQUIRED
+					name = $someString
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = $someInt
+					# REQUIRED
+					name = $someString
+				}
 			}
 		)
 		# OPTIONAL
@@ -2840,24 +2853,11 @@ $query.Var.input = @{
 			snapshotId = $someString
 		}
 		# OPTIONAL
-		vNicBindings = @(
-			@{
-				# REQUIRED
-				backingNetworkInfo = @{
-					# REQUIRED
-					moid = $someString
-					# REQUIRED
-					name = $someString
-				}
-				# REQUIRED
-				networkDeviceInfo = @{
-					# REQUIRED
-					key = $someInt
-					# REQUIRED
-					name = $someString
-				}
-			}
-		)
+		folderId = $someString
+		# OPTIONAL
+		contentLibraryId = $someString
+		# OPTIONAL
+		shouldConvertToTemplate = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2884,6 +2884,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		datastoreId = $someString
 		# OPTIONAL
 		hostId = $someString
 		# OPTIONAL
@@ -2895,15 +2897,26 @@ $query.Var.input = @{
 		# OPTIONAL
 		resourcePoolId = $someString
 		# OPTIONAL
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = $someString
+					# REQUIRED
+					name = $someString
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = $someInt
+					# REQUIRED
+					name = $someString
+				}
+			}
+		)
+		# OPTIONAL
 		shouldUseHotAddProxy = $someBoolean
-		# OPTIONAL
-		folderId = $someString
-		# OPTIONAL
-		contentLibraryId = $someString
-		# OPTIONAL
-		shouldConvertToTemplate = $someBoolean
-		# REQUIRED
-		datastoreId = $someString
 		# OPTIONAL
 		mountExportSnapshotJobCommonOptionsV2 = @{
 			# OPTIONAL
@@ -2925,24 +2938,11 @@ $query.Var.input = @{
 			snapshotId = $someString
 		}
 		# OPTIONAL
-		vNicBindings = @(
-			@{
-				# REQUIRED
-				backingNetworkInfo = @{
-					# REQUIRED
-					moid = $someString
-					# REQUIRED
-					name = $someString
-				}
-				# REQUIRED
-				networkDeviceInfo = @{
-					# REQUIRED
-					key = $someInt
-					# REQUIRED
-					name = $someString
-				}
-			}
-		)
+		folderId = $someString
+		# OPTIONAL
+		contentLibraryId = $someString
+		# OPTIONAL
+		shouldConvertToTemplate = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2968,18 +2968,10 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
 				# REQUIRED
 				config = @{
 					# OPTIONAL
@@ -2995,36 +2987,24 @@ $query.Var.input = @{
 					# OPTIONAL
 					resourcePoolId = $someString
 					# OPTIONAL
-					shouldMigrateImmediately = $someBoolean
-					# OPTIONAL
-					migrationConfig = @{
-						# OPTIONAL
-						storageLocationId = $someString
-						# OPTIONAL
-						computeClusterId = $someString
-						# OPTIONAL
-						hostId = $someString
-						# OPTIONAL
-						resourcePoolId = $someString
-						# OPTIONAL
-						diskDeviceKeyToStorageId = @(
-							@{
-								# OPTIONAL
-								storageLocationId = $someString
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
 								# REQUIRED
-								deviceKey = $someInt
+								moid = $someString
+								# REQUIRED
+								name = $someString
 							}
-						)
-						# OPTIONAL
-						networkDeviceKeyToNetworkName = @(
-							@{
+							# REQUIRED
+							networkDeviceInfo = @{
 								# REQUIRED
-								deviceKey = $someInt
+								key = $someInt
 								# REQUIRED
-								networkName = $someString
+								name = $someString
 							}
-						)
-					}
+						}
+					)
 					# OPTIONAL
 					mountExportSnapshotJobCommonOptionsV2 = @{
 						# OPTIONAL
@@ -3046,30 +3026,50 @@ $query.Var.input = @{
 						snapshotId = $someString
 					}
 					# OPTIONAL
-					vNicBindings = @(
-						@{
-							# REQUIRED
-							backingNetworkInfo = @{
+					migrationConfig = @{
+						# OPTIONAL
+						diskDeviceKeyToStorageId = @(
+							@{
 								# REQUIRED
-								moid = $someString
-								# REQUIRED
-								name = $someString
+								deviceKey = $someInt
+								# OPTIONAL
+								storageLocationId = $someString
 							}
-							# REQUIRED
-							networkDeviceInfo = @{
+						)
+						# OPTIONAL
+						storageLocationId = $someString
+						# OPTIONAL
+						computeClusterId = $someString
+						# OPTIONAL
+						hostId = $someString
+						# OPTIONAL
+						networkDeviceKeyToNetworkName = @(
+							@{
 								# REQUIRED
-								key = $someInt
+								deviceKey = $someInt
 								# REQUIRED
-								name = $someString
+								networkName = $someString
 							}
-						}
-					)
+						)
+						# OPTIONAL
+						resourcePoolId = $someString
+					}
+					# OPTIONAL
+					shouldMigrateImmediately = $someBoolean
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -3092,20 +3092,10 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				config = @{
 					# OPTIONAL
@@ -3123,30 +3113,41 @@ $query.Var.input = @{
 					# OPTIONAL
 					resourcePoolId = $someString
 					# OPTIONAL
-					shouldMigrateImmediately = $someBoolean
-					# OPTIONAL
-					folderId = $someString
-					# OPTIONAL
-					unmountTimeOpt = $someInt64
+					vNicBindings = @(
+						@{
+							# REQUIRED
+							backingNetworkInfo = @{
+								# REQUIRED
+								moid = $someString
+								# REQUIRED
+								name = $someString
+							}
+							# REQUIRED
+							networkDeviceInfo = @{
+								# REQUIRED
+								key = $someInt
+								# REQUIRED
+								name = $someString
+							}
+						}
+					)
 					# OPTIONAL
 					migrationConfig = @{
+						# OPTIONAL
+						diskDeviceKeyToStorageId = @(
+							@{
+								# REQUIRED
+								deviceKey = $someInt
+								# OPTIONAL
+								storageLocationId = $someString
+							}
+						)
 						# OPTIONAL
 						storageLocationId = $someString
 						# OPTIONAL
 						computeClusterId = $someString
 						# OPTIONAL
 						hostId = $someString
-						# OPTIONAL
-						resourcePoolId = $someString
-						# OPTIONAL
-						diskDeviceKeyToStorageId = @(
-							@{
-								# OPTIONAL
-								storageLocationId = $someString
-								# REQUIRED
-								deviceKey = $someInt
-							}
-						)
 						# OPTIONAL
 						networkDeviceKeyToNetworkName = @(
 							@{
@@ -3156,7 +3157,11 @@ $query.Var.input = @{
 								networkName = $someString
 							}
 						)
+						# OPTIONAL
+						resourcePoolId = $someString
 					}
+					# OPTIONAL
+					shouldMigrateImmediately = $someBoolean
 					# OPTIONAL
 					mountExportSnapshotJobCommonOptionsV2 = @{
 						# OPTIONAL
@@ -3178,30 +3183,25 @@ $query.Var.input = @{
 						snapshotId = $someString
 					}
 					# OPTIONAL
-					vNicBindings = @(
-						@{
-							# REQUIRED
-							backingNetworkInfo = @{
-								# REQUIRED
-								moid = $someString
-								# REQUIRED
-								name = $someString
-							}
-							# REQUIRED
-							networkDeviceInfo = @{
-								# REQUIRED
-								key = $someInt
-								# REQUIRED
-								name = $someString
-							}
-						}
-					)
+					folderId = $someString
+					# OPTIONAL
+					unmountTimeOpt = $someInt64
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -3264,14 +3264,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldKeepVsphereSnapshotAfterRecovery = $someBoolean
 		# OPTIONAL
-		shouldPowerOn = $someBoolean
-		# OPTIONAL
 		requiredRecoveryParameters = @{
 			# OPTIONAL
 			recoveryPoint = $someDateTime
 			# OPTIONAL
 			snapshotId = $someString
 		}
+		# OPTIONAL
+		shouldPowerOn = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -3311,36 +3311,24 @@ $query.Var.input = @{
 		# OPTIONAL
 		resourcePoolId = $someString
 		# OPTIONAL
-		shouldMigrateImmediately = $someBoolean
-		# OPTIONAL
-		migrationConfig = @{
-			# OPTIONAL
-			storageLocationId = $someString
-			# OPTIONAL
-			computeClusterId = $someString
-			# OPTIONAL
-			hostId = $someString
-			# OPTIONAL
-			resourcePoolId = $someString
-			# OPTIONAL
-			diskDeviceKeyToStorageId = @(
-				@{
-					# OPTIONAL
-					storageLocationId = $someString
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
 					# REQUIRED
-					deviceKey = $someInt
+					moid = $someString
+					# REQUIRED
+					name = $someString
 				}
-			)
-			# OPTIONAL
-			networkDeviceKeyToNetworkName = @(
-				@{
+				# REQUIRED
+				networkDeviceInfo = @{
 					# REQUIRED
-					deviceKey = $someInt
+					key = $someInt
 					# REQUIRED
-					networkName = $someString
+					name = $someString
 				}
-			)
-		}
+			}
+		)
 		# OPTIONAL
 		mountExportSnapshotJobCommonOptionsV2 = @{
 			# OPTIONAL
@@ -3362,24 +3350,36 @@ $query.Var.input = @{
 			snapshotId = $someString
 		}
 		# OPTIONAL
-		vNicBindings = @(
-			@{
-				# REQUIRED
-				backingNetworkInfo = @{
+		migrationConfig = @{
+			# OPTIONAL
+			diskDeviceKeyToStorageId = @(
+				@{
 					# REQUIRED
-					moid = $someString
-					# REQUIRED
-					name = $someString
+					deviceKey = $someInt
+					# OPTIONAL
+					storageLocationId = $someString
 				}
-				# REQUIRED
-				networkDeviceInfo = @{
+			)
+			# OPTIONAL
+			storageLocationId = $someString
+			# OPTIONAL
+			computeClusterId = $someString
+			# OPTIONAL
+			hostId = $someString
+			# OPTIONAL
+			networkDeviceKeyToNetworkName = @(
+				@{
 					# REQUIRED
-					key = $someInt
+					deviceKey = $someInt
 					# REQUIRED
-					name = $someString
+					networkName = $someString
 				}
-			}
-		)
+			)
+			# OPTIONAL
+			resourcePoolId = $someString
+		}
+		# OPTIONAL
+		shouldMigrateImmediately = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -3421,30 +3421,41 @@ $query.Var.input = @{
 		# OPTIONAL
 		resourcePoolId = $someString
 		# OPTIONAL
-		shouldMigrateImmediately = $someBoolean
-		# OPTIONAL
-		folderId = $someString
-		# OPTIONAL
-		unmountTimeOpt = $someInt64
+		vNicBindings = @(
+			@{
+				# REQUIRED
+				backingNetworkInfo = @{
+					# REQUIRED
+					moid = $someString
+					# REQUIRED
+					name = $someString
+				}
+				# REQUIRED
+				networkDeviceInfo = @{
+					# REQUIRED
+					key = $someInt
+					# REQUIRED
+					name = $someString
+				}
+			}
+		)
 		# OPTIONAL
 		migrationConfig = @{
+			# OPTIONAL
+			diskDeviceKeyToStorageId = @(
+				@{
+					# REQUIRED
+					deviceKey = $someInt
+					# OPTIONAL
+					storageLocationId = $someString
+				}
+			)
 			# OPTIONAL
 			storageLocationId = $someString
 			# OPTIONAL
 			computeClusterId = $someString
 			# OPTIONAL
 			hostId = $someString
-			# OPTIONAL
-			resourcePoolId = $someString
-			# OPTIONAL
-			diskDeviceKeyToStorageId = @(
-				@{
-					# OPTIONAL
-					storageLocationId = $someString
-					# REQUIRED
-					deviceKey = $someInt
-				}
-			)
 			# OPTIONAL
 			networkDeviceKeyToNetworkName = @(
 				@{
@@ -3454,7 +3465,11 @@ $query.Var.input = @{
 					networkName = $someString
 				}
 			)
+			# OPTIONAL
+			resourcePoolId = $someString
 		}
+		# OPTIONAL
+		shouldMigrateImmediately = $someBoolean
 		# OPTIONAL
 		mountExportSnapshotJobCommonOptionsV2 = @{
 			# OPTIONAL
@@ -3476,24 +3491,9 @@ $query.Var.input = @{
 			snapshotId = $someString
 		}
 		# OPTIONAL
-		vNicBindings = @(
-			@{
-				# REQUIRED
-				backingNetworkInfo = @{
-					# REQUIRED
-					moid = $someString
-					# REQUIRED
-					name = $someString
-				}
-				# REQUIRED
-				networkDeviceInfo = @{
-					# REQUIRED
-					key = $someInt
-					# REQUIRED
-					name = $someString
-				}
-			}
-		)
+		folderId = $someString
+		# OPTIONAL
+		unmountTimeOpt = $someInt64
 	}
 	# REQUIRED
 	id = $someString
@@ -3581,22 +3581,20 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# OPTIONAL
+		diskDeviceKeyToStorageId = @(
+			@{
+				# REQUIRED
+				deviceKey = $someInt
+				# OPTIONAL
+				storageLocationId = $someString
+			}
+		)
+		# OPTIONAL
 		storageLocationId = $someString
 		# OPTIONAL
 		computeClusterId = $someString
 		# OPTIONAL
 		hostId = $someString
-		# OPTIONAL
-		resourcePoolId = $someString
-		# OPTIONAL
-		diskDeviceKeyToStorageId = @(
-			@{
-				# OPTIONAL
-				storageLocationId = $someString
-				# REQUIRED
-				deviceKey = $someInt
-			}
-		)
 		# OPTIONAL
 		networkDeviceKeyToNetworkName = @(
 			@{
@@ -3606,6 +3604,8 @@ $query.Var.input = @{
 				networkName = $someString
 			}
 		)
+		# OPTIONAL
+		resourcePoolId = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -3632,10 +3632,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		shouldForce = $someBoolean
 		# REQUIRED
 		powerStatus = $someBoolean
+		# OPTIONAL
+		shouldForce = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -3727,6 +3727,18 @@ $query.Var.input = @{
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		password = $someString
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# REQUIRED
+					path = $someString
+					# OPTIONAL
+					restorePath = $someString
+				}
+			}
+		)
 		# OPTIONAL
 		shouldSaveCredentials = $someBoolean
 		# OPTIONAL
@@ -3743,18 +3755,6 @@ $query.Var.input = @{
 		description = $someString
 		# OPTIONAL
 		shouldUseMountDisks = $someBoolean
-		# REQUIRED
-		restoreConfig = @(
-			@{
-				# OPTIONAL
-				restorePathPair = @{
-					# OPTIONAL
-					restorePath = $someString
-					# REQUIRED
-					path = $someString
-				}
-			}
-		)
 	}
 	# OPTIONAL
 	deltaRequest = @{
@@ -3839,15 +3839,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	vmUpdateProperties = @{
-		# OPTIONAL
-		shouldRefreshCacheAfterUpdate = $someBoolean
-		# OPTIONAL
-		guestCredentialId = $someString
-		# OPTIONAL
-		shouldUseAgent = $someBoolean
 		# OPTIONAL
 		guestCredential = @{
 			# REQUIRED
@@ -3856,7 +3848,16 @@ $query.Var.input = @{
 			username = $someString
 		}
 		# OPTIONAL
+		shouldRefreshCacheAfterUpdate = $someBoolean
+		# OPTIONAL
+		guestCredentialId = $someString
+		# OPTIONAL
 		virtualMachineUpdate = @{
+			# OPTIONAL
+			cloudInstantiationSpec = @{
+				# REQUIRED
+				imageRetentionInSeconds = $someInt64
+			}
 			# OPTIONAL
 			configuredSlaDomainId = $someString
 			# OPTIONAL
@@ -3865,15 +3866,6 @@ $query.Var.input = @{
 			isVmPaused = $someBoolean
 			# OPTIONAL
 			maxNestedVsphereSnapshots = $someInt
-			# OPTIONAL
-			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
-			# OPTIONAL
-			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
-			# OPTIONAL
-			cloudInstantiationSpec = @{
-				# REQUIRED
-				imageRetentionInSeconds = $someInt64
-			}
 			# OPTIONAL
 			postBackupScript = @{
 				# REQUIRED
@@ -3902,6 +3894,8 @@ $query.Var.input = @{
 				timeoutMs = $someInt64
 			}
 			# OPTIONAL
+			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
+			# OPTIONAL
 			throttlingSettings = @{
 				# OPTIONAL
 				cpuUtilizationThreshold = $someInt
@@ -3910,8 +3904,14 @@ $query.Var.input = @{
 				# OPTIONAL
 				ioLatencyThreshold = $someInt
 			}
+			# OPTIONAL
+			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
 		}
+		# OPTIONAL
+		shouldUseAgent = $someBoolean
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

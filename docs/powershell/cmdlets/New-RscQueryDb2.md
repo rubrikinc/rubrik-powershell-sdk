@@ -72,3 +72,13 @@ Connection of all recoverable ranges for Db2.
     - sortBy - Db2RecoverableRangeSortBy: Field to sort Db2 recoverable ranges.
     - filter - Db2RecoverableRangeFilterInput: Field to filter Db2 recoverable ranges.
 - Returns Db2RecoverableRangeConnection.
+### recoverdatabasetoendofbackup
+Recover a Db2 database to the end of the last full backup.
+
+- There is a single argument of type RecoverDb2DatabaseToEndOfBackupInput.
+- Returns AsyncRequestStatus.
+### recoverdatabasetopointintime
+Recover a Db2 database to a specified point in time.
+
+- There is a single argument of type RecoverDb2DatabaseToPointInTimeInput.
+- Returns AsyncRequestStatus.

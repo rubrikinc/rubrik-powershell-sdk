@@ -188,11 +188,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	routeConfig = @{
-    /// 		# OPTIONAL
-    /// 		networkZoneName = $someString
     /// 		# REQUIRED
     /// 		device = $someString
     /// 		# REQUIRED
@@ -201,7 +197,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		netmask = $someString
     /// 		# REQUIRED
     /// 		network = $someString
+    /// 		# OPTIONAL
+    /// 		networkZoneName = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -288,16 +288,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	routeConfig = @{
-    /// 		# OPTIONAL
-    /// 		networkZoneName = $someString
     /// 		# REQUIRED
     /// 		netmask = $someString
     /// 		# REQUIRED
     /// 		network = $someString
+    /// 		# OPTIONAL
+    /// 		networkZoneName = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1647,11 +1647,7 @@ $query.Var.AddClusterNodesInput = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	routeConfig = @{
-		# OPTIONAL
-		networkZoneName = $someString
 		# REQUIRED
 		device = $someString
 		# REQUIRED
@@ -1660,7 +1656,11 @@ $query.Var.input = @{
 		netmask = $someString
 		# REQUIRED
 		network = $someString
+		# OPTIONAL
+		networkZoneName = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1731,16 +1731,16 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	routeConfig = @{
-		# OPTIONAL
-		networkZoneName = $someString
 		# REQUIRED
 		netmask = $someString
 		# REQUIRED
 		network = $someString
+		# OPTIONAL
+		networkZoneName = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

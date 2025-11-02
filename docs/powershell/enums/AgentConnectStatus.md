@@ -1,6 +1,6 @@
 ### AgentConnectStatus
 Supported in v5.0+
-  The agent connection status.
+The agent connection status.
 
 - AGENT_CONNECT_STATUS_CONNECTED
 - AGENT_CONNECT_STATUS_DISCONNECTED

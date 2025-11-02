@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> OracleRecoveryPointInput? RecoveryPoint
+        // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("recoveryPoint")]
+        public OracleRecoveryPointInput? RecoveryPoint { get; set; }
+
         //      C# -> System.Boolean? ShouldMountFilesOnly
         // GraphQL -> shouldMountFilesOnly: Boolean (scalar)
         [JsonProperty("shouldMountFilesOnly")]
@@ -28,6 +35,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetMountPath: String (scalar)
         [JsonProperty("targetMountPath")]
         public System.String? TargetMountPath { get; set; }
+
+        //      C# -> System.String? TargetOracleHostOrRacId
+        // GraphQL -> targetOracleHostOrRacId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetOracleHostOrRacId")]
+        public System.String? TargetOracleHostOrRacId { get; set; }
 
         //      C# -> System.String? AdvancedRecoveryConfigBase64
         // GraphQL -> advancedRecoveryConfigBase64: String (scalar)
@@ -88,20 +102,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldAllowRenameToSource: Boolean (scalar)
         [JsonProperty("shouldAllowRenameToSource")]
         public System.Boolean? ShouldAllowRenameToSource { get; set; }
-
-        //      C# -> OracleRecoveryPointInput? RecoveryPoint
-        // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("recoveryPoint")]
-        public OracleRecoveryPointInput? RecoveryPoint { get; set; }
-
-        //      C# -> System.String? TargetOracleHostOrRacId
-        // GraphQL -> targetOracleHostOrRacId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetOracleHostOrRacId")]
-        public System.String? TargetOracleHostOrRacId { get; set; }
 
 
         #endregion

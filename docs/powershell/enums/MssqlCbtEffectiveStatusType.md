@@ -1,6 +1,6 @@
 ### MssqlCbtEffectiveStatusType
 Supported in v5.0+
-  Effective CBT host status.
+Effective CBT host status.
 
 - MSSQL_CBT_EFFECTIVE_STATUS_TYPE_OFF
 - MSSQL_CBT_EFFECTIVE_STATUS_TYPE_OFF_DEFAULT

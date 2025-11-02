@@ -99,20 +99,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreNodes = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		caCertificateId = $someString
     /// 		# REQUIRED
     /// 		opsManagerApiToken = $someString
     /// 		# REQUIRED
+    /// 		opsManagerGroupId = $someString
+    /// 		# REQUIRED
     /// 		opsManagerClusterId = $someString
     /// 		# REQUIRED
-    /// 		opsManagerGroupId = $someString
+    /// 		sourceName = $someString
     /// 		# REQUIRED
     /// 		opsManagerNodes = @(
     /// 			$someString
     /// 		)
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
+    /// 		# OPTIONAL
+    /// 		caCertificateId = $someString
     /// 	}
     /// }
     /// 
@@ -144,8 +144,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	mongoSourceAddRequestConfig = @{
     /// 		# OPTIONAL
     /// 		caCertfilePath = $someString
@@ -153,20 +151,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreSecondaries = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		sourceDriverPassword = $someString
-    /// 		# OPTIONAL
-    /// 		sourceDriverUser = $someString
-    /// 		# OPTIONAL
-    /// 		sslKeyfilePath = $someString
-    /// 		# OPTIONAL
-    /// 		sslCertfilePath = $someString
-    /// 		# REQUIRED
-    /// 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
     /// 		# REQUIRED
     /// 		mongoClientHosts = @(
     /// 			@{
@@ -177,8 +161,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 		# REQUIRED
+    /// 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sourceDriverPassword = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDriverUser = $someString
+    /// 		# REQUIRED
     /// 		sourceName = $someString
+    /// 		# OPTIONAL
+    /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslKeyfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		sslCertfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -209,14 +209,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
-    /// 		isFullbackup = $someBoolean
-    /// 		# REQUIRED
     /// 		slaId = $someString
+    /// 		# REQUIRED
+    /// 		isFullbackup = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.attributes = @(
@@ -256,14 +256,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		isFullbackup = $someBoolean
     /// 		# REQUIRED
     /// 		slaId = $someString
+    /// 		# OPTIONAL
+    /// 		isFullbackup = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -363,10 +363,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreNodes = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		caCertificateId = $someString
     /// 		# REQUIRED
     /// 		opsManagerApiToken = $someString
+    /// 		# OPTIONAL
+    /// 		caCertificateId = $someString
     /// 	}
     /// }
     /// 
@@ -398,8 +398,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	mongoSourcePatchRequestConfig = @{
     /// 		# OPTIONAL
     /// 		caCertfilePath = $someString
@@ -412,14 +410,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sourceDriverUser = $someString
     /// 		# OPTIONAL
+    /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+    /// 		# OPTIONAL
     /// 		sslKeyfilePath = $someString
     /// 		# OPTIONAL
     /// 		sslCertfilePath = $someString
     /// 		# OPTIONAL
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -451,12 +451,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		sourceMongoClusterId = $someString
     /// 		# OPTIONAL
     /// 		restoreTime = $someDateTime
     /// 		# OPTIONAL
     /// 		oplogDumpDirPath = $someString
-    /// 		# REQUIRED
-    /// 		sourceMongoClusterId = $someString
     /// 		# REQUIRED
     /// 		targetMongoClusterId = $someString
     /// 	}
@@ -507,10 +507,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceDatabaseIds = @(
     /// 			$someString
     /// 		)
+    /// 		# REQUIRED
+    /// 		sourceMongoClusterId = $someString
     /// 		# OPTIONAL
     /// 		targetCollectionName = $someString
     /// 		# OPTIONAL
     /// 		targetDatabaseName = $someString
+    /// 		# REQUIRED
+    /// 		targetMongoClusterId = $someString
     /// 		# OPTIONAL
     /// 		versionTime = $someDateTime
     /// 		# OPTIONAL
@@ -521,10 +525,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isRestoreFromCdm = $someBoolean
     /// 		# OPTIONAL
     /// 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-    /// 		# REQUIRED
-    /// 		sourceMongoClusterId = $someString
-    /// 		# REQUIRED
-    /// 		targetMongoClusterId = $someString
     /// 	}
     /// }
     /// 
@@ -563,20 +563,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreNodes = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		caCertificateId = $someString
     /// 		# REQUIRED
     /// 		opsManagerApiToken = $someString
     /// 		# REQUIRED
+    /// 		opsManagerGroupId = $someString
+    /// 		# REQUIRED
     /// 		opsManagerClusterId = $someString
     /// 		# REQUIRED
-    /// 		opsManagerGroupId = $someString
+    /// 		sourceName = $someString
     /// 		# REQUIRED
     /// 		opsManagerNodes = @(
     /// 			$someString
     /// 		)
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
+    /// 		# OPTIONAL
+    /// 		caCertificateId = $someString
     /// 	}
     /// }
     /// 
@@ -608,8 +608,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	mongoSourceRequestConfig = @{
     /// 		# OPTIONAL
     /// 		caCertfilePath = $someString
@@ -617,20 +615,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreSecondaries = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		sourceDriverPassword = $someString
-    /// 		# OPTIONAL
-    /// 		sourceDriverUser = $someString
-    /// 		# OPTIONAL
-    /// 		sslKeyfilePath = $someString
-    /// 		# OPTIONAL
-    /// 		sslCertfilePath = $someString
-    /// 		# REQUIRED
-    /// 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
     /// 		# REQUIRED
     /// 		mongoClientHosts = @(
     /// 			@{
@@ -641,8 +625,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 		# REQUIRED
+    /// 		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sourceDriverPassword = $someString
+    /// 		# OPTIONAL
+    /// 		sourceDriverUser = $someString
+    /// 		# REQUIRED
     /// 		sourceName = $someString
+    /// 		# OPTIONAL
+    /// 		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslKeyfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		sslCertfilePath = $someString
+    /// 		# OPTIONAL
+    /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -880,20 +880,20 @@ $query.Var.input = @{
 		ignoreNodes = @(
 			$someString
 		)
-		# OPTIONAL
-		caCertificateId = $someString
 		# REQUIRED
 		opsManagerApiToken = $someString
 		# REQUIRED
+		opsManagerGroupId = $someString
+		# REQUIRED
 		opsManagerClusterId = $someString
 		# REQUIRED
-		opsManagerGroupId = $someString
+		sourceName = $someString
 		# REQUIRED
 		opsManagerNodes = @(
 			$someString
 		)
-		# REQUIRED
-		sourceName = $someString
+		# OPTIONAL
+		caCertificateId = $someString
 	}
 }"
             );
@@ -917,8 +917,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	mongoSourceAddRequestConfig = @{
 		# OPTIONAL
 		caCertfilePath = $someString
@@ -926,20 +924,6 @@ $query.Var.input = @{
 		ignoreSecondaries = @(
 			$someString
 		)
-		# OPTIONAL
-		sourceDriverPassword = $someString
-		# OPTIONAL
-		sourceDriverUser = $someString
-		# OPTIONAL
-		sslKeyfilePath = $someString
-		# OPTIONAL
-		sslCertfilePath = $someString
-		# REQUIRED
-		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
-		# OPTIONAL
-		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-		# OPTIONAL
-		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 		# REQUIRED
 		mongoClientHosts = @(
 			@{
@@ -950,8 +934,24 @@ $query.Var.input = @{
 			}
 		)
 		# REQUIRED
+		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+		# OPTIONAL
+		sourceDriverPassword = $someString
+		# OPTIONAL
+		sourceDriverUser = $someString
+		# REQUIRED
 		sourceName = $someString
+		# OPTIONAL
+		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+		# OPTIONAL
+		sslKeyfilePath = $someString
+		# OPTIONAL
+		sslCertfilePath = $someString
+		# OPTIONAL
+		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -975,14 +975,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# REQUIRED
-		isFullbackup = $someBoolean
-		# REQUIRED
 		slaId = $someString
+		# REQUIRED
+		isFullbackup = $someBoolean
 	}
-	# REQUIRED
-	id = $someString
 }
 # REQUIRED
 $query.Var.attributes = @(
@@ -1014,14 +1014,14 @@ $query.Var.attributes = @(
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
-		# OPTIONAL
-		isFullbackup = $someBoolean
 		# REQUIRED
 		slaId = $someString
+		# OPTIONAL
+		isFullbackup = $someBoolean
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1097,10 +1097,10 @@ $query.Var.input = @{
 		ignoreNodes = @(
 			$someString
 		)
-		# OPTIONAL
-		caCertificateId = $someString
 		# REQUIRED
 		opsManagerApiToken = $someString
+		# OPTIONAL
+		caCertificateId = $someString
 	}
 }"
             );
@@ -1124,8 +1124,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	mongoSourcePatchRequestConfig = @{
 		# OPTIONAL
 		caCertfilePath = $someString
@@ -1138,14 +1136,16 @@ $query.Var.input = @{
 		# OPTIONAL
 		sourceDriverUser = $someString
 		# OPTIONAL
+		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+		# OPTIONAL
 		sslKeyfilePath = $someString
 		# OPTIONAL
 		sslCertfilePath = $someString
 		# OPTIONAL
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-		# OPTIONAL
-		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -1169,12 +1169,12 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		sourceMongoClusterId = $someString
 		# OPTIONAL
 		restoreTime = $someDateTime
 		# OPTIONAL
 		oplogDumpDirPath = $someString
-		# REQUIRED
-		sourceMongoClusterId = $someString
 		# REQUIRED
 		targetMongoClusterId = $someString
 	}
@@ -1217,10 +1217,14 @@ $query.Var.input = @{
 		sourceDatabaseIds = @(
 			$someString
 		)
+		# REQUIRED
+		sourceMongoClusterId = $someString
 		# OPTIONAL
 		targetCollectionName = $someString
 		# OPTIONAL
 		targetDatabaseName = $someString
+		# REQUIRED
+		targetMongoClusterId = $someString
 		# OPTIONAL
 		versionTime = $someDateTime
 		# OPTIONAL
@@ -1231,10 +1235,6 @@ $query.Var.input = @{
 		isRestoreFromCdm = $someBoolean
 		# OPTIONAL
 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-		# REQUIRED
-		sourceMongoClusterId = $someString
-		# REQUIRED
-		targetMongoClusterId = $someString
 	}
 }"
             );
@@ -1265,20 +1265,20 @@ $query.Var.input = @{
 		ignoreNodes = @(
 			$someString
 		)
-		# OPTIONAL
-		caCertificateId = $someString
 		# REQUIRED
 		opsManagerApiToken = $someString
 		# REQUIRED
+		opsManagerGroupId = $someString
+		# REQUIRED
 		opsManagerClusterId = $someString
 		# REQUIRED
-		opsManagerGroupId = $someString
+		sourceName = $someString
 		# REQUIRED
 		opsManagerNodes = @(
 			$someString
 		)
-		# REQUIRED
-		sourceName = $someString
+		# OPTIONAL
+		caCertificateId = $someString
 	}
 }"
             );
@@ -1302,8 +1302,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	mongoSourceRequestConfig = @{
 		# OPTIONAL
 		caCertfilePath = $someString
@@ -1311,20 +1309,6 @@ $query.Var.input = @{
 		ignoreSecondaries = @(
 			$someString
 		)
-		# OPTIONAL
-		sourceDriverPassword = $someString
-		# OPTIONAL
-		sourceDriverUser = $someString
-		# OPTIONAL
-		sslKeyfilePath = $someString
-		# OPTIONAL
-		sslCertfilePath = $someString
-		# REQUIRED
-		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
-		# OPTIONAL
-		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
-		# OPTIONAL
-		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
 		# REQUIRED
 		mongoClientHosts = @(
 			@{
@@ -1335,8 +1319,24 @@ $query.Var.input = @{
 			}
 		)
 		# REQUIRED
+		mongoType = $someMongoType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoType]) for enum values.
+		# OPTIONAL
+		sourceDriverPassword = $someString
+		# OPTIONAL
+		sourceDriverUser = $someString
+		# REQUIRED
 		sourceName = $someString
+		# OPTIONAL
+		sslCertificateRequired = $someMongoSslCertificateRequirement # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoSslCertificateRequirement]) for enum values.
+		# OPTIONAL
+		sslKeyfilePath = $someString
+		# OPTIONAL
+		sslCertfilePath = $someString
+		# OPTIONAL
+		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
         //      C# -> System.Boolean? ForceDelete
         // GraphQL -> forceDelete: Boolean (scalar)
         [JsonProperty("forceDelete")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> preserveSnapshots: Boolean (scalar)
         [JsonProperty("preserveSnapshots")]
         public System.Boolean? PreserveSnapshots { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
 
         #endregion

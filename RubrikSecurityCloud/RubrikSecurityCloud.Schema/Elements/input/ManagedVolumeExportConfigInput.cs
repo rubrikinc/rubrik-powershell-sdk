@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Subnet
-        // GraphQL -> subnet: String (scalar)
-        [JsonProperty("subnet")]
-        public System.String? Subnet { get; set; }
-
         //      C# -> ManagedVolumeShareType? ShareType
         // GraphQL -> shareType: ManagedVolumeShareType (enum)
         [JsonProperty("shareType")]
         public ManagedVolumeShareType? ShareType { get; set; }
+
+        //      C# -> System.String? Subnet
+        // GraphQL -> subnet: String (scalar)
+        [JsonProperty("subnet")]
+        public System.String? Subnet { get; set; }
 
         //      C# -> ManagedVolumePatchConfigInput? ManagedVolumePatchConfig
         // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfigInput (input)

@@ -99,10 +99,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snmpConfigV50 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
-    /// 		# OPTIONAL
-    /// 		users = @(
-    /// 			$someString
-    /// 		)
     /// 		# REQUIRED
     /// 		isEnabled = $someBoolean
     /// 		# REQUIRED
@@ -110,25 +106,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		users = @(
+    /// 			$someString
     /// 		)
     /// 	}
     /// 	# OPTIONAL
     /// 	snmpConfigV51 = @{
     /// 		# OPTIONAL
     /// 		communityString = $someString
-    /// 		# OPTIONAL
-    /// 		users = @(
-    /// 			$someString
-    /// 		)
     /// 		# REQUIRED
     /// 		isEnabled = $someBoolean
     /// 		# REQUIRED
@@ -136,15 +132,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		users = @(
+    /// 			$someString
     /// 		)
     /// 	}
     /// 	# OPTIONAL
@@ -158,14 +158,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -191,14 +191,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -224,14 +224,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -257,14 +257,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -290,14 +290,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -323,14 +323,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -356,14 +356,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -389,14 +389,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -422,14 +422,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -455,14 +455,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -488,14 +488,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -521,14 +521,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		trapReceiverConfigs = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				user = $someString
-    /// 				# OPTIONAL
-    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
     /// 				# REQUIRED
     /// 				address = $someString
     /// 				# REQUIRED
     /// 				port = $someInt
+    /// 				# OPTIONAL
+    /// 				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+    /// 				# OPTIONAL
+    /// 				user = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -637,10 +637,6 @@ $query.Var.input = @{
 	snmpConfigV50 = @{
 		# OPTIONAL
 		communityString = $someString
-		# OPTIONAL
-		users = @(
-			$someString
-		)
 		# REQUIRED
 		isEnabled = $someBoolean
 		# REQUIRED
@@ -648,25 +644,25 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
+		)
+		# OPTIONAL
+		users = @(
+			$someString
 		)
 	}
 	# OPTIONAL
 	snmpConfigV51 = @{
 		# OPTIONAL
 		communityString = $someString
-		# OPTIONAL
-		users = @(
-			$someString
-		)
 		# REQUIRED
 		isEnabled = $someBoolean
 		# REQUIRED
@@ -674,15 +670,19 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
+		)
+		# OPTIONAL
+		users = @(
+			$someString
 		)
 	}
 	# OPTIONAL
@@ -696,14 +696,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -729,14 +729,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -762,14 +762,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -795,14 +795,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -828,14 +828,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -861,14 +861,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -894,14 +894,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -927,14 +927,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -960,14 +960,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -993,14 +993,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -1026,14 +1026,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL
@@ -1059,14 +1059,14 @@ $query.Var.input = @{
 		# OPTIONAL
 		trapReceiverConfigs = @(
 			@{
-				# OPTIONAL
-				user = $someString
-				# OPTIONAL
-				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
 				# REQUIRED
 				address = $someString
 				# REQUIRED
 				port = $someInt
+				# OPTIONAL
+				securityLevel = $someSnmpSecurityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnmpSecurityLevel]) for enum values.
+				# OPTIONAL
+				user = $someString
 			}
 		)
 		# OPTIONAL

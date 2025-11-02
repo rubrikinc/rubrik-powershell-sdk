@@ -2,4 +2,3 @@
 
 
 - items: list of ExchangeDagSummarys
-  - 

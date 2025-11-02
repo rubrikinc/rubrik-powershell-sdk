@@ -54,3 +54,4 @@ It will be deprecated after migrating this report to NG framework.
 - BACKUP_STRIKES_V2 - Specifies the backup strikes information.
 - ACTIVE_DIRECTORY_FOREST_RECOVERY - Specifies the Active Directory forest recovery report information.
 - LOG_TASKS - Specifies the Log Tasks Report information.
+- THREAT_MONITORING_COMPLIANCE - Specifies the Threat Monitoring compliance information.

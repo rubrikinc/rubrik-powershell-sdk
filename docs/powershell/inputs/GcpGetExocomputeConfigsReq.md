@@ -8,3 +8,5 @@ Input to get the exocompute configuration for a GCP project.
 - regions: list of GcpCloudAccountRegions
   - Regions to filter against. If regions list is empty, configs for all
 regions are returned.
+- showHealthCheckStatus: System.Boolean
+  - Flag to indicate whether to include health check information.

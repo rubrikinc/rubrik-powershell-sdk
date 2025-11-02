@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> BaseGuestCredentialInput? GuestCredential
+        // GraphQL -> guestCredential: BaseGuestCredentialInput (input)
+        [JsonProperty("guestCredential")]
+        public BaseGuestCredentialInput? GuestCredential { get; set; }
+
         //      C# -> System.Boolean? ShouldRefreshCacheAfterUpdate
         // GraphQL -> shouldRefreshCacheAfterUpdate: Boolean (scalar)
         [JsonProperty("shouldRefreshCacheAfterUpdate")]
@@ -29,20 +34,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("guestCredentialId")]
         public System.String? GuestCredentialId { get; set; }
 
-        //      C# -> System.Boolean? ShouldUseAgent
-        // GraphQL -> shouldUseAgent: Boolean (scalar)
-        [JsonProperty("shouldUseAgent")]
-        public System.Boolean? ShouldUseAgent { get; set; }
-
-        //      C# -> BaseGuestCredentialInput? GuestCredential
-        // GraphQL -> guestCredential: BaseGuestCredentialInput (input)
-        [JsonProperty("guestCredential")]
-        public BaseGuestCredentialInput? GuestCredential { get; set; }
-
         //      C# -> VirtualMachineUpdateInput? VirtualMachineUpdate
         // GraphQL -> virtualMachineUpdate: VirtualMachineUpdateInput (input)
         [JsonProperty("virtualMachineUpdate")]
         public VirtualMachineUpdateInput? VirtualMachineUpdate { get; set; }
+
+        //      C# -> System.Boolean? ShouldUseAgent
+        // GraphQL -> shouldUseAgent: Boolean (scalar)
+        [JsonProperty("shouldUseAgent")]
+        public System.Boolean? ShouldUseAgent { get; set; }
 
 
         #endregion

@@ -92,39 +92,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	vcenterDetail = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isStandaloneHost = $someBoolean
-    /// 		# OPTIONAL
-    /// 		orgNetworkId = $someString
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isStandaloneHost = $someBoolean
+    /// 		# OPTIONAL
+    /// 		orgNetworkId = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -225,412 +225,412 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV51 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV52 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV53 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV60 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV70 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV80 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV81 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV90 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV91 = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
     /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 		# OPTIONAL
-    /// 		computeVisibilityFilter = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				isVmwareMetroStorageCluster = $someBoolean
-    /// 				# REQUIRED
-    /// 				hostGroupFilter = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
-    /// 			}
-    /// 		)
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		computeVisibilityFilter = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				hostGroupFilter = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isVmwareMetroStorageCluster = $someBoolean
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV92 = @{
     /// 		# OPTIONAL
-    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
-    /// 		# OPTIONAL
     /// 		vcenterConfig = @{
     /// 			# OPTIONAL
     /// 			caCerts = $someString
     /// 			# OPTIONAL
-    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 			# OPTIONAL
     /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 			# OPTIONAL
-    /// 			computeVisibilityFilter = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					isVmwareMetroStorageCluster = $someBoolean
-    /// 					# REQUIRED
-    /// 					hostGroupFilter = @(
-    /// 						$someString
-    /// 					)
-    /// 					# REQUIRED
-    /// 					id = $someString
-    /// 				}
-    /// 			)
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 			# REQUIRED
     /// 			password = $someString
     /// 			# REQUIRED
     /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV93 = @{
     /// 		# OPTIONAL
-    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
-    /// 		# OPTIONAL
     /// 		vcenterConfig = @{
     /// 			# OPTIONAL
     /// 			caCerts = $someString
     /// 			# OPTIONAL
-    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 			# OPTIONAL
     /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 			# OPTIONAL
-    /// 			computeVisibilityFilter = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					isVmwareMetroStorageCluster = $someBoolean
-    /// 					# REQUIRED
-    /// 					hostGroupFilter = @(
-    /// 						$someString
-    /// 					)
-    /// 					# REQUIRED
-    /// 					id = $someString
-    /// 				}
-    /// 			)
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 			# REQUIRED
     /// 			password = $someString
     /// 			# REQUIRED
     /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV94 = @{
     /// 		# OPTIONAL
-    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
-    /// 		# OPTIONAL
     /// 		vcenterConfig = @{
     /// 			# OPTIONAL
     /// 			caCerts = $someString
     /// 			# OPTIONAL
-    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 			# OPTIONAL
     /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 			# OPTIONAL
-    /// 			computeVisibilityFilter = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					isVmwareMetroStorageCluster = $someBoolean
-    /// 					# REQUIRED
-    /// 					hostGroupFilter = @(
-    /// 						$someString
-    /// 					)
-    /// 					# REQUIRED
-    /// 					id = $someString
-    /// 				}
-    /// 			)
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 			# REQUIRED
     /// 			password = $someString
     /// 			# REQUIRED
     /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV95 = @{
     /// 		# OPTIONAL
-    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
-    /// 		# OPTIONAL
     /// 		vcenterConfig = @{
     /// 			# OPTIONAL
     /// 			caCerts = $someString
     /// 			# OPTIONAL
-    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 			# OPTIONAL
     /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-    /// 			# OPTIONAL
-    /// 			computeVisibilityFilter = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					isVmwareMetroStorageCluster = $someBoolean
-    /// 					# REQUIRED
-    /// 					hostGroupFilter = @(
-    /// 						$someString
-    /// 					)
-    /// 					# REQUIRED
-    /// 					id = $someString
-    /// 				}
-    /// 			)
     /// 			# REQUIRED
     /// 			hostname = $someString
     /// 			# REQUIRED
     /// 			password = $someString
     /// 			# REQUIRED
     /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
     /// 	}
     /// }
     /// 
@@ -755,15 +755,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	updateProperties = @{
     /// 		# OPTIONAL
-    /// 		caCerts = $someString
-    /// 		# OPTIONAL
-    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
-    /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterUpdateConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterUpdateConfigV2ConflictResolutionAuthz]) for enum values.
-    /// 		# REQUIRED
-    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		caCerts = $someString
     /// 		# REQUIRED
     /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# REQUIRED
+    /// 		hostname = $someString
     /// 		# REQUIRED
     /// 		username = $someString
     /// 	}
@@ -932,39 +932,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	vcenterDetail = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
-		isStandaloneHost = $someBoolean
-		# OPTIONAL
-		orgNetworkId = $someString
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigV2ConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isStandaloneHost = $someBoolean
+		# OPTIONAL
+		orgNetworkId = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1041,412 +1041,412 @@ $query.Var.input = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV51 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV52 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV53 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV60 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV70 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV80 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV81 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV90 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV91 = @{
 		# OPTIONAL
 		caCerts = $someString
 		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-		# OPTIONAL
-		computeVisibilityFilter = @(
-			@{
-				# OPTIONAL
-				isVmwareMetroStorageCluster = $someBoolean
-				# REQUIRED
-				hostGroupFilter = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
-			}
-		)
 		# REQUIRED
 		hostname = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		computeVisibilityFilter = @(
+			@{
+				# REQUIRED
+				hostGroupFilter = @(
+					$someString
+				)
+				# REQUIRED
+				id = $someString
+				# OPTIONAL
+				isVmwareMetroStorageCluster = $someBoolean
+			}
+		)
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV92 = @{
 		# OPTIONAL
-		shouldUpdateComputeVisibilityFilter = $someBoolean
-		# OPTIONAL
 		vcenterConfig = @{
 			# OPTIONAL
 			caCerts = $someString
 			# OPTIONAL
-			shouldEnableHotAddProxyForOnPrem = $someBoolean
-			# OPTIONAL
 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-			# OPTIONAL
-			computeVisibilityFilter = @(
-				@{
-					# OPTIONAL
-					isVmwareMetroStorageCluster = $someBoolean
-					# REQUIRED
-					hostGroupFilter = @(
-						$someString
-					)
-					# REQUIRED
-					id = $someString
-				}
-			)
 			# REQUIRED
 			hostname = $someString
 			# REQUIRED
 			password = $someString
 			# REQUIRED
 			username = $someString
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+				}
+			)
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
 		}
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV93 = @{
 		# OPTIONAL
-		shouldUpdateComputeVisibilityFilter = $someBoolean
-		# OPTIONAL
 		vcenterConfig = @{
 			# OPTIONAL
 			caCerts = $someString
 			# OPTIONAL
-			shouldEnableHotAddProxyForOnPrem = $someBoolean
-			# OPTIONAL
 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-			# OPTIONAL
-			computeVisibilityFilter = @(
-				@{
-					# OPTIONAL
-					isVmwareMetroStorageCluster = $someBoolean
-					# REQUIRED
-					hostGroupFilter = @(
-						$someString
-					)
-					# REQUIRED
-					id = $someString
-				}
-			)
 			# REQUIRED
 			hostname = $someString
 			# REQUIRED
 			password = $someString
 			# REQUIRED
 			username = $someString
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+				}
+			)
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
 		}
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV94 = @{
 		# OPTIONAL
-		shouldUpdateComputeVisibilityFilter = $someBoolean
-		# OPTIONAL
 		vcenterConfig = @{
 			# OPTIONAL
 			caCerts = $someString
 			# OPTIONAL
-			shouldEnableHotAddProxyForOnPrem = $someBoolean
-			# OPTIONAL
 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-			# OPTIONAL
-			computeVisibilityFilter = @(
-				@{
-					# OPTIONAL
-					isVmwareMetroStorageCluster = $someBoolean
-					# REQUIRED
-					hostGroupFilter = @(
-						$someString
-					)
-					# REQUIRED
-					id = $someString
-				}
-			)
 			# REQUIRED
 			hostname = $someString
 			# REQUIRED
 			password = $someString
 			# REQUIRED
 			username = $someString
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+				}
+			)
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
 		}
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV95 = @{
 		# OPTIONAL
-		shouldUpdateComputeVisibilityFilter = $someBoolean
-		# OPTIONAL
 		vcenterConfig = @{
 			# OPTIONAL
 			caCerts = $someString
 			# OPTIONAL
-			shouldEnableHotAddProxyForOnPrem = $someBoolean
-			# OPTIONAL
 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
-			# OPTIONAL
-			computeVisibilityFilter = @(
-				@{
-					# OPTIONAL
-					isVmwareMetroStorageCluster = $someBoolean
-					# REQUIRED
-					hostGroupFilter = @(
-						$someString
-					)
-					# REQUIRED
-					id = $someString
-				}
-			)
 			# REQUIRED
 			hostname = $someString
 			# REQUIRED
 			password = $someString
 			# REQUIRED
 			username = $someString
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+				}
+			)
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
 		}
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
 	}
 }"
             );
@@ -1547,15 +1547,15 @@ $query.Var.input = @{
 	# REQUIRED
 	updateProperties = @{
 		# OPTIONAL
-		caCerts = $someString
-		# OPTIONAL
-		shouldEnableHotAddProxyForOnPrem = $someBoolean
-		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterUpdateConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterUpdateConfigV2ConflictResolutionAuthz]) for enum values.
-		# REQUIRED
-		hostname = $someString
+		# OPTIONAL
+		caCerts = $someString
 		# REQUIRED
 		password = $someString
+		# OPTIONAL
+		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# REQUIRED
+		hostname = $someString
 		# REQUIRED
 		username = $someString
 	}

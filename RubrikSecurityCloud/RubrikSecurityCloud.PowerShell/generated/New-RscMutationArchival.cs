@@ -355,6 +355,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# OPTIONAL
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	skipCloudNativeResourceDeletion = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -456,17 +458,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		sourceDirs = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		sourceDirs = @(
-    /// 			$someString
-    /// 		)
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	deltaTypeFilter = @(
@@ -1292,6 +1294,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	id = $someString
+	# OPTIONAL
+	skipCloudNativeResourceDeletion = $someBoolean
 }"
             );
         }
@@ -1369,17 +1373,17 @@ $query.Var.input = @{
 	zipPassword = $someString
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		zipPassword = $someString
+		# REQUIRED
+		sourceDirs = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		sourceDirs = @(
-			$someString
-		)
+		# OPTIONAL
+		zipPassword = $someString
 	}
 	# OPTIONAL
 	deltaTypeFilter = @(

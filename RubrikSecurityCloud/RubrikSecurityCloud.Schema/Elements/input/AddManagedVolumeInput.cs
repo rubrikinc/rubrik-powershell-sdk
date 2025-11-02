@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> ManagedVolumeConfigInput? ManagedVolumeConfig
         // GraphQL -> managedVolumeConfig: ManagedVolumeConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("managedVolumeConfig")]
         public ManagedVolumeConfigInput? ManagedVolumeConfig { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

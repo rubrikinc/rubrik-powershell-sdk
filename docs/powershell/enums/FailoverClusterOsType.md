@@ -1,6 +1,6 @@
 ### FailoverClusterOsType
 Supported in v5.2+
-  Operating system type of the failover cluster.
+Operating system type of the failover cluster.
 
 - FAILOVER_CLUSTER_OS_TYPE_AIX
 - FAILOVER_CLUSTER_OS_TYPE_ANY

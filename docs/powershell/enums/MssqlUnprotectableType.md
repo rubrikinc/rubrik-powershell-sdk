@@ -1,5 +1,5 @@
 ### MssqlUnprotectableType
 Supported in v5.0
-  Unprotectable type
+Unprotectable type
 
 - MSSQL_UNPROTECTABLE_TYPE_INSUFFICIENT_PERMISSIONS

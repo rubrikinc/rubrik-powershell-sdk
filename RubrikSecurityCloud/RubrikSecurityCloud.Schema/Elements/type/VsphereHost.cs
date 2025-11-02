@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotConsistencySource")]
         public System.String? SnapshotConsistencySource { get; set; }
 
+        //      C# -> System.Boolean? SshEnabled
+        // GraphQL -> sshEnabled: Boolean (scalar)
+        [JsonProperty("sshEnabled")]
+        public System.Boolean? SshEnabled { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -311,6 +316,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SnapshotConsistencySource = null,
+        System.Boolean? SshEnabled = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -389,6 +395,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotConsistencySource != null ) {
             this.SnapshotConsistencySource = SnapshotConsistencySource;
+        }
+        if ( SshEnabled != null ) {
+            this.SshEnabled = SshEnabled;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -653,6 +662,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotConsistencySource\n" ;
             } else {
                 s += ind + "snapshotConsistencySource\n" ;
+            }
+        }
+        //      C# -> System.Boolean? SshEnabled
+        // GraphQL -> sshEnabled: Boolean (scalar)
+        if (this.SshEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sshEnabled\n" ;
+            } else {
+                s += ind + "sshEnabled\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1235,6 +1253,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotConsistencySource != null && ec.Excludes("snapshotConsistencySource",true))
         {
             this.SnapshotConsistencySource = null;
+        }
+        //      C# -> System.Boolean? SshEnabled
+        // GraphQL -> sshEnabled: Boolean (scalar)
+        if (ec.Includes("sshEnabled",true))
+        {
+            if(this.SshEnabled == null) {
+
+                this.SshEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SshEnabled != null && ec.Excludes("sshEnabled",true))
+        {
+            this.SshEnabled = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

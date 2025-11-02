@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? VmId
-        // GraphQL -> vmId: String (scalar)
-        [JsonProperty("vmId")]
-        public System.String? VmId { get; set; }
-
         //      C# -> System.Single? Threshold
         // GraphQL -> threshold: Float! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("threshold")]
         public System.Single? Threshold { get; set; }
+
+        //      C# -> System.String? VmId
+        // GraphQL -> vmId: String (scalar)
+        [JsonProperty("vmId")]
+        public System.String? VmId { get; set; }
 
 
         #endregion

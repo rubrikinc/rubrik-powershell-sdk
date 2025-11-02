@@ -1,6 +1,6 @@
 ### OperatingSystemType
 Supported in v5.0+
-  Operating system of a specified machine.
+Operating system of a specified machine.
 
 - OPERATING_SYSTEM_TYPE_AIX
 - OPERATING_SYSTEM_TYPE_HPUX

@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> HypervDownloadVmLevelFilesConfigInput? Config
-        // GraphQL -> config: HypervDownloadVmLevelFilesConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public HypervDownloadVmLevelFilesConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> HypervDownloadVmLevelFilesConfigInput? Config
+        // GraphQL -> config: HypervDownloadVmLevelFilesConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public HypervDownloadVmLevelFilesConfigInput? Config { get; set; }
 
 
         #endregion

@@ -92,6 +92,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		validUsers = @(
@@ -116,8 +118,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldMountVhdx = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -179,6 +179,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		validIps = @(
@@ -189,8 +191,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		subnet = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -221,9 +221,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		shouldMergeLinkedAttrs = $someBoolean
+    /// 		# REQUIRED
+    /// 		domainControllerRecoveryObjects = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				dnt = $someInt64
+    /// 				# OPTIONAL
+    /// 				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				attributes = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		userRestoreOptions = @{
+    /// 			# OPTIONAL
+    /// 			passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
+    /// 			# OPTIONAL
+    /// 			shouldEnableUser = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldChangePassword = $someBoolean
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 		}
     /// 		# OPTIONAL
     /// 		restoreToDifferentContainer = $someString
     /// 		# OPTIONAL
@@ -231,17 +257,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		clearUpAttrsIfNullInBackup = $someBoolean
     /// 		# OPTIONAL
+    /// 		credsForRestore = @{
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 		# OPTIONAL
     /// 		alternateDcId = $someString
     /// 		# OPTIONAL
-    /// 		shouldCreateMissingParents = $someBoolean
-    /// 		# OPTIONAL
-    /// 		locationId = $someString
-    /// 		# OPTIONAL
-    /// 		hostId = $someString
-    /// 		# OPTIONAL
-    /// 		nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
-    /// 		# OPTIONAL
     /// 		objectMovedOptions = $someActiveDirectoryObjectMovedOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectMovedOption]) for enum values.
+    /// 		# OPTIONAL
+    /// 		shouldCreateMissingParents = $someBoolean
     /// 		# OPTIONAL
     /// 		containerRestoreOptions = @{
     /// 			# OPTIONAL
@@ -250,39 +277,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldOnlyRecreateMissingObjects = $someBoolean
     /// 		}
     /// 		# OPTIONAL
-    /// 		credsForRestore = @{
-    /// 			# REQUIRED
-    /// 			password = $someString
-    /// 			# REQUIRED
-    /// 			username = $someString
-    /// 		}
-    /// 		# REQUIRED
-    /// 		domainControllerRecoveryObjects = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				attributes = @(
-    /// 					$someString
-    /// 				)
-    /// 				# OPTIONAL
-    /// 				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
-    /// 				# REQUIRED
-    /// 				dnt = $someInt64
-    /// 			}
-    /// 		)
+    /// 		locationId = $someString
     /// 		# OPTIONAL
-    /// 		userRestoreOptions = @{
-    /// 			# OPTIONAL
-    /// 			shouldEnableUser = $someBoolean
-    /// 			# OPTIONAL
-    /// 			shouldChangePassword = $someBoolean
-    /// 			# OPTIONAL
-    /// 			password = $someString
-    /// 			# OPTIONAL
-    /// 			passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
-    /// 		}
+    /// 		hostId = $someString
+    /// 		# OPTIONAL
+    /// 		nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -409,6 +409,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		validUsers = @(
@@ -433,8 +435,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldMountVhdx = $someBoolean
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -480,6 +480,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		validIps = @(
@@ -490,8 +492,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		subnet = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -514,9 +514,35 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		shouldMergeLinkedAttrs = $someBoolean
+		# REQUIRED
+		domainControllerRecoveryObjects = @(
+			@{
+				# REQUIRED
+				dnt = $someInt64
+				# OPTIONAL
+				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
+				# OPTIONAL
+				attributes = @(
+					$someString
+				)
+			}
+		)
+		# OPTIONAL
+		userRestoreOptions = @{
+			# OPTIONAL
+			passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
+			# OPTIONAL
+			shouldEnableUser = $someBoolean
+			# OPTIONAL
+			shouldChangePassword = $someBoolean
+			# OPTIONAL
+			password = $someString
+		}
 		# OPTIONAL
 		restoreToDifferentContainer = $someString
 		# OPTIONAL
@@ -524,17 +550,18 @@ $query.Var.input = @{
 		# OPTIONAL
 		clearUpAttrsIfNullInBackup = $someBoolean
 		# OPTIONAL
+		credsForRestore = @{
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+		# OPTIONAL
 		alternateDcId = $someString
 		# OPTIONAL
-		shouldCreateMissingParents = $someBoolean
-		# OPTIONAL
-		locationId = $someString
-		# OPTIONAL
-		hostId = $someString
-		# OPTIONAL
-		nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
-		# OPTIONAL
 		objectMovedOptions = $someActiveDirectoryObjectMovedOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectMovedOption]) for enum values.
+		# OPTIONAL
+		shouldCreateMissingParents = $someBoolean
 		# OPTIONAL
 		containerRestoreOptions = @{
 			# OPTIONAL
@@ -543,39 +570,12 @@ $query.Var.input = @{
 			shouldOnlyRecreateMissingObjects = $someBoolean
 		}
 		# OPTIONAL
-		credsForRestore = @{
-			# REQUIRED
-			password = $someString
-			# REQUIRED
-			username = $someString
-		}
-		# REQUIRED
-		domainControllerRecoveryObjects = @(
-			@{
-				# OPTIONAL
-				attributes = @(
-					$someString
-				)
-				# OPTIONAL
-				objectType = $someActiveDirectoryObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectType]) for enum values.
-				# REQUIRED
-				dnt = $someInt64
-			}
-		)
+		locationId = $someString
 		# OPTIONAL
-		userRestoreOptions = @{
-			# OPTIONAL
-			shouldEnableUser = $someBoolean
-			# OPTIONAL
-			shouldChangePassword = $someBoolean
-			# OPTIONAL
-			password = $someString
-			# OPTIONAL
-			passwordOptions = $someActiveDirectoryUserPasswordRecoveryOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryUserPasswordRecoveryOption]) for enum values.
-		}
+		hostId = $someString
+		# OPTIONAL
+		nameConflict = $someActiveDirectoryObjectNameConflictOption # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ActiveDirectoryObjectNameConflictOption]) for enum values.
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

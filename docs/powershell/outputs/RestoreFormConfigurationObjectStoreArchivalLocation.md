@@ -3,16 +3,16 @@ Supported in v7.0+
 
 - name: System.String
   - Required. Supported in v7.0+
-  Name of archival location.
+Name of archival location.
 - bucket: System.String
   - Supported in v8.0+
-  Name of the bucket.
+Name of the bucket.
 - encryptionType: System.String
   - Supported in v8.0+
-  Method used to encrypt archival location.
+Method used to encrypt archival location.
 - endpoint: System.String
   - Supported in v8.0+
-  Endpoint for the archival location.
+Endpoint for the archival location.
 - numBuckets: System.Int64
   - Supported in v8.0+
-  Number of buckets.
+Number of buckets.

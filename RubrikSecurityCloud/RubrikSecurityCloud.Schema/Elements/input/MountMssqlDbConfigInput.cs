@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? TargetInstanceId
-        // GraphQL -> targetInstanceId: String (scalar)
-        [JsonProperty("targetInstanceId")]
-        public System.String? TargetInstanceId { get; set; }
-
-        //      C# -> MssqlDatabaseRecoveryModel? RecoveryModel
-        // GraphQL -> recoveryModel: MssqlDatabaseRecoveryModel (enum)
-        [JsonProperty("recoveryModel")]
-        public MssqlDatabaseRecoveryModel? RecoveryModel { get; set; }
-
         //      C# -> System.String? MountedDatabaseName
         // GraphQL -> mountedDatabaseName: String! (scalar)
         [Required]
@@ -42,6 +32,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("recoveryPoint")]
         public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
+
+        //      C# -> System.String? TargetInstanceId
+        // GraphQL -> targetInstanceId: String (scalar)
+        [JsonProperty("targetInstanceId")]
+        public System.String? TargetInstanceId { get; set; }
+
+        //      C# -> MssqlDatabaseRecoveryModel? RecoveryModel
+        // GraphQL -> recoveryModel: MssqlDatabaseRecoveryModel (enum)
+        [JsonProperty("recoveryModel")]
+        public MssqlDatabaseRecoveryModel? RecoveryModel { get; set; }
 
 
         #endregion

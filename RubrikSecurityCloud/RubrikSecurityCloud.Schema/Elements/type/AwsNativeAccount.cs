@@ -196,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("regionSpecs")]
         public List<AwsNativeRegionSpec>? RegionSpecs { get; set; }
 
+        //      C# -> AwsRoleChainingAccount? RoleChainingDetails
+        // GraphQL -> roleChainingDetails: AwsRoleChainingAccount (type)
+        [JsonProperty("roleChainingDetails")]
+        public AwsRoleChainingAccount? RoleChainingDetails { get; set; }
+
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
         [JsonProperty("rscNativeObjectPendingSla")]
@@ -339,6 +344,7 @@ namespace RubrikSecurityCloud.Types
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
         List<AwsNativeRegionSpec>? RegionSpecs = null,
+        AwsRoleChainingAccount? RoleChainingDetails = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
         SecurityMetadata? SecurityMetadata = null,
         SnapshotDistribution? SnapshotDistribution = null
@@ -448,6 +454,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RegionSpecs != null ) {
             this.RegionSpecs = RegionSpecs;
+        }
+        if ( RoleChainingDetails != null ) {
+            this.RoleChainingDetails = RoleChainingDetails;
         }
         if ( RscNativeObjectPendingSla != null ) {
             this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
@@ -835,6 +844,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "regionSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AwsRoleChainingAccount? RoleChainingDetails
+        // GraphQL -> roleChainingDetails: AwsRoleChainingAccount (type)
+        if (this.RoleChainingDetails != null) {
+            var fspec = this.RoleChainingDetails.AsFieldSpec(conf.Child("roleChainingDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "roleChainingDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1522,6 +1543,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RegionSpecs != null && ec.Excludes("regionSpecs",false))
         {
             this.RegionSpecs = null;
+        }
+        //      C# -> AwsRoleChainingAccount? RoleChainingDetails
+        // GraphQL -> roleChainingDetails: AwsRoleChainingAccount (type)
+        if (ec.Includes("roleChainingDetails",false))
+        {
+            if(this.RoleChainingDetails == null) {
+
+                this.RoleChainingDetails = new AwsRoleChainingAccount();
+                this.RoleChainingDetails.ApplyExploratoryFieldSpec(ec.NewChild("roleChainingDetails"));
+
+            } else {
+
+                this.RoleChainingDetails.ApplyExploratoryFieldSpec(ec.NewChild("roleChainingDetails"));
+
+            }
+        }
+        else if (this.RoleChainingDetails != null && ec.Excludes("roleChainingDetails",false))
+        {
+            this.RoleChainingDetails = null;
         }
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)

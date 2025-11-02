@@ -24,30 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("creationType")]
         public System.String? CreationType { get; set; }
 
-        //      C# -> System.String? KubernetesNamespace
-        // GraphQL -> kubernetesNamespace: String (scalar)
-        [JsonProperty("kubernetesNamespace")]
-        public System.String? KubernetesNamespace { get; set; }
-
-        //      C# -> List<System.String>? HookConfigs
-        // GraphQL -> hookConfigs: [String!] (scalar)
-        [JsonProperty("hookConfigs")]
-        public List<System.String>? HookConfigs { get; set; }
-
-        //      C# -> System.String? Definition
-        // GraphQL -> definition: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("definition")]
-        public System.String? Definition { get; set; }
-
-        //      C# -> System.String? KubernetesClusterId
-        // GraphQL -> kubernetesClusterId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("kubernetesClusterId")]
-        public System.String? KubernetesClusterId { get; set; }
-
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -61,6 +37,30 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("rsType")]
         public System.String? RsType { get; set; }
+
+        //      C# -> System.String? Definition
+        // GraphQL -> definition: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("definition")]
+        public System.String? Definition { get; set; }
+
+        //      C# -> System.String? KubernetesNamespace
+        // GraphQL -> kubernetesNamespace: String (scalar)
+        [JsonProperty("kubernetesNamespace")]
+        public System.String? KubernetesNamespace { get; set; }
+
+        //      C# -> System.String? KubernetesClusterId
+        // GraphQL -> kubernetesClusterId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("kubernetesClusterId")]
+        public System.String? KubernetesClusterId { get; set; }
+
+        //      C# -> List<System.String>? HookConfigs
+        // GraphQL -> hookConfigs: [String!] (scalar)
+        [JsonProperty("hookConfigs")]
+        public List<System.String>? HookConfigs { get; set; }
 
 
         #endregion

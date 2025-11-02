@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<PermissionsGroup>? EnabledPermissionGroups
+        // GraphQL -> enabledPermissionGroups: [PermissionsGroup!]! (enum)
+        [JsonProperty("enabledPermissionGroups")]
+        public List<PermissionsGroup>? EnabledPermissionGroups { get; set; }
+
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         [JsonProperty("feature")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpFeatureDetail Set(
+        List<PermissionsGroup>? EnabledPermissionGroups = null,
         CloudAccountFeature? Feature = null,
         CloudAccountStatus? Status = null,
         System.String? RoleId = null
     ) 
     {
+        if ( EnabledPermissionGroups != null ) {
+            this.EnabledPermissionGroups = EnabledPermissionGroups;
+        }
         if ( Feature != null ) {
             this.Feature = Feature;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<PermissionsGroup>? EnabledPermissionGroups
+        // GraphQL -> enabledPermissionGroups: [PermissionsGroup!]! (enum)
+        if (this.EnabledPermissionGroups != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "enabledPermissionGroups\n" ;
+            } else {
+                s += ind + "enabledPermissionGroups\n" ;
+            }
+        }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (this.Feature != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<PermissionsGroup>? EnabledPermissionGroups
+        // GraphQL -> enabledPermissionGroups: [PermissionsGroup!]! (enum)
+        if (ec.Includes("enabledPermissionGroups",true))
+        {
+            if(this.EnabledPermissionGroups == null) {
+
+                this.EnabledPermissionGroups = new List<PermissionsGroup>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EnabledPermissionGroups != null && ec.Excludes("enabledPermissionGroups",true))
+        {
+            this.EnabledPermissionGroups = null;
+        }
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         if (ec.Includes("feature",true))

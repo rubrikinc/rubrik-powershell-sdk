@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> HypervBatchInstantRecoverSnapshotJobConfigInput? Config
         // GraphQL -> config: HypervBatchInstantRecoverSnapshotJobConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("config")]
         public HypervBatchInstantRecoverSnapshotJobConfigInput? Config { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

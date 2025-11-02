@@ -92,11 +92,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	recoveryRangeData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
     /// 		# REQUIRED
     /// 		managementObjects = @{
     /// 			# OPTIONAL
@@ -113,7 +109,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# REQUIRED
     /// 		sourceName = $someString
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -172,18 +172,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	recoveryRangeRequestData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
     /// 		# REQUIRED
     /// 		databaseName = $someString
     /// 		# REQUIRED
     /// 		sourceName = $someString
     /// 		# REQUIRED
     /// 		tableName = $someString
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -646,11 +646,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	recoveryRangeData = @{
-		# OPTIONAL
-		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
 		# REQUIRED
 		managementObjects = @{
 			# OPTIONAL
@@ -667,7 +663,11 @@ $query.Var.input = @{
 		}
 		# REQUIRED
 		sourceName = $someString
+		# OPTIONAL
+		sourceType = $someMosaicBulkRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicBulkRecoverableRangeRequestSourceType]) for enum values.
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -710,18 +710,18 @@ $query.Var.fid = $someString"
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	recoveryRangeRequestData = @{
-		# OPTIONAL
-		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
 		# REQUIRED
 		databaseName = $someString
 		# REQUIRED
 		sourceName = $someString
 		# REQUIRED
 		tableName = $someString
+		# OPTIONAL
+		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

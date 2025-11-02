@@ -28,8 +28,6 @@
   - Specifies the source snapshot ID.
 - isRetentionLocked: System.Boolean
   - Specifies whether the snapshot is retention locked.
-- isQuarantined: System.Boolean
-  - Specifies whether the snapshot is quarantined.
 - replicationLocations: list of DataLocations
 - hasUnexpiredReplica: System.Boolean
   - Indicates whether the snapshot has a valid replica.
@@ -52,5 +50,7 @@
   - Specifies whether or not the snapshot is expired.
 - isQuarantineProcessing: System.Boolean
   - Specifies whether RSC is processing the snapshot to determine its quarantine state.
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
 - isAnomaly: System.Boolean
   - Flag if the snapshot is an anomaly.

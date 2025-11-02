@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<FilesetExportPathPairInput>? ExportPathPairs
+        // GraphQL -> exportPathPairs: [FilesetExportPathPairInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("exportPathPairs")]
+        public List<FilesetExportPathPairInput>? ExportPathPairs { get; set; }
+
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         [JsonProperty("hostId")]
@@ -53,13 +60,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldRestoreOnlyAcls: Boolean (scalar)
         [JsonProperty("shouldRestoreOnlyAcls")]
         public System.Boolean? ShouldRestoreOnlyAcls { get; set; }
-
-        //      C# -> List<FilesetExportPathPairInput>? ExportPathPairs
-        // GraphQL -> exportPathPairs: [FilesetExportPathPairInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("exportPathPairs")]
-        public List<FilesetExportPathPairInput>? ExportPathPairs { get; set; }
 
 
         #endregion

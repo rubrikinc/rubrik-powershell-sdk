@@ -579,17 +579,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		sourceDirs = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		sourceDirs = @(
-    /// 			$someString
-    /// 		)
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	deltaTypeFilter = @(
@@ -634,6 +634,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		exportPathPairs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				exportPathPair = @{
+    /// 					# REQUIRED
+    /// 					dstPath = $someString
+    /// 					# REQUIRED
+    /// 					srcPath = $someString
+    /// 				}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		hostId = $someString
     /// 		# OPTIONAL
@@ -650,18 +662,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		postRestoreScript = $someString
     /// 		# OPTIONAL
     /// 		shouldRestoreOnlyAcls = $someBoolean
-    /// 		# REQUIRED
-    /// 		exportPathPairs = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				exportPathPair = @{
-    /// 					# REQUIRED
-    /// 					dstPath = $someString
-    /// 					# REQUIRED
-    /// 					srcPath = $someString
-    /// 				}
-    /// 			}
-    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -698,8 +698,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		snapshotForAuthoritativeRestore = $someString
     /// 		# REQUIRED
     /// 		domainControllerRestoreConfigs = @(
     /// 			@{
@@ -713,6 +711,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldPerformAuthoritativeAdObjectsRestore = $someBoolean
     /// 		# REQUIRED
     /// 		shouldPerformAuthoritativeSysvolRestore = $someBoolean
+    /// 		# OPTIONAL
+    /// 		snapshotForAuthoritativeRestore = $someString
     /// 	}
     /// }
     /// 
@@ -794,10 +794,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	nextSnapshotFid = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		targetHostId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldIgnoreError = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfigs = @(
     /// 			@{
@@ -807,6 +803,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				restorePath = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		targetHostId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldIgnoreError = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	deltaTypeFilter = @(
@@ -1800,17 +1800,17 @@ $query.Var.input = @{
 	zipPassword = $someString
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		zipPassword = $someString
+		# REQUIRED
+		sourceDirs = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		sourceDirs = @(
-			$someString
-		)
+		# OPTIONAL
+		zipPassword = $someString
 	}
 	# OPTIONAL
 	deltaTypeFilter = @(
@@ -1847,6 +1847,18 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		exportPathPairs = @(
+			@{
+				# OPTIONAL
+				exportPathPair = @{
+					# REQUIRED
+					dstPath = $someString
+					# REQUIRED
+					srcPath = $someString
+				}
+			}
+		)
 		# OPTIONAL
 		hostId = $someString
 		# OPTIONAL
@@ -1863,18 +1875,6 @@ $query.Var.input = @{
 		postRestoreScript = $someString
 		# OPTIONAL
 		shouldRestoreOnlyAcls = $someBoolean
-		# REQUIRED
-		exportPathPairs = @(
-			@{
-				# OPTIONAL
-				exportPathPair = @{
-					# REQUIRED
-					dstPath = $someString
-					# REQUIRED
-					srcPath = $someString
-				}
-			}
-		)
 	}
 	# REQUIRED
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -1903,8 +1903,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		snapshotForAuthoritativeRestore = $someString
 		# REQUIRED
 		domainControllerRestoreConfigs = @(
 			@{
@@ -1918,6 +1916,8 @@ $query.Var.input = @{
 		shouldPerformAuthoritativeAdObjectsRestore = $someBoolean
 		# REQUIRED
 		shouldPerformAuthoritativeSysvolRestore = $someBoolean
+		# OPTIONAL
+		snapshotForAuthoritativeRestore = $someString
 	}
 }"
             );
@@ -1983,10 +1983,6 @@ $query.Var.input = @{
 	nextSnapshotFid = $someString
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		targetHostId = $someString
-		# OPTIONAL
-		shouldIgnoreError = $someBoolean
 		# REQUIRED
 		restoreConfigs = @(
 			@{
@@ -1996,6 +1992,10 @@ $query.Var.input = @{
 				restorePath = $someString
 			}
 		)
+		# OPTIONAL
+		targetHostId = $someString
+		# OPTIONAL
+		shouldIgnoreError = $someBoolean
 	}
 	# OPTIONAL
 	deltaTypeFilter = @(

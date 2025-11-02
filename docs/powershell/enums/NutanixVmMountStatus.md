@@ -1,6 +1,6 @@
 ### NutanixVmMountStatus
 Supported in v9.1+
-  Specifies the Live Mount status.
+Specifies the Live Mount status.
 
 - NUTANIX_VM_MOUNT_STATUS_DELETING
 - NUTANIX_VM_MOUNT_STATUS_MIGRATING

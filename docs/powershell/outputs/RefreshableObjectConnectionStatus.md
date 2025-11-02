@@ -3,7 +3,7 @@ Supported in v5.0+
 
 - message: System.String
   - Supported in v5.0+
-  Details about the object status. Will be populated if the status is "BadlyConfigured".
+Details about the object status. Will be populated if the status is "BadlyConfigured".
 - status: RefreshableObjectConnectionStatusType
   - Required. Supported in v5.0+
-  Status of the refreshable object.
+Status of the refreshable object.

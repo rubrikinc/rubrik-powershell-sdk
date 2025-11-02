@@ -1,46 +1,46 @@
 ### MosaicVersionObject
 Supported in m3.2.0-m4.2.0
-  Object for mosaic versions.
+Object for mosaic versions.
 
 - dbInfo: System.String
   - Supported in m3.2.0-m4.2.0
-  Information of version space.
+Information of version space.
 - expirationTime: System.Int32
   - Supported in m3.2.0-m4.2.0
-  Expiration time of the version.
+Expiration time of the version.
 - groupPolicyId: System.String
   - Supported in m3.2.0-m4.2.0
-  UUID of group policy.
+UUID of group policy.
 - id: System.String
   - Supported in m3.2.0-m4.2.0
-  UUID of the version.
+UUID of the version.
 - intervalType: System.Int32
   - Supported in m3.2.0-m4.2.0
-  Type of interval.
+Type of interval.
 - jobDuration: System.Int32
   - Supported in m3.2.0-m4.2.0
-  Duration of the backup job.
+Duration of the backup job.
 - needSstableLoaderStr: System.String
   - Supported in m3.2.0-m4.2.0
-  Need sstable loader.
+Need sstable loader.
 - rsList: System.String
   - Supported in m3.2.0-m4.2.0
-  Replica set.
+Replica set.
 - sourceMgmtObj: System.String
   - Supported in m3.2.0-m4.2.0
-  Name of the management object.
+Name of the management object.
 - sourceName: System.String
   - Supported in m3.2.0-m4.2.0
-  Name of the source.
+Name of the source.
 - sourceType: System.String
   - Supported in m3.2.0-m4.2.0
-  Type of the source.
+Type of the source.
 - systemPolicyId: System.String
   - Supported in m3.2.0-m4.2.0
-  UUID of system policy.
+UUID of system policy.
 - timestamp: System.Int32
   - Supported in m3.2.0-m4.2.0
-  Timestamp of the version.
+Timestamp of the version.
 - versionState: MosaicVersionObjectVersionState
   - Supported in m3.2.0-m4.2.0
-  Status of the version.
+Status of the version.

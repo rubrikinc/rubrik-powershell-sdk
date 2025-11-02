@@ -74,11 +74,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldCancelBackupOnPreBackupScriptFailure")]
         public System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure { get; set; }
 
-        //      C# -> System.String? Username
-        // GraphQL -> username: String (scalar)
-        [JsonProperty("username")]
-        public System.String? Username { get; set; }
-
         //      C# -> System.Boolean? ShouldDisablePostBackupScriptOnBackupFailure
         // GraphQL -> shouldDisablePostBackupScriptOnBackupFailure: Boolean! (scalar)
         [Required]
@@ -99,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldDisablePreBackupScript")]
         public System.Boolean? ShouldDisablePreBackupScript { get; set; }
+
+        //      C# -> System.String? Username
+        // GraphQL -> username: String (scalar)
+        [JsonProperty("username")]
+        public System.String? Username { get; set; }
 
 
         #endregion

@@ -99,7 +99,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsRegions = @(
     /// 		$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
     /// 	)
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
@@ -126,6 +126,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		id = $someInt64
     /// 	}
+    /// 	# OPTIONAL
+    /// 	featuresWithPermissionsGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -748,7 +759,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# REQUIRED
     /// 				locationId = $someString
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				name = $someString
     /// 			}
     /// 		)
@@ -1962,7 +1973,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# REQUIRED
     /// 				locationId = $someString
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				name = $someString
     /// 			}
     /// 		)
@@ -2908,7 +2919,7 @@ $query.Var.input = @{
 	awsRegions = @(
 		$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
 	)
-	# REQUIRED
+	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
@@ -2935,6 +2946,17 @@ $query.Var.input = @{
 		# REQUIRED
 		id = $someInt64
 	}
+	# OPTIONAL
+	featuresWithPermissionsGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
+	)
 }"
             );
         }
@@ -3485,7 +3507,7 @@ $query.Var.input = @{
 			@{
 				# REQUIRED
 				locationId = $someString
-				# REQUIRED
+				# OPTIONAL
 				name = $someString
 			}
 		)
@@ -4531,7 +4553,7 @@ $query.Var.input = @{
 			@{
 				# REQUIRED
 				locationId = $someString
-				# REQUIRED
+				# OPTIONAL
 				name = $someString
 			}
 		)

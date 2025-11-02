@@ -12,3 +12,6 @@ connected, disconnected, or in an error state.
   - ID of the role created for this feature. This role will be used to
 bind conditional permissions for the role and manage feature-specific
 access control within the GCP project.
+- enabledPermissionGroups: list of PermissionsGroups
+  - Permission Groups enabled for the feature. Only populated if the feature
+flag for permission groups is enabled.

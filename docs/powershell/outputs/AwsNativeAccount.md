@@ -23,6 +23,8 @@ AWS native account.
   - Specifies the status of the cloud account associated with the feature requested.
 - enabledFeatures: list of AwsNativeAccountEnabledFeatures
   - List of protection features enabled for the AWS account.
+- roleChainingDetails: AwsRoleChainingAccount
+  - Details of the role chaining account associated with the AWS account.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig

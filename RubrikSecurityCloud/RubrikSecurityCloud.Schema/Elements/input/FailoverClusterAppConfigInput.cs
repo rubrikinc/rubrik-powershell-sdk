@@ -24,13 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("configuredSlaDomainId")]
         public System.String? ConfiguredSlaDomainId { get; set; }
 
-        //      C# -> FailoverClusterType? FailoverClusterType
-        // GraphQL -> failoverClusterType: FailoverClusterType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("failoverClusterType")]
-        public FailoverClusterType? FailoverClusterType { get; set; }
-
         //      C# -> FailoverClusterAppSourceInput? FailoverClusterAppSource
         // GraphQL -> failoverClusterAppSource: FailoverClusterAppSourceInput! (input)
         [Required]
@@ -44,6 +37,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("failoverClusterId")]
         public System.String? FailoverClusterId { get; set; }
+
+        //      C# -> FailoverClusterType? FailoverClusterType
+        // GraphQL -> failoverClusterType: FailoverClusterType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("failoverClusterType")]
+        public FailoverClusterType? FailoverClusterType { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

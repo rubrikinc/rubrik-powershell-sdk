@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int64? Timeout
-        // GraphQL -> timeout: Long (scalar)
-        [JsonProperty("timeout")]
-        public System.Int64? Timeout { get; set; }
-
         //      C# -> System.String? ScriptCommand
         // GraphQL -> scriptCommand: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("scriptCommand")]
         public System.String? ScriptCommand { get; set; }
+
+        //      C# -> System.Int64? Timeout
+        // GraphQL -> timeout: Long (scalar)
+        [JsonProperty("timeout")]
+        public System.Int64? Timeout { get; set; }
 
 
         #endregion

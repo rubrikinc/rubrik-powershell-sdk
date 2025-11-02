@@ -29,6 +29,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nutanixClusterId")]
         public System.String? NutanixClusterId { get; set; }
 
+        //      C# -> System.Boolean? ShouldDisableMigration
+        // GraphQL -> shouldDisableMigration: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldDisableMigration")]
+        public System.Boolean? ShouldDisableMigration { get; set; }
+
         //      C# -> System.Boolean? ShouldMigrateImmediately
         // GraphQL -> shouldMigrateImmediately: Boolean (scalar)
         [JsonProperty("shouldMigrateImmediately")]
@@ -63,13 +70,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nicNetworkUuids: [String!] (scalar)
         [JsonProperty("nicNetworkUuids")]
         public List<System.String>? NicNetworkUuids { get; set; }
-
-        //      C# -> System.Boolean? ShouldDisableMigration
-        // GraphQL -> shouldDisableMigration: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldDisableMigration")]
-        public System.Boolean? ShouldDisableMigration { get; set; }
 
 
         #endregion

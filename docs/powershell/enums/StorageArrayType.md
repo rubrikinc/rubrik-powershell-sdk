@@ -1,6 +1,6 @@
 ### StorageArrayType
 Supported in v5.0+
-  Storage array type/brand.
+Storage array type/brand.
 
 - STORAGE_ARRAY_TYPE_DELL_EMC_POWER_STORE
 - STORAGE_ARRAY_TYPE_HITACHI_STORAGE

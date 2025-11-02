@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ActiveDirectoryModifyLiveMountConfigInput? Config
-        // GraphQL -> config: ActiveDirectoryModifyLiveMountConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public ActiveDirectoryModifyLiveMountConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> ActiveDirectoryModifyLiveMountConfigInput? Config
+        // GraphQL -> config: ActiveDirectoryModifyLiveMountConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public ActiveDirectoryModifyLiveMountConfigInput? Config { get; set; }
 
 
         #endregion

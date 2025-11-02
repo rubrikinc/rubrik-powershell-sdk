@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<VolumeGroupRestoreFileConfigInput>? RestoreConfigs
+        // GraphQL -> restoreConfigs: [VolumeGroupRestoreFileConfigInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("restoreConfigs")]
+        public List<VolumeGroupRestoreFileConfigInput>? RestoreConfigs { get; set; }
+
         //      C# -> System.String? TargetHostId
         // GraphQL -> targetHostId: String (scalar)
         [JsonProperty("targetHostId")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldIgnoreError: Boolean (scalar)
         [JsonProperty("shouldIgnoreError")]
         public System.Boolean? ShouldIgnoreError { get; set; }
-
-        //      C# -> List<VolumeGroupRestoreFileConfigInput>? RestoreConfigs
-        // GraphQL -> restoreConfigs: [VolumeGroupRestoreFileConfigInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("restoreConfigs")]
-        public List<VolumeGroupRestoreFileConfigInput>? RestoreConfigs { get; set; }
 
 
         #endregion

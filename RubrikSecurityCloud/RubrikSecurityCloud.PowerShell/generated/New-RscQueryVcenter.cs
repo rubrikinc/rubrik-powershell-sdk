@@ -91,14 +91,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	limit = $someInt
-    /// 	# OPTIONAL
-    /// 	offset = $someInt
     /// 	# REQUIRED
     /// 	filterCondition = $someString
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
+    /// 	# OPTIONAL
+    /// 	offset = $someInt
     /// }
     /// 
     /// # Execute the query
@@ -437,11 +437,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	vcenterConfig = @{
-    /// 		# OPTIONAL
-    /// 		id = $someString
     /// 		# OPTIONAL
     /// 		connectionConfig = @{
     /// 			# OPTIONAL
@@ -453,7 +449,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		id = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -698,14 +698,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.VcenterAdvancedTagPreviewFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	limit = $someInt
-	# OPTIONAL
-	offset = $someInt
 	# REQUIRED
 	filterCondition = $someString
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	limit = $someInt
+	# OPTIONAL
+	offset = $someInt
 }"
             );
         }
@@ -990,11 +990,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	vcenterConfig = @{
-		# OPTIONAL
-		id = $someString
 		# OPTIONAL
 		connectionConfig = @{
 			# OPTIONAL
@@ -1006,7 +1002,11 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
+		# OPTIONAL
+		id = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

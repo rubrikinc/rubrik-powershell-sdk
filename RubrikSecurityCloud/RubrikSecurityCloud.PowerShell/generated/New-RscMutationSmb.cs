@@ -92,8 +92,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		name = $someString
@@ -109,14 +107,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			isStickySmbService = $someBoolean
-    /// 			# OPTIONAL
-    /// 			orgNetworkId = $someString
     /// 			# REQUIRED
     /// 			password = $someString
     /// 			# REQUIRED
     /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
     /// 		}
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -257,12 +257,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		isStickySmbService = $someBoolean
-    /// 		# OPTIONAL
-    /// 		orgNetworkId = $someString
     /// 		# REQUIRED
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		orgNetworkId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	domainName = $someString
@@ -296,12 +296,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		enforceSmbSecurity = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -502,8 +502,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		name = $someString
@@ -519,14 +517,16 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			isStickySmbService = $someBoolean
-			# OPTIONAL
-			orgNetworkId = $someString
 			# REQUIRED
 			password = $someString
 			# REQUIRED
 			username = $someString
+			# OPTIONAL
+			orgNetworkId = $someString
 		}
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -635,12 +635,12 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		isStickySmbService = $someBoolean
-		# OPTIONAL
-		orgNetworkId = $someString
 		# REQUIRED
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		orgNetworkId = $someString
 	}
 	# REQUIRED
 	domainName = $someString
@@ -666,12 +666,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		enforceSmbSecurity = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

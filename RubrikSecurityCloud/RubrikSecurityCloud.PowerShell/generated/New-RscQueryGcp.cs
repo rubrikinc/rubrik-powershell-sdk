@@ -260,6 +260,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	regions = @(
     /// 		$someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	showHealthCheckStatus = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1199,6 +1201,8 @@ $query.Var.input = @{
 	regions = @(
 		$someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
 	)
+	# OPTIONAL
+	showHealthCheckStatus = $someBoolean
 }"
             );
         }

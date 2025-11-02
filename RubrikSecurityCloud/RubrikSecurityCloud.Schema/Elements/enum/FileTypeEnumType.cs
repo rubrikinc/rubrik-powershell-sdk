@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SAAS_APPS")]
         SAAS_APPS,
 
+        [EnumMember(Value = "SLA_WITH_REPLICATION")]
+        SLA_WITH_REPLICATION,
+
         [EnumMember(Value = "TABLE_EXPORT_CSV")]
         TABLE_EXPORT_CSV,
 

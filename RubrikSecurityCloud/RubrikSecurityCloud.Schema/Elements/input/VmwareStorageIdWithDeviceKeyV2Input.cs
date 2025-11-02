@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? StorageLocationId
-        // GraphQL -> storageLocationId: String (scalar)
-        [JsonProperty("storageLocationId")]
-        public System.String? StorageLocationId { get; set; }
-
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("deviceKey")]
         public System.Int32? DeviceKey { get; set; }
+
+        //      C# -> System.String? StorageLocationId
+        // GraphQL -> storageLocationId: String (scalar)
+        [JsonProperty("storageLocationId")]
+        public System.String? StorageLocationId { get; set; }
 
 
         #endregion

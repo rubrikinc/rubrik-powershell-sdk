@@ -3,4 +3,4 @@ Supported in v5.0+
 
 - message: System.String
   - Required. Supported in v5.0+
-  The test message that was sent.
+The test message that was sent.

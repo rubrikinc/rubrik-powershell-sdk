@@ -17,6 +17,8 @@ NAS share instance of a registered NAS system.
   - Rubrik CDM ID of the registered NAS system.
 - isNasShareManuallyAdded: System.Boolean
   - Specifies whether the NAS shares are manually configured on the NAS system.
+- userSelectedInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for Fileset jobs on the share.
 - id: System.String
   - Object ID.
 - nasSystem: NasSystem

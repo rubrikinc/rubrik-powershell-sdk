@@ -24,6 +24,10 @@ Instance of a registered NAS system.
   - Optional NetApp Metro Cluster info for the NAS system.
 - isUserSuppliedSmbCredentials: System.Boolean
   - Specifies whether SMB credentials are manually provided by the user.
+- userSelectedNfsInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for NFS operations on the system.
+- userSelectedSmbInterfaces: list of System.Strings
+  - List of hostnames or IP addresses used for SMB operations on the system.
 - id: System.String
   - Object ID.
 - descendantConnection: NasSystemDescendantTypeConnection

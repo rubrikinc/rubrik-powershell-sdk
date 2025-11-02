@@ -1,6 +1,6 @@
 ### MissedSnapshotDayOfTimeUnit
 Supported in v5.0+
-  Units for missed snapshot dayOfTime.
+Units for missed snapshot dayOfTime.
 
 - MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_FIFTEENTH
 - MISSED_SNAPSHOT_DAY_OF_TIME_UNIT_FIRST_DAY

@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> EndSnapshotManagedVolumeRequestInput? Params
+        // GraphQL -> params: EndSnapshotManagedVolumeRequestInput (input)
+        [JsonProperty("params")]
+        public EndSnapshotManagedVolumeRequestInput? Params { get; set; }
+
         //      C# -> System.Int32? EndSnapshotDelayInSeconds
         // GraphQL -> endSnapshotDelayInSeconds: Int (scalar)
         [JsonProperty("endSnapshotDelayInSeconds")]
         public System.Int32? EndSnapshotDelayInSeconds { get; set; }
-
-        //      C# -> System.String? OwnerId
-        // GraphQL -> ownerId: String (scalar)
-        [JsonProperty("ownerId")]
-        public System.String? OwnerId { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -36,10 +36,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> EndSnapshotManagedVolumeRequestInput? Params
-        // GraphQL -> params: EndSnapshotManagedVolumeRequestInput (input)
-        [JsonProperty("params")]
-        public EndSnapshotManagedVolumeRequestInput? Params { get; set; }
+        //      C# -> System.String? OwnerId
+        // GraphQL -> ownerId: String (scalar)
+        [JsonProperty("ownerId")]
+        public System.String? OwnerId { get; set; }
 
 
         #endregion

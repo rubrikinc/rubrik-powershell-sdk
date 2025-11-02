@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? StoragePolicyId
-        // GraphQL -> storagePolicyId: String (scalar)
-        [JsonProperty("storagePolicyId")]
-        public System.String? StoragePolicyId { get; set; }
-
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("networkConnections")]
         public List<VappVmNetworkConnectionInput>? NetworkConnections { get; set; }
+
+        //      C# -> System.String? StoragePolicyId
+        // GraphQL -> storagePolicyId: String (scalar)
+        [JsonProperty("storagePolicyId")]
+        public System.String? StoragePolicyId { get; set; }
 
         //      C# -> System.String? VcdMoid
         // GraphQL -> vcdMoid: String! (scalar)

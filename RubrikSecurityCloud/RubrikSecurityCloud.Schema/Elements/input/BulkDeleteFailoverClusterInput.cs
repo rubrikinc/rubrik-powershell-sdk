@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? PreserveSnapshots
-        // GraphQL -> preserveSnapshots: Boolean (scalar)
-        [JsonProperty("preserveSnapshots")]
-        public System.Boolean? PreserveSnapshots { get; set; }
-
         //      C# -> List<System.String>? Ids
         // GraphQL -> ids: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
+
+        //      C# -> System.Boolean? PreserveSnapshots
+        // GraphQL -> preserveSnapshots: Boolean (scalar)
+        [JsonProperty("preserveSnapshots")]
+        public System.Boolean? PreserveSnapshots { get; set; }
 
 
         #endregion

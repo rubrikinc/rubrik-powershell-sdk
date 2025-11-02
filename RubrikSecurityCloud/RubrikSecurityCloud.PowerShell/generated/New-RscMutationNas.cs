@@ -97,7 +97,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nasShares = @(
     /// 			@{
     /// 				# REQUIRED
-    /// 				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
+    /// 				exportPoint = $someString
     /// 				# OPTIONAL
     /// 				credentials = @{
     /// 					# OPTIONAL
@@ -106,7 +106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					username = $someString
     /// 				}
     /// 				# REQUIRED
-    /// 				exportPoint = $someString
+    /// 				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
     /// 			}
     /// 		)
     /// 		# REQUIRED
@@ -218,16 +218,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nasShares = @(
     /// 			@{
+    /// 				# REQUIRED
+    /// 				id = $someString
     /// 				# OPTIONAL
     /// 				isIsilonChangelistEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				exportPoint = $someString
-    /// 				# OPTIONAL
-    /// 				userSelectedInterfaces = @(
-    /// 					$someString
-    /// 				)
-    /// 				# OPTIONAL
-    /// 				nasSourceId = $someString
     /// 				# OPTIONAL
     /// 				credentials = @{
     /// 					# OPTIONAL
@@ -235,8 +231,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					username = $someString
     /// 				}
-    /// 				# REQUIRED
-    /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				userSelectedInterfaces = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				nasSourceId = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -375,19 +375,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	nasSystem = @{
-    /// 		# OPTIONAL
-    /// 		isIsilonChangelistEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldGrantSmbShareRootAccess = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isNetAppMetroClusterEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldGrantNfsShareRootAccess = $someBoolean
-    /// 		# REQUIRED
-    /// 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
     /// 		# OPTIONAL
     /// 		genericNasSystemParameters = @{
     /// 			# REQUIRED
@@ -405,23 +393,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		hostname = $someString
     /// 		# OPTIONAL
-    /// 		nasFlashBladeApiCredentials = @{
-    /// 			# OPTIONAL
-    /// 			apiCertificate = $someString
-    /// 			# OPTIONAL
-    /// 			certificateId = $someString
-    /// 			# REQUIRED
-    /// 			apiToken = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
-    /// 			# OPTIONAL
-    /// 			smbCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
-    /// 		}
+    /// 		isIsilonChangelistEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		nasTmpApiCredentials = @{
     /// 			# OPTIONAL
@@ -435,18 +407,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			areApiCredentialsPermanent = $someBoolean
     /// 		}
+    /// 		# REQUIRED
+    /// 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
     /// 		# OPTIONAL
-    /// 		nutanixFileServerParameters = @{
+    /// 		shouldGrantSmbShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
+    /// 		nasFlashBladeApiCredentials = @{
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
+    /// 			# REQUIRED
+    /// 			apiToken = $someString
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
     /// 			# OPTIONAL
     /// 			certificateId = $someString
-    /// 			# OPTIONAL
-    /// 			apiPassword = $someString
-    /// 			# OPTIONAL
-    /// 			apiUsername = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
     /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
@@ -456,13 +430,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 		# OPTIONAL
+    /// 		isNetAppMetroClusterEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		smbCredentials = @{
     /// 			# OPTIONAL
     /// 			password = $someString
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		nutanixFileServerParameters = @{
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
+    /// 			# OPTIONAL
+    /// 			apiCertificate = $someString
+    /// 			# OPTIONAL
+    /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			smbCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			apiPassword = $someString
+    /// 			# OPTIONAL
+    /// 			apiUsername = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldGrantNfsShareRootAccess = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -497,10 +497,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nasShareProperties = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				isIsilonChangelistEnabled = $someBoolean
     /// 				# REQUIRED
     /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				isIsilonChangelistEnabled = $someBoolean
     /// 			}
     /// 		)
     /// 	}
@@ -534,29 +534,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	nasSystemUpdateProperties = @{
-    /// 		# OPTIONAL
-    /// 		hostname = $someString
-    /// 		# OPTIONAL
-    /// 		isIsilonChangelistEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldGrantSmbShareRootAccess = $someBoolean
-    /// 		# OPTIONAL
-    /// 		userSelectedSmbInterfaces = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		isNetAppMetroClusterEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldGrantNfsShareRootAccess = $someBoolean
-    /// 		# OPTIONAL
-    /// 		userSelectedNfsInterfaces = @(
-    /// 			$someString
-    /// 		)
     /// 		# OPTIONAL
     /// 		genericNasSystemParameters = @{
     /// 			# REQUIRED
@@ -572,6 +550,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 		# OPTIONAL
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		isIsilonChangelistEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		nasApiCredentials = @{
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
@@ -585,15 +567,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			areApiCredentialsPermanent = $someBoolean
     /// 		}
     /// 		# OPTIONAL
+    /// 		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldGrantSmbShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
     /// 		nasFlashBladeApiCredentials = @{
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
+    /// 			# REQUIRED
+    /// 			apiToken = $someString
     /// 			# OPTIONAL
     /// 			apiCertificate = $someString
     /// 			# OPTIONAL
     /// 			certificateId = $someString
-    /// 			# REQUIRED
-    /// 			apiToken = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
     /// 			# OPTIONAL
     /// 			smbCredentials = @{
     /// 				# REQUIRED
@@ -603,25 +589,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 		# OPTIONAL
-    /// 		nutanixFileServerParameters = @{
-    /// 			# OPTIONAL
-    /// 			apiCertificate = $someString
-    /// 			# OPTIONAL
-    /// 			certificateId = $someString
-    /// 			# OPTIONAL
-    /// 			apiPassword = $someString
-    /// 			# OPTIONAL
-    /// 			apiUsername = $someString
-    /// 			# REQUIRED
-    /// 			hasSmbSupport = $someBoolean
-    /// 			# OPTIONAL
-    /// 			smbCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
-    /// 		}
+    /// 		userSelectedSmbInterfaces = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNetAppMetroClusterEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		smbCredentials = @{
     /// 			# OPTIONAL
@@ -629,7 +601,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		nutanixFileServerParameters = @{
+    /// 			# REQUIRED
+    /// 			hasSmbSupport = $someBoolean
+    /// 			# OPTIONAL
+    /// 			apiCertificate = $someString
+    /// 			# OPTIONAL
+    /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			smbCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			apiPassword = $someString
+    /// 			# OPTIONAL
+    /// 			apiUsername = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldGrantNfsShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
+    /// 		userSelectedNfsInterfaces = @(
+    /// 			$someString
+    /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -839,7 +839,7 @@ $query.Var.input = @{
 		nasShares = @(
 			@{
 				# REQUIRED
-				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
+				exportPoint = $someString
 				# OPTIONAL
 				credentials = @{
 					# OPTIONAL
@@ -848,7 +848,7 @@ $query.Var.input = @{
 					username = $someString
 				}
 				# REQUIRED
-				exportPoint = $someString
+				shareType = $someCreateNasShareInputShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CreateNasShareInputShareType]) for enum values.
 			}
 		)
 		# REQUIRED
@@ -936,16 +936,12 @@ $query.Var.input = @{
 		# REQUIRED
 		nasShares = @(
 			@{
+				# REQUIRED
+				id = $someString
 				# OPTIONAL
 				isIsilonChangelistEnabled = $someBoolean
 				# OPTIONAL
 				exportPoint = $someString
-				# OPTIONAL
-				userSelectedInterfaces = @(
-					$someString
-				)
-				# OPTIONAL
-				nasSourceId = $someString
 				# OPTIONAL
 				credentials = @{
 					# OPTIONAL
@@ -953,8 +949,12 @@ $query.Var.input = @{
 					# REQUIRED
 					username = $someString
 				}
-				# REQUIRED
-				id = $someString
+				# OPTIONAL
+				userSelectedInterfaces = @(
+					$someString
+				)
+				# OPTIONAL
+				nasSourceId = $someString
 			}
 		)
 	}
@@ -1061,19 +1061,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	nasSystem = @{
-		# OPTIONAL
-		isIsilonChangelistEnabled = $someBoolean
-		# OPTIONAL
-		shouldGrantSmbShareRootAccess = $someBoolean
-		# OPTIONAL
-		isNetAppMetroClusterEnabled = $someBoolean
-		# OPTIONAL
-		shouldGrantNfsShareRootAccess = $someBoolean
-		# REQUIRED
-		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
 		# OPTIONAL
 		genericNasSystemParameters = @{
 			# REQUIRED
@@ -1091,23 +1079,7 @@ $query.Var.input = @{
 		# REQUIRED
 		hostname = $someString
 		# OPTIONAL
-		nasFlashBladeApiCredentials = @{
-			# OPTIONAL
-			apiCertificate = $someString
-			# OPTIONAL
-			certificateId = $someString
-			# REQUIRED
-			apiToken = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
-			# OPTIONAL
-			smbCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
-		}
+		isIsilonChangelistEnabled = $someBoolean
 		# OPTIONAL
 		nasTmpApiCredentials = @{
 			# OPTIONAL
@@ -1121,18 +1093,20 @@ $query.Var.input = @{
 			# OPTIONAL
 			areApiCredentialsPermanent = $someBoolean
 		}
+		# REQUIRED
+		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
 		# OPTIONAL
-		nutanixFileServerParameters = @{
+		shouldGrantSmbShareRootAccess = $someBoolean
+		# OPTIONAL
+		nasFlashBladeApiCredentials = @{
+			# REQUIRED
+			hasSmbSupport = $someBoolean
+			# REQUIRED
+			apiToken = $someString
 			# OPTIONAL
 			apiCertificate = $someString
 			# OPTIONAL
 			certificateId = $someString
-			# OPTIONAL
-			apiPassword = $someString
-			# OPTIONAL
-			apiUsername = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
 			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
@@ -1142,13 +1116,39 @@ $query.Var.input = @{
 			}
 		}
 		# OPTIONAL
+		isNetAppMetroClusterEnabled = $someBoolean
+		# OPTIONAL
 		smbCredentials = @{
 			# OPTIONAL
 			password = $someString
 			# REQUIRED
 			username = $someString
 		}
+		# OPTIONAL
+		nutanixFileServerParameters = @{
+			# REQUIRED
+			hasSmbSupport = $someBoolean
+			# OPTIONAL
+			apiCertificate = $someString
+			# OPTIONAL
+			certificateId = $someString
+			# OPTIONAL
+			smbCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
+			# OPTIONAL
+			apiPassword = $someString
+			# OPTIONAL
+			apiUsername = $someString
+		}
+		# OPTIONAL
+		shouldGrantNfsShareRootAccess = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1175,10 +1175,10 @@ $query.Var.input = @{
 		# REQUIRED
 		nasShareProperties = @(
 			@{
-				# OPTIONAL
-				isIsilonChangelistEnabled = $someBoolean
 				# REQUIRED
 				id = $someString
+				# OPTIONAL
+				isIsilonChangelistEnabled = $someBoolean
 			}
 		)
 	}
@@ -1204,29 +1204,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	nasSystemUpdateProperties = @{
-		# OPTIONAL
-		hostname = $someString
-		# OPTIONAL
-		isIsilonChangelistEnabled = $someBoolean
-		# OPTIONAL
-		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
-		# OPTIONAL
-		shouldGrantSmbShareRootAccess = $someBoolean
-		# OPTIONAL
-		userSelectedSmbInterfaces = @(
-			$someString
-		)
-		# OPTIONAL
-		isNetAppMetroClusterEnabled = $someBoolean
-		# OPTIONAL
-		shouldGrantNfsShareRootAccess = $someBoolean
-		# OPTIONAL
-		userSelectedNfsInterfaces = @(
-			$someString
-		)
 		# OPTIONAL
 		genericNasSystemParameters = @{
 			# REQUIRED
@@ -1242,6 +1220,10 @@ $query.Var.input = @{
 			}
 		}
 		# OPTIONAL
+		hostname = $someString
+		# OPTIONAL
+		isIsilonChangelistEnabled = $someBoolean
+		# OPTIONAL
 		nasApiCredentials = @{
 			# OPTIONAL
 			apiCertificate = $someString
@@ -1255,15 +1237,19 @@ $query.Var.input = @{
 			areApiCredentialsPermanent = $someBoolean
 		}
 		# OPTIONAL
+		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
+		# OPTIONAL
+		shouldGrantSmbShareRootAccess = $someBoolean
+		# OPTIONAL
 		nasFlashBladeApiCredentials = @{
+			# REQUIRED
+			hasSmbSupport = $someBoolean
+			# REQUIRED
+			apiToken = $someString
 			# OPTIONAL
 			apiCertificate = $someString
 			# OPTIONAL
 			certificateId = $someString
-			# REQUIRED
-			apiToken = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
 			# OPTIONAL
 			smbCredentials = @{
 				# REQUIRED
@@ -1273,25 +1259,11 @@ $query.Var.input = @{
 			}
 		}
 		# OPTIONAL
-		nutanixFileServerParameters = @{
-			# OPTIONAL
-			apiCertificate = $someString
-			# OPTIONAL
-			certificateId = $someString
-			# OPTIONAL
-			apiPassword = $someString
-			# OPTIONAL
-			apiUsername = $someString
-			# REQUIRED
-			hasSmbSupport = $someBoolean
-			# OPTIONAL
-			smbCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
-		}
+		userSelectedSmbInterfaces = @(
+			$someString
+		)
+		# OPTIONAL
+		isNetAppMetroClusterEnabled = $someBoolean
 		# OPTIONAL
 		smbCredentials = @{
 			# OPTIONAL
@@ -1299,7 +1271,35 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
+		# OPTIONAL
+		nutanixFileServerParameters = @{
+			# REQUIRED
+			hasSmbSupport = $someBoolean
+			# OPTIONAL
+			apiCertificate = $someString
+			# OPTIONAL
+			certificateId = $someString
+			# OPTIONAL
+			smbCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
+			}
+			# OPTIONAL
+			apiPassword = $someString
+			# OPTIONAL
+			apiUsername = $someString
+		}
+		# OPTIONAL
+		shouldGrantNfsShareRootAccess = $someBoolean
+		# OPTIONAL
+		userSelectedNfsInterfaces = @(
+			$someString
+		)
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

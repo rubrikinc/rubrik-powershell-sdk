@@ -196,18 +196,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	recoveryRangeRequestData = @{
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
     /// 		# REQUIRED
     /// 		databaseName = $someString
     /// 		# REQUIRED
     /// 		sourceName = $someString
     /// 		# REQUIRED
     /// 		tableName = $someString
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -238,8 +238,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	schemaRequestData = @{
     /// 		# REQUIRED
     /// 		databaseName = $someString
@@ -250,6 +248,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		versionTimestamp = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -734,18 +734,18 @@ $query.Var.fid = $someString"
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	recoveryRangeRequestData = @{
-		# OPTIONAL
-		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
 		# REQUIRED
 		databaseName = $someString
 		# REQUIRED
 		sourceName = $someString
 		# REQUIRED
 		tableName = $someString
+		# OPTIONAL
+		sourceType = $someMosaicRecoverableRangeRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRecoverableRangeRequestSourceType]) for enum values.
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -768,8 +768,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	schemaRequestData = @{
 		# REQUIRED
 		databaseName = $someString
@@ -780,6 +778,8 @@ $query.Var.input = @{
 		# REQUIRED
 		versionTimestamp = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

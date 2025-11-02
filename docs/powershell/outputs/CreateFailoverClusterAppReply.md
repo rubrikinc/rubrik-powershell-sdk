@@ -2,4 +2,3 @@
 Reply Object for CreateFailoverClusterApp.
 
 - output: FailoverClusterAppSummary
-  - 

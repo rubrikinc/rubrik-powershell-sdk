@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
-        // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
-        [JsonProperty("shouldCancelBackupOnPreBackupScriptFailure")]
-        public System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure { get; set; }
-
-        //      C# -> System.Boolean? ShouldEnableLogExport
-        // GraphQL -> shouldEnableLogExport: Boolean (scalar)
-        [JsonProperty("shouldEnableLogExport")]
-        public System.Boolean? ShouldEnableLogExport { get; set; }
-
         //      C# -> SlaManagedVolumeScriptConfigInput? BackupScript
         // GraphQL -> backupScript: SlaManagedVolumeScriptConfigInput! (input)
         [Required]
@@ -65,12 +55,22 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preBackupScript")]
         public SlaManagedVolumeScriptConfigInput? PreBackupScript { get; set; }
 
+        //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
+        // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean (scalar)
+        [JsonProperty("shouldCancelBackupOnPreBackupScriptFailure")]
+        public System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
+        //      C# -> System.Boolean? ShouldEnableLogExport
+        // GraphQL -> shouldEnableLogExport: Boolean (scalar)
+        [JsonProperty("shouldEnableLogExport")]
+        public System.Boolean? ShouldEnableLogExport { get; set; }
 
 
         #endregion

@@ -10,4 +10,3 @@ Supported in v5.0+
 - errorsCollected: System.Int64
   - Supported in v8.0+
 - baseSnapshotSummary: BaseSnapshotSummary
-  - 

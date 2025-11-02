@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterId")]
         public System.String? ClusterId { get; set; }
 
+        //      C# -> List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId
+        // GraphQL -> diskDeviceKeyToStorageId: [VmwareStorageIdWithDeviceKeyV2Input!] (input)
+        [JsonProperty("diskDeviceKeyToStorageId")]
+        public List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId { get; set; }
+
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         [JsonProperty("hostId")]
@@ -54,6 +59,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unregisterVm")]
         public System.Boolean? UnregisterVm { get; set; }
 
+        //      C# -> List<VmwareVnicBindingInfoV2Input>? VnicBindings
+        // GraphQL -> vNicBindings: [VmwareVnicBindingInfoV2Input!] (input)
+        [JsonProperty("vNicBindings")]
+        public List<VmwareVnicBindingInfoV2Input>? VnicBindings { get; set; }
+
+        //      C# -> MountExportSnapshotJobCommonOptionsV2Input? MountExportSnapshotJobCommonOptionsV2
+        // GraphQL -> mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input (input)
+        [JsonProperty("mountExportSnapshotJobCommonOptionsV2")]
+        public MountExportSnapshotJobCommonOptionsV2Input? MountExportSnapshotJobCommonOptionsV2 { get; set; }
+
+        //      C# -> RequiredRecoveryParametersInput? RequiredRecoveryParameters
+        // GraphQL -> requiredRecoveryParameters: RequiredRecoveryParametersInput (input)
+        [JsonProperty("requiredRecoveryParameters")]
+        public RequiredRecoveryParametersInput? RequiredRecoveryParameters { get; set; }
+
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
         [JsonProperty("folderId")]
@@ -68,26 +88,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldConvertToTemplate: Boolean (scalar)
         [JsonProperty("shouldConvertToTemplate")]
         public System.Boolean? ShouldConvertToTemplate { get; set; }
-
-        //      C# -> List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId
-        // GraphQL -> diskDeviceKeyToStorageId: [VmwareStorageIdWithDeviceKeyV2Input!] (input)
-        [JsonProperty("diskDeviceKeyToStorageId")]
-        public List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId { get; set; }
-
-        //      C# -> MountExportSnapshotJobCommonOptionsV2Input? MountExportSnapshotJobCommonOptionsV2
-        // GraphQL -> mountExportSnapshotJobCommonOptionsV2: MountExportSnapshotJobCommonOptionsV2Input (input)
-        [JsonProperty("mountExportSnapshotJobCommonOptionsV2")]
-        public MountExportSnapshotJobCommonOptionsV2Input? MountExportSnapshotJobCommonOptionsV2 { get; set; }
-
-        //      C# -> RequiredRecoveryParametersInput? RequiredRecoveryParameters
-        // GraphQL -> requiredRecoveryParameters: RequiredRecoveryParametersInput (input)
-        [JsonProperty("requiredRecoveryParameters")]
-        public RequiredRecoveryParametersInput? RequiredRecoveryParameters { get; set; }
-
-        //      C# -> List<VmwareVnicBindingInfoV2Input>? VnicBindings
-        // GraphQL -> vNicBindings: [VmwareVnicBindingInfoV2Input!] (input)
-        [JsonProperty("vNicBindings")]
-        public List<VmwareVnicBindingInfoV2Input>? VnicBindings { get; set; }
 
 
         #endregion

@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("config")]
         public ManagedVolumeDownloadFilesJobConfigInput? Config { get; set; }
 
-        //      C# -> System.String? LocationId
-        // GraphQL -> locationId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("locationId")]
-        public System.String? LocationId { get; set; }
-
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
+
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("locationId")]
+        public System.String? LocationId { get; set; }
 
 
         #endregion

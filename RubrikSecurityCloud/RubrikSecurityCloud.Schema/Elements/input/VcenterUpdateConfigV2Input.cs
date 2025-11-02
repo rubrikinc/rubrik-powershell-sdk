@@ -19,27 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? CaCerts
-        // GraphQL -> caCerts: String (scalar)
-        [JsonProperty("caCerts")]
-        public System.String? CaCerts { get; set; }
-
-        //      C# -> System.Boolean? ShouldEnableHotAddProxyForOnPrem
-        // GraphQL -> shouldEnableHotAddProxyForOnPrem: Boolean (scalar)
-        [JsonProperty("shouldEnableHotAddProxyForOnPrem")]
-        public System.Boolean? ShouldEnableHotAddProxyForOnPrem { get; set; }
-
         //      C# -> VcenterUpdateConfigV2ConflictResolutionAuthz? ConflictResolutionAuthz
         // GraphQL -> conflictResolutionAuthz: VcenterUpdateConfigV2ConflictResolutionAuthz (enum)
         [JsonProperty("conflictResolutionAuthz")]
         public VcenterUpdateConfigV2ConflictResolutionAuthz? ConflictResolutionAuthz { get; set; }
 
-        //      C# -> System.String? Hostname
-        // GraphQL -> hostname: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("hostname")]
-        public System.String? Hostname { get; set; }
+        //      C# -> System.String? CaCerts
+        // GraphQL -> caCerts: String (scalar)
+        [JsonProperty("caCerts")]
+        public System.String? CaCerts { get; set; }
 
         //      C# -> System.String? Password
         // GraphQL -> password: String! (scalar)
@@ -47,6 +35,18 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("password")]
         public System.String? Password { get; set; }
+
+        //      C# -> System.Boolean? ShouldEnableHotAddProxyForOnPrem
+        // GraphQL -> shouldEnableHotAddProxyForOnPrem: Boolean (scalar)
+        [JsonProperty("shouldEnableHotAddProxyForOnPrem")]
+        public System.Boolean? ShouldEnableHotAddProxyForOnPrem { get; set; }
+
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("hostname")]
+        public System.String? Hostname { get; set; }
 
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

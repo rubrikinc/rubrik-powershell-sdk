@@ -19,22 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? CaCerts
-        // GraphQL -> caCerts: String (scalar)
-        [JsonProperty("caCerts")]
-        public System.String? CaCerts { get; set; }
-
-        //      C# -> System.String? CertificateId
-        // GraphQL -> certificateId: String (scalar)
-        [JsonProperty("certificateId")]
-        public System.String? CertificateId { get; set; }
-
         //      C# -> StorageArrayType? ArrayType
         // GraphQL -> arrayType: StorageArrayType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("arrayType")]
         public StorageArrayType? ArrayType { get; set; }
+
+        //      C# -> System.String? CaCerts
+        // GraphQL -> caCerts: String (scalar)
+        [JsonProperty("caCerts")]
+        public System.String? CaCerts { get; set; }
 
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
@@ -56,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
+        //      C# -> System.String? CertificateId
+        // GraphQL -> certificateId: String (scalar)
+        [JsonProperty("certificateId")]
+        public System.String? CertificateId { get; set; }
 
 
         #endregion

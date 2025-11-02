@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> BliMigrationStatus? BliMigrationStatusType
+        // GraphQL -> bliMigrationStatusType: BliMigrationStatus! (enum)
+        [JsonProperty("bliMigrationStatusType")]
+        public BliMigrationStatus? BliMigrationStatusType { get; set; }
+
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("locationConnectionStatus")]
@@ -211,6 +216,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RubrikManagedRcsTarget Set(
+        BliMigrationStatus? BliMigrationStatusType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
@@ -249,6 +255,9 @@ namespace RubrikSecurityCloud.Types
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( BliMigrationStatusType != null ) {
+            this.BliMigrationStatusType = BliMigrationStatusType;
+        }
         if ( LocationConnectionStatus != null ) {
             this.LocationConnectionStatus = LocationConnectionStatus;
         }
@@ -371,6 +380,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> BliMigrationStatus? BliMigrationStatusType
+        // GraphQL -> bliMigrationStatusType: BliMigrationStatus! (enum)
+        if (this.BliMigrationStatusType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "bliMigrationStatusType\n" ;
+            } else {
+                s += ind + "bliMigrationStatusType\n" ;
+            }
+        }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (this.LocationConnectionStatus != null) {
@@ -723,6 +741,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> BliMigrationStatus? BliMigrationStatusType
+        // GraphQL -> bliMigrationStatusType: BliMigrationStatus! (enum)
+        if (ec.Includes("bliMigrationStatusType",true))
+        {
+            if(this.BliMigrationStatusType == null) {
+
+                this.BliMigrationStatusType = new BliMigrationStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BliMigrationStatusType != null && ec.Excludes("bliMigrationStatusType",true))
+        {
+            this.BliMigrationStatusType = null;
+        }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (ec.Includes("locationConnectionStatus",true))

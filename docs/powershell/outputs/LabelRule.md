@@ -17,5 +17,7 @@ A single label Rule.
   - List of cloud-native accounts.
 - applyToAllCloudAccounts: System.Boolean
   - Does this tag rule apply to all cloud accounts.
+- labelConditions: CloudNativeTagConditionOutput
+  - Label conditions for the label rule.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.

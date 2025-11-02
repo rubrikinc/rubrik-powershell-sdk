@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> InternalDeleteHypervVirtualMachineSnapshotRequestLocation? Location
-        // GraphQL -> location: InternalDeleteHypervVirtualMachineSnapshotRequestLocation! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("location")]
-        public InternalDeleteHypervVirtualMachineSnapshotRequestLocation? Location { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> InternalDeleteHypervVirtualMachineSnapshotRequestLocation? Location
+        // GraphQL -> location: InternalDeleteHypervVirtualMachineSnapshotRequestLocation! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("location")]
+        public InternalDeleteHypervVirtualMachineSnapshotRequestLocation? Location { get; set; }
 
 
         #endregion

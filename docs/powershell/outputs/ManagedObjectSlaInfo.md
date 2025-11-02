@@ -19,6 +19,6 @@ Supported in v5.2+
   - Supported in v5.2+
 - objectId: System.String
   - Required. Supported in v5.2+
-  Managed ID of the object.
+Managed ID of the object.
 - slaAssignment: SlaAssignment
   - Required. Specifies the method used to assign an SLA Domain to the workload. Possible values are Derived, Direct, and Unassigned.

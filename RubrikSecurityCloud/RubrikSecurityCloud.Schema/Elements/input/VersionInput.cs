@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? DatabaseName
+        // GraphQL -> databaseName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("databaseName")]
+        public System.String? DatabaseName { get; set; }
+
         //      C# -> System.Int32? MaxEntries
         // GraphQL -> maxEntries: Int (scalar)
         [JsonProperty("maxEntries")]
@@ -28,23 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> since: Int (scalar)
         [JsonProperty("since")]
         public System.Int32? Since { get; set; }
-
-        //      C# -> System.Int32? Upto
-        // GraphQL -> upto: Int (scalar)
-        [JsonProperty("upto")]
-        public System.Int32? Upto { get; set; }
-
-        //      C# -> VersionSourceType? SourceType
-        // GraphQL -> sourceType: VersionSourceType (enum)
-        [JsonProperty("sourceType")]
-        public VersionSourceType? SourceType { get; set; }
-
-        //      C# -> System.String? DatabaseName
-        // GraphQL -> databaseName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("databaseName")]
-        public System.String? DatabaseName { get; set; }
 
         //      C# -> System.String? SourceName
         // GraphQL -> sourceName: String! (scalar)
@@ -59,6 +49,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("tableName")]
         public System.String? TableName { get; set; }
+
+        //      C# -> System.Int32? Upto
+        // GraphQL -> upto: Int (scalar)
+        [JsonProperty("upto")]
+        public System.Int32? Upto { get; set; }
+
+        //      C# -> VersionSourceType? SourceType
+        // GraphQL -> sourceType: VersionSourceType (enum)
+        [JsonProperty("sourceType")]
+        public VersionSourceType? SourceType { get; set; }
 
 
         #endregion

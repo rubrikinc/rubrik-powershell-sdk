@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> NasSystemUpdateInput? NasSystemUpdateProperties
         // GraphQL -> nasSystemUpdateProperties: NasSystemUpdateInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("nasSystemUpdateProperties")]
         public NasSystemUpdateInput? NasSystemUpdateProperties { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

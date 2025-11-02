@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.Int32? Limit
         // GraphQL -> limit: Int (scalar)
         [JsonProperty("limit")]
@@ -63,13 +70,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> status: V2QueryLogShippingConfigurationsV2RequestStatus (enum)
         [JsonProperty("status")]
         public V2QueryLogShippingConfigurationsV2RequestStatus? Status { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

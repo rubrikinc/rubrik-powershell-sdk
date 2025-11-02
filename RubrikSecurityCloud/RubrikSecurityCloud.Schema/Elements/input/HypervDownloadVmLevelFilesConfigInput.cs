@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<System.String>? ConfigFileExtensions
-        // GraphQL -> configFileExtensions: [String!]! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("configFileExtensions")]
-        public List<System.String>? ConfigFileExtensions { get; set; }
-
         //      C# -> List<System.String>? VirtualDiskIds
         // GraphQL -> virtualDiskIds: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("virtualDiskIds")]
         public List<System.String>? VirtualDiskIds { get; set; }
+
+        //      C# -> List<System.String>? ConfigFileExtensions
+        // GraphQL -> configFileExtensions: [String!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("configFileExtensions")]
+        public List<System.String>? ConfigFileExtensions { get; set; }
 
 
         #endregion

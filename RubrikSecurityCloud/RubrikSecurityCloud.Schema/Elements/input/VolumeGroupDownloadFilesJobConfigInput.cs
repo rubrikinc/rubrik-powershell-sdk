@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> LegalHoldDownloadConfigInput? LegalHoldDownloadConfig
-        // GraphQL -> legalHoldDownloadConfig: LegalHoldDownloadConfigInput (input)
-        [JsonProperty("legalHoldDownloadConfig")]
-        public LegalHoldDownloadConfigInput? LegalHoldDownloadConfig { get; set; }
-
         //      C# -> List<System.String>? Paths
         // GraphQL -> paths: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("paths")]
         public List<System.String>? Paths { get; set; }
+
+        //      C# -> LegalHoldDownloadConfigInput? LegalHoldDownloadConfig
+        // GraphQL -> legalHoldDownloadConfig: LegalHoldDownloadConfigInput (input)
+        [JsonProperty("legalHoldDownloadConfig")]
+        public LegalHoldDownloadConfigInput? LegalHoldDownloadConfig { get; set; }
 
 
         #endregion

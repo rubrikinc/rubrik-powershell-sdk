@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? SkipCloudNativeResourceDeletion
+        // GraphQL -> skipCloudNativeResourceDeletion: Boolean (scalar)
+        [JsonProperty("skipCloudNativeResourceDeletion")]
+        public System.Boolean? SkipCloudNativeResourceDeletion { get; set; }
+
 
         #endregion
 

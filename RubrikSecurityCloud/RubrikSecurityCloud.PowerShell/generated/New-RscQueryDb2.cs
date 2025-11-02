@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Db2' API domain:
-    /// Database, DatabaseJobStatus, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
+    /// Database, DatabaseJobStatus, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverDatabaseToEndOfBackup, RecoverDatabaseToPointInTime, RecoverableRange, or RecoverableRanges.
     /// </summary>
     /// <description>
     /// New-RscQueryDb2 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 11 operations
     /// in the 'Db2' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Database, DatabaseJobStatus, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverableRange, or RecoverableRanges.
+    /// one of: Database, DatabaseJobStatus, Databases, Instance, Instances, LogSnapshot, LogSnapshots, RecoverDatabaseToEndOfBackup, RecoverDatabaseToPointInTime, RecoverableRange, or RecoverableRanges.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -401,6 +401,102 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RecoverDatabaseToEndOfBackup operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: RecoverDatabaseToEndOfBackup
+    /// 
+    /// $query = New-RscQueryDb2 -Operation RecoverDatabaseToEndOfBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		tmpDirectoryPath = $someString
+    /// 		# OPTIONAL
+    /// 		sessions = $someInt
+    /// 		# REQUIRED
+    /// 		sourceDbId = $someString
+    /// 		# OPTIONAL
+    /// 		targetInstanceId = $someString
+    /// 		# OPTIONAL
+    /// 		remoteLocationId = $someString
+    /// 		# REQUIRED
+    /// 		snapshotId = $someString
+    /// 		# REQUIRED
+    /// 		targetDbName = $someString
+    /// 		# OPTIONAL
+    /// 		targetDatabaseDirectoryPath = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RecoverDatabaseToPointInTime operation
+    /// of the 'Db2' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Db2
+    /// # API Operation: RecoverDatabaseToPointInTime
+    /// 
+    /// $query = New-RscQueryDb2 -Operation RecoverDatabaseToPointInTime
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		tmpDirectoryPath = $someString
+    /// 		# OPTIONAL
+    /// 		sessions = $someInt
+    /// 		# REQUIRED
+    /// 		sourceDbId = $someString
+    /// 		# OPTIONAL
+    /// 		targetInstanceId = $someString
+    /// 		# OPTIONAL
+    /// 		remoteLocationId = $someString
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = $someDateTime
+    /// 		# REQUIRED
+    /// 		targetDbName = $someString
+    /// 		# OPTIONAL
+    /// 		targetDatabaseDirectoryPath = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RecoverableRange operation
     /// of the 'Db2' API domain.
     /// <code>
@@ -506,6 +602,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Instances",
                 "LogSnapshot",
                 "LogSnapshots",
+                "RecoverDatabaseToEndOfBackup",
+                "RecoverDatabaseToPointInTime",
                 "RecoverableRange",
                 "RecoverableRanges",
                 IgnoreCase = true)]
@@ -543,6 +641,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LogSnapshots":
                         this.ProcessRecord_LogSnapshots();
+                        break;
+                    case "RecoverDatabaseToEndOfBackup":
+                        this.ProcessRecord_RecoverDatabaseToEndOfBackup();
+                        break;
+                    case "RecoverDatabaseToPointInTime":
+                        this.ProcessRecord_RecoverDatabaseToPointInTime();
                         break;
                     case "RecoverableRange":
                         this.ProcessRecord_RecoverableRange();
@@ -621,6 +725,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LogSnapshots";
             // Create new graphql operation db2LogSnapshots
             InitQueryDb2LogSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoverDb2DatabaseToEndOfBackup.
+        internal void ProcessRecord_RecoverDatabaseToEndOfBackup()
+        {
+            this._logger.name += " -RecoverDatabaseToEndOfBackup";
+            // Create new graphql operation recoverDb2DatabaseToEndOfBackup
+            InitQueryRecoverDb2DatabaseToEndOfBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoverDb2DatabaseToPointInTime.
+        internal void ProcessRecord_RecoverDatabaseToPointInTime()
+        {
+            this._logger.name += " -RecoverDatabaseToPointInTime";
+            // Create new graphql operation recoverDb2DatabaseToPointInTime
+            InitQueryRecoverDb2DatabaseToPointInTime();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -940,6 +1062,86 @@ $query.Var.filter = @{
 	toTime = $someDateTime
 	# OPTIONAL
 	isArchived = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // recoverDb2DatabaseToEndOfBackup(input: RecoverDb2DatabaseToEndOfBackupInput!): AsyncRequestStatus!
+        internal void InitQueryRecoverDb2DatabaseToEndOfBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverDb2DatabaseToEndOfBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRecoverDb2DatabaseToEndOfBackup",
+                "($input: RecoverDb2DatabaseToEndOfBackupInput!)",
+                "AsyncRequestStatus",
+                Query.RecoverDb2DatabaseToEndOfBackup,
+                Query.RecoverDb2DatabaseToEndOfBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		tmpDirectoryPath = $someString
+		# OPTIONAL
+		sessions = $someInt
+		# REQUIRED
+		sourceDbId = $someString
+		# OPTIONAL
+		targetInstanceId = $someString
+		# OPTIONAL
+		remoteLocationId = $someString
+		# REQUIRED
+		snapshotId = $someString
+		# REQUIRED
+		targetDbName = $someString
+		# OPTIONAL
+		targetDatabaseDirectoryPath = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // recoverDb2DatabaseToPointInTime(input: RecoverDb2DatabaseToPointInTimeInput!): AsyncRequestStatus!
+        internal void InitQueryRecoverDb2DatabaseToPointInTime()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverDb2DatabaseToPointInTimeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRecoverDb2DatabaseToPointInTime",
+                "($input: RecoverDb2DatabaseToPointInTimeInput!)",
+                "AsyncRequestStatus",
+                Query.RecoverDb2DatabaseToPointInTime,
+                Query.RecoverDb2DatabaseToPointInTimeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		tmpDirectoryPath = $someString
+		# OPTIONAL
+		sessions = $someInt
+		# REQUIRED
+		sourceDbId = $someString
+		# OPTIONAL
+		targetInstanceId = $someString
+		# OPTIONAL
+		remoteLocationId = $someString
+		# OPTIONAL
+		recoveryPoint = $someDateTime
+		# REQUIRED
+		targetDbName = $someString
+		# OPTIONAL
+		targetDatabaseDirectoryPath = $someString
+	}
 }"
             );
         }

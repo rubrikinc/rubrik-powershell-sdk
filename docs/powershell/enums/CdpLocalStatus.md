@@ -1,6 +1,6 @@
 ### CdpLocalStatus
 Supported in v5.1+
-  Current Local CDP Status of virtual machine.
+Current Local CDP Status of virtual machine.
 
 - CDP_LOCAL_STATUS_ACTIVE
 - CDP_LOCAL_STATUS_FAILED

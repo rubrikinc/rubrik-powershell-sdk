@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> MongoSourceAddRequestConfigInput? MongoSourceRequestConfig
         // GraphQL -> mongoSourceRequestConfig: MongoSourceAddRequestConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("mongoSourceRequestConfig")]
         public MongoSourceAddRequestConfigInput? MongoSourceRequestConfig { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

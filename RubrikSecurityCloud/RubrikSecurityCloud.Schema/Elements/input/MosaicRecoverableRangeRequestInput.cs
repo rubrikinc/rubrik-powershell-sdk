@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MosaicRecoverableRangeRequestSourceType? SourceType
-        // GraphQL -> sourceType: MosaicRecoverableRangeRequestSourceType (enum)
-        [JsonProperty("sourceType")]
-        public MosaicRecoverableRangeRequestSourceType? SourceType { get; set; }
-
         //      C# -> System.String? DatabaseName
         // GraphQL -> databaseName: String! (scalar)
         [Required]
@@ -44,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("tableName")]
         public System.String? TableName { get; set; }
+
+        //      C# -> MosaicRecoverableRangeRequestSourceType? SourceType
+        // GraphQL -> sourceType: MosaicRecoverableRangeRequestSourceType (enum)
+        [JsonProperty("sourceType")]
+        public MosaicRecoverableRangeRequestSourceType? SourceType { get; set; }
 
 
         #endregion

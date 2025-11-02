@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ActiveDirectoryObjectRecoveryConfigInput? Config
-        // GraphQL -> config: ActiveDirectoryObjectRecoveryConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public ActiveDirectoryObjectRecoveryConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> ActiveDirectoryObjectRecoveryConfigInput? Config
+        // GraphQL -> config: ActiveDirectoryObjectRecoveryConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public ActiveDirectoryObjectRecoveryConfigInput? Config { get; set; }
 
 
         #endregion

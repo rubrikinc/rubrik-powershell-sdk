@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 28
+    /// Create a new RscQuery object for any of the 29
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 28 operations
+    /// There are 29 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -904,6 +904,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	pagination = @{
+    /// 		# OPTIONAL
+    /// 		offset = $someInt
+    /// 		# OPTIONAL
+    /// 		limit = $someInt
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1418,6 +1425,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the TotalCloudDirectObject operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: TotalCloudDirectObject
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation TotalCloudDirectObject
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	workloadId = $someString
+    /// 	# OPTIONAL
+    /// 	cloudDirectTargetId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: TotalSnapshotsForCloudDirectObjectReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UnmanagedObject operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1444,6 +1484,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	afterDate = $someDateTime
     /// 	# OPTIONAL
     /// 	beforeDate = $someDateTime
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	limit = $someInt
     /// 	# OPTIONAL
@@ -1456,10 +1500,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	sortBy = $someV1QueryUnmanagedObjectSnapshotsV1RequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryUnmanagedObjectSnapshotsV1RequestSortBy]) for enum values.
     /// 	# OPTIONAL
     /// 	sortOrder = $someV1QueryUnmanagedObjectSnapshotsV1RequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryUnmanagedObjectSnapshotsV1RequestSortOrder]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1520,12 +1560,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	orgVdcId = $someString
     /// 	# REQUIRED
     /// 	catalogId = $someString
     /// 	# REQUIRED
     /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	orgVdcId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
     /// }
@@ -1583,6 +1623,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SnappablesList",
                 "SnappablesWithLegalHoldsSummary",
                 "Snapshot",
+                "TotalCloudDirectObject",
                 "UnmanagedObject",
                 "VappInstantRecoveryOptions",
                 "VappTemplateExportOptions",
@@ -1675,6 +1716,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Snapshot":
                         this.ProcessRecord_Snapshot();
+                        break;
+                    case "TotalCloudDirectObject":
+                        this.ProcessRecord_TotalCloudDirectObject();
                         break;
                     case "UnmanagedObject":
                         this.ProcessRecord_UnmanagedObject();
@@ -1918,6 +1962,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Snapshot";
             // Create new graphql operation snapshot
             InitQuerySnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // totalSnapshotsForCloudDirectObject.
+        internal void ProcessRecord_TotalCloudDirectObject()
+        {
+            this._logger.name += " -TotalCloudDirectObject";
+            // Create new graphql operation totalSnapshotsForCloudDirectObject
+            InitQueryTotalSnapshotsForCloudDirectObject();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2793,6 +2846,13 @@ $query.Var.input = @{
 	objectIds = @(
 		$someString
 	)
+	# OPTIONAL
+	pagination = @{
+		# OPTIONAL
+		offset = $someInt
+		# OPTIONAL
+		limit = $someInt
+	}
 }"
             );
         }
@@ -3326,6 +3386,31 @@ $query.Var.clusterUuid = $someString"
         }
 
         // Create new GraphQL Query:
+        // totalSnapshotsForCloudDirectObject(input: TotalSnapshotsForCloudDirectObjectReq!): TotalSnapshotsForCloudDirectObjectReply!
+        internal void InitQueryTotalSnapshotsForCloudDirectObject()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TotalSnapshotsForCloudDirectObjectReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryTotalSnapshotsForCloudDirectObject",
+                "($input: TotalSnapshotsForCloudDirectObjectReq!)",
+                "TotalSnapshotsForCloudDirectObjectReply",
+                Query.TotalSnapshotsForCloudDirectObject,
+                Query.TotalSnapshotsForCloudDirectObjectFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	workloadId = $someString
+	# OPTIONAL
+	cloudDirectTargetId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // snapshotsForUnmanagedObject(
         //     first: Int
         //     after: String
@@ -3364,6 +3449,10 @@ $query.Var.input = @{
 	afterDate = $someDateTime
 	# OPTIONAL
 	beforeDate = $someDateTime
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	limit = $someInt
 	# OPTIONAL
@@ -3376,10 +3465,6 @@ $query.Var.input = @{
 	sortBy = $someV1QueryUnmanagedObjectSnapshotsV1RequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryUnmanagedObjectSnapshotsV1RequestSortBy]) for enum values.
 	# OPTIONAL
 	sortOrder = $someV1QueryUnmanagedObjectSnapshotsV1RequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1QueryUnmanagedObjectSnapshotsV1RequestSortOrder]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -3424,12 +3509,12 @@ $query.Var.input = @{
                 Query.VappTemplateSnapshotExportOptionsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	orgVdcId = $someString
 	# REQUIRED
 	catalogId = $someString
 	# REQUIRED
 	name = $someString
+	# OPTIONAL
+	orgVdcId = $someString
 	# REQUIRED
 	snapshotId = $someString
 }"

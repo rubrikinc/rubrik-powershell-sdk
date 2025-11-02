@@ -1,6 +1,8 @@
 ### QueryHypervHostInput
 Input for getting the summary of all Hyper-V hosts.
 
+- clusterUuid: System.String
+  - Required. UUID used to identify the cluster the request goes to.
 - effectiveSlaDomainId: System.String
   - Filter by ID of effective SLA domain.
 - limit: System.Int32
@@ -17,5 +19,3 @@ Input for getting the summary of all Hyper-V hosts.
   - Sort the result by the given attribute.
 - sortOrder: InternalQueryHypervHostRequestSortOrder
   - Sort order, either ascending or descending.
-- clusterUuid: System.String
-  - Required. UUID used to identify the cluster the request goes to.

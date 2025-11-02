@@ -1,6 +1,8 @@
 ### QueryLogShippingConfigurationsV2Input
 Input for getting SQL Server log shipping configurations.
 
+- clusterUuid: System.String
+  - Required. UUID used to identify the cluster the request goes to.
 - limit: System.Int32
   - Limit the summary information to a specified maximum number of results.
 - location: System.String
@@ -19,5 +21,3 @@ Input for getting SQL Server log shipping configurations.
   - Sort order, either ascending or descending.
 - status: V2QueryLogShippingConfigurationsV2RequestStatus
   - Filter log shipping configuration objects based on the status value of the secondary database.
-- clusterUuid: System.String
-  - Required. UUID used to identify the cluster the request goes to.

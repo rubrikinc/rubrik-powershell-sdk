@@ -92,40 +92,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				exportConfig = @{
     /// 					# OPTIONAL
     /// 					disableNetwork = $someBoolean
     /// 					# OPTIONAL
     /// 					hostId = $someString
+    /// 					# REQUIRED
+    /// 					path = $someString
     /// 					# OPTIONAL
     /// 					powerOn = $someBoolean
     /// 					# OPTIONAL
     /// 					removeNetworkDevices = $someBoolean
     /// 					# OPTIONAL
     /// 					vmName = $someString
-    /// 					# REQUIRED
-    /// 					path = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -156,18 +156,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				instantRecoveryConfig = @{
     /// 					# OPTIONAL
@@ -175,11 +167,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					vmName = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -210,20 +210,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		snapshots = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				snapshotAfterDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotBeforeDate = $someDateTime
-    /// 				# OPTIONAL
-    /// 				snapshotId = $someString
-    /// 				# OPTIONAL
-    /// 				vmNamePrefix = $someString
     /// 				# REQUIRED
     /// 				mountConfig = @{
     /// 					# OPTIONAL
@@ -241,11 +231,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					destinationFolder = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				snapshotAfterDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotBeforeDate = $someDateTime
+    /// 				# OPTIONAL
+    /// 				snapshotId = $someString
     /// 				# REQUIRED
     /// 				vmId = $someString
+    /// 				# OPTIONAL
+    /// 				vmNamePrefix = $someString
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -322,6 +322,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		targetVirtualMachineId = $someString
@@ -330,8 +332,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -441,9 +441,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	location = $someInternalDeleteHypervVirtualMachineSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteHypervVirtualMachineSnapshotRequestLocation]) for enum values.
-    /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	location = $someInternalDeleteHypervVirtualMachineSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteHypervVirtualMachineSnapshotRequestLocation]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -545,18 +545,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
-    /// 		# REQUIRED
-    /// 		configFileExtensions = @(
-    /// 			$someString
-    /// 		)
     /// 		# REQUIRED
     /// 		virtualDiskIds = @(
     /// 			$someString
     /// 		)
+    /// 		# REQUIRED
+    /// 		configFileExtensions = @(
+    /// 			$someString
+    /// 		)
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -619,17 +619,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		paths = @(
-    /// 			$someString
-    /// 		)
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -670,14 +670,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		disableNetwork = $someBoolean
     /// 		# OPTIONAL
     /// 		hostId = $someString
+    /// 		# REQUIRED
+    /// 		path = $someString
     /// 		# OPTIONAL
     /// 		powerOn = $someBoolean
     /// 		# OPTIONAL
     /// 		removeNetworkDevices = $someBoolean
     /// 		# OPTIONAL
     /// 		vmName = $someString
-    /// 		# REQUIRED
-    /// 		path = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -711,6 +711,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		exportVmPath = $someString
@@ -719,8 +721,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldKeepHypervVmCopyAfterRecovery = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -961,10 +961,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		targetVirtualMachineId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldIgnoreError = $someBoolean
     /// 		# REQUIRED
     /// 		restoreConfig = @(
     /// 			@{
@@ -974,6 +970,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				restorePath = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		targetVirtualMachineId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldIgnoreError = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1080,21 +1080,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	vmUpdateProperties = @{
+    /// 		# OPTIONAL
+    /// 		cloudInstantiationSpec = @{
+    /// 			# REQUIRED
+    /// 			imageRetentionInSeconds = $someInt64
+    /// 		}
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
     /// 		# OPTIONAL
     /// 		virtualDiskIdsExcludedFromSnapshot = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		cloudInstantiationSpec = @{
-    /// 			# REQUIRED
-    /// 			imageRetentionInSeconds = $someInt64
-    /// 		}
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1543,40 +1543,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				exportConfig = @{
 					# OPTIONAL
 					disableNetwork = $someBoolean
 					# OPTIONAL
 					hostId = $someString
+					# REQUIRED
+					path = $someString
 					# OPTIONAL
 					powerOn = $someBoolean
 					# OPTIONAL
 					removeNetworkDevices = $someBoolean
 					# OPTIONAL
 					vmName = $someString
-					# REQUIRED
-					path = $someString
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1599,18 +1599,10 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
 				# REQUIRED
 				instantRecoveryConfig = @{
 					# OPTIONAL
@@ -1618,11 +1610,19 @@ $query.Var.input = @{
 					# OPTIONAL
 					vmName = $someString
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1645,20 +1645,10 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# REQUIRED
 		snapshots = @(
 			@{
-				# OPTIONAL
-				snapshotAfterDate = $someDateTime
-				# OPTIONAL
-				snapshotBeforeDate = $someDateTime
-				# OPTIONAL
-				snapshotId = $someString
-				# OPTIONAL
-				vmNamePrefix = $someString
 				# REQUIRED
 				mountConfig = @{
 					# OPTIONAL
@@ -1676,11 +1666,21 @@ $query.Var.input = @{
 					# OPTIONAL
 					destinationFolder = $someString
 				}
+				# OPTIONAL
+				snapshotAfterDate = $someDateTime
+				# OPTIONAL
+				snapshotBeforeDate = $someDateTime
+				# OPTIONAL
+				snapshotId = $someString
 				# REQUIRED
 				vmId = $someString
+				# OPTIONAL
+				vmNamePrefix = $someString
 			}
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1741,6 +1741,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# REQUIRED
 		targetVirtualMachineId = $someString
@@ -1749,8 +1751,6 @@ $query.Var.input = @{
 			$someString
 		)
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1836,9 +1836,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	location = $someInternalDeleteHypervVirtualMachineSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteHypervVirtualMachineSnapshotRequestLocation]) for enum values.
-	# REQUIRED
 	id = $someString
+	# REQUIRED
+	location = $someInternalDeleteHypervVirtualMachineSnapshotRequestLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalDeleteHypervVirtualMachineSnapshotRequestLocation]) for enum values.
 }"
             );
         }
@@ -1916,18 +1916,18 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
-		# REQUIRED
-		configFileExtensions = @(
-			$someString
-		)
 		# REQUIRED
 		virtualDiskIds = @(
 			$someString
 		)
+		# REQUIRED
+		configFileExtensions = @(
+			$someString
+		)
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1974,17 +1974,17 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		zipPassword = $someString
+		# REQUIRED
+		paths = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		paths = @(
-			$someString
-		)
+		# OPTIONAL
+		zipPassword = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -2017,14 +2017,14 @@ $query.Var.input = @{
 		disableNetwork = $someBoolean
 		# OPTIONAL
 		hostId = $someString
+		# REQUIRED
+		path = $someString
 		# OPTIONAL
 		powerOn = $someBoolean
 		# OPTIONAL
 		removeNetworkDevices = $someBoolean
 		# OPTIONAL
 		vmName = $someString
-		# REQUIRED
-		path = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -2050,6 +2050,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		exportVmPath = $someString
@@ -2058,8 +2060,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldKeepHypervVmCopyAfterRecovery = $someBoolean
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -2244,10 +2244,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		targetVirtualMachineId = $someString
-		# OPTIONAL
-		shouldIgnoreError = $someBoolean
 		# REQUIRED
 		restoreConfig = @(
 			@{
@@ -2257,6 +2253,10 @@ $query.Var.input = @{
 				restorePath = $someString
 			}
 		)
+		# OPTIONAL
+		targetVirtualMachineId = $someString
+		# OPTIONAL
+		shouldIgnoreError = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2339,21 +2339,21 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	vmUpdateProperties = @{
+		# OPTIONAL
+		cloudInstantiationSpec = @{
+			# REQUIRED
+			imageRetentionInSeconds = $someInt64
+		}
 		# OPTIONAL
 		configuredSlaDomainId = $someString
 		# OPTIONAL
 		virtualDiskIdsExcludedFromSnapshot = @(
 			$someString
 		)
-		# OPTIONAL
-		cloudInstantiationSpec = @{
-			# REQUIRED
-			imageRetentionInSeconds = $someInt64
-		}
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

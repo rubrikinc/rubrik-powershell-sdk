@@ -29,6 +29,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostId")]
         public System.String? HostId { get; set; }
 
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("path")]
+        public System.String? Path { get; set; }
+
         //      C# -> System.Boolean? PowerOn
         // GraphQL -> powerOn: Boolean (scalar)
         [JsonProperty("powerOn")]
@@ -43,13 +50,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> vmName: String (scalar)
         [JsonProperty("vmName")]
         public System.String? VmName { get; set; }
-
-        //      C# -> System.String? Path
-        // GraphQL -> path: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("path")]
-        public System.String? Path { get; set; }
 
 
         #endregion

@@ -4,6 +4,8 @@
 - isStandaloneHost: System.Boolean
 - ioFilterStatus: System.String
   - This vsphere host's IOFilter status can be Uninstalled or Installed.
+- sshEnabled: System.Boolean
+  - Indicates whether SSH is enabled on this ESXi host.
 - snapshotConsistencyMandate: ConsistencyLevelEnum
   - Snapshot consistency mandate.
 - snapshotConsistencySource: System.String

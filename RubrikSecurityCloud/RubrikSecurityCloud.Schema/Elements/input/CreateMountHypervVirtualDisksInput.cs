@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> HypervMountDiskJobConfigInput? Config
-        // GraphQL -> config: HypervMountDiskJobConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public HypervMountDiskJobConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> HypervMountDiskJobConfigInput? Config
+        // GraphQL -> config: HypervMountDiskJobConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public HypervMountDiskJobConfigInput? Config { get; set; }
 
 
         #endregion

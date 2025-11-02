@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldApplyToExistingSnapshots
-        // GraphQL -> shouldApplyToExistingSnapshots: Boolean (scalar)
-        [JsonProperty("shouldApplyToExistingSnapshots")]
-        public System.Boolean? ShouldApplyToExistingSnapshots { get; set; }
-
-        //      C# -> System.Boolean? ShouldApplyToNonPolicySnapshots
-        // GraphQL -> shouldApplyToNonPolicySnapshots: Boolean (scalar)
-        [JsonProperty("shouldApplyToNonPolicySnapshots")]
-        public System.Boolean? ShouldApplyToNonPolicySnapshots { get; set; }
-
         //      C# -> ExistingSnapshotRetention? ExistingSnapshotRetention
         // GraphQL -> existingSnapshotRetention: ExistingSnapshotRetention (enum)
         [JsonProperty("existingSnapshotRetention")]
@@ -40,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
+
+        //      C# -> System.Boolean? ShouldApplyToExistingSnapshots
+        // GraphQL -> shouldApplyToExistingSnapshots: Boolean (scalar)
+        [JsonProperty("shouldApplyToExistingSnapshots")]
+        public System.Boolean? ShouldApplyToExistingSnapshots { get; set; }
+
+        //      C# -> System.Boolean? ShouldApplyToNonPolicySnapshots
+        // GraphQL -> shouldApplyToNonPolicySnapshots: Boolean (scalar)
+        [JsonProperty("shouldApplyToNonPolicySnapshots")]
+        public System.Boolean? ShouldApplyToNonPolicySnapshots { get; set; }
 
         //      C# -> MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties
         // GraphQL -> mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput (input)

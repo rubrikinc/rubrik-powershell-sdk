@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> FailoverClusterConfigInput? UpdateProperties
         // GraphQL -> updateProperties: FailoverClusterConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("updateProperties")]
         public FailoverClusterConfigInput? UpdateProperties { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? OwnerId
-        // GraphQL -> ownerId: String (scalar)
-        [JsonProperty("ownerId")]
-        public System.String? OwnerId { get; set; }
-
         //      C# -> BeginSnapshotManagedVolumeRequestInput? Config
         // GraphQL -> config: BeginSnapshotManagedVolumeRequestInput (input)
         [JsonProperty("config")]
@@ -35,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.String? OwnerId
+        // GraphQL -> ownerId: String (scalar)
+        [JsonProperty("ownerId")]
+        public System.String? OwnerId { get; set; }
 
 
         #endregion

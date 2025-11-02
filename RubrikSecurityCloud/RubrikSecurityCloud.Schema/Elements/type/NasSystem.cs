@@ -151,6 +151,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!]! (scalar)
+        [JsonProperty("userSelectedNfsInterfaces")]
+        public List<System.String>? UserSelectedNfsInterfaces { get; set; }
+
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!]! (scalar)
+        [JsonProperty("userSelectedSmbInterfaces")]
+        public List<System.String>? UserSelectedSmbInterfaces { get; set; }
+
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String! (scalar)
         [JsonProperty("vendorType")]
@@ -326,6 +336,8 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.Int32? ShareCount = null,
         System.Boolean? SlaPauseStatus = null,
+        List<System.String>? UserSelectedNfsInterfaces = null,
+        List<System.String>? UserSelectedSmbInterfaces = null,
         System.String? VendorType = null,
         System.Int32? VolumeCount = null,
         List<Org>? AllOrgs = null,
@@ -423,6 +435,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( UserSelectedNfsInterfaces != null ) {
+            this.UserSelectedNfsInterfaces = UserSelectedNfsInterfaces;
+        }
+        if ( UserSelectedSmbInterfaces != null ) {
+            this.UserSelectedSmbInterfaces = UserSelectedSmbInterfaces;
         }
         if ( VendorType != null ) {
             this.VendorType = VendorType;
@@ -744,6 +762,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!]! (scalar)
+        if (this.UserSelectedNfsInterfaces != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userSelectedNfsInterfaces\n" ;
+            } else {
+                s += ind + "userSelectedNfsInterfaces\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!]! (scalar)
+        if (this.UserSelectedSmbInterfaces != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userSelectedSmbInterfaces\n" ;
+            } else {
+                s += ind + "userSelectedSmbInterfaces\n" ;
             }
         }
         //      C# -> System.String? VendorType
@@ -1434,6 +1470,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!]! (scalar)
+        if (ec.Includes("userSelectedNfsInterfaces",true))
+        {
+            if(this.UserSelectedNfsInterfaces == null) {
+
+                this.UserSelectedNfsInterfaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSelectedNfsInterfaces != null && ec.Excludes("userSelectedNfsInterfaces",true))
+        {
+            this.UserSelectedNfsInterfaces = null;
+        }
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!]! (scalar)
+        if (ec.Includes("userSelectedSmbInterfaces",true))
+        {
+            if(this.UserSelectedSmbInterfaces == null) {
+
+                this.UserSelectedSmbInterfaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSelectedSmbInterfaces != null && ec.Excludes("userSelectedSmbInterfaces",true))
+        {
+            this.UserSelectedSmbInterfaces = null;
         }
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String! (scalar)

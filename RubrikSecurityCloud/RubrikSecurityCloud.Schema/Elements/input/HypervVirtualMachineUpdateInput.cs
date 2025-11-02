@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudInstantiationSpecInput? CloudInstantiationSpec
+        // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpecInput (input)
+        [JsonProperty("cloudInstantiationSpec")]
+        public CloudInstantiationSpecInput? CloudInstantiationSpec { get; set; }
+
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         [JsonProperty("configuredSlaDomainId")]
@@ -28,11 +33,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> virtualDiskIdsExcludedFromSnapshot: [String!] (scalar)
         [JsonProperty("virtualDiskIdsExcludedFromSnapshot")]
         public List<System.String>? VirtualDiskIdsExcludedFromSnapshot { get; set; }
-
-        //      C# -> CloudInstantiationSpecInput? CloudInstantiationSpec
-        // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpecInput (input)
-        [JsonProperty("cloudInstantiationSpec")]
-        public CloudInstantiationSpecInput? CloudInstantiationSpec { get; set; }
 
 
         #endregion

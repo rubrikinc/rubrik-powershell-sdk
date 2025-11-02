@@ -354,6 +354,8 @@ Lists all cross-account pairs.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns CrossAccountPairInfoConnection.
 ### currentipaddress
+The IP address of the client making the request.
+
 - The currentipaddress subcommand takes no arguments.
 - Returns System.String.
 ### currentorg
@@ -708,6 +710,8 @@ Lists IOC entries for a threat feed.
     - feedEntrySort - FeedEntrySort: Sorts feed entries.
 - Returns IocFeedEntryConnection.
 ### ipwhitelist
+The IP allowlist for the given organization.
+
 - The ipwhitelist subcommand takes no arguments.
 - Returns GetWhitelistReply.
 ### isclouddirectsharepathvalid

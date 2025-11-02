@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceDriverUser")]
         public System.String? SourceDriverUser { get; set; }
 
+        //      C# -> MongoSslCertificateRequirement? SslCertificateRequired
+        // GraphQL -> sslCertificateRequired: MongoSslCertificateRequirement (enum)
+        [JsonProperty("sslCertificateRequired")]
+        public MongoSslCertificateRequirement? SslCertificateRequired { get; set; }
+
         //      C# -> System.String? SslKeyfilePath
         // GraphQL -> sslKeyfilePath: String (scalar)
         [JsonProperty("sslKeyfilePath")]
@@ -53,11 +58,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceAuthenticationType: MongoAuthenticationType (enum)
         [JsonProperty("sourceAuthenticationType")]
         public MongoAuthenticationType? SourceAuthenticationType { get; set; }
-
-        //      C# -> MongoSslCertificateRequirement? SslCertificateRequired
-        // GraphQL -> sslCertificateRequired: MongoSslCertificateRequirement (enum)
-        [JsonProperty("sslCertificateRequired")]
-        public MongoSslCertificateRequirement? SslCertificateRequired { get; set; }
 
 
         #endregion

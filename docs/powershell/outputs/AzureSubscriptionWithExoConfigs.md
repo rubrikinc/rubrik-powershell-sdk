@@ -17,7 +17,7 @@ Azure Cloud Account Subscription with exocompute configurations for feature conf
   - Exocompute configurations of the subscription.
 - mappedExocomputeConfigs: list of AzureExocomputeConfigDetailss
   - Exocompute configurations available through mapped subscription.
+- globalRegionExocomputeConfigs: list of AzureExocomputeConfigDetailss
+  - Optional Exocompute configurations that apply to all the regions.
 - mappedCloudAccounts: list of CloudAccountDetailss
   - Cloud Account details of subscriptions that are mapped to this Exocompute account.
-- globalConfig: AzureExocomputeOptionalConfigInRegion
-  - Optional Exocompute configurations that apply to all the regions.

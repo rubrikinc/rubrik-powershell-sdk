@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> NutanixMountVdisksJobConfigInput? Config
-        // GraphQL -> config: NutanixMountVdisksJobConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public NutanixMountVdisksJobConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> NutanixMountVdisksJobConfigInput? Config
+        // GraphQL -> config: NutanixMountVdisksJobConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public NutanixMountVdisksJobConfigInput? Config { get; set; }
 
 
         #endregion

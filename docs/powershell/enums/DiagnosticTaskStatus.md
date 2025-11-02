@@ -1,6 +1,6 @@
 ### DiagnosticTaskStatus
 Supported in v5.0+
-  Status of the task.
+Status of the task.
 
 - DIAGNOSTIC_TASK_STATUS_CANCELED
 - DIAGNOSTIC_TASK_STATUS_FAILED

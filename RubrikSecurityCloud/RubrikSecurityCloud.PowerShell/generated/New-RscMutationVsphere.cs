@@ -133,10 +133,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	filterInfo = @{
-    /// 		# OPTIONAL
-    /// 		description = $someString
     /// 		# REQUIRED
     /// 		condition = $someString
+    /// 		# OPTIONAL
+    /// 		description = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
@@ -416,17 +416,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		paths = @(
-    /// 			$someString
-    /// 		)
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// }
     /// 
@@ -471,6 +471,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		password = $someString
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				restorePathPair = @{
+    /// 					# REQUIRED
+    /// 					path = $someString
+    /// 					# OPTIONAL
+    /// 					restorePath = $someString
+    /// 				}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		shouldSaveCredentials = $someBoolean
     /// 		# OPTIONAL
@@ -487,18 +499,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		description = $someString
     /// 		# OPTIONAL
     /// 		shouldUseMountDisks = $someBoolean
-    /// 		# REQUIRED
-    /// 		restoreConfig = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				restorePathPair = @{
-    /// 					# OPTIONAL
-    /// 					restorePath = $someString
-    /// 					# REQUIRED
-    /// 					path = $someString
-    /// 				}
-    /// 			}
-    /// 		)
     /// 	}
     /// }
     /// 
@@ -530,16 +530,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	filterId = $someString
-    /// 	# REQUIRED
     /// 	filterInfo = @{
+    /// 		# REQUIRED
+    /// 		condition = $someString
     /// 		# OPTIONAL
     /// 		description = $someString
     /// 		# REQUIRED
-    /// 		condition = $someString
-    /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	filterId = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -586,17 +586,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			domain = $someString
     /// 			# OPTIONAL
-    /// 			description = $someString
-    /// 			# OPTIONAL
     /// 			baseGuestCredential = @{
     /// 				# REQUIRED
     /// 				password = $someString
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			description = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		virtualMachineUpdate = @{
+    /// 			# OPTIONAL
+    /// 			cloudInstantiationSpec = @{
+    /// 				# REQUIRED
+    /// 				imageRetentionInSeconds = $someInt64
+    /// 			}
     /// 			# OPTIONAL
     /// 			configuredSlaDomainId = $someString
     /// 			# OPTIONAL
@@ -605,15 +610,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isVmPaused = $someBoolean
     /// 			# OPTIONAL
     /// 			maxNestedVsphereSnapshots = $someInt
-    /// 			# OPTIONAL
-    /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
-    /// 			# OPTIONAL
-    /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
-    /// 			# OPTIONAL
-    /// 			cloudInstantiationSpec = @{
-    /// 				# REQUIRED
-    /// 				imageRetentionInSeconds = $someInt64
-    /// 			}
     /// 			# OPTIONAL
     /// 			postBackupScript = @{
     /// 				# REQUIRED
@@ -642,6 +638,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				timeoutMs = $someInt64
     /// 			}
     /// 			# OPTIONAL
+    /// 			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
+    /// 			# OPTIONAL
     /// 			throttlingSettings = @{
     /// 				# OPTIONAL
     /// 				cpuUtilizationThreshold = $someInt
@@ -650,6 +648,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				ioLatencyThreshold = $someInt
     /// 			}
+    /// 			# OPTIONAL
+    /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -917,10 +917,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	filterInfo = @{
-		# OPTIONAL
-		description = $someString
 		# REQUIRED
 		condition = $someString
+		# OPTIONAL
+		description = $someString
 		# REQUIRED
 		name = $someString
 	}
@@ -1144,17 +1144,17 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		zipPassword = $someString
+		# REQUIRED
+		paths = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		paths = @(
-			$someString
-		)
+		# OPTIONAL
+		zipPassword = $someString
 	}
 }"
             );
@@ -1191,6 +1191,18 @@ $query.Var.input = @{
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		password = $someString
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# REQUIRED
+					path = $someString
+					# OPTIONAL
+					restorePath = $someString
+				}
+			}
+		)
 		# OPTIONAL
 		shouldSaveCredentials = $someBoolean
 		# OPTIONAL
@@ -1207,18 +1219,6 @@ $query.Var.input = @{
 		description = $someString
 		# OPTIONAL
 		shouldUseMountDisks = $someBoolean
-		# REQUIRED
-		restoreConfig = @(
-			@{
-				# OPTIONAL
-				restorePathPair = @{
-					# OPTIONAL
-					restorePath = $someString
-					# REQUIRED
-					path = $someString
-				}
-			}
-		)
 	}
 }"
             );
@@ -1242,16 +1242,16 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	filterId = $someString
-	# REQUIRED
 	filterInfo = @{
+		# REQUIRED
+		condition = $someString
 		# OPTIONAL
 		description = $someString
 		# REQUIRED
-		condition = $someString
-		# REQUIRED
 		name = $someString
 	}
+	# REQUIRED
+	filterId = $someString
 	# REQUIRED
 	id = $someString
 }"
@@ -1290,17 +1290,22 @@ $query.Var.input = @{
 			# OPTIONAL
 			domain = $someString
 			# OPTIONAL
-			description = $someString
-			# OPTIONAL
 			baseGuestCredential = @{
 				# REQUIRED
 				password = $someString
 				# REQUIRED
 				username = $someString
 			}
+			# OPTIONAL
+			description = $someString
 		}
 		# OPTIONAL
 		virtualMachineUpdate = @{
+			# OPTIONAL
+			cloudInstantiationSpec = @{
+				# REQUIRED
+				imageRetentionInSeconds = $someInt64
+			}
 			# OPTIONAL
 			configuredSlaDomainId = $someString
 			# OPTIONAL
@@ -1309,15 +1314,6 @@ $query.Var.input = @{
 			isVmPaused = $someBoolean
 			# OPTIONAL
 			maxNestedVsphereSnapshots = $someInt
-			# OPTIONAL
-			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
-			# OPTIONAL
-			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
-			# OPTIONAL
-			cloudInstantiationSpec = @{
-				# REQUIRED
-				imageRetentionInSeconds = $someInt64
-			}
 			# OPTIONAL
 			postBackupScript = @{
 				# REQUIRED
@@ -1346,6 +1342,8 @@ $query.Var.input = @{
 				timeoutMs = $someInt64
 			}
 			# OPTIONAL
+			snapshotConsistencyMandate = $someVirtualMachineUpdateSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VirtualMachineUpdateSnapshotConsistencyMandate]) for enum values.
+			# OPTIONAL
 			throttlingSettings = @{
 				# OPTIONAL
 				cpuUtilizationThreshold = $someInt
@@ -1354,6 +1352,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				ioLatencyThreshold = $someInt
 			}
+			# OPTIONAL
+			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
 		}
 	}
 	# OPTIONAL

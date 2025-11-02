@@ -29,17 +29,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("beforeTime")]
         public DateTime? BeforeTime { get; set; }
 
-        //      C# -> System.Boolean? ShouldIncludeDbSnapshotSummaries
-        // GraphQL -> shouldIncludeDbSnapshotSummaries: Boolean (scalar)
-        [JsonProperty("shouldIncludeDbSnapshotSummaries")]
-        public System.Boolean? ShouldIncludeDbSnapshotSummaries { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? ShouldIncludeDbSnapshotSummaries
+        // GraphQL -> shouldIncludeDbSnapshotSummaries: Boolean (scalar)
+        [JsonProperty("shouldIncludeDbSnapshotSummaries")]
+        public System.Boolean? ShouldIncludeDbSnapshotSummaries { get; set; }
 
 
         #endregion

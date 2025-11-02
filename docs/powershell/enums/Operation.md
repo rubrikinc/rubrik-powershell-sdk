@@ -214,8 +214,8 @@ Operations defined in the RBAC system.
 - ADD_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Add AWS Role Chaining cloud account.
 - EDIT_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Edit AWS Role Chaining cloud account.
 - DELETE_AWS_ROLE_CHAINING_CLOUD_ACCOUNT - Delete AWS Role Chaining cloud account.
-- VIEW_MODEL_ROUTER - View model router configurations.
-- MANAGE_MODEL_ROUTER - Manage model router configurations.
+- VIEW_MODEL_ROUTER - View Agent Operations.
+- MANAGE_MODEL_ROUTER - Manage Agent Operations.
 - PREVIEW_DATA_CLASSIFICATION_SAMPLES - Preview samples from customers data from classification results.
 - VIEW_CHILD_ACCOUNTS - View child accounts.
 - MANAGE_CHILD_ACCOUNTS - Manage child accounts.

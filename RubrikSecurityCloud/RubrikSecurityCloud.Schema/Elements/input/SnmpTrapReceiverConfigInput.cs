@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? User
-        // GraphQL -> user: String (scalar)
-        [JsonProperty("user")]
-        public System.String? User { get; set; }
-
-        //      C# -> SnmpSecurityLevel? SecurityLevel
-        // GraphQL -> securityLevel: SnmpSecurityLevel (enum)
-        [JsonProperty("securityLevel")]
-        public SnmpSecurityLevel? SecurityLevel { get; set; }
-
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
         [Required]
@@ -42,6 +32,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("port")]
         public System.Int32? Port { get; set; }
+
+        //      C# -> SnmpSecurityLevel? SecurityLevel
+        // GraphQL -> securityLevel: SnmpSecurityLevel (enum)
+        [JsonProperty("securityLevel")]
+        public SnmpSecurityLevel? SecurityLevel { get; set; }
+
+        //      C# -> System.String? User
+        // GraphQL -> user: String (scalar)
+        [JsonProperty("user")]
+        public System.String? User { get; set; }
 
 
         #endregion

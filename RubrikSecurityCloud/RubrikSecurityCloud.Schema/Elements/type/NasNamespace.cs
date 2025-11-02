@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<System.String>? NfsDataAddresses
+        // GraphQL -> nfsDataAddresses: [String!]! (scalar)
+        [JsonProperty("nfsDataAddresses")]
+        public List<System.String>? NfsDataAddresses { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
@@ -100,6 +105,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> List<System.String>? SmbDataAddresses
+        // GraphQL -> smbDataAddresses: [String!]! (scalar)
+        [JsonProperty("smbDataAddresses")]
+        public List<System.String>? SmbDataAddresses { get; set; }
+
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!]! (scalar)
+        [JsonProperty("userSelectedNfsInterfaces")]
+        public List<System.String>? UserSelectedNfsInterfaces { get; set; }
+
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!]! (scalar)
+        [JsonProperty("userSelectedSmbInterfaces")]
+        public List<System.String>? UserSelectedSmbInterfaces { get; set; }
 
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String (scalar)
@@ -258,9 +278,13 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsReadonly = null,
         System.String? Name = null,
+        List<System.String>? NfsDataAddresses = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        List<System.String>? SmbDataAddresses = null,
+        List<System.String>? UserSelectedNfsInterfaces = null,
+        List<System.String>? UserSelectedSmbInterfaces = null,
         System.String? VendorType = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -319,6 +343,9 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( NfsDataAddresses != null ) {
+            this.NfsDataAddresses = NfsDataAddresses;
+        }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
@@ -327,6 +354,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( SmbDataAddresses != null ) {
+            this.SmbDataAddresses = SmbDataAddresses;
+        }
+        if ( UserSelectedNfsInterfaces != null ) {
+            this.UserSelectedNfsInterfaces = UserSelectedNfsInterfaces;
+        }
+        if ( UserSelectedSmbInterfaces != null ) {
+            this.UserSelectedSmbInterfaces = UserSelectedSmbInterfaces;
         }
         if ( VendorType != null ) {
             this.VendorType = VendorType;
@@ -530,6 +566,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> List<System.String>? NfsDataAddresses
+        // GraphQL -> nfsDataAddresses: [String!]! (scalar)
+        if (this.NfsDataAddresses != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfsDataAddresses\n" ;
+            } else {
+                s += ind + "nfsDataAddresses\n" ;
+            }
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
@@ -555,6 +600,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SmbDataAddresses
+        // GraphQL -> smbDataAddresses: [String!]! (scalar)
+        if (this.SmbDataAddresses != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "smbDataAddresses\n" ;
+            } else {
+                s += ind + "smbDataAddresses\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!]! (scalar)
+        if (this.UserSelectedNfsInterfaces != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userSelectedNfsInterfaces\n" ;
+            } else {
+                s += ind + "userSelectedNfsInterfaces\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!]! (scalar)
+        if (this.UserSelectedSmbInterfaces != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userSelectedSmbInterfaces\n" ;
+            } else {
+                s += ind + "userSelectedSmbInterfaces\n" ;
             }
         }
         //      C# -> System.String? VendorType
@@ -1016,6 +1088,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> List<System.String>? NfsDataAddresses
+        // GraphQL -> nfsDataAddresses: [String!]! (scalar)
+        if (ec.Includes("nfsDataAddresses",true))
+        {
+            if(this.NfsDataAddresses == null) {
+
+                this.NfsDataAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfsDataAddresses != null && ec.Excludes("nfsDataAddresses",true))
+        {
+            this.NfsDataAddresses = null;
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (ec.Includes("numWorkloadDescendants",true))
@@ -1066,6 +1155,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> List<System.String>? SmbDataAddresses
+        // GraphQL -> smbDataAddresses: [String!]! (scalar)
+        if (ec.Includes("smbDataAddresses",true))
+        {
+            if(this.SmbDataAddresses == null) {
+
+                this.SmbDataAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SmbDataAddresses != null && ec.Excludes("smbDataAddresses",true))
+        {
+            this.SmbDataAddresses = null;
+        }
+        //      C# -> List<System.String>? UserSelectedNfsInterfaces
+        // GraphQL -> userSelectedNfsInterfaces: [String!]! (scalar)
+        if (ec.Includes("userSelectedNfsInterfaces",true))
+        {
+            if(this.UserSelectedNfsInterfaces == null) {
+
+                this.UserSelectedNfsInterfaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSelectedNfsInterfaces != null && ec.Excludes("userSelectedNfsInterfaces",true))
+        {
+            this.UserSelectedNfsInterfaces = null;
+        }
+        //      C# -> List<System.String>? UserSelectedSmbInterfaces
+        // GraphQL -> userSelectedSmbInterfaces: [String!]! (scalar)
+        if (ec.Includes("userSelectedSmbInterfaces",true))
+        {
+            if(this.UserSelectedSmbInterfaces == null) {
+
+                this.UserSelectedSmbInterfaces = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserSelectedSmbInterfaces != null && ec.Excludes("userSelectedSmbInterfaces",true))
+        {
+            this.UserSelectedSmbInterfaces = null;
         }
         //      C# -> System.String? VendorType
         // GraphQL -> vendorType: String (scalar)

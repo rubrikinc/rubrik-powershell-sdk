@@ -28,3 +28,5 @@ by Rubrik operations.
   - The service account which will be applicable for making all the cloud
 interaction calls. This comes directly from the applicable credentials
 for the project and determines the identity used for GCP API calls.
+- projectManagedObjectId: System.String
+  - The managed object id of the project in the authz service.

@@ -1,8 +1,6 @@
 ### RouteConfigInput
 Supported in Rubrik CDM v5.0+.
 
-- networkZoneName: System.String
-  - Name of the network zone.
 - device: System.String
   - Required. Supported in Rubrik CDM v5.0+.
 - gateway: System.String
@@ -11,3 +9,5 @@ Supported in Rubrik CDM v5.0+.
   - Required. Supported in Rubrik CDM v5.0+.
 - network: System.String
   - Required. Supported in Rubrik CDM v5.0+.
+- networkZoneName: System.String
+  - Name of the network zone.

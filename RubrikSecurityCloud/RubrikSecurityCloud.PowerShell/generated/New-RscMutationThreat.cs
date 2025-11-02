@@ -399,8 +399,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		maxSnapshotsPerObject = $someInt
     /// 		# OPTIONAL
-    /// 		startTime = $someDateTime
-    /// 		# OPTIONAL
     /// 		snapshotsToScanPerObject = @(
     /// 			@{
     /// 				# REQUIRED
@@ -411,6 +409,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		startTime = $someDateTime
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -1118,8 +1118,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		maxSnapshotsPerObject = $someInt
 		# OPTIONAL
-		startTime = $someDateTime
-		# OPTIONAL
 		snapshotsToScanPerObject = @(
 			@{
 				# REQUIRED
@@ -1130,6 +1128,8 @@ $query.Var.input = @{
 				)
 			}
 		)
+		# OPTIONAL
+		startTime = $someDateTime
 	}
 	# REQUIRED
 	clusterUuid = $someString

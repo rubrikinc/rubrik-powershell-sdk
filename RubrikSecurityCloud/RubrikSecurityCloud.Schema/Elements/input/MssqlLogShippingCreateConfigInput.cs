@@ -29,16 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetDataFilePath")]
         public System.String? TargetDataFilePath { get; set; }
 
-        //      C# -> System.String? TargetLogFilePath
-        // GraphQL -> targetLogFilePath: String (scalar)
-        [JsonProperty("targetLogFilePath")]
-        public System.String? TargetLogFilePath { get; set; }
-
-        //      C# -> MssqlLogShippingTargetStateOptionsInput? MssqlLogShippingTargetStateOptions
-        // GraphQL -> mssqlLogShippingTargetStateOptions: MssqlLogShippingTargetStateOptionsInput (input)
-        [JsonProperty("mssqlLogShippingTargetStateOptions")]
-        public MssqlLogShippingTargetStateOptionsInput? MssqlLogShippingTargetStateOptions { get; set; }
-
         //      C# -> System.String? TargetDatabaseName
         // GraphQL -> targetDatabaseName: String! (scalar)
         [Required]
@@ -57,6 +47,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetInstanceId")]
         public System.String? TargetInstanceId { get; set; }
+
+        //      C# -> System.String? TargetLogFilePath
+        // GraphQL -> targetLogFilePath: String (scalar)
+        [JsonProperty("targetLogFilePath")]
+        public System.String? TargetLogFilePath { get; set; }
+
+        //      C# -> MssqlLogShippingTargetStateOptionsInput? MssqlLogShippingTargetStateOptions
+        // GraphQL -> mssqlLogShippingTargetStateOptions: MssqlLogShippingTargetStateOptionsInput (input)
+        [JsonProperty("mssqlLogShippingTargetStateOptions")]
+        public MssqlLogShippingTargetStateOptionsInput? MssqlLogShippingTargetStateOptions { get; set; }
 
 
         #endregion

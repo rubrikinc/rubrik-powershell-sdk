@@ -1,6 +1,6 @@
 ### HostVfdState
 Supported in v5.0+
-  VFD host install state.
+VFD host install state.
 
 - HOST_VFD_STATE_INSTALLED
 - HOST_VFD_STATE_INSTALLED_BUT_RESTART_REQUIRED

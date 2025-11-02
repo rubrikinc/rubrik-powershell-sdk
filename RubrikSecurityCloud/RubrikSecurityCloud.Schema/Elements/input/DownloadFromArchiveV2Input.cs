@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MssqlDownloadFromArchiveConfigV2Input? Config
-        // GraphQL -> config: MssqlDownloadFromArchiveConfigV2Input! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public MssqlDownloadFromArchiveConfigV2Input? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> MssqlDownloadFromArchiveConfigV2Input? Config
+        // GraphQL -> config: MssqlDownloadFromArchiveConfigV2Input! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public MssqlDownloadFromArchiveConfigV2Input? Config { get; set; }
 
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)

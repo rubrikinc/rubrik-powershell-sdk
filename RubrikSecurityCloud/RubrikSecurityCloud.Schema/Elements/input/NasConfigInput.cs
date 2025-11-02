@@ -49,6 +49,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("apiUsername")]
         public System.String? ApiUsername { get; set; }
 
+        //      C# -> System.String? VendorType
+        // GraphQL -> vendorType: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("vendorType")]
+        public System.String? VendorType { get; set; }
+
         //      C# -> System.String? ZoneName
         // GraphQL -> zoneName: String (scalar)
         [JsonProperty("zoneName")]
@@ -78,13 +85,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
         [JsonProperty("isNutanixCftEnabled")]
         public System.Boolean? IsNutanixCftEnabled { get; set; }
-
-        //      C# -> System.String? VendorType
-        // GraphQL -> vendorType: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("vendorType")]
-        public System.String? VendorType { get; set; }
 
 
         #endregion

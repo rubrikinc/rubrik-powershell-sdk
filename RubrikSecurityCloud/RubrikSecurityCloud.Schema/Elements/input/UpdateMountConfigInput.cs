@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldForce
-        // GraphQL -> shouldForce: Boolean (scalar)
-        [JsonProperty("shouldForce")]
-        public System.Boolean? ShouldForce { get; set; }
-
         //      C# -> System.Boolean? PowerStatus
         // GraphQL -> powerStatus: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("powerStatus")]
         public System.Boolean? PowerStatus { get; set; }
+
+        //      C# -> System.Boolean? ShouldForce
+        // GraphQL -> shouldForce: Boolean (scalar)
+        [JsonProperty("shouldForce")]
+        public System.Boolean? ShouldForce { get; set; }
 
 
         #endregion

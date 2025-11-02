@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostVfdDriverInstalled")]
         public System.Boolean? HostVfdDriverInstalled { get; set; }
 
+        //      C# -> HostVfdInstallConfig? HostVfdEnabled
+        // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
+        [JsonProperty("hostVfdEnabled")]
+        public HostVfdInstallConfig? HostVfdEnabled { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         [JsonProperty("hostname")]
@@ -38,6 +43,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlCbtDriverInstalled: Boolean (scalar)
         [JsonProperty("mssqlCbtDriverInstalled")]
         public System.Boolean? MssqlCbtDriverInstalled { get; set; }
+
+        //      C# -> MssqlCbtStatusType? MssqlCbtEnabled
+        // GraphQL -> mssqlCbtEnabled: MssqlCbtStatusType (enum)
+        [JsonProperty("mssqlCbtEnabled")]
+        public MssqlCbtStatusType? MssqlCbtEnabled { get; set; }
+
+        //      C# -> NasConfigInput? NasConfig
+        // GraphQL -> nasConfig: NasConfigInput (input)
+        [JsonProperty("nasConfig")]
+        public NasConfigInput? NasConfig { get; set; }
 
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
@@ -54,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("alias")]
         public System.String? Alias { get; set; }
 
+        //      C# -> HdfsConfigInput? HdfsConfig
+        // GraphQL -> hdfsConfig: HdfsConfigInput (input)
+        [JsonProperty("hdfsConfig")]
+        public HdfsConfigInput? HdfsConfig { get; set; }
+
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
         [JsonProperty("isOracleHost")]
@@ -69,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRefreshPaused")]
         public System.Boolean? IsRefreshPaused { get; set; }
 
+        //      C# -> OracleSepsWalletSettingsInput? OracleSepsSettings
+        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettingsInput (input)
+        [JsonProperty("oracleSepsSettings")]
+        public OracleSepsWalletSettingsInput? OracleSepsSettings { get; set; }
+
         //      C# -> System.String? MssqlSddCertificateId
         // GraphQL -> mssqlSddCertificateId: String (scalar)
         [JsonProperty("mssqlSddCertificateId")]
@@ -79,6 +104,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSddWalletPath")]
         public System.String? OracleSddWalletPath { get; set; }
 
+        //      C# -> SddUserCredentialsInput? OracleSddUserCredentials
+        // GraphQL -> oracleSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("oracleSddUserCredentials")]
+        public SddUserCredentialsInput? OracleSddUserCredentials { get; set; }
+
+        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
+        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("mssqlSddUserCredentials")]
+        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
+
         //      C# -> System.Boolean? ShouldOracleSddThroughRba
         // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
         [JsonProperty("shouldOracleSddThroughRba")]
@@ -88,41 +123,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
         [JsonProperty("shouldMssqlSddThroughRba")]
         public System.Boolean? ShouldMssqlSddThroughRba { get; set; }
-
-        //      C# -> HostVfdInstallConfig? HostVfdEnabled
-        // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
-        [JsonProperty("hostVfdEnabled")]
-        public HostVfdInstallConfig? HostVfdEnabled { get; set; }
-
-        //      C# -> MssqlCbtStatusType? MssqlCbtEnabled
-        // GraphQL -> mssqlCbtEnabled: MssqlCbtStatusType (enum)
-        [JsonProperty("mssqlCbtEnabled")]
-        public MssqlCbtStatusType? MssqlCbtEnabled { get; set; }
-
-        //      C# -> HdfsConfigInput? HdfsConfig
-        // GraphQL -> hdfsConfig: HdfsConfigInput (input)
-        [JsonProperty("hdfsConfig")]
-        public HdfsConfigInput? HdfsConfig { get; set; }
-
-        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
-        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
-        [JsonProperty("mssqlSddUserCredentials")]
-        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
-
-        //      C# -> NasConfigInput? NasConfig
-        // GraphQL -> nasConfig: NasConfigInput (input)
-        [JsonProperty("nasConfig")]
-        public NasConfigInput? NasConfig { get; set; }
-
-        //      C# -> SddUserCredentialsInput? OracleSddUserCredentials
-        // GraphQL -> oracleSddUserCredentials: SddUserCredentialsInput (input)
-        [JsonProperty("oracleSddUserCredentials")]
-        public SddUserCredentialsInput? OracleSddUserCredentials { get; set; }
-
-        //      C# -> OracleSepsWalletSettingsInput? OracleSepsSettings
-        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettingsInput (input)
-        [JsonProperty("oracleSepsSettings")]
-        public OracleSepsWalletSettingsInput? OracleSepsSettings { get; set; }
 
 
         #endregion

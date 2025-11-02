@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MongoOpsManagerSourceOnDemandSnapshotConfigInput? Config
-        // GraphQL -> config: MongoOpsManagerSourceOnDemandSnapshotConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public MongoOpsManagerSourceOnDemandSnapshotConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> MongoOpsManagerSourceOnDemandSnapshotConfigInput? Config
+        // GraphQL -> config: MongoOpsManagerSourceOnDemandSnapshotConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public MongoOpsManagerSourceOnDemandSnapshotConfigInput? Config { get; set; }
 
 
         #endregion

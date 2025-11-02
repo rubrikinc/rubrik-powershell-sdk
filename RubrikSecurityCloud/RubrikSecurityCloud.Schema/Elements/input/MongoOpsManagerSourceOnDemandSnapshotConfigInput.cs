@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsFullbackup
-        // GraphQL -> isFullbackup: Boolean (scalar)
-        [JsonProperty("isFullbackup")]
-        public System.Boolean? IsFullbackup { get; set; }
-
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("slaId")]
         public System.String? SlaId { get; set; }
+
+        //      C# -> System.Boolean? IsFullbackup
+        // GraphQL -> isFullbackup: Boolean (scalar)
+        [JsonProperty("isFullbackup")]
+        public System.Boolean? IsFullbackup { get; set; }
 
 
         #endregion

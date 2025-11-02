@@ -1,6 +1,6 @@
 ### CdmNutanixSnapshotConsistencyMandate
 Supported in v5.0+
-  Consistency level mandated for this VM.
+Consistency level mandated for this VM.
 
 - NUTANIX_SNAPSHOT_CONSISTENCY_MANDATE_APPLICATION_CONSISTENT
 - NUTANIX_SNAPSHOT_CONSISTENCY_MANDATE_AUTOMATIC

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudInstantiationSpecInput? CloudInstantiationSpec
+        // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpecInput (input)
+        [JsonProperty("cloudInstantiationSpec")]
+        public CloudInstantiationSpecInput? CloudInstantiationSpec { get; set; }
+
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         [JsonProperty("configuredSlaDomainId")]
@@ -39,21 +44,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxNestedVsphereSnapshots")]
         public System.Int32? MaxNestedVsphereSnapshots { get; set; }
 
-        //      C# -> MultiNodeBackupMode? MultiNodeBackupMode
-        // GraphQL -> multiNodeBackupMode: MultiNodeBackupMode (enum)
-        [JsonProperty("multiNodeBackupMode")]
-        public MultiNodeBackupMode? MultiNodeBackupMode { get; set; }
-
-        //      C# -> VirtualMachineUpdateSnapshotConsistencyMandate? SnapshotConsistencyMandate
-        // GraphQL -> snapshotConsistencyMandate: VirtualMachineUpdateSnapshotConsistencyMandate (enum)
-        [JsonProperty("snapshotConsistencyMandate")]
-        public VirtualMachineUpdateSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
-
-        //      C# -> CloudInstantiationSpecInput? CloudInstantiationSpec
-        // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpecInput (input)
-        [JsonProperty("cloudInstantiationSpec")]
-        public CloudInstantiationSpecInput? CloudInstantiationSpec { get; set; }
-
         //      C# -> VirtualMachineScriptDetailInput? PostBackupScript
         // GraphQL -> postBackupScript: VirtualMachineScriptDetailInput (input)
         [JsonProperty("postBackupScript")]
@@ -69,10 +59,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preBackupScript")]
         public VirtualMachineScriptDetailInput? PreBackupScript { get; set; }
 
+        //      C# -> VirtualMachineUpdateSnapshotConsistencyMandate? SnapshotConsistencyMandate
+        // GraphQL -> snapshotConsistencyMandate: VirtualMachineUpdateSnapshotConsistencyMandate (enum)
+        [JsonProperty("snapshotConsistencyMandate")]
+        public VirtualMachineUpdateSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
+
         //      C# -> VmwareAdaptiveThrottlingSettingsInput? ThrottlingSettings
         // GraphQL -> throttlingSettings: VmwareAdaptiveThrottlingSettingsInput (input)
         [JsonProperty("throttlingSettings")]
         public VmwareAdaptiveThrottlingSettingsInput? ThrottlingSettings { get; set; }
+
+        //      C# -> MultiNodeBackupMode? MultiNodeBackupMode
+        // GraphQL -> multiNodeBackupMode: MultiNodeBackupMode (enum)
+        [JsonProperty("multiNodeBackupMode")]
+        public MultiNodeBackupMode? MultiNodeBackupMode { get; set; }
 
 
         #endregion

@@ -19,24 +19,24 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> CreateNasShareInputShareType? ShareType
-        // GraphQL -> shareType: CreateNasShareInputShareType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shareType")]
-        public CreateNasShareInputShareType? ShareType { get; set; }
-
-        //      C# -> NasShareCredentialsInput? Credentials
-        // GraphQL -> credentials: NasShareCredentialsInput (input)
-        [JsonProperty("credentials")]
-        public NasShareCredentialsInput? Credentials { get; set; }
-
         //      C# -> System.String? ExportPoint
         // GraphQL -> exportPoint: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("exportPoint")]
         public System.String? ExportPoint { get; set; }
+
+        //      C# -> NasShareCredentialsInput? Credentials
+        // GraphQL -> credentials: NasShareCredentialsInput (input)
+        [JsonProperty("credentials")]
+        public NasShareCredentialsInput? Credentials { get; set; }
+
+        //      C# -> CreateNasShareInputShareType? ShareType
+        // GraphQL -> shareType: CreateNasShareInputShareType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shareType")]
+        public CreateNasShareInputShareType? ShareType { get; set; }
 
 
         #endregion

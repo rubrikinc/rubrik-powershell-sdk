@@ -1,6 +1,6 @@
 ### MssqlCbtStatusType
 Supported in v5.0+
-  CBT host support status.
+CBT host support status.
 
 - MSSQL_CBT_STATUS_TYPE_DEFAULT
 - MSSQL_CBT_STATUS_TYPE_DISABLED

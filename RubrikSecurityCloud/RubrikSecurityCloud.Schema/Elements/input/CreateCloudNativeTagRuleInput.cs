@@ -34,9 +34,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? TagRuleName { get; set; }
 
         //      C# -> TagType? Tag
-        // GraphQL -> tag: TagType! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> tag: TagType (input)
         [JsonProperty("tag")]
         public TagType? Tag { get; set; }
 
@@ -59,6 +57,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> applyToAllCloudAccounts: Boolean (scalar)
         [JsonProperty("applyToAllCloudAccounts")]
         public System.Boolean? ApplyToAllCloudAccounts { get; set; }
+
+        //      C# -> CloudNativeTagCondition? TagConditions
+        // GraphQL -> tagConditions: CloudNativeTagCondition (input)
+        [JsonProperty("tagConditions")]
+        public CloudNativeTagCondition? TagConditions { get; set; }
 
 
         #endregion

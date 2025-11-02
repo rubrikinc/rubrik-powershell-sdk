@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? HasNext
+        // GraphQL -> hasNext: Boolean! (scalar)
+        [JsonProperty("hasNext")]
+        public System.Boolean? HasNext { get; set; }
+
         //      C# -> List<SnapshotLocation>? SnapshotLocations
         // GraphQL -> snapshotLocations: [SnapshotLocation!]! (type)
         [JsonProperty("snapshotLocations")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GetPossibleSnapshotLocationsForObjectsResp Set(
+        System.Boolean? HasNext = null,
         List<SnapshotLocation>? SnapshotLocations = null
     ) 
     {
+        if ( HasNext != null ) {
+            this.HasNext = HasNext;
+        }
         if ( SnapshotLocations != null ) {
             this.SnapshotLocations = SnapshotLocations;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? HasNext
+        // GraphQL -> hasNext: Boolean! (scalar)
+        if (this.HasNext != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasNext\n" ;
+            } else {
+                s += ind + "hasNext\n" ;
+            }
+        }
         //      C# -> List<SnapshotLocation>? SnapshotLocations
         // GraphQL -> snapshotLocations: [SnapshotLocation!]! (type)
         if (this.SnapshotLocations != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? HasNext
+        // GraphQL -> hasNext: Boolean! (scalar)
+        if (ec.Includes("hasNext",true))
+        {
+            if(this.HasNext == null) {
+
+                this.HasNext = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasNext != null && ec.Excludes("hasNext",true))
+        {
+            this.HasNext = null;
+        }
         //      C# -> List<SnapshotLocation>? SnapshotLocations
         // GraphQL -> snapshotLocations: [SnapshotLocation!]! (type)
         if (ec.Includes("snapshotLocations",false))

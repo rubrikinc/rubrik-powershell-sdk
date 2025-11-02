@@ -1,6 +1,6 @@
 ### CdpReplicationStatus
 Supported in v5.1+
-  Current CDP Replication Status of virtual machine.
+Current CDP Replication Status of virtual machine.
 
 - CDP_REPLICATION_STATUS_FAILED
 - CDP_REPLICATION_STATUS_HEALTHY

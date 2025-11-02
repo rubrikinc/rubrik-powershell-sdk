@@ -13489,6 +13489,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? RecoverDb2DatabaseToEndOfBackup
+        // GraphQL -> recoverDb2DatabaseToEndOfBackup: AsyncRequestStatus! (type)
+        public static string RecoverDb2DatabaseToEndOfBackup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "recoverDb2DatabaseToEndOfBackup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoverDb2DatabaseToEndOfBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? RecoverDb2DatabaseToPointInTime
+        // GraphQL -> recoverDb2DatabaseToPointInTime: AsyncRequestStatus! (type)
+        public static string RecoverDb2DatabaseToPointInTime(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "recoverDb2DatabaseToPointInTime" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoverDb2DatabaseToPointInTimeFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RemoveNodeDetailsReply? RemovedNodeDetails
         // GraphQL -> removedNodeDetails: RemoveNodeDetailsReply! (type)
         public static string RemovedNodeDetails(object fsObj)
@@ -15285,6 +15321,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ThreatMonitoringObjects() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TotalSnapshotsForCloudDirectObjectReply? TotalSnapshotsForCloudDirectObject
+        // GraphQL -> totalSnapshotsForCloudDirectObject: TotalSnapshotsForCloudDirectObjectReply! (type)
+        public static string TotalSnapshotsForCloudDirectObject(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "totalSnapshotsForCloudDirectObject" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TotalSnapshotsForCloudDirectObjectFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new TotalSnapshotsForCloudDirectObjectReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -163,3 +163,7 @@ Fields for sorting hierarchy objects.
 +mo:sort:db:table=saasapps_google_workspace_org_units
 +mo:sort:db:column=name
 +mo:sort:db:index:key=NULL
+- OBJECT_TYPE - Sort by object type.
++mo:sort:db:table=managed_object
++mo:sort:db:column=object_type
++mo:sort:db:index:key=NULL

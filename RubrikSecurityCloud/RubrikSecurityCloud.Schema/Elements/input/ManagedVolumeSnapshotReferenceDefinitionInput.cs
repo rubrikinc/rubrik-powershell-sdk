@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ManagedVolumeSnapshotReferencePatchInput? ManagedVolumeSnapshotReferencePatch
-        // GraphQL -> managedVolumeSnapshotReferencePatch: ManagedVolumeSnapshotReferencePatchInput (input)
-        [JsonProperty("managedVolumeSnapshotReferencePatch")]
-        public ManagedVolumeSnapshotReferencePatchInput? ManagedVolumeSnapshotReferencePatch { get; set; }
-
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("ownerId")]
         public System.String? OwnerId { get; set; }
+
+        //      C# -> ManagedVolumeSnapshotReferencePatchInput? ManagedVolumeSnapshotReferencePatch
+        // GraphQL -> managedVolumeSnapshotReferencePatch: ManagedVolumeSnapshotReferencePatchInput (input)
+        [JsonProperty("managedVolumeSnapshotReferencePatch")]
+        public ManagedVolumeSnapshotReferencePatchInput? ManagedVolumeSnapshotReferencePatch { get; set; }
 
 
         #endregion

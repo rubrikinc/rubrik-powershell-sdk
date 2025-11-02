@@ -22,7 +22,10 @@ namespace RubrikSecurityCloud.Types
         ARCHIVE,
 
         [EnumMember(Value = "BACKUP")]
-        BACKUP
+        BACKUP,
+
+        [EnumMember(Value = "PREMIUM")]
+        PREMIUM
 
 
     } // enum RcsTierEnumType

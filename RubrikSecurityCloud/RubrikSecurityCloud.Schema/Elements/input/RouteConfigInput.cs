@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? NetworkZoneName
-        // GraphQL -> networkZoneName: String (scalar)
-        [JsonProperty("networkZoneName")]
-        public System.String? NetworkZoneName { get; set; }
-
         //      C# -> System.String? Device
         // GraphQL -> device: String! (scalar)
         [Required]
@@ -51,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("network")]
         public System.String? Network { get; set; }
+
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        [JsonProperty("networkZoneName")]
+        public System.String? NetworkZoneName { get; set; }
 
 
         #endregion

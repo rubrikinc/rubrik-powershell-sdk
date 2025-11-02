@@ -29,10 +29,22 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceDatabaseIds")]
         public List<System.String>? SourceDatabaseIds { get; set; }
 
+        //      C# -> System.String? TargetInstanceId
+        // GraphQL -> targetInstanceId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetInstanceId")]
+        public System.String? TargetInstanceId { get; set; }
+
         //      C# -> System.String? TargetDataFilePath
         // GraphQL -> targetDataFilePath: String (scalar)
         [JsonProperty("targetDataFilePath")]
         public System.String? TargetDataFilePath { get; set; }
+
+        //      C# -> MssqlRecoveryPointInput? RecoveryPoint
+        // GraphQL -> recoveryPoint: MssqlRecoveryPointInput (input)
+        [JsonProperty("recoveryPoint")]
+        public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
 
         //      C# -> System.String? TargetLogFilePath
         // GraphQL -> targetLogFilePath: String (scalar)
@@ -48,18 +60,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceInstanceIds: [String!] (scalar)
         [JsonProperty("sourceInstanceIds")]
         public List<System.String>? SourceInstanceIds { get; set; }
-
-        //      C# -> MssqlRecoveryPointInput? RecoveryPoint
-        // GraphQL -> recoveryPoint: MssqlRecoveryPointInput (input)
-        [JsonProperty("recoveryPoint")]
-        public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
-
-        //      C# -> System.String? TargetInstanceId
-        // GraphQL -> targetInstanceId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetInstanceId")]
-        public System.String? TargetInstanceId { get; set; }
 
 
         #endregion

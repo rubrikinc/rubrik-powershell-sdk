@@ -60,6 +60,14 @@ Deletes a Kubernetes protection set by specifying the protection set ID.
 
 - There is a single argument of type DeleteK8sProtectionSetInput.
 - Returns ResponseSuccess.
+### deletevmmount
+Remove a Live Mount of a Kubernetes virtual machine snapshot
+
+Supported in v9.4+
+Initiates a request to remove a Live Mount of a Kubernetes virtual machine snapshot identified by the ID of the Live Mount.
+
+- There is a single argument of type DeleteK8sVmMountInput.
+- Returns AsyncRequestStatus.
 ### downloadsnapshotfromlocation
 Download a snapshot from a remote target
 
@@ -134,6 +142,14 @@ Supported in v9.5
 Triggers an on-demand diagnostic job for the specified Kubernetes cluster.
 
 - There is a single argument of type StartK8sDiagnosticsJobInput.
+- Returns AsyncRequestStatus.
+### startvmmountjob
+Create a job to live mount a Kubernetes virtual machine snapshot
+
+Supported in v9.4+
+Initiate a job to live mount a Kubernetes virtual machine from a snapshot to a target Kubernetes cluster and namespace.
+
+- There is a single argument of type StartK8sVmMountJobInput.
 - Returns AsyncRequestStatus.
 ### updatecluster
 Update a Kubernetes cluster

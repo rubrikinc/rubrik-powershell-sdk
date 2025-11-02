@@ -98,18 +98,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			clusterUuid = $someString
     /// 			# REQUIRED
     /// 			definition = @{
-    /// 				# OPTIONAL
-    /// 				caCerts = $someString
-    /// 				# OPTIONAL
-    /// 				certificateId = $someString
     /// 				# REQUIRED
     /// 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				caCerts = $someString
     /// 				# REQUIRED
     /// 				hostname = $someString
     /// 				# REQUIRED
     /// 				password = $someString
     /// 				# REQUIRED
     /// 				username = $someString
+    /// 				# OPTIONAL
+    /// 				certificateId = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -227,18 +227,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			id = $someString
     /// 			# REQUIRED
     /// 			definition = @{
-    /// 				# OPTIONAL
-    /// 				caCerts = $someString
-    /// 				# OPTIONAL
-    /// 				certificateId = $someString
     /// 				# REQUIRED
     /// 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				caCerts = $someString
     /// 				# REQUIRED
     /// 				hostname = $someString
     /// 				# REQUIRED
     /// 				password = $someString
     /// 				# REQUIRED
     /// 				username = $someString
+    /// 				# OPTIONAL
+    /// 				certificateId = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -374,18 +374,18 @@ $query.Var.input = @{
 			clusterUuid = $someString
 			# REQUIRED
 			definition = @{
-				# OPTIONAL
-				caCerts = $someString
-				# OPTIONAL
-				certificateId = $someString
 				# REQUIRED
 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+				# OPTIONAL
+				caCerts = $someString
 				# REQUIRED
 				hostname = $someString
 				# REQUIRED
 				password = $someString
 				# REQUIRED
 				username = $someString
+				# OPTIONAL
+				certificateId = $someString
 			}
 		}
 	)
@@ -479,18 +479,18 @@ $query.Var.input = @{
 			id = $someString
 			# REQUIRED
 			definition = @{
-				# OPTIONAL
-				caCerts = $someString
-				# OPTIONAL
-				certificateId = $someString
 				# REQUIRED
 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+				# OPTIONAL
+				caCerts = $someString
 				# REQUIRED
 				hostname = $someString
 				# REQUIRED
 				password = $someString
 				# REQUIRED
 				username = $someString
+				# OPTIONAL
+				certificateId = $someString
 			}
 		}
 	)

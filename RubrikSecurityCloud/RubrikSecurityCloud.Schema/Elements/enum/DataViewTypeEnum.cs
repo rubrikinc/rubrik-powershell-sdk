@@ -156,6 +156,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TASK_DETAILS")]
         TASK_DETAILS,
 
+        [EnumMember(Value = "THREAT_MONITORING_COMPLIANCE")]
+        THREAT_MONITORING_COMPLIANCE,
+
         [EnumMember(Value = "THREAT_MONITORING_LIST")]
         THREAT_MONITORING_LIST,
 

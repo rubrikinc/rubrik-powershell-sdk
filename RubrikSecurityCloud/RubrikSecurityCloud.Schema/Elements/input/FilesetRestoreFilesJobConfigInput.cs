@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ignoreErrors")]
         public System.Boolean? IgnoreErrors { get; set; }
 
+        //      C# -> List<FilesetRestorePathPairInput>? RestoreConfig
+        // GraphQL -> restoreConfig: [FilesetRestorePathPairInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("restoreConfig")]
+        public List<FilesetRestorePathPairInput>? RestoreConfig { get; set; }
+
         //      C# -> List<System.String>? ExcludePaths
         // GraphQL -> excludePaths: [String!] (scalar)
         [JsonProperty("excludePaths")]
@@ -43,13 +50,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldRestoreOnlyAcls: Boolean (scalar)
         [JsonProperty("shouldRestoreOnlyAcls")]
         public System.Boolean? ShouldRestoreOnlyAcls { get; set; }
-
-        //      C# -> List<FilesetRestorePathPairInput>? RestoreConfig
-        // GraphQL -> restoreConfig: [FilesetRestorePathPairInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("restoreConfig")]
-        public List<FilesetRestorePathPairInput>? RestoreConfig { get; set; }
 
 
         #endregion

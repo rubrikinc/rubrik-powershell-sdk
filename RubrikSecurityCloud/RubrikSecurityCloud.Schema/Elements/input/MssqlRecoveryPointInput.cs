@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> LsnRecoveryPointInput? LsnPoint
+        // GraphQL -> lsnPoint: LsnRecoveryPointInput (input)
+        [JsonProperty("lsnPoint")]
+        public LsnRecoveryPointInput? LsnPoint { get; set; }
+
         //      C# -> System.Int64? TimestampMs
         // GraphQL -> timestampMs: Long (scalar)
         [JsonProperty("timestampMs")]
@@ -28,11 +33,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> date: DateTime (scalar)
         [JsonProperty("date")]
         public DateTime? Date { get; set; }
-
-        //      C# -> LsnRecoveryPointInput? LsnPoint
-        // GraphQL -> lsnPoint: LsnRecoveryPointInput (input)
-        [JsonProperty("lsnPoint")]
-        public LsnRecoveryPointInput? LsnPoint { get; set; }
 
 
         #endregion

@@ -49,6 +49,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceDatabaseIds")]
         public List<System.String>? SourceDatabaseIds { get; set; }
 
+        //      C# -> System.String? SourceMongoClusterId
+        // GraphQL -> sourceMongoClusterId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceMongoClusterId")]
+        public System.String? SourceMongoClusterId { get; set; }
+
         //      C# -> System.String? TargetCollectionName
         // GraphQL -> targetCollectionName: String (scalar)
         [JsonProperty("targetCollectionName")]
@@ -58,6 +65,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetDatabaseName: String (scalar)
         [JsonProperty("targetDatabaseName")]
         public System.String? TargetDatabaseName { get; set; }
+
+        //      C# -> System.String? TargetMongoClusterId
+        // GraphQL -> targetMongoClusterId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetMongoClusterId")]
+        public System.String? TargetMongoClusterId { get; set; }
 
         //      C# -> DateTime? VersionTime
         // GraphQL -> versionTime: DateTime (scalar)
@@ -83,20 +97,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> targetAuthenticationType: MongoAuthenticationType (enum)
         [JsonProperty("targetAuthenticationType")]
         public MongoAuthenticationType? TargetAuthenticationType { get; set; }
-
-        //      C# -> System.String? SourceMongoClusterId
-        // GraphQL -> sourceMongoClusterId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceMongoClusterId")]
-        public System.String? SourceMongoClusterId { get; set; }
-
-        //      C# -> System.String? TargetMongoClusterId
-        // GraphQL -> targetMongoClusterId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetMongoClusterId")]
-        public System.String? TargetMongoClusterId { get; set; }
 
 
         #endregion

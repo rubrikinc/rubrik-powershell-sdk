@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int64? EndScn
-        // GraphQL -> endScn: Long! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("endScn")]
-        public System.Int64? EndScn { get; set; }
-
         //      C# -> System.Int64? StartScn
         // GraphQL -> startScn: Long! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("startScn")]
         public System.Int64? StartScn { get; set; }
+
+        //      C# -> System.Int64? EndScn
+        // GraphQL -> endScn: Long! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("endScn")]
+        public System.Int64? EndScn { get; set; }
 
 
         #endregion

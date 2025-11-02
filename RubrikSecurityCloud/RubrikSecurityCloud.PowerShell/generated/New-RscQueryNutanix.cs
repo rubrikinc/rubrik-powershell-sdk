@@ -91,12 +91,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	limit = $someInt
     /// 	# OPTIONAL
     /// 	offset = $someInt
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// 	# REQUIRED
     /// 	path = $someString
     /// }
@@ -568,10 +568,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# OPTIONAL
     /// 	cursor = $someString
-    /// 	# OPTIONAL
-    /// 	limit = $someInt
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
     /// 	# REQUIRED
     /// 	path = $someString
     /// }
@@ -1306,12 +1306,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.NutanixBrowseSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	limit = $someInt
 	# OPTIONAL
 	offset = $someInt
-	# REQUIRED
-	id = $someString
 	# REQUIRED
 	path = $someString
 }"
@@ -1715,10 +1715,10 @@ $query.Var.filter = @(
 $query.Var.input = @{
 	# OPTIONAL
 	cursor = $someString
-	# OPTIONAL
-	limit = $someInt
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	limit = $someInt
 	# REQUIRED
 	path = $someString
 }"

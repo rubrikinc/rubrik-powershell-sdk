@@ -29,6 +29,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
+        //      C# -> System.String? PemFile
+        // GraphQL -> pemFile: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("pemFile")]
+        public System.String? PemFile { get; set; }
+
         //      C# -> System.String? PrivateKey
         // GraphQL -> privateKey: String (scalar)
         [JsonProperty("privateKey")]
@@ -43,20 +57,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isInternal: Boolean (scalar)
         [JsonProperty("isInternal")]
         public System.Boolean? IsInternal { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("name")]
-        public System.String? Name { get; set; }
-
-        //      C# -> System.String? PemFile
-        // GraphQL -> pemFile: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("pemFile")]
-        public System.String? PemFile { get; set; }
 
 
         #endregion

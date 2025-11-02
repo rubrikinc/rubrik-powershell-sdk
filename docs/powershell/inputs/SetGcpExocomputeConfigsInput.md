@@ -7,5 +7,5 @@ Input to upsert the exocompute configuration for a GCP project.
   - List of exocompute configurations for the regions.
 - triggerHealthCheck: System.Boolean
   - Flag to trigger health check.
-- optionalHealthChecks: OptionalHealthChecks
+- optionalHealthChecks: OptionalHealthChecksInput
   - Contains input for optional health checks that needs to be run.

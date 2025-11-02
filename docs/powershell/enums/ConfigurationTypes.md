@@ -1,6 +1,6 @@
 ### ConfigurationTypes
 Supported in v7.0+
-  Supported configuration types for backup and restore.
+Supported configuration types for backup and restore.
 
 - CONFIGURATION_TYPES_ADAPTIVE_BACKUP - Adaptive backup configuration.
 - CONFIGURATION_TYPES_ARCHIVAL_LOCATIONS - Archival locations configuration.

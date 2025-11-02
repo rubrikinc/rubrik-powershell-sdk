@@ -15,9 +15,9 @@ Supported in v5.0+
   - Supported in v5.1+
 - hostname: System.String
   - Supported in v6.0+
-  Hostname of the node.
+Hostname of the node.
 - role: System.String
   - Supported in v9.4+
-  Role of the node in the cluster.
+Role of the node in the cluster.
 - subStatus: System.String
   - Supported in v9.4+

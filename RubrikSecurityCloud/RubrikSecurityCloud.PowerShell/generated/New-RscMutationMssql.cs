@@ -98,60 +98,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# OPTIONAL
     /// 			hasAgent = $someBoolean
-    /// 			# OPTIONAL
-    /// 			oracleQueryUser = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSysDbaUser = $someString
-    /// 			# OPTIONAL
-    /// 			organizationId = $someString
-    /// 			# OPTIONAL
-    /// 			alias = $someString
-    /// 			# OPTIONAL
-    /// 			isOracleHost = $someBoolean
-    /// 			# OPTIONAL
-    /// 			mssqlSddCertificateId = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSddWalletPath = $someString
-    /// 			# OPTIONAL
-    /// 			shouldOracleSddThroughRba = $someBoolean
-    /// 			# OPTIONAL
-    /// 			orgNetworkId = $someString
-    /// 			# OPTIONAL
-    /// 			shouldMssqlSddThroughRba = $someBoolean
-    /// 			# OPTIONAL
-    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			hdfsConfig = @{
-    /// 				# OPTIONAL
-    /// 				hdfsBaseConfig = @{
-    /// 					# OPTIONAL
-    /// 					apiToken = $someString
-    /// 					# OPTIONAL
-    /// 					kerberosTicket = $someString
-    /// 					# OPTIONAL
-    /// 					nameservices = $someString
-    /// 					# OPTIONAL
-    /// 					username = $someString
-    /// 					# REQUIRED
-    /// 					hosts = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							hostname = $someString
-    /// 							# REQUIRED
-    /// 							port = $someInt
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 			}
     /// 			# REQUIRED
     /// 			hostname = $someString
-    /// 			# OPTIONAL
-    /// 			mssqlSddUserCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
     /// 			# OPTIONAL
     /// 			nasConfig = @{
     /// 				# OPTIONAL
@@ -166,6 +114,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				apiToken = $someString
     /// 				# OPTIONAL
     /// 				apiUsername = $someString
+    /// 				# REQUIRED
+    /// 				vendorType = $someString
     /// 				# OPTIONAL
     /// 				zoneName = $someString
     /// 				# OPTIONAL
@@ -178,9 +128,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isShareAutoDiscoveryEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				isNutanixCftEnabled = $someBoolean
-    /// 				# REQUIRED
-    /// 				vendorType = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleQueryUser = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSysDbaUser = $someString
+    /// 			# OPTIONAL
+    /// 			organizationId = $someString
+    /// 			# OPTIONAL
+    /// 			alias = $someString
+    /// 			# OPTIONAL
+    /// 			hdfsConfig = @{
+    /// 				# OPTIONAL
+    /// 				hdfsBaseConfig = @{
+    /// 					# OPTIONAL
+    /// 					apiToken = $someString
+    /// 					# REQUIRED
+    /// 					hosts = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							hostname = $someString
+    /// 							# REQUIRED
+    /// 							port = $someInt
+    /// 						}
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					kerberosTicket = $someString
+    /// 					# OPTIONAL
+    /// 					nameservices = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			oracleSepsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			mssqlSddCertificateId = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
     /// 			oracleSddUserCredentials = @{
     /// 				# REQUIRED
@@ -189,10 +179,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 			# OPTIONAL
-    /// 			oracleSepsSettings = @{
-    /// 				# OPTIONAL
-    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			shouldOracleSddThroughRba = $someBoolean
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 		}
     /// 	)
     /// }
@@ -227,15 +227,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	updateInfo = @{
     /// 		# OPTIONAL
-    /// 		shouldApplyToExistingSnapshots = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
-    /// 		# OPTIONAL
     /// 		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
     /// 		# REQUIRED
     /// 		ids = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldApplyToExistingSnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
     /// 		# OPTIONAL
     /// 		mssqlSlaPatchProperties = @{
     /// 			# OPTIONAL
@@ -289,15 +289,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	updateInfo = @{
     /// 		# OPTIONAL
-    /// 		shouldApplyToExistingSnapshots = $someBoolean
-    /// 		# OPTIONAL
-    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
-    /// 		# OPTIONAL
     /// 		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
     /// 		# REQUIRED
     /// 		ids = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldApplyToExistingSnapshots = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldApplyToNonPolicySnapshots = $someBoolean
     /// 		# OPTIONAL
     /// 		mssqlSlaPatchProperties = @{
     /// 			# OPTIONAL
@@ -357,16 +357,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		endPoint = @{
     /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
@@ -376,30 +376,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		startPoint = @{
     /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -502,8 +502,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceDatabaseIds = @(
     /// 			$someString
     /// 		)
+    /// 		# REQUIRED
+    /// 		targetInstanceId = $someString
     /// 		# OPTIONAL
     /// 		targetDataFilePath = $someString
+    /// 		# OPTIONAL
+    /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			timestampMs = $someInt64
+    /// 			# OPTIONAL
+    /// 			date = $someDateTime
+    /// 		}
     /// 		# OPTIONAL
     /// 		targetLogFilePath = $someString
     /// 		# OPTIONAL
@@ -512,22 +528,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceInstanceIds = @(
     /// 			$someString
     /// 		)
-    /// 		# OPTIONAL
-    /// 		recoveryPoint = @{
-    /// 			# OPTIONAL
-    /// 			timestampMs = $someInt64
-    /// 			# OPTIONAL
-    /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
-    /// 		}
-    /// 		# REQUIRED
-    /// 		targetInstanceId = $someString
     /// 	}
     /// }
     /// 
@@ -562,11 +562,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	availabilityGroupsUpdateProperties = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			availabilityGroupId = $someString
-    /// 			# REQUIRED
     /// 			updateProperties = @{
-    /// 				# OPTIONAL
-    /// 				configuredSlaDomainId = $someString
     /// 				# OPTIONAL
     /// 				mssqlNonSlaProperties = @{
     /// 					# OPTIONAL
@@ -575,6 +571,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					logBackupFrequencyInSeconds = $someInt
     /// 					# OPTIONAL
     /// 					logRetentionHours = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
     /// 				}
     /// 				# OPTIONAL
     /// 				mssqlSlaPatchProperties = @{
@@ -597,19 +606,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 				}
     /// 				# OPTIONAL
-    /// 				mssqlSlaRelatedProperties = @{
-    /// 					# OPTIONAL
-    /// 					copyOnly = $someBoolean
-    /// 					# OPTIONAL
-    /// 					logBackupFrequencyInSeconds = $someInt
-    /// 					# OPTIONAL
-    /// 					logRetentionHours = $someInt
-    /// 					# OPTIONAL
-    /// 					hasLogConfigFromSla = $someBoolean
-    /// 					# OPTIONAL
-    /// 					hostLogRetention = $someInt
-    /// 				}
+    /// 				configuredSlaDomainId = $someString
     /// 			}
+    /// 			# REQUIRED
+    /// 			availabilityGroupId = $someString
     /// 		}
     /// 	)
     /// }
@@ -642,8 +642,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	dbsUpdateProperties = @(
     /// 		@{
     /// 			# REQUIRED
@@ -655,13 +653,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				maxDataStreams = $someInt
     /// 				# OPTIONAL
+    /// 				postBackupScript = @{
+    /// 					# REQUIRED
+    /// 					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+    /// 					# REQUIRED
+    /// 					scriptPath = $someString
+    /// 					# REQUIRED
+    /// 					timeoutMs = $someInt64
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				preBackupScript = @{
+    /// 					# REQUIRED
+    /// 					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+    /// 					# REQUIRED
+    /// 					scriptPath = $someString
+    /// 					# REQUIRED
+    /// 					timeoutMs = $someInt64
+    /// 				}
+    /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
     /// 				# OPTIONAL
     /// 				shouldForceFull = $someBoolean
-    /// 				# OPTIONAL
-    /// 				shouldClearPostBackupScript = $someBoolean
-    /// 				# OPTIONAL
-    /// 				shouldClearPreBackupScript = $someBoolean
     /// 				# OPTIONAL
     /// 				mssqlNonSlaProperties = @{
     /// 					# OPTIONAL
@@ -705,26 +717,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					hostLogRetention = $someInt
     /// 				}
     /// 				# OPTIONAL
-    /// 				postBackupScript = @{
-    /// 					# REQUIRED
-    /// 					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
-    /// 					# REQUIRED
-    /// 					scriptPath = $someString
-    /// 					# REQUIRED
-    /// 					timeoutMs = $someInt64
-    /// 				}
+    /// 				shouldClearPostBackupScript = $someBoolean
     /// 				# OPTIONAL
-    /// 				preBackupScript = @{
-    /// 					# REQUIRED
-    /// 					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
-    /// 					# REQUIRED
-    /// 					scriptPath = $someString
-    /// 					# REQUIRED
-    /// 					timeoutMs = $someInt64
-    /// 				}
+    /// 				shouldClearPreBackupScript = $someBoolean
     /// 			}
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -758,11 +758,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	instancesUpdateProperties = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			instanceId = $someString
-    /// 			# REQUIRED
     /// 			updateProperties = @{
-    /// 				# OPTIONAL
-    /// 				configuredSlaDomainId = $someString
     /// 				# OPTIONAL
     /// 				mssqlNonSlaProperties = @{
     /// 					# OPTIONAL
@@ -771,6 +767,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					logBackupFrequencyInSeconds = $someInt
     /// 					# OPTIONAL
     /// 					logRetentionHours = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSlaRelatedProperties = @{
+    /// 					# OPTIONAL
+    /// 					copyOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					logBackupFrequencyInSeconds = $someInt
+    /// 					# OPTIONAL
+    /// 					logRetentionHours = $someInt
+    /// 					# OPTIONAL
+    /// 					hasLogConfigFromSla = $someBoolean
+    /// 					# OPTIONAL
+    /// 					hostLogRetention = $someInt
     /// 				}
     /// 				# OPTIONAL
     /// 				mssqlSlaPatchProperties = @{
@@ -793,19 +802,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					}
     /// 				}
     /// 				# OPTIONAL
-    /// 				mssqlSlaRelatedProperties = @{
-    /// 					# OPTIONAL
-    /// 					copyOnly = $someBoolean
-    /// 					# OPTIONAL
-    /// 					logBackupFrequencyInSeconds = $someInt
-    /// 					# OPTIONAL
-    /// 					logRetentionHours = $someInt
-    /// 					# OPTIONAL
-    /// 					hasLogConfigFromSla = $someBoolean
-    /// 					# OPTIONAL
-    /// 					hostLogRetention = $someInt
-    /// 				}
+    /// 				configuredSlaDomainId = $someString
     /// 			}
+    /// 			# REQUIRED
+    /// 			instanceId = $someString
     /// 		}
     /// 	)
     /// }
@@ -841,8 +841,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	hostsUpdateProperties = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			hostId = $someString
-    /// 			# REQUIRED
     /// 			updateProperties = @{
     /// 				# OPTIONAL
     /// 				mssqlSlaRelatedProperties = @{
@@ -858,6 +856,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					hostLogRetention = $someInt
     /// 				}
     /// 			}
+    /// 			# REQUIRED
+    /// 			hostId = $someString
     /// 		}
     /// 	)
     /// }
@@ -943,26 +943,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		targetInstanceId = $someString
-    /// 		# OPTIONAL
-    /// 		recoveryModel = $someMssqlDatabaseRecoveryModel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
     /// 		# REQUIRED
     /// 		mountedDatabaseName = $someString
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		targetInstanceId = $someString
+    /// 		# OPTIONAL
+    /// 		recoveryModel = $someMssqlDatabaseRecoveryModel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -996,8 +996,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		makeupReseedLimit = $someInt
@@ -1007,6 +1005,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			maxDataStreams = $someInt
     /// 			# OPTIONAL
     /// 			targetDataFilePath = $someString
+    /// 			# REQUIRED
+    /// 			targetDatabaseName = $someString
+    /// 			# OPTIONAL
+    /// 			targetFilePaths = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					exportPath = $someString
+    /// 					# REQUIRED
+    /// 					logicalName = $someString
+    /// 					# OPTIONAL
+    /// 					newFilename = $someString
+    /// 					# OPTIONAL
+    /// 					newLogicalName = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			targetInstanceId = $someString
     /// 			# OPTIONAL
     /// 			targetLogFilePath = $someString
     /// 			# OPTIONAL
@@ -1016,25 +1031,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
     /// 			}
-    /// 			# REQUIRED
-    /// 			targetDatabaseName = $someString
-    /// 			# OPTIONAL
-    /// 			targetFilePaths = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					newFilename = $someString
-    /// 					# OPTIONAL
-    /// 					newLogicalName = $someString
-    /// 					# REQUIRED
-    /// 					exportPath = $someString
-    /// 					# REQUIRED
-    /// 					logicalName = $someString
-    /// 				}
-    /// 			)
-    /// 			# REQUIRED
-    /// 			targetInstanceId = $someString
     /// 		}
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -1256,16 +1256,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -1307,43 +1307,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		finishRecovery = $someBoolean
     /// 		# OPTIONAL
     /// 		maxDataStreams = $someInt
-    /// 		# OPTIONAL
-    /// 		targetDataFilePath = $someString
-    /// 		# OPTIONAL
-    /// 		targetLogFilePath = $someString
-    /// 		# OPTIONAL
-    /// 		preserveCdcMetadata = $someBoolean
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
     /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		targetDataFilePath = $someString
     /// 		# REQUIRED
     /// 		targetDatabaseName = $someString
     /// 		# OPTIONAL
     /// 		targetFilePaths = @(
     /// 			@{
-    /// 				# OPTIONAL
-    /// 				newFilename = $someString
-    /// 				# OPTIONAL
-    /// 				newLogicalName = $someString
     /// 				# REQUIRED
     /// 				exportPath = $someString
     /// 				# REQUIRED
     /// 				logicalName = $someString
+    /// 				# OPTIONAL
+    /// 				newFilename = $someString
+    /// 				# OPTIONAL
+    /// 				newLogicalName = $someString
     /// 			}
     /// 		)
     /// 		# REQUIRED
     /// 		targetInstanceId = $someString
+    /// 		# OPTIONAL
+    /// 		targetLogFilePath = $someString
+    /// 		# OPTIONAL
+    /// 		preserveCdcMetadata = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1385,16 +1385,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
     /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
+    /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -1460,8 +1460,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	defaultProperties = @{
     /// 		# OPTIONAL
     /// 		cbtStatus = $someBoolean
@@ -1472,6 +1470,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldUseDefaultBackupLocation = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1502,12 +1502,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		makeupReseedLimit = $someInt
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -1540,6 +1540,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		mssqlLogShippingTargetStateOptions = @{
@@ -1549,8 +1551,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
     /// 		}
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1956,60 +1956,8 @@ $query.Var.input = @{
 		@{
 			# OPTIONAL
 			hasAgent = $someBoolean
-			# OPTIONAL
-			oracleQueryUser = $someString
-			# OPTIONAL
-			oracleSysDbaUser = $someString
-			# OPTIONAL
-			organizationId = $someString
-			# OPTIONAL
-			alias = $someString
-			# OPTIONAL
-			isOracleHost = $someBoolean
-			# OPTIONAL
-			mssqlSddCertificateId = $someString
-			# OPTIONAL
-			oracleSddWalletPath = $someString
-			# OPTIONAL
-			shouldOracleSddThroughRba = $someBoolean
-			# OPTIONAL
-			orgNetworkId = $someString
-			# OPTIONAL
-			shouldMssqlSddThroughRba = $someBoolean
-			# OPTIONAL
-			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-			# OPTIONAL
-			hdfsConfig = @{
-				# OPTIONAL
-				hdfsBaseConfig = @{
-					# OPTIONAL
-					apiToken = $someString
-					# OPTIONAL
-					kerberosTicket = $someString
-					# OPTIONAL
-					nameservices = $someString
-					# OPTIONAL
-					username = $someString
-					# REQUIRED
-					hosts = @(
-						@{
-							# REQUIRED
-							hostname = $someString
-							# REQUIRED
-							port = $someInt
-						}
-					)
-				}
-			}
 			# REQUIRED
 			hostname = $someString
-			# OPTIONAL
-			mssqlSddUserCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
 			# OPTIONAL
 			nasConfig = @{
 				# OPTIONAL
@@ -2024,6 +1972,8 @@ $query.Var.input = @{
 				apiToken = $someString
 				# OPTIONAL
 				apiUsername = $someString
+				# REQUIRED
+				vendorType = $someString
 				# OPTIONAL
 				zoneName = $someString
 				# OPTIONAL
@@ -2036,9 +1986,49 @@ $query.Var.input = @{
 				isShareAutoDiscoveryEnabled = $someBoolean
 				# OPTIONAL
 				isNutanixCftEnabled = $someBoolean
-				# REQUIRED
-				vendorType = $someString
 			}
+			# OPTIONAL
+			oracleQueryUser = $someString
+			# OPTIONAL
+			oracleSysDbaUser = $someString
+			# OPTIONAL
+			organizationId = $someString
+			# OPTIONAL
+			alias = $someString
+			# OPTIONAL
+			hdfsConfig = @{
+				# OPTIONAL
+				hdfsBaseConfig = @{
+					# OPTIONAL
+					apiToken = $someString
+					# REQUIRED
+					hosts = @(
+						@{
+							# REQUIRED
+							hostname = $someString
+							# REQUIRED
+							port = $someInt
+						}
+					)
+					# OPTIONAL
+					kerberosTicket = $someString
+					# OPTIONAL
+					nameservices = $someString
+					# OPTIONAL
+					username = $someString
+				}
+			}
+			# OPTIONAL
+			isOracleHost = $someBoolean
+			# OPTIONAL
+			oracleSepsSettings = @{
+				# OPTIONAL
+				isOracleSepsWalletEnabled = $someBoolean
+			}
+			# OPTIONAL
+			mssqlSddCertificateId = $someString
+			# OPTIONAL
+			oracleSddWalletPath = $someString
 			# OPTIONAL
 			oracleSddUserCredentials = @{
 				# REQUIRED
@@ -2047,10 +2037,20 @@ $query.Var.input = @{
 				username = $someString
 			}
 			# OPTIONAL
-			oracleSepsSettings = @{
-				# OPTIONAL
-				isOracleSepsWalletEnabled = $someBoolean
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
 			}
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+			# OPTIONAL
+			shouldOracleSddThroughRba = $someBoolean
+			# OPTIONAL
+			orgNetworkId = $someString
+			# OPTIONAL
+			shouldMssqlSddThroughRba = $someBoolean
 		}
 	)
 }"
@@ -2077,15 +2077,15 @@ $query.Var.input = @{
 	# REQUIRED
 	updateInfo = @{
 		# OPTIONAL
-		shouldApplyToExistingSnapshots = $someBoolean
-		# OPTIONAL
-		shouldApplyToNonPolicySnapshots = $someBoolean
-		# OPTIONAL
 		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
 		# REQUIRED
 		ids = @(
 			$someString
 		)
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = $someBoolean
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = $someBoolean
 		# OPTIONAL
 		mssqlSlaPatchProperties = @{
 			# OPTIONAL
@@ -2131,15 +2131,15 @@ $query.Var.input = @{
 	# REQUIRED
 	updateInfo = @{
 		# OPTIONAL
-		shouldApplyToExistingSnapshots = $someBoolean
-		# OPTIONAL
-		shouldApplyToNonPolicySnapshots = $someBoolean
-		# OPTIONAL
 		existingSnapshotRetention = $someExistingSnapshotRetention # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExistingSnapshotRetention]) for enum values.
 		# REQUIRED
 		ids = @(
 			$someString
 		)
+		# OPTIONAL
+		shouldApplyToExistingSnapshots = $someBoolean
+		# OPTIONAL
+		shouldApplyToNonPolicySnapshots = $someBoolean
 		# OPTIONAL
 		mssqlSlaPatchProperties = @{
 			# OPTIONAL
@@ -2191,16 +2191,16 @@ $query.Var.input = @{
 		# OPTIONAL
 		endPoint = @{
 			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
@@ -2210,30 +2210,30 @@ $query.Var.input = @{
 		# OPTIONAL
 		recoveryPoint = @{
 			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
 		# OPTIONAL
 		startPoint = @{
 			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
 	}
 	# REQUIRED
@@ -2320,8 +2320,24 @@ $query.Var.input = @{
 		sourceDatabaseIds = @(
 			$someString
 		)
+		# REQUIRED
+		targetInstanceId = $someString
 		# OPTIONAL
 		targetDataFilePath = $someString
+		# OPTIONAL
+		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
+			timestampMs = $someInt64
+			# OPTIONAL
+			date = $someDateTime
+		}
 		# OPTIONAL
 		targetLogFilePath = $someString
 		# OPTIONAL
@@ -2330,22 +2346,6 @@ $query.Var.input = @{
 		sourceInstanceIds = @(
 			$someString
 		)
-		# OPTIONAL
-		recoveryPoint = @{
-			# OPTIONAL
-			timestampMs = $someInt64
-			# OPTIONAL
-			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
-		}
-		# REQUIRED
-		targetInstanceId = $someString
 	}
 }"
             );
@@ -2372,11 +2372,7 @@ $query.Var.input = @{
 	availabilityGroupsUpdateProperties = @(
 		@{
 			# REQUIRED
-			availabilityGroupId = $someString
-			# REQUIRED
 			updateProperties = @{
-				# OPTIONAL
-				configuredSlaDomainId = $someString
 				# OPTIONAL
 				mssqlNonSlaProperties = @{
 					# OPTIONAL
@@ -2385,6 +2381,19 @@ $query.Var.input = @{
 					logBackupFrequencyInSeconds = $someInt
 					# OPTIONAL
 					logRetentionHours = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
 				}
 				# OPTIONAL
 				mssqlSlaPatchProperties = @{
@@ -2407,19 +2416,10 @@ $query.Var.input = @{
 					}
 				}
 				# OPTIONAL
-				mssqlSlaRelatedProperties = @{
-					# OPTIONAL
-					copyOnly = $someBoolean
-					# OPTIONAL
-					logBackupFrequencyInSeconds = $someInt
-					# OPTIONAL
-					logRetentionHours = $someInt
-					# OPTIONAL
-					hasLogConfigFromSla = $someBoolean
-					# OPTIONAL
-					hostLogRetention = $someInt
-				}
+				configuredSlaDomainId = $someString
 			}
+			# REQUIRED
+			availabilityGroupId = $someString
 		}
 	)
 }"
@@ -2444,8 +2444,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	dbsUpdateProperties = @(
 		@{
 			# REQUIRED
@@ -2457,13 +2455,27 @@ $query.Var.input = @{
 				# OPTIONAL
 				maxDataStreams = $someInt
 				# OPTIONAL
+				postBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+					# REQUIRED
+					scriptPath = $someString
+					# REQUIRED
+					timeoutMs = $someInt64
+				}
+				# OPTIONAL
+				preBackupScript = @{
+					# REQUIRED
+					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
+					# REQUIRED
+					scriptPath = $someString
+					# REQUIRED
+					timeoutMs = $someInt64
+				}
+				# OPTIONAL
 				isPaused = $someBoolean
 				# OPTIONAL
 				shouldForceFull = $someBoolean
-				# OPTIONAL
-				shouldClearPostBackupScript = $someBoolean
-				# OPTIONAL
-				shouldClearPreBackupScript = $someBoolean
 				# OPTIONAL
 				mssqlNonSlaProperties = @{
 					# OPTIONAL
@@ -2507,26 +2519,14 @@ $query.Var.input = @{
 					hostLogRetention = $someInt
 				}
 				# OPTIONAL
-				postBackupScript = @{
-					# REQUIRED
-					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
-					# REQUIRED
-					scriptPath = $someString
-					# REQUIRED
-					timeoutMs = $someInt64
-				}
+				shouldClearPostBackupScript = $someBoolean
 				# OPTIONAL
-				preBackupScript = @{
-					# REQUIRED
-					scriptErrorAction = $someScriptErrorAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ScriptErrorAction]) for enum values.
-					# REQUIRED
-					scriptPath = $someString
-					# REQUIRED
-					timeoutMs = $someInt64
-				}
+				shouldClearPreBackupScript = $someBoolean
 			}
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -2552,11 +2552,7 @@ $query.Var.input = @{
 	instancesUpdateProperties = @(
 		@{
 			# REQUIRED
-			instanceId = $someString
-			# REQUIRED
 			updateProperties = @{
-				# OPTIONAL
-				configuredSlaDomainId = $someString
 				# OPTIONAL
 				mssqlNonSlaProperties = @{
 					# OPTIONAL
@@ -2565,6 +2561,19 @@ $query.Var.input = @{
 					logBackupFrequencyInSeconds = $someInt
 					# OPTIONAL
 					logRetentionHours = $someInt
+				}
+				# OPTIONAL
+				mssqlSlaRelatedProperties = @{
+					# OPTIONAL
+					copyOnly = $someBoolean
+					# OPTIONAL
+					logBackupFrequencyInSeconds = $someInt
+					# OPTIONAL
+					logRetentionHours = $someInt
+					# OPTIONAL
+					hasLogConfigFromSla = $someBoolean
+					# OPTIONAL
+					hostLogRetention = $someInt
 				}
 				# OPTIONAL
 				mssqlSlaPatchProperties = @{
@@ -2587,19 +2596,10 @@ $query.Var.input = @{
 					}
 				}
 				# OPTIONAL
-				mssqlSlaRelatedProperties = @{
-					# OPTIONAL
-					copyOnly = $someBoolean
-					# OPTIONAL
-					logBackupFrequencyInSeconds = $someInt
-					# OPTIONAL
-					logRetentionHours = $someInt
-					# OPTIONAL
-					hasLogConfigFromSla = $someBoolean
-					# OPTIONAL
-					hostLogRetention = $someInt
-				}
+				configuredSlaDomainId = $someString
 			}
+			# REQUIRED
+			instanceId = $someString
 		}
 	)
 }"
@@ -2627,8 +2627,6 @@ $query.Var.input = @{
 	hostsUpdateProperties = @(
 		@{
 			# REQUIRED
-			hostId = $someString
-			# REQUIRED
 			updateProperties = @{
 				# OPTIONAL
 				mssqlSlaRelatedProperties = @{
@@ -2644,6 +2642,8 @@ $query.Var.input = @{
 					hostLogRetention = $someInt
 				}
 			}
+			# REQUIRED
+			hostId = $someString
 		}
 	)
 }"
@@ -2713,26 +2713,26 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
-		# OPTIONAL
-		targetInstanceId = $someString
-		# OPTIONAL
-		recoveryModel = $someMssqlDatabaseRecoveryModel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
 		# REQUIRED
 		mountedDatabaseName = $someString
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
+		# OPTIONAL
+		targetInstanceId = $someString
+		# OPTIONAL
+		recoveryModel = $someMssqlDatabaseRecoveryModel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlDatabaseRecoveryModel]) for enum values.
 	}
 	# REQUIRED
 	id = $someString
@@ -2758,8 +2758,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		makeupReseedLimit = $someInt
@@ -2769,6 +2767,23 @@ $query.Var.input = @{
 			maxDataStreams = $someInt
 			# OPTIONAL
 			targetDataFilePath = $someString
+			# REQUIRED
+			targetDatabaseName = $someString
+			# OPTIONAL
+			targetFilePaths = @(
+				@{
+					# REQUIRED
+					exportPath = $someString
+					# REQUIRED
+					logicalName = $someString
+					# OPTIONAL
+					newFilename = $someString
+					# OPTIONAL
+					newLogicalName = $someString
+				}
+			)
+			# REQUIRED
+			targetInstanceId = $someString
 			# OPTIONAL
 			targetLogFilePath = $someString
 			# OPTIONAL
@@ -2778,25 +2793,10 @@ $query.Var.input = @{
 				# REQUIRED
 				state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
 			}
-			# REQUIRED
-			targetDatabaseName = $someString
-			# OPTIONAL
-			targetFilePaths = @(
-				@{
-					# OPTIONAL
-					newFilename = $someString
-					# OPTIONAL
-					newLogicalName = $someString
-					# REQUIRED
-					exportPath = $someString
-					# REQUIRED
-					logicalName = $someString
-				}
-			)
-			# REQUIRED
-			targetInstanceId = $someString
 		}
 	}
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
 }"
@@ -2970,16 +2970,16 @@ $query.Var.input = @{
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
 	}
 	# REQUIRED
@@ -3013,43 +3013,43 @@ $query.Var.input = @{
 		finishRecovery = $someBoolean
 		# OPTIONAL
 		maxDataStreams = $someInt
-		# OPTIONAL
-		targetDataFilePath = $someString
-		# OPTIONAL
-		targetLogFilePath = $someString
-		# OPTIONAL
-		preserveCdcMetadata = $someBoolean
 		# REQUIRED
 		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
 			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
+		# OPTIONAL
+		targetDataFilePath = $someString
 		# REQUIRED
 		targetDatabaseName = $someString
 		# OPTIONAL
 		targetFilePaths = @(
 			@{
-				# OPTIONAL
-				newFilename = $someString
-				# OPTIONAL
-				newLogicalName = $someString
 				# REQUIRED
 				exportPath = $someString
 				# REQUIRED
 				logicalName = $someString
+				# OPTIONAL
+				newFilename = $someString
+				# OPTIONAL
+				newLogicalName = $someString
 			}
 		)
 		# REQUIRED
 		targetInstanceId = $someString
+		# OPTIONAL
+		targetLogFilePath = $someString
+		# OPTIONAL
+		preserveCdcMetadata = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -3083,16 +3083,16 @@ $query.Var.input = @{
 		# REQUIRED
 		recoveryPoint = @{
 			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
+			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
 	}
 	# REQUIRED
@@ -3142,8 +3142,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	defaultProperties = @{
 		# OPTIONAL
 		cbtStatus = $someBoolean
@@ -3154,6 +3152,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldUseDefaultBackupLocation = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -3176,12 +3176,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		makeupReseedLimit = $someInt
 	}
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
 }"
@@ -3206,6 +3206,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		mssqlLogShippingTargetStateOptions = @{
@@ -3215,8 +3217,6 @@ $query.Var.input = @{
 			state = $someMssqlLogShippingOkState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlLogShippingOkState]) for enum values.
 		}
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

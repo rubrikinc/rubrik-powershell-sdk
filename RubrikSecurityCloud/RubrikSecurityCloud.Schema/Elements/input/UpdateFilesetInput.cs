@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> FilesetUpdateInput? FilesetUpdateProperties
-        // GraphQL -> filesetUpdateProperties: FilesetUpdateInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("filesetUpdateProperties")]
-        public FilesetUpdateInput? FilesetUpdateProperties { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> FilesetUpdateInput? FilesetUpdateProperties
+        // GraphQL -> filesetUpdateProperties: FilesetUpdateInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("filesetUpdateProperties")]
+        public FilesetUpdateInput? FilesetUpdateProperties { get; set; }
 
 
         #endregion

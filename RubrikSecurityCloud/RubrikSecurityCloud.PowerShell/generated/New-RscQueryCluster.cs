@@ -1170,10 +1170,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	interface = $someString
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	interface = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3337,10 +3337,10 @@ $query.Var.isExcluded = $someBoolean"
                 Query.ClusterNetworkInterfacesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	interface = $someString
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	interface = $someString
 }"
             );
         }

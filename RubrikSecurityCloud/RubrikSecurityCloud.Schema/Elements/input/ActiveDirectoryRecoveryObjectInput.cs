@@ -19,22 +19,22 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<System.String>? Attributes
-        // GraphQL -> attributes: [String!] (scalar)
-        [JsonProperty("attributes")]
-        public List<System.String>? Attributes { get; set; }
-
-        //      C# -> ActiveDirectoryObjectType? ObjectType
-        // GraphQL -> objectType: ActiveDirectoryObjectType (enum)
-        [JsonProperty("objectType")]
-        public ActiveDirectoryObjectType? ObjectType { get; set; }
-
         //      C# -> System.Int64? Dnt
         // GraphQL -> dnt: Long! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("dnt")]
         public System.Int64? Dnt { get; set; }
+
+        //      C# -> ActiveDirectoryObjectType? ObjectType
+        // GraphQL -> objectType: ActiveDirectoryObjectType (enum)
+        [JsonProperty("objectType")]
+        public ActiveDirectoryObjectType? ObjectType { get; set; }
+
+        //      C# -> List<System.String>? Attributes
+        // GraphQL -> attributes: [String!] (scalar)
+        [JsonProperty("attributes")]
+        public List<System.String>? Attributes { get; set; }
 
 
         #endregion

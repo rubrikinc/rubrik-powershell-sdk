@@ -862,7 +862,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					@{
     /// 						# REQUIRED
     /// 						locationId = $someString
-    /// 						# REQUIRED
+    /// 						# OPTIONAL
     /// 						name = $someString
     /// 					}
     /// 				)
@@ -904,14 +904,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	bulkRequest = @{
-    /// 		# OPTIONAL
-    /// 		isHardlinkSupportEnabled = $someBoolean
-    /// 		# OPTIONAL
-    /// 		isPassthrough = $someBoolean
-    /// 		# OPTIONAL
-    /// 		snapMirrorLabelForFullBackup = $someString
-    /// 		# OPTIONAL
-    /// 		snapMirrorLabelForIncrementalBackup = $someString
     /// 		# REQUIRED
     /// 		filesetTemplate = @{
     /// 			# OPTIONAL
@@ -926,26 +918,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			excludes = @(
     /// 				$someString
     /// 			)
+    /// 			# REQUIRED
+    /// 			includes = @(
+    /// 				$someString
+    /// 			)
     /// 			# OPTIONAL
     /// 			isArrayEnabled = $someBoolean
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
     /// 			postBackupScript = $someString
     /// 			# OPTIONAL
     /// 			preBackupScript = $someString
     /// 			# OPTIONAL
+    /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
+    /// 			# OPTIONAL
     /// 			isCreatedByKupr = $someBoolean
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
-    /// 			# OPTIONAL
-    /// 			templateBlocklistedFilesystemPaths = $someString
-    /// 			# OPTIONAL
-    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
-    /// 			# OPTIONAL
-    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
-    /// 			# OPTIONAL
-    /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
     /// 			# OPTIONAL
     /// 			filesetOptions = @{
     /// 				# OPTIONAL
@@ -955,17 +947,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				useWindowsVss = $someBoolean
     /// 			}
-    /// 			# REQUIRED
-    /// 			includes = @(
-    /// 				$someString
-    /// 			)
-    /// 			# REQUIRED
-    /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			templateBlocklistedFilesystemPaths = $someString
+    /// 			# OPTIONAL
+    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		isHardlinkSupportEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isPassthrough = $someBoolean
     /// 		# REQUIRED
     /// 		nasShareIds = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		snapMirrorLabelForFullBackup = $someString
+    /// 		# OPTIONAL
+    /// 		snapMirrorLabelForIncrementalBackup = $someString
     /// 	}
     /// }
     /// 
@@ -1001,16 +1001,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		nasNamespaces = @(
     /// 			@{
+    /// 				# REQUIRED
+    /// 				id = $someString
     /// 				# OPTIONAL
     /// 				userSelectedSmbInterfaces = @(
     /// 					$someString
     /// 				)
-    /// 				# OPTIONAL
-    /// 				userSelectedNfsInterfaces = @(
-    /// 					$someString
-    /// 				)
-    /// 				# REQUIRED
-    /// 				id = $someString
     /// 				# OPTIONAL
     /// 				smbCredentials = @{
     /// 					# OPTIONAL
@@ -1018,6 +1014,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					username = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				userSelectedNfsInterfaces = @(
+    /// 					$someString
+    /// 				)
     /// 			}
     /// 		)
     /// 	}
@@ -1783,13 +1783,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	definition = @{
     /// 		# OPTIONAL
     /// 		domain = $someString
-    /// 		# OPTIONAL
-    /// 		description = $someString
     /// 		# OPTIONAL
     /// 		baseGuestCredential = @{
     /// 			# REQUIRED
@@ -1797,7 +1793,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		description = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1959,29 +1959,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				vmsToRestore = @(
     /// 					@{
-    /// 						# OPTIONAL
-    /// 						storagePolicyId = $someString
     /// 						# REQUIRED
     /// 						name = $someString
     /// 						# REQUIRED
     /// 						networkConnections = @(
     /// 							@{
+    /// 								# REQUIRED
+    /// 								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
     /// 								# OPTIONAL
     /// 								ipAddress = $someString
+    /// 								# REQUIRED
+    /// 								isConnected = $someBoolean
     /// 								# OPTIONAL
     /// 								macAddress = $someString
+    /// 								# REQUIRED
+    /// 								nicIndex = $someInt
     /// 								# OPTIONAL
     /// 								vappNetworkName = $someString
     /// 								# OPTIONAL
     /// 								networkAdapterType = $someString
-    /// 								# REQUIRED
-    /// 								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
-    /// 								# REQUIRED
-    /// 								isConnected = $someBoolean
-    /// 								# REQUIRED
-    /// 								nicIndex = $someInt
     /// 							}
     /// 						)
+    /// 						# OPTIONAL
+    /// 						storagePolicyId = $someString
     /// 						# REQUIRED
     /// 						vcdMoid = $someString
     /// 					}
@@ -2715,14 +2715,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	restoreFormRequest = @{
     /// 		# REQUIRED
     /// 		backupFileName = $someString
     /// 		# REQUIRED
     /// 		encryptionPassword = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3202,9 +3202,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
-    /// 		oldPrimaryClusterUuid = $someString
-    /// 		# OPTIONAL
     /// 		shouldSkipCertificateUpdateOnSecondaryClusters = $someHostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters]) for enum values.
+    /// 		# OPTIONAL
+    /// 		oldPrimaryClusterUuid = $someString
     /// 	}
     /// }
     /// 
@@ -3542,11 +3542,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	updateProperties = @{
-    /// 		# OPTIONAL
-    /// 		password = $someString
     /// 		# OPTIONAL
     /// 		access = @{
     /// 			# OPTIONAL
@@ -3554,7 +3550,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			iKvm = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		password = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -4766,10 +4766,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			clusterUuid = $someString
     /// 			# REQUIRED
     /// 			datastoreFreespaceThreshold = @{
-    /// 				# OPTIONAL
-    /// 				vmId = $someString
     /// 				# REQUIRED
     /// 				threshold = $someSingle
+    /// 				# OPTIONAL
+    /// 				vmId = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -5749,7 +5749,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# REQUIRED
     /// 				locationId = $someString
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				name = $someString
     /// 			}
     /// 		)
@@ -5967,14 +5967,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	settings = @{
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
     /// 		# REQUIRED
     /// 		isAutomatic = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -6008,14 +6008,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	requests = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			clusterUuid = $someString
-    /// 			# REQUIRED
     /// 			settings = @{
     /// 				# OPTIONAL
     /// 				guestCredentialId = $someString
     /// 				# REQUIRED
     /// 				isAutomatic = $someBoolean
     /// 			}
+    /// 			# REQUIRED
+    /// 			clusterUuid = $someString
     /// 		}
     /// 	)
     /// }
@@ -6057,14 +6057,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# OPTIONAL
     /// 					domain = $someString
     /// 					# OPTIONAL
-    /// 					description = $someString
-    /// 					# OPTIONAL
     /// 					baseGuestCredential = @{
     /// 						# REQUIRED
     /// 						password = $someString
     /// 						# REQUIRED
     /// 						username = $someString
     /// 					}
+    /// 					# OPTIONAL
+    /// 					description = $someString
     /// 				}
     /// 				# OPTIONAL
     /// 				guestCredentialId = $someString
@@ -6769,13 +6769,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	definition = @{
     /// 		# OPTIONAL
     /// 		domain = $someString
-    /// 		# OPTIONAL
-    /// 		description = $someString
     /// 		# OPTIONAL
     /// 		baseGuestCredential = @{
     /// 			# REQUIRED
@@ -6783,7 +6779,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		description = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -7320,14 +7320,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		inactivityTimeoutInSeconds = $someInt64
     /// 		# REQUIRED
     /// 		isTunnelEnabled = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -7411,8 +7411,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	patchProperties = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
@@ -7425,6 +7423,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		forceFull = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -10768,7 +10768,7 @@ $query.Var.input = @{
 					@{
 						# REQUIRED
 						locationId = $someString
-						# REQUIRED
+						# OPTIONAL
 						name = $someString
 					}
 				)
@@ -10802,14 +10802,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	bulkRequest = @{
-		# OPTIONAL
-		isHardlinkSupportEnabled = $someBoolean
-		# OPTIONAL
-		isPassthrough = $someBoolean
-		# OPTIONAL
-		snapMirrorLabelForFullBackup = $someString
-		# OPTIONAL
-		snapMirrorLabelForIncrementalBackup = $someString
 		# REQUIRED
 		filesetTemplate = @{
 			# OPTIONAL
@@ -10824,26 +10816,26 @@ $query.Var.input = @{
 			excludes = @(
 				$someString
 			)
+			# REQUIRED
+			includes = @(
+				$someString
+			)
 			# OPTIONAL
 			isArrayEnabled = $someBoolean
+			# REQUIRED
+			name = $someString
+			# OPTIONAL
+			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
 			# OPTIONAL
 			postBackupScript = $someString
 			# OPTIONAL
 			preBackupScript = $someString
 			# OPTIONAL
+			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
+			# OPTIONAL
 			isCreatedByKupr = $someBoolean
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
-			# OPTIONAL
-			templateBlocklistedFilesystemPaths = $someString
-			# OPTIONAL
-			shouldRetryPrescriptIfBackupFails = $someBoolean
-			# OPTIONAL
-			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
-			# OPTIONAL
-			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
-			# OPTIONAL
-			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
 			# OPTIONAL
 			filesetOptions = @{
 				# OPTIONAL
@@ -10853,17 +10845,25 @@ $query.Var.input = @{
 				# OPTIONAL
 				useWindowsVss = $someBoolean
 			}
-			# REQUIRED
-			includes = @(
-				$someString
-			)
-			# REQUIRED
-			name = $someString
+			# OPTIONAL
+			templateBlocklistedFilesystemPaths = $someString
+			# OPTIONAL
+			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
+			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
 		}
+		# OPTIONAL
+		isHardlinkSupportEnabled = $someBoolean
+		# OPTIONAL
+		isPassthrough = $someBoolean
 		# REQUIRED
 		nasShareIds = @(
 			$someString
 		)
+		# OPTIONAL
+		snapMirrorLabelForFullBackup = $someString
+		# OPTIONAL
+		snapMirrorLabelForIncrementalBackup = $someString
 	}
 }"
             );
@@ -10891,16 +10891,12 @@ $query.Var.input = @{
 		# REQUIRED
 		nasNamespaces = @(
 			@{
+				# REQUIRED
+				id = $someString
 				# OPTIONAL
 				userSelectedSmbInterfaces = @(
 					$someString
 				)
-				# OPTIONAL
-				userSelectedNfsInterfaces = @(
-					$someString
-				)
-				# REQUIRED
-				id = $someString
 				# OPTIONAL
 				smbCredentials = @{
 					# OPTIONAL
@@ -10908,6 +10904,10 @@ $query.Var.input = @{
 					# REQUIRED
 					username = $someString
 				}
+				# OPTIONAL
+				userSelectedNfsInterfaces = @(
+					$someString
+				)
 			}
 		)
 	}
@@ -11529,13 +11529,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	definition = @{
 		# OPTIONAL
 		domain = $someString
-		# OPTIONAL
-		description = $someString
 		# OPTIONAL
 		baseGuestCredential = @{
 			# REQUIRED
@@ -11543,7 +11539,11 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
+		# OPTIONAL
+		description = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -11673,29 +11673,29 @@ $query.Var.input = @{
 				# REQUIRED
 				vmsToRestore = @(
 					@{
-						# OPTIONAL
-						storagePolicyId = $someString
 						# REQUIRED
 						name = $someString
 						# REQUIRED
 						networkConnections = @(
 							@{
+								# REQUIRED
+								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
 								# OPTIONAL
 								ipAddress = $someString
+								# REQUIRED
+								isConnected = $someBoolean
 								# OPTIONAL
 								macAddress = $someString
+								# REQUIRED
+								nicIndex = $someInt
 								# OPTIONAL
 								vappNetworkName = $someString
 								# OPTIONAL
 								networkAdapterType = $someString
-								# REQUIRED
-								addressingMode = $someVappVmIpAddressingMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VappVmIpAddressingMode]) for enum values.
-								# REQUIRED
-								isConnected = $someBoolean
-								# REQUIRED
-								nicIndex = $someInt
 							}
 						)
+						# OPTIONAL
+						storagePolicyId = $someString
 						# REQUIRED
 						vcdMoid = $someString
 					}
@@ -12253,14 +12253,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	restoreFormRequest = @{
 		# REQUIRED
 		backupFileName = $someString
 		# REQUIRED
 		encryptionPassword = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -12635,9 +12635,9 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
-		oldPrimaryClusterUuid = $someString
-		# OPTIONAL
 		shouldSkipCertificateUpdateOnSecondaryClusters = $someHostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters]) for enum values.
+		# OPTIONAL
+		oldPrimaryClusterUuid = $someString
 	}
 }"
             );
@@ -12927,11 +12927,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	updateProperties = @{
-		# OPTIONAL
-		password = $someString
 		# OPTIONAL
 		access = @{
 			# OPTIONAL
@@ -12939,7 +12935,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			iKvm = $someBoolean
 		}
+		# OPTIONAL
+		password = $someString
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -13907,10 +13907,10 @@ $query.Var.input = @{
 			clusterUuid = $someString
 			# REQUIRED
 			datastoreFreespaceThreshold = @{
-				# OPTIONAL
-				vmId = $someString
 				# REQUIRED
 				threshold = $someSingle
+				# OPTIONAL
+				vmId = $someString
 			}
 		}
 	)
@@ -14734,7 +14734,7 @@ $query.Var.input = @{
 			@{
 				# REQUIRED
 				locationId = $someString
-				# REQUIRED
+				# OPTIONAL
 				name = $someString
 			}
 		)
@@ -14904,14 +14904,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	settings = @{
 		# OPTIONAL
 		guestCredentialId = $someString
 		# REQUIRED
 		isAutomatic = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -14937,14 +14937,14 @@ $query.Var.input = @{
 	requests = @(
 		@{
 			# REQUIRED
-			clusterUuid = $someString
-			# REQUIRED
 			settings = @{
 				# OPTIONAL
 				guestCredentialId = $someString
 				# REQUIRED
 				isAutomatic = $someBoolean
 			}
+			# REQUIRED
+			clusterUuid = $someString
 		}
 	)
 }"
@@ -14978,14 +14978,14 @@ $query.Var.input = @{
 					# OPTIONAL
 					domain = $someString
 					# OPTIONAL
-					description = $someString
-					# OPTIONAL
 					baseGuestCredential = @{
 						# REQUIRED
 						password = $someString
 						# REQUIRED
 						username = $someString
 					}
+					# OPTIONAL
+					description = $someString
 				}
 				# OPTIONAL
 				guestCredentialId = $someString
@@ -15578,13 +15578,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	definition = @{
 		# OPTIONAL
 		domain = $someString
-		# OPTIONAL
-		description = $someString
 		# OPTIONAL
 		baseGuestCredential = @{
 			# REQUIRED
@@ -15592,7 +15588,11 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 		}
+		# OPTIONAL
+		description = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
 }"
@@ -16030,14 +16030,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		inactivityTimeoutInSeconds = $someInt64
 		# REQUIRED
 		isTunnelEnabled = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
 }"
@@ -16105,8 +16105,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	patchProperties = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
@@ -16119,6 +16117,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		forceFull = $someBoolean
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

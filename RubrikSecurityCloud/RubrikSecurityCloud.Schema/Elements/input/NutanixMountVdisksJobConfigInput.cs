@@ -19,23 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldMigrateImmediately
-        // GraphQL -> shouldMigrateImmediately: Boolean (scalar)
-        [JsonProperty("shouldMigrateImmediately")]
-        public System.Boolean? ShouldMigrateImmediately { get; set; }
-
-        //      C# -> System.String? ContainerNaturalId
-        // GraphQL -> containerNaturalId: String (scalar)
-        [JsonProperty("containerNaturalId")]
-        public System.String? ContainerNaturalId { get; set; }
-
-        //      C# -> System.Boolean? ShouldDisableMigration
-        // GraphQL -> shouldDisableMigration: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldDisableMigration")]
-        public System.Boolean? ShouldDisableMigration { get; set; }
-
         //      C# -> System.String? TargetVirtualMachineId
         // GraphQL -> targetVirtualMachineId: String! (scalar)
         [Required]
@@ -49,6 +32,23 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("virtualDiskIds")]
         public List<System.String>? VirtualDiskIds { get; set; }
+
+        //      C# -> System.Boolean? ShouldDisableMigration
+        // GraphQL -> shouldDisableMigration: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldDisableMigration")]
+        public System.Boolean? ShouldDisableMigration { get; set; }
+
+        //      C# -> System.Boolean? ShouldMigrateImmediately
+        // GraphQL -> shouldMigrateImmediately: Boolean (scalar)
+        [JsonProperty("shouldMigrateImmediately")]
+        public System.Boolean? ShouldMigrateImmediately { get; set; }
+
+        //      C# -> System.String? ContainerNaturalId
+        // GraphQL -> containerNaturalId: String (scalar)
+        [JsonProperty("containerNaturalId")]
+        public System.String? ContainerNaturalId { get; set; }
 
 
         #endregion

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsIsilonChangelistEnabled
-        // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
-        [JsonProperty("isIsilonChangelistEnabled")]
-        public System.Boolean? IsIsilonChangelistEnabled { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsIsilonChangelistEnabled
+        // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
+        [JsonProperty("isIsilonChangelistEnabled")]
+        public System.Boolean? IsIsilonChangelistEnabled { get; set; }
 
 
         #endregion

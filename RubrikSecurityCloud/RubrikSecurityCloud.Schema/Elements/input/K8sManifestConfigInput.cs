@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
         //      C# -> System.String? Registry
         // GraphQL -> registry: String (scalar)
         [JsonProperty("registry")]
@@ -33,6 +40,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> k8sNodeIp: String (scalar)
         [JsonProperty("k8sNodeIp")]
         public System.String? K8sNodeIp { get; set; }
+
+        //      C# -> System.String? Distribution
+        // GraphQL -> distribution: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("distribution")]
+        public System.String? Distribution { get; set; }
 
         //      C# -> System.String? PullSecret
         // GraphQL -> pullSecret: String (scalar)
@@ -44,6 +58,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nadName")]
         public System.String? NadName { get; set; }
 
+        //      C# -> System.String? Transport
+        // GraphQL -> transport: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("transport")]
+        public System.String? Transport { get; set; }
+
         //      C# -> System.Boolean? IsAutoPsCreationEnabled
         // GraphQL -> isAutoPsCreationEnabled: Boolean (scalar)
         [JsonProperty("isAutoPsCreationEnabled")]
@@ -54,33 +75,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nadNamespace")]
         public System.String? NadNamespace { get; set; }
 
-        //      C# -> System.String? Distribution
-        // GraphQL -> distribution: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("distribution")]
-        public System.String? Distribution { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("name")]
-        public System.String? Name { get; set; }
-
         //      C# -> ServiceAccountInputInput? ServiceAccount
         // GraphQL -> serviceAccount: ServiceAccountInputInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("serviceAccount")]
         public ServiceAccountInputInput? ServiceAccount { get; set; }
-
-        //      C# -> System.String? Transport
-        // GraphQL -> transport: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("transport")]
-        public System.String? Transport { get; set; }
 
 
         #endregion

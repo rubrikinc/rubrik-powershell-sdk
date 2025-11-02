@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? Port
-        // GraphQL -> port: Int (scalar)
-        [JsonProperty("port")]
-        public System.Int32? Port { get; set; }
-
         //      C# -> System.String? Cert
         // GraphQL -> cert: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("cert")]
         public System.String? Cert { get; set; }
+
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int (scalar)
+        [JsonProperty("port")]
+        public System.Int32? Port { get; set; }
 
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)

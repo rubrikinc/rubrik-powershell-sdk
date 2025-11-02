@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> HypervInplaceExportJobConfigInput? Config
-        // GraphQL -> config: HypervInplaceExportJobConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public HypervInplaceExportJobConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> HypervInplaceExportJobConfigInput? Config
+        // GraphQL -> config: HypervInplaceExportJobConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public HypervInplaceExportJobConfigInput? Config { get; set; }
 
 
         #endregion

@@ -145,6 +145,7 @@ Returns the RSC snapshot according to ID.
 ### possiblelocationsforobjects
 GetPossibleSnapshotLocationsForObjects returns all valid
 locations where unexpired snapshots of the objects are present.
+This includes both RSC (MBL archival groups) and CDM snapshot locations.
 
 - There is a single argument of type GetPossibleSnapshotLocationsForObjectsInput.
 - Returns GetPossibleSnapshotLocationsForObjectsResp.
@@ -249,6 +250,12 @@ Returns a list of NAS Cloud Direct snapshots for a share.
     - timeRange - TimeRangeInput: Time range input.
     - cloudDirectTargetId - System.String: The NAS Cloud Direct target ID.
 - Returns CloudDirectSnapshotConnection.
+### totalclouddirectobject
+Retrieves the total count of snapshots for a Cloud Direct object.
+The results can be filtered optionally by target ID.
+
+- There is a single argument of type TotalSnapshotsForCloudDirectObjectReq.
+- Returns TotalSnapshotsForCloudDirectObjectReply.
 ### unmanagedobject
 List of snapshots for unmanaged objects.
 

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId
+        // GraphQL -> diskDeviceKeyToStorageId: [VmwareStorageIdWithDeviceKeyV2Input!] (input)
+        [JsonProperty("diskDeviceKeyToStorageId")]
+        public List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId { get; set; }
+
         //      C# -> System.String? StorageLocationId
         // GraphQL -> storageLocationId: String (scalar)
         [JsonProperty("storageLocationId")]
@@ -34,20 +39,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostId")]
         public System.String? HostId { get; set; }
 
-        //      C# -> System.String? ResourcePoolId
-        // GraphQL -> resourcePoolId: String (scalar)
-        [JsonProperty("resourcePoolId")]
-        public System.String? ResourcePoolId { get; set; }
-
-        //      C# -> List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId
-        // GraphQL -> diskDeviceKeyToStorageId: [VmwareStorageIdWithDeviceKeyV2Input!] (input)
-        [JsonProperty("diskDeviceKeyToStorageId")]
-        public List<VmwareStorageIdWithDeviceKeyV2Input>? DiskDeviceKeyToStorageId { get; set; }
-
         //      C# -> List<VmwareDeviceKeywithNetworkNameV2Input>? NetworkDeviceKeyToNetworkName
         // GraphQL -> networkDeviceKeyToNetworkName: [VmwareDeviceKeywithNetworkNameV2Input!] (input)
         [JsonProperty("networkDeviceKeyToNetworkName")]
         public List<VmwareDeviceKeywithNetworkNameV2Input>? NetworkDeviceKeyToNetworkName { get; set; }
+
+        //      C# -> System.String? ResourcePoolId
+        // GraphQL -> resourcePoolId: String (scalar)
+        [JsonProperty("resourcePoolId")]
+        public System.String? ResourcePoolId { get; set; }
 
 
         #endregion

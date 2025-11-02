@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> DeleteVmwareSnapshotRequestLocation? Location
-        // GraphQL -> location: DeleteVmwareSnapshotRequestLocation! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("location")]
-        public DeleteVmwareSnapshotRequestLocation? Location { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> DeleteVmwareSnapshotRequestLocation? Location
+        // GraphQL -> location: DeleteVmwareSnapshotRequestLocation! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("location")]
+        public DeleteVmwareSnapshotRequestLocation? Location { get; set; }
 
 
         #endregion

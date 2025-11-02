@@ -972,6 +972,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VMWARE_DATASTORE_ID")]
         VMWARE_DATASTORE_ID,
 
+        [EnumMember(Value = "VMWARE_HOST_SSH_ENABLED")]
+        VMWARE_HOST_SSH_ENABLED,
+
         [EnumMember(Value = "VMWARE_IS_STANDALONE_HOST")]
         VMWARE_IS_STANDALONE_HOST,
 

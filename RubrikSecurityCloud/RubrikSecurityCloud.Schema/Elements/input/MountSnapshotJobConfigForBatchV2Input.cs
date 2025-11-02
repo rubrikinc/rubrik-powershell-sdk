@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> MountSnapshotJobConfigV2Input? Config
+        // GraphQL -> config: MountSnapshotJobConfigV2Input! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public MountSnapshotJobConfigV2Input? Config { get; set; }
+
         //      C# -> DateTime? SnapshotAfterDate
         // GraphQL -> snapshotAfterDate: DateTime (scalar)
         [JsonProperty("snapshotAfterDate")]
@@ -34,24 +41,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
-        //      C# -> System.String? VmNamePrefix
-        // GraphQL -> vmNamePrefix: String (scalar)
-        [JsonProperty("vmNamePrefix")]
-        public System.String? VmNamePrefix { get; set; }
-
-        //      C# -> MountSnapshotJobConfigV2Input? Config
-        // GraphQL -> config: MountSnapshotJobConfigV2Input! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public MountSnapshotJobConfigV2Input? Config { get; set; }
-
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("vmId")]
         public System.String? VmId { get; set; }
+
+        //      C# -> System.String? VmNamePrefix
+        // GraphQL -> vmNamePrefix: String (scalar)
+        [JsonProperty("vmNamePrefix")]
+        public System.String? VmNamePrefix { get; set; }
 
 
         #endregion

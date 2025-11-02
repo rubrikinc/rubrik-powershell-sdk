@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Kubernetes' API domain:
-    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, UpdateCluster, or UpdateProtectionSet.
+    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
     /// </summary>
     /// <description>
     /// New-RscMutationK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 23 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, UpdateCluster, or UpdateProtectionSet.
+    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -92,11 +92,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		id = $someString
+    /// 		# REQUIRED
+    /// 		name = $someString
     /// 		# OPTIONAL
     /// 		kubeconfig = $someString
     /// 		# OPTIONAL
@@ -104,7 +104,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		serviceAccountName = $someString
     /// 		# OPTIONAL
+    /// 		eksConfig = @{
+    /// 			# REQUIRED
+    /// 			eksClusterArn = $someString
+    /// 			# REQUIRED
+    /// 			cloudAccountId = $someString
+    /// 		}
+    /// 		# OPTIONAL
     /// 		distribution = $someString
+    /// 		# OPTIONAL
+    /// 		kuprServerProxyConfig = @{
+    /// 			# REQUIRED
+    /// 			cert = $someString
+    /// 			# OPTIONAL
+    /// 			port = $someInt
+    /// 			# REQUIRED
+    /// 			ipAddress = $someString
+    /// 		}
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
@@ -125,25 +141,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		onboardingType = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
-    /// 		# OPTIONAL
-    /// 		eksConfig = @{
-    /// 			# REQUIRED
-    /// 			cloudAccountId = $someString
-    /// 			# REQUIRED
-    /// 			eksClusterArn = $someString
-    /// 		}
-    /// 		# OPTIONAL
-    /// 		kuprServerProxyConfig = @{
-    /// 			# OPTIONAL
-    /// 			port = $someInt
-    /// 			# REQUIRED
-    /// 			cert = $someString
-    /// 			# REQUIRED
-    /// 			ipAddress = $someString
-    /// 		}
-    /// 		# REQUIRED
-    /// 		name = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -177,20 +177,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		creationType = $someString
-    /// 		# OPTIONAL
-    /// 		kubernetesNamespace = $someString
-    /// 		# OPTIONAL
-    /// 		hookConfigs = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		definition = $someString
-    /// 		# REQUIRED
-    /// 		kubernetesClusterId = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# REQUIRED
     /// 		rsType = $someString
+    /// 		# REQUIRED
+    /// 		definition = $someString
+    /// 		# OPTIONAL
+    /// 		kubernetesNamespace = $someString
+    /// 		# REQUIRED
+    /// 		kubernetesClusterId = $someString
+    /// 		# OPTIONAL
+    /// 		hookConfigs = @(
+    /// 			$someString
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -384,13 +384,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -420,12 +420,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	forceDelete = $someBoolean
     /// 	# OPTIONAL
     /// 	preserveSnapshots = $someBoolean
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -455,10 +455,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -466,6 +466,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteVmMount operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: DeleteVmMount
+    /// 
+    /// $query = New-RscMutationK8s -Operation DeleteVmMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldForce = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -488,6 +521,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
@@ -495,8 +530,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -581,6 +614,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	jobConfig = @{
+    /// 		# REQUIRED
+    /// 		targetNamespaceName = $someString
     /// 		# OPTIONAL
     /// 		filter = $someString
     /// 		# OPTIONAL
@@ -589,16 +624,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		virtualMachineRunStrategy = $someString
+    /// 		# REQUIRED
+    /// 		targetClusterId = $someString
     /// 		# OPTIONAL
     /// 		shouldDeleteNamespaceIfExportFailed = $someBoolean
     /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		shouldKeepVirtualMachineMacAddresses = $someBoolean
-    /// 		# REQUIRED
-    /// 		targetClusterId = $someString
-    /// 		# REQUIRED
-    /// 		targetNamespaceName = $someString
     /// 	}
     /// }
     /// 
@@ -630,41 +663,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		id = $someString
+    /// 		# REQUIRED
+    /// 		name = $someString
     /// 		# OPTIONAL
     /// 		registry = $someString
     /// 		# OPTIONAL
     /// 		k8sNodeIp = $someString
+    /// 		# REQUIRED
+    /// 		distribution = $someString
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
     /// 		nadName = $someString
+    /// 		# REQUIRED
+    /// 		transport = $someString
     /// 		# OPTIONAL
     /// 		isAutoPsCreationEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		nadNamespace = $someString
     /// 		# REQUIRED
-    /// 		distribution = $someString
-    /// 		# REQUIRED
-    /// 		name = $someString
-    /// 		# REQUIRED
     /// 		serviceAccount = @{
+    /// 			# REQUIRED
+    /// 			serviceAccountName = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
     /// 			# REQUIRED
     /// 			accessToken = $someString
     /// 			# REQUIRED
     /// 			clientId = $someString
-    /// 			# REQUIRED
-    /// 			clientSecret = $someString
-    /// 			# REQUIRED
-    /// 			serviceAccountName = $someString
     /// 		}
-    /// 		# REQUIRED
-    /// 		transport = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -757,21 +790,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
     /// 		serviceAccount = @{
     /// 			# REQUIRED
-    /// 			accessToken = $someString
-    /// 			# REQUIRED
-    /// 			clientId = $someString
+    /// 			serviceAccountName = $someString
     /// 			# REQUIRED
     /// 			clientSecret = $someString
     /// 			# REQUIRED
-    /// 			serviceAccountName = $someString
+    /// 			accessToken = $someString
+    /// 			# REQUIRED
+    /// 			clientId = $someString
     /// 		}
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -920,6 +953,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the StartVmMountJob operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: StartVmMountJob
+    /// 
+    /// $query = New-RscMutationK8s -Operation StartVmMountJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		shouldRemoveNetwork = $someBoolean
+    /// 		# OPTIONAL
+    /// 		newVmName = $someString
+    /// 		# REQUIRED
+    /// 		targetClusterId = $someString
+    /// 		# REQUIRED
+    /// 		targetNamespaceId = $someString
+    /// 		# OPTIONAL
+    /// 		newRunStrategy = $someString
+    /// 		# OPTIONAL
+    /// 		shouldKeepMacAddresses = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateCluster operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -935,6 +1014,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		kubeconfig = $someString
@@ -942,6 +1023,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		registry = $someString
     /// 		# OPTIONAL
     /// 		serviceAccountName = $someString
+    /// 		# OPTIONAL
+    /// 		kuprServerProxyConfig = @{
+    /// 			# REQUIRED
+    /// 			cert = $someString
+    /// 			# OPTIONAL
+    /// 			port = $someInt
+    /// 			# REQUIRED
+    /// 			ipAddress = $someString
+    /// 		}
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
@@ -960,18 +1050,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
-    /// 		# OPTIONAL
-    /// 		kuprServerProxyConfig = @{
-    /// 			# OPTIONAL
-    /// 			port = $someInt
-    /// 			# REQUIRED
-    /// 			cert = $someString
-    /// 			# REQUIRED
-    /// 			ipAddress = $someString
-    /// 		}
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1002,6 +1081,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		definition = $someString
@@ -1010,8 +1091,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1051,6 +1130,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateProtectionSetSnapshot",
                 "DeleteCluster",
                 "DeleteProtectionSet",
+                "DeleteVmMount",
                 "DownloadSnapshotFromLocation",
                 "ExportNamespace",
                 "ExportProtectionSetSnapshot",
@@ -1061,6 +1141,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RestoreNamespace",
                 "RestoreProtectionSetSnapshot",
                 "StartDiagnosticsJob",
+                "StartVmMountJob",
                 "UpdateCluster",
                 "UpdateProtectionSet",
                 IgnoreCase = true)]
@@ -1105,6 +1186,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteProtectionSet":
                         this.ProcessRecord_DeleteProtectionSet();
                         break;
+                    case "DeleteVmMount":
+                        this.ProcessRecord_DeleteVmMount();
+                        break;
                     case "DownloadSnapshotFromLocation":
                         this.ProcessRecord_DownloadSnapshotFromLocation();
                         break;
@@ -1134,6 +1218,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartDiagnosticsJob":
                         this.ProcessRecord_StartDiagnosticsJob();
+                        break;
+                    case "StartVmMountJob":
+                        this.ProcessRecord_StartVmMountJob();
                         break;
                     case "UpdateCluster":
                         this.ProcessRecord_UpdateCluster();
@@ -1233,6 +1320,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // deleteK8sVmMount.
+        internal void ProcessRecord_DeleteVmMount()
+        {
+            this._logger.name += " -DeleteVmMount";
+            // Create new graphql operation deleteK8sVmMount
+            InitMutationDeleteK8sVmMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // downloadK8sSnapshotFromLocation.
         internal void ProcessRecord_DownloadSnapshotFromLocation()
         {
@@ -1323,6 +1419,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // startK8sVmMountJob.
+        internal void ProcessRecord_StartVmMountJob()
+        {
+            this._logger.name += " -StartVmMountJob";
+            // Create new graphql operation startK8sVmMountJob
+            InitMutationStartK8sVmMountJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateK8sCluster.
         internal void ProcessRecord_UpdateCluster()
         {
@@ -1359,11 +1464,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		id = $someString
+		# REQUIRED
+		name = $someString
 		# OPTIONAL
 		kubeconfig = $someString
 		# OPTIONAL
@@ -1371,7 +1476,23 @@ $query.Var.input = @{
 		# OPTIONAL
 		serviceAccountName = $someString
 		# OPTIONAL
+		eksConfig = @{
+			# REQUIRED
+			eksClusterArn = $someString
+			# REQUIRED
+			cloudAccountId = $someString
+		}
+		# OPTIONAL
 		distribution = $someString
+		# OPTIONAL
+		kuprServerProxyConfig = @{
+			# REQUIRED
+			cert = $someString
+			# OPTIONAL
+			port = $someInt
+			# REQUIRED
+			ipAddress = $someString
+		}
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
@@ -1392,25 +1513,9 @@ $query.Var.input = @{
 		onboardingType = $someString
 		# OPTIONAL
 		clientId = $someString
-		# OPTIONAL
-		eksConfig = @{
-			# REQUIRED
-			cloudAccountId = $someString
-			# REQUIRED
-			eksClusterArn = $someString
-		}
-		# OPTIONAL
-		kuprServerProxyConfig = @{
-			# OPTIONAL
-			port = $someInt
-			# REQUIRED
-			cert = $someString
-			# REQUIRED
-			ipAddress = $someString
-		}
-		# REQUIRED
-		name = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1436,20 +1541,20 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		creationType = $someString
-		# OPTIONAL
-		kubernetesNamespace = $someString
-		# OPTIONAL
-		hookConfigs = @(
-			$someString
-		)
-		# REQUIRED
-		definition = $someString
-		# REQUIRED
-		kubernetesClusterId = $someString
 		# REQUIRED
 		name = $someString
 		# REQUIRED
 		rsType = $someString
+		# REQUIRED
+		definition = $someString
+		# OPTIONAL
+		kubernetesNamespace = $someString
+		# REQUIRED
+		kubernetesClusterId = $someString
+		# OPTIONAL
+		hookConfigs = @(
+			$someString
+		)
 	}
 }"
             );
@@ -1603,13 +1708,13 @@ $query.Var.input = @{
                 Mutation.CreateK8sProtectionSetSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	config = @{
 		# OPTIONAL
 		slaId = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1631,12 +1736,12 @@ $query.Var.input = @{
                 Mutation.DeleteK8sClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	forceDelete = $someBoolean
 	# OPTIONAL
 	preserveSnapshots = $someBoolean
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -1658,10 +1763,35 @@ $query.Var.input = @{
                 Mutation.DeleteK8sProtectionSetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteK8sVmMount(input: DeleteK8sVmMountInput!): AsyncRequestStatus!
+        internal void InitMutationDeleteK8sVmMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteK8sVmMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteK8sVmMount",
+                "($input: DeleteK8sVmMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeleteK8sVmMount,
+                Mutation.DeleteK8sVmMountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	shouldForce = $someBoolean
 }"
             );
         }
@@ -1683,6 +1813,8 @@ $query.Var.input = @{
                 Mutation.DownloadK8sSnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL
@@ -1690,8 +1822,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }
@@ -1760,6 +1890,8 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	jobConfig = @{
+		# REQUIRED
+		targetNamespaceName = $someString
 		# OPTIONAL
 		filter = $someString
 		# OPTIONAL
@@ -1768,16 +1900,14 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		virtualMachineRunStrategy = $someString
+		# REQUIRED
+		targetClusterId = $someString
 		# OPTIONAL
 		shouldDeleteNamespaceIfExportFailed = $someBoolean
 		# OPTIONAL
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		shouldKeepVirtualMachineMacAddresses = $someBoolean
-		# REQUIRED
-		targetClusterId = $someString
-		# REQUIRED
-		targetNamespaceName = $someString
 	}
 }"
             );
@@ -1801,41 +1931,41 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		id = $someString
+		# REQUIRED
+		name = $someString
 		# OPTIONAL
 		registry = $someString
 		# OPTIONAL
 		k8sNodeIp = $someString
+		# REQUIRED
+		distribution = $someString
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
 		nadName = $someString
+		# REQUIRED
+		transport = $someString
 		# OPTIONAL
 		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		nadNamespace = $someString
 		# REQUIRED
-		distribution = $someString
-		# REQUIRED
-		name = $someString
-		# REQUIRED
 		serviceAccount = @{
+			# REQUIRED
+			serviceAccountName = $someString
+			# REQUIRED
+			clientSecret = $someString
 			# REQUIRED
 			accessToken = $someString
 			# REQUIRED
 			clientId = $someString
-			# REQUIRED
-			clientSecret = $someString
-			# REQUIRED
-			serviceAccountName = $someString
 		}
-		# REQUIRED
-		transport = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1904,21 +2034,21 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# REQUIRED
 		serviceAccount = @{
 			# REQUIRED
-			accessToken = $someString
-			# REQUIRED
-			clientId = $someString
+			serviceAccountName = $someString
 			# REQUIRED
 			clientSecret = $someString
 			# REQUIRED
-			serviceAccountName = $someString
+			accessToken = $someString
+			# REQUIRED
+			clientId = $someString
 		}
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -2033,6 +2163,44 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // startK8sVmMountJob(input: StartK8sVmMountJobInput!): AsyncRequestStatus!
+        internal void InitMutationStartK8sVmMountJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartK8sVmMountJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartK8sVmMountJob",
+                "($input: StartK8sVmMountJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.StartK8sVmMountJob,
+                Mutation.StartK8sVmMountJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		shouldRemoveNetwork = $someBoolean
+		# OPTIONAL
+		newVmName = $someString
+		# REQUIRED
+		targetClusterId = $someString
+		# REQUIRED
+		targetNamespaceId = $someString
+		# OPTIONAL
+		newRunStrategy = $someString
+		# OPTIONAL
+		shouldKeepMacAddresses = $someBoolean
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // updateK8sCluster(input: UpdateK8sClusterInput!): ResponseSuccess!
         internal void InitMutationUpdateK8sCluster()
         {
@@ -2050,6 +2218,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		kubeconfig = $someString
@@ -2057,6 +2227,15 @@ $query.Var.input = @{
 		registry = $someString
 		# OPTIONAL
 		serviceAccountName = $someString
+		# OPTIONAL
+		kuprServerProxyConfig = @{
+			# REQUIRED
+			cert = $someString
+			# OPTIONAL
+			port = $someInt
+			# REQUIRED
+			ipAddress = $someString
+		}
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
@@ -2075,18 +2254,7 @@ $query.Var.input = @{
 		cloudAccountId = $someString
 		# OPTIONAL
 		clientId = $someString
-		# OPTIONAL
-		kuprServerProxyConfig = @{
-			# OPTIONAL
-			port = $someInt
-			# REQUIRED
-			cert = $someString
-			# REQUIRED
-			ipAddress = $someString
-		}
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }
@@ -2109,6 +2277,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
 		# OPTIONAL
 		definition = $someString
@@ -2117,8 +2287,6 @@ $query.Var.input = @{
 			$someString
 		)
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

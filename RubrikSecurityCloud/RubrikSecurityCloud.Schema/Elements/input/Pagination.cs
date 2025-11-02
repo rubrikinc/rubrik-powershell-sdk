@@ -1,4 +1,4 @@
-// ArchivalParameters.cs
+// Pagination.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,16 +13,21 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region ArchivalParameters
+    #region Pagination
 
-    public class ArchivalParameters: IInput
+    public class Pagination: IInput
     {
         #region members
 
-        //      C# -> System.String? LocationId
-        // GraphQL -> locationId: String (scalar)
-        [JsonProperty("locationId")]
-        public System.String? LocationId { get; set; }
+        //      C# -> System.Int32? Offset
+        // GraphQL -> offset: Int (scalar)
+        [JsonProperty("offset")]
+        public System.Int32? Offset { get; set; }
+
+        //      C# -> System.Int32? Limit
+        // GraphQL -> limit: Int (scalar)
+        [JsonProperty("limit")]
+        public System.Int32? Limit { get; set; }
 
 
         #endregion
@@ -50,7 +55,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class ArchivalParameters
+    } // class Pagination
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

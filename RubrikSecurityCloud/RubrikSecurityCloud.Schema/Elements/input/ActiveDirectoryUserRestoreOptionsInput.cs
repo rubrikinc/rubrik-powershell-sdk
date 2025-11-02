@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ActiveDirectoryUserPasswordRecoveryOption? PasswordOptions
+        // GraphQL -> passwordOptions: ActiveDirectoryUserPasswordRecoveryOption (enum)
+        [JsonProperty("passwordOptions")]
+        public ActiveDirectoryUserPasswordRecoveryOption? PasswordOptions { get; set; }
+
         //      C# -> System.Boolean? ShouldEnableUser
         // GraphQL -> shouldEnableUser: Boolean (scalar)
         [JsonProperty("shouldEnableUser")]
@@ -33,11 +38,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> password: String (scalar)
         [JsonProperty("password")]
         public System.String? Password { get; set; }
-
-        //      C# -> ActiveDirectoryUserPasswordRecoveryOption? PasswordOptions
-        // GraphQL -> passwordOptions: ActiveDirectoryUserPasswordRecoveryOption (enum)
-        [JsonProperty("passwordOptions")]
-        public ActiveDirectoryUserPasswordRecoveryOption? PasswordOptions { get; set; }
 
 
         #endregion

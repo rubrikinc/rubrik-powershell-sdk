@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? OrgVdcId
-        // GraphQL -> orgVdcId: String (scalar)
-        [JsonProperty("orgVdcId")]
-        public System.String? OrgVdcId { get; set; }
-
         //      C# -> System.String? CatalogId
         // GraphQL -> catalogId: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> System.String? OrgVdcId
+        // GraphQL -> orgVdcId: String (scalar)
+        [JsonProperty("orgVdcId")]
+        public System.String? OrgVdcId { get; set; }
 
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)

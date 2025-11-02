@@ -92,16 +92,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	definitions = @(
     /// 		@{
+    /// 			# OPTIONAL
+    /// 			arraySpec = @{
+    /// 				# OPTIONAL
+    /// 				proxyHostId = $someString
+    /// 			}
     /// 			# OPTIONAL
     /// 			hostId = $someString
     /// 			# OPTIONAL
     /// 			isPassthrough = $someBoolean
     /// 			# OPTIONAL
     /// 			shareId = $someString
+    /// 			# REQUIRED
+    /// 			templateId = $someString
     /// 			# OPTIONAL
     /// 			enableHardlinkSupport = $someBoolean
     /// 			# OPTIONAL
@@ -116,15 +121,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isManagedByPolaris = $someBoolean
     /// 			# OPTIONAL
     /// 			isPolarisNasModel = $someBoolean
-    /// 			# OPTIONAL
-    /// 			arraySpec = @{
-    /// 				# OPTIONAL
-    /// 				proxyHostId = $someString
-    /// 			}
-    /// 			# REQUIRED
-    /// 			templateId = $someString
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -155,8 +155,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	definitions = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -171,26 +169,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			excludes = @(
     /// 				$someString
     /// 			)
+    /// 			# REQUIRED
+    /// 			includes = @(
+    /// 				$someString
+    /// 			)
     /// 			# OPTIONAL
     /// 			isArrayEnabled = $someBoolean
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
     /// 			# OPTIONAL
     /// 			postBackupScript = $someString
     /// 			# OPTIONAL
     /// 			preBackupScript = $someString
     /// 			# OPTIONAL
+    /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
+    /// 			# OPTIONAL
     /// 			isCreatedByKupr = $someBoolean
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
-    /// 			# OPTIONAL
-    /// 			templateBlocklistedFilesystemPaths = $someString
-    /// 			# OPTIONAL
-    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
-    /// 			# OPTIONAL
-    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
-    /// 			# OPTIONAL
-    /// 			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
     /// 			# OPTIONAL
     /// 			filesetOptions = @{
     /// 				# OPTIONAL
@@ -200,14 +198,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				useWindowsVss = $someBoolean
     /// 			}
-    /// 			# REQUIRED
-    /// 			includes = @(
-    /// 				$someString
-    /// 			)
-    /// 			# REQUIRED
-    /// 			name = $someString
+    /// 			# OPTIONAL
+    /// 			templateBlocklistedFilesystemPaths = $someString
+    /// 			# OPTIONAL
+    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -237,12 +237,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	ids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -272,12 +272,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	ids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -322,6 +322,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			excludes = @(
     /// 				$someString
     /// 			)
+    /// 			# REQUIRED
+    /// 			id = $someString
     /// 			# OPTIONAL
     /// 			includes = @(
     /// 				$someString
@@ -329,23 +331,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			name = $someString
     /// 			# OPTIONAL
+    /// 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
+    /// 			# OPTIONAL
     /// 			postBackupScript = $someString
     /// 			# OPTIONAL
     /// 			preBackupScript = $someString
     /// 			# OPTIONAL
+    /// 			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
+    /// 			# OPTIONAL
     /// 			isCreatedByKupr = $someBoolean
     /// 			# OPTIONAL
     /// 			isCreatedByPolarisNas = $someBoolean
-    /// 			# OPTIONAL
-    /// 			templateBlocklistedFilesystemPaths = $someString
-    /// 			# OPTIONAL
-    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
-    /// 			# OPTIONAL
-    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
-    /// 			# OPTIONAL
-    /// 			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
     /// 			# OPTIONAL
     /// 			filesetOptions = @{
     /// 				# OPTIONAL
@@ -355,8 +351,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				useWindowsVss = $someBoolean
     /// 			}
-    /// 			# REQUIRED
-    /// 			id = $someString
+    /// 			# OPTIONAL
+    /// 			templateBlocklistedFilesystemPaths = $someString
+    /// 			# OPTIONAL
+    /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
     /// 		}
     /// 	)
     /// }
@@ -440,6 +440,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				restorePathPair = @{
+    /// 					# REQUIRED
+    /// 					path = $someString
+    /// 					# OPTIONAL
+    /// 					restorePath = $someString
+    /// 				}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		excludePaths = @(
     /// 			$someString
@@ -450,18 +462,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		postRestoreScript = $someString
     /// 		# OPTIONAL
     /// 		shouldRestoreOnlyAcls = $someBoolean
-    /// 		# REQUIRED
-    /// 		restoreConfig = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				restorePathPair = @{
-    /// 					# OPTIONAL
-    /// 					restorePath = $someString
-    /// 					# REQUIRED
-    /// 					path = $someString
-    /// 				}
-    /// 			}
-    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -517,6 +517,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				restorePathPair = @{
+    /// 					# REQUIRED
+    /// 					path = $someString
+    /// 					# OPTIONAL
+    /// 					restorePath = $someString
+    /// 				}
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		excludePaths = @(
     /// 			$someString
@@ -527,18 +539,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		postRestoreScript = $someString
     /// 		# OPTIONAL
     /// 		shouldRestoreOnlyAcls = $someBoolean
-    /// 		# REQUIRED
-    /// 		restoreConfig = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				restorePathPair = @{
-    /// 					# OPTIONAL
-    /// 					restorePath = $someString
-    /// 					# REQUIRED
-    /// 					path = $someString
-    /// 				}
-    /// 			}
-    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -576,6 +576,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	filesetUpdateProperties = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
@@ -590,8 +592,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		snapMirrorLabelForIncrementalBackup = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -783,16 +783,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	definitions = @(
 		@{
+			# OPTIONAL
+			arraySpec = @{
+				# OPTIONAL
+				proxyHostId = $someString
+			}
 			# OPTIONAL
 			hostId = $someString
 			# OPTIONAL
 			isPassthrough = $someBoolean
 			# OPTIONAL
 			shareId = $someString
+			# REQUIRED
+			templateId = $someString
 			# OPTIONAL
 			enableHardlinkSupport = $someBoolean
 			# OPTIONAL
@@ -807,15 +812,10 @@ $query.Var.input = @{
 			isManagedByPolaris = $someBoolean
 			# OPTIONAL
 			isPolarisNasModel = $someBoolean
-			# OPTIONAL
-			arraySpec = @{
-				# OPTIONAL
-				proxyHostId = $someString
-			}
-			# REQUIRED
-			templateId = $someString
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -838,8 +838,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	definitions = @(
 		@{
 			# OPTIONAL
@@ -854,26 +852,26 @@ $query.Var.input = @{
 			excludes = @(
 				$someString
 			)
+			# REQUIRED
+			includes = @(
+				$someString
+			)
 			# OPTIONAL
 			isArrayEnabled = $someBoolean
+			# REQUIRED
+			name = $someString
+			# OPTIONAL
+			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
 			# OPTIONAL
 			postBackupScript = $someString
 			# OPTIONAL
 			preBackupScript = $someString
 			# OPTIONAL
+			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
+			# OPTIONAL
 			isCreatedByKupr = $someBoolean
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
-			# OPTIONAL
-			templateBlocklistedFilesystemPaths = $someString
-			# OPTIONAL
-			shouldRetryPrescriptIfBackupFails = $someBoolean
-			# OPTIONAL
-			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
-			# OPTIONAL
-			operatingSystemType = $someFilesetTemplateCreateOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateOperatingSystemType]) for enum values.
-			# OPTIONAL
-			shareType = $someFilesetTemplateCreateShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplateCreateShareType]) for enum values.
 			# OPTIONAL
 			filesetOptions = @{
 				# OPTIONAL
@@ -883,14 +881,16 @@ $query.Var.input = @{
 				# OPTIONAL
 				useWindowsVss = $someBoolean
 			}
-			# REQUIRED
-			includes = @(
-				$someString
-			)
-			# REQUIRED
-			name = $someString
+			# OPTIONAL
+			templateBlocklistedFilesystemPaths = $someString
+			# OPTIONAL
+			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
+			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -912,12 +912,12 @@ $query.Var.input = @{
                 Mutation.BulkDeleteFilesetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	ids = @(
 		$someString
 	)
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
 }"
             );
         }
@@ -939,12 +939,12 @@ $query.Var.input = @{
                 Mutation.BulkDeleteFilesetTemplateFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	ids = @(
 		$someString
 	)
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
 }"
             );
         }
@@ -981,6 +981,8 @@ $query.Var.input = @{
 			excludes = @(
 				$someString
 			)
+			# REQUIRED
+			id = $someString
 			# OPTIONAL
 			includes = @(
 				$someString
@@ -988,23 +990,17 @@ $query.Var.input = @{
 			# OPTIONAL
 			name = $someString
 			# OPTIONAL
+			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
+			# OPTIONAL
 			postBackupScript = $someString
 			# OPTIONAL
 			preBackupScript = $someString
 			# OPTIONAL
+			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
+			# OPTIONAL
 			isCreatedByKupr = $someBoolean
 			# OPTIONAL
 			isCreatedByPolarisNas = $someBoolean
-			# OPTIONAL
-			templateBlocklistedFilesystemPaths = $someString
-			# OPTIONAL
-			shouldRetryPrescriptIfBackupFails = $someBoolean
-			# OPTIONAL
-			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
-			# OPTIONAL
-			operatingSystemType = $someFilesetTemplatePatchOperatingSystemType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchOperatingSystemType]) for enum values.
-			# OPTIONAL
-			shareType = $someFilesetTemplatePatchShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetTemplatePatchShareType]) for enum values.
 			# OPTIONAL
 			filesetOptions = @{
 				# OPTIONAL
@@ -1014,8 +1010,12 @@ $query.Var.input = @{
 				# OPTIONAL
 				useWindowsVss = $someBoolean
 			}
-			# REQUIRED
-			id = $someString
+			# OPTIONAL
+			templateBlocklistedFilesystemPaths = $someString
+			# OPTIONAL
+			shouldRetryPrescriptIfBackupFails = $someBoolean
+			# OPTIONAL
+			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
 		}
 	)
 }"
@@ -1083,6 +1083,18 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		ignoreErrors = $someBoolean
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# REQUIRED
+					path = $someString
+					# OPTIONAL
+					restorePath = $someString
+				}
+			}
+		)
 		# OPTIONAL
 		excludePaths = @(
 			$someString
@@ -1093,18 +1105,6 @@ $query.Var.input = @{
 		postRestoreScript = $someString
 		# OPTIONAL
 		shouldRestoreOnlyAcls = $someBoolean
-		# REQUIRED
-		restoreConfig = @(
-			@{
-				# OPTIONAL
-				restorePathPair = @{
-					# OPTIONAL
-					restorePath = $someString
-					# REQUIRED
-					path = $someString
-				}
-			}
-		)
 	}
 	# REQUIRED
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -1152,6 +1152,18 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		ignoreErrors = $someBoolean
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# OPTIONAL
+				restorePathPair = @{
+					# REQUIRED
+					path = $someString
+					# OPTIONAL
+					restorePath = $someString
+				}
+			}
+		)
 		# OPTIONAL
 		excludePaths = @(
 			$someString
@@ -1162,18 +1174,6 @@ $query.Var.input = @{
 		postRestoreScript = $someString
 		# OPTIONAL
 		shouldRestoreOnlyAcls = $someBoolean
-		# REQUIRED
-		restoreConfig = @(
-			@{
-				# OPTIONAL
-				restorePathPair = @{
-					# OPTIONAL
-					restorePath = $someString
-					# REQUIRED
-					path = $someString
-				}
-			}
-		)
 	}
 	# REQUIRED
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
@@ -1203,6 +1203,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	filesetUpdateProperties = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
@@ -1217,8 +1219,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		snapMirrorLabelForIncrementalBackup = $someString
 	}
-	# REQUIRED
-	id = $someString
 }"
             );
         }

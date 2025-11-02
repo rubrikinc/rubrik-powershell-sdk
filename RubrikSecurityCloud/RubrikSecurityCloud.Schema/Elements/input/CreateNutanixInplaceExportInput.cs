@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> NutanixInplaceExportConfigInput? Config
-        // GraphQL -> config: NutanixInplaceExportConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public NutanixInplaceExportConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> NutanixInplaceExportConfigInput? Config
+        // GraphQL -> config: NutanixInplaceExportConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public NutanixInplaceExportConfigInput? Config { get; set; }
 
 
         #endregion

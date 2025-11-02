@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
         //      C# -> System.String? Lsn
         // GraphQL -> lsn: String (scalar)
         [JsonProperty("lsn")]
@@ -33,13 +40,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> time: DateTime (scalar)
         [JsonProperty("time")]
         public DateTime? Time { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
 
         #endregion

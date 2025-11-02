@@ -624,8 +624,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		archivalHealthCheckParams = @(
     /// 			@{
-    /// 				# OPTIONAL
+    /// 				# REQUIRED
     /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				name = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -1424,8 +1426,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		archivalHealthCheckParams = @(
 			@{
-				# OPTIONAL
+				# REQUIRED
 				locationId = $someString
+				# OPTIONAL
+				name = $someString
 			}
 		)
 		# OPTIONAL

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ShouldRetrieveConfigFiles
-        // GraphQL -> shouldRetrieveConfigFiles: Boolean (scalar)
-        [JsonProperty("shouldRetrieveConfigFiles")]
-        public System.Boolean? ShouldRetrieveConfigFiles { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? ShouldRetrieveConfigFiles
+        // GraphQL -> shouldRetrieveConfigFiles: Boolean (scalar)
+        [JsonProperty("shouldRetrieveConfigFiles")]
+        public System.Boolean? ShouldRetrieveConfigFiles { get; set; }
 
 
         #endregion

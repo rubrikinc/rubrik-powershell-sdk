@@ -91,6 +91,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
@@ -98,8 +100,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -387,6 +387,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
@@ -394,8 +396,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -495,26 +495,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
     /// 	config = @{
-    /// 		# OPTIONAL
-    /// 		slaId = $someString
     /// 		# REQUIRED
     /// 		recoveryPoint = @{
+    /// 			# OPTIONAL
+    /// 			lsnPoint = @{
+    /// 				# REQUIRED
+    /// 				lsn = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryForkGuid = $someString
+    /// 			}
     /// 			# OPTIONAL
     /// 			timestampMs = $someInt64
     /// 			# OPTIONAL
     /// 			date = $someDateTime
-    /// 			# OPTIONAL
-    /// 			lsnPoint = @{
-    /// 				# OPTIONAL
-    /// 				recoveryForkGuid = $someString
-    /// 				# REQUIRED
-    /// 				lsn = $someString
-    /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// 	# REQUIRED
     /// 	locationId = $someString
     /// }
@@ -1432,15 +1432,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	nextSnapshotFid = $someString
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		legalHoldDownloadConfig = @{
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
-    /// 		# REQUIRED
-    /// 		paths = @(
-    /// 			$someString
-    /// 		)
     /// 	}
     /// 	# OPTIONAL
     /// 	deltaTypeFilter = @(
@@ -1856,6 +1856,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.DownloadActiveDirectorySnapshotFromLocationFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL
@@ -1863,8 +1865,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }
@@ -2111,6 +2111,8 @@ $query.Var.input = @{
                 Mutation.DownloadExchangeSnapshotV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL
@@ -2118,8 +2120,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
 }"
             );
         }
@@ -2195,26 +2195,26 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	id = $someString
+	# REQUIRED
 	config = @{
-		# OPTIONAL
-		slaId = $someString
 		# REQUIRED
 		recoveryPoint = @{
+			# OPTIONAL
+			lsnPoint = @{
+				# REQUIRED
+				lsn = $someString
+				# OPTIONAL
+				recoveryForkGuid = $someString
+			}
 			# OPTIONAL
 			timestampMs = $someInt64
 			# OPTIONAL
 			date = $someDateTime
-			# OPTIONAL
-			lsnPoint = @{
-				# OPTIONAL
-				recoveryForkGuid = $someString
-				# REQUIRED
-				lsn = $someString
-			}
 		}
+		# OPTIONAL
+		slaId = $someString
 	}
-	# REQUIRED
-	id = $someString
 	# REQUIRED
 	locationId = $someString
 }"
@@ -3031,15 +3031,15 @@ $query.Var.input = @{
 	nextSnapshotFid = $someString
 	# REQUIRED
 	config = @{
+		# REQUIRED
+		paths = @(
+			$someString
+		)
 		# OPTIONAL
 		legalHoldDownloadConfig = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
-		# REQUIRED
-		paths = @(
-			$someString
-		)
 	}
 	# OPTIONAL
 	deltaTypeFilter = @(

@@ -1,6 +1,6 @@
 ### ManagedVolumeApplicationTag
 Supported in v5.0+
-  Application whose data will be stored in managed volume.
+Application whose data will be stored in managed volume.
 
 - MANAGED_VOLUME_APPLICATION_TAG_DB_TRANSACTION_LOG - Application tag for creating a Managed Volume for DB Transaction log backups.
 - MANAGED_VOLUME_APPLICATION_TAG_MS_SQL - Application tag for creating a Managed Volume for MSSQL backups.

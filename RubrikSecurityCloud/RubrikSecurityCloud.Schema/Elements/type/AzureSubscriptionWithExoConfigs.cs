@@ -50,10 +50,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featureDetail")]
         public AzureCloudAccountFeatureDetail? FeatureDetail { get; set; }
 
-        //      C# -> AzureExocomputeOptionalConfigInRegion? GlobalConfig
-        // GraphQL -> globalConfig: AzureExocomputeOptionalConfigInRegion (type)
-        [JsonProperty("globalConfig")]
-        public AzureExocomputeOptionalConfigInRegion? GlobalConfig { get; set; }
+        //      C# -> List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs
+        // GraphQL -> globalRegionExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
+        [JsonProperty("globalRegionExocomputeConfigs")]
+        public List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs { get; set; }
 
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
@@ -86,7 +86,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SubscriptionName = null,
         List<AzureExocomputeConfigDetails>? ExocomputeConfigs = null,
         AzureCloudAccountFeatureDetail? FeatureDetail = null,
-        AzureExocomputeOptionalConfigInRegion? GlobalConfig = null,
+        List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs = null,
         List<CloudAccountDetails>? MappedCloudAccounts = null,
         List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs = null,
         AzureMappedExocomputeSubscription? MappedExocomputeSubscription = null
@@ -110,8 +110,8 @@ namespace RubrikSecurityCloud.Types
         if ( FeatureDetail != null ) {
             this.FeatureDetail = FeatureDetail;
         }
-        if ( GlobalConfig != null ) {
-            this.GlobalConfig = GlobalConfig;
+        if ( GlobalRegionExocomputeConfigs != null ) {
+            this.GlobalRegionExocomputeConfigs = GlobalRegionExocomputeConfigs;
         }
         if ( MappedCloudAccounts != null ) {
             this.MappedCloudAccounts = MappedCloudAccounts;
@@ -196,15 +196,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
-        //      C# -> AzureExocomputeOptionalConfigInRegion? GlobalConfig
-        // GraphQL -> globalConfig: AzureExocomputeOptionalConfigInRegion (type)
-        if (this.GlobalConfig != null) {
-            var fspec = this.GlobalConfig.AsFieldSpec(conf.Child("globalConfig"));
+        //      C# -> List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs
+        // GraphQL -> globalRegionExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
+        if (this.GlobalRegionExocomputeConfigs != null) {
+            var fspec = this.GlobalRegionExocomputeConfigs.AsFieldSpec(conf.Child("globalRegionExocomputeConfigs"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "globalConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "globalRegionExocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -357,24 +357,24 @@ namespace RubrikSecurityCloud.Types
         {
             this.FeatureDetail = null;
         }
-        //      C# -> AzureExocomputeOptionalConfigInRegion? GlobalConfig
-        // GraphQL -> globalConfig: AzureExocomputeOptionalConfigInRegion (type)
-        if (ec.Includes("globalConfig",false))
+        //      C# -> List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs
+        // GraphQL -> globalRegionExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
+        if (ec.Includes("globalRegionExocomputeConfigs",false))
         {
-            if(this.GlobalConfig == null) {
+            if(this.GlobalRegionExocomputeConfigs == null) {
 
-                this.GlobalConfig = new AzureExocomputeOptionalConfigInRegion();
-                this.GlobalConfig.ApplyExploratoryFieldSpec(ec.NewChild("globalConfig"));
+                this.GlobalRegionExocomputeConfigs = new List<AzureExocomputeConfigDetails>();
+                this.GlobalRegionExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("globalRegionExocomputeConfigs"));
 
             } else {
 
-                this.GlobalConfig.ApplyExploratoryFieldSpec(ec.NewChild("globalConfig"));
+                this.GlobalRegionExocomputeConfigs.ApplyExploratoryFieldSpec(ec.NewChild("globalRegionExocomputeConfigs"));
 
             }
         }
-        else if (this.GlobalConfig != null && ec.Excludes("globalConfig",false))
+        else if (this.GlobalRegionExocomputeConfigs != null && ec.Excludes("globalRegionExocomputeConfigs",false))
         {
-            this.GlobalConfig = null;
+            this.GlobalRegionExocomputeConfigs = null;
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)

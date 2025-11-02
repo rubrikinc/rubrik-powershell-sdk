@@ -94,6 +94,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceHttpsPort")]
         public System.String? SourceHttpsPort { get; set; }
 
+        //      C# -> List<System.String>? SourceIp
+        // GraphQL -> sourceIp: [String!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceIp")]
+        public List<System.String>? SourceIp { get; set; }
+
+        //      C# -> System.String? SourceName
+        // GraphQL -> sourceName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceName")]
+        public System.String? SourceName { get; set; }
+
         //      C# -> System.String? SourcePassword
         // GraphQL -> sourcePassword: String (scalar)
         [JsonProperty("sourcePassword")]
@@ -114,6 +128,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceSshPort")]
         public System.String? SourceSshPort { get; set; }
 
+        //      C# -> SourceSourceType? SourceType
+        // GraphQL -> sourceType: SourceSourceType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceType")]
+        public SourceSourceType? SourceType { get; set; }
+
         //      C# -> System.String? SourceUser
         // GraphQL -> sourceUser: String (scalar)
         [JsonProperty("sourceUser")]
@@ -124,6 +145,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslCaCerts")]
         public System.String? SslCaCerts { get; set; }
 
+        //      C# -> SourceSslCertReqs? SslCertReqs
+        // GraphQL -> sslCertReqs: SourceSslCertReqs (enum)
+        [JsonProperty("sslCertReqs")]
+        public SourceSslCertReqs? SslCertReqs { get; set; }
+
         //      C# -> System.String? SslCertfile
         // GraphQL -> sslCertfile: String (scalar)
         [JsonProperty("sslCertfile")]
@@ -133,32 +159,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sslKeyfile: String (scalar)
         [JsonProperty("sslKeyfile")]
         public System.String? SslKeyfile { get; set; }
-
-        //      C# -> SourceSourceType? SourceType
-        // GraphQL -> sourceType: SourceSourceType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceType")]
-        public SourceSourceType? SourceType { get; set; }
-
-        //      C# -> SourceSslCertReqs? SslCertReqs
-        // GraphQL -> sslCertReqs: SourceSslCertReqs (enum)
-        [JsonProperty("sslCertReqs")]
-        public SourceSslCertReqs? SslCertReqs { get; set; }
-
-        //      C# -> List<System.String>? SourceIp
-        // GraphQL -> sourceIp: [String!]! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceIp")]
-        public List<System.String>? SourceIp { get; set; }
-
-        //      C# -> System.String? SourceName
-        // GraphQL -> sourceName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("sourceName")]
-        public System.String? SourceName { get; set; }
 
 
         #endregion

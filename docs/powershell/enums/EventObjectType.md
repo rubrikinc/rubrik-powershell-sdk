@@ -1,7 +1,7 @@
 ### EventObjectType
 Enum representing all the possible object types which generate events.
 
-- UNKNOWN_EVENT_OBJECT_TYPE - Unknown event object type.
+- UNKNOWN_EVENT_OBJECT_TYPE - Unknown object type.
 - RUBRIK_SAAS_ACCOUNT - Rubrik SaaS account object.
 - APP_BLUEPRINT - App Blueprint object.
 - APP_FLOWS - AppRecovery object.
@@ -158,10 +158,6 @@ Enum representing all the possible object types which generate events.
 - PRINCIPAL_ORG_WIDE - Org wide principal type.
 - PRINCIPAL_GPO - GPO principal type.
 - PRINCIPAL_COMPUTER - Computer principal type.
-- PRINCIPAL_CONTACT - Contact principal type.
-- PRINCIPAL_CONTAINER - Container principal type.
-- PRINCIPAL_OU - OU principal type.
-- PRINCIPAL_ACCESS_POLICY - Access Policy principal type.
 - IDP_ON_PREM_AD - On-prem AD IDP type.
 - IDP_AWS - AWS IDP type.
 - IDP_ENTRA_ID - Entra ID IDP type.
@@ -177,7 +173,7 @@ Enum representing all the possible object types which generate events.
 - AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
 - CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
 - CLOUD_DIRECT_NAS_SYSTEM - NAS Cloud Direct system.
-- CLOUD_ACCOUNT - Cloud Account
+- CLOUD_ACCOUNT - Cloud Account.
 - CLOUD_DIRECT_NAS_NAMESPACE - NAS Cloud Direct namespace.
 - CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
 - OLVM_MANAGER - OLVM Manager.
@@ -185,6 +181,10 @@ Enum representing all the possible object types which generate events.
 - OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
 - OLVM_HOST - OLVM Host.
 - OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- PRINCIPAL_CONTACT - Contact principal type.
+- PRINCIPAL_CONTAINER - Container principal type.
+- PRINCIPAL_OU - OU principal type.
+- PRINCIPAL_ACCESS_POLICY - Access Policy principal type.
 - OKTA_TENANT - Okta tenant.
 - AZURE_NATIVE_RESOURCE_GROUP - Azure Native Resource Group.
 - AZURE_NATIVE_REGION - Azure native region.

@@ -92,8 +92,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	dagUpdateProperties = @(
     /// 		@{
     /// 			# REQUIRED
@@ -105,6 +103,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -135,8 +135,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		smbDomainName = $someString
@@ -149,6 +147,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	id = $someString
     /// }
@@ -351,8 +351,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	dagUpdateProperties = @(
 		@{
 			# REQUIRED
@@ -364,6 +362,8 @@ $query.Var.input = @{
 			}
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -386,8 +386,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		smbDomainName = $someString
@@ -400,6 +398,8 @@ $query.Var.input = @{
 			$someString
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
 	# REQUIRED
 	id = $someString
 }"

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featureDetails")]
         public AzureCloudAccountFeatureDetail? FeatureDetails { get; set; }
 
+        //      C# -> List<AzureExocomputeGetConfigResponse>? GlobalRegionConfigs
+        // GraphQL -> globalRegionConfigs: [AzureExocomputeGetConfigResponse!]! (type)
+        [JsonProperty("globalRegionConfigs")]
+        public List<AzureExocomputeGetConfigResponse>? GlobalRegionConfigs { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         List<AzureCloudAccountRegion>? ExocomputeEligibleRegions = null,
         AzureCloudAccountSubscriptionDetail? AzureCloudAccount = null,
         List<AzureExocomputeGetConfigResponse>? Configs = null,
-        AzureCloudAccountFeatureDetail? FeatureDetails = null
+        AzureCloudAccountFeatureDetail? FeatureDetails = null,
+        List<AzureExocomputeGetConfigResponse>? GlobalRegionConfigs = null
     ) 
     {
         if ( ExocomputeEligibleRegions != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FeatureDetails != null ) {
             this.FeatureDetails = FeatureDetails;
+        }
+        if ( GlobalRegionConfigs != null ) {
+            this.GlobalRegionConfigs = GlobalRegionConfigs;
         }
         return this;
     }
@@ -124,6 +133,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "featureDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzureExocomputeGetConfigResponse>? GlobalRegionConfigs
+        // GraphQL -> globalRegionConfigs: [AzureExocomputeGetConfigResponse!]! (type)
+        if (this.GlobalRegionConfigs != null) {
+            var fspec = this.GlobalRegionConfigs.AsFieldSpec(conf.Child("globalRegionConfigs"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "globalRegionConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -207,6 +228,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FeatureDetails != null && ec.Excludes("featureDetails",false))
         {
             this.FeatureDetails = null;
+        }
+        //      C# -> List<AzureExocomputeGetConfigResponse>? GlobalRegionConfigs
+        // GraphQL -> globalRegionConfigs: [AzureExocomputeGetConfigResponse!]! (type)
+        if (ec.Includes("globalRegionConfigs",false))
+        {
+            if(this.GlobalRegionConfigs == null) {
+
+                this.GlobalRegionConfigs = new List<AzureExocomputeGetConfigResponse>();
+                this.GlobalRegionConfigs.ApplyExploratoryFieldSpec(ec.NewChild("globalRegionConfigs"));
+
+            } else {
+
+                this.GlobalRegionConfigs.ApplyExploratoryFieldSpec(ec.NewChild("globalRegionConfigs"));
+
+            }
+        }
+        else if (this.GlobalRegionConfigs != null && ec.Excludes("globalRegionConfigs",false))
+        {
+            this.GlobalRegionConfigs = null;
         }
     }
 

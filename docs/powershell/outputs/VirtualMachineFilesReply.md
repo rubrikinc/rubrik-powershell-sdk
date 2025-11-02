@@ -3,14 +3,14 @@ List of Virtual Machine file info.
 
 - data: list of VirtualMachineFileInfos
   - Supported in v9.0+
-  List of matching objects.
+List of matching objects.
 - hasMore: System.Boolean
   - Supported in v9.0+
-  If there is more.
+If there is more.
 - total: System.Int32
   - Supported in v9.0+
-  Total list responses.
+Total list responses.
 - nextCursor: System.String
   - Supported in v9.0+
-  v9.0: Cursor to fetch the next set of results.
-  v9.1+: Cursor to retrieve the next set of results.
+v9.0: Cursor to fetch the next set of results.
+v9.1+: Cursor to retrieve the next set of results.

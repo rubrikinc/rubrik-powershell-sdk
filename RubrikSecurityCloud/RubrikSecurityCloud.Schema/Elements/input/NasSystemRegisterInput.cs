@@ -19,33 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsIsilonChangelistEnabled
-        // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
-        [JsonProperty("isIsilonChangelistEnabled")]
-        public System.Boolean? IsIsilonChangelistEnabled { get; set; }
-
-        //      C# -> System.Boolean? ShouldGrantSmbShareRootAccess
-        // GraphQL -> shouldGrantSmbShareRootAccess: Boolean (scalar)
-        [JsonProperty("shouldGrantSmbShareRootAccess")]
-        public System.Boolean? ShouldGrantSmbShareRootAccess { get; set; }
-
-        //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
-        // GraphQL -> isNetAppMetroClusterEnabled: Boolean (scalar)
-        [JsonProperty("isNetAppMetroClusterEnabled")]
-        public System.Boolean? IsNetAppMetroClusterEnabled { get; set; }
-
-        //      C# -> System.Boolean? ShouldGrantNfsShareRootAccess
-        // GraphQL -> shouldGrantNfsShareRootAccess: Boolean (scalar)
-        [JsonProperty("shouldGrantNfsShareRootAccess")]
-        public System.Boolean? ShouldGrantNfsShareRootAccess { get; set; }
-
-        //      C# -> NasVendorType? NasVendorType
-        // GraphQL -> nasVendorType: NasVendorType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("nasVendorType")]
-        public NasVendorType? NasVendorType { get; set; }
-
         //      C# -> GenericNasSystemParametersInput? GenericNasSystemParameters
         // GraphQL -> genericNasSystemParameters: GenericNasSystemParametersInput (input)
         [JsonProperty("genericNasSystemParameters")]
@@ -58,25 +31,52 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostname")]
         public System.String? Hostname { get; set; }
 
-        //      C# -> FlashBladeSystemParametersInput? NasFlashBladeApiCredentials
-        // GraphQL -> nasFlashBladeApiCredentials: FlashBladeSystemParametersInput (input)
-        [JsonProperty("nasFlashBladeApiCredentials")]
-        public FlashBladeSystemParametersInput? NasFlashBladeApiCredentials { get; set; }
+        //      C# -> System.Boolean? IsIsilonChangelistEnabled
+        // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
+        [JsonProperty("isIsilonChangelistEnabled")]
+        public System.Boolean? IsIsilonChangelistEnabled { get; set; }
 
         //      C# -> NasApiCredentialsInput? NasTmpApiCredentials
         // GraphQL -> nasTmpApiCredentials: NasApiCredentialsInput (input)
         [JsonProperty("nasTmpApiCredentials")]
         public NasApiCredentialsInput? NasTmpApiCredentials { get; set; }
 
-        //      C# -> NutanixFileServerParametersInput? NutanixFileServerParameters
-        // GraphQL -> nutanixFileServerParameters: NutanixFileServerParametersInput (input)
-        [JsonProperty("nutanixFileServerParameters")]
-        public NutanixFileServerParametersInput? NutanixFileServerParameters { get; set; }
+        //      C# -> NasVendorType? NasVendorType
+        // GraphQL -> nasVendorType: NasVendorType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("nasVendorType")]
+        public NasVendorType? NasVendorType { get; set; }
+
+        //      C# -> System.Boolean? ShouldGrantSmbShareRootAccess
+        // GraphQL -> shouldGrantSmbShareRootAccess: Boolean (scalar)
+        [JsonProperty("shouldGrantSmbShareRootAccess")]
+        public System.Boolean? ShouldGrantSmbShareRootAccess { get; set; }
+
+        //      C# -> FlashBladeSystemParametersInput? NasFlashBladeApiCredentials
+        // GraphQL -> nasFlashBladeApiCredentials: FlashBladeSystemParametersInput (input)
+        [JsonProperty("nasFlashBladeApiCredentials")]
+        public FlashBladeSystemParametersInput? NasFlashBladeApiCredentials { get; set; }
+
+        //      C# -> System.Boolean? IsNetAppMetroClusterEnabled
+        // GraphQL -> isNetAppMetroClusterEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppMetroClusterEnabled")]
+        public System.Boolean? IsNetAppMetroClusterEnabled { get; set; }
 
         //      C# -> NasShareCredentialsInput? SmbCredentials
         // GraphQL -> smbCredentials: NasShareCredentialsInput (input)
         [JsonProperty("smbCredentials")]
         public NasShareCredentialsInput? SmbCredentials { get; set; }
+
+        //      C# -> NutanixFileServerParametersInput? NutanixFileServerParameters
+        // GraphQL -> nutanixFileServerParameters: NutanixFileServerParametersInput (input)
+        [JsonProperty("nutanixFileServerParameters")]
+        public NutanixFileServerParametersInput? NutanixFileServerParameters { get; set; }
+
+        //      C# -> System.Boolean? ShouldGrantNfsShareRootAccess
+        // GraphQL -> shouldGrantNfsShareRootAccess: Boolean (scalar)
+        [JsonProperty("shouldGrantNfsShareRootAccess")]
+        public System.Boolean? ShouldGrantNfsShareRootAccess { get; set; }
 
 
         #endregion

@@ -19,10 +19,12 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? CertificateId
-        // GraphQL -> certificateId: String (scalar)
-        [JsonProperty("certificateId")]
-        public System.String? CertificateId { get; set; }
+        //      C# -> System.Boolean? EnableTls
+        // GraphQL -> enableTls: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("enableTls")]
+        public System.Boolean? EnableTls { get; set; }
 
         //      C# -> SyslogFacility? Facility
         // GraphQL -> facility: SyslogFacility! (enum)
@@ -30,6 +32,20 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("facility")]
         public SyslogFacility? Facility { get; set; }
+
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("hostname")]
+        public System.String? Hostname { get; set; }
+
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("port")]
+        public System.Int32? Port { get; set; }
 
         //      C# -> TransportLayerProtocol? Protocol
         // GraphQL -> protocol: TransportLayerProtocol! (enum)
@@ -45,26 +61,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("severity")]
         public SyslogSeverity? Severity { get; set; }
 
-        //      C# -> System.Boolean? EnableTls
-        // GraphQL -> enableTls: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("enableTls")]
-        public System.Boolean? EnableTls { get; set; }
-
-        //      C# -> System.String? Hostname
-        // GraphQL -> hostname: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("hostname")]
-        public System.String? Hostname { get; set; }
-
-        //      C# -> System.Int32? Port
-        // GraphQL -> port: Int! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("port")]
-        public System.Int32? Port { get; set; }
+        //      C# -> System.String? CertificateId
+        // GraphQL -> certificateId: String (scalar)
+        [JsonProperty("certificateId")]
+        public System.String? CertificateId { get; set; }
 
 
         #endregion

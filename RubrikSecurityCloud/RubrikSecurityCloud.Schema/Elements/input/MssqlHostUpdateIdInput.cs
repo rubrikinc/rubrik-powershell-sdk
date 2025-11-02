@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? HostId
-        // GraphQL -> hostId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("hostId")]
-        public System.String? HostId { get; set; }
-
         //      C# -> MssqlHostUpdateInput? UpdateProperties
         // GraphQL -> updateProperties: MssqlHostUpdateInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("updateProperties")]
         public MssqlHostUpdateInput? UpdateProperties { get; set; }
+
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("hostId")]
+        public System.String? HostId { get; set; }
 
 
         #endregion

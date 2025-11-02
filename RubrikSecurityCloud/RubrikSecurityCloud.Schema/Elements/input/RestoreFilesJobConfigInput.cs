@@ -34,6 +34,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("password")]
         public System.String? Password { get; set; }
 
+        //      C# -> List<VmRestorePathPairInput>? RestoreConfig
+        // GraphQL -> restoreConfig: [VmRestorePathPairInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("restoreConfig")]
+        public List<VmRestorePathPairInput>? RestoreConfig { get; set; }
+
         //      C# -> System.Boolean? ShouldSaveCredentials
         // GraphQL -> shouldSaveCredentials: Boolean (scalar)
         [JsonProperty("shouldSaveCredentials")]
@@ -73,13 +80,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldUseMountDisks: Boolean (scalar)
         [JsonProperty("shouldUseMountDisks")]
         public System.Boolean? ShouldUseMountDisks { get; set; }
-
-        //      C# -> List<VmRestorePathPairInput>? RestoreConfig
-        // GraphQL -> restoreConfig: [VmRestorePathPairInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("restoreConfig")]
-        public List<VmRestorePathPairInput>? RestoreConfig { get; set; }
 
 
         #endregion

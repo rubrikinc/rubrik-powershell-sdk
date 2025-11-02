@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<HypervRestoreFileConfigInput>? RestoreConfig
+        // GraphQL -> restoreConfig: [HypervRestoreFileConfigInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("restoreConfig")]
+        public List<HypervRestoreFileConfigInput>? RestoreConfig { get; set; }
+
         //      C# -> System.String? TargetVirtualMachineId
         // GraphQL -> targetVirtualMachineId: String (scalar)
         [JsonProperty("targetVirtualMachineId")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldIgnoreError: Boolean (scalar)
         [JsonProperty("shouldIgnoreError")]
         public System.Boolean? ShouldIgnoreError { get; set; }
-
-        //      C# -> List<HypervRestoreFileConfigInput>? RestoreConfig
-        // GraphQL -> restoreConfig: [HypervRestoreFileConfigInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("restoreConfig")]
-        public List<HypervRestoreFileConfigInput>? RestoreConfig { get; set; }
 
 
         #endregion

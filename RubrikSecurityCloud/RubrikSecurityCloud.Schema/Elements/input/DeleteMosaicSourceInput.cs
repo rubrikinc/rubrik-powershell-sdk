@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> V2DeleteMosaicSourceRequestSourceType? SourceType
-        // GraphQL -> sourceType: V2DeleteMosaicSourceRequestSourceType (enum)
-        [JsonProperty("sourceType")]
-        public V2DeleteMosaicSourceRequestSourceType? SourceType { get; set; }
-
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sourceName")]
         public System.String? SourceName { get; set; }
+
+        //      C# -> V2DeleteMosaicSourceRequestSourceType? SourceType
+        // GraphQL -> sourceType: V2DeleteMosaicSourceRequestSourceType (enum)
+        [JsonProperty("sourceType")]
+        public V2DeleteMosaicSourceRequestSourceType? SourceType { get; set; }
 
 
         #endregion

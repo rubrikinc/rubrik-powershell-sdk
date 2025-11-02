@@ -160,66 +160,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	hosts = @(
     /// 		@{
     /// 			# OPTIONAL
     /// 			hasAgent = $someBoolean
-    /// 			# OPTIONAL
-    /// 			oracleQueryUser = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSysDbaUser = $someString
-    /// 			# OPTIONAL
-    /// 			organizationId = $someString
-    /// 			# OPTIONAL
-    /// 			alias = $someString
-    /// 			# OPTIONAL
-    /// 			isOracleHost = $someBoolean
-    /// 			# OPTIONAL
-    /// 			mssqlSddCertificateId = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSddWalletPath = $someString
-    /// 			# OPTIONAL
-    /// 			shouldOracleSddThroughRba = $someBoolean
-    /// 			# OPTIONAL
-    /// 			orgNetworkId = $someString
-    /// 			# OPTIONAL
-    /// 			shouldMssqlSddThroughRba = $someBoolean
-    /// 			# OPTIONAL
-    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			hdfsConfig = @{
-    /// 				# OPTIONAL
-    /// 				hdfsBaseConfig = @{
-    /// 					# OPTIONAL
-    /// 					apiToken = $someString
-    /// 					# OPTIONAL
-    /// 					kerberosTicket = $someString
-    /// 					# OPTIONAL
-    /// 					nameservices = $someString
-    /// 					# OPTIONAL
-    /// 					username = $someString
-    /// 					# REQUIRED
-    /// 					hosts = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							hostname = $someString
-    /// 							# REQUIRED
-    /// 							port = $someInt
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 			}
     /// 			# REQUIRED
     /// 			hostname = $someString
-    /// 			# OPTIONAL
-    /// 			mssqlSddUserCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
     /// 			# OPTIONAL
     /// 			nasConfig = @{
     /// 				# OPTIONAL
@@ -234,6 +180,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				apiToken = $someString
     /// 				# OPTIONAL
     /// 				apiUsername = $someString
+    /// 				# REQUIRED
+    /// 				vendorType = $someString
     /// 				# OPTIONAL
     /// 				zoneName = $someString
     /// 				# OPTIONAL
@@ -246,9 +194,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isShareAutoDiscoveryEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				isNutanixCftEnabled = $someBoolean
-    /// 				# REQUIRED
-    /// 				vendorType = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleQueryUser = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSysDbaUser = $someString
+    /// 			# OPTIONAL
+    /// 			organizationId = $someString
+    /// 			# OPTIONAL
+    /// 			alias = $someString
+    /// 			# OPTIONAL
+    /// 			hdfsConfig = @{
+    /// 				# OPTIONAL
+    /// 				hdfsBaseConfig = @{
+    /// 					# OPTIONAL
+    /// 					apiToken = $someString
+    /// 					# REQUIRED
+    /// 					hosts = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							hostname = $someString
+    /// 							# REQUIRED
+    /// 							port = $someInt
+    /// 						}
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					kerberosTicket = $someString
+    /// 					# OPTIONAL
+    /// 					nameservices = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			oracleSepsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			mssqlSddCertificateId = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
     /// 			oracleSddUserCredentials = @{
     /// 				# REQUIRED
@@ -257,12 +245,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 			# OPTIONAL
-    /// 			oracleSepsSettings = @{
-    /// 				# OPTIONAL
-    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			shouldOracleSddThroughRba = $someBoolean
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -299,60 +299,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# OPTIONAL
     /// 			hasAgent = $someBoolean
-    /// 			# OPTIONAL
-    /// 			oracleQueryUser = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSysDbaUser = $someString
-    /// 			# OPTIONAL
-    /// 			organizationId = $someString
-    /// 			# OPTIONAL
-    /// 			alias = $someString
-    /// 			# OPTIONAL
-    /// 			isOracleHost = $someBoolean
-    /// 			# OPTIONAL
-    /// 			mssqlSddCertificateId = $someString
-    /// 			# OPTIONAL
-    /// 			oracleSddWalletPath = $someString
-    /// 			# OPTIONAL
-    /// 			shouldOracleSddThroughRba = $someBoolean
-    /// 			# OPTIONAL
-    /// 			orgNetworkId = $someString
-    /// 			# OPTIONAL
-    /// 			shouldMssqlSddThroughRba = $someBoolean
-    /// 			# OPTIONAL
-    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			hdfsConfig = @{
-    /// 				# OPTIONAL
-    /// 				hdfsBaseConfig = @{
-    /// 					# OPTIONAL
-    /// 					apiToken = $someString
-    /// 					# OPTIONAL
-    /// 					kerberosTicket = $someString
-    /// 					# OPTIONAL
-    /// 					nameservices = $someString
-    /// 					# OPTIONAL
-    /// 					username = $someString
-    /// 					# REQUIRED
-    /// 					hosts = @(
-    /// 						@{
-    /// 							# REQUIRED
-    /// 							hostname = $someString
-    /// 							# REQUIRED
-    /// 							port = $someInt
-    /// 						}
-    /// 					)
-    /// 				}
-    /// 			}
     /// 			# REQUIRED
     /// 			hostname = $someString
-    /// 			# OPTIONAL
-    /// 			mssqlSddUserCredentials = @{
-    /// 				# REQUIRED
-    /// 				password = $someString
-    /// 				# REQUIRED
-    /// 				username = $someString
-    /// 			}
     /// 			# OPTIONAL
     /// 			nasConfig = @{
     /// 				# OPTIONAL
@@ -367,6 +315,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				apiToken = $someString
     /// 				# OPTIONAL
     /// 				apiUsername = $someString
+    /// 				# REQUIRED
+    /// 				vendorType = $someString
     /// 				# OPTIONAL
     /// 				zoneName = $someString
     /// 				# OPTIONAL
@@ -379,9 +329,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				isShareAutoDiscoveryEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				isNutanixCftEnabled = $someBoolean
-    /// 				# REQUIRED
-    /// 				vendorType = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			oracleQueryUser = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSysDbaUser = $someString
+    /// 			# OPTIONAL
+    /// 			organizationId = $someString
+    /// 			# OPTIONAL
+    /// 			alias = $someString
+    /// 			# OPTIONAL
+    /// 			hdfsConfig = @{
+    /// 				# OPTIONAL
+    /// 				hdfsBaseConfig = @{
+    /// 					# OPTIONAL
+    /// 					apiToken = $someString
+    /// 					# REQUIRED
+    /// 					hosts = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							hostname = $someString
+    /// 							# REQUIRED
+    /// 							port = $someInt
+    /// 						}
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					kerberosTicket = $someString
+    /// 					# OPTIONAL
+    /// 					nameservices = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			isOracleHost = $someBoolean
+    /// 			# OPTIONAL
+    /// 			oracleSepsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			mssqlSddCertificateId = $someString
+    /// 			# OPTIONAL
+    /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
     /// 			oracleSddUserCredentials = @{
     /// 				# REQUIRED
@@ -390,10 +380,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				username = $someString
     /// 			}
     /// 			# OPTIONAL
-    /// 			oracleSepsSettings = @{
-    /// 				# OPTIONAL
-    /// 				isOracleSepsWalletEnabled = $someBoolean
+    /// 			mssqlSddUserCredentials = @{
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 				# REQUIRED
+    /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			shouldOracleSddThroughRba = $someBoolean
+    /// 			# OPTIONAL
+    /// 			orgNetworkId = $someString
+    /// 			# OPTIONAL
+    /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 		}
     /// 	)
     /// }
@@ -479,63 +479,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				hostVfdDriverInstalled = $someBoolean
     /// 				# OPTIONAL
+    /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
+    /// 				# OPTIONAL
     /// 				hostname = $someString
     /// 				# OPTIONAL
     /// 				mssqlCbtDriverInstalled = $someBoolean
     /// 				# OPTIONAL
-    /// 				oracleQueryUser = $someString
-    /// 				# OPTIONAL
-    /// 				oracleSysDbaUser = $someString
-    /// 				# OPTIONAL
-    /// 				alias = $someString
-    /// 				# OPTIONAL
-    /// 				isOracleHost = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isUpdateCertAndAgentIdEnabled = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isRefreshPaused = $someBoolean
-    /// 				# OPTIONAL
-    /// 				mssqlSddCertificateId = $someString
-    /// 				# OPTIONAL
-    /// 				oracleSddWalletPath = $someString
-    /// 				# OPTIONAL
-    /// 				shouldOracleSddThroughRba = $someBoolean
-    /// 				# OPTIONAL
-    /// 				shouldMssqlSddThroughRba = $someBoolean
-    /// 				# OPTIONAL
-    /// 				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
-    /// 				# OPTIONAL
     /// 				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
-    /// 				# OPTIONAL
-    /// 				hdfsConfig = @{
-    /// 					# OPTIONAL
-    /// 					hdfsBaseConfig = @{
-    /// 						# OPTIONAL
-    /// 						apiToken = $someString
-    /// 						# OPTIONAL
-    /// 						kerberosTicket = $someString
-    /// 						# OPTIONAL
-    /// 						nameservices = $someString
-    /// 						# OPTIONAL
-    /// 						username = $someString
-    /// 						# REQUIRED
-    /// 						hosts = @(
-    /// 							@{
-    /// 								# REQUIRED
-    /// 								hostname = $someString
-    /// 								# REQUIRED
-    /// 								port = $someInt
-    /// 							}
-    /// 						)
-    /// 					}
-    /// 				}
-    /// 				# OPTIONAL
-    /// 				mssqlSddUserCredentials = @{
-    /// 					# REQUIRED
-    /// 					password = $someString
-    /// 					# REQUIRED
-    /// 					username = $someString
-    /// 				}
     /// 				# OPTIONAL
     /// 				nasConfig = @{
     /// 					# OPTIONAL
@@ -550,6 +500,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					apiToken = $someString
     /// 					# OPTIONAL
     /// 					apiUsername = $someString
+    /// 					# REQUIRED
+    /// 					vendorType = $someString
     /// 					# OPTIONAL
     /// 					zoneName = $someString
     /// 					# OPTIONAL
@@ -562,9 +514,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					isShareAutoDiscoveryEnabled = $someBoolean
     /// 					# OPTIONAL
     /// 					isNutanixCftEnabled = $someBoolean
-    /// 					# REQUIRED
-    /// 					vendorType = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				oracleQueryUser = $someString
+    /// 				# OPTIONAL
+    /// 				oracleSysDbaUser = $someString
+    /// 				# OPTIONAL
+    /// 				alias = $someString
+    /// 				# OPTIONAL
+    /// 				hdfsConfig = @{
+    /// 					# OPTIONAL
+    /// 					hdfsBaseConfig = @{
+    /// 						# OPTIONAL
+    /// 						apiToken = $someString
+    /// 						# REQUIRED
+    /// 						hosts = @(
+    /// 							@{
+    /// 								# REQUIRED
+    /// 								hostname = $someString
+    /// 								# REQUIRED
+    /// 								port = $someInt
+    /// 							}
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						kerberosTicket = $someString
+    /// 						# OPTIONAL
+    /// 						nameservices = $someString
+    /// 						# OPTIONAL
+    /// 						username = $someString
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				isOracleHost = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isUpdateCertAndAgentIdEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isRefreshPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				oracleSepsSettings = @{
+    /// 					# OPTIONAL
+    /// 					isOracleSepsWalletEnabled = $someBoolean
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				mssqlSddCertificateId = $someString
+    /// 				# OPTIONAL
+    /// 				oracleSddWalletPath = $someString
     /// 				# OPTIONAL
     /// 				oracleSddUserCredentials = @{
     /// 					# REQUIRED
@@ -573,10 +567,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					username = $someString
     /// 				}
     /// 				# OPTIONAL
-    /// 				oracleSepsSettings = @{
-    /// 					# OPTIONAL
-    /// 					isOracleSepsWalletEnabled = $someBoolean
+    /// 				mssqlSddUserCredentials = @{
+    /// 					# REQUIRED
+    /// 					password = $someString
+    /// 					# REQUIRED
+    /// 					username = $someString
     /// 				}
+    /// 				# OPTIONAL
+    /// 				shouldOracleSddThroughRba = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldMssqlSddThroughRba = $someBoolean
     /// 			}
     /// 		}
     /// 	)
@@ -978,66 +978,12 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	hosts = @(
 		@{
 			# OPTIONAL
 			hasAgent = $someBoolean
-			# OPTIONAL
-			oracleQueryUser = $someString
-			# OPTIONAL
-			oracleSysDbaUser = $someString
-			# OPTIONAL
-			organizationId = $someString
-			# OPTIONAL
-			alias = $someString
-			# OPTIONAL
-			isOracleHost = $someBoolean
-			# OPTIONAL
-			mssqlSddCertificateId = $someString
-			# OPTIONAL
-			oracleSddWalletPath = $someString
-			# OPTIONAL
-			shouldOracleSddThroughRba = $someBoolean
-			# OPTIONAL
-			orgNetworkId = $someString
-			# OPTIONAL
-			shouldMssqlSddThroughRba = $someBoolean
-			# OPTIONAL
-			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-			# OPTIONAL
-			hdfsConfig = @{
-				# OPTIONAL
-				hdfsBaseConfig = @{
-					# OPTIONAL
-					apiToken = $someString
-					# OPTIONAL
-					kerberosTicket = $someString
-					# OPTIONAL
-					nameservices = $someString
-					# OPTIONAL
-					username = $someString
-					# REQUIRED
-					hosts = @(
-						@{
-							# REQUIRED
-							hostname = $someString
-							# REQUIRED
-							port = $someInt
-						}
-					)
-				}
-			}
 			# REQUIRED
 			hostname = $someString
-			# OPTIONAL
-			mssqlSddUserCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
 			# OPTIONAL
 			nasConfig = @{
 				# OPTIONAL
@@ -1052,6 +998,8 @@ $query.Var.input = @{
 				apiToken = $someString
 				# OPTIONAL
 				apiUsername = $someString
+				# REQUIRED
+				vendorType = $someString
 				# OPTIONAL
 				zoneName = $someString
 				# OPTIONAL
@@ -1064,9 +1012,49 @@ $query.Var.input = @{
 				isShareAutoDiscoveryEnabled = $someBoolean
 				# OPTIONAL
 				isNutanixCftEnabled = $someBoolean
-				# REQUIRED
-				vendorType = $someString
 			}
+			# OPTIONAL
+			oracleQueryUser = $someString
+			# OPTIONAL
+			oracleSysDbaUser = $someString
+			# OPTIONAL
+			organizationId = $someString
+			# OPTIONAL
+			alias = $someString
+			# OPTIONAL
+			hdfsConfig = @{
+				# OPTIONAL
+				hdfsBaseConfig = @{
+					# OPTIONAL
+					apiToken = $someString
+					# REQUIRED
+					hosts = @(
+						@{
+							# REQUIRED
+							hostname = $someString
+							# REQUIRED
+							port = $someInt
+						}
+					)
+					# OPTIONAL
+					kerberosTicket = $someString
+					# OPTIONAL
+					nameservices = $someString
+					# OPTIONAL
+					username = $someString
+				}
+			}
+			# OPTIONAL
+			isOracleHost = $someBoolean
+			# OPTIONAL
+			oracleSepsSettings = @{
+				# OPTIONAL
+				isOracleSepsWalletEnabled = $someBoolean
+			}
+			# OPTIONAL
+			mssqlSddCertificateId = $someString
+			# OPTIONAL
+			oracleSddWalletPath = $someString
 			# OPTIONAL
 			oracleSddUserCredentials = @{
 				# REQUIRED
@@ -1075,12 +1063,24 @@ $query.Var.input = @{
 				username = $someString
 			}
 			# OPTIONAL
-			oracleSepsSettings = @{
-				# OPTIONAL
-				isOracleSepsWalletEnabled = $someBoolean
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
 			}
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+			# OPTIONAL
+			shouldOracleSddThroughRba = $someBoolean
+			# OPTIONAL
+			orgNetworkId = $someString
+			# OPTIONAL
+			shouldMssqlSddThroughRba = $someBoolean
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -1109,60 +1109,8 @@ $query.Var.input = @{
 		@{
 			# OPTIONAL
 			hasAgent = $someBoolean
-			# OPTIONAL
-			oracleQueryUser = $someString
-			# OPTIONAL
-			oracleSysDbaUser = $someString
-			# OPTIONAL
-			organizationId = $someString
-			# OPTIONAL
-			alias = $someString
-			# OPTIONAL
-			isOracleHost = $someBoolean
-			# OPTIONAL
-			mssqlSddCertificateId = $someString
-			# OPTIONAL
-			oracleSddWalletPath = $someString
-			# OPTIONAL
-			shouldOracleSddThroughRba = $someBoolean
-			# OPTIONAL
-			orgNetworkId = $someString
-			# OPTIONAL
-			shouldMssqlSddThroughRba = $someBoolean
-			# OPTIONAL
-			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
-			# OPTIONAL
-			hdfsConfig = @{
-				# OPTIONAL
-				hdfsBaseConfig = @{
-					# OPTIONAL
-					apiToken = $someString
-					# OPTIONAL
-					kerberosTicket = $someString
-					# OPTIONAL
-					nameservices = $someString
-					# OPTIONAL
-					username = $someString
-					# REQUIRED
-					hosts = @(
-						@{
-							# REQUIRED
-							hostname = $someString
-							# REQUIRED
-							port = $someInt
-						}
-					)
-				}
-			}
 			# REQUIRED
 			hostname = $someString
-			# OPTIONAL
-			mssqlSddUserCredentials = @{
-				# REQUIRED
-				password = $someString
-				# REQUIRED
-				username = $someString
-			}
 			# OPTIONAL
 			nasConfig = @{
 				# OPTIONAL
@@ -1177,6 +1125,8 @@ $query.Var.input = @{
 				apiToken = $someString
 				# OPTIONAL
 				apiUsername = $someString
+				# REQUIRED
+				vendorType = $someString
 				# OPTIONAL
 				zoneName = $someString
 				# OPTIONAL
@@ -1189,9 +1139,49 @@ $query.Var.input = @{
 				isShareAutoDiscoveryEnabled = $someBoolean
 				# OPTIONAL
 				isNutanixCftEnabled = $someBoolean
-				# REQUIRED
-				vendorType = $someString
 			}
+			# OPTIONAL
+			oracleQueryUser = $someString
+			# OPTIONAL
+			oracleSysDbaUser = $someString
+			# OPTIONAL
+			organizationId = $someString
+			# OPTIONAL
+			alias = $someString
+			# OPTIONAL
+			hdfsConfig = @{
+				# OPTIONAL
+				hdfsBaseConfig = @{
+					# OPTIONAL
+					apiToken = $someString
+					# REQUIRED
+					hosts = @(
+						@{
+							# REQUIRED
+							hostname = $someString
+							# REQUIRED
+							port = $someInt
+						}
+					)
+					# OPTIONAL
+					kerberosTicket = $someString
+					# OPTIONAL
+					nameservices = $someString
+					# OPTIONAL
+					username = $someString
+				}
+			}
+			# OPTIONAL
+			isOracleHost = $someBoolean
+			# OPTIONAL
+			oracleSepsSettings = @{
+				# OPTIONAL
+				isOracleSepsWalletEnabled = $someBoolean
+			}
+			# OPTIONAL
+			mssqlSddCertificateId = $someString
+			# OPTIONAL
+			oracleSddWalletPath = $someString
 			# OPTIONAL
 			oracleSddUserCredentials = @{
 				# REQUIRED
@@ -1200,10 +1190,20 @@ $query.Var.input = @{
 				username = $someString
 			}
 			# OPTIONAL
-			oracleSepsSettings = @{
-				# OPTIONAL
-				isOracleSepsWalletEnabled = $someBoolean
+			mssqlSddUserCredentials = @{
+				# REQUIRED
+				password = $someString
+				# REQUIRED
+				username = $someString
 			}
+			# OPTIONAL
+			osType = $someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+			# OPTIONAL
+			shouldOracleSddThroughRba = $someBoolean
+			# OPTIONAL
+			orgNetworkId = $someString
+			# OPTIONAL
+			shouldMssqlSddThroughRba = $someBoolean
 		}
 	)
 }"
@@ -1273,63 +1273,13 @@ $query.Var.input = @{
 				# OPTIONAL
 				hostVfdDriverInstalled = $someBoolean
 				# OPTIONAL
+				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
+				# OPTIONAL
 				hostname = $someString
 				# OPTIONAL
 				mssqlCbtDriverInstalled = $someBoolean
 				# OPTIONAL
-				oracleQueryUser = $someString
-				# OPTIONAL
-				oracleSysDbaUser = $someString
-				# OPTIONAL
-				alias = $someString
-				# OPTIONAL
-				isOracleHost = $someBoolean
-				# OPTIONAL
-				isUpdateCertAndAgentIdEnabled = $someBoolean
-				# OPTIONAL
-				isRefreshPaused = $someBoolean
-				# OPTIONAL
-				mssqlSddCertificateId = $someString
-				# OPTIONAL
-				oracleSddWalletPath = $someString
-				# OPTIONAL
-				shouldOracleSddThroughRba = $someBoolean
-				# OPTIONAL
-				shouldMssqlSddThroughRba = $someBoolean
-				# OPTIONAL
-				hostVfdEnabled = $someHostVfdInstallConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostVfdInstallConfig]) for enum values.
-				# OPTIONAL
 				mssqlCbtEnabled = $someMssqlCbtStatusType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MssqlCbtStatusType]) for enum values.
-				# OPTIONAL
-				hdfsConfig = @{
-					# OPTIONAL
-					hdfsBaseConfig = @{
-						# OPTIONAL
-						apiToken = $someString
-						# OPTIONAL
-						kerberosTicket = $someString
-						# OPTIONAL
-						nameservices = $someString
-						# OPTIONAL
-						username = $someString
-						# REQUIRED
-						hosts = @(
-							@{
-								# REQUIRED
-								hostname = $someString
-								# REQUIRED
-								port = $someInt
-							}
-						)
-					}
-				}
-				# OPTIONAL
-				mssqlSddUserCredentials = @{
-					# REQUIRED
-					password = $someString
-					# REQUIRED
-					username = $someString
-				}
 				# OPTIONAL
 				nasConfig = @{
 					# OPTIONAL
@@ -1344,6 +1294,8 @@ $query.Var.input = @{
 					apiToken = $someString
 					# OPTIONAL
 					apiUsername = $someString
+					# REQUIRED
+					vendorType = $someString
 					# OPTIONAL
 					zoneName = $someString
 					# OPTIONAL
@@ -1356,9 +1308,51 @@ $query.Var.input = @{
 					isShareAutoDiscoveryEnabled = $someBoolean
 					# OPTIONAL
 					isNutanixCftEnabled = $someBoolean
-					# REQUIRED
-					vendorType = $someString
 				}
+				# OPTIONAL
+				oracleQueryUser = $someString
+				# OPTIONAL
+				oracleSysDbaUser = $someString
+				# OPTIONAL
+				alias = $someString
+				# OPTIONAL
+				hdfsConfig = @{
+					# OPTIONAL
+					hdfsBaseConfig = @{
+						# OPTIONAL
+						apiToken = $someString
+						# REQUIRED
+						hosts = @(
+							@{
+								# REQUIRED
+								hostname = $someString
+								# REQUIRED
+								port = $someInt
+							}
+						)
+						# OPTIONAL
+						kerberosTicket = $someString
+						# OPTIONAL
+						nameservices = $someString
+						# OPTIONAL
+						username = $someString
+					}
+				}
+				# OPTIONAL
+				isOracleHost = $someBoolean
+				# OPTIONAL
+				isUpdateCertAndAgentIdEnabled = $someBoolean
+				# OPTIONAL
+				isRefreshPaused = $someBoolean
+				# OPTIONAL
+				oracleSepsSettings = @{
+					# OPTIONAL
+					isOracleSepsWalletEnabled = $someBoolean
+				}
+				# OPTIONAL
+				mssqlSddCertificateId = $someString
+				# OPTIONAL
+				oracleSddWalletPath = $someString
 				# OPTIONAL
 				oracleSddUserCredentials = @{
 					# REQUIRED
@@ -1367,10 +1361,16 @@ $query.Var.input = @{
 					username = $someString
 				}
 				# OPTIONAL
-				oracleSepsSettings = @{
-					# OPTIONAL
-					isOracleSepsWalletEnabled = $someBoolean
+				mssqlSddUserCredentials = @{
+					# REQUIRED
+					password = $someString
+					# REQUIRED
+					username = $someString
 				}
+				# OPTIONAL
+				shouldOracleSddThroughRba = $someBoolean
+				# OPTIONAL
+				shouldMssqlSddThroughRba = $someBoolean
 			}
 		}
 	)

@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> NutanixVmPatchInput? VmPatchProperties
         // GraphQL -> vmPatchProperties: NutanixVmPatchInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("vmPatchProperties")]
         public NutanixVmPatchInput? VmPatchProperties { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

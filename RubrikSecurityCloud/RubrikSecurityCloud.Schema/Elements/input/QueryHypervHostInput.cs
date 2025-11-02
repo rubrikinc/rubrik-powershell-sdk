@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
         [JsonProperty("effectiveSlaDomainId")]
@@ -58,13 +65,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sortOrder: InternalQueryHypervHostRequestSortOrder (enum)
         [JsonProperty("sortOrder")]
         public InternalQueryHypervHostRequestSortOrder? SortOrder { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

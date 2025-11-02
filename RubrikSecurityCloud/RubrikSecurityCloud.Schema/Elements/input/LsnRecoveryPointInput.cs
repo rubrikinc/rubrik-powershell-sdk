@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? RecoveryForkGuid
-        // GraphQL -> recoveryForkGuid: String (scalar)
-        [JsonProperty("recoveryForkGuid")]
-        public System.String? RecoveryForkGuid { get; set; }
-
         //      C# -> System.String? Lsn
         // GraphQL -> lsn: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("lsn")]
         public System.String? Lsn { get; set; }
+
+        //      C# -> System.String? RecoveryForkGuid
+        // GraphQL -> recoveryForkGuid: String (scalar)
+        [JsonProperty("recoveryForkGuid")]
+        public System.String? RecoveryForkGuid { get; set; }
 
 
         #endregion

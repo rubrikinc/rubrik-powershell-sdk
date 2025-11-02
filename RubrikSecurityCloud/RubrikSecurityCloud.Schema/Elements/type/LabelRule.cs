@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("label")]
         public CloudNativeLabel? Label { get; set; }
 
+        //      C# -> CloudNativeTagConditionOutput? LabelConditions
+        // GraphQL -> labelConditions: CloudNativeTagConditionOutput (type)
+        [JsonProperty("labelConditions")]
+        public CloudNativeTagConditionOutput? LabelConditions { get; set; }
+
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)
         [JsonProperty("rscNativeObjectPendingSla")]
@@ -83,6 +88,7 @@ namespace RubrikSecurityCloud.Types
         List<CloudNativeAccountIdWithName>? CloudNativeAccounts = null,
         TagRuleEffectiveSla? EffectiveSla = null,
         CloudNativeLabel? Label = null,
+        CloudNativeTagConditionOutput? LabelConditions = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null
     ) 
     {
@@ -109,6 +115,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Label != null ) {
             this.Label = Label;
+        }
+        if ( LabelConditions != null ) {
+            this.LabelConditions = LabelConditions;
         }
         if ( RscNativeObjectPendingSla != null ) {
             this.RscNativeObjectPendingSla = RscNativeObjectPendingSla;
@@ -205,6 +214,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "label" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudNativeTagConditionOutput? LabelConditions
+        // GraphQL -> labelConditions: CloudNativeTagConditionOutput (type)
+        if (this.LabelConditions != null) {
+            var fspec = this.LabelConditions.AsFieldSpec(conf.Child("labelConditions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "labelConditions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -368,6 +389,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Label != null && ec.Excludes("label",false))
         {
             this.Label = null;
+        }
+        //      C# -> CloudNativeTagConditionOutput? LabelConditions
+        // GraphQL -> labelConditions: CloudNativeTagConditionOutput (type)
+        if (ec.Includes("labelConditions",false))
+        {
+            if(this.LabelConditions == null) {
+
+                this.LabelConditions = new CloudNativeTagConditionOutput();
+                this.LabelConditions.ApplyExploratoryFieldSpec(ec.NewChild("labelConditions"));
+
+            } else {
+
+                this.LabelConditions.ApplyExploratoryFieldSpec(ec.NewChild("labelConditions"));
+
+            }
+        }
+        else if (this.LabelConditions != null && ec.Excludes("labelConditions",false))
+        {
+            this.LabelConditions = null;
         }
         //      C# -> CompactSlaDomain? RscNativeObjectPendingSla
         // GraphQL -> rscNativeObjectPendingSla: CompactSlaDomain (type)

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? RestorePath
-        // GraphQL -> restorePath: String (scalar)
-        [JsonProperty("restorePath")]
-        public System.String? RestorePath { get; set; }
-
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("path")]
         public System.String? Path { get; set; }
+
+        //      C# -> System.String? RestorePath
+        // GraphQL -> restorePath: String (scalar)
+        [JsonProperty("restorePath")]
+        public System.String? RestorePath { get; set; }
 
 
         #endregion

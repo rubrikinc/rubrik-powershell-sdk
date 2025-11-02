@@ -963,8 +963,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldDownloadToLocal = $someBoolean
     /// 		# OPTIONAL
-    /// 		locationId = $someString
-    /// 		# OPTIONAL
     /// 		managedVolumeSlaExportConfig = @{
     /// 			# REQUIRED
     /// 			hostId = $someString
@@ -975,9 +973,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			managedVolumeExportConfig = @{
     /// 				# OPTIONAL
-    /// 				subnet = $someString
-    /// 				# OPTIONAL
     /// 				shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
     /// 				# OPTIONAL
     /// 				managedVolumePatchConfig = @{
     /// 					# OPTIONAL
@@ -1006,6 +1004,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		locationId = $someString
     /// 	}
     /// }
     /// 
@@ -2872,8 +2872,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldDownloadToLocal = $someBoolean
 		# OPTIONAL
-		locationId = $someString
-		# OPTIONAL
 		managedVolumeSlaExportConfig = @{
 			# REQUIRED
 			hostId = $someString
@@ -2884,9 +2882,9 @@ $query.Var.input = @{
 			# OPTIONAL
 			managedVolumeExportConfig = @{
 				# OPTIONAL
-				subnet = $someString
-				# OPTIONAL
 				shareType = $someManagedVolumeShareType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeShareType]) for enum values.
+				# OPTIONAL
+				subnet = $someString
 				# OPTIONAL
 				managedVolumePatchConfig = @{
 					# OPTIONAL
@@ -2915,6 +2913,8 @@ $query.Var.input = @{
 				}
 			}
 		}
+		# OPTIONAL
+		locationId = $someString
 	}
 }"
             );

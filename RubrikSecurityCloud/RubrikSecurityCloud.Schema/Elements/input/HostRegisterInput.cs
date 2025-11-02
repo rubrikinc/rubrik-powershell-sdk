@@ -24,6 +24,18 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasAgent")]
         public System.Boolean? HasAgent { get; set; }
 
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("hostname")]
+        public System.String? Hostname { get; set; }
+
+        //      C# -> NasConfigInput? NasConfig
+        // GraphQL -> nasConfig: NasConfigInput (input)
+        [JsonProperty("nasConfig")]
+        public NasConfigInput? NasConfig { get; set; }
+
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String (scalar)
         [JsonProperty("oracleQueryUser")]
@@ -44,10 +56,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("alias")]
         public System.String? Alias { get; set; }
 
+        //      C# -> HdfsConfigInput? HdfsConfig
+        // GraphQL -> hdfsConfig: HdfsConfigInput (input)
+        [JsonProperty("hdfsConfig")]
+        public HdfsConfigInput? HdfsConfig { get; set; }
+
         //      C# -> System.Boolean? IsOracleHost
         // GraphQL -> isOracleHost: Boolean (scalar)
         [JsonProperty("isOracleHost")]
         public System.Boolean? IsOracleHost { get; set; }
+
+        //      C# -> OracleSepsWalletSettingsInput? OracleSepsSettings
+        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettingsInput (input)
+        [JsonProperty("oracleSepsSettings")]
+        public OracleSepsWalletSettingsInput? OracleSepsSettings { get; set; }
 
         //      C# -> System.String? MssqlSddCertificateId
         // GraphQL -> mssqlSddCertificateId: String (scalar)
@@ -58,6 +80,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oracleSddWalletPath: String (scalar)
         [JsonProperty("oracleSddWalletPath")]
         public System.String? OracleSddWalletPath { get; set; }
+
+        //      C# -> SddUserCredentialsInput? OracleSddUserCredentials
+        // GraphQL -> oracleSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("oracleSddUserCredentials")]
+        public SddUserCredentialsInput? OracleSddUserCredentials { get; set; }
+
+        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
+        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
+        [JsonProperty("mssqlSddUserCredentials")]
+        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
+
+        //      C# -> HostRegisterOsType? OsType
+        // GraphQL -> osType: HostRegisterOsType (enum)
+        [JsonProperty("osType")]
+        public HostRegisterOsType? OsType { get; set; }
 
         //      C# -> System.Boolean? ShouldOracleSddThroughRba
         // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
@@ -73,43 +110,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
         [JsonProperty("shouldMssqlSddThroughRba")]
         public System.Boolean? ShouldMssqlSddThroughRba { get; set; }
-
-        //      C# -> HostRegisterOsType? OsType
-        // GraphQL -> osType: HostRegisterOsType (enum)
-        [JsonProperty("osType")]
-        public HostRegisterOsType? OsType { get; set; }
-
-        //      C# -> HdfsConfigInput? HdfsConfig
-        // GraphQL -> hdfsConfig: HdfsConfigInput (input)
-        [JsonProperty("hdfsConfig")]
-        public HdfsConfigInput? HdfsConfig { get; set; }
-
-        //      C# -> System.String? Hostname
-        // GraphQL -> hostname: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("hostname")]
-        public System.String? Hostname { get; set; }
-
-        //      C# -> SddUserCredentialsInput? MssqlSddUserCredentials
-        // GraphQL -> mssqlSddUserCredentials: SddUserCredentialsInput (input)
-        [JsonProperty("mssqlSddUserCredentials")]
-        public SddUserCredentialsInput? MssqlSddUserCredentials { get; set; }
-
-        //      C# -> NasConfigInput? NasConfig
-        // GraphQL -> nasConfig: NasConfigInput (input)
-        [JsonProperty("nasConfig")]
-        public NasConfigInput? NasConfig { get; set; }
-
-        //      C# -> SddUserCredentialsInput? OracleSddUserCredentials
-        // GraphQL -> oracleSddUserCredentials: SddUserCredentialsInput (input)
-        [JsonProperty("oracleSddUserCredentials")]
-        public SddUserCredentialsInput? OracleSddUserCredentials { get; set; }
-
-        //      C# -> OracleSepsWalletSettingsInput? OracleSepsSettings
-        // GraphQL -> oracleSepsSettings: OracleSepsWalletSettingsInput (input)
-        [JsonProperty("oracleSepsSettings")]
-        public OracleSepsWalletSettingsInput? OracleSepsSettings { get; set; }
 
 
         #endregion

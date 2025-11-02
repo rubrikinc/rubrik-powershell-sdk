@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? NodeName
-        // GraphQL -> nodeName: String (scalar)
-        [JsonProperty("nodeName")]
-        public System.String? NodeName { get; set; }
-
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("order")]
         public System.Int32? Order { get; set; }
+
+        //      C# -> System.String? NodeName
+        // GraphQL -> nodeName: String (scalar)
+        [JsonProperty("nodeName")]
+        public System.String? NodeName { get; set; }
 
 
         #endregion

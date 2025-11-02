@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? HasSmbSupport
+        // GraphQL -> hasSmbSupport: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("hasSmbSupport")]
+        public System.Boolean? HasSmbSupport { get; set; }
+
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
         [JsonProperty("apiCertificate")]
@@ -29,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("certificateId")]
         public System.String? CertificateId { get; set; }
 
+        //      C# -> GenericNasSystemCredentialsInput? SmbCredentials
+        // GraphQL -> smbCredentials: GenericNasSystemCredentialsInput (input)
+        [JsonProperty("smbCredentials")]
+        public GenericNasSystemCredentialsInput? SmbCredentials { get; set; }
+
         //      C# -> System.String? ApiPassword
         // GraphQL -> apiPassword: String (scalar)
         [JsonProperty("apiPassword")]
@@ -38,18 +50,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> apiUsername: String (scalar)
         [JsonProperty("apiUsername")]
         public System.String? ApiUsername { get; set; }
-
-        //      C# -> System.Boolean? HasSmbSupport
-        // GraphQL -> hasSmbSupport: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("hasSmbSupport")]
-        public System.Boolean? HasSmbSupport { get; set; }
-
-        //      C# -> GenericNasSystemCredentialsInput? SmbCredentials
-        // GraphQL -> smbCredentials: GenericNasSystemCredentialsInput (input)
-        [JsonProperty("smbCredentials")]
-        public GenericNasSystemCredentialsInput? SmbCredentials { get; set; }
 
 
         #endregion

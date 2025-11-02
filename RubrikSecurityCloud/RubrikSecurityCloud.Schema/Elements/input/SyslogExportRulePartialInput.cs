@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enableTls")]
         public System.Boolean? EnableTls { get; set; }
 
+        //      C# -> SyslogFacility? Facility
+        // GraphQL -> facility: SyslogFacility (enum)
+        [JsonProperty("facility")]
+        public SyslogFacility? Facility { get; set; }
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         [JsonProperty("hostname")]
@@ -34,16 +39,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("port")]
         public System.Int32? Port { get; set; }
 
-        //      C# -> System.String? CertificateId
-        // GraphQL -> certificateId: String (scalar)
-        [JsonProperty("certificateId")]
-        public System.String? CertificateId { get; set; }
-
-        //      C# -> SyslogFacility? Facility
-        // GraphQL -> facility: SyslogFacility (enum)
-        [JsonProperty("facility")]
-        public SyslogFacility? Facility { get; set; }
-
         //      C# -> TransportLayerProtocol? Protocol
         // GraphQL -> protocol: TransportLayerProtocol (enum)
         [JsonProperty("protocol")]
@@ -53,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> severity: SyslogSeverity (enum)
         [JsonProperty("severity")]
         public SyslogSeverity? Severity { get; set; }
+
+        //      C# -> System.String? CertificateId
+        // GraphQL -> certificateId: String (scalar)
+        [JsonProperty("certificateId")]
+        public System.String? CertificateId { get; set; }
 
 
         #endregion

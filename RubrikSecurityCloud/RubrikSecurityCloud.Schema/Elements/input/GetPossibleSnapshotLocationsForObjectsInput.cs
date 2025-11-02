@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectIds")]
         public List<System.String>? ObjectIds { get; set; }
 
+        //      C# -> Pagination? Pagination
+        // GraphQL -> pagination: Pagination (input)
+        [JsonProperty("pagination")]
+        public Pagination? Pagination { get; set; }
+
 
         #endregion
 

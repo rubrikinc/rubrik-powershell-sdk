@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tag")]
         public TagRuleTag? Tag { get; set; }
 
+        //      C# -> CloudNativeTagConditionOutput? TagConditions
+        // GraphQL -> tagConditions: CloudNativeTagConditionOutput (type)
+        [JsonProperty("tagConditions")]
+        public CloudNativeTagConditionOutput? TagConditions { get; set; }
+
 
         #endregion
 
@@ -83,7 +88,8 @@ namespace RubrikSecurityCloud.Types
         List<CloudNativeAccountIdWithName>? CloudNativeAccounts = null,
         TagRuleEffectiveSla? EffectiveSla = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
-        TagRuleTag? Tag = null
+        TagRuleTag? Tag = null,
+        CloudNativeTagConditionOutput? TagConditions = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Tag != null ) {
             this.Tag = Tag;
+        }
+        if ( TagConditions != null ) {
+            this.TagConditions = TagConditions;
         }
         return this;
     }
@@ -217,6 +226,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "tag" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudNativeTagConditionOutput? TagConditions
+        // GraphQL -> tagConditions: CloudNativeTagConditionOutput (type)
+        if (this.TagConditions != null) {
+            var fspec = this.TagConditions.AsFieldSpec(conf.Child("tagConditions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tagConditions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -387,6 +408,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Tag != null && ec.Excludes("tag",false))
         {
             this.Tag = null;
+        }
+        //      C# -> CloudNativeTagConditionOutput? TagConditions
+        // GraphQL -> tagConditions: CloudNativeTagConditionOutput (type)
+        if (ec.Includes("tagConditions",false))
+        {
+            if(this.TagConditions == null) {
+
+                this.TagConditions = new CloudNativeTagConditionOutput();
+                this.TagConditions.ApplyExploratoryFieldSpec(ec.NewChild("tagConditions"));
+
+            } else {
+
+                this.TagConditions.ApplyExploratoryFieldSpec(ec.NewChild("tagConditions"));
+
+            }
+        }
+        else if (this.TagConditions != null && ec.Excludes("tagConditions",false))
+        {
+            this.TagConditions = null;
         }
     }
 

@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MssqlLogShippingUpdateInput? Config
-        // GraphQL -> config: MssqlLogShippingUpdateInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public MssqlLogShippingUpdateInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> MssqlLogShippingUpdateInput? Config
+        // GraphQL -> config: MssqlLogShippingUpdateInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public MssqlLogShippingUpdateInput? Config { get; set; }
 
 
         #endregion

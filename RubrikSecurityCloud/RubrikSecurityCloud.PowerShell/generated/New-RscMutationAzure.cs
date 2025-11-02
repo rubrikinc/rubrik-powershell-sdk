@@ -223,7 +223,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# REQUIRED
     /// 				locationId = $someString
-    /// 				# REQUIRED
+    /// 				# OPTIONAL
     /// 				name = $someString
     /// 			}
     /// 		)
@@ -3475,7 +3475,7 @@ $query.Var.input = @{
 			@{
 				# REQUIRED
 				locationId = $someString
-				# REQUIRED
+				# OPTIONAL
 				name = $someString
 			}
 		)

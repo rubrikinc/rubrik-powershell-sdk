@@ -91,10 +91,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	sourceType = $someV2BulkDeleteMosaicSourcesRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	sourceData = @{
     /// 		# OPTIONAL
@@ -104,6 +100,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	sourceType = $someV2BulkDeleteMosaicSourcesRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -134,8 +134,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	sourceData = @{
     /// 		# OPTIONAL
     /// 		async = $someBoolean
@@ -173,6 +171,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceDriverUser = $someString
     /// 		# OPTIONAL
     /// 		sourceHttpsPort = $someString
+    /// 		# REQUIRED
+    /// 		sourceIp = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
     /// 		# OPTIONAL
     /// 		sourcePassword = $someString
     /// 		# OPTIONAL
@@ -181,25 +185,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceRpcPort = $someString
     /// 		# OPTIONAL
     /// 		sourceSshPort = $someString
+    /// 		# REQUIRED
+    /// 		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
     /// 		# OPTIONAL
     /// 		sourceUser = $someString
     /// 		# OPTIONAL
     /// 		sslCaCerts = $someString
     /// 		# OPTIONAL
+    /// 		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+    /// 		# OPTIONAL
     /// 		sslCertfile = $someString
     /// 		# OPTIONAL
     /// 		sslKeyfile = $someString
-    /// 		# REQUIRED
-    /// 		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
-    /// 		# REQUIRED
-    /// 		sourceIp = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -229,12 +229,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	sourceName = $someString
+    /// 	# OPTIONAL
+    /// 	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -265,27 +265,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	recoveryData = @{
-    /// 		# OPTIONAL
-    /// 		destinationSourceName = $someString
-    /// 		# OPTIONAL
-    /// 		keyspaceConfig = $someString
-    /// 		# OPTIONAL
-    /// 		maxDiskUsage = $someString
-    /// 		# OPTIONAL
-    /// 		restoreDbUserPwd = $someString
-    /// 		# OPTIONAL
-    /// 		restoreDbUsername = $someString
-    /// 		# OPTIONAL
-    /// 		startTimestamp = $someInt
-    /// 		# OPTIONAL
-    /// 		targetEncryptionKey = $someString
-    /// 		# OPTIONAL
-    /// 		targetQuery = $someString
-    /// 		# OPTIONAL
-    /// 		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
     /// 		# OPTIONAL
     /// 		destinationManagementObjects = @{
     /// 			# OPTIONAL
@@ -302,6 +282,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# REQUIRED
     /// 		destinationPath = $someString
+    /// 		# OPTIONAL
+    /// 		destinationSourceName = $someString
+    /// 		# OPTIONAL
+    /// 		keyspaceConfig = $someString
     /// 		# REQUIRED
     /// 		managementObjects = @{
     /// 			# OPTIONAL
@@ -316,13 +300,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 		}
+    /// 		# OPTIONAL
+    /// 		maxDiskUsage = $someString
     /// 		# REQUIRED
     /// 		parameterEncoded = $someBoolean
+    /// 		# OPTIONAL
+    /// 		restoreDbUserPwd = $someString
+    /// 		# OPTIONAL
+    /// 		restoreDbUsername = $someString
     /// 		# REQUIRED
     /// 		sourceName = $someString
+    /// 		# OPTIONAL
+    /// 		startTimestamp = $someInt
+    /// 		# OPTIONAL
+    /// 		targetEncryptionKey = $someString
+    /// 		# OPTIONAL
+    /// 		targetQuery = $someString
     /// 		# REQUIRED
     /// 		versionTime = $someInt
+    /// 		# OPTIONAL
+    /// 		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -352,8 +352,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	sourceData = @{
     /// 		# OPTIONAL
@@ -392,6 +390,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceDriverUser = $someString
     /// 		# OPTIONAL
     /// 		sourceHttpsPort = $someString
+    /// 		# REQUIRED
+    /// 		sourceIp = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		sourceName = $someString
     /// 		# OPTIONAL
     /// 		sourcePassword = $someString
     /// 		# OPTIONAL
@@ -400,25 +404,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceRpcPort = $someString
     /// 		# OPTIONAL
     /// 		sourceSshPort = $someString
+    /// 		# REQUIRED
+    /// 		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
     /// 		# OPTIONAL
     /// 		sourceUser = $someString
     /// 		# OPTIONAL
     /// 		sslCaCerts = $someString
     /// 		# OPTIONAL
+    /// 		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+    /// 		# OPTIONAL
     /// 		sslCertfile = $someString
     /// 		# OPTIONAL
     /// 		sslKeyfile = $someString
-    /// 		# REQUIRED
-    /// 		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
-    /// 		# REQUIRED
-    /// 		sourceIp = @(
-    /// 			$someString
-    /// 		)
-    /// 		# REQUIRED
-    /// 		sourceName = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -557,10 +557,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.BulkDeleteCassandraSourcesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	sourceType = $someV2BulkDeleteMosaicSourcesRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
 	# REQUIRED
 	sourceData = @{
 		# OPTIONAL
@@ -570,6 +566,10 @@ $query.Var.input = @{
 			$someString
 		)
 	}
+	# REQUIRED
+	clusterUuid = $someString
+	# OPTIONAL
+	sourceType = $someV2BulkDeleteMosaicSourcesRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2BulkDeleteMosaicSourcesRequestSourceType]) for enum values.
 }"
             );
         }
@@ -592,8 +592,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	sourceData = @{
 		# OPTIONAL
 		async = $someBoolean
@@ -631,6 +629,12 @@ $query.Var.input = @{
 		sourceDriverUser = $someString
 		# OPTIONAL
 		sourceHttpsPort = $someString
+		# REQUIRED
+		sourceIp = @(
+			$someString
+		)
+		# REQUIRED
+		sourceName = $someString
 		# OPTIONAL
 		sourcePassword = $someString
 		# OPTIONAL
@@ -639,25 +643,21 @@ $query.Var.input = @{
 		sourceRpcPort = $someString
 		# OPTIONAL
 		sourceSshPort = $someString
+		# REQUIRED
+		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
 		# OPTIONAL
 		sourceUser = $someString
 		# OPTIONAL
 		sslCaCerts = $someString
 		# OPTIONAL
+		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# OPTIONAL
 		sslCertfile = $someString
 		# OPTIONAL
 		sslKeyfile = $someString
-		# REQUIRED
-		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
-		# OPTIONAL
-		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
-		# REQUIRED
-		sourceIp = @(
-			$someString
-		)
-		# REQUIRED
-		sourceName = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -679,12 +679,12 @@ $query.Var.input = @{
                 Mutation.DeleteCassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
 	# REQUIRED
 	clusterUuid = $someString
 	# REQUIRED
 	sourceName = $someString
+	# OPTIONAL
+	sourceType = $someV2DeleteMosaicSourceRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V2DeleteMosaicSourceRequestSourceType]) for enum values.
 }"
             );
         }
@@ -707,27 +707,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	recoveryData = @{
-		# OPTIONAL
-		destinationSourceName = $someString
-		# OPTIONAL
-		keyspaceConfig = $someString
-		# OPTIONAL
-		maxDiskUsage = $someString
-		# OPTIONAL
-		restoreDbUserPwd = $someString
-		# OPTIONAL
-		restoreDbUsername = $someString
-		# OPTIONAL
-		startTimestamp = $someInt
-		# OPTIONAL
-		targetEncryptionKey = $someString
-		# OPTIONAL
-		targetQuery = $someString
-		# OPTIONAL
-		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
 		# OPTIONAL
 		destinationManagementObjects = @{
 			# OPTIONAL
@@ -744,6 +724,10 @@ $query.Var.input = @{
 		}
 		# REQUIRED
 		destinationPath = $someString
+		# OPTIONAL
+		destinationSourceName = $someString
+		# OPTIONAL
+		keyspaceConfig = $someString
 		# REQUIRED
 		managementObjects = @{
 			# OPTIONAL
@@ -758,13 +742,29 @@ $query.Var.input = @{
 				}
 			)
 		}
+		# OPTIONAL
+		maxDiskUsage = $someString
 		# REQUIRED
 		parameterEncoded = $someBoolean
+		# OPTIONAL
+		restoreDbUserPwd = $someString
+		# OPTIONAL
+		restoreDbUsername = $someString
 		# REQUIRED
 		sourceName = $someString
+		# OPTIONAL
+		startTimestamp = $someInt
+		# OPTIONAL
+		targetEncryptionKey = $someString
+		# OPTIONAL
+		targetQuery = $someString
 		# REQUIRED
 		versionTime = $someInt
+		# OPTIONAL
+		sourceType = $someMosaicRetrieveRequestSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MosaicRetrieveRequestSourceType]) for enum values.
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -786,8 +786,6 @@ $query.Var.input = @{
                 Mutation.UpdateCassandraSourceFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	clusterUuid = $someString
 	# REQUIRED
 	sourceData = @{
 		# OPTIONAL
@@ -826,6 +824,12 @@ $query.Var.input = @{
 		sourceDriverUser = $someString
 		# OPTIONAL
 		sourceHttpsPort = $someString
+		# REQUIRED
+		sourceIp = @(
+			$someString
+		)
+		# REQUIRED
+		sourceName = $someString
 		# OPTIONAL
 		sourcePassword = $someString
 		# OPTIONAL
@@ -834,25 +838,21 @@ $query.Var.input = @{
 		sourceRpcPort = $someString
 		# OPTIONAL
 		sourceSshPort = $someString
+		# REQUIRED
+		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
 		# OPTIONAL
 		sourceUser = $someString
 		# OPTIONAL
 		sslCaCerts = $someString
 		# OPTIONAL
+		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
+		# OPTIONAL
 		sslCertfile = $someString
 		# OPTIONAL
 		sslKeyfile = $someString
-		# REQUIRED
-		sourceType = $someSourceSourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSourceType]) for enum values.
-		# OPTIONAL
-		sslCertReqs = $someSourceSslCertReqs # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceSslCertReqs]) for enum values.
-		# REQUIRED
-		sourceIp = @(
-			$someString
-		)
-		# REQUIRED
-		sourceName = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

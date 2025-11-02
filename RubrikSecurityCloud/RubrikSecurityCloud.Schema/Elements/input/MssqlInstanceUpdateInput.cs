@@ -19,25 +19,25 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ConfiguredSlaDomainId
-        // GraphQL -> configuredSlaDomainId: String (scalar)
-        [JsonProperty("configuredSlaDomainId")]
-        public System.String? ConfiguredSlaDomainId { get; set; }
-
         //      C# -> MssqlNonSlaPropertiesInput? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaPropertiesInput (input)
         [JsonProperty("mssqlNonSlaProperties")]
         public MssqlNonSlaPropertiesInput? MssqlNonSlaProperties { get; set; }
+
+        //      C# -> MssqlSlaRelatedPropertiesInput? MssqlSlaRelatedProperties
+        // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput (input)
+        [JsonProperty("mssqlSlaRelatedProperties")]
+        public MssqlSlaRelatedPropertiesInput? MssqlSlaRelatedProperties { get; set; }
 
         //      C# -> MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties
         // GraphQL -> mssqlSlaPatchProperties: MssqlSlaPatchPropertiesInput (input)
         [JsonProperty("mssqlSlaPatchProperties")]
         public MssqlSlaPatchPropertiesInput? MssqlSlaPatchProperties { get; set; }
 
-        //      C# -> MssqlSlaRelatedPropertiesInput? MssqlSlaRelatedProperties
-        // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput (input)
-        [JsonProperty("mssqlSlaRelatedProperties")]
-        public MssqlSlaRelatedPropertiesInput? MssqlSlaRelatedProperties { get; set; }
+        //      C# -> System.String? ConfiguredSlaDomainId
+        // GraphQL -> configuredSlaDomainId: String (scalar)
+        [JsonProperty("configuredSlaDomainId")]
+        public System.String? ConfiguredSlaDomainId { get; set; }
 
 
         #endregion

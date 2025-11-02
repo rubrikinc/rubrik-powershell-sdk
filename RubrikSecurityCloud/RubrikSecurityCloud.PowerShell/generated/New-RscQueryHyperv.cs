@@ -365,6 +365,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	effectiveSlaDomainId = $someString
     /// 	# OPTIONAL
@@ -381,8 +383,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	sortBy = $someInternalQueryHypervHostRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortBy]) for enum values.
     /// 	# OPTIONAL
     /// 	sortOrder = $someInternalQueryHypervHostRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortOrder]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -697,10 +697,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	shouldRetrieveConfigFiles = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldRetrieveConfigFiles = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1325,6 +1325,8 @@ $query.Var.fid = $someString"
                 Query.HypervServersFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	effectiveSlaDomainId = $someString
 	# OPTIONAL
@@ -1341,8 +1343,6 @@ $query.Var.input = @{
 	sortBy = $someInternalQueryHypervHostRequestSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortBy]) for enum values.
 	# OPTIONAL
 	sortOrder = $someInternalQueryHypervHostRequestSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InternalQueryHypervHostRequestSortOrder]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }
@@ -1631,10 +1631,10 @@ $query.Var.input = @{
                 Query.HypervVirtualMachineLevelFileInfoFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	shouldRetrieveConfigFiles = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	shouldRetrieveConfigFiles = $someBoolean
 }"
             );
         }

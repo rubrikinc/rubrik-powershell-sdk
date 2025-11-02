@@ -91,12 +91,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	ids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -126,12 +126,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	ids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -162,8 +162,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
@@ -174,6 +172,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -208,9 +208,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
     /// 		# REQUIRED
-    /// 		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
-    /// 		# REQUIRED
     /// 		failoverClusterAppSource = @{
+    /// 			# OPTIONAL
+    /// 			nodeOrders = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					nodeId = $someString
+    /// 					# REQUIRED
+    /// 					order = $someInt
+    /// 					# OPTIONAL
+    /// 					nodeName = $someString
+    /// 				}
+    /// 			)
     /// 			# OPTIONAL
     /// 			virtualIps = @(
     /// 				$someString
@@ -219,20 +228,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			vips = @(
     /// 				$someString
     /// 			)
-    /// 			# OPTIONAL
-    /// 			nodeOrders = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					nodeName = $someString
-    /// 					# REQUIRED
-    /// 					nodeId = $someString
-    /// 					# REQUIRED
-    /// 					order = $someInt
-    /// 				}
-    /// 			)
     /// 		}
     /// 		# REQUIRED
     /// 		failoverClusterId = $someString
+    /// 		# REQUIRED
+    /// 		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
     /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
@@ -265,10 +265,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -298,10 +298,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	preserveSnapshots = $someBoolean
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	preserveSnapshots = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -332,8 +332,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	updateProperties = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
@@ -344,6 +342,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -374,15 +374,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	updateProperties = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
     /// 		# REQUIRED
-    /// 		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
-    /// 		# REQUIRED
     /// 		failoverClusterAppSource = @{
+    /// 			# OPTIONAL
+    /// 			nodeOrders = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					nodeId = $someString
+    /// 					# REQUIRED
+    /// 					order = $someInt
+    /// 					# OPTIONAL
+    /// 					nodeName = $someString
+    /// 				}
+    /// 			)
     /// 			# OPTIONAL
     /// 			virtualIps = @(
     /// 				$someString
@@ -391,23 +398,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			vips = @(
     /// 				$someString
     /// 			)
-    /// 			# OPTIONAL
-    /// 			nodeOrders = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					nodeName = $someString
-    /// 					# REQUIRED
-    /// 					nodeId = $someString
-    /// 					# REQUIRED
-    /// 					order = $someInt
-    /// 				}
-    /// 			)
     /// 		}
     /// 		# REQUIRED
     /// 		failoverClusterId = $someString
     /// 		# REQUIRED
+    /// 		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
+    /// 		# REQUIRED
     /// 		name = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -585,12 +585,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.BulkDeleteFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	ids = @(
 		$someString
 	)
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
 }"
             );
         }
@@ -612,12 +612,12 @@ $query.Var.input = @{
                 Mutation.BulkDeleteFailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	ids = @(
 		$someString
 	)
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
 }"
             );
         }
@@ -640,8 +640,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	config = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
@@ -652,6 +650,8 @@ $query.Var.input = @{
 		# REQUIRED
 		name = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -678,9 +678,18 @@ $query.Var.input = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
 		# REQUIRED
-		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
-		# REQUIRED
 		failoverClusterAppSource = @{
+			# OPTIONAL
+			nodeOrders = @(
+				@{
+					# REQUIRED
+					nodeId = $someString
+					# REQUIRED
+					order = $someInt
+					# OPTIONAL
+					nodeName = $someString
+				}
+			)
 			# OPTIONAL
 			virtualIps = @(
 				$someString
@@ -689,20 +698,11 @@ $query.Var.input = @{
 			vips = @(
 				$someString
 			)
-			# OPTIONAL
-			nodeOrders = @(
-				@{
-					# OPTIONAL
-					nodeName = $someString
-					# REQUIRED
-					nodeId = $someString
-					# REQUIRED
-					order = $someInt
-				}
-			)
 		}
 		# REQUIRED
 		failoverClusterId = $someString
+		# REQUIRED
+		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
 		# REQUIRED
 		name = $someString
 	}
@@ -727,10 +727,10 @@ $query.Var.input = @{
                 Mutation.DeleteFailoverClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
 }"
             );
         }
@@ -752,10 +752,10 @@ $query.Var.input = @{
                 Mutation.DeleteFailoverClusterAppFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	preserveSnapshots = $someBoolean
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	preserveSnapshots = $someBoolean
 }"
             );
         }
@@ -778,8 +778,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	updateProperties = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
@@ -790,6 +788,8 @@ $query.Var.input = @{
 		# REQUIRED
 		name = $someString
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -812,15 +812,22 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	updateProperties = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
 		# REQUIRED
-		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
-		# REQUIRED
 		failoverClusterAppSource = @{
+			# OPTIONAL
+			nodeOrders = @(
+				@{
+					# REQUIRED
+					nodeId = $someString
+					# REQUIRED
+					order = $someInt
+					# OPTIONAL
+					nodeName = $someString
+				}
+			)
 			# OPTIONAL
 			virtualIps = @(
 				$someString
@@ -829,23 +836,16 @@ $query.Var.input = @{
 			vips = @(
 				$someString
 			)
-			# OPTIONAL
-			nodeOrders = @(
-				@{
-					# OPTIONAL
-					nodeName = $someString
-					# REQUIRED
-					nodeId = $someString
-					# REQUIRED
-					order = $someInt
-				}
-			)
 		}
 		# REQUIRED
 		failoverClusterId = $someString
 		# REQUIRED
+		failoverClusterType = $someFailoverClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverClusterType]) for enum values.
+		# REQUIRED
 		name = $someString
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

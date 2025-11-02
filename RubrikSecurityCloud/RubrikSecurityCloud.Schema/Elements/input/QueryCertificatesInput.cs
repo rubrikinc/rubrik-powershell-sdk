@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         [JsonProperty("description")]
@@ -49,21 +56,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> System.Boolean? IsInternal
-        // GraphQL -> isInternal: Boolean (scalar)
-        [JsonProperty("isInternal")]
-        public System.Boolean? IsInternal { get; set; }
-
-        //      C# -> System.String? PemFile
-        // GraphQL -> pemFile: String (scalar)
-        [JsonProperty("pemFile")]
-        public System.String? PemFile { get; set; }
-
-        //      C# -> List<ExcludeUsages>? ExcludeUsages
-        // GraphQL -> excludeUsages: [ExcludeUsages!] (enum)
-        [JsonProperty("excludeUsages")]
-        public List<ExcludeUsages>? ExcludeUsages { get; set; }
-
         //      C# -> V1QueryCertificatesRequestSortBy? SortBy
         // GraphQL -> sortBy: V1QueryCertificatesRequestSortBy (enum)
         [JsonProperty("sortBy")]
@@ -74,12 +66,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sortOrder")]
         public V1QueryCertificatesRequestSortOrder? SortOrder { get; set; }
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
+        //      C# -> List<ExcludeUsages>? ExcludeUsages
+        // GraphQL -> excludeUsages: [ExcludeUsages!] (enum)
+        [JsonProperty("excludeUsages")]
+        public List<ExcludeUsages>? ExcludeUsages { get; set; }
+
+        //      C# -> System.Boolean? IsInternal
+        // GraphQL -> isInternal: Boolean (scalar)
+        [JsonProperty("isInternal")]
+        public System.Boolean? IsInternal { get; set; }
+
+        //      C# -> System.String? PemFile
+        // GraphQL -> pemFile: String (scalar)
+        [JsonProperty("pemFile")]
+        public System.String? PemFile { get; set; }
 
 
         #endregion

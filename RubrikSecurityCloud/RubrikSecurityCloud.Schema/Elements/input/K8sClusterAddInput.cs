@@ -24,6 +24,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
         //      C# -> System.String? Kubeconfig
         // GraphQL -> kubeconfig: String (scalar)
         [JsonProperty("kubeconfig")]
@@ -39,10 +46,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountName")]
         public System.String? ServiceAccountName { get; set; }
 
+        //      C# -> EksConfigInput? EksConfig
+        // GraphQL -> eksConfig: EksConfigInput (input)
+        [JsonProperty("eksConfig")]
+        public EksConfigInput? EksConfig { get; set; }
+
         //      C# -> System.String? Distribution
         // GraphQL -> distribution: String (scalar)
         [JsonProperty("distribution")]
         public System.String? Distribution { get; set; }
+
+        //      C# -> KuprServerProxyConfigInput? KuprServerProxyConfig
+        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfigInput (input)
+        [JsonProperty("kuprServerProxyConfig")]
+        public KuprServerProxyConfigInput? KuprServerProxyConfig { get; set; }
 
         //      C# -> System.String? PullSecret
         // GraphQL -> pullSecret: String (scalar)
@@ -93,23 +110,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> clientId: String (scalar)
         [JsonProperty("clientId")]
         public System.String? ClientId { get; set; }
-
-        //      C# -> EksConfigInput? EksConfig
-        // GraphQL -> eksConfig: EksConfigInput (input)
-        [JsonProperty("eksConfig")]
-        public EksConfigInput? EksConfig { get; set; }
-
-        //      C# -> KuprServerProxyConfigInput? KuprServerProxyConfig
-        // GraphQL -> kuprServerProxyConfig: KuprServerProxyConfigInput (input)
-        [JsonProperty("kuprServerProxyConfig")]
-        public KuprServerProxyConfigInput? KuprServerProxyConfig { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("name")]
-        public System.String? Name { get; set; }
 
 
         #endregion

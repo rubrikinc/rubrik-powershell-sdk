@@ -2,4 +2,3 @@
 Reply Object for BatchMountNutanixVm.
 
 - output: NutanixBatchAsyncApiResponse
-  - 

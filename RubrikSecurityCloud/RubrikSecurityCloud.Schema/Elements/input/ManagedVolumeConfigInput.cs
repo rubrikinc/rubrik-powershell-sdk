@@ -19,30 +19,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? NumChannels
-        // GraphQL -> numChannels: Int (scalar)
-        [JsonProperty("numChannels")]
-        public System.Int32? NumChannels { get; set; }
-
-        //      C# -> System.String? Subnet
-        // GraphQL -> subnet: String (scalar)
-        [JsonProperty("subnet")]
-        public System.String? Subnet { get; set; }
-
         //      C# -> ManagedVolumeApplicationTag? ApplicationTag
         // GraphQL -> applicationTag: ManagedVolumeApplicationTag (enum)
         [JsonProperty("applicationTag")]
         public ManagedVolumeApplicationTag? ApplicationTag { get; set; }
-
-        //      C# -> ManagedVolumeFilesystemType? FilesystemType
-        // GraphQL -> filesystemType: ManagedVolumeFilesystemType (enum)
-        [JsonProperty("filesystemType")]
-        public ManagedVolumeFilesystemType? FilesystemType { get; set; }
-
-        //      C# -> CdmManagedVolumeType? MvType
-        // GraphQL -> mvType: CdmManagedVolumeType (enum)
-        [JsonProperty("mvType")]
-        public CdmManagedVolumeType? MvType { get; set; }
 
         //      C# -> ManagedVolumeExportConfigInput? ExportConfig
         // GraphQL -> exportConfig: ManagedVolumeExportConfigInput! (input)
@@ -58,10 +38,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> SlaManagedVolumeClientConfigInput? SlaClientConfig
-        // GraphQL -> slaClientConfig: SlaManagedVolumeClientConfigInput (input)
-        [JsonProperty("slaClientConfig")]
-        public SlaManagedVolumeClientConfigInput? SlaClientConfig { get; set; }
+        //      C# -> System.Int32? NumChannels
+        // GraphQL -> numChannels: Int (scalar)
+        [JsonProperty("numChannels")]
+        public System.Int32? NumChannels { get; set; }
+
+        //      C# -> System.String? Subnet
+        // GraphQL -> subnet: String (scalar)
+        [JsonProperty("subnet")]
+        public System.String? Subnet { get; set; }
 
         //      C# -> System.Int64? VolumeSize
         // GraphQL -> volumeSize: Long! (scalar)
@@ -69,6 +54,21 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("volumeSize")]
         public System.Int64? VolumeSize { get; set; }
+
+        //      C# -> CdmManagedVolumeType? MvType
+        // GraphQL -> mvType: CdmManagedVolumeType (enum)
+        [JsonProperty("mvType")]
+        public CdmManagedVolumeType? MvType { get; set; }
+
+        //      C# -> SlaManagedVolumeClientConfigInput? SlaClientConfig
+        // GraphQL -> slaClientConfig: SlaManagedVolumeClientConfigInput (input)
+        [JsonProperty("slaClientConfig")]
+        public SlaManagedVolumeClientConfigInput? SlaClientConfig { get; set; }
+
+        //      C# -> ManagedVolumeFilesystemType? FilesystemType
+        // GraphQL -> filesystemType: ManagedVolumeFilesystemType (enum)
+        [JsonProperty("filesystemType")]
+        public ManagedVolumeFilesystemType? FilesystemType { get; set; }
 
 
         #endregion

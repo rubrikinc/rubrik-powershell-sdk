@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
-
         //      C# -> System.String? EksClusterArn
         // GraphQL -> eksClusterArn: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("eksClusterArn")]
         public System.String? EksClusterArn { get; set; }
+
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
 
 
         #endregion

@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> K8sRegenerateManifestConfigInput? Config
-        // GraphQL -> config: K8sRegenerateManifestConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public K8sRegenerateManifestConfigInput? Config { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> K8sRegenerateManifestConfigInput? Config
+        // GraphQL -> config: K8sRegenerateManifestConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public K8sRegenerateManifestConfigInput? Config { get; set; }
 
 
         #endregion

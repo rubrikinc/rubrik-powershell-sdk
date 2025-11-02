@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> OracleRecoveryPointInput? RecoveryPoint
+        // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("recoveryPoint")]
+        public OracleRecoveryPointInput? RecoveryPoint { get; set; }
+
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int (scalar)
         [JsonProperty("numChannels")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldSkipDropDbInUndo: Boolean (scalar)
         [JsonProperty("shouldSkipDropDbInUndo")]
         public System.Boolean? ShouldSkipDropDbInUndo { get; set; }
-
-        //      C# -> OracleRecoveryPointInput? RecoveryPoint
-        // GraphQL -> recoveryPoint: OracleRecoveryPointInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("recoveryPoint")]
-        public OracleRecoveryPointInput? RecoveryPoint { get; set; }
 
 
         #endregion

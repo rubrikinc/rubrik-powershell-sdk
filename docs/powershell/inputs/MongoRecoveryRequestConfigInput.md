@@ -3,50 +3,50 @@ Configuration for recovering MongoDB databases or collections from source to tar
 
 - prefix: System.String
   - Supported in v9.0+
-      Prefix for the restored collections.
+Prefix for the restored collections.
 - restoreDbPassword: System.String
   - Supported in v9.0+
-      Password of the target MongoDB source.
+Password of the target MongoDB source.
 - restoreDbUsername: System.String
   - Supported in v9.0+
-      Username of the target MongoDB source.
+Username of the target MongoDB source.
 - shouldDropExistingCollection: System.Boolean
   - Specifies whether the collection can be dropped because it already exists on the target MongoDB cluster.
 - sourceCollectionIds: list of System.Strings
   - Supported in v9.0+
-      v9.0-v9.2: List of MongoDB collection objects.
-      v9.3+: Managed IDs of the MongoDB collection objects.
+v9.0-v9.2: List of MongoDB collection objects.
+v9.3+: Managed IDs of the MongoDB collection objects.
 - sourceDatabaseIds: list of System.Strings
   - Supported in v9.0+
-      v9.0-v9.2: List of MongoDB database objects.
-      v9.3+: Managed IDs of the MongoDB database objects.
-- targetCollectionName: System.String
-  - Supported in v9.0+
-      Name of the target collection for recovery.
-- targetDatabaseName: System.String
-  - Supported in v9.0+
-      Name of the target database for recovery.
-- versionTime: DateTime
-  - Required. Supported in v9.0+
-      Timestamp of the snapshot version to be used for restore.
-- restoreThrottleInBytesPerSecond: System.Int64
-  - Supported in v9.0+
-      Rate limit restore data ingestion on target MongoDB cluster.
-- isRestoreWithIndex: System.Boolean
-  - Supported in v9.0+
-      Boolean flag to restore MongoDB collections with index.
-- isRestoreFromCdm: System.Boolean
-  - Supported in v9.4+
-      Boolean flag to restore collections and databases by connecting directly to MongoDB from the Rubrik cluster.
-- targetAuthenticationType: MongoAuthenticationType
-  - Supported in v9.0+
-      v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
-      v9.1+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.
+v9.0-v9.2: List of MongoDB database objects.
+v9.3+: Managed IDs of the MongoDB database objects.
 - sourceMongoClusterId: System.String
   - Required. Supported in v9.0+
-      v9.0-v9.2: ID of the MongoDB source cluster.
-      v9.3+: Managed ID of the MongoDB source cluster.
+v9.0-v9.2: ID of the MongoDB source cluster.
+v9.3+: Managed ID of the MongoDB source cluster.
+- targetCollectionName: System.String
+  - Supported in v9.0+
+Name of the target collection for recovery.
+- targetDatabaseName: System.String
+  - Supported in v9.0+
+Name of the target database for recovery.
 - targetMongoClusterId: System.String
   - Required. Supported in v9.0+
-      v9.0-v9.2: ID of the MongoDB target cluster.
-      v9.3+: Managed ID of the MongoDB target cluster.
+v9.0-v9.2: ID of the MongoDB target cluster.
+v9.3+: Managed ID of the MongoDB target cluster.
+- versionTime: DateTime
+  - Required. Supported in v9.0+
+Timestamp of the snapshot version to be used for restore.
+- restoreThrottleInBytesPerSecond: System.Int64
+  - Supported in v9.0+
+Rate limit restore data ingestion on target MongoDB cluster.
+- isRestoreWithIndex: System.Boolean
+  - Supported in v9.0+
+Boolean flag to restore MongoDB collections with index.
+- isRestoreFromCdm: System.Boolean
+  - Supported in v9.4+
+Boolean flag to restore collections and databases by connecting directly to MongoDB from the Rubrik cluster.
+- targetAuthenticationType: MongoAuthenticationType
+  - Supported in v9.0+
+v9.0: Type of user authentication used when recovering to a target MongoDB cluster. If no specific option is provided, the authentication mechanism used for recovery in the target MongoDB cluster will be the one that was originally used when adding the target MongoDB cluster.
+v9.1+: Type of user authentication used when recovering to a target MongoDB cluster. If no option is provided, the one used during adding the target source will be used.

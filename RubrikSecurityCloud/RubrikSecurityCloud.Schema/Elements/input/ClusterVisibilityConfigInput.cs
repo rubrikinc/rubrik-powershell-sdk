@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsVmwareMetroStorageCluster
-        // GraphQL -> isVmwareMetroStorageCluster: Boolean (scalar)
-        [JsonProperty("isVmwareMetroStorageCluster")]
-        public System.Boolean? IsVmwareMetroStorageCluster { get; set; }
-
         //      C# -> List<System.String>? HostGroupFilter
         // GraphQL -> hostGroupFilter: [String!]! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsVmwareMetroStorageCluster
+        // GraphQL -> isVmwareMetroStorageCluster: Boolean (scalar)
+        [JsonProperty("isVmwareMetroStorageCluster")]
+        public System.Boolean? IsVmwareMetroStorageCluster { get; set; }
 
 
         #endregion

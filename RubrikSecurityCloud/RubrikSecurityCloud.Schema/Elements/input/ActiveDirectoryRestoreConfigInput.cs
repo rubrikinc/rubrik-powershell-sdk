@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? SnapshotForAuthoritativeRestore
-        // GraphQL -> snapshotForAuthoritativeRestore: String (scalar)
-        [JsonProperty("snapshotForAuthoritativeRestore")]
-        public System.String? SnapshotForAuthoritativeRestore { get; set; }
-
         //      C# -> List<DomainControllerRestoreConfigInput>? DomainControllerRestoreConfigs
         // GraphQL -> domainControllerRestoreConfigs: [DomainControllerRestoreConfigInput!]! (input)
         [Required]
@@ -44,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldPerformAuthoritativeSysvolRestore")]
         public System.Boolean? ShouldPerformAuthoritativeSysvolRestore { get; set; }
+
+        //      C# -> System.String? SnapshotForAuthoritativeRestore
+        // GraphQL -> snapshotForAuthoritativeRestore: String (scalar)
+        [JsonProperty("snapshotForAuthoritativeRestore")]
+        public System.String? SnapshotForAuthoritativeRestore { get; set; }
 
 
         #endregion

@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20251013-103" ;
+        public static string GraphqlSchemaVersion = "v20251027-55" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -831,6 +831,8 @@ namespace RubrikSecurityCloud.Types
             CloudNativeSnapshotTypeDetails,
             CloudNativeSnapshotTypeDetailsReply,
             CloudNativeSqlServerSetupScript,
+            CloudNativeTagConditionOutput,
+            CloudNativeTagPairOutput,
             CloudNativeTagRule,
             CloudNativeVersionedFile,
             CloudNativeVersionedFileConnection,
@@ -2019,8 +2021,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -2691,6 +2693,7 @@ namespace RubrikSecurityCloud.Types
             TimeSeriesResult,
             TimeStat,
             TotalRiskSummary,
+            TotalSnapshotsForCloudDirectObjectReply,
             TotpStatus,
             TprClusterRemovalDetails,
             TprConfiguration,
@@ -3157,7 +3160,6 @@ namespace RubrikSecurityCloud.Types
             ArchivalHealthCheckParamsInput,
             ArchivalLocationInfo,
             ArchivalLocationToClusterMappingInput,
-            ArchivalParameters,
             ArchivalPerObjectInfoFilterInput,
             ArchivalSpecInput,
             ArchivalTieringSpecInput,
@@ -3464,6 +3466,8 @@ namespace RubrikSecurityCloud.Types
             CloudNativeFilter,
             CloudNativeIds,
             CloudNativeInstaceAppProtectionFilter,
+            CloudNativeTagCondition,
+            CloudNativeTagPair,
             CloudSpecificRegionOneofInput,
             ClusterConfigInput,
             ClusterDiskFilterInput,
@@ -3656,6 +3660,7 @@ namespace RubrikSecurityCloud.Types
             DeleteIntelFeedInput,
             DeleteK8sClusterInput,
             DeleteK8sProtectionSetInput,
+            DeleteK8sVmMountInput,
             DeleteLogShippingInput,
             DeleteManagedVolumeInput,
             DeleteManagedVolumeSnapshotExportInput,
@@ -4113,6 +4118,7 @@ namespace RubrikSecurityCloud.Types
             K8sRestoreParametersInput,
             K8sSnapshotDownloadConfigInput,
             K8sVirtualMachineDiskFilter,
+            K8sVmMountParametersInput,
             KdcConfigInput,
             KmsCryptoKey,
             KmsSpecInput,
@@ -4379,7 +4385,6 @@ namespace RubrikSecurityCloud.Types
             OpenstackRestoreFilesConfigInput,
             OpenstackVmSnapshotDownloadConfigInput,
             OperationQuarantineSpec,
-            OptionalHealthChecks,
             OptionalHealthChecksInput,
             OracleBackupJobConfigInput,
             OracleBulkUpdateInput,
@@ -4405,6 +4410,7 @@ namespace RubrikSecurityCloud.Types
             OracleUpdateInput,
             OracleValidateConfigInput,
             OrgFilter,
+            Pagination,
             PamIntegrationConfigInput,
             PasskeyConfigInput,
             PasswordByUserId,
@@ -4477,12 +4483,16 @@ namespace RubrikSecurityCloud.Types
             RecoverCloudDirectMultiPathsInput,
             RecoverCloudDirectNasShareInput,
             RecoverCloudDirectPathInput,
+            RecoverDb2DatabaseToEndOfBackupInput,
+            RecoverDb2DatabaseToPointInTimeInput,
             RecoverMongoSourceInput,
             RecoverOpsManagerManagedMongoSourceInput,
             RecoverOracleDbConfigInput,
             RecoverSapHanaDatabaseToFullBackupInput,
             RecoverSapHanaDatabaseToPointInTimeInput,
+            RecoverToEndOfBackupDb2DbConfigInput,
             RecoverToFullBackupSapHanaDbConfigInput,
+            RecoverToPointInTimeDb2DbConfigInput,
             RecoverToPointInTimeSapHanaDbConfigInput,
             RefreshDb2DatabaseInput,
             RefreshDomainInput,
@@ -4710,6 +4720,7 @@ namespace RubrikSecurityCloud.Types
             StartExportAzureSqlManagedInstanceDbJobInput,
             StartExportRdsInstanceJobInput,
             StartK8sDiagnosticsJobInput,
+            StartK8sVmMountJobInput,
             StartRecoverS3SnapshotJobInput,
             StartRefreshAwsNativeAccountsJobInput,
             StartRefreshAzureNativeSubscriptionsJobInput,
@@ -4772,6 +4783,7 @@ namespace RubrikSecurityCloud.Types
             TimeRangeFilterJson,
             TimeRangeInput,
             TimeSpanFilter,
+            TotalSnapshotsForCloudDirectObjectReq,
             TprPolicyFilterInput,
             TprPolicyObjectInput,
             TprPolicyRuleInput,
@@ -5804,6 +5816,8 @@ namespace RubrikSecurityCloud.Types
             rcvAccountEntitlement,
             rcvAzureBliMigrationDetails,
             rdsInstanceDetailsFromAws,
+            recoverDb2DatabaseToEndOfBackup,
+            recoverDb2DatabaseToPointInTime,
             removedNodeDetails,
             replicationIncomingStats,
             replicationNetworkThrottleBypass,
@@ -5909,6 +5923,7 @@ namespace RubrikSecurityCloud.Types
             threatMonitoringMatchedObjects,
             threatMonitoringObjectEnablementStats,
             threatMonitoringObjects,
+            totalSnapshotsForCloudDirectObject,
             totpConfigStatus,
             tprConfiguration,
             tprPolicyDetail,
@@ -6297,6 +6312,7 @@ namespace RubrikSecurityCloud.Types
             deleteIntelFeed,
             deleteK8sCluster,
             deleteK8sProtectionSet,
+            deleteK8sVmMount,
             deleteLdapPrincipals,
             deleteLogShipping,
             deleteManagedVolume,
@@ -6668,6 +6684,7 @@ namespace RubrikSecurityCloud.Types
             startExportAzureSqlManagedInstanceDbJob,
             startExportRdsInstanceJob,
             startK8sDiagnosticsJob,
+            startK8sVmMountJob,
             startPeriodicUpgradePrechecksOnDemandJob,
             startRecoverS3SnapshotJob,
             startRefreshAwsNativeAccountsJob,
@@ -10347,6 +10364,7 @@ namespace RubrikSecurityCloud.Types
             deleteIntelFeed,
             deleteK8sCluster,
             deleteK8sProtectionSet,
+            deleteK8sVmMount,
             deleteLdapPrincipals,
             deleteLogShipping,
             deleteManagedVolume,
@@ -10938,6 +10956,8 @@ namespace RubrikSecurityCloud.Types
             recoverCloudDirectMultiPaths,
             recoverCloudDirectNasShare,
             recoverCloudDirectPath,
+            recoverDb2DatabaseToEndOfBackup,
+            recoverDb2DatabaseToPointInTime,
             recoverMongoSource,
             recoverMongodbSource,
             recoverOpsManagerManagedMongoSource,
@@ -11150,6 +11170,7 @@ namespace RubrikSecurityCloud.Types
             startExportAzureSqlManagedInstanceDbJob,
             startExportRdsInstanceJob,
             startK8sDiagnosticsJob,
+            startK8sVmMountJob,
             startPeriodicUpgradePrechecksOnDemandJob,
             startRecoverS3SnapshotJob,
             startRefreshAwsNativeAccountsJob,
@@ -11204,6 +11225,7 @@ namespace RubrikSecurityCloud.Types
             threatMonitoringMatchedObjects,
             threatMonitoringObjectEnablementStats,
             threatMonitoringObjects,
+            totalSnapshotsForCloudDirectObject,
             totpConfigStatus,
             tprConfiguration,
             tprPolicyDetail,
@@ -16793,6 +16815,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.deleteK8sVmMount,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "DeleteVmMount",
+                        gqlRootFieldName: "deleteK8sVmMount"
+                    )
+                },
+                {
                     GqlRootFieldName.deleteLdapPrincipals,
                     new RscOp(
                         cmdletName: "New-RscMutationLdap",
@@ -21521,6 +21551,22 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.recoverDb2DatabaseToEndOfBackup,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "RecoverDatabaseToEndOfBackup",
+                        gqlRootFieldName: "recoverDb2DatabaseToEndOfBackup"
+                    )
+                },
+                {
+                    GqlRootFieldName.recoverDb2DatabaseToPointInTime,
+                    new RscOp(
+                        cmdletName: "New-RscQueryDb2",
+                        cmdletSwitchName: "RecoverDatabaseToPointInTime",
+                        gqlRootFieldName: "recoverDb2DatabaseToPointInTime"
+                    )
+                },
+                {
                     GqlRootFieldName.recoverMongoSource,
                     new RscOp(
                         cmdletName: "New-RscMutationMongo",
@@ -23217,6 +23263,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.startK8sVmMountJob,
+                    new RscOp(
+                        cmdletName: "New-RscMutationK8s",
+                        cmdletSwitchName: "StartVmMountJob",
+                        gqlRootFieldName: "startK8sVmMountJob"
+                    )
+                },
+                {
                     GqlRootFieldName.startPeriodicUpgradePrechecksOnDemandJob,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -23646,6 +23700,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryThreat",
                         cmdletSwitchName: "MonitoringObjects",
                         gqlRootFieldName: "threatMonitoringObjects"
+                    )
+                },
+                {
+                    GqlRootFieldName.totalSnapshotsForCloudDirectObject,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "TotalCloudDirectObject",
+                        gqlRootFieldName: "totalSnapshotsForCloudDirectObject"
                     )
                 },
                 {
@@ -28660,6 +28722,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.deleteK8sProtectionSet
                 },
                 {
+                    "New-RscMutationK8s -Op DeleteVmMount",
+                    GqlRootFieldName.deleteK8sVmMount
+                },
+                {
                     "New-RscMutationLdap -Op DeletePrincipals",
                     GqlRootFieldName.deleteLdapPrincipals
                 },
@@ -31024,6 +31090,14 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.recoverCloudDirectPath
                 },
                 {
+                    "New-RscQueryDb2 -Op RecoverDatabaseToEndOfBackup",
+                    GqlRootFieldName.recoverDb2DatabaseToEndOfBackup
+                },
+                {
+                    "New-RscQueryDb2 -Op RecoverDatabaseToPointInTime",
+                    GqlRootFieldName.recoverDb2DatabaseToPointInTime
+                },
+                {
                     "New-RscMutationMongo -Op RecoverSource",
                     GqlRootFieldName.recoverMongoSource
                 },
@@ -31872,6 +31946,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.startK8sDiagnosticsJob
                 },
                 {
+                    "New-RscMutationK8s -Op StartVmMountJob",
+                    GqlRootFieldName.startK8sVmMountJob
+                },
+                {
                     "New-RscMutationMisc -Op StartPeriodicUpgradePrechecksOnDemandJob",
                     GqlRootFieldName.startPeriodicUpgradePrechecksOnDemandJob
                 },
@@ -32086,6 +32164,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryThreat -Op MonitoringObjects",
                     GqlRootFieldName.threatMonitoringObjects
+                },
+                {
+                    "New-RscQuerySnapshot -Op TotalCloudDirectObject",
+                    GqlRootFieldName.totalSnapshotsForCloudDirectObject
                 },
                 {
                     "New-RscQueryMisc -Op TotpConfigStatus",
@@ -33571,6 +33653,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteExchangeSnapshotMount",
                         "deleteHypervVirtualMachineSnapshotMount",
                         "deleteK8sCluster",
+                        "deleteK8sVmMount",
                         "deleteLogShipping",
                         "deleteManagedVolumeSnapshotExport",
                         "deleteMongoSource",
@@ -33659,6 +33742,8 @@ namespace RubrikSecurityCloud.Types
                         "recoverCloudDirectMultiPaths",
                         "recoverCloudDirectNasShare",
                         "recoverCloudDirectPath",
+                        "recoverDb2DatabaseToEndOfBackup",
+                        "recoverDb2DatabaseToPointInTime",
                         "recoverMongoSource",
                         "recoverOpsManagerManagedMongoSource",
                         "recoverSapHanaDatabaseToFullBackup",
@@ -33689,6 +33774,7 @@ namespace RubrikSecurityCloud.Types
                         "retryAddOpsManagerManagedMongoSource",
                         "setWebSignedCertificate",
                         "startK8sDiagnosticsJob",
+                        "startK8sVmMountJob",
                         "startVolumeGroupMount",
                         "supportBundle",
                         "takeManagedVolumeOnDemandSnapshot",
@@ -37115,6 +37201,10 @@ namespace RubrikSecurityCloud.Types
                         "threatMonitoringObjects",
                     }
                 },
+                {   "TotalSnapshotsForCloudDirectObjectReply", new List<string> {
+                        "totalSnapshotsForCloudDirectObject",
+                    }
+                },
                 {   "TprConfiguration", new List<string> {
                         "tprConfiguration",
                     }
@@ -40186,6 +40276,10 @@ namespace RubrikSecurityCloud.Types
                         "deleteK8sProtectionSet",
                     }
                 },
+                {   "DeleteK8sVmMountInput", new List<string> {
+                        "deleteK8sVmMount",
+                    }
+                },
                 {   "DeleteLogShippingInput", new List<string> {
                         "deleteLogShipping",
                     }
@@ -42252,6 +42346,14 @@ namespace RubrikSecurityCloud.Types
                         "recoverCloudDirectPath",
                     }
                 },
+                {   "RecoverDb2DatabaseToEndOfBackupInput", new List<string> {
+                        "recoverDb2DatabaseToEndOfBackup",
+                    }
+                },
+                {   "RecoverDb2DatabaseToPointInTimeInput", new List<string> {
+                        "recoverDb2DatabaseToPointInTime",
+                    }
+                },
                 {   "RecoverMongoSourceInput", new List<string> {
                         "recoverMongoSource",
                     }
@@ -43044,6 +43146,10 @@ namespace RubrikSecurityCloud.Types
                         "startK8sDiagnosticsJob",
                     }
                 },
+                {   "StartK8sVmMountJobInput", new List<string> {
+                        "startK8sVmMountJob",
+                    }
+                },
                 {   "StartRecoverS3SnapshotJobInput", new List<string> {
                         "startRecoverS3SnapshotJob",
                     }
@@ -43622,6 +43728,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "Timezone", new List<string> {
                         "taskDetailConnection",
+                    }
+                },
+                {   "TotalSnapshotsForCloudDirectObjectReq", new List<string> {
+                        "totalSnapshotsForCloudDirectObject",
                     }
                 },
                 {   "TprPolicyFilterInput", new List<string> {
@@ -45593,6 +45703,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteExchangeSnapshotMount", "AsyncRequestStatus"},
                 { "deleteHypervVirtualMachineSnapshotMount", "AsyncRequestStatus"},
                 { "deleteK8sCluster", "AsyncRequestStatus"},
+                { "deleteK8sVmMount", "AsyncRequestStatus"},
                 { "deleteLogShipping", "AsyncRequestStatus"},
                 { "deleteManagedVolumeSnapshotExport", "AsyncRequestStatus"},
                 { "deleteMongoSource", "AsyncRequestStatus"},
@@ -45681,6 +45792,8 @@ namespace RubrikSecurityCloud.Types
                 { "recoverCloudDirectMultiPaths", "AsyncRequestStatus"},
                 { "recoverCloudDirectNasShare", "AsyncRequestStatus"},
                 { "recoverCloudDirectPath", "AsyncRequestStatus"},
+                { "recoverDb2DatabaseToEndOfBackup", "AsyncRequestStatus"},
+                { "recoverDb2DatabaseToPointInTime", "AsyncRequestStatus"},
                 { "recoverMongoSource", "AsyncRequestStatus"},
                 { "recoverOpsManagerManagedMongoSource", "AsyncRequestStatus"},
                 { "recoverSapHanaDatabaseToFullBackup", "AsyncRequestStatus"},
@@ -45711,6 +45824,7 @@ namespace RubrikSecurityCloud.Types
                 { "retryAddOpsManagerManagedMongoSource", "AsyncRequestStatus"},
                 { "setWebSignedCertificate", "AsyncRequestStatus"},
                 { "startK8sDiagnosticsJob", "AsyncRequestStatus"},
+                { "startK8sVmMountJob", "AsyncRequestStatus"},
                 { "startVolumeGroupMount", "AsyncRequestStatus"},
                 { "supportBundle", "AsyncRequestStatus"},
                 { "takeManagedVolumeOnDemandSnapshot", "AsyncRequestStatus"},
@@ -46825,6 +46939,7 @@ namespace RubrikSecurityCloud.Types
                 { "threatMonitoringMatchedFileDetailsV2", "ThreatMonitoringFileMatchDetailsV2"},
                 { "threatMonitoringMatchedObjects", "ThreatMonitoringMatchedObjectConnection"},
                 { "threatMonitoringObjects", "ThreatMonitoringObjects"},
+                { "totalSnapshotsForCloudDirectObject", "TotalSnapshotsForCloudDirectObjectReply"},
                 { "tprConfiguration", "TprConfiguration"},
                 { "tprPolicyDetail", "TprPolicyDetail"},
                 { "tprPublicConfiguration", "TprPublicConfiguration"},
@@ -48149,6 +48264,8 @@ namespace RubrikSecurityCloud.Types
                     "LogSnapshots",
                     "PatchDatabase",
                     "PatchInstance",
+                    "RecoverDatabaseToEndOfBackup",
+                    "RecoverDatabaseToPointInTime",
                     "RecoverableRange",
                     "RecoverableRanges",
                     "RefreshDatabase",
@@ -48397,6 +48514,7 @@ namespace RubrikSecurityCloud.Types
                     "CreateProtectionSetSnapshot",
                     "DeleteCluster",
                     "DeleteProtectionSet",
+                    "DeleteVmMount",
                     "DownloadSnapshotFromLocation",
                     "ExportNamespace",
                     "ExportProtectionSetSnapshot",
@@ -48416,6 +48534,7 @@ namespace RubrikSecurityCloud.Types
                     "RestoreProtectionSetSnapshot",
                     "SnapshotInfo",
                     "StartDiagnosticsJob",
+                    "StartVmMountJob",
                     "UpdateCluster",
                     "UpdateProtectionSet",
                     "VirtualMachineSnapshots",
@@ -49495,6 +49614,7 @@ namespace RubrikSecurityCloud.Types
                     "StartRecoverS3Job",
                     "TakeCloudDirect",
                     "TakeOnDemand",
+                    "TotalCloudDirectObject",
                     "UnmanagedObject",
                     "UploadDatabaseToBlobstore",
                     "VappInstantRecoveryOptions",

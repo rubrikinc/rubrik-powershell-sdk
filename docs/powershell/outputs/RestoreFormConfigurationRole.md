@@ -3,7 +3,7 @@ Supported in v7.0+
 
 - name: System.String
   - Required. Supported in v7.0+
-  Name of role.
+Name of role.
 - organizationName: System.String
   - Required. Supported in v7.0+
-  Name of organization.
+Name of organization.

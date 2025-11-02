@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Text
-        // GraphQL -> text: String (scalar)
-        [JsonProperty("text")]
-        public System.String? Text { get; set; }
-
         //      C# -> StorageAccountContainersFilterField? Field
         // GraphQL -> field: StorageAccountContainersFilterField! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("field")]
         public StorageAccountContainersFilterField? Field { get; set; }
+
+        //      C# -> System.String? Text
+        // GraphQL -> text: String (scalar)
+        [JsonProperty("text")]
+        public System.String? Text { get; set; }
 
 
         #endregion

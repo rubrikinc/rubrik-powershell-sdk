@@ -1,6 +1,6 @@
 ### FailoverClusterConnectionStatus
 Supported in v5.2+
-  Connection type options for the failover cluster.
+Connection type options for the failover cluster.
 
 - FAILOVER_CLUSTER_CONNECTION_STATUS_CONNECTED
 - FAILOVER_CLUSTER_CONNECTION_STATUS_DISCONNECTED

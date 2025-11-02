@@ -1,6 +1,6 @@
 ### SlaTimeUnit
 Supported in v5.0+
-  Units for frequency and retention. Accepted values are Minute, Hourly, Daily, Weekly, Monthly, Quarterly, and Yearly.
+Units for frequency and retention. Accepted values are Minute, Hourly, Daily, Weekly, Monthly, Quarterly, and Yearly.
 
 - SLA_TIME_UNIT_DAILY
 - SLA_TIME_UNIT_HOURLY
