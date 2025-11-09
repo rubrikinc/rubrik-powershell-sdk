@@ -3673,6 +3673,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	dstExportId = $someInt
     /// 	# OPTIONAL
     /// 	dstExportFid = $someInt
+    /// 	# OPTIONAL
+    /// 	aclOnly = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -3717,6 +3719,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	destShareFid = $someString
+    /// 	# OPTIONAL
+    /// 	aclOnly = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -13034,6 +13038,8 @@ $query.Var.input = @{
 	dstExportId = $someInt
 	# OPTIONAL
 	dstExportFid = $someInt
+	# OPTIONAL
+	aclOnly = $someBoolean
 }"
             );
         }
@@ -13070,6 +13076,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	destShareFid = $someString
+	# OPTIONAL
+	aclOnly = $someBoolean
 }"
             );
         }

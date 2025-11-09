@@ -896,6 +896,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
+    /// 	failoverGroupId = $someString
+    /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
     /// 
@@ -1760,6 +1762,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isComplianceImmutabilityEnabled = $someBoolean
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	failoverGroupId = $someString
     /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
@@ -2820,6 +2824,8 @@ $query.Var.input = @{
 		}
 	)
 	# OPTIONAL
+	failoverGroupId = $someString
+	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
             );
@@ -3645,6 +3651,8 @@ $query.Var.input = @{
 			isComplianceImmutabilityEnabled = $someBoolean
 		}
 	)
+	# OPTIONAL
+	failoverGroupId = $someString
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"

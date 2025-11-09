@@ -3427,6 +3427,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<PerLocationMigrationInfo>? AllRcvMigrationInfo
+        // GraphQL -> allRcvMigrationInfo: [PerLocationMigrationInfo!]! (type)
+        public static string AllRcvMigrationInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nlocationId: $locationId\n)";
+            return "allRcvMigrationInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllRcvMigrationInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<PerLocationMigrationInfo>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<DetailedPrivateEndpointConnection>? AllRcvPrivateEndpointConnections
         // GraphQL -> allRcvPrivateEndpointConnections: [DetailedPrivateEndpointConnection!]! (type)
         public static string AllRcvPrivateEndpointConnections(object fsObj)
@@ -8755,6 +8773,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> HaPolicyConnection? HaPolicies
+        // GraphQL -> haPolicies: HaPolicyConnection! (type)
+        public static string HaPolicies(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
+            return "haPolicies" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object HaPoliciesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new HaPolicyConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> HasAccessToO365ObjectsResp? HasAccessToO365Objects
         // GraphQL -> hasAccessToO365Objects: HasAccessToO365ObjectsResp! (type)
         public static string HasAccessToO365Objects(object fsObj)
@@ -9939,24 +9975,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListAllUploadRecordsReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> ListCertificateCloudAccountMappingsResp? ListCertificateCloudAccountMappings
-        // GraphQL -> listCertificateCloudAccountMappings: ListCertificateCloudAccountMappingsResp! (type)
-        public static string ListCertificateCloudAccountMappings(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ncloudNativeAccountId: $cloudNativeAccountId\ncloudType: $cloudType\n)";
-            return "listCertificateCloudAccountMappings" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object ListCertificateCloudAccountMappingsFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new ListCertificateCloudAccountMappingsResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -16959,6 +16977,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new BatchVmwareVmRecoverableRanges() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> VsphereVmRecoveryRangeStatusResp? VsphereVmRecoveryRangeStatuses
+        // GraphQL -> vsphereVmRecoveryRangeStatuses: VsphereVmRecoveryRangeStatusResp! (type)
+        public static string VsphereVmRecoveryRangeStatuses(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "vsphereVmRecoveryRangeStatuses" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object VsphereVmRecoveryRangeStatusesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new VsphereVmRecoveryRangeStatusResp() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

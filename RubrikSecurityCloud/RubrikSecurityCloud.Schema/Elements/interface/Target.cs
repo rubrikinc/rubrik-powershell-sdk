@@ -104,6 +104,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationConnectionStatus")]
         ConnectionStatusType? LocationConnectionStatus { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilitySupported")]
+        System.Boolean? IsComplianceImmutabilitySupported { get; set; }
+
 
         #endregion
 

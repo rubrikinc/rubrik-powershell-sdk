@@ -104,6 +104,11 @@ Updates the list of containers excluded from protection for the specified storag
 
 - There is a single argument of type ExcludeAzureStorageAccountContainersInput.
 - Returns System.String.
+### getorcreatebyokapp
+Get or create an Azure BYOK (Bring Your Own Key) application.
+
+- The getorcreatebyokapp subcommand takes no arguments.
+- Returns GetOrCreateByokAzureAppReply.
 ### mapcloudaccountexocomputesubscription
 Map Azure cloud accounts to an Exocompute subscription.
 

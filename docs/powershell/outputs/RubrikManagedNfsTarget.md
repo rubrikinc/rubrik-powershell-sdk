@@ -57,3 +57,5 @@ Specific information for Network File System (NFS) target created on Rubrik.
   - List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
 - locationConnectionStatus: ConnectionStatusType
   - Status of the target.
+- isComplianceImmutabilitySupported: System.Boolean
+  - Specifies whether the archival location supports compliance immutability for retention locked snapshots.

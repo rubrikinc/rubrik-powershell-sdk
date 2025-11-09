@@ -27,6 +27,9 @@ Boolean value specifying whether to use the high file count format for database 
 Boolean value specifying whether to use secure thrift as the data transfer mechanism between the Rubrik cluster and the Oracle database instead of NFS. The default data transfer mechanism is NFS.
 - sectionSizeInGb: System.Int32
   - Supported in Rubrik CDM version 9.0 and later. Specifies the section size, in gigabytes, to be used during database backup.
+- ratePerRmanChannelInMb: System.Int32
+  - Supported in v9.4+
+Specifies, in megabytes per second, the RMAN RATE parameter, which limits the backup throughput per channel. This controls the maximum rate at which RMAN transfers data during backup operations for each channel. Only values greater than or equal to 0 are accepted. A value of 0 means no rate limit will be applied. This field is only effective when updating Oracle Databases or Oracle DataGuard Groups.
 - isPaused: System.Boolean
   - Supported in v9.1+
 Whether to pause or resume backups and archival for this database. This setting is supported for Oracle databases and Data Guard groups but is not supported for Oracle hosts and RACs.

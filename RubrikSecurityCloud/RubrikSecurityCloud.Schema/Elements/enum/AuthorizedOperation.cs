@@ -261,6 +261,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_CHILD_ACCOUNTS")]
         MANAGE_CHILD_ACCOUNTS,
 
+        [EnumMember(Value = "MANAGE_CLASSIFICATION_SETTINGS")]
+        MANAGE_CLASSIFICATION_SETTINGS,
+
         [EnumMember(Value = "MANAGE_CLUSTER_DISKS")]
         MANAGE_CLUSTER_DISKS,
 
@@ -338,6 +341,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_ROLE")]
         MANAGE_ROLE,
+
+        [EnumMember(Value = "MANAGE_RUBY")]
+        MANAGE_RUBY,
 
         [EnumMember(Value = "MANAGE_SECURITY_POLICIES")]
         MANAGE_SECURITY_POLICIES,

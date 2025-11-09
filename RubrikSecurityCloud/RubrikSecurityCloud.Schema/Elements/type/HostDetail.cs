@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleSysDbaUser")]
         public System.String? OracleSysDbaUser { get; set; }
 
+        //      C# -> System.String? OsInstallationTypeOpt
+        // GraphQL -> osInstallationTypeOpt: String (scalar)
+        [JsonProperty("osInstallationTypeOpt")]
+        public System.String? OsInstallationTypeOpt { get; set; }
+
         //      C# -> System.Boolean? ShouldMssqlSddThroughRba
         // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)
         [JsonProperty("shouldMssqlSddThroughRba")]
@@ -151,6 +156,7 @@ namespace RubrikSecurityCloud.Types
         System.String? OracleSddUsername = null,
         System.String? OracleSddWalletPath = null,
         System.String? OracleSysDbaUser = null,
+        System.String? OsInstallationTypeOpt = null,
         System.Boolean? ShouldMssqlSddThroughRba = null,
         System.Boolean? ShouldOracleSddThroughRba = null,
         ActiveDirectoryAdditionalInfo? ActiveDirectoryAdditionalInfo = null,
@@ -205,6 +211,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OracleSysDbaUser != null ) {
             this.OracleSysDbaUser = OracleSysDbaUser;
+        }
+        if ( OsInstallationTypeOpt != null ) {
+            this.OsInstallationTypeOpt = OsInstallationTypeOpt;
         }
         if ( ShouldMssqlSddThroughRba != null ) {
             this.ShouldMssqlSddThroughRba = ShouldMssqlSddThroughRba;
@@ -377,6 +386,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "oracleSysDbaUser\n" ;
             } else {
                 s += ind + "oracleSysDbaUser\n" ;
+            }
+        }
+        //      C# -> System.String? OsInstallationTypeOpt
+        // GraphQL -> osInstallationTypeOpt: String (scalar)
+        if (this.OsInstallationTypeOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "osInstallationTypeOpt\n" ;
+            } else {
+                s += ind + "osInstallationTypeOpt\n" ;
             }
         }
         //      C# -> System.Boolean? ShouldMssqlSddThroughRba
@@ -711,6 +729,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OracleSysDbaUser != null && ec.Excludes("oracleSysDbaUser",true))
         {
             this.OracleSysDbaUser = null;
+        }
+        //      C# -> System.String? OsInstallationTypeOpt
+        // GraphQL -> osInstallationTypeOpt: String (scalar)
+        if (ec.Includes("osInstallationTypeOpt",true))
+        {
+            if(this.OsInstallationTypeOpt == null) {
+
+                this.OsInstallationTypeOpt = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OsInstallationTypeOpt != null && ec.Excludes("osInstallationTypeOpt",true))
+        {
+            this.OsInstallationTypeOpt = null;
         }
         //      C# -> System.Boolean? ShouldMssqlSddThroughRba
         // GraphQL -> shouldMssqlSddThroughRba: Boolean (scalar)

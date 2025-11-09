@@ -72,3 +72,5 @@ returns snapshots that are not source snapshots.
 - ANOMALOUS_ONLY - When true, returns snapshots that are anomalous.
 - IS_ON_DEMAND_OR_CUSTOMISED_SNAPSHOT - When true, returns snapshots which are either on-demand or customised;
 when false, returns snapshots that are only policy-based.
+- IS_MAINTAINED_OR_ON_DEMAND_WITH_SLA - When true, returns snapshots which are either scheduled/maintained or
+on-demand snapshots that have an on-demand SLA assigned.

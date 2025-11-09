@@ -13,3 +13,5 @@ with IntegrationType will be considered.
   - The Microsoft Purview configuration.
 - pam: PamIntegrationConfig
   - The PAM configuration.
+- crowdStrike: CrowdStrikeIntegrationConfig
+  - The CrowdStrike configuration.

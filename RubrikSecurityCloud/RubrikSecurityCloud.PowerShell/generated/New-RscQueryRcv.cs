@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'RCV' API domain:
-    /// AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, or PrivateEndpointConnections.
+    /// AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, MigrationInfo, or PrivateEndpointConnections.
     /// </summary>
     /// <description>
     /// New-RscQueryRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 5 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, or PrivateEndpointConnections.
+    /// one of: AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, MigrationInfo, or PrivateEndpointConnections.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -158,6 +158,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the MigrationInfo operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: MigrationInfo
+    /// 
+    /// $query = New-RscQueryRcv -Operation MigrationInfo
+    /// 
+    /// # REQUIRED
+    /// $query.Var.locationId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;PerLocationMigrationInfo&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PrivateEndpointConnections operation
     /// of the 'RCV' API domain.
     /// <code>
@@ -204,6 +232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AccountEntitlement",
                 "AccountEntitlements",
                 "IsTriggerGrsTprConfigured",
+                "MigrationInfo",
                 "PrivateEndpointConnections",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -228,6 +257,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsTriggerGrsTprConfigured":
                         this.ProcessRecord_IsTriggerGrsTprConfigured();
+                        break;
+                    case "MigrationInfo":
+                        this.ProcessRecord_MigrationInfo();
                         break;
                     case "PrivateEndpointConnections":
                         this.ProcessRecord_PrivateEndpointConnections();
@@ -267,6 +299,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTriggerGrsTprConfigured";
             // Create new graphql operation isTriggerRcvGrsTprConfigured
             InitQueryIsTriggerRcvGrsTprConfigured();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allRcvMigrationInfo.
+        internal void ProcessRecord_MigrationInfo()
+        {
+            this._logger.name += " -MigrationInfo";
+            // Create new graphql operation allRcvMigrationInfo
+            InitQueryAllRcvMigrationInfo();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -330,6 +371,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.IsTriggerRcvGrsTprConfigured,
                 Query.IsTriggerRcvGrsTprConfiguredFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allRcvMigrationInfo(locationId: UUID!): [PerLocationMigrationInfo!]!
+        internal void InitQueryAllRcvMigrationInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("locationId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllRcvMigrationInfo",
+                "($locationId: UUID!)",
+                "List<PerLocationMigrationInfo>",
+                Query.AllRcvMigrationInfo,
+                Query.AllRcvMigrationInfoFieldSpec,
+                @"# REQUIRED
+$query.Var.locationId = $someString"
             );
         }
 

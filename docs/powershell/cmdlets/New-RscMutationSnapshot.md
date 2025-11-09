@@ -132,6 +132,11 @@ Triggers on-demand snapshot for the given workloads.
 
 - There is a single argument of type TakeOnDemandSnapshotInput.
 - Returns TakeOnDemandSnapshotReply.
+### takeondemandsync
+Triggers synchronous on-demand snapshots for the workloads provided.
+
+- There is a single argument of type TakeOnDemandSnapshotSyncInput.
+- Returns TakeOnDemandSnapshotSyncReply.
 ### uploaddatabasetoblobstore
 Start a job to upload a database snapshot to a target blobstore.
 

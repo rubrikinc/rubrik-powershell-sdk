@@ -15,11 +15,6 @@ Unmap cloud accounts from the mapped Exocompute account.
 
 - There is a single argument of type UnmapCloudAccountExocomputeAccountInput.
 - Returns UnmapCloudAccountExocomputeAccountReply.
-### updatecertificatemappings
-Updates certificates mapped to a given cloud account and cloud type.
-
-- There is a single argument of type UpdateCertificateCloudAccountMappingsInput.
-- Returns System.String.
 ### updatecertificateusages
 Updates certificate usage for a specified cloud account and type.
 

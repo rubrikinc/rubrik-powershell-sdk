@@ -21,7 +21,8 @@ Distribution of the Kubernetes cluster to be added.
   - Supported in v9.2+
 The pull secret required for pulling Rubrik container images.
 - nadName: System.String
-  - The name of the network attachment definition object.
+  - Supported in v9.4+
+The name of the network attachment definition object.
 - transport: System.String
   - Required. Supported in v9.2+
 The transport type used for communication with the Kubernetes cluster.
@@ -29,7 +30,8 @@ The transport type used for communication with the Kubernetes cluster.
   - Supported in v9.2+
 Specifies whether to enable automatic protection set creation for the Kubernetes cluster.
 - nadNamespace: System.String
-  - The namespace to which the network attachment definition object belongs.
+  - Supported in v9.4+
+The namespace to which the network attachment definition object belongs.
 - serviceAccount: ServiceAccountInputInput
   - Required. Supported in v9.2+
 The RSC service account used for onboarding.

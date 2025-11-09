@@ -41,13 +41,6 @@ Latest Permissions are the most recent set of permissions we require for a featu
     - features - list of CloudAccountFeatures: Cloud account features.
     - featuresWithPermissionsGroups - list of FeatureWithPermissionsGroupss: Cloud account features with specific permissions groups.
 - Returns list of CloudAccountFeaturePermissions.
-### listcertificatemappings
-Lists certificates mapped to a given cloud account and cloud type.
-
-- There are 2 arguments.
-    - cloudNativeAccountId - System.String: Cloud-native account ID.
-    - cloudType - CloudType: Cloud provider type, such as AWS, Azure, or GCP.
-- Returns ListCertificateCloudAccountMappingsResp.
 ### listcertificateusages
 Lists certificate usage for a specified cloud account and type.
 

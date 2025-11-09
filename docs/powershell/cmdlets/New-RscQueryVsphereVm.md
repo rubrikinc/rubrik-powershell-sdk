@@ -1,9 +1,11 @@
 # New-RscQueryVsphereVm
 ## Subcommands
 ### asyncrequeststatus
+Retrieve the details of an asynchronous request that includes a VMware virtual machine.
+
 - There are 2 arguments.
-    - clusterUuid - System.String
-    - id - System.String: ID of an asynchronous request.
+    - clusterUuid - System.String: UUID of the Rubrik cluster.
+    - id - System.String: ID of the asynchronous request.
 - Returns AsyncRequestStatus.
 ### missedrecoverablerange
 - There are 3 arguments.
@@ -31,6 +33,12 @@
 ### recoverablerangeinbatch
 - There is a single argument of type BatchVmwareVmRecoverableRangesRequestInput.
 - Returns BatchVmwareVmRecoverableRanges.
+### recoveryrangestatuses
+Gets the status of the recovery ranges for a virtual machine including not
+recoverable ranges within the specified time range.
+
+- There is a single argument of type VsphereVmRecoveryRangeStatusReq.
+- Returns VsphereVmRecoveryRangeStatusResp.
 ### withprovisiononinfrastructure
 Returns compute resources information for a single vsphere virtual machine to be used as a recovery source. Permission checks are performed against the ProvisionOnInfrastructure operation, not the ViewInventory operation. This is a short-term approach for solving RBAC issues where an org-user with view permission that is lower than hosts cannot have the same datastore auto-selected.
 

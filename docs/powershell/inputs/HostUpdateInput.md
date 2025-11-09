@@ -37,7 +37,9 @@ v7.0-v8.0: A Boolean that specifies whether to discover Oracle information durin
 
 v8.1: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
 
-v9.0+: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
+v9.0-v9.3: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
+
+v9.4+: A Boolean that specifies whether to discover Oracle information during host refresh. A value of 'true' discovers Oracle information during host refresh.
 - isUpdateCertAndAgentIdEnabled: System.Boolean
   - Supported in v7.0+
 v7.0-v9.1: A Boolean that specifies whether to update the Rubrik Backup Agent and agent ID during host edit.

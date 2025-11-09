@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "CROWD_STRIKE")]
+        CROWD_STRIKE,
+
         [EnumMember(Value = "DATA_LOSS_PREVENTION")]
         DATA_LOSS_PREVENTION,
 

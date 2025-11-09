@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAzureTieringSupported")]
         public System.Boolean? IsAzureTieringSupported { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilitySupported")]
+        public System.Boolean? IsComplianceImmutabilitySupported { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -145,6 +150,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsAzureTieringSupported = null,
+        System.Boolean? IsComplianceImmutabilitySupported = null,
         System.String? Name = null,
         System.Int32? RunningTasks = null,
         Cluster? Cluster = null,
@@ -194,6 +200,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAzureTieringSupported != null ) {
             this.IsAzureTieringSupported = IsAzureTieringSupported;
+        }
+        if ( IsComplianceImmutabilitySupported != null ) {
+            this.IsComplianceImmutabilitySupported = IsComplianceImmutabilitySupported;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -351,6 +360,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAzureTieringSupported\n" ;
             } else {
                 s += ind + "isAzureTieringSupported\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (this.IsComplianceImmutabilitySupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComplianceImmutabilitySupported\n" ;
+            } else {
+                s += ind + "isComplianceImmutabilitySupported\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -663,6 +681,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAzureTieringSupported != null && ec.Excludes("isAzureTieringSupported",true))
         {
             this.IsAzureTieringSupported = null;
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (ec.Includes("isComplianceImmutabilitySupported",true))
+        {
+            if(this.IsComplianceImmutabilitySupported == null) {
+
+                this.IsComplianceImmutabilitySupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComplianceImmutabilitySupported != null && ec.Excludes("isComplianceImmutabilitySupported",true))
+        {
+            this.IsComplianceImmutabilitySupported = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

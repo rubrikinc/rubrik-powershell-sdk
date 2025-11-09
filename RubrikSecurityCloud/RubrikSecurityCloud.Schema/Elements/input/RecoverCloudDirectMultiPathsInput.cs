@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dstExportFid")]
         public System.Int32? DstExportFid { get; set; }
 
+        //      C# -> System.Boolean? AclOnly
+        // GraphQL -> aclOnly: Boolean (scalar)
+        [JsonProperty("aclOnly")]
+        public System.Boolean? AclOnly { get; set; }
+
 
         #endregion
 

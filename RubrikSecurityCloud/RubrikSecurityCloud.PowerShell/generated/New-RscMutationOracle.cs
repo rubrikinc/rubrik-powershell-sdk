@@ -145,6 +145,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				sectionSizeInGb = $someInt
     /// 				# OPTIONAL
+    /// 				ratePerRmanChannelInMb = $someInt
+    /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
@@ -232,6 +234,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				sectionSizeInGb = $someInt
     /// 				# OPTIONAL
+    /// 				ratePerRmanChannelInMb = $someInt
+    /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
     /// 			}
     /// 		}
@@ -318,6 +322,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				shouldUseSecureThriftForDataTransfer = $someBoolean
     /// 				# OPTIONAL
     /// 				sectionSizeInGb = $someInt
+    /// 				# OPTIONAL
+    /// 				ratePerRmanChannelInMb = $someInt
     /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
     /// 			}
@@ -1034,6 +1040,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			sectionSizeInGb = $someInt
     /// 			# OPTIONAL
+    /// 			ratePerRmanChannelInMb = $someInt
+    /// 			# OPTIONAL
     /// 			isPaused = $someBoolean
     /// 		}
     /// 		# OPTIONAL
@@ -1522,6 +1530,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				sectionSizeInGb = $someInt
 				# OPTIONAL
+				ratePerRmanChannelInMb = $someInt
+				# OPTIONAL
 				isPaused = $someBoolean
 			}
 		}
@@ -1601,6 +1611,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				sectionSizeInGb = $someInt
 				# OPTIONAL
+				ratePerRmanChannelInMb = $someInt
+				# OPTIONAL
 				isPaused = $someBoolean
 			}
 		}
@@ -1679,6 +1691,8 @@ $query.Var.input = @{
 				shouldUseSecureThriftForDataTransfer = $someBoolean
 				# OPTIONAL
 				sectionSizeInGb = $someInt
+				# OPTIONAL
+				ratePerRmanChannelInMb = $someInt
 				# OPTIONAL
 				isPaused = $someBoolean
 			}
@@ -2274,6 +2288,8 @@ $query.Var.input = @{
 			shouldUseSecureThriftForDataTransfer = $someBoolean
 			# OPTIONAL
 			sectionSizeInGb = $someInt
+			# OPTIONAL
+			ratePerRmanChannelInMb = $someInt
 			# OPTIONAL
 			isPaused = $someBoolean
 		}

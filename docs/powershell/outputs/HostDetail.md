@@ -39,6 +39,9 @@ v6.0+: Specifies whether this is an Oracle host. This indicates whether to show 
   - Supported in v9.0+
 Specifies whether the refresh of host metadata for this host is paused.
 - hostSummary: HostSummary
+- osInstallationTypeOpt: System.String
+  - Supported in v9.4+
+Specifies the Windows installation type (e.g., "Server", "Client"). Only applicable to Windows hosts; null for non-Windows hosts.
 - oracleSepsSettings: OracleSepsWalletSettings
   - Supported in v9.4+
 Oracle SEPS settings for the host.

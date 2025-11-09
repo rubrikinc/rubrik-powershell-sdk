@@ -9,3 +9,4 @@ data hits to prevent them from being exfiltrated.
 - OKTA - Represents a OKTA ITP integration.
 - MICROSOFT_PURVIEW - Represents a Microsoft Purview integration.
 - PRIVILEGED_ACCESS_MANAGEMENT - Represents a PAM integration.
+- CROWD_STRIKE - Represents a CrowdStrike integration.

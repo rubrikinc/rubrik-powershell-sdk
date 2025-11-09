@@ -29,6 +29,8 @@ UnmanagedObjectDetails.
   - RSC SLA Domain ID.
 - snapshotCount: System.Int64
   - Snapshot count.
+- numSnapshotsWithPolicy: System.Int64
+  - Number of policy snapshots.
 - unmanagedStatus: UnmanagedObjectAvailabilityFilter
   - Unmanaged Status of this object.
 - region: WorkloadRegion

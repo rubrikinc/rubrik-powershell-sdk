@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_LEGALLY_HELD")]
         IS_LEGALLY_HELD,
 
+        [EnumMember(Value = "IS_MAINTAINED_OR_ON_DEMAND_WITH_SLA")]
+        IS_MAINTAINED_OR_ON_DEMAND_WITH_SLA,
+
         [EnumMember(Value = "IS_MARKED_FOR_METADATA_DELETION")]
         IS_MARKED_FOR_METADATA_DELETION,
 

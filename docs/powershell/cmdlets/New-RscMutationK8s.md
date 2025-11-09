@@ -138,7 +138,7 @@ v9.1+: Launches a job to restore the Kubernetes resources from a protection set 
 ### startdiagnosticsjob
 Triggers an on-demand diagnostic job
 
-Supported in v9.5
+Supported in v9.4+
 Triggers an on-demand diagnostic job for the specified Kubernetes cluster.
 
 - There is a single argument of type StartK8sDiagnosticsJobInput.

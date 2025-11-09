@@ -1,4 +1,4 @@
-// CertificateInfoInput.cs
+// HaPolicyFilter.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,21 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region CertificateInfoInput
+    #region HaPolicyFilter
 
-    public class CertificateInfoInput: IInput
+    public class HaPolicyFilter: IInput
     {
         #region members
 
-        //      C# -> System.Boolean? IsUsed
-        // GraphQL -> isUsed: Boolean (scalar)
-        [JsonProperty("isUsed")]
-        public System.Boolean? IsUsed { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> List<FailoverGroupStatus>? Status
+        // GraphQL -> status: [FailoverGroupStatus!] (enum)
+        [JsonProperty("status")]
+        public List<FailoverGroupStatus>? Status { get; set; }
 
 
         #endregion
@@ -64,7 +55,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class CertificateInfoInput
+    } // class HaPolicyFilter
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

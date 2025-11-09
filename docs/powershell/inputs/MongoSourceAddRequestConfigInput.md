@@ -10,9 +10,9 @@ Path to the CA certificate file.
 v8.1-v9.2: List of secondaries that should be ignored.
 v9.3+: List of secondary nodes that should be ignored during backup in the format hostname:port.
 - mongoClientHosts: list of MongoClientHostInputs
-  - Required. Supported in v8.1+
-v8.1-v9.2: List of host details where MongoDB is hosted.
-v9.3+: List of host details where MongoDB is hosted. For Replica Set deployments, enter details for at least 1 Rubrik Backup Service host to add to the MongoDB cluster nodes. For Sharded Cluster deployments, enter details for at least 1 of the configuration servers.
+  - Required. v8.1-v9.2: List of host details where MongoDB is hosted.
+v9.3-v9.4: List of host details where MongoDB is hosted. For Replica Set deployments, enter details for at least 1 Rubrik Backup Service host to add to the MongoDB cluster nodes. For Sharded Cluster deployments, enter details for at least 1 of the configuration servers.
+v9.5: List of the host details where MongoDB is hosted. For replica set deployments, enter details for at least 1 RBS host to add to the MongoDB cluster nodes. For sharded cluster deployments, enter details for at least 1 of the mongos servers so that RSC can find all your MongoDB nodes. Note that RSC still supports config server nodes as input if the feature flag is notenabled. Contact Rubrik Support for more information.
 - mongoType: MongoType
   - Required. Supported in v8.1+
 v8.1-v9.2: Type of MongoDB cluster.

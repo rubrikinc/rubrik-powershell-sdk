@@ -24,7 +24,8 @@ Optional parameter that specifies whether to grant root user access to SMB share
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
   - Supported in v8.1+
 - userSelectedSmbInterfaces: list of System.Strings
-  - List of hostnames or IP addresses used for Fileset jobs on SMB shares in the NAS system.
+  - Supported in v9.4+
+List of hostnames or IP addresses used for Fileset jobs on SMB shares in the NAS system.
 - isNetAppMetroClusterEnabled: System.Boolean
   - Supported in v8.1, v9.1+
 v8.1: Enables the Metro Cluster feature for the NetApp NAS system. If the NetApp cluster is operating in the Metro Cluster environment and this flag is not enabled, the NAS protections on this NAS system will not seamlessly move when switchover or switchback occurs.
@@ -38,4 +39,5 @@ Optional credentials that will be used to access all the SMB shares on the NAS s
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
 - userSelectedNfsInterfaces: list of System.Strings
-  - List of hostnames or IP addresses used for Fileset jobs on NFS shares in the NAS system.
+  - Supported in v9.4+
+List of hostnames or IP addresses used for Fileset jobs on NFS shares in the NAS system.

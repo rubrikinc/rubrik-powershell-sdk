@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CrowdStrikeIntegrationConfig? CrowdStrike
+        // GraphQL -> crowdStrike: CrowdStrikeIntegrationConfig (type)
+        [JsonProperty("crowdStrike")]
+        public CrowdStrikeIntegrationConfig? CrowdStrike { get; set; }
+
         //      C# -> DlpConfig? DataLossPrevention
         // GraphQL -> dataLossPrevention: DlpConfig (type)
         [JsonProperty("dataLossPrevention")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public IntegrationConfig Set(
+        CrowdStrikeIntegrationConfig? CrowdStrike = null,
         DlpConfig? DataLossPrevention = null,
         MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         ServiceNowItsmIntegrationConfig? ServiceNowItsm = null
     ) 
     {
+        if ( CrowdStrike != null ) {
+            this.CrowdStrike = CrowdStrike;
+        }
         if ( DataLossPrevention != null ) {
             this.DataLossPrevention = DataLossPrevention;
         }
@@ -91,6 +100,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CrowdStrikeIntegrationConfig? CrowdStrike
+        // GraphQL -> crowdStrike: CrowdStrikeIntegrationConfig (type)
+        if (this.CrowdStrike != null) {
+            var fspec = this.CrowdStrike.AsFieldSpec(conf.Child("crowdStrike"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "crowdStrike" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> DlpConfig? DataLossPrevention
         // GraphQL -> dataLossPrevention: DlpConfig (type)
         if (this.DataLossPrevention != null) {
@@ -158,6 +179,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CrowdStrikeIntegrationConfig? CrowdStrike
+        // GraphQL -> crowdStrike: CrowdStrikeIntegrationConfig (type)
+        if (ec.Includes("crowdStrike",false))
+        {
+            if(this.CrowdStrike == null) {
+
+                this.CrowdStrike = new CrowdStrikeIntegrationConfig();
+                this.CrowdStrike.ApplyExploratoryFieldSpec(ec.NewChild("crowdStrike"));
+
+            } else {
+
+                this.CrowdStrike.ApplyExploratoryFieldSpec(ec.NewChild("crowdStrike"));
+
+            }
+        }
+        else if (this.CrowdStrike != null && ec.Excludes("crowdStrike",false))
+        {
+            this.CrowdStrike = null;
+        }
         //      C# -> DlpConfig? DataLossPrevention
         // GraphQL -> dataLossPrevention: DlpConfig (type)
         if (ec.Includes("dataLossPrevention",false))

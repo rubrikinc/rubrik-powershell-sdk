@@ -1,4 +1,4 @@
-// UpdateCertificateCloudAccountMappingsInput.cs
+// TakeOnDemandSnapshotSyncInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,30 +13,23 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region UpdateCertificateCloudAccountMappingsInput
+    #region TakeOnDemandSnapshotSyncInput
 
-    public class UpdateCertificateCloudAccountMappingsInput: IInput
+    public class TakeOnDemandSnapshotSyncInput: IInput
     {
         #region members
 
-        //      C# -> System.String? CloudNativeAccountId
-        // GraphQL -> cloudNativeAccountId: String! (scalar)
+        //      C# -> List<System.String>? WorkloadIds
+        // GraphQL -> workloadIds: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("cloudNativeAccountId")]
-        public System.String? CloudNativeAccountId { get; set; }
+        [JsonProperty("workloadIds")]
+        public List<System.String>? WorkloadIds { get; set; }
 
-        //      C# -> List<CertificateInfoInput>? Certificates
-        // GraphQL -> certificates: [CertificateInfoInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("certificates")]
-        public List<CertificateInfoInput>? Certificates { get; set; }
-
-        //      C# -> CloudType? CloudType
-        // GraphQL -> cloudType: CloudType (enum)
-        [JsonProperty("cloudType")]
-        public CloudType? CloudType { get; set; }
+        //      C# -> System.String? SlaId
+        // GraphQL -> slaId: UUID (scalar)
+        [JsonProperty("slaId")]
+        public System.String? SlaId { get; set; }
 
 
         #endregion
@@ -64,7 +57,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class UpdateCertificateCloudAccountMappingsInput
+    } // class TakeOnDemandSnapshotSyncInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

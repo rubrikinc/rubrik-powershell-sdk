@@ -50,11 +50,9 @@ Initiates a job to download one or more files or folders from an archived Manage
 - There is a single argument of type CreateMVDownloadFilesFromArchivalLocationJobInput.
 - Returns AsyncRequestStatus.
 ### downloadfromlocation
-Download a snapshot from a remote target
-
+Download a snapshot from a remote target.
 Supported in v7.0+
-Initiates a job to download a snapshot from the specified
-location when the snapshot does not exist locally.
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally.
 The specified location has to be a remote target connected to this Rubrik cluster.
 
 - There is a single argument of type DownloadManagedVolumeFromLocationInput.

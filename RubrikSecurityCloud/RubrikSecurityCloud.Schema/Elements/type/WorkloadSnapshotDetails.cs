@@ -1,0 +1,256 @@
+// WorkloadSnapshotDetails.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using RubrikSecurityCloud;
+
+namespace RubrikSecurityCloud.Types
+{
+    #region WorkloadSnapshotDetails
+    public class WorkloadSnapshotDetails: BaseType
+    {
+        #region members
+
+        //      C# -> System.String? Error
+        // GraphQL -> error: String (scalar)
+        [JsonProperty("error")]
+        public System.String? Error { get; set; }
+
+        //      C# -> System.String? SnapshotCreationTimestamp
+        // GraphQL -> snapshotCreationTimestamp: String (scalar)
+        [JsonProperty("snapshotCreationTimestamp")]
+        public System.String? SnapshotCreationTimestamp { get; set; }
+
+        //      C# -> System.String? TaskchainUuid
+        // GraphQL -> taskchainUuid: UUID (scalar)
+        [JsonProperty("taskchainUuid")]
+        public System.String? TaskchainUuid { get; set; }
+
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: UUID! (scalar)
+        [JsonProperty("workloadId")]
+        public System.String? WorkloadId { get; set; }
+
+
+        #endregion
+
+    #region methods
+
+    public override string GetGqlTypeName() {
+        return "WorkloadSnapshotDetails";
+    }
+
+    public WorkloadSnapshotDetails Set(
+        System.String? Error = null,
+        System.String? SnapshotCreationTimestamp = null,
+        System.String? TaskchainUuid = null,
+        System.String? WorkloadId = null
+    ) 
+    {
+        if ( Error != null ) {
+            this.Error = Error;
+        }
+        if ( SnapshotCreationTimestamp != null ) {
+            this.SnapshotCreationTimestamp = SnapshotCreationTimestamp;
+        }
+        if ( TaskchainUuid != null ) {
+            this.TaskchainUuid = TaskchainUuid;
+        }
+        if ( WorkloadId != null ) {
+            this.WorkloadId = WorkloadId;
+        }
+        return this;
+    }
+
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
+    {
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        if (this.IsComposite() && ! conf.IgnoreComposition) {
+            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
+        }
+        string ind = conf.IndentStr();
+        string s = "";
+        //      C# -> System.String? Error
+        // GraphQL -> error: String (scalar)
+        if (this.Error != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "error\n" ;
+            } else {
+                s += ind + "error\n" ;
+            }
+        }
+        //      C# -> System.String? SnapshotCreationTimestamp
+        // GraphQL -> snapshotCreationTimestamp: String (scalar)
+        if (this.SnapshotCreationTimestamp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotCreationTimestamp\n" ;
+            } else {
+                s += ind + "snapshotCreationTimestamp\n" ;
+            }
+        }
+        //      C# -> System.String? TaskchainUuid
+        // GraphQL -> taskchainUuid: UUID (scalar)
+        if (this.TaskchainUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainUuid\n" ;
+            } else {
+                s += ind + "taskchainUuid\n" ;
+            }
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: UUID! (scalar)
+        if (this.WorkloadId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadId\n" ;
+            } else {
+                s += ind + "workloadId\n" ;
+            }
+        }
+        return s;
+    }
+
+
+    
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
+    {
+        //      C# -> System.String? Error
+        // GraphQL -> error: String (scalar)
+        if (ec.Includes("error",true))
+        {
+            if(this.Error == null) {
+
+                this.Error = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Error != null && ec.Excludes("error",true))
+        {
+            this.Error = null;
+        }
+        //      C# -> System.String? SnapshotCreationTimestamp
+        // GraphQL -> snapshotCreationTimestamp: String (scalar)
+        if (ec.Includes("snapshotCreationTimestamp",true))
+        {
+            if(this.SnapshotCreationTimestamp == null) {
+
+                this.SnapshotCreationTimestamp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotCreationTimestamp != null && ec.Excludes("snapshotCreationTimestamp",true))
+        {
+            this.SnapshotCreationTimestamp = null;
+        }
+        //      C# -> System.String? TaskchainUuid
+        // GraphQL -> taskchainUuid: UUID (scalar)
+        if (ec.Includes("taskchainUuid",true))
+        {
+            if(this.TaskchainUuid == null) {
+
+                this.TaskchainUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainUuid != null && ec.Excludes("taskchainUuid",true))
+        {
+            this.TaskchainUuid = null;
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: UUID! (scalar)
+        if (ec.Includes("workloadId",true))
+        {
+            if(this.WorkloadId == null) {
+
+                this.WorkloadId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
+        {
+            this.WorkloadId = null;
+        }
+    }
+
+
+    #endregion
+
+    } // class WorkloadSnapshotDetails
+    
+    #endregion
+
+    public static class ListWorkloadSnapshotDetailsExtensions
+    {
+        // This SDK uses the convention of defining field specs as
+        // the collection of properties that are not null in an object.
+        // When creating a field spec for an object, we look at whether
+        // the object is a list or not, and whether it implements an interface
+        // or not. The following are the possible combinations:
+        // S or L: single object or list object
+        // SD or II: self-defined or interface-implementing
+        // | S/L | SD/II | How fied spec is created
+        // |-----|-------|-------------------------
+        // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
+        // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
+        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
+        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        //
+        // Note that L-II means that each item in the list is II (not the list itself).
+        // This function handles L-SD and L-II cases.
+        public static string AsFieldSpec(
+            this List<WorkloadSnapshotDetails> list,
+            FieldSpecConfig? conf=null)
+        {
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
+        }
+
+        public static List<string> SelectedFields(this List<WorkloadSnapshotDetails> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
+        public static void ApplyExploratoryFieldSpec(
+            this List<WorkloadSnapshotDetails> list, 
+            AutofieldContext ec)
+        {
+            if ( list.Count == 0 ) {
+                list.Add(new WorkloadSnapshotDetails());
+            }
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void SelectForRetrieval(this List<WorkloadSnapshotDetails> list)
+        {
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
+        }
+    }
+
+
+} // namespace RubrikSecurityCloud.Types

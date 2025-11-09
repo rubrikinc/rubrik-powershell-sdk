@@ -15,6 +15,12 @@ Verify whether the trigger RCV GRS failover quorum authorization policy is set.
 
 - The istriggergrstprconfigured subcommand takes no arguments.
 - Returns System.Boolean.
+### migrationinfo
+Gets migration related information for a location undergoing conversion
+to an RCV location.
+
+- There is a single argument of type System.String.
+- Returns list of PerLocationMigrationInfos.
 ### privateendpointconnections
 Get private endpoint connection approval request.
 

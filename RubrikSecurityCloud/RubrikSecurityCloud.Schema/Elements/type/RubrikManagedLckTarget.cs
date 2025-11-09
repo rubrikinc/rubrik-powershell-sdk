@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilitySupported")]
+        public System.Boolean? IsComplianceImmutabilitySupported { get; set; }
+
         //      C# -> System.String? KmsMasterKeyId
         // GraphQL -> kmsMasterKeyId: String! (scalar)
         [JsonProperty("kmsMasterKeyId")]
@@ -219,6 +224,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
+        System.Boolean? IsComplianceImmutabilitySupported = null,
         System.String? KmsMasterKeyId = null,
         System.String? Name = null,
         System.String? RoleName = null,
@@ -299,6 +305,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
+        }
+        if ( IsComplianceImmutabilitySupported != null ) {
+            this.IsComplianceImmutabilitySupported = IsComplianceImmutabilitySupported;
         }
         if ( KmsMasterKeyId != null ) {
             this.KmsMasterKeyId = KmsMasterKeyId;
@@ -549,6 +558,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isArchived\n" ;
             } else {
                 s += ind + "isArchived\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (this.IsComplianceImmutabilitySupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComplianceImmutabilitySupported\n" ;
+            } else {
+                s += ind + "isComplianceImmutabilitySupported\n" ;
             }
         }
         //      C# -> System.String? KmsMasterKeyId
@@ -1047,6 +1065,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsArchived != null && ec.Excludes("isArchived",true))
         {
             this.IsArchived = null;
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (ec.Includes("isComplianceImmutabilitySupported",true))
+        {
+            if(this.IsComplianceImmutabilitySupported == null) {
+
+                this.IsComplianceImmutabilitySupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComplianceImmutabilitySupported != null && ec.Excludes("isComplianceImmutabilitySupported",true))
+        {
+            this.IsComplianceImmutabilitySupported = null;
         }
         //      C# -> System.String? KmsMasterKeyId
         // GraphQL -> kmsMasterKeyId: String! (scalar)

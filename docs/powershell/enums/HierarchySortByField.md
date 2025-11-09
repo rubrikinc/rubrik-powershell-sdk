@@ -167,3 +167,23 @@ Fields for sorting hierarchy objects.
 +mo:sort:db:table=managed_object
 +mo:sort:db:column=object_type
 +mo:sort:db:index:key=NULL
+- DB2_DATABASE_HOST_LIST - Sort DB2 databases based on the hosts list.
++mo:filter:db:table=cdm_udf_db
++mo:filter:db:column=database_id
++mo:filter:db:index:key=cluster_mds_index_v2
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:table=cdm_udf_db_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=host_ids
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true

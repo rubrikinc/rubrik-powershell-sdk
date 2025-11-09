@@ -39,5 +39,7 @@ Input to update SLA Domain.
   - Specifies if the SLA Domain to be updated must be Retention Locked or not.
 - backupLocationSpecs: list of BackupLocationSpecInputs
   - Specifies the list of backup location specifications for the SLA Domain.
+- failoverGroupId: System.String
+  - Specifies the failover group ID for the HA SLA Domain. Required for HA SLAs, omit for non-HA SLAs.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode for the intended SLA Domain update.

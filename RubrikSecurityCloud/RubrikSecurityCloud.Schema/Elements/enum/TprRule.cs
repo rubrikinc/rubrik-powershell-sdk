@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LEGAL_HOLD")]
         LEGAL_HOLD,
 
+        [EnumMember(Value = "MANAGE_SECURITY_SETTINGS")]
+        MANAGE_SECURITY_SETTINGS,
+
         [EnumMember(Value = "MODIFY_AIR_GAPPED_STATUS")]
         MODIFY_AIR_GAPPED_STATUS,
 

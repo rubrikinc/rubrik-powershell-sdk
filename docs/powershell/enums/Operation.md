@@ -222,6 +222,8 @@ Operations defined in the RBAC system.
 - DOWNLOAD_ENTRA_ID_SECRETS - Download Entra ID secrets.
 - MANAGE_SERVICE_ACCOUNT_CREDENTIALS - Rotate service account secret.
 - SEND_LICENSE_NOTIFICATION - Send license notification.
+- MANAGE_CLASSIFICATION_SETTINGS - Manage classification banner and login settings.
+- MANAGE_RUBY - Manage Ruby (LLM) settings, including enablement.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

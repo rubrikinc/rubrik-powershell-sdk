@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pam")]
         public PamIntegrationConfigInput? Pam { get; set; }
 
+        //      C# -> CrowdStrikeIntegrationConfigInput? CrowdStrike
+        // GraphQL -> crowdStrike: CrowdStrikeIntegrationConfigInput (input)
+        [JsonProperty("crowdStrike")]
+        public CrowdStrikeIntegrationConfigInput? CrowdStrike { get; set; }
+
 
         #endregion
 

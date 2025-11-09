@@ -24,6 +24,8 @@ Specifies whether SSL certificates are required for the connection.
 Path to the SSL key file.
 - sslCertfilePath: System.String
   - Path to the SSL certificate file.
+- mongoClientHosts: list of MongoClientHostInputs
+  - List of mongos details hosting the MongoDB deployment. For an existing sharded deployment protected using config server seed nodes, provide the mongos seed nodes for at least one node after installing RBS. This enables the transition to use the recommended approach of protecting the MongoDB workload with a mongos type node.
 - sourceAuthenticationType: MongoAuthenticationType
   - Supported in v9.0+
 Type of user authentication used when adding the MongoDB cluster.

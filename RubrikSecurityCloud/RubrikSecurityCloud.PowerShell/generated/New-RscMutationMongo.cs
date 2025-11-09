@@ -416,6 +416,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sslCertfilePath = $someString
     /// 		# OPTIONAL
+    /// 		mongoClientHosts = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				configurationPort = $someInt
+    /// 				# REQUIRED
+    /// 				hostId = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 	}
     /// 	# REQUIRED
@@ -1141,6 +1150,15 @@ $query.Var.input = @{
 		sslKeyfilePath = $someString
 		# OPTIONAL
 		sslCertfilePath = $someString
+		# OPTIONAL
+		mongoClientHosts = @(
+			@{
+				# REQUIRED
+				configurationPort = $someInt
+				# REQUIRED
+				hostId = $someString
+			}
+		)
 		# OPTIONAL
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 	}

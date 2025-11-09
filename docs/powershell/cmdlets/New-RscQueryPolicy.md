@@ -12,6 +12,16 @@ All unarchived custom TPR policies.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - TprPolicyFilterInput: Input for filtering a list of TPR policies.
 - Returns CustomTprPolicyConnection.
+### hapolicies
+Queries high-availability policies for managing failover groups.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - HaPolicyFilter: Filters to apply to the query.
+- Returns HaPolicyConnection.
 ### isvalidtprpolicyname
 Validate the name of a TPR policy.
 

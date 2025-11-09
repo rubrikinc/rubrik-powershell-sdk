@@ -9,3 +9,5 @@ Input for recovering NAS Cloud Direct multi-paths.
   - Export ID of NAS Cloud Direct destination share.
 - dstExportFid: System.Int32
   - FID of NAS Cloud Direct destination share.
+- aclOnly: System.Boolean
+  - Whether to restore only ACLs without file content.

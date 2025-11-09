@@ -3061,24 +3061,6 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
-        //      C# -> System.String? UpdateCertificateCloudAccountMappings
-        // GraphQL -> updateCertificateCloudAccountMappings: Void (scalar)
-        public static string UpdateCertificateCloudAccountMappings(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "updateCertificateCloudAccountMappings" + args + "\n";
-        }
-        public static object UpdateCertificateCloudAccountMappingsFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            // there is no field spec for scalar types, but we still
-            // populate the fieldSpec so that caller can see the type 
-            return "FETCH" ;
-        }
-
         //      C# -> System.String? UpdateCertificateUsagesForCloudAccount
         // GraphQL -> updateCertificateUsagesForCloudAccount: Void (scalar)
         public static string UpdateCertificateUsagesForCloudAccount(object fsObj)
@@ -9865,6 +9847,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetOrCreateByokAzureAppReply? GetOrCreateByokAzureApp
+        // GraphQL -> getOrCreateByokAzureApp: GetOrCreateByokAzureAppReply! (type)
+        public static string GetOrCreateByokAzureApp(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "getOrCreateByokAzureApp" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GetOrCreateByokAzureAppFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetOrCreateByokAzureAppReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GetPendingSlaAssignmentsReply? GetPendingSlaAssignments
         // GraphQL -> getPendingSlaAssignments: GetPendingSlaAssignmentsReply! (type)
         public static string GetPendingSlaAssignments(object fsObj)
@@ -13173,6 +13173,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new TakeOnDemandSnapshotReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TakeOnDemandSnapshotSyncReply? TakeOnDemandSnapshotSync
+        // GraphQL -> takeOnDemandSnapshotSync: TakeOnDemandSnapshotSyncReply! (type)
+        public static string TakeOnDemandSnapshotSync(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "takeOnDemandSnapshotSync" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TakeOnDemandSnapshotSyncFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new TakeOnDemandSnapshotSyncReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

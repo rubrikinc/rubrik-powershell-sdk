@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilitySupported")]
+        public System.Boolean? IsComplianceImmutabilitySupported { get; set; }
+
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)
         [JsonProperty("isConsolidationEnabled")]
@@ -246,6 +251,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
+        System.Boolean? IsComplianceImmutabilitySupported = null,
         System.Boolean? IsConsolidationEnabled = null,
         System.String? KmsEndpoint = null,
         System.String? KmsMasterKeyId = null,
@@ -335,6 +341,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
+        }
+        if ( IsComplianceImmutabilitySupported != null ) {
+            this.IsComplianceImmutabilitySupported = IsComplianceImmutabilitySupported;
         }
         if ( IsConsolidationEnabled != null ) {
             this.IsConsolidationEnabled = IsConsolidationEnabled;
@@ -616,6 +625,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isArchived\n" ;
             } else {
                 s += ind + "isArchived\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (this.IsComplianceImmutabilitySupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComplianceImmutabilitySupported\n" ;
+            } else {
+                s += ind + "isComplianceImmutabilitySupported\n" ;
             }
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
@@ -1191,6 +1209,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsArchived != null && ec.Excludes("isArchived",true))
         {
             this.IsArchived = null;
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (ec.Includes("isComplianceImmutabilitySupported",true))
+        {
+            if(this.IsComplianceImmutabilitySupported == null) {
+
+                this.IsComplianceImmutabilitySupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComplianceImmutabilitySupported != null && ec.Excludes("isComplianceImmutabilitySupported",true))
+        {
+            this.IsComplianceImmutabilitySupported = null;
         }
         //      C# -> System.Boolean? IsConsolidationEnabled
         // GraphQL -> isConsolidationEnabled: Boolean! (scalar)

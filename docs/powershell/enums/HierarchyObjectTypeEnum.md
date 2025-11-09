@@ -1,186 +1,186 @@
 ### HierarchyObjectTypeEnum
-Type of hierarchy object.
+Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 
-- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
-- OPENSTACK_ENVIRONMENT - OpenStack Environment.
-- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
-- K8S_CLUSTER - Kubernetes cluster.
-- MYSQLDB_DATABASE - MySQL Database.
-- M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
-- OPENSTACK_DOMAIN - OpenStack Domain.
-- KuprNamespace
-- HostShare
-- SALESFORCE_OBJECT - Salesforce object.
-- MssqlDatabaseBatchMaintenance
-- OLVM_HOST - OLVM Host.
-- OracleRac
-- MYSQLDB_INSTANCE - MySQL Instance.
-- NUTANIX_CATEGORY - Nutanix Category.
-- VcdOrg
-- K8S_LABEL - Kubernetes label.
-- O365Teams
-- CLOUD_DIRECT_NAS_NAMESPACE
-- VSPHERE_VIRTUAL_DISK - VSphere Virtual Disk.
-- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
-- MONGO_DB - MongoDB database.
-- O365Onedrive
-- Hdfs
-- CASSANDRA_SOURCE - Cassandra Source.
-- D365_FIXED_OBJECT - D365 Metadata.
-- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
-- SapHanaSystem - SAP HANA System.
-- KuprCluster
-- GcpNativeProject
-- AwsNativeRdsInstance
-- FeldsparSite
-- K8S_VIRTUAL_MACHINE - Kubernetes virtual machine.
-- OPENSTACK_AVAILABILITY_ZONE - OpenStack Availability Zone.
-- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organization Unit.
-- VolumeGroup
-- AZURE_SQL_MANAGED_INSTANCE_DB
-- MONGO_COLLECTION - MongoDB Collection.
-- SAP_HANA_SYSTEM - SAP HANA System.
-- RubrikEc2Instance
-- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
-- M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
-- O365Group
-- FilesetTemplate
-- MONGO_COLLECTION_SET - MongoDB Database.
-- VSphereComputeCluster
-- OracleDatabase
-- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organization.
-- VSPHERE_DATACENTER_FOLDER - VSphere datacenter folder.
-- VSphereDatacenter
-- PhysicalHost
-- ATLASSIAN_SITE - Atlassian site.
-- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
-- MONGODB_SOURCE - MongoDB Source Cluster.
-- POSTGRES_DB_CLUSTER - Postgres Database Cluster.
-- VSphereVCenter
-- HypervServer
-- AwsNativeRegion
-- O365SharePointList
-- VmwareVirtualMachine
-- AllSubHierarchyType
-- POSTGRES_DATABASE - PostgreSQL Database.
-- ORCHESTRATED_APPLICATION_RECOVERY_PLAN - Orchestrated Application Recovery Plan.
-- O365SharePointDrive
-- ShareFileset
-- MONGODB_COLLECTION - MongoDB Collection.
-- HOST_FAILOVER_CLUSTER - Host Failover Cluster.
-- HypervVirtualMachine
-- AwsNativeEc2Instance
-- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
-- O365Mailbox
-- D365_ORGANIZATION - D365 Organization.
-- VSPHERE_DATASTORE_CLUSTER - VSphere Datastore cluster.
-- AwsNativeAccount
-- AZURE_STORAGE_ACCOUNT - Azure Storage Account.
-- GcpNativeGCEInstance
-- WindowsVolumeGroup
-- O365Org
-- OPENSTACK_PROJECT - OpenStack Project.
-- VSphereFolder
-- AzureNativeVm
-- AZURE_DEVOPS_PROJECT - Azure DevOps Project.
-- AZURE_SQL_DATABASE_DB
-- OLVM_MANAGER - OLVM Manager.
-- AzureSqlManagedInstanceServer
-- WindowsFileset
-- CloudNativeTagRule
-- JIRA_FIXED_OBJECT - Jira fixed object.
-- WindowsCluster
-- Db2Database
-- Mssql
-- NAS_FILESET - NAS Fileset.
-- ACTIVE_DIRECTORY_FOREST - Active Directory forest.
-- CLOUD_DIRECT_NAS_SYSTEM
-- AZURE_AD_DIRECTORY - Azure AD Directory.
-- AzureNativeResourceGroup
-- VSphereTagCategory
-- MONGODB_DATABASE - MongoDB Database.
-- Fileset
-- NasSystem
-- GOOGLE_WORKSPACE_USER - Google Workspace User.
-- AZURE_DEVOPS_ORGANIZATION - Azure DevOps Organization.
-- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
-- D365_DATAVERSE_TABLE - D365 Dataverse Table.
-- O365Calendar
-- K8S_PROTECTION_SET - Kubernetes Protection Set.
-- EXCHANGE_HOST - Exchange Host.
-- MONGO_SOURCE - MongoDB Source.
-- O365File
-- AwsNativeEbsVolume
-- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
-- MANAGED_VOLUME_EXPORT - Managed Volume Export.
-- VSphereNetwork
-- CASSANDRA_COLUMN_FAMILY - Cassandra Column Family.
-- VcdOrgVdc
-- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
-- NasVolume
-- VcdCatalog
-- EXCHANGE_SERVER - Exchange Server.
-- ManagedVolume - Managed Volume.
-- OKTA_TENANT - Okta tenant.
-- Vcd
-- AzureNativeManagedDisk
-- Db2Instance
-- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
-- LinuxFileset
-- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
-- MSSQL_HOST - MSSQL Host.
-- O365Site
-- OPENSTACK_HOST - OpenStack Host.
-- K8S_NAMESPACE_V2 - Kubernetes namespace v2.
-- SALESFORCE_ORGANIZATION - Salesforce organization.
-- M365_BACKUP_STORAGE_USER - M365 Backup Storage User.
-- RubrikEbsVolume
-- NasShare
-- VcdVapp
-- VSphereDatastore
-- OLVM_DATACENTER - OLVM Datacenter.
-- VSphereTag
-- ExchangeDatabase - Exchange Database.
-- MssqlAvailabilityGroup
-- M365_BACKUP_STORAGE_SITE - M365 Backup Storage Sharepoint Site.
-- VSPHERE_CONTENT_LIBRARY - VSphere Content Library.
-- Blueprint
-- VcdVimServer
-- MONGO_DATABASE - MongoDB Database.
-- Ec2Instance
-- CONFLUENCE_SPACE - Confluence space.
-- NUTANIX_ERA - Nutanix Era.
+- AllSubHierarchyType - All Sub Hierarchy Type.
 - ORCHESTRATED_APPLICATION_RECOVERY_BLUEPRINT - Orchestrated Application Recovery Blueprint.
-- AzureNativeRegion
-- HypervCluster
-- JIRA_PROJECT - Jira project.
-- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
-- OPENSTACK_REGION - OpenStack Region.
-- StorageArrayVolumeGroup
-- SnapMirrorCloud
-- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
-- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
-- HypervSCVMM
-- SALESFORCE_FIXED_OBJECT - Salesforce metadata.
-- AppBlueprint
-- NasNamespace
-- OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.
-- NutanixVirtualMachine
-- AzureNativeSubscription
-- NUTANIX_CATEGORY_VALUE - Nutanix Category Value.
-- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
-- MssqlInstance
-- O365User
+- ORCHESTRATED_APPLICATION_RECOVERY_PLAN - Orchestrated Application Recovery Plan.
+- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest.
+- AwsNativeAccount - Aws Native Account.
+- AwsNativeRegion - Aws Native Region.
+- AzureNativeSubscription - Azure Native Subscription.
+- AzureNativeRegion - Azure Native Region.
+- AzureNativeResourceGroup - Azure Native Resource Group.
+- AzureSqlDatabaseServer - Azure Sql Database Server.
+- AzureSqlManagedInstanceServer - Azure Sql Managed Instance Server.
+- CloudNativeTagRule - Cloud Native Tag Rule.
+- Db2Instance - Db2instance.
 - EXCHANGE_DAG - Exchange DAG.
+- EXCHANGE_HOST - Exchange Host.
+- EXCHANGE_SERVER - Exchange Server.
 - FAILOVER_CLUSTER_APP - Failover Cluster App.
-- VSphereHost
-- M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
+- GcpNativeProject - Gcp Native Project.
+- HOST_FAILOVER_CLUSTER - Host Failover Cluster.
+- HostShare - Host Share.
+- HypervCluster - Hyperv Cluster.
+- HypervSCVMM - Hyperv SCVMM.
+- HypervServer - Hyperv Server.
+- ATLASSIAN_SITE - Atlassian site.
+- SALESFORCE_ORGANIZATION - Salesforce organization.
+- D365_ORGANIZATION - D365 Organization.
+- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organization.
+- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organization Unit.
+- GOOGLE_WORKSPACE_USER - Google Workspace User.
+- K8S_CLUSTER - Kubernetes cluster.
+- K8S_LABEL - Kubernetes label.
+- K8S_NAMESPACE_V2 - Kubernetes namespace v2.
+- KuprCluster - Kupr Cluster.
+- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_USER - M365 Backup Storage User.
+- M365_BACKUP_STORAGE_GROUP - M365 Backup Storage Group.
+- MANAGED_VOLUME_EXPORT - Managed Volume Export.
+- MssqlAvailabilityGroup - Mssql Availability Group.
+- MSSQL_HOST - MSSQL Host.
+- MssqlInstance - Mssql Instance.
+- MYSQLDB_DATABASE - MySQL Database.
+- NasNamespace - Nas Namespace.
+- NasShare - Nas Share.
+- NasSystem - Nas System.
+- NasVolume - Nas Volume.
+- NutanixCluster - Nutanix Cluster.
+- NUTANIX_ERA - Nutanix Era.
+- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central.
+- NUTANIX_CATEGORY - Nutanix Category.
+- NUTANIX_CATEGORY_VALUE - Nutanix Category Value.
+- O365Org - O365org.
+- O365User - O365user.
+- O365Group - O365group.
+- OPENSTACK_AVAILABILITY_ZONE - OpenStack Availability Zone.
+- OPENSTACK_DOMAIN - OpenStack Domain.
+- OPENSTACK_ENVIRONMENT - OpenStack Environment.
+- OPENSTACK_HOST - OpenStack Host.
+- OPENSTACK_PROJECT - OpenStack Project.
+- OPENSTACK_REGION - OpenStack Region.
+- OLVM_MANAGER - OLVM Manager.
+- OLVM_DATACENTER - OLVM Datacenter.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- OLVM_HOST - OLVM Host.
+- OracleHost - Oracle Host.
+- OracleRac - Oracle Rac.
+- PhysicalHost - Physical Host.
+- POSTGRES_DATABASE - PostgreSQL Database.
+- FilesetTemplate - Fileset Template.
+- Vcd - Vcd.
+- VcdVimServer - Vcd Vim Server.
+- VcdOrg - Vcd Org.
+- VcdOrgVdc - Vcd Org Vdc.
+- VcdCatalog - Vcd Catalog.
+- VSphereComputeCluster - V Sphere Compute Cluster.
+- VSPHERE_CONTENT_LIBRARY - VSphere Content Library.
+- VSphereDatacenter - V Sphere Datacenter.
+- VSphereDatastore - V Sphere Datastore.
+- VSPHERE_DATASTORE_CLUSTER - VSphere Datastore cluster.
+- VSphereNetwork - V Sphere Network.
+- VSphereResourcePool - V Sphere Resource Pool.
+- VSphereFolder - V Sphere Folder.
+- VSPHERE_DATACENTER_FOLDER - VSphere datacenter folder.
+- VSphereHost - V Sphere Host.
+- VSphereTag - V Sphere Tag.
+- VSphereTagCategory - V Sphere Tag Category.
+- VSphereVCenter - V Sphere V Center.
+- VSPHERE_VIRTUAL_DISK - VSphere Virtual Disk.
+- WindowsCluster - Windows Cluster.
+- MONGO_DB - MongoDB database.
+- SapHanaSystem - SAP HANA System.
+- Blueprint - Blueprint.
+- FeldsparSite - Feldspar Site.
+- CLOUD_DIRECT_NAS_NAMESPACE - CLOUD DIRECT NAS NAMESPACE.
+- CLOUD_DIRECT_NAS_SYSTEM - CLOUD DIRECT NAS SYSTEM.
+- AZURE_DEVOPS_ORGANIZATION - Azure DevOps Organization.
+- AZURE_DEVOPS_PROJECT - Azure DevOps Project.
+- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
+- AppBlueprint - App Blueprint.
+- Db2Database - Db2database.
+- Ec2Instance - Ec2instance.
+- ExchangeDatabase - Exchange Database.
+- Fileset - Fileset.
+- Hdfs - Hdfs.
+- HypervVirtualMachine - Hyperv Virtual Machine.
+- K8S_PROTECTION_SET - Kubernetes Protection Set.
+- K8S_VIRTUAL_MACHINE - Kubernetes virtual machine.
+- LinuxFileset - Linux Fileset.
+- ManagedVolume - Managed Volume.
+- MONGO_COLLECTION - MongoDB Collection.
+- MONGO_COLLECTION_SET - MongoDB Database.
+- MONGO_DATABASE - MongoDB Database.
+- MONGO_SOURCE - MongoDB Source.
+- Mssql - Mssql.
+- MssqlDatabaseBatchMaintenance - Mssql Database Batch Maintenance.
+- MYSQLDB_INSTANCE - MySQL Instance.
+- NAS_FILESET - NAS Fileset.
+- NutanixVirtualMachine - Nutanix Virtual Machine.
+- ORACLE_DATA_GUARD_GROUP - ORACLE DATA GUARD GROUP.
+- OPENSTACK_VIRTUAL_MACHINE - OpenStack Virtual Machine.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- OracleDatabase - Oracle Database.
+- POSTGRES_DB_CLUSTER - Postgres Database Cluster.
 - SapHanaDatabase - SAP HANA Database.
-- GcpNativeDisk
+- SAP_HANA_SYSTEM - SAP HANA System.
+- ShareFileset - Share Fileset.
+- SnapMirrorCloud - Snap Mirror Cloud.
+- StorageArrayVolumeGroup - Storage Array Volume Group.
+- VcdVapp - Vcd Vapp.
+- VmwareVirtualMachine - Vmware Virtual Machine.
+- VolumeGroup - Volume Group.
+- WindowsFileset - Windows Fileset.
+- WindowsVolumeGroup - Windows Volume Group.
 - INFORMIX_INSTANCE - Informix Instance.
-- NutanixCluster
+- O365Calendar - O365calendar.
+- O365Mailbox - O365mailbox.
+- O365Onedrive - O365onedrive.
+- O365Site - O365site.
+- O365SharePointDrive - O365share Point Drive.
+- O365SharePointList - O365share Point List.
+- O365Teams - O365teams.
+- O365File - O365file.
+- AwsNativeEc2Instance - Aws Native Ec2instance.
+- AwsNativeEbsVolume - Aws Native Ebs Volume.
+- AwsNativeRdsInstance - Aws Native Rds Instance.
+- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
+- RubrikEbsVolume - Rubrik Ebs Volume.
+- RubrikEc2Instance - Rubrik Ec2instance.
+- AzureNativeVm - Azure Native Virtual Machine.
+- AzureNativeManagedDisk - Azure Native Managed Disk.
+- GcpNativeGCEInstance - Gcp Native GCE Instance.
+- GcpNativeDisk - Gcp Native Disk.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
+- KuprNamespace - Kupr Namespace.
+- CASSANDRA_SOURCE - Cassandra Source.
 - CASSANDRA_KEYSPACE - Cassandra Keyspace.
-- VSphereResourcePool
-- ORACLE_DATA_GUARD_GROUP
-- OracleHost
-- AzureSqlDatabaseServer
+- CASSANDRA_COLUMN_FAMILY - Cassandra Column Family.
+- MONGODB_SOURCE - MongoDB Source Cluster.
+- MONGODB_DATABASE - MongoDB Database.
+- MONGODB_COLLECTION - MongoDB Collection.
+- AZURE_SQL_DATABASE_DB - AZURE SQL DATABASE DB.
+- AZURE_SQL_MANAGED_INSTANCE_DB - AZURE SQL MANAGED INSTANCE DB.
+- AZURE_STORAGE_ACCOUNT - Azure Storage Account.
+- AZURE_AD_DIRECTORY - Azure AD Directory.
+- JIRA_PROJECT - Jira project.
+- JIRA_FIXED_OBJECT - Jira fixed object.
+- SALESFORCE_OBJECT - Salesforce object.
+- SALESFORCE_FIXED_OBJECT - Salesforce metadata.
+- D365_DATAVERSE_TABLE - D365 Dataverse Table.
+- D365_FIXED_OBJECT - D365 Metadata.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- CONFLUENCE_SPACE - Confluence space.
+- M365_BACKUP_STORAGE_MAILBOX - M365 Backup Storage Mailbox.
+- M365_BACKUP_STORAGE_ONEDRIVE - M365 Backup Storage Onedrive.
+- M365_BACKUP_STORAGE_SITE - M365 Backup Storage Sharepoint Site.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
+- OKTA_TENANT - Okta tenant.
+- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.

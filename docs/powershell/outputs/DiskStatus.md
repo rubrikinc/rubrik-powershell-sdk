@@ -15,14 +15,18 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 - raidStatus: System.String
   - RAID status of the disk (NONE, OPTIMAL, READY_TO_REBUILD, REBUILDING, DEGRADED, OFFLINE).
+- raidRebuildingPercentage: System.Single
+  - RAID rebuilding percentage (0-100) when RAID status is REBUILDING.
 - manufacturer: System.String
   - The manufacturer of the disk.
 - raidType: System.String
   - RAID type of the disk (RAID0, RAID1).
 - diskMode: System.String
-  - The disk mode of the disk (DATA, METADATA, BOOT).
+  - Disk mode of the disk. One of DATA, METADATA, BOOT, UNPARTITIONED, or UNKNOWN.
 - raidError: System.String
   - RAID error message if any.
+- hasIndicatorLed: System.Boolean
+  - Denotes whether a specific disk supports an admin-controllable indicator LED.
 - modelNumber: System.String
   - The model number of the disk.
 - serialNumber: System.String

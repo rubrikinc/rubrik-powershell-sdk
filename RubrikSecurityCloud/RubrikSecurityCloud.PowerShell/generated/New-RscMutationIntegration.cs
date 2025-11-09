@@ -159,6 +159,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				$someString
     /// 			)
     /// 		}
+    /// 		# OPTIONAL
+    /// 		crowdStrike = @{
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -259,6 +266,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					ipAddresses = @(
     /// 						$someString
     /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				crowdStrike = @{
+    /// 					# REQUIRED
+    /// 					clientId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -457,6 +471,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				$someString
     /// 			)
     /// 		}
+    /// 		# OPTIONAL
+    /// 		crowdStrike = @{
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -559,6 +580,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					ipAddresses = @(
     /// 						$someString
     /// 					)
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				crowdStrike = @{
+    /// 					# REQUIRED
+    /// 					clientId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -795,6 +823,13 @@ $query.Var.input = @{
 				$someString
 			)
 		}
+		# OPTIONAL
+		crowdStrike = @{
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+		}
 	}
 }"
             );
@@ -887,6 +922,13 @@ $query.Var.input = @{
 					ipAddresses = @(
 						$someString
 					)
+				}
+				# OPTIONAL
+				crowdStrike = @{
+					# REQUIRED
+					clientId = $someString
+					# REQUIRED
+					clientSecret = $someString
 				}
 			}
 		}
@@ -1053,6 +1095,13 @@ $query.Var.input = @{
 				$someString
 			)
 		}
+		# OPTIONAL
+		crowdStrike = @{
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+		}
 	}
 }"
             );
@@ -1147,6 +1196,13 @@ $query.Var.input = @{
 					ipAddresses = @(
 						$someString
 					)
+				}
+				# OPTIONAL
+				crowdStrike = @{
+					# REQUIRED
+					clientId = $someString
+					# REQUIRED
+					clientSecret = $someString
 				}
 			}
 		}

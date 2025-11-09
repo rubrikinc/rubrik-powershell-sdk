@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tier")]
         public AzureStorageTier? Tier { get; set; }
 
+        //      C# -> RcsTierEnumType? RcvTier
+        // GraphQL -> rcvTier: RcsTierEnumType (enum)
+        [JsonProperty("rcvTier")]
+        public RcsTierEnumType? RcvTier { get; set; }
+
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         [Required]

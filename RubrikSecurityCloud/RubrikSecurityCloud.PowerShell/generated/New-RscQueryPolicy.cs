@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 10
     /// operations in the 'Policy' API domain:
-    /// CustomTprPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, TopRiskPolicySummaries, or TprPolicyDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 10 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CustomTprPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// one of: CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, TopRiskPolicySummaries, or TprPolicyDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -116,6 +116,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CustomTprPolicyConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HaPolicies operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: HaPolicies
+    /// 
+    /// $query = New-RscQueryPolicy -Operation HaPolicies
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	status = @(
+    /// 		$someFailoverGroupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverGroupStatus]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HaPolicyConnection
     /// 
     /// 
     /// 
@@ -404,6 +447,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "CustomTprPolicies",
+                "HaPolicies",
                 "IsValidTprPolicyName",
                 "OrgSecurityPolicy",
                 "PasswordComplexityPolicy",
@@ -429,6 +473,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "CustomTprPolicies":
                         this.ProcessRecord_CustomTprPolicies();
+                        break;
+                    case "HaPolicies":
+                        this.ProcessRecord_HaPolicies();
                         break;
                     case "IsValidTprPolicyName":
                         this.ProcessRecord_IsValidTprPolicyName();
@@ -471,6 +518,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CustomTprPolicies";
             // Create new graphql operation customTprPolicies
             InitQueryCustomTprPolicies();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // haPolicies.
+        internal void ProcessRecord_HaPolicies()
+        {
+            this._logger.name += " -HaPolicies";
+            // Create new graphql operation haPolicies
+            InitQueryHaPolicies();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -594,6 +650,51 @@ $query.Var.filter = @{
 	# OPTIONAL
 	policyIds = @(
 		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // haPolicies(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: HaPolicyFilter
+        //   ): HaPolicyConnection!
+        internal void InitQueryHaPolicies()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "HaPolicyFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHaPolicies",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: HaPolicyFilter)",
+                "HaPolicyConnection",
+                Query.HaPolicies,
+                Query.HaPoliciesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	status = @(
+		$someFailoverGroupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverGroupStatus]) for enum values.
 	)
 }"
             );

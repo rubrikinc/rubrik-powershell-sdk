@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZUREGOV")]
         AZUREGOV,
 
+        [EnumMember(Value = "BYOK_GOV")]
+        BYOK_GOV,
+
         [EnumMember(Value = "EXCHANGE")]
         EXCHANGE,
 

@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("destShareFid")]
         public System.String? DestShareFid { get; set; }
 
+        //      C# -> System.Boolean? AclOnly
+        // GraphQL -> aclOnly: Boolean (scalar)
+        [JsonProperty("aclOnly")]
+        public System.Boolean? AclOnly { get; set; }
+
 
         #endregion
 

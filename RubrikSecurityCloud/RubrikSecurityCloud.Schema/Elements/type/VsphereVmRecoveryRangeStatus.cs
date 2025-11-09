@@ -1,4 +1,4 @@
-// CloudNativeCertificateInfo.cs
+// VsphereVmRecoveryRangeStatus.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,25 +15,25 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region CloudNativeCertificateInfo
-    public class CloudNativeCertificateInfo: BaseType
+    #region VsphereVmRecoveryRangeStatus
+    public class VsphereVmRecoveryRangeStatus: BaseType
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
+        //      C# -> RecoveryRangeStatus? Status
+        // GraphQL -> status: RecoveryRangeStatus! (enum)
+        [JsonProperty("status")]
+        public RecoveryRangeStatus? Status { get; set; }
 
-        //      C# -> System.Boolean? IsUsed
-        // GraphQL -> isUsed: Boolean! (scalar)
-        [JsonProperty("isUsed")]
-        public System.Boolean? IsUsed { get; set; }
+        //      C# -> System.String? BeginTime
+        // GraphQL -> beginTime: String (scalar)
+        [JsonProperty("beginTime")]
+        public System.String? BeginTime { get; set; }
 
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [JsonProperty("name")]
-        public System.String? Name { get; set; }
+        //      C# -> System.String? EndTime
+        // GraphQL -> endTime: String (scalar)
+        [JsonProperty("endTime")]
+        public System.String? EndTime { get; set; }
 
 
         #endregion
@@ -41,23 +41,23 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "CloudNativeCertificateInfo";
+        return "VsphereVmRecoveryRangeStatus";
     }
 
-    public CloudNativeCertificateInfo Set(
-        System.String? Id = null,
-        System.Boolean? IsUsed = null,
-        System.String? Name = null
+    public VsphereVmRecoveryRangeStatus Set(
+        RecoveryRangeStatus? Status = null,
+        System.String? BeginTime = null,
+        System.String? EndTime = null
     ) 
     {
-        if ( Id != null ) {
-            this.Id = Id;
+        if ( Status != null ) {
+            this.Status = Status;
         }
-        if ( IsUsed != null ) {
-            this.IsUsed = IsUsed;
+        if ( BeginTime != null ) {
+            this.BeginTime = BeginTime;
         }
-        if ( Name != null ) {
-            this.Name = Name;
+        if ( EndTime != null ) {
+            this.EndTime = EndTime;
         }
         return this;
     }
@@ -73,31 +73,31 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (this.Id != null) {
+        //      C# -> RecoveryRangeStatus? Status
+        // GraphQL -> status: RecoveryRangeStatus! (enum)
+        if (this.Status != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "id\n" ;
+                s += conf.Prefix + "status\n" ;
             } else {
-                s += ind + "id\n" ;
+                s += ind + "status\n" ;
             }
         }
-        //      C# -> System.Boolean? IsUsed
-        // GraphQL -> isUsed: Boolean! (scalar)
-        if (this.IsUsed != null) {
+        //      C# -> System.String? BeginTime
+        // GraphQL -> beginTime: String (scalar)
+        if (this.BeginTime != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "isUsed\n" ;
+                s += conf.Prefix + "beginTime\n" ;
             } else {
-                s += ind + "isUsed\n" ;
+                s += ind + "beginTime\n" ;
             }
         }
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        if (this.Name != null) {
+        //      C# -> System.String? EndTime
+        // GraphQL -> endTime: String (scalar)
+        if (this.EndTime != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "name\n" ;
+                s += conf.Prefix + "endTime\n" ;
             } else {
-                s += ind + "name\n" ;
+                s += ind + "endTime\n" ;
             }
         }
         return s;
@@ -107,67 +107,67 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (ec.Includes("id",true))
+        //      C# -> RecoveryRangeStatus? Status
+        // GraphQL -> status: RecoveryRangeStatus! (enum)
+        if (ec.Includes("status",true))
         {
-            if(this.Id == null) {
+            if(this.Status == null) {
 
-                this.Id = "FETCH";
+                this.Status = new RecoveryRangeStatus();
 
             } else {
 
 
             }
         }
-        else if (this.Id != null && ec.Excludes("id",true))
+        else if (this.Status != null && ec.Excludes("status",true))
         {
-            this.Id = null;
+            this.Status = null;
         }
-        //      C# -> System.Boolean? IsUsed
-        // GraphQL -> isUsed: Boolean! (scalar)
-        if (ec.Includes("isUsed",true))
+        //      C# -> System.String? BeginTime
+        // GraphQL -> beginTime: String (scalar)
+        if (ec.Includes("beginTime",true))
         {
-            if(this.IsUsed == null) {
+            if(this.BeginTime == null) {
 
-                this.IsUsed = true;
+                this.BeginTime = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.IsUsed != null && ec.Excludes("isUsed",true))
+        else if (this.BeginTime != null && ec.Excludes("beginTime",true))
         {
-            this.IsUsed = null;
+            this.BeginTime = null;
         }
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        if (ec.Includes("name",true))
+        //      C# -> System.String? EndTime
+        // GraphQL -> endTime: String (scalar)
+        if (ec.Includes("endTime",true))
         {
-            if(this.Name == null) {
+            if(this.EndTime == null) {
 
-                this.Name = "FETCH";
+                this.EndTime = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.Name != null && ec.Excludes("name",true))
+        else if (this.EndTime != null && ec.Excludes("endTime",true))
         {
-            this.Name = null;
+            this.EndTime = null;
         }
     }
 
 
     #endregion
 
-    } // class CloudNativeCertificateInfo
+    } // class VsphereVmRecoveryRangeStatus
     
     #endregion
 
-    public static class ListCloudNativeCertificateInfoExtensions
+    public static class ListVsphereVmRecoveryRangeStatusExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -186,14 +186,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<CloudNativeCertificateInfo> list,
+            this List<VsphereVmRecoveryRangeStatus> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<CloudNativeCertificateInfo> list)
+        public static List<string> SelectedFields(this List<VsphereVmRecoveryRangeStatus> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -202,16 +202,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<CloudNativeCertificateInfo> list, 
+            this List<VsphereVmRecoveryRangeStatus> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new CloudNativeCertificateInfo());
+                list.Add(new VsphereVmRecoveryRangeStatus());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<CloudNativeCertificateInfo> list)
+        public static void SelectForRetrieval(this List<VsphereVmRecoveryRangeStatus> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

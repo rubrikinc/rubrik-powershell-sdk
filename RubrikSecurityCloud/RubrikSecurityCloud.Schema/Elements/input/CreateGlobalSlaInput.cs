@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupLocationSpecs")]
         public List<BackupLocationSpecInput>? BackupLocationSpecs { get; set; }
 
+        //      C# -> System.String? FailoverGroupId
+        // GraphQL -> failoverGroupId: String (scalar)
+        [JsonProperty("failoverGroupId")]
+        public System.String? FailoverGroupId { get; set; }
+
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode (enum)
         [JsonProperty("retentionLockMode")]

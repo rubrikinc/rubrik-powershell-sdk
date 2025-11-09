@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        [JsonProperty("isComplianceImmutabilitySupported")]
+        public System.Boolean? IsComplianceImmutabilitySupported { get; set; }
+
         //      C# -> System.Boolean? IsVersionLevelImmutabilityEnabled
         // GraphQL -> isVersionLevelImmutabilityEnabled: Boolean! (scalar)
         [JsonProperty("isVersionLevelImmutabilityEnabled")]
@@ -235,6 +240,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? ImmutabilityPeriodDays = null,
         System.Boolean? IsActive = null,
         System.Boolean? IsArchived = null,
+        System.Boolean? IsComplianceImmutabilitySupported = null,
         System.Boolean? IsVersionLevelImmutabilityEnabled = null,
         DateTime? LastRedundancySyncTime = null,
         System.String? Name = null,
@@ -311,6 +317,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
+        }
+        if ( IsComplianceImmutabilitySupported != null ) {
+            this.IsComplianceImmutabilitySupported = IsComplianceImmutabilitySupported;
         }
         if ( IsVersionLevelImmutabilityEnabled != null ) {
             this.IsVersionLevelImmutabilityEnabled = IsVersionLevelImmutabilityEnabled;
@@ -549,6 +558,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isArchived\n" ;
             } else {
                 s += ind + "isArchived\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (this.IsComplianceImmutabilitySupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComplianceImmutabilitySupported\n" ;
+            } else {
+                s += ind + "isComplianceImmutabilitySupported\n" ;
             }
         }
         //      C# -> System.Boolean? IsVersionLevelImmutabilityEnabled
@@ -1063,6 +1081,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsArchived != null && ec.Excludes("isArchived",true))
         {
             this.IsArchived = null;
+        }
+        //      C# -> System.Boolean? IsComplianceImmutabilitySupported
+        // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
+        if (ec.Includes("isComplianceImmutabilitySupported",true))
+        {
+            if(this.IsComplianceImmutabilitySupported == null) {
+
+                this.IsComplianceImmutabilitySupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComplianceImmutabilitySupported != null && ec.Excludes("isComplianceImmutabilitySupported",true))
+        {
+            this.IsComplianceImmutabilitySupported = null;
         }
         //      C# -> System.Boolean? IsVersionLevelImmutabilityEnabled
         // GraphQL -> isVersionLevelImmutabilityEnabled: Boolean! (scalar)
