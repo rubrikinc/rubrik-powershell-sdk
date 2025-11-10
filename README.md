@@ -12,6 +12,9 @@ The Rubrik Security Cloud PowerShell module:
 
 Rubrik supports the commands and general functionality of this project. Rubrik cannot support custom script logic.
 
+Because RSC releases on a weekly cadence, we aspire to follow a weekly release cadence for the module (though some
+exceptions will naturally occur). 
+
 While this module may work with PowerShell 5.x, we recommend PowerShell >= 7.0. 
 When troubleshooting, the first recommendation will be to upgrade from 5.x.
 
