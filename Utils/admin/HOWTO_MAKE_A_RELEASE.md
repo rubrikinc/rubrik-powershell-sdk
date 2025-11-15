@@ -22,7 +22,12 @@ branch on GitHub is what's on the PowerShell gallery, etc.
 
 ### 2.2. Check the release candidate
 
-The release candidate is the `devel` branch. Make sure it is up to date and
+The release candidate is the `devel` branch. 
+If you are positive that the last commit on the devel branch
+was the automatic schema update pipeline,
+and it succeeded, and not PR was merged since then,
+then you can skip this step and go to 2.3. ; otherwise:
+Make sure the devel branch is up to date and
 clean of any uncommitted changes.
 
 Run a local build and test:
@@ -98,14 +103,6 @@ If no error occured, run the script again with the `-NotDry` switch:
 ```powershell
 .\Utils\admin\New-RscSdkRelease.ps1 -NotDry
 ```
-
-### 3.2. From the GitHub workflow
-
-From https://github.com/rubrikinc/rubrik-powershell-sdk/actions/workflows/release.yml
-
-- Click on `Run workflow`
-- Select the branch `devel`
-- Click on `Run workflow`
 
 ## 4. Troubleshoting
 
