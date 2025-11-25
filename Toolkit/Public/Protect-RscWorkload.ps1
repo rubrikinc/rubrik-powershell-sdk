@@ -74,12 +74,7 @@ function Protect-RscWorkload
           $query.Var.Input.ObjectIds = @($Id)
         }
         elseif ($InputObject) {
-          if ($InputObject -is [RubrikSecurityCloud.Types.MssqlDatabase]) {
-            $query.Var.Input.ObjectIds = @($InputObject.dagId)
-          }
-          else {
-            $query.Var.Input.ObjectIds = $InputObject.id
-          }
+          $query.Var.Input.ObjectIds = $InputObject.id
         }
 
         if ($Sla) {
