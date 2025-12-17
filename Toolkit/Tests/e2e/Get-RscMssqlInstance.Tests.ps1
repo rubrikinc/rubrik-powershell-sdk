@@ -12,7 +12,9 @@ BeforeAll {
 Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
 
     It -Name 'retrieves SQL Hosts' -Test {
+        # Get all SQL Hosts
         $data.sqlHosts = Get-RscMssqlInstance
+        Write-Verbose "Found $($data.sqlHosts.Count) SQL Hosts"
     }
 
     Context -Name 'RSC SQL Host Count > 0' {
@@ -32,6 +34,7 @@ Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
                 if ($data.sqlInstances.Count -gt 0) {
                     $data.sqlHost = $h
                     $found = $true
+                    Write-Verbose "Found $($data.sqlInstances.Count) SQL Instances on host $($data.sqlHost.name)"
                     break
                 }
             }
@@ -59,7 +62,9 @@ Describe -Name 'Get-RscMssqlInstance Tests' -Tag 'Public' -Fixture {
                 Set-ItResult -Skipped -Because "SQL Host has no cluster"
                 return
             }
-            $objects = Get-RscMssqlInstance -HostName $data.sqlHost.name -Cluster $data.sqlHost.cluster.id
+            Write-Verbose "Testing cluster filter with cluster: $($data.sqlHost.cluster.name) (ID: $($data.sqlHost.cluster.id))"
+            $objects = Get-RscMssqlInstance -HostName $data.sqlHost.name -Cluster $data.sqlHost.cluster
+            Write-Verbose "Found $($objects.Count) instances on cluster"
             $objects | ForEach-Object {
                 $_.cluster.id | Should -Be $data.sqlHost.cluster.id
             }
