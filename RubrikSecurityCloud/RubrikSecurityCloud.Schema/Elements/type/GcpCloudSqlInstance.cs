@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("databaseVersion")]
         public System.String? DatabaseVersion { get; set; }
 
+        //      C# -> System.String? Edition
+        // GraphQL -> edition: String! (scalar)
+        [JsonProperty("edition")]
+        public System.String? Edition { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -85,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> instanceId: String! (scalar)
         [JsonProperty("instanceId")]
         public System.String? InstanceId { get; set; }
+
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        [JsonProperty("isExocomputeConfigured")]
+        public System.Boolean? IsExocomputeConfigured { get; set; }
 
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -175,6 +185,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpProject: GcpNativeProject (type)
         [JsonProperty("gcpProject")]
         public GcpNativeProject? GcpProject { get; set; }
+
+        //      C# -> GcpNativeProjectDetails? GcpProjectDetails
+        // GraphQL -> gcpProjectDetails: GcpNativeProjectDetails! (type)
+        [JsonProperty("gcpProjectDetails")]
+        public GcpNativeProjectDetails? GcpProjectDetails { get; set; }
 
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)
@@ -367,8 +382,10 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? CloudNativeId = null,
         System.String? DatabaseVersion = null,
+        System.String? Edition = null,
         System.String? Id = null,
         System.String? InstanceId = null,
+        System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsRelic = null,
         System.String? KmsKey = null,
         System.String? Name = null,
@@ -387,6 +404,7 @@ namespace RubrikSecurityCloud.Types
         PathNode? EffectiveSlaSourceObject = null,
         GcpNativeProjectDetails? GcpNativeProjectDetails = null,
         GcpNativeProject? GcpProject = null,
+        GcpNativeProjectDetails? GcpProjectDetails = null,
         List<Label>? Labels = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -436,11 +454,17 @@ namespace RubrikSecurityCloud.Types
         if ( DatabaseVersion != null ) {
             this.DatabaseVersion = DatabaseVersion;
         }
+        if ( Edition != null ) {
+            this.Edition = Edition;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
         if ( InstanceId != null ) {
             this.InstanceId = InstanceId;
+        }
+        if ( IsExocomputeConfigured != null ) {
+            this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -495,6 +519,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GcpProject != null ) {
             this.GcpProject = GcpProject;
+        }
+        if ( GcpProjectDetails != null ) {
+            this.GcpProjectDetails = GcpProjectDetails;
         }
         if ( Labels != null ) {
             this.Labels = Labels;
@@ -663,6 +690,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "databaseVersion\n" ;
             }
         }
+        //      C# -> System.String? Edition
+        // GraphQL -> edition: String! (scalar)
+        if (this.Edition != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "edition\n" ;
+            } else {
+                s += ind + "edition\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -679,6 +715,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "instanceId\n" ;
             } else {
                 s += ind + "instanceId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (this.IsExocomputeConfigured != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExocomputeConfigured\n" ;
+            } else {
+                s += ind + "isExocomputeConfigured\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -855,6 +900,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "gcpProject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpNativeProjectDetails? GcpProjectDetails
+        // GraphQL -> gcpProjectDetails: GcpNativeProjectDetails! (type)
+        if (this.GcpProjectDetails != null) {
+            var fspec = this.GcpProjectDetails.AsFieldSpec(conf.Child("gcpProjectDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpProjectDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1241,6 +1298,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.DatabaseVersion = null;
         }
+        //      C# -> System.String? Edition
+        // GraphQL -> edition: String! (scalar)
+        if (ec.Includes("edition",true))
+        {
+            if(this.Edition == null) {
+
+                this.Edition = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Edition != null && ec.Excludes("edition",true))
+        {
+            this.Edition = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1274,6 +1348,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceId != null && ec.Excludes("instanceId",true))
         {
             this.InstanceId = null;
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (ec.Includes("isExocomputeConfigured",true))
+        {
+            if(this.IsExocomputeConfigured == null) {
+
+                this.IsExocomputeConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
+        {
+            this.IsExocomputeConfigured = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -1590,6 +1681,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GcpProject != null && ec.Excludes("gcpProject",false))
         {
             this.GcpProject = null;
+        }
+        //      C# -> GcpNativeProjectDetails? GcpProjectDetails
+        // GraphQL -> gcpProjectDetails: GcpNativeProjectDetails! (type)
+        if (ec.Includes("gcpProjectDetails",false))
+        {
+            if(this.GcpProjectDetails == null) {
+
+                this.GcpProjectDetails = new GcpNativeProjectDetails();
+                this.GcpProjectDetails.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectDetails"));
+
+            } else {
+
+                this.GcpProjectDetails.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectDetails"));
+
+            }
+        }
+        else if (this.GcpProjectDetails != null && ec.Excludes("gcpProjectDetails",false))
+        {
+            this.GcpProjectDetails = null;
         }
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)

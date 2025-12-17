@@ -25,6 +25,18 @@ Endpoints used by the NAS cloud direct clusters.
 
 - There is a single argument of type System.String.
 - Returns ClusterEndpoints.
+### clouddirectclusterlambdaconfig
+Query Cloud Direct NAS clusters for Threat Monitoring.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - ClusterFilterInput: Filter by cluster.
+    - sortOrder - SortOrder: Cluster sort order.
+    - sortBy - ClusterSortByEnum: Sort clusters by field.
+- Returns ThreatHuntCloudDirectClusterConnection.
 ### cluster
 A cluster object.
 

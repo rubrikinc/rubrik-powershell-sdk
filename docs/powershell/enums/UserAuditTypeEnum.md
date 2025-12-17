@@ -13,6 +13,7 @@ User audit type.
 - THREAT_HUNT - Audit type for threat hunt use cases.
 - ISOLATED_RECOVERY
 - Configuration
+- IDENTITY_ACTIVITY - Audit type for identity activities.
 - ENCRYPTION_MANAGEMENT_OPERATION - Audit type for encryption management use cases.
 - RECOVERY_SCHEDULE - Audit type for recovery schedule use cases.
 - QUARANTINE - Audit type for quarantine usecases.

@@ -15,3 +15,5 @@ Input for creating Rubrik Cloud Vault Azure storage settings.
   - Template type of the storage settings - SOURCE_REGION or SPECIFIC_REGION.
 - redundancy: RcvRedundancy
   - Redundancy for the RCV location.
+- rsaKey: System.String
+  - Optional RSA encryption key for the Rubrik Cloud Vault Azure location. If not provided, RCV will create and manage the encryption key automatically.

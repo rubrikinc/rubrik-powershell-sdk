@@ -21,3 +21,5 @@ Simplified report information for custom reports.
   - Timestamp of when the report was last updated.
 - updatedBy: System.String
   - Email address of the user who last updated the report.
+- scheduledReportsCount: System.Int32
+  - Number of scheduled reports associated with the report.

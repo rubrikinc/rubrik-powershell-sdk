@@ -1,5 +1,5 @@
 ### RubrikCloudVaultType
-Use case of archival entity.
+Use case of the archival entity.
 
 - USE_CASE_TYPE_UNSPECIFIED - Unused default value.
 - DATA_CENTER - Archival entity for data center use case.

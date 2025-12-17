@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountSid")]
         public System.String? AccountSid { get; set; }
 
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        [JsonProperty("deviceId")]
+        public System.String? DeviceId { get; set; }
+
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)
         [JsonProperty("deviceName")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public AzureAdLocalAdminPassword Set(
         System.String? AccountName = null,
         System.String? AccountSid = null,
+        System.String? DeviceId = null,
         System.String? DeviceName = null,
         DateTime? LastBackupDateTime = null,
         System.String? Password = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccountSid != null ) {
             this.AccountSid = AccountSid;
+        }
+        if ( DeviceId != null ) {
+            this.DeviceId = DeviceId;
         }
         if ( DeviceName != null ) {
             this.DeviceName = DeviceName;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountSid\n" ;
             } else {
                 s += ind + "accountSid\n" ;
+            }
+        }
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        if (this.DeviceId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceId\n" ;
+            } else {
+                s += ind + "deviceId\n" ;
             }
         }
         //      C# -> System.String? DeviceName
@@ -194,6 +212,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccountSid != null && ec.Excludes("accountSid",true))
         {
             this.AccountSid = null;
+        }
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        if (ec.Includes("deviceId",true))
+        {
+            if(this.DeviceId == null) {
+
+                this.DeviceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceId != null && ec.Excludes("deviceId",true))
+        {
+            this.DeviceId = null;
         }
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)

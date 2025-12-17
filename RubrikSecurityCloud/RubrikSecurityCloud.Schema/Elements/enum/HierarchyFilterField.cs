@@ -414,6 +414,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCHANGE_SERVER_BY_DAG_ID")]
         EXCHANGE_SERVER_BY_DAG_ID,
 
+        [EnumMember(Value = "EXCHANGE_SERVER_BY_HOST_NAME")]
+        EXCHANGE_SERVER_BY_HOST_NAME,
+
         [EnumMember(Value = "EXCLUDED_ROOT_RESOURCE_POOL_TYPE")]
         EXCLUDED_ROOT_RESOURCE_POOL_TYPE,
 
@@ -500,6 +503,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_DRIVE_ORG_UNIT")]
         GOOGLE_WORKSPACE_USER_DRIVE_ORG_UNIT,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX_ORG_UNIT")]
+        GOOGLE_WORKSPACE_USER_MAILBOX_ORG_UNIT,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_NAME_OR_EMAIL_ADDRESS")]
         GOOGLE_WORKSPACE_USER_NAME_OR_EMAIL_ADDRESS,
@@ -989,6 +995,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VMWARE_VM_MOID")]
         VMWARE_VM_MOID,
+
+        [EnumMember(Value = "VMWARE_VM_RBS_AGENT_STATUS")]
+        VMWARE_VM_RBS_AGENT_STATUS,
 
         [EnumMember(Value = "VMWARE_VM_TEMPLATE_TYPE")]
         VMWARE_VM_TEMPLATE_TYPE,

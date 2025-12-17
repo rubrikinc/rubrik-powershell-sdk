@@ -10,6 +10,8 @@ AWS Customer Managed Exocompute Configuration in a region.
   - Exocompute configuration message.
 - region: AwsCloudAccountRegion
   - Exocompute configuration region.
+- authServerRegion: AwsAuthServerBasedCloudAccountRegion
+  - Auth server-based region (ISO/ISOB), if applicable.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
 - latestExoclusterDetails: ExocomputeClusterDetails

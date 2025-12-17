@@ -15,6 +15,8 @@ Represents a GCP Cloud SQL instance.
   - Zone where the instance is deployed.
 - databaseVersion: System.String
   - Database version (e.g., MYSQL_5_7, POSTGRES_13).
+- edition: System.String
+  - DB Edition of the instance.
 - isRelic: System.Boolean
   - Indicates if the instance is archived/deleted.
 - kmsKey: System.String
@@ -23,7 +25,11 @@ Represents a GCP Cloud SQL instance.
   - Size of allocated storage in GB.
 - state: System.String
   - Current operational state of the instance.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for use by this Cloud SQL instance. 
 - gcpNativeProjectDetails: GcpNativeProjectDetails
+  - Project details of the Cloud SQL instance.
+- gcpProjectDetails: GcpNativeProjectDetails
   - Project details of the Cloud SQL instance.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.

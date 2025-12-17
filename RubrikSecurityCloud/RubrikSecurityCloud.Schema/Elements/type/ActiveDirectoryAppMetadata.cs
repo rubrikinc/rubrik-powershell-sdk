@@ -20,10 +20,25 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? RubrikBackupServiceDataDirPath
+        // GraphQL -> rubrikBackupServiceDataDirPath: String (scalar)
+        [JsonProperty("rubrikBackupServiceDataDirPath")]
+        public System.String? RubrikBackupServiceDataDirPath { get; set; }
+
+        //      C# -> WindowsDiskLayoutDetails? DiskLayoutDetailsOpt
+        // GraphQL -> diskLayoutDetailsOpt: WindowsDiskLayoutDetails (type)
+        [JsonProperty("diskLayoutDetailsOpt")]
+        public WindowsDiskLayoutDetails? DiskLayoutDetailsOpt { get; set; }
+
         //      C# -> ActiveDirectoryObjectsCount? ObjectsCount
         // GraphQL -> objectsCount: ActiveDirectoryObjectsCount (type)
         [JsonProperty("objectsCount")]
         public ActiveDirectoryObjectsCount? ObjectsCount { get; set; }
+
+        //      C# -> OsDetails? OsDetailsOpt
+        // GraphQL -> osDetailsOpt: OsDetails (type)
+        [JsonProperty("osDetailsOpt")]
+        public OsDetails? OsDetailsOpt { get; set; }
 
 
         #endregion
@@ -35,11 +50,23 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ActiveDirectoryAppMetadata Set(
-        ActiveDirectoryObjectsCount? ObjectsCount = null
+        System.String? RubrikBackupServiceDataDirPath = null,
+        WindowsDiskLayoutDetails? DiskLayoutDetailsOpt = null,
+        ActiveDirectoryObjectsCount? ObjectsCount = null,
+        OsDetails? OsDetailsOpt = null
     ) 
     {
+        if ( RubrikBackupServiceDataDirPath != null ) {
+            this.RubrikBackupServiceDataDirPath = RubrikBackupServiceDataDirPath;
+        }
+        if ( DiskLayoutDetailsOpt != null ) {
+            this.DiskLayoutDetailsOpt = DiskLayoutDetailsOpt;
+        }
         if ( ObjectsCount != null ) {
             this.ObjectsCount = ObjectsCount;
+        }
+        if ( OsDetailsOpt != null ) {
+            this.OsDetailsOpt = OsDetailsOpt;
         }
         return this;
     }
@@ -55,6 +82,27 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? RubrikBackupServiceDataDirPath
+        // GraphQL -> rubrikBackupServiceDataDirPath: String (scalar)
+        if (this.RubrikBackupServiceDataDirPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rubrikBackupServiceDataDirPath\n" ;
+            } else {
+                s += ind + "rubrikBackupServiceDataDirPath\n" ;
+            }
+        }
+        //      C# -> WindowsDiskLayoutDetails? DiskLayoutDetailsOpt
+        // GraphQL -> diskLayoutDetailsOpt: WindowsDiskLayoutDetails (type)
+        if (this.DiskLayoutDetailsOpt != null) {
+            var fspec = this.DiskLayoutDetailsOpt.AsFieldSpec(conf.Child("diskLayoutDetailsOpt"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "diskLayoutDetailsOpt" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> ActiveDirectoryObjectsCount? ObjectsCount
         // GraphQL -> objectsCount: ActiveDirectoryObjectsCount (type)
         if (this.ObjectsCount != null) {
@@ -67,6 +115,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> OsDetails? OsDetailsOpt
+        // GraphQL -> osDetailsOpt: OsDetails (type)
+        if (this.OsDetailsOpt != null) {
+            var fspec = this.OsDetailsOpt.AsFieldSpec(conf.Child("osDetailsOpt"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "osDetailsOpt" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -74,6 +134,42 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? RubrikBackupServiceDataDirPath
+        // GraphQL -> rubrikBackupServiceDataDirPath: String (scalar)
+        if (ec.Includes("rubrikBackupServiceDataDirPath",true))
+        {
+            if(this.RubrikBackupServiceDataDirPath == null) {
+
+                this.RubrikBackupServiceDataDirPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RubrikBackupServiceDataDirPath != null && ec.Excludes("rubrikBackupServiceDataDirPath",true))
+        {
+            this.RubrikBackupServiceDataDirPath = null;
+        }
+        //      C# -> WindowsDiskLayoutDetails? DiskLayoutDetailsOpt
+        // GraphQL -> diskLayoutDetailsOpt: WindowsDiskLayoutDetails (type)
+        if (ec.Includes("diskLayoutDetailsOpt",false))
+        {
+            if(this.DiskLayoutDetailsOpt == null) {
+
+                this.DiskLayoutDetailsOpt = new WindowsDiskLayoutDetails();
+                this.DiskLayoutDetailsOpt.ApplyExploratoryFieldSpec(ec.NewChild("diskLayoutDetailsOpt"));
+
+            } else {
+
+                this.DiskLayoutDetailsOpt.ApplyExploratoryFieldSpec(ec.NewChild("diskLayoutDetailsOpt"));
+
+            }
+        }
+        else if (this.DiskLayoutDetailsOpt != null && ec.Excludes("diskLayoutDetailsOpt",false))
+        {
+            this.DiskLayoutDetailsOpt = null;
+        }
         //      C# -> ActiveDirectoryObjectsCount? ObjectsCount
         // GraphQL -> objectsCount: ActiveDirectoryObjectsCount (type)
         if (ec.Includes("objectsCount",false))
@@ -92,6 +188,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectsCount != null && ec.Excludes("objectsCount",false))
         {
             this.ObjectsCount = null;
+        }
+        //      C# -> OsDetails? OsDetailsOpt
+        // GraphQL -> osDetailsOpt: OsDetails (type)
+        if (ec.Includes("osDetailsOpt",false))
+        {
+            if(this.OsDetailsOpt == null) {
+
+                this.OsDetailsOpt = new OsDetails();
+                this.OsDetailsOpt.ApplyExploratoryFieldSpec(ec.NewChild("osDetailsOpt"));
+
+            } else {
+
+                this.OsDetailsOpt.ApplyExploratoryFieldSpec(ec.NewChild("osDetailsOpt"));
+
+            }
+        }
+        else if (this.OsDetailsOpt != null && ec.Excludes("osDetailsOpt",false))
+        {
+            this.OsDetailsOpt = null;
         }
     }
 

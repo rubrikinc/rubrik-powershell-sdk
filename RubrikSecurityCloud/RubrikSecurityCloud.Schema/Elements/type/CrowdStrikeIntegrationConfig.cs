@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clientSecret")]
         public System.String? ClientSecret { get; set; }
 
+        //      C# -> System.String? CrowdstrikeTenantUrl
+        // GraphQL -> crowdstrikeTenantUrl: String! (scalar)
+        [JsonProperty("crowdstrikeTenantUrl")]
+        public System.String? CrowdstrikeTenantUrl { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public CrowdStrikeIntegrationConfig Set(
         System.String? ClientId = null,
-        System.String? ClientSecret = null
+        System.String? ClientSecret = null,
+        System.String? CrowdstrikeTenantUrl = null
     ) 
     {
         if ( ClientId != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClientSecret != null ) {
             this.ClientSecret = ClientSecret;
+        }
+        if ( CrowdstrikeTenantUrl != null ) {
+            this.CrowdstrikeTenantUrl = CrowdstrikeTenantUrl;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clientSecret\n" ;
             } else {
                 s += ind + "clientSecret\n" ;
+            }
+        }
+        //      C# -> System.String? CrowdstrikeTenantUrl
+        // GraphQL -> crowdstrikeTenantUrl: String! (scalar)
+        if (this.CrowdstrikeTenantUrl != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "crowdstrikeTenantUrl\n" ;
+            } else {
+                s += ind + "crowdstrikeTenantUrl\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClientSecret != null && ec.Excludes("clientSecret",true))
         {
             this.ClientSecret = null;
+        }
+        //      C# -> System.String? CrowdstrikeTenantUrl
+        // GraphQL -> crowdstrikeTenantUrl: String! (scalar)
+        if (ec.Includes("crowdstrikeTenantUrl",true))
+        {
+            if(this.CrowdstrikeTenantUrl == null) {
+
+                this.CrowdstrikeTenantUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CrowdstrikeTenantUrl != null && ec.Excludes("crowdstrikeTenantUrl",true))
+        {
+            this.CrowdstrikeTenantUrl = null;
         }
     }
 

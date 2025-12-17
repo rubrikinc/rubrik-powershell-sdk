@@ -4,3 +4,4 @@
 - LDAP
 - CLIENT
 - SUPPORT
+- PAT

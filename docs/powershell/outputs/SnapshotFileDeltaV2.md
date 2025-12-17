@@ -1,5 +1,5 @@
 ### SnapshotFileDeltaV2
-Snapshot file or directory and its delta information.
+Snapshot file or directory and its delta information. This has the sensitive information only for affected files under this path from old snapshot for which Rubrik Sensitive Data Discovery Analysis is completed.
 
 - file: SnapshotFile
   - Information about the file or directory such as the path and last modified date.
@@ -9,3 +9,7 @@ Snapshot file or directory and its delta information.
   - This field is non-empty for directories only. It contains the consolidated delta information of the subdirectories.
 - previousSnapshotQuarantineInfo: QuarantineInfo
   - Quarantine information for a path in the previous snapshot.
+- sensitiveHits: SensitiveHits
+  - Sensitive hits.
+- analyzerGroupResults: list of AnalyzerGroupResults
+  - Analyzer group results.

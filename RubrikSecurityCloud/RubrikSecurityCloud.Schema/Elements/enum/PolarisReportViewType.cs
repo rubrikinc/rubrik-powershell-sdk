@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER_REPORT")]
         FAILOVER_REPORT,
 
+        [EnumMember(Value = "IDENTITY_ACTIVITY_REPORT")]
+        IDENTITY_ACTIVITY_REPORT,
+
         [EnumMember(Value = "IDENTITY_RISKS_REPORT")]
         IDENTITY_RISKS_REPORT,
 
@@ -113,6 +116,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "THREAT_MONITORING_REPORT")]
         THREAT_MONITORING_REPORT,
+
+        [EnumMember(Value = "THREAT_MONITORING_THREAT_DETECTION_REPORT")]
+        THREAT_MONITORING_THREAT_DETECTION_REPORT,
 
         [EnumMember(Value = "USER_REPORT")]
         USER_REPORT

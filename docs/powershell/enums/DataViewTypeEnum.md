@@ -15,10 +15,8 @@ All reporting table schemas.
 - OBJECT_AUDIT_DETAIL
 - SLA_AUDIT_LIST - The DataView, which queries Audits DB table, lists the latest SLA
 audits for each SLA in the NG Alpha report framework.
-It will be deprecated after migrating this report to NG framework.
 - SLA_AUDIT_DETAIL - The DataView, which queries Audits DB table, lists all SLA audits
 for the single SLA in the NG Alpha report framework.
-It will be deprecated after migrating this report to NG framework.
 - MONITORING_TASK_COUNT_TIME_SERIES - Monitoring task count over time.
 - SLA_COMPLIANCE - Sla Compliance.
 - CDM_UPGRADES - Cdm upgrades.
@@ -55,3 +53,6 @@ It will be deprecated after migrating this report to NG framework.
 - ACTIVE_DIRECTORY_FOREST_RECOVERY - Specifies the Active Directory forest recovery report information.
 - LOG_TASKS - Specifies the Log Tasks Report information.
 - THREAT_MONITORING_COMPLIANCE - Specifies the Threat Monitoring compliance information.
+- IDENTITY_ACTIVITY - Specifies the Identity Activity report information.
+- OBJECT_CAPACITY - Specifies the Object Capacity report information using fact table.
+- THREAT_MONITORING_MATCHES - Specifies the threat monitoring match-level information.

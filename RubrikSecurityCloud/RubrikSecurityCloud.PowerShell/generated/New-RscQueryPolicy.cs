@@ -152,6 +152,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	status = @(
     /// 		$someFailoverGroupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverGroupStatus]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	ids = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -695,6 +699,10 @@ $query.Var.filter = @{
 	# OPTIONAL
 	status = @(
 		$someFailoverGroupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverGroupStatus]) for enum values.
+	)
+	# OPTIONAL
+	ids = @(
+		$someString
 	)
 }"
             );

@@ -31,6 +31,8 @@ UnmanagedObjectDetails.
   - Snapshot count.
 - numSnapshotsWithPolicy: System.Int64
   - Number of policy snapshots.
+- nonPolicySnapshotsCount: System.Int64
+  - Number of non-policy snapshots (on-demand, customized, and rehydrated).
 - unmanagedStatus: UnmanagedObjectAvailabilityFilter
   - Unmanaged Status of this object.
 - region: WorkloadRegion

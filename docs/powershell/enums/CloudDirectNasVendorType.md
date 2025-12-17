@@ -20,3 +20,4 @@ NAS Cloud Direct System vendor type.
 - GENERIC_NFS4 - Generic NFSv4.
 - GENERIC_SMB - Generic SMB.
 - AZURE_NETAPP - Azure Netapp.
+- FLASHARRAY - Pure FlashArray.

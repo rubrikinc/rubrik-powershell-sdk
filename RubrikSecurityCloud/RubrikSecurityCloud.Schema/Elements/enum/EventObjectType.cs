@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_RDS_INSTANCE")]
         AWS_NATIVE_RDS_INSTANCE,
 
+        [EnumMember(Value = "AWS_NATIVE_REGION")]
+        AWS_NATIVE_REGION,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -197,6 +200,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_NATIVE_PROJECT")]
         GCP_NATIVE_PROJECT,
+
+        [EnumMember(Value = "GITHUB_ORGANIZATION")]
+        GITHUB_ORGANIZATION,
+
+        [EnumMember(Value = "GITHUB_REPOSITORY")]
+        GITHUB_REPOSITORY,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,
@@ -465,6 +474,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_ASSUMABLE_IDENTITY")]
         PRINCIPAL_ASSUMABLE_IDENTITY,
 
+        [EnumMember(Value = "PRINCIPAL_ATTRIBUTE_SCHEMA")]
+        PRINCIPAL_ATTRIBUTE_SCHEMA,
+
+        [EnumMember(Value = "PRINCIPAL_CLASS_SCHEMA")]
+        PRINCIPAL_CLASS_SCHEMA,
+
         [EnumMember(Value = "PRINCIPAL_COMPUTER")]
         PRINCIPAL_COMPUTER,
 
@@ -474,11 +489,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_CONTAINER")]
         PRINCIPAL_CONTAINER,
 
+        [EnumMember(Value = "PRINCIPAL_DOMAIN_DNS")]
+        PRINCIPAL_DOMAIN_DNS,
+
         [EnumMember(Value = "PRINCIPAL_EXTERNAL_ACCOUNT")]
         PRINCIPAL_EXTERNAL_ACCOUNT,
 
         [EnumMember(Value = "PRINCIPAL_EXTERNAL_PRINCIPAL")]
         PRINCIPAL_EXTERNAL_PRINCIPAL,
+
+        [EnumMember(Value = "PRINCIPAL_FOREIGN_SECURITY_PRINCIPAL")]
+        PRINCIPAL_FOREIGN_SECURITY_PRINCIPAL,
 
         [EnumMember(Value = "PRINCIPAL_GPO")]
         PRINCIPAL_GPO,
@@ -486,17 +507,89 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_GROUP")]
         PRINCIPAL_GROUP,
 
+        [EnumMember(Value = "PRINCIPAL_INFRASTRUCTURE_UPDATE")]
+        PRINCIPAL_INFRASTRUCTURE_UPDATE,
+
+        [EnumMember(Value = "PRINCIPAL_INTER_SITE_TRANSPORT")]
+        PRINCIPAL_INTER_SITE_TRANSPORT,
+
+        [EnumMember(Value = "PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER")]
+        PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_LICENSING_SITE_SETTINGS")]
+        PRINCIPAL_LICENSING_SITE_SETTINGS,
+
+        [EnumMember(Value = "PRINCIPAL_MSDS_QUOTA_CONTAINER")]
+        PRINCIPAL_MSDS_QUOTA_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_MSDS_QUOTA_CONTROL")]
+        PRINCIPAL_MSDS_QUOTA_CONTROL,
+
+        [EnumMember(Value = "PRINCIPAL_NTDS_SITE_SETTINGS")]
+        PRINCIPAL_NTDS_SITE_SETTINGS,
+
         [EnumMember(Value = "PRINCIPAL_ORG_WIDE")]
         PRINCIPAL_ORG_WIDE,
 
         [EnumMember(Value = "PRINCIPAL_OU")]
         PRINCIPAL_OU,
 
+        [EnumMember(Value = "PRINCIPAL_PASSWORD_SETTINGS")]
+        PRINCIPAL_PASSWORD_SETTINGS,
+
+        [EnumMember(Value = "PRINCIPAL_PASSWORD_SETTINGS_CONTAINER")]
+        PRINCIPAL_PASSWORD_SETTINGS_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_PRINT_QUEUE")]
+        PRINCIPAL_PRINT_QUEUE,
+
         [EnumMember(Value = "PRINCIPAL_PUBLIC")]
         PRINCIPAL_PUBLIC,
 
+        [EnumMember(Value = "PRINCIPAL_RID_MANAGER")]
+        PRINCIPAL_RID_MANAGER,
+
+        [EnumMember(Value = "PRINCIPAL_SERVER")]
+        PRINCIPAL_SERVER,
+
+        [EnumMember(Value = "PRINCIPAL_SERVERS_CONTAINER")]
+        PRINCIPAL_SERVERS_CONTAINER,
+
         [EnumMember(Value = "PRINCIPAL_SERVICE_ACCOUNT")]
         PRINCIPAL_SERVICE_ACCOUNT,
+
+        [EnumMember(Value = "PRINCIPAL_SITE")]
+        PRINCIPAL_SITE,
+
+        [EnumMember(Value = "PRINCIPAL_SITE_LINK")]
+        PRINCIPAL_SITE_LINK,
+
+        [EnumMember(Value = "PRINCIPAL_SITE_LINK_BRIDGE")]
+        PRINCIPAL_SITE_LINK_BRIDGE,
+
+        [EnumMember(Value = "PRINCIPAL_SUBNET")]
+        PRINCIPAL_SUBNET,
+
+        [EnumMember(Value = "PRINCIPAL_SUBNET_CONTAINER")]
+        PRINCIPAL_SUBNET_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_TRUSTED_DOMAIN")]
+        PRINCIPAL_TRUSTED_DOMAIN,
+
+        [EnumMember(Value = "PRINCIPAL_VOLUME")]
+        PRINCIPAL_VOLUME,
+
+        [EnumMember(Value = "PROXMOX_CLUSTER")]
+        PROXMOX_CLUSTER,
+
+        [EnumMember(Value = "PROXMOX_ENVIRONMENT")]
+        PROXMOX_ENVIRONMENT,
+
+        [EnumMember(Value = "PROXMOX_NODE")]
+        PROXMOX_NODE,
+
+        [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
+        PROXMOX_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "PUBLIC_CLOUD_MACHINE_INSTANCE")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,

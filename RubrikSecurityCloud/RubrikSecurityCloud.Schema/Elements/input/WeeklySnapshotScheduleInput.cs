@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dayOfWeek")]
         public DayOfWeek? DayOfWeek { get; set; }
 
+        //      C# -> List<WeeklyDaySpecInput>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [WeeklyDaySpecInput!] (input)
+        [JsonProperty("daysOfWeek")]
+        public List<WeeklyDaySpecInput>? DaysOfWeek { get; set; }
+
 
         #endregion
 

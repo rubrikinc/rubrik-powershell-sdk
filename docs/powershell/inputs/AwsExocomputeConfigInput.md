@@ -15,3 +15,7 @@ AWS Exocompute configuration to add.
   - If security groups are to be managed by Rubrik Security Cloud, this parameter should be set to true. False, if users are in charge of managing security groups.
 - clusterName: System.String
   - Name of the customer managed cluster. This field is required only for customer-managed clusters.
+- awsRegionSelector: AwsRegionSelectorInput
+  - Selector for either a standard AWS region or an auth server-based region (ISO/ISOB). Preferred over region when specified.
+- optionalConfig: AwsExocomputeOptionalConfigInRegionInput
+  - Optional configuration for the Exocompute cluster (e.g., EKS cluster access type).

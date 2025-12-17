@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
         ACTIVE_DIRECTORY_FOREST,
 
+        [EnumMember(Value = "AGENT_OPERATIONS_MODEL_ROUTER")]
+        AGENT_OPERATIONS_MODEL_ROUTER,
+
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 

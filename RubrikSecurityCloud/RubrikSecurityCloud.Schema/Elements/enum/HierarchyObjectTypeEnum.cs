@@ -177,6 +177,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
+        [EnumMember(Value = "GITHUB_ORGANIZATION")]
+        GITHUB_ORGANIZATION,
+
+        [EnumMember(Value = "GITHUB_REPOSITORY")]
+        GITHUB_REPOSITORY,
+
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,
 
@@ -455,6 +461,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
+
+        [EnumMember(Value = "PROXMOX_CLUSTER")]
+        PROXMOX_CLUSTER,
+
+        [EnumMember(Value = "PROXMOX_ENVIRONMENT")]
+        PROXMOX_ENVIRONMENT,
+
+        [EnumMember(Value = "PROXMOX_NODE")]
+        PROXMOX_NODE,
+
+        [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
+        PROXMOX_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "PhysicalHost")]
         PHYSICAL_HOST,

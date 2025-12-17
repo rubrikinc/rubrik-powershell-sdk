@@ -7,3 +7,5 @@ Configuration to complete the Azure AD application creation flow.
   - CSRF token from the setup flow.
 - kmsSpec: KmsSpecInput
   - Azure KMS configuration.
+- uemKmsSpec: UemKmsSpecInput
+  - UEM Azure KMS configuration.

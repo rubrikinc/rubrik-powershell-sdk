@@ -13,3 +13,6 @@ Filter for listing Blob immutability migration details of RCV Azure locations.
   - Filter by location status.
 - unavailabilityReasons: list of MigrationUnavailabilityReasons
   - Filter by unavailability reason.
+- searchByLocationName: System.String
+  - Search text to filter locations by name (optional).
+Performs a case-insensitive substring match on location name.

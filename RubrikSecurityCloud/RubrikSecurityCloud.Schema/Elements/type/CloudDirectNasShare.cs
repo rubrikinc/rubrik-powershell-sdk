@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region CloudDirectNasShare
  
-    public class CloudDirectNasShare: BaseType, CloudDirectHierarchyObject, CloudDirectHierarchyWorkload, CloudDirectNasNamespaceDescendantType, CloudDirectNasNamespaceLogicalChildType, CloudDirectNasObject, CloudDirectNasSystemDescendantType, CloudDirectNasSystemLogicalChildType, HierarchyObject
+    public class CloudDirectNasShare: BaseType, CloudDirectHierarchyObject, CloudDirectHierarchyWorkload, CloudDirectNasNamespaceDescendantType, CloudDirectNasNamespaceLogicalChildType, CloudDirectNasObject, CloudDirectNasSystemDescendantType, CloudDirectNasSystemLogicalChildType, HierarchyObject, HierarchySnappable
     {
         #region members
 
@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        [JsonProperty("pendingSla")]
+        public SlaDomain? PendingSla { get; set; }
 
         //      C# -> System.String? CloudDirectId
         // GraphQL -> cloudDirectId: String! (scalar)
@@ -120,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.Int32? OnDemandSnapshots
+        // GraphQL -> onDemandSnapshots: Int! (scalar)
+        [JsonProperty("onDemandSnapshots")]
+        public System.Int32? OnDemandSnapshots { get; set; }
 
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
@@ -325,6 +335,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        SlaDomain? PendingSla = null,
         System.String? CloudDirectId = null,
         System.String? ClusterUuid = null,
         System.String? ExportPath = null,
@@ -338,6 +349,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NamespaceId = null,
         System.String? NcdPolicyName = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.Int32? OnDemandSnapshots = null,
         System.String? PolicyName = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
@@ -384,6 +396,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
         }
+        if ( PendingSla != null ) {
+            this.PendingSla = PendingSla;
+        }
         if ( CloudDirectId != null ) {
             this.CloudDirectId = CloudDirectId;
         }
@@ -422,6 +437,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( OnDemandSnapshots != null ) {
+            this.OnDemandSnapshots = OnDemandSnapshots;
         }
         if ( PolicyName != null ) {
             this.PolicyName = PolicyName;
@@ -581,6 +599,19 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (this.PendingSla != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PendingSla, conf.Child("pendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
         //      C# -> System.String? CloudDirectId
         // GraphQL -> cloudDirectId: String! (scalar)
         if (this.CloudDirectId != null) {
@@ -696,6 +727,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.Int32? OnDemandSnapshots
+        // GraphQL -> onDemandSnapshots: Int! (scalar)
+        if (this.OnDemandSnapshots != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onDemandSnapshots\n" ;
+            } else {
+                s += ind + "onDemandSnapshots\n" ;
             }
         }
         //      C# -> System.String? PolicyName
@@ -1109,6 +1149,30 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaDomain = null;
         }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (ec.Includes("pendingSla",false))
+        {
+            if(this.PendingSla == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PendingSla != null && ec.Excludes("pendingSla",false))
+        {
+            this.PendingSla = null;
+        }
         //      C# -> System.String? CloudDirectId
         // GraphQL -> cloudDirectId: String! (scalar)
         if (ec.Includes("cloudDirectId",true))
@@ -1329,6 +1393,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.Int32? OnDemandSnapshots
+        // GraphQL -> onDemandSnapshots: Int! (scalar)
+        if (ec.Includes("onDemandSnapshots",true))
+        {
+            if(this.OnDemandSnapshots == null) {
+
+                this.OnDemandSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnDemandSnapshots != null && ec.Excludes("onDemandSnapshots",true))
+        {
+            this.OnDemandSnapshots = null;
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)

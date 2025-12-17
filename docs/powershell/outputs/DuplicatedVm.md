@@ -15,3 +15,5 @@ Duplicated vSphere virtual machine.
   - The path node of the effective SLA Domain source.
 - reportWorkload: Snappable
   - Specifies statistics, such as capacity, for the protected objects.
+- allTags: list of AssignedRscTags
+  - RSC tags assigned to this virtual machine.

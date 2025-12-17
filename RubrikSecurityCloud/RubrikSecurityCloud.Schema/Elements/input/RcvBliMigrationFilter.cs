@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unavailabilityReasons")]
         public List<MigrationUnavailabilityReason>? UnavailabilityReasons { get; set; }
 
+        //      C# -> System.String? SearchByLocationName
+        // GraphQL -> searchByLocationName: String (scalar)
+        [JsonProperty("searchByLocationName")]
+        public System.String? SearchByLocationName { get; set; }
+
 
         #endregion
 

@@ -170,3 +170,6 @@ Represents all the object types for which we expect to see audits.
 - OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
 - OKTA_TENANT - Okta tenant.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- GITHUB_ORGANIZATION - GitHub Organization.
+- GITHUB_REPOSITORY - GitHub Repository.
+- AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router.

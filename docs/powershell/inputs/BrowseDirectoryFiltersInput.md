@@ -21,3 +21,5 @@
   - List of Microsoft Purview Information Protection labels used to filter paths.
 - documentTypesFilter: list of System.Strings
   - List of document type IDs to filter the paths.
+- sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope
+  - Scope for sensitive data discovery.

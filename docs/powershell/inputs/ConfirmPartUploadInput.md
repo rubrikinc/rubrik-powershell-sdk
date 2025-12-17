@@ -1,8 +1,6 @@
 ### ConfirmPartUploadInput
 Input for confirmPartUpload.
 
-- account: System.String
-  - RSC account id.
 - sessionId: System.String
   - Unique identifier for the upload session.
 - partIndex: System.Int32

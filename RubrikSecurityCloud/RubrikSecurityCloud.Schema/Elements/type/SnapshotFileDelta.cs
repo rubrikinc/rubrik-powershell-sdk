@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
+        // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
+        [JsonProperty("analyzerGroupResults")]
+        public List<AnalyzerGroupResult>? AnalyzerGroupResults { get; set; }
+
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         [JsonProperty("childrenDeltas")]
@@ -40,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("selfDeltas")]
         public List<SnapshotDelta>? SelfDeltas { get; set; }
 
+        //      C# -> SensitiveHits? SensitiveHits
+        // GraphQL -> sensitiveHits: SensitiveHits (type)
+        [JsonProperty("sensitiveHits")]
+        public SensitiveHits? SensitiveHits { get; set; }
+
 
         #endregion
 
@@ -50,12 +60,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotFileDelta Set(
+        List<AnalyzerGroupResult>? AnalyzerGroupResults = null,
         List<SnapshotDelta>? ChildrenDeltas = null,
         SnapshotFile? File = null,
         QuarantineInfo? PreviousSnapshotQuarantineInfo = null,
-        List<SnapshotDelta>? SelfDeltas = null
+        List<SnapshotDelta>? SelfDeltas = null,
+        SensitiveHits? SensitiveHits = null
     ) 
     {
+        if ( AnalyzerGroupResults != null ) {
+            this.AnalyzerGroupResults = AnalyzerGroupResults;
+        }
         if ( ChildrenDeltas != null ) {
             this.ChildrenDeltas = ChildrenDeltas;
         }
@@ -67,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SelfDeltas != null ) {
             this.SelfDeltas = SelfDeltas;
+        }
+        if ( SensitiveHits != null ) {
+            this.SensitiveHits = SensitiveHits;
         }
         return this;
     }
@@ -82,6 +100,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
+        // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
+        if (this.AnalyzerGroupResults != null) {
+            var fspec = this.AnalyzerGroupResults.AsFieldSpec(conf.Child("analyzerGroupResults"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analyzerGroupResults" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         if (this.ChildrenDeltas != null) {
@@ -130,6 +160,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SensitiveHits? SensitiveHits
+        // GraphQL -> sensitiveHits: SensitiveHits (type)
+        if (this.SensitiveHits != null) {
+            var fspec = this.SensitiveHits.AsFieldSpec(conf.Child("sensitiveHits"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sensitiveHits" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -137,6 +179,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
+        // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
+        if (ec.Includes("analyzerGroupResults",false))
+        {
+            if(this.AnalyzerGroupResults == null) {
+
+                this.AnalyzerGroupResults = new List<AnalyzerGroupResult>();
+                this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroupResults"));
+
+            } else {
+
+                this.AnalyzerGroupResults.ApplyExploratoryFieldSpec(ec.NewChild("analyzerGroupResults"));
+
+            }
+        }
+        else if (this.AnalyzerGroupResults != null && ec.Excludes("analyzerGroupResults",false))
+        {
+            this.AnalyzerGroupResults = null;
+        }
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         if (ec.Includes("childrenDeltas",false))
@@ -212,6 +273,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SelfDeltas != null && ec.Excludes("selfDeltas",false))
         {
             this.SelfDeltas = null;
+        }
+        //      C# -> SensitiveHits? SensitiveHits
+        // GraphQL -> sensitiveHits: SensitiveHits (type)
+        if (ec.Includes("sensitiveHits",false))
+        {
+            if(this.SensitiveHits == null) {
+
+                this.SensitiveHits = new SensitiveHits();
+                this.SensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveHits"));
+
+            } else {
+
+                this.SensitiveHits.ApplyExploratoryFieldSpec(ec.NewChild("sensitiveHits"));
+
+            }
+        }
+        else if (this.SensitiveHits != null && ec.Excludes("sensitiveHits",false))
+        {
+            this.SensitiveHits = null;
         }
     }
 

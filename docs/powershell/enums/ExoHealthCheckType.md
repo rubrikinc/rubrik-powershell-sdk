@@ -17,3 +17,4 @@ ExoHealthCheckType represents the type of health check.
 - EKS_CONNECTIVITY - AWS EKS connectivity check.
 - ECR_CONNECTIVITY - AWS ECR connectivity check.
 - ADDITIONAL_CONNECTIVITY - Additional connectivity check from Exocompute.
+- GCP_ARTIFACT_REGISTRY_CONNECTIVITY - GCP Artifact Registry connectivity check.

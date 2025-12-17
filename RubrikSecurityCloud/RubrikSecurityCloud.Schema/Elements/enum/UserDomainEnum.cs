@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LOCAL")]
         LOCAL,
 
+        [EnumMember(Value = "PAT")]
+        PAT,
+
         [EnumMember(Value = "SSO")]
         SSO,
 

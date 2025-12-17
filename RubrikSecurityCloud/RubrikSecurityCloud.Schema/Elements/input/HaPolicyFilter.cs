@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public List<FailoverGroupStatus>? Status { get; set; }
 
+        //      C# -> List<System.String>? Ids
+        // GraphQL -> ids: [UUID!] (scalar)
+        [JsonProperty("ids")]
+        public List<System.String>? Ids { get; set; }
+
 
         #endregion
 

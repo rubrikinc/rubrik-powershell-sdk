@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        [JsonProperty("credentialsManagedBy")]
+        public CredentialsManagedBy? CredentialsManagedBy { get; set; }
+
         //      C# -> System.String? EffectiveServiceAccount
         // GraphQL -> effectiveServiceAccount: String! (scalar)
         [JsonProperty("effectiveServiceAccount")]
@@ -80,6 +85,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpCloudAccountProject Set(
+        CredentialsManagedBy? CredentialsManagedBy = null,
         System.String? EffectiveServiceAccount = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? UsesGlobalConfig = null
     ) 
     {
+        if ( CredentialsManagedBy != null ) {
+            this.CredentialsManagedBy = CredentialsManagedBy;
+        }
         if ( EffectiveServiceAccount != null ) {
             this.EffectiveServiceAccount = EffectiveServiceAccount;
         }
@@ -136,6 +145,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        if (this.CredentialsManagedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "credentialsManagedBy\n" ;
+            } else {
+                s += ind + "credentialsManagedBy\n" ;
+            }
+        }
         //      C# -> System.String? EffectiveServiceAccount
         // GraphQL -> effectiveServiceAccount: String! (scalar)
         if (this.EffectiveServiceAccount != null) {
@@ -233,6 +251,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        if (ec.Includes("credentialsManagedBy",true))
+        {
+            if(this.CredentialsManagedBy == null) {
+
+                this.CredentialsManagedBy = new CredentialsManagedBy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CredentialsManagedBy != null && ec.Excludes("credentialsManagedBy",true))
+        {
+            this.CredentialsManagedBy = null;
+        }
         //      C# -> System.String? EffectiveServiceAccount
         // GraphQL -> effectiveServiceAccount: String! (scalar)
         if (ec.Includes("effectiveServiceAccount",true))

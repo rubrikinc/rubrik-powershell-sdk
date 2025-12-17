@@ -183,6 +183,12 @@ All supported Rubrik managed objects.
 - OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
 - OKTA_TENANT - Okta tenant.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- PROXMOX_ENVIRONMENT - Proxmox environment.
+- PROXMOX_CLUSTER - Proxmox cluster.
+- PROXMOX_NODE - Proxmox node.
+- PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
+- GITHUB_ORGANIZATION - GitHub organization.
+- GITHUB_REPOSITORY - GitHub repository.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

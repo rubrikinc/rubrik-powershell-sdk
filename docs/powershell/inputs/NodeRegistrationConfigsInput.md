@@ -19,3 +19,5 @@ Input required for providing node configuration details for registration.
   - Capacity of the cluster.
 - isEntitled: System.Boolean
   - Entitlement status of the node.
+- version: System.String
+  - Version of the node.

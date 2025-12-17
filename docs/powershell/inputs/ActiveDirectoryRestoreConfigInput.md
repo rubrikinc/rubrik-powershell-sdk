@@ -11,3 +11,6 @@ Whether to perform authoritative SYSVOL restore or not.
 - snapshotForAuthoritativeRestore: System.String
   - Supported in v9.0+
 ID of the snapshot to be used for authoritative restore.
+- networkInterfaceSetting: NetworkInterfaceSetting
+  - Supported in v9.4+
+Network settings of the restored Domain Controller.

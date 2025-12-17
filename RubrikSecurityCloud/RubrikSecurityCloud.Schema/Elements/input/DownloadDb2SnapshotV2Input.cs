@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? UserNote
+        // GraphQL -> userNote: String (scalar)
+        [JsonProperty("userNote")]
+        public System.String? UserNote { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         [Required]

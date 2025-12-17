@@ -37,11 +37,14 @@ namespace RubrikSecurityCloud.Types
         public List<UpgradeAzureCloudAccountFeatureInput>? FeaturesToUpgrade { get; set; }
 
         //      C# -> List<System.String>? AzureSubscriptionRubrikIds
-        // GraphQL -> azureSubscriptionRubrikIds: [UUID!]! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> azureSubscriptionRubrikIds: [UUID!] (scalar)
         [JsonProperty("azureSubscriptionRubrikIds")]
         public List<System.String>? AzureSubscriptionRubrikIds { get; set; }
+
+        //      C# -> List<SubscriptionIdWithFeaturesToUpgradeInput>? SubscriptionIdsWithFeaturesToUpgrade
+        // GraphQL -> subscriptionIdsWithFeaturesToUpgrade: [SubscriptionIdWithFeaturesToUpgradeInput!] (input)
+        [JsonProperty("subscriptionIdsWithFeaturesToUpgrade")]
+        public List<SubscriptionIdWithFeaturesToUpgradeInput>? SubscriptionIdsWithFeaturesToUpgrade { get; set; }
 
 
         #endregion

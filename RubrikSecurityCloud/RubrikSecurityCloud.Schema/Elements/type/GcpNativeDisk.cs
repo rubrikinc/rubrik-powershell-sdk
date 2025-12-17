@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        [JsonProperty("isExocomputeConfigured")]
+        public System.Boolean? IsExocomputeConfigured { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -185,6 +190,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpProject: GcpNativeProject (type)
         [JsonProperty("gcpProject")]
         public GcpNativeProject? GcpProject { get; set; }
+
+        //      C# -> GcpNativeProjectDetails? GcpProjectDetails
+        // GraphQL -> gcpProjectDetails: GcpNativeProjectDetails! (type)
+        [JsonProperty("gcpProjectDetails")]
+        public GcpNativeProjectDetails? GcpProjectDetails { get; set; }
 
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)
@@ -379,6 +389,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DiskName = null,
         System.String? DiskType = null,
         System.String? Id = null,
+        System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsRelic = null,
         System.String? KmsKey = null,
         System.String? Name = null,
@@ -399,6 +410,7 @@ namespace RubrikSecurityCloud.Types
         GcpNativeProject? GcpNativeProject = null,
         GcpNativeProjectDetails? GcpNativeProjectDetails = null,
         GcpNativeProject? GcpProject = null,
+        GcpNativeProjectDetails? GcpProjectDetails = null,
         List<Label>? Labels = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -453,6 +465,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsExocomputeConfigured != null ) {
+            this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -513,6 +528,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GcpProject != null ) {
             this.GcpProject = GcpProject;
+        }
+        if ( GcpProjectDetails != null ) {
+            this.GcpProjectDetails = GcpProjectDetails;
         }
         if ( Labels != null ) {
             this.Labels = Labels;
@@ -697,6 +715,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (this.IsExocomputeConfigured != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExocomputeConfigured\n" ;
+            } else {
+                s += ind + "isExocomputeConfigured\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -900,6 +927,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "gcpProject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpNativeProjectDetails? GcpProjectDetails
+        // GraphQL -> gcpProjectDetails: GcpNativeProjectDetails! (type)
+        if (this.GcpProjectDetails != null) {
+            var fspec = this.GcpProjectDetails.AsFieldSpec(conf.Child("gcpProjectDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "gcpProjectDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1320,6 +1359,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (ec.Includes("isExocomputeConfigured",true))
+        {
+            if(this.IsExocomputeConfigured == null) {
+
+                this.IsExocomputeConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
+        {
+            this.IsExocomputeConfigured = null;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (ec.Includes("isRelic",true))
@@ -1675,6 +1731,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GcpProject != null && ec.Excludes("gcpProject",false))
         {
             this.GcpProject = null;
+        }
+        //      C# -> GcpNativeProjectDetails? GcpProjectDetails
+        // GraphQL -> gcpProjectDetails: GcpNativeProjectDetails! (type)
+        if (ec.Includes("gcpProjectDetails",false))
+        {
+            if(this.GcpProjectDetails == null) {
+
+                this.GcpProjectDetails = new GcpNativeProjectDetails();
+                this.GcpProjectDetails.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectDetails"));
+
+            } else {
+
+                this.GcpProjectDetails.ApplyExploratoryFieldSpec(ec.NewChild("gcpProjectDetails"));
+
+            }
+        }
+        else if (this.GcpProjectDetails != null && ec.Excludes("gcpProjectDetails",false))
+        {
+            this.GcpProjectDetails = null;
         }
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)

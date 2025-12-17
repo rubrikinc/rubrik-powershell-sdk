@@ -11,3 +11,5 @@ Entra ID BitLocker key.
   - Type of drive/volume this key protects.
 - createdDateTime: DateTime
   - Date and time when this key was created and backed up to Entra ID.
+- deviceId: System.String
+  - ID of the device from which the BitLocker key is backed up.

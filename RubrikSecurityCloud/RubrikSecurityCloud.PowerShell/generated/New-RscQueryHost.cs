@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 7
+    /// Create a new RscQuery object for any of the 8
     /// operations in the 'Host' API domain:
-    /// Diagnosis, PhysicalHost, PhysicalHosts, RbsNetworkLimit, Search, Share, or Shares.
+    /// Diagnosis, FailoverGroup, PhysicalHost, PhysicalHosts, RbsNetworkLimit, Search, Share, or Shares.
     /// </summary>
     /// <description>
     /// New-RscQueryHost creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 7 operations
+    /// There are 8 operations
     /// in the 'Host' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Diagnosis, PhysicalHost, PhysicalHosts, RbsNetworkLimit, Search, Share, or Shares.
+    /// one of: Diagnosis, FailoverGroup, PhysicalHost, PhysicalHosts, RbsNetworkLimit, Search, Share, or Shares.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,53 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: HostDiagnosisSummary
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FailoverGroup operation
+    /// of the 'Host' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Host
+    /// # API Operation: FailoverGroup
+    /// 
+    /// $query = New-RscQueryHost -Operation FailoverGroup
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.failoverGroupId = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	hostType = @(
+    /// 		$someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	hostStatus = @(
+    /// 		$someFailoverGroupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverGroupStatus]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FailoverGroupHostConnection
     /// 
     /// 
     /// 
@@ -391,6 +438,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "Diagnosis",
+                "FailoverGroup",
                 "PhysicalHost",
                 "PhysicalHosts",
                 "RbsNetworkLimit",
@@ -414,6 +462,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "Diagnosis":
                         this.ProcessRecord_Diagnosis();
+                        break;
+                    case "FailoverGroup":
+                        this.ProcessRecord_FailoverGroup();
                         break;
                     case "PhysicalHost":
                         this.ProcessRecord_PhysicalHost();
@@ -450,6 +501,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Diagnosis";
             // Create new graphql operation hostDiagnosis
             InitQueryHostDiagnosis();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // failoverGroupHosts.
+        internal void ProcessRecord_FailoverGroup()
+        {
+            this._logger.name += " -FailoverGroup";
+            // Create new graphql operation failoverGroupHosts
+            InitQueryFailoverGroupHosts();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -524,6 +584,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.HostDiagnosisFieldSpec,
                 @"# REQUIRED
 $query.Var.id = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // failoverGroupHosts(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     failoverGroupId: UUID!
+        //     filter: FailoverGroupHostFilter
+        //   ): FailoverGroupHostConnection!
+        internal void InitQueryFailoverGroupHosts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("failoverGroupId", "UUID!"),
+                Tuple.Create("filter", "FailoverGroupHostFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFailoverGroupHosts",
+                "($first: Int,$after: String,$last: Int,$before: String,$failoverGroupId: UUID!,$filter: FailoverGroupHostFilter)",
+                "FailoverGroupHostConnection",
+                Query.FailoverGroupHosts,
+                Query.FailoverGroupHostsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.failoverGroupId = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	hostType = @(
+		$someHostRegisterOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HostRegisterOsType]) for enum values.
+	)
+	# OPTIONAL
+	hostStatus = @(
+		$someFailoverGroupStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FailoverGroupStatus]) for enum values.
+	)
+}"
             );
         }
 

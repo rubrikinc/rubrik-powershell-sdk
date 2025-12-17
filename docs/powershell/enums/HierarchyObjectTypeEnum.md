@@ -184,3 +184,9 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
 - CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
 - CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
+- PROXMOX_ENVIRONMENT - Proxmox Environment.
+- PROXMOX_CLUSTER - Proxmox Cluster.
+- PROXMOX_NODE - Proxmox Node.
+- PROXMOX_VIRTUAL_MACHINE - Proxmox Virtual Machine.
+- GITHUB_ORGANIZATION - GitHub Organization.
+- GITHUB_REPOSITORY - GitHub Repository.

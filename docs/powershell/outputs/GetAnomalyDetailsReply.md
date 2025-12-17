@@ -59,6 +59,10 @@ Anomaly analysis report from lambda service.
   - Specifies the resolution status of the anomaly.
 - potentialSnoozedDirectories: list of System.Strings
   - The list of directories that can be snoozed from the anomaly.
+- anomalyAnalysisLocationId: System.String
+  - The ID of the archival location where Ransomware Investigation was performed.
+- anomalyAnalysisLocationName: System.String
+  - The name of the archival location where Ransomware Investigation was performed.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly.
 - objectType: ObjectTypeEnum

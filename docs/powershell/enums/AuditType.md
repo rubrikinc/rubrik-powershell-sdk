@@ -34,3 +34,4 @@ Represents audit types.
 - IDENTITY_VIOLATION - Identity violations audit.
 - IDENTITY_ALERT - Identity alert audit.
 - STAGED_UPGRADE - Upgrade audit.
+- IDENTITY_ACTIVITY - Identity activity audit.

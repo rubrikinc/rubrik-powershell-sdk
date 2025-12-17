@@ -1,6 +1,8 @@
 ### CcWithCloudInfo
 Detailed cloud information for a Cloud Cluster.
 
+- uuid: System.String
+  - Cloud Cluster UUID.
 - name: System.String
   - Cloud Cluster name.
 - region: System.String
@@ -11,6 +13,8 @@ Detailed cloud information for a Cloud Cluster.
   - Native name of the network where the Cloud Cluster exists.
 - nativeCloudAccountName: System.String
   - Native name of the cloud account where the Cloud Cluster exists.
+- cloudAccountId: System.String
+  - Rubrik-generated cloud account UUID.
 - vendor: CcpVendorType
   - Cloud provider.
 - nativeCloudAccountId: System.String
@@ -19,7 +23,3 @@ Detailed cloud information for a Cloud Cluster.
   - Native name of the cloud account where the Cloud Cluster exists.
 - storageConfig: ElasticStorageConfig
   - Elastic Storage configuration.
-- uuid: System.String
-  - Cloud Cluster UUID.
-- cloudAccountId: System.String
-  - Rubrik-generated cloud account UUID.

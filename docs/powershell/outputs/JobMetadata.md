@@ -1,4 +1,6 @@
 ### JobMetadata
+
+
 - id: System.Int64
 - createdAt: DateTime
 - updatedAt: DateTime

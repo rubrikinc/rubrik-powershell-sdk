@@ -848,3 +848,26 @@ archived and has the protection feature enabled for DynamoDB.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
+- VMWARE_VM_RBS_AGENT_STATUS - Filter VMware virtual machines by RBS agent status.
++mo:filter:db:table=cdm_vmware_virtual_machine
++mo:filter:db:column=agent_status
+- GOOGLE_WORKSPACE_USER_MAILBOX_ORG_UNIT - Filter Google Workspace user mailboxes by organization unit ID.
++mo:filter:db:table=saasapps_google_workspace_user_mailboxes
++mo:filter:db:column=user_id
++mo:filter:db:index:key=user_mailbox_to_user_fk
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- EXCHANGE_SERVER_BY_HOST_NAME - Filter Exchange Servers by the host name.
++mo:filter:db:table=rsc_exchange_host
++mo:filter:db:column=fid
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=name
++mo:filter:db:index:key=name_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false

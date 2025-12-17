@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
 
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean! (scalar)
+        [JsonProperty("shouldOverrideClusterWideBlocklistedFilesystemPaths")]
+        public System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths { get; set; }
+
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean! (scalar)
         [JsonProperty("shouldRetryPrescriptIfBackupFails")]
@@ -155,6 +160,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String! (scalar)
+        [JsonProperty("templateBlocklistedFilesystemPaths")]
+        public System.String? TemplateBlocklistedFilesystemPaths { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -315,8 +325,10 @@ namespace RubrikSecurityCloud.Types
         System.String? PostBackupScript = null,
         System.String? PreBackupScript = null,
         System.Int32? ReplicatedObjectCount = null,
+        System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths = null,
         System.Boolean? ShouldRetryPrescriptIfBackupFails = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? TemplateBlocklistedFilesystemPaths = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -409,11 +421,17 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
         }
+        if ( ShouldOverrideClusterWideBlocklistedFilesystemPaths != null ) {
+            this.ShouldOverrideClusterWideBlocklistedFilesystemPaths = ShouldOverrideClusterWideBlocklistedFilesystemPaths;
+        }
         if ( ShouldRetryPrescriptIfBackupFails != null ) {
             this.ShouldRetryPrescriptIfBackupFails = ShouldRetryPrescriptIfBackupFails;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( TemplateBlocklistedFilesystemPaths != null ) {
+            this.TemplateBlocklistedFilesystemPaths = TemplateBlocklistedFilesystemPaths;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -719,6 +737,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "replicatedObjectCount\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean! (scalar)
+        if (this.ShouldOverrideClusterWideBlocklistedFilesystemPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldOverrideClusterWideBlocklistedFilesystemPaths\n" ;
+            } else {
+                s += ind + "shouldOverrideClusterWideBlocklistedFilesystemPaths\n" ;
+            }
+        }
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean! (scalar)
         if (this.ShouldRetryPrescriptIfBackupFails != null) {
@@ -735,6 +762,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String! (scalar)
+        if (this.TemplateBlocklistedFilesystemPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateBlocklistedFilesystemPaths\n" ;
+            } else {
+                s += ind + "templateBlocklistedFilesystemPaths\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1379,6 +1415,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjectCount = null;
         }
+        //      C# -> System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths
+        // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean! (scalar)
+        if (ec.Includes("shouldOverrideClusterWideBlocklistedFilesystemPaths",true))
+        {
+            if(this.ShouldOverrideClusterWideBlocklistedFilesystemPaths == null) {
+
+                this.ShouldOverrideClusterWideBlocklistedFilesystemPaths = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldOverrideClusterWideBlocklistedFilesystemPaths != null && ec.Excludes("shouldOverrideClusterWideBlocklistedFilesystemPaths",true))
+        {
+            this.ShouldOverrideClusterWideBlocklistedFilesystemPaths = null;
+        }
         //      C# -> System.Boolean? ShouldRetryPrescriptIfBackupFails
         // GraphQL -> shouldRetryPrescriptIfBackupFails: Boolean! (scalar)
         if (ec.Includes("shouldRetryPrescriptIfBackupFails",true))
@@ -1412,6 +1465,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.String? TemplateBlocklistedFilesystemPaths
+        // GraphQL -> templateBlocklistedFilesystemPaths: String! (scalar)
+        if (ec.Includes("templateBlocklistedFilesystemPaths",true))
+        {
+            if(this.TemplateBlocklistedFilesystemPaths == null) {
+
+                this.TemplateBlocklistedFilesystemPaths = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateBlocklistedFilesystemPaths != null && ec.Excludes("templateBlocklistedFilesystemPaths",true))
+        {
+            this.TemplateBlocklistedFilesystemPaths = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

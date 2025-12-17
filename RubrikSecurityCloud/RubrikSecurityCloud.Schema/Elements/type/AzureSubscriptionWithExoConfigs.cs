@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AzureCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AzureCloudAccountRegion!]! (enum)
+        [JsonProperty("exocomputeMappableRegions")]
+        public List<AzureCloudAccountRegion>? ExocomputeMappableRegions { get; set; }
+
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         [JsonProperty("azureSubscriptionNativeId")]
@@ -80,6 +85,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureSubscriptionWithExoConfigs Set(
+        List<AzureCloudAccountRegion>? ExocomputeMappableRegions = null,
         System.String? AzureSubscriptionNativeId = null,
         System.String? AzureSubscriptionRubrikId = null,
         List<System.String>? MappedCloudAccountIds = null,
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
         AzureMappedExocomputeSubscription? MappedExocomputeSubscription = null
     ) 
     {
+        if ( ExocomputeMappableRegions != null ) {
+            this.ExocomputeMappableRegions = ExocomputeMappableRegions;
+        }
         if ( AzureSubscriptionNativeId != null ) {
             this.AzureSubscriptionNativeId = AzureSubscriptionNativeId;
         }
@@ -136,6 +145,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AzureCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AzureCloudAccountRegion!]! (enum)
+        if (this.ExocomputeMappableRegions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeMappableRegions\n" ;
+            } else {
+                s += ind + "exocomputeMappableRegions\n" ;
+            }
+        }
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId != null) {
@@ -251,6 +269,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<AzureCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AzureCloudAccountRegion!]! (enum)
+        if (ec.Includes("exocomputeMappableRegions",true))
+        {
+            if(this.ExocomputeMappableRegions == null) {
+
+                this.ExocomputeMappableRegions = new List<AzureCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeMappableRegions != null && ec.Excludes("exocomputeMappableRegions",true))
+        {
+            this.ExocomputeMappableRegions = null;
+        }
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (ec.Includes("azureSubscriptionNativeId",true))

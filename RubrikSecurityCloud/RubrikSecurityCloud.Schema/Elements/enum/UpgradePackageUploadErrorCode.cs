@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NETWORK_FAILURE")]
         NETWORK_FAILURE,
 
+        [EnumMember(Value = "NO_ERROR")]
+        NO_ERROR,
+
         [EnumMember(Value = "STORAGE_FULL")]
         STORAGE_FULL
 

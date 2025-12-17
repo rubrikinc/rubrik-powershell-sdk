@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        public List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> List<AuthorizedOperation>? Operations
         // GraphQL -> operations: [AuthorizedOperation!]! (enum)
         [JsonProperty("operations")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AuthorizedOps Set(
+        List<Operation>? AuthorizedOperations = null,
         List<AuthorizedOperation>? Operations = null,
         System.String? ObjectId = null
     ) 
     {
+        if ( AuthorizedOperations != null ) {
+            this.AuthorizedOperations = AuthorizedOperations;
+        }
         if ( Operations != null ) {
             this.Operations = Operations;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (this.AuthorizedOperations != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authorizedOperations\n" ;
+            } else {
+                s += ind + "authorizedOperations\n" ;
+            }
+        }
         //      C# -> List<AuthorizedOperation>? Operations
         // GraphQL -> operations: [AuthorizedOperation!]! (enum)
         if (this.Operations != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (ec.Includes("authorizedOperations",true))
+        {
+            if(this.AuthorizedOperations == null) {
+
+                this.AuthorizedOperations = new List<Operation>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
+        {
+            this.AuthorizedOperations = null;
+        }
         //      C# -> List<AuthorizedOperation>? Operations
         // GraphQL -> operations: [AuthorizedOperation!]! (enum)
         if (ec.Includes("operations",true))

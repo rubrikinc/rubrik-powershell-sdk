@@ -44,3 +44,5 @@ Name of product.
 - DSPM_O365 - DSPM for O365 workloads.
 - DSPM_CLOUD - DSPM for Cloud workloads.
 - SENSITIVE_DATA_MONITORING_CLOUD_UNSTRUCTURED - Sensitive Data Monitoring on Cloud Unstructured.
+- CODEBASE_RECOVERY - Codebase Recovery.
+- OKTA - Okta protection.

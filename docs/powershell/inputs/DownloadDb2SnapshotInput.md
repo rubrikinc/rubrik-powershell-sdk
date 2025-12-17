@@ -5,3 +5,5 @@ Input for downloading a Db2 snapshot from an archival location.
   - Required. ID of the location from where the Db2 database snapshot will be downloaded.
 - snapshotId: System.String
   - Required. ID of the Db2 database snapshot.
+- userNote: System.String
+  - Required. User note to associate with audits.

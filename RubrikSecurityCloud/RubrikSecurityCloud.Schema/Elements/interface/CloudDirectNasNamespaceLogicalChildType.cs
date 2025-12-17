@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         Cluster? Cluster { get; set; }
 
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        [JsonProperty("pendingSla")]
+        SlaDomain? PendingSla { get; set; }
+
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]

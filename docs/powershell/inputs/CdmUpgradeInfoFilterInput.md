@@ -16,8 +16,6 @@ Filters for the cluster list.
 - downloadedVersion: list of System.Strings
   - Cluster software version greater than or equal to.
 - installedVersion: list of System.Strings
-- eosStatus: list of ClusterEosStatuss
-  - End of support status of the Rubrik cluster.
 - upgradeJobStatus: list of ClusterJobStatusTypeEnums
   - Cluster upgrade job status.
 - clusterLocation: list of System.Strings
@@ -31,3 +29,5 @@ Filters for the cluster list.
   - Product type of Rubrik cluster.
 - upgradeStatusCategory: list of System.Strings
   - Upgrade status categories for filtering clusters. Valid values are defined in the GPS service.
+- eosStatus: list of ClusterEosStatuss
+  - End of support status of the Rubrik cluster.

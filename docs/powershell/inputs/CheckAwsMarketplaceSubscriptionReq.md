@@ -10,3 +10,5 @@ Request to check AWS marketplace subscription status.
 - accountCredentials: AwsAccountCredentials
   - Optional AWS account credentials
 (if not provided, will use cloud account credentials).
+- subnetId: System.String
+  - AWS subnet ID.

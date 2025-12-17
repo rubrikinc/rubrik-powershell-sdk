@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("consumptionPerWorkloadType")]
         public List<PerWorkloadConsumptionType>? ConsumptionPerWorkloadType { get; set; }
 
+        //      C# -> List<OrgSegregatedConsumption>? OrgSegregatedConsumption
+        // GraphQL -> orgSegregatedConsumption: [OrgSegregatedConsumption!]! (type)
+        [JsonProperty("orgSegregatedConsumption")]
+        public List<OrgSegregatedConsumption>? OrgSegregatedConsumption { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public O365Consumption Set(
         LicenseConsumptionType? Consumption = null,
         List<MultiTenancyConsumptionType>? ConsumptionPerMspOrg = null,
-        List<PerWorkloadConsumptionType>? ConsumptionPerWorkloadType = null
+        List<PerWorkloadConsumptionType>? ConsumptionPerWorkloadType = null,
+        List<OrgSegregatedConsumption>? OrgSegregatedConsumption = null
     ) 
     {
         if ( Consumption != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ConsumptionPerWorkloadType != null ) {
             this.ConsumptionPerWorkloadType = ConsumptionPerWorkloadType;
+        }
+        if ( OrgSegregatedConsumption != null ) {
+            this.OrgSegregatedConsumption = OrgSegregatedConsumption;
         }
         return this;
     }
@@ -106,6 +115,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "consumptionPerWorkloadType" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<OrgSegregatedConsumption>? OrgSegregatedConsumption
+        // GraphQL -> orgSegregatedConsumption: [OrgSegregatedConsumption!]! (type)
+        if (this.OrgSegregatedConsumption != null) {
+            var fspec = this.OrgSegregatedConsumption.AsFieldSpec(conf.Child("orgSegregatedConsumption"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "orgSegregatedConsumption" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -172,6 +193,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConsumptionPerWorkloadType != null && ec.Excludes("consumptionPerWorkloadType",false))
         {
             this.ConsumptionPerWorkloadType = null;
+        }
+        //      C# -> List<OrgSegregatedConsumption>? OrgSegregatedConsumption
+        // GraphQL -> orgSegregatedConsumption: [OrgSegregatedConsumption!]! (type)
+        if (ec.Includes("orgSegregatedConsumption",false))
+        {
+            if(this.OrgSegregatedConsumption == null) {
+
+                this.OrgSegregatedConsumption = new List<OrgSegregatedConsumption>();
+                this.OrgSegregatedConsumption.ApplyExploratoryFieldSpec(ec.NewChild("orgSegregatedConsumption"));
+
+            } else {
+
+                this.OrgSegregatedConsumption.ApplyExploratoryFieldSpec(ec.NewChild("orgSegregatedConsumption"));
+
+            }
+        }
+        else if (this.OrgSegregatedConsumption != null && ec.Excludes("orgSegregatedConsumption",false))
+        {
+            this.OrgSegregatedConsumption = null;
         }
     }
 

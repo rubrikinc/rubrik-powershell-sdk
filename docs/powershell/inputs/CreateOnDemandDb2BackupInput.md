@@ -5,3 +5,5 @@ Input for creating an on-demand Db2 backup.
   - Configuration for the on demand backup.
 - id: System.String
   - Required. ID assigned to a Db2 database object.
+- userNote: System.String
+  - Required. User note to associate with audits.

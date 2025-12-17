@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadFid")]
         public List<System.String>? WorkloadFid { get; set; }
 
+        //      C# -> List<System.String>? ArchivalLocationId
+        // GraphQL -> archivalLocationId: [String!] (scalar)
+        [JsonProperty("archivalLocationId")]
+        public List<System.String>? ArchivalLocationId { get; set; }
+
 
         #endregion
 

@@ -1,31 +1,31 @@
 ### InventorySubHierarchyRootEnum
 Inventory workloads that are supported on Rubrik.
 
-- APPFLOWS_ROOT
-- AWSNATIVE_ROOT
-- AZURENATIVE_ROOT
-- O365_ROOT
-- PHYSICAL_HOST_ROOT
-- VSPHERE_ROOT
+- APPFLOWS_ROOT - Orchestrated recovery root.
+- AWSNATIVE_ROOT - AWS Native root.
+- AZURENATIVE_ROOT - Azure Native root.
+- O365_ROOT - Office 365 root.
+- PHYSICAL_HOST_ROOT - Physical Host root.
+- VSPHERE_ROOT - VSphere root.
 - MONGO_ROOT - MongoDB Root.
-- CLOUD_NATIVE_TAG_RULE_ROOT
-- GCPNATIVE_ROOT
-- LINUX_HOST_ROOT
-- WINDOWS_HOST_ROOT
-- NAS_HOST_ROOT
-- SAP_HANA_ROOT
-- HYPERV_ROOT
-- MANAGED_VOLUME_ROOT
-- MSSQL_ROOT
-- NUTANIX_ROOT
-- ORACLE_ROOT
-- VCD_ROOT
-- KUPR_ROOT
+- CLOUD_NATIVE_TAG_RULE_ROOT - Cloud Native Tag Rule root.
+- GCPNATIVE_ROOT - GCP Native root.
+- LINUX_HOST_ROOT - Linux Host root.
+- WINDOWS_HOST_ROOT - Windows Host root.
+- NAS_HOST_ROOT - NAS Host root.
+- SAP_HANA_ROOT - SAP HANA root.
+- HYPERV_ROOT - Hyper-V root.
+- MANAGED_VOLUME_ROOT - Managed Volume root.
+- MSSQL_ROOT - MSSQL root.
+- NUTANIX_ROOT - Nutanix root.
+- ORACLE_ROOT - Oracle root.
+- VCD_ROOT - VCD root.
+- KUPR_ROOT - KUPR root.
 - CASSANDRA_ROOT - Cassandra Root.
-- NAS_ROOT
-- FELDSPAR_ROOT
+- NAS_ROOT - NAS root.
+- FELDSPAR_ROOT - Feldspar root.
 - MONGODB_ROOT - MongoDB Root.
-- DB2_ROOT
+- DB2_ROOT - DB2 root.
 - EXCHANGE_ROOT - Root of exchange hierarchy.
 - CLOUD_DIRECT_NAS_EXPORT_ROOT - NAS Cloud Direct export root.
 - AZURE_AD_ROOT - Azure AD root.
@@ -44,3 +44,5 @@ Inventory workloads that are supported on Rubrik.
 - AZURE_DEVOPS_ROOT - Azure DevOps root.
 - OLVM_ROOT - OLVM root.
 - OKTA_ROOT - Okta root.
+- PROXMOX_ROOT - Proxmox root.
+- GITHUB_ROOT - GitHub root.

@@ -1,21 +1,21 @@
 ### ActiveDirectoryObjectsCount
-Count of different type of Active Directory objects in the snapshot.
+Count of different types of Active Directory objects in a snapshot.
 
 - users: System.Int64
-  - Count of users in the snapshot.
+  - Count of objects of type user.
 - groups: System.Int64
-  - Count of groups in the snapshot.
+  - Count of objects of type group.
 - contacts: System.Int64
-  - Count of contacts in the snapshot.
+  - Count of objects of type contact.
 - computers: System.Int64
-  - Count of computers in the snapshot.
+  - Count of objects of type computer.
 - organizationalUnits: System.Int64
-  - Count of organizational units in the snapshot.
+  - Count of objects of type organizational unit.
 - containers: System.Int64
-  - Count of containers in the snapshot.
+  - Count of objects of type containers.
 - gpos: System.Int64
-  - Count of group policies in the snapshot.
+  - Count of objects of type gpo.
 - managedServiceAccounts: System.Int64
-  - Count of managed service accounts in the snapshot.
+  - Count of objects of type managed service accounts.
 - groupManagedServiceAccounts: System.Int64
-  - Count of group managed service accounts in the snapshot.
+  - Count of objects of type group managed service accounts.

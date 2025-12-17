@@ -9,3 +9,5 @@ Details about an Exocompute configuration.
   - Specifies whether the cloud account is the host cloud account.
 - exocomputeConfigs: list of AzureExocomputeGetConfigResponses
   - Details about the Exocompute configurations.
+- exocomputeMappableRegions: list of AzureCloudAccountRegions
+  - Regions with protected objects excluding Exocompute mapped regions.

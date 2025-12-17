@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILE_DOWNLOAD")]
         FILE_DOWNLOAD,
 
+        [EnumMember(Value = "IDENTITY_ACTIVITY")]
+        IDENTITY_ACTIVITY,
+
         [EnumMember(Value = "IDENTITY_ALERT")]
         IDENTITY_ALERT,
 

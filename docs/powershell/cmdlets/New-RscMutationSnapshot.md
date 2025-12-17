@@ -50,18 +50,6 @@ Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 ### deletefilesetsnapshots
 - There is a single argument of type DeleteFilesetSnapshotsInput.
 - Returns ResponseSuccess.
-### deletes
-DeleteSnapshots deletes the specified snapshots of a single object at all
-the provided location IDs.
-
-- There is a single argument of type DeleteSnapshotsInput.
-- Returns System.String.
-### deletesofobjects
-DeleteSnapshotsOfObjects deletes all the snapshots of the specified
-objects from the provided location IDs.
-
-- There is a single argument of type DeleteSnapshotsOfObjectsInput.
-- Returns System.String.
 ### deletesofunmanagedobjects
 Deletes all the snapshots of the unmanaged objects in the request.
 

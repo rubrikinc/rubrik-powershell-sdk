@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? OnDemandSnapshots
+        // GraphQL -> onDemandSnapshots: Int! (scalar)
+        [JsonProperty("onDemandSnapshots")]
+        public System.Int32? OnDemandSnapshots { get; set; }
+
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int! (scalar)
         [JsonProperty("totalSnapshots")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public TotalSnapshotsForCloudDirectObjectReply Set(
+        System.Int32? OnDemandSnapshots = null,
         System.Int32? TotalSnapshots = null
     ) 
     {
+        if ( OnDemandSnapshots != null ) {
+            this.OnDemandSnapshots = OnDemandSnapshots;
+        }
         if ( TotalSnapshots != null ) {
             this.TotalSnapshots = TotalSnapshots;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? OnDemandSnapshots
+        // GraphQL -> onDemandSnapshots: Int! (scalar)
+        if (this.OnDemandSnapshots != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "onDemandSnapshots\n" ;
+            } else {
+                s += ind + "onDemandSnapshots\n" ;
+            }
+        }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int! (scalar)
         if (this.TotalSnapshots != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Int32? OnDemandSnapshots
+        // GraphQL -> onDemandSnapshots: Int! (scalar)
+        if (ec.Includes("onDemandSnapshots",true))
+        {
+            if(this.OnDemandSnapshots == null) {
+
+                this.OnDemandSnapshots = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.OnDemandSnapshots != null && ec.Excludes("onDemandSnapshots",true))
+        {
+            this.OnDemandSnapshots = null;
+        }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int! (scalar)
         if (ec.Includes("totalSnapshots",true))

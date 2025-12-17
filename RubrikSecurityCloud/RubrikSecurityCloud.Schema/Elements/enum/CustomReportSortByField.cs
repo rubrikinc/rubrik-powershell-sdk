@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME")]
         NAME,
 
+        [EnumMember(Value = "SCHEDULED_REPORTS_COUNT")]
+        SCHEDULED_REPORTS_COUNT,
+
         [EnumMember(Value = "UPDATED_AT")]
         UPDATED_AT
 

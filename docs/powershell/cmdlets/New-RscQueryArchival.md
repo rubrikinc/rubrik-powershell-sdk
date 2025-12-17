@@ -1,5 +1,28 @@
 # New-RscQueryArchival
 ## Subcommands
+### entities
+Lists all the user-created archival entities. This includes data center archival targets and cloud-native archival target mappings.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of ArchivalEntityFilterInputs: Specifies how to filter the list of archival entities.
+    - sortBy - ArchivalEntityQuerySortByField: Specifies the field by which the list of archival entities will be sorted.
+    - sortOrder - SortOrder: Sorts the order of results.
+- Returns ArchivalEntityConnection.
+### failovergrouplocations
+Get all archival locations for a given failover group.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - failoverGroupId - System.String: Failover Group ID for which archival locations will be retrieved..
+    - filter - FailoverGroupArchivalLocationFilter: Filters to apply to the query.
+- Returns FailoverGroupArchivalLocationConnection.
 ### featurepermissionfordatacenterrolebased
 Retrieves a list of AWS permissions required for Data Center Role Based Archival that is based on the selected permission groups.
 

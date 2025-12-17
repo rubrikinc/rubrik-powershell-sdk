@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("basicSchedule")]
         public BasicSnapshotSchedule? BasicSchedule { get; set; }
 
+        //      C# -> List<WeeklyDaySpec>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [WeeklyDaySpec!]! (type)
+        [JsonProperty("daysOfWeek")]
+        public List<WeeklyDaySpec>? DaysOfWeek { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public WeeklySnapshotSchedule Set(
         DayOfWeek? DayOfWeek = null,
-        BasicSnapshotSchedule? BasicSchedule = null
+        BasicSnapshotSchedule? BasicSchedule = null,
+        List<WeeklyDaySpec>? DaysOfWeek = null
     ) 
     {
         if ( DayOfWeek != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BasicSchedule != null ) {
             this.BasicSchedule = BasicSchedule;
+        }
+        if ( DaysOfWeek != null ) {
+            this.DaysOfWeek = DaysOfWeek;
         }
         return this;
     }
@@ -82,6 +91,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "basicSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<WeeklyDaySpec>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [WeeklyDaySpec!]! (type)
+        if (this.DaysOfWeek != null) {
+            var fspec = this.DaysOfWeek.AsFieldSpec(conf.Child("daysOfWeek"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "daysOfWeek" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -127,6 +148,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.BasicSchedule != null && ec.Excludes("basicSchedule",false))
         {
             this.BasicSchedule = null;
+        }
+        //      C# -> List<WeeklyDaySpec>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [WeeklyDaySpec!]! (type)
+        if (ec.Includes("daysOfWeek",false))
+        {
+            if(this.DaysOfWeek == null) {
+
+                this.DaysOfWeek = new List<WeeklyDaySpec>();
+                this.DaysOfWeek.ApplyExploratoryFieldSpec(ec.NewChild("daysOfWeek"));
+
+            } else {
+
+                this.DaysOfWeek.ApplyExploratoryFieldSpec(ec.NewChild("daysOfWeek"));
+
+            }
+        }
+        else if (this.DaysOfWeek != null && ec.Excludes("daysOfWeek",false))
+        {
+            this.DaysOfWeek = null;
         }
     }
 

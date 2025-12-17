@@ -30,3 +30,7 @@ interaction calls. This comes directly from the applicable credentials
 for the project and determines the identity used for GCP API calls.
 - projectManagedObjectId: System.String
   - The managed object id of the project in the authz service.
+- credentialsManagedBy: CredentialsManagedBy
+  - CredentialsManagedBy specifies who manages the GCP credentials used for
+authentication and authorization when accessing GCP resources within the
+Rubrik platform.

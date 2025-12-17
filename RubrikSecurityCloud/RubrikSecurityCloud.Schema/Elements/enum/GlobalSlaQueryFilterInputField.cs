@@ -27,8 +27,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_UUID")]
         CLUSTER_UUID,
 
+        [EnumMember(Value = "HA_POLICY_ID")]
+        HA_POLICY_ID,
+
         [EnumMember(Value = "IS_ELIGIBLE_FOR_UPGRADE")]
         IS_ELIGIBLE_FOR_UPGRADE,
+
+        [EnumMember(Value = "IS_HA_SLA")]
+        IS_HA_SLA,
 
         [EnumMember(Value = "IS_READ_ONLY")]
         IS_READ_ONLY,

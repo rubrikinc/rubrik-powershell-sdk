@@ -135,6 +135,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_OBJECT_TYPE")]
         POSTGRES_DB_CLUSTER_OBJECT_TYPE,
 
+        [EnumMember(Value = "PROXMOX_OBJECT_TYPE")]
+        PROXMOX_OBJECT_TYPE,
+
         [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
         SALESFORCE_OBJECT_TYPE,
 

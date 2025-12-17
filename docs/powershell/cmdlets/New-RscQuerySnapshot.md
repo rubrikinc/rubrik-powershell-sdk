@@ -10,10 +10,17 @@ Returns a list files whose name is prefixed by the query in the given snapshot.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - searchPrefix - System.String: Prefix arg for searching for files within a snapshot.
 - Returns SnapshotFileConnection.
+### byids
+Returns the details for the passed snapshot IDs.
+
+- There are 2 arguments.
+    - snapshotFids - list of System.Strings: List of snapshot UUIDs.
+    - shouldShowSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention.
+- Returns list of GenericSnapshots.
 ### closesttopointintime
 Details of the unexpired snapshot closest to the specified point in time for each provided workload ID.
 
-- There are 12 arguments.
+- There are 13 arguments.
     - beforeTime - DateTime: Specifies the time at which or before which the snapshot was taken.
     - afterTime - DateTime: Specifies the time at which or after which the snapshot was taken.
     - snappableIds - list of System.Strings: Workload UUIDs.
@@ -26,6 +33,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
     - getFullDetails - System.Boolean: Specifies whether to include full snapshot workload details.
     - excludeReplica - System.Boolean: Specifies whether to exclude replica snapshots.
     - excludeArchivalLocationTypes - list of System.Strings: List of archival location types that, if a snapshot is stored in them, will exclude the snapshot from query results.
+    - archivalLocationId - System.String: Filter snapshots by archival location ID. Only snapshots stored at this archival location will be returned. If the value is null, no filter is applied.
 - Returns list of ClosestSnapshotSearchResults.
 ### clouddirect
 Returns a NAS Cloud Direct snapshot by ID.
@@ -77,7 +85,7 @@ Browse or search the given path for files and directories along with their delta
 ### filesdeltav2
 Browse or search the given path for files and directories along with their deltas in a given snapshot.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - path - System.String: The path under which you want your search to run.
@@ -85,6 +93,8 @@ Browse or search the given path for files and directories along with their delta
     - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
     - searchPrefix - System.String: Prefix arg for searching for files within a snapshot.
     - quarantineFilters - list of QuarantineFilters: Filter entries based on quarantine status of the entries in the base snapshot.
+    - sensitiveDataDiscoveryFilters - SensitiveDataDiscoveryFiltersInput: Filters for sensitive data discovery results.
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
     - workloadFieldsArg - WorkloadFieldsInput: Workload fields in BrowseSnapshotFileDelta request.
 - Returns SnapshotFileDeltaV2Connection.
 ### fileset
@@ -184,7 +194,7 @@ Returns a list of snapshots for a workload.
     - sortBy - SnapshotQuerySortByField: Sorts snapshots by field.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
-    - showSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention.
+    - showSnapshotRetentionInfo - System.Boolean: Specifies whether to show retention information of snapshots of RSC native workloads.
     - includeOnlySourceSnapshots - System.Boolean: Specifies whether to include source snapshots or not. If its true, response will contain only source snapshots.
 - Returns GenericSnapshotConnection.
 ### snappableslist

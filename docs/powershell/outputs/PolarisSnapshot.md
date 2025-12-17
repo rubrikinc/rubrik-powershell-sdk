@@ -28,6 +28,8 @@
   - Specifies the source snapshot ID.
 - isRetentionLocked: System.Boolean
   - Specifies whether the snapshot is retention locked.
+- retentionLockModeAcrossLocations: RetentionLockMode
+  - Specifies the mode of the retention lock if it's enabled across any locations.
 - replicationLocations: list of DataLocations
 - hasUnexpiredReplica: System.Boolean
   - Indicates whether the snapshot has a valid replica.
@@ -41,6 +43,8 @@
   - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
 - archivalLocationName: System.String
   - Specifies the name of the location where the snapshot is uploaded.
+- isRansomwareInvestigatedSnapshot: System.Boolean
+  - Specifies whether the snapshot has been analyzed by Ransomware Detection.
 - slaDomain: SlaDomain
 - snapshotRetentionInfo: RscSnapshotRetentionInfo
   - Snapshot retention-related information for local, archival, and replication locations.

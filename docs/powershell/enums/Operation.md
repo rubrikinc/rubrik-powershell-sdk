@@ -40,6 +40,7 @@ Operations defined in the RBAC system.
 - RESTORE
 - TAKE_ON_DEMAND_SNAPSHOT
 - MANAGE_PROTECTION
+- RENEW_CERTIFICATE - Renew RSC-managed certificates.
 - MANAGE_DATA_SOURCE
 - REFRESH_DATA_SOURCE
 - EXPORT_FILES
@@ -224,6 +225,9 @@ Operations defined in the RBAC system.
 - SEND_LICENSE_NOTIFICATION - Send license notification.
 - MANAGE_CLASSIFICATION_SETTINGS - Manage classification banner and login settings.
 - MANAGE_RUBY - Manage Ruby (LLM) settings, including enablement.
+- VIEW_PERSONAL_ACCESS_TOKENS - View personal access tokens.
+- MANAGE_OWN_PERSONAL_ACCESS_TOKEN - Create, rotate, and deactivate your own personal access token.
+- DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN - Deactivate personal access token for other users.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

@@ -315,6 +315,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 			# OPTIONAL
+    /// 			daysOfWeek = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 				}
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		monthly = @{
@@ -329,6 +336,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 			# OPTIONAL
+    /// 			daysOfMonth = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					spec = @{
+    /// 						# OPTIONAL
+    /// 						specificDate = @{
+    /// 							# REQUIRED
+    /// 							value = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfWeekInMonth = @{
+    /// 							# REQUIRED
+    /// 							value = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 				}
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		quarterly = @{
@@ -1168,6 +1201,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 			# OPTIONAL
+    /// 			daysOfWeek = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 				}
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		monthly = @{
@@ -1182,6 +1222,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+    /// 			# OPTIONAL
+    /// 			daysOfMonth = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					spec = @{
+    /// 						# OPTIONAL
+    /// 						specificDate = @{
+    /// 							# REQUIRED
+    /// 							value = @{
+    /// 								# OPTIONAL
+    /// 								dateOffset = $someInt
+    /// 							}
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfWeekInMonth = @{
+    /// 							# REQUIRED
+    /// 							value = @{
+    /// 								# OPTIONAL
+    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 								# OPTIONAL
+    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 				}
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		quarterly = @{
@@ -2243,6 +2309,13 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+			# OPTIONAL
+			daysOfWeek = @(
+				@{
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+			)
 		}
 		# OPTIONAL
 		monthly = @{
@@ -2257,6 +2330,32 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+			# OPTIONAL
+			daysOfMonth = @(
+				@{
+					# OPTIONAL
+					spec = @{
+						# OPTIONAL
+						specificDate = @{
+							# REQUIRED
+							value = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+						}
+						# OPTIONAL
+						dayOfWeekInMonth = @{
+							# REQUIRED
+							value = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					}
+				}
+			)
 		}
 		# OPTIONAL
 		quarterly = @{
@@ -3057,6 +3156,13 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+			# OPTIONAL
+			daysOfWeek = @(
+				@{
+					# OPTIONAL
+					dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+				}
+			)
 		}
 		# OPTIONAL
 		monthly = @{
@@ -3071,6 +3177,32 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			dayOfMonth = $someDayOfMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfMonth]) for enum values.
+			# OPTIONAL
+			daysOfMonth = @(
+				@{
+					# OPTIONAL
+					spec = @{
+						# OPTIONAL
+						specificDate = @{
+							# REQUIRED
+							value = @{
+								# OPTIONAL
+								dateOffset = $someInt
+							}
+						}
+						# OPTIONAL
+						dayOfWeekInMonth = @{
+							# REQUIRED
+							value = @{
+								# OPTIONAL
+								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+								# OPTIONAL
+								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+							}
+						}
+					}
+				}
+			)
 		}
 		# OPTIONAL
 		quarterly = @{

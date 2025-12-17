@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("redundancy")]
         public RcvRedundancy? Redundancy { get; set; }
 
+        //      C# -> System.String? RsaKey
+        // GraphQL -> rsaKey: String (scalar)
+        [JsonProperty("rsaKey")]
+        public System.String? RsaKey { get; set; }
+
 
         #endregion
 

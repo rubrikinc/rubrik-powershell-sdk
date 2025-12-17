@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions
+        // GraphQL -> exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
+        [JsonProperty("exocomputeEligibleAuthServerRegions")]
+        public List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions { get; set; }
+
         //      C# -> List<AwsCloudAccountRegion>? ExocomputeEligibleRegions
         // GraphQL -> exocomputeEligibleRegions: [AwsCloudAccountRegion!]! (enum)
         [JsonProperty("exocomputeEligibleRegions")]
@@ -80,6 +85,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsExocomputeConfig Set(
+        List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions = null,
         List<AwsCloudAccountRegion>? ExocomputeEligibleRegions = null,
         List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs = null,
         List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs = null,
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
         List<CloudAccountsCertificateInfo>? SslInspectionCertificates = null
     ) 
     {
+        if ( ExocomputeEligibleAuthServerRegions != null ) {
+            this.ExocomputeEligibleAuthServerRegions = ExocomputeEligibleAuthServerRegions;
+        }
         if ( ExocomputeEligibleRegions != null ) {
             this.ExocomputeEligibleRegions = ExocomputeEligibleRegions;
         }
@@ -136,6 +145,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions
+        // GraphQL -> exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
+        if (this.ExocomputeEligibleAuthServerRegions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeEligibleAuthServerRegions\n" ;
+            } else {
+                s += ind + "exocomputeEligibleAuthServerRegions\n" ;
+            }
+        }
         //      C# -> List<AwsCloudAccountRegion>? ExocomputeEligibleRegions
         // GraphQL -> exocomputeEligibleRegions: [AwsCloudAccountRegion!]! (enum)
         if (this.ExocomputeEligibleRegions != null) {
@@ -259,6 +277,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions
+        // GraphQL -> exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
+        if (ec.Includes("exocomputeEligibleAuthServerRegions",true))
+        {
+            if(this.ExocomputeEligibleAuthServerRegions == null) {
+
+                this.ExocomputeEligibleAuthServerRegions = new List<AwsAuthServerBasedCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeEligibleAuthServerRegions != null && ec.Excludes("exocomputeEligibleAuthServerRegions",true))
+        {
+            this.ExocomputeEligibleAuthServerRegions = null;
+        }
         //      C# -> List<AwsCloudAccountRegion>? ExocomputeEligibleRegions
         // GraphQL -> exocomputeEligibleRegions: [AwsCloudAccountRegion!]! (enum)
         if (ec.Includes("exocomputeEligibleRegions",true))

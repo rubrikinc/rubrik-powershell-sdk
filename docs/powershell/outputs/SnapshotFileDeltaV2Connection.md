@@ -13,3 +13,5 @@ Paginated list of SnapshotFileDeltaV2 objects. Each page of the results includes
   - The current snapshot.
 - previousSnapshot: GenericSnapshot
   - The snapshot using which deltas are computed.
+- isSensitiveDataDiscoverySupported: System.Boolean
+  - Flag to indicate if sensitive data discovery is supported for the object type.

@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("documentTypesFilter")]
         public List<System.String>? DocumentTypesFilter { get; set; }
 
+        //      C# -> SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope
+        // GraphQL -> sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope (enum)
+        [JsonProperty("sensitiveDataDiscoveryScope")]
+        public SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope { get; set; }
+
 
         #endregion
 

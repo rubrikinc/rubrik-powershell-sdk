@@ -86,3 +86,5 @@ of new MSSQL objects discovered for the given host.
 - ADD_OR_REMOVE_OPENSTACK_ENVIRONMENT - Addition or removal of an OpenStack environment.
 - CLOUD_DIRECT_NAS_SYSTEM_CRUD - CloudDirect NAS system operation.
 - INFORMIX_INSTANCE - Informix instance.
+- K8S_VM_MOUNT - Kubernetes virtual machine mount.
+- K8S_VM_UNMOUNT - Kubernetes virtual machine unmount.

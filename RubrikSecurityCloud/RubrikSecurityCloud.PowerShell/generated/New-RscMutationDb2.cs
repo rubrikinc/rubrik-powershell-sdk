@@ -137,6 +137,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	restoreConfig = @{
     /// 		# OPTIONAL
@@ -186,6 +188,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -217,6 +221,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -248,6 +254,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -312,6 +320,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -341,6 +351,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
     /// 	# OPTIONAL
@@ -388,6 +400,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -456,6 +470,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	db2DatabaseConfig = @{
     /// 		# OPTIONAL
@@ -507,6 +523,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -818,6 +836,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 	# REQUIRED
 	restoreConfig = @{
 		# OPTIONAL
@@ -859,6 +879,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -882,6 +904,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -905,6 +929,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -953,6 +979,8 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	snapshotId = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -974,6 +1002,8 @@ $query.Var.input = @{
                 Mutation.DownloadDb2SnapshotV2FieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	userNote = $someString
 	# REQUIRED
 	snapshotId = $someString
 	# OPTIONAL
@@ -1013,6 +1043,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1065,6 +1097,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 	# REQUIRED
 	db2DatabaseConfig = @{
 		# OPTIONAL
@@ -1108,6 +1142,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountEnabled")]
         public System.Boolean? AccountEnabled { get; set; }
 
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        [JsonProperty("deviceId")]
+        public System.String? DeviceId { get; set; }
+
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
         [JsonProperty("displayName")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         AzureAdOnPremSyncStatus? OnPremSyncStatus = null,
         AzureAdDeviceTrustType? TrustType = null,
         System.Boolean? AccountEnabled = null,
+        System.String? DeviceId = null,
         System.String? DisplayName = null,
         System.Boolean? IsCompliant = null,
         DateTime? LastSignInDateTime = null,
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccountEnabled != null ) {
             this.AccountEnabled = AccountEnabled;
+        }
+        if ( DeviceId != null ) {
+            this.DeviceId = DeviceId;
         }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
@@ -179,6 +188,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountEnabled\n" ;
             } else {
                 s += ind + "accountEnabled\n" ;
+            }
+        }
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        if (this.DeviceId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceId\n" ;
+            } else {
+                s += ind + "deviceId\n" ;
             }
         }
         //      C# -> System.String? DisplayName
@@ -319,6 +337,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccountEnabled != null && ec.Excludes("accountEnabled",true))
         {
             this.AccountEnabled = null;
+        }
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        if (ec.Includes("deviceId",true))
+        {
+            if(this.DeviceId == null) {
+
+                this.DeviceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceId != null && ec.Excludes("deviceId",true))
+        {
+            this.DeviceId = null;
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)

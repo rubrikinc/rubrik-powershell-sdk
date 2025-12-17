@@ -8,6 +8,17 @@ Retrieve the availability status for each host registered with a specified Rubri
 
 - There is a single argument of type System.String.
 - Returns HostDiagnosisSummary.
+### failovergroup
+Get all hosts for a given failover group.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - failoverGroupId - System.String: Failover group ID to get hosts for.
+    - filter - FailoverGroupHostFilter: Filters to apply to the query.
+- Returns FailoverGroupHostConnection.
 ### physicalhost
 - There is a single argument of type System.String.
 - Returns PhysicalHost.

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
         ACTIVE_DIRECTORY_FOREST,
 
+        [EnumMember(Value = "AGENT_OPERATIONS_MODEL_ROUTER")]
+        AGENT_OPERATIONS_MODEL_ROUTER,
+
         [EnumMember(Value = "APP_BLUEPRINT")]
         APP_BLUEPRINT,
 
@@ -197,6 +200,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_NATIVE_PROJECT")]
         GCP_NATIVE_PROJECT,
+
+        [EnumMember(Value = "GITHUB_ORGANIZATION")]
+        GITHUB_ORGANIZATION,
+
+        [EnumMember(Value = "GITHUB_REPOSITORY")]
+        GITHUB_REPOSITORY,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,

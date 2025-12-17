@@ -2,4 +2,4 @@
 Download CDM upgrades report response.
 
 - downloadLink: System.String
-  - Download link of the pdf report.
+  - The signed link for downloading the file in Google storage.

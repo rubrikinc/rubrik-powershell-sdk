@@ -38,3 +38,5 @@ features, specifically for resources managed under customer-onboarded
 cloud accounts (e.g., Azure, AWS, GCP).
 - LOG_TASKS_REPORT - Log Tasks report.
 - THREAT_MONITORING_COMPLIANCE_REPORT - Threat Monitoring Compliance report.
+- IDENTITY_ACTIVITY_REPORT - Identity Activity Auditor report.
+- THREAT_MONITORING_THREAT_DETECTION_REPORT - Threat Monitoring Threat Detection report.

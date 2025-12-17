@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Failover")]
         FAILOVER,
 
+        [EnumMember(Value = "IDENTITY_ACTIVITY")]
+        IDENTITY_ACTIVITY,
+
         [EnumMember(Value = "IDENTITY_ALERT")]
         IDENTITY_ALERT,
 

@@ -23,7 +23,11 @@
   - Relic status of the disk.
 - labels: list of Labels
   - Labels attached to the disk.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for use by this disk. When the value is true, exocompute can be used to perform tasks like file indexing.
 - gcpNativeProjectDetails: GcpNativeProjectDetails
+  - Project details of the disk.
+- gcpProjectDetails: GcpNativeProjectDetails
   - Project details of the disk.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.

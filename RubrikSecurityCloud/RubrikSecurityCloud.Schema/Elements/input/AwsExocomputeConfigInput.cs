@@ -56,6 +56,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterName")]
         public System.String? ClusterName { get; set; }
 
+        //      C# -> AwsRegionSelectorInput? AwsRegionSelector
+        // GraphQL -> awsRegionSelector: AwsRegionSelectorInput (input)
+        [JsonProperty("awsRegionSelector")]
+        public AwsRegionSelectorInput? AwsRegionSelector { get; set; }
+
+        //      C# -> AwsExocomputeOptionalConfigInRegionInput? OptionalConfig
+        // GraphQL -> optionalConfig: AwsExocomputeOptionalConfigInRegionInput (input)
+        [JsonProperty("optionalConfig")]
+        public AwsExocomputeOptionalConfigInRegionInput? OptionalConfig { get; set; }
+
 
         #endregion
 

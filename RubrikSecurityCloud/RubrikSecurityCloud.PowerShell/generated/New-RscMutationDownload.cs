@@ -1441,6 +1441,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	deltaTypeFilter = @(
@@ -3040,6 +3042,8 @@ $query.Var.input = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
+		# OPTIONAL
+		zipPassword = $someString
 	}
 	# OPTIONAL
 	deltaTypeFilter = @(

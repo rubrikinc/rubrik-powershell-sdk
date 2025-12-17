@@ -9,3 +9,5 @@ Input for updating an existing Rubrik Cloud Vault Azure storage setting.
   - Redundancy to which RCV Azure CNP location is to be updated.
 - updateChildVaultsOpt: System.Boolean
   - Whether to update child vaults along with parent vault. Child vaults will not be updated if this field is not set to true.
+- rcvTierOpt: RcsTierEnumType
+  - Tier for the Rubrik Cloud Vault Azure CNP location.

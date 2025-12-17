@@ -23,7 +23,11 @@ Represents a GCP GCE instance.
   - List of labels attached to the GCP instance.
 - attachmentSpecs: list of GcpNativeDiskAttachmentSpecs
   - List of GCP disk details attached to the instance.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for use by this GCE instance. When the value is true, exocompute can be used to perform tasks like file indexing.
 - gcpNativeProjectDetails: GcpNativeProjectDetails
+  - Project details of the GCE instance.
+- gcpProjectDetails: GcpNativeProjectDetails
   - Project details of the GCE instance.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.

@@ -25,6 +25,10 @@ Fileset template.
   - Boolean variable specifying if hidden folders can be backed up.
 - shouldRetryPrescriptIfBackupFails: System.Boolean
   - Indicates whether to retry the pre-backup script if the backup fails. When set to true, the system retries the pre-backup script if the backup fails. When set to false, the system does not retry the pre-backup script if the backup fails.
+- templateBlocklistedFilesystemPaths: System.String
+  - List of blocklisted filesystem paths for the template.
+- shouldOverrideClusterWideBlocklistedFilesystemPaths: System.Boolean
+  - Indicates whether to override the cluster-wide blocklisted filesystem paths.
 - shareType: ShareTypeEnum
   - Share type of the fileset template.
 - descendantConnection: FilesetTemplateDescendantTypeConnection

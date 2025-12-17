@@ -21,3 +21,5 @@ GCP Cloud Account Project.
   - Service account that will be used to make cloud calls for this project.
 - projectManagedObjectId: System.String
   - The managed object id of the project in the authz service.
+- credentialsManagedBy: CredentialsManagedBy
+  - CredentialsManagedBy specifies who manages the GCP credentials used for authentication and authorization when accessing GCP resources within the Rubrik platform.

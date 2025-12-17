@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EKS_CONNECTIVITY")]
         EKS_CONNECTIVITY,
 
+        [EnumMember(Value = "GCP_ARTIFACT_REGISTRY_CONNECTIVITY")]
+        GCP_ARTIFACT_REGISTRY_CONNECTIVITY,
+
         [EnumMember(Value = "GCP_CONNECTIVITY")]
         GCP_CONNECTIVITY,
 

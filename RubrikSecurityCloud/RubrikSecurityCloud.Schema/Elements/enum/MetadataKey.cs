@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INVALID_CHART_USER_MESSAGE")]
         INVALID_CHART_USER_MESSAGE,
 
+        [EnumMember(Value = "JSON_STRING_ARRAY")]
+        JSON_STRING_ARRAY,
+
         [EnumMember(Value = "METADATA_KEY_UNSPECIFIED")]
         METADATA_KEY_UNSPECIFIED,
 

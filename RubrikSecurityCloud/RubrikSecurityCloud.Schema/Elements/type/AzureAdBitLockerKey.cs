@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("createdDateTime")]
         public DateTime? CreatedDateTime { get; set; }
 
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        [JsonProperty("deviceId")]
+        public System.String? DeviceId { get; set; }
+
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)
         [JsonProperty("deviceName")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public AzureAdBitLockerKey Set(
         AzureAdBitLockerVolumeType? VolumeType = null,
         DateTime? CreatedDateTime = null,
+        System.String? DeviceId = null,
         System.String? DeviceName = null,
         System.String? Key = null,
         System.String? KeyId = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CreatedDateTime != null ) {
             this.CreatedDateTime = CreatedDateTime;
+        }
+        if ( DeviceId != null ) {
+            this.DeviceId = DeviceId;
         }
         if ( DeviceName != null ) {
             this.DeviceName = DeviceName;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "createdDateTime\n" ;
             } else {
                 s += ind + "createdDateTime\n" ;
+            }
+        }
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        if (this.DeviceId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceId\n" ;
+            } else {
+                s += ind + "deviceId\n" ;
             }
         }
         //      C# -> System.String? DeviceName
@@ -176,6 +194,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CreatedDateTime != null && ec.Excludes("createdDateTime",true))
         {
             this.CreatedDateTime = null;
+        }
+        //      C# -> System.String? DeviceId
+        // GraphQL -> deviceId: String! (scalar)
+        if (ec.Includes("deviceId",true))
+        {
+            if(this.DeviceId == null) {
+
+                this.DeviceId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceId != null && ec.Excludes("deviceId",true))
+        {
+            this.DeviceId = null;
         }
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)

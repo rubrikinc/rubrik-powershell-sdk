@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotForAuthoritativeRestore")]
         public System.String? SnapshotForAuthoritativeRestore { get; set; }
 
+        //      C# -> NetworkInterfaceSetting? NetworkInterfaceSetting
+        // GraphQL -> networkInterfaceSetting: NetworkInterfaceSetting (enum)
+        [JsonProperty("networkInterfaceSetting")]
+        public NetworkInterfaceSetting? NetworkInterfaceSetting { get; set; }
+
 
         #endregion
 

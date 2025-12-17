@@ -47,3 +47,4 @@ Type of objects managed by SLA Domains.
 - OLVM_OBJECT_TYPE - OLVM object.
 - OKTA_OBJECT_TYPE - Okta object.
 - GCP_CLOUD_SQL_OBJECT_TYPE - GCP Cloud SQL object.
+- PROXMOX_OBJECT_TYPE - Proxmox object.

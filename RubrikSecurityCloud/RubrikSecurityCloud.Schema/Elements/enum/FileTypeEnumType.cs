@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENTRA_ID_DOWNLOAD_SNAPSHOT")]
         ENTRA_ID_DOWNLOAD_SNAPSHOT,
 
+        [EnumMember(Value = "ENTRA_ID_RESTORE_SUMMARY")]
+        ENTRA_ID_RESTORE_SUMMARY,
+
         [EnumMember(Value = "REPORT")]
         REPORT,
 
@@ -32,6 +35,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SLA_WITH_REPLICATION")]
         SLA_WITH_REPLICATION,
+
+        [EnumMember(Value = "SNAPSHOT_RESULTS_CSV")]
+        SNAPSHOT_RESULTS_CSV,
 
         [EnumMember(Value = "TABLE_EXPORT_CSV")]
         TABLE_EXPORT_CSV,

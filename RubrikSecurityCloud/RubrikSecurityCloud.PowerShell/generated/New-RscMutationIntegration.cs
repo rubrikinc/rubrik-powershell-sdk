@@ -165,6 +165,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			clientId = $someString
     /// 			# REQUIRED
     /// 			clientSecret = $someString
+    /// 			# OPTIONAL
+    /// 			crowdstrikeTenantUrl = $someString
     /// 		}
     /// 	}
     /// }
@@ -273,6 +275,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					clientId = $someString
     /// 					# REQUIRED
     /// 					clientSecret = $someString
+    /// 					# OPTIONAL
+    /// 					crowdstrikeTenantUrl = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -477,6 +481,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			clientId = $someString
     /// 			# REQUIRED
     /// 			clientSecret = $someString
+    /// 			# OPTIONAL
+    /// 			crowdstrikeTenantUrl = $someString
     /// 		}
     /// 	}
     /// }
@@ -587,6 +593,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					clientId = $someString
     /// 					# REQUIRED
     /// 					clientSecret = $someString
+    /// 					# OPTIONAL
+    /// 					crowdstrikeTenantUrl = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -829,6 +837,8 @@ $query.Var.input = @{
 			clientId = $someString
 			# REQUIRED
 			clientSecret = $someString
+			# OPTIONAL
+			crowdstrikeTenantUrl = $someString
 		}
 	}
 }"
@@ -929,6 +939,8 @@ $query.Var.input = @{
 					clientId = $someString
 					# REQUIRED
 					clientSecret = $someString
+					# OPTIONAL
+					crowdstrikeTenantUrl = $someString
 				}
 			}
 		}
@@ -1101,6 +1113,8 @@ $query.Var.input = @{
 			clientId = $someString
 			# REQUIRED
 			clientSecret = $someString
+			# OPTIONAL
+			crowdstrikeTenantUrl = $someString
 		}
 	}
 }"
@@ -1203,6 +1217,8 @@ $query.Var.input = @{
 					clientId = $someString
 					# REQUIRED
 					clientSecret = $someString
+					# OPTIONAL
+					crowdstrikeTenantUrl = $someString
 				}
 			}
 		}

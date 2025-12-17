@@ -13,3 +13,5 @@ Filter anomaly result data.
   - Filter based on anomalous status of the snapshot.
 - workloadFid: list of System.Strings
   - Filter by internal object fid.
+- archivalLocationId: list of System.Strings
+  - Filter by archival location ID.

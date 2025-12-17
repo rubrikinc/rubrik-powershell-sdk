@@ -5,3 +5,5 @@ Authorized operations for an object.
   - Object ID that that the authorization operations are for.
 - operations: list of AuthorizedOperations
   - Operations that are authorized.
+- authorizedOperations: list of Operations
+  - Authorized operations.

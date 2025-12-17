@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsSpec")]
         public KmsSpecInput? KmsSpec { get; set; }
 
+        //      C# -> UemKmsSpecInput? UemKmsSpec
+        // GraphQL -> uemKmsSpec: UemKmsSpecInput (input)
+        [JsonProperty("uemKmsSpec")]
+        public UemKmsSpecInput? UemKmsSpec { get; set; }
+
 
         #endregion
 

@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("detectionTime")]
         public DateTime? DetectionTime { get; set; }
 
+        //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
+        // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
+        [JsonProperty("isSensitiveDataDiscoverySupported")]
+        public System.Boolean? IsSensitiveDataDiscoverySupported { get; set; }
+
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)
         [JsonProperty("modifiedFileCount")]
@@ -162,6 +167,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? CreatedFileCount = null,
         System.Int64? DeletedFileCount = null,
         DateTime? DetectionTime = null,
+        System.Boolean? IsSensitiveDataDiscoverySupported = null,
         System.Int64? ModifiedFileCount = null,
         System.String? PreviousSnapshotFid = null,
         System.Int64? SuspiciousFileCount = null,
@@ -211,6 +217,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DetectionTime != null ) {
             this.DetectionTime = DetectionTime;
+        }
+        if ( IsSensitiveDataDiscoverySupported != null ) {
+            this.IsSensitiveDataDiscoverySupported = IsSensitiveDataDiscoverySupported;
         }
         if ( ModifiedFileCount != null ) {
             this.ModifiedFileCount = ModifiedFileCount;
@@ -368,6 +377,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "detectionTime\n" ;
             } else {
                 s += ind + "detectionTime\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
+        // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
+        if (this.IsSensitiveDataDiscoverySupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSensitiveDataDiscoverySupported\n" ;
+            } else {
+                s += ind + "isSensitiveDataDiscoverySupported\n" ;
             }
         }
         //      C# -> System.Int64? ModifiedFileCount
@@ -703,6 +721,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DetectionTime != null && ec.Excludes("detectionTime",true))
         {
             this.DetectionTime = null;
+        }
+        //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
+        // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
+        if (ec.Includes("isSensitiveDataDiscoverySupported",true))
+        {
+            if(this.IsSensitiveDataDiscoverySupported == null) {
+
+                this.IsSensitiveDataDiscoverySupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSensitiveDataDiscoverySupported != null && ec.Excludes("isSensitiveDataDiscoverySupported",true))
+        {
+            this.IsSensitiveDataDiscoverySupported = null;
         }
         //      C# -> System.Int64? ModifiedFileCount
         // GraphQL -> modifiedFileCount: Long! (scalar)

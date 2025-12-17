@@ -17,3 +17,5 @@ The types of metadata key.
 - ORG_ID - Organization ID used in various queries.
 - INVALID_CHART_USER_MESSAGE - User message to be displayed if the chart is invalid.
 - ROW_ACTION_BUTTON - Specifies UI to render an action button for the row.
+- JSON_STRING_ARRAY - Specifies UI to render a popover with a list of strings from a JSON string
+array.

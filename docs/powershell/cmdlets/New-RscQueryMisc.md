@@ -111,15 +111,6 @@ List of authorizations for the objects.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of AuthorizedOperationss.
-### awscomputesettings
-List all aws compute settings.
-
-- There are 4 arguments.
-    - sortBy - AwsCloudComputeSettingQuerySortByField: Specification on how to sort a list of compute settings.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of AwsCloudComputeSettingFilterInputs: Specification on how to filter a list of compute settings.
-    - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
-- Returns list of AwsComputeSettingss.
 ### azureresourcegroups
 Get resource groups for a service principal in Azure.
 
@@ -353,6 +344,11 @@ Lists all cross-account pairs.
     - filter - list of GetCrossAccountPairsFilters: Specification on how to filter a list of cross-account pairs.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns CrossAccountPairInfoConnection.
+### crowdstrikeingestionstatus
+Get CrowdStrike ingestion status.
+
+- The crowdstrikeingestionstatus subcommand takes no arguments.
+- Returns CrowdStrikeIngestionStatus.
 ### currentipaddress
 The IP address of the client making the request.
 
@@ -513,6 +509,17 @@ Information on Microsoft 365 restore failed items.
     - workloadFid - System.String: The FID of the workload.
     - failedItemsInstanceId - System.String: The instance ID corresponding to the failed restore items.
 - Returns FailedRestoreItemsInfoReply.
+### failovergroupworkloads
+Retrieves workloads within a failover group for high-availability management.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - failoverGroupId - System.String: Failover group ID to get workloads for.
+    - filter - FailoverGroupWorkloadFilter: Filters to apply to the query.
+- Returns FailoverGroupWorkloadConnection.
 ### federatedloginstatus
 Status of the federated login.
 
@@ -674,6 +681,18 @@ Paginated list of help content snippets.
     - fids - list of System.Strings: The Rubrik UUIDs for the objects.
     - filter - list of Filters: Hierarchy object filter.
 - Returns list of HierarchyObjects.
+### identitydatalocationsencryptioninfo
+Retrieve the encryption information for identity data locations.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - IdentityDataLocationSortByField: Sort order for sorting data locations.
+    - filter - IdentityDataLocationsFilter: Filter for listing identity data locations.
+    - pagination - Pagination: Pagination param.
+- Returns IdentityDataLocationEncryptionInfoConnection.
 ### installedversionlist
 - The installedversionlist subcommand takes no arguments.
 - Returns list of InstalledVersionGroupCounts.
@@ -714,6 +733,21 @@ The IP allowlist for the given organization.
 
 - The ipwhitelist subcommand takes no arguments.
 - Returns GetWhitelistReply.
+### ipwhitelistentries
+Retrieve entries in the IP allowlist.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - IpWhitelistEntryFilterInput: Specifies IP allowlist entry filters.
+- Returns IpInfoConnection.
+### ipwhitelistsettings
+Retrieve settings of the IP allowlist.
+
+- The ipwhitelistsettings subcommand takes no arguments.
+- Returns IpWhitelistSettings.
 ### isclouddirectsharepathvalid
 IsCloudDirectSharePathValid validates if a share path is
 accessible on the specified system.
@@ -738,9 +772,7 @@ Check if Replace Cluster Node Quorum Authorization policy is set on the cluster.
 ### issfdcreachable
 Is Rubrik Suppport Portal reachable from this deployment.
 
-- There are 2 arguments.
-    - hostname - System.String: Hostname to access the Support portal.
-    - organizationId - System.String: Support portal organization ID.
+- There is a single argument of type System.String.
 - Returns System.Boolean.
 ### issue
 Returns details of one issue.
@@ -929,7 +961,7 @@ Reply for request to download Rubrik Edge from Rubrik Security Cloud.
 ### objectfiles
 - There are 8 arguments.
     - filter - ListObjectFilesFiltersInput
-    - sort - FileResultSortInput
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String
     - first - System.Int32: Returns the first n elements from the list.
@@ -1248,15 +1280,6 @@ All support user access objects that satisfy the query criteria.
 ### tablefilters
 - The tablefilters subcommand takes no arguments.
 - Returns TableFilters.
-### targets
-List all targets.
-
-- There are 4 arguments.
-    - sortBy - ArchivalLocationQuerySortByField: Specifies the field by which the list of targets will be sorted.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of TargetFilterInputs: Specifies how to filter the list of targets.
-    - contextFilter - ContextFilterTypeEnum: Specifies the context filter to use.
-- Returns list of Targets.
 ### taskchain
 Details of a taskchain.
 
@@ -1378,7 +1401,7 @@ Gets the status for completed/running upgrade process.
 ### useractivities
 - There are 8 arguments.
     - filter - ListObjectFilesFiltersInput
-    - sort - FileResultSortInput
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
     - timeRange - UserTimeRangeInput: Time range specified in the user's local timezone.
     - userId - System.String
     - first - System.Int32: Returns the first n elements from the list.
@@ -1496,6 +1519,17 @@ Checks whether the tenant org name is valid and unique.
 
 - There is a single argument of type ValidateOrgNameInput.
 - Returns ValidateOrgNameReply.
+### validaterdsexportexocomputeport
+ValidateRdsExportExocomputePort checks if the exocompute worker node security group used for RDS export allows outbound traffic on a port.
+
+- There is a single argument of type ValidateRdsExportExocomputePortReq.
+- Returns ValidateRdsExportExocomputePortReply.
+### validatescriptoutputformanualpermissionvalidation
+ValidateScriptOutputForManualPermissionValidation validates the script
+output provided by the customer for the manual permission validation.
+
+- There is a single argument of type ValidateScriptOutputForManualPermissionValidationReq.
+- Returns ValidateScriptOutputForManualPermissionValidationReply.
 ### validregionsfordynamodbrecovery
 GetValidRegionsForDynamoDBRecovery returns a list of regions where the
 provided cloud accounts have Exocompute configured for DynamoDB recovery.

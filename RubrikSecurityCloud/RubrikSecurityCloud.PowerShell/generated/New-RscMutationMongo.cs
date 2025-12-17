@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 12
+    /// Create a new RscQuery object for any of the 13
     /// operations in the 'Mongo' API domain:
-    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
     /// </summary>
     /// <description>
     /// New-RscMutationMongo creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 12 operations
+    /// There are 13 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -227,6 +227,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		attribute = $someFlagAttribute # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
     /// }
     /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateOnDemandDatabaseBackupV2 operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: CreateOnDemandDatabaseBackupV2
+    /// 
+    /// $query = New-RscMutationMongo -Operation CreateOnDemandDatabaseBackupV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		slaId = $someString
+    /// 		# REQUIRED
+    /// 		isFullbackup = $someBoolean
+    /// 	}
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -685,6 +723,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddOpsManagerManagedSource",
                 "AddSource",
                 "CreateOnDemandDatabaseBackup",
+                "CreateOnDemandDatabaseBackupV2",
                 "CreateOpsManagerManagedSourceOnDemandSnapshot",
                 "DeleteSource",
                 "DiscoverSource",
@@ -717,6 +756,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateOnDemandDatabaseBackup":
                         this.ProcessRecord_CreateOnDemandDatabaseBackup();
+                        break;
+                    case "CreateOnDemandDatabaseBackupV2":
+                        this.ProcessRecord_CreateOnDemandDatabaseBackupV2();
                         break;
                     case "CreateOpsManagerManagedSourceOnDemandSnapshot":
                         this.ProcessRecord_CreateOpsManagerManagedSourceOnDemandSnapshot();
@@ -780,6 +822,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateOnDemandDatabaseBackup";
             // Create new graphql operation createOnDemandMongoDatabaseBackup
             InitMutationCreateOnDemandMongoDatabaseBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createOnDemandMongoDatabaseBackupV2.
+        internal void ProcessRecord_CreateOnDemandDatabaseBackupV2()
+        {
+            this._logger.name += " -CreateOnDemandDatabaseBackupV2";
+            // Create new graphql operation createOnDemandMongoDatabaseBackupV2
+            InitMutationCreateOnDemandMongoDatabaseBackupV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1002,6 +1053,36 @@ $query.Var.attributes = @(
 		attribute = $someFlagAttribute # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlagAttribute]) for enum values.
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createOnDemandMongoDatabaseBackupV2(input: CreateOnDemandMongoDatabaseSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationCreateOnDemandMongoDatabaseBackupV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateOnDemandMongoDatabaseSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateOnDemandMongoDatabaseBackupV2",
+                "($input: CreateOnDemandMongoDatabaseSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandMongoDatabaseBackupV2,
+                Mutation.CreateOnDemandMongoDatabaseBackupV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		slaId = $someString
+		# REQUIRED
+		isFullbackup = $someBoolean
+	}
+}"
             );
         }
 

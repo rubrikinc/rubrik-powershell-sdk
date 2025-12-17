@@ -34,9 +34,6 @@ Create a Rubrik Cloud Cluster on AWS.
 
 - There is a single argument of type CreateAwsClusterInput.
 - Returns CcProvisionJobReply.
-### createcomputesetting
-- There is a single argument of type CreateAwsComputeSettingInput.
-- Returns AwsComputeSettings.
 ### createexocomputeconfigs
 Create AWS Exocompute configs.
 
@@ -50,9 +47,6 @@ Create a reader type for AWS archival location on a Rubrik cluster.
 ### createtarget
 - There is a single argument of type CreateAwsTargetInput.
 - Returns Target.
-### deletecomputesetting
-- There is a single argument of type DeleteAwsComputeSettingInput.
-- Returns System.String.
 ### deleteexocomputeconfigs
 Deletes AWS Exocompute configs.
 
@@ -127,9 +121,6 @@ Updates regions, stack ARN, and role ARN for a feature for a given cloud account
 ### updatecloudnativestoragesetting
 - There is a single argument of type UpdateCloudNativeAwsStorageSettingInput.
 - Returns UpdateCloudNativeAwsStorageSettingReply.
-### updatecomputesetting
-- There is a single argument of type UpdateAwsComputeSettingInput.
-- Returns AwsComputeSettings.
 ### updateexocomputeconfigs
 Update AWS Exocompute configs.
 

@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_NETAPP")]
         AZURE_NETAPP,
 
+        [EnumMember(Value = "FLASHARRAY")]
+        FLASHARRAY,
+
         [EnumMember(Value = "FLASHBLADE")]
         FLASHBLADE,
 

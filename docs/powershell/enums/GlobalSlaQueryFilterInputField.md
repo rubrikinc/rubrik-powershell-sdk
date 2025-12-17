@@ -15,3 +15,5 @@ Sort Global SLA Domains by filter.
 - IS_READ_ONLY - Filter SLA Domains based on read-only status.
 - SHOW_ASSIGNED_CLUSTER_SLAS_ONLY - Filter SLA Domains created on a Rubrik cluster that are assigned to objects.
 - SHOW_PAUSED_SLAS_ONLY - Filter SLA Domains that are paused on at least one of the clusters.
+- IS_HA_SLA - Filter SLA Domains based on whether they are HA SLAs. Use 'true' to get only HA SLAs, 'false' to get only non-HA SLAs.
+- HA_POLICY_ID - Filter SLA Domains by HA Policy ID. Returns SLAs associated with any of the specified HA Policy IDs.

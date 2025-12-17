@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountCredentials")]
         public AwsAccountCredentials? AccountCredentials { get; set; }
 
+        //      C# -> System.String? SubnetId
+        // GraphQL -> subnetId: String (scalar)
+        [JsonProperty("subnetId")]
+        public System.String? SubnetId { get; set; }
+
 
         #endregion
 

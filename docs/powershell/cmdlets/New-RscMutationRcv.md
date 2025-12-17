@@ -15,6 +15,13 @@ Create RCV private endpoint approval request.
 
 - There is a single argument of type CreateRcvPrivateEndpointApprovalRequestInput.
 - Returns CreateRcvPrivateEndpointApprovalRequestReply.
+### updatedestinationroleformigration
+Updates the destination role ARN for S3 or S3-compatible to an RCV location
+for migration using DataSync. This is needed when the data migrator runs in
+the customers environment.
+
+- There is a single argument of type UpdateDestinationRoleForRcvMigrationInput.
+- Returns UpdateDestinationRoleForRcvMigrationReply.
 ### updateencryptionkeyformigration
 Updates the encryption key of the source location that will be used for
 migration to RCV.

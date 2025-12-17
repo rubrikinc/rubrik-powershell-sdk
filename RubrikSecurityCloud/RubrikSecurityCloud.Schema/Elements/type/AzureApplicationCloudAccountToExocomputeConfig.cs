@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AzureCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AzureCloudAccountRegion!]! (enum)
+        [JsonProperty("exocomputeMappableRegions")]
+        public List<AzureCloudAccountRegion>? ExocomputeMappableRegions { get; set; }
+
         //      C# -> System.String? ApplicationCloudAccountId
         // GraphQL -> applicationCloudAccountId: String! (scalar)
         [JsonProperty("applicationCloudAccountId")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureApplicationCloudAccountToExocomputeConfig Set(
+        List<AzureCloudAccountRegion>? ExocomputeMappableRegions = null,
         System.String? ApplicationCloudAccountId = null,
         System.Boolean? IsHost = null,
         List<AzureExocomputeGetConfigResponse>? ExocomputeConfigs = null,
         CloudAccountDetails? MappedExocomputeAccount = null
     ) 
     {
+        if ( ExocomputeMappableRegions != null ) {
+            this.ExocomputeMappableRegions = ExocomputeMappableRegions;
+        }
         if ( ApplicationCloudAccountId != null ) {
             this.ApplicationCloudAccountId = ApplicationCloudAccountId;
         }
@@ -82,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AzureCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AzureCloudAccountRegion!]! (enum)
+        if (this.ExocomputeMappableRegions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeMappableRegions\n" ;
+            } else {
+                s += ind + "exocomputeMappableRegions\n" ;
+            }
+        }
         //      C# -> System.String? ApplicationCloudAccountId
         // GraphQL -> applicationCloudAccountId: String! (scalar)
         if (this.ApplicationCloudAccountId != null) {
@@ -131,6 +149,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<AzureCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AzureCloudAccountRegion!]! (enum)
+        if (ec.Includes("exocomputeMappableRegions",true))
+        {
+            if(this.ExocomputeMappableRegions == null) {
+
+                this.ExocomputeMappableRegions = new List<AzureCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeMappableRegions != null && ec.Excludes("exocomputeMappableRegions",true))
+        {
+            this.ExocomputeMappableRegions = null;
+        }
         //      C# -> System.String? ApplicationCloudAccountId
         // GraphQL -> applicationCloudAccountId: String! (scalar)
         if (ec.Includes("applicationCloudAccountId",true))

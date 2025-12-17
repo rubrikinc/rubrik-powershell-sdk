@@ -33,6 +33,10 @@ Kubernetes cluster.
   - The IP for connecting to the Kubernetes cluster on a NodePort.
 - port: System.Int32
   - Port number for connecting to the Kubernetes cluster.
+- nadNamespace: System.String
+  - Specifies the namespace for the Network Attachment Definition (NAD) for multus transport.
+- nadName: System.String
+  - Specifies the name for the Network Attachment Definition (NAD) for multus transport.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - descendantConnection: KubernetesClusterDescendantConnection
@@ -41,6 +45,8 @@ Kubernetes cluster.
   - Protection Sets belonging to the Kubernetes cluster.
 - k8sDescendantVirtualMachines: KubernetesVirtualMachineConnection
   - Virtual machines belonging to the Kubernetes cluster.
+- storageClasses: list of KubernetesStorageClasss
+  - Storage classes in the Kubernetes cluster.
 - onboardingType: KubernetesOnboardingType
   - Onboarding type of Kubernetes cluster.
 - id: System.String

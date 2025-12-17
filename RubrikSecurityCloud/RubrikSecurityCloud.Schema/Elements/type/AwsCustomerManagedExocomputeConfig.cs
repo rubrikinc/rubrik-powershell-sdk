@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        [JsonProperty("authServerRegion")]
+        public AwsAuthServerBasedCloudAccountRegion? AuthServerRegion { get; set; }
+
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         [JsonProperty("region")]
@@ -86,6 +91,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsCustomerManagedExocomputeConfig Set(
+        AwsAuthServerBasedCloudAccountRegion? AuthServerRegion = null,
         AwsCloudAccountRegion? Region = null,
         System.String? ByokClusterId = null,
         System.String? ClusterName = null,
@@ -99,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         ExocomputeClusterDetails? LatestExoclusterDetails = null
     ) 
     {
+        if ( AuthServerRegion != null ) {
+            this.AuthServerRegion = AuthServerRegion;
+        }
         if ( Region != null ) {
             this.Region = Region;
         }
@@ -146,6 +155,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        if (this.AuthServerRegion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authServerRegion\n" ;
+            } else {
+                s += ind + "authServerRegion\n" ;
+            }
+        }
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         if (this.Region != null) {
@@ -258,6 +276,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        if (ec.Includes("authServerRegion",true))
+        {
+            if(this.AuthServerRegion == null) {
+
+                this.AuthServerRegion = new AwsAuthServerBasedCloudAccountRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthServerRegion != null && ec.Excludes("authServerRegion",true))
+        {
+            this.AuthServerRegion = null;
+        }
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         if (ec.Includes("region",true))

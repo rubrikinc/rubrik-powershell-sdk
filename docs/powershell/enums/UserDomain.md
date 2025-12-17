@@ -6,3 +6,4 @@ Domain type of a user.
 - LDAP - LDAP user domain.
 - CLIENT - Client user domain.
 - SUPPORT - Support user domain.
+- PAT - Personal access token user domain.

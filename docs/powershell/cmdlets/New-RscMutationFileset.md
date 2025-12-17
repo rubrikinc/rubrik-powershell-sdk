@@ -22,6 +22,11 @@ Deletes specfied fileset templates. Detaches and retains all associated filesets
 
 - There is a single argument of type BulkDeleteFilesetTemplateInput.
 - Returns ResponseSuccess.
+### bulkgeneratebackupreport
+BulkGenerateFilesetBackupReport generates backup reports for multiple fileset snapshots.
+
+- There is a single argument of type BulkGenerateFilesetBackupReportInput.
+- Returns BulkGenerateFilesetBackupReportReply.
 ### bulkupdatetemplate
 Modify fileset templates
 

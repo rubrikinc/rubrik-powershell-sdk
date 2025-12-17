@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GLOBAL_OBJECT_SUMMARY_MONTHLY")]
         GLOBAL_OBJECT_SUMMARY_MONTHLY,
 
+        [EnumMember(Value = "IDENTITY_ACTIVITY")]
+        IDENTITY_ACTIVITY,
+
         [EnumMember(Value = "IDENTITY_RISKS")]
         IDENTITY_RISKS,
 
@@ -111,6 +114,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_BACKUP_TASK_SUMMARY")]
         OBJECT_BACKUP_TASK_SUMMARY,
 
+        [EnumMember(Value = "OBJECT_CAPACITY")]
+        OBJECT_CAPACITY,
+
         [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_DETAIL")]
         OBJECT_PROTECTION_AUDIT_DETAIL,
 
@@ -161,6 +167,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "THREAT_MONITORING_LIST")]
         THREAT_MONITORING_LIST,
+
+        [EnumMember(Value = "THREAT_MONITORING_MATCHES")]
+        THREAT_MONITORING_MATCHES,
 
         [EnumMember(Value = "THREAT_MONITORING_SNAPSHOT_RESULTS")]
         THREAT_MONITORING_SNAPSHOT_RESULTS,

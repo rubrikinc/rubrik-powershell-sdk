@@ -40,5 +40,7 @@ Cloud account features.
 of Azure DevOps and related workload.
 - AZURE_DEVOPS_REPOSITORY_PROTECTION - AZURE_DEVOPS_REPOSITORY_PROTECTION refers to the feature enabling
 protection of Azure DevOps repositories and related workload.
+- GITHUB_REPOSITORY_PROTECTION - GITHUB_REPOSITORY_PROTECTION refers to the feature enabling
+protection of GitHub repositories and related workload.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

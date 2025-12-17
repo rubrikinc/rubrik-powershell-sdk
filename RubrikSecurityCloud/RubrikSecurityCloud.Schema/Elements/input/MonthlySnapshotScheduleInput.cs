@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dayOfMonth")]
         public DayOfMonth? DayOfMonth { get; set; }
 
+        //      C# -> List<MonthlyDaySpecInput>? DaysOfMonth
+        // GraphQL -> daysOfMonth: [MonthlyDaySpecInput!] (input)
+        [JsonProperty("daysOfMonth")]
+        public List<MonthlyDaySpecInput>? DaysOfMonth { get; set; }
+
 
         #endregion
 

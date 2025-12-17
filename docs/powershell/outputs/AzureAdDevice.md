@@ -26,3 +26,5 @@ Can be null if compliance status is unknown.
   - Date and time of the device's last sign-in activity.
 - onPremSyncStatus: AzureAdOnPremSyncStatus
   - On-premises sync status of the Entra ID device.
+- deviceId: System.String
+  - ID of the device set by Azure Device Registration Service at the time of registration.

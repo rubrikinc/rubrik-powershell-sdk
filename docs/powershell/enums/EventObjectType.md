@@ -189,3 +189,34 @@ Enum representing all the possible object types which generate events.
 - AZURE_NATIVE_RESOURCE_GROUP - Azure Native Resource Group.
 - AZURE_NATIVE_REGION - Azure native region.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- PROXMOX_ENVIRONMENT - Proxmox environment.
+- PROXMOX_CLUSTER - Proxmox cluster.
+- PROXMOX_NODE - Proxmox node.
+- PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
+- PRINCIPAL_CLASS_SCHEMA - Class Schema principal type.
+- PRINCIPAL_ATTRIBUTE_SCHEMA - Attribute Schema principal type.
+- PRINCIPAL_FOREIGN_SECURITY_PRINCIPAL - Foreign Security Principal type.
+- PRINCIPAL_PRINT_QUEUE - Print Queue principal type.
+- PRINCIPAL_VOLUME - Volume principal type.
+- AWS_NATIVE_REGION - AWS native region.
+- GITHUB_ORGANIZATION - GitHub Organization.
+- GITHUB_REPOSITORY - GitHub Repository.
+- PRINCIPAL_SITE - Site principal type.
+- PRINCIPAL_SITE_LINK - Site Link principal type.
+- PRINCIPAL_SUBNET - Subnet principal type.
+- PRINCIPAL_SITE_LINK_BRIDGE - Site Link Bridge principal type.
+- PRINCIPAL_INTER_SITE_TRANSPORT - Inter-Site Transport principal type.
+- PRINCIPAL_NTDS_SITE_SETTINGS - NTDS Site Settings principal type.
+- PRINCIPAL_SERVER - Server principal type.
+- PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER - Inter-Site Transport Container principal type.
+- PRINCIPAL_SUBNET_CONTAINER - Subnet Container principal type.
+- PRINCIPAL_SERVERS_CONTAINER - Servers Container principal type.
+- PRINCIPAL_LICENSING_SITE_SETTINGS - Licensing Site Settings principal type.
+- PRINCIPAL_DOMAIN_DNS - Domain DNS principal type.
+- PRINCIPAL_MSDS_QUOTA_CONTAINER - MSDS Quota Container principal type.
+- PRINCIPAL_MSDS_QUOTA_CONTROL - MSDS Quota Control principal type.
+- PRINCIPAL_RID_MANAGER - RID Manager principal type.
+- PRINCIPAL_INFRASTRUCTURE_UPDATE - Infrastructure Update principal type.
+- PRINCIPAL_TRUSTED_DOMAIN - Trusted Domain principal type.
+- PRINCIPAL_PASSWORD_SETTINGS_CONTAINER - Password Settings Container principal type.
+- PRINCIPAL_PASSWORD_SETTINGS - Password Settings principal type.

@@ -1,8 +1,6 @@
 ### InitializeUploadSessionInput
 Input for initializeUploadSession.
 
-- account: System.String
-  - RSC account id.
 - packageName: System.String
   - Name of the file to be uploaded.
 - packageSize: System.Int64

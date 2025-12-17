@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("count")]
         public System.Int32? Count { get; set; }
 
+        //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
+        // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
+        [JsonProperty("isSensitiveDataDiscoverySupported")]
+        public System.Boolean? IsSensitiveDataDiscoverySupported { get; set; }
+
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)
         [JsonProperty("edges")]
@@ -63,6 +68,7 @@ namespace RubrikSecurityCloud.Types
         GenericSnapshot? CurrentSnapshot = null,
         GenericSnapshot? PreviousSnapshot = null,
         System.Int32? Count = null,
+        System.Boolean? IsSensitiveDataDiscoverySupported = null,
         List<SnapshotFileDeltaV2Edge>? Edges = null,
         List<SnapshotFileDeltaV2>? Nodes = null,
         PageInfo? PageInfo = null
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Count != null ) {
             this.Count = Count;
+        }
+        if ( IsSensitiveDataDiscoverySupported != null ) {
+            this.IsSensitiveDataDiscoverySupported = IsSensitiveDataDiscoverySupported;
         }
         if ( Edges != null ) {
             this.Edges = Edges;
@@ -133,6 +142,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "count\n" ;
             } else {
                 s += ind + "count\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
+        // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
+        if (this.IsSensitiveDataDiscoverySupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSensitiveDataDiscoverySupported\n" ;
+            } else {
+                s += ind + "isSensitiveDataDiscoverySupported\n" ;
             }
         }
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
@@ -242,6 +260,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Count != null && ec.Excludes("count",true))
         {
             this.Count = null;
+        }
+        //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
+        // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
+        if (ec.Includes("isSensitiveDataDiscoverySupported",true))
+        {
+            if(this.IsSensitiveDataDiscoverySupported == null) {
+
+                this.IsSensitiveDataDiscoverySupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSensitiveDataDiscoverySupported != null && ec.Excludes("isSensitiveDataDiscoverySupported",true))
+        {
+            this.IsSensitiveDataDiscoverySupported = null;
         }
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)

@@ -40,6 +40,8 @@ to have anomalous activity.
   - Identifies the anomaly for a given workload.
 - resolutionStatus: ResolutionStatus
   - The resolution status of the anomaly.
+- isSensitiveDataDiscoverySupported: System.Boolean
+  - Flag to indicate if sensitive data discovery is supported for the object type.
 - objectType: HierarchyObjectTypeEnum
   - The object type of the workload.
 - anomalousSnapshotDate: DateTime

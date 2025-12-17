@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<SnapshotProperties>? SnapshotProperties
+        // GraphQL -> snapshotProperties: [SnapshotProperties!]! (type)
+        [JsonProperty("snapshotProperties")]
+        public List<SnapshotProperties>? SnapshotProperties { get; set; }
+
         //      C# -> List<VsphereVmRecoveryRangeStatus>? Status
         // GraphQL -> status: [VsphereVmRecoveryRangeStatus!]! (type)
         [JsonProperty("status")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public VsphereVmRecoveryRangeStatusResp Set(
+        List<SnapshotProperties>? SnapshotProperties = null,
         List<VsphereVmRecoveryRangeStatus>? Status = null
     ) 
     {
+        if ( SnapshotProperties != null ) {
+            this.SnapshotProperties = SnapshotProperties;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -55,6 +64,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<SnapshotProperties>? SnapshotProperties
+        // GraphQL -> snapshotProperties: [SnapshotProperties!]! (type)
+        if (this.SnapshotProperties != null) {
+            var fspec = this.SnapshotProperties.AsFieldSpec(conf.Child("snapshotProperties"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotProperties" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<VsphereVmRecoveryRangeStatus>? Status
         // GraphQL -> status: [VsphereVmRecoveryRangeStatus!]! (type)
         if (this.Status != null) {
@@ -74,6 +95,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<SnapshotProperties>? SnapshotProperties
+        // GraphQL -> snapshotProperties: [SnapshotProperties!]! (type)
+        if (ec.Includes("snapshotProperties",false))
+        {
+            if(this.SnapshotProperties == null) {
+
+                this.SnapshotProperties = new List<SnapshotProperties>();
+                this.SnapshotProperties.ApplyExploratoryFieldSpec(ec.NewChild("snapshotProperties"));
+
+            } else {
+
+                this.SnapshotProperties.ApplyExploratoryFieldSpec(ec.NewChild("snapshotProperties"));
+
+            }
+        }
+        else if (this.SnapshotProperties != null && ec.Excludes("snapshotProperties",false))
+        {
+            this.SnapshotProperties = null;
+        }
         //      C# -> List<VsphereVmRecoveryRangeStatus>? Status
         // GraphQL -> status: [VsphereVmRecoveryRangeStatus!]! (type)
         if (ec.Includes("status",false))

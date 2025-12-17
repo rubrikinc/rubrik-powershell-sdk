@@ -293,6 +293,7 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("sortBy", "AwsNativeRegionSortFields"),
                     Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("regionFilters", "AwsNativeRegionFilters"),
+                    Tuple.Create("workloadLevelHierarchy", "WorkloadLevelHierarchy"),
                 };
             this.AwsRegions =
                 new RscGqlVars(null, awsRegionsArgs, null, true);

@@ -8,3 +8,4 @@ All Email notification settings for the Rubrik cluster.
 - total: System.Int64
   - Number of notification settings.
 - nextCursor: System.String
+  - Cursor to retrieve the next set of results.

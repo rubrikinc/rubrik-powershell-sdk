@@ -5,6 +5,8 @@ AWS Exocompute configuration in a region.
   - Exocompute configuration UUID.
 - region: AwsCloudAccountRegion
   - Exocompute configuration region.
+- authServerRegion: AwsAuthServerBasedCloudAccountRegion
+  - Auth server-based region (ISO/ISOB), if applicable.
 - vpcId: System.String
   - VPC ID.
 - clusterSecurityGroupId: System.String

@@ -1,4 +1,6 @@
 ### DownloadCdmTprConfigAsyncReply
+Response for submitting an asynchronous request to generate CDM TPR configuration report.
+
 - jobId: System.Int64
   - Job ID of the submitted asynchronous job.
 - referenceId: System.String

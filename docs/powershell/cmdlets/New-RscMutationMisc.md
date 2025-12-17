@@ -40,6 +40,11 @@ Add account level inventory workloads.
 
 - There is a single argument of type AddInventoryWorkloadsInput.
 - Returns System.Boolean.
+### addipwhitelistentries
+Add entries to the IP allowlist.
+
+- There is a single argument of type AddIpWhitelistEntriesInput.
+- Returns System.String.
 ### addroleassignments
 - There are 3 arguments.
     - userIds - list of System.Strings: List of user IDs.
@@ -257,6 +262,11 @@ Delete intel feed.
 
 - There is a single argument of type DeleteIntelFeedInput.
 - Returns System.String.
+### deleteipwhitelistentries
+Delete entries from the IP allowlist.
+
+- There is a single argument of type DeleteIpWhitelistEntriesInput.
+- Returns System.String.
 ### deletevolumegroupmount
 Request to delete a mount
 
@@ -387,6 +397,11 @@ List CIDRs for compute setting.
 
 - There is a single argument of type ListCidrsForComputeSettingInput.
 - Returns ListCidrsForComputeSettingReply.
+### lockcyberrecovery
+Locks a cyber recovery to prevent modifications or deletions.
+
+- There is a single argument of type LockCyberRecoveryInput.
+- Returns System.String.
 ### lockusersbyadmin
 Specifies the endpoint through which the admin can lock the user accounts.
 
@@ -618,6 +633,11 @@ Enable or disable the IP allowlist for the given organization.
 
 - There is a single argument of type System.Boolean.
 - Returns System.Boolean.
+### setipwhitelistsetting
+Update the IP allowlist settings for the account.
+
+- There is a single argument of type SetIpWhitelistSettingInput.
+- Returns System.String.
 ### setmfasetting
 Update the MFA settings for the account. Return true when the operation succeeds.
 
@@ -886,6 +906,11 @@ Update the IP allowlist for the given organization.
     - whitelistMode - WhitelistModeEnum: The mode of the IP allowlist.
     - ipCidrs - list of System.Strings: The list of IP addresses in the allowlist.
 - Returns System.Boolean.
+### updateipwhitelistentry
+Update an entry in the IP allowlist.
+
+- There is a single argument of type UpdateIpWhitelistEntryInput.
+- Returns System.String.
 ### updatelambdasettings
 - There are 3 arguments.
     - anomalyThreshold - System.Single: Probability threshold for anomaly detector.

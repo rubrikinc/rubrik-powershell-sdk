@@ -20,10 +20,25 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterDiskMode? DiskMode
+        // GraphQL -> diskMode: ClusterDiskMode (enum)
+        [JsonProperty("diskMode")]
+        public ClusterDiskMode? DiskMode { get; set; }
+
         //      C# -> ClusterDiskType? DiskType
         // GraphQL -> diskType: ClusterDiskType! (enum)
         [JsonProperty("diskType")]
         public ClusterDiskType? DiskType { get; set; }
+
+        //      C# -> ClusterRaidStatus? RaidStatus
+        // GraphQL -> raidStatus: ClusterRaidStatus (enum)
+        [JsonProperty("raidStatus")]
+        public ClusterRaidStatus? RaidStatus { get; set; }
+
+        //      C# -> ClusterRaidType? RaidType
+        // GraphQL -> raidType: ClusterRaidType (enum)
+        [JsonProperty("raidType")]
+        public ClusterRaidType? RaidType { get; set; }
 
         //      C# -> ClusterDiskStatus? Status
         // GraphQL -> status: ClusterDiskStatus! (enum)
@@ -45,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("diskId")]
         public System.String? DiskId { get; set; }
 
+        //      C# -> System.Boolean? HasIndicatorLed
+        // GraphQL -> hasIndicatorLed: Boolean (scalar)
+        [JsonProperty("hasIndicatorLed")]
+        public System.Boolean? HasIndicatorLed { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -65,6 +85,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ledStatus")]
         public System.Boolean? LedStatus { get; set; }
 
+        //      C# -> System.String? Manufacturer
+        // GraphQL -> manufacturer: String (scalar)
+        [JsonProperty("manufacturer")]
+        public System.String? Manufacturer { get; set; }
+
+        //      C# -> System.String? Model
+        // GraphQL -> model: String (scalar)
+        [JsonProperty("model")]
+        public System.String? Model { get; set; }
+
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         [JsonProperty("nodeId")]
@@ -74,6 +104,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> path: String! (scalar)
         [JsonProperty("path")]
         public System.String? Path { get; set; }
+
+        //      C# -> System.String? RaidError
+        // GraphQL -> raidError: String (scalar)
+        [JsonProperty("raidError")]
+        public System.String? RaidError { get; set; }
+
+        //      C# -> System.Single? RaidRebuildingPercentage
+        // GraphQL -> raidRebuildingPercentage: Float (scalar)
+        [JsonProperty("raidRebuildingPercentage")]
+        public System.Single? RaidRebuildingPercentage { get; set; }
 
         //      C# -> System.String? Serial
         // GraphQL -> serial: String (scalar)
@@ -100,24 +140,41 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterDisk Set(
+        ClusterDiskMode? DiskMode = null,
         ClusterDiskType? DiskType = null,
+        ClusterRaidStatus? RaidStatus = null,
+        ClusterRaidType? RaidType = null,
         ClusterDiskStatus? Status = null,
         System.Int64? CapacityBytes = null,
         System.String? ClusterId = null,
         System.String? DiskId = null,
+        System.Boolean? HasIndicatorLed = null,
         System.String? Id = null,
         System.Boolean? IsEncrypted = null,
         System.Boolean? IsResizable = null,
         System.Boolean? LedStatus = null,
+        System.String? Manufacturer = null,
+        System.String? Model = null,
         System.String? NodeId = null,
         System.String? Path = null,
+        System.String? RaidError = null,
+        System.Single? RaidRebuildingPercentage = null,
         System.String? Serial = null,
         System.Int64? UnallocatedBytes = null,
         System.Int64? UsableBytes = null
     ) 
     {
+        if ( DiskMode != null ) {
+            this.DiskMode = DiskMode;
+        }
         if ( DiskType != null ) {
             this.DiskType = DiskType;
+        }
+        if ( RaidStatus != null ) {
+            this.RaidStatus = RaidStatus;
+        }
+        if ( RaidType != null ) {
+            this.RaidType = RaidType;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -131,6 +188,9 @@ namespace RubrikSecurityCloud.Types
         if ( DiskId != null ) {
             this.DiskId = DiskId;
         }
+        if ( HasIndicatorLed != null ) {
+            this.HasIndicatorLed = HasIndicatorLed;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -143,11 +203,23 @@ namespace RubrikSecurityCloud.Types
         if ( LedStatus != null ) {
             this.LedStatus = LedStatus;
         }
+        if ( Manufacturer != null ) {
+            this.Manufacturer = Manufacturer;
+        }
+        if ( Model != null ) {
+            this.Model = Model;
+        }
         if ( NodeId != null ) {
             this.NodeId = NodeId;
         }
         if ( Path != null ) {
             this.Path = Path;
+        }
+        if ( RaidError != null ) {
+            this.RaidError = RaidError;
+        }
+        if ( RaidRebuildingPercentage != null ) {
+            this.RaidRebuildingPercentage = RaidRebuildingPercentage;
         }
         if ( Serial != null ) {
             this.Serial = Serial;
@@ -172,6 +244,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ClusterDiskMode? DiskMode
+        // GraphQL -> diskMode: ClusterDiskMode (enum)
+        if (this.DiskMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "diskMode\n" ;
+            } else {
+                s += ind + "diskMode\n" ;
+            }
+        }
         //      C# -> ClusterDiskType? DiskType
         // GraphQL -> diskType: ClusterDiskType! (enum)
         if (this.DiskType != null) {
@@ -179,6 +260,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "diskType\n" ;
             } else {
                 s += ind + "diskType\n" ;
+            }
+        }
+        //      C# -> ClusterRaidStatus? RaidStatus
+        // GraphQL -> raidStatus: ClusterRaidStatus (enum)
+        if (this.RaidStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidStatus\n" ;
+            } else {
+                s += ind + "raidStatus\n" ;
+            }
+        }
+        //      C# -> ClusterRaidType? RaidType
+        // GraphQL -> raidType: ClusterRaidType (enum)
+        if (this.RaidType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidType\n" ;
+            } else {
+                s += ind + "raidType\n" ;
             }
         }
         //      C# -> ClusterDiskStatus? Status
@@ -217,6 +316,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "diskId\n" ;
             }
         }
+        //      C# -> System.Boolean? HasIndicatorLed
+        // GraphQL -> hasIndicatorLed: Boolean (scalar)
+        if (this.HasIndicatorLed != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasIndicatorLed\n" ;
+            } else {
+                s += ind + "hasIndicatorLed\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -253,6 +361,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "ledStatus\n" ;
             }
         }
+        //      C# -> System.String? Manufacturer
+        // GraphQL -> manufacturer: String (scalar)
+        if (this.Manufacturer != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "manufacturer\n" ;
+            } else {
+                s += ind + "manufacturer\n" ;
+            }
+        }
+        //      C# -> System.String? Model
+        // GraphQL -> model: String (scalar)
+        if (this.Model != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "model\n" ;
+            } else {
+                s += ind + "model\n" ;
+            }
+        }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId != null) {
@@ -269,6 +395,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "path\n" ;
             } else {
                 s += ind + "path\n" ;
+            }
+        }
+        //      C# -> System.String? RaidError
+        // GraphQL -> raidError: String (scalar)
+        if (this.RaidError != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidError\n" ;
+            } else {
+                s += ind + "raidError\n" ;
+            }
+        }
+        //      C# -> System.Single? RaidRebuildingPercentage
+        // GraphQL -> raidRebuildingPercentage: Float (scalar)
+        if (this.RaidRebuildingPercentage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "raidRebuildingPercentage\n" ;
+            } else {
+                s += ind + "raidRebuildingPercentage\n" ;
             }
         }
         //      C# -> System.String? Serial
@@ -305,6 +449,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ClusterDiskMode? DiskMode
+        // GraphQL -> diskMode: ClusterDiskMode (enum)
+        if (ec.Includes("diskMode",true))
+        {
+            if(this.DiskMode == null) {
+
+                this.DiskMode = new ClusterDiskMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskMode != null && ec.Excludes("diskMode",true))
+        {
+            this.DiskMode = null;
+        }
         //      C# -> ClusterDiskType? DiskType
         // GraphQL -> diskType: ClusterDiskType! (enum)
         if (ec.Includes("diskType",true))
@@ -321,6 +482,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.DiskType != null && ec.Excludes("diskType",true))
         {
             this.DiskType = null;
+        }
+        //      C# -> ClusterRaidStatus? RaidStatus
+        // GraphQL -> raidStatus: ClusterRaidStatus (enum)
+        if (ec.Includes("raidStatus",true))
+        {
+            if(this.RaidStatus == null) {
+
+                this.RaidStatus = new ClusterRaidStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidStatus != null && ec.Excludes("raidStatus",true))
+        {
+            this.RaidStatus = null;
+        }
+        //      C# -> ClusterRaidType? RaidType
+        // GraphQL -> raidType: ClusterRaidType (enum)
+        if (ec.Includes("raidType",true))
+        {
+            if(this.RaidType == null) {
+
+                this.RaidType = new ClusterRaidType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidType != null && ec.Excludes("raidType",true))
+        {
+            this.RaidType = null;
         }
         //      C# -> ClusterDiskStatus? Status
         // GraphQL -> status: ClusterDiskStatus! (enum)
@@ -390,6 +585,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.DiskId = null;
         }
+        //      C# -> System.Boolean? HasIndicatorLed
+        // GraphQL -> hasIndicatorLed: Boolean (scalar)
+        if (ec.Includes("hasIndicatorLed",true))
+        {
+            if(this.HasIndicatorLed == null) {
+
+                this.HasIndicatorLed = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasIndicatorLed != null && ec.Excludes("hasIndicatorLed",true))
+        {
+            this.HasIndicatorLed = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))
@@ -458,6 +670,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.LedStatus = null;
         }
+        //      C# -> System.String? Manufacturer
+        // GraphQL -> manufacturer: String (scalar)
+        if (ec.Includes("manufacturer",true))
+        {
+            if(this.Manufacturer == null) {
+
+                this.Manufacturer = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Manufacturer != null && ec.Excludes("manufacturer",true))
+        {
+            this.Manufacturer = null;
+        }
+        //      C# -> System.String? Model
+        // GraphQL -> model: String (scalar)
+        if (ec.Includes("model",true))
+        {
+            if(this.Model == null) {
+
+                this.Model = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Model != null && ec.Excludes("model",true))
+        {
+            this.Model = null;
+        }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (ec.Includes("nodeId",true))
@@ -491,6 +737,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Path != null && ec.Excludes("path",true))
         {
             this.Path = null;
+        }
+        //      C# -> System.String? RaidError
+        // GraphQL -> raidError: String (scalar)
+        if (ec.Includes("raidError",true))
+        {
+            if(this.RaidError == null) {
+
+                this.RaidError = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidError != null && ec.Excludes("raidError",true))
+        {
+            this.RaidError = null;
+        }
+        //      C# -> System.Single? RaidRebuildingPercentage
+        // GraphQL -> raidRebuildingPercentage: Float (scalar)
+        if (ec.Includes("raidRebuildingPercentage",true))
+        {
+            if(this.RaidRebuildingPercentage == null) {
+
+                this.RaidRebuildingPercentage = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RaidRebuildingPercentage != null && ec.Excludes("raidRebuildingPercentage",true))
+        {
+            this.RaidRebuildingPercentage = null;
         }
         //      C# -> System.String? Serial
         // GraphQL -> serial: String (scalar)

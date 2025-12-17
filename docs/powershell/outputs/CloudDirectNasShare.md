@@ -47,12 +47,12 @@ NAS Cloud Direct share.
   - The oldest available snapshot of this share.
 - totalSnapshots: System.Int32
   - The total count of snapshots for this share.
+- onDemandSnapshots: System.Int32
+  - The count of on-demand snapshots for this share.
 - missedSnapshotGroupByConnection: CloudDirectSnapshotsGroupBySummaryConnection
   - Groups the missed snapshots of this NAS Cloud Direct share.
 - cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection
   - Group the snapshots of this NAS Cloud Direct share.
-- cluster: Cluster
-  - Cluster from which this workload originated.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -85,5 +85,9 @@ NAS Cloud Direct share.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- cluster: Cluster
+  - Cluster from which this workload originated.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("legalHoldDownloadConfig")]
         public LegalHoldDownloadConfigInput? LegalHoldDownloadConfig { get; set; }
 
+        //      C# -> System.String? ZipPassword
+        // GraphQL -> zipPassword: String (scalar)
+        [JsonProperty("zipPassword")]
+        public System.String? ZipPassword { get; set; }
+
 
         #endregion
 

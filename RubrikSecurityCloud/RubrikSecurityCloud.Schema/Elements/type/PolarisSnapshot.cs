@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("consistencyLevel")]
         public SnapshotConsistencyLevel? ConsistencyLevel { get; set; }
 
+        //      C# -> RetentionLockMode? RetentionLockModeAcrossLocations
+        // GraphQL -> retentionLockModeAcrossLocations: RetentionLockMode (enum)
+        [JsonProperty("retentionLockModeAcrossLocations")]
+        public RetentionLockMode? RetentionLockModeAcrossLocations { get; set; }
+
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         [JsonProperty("pendingSla")]
@@ -146,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQuarantined")]
         public System.Boolean? IsQuarantined { get; set; }
 
+        //      C# -> System.Boolean? IsRansomwareInvestigatedSnapshot
+        // GraphQL -> isRansomwareInvestigatedSnapshot: Boolean! (scalar)
+        [JsonProperty("isRansomwareInvestigatedSnapshot")]
+        public System.Boolean? IsRansomwareInvestigatedSnapshot { get; set; }
+
         //      C# -> System.Boolean? IsReplica
         // GraphQL -> isReplica: Boolean (scalar)
         [JsonProperty("isReplica")]
@@ -227,6 +237,7 @@ namespace RubrikSecurityCloud.Types
 
     public PolarisSnapshot Set(
         SnapshotConsistencyLevel? ConsistencyLevel = null,
+        RetentionLockMode? RetentionLockModeAcrossLocations = null,
         SlaDomain? PendingSla = null,
         PolarisSpecificSnapshot? PolarisSpecificSnapshot = null,
         SlaDomain? SlaDomain = null,
@@ -251,6 +262,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsOnDemandSnapshot = null,
         System.Boolean? IsQuarantineProcessing = null,
         System.Boolean? IsQuarantined = null,
+        System.Boolean? IsRansomwareInvestigatedSnapshot = null,
         System.Boolean? IsReplica = null,
         System.Boolean? IsReplicated = null,
         System.Boolean? IsRetentionLocked = null,
@@ -269,6 +281,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ConsistencyLevel != null ) {
             this.ConsistencyLevel = ConsistencyLevel;
+        }
+        if ( RetentionLockModeAcrossLocations != null ) {
+            this.RetentionLockModeAcrossLocations = RetentionLockModeAcrossLocations;
         }
         if ( PendingSla != null ) {
             this.PendingSla = PendingSla;
@@ -342,6 +357,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
         }
+        if ( IsRansomwareInvestigatedSnapshot != null ) {
+            this.IsRansomwareInvestigatedSnapshot = IsRansomwareInvestigatedSnapshot;
+        }
         if ( IsReplica != null ) {
             this.IsReplica = IsReplica;
         }
@@ -405,6 +423,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "consistencyLevel\n" ;
             } else {
                 s += ind + "consistencyLevel\n" ;
+            }
+        }
+        //      C# -> RetentionLockMode? RetentionLockModeAcrossLocations
+        // GraphQL -> retentionLockModeAcrossLocations: RetentionLockMode (enum)
+        if (this.RetentionLockModeAcrossLocations != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionLockModeAcrossLocations\n" ;
+            } else {
+                s += ind + "retentionLockModeAcrossLocations\n" ;
             }
         }
         //      C# -> SlaDomain? PendingSla
@@ -635,6 +662,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isQuarantined\n" ;
             }
         }
+        //      C# -> System.Boolean? IsRansomwareInvestigatedSnapshot
+        // GraphQL -> isRansomwareInvestigatedSnapshot: Boolean! (scalar)
+        if (this.IsRansomwareInvestigatedSnapshot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRansomwareInvestigatedSnapshot\n" ;
+            } else {
+                s += ind + "isRansomwareInvestigatedSnapshot\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsReplica
         // GraphQL -> isReplica: Boolean (scalar)
         if (this.IsReplica != null) {
@@ -796,6 +832,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConsistencyLevel != null && ec.Excludes("consistencyLevel",true))
         {
             this.ConsistencyLevel = null;
+        }
+        //      C# -> RetentionLockMode? RetentionLockModeAcrossLocations
+        // GraphQL -> retentionLockModeAcrossLocations: RetentionLockMode (enum)
+        if (ec.Includes("retentionLockModeAcrossLocations",true))
+        {
+            if(this.RetentionLockModeAcrossLocations == null) {
+
+                this.RetentionLockModeAcrossLocations = new RetentionLockMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionLockModeAcrossLocations != null && ec.Excludes("retentionLockModeAcrossLocations",true))
+        {
+            this.RetentionLockModeAcrossLocations = null;
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
@@ -1225,6 +1278,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
         {
             this.IsQuarantined = null;
+        }
+        //      C# -> System.Boolean? IsRansomwareInvestigatedSnapshot
+        // GraphQL -> isRansomwareInvestigatedSnapshot: Boolean! (scalar)
+        if (ec.Includes("isRansomwareInvestigatedSnapshot",true))
+        {
+            if(this.IsRansomwareInvestigatedSnapshot == null) {
+
+                this.IsRansomwareInvestigatedSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRansomwareInvestigatedSnapshot != null && ec.Excludes("isRansomwareInvestigatedSnapshot",true))
+        {
+            this.IsRansomwareInvestigatedSnapshot = null;
         }
         //      C# -> System.Boolean? IsReplica
         // GraphQL -> isReplica: Boolean (scalar)

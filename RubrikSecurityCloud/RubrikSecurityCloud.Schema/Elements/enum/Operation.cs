@@ -114,6 +114,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CROSS_ACCOUNT_REPLICATION")]
         CROSS_ACCOUNT_REPLICATION,
 
+        [EnumMember(Value = "DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN")]
+        DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN,
+
         [EnumMember(Value = "DELETE_AWS_CLOUD_ACCOUNT")]
         DELETE_AWS_CLOUD_ACCOUNT,
 
@@ -327,6 +330,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ORGANIZATION_NETWORKS")]
         MANAGE_ORGANIZATION_NETWORKS,
 
+        [EnumMember(Value = "MANAGE_OWN_PERSONAL_ACCESS_TOKEN")]
+        MANAGE_OWN_PERSONAL_ACCESS_TOKEN,
+
         [EnumMember(Value = "MANAGE_PAM_INTEGRATION")]
         MANAGE_PAM_INTEGRATION,
 
@@ -449,6 +455,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REMOVE_CLUSTER_NODES")]
         REMOVE_CLUSTER_NODES,
+
+        [EnumMember(Value = "RENEW_CERTIFICATE")]
+        RENEW_CERTIFICATE,
 
         [EnumMember(Value = "RESIZE_MANAGED_VOLUME")]
         RESIZE_MANAGED_VOLUME,
@@ -629,6 +638,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_ORGANIZATION_NETWORKS")]
         VIEW_ORGANIZATION_NETWORKS,
+
+        [EnumMember(Value = "VIEW_PERSONAL_ACCESS_TOKENS")]
+        VIEW_PERSONAL_ACCESS_TOKENS,
 
         [EnumMember(Value = "VIEW_REPLICATION_SETTINGS")]
         VIEW_REPLICATION_SETTINGS,

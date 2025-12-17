@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        [JsonProperty("credentialsManagedBy")]
+        public CredentialsManagedBy? CredentialsManagedBy { get; set; }
+
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!] (scalar)
         [JsonProperty("missingPermissions")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpCloudAccountProjectForOauth Set(
+        CredentialsManagedBy? CredentialsManagedBy = null,
         List<System.String>? MissingPermissions = null,
         System.String? Name = null,
         System.String? ProjectId = null
     ) 
     {
+        if ( CredentialsManagedBy != null ) {
+            this.CredentialsManagedBy = CredentialsManagedBy;
+        }
         if ( MissingPermissions != null ) {
             this.MissingPermissions = MissingPermissions;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        if (this.CredentialsManagedBy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "credentialsManagedBy\n" ;
+            } else {
+                s += ind + "credentialsManagedBy\n" ;
+            }
+        }
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!] (scalar)
         if (this.MissingPermissions != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CredentialsManagedBy? CredentialsManagedBy
+        // GraphQL -> credentialsManagedBy: CredentialsManagedBy! (enum)
+        if (ec.Includes("credentialsManagedBy",true))
+        {
+            if(this.CredentialsManagedBy == null) {
+
+                this.CredentialsManagedBy = new CredentialsManagedBy();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CredentialsManagedBy != null && ec.Excludes("credentialsManagedBy",true))
+        {
+            this.CredentialsManagedBy = null;
+        }
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!] (scalar)
         if (ec.Includes("missingPermissions",true))

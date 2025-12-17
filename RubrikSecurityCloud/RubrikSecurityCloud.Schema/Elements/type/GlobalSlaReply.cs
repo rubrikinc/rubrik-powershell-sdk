@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("firstFullBackupWindows")]
         public List<BackupWindow>? FirstFullBackupWindows { get; set; }
 
+        //      C# -> HaPolicy? HaPolicy
+        // GraphQL -> haPolicy: HaPolicy (type)
+        [JsonProperty("haPolicy")]
+        public HaPolicy? HaPolicy { get; set; }
+
         //      C# -> Duration? LocalRetentionLimit
         // GraphQL -> localRetentionLimit: Duration (type)
         [JsonProperty("localRetentionLimit")]
@@ -237,6 +242,7 @@ namespace RubrikSecurityCloud.Types
         Duration? BaseFrequency = null,
         List<GlobalSlaSyncStatus>? ClusterToSyncStatusMap = null,
         List<BackupWindow>? FirstFullBackupWindows = null,
+        HaPolicy? HaPolicy = null,
         Duration? LocalRetentionLimit = null,
         LogConfigResult? LogConfig = null,
         ObjectSpecificConfigs? ObjectSpecificConfigs = null,
@@ -326,6 +332,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FirstFullBackupWindows != null ) {
             this.FirstFullBackupWindows = FirstFullBackupWindows;
+        }
+        if ( HaPolicy != null ) {
+            this.HaPolicy = HaPolicy;
         }
         if ( LocalRetentionLimit != null ) {
             this.LocalRetentionLimit = LocalRetentionLimit;
@@ -632,6 +641,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "firstFullBackupWindows" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> HaPolicy? HaPolicy
+        // GraphQL -> haPolicy: HaPolicy (type)
+        if (this.HaPolicy != null) {
+            var fspec = this.HaPolicy.AsFieldSpec(conf.Child("haPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "haPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1223,6 +1244,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FirstFullBackupWindows != null && ec.Excludes("firstFullBackupWindows",false))
         {
             this.FirstFullBackupWindows = null;
+        }
+        //      C# -> HaPolicy? HaPolicy
+        // GraphQL -> haPolicy: HaPolicy (type)
+        if (ec.Includes("haPolicy",false))
+        {
+            if(this.HaPolicy == null) {
+
+                this.HaPolicy = new HaPolicy();
+                this.HaPolicy.ApplyExploratoryFieldSpec(ec.NewChild("haPolicy"));
+
+            } else {
+
+                this.HaPolicy.ApplyExploratoryFieldSpec(ec.NewChild("haPolicy"));
+
+            }
+        }
+        else if (this.HaPolicy != null && ec.Excludes("haPolicy",false))
+        {
+            this.HaPolicy = null;
         }
         //      C# -> Duration? LocalRetentionLimit
         // GraphQL -> localRetentionLimit: Duration (type)

@@ -13,3 +13,5 @@ Entra ID local administrator password.
   - Date and time when the password was last rotated/backed up to Entra ID.
 - refreshDateTime: DateTime
   - Date and time when the password is scheduled for next rotation.
+- deviceId: System.String
+  - ID of the device with which the local administrator account is associated.

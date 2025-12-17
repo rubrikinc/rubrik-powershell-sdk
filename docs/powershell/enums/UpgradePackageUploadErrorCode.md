@@ -5,3 +5,4 @@ The error code for the upload.
 - INTERNAL_FAILURE - Internal failure error.
 - STORAGE_FULL - Storage full error.
 - NETWORK_FAILURE - Network failure error.
+- NO_ERROR - No error.

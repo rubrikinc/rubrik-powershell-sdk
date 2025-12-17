@@ -11,6 +11,8 @@ AWS RSC Managed Exocompute Configuration in a region.
   - First subnet.
 - subnet2: AwsExocomputeSubnetType
   - Second subnet.
+- optionalConfig: AwsExocomputeOptionalConfigInRegion
+  - Optional configuration for the Exocompute cluster.
 - areSecurityGroupsRscManaged: System.Boolean
   - Specifies if the security groups are managed by RSC.
 - configUuid: System.String
@@ -19,6 +21,8 @@ AWS RSC Managed Exocompute Configuration in a region.
   - Exocompute configuration message.
 - region: AwsCloudAccountRegion
   - Exocompute configuration region.
+- authServerRegion: AwsAuthServerBasedCloudAccountRegion
+  - Auth server-based region (ISO/ISOB), if applicable.
 - healthCheckStatus: ExocomputeHealthCheckStatus
   - Status of the latest Exocompute health check.
 - latestExoclusterDetails: ExocomputeClusterDetails

@@ -1,8 +1,12 @@
 ### FailoverGroupStatus
-Status of a failover group.
+Status of a failover group (HA Policy).
 
-- FAILOVER_GROUP_STATUS_UNSPECIFIED - Unspecified status.
-- FAILOVER_GROUP_STATUS_OK - OK status indicating healthy state.
-- FAILOVER_GROUP_STATUS_WARNING - Warning status indicating potential issues.
-- FAILOVER_GROUP_STATUS_ERROR - Error status indicating critical issues.
-- FAILOVER_GROUP_STATUS_FAILOVER_IN_PROGRESS - Failover in progress status indicating active failover operation.
+- FAILOVER_GROUP_STATUS_UNSPECIFIED - Default/unknown status.
+- FAILOVER_GROUP_STATUS_NO_SLA_DOMAIN_ASSIGNED - No SLA domain assigned to HA policy.
+- FAILOVER_GROUP_STATUS_READY_TO_FAILOVER - Active/Ready - ready to failover.
+- FAILOVER_GROUP_STATUS_FAILOVER_IN_PROGRESS - Failover in progress.
+- FAILOVER_GROUP_STATUS_FAILBACK_IN_PROGRESS - Failback in progress.
+- FAILOVER_GROUP_STATUS_FAILOVER_COMPLETED - Failover completed.
+- FAILOVER_GROUP_STATUS_FAILBACK_COMPLETED - Failback completed.
+- FAILOVER_GROUP_STATUS_PARTIAL_FAILOVER - Partial failover.
+- FAILOVER_GROUP_STATUS_FAILOVER_FAILED - Failover failed.

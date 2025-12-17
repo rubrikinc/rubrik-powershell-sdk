@@ -6,9 +6,11 @@ The list of object types for activities.
 - ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
 - K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
 - ORION_THREAT_HUNT - Specifies that the activity object type is Threat Hunt.
+- PROXMOX_ENVIRONMENT - Specifies that the activity object type is Proxmox Environment.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - KuprNamespace - Specifies that the activity object type is Kubernetes namespace.
 - SALESFORCE_OBJECT - Specifies that the activity object type is a Salesforce object.
+- GITHUB_REPOSITORY - Specifies that the activity object type is GitHub Repository.
 - OLVM_HOST - Specifies that the activity object type is OLVM Host.
 - OracleRac - Specifies that the activity object type is Oracle RAC.
 - MYSQLDB_INSTANCE - Specifies that the activity object type is MySQL instance.
@@ -16,12 +18,15 @@ The list of object types for activities.
 - PRINCIPAL_CONTAINER - Specifies that the activity object type is Container.
 - AzureSqlManagedInstanceDatabase - Specifies that the activity object type is Azure SQL Managed Instance Database.
 - HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
+- PRINCIPAL_INFRASTRUCTURE_UPDATE - Specifies that the activity object type is Infrastructure Update.
 - DataLocation - Specifies that the activity object type is Data Location.
 - K8S_LABEL - Specifies that the activity object type is Kubernetes label.
 - IDP_ENTRA_ID - Specifies that the activity object type is Microsoft Entra ID.
 - CLOUD_DIRECT_NAS_NAMESPACE - Specifies that the activity object type is NAS Cloud Direct namespace.
 - CLOUD_DIRECT_NAS_EXPORT - Specifies that the activity object type is NAS Cloud Direct export.
+- PRINCIPAL_MSDS_QUOTA_CONTAINER - Specifies that the activity object type is MSDS Quota Container.
 - HypervScvmm - Specifies that the activity object type is HyperV SCVMM.
+- PRINCIPAL_PASSWORD_SETTINGS - Specifies that the activity object type is Password Settings.
 - O365Onedrive - Specifies that the activity object type is O365 OneDrive.
 - Hdfs - Specifies that the activity object type is HDFS.
 - CASSANDRA_SOURCE - Specifies that the activity object type is Cassandra source.
@@ -34,15 +39,18 @@ The list of object types for activities.
 - AwsNativeRdsInstance - Specifies that the activity object type is AWS Native RDS Instance.
 - O365Organization - Specifies that the activity object type is O365 Organization.
 - K8S_VIRTUAL_MACHINE - Specifies that the activity object type is Kubernetes Virtual Machine.
+- PRINCIPAL_PASSWORD_SETTINGS_CONTAINER - Specifies that the activity object type is Password Settings Container.
 - GOOGLE_WORKSPACE_ORG_UNIT - Specifies that the activity object type is a Google Worksapce organization unit.
 - CLOUD_ACCOUNT - Specifies that the activity object type is Cloud Account.
 - VolumeGroup - Specifies that the activity object type is Volume Group.
 - MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
 - RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
+- PRINCIPAL_SITE - Specifies that the activity object type is Site.
 - M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - O365Group - Specifies that the activity object type is O365 Group.
 - ObjectProtection - Specifies that the activity object type is Object Protection.
+- PRINCIPAL_PRINT_QUEUE - Specifies that the activity object type is Print Queue.
 - PRINCIPAL_SERVICE_ACCOUNT - Specifies that the activity object type is Service Account.
 - NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
 - IDP_ON_PREM_AD - Specifies that the activity object type is On-prem AD.
@@ -54,8 +62,10 @@ The list of object types for activities.
 - MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
 - PRINCIPAL_GROUP - Specifies that the activity object type is Group.
 - POSTGRES_DB_CLUSTER - Specifies that the activity object type is Postgres Database Cluster.
+- PRINCIPAL_SUBNET - Specifies that the activity object type is Subnet.
 - HypervServer - Specifies that the activity object type is HyperV Server.
 - O365SharePointList - Specifies that the activity object type is O365 SharePoint List.
+- PRINCIPAL_VOLUME - Specifies that the activity object type is Volume.
 - Vcenter - Specifies that the activity object type is vCenter.
 - AzureNativeDisk - Specifies that the activity object type is Azure Native Disk.
 - PublicCloudMachineInstance - Specifies that the activity object type is Public Cloud Machine Instance.
@@ -63,6 +73,7 @@ The list of object types for activities.
 - O365SharePointDrive - Specifies that the activity object type is O365 SharePoint Drive.
 - ShareFileset - Specifies that the activity object type is Share Fileset.
 - MONGODB_COLLECTION - Specifies that the activity object type is MongoDB collection.
+- PROXMOX_VIRTUAL_MACHINE - Specifies that the activity object type is Proxmox Virtual Machine.
 - AwsNativeEc2Instance - Specifies that the activity object type is AWS Native EC2 Instance.
 - Ldap - Specifies that the activity object type is LDAP.
 - WEBHOOK - Specifies that the activity object type is Webhook.
@@ -73,12 +84,14 @@ The list of object types for activities.
 - D365_ORGANIZATION - Specifies that the activity object type is a Dynamics 365 organization.
 - AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
+- PRINCIPAL_NTDS_SITE_SETTINGS - Specifies that the activity object type is NTDS Site Settings.
 - VMWARE_HOST - Specifies that the activity object type is a VSphere host.
 - PolarisAccount - Specifies that the activity object type is RSC Account.
 - AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
 - AzureNativeVm - Specifies that the activity object type is Azure Native Virtual Machine.
 - AZURE_DEVOPS_PROJECT - Specifies that the activity object type is Azure DevOps Project.
 - D365_METADATA - Specifies that the activity object type is Dynamics 365 metadata.
+- PRINCIPAL_SITE_LINK_BRIDGE - Specifies that the activity object type is Site Link Bridge.
 - ORGANIZATION - Specifies that the activity object type is Tenant Organization.
 - O365Team - Specifies that the activity object type is O365 Team.
 - OLVM_MANAGER - Specifies that the activity object type is OLVM Manager.
@@ -87,6 +100,7 @@ The list of object types for activities.
 - AZURE_NATIVE_REGION - Specifies that the activity object type is Azure Native Region.
 - StorageArray - Specifies that the activity object type is Storage Array.
 - Db2Database - Specifies that the activity object type is Db2 Database.
+- PRINCIPAL_SUBNET_CONTAINER - Specifies that the activity object type is Subnet Container.
 - AuthDomain - Specifies that the activity object type is Auth Domain.
 - CERTIFICATE_MANAGEMENT - Specifies that the activity object type is a certificate.
 - Mssql - Specifies that the activity object type is MSSQL.
@@ -112,12 +126,16 @@ The list of object types for activities.
 - O365Calendar - Specifies that the activity object type is O365 Calendar.
 - K8S_PROTECTION_SET - Specifies that the activity object type is Kubernetes Protection Set.
 - PRINCIPAL_EXTERNAL_ACCOUNT - Specifies that the activity object type is External Account.
+- PROXMOX_NODE - Specifies that the activity object type is Proxmox Node.
 - MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
 - SALESFORCE_METADATA - Specifies that the activity object type is Salesforce metadata.
 - PRINCIPAL_EXTERNAL_PRINCIPAL - Specifies that the activity object type is External Principal.
 - AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
 - CASSANDRA_COLUMN_FAMILY - Specifies that the activity object type is Cassandra column family.
+- PRINCIPAL_CLASS_SCHEMA - Specifies that the activity object type is Class Schema.
+- PRINCIPAL_ATTRIBUTE_SCHEMA - Specifies that the activity object type is Attribute Schema.
+- PRINCIPAL_INTER_SITE_TRANSPORT - Specifies that the activity object type is Inter-Site Transport.
 - GCP_CLOUD_SQL_INSTANCE - Specifies that the activity object type is GCP Cloud SQL Instance.
 - OAUTH_TOKEN - Specifies that the activity object type is OAuth Token.
 - ENCRYPTION_MANAGEMENT - Specifies that the activity object type is related to Encryption Management.
@@ -135,16 +153,23 @@ The list of object types for activities.
 - NasHost - Specifies that the activity object type is NAS Host.
 - CROSS_ACCOUNT_PAIR - Cross-account pair.
 - PRINCIPAL_CONTACT - Specifies that the activity object type is Contact.
+- PRINCIPAL_SERVERS_CONTAINER - Specifies that the activity object type is Servers Container.
 - User - Specifies that the activity object type is User.
 - K8S_NAMESPACE_V2 - Specifies that the activity object type is Kubernetes Virtual Machine namespace.
 - SALESFORCE_ORGANIZATION - Specifies that the activity object type is a Salesforce organization.
 - RubrikEbsVolume - Specifies that the activity object type is Rubrik EBS Volume.
+- PRINCIPAL_TRUSTED_DOMAIN - Specifies that the activity object type is Trusted Domain.
 - VcdVapp - Specifies that the activity object type is VCD VApp.
 - OLVM_DATACENTER - Specifies that the activity object type is OLVM Datacenter.
 - WindowsHost - Specifies that the activity object type is Windows Host.
+- AWS_NATIVE_REGION - Specifies that the activity object type is AWS Native Region.
+- PROXMOX_CLUSTER - Specifies that the activity object type is Proxmox Cluster.
 - Storm - Specifies that the activity object type is Storm.
+- PRINCIPAL_LICENSING_SITE_SETTINGS - Specifies that the activity object type is Licensing Site Settings.
 - VmwareComputeCluster - Specifies that the activity object type is VMware Compute Cluster.
+- PRINCIPAL_MSDS_QUOTA_CONTROL - Specifies that the activity object type is MSDS Quota Control.
 - ExchangeDatabase - Specifies that the activity object type is Exchange Database.
+- PRINCIPAL_DOMAIN_DNS - Specifies that the activity object type is Domain DNS.
 - M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
 - CapacityBundle - Specifies that the activity object type is Capacity Bundle.
 - MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
@@ -154,6 +179,7 @@ The list of object types for activities.
 - NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
 - JIRA_PROJECT - Specifies that the activity object type is Jira project.
 - GOOGLE_WORKSPACE_USER_DRIVE - Specifies that the activity object type is a Google Workspace user drive.
+- PRINCIPAL_FOREIGN_SECURITY_PRINCIPAL - Specifies that the activity object type is Foreign Security Principal.
 - StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
 - SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.
 - GcpNativeGceInstance - Specifies that the activity object type is GCP Native GCE Instance.
@@ -162,6 +188,7 @@ The list of object types for activities.
 - Envoy - Specifies that the activity object type is Envoy.
 - AZURE_DEVOPS_REPOSITORY - Specifies that the activity object type is Azure DevOps Repository.
 - Cluster - Specifies that the activity object type is Rubrik Cluster.
+- PRINCIPAL_SERVER - Specifies that the activity object type is Server.
 - AppBlueprint - Specifies that the activity object type is App Blueprint.
 - OPENSTACK_VIRTUAL_MACHINE - Specifies that the activity object type is Openstack Virtual Machine.
 - AzureNativeSubscription - Specifies that the activity object type is Azure Native Subscription.
@@ -170,11 +197,14 @@ The list of object types for activities.
 - Certificate - Specifies that the activity object type is Certificate.
 - PRINCIPAL_COMPUTER - Specifies that the activity object type is Computer.
 - IDP_LOCAL_AD - Specifies that the activity object type is Local Windows Machine.
+- GITHUB_ORGANIZATION - Specifies that the activity object type is GitHub Organization.
 - SamlSso - Specifies that the activity object type is Saml SSO.
 - OracleDb - Specifies that the activity object type is Oracle Database.
 - FailoverClusterApp - Specifies that the activity object type is Failover Cluster App.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
 - Host - Specifies that the activity object type is Host.
+- PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER - Specifies that the activity object type is Inter-Site Transport Container.
+- PRINCIPAL_SITE_LINK - Specifies that the activity object type is Site Link.
 - GcpNativeDisk - Specifies that the activity object type is GCP Native Disk.
 - JIRA_SETTINGS - Specifies that the activity object type is Jira settings.
 - INFORMIX_INSTANCE - Specifies that the activity object type is Informix Instance.
@@ -183,6 +213,7 @@ The list of object types for activities.
 - ComputeInstance - Specifies that the activity object type is Compute Instance.
 - CASSANDRA_KEYSPACE - Specifies that the activity object type is Cassandra keyspace.
 - SapHanaDb - Specifies that the activity object type is Sap Hana Database.
+- PRINCIPAL_RID_MANAGER - Specifies that the activity object type is RID Manager.
 - AwsAccount - Specifies that the activity object type is AWS Account.
 - Oracle - Specifies that the activity object type is Oracle.
 - OracleHost - Specifies that the activity object type is Oracle Host.

@@ -21,6 +21,7 @@ Enum representing different type of activities.
 - HypervServer
 - ISOLATED_RECOVERY - Recovering selected objects to a Cyber Recovery Environment (IRE).
 - Configuration
+- IDENTITY_ACTIVITY - Activity representing identity activities type.
 - Upgrade
 - ENCRYPTION_MANAGEMENT_OPERATION - Activity representing Encryption Management event type.
 - CloudNativeVm

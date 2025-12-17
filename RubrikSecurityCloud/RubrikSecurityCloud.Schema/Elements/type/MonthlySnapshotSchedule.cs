@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("basicSchedule")]
         public BasicSnapshotSchedule? BasicSchedule { get; set; }
 
+        //      C# -> List<MonthlyDaySpec>? DaysOfMonth
+        // GraphQL -> daysOfMonth: [MonthlyDaySpec!]! (type)
+        [JsonProperty("daysOfMonth")]
+        public List<MonthlyDaySpec>? DaysOfMonth { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public MonthlySnapshotSchedule Set(
         DayOfMonth? DayOfMonth = null,
-        BasicSnapshotSchedule? BasicSchedule = null
+        BasicSnapshotSchedule? BasicSchedule = null,
+        List<MonthlyDaySpec>? DaysOfMonth = null
     ) 
     {
         if ( DayOfMonth != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BasicSchedule != null ) {
             this.BasicSchedule = BasicSchedule;
+        }
+        if ( DaysOfMonth != null ) {
+            this.DaysOfMonth = DaysOfMonth;
         }
         return this;
     }
@@ -82,6 +91,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "basicSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<MonthlyDaySpec>? DaysOfMonth
+        // GraphQL -> daysOfMonth: [MonthlyDaySpec!]! (type)
+        if (this.DaysOfMonth != null) {
+            var fspec = this.DaysOfMonth.AsFieldSpec(conf.Child("daysOfMonth"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "daysOfMonth" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -127,6 +148,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.BasicSchedule != null && ec.Excludes("basicSchedule",false))
         {
             this.BasicSchedule = null;
+        }
+        //      C# -> List<MonthlyDaySpec>? DaysOfMonth
+        // GraphQL -> daysOfMonth: [MonthlyDaySpec!]! (type)
+        if (ec.Includes("daysOfMonth",false))
+        {
+            if(this.DaysOfMonth == null) {
+
+                this.DaysOfMonth = new List<MonthlyDaySpec>();
+                this.DaysOfMonth.ApplyExploratoryFieldSpec(ec.NewChild("daysOfMonth"));
+
+            } else {
+
+                this.DaysOfMonth.ApplyExploratoryFieldSpec(ec.NewChild("daysOfMonth"));
+
+            }
+        }
+        else if (this.DaysOfMonth != null && ec.Excludes("daysOfMonth",false))
+        {
+            this.DaysOfMonth = null;
         }
     }
 

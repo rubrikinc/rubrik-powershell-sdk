@@ -460,6 +460,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		kekNameColossus = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	uemKmsSpec = @{
+    /// 		# REQUIRED
+    /// 		uemKmsId = $someString
+    /// 		# REQUIRED
+    /// 		kmsKeyName = $someString
+    /// 		# OPTIONAL
+    /// 		kmsKeyVersion = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -726,6 +735,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
     /// 	# OPTIONAL
     /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2350,6 +2361,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	redundancyOpt = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
     /// 	# OPTIONAL
     /// 	updateChildVaultsOpt = $someBoolean
+    /// 	# OPTIONAL
+    /// 	rcvTierOpt = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2653,9 +2666,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		}
     /// 	)
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	azureSubscriptionRubrikIds = @(
     /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	subscriptionIdsWithFeaturesToUpgrade = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			subscriptionId = $someString
+    /// 			# REQUIRED
+    /// 			featuresToUpgrade = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 					# REQUIRED
+    /// 					permissionsGroups = @(
+    /// 						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					resourceGroup = @{
+    /// 						# REQUIRED
+    /// 						name = $someString
+    /// 						# OPTIONAL
+    /// 						tags = @{
+    /// 							# REQUIRED
+    /// 							tagList = @(
+    /// 								@{
+    /// 									# REQUIRED
+    /// 									key = $someString
+    /// 									# REQUIRED
+    /// 									value = $someString
+    /// 								}
+    /// 							)
+    /// 						}
+    /// 						# REQUIRED
+    /// 						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 					}
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	)
     /// }
     /// 
@@ -3722,6 +3772,15 @@ $query.Var.input = @{
 		# OPTIONAL
 		kekNameColossus = $someString
 	}
+	# OPTIONAL
+	uemKmsSpec = @{
+		# REQUIRED
+		uemKmsId = $someString
+		# REQUIRED
+		kmsKeyName = $someString
+		# OPTIONAL
+		kmsKeyVersion = $someString
+	}
 }"
             );
         }
@@ -3948,6 +4007,8 @@ $query.Var.input = @{
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 	# OPTIONAL
 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
+	rsaKey = $someString
 }"
             );
         }
@@ -5337,6 +5398,8 @@ $query.Var.input = @{
 	redundancyOpt = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 	# OPTIONAL
 	updateChildVaultsOpt = $someBoolean
+	# OPTIONAL
+	rcvTierOpt = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
 }"
             );
         }
@@ -5599,9 +5662,46 @@ $query.Var.input = @{
 			}
 		}
 	)
-	# REQUIRED
+	# OPTIONAL
 	azureSubscriptionRubrikIds = @(
 		$someString
+	)
+	# OPTIONAL
+	subscriptionIdsWithFeaturesToUpgrade = @(
+		@{
+			# REQUIRED
+			subscriptionId = $someString
+			# REQUIRED
+			featuresToUpgrade = @(
+				@{
+					# REQUIRED
+					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+					# REQUIRED
+					permissionsGroups = @(
+						$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+					)
+					# OPTIONAL
+					resourceGroup = @{
+						# REQUIRED
+						name = $someString
+						# OPTIONAL
+						tags = @{
+							# REQUIRED
+							tagList = @(
+								@{
+									# REQUIRED
+									key = $someString
+									# REQUIRED
+									value = $someString
+								}
+							)
+						}
+						# REQUIRED
+						region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+					}
+				}
+			)
+		}
 	)
 }"
             );

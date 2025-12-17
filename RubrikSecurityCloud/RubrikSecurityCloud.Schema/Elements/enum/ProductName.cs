@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_UNSTRUCTURED")]
         CLOUD_UNSTRUCTURED,
 
+        [EnumMember(Value = "CODEBASE_RECOVERY")]
+        CODEBASE_RECOVERY,
+
         [EnumMember(Value = "DSPM_CLOUD")]
         DSPM_CLOUD,
 
@@ -80,6 +83,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "O365")]
         O365,
+
+        [EnumMember(Value = "OKTA")]
+        OKTA,
 
         [EnumMember(Value = "ONPREM_AD")]
         ONPREM_AD,

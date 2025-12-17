@@ -10,6 +10,8 @@
 - isOnDemandSnapshot: System.Boolean
 - isRetentionLocked: System.Boolean
   - Specifies whether the snapshot follows retention lock constraint.
+- retentionLockModeAcrossLocations: RetentionLockMode
+  - Specifies the mode of the retention lock if it's enabled across any locations.
 - cdmId: System.String
 - cdmVersion: System.String
 - snapshotRetentionInfo: CdmSnapshotRetentionInfo

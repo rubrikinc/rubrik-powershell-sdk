@@ -147,6 +147,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_VM_DOWNLOAD_SNAPSHOT_FROM_LOCATION")]
         K8S_VM_DOWNLOAD_SNAPSHOT_FROM_LOCATION,
 
+        [EnumMember(Value = "K8S_VM_MOUNT")]
+        K8S_VM_MOUNT,
+
+        [EnumMember(Value = "K8S_VM_UNMOUNT")]
+        K8S_VM_UNMOUNT,
+
         [EnumMember(Value = "KEY_ROTATION")]
         KEY_ROTATION,
 

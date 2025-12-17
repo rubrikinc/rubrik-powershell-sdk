@@ -53,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("operation")]
         public Operation? Operation { get; set; }
 
+        //      C# -> System.Boolean? IncludeInternalFeatures
+        // GraphQL -> includeInternalFeatures: Boolean (scalar)
+        [JsonProperty("includeInternalFeatures")]
+        public System.Boolean? IncludeInternalFeatures { get; set; }
+
 
         #endregion
 

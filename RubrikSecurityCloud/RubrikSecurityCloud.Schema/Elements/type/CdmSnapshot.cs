@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("consistencyLevel")]
         public ConsistencyLevelEnum? ConsistencyLevel { get; set; }
 
+        //      C# -> RetentionLockMode? RetentionLockModeAcrossLocations
+        // GraphQL -> retentionLockModeAcrossLocations: RetentionLockMode (enum)
+        [JsonProperty("retentionLockModeAcrossLocations")]
+        public RetentionLockMode? RetentionLockModeAcrossLocations { get; set; }
+
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         [JsonProperty("pendingSla")]
@@ -293,6 +298,7 @@ namespace RubrikSecurityCloud.Types
     public CdmSnapshot Set(
         SnapshotCloudState? CloudState = null,
         ConsistencyLevelEnum? ConsistencyLevel = null,
+        RetentionLockMode? RetentionLockModeAcrossLocations = null,
         SlaDomain? PendingSla = null,
         SlaDomain? SlaDomain = null,
         CdmHierarchySnappableNew? SnappableNew = null,
@@ -350,6 +356,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ConsistencyLevel != null ) {
             this.ConsistencyLevel = ConsistencyLevel;
+        }
+        if ( RetentionLockModeAcrossLocations != null ) {
+            this.RetentionLockModeAcrossLocations = RetentionLockModeAcrossLocations;
         }
         if ( PendingSla != null ) {
             this.PendingSla = PendingSla;
@@ -531,6 +540,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "consistencyLevel\n" ;
             } else {
                 s += ind + "consistencyLevel\n" ;
+            }
+        }
+        //      C# -> RetentionLockMode? RetentionLockModeAcrossLocations
+        // GraphQL -> retentionLockModeAcrossLocations: RetentionLockMode (enum)
+        if (this.RetentionLockModeAcrossLocations != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionLockModeAcrossLocations\n" ;
+            } else {
+                s += ind + "retentionLockModeAcrossLocations\n" ;
             }
         }
         //      C# -> SlaDomain? PendingSla
@@ -1107,6 +1125,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConsistencyLevel != null && ec.Excludes("consistencyLevel",true))
         {
             this.ConsistencyLevel = null;
+        }
+        //      C# -> RetentionLockMode? RetentionLockModeAcrossLocations
+        // GraphQL -> retentionLockModeAcrossLocations: RetentionLockMode (enum)
+        if (ec.Includes("retentionLockModeAcrossLocations",true))
+        {
+            if(this.RetentionLockModeAcrossLocations == null) {
+
+                this.RetentionLockModeAcrossLocations = new RetentionLockMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionLockModeAcrossLocations != null && ec.Excludes("retentionLockModeAcrossLocations",true))
+        {
+            this.RetentionLockModeAcrossLocations = null;
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 6
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'RCV' API domain:
-    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, UpdateEncryptionKeyForMigration, UpdatePrivateEndpoint, or UpdateTarget.
+    /// ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, UpdateDestinationRoleForMigration, UpdateEncryptionKeyForMigration, UpdatePrivateEndpoint, or UpdateTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 6 operations
+    /// There are 7 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, UpdateEncryptionKeyForMigration, UpdatePrivateEndpoint, or UpdateTarget.
+    /// one of: ApprovePrivateEndpoint, CreateLocationsFromTemplate, CreatePrivateEndpointApprovalRequest, UpdateDestinationRoleForMigration, UpdateEncryptionKeyForMigration, UpdatePrivateEndpoint, or UpdateTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -216,6 +216,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateDestinationRoleForMigration operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: UpdateDestinationRoleForMigration
+    /// 
+    /// $query = New-RscMutationRcv -Operation UpdateDestinationRoleForMigration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# OPTIONAL
+    /// 	destinationRoleArn = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateDestinationRoleForRcvMigrationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateEncryptionKeyForMigration operation
     /// of the 'RCV' API domain.
     /// <code>
@@ -352,6 +385,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ApprovePrivateEndpoint",
                 "CreateLocationsFromTemplate",
                 "CreatePrivateEndpointApprovalRequest",
+                "UpdateDestinationRoleForMigration",
                 "UpdateEncryptionKeyForMigration",
                 "UpdatePrivateEndpoint",
                 "UpdateTarget",
@@ -378,6 +412,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreatePrivateEndpointApprovalRequest":
                         this.ProcessRecord_CreatePrivateEndpointApprovalRequest();
+                        break;
+                    case "UpdateDestinationRoleForMigration":
+                        this.ProcessRecord_UpdateDestinationRoleForMigration();
                         break;
                     case "UpdateEncryptionKeyForMigration":
                         this.ProcessRecord_UpdateEncryptionKeyForMigration();
@@ -423,6 +460,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreatePrivateEndpointApprovalRequest";
             // Create new graphql operation createRcvPrivateEndpointApprovalRequest
             InitMutationCreateRcvPrivateEndpointApprovalRequest();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateDestinationRoleForRcvMigration.
+        internal void ProcessRecord_UpdateDestinationRoleForMigration()
+        {
+            this._logger.name += " -UpdateDestinationRoleForMigration";
+            // Create new graphql operation updateDestinationRoleForRcvMigration
+            InitMutationUpdateDestinationRoleForRcvMigration();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -564,6 +610,31 @@ $query.Var.input = @{
 	name = $someString
 	# OPTIONAL
 	description = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateDestinationRoleForRcvMigration(input: UpdateDestinationRoleForRcvMigrationInput!): UpdateDestinationRoleForRcvMigrationReply!
+        internal void InitMutationUpdateDestinationRoleForRcvMigration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateDestinationRoleForRcvMigrationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateDestinationRoleForRcvMigration",
+                "($input: UpdateDestinationRoleForRcvMigrationInput!)",
+                "UpdateDestinationRoleForRcvMigrationReply",
+                Mutation.UpdateDestinationRoleForRcvMigration,
+                Mutation.UpdateDestinationRoleForRcvMigrationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	locationId = $someString
+	# OPTIONAL
+	destinationRoleArn = $someString
 }"
             );
         }

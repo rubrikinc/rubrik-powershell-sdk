@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        [JsonProperty("authServerRegion")]
+        public AwsAuthServerBasedCloudAccountRegion? AuthServerRegion { get; set; }
+
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         [JsonProperty("region")]
@@ -86,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestExoclusterDetails")]
         public ExocomputeClusterDetails? LatestExoclusterDetails { get; set; }
 
+        //      C# -> AwsExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AwsExocomputeOptionalConfigInRegion (type)
+        [JsonProperty("optionalConfig")]
+        public AwsExocomputeOptionalConfigInRegion? OptionalConfig { get; set; }
+
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
         [JsonProperty("subnet1")]
@@ -106,6 +116,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsRscManagedExocomputeConfig Set(
+        AwsAuthServerBasedCloudAccountRegion? AuthServerRegion = null,
         AwsCloudAccountRegion? Region = null,
         System.Boolean? AreSecurityGroupsRscManaged = null,
         System.String? ClusterSecurityGroupId = null,
@@ -119,10 +130,14 @@ namespace RubrikSecurityCloud.Types
         System.String? VpcId = null,
         ExocomputeHealthCheckStatus? HealthCheckStatus = null,
         ExocomputeClusterDetails? LatestExoclusterDetails = null,
+        AwsExocomputeOptionalConfigInRegion? OptionalConfig = null,
         AwsExocomputeSubnetType? Subnet1 = null,
         AwsExocomputeSubnetType? Subnet2 = null
     ) 
     {
+        if ( AuthServerRegion != null ) {
+            this.AuthServerRegion = AuthServerRegion;
+        }
         if ( Region != null ) {
             this.Region = Region;
         }
@@ -162,6 +177,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestExoclusterDetails != null ) {
             this.LatestExoclusterDetails = LatestExoclusterDetails;
         }
+        if ( OptionalConfig != null ) {
+            this.OptionalConfig = OptionalConfig;
+        }
         if ( Subnet1 != null ) {
             this.Subnet1 = Subnet1;
         }
@@ -182,6 +200,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        if (this.AuthServerRegion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authServerRegion\n" ;
+            } else {
+                s += ind + "authServerRegion\n" ;
+            }
+        }
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         if (this.Region != null) {
@@ -305,6 +332,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AwsExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AwsExocomputeOptionalConfigInRegion (type)
+        if (this.OptionalConfig != null) {
+            var fspec = this.OptionalConfig.AsFieldSpec(conf.Child("optionalConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "optionalConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
         if (this.Subnet1 != null) {
@@ -336,6 +375,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        if (ec.Includes("authServerRegion",true))
+        {
+            if(this.AuthServerRegion == null) {
+
+                this.AuthServerRegion = new AwsAuthServerBasedCloudAccountRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthServerRegion != null && ec.Excludes("authServerRegion",true))
+        {
+            this.AuthServerRegion = null;
+        }
         //      C# -> AwsCloudAccountRegion? Region
         // GraphQL -> region: AwsCloudAccountRegion! (enum)
         if (ec.Includes("region",true))
@@ -560,6 +616,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestExoclusterDetails != null && ec.Excludes("latestExoclusterDetails",false))
         {
             this.LatestExoclusterDetails = null;
+        }
+        //      C# -> AwsExocomputeOptionalConfigInRegion? OptionalConfig
+        // GraphQL -> optionalConfig: AwsExocomputeOptionalConfigInRegion (type)
+        if (ec.Includes("optionalConfig",false))
+        {
+            if(this.OptionalConfig == null) {
+
+                this.OptionalConfig = new AwsExocomputeOptionalConfigInRegion();
+                this.OptionalConfig.ApplyExploratoryFieldSpec(ec.NewChild("optionalConfig"));
+
+            } else {
+
+                this.OptionalConfig.ApplyExploratoryFieldSpec(ec.NewChild("optionalConfig"));
+
+            }
+        }
+        else if (this.OptionalConfig != null && ec.Excludes("optionalConfig",false))
+        {
+            this.OptionalConfig = null;
         }
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)

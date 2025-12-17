@@ -73,3 +73,5 @@ Metadata for rendering an SLA Domain.
   - Upgrade information about the configured archival locations and cascading archival locations.
 - sourceClusters: list of SlaDataLocationClusters
   - Source clusters configured in the SLA Domain.
+- haPolicy: HaPolicy
+  - HA policy of the HA SLA Domain.

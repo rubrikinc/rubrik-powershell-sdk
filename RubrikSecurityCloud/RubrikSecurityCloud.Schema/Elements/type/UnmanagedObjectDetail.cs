@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int64? NonPolicySnapshotsCount
+        // GraphQL -> nonPolicySnapshotsCount: Long! (scalar)
+        [JsonProperty("nonPolicySnapshotsCount")]
+        public System.Int64? NonPolicySnapshotsCount { get; set; }
+
         //      C# -> System.Int64? NumSnapshotsWithPolicy
         // GraphQL -> numSnapshotsWithPolicy: Long! (scalar)
         [JsonProperty("numSnapshotsWithPolicy")]
@@ -164,6 +169,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsRemote = null,
         System.Int64? LocalStorage = null,
         System.String? Name = null,
+        System.Int64? NonPolicySnapshotsCount = null,
         System.Int64? NumSnapshotsWithPolicy = null,
         System.String? RetentionSlaDomainId = null,
         System.String? RetentionSlaDomainName = null,
@@ -217,6 +223,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( NonPolicySnapshotsCount != null ) {
+            this.NonPolicySnapshotsCount = NonPolicySnapshotsCount;
         }
         if ( NumSnapshotsWithPolicy != null ) {
             this.NumSnapshotsWithPolicy = NumSnapshotsWithPolicy;
@@ -394,6 +403,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.Int64? NonPolicySnapshotsCount
+        // GraphQL -> nonPolicySnapshotsCount: Long! (scalar)
+        if (this.NonPolicySnapshotsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nonPolicySnapshotsCount\n" ;
+            } else {
+                s += ind + "nonPolicySnapshotsCount\n" ;
             }
         }
         //      C# -> System.Int64? NumSnapshotsWithPolicy
@@ -756,6 +774,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.Int64? NonPolicySnapshotsCount
+        // GraphQL -> nonPolicySnapshotsCount: Long! (scalar)
+        if (ec.Includes("nonPolicySnapshotsCount",true))
+        {
+            if(this.NonPolicySnapshotsCount == null) {
+
+                this.NonPolicySnapshotsCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NonPolicySnapshotsCount != null && ec.Excludes("nonPolicySnapshotsCount",true))
+        {
+            this.NonPolicySnapshotsCount = null;
         }
         //      C# -> System.Int64? NumSnapshotsWithPolicy
         // GraphQL -> numSnapshotsWithPolicy: Long! (scalar)

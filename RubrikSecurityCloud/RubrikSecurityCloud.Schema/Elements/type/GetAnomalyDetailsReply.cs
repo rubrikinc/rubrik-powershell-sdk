@@ -50,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activitySeriesId")]
         public System.String? ActivitySeriesId { get; set; }
 
+        //      C# -> System.String? AnomalyAnalysisLocationId
+        // GraphQL -> anomalyAnalysisLocationId: String! (scalar)
+        [JsonProperty("anomalyAnalysisLocationId")]
+        public System.String? AnomalyAnalysisLocationId { get; set; }
+
+        //      C# -> System.String? AnomalyAnalysisLocationName
+        // GraphQL -> anomalyAnalysisLocationName: String! (scalar)
+        [JsonProperty("anomalyAnalysisLocationName")]
+        public System.String? AnomalyAnalysisLocationName { get; set; }
+
         //      C# -> System.Single? AnomalyProbability
         // GraphQL -> anomalyProbability: Float! (scalar)
         [JsonProperty("anomalyProbability")]
@@ -216,6 +226,8 @@ namespace RubrikSecurityCloud.Types
         ResolutionStatus? ResolutionStatus = null,
         ActivitySeverityEnum? Severity = null,
         System.String? ActivitySeriesId = null,
+        System.String? AnomalyAnalysisLocationId = null,
+        System.String? AnomalyAnalysisLocationName = null,
         System.Single? AnomalyProbability = null,
         System.Int64? BytesCreatedCount = null,
         System.Int64? BytesDeletedCount = null,
@@ -265,6 +277,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActivitySeriesId != null ) {
             this.ActivitySeriesId = ActivitySeriesId;
+        }
+        if ( AnomalyAnalysisLocationId != null ) {
+            this.AnomalyAnalysisLocationId = AnomalyAnalysisLocationId;
+        }
+        if ( AnomalyAnalysisLocationName != null ) {
+            this.AnomalyAnalysisLocationName = AnomalyAnalysisLocationName;
         }
         if ( AnomalyProbability != null ) {
             this.AnomalyProbability = AnomalyProbability;
@@ -422,6 +440,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "activitySeriesId\n" ;
             } else {
                 s += ind + "activitySeriesId\n" ;
+            }
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationId
+        // GraphQL -> anomalyAnalysisLocationId: String! (scalar)
+        if (this.AnomalyAnalysisLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyAnalysisLocationId\n" ;
+            } else {
+                s += ind + "anomalyAnalysisLocationId\n" ;
+            }
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationName
+        // GraphQL -> anomalyAnalysisLocationName: String! (scalar)
+        if (this.AnomalyAnalysisLocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyAnalysisLocationName\n" ;
+            } else {
+                s += ind + "anomalyAnalysisLocationName\n" ;
             }
         }
         //      C# -> System.Single? AnomalyProbability
@@ -817,6 +853,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActivitySeriesId != null && ec.Excludes("activitySeriesId",true))
         {
             this.ActivitySeriesId = null;
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationId
+        // GraphQL -> anomalyAnalysisLocationId: String! (scalar)
+        if (ec.Includes("anomalyAnalysisLocationId",true))
+        {
+            if(this.AnomalyAnalysisLocationId == null) {
+
+                this.AnomalyAnalysisLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyAnalysisLocationId != null && ec.Excludes("anomalyAnalysisLocationId",true))
+        {
+            this.AnomalyAnalysisLocationId = null;
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationName
+        // GraphQL -> anomalyAnalysisLocationName: String! (scalar)
+        if (ec.Includes("anomalyAnalysisLocationName",true))
+        {
+            if(this.AnomalyAnalysisLocationName == null) {
+
+                this.AnomalyAnalysisLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyAnalysisLocationName != null && ec.Excludes("anomalyAnalysisLocationName",true))
+        {
+            this.AnomalyAnalysisLocationName = null;
         }
         //      C# -> System.Single? AnomalyProbability
         // GraphQL -> anomalyProbability: Float! (scalar)

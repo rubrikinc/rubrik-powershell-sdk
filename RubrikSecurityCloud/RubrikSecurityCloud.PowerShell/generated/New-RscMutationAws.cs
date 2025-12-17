@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 37
+    /// Create a new RscQuery object for any of the 34
     /// operations in the 'AWS' API domain:
-    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CloudAccountsMigrateInitiate, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
+    /// AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CloudAccountsMigrateInitiate, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 37 operations
+    /// There are 34 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CloudAccountsMigrateInitiate, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateComputeSetting, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteComputeSetting, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateComputeSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
+    /// one of: AddAuthenticationServerBasedCloudAccount, AddIamUserBasedCloudAccount, BulkDeleteCloudAccountWithoutCft, CloudAccountsMigrateInitiate, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeStorageSetting, CreateCluster, CreateExocomputeConfigs, CreateReaderTarget, CreateTarget, DeleteExocomputeConfigs, DisconnectExocomputeCluster, ExocomputeClusterConnect, FinalizeCloudAccountDeletion, FinalizeCloudAccountProtection, PatchAuthenticationServerBasedCloudAccount, PatchIamUserBasedCloudAccount, PrepareCloudAccountDeletion, PrepareFeatureUpdateForCloudAccount, RegisterFeatureArtifacts, StartExocomputeDisableJob, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudAccountFeature, UpdateCloudNativeStorageSetting, UpdateExocomputeConfigs, UpdateIamPair, UpdateTarget, UpgradeCloudAccountFeaturesWithoutCft, UpgradeIamUserBasedCloudAccountPermissions, ValidateAndCreateCloudAccount, or ValidateAndInitiateOutpostAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -643,69 +643,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the CreateComputeSetting operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Aws
-    /// # API Operation: CreateComputeSetting
-    /// 
-    /// $query = New-RscMutationAws -Operation CreateComputeSetting
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	name = $someString
-    /// 	# OPTIONAL
-    /// 	subnetId = $someString
-    /// 	# OPTIONAL
-    /// 	vpcId = $someString
-    /// 	# OPTIONAL
-    /// 	securityGroupId = $someString
-    /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-    /// 	# OPTIONAL
-    /// 	isSecurityGroupPolarisManaged = $someBoolean
-    /// 	# OPTIONAL
-    /// 	clusterInterfaceCidrs = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			clusterName = $someString
-    /// 			# OPTIONAL
-    /// 			clusterId = $someString
-    /// 			# OPTIONAL
-    /// 			interfaceCidr = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					interfaceType = $someInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InterfaceType]) for enum values.
-    /// 					# OPTIONAL
-    /// 					cidr = $someString
-    /// 					# OPTIONAL
-    /// 					selected = $someBoolean
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsComputeSettings
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the CreateExocomputeConfigs operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -748,6 +685,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isRscManaged = $someBoolean
     /// 			# OPTIONAL
     /// 			clusterName = $someString
+    /// 			# OPTIONAL
+    /// 			awsRegionSelector = @{
+    /// 				# OPTIONAL
+    /// 				standardRegion = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				authServerRegion = $someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			optionalConfig = @{
+    /// 				# OPTIONAL
+    /// 				eksClusterAccessType = $someEksClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EksClusterAccessType]) for enum values.
+    /// 			}
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1018,37 +967,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: Target
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the DeleteComputeSetting operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Aws
-    /// # API Operation: DeleteComputeSetting
-    /// 
-    /// $query = New-RscMutationAws -Operation DeleteComputeSetting
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	id = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -1881,45 +1799,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateComputeSetting operation
-    /// of the 'AWS' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Aws
-    /// # API Operation: UpdateComputeSetting
-    /// 
-    /// $query = New-RscMutationAws -Operation UpdateComputeSetting
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	name = $someString
-    /// 	# OPTIONAL
-    /// 	subnetId = $someString
-    /// 	# OPTIONAL
-    /// 	vpcId = $someString
-    /// 	# OPTIONAL
-    /// 	securityGroupId = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: AwsComputeSettings
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the UpdateExocomputeConfigs operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1962,6 +1841,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isRscManaged = $someBoolean
     /// 			# OPTIONAL
     /// 			clusterName = $someString
+    /// 			# OPTIONAL
+    /// 			awsRegionSelector = @{
+    /// 				# OPTIONAL
+    /// 				standardRegion = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 				# OPTIONAL
+    /// 				authServerRegion = $someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			optionalConfig = @{
+    /// 				# OPTIONAL
+    /// 				eksClusterAccessType = $someEksClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EksClusterAccessType]) for enum values.
+    /// 			}
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2395,11 +2286,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateAutomaticTargetMapping",
                 "CreateCloudNativeStorageSetting",
                 "CreateCluster",
-                "CreateComputeSetting",
                 "CreateExocomputeConfigs",
                 "CreateReaderTarget",
                 "CreateTarget",
-                "DeleteComputeSetting",
                 "DeleteExocomputeConfigs",
                 "DisconnectExocomputeCluster",
                 "ExocomputeClusterConnect",
@@ -2416,7 +2305,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateCloudAccount",
                 "UpdateCloudAccountFeature",
                 "UpdateCloudNativeStorageSetting",
-                "UpdateComputeSetting",
                 "UpdateExocomputeConfigs",
                 "UpdateIamPair",
                 "UpdateTarget",
@@ -2463,9 +2351,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateCluster":
                         this.ProcessRecord_CreateCluster();
                         break;
-                    case "CreateComputeSetting":
-                        this.ProcessRecord_CreateComputeSetting();
-                        break;
                     case "CreateExocomputeConfigs":
                         this.ProcessRecord_CreateExocomputeConfigs();
                         break;
@@ -2474,9 +2359,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateTarget":
                         this.ProcessRecord_CreateTarget();
-                        break;
-                    case "DeleteComputeSetting":
-                        this.ProcessRecord_DeleteComputeSetting();
                         break;
                     case "DeleteExocomputeConfigs":
                         this.ProcessRecord_DeleteExocomputeConfigs();
@@ -2525,9 +2407,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateCloudNativeStorageSetting":
                         this.ProcessRecord_UpdateCloudNativeStorageSetting();
-                        break;
-                    case "UpdateComputeSetting":
-                        this.ProcessRecord_UpdateComputeSetting();
                         break;
                     case "UpdateExocomputeConfigs":
                         this.ProcessRecord_UpdateExocomputeConfigs();
@@ -2633,15 +2512,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // createAwsComputeSetting.
-        internal void ProcessRecord_CreateComputeSetting()
-        {
-            this._logger.name += " -CreateComputeSetting";
-            // Create new graphql operation createAwsComputeSetting
-            InitMutationCreateAwsComputeSetting();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // createAwsExocomputeConfigs.
         internal void ProcessRecord_CreateExocomputeConfigs()
         {
@@ -2666,15 +2536,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateTarget";
             // Create new graphql operation createAwsTarget
             InitMutationCreateAwsTarget();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // deleteAwsComputeSetting.
-        internal void ProcessRecord_DeleteComputeSetting()
-        {
-            this._logger.name += " -DeleteComputeSetting";
-            // Create new graphql operation deleteAwsComputeSetting
-            InitMutationDeleteAwsComputeSetting();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2819,15 +2680,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateCloudNativeStorageSetting";
             // Create new graphql operation updateCloudNativeAwsStorageSetting
             InitMutationUpdateCloudNativeAwsStorageSetting();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateAwsComputeSetting.
-        internal void ProcessRecord_UpdateComputeSetting()
-        {
-            this._logger.name += " -UpdateComputeSetting";
-            // Create new graphql operation updateAwsComputeSetting
-            InitMutationUpdateAwsComputeSetting();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3397,61 +3249,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // createAwsComputeSetting(input: CreateAwsComputeSettingInput!): AwsComputeSettings!
-        internal void InitMutationCreateAwsComputeSetting()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateAwsComputeSettingInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationCreateAwsComputeSetting",
-                "($input: CreateAwsComputeSettingInput!)",
-                "AwsComputeSettings",
-                Mutation.CreateAwsComputeSetting,
-                Mutation.CreateAwsComputeSettingFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	name = $someString
-	# OPTIONAL
-	subnetId = $someString
-	# OPTIONAL
-	vpcId = $someString
-	# OPTIONAL
-	securityGroupId = $someString
-	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
-	# OPTIONAL
-	isSecurityGroupPolarisManaged = $someBoolean
-	# OPTIONAL
-	clusterInterfaceCidrs = @(
-		@{
-			# OPTIONAL
-			clusterName = $someString
-			# OPTIONAL
-			clusterId = $someString
-			# OPTIONAL
-			interfaceCidr = @(
-				@{
-					# OPTIONAL
-					interfaceType = $someInterfaceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InterfaceType]) for enum values.
-					# OPTIONAL
-					cidr = $someString
-					# OPTIONAL
-					selected = $someBoolean
-				}
-			)
-		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!): CreateAwsExocomputeConfigsReply!
         internal void InitMutationCreateAwsExocomputeConfigs()
         {
@@ -3496,6 +3293,18 @@ $query.Var.input = @{
 			isRscManaged = $someBoolean
 			# OPTIONAL
 			clusterName = $someString
+			# OPTIONAL
+			awsRegionSelector = @{
+				# OPTIONAL
+				standardRegion = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+				# OPTIONAL
+				authServerRegion = $someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+			}
+			# OPTIONAL
+			optionalConfig = @{
+				# OPTIONAL
+				eksClusterAccessType = $someEksClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EksClusterAccessType]) for enum values.
+			}
 		}
 	)
 	# OPTIONAL
@@ -3743,29 +3552,6 @@ $query.Var.input = @{
 		# REQUIRED
 		keyId = $someString
 	}
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // deleteAwsComputeSetting(input: DeleteAwsComputeSettingInput!): Void
-        internal void InitMutationDeleteAwsComputeSetting()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "DeleteAwsComputeSettingInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationDeleteAwsComputeSetting",
-                "($input: DeleteAwsComputeSettingInput!)",
-                "System.String",
-                Mutation.DeleteAwsComputeSetting,
-                Mutation.DeleteAwsComputeSettingFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	id = $someString
 }"
             );
         }
@@ -4467,37 +4253,6 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // updateAwsComputeSetting(input: UpdateAwsComputeSettingInput!): AwsComputeSettings!
-        internal void InitMutationUpdateAwsComputeSetting()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "UpdateAwsComputeSettingInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateAwsComputeSetting",
-                "($input: UpdateAwsComputeSettingInput!)",
-                "AwsComputeSettings",
-                Mutation.UpdateAwsComputeSetting,
-                Mutation.UpdateAwsComputeSettingFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	id = $someString
-	# OPTIONAL
-	name = $someString
-	# OPTIONAL
-	subnetId = $someString
-	# OPTIONAL
-	vpcId = $someString
-	# OPTIONAL
-	securityGroupId = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
         // updateAwsExocomputeConfigs(input: UpdateAwsExocomputeConfigsInput!): UpdateAwsExocomputeConfigsReply!
         internal void InitMutationUpdateAwsExocomputeConfigs()
         {
@@ -4542,6 +4297,18 @@ $query.Var.input = @{
 			isRscManaged = $someBoolean
 			# OPTIONAL
 			clusterName = $someString
+			# OPTIONAL
+			awsRegionSelector = @{
+				# OPTIONAL
+				standardRegion = $someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+				# OPTIONAL
+				authServerRegion = $someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
+			}
+			# OPTIONAL
+			optionalConfig = @{
+				# OPTIONAL
+				eksClusterAccessType = $someEksClusterAccessType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EksClusterAccessType]) for enum values.
+			}
 		}
 	)
 	# OPTIONAL

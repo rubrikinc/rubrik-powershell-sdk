@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         AwsCloudAccountRegion? Region { get; set; }
 
+        //      C# -> AwsAuthServerBasedCloudAccountRegion? AuthServerRegion
+        // GraphQL -> authServerRegion: AwsAuthServerBasedCloudAccountRegion (enum)
+        [JsonProperty("authServerRegion")]
+        AwsAuthServerBasedCloudAccountRegion? AuthServerRegion { get; set; }
+
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         [JsonProperty("healthCheckStatus")]

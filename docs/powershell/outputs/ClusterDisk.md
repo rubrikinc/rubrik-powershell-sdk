@@ -25,6 +25,22 @@ Rubrik cluster disk type.
   - Disk serial ID.
 - isResizable: System.Boolean
   - Specifies if the disk is resizable.
+- manufacturer: System.String
+  - Disk manufacturer.
+- model: System.String
+  - Disk model.
+- diskMode: ClusterDiskMode
+  - Disk mode.
+- raidType: ClusterRaidType
+  - RAID type.
+- raidStatus: ClusterRaidStatus
+  - RAID status.
+- raidError: System.String
+  - RAID error message.
+- raidRebuildingPercentage: System.Single
+  - RAID rebuilding percentage (0-100) when RAID status is REBUILDING.
+- hasIndicatorLed: System.Boolean
+  - Specifies if the disk has an LED.
 - id: System.String
   - This field is deprecated.
 - diskId: System.String

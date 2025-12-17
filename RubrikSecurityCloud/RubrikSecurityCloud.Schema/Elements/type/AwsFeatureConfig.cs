@@ -20,10 +20,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<AwsCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AwsCloudAccountRegion!]! (enum)
+        [JsonProperty("exocomputeMappableRegions")]
+        public List<AwsCloudAccountRegion>? ExocomputeMappableRegions { get; set; }
+
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations
         // GraphQL -> exocomputeConfigurations: [AwsExocomputeGetConfigurationResponse!]! (interface)
         [JsonProperty("exocomputeConfigurations")]
         public List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations { get; set; }
+
+        //      C# -> System.Boolean? HasCloudDiscovery
+        // GraphQL -> hasCloudDiscovery: Boolean! (scalar)
+        [JsonProperty("hasCloudDiscovery")]
+        public System.Boolean? HasCloudDiscovery { get; set; }
 
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
@@ -60,7 +70,9 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsFeatureConfig Set(
+        List<AwsCloudAccountRegion>? ExocomputeMappableRegions = null,
         List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations = null,
+        System.Boolean? HasCloudDiscovery = null,
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs = null,
         FeatureDetail? FeatureDetail = null,
@@ -68,8 +80,14 @@ namespace RubrikSecurityCloud.Types
         AwsRoleChainingAccount? RoleChainingAccount = null
     ) 
     {
+        if ( ExocomputeMappableRegions != null ) {
+            this.ExocomputeMappableRegions = ExocomputeMappableRegions;
+        }
         if ( ExocomputeConfigurations != null ) {
             this.ExocomputeConfigurations = ExocomputeConfigurations;
+        }
+        if ( HasCloudDiscovery != null ) {
+            this.HasCloudDiscovery = HasCloudDiscovery;
         }
         if ( AwsCloudAccount != null ) {
             this.AwsCloudAccount = AwsCloudAccount;
@@ -100,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<AwsCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AwsCloudAccountRegion!]! (enum)
+        if (this.ExocomputeMappableRegions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeMappableRegions\n" ;
+            } else {
+                s += ind + "exocomputeMappableRegions\n" ;
+            }
+        }
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations
         // GraphQL -> exocomputeConfigurations: [AwsExocomputeGetConfigurationResponse!]! (interface)
         if (this.ExocomputeConfigurations != null) {
@@ -111,6 +138,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "exocomputeConfigurations" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.Boolean? HasCloudDiscovery
+        // GraphQL -> hasCloudDiscovery: Boolean! (scalar)
+        if (this.HasCloudDiscovery != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasCloudDiscovery\n" ;
+            } else {
+                s += ind + "hasCloudDiscovery\n" ;
             }
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
@@ -180,6 +216,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<AwsCloudAccountRegion>? ExocomputeMappableRegions
+        // GraphQL -> exocomputeMappableRegions: [AwsCloudAccountRegion!]! (enum)
+        if (ec.Includes("exocomputeMappableRegions",true))
+        {
+            if(this.ExocomputeMappableRegions == null) {
+
+                this.ExocomputeMappableRegions = new List<AwsCloudAccountRegion>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeMappableRegions != null && ec.Excludes("exocomputeMappableRegions",true))
+        {
+            this.ExocomputeMappableRegions = null;
+        }
         //      C# -> List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigurations
         // GraphQL -> exocomputeConfigurations: [AwsExocomputeGetConfigurationResponse!]! (interface)
         if (ec.Includes("exocomputeConfigurations",false))
@@ -198,6 +251,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExocomputeConfigurations != null && ec.Excludes("exocomputeConfigurations",false))
         {
             this.ExocomputeConfigurations = null;
+        }
+        //      C# -> System.Boolean? HasCloudDiscovery
+        // GraphQL -> hasCloudDiscovery: Boolean! (scalar)
+        if (ec.Includes("hasCloudDiscovery",true))
+        {
+            if(this.HasCloudDiscovery == null) {
+
+                this.HasCloudDiscovery = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasCloudDiscovery != null && ec.Excludes("hasCloudDiscovery",true))
+        {
+            this.HasCloudDiscovery = null;
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)

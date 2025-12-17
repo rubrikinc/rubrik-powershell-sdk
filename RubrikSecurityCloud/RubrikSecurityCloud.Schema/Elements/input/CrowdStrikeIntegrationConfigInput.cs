@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clientSecret")]
         public System.String? ClientSecret { get; set; }
 
+        //      C# -> System.String? CrowdstrikeTenantUrl
+        // GraphQL -> crowdstrikeTenantUrl: String (scalar)
+        [JsonProperty("crowdstrikeTenantUrl")]
+        public System.String? CrowdstrikeTenantUrl { get; set; }
+
 
         #endregion
 

@@ -126,6 +126,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sVersion")]
         public System.String? K8sVersion { get; set; }
 
+        //      C# -> System.String? NadName
+        // GraphQL -> nadName: String (scalar)
+        [JsonProperty("nadName")]
+        public System.String? NadName { get; set; }
+
+        //      C# -> System.String? NadNamespace
+        // GraphQL -> nadNamespace: String (scalar)
+        [JsonProperty("nadNamespace")]
+        public System.String? NadNamespace { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -256,6 +266,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        //      C# -> List<KubernetesStorageClass>? StorageClasses
+        // GraphQL -> storageClasses: [KubernetesStorageClass!]! (type)
+        [JsonProperty("storageClasses")]
+        public List<KubernetesStorageClass>? StorageClasses { get; set; }
+
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
 
@@ -345,6 +360,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsPullSecretConfigured = null,
         System.String? K8sName = null,
         System.String? K8sVersion = null,
+        System.String? NadName = null,
+        System.String? NadNamespace = null,
         System.String? Name = null,
         System.Int32? NamespaceCount = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -370,7 +387,8 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
         SecurityMetadata? SecurityMetadata = null,
-        SnapshotDistribution? SnapshotDistribution = null
+        SnapshotDistribution? SnapshotDistribution = null,
+        List<KubernetesStorageClass>? StorageClasses = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -435,6 +453,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( K8sVersion != null ) {
             this.K8sVersion = K8sVersion;
+        }
+        if ( NadName != null ) {
+            this.NadName = NadName;
+        }
+        if ( NadNamespace != null ) {
+            this.NadNamespace = NadNamespace;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -513,6 +537,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( StorageClasses != null ) {
+            this.StorageClasses = StorageClasses;
         }
         return this;
     }
@@ -735,6 +762,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "k8sVersion\n" ;
             } else {
                 s += ind + "k8sVersion\n" ;
+            }
+        }
+        //      C# -> System.String? NadName
+        // GraphQL -> nadName: String (scalar)
+        if (this.NadName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nadName\n" ;
+            } else {
+                s += ind + "nadName\n" ;
+            }
+        }
+        //      C# -> System.String? NadNamespace
+        // GraphQL -> nadNamespace: String (scalar)
+        if (this.NadNamespace != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nadNamespace\n" ;
+            } else {
+                s += ind + "nadNamespace\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1016,6 +1061,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<KubernetesStorageClass>? StorageClasses
+        // GraphQL -> storageClasses: [KubernetesStorageClass!]! (type)
+        if (this.StorageClasses != null) {
+            var fspec = this.StorageClasses.AsFieldSpec(conf.Child("storageClasses"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageClasses" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1412,6 +1469,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.K8sVersion != null && ec.Excludes("k8sVersion",true))
         {
             this.K8sVersion = null;
+        }
+        //      C# -> System.String? NadName
+        // GraphQL -> nadName: String (scalar)
+        if (ec.Includes("nadName",true))
+        {
+            if(this.NadName == null) {
+
+                this.NadName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NadName != null && ec.Excludes("nadName",true))
+        {
+            this.NadName = null;
+        }
+        //      C# -> System.String? NadNamespace
+        // GraphQL -> nadNamespace: String (scalar)
+        if (ec.Includes("nadNamespace",true))
+        {
+            if(this.NadNamespace == null) {
+
+                this.NadNamespace = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NadNamespace != null && ec.Excludes("nadNamespace",true))
+        {
+            this.NadNamespace = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -1886,6 +1977,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> List<KubernetesStorageClass>? StorageClasses
+        // GraphQL -> storageClasses: [KubernetesStorageClass!]! (type)
+        if (ec.Includes("storageClasses",false))
+        {
+            if(this.StorageClasses == null) {
+
+                this.StorageClasses = new List<KubernetesStorageClass>();
+                this.StorageClasses.ApplyExploratoryFieldSpec(ec.NewChild("storageClasses"));
+
+            } else {
+
+                this.StorageClasses.ApplyExploratoryFieldSpec(ec.NewChild("storageClasses"));
+
+            }
+        }
+        else if (this.StorageClasses != null && ec.Excludes("storageClasses",false))
+        {
+            this.StorageClasses = null;
         }
     }
 

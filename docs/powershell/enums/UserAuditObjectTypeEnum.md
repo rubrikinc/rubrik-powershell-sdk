@@ -91,6 +91,7 @@ User audit object type.
 - SupportTunnel - Support tunnel type.
 - MONGO_SOURCE - MongoDB Source type.
 - MSSQL_OBJECT - MSSQL object type.
+- AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router.
 - AwsNativeEbsVolume - AWS native EBS volume type.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller type.
 - UserActionAudit - User action audit type.

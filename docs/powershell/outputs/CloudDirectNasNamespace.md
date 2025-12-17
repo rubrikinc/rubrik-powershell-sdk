@@ -37,6 +37,8 @@ NAS Cloud Direct namespace object.
   - Total number of objects in this NAS namespace.
 - cluster: Cluster
   - NAS Cloud Direct cluster where this object originated.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - name: System.String

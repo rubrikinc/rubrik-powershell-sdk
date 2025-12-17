@@ -13,3 +13,5 @@ AWS cloud accounts with features.
   - Exclude AWS accounts that have any of these features enabled.
 - operation: Operation
   - Filter by the operation defined in the RBAC system.
+- includeInternalFeatures: System.Boolean
+  - Include internal features in the response.

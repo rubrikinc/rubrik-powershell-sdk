@@ -1,5 +1,11 @@
 # New-RscMutationGcp
 ## Subcommands
+### addcloudaccountmanualauthproject
+Adds a new project based on manual auth setup.The auth key is provided
+either in this API or set separately via setting global credentials.
+
+- There is a single argument of type AddGcpCloudAccountManualAuthProjectInput.
+- Returns AddGcpCloudAccountManualAuthProjectReply.
 ### bulksetcloudaccountproperties
 Sets the properties of GCP cloud accounts.
 

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> MongoNodeType? NodeType
+        // GraphQL -> nodeType: MongoNodeType! (enum)
+        [JsonProperty("nodeType")]
+        public MongoNodeType? NodeType { get; set; }
+
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
         [JsonProperty("host")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CdmMongoNode Set(
+        MongoNodeType? NodeType = null,
         System.String? Host = null,
         System.String? HostFid = null,
         System.Int32? Port = null
     ) 
     {
+        if ( NodeType != null ) {
+            this.NodeType = NodeType;
+        }
         if ( Host != null ) {
             this.Host = Host;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> MongoNodeType? NodeType
+        // GraphQL -> nodeType: MongoNodeType! (enum)
+        if (this.NodeType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeType\n" ;
+            } else {
+                s += ind + "nodeType\n" ;
+            }
+        }
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
         if (this.Host != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> MongoNodeType? NodeType
+        // GraphQL -> nodeType: MongoNodeType! (enum)
+        if (ec.Includes("nodeType",true))
+        {
+            if(this.NodeType == null) {
+
+                this.NodeType = new MongoNodeType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeType != null && ec.Excludes("nodeType",true))
+        {
+            this.NodeType = null;
+        }
         //      C# -> System.String? Host
         // GraphQL -> host: String! (scalar)
         if (ec.Includes("host",true))

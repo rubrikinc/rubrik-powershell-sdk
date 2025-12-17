@@ -5,3 +5,5 @@ Holds the configuration of the CrowdStrike integration.
   - The CrowdStrike client ID.
 - clientSecret: System.String
   - The CrowdStrike client secret.
+- crowdstrikeTenantUrl: System.String
+  - The CrowdStrike tenant url.

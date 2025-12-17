@@ -55,5 +55,7 @@ Cloud Direct NAS export object.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

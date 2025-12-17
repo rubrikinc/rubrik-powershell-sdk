@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        [JsonProperty("pendingSla")]
+        public SlaDomain? PendingSla { get; set; }
+
         //      C# -> System.String? CloudDirectId
         // GraphQL -> cloudDirectId: UUID! (scalar)
         [JsonProperty("cloudDirectId")]
@@ -261,6 +266,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        SlaDomain? PendingSla = null,
         System.String? CloudDirectId = null,
         System.String? ClusterUuid = null,
         System.String? Id = null,
@@ -309,6 +315,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( PendingSla != null ) {
+            this.PendingSla = PendingSla;
         }
         if ( CloudDirectId != null ) {
             this.CloudDirectId = CloudDirectId;
@@ -474,6 +483,19 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
+                }
+            }
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (this.PendingSla != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PendingSla, conf.Child("pendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
                 }
             }
         }
@@ -906,6 +928,30 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (ec.Includes("pendingSla",false))
+        {
+            if(this.PendingSla == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PendingSla != null && ec.Excludes("pendingSla",false))
+        {
+            this.PendingSla = null;
         }
         //      C# -> System.String? CloudDirectId
         // GraphQL -> cloudDirectId: UUID! (scalar)

@@ -16,3 +16,27 @@ Principal type for risk summary.
 - CONTAINER - Principal of the container type.
 - OU - Principal of the OU type.
 - ACCESS_POLICY - Principal of the access policy type.
+- VOLUME - Principal of the volume type.
+- PRINT_QUEUE - Principal of the print queue type.
+- FOREIGN_SECURITY_PRINCIPAL - Principal of the foreign security principal type.
+- CLASS_SCHEMA - Principal of the class schema type.
+- ATTRIBUTE_SCHEMA - Principal of the attribute schema type.
+- SITE - Principal of the site type.
+- SITE_LINK - Principal of the site link type.
+- SUBNET - Principal of the subnet type.
+- SITE_LINK_BRIDGE - Principal of the site link bridge type.
+- INTER_SITE_TRANSPORT - Principal of the inter-site transport type.
+- NTDS_SITE_SETTINGS - Principal of the NTDS site settings type.
+- SERVER - Principal of the server type.
+- INTER_SITE_TRANSPORT_CONTAINER - Principal of the inter-site transport container type.
+- SUBNET_CONTAINER - Principal of the subnet container type.
+- SERVERS_CONTAINER - Principal of the servers container type.
+- LICENSING_SITE_SETTINGS - Principal of the licensing site settings type.
+- DOMAIN_DNS - Principal of the domain DNS type.
+- MSDS_QUOTA_CONTAINER - Principal of the MSDS quota container type.
+- MSDS_QUOTA_CONTROL - Principal of the MSDS quota control type.
+- RID_MANAGER - Principal of the RID manager type.
+- INFRASTRUCTURE_UPDATE - Principal of the infrastructure update type.
+- TRUSTED_DOMAIN - Principal of the trusted domain type.
+- PASSWORD_SETTINGS_CONTAINER - Principal of the password settings container type.
+- PASSWORD_SETTINGS - Principal of the password settings type.

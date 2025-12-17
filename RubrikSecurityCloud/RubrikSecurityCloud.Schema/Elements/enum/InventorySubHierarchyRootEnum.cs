@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCPNATIVE_ROOT")]
         GCPNATIVE_ROOT,
 
+        [EnumMember(Value = "GITHUB_ROOT")]
+        GITHUB_ROOT,
+
         [EnumMember(Value = "GOOGLE_WORKSPACE_ROOT")]
         GOOGLE_WORKSPACE_ROOT,
 
@@ -131,6 +134,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POSTGRES_ROOT")]
         POSTGRES_ROOT,
+
+        [EnumMember(Value = "PROXMOX_ROOT")]
+        PROXMOX_ROOT,
 
         [EnumMember(Value = "SALESFORCE_ROOT")]
         SALESFORCE_ROOT,

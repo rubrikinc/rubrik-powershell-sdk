@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updateChildVaultsOpt")]
         public System.Boolean? UpdateChildVaultsOpt { get; set; }
 
+        //      C# -> RcsTierEnumType? RcvTierOpt
+        // GraphQL -> rcvTierOpt: RcsTierEnumType (enum)
+        [JsonProperty("rcvTierOpt")]
+        public RcsTierEnumType? RcvTierOpt { get; set; }
+
 
         #endregion
 

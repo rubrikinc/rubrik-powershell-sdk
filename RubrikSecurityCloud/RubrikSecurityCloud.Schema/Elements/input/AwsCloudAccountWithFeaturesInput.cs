@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("features")]
         public List<CloudAccountFeature>? Features { get; set; }
 
+        //      C# -> System.Boolean? IncludeInternalFeatures
+        // GraphQL -> includeInternalFeatures: Boolean (scalar)
+        [JsonProperty("includeInternalFeatures")]
+        public System.Boolean? IncludeInternalFeatures { get; set; }
+
 
         #endregion
 

@@ -451,6 +451,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			capacity = $someString
     /// 			# OPTIONAL
     /// 			isEntitled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			version = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1862,6 +1864,8 @@ $query.Var.input = @{
 			capacity = $someString
 			# OPTIONAL
 			isEntitled = $someBoolean
+			# OPTIONAL
+			version = $someString
 		}
 	)
 	# OPTIONAL

@@ -67,3 +67,4 @@ Enum representing all the possible event types.
 - IDENTITY_VIOLATION - Identity violation event type. Captures life cycle of identity violations raised by PolicyEngine component.
 - QUARANTINE - Quarantine event type.
 - PERMISSION_ASSESSMENT - Permission assessment event type.
+- IDENTITY_ACTIVITY - Identity activity event type.

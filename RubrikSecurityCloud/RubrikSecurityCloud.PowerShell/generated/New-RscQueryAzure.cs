@@ -1218,7 +1218,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	unavailabilityReasons = @(
     /// 		$someMigrationUnavailabilityReason # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MigrationUnavailabilityReason]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	searchByLocationName = $someString
     /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someRcvBliMigrationDetailsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvBliMigrationDetailsSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -4297,6 +4303,8 @@ $query.Var.nsgRequest = @{
         //     last: Int
         //     before: String
         //     BliMigrationDetailsFilter: RcvBliMigrationFilter
+        //     sortBy: RcvBliMigrationDetailsSortByField
+        //     sortOrder: SortOrder
         //   ): RcvBliMigrationDetailsConnection!
         internal void InitQueryRcvAzureBliMigrationDetails()
         {
@@ -4306,12 +4314,14 @@ $query.Var.nsgRequest = @{
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
                 Tuple.Create("BliMigrationDetailsFilter", "RcvBliMigrationFilter"),
+                Tuple.Create("sortBy", "RcvBliMigrationDetailsSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryRcvAzureBliMigrationDetails",
-                "($first: Int,$after: String,$last: Int,$before: String,$BliMigrationDetailsFilter: RcvBliMigrationFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$BliMigrationDetailsFilter: RcvBliMigrationFilter,$sortBy: RcvBliMigrationDetailsSortByField,$sortOrder: SortOrder)",
                 "RcvBliMigrationDetailsConnection",
                 Query.RcvAzureBliMigrationDetails,
                 Query.RcvAzureBliMigrationDetailsFieldSpec,
@@ -4359,7 +4369,13 @@ $query.Var.BliMigrationDetailsFilter = @{
 	unavailabilityReasons = @(
 		$someMigrationUnavailabilityReason # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MigrationUnavailabilityReason]) for enum values.
 	)
-}"
+	# OPTIONAL
+	searchByLocationName = $someString
+}
+# OPTIONAL
+$query.Var.sortBy = $someRcvBliMigrationDetailsSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvBliMigrationDetailsSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

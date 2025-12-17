@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int32? ScheduledReportsCount
+        // GraphQL -> scheduledReportsCount: Int! (scalar)
+        [JsonProperty("scheduledReportsCount")]
+        public System.Int32? ScheduledReportsCount { get; set; }
+
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
         [JsonProperty("updatedAt")]
@@ -87,6 +92,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CreatedBy = null,
         System.Int64? Id = null,
         System.String? Name = null,
+        System.Int32? ScheduledReportsCount = null,
         DateTime? UpdatedAt = null,
         System.String? UpdatedBy = null,
         List<FilterOutput>? ReportFilters = null
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ScheduledReportsCount != null ) {
+            this.ScheduledReportsCount = ScheduledReportsCount;
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.Int32? ScheduledReportsCount
+        // GraphQL -> scheduledReportsCount: Int! (scalar)
+        if (this.ScheduledReportsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "scheduledReportsCount\n" ;
+            } else {
+                s += ind + "scheduledReportsCount\n" ;
             }
         }
         //      C# -> DateTime? UpdatedAt
@@ -354,6 +372,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.Int32? ScheduledReportsCount
+        // GraphQL -> scheduledReportsCount: Int! (scalar)
+        if (ec.Includes("scheduledReportsCount",true))
+        {
+            if(this.ScheduledReportsCount == null) {
+
+                this.ScheduledReportsCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ScheduledReportsCount != null && ec.Excludes("scheduledReportsCount",true))
+        {
+            this.ScheduledReportsCount = null;
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)

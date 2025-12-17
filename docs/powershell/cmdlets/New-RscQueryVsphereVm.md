@@ -34,8 +34,12 @@ Retrieve the details of an asynchronous request that includes a VMware virtual m
 - There is a single argument of type BatchVmwareVmRecoverableRangesRequestInput.
 - Returns BatchVmwareVmRecoverableRanges.
 ### recoveryrangestatuses
-Gets the status of the recovery ranges for a virtual machine including not
-recoverable ranges within the specified time range.
+Gets the status of the recovery ranges for a virtual machine,
+including the unrecoverable ranges within the specified time range
+and a set of snapshot properties that fall within the range.
+Also retrieves one snapshot just before the specified time range
+and one snapshot just after the specified time range
+if they are available.
 
 - There is a single argument of type VsphereVmRecoveryRangeStatusReq.
 - Returns VsphereVmRecoveryRangeStatusResp.

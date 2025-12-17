@@ -60,11 +60,6 @@ List of AWS cloud accounts and the features for each account, classified by ID.
     - cloudAccountId - System.String: The Rubrik ID of the cloud account.
     - awsCloudAccountArg - AwsCloudAccountWithFeaturesInput: Arguments for get cloud account.
 - Returns AwsCloudAccountWithFeatures.
-### computesettings
-Retrieve aws compute settings.
-
-- There is a single argument of type System.String.
-- Returns AwsComputeSettings.
 ### dbparametergroupsbyregion
 List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 

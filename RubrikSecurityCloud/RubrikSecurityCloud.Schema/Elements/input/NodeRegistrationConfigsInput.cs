@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEntitled")]
         public System.Boolean? IsEntitled { get; set; }
 
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
+
 
         #endregion
 
