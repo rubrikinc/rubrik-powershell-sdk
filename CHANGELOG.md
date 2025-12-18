@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.14.20251208
+
+Schema Update:
+
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
+
 ## Version 1.14.20251109
 
 Schema Update:
