@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("placementGroupName")]
         public System.String? PlacementGroupName { get; set; }
 
+        //      C# -> List<SubnetAzConfigInput>? SubnetAzConfigs
+        // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
+        [JsonProperty("subnetAzConfigs")]
+        public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
+
         //      C# -> VmType? VmType
         // GraphQL -> vmType: VmType (enum)
         [JsonProperty("vmType")]

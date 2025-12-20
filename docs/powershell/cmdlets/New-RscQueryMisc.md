@@ -1216,12 +1216,39 @@ Synced cluster information for RSC permissions.
     - roleId - System.String: ID of the role.
     - protectableClusters - list of System.Strings: List of protectable clusters.
 - Returns RscPermsToCdmInfoOut.
+### saasapporganizations
+List of SaaS app organization.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: The hierarchy object filter.
+    - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
+    - recoveryTargetFilter - RecoveryTargetFilter: Filter for organizations that are valid recovery targets for a source organization.
+- Returns SaasAppsOrganizationConnection.
 ### saasworkloadmetadatatypes
 SaasWorkloadMetadataTypes returns the list of metadata types for a
 specified SaaS app type.
 
 - There is a single argument of type SaasWorkloadMetadataTypesReq.
 - Returns SaasWorkloadMetadataTypesReply.
+### salesforceobjects
+The objects in the Salesforce organization.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - orgId - System.String: Rubrik ID of the Salesforce organization.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - filter - list of Filters: The hierarchy object filter.
+    - sortOrder - SortOrder: Sorts the order of results.
+- Returns SalesforceObjectConnection.
 ### scriptsformanualpermissionvalidation
 GetScriptsForManualPermissionValidation returns the bash and powershell
 scripts for non-OAuth permissions validation.

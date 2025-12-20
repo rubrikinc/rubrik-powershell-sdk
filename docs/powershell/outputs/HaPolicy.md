@@ -23,3 +23,5 @@ High-availability policy information.
   - Number of archival locations in this high-availability policy.
 - hostCount: System.Int32
   - Number of hosts in this high-availability policy.
+- objectCount: System.Int32
+  - Number of objects (protected workloads) in this high-availability policy.

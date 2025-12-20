@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("parentFolderId")]
         public System.String? ParentFolderId { get; set; }
 
+        //      C# -> System.String? Path
+        // GraphQL -> path: String (scalar)
+        [JsonProperty("path")]
+        public System.String? Path { get; set; }
+
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
         [JsonProperty("size")]
@@ -117,6 +122,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ModifiedTime = null,
         System.String? Name = null,
         System.String? ParentFolderId = null,
+        System.String? Path = null,
         System.Int64? Size = null,
         System.String? SnapshotId = null,
         System.Int32? SnapshotNum = null,
@@ -155,6 +161,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ParentFolderId != null ) {
             this.ParentFolderId = ParentFolderId;
+        }
+        if ( Path != null ) {
+            this.Path = Path;
         }
         if ( Size != null ) {
             this.Size = Size;
@@ -279,6 +288,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "parentFolderId\n" ;
             } else {
                 s += ind + "parentFolderId\n" ;
+            }
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String (scalar)
+        if (this.Path != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "path\n" ;
+            } else {
+                s += ind + "path\n" ;
             }
         }
         //      C# -> System.Int64? Size
@@ -510,6 +528,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ParentFolderId != null && ec.Excludes("parentFolderId",true))
         {
             this.ParentFolderId = null;
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String (scalar)
+        if (ec.Includes("path",true))
+        {
+            if(this.Path == null) {
+
+                this.Path = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Path != null && ec.Excludes("path",true))
+        {
+            this.Path = null;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)

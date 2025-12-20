@@ -60,6 +60,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("anomalousSnapshotId")]
         public System.String? AnomalousSnapshotId { get; set; }
 
+        //      C# -> System.String? AnomalyAnalysisLocationId
+        // GraphQL -> anomalyAnalysisLocationId: String! (scalar)
+        [JsonProperty("anomalyAnalysisLocationId")]
+        public System.String? AnomalyAnalysisLocationId { get; set; }
+
+        //      C# -> System.String? AnomalyAnalysisLocationName
+        // GraphQL -> anomalyAnalysisLocationName: String! (scalar)
+        [JsonProperty("anomalyAnalysisLocationName")]
+        public System.String? AnomalyAnalysisLocationName { get; set; }
+
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)
         [JsonProperty("anomalyId")]
@@ -163,6 +173,8 @@ namespace RubrikSecurityCloud.Types
         DateTime? AnomalousSnapshotDate = null,
         System.String? AnomalousSnapshotFid = null,
         System.String? AnomalousSnapshotId = null,
+        System.String? AnomalyAnalysisLocationId = null,
+        System.String? AnomalyAnalysisLocationName = null,
         System.String? AnomalyId = null,
         System.Int64? CreatedFileCount = null,
         System.Int64? DeletedFileCount = null,
@@ -205,6 +217,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnomalousSnapshotId != null ) {
             this.AnomalousSnapshotId = AnomalousSnapshotId;
+        }
+        if ( AnomalyAnalysisLocationId != null ) {
+            this.AnomalyAnalysisLocationId = AnomalyAnalysisLocationId;
+        }
+        if ( AnomalyAnalysisLocationName != null ) {
+            this.AnomalyAnalysisLocationName = AnomalyAnalysisLocationName;
         }
         if ( AnomalyId != null ) {
             this.AnomalyId = AnomalyId;
@@ -341,6 +359,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "anomalousSnapshotId\n" ;
             } else {
                 s += ind + "anomalousSnapshotId\n" ;
+            }
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationId
+        // GraphQL -> anomalyAnalysisLocationId: String! (scalar)
+        if (this.AnomalyAnalysisLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyAnalysisLocationId\n" ;
+            } else {
+                s += ind + "anomalyAnalysisLocationId\n" ;
+            }
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationName
+        // GraphQL -> anomalyAnalysisLocationName: String! (scalar)
+        if (this.AnomalyAnalysisLocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyAnalysisLocationName\n" ;
+            } else {
+                s += ind + "anomalyAnalysisLocationName\n" ;
             }
         }
         //      C# -> System.String? AnomalyId
@@ -653,6 +689,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnomalousSnapshotId != null && ec.Excludes("anomalousSnapshotId",true))
         {
             this.AnomalousSnapshotId = null;
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationId
+        // GraphQL -> anomalyAnalysisLocationId: String! (scalar)
+        if (ec.Includes("anomalyAnalysisLocationId",true))
+        {
+            if(this.AnomalyAnalysisLocationId == null) {
+
+                this.AnomalyAnalysisLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyAnalysisLocationId != null && ec.Excludes("anomalyAnalysisLocationId",true))
+        {
+            this.AnomalyAnalysisLocationId = null;
+        }
+        //      C# -> System.String? AnomalyAnalysisLocationName
+        // GraphQL -> anomalyAnalysisLocationName: String! (scalar)
+        if (ec.Includes("anomalyAnalysisLocationName",true))
+        {
+            if(this.AnomalyAnalysisLocationName == null) {
+
+                this.AnomalyAnalysisLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyAnalysisLocationName != null && ec.Excludes("anomalyAnalysisLocationName",true))
+        {
+            this.AnomalyAnalysisLocationName = null;
         }
         //      C# -> System.String? AnomalyId
         // GraphQL -> anomalyId: String! (scalar)

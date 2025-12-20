@@ -501,6 +501,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	usePlacementGroups = $someBoolean
     /// 	# OPTIONAL
+    /// 	isAzResilient = $someBoolean
+    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -604,6 +606,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
     /// 		placementGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		subnetAzConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
@@ -3117,6 +3128,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	usePlacementGroups = $someBoolean
 	# OPTIONAL
+	isAzResilient = $someBoolean
+	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -3220,6 +3233,15 @@ $query.Var.input = @{
 		cdmProduct = $someString
 		# OPTIONAL
 		placementGroupName = $someString
+		# OPTIONAL
+		subnetAzConfigs = @(
+			@{
+				# OPTIONAL
+				subnet = $someString
+				# OPTIONAL
+				availabilityZone = $someString
+			}
+		)
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL

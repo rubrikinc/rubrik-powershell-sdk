@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("forceChangePasswordWithMfa")]
         public System.Boolean? ForceChangePasswordWithMfa { get; set; }
 
+        //      C# -> EntraIdCrossTenantRecoveryConfig? CtrConfig
+        // GraphQL -> ctrConfig: EntraIdCrossTenantRecoveryConfig (input)
+        [JsonProperty("ctrConfig")]
+        public EntraIdCrossTenantRecoveryConfig? CtrConfig { get; set; }
+
         //      C# -> AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode
         // GraphQL -> relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType! (enum)
         [Required]

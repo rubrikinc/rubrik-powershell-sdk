@@ -1041,6 +1041,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# OPTIONAL
     /// 		locationId = $someString
+    /// 		# OPTIONAL
+    /// 		smbTrustedDomainsToUsers = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				validUsers = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				domainName = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -3020,6 +3031,17 @@ $query.Var.input = @{
 		}
 		# OPTIONAL
 		locationId = $someString
+		# OPTIONAL
+		smbTrustedDomainsToUsers = @(
+			@{
+				# REQUIRED
+				validUsers = @(
+					$someString
+				)
+				# REQUIRED
+				domainName = $someString
+			}
+		)
 	}
 }"
             );

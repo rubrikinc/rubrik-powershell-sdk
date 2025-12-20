@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 34
+    /// Create a new RscQuery object for any of the 35
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 34 operations
+    /// There are 35 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -134,6 +134,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the BatchSupportedRdsDatabaseInstanceClasses operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: BatchSupportedRdsDatabaseInstanceClasses
+    /// 
+    /// $query = New-RscQueryAws -Operation BatchSupportedRdsDatabaseInstanceClasses
+    /// 
+    /// # REQUIRED
+    /// $query.Var.awsAccountRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.requests = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+    /// 		# OPTIONAL
+    /// 		dbEngineVersion = $someString
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;RdsInstanceClassBatchResult&gt;
     /// 
     /// 
     /// 
@@ -1136,6 +1175,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	usePlacementGroups = $someBoolean
     /// 	# OPTIONAL
+    /// 	isAzResilient = $someBoolean
+    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -1239,6 +1280,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
     /// 		placementGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		subnetAzConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
@@ -1410,6 +1460,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "ArtifactsToDelete",
                 "AvailabilityZonesByRegion",
+                "BatchSupportedRdsDatabaseInstanceClasses",
                 "CdmVersions",
                 "CloudAccountConfigs",
                 "CloudAccountListSecurityGroups",
@@ -1462,6 +1513,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AvailabilityZonesByRegion":
                         this.ProcessRecord_AvailabilityZonesByRegion();
+                        break;
+                    case "BatchSupportedRdsDatabaseInstanceClasses":
+                        this.ProcessRecord_BatchSupportedRdsDatabaseInstanceClasses();
                         break;
                     case "CdmVersions":
                         this.ProcessRecord_CdmVersions();
@@ -1585,6 +1639,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AvailabilityZonesByRegion";
             // Create new graphql operation allAvailabilityZonesByRegionFromAws
             InitQueryAllAvailabilityZonesByRegionFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // batchSupportedAwsRdsDatabaseInstanceClasses.
+        internal void ProcessRecord_BatchSupportedRdsDatabaseInstanceClasses()
+        {
+            this._logger.name += " -BatchSupportedRdsDatabaseInstanceClasses";
+            // Create new graphql operation batchSupportedAwsRdsDatabaseInstanceClasses
+            InitQueryBatchSupportedAwsRdsDatabaseInstanceClasses();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1923,6 +1986,39 @@ $query.Var.input = @{
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
 $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // batchSupportedAwsRdsDatabaseInstanceClasses(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, requests: [RdsInstanceClassRequest!]!): [RdsInstanceClassBatchResult!]!
+        internal void InitQueryBatchSupportedAwsRdsDatabaseInstanceClasses()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("requests", "[RdsInstanceClassRequest!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryBatchSupportedAwsRdsDatabaseInstanceClasses",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$requests: [RdsInstanceClassRequest!]!)",
+                "List<RdsInstanceClassBatchResult>",
+                Query.BatchSupportedAwsRdsDatabaseInstanceClasses,
+                Query.BatchSupportedAwsRdsDatabaseInstanceClassesFieldSpec,
+                @"# REQUIRED
+$query.Var.awsAccountRubrikId = $someString
+# REQUIRED
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# REQUIRED
+$query.Var.requests = @(
+	@{
+		# REQUIRED
+		dbEngine = $someAwsNativeRdsDbEngine # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRdsDbEngine]) for enum values.
+		# OPTIONAL
+		dbEngineVersion = $someString
+}
+)"
             );
         }
 
@@ -2772,6 +2868,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	usePlacementGroups = $someBoolean
 	# OPTIONAL
+	isAzResilient = $someBoolean
+	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -2875,6 +2973,15 @@ $query.Var.input = @{
 		cdmProduct = $someString
 		# OPTIONAL
 		placementGroupName = $someString
+		# OPTIONAL
+		subnetAzConfigs = @(
+			@{
+				# OPTIONAL
+				subnet = $someString
+				# OPTIONAL
+				availabilityZone = $someString
+			}
+		)
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL

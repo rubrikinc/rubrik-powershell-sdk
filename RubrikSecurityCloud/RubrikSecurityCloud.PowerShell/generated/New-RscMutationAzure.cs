@@ -847,6 +847,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	keepClusterOnFailure = $someBoolean
     /// 	# OPTIONAL
+    /// 	isAzResilient = $someBoolean
+    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -960,6 +962,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
     /// 		availabilityZone = $someString
+    /// 		# OPTIONAL
+    /// 		subnetAzConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
@@ -1657,6 +1668,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	forceChangePasswordWithMfa = $someBoolean
+    /// 	# OPTIONAL
+    /// 	ctrConfig = @{
+    /// 		# REQUIRED
+    /// 		targetWorkloadFid = $someString
+    /// 		# OPTIONAL
+    /// 		defaultTargetDomainName = $someString
+    /// 		# OPTIONAL
+    /// 		domainMapping = @{
+    /// 			# REQUIRED
+    /// 			domainMappingList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					sourceDomainName = $someString
+    /// 					# OPTIONAL
+    /// 					targetDomainName = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 	}
     /// 	# REQUIRED
     /// 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
     /// 	# OPTIONAL
@@ -4103,6 +4133,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	keepClusterOnFailure = $someBoolean
 	# OPTIONAL
+	isAzResilient = $someBoolean
+	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -4216,6 +4248,15 @@ $query.Var.input = @{
 		cdmProduct = $someString
 		# OPTIONAL
 		availabilityZone = $someString
+		# OPTIONAL
+		subnetAzConfigs = @(
+			@{
+				# OPTIONAL
+				subnet = $someString
+				# OPTIONAL
+				availabilityZone = $someString
+			}
+		)
 		# OPTIONAL
 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL
@@ -4798,6 +4839,25 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	forceChangePasswordWithMfa = $someBoolean
+	# OPTIONAL
+	ctrConfig = @{
+		# REQUIRED
+		targetWorkloadFid = $someString
+		# OPTIONAL
+		defaultTargetDomainName = $someString
+		# OPTIONAL
+		domainMapping = @{
+			# REQUIRED
+			domainMappingList = @(
+				@{
+					# OPTIONAL
+					sourceDomainName = $someString
+					# OPTIONAL
+					targetDomainName = $someString
+				}
+			)
+		}
+	}
 	# REQUIRED
 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
 	# OPTIONAL

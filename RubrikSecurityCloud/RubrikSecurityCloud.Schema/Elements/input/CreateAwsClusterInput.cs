@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("usePlacementGroups")]
         public System.Boolean? UsePlacementGroups { get; set; }
 
+        //      C# -> System.Boolean? IsAzResilient
+        // GraphQL -> isAzResilient: Boolean (scalar)
+        [JsonProperty("isAzResilient")]
+        public System.Boolean? IsAzResilient { get; set; }
+
         //      C# -> ClusterConfigInput? ClusterConfig
         // GraphQL -> clusterConfig: ClusterConfigInput (input)
         [JsonProperty("clusterConfig")]

@@ -12,6 +12,14 @@ List of Availability Zones (AZs) in the specified region on the specified AWS Na
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of System.Strings.
+### batchsupportedrdsdatabaseinstanceclasses
+Batch query to list all the database instance classes supported by AWS RDS database for multiple DB engine and engine version combinations.
+
+- There are 3 arguments.
+    - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
+    - region - AwsNativeRegion: Region in AWS.
+    - requests - list of RdsInstanceClassRequests: List of DB engine and version combinations to query for supported instance classes.
+- Returns list of RdsInstanceClassBatchResults.
 ### cdmversions
 Get all Rubrik CDM versions in the AWS marketplace.
 

@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REVENUE")]
         REVENUE,
 
+        [EnumMember(Value = "SANDBOX")]
+        SANDBOX,
+
         [EnumMember(Value = "TYPE_UNSPECIFIED")]
         TYPE_UNSPECIFIED
 

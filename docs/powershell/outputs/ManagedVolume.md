@@ -23,6 +23,8 @@ Managed Volume information.
   - Specifies host details for the SLA Managed Volume.
 - nfsSettings: ManagedVolumeNfsSettings
   - NFS settings and configurations for the Managed Volume.
+- lastResetReason: System.String
+  - The reason for the last reset of the Managed Volume.
 - descendantConnection: ManagedVolumeDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: ManagedVolumePhysicalChildTypeConnection

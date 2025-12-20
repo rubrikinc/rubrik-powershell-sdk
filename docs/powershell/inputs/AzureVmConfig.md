@@ -29,6 +29,8 @@ Azure Virtual Machine configuration parameters.
   - Name of CDM product.
 - availabilityZone: System.String
   - Availability zone for CDM node placement.
+- subnetAzConfigs: list of SubnetAzConfigInputs
+  - List of subnet and availability zone pairs for Multi-AZ deployments. Used when is_az_resilient is true.
 - vmType: VmType
   - Standard or dense node.
 - instanceType: AzureInstanceType

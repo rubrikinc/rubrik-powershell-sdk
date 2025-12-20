@@ -21,3 +21,5 @@ Input to list global certificates.
   - Specifies the certificate rotation statuses to retrieve.
 - cdmUsages: list of CdmCertificateUsages
   - Specifies the CDM certificate usages to return.
+- isRubrikManaged: System.Boolean
+  - Specifies whether to include only Rubrik-managed certificates.

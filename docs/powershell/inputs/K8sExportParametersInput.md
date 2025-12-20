@@ -10,6 +10,8 @@ v9.4+: The name of the new Kubernetes namespace that will be created. The resour
 - filter: System.String
   - Supported in v9.0+
 The filter for selecting resources from the snapshot to export.
+- storageMapping: StorageMappingInput
+  - The storage mapping to be used for the export operation.
 - pvcNames: list of System.Strings
   - Supported in v9.1+
 - virtualMachineRunStrategy: System.String

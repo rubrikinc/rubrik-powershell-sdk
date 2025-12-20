@@ -183,7 +183,7 @@ Returns snapshot results for a workload.
 ### snappablelist
 Returns a list of snapshots for a workload.
 
-- There are 12 arguments.
+- There are 13 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -196,11 +196,12 @@ Returns a list of snapshots for a workload.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
     - showSnapshotRetentionInfo - System.Boolean: Specifies whether to show retention information of snapshots of RSC native workloads.
     - includeOnlySourceSnapshots - System.Boolean: Specifies whether to include source snapshots or not. If its true, response will contain only source snapshots.
+    - shouldExcludeCdmSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention for snapshots of CDM workloads.
 - Returns GenericSnapshotConnection.
 ### snappableslist
 Returns list of snapshots for a list of workloads.
 
-- There are 11 arguments.
+- There are 12 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -212,6 +213,7 @@ Returns list of snapshots for a list of workloads.
     - timeRange - TimeRangeInput: Time range input.
     - ignoreActiveWorkloadCheck - System.Boolean: Specifies whether to ignore the active workload check.
     - includeOnlySourceSnapshots - System.Boolean: Specifies whether to include source snapshots or not. If its true, response will contain only source snapshots.
+    - shouldExcludeCdmSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention for snapshots of CDM workloads.
 - Returns GenericSnapshotConnection.
 ### snappableswithlegalholdssummary
 List of workloads with legal hold snapshots.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 26
+    /// Create a new RscQuery object for any of the 29
     /// operations in the 'VMware vSphere VM' API domain:
-    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, Update, or UpdateUnmountTime.
+    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 26 operations
+    /// There are 29 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RegisterAgent, RegisterAgentWithOrg, Update, or UpdateUnmountTime.
+    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1718,6 +1718,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RefreshAgent operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: RefreshAgent
+    /// 
+    /// $query = New-RscMutationVsphereVm -Operation RefreshAgent
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RegisterAgent operation
     /// of the 'VMware vSphere VM' API domain.
     /// <code>
@@ -1778,6 +1809,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UnregisterAgent operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: UnregisterAgent
+    /// 
+    /// $query = New-RscMutationVsphereVm -Operation UnregisterAgent
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -1889,6 +1951,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateAgentCertificate operation
+    /// of the 'VMware vSphere VM' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    VsphereVm
+    /// # API Operation: UpdateAgentCertificate
+    /// 
+    /// $query = New-RscMutationVsphereVm -Operation UpdateAgentCertificate
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateUnmountTime operation
     /// of the 'VMware vSphere VM' API domain.
     /// <code>
@@ -1962,9 +2055,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "PowerOnOffLiveMount",
                 "RecoverFiles",
                 "RecoverFilesNew",
+                "RefreshAgent",
                 "RegisterAgent",
                 "RegisterAgentWithOrg",
+                "UnregisterAgent",
                 "Update",
+                "UpdateAgentCertificate",
                 "UpdateUnmountTime",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -2047,14 +2143,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RecoverFilesNew":
                         this.ProcessRecord_RecoverFilesNew();
                         break;
+                    case "RefreshAgent":
+                        this.ProcessRecord_RefreshAgent();
+                        break;
                     case "RegisterAgent":
                         this.ProcessRecord_RegisterAgent();
                         break;
                     case "RegisterAgentWithOrg":
                         this.ProcessRecord_RegisterAgentWithOrg();
                         break;
+                    case "UnregisterAgent":
+                        this.ProcessRecord_UnregisterAgent();
+                        break;
                     case "Update":
                         this.ProcessRecord_Update();
+                        break;
+                    case "UpdateAgentCertificate":
+                        this.ProcessRecord_UpdateAgentCertificate();
                         break;
                     case "UpdateUnmountTime":
                         this.ProcessRecord_UpdateUnmountTime();
@@ -2268,6 +2373,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vsphereVmRefreshAgent.
+        internal void ProcessRecord_RefreshAgent()
+        {
+            this._logger.name += " -RefreshAgent";
+            // Create new graphql operation vsphereVmRefreshAgent
+            InitMutationVsphereVmRefreshAgent();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // vsphereVmRegisterAgent.
         internal void ProcessRecord_RegisterAgent()
         {
@@ -2286,12 +2400,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // vsphereVmUnregisterAgent.
+        internal void ProcessRecord_UnregisterAgent()
+        {
+            this._logger.name += " -UnregisterAgent";
+            // Create new graphql operation vsphereVmUnregisterAgent
+            InitMutationVsphereVmUnregisterAgent();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateVsphereVm.
         internal void ProcessRecord_Update()
         {
             this._logger.name += " -Update";
             // Create new graphql operation updateVsphereVm
             InitMutationUpdateVsphereVm();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereVmUpdateAgentCertificate.
+        internal void ProcessRecord_UpdateAgentCertificate()
+        {
+            this._logger.name += " -UpdateAgentCertificate";
+            // Create new graphql operation vsphereVmUpdateAgentCertificate
+            InitMutationVsphereVmUpdateAgentCertificate();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3770,6 +3902,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // vsphereVmRefreshAgent(input: VsphereVmRefreshAgentInput!): Void
+        internal void InitMutationVsphereVmRefreshAgent()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VsphereVmRefreshAgentInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmRefreshAgent",
+                "($input: VsphereVmRefreshAgentInput!)",
+                "System.String",
+                Mutation.VsphereVmRefreshAgent,
+                Mutation.VsphereVmRefreshAgentFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // vsphereVmRegisterAgent(input: VsphereVmRegisterAgentInput!): RequestSuccess!
         internal void InitMutationVsphereVmRegisterAgent()
         {
@@ -3817,6 +3972,29 @@ $query.Var.input = @{
 	orgNetworkIdOpt = $someString
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereVmUnregisterAgent(input: VsphereVmUnregisterAgentInput!): Void
+        internal void InitMutationVsphereVmUnregisterAgent()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VsphereVmUnregisterAgentInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmUnregisterAgent",
+                "($input: VsphereVmUnregisterAgentInput!)",
+                "System.String",
+                Mutation.VsphereVmUnregisterAgent,
+                Mutation.VsphereVmUnregisterAgentFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -3910,6 +4088,29 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldUseAgent = $someBoolean
 	}
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // vsphereVmUpdateAgentCertificate(input: VsphereVmUpdateAgentCertificateInput!): Void
+        internal void InitMutationVsphereVmUpdateAgentCertificate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "VsphereVmUpdateAgentCertificateInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationVsphereVmUpdateAgentCertificate",
+                "($input: VsphereVmUpdateAgentCertificateInput!)",
+                "System.String",
+                Mutation.VsphereVmUpdateAgentCertificate,
+                Mutation.VsphereVmUpdateAgentCertificateFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
 	# REQUIRED
 	id = $someString
 }"

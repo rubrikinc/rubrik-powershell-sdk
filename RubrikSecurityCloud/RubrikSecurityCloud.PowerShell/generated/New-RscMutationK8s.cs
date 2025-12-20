@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 24
     /// operations in the 'Kubernetes' API domain:
-    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
+    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, ExportVirtualMachineSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
     /// </summary>
     /// <description>
     /// New-RscMutationK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 24 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
+    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, ExportVirtualMachineSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -619,6 +619,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		filter = $someString
     /// 		# OPTIONAL
+    /// 		storageMapping = @{
+    /// 			# OPTIONAL
+    /// 			storageClassMappings = @{
+    /// 				# REQUIRED
+    /// 				storageClassMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceStorageClass = $someString
+    /// 						# OPTIONAL
+    /// 						targetStorageClass = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pvcStorageClassMappings = @{
+    /// 				# REQUIRED
+    /// 				pvcStorageClassMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						pvcName = $someString
+    /// 						# OPTIONAL
+    /// 						targetStorageClass = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
     /// 		pvcNames = @(
     /// 			$someString
     /// 		)
@@ -632,6 +659,83 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		shouldKeepVirtualMachineMacAddresses = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportVirtualMachineSnapshot operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: ExportVirtualMachineSnapshot
+    /// 
+    /// $query = New-RscMutationK8s -Operation ExportVirtualMachineSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		targetNamespaceName = $someString
+    /// 		# OPTIONAL
+    /// 		filter = $someString
+    /// 		# OPTIONAL
+    /// 		runStrategy = $someString
+    /// 		# OPTIONAL
+    /// 		storageMapping = @{
+    /// 			# OPTIONAL
+    /// 			storageClassMappings = @{
+    /// 				# REQUIRED
+    /// 				storageClassMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceStorageClass = $someString
+    /// 						# OPTIONAL
+    /// 						targetStorageClass = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pvcStorageClassMappings = @{
+    /// 				# REQUIRED
+    /// 				pvcStorageClassMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						pvcName = $someString
+    /// 						# OPTIONAL
+    /// 						targetStorageClass = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		pvcNames = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		targetClusterId = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreErrors = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldKeepMacAddresses = $someBoolean
     /// 	}
     /// }
     /// 
@@ -892,6 +996,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		filter = $someString
     /// 		# OPTIONAL
+    /// 		storageMapping = @{
+    /// 			# OPTIONAL
+    /// 			storageClassMappings = @{
+    /// 				# REQUIRED
+    /// 				storageClassMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceStorageClass = $someString
+    /// 						# OPTIONAL
+    /// 						targetStorageClass = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pvcStorageClassMappings = @{
+    /// 				# REQUIRED
+    /// 				pvcStorageClassMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						pvcName = $someString
+    /// 						# OPTIONAL
+    /// 						targetStorageClass = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
     /// 		pvcNames = @(
     /// 			$someString
     /// 		)
@@ -1134,6 +1265,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DownloadSnapshotFromLocation",
                 "ExportNamespace",
                 "ExportProtectionSetSnapshot",
+                "ExportVirtualMachineSnapshot",
                 "GenerateManifest",
                 "RefreshCluster",
                 "RefreshV2Cluster",
@@ -1197,6 +1329,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExportProtectionSetSnapshot":
                         this.ProcessRecord_ExportProtectionSetSnapshot();
+                        break;
+                    case "ExportVirtualMachineSnapshot":
+                        this.ProcessRecord_ExportVirtualMachineSnapshot();
                         break;
                     case "GenerateManifest":
                         this.ProcessRecord_GenerateManifest();
@@ -1353,6 +1488,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExportProtectionSetSnapshot";
             // Create new graphql operation exportK8sProtectionSetSnapshot
             InitMutationExportK8sProtectionSetSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // exportK8sVirtualMachineSnapshot.
+        internal void ProcessRecord_ExportVirtualMachineSnapshot()
+        {
+            this._logger.name += " -ExportVirtualMachineSnapshot";
+            // Create new graphql operation exportK8sVirtualMachineSnapshot
+            InitMutationExportK8sVirtualMachineSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1895,6 +2039,33 @@ $query.Var.input = @{
 		# OPTIONAL
 		filter = $someString
 		# OPTIONAL
+		storageMapping = @{
+			# OPTIONAL
+			storageClassMappings = @{
+				# REQUIRED
+				storageClassMappingList = @(
+					@{
+						# OPTIONAL
+						sourceStorageClass = $someString
+						# OPTIONAL
+						targetStorageClass = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			pvcStorageClassMappings = @{
+				# REQUIRED
+				pvcStorageClassMappingList = @(
+					@{
+						# OPTIONAL
+						pvcName = $someString
+						# OPTIONAL
+						targetStorageClass = $someString
+					}
+				)
+			}
+		}
+		# OPTIONAL
 		pvcNames = @(
 			$someString
 		)
@@ -1908,6 +2079,75 @@ $query.Var.input = @{
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		shouldKeepVirtualMachineMacAddresses = $someBoolean
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportK8sVirtualMachineSnapshot(input: CreateK8sVMExportJobInput!): AsyncRequestStatus!
+        internal void InitMutationExportK8sVirtualMachineSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateK8sVMExportJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportK8sVirtualMachineSnapshot",
+                "($input: CreateK8sVMExportJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExportK8sVirtualMachineSnapshot,
+                Mutation.ExportK8sVirtualMachineSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		targetNamespaceName = $someString
+		# OPTIONAL
+		filter = $someString
+		# OPTIONAL
+		runStrategy = $someString
+		# OPTIONAL
+		storageMapping = @{
+			# OPTIONAL
+			storageClassMappings = @{
+				# REQUIRED
+				storageClassMappingList = @(
+					@{
+						# OPTIONAL
+						sourceStorageClass = $someString
+						# OPTIONAL
+						targetStorageClass = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			pvcStorageClassMappings = @{
+				# REQUIRED
+				pvcStorageClassMappingList = @(
+					@{
+						# OPTIONAL
+						pvcName = $someString
+						# OPTIONAL
+						targetStorageClass = $someString
+					}
+				)
+			}
+		}
+		# OPTIONAL
+		pvcNames = @(
+			$someString
+		)
+		# REQUIRED
+		targetClusterId = $someString
+		# OPTIONAL
+		ignoreErrors = $someBoolean
+		# OPTIONAL
+		shouldKeepMacAddresses = $someBoolean
 	}
 }"
             );
@@ -2119,6 +2359,33 @@ $query.Var.input = @{
 	jobConfig = @{
 		# OPTIONAL
 		filter = $someString
+		# OPTIONAL
+		storageMapping = @{
+			# OPTIONAL
+			storageClassMappings = @{
+				# REQUIRED
+				storageClassMappingList = @(
+					@{
+						# OPTIONAL
+						sourceStorageClass = $someString
+						# OPTIONAL
+						targetStorageClass = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			pvcStorageClassMappings = @{
+				# REQUIRED
+				pvcStorageClassMappingList = @(
+					@{
+						# OPTIONAL
+						pvcName = $someString
+						# OPTIONAL
+						targetStorageClass = $someString
+					}
+				)
+			}
+		}
 		# OPTIONAL
 		pvcNames = @(
 			$someString

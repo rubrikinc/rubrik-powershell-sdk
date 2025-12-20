@@ -128,6 +128,14 @@ Restores multiple files/directories from snapshot.
 
 - There is a single argument of type VsphereVmRecoverFilesNewInput.
 - Returns AsyncRequestStatus.
+### refreshagent
+Refresh Rubrik Backup Service
+
+Supported in v9.5
+Refresh the Rubrik Backup Service state for a specified virtual machine.
+
+- There is a single argument of type VsphereVmRefreshAgentInput.
+- Returns System.String.
 ### registeragent
 Register Rubrik Backup Service
 
@@ -144,6 +152,14 @@ Register the Rubrik Backup Service that is running on a specified host with the 
 
 - There is a single argument of type VsphereVmRegisterAgentWithOrgInput.
 - Returns RequestSuccess.
+### unregisteragent
+Unregister Rubrik Backup Service
+
+Supported in v9.5
+Unregister the Rubrik Backup Service state for a specified virtual machine.
+
+- There is a single argument of type VsphereVmUnregisterAgentInput.
+- Returns System.String.
 ### update
 Update VM
 
@@ -152,6 +168,14 @@ Update a virtual machine with specified properties. Use the guestCredential fiel
 
 - There is a single argument of type UpdateVsphereVmInput.
 - Returns RequestSuccess.
+### updateagentcertificate
+Update certificate for Rubrik Backup Service
+
+Supported in v9.5
+Update the Rubrik Backup Service certificate for a specified virtual machine.
+
+- There is a single argument of type VsphereVmUpdateAgentCertificateInput.
+- Returns System.String.
 ### updateunmounttime
 Update auto unmount time for a virtual machine.
 

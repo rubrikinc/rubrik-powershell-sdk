@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> MatchSeverity? Severity
+        // GraphQL -> severity: MatchSeverity! (enum)
+        [JsonProperty("severity")]
+        public MatchSeverity? Severity { get; set; }
+
         //      C# -> System.Int64? FilesMatched
         // GraphQL -> filesMatched: Long! (scalar)
         [JsonProperty("filesMatched")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public ThreatMonitoringMatchedObject Set(
         List<IndicatorOfCompromiseKind>? MatchType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        MatchSeverity? Severity = null,
         System.Int64? FilesMatched = null,
         DateTime? LastDetection = null,
         System.String? ObjectFid = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( Severity != null ) {
+            this.Severity = Severity;
         }
         if ( FilesMatched != null ) {
             this.FilesMatched = FilesMatched;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> MatchSeverity? Severity
+        // GraphQL -> severity: MatchSeverity! (enum)
+        if (this.Severity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
             }
         }
         //      C# -> System.Int64? FilesMatched
@@ -215,6 +233,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> MatchSeverity? Severity
+        // GraphQL -> severity: MatchSeverity! (enum)
+        if (ec.Includes("severity",true))
+        {
+            if(this.Severity == null) {
+
+                this.Severity = new MatchSeverity();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> System.Int64? FilesMatched
         // GraphQL -> filesMatched: Long! (scalar)

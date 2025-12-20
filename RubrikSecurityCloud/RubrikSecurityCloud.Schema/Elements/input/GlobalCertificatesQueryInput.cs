@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmUsages")]
         public List<CdmCertificateUsage>? CdmUsages { get; set; }
 
+        //      C# -> System.Boolean? IsRubrikManaged
+        // GraphQL -> isRubrikManaged: Boolean (scalar)
+        [JsonProperty("isRubrikManaged")]
+        public System.Boolean? IsRubrikManaged { get; set; }
+
 
         #endregion
 

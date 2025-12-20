@@ -6,3 +6,5 @@ Input for creating an on-demand MongoDB backup.
 v9.3+: Managed ID of the MongoDB database object.
 - config: MongoOnDemandDatabaseSnapshotConfigInput
   - Required. Configuration for the on-demand snapshot.
+- userNote: System.String
+  - Required. User note to associate with audits.

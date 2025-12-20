@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 23 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -970,6 +970,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the TakeSaasOnDemand operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: TakeSaasOnDemand
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation TakeSaasOnDemand
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	workloadIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BatchAsyncJobStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UploadDatabaseToBlobstore operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1058,6 +1093,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "TakeCloudDirect",
                 "TakeOnDemand",
                 "TakeOnDemandSync",
+                "TakeSaasOnDemand",
                 "UploadDatabaseToBlobstore",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -1136,6 +1172,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "TakeOnDemandSync":
                         this.ProcessRecord_TakeOnDemandSync();
+                        break;
+                    case "TakeSaasOnDemand":
+                        this.ProcessRecord_TakeSaasOnDemand();
                         break;
                     case "UploadDatabaseToBlobstore":
                         this.ProcessRecord_UploadDatabaseToBlobstore();
@@ -1337,6 +1376,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -TakeOnDemandSync";
             // Create new graphql operation takeOnDemandSnapshotSync
             InitMutationTakeOnDemandSnapshotSync();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // takeSaasOnDemandSnapshot.
+        internal void ProcessRecord_TakeSaasOnDemand()
+        {
+            this._logger.name += " -TakeSaasOnDemand";
+            // Create new graphql operation takeSaasOnDemandSnapshot
+            InitMutationTakeSaasOnDemandSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2070,6 +2118,33 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	slaId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // takeSaasOnDemandSnapshot(input: TakeSaasOnDemandSnapshotInput!): BatchAsyncJobStatus!
+        internal void InitMutationTakeSaasOnDemandSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TakeSaasOnDemandSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationTakeSaasOnDemandSnapshot",
+                "($input: TakeSaasOnDemandSnapshotInput!)",
+                "BatchAsyncJobStatus",
+                Mutation.TakeSaasOnDemandSnapshot,
+                Mutation.TakeSaasOnDemandSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	workloadIds = @(
+		$someString
+	)
+	# REQUIRED
+	saasAppType = $someSaasAppType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SaasAppType]) for enum values.
 }"
             );
         }

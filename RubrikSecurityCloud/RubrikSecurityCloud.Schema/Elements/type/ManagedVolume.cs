@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.String? LastResetReason
+        // GraphQL -> lastResetReason: String (scalar)
+        [JsonProperty("lastResetReason")]
+        public System.String? LastResetReason { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -526,6 +531,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? ClientNamePatterns = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.String? LastResetReason = null,
         System.String? Name = null,
         System.Int32? NumChannels = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -629,6 +635,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( LastResetReason != null ) {
+            this.LastResetReason = LastResetReason;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -968,6 +977,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.String? LastResetReason
+        // GraphQL -> lastResetReason: String (scalar)
+        if (this.LastResetReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastResetReason\n" ;
+            } else {
+                s += ind + "lastResetReason\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1839,6 +1857,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.String? LastResetReason
+        // GraphQL -> lastResetReason: String (scalar)
+        if (ec.Includes("lastResetReason",true))
+        {
+            if(this.LastResetReason == null) {
+
+                this.LastResetReason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastResetReason != null && ec.Excludes("lastResetReason",true))
+        {
+            this.LastResetReason = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

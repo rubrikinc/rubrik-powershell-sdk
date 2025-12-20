@@ -21,3 +21,5 @@ Inputs needed to create VMs on GCP.
   - GCP subnet configs for each node.
 - testImage: GcpTestImage
   - Test image to use for the Rubrik cluster. This field is only used for internal testing purposes.
+- subnetAzConfigs: list of SubnetAzConfigInputs
+  - List of subnet and availability zone pairs for Multi-AZ deployments.

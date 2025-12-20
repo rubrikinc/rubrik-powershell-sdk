@@ -28,3 +28,5 @@
   - The membership type of the Teams channel.
 - objectType: SharePointDescendantType
   - The object type of this folder, for example, Onedrive or SharePoint drive.
+- path: System.String
+  - The path of the folder from the root.

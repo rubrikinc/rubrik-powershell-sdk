@@ -5,6 +5,11 @@ Adds an O365 org to the account.
 
 - There is a single argument of type AddO365OrgInput.
 - Returns AddO365OrgResponse.
+### analyzemvb
+AnalyzeO365Mvb starts an O365 MVB recovery analysis job.
+
+- There is a single argument of type AnalyzeO365MvbInput.
+- Returns AnalyzeO365MvbReply.
 ### backupmailbox
 Backup mailbox workload.
 

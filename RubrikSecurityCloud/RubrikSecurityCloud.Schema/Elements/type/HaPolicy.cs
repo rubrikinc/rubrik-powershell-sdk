@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int32? ObjectCount
+        // GraphQL -> objectCount: Int! (scalar)
+        [JsonProperty("objectCount")]
+        public System.Int32? ObjectCount { get; set; }
+
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)
         [JsonProperty("primaryClusterUuid")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? LastUpdatedTime = null,
         System.String? Name = null,
+        System.Int32? ObjectCount = null,
         System.String? PrimaryClusterUuid = null,
         List<System.String>? SecondaryClusterUuids = null,
         System.String? StatusMessage = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ObjectCount != null ) {
+            this.ObjectCount = ObjectCount;
         }
         if ( PrimaryClusterUuid != null ) {
             this.PrimaryClusterUuid = PrimaryClusterUuid;
@@ -215,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.Int32? ObjectCount
+        // GraphQL -> objectCount: Int! (scalar)
+        if (this.ObjectCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectCount\n" ;
+            } else {
+                s += ind + "objectCount\n" ;
             }
         }
         //      C# -> System.String? PrimaryClusterUuid
@@ -386,6 +404,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.Int32? ObjectCount
+        // GraphQL -> objectCount: Int! (scalar)
+        if (ec.Includes("objectCount",true))
+        {
+            if(this.ObjectCount == null) {
+
+                this.ObjectCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectCount != null && ec.Excludes("objectCount",true))
+        {
+            this.ObjectCount = null;
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)

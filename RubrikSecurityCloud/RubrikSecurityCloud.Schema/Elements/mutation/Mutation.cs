@@ -3601,6 +3601,60 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? VsphereVmRefreshAgent
+        // GraphQL -> vsphereVmRefreshAgent: Void (scalar)
+        public static string VsphereVmRefreshAgent(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "vsphereVmRefreshAgent" + args + "\n";
+        }
+        public static object VsphereVmRefreshAgentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? VsphereVmUnregisterAgent
+        // GraphQL -> vsphereVmUnregisterAgent: Void (scalar)
+        public static string VsphereVmUnregisterAgent(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "vsphereVmUnregisterAgent" + args + "\n";
+        }
+        public static object VsphereVmUnregisterAgentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? VsphereVmUpdateAgentCertificate
+        // GraphQL -> vsphereVmUpdateAgentCertificate: Void (scalar)
+        public static string VsphereVmUpdateAgentCertificate(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "vsphereVmUpdateAgentCertificate" + args + "\n";
+        }
+        public static object VsphereVmUpdateAgentCertificateFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? VsphereVmUpdateUnmountTime
         // GraphQL -> vsphereVmUpdateUnmountTime: Void (scalar)
         public static string VsphereVmUpdateUnmountTime(object fsObj)
@@ -3635,6 +3689,24 @@ namespace RubrikSecurityCloud.Types
             // there is no field spec for scalar types, but we still
             // populate the fieldSpec so that caller can see the type 
             return true ;
+        }
+
+        //      C# -> AcknowledgeClusterNotificationReply? AcknowledgeClusterNotification
+        // GraphQL -> acknowledgeClusterNotification: AcknowledgeClusterNotificationReply! (type)
+        public static string AcknowledgeClusterNotification(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "acknowledgeClusterNotification" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AcknowledgeClusterNotificationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AcknowledgeClusterNotificationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
         }
 
         //      C# -> RequestStatus? AddAdGroupsToHierarchy
@@ -4263,6 +4335,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AddVmAppConsistentSpecsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AnalyzeO365MvbReply? AnalyzeO365Mvb
+        // GraphQL -> analyzeO365Mvb: AnalyzeO365MvbReply! (type)
+        public static string AnalyzeO365Mvb(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "analyzeO365Mvb" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AnalyzeO365MvbFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AnalyzeO365MvbReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9235,6 +9325,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? ExportK8sVirtualMachineSnapshot
+        // GraphQL -> exportK8sVirtualMachineSnapshot: AsyncRequestStatus! (type)
+        public static string ExportK8sVirtualMachineSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "exportK8sVirtualMachineSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ExportK8sVirtualMachineSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? ExportManagedVolumeSnapshot
         // GraphQL -> exportManagedVolumeSnapshot: AsyncRequestStatus! (type)
         public static string ExportManagedVolumeSnapshot(object fsObj)
@@ -13281,6 +13389,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new TakeOnDemandSnapshotSyncReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BatchAsyncJobStatus? TakeSaasOnDemandSnapshot
+        // GraphQL -> takeSaasOnDemandSnapshot: BatchAsyncJobStatus! (type)
+        public static string TakeSaasOnDemandSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "takeSaasOnDemandSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TakeSaasOnDemandSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new BatchAsyncJobStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

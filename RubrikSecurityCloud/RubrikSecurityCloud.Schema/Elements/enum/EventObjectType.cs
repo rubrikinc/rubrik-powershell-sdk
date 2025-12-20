@@ -225,6 +225,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOOGLE_WORKSPACE_USER_MAILBOX")]
         GOOGLE_WORKSPACE_USER_MAILBOX,
 
+        [EnumMember(Value = "HIGH_AVAILABILITY_POLICY")]
+        HIGH_AVAILABILITY_POLICY,
+
         [EnumMember(Value = "HOST")]
         HOST,
 

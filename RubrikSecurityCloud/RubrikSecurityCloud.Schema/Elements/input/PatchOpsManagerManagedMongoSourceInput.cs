@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? UserNote
+        // GraphQL -> userNote: String (scalar)
+        [JsonProperty("userNote")]
+        public System.String? UserNote { get; set; }
+
         //      C# -> MongoOpsManagerSourcePatchRequestConfigInput? Patch
         // GraphQL -> patch: MongoOpsManagerSourcePatchRequestConfigInput! (input)
         [Required]

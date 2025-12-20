@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("channelMembershipType")]
         ChannelMembershipType? ChannelMembershipType { get; set; }
 
+        //      C# -> System.String? Path
+        // GraphQL -> path: String (scalar)
+        [JsonProperty("path")]
+        System.String? Path { get; set; }
+
 
         #endregion
 

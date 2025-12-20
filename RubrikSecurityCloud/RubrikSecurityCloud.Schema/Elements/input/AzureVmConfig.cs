@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availabilityZone")]
         public System.String? AvailabilityZone { get; set; }
 
+        //      C# -> List<SubnetAzConfigInput>? SubnetAzConfigs
+        // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
+        [JsonProperty("subnetAzConfigs")]
+        public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
+
         //      C# -> VmType? VmType
         // GraphQL -> vmType: VmType (enum)
         [JsonProperty("vmType")]

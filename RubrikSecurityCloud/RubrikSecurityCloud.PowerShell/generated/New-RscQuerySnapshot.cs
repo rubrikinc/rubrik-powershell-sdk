@@ -1288,6 +1288,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.showSnapshotRetentionInfo = $someBoolean
     /// # OPTIONAL
     /// $query.Var.includeOnlySourceSnapshots = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1366,6 +1368,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.ignoreActiveWorkloadCheck = $someBoolean
     /// # OPTIONAL
     /// $query.Var.includeOnlySourceSnapshots = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -3241,6 +3245,7 @@ $query.Var.cloudDirectTargetId = $someString"
         //     ignoreActiveWorkloadCheck: Boolean
         //     showSnapshotRetentionInfo: Boolean
         //     includeOnlySourceSnapshots: Boolean
+        //     shouldExcludeCdmSnapshotRetentionInfo: Boolean
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfAsnappableConnection()
         {
@@ -3257,12 +3262,13 @@ $query.Var.cloudDirectTargetId = $someString"
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
                 Tuple.Create("showSnapshotRetentionInfo", "Boolean"),
                 Tuple.Create("includeOnlySourceSnapshots", "Boolean"),
+                Tuple.Create("shouldExcludeCdmSnapshotRetentionInfo", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfAsnappableConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean,$includeOnlySourceSnapshots: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean,$includeOnlySourceSnapshots: Boolean,$shouldExcludeCdmSnapshotRetentionInfo: Boolean)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfAsnappableConnection,
                 Query.SnapshotOfAsnappableConnectionFieldSpec,
@@ -3317,7 +3323,9 @@ $query.Var.ignoreActiveWorkloadCheck = $someBoolean
 # OPTIONAL
 $query.Var.showSnapshotRetentionInfo = $someBoolean
 # OPTIONAL
-$query.Var.includeOnlySourceSnapshots = $someBoolean"
+$query.Var.includeOnlySourceSnapshots = $someBoolean
+# OPTIONAL
+$query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean"
             );
         }
 
@@ -3334,6 +3342,7 @@ $query.Var.includeOnlySourceSnapshots = $someBoolean"
         //     timeRange: TimeRangeInput
         //     ignoreActiveWorkloadCheck: Boolean
         //     includeOnlySourceSnapshots: Boolean
+        //     shouldExcludeCdmSnapshotRetentionInfo: Boolean
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfSnappablesConnection()
         {
@@ -3349,12 +3358,13 @@ $query.Var.includeOnlySourceSnapshots = $someBoolean"
                 Tuple.Create("timeRange", "TimeRangeInput"),
                 Tuple.Create("ignoreActiveWorkloadCheck", "Boolean"),
                 Tuple.Create("includeOnlySourceSnapshots", "Boolean"),
+                Tuple.Create("shouldExcludeCdmSnapshotRetentionInfo", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfSnappablesConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$includeOnlySourceSnapshots: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$includeOnlySourceSnapshots: Boolean,$shouldExcludeCdmSnapshotRetentionInfo: Boolean)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfSnappablesConnection,
                 Query.SnapshotOfSnappablesConnectionFieldSpec,
@@ -3409,7 +3419,9 @@ $query.Var.timeRange = @{
 # OPTIONAL
 $query.Var.ignoreActiveWorkloadCheck = $someBoolean
 # OPTIONAL
-$query.Var.includeOnlySourceSnapshots = $someBoolean"
+$query.Var.includeOnlySourceSnapshots = $someBoolean
+# OPTIONAL
+$query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean"
             );
         }
 

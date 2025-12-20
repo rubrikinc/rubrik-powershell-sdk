@@ -220,3 +220,4 @@ Enum representing all the possible object types which generate events.
 - PRINCIPAL_TRUSTED_DOMAIN - Trusted Domain principal type.
 - PRINCIPAL_PASSWORD_SETTINGS_CONTAINER - Password Settings Container principal type.
 - PRINCIPAL_PASSWORD_SETTINGS - Password Settings principal type.
+- HIGH_AVAILABILITY_POLICY - High availability policy for failover groups.

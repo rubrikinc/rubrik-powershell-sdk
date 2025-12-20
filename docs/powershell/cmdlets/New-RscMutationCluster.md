@@ -1,5 +1,10 @@
 # New-RscMutationCluster
 ## Subcommands
+### acknowledgeclusternotification
+Acknowledges a cluster notification.
+
+- There is a single argument of type AcknowledgeClusterNotificationInput.
+- Returns AcknowledgeClusterNotificationReply.
 ### addclusternodes
 Add nodes to the CDM cluster.
 

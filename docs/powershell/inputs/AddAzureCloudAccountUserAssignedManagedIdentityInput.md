@@ -1,5 +1,5 @@
 ### AddAzureCloudAccountUserAssignedManagedIdentityInput
-Input to specify the details of the user-assigned managed identity to be used for CLOUD_NATIVE_ARCHIVAL_ENCRYPTION feature.
+Input to specify the details of the user-assigned managed identity to be used for CLOUD_NATIVE_ARCHIVAL_ENCRYPTION or AZURE_SQL_DB_PROTECTION feature.
 
 - name: System.String
   - The name of the managed identity.

@@ -127,6 +127,13 @@ Gets the status of each org in the account.
 ### orgsummaries
 - The orgsummaries subcommand takes no arguments.
 - Returns GetImplicitlyAuthorizedObjectSummariesResponse.
+### queryrecoveryanalysisresult
+QueryO365RecoveryAnalysisResult retrieves the recovery analysis result from
+GCS for a given taskchain ID. This provides per-user analysis of Exchange,
+OneDrive, and SharePoint activity data.
+
+- There is a single argument of type GetRecoveryAnalysisResultReq.
+- Returns GetRecoveryAnalysisResultResp.
 ### serviceaccount
 Gets the service account for the given org.
 

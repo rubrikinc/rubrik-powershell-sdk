@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 41
+    /// Create a new RscQuery object for any of the 42
     /// operations in the 'Office 365' API domain:
-    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, HasAccessToObjects, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
+    /// AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, HasAccessToObjects, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, QueryRecoveryAnalysisResult, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 41 operations
+    /// There are 42 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, HasAccessToObjects, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
+    /// one of: AdGroups, BrowseTeamConvChannels, Calendar, Consumption, Groups, HasAccessToObjects, License, ListApps, Mailbox, Mailboxes, ObjectAncestors, Onedrive, Onedrives, Org, OrgAtSnappableLevel, OrgStatuses, OrgSummaries, Orgs, QueryRecoveryAnalysisResult, ServiceAccount, ServiceStatus, SharepointDrive, SharepointDrives, SharepointList, SharepointLists, SharepointObjectList, SharepointObjects, SharepointObjectsNew, SharepointSite, SharepointSites, Site, Sites, StorageStats, SubscriptionsAppTypeCounts, Team, TeamChannels, TeamConversationsFolderID, TeamPostedBy, Teams, User, UserObjects, or UserSelfServiceInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -814,6 +814,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: O365OrgConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the QueryRecoveryAnalysisResult operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: QueryRecoveryAnalysisResult
+    /// 
+    /// $query = New-RscQueryO365 -Operation QueryRecoveryAnalysisResult
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	taskchainId = $someString
+    /// 	# OPTIONAL
+    /// 	groupId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetRecoveryAnalysisResultResp
     /// 
     /// 
     /// 
@@ -1983,6 +2016,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "OrgStatuses",
                 "OrgSummaries",
                 "Orgs",
+                "QueryRecoveryAnalysisResult",
                 "ServiceAccount",
                 "ServiceStatus",
                 "SharepointDrive",
@@ -2074,6 +2108,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Orgs":
                         this.ProcessRecord_Orgs();
+                        break;
+                    case "QueryRecoveryAnalysisResult":
+                        this.ProcessRecord_QueryRecoveryAnalysisResult();
                         break;
                     case "ServiceAccount":
                         this.ProcessRecord_ServiceAccount();
@@ -2314,6 +2351,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Orgs";
             // Create new graphql operation o365Orgs
             InitQueryO365Orgs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // queryO365RecoveryAnalysisResult.
+        internal void ProcessRecord_QueryRecoveryAnalysisResult()
+        {
+            this._logger.name += " -QueryRecoveryAnalysisResult";
+            // Create new graphql operation queryO365RecoveryAnalysisResult
+            InitQueryQueryO365RecoveryAnalysisResult();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3194,6 +3240,31 @@ $query.Var.filter = @(
 )
 # OPTIONAL
 $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // queryO365RecoveryAnalysisResult(input: GetRecoveryAnalysisResultReq!): GetRecoveryAnalysisResultResp!
+        internal void InitQueryQueryO365RecoveryAnalysisResult()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetRecoveryAnalysisResultReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryQueryO365RecoveryAnalysisResult",
+                "($input: GetRecoveryAnalysisResultReq!)",
+                "GetRecoveryAnalysisResultResp",
+                Query.QueryO365RecoveryAnalysisResult,
+                Query.QueryO365RecoveryAnalysisResultFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	taskchainId = $someString
+	# OPTIONAL
+	groupId = $someString
+}"
             );
         }
 

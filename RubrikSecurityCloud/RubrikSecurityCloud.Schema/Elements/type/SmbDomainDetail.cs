@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public SmbDomainStatus? Status { get; set; }
 
+        //      C# -> System.Boolean? AllowTrustedDomain
+        // GraphQL -> allowTrustedDomain: Boolean (scalar)
+        [JsonProperty("allowTrustedDomain")]
+        public System.Boolean? AllowTrustedDomain { get; set; }
+
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)
         [JsonProperty("isStickySmbService")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public SmbDomainDetail Set(
         SmbDomainStatus? Status = null,
+        System.Boolean? AllowTrustedDomain = null,
         System.Boolean? IsStickySmbService = null,
         System.String? Name = null,
         System.String? ServiceAccount = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( AllowTrustedDomain != null ) {
+            this.AllowTrustedDomain = AllowTrustedDomain;
         }
         if ( IsStickySmbService != null ) {
             this.IsStickySmbService = IsStickySmbService;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.Boolean? AllowTrustedDomain
+        // GraphQL -> allowTrustedDomain: Boolean (scalar)
+        if (this.AllowTrustedDomain != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "allowTrustedDomain\n" ;
+            } else {
+                s += ind + "allowTrustedDomain\n" ;
             }
         }
         //      C# -> System.Boolean? IsStickySmbService
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.Boolean? AllowTrustedDomain
+        // GraphQL -> allowTrustedDomain: Boolean (scalar)
+        if (ec.Includes("allowTrustedDomain",true))
+        {
+            if(this.AllowTrustedDomain == null) {
+
+                this.AllowTrustedDomain = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowTrustedDomain != null && ec.Excludes("allowTrustedDomain",true))
+        {
+            this.AllowTrustedDomain = null;
         }
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)

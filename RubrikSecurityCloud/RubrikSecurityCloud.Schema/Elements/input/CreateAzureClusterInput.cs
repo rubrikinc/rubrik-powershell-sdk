@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("keepClusterOnFailure")]
         public System.Boolean? KeepClusterOnFailure { get; set; }
 
+        //      C# -> System.Boolean? IsAzResilient
+        // GraphQL -> isAzResilient: Boolean (scalar)
+        [JsonProperty("isAzResilient")]
+        public System.Boolean? IsAzResilient { get; set; }
+
         //      C# -> ClusterConfigInput? ClusterConfig
         // GraphQL -> clusterConfig: ClusterConfigInput (input)
         [JsonProperty("clusterConfig")]

@@ -100,6 +100,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		slaId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -617,6 +619,8 @@ $query.Var.input = @{
 		# REQUIRED
 		slaId = $someString
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

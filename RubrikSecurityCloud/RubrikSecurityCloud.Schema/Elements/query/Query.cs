@@ -5443,6 +5443,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<RdsInstanceClassBatchResult>? BatchSupportedAwsRdsDatabaseInstanceClasses
+        // GraphQL -> batchSupportedAwsRdsDatabaseInstanceClasses: [RdsInstanceClassBatchResult!]! (type)
+        public static string BatchSupportedAwsRdsDatabaseInstanceClasses(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrequests: $requests\n)";
+            return "batchSupportedAwsRdsDatabaseInstanceClasses" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BatchSupportedAwsRdsDatabaseInstanceClassesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<RdsInstanceClassBatchResult>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> O365ExchangeObjectConnection? BrowseCalendar
         // GraphQL -> browseCalendar: O365ExchangeObjectConnection! (type)
         public static string BrowseCalendar(object fsObj)
@@ -6699,6 +6717,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ClusterDnsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ClusterEncryptionInfoConnection? ClusterEncryptionInfo
+        // GraphQL -> clusterEncryptionInfo: ClusterEncryptionInfoConnection! (type)
+        public static string ClusterEncryptionInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nclusterName: $clusterName\nencryptionStatusFilter: $encryptionStatusFilter\nkeyProtection: $keyProtection\nclusters: $clusters\nencryptionTypes: $encryptionTypes\n)";
+            return "clusterEncryptionInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ClusterEncryptionInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ClusterEncryptionInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13417,6 +13453,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetRecoveryAnalysisResultResp? QueryO365RecoveryAnalysisResult
+        // GraphQL -> queryO365RecoveryAnalysisResult: GetRecoveryAnalysisResultResp! (type)
+        public static string QueryO365RecoveryAnalysisResult(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "queryO365RecoveryAnalysisResult" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object QueryO365RecoveryAnalysisResultFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetRecoveryAnalysisResultResp() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ClusterConnection? RadarClusterConnection
         // GraphQL -> radarClusterConnection: ClusterConnection! (type)
         public static string RadarClusterConnection(object fsObj)
@@ -13867,6 +13921,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SaasAppsOrganizationConnection? SaasAppOrganizations
+        // GraphQL -> saasAppOrganizations: SaasAppsOrganizationConnection! (type)
+        public static string SaasAppOrganizations(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ntypeFilter: $typeFilter\nrecoveryTargetFilter: $recoveryTargetFilter\n)";
+            return "saasAppOrganizations" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SaasAppOrganizationsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SaasAppsOrganizationConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> SaasWorkloadMetadataTypesReply? SaasWorkloadMetadataTypes
         // GraphQL -> saasWorkloadMetadataTypes: SaasWorkloadMetadataTypesReply! (type)
         public static string SaasWorkloadMetadataTypes(object fsObj)
@@ -13881,6 +13953,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SaasWorkloadMetadataTypesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SalesforceObjectConnection? SalesforceObjects
+        // GraphQL -> salesforceObjects: SalesforceObjectConnection! (type)
+        public static string SalesforceObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\norgId: $orgId\nsortBy: $sortBy\nfilter: $filter\nsortOrder: $sortOrder\n)";
+            return "salesforceObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SalesforceObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SalesforceObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14700,7 +14790,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfAsnappableConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\n)";
             return "snapshotOfASnappableConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotOfAsnappableConnectionFieldSpec(AutofieldContext? ec=null)
@@ -14718,7 +14808,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfSnappablesConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\n)";
             return "snapshotOfSnappablesConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotOfSnappablesConnectionFieldSpec(AutofieldContext? ec=null)
@@ -15420,7 +15510,7 @@ namespace RubrikSecurityCloud.Types
         public static string ThreatMonitoringMatchedObjects(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nobjectTypeFilter: $objectTypeFilter\nworkloadNameSearch: $workloadNameSearch\nmatchTypeFilter: $matchTypeFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nclusterUuidFilter: $clusterUuidFilter\nobjectTypeFilter: $objectTypeFilter\nworkloadNameSearch: $workloadNameSearch\nmatchTypeFilter: $matchTypeFilter\nseverityFilter: $severityFilter\n)";
             return "threatMonitoringMatchedObjects" + args + "\n{\n" + fs + "}\n";
         }
         public static object ThreatMonitoringMatchedObjectsFieldSpec(AutofieldContext? ec=null)

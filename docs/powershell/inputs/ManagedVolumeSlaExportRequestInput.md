@@ -11,3 +11,6 @@ Specifies if the snapshot should be downloaded to local when not available local
 - locationId: System.String
   - Supported in v9.4+
 ID of the location from which the snapshot must be downloaded for export.
+- smbTrustedDomainsToUsers: list of SMBTrustedDomainToUsersMapInputs
+  - Supported in v9.5
+List of trusted domain configurations for SMB share valid users.

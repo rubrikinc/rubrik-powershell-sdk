@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationId")]
         public System.String? LocationId { get; set; }
 
+        //      C# -> List<SmbTrustedDomainToUsersMapInput>? SmbTrustedDomainsToUsers
+        // GraphQL -> smbTrustedDomainsToUsers: [SMBTrustedDomainToUsersMapInput!] (input)
+        [JsonProperty("smbTrustedDomainsToUsers")]
+        public List<SmbTrustedDomainToUsersMapInput>? SmbTrustedDomainsToUsers { get; set; }
+
 
         #endregion
 

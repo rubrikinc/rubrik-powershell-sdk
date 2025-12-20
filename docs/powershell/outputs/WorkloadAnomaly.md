@@ -42,6 +42,10 @@ to have anomalous activity.
   - The resolution status of the anomaly.
 - isSensitiveDataDiscoverySupported: System.Boolean
   - Flag to indicate if sensitive data discovery is supported for the object type.
+- anomalyAnalysisLocationId: System.String
+  - The ID of the archival location where anomaly analysis was performed.
+- anomalyAnalysisLocationName: System.String
+  - The name of the archival location where anomaly analysis was performed.
 - objectType: HierarchyObjectTypeEnum
   - The object type of the workload.
 - anomalousSnapshotDate: DateTime

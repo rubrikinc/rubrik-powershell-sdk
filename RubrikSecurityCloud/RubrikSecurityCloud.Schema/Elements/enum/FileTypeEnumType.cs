@@ -27,6 +27,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENTRA_ID_RESTORE_SUMMARY")]
         ENTRA_ID_RESTORE_SUMMARY,
 
+        [EnumMember(Value = "REMEDIATION_ACTIONS_LOG_CSV")]
+        REMEDIATION_ACTIONS_LOG_CSV,
+
+        [EnumMember(Value = "REMEDIATION_PERMISSIONS_CSV")]
+        REMEDIATION_PERMISSIONS_CSV,
+
         [EnumMember(Value = "REPORT")]
         REPORT,
 

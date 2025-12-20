@@ -53,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldGrantSmbShareRootAccess")]
         public System.Boolean? ShouldGrantSmbShareRootAccess { get; set; }
 
+        //      C# -> System.Boolean? ShouldAllowDuplicateSystemsWithSameIp
+        // GraphQL -> shouldAllowDuplicateSystemsWithSameIp: Boolean (scalar)
+        [JsonProperty("shouldAllowDuplicateSystemsWithSameIp")]
+        public System.Boolean? ShouldAllowDuplicateSystemsWithSameIp { get; set; }
+
         //      C# -> FlashBladeSystemParametersInput? NasFlashBladeApiCredentials
         // GraphQL -> nasFlashBladeApiCredentials: FlashBladeSystemParametersInput (input)
         [JsonProperty("nasFlashBladeApiCredentials")]

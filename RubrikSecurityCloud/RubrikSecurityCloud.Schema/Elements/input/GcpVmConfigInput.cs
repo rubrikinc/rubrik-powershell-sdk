@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("testImage")]
         public GcpTestImage? TestImage { get; set; }
 
+        //      C# -> List<SubnetAzConfigInput>? SubnetAzConfigs
+        // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
+        [JsonProperty("subnetAzConfigs")]
+        public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
+
 
         #endregion
 

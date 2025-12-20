@@ -83,6 +83,21 @@ Rubrik cluster DNS information.
 
 - There is a single argument of type System.String.
 - Returns ClusterDnsReply.
+### encryptioninfo
+Filter clusters by encryption information.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - clusterName - System.String: The prefix of the name of the Rubrik cluster.
+    - encryptionStatusFilter - list of ClusterEncryptionStatusFilters: The encryption status of the Rubrik cluster.
+    - keyProtection - list of ClusterKeyProtections: The key type used for the most recent key rotation.
+    - clusters - list of System.Strings: The IDs of the Rubrik clusters to select.
+    - encryptionTypes - list of ClusterEncryptionTypes: The types of encryption.
+- Returns ClusterEncryptionInfoConnection.
 ### exocomputegetclusterconnectioninfo
 Obtains the YAML file needed to connect a customer-managed cluster to RSC.
 

@@ -150,6 +150,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRESQL")]
         POSTGRESQL,
 
+        [EnumMember(Value = "PROXMOX")]
+        PROXMOX,
+
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,
 

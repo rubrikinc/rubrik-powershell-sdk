@@ -28,3 +28,5 @@
   - The membership type of the channel containing this file for Teams files.
 - objectType: SharePointDescendantType
   - The object type of this file, for example, Onedrive or SharePoint drive.
+- path: System.String
+  - The path of the file from the root.

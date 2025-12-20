@@ -19,6 +19,8 @@ Configuration for creating AWS instances.
   - AWS marketplace product ID.
 - placementGroupName: System.String
   - Placement Group name.
+- subnetAzConfigs: list of SubnetAzConfigInputs
+  - List of subnet and availability zone pairs for Multi-AZ deployments. Used when is_az_resilient is true.
 - vmType: VmType
   - Create dense or standard nodes.
 - securityGroups: list of System.Strings

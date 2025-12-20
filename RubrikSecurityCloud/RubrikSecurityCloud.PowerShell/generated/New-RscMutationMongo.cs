@@ -217,6 +217,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isFullbackup = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.attributes = @(
@@ -264,6 +266,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isFullbackup = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -302,6 +306,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		isFullbackup = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -333,6 +339,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -395,6 +403,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	patch = @{
     /// 		# OPTIONAL
@@ -467,6 +477,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -507,6 +519,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		targetMongoClusterId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -573,6 +587,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1043,6 +1059,8 @@ $query.Var.input = @{
 		# REQUIRED
 		isFullbackup = $someBoolean
 	}
+	# OPTIONAL
+	userNote = $someString
 }
 # REQUIRED
 $query.Var.attributes = @(
@@ -1082,6 +1100,8 @@ $query.Var.input = @{
 		# REQUIRED
 		isFullbackup = $someBoolean
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1112,6 +1132,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		isFullbackup = $someBoolean
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1135,6 +1157,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1181,6 +1205,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 	# REQUIRED
 	patch = @{
 		# OPTIONAL
@@ -1245,6 +1271,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1277,6 +1305,8 @@ $query.Var.input = @{
 		# REQUIRED
 		targetMongoClusterId = $someString
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1335,6 +1365,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		targetAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

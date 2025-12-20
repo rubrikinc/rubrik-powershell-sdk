@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("filter")]
         public System.String? Filter { get; set; }
 
+        //      C# -> StorageMappingInput? StorageMapping
+        // GraphQL -> storageMapping: StorageMappingInput (input)
+        [JsonProperty("storageMapping")]
+        public StorageMappingInput? StorageMapping { get; set; }
+
         //      C# -> List<System.String>? PvcNames
         // GraphQL -> pvcNames: [String!] (scalar)
         [JsonProperty("pvcNames")]

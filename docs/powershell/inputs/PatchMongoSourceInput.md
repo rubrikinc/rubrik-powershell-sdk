@@ -8,3 +8,5 @@ v9.5: The request object containing parameters such as username, password, the l
 - id: System.String
   - Required. v8.1-v9.2: ID of the MongoDB source.
 v9.3+: Managed ID of the MongoDB source.
+- userNote: System.String
+  - Required. User note to associate with audits.

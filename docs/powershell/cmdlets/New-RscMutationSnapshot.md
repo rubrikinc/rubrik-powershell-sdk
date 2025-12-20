@@ -125,6 +125,11 @@ Triggers synchronous on-demand snapshots for the workloads provided.
 
 - There is a single argument of type TakeOnDemandSnapshotSyncInput.
 - Returns TakeOnDemandSnapshotSyncReply.
+### takesaasondemand
+Takes on-demand snapshots for the provided workloads.
+
+- There is a single argument of type TakeSaasOnDemandSnapshotInput.
+- Returns BatchAsyncJobStatus.
 ### uploaddatabasetoblobstore
 Start a job to upload a database snapshot to a target blobstore.
 

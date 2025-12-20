@@ -91,6 +91,14 @@ v9.1+: Launches a job to export the Kubernetes resources from a protection set s
 
 - There is a single argument of type ExportK8sProtectionSetSnapshotInput.
 - Returns AsyncRequestStatus.
+### exportvirtualmachinesnapshot
+Create a job to export a Kubernetes virtual machine snapshot
+
+Supported in v9.3+
+Launches a job to export the Kubernetes resources from a virtual machine snapshot to a namespace in a target Kubernetes cluster.
+
+- There is a single argument of type CreateK8sVMExportJobInput.
+- Returns AsyncRequestStatus.
 ### generatemanifest
 Generate manifest for adding Kubernetes cluster
 

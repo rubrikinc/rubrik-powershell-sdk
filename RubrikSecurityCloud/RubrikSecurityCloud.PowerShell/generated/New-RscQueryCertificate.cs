@@ -133,6 +133,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cdmUsages = @(
     /// 		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isRubrikManaged = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -416,6 +418,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cdmUsages = @(
     /// 		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isRubrikManaged = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -790,6 +794,8 @@ $query.Var.input = @{
 	cdmUsages = @(
 		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
 	)
+	# OPTIONAL
+	isRubrikManaged = $someBoolean
 }"
             );
         }
@@ -1044,6 +1050,8 @@ $query.Var.input = @{
 	cdmUsages = @(
 		$someCdmCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CdmCertificateUsage]) for enum values.
 	)
+	# OPTIONAL
+	isRubrikManaged = $someBoolean
 }"
             );
         }

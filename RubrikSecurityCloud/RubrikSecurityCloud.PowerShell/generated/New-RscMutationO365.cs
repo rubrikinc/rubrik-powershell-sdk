@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 34
+    /// Create a new RscQuery object for any of the 35
     /// operations in the 'Office 365' API domain:
-    /// AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreFullTeams, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// AddOrg, AnalyzeMvb, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreFullTeams, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// </summary>
     /// <description>
     /// New-RscMutationO365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 34 operations
+    /// There are 35 operations
     /// in the 'Office 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOrg, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreFullTeams, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
+    /// one of: AddOrg, AnalyzeMvb, BackupMailbox, BackupOnedrive, BackupSharePointSite, BackupSharepointDrive, BackupSharepointList, BackupTeam, CreateAppComplete, CreateAppKickoff, DeleteAzureApp, DeleteOrg, DeleteServiceAccount, EnableSharePoint, EnableTeams, ExportMailbox, ExportMailboxV2, InsertCustomerApp, OauthConsentComplete, OauthConsentKickoff, PdlGroups, RefreshOrg, RestoreFullTeams, RestoreMailbox, RestoreMailboxV2, RestoreSnappable, RestoreTeamsConversations, RestoreTeamsFiles, SaaSSetupKickoff, SaasSetupComplete, SetServiceAccount, SetupKickoff, UpdateAppAuthStatus, UpdateAppPermissions, or UpdateOrgCustomName.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -108,6 +108,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddO365OrgResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AnalyzeMvb operation
+    /// of the 'Office 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    O365
+    /// # API Operation: AnalyzeMvb
+    /// 
+    /// $query = New-RscMutationO365 -Operation AnalyzeMvb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	orgId = $someString
+    /// 	# OPTIONAL
+    /// 	groupId = $someString
+    /// 	# OPTIONAL
+    /// 	lastNumberOfDays = $someInt
+    /// 	# OPTIONAL
+    /// 	workloads = @(
+    /// 		$someO365MvbWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365MvbWorkloadType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	shouldExcludeArchivedMailbox = $someBoolean
+    /// 	# OPTIONAL
+    /// 	snapshotTime = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AnalyzeO365MvbReply
     /// 
     /// 
     /// 
@@ -2200,6 +2243,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddOrg",
+                "AnalyzeMvb",
                 "BackupMailbox",
                 "BackupOnedrive",
                 "BackupSharePointSite",
@@ -2250,6 +2294,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AddOrg":
                         this.ProcessRecord_AddOrg();
+                        break;
+                    case "AnalyzeMvb":
+                        this.ProcessRecord_AnalyzeMvb();
                         break;
                     case "BackupMailbox":
                         this.ProcessRecord_BackupMailbox();
@@ -2367,6 +2414,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddOrg";
             // Create new graphql operation addO365Org
             InitMutationAddO365Org();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // analyzeO365Mvb.
+        internal void ProcessRecord_AnalyzeMvb()
+        {
+            this._logger.name += " -AnalyzeMvb";
+            // Create new graphql operation analyzeO365Mvb
+            InitMutationAnalyzeO365Mvb();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2694,6 +2750,41 @@ $query.Var.input = @{
 	appTypes = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // analyzeO365Mvb(input: AnalyzeO365MvbInput!): AnalyzeO365MvbReply!
+        internal void InitMutationAnalyzeO365Mvb()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AnalyzeO365MvbInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAnalyzeO365Mvb",
+                "($input: AnalyzeO365MvbInput!)",
+                "AnalyzeO365MvbReply",
+                Mutation.AnalyzeO365Mvb,
+                Mutation.AnalyzeO365MvbFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	orgId = $someString
+	# OPTIONAL
+	groupId = $someString
+	# OPTIONAL
+	lastNumberOfDays = $someInt
+	# OPTIONAL
+	workloads = @(
+		$someO365MvbWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365MvbWorkloadType]) for enum values.
+	)
+	# OPTIONAL
+	shouldExcludeArchivedMailbox = $someBoolean
+	# OPTIONAL
+	snapshotTime = $someDateTime
 }"
             );
         }

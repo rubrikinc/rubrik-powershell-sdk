@@ -412,6 +412,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantSmbShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		shouldAllowDuplicateSystemsWithSameIp = $someBoolean
+    /// 		# OPTIONAL
     /// 		nasFlashBladeApiCredentials = @{
     /// 			# REQUIRED
     /// 			hasSmbSupport = $someBoolean
@@ -1097,6 +1099,8 @@ $query.Var.input = @{
 		nasVendorType = $someNasVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NasVendorType]) for enum values.
 		# OPTIONAL
 		shouldGrantSmbShareRootAccess = $someBoolean
+		# OPTIONAL
+		shouldAllowDuplicateSystemsWithSameIp = $someBoolean
 		# OPTIONAL
 		nasFlashBladeApiCredentials = @{
 			# REQUIRED
