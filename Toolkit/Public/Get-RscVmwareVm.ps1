@@ -118,7 +118,6 @@ function Get-RscVmwareVm {
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
                 # With real Regex, users could search for VMs that start with the letter A if they wanted.
                 if ($name.Contains("*")) {
-                    $name.Replace("*",'')
                     $nameFilter.Field = [RubrikSecurityCloud.Types.HierarchyFilterField]::REGEX
                     $nameFilter.texts = $Name.Replace("*",'')
                 } else {
