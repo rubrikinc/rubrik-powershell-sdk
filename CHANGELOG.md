@@ -2,11 +2,10 @@
 
 ## Version TBD
 
-New Features:
+Schema Update:
 
-Fixes:
-
-Breaking Changes:
+See [API Changelog](https://rubrikinc.github.io/rubrik-api-documentation/changelog/changes/)
+for API additions, deprecations and breaking changes.
 
 ## Version 1.14.20251215
 
