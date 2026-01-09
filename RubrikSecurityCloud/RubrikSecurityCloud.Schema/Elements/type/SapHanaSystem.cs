@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceNumber")]
         public System.String? InstanceNumber { get; set; }
 
+        //      C# -> System.Boolean? IsForceFullOnMasterChangeEnabled
+        // GraphQL -> isForceFullOnMasterChangeEnabled: Boolean (scalar)
+        [JsonProperty("isForceFullOnMasterChangeEnabled")]
+        public System.Boolean? IsForceFullOnMasterChangeEnabled { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -442,6 +447,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterUuid = null,
         System.String? Id = null,
         System.String? InstanceNumber = null,
+        System.Boolean? IsForceFullOnMasterChangeEnabled = null,
         System.Boolean? IsRelic = null,
         DateTime? LastRefreshTime = null,
         DateTime? LastStatusUpdateTime = null,
@@ -530,6 +536,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( InstanceNumber != null ) {
             this.InstanceNumber = InstanceNumber;
+        }
+        if ( IsForceFullOnMasterChangeEnabled != null ) {
+            this.IsForceFullOnMasterChangeEnabled = IsForceFullOnMasterChangeEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -824,6 +833,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "instanceNumber\n" ;
             } else {
                 s += ind + "instanceNumber\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsForceFullOnMasterChangeEnabled
+        // GraphQL -> isForceFullOnMasterChangeEnabled: Boolean (scalar)
+        if (this.IsForceFullOnMasterChangeEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isForceFullOnMasterChangeEnabled\n" ;
+            } else {
+                s += ind + "isForceFullOnMasterChangeEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1569,6 +1587,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceNumber != null && ec.Excludes("instanceNumber",true))
         {
             this.InstanceNumber = null;
+        }
+        //      C# -> System.Boolean? IsForceFullOnMasterChangeEnabled
+        // GraphQL -> isForceFullOnMasterChangeEnabled: Boolean (scalar)
+        if (ec.Includes("isForceFullOnMasterChangeEnabled",true))
+        {
+            if(this.IsForceFullOnMasterChangeEnabled == null) {
+
+                this.IsForceFullOnMasterChangeEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsForceFullOnMasterChangeEnabled != null && ec.Excludes("isForceFullOnMasterChangeEnabled",true))
+        {
+            this.IsForceFullOnMasterChangeEnabled = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

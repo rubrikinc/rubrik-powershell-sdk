@@ -1103,6 +1103,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		targetVmName = $someString
+    /// 		# OPTIONAL
     /// 		shouldRemoveNetwork = $someBoolean
     /// 		# OPTIONAL
     /// 		newVmName = $someString
@@ -1111,9 +1113,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		targetNamespaceId = $someString
     /// 		# OPTIONAL
+    /// 		pvcsToMount = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
     /// 		newRunStrategy = $someString
     /// 		# OPTIONAL
     /// 		shouldKeepMacAddresses = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isVirtualDiskMount = $someBoolean
     /// 	}
     /// }
     /// 
@@ -2451,6 +2459,8 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# OPTIONAL
+		targetVmName = $someString
+		# OPTIONAL
 		shouldRemoveNetwork = $someBoolean
 		# OPTIONAL
 		newVmName = $someString
@@ -2459,9 +2469,15 @@ $query.Var.input = @{
 		# REQUIRED
 		targetNamespaceId = $someString
 		# OPTIONAL
+		pvcsToMount = @(
+			$someString
+		)
+		# OPTIONAL
 		newRunStrategy = $someString
 		# OPTIONAL
 		shouldKeepMacAddresses = $someBoolean
+		# OPTIONAL
+		isVirtualDiskMount = $someBoolean
 	}
 }"
             );

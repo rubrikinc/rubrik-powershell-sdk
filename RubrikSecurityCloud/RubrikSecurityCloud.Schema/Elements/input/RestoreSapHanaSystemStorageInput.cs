@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("config")]
         public SapHanaSystemRestoreConfigInput? Config { get; set; }
 
+        //      C# -> System.String? UserNote
+        // GraphQL -> userNote: String (scalar)
+        [JsonProperty("userNote")]
+        public System.String? UserNote { get; set; }
+
 
         #endregion
 

@@ -12,7 +12,8 @@ The filter for selecting resources from the snapshot to export.
   - Supported in v9.3+
 Specifies the run strategy of the exported virtual machine.
 - storageMapping: StorageMappingInput
-  - The storage mapping to be used for the export operation.
+  - Supported in v9.5+
+The storage mapping to be used for the export operation.
 - pvcNames: list of System.Strings
   - Supported in v9.3+
 - targetClusterId: System.String

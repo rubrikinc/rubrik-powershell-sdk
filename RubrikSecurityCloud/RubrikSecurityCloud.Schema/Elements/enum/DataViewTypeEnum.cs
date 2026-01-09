@@ -117,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_CAPACITY")]
         OBJECT_CAPACITY,
 
+        [EnumMember(Value = "OBJECT_COMPLIANCE")]
+        OBJECT_COMPLIANCE,
+
         [EnumMember(Value = "OBJECT_PROTECTION_AUDIT_DETAIL")]
         OBJECT_PROTECTION_AUDIT_DETAIL,
 

@@ -5671,6 +5671,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? BulkUpdateSystemConfig
+        // GraphQL -> bulkUpdateSystemConfig: AsyncRequestStatus! (type)
+        public static string BulkUpdateSystemConfig(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "bulkUpdateSystemConfig" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BulkUpdateSystemConfigFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CancelJobReply? CancelDownloadPackage
         // GraphQL -> cancelDownloadPackage: CancelJobReply! (type)
         public static string CancelDownloadPackage(object fsObj)
@@ -9460,6 +9478,24 @@ namespace RubrikSecurityCloud.Types
             return "exportOracleTablespace" + args + "\n{\n" + fs + "}\n";
         }
         public static object ExportOracleTablespaceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? ExportProxmoxVmSnapshot
+        // GraphQL -> exportProxmoxVmSnapshot: AsyncRequestStatus! (type)
+        public static string ExportProxmoxVmSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "exportProxmoxVmSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ExportProxmoxVmSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -14793,6 +14829,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new Cluster() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateProxmoxEnvironmentReply? UpdateProxmoxEnvironment
+        // GraphQL -> updateProxmoxEnvironment: UpdateProxmoxEnvironmentReply! (type)
+        public static string UpdateProxmoxEnvironment(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateProxmoxEnvironment" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateProxmoxEnvironmentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateProxmoxEnvironmentReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

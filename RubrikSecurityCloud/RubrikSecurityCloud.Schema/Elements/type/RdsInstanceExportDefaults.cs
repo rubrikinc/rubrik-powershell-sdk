@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vpcId")]
         public System.String? VpcId { get; set; }
 
+        //      C# -> List<KeyValuePair>? Metadata
+        // GraphQL -> metadata: [KeyValuePair!]! (type)
+        [JsonProperty("metadata")]
+        public List<KeyValuePair>? Metadata { get; set; }
+
 
         #endregion
 
@@ -125,7 +130,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Port = null,
         System.String? PrimaryAz = null,
         List<System.String>? SupportedDbEngineVersions = null,
-        System.String? VpcId = null
+        System.String? VpcId = null,
+        List<KeyValuePair>? Metadata = null
     ) 
     {
         if ( DbEngine != null ) {
@@ -175,6 +181,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( VpcId != null ) {
             this.VpcId = VpcId;
+        }
+        if ( Metadata != null ) {
+            this.Metadata = Metadata;
         }
         return this;
     }
@@ -332,6 +341,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "vpcId\n" ;
             } else {
                 s += ind + "vpcId\n" ;
+            }
+        }
+        //      C# -> List<KeyValuePair>? Metadata
+        // GraphQL -> metadata: [KeyValuePair!]! (type)
+        if (this.Metadata != null) {
+            var fspec = this.Metadata.AsFieldSpec(conf.Child("metadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "metadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -612,6 +633,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.VpcId != null && ec.Excludes("vpcId",true))
         {
             this.VpcId = null;
+        }
+        //      C# -> List<KeyValuePair>? Metadata
+        // GraphQL -> metadata: [KeyValuePair!]! (type)
+        if (ec.Includes("metadata",false))
+        {
+            if(this.Metadata == null) {
+
+                this.Metadata = new List<KeyValuePair>();
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            } else {
+
+                this.Metadata.ApplyExploratoryFieldSpec(ec.NewChild("metadata"));
+
+            }
+        }
+        else if (this.Metadata != null && ec.Excludes("metadata",false))
+        {
+            this.Metadata = null;
         }
     }
 

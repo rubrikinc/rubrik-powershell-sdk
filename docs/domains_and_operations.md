@@ -9,10 +9,10 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (43,24)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (30,23)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (43,24)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (31,24)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (10,15)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (13,17)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (226,187)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (13,17)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (226,189)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (35,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (9,13)](#mongo-domain) | [RCV (5,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (58,46)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (16,8)](#report-domain) | [Threat (18,7)](#threat-domain) |
@@ -1988,6 +1988,10 @@ Create primary filesets for a list of NAS shares. | `New-RscMutationMisc -Operat
   
 Supported in v8.1+  
 Add, update, or remove SMB credentials for NAS namespaces. | `New-RscMutationMisc -Operation BulkUpdateNasNamespaces`<BR> | [bulkUpdateNasNamespaces](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| BulkUpdateSystemConfig | Bulk update system config params  
+  
+Supported in v9.5+  
+Updates configs for multiple SAP HANA systems. | `New-RscMutationMisc -Operation BulkUpdateSystemConfig`<BR> | [bulkUpdateSystemConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CancelDownloadPackage | Cancels download package job of a cluster. | `New-RscMutationMisc -Operation CancelDownloadPackage`<BR> | [cancelDownloadPackage](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CancelScheduledUpgrade | Cancels scheduled upgrade job of a cluster. | `New-RscMutationMisc -Operation CancelScheduledUpgrade`<BR> | [cancelScheduledUpgrade](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CancelTaskchain | Cancels the taskchain. | `New-RscMutationMisc -Operation CancelTaskchain`<BR> | [cancelTaskchain](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2195,6 +2199,7 @@ Modify the list of cluster IPs. | `New-RscMutationMisc -Operation UpdateFloating
   
 Supported in v5.0+  
 Update the configuration of a specified network throttle object. | `New-RscMutationMisc -Operation UpdateNetworkThrottle`<BR> | [updateNetworkThrottle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdateProxmoxEnvironment | Update Proxmox environment. | `New-RscMutationMisc -Operation UpdateProxmoxEnvironment`<BR> | [updateProxmoxEnvironment](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateProxyConfig | Update proxy config  
   
 Supported in v5.0+  
@@ -3533,6 +3538,7 @@ Cmdlets: `New-RscQuerySnapshot` and `New-RscMutationSnapshot`
 Supported in v5.0+  
 Lists all files and directories in a given path. | `New-RscQuerySnapshot -Operation FilesetFiles`<BR> | [filesetSnapshotFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LegalHoldSnappable | List of legal hold snapshots for a workload. | `New-RscQuerySnapshot -Operation LegalHoldSnappable`<BR> | [legalHoldSnapshotsForSnappable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ListDiffFilesFor | List files with their deltas in a given snapshot, with optional search string filtering. | `New-RscQuerySnapshot -Operation ListDiffFilesFor`<BR> | [listDiffFilesForSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NewestForCloudDirectObject | Returns the newest snapshot for a Cloud Direct object, such as a share or bucket. The results can be optionally filtered by target ID. | `New-RscQuerySnapshot -Operation NewestForCloudDirectObject`<BR> | [newestSnapshotForCloudDirectObject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OldestForCloudDirectObject | Returns the oldest snapshot for a Cloud Direct object, such as a share or bucket. The results can be optionally filtered by target ID. | `New-RscQuerySnapshot -Operation OldestForCloudDirectObject`<BR> | [oldestSnapshotForCloudDirectObject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | OnedriveSearch | N/A | `New-RscQuerySnapshot -Operation OnedriveSearch`<BR> | [snapshotOnedriveSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3580,6 +3586,10 @@ Download a snapshot from archival. | `New-RscMutationSnapshot -Operation CreateD
 | DeleteFilesetSnapshots | N/A | `New-RscMutationSnapshot -Operation DeleteFilesetSnapshots`<BR> | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteUnmanageds | Deletes the snapshots of an unmanaged object using the object IDs. | `New-RscMutationSnapshot -Operation DeleteUnmanageds`<BR> | [deleteUnmanagedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeletesOfUnmanagedObjects | Deletes all the snapshots of the unmanaged objects in the request. | `New-RscMutationSnapshot -Operation DeletesOfUnmanagedObjects`<BR> | [deleteSnapshotsOfUnmanagedObjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ExportProxmoxVm | Export a Proxmox virtual machine  
+  
+Supported in v9.5  
+Export an Proxmox virtual machine from a snapshot. | `New-RscMutationSnapshot -Operation ExportProxmoxVm`<BR> | [exportProxmoxVmSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FilesetDownloadFiles | Download files from a fileset backup  
   
 Supported in v5.0+  

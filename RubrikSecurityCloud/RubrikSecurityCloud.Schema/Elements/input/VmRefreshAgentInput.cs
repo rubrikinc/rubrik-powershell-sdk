@@ -1,4 +1,4 @@
-// VsphereVmUpdateAgentCertificateInput.cs
+// VmRefreshAgentInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,9 +13,9 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region VsphereVmUpdateAgentCertificateInput
+    #region VmRefreshAgentInput
 
-    public class VsphereVmUpdateAgentCertificateInput: IInput
+    public class VmRefreshAgentInput: IInput
     {
         #region members
 
@@ -52,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class VsphereVmUpdateAgentCertificateInput
+    } // class VmRefreshAgentInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

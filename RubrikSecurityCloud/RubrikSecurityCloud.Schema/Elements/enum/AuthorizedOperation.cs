@@ -252,6 +252,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_AUTH_DOMAIN")]
         MANAGE_AUTH_DOMAIN,
 
+        [EnumMember(Value = "MANAGE_AUTO_QUARANTINE")]
+        MANAGE_AUTO_QUARANTINE,
+
         [EnumMember(Value = "MANAGE_CDP_IO_FILTER")]
         MANAGE_CDP_IO_FILTER,
 

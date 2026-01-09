@@ -55,13 +55,16 @@ This field is deprecated. Use the recoveryForkGuid field on the replicas list in
 - oldestRecoveryPointV93: DateTime
 - oldestRecoveryPointV94: DateTime
 - oldestRecoveryPointV95: DateTime
+- oldestRecoveryPointV96: DateTime
 - latestRecoveryPointV91: DateTime
 - latestRecoveryPointV92: DateTime
 - latestRecoveryPointV93: DateTime
 - latestRecoveryPointV94: DateTime
 - latestRecoveryPointV95: DateTime
+- latestRecoveryPointV96: DateTime
 - protectionDateV91: DateTime
 - protectionDateV92: DateTime
 - protectionDateV93: DateTime
 - protectionDateV94: DateTime
 - protectionDateV95: DateTime
+- protectionDateV96: DateTime

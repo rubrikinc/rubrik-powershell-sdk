@@ -84,6 +84,8 @@ Details about the PDBs that are part of the CDB.
   - The time stamp of the earliest recovery point for this database.
 - oldestRecoveryPointV95: DateTime
   - The time stamp of the earliest recovery point for this database.
+- oldestRecoveryPointV96: DateTime
+  - The time stamp of the earliest recovery point for this database.
 - latestRecoveryPointV91: DateTime
   - The time stamp of the most recent recovery point for this database.
 - latestRecoveryPointV92: DateTime
@@ -93,5 +95,7 @@ Details about the PDBs that are part of the CDB.
 - latestRecoveryPointV94: DateTime
   - The time stamp of the most recent recovery point for this database.
 - latestRecoveryPointV95: DateTime
+  - The time stamp of the most recent recovery point for this database.
+- latestRecoveryPointV96: DateTime
   - The time stamp of the most recent recovery point for this database.
 - blackoutWindowResponseInfo: BlackoutWindowResponseInfo

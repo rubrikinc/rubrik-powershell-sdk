@@ -228,6 +228,7 @@ Operations defined in the RBAC system.
 - VIEW_PERSONAL_ACCESS_TOKENS - View personal access tokens.
 - MANAGE_OWN_PERSONAL_ACCESS_TOKEN - Create, rotate, and deactivate your own personal access token.
 - DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN - Deactivate personal access token for other users.
+- MANAGE_AUTO_QUARANTINE - Allow users to manage auto quarantine settings.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

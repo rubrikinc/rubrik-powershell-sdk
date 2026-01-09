@@ -190,6 +190,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		isAfter = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -226,6 +228,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -262,6 +266,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -303,6 +309,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -339,6 +347,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -432,6 +442,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -543,6 +555,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -586,6 +600,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		fullSnapshotId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -629,6 +645,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		dbId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -665,6 +683,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		snapshotId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -696,6 +716,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1055,6 +1077,8 @@ $query.Var.input = @{
 		# REQUIRED
 		isAfter = $someBoolean
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1083,6 +1107,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1111,6 +1137,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1144,6 +1172,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		backupType = $someSapHanaOnDemandBackupConfigBackupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SapHanaOnDemandBackupConfigBackupType]) for enum values.
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1172,6 +1202,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		slaId = $someString
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1241,6 +1273,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1336,6 +1370,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1371,6 +1407,8 @@ $query.Var.input = @{
 		# REQUIRED
 		fullSnapshotId = $someString
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1406,6 +1444,8 @@ $query.Var.input = @{
 		# REQUIRED
 		dbId = $someString
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1434,6 +1474,8 @@ $query.Var.input = @{
 		# REQUIRED
 		snapshotId = $someString
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1457,6 +1499,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

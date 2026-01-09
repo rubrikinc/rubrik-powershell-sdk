@@ -153,6 +153,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CROSS_ACCOUNT_PAIR")]
         CROSS_ACCOUNT_PAIR,
 
+        [EnumMember(Value = "CROWDSTRIKE_INTEGRATION")]
+        CROWDSTRIKE_INTEGRATION,
+
         [EnumMember(Value = "D365_DATAVERSE_TABLE")]
         D365_DATAVERSE_TABLE,
 
@@ -527,6 +530,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRINCIPAL_MSDS_QUOTA_CONTROL")]
         PRINCIPAL_MSDS_QUOTA_CONTROL,
+
+        [EnumMember(Value = "PRINCIPAL_NAMED_LOCATION")]
+        PRINCIPAL_NAMED_LOCATION,
 
         [EnumMember(Value = "PRINCIPAL_NTDS_SITE_SETTINGS")]
         PRINCIPAL_NTDS_SITE_SETTINGS,

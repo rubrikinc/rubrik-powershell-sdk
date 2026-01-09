@@ -135,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectionDateV95")]
         public DateTime? ProtectionDateV95 { get; set; }
 
+        //      C# -> DateTime? ProtectionDateV96
+        // GraphQL -> protectionDateV96: DateTime (scalar)
+        [JsonProperty("protectionDateV96")]
+        public DateTime? ProtectionDateV96 { get; set; }
+
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
         [JsonProperty("unprotectableReasonsV51")]
@@ -200,6 +205,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unprotectableReasonsV95")]
         public List<System.String>? UnprotectableReasonsV95 { get; set; }
 
+        //      C# -> List<System.String>? UnprotectableReasonsV96
+        // GraphQL -> unprotectableReasonsV96: [String!]! (scalar)
+        [JsonProperty("unprotectableReasonsV96")]
+        public List<System.String>? UnprotectableReasonsV96 { get; set; }
+
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         [JsonProperty("version")]
@@ -258,6 +268,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ProtectionDateV93 = null,
         DateTime? ProtectionDateV94 = null,
         DateTime? ProtectionDateV95 = null,
+        DateTime? ProtectionDateV96 = null,
         List<System.String>? UnprotectableReasonsV51 = null,
         List<System.String>? UnprotectableReasonsV52 = null,
         List<System.String>? UnprotectableReasonsV53 = null,
@@ -271,6 +282,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? UnprotectableReasonsV93 = null,
         List<System.String>? UnprotectableReasonsV94 = null,
         List<System.String>? UnprotectableReasonsV95 = null,
+        List<System.String>? UnprotectableReasonsV96 = null,
         System.String? Version = null,
         MssqlNonSlaProperties? MssqlNonSlaProperties = null,
         MssqlSlaRelatedProperties? MssqlSlaRelatedProperties = null,
@@ -347,6 +359,9 @@ namespace RubrikSecurityCloud.Types
         if ( ProtectionDateV95 != null ) {
             this.ProtectionDateV95 = ProtectionDateV95;
         }
+        if ( ProtectionDateV96 != null ) {
+            this.ProtectionDateV96 = ProtectionDateV96;
+        }
         if ( UnprotectableReasonsV51 != null ) {
             this.UnprotectableReasonsV51 = UnprotectableReasonsV51;
         }
@@ -385,6 +400,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UnprotectableReasonsV95 != null ) {
             this.UnprotectableReasonsV95 = UnprotectableReasonsV95;
+        }
+        if ( UnprotectableReasonsV96 != null ) {
+            this.UnprotectableReasonsV96 = UnprotectableReasonsV96;
         }
         if ( Version != null ) {
             this.Version = Version;
@@ -622,6 +640,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "protectionDateV95\n" ;
             }
         }
+        //      C# -> DateTime? ProtectionDateV96
+        // GraphQL -> protectionDateV96: DateTime (scalar)
+        if (this.ProtectionDateV96 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV96\n" ;
+            } else {
+                s += ind + "protectionDateV96\n" ;
+            }
+        }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
         if (this.UnprotectableReasonsV51 != null) {
@@ -737,6 +764,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "unprotectableReasonsV95\n" ;
             } else {
                 s += ind + "unprotectableReasonsV95\n" ;
+            }
+        }
+        //      C# -> List<System.String>? UnprotectableReasonsV96
+        // GraphQL -> unprotectableReasonsV96: [String!]! (scalar)
+        if (this.UnprotectableReasonsV96 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectableReasonsV96\n" ;
+            } else {
+                s += ind + "unprotectableReasonsV96\n" ;
             }
         }
         //      C# -> System.String? Version
@@ -1194,6 +1230,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ProtectionDateV95 = null;
         }
+        //      C# -> DateTime? ProtectionDateV96
+        // GraphQL -> protectionDateV96: DateTime (scalar)
+        if (ec.Includes("protectionDateV96",true))
+        {
+            if(this.ProtectionDateV96 == null) {
+
+                this.ProtectionDateV96 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV96 != null && ec.Excludes("protectionDateV96",true))
+        {
+            this.ProtectionDateV96 = null;
+        }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)
         if (ec.Includes("unprotectableReasonsV51",true))
@@ -1414,6 +1467,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.UnprotectableReasonsV95 != null && ec.Excludes("unprotectableReasonsV95",true))
         {
             this.UnprotectableReasonsV95 = null;
+        }
+        //      C# -> List<System.String>? UnprotectableReasonsV96
+        // GraphQL -> unprotectableReasonsV96: [String!]! (scalar)
+        if (ec.Includes("unprotectableReasonsV96",true))
+        {
+            if(this.UnprotectableReasonsV96 == null) {
+
+                this.UnprotectableReasonsV96 = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectableReasonsV96 != null && ec.Excludes("unprotectableReasonsV96",true))
+        {
+            this.UnprotectableReasonsV96 = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)

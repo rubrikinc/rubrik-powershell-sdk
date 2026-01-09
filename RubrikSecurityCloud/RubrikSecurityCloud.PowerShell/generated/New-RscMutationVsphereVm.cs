@@ -3902,17 +3902,17 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // vsphereVmRefreshAgent(input: VsphereVmRefreshAgentInput!): Void
+        // vsphereVmRefreshAgent(input: VmRefreshAgentInput!): Void
         internal void InitMutationVsphereVmRefreshAgent()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VsphereVmRefreshAgentInput!"),
+                Tuple.Create("input", "VmRefreshAgentInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationVsphereVmRefreshAgent",
-                "($input: VsphereVmRefreshAgentInput!)",
+                "($input: VmRefreshAgentInput!)",
                 "System.String",
                 Mutation.VsphereVmRefreshAgent,
                 Mutation.VsphereVmRefreshAgentFieldSpec,
@@ -3977,17 +3977,17 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // vsphereVmUnregisterAgent(input: VsphereVmUnregisterAgentInput!): Void
+        // vsphereVmUnregisterAgent(input: VmUnregisterAgentInput!): Void
         internal void InitMutationVsphereVmUnregisterAgent()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VsphereVmUnregisterAgentInput!"),
+                Tuple.Create("input", "VmUnregisterAgentInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationVsphereVmUnregisterAgent",
-                "($input: VsphereVmUnregisterAgentInput!)",
+                "($input: VmUnregisterAgentInput!)",
                 "System.String",
                 Mutation.VsphereVmUnregisterAgent,
                 Mutation.VsphereVmUnregisterAgentFieldSpec,
@@ -4095,17 +4095,17 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // vsphereVmUpdateAgentCertificate(input: VsphereVmUpdateAgentCertificateInput!): Void
+        // vsphereVmUpdateAgentCertificate(input: VmUpdateAgentCertificateInput!): Void
         internal void InitMutationVsphereVmUpdateAgentCertificate()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VsphereVmUpdateAgentCertificateInput!"),
+                Tuple.Create("input", "VmUpdateAgentCertificateInput!"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationVsphereVmUpdateAgentCertificate",
-                "($input: VsphereVmUpdateAgentCertificateInput!)",
+                "($input: VmUpdateAgentCertificateInput!)",
                 "System.String",
                 Mutation.VsphereVmUpdateAgentCertificate,
                 Mutation.VsphereVmUpdateAgentCertificateFieldSpec,

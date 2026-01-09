@@ -141,10 +141,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("systemId")]
         public System.String? SystemId { get; set; }
 
+        //      C# -> System.String? Target
+        // GraphQL -> target: String (scalar)
+        [JsonProperty("target")]
+        public System.String? Target { get; set; }
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         [JsonProperty("workloadId")]
         public System.String? WorkloadId { get; set; }
+
+        //      C# -> CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo (type)
+        [JsonProperty("snapshotRetentionInfo")]
+        public CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
 
         //      C# -> CloudDirectNasObject? Object
         // GraphQL -> object: CloudDirectNasObject! (union)
@@ -185,7 +195,9 @@ namespace RubrikSecurityCloud.Types
         System.String? PolicyName = null,
         System.String? SnappableId = null,
         System.String? SystemId = null,
+        System.String? Target = null,
         System.String? WorkloadId = null,
+        CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo = null,
         CloudDirectNasObject? Object = null
     ) 
     {
@@ -261,8 +273,14 @@ namespace RubrikSecurityCloud.Types
         if ( SystemId != null ) {
             this.SystemId = SystemId;
         }
+        if ( Target != null ) {
+            this.Target = Target;
+        }
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
+        }
+        if ( SnapshotRetentionInfo != null ) {
+            this.SnapshotRetentionInfo = SnapshotRetentionInfo;
         }
         if ( Object != null ) {
             this.Object = Object;
@@ -501,6 +519,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "systemId\n" ;
             }
         }
+        //      C# -> System.String? Target
+        // GraphQL -> target: String (scalar)
+        if (this.Target != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "target\n" ;
+            } else {
+                s += ind + "target\n" ;
+            }
+        }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         if (this.WorkloadId != null) {
@@ -508,6 +535,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "workloadId\n" ;
             } else {
                 s += ind + "workloadId\n" ;
+            }
+        }
+        //      C# -> CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo != null) {
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(conf.Child("snapshotRetentionInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudDirectNasObject? Object
@@ -944,6 +983,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SystemId = null;
         }
+        //      C# -> System.String? Target
+        // GraphQL -> target: String (scalar)
+        if (ec.Includes("target",true))
+        {
+            if(this.Target == null) {
+
+                this.Target = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Target != null && ec.Excludes("target",true))
+        {
+            this.Target = null;
+        }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         if (ec.Includes("workloadId",true))
@@ -960,6 +1016,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
         {
             this.WorkloadId = null;
+        }
+        //      C# -> CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo (type)
+        if (ec.Includes("snapshotRetentionInfo",false))
+        {
+            if(this.SnapshotRetentionInfo == null) {
+
+                this.SnapshotRetentionInfo = new CloudDirectSnapshotRetentionInfo();
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            } else {
+
+                this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("snapshotRetentionInfo"));
+
+            }
+        }
+        else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
+        {
+            this.SnapshotRetentionInfo = null;
         }
         //      C# -> CloudDirectNasObject? Object
         // GraphQL -> object: CloudDirectNasObject! (union)

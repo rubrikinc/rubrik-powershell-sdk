@@ -1190,6 +1190,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1228,6 +1230,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1266,6 +1270,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2837,6 +2843,8 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	snapshotId = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -2867,6 +2875,8 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	snapshotId = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -2897,6 +2907,8 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

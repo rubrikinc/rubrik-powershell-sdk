@@ -134,7 +134,7 @@ Refresh Rubrik Backup Service
 Supported in v9.5
 Refresh the Rubrik Backup Service state for a specified virtual machine.
 
-- There is a single argument of type VsphereVmRefreshAgentInput.
+- There is a single argument of type VmRefreshAgentInput.
 - Returns System.String.
 ### registeragent
 Register Rubrik Backup Service
@@ -158,7 +158,7 @@ Unregister Rubrik Backup Service
 Supported in v9.5
 Unregister the Rubrik Backup Service state for a specified virtual machine.
 
-- There is a single argument of type VsphereVmUnregisterAgentInput.
+- There is a single argument of type VmUnregisterAgentInput.
 - Returns System.String.
 ### update
 Update VM
@@ -174,7 +174,7 @@ Update certificate for Rubrik Backup Service
 Supported in v9.5
 Update the Rubrik Backup Service certificate for a specified virtual machine.
 
-- There is a single argument of type VsphereVmUpdateAgentCertificateInput.
+- There is a single argument of type VmUpdateAgentCertificateInput.
 - Returns System.String.
 ### updateunmounttime
 Update auto unmount time for a virtual machine.

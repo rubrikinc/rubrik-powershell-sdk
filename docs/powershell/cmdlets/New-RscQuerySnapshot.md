@@ -124,6 +124,19 @@ List of legal hold snapshots for a workload.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - input - LegalHoldSnapshotsForSnappableInput: Query legal hold snapshots for a workload.
 - Returns LegalHoldSnapshotDetailConnection.
+### listdifffilesfor
+List files with their deltas in a given snapshot, with optional search string filtering.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - snapshotFid - System.String: Snapshot persistent UUID in RSC.
+    - searchString - System.String: Optional search string to filter files by filename.
+    - filter - SnapshotDeltaFilterInput: Filter snapshot delta based on delta types.
+    - quarantineFilters - list of QuarantineFilters: Filter entries based on quarantine status of the entries in the base snapshot.
+    - sensitiveDataDiscoveryFilters - SensitiveDataDiscoveryFiltersInput: Filters for sensitive data discovery results.
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
+- Returns SnapshotFileDeltaV2Connection.
 ### newestforclouddirectobject
 Returns the newest snapshot for a Cloud Direct object, such as a share or bucket. The results can be optionally filtered by target ID.
 

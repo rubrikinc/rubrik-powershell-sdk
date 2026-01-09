@@ -39,3 +39,7 @@ The different TPR rules.
 - MODIFY_PAM_INTEGRATION - The TPR rule for modifying PAM configuration.
 - REMOVE_CLUSTER - The TPR rule for removing a cluster.
 - MANAGE_SECURITY_SETTINGS - The TPR rule for managing platform security settings.
+- EDIT_BACKUP_OBJECT - Quorum authorization is required for editing any backup object related
+configuration.
+- DELETE_BACKUP_OBJECT - Quorum authorization is required for deleting any backup object or its
+related configuration.

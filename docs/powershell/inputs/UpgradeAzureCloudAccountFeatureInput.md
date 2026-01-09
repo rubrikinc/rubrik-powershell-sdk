@@ -1,6 +1,8 @@
 ### UpgradeAzureCloudAccountFeatureInput
 Input to upgrade a feature for an Azure cloud account.
 
+- specificFeatureInput: AddAzureCloudAccountSpecificFeatureInput
+  - Specific feature input to be used for upgrading the feature. Currently, this behavior is supported only for the AZURE_SQL_DB_PROTECTION feature.
 - featureType: CloudAccountFeature
   - Feature to be upgraded.
 - permissionsGroups: list of PermissionsGroups

@@ -55,7 +55,7 @@ Specifies whether the refresh of host metadata for this host is paused.
   - Supported in v9.2+
 Specifies the connect status for the host. Status is Refreshing while discovery is running or Connected once discovery was successful and the host is available.
 - adDomain: System.String
-  - Supported in v9.5
+  - Supported in v9.5+
 The Active Directory domain name for the host, if applicable.
 - volumeGroupInfo: VolumeGroupDetailInfo
   - Supported in v9.2+

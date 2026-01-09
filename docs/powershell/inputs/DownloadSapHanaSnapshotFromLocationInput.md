@@ -7,3 +7,5 @@ Initiates a job to download a snapshot from the specified location when the snap
   - Required. ID of the remote location.
 - snapshotId: System.String
   - Required. ID of the snapshot to be downloaded.
+- userNote: System.String
+  - Required. User note to associate with audits.

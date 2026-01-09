@@ -70,3 +70,4 @@ value and is added for maintaining backward compatability.
 - K8S_PROTECTION_SET - Represents a Kubernetes protection set.
 - SALESFORCE_ROOT - Represents the Salesforce root.
 - SALESFORCE_ORGANIZATION - Represents the Salesforce organization.
+- AWS_NATIVE_DYNAMODB_TABLE - Represents the AWS DynamoDB Table.

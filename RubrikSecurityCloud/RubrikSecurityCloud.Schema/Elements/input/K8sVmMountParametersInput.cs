@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? TargetVmName
+        // GraphQL -> targetVmName: String (scalar)
+        [JsonProperty("targetVmName")]
+        public System.String? TargetVmName { get; set; }
+
         //      C# -> System.Boolean? ShouldRemoveNetwork
         // GraphQL -> shouldRemoveNetwork: Boolean (scalar)
         [JsonProperty("shouldRemoveNetwork")]
@@ -43,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetNamespaceId")]
         public System.String? TargetNamespaceId { get; set; }
 
+        //      C# -> List<System.String>? PvcsToMount
+        // GraphQL -> pvcsToMount: [String!] (scalar)
+        [JsonProperty("pvcsToMount")]
+        public List<System.String>? PvcsToMount { get; set; }
+
         //      C# -> System.String? NewRunStrategy
         // GraphQL -> newRunStrategy: String (scalar)
         [JsonProperty("newRunStrategy")]
@@ -52,6 +62,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldKeepMacAddresses: Boolean (scalar)
         [JsonProperty("shouldKeepMacAddresses")]
         public System.Boolean? ShouldKeepMacAddresses { get; set; }
+
+        //      C# -> System.Boolean? IsVirtualDiskMount
+        // GraphQL -> isVirtualDiskMount: Boolean (scalar)
+        [JsonProperty("isVirtualDiskMount")]
+        public System.Boolean? IsVirtualDiskMount { get; set; }
 
 
         #endregion

@@ -332,6 +332,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	metricName = $someRcsConsumptionMetricNameType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsConsumptionMetricNameType]) for enum values.
     /// 	# OPTIONAL
     /// 	doForecasting = $someBoolean
+    /// 	# OPTIONAL
+    /// 	retrieveConsumptionHistory = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1026,6 +1028,8 @@ $query.Var.rcsAzureTargetConsumptionStatsRequest = @{
 	metricName = $someRcsConsumptionMetricNameType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsConsumptionMetricNameType]) for enum values.
 	# OPTIONAL
 	doForecasting = $someBoolean
+	# OPTIONAL
+	retrieveConsumptionHistory = $someBoolean
 }"
             );
         }

@@ -1672,7 +1672,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	ctrConfig = @{
     /// 		# REQUIRED
     /// 		targetWorkloadFid = $someString
-    /// 		# OPTIONAL
+    /// 		# REQUIRED
     /// 		defaultTargetDomainName = $someString
     /// 		# OPTIONAL
     /// 		domainMapping = @{
@@ -2669,6 +2669,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	featuresToUpgrade = @(
     /// 		@{
+    /// 			# OPTIONAL
+    /// 			specificFeatureInput = @{
+    /// 				# REQUIRED
+    /// 				userAssignedManagedIdentityInput = @{
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 					# REQUIRED
+    /// 					resourceGroupName = $someString
+    /// 					# REQUIRED
+    /// 					principalId = $someString
+    /// 					# REQUIRED
+    /// 					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 				}
+    /// 			}
     /// 			# REQUIRED
     /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 			# REQUIRED
@@ -2708,6 +2722,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			featuresToUpgrade = @(
     /// 				@{
+    /// 					# OPTIONAL
+    /// 					specificFeatureInput = @{
+    /// 						# REQUIRED
+    /// 						userAssignedManagedIdentityInput = @{
+    /// 							# REQUIRED
+    /// 							name = $someString
+    /// 							# REQUIRED
+    /// 							resourceGroupName = $someString
+    /// 							# REQUIRED
+    /// 							principalId = $someString
+    /// 							# REQUIRED
+    /// 							region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 						}
+    /// 					}
     /// 					# REQUIRED
     /// 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 					# REQUIRED
@@ -2773,6 +2801,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	featureToUpgrade = @(
     /// 		@{
+    /// 			# OPTIONAL
+    /// 			specificFeatureInput = @{
+    /// 				# REQUIRED
+    /// 				userAssignedManagedIdentityInput = @{
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 					# REQUIRED
+    /// 					resourceGroupName = $someString
+    /// 					# REQUIRED
+    /// 					principalId = $someString
+    /// 					# REQUIRED
+    /// 					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 				}
+    /// 			}
     /// 			# REQUIRED
     /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 			# REQUIRED
@@ -4843,7 +4885,7 @@ $query.Var.input = @{
 	ctrConfig = @{
 		# REQUIRED
 		targetWorkloadFid = $someString
-		# OPTIONAL
+		# REQUIRED
 		defaultTargetDomainName = $someString
 		# OPTIONAL
 		domainMapping = @{
@@ -5695,6 +5737,20 @@ $query.Var.input = @{
 	# OPTIONAL
 	featuresToUpgrade = @(
 		@{
+			# OPTIONAL
+			specificFeatureInput = @{
+				# REQUIRED
+				userAssignedManagedIdentityInput = @{
+					# REQUIRED
+					name = $someString
+					# REQUIRED
+					resourceGroupName = $someString
+					# REQUIRED
+					principalId = $someString
+					# REQUIRED
+					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+				}
+			}
 			# REQUIRED
 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 			# REQUIRED
@@ -5734,6 +5790,20 @@ $query.Var.input = @{
 			# REQUIRED
 			featuresToUpgrade = @(
 				@{
+					# OPTIONAL
+					specificFeatureInput = @{
+						# REQUIRED
+						userAssignedManagedIdentityInput = @{
+							# REQUIRED
+							name = $someString
+							# REQUIRED
+							resourceGroupName = $someString
+							# REQUIRED
+							principalId = $someString
+							# REQUIRED
+							region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+						}
+					}
 					# REQUIRED
 					featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 					# REQUIRED
@@ -5791,6 +5861,20 @@ $query.Var.input = @{
 	# OPTIONAL
 	featureToUpgrade = @(
 		@{
+			# OPTIONAL
+			specificFeatureInput = @{
+				# REQUIRED
+				userAssignedManagedIdentityInput = @{
+					# REQUIRED
+					name = $someString
+					# REQUIRED
+					resourceGroupName = $someString
+					# REQUIRED
+					principalId = $someString
+					# REQUIRED
+					region = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+				}
+			}
 			# REQUIRED
 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 			# REQUIRED

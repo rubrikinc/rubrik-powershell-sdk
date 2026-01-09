@@ -106,6 +106,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isCorrupted")]
         public System.Boolean? IsCorrupted { get; set; }
 
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
+        [JsonProperty("isCustomRetentionApplied")]
+        public System.Boolean? IsCustomRetentionApplied { get; set; }
+
         //      C# -> System.Boolean? IsDownloadedSnapshot
         // GraphQL -> isDownloadedSnapshot: Boolean (scalar)
         [JsonProperty("isDownloadedSnapshot")]
@@ -313,6 +318,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? IndexingAttempts = null,
         System.Boolean? IsAnomaly = null,
         System.Boolean? IsCorrupted = null,
+        System.Boolean? IsCustomRetentionApplied = null,
         System.Boolean? IsDownloadedSnapshot = null,
         System.Boolean? IsExpired = null,
         System.Boolean? IsIndexed = null,
@@ -401,6 +407,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsCorrupted != null ) {
             this.IsCorrupted = IsCorrupted;
+        }
+        if ( IsCustomRetentionApplied != null ) {
+            this.IsCustomRetentionApplied = IsCustomRetentionApplied;
         }
         if ( IsDownloadedSnapshot != null ) {
             this.IsDownloadedSnapshot = IsDownloadedSnapshot;
@@ -687,6 +696,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isCorrupted\n" ;
             } else {
                 s += ind + "isCorrupted\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
+        if (this.IsCustomRetentionApplied != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCustomRetentionApplied\n" ;
+            } else {
+                s += ind + "isCustomRetentionApplied\n" ;
             }
         }
         //      C# -> System.Boolean? IsDownloadedSnapshot
@@ -1401,6 +1419,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsCorrupted != null && ec.Excludes("isCorrupted",true))
         {
             this.IsCorrupted = null;
+        }
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
+        if (ec.Includes("isCustomRetentionApplied",true))
+        {
+            if(this.IsCustomRetentionApplied == null) {
+
+                this.IsCustomRetentionApplied = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCustomRetentionApplied != null && ec.Excludes("isCustomRetentionApplied",true))
+        {
+            this.IsCustomRetentionApplied = null;
         }
         //      C# -> System.Boolean? IsDownloadedSnapshot
         // GraphQL -> isDownloadedSnapshot: Boolean (scalar)

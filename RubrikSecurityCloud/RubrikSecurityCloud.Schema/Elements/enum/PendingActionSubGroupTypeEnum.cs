@@ -171,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SERVICE_ACCOUNT_SYNC")]
         SERVICE_ACCOUNT_SYNC,
 
+        [EnumMember(Value = "TOGGLE_OBJECT_PAUSE")]
+        TOGGLE_OBJECT_PAUSE,
+
         [EnumMember(Value = "UNMANAGED_OBJECT_DELETE_SNAPSHOTS")]
         UNMANAGED_OBJECT_DELETE_SNAPSHOTS,
 

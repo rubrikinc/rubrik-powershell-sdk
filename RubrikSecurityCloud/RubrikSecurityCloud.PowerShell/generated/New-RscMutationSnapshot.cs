@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 24
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 24 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -473,6 +473,61 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportProxmoxVm operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: ExportProxmoxVm
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation ExportProxmoxVm
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		vmId = $someInt
+    /// 		# OPTIONAL
+    /// 		storageId = $someString
+    /// 		# OPTIONAL
+    /// 		diskToStorageMap = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				storageId = $someString
+    /// 				# REQUIRED
+    /// 				diskId = $someString
+    /// 			}
+    /// 		)
+    /// 		# REQUIRED
+    /// 		snapshotId = $someString
+    /// 		# REQUIRED
+    /// 		nodeId = $someString
+    /// 		# REQUIRED
+    /// 		networkId = $someString
+    /// 		# OPTIONAL
+    /// 		vmName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -1083,6 +1138,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteFilesetSnapshots",
                 "DeleteUnmanageds",
                 "DeletesOfUnmanagedObjects",
+                "ExportProxmoxVm",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
                 "RestoreDomainController",
@@ -1142,6 +1198,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeletesOfUnmanagedObjects":
                         this.ProcessRecord_DeletesOfUnmanagedObjects();
+                        break;
+                    case "ExportProxmoxVm":
+                        this.ProcessRecord_ExportProxmoxVm();
                         break;
                     case "FilesetDownloadFiles":
                         this.ProcessRecord_FilesetDownloadFiles();
@@ -1286,6 +1345,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeletesOfUnmanagedObjects";
             // Create new graphql operation deleteSnapshotsOfUnmanagedObjects
             InitMutationDeleteSnapshotsOfUnmanagedObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // exportProxmoxVmSnapshot.
+        internal void ProcessRecord_ExportProxmoxVm()
+        {
+            this._logger.name += " -ExportProxmoxVm";
+            // Create new graphql operation exportProxmoxVmSnapshot
+            InitMutationExportProxmoxVmSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1709,6 +1777,53 @@ $query.Var.input = @{
 	objectIds = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportProxmoxVmSnapshot(input: ExportProxmoxVmSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationExportProxmoxVmSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportProxmoxVmSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportProxmoxVmSnapshot",
+                "($input: ExportProxmoxVmSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExportProxmoxVmSnapshot,
+                Mutation.ExportProxmoxVmSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		vmId = $someInt
+		# OPTIONAL
+		storageId = $someString
+		# OPTIONAL
+		diskToStorageMap = @(
+			@{
+				# REQUIRED
+				storageId = $someString
+				# REQUIRED
+				diskId = $someString
+			}
+		)
+		# REQUIRED
+		snapshotId = $someString
+		# REQUIRED
+		nodeId = $someString
+		# REQUIRED
+		networkId = $someString
+		# OPTIONAL
+		vmName = $someString
+	}
 }"
             );
         }

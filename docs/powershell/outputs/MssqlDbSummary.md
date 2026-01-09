@@ -108,3 +108,5 @@ Specifies the interval, in seconds, the Rubrik cluster waits before the next log
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
 - unprotectableReasonsV95: list of System.Strings
   - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.
+- unprotectableReasonsV96: list of System.Strings
+  - A list of reasons that a SQL Server database cannot be protected by the Rubrik CDM.

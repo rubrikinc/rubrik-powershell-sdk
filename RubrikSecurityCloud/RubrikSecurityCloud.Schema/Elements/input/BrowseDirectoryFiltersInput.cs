@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mipLabelsFilter")]
         public List<MipLabelsFilterInput>? MipLabelsFilter { get; set; }
 
+        //      C# -> System.Boolean? IsObjectLevelAnalysis
+        // GraphQL -> isObjectLevelAnalysis: Boolean (scalar)
+        [JsonProperty("isObjectLevelAnalysis")]
+        public System.Boolean? IsObjectLevelAnalysis { get; set; }
+
         //      C# -> List<System.String>? DocumentTypesFilter
         // GraphQL -> documentTypesFilter: [UUID!] (scalar)
         [JsonProperty("documentTypesFilter")]

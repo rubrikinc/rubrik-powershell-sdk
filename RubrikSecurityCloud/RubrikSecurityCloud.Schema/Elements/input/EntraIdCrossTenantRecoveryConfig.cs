@@ -27,7 +27,9 @@ namespace RubrikSecurityCloud.Types
         public System.String? TargetWorkloadFid { get; set; }
 
         //      C# -> System.String? DefaultTargetDomainName
-        // GraphQL -> defaultTargetDomainName: String (scalar)
+        // GraphQL -> defaultTargetDomainName: String! (scalar)
+        [Required]
+        [JsonRequired]
         [JsonProperty("defaultTargetDomainName")]
         public System.String? DefaultTargetDomainName { get; set; }
 

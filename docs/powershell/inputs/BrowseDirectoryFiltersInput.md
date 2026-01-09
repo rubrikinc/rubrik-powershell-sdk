@@ -19,6 +19,8 @@
   - List to exposure types to filter the paths.
 - mipLabelsFilter: list of MipLabelsFilterInputs
   - List of Microsoft Purview Information Protection labels used to filter paths.
+- isObjectLevelAnalysis: System.Boolean
+  - Flag to indicate if object level analysis is needed.
 - documentTypesFilter: list of System.Strings
   - List of document type IDs to filter the paths.
 - sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope

@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("policyIds")]
         public List<System.String>? PolicyIds { get; set; }
 
+        //      C# -> List<System.String>? Orgs
+        // GraphQL -> orgs: [String!] (scalar)
+        [JsonProperty("orgs")]
+        public List<System.String>? Orgs { get; set; }
+
 
         #endregion
 

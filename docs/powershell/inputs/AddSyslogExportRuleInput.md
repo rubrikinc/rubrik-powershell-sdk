@@ -29,3 +29,5 @@ Input for adding a syslog export rule.
   - Syslog export rule.
 - syslogExportRuleV95: SyslogExportRuleFullInput
   - Syslog export rule.
+- syslogExportRuleV96: SyslogExportRuleFullInput
+  - Syslog export rule.

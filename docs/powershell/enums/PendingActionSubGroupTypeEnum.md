@@ -54,3 +54,4 @@ The specific subgroup type that defines the exact operation to be performed with
 - GRANT_AUTHZ - Subgroup used for granting authorization to the CDM role using RSC.
 - REVOKE_AUTHZ - Subgroup used for revoking authorization to the CDM role using RSC.
 - CLOUD_ACCOUNT_UPDATE - Updates access credentials of a cloud account to CDM using RSC.
+- TOGGLE_OBJECT_PAUSE - Subgroup used for toggling protection pause status at object level.

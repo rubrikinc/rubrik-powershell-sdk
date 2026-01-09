@@ -37,5 +37,5 @@ v8.1+: Type of the Managed Volume (SlaBased / AlwaysMounted).
 - slaClientConfig: SlaManagedVolumeClientConfigInput
   - Supported in v5.3+
 - filesystemType: ManagedVolumeFilesystemType
-  - Supported in v9.5
+  - Supported in v9.5+
 Type of filesystem used internally for the Managed Volume Stack.

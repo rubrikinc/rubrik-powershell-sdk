@@ -221,3 +221,5 @@ Enum representing all the possible object types which generate events.
 - PRINCIPAL_PASSWORD_SETTINGS_CONTAINER - Password Settings Container principal type.
 - PRINCIPAL_PASSWORD_SETTINGS - Password Settings principal type.
 - HIGH_AVAILABILITY_POLICY - High availability policy for failover groups.
+- PRINCIPAL_NAMED_LOCATION - Named Location principal type.
+- CROWDSTRIKE_INTEGRATION - CrowdStrike integration object.

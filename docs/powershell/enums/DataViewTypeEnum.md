@@ -56,3 +56,4 @@ for the single SLA in the NG Alpha report framework.
 - IDENTITY_ACTIVITY - Specifies the Identity Activity report information.
 - OBJECT_CAPACITY - Specifies the Object Capacity report information using fact table.
 - THREAT_MONITORING_MATCHES - Specifies the threat monitoring match-level information.
+- OBJECT_COMPLIANCE - Specifies the Object Compliance report information using fact table.

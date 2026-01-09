@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASSIGN_TPR_ROLE")]
         ASSIGN_TPR_ROLE,
 
+        [EnumMember(Value = "DELETE_BACKUP_OBJECT")]
+        DELETE_BACKUP_OBJECT,
+
         [EnumMember(Value = "DELETE_CLOUD_ACCOUNTS")]
         DELETE_CLOUD_ACCOUNTS,
 
@@ -53,6 +56,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DISABLE_TPR")]
         DISABLE_TPR,
+
+        [EnumMember(Value = "EDIT_BACKUP_OBJECT")]
+        EDIT_BACKUP_OBJECT,
 
         [EnumMember(Value = "EDIT_REPLICATION_PAIR")]
         EDIT_REPLICATION_PAIR,

@@ -10159,6 +10159,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SnapshotFileDeltaV2Connection? ListDiffFilesForSnapshot
+        // GraphQL -> listDiffFilesForSnapshot: SnapshotFileDeltaV2Connection! (type)
+        public static string ListDiffFilesForSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsnapshotFid: $snapshotFid\nsearchString: $searchString\nfilter: $filter\nquarantineFilters: $quarantineFilters\nsensitiveDataDiscoveryFilters: $sensitiveDataDiscoveryFilters\nsort: $sort\n)";
+            return "listDiffFilesForSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ListDiffFilesForSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SnapshotFileDeltaV2Connection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> O365AppConnection? ListO365Apps
         // GraphQL -> listO365Apps: O365AppConnection! (type)
         public static string ListO365Apps(object fsObj)

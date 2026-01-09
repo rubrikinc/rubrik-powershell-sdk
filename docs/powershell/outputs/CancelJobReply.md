@@ -1,5 +1,5 @@
 ### CancelJobReply
-Cancel download job response.
+Cancel job response.
 
 - status: System.Boolean
   - Status of cancel request.

@@ -1,4 +1,4 @@
-// VsphereVmUnregisterAgentInput.cs
+// UpdateProxmoxEnvironmentInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,9 +13,9 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region VsphereVmUnregisterAgentInput
+    #region UpdateProxmoxEnvironmentInput
 
-    public class VsphereVmUnregisterAgentInput: IInput
+    public class UpdateProxmoxEnvironmentInput: IInput
     {
         #region members
 
@@ -25,6 +25,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> ProxmoxEnvironmentUpdateConfigInput? UpdateProperties
+        // GraphQL -> updateProperties: ProxmoxEnvironmentUpdateConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("updateProperties")]
+        public ProxmoxEnvironmentUpdateConfigInput? UpdateProperties { get; set; }
 
 
         #endregion
@@ -52,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class VsphereVmUnregisterAgentInput
+    } // class UpdateProxmoxEnvironmentInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

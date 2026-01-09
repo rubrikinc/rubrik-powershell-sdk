@@ -57,3 +57,5 @@ Inventory Card options that the user can select as a workload.
 - AZURE_DEVOPS - Inventory card is Azure DevOps.
 - OKTA - Inventory card is Okta.
 - PROXMOX - Inventory card is Proxmox.
+- GITHUB - Inventory card is GitHub.
+- GCP_CLOUD_SQL - Inventory Card is GCP Cloud SQL.

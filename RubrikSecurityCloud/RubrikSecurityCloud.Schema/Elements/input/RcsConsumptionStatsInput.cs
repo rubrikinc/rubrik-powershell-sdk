@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("doForecasting")]
         public System.Boolean? DoForecasting { get; set; }
 
+        //      C# -> System.Boolean? RetrieveConsumptionHistory
+        // GraphQL -> retrieveConsumptionHistory: Boolean (scalar)
+        [JsonProperty("retrieveConsumptionHistory")]
+        public System.Boolean? RetrieveConsumptionHistory { get; set; }
+
 
         #endregion
 

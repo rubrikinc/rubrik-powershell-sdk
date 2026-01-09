@@ -26,6 +26,8 @@ SAP HANA system details object.
 - systemInfo: SapHanaSystemInformation
   - Additional information about the SAP HANA system.
 - isRelic: System.Boolean
+- isForceFullOnMasterChangeEnabled: System.Boolean
+  - Whether to force a full backup after a database failover.
 - descendantConnection: SapHanaSystemDescendantTypeConnection
   - List of descendants.
 - physicalChildConnection: SapHanaSystemPhysicalChildTypeConnection

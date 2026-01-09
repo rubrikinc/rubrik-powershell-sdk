@@ -110,6 +110,14 @@ Add, update, or remove SMB credentials for NAS namespaces.
 
 - There is a single argument of type BulkUpdateNasNamespacesInput.
 - Returns System.String.
+### bulkupdatesystemconfig
+Bulk update system config params
+
+Supported in v9.5+
+Updates configs for multiple SAP HANA systems.
+
+- There is a single argument of type BulkUpdateSapHanaSystemConfigInput.
+- Returns AsyncRequestStatus.
 ### canceldownloadpackage
 Cancels download package job of a cluster.
 
@@ -940,6 +948,11 @@ Update the configuration of a specified network throttle object.
 
 - There is a single argument of type UpdateNetworkThrottleInput.
 - Returns UpdateNetworkThrottleReply.
+### updateproxmoxenvironment
+Update Proxmox environment.
+
+- There is a single argument of type UpdateProxmoxEnvironmentInput.
+- Returns UpdateProxmoxEnvironmentReply.
 ### updateproxyconfig
 Update proxy config
 

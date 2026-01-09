@@ -15,7 +15,7 @@ The NFS export point or SMB share name for the NAS share.
   - Supported in v8.1+
 Optional credentials to access the NAS share.
 - userSelectedInterfaces: list of System.Strings
-  - Supported in v9.4+
+  - Supported in v9.3+
 List of hostnames or IP addresses used for Fileset jobs on the share.
 - nasSourceId: System.String
   - Supported in v8.1+

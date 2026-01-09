@@ -62,6 +62,7 @@ Specifies whether the SLA Domain is used for protection or retention.
 - protectionDateV93: DateTime
 - protectionDateV94: DateTime
 - protectionDateV95: DateTime
+- protectionDateV96: DateTime
 - unprotectableReasonsV91: list of System.Strings
   - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
 - unprotectableReasonsV92: list of System.Strings
@@ -71,4 +72,6 @@ Specifies whether the SLA Domain is used for protection or retention.
 - unprotectableReasonsV94: list of System.Strings
   - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
 - unprotectableReasonsV95: list of System.Strings
+  - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.
+- unprotectableReasonsV96: list of System.Strings
   - A list of reasons that all the SQL Server databases in a SQL Server instance cannot be protected by the Rubrik CDM.

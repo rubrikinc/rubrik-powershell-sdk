@@ -33,3 +33,5 @@ RDS Export defaults from AWS.
   - Specifies whether RDS is available in multi Availability Zones (AZs). If true, it means it is a multi-AZ RDS Instance.
 - supportedDbEngineVersions: list of System.Strings
   - List of RDS DB Instance engine versions.
+- metadata: list of KeyValuePairs
+  - Metadata for the RDS Instance as key-value pairs.

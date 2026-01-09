@@ -6,3 +6,5 @@ Input for editing a SAP HANA system.
 v9.0+: An object that contains the system properties to be updated for the SAP HANA system.
 - id: System.String
   - Required. The ID of the SAP HANA system.
+- userNote: System.String
+  - Required. User note to associate with audits.

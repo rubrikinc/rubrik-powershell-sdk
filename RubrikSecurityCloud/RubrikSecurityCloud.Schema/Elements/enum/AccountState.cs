@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETED_STATE")]
         DELETED_STATE,
 
+        [EnumMember(Value = "FAILED_CREATION")]
+        FAILED_CREATION,
+
         [EnumMember(Value = "GRACE_STATE")]
         GRACE_STATE,
 

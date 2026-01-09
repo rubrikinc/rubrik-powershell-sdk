@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSDS_QUOTA_CONTROL")]
         MSDS_QUOTA_CONTROL,
 
+        [EnumMember(Value = "NAMED_LOCATION")]
+        NAMED_LOCATION,
+
         [EnumMember(Value = "NTDS_SITE_SETTINGS")]
         NTDS_SITE_SETTINGS,
 

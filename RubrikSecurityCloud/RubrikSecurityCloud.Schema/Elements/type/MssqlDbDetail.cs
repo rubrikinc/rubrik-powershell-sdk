@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestRecoveryPointV95")]
         public DateTime? LatestRecoveryPointV95 { get; set; }
 
+        //      C# -> DateTime? LatestRecoveryPointV96
+        // GraphQL -> latestRecoveryPointV96: DateTime (scalar)
+        [JsonProperty("latestRecoveryPointV96")]
+        public DateTime? LatestRecoveryPointV96 { get; set; }
+
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
         [JsonProperty("localStorage")]
@@ -185,6 +190,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oldestRecoveryPointV95")]
         public DateTime? OldestRecoveryPointV95 { get; set; }
 
+        //      C# -> DateTime? OldestRecoveryPointV96
+        // GraphQL -> oldestRecoveryPointV96: DateTime (scalar)
+        [JsonProperty("oldestRecoveryPointV96")]
+        public DateTime? OldestRecoveryPointV96 { get; set; }
+
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
         [JsonProperty("protectionDateV50")]
@@ -255,6 +265,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectionDateV95")]
         public DateTime? ProtectionDateV95 { get; set; }
 
+        //      C# -> DateTime? ProtectionDateV96
+        // GraphQL -> protectionDateV96: DateTime (scalar)
+        [JsonProperty("protectionDateV96")]
+        public DateTime? ProtectionDateV96 { get; set; }
+
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)
         [JsonProperty("recoveryForkGuid")]
@@ -312,6 +327,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LatestRecoveryPointV93 = null,
         DateTime? LatestRecoveryPointV94 = null,
         DateTime? LatestRecoveryPointV95 = null,
+        DateTime? LatestRecoveryPointV96 = null,
         System.Int64? LocalStorage = null,
         System.Int32? MaxDataStreams = null,
         System.String? OldestRecoveryPointV50 = null,
@@ -328,6 +344,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? OldestRecoveryPointV93 = null,
         DateTime? OldestRecoveryPointV94 = null,
         DateTime? OldestRecoveryPointV95 = null,
+        DateTime? OldestRecoveryPointV96 = null,
         System.String? ProtectionDateV50 = null,
         System.String? ProtectionDateV51 = null,
         System.String? ProtectionDateV52 = null,
@@ -342,6 +359,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ProtectionDateV93 = null,
         DateTime? ProtectionDateV94 = null,
         DateTime? ProtectionDateV95 = null,
+        DateTime? ProtectionDateV96 = null,
         System.String? RecoveryForkGuid = null,
         System.Int32? SnapshotCount = null,
         BlackoutWindowResponseInfo? BlackoutWindowResponseInfo = null,
@@ -401,6 +419,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestRecoveryPointV95 != null ) {
             this.LatestRecoveryPointV95 = LatestRecoveryPointV95;
         }
+        if ( LatestRecoveryPointV96 != null ) {
+            this.LatestRecoveryPointV96 = LatestRecoveryPointV96;
+        }
         if ( LocalStorage != null ) {
             this.LocalStorage = LocalStorage;
         }
@@ -449,6 +470,9 @@ namespace RubrikSecurityCloud.Types
         if ( OldestRecoveryPointV95 != null ) {
             this.OldestRecoveryPointV95 = OldestRecoveryPointV95;
         }
+        if ( OldestRecoveryPointV96 != null ) {
+            this.OldestRecoveryPointV96 = OldestRecoveryPointV96;
+        }
         if ( ProtectionDateV50 != null ) {
             this.ProtectionDateV50 = ProtectionDateV50;
         }
@@ -490,6 +514,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProtectionDateV95 != null ) {
             this.ProtectionDateV95 = ProtectionDateV95;
+        }
+        if ( ProtectionDateV96 != null ) {
+            this.ProtectionDateV96 = ProtectionDateV96;
         }
         if ( RecoveryForkGuid != null ) {
             this.RecoveryForkGuid = RecoveryForkGuid;
@@ -676,6 +703,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestRecoveryPointV95\n" ;
             }
         }
+        //      C# -> DateTime? LatestRecoveryPointV96
+        // GraphQL -> latestRecoveryPointV96: DateTime (scalar)
+        if (this.LatestRecoveryPointV96 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV96\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV96\n" ;
+            }
+        }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
         if (this.LocalStorage != null) {
@@ -820,6 +856,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "oldestRecoveryPointV95\n" ;
             }
         }
+        //      C# -> DateTime? OldestRecoveryPointV96
+        // GraphQL -> oldestRecoveryPointV96: DateTime (scalar)
+        if (this.OldestRecoveryPointV96 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV96\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV96\n" ;
+            }
+        }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
         if (this.ProtectionDateV50 != null) {
@@ -944,6 +989,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "protectionDateV95\n" ;
             } else {
                 s += ind + "protectionDateV95\n" ;
+            }
+        }
+        //      C# -> DateTime? ProtectionDateV96
+        // GraphQL -> protectionDateV96: DateTime (scalar)
+        if (this.ProtectionDateV96 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDateV96\n" ;
+            } else {
+                s += ind + "protectionDateV96\n" ;
             }
         }
         //      C# -> System.String? RecoveryForkGuid
@@ -1308,6 +1362,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestRecoveryPointV95 = null;
         }
+        //      C# -> DateTime? LatestRecoveryPointV96
+        // GraphQL -> latestRecoveryPointV96: DateTime (scalar)
+        if (ec.Includes("latestRecoveryPointV96",true))
+        {
+            if(this.LatestRecoveryPointV96 == null) {
+
+                this.LatestRecoveryPointV96 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV96 != null && ec.Excludes("latestRecoveryPointV96",true))
+        {
+            this.LatestRecoveryPointV96 = null;
+        }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
         if (ec.Includes("localStorage",true))
@@ -1580,6 +1651,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.OldestRecoveryPointV95 = null;
         }
+        //      C# -> DateTime? OldestRecoveryPointV96
+        // GraphQL -> oldestRecoveryPointV96: DateTime (scalar)
+        if (ec.Includes("oldestRecoveryPointV96",true))
+        {
+            if(this.OldestRecoveryPointV96 == null) {
+
+                this.OldestRecoveryPointV96 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV96 != null && ec.Excludes("oldestRecoveryPointV96",true))
+        {
+            this.OldestRecoveryPointV96 = null;
+        }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
         if (ec.Includes("protectionDateV50",true))
@@ -1817,6 +1905,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProtectionDateV95 != null && ec.Excludes("protectionDateV95",true))
         {
             this.ProtectionDateV95 = null;
+        }
+        //      C# -> DateTime? ProtectionDateV96
+        // GraphQL -> protectionDateV96: DateTime (scalar)
+        if (ec.Includes("protectionDateV96",true))
+        {
+            if(this.ProtectionDateV96 == null) {
+
+                this.ProtectionDateV96 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDateV96 != null && ec.Excludes("protectionDateV96",true))
+        {
+            this.ProtectionDateV96 = null;
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)

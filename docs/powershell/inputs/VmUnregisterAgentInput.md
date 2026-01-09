@@ -1,5 +1,5 @@
-### VsphereVmUnregisterAgentInput
-Input for V1VmUnregisterAgent.
+### VmUnregisterAgentInput
+
 
 - id: System.String
   - Required. ID assigned to a virtual machine object.

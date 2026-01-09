@@ -25,6 +25,10 @@ O365 Groups from O365 hierarchy.
   - The authorized operations on the object.
 - id: System.String
   - Group ID of o365 group object.
+- mvbAnalysisJob: O365MvbAnalysisJob
+  - Recovery analysis job information for this group.
+- orgId: System.String
+  - UUID of the O365 organization.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

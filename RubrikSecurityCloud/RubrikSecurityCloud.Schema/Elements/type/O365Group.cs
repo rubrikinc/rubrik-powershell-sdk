@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("onDemandSnapshotCount")]
         public System.Int32? OnDemandSnapshotCount { get; set; }
 
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID! (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -150,6 +155,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> metadata: O365GroupMetadata (type)
         [JsonProperty("metadata")]
         public O365GroupMetadata? Metadata { get; set; }
+
+        //      C# -> O365MvbAnalysisJob? MvbAnalysisJob
+        // GraphQL -> mvbAnalysisJob: O365MvbAnalysisJob (type)
+        [JsonProperty("mvbAnalysisJob")]
+        public O365MvbAnalysisJob? MvbAnalysisJob { get; set; }
 
         //      C# -> PolarisSnapshot? NewestIndexedSnapshot
         // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)
@@ -339,6 +349,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NaturalId = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
+        System.String? OrgId = null,
         System.Boolean? SlaPauseStatus = null,
         System.Int64? UserCount = null,
         List<Org>? AllOrgs = null,
@@ -347,6 +358,7 @@ namespace RubrikSecurityCloud.Types
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         O365GroupMetadata? Metadata = null,
+        O365MvbAnalysisJob? MvbAnalysisJob = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
@@ -415,6 +427,9 @@ namespace RubrikSecurityCloud.Types
         if ( OnDemandSnapshotCount != null ) {
             this.OnDemandSnapshotCount = OnDemandSnapshotCount;
         }
+        if ( OrgId != null ) {
+            this.OrgId = OrgId;
+        }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
@@ -438,6 +453,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Metadata != null ) {
             this.Metadata = Metadata;
+        }
+        if ( MvbAnalysisJob != null ) {
+            this.MvbAnalysisJob = MvbAnalysisJob;
         }
         if ( NewestIndexedSnapshot != null ) {
             this.NewestIndexedSnapshot = NewestIndexedSnapshot;
@@ -663,6 +681,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "onDemandSnapshotCount\n" ;
             }
         }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID! (scalar)
+        if (this.OrgId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
+            }
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
@@ -750,6 +777,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "metadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> O365MvbAnalysisJob? MvbAnalysisJob
+        // GraphQL -> mvbAnalysisJob: O365MvbAnalysisJob (type)
+        if (this.MvbAnalysisJob != null) {
+            var fspec = this.MvbAnalysisJob.AsFieldSpec(conf.Child("mvbAnalysisJob"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mvbAnalysisJob" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1231,6 +1270,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.OnDemandSnapshotCount = null;
         }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID! (scalar)
+        if (ec.Includes("orgId",true))
+        {
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (ec.Includes("slaPauseStatus",true))
@@ -1378,6 +1434,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Metadata != null && ec.Excludes("metadata",false))
         {
             this.Metadata = null;
+        }
+        //      C# -> O365MvbAnalysisJob? MvbAnalysisJob
+        // GraphQL -> mvbAnalysisJob: O365MvbAnalysisJob (type)
+        if (ec.Includes("mvbAnalysisJob",false))
+        {
+            if(this.MvbAnalysisJob == null) {
+
+                this.MvbAnalysisJob = new O365MvbAnalysisJob();
+                this.MvbAnalysisJob.ApplyExploratoryFieldSpec(ec.NewChild("mvbAnalysisJob"));
+
+            } else {
+
+                this.MvbAnalysisJob.ApplyExploratoryFieldSpec(ec.NewChild("mvbAnalysisJob"));
+
+            }
+        }
+        else if (this.MvbAnalysisJob != null && ec.Excludes("mvbAnalysisJob",false))
+        {
+            this.MvbAnalysisJob = null;
         }
         //      C# -> PolarisSnapshot? NewestIndexedSnapshot
         // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)

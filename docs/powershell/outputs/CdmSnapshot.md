@@ -24,6 +24,8 @@
   - Resource spec for a snapshot.
 - subObjs: list of SnapshotSubObjects
   - Sub objects for the snapshot.
+- isCustomRetentionApplied: System.Boolean
+  - Specifies whether custom retention is applied on the snapshot.
 - cluster: Cluster
 - parentSnapshotId: System.String
   - The ID of the parent snapshot.

@@ -17,3 +17,5 @@ Used in bulk query for TPR policy listing.
   - Actions specified in the TPR policy.
 - quorumRequirement: System.Int32
   - Quorum authorization requirement for the TPR policy.
+- orgName: System.String
+  - Organization name the TPR policy is in.

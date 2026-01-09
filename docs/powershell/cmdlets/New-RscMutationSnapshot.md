@@ -60,6 +60,14 @@ Deletes the snapshots of an unmanaged object using the object IDs.
 
 - There is a single argument of type DeleteUnmanagedSnapshotsInput.
 - Returns RequestSuccess.
+### exportproxmoxvm
+Export a Proxmox virtual machine
+
+Supported in v9.5
+Export an Proxmox virtual machine from a snapshot.
+
+- There is a single argument of type ExportProxmoxVmSnapshotInput.
+- Returns AsyncRequestStatus.
 ### filesetdownloadfiles
 Download files from a fileset backup
 

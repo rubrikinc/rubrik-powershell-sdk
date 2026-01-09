@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 30
+    /// Create a new RscQuery object for any of the 31
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 30 operations
+    /// There are 31 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -748,6 +748,73 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: LegalHoldSnapshotDetailConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ListDiffFilesFor operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: ListDiffFilesFor
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation ListDiffFilesFor
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # REQUIRED
+    /// $query.Var.snapshotFid = $someString
+    /// # OPTIONAL
+    /// $query.Var.searchString = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	deltaType = @(
+    /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.quarantineFilters = @(
+    /// 	$someQuarantineFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QuarantineFilter]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sensitiveDataDiscoveryFilters = @{
+    /// 	# OPTIONAL
+    /// 	riskLevelTypesFilter = @(
+    /// 		$someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	analyzerGroupIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.sort = @{
+    /// 	# OPTIONAL
+    /// 	sortBy = $someFileResultSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileResultSortBy]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 	# OPTIONAL
+    /// 	analyzerGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	dataTypeId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SnapshotFileDeltaV2Connection
     /// 
     /// 
     /// 
@@ -1670,6 +1737,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Fileset",
                 "FilesetFiles",
                 "LegalHoldSnappable",
+                "ListDiffFilesFor",
                 "NewestForCloudDirectObject",
                 "OldestForCloudDirectObject",
                 "OnedriveSearch",
@@ -1738,6 +1806,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LegalHoldSnappable":
                         this.ProcessRecord_LegalHoldSnappable();
+                        break;
+                    case "ListDiffFilesFor":
+                        this.ProcessRecord_ListDiffFilesFor();
                         break;
                     case "NewestForCloudDirectObject":
                         this.ProcessRecord_NewestForCloudDirectObject();
@@ -1909,6 +1980,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LegalHoldSnappable";
             // Create new graphql operation legalHoldSnapshotsForSnappable
             InitQueryLegalHoldSnapshotsForSnappable();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // listDiffFilesForSnapshot.
+        internal void ProcessRecord_ListDiffFilesFor()
+        {
+            this._logger.name += " -ListDiffFilesFor";
+            // Create new graphql operation listDiffFilesForSnapshot
+            InitQueryListDiffFilesForSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2781,6 +2861,81 @@ $query.Var.input = @{
 		# OPTIONAL
 		sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // listDiffFilesForSnapshot(
+        //     first: Int
+        //     after: String
+        //     snapshotFid: UUID!
+        //     searchString: String
+        //     filter: SnapshotDeltaFilterInput
+        //     quarantineFilters: [QuarantineFilter!]
+        //     sensitiveDataDiscoveryFilters: SensitiveDataDiscoveryFiltersInput
+        //     sort: FileResultSortInput
+        //   ): SnapshotFileDeltaV2Connection!
+        internal void InitQueryListDiffFilesForSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("searchString", "String"),
+                Tuple.Create("filter", "SnapshotDeltaFilterInput"),
+                Tuple.Create("quarantineFilters", "[QuarantineFilter!]"),
+                Tuple.Create("sensitiveDataDiscoveryFilters", "SensitiveDataDiscoveryFiltersInput"),
+                Tuple.Create("sort", "FileResultSortInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryListDiffFilesForSnapshot",
+                "($first: Int,$after: String,$snapshotFid: UUID!,$searchString: String,$filter: SnapshotDeltaFilterInput,$quarantineFilters: [QuarantineFilter!],$sensitiveDataDiscoveryFilters: SensitiveDataDiscoveryFiltersInput,$sort: FileResultSortInput)",
+                "SnapshotFileDeltaV2Connection",
+                Query.ListDiffFilesForSnapshot,
+                Query.ListDiffFilesForSnapshotFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# REQUIRED
+$query.Var.snapshotFid = $someString
+# OPTIONAL
+$query.Var.searchString = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	deltaType = @(
+		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+	)
+}
+# OPTIONAL
+$query.Var.quarantineFilters = @(
+	$someQuarantineFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QuarantineFilter]) for enum values.
+)
+# OPTIONAL
+$query.Var.sensitiveDataDiscoveryFilters = @{
+	# OPTIONAL
+	riskLevelTypesFilter = @(
+		$someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+	)
+	# OPTIONAL
+	analyzerGroupIds = @(
+		$someString
+	)
+}
+# OPTIONAL
+$query.Var.sort = @{
+	# OPTIONAL
+	sortBy = $someFileResultSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FileResultSortBy]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+	# OPTIONAL
+	analyzerGroupId = $someString
+	# OPTIONAL
+	dataTypeId = $someString
 }"
             );
         }

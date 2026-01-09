@@ -69,6 +69,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GCP")]
         GCP,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL")]
+        GCP_CLOUD_SQL,
+
+        [EnumMember(Value = "GITHUB")]
+        GITHUB,
+
         [EnumMember(Value = "GOOGLE_WORKSPACE")]
         GOOGLE_WORKSPACE,
 

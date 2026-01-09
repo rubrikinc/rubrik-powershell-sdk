@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GLOBAL_SLA")]
         GLOBAL_SLA,
 
+        [EnumMember(Value = "OBJECT_PAUSE")]
+        OBJECT_PAUSE,
+
         [EnumMember(Value = "REPLICATION")]
         REPLICATION,
 

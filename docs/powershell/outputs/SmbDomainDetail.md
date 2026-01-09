@@ -14,4 +14,5 @@ Specifies the service principal name (SPN) used for joining the Active Directory
   - Required. Supported in v5.0+
 State of the domain.
 - allowTrustedDomain: System.Boolean
-  - A Boolean value that determines whether to allow trusted domains in SMB configuration. When this value is 'true,' trusted domains are allowed. When this value is 'false,' trusted domains are not allowed. The default value is 'false.'
+  - Supported in v9.5+
+A Boolean value that determines whether to allow trusted domains in SMB configuration. When this value is 'true,' trusted domains are allowed. When this value is 'false,' trusted domains are not allowed. The default value is 'false.'

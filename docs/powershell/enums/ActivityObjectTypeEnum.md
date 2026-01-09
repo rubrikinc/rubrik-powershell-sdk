@@ -45,6 +45,7 @@ The list of object types for activities.
 - VolumeGroup - Specifies that the activity object type is Volume Group.
 - MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
 - RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
+- PRINCIPAL_NAMED_LOCATION - Specifies that the activity object type is Named Location.
 - PRINCIPAL_SITE - Specifies that the activity object type is Site.
 - M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
@@ -191,6 +192,7 @@ The list of object types for activities.
 - PRINCIPAL_SERVER - Specifies that the activity object type is Server.
 - AppBlueprint - Specifies that the activity object type is App Blueprint.
 - OPENSTACK_VIRTUAL_MACHINE - Specifies that the activity object type is Openstack Virtual Machine.
+- CROWDSTRIKE_INTEGRATION - Specifies that the activity object type is CrowdStrike Integration.
 - AzureNativeSubscription - Specifies that the activity object type is Azure Native Subscription.
 - CLOUD_DIRECT_NAS_BUCKET - Specifies that the activity object type is NAS Cloud Direct bucket.
 - IDP_SHAREPOINT - Specifies that the activity object type is SharePoint Site Domain.

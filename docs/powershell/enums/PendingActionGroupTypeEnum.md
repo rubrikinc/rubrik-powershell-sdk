@@ -10,3 +10,4 @@ The group type for the pending action.
 - SERVICE_ACCOUNT - Group type for RSC service account operations.
 - SECURITY_SETTING - The group type of the pending action is a security setting.
 - USERMANAGEMENT - Usermanagement type is used to perform user management operations.
+- OBJECT_PAUSE - Object Pause is used to perform object pause operations.

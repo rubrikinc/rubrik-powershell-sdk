@@ -37,11 +37,11 @@ Specifies whether this is created by a Kupr Host.
 - filesetOptions: FilesetOptions
   - Fileset options.
 - templateBlocklistedFilesystemPaths: System.String
-  - Supported in v9.5
+  - Supported in v9.5+
 Comma-separated list of blocklisted filesystem paths specific to this template.
 - shouldRetryPrescriptIfBackupFails: System.Boolean
   - Supported in v9.2+
 Specifies whether to retry the pre-backup script if the backup fails. If set to true, the pre-backup script will be retried if the backup fails. If set to false, the pre-backup script will not be retried if the backup fails.
 - shouldOverrideClusterWideBlocklistedFilesystemPaths: System.Boolean
-  - Supported in v9.5
+  - Supported in v9.5+
 Specifies whether to override the cluster-wide blocklisted filesystem paths.

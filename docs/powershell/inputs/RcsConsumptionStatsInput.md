@@ -7,3 +7,5 @@ Input for getting RCS azure archival locations consumption stats.
   - Input of metric of which consumption stats are required.
 - doForecasting: System.Boolean
   - Input for enable forecasting of consumption stats.
+- retrieveConsumptionHistory: System.Boolean
+  - Input for retrieving consumption stats for past 90 days.

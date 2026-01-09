@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeId")]
         public System.String? AwsNativeId { get; set; }
 
+        //      C# -> System.String? EksVersion
+        // GraphQL -> eksVersion: String! (scalar)
+        [JsonProperty("eksVersion")]
+        public System.String? EksVersion { get; set; }
+
 
         #endregion
 
@@ -36,11 +41,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PcrAwsImagePullDetails Set(
-        System.String? AwsNativeId = null
+        System.String? AwsNativeId = null,
+        System.String? EksVersion = null
     ) 
     {
         if ( AwsNativeId != null ) {
             this.AwsNativeId = AwsNativeId;
+        }
+        if ( EksVersion != null ) {
+            this.EksVersion = EksVersion;
         }
         return this;
     }
@@ -63,6 +72,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "awsNativeId\n" ;
             } else {
                 s += ind + "awsNativeId\n" ;
+            }
+        }
+        //      C# -> System.String? EksVersion
+        // GraphQL -> eksVersion: String! (scalar)
+        if (this.EksVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eksVersion\n" ;
+            } else {
+                s += ind + "eksVersion\n" ;
             }
         }
         return s;
@@ -88,6 +106,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsNativeId != null && ec.Excludes("awsNativeId",true))
         {
             this.AwsNativeId = null;
+        }
+        //      C# -> System.String? EksVersion
+        // GraphQL -> eksVersion: String! (scalar)
+        if (ec.Includes("eksVersion",true))
+        {
+            if(this.EksVersion == null) {
+
+                this.EksVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.EksVersion != null && ec.Excludes("eksVersion",true))
+        {
+            this.EksVersion = null;
         }
     }
 

@@ -632,6 +632,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	updatePropertiesV96 = @{
+    /// 		# OPTIONAL
+    /// 		vcenterConfig = @{
+    /// 			# OPTIONAL
+    /// 			caCerts = $someString
+    /// 			# OPTIONAL
+    /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1417,6 +1450,39 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	updatePropertiesV95 = @{
+		# OPTIONAL
+		vcenterConfig = @{
+			# OPTIONAL
+			caCerts = $someString
+			# OPTIONAL
+			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+			# REQUIRED
+			hostname = $someString
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+				}
+			)
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
+		}
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
+	}
+	# OPTIONAL
+	updatePropertiesV96 = @{
 		# OPTIONAL
 		vcenterConfig = @{
 			# OPTIONAL

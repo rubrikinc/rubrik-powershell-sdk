@@ -40,3 +40,4 @@ Principal type for risk summary.
 - TRUSTED_DOMAIN - Principal of the trusted domain type.
 - PASSWORD_SETTINGS_CONTAINER - Principal of the password settings container type.
 - PASSWORD_SETTINGS - Principal of the password settings type.
+- NAMED_LOCATION - Principal of the named location type.

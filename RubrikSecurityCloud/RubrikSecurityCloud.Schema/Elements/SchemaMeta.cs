@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20251215-58" ;
+        public static string GraphqlSchemaVersion = "v20260105-21" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -822,6 +822,8 @@ namespace RubrikSecurityCloud.Types
             CloudDirectSnapshot,
             CloudDirectSnapshotConnection,
             CloudDirectSnapshotEdge,
+            CloudDirectSnapshotLocationRetentionInfo,
+            CloudDirectSnapshotRetentionInfo,
             CloudDirectSnapshotsGroupBySummary,
             CloudDirectSnapshotsGroupBySummaryConnection,
             CloudDirectSnapshotsGroupBySummaryEdge,
@@ -1117,6 +1119,7 @@ namespace RubrikSecurityCloud.Types
             Duration,
             Dynamics365Organization,
             EdgeWindowsToolLink,
+            EditFilesetTemplateTprReqChangesTemplate,
             EditReplicationPairTprReqChangesTemplate,
             EditSlaTprReqChangesTemplate,
             EffectiveSlaHolder,
@@ -1225,6 +1228,7 @@ namespace RubrikSecurityCloud.Types
             FilesetSnapshotVerbose,
             FilesetSummary,
             FilesetTemplate,
+            FilesetTemplateChangeEntry,
             FilesetTemplateConnection,
             FilesetTemplateCreate,
             FilesetTemplateDescendantTypeConnection,
@@ -2049,6 +2053,7 @@ namespace RubrikSecurityCloud.Types
             O365Mailbox,
             O365MailboxConnection,
             O365MailboxEdge,
+            O365MvbAnalysisJob,
             O365OauthConsentCompleteReply,
             O365OauthConsentKickoffReply,
             O365Onedrive,
@@ -2303,6 +2308,7 @@ namespace RubrikSecurityCloud.Types
             ProtectionStatus,
             ProtectionTaskDetailsTableFilter,
             ProviderInfo,
+            ProxmoxEnvironmentSummary,
             ProxySettings,
             PutSmbConfigurationReply,
             PvcInformation,
@@ -2776,6 +2782,8 @@ namespace RubrikSecurityCloud.Types
             TotpStatus,
             TprClusterRemovalDetails,
             TprConfiguration,
+            TprFilesetOptions,
+            TprFilesetTemplatePatch,
             TprPolicyDetail,
             TprPolicyObject,
             TprPolicyRule,
@@ -2855,6 +2863,7 @@ namespace RubrikSecurityCloud.Types
             UpdateO365AppAuthStatusReply,
             UpdateO365OrgCustomNameReply,
             UpdateOrgReply,
+            UpdateProxmoxEnvironmentReply,
             UpdateProxyConfigReply,
             UpdateRcvPrivateEndpointReply,
             UpdateScheduledReportReply,
@@ -3506,6 +3515,8 @@ namespace RubrikSecurityCloud.Types
             BulkUpdateOracleHostsInput,
             BulkUpdateOracleRacsInput,
             BulkUpdateRansomwareInvestigationEnabledInput,
+            BulkUpdateSapHanaSystemConfigInput,
+            BulkUpdateSystemConfigInput,
             BundleMetadataInput,
             CalendarEmailAddressFilter,
             CalendarGroupInfo,
@@ -3809,6 +3820,7 @@ namespace RubrikSecurityCloud.Types
             DiscoverMongoSourceInput,
             DiscoverNasSystemRequestInput,
             DiskIdToIsExcluded,
+            DiskToStorageInput,
             DissolveLegalHoldInput,
             DistributionDigestByIdInput,
             DlpConfigGenericNasInput,
@@ -3928,6 +3940,7 @@ namespace RubrikSecurityCloud.Types
             ExportOracleTablespaceConfigInput,
             ExportOracleTablespaceInput,
             ExportPathPairInput,
+            ExportProxmoxVmSnapshotInput,
             ExportSlaManagedVolumeSnapshotInput,
             ExportSnapshotJobConfigForBatchInput,
             ExportSnapshotJobConfigForBatchV3Input,
@@ -4565,6 +4578,8 @@ namespace RubrikSecurityCloud.Types
             ProtectionStatusFilter,
             ProviderDescription,
             ProviderName,
+            ProxmoxEnvironmentUpdateConfigInput,
+            ProxmoxVmExportSnapshotJobConfigInput,
             ProxyConfigInput,
             ProxySettingsInput,
             PutOpsManagerManagedMongoSourceInput,
@@ -5025,6 +5040,7 @@ namespace RubrikSecurityCloud.Types
             UpdateOrgInput,
             UpdateOrgSecurityPolicyInput,
             UpdatePolicyInput,
+            UpdateProxmoxEnvironmentInput,
             UpdateProxyConfigInput,
             UpdateRcsAutomaticTargetMappingInput,
             UpdateRcvPrivateEndpointInput,
@@ -5118,7 +5134,10 @@ namespace RubrikSecurityCloud.Types
             VmDownloadLocationDetailsInput,
             VmImageUrlInput,
             VmMakePrimaryInput,
+            VmRefreshAgentInput,
             VmRestorePathPairInput,
+            VmUnregisterAgentInput,
+            VmUpdateAgentCertificateInput,
             VmwareAdaptiveThrottlingSettingsInput,
             VmwareDatastoreFreespaceThresholdInput,
             VmwareDeviceKeywithNetworkNameV2Input,
@@ -5181,11 +5200,8 @@ namespace RubrikSecurityCloud.Types
             VsphereVmRecoverFilesInput,
             VsphereVmRecoverFilesNewInput,
             VsphereVmRecoveryRangeStatusReq,
-            VsphereVmRefreshAgentInput,
             VsphereVmRegisterAgentInput,
             VsphereVmRegisterAgentWithOrgInput,
-            VsphereVmUnregisterAgentInput,
-            VsphereVmUpdateAgentCertificateInput,
             VsphereVmUpdateUnmountTimeInput,
             WarmSearchCacheInput,
             WebCertificateInfo,
@@ -5765,6 +5781,7 @@ namespace RubrikSecurityCloud.Types
             linuxFileset,
             listAllUploadRecords,
             listCertificateUsagesForCloudAccount,
+            listDiffFilesForSnapshot,
             listO365Apps,
             lockoutConfig,
             lookupAccount,
@@ -6308,6 +6325,7 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
             bulkUpdateRansomwareInvestigationStatus,
+            bulkUpdateSystemConfig,
             cancelActivitySeries,
             cancelDownloadPackage,
             cancelScheduledUpgrade,
@@ -6603,6 +6621,7 @@ namespace RubrikSecurityCloud.Types
             exportO365MailboxV2,
             exportOracleDatabase,
             exportOracleTablespace,
+            exportProxmoxVmSnapshot,
             exportSlaManagedVolumeSnapshot,
             filesetDownloadSnapshotFiles,
             filesetDownloadSnapshotFilesFromArchivalLocation,
@@ -6979,6 +6998,7 @@ namespace RubrikSecurityCloud.Types
             updateOrgSecurityPolicy,
             updatePolicy,
             updatePreviewerClusterConfig,
+            updateProxmoxEnvironment,
             updateProxyConfig,
             updateRcsAutomaticTargetMapping,
             updateRcvPrivateEndpoint,
@@ -7667,6 +7687,7 @@ namespace RubrikSecurityCloud.Types
             O365ContactsSearchObjectType,
             O365GroupSubType,
             O365GroupType,
+            O365MvbAnalysisJobStatus,
             O365MvbWorkloadType,
             O365RestoreActionType,
             O365ServiceAccountStatus,
@@ -9284,6 +9305,7 @@ namespace RubrikSecurityCloud.Types
                     "CloudAccountsTprReqChangesTemplate",
                     "CloudArchivalLocationTprReqChangesTemplate",
                     "DeleteReplicationPairTprReqChangesTemplate",
+                    "EditFilesetTemplateTprReqChangesTemplate",
                     "EditReplicationPairTprReqChangesTemplate",
                     "EditSlaTprReqChangesTemplate",
                     "ManageUserTprReqChangesTemplate",
@@ -10339,6 +10361,7 @@ namespace RubrikSecurityCloud.Types
             bulkUpdateOracleHosts,
             bulkUpdateOracleRacs,
             bulkUpdateRansomwareInvestigationStatus,
+            bulkUpdateSystemConfig,
             canIgnoreClusterRemovalPrechecks,
             cancelActivitySeries,
             cancelDownloadPackage,
@@ -10772,6 +10795,7 @@ namespace RubrikSecurityCloud.Types
             exportO365MailboxV2,
             exportOracleDatabase,
             exportOracleTablespace,
+            exportProxmoxVmSnapshot,
             exportSlaManagedVolumeSnapshot,
             externalDeploymentName,
             failedRestoreItemsInfo,
@@ -10968,6 +10992,7 @@ namespace RubrikSecurityCloud.Types
             listAllUploadRecords,
             listCertificateUsagesForCloudAccount,
             listCidrsForComputeSetting,
+            listDiffFilesForSnapshot,
             listO365Apps,
             lockCyberRecovery,
             lockUsersByAdmin,
@@ -11611,6 +11636,7 @@ namespace RubrikSecurityCloud.Types
             updateOrgSecurityPolicy,
             updatePolicy,
             updatePreviewerClusterConfig,
+            updateProxmoxEnvironment,
             updateProxyConfig,
             updateRcsAutomaticTargetMapping,
             updateRcvPrivateEndpoint,
@@ -14947,6 +14973,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationRansomware",
                         cmdletSwitchName: "BulkUpdateInvestigationStatus",
                         gqlRootFieldName: "bulkUpdateRansomwareInvestigationStatus"
+                    )
+                },
+                {
+                    GqlRootFieldName.bulkUpdateSystemConfig,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "BulkUpdateSystemConfig",
+                        gqlRootFieldName: "bulkUpdateSystemConfig"
                     )
                 },
                 {
@@ -18414,6 +18448,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.exportProxmoxVmSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscMutationSnapshot",
+                        cmdletSwitchName: "ExportProxmoxVm",
+                        gqlRootFieldName: "exportProxmoxVmSnapshot"
+                    )
+                },
+                {
                     GqlRootFieldName.exportSlaManagedVolumeSnapshot,
                     new RscOp(
                         cmdletName: "New-RscMutationSla",
@@ -19979,6 +20021,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMisc",
                         cmdletSwitchName: "ListCidrsForComputeSetting",
                         gqlRootFieldName: "listCidrsForComputeSetting"
+                    )
+                },
+                {
+                    GqlRootFieldName.listDiffFilesForSnapshot,
+                    new RscOp(
+                        cmdletName: "New-RscQuerySnapshot",
+                        cmdletSwitchName: "ListDiffFilesFor",
+                        gqlRootFieldName: "listDiffFilesForSnapshot"
                     )
                 },
                 {
@@ -25126,6 +25176,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.updateProxmoxEnvironment,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "UpdateProxmoxEnvironment",
+                        gqlRootFieldName: "updateProxmoxEnvironment"
+                    )
+                },
+                {
                     GqlRootFieldName.updateProxyConfig,
                     new RscOp(
                         cmdletName: "New-RscMutationMisc",
@@ -28157,6 +28215,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.bulkUpdateRansomwareInvestigationStatus
                 },
                 {
+                    "New-RscMutationMisc -Op BulkUpdateSystemConfig",
+                    GqlRootFieldName.bulkUpdateSystemConfig
+                },
+                {
                     "New-RscQueryCluster -Op CanIgnoreClusterRemovalPrechecks",
                     GqlRootFieldName.canIgnoreClusterRemovalPrechecks
                 },
@@ -29889,6 +29951,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.exportOracleTablespace
                 },
                 {
+                    "New-RscMutationSnapshot -Op ExportProxmoxVm",
+                    GqlRootFieldName.exportProxmoxVmSnapshot
+                },
+                {
                     "New-RscMutationSla -Op ExportManagedVolumeSnapshot",
                     GqlRootFieldName.exportSlaManagedVolumeSnapshot
                 },
@@ -30671,6 +30737,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMisc -Op ListCidrsForComputeSetting",
                     GqlRootFieldName.listCidrsForComputeSetting
+                },
+                {
+                    "New-RscQuerySnapshot -Op ListDiffFilesFor",
+                    GqlRootFieldName.listDiffFilesForSnapshot
                 },
                 {
                     "New-RscQueryO365 -Op ListApps",
@@ -33245,6 +33315,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.updatePreviewerClusterConfig
                 },
                 {
+                    "New-RscMutationMisc -Op UpdateProxmoxEnvironment",
+                    GqlRootFieldName.updateProxmoxEnvironment
+                },
+                {
                     "New-RscMutationMisc -Op UpdateProxyConfig",
                     GqlRootFieldName.updateProxyConfig
                 },
@@ -34257,6 +34331,7 @@ namespace RubrikSecurityCloud.Types
                         "bulkExportMssqlDatabases",
                         "bulkRecoverSapHanaDatabases",
                         "bulkTierExistingSnapshots",
+                        "bulkUpdateSystemConfig",
                         "checkCloudComputeConnectivityJobProgress",
                         "configureSapHanaRestore",
                         "createActiveDirectoryLiveMount",
@@ -34348,6 +34423,7 @@ namespace RubrikSecurityCloud.Types
                         "exportNutanixSnapshot",
                         "exportOracleDatabase",
                         "exportOracleTablespace",
+                        "exportProxmoxVmSnapshot",
                         "exportSlaManagedVolumeSnapshot",
                         "filesetDownloadSnapshotFiles",
                         "filesetDownloadSnapshotFilesFromArchivalLocation",
@@ -37624,6 +37700,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "SnapshotFileDeltaV2Connection", new List<string> {
+                        "listDiffFilesForSnapshot",
                         "snapshotFilesDeltaV2",
                     }
                 },
@@ -38131,6 +38208,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "UpdateOrgReply", new List<string> {
                         "updateOrg",
+                    }
+                },
+                {   "UpdateProxmoxEnvironmentReply", new List<string> {
+                        "updateProxmoxEnvironment",
                     }
                 },
                 {   "UpdateProxyConfigReply", new List<string> {
@@ -40163,6 +40244,10 @@ namespace RubrikSecurityCloud.Types
                         "bulkUpdateRansomwareInvestigationStatus",
                     }
                 },
+                {   "BulkUpdateSapHanaSystemConfigInput", new List<string> {
+                        "bulkUpdateSystemConfig",
+                    }
+                },
                 {   "CalendarSearchFilter", new List<string> {
                         "browseCalendar",
                         "snappableEventSearch",
@@ -41545,6 +41630,10 @@ namespace RubrikSecurityCloud.Types
                         "exportOracleTablespace",
                     }
                 },
+                {   "ExportProxmoxVmSnapshotInput", new List<string> {
+                        "exportProxmoxVmSnapshot",
+                    }
+                },
                 {   "ExportSlaManagedVolumeSnapshotInput", new List<string> {
                         "exportSlaManagedVolumeSnapshot",
                     }
@@ -41582,6 +41671,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "FileResultSortInput", new List<string> {
+                        "listDiffFilesForSnapshot",
                         "objectFiles",
                         "snapshotFilesDeltaV2",
                         "userActivities",
@@ -42366,6 +42456,7 @@ namespace RubrikSecurityCloud.Types
                         "ldapIntegrationConnection",
                         "ldapPrincipalConnection",
                         "legalHoldSnapshotsForSnappable",
+                        "listDiffFilesForSnapshot",
                         "listO365Apps",
                         "m365BackupStorageObjectRestorePoints",
                         "managedVolumeLiveMounts",
@@ -43498,6 +43589,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "SensitiveDataDiscoveryFiltersInput", new List<string> {
+                        "listDiffFilesForSnapshot",
                         "snapshotFilesDeltaV2",
                     }
                 },
@@ -43669,6 +43761,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "SnapshotDeltaFilterInput", new List<string> {
+                        "listDiffFilesForSnapshot",
                         "snapshotFilesDelta",
                         "snapshotFilesDeltaV2",
                     }
@@ -44243,6 +44336,7 @@ namespace RubrikSecurityCloud.Types
                         "ldapIntegrationConnection",
                         "ldapPrincipalConnection",
                         "legalHoldSnapshotsForSnappable",
+                        "listDiffFilesForSnapshot",
                         "listO365Apps",
                         "m365BackupStorageObjectRestorePoints",
                         "managedVolumeLiveMounts",
@@ -44797,6 +44891,7 @@ namespace RubrikSecurityCloud.Types
                         "kubernetesProtectionSets",
                         "ldapPrincipalConnection",
                         "linuxFileset",
+                        "listDiffFilesForSnapshot",
                         "m365DayToDayModeStats",
                         "m365LicenseEntitlement",
                         "m365OnboardingModeBackupStats",
@@ -45315,6 +45410,10 @@ namespace RubrikSecurityCloud.Types
                         "updatePolicy",
                     }
                 },
+                {   "UpdateProxmoxEnvironmentInput", new List<string> {
+                        "updateProxmoxEnvironment",
+                    }
+                },
                 {   "UpdateProxyConfigInput", new List<string> {
                         "updateProxyConfig",
                     }
@@ -45588,6 +45687,18 @@ namespace RubrikSecurityCloud.Types
                         "vmMakePrimary",
                     }
                 },
+                {   "VmRefreshAgentInput", new List<string> {
+                        "vsphereVmRefreshAgent",
+                    }
+                },
+                {   "VmUnregisterAgentInput", new List<string> {
+                        "vsphereVmUnregisterAgent",
+                    }
+                },
+                {   "VmUpdateAgentCertificateInput", new List<string> {
+                        "vsphereVmUpdateAgentCertificate",
+                    }
+                },
                 {   "VmwareDownloadSnapshotFromLocationInput", new List<string> {
                         "vmwareDownloadSnapshotFromLocation",
                     }
@@ -45724,24 +45835,12 @@ namespace RubrikSecurityCloud.Types
                         "vsphereVmRecoveryRangeStatuses",
                     }
                 },
-                {   "VsphereVmRefreshAgentInput", new List<string> {
-                        "vsphereVmRefreshAgent",
-                    }
-                },
                 {   "VsphereVmRegisterAgentInput", new List<string> {
                         "vsphereVmRegisterAgent",
                     }
                 },
                 {   "VsphereVmRegisterAgentWithOrgInput", new List<string> {
                         "vsphereVmRegisterAgentWithOrg",
-                    }
-                },
-                {   "VsphereVmUnregisterAgentInput", new List<string> {
-                        "vsphereVmUnregisterAgent",
-                    }
-                },
-                {   "VsphereVmUpdateAgentCertificateInput", new List<string> {
-                        "vsphereVmUpdateAgentCertificate",
                     }
                 },
                 {   "VsphereVmUpdateUnmountTimeInput", new List<string> {
@@ -46216,6 +46315,7 @@ namespace RubrikSecurityCloud.Types
                     }
                 },
                 {   "[QuarantineFilter]", new List<string> {
+                        "listDiffFilesForSnapshot",
                         "snapshotFilesDelta",
                         "snapshotFilesDeltaV2",
                     }
@@ -46556,6 +46656,7 @@ namespace RubrikSecurityCloud.Types
                 { "bulkExportMssqlDatabases", "AsyncRequestStatus"},
                 { "bulkRecoverSapHanaDatabases", "AsyncRequestStatus"},
                 { "bulkTierExistingSnapshots", "AsyncRequestStatus"},
+                { "bulkUpdateSystemConfig", "AsyncRequestStatus"},
                 { "checkCloudComputeConnectivityJobProgress", "AsyncRequestStatus"},
                 { "configureSapHanaRestore", "AsyncRequestStatus"},
                 { "createActiveDirectoryLiveMount", "AsyncRequestStatus"},
@@ -46647,6 +46748,7 @@ namespace RubrikSecurityCloud.Types
                 { "exportNutanixSnapshot", "AsyncRequestStatus"},
                 { "exportOracleDatabase", "AsyncRequestStatus"},
                 { "exportOracleTablespace", "AsyncRequestStatus"},
+                { "exportProxmoxVmSnapshot", "AsyncRequestStatus"},
                 { "exportSlaManagedVolumeSnapshot", "AsyncRequestStatus"},
                 { "filesetDownloadSnapshotFiles", "AsyncRequestStatus"},
                 { "filesetDownloadSnapshotFilesFromArchivalLocation", "AsyncRequestStatus"},
@@ -47739,6 +47841,7 @@ namespace RubrikSecurityCloud.Types
                 { "browseSnapshotFileConnection", "SnapshotFileConnection"},
                 { "cloudNativeSnapshots", "SnapshotFileConnection"},
                 { "snapshotFilesDelta", "SnapshotFileDeltaConnection"},
+                { "listDiffFilesForSnapshot", "SnapshotFileDeltaV2Connection"},
                 { "snapshotFilesDeltaV2", "SnapshotFileDeltaV2Connection"},
                 { "snapshotResults", "SnapshotResultConnection"},
                 { "snapshotsForUnmanagedObject", "SnapshotSummaryConnection"},
@@ -47901,6 +48004,7 @@ namespace RubrikSecurityCloud.Types
                 { "updateO365AppAuthStatus", "UpdateO365AppAuthStatusReply"},
                 { "updateO365OrgCustomName", "UpdateO365OrgCustomNameReply"},
                 { "updateOrg", "UpdateOrgReply"},
+                { "updateProxmoxEnvironment", "UpdateProxmoxEnvironmentReply"},
                 { "updateProxyConfig", "UpdateProxyConfigReply"},
                 { "updateRcvPrivateEndpoint", "UpdateRcvPrivateEndpointReply"},
                 { "updateScheduledReport", "UpdateScheduledReportReply"},
@@ -49556,6 +49660,7 @@ namespace RubrikSecurityCloud.Types
                     "BrowseTeamsDrive",
                     "BulkCreateNasFilesets",
                     "BulkUpdateNasNamespaces",
+                    "BulkUpdateSystemConfig",
                     "CancelDownloadPackage",
                     "CancelScheduledUpgrade",
                     "CancelTaskchain",
@@ -49879,6 +49984,7 @@ namespace RubrikSecurityCloud.Types
                     "UpdateManagedIdentities",
                     "UpdateManagedIdentitiesAsync",
                     "UpdateNetworkThrottle",
+                    "UpdateProxmoxEnvironment",
                     "UpdateProxyConfig",
                     "UpdateRoleAssignments",
                     "UpdateSupportUserAccess",
@@ -50518,6 +50624,7 @@ namespace RubrikSecurityCloud.Types
                     "DeletesOfUnmanagedObjects",
                     "EmailSearch",
                     "EventSearch",
+                    "ExportProxmoxVm",
                     "FilesDelta",
                     "FilesDeltaV2",
                     "Fileset",
@@ -50525,6 +50632,7 @@ namespace RubrikSecurityCloud.Types
                     "FilesetExportFiles",
                     "FilesetFiles",
                     "LegalHoldSnappable",
+                    "ListDiffFilesFor",
                     "NewestForCloudDirectObject",
                     "OldestForCloudDirectObject",
                     "OnedriveSearch",

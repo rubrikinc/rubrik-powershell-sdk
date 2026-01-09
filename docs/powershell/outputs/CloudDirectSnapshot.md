@@ -37,12 +37,16 @@ NAS Cloud Direct snapshot object.
   - Name of policy assigned to the snapshot in NAS Cloud Direct.
 - workloadId: System.String
   - Rubrik ID of NAS Cloud Direct workload.
+- snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo
+  - Snapshot retention-related information.
 - slaDomain: SlaDomain
   - SLA Domain of the snapshot.
 - isDownloadedSnapshot: System.Boolean
   - Specifies whether the snapshot was downloaded.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
+- target: System.String
+  - The name of the target associated with this snapshot.
 - object: CloudDirectNasObject
   - NAS Cloud Direct object (Bucket or Share) to which this snapshot belongs.
 - isExpired: System.Boolean

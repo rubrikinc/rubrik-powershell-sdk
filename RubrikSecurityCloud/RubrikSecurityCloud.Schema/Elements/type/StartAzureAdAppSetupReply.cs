@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> O365AzureCloudType? TenantCloudType
+        // GraphQL -> tenantCloudType: O365AzureCloudType! (enum)
+        [JsonProperty("tenantCloudType")]
+        public O365AzureCloudType? TenantCloudType { get; set; }
+
         //      C# -> AzureAdAppSetupWarningType? Warning
         // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
         [JsonProperty("warning")]
@@ -35,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("csrfToken")]
         public System.String? CsrfToken { get; set; }
 
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        [JsonProperty("missingPermissions")]
+        public List<System.String>? MissingPermissions { get; set; }
+
 
         #endregion
 
@@ -45,11 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public StartAzureAdAppSetupReply Set(
+        O365AzureCloudType? TenantCloudType = null,
         AzureAdAppSetupWarningType? Warning = null,
         System.String? AppId = null,
-        System.String? CsrfToken = null
+        System.String? CsrfToken = null,
+        List<System.String>? MissingPermissions = null
     ) 
     {
+        if ( TenantCloudType != null ) {
+            this.TenantCloudType = TenantCloudType;
+        }
         if ( Warning != null ) {
             this.Warning = Warning;
         }
@@ -58,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CsrfToken != null ) {
             this.CsrfToken = CsrfToken;
+        }
+        if ( MissingPermissions != null ) {
+            this.MissingPermissions = MissingPermissions;
         }
         return this;
     }
@@ -73,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> O365AzureCloudType? TenantCloudType
+        // GraphQL -> tenantCloudType: O365AzureCloudType! (enum)
+        if (this.TenantCloudType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantCloudType\n" ;
+            } else {
+                s += ind + "tenantCloudType\n" ;
+            }
+        }
         //      C# -> AzureAdAppSetupWarningType? Warning
         // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
         if (this.Warning != null) {
@@ -100,6 +127,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "csrfToken\n" ;
             }
         }
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        if (this.MissingPermissions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "missingPermissions\n" ;
+            } else {
+                s += ind + "missingPermissions\n" ;
+            }
+        }
         return s;
     }
 
@@ -107,6 +143,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> O365AzureCloudType? TenantCloudType
+        // GraphQL -> tenantCloudType: O365AzureCloudType! (enum)
+        if (ec.Includes("tenantCloudType",true))
+        {
+            if(this.TenantCloudType == null) {
+
+                this.TenantCloudType = new O365AzureCloudType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantCloudType != null && ec.Excludes("tenantCloudType",true))
+        {
+            this.TenantCloudType = null;
+        }
         //      C# -> AzureAdAppSetupWarningType? Warning
         // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
         if (ec.Includes("warning",true))
@@ -157,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CsrfToken != null && ec.Excludes("csrfToken",true))
         {
             this.CsrfToken = null;
+        }
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        if (ec.Includes("missingPermissions",true))
+        {
+            if(this.MissingPermissions == null) {
+
+                this.MissingPermissions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MissingPermissions != null && ec.Excludes("missingPermissions",true))
+        {
+            this.MissingPermissions = null;
         }
     }
 

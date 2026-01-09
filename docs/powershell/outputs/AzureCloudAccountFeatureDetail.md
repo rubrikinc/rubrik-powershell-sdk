@@ -12,7 +12,7 @@ Azure Cloud Account Feature details.
 - customerFeatureId: System.String
   - Customer feature UUID.
 - userAssignedManagedIdentity: AzureUserAssignedManagedIdentity
-  - User assigned managed identity for encryption feature. It is null for features other than Cloud Native Archival Encryption.
+  - User assigned managed identity. It is populated for Cloud Native Archival Encryption and Azure SQL DB Protection features.
 - persistentStorage: PersistentStorage
   - Persistent storage configured for the feature. It is null for features other than Azure SQL DB and Azure SQL MI.
 - specificDetails: AzureSpecificFeatureDetails

@@ -3239,7 +3239,7 @@ $query.Var.input = @{
         //     filterUpgradeable: Boolean! = true
         //     shouldShowAll: Boolean! = true
         //     filterAfterSource: Boolean! = false
-        //     sortOrder: SortOrder
+        //     sortOrder: SortOrder = DESC
         //   ): CdmUpgradeReleaseDetailsFromSupportPortalReply!
         internal void InitQueryGetCdmReleaseDetailsForClusterFromSupportPortal()
         {
