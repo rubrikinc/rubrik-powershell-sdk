@@ -11,8 +11,6 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Map of azureAdObjectType to object IDs.
 - forceChangePasswordWithMfa: System.Boolean
   - Specifies whether to enable MFA during the recovery of one or more users.
-- ctrConfig: EntraIdCrossTenantRecoveryConfig
-  - Configuration for cross tenant recovery.
 - relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType
   - Represents the modes for relationship restore for Azure AD objects.
 - objectRecoveryOptions: ObjectRecoveryOptionsType
@@ -21,3 +19,5 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Represents the modes for attributes restore for Azure AD objects.
 - attributeRecoveryOptions: AttributeRecoveryOptions
   - Represents attribute recovery options for each Azure AD object.
+- ctrConfig: EntraIdCrossTenantRecoveryConfig
+  - Configuration for cross tenant recovery.

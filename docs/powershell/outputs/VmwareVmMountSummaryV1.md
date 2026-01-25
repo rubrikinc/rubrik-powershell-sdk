@@ -30,7 +30,7 @@ Gives the timestamp at which the mount was created.
 - mountedVmId: System.String
   - Supported in v5.0+
 - snapshotDate: DateTime
-  - Required. Supported in v5.0+
+  - Supported in v5.0+
 - unmountRequestId: System.String
   - Supported in v5.0+
 - vmId: System.String

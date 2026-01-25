@@ -65,6 +65,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("masterRolePath")]
         public System.String? MasterRolePath { get; set; }
 
+        //      C# -> System.String? PermissionBoundaryName
+        // GraphQL -> permissionBoundaryName: String! (scalar)
+        [JsonProperty("permissionBoundaryName")]
+        public System.String? PermissionBoundaryName { get; set; }
+
+        //      C# -> System.String? PermissionBoundaryPath
+        // GraphQL -> permissionBoundaryPath: String! (scalar)
+        [JsonProperty("permissionBoundaryPath")]
+        public System.String? PermissionBoundaryPath { get; set; }
+
         //      C# -> System.String? WorkerRoleName
         // GraphQL -> workerRoleName: String! (scalar)
         [JsonProperty("workerRoleName")]
@@ -94,6 +104,8 @@ namespace RubrikSecurityCloud.Types
         System.String? LambdaRolePath = null,
         System.String? MasterRoleName = null,
         System.String? MasterRolePath = null,
+        System.String? PermissionBoundaryName = null,
+        System.String? PermissionBoundaryPath = null,
         System.String? WorkerRoleName = null,
         System.String? WorkerRolePath = null
     ) 
@@ -124,6 +136,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MasterRolePath != null ) {
             this.MasterRolePath = MasterRolePath;
+        }
+        if ( PermissionBoundaryName != null ) {
+            this.PermissionBoundaryName = PermissionBoundaryName;
+        }
+        if ( PermissionBoundaryPath != null ) {
+            this.PermissionBoundaryPath = PermissionBoundaryPath;
         }
         if ( WorkerRoleName != null ) {
             this.WorkerRoleName = WorkerRoleName;
@@ -224,6 +242,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "masterRolePath\n" ;
             } else {
                 s += ind + "masterRolePath\n" ;
+            }
+        }
+        //      C# -> System.String? PermissionBoundaryName
+        // GraphQL -> permissionBoundaryName: String! (scalar)
+        if (this.PermissionBoundaryName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "permissionBoundaryName\n" ;
+            } else {
+                s += ind + "permissionBoundaryName\n" ;
+            }
+        }
+        //      C# -> System.String? PermissionBoundaryPath
+        // GraphQL -> permissionBoundaryPath: String! (scalar)
+        if (this.PermissionBoundaryPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "permissionBoundaryPath\n" ;
+            } else {
+                s += ind + "permissionBoundaryPath\n" ;
             }
         }
         //      C# -> System.String? WorkerRoleName
@@ -403,6 +439,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.MasterRolePath != null && ec.Excludes("masterRolePath",true))
         {
             this.MasterRolePath = null;
+        }
+        //      C# -> System.String? PermissionBoundaryName
+        // GraphQL -> permissionBoundaryName: String! (scalar)
+        if (ec.Includes("permissionBoundaryName",true))
+        {
+            if(this.PermissionBoundaryName == null) {
+
+                this.PermissionBoundaryName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermissionBoundaryName != null && ec.Excludes("permissionBoundaryName",true))
+        {
+            this.PermissionBoundaryName = null;
+        }
+        //      C# -> System.String? PermissionBoundaryPath
+        // GraphQL -> permissionBoundaryPath: String! (scalar)
+        if (ec.Includes("permissionBoundaryPath",true))
+        {
+            if(this.PermissionBoundaryPath == null) {
+
+                this.PermissionBoundaryPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermissionBoundaryPath != null && ec.Excludes("permissionBoundaryPath",true))
+        {
+            this.PermissionBoundaryPath = null;
         }
         //      C# -> System.String? WorkerRoleName
         // GraphQL -> workerRoleName: String! (scalar)

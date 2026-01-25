@@ -117,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CHATBOT")]
         CHATBOT,
 
+        [EnumMember(Value = "CLI")]
+        CLI,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_BUCKET")]
         CLOUD_DIRECT_NAS_BUCKET,
 
@@ -426,11 +429,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
+        [EnumMember(Value = "PROXMOX_ENVIRONMENT")]
+        PROXMOX_ENVIRONMENT,
+
+        [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
+        PROXMOX_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "PUBLIC_CLOUD_MACHINE_INSTANCE")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,
 
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
+
+        [EnumMember(Value = "RSC_CHILD_ACCOUNT")]
+        RSC_CHILD_ACCOUNT,
 
         [EnumMember(Value = "RSC_TAG")]
         RSC_TAG,

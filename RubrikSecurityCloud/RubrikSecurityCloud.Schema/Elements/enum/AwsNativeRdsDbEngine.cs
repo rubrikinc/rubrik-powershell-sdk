@@ -24,6 +24,24 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AURORA_POSTGRESQL")]
         AURORA_POSTGRESQL,
 
+        [EnumMember(Value = "CUSTOM_ORACLE_EE")]
+        CUSTOM_ORACLE_EE,
+
+        [EnumMember(Value = "CUSTOM_ORACLE_EE_CDB")]
+        CUSTOM_ORACLE_EE_CDB,
+
+        [EnumMember(Value = "CUSTOM_ORACLE_SE2")]
+        CUSTOM_ORACLE_SE2,
+
+        [EnumMember(Value = "CUSTOM_ORACLE_SE2_CDB")]
+        CUSTOM_ORACLE_SE2_CDB,
+
+        [EnumMember(Value = "DB2_AE")]
+        DB2_AE,
+
+        [EnumMember(Value = "DB2_SE")]
+        DB2_SE,
+
         [EnumMember(Value = "MARIADB")]
         MARIADB,
 
@@ -33,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLE_EE")]
         ORACLE_EE,
 
+        [EnumMember(Value = "ORACLE_EE_CDB")]
+        ORACLE_EE_CDB,
+
         [EnumMember(Value = "ORACLE_SE")]
         ORACLE_SE,
 
@@ -41,6 +62,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ORACLE_SE2")]
         ORACLE_SE2,
+
+        [EnumMember(Value = "ORACLE_SE2_CDB")]
+        ORACLE_SE2_CDB,
 
         [EnumMember(Value = "POSTGRES")]
         POSTGRES,

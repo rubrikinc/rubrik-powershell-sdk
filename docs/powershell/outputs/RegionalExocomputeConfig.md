@@ -7,3 +7,5 @@ Contains the region and subnet configuration.
   - Region for which the subnet is configured.
 - subnetName: System.String
   - Name of the subnet.
+- projectId: System.String
+  - Project ID of the project containing the VPC network.

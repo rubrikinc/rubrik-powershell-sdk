@@ -25,3 +25,4 @@ datagov crawl-service.
 export to CSV.
 - REMEDIATION_ACTIONS_LOG_CSV - REMEDIATION_ACTIONS_LOG_CSV is a filetype for Remediation actions log
 export to CSV.
+- CLOUD_DIRECT_TASK_REPORT - CLOUD_DIRECT_TASK_REPORT is a filetype for NAS Cloud Direct task reports.

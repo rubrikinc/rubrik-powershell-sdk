@@ -30,6 +30,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUSTRALIASOUTHEAST")]
         AUSTRALIASOUTHEAST,
 
+        [EnumMember(Value = "AUSTRIAEAST")]
+        AUSTRIAEAST,
+
+        [EnumMember(Value = "BELGIUMCENTRAL")]
+        BELGIUMCENTRAL,
+
         [EnumMember(Value = "BRAZILSOUTH")]
         BRAZILSOUTH,
 

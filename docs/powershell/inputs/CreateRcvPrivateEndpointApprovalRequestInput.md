@@ -1,11 +1,11 @@
 ### CreateRcvPrivateEndpointApprovalRequestInput
-Input for adding private endpoint support to an RCV location.
+Input for creating an RCV private endpoint approval request.
 
 - locationId: System.String
-  - Field for specifying location identifier of the target.
+  - Location ID associated with this private endpoint.
 - privateEndpointId: System.String
-  - Field for specifying the Azure resource identifier for an RCV private endpoint.
+  - Unique identifier of the private endpoint from cloud provider.
 - name: System.String
-  - Name of the RCV private endpoint.
+  - Name of the private endpoint.
 - description: System.String
-  - Optional. Description of RCV the private endpoint.
+  - Description of the private endpoint.

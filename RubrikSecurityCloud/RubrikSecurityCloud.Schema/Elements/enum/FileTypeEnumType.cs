@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_API_METRICS_CSV")]
         CDM_API_METRICS_CSV,
 
+        [EnumMember(Value = "CLOUD_DIRECT_TASK_REPORT")]
+        CLOUD_DIRECT_TASK_REPORT,
+
         [EnumMember(Value = "ENTRA_ID_DOWNLOAD_SNAPSHOT")]
         ENTRA_ID_DOWNLOAD_SNAPSHOT,
 

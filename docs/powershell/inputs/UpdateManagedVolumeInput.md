@@ -6,4 +6,4 @@ Input for api call to update a Managed Volume.
 - id: System.String
   - Required. ID of managed volume.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

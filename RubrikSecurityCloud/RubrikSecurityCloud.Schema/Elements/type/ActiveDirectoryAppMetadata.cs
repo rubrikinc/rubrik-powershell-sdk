@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("diskLayoutDetailsOpt")]
         public WindowsDiskLayoutDetails? DiskLayoutDetailsOpt { get; set; }
 
+        //      C# -> NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt
+        // GraphQL -> ntdsDatabaseConsistencyOpt: NtdsDatabaseConsistency (type)
+        [JsonProperty("ntdsDatabaseConsistencyOpt")]
+        public NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt { get; set; }
+
         //      C# -> ActiveDirectoryObjectsCount? ObjectsCount
         // GraphQL -> objectsCount: ActiveDirectoryObjectsCount (type)
         [JsonProperty("objectsCount")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public ActiveDirectoryAppMetadata Set(
         System.String? RubrikBackupServiceDataDirPath = null,
         WindowsDiskLayoutDetails? DiskLayoutDetailsOpt = null,
+        NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt = null,
         ActiveDirectoryObjectsCount? ObjectsCount = null,
         OsDetails? OsDetailsOpt = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DiskLayoutDetailsOpt != null ) {
             this.DiskLayoutDetailsOpt = DiskLayoutDetailsOpt;
+        }
+        if ( NtdsDatabaseConsistencyOpt != null ) {
+            this.NtdsDatabaseConsistencyOpt = NtdsDatabaseConsistencyOpt;
         }
         if ( ObjectsCount != null ) {
             this.ObjectsCount = ObjectsCount;
@@ -100,6 +109,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "diskLayoutDetailsOpt" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt
+        // GraphQL -> ntdsDatabaseConsistencyOpt: NtdsDatabaseConsistency (type)
+        if (this.NtdsDatabaseConsistencyOpt != null) {
+            var fspec = this.NtdsDatabaseConsistencyOpt.AsFieldSpec(conf.Child("ntdsDatabaseConsistencyOpt"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ntdsDatabaseConsistencyOpt" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -169,6 +190,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DiskLayoutDetailsOpt != null && ec.Excludes("diskLayoutDetailsOpt",false))
         {
             this.DiskLayoutDetailsOpt = null;
+        }
+        //      C# -> NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt
+        // GraphQL -> ntdsDatabaseConsistencyOpt: NtdsDatabaseConsistency (type)
+        if (ec.Includes("ntdsDatabaseConsistencyOpt",false))
+        {
+            if(this.NtdsDatabaseConsistencyOpt == null) {
+
+                this.NtdsDatabaseConsistencyOpt = new NtdsDatabaseConsistency();
+                this.NtdsDatabaseConsistencyOpt.ApplyExploratoryFieldSpec(ec.NewChild("ntdsDatabaseConsistencyOpt"));
+
+            } else {
+
+                this.NtdsDatabaseConsistencyOpt.ApplyExploratoryFieldSpec(ec.NewChild("ntdsDatabaseConsistencyOpt"));
+
+            }
+        }
+        else if (this.NtdsDatabaseConsistencyOpt != null && ec.Excludes("ntdsDatabaseConsistencyOpt",false))
+        {
+            this.NtdsDatabaseConsistencyOpt = null;
         }
         //      C# -> ActiveDirectoryObjectsCount? ObjectsCount
         // GraphQL -> objectsCount: ActiveDirectoryObjectsCount (type)

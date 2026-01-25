@@ -5,9 +5,11 @@ Response of the operation that initiates onboarding of Azure AD.
   - State token to be used in CompleteAzureAdAppSetupReply.
 - appId: System.String
   - ID of the created Azure AD app.
-- missingPermissions: list of System.Strings
-  - List of missing permissions for the Entra ID app.
 - warning: AzureAdAppSetupWarningType
   - A warning message indicating a unrecommended onboarding scenario.
-- tenantCloudType: O365AzureCloudType
+- tenantCloudType: AzureCloudType
   - Cloud type of the Entra ID tenant.
+- missingPermissions: list of System.Strings
+  - List of missing permissions for the Entra ID app.
+- excessivePermissions: list of System.Strings
+  - List of excessive permissions for the Entra ID app.

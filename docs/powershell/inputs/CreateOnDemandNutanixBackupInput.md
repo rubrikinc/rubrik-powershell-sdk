@@ -8,4 +8,4 @@ Input for creating an on-demand Nutanix backup.
 v6.0-v8.0: ID of the VM.
 v8.1+: ID of the virtual machine.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

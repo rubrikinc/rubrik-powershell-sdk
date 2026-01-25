@@ -1,4 +1,4 @@
-// MonthlyDaySpecSpecInput.cs
+// SetAirPolicyAlertStatusInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,21 +13,25 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region MonthlyDaySpecSpecInput
+    #region SetAirPolicyAlertStatusInput
 
-    public class MonthlyDaySpecSpecInput: IInput
+    public class SetAirPolicyAlertStatusInput: IInput
     {
         #region members
 
-        //      C# -> MonthlyDaySpecSpecificDateInput? SpecificDate
-        // GraphQL -> specificDate: MonthlyDaySpecSpecificDateInput (input)
-        [JsonProperty("specificDate")]
-        public MonthlyDaySpecSpecificDateInput? SpecificDate { get; set; }
+        //      C# -> List<System.String>? AlertIds
+        // GraphQL -> alertIds: [UUID!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("alertIds")]
+        public List<System.String>? AlertIds { get; set; }
 
-        //      C# -> MonthlyDaySpecDayOfWeekPatternInput? DayOfWeekInMonth
-        // GraphQL -> dayOfWeekInMonth: MonthlyDaySpecDayOfWeekPatternInput (input)
-        [JsonProperty("dayOfWeekInMonth")]
-        public MonthlyDaySpecDayOfWeekPatternInput? DayOfWeekInMonth { get; set; }
+        //      C# -> AirPolicyViolationStatus? Status
+        // GraphQL -> status: AirPolicyViolationStatus! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("status")]
+        public AirPolicyViolationStatus? Status { get; set; }
 
 
         #endregion
@@ -55,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class MonthlyDaySpecSpecInput
+    } // class SetAirPolicyAlertStatusInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

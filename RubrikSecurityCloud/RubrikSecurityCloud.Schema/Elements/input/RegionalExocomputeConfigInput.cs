@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnetName")]
         public System.String? SubnetName { get; set; }
 
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String (scalar)
+        [JsonProperty("projectId")]
+        public System.String? ProjectId { get; set; }
+
 
         #endregion
 

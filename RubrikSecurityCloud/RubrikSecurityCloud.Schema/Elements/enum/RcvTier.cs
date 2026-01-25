@@ -24,8 +24,8 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP")]
         BACKUP,
 
-        [EnumMember(Value = "PREMIUM")]
-        PREMIUM
+        [EnumMember(Value = "RECOVERY")]
+        RECOVERY
 
 
     } // enum RcvTier

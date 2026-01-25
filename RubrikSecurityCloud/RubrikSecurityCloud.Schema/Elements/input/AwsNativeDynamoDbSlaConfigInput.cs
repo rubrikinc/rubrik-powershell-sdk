@@ -24,6 +24,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cmkAliasForPrimaryBackup")]
         public System.String? CmkAliasForPrimaryBackup { get; set; }
 
+        //      C# -> System.Boolean? ContinuousBackupsEnabled
+        // GraphQL -> continuousBackupsEnabled: Boolean (scalar)
+        [JsonProperty("continuousBackupsEnabled")]
+        public System.Boolean? ContinuousBackupsEnabled { get; set; }
+
+        //      C# -> System.Int32? ContinuousBackupRetentionInDays
+        // GraphQL -> continuousBackupRetentionInDays: Int (scalar)
+        [JsonProperty("continuousBackupRetentionInDays")]
+        public System.Int32? ContinuousBackupRetentionInDays { get; set; }
+
 
         #endregion
 

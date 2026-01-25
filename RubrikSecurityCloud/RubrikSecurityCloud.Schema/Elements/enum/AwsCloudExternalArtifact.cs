@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXOCOMPUTE_EKS_WORKERNODE_ROLE_ARN")]
         EXOCOMPUTE_EKS_WORKERNODE_ROLE_ARN,
 
+        [EnumMember(Value = "EXOCOMPUTE_FLUENTD_ROLE_ARN")]
+        EXOCOMPUTE_FLUENTD_ROLE_ARN,
+
         [EnumMember(Value = "IAM_USER_ARN")]
         IAM_USER_ARN,
 

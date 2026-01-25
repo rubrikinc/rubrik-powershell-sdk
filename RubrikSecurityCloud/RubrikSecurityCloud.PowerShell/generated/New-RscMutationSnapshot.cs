@@ -940,6 +940,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectFid = $someString
     /// 	# OPTIONAL
     /// 	slaId = $someString
+    /// 	# OPTIONAL
+    /// 	exclusions = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			path = $someString
+    /// 			# OPTIONAL
+    /// 			pattern = $someString
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -2179,6 +2188,15 @@ $query.Var.input = @{
 	objectFid = $someString
 	# OPTIONAL
 	slaId = $someString
+	# OPTIONAL
+	exclusions = @(
+		@{
+			# OPTIONAL
+			path = $someString
+			# OPTIONAL
+			pattern = $someString
+		}
+	)
 }"
             );
         }

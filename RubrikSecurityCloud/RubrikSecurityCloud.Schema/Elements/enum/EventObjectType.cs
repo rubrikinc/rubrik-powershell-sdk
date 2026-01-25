@@ -606,6 +606,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
 
+        [EnumMember(Value = "RSC_CHILD_ACCOUNT")]
+        RSC_CHILD_ACCOUNT,
+
         [EnumMember(Value = "RUBRIK_SAAS_ACCOUNT")]
         RUBRIK_SAAS_ACCOUNT,
 

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ExocomputeBundleStatus? BundleStatus
+        // GraphQL -> bundleStatus: ExocomputeBundleStatus! (enum)
+        [JsonProperty("bundleStatus")]
+        public ExocomputeBundleStatus? BundleStatus { get; set; }
+
         //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions
         // GraphQL -> exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
         [JsonProperty("exocomputeEligibleAuthServerRegions")]
@@ -40,10 +45,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mappedExocomputeConfigs")]
         public List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs { get; set; }
 
+        //      C# -> System.String? LatestApprovedBundleVersion
+        // GraphQL -> latestApprovedBundleVersion: String! (scalar)
+        [JsonProperty("latestApprovedBundleVersion")]
+        public System.String? LatestApprovedBundleVersion { get; set; }
+
+        //      C# -> System.String? LatestBundleVersion
+        // GraphQL -> latestBundleVersion: String! (scalar)
+        [JsonProperty("latestBundleVersion")]
+        public System.String? LatestBundleVersion { get; set; }
+
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
         [JsonProperty("mappedCloudAccountIds")]
         public List<System.String>? MappedCloudAccountIds { get; set; }
+
+        //      C# -> List<System.String>? SupportedEksVersions
+        // GraphQL -> supportedEksVersions: [String!]! (scalar)
+        [JsonProperty("supportedEksVersions")]
+        public List<System.String>? SupportedEksVersions { get; set; }
 
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
@@ -85,11 +105,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsExocomputeConfig Set(
+        ExocomputeBundleStatus? BundleStatus = null,
         List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions = null,
         List<AwsCloudAccountRegion>? ExocomputeEligibleRegions = null,
         List<AwsExocomputeGetConfigurationResponse>? ExocomputeConfigs = null,
         List<AwsExocomputeGetConfigurationResponse>? MappedExocomputeConfigs = null,
+        System.String? LatestApprovedBundleVersion = null,
+        System.String? LatestBundleVersion = null,
         List<System.String>? MappedCloudAccountIds = null,
+        List<System.String>? SupportedEksVersions = null,
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? Configs = null,
         FeatureDetail? FeatureDetail = null,
@@ -98,6 +122,9 @@ namespace RubrikSecurityCloud.Types
         List<CloudAccountsCertificateInfo>? SslInspectionCertificates = null
     ) 
     {
+        if ( BundleStatus != null ) {
+            this.BundleStatus = BundleStatus;
+        }
         if ( ExocomputeEligibleAuthServerRegions != null ) {
             this.ExocomputeEligibleAuthServerRegions = ExocomputeEligibleAuthServerRegions;
         }
@@ -110,8 +137,17 @@ namespace RubrikSecurityCloud.Types
         if ( MappedExocomputeConfigs != null ) {
             this.MappedExocomputeConfigs = MappedExocomputeConfigs;
         }
+        if ( LatestApprovedBundleVersion != null ) {
+            this.LatestApprovedBundleVersion = LatestApprovedBundleVersion;
+        }
+        if ( LatestBundleVersion != null ) {
+            this.LatestBundleVersion = LatestBundleVersion;
+        }
         if ( MappedCloudAccountIds != null ) {
             this.MappedCloudAccountIds = MappedCloudAccountIds;
+        }
+        if ( SupportedEksVersions != null ) {
+            this.SupportedEksVersions = SupportedEksVersions;
         }
         if ( AwsCloudAccount != null ) {
             this.AwsCloudAccount = AwsCloudAccount;
@@ -145,6 +181,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ExocomputeBundleStatus? BundleStatus
+        // GraphQL -> bundleStatus: ExocomputeBundleStatus! (enum)
+        if (this.BundleStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "bundleStatus\n" ;
+            } else {
+                s += ind + "bundleStatus\n" ;
+            }
+        }
         //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions
         // GraphQL -> exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
         if (this.ExocomputeEligibleAuthServerRegions != null) {
@@ -189,6 +234,24 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? LatestApprovedBundleVersion
+        // GraphQL -> latestApprovedBundleVersion: String! (scalar)
+        if (this.LatestApprovedBundleVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestApprovedBundleVersion\n" ;
+            } else {
+                s += ind + "latestApprovedBundleVersion\n" ;
+            }
+        }
+        //      C# -> System.String? LatestBundleVersion
+        // GraphQL -> latestBundleVersion: String! (scalar)
+        if (this.LatestBundleVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestBundleVersion\n" ;
+            } else {
+                s += ind + "latestBundleVersion\n" ;
+            }
+        }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
         if (this.MappedCloudAccountIds != null) {
@@ -196,6 +259,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mappedCloudAccountIds\n" ;
             } else {
                 s += ind + "mappedCloudAccountIds\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SupportedEksVersions
+        // GraphQL -> supportedEksVersions: [String!]! (scalar)
+        if (this.SupportedEksVersions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "supportedEksVersions\n" ;
+            } else {
+                s += ind + "supportedEksVersions\n" ;
             }
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
@@ -277,6 +349,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ExocomputeBundleStatus? BundleStatus
+        // GraphQL -> bundleStatus: ExocomputeBundleStatus! (enum)
+        if (ec.Includes("bundleStatus",true))
+        {
+            if(this.BundleStatus == null) {
+
+                this.BundleStatus = new ExocomputeBundleStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BundleStatus != null && ec.Excludes("bundleStatus",true))
+        {
+            this.BundleStatus = null;
+        }
         //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? ExocomputeEligibleAuthServerRegions
         // GraphQL -> exocomputeEligibleAuthServerRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
         if (ec.Includes("exocomputeEligibleAuthServerRegions",true))
@@ -349,6 +438,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.MappedExocomputeConfigs = null;
         }
+        //      C# -> System.String? LatestApprovedBundleVersion
+        // GraphQL -> latestApprovedBundleVersion: String! (scalar)
+        if (ec.Includes("latestApprovedBundleVersion",true))
+        {
+            if(this.LatestApprovedBundleVersion == null) {
+
+                this.LatestApprovedBundleVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestApprovedBundleVersion != null && ec.Excludes("latestApprovedBundleVersion",true))
+        {
+            this.LatestApprovedBundleVersion = null;
+        }
+        //      C# -> System.String? LatestBundleVersion
+        // GraphQL -> latestBundleVersion: String! (scalar)
+        if (ec.Includes("latestBundleVersion",true))
+        {
+            if(this.LatestBundleVersion == null) {
+
+                this.LatestBundleVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestBundleVersion != null && ec.Excludes("latestBundleVersion",true))
+        {
+            this.LatestBundleVersion = null;
+        }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
         if (ec.Includes("mappedCloudAccountIds",true))
@@ -365,6 +488,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MappedCloudAccountIds != null && ec.Excludes("mappedCloudAccountIds",true))
         {
             this.MappedCloudAccountIds = null;
+        }
+        //      C# -> List<System.String>? SupportedEksVersions
+        // GraphQL -> supportedEksVersions: [String!]! (scalar)
+        if (ec.Includes("supportedEksVersions",true))
+        {
+            if(this.SupportedEksVersions == null) {
+
+                this.SupportedEksVersions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SupportedEksVersions != null && ec.Excludes("supportedEksVersions",true))
+        {
+            this.SupportedEksVersions = null;
         }
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)

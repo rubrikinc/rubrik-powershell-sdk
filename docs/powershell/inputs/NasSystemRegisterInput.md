@@ -18,7 +18,7 @@ Specifies the default Changelist setting for all shares in the Isilon NAS system
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root user access to SMB shares on Isilon NAS systems. The root user access is granted on first fileset creation for the SMB share. The default value is true. This setting is applicable only when system-generated credentials are used.
 - shouldAllowDuplicateSystemsWithSameIp: System.Boolean
-  - Supported in v9.5+
+  - Supported in v9.4+
 Optional parameter that specifies whether to allow registering a NAS system that has the same IP address as an existing NAS system. The default value is false. Rubrik expects that you use this setting judiciously, primarily for Azure Files and similar hosted file systems where multiple NAS devices can have same IP address.
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
   - Supported in v8.1+

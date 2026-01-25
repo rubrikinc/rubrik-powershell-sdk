@@ -20,10 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> O365AzureCloudType? TenantCloudType
-        // GraphQL -> tenantCloudType: O365AzureCloudType! (enum)
+        //      C# -> AzureCloudType? TenantCloudType
+        // GraphQL -> tenantCloudType: AzureCloudType! (enum)
         [JsonProperty("tenantCloudType")]
-        public O365AzureCloudType? TenantCloudType { get; set; }
+        public AzureCloudType? TenantCloudType { get; set; }
 
         //      C# -> AzureAdAppSetupWarningType? Warning
         // GraphQL -> warning: AzureAdAppSetupWarningType! (enum)
@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("csrfToken")]
         public System.String? CsrfToken { get; set; }
 
+        //      C# -> List<System.String>? ExcessivePermissions
+        // GraphQL -> excessivePermissions: [String!]! (scalar)
+        [JsonProperty("excessivePermissions")]
+        public List<System.String>? ExcessivePermissions { get; set; }
+
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
         [JsonProperty("missingPermissions")]
@@ -55,10 +60,11 @@ namespace RubrikSecurityCloud.Types
     }
 
     public StartAzureAdAppSetupReply Set(
-        O365AzureCloudType? TenantCloudType = null,
+        AzureCloudType? TenantCloudType = null,
         AzureAdAppSetupWarningType? Warning = null,
         System.String? AppId = null,
         System.String? CsrfToken = null,
+        List<System.String>? ExcessivePermissions = null,
         List<System.String>? MissingPermissions = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CsrfToken != null ) {
             this.CsrfToken = CsrfToken;
+        }
+        if ( ExcessivePermissions != null ) {
+            this.ExcessivePermissions = ExcessivePermissions;
         }
         if ( MissingPermissions != null ) {
             this.MissingPermissions = MissingPermissions;
@@ -91,8 +100,8 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> O365AzureCloudType? TenantCloudType
-        // GraphQL -> tenantCloudType: O365AzureCloudType! (enum)
+        //      C# -> AzureCloudType? TenantCloudType
+        // GraphQL -> tenantCloudType: AzureCloudType! (enum)
         if (this.TenantCloudType != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "tenantCloudType\n" ;
@@ -127,6 +136,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "csrfToken\n" ;
             }
         }
+        //      C# -> List<System.String>? ExcessivePermissions
+        // GraphQL -> excessivePermissions: [String!]! (scalar)
+        if (this.ExcessivePermissions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excessivePermissions\n" ;
+            } else {
+                s += ind + "excessivePermissions\n" ;
+            }
+        }
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
         if (this.MissingPermissions != null) {
@@ -143,13 +161,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> O365AzureCloudType? TenantCloudType
-        // GraphQL -> tenantCloudType: O365AzureCloudType! (enum)
+        //      C# -> AzureCloudType? TenantCloudType
+        // GraphQL -> tenantCloudType: AzureCloudType! (enum)
         if (ec.Includes("tenantCloudType",true))
         {
             if(this.TenantCloudType == null) {
 
-                this.TenantCloudType = new O365AzureCloudType();
+                this.TenantCloudType = new AzureCloudType();
 
             } else {
 
@@ -210,6 +228,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CsrfToken != null && ec.Excludes("csrfToken",true))
         {
             this.CsrfToken = null;
+        }
+        //      C# -> List<System.String>? ExcessivePermissions
+        // GraphQL -> excessivePermissions: [String!]! (scalar)
+        if (ec.Includes("excessivePermissions",true))
+        {
+            if(this.ExcessivePermissions == null) {
+
+                this.ExcessivePermissions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcessivePermissions != null && ec.Excludes("excessivePermissions",true))
+        {
+            this.ExcessivePermissions = null;
         }
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)

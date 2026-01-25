@@ -85,6 +85,11 @@ Get the properties for the database (SQL and Oracle) log backup delay email noti
 
 - There is a single argument of type QueryReportPropertiesInput.
 - Returns DbLogReportProperties.
+### generateclouddirecttask
+GenerateCloudDirectTaskReport generates a task report for failed paths of a Cloud Direct task.
+
+- There is a single argument of type GenerateCloudDirectTaskReportReq.
+- Returns GenerateCloudDirectTaskReportReply.
 ### healthcheckerror
 GetHealthCheckErrorReport returns the detailed failure information for
 health checks that can have multiple components succeed/fail independently.

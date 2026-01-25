@@ -6,4 +6,4 @@
 - id: System.String
   - Required. ID assigned to an Oracle database object.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

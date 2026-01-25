@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("csrfToken")]
         public System.String? CsrfToken { get; set; }
 
+        //      C# -> List<System.String>? ExcessivePermissions
+        // GraphQL -> excessivePermissions: [String!]! (scalar)
+        [JsonProperty("excessivePermissions")]
+        public List<System.String>? ExcessivePermissions { get; set; }
+
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        [JsonProperty("missingPermissions")]
+        public List<System.String>? MissingPermissions { get; set; }
+
 
         #endregion
 
@@ -41,7 +51,9 @@ namespace RubrikSecurityCloud.Types
 
     public StartAzureAdAppUpdateReply Set(
         System.String? AppId = null,
-        System.String? CsrfToken = null
+        System.String? CsrfToken = null,
+        List<System.String>? ExcessivePermissions = null,
+        List<System.String>? MissingPermissions = null
     ) 
     {
         if ( AppId != null ) {
@@ -49,6 +61,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CsrfToken != null ) {
             this.CsrfToken = CsrfToken;
+        }
+        if ( ExcessivePermissions != null ) {
+            this.ExcessivePermissions = ExcessivePermissions;
+        }
+        if ( MissingPermissions != null ) {
+            this.MissingPermissions = MissingPermissions;
         }
         return this;
     }
@@ -80,6 +98,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "csrfToken\n" ;
             } else {
                 s += ind + "csrfToken\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ExcessivePermissions
+        // GraphQL -> excessivePermissions: [String!]! (scalar)
+        if (this.ExcessivePermissions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excessivePermissions\n" ;
+            } else {
+                s += ind + "excessivePermissions\n" ;
+            }
+        }
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        if (this.MissingPermissions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "missingPermissions\n" ;
+            } else {
+                s += ind + "missingPermissions\n" ;
             }
         }
         return s;
@@ -122,6 +158,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.CsrfToken != null && ec.Excludes("csrfToken",true))
         {
             this.CsrfToken = null;
+        }
+        //      C# -> List<System.String>? ExcessivePermissions
+        // GraphQL -> excessivePermissions: [String!]! (scalar)
+        if (ec.Includes("excessivePermissions",true))
+        {
+            if(this.ExcessivePermissions == null) {
+
+                this.ExcessivePermissions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcessivePermissions != null && ec.Excludes("excessivePermissions",true))
+        {
+            this.ExcessivePermissions = null;
+        }
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        if (ec.Includes("missingPermissions",true))
+        {
+            if(this.MissingPermissions == null) {
+
+                this.MissingPermissions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MissingPermissions != null && ec.Excludes("missingPermissions",true))
+        {
+            this.MissingPermissions = null;
         }
     }
 

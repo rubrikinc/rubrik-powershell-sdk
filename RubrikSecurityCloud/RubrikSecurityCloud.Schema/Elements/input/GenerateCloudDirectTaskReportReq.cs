@@ -1,4 +1,4 @@
-// MonthlyDaySpecDayOfWeekPatternInput.cs
+// GenerateCloudDirectTaskReportReq.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,26 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region MonthlyDaySpecDayOfWeekPatternInput
+    #region GenerateCloudDirectTaskReportReq
 
-    public class MonthlyDaySpecDayOfWeekPatternInput: IInput
+    public class GenerateCloudDirectTaskReportReq: IInput
     {
         #region members
 
-        //      C# -> DayOfWeekPatternInput? Value
-        // GraphQL -> value: DayOfWeekPatternInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("value")]
-        public DayOfWeekPatternInput? Value { get; set; }
+        //      C# -> System.String? TaskId
+        // GraphQL -> taskId: String (scalar)
+        [JsonProperty("taskId")]
+        public System.String? TaskId { get; set; }
+
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: String (scalar)
+        [JsonProperty("clusterId")]
+        public System.String? ClusterId { get; set; }
+
+        //      C# -> System.String? ShareFid
+        // GraphQL -> shareFid: String (scalar)
+        [JsonProperty("shareFid")]
+        public System.String? ShareFid { get; set; }
 
 
         #endregion
@@ -52,7 +60,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class MonthlyDaySpecDayOfWeekPatternInput
+    } // class GenerateCloudDirectTaskReportReq
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

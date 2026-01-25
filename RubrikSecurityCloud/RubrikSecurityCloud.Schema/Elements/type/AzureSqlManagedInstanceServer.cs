@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureSqlAuthenticationType? AuthType
+        // GraphQL -> authType: AzureSqlAuthenticationType! (enum)
+        [JsonProperty("authType")]
+        public AzureSqlAuthenticationType? AuthType { get; set; }
+
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
         [JsonProperty("authorizedOperations")]
@@ -234,6 +239,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureSqlManagedInstanceServer Set(
+        AzureSqlAuthenticationType? AuthType = null,
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AzureSqlBackupStorageRedundancyType? BackupStorageRedundancy = null,
         HierarchyObjectTypeEnum? ObjectType = null,
@@ -272,6 +278,9 @@ namespace RubrikSecurityCloud.Types
         List<AzureTag>? Tags = null
     ) 
     {
+        if ( AuthType != null ) {
+            this.AuthType = AuthType;
+        }
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
@@ -394,6 +403,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureSqlAuthenticationType? AuthType
+        // GraphQL -> authType: AzureSqlAuthenticationType! (enum)
+        if (this.AuthType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authType\n" ;
+            } else {
+                s += ind + "authType\n" ;
+            }
+        }
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
         if (this.AuthorizedOperations != null) {
@@ -782,6 +800,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureSqlAuthenticationType? AuthType
+        // GraphQL -> authType: AzureSqlAuthenticationType! (enum)
+        if (ec.Includes("authType",true))
+        {
+            if(this.AuthType == null) {
+
+                this.AuthType = new AzureSqlAuthenticationType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthType != null && ec.Excludes("authType",true))
+        {
+            this.AuthType = null;
+        }
         //      C# -> List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [PolarisSnappableAuthorizedOperationsEnum!]! (enum)
         if (ec.Includes("authorizedOperations",true))

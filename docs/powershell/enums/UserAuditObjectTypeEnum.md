@@ -60,6 +60,7 @@ User audit object type.
 - AwsNativeAccount - AWS native account type.
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - EXCHANGE_DATABASE - Exchange Database type.
+- RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
 - AzureSqlManagedInstance - Azure SQL managed instance type.
 - AzureNativeVm - Azure native virtual machine type.
 - ORGANIZATION - Organization type.
@@ -127,6 +128,7 @@ User audit object type.
 - Ec2Instance - EC2 instance type.
 - KMS_KEY_VAULT - KMS Key Vault.
 - NUTANIX_ERA - Nutanix Era type.
+- CLI - Command Line Interface.
 - JIRA_PROJECT - Atlassian Jira project.
 - StorageArrayVolumeGroup - Storage array volume group type.
 - StorageSettings - Storage settings type.

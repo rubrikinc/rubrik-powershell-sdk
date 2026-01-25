@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oldWorkloadId")]
         public System.String? OldWorkloadId { get; set; }
 
+        //      C# -> List<System.String>? OldWorkloadIds
+        // GraphQL -> oldWorkloadIds: [String!]! (scalar)
+        [JsonProperty("oldWorkloadIds")]
+        public List<System.String>? OldWorkloadIds { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         DateTime? LastUpdatedTimeOpt = null,
         System.String? LocationId = null,
         System.String? NewWorkloadId = null,
-        System.String? OldWorkloadId = null
+        System.String? OldWorkloadId = null,
+        List<System.String>? OldWorkloadIds = null
     ) 
     {
         if ( IsRefreshInProgressOpt != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OldWorkloadId != null ) {
             this.OldWorkloadId = OldWorkloadId;
+        }
+        if ( OldWorkloadIds != null ) {
+            this.OldWorkloadIds = OldWorkloadIds;
         }
         return this;
     }
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "oldWorkloadId\n" ;
             } else {
                 s += ind + "oldWorkloadId\n" ;
+            }
+        }
+        //      C# -> List<System.String>? OldWorkloadIds
+        // GraphQL -> oldWorkloadIds: [String!]! (scalar)
+        if (this.OldWorkloadIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "oldWorkloadIds\n" ;
+            } else {
+                s += ind + "oldWorkloadIds\n" ;
             }
         }
         return s;
@@ -227,6 +245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OldWorkloadId != null && ec.Excludes("oldWorkloadId",true))
         {
             this.OldWorkloadId = null;
+        }
+        //      C# -> List<System.String>? OldWorkloadIds
+        // GraphQL -> oldWorkloadIds: [String!]! (scalar)
+        if (ec.Includes("oldWorkloadIds",true))
+        {
+            if(this.OldWorkloadIds == null) {
+
+                this.OldWorkloadIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldWorkloadIds != null && ec.Excludes("oldWorkloadIds",true))
+        {
+            this.OldWorkloadIds = null;
         }
     }
 

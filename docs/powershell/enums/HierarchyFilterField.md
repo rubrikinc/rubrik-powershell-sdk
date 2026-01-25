@@ -871,3 +871,12 @@ archived and has the protection feature enabled for DynamoDB.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
+- EXCLUDE_RUBRIK_DATASTORE - Filter to exclude internal Rubrik-created datastores.
+Excludes datastores with type NFS and name matching regex
+^rubrik_[a-f0-9]{32}$.
++mo:filter:db:table=cdm_vmware_datastore
++mo:filter:db:column=name
++mo:filter:db:column=type
+- WORKLOADS - Filter workloads by object name or host details.
++mo:filter:db:table=cdm_udf_db_instance
++mo:filter:db:column=host_ids

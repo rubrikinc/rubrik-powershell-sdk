@@ -25,6 +25,8 @@ Detailed view of a data classification policy.
   - Data category classification result.
 - documentTypes: list of DocumentAttributes
   - Document types associated with the policy.
+- isInactive: System.Boolean
+  - Data category is inactive or not.
 - creator: User
 - hierarchyObjectConnection: HierarchyObjectConnection
   - Connection on hierarchy objects.

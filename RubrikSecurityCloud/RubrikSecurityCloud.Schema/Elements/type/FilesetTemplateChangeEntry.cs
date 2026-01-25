@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? TemplateDisplayName
+        // GraphQL -> templateDisplayName: String! (scalar)
+        [JsonProperty("templateDisplayName")]
+        public System.String? TemplateDisplayName { get; set; }
+
         //      C# -> TprFilesetTemplatePatch? NewValue
         // GraphQL -> newValue: TprFilesetTemplatePatch! (type)
         [JsonProperty("newValue")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FilesetTemplateChangeEntry Set(
+        System.String? TemplateDisplayName = null,
         TprFilesetTemplatePatch? NewValue = null,
         TprFilesetTemplatePatch? OldValue = null
     ) 
     {
+        if ( TemplateDisplayName != null ) {
+            this.TemplateDisplayName = TemplateDisplayName;
+        }
         if ( NewValue != null ) {
             this.NewValue = NewValue;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? TemplateDisplayName
+        // GraphQL -> templateDisplayName: String! (scalar)
+        if (this.TemplateDisplayName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateDisplayName\n" ;
+            } else {
+                s += ind + "templateDisplayName\n" ;
+            }
+        }
         //      C# -> TprFilesetTemplatePatch? NewValue
         // GraphQL -> newValue: TprFilesetTemplatePatch! (type)
         if (this.NewValue != null) {
@@ -95,6 +113,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? TemplateDisplayName
+        // GraphQL -> templateDisplayName: String! (scalar)
+        if (ec.Includes("templateDisplayName",true))
+        {
+            if(this.TemplateDisplayName == null) {
+
+                this.TemplateDisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateDisplayName != null && ec.Excludes("templateDisplayName",true))
+        {
+            this.TemplateDisplayName = null;
+        }
         //      C# -> TprFilesetTemplatePatch? NewValue
         // GraphQL -> newValue: TprFilesetTemplatePatch! (type)
         if (ec.Includes("newValue",false))

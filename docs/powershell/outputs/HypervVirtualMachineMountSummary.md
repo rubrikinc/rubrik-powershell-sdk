@@ -19,7 +19,7 @@ Supported in v5.0+
   - Required. Supported in v5.0+
 The power status of the mounted VM(ON,OFF,SLEEP etc.).
 - snapshotDate: DateTime
-  - Required. Supported in v5.0+
+  - Supported in v5.0+
 - unmountRequestId: System.String
   - Supported in v5.0+
 - vmId: System.String

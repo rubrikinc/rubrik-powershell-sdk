@@ -3205,6 +3205,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? UpdateFeed
+        // GraphQL -> updateFeed: Void (scalar)
+        public static string UpdateFeed(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateFeed" + args + "\n";
+        }
+        public static object UpdateFeedFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? UpdateIntegration
         // GraphQL -> updateIntegration: Void (scalar)
         public static string UpdateIntegration(object fsObj)
@@ -9523,6 +9541,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? FailoverHaPolicy
+        // GraphQL -> failoverHaPolicy: AsyncRequestStatus! (type)
+        public static string FailoverHaPolicy(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "failoverHaPolicy" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FailoverHaPolicyFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? FilesetDownloadSnapshotFiles
         // GraphQL -> filesetDownloadSnapshotFiles: AsyncRequestStatus! (type)
         public static string FilesetDownloadSnapshotFiles(object fsObj)
@@ -12345,6 +12381,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SendTestMessageToWebhookReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetAirPolicyAlertStatusReply? SetAirPolicyAlertStatus
+        // GraphQL -> setAirPolicyAlertStatus: SetAirPolicyAlertStatusReply! (type)
+        public static string SetAirPolicyAlertStatus(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setAirPolicyAlertStatus" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SetAirPolicyAlertStatusFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SetAirPolicyAlertStatusReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

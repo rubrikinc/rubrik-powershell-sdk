@@ -45,13 +45,14 @@ Returns privileges that are allowed to be asssigned to org admin roles.
 ### analyzerusages
 Returns which policies are using each analyzer.
 
-- There are 10 arguments.
+- There are 11 arguments.
     - dataCategoryIdsFilter - list of System.Strings: List of data categories used for filtering results.
     - riskLevelsFilter - list of RiskLevelTypes: List of risk levels used for filtering results.
     - sortBy - AnalyzerUsagesSortBy: Name of the column to sort result by.
     - sortOrder - SortOrder: Sorts the order of results.
     - dataTypeSourceFilter - DataTypeSource: Filter for data category type.
     - dataTypeNameSearchFilter - System.String: Data type name to search.
+    - analyzerStatusFilter - AnalyzerStatusFilter: Filter for analyzer status.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1068,13 +1069,14 @@ Get the health metric for the radar pipeline covering the backup, indexing, and 
 ### policydetails
 Returns active policies for an account.
 
-- There are 6 arguments.
+- There are 7 arguments.
     - dataCategoryIds - list of System.Strings: Filter for data category IDs.
     - dataTypeIds - list of System.Strings: Data type IDs to filter.
     - dataCategoryType - DataCategoryType: Filter for data category type.
     - documentTypeIds - list of System.Strings: Document type IDs to filter.
     - sortBy - PoliciesDetailSortByField: Field to sort policies detail entries by.
     - sortOrder - SortOrder: Sorts the order of results.
+    - includeInactiveDataCategories - System.Boolean: Include inactive data categories.
 - Returns PolicyDetailConnection.
 ### policyobj
 Returns details for one policy object.
@@ -1416,9 +1418,10 @@ List of unmanaged objects.
 ### unmanagedobjectssupportedtypes
 List of supported object types.
 
-- There are 2 arguments.
-    - productType - ProductTargetType: Type of the product.
+- There are 3 arguments.
+    - productType - ProductTargetType: Deprecated. Use snapshotManagementType instead.
     - cloudVendor - CloudVendor: The cloud vendor type.
+    - snapshotManagementType - SnapshotManagementType: Type of snapshot management.
 - Returns list of ManagedObjectTypes.
 ### upgradestatus
 Gets the status for completed/running upgrade process.

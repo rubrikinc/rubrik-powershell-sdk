@@ -51,6 +51,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUSTRALIA_SOUTHEAST")]
         AUSTRALIA_SOUTHEAST,
 
+        [EnumMember(Value = "AUSTRIA_EAST")]
+        AUSTRIA_EAST,
+
+        [EnumMember(Value = "BELGIUM_CENTRAL")]
+        BELGIUM_CENTRAL,
+
         [EnumMember(Value = "BRAZIL_SOUTH")]
         BRAZIL_SOUTH,
 
@@ -65,6 +71,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CANADA_WEST_CALGARY")]
         CANADA_WEST_CALGARY,
+
+        [EnumMember(Value = "CHILE_CENTRAL")]
+        CHILE_CENTRAL,
 
         [EnumMember(Value = "EUROPE_NORTH")]
         EUROPE_NORTH,

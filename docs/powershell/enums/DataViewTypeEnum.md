@@ -57,3 +57,4 @@ for the single SLA in the NG Alpha report framework.
 - OBJECT_CAPACITY - Specifies the Object Capacity report information using fact table.
 - THREAT_MONITORING_MATCHES - Specifies the threat monitoring match-level information.
 - OBJECT_COMPLIANCE - Specifies the Object Compliance report information using fact table.
+- DISK_REPORT - Specifies the Disk Report information.

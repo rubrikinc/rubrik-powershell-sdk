@@ -12,7 +12,7 @@ v8.0+: Integer value that represents the archival state of a snapshot. 0 means t
 - consistencyLevel: System.String
   - Supported in v5.0+
 - date: DateTime
-  - Required. Supported in v5.0+
+  - Supported in v5.0+
 - expirationDate: DateTime
   - Supported in v5.0+
 - id: System.String

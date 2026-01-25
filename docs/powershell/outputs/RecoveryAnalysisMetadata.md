@@ -19,3 +19,9 @@ Metadata about the recovery analysis including time range and data source inform
   - The GCS blob path containing raw Exchange analysis data.
 - onedriveBlobPath: System.String
   - The GCS blob path containing raw OneDrive analysis data.
+- workloads: list of O365MvbWorkloadTypes
+  - The workloads types of the analysis.
+- shouldExcludeArchivedMailbox: System.Boolean
+  - Whether to exclude archived mailboxes.
+- snapshotTime: DateTime
+  - Time of the recovery point snapshot.

@@ -102,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CHATBOT")]
         CHATBOT,
 
+        [EnumMember(Value = "CLI")]
+        CLI,
+
         [EnumMember(Value = "CLOUD_DIRECT_NAS_EXPORT")]
         CLOUD_DIRECT_NAS_EXPORT,
 
@@ -371,6 +374,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
+
+        [EnumMember(Value = "RSC_CHILD_ACCOUNT")]
+        RSC_CHILD_ACCOUNT,
 
         [EnumMember(Value = "RSC_TAG")]
         RSC_TAG,

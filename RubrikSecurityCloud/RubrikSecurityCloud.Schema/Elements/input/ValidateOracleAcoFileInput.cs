@@ -40,17 +40,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isLiveMount")]
         public System.Boolean? IsLiveMount { get; set; }
 
+        //      C# -> System.Boolean? IsDifferentTargetDbName
+        // GraphQL -> isDifferentTargetDbName: Boolean (scalar)
+        [JsonProperty("isDifferentTargetDbName")]
+        public System.Boolean? IsDifferentTargetDbName { get; set; }
+
         //      C# -> System.String? DbId
         // GraphQL -> dbId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("dbId")]
         public System.String? DbId { get; set; }
-
-        //      C# -> System.Boolean? IsDifferentTargetDbName
-        // GraphQL -> isDifferentTargetDbName: Boolean (scalar)
-        [JsonProperty("isDifferentTargetDbName")]
-        public System.Boolean? IsDifferentTargetDbName { get; set; }
 
 
         #endregion

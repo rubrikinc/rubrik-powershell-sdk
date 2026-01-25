@@ -6,4 +6,4 @@ Download Db2 snapshots from archival location to the local Rubrik cluster for po
 - id: System.String
   - Required. ID of the Db2 database.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

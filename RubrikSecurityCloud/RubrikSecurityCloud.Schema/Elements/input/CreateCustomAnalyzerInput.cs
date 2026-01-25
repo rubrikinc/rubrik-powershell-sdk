@@ -94,6 +94,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("structuredKeyDictionary")]
         public List<System.String>? StructuredKeyDictionary { get; set; }
 
+        //      C# -> System.String? ProximityKeywordsRegex
+        // GraphQL -> proximityKeywordsRegex: String (scalar)
+        [JsonProperty("proximityKeywordsRegex")]
+        public System.String? ProximityKeywordsRegex { get; set; }
+
+        //      C# -> System.Int32? ProximityDistance
+        // GraphQL -> proximityDistance: Int (scalar)
+        [JsonProperty("proximityDistance")]
+        public System.Int32? ProximityDistance { get; set; }
+
+        //      C# -> System.Boolean? IsInactive
+        // GraphQL -> isInactive: Boolean (scalar)
+        [JsonProperty("isInactive")]
+        public System.Boolean? IsInactive { get; set; }
+
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType (enum)
         [JsonProperty("risk")]

@@ -2,7 +2,7 @@
 Input for downloading Db2 snapshot from location for V2 API.
 
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.
 - snapshotId: System.String
   - Required. ID of the Db2 database snapshot.
 - downloadConfig: Db2SnapshotDownloadRequestInput

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean! (scalar)
+        [JsonProperty("isActive")]
+        public System.Boolean? IsActive { get; set; }
+
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
         [JsonProperty("lastUpdatedTime")]
@@ -99,6 +104,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? DataTypeIds = null,
         System.String? Description = null,
         System.String? Id = null,
+        System.Boolean? IsActive = null,
         System.Int64? LastUpdatedTime = null,
         System.String? Name = null,
         System.Int32? ObjectsPercentCoverage = null,
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsActive != null ) {
+            this.IsActive = IsActive;
         }
         if ( LastUpdatedTime != null ) {
             this.LastUpdatedTime = LastUpdatedTime;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean! (scalar)
+        if (this.IsActive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isActive\n" ;
+            } else {
+                s += ind + "isActive\n" ;
             }
         }
         //      C# -> System.Int64? LastUpdatedTime
@@ -357,6 +375,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsActive
+        // GraphQL -> isActive: Boolean! (scalar)
+        if (ec.Includes("isActive",true))
+        {
+            if(this.IsActive == null) {
+
+                this.IsActive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsActive != null && ec.Excludes("isActive",true))
+        {
+            this.IsActive = null;
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)

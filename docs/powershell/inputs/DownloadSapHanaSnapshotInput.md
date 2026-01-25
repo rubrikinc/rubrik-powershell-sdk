@@ -6,4 +6,4 @@ Input for downloading SAP HANA snapshot from an archival location.
 - snapshotId: System.String
   - Required. ID of the SAP HANA database snapshot.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

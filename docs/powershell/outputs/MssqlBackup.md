@@ -11,7 +11,7 @@ The total uncompressed size of the files in bytes.
   - Required. Supported in v5.2+
 The type of backup. Backup types can be snapshots or logs.
 - date: DateTime
-  - Required. Supported in v5.2+
+  - Supported in v5.2+
 Timestamp of the backup.
 - lsn: System.String
   - Required. Supported in v5.2+

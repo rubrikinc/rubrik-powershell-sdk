@@ -189,6 +189,7 @@ Enum representing all the possible object types which generate events.
 - AZURE_NATIVE_RESOURCE_GROUP - Azure Native Resource Group.
 - AZURE_NATIVE_REGION - Azure native region.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
 - PROXMOX_ENVIRONMENT - Proxmox environment.
 - PROXMOX_CLUSTER - Proxmox cluster.
 - PROXMOX_NODE - Proxmox node.

@@ -6,4 +6,4 @@
 - config: MongoOpsManagerSourceOnDemandSnapshotConfigInput
   - Required. Configuration for the on-demand snapshot.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

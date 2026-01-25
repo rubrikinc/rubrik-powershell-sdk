@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("entries")]
         public List<CustomEntries>? Entries { get; set; }
 
+        //      C# -> AutoQuarantineMetadataInput? AutoQuarantineMetadata
+        // GraphQL -> autoQuarantineMetadata: AutoQuarantineMetadataInput (input)
+        [JsonProperty("autoQuarantineMetadata")]
+        public AutoQuarantineMetadataInput? AutoQuarantineMetadata { get; set; }
+
 
         #endregion
 

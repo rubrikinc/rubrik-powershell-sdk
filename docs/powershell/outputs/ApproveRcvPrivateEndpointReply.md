@@ -1,7 +1,7 @@
 ### ApproveRcvPrivateEndpointReply
-Required fields for approving private endpoint.
+Response for ApproveRCVPrivateEndpoint.
 
 - success: System.Boolean
-  - Whether the approval succeded or not.
+  - Indicates whether the approval operation succeeded.
 - errorMessage: PrivateEndpointErrors
-  - Reason for failure.
+  - Error code describing why the approval failed, if any.

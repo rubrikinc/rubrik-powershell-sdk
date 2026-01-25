@@ -19,22 +19,22 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Source
-        // GraphQL -> source: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("source")]
-        public System.String? Source { get; set; }
+        //      C# -> List<System.String>? Collections
+        // GraphQL -> collections: [UUID!] (scalar)
+        [JsonProperty("collections")]
+        public List<System.String>? Collections { get; set; }
 
         //      C# -> List<System.String>? Databases
         // GraphQL -> databases: [UUID!] (scalar)
         [JsonProperty("databases")]
         public List<System.String>? Databases { get; set; }
 
-        //      C# -> List<System.String>? Collections
-        // GraphQL -> collections: [UUID!] (scalar)
-        [JsonProperty("collections")]
-        public List<System.String>? Collections { get; set; }
+        //      C# -> System.String? Source
+        // GraphQL -> source: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("source")]
+        public System.String? Source { get; set; }
 
 
         #endregion

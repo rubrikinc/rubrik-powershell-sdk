@@ -9,3 +9,5 @@ Active Directory workload related app metadata for a snapshot.
   - Windows disk layout of the domain controller at the time of the snapshot.
 - rubrikBackupServiceDataDirPath: System.String
   - Path of the Rubrik backup service data directory.
+- ntdsDatabaseConsistencyOpt: NtdsDatabaseConsistency
+  - NTDS database consistency information.

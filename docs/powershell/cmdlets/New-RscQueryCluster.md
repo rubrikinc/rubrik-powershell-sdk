@@ -232,6 +232,15 @@ Rubrik cluster proxy information.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
 - Returns ClusterConnection.
+### refs
+Returns the list of cluster UUID to name mapping for an org.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+- Returns ClusterRefsConnection.
 ### registrationproductinfo
 Info about the cluster product types the user is entitled to.
 

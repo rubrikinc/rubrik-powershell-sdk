@@ -2,7 +2,7 @@
 Input for updating backup trigger for workloads.
 
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.
 - clusterUuid: System.String
   - Required. UUID used to identify the cluster the request goes to.
 - updateBackupTriggerReq: UpdateBackupTriggerRequestInput

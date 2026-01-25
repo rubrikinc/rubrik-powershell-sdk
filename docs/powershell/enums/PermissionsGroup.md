@@ -71,3 +71,15 @@ private AKS clusters.
 - EXPORT_AND_RESTORE_POWER_OFF_VM - Represents the set of permissions required for export and restore
 power off operations. These permissions are applicable to the cloud
 native protection feature.
+- EXPORT_POWER_ON - Represents the set of permissions required for export operations for
+AWS EC2/EBS. These permissions are applicable to the cloud native
+protection feature.
+- EXPORT_POWER_OFF - Represents the set of permissions required for export operations specifically
+in the powered-off state for AWS EC2/EBS. These permissions are applicable to
+the cloud native protection feature.
+- RESTORE - Represents the set of permissions required for restore operations for
+AWS EC2/EBS. These permissions are applicable to the cloud native
+protection feature.
+- DOWNLOAD_FILE - Represents the set of permissions required for file level recovery for
+AWS EC2/EBS. These permissions are applicable to the cloud native
+protection feature.

@@ -17,7 +17,7 @@ The ID of the target Db2 instance where the recovery will be performed. If not s
   - Supported in v9.5+
 The location from which to download the backup to the source cluster, if the backup is not present on the local cluster.
 - recoveryPoint: DateTime
-  - Required. Supported in v9.5+
+  - Supported in v9.5+
 The time to which to recover the Db2 database.
 - targetDbName: System.String
   - Required. Supported in v9.5+

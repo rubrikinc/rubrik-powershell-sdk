@@ -173,3 +173,7 @@ Represents all the object types for which we expect to see audits.
 - GITHUB_ORGANIZATION - GitHub Organization.
 - GITHUB_REPOSITORY - GitHub Repository.
 - AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router.
+- PROXMOX_ENVIRONMENT - Proxmox Environment.
+- PROXMOX_VIRTUAL_MACHINE - Proxmox Virtual Machine.
+- CLI - Command Line Interface.
+- RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).

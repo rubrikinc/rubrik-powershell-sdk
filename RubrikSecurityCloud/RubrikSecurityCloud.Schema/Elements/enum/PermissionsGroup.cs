@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATA_CENTER_KMS")]
         DATA_CENTER_KMS,
 
+        [EnumMember(Value = "DOWNLOAD_FILE")]
+        DOWNLOAD_FILE,
+
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 
@@ -59,6 +62,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EXPORT_AND_RESTORE_POWER_OFF_VM")]
         EXPORT_AND_RESTORE_POWER_OFF_VM,
+
+        [EnumMember(Value = "EXPORT_POWER_OFF")]
+        EXPORT_POWER_OFF,
+
+        [EnumMember(Value = "EXPORT_POWER_ON")]
+        EXPORT_POWER_ON,
 
         [EnumMember(Value = "FILE_LEVEL_RECOVERY")]
         FILE_LEVEL_RECOVERY,
@@ -71,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
+
+        [EnumMember(Value = "RESTORE")]
+        RESTORE,
 
         [EnumMember(Value = "RSC_MANAGED_CLUSTER")]
         RSC_MANAGED_CLUSTER,

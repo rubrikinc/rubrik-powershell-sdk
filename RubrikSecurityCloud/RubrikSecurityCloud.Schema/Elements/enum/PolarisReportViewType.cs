@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COMPLIANCE_REPORT")]
         COMPLIANCE_REPORT,
 
+        [EnumMember(Value = "DISK_STATUS_REPORT")]
+        DISK_STATUS_REPORT,
+
         [EnumMember(Value = "EVENTS_REPORT")]
         EVENTS_REPORT,
 

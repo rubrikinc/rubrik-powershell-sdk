@@ -393,6 +393,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_TAG")]
         MANAGE_TAG,
 
+        [EnumMember(Value = "MANAGE_TICKETING_PLATFORM")]
+        MANAGE_TICKETING_PLATFORM,
+
         [EnumMember(Value = "MANAGE_TPR_CONFIGURATION")]
         MANAGE_TPR_CONFIGURATION,
 

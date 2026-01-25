@@ -6,4 +6,4 @@ Creates a fileset job to take a backup.
 - id: System.String
   - Required. ID of the Fileset.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

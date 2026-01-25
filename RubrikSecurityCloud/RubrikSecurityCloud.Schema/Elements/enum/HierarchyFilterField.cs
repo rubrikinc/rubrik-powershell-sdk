@@ -423,6 +423,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCLUDED_SHAREPOINT_LIBRARY_TYPE")]
         EXCLUDED_SHAREPOINT_LIBRARY_TYPE,
 
+        [EnumMember(Value = "EXCLUDE_RUBRIK_DATASTORE")]
+        EXCLUDE_RUBRIK_DATASTORE,
+
         [EnumMember(Value = "FAILOVER_CLUSTERS_BY_MSSQL_EFFECTIVE_SLA")]
         FAILOVER_CLUSTERS_BY_MSSQL_EFFECTIVE_SLA,
 
@@ -1006,7 +1009,10 @@ namespace RubrikSecurityCloud.Types
         VSPHERE_DATASTORE_IS_LOCAL,
 
         [EnumMember(Value = "VSPHERE_GET_ROOT_RESTORE_HIERARCHY")]
-        VSPHERE_GET_ROOT_RESTORE_HIERARCHY
+        VSPHERE_GET_ROOT_RESTORE_HIERARCHY,
+
+        [EnumMember(Value = "WORKLOADS")]
+        WORKLOADS
 
 
     } // enum HierarchyFilterField

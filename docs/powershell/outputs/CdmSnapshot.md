@@ -26,6 +26,8 @@
   - Sub objects for the snapshot.
 - isCustomRetentionApplied: System.Boolean
   - Specifies whether custom retention is applied on the snapshot.
+- aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail
+  - Details of all the locations where the snapshot is present. This is available only in some APIs for some conditions, as the location information is part of CdmSnapshotRetentionInfo most of the times.
 - cluster: Cluster
 - parentSnapshotId: System.String
   - The ID of the parent snapshot.

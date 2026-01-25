@@ -6,4 +6,4 @@ Input for creating an on-demand SQL Server backup.
 - id: System.String
   - Required. ID of the Microsoft SQL database.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

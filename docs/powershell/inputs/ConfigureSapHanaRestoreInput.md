@@ -6,4 +6,4 @@ Input for configuring SAP HANA database for restore.
 - id: System.String
   - Required. ID of the target SAP HANA database to be configured.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

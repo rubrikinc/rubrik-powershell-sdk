@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allowBackupNetworkMounts")]
         public System.Boolean? AllowBackupNetworkMounts { get; set; }
 
+        //      C# -> System.Boolean? UseWindowsVss
+        // GraphQL -> useWindowsVss: Boolean (scalar)
+        [JsonProperty("useWindowsVss")]
+        public System.Boolean? UseWindowsVss { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public TprFilesetOptions Set(
         System.Boolean? AllowBackupHiddenFoldersInNetworkMounts = null,
-        System.Boolean? AllowBackupNetworkMounts = null
+        System.Boolean? AllowBackupNetworkMounts = null,
+        System.Boolean? UseWindowsVss = null
     ) 
     {
         if ( AllowBackupHiddenFoldersInNetworkMounts != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllowBackupNetworkMounts != null ) {
             this.AllowBackupNetworkMounts = AllowBackupNetworkMounts;
+        }
+        if ( UseWindowsVss != null ) {
+            this.UseWindowsVss = UseWindowsVss;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "allowBackupNetworkMounts\n" ;
             } else {
                 s += ind + "allowBackupNetworkMounts\n" ;
+            }
+        }
+        //      C# -> System.Boolean? UseWindowsVss
+        // GraphQL -> useWindowsVss: Boolean (scalar)
+        if (this.UseWindowsVss != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "useWindowsVss\n" ;
+            } else {
+                s += ind + "useWindowsVss\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllowBackupNetworkMounts != null && ec.Excludes("allowBackupNetworkMounts",true))
         {
             this.AllowBackupNetworkMounts = null;
+        }
+        //      C# -> System.Boolean? UseWindowsVss
+        // GraphQL -> useWindowsVss: Boolean (scalar)
+        if (ec.Includes("useWindowsVss",true))
+        {
+            if(this.UseWindowsVss == null) {
+
+                this.UseWindowsVss = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UseWindowsVss != null && ec.Excludes("useWindowsVss",true))
+        {
+            this.UseWindowsVss = null;
         }
     }
 

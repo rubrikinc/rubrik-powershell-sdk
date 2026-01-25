@@ -1,7 +1,10 @@
 # New-RscMutationRcv
 ## Subcommands
 ### approveprivateendpoint
-Approve private endpoint.
+ApproveRCVPrivateEndpoint approves a pending request for RCV private
+endpoints. After approving the private endpoint connection request, the
+customer can start using the private tunnel to send data to and from the
+CDM cluster to the Rubrik hosted storage account.
 
 - There is a single argument of type ApproveRcvPrivateEndpointInput.
 - Returns ApproveRcvPrivateEndpointReply.
@@ -11,7 +14,9 @@ Creates Rubrik Cloud Vault Azure locations from the specified location template.
 - There is a single argument of type CreateRcvLocationsFromTemplateInput.
 - Returns list of Targets.
 ### createprivateendpointapprovalrequest
-Create RCV private endpoint approval request.
+CreateRCVPrivateEndpointApprovalRequest creates an approval request for an
+RCV private endpoint. Once the request is approved, the customer can start
+using their RCV archival location through the private endpoint.
 
 - There is a single argument of type CreateRcvPrivateEndpointApprovalRequestInput.
 - Returns CreateRcvPrivateEndpointApprovalRequestReply.

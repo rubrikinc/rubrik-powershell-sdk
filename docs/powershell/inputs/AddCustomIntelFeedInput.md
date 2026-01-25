@@ -7,3 +7,5 @@ Custom intel feed input.
   - Custom feed description.
 - entries: list of CustomEntriess
   - Custom entries.
+- autoQuarantineMetadata: AutoQuarantineMetadataInput
+  - Metadata for auto quarantine.

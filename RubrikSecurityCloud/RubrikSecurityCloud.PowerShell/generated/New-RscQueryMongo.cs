@@ -91,16 +91,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	source = $someString
-    /// 	# OPTIONAL
-    /// 	databases = @(
-    /// 		$someString
-    /// 	)
     /// 	# OPTIONAL
     /// 	collections = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	databases = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	source = $someString
     /// }
     /// 
     /// # Execute the query
@@ -338,16 +338,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	source = $someString
-    /// 	# OPTIONAL
-    /// 	databases = @(
-    /// 		$someString
-    /// 	)
     /// 	# OPTIONAL
     /// 	collections = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	databases = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	source = $someString
     /// }
     /// 
     /// # Execute the query
@@ -673,16 +673,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.MongoBulkRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	source = $someString
-	# OPTIONAL
-	databases = @(
-		$someString
-	)
 	# OPTIONAL
 	collections = @(
 		$someString
 	)
+	# OPTIONAL
+	databases = @(
+		$someString
+	)
+	# REQUIRED
+	source = $someString
 }"
             );
         }
@@ -900,16 +900,16 @@ $query.Var.filter = @(
                 Query.MongoRecoverableRangesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	source = $someString
-	# OPTIONAL
-	databases = @(
-		$someString
-	)
 	# OPTIONAL
 	collections = @(
 		$someString
 	)
+	# OPTIONAL
+	databases = @(
+		$someString
+	)
+	# REQUIRED
+	source = $someString
 }"
             );
         }

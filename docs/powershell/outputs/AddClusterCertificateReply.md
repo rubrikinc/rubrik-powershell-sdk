@@ -8,7 +8,7 @@ ID of the certificate.
   - Supported in v5.1+
 User-friendly description for the certificate.
 - expiration: DateTime
-  - Required. Supported in v5.1+
+  - Supported in v5.1+
 The expiration date for the certificate.
 - hasKey: System.Boolean
   - Required. Supported in v5.1+

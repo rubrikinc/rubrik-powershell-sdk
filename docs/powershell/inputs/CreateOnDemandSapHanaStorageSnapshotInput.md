@@ -6,4 +6,4 @@ Input for creating an on-demand SAP HANA storage snapshot.
 - config: BaseOnDemandSnapshotConfigInput
   - Configuration for the on demand backup.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

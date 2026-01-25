@@ -31,6 +31,8 @@ NAS Cloud Direct System object.
   - List of default SMB hosts for this system.
 - s3Hosts: list of System.Strings
   - List of default S3 hosts for this system.
+- managementInfo: CloudDirectSystemManagementInfo
+  - Management information for this system.
 - id: System.String
   - Object ID.
 - descendantConnection: CloudDirectNasSystemDescendantTypeConnection

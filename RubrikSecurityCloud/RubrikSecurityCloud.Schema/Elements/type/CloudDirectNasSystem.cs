@@ -191,6 +191,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> CloudDirectSystemManagementInfo? ManagementInfo
+        // GraphQL -> managementInfo: CloudDirectSystemManagementInfo (type)
+        [JsonProperty("managementInfo")]
+        public CloudDirectSystemManagementInfo? ManagementInfo { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -309,6 +314,7 @@ namespace RubrikSecurityCloud.Types
         PathNode? EffectiveSlaSourceObject = null,
         CloudDirectNasSystemLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        CloudDirectSystemManagementInfo? ManagementInfo = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         SystemOverrides? Overrides = null,
         List<PathNode>? PhysicalPath = null,
@@ -417,6 +423,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( ManagementInfo != null ) {
+            this.ManagementInfo = ManagementInfo;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -787,6 +796,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectSystemManagementInfo? ManagementInfo
+        // GraphQL -> managementInfo: CloudDirectSystemManagementInfo (type)
+        if (this.ManagementInfo != null) {
+            var fspec = this.ManagementInfo.AsFieldSpec(conf.Child("managementInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managementInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1476,6 +1497,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> CloudDirectSystemManagementInfo? ManagementInfo
+        // GraphQL -> managementInfo: CloudDirectSystemManagementInfo (type)
+        if (ec.Includes("managementInfo",false))
+        {
+            if(this.ManagementInfo == null) {
+
+                this.ManagementInfo = new CloudDirectSystemManagementInfo();
+                this.ManagementInfo.ApplyExploratoryFieldSpec(ec.NewChild("managementInfo"));
+
+            } else {
+
+                this.ManagementInfo.ApplyExploratoryFieldSpec(ec.NewChild("managementInfo"));
+
+            }
+        }
+        else if (this.ManagementInfo != null && ec.Excludes("managementInfo",false))
+        {
+            this.ManagementInfo = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

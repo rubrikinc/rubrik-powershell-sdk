@@ -24,3 +24,5 @@ AWS Customer Managed Exocompute Configuration in a region.
   - Latest approved exotask bundle version for your Private Container Registry.
 - pcrImagePullAwsNativeId: System.String
   - AWS native account ID authorized to pull images from Rubrik's Elastic Container Registry.
+- pcrImagePullEksVersion: System.String
+  - EKS version corresponding to the latest approved bundle version for PCR customers.

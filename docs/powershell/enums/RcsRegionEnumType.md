@@ -15,7 +15,9 @@ Regions for Rubrik Cloud Storage Archival Location.
 - SPAIN_CENTRAL - Spain Central or Madrid.
 - KOREA_SOUTH - Korea South or Busan.
 - SWITZERLAND_NORTH - Switzerland North or Zurich.
+- CHILE_CENTRAL - Chile Central or Santiago.
 - US_EAST_5 - Columbus (US East 5).
+- AUSTRIA_EAST - Austria East or Vienna.
 - ITALY_NORTH - Italy North or Milan.
 - CANADA_EAST - Canada East or Quebec City.
 - UAE_NORTH - UAE North or Dubai.
@@ -33,6 +35,7 @@ Regions for Rubrik Cloud Storage Archival Location.
 - JAPAN_WEST - Japan West or Osaka.
 - ASIA_PACIFIC_HYDERABAD - Asia Pacific Hyderabad.
 - INDONESIA_CENTRAL - Indonesia Central or Jakarta.
+- BELGIUM_CENTRAL - Belgium Central or Brussels.
 - SOUTH_AFRICA_NORTH - South Africa North or Johannesburg.
 - US_EAST_2 - US East 2 or Virginia.
 - POLAND_CENTRAL - Poland Central or Warsaw.

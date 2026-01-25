@@ -176,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeDirectoryAppMetadata")]
         public ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata { get; set; }
 
+        //      C# -> AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail
+        // GraphQL -> aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail (type)
+        [JsonProperty("aggregateSnapshotLocationDetail")]
+        public AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail { get; set; }
+
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)
         [JsonProperty("archivalLocations")]
@@ -332,6 +337,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ResourceSpec = null,
         System.String? SnappableId = null,
         ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata = null,
+        AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail = null,
         List<DataLocation>? ArchivalLocations = null,
         CdmWorkloadSnapshot? CdmWorkloadSnapshot = null,
         List<CdmSnapshot>? ChildSnapshots = null,
@@ -449,6 +455,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActiveDirectoryAppMetadata != null ) {
             this.ActiveDirectoryAppMetadata = ActiveDirectoryAppMetadata;
+        }
+        if ( AggregateSnapshotLocationDetail != null ) {
+            this.AggregateSnapshotLocationDetail = AggregateSnapshotLocationDetail;
         }
         if ( ArchivalLocations != null ) {
             this.ArchivalLocations = ArchivalLocations;
@@ -824,6 +833,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "activeDirectoryAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail
+        // GraphQL -> aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail (type)
+        if (this.AggregateSnapshotLocationDetail != null) {
+            var fspec = this.AggregateSnapshotLocationDetail.AsFieldSpec(conf.Child("aggregateSnapshotLocationDetail"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "aggregateSnapshotLocationDetail" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1659,6 +1680,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActiveDirectoryAppMetadata != null && ec.Excludes("activeDirectoryAppMetadata",false))
         {
             this.ActiveDirectoryAppMetadata = null;
+        }
+        //      C# -> AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail
+        // GraphQL -> aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail (type)
+        if (ec.Includes("aggregateSnapshotLocationDetail",false))
+        {
+            if(this.AggregateSnapshotLocationDetail == null) {
+
+                this.AggregateSnapshotLocationDetail = new AggregateSnapshotLocationDetail();
+                this.AggregateSnapshotLocationDetail.ApplyExploratoryFieldSpec(ec.NewChild("aggregateSnapshotLocationDetail"));
+
+            } else {
+
+                this.AggregateSnapshotLocationDetail.ApplyExploratoryFieldSpec(ec.NewChild("aggregateSnapshotLocationDetail"));
+
+            }
+        }
+        else if (this.AggregateSnapshotLocationDetail != null && ec.Excludes("aggregateSnapshotLocationDetail",false))
+        {
+            this.AggregateSnapshotLocationDetail = null;
         }
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)

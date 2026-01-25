@@ -25,5 +25,7 @@ Represents the policy detail.
   - The percentage of coverage for a data category.
 - totalDocumentTypes: System.Int32
   - Total document types in a policy.
+- isActive: System.Boolean
+  - Data category is active or not.
 - creator: User
   - Policy creator.

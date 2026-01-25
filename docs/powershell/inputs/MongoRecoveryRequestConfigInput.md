@@ -35,7 +35,7 @@ Name of the target database for recovery.
 v9.0-v9.2: ID of the MongoDB target cluster.
 v9.3+: Managed ID of the MongoDB target cluster.
 - versionTime: DateTime
-  - Required. Supported in v9.0+
+  - Supported in v9.0+
 Timestamp of the snapshot version to be used for restore.
 - restoreThrottleInBytesPerSecond: System.Int64
   - Supported in v9.0+

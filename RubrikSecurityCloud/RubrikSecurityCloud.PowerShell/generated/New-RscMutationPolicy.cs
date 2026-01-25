@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 15
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Policy' API domain:
-    /// AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
+    /// AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetAirPolicyAlertStatus, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
     /// </summary>
     /// <description>
     /// New-RscMutationPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 15 operations
+    /// There are 17 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
+    /// one of: AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetAirPolicyAlertStatus, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -296,6 +296,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the FailoverHaPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: FailoverHaPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -Operation FailoverHaPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	failoverType = $someFlexmotionFailoverType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlexmotionFailoverType]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the GetHealthMonitorPolicyStatus operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -427,6 +462,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: SeedInitialPoliciesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SetAirPolicyAlertStatus operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SetAirPolicyAlertStatus
+    /// 
+    /// $query = New-RscMutationPolicy -Operation SetAirPolicyAlertStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	alertIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	status = $someAirPolicyViolationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AirPolicyViolationStatus]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SetAirPolicyAlertStatusReply
     /// 
     /// 
     /// 
@@ -797,10 +867,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateTprPolicy",
                 "DeactivatePolicy",
                 "DeleteTprPolicy",
+                "FailoverHaPolicy",
                 "GetHealthMonitorPolicyStatus",
                 "RemovePolicyObjects",
                 "SeedEnabledPolicies",
                 "SeedInitialPolicies",
+                "SetAirPolicyAlertStatus",
                 "SetPasswordComplexityPolicy",
                 "UpdateAutoEnablePolicyClusterConfig",
                 "UpdateHealthMonitorPolicyStatus",
@@ -837,6 +909,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeleteTprPolicy":
                         this.ProcessRecord_DeleteTprPolicy();
                         break;
+                    case "FailoverHaPolicy":
+                        this.ProcessRecord_FailoverHaPolicy();
+                        break;
                     case "GetHealthMonitorPolicyStatus":
                         this.ProcessRecord_GetHealthMonitorPolicyStatus();
                         break;
@@ -848,6 +923,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SeedInitialPolicies":
                         this.ProcessRecord_SeedInitialPolicies();
+                        break;
+                    case "SetAirPolicyAlertStatus":
+                        this.ProcessRecord_SetAirPolicyAlertStatus();
                         break;
                     case "SetPasswordComplexityPolicy":
                         this.ProcessRecord_SetPasswordComplexityPolicy();
@@ -923,6 +1001,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // failoverHaPolicy.
+        internal void ProcessRecord_FailoverHaPolicy()
+        {
+            this._logger.name += " -FailoverHaPolicy";
+            // Create new graphql operation failoverHaPolicy
+            InitMutationFailoverHaPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // getHealthMonitorPolicyStatus.
         internal void ProcessRecord_GetHealthMonitorPolicyStatus()
         {
@@ -956,6 +1043,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SeedInitialPolicies";
             // Create new graphql operation seedInitialPolicies
             InitMutationSeedInitialPolicies();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setAirPolicyAlertStatus.
+        internal void ProcessRecord_SetAirPolicyAlertStatus()
+        {
+            this._logger.name += " -SetAirPolicyAlertStatus";
+            // Create new graphql operation setAirPolicyAlertStatus
+            InitMutationSetAirPolicyAlertStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1202,6 +1298,33 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // failoverHaPolicy(input: FailoverHaPolicyInput!): AsyncRequestStatus!
+        internal void InitMutationFailoverHaPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FailoverHaPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationFailoverHaPolicy",
+                "($input: FailoverHaPolicyInput!)",
+                "AsyncRequestStatus",
+                Mutation.FailoverHaPolicy,
+                Mutation.FailoverHaPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	failoverType = $someFlexmotionFailoverType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FlexmotionFailoverType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // getHealthMonitorPolicyStatus(input: GetHealthMonitorPolicyStatusInput!): GetHealthMonitorPolicyStatusReply!
         internal void InitMutationGetHealthMonitorPolicyStatus()
         {
@@ -1313,6 +1436,33 @@ $query.Var.runAsync = $someBoolean"
                 Mutation.SeedInitialPolicies,
                 Mutation.SeedInitialPoliciesFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setAirPolicyAlertStatus(input: SetAirPolicyAlertStatusInput!): SetAirPolicyAlertStatusReply!
+        internal void InitMutationSetAirPolicyAlertStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetAirPolicyAlertStatusInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetAirPolicyAlertStatus",
+                "($input: SetAirPolicyAlertStatusInput!)",
+                "SetAirPolicyAlertStatusReply",
+                Mutation.SetAirPolicyAlertStatus,
+                Mutation.SetAirPolicyAlertStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	alertIds = @(
+		$someString
+	)
+	# REQUIRED
+	status = $someAirPolicyViolationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AirPolicyViolationStatus]) for enum values.
+}"
             );
         }
 

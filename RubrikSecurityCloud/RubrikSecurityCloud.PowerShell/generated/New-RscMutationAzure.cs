@@ -1668,25 +1668,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	forceChangePasswordWithMfa = $someBoolean
-    /// 	# OPTIONAL
-    /// 	ctrConfig = @{
-    /// 		# REQUIRED
-    /// 		targetWorkloadFid = $someString
-    /// 		# REQUIRED
-    /// 		defaultTargetDomainName = $someString
-    /// 		# OPTIONAL
-    /// 		domainMapping = @{
-    /// 			# REQUIRED
-    /// 			domainMappingList = @(
-    /// 				@{
-    /// 					# OPTIONAL
-    /// 					sourceDomainName = $someString
-    /// 					# OPTIONAL
-    /// 					targetDomainName = $someString
-    /// 				}
-    /// 			)
-    /// 		}
-    /// 	}
     /// 	# REQUIRED
     /// 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
     /// 	# OPTIONAL
@@ -1743,6 +1724,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 			}
     /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	ctrConfig = @{
+    /// 		# REQUIRED
+    /// 		defaultTargetDomainName = $someString
+    /// 		# REQUIRED
+    /// 		targetWorkloadFid = $someString
+    /// 		# OPTIONAL
+    /// 		domainMapping = @{
+    /// 			# REQUIRED
+    /// 			domainMappingList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					sourceDomainName = $someString
+    /// 					# OPTIONAL
+    /// 					targetDomainName = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -4881,25 +4881,6 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	forceChangePasswordWithMfa = $someBoolean
-	# OPTIONAL
-	ctrConfig = @{
-		# REQUIRED
-		targetWorkloadFid = $someString
-		# REQUIRED
-		defaultTargetDomainName = $someString
-		# OPTIONAL
-		domainMapping = @{
-			# REQUIRED
-			domainMappingList = @(
-				@{
-					# OPTIONAL
-					sourceDomainName = $someString
-					# OPTIONAL
-					targetDomainName = $someString
-				}
-			)
-		}
-	}
 	# REQUIRED
 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
 	# OPTIONAL
@@ -4956,6 +4937,25 @@ $query.Var.input = @{
 				)
 			}
 		)
+	}
+	# OPTIONAL
+	ctrConfig = @{
+		# REQUIRED
+		defaultTargetDomainName = $someString
+		# REQUIRED
+		targetWorkloadFid = $someString
+		# OPTIONAL
+		domainMapping = @{
+			# REQUIRED
+			domainMappingList = @(
+				@{
+					# OPTIONAL
+					sourceDomainName = $someString
+					# OPTIONAL
+					targetDomainName = $someString
+				}
+			)
+		}
 	}
 }"
             );

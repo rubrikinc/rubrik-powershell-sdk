@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastUpdatedTime")]
         public DateTime? LastUpdatedTime { get; set; }
 
+        //      C# -> AutoQuarantineMetadataType? AutoQuarantineMetadata
+        // GraphQL -> autoQuarantineMetadata: AutoQuarantineMetadataType (type)
+        [JsonProperty("autoQuarantineMetadata")]
+        public AutoQuarantineMetadataType? AutoQuarantineMetadata { get; set; }
+
         //      C# -> FeedSummaryStats? FeedStats
         // GraphQL -> feedStats: FeedSummaryStats (type)
         [JsonProperty("feedStats")]
@@ -64,6 +69,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AddedBy = null,
         System.String? Description = null,
         DateTime? LastUpdatedTime = null,
+        AutoQuarantineMetadataType? AutoQuarantineMetadata = null,
         FeedSummaryStats? FeedStats = null,
         ProviderInfo? ProviderInfo = null
     ) 
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastUpdatedTime != null ) {
             this.LastUpdatedTime = LastUpdatedTime;
+        }
+        if ( AutoQuarantineMetadata != null ) {
+            this.AutoQuarantineMetadata = AutoQuarantineMetadata;
         }
         if ( FeedStats != null ) {
             this.FeedStats = FeedStats;
@@ -134,6 +143,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lastUpdatedTime\n" ;
             } else {
                 s += ind + "lastUpdatedTime\n" ;
+            }
+        }
+        //      C# -> AutoQuarantineMetadataType? AutoQuarantineMetadata
+        // GraphQL -> autoQuarantineMetadata: AutoQuarantineMetadataType (type)
+        if (this.AutoQuarantineMetadata != null) {
+            var fspec = this.AutoQuarantineMetadata.AsFieldSpec(conf.Child("autoQuarantineMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "autoQuarantineMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> FeedSummaryStats? FeedStats
@@ -234,6 +255,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastUpdatedTime != null && ec.Excludes("lastUpdatedTime",true))
         {
             this.LastUpdatedTime = null;
+        }
+        //      C# -> AutoQuarantineMetadataType? AutoQuarantineMetadata
+        // GraphQL -> autoQuarantineMetadata: AutoQuarantineMetadataType (type)
+        if (ec.Includes("autoQuarantineMetadata",false))
+        {
+            if(this.AutoQuarantineMetadata == null) {
+
+                this.AutoQuarantineMetadata = new AutoQuarantineMetadataType();
+                this.AutoQuarantineMetadata.ApplyExploratoryFieldSpec(ec.NewChild("autoQuarantineMetadata"));
+
+            } else {
+
+                this.AutoQuarantineMetadata.ApplyExploratoryFieldSpec(ec.NewChild("autoQuarantineMetadata"));
+
+            }
+        }
+        else if (this.AutoQuarantineMetadata != null && ec.Excludes("autoQuarantineMetadata",false))
+        {
+            this.AutoQuarantineMetadata = null;
         }
         //      C# -> FeedSummaryStats? FeedStats
         // GraphQL -> feedStats: FeedSummaryStats (type)

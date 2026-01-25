@@ -169,6 +169,11 @@ Details of the RDS Instance in the AWS Native account.
     - rdsInstanceName - System.String: Name of the RDS DB Instance
     - rdsDatabaseRubrikId - System.String: The Rubrik ID for the AWS RDS database.
 - Returns RdsInstanceDetailsFromAws.
+### regiondetails
+Retrieve the AWS regions and availability zones.
+
+- There is a single argument of type AwsRegionDetailsReq.
+- Returns AwsRegionDetailsReply.
 ### regions
 All valid AWS regions for this cloud account.
 

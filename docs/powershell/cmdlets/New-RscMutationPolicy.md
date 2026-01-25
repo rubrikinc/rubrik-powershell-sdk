@@ -31,6 +31,14 @@ Delete a TPR policy.
 
 - There is a single argument of type DeleteTprPolicyInput.
 - Returns System.String.
+### failoverhapolicy
+Failover a failover group
+
+Supported in v9.5
+Starts an asynchronous request to failover a failover group when issued to a secondary cluster.
+
+- There is a single argument of type FailoverHaPolicyInput.
+- Returns AsyncRequestStatus.
 ### gethealthmonitorpolicystatus
 Get health monitor policies on the Rubrik cluster.
 
@@ -56,6 +64,11 @@ DEPRECATED (use seedEnabledPolicies instead) Seed account with initial policies.
 
 - The seedinitialpolicies subcommand takes no arguments.
 - Returns SeedInitialPoliciesReply.
+### setairpolicyalertstatus
+Set policy alert status.
+
+- There is a single argument of type SetAirPolicyAlertStatusInput.
+- Returns SetAirPolicyAlertStatusReply.
 ### setpasswordcomplexitypolicy
 Set the password complexity policy for the current organization.
 

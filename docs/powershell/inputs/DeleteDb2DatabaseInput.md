@@ -4,4 +4,4 @@ Input for deleting a Db2 database.
 - id: System.String
   - Required. ID of the Db2 database.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

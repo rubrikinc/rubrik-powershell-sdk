@@ -6,4 +6,4 @@ Supported in v5.0+
 - eventSeriesId: System.String
   - Supported in v5.0+
 - time: DateTime
-  - Required. Supported in v5.0+
+  - Supported in v5.0+

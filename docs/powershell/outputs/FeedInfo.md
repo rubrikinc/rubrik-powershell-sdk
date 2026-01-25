@@ -13,3 +13,5 @@ Information about the feed.
   - Description of the feed.
 - feedStatus: FeedStatus
   - Status of the feed.
+- autoQuarantineMetadata: AutoQuarantineMetadataType
+  - Metadata for auto quarantine.

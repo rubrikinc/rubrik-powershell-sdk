@@ -10,4 +10,6 @@ Workload recovery info.
 - newWorkloadId: System.String
   - Newly assigned data source ID.
 - oldWorkloadId: System.String
-  - Original data source ID.
+  - Original data source ID. Deprecated: Use set of [oldWorkloadId + oldWorkloadIds] instead for multiple old IDs mapping to the same new ID. We continue to add this to the set for backward compatibility.
+- oldWorkloadIds: list of System.Strings
+  - All original data source IDs. Combine this with oldWorkloadId in a set for backward compatibility.

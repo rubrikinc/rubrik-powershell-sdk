@@ -1,4 +1,4 @@
-// MonthlyDaySpecSpecificDateInput.cs
+// CloudDirectExclusionInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,21 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region MonthlyDaySpecSpecificDateInput
+    #region CloudDirectExclusionInput
 
-    public class MonthlyDaySpecSpecificDateInput: IInput
+    public class CloudDirectExclusionInput: IInput
     {
         #region members
 
-        //      C# -> SpecificDateInput? Value
-        // GraphQL -> value: SpecificDateInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("value")]
-        public SpecificDateInput? Value { get; set; }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String (scalar)
+        [JsonProperty("path")]
+        public System.String? Path { get; set; }
+
+        //      C# -> System.String? Pattern
+        // GraphQL -> pattern: String (scalar)
+        [JsonProperty("pattern")]
+        public System.String? Pattern { get; set; }
 
 
         #endregion
@@ -52,7 +55,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class MonthlyDaySpecSpecificDateInput
+    } // class CloudDirectExclusionInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

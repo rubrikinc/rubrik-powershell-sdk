@@ -6,4 +6,4 @@ Input for creating an on-demand SAP HANA database backup.
 - config: SapHanaOnDemandBackupConfigInput
   - Configuration for the on-demand snapshot.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

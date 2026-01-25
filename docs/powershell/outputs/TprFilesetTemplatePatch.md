@@ -3,12 +3,12 @@ Fileset template patch.
 
 - backupScriptErrorHandling: System.String
   - Action taken if script fails. Options are 'abort' and 'continue'.
+- backupScriptTimeout: System.Int64
+  - Timeout in seconds for backup scripts.
 - exceptions: list of System.Strings
   - Paths that are exceptions to the excluded paths.
 - excludes: list of System.Strings
   - Paths to exclude from the fileset.
-- id: System.String
-  - ID of the fileset template.
 - includes: list of System.Strings
   - Paths to include in the fileset.
 - name: System.String

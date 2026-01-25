@@ -74,6 +74,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lambdaRoleName")]
         public System.String? LambdaRoleName { get; set; }
 
+        //      C# -> System.String? PermissionBoundaryName
+        // GraphQL -> permissionBoundaryName: String (scalar)
+        [JsonProperty("permissionBoundaryName")]
+        public System.String? PermissionBoundaryName { get; set; }
+
+        //      C# -> System.String? PermissionBoundaryPath
+        // GraphQL -> permissionBoundaryPath: String (scalar)
+        [JsonProperty("permissionBoundaryPath")]
+        public System.String? PermissionBoundaryPath { get; set; }
+
 
         #endregion
 

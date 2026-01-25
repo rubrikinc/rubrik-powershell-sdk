@@ -33,3 +33,9 @@ Represents the analyzer.
   - A dictionary to filter fields that need to be analyzed for structured data by dictionary analyzers.
 - structuredKeyDictionary: list of System.Strings
   - Parsed list of keywords from structuredKeyDictionaryCsv.
+- proximityKeywordsRegex: System.String
+  - Regex pattern for proximity keywords used to filter hits.
+- proximityDistance: System.Int32
+  - Maximum character distance for proximity keyword matching.
+- isInactive: System.Boolean
+  - Represent whether the analyzer is inactive or not.

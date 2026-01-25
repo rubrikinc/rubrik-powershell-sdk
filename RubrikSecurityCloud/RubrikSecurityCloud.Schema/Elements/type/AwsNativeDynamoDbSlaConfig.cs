@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cmkAliasForPrimaryBackup")]
         public System.String? CmkAliasForPrimaryBackup { get; set; }
 
+        //      C# -> System.Int32? ContinuousBackupRetentionInDays
+        // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
+        [JsonProperty("continuousBackupRetentionInDays")]
+        public System.Int32? ContinuousBackupRetentionInDays { get; set; }
+
+        //      C# -> System.Boolean? ContinuousBackupsEnabled
+        // GraphQL -> continuousBackupsEnabled: Boolean! (scalar)
+        [JsonProperty("continuousBackupsEnabled")]
+        public System.Boolean? ContinuousBackupsEnabled { get; set; }
+
 
         #endregion
 
@@ -35,11 +45,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsNativeDynamoDbSlaConfig Set(
-        System.String? CmkAliasForPrimaryBackup = null
+        System.String? CmkAliasForPrimaryBackup = null,
+        System.Int32? ContinuousBackupRetentionInDays = null,
+        System.Boolean? ContinuousBackupsEnabled = null
     ) 
     {
         if ( CmkAliasForPrimaryBackup != null ) {
             this.CmkAliasForPrimaryBackup = CmkAliasForPrimaryBackup;
+        }
+        if ( ContinuousBackupRetentionInDays != null ) {
+            this.ContinuousBackupRetentionInDays = ContinuousBackupRetentionInDays;
+        }
+        if ( ContinuousBackupsEnabled != null ) {
+            this.ContinuousBackupsEnabled = ContinuousBackupsEnabled;
         }
         return this;
     }
@@ -62,6 +80,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cmkAliasForPrimaryBackup\n" ;
             } else {
                 s += ind + "cmkAliasForPrimaryBackup\n" ;
+            }
+        }
+        //      C# -> System.Int32? ContinuousBackupRetentionInDays
+        // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
+        if (this.ContinuousBackupRetentionInDays != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "continuousBackupRetentionInDays\n" ;
+            } else {
+                s += ind + "continuousBackupRetentionInDays\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ContinuousBackupsEnabled
+        // GraphQL -> continuousBackupsEnabled: Boolean! (scalar)
+        if (this.ContinuousBackupsEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "continuousBackupsEnabled\n" ;
+            } else {
+                s += ind + "continuousBackupsEnabled\n" ;
             }
         }
         return s;
@@ -87,6 +123,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.CmkAliasForPrimaryBackup != null && ec.Excludes("cmkAliasForPrimaryBackup",true))
         {
             this.CmkAliasForPrimaryBackup = null;
+        }
+        //      C# -> System.Int32? ContinuousBackupRetentionInDays
+        // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
+        if (ec.Includes("continuousBackupRetentionInDays",true))
+        {
+            if(this.ContinuousBackupRetentionInDays == null) {
+
+                this.ContinuousBackupRetentionInDays = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ContinuousBackupRetentionInDays != null && ec.Excludes("continuousBackupRetentionInDays",true))
+        {
+            this.ContinuousBackupRetentionInDays = null;
+        }
+        //      C# -> System.Boolean? ContinuousBackupsEnabled
+        // GraphQL -> continuousBackupsEnabled: Boolean! (scalar)
+        if (ec.Includes("continuousBackupsEnabled",true))
+        {
+            if(this.ContinuousBackupsEnabled == null) {
+
+                this.ContinuousBackupsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ContinuousBackupsEnabled != null && ec.Excludes("continuousBackupsEnabled",true))
+        {
+            this.ContinuousBackupsEnabled = null;
         }
     }
 

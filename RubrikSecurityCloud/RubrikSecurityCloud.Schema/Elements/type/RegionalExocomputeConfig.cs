@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public GcpCloudAccountRegion? Region { get; set; }
 
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        [JsonProperty("projectId")]
+        public System.String? ProjectId { get; set; }
+
         //      C# -> System.String? SubnetName
         // GraphQL -> subnetName: String! (scalar)
         [JsonProperty("subnetName")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public RegionalExocomputeConfig Set(
         GcpCloudAccountRegion? Region = null,
+        System.String? ProjectId = null,
         System.String? SubnetName = null,
         System.String? VpcNetworkName = null
     ) 
     {
         if ( Region != null ) {
             this.Region = Region;
+        }
+        if ( ProjectId != null ) {
+            this.ProjectId = ProjectId;
         }
         if ( SubnetName != null ) {
             this.SubnetName = SubnetName;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "region\n" ;
             } else {
                 s += ind + "region\n" ;
+            }
+        }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (this.ProjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "projectId\n" ;
+            } else {
+                s += ind + "projectId\n" ;
             }
         }
         //      C# -> System.String? SubnetName
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Region != null && ec.Excludes("region",true))
         {
             this.Region = null;
+        }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (ec.Includes("projectId",true))
+        {
+            if(this.ProjectId == null) {
+
+                this.ProjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectId != null && ec.Excludes("projectId",true))
+        {
+            this.ProjectId = null;
         }
         //      C# -> System.String? SubnetName
         // GraphQL -> subnetName: String! (scalar)

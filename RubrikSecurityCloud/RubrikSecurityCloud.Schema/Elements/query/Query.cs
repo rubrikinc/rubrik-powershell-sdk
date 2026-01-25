@@ -132,7 +132,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllUnmanagedObjectsSupportedTypes(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nproductType: $productType\ncloudVendor: $cloudVendor\n)";
+            string args = "\n(\nproductType: $productType\ncloudVendor: $cloudVendor\nsnapshotManagementType: $snapshotManagementType\n)";
             return "allUnmanagedObjectsSupportedTypes" + args + "\n";
         }
         public static object AllUnmanagedObjectsSupportedTypesFieldSpec(AutofieldContext? ec=null)
@@ -3936,7 +3936,7 @@ namespace RubrikSecurityCloud.Types
         public static string AnalyzerUsages(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ndataCategoryIdsFilter: $dataCategoryIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\ndataTypeSourceFilter: $dataTypeSourceFilter\ndataTypeNameSearchFilter: $dataTypeNameSearchFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\ndataCategoryIdsFilter: $dataCategoryIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\ndataTypeSourceFilter: $dataTypeSourceFilter\ndataTypeNameSearchFilter: $dataTypeNameSearchFilter\nanalyzerStatusFilter: $analyzerStatusFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "analyzerUsages" + args + "\n{\n" + fs + "}\n";
         }
         public static object AnalyzerUsagesFieldSpec(AutofieldContext? ec=null)
@@ -4503,6 +4503,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AwsNativeS3Bucket() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AwsRegionDetailsReply? AwsRegionDetails
+        // GraphQL -> awsRegionDetails: AwsRegionDetailsReply! (type)
+        public static string AwsRegionDetails(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "awsRegionDetails" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AwsRegionDetailsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AwsRegionDetailsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -6901,6 +6919,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ClusterRefsConnection? ClusterRefs
+        // GraphQL -> clusterRefs: ClusterRefsConnection! (type)
+        public static string ClusterRefs(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            return "clusterRefs" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ClusterRefsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ClusterRefsConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ClusterRegistrationProductInfoType? ClusterRegistrationProductInfo
         // GraphQL -> clusterRegistrationProductInfo: ClusterRegistrationProductInfoType! (type)
         public static string ClusterRegistrationProductInfo(object fsObj)
@@ -8445,6 +8481,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ListStoredDiskLocationsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GenerateCloudDirectTaskReportReply? GenerateCloudDirectTaskReport
+        // GraphQL -> generateCloudDirectTaskReport: GenerateCloudDirectTaskReportReply! (type)
+        public static string GenerateCloudDirectTaskReport(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "generateCloudDirectTaskReport" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GenerateCloudDirectTaskReportFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GenerateCloudDirectTaskReportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13260,7 +13314,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyDetails(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ndataCategoryIds: $dataCategoryIds\ndataTypeIds: $dataTypeIds\ndataCategoryType: $dataCategoryType\ndocumentTypeIds: $documentTypeIds\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            string args = "\n(\ndataCategoryIds: $dataCategoryIds\ndataTypeIds: $dataTypeIds\ndataCategoryType: $dataCategoryType\ndocumentTypeIds: $documentTypeIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nincludeInactiveDataCategories: $includeInactiveDataCategories\n)";
             return "policyDetails" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyDetailsFieldSpec(AutofieldContext? ec=null)
@@ -14808,7 +14862,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfAsnappableConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\nshouldShowCdmSnapshotLocationInfoArg: $shouldShowCdmSnapshotLocationInfoArg\n)";
             return "snapshotOfASnappableConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotOfAsnappableConnectionFieldSpec(AutofieldContext? ec=null)
@@ -14826,7 +14880,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfSnappablesConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\nshouldShowCdmSnapshotLocationInfoArg: $shouldShowCdmSnapshotLocationInfoArg\n)";
             return "snapshotOfSnappablesConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotOfSnappablesConnectionFieldSpec(AutofieldContext? ec=null)

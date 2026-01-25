@@ -2,7 +2,7 @@
 Supported in v5.2+
 
 - date: DateTime
-  - Required. Supported in v5.2+
+  - Supported in v5.2+
 Time at which the snapshot was taken.
 - id: System.String
   - Required. Supported in v5.2+

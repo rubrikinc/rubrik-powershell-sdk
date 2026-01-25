@@ -7,4 +7,4 @@ v9.0+: An object that contains the system properties to be updated for the SAP H
 - id: System.String
   - Required. The ID of the SAP HANA system.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

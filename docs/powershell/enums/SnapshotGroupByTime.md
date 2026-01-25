@@ -1,7 +1,7 @@
 ### SnapshotGroupByTime
-- Month
-- Quarter
 - Year
+- Month
 - Day
-- Week
 - Hour
+- Quarter
+- Week

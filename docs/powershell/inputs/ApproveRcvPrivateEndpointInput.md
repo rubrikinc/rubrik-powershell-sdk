@@ -1,9 +1,9 @@
 ### ApproveRcvPrivateEndpointInput
-Input for approving private endpoint.
+Input for approving an RCV private endpoint connection.
 
 - locationId: System.String
-  - Field for specifying Rubrik location identifier of RCV location.
+  - Location ID associated with this private endpoint.
 - privateEndpointId: System.String
-  - Field for specifying the Azure resource identifier for a RCV private endpoint.
+  - Unique identifier of the private endpoint from cloud provider.
 - requestMessage: System.String
-  - Secret message used for validating approval request.
+  - Secret message shared at the time of creating the approval request.

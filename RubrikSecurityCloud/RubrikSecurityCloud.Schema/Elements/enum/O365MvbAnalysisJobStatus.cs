@@ -18,11 +18,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "CANCELLED")]
+        CANCELLED,
+
+        [EnumMember(Value = "FAILED")]
+        FAILED,
+
         [EnumMember(Value = "IN_PROGRESS")]
         IN_PROGRESS,
 
         [EnumMember(Value = "QUEUED")]
         QUEUED,
+
+        [EnumMember(Value = "SUCCEEDED")]
+        SUCCEEDED,
 
         [EnumMember(Value = "UNSPECIFIED")]
         UNSPECIFIED

@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SUCCEEDED")]
         SUCCEEDED,
 
+        [EnumMember(Value = "UNHEALTHY")]
+        UNHEALTHY,
+
         [EnumMember(Value = "UNSPECIFIED")]
         UNSPECIFIED,
 

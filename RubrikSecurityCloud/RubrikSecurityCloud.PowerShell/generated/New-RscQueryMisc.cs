@@ -350,6 +350,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.dataTypeNameSearchFilter = $someString
     /// # OPTIONAL
+    /// $query.Var.analyzerStatusFilter = $someAnalyzerStatusFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerStatusFilter]) for enum values.
+    /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
@@ -6199,6 +6201,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.sortBy = $somePoliciesDetailSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PoliciesDetailSortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.includeInactiveDataCategories = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -8103,6 +8107,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.productType = $someProductTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProductTargetType]) for enum values.
     /// # OPTIONAL
     /// $query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.snapshotManagementType = $someSnapshotManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotManagementType]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -12728,6 +12734,7 @@ $query.Var.clusterUuids = @(
         //     sortOrder: SortOrder
         //     dataTypeSourceFilter: DataTypeSource
         //     dataTypeNameSearchFilter: String
+        //     analyzerStatusFilter: AnalyzerStatusFilter
         //     first: Int
         //     after: String
         //     last: Int
@@ -12742,6 +12749,7 @@ $query.Var.clusterUuids = @(
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("dataTypeSourceFilter", "DataTypeSource"),
                 Tuple.Create("dataTypeNameSearchFilter", "String"),
+                Tuple.Create("analyzerStatusFilter", "AnalyzerStatusFilter"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
@@ -12751,7 +12759,7 @@ $query.Var.clusterUuids = @(
                 argDefs,
                 "query",
                 "QueryAnalyzerUsages",
-                "($dataCategoryIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$sortBy: AnalyzerUsagesSortBy,$sortOrder: SortOrder,$dataTypeSourceFilter: DataTypeSource,$dataTypeNameSearchFilter: String,$first: Int,$after: String,$last: Int,$before: String)",
+                "($dataCategoryIdsFilter: [String!],$riskLevelsFilter: [RiskLevelType!],$sortBy: AnalyzerUsagesSortBy,$sortOrder: SortOrder,$dataTypeSourceFilter: DataTypeSource,$dataTypeNameSearchFilter: String,$analyzerStatusFilter: AnalyzerStatusFilter,$first: Int,$after: String,$last: Int,$before: String)",
                 "AnalyzerUsageConnection",
                 Query.AnalyzerUsages,
                 Query.AnalyzerUsagesFieldSpec,
@@ -12771,6 +12779,8 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 $query.Var.dataTypeSourceFilter = $someDataTypeSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataTypeSource]) for enum values.
 # OPTIONAL
 $query.Var.dataTypeNameSearchFilter = $someString
+# OPTIONAL
+$query.Var.analyzerStatusFilter = $someAnalyzerStatusFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerStatusFilter]) for enum values.
 # OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
@@ -17950,6 +17960,7 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
         //     documentTypeIds: [UUID!]
         //     sortBy: PoliciesDetailSortByField
         //     sortOrder: SortOrder
+        //     includeInactiveDataCategories: Boolean = false
         //   ): PolicyDetailConnection!
         internal void InitQueryPolicyDetails()
         {
@@ -17960,12 +17971,13 @@ $query.Var.rootEnum = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValue
                 Tuple.Create("documentTypeIds", "[UUID!]"),
                 Tuple.Create("sortBy", "PoliciesDetailSortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("includeInactiveDataCategories", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryPolicyDetails",
-                "($dataCategoryIds: [String!],$dataTypeIds: [String!],$dataCategoryType: DataCategoryType,$documentTypeIds: [UUID!],$sortBy: PoliciesDetailSortByField,$sortOrder: SortOrder)",
+                "($dataCategoryIds: [String!],$dataTypeIds: [String!],$dataCategoryType: DataCategoryType,$documentTypeIds: [UUID!],$sortBy: PoliciesDetailSortByField,$sortOrder: SortOrder,$includeInactiveDataCategories: Boolean)",
                 "PolicyDetailConnection",
                 Query.PolicyDetails,
                 Query.PolicyDetailsFieldSpec,
@@ -17986,7 +17998,9 @@ $query.Var.documentTypeIds = @(
 # OPTIONAL
 $query.Var.sortBy = $somePoliciesDetailSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PoliciesDetailSortByField]) for enum values.
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.includeInactiveDataCategories = $someBoolean"
             );
         }
 
@@ -19814,25 +19828,28 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // allUnmanagedObjectsSupportedTypes(productType: ProductTargetType, cloudVendor: CloudVendor): [ManagedObjectType!]!
+        // allUnmanagedObjectsSupportedTypes(productType: ProductTargetType, cloudVendor: CloudVendor, snapshotManagementType: SnapshotManagementType): [ManagedObjectType!]!
         internal void InitQueryAllUnmanagedObjectsSupportedTypes()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("productType", "ProductTargetType"),
                 Tuple.Create("cloudVendor", "CloudVendor"),
+                Tuple.Create("snapshotManagementType", "SnapshotManagementType"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllUnmanagedObjectsSupportedTypes",
-                "($productType: ProductTargetType,$cloudVendor: CloudVendor)",
+                "($productType: ProductTargetType,$cloudVendor: CloudVendor,$snapshotManagementType: SnapshotManagementType)",
                 "List<ManagedObjectType>",
                 Query.AllUnmanagedObjectsSupportedTypes,
                 Query.AllUnmanagedObjectsSupportedTypesFieldSpec,
                 @"# OPTIONAL
 $query.Var.productType = $someProductTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProductTargetType]) for enum values.
 # OPTIONAL
-$query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values."
+$query.Var.cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+# OPTIONAL
+$query.Var.snapshotManagementType = $someSnapshotManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotManagementType]) for enum values."
             );
         }
 

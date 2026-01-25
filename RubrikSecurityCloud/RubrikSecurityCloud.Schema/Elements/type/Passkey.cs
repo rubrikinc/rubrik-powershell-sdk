@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("credentialId")]
         public System.String? CredentialId { get; set; }
 
+        //      C# -> System.Boolean? IsPasswordless
+        // GraphQL -> isPasswordless: Boolean! (scalar)
+        [JsonProperty("isPasswordless")]
+        public System.Boolean? IsPasswordless { get; set; }
+
         //      C# -> System.String? Os
         // GraphQL -> os: String! (scalar)
         [JsonProperty("os")]
@@ -69,6 +74,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Browser = null,
         DateTime? CreatedAt = null,
         System.String? CredentialId = null,
+        System.Boolean? IsPasswordless = null,
         System.String? Os = null,
         System.String? PasskeyName = null,
         DateTime? UserLastValidatedAt = null
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CredentialId != null ) {
             this.CredentialId = CredentialId;
+        }
+        if ( IsPasswordless != null ) {
+            this.IsPasswordless = IsPasswordless;
         }
         if ( Os != null ) {
             this.Os = Os;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "credentialId\n" ;
             } else {
                 s += ind + "credentialId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsPasswordless
+        // GraphQL -> isPasswordless: Boolean! (scalar)
+        if (this.IsPasswordless != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPasswordless\n" ;
+            } else {
+                s += ind + "isPasswordless\n" ;
             }
         }
         //      C# -> System.String? Os
@@ -246,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CredentialId != null && ec.Excludes("credentialId",true))
         {
             this.CredentialId = null;
+        }
+        //      C# -> System.Boolean? IsPasswordless
+        // GraphQL -> isPasswordless: Boolean! (scalar)
+        if (ec.Includes("isPasswordless",true))
+        {
+            if(this.IsPasswordless == null) {
+
+                this.IsPasswordless = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPasswordless != null && ec.Excludes("isPasswordless",true))
+        {
+            this.IsPasswordless = null;
         }
         //      C# -> System.String? Os
         // GraphQL -> os: String! (scalar)

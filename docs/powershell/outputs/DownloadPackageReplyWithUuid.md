@@ -1,7 +1,7 @@
 ### DownloadPackageReplyWithUuid
-Start download job request response.
+Download package job reply with uuid.
 
-- uuid: System.String
-  - Cluster uuid.
 - jobId: System.String
   - Download package job ID.
+- uuid: System.String
+  - Cluster uuid.

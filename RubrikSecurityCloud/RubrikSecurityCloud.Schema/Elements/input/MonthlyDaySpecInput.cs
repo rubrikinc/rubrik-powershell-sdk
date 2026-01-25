@@ -19,10 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> MonthlyDaySpecSpecInput? Spec
-        // GraphQL -> spec: MonthlyDaySpecSpecInput (input)
-        [JsonProperty("spec")]
-        public MonthlyDaySpecSpecInput? Spec { get; set; }
+        //      C# -> SpecificDateInput? SpecificDate
+        // GraphQL -> specificDate: SpecificDateInput (input)
+        [JsonProperty("specificDate")]
+        public SpecificDateInput? SpecificDate { get; set; }
+
+        //      C# -> DayOfWeekPatternInput? DayOfWeekPattern
+        // GraphQL -> dayOfWeekPattern: DayOfWeekPatternInput (input)
+        [JsonProperty("dayOfWeekPattern")]
+        public DayOfWeekPatternInput? DayOfWeekPattern { get; set; }
 
 
         #endregion

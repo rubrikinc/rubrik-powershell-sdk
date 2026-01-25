@@ -17,3 +17,5 @@ Rich org-level segregated consumption data with detailed breakdowns
   - Segregated consumption for SharePoint workload
 - totalConsumption: SegregatedFETBConsumption
   - Aggregated total consumption across all Microsoft 365 workloads
+- objectTypeUsage: list of ObjectTypeUsages
+  - Consumption breakdown by object type.

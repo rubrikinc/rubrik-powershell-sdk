@@ -296,6 +296,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryPath = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	roleChainingAccountId = $someString
@@ -1405,6 +1409,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryPath = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	awsIamPairId = $someString
@@ -1478,6 +1486,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryPath = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	awsIamPairId = $someString
@@ -2190,6 +2202,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryName = $someString
+    /// 		# OPTIONAL
+    /// 		permissionBoundaryPath = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	featuresWithPermissionsGroups = @(
@@ -2955,6 +2971,10 @@ $query.Var.input = @{
 		lambdaRolePath = $someString
 		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		permissionBoundaryName = $someString
+		# OPTIONAL
+		permissionBoundaryPath = $someString
 	}
 	# OPTIONAL
 	roleChainingAccountId = $someString
@@ -3944,6 +3964,10 @@ $query.Var.input = @{
 		lambdaRolePath = $someString
 		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		permissionBoundaryName = $someString
+		# OPTIONAL
+		permissionBoundaryPath = $someString
 	}
 	# OPTIONAL
 	awsIamPairId = $someString
@@ -4009,6 +4033,10 @@ $query.Var.input = @{
 		lambdaRolePath = $someString
 		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		permissionBoundaryName = $someString
+		# OPTIONAL
+		permissionBoundaryPath = $someString
 	}
 	# OPTIONAL
 	awsIamPairId = $someString
@@ -4617,6 +4645,10 @@ $query.Var.input = @{
 		lambdaRolePath = $someString
 		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		permissionBoundaryName = $someString
+		# OPTIONAL
+		permissionBoundaryPath = $someString
 	}
 	# OPTIONAL
 	featuresWithPermissionsGroups = @(

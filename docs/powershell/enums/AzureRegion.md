@@ -66,3 +66,5 @@ Regions for Azure.
 - MALAYSIA_WEST - Azure region is Malaysia West.
 - NEW_ZEALAND_NORTH - Azure region is Newzealand North.
 - CHILE_CENTRAL - Azure region is Chile Central.
+- AUSTRIA_EAST - Azure region is Austria East.
+- BELGIUM_CENTRAL - Azure region is Belgium Central.

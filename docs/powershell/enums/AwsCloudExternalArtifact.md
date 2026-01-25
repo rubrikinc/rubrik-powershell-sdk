@@ -13,3 +13,4 @@ Keywords for AWS external artifacts.
 - STACK_NAME - Keyword to capture stack name.
 - STACK_ARN - Keyword to capture stack ARN.
 - EXOCOMPUTE_EKS_LAMBDA_ROLE_ARN - Keyword to capture EKS Lambda role.
+- EXOCOMPUTE_FLUENTD_ROLE_ARN - Keyword to capture Exocompute Fluentd role.

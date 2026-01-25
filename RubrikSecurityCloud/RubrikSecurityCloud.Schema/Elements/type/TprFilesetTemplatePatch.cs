@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupScriptErrorHandling")]
         public System.String? BackupScriptErrorHandling { get; set; }
 
+        //      C# -> System.Int64? BackupScriptTimeout
+        // GraphQL -> backupScriptTimeout: Long (scalar)
+        [JsonProperty("backupScriptTimeout")]
+        public System.Int64? BackupScriptTimeout { get; set; }
+
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
         [JsonProperty("exceptions")]
@@ -34,11 +39,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludes: [String!]! (scalar)
         [JsonProperty("excludes")]
         public List<System.String>? Excludes { get; set; }
-
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
 
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)
@@ -91,9 +91,9 @@ namespace RubrikSecurityCloud.Types
 
     public TprFilesetTemplatePatch Set(
         System.String? BackupScriptErrorHandling = null,
+        System.Int64? BackupScriptTimeout = null,
         List<System.String>? Exceptions = null,
         List<System.String>? Excludes = null,
-        System.String? Id = null,
         List<System.String>? Includes = null,
         System.String? Name = null,
         System.String? PostBackupScript = null,
@@ -107,14 +107,14 @@ namespace RubrikSecurityCloud.Types
         if ( BackupScriptErrorHandling != null ) {
             this.BackupScriptErrorHandling = BackupScriptErrorHandling;
         }
+        if ( BackupScriptTimeout != null ) {
+            this.BackupScriptTimeout = BackupScriptTimeout;
+        }
         if ( Exceptions != null ) {
             this.Exceptions = Exceptions;
         }
         if ( Excludes != null ) {
             this.Excludes = Excludes;
-        }
-        if ( Id != null ) {
-            this.Id = Id;
         }
         if ( Includes != null ) {
             this.Includes = Includes;
@@ -163,6 +163,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "backupScriptErrorHandling\n" ;
             }
         }
+        //      C# -> System.Int64? BackupScriptTimeout
+        // GraphQL -> backupScriptTimeout: Long (scalar)
+        if (this.BackupScriptTimeout != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupScriptTimeout\n" ;
+            } else {
+                s += ind + "backupScriptTimeout\n" ;
+            }
+        }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
         if (this.Exceptions != null) {
@@ -179,15 +188,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "excludes\n" ;
             } else {
                 s += ind + "excludes\n" ;
-            }
-        }
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (this.Id != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "id\n" ;
-            } else {
-                s += ind + "id\n" ;
             }
         }
         //      C# -> List<System.String>? Includes
@@ -289,6 +289,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.BackupScriptErrorHandling = null;
         }
+        //      C# -> System.Int64? BackupScriptTimeout
+        // GraphQL -> backupScriptTimeout: Long (scalar)
+        if (ec.Includes("backupScriptTimeout",true))
+        {
+            if(this.BackupScriptTimeout == null) {
+
+                this.BackupScriptTimeout = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupScriptTimeout != null && ec.Excludes("backupScriptTimeout",true))
+        {
+            this.BackupScriptTimeout = null;
+        }
         //      C# -> List<System.String>? Exceptions
         // GraphQL -> exceptions: [String!]! (scalar)
         if (ec.Includes("exceptions",true))
@@ -322,23 +339,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.Excludes != null && ec.Excludes("excludes",true))
         {
             this.Excludes = null;
-        }
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (ec.Includes("id",true))
-        {
-            if(this.Id == null) {
-
-                this.Id = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.Id != null && ec.Excludes("id",true))
-        {
-            this.Id = null;
         }
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)

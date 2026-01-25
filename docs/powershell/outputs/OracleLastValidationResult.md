@@ -8,5 +8,5 @@ The eventseries ID for the last validation job.
   - Required. Supported in v5.3+
 A Boolean that specifies whether the last validation successfully completed.
 - validationTime: DateTime
-  - Required. Supported in v5.3+
+  - Supported in v5.3+
 The timestamp of the recovery point to validate.

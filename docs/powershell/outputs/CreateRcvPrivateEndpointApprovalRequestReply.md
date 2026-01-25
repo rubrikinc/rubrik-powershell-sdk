@@ -1,7 +1,7 @@
 ### CreateRcvPrivateEndpointApprovalRequestReply
-Required fields for adding private endpoint to RCV location.
+Response for CreateRCVPrivateEndpointApprovalRequest.
 
 - storageAccountId: System.String
-  - Azure storage account identifier for the RCV location.
+  - Storage account ID where the private endpoint approval will be created.
 - requestMessage: System.String
-  - Authentication token for approving request.
+  - Secret request message that must match during approval.

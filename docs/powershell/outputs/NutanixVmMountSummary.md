@@ -26,7 +26,7 @@ Name of the mounted virtual machine.
   - Supported in v6.0+
 The power status of the mounted virtual machine.
 - snapshotDate: DateTime
-  - Required. Supported in v6.0+
+  - Supported in v6.0+
 Timestamp of the Nutanix virtual machine snapshot on which the Live Mount is based.
 - storageContainerName: System.String
   - Supported in v6.0+

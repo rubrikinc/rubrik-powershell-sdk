@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pcrImagePullAwsNativeId")]
         System.String? PcrImagePullAwsNativeId { get; set; }
 
+        //      C# -> System.String? PcrImagePullEksVersion
+        // GraphQL -> pcrImagePullEksVersion: String (scalar)
+        [JsonProperty("pcrImagePullEksVersion")]
+        System.String? PcrImagePullEksVersion { get; set; }
+
 
         #endregion
 

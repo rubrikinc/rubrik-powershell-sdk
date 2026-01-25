@@ -669,12 +669,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	beforeTime = $someDateTime
     /// 	# OPTIONAL
     /// 	afterTime = $someDateTime
-    /// 	# REQUIRED
-    /// 	id = $someString
     /// 	# REQUIRED
     /// 	includeSnapshots = $someBoolean
     /// }
@@ -1532,12 +1532,12 @@ $query.Var.input = @{
                 Query.OracleRecoverableRangesMinimalFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	beforeTime = $someDateTime
 	# OPTIONAL
 	afterTime = $someDateTime
-	# REQUIRED
-	id = $someString
 	# REQUIRED
 	includeSnapshots = $someBoolean
 }"

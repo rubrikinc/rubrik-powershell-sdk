@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         ORG_ID,
 
         [EnumMember(Value = "SOURCE_DATABASE_ID")]
-        SOURCE_DATABASE_ID
+        SOURCE_DATABASE_ID,
+
+        [EnumMember(Value = "TARGET_INSTANCE_ID")]
+        TARGET_INSTANCE_ID
 
 
     } // enum MssqlDatabaseLiveMountFilterField

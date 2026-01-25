@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<O365MvbWorkloadType>? Workloads
+        // GraphQL -> workloads: [O365MvbWorkloadType!]! (enum)
+        [JsonProperty("workloads")]
+        public List<O365MvbWorkloadType>? Workloads { get; set; }
+
         //      C# -> System.Int64? AnalysisEndTime
         // GraphQL -> analysisEndTime: Long! (scalar)
         [JsonProperty("analysisEndTime")]
@@ -60,6 +65,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sharepointBlobPath")]
         public System.String? SharepointBlobPath { get; set; }
 
+        //      C# -> System.Boolean? ShouldExcludeArchivedMailbox
+        // GraphQL -> shouldExcludeArchivedMailbox: Boolean! (scalar)
+        [JsonProperty("shouldExcludeArchivedMailbox")]
+        public System.Boolean? ShouldExcludeArchivedMailbox { get; set; }
+
+        //      C# -> DateTime? SnapshotTime
+        // GraphQL -> snapshotTime: DateTime (scalar)
+        [JsonProperty("snapshotTime")]
+        public DateTime? SnapshotTime { get; set; }
+
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
         [JsonProperty("taskchainId")]
@@ -75,6 +90,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RecoveryAnalysisMetadata Set(
+        List<O365MvbWorkloadType>? Workloads = null,
         System.Int64? AnalysisEndTime = null,
         System.Int64? AnalysisIntervalDays = null,
         System.Int64? AnalysisStartTime = null,
@@ -83,9 +99,14 @@ namespace RubrikSecurityCloud.Types
         System.String? OnedriveBlobPath = null,
         System.String? OrgId = null,
         System.String? SharepointBlobPath = null,
+        System.Boolean? ShouldExcludeArchivedMailbox = null,
+        DateTime? SnapshotTime = null,
         System.String? TaskchainId = null
     ) 
     {
+        if ( Workloads != null ) {
+            this.Workloads = Workloads;
+        }
         if ( AnalysisEndTime != null ) {
             this.AnalysisEndTime = AnalysisEndTime;
         }
@@ -110,6 +131,12 @@ namespace RubrikSecurityCloud.Types
         if ( SharepointBlobPath != null ) {
             this.SharepointBlobPath = SharepointBlobPath;
         }
+        if ( ShouldExcludeArchivedMailbox != null ) {
+            this.ShouldExcludeArchivedMailbox = ShouldExcludeArchivedMailbox;
+        }
+        if ( SnapshotTime != null ) {
+            this.SnapshotTime = SnapshotTime;
+        }
         if ( TaskchainId != null ) {
             this.TaskchainId = TaskchainId;
         }
@@ -127,6 +154,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<O365MvbWorkloadType>? Workloads
+        // GraphQL -> workloads: [O365MvbWorkloadType!]! (enum)
+        if (this.Workloads != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "workloads\n" ;
+            } else {
+                s += ind + "workloads\n" ;
+            }
+        }
         //      C# -> System.Int64? AnalysisEndTime
         // GraphQL -> analysisEndTime: Long! (scalar)
         if (this.AnalysisEndTime != null) {
@@ -199,6 +235,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "sharepointBlobPath\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldExcludeArchivedMailbox
+        // GraphQL -> shouldExcludeArchivedMailbox: Boolean! (scalar)
+        if (this.ShouldExcludeArchivedMailbox != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldExcludeArchivedMailbox\n" ;
+            } else {
+                s += ind + "shouldExcludeArchivedMailbox\n" ;
+            }
+        }
+        //      C# -> DateTime? SnapshotTime
+        // GraphQL -> snapshotTime: DateTime (scalar)
+        if (this.SnapshotTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotTime\n" ;
+            } else {
+                s += ind + "snapshotTime\n" ;
+            }
+        }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
         if (this.TaskchainId != null) {
@@ -215,6 +269,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<O365MvbWorkloadType>? Workloads
+        // GraphQL -> workloads: [O365MvbWorkloadType!]! (enum)
+        if (ec.Includes("workloads",true))
+        {
+            if(this.Workloads == null) {
+
+                this.Workloads = new List<O365MvbWorkloadType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Workloads != null && ec.Excludes("workloads",true))
+        {
+            this.Workloads = null;
+        }
         //      C# -> System.Int64? AnalysisEndTime
         // GraphQL -> analysisEndTime: Long! (scalar)
         if (ec.Includes("analysisEndTime",true))
@@ -350,6 +421,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SharepointBlobPath != null && ec.Excludes("sharepointBlobPath",true))
         {
             this.SharepointBlobPath = null;
+        }
+        //      C# -> System.Boolean? ShouldExcludeArchivedMailbox
+        // GraphQL -> shouldExcludeArchivedMailbox: Boolean! (scalar)
+        if (ec.Includes("shouldExcludeArchivedMailbox",true))
+        {
+            if(this.ShouldExcludeArchivedMailbox == null) {
+
+                this.ShouldExcludeArchivedMailbox = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldExcludeArchivedMailbox != null && ec.Excludes("shouldExcludeArchivedMailbox",true))
+        {
+            this.ShouldExcludeArchivedMailbox = null;
+        }
+        //      C# -> DateTime? SnapshotTime
+        // GraphQL -> snapshotTime: DateTime (scalar)
+        if (ec.Includes("snapshotTime",true))
+        {
+            if(this.SnapshotTime == null) {
+
+                this.SnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotTime != null && ec.Excludes("snapshotTime",true))
+        {
+            this.SnapshotTime = null;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)

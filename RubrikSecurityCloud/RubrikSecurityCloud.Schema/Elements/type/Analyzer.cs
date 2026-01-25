@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsInactive
+        // GraphQL -> isInactive: Boolean! (scalar)
+        [JsonProperty("isInactive")]
+        public System.Boolean? IsInactive { get; set; }
+
         //      C# -> System.String? KeyRegex
         // GraphQL -> keyRegex: String! (scalar)
         [JsonProperty("keyRegex")]
@@ -59,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> System.Int32? ProximityDistance
+        // GraphQL -> proximityDistance: Int! (scalar)
+        [JsonProperty("proximityDistance")]
+        public System.Int32? ProximityDistance { get; set; }
+
+        //      C# -> System.String? ProximityKeywordsRegex
+        // GraphQL -> proximityKeywordsRegex: String! (scalar)
+        [JsonProperty("proximityKeywordsRegex")]
+        public System.String? ProximityKeywordsRegex { get; set; }
 
         //      C# -> System.String? Regex
         // GraphQL -> regex: String! (scalar)
@@ -116,8 +131,11 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? Dictionary = null,
         System.String? DictionaryCsv = null,
         System.String? Id = null,
+        System.Boolean? IsInactive = null,
         System.String? KeyRegex = null,
         System.String? Name = null,
+        System.Int32? ProximityDistance = null,
+        System.String? ProximityKeywordsRegex = null,
         System.String? Regex = null,
         List<System.String>? StructuredDictionary = null,
         System.String? StructuredDictionaryCsv = null,
@@ -146,11 +164,20 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsInactive != null ) {
+            this.IsInactive = IsInactive;
+        }
         if ( KeyRegex != null ) {
             this.KeyRegex = KeyRegex;
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ProximityDistance != null ) {
+            this.ProximityDistance = ProximityDistance;
+        }
+        if ( ProximityKeywordsRegex != null ) {
+            this.ProximityKeywordsRegex = ProximityKeywordsRegex;
         }
         if ( Regex != null ) {
             this.Regex = Regex;
@@ -244,6 +271,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsInactive
+        // GraphQL -> isInactive: Boolean! (scalar)
+        if (this.IsInactive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInactive\n" ;
+            } else {
+                s += ind + "isInactive\n" ;
+            }
+        }
         //      C# -> System.String? KeyRegex
         // GraphQL -> keyRegex: String! (scalar)
         if (this.KeyRegex != null) {
@@ -260,6 +296,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.Int32? ProximityDistance
+        // GraphQL -> proximityDistance: Int! (scalar)
+        if (this.ProximityDistance != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "proximityDistance\n" ;
+            } else {
+                s += ind + "proximityDistance\n" ;
+            }
+        }
+        //      C# -> System.String? ProximityKeywordsRegex
+        // GraphQL -> proximityKeywordsRegex: String! (scalar)
+        if (this.ProximityKeywordsRegex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "proximityKeywordsRegex\n" ;
+            } else {
+                s += ind + "proximityKeywordsRegex\n" ;
             }
         }
         //      C# -> System.String? Regex
@@ -446,6 +500,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsInactive
+        // GraphQL -> isInactive: Boolean! (scalar)
+        if (ec.Includes("isInactive",true))
+        {
+            if(this.IsInactive == null) {
+
+                this.IsInactive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInactive != null && ec.Excludes("isInactive",true))
+        {
+            this.IsInactive = null;
+        }
         //      C# -> System.String? KeyRegex
         // GraphQL -> keyRegex: String! (scalar)
         if (ec.Includes("keyRegex",true))
@@ -479,6 +550,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.Int32? ProximityDistance
+        // GraphQL -> proximityDistance: Int! (scalar)
+        if (ec.Includes("proximityDistance",true))
+        {
+            if(this.ProximityDistance == null) {
+
+                this.ProximityDistance = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProximityDistance != null && ec.Excludes("proximityDistance",true))
+        {
+            this.ProximityDistance = null;
+        }
+        //      C# -> System.String? ProximityKeywordsRegex
+        // GraphQL -> proximityKeywordsRegex: String! (scalar)
+        if (ec.Includes("proximityKeywordsRegex",true))
+        {
+            if(this.ProximityKeywordsRegex == null) {
+
+                this.ProximityKeywordsRegex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProximityKeywordsRegex != null && ec.Excludes("proximityKeywordsRegex",true))
+        {
+            this.ProximityKeywordsRegex = null;
         }
         //      C# -> System.String? Regex
         // GraphQL -> regex: String! (scalar)

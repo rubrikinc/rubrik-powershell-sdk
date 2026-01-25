@@ -23,3 +23,11 @@ AWS Exocompute configurations in an AWS account.
   - Role chaining account details.
 - sslInspectionCertificates: list of CloudAccountsCertificateInfos
   - SSL inspection certificates for the Exocompute.
+- supportedEksVersions: list of System.Strings
+  - List of supported EKS versions for Exocompute.
+- latestBundleVersion: System.String
+  - Latest bundle version for Exocompute images available on RSC.
+- latestApprovedBundleVersion: System.String
+  - Latest approved bundle version for PCR customers.
+- bundleStatus: ExocomputeBundleStatus
+  - Status of the Exocompute bundle version.

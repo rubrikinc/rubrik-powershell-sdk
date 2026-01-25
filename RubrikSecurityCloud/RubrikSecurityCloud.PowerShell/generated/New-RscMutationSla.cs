@@ -340,25 +340,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			daysOfMonth = @(
     /// 				@{
     /// 					# OPTIONAL
-    /// 					spec = @{
+    /// 					specificDate = @{
     /// 						# OPTIONAL
-    /// 						specificDate = @{
-    /// 							# REQUIRED
-    /// 							value = @{
-    /// 								# OPTIONAL
-    /// 								dateOffset = $someInt
-    /// 							}
-    /// 						}
+    /// 						dateOffset = $someInt
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeekPattern = @{
     /// 						# OPTIONAL
-    /// 						dayOfWeekInMonth = @{
-    /// 							# REQUIRED
-    /// 							value = @{
-    /// 								# OPTIONAL
-    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
-    /// 								# OPTIONAL
-    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-    /// 							}
-    /// 						}
+    /// 						weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 						# OPTIONAL
+    /// 						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
     /// 					}
     /// 				}
     /// 			)
@@ -796,6 +787,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		awsNativeDynamoDbSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			cmkAliasForPrimaryBackup = $someString
+    /// 			# OPTIONAL
+    /// 			continuousBackupsEnabled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			continuousBackupRetentionInDays = $someInt
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -1237,25 +1232,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			daysOfMonth = @(
     /// 				@{
     /// 					# OPTIONAL
-    /// 					spec = @{
+    /// 					specificDate = @{
     /// 						# OPTIONAL
-    /// 						specificDate = @{
-    /// 							# REQUIRED
-    /// 							value = @{
-    /// 								# OPTIONAL
-    /// 								dateOffset = $someInt
-    /// 							}
-    /// 						}
+    /// 						dateOffset = $someInt
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					dayOfWeekPattern = @{
     /// 						# OPTIONAL
-    /// 						dayOfWeekInMonth = @{
-    /// 							# REQUIRED
-    /// 							value = @{
-    /// 								# OPTIONAL
-    /// 								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
-    /// 								# OPTIONAL
-    /// 								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-    /// 							}
-    /// 						}
+    /// 						weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 						# OPTIONAL
+    /// 						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
     /// 					}
     /// 				}
     /// 			)
@@ -1695,6 +1681,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		awsNativeDynamoDbSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			cmkAliasForPrimaryBackup = $someString
+    /// 			# OPTIONAL
+    /// 			continuousBackupsEnabled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			continuousBackupRetentionInDays = $someInt
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -2345,25 +2335,16 @@ $query.Var.input = @{
 			daysOfMonth = @(
 				@{
 					# OPTIONAL
-					spec = @{
+					specificDate = @{
 						# OPTIONAL
-						specificDate = @{
-							# REQUIRED
-							value = @{
-								# OPTIONAL
-								dateOffset = $someInt
-							}
-						}
+						dateOffset = $someInt
+					}
+					# OPTIONAL
+					dayOfWeekPattern = @{
 						# OPTIONAL
-						dayOfWeekInMonth = @{
-							# REQUIRED
-							value = @{
-								# OPTIONAL
-								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
-								# OPTIONAL
-								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-							}
-						}
+						weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+						# OPTIONAL
+						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
 					}
 				}
 			)
@@ -2801,6 +2782,10 @@ $query.Var.input = @{
 		awsNativeDynamoDbSlaConfigInput = @{
 			# OPTIONAL
 			cmkAliasForPrimaryBackup = $someString
+			# OPTIONAL
+			continuousBackupsEnabled = $someBoolean
+			# OPTIONAL
+			continuousBackupRetentionInDays = $someInt
 		}
 	}
 	# OPTIONAL
@@ -3203,25 +3188,16 @@ $query.Var.input = @{
 			daysOfMonth = @(
 				@{
 					# OPTIONAL
-					spec = @{
+					specificDate = @{
 						# OPTIONAL
-						specificDate = @{
-							# REQUIRED
-							value = @{
-								# OPTIONAL
-								dateOffset = $someInt
-							}
-						}
+						dateOffset = $someInt
+					}
+					# OPTIONAL
+					dayOfWeekPattern = @{
 						# OPTIONAL
-						dayOfWeekInMonth = @{
-							# REQUIRED
-							value = @{
-								# OPTIONAL
-								weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
-								# OPTIONAL
-								dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
-							}
-						}
+						weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+						# OPTIONAL
+						dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
 					}
 				}
 			)
@@ -3661,6 +3637,10 @@ $query.Var.input = @{
 		awsNativeDynamoDbSlaConfigInput = @{
 			# OPTIONAL
 			cmkAliasForPrimaryBackup = $someString
+			# OPTIONAL
+			continuousBackupsEnabled = $someBoolean
+			# OPTIONAL
+			continuousBackupRetentionInDays = $someInt
 		}
 	}
 	# OPTIONAL

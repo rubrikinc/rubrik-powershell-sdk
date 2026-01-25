@@ -2,7 +2,7 @@
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location can be a replication target or an archival location.
 
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.
 - snapshotId: System.String
   - Required. ID of the snapshot to be downloaded.
 - downloadConfig: DownloadManagedVolumeRequestInput

@@ -1086,10 +1086,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	isLiveMount = $someBoolean
-    /// 	# REQUIRED
-    /// 	dbId = $someString
     /// 	# OPTIONAL
     /// 	isDifferentTargetDbName = $someBoolean
+    /// 	# REQUIRED
+    /// 	dbId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2327,10 +2327,10 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	isLiveMount = $someBoolean
-	# REQUIRED
-	dbId = $someString
 	# OPTIONAL
 	isDifferentTargetDbName = $someBoolean
+	# REQUIRED
+	dbId = $someString
 }"
             );
         }

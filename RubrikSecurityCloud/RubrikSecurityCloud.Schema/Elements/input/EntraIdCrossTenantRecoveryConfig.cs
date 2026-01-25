@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? TargetWorkloadFid
-        // GraphQL -> targetWorkloadFid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("targetWorkloadFid")]
-        public System.String? TargetWorkloadFid { get; set; }
-
         //      C# -> System.String? DefaultTargetDomainName
         // GraphQL -> defaultTargetDomainName: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("defaultTargetDomainName")]
         public System.String? DefaultTargetDomainName { get; set; }
+
+        //      C# -> System.String? TargetWorkloadFid
+        // GraphQL -> targetWorkloadFid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("targetWorkloadFid")]
+        public System.String? TargetWorkloadFid { get; set; }
 
         //      C# -> DomainMapping? DomainMapping
         // GraphQL -> domainMapping: DomainMapping (input)

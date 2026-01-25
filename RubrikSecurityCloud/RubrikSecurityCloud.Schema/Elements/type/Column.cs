@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> DataViewTypeEnum? DataViewType
+        // GraphQL -> dataViewType: DataViewTypeEnum! (enum)
+        [JsonProperty("dataViewType")]
+        public DataViewTypeEnum? DataViewType { get; set; }
+
         //      C# -> DataTypeEnum? Type
         // GraphQL -> type: DataTypeEnum! (enum)
         [JsonProperty("type")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Column Set(
+        DataViewTypeEnum? DataViewType = null,
         DataTypeEnum? Type = null,
         System.Boolean? Aggregate = null,
         System.Boolean? Default = null,
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? Sortable = null
     ) 
     {
+        if ( DataViewType != null ) {
+            this.DataViewType = DataViewType;
+        }
         if ( Type != null ) {
             this.Type = Type;
         }
@@ -118,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> DataViewTypeEnum? DataViewType
+        // GraphQL -> dataViewType: DataViewTypeEnum! (enum)
+        if (this.DataViewType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataViewType\n" ;
+            } else {
+                s += ind + "dataViewType\n" ;
+            }
+        }
         //      C# -> DataTypeEnum? Type
         // GraphQL -> type: DataTypeEnum! (enum)
         if (this.Type != null) {
@@ -197,6 +215,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> DataViewTypeEnum? DataViewType
+        // GraphQL -> dataViewType: DataViewTypeEnum! (enum)
+        if (ec.Includes("dataViewType",true))
+        {
+            if(this.DataViewType == null) {
+
+                this.DataViewType = new DataViewTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataViewType != null && ec.Excludes("dataViewType",true))
+        {
+            this.DataViewType = null;
+        }
         //      C# -> DataTypeEnum? Type
         // GraphQL -> type: DataTypeEnum! (enum)
         if (ec.Includes("type",true))

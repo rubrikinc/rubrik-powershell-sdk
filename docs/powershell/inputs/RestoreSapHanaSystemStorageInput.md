@@ -6,4 +6,4 @@ Input for SAP HANA system storage restore.
 - config: SapHanaSystemRestoreConfigInput
   - Required. Configuration for the restore.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

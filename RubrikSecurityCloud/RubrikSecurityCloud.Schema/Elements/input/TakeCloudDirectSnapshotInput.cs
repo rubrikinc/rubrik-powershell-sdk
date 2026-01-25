@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaId")]
         public System.String? SlaId { get; set; }
 
+        //      C# -> List<CloudDirectExclusionInput>? Exclusions
+        // GraphQL -> exclusions: [CloudDirectExclusionInput!] (input)
+        [JsonProperty("exclusions")]
+        public List<CloudDirectExclusionInput>? Exclusions { get; set; }
+
 
         #endregion
 

@@ -8,4 +8,4 @@ Initiates a job to download a snapshot from the specified location when the snap
 - snapshotId: System.String
   - Required. ID of the snapshot to be downloaded.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

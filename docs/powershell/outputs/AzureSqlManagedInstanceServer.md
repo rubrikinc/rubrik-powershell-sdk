@@ -29,6 +29,8 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Azure native resource group and subscription details.
 - isProtectable: System.Boolean
   - Specifies whether the SQL managed instance server is protectable. When the value is true, the SQL managed instance server can be protected by assigning sla.
+- authType: AzureSqlAuthenticationType
+  - The type of authentication for logging into the server.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup

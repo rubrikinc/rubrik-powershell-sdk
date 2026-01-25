@@ -40,3 +40,4 @@ cloud accounts (e.g., Azure, AWS, GCP).
 - THREAT_MONITORING_COMPLIANCE_REPORT - Threat Monitoring Compliance report.
 - IDENTITY_ACTIVITY_REPORT - Identity Activity Auditor report.
 - THREAT_MONITORING_THREAT_DETECTION_REPORT - Threat Monitoring Threat Detection report.
+- DISK_STATUS_REPORT - Disk Status report.

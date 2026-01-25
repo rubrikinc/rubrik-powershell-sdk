@@ -6,4 +6,4 @@ Input for download SAP HANA snapshots from an archival location for point-in-tim
 - id: System.String
   - Required. ID of the SAP HANA database.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

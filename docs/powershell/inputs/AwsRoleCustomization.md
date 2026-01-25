@@ -23,3 +23,7 @@ Role customization options.
   - Path of the role for Exocompute's lambda.
 - lambdaRoleName: System.String
   - Name of the role for Exocompute's lambda.
+- permissionBoundaryName: System.String
+  - Name of the permission boundary for cross-account role.
+- permissionBoundaryPath: System.String
+  - Path of the permission boundary for cross-account role.

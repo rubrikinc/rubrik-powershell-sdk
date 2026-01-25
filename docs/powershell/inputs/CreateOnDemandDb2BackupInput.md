@@ -6,4 +6,4 @@ Input for creating an on-demand Db2 backup.
 - id: System.String
   - Required. ID assigned to a Db2 database object.
 - userNote: System.String
-  - Required. User note to associate with audits.
+  - User note to associate with audits.

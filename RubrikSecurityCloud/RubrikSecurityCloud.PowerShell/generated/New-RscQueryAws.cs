@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 35
+    /// Create a new RscQuery object for any of the 36
     /// operations in the 'AWS' API domain:
-    /// ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
+    /// ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, RegionDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// </summary>
     /// <description>
     /// New-RscQueryAws creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 35 operations
+    /// There are 36 operations
     /// in the 'AWS' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
+    /// one of: ArtifactsToDelete, AvailabilityZonesByRegion, BatchSupportedRdsDatabaseInstanceClasses, CdmVersions, CloudAccountConfigs, CloudAccountListSecurityGroups, CloudAccountListSubnets, CloudAccountListVpcs, CloudAccountWithFeatures, CloudAccountsWithFeatures, DbParameterGroupsByRegion, DbSubnetGroupsByRegion, Ec2InstanceTypesByRegion, Ec2KeyPairsByRegion, EligibleAccountsForMigrationToOrg, ExocomputeConfigs, ExocomputeGetClusterConnectionInfo, InstanceProfileNames, IsS3BucketNameAvailable, KmsEncryptionKeysByRegion, MarketplaceSubscriptionInfo, OptionGroupsByRegion, PermissionPolicies, RdsInstanceDetails, RegionDetails, Regions, S3BucketStateForRecovery, S3Buckets, S3BucketsDetails, SupportedEksVersions, SupportedRdsDatabaseInstanceClasses, TrustPolicy, ValidateCreateClusterInput, ValidatePermissions, Vpcs, or VpcsByRegion.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -921,6 +921,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RegionDetails operation
+    /// of the 'AWS' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Aws
+    /// # API Operation: RegionDetails
+    /// 
+    /// $query = New-RscQueryAws -Operation RegionDetails
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AwsRegionDetailsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Regions operation
     /// of the 'AWS' API domain.
     /// <code>
@@ -1482,6 +1513,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "OptionGroupsByRegion",
                 "PermissionPolicies",
                 "RdsInstanceDetails",
+                "RegionDetails",
                 "Regions",
                 "S3BucketStateForRecovery",
                 "S3Buckets",
@@ -1579,6 +1611,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RdsInstanceDetails":
                         this.ProcessRecord_RdsInstanceDetails();
+                        break;
+                    case "RegionDetails":
+                        this.ProcessRecord_RegionDetails();
                         break;
                     case "Regions":
                         this.ProcessRecord_Regions();
@@ -1837,6 +1872,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RdsInstanceDetails";
             // Create new graphql operation rdsInstanceDetailsFromAws
             InitQueryRdsInstanceDetailsFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // awsRegionDetails.
+        internal void ProcessRecord_RegionDetails()
+        {
+            this._logger.name += " -RegionDetails";
+            // Create new graphql operation awsRegionDetails
+            InitQueryAwsRegionDetails();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2654,6 +2698,29 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
 $query.Var.rdsInstanceName = $someString
 # OPTIONAL
 $query.Var.rdsDatabaseRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // awsRegionDetails(input: AwsRegionDetailsReq!): AwsRegionDetailsReply!
+        internal void InitQueryAwsRegionDetails()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AwsRegionDetailsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAwsRegionDetails",
+                "($input: AwsRegionDetailsReq!)",
+                "AwsRegionDetailsReply",
+                Query.AwsRegionDetails,
+                Query.AwsRegionDetailsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	cloudAccountId = $someString
+}"
             );
         }
 

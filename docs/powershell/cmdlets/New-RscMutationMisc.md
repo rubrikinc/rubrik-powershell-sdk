@@ -401,7 +401,7 @@ Bulk install and register RBS on Linux host.
 - There is a single argument of type LinuxRbsBulkInstallInput.
 - Returns LinuxRbsBulkInstallReply.
 ### listcidrsforcomputesetting
-List CIDRs for compute setting.
+List CIDRs for compute settings.
 
 - There is a single argument of type ListCidrsForComputeSettingInput.
 - Returns ListCidrsForComputeSettingReply.
@@ -513,7 +513,10 @@ Remove a node for replacement.
 - There is a single argument of type RemoveNodeForReplacementInput.
 - Returns RemoveNodeForReplacementReply.
 ### removeprivateendpointlist
-Remove private endpoint connection to RCV location.
+Removes a private endpoint connection from an RCV location.
+After removing a Private endpoint connection to an RCV storage account,
+the private tunnel can't be used to send data to and from cdm cluster to
+Rubrik hosted storage account.
 
 - There is a single argument of type RemovePrivateEndpointConnectionInput.
 - Returns System.String.
@@ -884,6 +887,11 @@ Update event digests for specific recipients.
 
 - There is a single argument of type UpdateEventDigestInput.
 - Returns UpdateEventDigestReply.
+### updatefeed
+Updates properties of the feed.
+
+- There is a single argument of type UpdateFeedInput.
+- Returns System.String.
 ### updatefloatingips
 Modify the list of cluster IPs
 

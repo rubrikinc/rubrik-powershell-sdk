@@ -23,3 +23,7 @@ Role customization details for the AWS account.
   - Name of the role for Exocompute's lambda.
 - lambdaRolePath: System.String
   - Path of the role for Exocompute's lambda.
+- permissionBoundaryName: System.String
+  - Name of the permission boundary for cross-account role.
+- permissionBoundaryPath: System.String
+  - Path of the permission boundary for cross-account role.

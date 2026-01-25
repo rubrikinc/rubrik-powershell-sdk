@@ -15,3 +15,5 @@ Represents the webauthn passkey.
   - OS on which passkey was created.
 - browser: System.String
   - Browser on which passkey was created.
+- isPasswordless: System.Boolean
+  - Whether the passkey is compatible with passwordless login.

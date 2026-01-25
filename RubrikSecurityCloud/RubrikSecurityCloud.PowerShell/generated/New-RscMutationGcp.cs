@@ -665,6 +665,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			region = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
     /// 			# REQUIRED
     /// 			subnetName = $someString
+    /// 			# OPTIONAL
+    /// 			projectId = $someString
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -1522,6 +1524,8 @@ $query.Var.input = @{
 			region = $someGcpCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudAccountRegion]) for enum values.
 			# REQUIRED
 			subnetName = $someString
+			# OPTIONAL
+			projectId = $someString
 		}
 	)
 	# REQUIRED

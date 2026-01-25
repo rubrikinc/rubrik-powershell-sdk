@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATAGOV_TIMELINE")]
         DATAGOV_TIMELINE,
 
+        [EnumMember(Value = "DISK_REPORT")]
+        DISK_REPORT,
+
         [EnumMember(Value = "EVENT_SERIES")]
         EVENT_SERIES,
 
