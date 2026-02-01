@@ -1,4 +1,4 @@
-// ClusterLocationEdit.cs
+// GatewayKmsKeyMapInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,32 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region ClusterLocationEdit
+    #region GatewayKmsKeyMapInput
 
-    public class ClusterLocationEdit: IInput
+    public class GatewayKmsKeyMapInput: IInput
     {
         #region members
 
-        //      C# -> System.String? Address
-        // GraphQL -> address: String! (scalar)
+        //      C# -> List<GatewayKmsKeyMapEntry>? GatewayKmsKeyMapList
+        // GraphQL -> gatewayKmsKeyMapList: [GatewayKmsKeyMapEntry!]! (input)
         [Required]
         [JsonRequired]
-        [JsonProperty("address")]
-        public System.String? Address { get; set; }
-
-        //      C# -> System.Single? Latitude
-        // GraphQL -> latitude: Float! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("latitude")]
-        public System.Single? Latitude { get; set; }
-
-        //      C# -> System.Single? Longitude
-        // GraphQL -> longitude: Float! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("longitude")]
-        public System.Single? Longitude { get; set; }
+        [JsonProperty("gatewayKmsKeyMapList")]
+        public List<GatewayKmsKeyMapEntry>? GatewayKmsKeyMapList { get; set; }
 
 
         #endregion
@@ -66,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class ClusterLocationEdit
+    } // class GatewayKmsKeyMapInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

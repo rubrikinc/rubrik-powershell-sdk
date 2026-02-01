@@ -1,4 +1,6 @@
 ### CdmClusterStatusInfo
+
+
 - finishedStates: System.String
   - A list of upgrade states that are completed.
 - pendingStates: System.String

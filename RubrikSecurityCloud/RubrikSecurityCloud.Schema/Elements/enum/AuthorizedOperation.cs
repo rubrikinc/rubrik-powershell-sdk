@@ -297,6 +297,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_DSPM_INTEGRATIONS")]
         MANAGE_DSPM_INTEGRATIONS,
 
+        [EnumMember(Value = "MANAGE_GOOGLE_SECOPS_INTEGRATION")]
+        MANAGE_GOOGLE_SECOPS_INTEGRATION,
+
         [EnumMember(Value = "MANAGE_GPS_TO_RSC_UPGRADE")]
         MANAGE_GPS_TO_RSC_UPGRADE,
 
@@ -540,6 +543,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_CDM_NETWORK_SETTING")]
         VIEW_CDM_NETWORK_SETTING,
 
+        [EnumMember(Value = "VIEW_CDM_REPORT")]
+        VIEW_CDM_REPORT,
+
         [EnumMember(Value = "VIEW_CDM_SUPPORT_SETTING")]
         VIEW_CDM_SUPPORT_SETTING,
 
@@ -599,6 +605,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_GCP_CLOUD_ACCOUNT")]
         VIEW_GCP_CLOUD_ACCOUNT,
+
+        [EnumMember(Value = "VIEW_GOOGLE_SECOPS_INTEGRATION")]
+        VIEW_GOOGLE_SECOPS_INTEGRATION,
 
         [EnumMember(Value = "VIEW_GUEST_OS_CREDENTIAL")]
         VIEW_GUEST_OS_CREDENTIAL,

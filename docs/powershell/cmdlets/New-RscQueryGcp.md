@@ -34,6 +34,18 @@ Get details of a GCP Cloud SQL instance.
 
 - There is a single argument of type System.String.
 - Returns GcpCloudSqlInstance.
+### cloudsqlinstances
+List of GCP Cloud SQL instances.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - GcpCloudSqlInstanceSortFields: Sort fields for list of GCP Cloud SQL instances.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - cloudSqlInstanceFilters - GcpCloudSqlInstanceFilters: Filters for list of GCP Cloud SQL instances.
+- Returns GcpCloudSqlInstanceConnection.
 ### exocomputeconfigs
 Gets the exocompute configuration for the given project given filters of
 cloud account IDs, regions and status.

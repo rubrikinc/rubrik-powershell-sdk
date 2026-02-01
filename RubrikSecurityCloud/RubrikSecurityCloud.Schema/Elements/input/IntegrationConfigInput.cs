@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crowdStrike")]
         public CrowdStrikeIntegrationConfigInput? CrowdStrike { get; set; }
 
+        //      C# -> GoogleSecOpsIntegrationConfigInput? GoogleSecops
+        // GraphQL -> googleSecops: GoogleSecOpsIntegrationConfigInput (input)
+        [JsonProperty("googleSecops")]
+        public GoogleSecOpsIntegrationConfigInput? GoogleSecops { get; set; }
+
 
         #endregion
 

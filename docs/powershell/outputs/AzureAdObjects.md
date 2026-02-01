@@ -33,3 +33,15 @@ Entra ID object.
   - Entra ID BitLocker key object.
 - azureAdLocalAdminPassword: AzureAdLocalAdminPassword
   - Entra ID local administrator password object.
+- intuneCompliancePolicy: IntuneCompliancePolicy
+  - Intune compliance policy object.
+- intuneNotificationTemplate: IntuneNotificationTemplate
+  - Intune notification template object.
+- intuneComplianceScript: IntuneComplianceScript
+  - Intune compliance script object.
+- intuneAssignmentFilter: IntuneAssignmentFilter
+  - Intune assignment filter object.
+- intuneCompliancePolicyAssignment: IntuneCompliancePolicyAssignment
+  - Intune compliance policy assignment object.
+- intuneCompliancePolicyAction: IntuneCompliancePolicyAction
+  - Intune compliance policy action object.

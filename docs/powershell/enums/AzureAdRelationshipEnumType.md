@@ -10,3 +10,9 @@ Entra ID object relationship types.
 - POLICY_APPLIED_TO - Policy applied to relationship for an Entra ID object.
 - SCOPE_ROLE_ASSIGNMENT - Scope Role Assignment relationship for an Entra ID object.
 - PRINCIPAL_ROLE_ASSIGNMENT - Principal Role Assignment relationship for an Entra ID object.
+- POLICY_ASSIGNMENT - Policy assignment relationship for an Intune object.
+- GROUP_POLICY_ASSIGNMENT - Group policy assignment relationship for an Intune object.
+- FILTER_POLICY_ASSIGNMENT - Filter policy assignment relationship for an Intune object.
+- POLICY_ACTION - Policy action relationship for an Intune object.
+- NOTIFICATION_POLICY_ACTION - Notification policy action relationship for an Intune object.
+- GROUP_POLICY_ACTION - Group policy action relationship for an Intune object.

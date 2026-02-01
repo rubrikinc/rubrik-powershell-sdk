@@ -250,6 +250,11 @@ CloudDirectCheckSharePath validates if a share path is accessible on the specifi
 
 - There is a single argument of type CloudDirectCheckSharePathReq.
 - Returns CloudDirectCheckSharePathResp.
+### clouddirectglobalsearch
+CloudDirectGlobalSearch performs a global search across all NAS Cloud Direct objects on a cluster.
+
+- There is a single argument of type CloudDirectGlobalSearchReq.
+- Returns CloudDirectGlobalSearchResult.
 ### clouddirectnasbucket
 NAS Cloud Direct bucket.
 
@@ -1267,6 +1272,32 @@ Search file under given folder and with given prefix.
     - searchFolderPath - System.String: Root path to search file inside FMD.
     - filenamePrefix - System.String: Filename prefix that should match.
 - Returns DiffResult.
+### signinlogdetails
+Get details for a specific sign-in event.
+
+Retrieves comprehensive details for a single sign-in event by its ID.
+For optimal performance, provide eventDate (extracted from the list view)
+to enable BigQuery partition pruning (98.9% cost reduction).
+
+- There are 2 arguments.
+    - eventId - System.String: The unique identifier for the sign-in event (required).
+    - eventDate - DateTime: Optional date for partition pruning optimization.
+- Returns SigninLogDetails.
+### signinlogs
+List sign-in logs with filtering and pagination.
+
+Retrieves sign-in events from identity providers (Entra ID, Okta, On-Prem
+AD) with support for filtering by time range, actor, provider, result, and
+other criteria.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - timeRange - TimeRangeInput: The time range to query (required).
+    - filters - SigninLogsFilters: Optional filters for the query.
+- Returns SigninLogSummaryConnection.
 ### snoozeddirectories
 Lists the snoozed directories for the account.
 

@@ -9,19 +9,19 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (44,24)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (31,24)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (44,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (31,24)](#snapshot-domain) |
 | [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (10,17)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (13,17)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (226,190)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (13,17)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (229,190)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (9,13)](#mongo-domain) | [RCV (5,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
-| [Azure (58,46)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (17,8)](#report-domain) | [Threat (18,7)](#threat-domain) |
-| [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (21,15)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
+| [Azure (59,46)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (17,8)](#report-domain) | [Threat (18,7)](#threat-domain) |
+| [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,15)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (8,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (8,29)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (8,4)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,7)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
-| [Cloud Native (20,14)](#cloud-native-domain) | [Kubernetes (13,24)](#kubernetes-domain) | [Office 365 (42,35)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
+| [Cloud Native (21,15)](#cloud-native-domain) | [Kubernetes (13,24)](#kubernetes-domain) | [Office 365 (42,35)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
 
@@ -361,6 +361,9 @@ creating VNet, Subnet, and NSG in the regions provided in the request. | `New-Rs
 | HostedAzureRegions | Lists all Azure regions supported by the Rubrik-Hosted SaaS protection. | `New-RscQueryAzure -Operation HostedAzureRegions`<BR> | [allHostedAzureRegions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsStorageAccountNameAvailable | Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure. | `New-RscQueryAzure -Operation IsStorageAccountNameAvailable`<BR> | [isAzureStorageAccountNameAvailable](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | KeyVaultsByRegion | List of all Azure Key Vaults in a region. | `New-RscQueryAzure -Operation KeyVaultsByRegion`<BR> | [allAzureKeyVaultsByRegion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ListManagementGroupHierarchy | AzureListManagementGroupHierarchy lists the flattened management groups  
+hierarchy under a given management group. If should_recurse is false, the  
+hierarchy is limited upto 1 level. | `New-RscQueryAzure -Operation ListManagementGroupHierarchy`<BR> | [azureListManagementGroupHierarchy](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ManagedIdentities | List all managed identities for Azure resources. | `New-RscQueryAzure -Operation ManagedIdentities`<BR> | [allAzureManagedIdentities](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MarketplaceTermsInfo | Check Azure marketplace terms acceptance status for a given CDM version. | `New-RscQueryAzure -Operation MarketplaceTermsInfo`<BR> | [azureMarketplaceTermsInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Nsgs | Get all available network security groups for Azure. | `New-RscQueryAzure -Operation Nsgs`<BR> | [allAzureNsgs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -666,6 +669,8 @@ Cmdlets: `New-RscQueryCloudNative` and `New-RscMutationCloudNative`
 | CheckTagRuleNameUniqueness | Check if tag rule name is unique or not | `New-RscQueryCloudNative -Operation CheckTagRuleNameUniqueness`<BR> | [checkCloudNativeTagRuleNameUniqueness](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CustomerTags | Retrieves the list of all customer-specified tags and the corresponding value indicating whether resource tags should be overridden by customer-specified tags for a specific cloud type. | `New-RscQueryCloudNative -Operation CustomerTags`<BR> | [cloudNativeCustomerTags](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FileRecoveryEligibleSnapshots | List of snapshots for which file recovery is feasible. | `New-RscQueryCloudNative -Operation FileRecoveryEligibleSnapshots`<BR> | [allCloudNativeFileRecoveryEligibleSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| GatewayKmsKeys | GetCloudNativeGatewayKmsKeys returns a map of the region to the KMS key  
+ARN for gateway encryption. | `New-RscQueryCloudNative -Operation GatewayKmsKeys`<BR> | [cloudNativeGatewayKmsKeys](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | IsFileRecoveryFeasible | List of snapshots with their file recovery feasibility status | `New-RscQueryCloudNative -Operation IsFileRecoveryFeasible`<BR> | [isCloudNativeFileRecoveryFeasible](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LabelKeys | List of cloud native label keys matched by substring. | `New-RscQueryCloudNative -Operation LabelKeys`<BR> | [allCloudNativeLabelKeys](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LabelRules | Cloud native label rules. | `New-RscQueryCloudNative -Operation LabelRules`<BR> | [cloudNativeLabelRules](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -695,6 +700,8 @@ native tag rule. | `New-RscQueryCloudNative -Operation TagRulesObjectType`<BR> |
 | DeleteLabelRule | Delete cloud native label rule. | `New-RscMutationCloudNative -Operation DeleteLabelRule`<BR> | [deleteCloudNativeLabelRule](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteTagRule | Delete cloud native tag rule. | `New-RscMutationCloudNative -Operation DeleteTagRule`<BR> | [deleteCloudNativeTagRule](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DownloadFiles | Download files from a cloud-native snapshot to a cloud download location or a virtual machine. | `New-RscMutationCloudNative -Operation DownloadFiles`<BR> | [cloudNativeDownloadFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetGatewayKmsKeys | SetCloudNativeGatewayKmsKeys sets the map of the region to the KMS key  
+ARN for gateway encryption. | `New-RscMutationCloudNative -Operation SetGatewayKmsKeys`<BR> | [setCloudNativeGatewayKmsKeys](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetupSqlServerBackup | Setup backups on the SQL Server databases using the admin credentials. | `New-RscMutationCloudNative -Operation SetupSqlServerBackup`<BR> | [setupCloudNativeSqlServerBackup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | StartSnapshotsIndexJob | Create index of cloudnative snapshots | `New-RscMutationCloudNative -Operation StartSnapshotsIndexJob`<BR> | [startCloudNativeSnapshotsIndexJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateIndexingStatus | Update indexing status for cloudnative snappables | `New-RscMutationCloudNative -Operation UpdateIndexingStatus`<BR> | [updateCloudNativeIndexingStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -803,7 +810,6 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 | RequestPersistentExo | Requests a persistent Exocompute clusters for a region configuration in a cloud account. | `New-RscMutationCluster -Operation RequestPersistentExo`<BR> | [requestPersistentExocluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetMissingClusterStatus | Update missing cluster connection status. | `New-RscMutationCluster -Operation SetMissingClusterStatus`<BR> | [setMissingClusterStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateClusterDefaultAddress | Update the default address of a Rubrik cluster. | `New-RscMutationCluster -Operation UpdateClusterDefaultAddress`<BR> | [updateClusterDefaultAddress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| UpdateClusterLocation | N/A | `New-RscMutationCluster -Operation UpdateClusterLocation`<BR> | [updateClusterLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateClusterNtpServers | Assign NTP servers to Rubrik cluster  
   
 Supported in v5.0+  
@@ -1157,6 +1163,7 @@ Cmdlets: `New-RscQueryGcp` and `New-RscMutationGcp`
 | CloudAccountProjectsByFeature | List of GCP projects configured for a feature. | `New-RscQueryGcp -Operation CloudAccountProjectsByFeature`<BR> | [allGcpCloudAccountProjectsByFeature](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountProjectsForOauth | List of GCP projects to add after successful authorization. | `New-RscQueryGcp -Operation CloudAccountProjectsForOauth`<BR> | [allGcpCloudAccountProjectsForOauth](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudSqlInstance | Get details of a GCP Cloud SQL instance. | `New-RscQueryGcp -Operation CloudSqlInstance`<BR> | [gcpCloudSqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudSqlInstances | List of GCP Cloud SQL instances. | `New-RscQueryGcp -Operation CloudSqlInstances`<BR> | [gcpCloudSqlInstances](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExocomputeConfigs | Gets the exocompute configuration for the given project given filters of  
 cloud account IDs, regions and status. | `New-RscQueryGcp -Operation ExocomputeConfigs`<BR> | [gcpExocomputeConfigs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | FeaturePermissionsForCloudAccount | List of permissions required to enable the given feature. | `New-RscQueryGcp -Operation FeaturePermissionsForCloudAccount`<BR> | [allFeaturePermissionsForGcpCloudAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1738,6 +1745,7 @@ Supported in v6.0+
 Gets the details of the request that was triggered to check the cloud compute connectivity of an archival location. | `New-RscQueryMisc -Operation CheckCloudComputeConnectivityJobProgress`<BR> | [checkCloudComputeConnectivityJobProgress](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CheckLatestVersionMgmtAppExists | Checks whether the latest version of the Microsoft 365 Management App exists. | `New-RscQueryMisc -Operation CheckLatestVersionMgmtAppExists`<BR> | [checkLatestVersionMgmtAppExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectCheckSharePath | CloudDirectCheckSharePath validates if a share path is accessible on the specified host. | `New-RscQueryMisc -Operation CloudDirectCheckSharePath`<BR> | [cloudDirectCheckSharePath](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CloudDirectGlobalSearch | CloudDirectGlobalSearch performs a global search across all NAS Cloud Direct objects on a cluster. | `New-RscQueryMisc -Operation CloudDirectGlobalSearch`<BR> | [cloudDirectGlobalSearch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectNasBucket | NAS Cloud Direct bucket. | `New-RscQueryMisc -Operation CloudDirectNasBucket`<BR> | [cloudDirectNasBucket](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectNasBuckets | Paginated list of NAS Cloud Direct buckets. | `New-RscQueryMisc -Operation CloudDirectNasBuckets`<BR> | [cloudDirectNasBuckets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudDirectNasExport | Cloud Direct NAS export object. | `New-RscQueryMisc -Operation CloudDirectNasExport`<BR> | [cloudDirectNasExport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1894,6 +1902,16 @@ specified SaaS app type. | `New-RscQueryMisc -Operation SaasWorkloadMetadataType
 | ScriptsForManualPermissionValidation | GetScriptsForManualPermissionValidation returns the bash and powershell  
 scripts for non-OAuth permissions validation. | `New-RscQueryMisc -Operation ScriptsForManualPermissionValidation`<BR> | [scriptsForManualPermissionValidation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SearchFileByPrefix | Search file under given folder and with given prefix. | `New-RscQueryMisc -Operation SearchFileByPrefix`<BR> | [searchFileByPrefix](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SigninLogDetails | Get details for a specific sign-in event.  
+  
+Retrieves comprehensive details for a single sign-in event by its ID.  
+For optimal performance, provide eventDate (extracted from the list view)  
+to enable BigQuery partition pruning (98.9% cost reduction). | `New-RscQueryMisc -Operation SigninLogDetails`<BR> | [signinLogDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SigninLogs | List sign-in logs with filtering and pagination.  
+  
+Retrieves sign-in events from identity providers (Entra ID, Okta, On-Prem  
+AD) with support for filtering by time range, actor, provider, result, and  
+other criteria. | `New-RscQueryMisc -Operation SigninLogs`<BR> | [signinLogs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnoozedDirectories | Lists the snoozed directories for the account. | `New-RscQueryMisc -Operation SnoozedDirectories`<BR> | [snoozedDirectories](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SsoGroupAlreadyExists | Determines if the SSO group already exists in the account. | `New-RscQueryMisc -Operation SsoGroupAlreadyExists`<BR> | [ssoGroupAlreadyExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SupportBundle | Get the status of generating support bundle  

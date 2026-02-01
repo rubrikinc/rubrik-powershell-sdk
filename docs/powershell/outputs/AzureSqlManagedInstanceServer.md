@@ -31,6 +31,8 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Specifies whether the SQL managed instance server is protectable. When the value is true, the SQL managed instance server can be protected by assigning sla.
 - authType: AzureSqlAuthenticationType
   - The type of authentication for logging into the server.
+- encryptionType: AzureSqlEncryptionType
+  - The type of encryption used by the server.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup

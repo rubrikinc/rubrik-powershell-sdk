@@ -4723,6 +4723,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AzureListManagementGroupHierarchyReply? AzureListManagementGroupHierarchy
+        // GraphQL -> azureListManagementGroupHierarchy: AzureListManagementGroupHierarchyReply! (type)
+        public static string AzureListManagementGroupHierarchy(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "azureListManagementGroupHierarchy" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureListManagementGroupHierarchyFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureListManagementGroupHierarchyReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CheckAzureMarketplaceTermsReply? AzureMarketplaceTermsInfo
         // GraphQL -> azureMarketplaceTermsInfo: CheckAzureMarketplaceTermsReply! (type)
         public static string AzureMarketplaceTermsInfo(object fsObj)
@@ -6199,6 +6217,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudDirectGlobalSearchResult? CloudDirectGlobalSearch
+        // GraphQL -> cloudDirectGlobalSearch: CloudDirectGlobalSearchResult! (type)
+        public static string CloudDirectGlobalSearch(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudDirectGlobalSearch" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectGlobalSearchFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectGlobalSearchResult() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudDirectNasBucket? CloudDirectNasBucket
         // GraphQL -> cloudDirectNasBucket: CloudDirectNasBucket! (type)
         public static string CloudDirectNasBucket(object fsObj)
@@ -6465,6 +6501,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudNativeCustomerTagsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetCloudNativeGatewayKmsKeysReply? CloudNativeGatewayKmsKeys
+        // GraphQL -> cloudNativeGatewayKmsKeys: GetCloudNativeGatewayKmsKeysReply! (type)
+        public static string CloudNativeGatewayKmsKeys(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "cloudNativeGatewayKmsKeys" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudNativeGatewayKmsKeysFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetCloudNativeGatewayKmsKeysReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8301,6 +8355,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpCloudSqlInstance() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GcpCloudSqlInstanceConnection? GcpCloudSqlInstances
+        // GraphQL -> gcpCloudSqlInstances: GcpCloudSqlInstanceConnection! (type)
+        public static string GcpCloudSqlInstances(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\ncloudSqlInstanceFilters: $cloudSqlInstanceFilters\n)";
+            return "gcpCloudSqlInstances" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GcpCloudSqlInstancesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GcpCloudSqlInstanceConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14439,6 +14511,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new O365FullSpObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SigninLogDetails? SigninLogDetails
+        // GraphQL -> signinLogDetails: SigninLogDetails (type)
+        public static string SigninLogDetails(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\neventId: $eventId\neventDate: $eventDate\n)";
+            return "signinLogDetails" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SigninLogDetailsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SigninLogDetails() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SigninLogSummaryConnection? SigninLogs
+        // GraphQL -> signinLogs: SigninLogSummaryConnection! (type)
+        public static string SigninLogs(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ntimeRange: $timeRange\nfilters: $filters\n)";
+            return "signinLogs" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SigninLogsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SigninLogSummaryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

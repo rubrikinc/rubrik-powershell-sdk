@@ -43,6 +43,8 @@ NAS Cloud Direct System object.
   - Total number of objects in this NAS system.
 - namespaceCount: System.Int32
   - Total number of namespaces in this NAS system.
+- protectedSharesCount: System.Int32
+  - Total number of protected shares in this NAS system.
 - cluster: Cluster
   - NAS Cloud Direct cluster where this object originated.
 - pendingSla: SlaDomain

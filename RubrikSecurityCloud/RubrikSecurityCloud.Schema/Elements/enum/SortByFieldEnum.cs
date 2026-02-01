@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ANOMALY_PROBABILITY")]
         ANOMALY_PROBABILITY,
 
+        [EnumMember(Value = "AVAILABLE_SPACE_PERCENT")]
+        AVAILABLE_SPACE_PERCENT,
+
         [EnumMember(Value = "ActivityStatus")]
         ACTIVITY_STATUS,
 

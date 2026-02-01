@@ -100,6 +100,36 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdUser")]
         public AzureAdUser? AzureAdUser { get; set; }
 
+        //      C# -> IntuneAssignmentFilter? IntuneAssignmentFilter
+        // GraphQL -> intuneAssignmentFilter: IntuneAssignmentFilter (type)
+        [JsonProperty("intuneAssignmentFilter")]
+        public IntuneAssignmentFilter? IntuneAssignmentFilter { get; set; }
+
+        //      C# -> IntuneCompliancePolicy? IntuneCompliancePolicy
+        // GraphQL -> intuneCompliancePolicy: IntuneCompliancePolicy (type)
+        [JsonProperty("intuneCompliancePolicy")]
+        public IntuneCompliancePolicy? IntuneCompliancePolicy { get; set; }
+
+        //      C# -> IntuneCompliancePolicyAction? IntuneCompliancePolicyAction
+        // GraphQL -> intuneCompliancePolicyAction: IntuneCompliancePolicyAction (type)
+        [JsonProperty("intuneCompliancePolicyAction")]
+        public IntuneCompliancePolicyAction? IntuneCompliancePolicyAction { get; set; }
+
+        //      C# -> IntuneCompliancePolicyAssignment? IntuneCompliancePolicyAssignment
+        // GraphQL -> intuneCompliancePolicyAssignment: IntuneCompliancePolicyAssignment (type)
+        [JsonProperty("intuneCompliancePolicyAssignment")]
+        public IntuneCompliancePolicyAssignment? IntuneCompliancePolicyAssignment { get; set; }
+
+        //      C# -> IntuneComplianceScript? IntuneComplianceScript
+        // GraphQL -> intuneComplianceScript: IntuneComplianceScript (type)
+        [JsonProperty("intuneComplianceScript")]
+        public IntuneComplianceScript? IntuneComplianceScript { get; set; }
+
+        //      C# -> IntuneNotificationTemplate? IntuneNotificationTemplate
+        // GraphQL -> intuneNotificationTemplate: IntuneNotificationTemplate (type)
+        [JsonProperty("intuneNotificationTemplate")]
+        public IntuneNotificationTemplate? IntuneNotificationTemplate { get; set; }
+
 
         #endregion
 
@@ -125,7 +155,13 @@ namespace RubrikSecurityCloud.Types
         AzureAdRoleAssignment? AzureAdRoleAssignment = null,
         AzureAdServicePrincipal? AzureAdServicePrincipal = null,
         AzureAdTermsOfUse? AzureAdTermsOfUse = null,
-        AzureAdUser? AzureAdUser = null
+        AzureAdUser? AzureAdUser = null,
+        IntuneAssignmentFilter? IntuneAssignmentFilter = null,
+        IntuneCompliancePolicy? IntuneCompliancePolicy = null,
+        IntuneCompliancePolicyAction? IntuneCompliancePolicyAction = null,
+        IntuneCompliancePolicyAssignment? IntuneCompliancePolicyAssignment = null,
+        IntuneComplianceScript? IntuneComplianceScript = null,
+        IntuneNotificationTemplate? IntuneNotificationTemplate = null
     ) 
     {
         if ( AzureAdAdministrativeUnit != null ) {
@@ -175,6 +211,24 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureAdUser != null ) {
             this.AzureAdUser = AzureAdUser;
+        }
+        if ( IntuneAssignmentFilter != null ) {
+            this.IntuneAssignmentFilter = IntuneAssignmentFilter;
+        }
+        if ( IntuneCompliancePolicy != null ) {
+            this.IntuneCompliancePolicy = IntuneCompliancePolicy;
+        }
+        if ( IntuneCompliancePolicyAction != null ) {
+            this.IntuneCompliancePolicyAction = IntuneCompliancePolicyAction;
+        }
+        if ( IntuneCompliancePolicyAssignment != null ) {
+            this.IntuneCompliancePolicyAssignment = IntuneCompliancePolicyAssignment;
+        }
+        if ( IntuneComplianceScript != null ) {
+            this.IntuneComplianceScript = IntuneComplianceScript;
+        }
+        if ( IntuneNotificationTemplate != null ) {
+            this.IntuneNotificationTemplate = IntuneNotificationTemplate;
         }
         return this;
     }
@@ -379,6 +433,78 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdUser" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneAssignmentFilter? IntuneAssignmentFilter
+        // GraphQL -> intuneAssignmentFilter: IntuneAssignmentFilter (type)
+        if (this.IntuneAssignmentFilter != null) {
+            var fspec = this.IntuneAssignmentFilter.AsFieldSpec(conf.Child("intuneAssignmentFilter"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneAssignmentFilter" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneCompliancePolicy? IntuneCompliancePolicy
+        // GraphQL -> intuneCompliancePolicy: IntuneCompliancePolicy (type)
+        if (this.IntuneCompliancePolicy != null) {
+            var fspec = this.IntuneCompliancePolicy.AsFieldSpec(conf.Child("intuneCompliancePolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneCompliancePolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneCompliancePolicyAction? IntuneCompliancePolicyAction
+        // GraphQL -> intuneCompliancePolicyAction: IntuneCompliancePolicyAction (type)
+        if (this.IntuneCompliancePolicyAction != null) {
+            var fspec = this.IntuneCompliancePolicyAction.AsFieldSpec(conf.Child("intuneCompliancePolicyAction"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneCompliancePolicyAction" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneCompliancePolicyAssignment? IntuneCompliancePolicyAssignment
+        // GraphQL -> intuneCompliancePolicyAssignment: IntuneCompliancePolicyAssignment (type)
+        if (this.IntuneCompliancePolicyAssignment != null) {
+            var fspec = this.IntuneCompliancePolicyAssignment.AsFieldSpec(conf.Child("intuneCompliancePolicyAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneCompliancePolicyAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneComplianceScript? IntuneComplianceScript
+        // GraphQL -> intuneComplianceScript: IntuneComplianceScript (type)
+        if (this.IntuneComplianceScript != null) {
+            var fspec = this.IntuneComplianceScript.AsFieldSpec(conf.Child("intuneComplianceScript"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneComplianceScript" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneNotificationTemplate? IntuneNotificationTemplate
+        // GraphQL -> intuneNotificationTemplate: IntuneNotificationTemplate (type)
+        if (this.IntuneNotificationTemplate != null) {
+            var fspec = this.IntuneNotificationTemplate.AsFieldSpec(conf.Child("intuneNotificationTemplate"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneNotificationTemplate" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -692,6 +818,120 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdUser != null && ec.Excludes("azureAdUser",false))
         {
             this.AzureAdUser = null;
+        }
+        //      C# -> IntuneAssignmentFilter? IntuneAssignmentFilter
+        // GraphQL -> intuneAssignmentFilter: IntuneAssignmentFilter (type)
+        if (ec.Includes("intuneAssignmentFilter",false))
+        {
+            if(this.IntuneAssignmentFilter == null) {
+
+                this.IntuneAssignmentFilter = new IntuneAssignmentFilter();
+                this.IntuneAssignmentFilter.ApplyExploratoryFieldSpec(ec.NewChild("intuneAssignmentFilter"));
+
+            } else {
+
+                this.IntuneAssignmentFilter.ApplyExploratoryFieldSpec(ec.NewChild("intuneAssignmentFilter"));
+
+            }
+        }
+        else if (this.IntuneAssignmentFilter != null && ec.Excludes("intuneAssignmentFilter",false))
+        {
+            this.IntuneAssignmentFilter = null;
+        }
+        //      C# -> IntuneCompliancePolicy? IntuneCompliancePolicy
+        // GraphQL -> intuneCompliancePolicy: IntuneCompliancePolicy (type)
+        if (ec.Includes("intuneCompliancePolicy",false))
+        {
+            if(this.IntuneCompliancePolicy == null) {
+
+                this.IntuneCompliancePolicy = new IntuneCompliancePolicy();
+                this.IntuneCompliancePolicy.ApplyExploratoryFieldSpec(ec.NewChild("intuneCompliancePolicy"));
+
+            } else {
+
+                this.IntuneCompliancePolicy.ApplyExploratoryFieldSpec(ec.NewChild("intuneCompliancePolicy"));
+
+            }
+        }
+        else if (this.IntuneCompliancePolicy != null && ec.Excludes("intuneCompliancePolicy",false))
+        {
+            this.IntuneCompliancePolicy = null;
+        }
+        //      C# -> IntuneCompliancePolicyAction? IntuneCompliancePolicyAction
+        // GraphQL -> intuneCompliancePolicyAction: IntuneCompliancePolicyAction (type)
+        if (ec.Includes("intuneCompliancePolicyAction",false))
+        {
+            if(this.IntuneCompliancePolicyAction == null) {
+
+                this.IntuneCompliancePolicyAction = new IntuneCompliancePolicyAction();
+                this.IntuneCompliancePolicyAction.ApplyExploratoryFieldSpec(ec.NewChild("intuneCompliancePolicyAction"));
+
+            } else {
+
+                this.IntuneCompliancePolicyAction.ApplyExploratoryFieldSpec(ec.NewChild("intuneCompliancePolicyAction"));
+
+            }
+        }
+        else if (this.IntuneCompliancePolicyAction != null && ec.Excludes("intuneCompliancePolicyAction",false))
+        {
+            this.IntuneCompliancePolicyAction = null;
+        }
+        //      C# -> IntuneCompliancePolicyAssignment? IntuneCompliancePolicyAssignment
+        // GraphQL -> intuneCompliancePolicyAssignment: IntuneCompliancePolicyAssignment (type)
+        if (ec.Includes("intuneCompliancePolicyAssignment",false))
+        {
+            if(this.IntuneCompliancePolicyAssignment == null) {
+
+                this.IntuneCompliancePolicyAssignment = new IntuneCompliancePolicyAssignment();
+                this.IntuneCompliancePolicyAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intuneCompliancePolicyAssignment"));
+
+            } else {
+
+                this.IntuneCompliancePolicyAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intuneCompliancePolicyAssignment"));
+
+            }
+        }
+        else if (this.IntuneCompliancePolicyAssignment != null && ec.Excludes("intuneCompliancePolicyAssignment",false))
+        {
+            this.IntuneCompliancePolicyAssignment = null;
+        }
+        //      C# -> IntuneComplianceScript? IntuneComplianceScript
+        // GraphQL -> intuneComplianceScript: IntuneComplianceScript (type)
+        if (ec.Includes("intuneComplianceScript",false))
+        {
+            if(this.IntuneComplianceScript == null) {
+
+                this.IntuneComplianceScript = new IntuneComplianceScript();
+                this.IntuneComplianceScript.ApplyExploratoryFieldSpec(ec.NewChild("intuneComplianceScript"));
+
+            } else {
+
+                this.IntuneComplianceScript.ApplyExploratoryFieldSpec(ec.NewChild("intuneComplianceScript"));
+
+            }
+        }
+        else if (this.IntuneComplianceScript != null && ec.Excludes("intuneComplianceScript",false))
+        {
+            this.IntuneComplianceScript = null;
+        }
+        //      C# -> IntuneNotificationTemplate? IntuneNotificationTemplate
+        // GraphQL -> intuneNotificationTemplate: IntuneNotificationTemplate (type)
+        if (ec.Includes("intuneNotificationTemplate",false))
+        {
+            if(this.IntuneNotificationTemplate == null) {
+
+                this.IntuneNotificationTemplate = new IntuneNotificationTemplate();
+                this.IntuneNotificationTemplate.ApplyExploratoryFieldSpec(ec.NewChild("intuneNotificationTemplate"));
+
+            } else {
+
+                this.IntuneNotificationTemplate.ApplyExploratoryFieldSpec(ec.NewChild("intuneNotificationTemplate"));
+
+            }
+        }
+        else if (this.IntuneNotificationTemplate != null && ec.Excludes("intuneNotificationTemplate",false))
+        {
+            this.IntuneNotificationTemplate = null;
         }
     }
 

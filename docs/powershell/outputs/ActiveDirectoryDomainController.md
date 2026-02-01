@@ -11,6 +11,8 @@ Active Directory Domain Controller.
   - UUID of the agent.
 - hostname: System.String
   - Name of the host.
+- macAddress: System.String
+  - MAC address of the domain controller.
 - rbsStatus: HostConnectionStatus
   - RBS status.
 - adServiceStatus: ActiveDirectoryServiceStatus

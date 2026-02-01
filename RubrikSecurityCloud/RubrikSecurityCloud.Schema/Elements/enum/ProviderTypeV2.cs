@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CUSTOM")]
         CUSTOM,
 
+        [EnumMember(Value = "GOOGLE_SECOPS")]
+        GOOGLE_SECOPS,
+
         [EnumMember(Value = "LOGSCALE")]
         LOGSCALE,
 

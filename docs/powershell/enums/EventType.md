@@ -68,3 +68,6 @@ Enum representing all the possible event types.
 - QUARANTINE - Quarantine event type.
 - PERMISSION_ASSESSMENT - Permission assessment event type.
 - IDENTITY_ACTIVITY - Identity activity event type.
+- COPY - Copy job event.
+- DISCOVER - Discover job event.
+- CLOUD_DIRECT_ARCHIVE - CloudDirect archive event.

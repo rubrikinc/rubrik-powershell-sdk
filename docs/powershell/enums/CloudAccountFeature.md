@@ -42,5 +42,6 @@ of Azure DevOps and related workload.
 protection of Azure DevOps repositories and related workload.
 - GITHUB_REPOSITORY_PROTECTION - GITHUB_REPOSITORY_PROTECTION refers to the feature enabling
 protection of GitHub repositories and related workload.
+- AWS_CONFIG_PROTECTION - Cloud account feature is Application Config Protection.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

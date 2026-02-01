@@ -46,3 +46,5 @@ Name of product.
 - SENSITIVE_DATA_MONITORING_CLOUD_UNSTRUCTURED - Sensitive Data Monitoring on Cloud Unstructured.
 - CODEBASE_RECOVERY - Codebase Recovery.
 - OKTA - Okta protection.
+- GOOGLE_WORKSPACE - Google Workspace protection.
+- RUBRIK_AGENT_CLOUD - Rubrik Agent Cloud.

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APP_ROLE_ASSIGNMENT")]
         APP_ROLE_ASSIGNMENT,
 
+        [EnumMember(Value = "ASSIGNMENT_FILTER")]
+        ASSIGNMENT_FILTER,
+
         [EnumMember(Value = "AUTHENTICATION_CONTEXT")]
         AUTHENTICATION_CONTEXT,
 
@@ -38,6 +41,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "BIT_LOCKER_KEY")]
         BIT_LOCKER_KEY,
+
+        [EnumMember(Value = "COMPLIANCE_POLICY")]
+        COMPLIANCE_POLICY,
+
+        [EnumMember(Value = "COMPLIANCE_POLICY_ACTION")]
+        COMPLIANCE_POLICY_ACTION,
+
+        [EnumMember(Value = "COMPLIANCE_POLICY_ASSIGNMENT")]
+        COMPLIANCE_POLICY_ASSIGNMENT,
+
+        [EnumMember(Value = "COMPLIANCE_SCRIPT")]
+        COMPLIANCE_SCRIPT,
 
         [EnumMember(Value = "CONDITIONAL_ACCESS_POLICY")]
         CONDITIONAL_ACCESS_POLICY,
@@ -53,6 +68,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NAMED_LOCATION")]
         NAMED_LOCATION,
+
+        [EnumMember(Value = "NOTIFICATION_TEMPLATE")]
+        NOTIFICATION_TEMPLATE,
 
         [EnumMember(Value = "ROLE")]
         ROLE,

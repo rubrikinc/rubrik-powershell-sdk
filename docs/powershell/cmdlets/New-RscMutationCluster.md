@@ -96,11 +96,6 @@ Update the default address of a Rubrik cluster.
 
 - There is a single argument of type UpdateClusterDefaultAddressInput.
 - Returns UpdateClusterDefaultAddressReply.
-### updateclusterlocation
-- There are 2 arguments.
-    - clusterUuid - System.String: The Rubrik cluster ID.
-    - clusterLocation - ClusterLocationEdit
-- Returns Cluster.
 ### updateclusterntpservers
 Assign NTP servers to Rubrik cluster
 

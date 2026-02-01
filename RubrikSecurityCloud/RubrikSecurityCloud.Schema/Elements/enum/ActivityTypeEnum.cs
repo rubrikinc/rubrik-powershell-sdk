@@ -36,6 +36,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Backup")]
         BACKUP,
 
+        [EnumMember(Value = "CLOUD_DIRECT_ARCHIVE")]
+        CLOUD_DIRECT_ARCHIVE,
+
+        [EnumMember(Value = "COPY")]
+        COPY,
+
         [EnumMember(Value = "Classification")]
         CLASSIFICATION,
 
@@ -56,6 +62,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "Conversion")]
         CONVERSION,
+
+        [EnumMember(Value = "DISCOVER")]
+        DISCOVER,
 
         [EnumMember(Value = "Diagnostic")]
         DIAGNOSTIC,

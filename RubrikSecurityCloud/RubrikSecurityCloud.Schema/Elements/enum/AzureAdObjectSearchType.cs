@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPLICATION_NAME")]
         APPLICATION_NAME,
 
+        [EnumMember(Value = "ASSIGNMENT_FILTER_NAME")]
+        ASSIGNMENT_FILTER_NAME,
+
         [EnumMember(Value = "AUTHENTICATION_CONTEXT_NAME")]
         AUTHENTICATION_CONTEXT_NAME,
 
@@ -32,6 +35,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "BIT_LOCKER_KEY_DEVICE_NAME")]
         BIT_LOCKER_KEY_DEVICE_NAME,
+
+        [EnumMember(Value = "COMPLIANCE_POLICY_NAME")]
+        COMPLIANCE_POLICY_NAME,
+
+        [EnumMember(Value = "COMPLIANCE_SCRIPT_NAME")]
+        COMPLIANCE_SCRIPT_NAME,
 
         [EnumMember(Value = "CONDITIONAL_ACCESS_POLICY_NAME")]
         CONDITIONAL_ACCESS_POLICY_NAME,
@@ -50,6 +59,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NAMED_LOCATION_NAME")]
         NAMED_LOCATION_NAME,
+
+        [EnumMember(Value = "NOTIFICATION_TEMPLATE_NAME")]
+        NOTIFICATION_TEMPLATE_NAME,
 
         [EnumMember(Value = "PRINCIPAL_USER_NAME")]
         PRINCIPAL_USER_NAME,

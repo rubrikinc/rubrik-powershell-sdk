@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Cluster' API domain:
-    /// AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 23 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterLocation, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1061,43 +1061,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the UpdateClusterLocation operation
-    /// of the 'Cluster' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Cluster
-    /// # API Operation: UpdateClusterLocation
-    /// 
-    /// $query = New-RscMutationCluster -Operation UpdateClusterLocation
-    /// 
-    /// # REQUIRED
-    /// $query.Var.clusterUuid = $someString
-    /// # REQUIRED
-    /// $query.Var.clusterLocation = @{
-    /// 	# REQUIRED
-    /// 	address = $someString
-    /// 	# REQUIRED
-    /// 	latitude = $someSingle
-    /// 	# REQUIRED
-    /// 	longitude = $someSingle
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: Cluster
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the UpdateClusterNtpServers operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -1297,7 +1260,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RequestPersistentExo",
                 "SetMissingClusterStatus",
                 "UpdateClusterDefaultAddress",
-                "UpdateClusterLocation",
                 "UpdateClusterNtpServers",
                 "UpdateClusterPauseStatus",
                 "UpdateClusterSettings",
@@ -1373,9 +1335,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateClusterDefaultAddress":
                         this.ProcessRecord_UpdateClusterDefaultAddress();
-                        break;
-                    case "UpdateClusterLocation":
-                        this.ProcessRecord_UpdateClusterLocation();
                         break;
                     case "UpdateClusterNtpServers":
                         this.ProcessRecord_UpdateClusterNtpServers();
@@ -1568,15 +1527,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateClusterDefaultAddress";
             // Create new graphql operation updateClusterDefaultAddress
             InitMutationUpdateClusterDefaultAddress();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // updateClusterLocation.
-        internal void ProcessRecord_UpdateClusterLocation()
-        {
-            this._logger.name += " -UpdateClusterLocation";
-            // Create new graphql operation updateClusterLocation
-            InitMutationUpdateClusterLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2446,36 +2396,6 @@ $query.Var.input = @{
 	address = $someString
 	# OPTIONAL
 	port = $someInt
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // updateClusterLocation(clusterUuid: UUID!, clusterLocation: ClusterLocationEdit!): Cluster!
-        internal void InitMutationUpdateClusterLocation()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusterUuid", "UUID!"),
-                Tuple.Create("clusterLocation", "ClusterLocationEdit!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationUpdateClusterLocation",
-                "($clusterUuid: UUID!,$clusterLocation: ClusterLocationEdit!)",
-                "Cluster",
-                Mutation.UpdateClusterLocation,
-                Mutation.UpdateClusterLocationFieldSpec,
-                @"# REQUIRED
-$query.Var.clusterUuid = $someString
-# REQUIRED
-$query.Var.clusterLocation = @{
-	# REQUIRED
-	address = $someString
-	# REQUIRED
-	latitude = $someSingle
-	# REQUIRED
-	longitude = $someSingle
 }"
             );
         }

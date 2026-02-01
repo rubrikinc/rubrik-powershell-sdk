@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osVersion")]
         public System.String? OsVersion { get; set; }
 
+        //      C# -> System.Int32? ProtectedSharesCount
+        // GraphQL -> protectedSharesCount: Int! (scalar)
+        [JsonProperty("protectedSharesCount")]
+        public System.Int32? ProtectedSharesCount { get; set; }
+
         //      C# -> List<System.String>? S3Hosts
         // GraphQL -> s3Hosts: [String!]! (scalar)
         [JsonProperty("s3Hosts")]
@@ -303,6 +308,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ObjectCount = null,
         System.String? OsVersion = null,
+        System.Int32? ProtectedSharesCount = null,
         List<System.String>? S3Hosts = null,
         System.Boolean? SlaPauseStatus = null,
         List<System.String>? SmbHosts = null,
@@ -390,6 +396,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OsVersion != null ) {
             this.OsVersion = OsVersion;
+        }
+        if ( ProtectedSharesCount != null ) {
+            this.ProtectedSharesCount = ProtectedSharesCount;
         }
         if ( S3Hosts != null ) {
             this.S3Hosts = S3Hosts;
@@ -677,6 +686,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "osVersion\n" ;
             } else {
                 s += ind + "osVersion\n" ;
+            }
+        }
+        //      C# -> System.Int32? ProtectedSharesCount
+        // GraphQL -> protectedSharesCount: Int! (scalar)
+        if (this.ProtectedSharesCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectedSharesCount\n" ;
+            } else {
+                s += ind + "protectedSharesCount\n" ;
             }
         }
         //      C# -> List<System.String>? S3Hosts
@@ -1296,6 +1314,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsVersion != null && ec.Excludes("osVersion",true))
         {
             this.OsVersion = null;
+        }
+        //      C# -> System.Int32? ProtectedSharesCount
+        // GraphQL -> protectedSharesCount: Int! (scalar)
+        if (ec.Includes("protectedSharesCount",true))
+        {
+            if(this.ProtectedSharesCount == null) {
+
+                this.ProtectedSharesCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectedSharesCount != null && ec.Excludes("protectedSharesCount",true))
+        {
+            this.ProtectedSharesCount = null;
         }
         //      C# -> List<System.String>? S3Hosts
         // GraphQL -> s3Hosts: [String!]! (scalar)

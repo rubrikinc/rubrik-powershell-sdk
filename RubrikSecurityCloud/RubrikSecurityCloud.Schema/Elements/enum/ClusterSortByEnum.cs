@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AVAILABLE_SPACE_PERCENT")]
+        AVAILABLE_SPACE_PERCENT,
+
         [EnumMember(Value = "CLUSTER_LOCATION")]
         CLUSTER_LOCATION,
 

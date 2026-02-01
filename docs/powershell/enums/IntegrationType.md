@@ -10,3 +10,4 @@ data hits to prevent them from being exfiltrated.
 - MICROSOFT_PURVIEW - Represents a Microsoft Purview integration.
 - PRIVILEGED_ACCESS_MANAGEMENT - Represents a PAM integration.
 - CROWD_STRIKE - Represents a CrowdStrike integration.
+- GOOGLE_SECOPS - Represents a Google SecOps integration.

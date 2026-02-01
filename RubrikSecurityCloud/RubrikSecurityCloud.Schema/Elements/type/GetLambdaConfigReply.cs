@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orionYaraRemoteProcessingEnabled")]
         public System.Boolean? OrionYaraRemoteProcessingEnabled { get; set; }
 
+        //      C# -> List<System.String>? ThreatMonitoringExtensions
+        // GraphQL -> threatMonitoringExtensions: [String!]! (scalar)
+        [JsonProperty("threatMonitoringExtensions")]
+        public List<System.String>? ThreatMonitoringExtensions { get; set; }
+
 
         #endregion
 
@@ -83,7 +88,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? EnableThreatMonitoringFullScan = null,
         System.Boolean? IsThreatMonitoringEnabled = null,
         System.Int32? MaxSnapshotsToUploadAutomatically = null,
-        System.Boolean? OrionYaraRemoteProcessingEnabled = null
+        System.Boolean? OrionYaraRemoteProcessingEnabled = null,
+        List<System.String>? ThreatMonitoringExtensions = null
     ) 
     {
         if ( AccountId != null ) {
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OrionYaraRemoteProcessingEnabled != null ) {
             this.OrionYaraRemoteProcessingEnabled = OrionYaraRemoteProcessingEnabled;
+        }
+        if ( ThreatMonitoringExtensions != null ) {
+            this.ThreatMonitoringExtensions = ThreatMonitoringExtensions;
         }
         return this;
     }
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "orionYaraRemoteProcessingEnabled\n" ;
             } else {
                 s += ind + "orionYaraRemoteProcessingEnabled\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ThreatMonitoringExtensions
+        // GraphQL -> threatMonitoringExtensions: [String!]! (scalar)
+        if (this.ThreatMonitoringExtensions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "threatMonitoringExtensions\n" ;
+            } else {
+                s += ind + "threatMonitoringExtensions\n" ;
             }
         }
         return s;
@@ -367,6 +385,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OrionYaraRemoteProcessingEnabled != null && ec.Excludes("orionYaraRemoteProcessingEnabled",true))
         {
             this.OrionYaraRemoteProcessingEnabled = null;
+        }
+        //      C# -> List<System.String>? ThreatMonitoringExtensions
+        // GraphQL -> threatMonitoringExtensions: [String!]! (scalar)
+        if (ec.Includes("threatMonitoringExtensions",true))
+        {
+            if(this.ThreatMonitoringExtensions == null) {
+
+                this.ThreatMonitoringExtensions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ThreatMonitoringExtensions != null && ec.Excludes("threatMonitoringExtensions",true))
+        {
+            this.ThreatMonitoringExtensions = null;
         }
     }
 

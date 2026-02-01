@@ -8,7 +8,7 @@ Rich org-level segregated consumption data with detailed breakdowns
 - totalFetbConsumed: System.Int64
   - Total FETB consumed aggregated across all Microsoft 365 workloads
 - totalObjectCount: System.Int64
-  - Total object count for this org
+  - Total protected object count for this org
 - exchangeConsumption: SegregatedFETBConsumption
   - Segregated consumption for Exchange workload
 - onedriveConsumption: SegregatedFETBConsumption

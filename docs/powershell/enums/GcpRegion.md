@@ -51,3 +51,8 @@ Regions for GCP.
 - US_SOUTH1 - GCP region is US South 1.
 - US_WEST8 - GCP region is US West 8.
 - AFRICA_SOUTH1 - GCP region is Africa South 1.
+- ASIA_SOUTHEAST3 - GCP region is Asia South East 3.
+- EUROPE_NORTH2 - GCP region is Europe North 2.
+- EUR5 - GCP region is Europe 5.
+- EUR7 - GCP region is Europe 7.
+- EUR8 - GCP region is Europe 8.

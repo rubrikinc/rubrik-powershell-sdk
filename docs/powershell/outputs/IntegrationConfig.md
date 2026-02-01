@@ -15,3 +15,5 @@ with IntegrationType will be considered.
   - The PAM configuration.
 - crowdStrike: CrowdStrikeIntegrationConfig
   - The CrowdStrike configuration.
+- googleSecops: GoogleSecOpsIntegrationConfig
+  - The Google SecOps configuration.

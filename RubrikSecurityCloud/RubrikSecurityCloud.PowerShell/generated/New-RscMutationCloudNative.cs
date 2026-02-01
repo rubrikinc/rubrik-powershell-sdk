@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'Cloud Native' API domain:
-    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
+    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 15 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
+    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -484,6 +484,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SetGatewayKmsKeys operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: SetGatewayKmsKeys
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation SetGatewayKmsKeys
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	gatewayKmsKeyMap = @{
+    /// 		# REQUIRED
+    /// 		gatewayKmsKeyMapList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				region = $someString
+    /// 				# OPTIONAL
+    /// 				kmsKeyArn = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SetupSqlServerBackup operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -762,6 +803,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteLabelRule",
                 "DeleteTagRule",
                 "DownloadFiles",
+                "SetGatewayKmsKeys",
                 "SetupSqlServerBackup",
                 "StartSnapshotsIndexJob",
                 "UpdateIndexingStatus",
@@ -806,6 +848,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DownloadFiles":
                         this.ProcessRecord_DownloadFiles();
+                        break;
+                    case "SetGatewayKmsKeys":
+                        this.ProcessRecord_SetGatewayKmsKeys();
                         break;
                     case "SetupSqlServerBackup":
                         this.ProcessRecord_SetupSqlServerBackup();
@@ -905,6 +950,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DownloadFiles";
             // Create new graphql operation cloudNativeDownloadFiles
             InitMutationCloudNativeDownloadFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setCloudNativeGatewayKmsKeys.
+        internal void ProcessRecord_SetGatewayKmsKeys()
+        {
+            this._logger.name += " -SetGatewayKmsKeys";
+            // Create new graphql operation setCloudNativeGatewayKmsKeys
+            InitMutationSetCloudNativeGatewayKmsKeys();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1301,6 +1355,39 @@ $query.Var.input = @{
 	exocomputeRegion = $someString
 	# OPTIONAL
 	archivedSnapshotId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setCloudNativeGatewayKmsKeys(input: SetCloudNativeGatewayKmsKeysInput!): Void
+        internal void InitMutationSetCloudNativeGatewayKmsKeys()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetCloudNativeGatewayKmsKeysInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetCloudNativeGatewayKmsKeys",
+                "($input: SetCloudNativeGatewayKmsKeysInput!)",
+                "System.String",
+                Mutation.SetCloudNativeGatewayKmsKeys,
+                Mutation.SetCloudNativeGatewayKmsKeysFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	gatewayKmsKeyMap = @{
+		# REQUIRED
+		gatewayKmsKeyMapList = @(
+			@{
+				# OPTIONAL
+				region = $someString
+				# OPTIONAL
+				kmsKeyArn = $someString
+			}
+		)
+	}
 }"
             );
         }

@@ -1,0 +1,33 @@
+### ExpiredSnapshot
+A minimal snapshot representation for expired/deleted snapshots.
+
+- id: System.String
+  - The ID of the expired snapshot.
+- date: DateTime
+  - The date when the snapshot was taken.
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
+- slaDomain: SlaDomain
+  - SLA Domain of the snapshot.
+- isDownloadedSnapshot: System.Boolean
+  - Specifies whether the snapshot is downloaded from an archival location.
+- isCorrupted: System.Boolean
+  - Specifies whether or not the snapshot is corrupted.
+- isIndexed: System.Boolean
+  - Specifies whether or not the snapshot is indexed.
+- isUnindexable: System.Boolean
+  - Specifies whether or not the snapshot is unindexable.
+- indexingAttempts: System.Int64
+  - The number of indexing attempts for the snapshot.
+- expirationDate: DateTime
+  - The expirationDate of the snapshot.
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
+- isOnDemandSnapshot: System.Boolean
+  - Specifies whether the snapshot is an on-demand snapshot.
+- snappableId: System.String
+  - The workload ID of the snapshot.
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.

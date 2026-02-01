@@ -6,3 +6,4 @@ AWS native protection features.
 - S3 - AWS native protection feature is S3.
 - DYNAMODB - AWS native protection feature is DynamoDB.
 - CLOUD_DISCOVERY - AWS native protection feature is Cloud Discovery.
+- CONFIG - AWS native protection feature is Config.

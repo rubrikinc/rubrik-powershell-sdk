@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_DISCOVERY")]
         CLOUD_DISCOVERY,
 
+        [EnumMember(Value = "CONFIG")]
+        CONFIG,
+
         [EnumMember(Value = "DYNAMODB")]
         DYNAMODB,
 

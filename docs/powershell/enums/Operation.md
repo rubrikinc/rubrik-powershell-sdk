@@ -3,6 +3,7 @@ Operations defined in the RBAC system.
 
 - CREATE_REPORT
 - VIEW_REPORT
+- VIEW_CDM_REPORT - View CDM report.
 - MODIFY_REPORT
 - DELETE_REPORT
 - ADD_CLUSTER
@@ -230,6 +231,8 @@ Operations defined in the RBAC system.
 - DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN - Deactivate personal access token for other users.
 - MANAGE_AUTO_QUARANTINE - Allow users to manage auto quarantine settings.
 - MANAGE_TICKETING_PLATFORM - Manage integration and configuration of ticketing platforms.
+- VIEW_GOOGLE_SECOPS_INTEGRATION - View Google SecOps integrations.
+- MANAGE_GOOGLE_SECOPS_INTEGRATION - Manage Google SecOps integrations.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

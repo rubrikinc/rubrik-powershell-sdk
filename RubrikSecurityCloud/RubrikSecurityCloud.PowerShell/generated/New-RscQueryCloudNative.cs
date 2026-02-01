@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 20
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Cloud Native' API domain:
-    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 20 operations
+    /// There are 21 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -254,6 +254,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GatewayKmsKeys operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: GatewayKmsKeys
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation GatewayKmsKeys
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetCloudNativeGatewayKmsKeysReply
     /// 
     /// 
     /// 
@@ -743,6 +770,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CheckTagRuleNameUniqueness",
                 "CustomerTags",
                 "FileRecoveryEligibleSnapshots",
+                "GatewayKmsKeys",
                 "IsFileRecoveryFeasible",
                 "LabelKeys",
                 "LabelRules",
@@ -789,6 +817,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "FileRecoveryEligibleSnapshots":
                         this.ProcessRecord_FileRecoveryEligibleSnapshots();
+                        break;
+                    case "GatewayKmsKeys":
+                        this.ProcessRecord_GatewayKmsKeys();
                         break;
                     case "IsFileRecoveryFeasible":
                         this.ProcessRecord_IsFileRecoveryFeasible();
@@ -894,6 +925,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -FileRecoveryEligibleSnapshots";
             // Create new graphql operation allCloudNativeFileRecoveryEligibleSnapshots
             InitQueryAllCloudNativeFileRecoveryEligibleSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudNativeGatewayKmsKeys.
+        internal void ProcessRecord_GatewayKmsKeys()
+        {
+            this._logger.name += " -GatewayKmsKeys";
+            // Create new graphql operation cloudNativeGatewayKmsKeys
+            InitQueryCloudNativeGatewayKmsKeys();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1162,6 +1202,24 @@ $query.Var.cloudAccountId = $someString"
                 Query.AllCloudNativeFileRecoveryEligibleSnapshotsFieldSpec,
                 @"# REQUIRED
 $query.Var.workloadId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudNativeGatewayKmsKeys: GetCloudNativeGatewayKmsKeysReply!
+        internal void InitQueryCloudNativeGatewayKmsKeys()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeGatewayKmsKeys",
+                "",
+                "GetCloudNativeGatewayKmsKeysReply",
+                Query.CloudNativeGatewayKmsKeys,
+                Query.CloudNativeGatewayKmsKeysFieldSpec,
+                @""
             );
         }
 

@@ -237,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GcpNativeProject")]
         GCP_NATIVE_PROJECT,
 
+        [EnumMember(Value = "HIGH_AVAILABILITY_POLICY")]
+        HIGH_AVAILABILITY_POLICY,
+
         [EnumMember(Value = "Hdfs")]
         HDFS,
 
@@ -590,6 +593,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,
+
+        [EnumMember(Value = "RSC_CHILD_ACCOUNT")]
+        RSC_CHILD_ACCOUNT,
 
         [EnumMember(Value = "RubrikEbsVolume")]
         RUBRIK_EBS_VOLUME,

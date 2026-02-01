@@ -120,6 +120,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_CAPACITY")]
         OBJECT_CAPACITY,
 
+        [EnumMember(Value = "OBJECT_CAPACITY_OVER_TIME_DAILY")]
+        OBJECT_CAPACITY_OVER_TIME_DAILY,
+
+        [EnumMember(Value = "OBJECT_CAPACITY_OVER_TIME_MONTHLY")]
+        OBJECT_CAPACITY_OVER_TIME_MONTHLY,
+
         [EnumMember(Value = "OBJECT_COMPLIANCE")]
         OBJECT_COMPLIANCE,
 

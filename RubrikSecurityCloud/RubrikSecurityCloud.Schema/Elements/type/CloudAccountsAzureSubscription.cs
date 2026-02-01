@@ -16,7 +16,8 @@ using RubrikSecurityCloud;
 namespace RubrikSecurityCloud.Types
 {
     #region CloudAccountsAzureSubscription
-    public class CloudAccountsAzureSubscription: BaseType
+ 
+    public class CloudAccountsAzureSubscription: BaseType, EntityType
     {
         #region members
 

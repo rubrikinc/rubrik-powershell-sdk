@@ -168,6 +168,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			crowdstrikeTenantUrl = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		googleSecops = @{
+    /// 			# REQUIRED
+    /// 			configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			webhookId = $someInt
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -277,6 +286,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					clientSecret = $someString
     /// 					# OPTIONAL
     /// 					crowdstrikeTenantUrl = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				googleSecops = @{
+    /// 					# REQUIRED
+    /// 					configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+    /// 					# OPTIONAL
+    /// 					webhookId = $someInt
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -484,6 +502,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			crowdstrikeTenantUrl = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		googleSecops = @{
+    /// 			# REQUIRED
+    /// 			configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			webhookId = $someInt
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -595,6 +622,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					clientSecret = $someString
     /// 					# OPTIONAL
     /// 					crowdstrikeTenantUrl = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				googleSecops = @{
+    /// 					# REQUIRED
+    /// 					configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+    /// 					# OPTIONAL
+    /// 					webhookId = $someInt
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -840,6 +876,15 @@ $query.Var.input = @{
 			# OPTIONAL
 			crowdstrikeTenantUrl = $someString
 		}
+		# OPTIONAL
+		googleSecops = @{
+			# REQUIRED
+			configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+			# OPTIONAL
+			webhookId = $someInt
+			# REQUIRED
+			serviceAccountId = $someString
+		}
 	}
 }"
             );
@@ -941,6 +986,15 @@ $query.Var.input = @{
 					clientSecret = $someString
 					# OPTIONAL
 					crowdstrikeTenantUrl = $someString
+				}
+				# OPTIONAL
+				googleSecops = @{
+					# REQUIRED
+					configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+					# OPTIONAL
+					webhookId = $someInt
+					# REQUIRED
+					serviceAccountId = $someString
 				}
 			}
 		}
@@ -1116,6 +1170,15 @@ $query.Var.input = @{
 			# OPTIONAL
 			crowdstrikeTenantUrl = $someString
 		}
+		# OPTIONAL
+		googleSecops = @{
+			# REQUIRED
+			configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+			# OPTIONAL
+			webhookId = $someInt
+			# REQUIRED
+			serviceAccountId = $someString
+		}
 	}
 }"
             );
@@ -1219,6 +1282,15 @@ $query.Var.input = @{
 					clientSecret = $someString
 					# OPTIONAL
 					crowdstrikeTenantUrl = $someString
+				}
+				# OPTIONAL
+				googleSecops = @{
+					# REQUIRED
+					configType = $someGoogleSecOpsIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GoogleSecOpsIntegrationConfigType]) for enum values.
+					# OPTIONAL
+					webhookId = $someInt
+					# REQUIRED
+					serviceAccountId = $someString
 				}
 			}
 		}

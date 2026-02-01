@@ -40,6 +40,12 @@ List of snapshots for which file recovery is feasible.
 
 - There is a single argument of type System.String.
 - Returns list of System.Strings.
+### gatewaykmskeys
+GetCloudNativeGatewayKmsKeys returns a map of the region to the KMS key
+ARN for gateway encryption.
+
+- The gatewaykmskeys subcommand takes no arguments.
+- Returns GetCloudNativeGatewayKmsKeysReply.
 ### isfilerecoveryfeasible
 List of snapshots with their file recovery feasibility status
 

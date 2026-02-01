@@ -288,7 +288,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     last: Int
         //     before: String
         //     sortOrder: SortOrder
-        //     sortBy: LdapAuthorizedPrincipalFieldEnum = Name
+        //     sortBy: LdapAuthorizedPrincipalFieldEnum
         //     searchText: String!
         //     roleIds: [UUID!]
         //   ): AuthorizedPrincipalConnection!
@@ -340,7 +340,7 @@ $query.Var.roleIds = @(
         //     last: Int
         //     before: String
         //     sortOrder: SortOrder
-        //     sortBy: LdapIntegrationFieldEnum = Name
+        //     sortBy: LdapIntegrationFieldEnum
         //   ): LdapIntegrationConnection!
         internal void InitQueryLdapIntegrationConnection()
         {
@@ -382,7 +382,7 @@ $query.Var.sortBy = $someLdapIntegrationFieldEnum # Call [Enum]::GetValues([Rubr
         //     last: Int
         //     before: String
         //     sortOrder: SortOrder
-        //     sortBy: LdapPrincipalFieldEnum = Name
+        //     sortBy: LdapPrincipalFieldEnum
         //     id: UUID!
         //     searchText: String!
         //   ): PrincipalConnection!

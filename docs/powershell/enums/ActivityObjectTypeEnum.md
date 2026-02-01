@@ -86,6 +86,7 @@ The list of object types for activities.
 - AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
 - PRINCIPAL_NTDS_SITE_SETTINGS - Specifies that the activity object type is NTDS Site Settings.
+- RSC_CHILD_ACCOUNT - Specifies that the activity object type is RSC Child Account (Dedicated Tenant).
 - VMWARE_HOST - Specifies that the activity object type is a VSphere host.
 - PolarisAccount - Specifies that the activity object type is RSC Account.
 - AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
@@ -198,6 +199,7 @@ The list of object types for activities.
 - IDP_SHAREPOINT - Specifies that the activity object type is SharePoint Site Domain.
 - Certificate - Specifies that the activity object type is Certificate.
 - PRINCIPAL_COMPUTER - Specifies that the activity object type is Computer.
+- HIGH_AVAILABILITY_POLICY - Specifies that the activity object type is High Availability Policy.
 - IDP_LOCAL_AD - Specifies that the activity object type is Local Windows Machine.
 - GITHUB_ORGANIZATION - Specifies that the activity object type is GitHub Organization.
 - SamlSso - Specifies that the activity object type is Saml SSO.

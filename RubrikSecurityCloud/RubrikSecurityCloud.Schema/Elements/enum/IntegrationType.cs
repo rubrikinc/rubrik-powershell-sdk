@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATA_LOSS_PREVENTION")]
         DATA_LOSS_PREVENTION,
 
+        [EnumMember(Value = "GOOGLE_SECOPS")]
+        GOOGLE_SECOPS,
+
         [EnumMember(Value = "INTEGRATION_TYPE_UNSPECIFIED")]
         INTEGRATION_TYPE_UNSPECIFIED,
 

@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DYNAMICS_365")]
         DYNAMICS_365,
 
+        [EnumMember(Value = "GOOGLE_WORKSPACE")]
+        GOOGLE_WORKSPACE,
+
         [EnumMember(Value = "GPS")]
         GPS,
 
@@ -119,6 +122,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RDP")]
         RDP,
+
+        [EnumMember(Value = "RUBRIK_AGENT_CLOUD")]
+        RUBRIK_AGENT_CLOUD,
 
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,

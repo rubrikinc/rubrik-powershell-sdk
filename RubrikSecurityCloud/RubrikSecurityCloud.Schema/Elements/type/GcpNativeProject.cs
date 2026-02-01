@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> System.Int32? SqlInstanceCount
+        // GraphQL -> sqlInstanceCount: Int! (scalar)
+        [JsonProperty("sqlInstanceCount")]
+        public System.Int32? SqlInstanceCount { get; set; }
+
         //      C# -> System.Int32? VmCount
         // GraphQL -> vmCount: Int! (scalar)
         [JsonProperty("vmCount")]
@@ -277,6 +282,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ProjectNumber = null,
         System.String? Region = null,
         System.Boolean? SlaPauseStatus = null,
+        System.Int32? SqlInstanceCount = null,
         System.Int32? VmCount = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -357,6 +363,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( SqlInstanceCount != null ) {
+            this.SqlInstanceCount = SqlInstanceCount;
         }
         if ( VmCount != null ) {
             this.VmCount = VmCount;
@@ -619,6 +628,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.Int32? SqlInstanceCount
+        // GraphQL -> sqlInstanceCount: Int! (scalar)
+        if (this.SqlInstanceCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sqlInstanceCount\n" ;
+            } else {
+                s += ind + "sqlInstanceCount\n" ;
             }
         }
         //      C# -> System.Int32? VmCount
@@ -1175,6 +1193,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.Int32? SqlInstanceCount
+        // GraphQL -> sqlInstanceCount: Int! (scalar)
+        if (ec.Includes("sqlInstanceCount",true))
+        {
+            if(this.SqlInstanceCount == null) {
+
+                this.SqlInstanceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SqlInstanceCount != null && ec.Excludes("sqlInstanceCount",true))
+        {
+            this.SqlInstanceCount = null;
         }
         //      C# -> System.Int32? VmCount
         // GraphQL -> vmCount: Int! (scalar)

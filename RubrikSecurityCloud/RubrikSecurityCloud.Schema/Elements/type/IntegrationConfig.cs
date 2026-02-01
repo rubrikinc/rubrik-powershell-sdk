@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dataLossPrevention")]
         public DlpConfig? DataLossPrevention { get; set; }
 
+        //      C# -> GoogleSecOpsIntegrationConfig? GoogleSecops
+        // GraphQL -> googleSecops: GoogleSecOpsIntegrationConfig (type)
+        [JsonProperty("googleSecops")]
+        public GoogleSecOpsIntegrationConfig? GoogleSecops { get; set; }
+
         //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
         // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)
         [JsonProperty("microsoftPurview")]
@@ -62,6 +67,7 @@ namespace RubrikSecurityCloud.Types
     public IntegrationConfig Set(
         CrowdStrikeIntegrationConfig? CrowdStrike = null,
         DlpConfig? DataLossPrevention = null,
+        GoogleSecOpsIntegrationConfig? GoogleSecops = null,
         MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
         PamIntegrationConfig? Pam = null,
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DataLossPrevention != null ) {
             this.DataLossPrevention = DataLossPrevention;
+        }
+        if ( GoogleSecops != null ) {
+            this.GoogleSecops = GoogleSecops;
         }
         if ( MicrosoftPurview != null ) {
             this.MicrosoftPurview = MicrosoftPurview;
@@ -121,6 +130,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "dataLossPrevention" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GoogleSecOpsIntegrationConfig? GoogleSecops
+        // GraphQL -> googleSecops: GoogleSecOpsIntegrationConfig (type)
+        if (this.GoogleSecops != null) {
+            var fspec = this.GoogleSecops.AsFieldSpec(conf.Child("googleSecops"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "googleSecops" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -216,6 +237,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DataLossPrevention != null && ec.Excludes("dataLossPrevention",false))
         {
             this.DataLossPrevention = null;
+        }
+        //      C# -> GoogleSecOpsIntegrationConfig? GoogleSecops
+        // GraphQL -> googleSecops: GoogleSecOpsIntegrationConfig (type)
+        if (ec.Includes("googleSecops",false))
+        {
+            if(this.GoogleSecops == null) {
+
+                this.GoogleSecops = new GoogleSecOpsIntegrationConfig();
+                this.GoogleSecops.ApplyExploratoryFieldSpec(ec.NewChild("googleSecops"));
+
+            } else {
+
+                this.GoogleSecops.ApplyExploratoryFieldSpec(ec.NewChild("googleSecops"));
+
+            }
+        }
+        else if (this.GoogleSecops != null && ec.Excludes("googleSecops",false))
+        {
+            this.GoogleSecops = null;
         }
         //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
         // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)

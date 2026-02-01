@@ -29,6 +29,7 @@
 - MANAGED_ID - Managed ID of the object.
 - NUM_OBJECTS
 - ClusterType - Rubrik cluster type.
+- AVAILABLE_SPACE_PERCENT - Percentage of available storage space in the cluster.
 - LastUpdated
 - ArchivalComplianceStatus
 - DataReduction

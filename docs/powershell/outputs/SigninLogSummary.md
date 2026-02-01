@@ -1,0 +1,27 @@
+### SigninLogSummary
+Sign-in log summary for list view.
+
+- eventId: System.String
+  - Unique identifier for the sign-in event.
+- userSid: System.String
+  - The user's SID (unique user identifier).
+- actorPrincipalName: System.String
+  - The actor's principal name (email or UPN).
+- eventTimestamp: DateTime
+  - The timestamp when the event occurred.
+- result: SigninLogResult
+  - The result of the sign-in.
+- provider: EventProvider
+  - The identity provider.
+- eventType: System.String
+  - The type of sign-in event.
+- ipAddress: System.String
+  - The IP address from which the sign-in occurred.
+- city: System.String
+  - The city from which the sign-in occurred.
+- country: System.String
+  - The country from which the sign-in occurred.
+- riskLevel: SigninLogRiskLevel
+  - The risk level.
+- applicationName: System.String
+  - The application name accessed during sign-in.

@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupStorageRedundancy")]
         public AzureSqlBackupStorageRedundancyType? BackupStorageRedundancy { get; set; }
 
+        //      C# -> AzureSqlEncryptionType? EncryptionType
+        // GraphQL -> encryptionType: AzureSqlEncryptionType! (enum)
+        [JsonProperty("encryptionType")]
+        public AzureSqlEncryptionType? EncryptionType { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -242,6 +247,7 @@ namespace RubrikSecurityCloud.Types
         AzureSqlAuthenticationType? AuthType = null,
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AzureSqlBackupStorageRedundancyType? BackupStorageRedundancy = null,
+        AzureSqlEncryptionType? EncryptionType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AzureNativeRegion? Region = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
@@ -286,6 +292,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BackupStorageRedundancy != null ) {
             this.BackupStorageRedundancy = BackupStorageRedundancy;
+        }
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -428,6 +437,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "backupStorageRedundancy\n" ;
             } else {
                 s += ind + "backupStorageRedundancy\n" ;
+            }
+        }
+        //      C# -> AzureSqlEncryptionType? EncryptionType
+        // GraphQL -> encryptionType: AzureSqlEncryptionType! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -850,6 +868,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BackupStorageRedundancy != null && ec.Excludes("backupStorageRedundancy",true))
         {
             this.BackupStorageRedundancy = null;
+        }
+        //      C# -> AzureSqlEncryptionType? EncryptionType
+        // GraphQL -> encryptionType: AzureSqlEncryptionType! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new AzureSqlEncryptionType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

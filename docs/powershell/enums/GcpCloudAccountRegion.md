@@ -45,3 +45,5 @@ Enums containing GCP regions.
 - US_WEST4 - US West 4.
 - US_WEST8 - US West 8.
 - AFRICA_SOUTH1 - Africa South 1.
+- ASIA_SOUTHEAST3 - Asia Southeast 3.
+- EUROPE_NORTH2 - Europe North 2.

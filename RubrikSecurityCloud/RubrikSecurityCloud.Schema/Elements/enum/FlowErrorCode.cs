@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GENERIC_UNSUPPORTED_ERROR")]
         GENERIC_UNSUPPORTED_ERROR,
 
+        [EnumMember(Value = "HOST_CREDENTIALS_FOR_SDD_NOT_CONFIGURED")]
+        HOST_CREDENTIALS_FOR_SDD_NOT_CONFIGURED,
+
         [EnumMember(Value = "LVM2_MULTIPLE_PVS")]
         LVM2_MULTIPLE_PVS,
 

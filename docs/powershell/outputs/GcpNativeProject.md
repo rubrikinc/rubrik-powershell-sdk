@@ -19,6 +19,8 @@ Represents a GCP project.
   - Number of disks in the GCP project.
 - cloudAccountId: System.String
   - Cloud account ID associated with the project.
+- sqlInstanceCount: System.Int32
+  - Number of Cloud SQL instances in the GCP project.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - logicalChildConnection: GcpNativeProjectLogicalChildTypeConnection

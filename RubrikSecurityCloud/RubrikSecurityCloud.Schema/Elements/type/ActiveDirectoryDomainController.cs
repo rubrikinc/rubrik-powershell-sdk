@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.String? MacAddress
+        // GraphQL -> macAddress: String (scalar)
+        [JsonProperty("macAddress")]
+        public System.String? MacAddress { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -420,6 +425,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsGlobalCatalog = null,
         System.Boolean? IsRelic = null,
+        System.String? MacAddress = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -516,6 +522,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( MacAddress != null ) {
+            this.MacAddress = MacAddress;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -834,6 +843,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.String? MacAddress
+        // GraphQL -> macAddress: String (scalar)
+        if (this.MacAddress != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "macAddress\n" ;
+            } else {
+                s += ind + "macAddress\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1617,6 +1635,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.String? MacAddress
+        // GraphQL -> macAddress: String (scalar)
+        if (ec.Includes("macAddress",true))
+        {
+            if(this.MacAddress == null) {
+
+                this.MacAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MacAddress != null && ec.Excludes("macAddress",true))
+        {
+            this.MacAddress = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

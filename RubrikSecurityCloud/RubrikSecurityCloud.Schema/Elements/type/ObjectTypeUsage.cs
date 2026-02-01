@@ -25,10 +25,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public O365SnappableType? ObjectType { get; set; }
 
+        //      C# -> System.Int32? ResourceMailboxCount
+        // GraphQL -> resourceMailboxCount: Int (scalar)
+        [JsonProperty("resourceMailboxCount")]
+        public System.Int32? ResourceMailboxCount { get; set; }
+
+        //      C# -> System.Int32? SharedMailboxCount
+        // GraphQL -> sharedMailboxCount: Int (scalar)
+        [JsonProperty("sharedMailboxCount")]
+        public System.Int32? SharedMailboxCount { get; set; }
+
         //      C# -> System.Int64? TotalConsumption
         // GraphQL -> totalConsumption: Long (scalar)
         [JsonProperty("totalConsumption")]
         public System.Int64? TotalConsumption { get; set; }
+
+        //      C# -> System.Int32? TotalProtectedUsers
+        // GraphQL -> totalProtectedUsers: Int (scalar)
+        [JsonProperty("totalProtectedUsers")]
+        public System.Int32? TotalProtectedUsers { get; set; }
+
+        //      C# -> System.Int32? UserMailboxCount
+        // GraphQL -> userMailboxCount: Int (scalar)
+        [JsonProperty("userMailboxCount")]
+        public System.Int32? UserMailboxCount { get; set; }
 
 
         #endregion
@@ -41,14 +61,30 @@ namespace RubrikSecurityCloud.Types
 
     public ObjectTypeUsage Set(
         O365SnappableType? ObjectType = null,
-        System.Int64? TotalConsumption = null
+        System.Int32? ResourceMailboxCount = null,
+        System.Int32? SharedMailboxCount = null,
+        System.Int64? TotalConsumption = null,
+        System.Int32? TotalProtectedUsers = null,
+        System.Int32? UserMailboxCount = null
     ) 
     {
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
+        if ( ResourceMailboxCount != null ) {
+            this.ResourceMailboxCount = ResourceMailboxCount;
+        }
+        if ( SharedMailboxCount != null ) {
+            this.SharedMailboxCount = SharedMailboxCount;
+        }
         if ( TotalConsumption != null ) {
             this.TotalConsumption = TotalConsumption;
+        }
+        if ( TotalProtectedUsers != null ) {
+            this.TotalProtectedUsers = TotalProtectedUsers;
+        }
+        if ( UserMailboxCount != null ) {
+            this.UserMailboxCount = UserMailboxCount;
         }
         return this;
     }
@@ -73,6 +109,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "objectType\n" ;
             }
         }
+        //      C# -> System.Int32? ResourceMailboxCount
+        // GraphQL -> resourceMailboxCount: Int (scalar)
+        if (this.ResourceMailboxCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceMailboxCount\n" ;
+            } else {
+                s += ind + "resourceMailboxCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? SharedMailboxCount
+        // GraphQL -> sharedMailboxCount: Int (scalar)
+        if (this.SharedMailboxCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sharedMailboxCount\n" ;
+            } else {
+                s += ind + "sharedMailboxCount\n" ;
+            }
+        }
         //      C# -> System.Int64? TotalConsumption
         // GraphQL -> totalConsumption: Long (scalar)
         if (this.TotalConsumption != null) {
@@ -80,6 +134,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalConsumption\n" ;
             } else {
                 s += ind + "totalConsumption\n" ;
+            }
+        }
+        //      C# -> System.Int32? TotalProtectedUsers
+        // GraphQL -> totalProtectedUsers: Int (scalar)
+        if (this.TotalProtectedUsers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalProtectedUsers\n" ;
+            } else {
+                s += ind + "totalProtectedUsers\n" ;
+            }
+        }
+        //      C# -> System.Int32? UserMailboxCount
+        // GraphQL -> userMailboxCount: Int (scalar)
+        if (this.UserMailboxCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userMailboxCount\n" ;
+            } else {
+                s += ind + "userMailboxCount\n" ;
             }
         }
         return s;
@@ -106,6 +178,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.ObjectType = null;
         }
+        //      C# -> System.Int32? ResourceMailboxCount
+        // GraphQL -> resourceMailboxCount: Int (scalar)
+        if (ec.Includes("resourceMailboxCount",true))
+        {
+            if(this.ResourceMailboxCount == null) {
+
+                this.ResourceMailboxCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceMailboxCount != null && ec.Excludes("resourceMailboxCount",true))
+        {
+            this.ResourceMailboxCount = null;
+        }
+        //      C# -> System.Int32? SharedMailboxCount
+        // GraphQL -> sharedMailboxCount: Int (scalar)
+        if (ec.Includes("sharedMailboxCount",true))
+        {
+            if(this.SharedMailboxCount == null) {
+
+                this.SharedMailboxCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SharedMailboxCount != null && ec.Excludes("sharedMailboxCount",true))
+        {
+            this.SharedMailboxCount = null;
+        }
         //      C# -> System.Int64? TotalConsumption
         // GraphQL -> totalConsumption: Long (scalar)
         if (ec.Includes("totalConsumption",true))
@@ -122,6 +228,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalConsumption != null && ec.Excludes("totalConsumption",true))
         {
             this.TotalConsumption = null;
+        }
+        //      C# -> System.Int32? TotalProtectedUsers
+        // GraphQL -> totalProtectedUsers: Int (scalar)
+        if (ec.Includes("totalProtectedUsers",true))
+        {
+            if(this.TotalProtectedUsers == null) {
+
+                this.TotalProtectedUsers = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalProtectedUsers != null && ec.Excludes("totalProtectedUsers",true))
+        {
+            this.TotalProtectedUsers = null;
+        }
+        //      C# -> System.Int32? UserMailboxCount
+        // GraphQL -> userMailboxCount: Int (scalar)
+        if (ec.Includes("userMailboxCount",true))
+        {
+            if(this.UserMailboxCount == null) {
+
+                this.UserMailboxCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserMailboxCount != null && ec.Excludes("userMailboxCount",true))
+        {
+            this.UserMailboxCount = null;
         }
     }
 

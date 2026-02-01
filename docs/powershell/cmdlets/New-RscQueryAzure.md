@@ -187,6 +187,13 @@ List of all Azure Key Vaults in a region.
 
 - There is a single argument of type AzureKeyVaultsInput.
 - Returns list of AzureKeyVaults.
+### listmanagementgrouphierarchy
+AzureListManagementGroupHierarchy lists the flattened management groups
+hierarchy under a given management group. If should_recurse is false, the
+hierarchy is limited upto 1 level.
+
+- There is a single argument of type AzureListManagementGroupHierarchyReq.
+- Returns AzureListManagementGroupHierarchyReply.
 ### managedidentities
 List all managed identities for Azure resources.
 

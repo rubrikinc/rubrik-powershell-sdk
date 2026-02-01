@@ -83,3 +83,6 @@ protection feature.
 - DOWNLOAD_FILE - Represents the set of permissions required for file level recovery for
 AWS EC2/EBS. These permissions are applicable to the cloud native
 protection feature.
+- NAT_GATEWAY - Represents the set of permissions required for NAT gateway operations.
+These permissions are applicable to the Laminar Outpost Application
+feature.

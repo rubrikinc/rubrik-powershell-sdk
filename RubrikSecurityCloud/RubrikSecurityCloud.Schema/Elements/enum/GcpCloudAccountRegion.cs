@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASIA_SOUTHEAST2")]
         ASIA_SOUTHEAST2,
 
+        [EnumMember(Value = "ASIA_SOUTHEAST3")]
+        ASIA_SOUTHEAST3,
+
         [EnumMember(Value = "AUSTRALIA_SOUTHEAST1")]
         AUSTRALIA_SOUTHEAST1,
 
@@ -59,6 +62,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EUROPE_NORTH1")]
         EUROPE_NORTH1,
+
+        [EnumMember(Value = "EUROPE_NORTH2")]
+        EUROPE_NORTH2,
 
         [EnumMember(Value = "EUROPE_SOUTHWEST1")]
         EUROPE_SOUTHWEST1,

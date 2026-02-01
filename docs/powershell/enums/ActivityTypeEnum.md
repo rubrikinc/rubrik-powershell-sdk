@@ -28,6 +28,7 @@ Enum representing different type of activities.
 - StorageArray
 - Connection
 - Conversion
+- DISCOVER - Activity representing discover activity type.
 - AuthDomain
 - UnknownEventType
 - QUARANTINE - Activity representing quarantine event type.
@@ -47,6 +48,7 @@ Enum representing different type of activities.
 - Vcd
 - Anomaly
 - SEEDING - Activity representing seeding event type.
+- CLOUD_DIRECT_ARCHIVE - Activity representing CloudDirect archive activity type.
 - Archive
 - CloudNativeSource
 - HostEvent
@@ -62,6 +64,7 @@ Enum representing different type of activities.
 - Download
 - EmbeddedEvent
 - PROTECTED_OBJECT_DELETION
+- COPY - Activity representing copy activity type.
 - TENANT_OVERLAP - Activity representing tenant permission overlap.
 - NutanixCluster
 - VCenter

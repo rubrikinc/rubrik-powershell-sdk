@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'Google Cloud Platform' API domain:
-    /// CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, CloudSqlInstances, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// </summary>
     /// <description>
     /// New-RscQueryGcp creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 22 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
+    /// one of: CloudAccountGetProject, CloudAccountMissingPermissionsForAddition, CloudAccountProjectsByFeature, CloudAccountProjectsForOauth, CloudSqlInstance, CloudSqlInstances, ExocomputeConfigs, FeaturePermissionsForCloudAccount, GetDefaultCredentialsServiceAccount, GetResourceSetupTemplate, LatestPermissionsByPermissionsGroup, NativeAvailableKmsCryptoKeys, NativeCompatibleMachineTypes, NativeNetworks, NativeProjectsWithAccessibleNetworks, NativeRegions, NativeStoredMachineTypes, NativeStoredMachineTypesInProject, NativeStoredNetworkNames, NativeStoredNetworkNamesInProject, NativeStoredRegions, or NativeStoredRegionsInProject.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -230,6 +230,71 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: GcpCloudSqlInstance
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudSqlInstances operation
+    /// of the 'Google Cloud Platform' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Gcp
+    /// # API Operation: CloudSqlInstances
+    /// 
+    /// $query = New-RscQueryGcp -Operation CloudSqlInstances
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someGcpCloudSqlInstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudSqlInstanceSortFields]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.cloudSqlInstanceFilters = @{
+    /// 	# OPTIONAL
+    /// 	nameOrIdSubstringFilter = @{
+    /// 		# REQUIRED
+    /// 		nameOrIdSubstring = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	effectiveSlaFilter = @{
+    /// 		# REQUIRED
+    /// 		effectiveSlaIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	projectFilter = @{
+    /// 		# REQUIRED
+    /// 		projectIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	relicFilter = @{
+    /// 		# REQUIRED
+    /// 		relic = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GcpCloudSqlInstanceConnection
     /// 
     /// 
     /// 
@@ -750,6 +815,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccountProjectsByFeature",
                 "CloudAccountProjectsForOauth",
                 "CloudSqlInstance",
+                "CloudSqlInstances",
                 "ExocomputeConfigs",
                 "FeaturePermissionsForCloudAccount",
                 "GetDefaultCredentialsServiceAccount",
@@ -795,6 +861,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CloudSqlInstance":
                         this.ProcessRecord_CloudSqlInstance();
+                        break;
+                    case "CloudSqlInstances":
+                        this.ProcessRecord_CloudSqlInstances();
                         break;
                     case "ExocomputeConfigs":
                         this.ProcessRecord_ExocomputeConfigs();
@@ -897,6 +966,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudSqlInstance";
             // Create new graphql operation gcpCloudSqlInstance
             InitQueryGcpCloudSqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // gcpCloudSqlInstances.
+        internal void ProcessRecord_CloudSqlInstances()
+        {
+            this._logger.name += " -CloudSqlInstances";
+            // Create new graphql operation gcpCloudSqlInstances
+            InitQueryGcpCloudSqlInstances();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1173,6 +1251,77 @@ $query.Var.checkPermissions = $someBoolean"
                 Query.GcpCloudSqlInstanceFieldSpec,
                 @"# REQUIRED
 $query.Var.gcpCloudSqlInstanceRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // gcpCloudSqlInstances(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: GcpCloudSqlInstanceSortFields
+        //     sortOrder: SortOrder
+        //     cloudSqlInstanceFilters: GcpCloudSqlInstanceFilters
+        //   ): GcpCloudSqlInstanceConnection!
+        internal void InitQueryGcpCloudSqlInstances()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "GcpCloudSqlInstanceSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("cloudSqlInstanceFilters", "GcpCloudSqlInstanceFilters"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGcpCloudSqlInstances",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GcpCloudSqlInstanceSortFields,$sortOrder: SortOrder,$cloudSqlInstanceFilters: GcpCloudSqlInstanceFilters)",
+                "GcpCloudSqlInstanceConnection",
+                Query.GcpCloudSqlInstances,
+                Query.GcpCloudSqlInstancesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortBy = $someGcpCloudSqlInstanceSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudSqlInstanceSortFields]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.cloudSqlInstanceFilters = @{
+	# OPTIONAL
+	nameOrIdSubstringFilter = @{
+		# REQUIRED
+		nameOrIdSubstring = $someString
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	projectFilter = @{
+		# REQUIRED
+		projectIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	relicFilter = @{
+		# REQUIRED
+		relic = $someBoolean
+	}
+}"
             );
         }
 

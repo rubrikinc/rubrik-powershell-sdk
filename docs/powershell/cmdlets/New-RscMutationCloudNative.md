@@ -40,6 +40,12 @@ Download files from a cloud-native snapshot to a cloud download location or a vi
 
 - There is a single argument of type CloudNativeDownloadFilesInput.
 - Returns DownloadFilesReply.
+### setgatewaykmskeys
+SetCloudNativeGatewayKmsKeys sets the map of the region to the KMS key
+ARN for gateway encryption.
+
+- There is a single argument of type SetCloudNativeGatewayKmsKeysInput.
+- Returns System.String.
 ### setupsqlserverbackup
 Setup backups on the SQL Server databases using the admin credentials.
 

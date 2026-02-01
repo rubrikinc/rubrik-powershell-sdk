@@ -75,6 +75,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP_UNSPECIFIED")]
         GROUP_UNSPECIFIED,
 
+        [EnumMember(Value = "NAT_GATEWAY")]
+        NAT_GATEWAY,
+
         [EnumMember(Value = "PRIVATE_ENDPOINTS")]
         PRIVATE_ENDPOINTS,
 

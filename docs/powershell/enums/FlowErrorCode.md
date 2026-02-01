@@ -29,4 +29,5 @@ Error code from Laminar flow processing.
 - RDS_DB_PERSISTENT_OR_PERMANENT - RDS instances that are part of a Persistent or Permanent option group are unsupported.
 - RDS_DB_UNSUPPORTED_ENGINE - RDS instance with Unsupported Engine.
 - AZURE_SQL_ELASTIC_POOL_UNSUPPORTED - Azure SQL databases that are part of an Elastic Pool are unsupported.
+- HOST_CREDENTIALS_FOR_SDD_NOT_CONFIGURED - Host Credentials for SDD not configured.
 - SUCCESS - Operation completed successfully.

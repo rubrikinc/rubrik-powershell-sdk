@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_SQL_DATABASE_SERVER")]
         AZURE_SQL_DATABASE_SERVER,
 
+        [EnumMember(Value = "AZURE_SQL_MANAGED_INSTANCE_DB")]
+        AZURE_SQL_MANAGED_INSTANCE_DB,
+
         [EnumMember(Value = "AZURE_SQL_MANAGED_INSTANCE_SERVER")]
         AZURE_SQL_MANAGED_INSTANCE_SERVER,
 
@@ -50,6 +53,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_VIRTUAL_MACHINE")]
         AZURE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
+        GCP_CLOUD_SQL_INSTANCE,
 
         [EnumMember(Value = "GCP_DISK")]
         GCP_DISK,

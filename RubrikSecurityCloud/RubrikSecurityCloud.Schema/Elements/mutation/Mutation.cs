@@ -2647,6 +2647,24 @@ namespace RubrikSecurityCloud.Types
             return "FETCH" ;
         }
 
+        //      C# -> System.String? SetCloudNativeGatewayKmsKeys
+        // GraphQL -> setCloudNativeGatewayKmsKeys: Void (scalar)
+        public static string SetCloudNativeGatewayKmsKeys(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setCloudNativeGatewayKmsKeys" + args + "\n";
+        }
+        public static object SetCloudNativeGatewayKmsKeysFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? SetCustomerTags
         // GraphQL -> setCustomerTags: Void (scalar)
         public static string SetCustomerTags(object fsObj)
@@ -14037,24 +14055,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateClusterDefaultAddressReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> Cluster? UpdateClusterLocation
-        // GraphQL -> updateClusterLocation: Cluster! (type)
-        public static string UpdateClusterLocation(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nclusterUuid: $clusterUuid\nclusterLocation: $clusterLocation\n)";
-            return "updateClusterLocation" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object UpdateClusterLocationFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new Cluster() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -55,7 +55,10 @@ namespace RubrikSecurityCloud.Types
         THREAT_HUNT_RESULT_CSV,
 
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "USER_DETAILS_CSV")]
+        USER_DETAILS_CSV
 
 
     } // enum FileTypeEnumType

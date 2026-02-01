@@ -18,3 +18,9 @@ Entra ID object types.
 - DEVICE - Object type is Entra ID device.
 - BIT_LOCKER_KEY - Object type is Entra ID BitLocker key.
 - LOCAL_ADMIN_PASSWORD - Object type is Entra ID local administrator password.
+- COMPLIANCE_POLICY - Object type is Intune compliance policy.
+- NOTIFICATION_TEMPLATE - Object type is Intune notification template.
+- COMPLIANCE_SCRIPT - Object type is Intune compliance script.
+- ASSIGNMENT_FILTER - Object type is Intune assignment filter.
+- COMPLIANCE_POLICY_ASSIGNMENT - Object type is Intune compliance policy assignment.
+- COMPLIANCE_POLICY_ACTION - Object type is Intune compliance policy action.

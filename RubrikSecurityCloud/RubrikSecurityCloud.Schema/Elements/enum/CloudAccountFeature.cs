@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL")]
         ARCHIVAL,
 
+        [EnumMember(Value = "AWS_CONFIG_PROTECTION")]
+        AWS_CONFIG_PROTECTION,
+
         [EnumMember(Value = "AZURE_DEVOPS_PROTECTION")]
         AZURE_DEVOPS_PROTECTION,
 
