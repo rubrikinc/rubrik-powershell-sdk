@@ -95,7 +95,7 @@ Initiates a job to restore Active Directory snapshots to their corresponding Dom
 ### restoreopenstackvmfiles
 Restore files from an OpenStack virtual machine snapshot
 
-Supported in v9.5
+Supported in v9.5+
 Start an asynchronous job to restore files and folders from a specified OpenStack virtual machine snapshot to the source virtual machine or a different target virtual machine.
 
 - There is a single argument of type RestoreOpenstackVmSnapshotFilesInput.
@@ -143,3 +143,9 @@ Start a job to upload a database snapshot to a target blobstore.
 
 - There is a single argument of type UploadDatabaseSnapshotToBlobstoreInput.
 - Returns AsyncJobStatus.
+### uploadondemand
+UploadSnapshotOnDemand triggers an on-demand upload of a snapshot to
+a new archival location specified by the SLA Domain.
+
+- There is a single argument of type UploadSnapshotOnDemandInput.
+- Returns UploadSnapshotOnDemandReply.

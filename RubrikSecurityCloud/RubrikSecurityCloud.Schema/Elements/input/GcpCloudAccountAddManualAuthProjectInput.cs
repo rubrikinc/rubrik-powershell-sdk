@@ -50,13 +50,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountJwtConfig")]
         public System.String? ServiceAccountJwtConfig { get; set; }
 
-        //      C# -> List<CloudAccountFeature>? Features
-        // GraphQL -> features: [CloudAccountFeature!] (enum)
-        [JsonProperty("features")]
-        public List<CloudAccountFeature>? Features { get; set; }
-
         //      C# -> List<FeatureWithPermissionsGroups>? FeaturesWithPermissionGroups
-        // GraphQL -> featuresWithPermissionGroups: [FeatureWithPermissionsGroups!] (input)
+        // GraphQL -> featuresWithPermissionGroups: [FeatureWithPermissionsGroups!]! (input)
+        [Required]
+        [JsonRequired]
         [JsonProperty("featuresWithPermissionGroups")]
         public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionGroups { get; set; }
 

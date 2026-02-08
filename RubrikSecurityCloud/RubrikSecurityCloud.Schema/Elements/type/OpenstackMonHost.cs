@@ -1,4 +1,4 @@
-// SetAirPolicyAlertStatusResult.cs
+// OpenstackMonHost.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,25 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region SetAirPolicyAlertStatusResult
-    public class SetAirPolicyAlertStatusResult: BaseType
+    #region OpenstackMonHost
+    public class OpenstackMonHost: BaseType
     {
         #region members
 
-        //      C# -> System.String? AlertId
-        // GraphQL -> alertId: UUID! (scalar)
-        [JsonProperty("alertId")]
-        public System.String? AlertId { get; set; }
+        //      C# -> System.String? Ip
+        // GraphQL -> ip: String! (scalar)
+        [JsonProperty("ip")]
+        public System.String? Ip { get; set; }
 
-        //      C# -> System.String? Error
-        // GraphQL -> error: String! (scalar)
-        [JsonProperty("error")]
-        public System.String? Error { get; set; }
-
-        //      C# -> System.Boolean? Success
-        // GraphQL -> success: Boolean! (scalar)
-        [JsonProperty("success")]
-        public System.Boolean? Success { get; set; }
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int! (scalar)
+        [JsonProperty("port")]
+        public System.Int32? Port { get; set; }
 
 
         #endregion
@@ -41,23 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "SetAirPolicyAlertStatusResult";
+        return "OpenstackMonHost";
     }
 
-    public SetAirPolicyAlertStatusResult Set(
-        System.String? AlertId = null,
-        System.String? Error = null,
-        System.Boolean? Success = null
+    public OpenstackMonHost Set(
+        System.String? Ip = null,
+        System.Int32? Port = null
     ) 
     {
-        if ( AlertId != null ) {
-            this.AlertId = AlertId;
+        if ( Ip != null ) {
+            this.Ip = Ip;
         }
-        if ( Error != null ) {
-            this.Error = Error;
-        }
-        if ( Success != null ) {
-            this.Success = Success;
+        if ( Port != null ) {
+            this.Port = Port;
         }
         return this;
     }
@@ -73,31 +64,22 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.String? AlertId
-        // GraphQL -> alertId: UUID! (scalar)
-        if (this.AlertId != null) {
+        //      C# -> System.String? Ip
+        // GraphQL -> ip: String! (scalar)
+        if (this.Ip != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "alertId\n" ;
+                s += conf.Prefix + "ip\n" ;
             } else {
-                s += ind + "alertId\n" ;
+                s += ind + "ip\n" ;
             }
         }
-        //      C# -> System.String? Error
-        // GraphQL -> error: String! (scalar)
-        if (this.Error != null) {
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int! (scalar)
+        if (this.Port != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "error\n" ;
+                s += conf.Prefix + "port\n" ;
             } else {
-                s += ind + "error\n" ;
-            }
-        }
-        //      C# -> System.Boolean? Success
-        // GraphQL -> success: Boolean! (scalar)
-        if (this.Success != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "success\n" ;
-            } else {
-                s += ind + "success\n" ;
+                s += ind + "port\n" ;
             }
         }
         return s;
@@ -107,67 +89,50 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.String? AlertId
-        // GraphQL -> alertId: UUID! (scalar)
-        if (ec.Includes("alertId",true))
+        //      C# -> System.String? Ip
+        // GraphQL -> ip: String! (scalar)
+        if (ec.Includes("ip",true))
         {
-            if(this.AlertId == null) {
+            if(this.Ip == null) {
 
-                this.AlertId = "FETCH";
+                this.Ip = "FETCH";
 
             } else {
 
 
             }
         }
-        else if (this.AlertId != null && ec.Excludes("alertId",true))
+        else if (this.Ip != null && ec.Excludes("ip",true))
         {
-            this.AlertId = null;
+            this.Ip = null;
         }
-        //      C# -> System.String? Error
-        // GraphQL -> error: String! (scalar)
-        if (ec.Includes("error",true))
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int! (scalar)
+        if (ec.Includes("port",true))
         {
-            if(this.Error == null) {
+            if(this.Port == null) {
 
-                this.Error = "FETCH";
+                this.Port = Int32.MinValue;
 
             } else {
 
 
             }
         }
-        else if (this.Error != null && ec.Excludes("error",true))
+        else if (this.Port != null && ec.Excludes("port",true))
         {
-            this.Error = null;
-        }
-        //      C# -> System.Boolean? Success
-        // GraphQL -> success: Boolean! (scalar)
-        if (ec.Includes("success",true))
-        {
-            if(this.Success == null) {
-
-                this.Success = true;
-
-            } else {
-
-
-            }
-        }
-        else if (this.Success != null && ec.Excludes("success",true))
-        {
-            this.Success = null;
+            this.Port = null;
         }
     }
 
 
     #endregion
 
-    } // class SetAirPolicyAlertStatusResult
+    } // class OpenstackMonHost
     
     #endregion
 
-    public static class ListSetAirPolicyAlertStatusResultExtensions
+    public static class ListOpenstackMonHostExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -186,14 +151,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<SetAirPolicyAlertStatusResult> list,
+            this List<OpenstackMonHost> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<SetAirPolicyAlertStatusResult> list)
+        public static List<string> SelectedFields(this List<OpenstackMonHost> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -202,16 +167,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<SetAirPolicyAlertStatusResult> list, 
+            this List<OpenstackMonHost> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new SetAirPolicyAlertStatusResult());
+                list.Add(new OpenstackMonHost());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<SetAirPolicyAlertStatusResult> list)
+        public static void SelectForRetrieval(this List<OpenstackMonHost> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

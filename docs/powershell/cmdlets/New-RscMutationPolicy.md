@@ -22,9 +22,10 @@ Create a TPR policy.
 ### deactivatepolicy
 Deactivate a classification policy.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - policyId - System.String
     - runAsync - System.Boolean
+    - disableDataCategory - System.Boolean: Disable data category.
 - Returns list of System.Strings.
 ### deletetprpolicy
 Delete a TPR policy.
@@ -64,11 +65,6 @@ DEPRECATED (use seedEnabledPolicies instead) Seed account with initial policies.
 
 - The seedinitialpolicies subcommand takes no arguments.
 - Returns SeedInitialPoliciesReply.
-### setairpolicyalertstatus
-Set policy alert status.
-
-- There is a single argument of type SetAirPolicyAlertStatusInput.
-- Returns SetAirPolicyAlertStatusReply.
 ### setpasswordcomplexitypolicy
 Set the password complexity policy for the current organization.
 

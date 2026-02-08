@@ -1,4 +1,6 @@
 ### BatchAsyncJobStatus
+Represents the status of a batch async job.
+
 - jobIds: list of AsyncJobStatusJobIds
   - List of map of Rubrik object ID to Job ID for object if pre validation succeeds for object. If pre validation failed, details will be present in error field.
 - errors: list of AsyncJobStatusJobErrors

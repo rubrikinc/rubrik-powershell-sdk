@@ -1,5 +1,9 @@
 ### AsyncJobStatus
+Represents the status of a single async job.
+
 - jobId: System.String
-  - Job ID for object if pre validation succeeds for object. If pre validation failed Job ID will be empty and detials will be present in error field.
+  - Job ID for the object if pre-validation succeeds for the object. If
+pre-validation fails Job ID will be empty and details
+will be present in the error field.
 - error: System.String
   - Error message if pre validation failed.

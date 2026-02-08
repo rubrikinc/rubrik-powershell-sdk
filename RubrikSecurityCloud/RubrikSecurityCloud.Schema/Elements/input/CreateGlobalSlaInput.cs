@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("failoverGroupId")]
         public System.String? FailoverGroupId { get; set; }
 
+        //      C# -> BackupWindowSpecInput? BackupWindowSpec
+        // GraphQL -> backupWindowSpec: BackupWindowSpecInput (input)
+        [JsonProperty("backupWindowSpec")]
+        public BackupWindowSpecInput? BackupWindowSpec { get; set; }
+
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode (enum)
         [JsonProperty("retentionLockMode")]

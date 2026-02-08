@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logRetentionInDays")]
         public System.Int32? LogRetentionInDays { get; set; }
 
+        //      C# -> AzureSqlLtrConfig? LtrConfig
+        // GraphQL -> ltrConfig: AzureSqlLtrConfig (input)
+        [JsonProperty("ltrConfig")]
+        public AzureSqlLtrConfig? LtrConfig { get; set; }
+
 
         #endregion
 

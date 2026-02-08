@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID! (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
+
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: UUID! (scalar)
         [JsonProperty("policyId")]
@@ -79,6 +84,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? CreatedAt = null,
         System.String? Description = null,
         System.String? Name = null,
+        System.String? OrgId = null,
         System.String? PolicyId = null,
         System.Int32? QuorumRequirement = null,
         UserSummary? CreatedBy = null,
@@ -97,6 +103,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( OrgId != null ) {
+            this.OrgId = OrgId;
         }
         if ( PolicyId != null ) {
             this.PolicyId = PolicyId;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID! (scalar)
+        if (this.OrgId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
             }
         }
         //      C# -> System.String? PolicyId
@@ -291,6 +309,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID! (scalar)
+        if (ec.Includes("orgId",true))
+        {
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: UUID! (scalar)

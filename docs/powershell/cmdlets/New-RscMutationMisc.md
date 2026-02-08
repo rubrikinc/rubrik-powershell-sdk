@@ -240,6 +240,14 @@ Delete AD Groups from O365 hierarchy.
 
 - There is a single argument of type DeleteAdGroupsFromHierarchyInput.
 - Returns RequestStatus.
+### deletecephsetting
+Delete a Ceph setting for an OpenStack Availability Zone
+
+Supported in v9.5+
+Delete a specific Ceph storage setting for an OpenStack Availability Zone.
+
+- There is a single argument of type DeleteCephSettingInput.
+- Returns System.String.
 ### deleteclouddirectkerberoscredential
 DeleteCloudDirectKerberosCredential deletes an existing Kerberos credential for NCD systems.
 
@@ -612,6 +620,14 @@ Sets the approval status of an Exocompute container image bundle.
 
 - There is a single argument of type SetBundleApprovalStatusInput.
 - Returns System.String.
+### setcephsettings
+Set the Ceph settings for an OpenStack Availability Zone
+
+Supported in v9.5+
+Set the Ceph storage settings for an OpenStack Availability Zone. Accepts multiple settings.
+
+- There is a single argument of type SetCephSettingsInput.
+- Returns SetCephSettingsReply.
 ### setclouddirectnamespaceoverride
 SetCloudDirectNamespaceOverride is used to override properties of a
 namespace already added to the NCD cluster.

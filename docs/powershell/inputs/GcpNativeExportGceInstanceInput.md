@@ -33,3 +33,5 @@ Input required to export a GCP GCE instance snapshot.
   - The type of the snapshot to recover from.
 - archivedSnapshotId: System.String
   - The archived snapshot ID from which the recovery should happen.
+- serviceAccountId: System.String
+  - Optional service account email to attach to the exported instance. If not provided or empty, no service account will be attached.

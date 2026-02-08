@@ -8,5 +8,7 @@ quarantine).
   - File path to quarantine.
 - fileVersion: DateTime
   - File version represented as modified time.
+- fileMetadata: FileMetadataInput
+  - File Metadata for the file.
 - metadata: MetadataOneof
   - This represents the metadata for quarantine operation.

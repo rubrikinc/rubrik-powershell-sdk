@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> BackupWindowType? BackupWindowType
+        // GraphQL -> backupWindowType: BackupWindowType! (enum)
+        [JsonProperty("backupWindowType")]
+        public BackupWindowType? BackupWindowType { get; set; }
+
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
         [JsonProperty("durationInHours")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public BackupWindow Set(
+        BackupWindowType? BackupWindowType = null,
         System.Int32? DurationInHours = null,
         StartTimeAttributes? StartTimeAttributes = null
     ) 
     {
+        if ( BackupWindowType != null ) {
+            this.BackupWindowType = BackupWindowType;
+        }
         if ( DurationInHours != null ) {
             this.DurationInHours = DurationInHours;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> BackupWindowType? BackupWindowType
+        // GraphQL -> backupWindowType: BackupWindowType! (enum)
+        if (this.BackupWindowType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupWindowType\n" ;
+            } else {
+                s += ind + "backupWindowType\n" ;
+            }
+        }
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
         if (this.DurationInHours != null) {
@@ -92,6 +110,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> BackupWindowType? BackupWindowType
+        // GraphQL -> backupWindowType: BackupWindowType! (enum)
+        if (ec.Includes("backupWindowType",true))
+        {
+            if(this.BackupWindowType == null) {
+
+                this.BackupWindowType = new BackupWindowType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupWindowType != null && ec.Excludes("backupWindowType",true))
+        {
+            this.BackupWindowType = null;
+        }
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
         if (ec.Includes("durationInHours",true))

@@ -4741,6 +4741,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AzureListManagementGroupsReply? AzureListManagementGroups
+        // GraphQL -> azureListManagementGroups: AzureListManagementGroupsReply! (type)
+        public static string AzureListManagementGroups(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "azureListManagementGroups" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureListManagementGroupsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureListManagementGroupsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CheckAzureMarketplaceTermsReply? AzureMarketplaceTermsInfo
         // GraphQL -> azureMarketplaceTermsInfo: CheckAzureMarketplaceTermsReply! (type)
         public static string AzureMarketplaceTermsInfo(object fsObj)
@@ -13989,6 +14007,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new RowConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ReportObjectConnection? ReportObjects
+        // GraphQL -> reportObjects: ReportObjectConnection! (type)
+        public static string ReportObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            return "reportObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ReportObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ReportObjectConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -1,0 +1,6 @@
+### OpenstackCephSettingsInput
+Reply for setting Ceph storage configuration.
+
+- data: list of OpenstackCephSettingInputs
+  - Required. Supported in v9.5+
+The list of Ceph settings for an OpenStack Availability Zone.

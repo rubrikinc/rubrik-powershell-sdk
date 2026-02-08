@@ -474,6 +474,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				minute = $someInt
     /// 			}
+    /// 			# OPTIONAL
+    /// 			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -493,6 +495,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				minute = $someInt
     /// 			}
+    /// 			# OPTIONAL
+    /// 			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -570,11 +574,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		azureSqlDatabaseDbConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			ltrConfig = @{
+    /// 				# OPTIONAL
+    /// 				weeklyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					ltrRetention = @{
+    /// 						# REQUIRED
+    /// 						retention = $someInt
+    /// 						# REQUIRED
+    /// 						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 					}
+    /// 					# REQUIRED
+    /// 					weekOfYear = $someInt
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		azureSqlManagedInstanceDbConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			ltrConfig = @{
+    /// 				# OPTIONAL
+    /// 				weeklyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					ltrRetention = @{
+    /// 						# REQUIRED
+    /// 						retention = $someInt
+    /// 						# REQUIRED
+    /// 						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 					}
+    /// 					# REQUIRED
+    /// 					weekOfYear = $someInt
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		db2ConfigInput = @{
@@ -925,6 +987,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	failoverGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	backupWindowSpec = @{
+    /// 		# OPTIONAL
+    /// 		backupWindows = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				durationInHours = $someInt
+    /// 				# OPTIONAL
+    /// 				startTimeAttributes = @{
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = @{
+    /// 						# OPTIONAL
+    /// 						day = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					hour = $someInt
+    /// 					# OPTIONAL
+    /// 					minute = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		terminateBackupsExceedingBackupWindow = $someBoolean
+    /// 	}
     /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
@@ -1368,6 +1456,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				minute = $someInt
     /// 			}
+    /// 			# OPTIONAL
+    /// 			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1387,6 +1477,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				minute = $someInt
     /// 			}
+    /// 			# OPTIONAL
+    /// 			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1464,11 +1556,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		azureSqlDatabaseDbConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			ltrConfig = @{
+    /// 				# OPTIONAL
+    /// 				weeklyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					ltrRetention = @{
+    /// 						# REQUIRED
+    /// 						retention = $someInt
+    /// 						# REQUIRED
+    /// 						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 					}
+    /// 					# REQUIRED
+    /// 					weekOfYear = $someInt
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		azureSqlManagedInstanceDbConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			ltrConfig = @{
+    /// 				# OPTIONAL
+    /// 				weeklyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				monthlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					retention = $someInt
+    /// 					# REQUIRED
+    /// 					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				yearlyBackupRetention = @{
+    /// 					# REQUIRED
+    /// 					ltrRetention = @{
+    /// 						# REQUIRED
+    /// 						retention = $someInt
+    /// 						# REQUIRED
+    /// 						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+    /// 					}
+    /// 					# REQUIRED
+    /// 					weekOfYear = $someInt
+    /// 				}
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		db2ConfigInput = @{
@@ -1831,6 +1981,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	failoverGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	backupWindowSpec = @{
+    /// 		# OPTIONAL
+    /// 		backupWindows = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				durationInHours = $someInt
+    /// 				# OPTIONAL
+    /// 				startTimeAttributes = @{
+    /// 					# OPTIONAL
+    /// 					dayOfWeek = @{
+    /// 						# OPTIONAL
+    /// 						day = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					hour = $someInt
+    /// 					# OPTIONAL
+    /// 					minute = $someInt
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		terminateBackupsExceedingBackupWindow = $someBoolean
+    /// 	}
     /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
@@ -2469,6 +2645,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				minute = $someInt
 			}
+			# OPTIONAL
+			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -2488,6 +2666,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				minute = $someInt
 			}
+			# OPTIONAL
+			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -2565,11 +2745,69 @@ $query.Var.input = @{
 		azureSqlDatabaseDbConfigInput = @{
 			# OPTIONAL
 			logRetentionInDays = $someInt
+			# OPTIONAL
+			ltrConfig = @{
+				# OPTIONAL
+				weeklyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				monthlyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				yearlyBackupRetention = @{
+					# REQUIRED
+					ltrRetention = @{
+						# REQUIRED
+						retention = $someInt
+						# REQUIRED
+						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+					}
+					# REQUIRED
+					weekOfYear = $someInt
+				}
+			}
 		}
 		# OPTIONAL
 		azureSqlManagedInstanceDbConfigInput = @{
 			# OPTIONAL
 			logRetentionInDays = $someInt
+			# OPTIONAL
+			ltrConfig = @{
+				# OPTIONAL
+				weeklyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				monthlyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				yearlyBackupRetention = @{
+					# REQUIRED
+					ltrRetention = @{
+						# REQUIRED
+						retention = $someInt
+						# REQUIRED
+						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+					}
+					# REQUIRED
+					weekOfYear = $someInt
+				}
+			}
 		}
 		# OPTIONAL
 		db2ConfigInput = @{
@@ -2920,6 +3158,32 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	failoverGroupId = $someString
+	# OPTIONAL
+	backupWindowSpec = @{
+		# OPTIONAL
+		backupWindows = @(
+			@{
+				# OPTIONAL
+				durationInHours = $someInt
+				# OPTIONAL
+				startTimeAttributes = @{
+					# OPTIONAL
+					dayOfWeek = @{
+						# OPTIONAL
+						day = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					}
+					# OPTIONAL
+					hour = $someInt
+					# OPTIONAL
+					minute = $someInt
+				}
+				# OPTIONAL
+				backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
+			}
+		)
+		# OPTIONAL
+		terminateBackupsExceedingBackupWindow = $someBoolean
+	}
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
@@ -3324,6 +3588,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				minute = $someInt
 			}
+			# OPTIONAL
+			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -3343,6 +3609,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				minute = $someInt
 			}
+			# OPTIONAL
+			backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -3420,11 +3688,69 @@ $query.Var.input = @{
 		azureSqlDatabaseDbConfigInput = @{
 			# OPTIONAL
 			logRetentionInDays = $someInt
+			# OPTIONAL
+			ltrConfig = @{
+				# OPTIONAL
+				weeklyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				monthlyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				yearlyBackupRetention = @{
+					# REQUIRED
+					ltrRetention = @{
+						# REQUIRED
+						retention = $someInt
+						# REQUIRED
+						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+					}
+					# REQUIRED
+					weekOfYear = $someInt
+				}
+			}
 		}
 		# OPTIONAL
 		azureSqlManagedInstanceDbConfigInput = @{
 			# OPTIONAL
 			logRetentionInDays = $someInt
+			# OPTIONAL
+			ltrConfig = @{
+				# OPTIONAL
+				weeklyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				monthlyBackupRetention = @{
+					# REQUIRED
+					retention = $someInt
+					# REQUIRED
+					retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+				}
+				# OPTIONAL
+				yearlyBackupRetention = @{
+					# REQUIRED
+					ltrRetention = @{
+						# REQUIRED
+						retention = $someInt
+						# REQUIRED
+						retentionUnit = $someAzureSqlLtrRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureSqlLtrRetentionUnit]) for enum values.
+					}
+					# REQUIRED
+					weekOfYear = $someInt
+				}
+			}
 		}
 		# OPTIONAL
 		db2ConfigInput = @{
@@ -3787,6 +4113,32 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	failoverGroupId = $someString
+	# OPTIONAL
+	backupWindowSpec = @{
+		# OPTIONAL
+		backupWindows = @(
+			@{
+				# OPTIONAL
+				durationInHours = $someInt
+				# OPTIONAL
+				startTimeAttributes = @{
+					# OPTIONAL
+					dayOfWeek = @{
+						# OPTIONAL
+						day = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+					}
+					# OPTIONAL
+					hour = $someInt
+					# OPTIONAL
+					minute = $someInt
+				}
+				# OPTIONAL
+				backupWindowType = $someBackupWindowType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupWindowType]) for enum values.
+			}
+		)
+		# OPTIONAL
+		terminateBackupsExceedingBackupWindow = $someBoolean
+	}
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"

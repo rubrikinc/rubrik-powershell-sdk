@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Report' API domain:
-    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// </summary>
     /// <description>
     /// New-RscQueryReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -484,6 +484,55 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Objects operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: Objects
+    /// 
+    /// $query = New-RscQueryReport -Operation Objects
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		field = $someReportObjectFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportObjectFilterField]) for enum values.
+    /// 		# REQUIRED
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someReportObjectSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportObjectSortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ReportObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ScheduledReport operation
     /// of the 'Report' API domain.
     /// <code>
@@ -802,6 +851,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DatabaseLogingPropertiesForCluster",
                 "GenerateCloudDirectTask",
                 "HealthCheckError",
+                "Objects",
                 "ScheduledReport",
                 "ScheduledReports",
                 "SkippedTeamsSite",
@@ -853,6 +903,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "HealthCheckError":
                         this.ProcessRecord_HealthCheckError();
+                        break;
+                    case "Objects":
+                        this.ProcessRecord_Objects();
                         break;
                     case "ScheduledReport":
                         this.ProcessRecord_ScheduledReport();
@@ -973,6 +1026,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -HealthCheckError";
             // Create new graphql operation healthCheckErrorReport
             InitQueryHealthCheckErrorReport();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // reportObjects.
+        internal void ProcessRecord_Objects()
+        {
+            this._logger.name += " -Objects";
+            // Create new graphql operation reportObjects
+            InitQueryReportObjects();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1416,6 +1478,61 @@ $query.Var.input = @{
 	# OPTIONAL
 	cloudVendor = $someExocomputeCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExocomputeCloudType]) for enum values.
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // reportObjects(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: [ReportObjectFilterInput!]
+        //     sortBy: ReportObjectSortByField
+        //     sortOrder: SortOrder
+        //   ): ReportObjectConnection!
+        internal void InitQueryReportObjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "[ReportObjectFilterInput!]"),
+                Tuple.Create("sortBy", "ReportObjectSortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryReportObjects",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: [ReportObjectFilterInput!],$sortBy: ReportObjectSortByField,$sortOrder: SortOrder)",
+                "ReportObjectConnection",
+                Query.ReportObjects,
+                Query.ReportObjectsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# REQUIRED
+		field = $someReportObjectFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportObjectFilterField]) for enum values.
+		# REQUIRED
+		texts = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = $someReportObjectSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportObjectSortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 

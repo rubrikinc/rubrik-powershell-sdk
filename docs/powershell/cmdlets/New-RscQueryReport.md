@@ -97,6 +97,18 @@ The failure information is returned in CSV format.
 
 - There is a single argument of type GetHealthCheckErrorReportReq.
 - Returns GetHealthCheckErrorReportReply.
+### objects
+Get report objects with report-specific filtering and pagination.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of ReportObjectFilterInputs: Generic filters for compatibility with existing queries.
+    - sortBy - ReportObjectSortByField: Field to sort by.
+    - sortOrder - SortOrder: Sort order (ASC/DESC).
+- Returns ReportObjectConnection.
 ### scheduledreport
 Retrieve details of a scheduled report.
 

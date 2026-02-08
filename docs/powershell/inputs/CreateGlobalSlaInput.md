@@ -31,5 +31,7 @@ Input to create SLA Domain.
   - Specifies the list of backup location specifications for the SLA Domain.
 - failoverGroupId: System.String
   - Specifies the fail over group ID for the HA SLA Domain.
+- backupWindowSpec: BackupWindowSpecInput
+  - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode for the intended SLA Domain creation.

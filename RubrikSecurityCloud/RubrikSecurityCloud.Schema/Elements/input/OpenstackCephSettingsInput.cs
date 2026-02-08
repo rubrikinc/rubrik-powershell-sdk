@@ -1,4 +1,4 @@
-// SetAirPolicyAlertStatusInput.cs
+// OpenstackCephSettingsInput.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,25 +13,18 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region SetAirPolicyAlertStatusInput
+    #region OpenstackCephSettingsInput
 
-    public class SetAirPolicyAlertStatusInput: IInput
+    public class OpenstackCephSettingsInput: IInput
     {
         #region members
 
-        //      C# -> List<System.String>? AlertIds
-        // GraphQL -> alertIds: [UUID!]! (scalar)
+        //      C# -> List<OpenstackCephSettingInput>? Data
+        // GraphQL -> data: [OpenstackCephSettingInput!]! (input)
         [Required]
         [JsonRequired]
-        [JsonProperty("alertIds")]
-        public List<System.String>? AlertIds { get; set; }
-
-        //      C# -> AirPolicyViolationStatus? Status
-        // GraphQL -> status: AirPolicyViolationStatus! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("status")]
-        public AirPolicyViolationStatus? Status { get; set; }
+        [JsonProperty("data")]
+        public List<OpenstackCephSettingInput>? Data { get; set; }
 
 
         #endregion
@@ -59,7 +52,7 @@ namespace RubrikSecurityCloud.Types
         }
         #endregion
 
-    } // class SetAirPolicyAlertStatusInput
+    } // class OpenstackCephSettingsInput
     #endregion
 
 } // namespace RubrikSecurityCloud.Types

@@ -30,3 +30,5 @@
   - The object type of this folder, for example, Onedrive or SharePoint drive.
 - path: System.String
   - The path of the folder from the root.
+- o365QuarantineInfo: O365QuarantineInfo
+  - Quarantine information for the folder.

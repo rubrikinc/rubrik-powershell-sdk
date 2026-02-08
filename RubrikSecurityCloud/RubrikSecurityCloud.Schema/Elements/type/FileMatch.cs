@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectName")]
         public System.String? ObjectName { get; set; }
 
+        //      C# -> FileMetadata? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadata (type)
+        [JsonProperty("fileMetadata")]
+        public FileMetadata? FileMetadata { get; set; }
+
 
         #endregion
 
@@ -131,7 +136,8 @@ namespace RubrikSecurityCloud.Types
         System.String? MatchedSnapshotFid = null,
         DateTime? Mtime = null,
         System.String? ObjectFid = null,
-        System.String? ObjectName = null
+        System.String? ObjectName = null,
+        FileMetadata? FileMetadata = null
     ) 
     {
         if ( MatchType != null ) {
@@ -184,6 +190,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectName != null ) {
             this.ObjectName = ObjectName;
+        }
+        if ( FileMetadata != null ) {
+            this.FileMetadata = FileMetadata;
         }
         return this;
     }
@@ -350,6 +359,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectName\n" ;
             } else {
                 s += ind + "objectName\n" ;
+            }
+        }
+        //      C# -> FileMetadata? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadata (type)
+        if (this.FileMetadata != null) {
+            var fspec = this.FileMetadata.AsFieldSpec(conf.Child("fileMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fileMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -647,6 +668,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectName != null && ec.Excludes("objectName",true))
         {
             this.ObjectName = null;
+        }
+        //      C# -> FileMetadata? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadata (type)
+        if (ec.Includes("fileMetadata",false))
+        {
+            if(this.FileMetadata == null) {
+
+                this.FileMetadata = new FileMetadata();
+                this.FileMetadata.ApplyExploratoryFieldSpec(ec.NewChild("fileMetadata"));
+
+            } else {
+
+                this.FileMetadata.ApplyExploratoryFieldSpec(ec.NewChild("fileMetadata"));
+
+            }
+        }
+        else if (this.FileMetadata != null && ec.Excludes("fileMetadata",false))
+        {
+            this.FileMetadata = null;
         }
     }
 

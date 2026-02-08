@@ -194,6 +194,12 @@ hierarchy is limited upto 1 level.
 
 - There is a single argument of type AzureListManagementGroupHierarchyReq.
 - Returns AzureListManagementGroupHierarchyReply.
+### listmanagementgroups
+AzureListManagementGroups lists all the management groups that a user
+has read access to.
+
+- There is a single argument of type AzureListManagementGroupsReq.
+- Returns AzureListManagementGroupsReply.
 ### managedidentities
 List all managed identities for Azure resources.
 

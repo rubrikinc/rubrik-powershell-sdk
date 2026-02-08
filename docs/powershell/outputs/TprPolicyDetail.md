@@ -19,3 +19,5 @@ Response for getting the TPR Policy detail.
   - Service accounts exempt from the TPR policy.
 - quorumRequirement: System.Int32
   - Quorum requirement for the TPR policy.
+- orgId: System.String
+  - Organization the TPR policy is in.

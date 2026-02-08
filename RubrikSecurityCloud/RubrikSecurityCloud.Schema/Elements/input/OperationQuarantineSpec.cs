@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fileVersion")]
         public DateTime? FileVersion { get; set; }
 
+        //      C# -> FileMetadataInput? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadataInput (input)
+        [JsonProperty("fileMetadata")]
+        public FileMetadataInput? FileMetadata { get; set; }
+
         //      C# -> MetadataOneof? Metadata
         // GraphQL -> metadata: MetadataOneof (input)
         [JsonProperty("metadata")]

@@ -69,6 +69,8 @@ Metadata for rendering an SLA Domain.
   - This field is deprecated.
 - ownerOrg: SlaAssociatedOrganization
   - Specifies the owner organization of the SLA Domain.
+- backupWindowSpec: BackupWindowSpec
+  - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
 - archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
   - Upgrade information about the configured archival locations and cascading archival locations.
 - sourceClusters: list of SlaDataLocationClusters

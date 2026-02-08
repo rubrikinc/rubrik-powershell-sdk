@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupLocationSpecs")]
         public List<BackupLocationSpec>? BackupLocationSpecs { get; set; }
 
+        //      C# -> BackupWindowSpec? BackupWindowSpec
+        // GraphQL -> backupWindowSpec: BackupWindowSpec (type)
+        [JsonProperty("backupWindowSpec")]
+        public BackupWindowSpec? BackupWindowSpec { get; set; }
+
         //      C# -> List<BackupWindow>? BackupWindows
         // GraphQL -> backupWindows: [BackupWindow!]! (type)
         [JsonProperty("backupWindows")]
@@ -238,6 +243,7 @@ namespace RubrikSecurityCloud.Types
         ArchivalSpec? ArchivalSpec = null,
         List<ArchivalSpec>? ArchivalSpecs = null,
         List<BackupLocationSpec>? BackupLocationSpecs = null,
+        BackupWindowSpec? BackupWindowSpec = null,
         List<BackupWindow>? BackupWindows = null,
         Duration? BaseFrequency = null,
         List<GlobalSlaSyncStatus>? ClusterToSyncStatusMap = null,
@@ -320,6 +326,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BackupLocationSpecs != null ) {
             this.BackupLocationSpecs = BackupLocationSpecs;
+        }
+        if ( BackupWindowSpec != null ) {
+            this.BackupWindowSpec = BackupWindowSpec;
         }
         if ( BackupWindows != null ) {
             this.BackupWindows = BackupWindows;
@@ -593,6 +602,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "backupLocationSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> BackupWindowSpec? BackupWindowSpec
+        // GraphQL -> backupWindowSpec: BackupWindowSpec (type)
+        if (this.BackupWindowSpec != null) {
+            var fspec = this.BackupWindowSpec.AsFieldSpec(conf.Child("backupWindowSpec"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupWindowSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1168,6 +1189,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.BackupLocationSpecs != null && ec.Excludes("backupLocationSpecs",false))
         {
             this.BackupLocationSpecs = null;
+        }
+        //      C# -> BackupWindowSpec? BackupWindowSpec
+        // GraphQL -> backupWindowSpec: BackupWindowSpec (type)
+        if (ec.Includes("backupWindowSpec",false))
+        {
+            if(this.BackupWindowSpec == null) {
+
+                this.BackupWindowSpec = new BackupWindowSpec();
+                this.BackupWindowSpec.ApplyExploratoryFieldSpec(ec.NewChild("backupWindowSpec"));
+
+            } else {
+
+                this.BackupWindowSpec.ApplyExploratoryFieldSpec(ec.NewChild("backupWindowSpec"));
+
+            }
+        }
+        else if (this.BackupWindowSpec != null && ec.Excludes("backupWindowSpec",false))
+        {
+            this.BackupWindowSpec = null;
         }
         //      C# -> List<BackupWindow>? BackupWindows
         // GraphQL -> backupWindows: [BackupWindow!]! (type)

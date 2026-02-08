@@ -60,3 +60,4 @@ for the single SLA in the NG Alpha report framework.
 - DISK_REPORT - Specifies the Disk Report information.
 - OBJECT_CAPACITY_OVER_TIME_DAILY - Specifies the Object Capacity Over Time report information using daily summary fact table.
 - OBJECT_CAPACITY_OVER_TIME_MONTHLY - Specifies the Object Capacity Over Time report information using monthly summary fact table.
+- OBJECT_CAPACITY_OVER_TIME_HOURLY - Specifies the Object Capacity Over Time report information using hourly fact table.

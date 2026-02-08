@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 25
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 25 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, or UploadDatabaseToBlobstore.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1120,6 +1120,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UploadOnDemand operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: UploadOnDemand
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation UploadOnDemand
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	slaId = $someString
+    /// 	# OPTIONAL
+    /// 	priority = $someUploadSnapshotOnDemandPriority # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UploadSnapshotOnDemandPriority]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UploadSnapshotOnDemandReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -1160,6 +1195,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "TakeOnDemandSync",
                 "TakeSaasOnDemand",
                 "UploadDatabaseToBlobstore",
+                "UploadOnDemand",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -1246,6 +1282,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UploadDatabaseToBlobstore":
                         this.ProcessRecord_UploadDatabaseToBlobstore();
+                        break;
+                    case "UploadOnDemand":
+                        this.ProcessRecord_UploadOnDemand();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -1471,6 +1510,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UploadDatabaseToBlobstore";
             // Create new graphql operation uploadDatabaseSnapshotToBlobstore
             InitMutationUploadDatabaseSnapshotToBlobstore();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // uploadSnapshotOnDemand.
+        internal void ProcessRecord_UploadOnDemand()
+        {
+            this._logger.name += " -UploadOnDemand";
+            // Create new graphql operation uploadSnapshotOnDemand
+            InitMutationUploadSnapshotOnDemand();
         }
 
 
@@ -2322,6 +2370,33 @@ $query.Var.input = @{
 			)
 		}
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // uploadSnapshotOnDemand(input: UploadSnapshotOnDemandInput!): UploadSnapshotOnDemandReply!
+        internal void InitMutationUploadSnapshotOnDemand()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UploadSnapshotOnDemandInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUploadSnapshotOnDemand",
+                "($input: UploadSnapshotOnDemandInput!)",
+                "UploadSnapshotOnDemandReply",
+                Mutation.UploadSnapshotOnDemand,
+                Mutation.UploadSnapshotOnDemandFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	snapshotId = $someString
+	# OPTIONAL
+	slaId = $someString
+	# OPTIONAL
+	priority = $someUploadSnapshotOnDemandPriority # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UploadSnapshotOnDemandPriority]) for enum values.
 }"
             );
         }

@@ -21,6 +21,8 @@ Data for a matched file.
   - Date of the snapshot when the match was first observed.
 - mtime: DateTime
   - Modified time of the match.
+- fileMetadata: FileMetadata
+  - File Metadata for the matched file.
 - objectFid: System.String
   - FID of the object.
 - matchedSnapshotFid: System.String

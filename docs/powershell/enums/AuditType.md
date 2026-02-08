@@ -1,37 +1,37 @@
 ### AuditType
 Represents audit types.
 
-- AUDIT_TYPE_UNSPECIFIED - Unspecified audit type.
-- ACCESS_MANAGEMENT - Access management audit.
-- AUDIT - Audit.
-- BACKUP - Backup audit.
-- CONFIGURATION - Configuration audit.
-- LOGIN - Login audit.
-- SEARCH - Search audit.
-- SLA_MODIFICATION - SLA Domain modification audit.
-- RECOVERY - Recovery audit.
-- DIAGNOSTIC - Diagnostic audit.
-- SYNC - Sync audit.
-- SLA_ASSIGNMENT - SLA Domain assignment audit.
-- FAILOVER - Failover audit.
-- CLASSIFICATION - Classification audit.
-- DOWNLOAD - Download audit.
-- INDEX - Index audit.
-- LOCAL_RECOVERY - Local recovery audit.
-- LEGAL_HOLD - Legal hold audit.
-- QUARANTINE - Quarantine audit.
-- ISOLATED_RECOVERY - Isolated recovery audit.
-- TPR - Two-person rule audits.
-- THREAT_HUNT - Threat hunt audit.
-- BULK_RECOVERY - Bulk recovery audit.
-- ENCRYPTION_MANAGEMENT_OPERATION - Encryption management audit.
-- RECOVERY_SCHEDULE - Orchestrated Application Recovery schedule audit.
-- FILE_DOWNLOAD - File download audit.
-- RUBY_AI - AI confirmation audit.
-- ANOMALY - Anomaly audit.
-- THREAT_FEED - Threat feed audit object.
-- DATA_RISKS - Data Risks audit
-- IDENTITY_VIOLATION - Identity violations audit.
-- IDENTITY_ALERT - Identity alert audit.
-- STAGED_UPGRADE - Upgrade audit.
-- IDENTITY_ACTIVITY - Identity activity audit.
+- AUDIT_TYPE_UNSPECIFIED - Unknown type.
+- ACCESS_MANAGEMENT - Access management audit type.
+- AUDIT - Audit event (deprecated).
+- BACKUP - Backup type.
+- CONFIGURATION - Configuration type.
+- LOGIN - Login audit type.
+- SEARCH - Search audit type.
+- SLA_MODIFICATION - SLA Domain modification audit type.
+- RECOVERY - Recovery type.
+- DIAGNOSTIC - Diagnostic type.
+- SYNC - Sync type.
+- SLA_ASSIGNMENT - SLA Domain assignment audit type.
+- FAILOVER - Failover type.
+- CLASSIFICATION - Classification type.
+- DOWNLOAD - Download type.
+- INDEX - Index type.
+- LOCAL_RECOVERY - Local recovery type.
+- LEGAL_HOLD - Legal hold type.
+- QUARANTINE - Quarantine event type.
+- ISOLATED_RECOVERY - Isolated recovery.
+- TPR - TPR type.
+- THREAT_HUNT - Threat hunt type.
+- BULK_RECOVERY - Bulk recovery event type.
+- ENCRYPTION_MANAGEMENT_OPERATION - Encryption Management event type.
+- RECOVERY_SCHEDULE - Orchestrated Application Recovery schedule-recovery event type.
+- FILE_DOWNLOAD - File download audit type.
+- RUBY_AI - AI confirmation audit type.
+- ANOMALY - Anomaly type.
+- THREAT_FEED - Threat feed event type.
+- DATA_RISKS - Data risks audit type.
+- IDENTITY_VIOLATION - Identity violation event type. Captures life cycle of identity violations raised by PolicyEngine component.
+- IDENTITY_ALERT - Identity alerts type.
+- STAGED_UPGRADE - Upgrade audit type.
+- IDENTITY_ACTIVITY - Identity activity event type.

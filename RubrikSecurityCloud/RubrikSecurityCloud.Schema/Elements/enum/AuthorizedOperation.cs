@@ -510,6 +510,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UPGRADE_CLUSTER")]
         UPGRADE_CLUSTER,
 
+        [EnumMember(Value = "UPLOAD_SNAPSHOT_ON_DEMAND")]
+        UPLOAD_SNAPSHOT_ON_DEMAND,
+
         [EnumMember(Value = "USE_AS_REPLICATION_TARGET")]
         USE_AS_REPLICATION_TARGET,
 

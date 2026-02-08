@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public O365MvbAnalysisJobStatus? Status { get; set; }
 
+        //      C# -> DateTime? ResultsExpiryTime
+        // GraphQL -> resultsExpiryTime: DateTime (scalar)
+        [JsonProperty("resultsExpiryTime")]
+        public DateTime? ResultsExpiryTime { get; set; }
+
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
         [JsonProperty("taskchainId")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public O365MvbAnalysisJob Set(
         O365MvbAnalysisJobStatus? Status = null,
+        DateTime? ResultsExpiryTime = null,
         System.String? TaskchainId = null
     ) 
     {
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( ResultsExpiryTime != null ) {
+            this.ResultsExpiryTime = ResultsExpiryTime;
         }
         if ( TaskchainId != null ) {
             this.TaskchainId = TaskchainId;
@@ -71,6 +80,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> DateTime? ResultsExpiryTime
+        // GraphQL -> resultsExpiryTime: DateTime (scalar)
+        if (this.ResultsExpiryTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resultsExpiryTime\n" ;
+            } else {
+                s += ind + "resultsExpiryTime\n" ;
             }
         }
         //      C# -> System.String? TaskchainId
@@ -105,6 +123,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> DateTime? ResultsExpiryTime
+        // GraphQL -> resultsExpiryTime: DateTime (scalar)
+        if (ec.Includes("resultsExpiryTime",true))
+        {
+            if(this.ResultsExpiryTime == null) {
+
+                this.ResultsExpiryTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResultsExpiryTime != null && ec.Excludes("resultsExpiryTime",true))
+        {
+            this.ResultsExpiryTime = null;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)

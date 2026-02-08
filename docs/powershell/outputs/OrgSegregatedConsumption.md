@@ -19,3 +19,8 @@ Rich org-level segregated consumption data with detailed breakdowns
   - Aggregated total consumption across all Microsoft 365 workloads
 - objectTypeUsage: list of ObjectTypeUsages
   - Consumption breakdown by object type.
+- hasAuthenticatedMgmtApp: System.Boolean
+  - Indicates whether the organization has an authenticated management
+application. If this is false, protected user counts are 0 because user
+count calculation requires an authenticated management application. Storage
+consumption is populated regardless of the status of this field.

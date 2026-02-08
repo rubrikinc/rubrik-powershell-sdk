@@ -117,6 +117,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshotId")]
         public System.String? ArchivedSnapshotId { get; set; }
 
+        //      C# -> System.String? ServiceAccountId
+        // GraphQL -> serviceAccountId: String (scalar)
+        [JsonProperty("serviceAccountId")]
+        public System.String? ServiceAccountId { get; set; }
+
 
         #endregion
 

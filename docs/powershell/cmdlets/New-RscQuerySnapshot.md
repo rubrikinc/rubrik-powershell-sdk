@@ -294,7 +294,10 @@ List of snapshots for unmanaged objects.
     - input - QueryUnmanagedObjectSnapshotsV1Input: Input for V1QueryUnmanagedObjectSnapshotsV1.
 - Returns SnapshotSummaryConnection.
 ### vappinstantrecoveryoptions
-Options for instantly recovering a vApp snapshot.
+Get Instant Recovery information
+
+Supported in v6.0+
+Retrieve the available vApp network connections and the default vApp network connection for the virtual machines in a vApp snapshot. Use this information to configure an Instant Recovery of specified virtual machines in the vApp snapshot.
 
 - There is a single argument of type VappSnapshotInstantRecoveryOptionsInput.
 - Returns VappInstantRecoveryOptions.

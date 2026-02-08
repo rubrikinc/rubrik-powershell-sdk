@@ -68,7 +68,7 @@ Schedule a download CSV job for objects list.
 ### openstacksnapshotfromlocation
 Download a snapshot from a remote target
 
-Supported in v9.5
+Supported in v9.4+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a remote target connected to this Rubrik cluster. If no SLA Domain is selected, the snapshot is retained forever.
 
 - There is a single argument of type DownloadOpenstackSnapshotFromLocationInput.

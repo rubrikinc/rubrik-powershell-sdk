@@ -1,56 +1,56 @@
 ### EventType
 Enum representing all the possible event types.
 
-- UNKNOWN_EVENT_TYPE - Unknown event type.
-- ARCHIVE - Archive event.
-- AUTH_DOMAIN - Auth domain event.
-- AWS_EVENT - Aws event.
-- BACKUP - Backup event.
-- CLASSIFICATION - Classification event.
+- UNKNOWN_EVENT_TYPE - Unknown type.
+- ARCHIVE - Archive type.
+- AUTH_DOMAIN - Auth domain type.
+- AWS_EVENT - Aws type.
+- BACKUP - Backup type.
+- CLASSIFICATION - Classification type.
 - CLOUD_NATIVE_SOURCE - Event from cloud-native source.
 - CLOUD_NATIVE_VIRTUAL_MACHINE - Event from cloud-native virtual machine.
 - CLOUD_NATIVE_VM - Event from cloud-native virtual machine.
-- CONFIGURATION - Configuration event.
-- CONVERSION - Conversion event.
-- CONNECTION - Connection event.
-- DIAGNOSTIC - Diagnostic event.
-- DISCOVERY - Discovery event.
-- DOWNLOAD - Download event.
-- FAILOVER - Failover event.
-- FILESET - Fileset event.
-- HARDWARE - Hardware event.
-- HDFS - HDFS event.
-- HOST_EVENT - Host event.
-- HYPERV_SCVMM - Hyper-V system center virtual machine event.
-- HYPERV_SERVER - HyperV Server event.
-- INDEX - Index event.
-- INSTANTIATE - Instantiate event.
-- LEGAL_HOLD - Legal hold event.
-- LOCAL_RECOVERY - Local recovery event.
-- MAINTENANCE - Maintenance event.
-- NUTANIX_CLUSTER - Nutanix cluster event.
-- RANSOMWARE_INVESTIGATION_ANALYSIS - Ransomware Investigation analysis event.
-- RECOVERY - Recovery event.
-- REPLICATION - Replication event.
-- RESOURCE_OPERATIONS - Resource operations event.
-- ANOMALY - Anomaly event.
-- STORAGE - Storage event.
-- STORAGE_ARRAY - Storage array event.
-- STORM_RESOURCE - Storm resource event.
-- SUPPORT - Support event.
-- SYNC - Sync event.
-- SYSTEM - System event.
-- TEST_FAILOVER - Test failover event.
-- THREAT_HUNT - Threat hunt event.
-- TPR - TPR event.
-- LOCK_SNAPSHOT - Snapshot lock event.
-- UPGRADE - Upgrade event.
-- VCENTER - Vcenter event.
-- VCD - VCD event.
-- VOLUME_GROUP - Volume group event.
-- EMBEDDED_EVENT - Embedded event.
+- CONFIGURATION - Configuration type.
+- CONVERSION - Conversion type.
+- CONNECTION - Connection type.
+- DIAGNOSTIC - Diagnostic type.
+- DISCOVERY - Discovery type.
+- DOWNLOAD - Download type.
+- FAILOVER - Failover type.
+- FILESET - Fileset type.
+- HARDWARE - Hardware type.
+- HDFS - HDFS type.
+- HOST_EVENT - Host type.
+- HYPERV_SCVMM - Hyper-V system center virtual machine type.
+- HYPERV_SERVER - HyperV Server type.
+- INDEX - Index type.
+- INSTANTIATE - Instantiate type.
+- LEGAL_HOLD - Legal hold type.
+- LOCAL_RECOVERY - Local recovery type.
+- MAINTENANCE - Maintenance type.
+- NUTANIX_CLUSTER - Nutanix cluster type.
+- RANSOMWARE_INVESTIGATION_ANALYSIS - Ransomware Investigation analysis type.
+- RECOVERY - Recovery type.
+- REPLICATION - Replication type.
+- RESOURCE_OPERATIONS - Resource operations type.
+- ANOMALY - Anomaly type.
+- STORAGE - Storage type.
+- STORAGE_ARRAY - Storage array type.
+- STORM_RESOURCE - Storm resource type.
+- SUPPORT - Support type.
+- SYNC - Sync type.
+- SYSTEM - System type.
+- TEST_FAILOVER - Test failover type.
+- THREAT_HUNT - Threat hunt type.
+- TPR - TPR type.
+- LOCK_SNAPSHOT - Snapshot lock type.
+- UPGRADE - Upgrade type.
+- VCENTER - Vcenter type.
+- VCD - VCD type.
+- VOLUME_GROUP - Volume group type.
+- EMBEDDED_EVENT - Embedded type.
 - ISOLATED_RECOVERY - Isolated recovery.
-- OWNERSHIP - Ownership change event.
+- OWNERSHIP - Ownership change type.
 - LOG_BACKUP - Log Backup event type.
 - BULK_RECOVERY - Bulk recovery event type.
 - TENANT_OVERLAP - Tenant overlap event type.

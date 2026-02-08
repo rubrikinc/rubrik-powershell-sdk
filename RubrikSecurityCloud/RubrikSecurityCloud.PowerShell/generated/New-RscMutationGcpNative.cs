@@ -279,6 +279,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	serviceAccountId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -668,6 +670,8 @@ $query.Var.input = @{
 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	serviceAccountId = $someString
 }"
             );
         }

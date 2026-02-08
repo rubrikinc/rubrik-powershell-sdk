@@ -1158,7 +1158,7 @@ namespace RubrikSecurityCloud.Types
         public static string DeactivatePolicy(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\npolicyId: $policyId\nrunAsync: $runAsync\n)";
+            string args = "\n(\npolicyId: $policyId\nrunAsync: $runAsync\ndisableDataCategory: $disableDataCategory\n)";
             return "deactivatePolicy" + args + "\n";
         }
         public static object DeactivatePolicyFieldSpec(AutofieldContext? ec=null)
@@ -1180,6 +1180,24 @@ namespace RubrikSecurityCloud.Types
             return "deleteAllOracleDatabaseSnapshots" + args + "\n";
         }
         public static object DeleteAllOracleDatabaseSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? DeleteCephSetting
+        // GraphQL -> deleteCephSetting: Void (scalar)
+        public static string DeleteCephSetting(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteCephSetting" + args + "\n";
+        }
+        public static object DeleteCephSettingFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -12403,24 +12421,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> SetAirPolicyAlertStatusReply? SetAirPolicyAlertStatus
-        // GraphQL -> setAirPolicyAlertStatus: SetAirPolicyAlertStatusReply! (type)
-        public static string SetAirPolicyAlertStatus(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "setAirPolicyAlertStatus" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object SetAirPolicyAlertStatusFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new SetAirPolicyAlertStatusReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> SetAnalyzerRisksReply? SetAnalyzerRisks
         // GraphQL -> setAnalyzerRisks: SetAnalyzerRisksReply! (type)
         public static string SetAnalyzerRisks(object fsObj)
@@ -12435,6 +12435,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new SetAnalyzerRisksReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetCephSettingsReply? SetCephSettings
+        // GraphQL -> setCephSettings: SetCephSettingsReply! (type)
+        public static string SetCephSettings(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setCephSettings" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SetCephSettingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SetCephSettingsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15387,6 +15405,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UploadSnapshotOnDemandReply? UploadSnapshotOnDemand
+        // GraphQL -> uploadSnapshotOnDemand: UploadSnapshotOnDemandReply! (type)
+        public static string UploadSnapshotOnDemand(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "uploadSnapshotOnDemand" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UploadSnapshotOnDemandFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UploadSnapshotOnDemandReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

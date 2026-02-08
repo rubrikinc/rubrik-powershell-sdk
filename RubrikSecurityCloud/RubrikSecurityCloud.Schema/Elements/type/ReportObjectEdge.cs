@@ -1,4 +1,4 @@
-// SetAirPolicyAlertStatusReply.cs
+// ReportObjectEdge.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,15 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region SetAirPolicyAlertStatusReply
-    public class SetAirPolicyAlertStatusReply: BaseType
+    #region ReportObjectEdge
+    public class ReportObjectEdge: BaseType
     {
         #region members
 
-        //      C# -> List<SetAirPolicyAlertStatusResult>? Results
-        // GraphQL -> results: [SetAirPolicyAlertStatusResult!]! (type)
-        [JsonProperty("results")]
-        public List<SetAirPolicyAlertStatusResult>? Results { get; set; }
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        [JsonProperty("cursor")]
+        public System.String? Cursor { get; set; }
+
+        //      C# -> ReportObject? Node
+        // GraphQL -> node: ReportObject! (type)
+        [JsonProperty("node")]
+        public ReportObject? Node { get; set; }
 
 
         #endregion
@@ -31,15 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "SetAirPolicyAlertStatusReply";
+        return "ReportObjectEdge";
     }
 
-    public SetAirPolicyAlertStatusReply Set(
-        List<SetAirPolicyAlertStatusResult>? Results = null
+    public ReportObjectEdge Set(
+        System.String? Cursor = null,
+        ReportObject? Node = null
     ) 
     {
-        if ( Results != null ) {
-            this.Results = Results;
+        if ( Cursor != null ) {
+            this.Cursor = Cursor;
+        }
+        if ( Node != null ) {
+            this.Node = Node;
         }
         return this;
     }
@@ -55,15 +64,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> List<SetAirPolicyAlertStatusResult>? Results
-        // GraphQL -> results: [SetAirPolicyAlertStatusResult!]! (type)
-        if (this.Results != null) {
-            var fspec = this.Results.AsFieldSpec(conf.Child("results"));
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        if (this.Cursor != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cursor\n" ;
+            } else {
+                s += ind + "cursor\n" ;
+            }
+        }
+        //      C# -> ReportObject? Node
+        // GraphQL -> node: ReportObject! (type)
+        if (this.Node != null) {
+            var fspec = this.Node.AsFieldSpec(conf.Child("node"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "results" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "node" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -74,35 +92,52 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> List<SetAirPolicyAlertStatusResult>? Results
-        // GraphQL -> results: [SetAirPolicyAlertStatusResult!]! (type)
-        if (ec.Includes("results",false))
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        if (ec.Includes("cursor",true))
         {
-            if(this.Results == null) {
+            if(this.Cursor == null) {
 
-                this.Results = new List<SetAirPolicyAlertStatusResult>();
-                this.Results.ApplyExploratoryFieldSpec(ec.NewChild("results"));
+                this.Cursor = "FETCH";
 
             } else {
 
-                this.Results.ApplyExploratoryFieldSpec(ec.NewChild("results"));
 
             }
         }
-        else if (this.Results != null && ec.Excludes("results",false))
+        else if (this.Cursor != null && ec.Excludes("cursor",true))
         {
-            this.Results = null;
+            this.Cursor = null;
+        }
+        //      C# -> ReportObject? Node
+        // GraphQL -> node: ReportObject! (type)
+        if (ec.Includes("node",false))
+        {
+            if(this.Node == null) {
+
+                this.Node = new ReportObject();
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+
+            } else {
+
+                this.Node.ApplyExploratoryFieldSpec(ec.NewChild("node"));
+
+            }
+        }
+        else if (this.Node != null && ec.Excludes("node",false))
+        {
+            this.Node = null;
         }
     }
 
 
     #endregion
 
-    } // class SetAirPolicyAlertStatusReply
+    } // class ReportObjectEdge
     
     #endregion
 
-    public static class ListSetAirPolicyAlertStatusReplyExtensions
+    public static class ListReportObjectEdgeExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -121,14 +156,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<SetAirPolicyAlertStatusReply> list,
+            this List<ReportObjectEdge> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<SetAirPolicyAlertStatusReply> list)
+        public static List<string> SelectedFields(this List<ReportObjectEdge> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -137,16 +172,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<SetAirPolicyAlertStatusReply> list, 
+            this List<ReportObjectEdge> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new SetAirPolicyAlertStatusReply());
+                list.Add(new ReportObjectEdge());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<SetAirPolicyAlertStatusReply> list)
+        public static void SelectForRetrieval(this List<ReportObjectEdge> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

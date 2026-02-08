@@ -49,5 +49,7 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - Specifies the owner organization of the SLA Domain.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode when enabled for the SLA Domain.
+- backupWindowSpec: BackupWindowSpec
+  - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
 - archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
   - Upgrade information about the configured archival locations and cascading archival locations.

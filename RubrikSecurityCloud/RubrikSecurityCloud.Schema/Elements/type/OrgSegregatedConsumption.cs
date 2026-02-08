@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? HasAuthenticatedMgmtApp
+        // GraphQL -> hasAuthenticatedMgmtApp: Boolean (scalar)
+        [JsonProperty("hasAuthenticatedMgmtApp")]
+        public System.Boolean? HasAuthenticatedMgmtApp { get; set; }
+
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID! (scalar)
         [JsonProperty("orgId")]
@@ -75,6 +80,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public OrgSegregatedConsumption Set(
+        System.Boolean? HasAuthenticatedMgmtApp = null,
         System.String? OrgId = null,
         System.String? OrgName = null,
         System.Int64? TotalFetbConsumed = null,
@@ -86,6 +92,9 @@ namespace RubrikSecurityCloud.Types
         SegregatedFetbConsumption? TotalConsumption = null
     ) 
     {
+        if ( HasAuthenticatedMgmtApp != null ) {
+            this.HasAuthenticatedMgmtApp = HasAuthenticatedMgmtApp;
+        }
         if ( OrgId != null ) {
             this.OrgId = OrgId;
         }
@@ -127,6 +136,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? HasAuthenticatedMgmtApp
+        // GraphQL -> hasAuthenticatedMgmtApp: Boolean (scalar)
+        if (this.HasAuthenticatedMgmtApp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasAuthenticatedMgmtApp\n" ;
+            } else {
+                s += ind + "hasAuthenticatedMgmtApp\n" ;
+            }
+        }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID! (scalar)
         if (this.OrgId != null) {
@@ -230,6 +248,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? HasAuthenticatedMgmtApp
+        // GraphQL -> hasAuthenticatedMgmtApp: Boolean (scalar)
+        if (ec.Includes("hasAuthenticatedMgmtApp",true))
+        {
+            if(this.HasAuthenticatedMgmtApp == null) {
+
+                this.HasAuthenticatedMgmtApp = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasAuthenticatedMgmtApp != null && ec.Excludes("hasAuthenticatedMgmtApp",true))
+        {
+            this.HasAuthenticatedMgmtApp = null;
+        }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID! (scalar)
         if (ec.Includes("orgId",true))

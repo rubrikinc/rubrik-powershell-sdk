@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("startTimeAttributes")]
         public StartTimeAttributesInput? StartTimeAttributes { get; set; }
 
+        //      C# -> BackupWindowType? BackupWindowType
+        // GraphQL -> backupWindowType: BackupWindowType (enum)
+        [JsonProperty("backupWindowType")]
+        public BackupWindowType? BackupWindowType { get; set; }
+
 
         #endregion
 

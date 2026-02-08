@@ -186,11 +186,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	organizationName = $someString
     /// 	# OPTIONAL
     /// 	serviceAccountJwtConfig = $someString
-    /// 	# OPTIONAL
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
+    /// 	# REQUIRED
     /// 	featuresWithPermissionGroups = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -233,22 +229,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	sessionId = $someString
     /// 	# REQUIRED
-    /// 	nativeProtectionProjectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	sharedVpcHostProjectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	cloudAccountsProjectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	projectIds = @(
     /// 		$someString
     /// 	)
-    /// 	# OPTIONAL
+    /// 	# REQUIRED
     /// 	featuresWithPermissionGroups = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -457,9 +441,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	projectIds = @(
     /// 		$someString
     /// 	)
-    /// 	# OPTIONAL
-    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	# OPTIONAL
+    /// 	# REQUIRED
     /// 	featuresWithPermissionGroups = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -1125,11 +1107,7 @@ $query.Var.input = @{
 	organizationName = $someString
 	# OPTIONAL
 	serviceAccountJwtConfig = $someString
-	# OPTIONAL
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
+	# REQUIRED
 	featuresWithPermissionGroups = @(
 		@{
 			# OPTIONAL
@@ -1164,22 +1142,10 @@ $query.Var.input = @{
 	# REQUIRED
 	sessionId = $someString
 	# REQUIRED
-	nativeProtectionProjectIds = @(
-		$someString
-	)
-	# REQUIRED
-	sharedVpcHostProjectIds = @(
-		$someString
-	)
-	# REQUIRED
-	cloudAccountsProjectIds = @(
-		$someString
-	)
-	# OPTIONAL
 	projectIds = @(
 		$someString
 	)
-	# OPTIONAL
+	# REQUIRED
 	featuresWithPermissionGroups = @(
 		@{
 			# OPTIONAL
@@ -1348,9 +1314,7 @@ $query.Var.input = @{
 	projectIds = @(
 		$someString
 	)
-	# OPTIONAL
-	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	# OPTIONAL
+	# REQUIRED
 	featuresWithPermissionGroups = @(
 		@{
 			# OPTIONAL
