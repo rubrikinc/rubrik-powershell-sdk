@@ -3,6 +3,8 @@ Configuration to initiate an update to the Azure AD directory app.
 
 - workloadFid: System.String
   - Workload FID of the Azure AD directory to update.
+- includeIntune: System.Boolean
+  - Specifies whether Intune protection should be enabled.
 - azureAdApp: AzureAdApp
   - Azure AD application details.
 - permissionAccessMode: PermissionAccessMode

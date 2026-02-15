@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subnetAzConfigs")]
         public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
 
+        //      C# -> System.String? CdmProduct
+        // GraphQL -> cdmProduct: String (scalar)
+        [JsonProperty("cdmProduct")]
+        public System.String? CdmProduct { get; set; }
+
 
         #endregion
 

@@ -18,9 +18,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
-        [EnumMember(Value = "CLOUD_SQL_ENGINE_UNSPECIFIED")]
-        CLOUD_SQL_ENGINE_UNSPECIFIED,
-
         [EnumMember(Value = "CLOUD_SQL_MYSQL")]
         CLOUD_SQL_MYSQL,
 

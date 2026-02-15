@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("country")]
         public System.String? Country { get; set; }
 
+        //      C# -> System.String? DeviceName
+        // GraphQL -> deviceName: String! (scalar)
+        [JsonProperty("deviceName")]
+        public System.String? DeviceName { get; set; }
+
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
         [JsonProperty("eventId")]
@@ -74,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ipAddress: String! (scalar)
         [JsonProperty("ipAddress")]
         public System.String? IpAddress { get; set; }
+
+        //      C# -> System.String? State
+        // GraphQL -> state: String! (scalar)
+        [JsonProperty("state")]
+        public System.String? State { get; set; }
 
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)
@@ -97,10 +107,12 @@ namespace RubrikSecurityCloud.Types
         System.String? ApplicationName = null,
         System.String? City = null,
         System.String? Country = null,
+        System.String? DeviceName = null,
         System.String? EventId = null,
         DateTime? EventTimestamp = null,
         System.String? EventType = null,
         System.String? IpAddress = null,
+        System.String? State = null,
         System.String? UserSid = null
     ) 
     {
@@ -125,6 +137,9 @@ namespace RubrikSecurityCloud.Types
         if ( Country != null ) {
             this.Country = Country;
         }
+        if ( DeviceName != null ) {
+            this.DeviceName = DeviceName;
+        }
         if ( EventId != null ) {
             this.EventId = EventId;
         }
@@ -136,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IpAddress != null ) {
             this.IpAddress = IpAddress;
+        }
+        if ( State != null ) {
+            this.State = State;
         }
         if ( UserSid != null ) {
             this.UserSid = UserSid;
@@ -217,6 +235,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "country\n" ;
             }
         }
+        //      C# -> System.String? DeviceName
+        // GraphQL -> deviceName: String! (scalar)
+        if (this.DeviceName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "deviceName\n" ;
+            } else {
+                s += ind + "deviceName\n" ;
+            }
+        }
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
         if (this.EventId != null) {
@@ -251,6 +278,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ipAddress\n" ;
             } else {
                 s += ind + "ipAddress\n" ;
+            }
+        }
+        //      C# -> System.String? State
+        // GraphQL -> state: String! (scalar)
+        if (this.State != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "state\n" ;
+            } else {
+                s += ind + "state\n" ;
             }
         }
         //      C# -> System.String? UserSid
@@ -388,6 +424,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Country = null;
         }
+        //      C# -> System.String? DeviceName
+        // GraphQL -> deviceName: String! (scalar)
+        if (ec.Includes("deviceName",true))
+        {
+            if(this.DeviceName == null) {
+
+                this.DeviceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeviceName != null && ec.Excludes("deviceName",true))
+        {
+            this.DeviceName = null;
+        }
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
         if (ec.Includes("eventId",true))
@@ -455,6 +508,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
         {
             this.IpAddress = null;
+        }
+        //      C# -> System.String? State
+        // GraphQL -> state: String! (scalar)
+        if (ec.Includes("state",true))
+        {
+            if(this.State == null) {
+
+                this.State = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.State != null && ec.Excludes("state",true))
+        {
+            this.State = null;
         }
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)

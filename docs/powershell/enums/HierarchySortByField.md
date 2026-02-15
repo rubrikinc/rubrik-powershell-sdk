@@ -187,3 +187,32 @@ Fields for sorting hierarchy objects.
 +mo:filter:db:index:seq=2
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=true
+- MANAGED_VOLUME_LAST_RESET_REASON - Sort Managed Volumes by last reset reason.
+MVs with last_reset_reason populated will be sorted first, followed by
+those without a reset reason.
++mo:sort:db:table=cdm_managed_volume
++mo:sort:db:column=last_reset_reason
++mo:sort:db:index:key=last_reset_reason_idx
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GCP_CLOUD_SQL_INSTANCE_PROJECT_NAME - Sort CloudSQL instances by project name.
++Implementation: Joins cloud_native_resource
++(parent_id) → gcp_native_projects (native_name)
++mo:sort:db:table=gcp_native_projects
++mo:sort:db:column=native_name
++mo:sort:db:index:not_needed
+- GCP_CLOUD_SQL_INSTANCE_NATIVE_ID - Sort CloudSQL instances by native ID (instance name).
++Implementation: Joins cloud_native_resource and sorts by native_uri
++mo:sort:db:table=cloud_native_resource
++mo:sort:db:column=native_uri
++mo:sort:db:index:key=native_uri_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE - Sort CloudSQL instances by database engine type (MYSQL, POSTGRES, SQLSERVER).
++Implementation: Joins cloud_native_object_properties
++with property_key='engine_type'
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed

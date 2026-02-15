@@ -727,6 +727,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		cdmProduct = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	gcpZone = $someString
@@ -2139,6 +2141,8 @@ $query.Var.input = @{
 				availabilityZone = $someString
 			}
 		)
+		# OPTIONAL
+		cdmProduct = $someString
 	}
 	# OPTIONAL
 	gcpZone = $someString

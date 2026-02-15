@@ -1140,7 +1140,7 @@ namespace RubrikSecurityCloud.Types
         public static string DeactivateCustomAnalyzer(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nanalyzerId: $analyzerId\n)";
+            string args = "\n(\nanalyzerId: $analyzerId\ndisableAnalyzer: $disableAnalyzer\n)";
             return "deactivateCustomAnalyzer" + args + "\n";
         }
         public static object DeactivateCustomAnalyzerFieldSpec(AutofieldContext? ec=null)

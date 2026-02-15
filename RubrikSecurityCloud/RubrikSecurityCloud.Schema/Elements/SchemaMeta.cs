@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20260202-22" ;
+        public static string GraphqlSchemaVersion = "v20260209-34" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1297,6 +1297,7 @@ namespace RubrikSecurityCloud.Types
             GcpGetExocomputeConfigsReply,
             GcpGetResourceSetupTemplateReply,
             GcpNativeAttachmentDetails,
+            GcpNativeCloudSqlSpecificSnapshot,
             GcpNativeDisk,
             GcpNativeDiskAttachmentSpec,
             GcpNativeDiskConnection,
@@ -2113,8 +2114,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -4075,6 +4076,7 @@ namespace RubrikSecurityCloud.Types
             GcpCloudAccountOauthInitiateInput,
             GcpCloudAccountUpgradeProjectsInput,
             GcpCloudSqlConfigInput,
+            GcpCloudSqlEngineTypeFilter,
             GcpCloudSqlInstanceFilters,
             GcpCloudSqlInstanceNameOrIdSubstringFilter,
             GcpCloudSqlInstanceProjectFilter,
@@ -4879,6 +4881,7 @@ namespace RubrikSecurityCloud.Types
             ShouldApplyToExistingSnapshots,
             ShouldApplyToNonPolicySnapshots,
             SigninLogsFilters,
+            SigninLogSortBy,
             SlaAuditDetailFilterInput,
             SlaDurationInput,
             SlaLogFrequencyConfig,
@@ -7289,6 +7292,7 @@ namespace RubrikSecurityCloud.Types
             AzureAdConditionalAccessPolicyRecoveryType,
             AzureAdConditionalAccessPolicyStateEnumType,
             AzureAdDeviceTrustType,
+            AzureAdExocomputeHostType,
             AzureAdNamedLocationEnumType,
             AzureAdNamedLocationIsTrustedEnumType,
             AzureAdObjectSearchType,
@@ -7572,6 +7576,7 @@ namespace RubrikSecurityCloud.Types
             FileSystemType,
             FileTypeEnumType,
             FileVersionSourceEnum,
+            FilterOperator,
             FlagAttribute,
             FlexmotionFailoverType,
             FlexmotionWorkloadType,
@@ -7579,6 +7584,7 @@ namespace RubrikSecurityCloud.Types
             FsmoRoles,
             GcpCloudAccountRegion,
             GcpCloudSqlAvailabilityType,
+            GcpCloudSqlEdition,
             GcpCloudSqlEngineType,
             GcpCloudSqlInstanceSortFields,
             GcpInstanceType,
@@ -7868,12 +7874,14 @@ namespace RubrikSecurityCloud.Types
             QuarantineOperationType,
             RansomwareResultGroupBy,
             RansomwareResultSortBy,
+            RbsClusterRelation,
             RbsUpgradeStatus,
             RcsConsumptionMetricNameType,
             RcsConsumptionMetricOutputNameType,
             RcsRegionEnumType,
             RcsTierEnumType,
             RcvBliMigrationDetailsSortByField,
+            RcvConversionEnumType,
             RcvConversionStatus,
             RcvMigrationUpdateStatus,
             RcvRedundancy,
@@ -7885,6 +7893,7 @@ namespace RubrikSecurityCloud.Types
             RecoveryRangeStatus,
             RefreshableObjectConnectionStatusType,
             RegisteredMode,
+            RelationshipConflictResolutionState,
             ReplicationBidirectionalConnectionStatus,
             ReplicationPairConnectionStatus,
             ReplicationPairPauseStatus,
@@ -7955,10 +7964,12 @@ namespace RubrikSecurityCloud.Types
             ShareTypeEnum,
             SigninLogResult,
             SigninLogRiskLevel,
+            SigninLogSortField,
             SlaAssignment,
             SlaAssignmentTypeEnum,
             SlaAssignTypeEnum,
             SlaAuditDetailFilterFieldEnum,
+            SlaBackupType,
             SlaComplianceTimeRange,
             SlaMigrationIneligibilityReason,
             SlaMigrationStatus,
@@ -9408,6 +9419,7 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeS3SpecificSnapshot",
                     "AzureNativeStorageAccountSpecificSnapshot",
                     "AzureNativeVmSpecificSnapshot",
+                    "GcpNativeCloudSqlSpecificSnapshot",
                     "GcpNativeGceInstanceSpecificSnapshot",
                     "O365SiteSpecificSnapshot",
                     "SaasSnapshot",
@@ -40451,6 +40463,7 @@ namespace RubrikSecurityCloud.Types
                         "createRole",
                         "dashboardSummary",
                         "datagovSecDesc",
+                        "deactivateCustomAnalyzer",
                         "deactivatePolicy",
                         "discoveryTimeline",
                         "downloadSlaWithReplicationCsv",
@@ -44165,6 +44178,10 @@ namespace RubrikSecurityCloud.Types
                 {   "SharePointSearchFilter", new List<string> {
                         "sharepointSiteDescendants",
                         "sharepointSiteSearch",
+                    }
+                },
+                {   "SigninLogSortBy", new List<string> {
+                        "signinLogs",
                     }
                 },
                 {   "SigninLogsFilters", new List<string> {

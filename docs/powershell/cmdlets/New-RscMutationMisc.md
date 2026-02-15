@@ -233,7 +233,9 @@ Initiate instant recovery from vApp snapshots.
 ### deactivatecustomanalyzer
 Deactivate a custom analyzer.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - analyzerId - System.String
+    - disableAnalyzer - System.Boolean: If true, disable the underlying requested analyzer.
 - Returns System.String.
 ### deleteadgroupsfromhierarchy
 Delete AD Groups from O365 hierarchy.

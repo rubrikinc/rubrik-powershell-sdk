@@ -1744,6 +1744,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	relationshipConflictResolutionMode = $someRelationshipConflictResolutionState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RelationshipConflictResolutionState]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1818,6 +1820,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	domainName = $someString
+    /// 	# OPTIONAL
+    /// 	includeIntune = $someBoolean
     /// 	# REQUIRED
     /// 	region = $someAzureAdRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
     /// 	# OPTIONAL
@@ -1860,6 +1864,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	workloadFid = $someString
+    /// 	# OPTIONAL
+    /// 	includeIntune = $someBoolean
     /// 	# OPTIONAL
     /// 	azureAdApp = @{
     /// 		# OPTIONAL
@@ -4957,6 +4963,8 @@ $query.Var.input = @{
 			)
 		}
 	}
+	# OPTIONAL
+	relationshipConflictResolutionMode = $someRelationshipConflictResolutionState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RelationshipConflictResolutionState]) for enum values.
 }"
             );
         }
@@ -5015,6 +5023,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	domainName = $someString
+	# OPTIONAL
+	includeIntune = $someBoolean
 	# REQUIRED
 	region = $someAzureAdRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
 	# OPTIONAL
@@ -5049,6 +5059,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	workloadFid = $someString
+	# OPTIONAL
+	includeIntune = $someBoolean
 	# OPTIONAL
 	azureAdApp = @{
 		# OPTIONAL

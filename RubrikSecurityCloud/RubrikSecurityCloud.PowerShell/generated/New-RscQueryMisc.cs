@@ -7366,6 +7366,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// }
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someSigninLogSortField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SigninLogSortField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	order = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -8221,6 +8228,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	backupCopyType = $someBackupCopyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupCopyType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	snapshotManagementType = $someSnapshotManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotManagementType]) for enum values.
     /// 	# OPTIONAL
     /// 	managedBy = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
     /// }
@@ -19294,6 +19303,7 @@ $query.Var.eventDate = $someDateTime"
         //     before: String
         //     timeRange: TimeRangeInput!
         //     filters: SigninLogsFilters
+        //     sortBy: SigninLogSortBy
         //   ): SigninLogSummaryConnection!
         internal void InitQuerySigninLogs()
         {
@@ -19304,12 +19314,13 @@ $query.Var.eventDate = $someDateTime"
                 Tuple.Create("before", "String"),
                 Tuple.Create("timeRange", "TimeRangeInput!"),
                 Tuple.Create("filters", "SigninLogsFilters"),
+                Tuple.Create("sortBy", "SigninLogSortBy"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySigninLogs",
-                "($first: Int,$after: String,$last: Int,$before: String,$timeRange: TimeRangeInput!,$filters: SigninLogsFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$timeRange: TimeRangeInput!,$filters: SigninLogsFilters,$sortBy: SigninLogSortBy)",
                 "SigninLogSummaryConnection",
                 Query.SigninLogs,
                 Query.SigninLogsFieldSpec,
@@ -19366,6 +19377,13 @@ $query.Var.filters = @{
 	countries = @(
 		$someString
 	)
+}
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someSigninLogSortField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SigninLogSortField]) for enum values.
+	# OPTIONAL
+	order = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }"
             );
         }
@@ -20143,6 +20161,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	backupCopyType = $someBackupCopyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupCopyType]) for enum values.
+	# OPTIONAL
+	snapshotManagementType = $someSnapshotManagementType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotManagementType]) for enum values.
 	# OPTIONAL
 	managedBy = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
 }"

@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mappedAccounts")]
         public List<AwsMappedAccount>? MappedAccounts { get; set; }
 
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        [JsonProperty("permissionsGroupVersions")]
+        public List<PermissionsGroupWithVersion>? PermissionsGroupVersions { get; set; }
+
         //      C# -> AwsRoleChainingDetails? RoleChainingDetails
         // GraphQL -> roleChainingDetails: AwsRoleChainingDetails (type)
         [JsonProperty("roleChainingDetails")]
@@ -107,6 +112,7 @@ namespace RubrikSecurityCloud.Types
         System.String? UserArn = null,
         AwsAuthServerDetail? AuthServerDetail = null,
         List<AwsMappedAccount>? MappedAccounts = null,
+        List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null,
         AwsRoleChainingDetails? RoleChainingDetails = null
     ) 
     {
@@ -145,6 +151,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MappedAccounts != null ) {
             this.MappedAccounts = MappedAccounts;
+        }
+        if ( PermissionsGroupVersions != null ) {
+            this.PermissionsGroupVersions = PermissionsGroupVersions;
         }
         if ( RoleChainingDetails != null ) {
             this.RoleChainingDetails = RoleChainingDetails;
@@ -274,6 +283,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mappedAccounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (this.PermissionsGroupVersions != null) {
+            var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissionsGroupVersions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -503,6 +524,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MappedAccounts != null && ec.Excludes("mappedAccounts",false))
         {
             this.MappedAccounts = null;
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (ec.Includes("permissionsGroupVersions",false))
+        {
+            if(this.PermissionsGroupVersions == null) {
+
+                this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            } else {
+
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            }
+        }
+        else if (this.PermissionsGroupVersions != null && ec.Excludes("permissionsGroupVersions",false))
+        {
+            this.PermissionsGroupVersions = null;
         }
         //      C# -> AwsRoleChainingDetails? RoleChainingDetails
         // GraphQL -> roleChainingDetails: AwsRoleChainingDetails (type)

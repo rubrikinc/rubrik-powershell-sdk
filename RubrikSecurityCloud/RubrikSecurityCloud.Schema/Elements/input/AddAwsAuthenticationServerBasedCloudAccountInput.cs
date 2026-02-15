@@ -78,6 +78,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsCaCertId")]
         public AwsAuthServerCertificateIdInput? AwsCaCertId { get; set; }
 
+        //      C# -> List<ExternalArtifacts>? ExternalArtifactMap
+        // GraphQL -> externalArtifactMap: [ExternalArtifacts!] (input)
+        [JsonProperty("externalArtifactMap")]
+        public List<ExternalArtifacts>? ExternalArtifactMap { get; set; }
+
         //      C# -> List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups
         // GraphQL -> featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] (input)
         [JsonProperty("featuresWithPermissionsGroups")]

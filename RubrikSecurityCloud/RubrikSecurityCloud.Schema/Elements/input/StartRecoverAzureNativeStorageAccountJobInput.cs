@@ -58,6 +58,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectKeys")]
         public List<System.String>? ObjectKeys { get; set; }
 
+        //      C# -> List<System.String>? RegexPatterns
+        // GraphQL -> regexPatterns: [String!] (scalar)
+        [JsonProperty("regexPatterns")]
+        public List<System.String>? RegexPatterns { get; set; }
+
+        //      C# -> System.Boolean? ShouldRecoverFullStorageAccount
+        // GraphQL -> shouldRecoverFullStorageAccount: Boolean (scalar)
+        [JsonProperty("shouldRecoverFullStorageAccount")]
+        public System.Boolean? ShouldRecoverFullStorageAccount { get; set; }
+
         //      C# -> AzureStorageAccessTier? Tier
         // GraphQL -> tier: AzureStorageAccessTier! (enum)
         [Required]

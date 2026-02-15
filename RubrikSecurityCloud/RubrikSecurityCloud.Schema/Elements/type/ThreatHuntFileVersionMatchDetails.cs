@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mtime")]
         public DateTime? Mtime { get; set; }
 
+        //      C# -> FileMetadata? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadata (type)
+        [JsonProperty("fileMetadata")]
+        public FileMetadata? FileMetadata { get; set; }
+
         //      C# -> List<ThreatHuntSnapshotDetails>? SnapshotDetail
         // GraphQL -> snapshotDetail: [ThreatHuntSnapshotDetails!]! (type)
         [JsonProperty("snapshotDetail")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LatestMatchedSnapshotTime = null,
         DateTime? LatestSnapshotWithoutVersionTime = null,
         DateTime? Mtime = null,
+        FileMetadata? FileMetadata = null,
         List<ThreatHuntSnapshotDetails>? SnapshotDetail = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Mtime != null ) {
             this.Mtime = Mtime;
+        }
+        if ( FileMetadata != null ) {
+            this.FileMetadata = FileMetadata;
         }
         if ( SnapshotDetail != null ) {
             this.SnapshotDetail = SnapshotDetail;
@@ -143,6 +152,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mtime\n" ;
             } else {
                 s += ind + "mtime\n" ;
+            }
+        }
+        //      C# -> FileMetadata? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadata (type)
+        if (this.FileMetadata != null) {
+            var fspec = this.FileMetadata.AsFieldSpec(conf.Child("fileMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fileMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<ThreatHuntSnapshotDetails>? SnapshotDetail
@@ -248,6 +269,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Mtime != null && ec.Excludes("mtime",true))
         {
             this.Mtime = null;
+        }
+        //      C# -> FileMetadata? FileMetadata
+        // GraphQL -> fileMetadata: FileMetadata (type)
+        if (ec.Includes("fileMetadata",false))
+        {
+            if(this.FileMetadata == null) {
+
+                this.FileMetadata = new FileMetadata();
+                this.FileMetadata.ApplyExploratoryFieldSpec(ec.NewChild("fileMetadata"));
+
+            } else {
+
+                this.FileMetadata.ApplyExploratoryFieldSpec(ec.NewChild("fileMetadata"));
+
+            }
+        }
+        else if (this.FileMetadata != null && ec.Excludes("fileMetadata",false))
+        {
+            this.FileMetadata = null;
         }
         //      C# -> List<ThreatHuntSnapshotDetails>? SnapshotDetail
         // GraphQL -> snapshotDetail: [ThreatHuntSnapshotDetails!]! (type)

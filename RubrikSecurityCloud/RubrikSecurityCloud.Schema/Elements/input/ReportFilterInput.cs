@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("values")]
         public List<System.String>? Values { get; set; }
 
+        //      C# -> FilterOperator? Operator
+        // GraphQL -> operator: FilterOperator (enum)
+        [JsonProperty("operator")]
+        public FilterOperator? Operator { get; set; }
+
 
         #endregion
 

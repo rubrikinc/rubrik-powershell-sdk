@@ -221,6 +221,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newestArchivedSnapshot")]
         public CdmSnapshot? NewestArchivedSnapshot { get; set; }
 
+        //      C# -> CdmSnapshot? NewestCleanSnapshot
+        // GraphQL -> newestCleanSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestCleanSnapshot")]
+        public CdmSnapshot? NewestCleanSnapshot { get; set; }
+
         //      C# -> CdmSnapshot? NewestIndexedSnapshot
         // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
         [JsonProperty("newestIndexedSnapshot")]
@@ -445,6 +450,7 @@ namespace RubrikSecurityCloud.Types
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
         CdmSnapshot? NewestArchivedSnapshot = null,
+        CdmSnapshot? NewestCleanSnapshot = null,
         CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
@@ -582,6 +588,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestArchivedSnapshot != null ) {
             this.NewestArchivedSnapshot = NewestArchivedSnapshot;
+        }
+        if ( NewestCleanSnapshot != null ) {
+            this.NewestCleanSnapshot = NewestCleanSnapshot;
         }
         if ( NewestIndexedSnapshot != null ) {
             this.NewestIndexedSnapshot = NewestIndexedSnapshot;
@@ -1064,6 +1073,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestArchivedSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmSnapshot? NewestCleanSnapshot
+        // GraphQL -> newestCleanSnapshot: CdmSnapshot (type)
+        if (this.NewestCleanSnapshot != null) {
+            var fspec = this.NewestCleanSnapshot.AsFieldSpec(conf.Child("newestCleanSnapshot"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "newestCleanSnapshot" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2003,6 +2024,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestArchivedSnapshot != null && ec.Excludes("newestArchivedSnapshot",false))
         {
             this.NewestArchivedSnapshot = null;
+        }
+        //      C# -> CdmSnapshot? NewestCleanSnapshot
+        // GraphQL -> newestCleanSnapshot: CdmSnapshot (type)
+        if (ec.Includes("newestCleanSnapshot",false))
+        {
+            if(this.NewestCleanSnapshot == null) {
+
+                this.NewestCleanSnapshot = new CdmSnapshot();
+                this.NewestCleanSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestCleanSnapshot"));
+
+            } else {
+
+                this.NewestCleanSnapshot.ApplyExploratoryFieldSpec(ec.NewChild("newestCleanSnapshot"));
+
+            }
+        }
+        else if (this.NewestCleanSnapshot != null && ec.Excludes("newestCleanSnapshot",false))
+        {
+            this.NewestCleanSnapshot = null;
         }
         //      C# -> CdmSnapshot? NewestIndexedSnapshot
         // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)

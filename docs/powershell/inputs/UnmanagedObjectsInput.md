@@ -21,5 +21,7 @@ Input to query unmanaged objects.
   - Cloud account IDs to filter.
 - backupCopyType: BackupCopyType
   - Backup copy type to filter.
+- snapshotManagementType: SnapshotManagementType
+  - Snapshot management type to filter.
 - managedBy: CloudVendor
   - Managed by to filter.

@@ -9,6 +9,8 @@ Policy triggered by a TPR request.
   - Number of approvers required for the policy.
 - approverIds: list of System.Strings
   - IDs of the users who have approved the request for the triggered policy.
+- orgName: System.String
+  - Name of the organization the policy is in.
 - status: TprPolicyStatus
   - Status of the policy.
 - id: System.String

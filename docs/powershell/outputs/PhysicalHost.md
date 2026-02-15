@@ -40,6 +40,10 @@
   - Specifies if the physical host is a Microsoft Exchange host.
 - adDomain: System.String
   - Active Directory domain name for Windows hosts.
+- agentPrimaryClusterUuid: System.String
+  - The primary cluster UUID of the agent.
+- clusterRelation: RbsClusterRelation
+  - The relation of the cluster to the primary cluster.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

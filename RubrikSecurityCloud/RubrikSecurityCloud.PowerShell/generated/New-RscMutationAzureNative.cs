@@ -378,6 +378,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectKeys = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	regexPatterns = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	shouldRecoverFullStorageAccount = $someBoolean
     /// 	# REQUIRED
     /// 	tier = $someAzureStorageAccessTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccessTier]) for enum values.
     /// }
@@ -885,6 +891,12 @@ $query.Var.input = @{
 	objectKeys = @(
 		$someString
 	)
+	# OPTIONAL
+	regexPatterns = @(
+		$someString
+	)
+	# OPTIONAL
+	shouldRecoverFullStorageAccount = $someBoolean
 	# REQUIRED
 	tier = $someAzureStorageAccessTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccessTier]) for enum values.
 }"

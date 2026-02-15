@@ -124,7 +124,10 @@ namespace RubrikSecurityCloud.Types
         THREAT_MONITORING_THREAT_DETECTION_REPORT,
 
         [EnumMember(Value = "USER_REPORT")]
-        USER_REPORT
+        USER_REPORT,
+
+        [EnumMember(Value = "VSPHERE_VM_EXCLUDED_DISKS_REPORT")]
+        VSPHERE_VM_EXCLUDED_DISKS_REPORT
 
 
     } // enum PolarisReportViewType

@@ -880,3 +880,60 @@ Excludes datastores with type NFS and name matching regex
 - WORKLOADS - Filter workloads by object name or host details.
 +mo:filter:db:table=cdm_udf_db_instance
 +mo:filter:db:column=host_ids
+- MANAGED_VOLUME_HAS_LAST_RESET_REASON - Filter Managed Volumes by whether they have a last reset reason.
++mo:filter:db:table=cdm_managed_volume
++mo:filter:db:column=last_reset_reason
++mo:filter:db:index:key=last_reset_reason_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- NUTANIX_VM_BY_LOCATION_STATUS - Filter Nutanix virtual machines by the location status (connection status) of their parent Nutanix cluster.
+This filter allows filtering VMs based on whether their cluster is connected or disconnected.
++mo:filter:db:table=cdm_nutanix_virtual_machine
++mo:filter:db:column=fid
++mo:filter:db:column=nutanix_cluster_id
++mo:filter:db:table=cdm_nutanix_cluster
++mo:filter:db:column=id
++mo:filter:db:column=last_refresh_time
+- NUTANIX_CLUSTER_AND_PC_BY_CONNECTION_STATUS - Filter both Nutanix clusters and Prism Central objects by their connection status.
+This filter works on queries that return mixed NutanixCluster and NutanixPrismCentral objects.
+Supports values: "CONNECTED", "DISCONNECTED".
++mo:filter:db:table=cdm_nutanix_cluster
++mo:filter:db:column=fid
++mo:filter:db:column=last_refresh_time
++mo:filter:db:table=cdm_nutanix_prism_central
++mo:filter:db:column=fid
++mo:filter:db:column=last_refresh_time
+- GCP_CLOUD_SQL_ENGINE_TYPE - Filter GCP Cloud SQL instances by database engine type (MYSQL, POSTGRES, SQLSERVER).
++Implementation: Joins cloud_native_object_properties with
++property_key='engine_type'
++and filters by property_value
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=idx_property_key
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++Note: The index is on property_key (not property_value) because:
++1. property_value is a BLOB column which cannot be fully indexed
++(only prefix indexes)
++2. Low cardinality: only 3-4 possible engine types
++(MYSQL, POSTGRES, SQLSERVER)
++3. Filtering by property_key='engine_type' is highly selective
++for CloudSQL instances
++4. In-memory filtering on the small result set
++(<1000 instances typically) is efficient
+- GCP_CLOUD_SQL_INSTANCE_NAME_OR_NATIVE_ID - Filter GCP Cloud SQL instances by native ID or native name.
+This filter searches both the native_uri and native_name fields
+in the cloud_native_resource table.
+Implementation: Joins cloud_native_resource table and filters by
+native_uri LIKE or native_name LIKE
++mo:filter:db:table=cloud_native_resource
++mo:filter:db:column=native_uri,native_name
++mo:filter:db:index:key=native_uri_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+Note: This filter is specific to GCP Cloud SQL instances and should
+be used instead of the generic NAME filter for CloudSQL to ensure
+consistent behavior across multi-object-type queries and Global Search.

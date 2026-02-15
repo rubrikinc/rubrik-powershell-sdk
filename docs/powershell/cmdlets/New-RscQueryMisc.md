@@ -1290,13 +1290,14 @@ Retrieves sign-in events from identity providers (Entra ID, Okta, On-Prem
 AD) with support for filtering by time range, actor, provider, result, and
 other criteria.
 
-- There are 6 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - timeRange - TimeRangeInput: The time range to query (required).
     - filters - SigninLogsFilters: Optional filters for the query.
+    - sortBy - SigninLogSortBy: Optional sort order for the results.
 - Returns SigninLogSummaryConnection.
 ### snoozeddirectories
 Lists the snoozed directories for the account.

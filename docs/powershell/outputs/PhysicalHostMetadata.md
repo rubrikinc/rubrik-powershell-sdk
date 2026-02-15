@@ -21,6 +21,10 @@ Metadata details of a Physical Host.
   - Resource information associated with this physical host as a JSON string.
 - networkThrottle: System.String
   - Network throttle information associated with this physical host.
+- agentPrimaryClusterUuid: System.String
+  - The primary cluster UUID of the agent.
+- clusterRelation: RbsClusterRelation
+  - The relation of the cluster to the primary cluster.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

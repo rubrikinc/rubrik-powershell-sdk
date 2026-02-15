@@ -27,3 +27,5 @@ Feature specific details for a cloud account.
   - AWS accounts mapped to this feature.
 - roleChainingDetails: AwsRoleChainingDetails
   - AWS account details which facilitates role chaining.
+- permissionsGroupVersions: list of PermissionsGroupWithVersions
+  - Permissions groups with their versions used to generate the feature template.

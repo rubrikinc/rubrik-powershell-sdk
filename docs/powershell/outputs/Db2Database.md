@@ -37,6 +37,8 @@ Db2 Database details object.
   - Connection of log snapshots for given Db2 database.
 - hostsForRecovery: list of PhysicalHosts
   - The list of hosts authorized for recovery.
+- backupTriggerType: BackupTriggerType
+  - The backup trigger type for the Db2 database.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

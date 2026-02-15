@@ -453,6 +453,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_TEMPLATE_OS_TYPE")]
         FILESET_TEMPLATE_OS_TYPE,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_ENGINE_TYPE")]
+        GCP_CLOUD_SQL_ENGINE_TYPE,
+
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_NAME_OR_NATIVE_ID")]
+        GCP_CLOUD_SQL_INSTANCE_NAME_OR_NATIVE_ID,
+
         [EnumMember(Value = "GCP_LABEL")]
         GCP_LABEL,
 
@@ -699,6 +705,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT_MOUNT_TYPE")]
         MANAGED_VOLUME_EXPORT_MOUNT_TYPE,
 
+        [EnumMember(Value = "MANAGED_VOLUME_HAS_LAST_RESET_REASON")]
+        MANAGED_VOLUME_HAS_LAST_RESET_REASON,
+
         [EnumMember(Value = "MANAGED_VOLUME_HOST_CONNECTION_STATUS")]
         MANAGED_VOLUME_HOST_CONNECTION_STATUS,
 
@@ -810,6 +819,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_VOLUME_EFFECTIVE_SLA")]
         NAS_VOLUME_EFFECTIVE_SLA,
 
+        [EnumMember(Value = "NUTANIX_CLUSTER_AND_PC_BY_CONNECTION_STATUS")]
+        NUTANIX_CLUSTER_AND_PC_BY_CONNECTION_STATUS,
+
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL_ID")]
         NUTANIX_PRISM_CENTRAL_ID,
 
@@ -821,6 +833,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_VM_BY_CAT_VAL_ID")]
         NUTANIX_VM_BY_CAT_VAL_ID,
+
+        [EnumMember(Value = "NUTANIX_VM_BY_LOCATION_STATUS")]
+        NUTANIX_VM_BY_LOCATION_STATUS,
 
         [EnumMember(Value = "NUTANIX_VM_BY_NUTANIX_CLUSTER_CDMID")]
         NUTANIX_VM_BY_NUTANIX_CLUSTER_CDMID,

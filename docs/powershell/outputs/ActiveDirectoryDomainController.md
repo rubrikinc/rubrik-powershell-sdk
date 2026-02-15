@@ -33,6 +33,8 @@ Active Directory Domain Controller.
   - VMWare virtual machine associated with the domain controller.
 - host: PhysicalHost
   - Host information of this Active Directory Domain Controller.
+- newestCleanSnapshot: CdmSnapshot
+  - The most recent snapshot that is not corrupted.
 - cluster: Cluster
   - Rubrik cluster UUID.
 - dcLocation: System.String

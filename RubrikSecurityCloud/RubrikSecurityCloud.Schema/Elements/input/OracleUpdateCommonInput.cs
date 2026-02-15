@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sectionSizeInGb")]
         public System.Int32? SectionSizeInGb { get; set; }
 
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
+        [JsonProperty("logRatePerRmanChannelInMb")]
+        public System.Int32? LogRatePerRmanChannelInMb { get; set; }
+
         //      C# -> System.Int32? RatePerRmanChannelInMb
         // GraphQL -> ratePerRmanChannelInMb: Int (scalar)
         [JsonProperty("ratePerRmanChannelInMb")]

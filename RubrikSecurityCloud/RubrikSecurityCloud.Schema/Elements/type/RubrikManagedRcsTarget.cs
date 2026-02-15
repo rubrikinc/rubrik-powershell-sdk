@@ -201,6 +201,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("privateEndpointConnections")]
         public List<PrivateEndpointConnection>? PrivateEndpointConnections { get; set; }
 
+        //      C# -> List<RcvConversionType>? RcvConversion
+        // GraphQL -> rcvConversion: [RcvConversionType!] (type)
+        [JsonProperty("rcvConversion")]
+        public List<RcvConversionType>? RcvConversion { get; set; }
+
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         [JsonProperty("targetMapping")]
@@ -257,6 +262,7 @@ namespace RubrikSecurityCloud.Types
         RcvConversionType? ConversionOpt = null,
         PrivateEndpointConnection? PrivateEndpointConnection = null,
         List<PrivateEndpointConnection>? PrivateEndpointConnections = null,
+        List<RcvConversionType>? RcvConversion = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
@@ -368,6 +374,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrivateEndpointConnections != null ) {
             this.PrivateEndpointConnections = PrivateEndpointConnections;
+        }
+        if ( RcvConversion != null ) {
+            this.RcvConversion = RcvConversion;
         }
         if ( TargetMapping != null ) {
             this.TargetMapping = TargetMapping;
@@ -725,6 +734,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "privateEndpointConnections" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RcvConversionType>? RcvConversion
+        // GraphQL -> rcvConversion: [RcvConversionType!] (type)
+        if (this.RcvConversion != null) {
+            var fspec = this.RcvConversion.AsFieldSpec(conf.Child("rcvConversion"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rcvConversion" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1380,6 +1401,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrivateEndpointConnections != null && ec.Excludes("privateEndpointConnections",false))
         {
             this.PrivateEndpointConnections = null;
+        }
+        //      C# -> List<RcvConversionType>? RcvConversion
+        // GraphQL -> rcvConversion: [RcvConversionType!] (type)
+        if (ec.Includes("rcvConversion",false))
+        {
+            if(this.RcvConversion == null) {
+
+                this.RcvConversion = new List<RcvConversionType>();
+                this.RcvConversion.ApplyExploratoryFieldSpec(ec.NewChild("rcvConversion"));
+
+            } else {
+
+                this.RcvConversion.ApplyExploratoryFieldSpec(ec.NewChild("rcvConversion"));
+
+            }
+        }
+        else if (this.RcvConversion != null && ec.Excludes("rcvConversion",false))
+        {
+            this.RcvConversion = null;
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)

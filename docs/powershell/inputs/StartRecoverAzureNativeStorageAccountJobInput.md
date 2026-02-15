@@ -15,5 +15,9 @@ Input for the job to recover azure storage account or blobs using storage accoun
   - Resource group to be associated with the azure storage account created after export, if not already exists.
 - objectKeys: list of System.Strings
   - Object keys to be provided for recovery. It should only be populated in case of blob or container level recovery.
+- regexPatterns: list of System.Strings
+  - Regex patterns to filter objects for recovery. Objects matching any of the patterns will be recovered.
+- shouldRecoverFullStorageAccount: System.Boolean
+  - Specifies whether to recover the whole storage account or a list of blobs/containers.
 - tier: AzureStorageAccessTier
   - Access tier of the blobs to be recovered. The only supported tier are hot and cool.

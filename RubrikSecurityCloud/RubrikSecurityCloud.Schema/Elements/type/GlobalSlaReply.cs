@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SlaBackupType? BackupType
+        // GraphQL -> backupType: SlaBackupType! (enum)
+        [JsonProperty("backupType")]
+        public SlaBackupType? BackupType { get; set; }
+
         //      C# -> List<SlaObjectType>? ObjectTypes
         // GraphQL -> objectTypes: [SlaObjectType!]! (enum)
         [JsonProperty("objectTypes")]
@@ -221,6 +226,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GlobalSlaReply Set(
+        SlaBackupType? BackupType = null,
         List<SlaObjectType>? ObjectTypes = null,
         RetentionLockMode? RetentionLockMode = null,
         System.String? ClusterUuid = null,
@@ -261,6 +267,9 @@ namespace RubrikSecurityCloud.Types
         SlaUpgradeInfo? UpgradeInfo = null
     ) 
     {
+        if ( BackupType != null ) {
+            this.BackupType = BackupType;
+        }
         if ( ObjectTypes != null ) {
             this.ObjectTypes = ObjectTypes;
         }
@@ -389,6 +398,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> SlaBackupType? BackupType
+        // GraphQL -> backupType: SlaBackupType! (enum)
+        if (this.BackupType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupType\n" ;
+            } else {
+                s += ind + "backupType\n" ;
+            }
+        }
         //      C# -> List<SlaObjectType>? ObjectTypes
         // GraphQL -> objectTypes: [SlaObjectType!]! (enum)
         if (this.ObjectTypes != null) {
@@ -804,6 +822,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> SlaBackupType? BackupType
+        // GraphQL -> backupType: SlaBackupType! (enum)
+        if (ec.Includes("backupType",true))
+        {
+            if(this.BackupType == null) {
+
+                this.BackupType = new SlaBackupType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupType != null && ec.Excludes("backupType",true))
+        {
+            this.BackupType = null;
+        }
         //      C# -> List<SlaObjectType>? ObjectTypes
         // GraphQL -> objectTypes: [SlaObjectType!]! (enum)
         if (ec.Includes("objectTypes",true))

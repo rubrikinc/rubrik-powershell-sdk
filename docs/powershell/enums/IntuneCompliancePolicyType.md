@@ -13,3 +13,4 @@ Specifies the policy type of an Intune compliance policy.
 - INTUNE_COMPLIANCE_POLICY_TYPE_WINDOWS_10_MOBILE - The policy type is Windows 10 mobile compliance policy.
 - INTUNE_COMPLIANCE_POLICY_TYPE_WINDOWS_8_PHONE - The policy type is Windows 8 phone compliance policy.
 - INTUNE_COMPLIANCE_POLICY_TYPE_SETTINGS_CATALOG - The policy type is Settings Catalog.
+- INTUNE_COMPLIANCE_POLICY_TYPE_ANDROID_DEVICE_OWNER - The policy type is Android Device Owner compliance policy.

@@ -25,3 +25,7 @@ Sign-in log summary for list view.
   - The risk level.
 - applicationName: System.String
   - The application name accessed during sign-in.
+- deviceName: System.String
+  - The device name from which the sign-in occurred.
+- state: System.String
+  - The state or province from which the sign-in occurred (geographic location).

@@ -302,7 +302,10 @@ Retrieve the available vApp network connections and the default vApp network con
 - There is a single argument of type VappSnapshotInstantRecoveryOptionsInput.
 - Returns VappInstantRecoveryOptions.
 ### vapptemplateexportoptions
-Export options for a vApp snapshot template.
+Get Export information for a vApp template snapshot
+
+Supported in v5.1+
+Retrieve the available choices vApp template storage profile and organization vDC choices in case of exporting to either original organization vDC defaults of the target catalog. In case advanced option of manually deciding org vdc is preferred, this also provides available storage profile choices.
 
 - There is a single argument of type VappTemplateSnapshotExportOptionsInput.
 - Returns VappTemplateExportOptionsUnion.

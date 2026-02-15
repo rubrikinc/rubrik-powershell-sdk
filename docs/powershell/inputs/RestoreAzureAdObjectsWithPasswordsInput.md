@@ -21,3 +21,5 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Represents attribute recovery options for each Azure AD object.
 - ctrConfig: EntraIdCrossTenantRecoveryConfig
   - Configuration for cross tenant recovery.
+- relationshipConflictResolutionMode: RelationshipConflictResolutionState
+  - Specifies the mode for relationship conflict resolution during Entra ID restore.

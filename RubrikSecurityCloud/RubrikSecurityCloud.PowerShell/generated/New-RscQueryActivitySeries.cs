@@ -137,32 +137,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.filters = @{
     /// 	# OPTIONAL
-    /// 	lastActivityStatus = @(
-    /// 		$someEventStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventStatus]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	lastActivityType = @(
-    /// 		$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	severity = @(
-    /// 		$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	objectName = $someString
-    /// 	# OPTIONAL
-    /// 	objectType = @(
-    /// 		$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	startTimeGt = $someDateTime
-    /// 	# OPTIONAL
-    /// 	startTimeLt = $someDateTime
-    /// 	# OPTIONAL
-    /// 	lastUpdatedTimeGt = $someDateTime
-    /// 	# OPTIONAL
-    /// 	lastUpdatedTimeLt = $someDateTime
-    /// 	# OPTIONAL
     /// 	clusterId = @(
     /// 		$someString
     /// 	)
@@ -171,13 +145,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someEventClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventClusterType]) for enum values.
     /// 	)
     /// 	# OPTIONAL
+    /// 	lastActivityStatus = @(
+    /// 		$someEventStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventStatus]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	lastActivityType = @(
+    /// 		$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	objectType = @(
+    /// 		$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	severity = @(
+    /// 		$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
     /// 	objectFid = @(
     /// 		$someString
     /// 	)
-    /// 	# OPTIONAL
-    /// 	ancestorId = $someString
-    /// 	# OPTIONAL
-    /// 	searchTerm = $someString
     /// 	# OPTIONAL
     /// 	orgIds = @(
     /// 		$someString
@@ -186,6 +172,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	userIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	ancestorId = $someString
+    /// 	# OPTIONAL
+    /// 	objectName = $someString
+    /// 	# OPTIONAL
+    /// 	searchTerm = $someString
+    /// 	# OPTIONAL
+    /// 	lastUpdatedTimeGt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	lastUpdatedTimeLt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	startTimeGt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	startTimeLt = $someDateTime
     /// }
     /// 
     /// # Execute the query
@@ -480,32 +480,6 @@ $query.Var.sortBy = $someActivitySeriesSortField # Call [Enum]::GetValues([Rubri
 # OPTIONAL
 $query.Var.filters = @{
 	# OPTIONAL
-	lastActivityStatus = @(
-		$someEventStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventStatus]) for enum values.
-	)
-	# OPTIONAL
-	lastActivityType = @(
-		$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
-	)
-	# OPTIONAL
-	severity = @(
-		$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
-	)
-	# OPTIONAL
-	objectName = $someString
-	# OPTIONAL
-	objectType = @(
-		$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
-	)
-	# OPTIONAL
-	startTimeGt = $someDateTime
-	# OPTIONAL
-	startTimeLt = $someDateTime
-	# OPTIONAL
-	lastUpdatedTimeGt = $someDateTime
-	# OPTIONAL
-	lastUpdatedTimeLt = $someDateTime
-	# OPTIONAL
 	clusterId = @(
 		$someString
 	)
@@ -514,13 +488,25 @@ $query.Var.filters = @{
 		$someEventClusterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventClusterType]) for enum values.
 	)
 	# OPTIONAL
+	lastActivityStatus = @(
+		$someEventStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventStatus]) for enum values.
+	)
+	# OPTIONAL
+	lastActivityType = @(
+		$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
+	)
+	# OPTIONAL
+	objectType = @(
+		$someEventObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventObjectType]) for enum values.
+	)
+	# OPTIONAL
+	severity = @(
+		$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
+	)
+	# OPTIONAL
 	objectFid = @(
 		$someString
 	)
-	# OPTIONAL
-	ancestorId = $someString
-	# OPTIONAL
-	searchTerm = $someString
 	# OPTIONAL
 	orgIds = @(
 		$someString
@@ -529,6 +515,20 @@ $query.Var.filters = @{
 	userIds = @(
 		$someString
 	)
+	# OPTIONAL
+	ancestorId = $someString
+	# OPTIONAL
+	objectName = $someString
+	# OPTIONAL
+	searchTerm = $someString
+	# OPTIONAL
+	lastUpdatedTimeGt = $someDateTime
+	# OPTIONAL
+	lastUpdatedTimeLt = $someDateTime
+	# OPTIONAL
+	startTimeGt = $someDateTime
+	# OPTIONAL
+	startTimeLt = $someDateTime
 }"
             );
         }

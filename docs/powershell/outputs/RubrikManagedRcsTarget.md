@@ -41,6 +41,8 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - Private endpoint connections for this location.
 - bliMigrationStatusType: BliMigrationStatus
   - BLI migration status for this RCV Azure target.
+- rcvConversion: list of RcvConversionTypes
+  - List of conversions for this RCV location.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType

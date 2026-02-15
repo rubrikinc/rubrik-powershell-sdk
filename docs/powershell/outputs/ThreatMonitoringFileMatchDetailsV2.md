@@ -10,7 +10,7 @@ Reply to ThreatMonitoringFileMatchDetailsV2.
 - iocDetails: list of IOCDetailss
   - IOCs matching the file.
 - isQuarantinedInFirstObservedSnapshot: System.Boolean
-  - Specifies if the file is quarantined.
+  - Indicates whether the file is quarantined in the first observed snapshot.
 - detectedSnapshotDate: DateTime
   - Snapshot date where the match was first detected.
 - firstDetectedSnapshotFid: System.String
@@ -21,3 +21,5 @@ Reply to ThreatMonitoringFileMatchDetailsV2.
   - Name of the file that was matched.
 - mtime: DateTime
   - Modified time of the matched file.
+- isFileVersionQuarantined: System.Boolean
+  - Indicates whether the workload file version is quarantined.

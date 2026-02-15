@@ -51,3 +51,5 @@ UnmanagedObjectDetails.
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - clusterUuid: System.String
   - Cluster UUID of the object.
+- downloadedSnapshotsBytes: System.Int64
+  - Total size in bytes of downloaded snapshots for this unmanaged object.

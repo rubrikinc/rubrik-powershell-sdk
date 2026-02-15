@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("availabilityType")]
         public GcpCloudSqlAvailabilityType? AvailabilityType { get; set; }
 
+        //      C# -> GcpCloudSqlEdition? Edition
+        // GraphQL -> edition: GcpCloudSqlEdition! (enum)
+        [JsonProperty("edition")]
+        public GcpCloudSqlEdition? Edition { get; set; }
+
         //      C# -> GcpCloudSqlEngineType? EngineType
         // GraphQL -> engineType: GcpCloudSqlEngineType! (enum)
         [JsonProperty("engineType")]
@@ -76,11 +81,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("databaseVersion")]
         public System.String? DatabaseVersion { get; set; }
 
-        //      C# -> System.String? Edition
-        // GraphQL -> edition: String! (scalar)
-        [JsonProperty("edition")]
-        public System.String? Edition { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> instanceId: String! (scalar)
         [JsonProperty("instanceId")]
         public System.String? InstanceId { get; set; }
+
+        //      C# -> System.String? InstanceTier
+        // GraphQL -> instanceTier: String! (scalar)
+        [JsonProperty("instanceTier")]
+        public System.String? InstanceTier { get; set; }
 
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
@@ -102,7 +107,7 @@ namespace RubrikSecurityCloud.Types
         public System.Boolean? IsRelic { get; set; }
 
         //      C# -> System.String? KmsKey
-        // GraphQL -> kmsKey: String! (scalar)
+        // GraphQL -> kmsKey: String (scalar)
         [JsonProperty("kmsKey")]
         public System.String? KmsKey { get; set; }
 
@@ -151,10 +156,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("state")]
         public System.String? State { get; set; }
 
-        //      C# -> System.Int32? StorageSizeGb
-        // GraphQL -> storageSizeGb: Int! (scalar)
-        [JsonProperty("storageSizeGb")]
-        public System.Int32? StorageSizeGb { get; set; }
+        //      C# -> System.Int32? StorageSize
+        // GraphQL -> storageSize: Int! (scalar)
+        [JsonProperty("storageSize")]
+        public System.Int32? StorageSize { get; set; }
 
         //      C# -> System.String? Zone
         // GraphQL -> zone: String! (scalar)
@@ -373,6 +378,7 @@ namespace RubrikSecurityCloud.Types
     public GcpCloudSqlInstance Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         GcpCloudSqlAvailabilityType? AvailabilityType = null,
+        GcpCloudSqlEdition? Edition = null,
         GcpCloudSqlEngineType? EngineType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
@@ -382,9 +388,9 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? CloudNativeId = null,
         System.String? DatabaseVersion = null,
-        System.String? Edition = null,
         System.String? Id = null,
         System.String? InstanceId = null,
+        System.String? InstanceTier = null,
         System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsRelic = null,
         System.String? KmsKey = null,
@@ -397,7 +403,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Region = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? State = null,
-        System.Int32? StorageSizeGb = null,
+        System.Int32? StorageSize = null,
         System.String? Zone = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -427,6 +433,9 @@ namespace RubrikSecurityCloud.Types
         if ( AvailabilityType != null ) {
             this.AvailabilityType = AvailabilityType;
         }
+        if ( Edition != null ) {
+            this.Edition = Edition;
+        }
         if ( EngineType != null ) {
             this.EngineType = EngineType;
         }
@@ -454,14 +463,14 @@ namespace RubrikSecurityCloud.Types
         if ( DatabaseVersion != null ) {
             this.DatabaseVersion = DatabaseVersion;
         }
-        if ( Edition != null ) {
-            this.Edition = Edition;
-        }
         if ( Id != null ) {
             this.Id = Id;
         }
         if ( InstanceId != null ) {
             this.InstanceId = InstanceId;
+        }
+        if ( InstanceTier != null ) {
+            this.InstanceTier = InstanceTier;
         }
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
@@ -499,8 +508,8 @@ namespace RubrikSecurityCloud.Types
         if ( State != null ) {
             this.State = State;
         }
-        if ( StorageSizeGb != null ) {
-            this.StorageSizeGb = StorageSizeGb;
+        if ( StorageSize != null ) {
+            this.StorageSize = StorageSize;
         }
         if ( Zone != null ) {
             this.Zone = Zone;
@@ -597,6 +606,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "availabilityType\n" ;
             }
         }
+        //      C# -> GcpCloudSqlEdition? Edition
+        // GraphQL -> edition: GcpCloudSqlEdition! (enum)
+        if (this.Edition != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "edition\n" ;
+            } else {
+                s += ind + "edition\n" ;
+            }
+        }
         //      C# -> GcpCloudSqlEngineType? EngineType
         // GraphQL -> engineType: GcpCloudSqlEngineType! (enum)
         if (this.EngineType != null) {
@@ -690,15 +708,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "databaseVersion\n" ;
             }
         }
-        //      C# -> System.String? Edition
-        // GraphQL -> edition: String! (scalar)
-        if (this.Edition != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "edition\n" ;
-            } else {
-                s += ind + "edition\n" ;
-            }
-        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -715,6 +724,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "instanceId\n" ;
             } else {
                 s += ind + "instanceId\n" ;
+            }
+        }
+        //      C# -> System.String? InstanceTier
+        // GraphQL -> instanceTier: String! (scalar)
+        if (this.InstanceTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceTier\n" ;
+            } else {
+                s += ind + "instanceTier\n" ;
             }
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
@@ -736,7 +754,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? KmsKey
-        // GraphQL -> kmsKey: String! (scalar)
+        // GraphQL -> kmsKey: String (scalar)
         if (this.KmsKey != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "kmsKey\n" ;
@@ -825,13 +843,13 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "state\n" ;
             }
         }
-        //      C# -> System.Int32? StorageSizeGb
-        // GraphQL -> storageSizeGb: Int! (scalar)
-        if (this.StorageSizeGb != null) {
+        //      C# -> System.Int32? StorageSize
+        // GraphQL -> storageSize: Int! (scalar)
+        if (this.StorageSize != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "storageSizeGb\n" ;
+                s += conf.Prefix + "storageSize\n" ;
             } else {
-                s += ind + "storageSizeGb\n" ;
+                s += ind + "storageSize\n" ;
             }
         }
         //      C# -> System.String? Zone
@@ -1124,6 +1142,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AvailabilityType = null;
         }
+        //      C# -> GcpCloudSqlEdition? Edition
+        // GraphQL -> edition: GcpCloudSqlEdition! (enum)
+        if (ec.Includes("edition",true))
+        {
+            if(this.Edition == null) {
+
+                this.Edition = new GcpCloudSqlEdition();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Edition != null && ec.Excludes("edition",true))
+        {
+            this.Edition = null;
+        }
         //      C# -> GcpCloudSqlEngineType? EngineType
         // GraphQL -> engineType: GcpCloudSqlEngineType! (enum)
         if (ec.Includes("engineType",true))
@@ -1298,23 +1333,6 @@ namespace RubrikSecurityCloud.Types
         {
             this.DatabaseVersion = null;
         }
-        //      C# -> System.String? Edition
-        // GraphQL -> edition: String! (scalar)
-        if (ec.Includes("edition",true))
-        {
-            if(this.Edition == null) {
-
-                this.Edition = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.Edition != null && ec.Excludes("edition",true))
-        {
-            this.Edition = null;
-        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1348,6 +1366,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceId != null && ec.Excludes("instanceId",true))
         {
             this.InstanceId = null;
+        }
+        //      C# -> System.String? InstanceTier
+        // GraphQL -> instanceTier: String! (scalar)
+        if (ec.Includes("instanceTier",true))
+        {
+            if(this.InstanceTier == null) {
+
+                this.InstanceTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceTier != null && ec.Excludes("instanceTier",true))
+        {
+            this.InstanceTier = null;
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
@@ -1384,7 +1419,7 @@ namespace RubrikSecurityCloud.Types
             this.IsRelic = null;
         }
         //      C# -> System.String? KmsKey
-        // GraphQL -> kmsKey: String! (scalar)
+        // GraphQL -> kmsKey: String (scalar)
         if (ec.Includes("kmsKey",true))
         {
             if(this.KmsKey == null) {
@@ -1553,22 +1588,22 @@ namespace RubrikSecurityCloud.Types
         {
             this.State = null;
         }
-        //      C# -> System.Int32? StorageSizeGb
-        // GraphQL -> storageSizeGb: Int! (scalar)
-        if (ec.Includes("storageSizeGb",true))
+        //      C# -> System.Int32? StorageSize
+        // GraphQL -> storageSize: Int! (scalar)
+        if (ec.Includes("storageSize",true))
         {
-            if(this.StorageSizeGb == null) {
+            if(this.StorageSize == null) {
 
-                this.StorageSizeGb = Int32.MinValue;
+                this.StorageSize = Int32.MinValue;
 
             } else {
 
 
             }
         }
-        else if (this.StorageSizeGb != null && ec.Excludes("storageSizeGb",true))
+        else if (this.StorageSize != null && ec.Excludes("storageSize",true))
         {
-            this.StorageSizeGb = null;
+            this.StorageSize = null;
         }
         //      C# -> System.String? Zone
         // GraphQL -> zone: String! (scalar)

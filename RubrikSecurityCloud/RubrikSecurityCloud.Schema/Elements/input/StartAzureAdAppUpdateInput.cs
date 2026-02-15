@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadFid")]
         public System.String? WorkloadFid { get; set; }
 
+        //      C# -> System.Boolean? IncludeIntune
+        // GraphQL -> includeIntune: Boolean (scalar)
+        [JsonProperty("includeIntune")]
+        public System.Boolean? IncludeIntune { get; set; }
+
         //      C# -> AzureAdApp? AzureAdApp
         // GraphQL -> azureAdApp: AzureAdApp (input)
         [JsonProperty("azureAdApp")]

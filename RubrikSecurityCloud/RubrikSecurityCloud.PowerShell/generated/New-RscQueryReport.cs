@@ -302,6 +302,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		values = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		operator = $someFilterOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterOperator]) for enum values.
     /// }
     /// )
     /// # OPTIONAL
@@ -1342,6 +1344,8 @@ $query.Var.filters = @(
 		values = @(
 			$someString
 		)
+		# OPTIONAL
+		operator = $someFilterOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterOperator]) for enum values.
 }
 )
 # OPTIONAL

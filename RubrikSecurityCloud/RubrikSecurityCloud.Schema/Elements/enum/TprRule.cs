@@ -78,6 +78,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENABLE_DISABLE_RCV")]
         ENABLE_DISABLE_RCV,
 
+        [EnumMember(Value = "EXCLUDE_DISK")]
+        EXCLUDE_DISK,
+
         [EnumMember(Value = "LEGAL_HOLD")]
         LEGAL_HOLD,
 

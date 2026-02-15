@@ -10,21 +10,27 @@ Represents a GCP Cloud SQL instance.
 - nativeName: System.String
   - Display name of the Cloud SQL instance.
 - region: System.String
-  - Region where the instance is deployed.
+  - Region of the Cloud SQL instance.
 - zone: System.String
   - Zone where the instance is deployed.
 - databaseVersion: System.String
   - Database version (e.g., MYSQL_5_7, POSTGRES_13).
-- edition: System.String
-  - DB Edition of the instance.
+- instanceTier: System.String
+  - Tier of the Cloud SQL instance.
+- edition: GcpCloudSqlEdition
+  - Edition of the Cloud SQL instance.
+- engineType: GcpCloudSqlEngineType
+  - Type of database engine running on the instance.
 - isRelic: System.Boolean
   - Indicates if the instance is archived/deleted.
 - kmsKey: System.String
   - KMS key used for encryption, if any.
-- storageSizeGb: System.Int32
-  - Size of allocated storage in GB.
+- storageSize: System.Int32
+  - Size of allocated storage in GiB.
 - state: System.String
   - Current operational state of the instance.
+- availabilityType: GcpCloudSqlAvailabilityType
+  - High availability configuration type.
 - isExocomputeConfigured: System.Boolean
   - Specifies whether exocompute is configured for use by this Cloud SQL instance. 
 - gcpNativeProjectDetails: GcpNativeProjectDetails
@@ -35,10 +41,6 @@ Represents a GCP Cloud SQL instance.
   - The authorized operations on the object.
 - gcpProject: GcpNativeProject
   - GCP Project of the Cloud SQL instance.
-- engineType: GcpCloudSqlEngineType
-  - Type of database engine running on the instance.
-- availabilityType: GcpCloudSqlAvailabilityType
-  - High availability configuration type.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus

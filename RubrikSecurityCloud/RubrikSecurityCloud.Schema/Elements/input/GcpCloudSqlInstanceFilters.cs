@@ -34,6 +34,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("projectFilter")]
         public GcpCloudSqlInstanceProjectFilter? ProjectFilter { get; set; }
 
+        //      C# -> GcpNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: GcpNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public GcpNativeRegionFilter? RegionFilter { get; set; }
+
+        //      C# -> GcpNativeLabelFilter? LabelFilter
+        // GraphQL -> labelFilter: GcpNativeLabelFilter (input)
+        [JsonProperty("labelFilter")]
+        public GcpNativeLabelFilter? LabelFilter { get; set; }
+
+        //      C# -> GcpCloudSqlEngineTypeFilter? EngineTypeFilter
+        // GraphQL -> engineTypeFilter: GcpCloudSqlEngineTypeFilter (input)
+        [JsonProperty("engineTypeFilter")]
+        public GcpCloudSqlEngineTypeFilter? EngineTypeFilter { get; set; }
+
         //      C# -> RelicFilter? RelicFilter
         // GraphQL -> relicFilter: RelicFilter (input)
         [JsonProperty("relicFilter")]

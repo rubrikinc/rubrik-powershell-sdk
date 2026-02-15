@@ -2123,6 +2123,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.analyzerId = $someString
+    /// # OPTIONAL
+    /// $query.Var.disableAnalyzer = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -12356,22 +12358,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // deactivateCustomAnalyzer(analyzerId: String!): String!
+        // deactivateCustomAnalyzer(analyzerId: String!, disableAnalyzer: Boolean = false): String!
         internal void InitMutationDeactivateCustomAnalyzer()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("analyzerId", "String!"),
+                Tuple.Create("disableAnalyzer", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationDeactivateCustomAnalyzer",
-                "($analyzerId: String!)",
+                "($analyzerId: String!,$disableAnalyzer: Boolean)",
                 "System.String",
                 Mutation.DeactivateCustomAnalyzer,
                 Mutation.DeactivateCustomAnalyzerFieldSpec,
                 @"# REQUIRED
-$query.Var.analyzerId = $someString"
+$query.Var.analyzerId = $someString
+# OPTIONAL
+$query.Var.disableAnalyzer = $someBoolean"
             );
         }
 

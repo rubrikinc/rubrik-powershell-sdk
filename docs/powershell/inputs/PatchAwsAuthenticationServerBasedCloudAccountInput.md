@@ -13,3 +13,5 @@ Input to update authentication server-based AWS cloud account.
   - Authentication server's user client certificate to be updated for the authentication server-based AWS cloud account.
 - authServerCaCertId: AwsAuthServerCertificateIdInput
   - Authentication server's CA certificate to be updated for authentication server-based AWS cloud account.
+- externalArtifactMap: list of ExternalArtifactss
+  - Key value pair for external artifacts (for example, Exocompute roles) associated with an authentication server-based AWS account.

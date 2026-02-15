@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        [JsonProperty("orgName")]
+        public System.String? OrgName { get; set; }
+
         //      C# -> System.Int32? QuorumRequirement
         // GraphQL -> quorumRequirement: Int! (scalar)
         [JsonProperty("quorumRequirement")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? Archived = null,
         System.String? Id = null,
         System.String? Name = null,
+        System.String? OrgName = null,
         System.Int32? QuorumRequirement = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( OrgName != null ) {
+            this.OrgName = OrgName;
         }
         if ( QuorumRequirement != null ) {
             this.QuorumRequirement = QuorumRequirement;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        if (this.OrgName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orgName\n" ;
+            } else {
+                s += ind + "orgName\n" ;
             }
         }
         //      C# -> System.Int32? QuorumRequirement
@@ -245,6 +263,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? OrgName
+        // GraphQL -> orgName: String! (scalar)
+        if (ec.Includes("orgName",true))
+        {
+            if(this.OrgName == null) {
+
+                this.OrgName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgName != null && ec.Excludes("orgName",true))
+        {
+            this.OrgName = null;
         }
         //      C# -> System.Int32? QuorumRequirement
         // GraphQL -> quorumRequirement: Int! (scalar)

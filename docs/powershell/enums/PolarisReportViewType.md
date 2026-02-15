@@ -41,3 +41,4 @@ cloud accounts (e.g., Azure, AWS, GCP).
 - IDENTITY_ACTIVITY_REPORT - Identity Activity Auditor report.
 - THREAT_MONITORING_THREAT_DETECTION_REPORT - Threat Monitoring Threat Detection report.
 - DISK_STATUS_REPORT - Disk Status report.
+- VSPHERE_VM_EXCLUDED_DISKS_REPORT - VSphere virtual machine excluded disks report.

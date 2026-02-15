@@ -18,9 +18,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
-        [EnumMember(Value = "AVAILABILITY_TYPE_UNSPECIFIED")]
-        AVAILABILITY_TYPE_UNSPECIFIED,
-
         [EnumMember(Value = "REGIONAL")]
         REGIONAL,
 

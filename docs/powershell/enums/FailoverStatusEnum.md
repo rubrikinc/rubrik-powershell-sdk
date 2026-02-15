@@ -1,12 +1,17 @@
 ### FailoverStatusEnum
 The Recovery plan recovery statuses.
 
+- LOCKED - Recovery locked.
 - ISOLATED_RECOVERY_PROMOTION_SUCCEEDED - Cyber recovery promotion succeeded.
 - ISOLATED_RECOVERY_SUCCEEDED - Cyber recovery succeeded.
+- CLEANUP_STARTED - Recovery cleanup started.
+- QUEUED - Recovery queued.
+- COMPLETED - Recovery completed.
 - NOT_SUPPORTED - Status not supported.
 - TEST_FAILOVER_SUCCEEDED - Test failover succeeded.
 - ISOLATED_RECOVERY_PAUSED - Cyber recovery paused.
 - ISOLATED_RECOVERY_ONGOING - Cyber recovery ongoing.
+- DONE - Recovery done.
 - ISOLATED_RECOVERY_FAILED - Cyber recovery failed.
 - PAUSED - Failover job paused.
 - ONGOING - Failover job ongoing.
@@ -18,7 +23,9 @@ The Recovery plan recovery statuses.
 - ISOLATED_RECOVERY_PROMOTION_STARTED - Cyber recovery promotion started.
 - FAILOVER_FAILED - Failover failed.
 - ISOLATED_RECOVERY_LOCKED - Cyber recovery locked.
+- CLEANUP_SUCCEEDED - Recovery cleanup succeeded.
 - FAILOVER_JOB_SUCCEEDED - Failover job succeeded.
 - ISOLATED_RECOVERY_CLEANUP_STARTED - Cyber recovery cleanup started.
 - ISOLATED_RECOVERY_PROMOTION_FAILED - Cyber recovery promotion failed.
 - ISOLATED_RECOVERY_QUEUED - Cyber recovery queued.
+- CLEANUP_FAILED - Recovery cleanup failed.

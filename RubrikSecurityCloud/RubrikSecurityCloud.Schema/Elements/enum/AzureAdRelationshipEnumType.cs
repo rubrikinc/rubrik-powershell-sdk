@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POLICY_INCLUDES")]
         POLICY_INCLUDES,
 
+        [EnumMember(Value = "POLICY_SCRIPT")]
+        POLICY_SCRIPT,
+
         [EnumMember(Value = "PRINCIPAL_ROLE_ASSIGNMENT")]
         PRINCIPAL_ROLE_ASSIGNMENT,
 

@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> BackupTriggerType? BackupTriggerType
+        // GraphQL -> backupTriggerType: BackupTriggerType (enum)
+        [JsonProperty("backupTriggerType")]
+        public BackupTriggerType? BackupTriggerType { get; set; }
+
         //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
         // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
         [JsonProperty("cdmPendingObjectPauseAssignment")]
@@ -437,6 +442,7 @@ namespace RubrikSecurityCloud.Types
 
     public Db2Database Set(
         List<Operation>? AuthorizedOperations = null,
+        BackupTriggerType? BackupTriggerType = null,
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
         Db2DatabaseType? Db2DbType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
@@ -497,6 +503,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( BackupTriggerType != null ) {
+            this.BackupTriggerType = BackupTriggerType;
         }
         if ( CdmPendingObjectPauseAssignment != null ) {
             this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
@@ -687,6 +696,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> BackupTriggerType? BackupTriggerType
+        // GraphQL -> backupTriggerType: BackupTriggerType (enum)
+        if (this.BackupTriggerType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupTriggerType\n" ;
+            } else {
+                s += ind + "backupTriggerType\n" ;
             }
         }
         //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
@@ -1326,6 +1344,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> BackupTriggerType? BackupTriggerType
+        // GraphQL -> backupTriggerType: BackupTriggerType (enum)
+        if (ec.Includes("backupTriggerType",true))
+        {
+            if(this.BackupTriggerType == null) {
+
+                this.BackupTriggerType = new BackupTriggerType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupTriggerType != null && ec.Excludes("backupTriggerType",true))
+        {
+            this.BackupTriggerType = null;
         }
         //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
         // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)

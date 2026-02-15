@@ -89,3 +89,4 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - WindowsVolumeGroup - Windows volume group.
 - GITHUB_REPOSITORY - GitHub Repository.
 - PROXMOX_VIRTUAL_MACHINE - Proxmox Virtual Machine.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest.

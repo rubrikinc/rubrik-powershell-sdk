@@ -77,6 +77,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupCopyType")]
         public BackupCopyType? BackupCopyType { get; set; }
 
+        //      C# -> SnapshotManagementType? SnapshotManagementType
+        // GraphQL -> snapshotManagementType: SnapshotManagementType (enum)
+        [JsonProperty("snapshotManagementType")]
+        public SnapshotManagementType? SnapshotManagementType { get; set; }
+
         //      C# -> CloudVendor? ManagedBy
         // GraphQL -> managedBy: CloudVendor (enum)
         [JsonProperty("managedBy")]

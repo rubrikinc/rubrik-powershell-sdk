@@ -17,6 +17,8 @@ Specific information for Rubrik Cloud Vault (RCV)AWS target created on Rubrik.
   - Reason why sync of this target with CDM failed.
 - encryptionType: TargetEncryptionTypeEnum
   - Encryption type to be used for the S3-compatible target.
+- rcvConversion: list of RcvConversionTypes
+  - List of conversions for this RCV location.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType

@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmPendingObjectPauseAssignment")]
         public PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
 
+        //      C# -> RbsClusterRelation? ClusterRelation
+        // GraphQL -> clusterRelation: RbsClusterRelation! (enum)
+        [JsonProperty("clusterRelation")]
+        public RbsClusterRelation? ClusterRelation { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -85,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> agentId: String (scalar)
         [JsonProperty("agentId")]
         public System.String? AgentId { get; set; }
+
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        [JsonProperty("agentPrimaryClusterUuid")]
+        public System.String? AgentPrimaryClusterUuid { get; set; }
 
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)
@@ -372,6 +382,7 @@ namespace RubrikSecurityCloud.Types
     public PhysicalHost Set(
         List<Operation>? AuthorizedOperations = null,
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
+        RbsClusterRelation? ClusterRelation = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         GuestOsType? OsType = null,
         RbsUpgradeStatus? RbsUpgradeStatus = null,
@@ -383,6 +394,7 @@ namespace RubrikSecurityCloud.Types
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? AdDomain = null,
         System.String? AgentId = null,
+        System.String? AgentPrimaryClusterUuid = null,
         System.String? CbtStatus = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
@@ -436,6 +448,9 @@ namespace RubrikSecurityCloud.Types
         if ( CdmPendingObjectPauseAssignment != null ) {
             this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
         }
+        if ( ClusterRelation != null ) {
+            this.ClusterRelation = ClusterRelation;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -468,6 +483,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AgentId != null ) {
             this.AgentId = AgentId;
+        }
+        if ( AgentPrimaryClusterUuid != null ) {
+            this.AgentPrimaryClusterUuid = AgentPrimaryClusterUuid;
         }
         if ( CbtStatus != null ) {
             this.CbtStatus = CbtStatus;
@@ -636,6 +654,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cdmPendingObjectPauseAssignment\n" ;
             }
         }
+        //      C# -> RbsClusterRelation? ClusterRelation
+        // GraphQL -> clusterRelation: RbsClusterRelation! (enum)
+        if (this.ClusterRelation != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterRelation\n" ;
+            } else {
+                s += ind + "clusterRelation\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -753,6 +780,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "agentId\n" ;
             } else {
                 s += ind + "agentId\n" ;
+            }
+        }
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        if (this.AgentPrimaryClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "agentPrimaryClusterUuid\n" ;
+            } else {
+                s += ind + "agentPrimaryClusterUuid\n" ;
             }
         }
         //      C# -> System.String? CbtStatus
@@ -1264,6 +1300,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmPendingObjectPauseAssignment = null;
         }
+        //      C# -> RbsClusterRelation? ClusterRelation
+        // GraphQL -> clusterRelation: RbsClusterRelation! (enum)
+        if (ec.Includes("clusterRelation",true))
+        {
+            if(this.ClusterRelation == null) {
+
+                this.ClusterRelation = new RbsClusterRelation();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterRelation != null && ec.Excludes("clusterRelation",true))
+        {
+            this.ClusterRelation = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -1480,6 +1533,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AgentId != null && ec.Excludes("agentId",true))
         {
             this.AgentId = null;
+        }
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        if (ec.Includes("agentPrimaryClusterUuid",true))
+        {
+            if(this.AgentPrimaryClusterUuid == null) {
+
+                this.AgentPrimaryClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentPrimaryClusterUuid != null && ec.Excludes("agentPrimaryClusterUuid",true))
+        {
+            this.AgentPrimaryClusterUuid = null;
         }
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)

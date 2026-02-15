@@ -3607,7 +3607,10 @@ The results can be filtered optionally by target ID. | `New-RscQuerySnapshot -Op
   
 Supported in v6.0+  
 Retrieve the available vApp network connections and the default vApp network connection for the virtual machines in a vApp snapshot. Use this information to configure an Instant Recovery of specified virtual machines in the vApp snapshot. | `New-RscQuerySnapshot -Operation VappInstantRecoveryOptions`<BR> | [vappSnapshotInstantRecoveryOptions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| VappTemplateExportOptions | Export options for a vApp snapshot template. | `New-RscQuerySnapshot -Operation VappTemplateExportOptions`<BR> | [vappTemplateSnapshotExportOptions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| VappTemplateExportOptions | Get Export information for a vApp template snapshot  
+  
+Supported in v5.1+  
+Retrieve the available choices vApp template storage profile and organization vDC choices in case of exporting to either original organization vDC defaults of the target catalog. In case advanced option of manually deciding org vdc is preferred, this also provides available storage profile choices. | `New-RscQuerySnapshot -Operation VappTemplateExportOptions`<BR> | [vappTemplateSnapshotExportOptions](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
 ### Mutations

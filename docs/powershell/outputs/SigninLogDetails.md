@@ -97,3 +97,7 @@ The risk level.
 The timestamp when the event occurred.
 - ingestionTimestamp: DateTime
   - The timestamp when the event was ingested.
+- additionalData: System.String
+  - Additional data.
+Provider-specific metadata additional_data.
+For EntraID: contains additionalDetails from Microsoft Graph signInStatus.

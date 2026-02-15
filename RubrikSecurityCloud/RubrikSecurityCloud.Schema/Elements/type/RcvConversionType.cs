@@ -20,15 +20,30 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RcvConversionEnumType? ConversionType
+        // GraphQL -> conversionType: RcvConversionEnumType! (enum)
+        [JsonProperty("conversionType")]
+        public RcvConversionEnumType? ConversionType { get; set; }
+
         //      C# -> RcvRedundancy? DestinationRedundancy
         // GraphQL -> destinationRedundancy: RcvRedundancy! (enum)
         [JsonProperty("destinationRedundancy")]
         public RcvRedundancy? DestinationRedundancy { get; set; }
 
+        //      C# -> RcsTierEnumType? DestinationTier
+        // GraphQL -> destinationTier: RcsTierEnumType! (enum)
+        [JsonProperty("destinationTier")]
+        public RcsTierEnumType? DestinationTier { get; set; }
+
         //      C# -> RcvRedundancy? SourceRedundancy
         // GraphQL -> sourceRedundancy: RcvRedundancy! (enum)
         [JsonProperty("sourceRedundancy")]
         public RcvRedundancy? SourceRedundancy { get; set; }
+
+        //      C# -> RcsTierEnumType? SourceTier
+        // GraphQL -> sourceTier: RcsTierEnumType! (enum)
+        [JsonProperty("sourceTier")]
+        public RcsTierEnumType? SourceTier { get; set; }
 
         //      C# -> RcvConversionStatus? Status
         // GraphQL -> status: RcvConversionStatus! (enum)
@@ -55,18 +70,30 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RcvConversionType Set(
+        RcvConversionEnumType? ConversionType = null,
         RcvRedundancy? DestinationRedundancy = null,
+        RcsTierEnumType? DestinationTier = null,
         RcvRedundancy? SourceRedundancy = null,
+        RcsTierEnumType? SourceTier = null,
         RcvConversionStatus? Status = null,
         DateTime? CreatedAt = null,
         DateTime? UpdatedAt = null
     ) 
     {
+        if ( ConversionType != null ) {
+            this.ConversionType = ConversionType;
+        }
         if ( DestinationRedundancy != null ) {
             this.DestinationRedundancy = DestinationRedundancy;
         }
+        if ( DestinationTier != null ) {
+            this.DestinationTier = DestinationTier;
+        }
         if ( SourceRedundancy != null ) {
             this.SourceRedundancy = SourceRedundancy;
+        }
+        if ( SourceTier != null ) {
+            this.SourceTier = SourceTier;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -91,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RcvConversionEnumType? ConversionType
+        // GraphQL -> conversionType: RcvConversionEnumType! (enum)
+        if (this.ConversionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "conversionType\n" ;
+            } else {
+                s += ind + "conversionType\n" ;
+            }
+        }
         //      C# -> RcvRedundancy? DestinationRedundancy
         // GraphQL -> destinationRedundancy: RcvRedundancy! (enum)
         if (this.DestinationRedundancy != null) {
@@ -100,6 +136,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "destinationRedundancy\n" ;
             }
         }
+        //      C# -> RcsTierEnumType? DestinationTier
+        // GraphQL -> destinationTier: RcsTierEnumType! (enum)
+        if (this.DestinationTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "destinationTier\n" ;
+            } else {
+                s += ind + "destinationTier\n" ;
+            }
+        }
         //      C# -> RcvRedundancy? SourceRedundancy
         // GraphQL -> sourceRedundancy: RcvRedundancy! (enum)
         if (this.SourceRedundancy != null) {
@@ -107,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sourceRedundancy\n" ;
             } else {
                 s += ind + "sourceRedundancy\n" ;
+            }
+        }
+        //      C# -> RcsTierEnumType? SourceTier
+        // GraphQL -> sourceTier: RcsTierEnumType! (enum)
+        if (this.SourceTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceTier\n" ;
+            } else {
+                s += ind + "sourceTier\n" ;
             }
         }
         //      C# -> RcvConversionStatus? Status
@@ -143,6 +197,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RcvConversionEnumType? ConversionType
+        // GraphQL -> conversionType: RcvConversionEnumType! (enum)
+        if (ec.Includes("conversionType",true))
+        {
+            if(this.ConversionType == null) {
+
+                this.ConversionType = new RcvConversionEnumType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConversionType != null && ec.Excludes("conversionType",true))
+        {
+            this.ConversionType = null;
+        }
         //      C# -> RcvRedundancy? DestinationRedundancy
         // GraphQL -> destinationRedundancy: RcvRedundancy! (enum)
         if (ec.Includes("destinationRedundancy",true))
@@ -160,6 +231,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.DestinationRedundancy = null;
         }
+        //      C# -> RcsTierEnumType? DestinationTier
+        // GraphQL -> destinationTier: RcsTierEnumType! (enum)
+        if (ec.Includes("destinationTier",true))
+        {
+            if(this.DestinationTier == null) {
+
+                this.DestinationTier = new RcsTierEnumType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DestinationTier != null && ec.Excludes("destinationTier",true))
+        {
+            this.DestinationTier = null;
+        }
         //      C# -> RcvRedundancy? SourceRedundancy
         // GraphQL -> sourceRedundancy: RcvRedundancy! (enum)
         if (ec.Includes("sourceRedundancy",true))
@@ -176,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SourceRedundancy != null && ec.Excludes("sourceRedundancy",true))
         {
             this.SourceRedundancy = null;
+        }
+        //      C# -> RcsTierEnumType? SourceTier
+        // GraphQL -> sourceTier: RcsTierEnumType! (enum)
+        if (ec.Includes("sourceTier",true))
+        {
+            if(this.SourceTier == null) {
+
+                this.SourceTier = new RcsTierEnumType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceTier != null && ec.Excludes("sourceTier",true))
+        {
+            this.SourceTier = null;
         }
         //      C# -> RcvConversionStatus? Status
         // GraphQL -> status: RcvConversionStatus! (enum)

@@ -127,6 +127,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		id = $someInt64
     /// 	}
     /// 	# OPTIONAL
+    /// 	externalArtifactMap = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 			# OPTIONAL
+    /// 			externalArtifactValue = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
     /// 	featuresWithPermissionsGroups = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -1291,6 +1300,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		id = $someInt64
     /// 	}
+    /// 	# OPTIONAL
+    /// 	externalArtifactMap = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 			# OPTIONAL
+    /// 			externalArtifactValue = $someString
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -2837,6 +2855,15 @@ $query.Var.input = @{
 		id = $someInt64
 	}
 	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = $someString
+		}
+	)
+	# OPTIONAL
 	featuresWithPermissionsGroups = @(
 		@{
 			# OPTIONAL
@@ -3873,6 +3900,15 @@ $query.Var.input = @{
 		# REQUIRED
 		id = $someInt64
 	}
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = $someString
+		}
+	)
 }"
             );
         }

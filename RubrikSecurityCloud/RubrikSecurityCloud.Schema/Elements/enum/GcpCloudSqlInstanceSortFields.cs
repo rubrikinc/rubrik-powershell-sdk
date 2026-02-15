@@ -21,6 +21,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
         EFFECTIVE_SLA_DOMAIN,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE")]
+        GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE,
+
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_NATIVE_ID")]
+        GCP_CLOUD_SQL_INSTANCE_NATIVE_ID,
+
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_PROJECT_NAME")]
+        GCP_CLOUD_SQL_INSTANCE_PROJECT_NAME,
+
         [EnumMember(Value = "NAME")]
         NAME
 

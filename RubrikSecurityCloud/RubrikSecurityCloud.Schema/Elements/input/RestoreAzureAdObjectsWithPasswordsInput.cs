@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ctrConfig")]
         public EntraIdCrossTenantRecoveryConfig? CtrConfig { get; set; }
 
+        //      C# -> RelationshipConflictResolutionState? RelationshipConflictResolutionMode
+        // GraphQL -> relationshipConflictResolutionMode: RelationshipConflictResolutionState (enum)
+        [JsonProperty("relationshipConflictResolutionMode")]
+        public RelationshipConflictResolutionState? RelationshipConflictResolutionMode { get; set; }
+
 
         #endregion
 

@@ -10,7 +10,7 @@ Data for a matched file.
 - detectedTime: DateTime
   - Time the scan detected the match.
 - isQuarantinedInFirstObservedSnapshot: System.Boolean
-  - Specifies if the file is quarantined in the first observed snapshot.
+  - Indicates whether the file is quarantined in the first observed snapshot.
 - fileName: System.String
   - Name of the file that was matched.
 - fileSize: System.Int64
@@ -23,6 +23,8 @@ Data for a matched file.
   - Modified time of the match.
 - fileMetadata: FileMetadata
   - File Metadata for the matched file.
+- isFileVersionQuarantined: System.Boolean
+  - Indicates whether the workload file version is quarantined.
 - objectFid: System.String
   - FID of the object.
 - matchedSnapshotFid: System.String

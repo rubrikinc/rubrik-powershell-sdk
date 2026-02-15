@@ -5,27 +5,27 @@ Webhook configuration to add to an account.
   - The webhook's unique ID.
 - name: System.String
   - The name of the webhook to be created.
-- createdBy: System.String
-  - The user who created the webhook.
-- description: System.String
-  - A description of the webhook to be created.
-- createdAt: DateTime
-  - The timestamp that this webhook was created at.
-- updatedAt: DateTime
-  - The timestamp that this webhook was updated at.
-- serverCertificate: System.String
-  - The Webhook server certificate that Rubrik uses to establish a TLS connection with the endpoint.
-- serviceAccountId: System.String
-  - The ID of the service account attached to the webhook.
 - url: System.String
   - The URL endpoint that will receive the webhook.
 - providerType: ProviderTypeV2
   - The application that will receive the webhook.
 - status: WebhookStatusV2
   - Specifies whether the webhook is enabled.
+- createdBy: System.String
+  - The user who created the webhook.
 - subscriptionType: SubscriptionTypeV2
   - The information about subscription.
-- authType: AuthenticationTypeV2
-  - The authentication type that the endpoint uses.
+- description: System.String
+  - A description of the webhook to be created.
 - lastFailedErrorInfo: WebhookErrorInfo
   - The information describing the webhook's most recent error.
+- createdAt: DateTime
+  - The timestamp that this webhook was created at.
+- updatedAt: DateTime
+  - The timestamp that this webhook was updated at.
+- serverCertificate: System.String
+  - The Webhook server certificate that Rubrik uses to establish a TLS connection with the endpoint.
+- authType: AuthenticationTypeV2
+  - The authentication type that the endpoint uses.
+- serviceAccountId: System.String
+  - The ID of the service account attached to the webhook.

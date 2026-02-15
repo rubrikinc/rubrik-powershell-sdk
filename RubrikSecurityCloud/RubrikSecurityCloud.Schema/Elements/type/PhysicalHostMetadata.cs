@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RbsClusterRelation? ClusterRelation
+        // GraphQL -> clusterRelation: RbsClusterRelation! (enum)
+        [JsonProperty("clusterRelation")]
+        public RbsClusterRelation? ClusterRelation { get; set; }
+
         //      C# -> GuestOsType? OsType
         // GraphQL -> osType: GuestOsType (enum)
         [JsonProperty("osType")]
@@ -29,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rbsUpgradeStatus: RbsUpgradeStatus! (enum)
         [JsonProperty("rbsUpgradeStatus")]
         public RbsUpgradeStatus? RbsUpgradeStatus { get; set; }
+
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        [JsonProperty("agentPrimaryClusterUuid")]
+        public System.String? AgentPrimaryClusterUuid { get; set; }
 
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)
@@ -100,8 +110,10 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PhysicalHostMetadata Set(
+        RbsClusterRelation? ClusterRelation = null,
         GuestOsType? OsType = null,
         RbsUpgradeStatus? RbsUpgradeStatus = null,
+        System.String? AgentPrimaryClusterUuid = null,
         System.String? CbtStatus = null,
         System.String? CdmId = null,
         System.Boolean? DefaultCbt = null,
@@ -116,11 +128,17 @@ namespace RubrikSecurityCloud.Types
         OracleSettings? OracleSettings = null
     ) 
     {
+        if ( ClusterRelation != null ) {
+            this.ClusterRelation = ClusterRelation;
+        }
         if ( OsType != null ) {
             this.OsType = OsType;
         }
         if ( RbsUpgradeStatus != null ) {
             this.RbsUpgradeStatus = RbsUpgradeStatus;
+        }
+        if ( AgentPrimaryClusterUuid != null ) {
+            this.AgentPrimaryClusterUuid = AgentPrimaryClusterUuid;
         }
         if ( CbtStatus != null ) {
             this.CbtStatus = CbtStatus;
@@ -172,6 +190,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RbsClusterRelation? ClusterRelation
+        // GraphQL -> clusterRelation: RbsClusterRelation! (enum)
+        if (this.ClusterRelation != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterRelation\n" ;
+            } else {
+                s += ind + "clusterRelation\n" ;
+            }
+        }
         //      C# -> GuestOsType? OsType
         // GraphQL -> osType: GuestOsType (enum)
         if (this.OsType != null) {
@@ -188,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "rbsUpgradeStatus\n" ;
             } else {
                 s += ind + "rbsUpgradeStatus\n" ;
+            }
+        }
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        if (this.AgentPrimaryClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "agentPrimaryClusterUuid\n" ;
+            } else {
+                s += ind + "agentPrimaryClusterUuid\n" ;
             }
         }
         //      C# -> System.String? CbtStatus
@@ -317,6 +353,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RbsClusterRelation? ClusterRelation
+        // GraphQL -> clusterRelation: RbsClusterRelation! (enum)
+        if (ec.Includes("clusterRelation",true))
+        {
+            if(this.ClusterRelation == null) {
+
+                this.ClusterRelation = new RbsClusterRelation();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterRelation != null && ec.Excludes("clusterRelation",true))
+        {
+            this.ClusterRelation = null;
+        }
         //      C# -> GuestOsType? OsType
         // GraphQL -> osType: GuestOsType (enum)
         if (ec.Includes("osType",true))
@@ -350,6 +403,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RbsUpgradeStatus != null && ec.Excludes("rbsUpgradeStatus",true))
         {
             this.RbsUpgradeStatus = null;
+        }
+        //      C# -> System.String? AgentPrimaryClusterUuid
+        // GraphQL -> agentPrimaryClusterUuid: String (scalar)
+        if (ec.Includes("agentPrimaryClusterUuid",true))
+        {
+            if(this.AgentPrimaryClusterUuid == null) {
+
+                this.AgentPrimaryClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AgentPrimaryClusterUuid != null && ec.Excludes("agentPrimaryClusterUuid",true))
+        {
+            this.AgentPrimaryClusterUuid = null;
         }
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)

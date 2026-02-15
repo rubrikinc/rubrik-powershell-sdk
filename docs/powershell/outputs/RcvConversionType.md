@@ -8,6 +8,12 @@ Rubrik Cloud Vault (RCV) conversion.
 - status: RcvConversionStatus
   - Status for Rubrik Cloud Vault (RCV) conversion.
 - destinationRedundancy: RcvRedundancy
-  - Destination Redundancy for RCV location.
+  - Destination redundancy for RCV location.
 - sourceRedundancy: RcvRedundancy
-  - Source Redundancy for RCV location.
+  - Source redundancy for RCV location.
+- destinationTier: RcsTierEnumType
+  - Destination tier for RCV location.
+- sourceTier: RcsTierEnumType
+  - Source tier for RCV location.
+- conversionType: RcvConversionEnumType
+  - Type of conversion for RCV location.

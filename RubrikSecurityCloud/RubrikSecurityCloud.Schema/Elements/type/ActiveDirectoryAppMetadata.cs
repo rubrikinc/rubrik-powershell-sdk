@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        [JsonProperty("cdmVersion")]
+        public System.String? CdmVersion { get; set; }
+
+        //      C# -> System.Boolean? IsUmdCreatedOpt
+        // GraphQL -> isUmdCreatedOpt: Boolean! (scalar)
+        [JsonProperty("isUmdCreatedOpt")]
+        public System.Boolean? IsUmdCreatedOpt { get; set; }
+
         //      C# -> System.String? RubrikBackupServiceDataDirPath
         // GraphQL -> rubrikBackupServiceDataDirPath: String (scalar)
         [JsonProperty("rubrikBackupServiceDataDirPath")]
@@ -55,6 +65,8 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ActiveDirectoryAppMetadata Set(
+        System.String? CdmVersion = null,
+        System.Boolean? IsUmdCreatedOpt = null,
         System.String? RubrikBackupServiceDataDirPath = null,
         WindowsDiskLayoutDetails? DiskLayoutDetailsOpt = null,
         NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt = null,
@@ -62,6 +74,12 @@ namespace RubrikSecurityCloud.Types
         OsDetails? OsDetailsOpt = null
     ) 
     {
+        if ( CdmVersion != null ) {
+            this.CdmVersion = CdmVersion;
+        }
+        if ( IsUmdCreatedOpt != null ) {
+            this.IsUmdCreatedOpt = IsUmdCreatedOpt;
+        }
         if ( RubrikBackupServiceDataDirPath != null ) {
             this.RubrikBackupServiceDataDirPath = RubrikBackupServiceDataDirPath;
         }
@@ -91,6 +109,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        if (this.CdmVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmVersion\n" ;
+            } else {
+                s += ind + "cdmVersion\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsUmdCreatedOpt
+        // GraphQL -> isUmdCreatedOpt: Boolean! (scalar)
+        if (this.IsUmdCreatedOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isUmdCreatedOpt\n" ;
+            } else {
+                s += ind + "isUmdCreatedOpt\n" ;
+            }
+        }
         //      C# -> System.String? RubrikBackupServiceDataDirPath
         // GraphQL -> rubrikBackupServiceDataDirPath: String (scalar)
         if (this.RubrikBackupServiceDataDirPath != null) {
@@ -155,6 +191,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        if (ec.Includes("cdmVersion",true))
+        {
+            if(this.CdmVersion == null) {
+
+                this.CdmVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmVersion != null && ec.Excludes("cdmVersion",true))
+        {
+            this.CdmVersion = null;
+        }
+        //      C# -> System.Boolean? IsUmdCreatedOpt
+        // GraphQL -> isUmdCreatedOpt: Boolean! (scalar)
+        if (ec.Includes("isUmdCreatedOpt",true))
+        {
+            if(this.IsUmdCreatedOpt == null) {
+
+                this.IsUmdCreatedOpt = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsUmdCreatedOpt != null && ec.Excludes("isUmdCreatedOpt",true))
+        {
+            this.IsUmdCreatedOpt = null;
+        }
         //      C# -> System.String? RubrikBackupServiceDataDirPath
         // GraphQL -> rubrikBackupServiceDataDirPath: String (scalar)
         if (ec.Includes("rubrikBackupServiceDataDirPath",true))

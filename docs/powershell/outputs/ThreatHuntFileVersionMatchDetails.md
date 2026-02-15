@@ -13,3 +13,5 @@ File version match details information containing time-related metadata.
   - Specifies whether the matched file version is quarantined.
 - snapshotDetail: list of ThreatHuntSnapshotDetailss
   - Details of the snapshot.
+- fileMetadata: FileMetadata
+  - File metadata for the file.

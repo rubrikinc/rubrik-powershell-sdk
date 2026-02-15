@@ -13,5 +13,7 @@ Input for an on-demand AWS S3 snapshot recovery job.
   - Flag to specify full or granular bucket recovery.
 - objectKeys: list of System.Strings
   - List of object keys for granular recovery.
+- regexPatterns: list of System.Strings
+  - Regex patterns to filter objects for recovery. Objects matching any of the patterns will be recovered.
 - targetAwsAccountRubrikId: System.String
   - Rubrik ID of the AWS account where the S3 bucket will be recovered.

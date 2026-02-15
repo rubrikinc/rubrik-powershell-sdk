@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("firstObservedSnapshotFid")]
         public System.String? FirstObservedSnapshotFid { get; set; }
 
+        //      C# -> System.Boolean? IsFileVersionQuarantined
+        // GraphQL -> isFileVersionQuarantined: Boolean! (scalar)
+        [JsonProperty("isFileVersionQuarantined")]
+        public System.Boolean? IsFileVersionQuarantined { get; set; }
+
         //      C# -> System.Boolean? IsFirstObservedSnapshotExpired
         // GraphQL -> isFirstObservedSnapshotExpired: Boolean! (scalar)
         [JsonProperty("isFirstObservedSnapshotExpired")]
@@ -128,6 +133,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Filepath = null,
         DateTime? FirstObservedSnapshotDate = null,
         System.String? FirstObservedSnapshotFid = null,
+        System.Boolean? IsFileVersionQuarantined = null,
         System.Boolean? IsFirstObservedSnapshotExpired = null,
         System.Boolean? IsMatchedSnapshotExpired = null,
         System.Boolean? IsQuarantinedInFirstObservedSnapshot = null,
@@ -163,6 +169,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FirstObservedSnapshotFid != null ) {
             this.FirstObservedSnapshotFid = FirstObservedSnapshotFid;
+        }
+        if ( IsFileVersionQuarantined != null ) {
+            this.IsFileVersionQuarantined = IsFileVersionQuarantined;
         }
         if ( IsFirstObservedSnapshotExpired != null ) {
             this.IsFirstObservedSnapshotExpired = IsFirstObservedSnapshotExpired;
@@ -278,6 +287,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "firstObservedSnapshotFid\n" ;
             } else {
                 s += ind + "firstObservedSnapshotFid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsFileVersionQuarantined
+        // GraphQL -> isFileVersionQuarantined: Boolean! (scalar)
+        if (this.IsFileVersionQuarantined != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isFileVersionQuarantined\n" ;
+            } else {
+                s += ind + "isFileVersionQuarantined\n" ;
             }
         }
         //      C# -> System.Boolean? IsFirstObservedSnapshotExpired
@@ -515,6 +533,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.FirstObservedSnapshotFid != null && ec.Excludes("firstObservedSnapshotFid",true))
         {
             this.FirstObservedSnapshotFid = null;
+        }
+        //      C# -> System.Boolean? IsFileVersionQuarantined
+        // GraphQL -> isFileVersionQuarantined: Boolean! (scalar)
+        if (ec.Includes("isFileVersionQuarantined",true))
+        {
+            if(this.IsFileVersionQuarantined == null) {
+
+                this.IsFileVersionQuarantined = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsFileVersionQuarantined != null && ec.Excludes("isFileVersionQuarantined",true))
+        {
+            this.IsFileVersionQuarantined = null;
         }
         //      C# -> System.Boolean? IsFirstObservedSnapshotExpired
         // GraphQL -> isFirstObservedSnapshotExpired: Boolean! (scalar)

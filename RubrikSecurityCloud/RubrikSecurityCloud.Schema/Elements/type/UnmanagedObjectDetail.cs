@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.Int64? DownloadedSnapshotsBytes
+        // GraphQL -> downloadedSnapshotsBytes: Long! (scalar)
+        [JsonProperty("downloadedSnapshotsBytes")]
+        public System.Int64? DownloadedSnapshotsBytes { get; set; }
+
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
         // GraphQL -> hasSnapshotsWithPolicy: Boolean! (scalar)
         [JsonProperty("hasSnapshotsWithPolicy")]
@@ -164,6 +169,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CloudAccountId = null,
         System.String? CloudAccountName = null,
         System.String? ClusterUuid = null,
+        System.Int64? DownloadedSnapshotsBytes = null,
         System.Boolean? HasSnapshotsWithPolicy = null,
         System.String? Id = null,
         System.Boolean? IsRemote = null,
@@ -208,6 +214,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
+        }
+        if ( DownloadedSnapshotsBytes != null ) {
+            this.DownloadedSnapshotsBytes = DownloadedSnapshotsBytes;
         }
         if ( HasSnapshotsWithPolicy != null ) {
             this.HasSnapshotsWithPolicy = HasSnapshotsWithPolicy;
@@ -358,6 +367,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterUuid\n" ;
             } else {
                 s += ind + "clusterUuid\n" ;
+            }
+        }
+        //      C# -> System.Int64? DownloadedSnapshotsBytes
+        // GraphQL -> downloadedSnapshotsBytes: Long! (scalar)
+        if (this.DownloadedSnapshotsBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadedSnapshotsBytes\n" ;
+            } else {
+                s += ind + "downloadedSnapshotsBytes\n" ;
             }
         }
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
@@ -689,6 +707,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
         {
             this.ClusterUuid = null;
+        }
+        //      C# -> System.Int64? DownloadedSnapshotsBytes
+        // GraphQL -> downloadedSnapshotsBytes: Long! (scalar)
+        if (ec.Includes("downloadedSnapshotsBytes",true))
+        {
+            if(this.DownloadedSnapshotsBytes == null) {
+
+                this.DownloadedSnapshotsBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadedSnapshotsBytes != null && ec.Excludes("downloadedSnapshotsBytes",true))
+        {
+            this.DownloadedSnapshotsBytes = null;
         }
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
         // GraphQL -> hasSnapshotsWithPolicy: Boolean! (scalar)

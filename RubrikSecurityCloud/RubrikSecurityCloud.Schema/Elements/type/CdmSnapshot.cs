@@ -151,6 +151,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isSapHanaIncrementalSnapshot")]
         public System.Boolean? IsSapHanaIncrementalSnapshot { get; set; }
 
+        //      C# -> System.Boolean? IsThreatAnalysisCompleted
+        // GraphQL -> isThreatAnalysisCompleted: Boolean (scalar)
+        [JsonProperty("isThreatAnalysisCompleted")]
+        public System.Boolean? IsThreatAnalysisCompleted { get; set; }
+
+        //      C# -> System.Boolean? IsThreatDetected
+        // GraphQL -> isThreatDetected: Boolean (scalar)
+        [JsonProperty("isThreatDetected")]
+        public System.Boolean? IsThreatDetected { get; set; }
+
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
         [JsonProperty("isUnindexable")]
@@ -332,6 +342,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsQuarantined = null,
         System.Boolean? IsRetentionLocked = null,
         System.Boolean? IsSapHanaIncrementalSnapshot = null,
+        System.Boolean? IsThreatAnalysisCompleted = null,
+        System.Boolean? IsThreatDetected = null,
         System.Boolean? IsUnindexable = null,
         System.String? ParentSnapshotId = null,
         System.String? ResourceSpec = null,
@@ -440,6 +452,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsSapHanaIncrementalSnapshot != null ) {
             this.IsSapHanaIncrementalSnapshot = IsSapHanaIncrementalSnapshot;
+        }
+        if ( IsThreatAnalysisCompleted != null ) {
+            this.IsThreatAnalysisCompleted = IsThreatAnalysisCompleted;
+        }
+        if ( IsThreatDetected != null ) {
+            this.IsThreatDetected = IsThreatDetected;
         }
         if ( IsUnindexable != null ) {
             this.IsUnindexable = IsUnindexable;
@@ -786,6 +804,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isSapHanaIncrementalSnapshot\n" ;
             } else {
                 s += ind + "isSapHanaIncrementalSnapshot\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsThreatAnalysisCompleted
+        // GraphQL -> isThreatAnalysisCompleted: Boolean (scalar)
+        if (this.IsThreatAnalysisCompleted != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isThreatAnalysisCompleted\n" ;
+            } else {
+                s += ind + "isThreatAnalysisCompleted\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsThreatDetected
+        // GraphQL -> isThreatDetected: Boolean (scalar)
+        if (this.IsThreatDetected != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isThreatDetected\n" ;
+            } else {
+                s += ind + "isThreatDetected\n" ;
             }
         }
         //      C# -> System.Boolean? IsUnindexable
@@ -1593,6 +1629,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsSapHanaIncrementalSnapshot != null && ec.Excludes("isSapHanaIncrementalSnapshot",true))
         {
             this.IsSapHanaIncrementalSnapshot = null;
+        }
+        //      C# -> System.Boolean? IsThreatAnalysisCompleted
+        // GraphQL -> isThreatAnalysisCompleted: Boolean (scalar)
+        if (ec.Includes("isThreatAnalysisCompleted",true))
+        {
+            if(this.IsThreatAnalysisCompleted == null) {
+
+                this.IsThreatAnalysisCompleted = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsThreatAnalysisCompleted != null && ec.Excludes("isThreatAnalysisCompleted",true))
+        {
+            this.IsThreatAnalysisCompleted = null;
+        }
+        //      C# -> System.Boolean? IsThreatDetected
+        // GraphQL -> isThreatDetected: Boolean (scalar)
+        if (ec.Includes("isThreatDetected",true))
+        {
+            if(this.IsThreatDetected == null) {
+
+                this.IsThreatDetected = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsThreatDetected != null && ec.Excludes("isThreatDetected",true))
+        {
+            this.IsThreatDetected = null;
         }
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)

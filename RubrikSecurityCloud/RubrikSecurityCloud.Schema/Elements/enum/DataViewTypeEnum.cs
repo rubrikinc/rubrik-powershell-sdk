@@ -190,7 +190,10 @@ namespace RubrikSecurityCloud.Types
         THREAT_MONITORING_SNAPSHOT_RESULTS,
 
         [EnumMember(Value = "USERS")]
-        USERS
+        USERS,
+
+        [EnumMember(Value = "VSPHERE_VM_EXCLUDED_DISKS")]
+        VSPHERE_VM_EXCLUDED_DISKS
 
 
     } // enum DataViewTypeEnum

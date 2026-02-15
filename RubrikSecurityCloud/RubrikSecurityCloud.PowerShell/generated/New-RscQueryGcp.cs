@@ -284,6 +284,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	labelFilter = @{
+    /// 		# REQUIRED
+    /// 		labelFilterParams = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				filterType = $someGcpNativeLabelFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeLabelFilterType]) for enum values.
+    /// 				# REQUIRED
+    /// 				labelKey = $someString
+    /// 				# REQUIRED
+    /// 				labelValue = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	engineTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		engineTypes = @(
+    /// 			$someGcpCloudSqlEngineType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudSqlEngineType]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	relicFilter = @{
     /// 		# REQUIRED
     /// 		relic = $someBoolean
@@ -1314,6 +1342,34 @@ $query.Var.cloudSqlInstanceFilters = @{
 		# REQUIRED
 		projectIds = @(
 			$someString
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	labelFilter = @{
+		# REQUIRED
+		labelFilterParams = @(
+			@{
+				# REQUIRED
+				filterType = $someGcpNativeLabelFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeLabelFilterType]) for enum values.
+				# REQUIRED
+				labelKey = $someString
+				# REQUIRED
+				labelValue = $someString
+			}
+		)
+	}
+	# OPTIONAL
+	engineTypeFilter = @{
+		# REQUIRED
+		engineTypes = @(
+			$someGcpCloudSqlEngineType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpCloudSqlEngineType]) for enum values.
 		)
 	}
 	# OPTIONAL

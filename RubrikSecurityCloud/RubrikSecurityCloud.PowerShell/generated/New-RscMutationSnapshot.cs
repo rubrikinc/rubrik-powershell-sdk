@@ -906,6 +906,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
+    /// 	regexPatterns = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	targetAwsAccountRubrikId = $someString
     /// }
     /// 
@@ -2207,6 +2211,10 @@ $query.Var.input = @{
 	shouldRecoverFullBucket = $someBoolean
 	# REQUIRED
 	objectKeys = @(
+		$someString
+	)
+	# OPTIONAL
+	regexPatterns = @(
 		$someString
 	)
 	# OPTIONAL

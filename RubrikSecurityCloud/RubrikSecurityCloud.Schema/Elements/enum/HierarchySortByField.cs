@@ -249,6 +249,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_TEMPLATE_INCLUDES")]
         FILESET_TEMPLATE_INCLUDES,
 
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE")]
+        GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE,
+
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_NATIVE_ID")]
+        GCP_CLOUD_SQL_INSTANCE_NATIVE_ID,
+
+        [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_PROJECT_NAME")]
+        GCP_CLOUD_SQL_INSTANCE_PROJECT_NAME,
+
         [EnumMember(Value = "GCP_DISK_LOCATION")]
         GCP_DISK_LOCATION,
 
@@ -308,6 +317,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_CLUSTER_NAME")]
         K8S_CLUSTER_NAME,
+
+        [EnumMember(Value = "MANAGED_VOLUME_LAST_RESET_REASON")]
+        MANAGED_VOLUME_LAST_RESET_REASON,
 
         [EnumMember(Value = "MONGO_DATABASE_NAME_FOR_COLLECTION")]
         MONGO_DATABASE_NAME_FOR_COLLECTION,

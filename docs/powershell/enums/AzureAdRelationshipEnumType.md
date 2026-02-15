@@ -16,3 +16,4 @@ Entra ID object relationship types.
 - POLICY_ACTION - Policy action relationship for an Intune object.
 - NOTIFICATION_POLICY_ACTION - Notification policy action relationship for an Intune object.
 - GROUP_POLICY_ACTION - Group policy action relationship for an Intune object.
+- POLICY_SCRIPT - Policy script relationship for an Intune object.

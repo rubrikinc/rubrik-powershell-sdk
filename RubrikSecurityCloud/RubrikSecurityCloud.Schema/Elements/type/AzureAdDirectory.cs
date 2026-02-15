@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> AzureAdExocomputeHostType? ExoHostType
+        // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
+        [JsonProperty("exoHostType")]
+        public AzureAdExocomputeHostType? ExoHostType { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -106,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsIntuneEnabled
+        // GraphQL -> isIntuneEnabled: Boolean! (scalar)
+        [JsonProperty("isIntuneEnabled")]
+        public System.Boolean? IsIntuneEnabled { get; set; }
+
         //      C# -> System.Boolean? IsJitEnabled
         // GraphQL -> isJitEnabled: Boolean! (scalar)
         [JsonProperty("isJitEnabled")]
@@ -131,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestApplicationsCount")]
         public System.Int32? LatestApplicationsCount { get; set; }
 
+        //      C# -> System.Int32? LatestAssignmentFilterCount
+        // GraphQL -> latestAssignmentFilterCount: Int! (scalar)
+        [JsonProperty("latestAssignmentFilterCount")]
+        public System.Int32? LatestAssignmentFilterCount { get; set; }
+
         //      C# -> System.Int32? LatestAuthenticationContextsCount
         // GraphQL -> latestAuthenticationContextsCount: Int! (scalar)
         [JsonProperty("latestAuthenticationContextsCount")]
@@ -145,6 +160,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestBitLockerKeyCount: Int! (scalar)
         [JsonProperty("latestBitLockerKeyCount")]
         public System.Int32? LatestBitLockerKeyCount { get; set; }
+
+        //      C# -> System.Int32? LatestCompliancePolicyCount
+        // GraphQL -> latestCompliancePolicyCount: Int! (scalar)
+        [JsonProperty("latestCompliancePolicyCount")]
+        public System.Int32? LatestCompliancePolicyCount { get; set; }
+
+        //      C# -> System.Int32? LatestComplianceScriptCount
+        // GraphQL -> latestComplianceScriptCount: Int! (scalar)
+        [JsonProperty("latestComplianceScriptCount")]
+        public System.Int32? LatestComplianceScriptCount { get; set; }
 
         //      C# -> System.Int32? LatestConditionalAccessPoliciesCount
         // GraphQL -> latestConditionalAccessPoliciesCount: Int! (scalar)
@@ -170,6 +195,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestNamedLocationsCount: Int! (scalar)
         [JsonProperty("latestNamedLocationsCount")]
         public System.Int32? LatestNamedLocationsCount { get; set; }
+
+        //      C# -> System.Int32? LatestNotificationTemplateCount
+        // GraphQL -> latestNotificationTemplateCount: Int! (scalar)
+        [JsonProperty("latestNotificationTemplateCount")]
+        public System.Int32? LatestNotificationTemplateCount { get; set; }
 
         //      C# -> System.Int32? LatestRolesCount
         // GraphQL -> latestRolesCount: Int! (scalar)
@@ -422,6 +452,7 @@ namespace RubrikSecurityCloud.Types
 
     public AzureAdDirectory Set(
         List<Operation>? AuthorizedOperations = null,
+        AzureAdExocomputeHostType? ExoHostType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AzureAdProvisioningState? ProvisioningState = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
@@ -438,19 +469,24 @@ namespace RubrikSecurityCloud.Types
         DateTime? FirstScopeSnapshotTime = null,
         DateTime? FirstZeusSnapshotTime = null,
         System.String? Id = null,
+        System.Boolean? IsIntuneEnabled = null,
         System.Boolean? IsJitEnabled = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
         System.Int32? LatestAdministrativeUnitsCount = null,
         System.Int32? LatestApplicationsCount = null,
+        System.Int32? LatestAssignmentFilterCount = null,
         System.Int32? LatestAuthenticationContextsCount = null,
         System.Int32? LatestAuthenticationStrengthsCount = null,
         System.Int32? LatestBitLockerKeyCount = null,
+        System.Int32? LatestCompliancePolicyCount = null,
+        System.Int32? LatestComplianceScriptCount = null,
         System.Int32? LatestConditionalAccessPoliciesCount = null,
         System.Int32? LatestDeviceCount = null,
         System.Int32? LatestGroupCount = null,
         System.Int32? LatestLocalAdminPasswordCount = null,
         System.Int32? LatestNamedLocationsCount = null,
+        System.Int32? LatestNotificationTemplateCount = null,
         System.Int32? LatestRolesCount = null,
         System.Int32? LatestServicePrincipalsCount = null,
         DateTime? LatestSnapshotTime = null,
@@ -483,6 +519,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( ExoHostType != null ) {
+            this.ExoHostType = ExoHostType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -532,6 +571,9 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsIntuneEnabled != null ) {
+            this.IsIntuneEnabled = IsIntuneEnabled;
+        }
         if ( IsJitEnabled != null ) {
             this.IsJitEnabled = IsJitEnabled;
         }
@@ -547,6 +589,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestApplicationsCount != null ) {
             this.LatestApplicationsCount = LatestApplicationsCount;
         }
+        if ( LatestAssignmentFilterCount != null ) {
+            this.LatestAssignmentFilterCount = LatestAssignmentFilterCount;
+        }
         if ( LatestAuthenticationContextsCount != null ) {
             this.LatestAuthenticationContextsCount = LatestAuthenticationContextsCount;
         }
@@ -555,6 +600,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestBitLockerKeyCount != null ) {
             this.LatestBitLockerKeyCount = LatestBitLockerKeyCount;
+        }
+        if ( LatestCompliancePolicyCount != null ) {
+            this.LatestCompliancePolicyCount = LatestCompliancePolicyCount;
+        }
+        if ( LatestComplianceScriptCount != null ) {
+            this.LatestComplianceScriptCount = LatestComplianceScriptCount;
         }
         if ( LatestConditionalAccessPoliciesCount != null ) {
             this.LatestConditionalAccessPoliciesCount = LatestConditionalAccessPoliciesCount;
@@ -570,6 +621,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestNamedLocationsCount != null ) {
             this.LatestNamedLocationsCount = LatestNamedLocationsCount;
+        }
+        if ( LatestNotificationTemplateCount != null ) {
+            this.LatestNotificationTemplateCount = LatestNotificationTemplateCount;
         }
         if ( LatestRolesCount != null ) {
             this.LatestRolesCount = LatestRolesCount;
@@ -676,6 +730,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> AzureAdExocomputeHostType? ExoHostType
+        // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
+        if (this.ExoHostType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exoHostType\n" ;
+            } else {
+                s += ind + "exoHostType\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -834,6 +897,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsIntuneEnabled
+        // GraphQL -> isIntuneEnabled: Boolean! (scalar)
+        if (this.IsIntuneEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isIntuneEnabled\n" ;
+            } else {
+                s += ind + "isIntuneEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsJitEnabled
         // GraphQL -> isJitEnabled: Boolean! (scalar)
         if (this.IsJitEnabled != null) {
@@ -879,6 +951,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestApplicationsCount\n" ;
             }
         }
+        //      C# -> System.Int32? LatestAssignmentFilterCount
+        // GraphQL -> latestAssignmentFilterCount: Int! (scalar)
+        if (this.LatestAssignmentFilterCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestAssignmentFilterCount\n" ;
+            } else {
+                s += ind + "latestAssignmentFilterCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LatestAuthenticationContextsCount
         // GraphQL -> latestAuthenticationContextsCount: Int! (scalar)
         if (this.LatestAuthenticationContextsCount != null) {
@@ -904,6 +985,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestBitLockerKeyCount\n" ;
             } else {
                 s += ind + "latestBitLockerKeyCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestCompliancePolicyCount
+        // GraphQL -> latestCompliancePolicyCount: Int! (scalar)
+        if (this.LatestCompliancePolicyCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestCompliancePolicyCount\n" ;
+            } else {
+                s += ind + "latestCompliancePolicyCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestComplianceScriptCount
+        // GraphQL -> latestComplianceScriptCount: Int! (scalar)
+        if (this.LatestComplianceScriptCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestComplianceScriptCount\n" ;
+            } else {
+                s += ind + "latestComplianceScriptCount\n" ;
             }
         }
         //      C# -> System.Int32? LatestConditionalAccessPoliciesCount
@@ -949,6 +1048,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestNamedLocationsCount\n" ;
             } else {
                 s += ind + "latestNamedLocationsCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestNotificationTemplateCount
+        // GraphQL -> latestNotificationTemplateCount: Int! (scalar)
+        if (this.LatestNotificationTemplateCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestNotificationTemplateCount\n" ;
+            } else {
+                s += ind + "latestNotificationTemplateCount\n" ;
             }
         }
         //      C# -> System.Int32? LatestRolesCount
@@ -1278,6 +1386,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthorizedOperations = null;
         }
+        //      C# -> AzureAdExocomputeHostType? ExoHostType
+        // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
+        if (ec.Includes("exoHostType",true))
+        {
+            if(this.ExoHostType == null) {
+
+                this.ExoHostType = new AzureAdExocomputeHostType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExoHostType != null && ec.Excludes("exoHostType",true))
+        {
+            this.ExoHostType = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -1571,6 +1696,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsIntuneEnabled
+        // GraphQL -> isIntuneEnabled: Boolean! (scalar)
+        if (ec.Includes("isIntuneEnabled",true))
+        {
+            if(this.IsIntuneEnabled == null) {
+
+                this.IsIntuneEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsIntuneEnabled != null && ec.Excludes("isIntuneEnabled",true))
+        {
+            this.IsIntuneEnabled = null;
+        }
         //      C# -> System.Boolean? IsJitEnabled
         // GraphQL -> isJitEnabled: Boolean! (scalar)
         if (ec.Includes("isJitEnabled",true))
@@ -1656,6 +1798,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestApplicationsCount = null;
         }
+        //      C# -> System.Int32? LatestAssignmentFilterCount
+        // GraphQL -> latestAssignmentFilterCount: Int! (scalar)
+        if (ec.Includes("latestAssignmentFilterCount",true))
+        {
+            if(this.LatestAssignmentFilterCount == null) {
+
+                this.LatestAssignmentFilterCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestAssignmentFilterCount != null && ec.Excludes("latestAssignmentFilterCount",true))
+        {
+            this.LatestAssignmentFilterCount = null;
+        }
         //      C# -> System.Int32? LatestAuthenticationContextsCount
         // GraphQL -> latestAuthenticationContextsCount: Int! (scalar)
         if (ec.Includes("latestAuthenticationContextsCount",true))
@@ -1706,6 +1865,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestBitLockerKeyCount != null && ec.Excludes("latestBitLockerKeyCount",true))
         {
             this.LatestBitLockerKeyCount = null;
+        }
+        //      C# -> System.Int32? LatestCompliancePolicyCount
+        // GraphQL -> latestCompliancePolicyCount: Int! (scalar)
+        if (ec.Includes("latestCompliancePolicyCount",true))
+        {
+            if(this.LatestCompliancePolicyCount == null) {
+
+                this.LatestCompliancePolicyCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestCompliancePolicyCount != null && ec.Excludes("latestCompliancePolicyCount",true))
+        {
+            this.LatestCompliancePolicyCount = null;
+        }
+        //      C# -> System.Int32? LatestComplianceScriptCount
+        // GraphQL -> latestComplianceScriptCount: Int! (scalar)
+        if (ec.Includes("latestComplianceScriptCount",true))
+        {
+            if(this.LatestComplianceScriptCount == null) {
+
+                this.LatestComplianceScriptCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestComplianceScriptCount != null && ec.Excludes("latestComplianceScriptCount",true))
+        {
+            this.LatestComplianceScriptCount = null;
         }
         //      C# -> System.Int32? LatestConditionalAccessPoliciesCount
         // GraphQL -> latestConditionalAccessPoliciesCount: Int! (scalar)
@@ -1791,6 +1984,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestNamedLocationsCount != null && ec.Excludes("latestNamedLocationsCount",true))
         {
             this.LatestNamedLocationsCount = null;
+        }
+        //      C# -> System.Int32? LatestNotificationTemplateCount
+        // GraphQL -> latestNotificationTemplateCount: Int! (scalar)
+        if (ec.Includes("latestNotificationTemplateCount",true))
+        {
+            if(this.LatestNotificationTemplateCount == null) {
+
+                this.LatestNotificationTemplateCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestNotificationTemplateCount != null && ec.Excludes("latestNotificationTemplateCount",true))
+        {
+            this.LatestNotificationTemplateCount = null;
         }
         //      C# -> System.Int32? LatestRolesCount
         // GraphQL -> latestRolesCount: Int! (scalar)

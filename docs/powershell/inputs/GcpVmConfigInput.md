@@ -23,3 +23,5 @@ Inputs needed to create VMs on GCP.
   - Test image to use for the Rubrik cluster. This field is only used for internal testing purposes.
 - subnetAzConfigs: list of SubnetAzConfigInputs
   - List of subnet and availability zone pairs for Multi-AZ deployments.
+- cdmProduct: System.String
+  - The CDM product to use for the cluster if it is created using a marketplace image. This field must not be used if the cluster is created using an image ID.

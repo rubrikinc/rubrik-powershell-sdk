@@ -14574,7 +14574,7 @@ namespace RubrikSecurityCloud.Types
         public static string SigninLogs(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ntimeRange: $timeRange\nfilters: $filters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ntimeRange: $timeRange\nfilters: $filters\nsortBy: $sortBy\n)";
             return "signinLogs" + args + "\n{\n" + fs + "}\n";
         }
         public static object SigninLogsFieldSpec(AutofieldContext? ec=null)

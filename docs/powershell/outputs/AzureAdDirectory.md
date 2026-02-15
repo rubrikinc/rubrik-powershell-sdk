@@ -39,6 +39,14 @@ Details of the Azure AD directory object.
   - Count of bitLocker keys from the latest snapshot.
 - latestLocalAdminPasswordCount: System.Int32
   - Count of local admin passwords from the latest snapshot.
+- latestAssignmentFilterCount: System.Int32
+  - Count of assignment filters from the latest snapshot.
+- latestCompliancePolicyCount: System.Int32
+  - Count of compliance policies from the latest snapshot.
+- latestComplianceScriptCount: System.Int32
+  - Count of compliance scripts from the latest snapshot.
+- latestNotificationTemplateCount: System.Int32
+  - Count of notification templates from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime
@@ -59,6 +67,10 @@ Details of the Azure AD directory object.
   - When enabled, time of the first snapshot that includes devices.
 - isJitEnabled: System.Boolean
   - Specifies whether the tenant was onboarded using the Just In Time permissions feature.
+- exoHostType: AzureAdExocomputeHostType
+  - Specifies the host type of the exocompute resource for this tenant.
+- isIntuneEnabled: System.Boolean
+  - Specifies whether Intune protection is enabled for the tenant.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

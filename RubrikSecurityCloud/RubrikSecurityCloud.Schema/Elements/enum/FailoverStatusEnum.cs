@@ -18,6 +18,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "CLEANUP_FAILED")]
+        CLEANUP_FAILED,
+
+        [EnumMember(Value = "CLEANUP_STARTED")]
+        CLEANUP_STARTED,
+
+        [EnumMember(Value = "CLEANUP_SUCCEEDED")]
+        CLEANUP_SUCCEEDED,
+
+        [EnumMember(Value = "COMPLETED")]
+        COMPLETED,
+
+        [EnumMember(Value = "DONE")]
+        DONE,
+
         [EnumMember(Value = "FAILOVER_CLEANUP_STARTED")]
         FAILOVER_CLEANUP_STARTED,
 
@@ -69,6 +84,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LOCAL_RECOVERY_SUCCEEDED")]
         LOCAL_RECOVERY_SUCCEEDED,
 
+        [EnumMember(Value = "LOCKED")]
+        LOCKED,
+
         [EnumMember(Value = "NOT_SUPPORTED")]
         NOT_SUPPORTED,
 
@@ -77,6 +95,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PAUSED")]
         PAUSED,
+
+        [EnumMember(Value = "QUEUED")]
+        QUEUED,
 
         [EnumMember(Value = "TEST_FAILOVER_SUCCEEDED")]
         TEST_FAILOVER_SUCCEEDED

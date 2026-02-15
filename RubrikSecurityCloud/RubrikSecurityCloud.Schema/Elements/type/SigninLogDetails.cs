@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("actorUserType")]
         public System.String? ActorUserType { get; set; }
 
+        //      C# -> System.String? AdditionalData
+        // GraphQL -> additionalData: String! (scalar)
+        [JsonProperty("additionalData")]
+        public System.String? AdditionalData { get; set; }
+
         //      C# -> System.String? ApplicationId
         // GraphQL -> applicationId: String! (scalar)
         [JsonProperty("applicationId")]
@@ -254,6 +259,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ActorPrincipalName = null,
         System.String? ActorSid = null,
         System.String? ActorUserType = null,
+        System.String? AdditionalData = null,
         System.String? ApplicationId = null,
         System.String? ApplicationName = null,
         System.String? AuthenticationMethod = null,
@@ -316,6 +322,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActorUserType != null ) {
             this.ActorUserType = ActorUserType;
+        }
+        if ( AdditionalData != null ) {
+            this.AdditionalData = AdditionalData;
         }
         if ( ApplicationId != null ) {
             this.ApplicationId = ApplicationId;
@@ -512,6 +521,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "actorUserType\n" ;
             } else {
                 s += ind + "actorUserType\n" ;
+            }
+        }
+        //      C# -> System.String? AdditionalData
+        // GraphQL -> additionalData: String! (scalar)
+        if (this.AdditionalData != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "additionalData\n" ;
+            } else {
+                s += ind + "additionalData\n" ;
             }
         }
         //      C# -> System.String? ApplicationId
@@ -979,6 +997,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActorUserType != null && ec.Excludes("actorUserType",true))
         {
             this.ActorUserType = null;
+        }
+        //      C# -> System.String? AdditionalData
+        // GraphQL -> additionalData: String! (scalar)
+        if (ec.Includes("additionalData",true))
+        {
+            if(this.AdditionalData == null) {
+
+                this.AdditionalData = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AdditionalData != null && ec.Excludes("additionalData",true))
+        {
+            this.AdditionalData = null;
         }
         //      C# -> System.String? ApplicationId
         // GraphQL -> applicationId: String! (scalar)
