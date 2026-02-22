@@ -39,3 +39,7 @@ Represents the analyzer.
   - Maximum character distance for proximity keyword matching.
 - isInactive: System.Boolean
   - Represent whether the analyzer is inactive or not.
+- excludeFieldNamePattern: System.String
+  - Regex pattern to exclude fields by name.
+- excludePathPattern: System.String
+  - Regex pattern to exclude files by path.

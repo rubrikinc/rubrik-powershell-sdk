@@ -1,5 +1,5 @@
 ### RcsConsumptionMetricOutputNameType
-Consumption stats metric name for Rubrik Cloud Storage Archival Location.
+Consumption stats metric output name for Rubrik Cloud Storage Archival Location.
 
 - BLOB_CAPACITY - Blob capacity consumption stats for Rubrik Cloud Storage Archival Location.
 - FORECASTED_BLOB_CAPACITY - Forecasted blob capacity consumption stats for Rubrik Cloud Storage Archival Location.

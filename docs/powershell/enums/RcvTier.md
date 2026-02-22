@@ -1,6 +1,6 @@
 ### RcvTier
-Rubrik Cloud Vault (RCV) Entitlement Tier.
+Tiers for Rubrik Cloud Vault Archival Location.
 
-- BACKUP - Rubrik Cloud Vault (RCV) Backup tier.
-- ARCHIVE - Rubrik Cloud Vault (RCV) Archive tier.
-- RECOVERY - Rubrik Cloud Vault (RCV) Recovery tier.
+- BACKUP - Backup tier for Rubrik Cloud Vault Archival Location.
+- ARCHIVE - Archive tier for Rubrik Cloud Vault Archival Location.
+- RECOVERY - Recovery tier for Rubrik Cloud Vault Archival Location.

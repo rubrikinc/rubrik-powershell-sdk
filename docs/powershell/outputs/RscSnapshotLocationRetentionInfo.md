@@ -7,6 +7,8 @@ RSC snapshot location retention information.
   - Specifies whether the expiration date for this snapshot has been calculated. This field will be absent if the snapshot has never existed at this location.
 - expirationTime: DateTime
   - Time when the snapshot expired or is expected to expire at this location.
+- snapshotFrequency: SnapshotFrequency
+  - Specifies the frequency tag of snapshot.
 - locationId: System.String
   - Location ID of snapshot.
 - locationName: System.String

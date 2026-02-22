@@ -1,15 +1,15 @@
 ### EventSubscription
-The event subscription information.
+Event subscription settings.
 
 - eventTypes: list of EventTypes
-  - The event types to which the webhook is subscribed.
+  - The event types to subscribe to.
 - objectTypes: list of EventObjectTypes
-  - The object types to which the webhook is subscribed.
+  - The object types to subscribe to.
 - severities: list of EventSeveritys
-  - The event severities to which the webhook is subscribed.
+  - The severity levels to subscribe to.
 - isSubscribedToAllEvents: System.Boolean
-  - True if subscribed to all events.
+  - Whether the webhook is subscribed to all events.
 - isSubscribedToAllObjectTypes: System.Boolean
-  - True if subscribed to all object types.
+  - Whether the webhook is subscribed to all object types.
 - templateInfo: TemplateInfo
-  - Subscription message template.
+  - The template information.

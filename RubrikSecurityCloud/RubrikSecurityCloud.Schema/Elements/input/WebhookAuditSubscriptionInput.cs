@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsSubscribedToAllAudits
-        // GraphQL -> isSubscribedToAllAudits: Boolean (scalar)
-        [JsonProperty("isSubscribedToAllAudits")]
-        public System.Boolean? IsSubscribedToAllAudits { get; set; }
-
-        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
-        // GraphQL -> isSubscribedToAllObjectTypes: Boolean (scalar)
-        [JsonProperty("isSubscribedToAllObjectTypes")]
-        public System.Boolean? IsSubscribedToAllObjectTypes { get; set; }
-
         //      C# -> List<AuditType>? AuditTypes
         // GraphQL -> auditTypes: [AuditType!]! (enum)
         [Required]
@@ -49,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("severities")]
         public List<AuditSeverity>? Severities { get; set; }
+
+        //      C# -> System.Boolean? IsSubscribedToAllAudits
+        // GraphQL -> isSubscribedToAllAudits: Boolean (scalar)
+        [JsonProperty("isSubscribedToAllAudits")]
+        public System.Boolean? IsSubscribedToAllAudits { get; set; }
+
+        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
+        // GraphQL -> isSubscribedToAllObjectTypes: Boolean (scalar)
+        [JsonProperty("isSubscribedToAllObjectTypes")]
+        public System.Boolean? IsSubscribedToAllObjectTypes { get; set; }
 
         //      C# -> WebhookTemplateInfoInput? TemplateInfo
         // GraphQL -> templateInfo: WebhookTemplateInfoInput! (input)

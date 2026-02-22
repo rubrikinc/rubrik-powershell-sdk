@@ -7,3 +7,5 @@ Response of the operation to add an Azure Cloud Account.
   - Tenant ID for the added subscriptions.
 - entraIdGroupStatus: AzureEntraIdGroupStatus
   - Status of the Entra ID group for the added Azure Cloud Account.
+- taskchainUuid: System.String
+  - UUID of the taskchain for the management group bulk onboard job.

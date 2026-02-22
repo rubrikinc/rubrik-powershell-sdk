@@ -252,6 +252,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_AUTO_QUARANTINE")]
         MANAGE_AUTO_QUARANTINE,
 
+        [EnumMember(Value = "MANAGE_CDM_ADMIN")]
+        MANAGE_CDM_ADMIN,
+
         [EnumMember(Value = "MANAGE_CDP_IO_FILTER")]
         MANAGE_CDP_IO_FILTER,
 
@@ -545,6 +548,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_AZURE_CLOUD_ACCOUNT")]
         VIEW_AZURE_CLOUD_ACCOUNT,
+
+        [EnumMember(Value = "VIEW_CDM_ADMIN")]
+        VIEW_CDM_ADMIN,
 
         [EnumMember(Value = "VIEW_CDM_NETWORK_SETTING")]
         VIEW_CDM_NETWORK_SETTING,

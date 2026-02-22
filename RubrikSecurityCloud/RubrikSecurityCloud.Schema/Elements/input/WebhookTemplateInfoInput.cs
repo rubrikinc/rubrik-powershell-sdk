@@ -19,10 +19,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? TemplateId
-        // GraphQL -> templateId: Int (scalar)
+        //      C# -> System.Int64? TemplateId
+        // GraphQL -> templateId: Long (scalar)
         [JsonProperty("templateId")]
-        public System.Int32? TemplateId { get; set; }
+        public System.Int64? TemplateId { get; set; }
 
         //      C# -> System.String? CustomTemplate
         // GraphQL -> customTemplate: String (scalar)

@@ -24,13 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("inventoryRoot")]
         public InventorySubHierarchyRootEnum? InventoryRoot { get; set; }
 
-        //      C# -> WorkloadLevelHierarchy? InventoryWorkloadType
-        // GraphQL -> inventoryWorkloadType: WorkloadLevelHierarchy! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("inventoryWorkloadType")]
-        public WorkloadLevelHierarchy? InventoryWorkloadType { get; set; }
-
         //      C# -> List<Operation>? Operations
         // GraphQL -> operations: [Operation!]! (enum)
         [Required]
@@ -42,6 +35,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hierarchyRoot: String (scalar)
         [JsonProperty("hierarchyRoot")]
         public System.String? HierarchyRoot { get; set; }
+
+        //      C# -> WorkloadLevelHierarchy? InventoryWorkloadType
+        // GraphQL -> inventoryWorkloadType: WorkloadLevelHierarchy! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("inventoryWorkloadType")]
+        public WorkloadLevelHierarchy? InventoryWorkloadType { get; set; }
 
 
         #endregion

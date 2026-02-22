@@ -7,3 +7,5 @@ Holds the configuration of the Google SecOps integration.
   - The webhook ID. Required when config_type is SIEM or SIEM_SOAR.
 - serviceAccountId: System.String
   - The service account ID.
+- serviceAccountName: System.String
+  - The service account name.

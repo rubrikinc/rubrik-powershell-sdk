@@ -21,12 +21,12 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.Int32? Index
-        // GraphQL -> index: Int (scalar)
+        // GraphQL -> index: Int! (scalar)
         [JsonProperty("index")]
         public System.Int32? Index { get; set; }
 
         //      C# -> System.Int32? ParentIndex
-        // GraphQL -> parentIndex: Int (scalar)
+        // GraphQL -> parentIndex: Int! (scalar)
         [JsonProperty("parentIndex")]
         public System.Int32? ParentIndex { get; set; }
 
@@ -92,7 +92,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> System.Int32? Index
-        // GraphQL -> index: Int (scalar)
+        // GraphQL -> index: Int! (scalar)
         if (this.Index != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "index\n" ;
@@ -101,7 +101,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Int32? ParentIndex
-        // GraphQL -> parentIndex: Int (scalar)
+        // GraphQL -> parentIndex: Int! (scalar)
         if (this.ParentIndex != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "parentIndex\n" ;
@@ -147,7 +147,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> System.Int32? Index
-        // GraphQL -> index: Int (scalar)
+        // GraphQL -> index: Int! (scalar)
         if (ec.Includes("index",true))
         {
             if(this.Index == null) {
@@ -164,7 +164,7 @@ namespace RubrikSecurityCloud.Types
             this.Index = null;
         }
         //      C# -> System.Int32? ParentIndex
-        // GraphQL -> parentIndex: Int (scalar)
+        // GraphQL -> parentIndex: Int! (scalar)
         if (ec.Includes("parentIndex",true))
         {
             if(this.ParentIndex == null) {

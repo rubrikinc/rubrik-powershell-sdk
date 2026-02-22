@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestRecoveryPointV96")]
         public DateTime? LatestRecoveryPointV96 { get; set; }
 
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
+        [JsonProperty("logRatePerRmanChannelInMb")]
+        public System.Int32? LogRatePerRmanChannelInMb { get; set; }
+
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         [JsonProperty("oldestRecoveryPointV50")]
@@ -190,6 +195,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preferredDgMemberUniqueNames")]
         public List<System.String>? PreferredDgMemberUniqueNames { get; set; }
 
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int (scalar)
+        [JsonProperty("ratePerRmanChannelInMb")]
+        public System.Int32? RatePerRmanChannelInMb { get; set; }
+
         //      C# -> System.Int32? SectionSizeInGb
         // GraphQL -> sectionSizeInGb: Int (scalar)
         [JsonProperty("sectionSizeInGb")]
@@ -272,6 +282,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LatestRecoveryPointV94 = null,
         DateTime? LatestRecoveryPointV95 = null,
         DateTime? LatestRecoveryPointV96 = null,
+        System.Int32? LogRatePerRmanChannelInMb = null,
         System.String? OldestRecoveryPointV50 = null,
         System.String? OldestRecoveryPointV51 = null,
         System.String? OldestRecoveryPointV52 = null,
@@ -289,6 +300,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? OldestRecoveryPointV96 = null,
         System.String? OracleHome = null,
         List<System.String>? PreferredDgMemberUniqueNames = null,
+        System.Int32? RatePerRmanChannelInMb = null,
         System.Int32? SectionSizeInGb = null,
         System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly = null,
         System.Int32? SnapshotCount = null,
@@ -353,6 +365,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestRecoveryPointV96 != null ) {
             this.LatestRecoveryPointV96 = LatestRecoveryPointV96;
         }
+        if ( LogRatePerRmanChannelInMb != null ) {
+            this.LogRatePerRmanChannelInMb = LogRatePerRmanChannelInMb;
+        }
         if ( OldestRecoveryPointV50 != null ) {
             this.OldestRecoveryPointV50 = OldestRecoveryPointV50;
         }
@@ -403,6 +418,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PreferredDgMemberUniqueNames != null ) {
             this.PreferredDgMemberUniqueNames = PreferredDgMemberUniqueNames;
+        }
+        if ( RatePerRmanChannelInMb != null ) {
+            this.RatePerRmanChannelInMb = RatePerRmanChannelInMb;
         }
         if ( SectionSizeInGb != null ) {
             this.SectionSizeInGb = SectionSizeInGb;
@@ -604,6 +622,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestRecoveryPointV96\n" ;
             }
         }
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
+        if (this.LogRatePerRmanChannelInMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logRatePerRmanChannelInMb\n" ;
+            } else {
+                s += ind + "logRatePerRmanChannelInMb\n" ;
+            }
+        }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         if (this.OldestRecoveryPointV50 != null) {
@@ -755,6 +782,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "preferredDgMemberUniqueNames\n" ;
             } else {
                 s += ind + "preferredDgMemberUniqueNames\n" ;
+            }
+        }
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int (scalar)
+        if (this.RatePerRmanChannelInMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ratePerRmanChannelInMb\n" ;
+            } else {
+                s += ind + "ratePerRmanChannelInMb\n" ;
             }
         }
         //      C# -> System.Int32? SectionSizeInGb
@@ -1173,6 +1209,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestRecoveryPointV96 = null;
         }
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
+        if (ec.Includes("logRatePerRmanChannelInMb",true))
+        {
+            if(this.LogRatePerRmanChannelInMb == null) {
+
+                this.LogRatePerRmanChannelInMb = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRatePerRmanChannelInMb != null && ec.Excludes("logRatePerRmanChannelInMb",true))
+        {
+            this.LogRatePerRmanChannelInMb = null;
+        }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         if (ec.Includes("oldestRecoveryPointV50",true))
@@ -1461,6 +1514,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PreferredDgMemberUniqueNames != null && ec.Excludes("preferredDgMemberUniqueNames",true))
         {
             this.PreferredDgMemberUniqueNames = null;
+        }
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int (scalar)
+        if (ec.Includes("ratePerRmanChannelInMb",true))
+        {
+            if(this.RatePerRmanChannelInMb == null) {
+
+                this.RatePerRmanChannelInMb = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RatePerRmanChannelInMb != null && ec.Excludes("ratePerRmanChannelInMb",true))
+        {
+            this.RatePerRmanChannelInMb = null;
         }
         //      C# -> System.Int32? SectionSizeInGb
         // GraphQL -> sectionSizeInGb: Int (scalar)

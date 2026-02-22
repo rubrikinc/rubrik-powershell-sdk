@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountId")]
         public System.String? ServiceAccountId { get; set; }
 
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String! (scalar)
+        [JsonProperty("serviceAccountName")]
+        public System.String? ServiceAccountName { get; set; }
+
         //      C# -> System.Int32? WebhookId
         // GraphQL -> webhookId: Int (scalar)
         [JsonProperty("webhookId")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public GoogleSecOpsIntegrationConfig Set(
         GoogleSecOpsIntegrationConfigType? ConfigType = null,
         System.String? ServiceAccountId = null,
+        System.String? ServiceAccountName = null,
         System.Int32? WebhookId = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ServiceAccountId != null ) {
             this.ServiceAccountId = ServiceAccountId;
+        }
+        if ( ServiceAccountName != null ) {
+            this.ServiceAccountName = ServiceAccountName;
         }
         if ( WebhookId != null ) {
             this.WebhookId = WebhookId;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "serviceAccountId\n" ;
             } else {
                 s += ind + "serviceAccountId\n" ;
+            }
+        }
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String! (scalar)
+        if (this.ServiceAccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceAccountName\n" ;
+            } else {
+                s += ind + "serviceAccountName\n" ;
             }
         }
         //      C# -> System.Int32? WebhookId
@@ -140,6 +158,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ServiceAccountId != null && ec.Excludes("serviceAccountId",true))
         {
             this.ServiceAccountId = null;
+        }
+        //      C# -> System.String? ServiceAccountName
+        // GraphQL -> serviceAccountName: String! (scalar)
+        if (ec.Includes("serviceAccountName",true))
+        {
+            if(this.ServiceAccountName == null) {
+
+                this.ServiceAccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceAccountName != null && ec.Excludes("serviceAccountName",true))
+        {
+            this.ServiceAccountName = null;
         }
         //      C# -> System.Int32? WebhookId
         // GraphQL -> webhookId: Int (scalar)

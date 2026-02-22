@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'SLA' API domain:
-    /// Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, UpdateGlobal, or Upgrades.
+    /// Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, UpdateGlobal, UpdatesForMigrationToRcvTarget, or Upgrades.
     /// </summary>
     /// <description>
     /// New-RscMutationSla creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'SLA' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, UpdateGlobal, or Upgrades.
+    /// one of: Assign, AssignRetentionToSnappables, AssignRetentionToSnapshots, AssignsForSnappableHierarchies, CreateGlobal, DeleteGlobal, ExportManagedVolumeSnapshot, GetPendingAssignments, Pause, UpdateGlobal, UpdatesForMigrationToRcvTarget, or Upgrades.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -2024,6 +2024,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdatesForMigrationToRcvTarget operation
+    /// of the 'SLA' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Sla
+    /// # API Operation: UpdatesForMigrationToRcvTarget
+    /// 
+    /// $query = New-RscMutationSla -Operation UpdatesForMigrationToRcvTarget
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateSlasForMigrationToRcvTargetReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the Upgrades operation
     /// of the 'SLA' API domain.
     /// <code>
@@ -2082,6 +2113,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetPendingAssignments",
                 "Pause",
                 "UpdateGlobal",
+                "UpdatesForMigrationToRcvTarget",
                 "Upgrades",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -2127,6 +2159,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateGlobal":
                         this.ProcessRecord_UpdateGlobal();
+                        break;
+                    case "UpdatesForMigrationToRcvTarget":
+                        this.ProcessRecord_UpdatesForMigrationToRcvTarget();
                         break;
                     case "Upgrades":
                         this.ProcessRecord_Upgrades();
@@ -2229,6 +2264,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateGlobal";
             // Create new graphql operation updateGlobalSla
             InitMutationUpdateGlobalSla();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateSlasForMigrationToRcvTarget.
+        internal void ProcessRecord_UpdatesForMigrationToRcvTarget()
+        {
+            this._logger.name += " -UpdatesForMigrationToRcvTarget";
+            // Create new graphql operation updateSlasForMigrationToRcvTarget
+            InitMutationUpdateSlasForMigrationToRcvTarget();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4141,6 +4185,29 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateSlasForMigrationToRcvTarget(input: UpdateSlasForMigrationToRcvTargetInput!): UpdateSlasForMigrationToRcvTargetReply!
+        internal void InitMutationUpdateSlasForMigrationToRcvTarget()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateSlasForMigrationToRcvTargetInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateSlasForMigrationToRcvTarget",
+                "($input: UpdateSlasForMigrationToRcvTargetInput!)",
+                "UpdateSlasForMigrationToRcvTargetReply",
+                Mutation.UpdateSlasForMigrationToRcvTarget,
+                Mutation.UpdateSlasForMigrationToRcvTargetFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	locationId = $someString
 }"
             );
         }

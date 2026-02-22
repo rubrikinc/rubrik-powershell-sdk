@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsAirGapped
-        // GraphQL -> isAirGapped: Boolean (scalar)
-        [JsonProperty("isAirGapped")]
-        public System.Boolean? IsAirGapped { get; set; }
-
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
+        //      C# -> System.Boolean? IsAirGapped
+        // GraphQL -> isAirGapped: Boolean (scalar)
+        [JsonProperty("isAirGapped")]
+        public System.Boolean? IsAirGapped { get; set; }
 
 
         #endregion

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Token
-        // GraphQL -> token: String (scalar)
-        [JsonProperty("token")]
-        public System.String? Token { get; set; }
-
         //      C# -> AuthenticationTypeV2? AuthType
         // GraphQL -> authType: AuthenticationTypeV2! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("authType")]
         public AuthenticationTypeV2? AuthType { get; set; }
+
+        //      C# -> System.String? Token
+        // GraphQL -> token: String (scalar)
+        [JsonProperty("token")]
+        public System.String? Token { get; set; }
 
         //      C# -> UserCredentials? UserCredentials
         // GraphQL -> userCredentials: UserCredentials (input)

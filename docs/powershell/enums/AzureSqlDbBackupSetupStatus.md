@@ -5,6 +5,7 @@ Status of the setup for taking Azure SQL database backup.
 - ENCRYPTED_OBJECTS_EXIST - The Azure database configuration is invalid because of the presence of encrypted objects.
 - SUCCESS - The Azure database backup setup is successful.
 - UNSUPPORTED_COLLATION_CONFIG - The Azure database configuration is invalid due to the presence of multiple collations.
+- SUCCESS_BAK - The Azure database backup setup for BAK backups is successful.
 - CDC_INVALID_CONFIG - The Azure database configuration is invalid because Change Data Capture (CDC) is misconfigured.
 - MISSING_PERMISSIONS - The Azure database configuration is invalid because the backup user is missing some required permissions.
 - CDC_DISABLED - The Azure database configuration is invalid because Change Data Capture (CDC) is not enabled.

@@ -1,7 +1,7 @@
 ### TemplateInfo
-Subscription message template information.
+The template information.
 
 - templateId: System.Int64
-  - Subscription message template.
+  - The template ID.
 - customTemplate: System.String
-  - Custom message template.
+  - The custom template.

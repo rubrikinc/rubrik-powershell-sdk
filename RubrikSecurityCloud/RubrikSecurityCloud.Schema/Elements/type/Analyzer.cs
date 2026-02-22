@@ -45,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dictionaryCsv")]
         public System.String? DictionaryCsv { get; set; }
 
+        //      C# -> System.String? ExcludeFieldNamePattern
+        // GraphQL -> excludeFieldNamePattern: String! (scalar)
+        [JsonProperty("excludeFieldNamePattern")]
+        public System.String? ExcludeFieldNamePattern { get; set; }
+
+        //      C# -> System.String? ExcludePathPattern
+        // GraphQL -> excludePathPattern: String! (scalar)
+        [JsonProperty("excludePathPattern")]
+        public System.String? ExcludePathPattern { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -130,6 +140,8 @@ namespace RubrikSecurityCloud.Types
         List<AnalyzerRuleType>? RuleTypes = null,
         List<System.String>? Dictionary = null,
         System.String? DictionaryCsv = null,
+        System.String? ExcludeFieldNamePattern = null,
+        System.String? ExcludePathPattern = null,
         System.String? Id = null,
         System.Boolean? IsInactive = null,
         System.String? KeyRegex = null,
@@ -160,6 +172,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DictionaryCsv != null ) {
             this.DictionaryCsv = DictionaryCsv;
+        }
+        if ( ExcludeFieldNamePattern != null ) {
+            this.ExcludeFieldNamePattern = ExcludeFieldNamePattern;
+        }
+        if ( ExcludePathPattern != null ) {
+            this.ExcludePathPattern = ExcludePathPattern;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -260,6 +278,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "dictionaryCsv\n" ;
             } else {
                 s += ind + "dictionaryCsv\n" ;
+            }
+        }
+        //      C# -> System.String? ExcludeFieldNamePattern
+        // GraphQL -> excludeFieldNamePattern: String! (scalar)
+        if (this.ExcludeFieldNamePattern != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludeFieldNamePattern\n" ;
+            } else {
+                s += ind + "excludeFieldNamePattern\n" ;
+            }
+        }
+        //      C# -> System.String? ExcludePathPattern
+        // GraphQL -> excludePathPattern: String! (scalar)
+        if (this.ExcludePathPattern != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludePathPattern\n" ;
+            } else {
+                s += ind + "excludePathPattern\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -482,6 +518,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.DictionaryCsv != null && ec.Excludes("dictionaryCsv",true))
         {
             this.DictionaryCsv = null;
+        }
+        //      C# -> System.String? ExcludeFieldNamePattern
+        // GraphQL -> excludeFieldNamePattern: String! (scalar)
+        if (ec.Includes("excludeFieldNamePattern",true))
+        {
+            if(this.ExcludeFieldNamePattern == null) {
+
+                this.ExcludeFieldNamePattern = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludeFieldNamePattern != null && ec.Excludes("excludeFieldNamePattern",true))
+        {
+            this.ExcludeFieldNamePattern = null;
+        }
+        //      C# -> System.String? ExcludePathPattern
+        // GraphQL -> excludePathPattern: String! (scalar)
+        if (ec.Includes("excludePathPattern",true))
+        {
+            if(this.ExcludePathPattern == null) {
+
+                this.ExcludePathPattern = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludePathPattern != null && ec.Excludes("excludePathPattern",true))
+        {
+            this.ExcludePathPattern = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

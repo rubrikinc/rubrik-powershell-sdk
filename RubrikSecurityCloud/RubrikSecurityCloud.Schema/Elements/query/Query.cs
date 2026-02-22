@@ -14569,6 +14569,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SigninLogFilterValuesResponse? SigninLogFilterValues
+        // GraphQL -> signinLogFilterValues: SigninLogFilterValuesResponse! (type)
+        public static string SigninLogFilterValues(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfilterType: $filterType\ntimeRange: $timeRange\nsearchTerm: $searchTerm\nlimit: $limit\nexistingFilters: $existingFilters\n)";
+            return "signinLogFilterValues" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SigninLogFilterValuesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SigninLogFilterValuesResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> SigninLogSummaryConnection? SigninLogs
         // GraphQL -> signinLogs: SigninLogSummaryConnection! (type)
         public static string SigninLogs(object fsObj)
@@ -15267,6 +15285,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AccessUserConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetSqlServerSetupScriptsReplyBulk? SqlServerSetupScriptsBulk
+        // GraphQL -> sqlServerSetupScriptsBulk: GetSqlServerSetupScriptsReplyBulk! (type)
+        public static string SqlServerSetupScriptsBulk(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "sqlServerSetupScriptsBulk" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SqlServerSetupScriptsBulkFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetSqlServerSetupScriptsReplyBulk() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

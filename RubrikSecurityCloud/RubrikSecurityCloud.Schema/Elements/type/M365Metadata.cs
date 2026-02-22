@@ -31,7 +31,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? ParentObjectId { get; set; }
 
         //      C# -> System.String? ParentObjectType
-        // GraphQL -> parentObjectType: UUID! (scalar)
+        // GraphQL -> parentObjectType: String! (scalar)
         [JsonProperty("parentObjectType")]
         public System.String? ParentObjectType { get; set; }
 
@@ -92,7 +92,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? ParentObjectType
-        // GraphQL -> parentObjectType: UUID! (scalar)
+        // GraphQL -> parentObjectType: String! (scalar)
         if (this.ParentObjectType != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "parentObjectType\n" ;
@@ -142,7 +142,7 @@ namespace RubrikSecurityCloud.Types
             this.ParentObjectId = null;
         }
         //      C# -> System.String? ParentObjectType
-        // GraphQL -> parentObjectType: UUID! (scalar)
+        // GraphQL -> parentObjectType: String! (scalar)
         if (ec.Includes("parentObjectType",true))
         {
             if(this.ParentObjectType == null) {

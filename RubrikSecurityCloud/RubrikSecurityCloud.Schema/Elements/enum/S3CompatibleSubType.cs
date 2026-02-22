@@ -114,6 +114,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OVHCLOUD")]
         OVHCLOUD,
 
+        [EnumMember(Value = "POINT_ARCHIVAL_GATEWAY")]
+        POINT_ARCHIVAL_GATEWAY,
+
         [EnumMember(Value = "PURE_FB")]
         PURE_FB,
 

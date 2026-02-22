@@ -1283,6 +1283,20 @@ to enable BigQuery partition pruning (98.9% cost reduction).
     - eventId - System.String: The unique identifier for the sign-in event (required).
     - eventDate - DateTime: Optional date for partition pruning optimization.
 - Returns SigninLogDetails.
+### signinlogfiltervalues
+Get possible filter values for sign-in logs with optional search.
+
+This API supports typeahead/autocomplete functionality for filter dropdowns.
+When searchTerm is empty, returns top N most common values ordered by frequency.
+When searchTerm is provided, returns values matching the prefix in alphabetical order.
+
+- There are 5 arguments.
+    - filterType - SigninLogFilterType: The type of filter to get possible values for (required).
+    - timeRange - TimeRangeInput: Time range to scope the values (required for partition pruning).
+    - searchTerm - System.String: Optional prefix to filter values (typeahead).
+    - limit - System.Int32: Maximum results to return (default: 50, max: 100).
+    - existingFilters - SigninLogsFilters: Optional filters to scope the search (cross-filter dependency).
+- Returns SigninLogFilterValuesResponse.
 ### signinlogs
 List sign-in logs with filtering and pagination.
 
@@ -1311,6 +1325,12 @@ Lists the snoozed directories for the account.
     - directorySearchFilter - System.String: Optional directory search.
     - falsePositiveTypeFilter - list of AnomalyFalsePositiveTypes: Filter by false positive type.
 - Returns SnoozedDirectoryConnection.
+### sqlserversetupscriptsbulk
+The script to setup the SQL Server / Managed Instance for backups, given
+the list of object IDs.
+
+- There is a single argument of type GetSqlServerSetupScriptsReqBulk.
+- Returns GetSqlServerSetupScriptsReplyBulk.
 ### ssogroupalreadyexists
 Determines if the SSO group already exists in the account.
 

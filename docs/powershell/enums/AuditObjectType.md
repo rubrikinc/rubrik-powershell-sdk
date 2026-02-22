@@ -1,135 +1,135 @@
 ### AuditObjectType
 Represents all the object types for which we expect to see audits.
 
-- AUDIT_OBJECT_TYPE_UNSPECIFIED - Unspecified audit object type.
-- APP_BLUEPRINT - App blueprint audit object.
-- AUTH_DOMAIN - Auth domain audit object.
-- ARCHIVAL_LOCATION - Archival location audit object.
-- AWS_ACCOUNT - AWS account audit object.
-- AWS_EVENT_TYPE - AWS event audit object.
-- CLUSTER - Cluster audit object.
-- DATA_LOCATION - Data location audit object.
-- EC2_INSTANCE - EC2 Instance object.
-- FAILOVER_CLUSTER_APP - Failover cluster app audit object.
-- FEDERATED_ACCESS - Federated access audit object.
-- GCP_NATIVE_PROJECT - GCP native Project audit object.
-- HOST - Host audit object.
-- HOST_FAILOVER_CLUSTER - Host failover audit object.
-- HYPERV_SCVMM - HyperV SCVVM audit object.
-- HYPERV_SERVER - HyperV server audit object.
-- HYPERV_VM - HyperV virtual machine audit object.
-- IP_WHITELIST - IP Whitelist audit object.
-- JOB_INSTANCE - Job instance audit object.
-- LDAP - LDAP audit object.
+- AUDIT_OBJECT_TYPE_UNSPECIFIED - Unknown object type.
+- APP_BLUEPRINT - App Blueprint object.
+- AUTH_DOMAIN - Auth domain object.
+- ARCHIVAL_LOCATION - Archival Location object.
+- AWS_ACCOUNT - AWS account object.
+- AWS_EVENT_TYPE - AWS object.
+- CLUSTER - Cluster object.
+- DATA_LOCATION - Data location object.
+- EC2_INSTANCE - EC2 instance object.
+- FAILOVER_CLUSTER_APP - Failover cluster app.
+- FEDERATED_ACCESS - Federated Access object.
+- GCP_NATIVE_PROJECT - GCP native project.
+- HOST - Host object.
+- HOST_FAILOVER_CLUSTER - Host Failover Cluster object.
+- HYPERV_SCVMM - HyperV SCVMM object.
+- HYPERV_SERVER - HyperV server object.
+- HYPERV_VM - HyperV virtual machine object.
+- IP_WHITELIST - Ip Whitelist object.
+- JOB_INSTANCE - Job instance.
+- LDAP - LDAP object.
 - LINUX_FILESET - Linux fileset object.
 - LINUX_HOST - Linux host object.
-- MANAGED_VOLUME - Managed volume object.
-- MSSQL - MsSQL object.
-- MSSQL_DATABASE - MsSQL database object.
+- MANAGED_VOLUME - Managed Volume object.
+- MSSQL - MsSQL Object.
+- MSSQL_DATABASE - Mssql Database object.
 - NAS_HOST - NAS host object.
-- NUTANIX_CLUSTER - Nutanix cluster audit object.
+- NUTANIX_CLUSTER - Nutanix cluster object.
 - NUTANIX_VM - Nutanix virtual machine object.
 - ORACLE_DB - Oracle database object.
 - ORACLE_HOST - Oracle host object.
 - ORACLE_RAC - Oracle RAC object.
-- PUBLIC_CLOUD_MACHINE_INSTANCE - Public cloud machine instance object.
-- SAP_HANA_DB - SAP HANA database object.
-- SAP_HANA_SYSTEM - SAP HANA system object.
+- PUBLIC_CLOUD_MACHINE_INSTANCE - Public cloud machine instance.
+- SAP_HANA_DB - SAP HANA database.
+- SAP_HANA_SYSTEM - SAP HANA system.
 - SHARE_FILESET - Share fileset object.
-- SLA_DOMAIN - SLA domain object.
-- SMB_DOMAIN - SMB domain object.
-- STORAGE_ARRAY - Storage array object.
-- STORAGE_ARRAY_VOLUME_GROUP - Storage array volume group.
-- STORM - Storm audit object.
-- UPGRADE - Upgrade audit object.
-- VCD - VCD audit object.
-- VCD_VAPP - VCD vApp object.
-- VCENTER - VCenter audit object.
-- VMWARE_MOUNT - VMware mount object.
-- VMWARE_VM - VMware virtual machine audit object.
-- VOLUME_GROUP - Volume group audit object.
-- WINDOWS_FILESET - Windows fileset audit object.
-- WINDOWS_HOST - Windows host object.
-- AWS_NATIVE_ACCOUNT - AWS native account.
+- SLA_DOMAIN - SLA domain.
+- SMB_DOMAIN - Samba domain.
+- STORAGE_ARRAY - Storage array.
+- STORAGE_ARRAY_VOLUME_GROUP - Storage array Volume group.
+- STORM - Storm object.
+- UPGRADE - Upgrade.
+- VCD - VCD.
+- VCD_VAPP - VCD vApp.
+- VCENTER - VCenter.
+- VMWARE_MOUNT - Vmware Mount object.
+- VMWARE_VM - VMware virtual machine.
+- VOLUME_GROUP - Volume group.
+- WINDOWS_FILESET - Windows fileset.
+- WINDOWS_HOST - Windows host.
+- AWS_NATIVE_ACCOUNT - AWS native account object.
 - AWS_NATIVE_EBS_VOLUME - AWS native EBS volume object.
 - AWS_NATIVE_EC2_INSTANCE - AWS native EC2 instance object.
-- AZURE_NATIVE_SUBSCRIPTION - Azure native subscription.
-- AZURE_NATIVE_VM - Azure native virtual machine.
-- AZURE_NATIVE_DISK - Azure native disk.
+- AZURE_NATIVE_SUBSCRIPTION - Azure native subscription object.
+- AZURE_NATIVE_VM - Azure native virtual machine object.
+- AZURE_NATIVE_DISK - Azure native disk object.
 - AZURE_SQL_DATABASE - Azure SQL database object.
-- AZURE_SQL_MANAGED_INSTANCE - Azure SQL managed instance.
-- O365_MAILBOX - O365 Mailbox audit object.
-- O365_ONEDRIVE - O365 Onedrive audit object.
-- O365_SHAREPOINT_DRIVE - O365 SharePoint drive.
-- O365_SHAREPOINT_LIST - O365 SharePoint list.
-- O365_TEAM - O365 Team.
+- AZURE_SQL_MANAGED_INSTANCE - Azure SQL managed instance object.
+- O365_MAILBOX - O365 Mailbox object.
+- O365_ONEDRIVE - O365 OneDrive object.
+- O365_SHAREPOINT_DRIVE - O365 SharePoint drive object.
+- O365_SHAREPOINT_LIST - O365 SharePoint list object.
+- O365_TEAM - O365 Team object.
 - O365_CALENDAR - O365 Calendar object.
 - O365_ORGANIZATION - O365 Organization object.
 - O365_GROUP - O365 Group.
-- SLA - SLA object.
+- SLA - Sla object.
 - SNAPSHOT - Snapshot object.
-- STORAGE_SETTINGS - Storage settings.
-- SYSTEM_PREFERENCE - System preference.
+- STORAGE_SETTINGS - Storage Settings object.
+- SYSTEM_PREFERENCE - System Preference object.
 - USER - User.
-- USER_ACTION_AUDIT - User action audit.
-- USER_GROUP - User group.
-- USER_ROLE - User role.
+- USER_ACTION_AUDIT - User Action Audit object.
+- USER_GROUP - User Group object.
+- USER_ROLE - User Role object.
 - BLUEPRINT - Blueprint object.
-- CLOUD_NATIVE_TAG_RULE - Cloud-native tag rule object.
-- SUPPORT_TUNNEL - Support tunnel.
-- AWS_NATIVE_RDS_INSTANCE - AWS native RDS instance object.
+- CLOUD_NATIVE_TAG_RULE - Cloud Native Tag Rule object.
+- SUPPORT_TUNNEL - Support Tunnel object.
+- AWS_NATIVE_RDS_INSTANCE - AWS native RDS instance.
 - GCP_NATIVE_GCE_INSTANCE - GCP native GCE instance.
 - GCP_NATIVE_DISK - GCP native disk.
 - CASSANDRA_COLUMN_FAMILY - Cassandra column family.
 - CASSANDRA_KEYSPACE - Cassandra keyspace.
 - CASSANDRA_SOURCE - Cassandra source.
-- MOSAIC_STORAGE_LOCATION - Mosaic storage location.
-- DB2_DATABASE - DB2 database object.
-- DB2_INSTANCE - DB2 instance object.
-- MSSQL_OBJECT - MsSQL object.
-- EXCHANGE_DAG - Exchange DAG.
-- EXCHANGE_DATABASE - Exchange database.
-- EXCHANGE_SERVER - Exchange server.
-- MSSQL_MOUNT - MsSQL mount object.
+- MOSAIC_STORAGE_LOCATION - Mosaic Storage Location object.
+- DB2_DATABASE - Db2 database object.
+- DB2_INSTANCE - Db2 instance object.
+- MSSQL_OBJECT - Mssql Object object.
+- EXCHANGE_DAG - Exchange DAG object.
+- EXCHANGE_DATABASE - Exchange database object.
+- EXCHANGE_SERVER - Exchange Server object.
+- MSSQL_MOUNT - Mssql Mount object.
 - MONGODB_SOURCE - MongoDB source.
-- O365_SHAREPOINT_SITE - O365 SharePoint site audit object.
-- ORACLE_MOUNT - Oracle mount object.
-- VMWARE_COMPUTE_CLUSTER - VMware Compute Cluster object.
-- MONGO_SOURCE - Mongo source object.
+- O365_SHAREPOINT_SITE - O365 Site object.
+- ORACLE_MOUNT - Oracle Mount object.
+- VMWARE_COMPUTE_CLUSTER - VMware compute cluster.
+- MONGO_SOURCE - MongoDB source.
 - ORGANIZATION - Organization object.
-- CERTIFICATE_MANAGEMENT - Certificate management object
-- AWS_NATIVE_S3_BUCKET - AWS native S3 Bucket.
-- MONGO_COLLECTION - MongoDB Collection object.
-- AZURE_STORAGE_ACCOUNT - Azure storage account
-- K8S_CLUSTER - Kubernetes cluster object.
-- K8S_PROTECTION_SET - Kubernetes protection set object.
+- CERTIFICATE_MANAGEMENT - Certificate Management.
+- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket object.
+- MONGO_COLLECTION - MongoDB collection.
+- AZURE_STORAGE_ACCOUNT - Azure storage account.
+- K8S_CLUSTER - Kubernetes Cluster object.
+- K8S_PROTECTION_SET - Kubernetes Protection Set object.
 - AZURE_AD_DIRECTORY - Azure AD Directory object.
 - ENCRYPTION_MANAGEMENT - Encryption Management object.
-- NUTANIX_PRISM_CENTRAL - Nutanix prism central audit object.
+- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central object.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
 - ATLASSIAN_SITE - Atlassian site.
 - JIRA_PROJECT - Atlassian Jira project.
 - JIRA_SETTINGS - Atlassian Jira settings.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
-- TPR_POLICY - TPR policy.
-- TPR_REQUEST - TPR request.
-- TPR_CONFIG - TPR configuration.
+- TPR_POLICY - TPR policy object.
+- TPR_REQUEST - TPR request object.
+- TPR_CONFIG - TPR configuration object.
 - OAUTH_TOKEN - OAuth token.
-- EXOCOMPUTE - Exocompute.
+- EXOCOMPUTE - Exocompute object.
 - CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
-- DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
-- CROSS_ACCOUNT_PAIR - Cross-account pair.
+- DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account object.
+- CROSS_ACCOUNT_PAIR - Cross-account pair event type.
 - SALESFORCE_ORGANIZATION - Salesforce organization.
-- SALESFORCE_OBJECT - Salesforce object.
+- SALESFORCE_OBJECT - Salesforce objects.
 - SALESFORCE_METADATA - Salesforce metadata.
 - POSTGRES_DB_CLUSTER - Postgres Database Cluster.
-- INTEL_FEED - Threat intel.
-- NUTANIX_ERA - Nutanix Era audit object.
+- INTEL_FEED - Orion threat feed.
+- NUTANIX_ERA - Nutanix Era object.
 - NAS_SYSTEM - NAS system.
 - ACTIVE_DIRECTORY_FOREST - Active Directory forest.
 - CONFLUENCE_SPACE - Confluence Space.
-- NAS_FILESET - NAS Fileset.
+- NAS_FILESET - NAS fileset object.
 - M365_BACKUP_STORAGE_ORG - Microsoft 365 Backup Storage Subscription.
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
@@ -141,16 +141,16 @@ Represents all the object types for which we expect to see audits.
 - D365_ORGANIZATION - Dynamics 365 organization.
 - D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
 - D365_METADATA - Dynamics 365 metadata.
-- INTEGRATION - Integration.
-- CHATBOT - Chatbot.
-- MYSQLDB_INSTANCE - MySQL Instance.
-- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB Table.
+- INTEGRATION - Integration object.
+- CHATBOT - Chatbot object.
+- MYSQLDB_INSTANCE - MySQL instance.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native dynamoDB table.
 - K8S_LABEL - Kubernetes label object.
 - INFORMIX_INSTANCE - Informix instance.
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
-- RSC_TAG - RSC tag.
-- OPENSTACK_ENVIRONMENT - Openstack environment.
-- OPENSTACK_VIRTUAL_MACHINE - Openstack virtual machine.
+- RSC_TAG - Rsc Tag object.
+- OPENSTACK_ENVIRONMENT - Openstack Environment.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
 - GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organisation.
 - GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organisation unit.
 - GOOGLE_WORKSPACE_USER - Google Workspace User.
@@ -172,8 +172,8 @@ Represents all the object types for which we expect to see audits.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - GITHUB_ORGANIZATION - GitHub Organization.
 - GITHUB_REPOSITORY - GitHub Repository.
-- AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router.
-- PROXMOX_ENVIRONMENT - Proxmox Environment.
-- PROXMOX_VIRTUAL_MACHINE - Proxmox Virtual Machine.
-- CLI - Command Line Interface.
+- AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router object.
+- PROXMOX_ENVIRONMENT - Proxmox environment.
+- PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
+- CLI - Cli object.
 - RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).

@@ -195,10 +195,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
     /// 		# REQUIRED
     /// 		authInfo = @{
-    /// 			# OPTIONAL
-    /// 			token = $someString
     /// 			# REQUIRED
     /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			token = $someString
     /// 			# OPTIONAL
     /// 			userCredentials = @{
     /// 				# REQUIRED
@@ -220,10 +220,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		subscriptionType = @{
     /// 			# OPTIONAL
     /// 			eventSubscription = @{
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllEvents = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				eventTypes = @(
     /// 					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
@@ -236,20 +232,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				severities = @(
     /// 					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
     /// 				)
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllEvents = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				templateInfo = @{
     /// 					# OPTIONAL
-    /// 					templateId = $someInt
+    /// 					templateId = $someInt64
     /// 					# OPTIONAL
     /// 					customTemplate = $someString
     /// 				}
     /// 			}
     /// 			# OPTIONAL
     /// 			auditSubscription = @{
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllAudits = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				auditTypes = @(
     /// 					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
@@ -262,10 +258,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				severities = @(
     /// 					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
     /// 				)
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllAudits = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				templateInfo = @{
     /// 					# OPTIONAL
-    /// 					templateId = $someInt
+    /// 					templateId = $someInt64
     /// 					# OPTIONAL
     /// 					customTemplate = $someString
     /// 				}
@@ -408,10 +408,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
     /// 	# REQUIRED
     /// 	authInfo = @{
-    /// 		# OPTIONAL
-    /// 		token = $someString
     /// 		# REQUIRED
     /// 		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 		# OPTIONAL
+    /// 		token = $someString
     /// 		# OPTIONAL
     /// 		userCredentials = @{
     /// 			# REQUIRED
@@ -723,10 +723,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
     /// 		# REQUIRED
     /// 		authInfo = @{
-    /// 			# OPTIONAL
-    /// 			token = $someString
     /// 			# REQUIRED
     /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			token = $someString
     /// 			# OPTIONAL
     /// 			userCredentials = @{
     /// 				# REQUIRED
@@ -748,10 +748,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		subscriptionType = @{
     /// 			# OPTIONAL
     /// 			eventSubscription = @{
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllEvents = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				eventTypes = @(
     /// 					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
@@ -764,20 +760,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				severities = @(
     /// 					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
     /// 				)
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllEvents = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				templateInfo = @{
     /// 					# OPTIONAL
-    /// 					templateId = $someInt
+    /// 					templateId = $someInt64
     /// 					# OPTIONAL
     /// 					customTemplate = $someString
     /// 				}
     /// 			}
     /// 			# OPTIONAL
     /// 			auditSubscription = @{
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllAudits = $someBoolean
-    /// 				# OPTIONAL
-    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				auditTypes = @(
     /// 					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
@@ -790,10 +786,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				severities = @(
     /// 					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
     /// 				)
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllAudits = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isSubscribedToAllObjectTypes = $someBoolean
     /// 				# REQUIRED
     /// 				templateInfo = @{
     /// 					# OPTIONAL
-    /// 					templateId = $someInt
+    /// 					templateId = $someInt64
     /// 					# OPTIONAL
     /// 					customTemplate = $someString
     /// 				}
@@ -1131,10 +1131,10 @@ $query.Var.input = @{
 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
 		# REQUIRED
 		authInfo = @{
-			# OPTIONAL
-			token = $someString
 			# REQUIRED
 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+			# OPTIONAL
+			token = $someString
 			# OPTIONAL
 			userCredentials = @{
 				# REQUIRED
@@ -1156,10 +1156,6 @@ $query.Var.input = @{
 		subscriptionType = @{
 			# OPTIONAL
 			eventSubscription = @{
-				# OPTIONAL
-				isSubscribedToAllEvents = $someBoolean
-				# OPTIONAL
-				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				eventTypes = @(
 					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
@@ -1172,20 +1168,20 @@ $query.Var.input = @{
 				severities = @(
 					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
 				)
+				# OPTIONAL
+				isSubscribedToAllEvents = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				templateInfo = @{
 					# OPTIONAL
-					templateId = $someInt
+					templateId = $someInt64
 					# OPTIONAL
 					customTemplate = $someString
 				}
 			}
 			# OPTIONAL
 			auditSubscription = @{
-				# OPTIONAL
-				isSubscribedToAllAudits = $someBoolean
-				# OPTIONAL
-				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				auditTypes = @(
 					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
@@ -1198,10 +1194,14 @@ $query.Var.input = @{
 				severities = @(
 					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
 				)
+				# OPTIONAL
+				isSubscribedToAllAudits = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				templateInfo = @{
 					# OPTIONAL
-					templateId = $someInt
+					templateId = $someInt64
 					# OPTIONAL
 					customTemplate = $someString
 				}
@@ -1312,10 +1312,10 @@ $query.Var.input = @{
 	providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
 	# REQUIRED
 	authInfo = @{
-		# OPTIONAL
-		token = $someString
 		# REQUIRED
 		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+		# OPTIONAL
+		token = $someString
 		# OPTIONAL
 		userCredentials = @{
 			# REQUIRED
@@ -1579,10 +1579,10 @@ $query.Var.input = @{
 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
 		# REQUIRED
 		authInfo = @{
-			# OPTIONAL
-			token = $someString
 			# REQUIRED
 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+			# OPTIONAL
+			token = $someString
 			# OPTIONAL
 			userCredentials = @{
 				# REQUIRED
@@ -1604,10 +1604,6 @@ $query.Var.input = @{
 		subscriptionType = @{
 			# OPTIONAL
 			eventSubscription = @{
-				# OPTIONAL
-				isSubscribedToAllEvents = $someBoolean
-				# OPTIONAL
-				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				eventTypes = @(
 					$someEventType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventType]) for enum values.
@@ -1620,20 +1616,20 @@ $query.Var.input = @{
 				severities = @(
 					$someEventSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventSeverity]) for enum values.
 				)
+				# OPTIONAL
+				isSubscribedToAllEvents = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				templateInfo = @{
 					# OPTIONAL
-					templateId = $someInt
+					templateId = $someInt64
 					# OPTIONAL
 					customTemplate = $someString
 				}
 			}
 			# OPTIONAL
 			auditSubscription = @{
-				# OPTIONAL
-				isSubscribedToAllAudits = $someBoolean
-				# OPTIONAL
-				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				auditTypes = @(
 					$someAuditType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditType]) for enum values.
@@ -1646,10 +1642,14 @@ $query.Var.input = @{
 				severities = @(
 					$someAuditSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuditSeverity]) for enum values.
 				)
+				# OPTIONAL
+				isSubscribedToAllAudits = $someBoolean
+				# OPTIONAL
+				isSubscribedToAllObjectTypes = $someBoolean
 				# REQUIRED
 				templateInfo = @{
 					# OPTIONAL
-					templateId = $someInt
+					templateId = $someInt64
 					# OPTIONAL
 					customTemplate = $someString
 				}

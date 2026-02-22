@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotNum")]
         public System.Int32? SnapshotNum { get; set; }
 
+        //      C# -> O365QuarantineInfo? O365QuarantineInfo
+        // GraphQL -> o365QuarantineInfo: O365QuarantineInfo (type)
+        [JsonProperty("o365QuarantineInfo")]
+        public O365QuarantineInfo? O365QuarantineInfo { get; set; }
+
 
         #endregion
 
@@ -84,7 +89,8 @@ namespace RubrikSecurityCloud.Types
         System.String? ParentId = null,
         System.String? SharepointId = null,
         System.String? SnapshotId = null,
-        System.Int32? SnapshotNum = null
+        System.Int32? SnapshotNum = null,
+        O365QuarantineInfo? O365QuarantineInfo = null
     ) 
     {
         if ( ObjectType != null ) {
@@ -113,6 +119,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotNum != null ) {
             this.SnapshotNum = SnapshotNum;
+        }
+        if ( O365QuarantineInfo != null ) {
+            this.O365QuarantineInfo = O365QuarantineInfo;
         }
         return this;
     }
@@ -207,6 +216,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotNum\n" ;
             } else {
                 s += ind + "snapshotNum\n" ;
+            }
+        }
+        //      C# -> O365QuarantineInfo? O365QuarantineInfo
+        // GraphQL -> o365QuarantineInfo: O365QuarantineInfo (type)
+        if (this.O365QuarantineInfo != null) {
+            var fspec = this.O365QuarantineInfo.AsFieldSpec(conf.Child("o365QuarantineInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "o365QuarantineInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -368,6 +389,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotNum != null && ec.Excludes("snapshotNum",true))
         {
             this.SnapshotNum = null;
+        }
+        //      C# -> O365QuarantineInfo? O365QuarantineInfo
+        // GraphQL -> o365QuarantineInfo: O365QuarantineInfo (type)
+        if (ec.Includes("o365QuarantineInfo",false))
+        {
+            if(this.O365QuarantineInfo == null) {
+
+                this.O365QuarantineInfo = new O365QuarantineInfo();
+                this.O365QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("o365QuarantineInfo"));
+
+            } else {
+
+                this.O365QuarantineInfo.ApplyExploratoryFieldSpec(ec.NewChild("o365QuarantineInfo"));
+
+            }
+        }
+        else if (this.O365QuarantineInfo != null && ec.Excludes("o365QuarantineInfo",false))
+        {
+            this.O365QuarantineInfo = null;
         }
     }
 

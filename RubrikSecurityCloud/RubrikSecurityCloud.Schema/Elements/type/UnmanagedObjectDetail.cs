@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("downloadedSnapshotsBytes")]
         public System.Int64? DownloadedSnapshotsBytes { get; set; }
 
+        //      C# -> System.Int64? DownloadedSnapshotsCount
+        // GraphQL -> downloadedSnapshotsCount: Long! (scalar)
+        [JsonProperty("downloadedSnapshotsCount")]
+        public System.Int64? DownloadedSnapshotsCount { get; set; }
+
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
         // GraphQL -> hasSnapshotsWithPolicy: Boolean! (scalar)
         [JsonProperty("hasSnapshotsWithPolicy")]
@@ -170,6 +175,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CloudAccountName = null,
         System.String? ClusterUuid = null,
         System.Int64? DownloadedSnapshotsBytes = null,
+        System.Int64? DownloadedSnapshotsCount = null,
         System.Boolean? HasSnapshotsWithPolicy = null,
         System.String? Id = null,
         System.Boolean? IsRemote = null,
@@ -217,6 +223,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DownloadedSnapshotsBytes != null ) {
             this.DownloadedSnapshotsBytes = DownloadedSnapshotsBytes;
+        }
+        if ( DownloadedSnapshotsCount != null ) {
+            this.DownloadedSnapshotsCount = DownloadedSnapshotsCount;
         }
         if ( HasSnapshotsWithPolicy != null ) {
             this.HasSnapshotsWithPolicy = HasSnapshotsWithPolicy;
@@ -376,6 +385,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "downloadedSnapshotsBytes\n" ;
             } else {
                 s += ind + "downloadedSnapshotsBytes\n" ;
+            }
+        }
+        //      C# -> System.Int64? DownloadedSnapshotsCount
+        // GraphQL -> downloadedSnapshotsCount: Long! (scalar)
+        if (this.DownloadedSnapshotsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "downloadedSnapshotsCount\n" ;
+            } else {
+                s += ind + "downloadedSnapshotsCount\n" ;
             }
         }
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
@@ -724,6 +742,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DownloadedSnapshotsBytes != null && ec.Excludes("downloadedSnapshotsBytes",true))
         {
             this.DownloadedSnapshotsBytes = null;
+        }
+        //      C# -> System.Int64? DownloadedSnapshotsCount
+        // GraphQL -> downloadedSnapshotsCount: Long! (scalar)
+        if (ec.Includes("downloadedSnapshotsCount",true))
+        {
+            if(this.DownloadedSnapshotsCount == null) {
+
+                this.DownloadedSnapshotsCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DownloadedSnapshotsCount != null && ec.Excludes("downloadedSnapshotsCount",true))
+        {
+            this.DownloadedSnapshotsCount = null;
         }
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
         // GraphQL -> hasSnapshotsWithPolicy: Boolean! (scalar)

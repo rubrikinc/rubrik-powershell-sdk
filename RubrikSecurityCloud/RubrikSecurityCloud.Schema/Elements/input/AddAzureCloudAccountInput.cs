@@ -52,6 +52,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAsynchronous")]
         public System.Boolean? IsAsynchronous { get; set; }
 
+        //      C# -> AzureManagementGroupInput? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroupInput (input)
+        [JsonProperty("managementGroup")]
+        public AzureManagementGroupInput? ManagementGroup { get; set; }
+
 
         #endregion
 

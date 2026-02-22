@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isObjectLevelAnalysis")]
         public System.Boolean? IsObjectLevelAnalysis { get; set; }
 
+        //      C# -> System.Boolean? AggregateAtPath
+        // GraphQL -> aggregateAtPath: Boolean (scalar)
+        [JsonProperty("aggregateAtPath")]
+        public System.Boolean? AggregateAtPath { get; set; }
+
         //      C# -> List<System.String>? DocumentTypesFilter
         // GraphQL -> documentTypesFilter: [UUID!] (scalar)
         [JsonProperty("documentTypesFilter")]

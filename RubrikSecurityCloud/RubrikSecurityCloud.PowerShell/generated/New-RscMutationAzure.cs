@@ -143,6 +143,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAsynchronous = $someBoolean
+    /// 	# OPTIONAL
+    /// 	managementGroup = @{
+    /// 		# OPTIONAL
+    /// 		nativeId = $someString
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3573,6 +3580,13 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isAsynchronous = $someBoolean
+	# OPTIONAL
+	managementGroup = @{
+		# OPTIONAL
+		nativeId = $someString
+		# OPTIONAL
+		name = $someString
+	}
 }"
             );
         }

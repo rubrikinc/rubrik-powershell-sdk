@@ -1,7 +1,7 @@
 ### SubscriptionTypeV2
-The event or audit subscription information to which the webhook is subscribed.
+Webhook subscription settings.
 
 - eventSubscription: EventSubscription
-  - The event subscription information.
+  - Event subscription settings.
 - auditSubscription: AuditSubscription
-  - The audit subscription information.
+  - Audit subscription settings.

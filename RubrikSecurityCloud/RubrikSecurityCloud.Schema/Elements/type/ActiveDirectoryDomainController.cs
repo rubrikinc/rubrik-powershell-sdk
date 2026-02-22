@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("macAddress")]
         public System.String? MacAddress { get; set; }
 
+        //      C# -> List<System.String>? MacAddresses
+        // GraphQL -> macAddresses: [String!]! (scalar)
+        [JsonProperty("macAddresses")]
+        public List<System.String>? MacAddresses { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -431,6 +436,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsGlobalCatalog = null,
         System.Boolean? IsRelic = null,
         System.String? MacAddress = null,
+        List<System.String>? MacAddresses = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -531,6 +537,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MacAddress != null ) {
             this.MacAddress = MacAddress;
+        }
+        if ( MacAddresses != null ) {
+            this.MacAddresses = MacAddresses;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -861,6 +870,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "macAddress\n" ;
             } else {
                 s += ind + "macAddress\n" ;
+            }
+        }
+        //      C# -> List<System.String>? MacAddresses
+        // GraphQL -> macAddresses: [String!]! (scalar)
+        if (this.MacAddresses != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "macAddresses\n" ;
+            } else {
+                s += ind + "macAddresses\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1673,6 +1691,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MacAddress != null && ec.Excludes("macAddress",true))
         {
             this.MacAddress = null;
+        }
+        //      C# -> List<System.String>? MacAddresses
+        // GraphQL -> macAddresses: [String!]! (scalar)
+        if (ec.Includes("macAddresses",true))
+        {
+            if(this.MacAddresses == null) {
+
+                this.MacAddresses = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MacAddresses != null && ec.Excludes("macAddresses",true))
+        {
+            this.MacAddresses = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

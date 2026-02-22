@@ -55,3 +55,4 @@ of a S3Compatible location.
 - VIVO_OPEN_CLOUD - Vivo Open Cloud subtype.
 - WESTERN_DIGITAL - Western Digital subtype.
 - ZADARA - Zadara subtype.
+- POINT_ARCHIVAL_GATEWAY - PoINT Archival Gateway.

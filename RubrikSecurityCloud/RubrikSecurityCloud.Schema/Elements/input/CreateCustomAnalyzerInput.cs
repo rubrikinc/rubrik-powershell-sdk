@@ -109,6 +109,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isInactive")]
         public System.Boolean? IsInactive { get; set; }
 
+        //      C# -> System.String? ExcludeFieldNamePattern
+        // GraphQL -> excludeFieldNamePattern: String (scalar)
+        [JsonProperty("excludeFieldNamePattern")]
+        public System.String? ExcludeFieldNamePattern { get; set; }
+
+        //      C# -> System.String? ExcludePathPattern
+        // GraphQL -> excludePathPattern: String (scalar)
+        [JsonProperty("excludePathPattern")]
+        public System.String? ExcludePathPattern { get; set; }
+
         //      C# -> RiskLevelType? Risk
         // GraphQL -> risk: RiskLevelType (enum)
         [JsonProperty("risk")]

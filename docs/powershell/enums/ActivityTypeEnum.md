@@ -1,73 +1,73 @@
 ### ActivityTypeEnum
 Enum representing different type of activities.
 
-- Storage
-- THREAT_MONITORING - Threat monitoring activity event type.
-- PERMISSION_ASSESSMENT - Activity representing the permission assessment event type.
-- Tpr
-- Classification
-- LegalHold
-- HypervScvmm
-- THREAT_FEED - Activity representing threat feed event type.
-- Hdfs
-- SCHEDULE_RECOVERY - Activity representing schedule-recovery event type.
-- RadarAnalysis
-- VolumeGroup
-- LockSnapshot
-- Instantiate
-- IDENTITY_VIOLATION - Activity representing identity violation event type.
+- Anomaly - Activity representing anomaly detection event type.
+- Archive - Activity representing archive event type.
+- AuthDomain - Activity representing authentication domain event type.
+- AwsEvent - Activity representing AWS event type.
 - BULK_RECOVERY - Activity representing bulk recovery.
-- LOG_BACKUP - Activity representing log backup event type.
-- HypervServer
-- ISOLATED_RECOVERY - Recovering selected objects to a Cyber Recovery Environment (IRE).
-- Configuration
-- IDENTITY_ACTIVITY - Activity representing identity activities type.
-- Upgrade
-- ENCRYPTION_MANAGEMENT_OPERATION - Activity representing Encryption Management event type.
-- CloudNativeVm
-- StorageArray
-- Connection
-- Conversion
-- DISCOVER - Activity representing discover activity type.
-- AuthDomain
-- UnknownEventType
-- QUARANTINE - Activity representing quarantine event type.
-- CloudNativeVirtualMachine
-- Discovery
-- Replication
-- Maintenance
-- Support
-- SECURITY_VIOLATION - Activity representing security violation event type.
-- Fileset
-- LocalRecovery
-- System
-- Failover
-- OWNERSHIP - Activity representing change of account ownership.
-- StormResource
-- Diagnostic
-- Vcd
-- Anomaly
-- SEEDING - Activity representing seeding event type.
+- Backup - Activity representing backup event type.
 - CLOUD_DIRECT_ARCHIVE - Activity representing CloudDirect archive activity type.
-- Archive
-- CloudNativeSource
-- HostEvent
-- AwsEvent
-- ResourceOperations
-- IDENTITY_ALERTS - Activity representing identity alerts type.
-- Backup
-- Sync
-- TENANT_QUOTA - Activity representing tenant quota event type.
-- Hardware
-- TestFailover
-- Recovery
-- Download
-- EmbeddedEvent
-- PROTECTED_OBJECT_DELETION
 - COPY - Activity representing copy activity type.
+- Classification - Activity representing classification event type.
+- CloudNativeSource - Activity representing cloud native source event type.
+- CloudNativeVirtualMachine - Activity representing cloud native virtual machine event type.
+- CloudNativeVm - Activity representing cloud native virtual machine event type.
+- Configuration - Activity representing configuration event type.
+- Connection - Activity representing connection event type.
+- Conversion - Activity representing conversion event type.
+- DISCOVER - Activity representing discover activity type.
+- Diagnostic - Activity representing diagnostic event type.
+- Discovery - Activity representing discovery event type.
+- Download - Activity representing download event type.
+- ENCRYPTION_MANAGEMENT_OPERATION - Activity representing Encryption Management event type.
+- EmbeddedEvent - Activity representing embedded event type.
+- Failover - Activity representing failover event type.
+- Fileset - Activity representing fileset event type.
+- Hardware - Activity representing hardware event type.
+- Hdfs - Activity representing HDFS event type.
+- HostEvent - Activity representing host event type.
+- HypervScvmm - Activity representing Hyper-V SCVMM event type.
+- HypervServer - Activity representing Hyper-V server event type.
+- IDENTITY_ACTIVITY - Activity representing identity activities type.
+- IDENTITY_ALERTS - Activity representing identity alerts type.
+- IDENTITY_VIOLATION - Activity representing identity violation event type.
+- ISOLATED_RECOVERY - Recovering selected objects to a Cyber Recovery Environment (IRE).
+- Index - Activity representing index event type.
+- Instantiate - Activity representing instantiate event type.
+- LOG_BACKUP - Activity representing log backup event type.
+- LegalHold - Activity representing legal hold event type.
+- LocalRecovery - Activity representing local recovery event type.
+- LockSnapshot - Activity representing lock snapshot event type.
+- Maintenance - Activity representing maintenance event type.
+- NutanixCluster - Activity representing Nutanix cluster event type.
+- OWNERSHIP - Activity representing change of account ownership.
+- PERMISSION_ASSESSMENT - Activity representing the permission assessment event type.
+- PROTECTED_OBJECT_DELETION - Activity representing protected object deletion event type.
+- QUARANTINE - Activity representing quarantine event type.
+- RadarAnalysis - Activity representing ransomware analysis event type.
+- Recovery - Activity representing recovery event type.
+- Replication - Activity representing replication event type.
+- ResourceOperations - Activity representing resource operations event type.
+- SCHEDULE_RECOVERY - Activity representing schedule-recovery event type.
+- SECURITY_VIOLATION - Activity representing security violation event type.
+- SEEDING - Activity representing seeding event type.
+- Storage - Activity representing storage event type.
+- StorageArray - Activity representing storage array event type.
+- StormResource - Activity representing storm resource event type.
+- Support - Activity representing support event type.
+- Sync - Activity representing sync event type.
+- System - Activity representing system event type.
 - TENANT_OVERLAP - Activity representing tenant permission overlap.
-- NutanixCluster
-- VCenter
-- Index
-- ThreatHunt
+- TENANT_QUOTA - Activity representing tenant quota event type.
+- THREAT_FEED - Activity representing threat feed event type.
+- THREAT_MONITORING - Threat monitoring activity event type.
+- TestFailover - Activity representing test failover event type.
+- ThreatHunt - Activity representing threat hunt event type.
+- Tpr - Activity representing TPR event type.
 - USER_INTELLIGENCE - Activity representing the user intelligence event type.
+- UnknownEventType - Activity representing unknown event type.
+- Upgrade - Activity representing upgrade event type.
+- VCenter - Activity representing vCenter event type.
+- Vcd - Activity representing vCD event type.
+- VolumeGroup - Activity representing volume group event type.

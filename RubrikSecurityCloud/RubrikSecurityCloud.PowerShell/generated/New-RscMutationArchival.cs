@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Archival' API domain:
-    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -596,6 +596,63 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RegisterMigration operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: RegisterMigration
+    /// 
+    /// $query = New-RscMutationArchival -Operation RegisterMigration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	sourceLocationId = $someString
+    /// 	# REQUIRED
+    /// 	targetLocationType = $someArchivalMigrationTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalMigrationTargetType]) for enum values.
+    /// 	# REQUIRED
+    /// 	destination = @{
+    /// 		# OPTIONAL
+    /// 		target = @{
+    /// 			# OPTIONAL
+    /// 			s3Compatible = @{
+    /// 				# REQUIRED
+    /// 				accessKey = $someString
+    /// 				# REQUIRED
+    /// 				secretKey = $someString
+    /// 				# REQUIRED
+    /// 				endpoint = $someString
+    /// 				# REQUIRED
+    /// 				subtype = $someS3CompatibleSubType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.S3CompatibleSubType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				ibmDetails = @{
+    /// 					# OPTIONAL
+    /// 					provisioningCode = $someString
+    /// 					# REQUIRED
+    /// 					deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RegisterArchivalMigrationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ResumeTarget operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -818,6 +875,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "PauseTarget",
                 "PromoteReaderTarget",
                 "RefreshReaderTarget",
+                "RegisterMigration",
                 "ResumeTarget",
                 "UpdateGlacierTarget",
                 "UpdateManualTargetMapping",
@@ -873,6 +931,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RefreshReaderTarget":
                         this.ProcessRecord_RefreshReaderTarget();
+                        break;
+                    case "RegisterMigration":
+                        this.ProcessRecord_RegisterMigration();
                         break;
                     case "ResumeTarget":
                         this.ProcessRecord_ResumeTarget();
@@ -1005,6 +1066,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RefreshReaderTarget";
             // Create new graphql operation refreshReaderTarget
             InitMutationRefreshReaderTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // registerArchivalMigration.
+        internal void ProcessRecord_RegisterMigration()
+        {
+            this._logger.name += " -RegisterMigration";
+            // Create new graphql operation registerArchivalMigration
+            InitMutationRegisterArchivalMigration();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1472,6 +1542,55 @@ $query.Var.input = @{
 	externalLocationId = $someString
 	# OPTIONAL
 	clusterId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // registerArchivalMigration(input: RegisterArchivalMigrationInput!): RegisterArchivalMigrationReply!
+        internal void InitMutationRegisterArchivalMigration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RegisterArchivalMigrationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRegisterArchivalMigration",
+                "($input: RegisterArchivalMigrationInput!)",
+                "RegisterArchivalMigrationReply",
+                Mutation.RegisterArchivalMigration,
+                Mutation.RegisterArchivalMigrationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	sourceLocationId = $someString
+	# REQUIRED
+	targetLocationType = $someArchivalMigrationTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalMigrationTargetType]) for enum values.
+	# REQUIRED
+	destination = @{
+		# OPTIONAL
+		target = @{
+			# OPTIONAL
+			s3Compatible = @{
+				# REQUIRED
+				accessKey = $someString
+				# REQUIRED
+				secretKey = $someString
+				# REQUIRED
+				endpoint = $someString
+				# REQUIRED
+				subtype = $someS3CompatibleSubType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.S3CompatibleSubType]) for enum values.
+				# OPTIONAL
+				ibmDetails = @{
+					# OPTIONAL
+					provisioningCode = $someString
+					# REQUIRED
+					deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
+				}
+			}
+		}
+	}
 }"
             );
         }

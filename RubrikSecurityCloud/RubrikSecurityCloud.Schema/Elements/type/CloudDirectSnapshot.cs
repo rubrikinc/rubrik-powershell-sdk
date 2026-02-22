@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotRetentionInfo")]
         public CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
 
+        //      C# -> CloudDirectSnapshotSummary? Summary
+        // GraphQL -> summary: CloudDirectSnapshotSummary (type)
+        [JsonProperty("summary")]
+        public CloudDirectSnapshotSummary? Summary { get; set; }
+
         //      C# -> CloudDirectNasObject? Object
         // GraphQL -> object: CloudDirectNasObject! (union)
         [JsonProperty("object")]
@@ -198,6 +203,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Target = null,
         System.String? WorkloadId = null,
         CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo = null,
+        CloudDirectSnapshotSummary? Summary = null,
         CloudDirectNasObject? Object = null
     ) 
     {
@@ -281,6 +287,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotRetentionInfo != null ) {
             this.SnapshotRetentionInfo = SnapshotRetentionInfo;
+        }
+        if ( Summary != null ) {
+            this.Summary = Summary;
         }
         if ( Object != null ) {
             this.Object = Object;
@@ -546,6 +555,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectSnapshotSummary? Summary
+        // GraphQL -> summary: CloudDirectSnapshotSummary (type)
+        if (this.Summary != null) {
+            var fspec = this.Summary.AsFieldSpec(conf.Child("summary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "summary" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1035,6 +1056,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotRetentionInfo != null && ec.Excludes("snapshotRetentionInfo",false))
         {
             this.SnapshotRetentionInfo = null;
+        }
+        //      C# -> CloudDirectSnapshotSummary? Summary
+        // GraphQL -> summary: CloudDirectSnapshotSummary (type)
+        if (ec.Includes("summary",false))
+        {
+            if(this.Summary == null) {
+
+                this.Summary = new CloudDirectSnapshotSummary();
+                this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+
+            } else {
+
+                this.Summary.ApplyExploratoryFieldSpec(ec.NewChild("summary"));
+
+            }
+        }
+        else if (this.Summary != null && ec.Excludes("summary",false))
+        {
+            this.Summary = null;
         }
         //      C# -> CloudDirectNasObject? Object
         // GraphQL -> object: CloudDirectNasObject! (union)

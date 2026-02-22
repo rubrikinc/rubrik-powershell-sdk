@@ -57,6 +57,12 @@ Refreshes a reader Archival Location.
 
 - There is a single argument of type RefreshReaderTargetInput.
 - Returns System.String.
+### registermigration
+Registers an archival migration from a source archival location to a target
+location, by passing the source location id and target location details.
+
+- There is a single argument of type RegisterArchivalMigrationInput.
+- Returns RegisterArchivalMigrationReply.
 ### resumetarget
 - There is a single argument of type ResumeTargetInput.
 - Returns ResumeTargetReply.

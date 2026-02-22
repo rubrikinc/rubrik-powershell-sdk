@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logRetentionInDays")]
         public System.Int32? LogRetentionInDays { get; set; }
 
+        //      C# -> AzureSqlLtrConfigType? LtrConfig
+        // GraphQL -> ltrConfig: AzureSqlLtrConfigType (type)
+        [JsonProperty("ltrConfig")]
+        public AzureSqlLtrConfigType? LtrConfig { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureSqlDatabaseDbConfig Set(
-        System.Int32? LogRetentionInDays = null
+        System.Int32? LogRetentionInDays = null,
+        AzureSqlLtrConfigType? LtrConfig = null
     ) 
     {
         if ( LogRetentionInDays != null ) {
             this.LogRetentionInDays = LogRetentionInDays;
+        }
+        if ( LtrConfig != null ) {
+            this.LtrConfig = LtrConfig;
         }
         return this;
     }
@@ -62,6 +71,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "logRetentionInDays\n" ;
             } else {
                 s += ind + "logRetentionInDays\n" ;
+            }
+        }
+        //      C# -> AzureSqlLtrConfigType? LtrConfig
+        // GraphQL -> ltrConfig: AzureSqlLtrConfigType (type)
+        if (this.LtrConfig != null) {
+            var fspec = this.LtrConfig.AsFieldSpec(conf.Child("ltrConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ltrConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -87,6 +108,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogRetentionInDays != null && ec.Excludes("logRetentionInDays",true))
         {
             this.LogRetentionInDays = null;
+        }
+        //      C# -> AzureSqlLtrConfigType? LtrConfig
+        // GraphQL -> ltrConfig: AzureSqlLtrConfigType (type)
+        if (ec.Includes("ltrConfig",false))
+        {
+            if(this.LtrConfig == null) {
+
+                this.LtrConfig = new AzureSqlLtrConfigType();
+                this.LtrConfig.ApplyExploratoryFieldSpec(ec.NewChild("ltrConfig"));
+
+            } else {
+
+                this.LtrConfig.ApplyExploratoryFieldSpec(ec.NewChild("ltrConfig"));
+
+            }
+        }
+        else if (this.LtrConfig != null && ec.Excludes("ltrConfig",false))
+        {
+            this.LtrConfig = null;
         }
     }
 

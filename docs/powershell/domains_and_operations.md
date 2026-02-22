@@ -10,16 +10,16 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | [Account (9,14)](#account-domain) | [Cluster (44,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (31,25)](#snapshot-domain) |
-| [Active Directory (5,4)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (10,16)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
+| [Active Directory (5,5)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (10,16)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (13,17)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (229,192)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (13,18)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (231,193)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (9,13)](#mongo-domain) | [RCV (5,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (60,46)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (18,8)](#report-domain) | [Threat (18,7)](#threat-domain) |
 | [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,15)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (8,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
-| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,11)](#sla-domain) | [VMware vSphere VM (8,29)](#vmware-vsphere-vm-domain) |
+| [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,12)](#sla-domain) | [VMware vSphere VM (8,29)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (8,4)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,7)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
 | [Cloud Native (21,15)](#cloud-native-domain) | [Kubernetes (13,24)](#kubernetes-domain) | [Office 365 (42,35)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
@@ -88,6 +88,10 @@ Return the Active Directory objects matching the search criteria. | `New-RscQuer
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
+| CreateDownloadFilesJob | Download files from an Active Directory Domain Controller snapshot  
+  
+Supported in v9.5+  
+Start an asynchronous job to download multiple files and folders from a specified Active Directory Domain Controller snapshot. The response returns an asynchronous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'active_directory/request/{id}'. | `New-RscMutationActiveDirectory -Operation CreateDownloadFilesJob`<BR> | [createActiveDirectoryDownloadFilesJob](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateLiveMount | Initiate a Live Mount of an Active Directory Domain Controller snapshot  
   
 Supported in v9.0+  
@@ -179,6 +183,8 @@ Initiates a job to download one or more files or folders from an archived Filese
 | PauseTarget | N/A | `New-RscMutationArchival -Operation PauseTarget`<BR> | [pauseTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | PromoteReaderTarget | Promotes a reader Archival Location. | `New-RscMutationArchival -Operation PromoteReaderTarget`<BR> | [promoteReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RefreshReaderTarget | Refreshes a reader Archival Location. | `New-RscMutationArchival -Operation RefreshReaderTarget`<BR> | [refreshReaderTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RegisterMigration | Registers an archival migration from a source archival location to a target  
+location, by passing the source location id and target location details. | `New-RscMutationArchival -Operation RegisterMigration`<BR> | [registerArchivalMigration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ResumeTarget | N/A | `New-RscMutationArchival -Operation ResumeTarget`<BR> | [resumeTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateGlacierTarget | Edit a target of type Glacier on a Rubrik cluster. | `New-RscMutationArchival -Operation UpdateGlacierTarget`<BR> | [updateGlacierTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateManualTargetMapping | N/A | `New-RscMutationArchival -Operation UpdateManualTargetMapping`<BR> | [updateManualTargetMapping](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1909,12 +1915,19 @@ scripts for non-OAuth permissions validation. | `New-RscQueryMisc -Operation Scr
 Retrieves comprehensive details for a single sign-in event by its ID.  
 For optimal performance, provide eventDate (extracted from the list view)  
 to enable BigQuery partition pruning (98.9% cost reduction). | `New-RscQueryMisc -Operation SigninLogDetails`<BR> | [signinLogDetails](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SigninLogFilterValues | Get possible filter values for sign-in logs with optional search.  
+  
+This API supports typeahead/autocomplete functionality for filter dropdowns.  
+When searchTerm is empty, returns top N most common values ordered by frequency.  
+When searchTerm is provided, returns values matching the prefix in alphabetical order. | `New-RscQueryMisc -Operation SigninLogFilterValues`<BR> | [signinLogFilterValues](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SigninLogs | List sign-in logs with filtering and pagination.  
   
 Retrieves sign-in events from identity providers (Entra ID, Okta, On-Prem  
 AD) with support for filtering by time range, actor, provider, result, and  
 other criteria. | `New-RscQueryMisc -Operation SigninLogs`<BR> | [signinLogs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SnoozedDirectories | Lists the snoozed directories for the account. | `New-RscQueryMisc -Operation SnoozedDirectories`<BR> | [snoozedDirectories](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SqlServerSetupScriptsBulk | The script to setup the SQL Server / Managed Instance for backups, given  
+the list of object IDs. | `New-RscQueryMisc -Operation SqlServerSetupScriptsBulk`<BR> | [sqlServerSetupScriptsBulk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SsoGroupAlreadyExists | Determines if the SSO group already exists in the account. | `New-RscQueryMisc -Operation SsoGroupAlreadyExists`<BR> | [ssoGroupAlreadyExists](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SupportBundle | Get the status of generating support bundle  
   
@@ -2110,6 +2123,8 @@ Supported in v5.0+
 modify IPMI settings. | `New-RscMutationMisc -Operation ModifyIpmi`<BR> | [modifyIpmi](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MountDisk | Mount disks to the given workload. | `New-RscMutationMisc -Operation MountDisk`<BR> | [mountDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NotificationForGetLicense | Send notification when the user clicks on the Get License button. | `New-RscMutationMisc -Operation NotificationForGetLicense`<BR> | [notificationForGetLicense](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ProvisionCloudDirectCloudVm | ProvisionCloudDirectCloudVm provisions a NAS Cloud Direct virtual machine  
+in a public cloud environment and returns the provisioning details. | `New-RscMutationMisc -Operation ProvisionCloudDirectCloudVm`<BR> | [provisionCloudDirectCloudVm](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverCloudDirectMultiPaths | NAS Cloud Direct MultiPaths Recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectMultiPaths`<BR> | [recoverCloudDirectMultiPaths](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverCloudDirectNasShare | NAS Cloud Direct share recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectNasShare`<BR> | [recoverCloudDirectNasShare](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverCloudDirectPath | Cloud Direct Path Recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectPath`<BR> | [recoverCloudDirectPath](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2454,10 +2469,19 @@ Cmdlets: `New-RscQueryMssql` and `New-RscMutationMssql`
 | CompatibleInstances | Returns all compatible instances for export for the specified recovery time. | `New-RscQueryMssql -Operation CompatibleInstances`<BR> | [mssqlCompatibleInstances](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Database | A Microsoft SQL Database. | `New-RscQueryMssql -Operation Database`<BR> | [mssqlDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DatabaseLiveMounts | Paginated list of Microsoft SQL Database live mounts. | `New-RscQueryMssql -Operation DatabaseLiveMounts`<BR> | [mssqlDatabaseLiveMounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DatabaseMissedRecoverableRanges | List of missed recoverable ranges for a Microsoft SQL Database. | `New-RscQueryMssql -Operation DatabaseMissedRecoverableRanges`<BR> | [mssqlDatabaseMissedRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseMissedRecoverableRanges | Get missed recoverable ranges of a Microsoft SQL database  
+  
+Supported in v5.0+  
+Retrieve a list of missed recoverable ranges for a Microsoft SQL database. For each run of one type of error, the first and last occurrence of the error are given. | `New-RscQueryMssql -Operation DatabaseMissedRecoverableRanges`<BR> | [mssqlDatabaseMissedRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DatabaseMissedSnapshots | List of missed snapshots for a Microsoft SQL Database. | `New-RscQueryMssql -Operation DatabaseMissedSnapshots`<BR> | [mssqlDatabaseMissedSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DatabaseRestoreEstimate | Returns a size estimate for a restore, export, or mount. | `New-RscQueryMssql -Operation DatabaseRestoreEstimate`<BR> | [mssqlDatabaseRestoreEstimate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| DatabaseRestoreFiles | Provides a list of database files to be restored for the specified restore or export operation. | `New-RscQueryMssql -Operation DatabaseRestoreFiles`<BR> | [allMssqlDatabaseRestoreFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseRestoreEstimate | Returns a size estimate for a restore or export  
+  
+Supported in v5.3+  
+Provides an estimate of resources needed for the specified restore or export operation. | `New-RscQueryMssql -Operation DatabaseRestoreEstimate`<BR> | [mssqlDatabaseRestoreEstimate](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DatabaseRestoreFiles | Returns a list all database files to be restored  
+  
+Supported in v5.3+  
+Provides a list of database files to be restored for the specified restore or export operation. | `New-RscQueryMssql -Operation DatabaseRestoreFiles`<BR> | [allMssqlDatabaseRestoreFiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Databases | Paginated list of Microsoft SQL Databases. | `New-RscQueryMssql -Operation Databases`<BR> | [mssqlDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DefaultProperties | The current default properties for Microsoft SQL databases. | `New-RscQueryMssql -Operation DefaultProperties`<BR> | [mssqlDefaultProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DefaultPropertiesOnCluster | The current default properties for Microsoft SQL databases. | `New-RscQueryMssql -Operation DefaultPropertiesOnCluster`<BR> | [mssqlDefaultPropertiesOnCluster](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2467,7 +2491,10 @@ Cmdlets: `New-RscQueryMssql` and `New-RscMutationMssql`
 Supported in v5.0+  
 Returns the task object for an async request related to SQL Server databases. | `New-RscQueryMssql -Operation JobStatus`<BR> | [mssqlJobStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | LogShippingTargets | List of filtered Microsoft SQL log shipping targets. | `New-RscQueryMssql -Operation LogShippingTargets`<BR> | [mssqlLogShippingTargets](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| RecoverableRanges | List of recoverable ranges for a Microsoft SQL Database. | `New-RscQueryMssql -Operation RecoverableRanges`<BR> | [mssqlRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RecoverableRanges | Get recoverable ranges of a Microsoft SQL database  
+  
+Supported in v5.0+  
+Retrieve the recoverable ranges for a specified Microsoft SQL database. A begin and/or end timestamp can be provided to retrieve only the ranges that fall within the window. | `New-RscQueryMssql -Operation RecoverableRanges`<BR> | [mssqlRecoverableRanges](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | TopLevelDescendants | Paginated list of the highest-level Microsoft SQL Objects accessible by the current user. | `New-RscQueryMssql -Operation TopLevelDescendants`<BR> | [mssqlTopLevelDescendants](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)
@@ -3480,6 +3507,10 @@ Supported in v5.2+
 Retrieve the details of pending SLA Domain assignments on the given managed objects. For objects with pending assignments, return the SLA Domain that is pending. For objects without pending assignments, return the current SLA Domain information. Explicitly list invalid object IDs. | `New-RscMutationSla -Operation GetPendingAssignments`<BR> | [getPendingSlaAssignments](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Pause | Pause or resume SLA Domain on the given Rubrik clusters. | `New-RscMutationSla -Operation Pause`<BR> | [pauseSla](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | UpdateGlobal | Update SLA Domain. | `New-RscMutationSla -Operation UpdateGlobal`<BR> | [updateGlobalSla](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| UpdatesForMigrationToRcvTarget | UpdateSLAsForMigrationToRCVTarget updates the GSLAs associated with a  
+location undergoing RCV migration.  
+For S3 compatible migration target to RCV Archive tier: Enables  
+instant tiering & sets ColdStorageClass to Glacier Deep Archive. | `New-RscMutationSla -Operation UpdatesForMigrationToRcvTarget`<BR> | [updateSlasForMigrationToRcvTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | Upgrades | Upgrade SLA Domains from the Rubrik clusters. | `New-RscMutationSla -Operation Upgrades`<BR> | [upgradeSlas](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 
 [Go to top](#)

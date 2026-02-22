@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? IsSubscribedToAllEvents
-        // GraphQL -> isSubscribedToAllEvents: Boolean (scalar)
-        [JsonProperty("isSubscribedToAllEvents")]
-        public System.Boolean? IsSubscribedToAllEvents { get; set; }
-
-        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
-        // GraphQL -> isSubscribedToAllObjectTypes: Boolean (scalar)
-        [JsonProperty("isSubscribedToAllObjectTypes")]
-        public System.Boolean? IsSubscribedToAllObjectTypes { get; set; }
-
         //      C# -> List<EventType>? EventTypes
         // GraphQL -> eventTypes: [EventType!]! (enum)
         [Required]
@@ -49,6 +39,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("severities")]
         public List<EventSeverity>? Severities { get; set; }
+
+        //      C# -> System.Boolean? IsSubscribedToAllEvents
+        // GraphQL -> isSubscribedToAllEvents: Boolean (scalar)
+        [JsonProperty("isSubscribedToAllEvents")]
+        public System.Boolean? IsSubscribedToAllEvents { get; set; }
+
+        //      C# -> System.Boolean? IsSubscribedToAllObjectTypes
+        // GraphQL -> isSubscribedToAllObjectTypes: Boolean (scalar)
+        [JsonProperty("isSubscribedToAllObjectTypes")]
+        public System.Boolean? IsSubscribedToAllObjectTypes { get; set; }
 
         //      C# -> WebhookTemplateInfoInput? TemplateInfo
         // GraphQL -> templateInfo: WebhookTemplateInfoInput! (input)

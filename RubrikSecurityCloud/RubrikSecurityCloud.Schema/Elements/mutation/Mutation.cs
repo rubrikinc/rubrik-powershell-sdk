@@ -6103,6 +6103,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AsyncRequestStatus? CreateActiveDirectoryDownloadFilesJob
+        // GraphQL -> createActiveDirectoryDownloadFilesJob: AsyncRequestStatus! (type)
+        public static string CreateActiveDirectoryDownloadFilesJob(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createActiveDirectoryDownloadFilesJob" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateActiveDirectoryDownloadFilesJobFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? CreateActiveDirectoryLiveMount
         // GraphQL -> createActiveDirectoryLiveMount: AsyncRequestStatus! (type)
         public static string CreateActiveDirectoryLiveMount(object fsObj)
@@ -10999,6 +11017,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ProvisionCloudDirectCloudVmReply? ProvisionCloudDirectCloudVm
+        // GraphQL -> provisionCloudDirectCloudVm: ProvisionCloudDirectCloudVmReply! (type)
+        public static string ProvisionCloudDirectCloudVm(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "provisionCloudDirectCloudVm" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ProvisionCloudDirectCloudVmFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ProvisionCloudDirectCloudVmReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PutSmbConfigurationReply? PutSmbConfiguration
         // GraphQL -> putSmbConfiguration: PutSmbConfigurationReply! (type)
         public static string PutSmbConfiguration(object fsObj)
@@ -11535,6 +11571,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new RequestSuccess() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RegisterArchivalMigrationReply? RegisterArchivalMigration
+        // GraphQL -> registerArchivalMigration: RegisterArchivalMigrationReply! (type)
+        public static string RegisterArchivalMigration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "registerArchivalMigration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RegisterArchivalMigrationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RegisterArchivalMigrationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15027,6 +15081,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateServiceAccountReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateSlasForMigrationToRcvTargetReply? UpdateSlasForMigrationToRcvTarget
+        // GraphQL -> updateSlasForMigrationToRcvTarget: UpdateSlasForMigrationToRcvTargetReply! (type)
+        public static string UpdateSlasForMigrationToRcvTarget(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateSlasForMigrationToRcvTarget" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateSlasForMigrationToRcvTargetFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateSlasForMigrationToRcvTargetReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

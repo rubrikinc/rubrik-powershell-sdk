@@ -1090,6 +1090,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	orgNetworkId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2641,6 +2643,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	orgNetworkId = $someString
 }"
             );
         }

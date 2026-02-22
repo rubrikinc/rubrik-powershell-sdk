@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? TaskchainUuid
+        // GraphQL -> taskchainUuid: String (scalar)
+        [JsonProperty("taskchainUuid")]
+        public System.String? TaskchainUuid { get; set; }
+
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         [JsonProperty("tenantId")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AddAzureCloudAccountReply Set(
+        System.String? TaskchainUuid = null,
         System.String? TenantId = null,
         AzureEntraIdGroupStatus? EntraIdGroupStatus = null,
         List<AddAzureCloudAccountStatus>? Status = null
     ) 
     {
+        if ( TaskchainUuid != null ) {
+            this.TaskchainUuid = TaskchainUuid;
+        }
         if ( TenantId != null ) {
             this.TenantId = TenantId;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? TaskchainUuid
+        // GraphQL -> taskchainUuid: String (scalar)
+        if (this.TaskchainUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "taskchainUuid\n" ;
+            } else {
+                s += ind + "taskchainUuid\n" ;
+            }
+        }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId != null) {
@@ -113,6 +131,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? TaskchainUuid
+        // GraphQL -> taskchainUuid: String (scalar)
+        if (ec.Includes("taskchainUuid",true))
+        {
+            if(this.TaskchainUuid == null) {
+
+                this.TaskchainUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskchainUuid != null && ec.Excludes("taskchainUuid",true))
+        {
+            this.TaskchainUuid = null;
+        }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (ec.Includes("tenantId",true))

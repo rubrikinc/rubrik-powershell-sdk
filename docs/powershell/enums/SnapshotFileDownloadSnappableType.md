@@ -8,3 +8,4 @@ Type of workload.
 - HYPERV - Hyperv.
 - WINDOWS_VOLUME_GROUP - Windows volume group.
 - K8S_VM - Kubernetes virtual machine.
+- ACTIVE_DIRECTORY - Active Directory domain controller.

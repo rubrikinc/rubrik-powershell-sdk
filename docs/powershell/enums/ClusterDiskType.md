@@ -1,6 +1,6 @@
 ### ClusterDiskType
-Rubrik cluster disk type.
+Cluster Disk Type.
 
-- UNKNOWN - Unknown disk.
-- FLASH - Flash disk.
-- HDD - Hard disk drives (HDD).
+- UNKNOWN - Unknown Disk Type.
+- FLASH - Flash Disk Type.
+- HDD - Hard Disk Drives Types.

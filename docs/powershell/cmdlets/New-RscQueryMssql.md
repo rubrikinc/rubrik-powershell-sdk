@@ -65,7 +65,10 @@ Paginated list of Microsoft SQL Database live mounts.
     - filters - list of MssqlDatabaseLiveMountFilterInputs: Filters for Mssql database live mounts.
 - Returns MssqlDatabaseLiveMountConnection.
 ### databasemissedrecoverableranges
-List of missed recoverable ranges for a Microsoft SQL Database.
+Get missed recoverable ranges of a Microsoft SQL database
+
+Supported in v5.0+
+Retrieve a list of missed recoverable ranges for a Microsoft SQL database. For each run of one type of error, the first and last occurrence of the error are given.
 
 - There is a single argument of type GetMssqlDbMissedRecoverableRangesInput.
 - Returns MssqlMissedRecoverableRangeListResponse.
@@ -75,11 +78,17 @@ List of missed snapshots for a Microsoft SQL Database.
 - There is a single argument of type GetMissedMssqlDbSnapshotsInput.
 - Returns MissedSnapshotListResponse.
 ### databaserestoreestimate
-Returns a size estimate for a restore, export, or mount.
+Returns a size estimate for a restore or export
+
+Supported in v5.3+
+Provides an estimate of resources needed for the specified restore or export operation.
 
 - There is a single argument of type MssqlRestoreEstimateV1Input.
 - Returns MssqlRestoreEstimateResult.
 ### databaserestorefiles
+Returns a list all database files to be restored
+
+Supported in v5.3+
 Provides a list of database files to be restored for the specified restore or export operation.
 
 - There is a single argument of type MssqlGetRestoreFilesV1Input.
@@ -123,7 +132,10 @@ List of filtered Microsoft SQL log shipping targets.
 - There is a single argument of type QueryLogShippingConfigurationsV2Input.
 - Returns MssqlLogShippingSummaryV2ListResponse.
 ### recoverableranges
-List of recoverable ranges for a Microsoft SQL Database.
+Get recoverable ranges of a Microsoft SQL database
+
+Supported in v5.0+
+Retrieve the recoverable ranges for a specified Microsoft SQL database. A begin and/or end timestamp can be provided to retrieve only the ranges that fall within the window.
 
 - There is a single argument of type GetMssqlDbRecoverableRangesInput.
 - Returns MssqlRecoverableRangeListResponse.

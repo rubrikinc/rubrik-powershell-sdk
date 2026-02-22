@@ -53,3 +53,5 @@ UnmanagedObjectDetails.
   - Cluster UUID of the object.
 - downloadedSnapshotsBytes: System.Int64
   - Total size in bytes of downloaded snapshots for this unmanaged object.
+- downloadedSnapshotsCount: System.Int64
+  - Total number of downloaded snapshots for this unmanaged object.

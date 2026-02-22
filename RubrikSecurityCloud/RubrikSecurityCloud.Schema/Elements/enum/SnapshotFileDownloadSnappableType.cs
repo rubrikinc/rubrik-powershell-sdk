@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ACTIVE_DIRECTORY")]
+        ACTIVE_DIRECTORY,
+
         [EnumMember(Value = "FILESET")]
         FILESET,
 

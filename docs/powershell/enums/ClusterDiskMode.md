@@ -1,8 +1,8 @@
 ### ClusterDiskMode
-Enum representing the mode of a disk.
+Cluster Disk Mode.
 
-- BOOT - Boot disk.
-- DATA - Data disk.
-- UNPARTITIONED - Unpartitioned disk.
-- METADATA - Metadata disk.
-- UNKNOWN - Unknown disk.
+- UNKNOWN - Unknow Disk.
+- BOOT - Boot Disk.
+- DATA - Data Disk.
+- METADATA - Metadata Disk.
+- UNPARTITIONED - Unpartitioned Disk.

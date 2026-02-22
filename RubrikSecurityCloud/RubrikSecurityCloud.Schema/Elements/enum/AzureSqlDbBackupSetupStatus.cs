@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SUCCESS")]
         SUCCESS,
 
+        [EnumMember(Value = "SUCCESS_BAK")]
+        SUCCESS_BAK,
+
         [EnumMember(Value = "TEMPORAL_TABLES_EXIST")]
         TEMPORAL_TABLES_EXIST,
 

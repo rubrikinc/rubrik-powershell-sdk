@@ -21,6 +21,8 @@
   - List of Microsoft Purview Information Protection labels used to filter paths.
 - isObjectLevelAnalysis: System.Boolean
   - Flag to indicate if object level analysis is needed.
+- aggregateAtPath: System.Boolean
+  - Flag to aggregate results at the current path level instead of returning children paths.
 - documentTypesFilter: list of System.Strings
   - List of document type IDs to filter the paths.
 - sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope

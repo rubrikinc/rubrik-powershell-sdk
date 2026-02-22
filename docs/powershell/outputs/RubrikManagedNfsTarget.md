@@ -4,7 +4,9 @@ Specific information for Network File System (NFS) target created on Rubrik.
 - nfsAuthType: AuthTypeEnum
   - Field for specifying the authentication type of NFS.
 - connectionStatus: ConnectionStatusType
-  - Connection status of the Azure target.
+  - Connection status of the NFS target.
+- immutabilitySetting: LocationImmutabilityType
+  - Immutability settings for the NFS target.
 - host: System.String
   - Host of the Nfs location.
 - syncStatus: TargetSyncStatus

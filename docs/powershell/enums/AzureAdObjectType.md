@@ -24,3 +24,7 @@ Entra ID object types.
 - ASSIGNMENT_FILTER - Object type is Intune assignment filter.
 - COMPLIANCE_POLICY_ASSIGNMENT - Object type is Intune compliance policy assignment.
 - COMPLIANCE_POLICY_ACTION - Object type is Intune compliance policy action.
+- DEVICE_COMPLIANCE_SCRIPT - Sub-object types of COMPLIANCE_SCRIPT.
+- REUSABLE_POLICY_SETTING - Sub-object type of COMPLIANCE_SCRIPT.
+- DEVICE_COMPLIANCE_POLICY - Sub-object type of COMPLIANCE_POLICY.
+- DEVICE_MANAGEMENT_COMPLIANCE_POLICY - Sub-object type of COMPLIANCE_POLICY.

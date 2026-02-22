@@ -35,6 +35,8 @@ NAS Cloud Direct snapshot object.
   - Type of snapshot on NAS Cloud Direct.
 - policyName: System.String
   - Name of policy assigned to the snapshot in NAS Cloud Direct.
+- summary: CloudDirectSnapshotSummary
+  - Summary of statistics for this snapshot.
 - workloadId: System.String
   - Rubrik ID of NAS Cloud Direct workload.
 - snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo

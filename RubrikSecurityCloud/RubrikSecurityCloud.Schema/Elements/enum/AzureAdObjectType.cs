@@ -60,6 +60,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DEVICE")]
         DEVICE,
 
+        [EnumMember(Value = "DEVICE_COMPLIANCE_POLICY")]
+        DEVICE_COMPLIANCE_POLICY,
+
+        [EnumMember(Value = "DEVICE_COMPLIANCE_SCRIPT")]
+        DEVICE_COMPLIANCE_SCRIPT,
+
+        [EnumMember(Value = "DEVICE_MANAGEMENT_COMPLIANCE_POLICY")]
+        DEVICE_MANAGEMENT_COMPLIANCE_POLICY,
+
         [EnumMember(Value = "GROUP")]
         GROUP,
 
@@ -71,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NOTIFICATION_TEMPLATE")]
         NOTIFICATION_TEMPLATE,
+
+        [EnumMember(Value = "REUSABLE_POLICY_SETTING")]
+        REUSABLE_POLICY_SETTING,
 
         [EnumMember(Value = "ROLE")]
         ROLE,

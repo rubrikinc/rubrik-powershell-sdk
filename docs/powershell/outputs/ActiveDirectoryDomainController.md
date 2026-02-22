@@ -12,7 +12,7 @@ Active Directory Domain Controller.
 - hostname: System.String
   - Name of the host.
 - macAddress: System.String
-  - MAC address of the domain controller.
+  - Deprecated. Use mac addresses field instead.
 - rbsStatus: HostConnectionStatus
   - RBS status.
 - adServiceStatus: ActiveDirectoryServiceStatus
@@ -23,6 +23,8 @@ Active Directory Domain Controller.
   - Mentions if services like DNS or DHCP are hosted.
 - isGlobalCatalog: System.Boolean
   - Indicates whether the domain controller is a global catalog.
+- macAddresses: list of System.Strings
+  - List of MAC addresses of the domain controller.
 - reportWorkload: Snappable
   - Includes statistics for the protected objects, for example, archive storage.
 - activeDirectoryDomain: ActiveDirectoryDomain

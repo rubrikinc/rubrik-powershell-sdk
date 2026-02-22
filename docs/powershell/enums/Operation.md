@@ -234,6 +234,8 @@ Operations defined in the RBAC system.
 - VIEW_GOOGLE_SECOPS_INTEGRATION - View Google SecOps integrations.
 - MANAGE_GOOGLE_SECOPS_INTEGRATION - Manage Google SecOps integrations.
 - UPLOAD_SNAPSHOT_ON_DEMAND - Upload a snapshot to an archival location on demand.
+- VIEW_CDM_ADMIN - View cluster local administrator user login information.
+- MANAGE_CDM_ADMIN - Manage cluster local administrator user credentials.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

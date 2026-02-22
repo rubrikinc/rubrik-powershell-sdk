@@ -11,3 +11,5 @@ Input for adding an Azure Cloud Account.
   - Regions to be added to the Azure Cloud Account.
 - isAsynchronous: System.Boolean
   - Indicates whether the Azure cloud account can be onboarded asynchronously.
+- managementGroup: AzureManagementGroupInput
+  - Management group for the Azure cloud account onboarding.

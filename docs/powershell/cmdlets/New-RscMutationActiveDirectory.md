@@ -1,5 +1,13 @@
 # New-RscMutationActiveDirectory
 ## Subcommands
+### createdownloadfilesjob
+Download files from an Active Directory Domain Controller snapshot
+
+Supported in v9.5+
+Start an asynchronous job to download multiple files and folders from a specified Active Directory Domain Controller snapshot. The response returns an asynchronous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'active_directory/request/{id}'.
+
+- There is a single argument of type CreateActiveDirectoryDownloadFilesJobInput.
+- Returns AsyncRequestStatus.
 ### createlivemount
 Initiate a Live Mount of an Active Directory Domain Controller snapshot
 

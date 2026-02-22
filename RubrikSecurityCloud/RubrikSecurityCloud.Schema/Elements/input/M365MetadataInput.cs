@@ -30,7 +30,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? ParentObjectId { get; set; }
 
         //      C# -> System.String? ParentObjectType
-        // GraphQL -> parentObjectType: UUID (scalar)
+        // GraphQL -> parentObjectType: String (scalar)
         [JsonProperty("parentObjectType")]
         public System.String? ParentObjectType { get; set; }
 

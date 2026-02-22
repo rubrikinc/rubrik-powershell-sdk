@@ -1,89 +1,89 @@
 ### RcsRegionEnumType
 Regions for Rubrik Cloud Storage Archival Location.
 
-- ASIA_PACIFIC_JAKARTA - Asia Pacific Jakarta.
-- BRAZIL_SOUTHEAST - Brazil Southeast or Rio.
-- US_EAST - US East or Virginia.
-- GOV_US_TEXAS - Gov US Texas or US Gov Texas.
-- US_EAST_1 - South Carolina (US East 1).
-- US_WEST_4 - Las Vegas (US West 4).
-- NORWAY_EAST - Norway East or Oslo.
-- US_WEST_8 - Phoenix (US West 8).
-- INDIA_CENTRAL - India Central or Pune.
-- GERMANY_NORTH - Germany North or Berlin.
-- ASIA_EAST_2 - Hong Kong (Asia East 2).
-- SPAIN_CENTRAL - Spain Central or Madrid.
-- KOREA_SOUTH - Korea South or Busan.
-- SWITZERLAND_NORTH - Switzerland North or Zurich.
-- CHILE_CENTRAL - Chile Central or Santiago.
-- US_EAST_5 - Columbus (US East 5).
-- AUSTRIA_EAST - Austria East or Vienna.
-- ITALY_NORTH - Italy North or Milan.
-- CANADA_EAST - Canada East or Quebec City.
-- UAE_NORTH - UAE North or Dubai.
-- GERMANY_WEST_CENTRAL - Germany West Central or Frankfurt.
-- AUSTRALIA_EAST - Australia East or New South Wales.
-- US_WEST_1 - Oregon (US West 1).
-- UNKNOWN_AWS_REGION - Rubrik Cloud Vault AWS region is unknown.
-- AUSTRALIA_CENTRAL2 - Australia Central 2 or Canberra.
-- SWITZERLAND_WEST - Switzerland West or Geneva.
-- MIDDLE_EAST_BAHRAIN - Middle East bahrain.
-- UAE_CENTRAL - UAE Central or Abu Dhabi.
-- ISRAEL_CENTRAL - Israel Central or Israel.
-- EUROPE_WEST_4 - Netherlands (Europe West 4).
-- US_NORTH_CENTRAL - US North central or Illinois.
-- JAPAN_WEST - Japan West or Osaka.
-- ASIA_PACIFIC_HYDERABAD - Asia Pacific Hyderabad.
-- INDONESIA_CENTRAL - Indonesia Central or Jakarta.
-- BELGIUM_CENTRAL - Belgium Central or Brussels.
-- SOUTH_AFRICA_NORTH - South Africa North or Johannesburg.
-- US_EAST_2 - US East 2 or Virginia.
-- POLAND_CENTRAL - Poland Central or Warsaw.
-- UK_SOUTH - UK South or London.
-- INDIA_SOUTH_2 - Delhi (India South 2).
-- US_EAST_7 - US East 7.
-- SWEDEN_CENTRAL - Sweden Central or Gavle.
-- GOV_US_VIRGINIA - Gov US Virginia or US Gov Virginia.
-- AUSTRALIA_SOUTHEAST - Australia Southeast or Victoria.
-- WEST_US3 - West US 3 or Arizona.
-- US_WEST_2 - US West 2 or Washington.
 - CANADA_CENTRAL - Canada Central or Toronto.
-- QATAR_CENTRAL - Qatar Central or Doha.
-- NORTHAMERICA_NORTHEAST_1 - Montreal (North America Northeast 1).
-- ASIA_PACIFIC_SYDNEY - Asia Pacific Sydney.
-- ME_CENTRAL_2 - Dammam (Middle East Central 2).
-- FRANCE_SOUTH - France South or Marseille.
-- US_WEST - US West or California.
-- UNKNOWN_AZURE_REGION - Rubrik Cloud Vault Azure region is unknown.
-- EUROPE_NORTH - Europe North or Netherlands.
-- EUROPE_STOCKHOLM - Europe Stockholm.
-- SOUTH_AFRICA_WEST - South Africa West or Cape Town.
-- MALAYSIA_WEST - Malaysia West.
-- US_CENTRAL - US Central or Iowa.
-- GOV_US_ARIZONA - Gov US Arizona or US Gov Arizona.
-- NORTHAMERICA_SOUTH_1 - Mexico (North America South 1).
-- NORWAY_WEST - Norway West or Stavanger.
-- US_WEST_3 - Salt Lake City (US West 3).
-- EUROPE_WEST - Europe West or Ireland.
-- ASIA_PACIFIC_MELBOURNE - Asia Pacific Melbourne.
-- ASIA_EAST - Asia East or Hong Kong.
-- FRANCE_CENTRAL - France Central or Paris.
-- AUSTRALIA_CENTRAL - Australia Central or Canberra.
-- MEXICO_CENTRAL - Mexico Central or Queretaro State.
-- US_SOUTH_1 - Dallas (US South 1).
-- BRAZIL_SOUTH - Brazil South or Sao Paulo State.
-- ASIA_SOUTHEAST - Asia Southeast or Singapore.
-- UK_WEST - UK West or Cardiff.
-- INDIA_SOUTH - India South or Chennai.
-- UNKNOWN_GCP_REGION - Rubrik Cloud Vault GCP region is unknown.
-- SOUTHAMERICA_WEST_1 - Santiago (South America West 1).
-- SWEDEN_SOUTH - Sweden South or Malmo.
-- SPAIN_NORTH - Spain North or Aragon.
-- INDIA_WEST - India West or Mumbai.
+- CANADA_EAST - Canada East or Quebec City.
 - CANADA_WEST_CALGARY - Canada West Calgary.
-- KOREA_CENTRAL - Korea Central or Seoul.
+- EUROPE_NORTH - Europe North or Netherlands.
+- EUROPE_WEST - Europe West or Ireland.
+- UK_SOUTH - UK South or London.
+- UK_WEST - UK West or Cardiff.
+- US_CENTRAL - US Central or Iowa.
+- US_EAST - US East or Virginia.
+- US_EAST_2 - US East 2 or Virginia.
+- US_NORTH_CENTRAL - US North central or Illinois.
 - US_SOUTH_CENTRAL - US South central or Texas.
+- US_WEST - US West or California.
+- US_WEST_2 - US West 2 or Washington.
 - US_WEST_CENTRAL - US West Central or Wyoming.
-- JAPAN_EAST - Japan East or Tokyo.
+- WEST_US3 - West US 3 or Arizona.
+- US_EAST_1 - South Carolina (US East 1).
+- US_EAST_5 - Columbus (US East 5).
+- US_EAST_7 - US East 7.
+- US_SOUTH_1 - Dallas (US South 1).
+- US_WEST_1 - Oregon (US West 1).
+- US_WEST_3 - Salt Lake City (US West 3).
+- US_WEST_4 - Las Vegas (US West 4).
+- US_WEST_8 - Phoenix (US West 8).
+- ASIA_EAST - Asia East or Hong Kong.
+- ASIA_EAST_2 - Hong Kong (Asia East 2).
+- ASIA_PACIFIC_JAKARTA - Asia Pacific Jakarta.
+- ASIA_PACIFIC_MELBOURNE - Asia Pacific Melbourne.
+- ASIA_PACIFIC_SYDNEY - Asia Pacific Sydney.
+- ASIA_PACIFIC_HYDERABAD - Asia Pacific Hyderabad.
+- ASIA_SOUTHEAST - Asia Southeast or Singapore.
+- AUSTRALIA_CENTRAL - Australia Central or Canberra.
+- AUSTRALIA_CENTRAL2 - Australia Central 2 or Canberra.
+- AUSTRALIA_EAST - Australia East or New South Wales.
+- AUSTRALIA_SOUTHEAST - Australia Southeast or Victoria.
+- AUSTRIA_EAST - Austria East or Vienna.
+- BELGIUM_CENTRAL - Belgium Central or Brussels.
+- BRAZIL_SOUTH - Brazil South or Sao Paulo State.
+- BRAZIL_SOUTHEAST - Brazil Southeast or Rio.
+- CHILE_CENTRAL - Chile Central or Santiago.
+- SOUTHAMERICA_WEST_1 - Santiago (South America West 1).
+- EUROPE_STOCKHOLM - Europe Stockholm.
+- EUROPE_WEST_4 - Netherlands (Europe West 4).
 - EUROPE_WEST_12 - Turin (Europe West 12).
+- FRANCE_CENTRAL - France Central or Paris.
+- FRANCE_SOUTH - France South or Marseille.
+- GERMANY_NORTH - Germany North or Berlin.
+- GERMANY_WEST_CENTRAL - Germany West Central or Frankfurt.
+- INDIA_CENTRAL - India Central or Pune.
+- INDIA_SOUTH - India South or Chennai.
+- INDIA_SOUTH_2 - Delhi (India South 2).
+- INDIA_WEST - India West or Mumbai.
+- INDONESIA_CENTRAL - Indonesia Central or Jakarta.
+- ISRAEL_CENTRAL - Israel Central or Israel.
+- ITALY_NORTH - Italy North or Milan.
+- JAPAN_EAST - Japan East or Tokyo.
+- JAPAN_WEST - Japan West or Osaka.
+- KOREA_CENTRAL - Korea Central or Seoul.
+- KOREA_SOUTH - Korea South or Busan.
+- MALAYSIA_WEST - Malaysia West.
+- MEXICO_CENTRAL - Mexico Central or Queretaro State.
+- NORTHAMERICA_SOUTH_1 - Mexico (North America South 1).
+- NORTHAMERICA_NORTHEAST_1 - Montreal (North America Northeast 1).
+- MIDDLE_EAST_BAHRAIN - Middle East bahrain.
 - NEW_ZEALAND_NORTH - New Zealand North or Auckland.
+- ME_CENTRAL_2 - Dammam (Middle East Central 2).
+- NORWAY_EAST - Norway East or Oslo.
+- NORWAY_WEST - Norway West or Stavanger.
+- POLAND_CENTRAL - Poland Central or Warsaw.
+- QATAR_CENTRAL - Qatar Central or Doha.
+- SOUTH_AFRICA_NORTH - South Africa North or Johannesburg.
+- SOUTH_AFRICA_WEST - South Africa West or Cape Town.
+- SPAIN_CENTRAL - Spain Central or Madrid.
+- SPAIN_NORTH - Spain North or Aragon.
+- SWEDEN_CENTRAL - Sweden Central or Gavle.
+- SWEDEN_SOUTH - Sweden South or Malmo.
+- SWITZERLAND_NORTH - Switzerland North or Zurich.
+- SWITZERLAND_WEST - Switzerland West or Geneva.
+- UAE_CENTRAL - UAE Central or Abu Dhabi.
+- UAE_NORTH - UAE North or Dubai.
+- GOV_US_ARIZONA - Gov US Arizona or US Gov Arizona.
+- GOV_US_TEXAS - Gov US Texas or US Gov Texas.
+- GOV_US_VIRGINIA - Gov US Virginia or US Gov Virginia.
+- UNKNOWN_AZURE_REGION - Rubrik Cloud Vault Azure region is unknown.
+- UNKNOWN_AWS_REGION - Rubrik Cloud Vault AWS region is unknown.
+- UNKNOWN_GCP_REGION - Rubrik Cloud Vault GCP region is unknown.

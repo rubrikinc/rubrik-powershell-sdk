@@ -155,13 +155,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			inventoryRoot = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
     /// 			# REQUIRED
-    /// 			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-    /// 			# REQUIRED
     /// 			operations = @(
     /// 				$someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 			)
     /// 			# OPTIONAL
     /// 			hierarchyRoot = $someString
+    /// 			# REQUIRED
+    /// 			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -675,13 +675,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			inventoryRoot = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
     /// 			# REQUIRED
-    /// 			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-    /// 			# REQUIRED
     /// 			operations = @(
     /// 				$someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 			)
     /// 			# OPTIONAL
     /// 			hierarchyRoot = $someString
+    /// 			# REQUIRED
+    /// 			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1087,13 +1087,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			inventoryRoot = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
 			# REQUIRED
-			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-			# REQUIRED
 			operations = @(
 				$someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 			)
 			# OPTIONAL
 			hierarchyRoot = $someString
+			# REQUIRED
+			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -1532,13 +1532,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			inventoryRoot = $someInventorySubHierarchyRootEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.InventorySubHierarchyRootEnum]) for enum values.
 			# REQUIRED
-			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-			# REQUIRED
 			operations = @(
 				$someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 			)
 			# OPTIONAL
 			hierarchyRoot = $someString
+			# REQUIRED
+			inventoryWorkloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 		}
 	)
 	# OPTIONAL

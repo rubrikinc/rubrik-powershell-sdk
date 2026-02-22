@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 5
     /// operations in the 'Active Directory' API domain:
-    /// CreateLiveMount, CreateUnmount, ModifyLiveMount, or RestoreObjects.
+    /// CreateDownloadFilesJob, CreateLiveMount, CreateUnmount, ModifyLiveMount, or RestoreObjects.
     /// </summary>
     /// <description>
     /// New-RscMutationActiveDirectory creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 5 operations
     /// in the 'Active Directory' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateLiveMount, CreateUnmount, ModifyLiveMount, or RestoreObjects.
+    /// one of: CreateDownloadFilesJob, CreateLiveMount, CreateUnmount, ModifyLiveMount, or RestoreObjects.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationActiveDirectory -CreateLiveMount).Info().
+    /// (New-RscMutationActiveDirectory -CreateDownloadFilesJob).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationActiveDirectory -CreateLiveMount).Info().
+    /// (New-RscMutationActiveDirectory -CreateDownloadFilesJob).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the CreateDownloadFilesJob operation
+    /// of the 'Active Directory' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActiveDirectory
+    /// # API Operation: CreateDownloadFilesJob
+    /// 
+    /// $query = New-RscMutationActiveDirectory -Operation CreateDownloadFilesJob
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CreateLiveMount operation
@@ -313,6 +360,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "CreateDownloadFilesJob",
                 "CreateLiveMount",
                 "CreateUnmount",
                 "ModifyLiveMount",
@@ -332,6 +380,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "CreateDownloadFilesJob":
+                        this.ProcessRecord_CreateDownloadFilesJob();
+                        break;
                     case "CreateLiveMount":
                         this.ProcessRecord_CreateLiveMount();
                         break;
@@ -352,6 +403,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createActiveDirectoryDownloadFilesJob.
+        internal void ProcessRecord_CreateDownloadFilesJob()
+        {
+            this._logger.name += " -CreateDownloadFilesJob";
+            // Create new graphql operation createActiveDirectoryDownloadFilesJob
+            InitMutationCreateActiveDirectoryDownloadFilesJob();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -390,6 +450,45 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationRestoreActiveDirectoryObjects();
         }
 
+
+        // Create new GraphQL Mutation:
+        // createActiveDirectoryDownloadFilesJob(input: CreateActiveDirectoryDownloadFilesJobInput!): AsyncRequestStatus!
+        internal void InitMutationCreateActiveDirectoryDownloadFilesJob()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateActiveDirectoryDownloadFilesJobInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateActiveDirectoryDownloadFilesJob",
+                "($input: CreateActiveDirectoryDownloadFilesJobInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreateActiveDirectoryDownloadFilesJob,
+                Mutation.CreateActiveDirectoryDownloadFilesJobFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		zipPassword = $someString
+		# REQUIRED
+		paths = @(
+			$someString
+		)
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+	}
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // createActiveDirectoryLiveMount(input: CreateActiveDirectoryLiveMountInput!): AsyncRequestStatus!

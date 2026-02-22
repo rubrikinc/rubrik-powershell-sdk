@@ -484,6 +484,12 @@ Send notification when the user clicks on the Get License button.
 
 - There is a single argument of type NotificationForGetLicenseInput.
 - Returns NotificationForGetLicenseReply.
+### provisionclouddirectcloudvm
+ProvisionCloudDirectCloudVm provisions a NAS Cloud Direct virtual machine
+in a public cloud environment and returns the provisioning details.
+
+- There is a single argument of type ProvisionCloudDirectCloudVmInput.
+- Returns ProvisionCloudDirectCloudVmReply.
 ### recoverclouddirectmultipaths
 NAS Cloud Direct MultiPaths Recovery.
 

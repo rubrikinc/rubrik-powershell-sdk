@@ -19,3 +19,5 @@ An O365 SharePoint descendant object.
   - The create time of this SharePoint descendant object.
 - modifiedTime: DateTime
   - The modified time of this SharePoint descendant object.
+- o365QuarantineInfo: O365QuarantineInfo
+  - Quarantine information for the SharePoint descendant object.

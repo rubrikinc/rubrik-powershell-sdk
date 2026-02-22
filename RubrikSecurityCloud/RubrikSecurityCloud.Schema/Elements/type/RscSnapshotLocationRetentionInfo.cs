@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SnapshotFrequency? SnapshotFrequency
+        // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
+        [JsonProperty("snapshotFrequency")]
+        public SnapshotFrequency? SnapshotFrequency { get; set; }
+
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
         [JsonProperty("expirationTime")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RscSnapshotLocationRetentionInfo Set(
+        SnapshotFrequency? SnapshotFrequency = null,
         DateTime? ExpirationTime = null,
         System.Boolean? IsExpirationDateCalculated = null,
         System.Boolean? IsSnapshotPresent = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         System.String? LocationName = null
     ) 
     {
+        if ( SnapshotFrequency != null ) {
+            this.SnapshotFrequency = SnapshotFrequency;
+        }
         if ( ExpirationTime != null ) {
             this.ExpirationTime = ExpirationTime;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> SnapshotFrequency? SnapshotFrequency
+        // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
+        if (this.SnapshotFrequency != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotFrequency\n" ;
+            } else {
+                s += ind + "snapshotFrequency\n" ;
+            }
+        }
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
         if (this.ExpirationTime != null) {
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> SnapshotFrequency? SnapshotFrequency
+        // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
+        if (ec.Includes("snapshotFrequency",true))
+        {
+            if(this.SnapshotFrequency == null) {
+
+                this.SnapshotFrequency = new SnapshotFrequency();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotFrequency != null && ec.Excludes("snapshotFrequency",true))
+        {
+            this.SnapshotFrequency = null;
+        }
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
         if (ec.Includes("expirationTime",true))

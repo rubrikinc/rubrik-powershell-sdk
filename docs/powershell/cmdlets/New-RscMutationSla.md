@@ -76,6 +76,14 @@ Update SLA Domain.
 
 - There is a single argument of type UpdateGlobalSlaInput.
 - Returns GlobalSlaReply.
+### updatesformigrationtorcvtarget
+UpdateSLAsForMigrationToRCVTarget updates the GSLAs associated with a
+location undergoing RCV migration.
+For S3 compatible migration target to RCV Archive tier: Enables
+instant tiering & sets ColdStorageClass to Glacier Deep Archive.
+
+- There is a single argument of type UpdateSlasForMigrationToRcvTargetInput.
+- Returns UpdateSlasForMigrationToRcvTargetReply.
 ### upgrades
 Upgrade SLA Domains from the Rubrik clusters.
 
