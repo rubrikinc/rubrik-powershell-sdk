@@ -4,3 +4,4 @@ account.
 
 - ADD - Cloud account add operation.
 - UPGRADE - Cloud account upgrade operation.
+- MIGRATE - Cloud account migration operation.

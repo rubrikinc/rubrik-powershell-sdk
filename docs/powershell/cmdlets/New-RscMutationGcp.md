@@ -21,11 +21,6 @@ Add cloud account for GCP projects for the given features.
 
 - There is a single argument of type GcpCloudAccountAddProjectsInput.
 - Returns GcpCloudAccountAddProjectsReply.
-### cloudaccountdeleteprojects
-Delete cloud account for the given GCP project cloud account IDs and feature.
-
-- There is a single argument of type GcpCloudAccountDeleteProjectsInput.
-- Returns GcpCloudAccountDeleteProjectsReply.
 ### cloudaccountdeleteprojectsv2
 Delete some features for some GCP cloud accounts. The Rubrik objects in the
 return value are of the form <GCP project Rubrik ID>:<FEATURE_NAME>.

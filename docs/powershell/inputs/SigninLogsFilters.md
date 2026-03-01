@@ -19,3 +19,7 @@ Filters for querying sign-in logs.
   - Filter by IP addresses.
 - countries: list of System.Strings
   - Filter by countries.
+- locations: list of System.Strings
+  - Filter by locations (city + country code, e.g. "New York, US").
+- displayNames: list of System.Strings
+  - Filter by display names.

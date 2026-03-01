@@ -212,7 +212,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# REQUIRED
+    /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 		# REQUIRED
     /// 		isFullbackup = $someBoolean
@@ -261,7 +261,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# REQUIRED
+    /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 		# REQUIRED
     /// 		isFullbackup = $someBoolean
@@ -301,7 +301,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	config = @{
-    /// 		# REQUIRED
+    /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 		# OPTIONAL
     /// 		isFullbackup = $someBoolean
@@ -1054,7 +1054,7 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	config = @{
-		# REQUIRED
+		# OPTIONAL
 		slaId = $someString
 		# REQUIRED
 		isFullbackup = $someBoolean
@@ -1095,7 +1095,7 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	config = @{
-		# REQUIRED
+		# OPTIONAL
 		slaId = $someString
 		# REQUIRED
 		isFullbackup = $someBoolean
@@ -1127,7 +1127,7 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	config = @{
-		# REQUIRED
+		# OPTIONAL
 		slaId = $someString
 		# OPTIONAL
 		isFullbackup = $someBoolean

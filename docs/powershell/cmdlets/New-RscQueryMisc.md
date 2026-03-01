@@ -904,6 +904,45 @@ Returns all the MIP Labels for an account.
     - onlyAppliableFilter - System.Boolean: Restricts the search to appliable labels only.
     - tenantIdFilter - System.String: Filter for Tenant ID.
 - Returns list of MicrosoftMipLabels.
+### mysqldatabase
+Details of a MySQL database for a given FID.
+
+- There is a single argument of type System.String.
+- Returns MysqldbDatabase.
+### mysqldatabases
+Connection of filtered MySQL databases based on specific filters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns MysqldbDatabaseConnection.
+### mysqlinstance
+Details of a MySQL instance for a given FID.
+
+- There is a single argument of type System.String.
+- Returns MysqldbInstance.
+### mysqlinstancelivemounts
+The live mounts associated with the specified workloads.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - filters - list of KosmosWorkloadLiveMountFilterInputs: Filter for Kosmos workload live mounts.
+    - sortBy - KosmosWorkloadLiveMountSortByInput: Sort the live mounts of the Kosmos Workload based on the argument.
+- Returns KosmosWorkloadLiveMountConnection.
+### mysqlinstances
+Connection of filtered MySQL instances based on specific filters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns MysqldbInstanceConnection.
 ### networkthrottle
 Network Throttle Information.
 
@@ -1272,6 +1311,11 @@ Search file under given folder and with given prefix.
     - searchFolderPath - System.String: Root path to search file inside FMD.
     - filenamePrefix - System.String: Filename prefix that should match.
 - Returns DiffResult.
+### selfserverollingupgrade
+Gets the rolling upgrade enabled setting for the account.
+
+- The selfserverollingupgrade subcommand takes no arguments.
+- Returns GetSelfServeRollingUpgradeReply.
 ### signinlogdetails
 Get details for a specific sign-in event.
 
@@ -1606,6 +1650,11 @@ ValidateRdsExportExocomputePort checks if the exocompute worker node security gr
 
 - There is a single argument of type ValidateRdsExportExocomputePortReq.
 - Returns ValidateRdsExportExocomputePortReply.
+### validaterolename
+Validate a role name.
+
+- There is a single argument of type ValidateRoleNameReq.
+- Returns ValidateRoleNameReply.
 ### validatescriptoutputformanualpermissionvalidation
 ValidateScriptOutputForManualPermissionValidation validates the script
 output provided by the customer for the manual permission validation.

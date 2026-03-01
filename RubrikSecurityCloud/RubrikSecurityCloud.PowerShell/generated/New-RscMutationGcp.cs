@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 15
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'Google Cloud Platform' API domain:
-    /// AddCloudAccountManualAuthProject, BulkSetCloudAccountProperties, CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountDeleteProjectsV2, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, SetExocomputeConfigs, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// AddCloudAccountManualAuthProject, BulkSetCloudAccountProperties, CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjectsV2, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, SetExocomputeConfigs, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// </summary>
     /// <description>
     /// New-RscMutationGcp creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 15 operations
+    /// There are 14 operations
     /// in the 'Google Cloud Platform' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCloudAccountManualAuthProject, BulkSetCloudAccountProperties, CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjects, CloudAccountDeleteProjectsV2, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, SetExocomputeConfigs, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// one of: AddCloudAccountManualAuthProject, BulkSetCloudAccountProperties, CloudAccountAddManualAuthProject, CloudAccountAddProjects, CloudAccountDeleteProjectsV2, CloudAccountOauthComplete, CloudAccountOauthInitiate, CloudAccountUpgradeProjects, CreateReaderTarget, CreateTarget, SetDefaultServiceAccountJwtConfig, SetExocomputeConfigs, UpdateTarget, or UpgradeCloudAccountPermissionsWithoutOauth.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -250,59 +250,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: GcpCloudAccountAddProjectsReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the CloudAccountDeleteProjects operation
-    /// of the 'Google Cloud Platform' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    Gcp
-    /// # API Operation: CloudAccountDeleteProjects
-    /// 
-    /// $query = New-RscMutationGcp -Operation CloudAccountDeleteProjects
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	sessionId = $someString
-    /// 	# REQUIRED
-    /// 	nativeProtectionProjectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	sharedVpcHostProjectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	cloudAccountsProjectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# REQUIRED
-    /// 	skipResourceDeletion = $someBoolean
-    /// 	# OPTIONAL
-    /// 	projectIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: GcpCloudAccountDeleteProjectsReply
     /// 
     /// 
     /// 
@@ -794,7 +741,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkSetCloudAccountProperties",
                 "CloudAccountAddManualAuthProject",
                 "CloudAccountAddProjects",
-                "CloudAccountDeleteProjects",
                 "CloudAccountDeleteProjectsV2",
                 "CloudAccountOauthComplete",
                 "CloudAccountOauthInitiate",
@@ -831,9 +777,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CloudAccountAddProjects":
                         this.ProcessRecord_CloudAccountAddProjects();
-                        break;
-                    case "CloudAccountDeleteProjects":
-                        this.ProcessRecord_CloudAccountDeleteProjects();
                         break;
                     case "CloudAccountDeleteProjectsV2":
                         this.ProcessRecord_CloudAccountDeleteProjectsV2();
@@ -909,15 +852,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudAccountAddProjects";
             // Create new graphql operation gcpCloudAccountAddProjects
             InitMutationGcpCloudAccountAddProjects();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // gcpCloudAccountDeleteProjects.
-        internal void ProcessRecord_CloudAccountDeleteProjects()
-        {
-            this._logger.name += " -CloudAccountDeleteProjects";
-            // Create new graphql operation gcpCloudAccountDeleteProjects
-            InitMutationGcpCloudAccountDeleteProjects();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1155,51 +1089,6 @@ $query.Var.input = @{
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
 		}
-	)
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // gcpCloudAccountDeleteProjects(input: GcpCloudAccountDeleteProjectsInput!): GcpCloudAccountDeleteProjectsReply!
-        internal void InitMutationGcpCloudAccountDeleteProjects()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "GcpCloudAccountDeleteProjectsInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationGcpCloudAccountDeleteProjects",
-                "($input: GcpCloudAccountDeleteProjectsInput!)",
-                "GcpCloudAccountDeleteProjectsReply",
-                Mutation.GcpCloudAccountDeleteProjects,
-                Mutation.GcpCloudAccountDeleteProjectsFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# OPTIONAL
-	sessionId = $someString
-	# REQUIRED
-	nativeProtectionProjectIds = @(
-		$someString
-	)
-	# REQUIRED
-	sharedVpcHostProjectIds = @(
-		$someString
-	)
-	# REQUIRED
-	cloudAccountsProjectIds = @(
-		$someString
-	)
-	# REQUIRED
-	skipResourceDeletion = $someBoolean
-	# OPTIONAL
-	projectIds = @(
-		$someString
-	)
-	# OPTIONAL
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 }"
             );

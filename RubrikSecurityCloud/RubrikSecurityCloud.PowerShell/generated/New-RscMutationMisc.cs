@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 193
+    /// Create a new RscQuery object for any of the 201
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteUploadSession, ConfirmPartUpload, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 193 operations
+    /// There are 201 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteUploadSession, ConfirmPartUpload, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// one of: AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateNasFilesets, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateSsoUsers, CreateVappsInstantRecovery, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RefreshDomain, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -498,6 +498,81 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AddMysqlInstance operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: AddMysqlInstance
+    /// 
+    /// $query = New-RscMutationMisc -Operation AddMysqlInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	mysqldbInstanceConfig = @{
+    /// 		# REQUIRED
+    /// 		discoveryInfo = @{
+    /// 			# REQUIRED
+    /// 			entityInfo = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			hostInfo = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					portNumber = $someInt
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		connectionInfo = @{
+    /// 			# OPTIONAL
+    /// 			socketFilePath = $someString
+    /// 			# REQUIRED
+    /// 			systemUsername = $someString
+    /// 			# OPTIONAL
+    /// 			authenticationType = $someMysqldbAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MysqldbAuthenticationType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			bindIpAddress = $someString
+    /// 			# OPTIONAL
+    /// 			sslConfig = @{
+    /// 				# OPTIONAL
+    /// 				certFilePath = $someString
+    /// 				# OPTIONAL
+    /// 				caCertFilePath = $someString
+    /// 				# OPTIONAL
+    /// 				keyFilePath = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddMysqldbInstanceResponse
     /// 
     /// 
     /// 
@@ -1623,6 +1698,93 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateAutomatedRestoreMysqldbInstance operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateAutomatedRestoreMysqldbInstance
+    /// 
+    /// $query = New-RscMutationMisc -Operation CreateAutomatedRestoreMysqldbInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	restoreConfig = @{
+    /// 		# OPTIONAL
+    /// 		mysqldbAutomatedRestoreInstanceDetails = @{
+    /// 			# REQUIRED
+    /// 			mysqlCnfFilePath = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		targetMysqldbInstanceId = $someString
+    /// 		# REQUIRED
+    /// 		restoreInfo = @{
+    /// 			# REQUIRED
+    /// 			locationMap = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					snapshotId = $someString
+    /// 					# REQUIRED
+    /// 					locationId = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			restoreSettings = @{
+    /// 				# OPTIONAL
+    /// 				shouldRestoreOnlyDataSnapshot = $someBoolean
+    /// 			}
+    /// 			# REQUIRED
+    /// 			restoreName = $someString
+    /// 			# OPTIONAL
+    /// 			restoreTime = $someDateTime
+    /// 			# REQUIRED
+    /// 			restoreEntities = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			hostRestoreTargets = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					portNumber = $someInt
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mysqldbAutomatedRestoreConnectionInfo = @{
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		mysqldbAutomatedRestoreDatabaseDetails = @{
+    /// 			# OPTIONAL
+    /// 			databasePrefixName = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateAutomatedRestoreMysqldbInstanceReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CreateCustomAnalyzer operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -2432,6 +2594,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteMysqlInstance operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DeleteMysqlInstance
+    /// 
+    /// $query = New-RscMutationMisc -Operation DeleteMysqlInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteMysqldbInstanceLiveMount operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DeleteMysqldbInstanceLiveMount
+    /// 
+    /// $query = New-RscMutationMisc -Operation DeleteMysqldbInstanceLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -3844,6 +4070,148 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the PatchMysqlInstance operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: PatchMysqlInstance
+    /// 
+    /// $query = New-RscMutationMisc -Operation PatchMysqlInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# REQUIRED
+    /// 	mysqldbInstanceConfig = @{
+    /// 		# REQUIRED
+    /// 		discoveryInfo = @{
+    /// 			# REQUIRED
+    /// 			entityInfo = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			hostInfo = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					portNumber = $someInt
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		connectionInfo = @{
+    /// 			# OPTIONAL
+    /// 			socketFilePath = $someString
+    /// 			# REQUIRED
+    /// 			systemUsername = $someString
+    /// 			# OPTIONAL
+    /// 			authenticationType = $someMysqldbAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MysqldbAuthenticationType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			bindIpAddress = $someString
+    /// 			# OPTIONAL
+    /// 			sslConfig = @{
+    /// 				# OPTIONAL
+    /// 				certFilePath = $someString
+    /// 				# OPTIONAL
+    /// 				caCertFilePath = $someString
+    /// 				# OPTIONAL
+    /// 				keyFilePath = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PatchMysqldbInstanceResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PitRestoreMysqlInstance operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: PitRestoreMysqlInstance
+    /// 
+    /// $query = New-RscMutationMisc -Operation PitRestoreMysqlInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	mysqldbInstancePitRestoreConfig = @{
+    /// 		# OPTIONAL
+    /// 		nodeInfo = @{
+    /// 			# OPTIONAL
+    /// 			nodeHint = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			subnet = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		pitRestoreInfo = @{
+    /// 			# REQUIRED
+    /// 			hostRecoveryTargets = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					hostMountPaths = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryName = $someString
+    /// 			# OPTIONAL
+    /// 			recoveryTime = $someDateTime
+    /// 			# OPTIONAL
+    /// 			extendedRecoveryTimeInSec = $someInt64
+    /// 			# OPTIONAL
+    /// 			locationId = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PitRestoreMysqldbInstanceResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ProvisionCloudDirectCloudVm operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -4059,6 +4427,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: GlobalManagerConnectivity
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RefreshMysqlInstance operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: RefreshMysqlInstance
+    /// 
+    /// $query = New-RscMutationMisc -Operation RefreshMysqlInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -5235,6 +5634,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SetSelfServeRollingUpgrade operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: SetSelfServeRollingUpgrade
+    /// 
+    /// $query = New-RscMutationMisc -Operation SetSelfServeRollingUpgrade
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	enabled = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SetSelfServeRollingUpgradeReply
     /// 
     /// 
     /// 
@@ -8207,6 +8637,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddIdentityProvider",
                 "AddInventoryWorkloads",
                 "AddIpWhitelistEntries",
+                "AddMysqlInstance",
                 "AddRoleAssignments",
                 "AddVlan",
                 "AddVmAppConsistentSpecs",
@@ -8234,6 +8665,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudDirectValidateSubdir",
                 "CompleteUploadSession",
                 "ConfirmPartUpload",
+                "CreateAutomatedRestoreMysqldbInstance",
                 "CreateCustomAnalyzer",
                 "CreateDistributionListDigestBatch",
                 "CreateEventDigestBatch",
@@ -8252,6 +8684,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteIdentityProviderById",
                 "DeleteIntelFeed",
                 "DeleteIpWhitelistEntries",
+                "DeleteMysqlInstance",
+                "DeleteMysqldbInstanceLiveMount",
                 "DeleteVolumeGroupMount",
                 "DenyTprRequests",
                 "DeregisterPrivateContainerRegistry",
@@ -8288,12 +8722,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ModifyIpmi",
                 "MountDisk",
                 "NotificationForGetLicense",
+                "PatchMysqlInstance",
+                "PitRestoreMysqlInstance",
                 "ProvisionCloudDirectCloudVm",
                 "RecoverCloudDirectMultiPaths",
                 "RecoverCloudDirectNasShare",
                 "RecoverCloudDirectPath",
                 "RefreshDomain",
                 "RefreshGlobalManagerConnectivityStatus",
+                "RefreshMysqlInstance",
                 "RemoveDisk",
                 "RemoveInventoryWorkloads",
                 "RemoveNodeForReplacement",
@@ -8324,6 +8761,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SetIpWhitelistSetting",
                 "SetMfaSetting",
                 "SetPrivateContainerRegistry",
+                "SetSelfServeRollingUpgrade",
                 "SetTotpConfig",
                 "SetUpgradeType",
                 "SetUserLevelTotpEnforcement",
@@ -8433,6 +8871,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AddIpWhitelistEntries":
                         this.ProcessRecord_AddIpWhitelistEntries();
                         break;
+                    case "AddMysqlInstance":
+                        this.ProcessRecord_AddMysqlInstance();
+                        break;
                     case "AddRoleAssignments":
                         this.ProcessRecord_AddRoleAssignments();
                         break;
@@ -8514,6 +8955,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ConfirmPartUpload":
                         this.ProcessRecord_ConfirmPartUpload();
                         break;
+                    case "CreateAutomatedRestoreMysqldbInstance":
+                        this.ProcessRecord_CreateAutomatedRestoreMysqldbInstance();
+                        break;
                     case "CreateCustomAnalyzer":
                         this.ProcessRecord_CreateCustomAnalyzer();
                         break;
@@ -8567,6 +9011,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteIpWhitelistEntries":
                         this.ProcessRecord_DeleteIpWhitelistEntries();
+                        break;
+                    case "DeleteMysqlInstance":
+                        this.ProcessRecord_DeleteMysqlInstance();
+                        break;
+                    case "DeleteMysqldbInstanceLiveMount":
+                        this.ProcessRecord_DeleteMysqldbInstanceLiveMount();
                         break;
                     case "DeleteVolumeGroupMount":
                         this.ProcessRecord_DeleteVolumeGroupMount();
@@ -8676,6 +9126,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "NotificationForGetLicense":
                         this.ProcessRecord_NotificationForGetLicense();
                         break;
+                    case "PatchMysqlInstance":
+                        this.ProcessRecord_PatchMysqlInstance();
+                        break;
+                    case "PitRestoreMysqlInstance":
+                        this.ProcessRecord_PitRestoreMysqlInstance();
+                        break;
                     case "ProvisionCloudDirectCloudVm":
                         this.ProcessRecord_ProvisionCloudDirectCloudVm();
                         break;
@@ -8693,6 +9149,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RefreshGlobalManagerConnectivityStatus":
                         this.ProcessRecord_RefreshGlobalManagerConnectivityStatus();
+                        break;
+                    case "RefreshMysqlInstance":
+                        this.ProcessRecord_RefreshMysqlInstance();
                         break;
                     case "RemoveDisk":
                         this.ProcessRecord_RemoveDisk();
@@ -8783,6 +9242,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SetPrivateContainerRegistry":
                         this.ProcessRecord_SetPrivateContainerRegistry();
+                        break;
+                    case "SetSelfServeRollingUpgrade":
+                        this.ProcessRecord_SetSelfServeRollingUpgrade();
                         break;
                     case "SetTotpConfig":
                         this.ProcessRecord_SetTotpConfig();
@@ -9077,6 +9539,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addMysqlInstance.
+        internal void ProcessRecord_AddMysqlInstance()
+        {
+            this._logger.name += " -AddMysqlInstance";
+            // Create new graphql operation addMysqlInstance
+            InitMutationAddMysqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // addRoleAssignments.
         internal void ProcessRecord_AddRoleAssignments()
         {
@@ -9320,6 +9791,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createAutomatedRestoreMysqldbInstance.
+        internal void ProcessRecord_CreateAutomatedRestoreMysqldbInstance()
+        {
+            this._logger.name += " -CreateAutomatedRestoreMysqldbInstance";
+            // Create new graphql operation createAutomatedRestoreMysqldbInstance
+            InitMutationCreateAutomatedRestoreMysqldbInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createCustomAnalyzer.
         internal void ProcessRecord_CreateCustomAnalyzer()
         {
@@ -9479,6 +9959,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteIpWhitelistEntries";
             // Create new graphql operation deleteIpWhitelistEntries
             InitMutationDeleteIpWhitelistEntries();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteMysqlInstance.
+        internal void ProcessRecord_DeleteMysqlInstance()
+        {
+            this._logger.name += " -DeleteMysqlInstance";
+            // Create new graphql operation deleteMysqlInstance
+            InitMutationDeleteMysqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteMysqldbInstanceLiveMount.
+        internal void ProcessRecord_DeleteMysqldbInstanceLiveMount()
+        {
+            this._logger.name += " -DeleteMysqldbInstanceLiveMount";
+            // Create new graphql operation deleteMysqldbInstanceLiveMount
+            InitMutationDeleteMysqldbInstanceLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -9806,6 +10304,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // patchMysqlInstance.
+        internal void ProcessRecord_PatchMysqlInstance()
+        {
+            this._logger.name += " -PatchMysqlInstance";
+            // Create new graphql operation patchMysqlInstance
+            InitMutationPatchMysqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // pitRestoreMysqlInstance.
+        internal void ProcessRecord_PitRestoreMysqlInstance()
+        {
+            this._logger.name += " -PitRestoreMysqlInstance";
+            // Create new graphql operation pitRestoreMysqlInstance
+            InitMutationPitRestoreMysqlInstance();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // provisionCloudDirectCloudVm.
         internal void ProcessRecord_ProvisionCloudDirectCloudVm()
         {
@@ -9857,6 +10373,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RefreshGlobalManagerConnectivityStatus";
             // Create new graphql operation refreshGlobalManagerConnectivityStatus
             InitMutationRefreshGlobalManagerConnectivityStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // refreshMysqlInstance.
+        internal void ProcessRecord_RefreshMysqlInstance()
+        {
+            this._logger.name += " -RefreshMysqlInstance";
+            // Create new graphql operation refreshMysqlInstance
+            InitMutationRefreshMysqlInstance();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -10127,6 +10652,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SetPrivateContainerRegistry";
             // Create new graphql operation setPrivateContainerRegistry
             InitMutationSetPrivateContainerRegistry();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setSelfServeRollingUpgrade.
+        internal void ProcessRecord_SetSelfServeRollingUpgrade()
+        {
+            this._logger.name += " -SetSelfServeRollingUpgrade";
+            // Create new graphql operation setSelfServeRollingUpgrade
+            InitMutationSetSelfServeRollingUpgrade();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11091,6 +11625,73 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // addMysqlInstance(input: AddMysqldbInstanceInput!): AddMysqldbInstanceResponse!
+        internal void InitMutationAddMysqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddMysqldbInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddMysqlInstance",
+                "($input: AddMysqldbInstanceInput!)",
+                "AddMysqldbInstanceResponse",
+                Mutation.AddMysqlInstance,
+                Mutation.AddMysqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	mysqldbInstanceConfig = @{
+		# REQUIRED
+		discoveryInfo = @{
+			# REQUIRED
+			entityInfo = @{
+				# REQUIRED
+				name = $someString
+			}
+			# REQUIRED
+			hostInfo = @(
+				@{
+					# OPTIONAL
+					portNumber = $someInt
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+		}
+		# OPTIONAL
+		connectionInfo = @{
+			# OPTIONAL
+			socketFilePath = $someString
+			# REQUIRED
+			systemUsername = $someString
+			# OPTIONAL
+			authenticationType = $someMysqldbAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MysqldbAuthenticationType]) for enum values.
+			# OPTIONAL
+			bindIpAddress = $someString
+			# OPTIONAL
+			sslConfig = @{
+				# OPTIONAL
+				certFilePath = $someString
+				# OPTIONAL
+				caCertFilePath = $someString
+				# OPTIONAL
+				keyFilePath = $someString
+			}
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // addRoleAssignments(userIds: [String!], groupIds: [String!], roleIds: [String!]!): Boolean!
         internal void InitMutationAddRoleAssignments()
         {
@@ -11994,6 +12595,85 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createAutomatedRestoreMysqldbInstance(input: CreateAutomatedRestoreMysqldbInstanceInput!): CreateAutomatedRestoreMysqldbInstanceReply!
+        internal void InitMutationCreateAutomatedRestoreMysqldbInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateAutomatedRestoreMysqldbInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateAutomatedRestoreMysqldbInstance",
+                "($input: CreateAutomatedRestoreMysqldbInstanceInput!)",
+                "CreateAutomatedRestoreMysqldbInstanceReply",
+                Mutation.CreateAutomatedRestoreMysqldbInstance,
+                Mutation.CreateAutomatedRestoreMysqldbInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	restoreConfig = @{
+		# OPTIONAL
+		mysqldbAutomatedRestoreInstanceDetails = @{
+			# REQUIRED
+			mysqlCnfFilePath = $someString
+		}
+		# REQUIRED
+		targetMysqldbInstanceId = $someString
+		# REQUIRED
+		restoreInfo = @{
+			# REQUIRED
+			locationMap = @(
+				@{
+					# REQUIRED
+					snapshotId = $someString
+					# REQUIRED
+					locationId = $someString
+				}
+			)
+			# OPTIONAL
+			restoreSettings = @{
+				# OPTIONAL
+				shouldRestoreOnlyDataSnapshot = $someBoolean
+			}
+			# REQUIRED
+			restoreName = $someString
+			# OPTIONAL
+			restoreTime = $someDateTime
+			# REQUIRED
+			restoreEntities = @(
+				$someString
+			)
+			# OPTIONAL
+			hostRestoreTargets = @(
+				@{
+					# OPTIONAL
+					portNumber = $someInt
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+		}
+		# OPTIONAL
+		mysqldbAutomatedRestoreConnectionInfo = @{
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+		# OPTIONAL
+		mysqldbAutomatedRestoreDatabaseDetails = @{
+			# OPTIONAL
+			databasePrefixName = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createCustomAnalyzer(input: CreateCustomAnalyzerInput!): Analyzer!
         internal void InitMutationCreateCustomAnalyzer()
         {
@@ -12663,6 +13343,54 @@ $query.Var.input = @{
 	targetEntryIds = @(
 		$someInt64
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteMysqlInstance(input: DeleteMysqldbInstanceInput!): AsyncRequestStatus!
+        internal void InitMutationDeleteMysqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteMysqldbInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteMysqlInstance",
+                "($input: DeleteMysqldbInstanceInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeleteMysqlInstance,
+                Mutation.DeleteMysqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteMysqldbInstanceLiveMount(input: DeleteMysqldbInstanceLiveMountInput!): AsyncRequestStatus!
+        internal void InitMutationDeleteMysqldbInstanceLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteMysqldbInstanceLiveMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteMysqldbInstanceLiveMount",
+                "($input: DeleteMysqldbInstanceLiveMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeleteMysqldbInstanceLiveMount,
+                Mutation.DeleteMysqldbInstanceLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -13783,6 +14511,132 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // patchMysqlInstance(input: PatchMysqldbInstanceInput!): PatchMysqldbInstanceResponse!
+        internal void InitMutationPatchMysqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PatchMysqldbInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPatchMysqlInstance",
+                "($input: PatchMysqldbInstanceInput!)",
+                "PatchMysqldbInstanceResponse",
+                Mutation.PatchMysqlInstance,
+                Mutation.PatchMysqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+	# REQUIRED
+	mysqldbInstanceConfig = @{
+		# REQUIRED
+		discoveryInfo = @{
+			# REQUIRED
+			entityInfo = @{
+				# REQUIRED
+				name = $someString
+			}
+			# REQUIRED
+			hostInfo = @(
+				@{
+					# OPTIONAL
+					portNumber = $someInt
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+		}
+		# OPTIONAL
+		connectionInfo = @{
+			# OPTIONAL
+			socketFilePath = $someString
+			# REQUIRED
+			systemUsername = $someString
+			# OPTIONAL
+			authenticationType = $someMysqldbAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MysqldbAuthenticationType]) for enum values.
+			# OPTIONAL
+			bindIpAddress = $someString
+			# OPTIONAL
+			sslConfig = @{
+				# OPTIONAL
+				certFilePath = $someString
+				# OPTIONAL
+				caCertFilePath = $someString
+				# OPTIONAL
+				keyFilePath = $someString
+			}
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // pitRestoreMysqlInstance(input: PitRestoreMysqldbInstanceInput!): PitRestoreMysqldbInstanceResponse!
+        internal void InitMutationPitRestoreMysqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PitRestoreMysqldbInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPitRestoreMysqlInstance",
+                "($input: PitRestoreMysqldbInstanceInput!)",
+                "PitRestoreMysqldbInstanceResponse",
+                Mutation.PitRestoreMysqlInstance,
+                Mutation.PitRestoreMysqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	mysqldbInstancePitRestoreConfig = @{
+		# OPTIONAL
+		nodeInfo = @{
+			# OPTIONAL
+			nodeHint = @(
+				$someString
+			)
+			# OPTIONAL
+			subnet = $someString
+		}
+		# REQUIRED
+		pitRestoreInfo = @{
+			# REQUIRED
+			hostRecoveryTargets = @(
+				@{
+					# OPTIONAL
+					hostMountPaths = @(
+						$someString
+					)
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+			# OPTIONAL
+			recoveryName = $someString
+			# OPTIONAL
+			recoveryTime = $someDateTime
+			# OPTIONAL
+			extendedRecoveryTimeInSec = $someInt64
+			# OPTIONAL
+			locationId = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // provisionCloudDirectCloudVm(input: ProvisionCloudDirectCloudVmInput!): ProvisionCloudDirectCloudVmReply!
         internal void InitMutationProvisionCloudDirectCloudVm()
         {
@@ -13954,6 +14808,29 @@ $query.Var.input = @{
                 Mutation.RefreshGlobalManagerConnectivityStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // refreshMysqlInstance(input: RefreshMysqldbInstanceInput!): AsyncRequestStatus!
+        internal void InitMutationRefreshMysqlInstance()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RefreshMysqldbInstanceInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRefreshMysqlInstance",
+                "($input: RefreshMysqldbInstanceInput!)",
+                "AsyncRequestStatus",
+                Mutation.RefreshMysqlInstance,
+                Mutation.RefreshMysqlInstanceFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 
@@ -14901,6 +15778,29 @@ $query.Var.input = @{
 		# OPTIONAL
 		customerAppId = $someString
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setSelfServeRollingUpgrade(input: SetSelfServeRollingUpgradeInput!): SetSelfServeRollingUpgradeReply!
+        internal void InitMutationSetSelfServeRollingUpgrade()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetSelfServeRollingUpgradeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetSelfServeRollingUpgrade",
+                "($input: SetSelfServeRollingUpgradeInput!)",
+                "SetSelfServeRollingUpgradeReply",
+                Mutation.SetSelfServeRollingUpgrade,
+                Mutation.SetSelfServeRollingUpgradeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	enabled = $someBoolean
 }"
             );
         }

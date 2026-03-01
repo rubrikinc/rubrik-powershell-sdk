@@ -30,8 +30,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SIGNIN_LOG_FILTER_DEVICE_NAME")]
         SIGNIN_LOG_FILTER_DEVICE_NAME,
 
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_DISPLAY_NAME")]
+        SIGNIN_LOG_FILTER_DISPLAY_NAME,
+
         [EnumMember(Value = "SIGNIN_LOG_FILTER_IP_ADDRESS")]
         SIGNIN_LOG_FILTER_IP_ADDRESS,
+
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_LOCATION")]
+        SIGNIN_LOG_FILTER_LOCATION,
 
         [EnumMember(Value = "SIGNIN_LOG_FILTER_TENANT")]
         SIGNIN_LOG_FILTER_TENANT,

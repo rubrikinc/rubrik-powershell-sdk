@@ -357,6 +357,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_TYPE")]
         OBJECT_TYPE,
 
+        [EnumMember(Value = "PAUSE_SINCE")]
+        PAUSE_SINCE,
+
         [EnumMember(Value = "PHYSICAL_HOST_CONNECTION_STATUS")]
         PHYSICAL_HOST_CONNECTION_STATUS,
 

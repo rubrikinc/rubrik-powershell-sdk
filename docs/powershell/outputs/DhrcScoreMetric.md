@@ -1,6 +1,8 @@
 ### DhrcScoreMetric
 Metric represents a specific metric as included in the score calculation.
 
+- metric: DhrcMetric
+  - The metric identity.
 - value: System.Single
   - The value of the metric.
 - maxValue: System.Single
@@ -13,5 +15,3 @@ is scaled by the weight before being used in the score calculation.
 - version: System.Int32
   - The metric version. Increase by one every time the metric definition is
 updated.
-- metric: DhrcMetric
-  - The metric identity.

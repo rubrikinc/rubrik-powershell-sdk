@@ -60,6 +60,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled")]
         public System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAzureSqlPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        [JsonProperty("isAzureSqlPrivateDnsZoneDoesNotExist")]
+        public System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist { get; set; }
+
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAzureSqlPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        [JsonProperty("isAzureSqlPrivateDnsZoneInDifferentSubscription")]
+        public System.Boolean? IsAzureSqlPrivateDnsZoneInDifferentSubscription { get; set; }
+
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneInvalid
+        // GraphQL -> isAzureSqlPrivateDnsZoneInvalid: Boolean! (scalar)
+        [JsonProperty("isAzureSqlPrivateDnsZoneInvalid")]
+        public System.Boolean? IsAzureSqlPrivateDnsZoneInvalid { get; set; }
+
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAzureSqlPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        [JsonProperty("isAzureSqlPrivateDnsZoneNotLinkedToVnet")]
+        public System.Boolean? IsAzureSqlPrivateDnsZoneNotLinkedToVnet { get; set; }
+
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
         // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
         [JsonProperty("isClusterSubnetSizeTooSmall")]
@@ -143,6 +163,10 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAksCustomPrivateDnsZoneInvalid = null,
         System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet = null,
         System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null,
+        System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist = null,
+        System.Boolean? IsAzureSqlPrivateDnsZoneInDifferentSubscription = null,
+        System.Boolean? IsAzureSqlPrivateDnsZoneInvalid = null,
+        System.Boolean? IsAzureSqlPrivateDnsZoneNotLinkedToVnet = null,
         System.Boolean? IsClusterSubnetSizeTooSmall = null,
         System.Boolean? IsPodAndClusterSubnetSame = null,
         System.Boolean? IsPodAndClusterVnetDifferent = null,
@@ -181,6 +205,18 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null ) {
             this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled;
+        }
+        if ( IsAzureSqlPrivateDnsZoneDoesNotExist != null ) {
+            this.IsAzureSqlPrivateDnsZoneDoesNotExist = IsAzureSqlPrivateDnsZoneDoesNotExist;
+        }
+        if ( IsAzureSqlPrivateDnsZoneInDifferentSubscription != null ) {
+            this.IsAzureSqlPrivateDnsZoneInDifferentSubscription = IsAzureSqlPrivateDnsZoneInDifferentSubscription;
+        }
+        if ( IsAzureSqlPrivateDnsZoneInvalid != null ) {
+            this.IsAzureSqlPrivateDnsZoneInvalid = IsAzureSqlPrivateDnsZoneInvalid;
+        }
+        if ( IsAzureSqlPrivateDnsZoneNotLinkedToVnet != null ) {
+            this.IsAzureSqlPrivateDnsZoneNotLinkedToVnet = IsAzureSqlPrivateDnsZoneNotLinkedToVnet;
         }
         if ( IsClusterSubnetSizeTooSmall != null ) {
             this.IsClusterSubnetSizeTooSmall = IsClusterSubnetSizeTooSmall;
@@ -305,6 +341,42 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
             } else {
                 s += ind + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAzureSqlPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (this.IsAzureSqlPrivateDnsZoneDoesNotExist != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzureSqlPrivateDnsZoneDoesNotExist\n" ;
+            } else {
+                s += ind + "isAzureSqlPrivateDnsZoneDoesNotExist\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAzureSqlPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (this.IsAzureSqlPrivateDnsZoneInDifferentSubscription != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzureSqlPrivateDnsZoneInDifferentSubscription\n" ;
+            } else {
+                s += ind + "isAzureSqlPrivateDnsZoneInDifferentSubscription\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneInvalid
+        // GraphQL -> isAzureSqlPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (this.IsAzureSqlPrivateDnsZoneInvalid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzureSqlPrivateDnsZoneInvalid\n" ;
+            } else {
+                s += ind + "isAzureSqlPrivateDnsZoneInvalid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAzureSqlPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (this.IsAzureSqlPrivateDnsZoneNotLinkedToVnet != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzureSqlPrivateDnsZoneNotLinkedToVnet\n" ;
+            } else {
+                s += ind + "isAzureSqlPrivateDnsZoneNotLinkedToVnet\n" ;
             }
         }
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
@@ -569,6 +641,74 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null && ec.Excludes("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled",true))
         {
             this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null;
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAzureSqlPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (ec.Includes("isAzureSqlPrivateDnsZoneDoesNotExist",true))
+        {
+            if(this.IsAzureSqlPrivateDnsZoneDoesNotExist == null) {
+
+                this.IsAzureSqlPrivateDnsZoneDoesNotExist = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzureSqlPrivateDnsZoneDoesNotExist != null && ec.Excludes("isAzureSqlPrivateDnsZoneDoesNotExist",true))
+        {
+            this.IsAzureSqlPrivateDnsZoneDoesNotExist = null;
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAzureSqlPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (ec.Includes("isAzureSqlPrivateDnsZoneInDifferentSubscription",true))
+        {
+            if(this.IsAzureSqlPrivateDnsZoneInDifferentSubscription == null) {
+
+                this.IsAzureSqlPrivateDnsZoneInDifferentSubscription = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzureSqlPrivateDnsZoneInDifferentSubscription != null && ec.Excludes("isAzureSqlPrivateDnsZoneInDifferentSubscription",true))
+        {
+            this.IsAzureSqlPrivateDnsZoneInDifferentSubscription = null;
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneInvalid
+        // GraphQL -> isAzureSqlPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (ec.Includes("isAzureSqlPrivateDnsZoneInvalid",true))
+        {
+            if(this.IsAzureSqlPrivateDnsZoneInvalid == null) {
+
+                this.IsAzureSqlPrivateDnsZoneInvalid = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzureSqlPrivateDnsZoneInvalid != null && ec.Excludes("isAzureSqlPrivateDnsZoneInvalid",true))
+        {
+            this.IsAzureSqlPrivateDnsZoneInvalid = null;
+        }
+        //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAzureSqlPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (ec.Includes("isAzureSqlPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            if(this.IsAzureSqlPrivateDnsZoneNotLinkedToVnet == null) {
+
+                this.IsAzureSqlPrivateDnsZoneNotLinkedToVnet = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzureSqlPrivateDnsZoneNotLinkedToVnet != null && ec.Excludes("isAzureSqlPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            this.IsAzureSqlPrivateDnsZoneNotLinkedToVnet = null;
         }
         //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
         // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)

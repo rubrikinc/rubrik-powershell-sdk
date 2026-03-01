@@ -11,3 +11,6 @@ Trigger day for Weekly, Monthly, Quarterly, and Yearly units. Accepted values ar
 - timeUnit: SlaTimeUnit
   - Required. Supported in v5.0+
 Units for frequency and retention. Accepted values are Minute, Hourly, Daily, Weekly, Monthly, Quarterly, and Yearly.
+- configuredSchedule: ConfiguredSchedule
+  - Supported in v9.6
+Contains the configured schedule days for the frequency under which a missed snapshot is detected, as defined in the SLA Domain. Applicable only for Weekly, Monthly, Quarterly, and Yearly frequencies.

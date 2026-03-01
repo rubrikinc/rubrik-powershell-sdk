@@ -4249,6 +4249,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AddMysqldbInstanceResponse? AddMysqlInstance
+        // GraphQL -> addMysqlInstance: AddMysqldbInstanceResponse! (type)
+        public static string AddMysqlInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "addMysqlInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AddMysqlInstanceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AddMysqldbInstanceResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CcProvisionJobReply? AddNodesToCloudCluster
         // GraphQL -> addNodesToCloudCluster: CcProvisionJobReply! (type)
         public static string AddNodesToCloudCluster(object fsObj)
@@ -6157,6 +6175,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CreateAutomatedRestoreMysqldbInstanceReply? CreateAutomatedRestoreMysqldbInstance
+        // GraphQL -> createAutomatedRestoreMysqldbInstance: CreateAutomatedRestoreMysqldbInstanceReply! (type)
+        public static string CreateAutomatedRestoreMysqldbInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createAutomatedRestoreMysqldbInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateAutomatedRestoreMysqldbInstanceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CreateAutomatedRestoreMysqldbInstanceReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> TargetMapping? CreateAutomaticAwsTargetMapping
         // GraphQL -> createAutomaticAwsTargetMapping: TargetMapping! (type)
         public static string CreateAutomaticAwsTargetMapping(object fsObj)
@@ -6958,6 +6994,24 @@ namespace RubrikSecurityCloud.Types
             return "createOnDemandMssqlBackup" + args + "\n{\n" + fs + "}\n";
         }
         public static object CreateOnDemandMssqlBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? CreateOnDemandMysqldbInstanceSnapshot
+        // GraphQL -> createOnDemandMysqldbInstanceSnapshot: AsyncRequestStatus! (type)
+        public static string CreateOnDemandMysqldbInstanceSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createOnDemandMysqldbInstanceSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateOnDemandMysqldbInstanceSnapshotFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -7858,6 +7912,42 @@ namespace RubrikSecurityCloud.Types
             return "deleteMssqlLiveMount" + args + "\n{\n" + fs + "}\n";
         }
         public static object DeleteMssqlLiveMountFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? DeleteMysqlInstance
+        // GraphQL -> deleteMysqlInstance: AsyncRequestStatus! (type)
+        public static string DeleteMysqlInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteMysqlInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DeleteMysqlInstanceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? DeleteMysqldbInstanceLiveMount
+        // GraphQL -> deleteMysqldbInstanceLiveMount: AsyncRequestStatus! (type)
+        public static string DeleteMysqldbInstanceLiveMount(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteMysqldbInstanceLiveMount" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DeleteMysqldbInstanceLiveMountFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -9757,24 +9847,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> GcpCloudAccountDeleteProjectsReply? GcpCloudAccountDeleteProjects
-        // GraphQL -> gcpCloudAccountDeleteProjects: GcpCloudAccountDeleteProjectsReply! (type)
-        public static string GcpCloudAccountDeleteProjects(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "gcpCloudAccountDeleteProjects" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object GcpCloudAccountDeleteProjectsFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new GcpCloudAccountDeleteProjectsReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> BatchAsyncJobStatus? GcpCloudAccountDeleteProjectsV2
         // GraphQL -> gcpCloudAccountDeleteProjectsV2: BatchAsyncJobStatus! (type)
         public static string GcpCloudAccountDeleteProjectsV2(object fsObj)
@@ -9843,24 +9915,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GcpCloudAccountUpgradeProjectsReply() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> AsyncJobStatus? GcpNativeDisableProject
-        // GraphQL -> gcpNativeDisableProject: AsyncJobStatus! (type)
-        public static string GcpNativeDisableProject(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "gcpNativeDisableProject" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object GcpNativeDisableProjectFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new AsyncJobStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10891,6 +10945,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> PatchMysqldbInstanceResponse? PatchMysqlInstance
+        // GraphQL -> patchMysqlInstance: PatchMysqldbInstanceResponse! (type)
+        public static string PatchMysqlInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "patchMysqlInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PatchMysqlInstanceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PatchMysqldbInstanceResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PatchNutanixMountV1Reply? PatchNutanixMountV1
         // GraphQL -> patchNutanixMountV1: PatchNutanixMountV1Reply! (type)
         public static string PatchNutanixMountV1(object fsObj)
@@ -10977,6 +11049,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new PauseTargetReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> PitRestoreMysqldbInstanceResponse? PitRestoreMysqlInstance
+        // GraphQL -> pitRestoreMysqlInstance: PitRestoreMysqldbInstanceResponse! (type)
+        public static string PitRestoreMysqlInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "pitRestoreMysqlInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PitRestoreMysqlInstanceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PitRestoreMysqldbInstanceResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11386,6 +11476,24 @@ namespace RubrikSecurityCloud.Types
             return "refreshK8sV2Cluster" + args + "\n{\n" + fs + "}\n";
         }
         public static object RefreshK8sV2ClusterFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? RefreshMysqlInstance
+        // GraphQL -> refreshMysqlInstance: AsyncRequestStatus! (type)
+        public static string RefreshMysqlInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "refreshMysqlInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RefreshMysqlInstanceFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -12597,6 +12705,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new RequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SetSelfServeRollingUpgradeReply? SetSelfServeRollingUpgrade
+        // GraphQL -> setSelfServeRollingUpgrade: SetSelfServeRollingUpgradeReply! (type)
+        public static string SetSelfServeRollingUpgrade(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setSelfServeRollingUpgrade" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SetSelfServeRollingUpgradeFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SetSelfServeRollingUpgradeReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

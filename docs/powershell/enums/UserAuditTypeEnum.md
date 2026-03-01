@@ -1,36 +1,36 @@
 ### UserAuditTypeEnum
 User audit type.
 
-- Audit
-- Classification
-- SlaModification
-- LegalHold
-- IDENTITY_ALERT - Audit type for identity alerts.
-- THREAT_FEED - Audit type for Intel feed.
-- IDENTITY_VIOLATION - Audit type for identity violations.
-- BULK_RECOVERY - Audit type for bulk recovery use cases.
-- DATA_RISKS - Audit type for data risks.
+- Audit - Audit event.
+- AccessManagement - Access management audit type.
+- Backup - Backup type.
+- Configuration - Configuration type.
+- Login - Login audit type.
+- Search - Search audit type.
+- SlaModification - SLA Domain modification audit type.
+- UnknownUserAuditType - Unknown user audit type.
+- Recovery - Recovery type.
+- Diagnostic - Diagnostic type.
+- Sync - Sync type.
+- SlaAssignment - SLA Domain assignment audit type.
+- Failover - Failover type.
+- LOCAL_RECOVERY - Local recovery type.
+- Classification - Classification type.
+- Download - Download type.
+- LegalHold - Legal hold type.
+- Index - Index type.
+- QUARANTINE - Audit type for quarantine usecases.
+- ISOLATED_RECOVERY - Isolated recovery.
 - THREAT_HUNT - Audit type for threat hunt use cases.
-- ISOLATED_RECOVERY
-- Configuration
-- IDENTITY_ACTIVITY - Audit type for identity activities.
+- BULK_RECOVERY - Audit type for bulk recovery use cases.
 - ENCRYPTION_MANAGEMENT_OPERATION - Audit type for encryption management use cases.
 - RECOVERY_SCHEDULE - Audit type for recovery schedule use cases.
-- QUARANTINE - Audit type for quarantine usecases.
-- Login
-- STAGED_UPGRADE - Audit type for upgrade operations.
-- LOCAL_RECOVERY
-- Failover
-- Diagnostic
-- RUBY_AI - Audit type for Ruby AI use cases.
-- UnknownUserAuditType
-- SlaAssignment
-- AccessManagement
-- Search
-- Backup
-- Sync
-- ANOMALY - Audit type for anomalies.
-- Recovery
-- Download
 - FILE_DOWNLOAD - Audit type for user file downloads.
-- Index
+- RUBY_AI - Audit type for Ruby AI use cases.
+- ANOMALY - Audit type for anomalies.
+- THREAT_FEED - Audit type for Intel feed.
+- DATA_RISKS - Audit type for data risks.
+- IDENTITY_VIOLATION - Audit type for identity violations.
+- IDENTITY_ALERT - Audit type for identity alerts.
+- STAGED_UPGRADE - Audit type for upgrade operations.
+- IDENTITY_ACTIVITY - Audit type for identity activities.

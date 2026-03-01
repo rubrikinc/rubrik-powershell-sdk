@@ -216,3 +216,8 @@ those without a reset reason.
 +mo:sort:db:table=cloud_native_object_properties
 +mo:sort:db:column=property_value
 +mo:sort:db:index:not_needed
+- PAUSE_SINCE - Sort objects by pause start time. This should only be used when
+IS_DIRECTLY_PAUSED filter is also provided as true.
++mo:sort:db:table=blackout_window
++mo:sort:db:column=start_date
++mo:sort:db:index:key=NULL

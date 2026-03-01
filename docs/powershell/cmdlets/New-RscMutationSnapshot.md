@@ -37,6 +37,14 @@ Download a snapshot from archival.
 ### createfileset
 - There is a single argument of type CreateFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
+### createondemandmysqldbinstance
+Create an on-demand snapshot for the MySQL instance
+
+Supported in v9.5+
+Initiates a job to take an on-demand snapshot of a specified MySQL instance. You can use the GET /mysqldb/instance/request/{id} endpoint to monitor the progress of the job.
+
+- There is a single argument of type CreateOnDemandMysqldbInstanceSnapshotV2Input.
+- Returns AsyncRequestStatus.
 ### createvapps
 Create vApp Snapshots.
 

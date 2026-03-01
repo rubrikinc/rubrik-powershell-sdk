@@ -50,10 +50,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksNodeRgPrefix")]
         public System.String? AksNodeRgPrefix { get; set; }
 
+        //      C# -> System.String? AzureSqlPrivateDnsZoneId
+        // GraphQL -> azureSqlPrivateDnsZoneId: String! (scalar)
+        [JsonProperty("azureSqlPrivateDnsZoneId")]
+        public System.String? AzureSqlPrivateDnsZoneId { get; set; }
+
         //      C# -> System.Boolean? DiskEncryptionAtHost
         // GraphQL -> diskEncryptionAtHost: Boolean! (scalar)
         [JsonProperty("diskEncryptionAtHost")]
         public System.Boolean? DiskEncryptionAtHost { get; set; }
+
+        //      C# -> System.String? DiskEncryptionSetId
+        // GraphQL -> diskEncryptionSetId: String! (scalar)
+        [JsonProperty("diskEncryptionSetId")]
+        public System.String? DiskEncryptionSetId { get; set; }
 
         //      C# -> System.Boolean? EnableUserDefinedRouting
         // GraphQL -> enableUserDefinedRouting: Boolean! (scalar)
@@ -86,7 +96,9 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? AdditionalWhitelistIps = null,
         System.String? AksCustomPrivateDnsZoneId = null,
         System.String? AksNodeRgPrefix = null,
+        System.String? AzureSqlPrivateDnsZoneId = null,
         System.Boolean? DiskEncryptionAtHost = null,
+        System.String? DiskEncryptionSetId = null,
         System.Boolean? EnableUserDefinedRouting = null,
         System.String? PrivateDnsZoneId = null,
         System.Boolean? ShouldWhitelistRubrikIps = null
@@ -110,8 +122,14 @@ namespace RubrikSecurityCloud.Types
         if ( AksNodeRgPrefix != null ) {
             this.AksNodeRgPrefix = AksNodeRgPrefix;
         }
+        if ( AzureSqlPrivateDnsZoneId != null ) {
+            this.AzureSqlPrivateDnsZoneId = AzureSqlPrivateDnsZoneId;
+        }
         if ( DiskEncryptionAtHost != null ) {
             this.DiskEncryptionAtHost = DiskEncryptionAtHost;
+        }
+        if ( DiskEncryptionSetId != null ) {
+            this.DiskEncryptionSetId = DiskEncryptionSetId;
         }
         if ( EnableUserDefinedRouting != null ) {
             this.EnableUserDefinedRouting = EnableUserDefinedRouting;
@@ -190,6 +208,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "aksNodeRgPrefix\n" ;
             }
         }
+        //      C# -> System.String? AzureSqlPrivateDnsZoneId
+        // GraphQL -> azureSqlPrivateDnsZoneId: String! (scalar)
+        if (this.AzureSqlPrivateDnsZoneId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureSqlPrivateDnsZoneId\n" ;
+            } else {
+                s += ind + "azureSqlPrivateDnsZoneId\n" ;
+            }
+        }
         //      C# -> System.Boolean? DiskEncryptionAtHost
         // GraphQL -> diskEncryptionAtHost: Boolean! (scalar)
         if (this.DiskEncryptionAtHost != null) {
@@ -197,6 +224,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "diskEncryptionAtHost\n" ;
             } else {
                 s += ind + "diskEncryptionAtHost\n" ;
+            }
+        }
+        //      C# -> System.String? DiskEncryptionSetId
+        // GraphQL -> diskEncryptionSetId: String! (scalar)
+        if (this.DiskEncryptionSetId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "diskEncryptionSetId\n" ;
+            } else {
+                s += ind + "diskEncryptionSetId\n" ;
             }
         }
         //      C# -> System.Boolean? EnableUserDefinedRouting
@@ -335,6 +371,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AksNodeRgPrefix = null;
         }
+        //      C# -> System.String? AzureSqlPrivateDnsZoneId
+        // GraphQL -> azureSqlPrivateDnsZoneId: String! (scalar)
+        if (ec.Includes("azureSqlPrivateDnsZoneId",true))
+        {
+            if(this.AzureSqlPrivateDnsZoneId == null) {
+
+                this.AzureSqlPrivateDnsZoneId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureSqlPrivateDnsZoneId != null && ec.Excludes("azureSqlPrivateDnsZoneId",true))
+        {
+            this.AzureSqlPrivateDnsZoneId = null;
+        }
         //      C# -> System.Boolean? DiskEncryptionAtHost
         // GraphQL -> diskEncryptionAtHost: Boolean! (scalar)
         if (ec.Includes("diskEncryptionAtHost",true))
@@ -351,6 +404,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DiskEncryptionAtHost != null && ec.Excludes("diskEncryptionAtHost",true))
         {
             this.DiskEncryptionAtHost = null;
+        }
+        //      C# -> System.String? DiskEncryptionSetId
+        // GraphQL -> diskEncryptionSetId: String! (scalar)
+        if (ec.Includes("diskEncryptionSetId",true))
+        {
+            if(this.DiskEncryptionSetId == null) {
+
+                this.DiskEncryptionSetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskEncryptionSetId != null && ec.Excludes("diskEncryptionSetId",true))
+        {
+            this.DiskEncryptionSetId = null;
         }
         //      C# -> System.Boolean? EnableUserDefinedRouting
         // GraphQL -> enableUserDefinedRouting: Boolean! (scalar)

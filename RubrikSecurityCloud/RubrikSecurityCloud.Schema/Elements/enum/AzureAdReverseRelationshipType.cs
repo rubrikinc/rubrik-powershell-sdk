@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OWNER_OF")]
         OWNER_OF,
 
+        [EnumMember(Value = "POLICY_SCRIPT_OF")]
+        POLICY_SCRIPT_OF,
+
         [EnumMember(Value = "REVERSE_RELATIONSHIP_TYPE_UNKNOWN")]
         REVERSE_RELATIONSHIP_TYPE_UNKNOWN,
 

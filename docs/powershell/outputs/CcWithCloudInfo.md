@@ -23,3 +23,5 @@ Detailed cloud information for a Cloud Cluster.
   - Native name of the cloud account where the Cloud Cluster exists.
 - storageConfig: ElasticStorageConfig
   - Elastic Storage configuration.
+- isDynamicScalingEnabled: System.Boolean
+  - Specifies whether the Cloud Cluster has dynamic scaling enabled.

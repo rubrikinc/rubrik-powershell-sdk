@@ -177,6 +177,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// }
     /// )
+    /// # OPTIONAL
+    /// $query.Var.awsIamPairId = $someString
     /// 
     /// # Execute the query
     /// 
@@ -581,19 +583,25 @@ $query.Var.features = @(
         }
 
         // Create new GraphQL Query:
-        // allCurrentFeaturePermissionsForCloudAccounts(cloudVendor: CloudVendor!, cloudAccountIds: [UUID!], permissionsGroupFilters: [FeatureWithPermissionsGroups!]): [CloudAccountFeaturePermission!]!
+        // allCurrentFeaturePermissionsForCloudAccounts(
+        //     cloudVendor: CloudVendor!
+        //     cloudAccountIds: [UUID!]
+        //     permissionsGroupFilters: [FeatureWithPermissionsGroups!]
+        //     awsIamPairId: String
+        //   ): [CloudAccountFeaturePermission!]!
         internal void InitQueryAllCurrentFeaturePermissionsForCloudAccounts()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cloudVendor", "CloudVendor!"),
                 Tuple.Create("cloudAccountIds", "[UUID!]"),
                 Tuple.Create("permissionsGroupFilters", "[FeatureWithPermissionsGroups!]"),
+                Tuple.Create("awsIamPairId", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllCurrentFeaturePermissionsForCloudAccounts",
-                "($cloudVendor: CloudVendor!,$cloudAccountIds: [UUID!],$permissionsGroupFilters: [FeatureWithPermissionsGroups!])",
+                "($cloudVendor: CloudVendor!,$cloudAccountIds: [UUID!],$permissionsGroupFilters: [FeatureWithPermissionsGroups!],$awsIamPairId: String)",
                 "List<CloudAccountFeaturePermission>",
                 Query.AllCurrentFeaturePermissionsForCloudAccounts,
                 Query.AllCurrentFeaturePermissionsForCloudAccountsFieldSpec,
@@ -613,7 +621,9 @@ $query.Var.permissionsGroupFilters = @(
 			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 		)
 }
-)"
+)
+# OPTIONAL
+$query.Var.awsIamPairId = $someString"
             );
         }
 

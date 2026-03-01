@@ -6,3 +6,4 @@ Field to sort sign-in logs by.
 - SIGNIN_LOG_SORT_FIELD_RESULT - Sort by result.
 - SIGNIN_LOG_SORT_FIELD_PROVIDER - Sort by provider.
 - SIGNIN_LOG_SORT_FIELD_RISK_LEVEL - Sort by risk level.
+- SIGNIN_LOG_SORT_FIELD_ACTOR_DISPLAY_NAME - Sort by identity display name.

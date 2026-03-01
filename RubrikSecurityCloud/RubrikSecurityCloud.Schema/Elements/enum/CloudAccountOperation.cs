@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD")]
         ADD,
 
+        [EnumMember(Value = "MIGRATE")]
+        MIGRATE,
+
         [EnumMember(Value = "UPGRADE")]
         UPGRADE
 

@@ -213,6 +213,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				aksCustomPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
+    /// 				azureSqlPrivateDnsZoneId = $someString
+    /// 				# OPTIONAL
+    /// 				diskEncryptionSetId = $someString
+    /// 				# OPTIONAL
     /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
     /// 				# OPTIONAL
     /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
@@ -3641,6 +3645,10 @@ $query.Var.input = @{
 				privateDnsZoneId = $someString
 				# OPTIONAL
 				aksCustomPrivateDnsZoneId = $someString
+				# OPTIONAL
+				azureSqlPrivateDnsZoneId = $someString
+				# OPTIONAL
+				diskEncryptionSetId = $someString
 				# OPTIONAL
 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
 				# OPTIONAL

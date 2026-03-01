@@ -86,3 +86,5 @@ protection feature.
 - NAT_GATEWAY - Represents the set of permissions required for NAT gateway operations.
 These permissions are applicable to the Laminar Outpost Application
 feature.
+- CLOUDSQL - Represents the set of permissions required for CloudSQL operations.
+These permissions are applicable to the GCP Exocompute feature.

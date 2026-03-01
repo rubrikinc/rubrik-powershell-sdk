@@ -37,6 +37,8 @@ NAS Cloud Direct snapshot object.
   - Name of policy assigned to the snapshot in NAS Cloud Direct.
 - summary: CloudDirectSnapshotSummary
   - Summary of statistics for this snapshot.
+- isCustomRetentionApplied: System.Boolean
+  - Specifies whether the snapshot uses a custom retention period.
 - workloadId: System.String
   - Rubrik ID of NAS Cloud Direct workload.
 - snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo

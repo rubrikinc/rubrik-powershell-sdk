@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> BackupType? BackupType
+        // GraphQL -> backupType: BackupType (enum)
+        [JsonProperty("backupType")]
+        public BackupType? BackupType { get; set; }
+
         //      C# -> SnapshotConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotConsistencyLevel! (enum)
         [JsonProperty("consistencyLevel")]
@@ -236,6 +241,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PolarisSnapshot Set(
+        BackupType? BackupType = null,
         SnapshotConsistencyLevel? ConsistencyLevel = null,
         RetentionLockMode? RetentionLockModeAcrossLocations = null,
         SlaDomain? PendingSla = null,
@@ -279,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         RscSnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
+        if ( BackupType != null ) {
+            this.BackupType = BackupType;
+        }
         if ( ConsistencyLevel != null ) {
             this.ConsistencyLevel = ConsistencyLevel;
         }
@@ -416,6 +425,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> BackupType? BackupType
+        // GraphQL -> backupType: BackupType (enum)
+        if (this.BackupType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupType\n" ;
+            } else {
+                s += ind + "backupType\n" ;
+            }
+        }
         //      C# -> SnapshotConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotConsistencyLevel! (enum)
         if (this.ConsistencyLevel != null) {
@@ -816,6 +834,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> BackupType? BackupType
+        // GraphQL -> backupType: BackupType (enum)
+        if (ec.Includes("backupType",true))
+        {
+            if(this.BackupType == null) {
+
+                this.BackupType = new BackupType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupType != null && ec.Excludes("backupType",true))
+        {
+            this.BackupType = null;
+        }
         //      C# -> SnapshotConsistencyLevel? ConsistencyLevel
         // GraphQL -> consistencyLevel: SnapshotConsistencyLevel! (enum)
         if (ec.Includes("consistencyLevel",true))

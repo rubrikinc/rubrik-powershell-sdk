@@ -9,15 +9,15 @@ Numbers in parentheses indicate the number queries and mutations in the domain.
 
 |  |  |  |  |  |
 | --- | --- | --- | --- | --- |
-| [Account (9,14)](#account-domain) | [Cluster (44,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (31,25)](#snapshot-domain) |
+| [Account (9,14)](#account-domain) | [Cluster (45,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (31,26)](#snapshot-domain) |
 | [Active Directory (5,5)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (11,4)](#microsoft-365-domain) | [Policy (10,16)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (13,18)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (231,193)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (13,18)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (238,201)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (9,13)](#mongo-domain) | [RCV (5,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (60,46)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (18,8)](#report-domain) | [Threat (18,7)](#threat-domain) |
-| [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,15)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
-| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,6)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
+| [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,14)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
+| [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,5)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
 | [Cassandra (8,5)](#cassandra-domain) | [Host (8,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,12)](#sla-domain) | [VMware vSphere VM (8,29)](#vmware-vsphere-vm-domain) |
 | [Cloud Account (8,4)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,7)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
@@ -729,6 +729,7 @@ Cmdlets: `New-RscQueryCluster` and `New-RscMutationCluster`
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
 | CanIgnoreClusterRemovalPrechecks | Specifies if the cluster can ignore cluster removal prechecks. | `New-RscQueryCluster -Operation CanIgnoreClusterRemovalPrechecks`<BR> | [canIgnoreClusterRemovalPrechecks](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CheckClusterRuSupport | Check if a cluster supports Rolling Upgrade (RU) based on its workload types. | `New-RscQueryCluster -Operation CheckClusterRuSupport`<BR> | [checkClusterRuSupport](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudClusterInstanceProperties | Retrieves instance properties. | `New-RscQueryCluster -Operation CloudClusterInstanceProperties`<BR> | [cloudClusterInstanceProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudClusterNodesInstanceProperties | Get instance properties of cluster nodes. | `New-RscQueryCluster -Operation CloudClusterNodesInstanceProperties`<BR> | [cloudClusterNodesInstanceProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudClusterRecoveryValidation | Validate if a Cloud Cluster can be recovered. | `New-RscQueryCluster -Operation CloudClusterRecoveryValidation`<BR> | [cloudClusterRecoveryValidation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1201,7 +1202,6 @@ either in this API or set separately via setting global credentials. | `New-RscM
 | BulkSetCloudAccountProperties | Sets the properties of GCP cloud accounts. | `New-RscMutationGcp -Operation BulkSetCloudAccountProperties`<BR> | [gcpBulkSetCloudAccountProperties](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountAddManualAuthProject | Adds a new cloud account for the GCP project which is not already added. | `New-RscMutationGcp -Operation CloudAccountAddManualAuthProject`<BR> | [gcpCloudAccountAddManualAuthProject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountAddProjects | Add cloud account for GCP projects for the given features. | `New-RscMutationGcp -Operation CloudAccountAddProjects`<BR> | [gcpCloudAccountAddProjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
-| CloudAccountDeleteProjects | Delete cloud account for the given GCP project cloud account IDs and feature. | `New-RscMutationGcp -Operation CloudAccountDeleteProjects`<BR> | [gcpCloudAccountDeleteProjects](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountDeleteProjectsV2 | Delete some features for some GCP cloud accounts. The Rubrik objects in the  
 return value are of the form <GCP project Rubrik ID>:<FEATURE_NAME>. | `New-RscMutationGcp -Operation CloudAccountDeleteProjectsV2`<BR> | [gcpCloudAccountDeleteProjectsV2](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CloudAccountOauthComplete | Complete the OAuth flow and pass the authorization code. | `New-RscMutationGcp -Operation CloudAccountOauthComplete`<BR> | [gcpCloudAccountOauthComplete](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1241,7 +1241,6 @@ Cmdlets: `New-RscQueryGcpNative` and `New-RscMutationGcpNative`
 
 | Operation | Description | Invocation | GraphQL Root Field |
 | --- | --- | --- | --- |
-| DisableProject | Triggers GCP native disable project job for the given project ID. | `New-RscMutationGcpNative -Operation DisableProject`<BR> | [gcpNativeDisableProject](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExcludeDisksFromInstanceSnapshot | N/A | `New-RscMutationGcpNative -Operation ExcludeDisksFromInstanceSnapshot`<BR> | [gcpNativeExcludeDisksFromInstanceSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportDisk | Triggers GCP native export disk job for the given disk snapshot. | `New-RscMutationGcpNative -Operation ExportDisk`<BR> | [gcpNativeExportDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ExportGceInstance | Triggers GCP native export instance job for the given GCE instance. | `New-RscMutationGcpNative -Operation ExportGceInstance`<BR> | [gcpNativeExportGceInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1866,6 +1865,11 @@ allowed to access the field. | `New-RscQueryMisc -Operation JobInfo`<BR> | [jobI
 | MicrosoftSites | List of sites in the Microsoft 365 organization. | `New-RscQueryMisc -Operation MicrosoftSites`<BR> | [microsoftSites](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MinimumCdmVersionForFeatureSet | Get minimum cluster version to support feature set. | `New-RscQueryMisc -Operation MinimumCdmVersionForFeatureSet`<BR> | [minimumCdmVersionForFeatureSet](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MipLabels | Returns all the MIP Labels for an account. | `New-RscQueryMisc -Operation MipLabels`<BR> | [allMipLabels](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MysqlDatabase | Details of a MySQL database for a given FID. | `New-RscQueryMisc -Operation MysqlDatabase`<BR> | [mysqlDatabase](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MysqlDatabases | Connection of filtered MySQL databases based on specific filters. | `New-RscQueryMisc -Operation MysqlDatabases`<BR> | [mysqlDatabases](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MysqlInstance | Details of a MySQL instance for a given FID. | `New-RscQueryMisc -Operation MysqlInstance`<BR> | [mysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MysqlInstanceLiveMounts | The live mounts associated with the specified workloads. | `New-RscQueryMisc -Operation MysqlInstanceLiveMounts`<BR> | [mysqlInstanceLiveMounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| MysqlInstances | Connection of filtered MySQL instances based on specific filters. | `New-RscQueryMisc -Operation MysqlInstances`<BR> | [mysqlInstances](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NetworkThrottle | Network Throttle Information. | `New-RscQueryMisc -Operation NetworkThrottle`<BR> | [networkThrottle](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NfAnomalyResults | Results for Non-Filesystem Anomaly Investigations. | `New-RscQueryMisc -Operation NfAnomalyResults`<BR> | [nfAnomalyResults](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NfAnomalyResultsGrouped | Results for Non-Filesystem Anomaly Investigations grouped by an argument. | `New-RscQueryMisc -Operation NfAnomalyResultsGrouped`<BR> | [nfAnomalyResultsGrouped](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1910,6 +1914,7 @@ specified SaaS app type. | `New-RscQueryMisc -Operation SaasWorkloadMetadataType
 | ScriptsForManualPermissionValidation | GetScriptsForManualPermissionValidation returns the bash and powershell  
 scripts for non-OAuth permissions validation. | `New-RscQueryMisc -Operation ScriptsForManualPermissionValidation`<BR> | [scriptsForManualPermissionValidation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SearchFileByPrefix | Search file under given folder and with given prefix. | `New-RscQueryMisc -Operation SearchFileByPrefix`<BR> | [searchFileByPrefix](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SelfServeRollingUpgrade | Gets the rolling upgrade enabled setting for the account. | `New-RscQueryMisc -Operation SelfServeRollingUpgrade`<BR> | [selfServeRollingUpgrade](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SigninLogDetails | Get details for a specific sign-in event.  
   
 Retrieves comprehensive details for a single sign-in event by its ID.  
@@ -1974,6 +1979,7 @@ provided cloud accounts have Exocompute configured for DynamoDB recovery. | `New
 | ValidateIocEntry | Validates IOC entry. | `New-RscQueryMisc -Operation ValidateIocEntry`<BR> | [validateIocEntry](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateOrgName | Checks whether the tenant org name is valid and unique. | `New-RscQueryMisc -Operation ValidateOrgName`<BR> | [validateOrgName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateRdsExportExocomputePort | ValidateRdsExportExocomputePort checks if the exocompute worker node security group used for RDS export allows outbound traffic on a port. | `New-RscQueryMisc -Operation ValidateRdsExportExocomputePort`<BR> | [validateRdsExportExocomputePort](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| ValidateRoleName | Validate a role name. | `New-RscQueryMisc -Operation ValidateRoleName`<BR> | [validateRoleName](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ValidateScriptOutputForManualPermissionValidation | ValidateScriptOutputForManualPermissionValidation validates the script  
 output provided by the customer for the manual permission validation. | `New-RscQueryMisc -Operation ValidateScriptOutputForManualPermissionValidation`<BR> | [validateScriptOutputForManualPermissionValidation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | VcdOrgs | Paginated list of vCloud Director orgs. | `New-RscQueryMisc -Operation VcdOrgs`<BR> | [vcdOrgs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2005,6 +2011,10 @@ Returns all virtual machine files, such as .vmdk, .vmx, and .nvram files, for th
 | AddIdentityProvider | Add a new identity provider. | `New-RscMutationMisc -Operation AddIdentityProvider`<BR> | [addIdentityProvider](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddInventoryWorkloads | Add account level inventory workloads. | `New-RscMutationMisc -Operation AddInventoryWorkloads`<BR> | [addInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddIpWhitelistEntries | Add entries to the IP allowlist. | `New-RscMutationMisc -Operation AddIpWhitelistEntries`<BR> | [addIpWhitelistEntries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| AddMysqlInstance | Create a MySQL database instance  
+  
+Supported in v9.3+  
+Start an asynchronous job to create an instance of MySQL database. | `New-RscMutationMisc -Operation AddMysqlInstance`<BR> | [addMysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddRoleAssignments | N/A | `New-RscMutationMisc -Operation AddRoleAssignments`<BR> | [addRoleAssignments](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddVlan | Add VLAN to Rubrik cluster. | `New-RscMutationMisc -Operation AddVlan`<BR> | [addVlan](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | AddVmAppConsistentSpecs | Add Vm App consistent specs info | `New-RscMutationMisc -Operation AddVmAppConsistentSpecs`<BR> | [addVmAppConsistentSpecs](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2042,6 +2052,7 @@ added to the NCD cluster. | `New-RscMutationMisc -Operation CloudDirectSystemRes
 | CloudDirectValidateSubdir | CloudDirectValidateSubdir is used to validate SubDir on an export. | `New-RscMutationMisc -Operation CloudDirectValidateSubdir`<BR> | [cloudDirectValidateSubdir](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CompleteUploadSession | Complete the upload session with Minio. | `New-RscMutationMisc -Operation CompleteUploadSession`<BR> | [completeUploadSession](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ConfirmPartUpload | Confirm the upload of a part of the CDM package. | `New-RscMutationMisc -Operation ConfirmPartUpload`<BR> | [confirmPartUpload](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateAutomatedRestoreMysqldbInstance | Initiates a job to restore the MySQL instance on the given target MySQL instance. Supported in v9.5. | `New-RscMutationMisc -Operation CreateAutomatedRestoreMysqldbInstance`<BR> | [createAutomatedRestoreMysqldbInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateCustomAnalyzer | Create a new custom analyzer. | `New-RscMutationMisc -Operation CreateCustomAnalyzer`<BR> | [createCustomAnalyzer](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateDistributionListDigestBatch | Create distribution list digests for specific recipients. | `New-RscMutationMisc -Operation CreateDistributionListDigestBatch`<BR> | [createDistributionListDigestBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateEventDigestBatch | Create event digests for specific recipients. | `New-RscMutationMisc -Operation CreateEventDigestBatch`<BR> | [createEventDigestBatch](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2066,6 +2077,14 @@ Delete a specific Ceph storage setting for an OpenStack Availability Zone. | `Ne
 | DeleteIdentityProviderById | Delete an identity provider. | `New-RscMutationMisc -Operation DeleteIdentityProviderById`<BR> | [deleteIdentityProviderById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteIntelFeed | Delete intel feed. | `New-RscMutationMisc -Operation DeleteIntelFeed`<BR> | [deleteIntelFeed](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteIpWhitelistEntries | Delete entries from the IP allowlist. | `New-RscMutationMisc -Operation DeleteIpWhitelistEntries`<BR> | [deleteIpWhitelistEntries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteMysqlInstance | Delete a MySQL instance  
+  
+Supported in v9.3+  
+Initiates a job to delete a MySQL instance. GET /mysqldb/instance/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationMisc -Operation DeleteMysqlInstance`<BR> | [deleteMysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| DeleteMysqldbInstanceLiveMount | Delete a Live Mount of a MySQL instance  
+  
+Supported in v9.4+  
+Deletes the Live Mount of a MySQL instance associated with the specified ID. | `New-RscMutationMisc -Operation DeleteMysqldbInstanceLiveMount`<BR> | [deleteMysqldbInstanceLiveMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteVolumeGroupMount | Request to delete a mount  
   
 Supported in v5.0+  
@@ -2123,6 +2142,14 @@ Supported in v5.0+
 modify IPMI settings. | `New-RscMutationMisc -Operation ModifyIpmi`<BR> | [modifyIpmi](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | MountDisk | Mount disks to the given workload. | `New-RscMutationMisc -Operation MountDisk`<BR> | [mountDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | NotificationForGetLicense | Send notification when the user clicks on the Get License button. | `New-RscMutationMisc -Operation NotificationForGetLicense`<BR> | [notificationForGetLicense](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PatchMysqlInstance | Update properties of the MySQL instance  
+  
+Supported in v9.3+  
+Start an asynchronous job to update the properties of the MySQL Instance. | `New-RscMutationMisc -Operation PatchMysqlInstance`<BR> | [patchMysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| PitRestoreMysqlInstance | Point-in-time recovery of the specified MySQL instance to host  
+  
+Supported in v9.4+  
+Initiates a job to export the data and log snapshot to the given host. The GET /mysqldb/instance/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationMisc -Operation PitRestoreMysqlInstance`<BR> | [pitRestoreMysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | ProvisionCloudDirectCloudVm | ProvisionCloudDirectCloudVm provisions a NAS Cloud Direct virtual machine  
 in a public cloud environment and returns the provisioning details. | `New-RscMutationMisc -Operation ProvisionCloudDirectCloudVm`<BR> | [provisionCloudDirectCloudVm](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RecoverCloudDirectMultiPaths | NAS Cloud Direct MultiPaths Recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectMultiPaths`<BR> | [recoverCloudDirectMultiPaths](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2130,6 +2157,10 @@ in a public cloud environment and returns the provisioning details. | `New-RscMu
 | RecoverCloudDirectPath | Cloud Direct Path Recovery. | `New-RscMutationMisc -Operation RecoverCloudDirectPath`<BR> | [recoverCloudDirectPath](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RefreshDomain | Initiates an on-demand refresh job of a specified Active Directory domain. | `New-RscMutationMisc -Operation RefreshDomain`<BR> | [refreshDomain](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RefreshGlobalManagerConnectivityStatus | N/A | `New-RscMutationMisc -Operation RefreshGlobalManagerConnectivityStatus`<BR> | [refreshGlobalManagerConnectivityStatus](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| RefreshMysqlInstance | Refresh MySQL instance metadata  
+  
+Supported in v9.3+  
+Initiates a job to refresh metadata of a MySQL instance object. The GET /mysqldb/instance/request/{id} endpoint can be used to monitor the progress of the job. | `New-RscMutationMisc -Operation RefreshMysqlInstance`<BR> | [refreshMysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RemoveDisk | Marks the disk removed and updates cluster metadata. | `New-RscMutationMisc -Operation RemoveDisk`<BR> | [removeDisk](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RemoveInventoryWorkloads | Remove account level inventory workloads. | `New-RscMutationMisc -Operation RemoveInventoryWorkloads`<BR> | [removeInventoryWorkloads](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | RemoveNodeForReplacement | Remove a node for replacement. | `New-RscMutationMisc -Operation RemoveNodeForReplacement`<BR> | [removeNodeForReplacement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -2174,6 +2205,7 @@ system already added to the NCD cluster. | `New-RscMutationMisc -Operation SetCl
 | SetIpWhitelistSetting | Update the IP allowlist settings for the account. | `New-RscMutationMisc -Operation SetIpWhitelistSetting`<BR> | [setIpWhitelistSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetMfaSetting | Update the MFA settings for the account. Return true when the operation succeeds. | `New-RscMutationMisc -Operation SetMfaSetting`<BR> | [setMfaSetting](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetPrivateContainerRegistry | Sets the Private Container Registry (PCR) details for an Exocompute cloud account. Updates the details if the registry already exists and creates a new entry if it does not exist. | `New-RscMutationMisc -Operation SetPrivateContainerRegistry`<BR> | [setPrivateContainerRegistry](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| SetSelfServeRollingUpgrade | Sets the rolling upgrade enabled setting for the account. | `New-RscMutationMisc -Operation SetSelfServeRollingUpgrade`<BR> | [setSelfServeRollingUpgrade](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetTotpConfig | Setup TOTP configuration for a user. Return true when the operation succeeds. | `New-RscMutationMisc -Operation SetTotpConfig`<BR> | [setTotpConfig](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetUpgradeType | Sets upgrade type of a cluster. | `New-RscMutationMisc -Operation SetUpgradeType`<BR> | [setUpgradeType](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | SetUserLevelTotpEnforcement | Update the user-level TOTP enforcement for given users. Return true when the operation succeeds. | `New-RscMutationMisc -Operation SetUserLevelTotpEnforcement`<BR> | [setUserLevelTotpEnforcement](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -3663,6 +3695,10 @@ Initiates an on-demand snapshot job of a specified Active Directory Domain Contr
 Supported in v5.0+  
 Download a snapshot from archival. | `New-RscMutationSnapshot -Operation CreateDownloadForVolumeGroup`<BR> | [createDownloadSnapshotForVolumeGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateFileset | N/A | `New-RscMutationSnapshot -Operation CreateFileset`<BR> | [createFilesetSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| CreateOnDemandMysqldbInstance | Create an on-demand snapshot for the MySQL instance  
+  
+Supported in v9.5+  
+Initiates a job to take an on-demand snapshot of a specified MySQL instance. You can use the GET /mysqldb/instance/request/{id} endpoint to monitor the progress of the job. | `New-RscMutationSnapshot -Operation CreateOnDemandMysqldbInstance`<BR> | [createOnDemandMysqldbInstanceSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | CreateVapps | Create vApp Snapshots. | `New-RscMutationSnapshot -Operation CreateVapps`<BR> | [createVappSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteCloudWorkloadSnapshot | Deletes the Rubrik Security Cloud on-demand snapshot by ID. | `New-RscMutationSnapshot -Operation DeleteCloudWorkloadSnapshot`<BR> | [deleteCloudWorkloadSnapshot](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | DeleteFilesetSnapshots | N/A | `New-RscMutationSnapshot -Operation DeleteFilesetSnapshots`<BR> | [deleteFilesetSnapshots](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

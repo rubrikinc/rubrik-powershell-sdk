@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("retention")]
         public System.Int32? Retention { get; set; }
 
+        //      C# -> ConfiguredSchedule? ConfiguredSchedule
+        // GraphQL -> configuredSchedule: ConfiguredSchedule (type)
+        [JsonProperty("configuredSchedule")]
+        public ConfiguredSchedule? ConfiguredSchedule { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         MissedSnapshotDayOfTimeUnit? DayOfTime = null,
         SlaTimeUnit? TimeUnit = null,
         System.Int32? Frequency = null,
-        System.Int32? Retention = null
+        System.Int32? Retention = null,
+        ConfiguredSchedule? ConfiguredSchedule = null
     ) 
     {
         if ( DayOfTime != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Retention != null ) {
             this.Retention = Retention;
+        }
+        if ( ConfiguredSchedule != null ) {
+            this.ConfiguredSchedule = ConfiguredSchedule;
         }
         return this;
     }
@@ -116,6 +125,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "retention\n" ;
             } else {
                 s += ind + "retention\n" ;
+            }
+        }
+        //      C# -> ConfiguredSchedule? ConfiguredSchedule
+        // GraphQL -> configuredSchedule: ConfiguredSchedule (type)
+        if (this.ConfiguredSchedule != null) {
+            var fspec = this.ConfiguredSchedule.AsFieldSpec(conf.Child("configuredSchedule"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "configuredSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,6 +213,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Retention != null && ec.Excludes("retention",true))
         {
             this.Retention = null;
+        }
+        //      C# -> ConfiguredSchedule? ConfiguredSchedule
+        // GraphQL -> configuredSchedule: ConfiguredSchedule (type)
+        if (ec.Includes("configuredSchedule",false))
+        {
+            if(this.ConfiguredSchedule == null) {
+
+                this.ConfiguredSchedule = new ConfiguredSchedule();
+                this.ConfiguredSchedule.ApplyExploratoryFieldSpec(ec.NewChild("configuredSchedule"));
+
+            } else {
+
+                this.ConfiguredSchedule.ApplyExploratoryFieldSpec(ec.NewChild("configuredSchedule"));
+
+            }
+        }
+        else if (this.ConfiguredSchedule != null && ec.Excludes("configuredSchedule",false))
+        {
+            this.ConfiguredSchedule = null;
         }
     }
 

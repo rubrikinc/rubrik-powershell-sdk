@@ -1974,7 +1974,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllAzureCloudAccountTenants(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\nazureTenants: $azureTenants\nstatus: $status\n)";
+            string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\nazureTenants: $azureTenants\nstatus: $status\naggregateByTenant: $aggregateByTenant\n)";
             return "allAzureCloudAccountTenants" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllAzureCloudAccountTenantsFieldSpec(AutofieldContext? ec=null)
@@ -2550,7 +2550,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllCurrentFeaturePermissionsForCloudAccounts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\npermissionsGroupFilters: $permissionsGroupFilters\n)";
+            string args = "\n(\ncloudVendor: $cloudVendor\ncloudAccountIds: $cloudAccountIds\npermissionsGroupFilters: $permissionsGroupFilters\nawsIamPairId: $awsIamPairId\n)";
             return "allCurrentFeaturePermissionsForCloudAccounts" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllCurrentFeaturePermissionsForCloudAccountsFieldSpec(AutofieldContext? ec=null)
@@ -6105,6 +6105,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new IsCloudNativeTagRuleNameUniqueReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CheckClusterRuSupportReply? CheckClusterRuSupport
+        // GraphQL -> checkClusterRuSupport: CheckClusterRuSupportReply! (type)
+        public static string CheckClusterRuSupport(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nclusterId: $clusterId\n)";
+            return "checkClusterRuSupport" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CheckClusterRuSupportFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CheckClusterRuSupportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -11383,6 +11401,96 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> MysqldbDatabase? MysqlDatabase
+        // GraphQL -> mysqlDatabase: MysqldbDatabase! (type)
+        public static string MysqlDatabase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "mysqlDatabase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MysqlDatabaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MysqldbDatabase() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MysqldbDatabaseConnection? MysqlDatabases
+        // GraphQL -> mysqlDatabases: MysqldbDatabaseConnection! (type)
+        public static string MysqlDatabases(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "mysqlDatabases" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MysqlDatabasesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MysqldbDatabaseConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MysqldbInstance? MysqlInstance
+        // GraphQL -> mysqlInstance: MysqldbInstance! (type)
+        public static string MysqlInstance(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "mysqlInstance" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MysqlInstanceFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MysqldbInstance() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> KosmosWorkloadLiveMountConnection? MysqlInstanceLiveMounts
+        // GraphQL -> mysqlInstanceLiveMounts: KosmosWorkloadLiveMountConnection! (type)
+        public static string MysqlInstanceLiveMounts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            return "mysqlInstanceLiveMounts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MysqlInstanceLiveMountsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new KosmosWorkloadLiveMountConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MysqldbInstanceConnection? MysqlInstances
+        // GraphQL -> mysqlInstances: MysqldbInstanceConnection! (type)
+        public static string MysqlInstances(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "mysqlInstances" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MysqlInstancesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MysqldbInstanceConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> NasFileset? NasFileset
         // GraphQL -> nasFileset: NasFileset! (type)
         public static string NasFileset(object fsObj)
@@ -14479,6 +14587,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetSelfServeRollingUpgradeReply? SelfServeRollingUpgrade
+        // GraphQL -> selfServeRollingUpgrade: GetSelfServeRollingUpgradeReply! (type)
+        public static string SelfServeRollingUpgrade(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "selfServeRollingUpgrade" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SelfServeRollingUpgradeFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetSelfServeRollingUpgradeReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ServiceAccountConnection? ServiceAccounts
         // GraphQL -> serviceAccounts: ServiceAccountConnection! (type)
         public static string ServiceAccounts(object fsObj)
@@ -17193,6 +17319,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateRdsExportExocomputePortReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ValidateRoleNameReply? ValidateRoleName
+        // GraphQL -> validateRoleName: ValidateRoleNameReply! (type)
+        public static string ValidateRoleName(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "validateRoleName" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ValidateRoleNameFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ValidateRoleNameReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

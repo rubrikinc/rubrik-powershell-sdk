@@ -29,3 +29,5 @@ Sign-in log summary for list view.
   - The device name from which the sign-in occurred.
 - state: System.String
   - The state or province from which the sign-in occurred (geographic location).
+- actorDisplayName: System.String
+  - The identity's display name.

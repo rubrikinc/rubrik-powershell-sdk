@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timeLt")]
         public DateTime? TimeLt { get; set; }
 
+        //      C# -> TprSubmittedByUser? SubmittedBy
+        // GraphQL -> submittedBy: TprSubmittedByUser (enum)
+        [JsonProperty("submittedBy")]
+        public TprSubmittedByUser? SubmittedBy { get; set; }
+
         //      C# -> List<TprReqStatus>? Statuses
         // GraphQL -> statuses: [TprReqStatus!] (enum)
         [JsonProperty("statuses")]
@@ -38,11 +43,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> orgs: [String!] (scalar)
         [JsonProperty("orgs")]
         public List<System.String>? Orgs { get; set; }
-
-        //      C# -> TprSubmittedByUser? SubmittedBy
-        // GraphQL -> submittedBy: TprSubmittedByUser (enum)
-        [JsonProperty("submittedBy")]
-        public TprSubmittedByUser? SubmittedBy { get; set; }
 
 
         #endregion

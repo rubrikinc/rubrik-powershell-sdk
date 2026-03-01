@@ -45,6 +45,14 @@ Add entries to the IP allowlist.
 
 - There is a single argument of type AddIpWhitelistEntriesInput.
 - Returns System.String.
+### addmysqlinstance
+Create a MySQL database instance
+
+Supported in v9.3+
+Start an asynchronous job to create an instance of MySQL database.
+
+- There is a single argument of type AddMysqldbInstanceInput.
+- Returns AddMysqldbInstanceResponse.
 ### addroleassignments
 - There are 3 arguments.
     - userIds - list of System.Strings: List of user IDs.
@@ -187,6 +195,11 @@ Confirm the upload of a part of the CDM package.
 
 - There is a single argument of type ConfirmPartUploadInput.
 - Returns ConfirmPartUploadReply.
+### createautomatedrestoremysqldbinstance
+Initiates a job to restore the MySQL instance on the given target MySQL instance. Supported in v9.5.
+
+- There is a single argument of type CreateAutomatedRestoreMysqldbInstanceInput.
+- Returns CreateAutomatedRestoreMysqldbInstanceReply.
 ### createcustomanalyzer
 Create a new custom analyzer.
 
@@ -285,6 +298,22 @@ Delete entries from the IP allowlist.
 
 - There is a single argument of type DeleteIpWhitelistEntriesInput.
 - Returns System.String.
+### deletemysqldbinstancelivemount
+Delete a Live Mount of a MySQL instance
+
+Supported in v9.4+
+Deletes the Live Mount of a MySQL instance associated with the specified ID.
+
+- There is a single argument of type DeleteMysqldbInstanceLiveMountInput.
+- Returns AsyncRequestStatus.
+### deletemysqlinstance
+Delete a MySQL instance
+
+Supported in v9.3+
+Initiates a job to delete a MySQL instance. GET /mysqldb/instance/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type DeleteMysqldbInstanceInput.
+- Returns AsyncRequestStatus.
 ### deletevolumegroupmount
 Request to delete a mount
 
@@ -484,6 +513,22 @@ Send notification when the user clicks on the Get License button.
 
 - There is a single argument of type NotificationForGetLicenseInput.
 - Returns NotificationForGetLicenseReply.
+### patchmysqlinstance
+Update properties of the MySQL instance
+
+Supported in v9.3+
+Start an asynchronous job to update the properties of the MySQL Instance.
+
+- There is a single argument of type PatchMysqldbInstanceInput.
+- Returns PatchMysqldbInstanceResponse.
+### pitrestoremysqlinstance
+Point-in-time recovery of the specified MySQL instance to host
+
+Supported in v9.4+
+Initiates a job to export the data and log snapshot to the given host. The GET /mysqldb/instance/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type PitRestoreMysqldbInstanceInput.
+- Returns PitRestoreMysqldbInstanceResponse.
 ### provisionclouddirectcloudvm
 ProvisionCloudDirectCloudVm provisions a NAS Cloud Direct virtual machine
 in a public cloud environment and returns the provisioning details.
@@ -513,6 +558,14 @@ Initiates an on-demand refresh job of a specified Active Directory domain.
 ### refreshglobalmanagerconnectivitystatus
 - There is a single argument of type System.String.
 - Returns GlobalManagerConnectivity.
+### refreshmysqlinstance
+Refresh MySQL instance metadata
+
+Supported in v9.3+
+Initiates a job to refresh metadata of a MySQL instance object. The GET /mysqldb/instance/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type RefreshMysqldbInstanceInput.
+- Returns AsyncRequestStatus.
 ### removedisk
 Marks the disk removed and updates cluster metadata.
 
@@ -683,6 +736,11 @@ Sets the Private Container Registry (PCR) details for an Exocompute cloud accoun
 
 - There is a single argument of type SetPrivateContainerRegistryInput.
 - Returns System.String.
+### setselfserverollingupgrade
+Sets the rolling upgrade enabled setting for the account.
+
+- There is a single argument of type SetSelfServeRollingUpgradeInput.
+- Returns SetSelfServeRollingUpgradeReply.
 ### settotpconfig
 Setup TOTP configuration for a user. Return true when the operation succeeds.
 

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.String? Key
+        // GraphQL -> key: String! (scalar)
+        [JsonProperty("key")]
+        public System.String? Key { get; set; }
+
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
         [JsonProperty("lastModified")]
@@ -50,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaDomainId")]
         public System.String? SlaDomainId { get; set; }
 
+        //      C# -> System.String? Value
+        // GraphQL -> value: String! (scalar)
+        [JsonProperty("value")]
+        public System.String? Value { get; set; }
+
 
         #endregion
 
@@ -63,9 +73,11 @@ namespace RubrikSecurityCloud.Types
         System.String? Description = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
+        System.String? Key = null,
         System.String? LastModified = null,
         System.String? Name = null,
-        System.String? SlaDomainId = null
+        System.String? SlaDomainId = null,
+        System.String? Value = null
     ) 
     {
         if ( Description != null ) {
@@ -77,6 +89,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
         }
+        if ( Key != null ) {
+            this.Key = Key;
+        }
         if ( LastModified != null ) {
             this.LastModified = LastModified;
         }
@@ -85,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaDomainId != null ) {
             this.SlaDomainId = SlaDomainId;
+        }
+        if ( Value != null ) {
+            this.Value = Value;
         }
         return this;
     }
@@ -127,6 +145,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isArchived\n" ;
             }
         }
+        //      C# -> System.String? Key
+        // GraphQL -> key: String! (scalar)
+        if (this.Key != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "key\n" ;
+            } else {
+                s += ind + "key\n" ;
+            }
+        }
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
         if (this.LastModified != null) {
@@ -152,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaDomainId\n" ;
             } else {
                 s += ind + "slaDomainId\n" ;
+            }
+        }
+        //      C# -> System.String? Value
+        // GraphQL -> value: String! (scalar)
+        if (this.Value != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "value\n" ;
+            } else {
+                s += ind + "value\n" ;
             }
         }
         return s;
@@ -212,6 +248,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArchived = null;
         }
+        //      C# -> System.String? Key
+        // GraphQL -> key: String! (scalar)
+        if (ec.Includes("key",true))
+        {
+            if(this.Key == null) {
+
+                this.Key = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Key != null && ec.Excludes("key",true))
+        {
+            this.Key = null;
+        }
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String! (scalar)
         if (ec.Includes("lastModified",true))
@@ -262,6 +315,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaDomainId != null && ec.Excludes("slaDomainId",true))
         {
             this.SlaDomainId = null;
+        }
+        //      C# -> System.String? Value
+        // GraphQL -> value: String! (scalar)
+        if (ec.Includes("value",true))
+        {
+            if(this.Value == null) {
+
+                this.Value = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Value != null && ec.Excludes("value",true))
+        {
+            this.Value = null;
         }
     }
 

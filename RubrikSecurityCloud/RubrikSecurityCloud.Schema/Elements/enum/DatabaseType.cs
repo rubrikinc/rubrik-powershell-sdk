@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "DATABASE_TYPE_D_B2")]
+        DATABASE_TYPE_D_B2,
+
         [EnumMember(Value = "DATABASE_TYPE_ORACLE")]
         DATABASE_TYPE_ORACLE,
 

@@ -64,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("countries")]
         public List<System.String>? Countries { get; set; }
 
+        //      C# -> List<System.String>? Locations
+        // GraphQL -> locations: [String!] (scalar)
+        [JsonProperty("locations")]
+        public List<System.String>? Locations { get; set; }
+
+        //      C# -> List<System.String>? DisplayNames
+        // GraphQL -> displayNames: [String!] (scalar)
+        [JsonProperty("displayNames")]
+        public List<System.String>? DisplayNames { get; set; }
+
 
         #endregion
 

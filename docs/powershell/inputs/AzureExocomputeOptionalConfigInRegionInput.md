@@ -15,6 +15,10 @@ Represents optional parameters that are to be configured during the configuratio
   - Azure resource ID of the private DNS zone which will be used to resolve private endpoints if using private access to snapshots.
 - aksCustomPrivateDnsZoneId: System.String
   - Azure resource ID of the private DNS zone which will be used to resolve the API server URL for private exoclusters.
+- azureSqlPrivateDnsZoneId: System.String
+  - Azure resource ID of the private DNS zone which will be used to resolve the Azure SQL Private Endpoints.
+- diskEncryptionSetId: System.String
+  - Azure resource ID of the disk encryption set which will be used to encrypt the AKS node disks using customer managed keys.
 - aksClusterTier: AKSProvisionTier
   - Cluster tier of the provisioned aks cluster.
 - aksNodeCountBucket: AKSNodeCountBucket

@@ -1,7 +1,7 @@
 ### UserAuditSeverityEnum
 User audit severity.
 
-- Critical
-- Warning
-- Info
-- NA
+- Info - Informational audit.
+- Critical - Critical audit.
+- Warning - Warning audit.
+- NA - Not applicable severity.

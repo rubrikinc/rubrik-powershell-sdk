@@ -798,6 +798,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.status = @(
     /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
     /// )
+    /// # OPTIONAL
+    /// $query.Var.aggregateByTenant = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -2479,6 +2481,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				aksCustomPrivateDnsZoneId = $someString
     /// 				# OPTIONAL
+    /// 				azureSqlPrivateDnsZoneId = $someString
+    /// 				# OPTIONAL
+    /// 				diskEncryptionSetId = $someString
+    /// 				# OPTIONAL
     /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
     /// 				# OPTIONAL
     /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
@@ -4110,6 +4116,7 @@ $query.Var.subscriptionIdsFilter = @(
         //     includeSubscriptionDetails: Boolean!
         //     azureTenants: [String!]
         //     status: [CloudAccountStatus!]
+        //     aggregateByTenant: Boolean
         //   ): [AzureCloudAccountTenant!]!
         internal void InitQueryAllAzureCloudAccountTenants()
         {
@@ -4119,12 +4126,13 @@ $query.Var.subscriptionIdsFilter = @(
                 Tuple.Create("includeSubscriptionDetails", "Boolean!"),
                 Tuple.Create("azureTenants", "[String!]"),
                 Tuple.Create("status", "[CloudAccountStatus!]"),
+                Tuple.Create("aggregateByTenant", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllAzureCloudAccountTenants",
-                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!,$azureTenants: [String!],$status: [CloudAccountStatus!])",
+                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!,$azureTenants: [String!],$status: [CloudAccountStatus!],$aggregateByTenant: Boolean)",
                 "List<AzureCloudAccountTenant>",
                 Query.AllAzureCloudAccountTenants,
                 Query.AllAzureCloudAccountTenantsFieldSpec,
@@ -4143,7 +4151,9 @@ $query.Var.azureTenants = @(
 # OPTIONAL
 $query.Var.status = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
-)"
+)
+# OPTIONAL
+$query.Var.aggregateByTenant = $someBoolean"
             );
         }
 
@@ -5650,6 +5660,10 @@ $query.Var.input = @{
 				privateDnsZoneId = $someString
 				# OPTIONAL
 				aksCustomPrivateDnsZoneId = $someString
+				# OPTIONAL
+				azureSqlPrivateDnsZoneId = $someString
+				# OPTIONAL
+				diskEncryptionSetId = $someString
 				# OPTIONAL
 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
 				# OPTIONAL

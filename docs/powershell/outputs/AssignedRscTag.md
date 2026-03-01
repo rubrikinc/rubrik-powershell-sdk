@@ -13,3 +13,7 @@ Details of an RSC tag.
   - SLA Domain ID applied to the RSC tag.
 - isArchived: System.Boolean
   - Specifies whether the tag is archived.
+- key: System.String
+  - Key of the RSC tag (empty for single-value tags).
+- value: System.String
+  - Value of the RSC tag. (For single-value tags, only this field is set).

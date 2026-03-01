@@ -937,3 +937,52 @@ native_uri LIKE or native_name LIKE
 Note: This filter is specific to GCP Cloud SQL instances and should
 be used instead of the generic NAME filter for CloudSQL to ensure
 consistent behavior across multi-object-type queries and Global Search.
+- NUTANIX_BY_SLA_ASSIGNMENT_TYPE - Filter Nutanix objects by SLA assignment type.
+Supports values: Direct, Derived, Unassigned.
+This is a multi-select filter.
++mo:filter:db:table=managed_object_with_snappable_type
++mo:filter:db:column=id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=effective_sla_source_object_id
++mo:filter:db:index:key=NULL
++comment: No dedicated index exists for effective_sla_source_object_id.
++comment: The join on id uses the PRIMARY key, and the filter on
++comment: effective_sla_source_object_id operates on the joined result set.
++comment: Performance is acceptable as Nutanix object counts are typically <100k.
+- IS_DIRECTLY_PAUSED - Filter objects where direct object level pause was applied.
++mo:filter:db:table=blackout_window
++mo:filter:db:column=object_id (join)
++mo:filter:db:index:key=object_id_idx
++mo:filter:db:column=end_date (filter)
++mo:filter:db:index:key=NULL
+- RECOVERY_PLAN_ROOT_DOMAIN_SID - Filter recovery plans by root domain SID.
+Given a root domain SID, this filter finds the domain from
+cdm_active_directory_domain table, then finds the corresponding
+domain controller IDs from cdm_active_directory_domain_controller,
+and returns recovery plans that contain those domain controllers.
++mo:filter:db:table=appflows_blueprint_child
++mo:filter:db:column=blueprint_id
++mo:filter:db:column=snappable_id
++mo:filter:db:index:key=blueprint_id
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
++mo:filter:db:table=cdm_active_directory_domain_controller
++mo:filter:db:column=fid
++mo:filter:db:column=domain_id
++mo:filter:db:column=cluster_uuid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_active_directory_domain
++mo:filter:db:column=id
++mo:filter:db:column=cluster_uuid
++mo:filter:db:column=domain_sid
++mo:filter:db:index:key=domain_sid_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false

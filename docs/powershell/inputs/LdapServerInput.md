@@ -1,5 +1,5 @@
 ### LdapServerInput
-LDAP Server.
+LDAP server information.
 
 - hostname: System.String
   - Hostname for the LDAP server.

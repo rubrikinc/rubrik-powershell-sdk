@@ -27,3 +27,5 @@
   - List of document type IDs to filter the paths.
 - sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope
   - Scope for sensitive data discovery.
+- aggregationScope: BrowseAggregationScope
+  - Specifies the level at which to aggregate browse results.

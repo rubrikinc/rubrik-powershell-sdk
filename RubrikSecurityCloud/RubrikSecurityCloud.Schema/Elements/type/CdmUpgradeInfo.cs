@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("finishedStates")]
         public System.String? FinishedStates { get; set; }
 
+        //      C# -> System.Boolean? IsRuSupported
+        // GraphQL -> isRuSupported: Boolean (scalar)
+        [JsonProperty("isRuSupported")]
+        public System.Boolean? IsRuSupported { get; set; }
+
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)
         [JsonProperty("overallProgress")]
@@ -69,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> previousVersion: String (scalar)
         [JsonProperty("previousVersion")]
         public System.String? PreviousVersion { get; set; }
+
+        //      C# -> System.String? RuUnsupportabilityReason
+        // GraphQL -> ruUnsupportabilityReason: String (scalar)
+        [JsonProperty("ruUnsupportabilityReason")]
+        public System.String? RuUnsupportabilityReason { get; set; }
 
         //      C# -> System.String? ScheduleUpgradeAction
         // GraphQL -> scheduleUpgradeAction: String (scalar)
@@ -162,9 +172,11 @@ namespace RubrikSecurityCloud.Types
         System.String? DownloadedVersion = null,
         System.Boolean? FastUpgradePreferred = null,
         System.String? FinishedStates = null,
+        System.Boolean? IsRuSupported = null,
         System.Single? OverallProgress = null,
         System.String? PendingStates = null,
         System.String? PreviousVersion = null,
+        System.String? RuUnsupportabilityReason = null,
         System.String? ScheduleUpgradeAction = null,
         DateTime? ScheduleUpgradeAt = null,
         System.String? ScheduleUpgradeMode = null,
@@ -203,6 +215,9 @@ namespace RubrikSecurityCloud.Types
         if ( FinishedStates != null ) {
             this.FinishedStates = FinishedStates;
         }
+        if ( IsRuSupported != null ) {
+            this.IsRuSupported = IsRuSupported;
+        }
         if ( OverallProgress != null ) {
             this.OverallProgress = OverallProgress;
         }
@@ -211,6 +226,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PreviousVersion != null ) {
             this.PreviousVersion = PreviousVersion;
+        }
+        if ( RuUnsupportabilityReason != null ) {
+            this.RuUnsupportabilityReason = RuUnsupportabilityReason;
         }
         if ( ScheduleUpgradeAction != null ) {
             this.ScheduleUpgradeAction = ScheduleUpgradeAction;
@@ -334,6 +352,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "finishedStates\n" ;
             }
         }
+        //      C# -> System.Boolean? IsRuSupported
+        // GraphQL -> isRuSupported: Boolean (scalar)
+        if (this.IsRuSupported != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRuSupported\n" ;
+            } else {
+                s += ind + "isRuSupported\n" ;
+            }
+        }
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)
         if (this.OverallProgress != null) {
@@ -359,6 +386,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "previousVersion\n" ;
             } else {
                 s += ind + "previousVersion\n" ;
+            }
+        }
+        //      C# -> System.String? RuUnsupportabilityReason
+        // GraphQL -> ruUnsupportabilityReason: String (scalar)
+        if (this.RuUnsupportabilityReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ruUnsupportabilityReason\n" ;
+            } else {
+                s += ind + "ruUnsupportabilityReason\n" ;
             }
         }
         //      C# -> System.String? ScheduleUpgradeAction
@@ -640,6 +676,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.FinishedStates = null;
         }
+        //      C# -> System.Boolean? IsRuSupported
+        // GraphQL -> isRuSupported: Boolean (scalar)
+        if (ec.Includes("isRuSupported",true))
+        {
+            if(this.IsRuSupported == null) {
+
+                this.IsRuSupported = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRuSupported != null && ec.Excludes("isRuSupported",true))
+        {
+            this.IsRuSupported = null;
+        }
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)
         if (ec.Includes("overallProgress",true))
@@ -690,6 +743,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PreviousVersion != null && ec.Excludes("previousVersion",true))
         {
             this.PreviousVersion = null;
+        }
+        //      C# -> System.String? RuUnsupportabilityReason
+        // GraphQL -> ruUnsupportabilityReason: String (scalar)
+        if (ec.Includes("ruUnsupportabilityReason",true))
+        {
+            if(this.RuUnsupportabilityReason == null) {
+
+                this.RuUnsupportabilityReason = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RuUnsupportabilityReason != null && ec.Excludes("ruUnsupportabilityReason",true))
+        {
+            this.RuUnsupportabilityReason = null;
         }
         //      C# -> System.String? ScheduleUpgradeAction
         // GraphQL -> scheduleUpgradeAction: String (scalar)

@@ -5,6 +5,11 @@ Specifies if the cluster can ignore cluster removal prechecks.
 
 - There is a single argument of type System.String.
 - Returns IgnoreClusterRemovalPrecheckReply.
+### checkclusterrusupport
+Check if a cluster supports Rolling Upgrade (RU) based on its workload types.
+
+- There is a single argument of type System.String.
+- Returns CheckClusterRuSupportReply.
 ### cloudclusterinstanceproperties
 Retrieves instance properties.
 

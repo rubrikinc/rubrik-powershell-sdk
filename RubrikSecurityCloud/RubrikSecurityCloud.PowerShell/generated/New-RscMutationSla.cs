@@ -755,6 +755,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 			# OPTIONAL
+    /// 			hostLogRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		mysqldbConfigInput = @{
@@ -1732,6 +1739,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		postgresDbClusterSlaConfigInput = @{
     /// 			# OPTIONAL
     /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			hostLogRetention = @{
     /// 				# OPTIONAL
     /// 				duration = $someInt
     /// 				# OPTIONAL
@@ -2970,6 +2984,13 @@ $query.Var.input = @{
 				# OPTIONAL
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+			# OPTIONAL
+			hostLogRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
 		}
 		# OPTIONAL
 		mysqldbConfigInput = @{
@@ -3908,6 +3929,13 @@ $query.Var.input = @{
 		postgresDbClusterSlaConfigInput = @{
 			# OPTIONAL
 			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			hostLogRetention = @{
 				# OPTIONAL
 				duration = $someInt
 				# OPTIONAL

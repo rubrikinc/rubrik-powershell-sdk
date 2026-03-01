@@ -7,6 +7,8 @@
 - parentSnapshotId: System.String
 - isCorrupted: System.Boolean
 - indexingAttempts: System.Int64
+- isIndexed: System.Boolean
+  - Specifies whether or not the snapshot is indexed.
 - indexTime: DateTime
 - isUnindexable: System.Boolean
 - isOnDemandSnapshot: System.Boolean
@@ -48,8 +50,8 @@
 - slaDomain: SlaDomain
 - snapshotRetentionInfo: RscSnapshotRetentionInfo
   - Snapshot retention-related information for local, archival, and replication locations.
-- isIndexed: System.Boolean
-  - Specifies whether or not the snapshot is indexed.
+- backupType: BackupType
+  - Specifies backup type for this snapshot.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - isQuarantineProcessing: System.Boolean

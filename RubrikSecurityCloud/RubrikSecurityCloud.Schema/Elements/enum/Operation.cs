@@ -354,6 +354,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ROLE")]
         MANAGE_ROLE,
 
+        [EnumMember(Value = "MANAGE_ROLLING_UPGRADES")]
+        MANAGE_ROLLING_UPGRADES,
+
         [EnumMember(Value = "MANAGE_RUBY")]
         MANAGE_RUBY,
 

@@ -1,156 +1,156 @@
 ### UserAuditObjectTypeEnum
 User audit object type.
 
-- ArchivalLocation - Archival location type.
-- TPR_POLICY - TPR policy type.
-- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
-- OPENSTACK_ENVIRONMENT - Openstack Environment.
-- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
-- K8S_CLUSTER - Kubernetes Cluster type.
-- M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
-- DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
-- OLVM_HOST - OLVM Host.
-- OracleRac - Oracle RAC type.
-- MYSQLDB_INSTANCE - MySQL Instance.
-- IpWhitelist - IP whitelist type.
-- HypervVm - Hyper-V virtual machine type.
-- DataLocation - Data location type.
-- DB2_INSTANCE - Db2 instance type.
-- K8S_LABEL - Kubernetes label type.
-- DB2_DATABASE - Db2 database type.
-- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
-- HypervScvmm - Hyper-V SCVMM type.
-- O365Onedrive - Office 365 OneDrive type.
-- CASSANDRA_SOURCE - Cassandra source type.
-- O365_SHAREPOINT_SITE - Office 365 SharePoint Site type.
-- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
-- SapHanaSystem - SAP HANA system type.
-- GcpNativeProject - GCP native project type.
-- AwsNativeRdsInstance - AWS native RDS instance type.
-- O365Organization - Office 365 organization type.
-- K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine type.
-- TPR_REQUEST - TPR request type.
-- VolumeGroup - Volume group type.
-- MONGO_COLLECTION - MongoDB Collection type.
-- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
-- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
-- O365Group - Office 365 Group type.
-- NutanixVm - Nutanix virtual machine type.
-- REPLICATION_PAIR - Rubrik cluster replication pair.
-- INTEL_FEED - Intel feed.
-- ATLASSIAN_SITE - Atlassian site.
-- EXOCOMPUTE - Exocompute.
-- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS Share.
-- MONGODB_SOURCE - MongoDB source type.
-- POSTGRES_DB_CLUSTER - PostgreSQL Database Cluster.
-- HypervServer - Hyper-V server type.
-- MSSQL_MOUNT - MSSQL Mount type.
-- CHATBOT - Chatbot type.
-- Vcenter - A vCenter type.
-- AzureNativeDisk - Azure native disk type.
-- PublicCloudMachineInstance - Public cloud machine instance type.
-- HostFailoverCluster - Host failover cluster type.
-- ShareFileset - Share fileset type.
-- AwsNativeEc2Instance - AWS native EC2 instance type.
-- Ldap - LDAP type.
-- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
-- Upgrade - Upgrade type.
-- LinuxHost - Linux host type.
-- O365Mailbox - Office 365 mailbox type.
-- AwsNativeAccount - AWS native account type.
-- AZURE_STORAGE_ACCOUNT - Azure storage account.
-- EXCHANGE_DATABASE - Exchange Database type.
-- RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
-- AzureSqlManagedInstance - Azure SQL managed instance type.
-- AzureNativeVm - Azure native virtual machine type.
-- ORGANIZATION - Organization type.
-- O365Team - Office 365 team type.
-- OLVM_MANAGER - OLVM Manager.
-- WindowsFileset - Windows fileset type.
-- CloudNativeTagRule - Cloud native tag rule type.
-- StorageArray - Storage array type.
-- UserGroup - User group type.
-- AuthDomain - Auth domain type.
-- CERTIFICATE_MANAGEMENT - Certificate management type.
-- Mssql - MSSQL type.
-- NAS_FILESET - NAS Fileset type.
-- ACTIVE_DIRECTORY_FOREST - Active Directory forest type.
-- AZURE_AD_DIRECTORY - Azure AD Directory type.
-- INTEGRATION - Integration.
-- VmwareVm - VMware virtual machine type.
-- NAS_SYSTEM - NAS system type.
-- JobInstance - Job instance type.
-- SlaDomain - SLA Domain type.
-- AwsEventType - AWS event type.
-- Snapshot - Snapshot type.
-- VMWARE_COMPUTE_CLUSTER - VMware Compute Cluster type.
-- SmbDomain - SMB domain type.
-- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central type.
-- O365Calendar - Office 365 calendar type.
-- MssqlDatabase - MSSQL database type.
-- K8S_PROTECTION_SET - Kubernetes Protection Set type.
-- SupportTunnel - Support tunnel type.
-- MONGO_SOURCE - MongoDB Source type.
-- MSSQL_OBJECT - MSSQL object type.
-- AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router.
-- AwsNativeEbsVolume - AWS native EBS volume type.
-- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller type.
-- UserActionAudit - User action audit type.
-- TPR_CONFIG - TPR configuration type.
-- CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
-- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance type.
-- EXCHANGE_SERVER - Exchange Server type.
-- OAUTH_TOKEN - OAuth token.
-- ENCRYPTION_MANAGEMENT - Encryption Management type.
-- ManagedVolume - Managed Volume type.
-- Vcd - VCD type.
-- RSC_TAG - RSC tag type.
-- AzureSqlDatabase - Azure SQL database type.
-- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
-- LinuxFileset - Linux fileset type.
-- VmwareMount - VMware mount type.
-- NasHost - NAS host type.
-- CROSS_ACCOUNT_PAIR - Cross-account pair.
+- Sla - SLA Domain type.
+- SystemPreference - System preference type.
+- IpWhitelist - IP Whitelist type.
 - FederatedAccess - Federated access type.
 - User - User type.
-- SystemPreference - System preference type.
-- K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace type.
-- VcdVapp - VCD vApp type.
-- O365SharepointDrive - Office 365 SharePoint drive type.
-- OLVM_DATACENTER - OLVM Datacenter.
+- UserGroup - User group type.
 - UserRole - User role type.
-- WindowsHost - Windows host type.
+- O365Calendar - Office 365 calendar type.
+- O365Mailbox - Office 365  Mailbox type.
+- O365Onedrive - Office 365 Onedrive type.
+- O365Organization - Office 365 organization type.
+- O365Group - Office 365 Group type.
+- O365SharepointDrive - Office 365 SharePoint drive type.
 - O365SharepointList - Office 365 SharePoint list type.
-- Storm - Storm type.
-- Sla - SLA Domain type.
-- M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
-- Blueprint - Blueprint type.
-- Ec2Instance - EC2 instance type.
-- KMS_KEY_VAULT - KMS Key Vault.
-- NUTANIX_ERA - Nutanix Era type.
-- CLI - Command Line Interface.
-- JIRA_PROJECT - Atlassian Jira project.
-- StorageArrayVolumeGroup - Storage array volume group type.
-- StorageSettings - Storage settings type.
-- GcpNativeGceInstance - GCP native GCE instance type.
-- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
-- Cluster - Rubrik cluster type.
-- Unknown - Unknown type.
-- AppBlueprint - App blueprint type.
-- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
+- O365_SHAREPOINT_SITE - Office 365 SharePoint Site type.
+- O365Team - Office 365 team type.
+- AwsNativeAccount - AWS native account type.
+- AwsNativeEc2Instance - AWS native EC2 instance type.
 - AzureNativeSubscription - Azure native subscription type.
-- EXCHANGE_DAG - Exchange DAG type.
-- OracleDb - Oracle database type.
-- FailoverClusterApp - Failover cluster app type.
-- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
-- Host - Host type.
-- GcpNativeDisk - GCP native disk type.
-- JIRA_SETTINGS - Atlassian Jira settings.
-- INFORMIX_INSTANCE - Informix instance type.
-- NutanixCluster - Nutanix cluster type.
-- ORACLE_MOUNT - Oracle Mount type.
-- CASSANDRA_KEYSPACE - Cassandra keyspace type.
-- SapHanaDb - SAP HANA Database type.
+- AzureNativeVm - Azure native virtual machine type.
+- AzureNativeDisk - Azure native disk type.
+- AzureSqlDatabase - Azure SQL database type.
+- AzureSqlManagedInstance - Azure SQL managed instance type.
+- AwsNativeEbsVolume - AWS native EBS volume type.
+- CloudNativeTagRule - Cloud native tag rule type.
+- AppBlueprint - App blueprint type.
+- AuthDomain - Auth domain type.
 - AwsAccount - AWS account type.
+- AwsEventType - AWS event type.
+- Blueprint - Blueprint type.
+- Cluster - Rubrik cluster type.
+- DataLocation - Data location type.
+- Ec2Instance - EC2 instance type.
+- FailoverClusterApp - Failover cluster app type.
+- Host - Host type.
+- HostFailoverCluster - Host failover cluster type.
+- HypervScvmm - HyperV SCVVM type.
+- HypervServer - HyperV server type.
+- HypervVm - HyperV virtual machine type.
+- JobInstance - Job instance type.
+- Ldap - LDAP type.
+- LinuxFileset - Linux fileset type.
+- LinuxHost - Linux host type.
+- ManagedVolume - Managed Volume type.
+- Mssql - MSSQL type.
+- MssqlDatabase - MSSQL database type.
+- NAS_FILESET - NAS Fileset type.
+- NasHost - NAS host type.
+- NAS_SYSTEM - NAS system type.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest type.
+- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
+- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller type.
+- NutanixCluster - Nutanix cluster type.
+- NUTANIX_ERA - Nutanix Era type.
+- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central type.
+- NutanixVm - Nutanix virtual machine type.
+- OracleDb - Oracle database type.
 - OracleHost - Oracle host type.
+- OracleRac - Oracle RAC type.
+- ORACLE_MOUNT - Oracle Mount Type.
+- PublicCloudMachineInstance - Public cloud machine instance type.
+- SapHanaDb - SAP HANA Database type.
+- SapHanaSystem - SAP HANA system type.
+- ShareFileset - Share fileset type.
+- SlaDomain - SLA Domain type.
+- SmbDomain - SMB domain type.
+- StorageArray - Storage array type.
+- StorageArrayVolumeGroup - Storage array volume group type.
+- Storm - Storm type.
+- Unknown - Unknown type.
+- Upgrade - Upgrade type.
+- UserActionAudit - User action audit type.
+- Vcd - VCD type.
+- VcdVapp - VCD vApp type.
+- Vcenter - A vCenter type.
+- VmwareMount - VMware mount type.
+- VmwareVm - VMware virtual machine type.
+- VMWARE_COMPUTE_CLUSTER - VMware Compute Cluster type.
+- VolumeGroup - Volume group type.
+- WindowsFileset - Windows fileset type.
+- WindowsHost - Windows host type.
+- ArchivalLocation - Archival location type.
+- StorageSettings - Storage settings type.
+- SupportTunnel - Support tunnel type.
+- Snapshot - Snapshot type.
+- GcpNativeProject - GCP native project type.
+- AwsNativeRdsInstance - AWS native RDS instance type.
+- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
+- GcpNativeGceInstance - GCP native GCE instance type.
+- GcpNativeDisk - GCP native disk type.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance type.
+- CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
+- CASSANDRA_KEYSPACE - Cassandra keyspace type.
+- CASSANDRA_SOURCE - Cassandra source type.
 - MOSAIC_STORAGE_LOCATION - NoSQL storage location type.
+- DB2_DATABASE - DB2 database type.
+- DB2_INSTANCE - DB2 instance type.
+- MSSQL_OBJECT - MsSQL object type.
+- EXCHANGE_DAG - Exchange DAG type.
+- EXCHANGE_DATABASE - Exchange database type.
+- EXCHANGE_SERVER - Exchange server type.
+- MSSQL_MOUNT - MSSQL Mount type.
+- MONGODB_SOURCE - MongoDB source type.
+- MONGO_SOURCE - MongoDB Source type.
+- ORGANIZATION - Organization type.
+- CERTIFICATE_MANAGEMENT - Certificate management type.
+- MONGO_COLLECTION - MongoDB Collection type.
+- K8S_CLUSTER - Kubernetes Cluster type.
+- K8S_LABEL - Kubernetes label type.
+- K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace type.
+- K8S_PROTECTION_SET - Kubernetes Protection Set type.
+- K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine type.
+- ENCRYPTION_MANAGEMENT - Encryption Management type.
+- AZURE_AD_DIRECTORY - Azure AD Directory type.
+- REPLICATION_PAIR - Rubrik cluster replication pair.
+- TPR_POLICY - TPR policy type.
+- TPR_REQUEST - TPR request type.
+- TPR_CONFIG - TPR configuration type.
+- OAUTH_TOKEN - OAuth token.
+- ATLASSIAN_SITE - Atlassian site.
+- JIRA_PROJECT - Atlassian Jira project.
+- JIRA_SETTINGS - Atlassian Jira settings.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- EXOCOMPUTE - Exocompute.
+- CLOUD_DIRECT_NAS_EXPORT - Cloud Direct NAS Export.
+- CLOUD_DIRECT_NAS_SHARE - Cloud Direct NAS Share.
+- DATA_CENTER_CLOUD_ACCOUNT - Data Center Cloud Account.
+- CROSS_ACCOUNT_PAIR - Cross-account pair.
+- POSTGRES_DB_CLUSTER - PostgreSQL Database Cluster.
+- INTEL_FEED - Intel feed.
+- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
+- M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
+- M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
+- M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
+- KMS_KEY_VAULT - KMS Key Vault.
+- INTEGRATION - Integration.
+- CHATBOT - Chatbot type.
+- MYSQLDB_INSTANCE - MySQL Instance.
+- INFORMIX_INSTANCE - Informix instance type.
+- RSC_TAG - RSC tag type.
+- OPENSTACK_ENVIRONMENT - Openstack Environment.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
+- OLVM_MANAGER - OLVM Manager.
+- OLVM_DATACENTER - OLVM Datacenter.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- OLVM_HOST - OLVM Host.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- AGENT_OPERATIONS_MODEL_ROUTER - Agent Operations Model Router.
+- CLI - Command Line Interface.
+- RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
+- AZURE_STORAGE_ACCOUNT - Azure storage account.

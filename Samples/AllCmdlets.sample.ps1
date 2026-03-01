@@ -12407,53 +12407,6 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
-# New-RscMutationGcp -Op CloudAccountDeleteProjects
-# -------------------------------------------------------------------
-
-$query = New-RscMutationGcp -Op CloudAccountDeleteProjects
-if ($GetGqlRequest) {
-    $query.GqlRequest().SaveQueryToFile()
-} elseif ($FieldCounts) {
-    if ( $query.Field -eq $null ) {
-        $entries += @{
-            Operation="New-RscMutationGcp.CloudAccountDeleteProjects" ;
-            AllFieldsCount = -2 ; 
-            SelectedFieldsCount = -2
-        }
-    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
-        $entries += @{
-            Operation="New-RscMutationGcp.CloudAccountDeleteProjects" ;
-            AllFieldsCount = $query.Field.AllFields().Count ; 
-            SelectedFieldsCount = $query.Field.SelectedFields().Count
-        }
-    } else {
-        $entries += @{
-            Operation="New-RscMutationGcp.CloudAccountDeleteProjects" ;
-            AllFieldsCount = -1 ; 
-            SelectedFieldsCount = -1
-        }
-    }
-} else {
-    $query = New-RscMutationGcp -Operation CloudAccountDeleteProjects
-    $query.Info()
-    $query.Example()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-
-    # Test that a given GraphQL field only shows up once in all commands
-    $gqlField = $query.OpInfo().GqlRootFieldName
-    # Check if it is already a key in the Hashtable
-    if ($gqlFieldsTable.ContainsKey($gqlField)) {
-        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
-    } else {
-        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
-    }
-}
-
-# -------------------------------------------------------------------
 # New-RscMutationGcp -Op CloudAccountDeleteProjectsV2
 # -------------------------------------------------------------------
 
@@ -12923,53 +12876,6 @@ if ($GetGqlRequest) {
     }
 }
 
-
-# -------------------------------------------------------------------
-# New-RscMutationGcpNative -Op DisableProject
-# -------------------------------------------------------------------
-
-$query = New-RscMutationGcpNative -Op DisableProject
-if ($GetGqlRequest) {
-    $query.GqlRequest().SaveQueryToFile()
-} elseif ($FieldCounts) {
-    if ( $query.Field -eq $null ) {
-        $entries += @{
-            Operation="New-RscMutationGcpNative.DisableProject" ;
-            AllFieldsCount = -2 ; 
-            SelectedFieldsCount = -2
-        }
-    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
-        $entries += @{
-            Operation="New-RscMutationGcpNative.DisableProject" ;
-            AllFieldsCount = $query.Field.AllFields().Count ; 
-            SelectedFieldsCount = $query.Field.SelectedFields().Count
-        }
-    } else {
-        $entries += @{
-            Operation="New-RscMutationGcpNative.DisableProject" ;
-            AllFieldsCount = -1 ; 
-            SelectedFieldsCount = -1
-        }
-    }
-} else {
-    $query = New-RscMutationGcpNative -Operation DisableProject
-    $query.Info()
-    $query.Example()
-    $query.GqlRequest($false)
-    $query.ToString()
-    $query.Var.Info()
-    $query.Var.Example()
-    $query.Var.ToString()
-
-    # Test that a given GraphQL field only shows up once in all commands
-    $gqlField = $query.OpInfo().GqlRootFieldName
-    # Check if it is already a key in the Hashtable
-    if ($gqlFieldsTable.ContainsKey($gqlField)) {
-        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
-    } else {
-        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
-    }
-}
 
 # -------------------------------------------------------------------
 # New-RscMutationGcpNative -Op ExcludeDisksFromInstanceSnapshot
@@ -17727,6 +17633,53 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscMutationMisc -Op AddMysqlInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op AddMysqlInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.AddMysqlInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.AddMysqlInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.AddMysqlInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation AddMysqlInstance
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
 # New-RscMutationMisc -Op AddRoleAssignments
 # -------------------------------------------------------------------
 
@@ -18996,6 +18949,53 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscMutationMisc -Op CreateAutomatedRestoreMysqldbInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op CreateAutomatedRestoreMysqldbInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.CreateAutomatedRestoreMysqldbInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.CreateAutomatedRestoreMysqldbInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.CreateAutomatedRestoreMysqldbInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation CreateAutomatedRestoreMysqldbInstance
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
 # New-RscMutationMisc -Op CreateCustomAnalyzer
 # -------------------------------------------------------------------
 
@@ -19823,6 +19823,100 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscMutationMisc -Operation DeleteIpWhitelistEntries
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMisc -Op DeleteMysqlInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op DeleteMysqlInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.DeleteMysqlInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.DeleteMysqlInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.DeleteMysqlInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation DeleteMysqlInstance
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMisc -Op DeleteMysqldbInstanceLiveMount
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op DeleteMysqldbInstanceLiveMount
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.DeleteMysqldbInstanceLiveMount" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.DeleteMysqldbInstanceLiveMount" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.DeleteMysqldbInstanceLiveMount" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation DeleteMysqldbInstanceLiveMount
     $query.Info()
     $query.Example()
     $query.GqlRequest($false)
@@ -21534,6 +21628,100 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscMutationMisc -Op PatchMysqlInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op PatchMysqlInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.PatchMysqlInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.PatchMysqlInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.PatchMysqlInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation PatchMysqlInstance
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMisc -Op PitRestoreMysqlInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op PitRestoreMysqlInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.PitRestoreMysqlInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.PitRestoreMysqlInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.PitRestoreMysqlInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation PitRestoreMysqlInstance
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
 # New-RscMutationMisc -Op ProvisionCloudDirectCloudVm
 # -------------------------------------------------------------------
 
@@ -21797,6 +21985,53 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscMutationMisc -Operation RefreshGlobalManagerConnectivityStatus
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMisc -Op RefreshMysqlInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op RefreshMysqlInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.RefreshMysqlInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.RefreshMysqlInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.RefreshMysqlInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation RefreshMysqlInstance
     $query.Info()
     $query.Example()
     $query.GqlRequest($false)
@@ -23207,6 +23442,53 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscMutationMisc -Operation SetPrivateContainerRegistry
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationMisc -Op SetSelfServeRollingUpgrade
+# -------------------------------------------------------------------
+
+$query = New-RscMutationMisc -Op SetSelfServeRollingUpgrade
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationMisc.SetSelfServeRollingUpgrade" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationMisc.SetSelfServeRollingUpgrade" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationMisc.SetSelfServeRollingUpgrade" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationMisc -Operation SetSelfServeRollingUpgrade
     $query.Info()
     $query.Example()
     $query.GqlRequest($false)
@@ -37328,6 +37610,53 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscMutationSnapshot -Operation CreateFileset
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscMutationSnapshot -Op CreateOnDemandMysqldbInstance
+# -------------------------------------------------------------------
+
+$query = New-RscMutationSnapshot -Op CreateOnDemandMysqldbInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscMutationSnapshot.CreateOnDemandMysqldbInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscMutationSnapshot.CreateOnDemandMysqldbInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscMutationSnapshot.CreateOnDemandMysqldbInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscMutationSnapshot -Operation CreateOnDemandMysqldbInstance
     $query.Info()
     $query.Example()
     $query.GqlRequest($false)
@@ -53116,6 +53445,53 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryCluster -Op CheckClusterRuSupport
+# -------------------------------------------------------------------
+
+$query = New-RscQueryCluster -Op CheckClusterRuSupport
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryCluster.CheckClusterRuSupport" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryCluster.CheckClusterRuSupport" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryCluster.CheckClusterRuSupport" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryCluster -Operation CheckClusterRuSupport
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryCluster -Op CloudClusterInstanceProperties
 # -------------------------------------------------------------------
 
@@ -67091,6 +67467,241 @@ if ($GetGqlRequest) {
 }
 
 # -------------------------------------------------------------------
+# New-RscQueryMisc -Op MysqlDatabase
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op MysqlDatabase
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlDatabase" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlDatabase" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlDatabase" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation MysqlDatabase
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMisc -Op MysqlDatabases
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op MysqlDatabases
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlDatabases" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlDatabases" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlDatabases" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation MysqlDatabases
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMisc -Op MysqlInstance
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op MysqlInstance
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstance" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstance" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstance" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation MysqlInstance
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMisc -Op MysqlInstanceLiveMounts
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op MysqlInstanceLiveMounts
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstanceLiveMounts" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstanceLiveMounts" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstanceLiveMounts" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation MysqlInstanceLiveMounts
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMisc -Op MysqlInstances
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op MysqlInstances
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstances" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstances" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.MysqlInstances" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation MysqlInstances
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
 # New-RscQueryMisc -Op NetworkThrottle
 # -------------------------------------------------------------------
 
@@ -69046,6 +69657,53 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscQueryMisc -Operation SearchFileByPrefix
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMisc -Op SelfServeRollingUpgrade
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op SelfServeRollingUpgrade
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.SelfServeRollingUpgrade" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.SelfServeRollingUpgrade" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.SelfServeRollingUpgrade" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation SelfServeRollingUpgrade
     $query.Info()
     $query.Example()
     $query.GqlRequest($false)
@@ -71114,6 +71772,53 @@ if ($GetGqlRequest) {
     }
 } else {
     $query = New-RscQueryMisc -Operation ValidateRdsExportExocomputePort
+    $query.Info()
+    $query.Example()
+    $query.GqlRequest($false)
+    $query.ToString()
+    $query.Var.Info()
+    $query.Var.Example()
+    $query.Var.ToString()
+
+    # Test that a given GraphQL field only shows up once in all commands
+    $gqlField = $query.OpInfo().GqlRootFieldName
+    # Check if it is already a key in the Hashtable
+    if ($gqlFieldsTable.ContainsKey($gqlField)) {
+        throw "Duplicate GraphQL field detected: $gqlField. It was previously encountered in: $($gqlFieldsTable[$gqlField])"
+    } else {
+        $gqlFieldsTable[$gqlField] = $query.OpInfo().CmdletName
+    }
+}
+
+# -------------------------------------------------------------------
+# New-RscQueryMisc -Op ValidateRoleName
+# -------------------------------------------------------------------
+
+$query = New-RscQueryMisc -Op ValidateRoleName
+if ($GetGqlRequest) {
+    $query.GqlRequest().SaveQueryToFile()
+} elseif ($FieldCounts) {
+    if ( $query.Field -eq $null ) {
+        $entries += @{
+            Operation="New-RscQueryMisc.ValidateRoleName" ;
+            AllFieldsCount = -2 ; 
+            SelectedFieldsCount = -2
+        }
+    } elseif ( $query.Field | Get-Member -MemberType Method -Name 'AllFields') {
+        $entries += @{
+            Operation="New-RscQueryMisc.ValidateRoleName" ;
+            AllFieldsCount = $query.Field.AllFields().Count ; 
+            SelectedFieldsCount = $query.Field.SelectedFields().Count
+        }
+    } else {
+        $entries += @{
+            Operation="New-RscQueryMisc.ValidateRoleName" ;
+            AllFieldsCount = -1 ; 
+            SelectedFieldsCount = -1
+        }
+    }
+} else {
+    $query = New-RscQueryMisc -Operation ValidateRoleName
     $query.Info()
     $query.Example()
     $query.GqlRequest($false)

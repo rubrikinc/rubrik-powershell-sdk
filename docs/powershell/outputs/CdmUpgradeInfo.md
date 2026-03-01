@@ -49,3 +49,7 @@
   - Upgrade type in cdm cluster.
 - cdmClusterNodeDetails: list of CdmNodeDetails
   - Rubrik CDM cluster node details.
+- isRuSupported: System.Boolean
+  - Whether the cluster supports Rolling Upgrade (RU).
+- ruUnsupportabilityReason: System.String
+  - Reason why the cluster does not support Rolling Upgrade.

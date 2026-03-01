@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 44
+    /// Create a new RscQuery object for any of the 45
     /// operations in the 'Cluster' API domain:
-    /// CanIgnoreClusterRemovalPrechecks, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 44 operations
+    /// There are 45 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CanIgnoreClusterRemovalPrechecks, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -97,6 +97,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: IgnoreClusterRemovalPrecheckReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CheckClusterRuSupport operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: CheckClusterRuSupport
+    /// 
+    /// $query = New-RscQueryCluster -Operation CheckClusterRuSupport
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CheckClusterRuSupportReply
     /// 
     /// 
     /// 
@@ -2027,6 +2055,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "CanIgnoreClusterRemovalPrechecks",
+                "CheckClusterRuSupport",
                 "CloudClusterInstanceProperties",
                 "CloudClusterNodesInstanceProperties",
                 "CloudClusterRecoveryValidation",
@@ -2087,6 +2116,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "CanIgnoreClusterRemovalPrechecks":
                         this.ProcessRecord_CanIgnoreClusterRemovalPrechecks();
+                        break;
+                    case "CheckClusterRuSupport":
+                        this.ProcessRecord_CheckClusterRuSupport();
                         break;
                     case "CloudClusterInstanceProperties":
                         this.ProcessRecord_CloudClusterInstanceProperties();
@@ -2234,6 +2266,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CanIgnoreClusterRemovalPrechecks";
             // Create new graphql operation canIgnoreClusterRemovalPrechecks
             InitQueryCanIgnoreClusterRemovalPrechecks();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // checkClusterRuSupport.
+        internal void ProcessRecord_CheckClusterRuSupport()
+        {
+            this._logger.name += " -CheckClusterRuSupport";
+            // Create new graphql operation checkClusterRuSupport
+            InitQueryCheckClusterRuSupport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2641,6 +2682,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.CanIgnoreClusterRemovalPrechecksFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // checkClusterRuSupport(clusterId: String!): CheckClusterRuSupportReply!
+        internal void InitQueryCheckClusterRuSupport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterId", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCheckClusterRuSupport",
+                "($clusterId: String!)",
+                "CheckClusterRuSupportReply",
+                Query.CheckClusterRuSupport,
+                Query.CheckClusterRuSupportFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterId = $someString"
             );
         }
 

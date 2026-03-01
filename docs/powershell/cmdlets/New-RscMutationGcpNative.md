@@ -1,10 +1,5 @@
 # New-RscMutationGcpNative
 ## Subcommands
-### disableproject
-Triggers GCP native disable project job for the given project ID.
-
-- There is a single argument of type GcpNativeDisableProjectInput.
-- Returns AsyncJobStatus.
 ### excludedisksfrominstancesnapshot
 - There is a single argument of type GcpNativeExcludeDisksFromInstanceSnapshotInput.
 - Returns System.String.

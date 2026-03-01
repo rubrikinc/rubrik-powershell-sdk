@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sensitiveDataDiscoveryScope")]
         public SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope { get; set; }
 
+        //      C# -> BrowseAggregationScope? AggregationScope
+        // GraphQL -> aggregationScope: BrowseAggregationScope (enum)
+        [JsonProperty("aggregationScope")]
+        public BrowseAggregationScope? AggregationScope { get; set; }
+
 
         #endregion
 

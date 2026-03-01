@@ -130,7 +130,13 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_TYPE,
 
         [EnumMember(Value = "SOURCE_SNAPSHOT_IDS")]
-        SOURCE_SNAPSHOT_IDS
+        SOURCE_SNAPSHOT_IDS,
+
+        [EnumMember(Value = "THREAT_ANALYSIS_COMPLETED_ONLY")]
+        THREAT_ANALYSIS_COMPLETED_ONLY,
+
+        [EnumMember(Value = "THREAT_DETECTED")]
+        THREAT_DETECTED
 
 
     } // enum SnapshotQueryFilterField

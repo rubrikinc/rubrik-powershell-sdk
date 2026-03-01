@@ -54,6 +54,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksCustomPrivateDnsZoneId")]
         public System.String? AksCustomPrivateDnsZoneId { get; set; }
 
+        //      C# -> System.String? AzureSqlPrivateDnsZoneId
+        // GraphQL -> azureSqlPrivateDnsZoneId: String (scalar)
+        [JsonProperty("azureSqlPrivateDnsZoneId")]
+        public System.String? AzureSqlPrivateDnsZoneId { get; set; }
+
+        //      C# -> System.String? DiskEncryptionSetId
+        // GraphQL -> diskEncryptionSetId: String (scalar)
+        [JsonProperty("diskEncryptionSetId")]
+        public System.String? DiskEncryptionSetId { get; set; }
+
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
         [JsonProperty("aksClusterTier")]

@@ -588,6 +588,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_DELETED_IN_CDM")]
         IS_DELETED_IN_CDM,
 
+        [EnumMember(Value = "IS_DIRECTLY_PAUSED")]
+        IS_DIRECTLY_PAUSED,
+
         [EnumMember(Value = "IS_DOMAIN_CONTROLLER")]
         IS_DOMAIN_CONTROLLER,
 
@@ -819,6 +822,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_VOLUME_EFFECTIVE_SLA")]
         NAS_VOLUME_EFFECTIVE_SLA,
 
+        [EnumMember(Value = "NUTANIX_BY_SLA_ASSIGNMENT_TYPE")]
+        NUTANIX_BY_SLA_ASSIGNMENT_TYPE,
+
         [EnumMember(Value = "NUTANIX_CLUSTER_AND_PC_BY_CONNECTION_STATUS")]
         NUTANIX_CLUSTER_AND_PC_BY_CONNECTION_STATUS,
 
@@ -920,6 +926,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
+
+        [EnumMember(Value = "RECOVERY_PLAN_ROOT_DOMAIN_SID")]
+        RECOVERY_PLAN_ROOT_DOMAIN_SID,
 
         [EnumMember(Value = "RECOVERY_PLAN_SOURCE_LOCATION")]
         RECOVERY_PLAN_SOURCE_LOCATION,

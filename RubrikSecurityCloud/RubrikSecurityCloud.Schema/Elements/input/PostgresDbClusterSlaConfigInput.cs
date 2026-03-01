@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logRetention")]
         public SlaDurationInput? LogRetention { get; set; }
 
+        //      C# -> SlaDurationInput? HostLogRetention
+        // GraphQL -> hostLogRetention: SlaDurationInput (input)
+        [JsonProperty("hostLogRetention")]
+        public SlaDurationInput? HostLogRetention { get; set; }
+
 
         #endregion
 

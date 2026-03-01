@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> Duration? HostLogRetention
+        // GraphQL -> hostLogRetention: Duration (type)
+        [JsonProperty("hostLogRetention")]
+        public Duration? HostLogRetention { get; set; }
+
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         [JsonProperty("logRetention")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PostgresDbClusterSlaConfig Set(
+        Duration? HostLogRetention = null,
         Duration? LogRetention = null
     ) 
     {
+        if ( HostLogRetention != null ) {
+            this.HostLogRetention = HostLogRetention;
+        }
         if ( LogRetention != null ) {
             this.LogRetention = LogRetention;
         }
@@ -55,6 +64,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> Duration? HostLogRetention
+        // GraphQL -> hostLogRetention: Duration (type)
+        if (this.HostLogRetention != null) {
+            var fspec = this.HostLogRetention.AsFieldSpec(conf.Child("hostLogRetention"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostLogRetention" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
@@ -74,6 +95,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> Duration? HostLogRetention
+        // GraphQL -> hostLogRetention: Duration (type)
+        if (ec.Includes("hostLogRetention",false))
+        {
+            if(this.HostLogRetention == null) {
+
+                this.HostLogRetention = new Duration();
+                this.HostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("hostLogRetention"));
+
+            } else {
+
+                this.HostLogRetention.ApplyExploratoryFieldSpec(ec.NewChild("hostLogRetention"));
+
+            }
+        }
+        else if (this.HostLogRetention != null && ec.Excludes("hostLogRetention",false))
+        {
+            this.HostLogRetention = null;
+        }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (ec.Includes("logRetention",false))

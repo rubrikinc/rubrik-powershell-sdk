@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 26 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -293,6 +293,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateOnDemandMysqldbInstance operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreateOnDemandMysqldbInstance
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation CreateOnDemandMysqldbInstance
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		baseOnDemandSnapshotConfig = @{
+    /// 			# OPTIONAL
+    /// 			slaId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		snapshotType = $someMysqldbOnDemandSnapshotConfigSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MysqldbOnDemandSnapshotConfigSnapshotType]) for enum values.
+    /// 	}
     /// 	# OPTIONAL
     /// 	userNote = $someString
     /// }
@@ -1181,6 +1224,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateDomainController",
                 "CreateDownloadForVolumeGroup",
                 "CreateFileset",
+                "CreateOnDemandMysqldbInstance",
                 "CreateVapps",
                 "DeleteCloudWorkloadSnapshot",
                 "DeleteFilesetSnapshots",
@@ -1232,6 +1276,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateFileset":
                         this.ProcessRecord_CreateFileset();
+                        break;
+                    case "CreateOnDemandMysqldbInstance":
+                        this.ProcessRecord_CreateOnDemandMysqldbInstance();
                         break;
                     case "CreateVapps":
                         this.ProcessRecord_CreateVapps();
@@ -1352,6 +1399,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateFileset";
             // Create new graphql operation createFilesetSnapshot
             InitMutationCreateFilesetSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createOnDemandMysqldbInstanceSnapshot.
+        internal void ProcessRecord_CreateOnDemandMysqldbInstance()
+        {
+            this._logger.name += " -CreateOnDemandMysqldbInstance";
+            // Create new graphql operation createOnDemandMysqldbInstanceSnapshot
+            InitMutationCreateOnDemandMysqldbInstanceSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1705,6 +1761,41 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createOnDemandMysqldbInstanceSnapshot(input: CreateOnDemandMysqldbInstanceSnapshotV2Input!): AsyncRequestStatus!
+        internal void InitMutationCreateOnDemandMysqldbInstanceSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateOnDemandMysqldbInstanceSnapshotV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateOnDemandMysqldbInstanceSnapshot",
+                "($input: CreateOnDemandMysqldbInstanceSnapshotV2Input!)",
+                "AsyncRequestStatus",
+                Mutation.CreateOnDemandMysqldbInstanceSnapshot,
+                Mutation.CreateOnDemandMysqldbInstanceSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		baseOnDemandSnapshotConfig = @{
+			# OPTIONAL
+			slaId = $someString
+		}
+		# OPTIONAL
+		snapshotType = $someMysqldbOnDemandSnapshotConfigSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MysqldbOnDemandSnapshotConfigSnapshotType]) for enum values.
+	}
 	# OPTIONAL
 	userNote = $someString
 }"

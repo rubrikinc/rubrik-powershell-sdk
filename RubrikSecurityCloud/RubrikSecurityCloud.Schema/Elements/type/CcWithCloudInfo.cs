@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
+        //      C# -> System.Boolean? IsDynamicScalingEnabled
+        // GraphQL -> isDynamicScalingEnabled: Boolean! (scalar)
+        [JsonProperty("isDynamicScalingEnabled")]
+        public System.Boolean? IsDynamicScalingEnabled { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -88,6 +93,7 @@ namespace RubrikSecurityCloud.Types
         CcpVendorType? Vendor = null,
         System.String? CloudAccount = null,
         System.String? CloudAccountId = null,
+        System.Boolean? IsDynamicScalingEnabled = null,
         System.String? Name = null,
         System.String? NativeCloudAccountId = null,
         System.String? NativeCloudAccountName = null,
@@ -106,6 +112,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CloudAccountId != null ) {
             this.CloudAccountId = CloudAccountId;
+        }
+        if ( IsDynamicScalingEnabled != null ) {
+            this.IsDynamicScalingEnabled = IsDynamicScalingEnabled;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -170,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudAccountId\n" ;
             } else {
                 s += ind + "cloudAccountId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsDynamicScalingEnabled
+        // GraphQL -> isDynamicScalingEnabled: Boolean! (scalar)
+        if (this.IsDynamicScalingEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isDynamicScalingEnabled\n" ;
+            } else {
+                s += ind + "isDynamicScalingEnabled\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -304,6 +322,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudAccountId != null && ec.Excludes("cloudAccountId",true))
         {
             this.CloudAccountId = null;
+        }
+        //      C# -> System.Boolean? IsDynamicScalingEnabled
+        // GraphQL -> isDynamicScalingEnabled: Boolean! (scalar)
+        if (ec.Includes("isDynamicScalingEnabled",true))
+        {
+            if(this.IsDynamicScalingEnabled == null) {
+
+                this.IsDynamicScalingEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsDynamicScalingEnabled != null && ec.Excludes("isDynamicScalingEnabled",true))
+        {
+            this.IsDynamicScalingEnabled = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

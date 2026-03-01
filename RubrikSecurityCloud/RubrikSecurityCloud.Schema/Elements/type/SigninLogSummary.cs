@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("riskLevel")]
         public SigninLogRiskLevel? RiskLevel { get; set; }
 
+        //      C# -> System.String? ActorDisplayName
+        // GraphQL -> actorDisplayName: String! (scalar)
+        [JsonProperty("actorDisplayName")]
+        public System.String? ActorDisplayName { get; set; }
+
         //      C# -> System.String? ActorPrincipalName
         // GraphQL -> actorPrincipalName: String! (scalar)
         [JsonProperty("actorPrincipalName")]
@@ -103,6 +108,7 @@ namespace RubrikSecurityCloud.Types
         EventProvider? Provider = null,
         SigninLogResult? Result = null,
         SigninLogRiskLevel? RiskLevel = null,
+        System.String? ActorDisplayName = null,
         System.String? ActorPrincipalName = null,
         System.String? ApplicationName = null,
         System.String? City = null,
@@ -124,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RiskLevel != null ) {
             this.RiskLevel = RiskLevel;
+        }
+        if ( ActorDisplayName != null ) {
+            this.ActorDisplayName = ActorDisplayName;
         }
         if ( ActorPrincipalName != null ) {
             this.ActorPrincipalName = ActorPrincipalName;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "riskLevel\n" ;
             } else {
                 s += ind + "riskLevel\n" ;
+            }
+        }
+        //      C# -> System.String? ActorDisplayName
+        // GraphQL -> actorDisplayName: String! (scalar)
+        if (this.ActorDisplayName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "actorDisplayName\n" ;
+            } else {
+                s += ind + "actorDisplayName\n" ;
             }
         }
         //      C# -> System.String? ActorPrincipalName
@@ -355,6 +373,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RiskLevel != null && ec.Excludes("riskLevel",true))
         {
             this.RiskLevel = null;
+        }
+        //      C# -> System.String? ActorDisplayName
+        // GraphQL -> actorDisplayName: String! (scalar)
+        if (ec.Includes("actorDisplayName",true))
+        {
+            if(this.ActorDisplayName == null) {
+
+                this.ActorDisplayName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActorDisplayName != null && ec.Excludes("actorDisplayName",true))
+        {
+            this.ActorDisplayName = null;
         }
         //      C# -> System.String? ActorPrincipalName
         // GraphQL -> actorPrincipalName: String! (scalar)

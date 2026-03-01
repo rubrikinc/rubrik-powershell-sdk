@@ -74,3 +74,6 @@ returns snapshots that are not source snapshots.
 when false, returns snapshots that are only policy-based.
 - IS_MAINTAINED_OR_ON_DEMAND_WITH_SLA - When true, returns snapshots which are either scheduled/maintained or
 on-demand snapshots that have an on-demand SLA assigned.
+- THREAT_DETECTED - When true, returns snapshots with detected threats.
+When false, returns snapshots with no detected threats.
+- THREAT_ANALYSIS_COMPLETED_ONLY - When true, returns only snapshots where threat analysis has completed.

@@ -87,7 +87,7 @@ Details about the PDBs that are part of the CDB.
 - oldestRecoveryPointV96: DateTime
   - The time stamp of the earliest recovery point for this database.
 - logRatePerRmanChannelInMb: System.Int32
-  - Supported in v9.6
+  - Supported in v9.5+
 Specifies the RMAN RATE parameter in megabytes per second to limit log backup throughput per channel.
 - latestRecoveryPointV91: DateTime
   - The time stamp of the most recent recovery point for this database.
@@ -102,6 +102,6 @@ Specifies the RMAN RATE parameter in megabytes per second to limit log backup th
 - latestRecoveryPointV96: DateTime
   - The time stamp of the most recent recovery point for this database.
 - ratePerRmanChannelInMb: System.Int32
-  - Supported in v9.6
+  - Supported in v9.5+
 Specifies the RMAN RATE parameter in megabytes per second to limit backup throughput per channel.
 - blackoutWindowResponseInfo: BlackoutWindowResponseInfo

@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "SIGNIN_LOG_SORT_FIELD_ACTOR_DISPLAY_NAME")]
+        SIGNIN_LOG_SORT_FIELD_ACTOR_DISPLAY_NAME,
+
         [EnumMember(Value = "SIGNIN_LOG_SORT_FIELD_ACTOR_PRINCIPAL_NAME")]
         SIGNIN_LOG_SORT_FIELD_ACTOR_PRINCIPAL_NAME,
 
