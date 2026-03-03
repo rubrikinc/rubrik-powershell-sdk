@@ -85,6 +85,7 @@ namespace RubrikSecurityCloud
             ExcludedFields.Clear();
             LoopyFields.Clear();
             PatchSet.Reset();
+            PatchSet.ReadFromArrays(null, Config.FieldsToSkip.ToArray());
         }
 
         public static bool Excludes(string nodeName, bool isLeaf = false)
