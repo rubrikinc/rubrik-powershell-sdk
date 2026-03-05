@@ -57,6 +57,17 @@ function Protect-RscWorkload
     Remove the SLA assignment from a VM.
 
     Get-RscVmwareVm -Name "Foo" | Protect-RscWorkload -AssignmentType noAssignment
+
+    .PARAMETER MssqlLogConfigFromSla
+    For MSSQL workloads: after assigning the SLA, automatically set the
+    database to inherit its log backup configuration from the SLA Domain
+    (equivalent to the RSC UI option "Follow the log configuration in the SLA Domain").
+    This fires a follow-up assignMssqlSlaDomainPropertiesAsync mutation.
+
+    .EXAMPLE
+    Protect an MSSQL database and use the SLA's log backup configuration:
+
+    Get-RscMssqlDatabase -Name "MyDB" | Protect-RscWorkload -Sla (Get-RscSla -Name "Gold") -MssqlLogConfigFromSla
   #>
 
   [CmdletBinding()]
@@ -88,6 +99,10 @@ function Protect-RscWorkload
     # RSC Snapshot retention setting
     [Parameter()]
     [RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]$ExistingSnapshotAction,
+
+    # For MSSQL workloads: inherit log backup configuration from the SLA Domain
+    [Parameter()]
+    [switch]$MssqlLogConfigFromSla,
 
     [Parameter(
         Mandatory = $false,
@@ -123,6 +138,29 @@ function Protect-RscWorkload
         
         if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc -Query $query
+
+        # Follow-up: set MSSQL log config to inherit from SLA Domain
+        if ($MssqlLogConfigFromSla) {
+            if (-not $Sla) {
+                throw "-MssqlLogConfigFromSla requires -Sla to be specified."
+            }
+            $mssqlQuery = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+            $mssqlQuery.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
+            $mssqlQuery.Var.input.userNote = ""
+            $mssqlQuery.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
+            $mssqlQuery.Var.input.updateinfo.ids = $query.Var.Input.ObjectIds
+            $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaPatchPropertiesInput
+            $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.configuredSLADomainId = $Sla.Id
+            $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaRelatedPropertiesInput
+            $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hasLogConfigFromSla = $true
+            $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
+            try {
+                $mssqlQuery.invoke() | Out-Null
+            } catch {
+                Write-Warning "SLA assigned successfully, but failed to set MSSQL log config from SLA: $_"
+            }
+        }
+
         $result
     }
 } 
