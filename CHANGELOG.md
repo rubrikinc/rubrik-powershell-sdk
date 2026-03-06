@@ -3,6 +3,11 @@
 ## Version TBD
 
 New Features:
+- `Get-RscHelp` default search now shows queries and mutations with
+  their return types (`Kind | GqlField | ReturnType`) for quick GraphQL
+  field discovery (#227)
+- `Get-RscHelp -Stats` shows schema statistics: element counts, top
+  return types, largest interfaces, and type coverage
 - Version mismatch warnings now show whether the SDK is older or newer
   than the server, display the number of days apart, and use Info level
   for minor drift (<30 days) vs Warning for significant drift (#225)
