@@ -109,6 +109,15 @@ function Get-RscHelp {
     .PARAMETER Locations
     Show file system locations the SDK uses.
 
+    .PARAMETER Stats
+    Show schema statistics: element counts, top return types, busiest
+    interfaces, and other cross-referenced data about the current SDK.
+
+    .EXAMPLE
+    Get-RscHelp -Stats
+
+    Display schema statistics for the current SDK version.
+
     #>
     [CmdletBinding(
         DefaultParameterSetName = 'Schema'
@@ -185,6 +194,12 @@ function Get-RscHelp {
             HelpMessage = 'Look up an enum by name.'
         )]
         [Switch]$Enum,
+
+        [Parameter(
+            ParameterSetName = 'Stats',
+            HelpMessage = 'Show schema statistics about the current SDK.'
+        )]
+        [Switch]$Stats,
 
         [Parameter(
             ParameterSetName = 'Cmdlet',
@@ -494,8 +509,107 @@ function Get-RscHelp {
             }
             # Display the table, sorted by the number of times the type is used as an argument
             $tableData | Sort-Object AsArgument | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
-        }  
-        
+        }
+
+        function ShowStats {
+            $SM = [RubrikSecurityCloud.Types.SchemaMeta]
+            function ExcludeUnknown($enumType) {
+                [Enum]::GetValues($enumType) | Where-Object { $_ -ine 'Unknown' }
+            }
+
+            # Counts
+            $queries    = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlQueryName])
+            $mutations  = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlMutationName])
+            $types      = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlTypeName])
+            $inputs     = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlInputName])
+            $enumVals   = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlEnumName])
+            $interfaces = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlInterfaceName])
+            $unions     = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlUnionName])
+            $scalars    = ExcludeUnknown ([RubrikSecurityCloud.Types.SchemaMeta+GqlScalarName])
+            $nRootFields = $queries.Count + $mutations.Count
+            $nTotal      = $nRootFields + $types.Count + $inputs.Count + $enumVals.Count + $interfaces.Count + $unions.Count + $scalars.Count
+
+            Write-Output ""
+            Write-Output "# RSC GraphQL Schema Statistics"
+            Write-Output ""
+
+            @(
+                [PSCustomObject]@{ Element = "Queries";    Count = $queries.Count }
+                [PSCustomObject]@{ Element = "Mutations";  Count = $mutations.Count }
+                [PSCustomObject]@{ Element = "Types";      Count = $types.Count }
+                [PSCustomObject]@{ Element = "Inputs";     Count = $inputs.Count }
+                [PSCustomObject]@{ Element = "Enums";      Count = $enumVals.Count }
+                [PSCustomObject]@{ Element = "Interfaces"; Count = $interfaces.Count }
+                [PSCustomObject]@{ Element = "Unions";     Count = $unions.Count }
+                [PSCustomObject]@{ Element = "Scalars";    Count = $scalars.Count }
+            ) | Format-Table -AutoSize
+            Write-Output "  $nRootFields root fields, $nTotal schema elements total."
+            Write-Output ""
+
+            # --- Return type analysis ---
+            $queryRts = @{}
+            $mutRts   = @{}
+            foreach ($q in $queries) {
+                $rt = try { $SM::ReturnTypeLookupByGqlRootField($q) } catch { $null }
+                if ($rt) { $queryRts[$rt] = ($queryRts[$rt] ?? 0) + 1 }
+            }
+            foreach ($m in $mutations) {
+                $rt = try { $SM::ReturnTypeLookupByGqlRootField($m) } catch { $null }
+                if ($rt) { $mutRts[$rt] = ($mutRts[$rt] ?? 0) + 1 }
+            }
+
+            Write-Output "# Return Types"
+            Write-Output ""
+            Write-Output "  $($queryRts.Count) unique return types across $($queries.Count) queries."
+            Write-Output "  $($mutRts.Count) unique return types across $($mutations.Count) mutations."
+            $shared = ($mutRts.Keys | Where-Object { $queryRts.ContainsKey($_) }).Count
+            Write-Output "  $shared return types shared between queries and mutations."
+            Write-Output ""
+
+            Write-Output "# Most-Returned Types (queries)"
+            Write-Output ""
+            $queryRts.GetEnumerator() |
+                Sort-Object Value -Descending |
+                Select-Object -First 10 |
+                ForEach-Object { [PSCustomObject]@{ Queries = $_.Value; ReturnType = $_.Key } } |
+                Format-Table -AutoSize
+
+            Write-Output "# Most-Returned Types (mutations)"
+            Write-Output ""
+            $mutRts.GetEnumerator() |
+                Sort-Object Value -Descending |
+                Select-Object -First 10 |
+                ForEach-Object { [PSCustomObject]@{ Mutations = $_.Value; ReturnType = $_.Key } } |
+                Format-Table -AutoSize
+
+            # --- Interface implementations ---
+            Write-Output "# Largest Interfaces (by implementing types)"
+            Write-Output ""
+            $ifaceData = foreach ($iface in $interfaces) {
+                $impls = try { $SM::InterfaceImpls($iface) } catch { @() }
+                [PSCustomObject]@{ Interface = [string]$iface; Types = $impls.Count }
+            }
+            $ifaceData | Sort-Object Types -Descending | Select-Object -First 10 | Format-Table -AutoSize
+
+            # --- Type coverage ---
+            Write-Output "# Type Coverage"
+            Write-Output ""
+            $directlyReferenced = 0
+            $indirectOnly = 0
+            foreach ($t in $types) {
+                $asReturn = $SM::GqlRootFieldLookupByReturnType($t)
+                $asArg    = $SM::GqlRootFieldLookupByArgType($t)
+                if ($asReturn.Count -gt 0 -or $asArg.Count -gt 0) {
+                    $directlyReferenced++
+                } else {
+                    $indirectOnly++
+                }
+            }
+            $pct = [math]::Round(100 * $directlyReferenced / $types.Count, 1)
+            Write-Output "  $directlyReferenced of $($types.Count) types ($pct%) are directly referenced by a root field."
+            Write-Output "  $indirectOnly types are only reachable through nested fields."
+            Write-Output ""
+        }
 
     }
     
@@ -511,6 +625,7 @@ function Get-RscHelp {
                 return
             }
             'Locations' { GetLocationHelp }
+            'Stats' { ShowStats }
             'Cmdlet' { GetCmdletHelp }
             'Schema' { LookupSchema }
             'Query' { LookupQuery }
