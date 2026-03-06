@@ -174,3 +174,22 @@ The `.csproj` has MSBuild targets that copy files to the output dir:
 - Toolkit Private scripts are dot-sourced on demand (not auto-loaded)
 - Do not edit `FormatsToProcess` in `.psd1` — managed by `UpdatePsd1.ps1`
 - Do not edit generated C# files under `RubrikSecurityCloud.Schema/generated/`
+
+## CHANGELOG.md
+PRs that introduce customer-facing changes **must** update `CHANGELOG.md`.
+The changelog is included in public releases, so write for SDK users.
+
+**Update when:**
+- New features or cmdlets
+- Bug fixes
+- Behavior changes
+- Resolved GitHub issues (reference with `#NNN`)
+
+**Don't update for:**
+- Internal refactoring with no behavior change
+- Adding/moving tests
+- Documentation-only changes
+- CI/build changes
+
+The top entry in `CHANGELOG.md` is `## Version TBD` during development.
+At release time, `Set-RscSdkVersion.ps1` replaces `TBD` with the version number.

@@ -3,8 +3,14 @@
 ## Version TBD
 
 New Features:
+- Version mismatch warnings now show whether the SDK is older or newer
+  than the server, display the number of days apart, and use Info level
+  for minor drift (<30 days) vs Warning for significant drift (#225)
 
 Fixes:
+- AutoField no longer includes non-GA fields in query field selection (#219)
+- Module import no longer emits "Importing module from file..." messages
+  to the pipeline (#224)
 
 Breaking Changes:
 
