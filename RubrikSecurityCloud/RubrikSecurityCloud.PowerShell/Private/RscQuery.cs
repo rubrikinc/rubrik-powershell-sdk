@@ -191,16 +191,6 @@ namespace RubrikSecurityCloud
             string syntax = this.rscOp?.Syntax() ?? "";
             List<VarInfo> info = new List<VarInfo>();
             info.Add(new VarInfo(
-                "API Domain",
-                "",
-                this.rscOp?.DomainName() ?? ""
-            ));
-            info.Add(new VarInfo(
-                "API Operation",
-                "",
-                this.Op
-            ));
-            info.Add(new VarInfo(
                 "GQL Field",
                 "",
                 this.rscOp?.GqlRootFieldName ?? ""

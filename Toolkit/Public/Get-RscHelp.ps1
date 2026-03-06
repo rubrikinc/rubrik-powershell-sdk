@@ -2,24 +2,113 @@
 function Get-RscHelp {
     <#
     .SYNOPSIS
-    Retrieve help around RSC cmdlets and the RSC schema.
-    
+    Look up GraphQL queries, mutations, types, and other schema elements.
+
     .DESCRIPTION
-    This cmdlet is used to retrieve help around RSC cmdlets and the RSC schema.
-    It can be used to retrieve help for a specific cmdlet,
-    or to look up a schema element.
-    but this cmdlet extracts just the subcommand help messages.
+    Search the RSC GraphQL schema by name or pattern. By default, matches
+    across all schema elements (queries, mutations, types, inputs, enums, etc.)
+    and shows queries/mutations with their return types for quick reference.
+
+    Use the -Query, -Mutation, -Type, -Enum, -Input, -Interface, -Scalar,
+    or -Union switches to narrow the search to a specific kind.
 
     .EXAMPLE
-    Get-RscHelp -CommandName New-RscQueryCluster
+    Get-RscHelp clusterConnection
+
+    Search for "clusterConnection" across all schema elements:
+
+    Kind  GqlField          ReturnType
+    ----  --------          ----------
+    Query clusterConnection ClusterConnection
+
+    Type Name
+    ---- ----
+    Type ClusterConnection
+
+    # 2 matches found for 'clusterConnection'.
+
+    .EXAMPLE
+    Get-RscHelp cluster*
+
+    Wildcard search — shows matching queries with return types, then other types:
+
+    Kind  GqlField                        ReturnType
+    ----  --------                        ----------
+    Query cluster                         Cluster
+    Query clusterCertificates             CertificateSummaryListResponse
+    Query clusterConnection               ClusterConnection
+    ...
+
+    Type  Name
+    ----  ----
+    Enum  ClusterSortByEnum
+    Input ClusterFilterInput
+    Type  Cluster
+    Type  ClusterConnection
+    ...
+
+    .EXAMPLE
+    Get-RscHelp -Query clusterConnection
+
+    Exact query lookup — shows variables, return type, and invocation:
+
+    Name            Type               Description
+    ----            ----               -----------
+    GQL Field                          clusterConnection
+    Invocation                         $query = New-RscQuery -GqlQuery clusterConnection
+    Var.first       Int                Int
+    Var.filter      ClusterFilterInput ClusterFilterInput: https://...
+    Field           ClusterConnection  https://...
 
     .EXAMPLE
     Get-RscHelp -Locations
 
-    .EXAMPLE
-    Get-RscHelp -LookupSchema clusterconnection
-    Get-RscHelp -LookupSchema clustercon*
-    
+    Show file system locations used by the SDK.
+
+    .PARAMETER Match
+    Name or wildcard pattern to search for (e.g. "clusterConnection", "cluster*").
+
+    .PARAMETER Schema
+    Search across all schema elements (default). Queries and mutations are
+    shown with their return types; other elements are listed by kind.
+
+    .PARAMETER Query
+    Look up a GraphQL query by name. An exact match shows full details
+    (variables, return type, invocation syntax).
+
+    .PARAMETER Mutation
+    Look up a GraphQL mutation by name. An exact match shows full details.
+
+    .PARAMETER Type
+    Look up a GraphQL object type by name.
+
+    .PARAMETER Enum
+    Look up a GraphQL enum by name.
+
+    .PARAMETER Inputs
+    Look up a GraphQL input type by name.
+
+    .PARAMETER Interface
+    Look up a GraphQL interface by name.
+
+    .PARAMETER ImplementingTypes
+    With -Interface, return only the types that implement the interface.
+
+    .PARAMETER Scalar
+    Look up a GraphQL scalar by name.
+
+    .PARAMETER Union
+    Look up a GraphQL union by name.
+
+    .PARAMETER Cmdlet
+    Show full help for a PowerShell cmdlet (equivalent to Get-Help -Full).
+
+    .PARAMETER About
+    Show the SDK About page (animated logo and credits).
+
+    .PARAMETER Locations
+    Show file system locations the SDK uses.
+
     #>
     [CmdletBinding(
         DefaultParameterSetName = 'Schema'
@@ -98,12 +187,6 @@ function Get-RscHelp {
         [Switch]$Enum,
 
         [Parameter(
-            ParameterSetName = 'Domain',
-            HelpMessage = 'Look up an API domain by name.'
-        )]
-        [Switch]$Domain,
-
-        [Parameter(
             ParameterSetName = 'Cmdlet',
             HelpMessage = 'This is equivalent to Get-Help -Name <cmdlet> -Full'
         )]
@@ -137,36 +220,61 @@ function Get-RscHelp {
                 GetCmdletHelp
                 return
             }
-            $tableData = @()
+            $rootFieldData = @()
+            $otherData = @()
             # Get all the enums within the SchemaMeta class
-            $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName' -and $_.Name -ne 'RootFieldKind' }
+            $enums = [RubrikSecurityCloud.Types.SchemaMeta].GetNestedTypes() | Where-Object { $_.IsEnum -and $_.Name -ne 'GqlRootFieldName' -and $_.Name -ne 'RootFieldKind' -and $_.Name -ne 'ApiDomainName' }
+
+            # Names of enums that represent root fields (queries and mutations)
+            $rootFieldEnumNames = @('GqlQueryName', 'GqlMutationName')
 
             # Iterate through each enum and check if it contains the lookup name
-            $found = 0
             foreach ($enum in $enums) {
+                $isRootField = $rootFieldEnumNames -contains $enum.Name
                 # Get all names in the current enum
                 $enumValues = [Enum]::GetValues($enum) | Where-Object { $_ -ine 'Unknown' }
                 # Check if any of the names match the provided pattern
                 foreach ($value in $enumValues) {
                     if ($Match -eq "" -or $value -like $Match) {
-                        # Extract the middle part of the enum name
-                        $enumName = $enum.Name -replace '^Gql', '' -replace 'Name$', ''
-                        $entry = New-Object PSObject -Property @{
-                            Type = $enumName
-                            Name = $value
+                        if ($isRootField) {
+                            # Look up kind and return type for root fields
+                            $kind = try {
+                                [RubrikSecurityCloud.Types.SchemaMeta]::GetRootFieldKind($value)
+                            } catch { $null }
+                            $returnType = try {
+                                [RubrikSecurityCloud.Types.SchemaMeta]::ReturnTypeLookupByGqlRootField($value)
+                            } catch { "" }
+                            $kindStr = if ($kind -and $kind.ToString() -ne 'Unknown') { $kind.ToString() } else {
+                                $enum.Name -replace '^Gql', '' -replace 'Name$', ''
+                            }
+                            $rootFieldData += New-Object PSObject -Property @{
+                                Kind       = $kindStr
+                                GqlField   = [string]$value
+                                ReturnType = [string]$returnType
+                            }
                         }
-                        $tableData += $entry
-                        $found += 1
+                        else {
+                            $enumName = $enum.Name -replace '^Gql', '' -replace 'Name$', ''
+                            $otherData += New-Object PSObject -Property @{
+                                Type = $enumName
+                                Name = [string]$value
+                            }
+                        }
                     }
                 }
             }
-            $found = $tableData.Count
-            if ($found -eq 0) {
+            $total = $rootFieldData.Count + $otherData.Count
+            if ($total -eq 0) {
                 Write-Output "# No match found for '$Match'."
             }
             else {
-                $tableData | Sort-Object Type, Name | Format-Table -Property Type, Name -AutoSize
-                Write-Output "# ${found} matches found for '$Match'."
+                if ($rootFieldData.Count -gt 0) {
+                    $rootFieldData | Sort-Object Kind, GqlField | Format-Table -Property Kind, GqlField, ReturnType -AutoSize
+                }
+                if ($otherData.Count -gt 0) {
+                    $otherData | Sort-Object Type, Name | Format-Table -Property Type, Name -AutoSize
+                }
+                Write-Output "# ${total} matches found for '$Match'."
             }
         }
 
@@ -388,22 +496,6 @@ function Get-RscHelp {
             $tableData | Sort-Object AsArgument | Format-Table -Property TypeName, AsReturnType, AsArgument -AutoSize
         }  
         
-        function LookupDomain {
-            $enumValues = [Enum]::GetValues([RubrikSecurityCloud.Types.SchemaMeta+ApiDomainName]) | Where-Object { $_ -ine 'Unknown' }
-            foreach ($value in $enumValues) {
-                # If it's an exact match, print operations in domain
-                if ($value -eq $Match) {
-                    $info = [RubrikSecurityCloud.Types.SchemaMeta]::ApiOperationsByApiDomainName($value)
-                    Write-Output "# Operations in domain ${value}:"
-                    Write-Output $info
-                    continue
-                }
-                # print it if $Enum is empty, or if it matches the pattern
-                if ($Match -eq "" -or $value -like $Match) {
-                    Write-Output $value
-                }
-            }
-        }
 
     }
     
@@ -429,7 +521,6 @@ function Get-RscHelp {
             'Interface' { LookupInterface }
             'Input' { LookupInput }
             'Enum' { LookupEnum }
-            'Domain' { LookupDomain }
         }
     }
 }
