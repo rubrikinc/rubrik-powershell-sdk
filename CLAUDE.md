@@ -8,8 +8,12 @@ cmdlets for the RSC GraphQL API. Published to the
 ## Branches
 | Branch   | Purpose                                                    |
 |----------|------------------------------------------------------------|
-| `main`   | Release branch — force-pushed from `devel` at release time |
+| `main`   | Release-only — every commit is a release with a matching PowerShell Gallery publish |
 | `devel`  | Development branch — all work happens here                 |
+
+**All PRs target `devel`**, never `main`. The `main` branch is updated only
+during releases (force-pushed from `devel`). GitHub's default branch for PRs
+may need to be changed manually to `devel`.
 
 Generated C# type updates are periodically pushed to `devel` via an
 internal Rubrik pipeline. Do not manually edit files under
