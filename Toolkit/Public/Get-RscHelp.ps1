@@ -26,6 +26,12 @@ function Get-RscHelp {
     )]
     Param (
         [Parameter(
+            ParameterSetName = 'About',
+            HelpMessage = 'Show the SDK About page (animated logo and credits).'
+        )]
+        [Switch]$About,
+
+        [Parameter(
             ParameterSetName = 'Locations',
             HelpMessage = 'Show File System locations the SDK uses.'
         )]
@@ -407,6 +413,11 @@ function Get-RscHelp {
             return
         }
         switch ($PSCmdlet.ParameterSetName) {
+            'About' {
+                . "$PSScriptRoot\..\Private\Show-RscAbout.ps1"
+                Show-RscAbout
+                return
+            }
             'Locations' { GetLocationHelp }
             'Cmdlet' { GetCmdletHelp }
             'Schema' { LookupSchema }
