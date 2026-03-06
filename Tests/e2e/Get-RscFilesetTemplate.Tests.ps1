@@ -1,44 +1,14 @@
 <#
 .SYNOPSIS
-Run tests around fileset templates
+E2e tests for Get-RscFilesetTemplate (requires live RSC connection).
+Parameter validation tests are in Tests/unit/Get-RscFilesetTemplate.Tests.ps1.
 #>
 BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 
-
-Describe -Name 'Get-RscFilesetTemplate Tests' -Tag 'Public' -Fixture{
-    Context -Name 'Parameter Validation' {
-        It -Name 'Parameter Name can be $null' -Test {
-            { Get-RscFilesetTemplate -OsType Windows -Name $null } |
-                Should -Not -Throw
-        }
-
-        It -Name 'Parameter Name can be empty' -Test {
-            { Get-RscFilesetTemplate -OsType Windows -Name '' } |
-                Should -Not -Throw
-        }
-
-        It -Name 'Parameter ID cannot be $null' -Test {
-            { Get-RscFilesetTemplate -Id $null } |
-                Should -Throw "Cannot validate argument on parameter 'Id'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again."
-        }
-
-        It -Name 'Parameter ID cannot be empty' -Test {
-            { Get-RscFilesetTemplate -Id '' } |
-                Should -Throw "Cannot validate argument on parameter 'Id'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again."
-        }
-
-        It -Name 'Parameters Id and Name cannot be simultaneously used' -Test {
-            { Get-RscFilesetTemplate -Id my-host-id-that-doesnot-exist -Name 'swagsanta' } |
-                Should -Throw -ErrorId 'AmbiguousParameterSet,RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate'
-        }
-
-        It -Name 'Parameter OsType cannot be $null' -Test{
-            {Get-RscFilesetTemplate -OsType $null } |
-            Should -Throw "Cannot validate argument on parameter 'OsType'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again."
-        }
-
+Describe -Name 'Get-RscFilesetTemplate Tests' -Tag 'Public' -Fixture {
+    Context -Name 'Live query' {
         It -Name 'Fields work as expected' -Test {
             $fields = Get-RscType -Name FilesetTemplate -InitialProperties @("Name","OsType")
             $results = Get-RscFilesetTemplate -OsType Windows -Field $fields -First 1
