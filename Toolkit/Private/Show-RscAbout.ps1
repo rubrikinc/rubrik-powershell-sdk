@@ -211,8 +211,13 @@ function Show-RscAbout {
     $tagY1 = 21; $tagY2 = 22
     $tagLeft = 21
     $tagRight = 52
-    _At $tagLeft $tagY1; _W $DG '·····'; _W $T3 '▸ '; _W $GR 'Rubrik Security Cloud  '; _W $T3 '◂'; _W $DG '·····'
-    _At $tagLeft $tagY2; _W $DG '·····'; _W $T3 '▸ '; _W $GR 'GraphQL API  ·  SDK    '; _W $T3 '◂'; _W $DG '·····'
+    _At $tagLeft $tagY1; _W $DG '·····'; _W $T3 '▸ '; _W (_fg 229) 'Rubrik Security Cloud  '; _W $T3 '◂'; _W $DG '·····'
+    # SDK version line: centered in 23 chars (same width as tagline above)
+    $sdkVer = try { "v" + (Get-Module RubrikSecurityCloud).Version.ToString() } catch { '?' }
+    if ($sdkVer.Length -gt 23) { $sdkVer = $sdkVer.Substring(0, 22) + '…' }
+    $pad = [Math]::Max(0, 23 - $sdkVer.Length)
+    $verLabel = (' ' * [Math]::Floor($pad / 2)) + $sdkVer + (' ' * [Math]::Ceiling($pad / 2))
+    _At $tagLeft $tagY2; _W $DG '·····'; _W $T3 '▸ '; _W $GR $verLabel; _W $T3 '◂'; _W $DG '·····'
 
     $frame = 0
     $mqOff = 0
@@ -235,6 +240,29 @@ function Show-RscAbout {
                     else {
                         _W '' ' '
                     }
+                }
+            }
+
+            # ── RSC title wave: gentle pulse right→left ──────────
+            # Palette: 101 (dim olive) → 107 (sage) → 143 (light olive) → 144 (khaki) → back
+            $rscText = 'Rubrik Security Cloud'
+            $rscCol = $tagLeft + 7
+            $rscLen = $rscText.Length
+            # ~7 frames for wave to cross (4x speed) + ~77 pause ≈ 10s
+            $waveCycle = [Math]::Floor(($rscLen + 4) / 4) + 77
+            $waveFrame = $frame % $waveCycle
+            $wavePos = $rscLen + 1 - ($waveFrame * 4)  # 4x speed, right to left
+            for ($ci = 0; $ci -lt $rscLen; $ci++) {
+                _At ($rscCol + $ci) $tagY1
+                $dist = [Math]::Abs($ci - $wavePos)
+                if ($dist -eq 0) {
+                    _W (_fg 144) $rscText[$ci]     # khaki (peak)
+                } elseif ($dist -eq 1) {
+                    _W (_fg 143) $rscText[$ci]     # light olive
+                } elseif ($dist -eq 2) {
+                    _W (_fg 107) $rscText[$ci]     # sage
+                } else {
+                    _W (_fg 101) $rscText[$ci]     # dim olive (base)
                 }
             }
 
