@@ -377,3 +377,6 @@ GraphQL Schme Downloader/schema/.env.json
 Output/
 Output.Release/
 .vscode/
+
+# Claude / MCP
+.mcp.json
