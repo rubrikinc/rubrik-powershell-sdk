@@ -16,5 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj" />
+    <ProjectReference Include="..\RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.PowerShell.csproj" />
   </ItemGroup>
 </Project>

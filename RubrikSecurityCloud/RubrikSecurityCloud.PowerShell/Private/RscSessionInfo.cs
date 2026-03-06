@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -69,9 +69,52 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
 			if (_schemaVersion != _serverVersion)
 			{
-				_logger.Warning($"The installed RSC SDK version does not " +
-				$"match the server version.");
+				LogVersionMismatchWarning();
 			}
+		}
+
+		/// <summary>
+		/// Logs a version mismatch message with severity based on the age
+		/// of the drift. Less than 30 days: Info. 30+ days: Warning.
+		/// </summary>
+		private void LogVersionMismatchWarning()
+		{
+			var result = VersionHelper.Compare(_schemaVersion, _serverVersion);
+			bool isSignificant = VersionHelper.IsSignificant(result);
+			string deltaInfo = result.Delta.HasValue
+				? $" ({(int)result.Delta.Value.TotalDays} days apart)"
+				: "";
+
+			string message;
+			switch (result.Direction)
+			{
+				case VersionHelper.Direction.SdkOlder:
+					message = $"SDK schema version ({_schemaVersion}) is older " +
+						$"than the server version ({_serverVersion}){deltaInfo}. " +
+						(isSignificant
+							? "Consider updating: Run 'Update-Module RubrikSecurityCloud'."
+							: "A minor version difference is generally safe.");
+					break;
+
+				case VersionHelper.Direction.SdkNewer:
+					message = $"SDK schema version ({_schemaVersion}) is newer " +
+						$"than the server version ({_serverVersion}){deltaInfo}. " +
+						(isSignificant
+							? "Some SDK features may not be available on this server."
+							: "A minor version difference is generally safe.");
+					break;
+
+				default:
+					message = $"SDK schema version ({_schemaVersion}) does not " +
+						$"match server version ({_serverVersion}). " +
+						"Run 'Get-RscVersion' to check current versions.";
+					break;
+			}
+
+			if (isSignificant)
+				_logger.Warning(message);
+			else
+				_logger.Info(message);
 		}
 
 		/// <summary>
@@ -99,4 +142,3 @@ namespace RubrikSecurityCloud.PowerShell.Private
 		}
 	}
 }
-
