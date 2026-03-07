@@ -31,5 +31,20 @@ when using the module.
    This provides users with practical guidance on how to employ the function
    in their scripts or workflows.
 
+## Development Workflow
+
+Use `Toolkit/Utils/ToolkitDev.ps1` for a fast edit-test loop
+without running a full `make build`:
+
+```powershell
+. ./Toolkit/Utils/ToolkitDev.ps1        # load dev utilities
+Update-RscToolkit                        # copy to Output/ + reimport + test
+Get-RscToolkitStatus                     # compare source vs Output
+Test-RscToolkit                          # run toolkit tests
+```
+
+See the [Toolkit Developer Manual](../Docs/TOOLKIT_DEVELOPER_MANUAL.md)
+for more information.
+
 Adhere to the toolkit's contribution guidelines and code of conduct when
 developing or modifying functions within this directory.
