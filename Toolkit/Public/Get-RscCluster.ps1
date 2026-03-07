@@ -121,7 +121,7 @@ function Get-RscCluster {
     Process {
         # Count clusters:
         if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
-            $r = (New-RscQueryCluster -Op List -RemoveField Nodes).Invoke()
+            $r = (New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes).Invoke()
             # Object's 'Count' property is hidden by the 'Count' method
             # so we can't do `$r.Count`
             $clusterCount = $r | Select-Object -ExpandProperty Count
@@ -138,15 +138,15 @@ function Get-RscCluster {
         # Create Query
         switch ( $PSCmdlet.ParameterSetName ) {
             "List" {
-                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile -Var @{First = $First}
+                $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile -Var @{First = $First}
             }
             "Id" {
-                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
                 $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
                 $query.Var.filter.id = $Id
             }
             "Name" {
-                $query = New-RscQueryCluster -Operation List -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
                 $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
                 $query.Var.filter.Name = $Name
             }
