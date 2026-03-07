@@ -6,8 +6,8 @@ function Get-RscAccount {
 
     .DESCRIPTION
     Combines the output of 2 queries:
-    - New-RscQueryAccount -Op Id    : to retrieve the account id
-    - New-RscQueryAccount -Op Owners : to retrieve the account owner
+    - accountId          : to retrieve the account id
+    - allAccountOwners   : to retrieve the account owner
 
     Not all account owner fields are returned.
 
@@ -15,7 +15,7 @@ function Get-RscAccount {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    The User type (returned by New-RscQueryAccount -Op Owner)
+    The User type (returned by the allAccountOwners query):
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/user.doc.html
     
     #>
@@ -29,9 +29,9 @@ function Get-RscAccount {
         $outputObj = @{}
         
         # Add Account Id:
-        $outputObj["AccountId"] = (New-RscQueryAccount -Op Id).Invoke()
+        $outputObj["AccountId"] = (New-RscQuery -GqlQuery accountId).Invoke()
 
-        $owner = (New-RscQueryAccount -Op Owners -RemoveField AllOrgs.AllClusterCapacityQuotas).Invoke()
+        $owner = (New-RscQuery -GqlQuery allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas).Invoke()
 
 
         $owner | Get-Member -MemberType Properties | ForEach-Object {
