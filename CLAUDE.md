@@ -17,7 +17,7 @@ may need to be changed manually to `devel`.
 
 Generated C# type updates are periodically pushed to `devel` via an
 internal Rubrik pipeline. Do not manually edit files under
-`RubrikSecurityCloud/RubrikSecurityCloud.Schema/generated/`.
+`RubrikSecurityCloud/RubrikSecurityCloud.Schema/Elements/`.
 
 ## Architecture Overview
 
@@ -26,7 +26,7 @@ internal Rubrik pipeline. Do not manually edit files under
 1. `RubrikSecurityCloud.psd1` — manifest, declares `RootModule` and `NestedModules`
 2. `LoadModule.psm1` (`RootModule`) — loads the compiled C# DLL
    - PS Desktop (5.1): loads from `net481/`, registers `AssemblyResolve` handlers
-     for dependency version conflicts (Unsafe, Vectors, Buffers, Text.Json)
+     for dependency version conflicts (Unsafe, Vectors, Buffers, Annotations, Text.Json)
    - PS Core (7+): loads from `net6.0/`
    - **Fragile**: this file was carefully tuned across PS versions and OSes.
      Do not modify without testing on both PS 5.1 (Windows) and PS 7+ (all OSes).
@@ -54,8 +54,6 @@ using regex replacement. Do not hand-edit `FormatsToProcess` — it gets overwri
 - **Function name must match filename** — `PublicFunctions.psm1` exports by
   `$Public.Basename`. If a file defines a function with a different name, it
   won't be exported.
-- **`Write-Output` in `PublicFunctions.psm1`** on every import — pollutes the
-  pipeline. Avoid capturing `Import-Module` output.
 
 ### Key Directories
 
@@ -118,17 +116,20 @@ make clean          # remove all build artifacts
 ```
 
 The `.csproj` has MSBuild targets that copy files to the output dir:
-- `CopyPublicFiles`: `Public/*` → `$(TargetDir)/../Public/`
+- `CopyModules`: `Public/*` → `$(TargetDir)/../Public/`
 - `CopyToolkitPublicFiles`: `Toolkit/Public/*` → `$(TargetDir)/../Toolkit/Public/`
 - `CopyToolkitPrivateFiles`: `Toolkit/Private/*` → `$(TargetDir)/../Toolkit/Private/`
 - `CopyToolkitFormatFiles`: `Toolkit/Format/*` → `$(TargetDir)/../Toolkit/Format/`
+- `CopySupportFiles`: `.psd1`, `LoadModule.psm1`, `PublicFunctions.psm1`, `Operations/*`
 - `GeneratePSD1File`: runs `UpdatePsd1.ps1`
 
 ### Testing
 ```powershell
-./Utils/Test-RscSdk.ps1                  # full suite
-./Utils/Test-RscSdk.ps1 -SkipCoreTests  # toolkit tests only
-./Utils/Test-RscSdk.ps1 -SkipE2ETests   # unit tests only
+./Utils/Test-RscSdk.ps1                      # full suite
+./Utils/Test-RscSdk.ps1 -SkipCoreTests      # toolkit tests only
+./Utils/Test-RscSdk.ps1 -SkipToolkitTests   # core tests only
+./Utils/Test-RscSdk.ps1 -SkipE2ETests       # unit tests only
+./Utils/Test-RscSdk.ps1 -SkipUnitTests      # e2e tests only
 ```
 
 ## Release Workflow (Manual)
