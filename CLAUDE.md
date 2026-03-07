@@ -101,11 +101,35 @@ Syntax: `+field.path` to add, `-field.path` to remove.
 Filename must match the GraphQL operation name.
 
 #### Toolkit Dev Workflow
+
+**Important**: Editing a file under `Toolkit/Public/` (or `Private/`, `Format/`,
+`Operations/`) does **not** take effect immediately. The module loads scripts
+from the `Output/Toolkit/` directory, not from the source tree. You must copy
+changed files to `Output/` and reimport the module for changes to be picked up.
+
+`ToolkitDev.ps1` provides helper functions for this:
+
 ```powershell
-. ./Toolkit/Utils/ToolkitDev.ps1        # load dev utilities
-Update-RscToolkit                        # copy to Output/ + reimport + test
-Get-RscToolkitStatus                     # compare source vs Output
+. ./Toolkit/Utils/ToolkitDev.ps1        # load dev utilities (dot-source)
+Update-RscToolkit                        # copy ALL toolkit files to Output/, reimport module, run tests
+Update-RscToolkit -SkipTest              # same but skip running tests
+Get-RscToolkitStatus                     # compare source vs Output (shows which files differ)
+Test-RscToolkit                          # run toolkit tests only (Pester, skips core C# tests)
 ```
+
+**Typical edit-test cycle when modifying a Toolkit cmdlet (e.g. `Get-RscSla.ps1`):**
+1. Edit the source file in `Toolkit/Public/`
+2. Run `Update-RscToolkit` — copies to `Output/Toolkit/Public/`, reimports module, runs tests
+3. If tests fail, fix and repeat from step 1
+
+`Update-RscToolkit` copies from all five toolkit subdirs (Public, Private,
+Format, Operations/DEFAULT, Operations/DETAIL) to their counterparts under
+`Output/Toolkit/`. It only copies files that have actually changed.
+
+**Claude Code workflow**: When editing Toolkit scripts, after making changes:
+- Tell the user to run `Update-RscToolkit` to install and test
+- Or, if running tests via `Utils/Test-RscSdk.ps1`, do a `make build` first
+  since the build also copies toolkit files to Output via MSBuild targets
 
 ### Build (`Makefile` / `Utils/Build-RscSdk.ps1`)
 ```bash
