@@ -3,133 +3,100 @@ function New-RscSlaObjectSpecificConfig
 {
     <#
     .SYNOPSIS
-    Creates a new Rubrik SLA Object Config Input
+    Creates a workload-specific configuration input object for use with New-RscSla or Set-RscSla.
 
     .DESCRIPTION
-    Some workloads allow additional configurations for the Global SLA domain.
-    This Cmdlet can be used to specify additional workload specific configuration
-    to use with New-RscSla and Set-RscSla Cmdlets.
+    Some workloads support extra SLA settings beyond the base snapshot
+    schedule, such as log retention or incremental backup frequency. Use
+    one of the workload switch parameters to select the target type, then
+    supply the relevant settings. The output is passed to New-RscSla or
+    Set-RscSla via the -ObjectSpecificConfigs parameter. Duration values
+    are created with New-RscSlaDuration.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER VmwareVm
-    Use this switch to create a VMware VM specific SLA configuration.
+    Select VMware VM as the workload type.
 
     .PARAMETER Oracle
-    Use this switch to create an Oracle specific SLA configuration.
+    Select Oracle as the workload type.
 
     .PARAMETER SapHana
-    Use this switch to create a SAP Hana specific SLA configuration.
+    Select SAP HANA as the workload type.
 
     .PARAMETER AwsRds
-    Use this switch to create an AWS RDS specific SLA configuration.
+    Select AWS RDS as the workload type.
 
     .PARAMETER AzureSqlDatabaseDb
-    Use this switch to create an Azure SQL Database specific SLA configuration.
+    Select Azure SQL Database as the workload type.
 
     .PARAMETER AzureSqlManagedInstanceDb
-    Use this switch to create an Azure SQL Managed Instance specific SLA configuration.
+    Select Azure SQL Managed Instance as the workload type.
 
     .PARAMETER Db2
-    Use this switch to create a Db2 specific SLA configuration.
+    Select Db2 as the workload type.
 
     .PARAMETER MsSql
-    Use this switch to create a MS SQL specific SLA configuration.
+    Select Microsoft SQL Server as the workload type.
 
     .PARAMETER Mongo
-    Use this switch to create a Mongo specific SLA configuration.
+    Select MongoDB as the workload type.
 
     .PARAMETER AzureBlob
-    Use this switch to create an Azure Blob specific SLA configuration.
+    Select Azure Blob Storage as the workload type.
 
     .PARAMETER AwsNativeS3
-    Use this switch to create an AWS Native S3 specific SLA configuration.
+    Select AWS S3 as the workload type.
 
     .PARAMETER ManagedVolume
-    Use this switch to create a Managed Volume specific SLA configuration.
+    Select Managed Volume as the workload type.
 
     .PARAMETER PostgresDbCluster
-    Use this switch to create a Postgres DB Cluster specific SLA configuration.
+    Select Postgres DB Cluster as the workload type.
 
     .PARAMETER Frequency
-    Backup frequency
+    Backup frequency for workloads that support it. Create with New-RscSlaDuration.
 
     .PARAMETER LogRetention
-    Log retention of the configuration
+    How long transaction logs are retained. Create with New-RscSlaDuration.
 
     .PARAMETER HostLogRetention
-    Host log retention of the configuration
+    How long host-level logs are retained (Oracle only). Create with New-RscSlaDuration.
 
     .PARAMETER IncrementalFrequency
-    Frequency value for incremental backup
+    How often incremental backups run (SAP HANA, Db2). Create with New-RscSlaDuration.
 
     .PARAMETER DifferentialFrequency
-    Frequency value for differential backup
+    How often differential backups run (SAP HANA, Db2). Create with New-RscSlaDuration.
 
     .PARAMETER Retention
-    How long storage snapshots are retained
+    How long storage snapshots are retained (SAP HANA). Create with New-RscSlaDuration.
 
     .PARAMETER LogRetentionInSeconds
-    Vmware VM log retention in seconds
+    VMware VM log retention expressed in seconds.
 
     .PARAMETER LogRetentionInDays
-    Number of days Azure Sql database logs will be retained. Must be between 1 and 35
+    Number of days to retain Azure SQL logs. Must be between 1 and 35.
 
-    .PARAMETER RetentionInDays
-    Azure blob retention in days
+    .PARAMETER BackupRetentionInDays
+    Number of days to retain continuous backups (Azure Blob, AWS S3).
 
     .PARAMETER BackupLocationId
-    Location Id where primary backups of Aure blob objects will be stored
+    Location ID where primary backups are stored (Azure Blob, AWS S3).
 
     .EXAMPLE
-    Use New-RscSlaDuration to create a new SLA Duration Input for use with
-    various parameters of New-RscSlaObjectSpecificConfig Cmdlet.
+    Configure Oracle log and host-log retention, then create an SLA.
 
-    Specify the object type using the corresponding switch parameter.
-
-    $duration = New-RscSlaDuration -Duration 7 -Unit DAYS
-    New-RscSlaObjectSpecificConfig -Oracle -Frequency $duration -LogRetention $duration -HostLogRetention $duration
+    $dur = New-RscSlaDuration -Duration 7 -Unit DAYS
+    $oracleCfg = New-RscSlaObjectSpecificConfig -Oracle -Frequency $dur -LogRetention $dur -HostLogRetention $dur
+    New-RscSla -Name "Oracle-Gold" -ObjectSpecificConfigs @($oracleCfg)
 
     .EXAMPLE
+    Configure VMware VM log retention of 24 hours (in seconds).
+
     New-RscSlaObjectSpecificConfig -VmwareVm -LogRetentionInSeconds 86400
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -AzureSqlDatabaseDb -LogRetentionInDays 7
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -AzureSqlManagedInstanceDb -LogRetentionInDays 7
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -AzureBlob -BackupRetentionInDays 7 -BackupLocationId "1234-5678-90ab-cdef"
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -AwsNativeS3 -BackupRetentionInDays 7 -BackupLocationId "1234-5678-90ab-cdef"
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -ManagedVolume -LogRetention $duration
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -PostgresDbCluster -LogRetention $duration
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -SapHana -IncrementalFrequency $duration
-    -DifferentialFrequency $duration -Retention $duration -Frequency $duration
-    -LogRetention $duration
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -Db2 -LogRetention $duration
-    -IncrementalFrequency $duration -DifferentialFrequency $duration
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -MsSql -Frequency $duration -LogRetention $duration
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -Mongo -Frequency $duration -LogRetention $duration
-
-    .EXAMPLE
-    New-RscSlaObjectSpecificConfig -AwsRds -LogRetention $duration
     #>
 
     [CmdletBinding()]

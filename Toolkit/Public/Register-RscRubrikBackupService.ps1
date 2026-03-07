@@ -3,26 +3,26 @@ function Register-RscRubrikBackupService
 {
     <#
     .SYNOPSIS
-    Registers Rubrik Backup Service(RBS) on a Nutanix, HyperV, or VMware VM.
+    Registers the Rubrik Backup Service on a virtual machine or physical host.
 
     .DESCRIPTION
-    Once RBS is installed on a VM, this command will register it with Rubrik Security Cloud
+    After the Rubrik Backup Service (RBS) agent has been installed on a VM or physical host, use this cmdlet to register it with Rubrik Security Cloud. Supports VMware VMs, Nutanix VMs, Hyper-V VMs, and physical hosts. For physical hosts, provide the hostname and the Rubrik cluster to register against.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER VM
-    The VMware or Nutanix VM object
+    A VMware, Nutanix, or Hyper-V virtual machine object. Accepts pipeline input.
 
     .PARAMETER Hostname
-    Hostname of a physical host
+    One or more hostnames of physical hosts to register.
 
     .PARAMETER Cluster
-    Rubrik Cluster Object
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
 
     .PARAMETER Async
-    Register physical host using async mutation
+    Register physical hosts asynchronously.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -30,15 +30,18 @@ function Register-RscRubrikBackupService
     other data needed to build the main query.
 
     .EXAMPLE
-    # Register RBS on a VMware VM
+    Register RBS on a VMware VM.
+
     Get-RscVmwareVm -Name "jake-001" | Register-RscRubrikBackupService
 
     .EXAMPLE
-    # Register RBS on all Nutanix VMs
+    Register RBS on all Nutanix VMs.
+
     Get-RscNutanixVm | Register-RscRubrikBackupService
 
     .EXAMPLE
-    # Register Physical Host
+    Register a physical host.
+
     Register-RscRubrikBackupService -Hostname "foo.example.com" -Cluster (Get-RscCluster "mycluster.example.com")
     #>
 

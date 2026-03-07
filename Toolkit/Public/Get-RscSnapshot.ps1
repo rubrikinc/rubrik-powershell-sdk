@@ -2,10 +2,13 @@
 function Get-RscSnapshot {
     <#
     .SYNOPSIS
-    Retrieves Snapshots for a given protected workload in RSC
+    Retrieves snapshots for a protected workload in Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'snapshotOfASnappableConnection' to retrieve a list of snapshots with a predetermined set of properties.
+    Returns snapshots taken for a given workload object. Pipe any workload object
+    (VM, database, fileset, etc.) to this cmdlet to list its snapshots. You can
+    filter by time range or retrieve only the latest snapshot. Use -Id to fetch
+    a single snapshot by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -20,13 +23,32 @@ function Get-RscSnapshot {
     # Get snapshots for a specific VM
     Get-RscVmwareVm -Name "jake-001" | Get-RscSnapshot
 
+.PARAMETER Id
+    The RSC snapshot ID.
+
+    .PARAMETER InputObject
+    A workload object to retrieve snapshots for. Pipe from any Get-Rsc* workload cmdlet.
+
+    .PARAMETER BeforeTime
+    Return only snapshots taken before this date and time.
+
+    .PARAMETER AfterTime
+    Return only snapshots taken after this date and time.
+
+    .PARAMETER Latest
+    Return only the most recent snapshot.
+
     .EXAMPLE
-    # Get latest snapshot for all objects in a specific SLA
+    # Get all snapshots for a specific VM
+    Get-RscVmwareVm -Name "web-server-01" | Get-RscSnapshot
+
+    .EXAMPLE
+    # Get the latest snapshot for each workload in an SLA
     Get-RscSla "Gold" | Get-RscWorkload | Get-RscSnapshot -Latest
 
     .EXAMPLE
-    # Get Snapshot from a dat/time range
-    Get-RscMssqlDatabase "foo" | Get-RscSnapshot -BeforeTime "2023-04-04" -AfterTime "2023-04-03"
+    # Get snapshots within a date range
+    Get-RscMssqlDatabase -Name "AdventureWorks" | Get-RscSnapshot -BeforeTime "2024-01-15" -AfterTime "2024-01-01"
     #>
 
     [CmdletBinding(

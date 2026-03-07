@@ -2,10 +2,10 @@
 function Start-RscManagedVolumeSnapshot {
     <#
     .SYNOPSIS
-    Start a Snapshot of a Persistent Mount Managed Volume
+    Begins a snapshot of a persistent-mount Managed Volume.
 
     .DESCRIPTION
-    Start a Snapshot of a Persistent Mount Managed Volume. This will make the managed volume writable. 
+    Opens a write window on a persistent-mount Managed Volume so that an application can write data to it. While the snapshot is in progress, the volume is writable. Call Stop-RscManagedVolumeSnapshot when the write operation is complete to finalize the snapshot and return the volume to read-only mode.
 
     .LINK
     Schema reference:
@@ -19,9 +19,18 @@ function Start-RscManagedVolumeSnapshot {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+The Managed Volume object. Pipe from Get-RscManagedVolume.
+
     .EXAMPLE
-    $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
-    Start-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume
+    Start a snapshot to open a write window on a Managed Volume.
+
+    $mv = Get-RscManagedVolume -Name "rp-mysql-01"
+    Start-RscManagedVolumeSnapshot -RscManagedVolume $mv
+
+    .EXAMPLE
+    Pipe the Managed Volume object directly.
+
+    Get-RscManagedVolume -Name "rp-mysql-01" | Start-RscManagedVolumeSnapshot
     #>
 
     [CmdletBinding()]

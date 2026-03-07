@@ -2,36 +2,37 @@
 function Get-RscCluster {
     <#
     .SYNOPSIS
-    Retrieve info about clusters
-    
+    Retrieves Rubrik clusters managed by Rubrik Security Cloud.
+
     .DESCRIPTION
-    By default, retrieve info about all clusters.
-    By default, responses contain a minimal set of fields: mostly ids and names.
-    To get more details, use the `-Detail` parameter.
-    
+    Returns Rubrik CDM clusters connected to RSC. By default returns a standard
+    set of fields; use -Detail for additional properties. Use -Name to find a
+    cluster by name, -Id for a specific cluster, or -Count to get just the total.
+
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
-    The ClusterConnection type:
-    https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
-    
-    The Cluster type:
-    https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/cluster.doc.html
-    
+
     .PARAMETER List
-    Retrieve the list of clusters that are connected to Rubrik Security Cloud.
-    This is the default parameter set.
+    Return all items. This is the default behavior.
+
+    .PARAMETER First
+    Return only the first N results.
+
+    .PARAMETER Count
+    Return only the total count.
+
+    .PARAMETER Id
+    The RSC object ID.
 
     .PARAMETER Name
-    Used to return a specific cluster based on the name.
+    Filter by name. Exact match on the cluster name.
 
     .PARAMETER Detail
-    Use the DETAIL field profile instead of the DEFAULT field profile.
-    The DETAIL field profile returns more fields than the DEFAULT field profile.
+    Return additional fields beyond the default set.
 
     .PARAMETER IncludeNullProperties
-    By default, fields will a NULL are not returned. Supplying this parameter will return all fields, including fields
-    with a NULL in them. 
+    Include fields with null values in the output.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -46,18 +47,23 @@ function Get-RscCluster {
     .EXAMPLE
     Return information about a cluster based on the name
 
+Return the query object instead of executing it.
+
+    .EXAMPLE
+    # Get all clusters
+    Get-RscCluster
+
+    .EXAMPLE
+    # Get a cluster by name
     Get-RscCluster -Name vault-r-london
-    
-    
-    .EXAMPLE
-    Include the fields that are null in the response
-    
-    Get-RscCluster -Name vault-r-london -IncludeNullProperties
 
     .EXAMPLE
-    Return back just the query that would run instead of running the query and returning the results
+    # Get cluster count
+    Get-RscCluster -Count
 
-    Get-RscCluster -Name vault-r-london -AsQuery    
+    .EXAMPLE
+    # Get a cluster with all fields including nulls
+    Get-RscCluster -Name vault-r-london -Detail -IncludeNullProperties
     #>
 
     [CmdletBinding(

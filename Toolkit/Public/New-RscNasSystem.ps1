@@ -2,71 +2,78 @@
 function New-RscNasSystem {
     <#
     .SYNOPSIS
-    Used to register a NAS system with Rubrik Security Cloud (RSC)
-    to protect it.
+    Registers a new NAS system with Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet can be used to add new NAS systems to RSC. Use one of the
-    many switch parameters to specify the vendor type which will unlock
-    additional vendor specific configuration options.
+    Adds a NAS system to RSC for protection. Use one of the vendor-type switches (-Generic, -Isilon, -NetApp, -NutanixFileServer, or -FlashBlade) to specify the system type, which determines the available configuration options and required credentials. Once registered, shares on the NAS system will be discovered automatically or can be added manually with New-RscNasShare.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER Cluster
-    The object representing the Rubrik Cdm cluster.
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
 
     .PARAMETER Hostname
-    The host name or IP address of the NAS system.
+    The hostname or IP address of the NAS system.
 
     .PARAMETER Generic
-    Use this switch when registering a Generic NAS system.
+    Register a generic NAS system.
 
     .PARAMETER Isilon
-    Use this switch when registering an Isilon NAS system.
+    Register a Dell Isilon (PowerScale) NAS system.
 
     .PARAMETER NetApp
-    Use this switch when registering an NetApp NAS system.
+    Register a NetApp NAS system.
 
     .PARAMETER NutanixFileServer
-    Use this switch when registering an Nutanix File Server NAS system.
-    
+    Register a Nutanix File Server NAS system.
+
     .PARAMETER FlashBlade
-    Use this switch when registering an FlashBlade NAS system.
+    Register a Pure Storage FlashBlade NAS system.
 
     .PARAMETER IsilonChangelistEnabled
-    Specifies the default Changelist setting for all shares in the Isilon NAS system.
+    Enable changelist-based backups for all shares on an Isilon NAS system.
 
     .PARAMETER HasNfsSupport
-    Specifies whether to enable NFS for this server.
+    Enable NFS protocol support on this NAS system.
 
     .PARAMETER HasSmbSupport
-    Specifies whether to enable SMB for this server.
+    Enable SMB protocol support on this NAS system.
 
     .PARAMETER ApiUsername
-    Username to access the vendor-specific NAS API.
+    Username for the vendor-specific NAS management API.
 
     .PARAMETER ApiPassword
-    Password associated with the NAS API user account.
+    Password for the vendor-specific NAS management API.
 
     .PARAMETER SmbUsername
-    Username to access the NAS server and share.
+    Username for SMB share access.
 
     .PARAMETER SmbPassword
-    Password associated with the NAS user account.
+    Password for SMB share access.
 
     .PARAMETER ApiToken
-    API token to add or update the Pure NAS system with API integration.
+    API token for Pure Storage FlashBlade integration.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+Return the query object instead of executing it.
+
     .EXAMPLE
-    $cluster = Get-RscCluter -Name "Foo"
+    Register a generic NAS system with NFS support.
+
+    $cluster = Get-RscCluster -Name "MyCluster"
     $cluster | New-RscNasSystem -Generic -Hostname "10.0.181.171" -HasNfsSupport
+
+    .EXAMPLE
+    Register a NetApp NAS system with API and SMB credentials.
+
+    $cluster = Get-RscCluster -Name "MyCluster"
+    New-RscNasSystem -Cluster $cluster -NetApp -Hostname "netapp01.example.com" -ApiUsername "admin" -ApiPassword "secret" -SmbUsername "smbuser" -SmbPassword "smbpass"
     #>
 
     [CmdletBinding()]

@@ -2,24 +2,26 @@
 function Get-RscMssqlDatabaseRecoverableRanges {
     <#
     .SYNOPSIS
-    Return a list of ranges of dates that shows when a database can be recovered to. 
+    Retrieves recoverable time ranges for a SQL Server database.
 
     .DESCRIPTION
-    Return a list of ranges of dates that shows when a database can be recovered to. The returned information will reflect similar information that is displayed in the Rubrik Security Cloud
-    UI. Points between the begin and end times can be recovered to any point in time inside that range. 
+    Returns date/time ranges during which a SQL Server database can be recovered to
+    any point in time. Each range has a begin and end time; the database can be
+    restored to any moment within that range. Use -afterTime and -beforeTime to
+    narrow the results.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    A SQL Server database object, typically obtained from Get-RscMssqlDatabase.
 
     .PARAMETER afterTime
-    Used to filter ranges 
-    
+    Return only ranges that end after this date/time.
+
     .PARAMETER beforeTime
-    Used to filter ranges 
+    Return only ranges that begin before this date/time.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -27,19 +29,14 @@ function Get-RscMssqlDatabaseRecoverableRanges {
     other data needed to build the main query.
 
     .EXAMPLE
-    Returns all of the ranges the database can be recovered to. 
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $RscMssqlDatabase
+    # Get all recoverable ranges for a database
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $db
 
     .EXAMPLE
-    Returns all of the ranges the database can be recovered to filtered to be only after a specific date/time
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $RscMssqlDatabase -afterTime
-
-    .EXAMPLE
-    Returns all of the ranges the database can be recovered to filtered to be only before a specific date/time
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $RscMssqlDatabase -beforeTime
+    # Get recoverable ranges after a specific date
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoverableRanges -RscMssqlDatabase $db -afterTime "2024-01-01"
     #>
 
     [CmdletBinding()]

@@ -2,10 +2,11 @@
 function Get-RscOracleHost {
     <#
     .SYNOPSIS
-    Retrieves RscOracleHost objects protected by Rubrik Security Cloud
+    Retrieves Oracle hosts managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'oracleTopLevelDescendants' to retrieve a list of VMs with a predetermined set of properties.
+    Returns Oracle hosts and RAC clusters that are registered with Rubrik.
+    You can filter by name, SLA Domain, or cluster.
 
     .LINK
     Schema reference:
@@ -16,17 +17,22 @@ function Get-RscOracleHost {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
     .EXAMPLE
-    # Get all
+    # Get all Oracle hosts
     Get-RscOracleHost
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscOracleHost -Name "jake-001"
-
-    .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscOracleHost -Name "*jake*"
+    # Get an Oracle host by name
+    Get-RscOracleHost -Name "ora-prod-01"
     #>
 
     [CmdletBinding(

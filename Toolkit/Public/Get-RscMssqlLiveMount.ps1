@@ -2,20 +2,22 @@
 function Get-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    Returns information about a Live Mounted MSSQL Database
+    Retrieves SQL Server Live Mount information from Rubrik Security Cloud.
 
     .DESCRIPTION
-    Returns information about a Live Mounted MSSQL Database
+    Returns details about SQL Server databases that have been Live Mounted through
+    Rubrik. A Live Mount is a writable copy of a database mounted from a Rubrik
+    snapshot. You can filter by the mounted database name or the source database object.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER MountedDatabaseName
-    Name of the database that was Live Mounted
-    
-    .PARAMETER MssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    The name of the Live Mounted database on the target SQL Server.
+
+    .PARAMETER RscMssqlDatabase
+    A SQL Server database object, typically obtained from Get-RscMssqlDatabase.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -23,9 +25,13 @@ function Get-RscMssqlLiveMount {
     other data needed to build the main query.
 
     .EXAMPLE
-    Returns the list of database files based on the latest recovery point
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
+    # Get Live Mount info for a specific mounted database
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlLiveMount -RscMssqlDatabase $db -MountedDatabaseName AdventureWorks2019_LiveMount
+
+    .EXAMPLE
+    # Get all Live Mounts for a source database
+    Get-RscMssqlDatabase -Name AdventureWorks2019 | Get-RscMssqlLiveMount
     #>
     [CmdletBinding()]
     Param(        

@@ -2,10 +2,12 @@
 function Get-RscOracleDatabase {
     <#
     .SYNOPSIS
-    Retrieves RscOracleDatabase objects protected by Rubrik Security Cloud
+    Retrieves Oracle databases managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'oracleDatabases' to retrieve a list of VMs with a predetermined set of properties.
+    Returns Oracle databases that are protected or inventoried by Rubrik. You can
+    filter by name, SLA Domain, cluster, or Oracle host. Use -Id to retrieve a
+    single database by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,28 @@ function Get-RscOracleDatabase {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
+    .PARAMETER OracleHost
+    An Oracle host object to scope results to. Pipe from Get-RscOracleHost.
+
     .EXAMPLE
-    # Get all
+    # Get all Oracle databases
     Get-RscOracleDatabase
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscOracleDatabase -Name "jake-001"
-
-    .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscOracleDatabase -Name "*jake*"
+    # Get databases on a specific Oracle host
+    Get-RscOracleHost -Name "ora-prod-01" | Get-RscOracleDatabase
     #>
 
     [CmdletBinding(

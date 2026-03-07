@@ -2,10 +2,12 @@
 function Get-RscMongoCollection {
     <#
     .SYNOPSIS
-    Retrieves RscMongoCollection objects protected by Rubrik Security Cloud
+    Retrieves MongoDB collections managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'mongoCollections' to retrieve a list of VMs with a predetermined set of properties.
+    Returns MongoDB collections that are protected or inventoried by Rubrik. You can
+    filter by name, SLA Domain, cluster, or scope to a specific MongoDB database or
+    source. Use -Id to retrieve a single collection by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,31 @@ function Get-RscMongoCollection {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
+    .PARAMETER MongoDatabase
+    A MongoDB database object to scope results to. Pipe from Get-RscMongoDatabase.
+
+    .PARAMETER MongoSource
+    A MongoDB source object to scope results to. Pipe from Get-RscMongoSource.
+
     .EXAMPLE
-    # Get all
+    # Get all MongoDB collections
     Get-RscMongoCollection
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscMongoCollection -Name "jake-001"
-
-    .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscMongoCollection -Name "*jake*"
+    # Get collections in a specific MongoDB database
+    Get-RscMongoDatabase -Name "analytics" | Get-RscMongoCollection
     #>
 
     [CmdletBinding(

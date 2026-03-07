@@ -2,18 +2,17 @@
 function Stop-RscManagedVolumeSnapshot {
     <#
     .SYNOPSIS
-    Stops a Snapshot of a Persistent Mount Managed Volume
+    Ends a snapshot of a persistent-mount Managed Volume.
 
     .DESCRIPTION
-    Stop a Snapshot of a Persistent Mount Managed Volume. This will make the managed volume read only. Rubrik will then
-    process the snapshot for future recovery operations. 
+    Closes the write window on a persistent-mount Managed Volume that was opened with Start-RscManagedVolumeSnapshot. The volume returns to read-only mode and Rubrik processes the snapshot for retention and recovery. You must supply an SLA Domain object to control the retention of the resulting snapshot.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscManagedVolume
-    Managed Volume Object as retrieved from Get-RscManagedVolume
+    The Managed Volume object. Pipe from Get-RscManagedVolume.
 
     .PARAMETER RscSlaDomain
     SLA Domain Object as retrieved from Get-RscSlaDomain
@@ -23,9 +22,19 @@ function Stop-RscManagedVolumeSnapshot {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+An SLA Domain object for snapshot retention. Pipe from Get-RscSla.
+
     .EXAMPLE
-    $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
-    Stop-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume -SlaDomainId $RscManagedVolume.EffectiveSlaDomain.Id
+    End a snapshot using the volume's effective SLA Domain.
+
+    $mv = Get-RscManagedVolume -Name "rp-mysql-01"
+    $sla = Get-RscSla -Name "Gold"
+    Stop-RscManagedVolumeSnapshot -RscManagedVolume $mv -RscSlaDomain $sla
+
+    .EXAMPLE
+    Pipe the Managed Volume and specify the SLA.
+
+    Get-RscManagedVolume -Name "rp-mysql-01" | Stop-RscManagedVolumeSnapshot -RscSlaDomain (Get-RscSla -Name "Gold")
     #>
 
     [CmdletBinding()]

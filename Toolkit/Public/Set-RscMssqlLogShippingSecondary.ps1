@@ -2,10 +2,13 @@
 function Set-RscMssqlLogShippingSecondary {
     <#
     .SYNOPSIS
-    Removes a Live Mount of a MSSQL Database
+    Configures a SQL Server log shipping secondary database in Rubrik Security Cloud.
 
     .DESCRIPTION
-    Removes a Live Mount of a MSSQL Database
+    Updates the configuration of a SQL Server log shipping secondary target.
+    Use this cmdlet to modify settings on an existing log shipping relationship
+    managed by Rubrik. The log shipping target object is typically obtained
+    from Get-RscMssqlLogShipping.
 
     .PARAMETER MssqlLiveMount
     Live Mount object returned from Get-RscMssqlLiveMount
@@ -23,13 +26,24 @@ function Set-RscMssqlLogShippingSecondary {
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
     Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
     Remove-RscMssqlLiveMount -MssqlLiveMount $RscMssqlLiveMount
-    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER RscMssqlLogShipping
+    A log shipping target object, typically obtained from Get-RscMssqlLogShipping.
+
+    .PARAMETER Force
+    Force the operation even if Rubrik cannot connect to the SQL Server instance.
+
     .EXAMPLE
-    ___ Add example here ___
+    # Update a log shipping secondary configuration
+    $logShipping = Get-RscMssqlLogShipping -Name "AdventureWorks2019"
+    Set-RscMssqlLogShippingSecondary -RscMssqlLogShipping $logShipping
+
+    .EXAMPLE
+    # Pipe a log shipping target directly
+    Get-RscMssqlLogShipping -Name "AdventureWorks2019" | Set-RscMssqlLogShippingSecondary
     #>
 
     [CmdletBinding()]

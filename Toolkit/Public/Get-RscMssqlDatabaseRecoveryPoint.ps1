@@ -2,30 +2,31 @@
 function Get-RscMssqlDatabaseRecoveryPoint {
     <#
     .SYNOPSIS
-    Returns back the exact point in time covereted to UTC. 
+    Returns a recovery point in time converted to UTC for a SQL Server database.
 
     .DESCRIPTION
-    Returns back the exact point in time covereted to UTC based on input provided. 
+    Determines the exact recovery point in UTC for a SQL Server database. Use -Latest
+    for the most recent available recovery point, -LastFull for the last snapshot time,
+    or -RestoreTime for a specific date/time. The returned value can be passed to
+    other cmdlets like Get-RscMssqlDatabaseFiles or New-RscMssqlRestore.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    A SQL Server database object, typically obtained from Get-RscMssqlDatabase.
 
-     .PARAMETER Latest
-    Uses the latest recovery point date and time that Rubrik has for a database
+    .PARAMETER Latest
+    Use the latest available recovery point.
 
     .PARAMETER LastFull
-    Uses the last snapshot date and time that Rubrik has for a database
+    Use the most recent snapshot as the recovery point.
 
     .PARAMETER RestoreTime
-    Restore time can in 1 of 3 formats
-        - Relative to the last 24 hours: 02:00 will recover a database to 2AM on today's date. 
-        - Local time: 2023-11-02 08:00:000
-        - UTC: 2023-11-02 08:00:000Z
-    All values will be converted into UTC and used as the recovery point.
+    A specific date/time to use as the recovery point. Accepts three formats:
+    time only (e.g., "02:00" for 2 AM today), local time ("2024-01-15 08:00:00"),
+    or UTC ("2024-01-15 08:00:00Z"). All values are converted to UTC.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -33,19 +34,19 @@ function Get-RscMssqlDatabaseRecoveryPoint {
     other data needed to build the main query.
 
     .EXAMPLE
-    Returns exact point in time in UTC based on the latest recovery point
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -Latest
+    # Get the latest recovery point
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $db -Latest
 
     .EXAMPLE
-    Returns exact point in time in UTC based on the last snapshot taken
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -LastFull
+    # Get recovery point from the last full snapshot
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $db -LastFull
 
     .EXAMPLE
-    Returns exact point in time in UTC based on a specific point in time. 
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $RscMssqlDatabase -RestoreTime "2023-10-27 08:37:00.000Z"
+    # Get recovery point for a specific time
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $db -RestoreTime "2024-01-15 08:37:00.000Z"
     #>
 
     [CmdletBinding()]

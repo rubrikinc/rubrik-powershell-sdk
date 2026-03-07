@@ -2,10 +2,12 @@
 function Get-RscSapHanaDatabase {
     <#
     .SYNOPSIS
-    Retrieves RscSapHanaDatabase objects protected by Rubrik Security Cloud
+    Retrieves SAP HANA databases managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'sapHanaDatabases' to retrieve a list of VMs with a predetermined set of properties.
+    Returns SAP HANA databases that are protected or inventoried by Rubrik. You can
+    filter by name, SLA Domain, cluster, or SAP HANA system. Use -Id to retrieve a
+    single database by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,28 @@ function Get-RscSapHanaDatabase {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
+    .PARAMETER SapHanaSystem
+    A SAP HANA system object to scope results to. Pipe from Get-RscSapHanaSystem.
+
     .EXAMPLE
-    # Get all
+    # Get all SAP HANA databases
     Get-RscSapHanaDatabase
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscSapHanaDatabase -Name "jake-001"
-
-    .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscSapHanaDatabase -Name "*jake*"
+    # Get databases on a specific SAP HANA system
+    Get-RscSapHanaSystem -Name "hana-prod" | Get-RscSapHanaDatabase
     #>
 
     [CmdletBinding(

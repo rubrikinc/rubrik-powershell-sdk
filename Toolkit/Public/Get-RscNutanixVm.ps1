@@ -2,10 +2,12 @@
 function Get-RscNutanixVm {
     <#
     .SYNOPSIS
-    Retrieves Nutanix VMs protected by Rubrik Security Cloud
+    Retrieves Nutanix AHV virtual machines managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'nutanixVms' to retrieve a list of VMs with a predetermined set of properties.
+    Returns Nutanix AHV VMs that are protected or inventoried by Rubrik. You can
+    filter by name, SLA Domain, or cluster. Use -Id to retrieve a single VM
+    by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,29 @@ function Get-RscNutanixVm {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
     .EXAMPLE
-    # Get all VMs
+    # Get all Nutanix VMs
     Get-RscNutanixVm
 
     .EXAMPLE
-    # Get VM with specific name
-    Get-RscNutanixVm -Name "jake-001"
+    # Get a Nutanix VM by name
+    Get-RscNutanixVm -Name "nutanix-vm-01"
 
     .EXAMPLE
-    # Get VMs by specifying part of a name
-    Get-RscNutanixVm
+    # Get Nutanix VMs protected by a specific SLA
+    Get-RscSla -Name "Gold" | Get-RscNutanixVm
     #>
 
     [CmdletBinding(

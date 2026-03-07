@@ -2,27 +2,34 @@
 function Get-RscSla {
     <#
     .SYNOPSIS
-    Retrieves Global SLA Domains defined in Rubrik Security Cloud 
+    Retrieves SLA Domains defined in Rubrik Security Cloud.
 
     .DESCRIPTION
-    SLA Domains are policies that define how frequently an object is backed up, how long to retain it,
-    and rules regarding replication and archival of protected data.
+    Returns global SLA Domains, which are policies that define backup frequency,
+    retention, replication, and archival rules for protected workloads. Use -Name
+    to filter by name or -Id to retrieve a specific SLA Domain. The output can be
+    piped to workload cmdlets to filter by SLA assignment.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Matches SLA Domains whose name contains the specified string.
+
     .EXAMPLE
-    # Return all SLA Domains
+    # Get all SLA Domains
     Get-RscSla
 
     .EXAMPLE
-    # Return an SLA Domain with 'Gold' in the name
+    # Get SLA Domains with 'Gold' in the name
     Get-RscSla "Gold"
 
     .EXAMPLE
-    # You can pipe the output of the cmdlet to another cmdlet. 
-    # In this case, we get a list of VMware VMs that are a member of SLAs with 'gold' in the name.
+    # Get VMware VMs assigned to a specific SLA
     Get-RscSla "Gold" | Get-RscVmwareVm
     #>
 

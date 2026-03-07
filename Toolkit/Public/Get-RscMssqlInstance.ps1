@@ -2,63 +2,69 @@
 function Get-RscMssqlInstance {
     <#
     .SYNOPSIS
-    Returns information about the SQL Server Instances connected to Rubrik Security Cloud
+    Retrieves SQL Server instances managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    Returns information about the SQL Server Instances connected to Rubrik Security Cloud
+    Returns SQL Server instances (standalone or clustered) that are registered
+    with Rubrik. You can look up an instance by host name, Windows cluster name,
+    or RSC ID. When using -HostName or -WindowsClusterName, the -Name parameter
+    specifies the SQL instance name and defaults to MSSQLSERVER.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER List
-    Uses the latest recovery point date and time that Rubrik has for a database
+    Return all items. This is the default behavior.
 
     .PARAMETER HostName
-    Host name of the SQL Server Instance
+    The fully qualified host name of the SQL Server.
 
     .PARAMETER WindowsClusterName
-    Windows Cluster Name of the SQL Server Instance
+    The Windows Failover Cluster name hosting the SQL Server instance.
 
     .PARAMETER Name
-    SQL Server Instance Name. If not provided, we default to MSSQLSERVER
-    
-    .PARAMETER Id
-    Used to return a specific SQL Server Instance based on the Id assigned inside of Rubrik
-    
-    .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    The SQL Server instance name. Defaults to MSSQLSERVER (the default instance).
 
-    .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
+    .PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Relic
+    Include deleted objects that still have snapshots in Rubrik.
+
+    .PARAMETER Replica
+    Include replicated copies.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
+    .PARAMETER Org
+    An RSC Organization to filter by. Pipe from Get-RscOrganization.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+Return the query object instead of executing it.
+
+    .PARAMETER Detail
+    Return additional fields beyond the default set.
+
     .EXAMPLE
-    Returns a list of all SQL Server Hosts and clusters connected to RSC
+    # Get all SQL Server instances
     Get-RscMssqlInstance
 
     .EXAMPLE
-    Returns information about the default instance of SQL on a specific host
-    $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscMssqlInstance = Get-RscMssqlInstance -HostName $HostName
-    
-    .EXAMPLE
-    Returns information about a specific instance of SQL on a specific host
-    $HostName = "rp-sql19s-001.demo.rubrik.com"
-    $RscMssqlInstance = Get-RscMssqlInstance -HostName $HostName -Name DEV01
+    # Get the default instance on a specific host
+    Get-RscMssqlInstance -HostName "sql19.demo.rubrik.com"
 
     .EXAMPLE
-    Returns information about a specific instance of SQL on a Windows Cluster
-    $WindowsClusterName = "rp-winfcsql"
-    $RscMssqlInstance = Get-RscMssqlInstance -WindowsClusterName $WindowsClusterName -Name DEV01
-    
-    .EXAMPLE
-    Return a RscMssqlInstance Object based on a specific MssqlInstance Id
-    Get-RscMssqlInstance -Id "86da734b-2fee-4fdc-bdc8-a73ab5648f" 
+    # Get a named instance on a specific host
+    Get-RscMssqlInstance -HostName "sql19.demo.rubrik.com" -Name DEV01
     #>
 
     [CmdletBinding(

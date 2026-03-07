@@ -3,10 +3,10 @@ function New-RscSla
 {
   <#
     .SYNOPSIS
-    Creates a new Rubrik SLA Domain
+    Creates a new SLA Domain in Rubrik Security Cloud.
 
     .DESCRIPTION
-    The New-RscSla cmdlet will create a new SLA Domain. Rubrik SLA Domains are policies that define the frequency, retention, and rules for archival and replication.
+    Use this cmdlet to create an SLA Domain policy that defines snapshot frequency, retention, archival, and replication rules. You can attach snapshot schedules at hourly through yearly intervals, scope the policy to specific object types, and optionally configure workload-specific settings for VMware, Oracle, MSSQL, SAP HANA, and other supported platforms.
 
     .LINK
     Schema reference:
@@ -17,11 +17,103 @@ function New-RscSla
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Name
+    The name of the new SLA Domain.
+
+    .PARAMETER HourlySchedule
+    An hourly snapshot schedule object. Create with New-RscSlaSnapshotSchedule -Type Hourly.
+
+    .PARAMETER DailySchedule
+    A daily snapshot schedule object. Create with New-RscSlaSnapshotSchedule -Type Daily.
+
+    .PARAMETER WeeklySchedule
+    A weekly snapshot schedule object. Create with New-RscSlaSnapshotSchedule -Type Weekly.
+
+    .PARAMETER MonthlySchedule
+    A monthly snapshot schedule object. Create with New-RscSlaSnapshotSchedule -Type Monthly.
+
+    .PARAMETER QuarterlySchedule
+    A quarterly snapshot schedule object. Create with New-RscSlaSnapshotSchedule -Type Quarterly.
+
+    .PARAMETER YearlySchedule
+    A yearly snapshot schedule object. Create with New-RscSlaSnapshotSchedule -Type Yearly.
+
+    .PARAMETER ObjectType
+    One or more workload object types this SLA Domain applies to (e.g., VSPHERE_OBJECT_TYPE).
+
+    .PARAMETER LocalRetentionLimit
+    Retention limit for local snapshots on the Rubrik cluster.
+
+    .PARAMETER BackupWindows
+    One or more backup window objects restricting when snapshots may run.
+
+    .PARAMETER FirstFullBackupWindows
+    One or more backup window objects restricting when the first full backup may run.
+
+    .PARAMETER RetentionLockSla
+    Enable retention lock on this SLA Domain.
+
+    .PARAMETER RetentionLockMode
+    The retention lock mode for the SLA Domain.
+
+    .PARAMETER ArchivalSpecs
+    Archival specifications for this SLA Domain.
+
+    .PARAMETER ReplicationSpecs
+    Replication specifications for this SLA Domain.
+
+    .PARAMETER VmwareVmConfig
+    VMware VM-specific settings for this SLA Domain.
+
+    .PARAMETER OracleConfig
+    Oracle-specific settings for this SLA Domain.
+
+    .PARAMETER SapHanaConfig
+    SAP HANA-specific settings for this SLA Domain.
+
+    .PARAMETER AwsRdsConfig
+    AWS RDS-specific settings for this SLA Domain.
+
+    .PARAMETER AzureSqlDatabaseConfig
+    Azure SQL Database-specific settings for this SLA Domain.
+
+    .PARAMETER AzureSqlManagedInstanceConfig
+    Azure SQL Managed Instance-specific settings for this SLA Domain.
+
+    .PARAMETER Db2Config
+    Db2-specific settings for this SLA Domain.
+
+    .PARAMETER MsSqlConfig
+    MSSQL-specific settings for this SLA Domain.
+
+    .PARAMETER MongoConfig
+    MongoDB-specific settings for this SLA Domain.
+
+    .PARAMETER AzureBlobConfig
+    Azure Blob-specific settings for this SLA Domain.
+
+    .PARAMETER AwsNativeS3Config
+    AWS S3-specific settings for this SLA Domain.
+
+    .PARAMETER ManagedVolumeConfig
+    Managed Volume-specific settings for this SLA Domain.
+
+    .PARAMETER PostgresDbClusterConfig
+    PostgreSQL DB Cluster-specific settings for this SLA Domain.
+
     .EXAMPLE
-    Create a Snapshot schedule to take a snapshot every 1 hour and retain that snapshot for 7 days. Then create the SLA Domain with that schedule.
-    
+    Create an hourly schedule and use it to create a new SLA Domain for vSphere objects.
+
     $hourlySchedule = New-RscSlaSnapshotSchedule -Type Hourly -Frequency 1 -Retention 7 -RetentionUnit DAYS
     New-RscSla -Name "Platinum" -HourlySchedule $hourlySchedule -ObjectType VSPHERE_OBJECT_TYPE
+
+    .EXAMPLE
+    Create an SLA Domain with daily and monthly schedules plus archival.
+
+    $daily = New-RscSlaSnapshotSchedule -Type Daily -Frequency 1 -Retention 30 -RetentionUnit DAYS
+    $monthly = New-RscSlaSnapshotSchedule -Type Monthly -Frequency 1 -Retention 12 -RetentionUnit MONTHS
+    $archival = New-RscSlaArchivalSpecs -ArchivalThreshold 30 -Frequencies @('MONTHS') -ArchivalThresholdUnit DAYS -ClusterUuids @('cluster-uuid') -LocationIds @('location-id')
+    New-RscSla -Name "Gold" -DailySchedule $daily -MonthlySchedule $monthly -ArchivalSpecs @($archival) -ObjectType VSPHERE_OBJECT_TYPE
   #>
 
   [CmdletBinding()]

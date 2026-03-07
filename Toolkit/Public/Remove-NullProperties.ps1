@@ -2,15 +2,27 @@
 function Remove-NullProperties {
     <#
     .SYNOPSIS
-    Remove null properties from a pscustomobject or list of pscustomobjects
+    Removes null-valued properties from objects returned by RSC cmdlets.
 
     .DESCRIPTION
-    This function removes null properties from a pscustomobject or list of pscustomobjects.
+    Strips properties with null values from PSCustomObjects or lists of objects.
+    This is applied automatically by most Toolkit cmdlets but can be used
+    manually to clean up raw query results. Use -NoRecurse to only strip
+    top-level null properties without descending into nested objects.
+
+    .PARAMETER Object
+    The object or list of objects to clean. Accepts pipeline input.
+
+    .PARAMETER NoRecurse
+    Only remove null properties at the top level; do not recurse into nested objects.
 
     .EXAMPLE
-    $nodes=((New-RscQuery -Gql clusterConnection).Nodes | Remove-NullProperties)
+    # Clean up raw query results
+    (New-RscQuery -Gql clusterConnection).Nodes | Remove-NullProperties
 
-    Retrieves all clusters in the Rubrik cluster and removes null properties.
+    .EXAMPLE
+    # Pipe a workload object through to strip nulls
+    Get-RscVmwareVm -Name "web-server-01" -IncludeNullProperties | Remove-NullProperties
     #>
     param(
         [Parameter(Mandatory=$false, ValueFromPipeline=$true)]

@@ -2,68 +2,67 @@
 function Set-RscNasSystem {
     <#
     .SYNOPSIS
-    Update host name of the NAS system or credentials to
-    access vendor specific APIs.
+    Updates the properties of a registered NAS system in Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet can be used to update the properties of a NAS system.
+    Modifies a NAS system's hostname, API credentials, SMB credentials, or protocol settings. The cmdlet automatically detects the vendor type (Generic, Isilon, NetApp, FlashBlade, Nutanix) and applies the appropriate vendor-specific configuration. You can identify the NAS system by its ID or by piping a NAS system object from Get-RscNasSystem.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER Id
-    ID of the registered NAS system.
+    The RSC object ID.
 
     .PARAMETER NasSystem
-    The object representing the NAS system that needs to be updated.
+    A NAS system object. Pipe from Get-RscNasSystem.
 
     .PARAMETER Hostname
-    The updated hostname of the NAS system.
-
-    .PARAMETER IsilonChangelistEnabled
-    Specifies the default Changelist setting for all shares in the Isilon NAS system.
+    The updated hostname or IP address for the NAS system.
 
     .PARAMETER HasNfsSupport
-    Specifies whether to enable NFS for this server.
+    Enable NFS protocol support (Generic NAS systems only).
 
     .PARAMETER HasSmbSupport
-    Specifies whether to enable SMB for this server.
-
-    .PARAMETER ApiUsername
-    Username to access the vendor-specific NAS API.
-
-    .PARAMETER ApiPassword
-    Password associated with the NAS API user account.
+    Enable SMB protocol support.
 
     .PARAMETER SmbUsername
-    Username to access the NAS server and share.
+    Username for SMB share access.
 
     .PARAMETER SmbPassword
-    Password associated with the NAS user account.
+    Password for SMB share access.
+
+    .PARAMETER ApiUsername
+    Username for the vendor-specific NAS management API.
+
+    .PARAMETER ApiPassword
+    Password for the vendor-specific NAS management API.
 
     .PARAMETER ApiToken
-    API token to add or update the Pure NAS system with API integration.
+    API token for Pure Storage FlashBlade integration.
+
+    .PARAMETER IsilonChangelistEnabled
+    Enable changelist-based backups for Isilon NAS systems.
 
     .PARAMETER ResetGeneratedNamespaceSmbCredentials
-    Whether to remove the system-generated (not user-supplied) SMB credentials
-    in namespaces and recreate them.
+    Remove and recreate system-generated SMB credentials in namespaces.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
-    .EXAMPLE
-    Set-RscNasSystem "5dc44746-38d1-56d8-8570-a54b8dae0208"
-    -Hostname "10.2.46.54" -ApiUsername "fuser-api" -ApiPassword "124@pass"
-    -HasSmbSupport -SmbUsername "smb-user" -SmbPassword "98vsn@pass"
+Return the query object instead of executing it.
 
     .EXAMPLE
-    $nasSystem = Get-RscNasSystem -Id 5dc44746-38d1-56d8-8570-a54b8dae0208
-    $nasSystem | Set-RscNasSystem -Hostname "10.2.46.55"
-    -ApiUsername "fuser-api" -ApiPassword "124@pass"
-    -HasSmbSupport -SmbUsername "smb-user" -SmbPassword "98vsn@pass"
+    Update a NAS system's hostname and credentials by ID.
+
+    Set-RscNasSystem "5dc44746-38d1-56d8-8570-a54b8dae0208" -Hostname "10.2.46.54" -ApiUsername "admin" -ApiPassword "secret" -HasSmbSupport -SmbUsername "smbuser" -SmbPassword "smbpass"
+
+    .EXAMPLE
+    Pipe a NAS system object and update its hostname.
+
+    Get-RscNasSystem -Id "5dc44746-38d1-56d8-8570-a54b8dae0208" | Set-RscNasSystem -Hostname "10.2.46.55" -ApiUsername "admin" -ApiPassword "secret"
     #>
 
     [CmdletBinding(DefaultParameterSetName = "Id")]

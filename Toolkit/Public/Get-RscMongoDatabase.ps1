@@ -2,10 +2,12 @@
 function Get-RscMongoDatabase {
     <#
     .SYNOPSIS
-    Retrieves RscMongoDatabase objects protected by Rubrik Security Cloud
+    Retrieves MongoDB databases managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'mongoDatabases' to retrieve a list of VMs with a predetermined set of properties.
+    Returns MongoDB databases that are protected or inventoried by Rubrik. You can
+    filter by name, SLA Domain, cluster, or scope to a specific MongoDB source.
+    Use -Id to retrieve a single database by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,28 @@ function Get-RscMongoDatabase {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
+    .PARAMETER MongoSource
+    A MongoDB source object to scope results to. Pipe from Get-RscMongoSource.
+
     .EXAMPLE
-    # Get all
+    # Get all MongoDB databases
     Get-RscMongoDatabase
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscMongoDatabase -Name "jake-001"
-
-    .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscMongoDatabase -Name "*jake*"
+    # Get databases on a specific MongoDB source
+    Get-RscMongoSource -Name "mongo-prod" | Get-RscMongoDatabase
     #>
 
     [CmdletBinding(

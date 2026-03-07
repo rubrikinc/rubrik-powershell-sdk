@@ -2,10 +2,12 @@
 function Get-RscMongoSource {
     <#
     .SYNOPSIS
-    Retrieves RscMongoSource objects protected by Rubrik Security Cloud
+    Retrieves MongoDB sources managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'mongoSources' to retrieve a list of VMs with a predetermined set of properties.
+    Returns MongoDB sources (clusters or standalone instances) that are registered
+    with Rubrik. You can filter by name, SLA Domain, or cluster. Use -Id to
+    retrieve a single source by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,25 @@ function Get-RscMongoSource {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
     .EXAMPLE
-    # Get all
+    # Get all MongoDB sources
     Get-RscMongoSource
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscMongoSource -Name "jake-001"
-
-    .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscMongoSource -Name "*jake*"
+    # Get a MongoDB source by name
+    Get-RscMongoSource -Name "mongo-prod"
     #>
 
     [CmdletBinding(

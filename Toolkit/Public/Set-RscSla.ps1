@@ -3,186 +3,139 @@ function Set-RscSla
 {
     <#
     .SYNOPSIS
-    Updates an existing Rubrik SLA Domain
+    Updates an existing SLA Domain in Rubrik Security Cloud.
 
     .DESCRIPTION
-    The Set-RscSla cmdlet will update an existing SLA Domain. Rubrik SLA
-    Domains are policies that define the frequency, retention, and rules for
-    acrhival and replication.
-
-    This Cmdlet offers a 'PATCH' experience over the Graphql mutation to update
-    the Global SLA Domain which otherwise behaves like a 'PUT' operation. You
-    only need to provide the fields that you want to update.
+    Modifies an SLA Domain policy. Unlike a full replacement, this cmdlet uses a patch-style approach: you only need to provide the fields you want to change, and all other settings are preserved. You can update schedules, archival and replication rules, backup windows, retention lock settings, and workload-specific configurations for VMware, Oracle, MSSQL, and other platforms.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-    .PARAMETER Id
-    The ID of the SLA Domain to update.
-
     .PARAMETER Name
-    The new name of the SLA Domain.
+    The new name for the SLA Domain.
+
+    .PARAMETER Sla
+    An existing SLA Domain object to update. Pipe from Get-RscSla.
 
     .PARAMETER Description
-    The new description of the SLA Domain.
+    The new description for the SLA Domain.
 
     .PARAMETER MinuteSchedule
-    The new Minute Schedule of the SLA Domain.
+    Updated minute-level snapshot schedule.
 
     .PARAMETER HourlySchedule
-    The new Hourly Schedule of the SLA Domain.
+    Updated hourly snapshot schedule.
 
     .PARAMETER DailySchedule
-    The new Daily Schedule of the SLA Domain.
+    Updated daily snapshot schedule.
 
     .PARAMETER WeeklySchedule
-    The new Weekly Schedule of the SLA Domain.
+    Updated weekly snapshot schedule.
 
     .PARAMETER MonthlySchedule
-    The new Monthly Schedule of the SLA Domain.
+    Updated monthly snapshot schedule.
 
     .PARAMETER QuarterlySchedule
-    The new Quarterly Schedule of the SLA Domain.
+    Updated quarterly snapshot schedule.
 
     .PARAMETER YearlySchedule
-    The new Yearly Schedule of the SLA Domain.
+    Updated yearly snapshot schedule.
 
     .PARAMETER UserNote
-    An optional note to add to the SLA Domain.
+    An optional note to attach to the SLA Domain update.
 
     .PARAMETER ObjectTypes
-    The list of object types to which this SLA Domain applies.
+    The list of object types this SLA Domain applies to.
 
     .PARAMETER LocalRetentionLimit
-    Retention limit for snapshots on the local Rubrik system. If none, they will remain as long as SLA requires.
+    Retention limit for local snapshots on the Rubrik cluster.
 
     .PARAMETER BackupWindows
-    The list of backup windows for the SLA Domain.
+    One or more backup window objects restricting when snapshots may run.
 
     .PARAMETER FirstFullBackupWindows
-    The list of first full backup windows for the SLA Domain.
+    One or more backup window objects restricting when first full backups may run.
 
     .PARAMETER ShouldApplyToExistingSnapshots
-    Should the SLA be applied to existing snapshots.
+    Apply the updated SLA policy to existing snapshots.
 
     .PARAMETER ShouldApplyToNonPolicySnapshots
-    Should the SLA be applied to non-policy snapshots.
+    Apply the updated SLA policy to non-policy snapshots.
 
     .PARAMETER RetentionLockSla
-    Should the SLA be a retention locked SLA.
+    Enable retention lock on this SLA Domain.
 
     .PARAMETER RetentionLockMode
-    The retention lock mode for the intended SLA Domain update.
+    The retention lock mode for the SLA Domain.
 
     .PARAMETER ArchivalSpecs
-    Archival specs for this SLA.
+    Updated archival specifications for this SLA Domain.
 
     .PARAMETER ReplicationSpecs
-    Replication specs for this SLA.
+    Updated replication specifications for this SLA Domain.
 
     .PARAMETER VmwareVmConfig
-    VmwareVm specific settings of this SLA.
+    VMware VM-specific settings for this SLA Domain.
 
     .PARAMETER OracleConfig
-    Oracle specific settings of this SLA.
+    Oracle-specific settings for this SLA Domain.
 
     .PARAMETER SapHana
-    SAP HANA specific settings of this SLA.
+    SAP HANA-specific settings for this SLA Domain.
 
     .PARAMETER AwsRds
-    AWS RDS specific settings of this SLA.
+    AWS RDS-specific settings for this SLA Domain.
 
     .PARAMETER AzureSqlDatabaseConfig
-    Azure Sql DatabaseDb specific settings of this SLA.
+    Azure SQL Database-specific settings for this SLA Domain.
 
     .PARAMETER AzureSqlManagedInstanceConfig
-    Azure Sql Managed InstanceDb specific settings of this SLA.
+    Azure SQL Managed Instance-specific settings for this SLA Domain.
 
     .PARAMETER Db2Config
-    Db2 specific settings of this SLA.
+    Db2-specific settings for this SLA Domain.
 
     .PARAMETER MsSqlConfig
-    MS Sql specific settings of this SLA.
+    MSSQL-specific settings for this SLA Domain.
 
     .PARAMETER MongoConfig
-    Mongo specific settings of this SLA.
+    MongoDB-specific settings for this SLA Domain.
 
     .PARAMETER AzureBlobConfig
-    Azure Blob specific settings of this SLA.
+    Azure Blob-specific settings for this SLA Domain.
 
     .PARAMETER AwsNativeS3Config
-    Aws Native S3 specific settings of this SLA.
+    AWS S3-specific settings for this SLA Domain.
 
     .PARAMETER ManagedVolumeConfig
-    Managed Volume specific settings of this SLA.
+    Managed Volume-specific settings for this SLA Domain.
 
     .PARAMETER PostgresDbClusterConfig
-    Postgres Db Cluster specific settings of this SLA.
+    PostgreSQL DB Cluster-specific settings for this SLA Domain.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
-    .EXAMPLE
-    The example below updates the SLA Domain with the ID
-    '01646285-9b5f-4b54-ae0e-c829e148453e' to have a new name, description,
-    and snapshot schedule.
+Return the query object instead of executing it.
 
-    A new snapshot schedule is first created using the New-RscSlaSnapshotSchedule cmdlet.
+    .EXAMPLE
+    Update an SLA Domain's name and daily schedule.
 
     $dailySchedule = New-RscSlaSnapshotSchedule -Type Daily -Frequency 2 -Retention 1 -RetentionUnit MONTHS
-    $name = 'New SLA Domain Name'
-    $description = 'New SLA Domain Description'
-    Set-RscSla -ID '01646285-9b5f-4b54-ae0e-c829e148453e' -Name $name -Description $description -DailySchedule $dailySchedule
+    Set-RscSla -Sla (Get-RscSla -Name "OldName") -Name "NewName" -DailySchedule $dailySchedule
 
     .EXAMPLE
-    A more complicated example. Here we update oracle specific config of the
-    SLA along with backup window and archival specifcations of the SLA.
+    Update Oracle-specific config, backup windows, and archival specs.
 
-    $name='Name assigned via Powershell-SDK'
-    $description = 'Description updated by SDK.'
-    $objectTypes = @('ORACLE_OBJECT_TYPE', 'VSPHERE_OBJECT_TYPE')
-
-    $dailySchedule = New-RscSlaSnapshotSchedule -Type Daily
-    -Frequency 2 -Retention 6 -RetentionUnit DAYS
-
-    $monthlySchedule = New-RscSlaSnapshotSchedule -Type Monthly
-    -Frequency 1 -Retention 7 -RetentionUnit MONTHS
-
-    $yearlySchedule = New-RscSlaSnapshotSchedule -Type Yearly
-    -Frequency 1 -Retention 3 -RetentionUnit YEARS
-
-    $backupWindow=New-RscSlaBackupWindow -Duration 2
-    -DayOfWeek TUESDAY -Hour 1 -Minute 30
-
+    $daily = New-RscSlaSnapshotSchedule -Type Daily -Frequency 2 -Retention 6 -RetentionUnit DAYS
+    $backupWindow = New-RscSlaBackupWindow -Duration 2 -DayOfWeek TUESDAY -Hour 1 -Minute 30
     $slaDuration = New-RscSlaDuration -Duration 10 -Unit DAYS
-
-    $oracle = New-RscSlaObjectSpecificConfig -Oracle
-    -Frequency $slaDuration -LogRetention $slaDuration
-
-    $archivalSpec = New-RscSlaArchivalSpecs -ArchivalThreshold 230
-    -Frequencies @('MONTHS','YEARS') -ArchivalThresholdUnit DAYS
-    -ClusterUuids @('9c930153-2a3c-4b7d-8603-48145315e71f')
-    -LocationIds @('aa137af1-6abf-59aa-984f-a9ac21301f0e')
-
-    Set-RscSla -ID '6dd0b7ed-15b9-431b-bc15-89d539aee65e'
-    -Name $name -Description $description -ObjectTypes $objectTypes
-    -DailySchedule $dailySchedule -MonthlySchedule $monthlySchedule
-    -YearlySchedule $yearlySchedule -BackupWindows @($backupWindow)
-    -LocalRetentionLimit $slaDuration -OracleConfig $oracle
-    -ArchivalSpecs @($archivalSpec) -UserNote $userNote
-
-    .EXAMPLE
-    $replicationSpec = New-RscSlaReplicationSpecs
-    -ClusterUuid '33eab10e-c0d8-459d-907c-b19c6958ef76'
-    -RetentionDuration (New-RscSlaDuration -Duration 12 -Unit DAYS)
-
-    Set-RscSla -ID 'daa1807c-c766-4826-9ddb-fa3e87774a77' -Name $name
-    -Description $description -ObjectTypes $objectTypes
-    -HourlySchedule $hourlySchedule -WeeklySchedule $weeklySchedule
-    -LocalRetentionLimit $slaDuration -ReplicationSpecs @($replicationSpec)
+    $oracle = New-RscSlaObjectSpecificConfig -Oracle -Frequency $slaDuration -LogRetention $slaDuration
+    $archival = New-RscSlaArchivalSpecs -ArchivalThreshold 230 -Frequencies @('MONTHS') -ArchivalThresholdUnit DAYS -ClusterUuids @('cluster-uuid') -LocationIds @('location-id')
+    Set-RscSla -Sla (Get-RscSla -Name "MySLA") -DailySchedule $daily -BackupWindows @($backupWindow) -OracleConfig $oracle -ArchivalSpecs @($archival)
     #>
 
     [CmdletBinding()]

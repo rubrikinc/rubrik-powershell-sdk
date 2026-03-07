@@ -2,69 +2,44 @@
 function New-RscMssqlExport{
 <#
     .SYNOPSIS
-    Exports a MSSQL Database
+    Exports a Microsoft SQL Server database to a different instance or with a different name.
 
     .DESCRIPTION
-    Exports a MSSQL Database. Export is a recovery operation. This lines up with our other recovery options like
-    restore and live mount. Export will be the most often used recovery operation as it allows for copying a database
-    from one place to another. To a DBA, Export is a database restore, but it allows for more options than in-place 
-    recovery allows. 
+    Recovers a SQL Server database to any target instance with full control over the database name and file paths. This is the most flexible recovery operation for MSSQL: use it to copy a database across instances, rename it, or relocate data and log files. For in-place recovery to the original location, use New-RscMssqlRestore instead. Two modes are available: a simple mode where you supply a single data path and log path, and an advanced mode where you specify individual file paths for each database file.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    The MSSQL database object to export. Pipe from Get-RscMssqlDatabase.
 
     .PARAMETER RecoveryDateTime
-    While this is a date field, it is best if you use Get-RscMssqlDatabaseRecoveryPoint to ensure that the date and time is formatted properly. Also, using Get-RscMssqlDatabaseRecoveryPoint
-    will allow for a simplier use case as you can use -Latest, -LastFull, relative point in time or exact point in time. In all cases, the output will be a properly formatted date and time in UTC. 
-    Keep in mind, if you send a value that is NOT in UTC timezone, you could be doing a recovery to point in time different than when you desired. 
+    The point-in-time to recover to, in UTC. Use Get-RscMssqlDatabaseRecoveryPoint to obtain a properly formatted value.
 
     .PARAMETER TargetMssqlInstance
-    SQL Server Instance Object returned from Get-RscMssqlInstance
+    The destination SQL Server instance. Pipe from Get-RscMssqlInstance.
 
     .PARAMETER TargetDatabaseName
-    Any name you want to call your database when it is recovered onto the target instance
+    The name for the exported database on the target instance.
 
     .PARAMETER TargetDataPath
-    Single path that all data files will be placed into 
+    A single directory path where all data files will be placed (simple mode).
 
     .PARAMETER TargeLogPath
-    Single path that all log files will be placed into
+    A single directory path where all log files will be placed (simple mode).
 
     .PARAMETER TargetFilePaths
-    Object can be built manually like the below example, or by using Get-RscMssqlDatabaseFiles. 
+    An array of objects specifying per-file exportPath, logicalName, and newFilename (advanced mode). Build manually or use Get-RscMssqlDatabaseFiles. The logicalName must match the original database; exportPath and newFilename can be customized.
 
-    $TargetFilePaths = @()
-    $TargetDataPath = @{
-        exportPath = "c:\mnt\sqldata"
-        logicalName = "AdventureWorks2017"
-        newFilename = "Lumnah_Test.mdf"
-    }
-    $TargetFilePaths += $TargetDataPath
-    $TargetLogPath = @{
-        exportPath = "c:\mnt\sqldata"
-        logicalName = "AdventureWorks2017_log"
-        newFilename = "Lumnah_Test_log.ldf"
-    } 
-
-    logicalName value cannot be changed, but exportPath and newFilename values can. 
-
-    Case matters. Make sure to use the case listed above for exportPath, logicalName, and newFilename. Variations of the spellings in different cases, will not work. 
     .PARAMETER Overwrite
-    Enables the database being exported to be over written. 
+    Allow overwriting an existing database with the same name on the target instance.
 
     .PARAMETER FinishRecovery
-    Allows the database to be fully recovered and operational. If you omit this parameter, then when the database finishes being restored, the database will be left in
-    NORECOVERY mode. 
+    Bring the database fully online after export. When omitted the database is left in NORECOVERY mode.
 
     .PARAMETER MaxDataStreams
-    This controls the number of streams used for the restore. By default, Rubrik will use 2 streams. This cannot exceed a value of 8. 
-
-    In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
-    production setting without running some tests in a non-production environment. 
+    Number of parallel data streams for the export (1-8, default 2). Test in a non-production environment before increasing.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -72,51 +47,33 @@ function New-RscMssqlExport{
     other data needed to build the main query.
 
     .EXAMPLE
-    Exports a database using the latest recovery point using the "Simple Method"
-    This means you provide a single data and log path for all data and log files to go into. This does not allow for the 
-    file names to be changed. 
+    Export a database to another instance using simple file paths.
 
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
-    New-RscMssqlExport -RscMssqlDatabase $RscMssqlDatabase `
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $inst = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.com -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlExport -RscMssqlDatabase $db `
         -RecoveryDateTime "2024-03-05T19:17:30.000Z" `
-        -TargetMssqlInstance $RscMssqlInstance `
-        -TargetDataPath = "c:\mnt\sqldata" `
-        -TargeLogPath = "c:\mnt\sqllogs" `
-        -Overwrite `
-        -FinishRecovery
+        -TargetMssqlInstance $inst `
+        -TargetDatabaseName "AW2019_Copy" `
+        -TargetDataPath "c:\mnt\sqldata" `
+        -TargeLogPath "c:\mnt\sqllogs" `
+        -Overwrite -FinishRecovery
 
     .EXAMPLE
-    Exports a database using the latest recovery point using the "Advanced Method"
-    In this case, you need to build an object like the below that contains the exportPath, logicalName, newFilename of 
-    each file in the database. 
+    Export a database using per-file path control (advanced mode).
 
-    This gives you full control over each file and path. 
-    The value in logicalName *MUST* be the same value that is in the database at the time of the backup. You can see these
-    values by using Get-RscMssqlDatabaseFiles. 
-    
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    $RscTargetMssqlInstance = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.cm -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
-
-    $TargetFilePaths = @()
-    $TargetDataPath = @{
-        exportPath = "c:\mnt\sqldata"
-        logicalName = "AdventureWorks2017"
-        newFilename = "Lumnah_Test.mdf"
-    }
-    $TargetFilePaths += $TargetDataPath
-    $TargetLogPath = @{
-        exportPath = "c:\mnt\sqldata"
-        logicalName = "AdventureWorks2017_log"
-        newFilename = "Lumnah_Test_log.ldf"
-    } 
-    $TargetFilePaths += $TargetLogPath
-    New-RscMssqlExport -RscMssqlDatabase $RscMssqlDatabase `
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $inst = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.com -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    $filePaths = @(
+        @{ exportPath = "c:\mnt\sqldata"; logicalName = "AdventureWorks2019"; newFilename = "AW_Copy.mdf" },
+        @{ exportPath = "c:\mnt\sqllogs"; logicalName = "AdventureWorks2019_log"; newFilename = "AW_Copy_log.ldf" }
+    )
+    New-RscMssqlExport -RscMssqlDatabase $db `
         -RecoveryDateTime "2024-03-05T19:17:30.000Z" `
-        -TargetMssqlInstance $RscMssqlInstance `
-        -TargetFilePaths $TargetFilePaths `
-        -Overwrite `
-        -FinishRecovery
+        -TargetMssqlInstance $inst `
+        -TargetDatabaseName "AW2019_Copy" `
+        -TargetFilePaths $filePaths `
+        -Overwrite -FinishRecovery
     #>
 
     [CmdletBinding()]

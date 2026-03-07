@@ -2,44 +2,43 @@
 function Get-RscNasSystem {
     <#
     .SYNOPSIS
-    Retrieves details of Nas Systems present in Rubrik Security Cloud.
-    
+    Retrieves NAS systems managed by Rubrik Security Cloud.
+
     .DESCRIPTION
-    Use this cmdlet to retrieve details of NAS Systems added to
-    Rubrik Security Cloud (RSC).
-    
+    Returns Network Attached Storage (NAS) systems added to RSC. You can list all
+    systems, filter by name, or look up by ID. Pipe the output to Get-RscNasShare
+    to list shares on a specific system.
+
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
-    
+
     .PARAMETER Id
-    The Rubrik UUID of the Nas System object.
+    The RSC object ID.
 
     .PARAMETER Name
-    The name of the NAS system to filter on.
+    Filter by name. Matches systems whose name contains the specified string.
 
     .PARAMETER List
-    Switch to list all NAS systems.
+    Return all items. This is the default behavior.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
-    .EXAMPLE
-    Retrieve list of NAS systems.
-    Get-RscNasSystem
-        or 
-    Get-RscNasSystem -List
-    
-    .EXAMPLE
-    Retrieve all NAS systems with the name containing "foo".
-    Get-RscNasSystem -Name "foo"
-        or
-    Get-RscNasSystem "foo"
+Return the query object instead of executing it.
 
     .EXAMPLE
-    Get details of NAS system with id="72859a28-6276-555a-9a66-d93fe99d2751"
+    # Get all NAS systems
+    Get-RscNasSystem
+
+    .EXAMPLE
+    # Get a NAS system by name and list its shares
+    Get-RscNasSystem -Name "netapp-01" | Get-RscNasShare
+
+    .EXAMPLE
+    # Get a specific NAS system by ID
     Get-RscNasSystem -Id "72859a28-6276-555a-9a66-d93fe99d2751"
     #>
 

@@ -2,10 +2,13 @@
 function Get-RscRole {
     <#
     .SYNOPSIS
-    Retrieves Roles defined in Rubrik Security Cloud
+    Retrieves roles defined in Rubrik Security Cloud.
 
     .DESCRIPTION
-    Rubrik Security Cloud Roles define a set of permissions that can be assigned to specific users or service accounts. 
+    Returns RSC roles, which define sets of permissions that can be assigned to
+    users or service accounts. Use -Name to filter by role name or -Id to
+    retrieve specific roles. Pipe the output to Get-RscPermission to inspect
+    the permissions within a role.
 
     .LINK
     Schema reference:
@@ -16,13 +19,19 @@ function Get-RscRole {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    One or more RSC role IDs.
+
+    .PARAMETER Name
+    Filter by name. Matches roles whose name contains the specified string.
+
     .EXAMPLE
     # Get all roles
     Get-RscRole
 
     .EXAMPLE
-    # Get role with specific name
-    Get-RscRole -Name "Admin"
+    # Get a role by name and inspect its permissions
+    Get-RscRole -Name "Admin" | Get-RscPermission
     #>
 
     [CmdletBinding(

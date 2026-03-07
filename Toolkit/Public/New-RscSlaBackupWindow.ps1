@@ -3,34 +3,40 @@ function New-RscSlaBackupWindow
 {
     <#
     .SYNOPSIS
-    Creates a new Rubrik SLA Backup Window Input
+    Creates a backup window input object for use with New-RscSla or Set-RscSla.
 
     .DESCRIPTION
-    The New-RscSlaBackupWindow cmdlet will create a new SLA Backup Window Input to use
-    with New-RscSla and Set-RscSla Cmdlets.
+    Defines a time window during which backups are allowed to run. Use this
+    to restrict snapshot activity to off-peak hours. The output is passed to
+    New-RscSla or Set-RscSla via the -BackupWindow or
+    -FirstFullBackupWindow parameters.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER Duration
-    The duration of backup window in hours.
+    Length of the backup window in hours.
 
     .PARAMETER DayOfWeek
-    Specifies the day of the week.
+    Day of the week when the backup window applies. Defaults to Monday.
 
     .PARAMETER Hour
-    Specifies the hour of the day.
+    Hour of the day (0-23) when the backup window starts. Defaults to 0.
 
     .PARAMETER Minute
-    Specifies the minute of the hour.
+    Minute of the hour (0-59) when the backup window starts. Defaults to 0.
 
     .EXAMPLE
-    New-RscSlaBackupWindow -Duration 2
+    Create a 2-hour backup window starting at midnight on Monday and assign it to an SLA.
+
+    $window = New-RscSlaBackupWindow -Duration 2
+    New-RscSla -Name "NightOnly" -BackupWindow $window -ObjectType VSPHERE_OBJECT_TYPE
 
     .EXAMPLE
+    Create a backup window starting Sunday at 1:30 AM for 2 hours.
+
     New-RscSlaBackupWindow -Duration 2 -DayOfWeek SUNDAY -Hour 1 -Minute 30
-
     #>
 
     [CmdletBinding()]

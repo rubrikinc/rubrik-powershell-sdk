@@ -3,26 +3,35 @@ function New-RscSlaDuration
 {
     <#
     .SYNOPSIS
-    Creates a new Rubrik SLA Duration Input
+    Creates a duration input object for use with SLA-related cmdlets.
 
     .DESCRIPTION
-    The New-RscSlaDuration cmdlet will create a new SLA Duration Input to use
-    with New-RscSla and Set-RscSla Cmdlets.
+    Builds a duration value that represents a length of time with a unit.
+    The output is passed to parameters on New-RscSla, Set-RscSla,
+    New-RscSlaReplicationSpecs, and New-RscSlaObjectSpecificConfig that
+    accept duration inputs (e.g. -RetentionDuration, -LogRetention,
+    -Frequency).
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER Duration
-    The duration of the SLA Domain.
+    The numeric duration value. Interpreted according to the Unit parameter.
 
     .PARAMETER Unit
-    Unit of duration
+    The time unit for the duration (MINUTES, HOURS, DAYS, WEEKS, MONTHS,
+    QUARTERS, YEARS). Defaults to MINUTES.
 
     .EXAMPLE
-    New-RscSlaDuration -Duration 7 -Unit DAYS
+    Create a 7-day duration and use it as log retention for an Oracle SLA config.
+
+    $retention = New-RscSlaDuration -Duration 7 -Unit DAYS
+    New-RscSlaObjectSpecificConfig -Oracle -LogRetention $retention
 
     .EXAMPLE
+    Create a 10-minute duration (unit defaults to MINUTES).
+
     New-RscSlaDuration -Duration 10
     #>
 

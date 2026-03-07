@@ -2,10 +2,13 @@
 function Get-RscArchivalLocation {
     <#
     .SYNOPSIS
-    Retrieves Archival Locations in Rubrik Security Cloud
+    Retrieves archival locations configured in Rubrik Security Cloud.
 
     .DESCRIPTION
-    Archival Locations represent targets for long-term storage of backups.
+    Returns archival locations (target mappings) that represent long-term storage
+    targets for backups, such as AWS S3, Azure Blob, GCP, NFS, tape, and
+    Rubrik Cloud Vault (RCV). Use -Name to filter by location name, or -Id to
+    retrieve a single archival location by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +19,23 @@ function Get-RscArchivalLocation {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Matches archival locations whose name contains the specified string.
+
     .EXAMPLE
     # Get all archival locations
     Get-RscArchivalLocation
 
     .EXAMPLE
-    # Get Datacenter archival locations
-    Get-RscArchivalLocation -
+    # Get archival locations matching a name
+    Get-RscArchivalLocation -Name "S3-Production"
 
     .EXAMPLE
-    # Get VMs by specifying part of a name
-    Get-RscVmwareVm
+    # Get a specific archival location by ID
+    Get-RscArchivalLocation -Id "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
     #>
 
     [CmdletBinding(

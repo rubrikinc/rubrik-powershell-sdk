@@ -3,23 +3,33 @@ function Merge-RscPermission
 {
     <#
     .SYNOPSIS
-    Merges a Rubrik Permission into a Role
+    Merges a permission into an RSC role.
 
     .DESCRIPTION
-    The Merge-RscPermission command takes a RubrikSecurityCloud permission object and merges into a RubrikSecurityCloud Role
+    Adds or updates a permission entry within an RSC role object. The permission
+    is typically created with New-RscPermission and defines an operation and the
+    objects it applies to. After merging, use Set-RscRole to save the updated role.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER Permission
+    A permission object, typically created with New-RscPermission.
 
+    .PARAMETER Role
+    A role object to merge the permission into. Pipe from Get-RscRole.
 
     .EXAMPLE
-    # Create permission object to take on-demand snapshot of all VMs in the Gold SLA, then merge into a role.
-    $permission = Get-RscSla -name "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
+    # Create a permission and merge it into a role
+    $perm = Get-RscSla "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
     $role = Get-RscRole "myRole"
-    Merge-RscPermission -Role $role -Permission $permission
+    Merge-RscPermission -Role $role -Permission $perm
 
+    .EXAMPLE
+    # Add snapshot permission for all workloads in an SLA
+    $perm = Get-RscSla "Silver" | Get-RscWorkload | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
+    Get-RscRole "BackupOps" | Merge-RscPermission -Permission $perm
     #>
 
     [CmdletBinding()]

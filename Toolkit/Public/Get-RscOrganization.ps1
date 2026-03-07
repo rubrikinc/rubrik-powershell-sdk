@@ -2,10 +2,13 @@
 function Get-RscOrganization {
     <#
     .SYNOPSIS
-    Retrieves Organizations defined in Rubrik Security Cloud
+    Retrieves organizations defined in Rubrik Security Cloud.
 
     .DESCRIPTION
-    Rubrik Security Cloud Organizations are logically separated users, permissions and objects to achieve multi-tenancy.
+    Returns RSC organizations, which provide multi-tenant separation of users,
+    permissions, and objects. Use -Name to filter by organization name or -Id
+    to retrieve a specific organization. The output can be piped to workload
+    cmdlets to filter by organization.
 
     .LINK
     Schema reference:
@@ -16,12 +19,18 @@ function Get-RscOrganization {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Matches organizations whose name contains the specified string.
+
     .EXAMPLE
-    # Get all roles
+    # Get all organizations
     Get-RscOrganization
 
     .EXAMPLE
-    # Get role with specific name
+    # Get an organization by name
     Get-RscOrganization "TenantA"
     #>
 
