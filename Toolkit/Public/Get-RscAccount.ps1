@@ -45,9 +45,9 @@ function Get-RscAccount {
         }
 
         # Add Account Id:
-        $outputObj["AccountId"] = (New-RscQuery -GqlQuery accountId).Invoke()
+        $outputObj["AccountId"] = (New-RscQuery -Gql accountId).Invoke()
 
-        $owner = (New-RscQuery -GqlQuery allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas).Invoke()
+        $owner = (New-RscQuery -Gql allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas).Invoke()
 
 
         $owner | Get-Member -MemberType Properties | ForEach-Object {

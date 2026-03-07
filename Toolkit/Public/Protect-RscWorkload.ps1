@@ -76,7 +76,7 @@ function Protect-RscWorkload
   )
     Process {
 
-        $query = New-RscMutation -GqlMutation assignSla
+        $query = New-RscMutation -Gql assignSla
         $query.Var.Input = New-Object -TypeName RubrikSecurityCloud.Types.AssignSlaInput
         $query.Var.Input.slaDomainAssignType = $AssignmentType
         $query.Var.Input.existingSnapshotRetention = $ExistingSnapshotAction

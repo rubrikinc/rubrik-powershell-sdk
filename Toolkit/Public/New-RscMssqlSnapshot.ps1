@@ -64,7 +64,7 @@ function New-RscMssqlSnapshot {
         Connect-Rsc -ErrorAction Stop | Out-Null
 
         #region Create Query
-        $query = New-RscMutationMssql -Op CreateOnDemandBackup
+        $query = New-RscMutation -Gql createOnDemandMssqlBackup
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateOnDemandMssqlBackupInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         

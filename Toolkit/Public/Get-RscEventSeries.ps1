@@ -147,11 +147,11 @@ function Get-RscEventSeries {
         }
 
         # Create query:
-        $operation = "List"
+        $gqlQuery = "activitySeriesConnection"
         if ( $Id ) {
-            $operation = "ActivitySeries"
+            $gqlQuery = "activitySeries"
         }
-        $query = (New-RscQueryActivitySeries -Op $operation -FieldProfile $fieldProfile)
+        $query = (New-RscQuery -Gql $gqlQuery -FieldProfile $fieldProfile)
 
         # Customize query:
         if ( $Id ) {

@@ -220,7 +220,7 @@ function Set-RscMssqlDatabase {
         #region Create Query
         switch ($PSCmdlet.ParameterSetName){
             "Do Not Protect" {
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -243,7 +243,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
             "Clear Existing Protection"{
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -257,7 +257,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
             "Apply SLA Domain"{
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -303,7 +303,7 @@ function Set-RscMssqlDatabase {
                 }
             }
             "Database Properties"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -326,7 +326,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Add Pre-BackupScript" {
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -344,7 +344,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Add Post-BackupScript"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -362,7 +362,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Remove Pre-BackupScript"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -380,7 +380,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Remove Post-BackupScript"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 

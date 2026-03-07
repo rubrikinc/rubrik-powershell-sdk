@@ -145,7 +145,7 @@ function Set-RscMssqlAvailabilityGroup{
         #region Create Query
         switch ($PSCmdlet.ParameterSetName){
             "Do Not Protect" {
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -168,7 +168,7 @@ function Set-RscMssqlAvailabilityGroup{
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
             "Apply SLA Domain"{
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput

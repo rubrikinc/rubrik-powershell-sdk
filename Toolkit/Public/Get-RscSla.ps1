@@ -46,7 +46,7 @@ function Get-RscSla {
     Process {
 
         if ($Id) {
-            $query = New-RscQuery -GqlQuery slaDomain
+            $query = New-RscQuery -Gql slaDomain
             $query.var.id = $Id
 
             #id: String!
@@ -556,7 +556,7 @@ function Get-RscSla {
             $result
         } 
         else {
-            $query = New-RscQuery -GqlQuery slaDomains
+            $query = New-RscQuery -Gql slaDomains
             $globalSlaReply = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "globalSlaReply"})
             $query.var.shouldShowProtectedObjectCount = $true
             $query.var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput

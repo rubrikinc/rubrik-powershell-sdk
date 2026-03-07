@@ -56,7 +56,7 @@ function Remove-RscNasSystem {
     )
 
     Process {
-        $mutation = New-RscMutationNas -Operation DeleteNasSystem `
+        $mutation = New-RscMutation -Gql deleteNasSystem `
             -AddField Progress, Error
 
         $mutation.Var.Input =

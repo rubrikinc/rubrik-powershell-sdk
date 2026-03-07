@@ -50,13 +50,13 @@ function Get-RscRole {
     Process {
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery getRolesByIds -FieldProfile FULL
+            $query = New-RscQuery -Gql getRolesByIds -FieldProfile FULL
             $query.var.roleIds = $Id
             if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery getAllRolesInOrgConnection -FieldProfile FULL
+            $query = New-RscQuery -Gql getAllRolesInOrgConnection -FieldProfile FULL
             if ($Name) {
                 $query.var.nameFilter = $Name
             }

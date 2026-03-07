@@ -61,7 +61,7 @@ function Get-RscArchivalLocation {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery targetMapping
+            $query = New-RscQuery -Gql targetMapping
             $query.var.targetMappingId = $Id
 
             $query.Field.id = "FETCH"
@@ -95,8 +95,8 @@ function Get-RscArchivalLocation {
             #$query.Field.targets[0].readerRetrievalMethod = [RubrikSecurityCloud.Types.ReaderRetrievalMethod]::UNKNOWN_RETRIEVAL_METHOD
             #$query.Field.targets[0].locationConnectionStatus = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
         } else {
-            $query = New-RscQuery -GqlQuery allTargetMappings
-            $query2 = New-RscQuery -GqlQuery targets
+            $query = New-RscQuery -Gql allTargetMappings
+            $query2 = New-RscQuery -Gql targets
             $query.var.filter = @()
             $query.var.filter += New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
             $query.var.filter[0].field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::ARCHIVAL_GROUP_TYPE

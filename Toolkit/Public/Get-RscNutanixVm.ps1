@@ -66,7 +66,7 @@ function Get-RscNutanixVm {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery nutanixVm
+            $query = New-RscQuery -Gql nutanixVm
             $query.var.filter = @()
             $query.Var.fid = $Id
             $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
@@ -78,7 +78,7 @@ function Get-RscNutanixVm {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery nutanixVms
+            $query = New-RscQuery -Gql nutanixVms
             $query.var.filter = @()
             $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
             $query.Field.Nodes[0].Cluster.id = "FETCH"

@@ -79,7 +79,7 @@ function Get-RscNasSystem {
     Process {
         Switch ($PSCmdlet.ParameterSetName) {
             "Id" {
-                $query = New-RscQueryNas -Operation System `
+                $query = New-RscQuery -Gql nasSystem `
                 -RemoveField ObjectType `
                 -AddField ShareCount, `
                 OsVersion, `
@@ -90,7 +90,7 @@ function Get-RscNasSystem {
             }
 
             "Name" {
-                $query = New-RscQueryNas -Operation Systems
+                $query = New-RscQuery -Gql nasSystems
                 $query.Field.Nodes[0].VendorType = "FETCH"
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $InputObj.Field = "Name"
@@ -99,7 +99,7 @@ function Get-RscNasSystem {
             }
 
             "List" {
-                $query = New-RscQueryNas -Operation Systems
+                $query = New-RscQuery -Gql nasSystems
                 $query.Field.Nodes[0].VendorType = "FETCH"
             }
         }

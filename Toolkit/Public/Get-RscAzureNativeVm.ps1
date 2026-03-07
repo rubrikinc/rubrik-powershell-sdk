@@ -60,14 +60,14 @@ function Get-RscAzureNativeVm {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery azureNativeVirtualMachine
+            $query = New-RscQuery -Gql azureNativeVirtualMachine
             $query.Var.azureVirtualMachineRubrikId = $Id
 
             if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery azureNativeVirtualMachines
+            $query = New-RscQuery -Gql azureNativeVirtualMachines
             $query.var.virtualMachineFilters = (New-Object -TypeName RubrikSecurityCloud.Types.AzureNativeVirtualMachineFilters)
 
             if ($NameSubstring) {          

@@ -54,7 +54,7 @@ function Set-RscRole
 
   )
     Process {
-        $query = New-RscMutation -GqlMutation mutateRole
+        $query = New-RscMutation -Gql mutateRole
         if ($Role.Id) {
           $query.Var.roleId = $Role.Id
         }

@@ -147,7 +147,7 @@ function New-RscSla
   )
     Process {
 
-        $query = New-RscMutation -GqlMutation createGlobalSla
+        $query = New-RscMutation -Gql createGlobalSla
         $query.Var.Input = New-Object -TypeName RubrikSecurityCloud.Types.CreateGlobalSlaInput
         $query.Var.Input.name = $Name
         $query.Var.Input.SnapshotSchedule = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSnapshotScheduleInput

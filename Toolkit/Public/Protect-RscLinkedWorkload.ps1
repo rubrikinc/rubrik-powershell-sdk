@@ -89,7 +89,7 @@ function Protect-RscLinkedWorkload
             throw "InputObject and LinkedObject must be the same type. InputObject: $($InputObjects[0].GetType().FullName) != $($LinkedObject.GetType().FullName)"
           }
           else {
-            $query = New-RscMutation -GqlMutation manageProtectionForLinkedObjects
+            $query = New-RscMutation -Gql manageProtectionForLinkedObjects
             $query.Var.input = Get-RscType -Name ManageProtectionForLinkedObjectsInput
             $query.var.input.operation = $LinkingOperation
             $query.Var.input.AssignSlaReq = Get-RscType -Name AssignSlaInput

@@ -58,7 +58,7 @@ function Remove-RscMssqlLiveMount {
         Write-Debug "- Running Remove-RscMssqlLiveMount"
         
         #region Create Query
-        $query = New-RscMutationMssql -Operation DeleteLiveMount  
+        $query = New-RscMutation -Gql deleteMssqlLiveMount  
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.DeleteMssqlLiveMountInput
 
         $query.Var.input.id = "$($MssqlLiveMount.Fid)"

@@ -127,7 +127,7 @@ function Get-RscMssqlInstance {
 
         if($Id) {
             Write-Verbose "-  Creating Id Query"
-            $query = New-RscQuery -GqlQuery mssqlInstance
+            $query = New-RscQuery -Gql mssqlInstance
             $query.Var.fid = $id
             $query.Field.Cluster = Get-RscType -Name Cluster -InitialProperties Name,Id
             $query.Field.effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties Name,Id
@@ -143,7 +143,7 @@ function Get-RscMssqlInstance {
             }
         }
         else {
-            $query = New-RscQuery -GqlQuery mssqlTopLevelDescendants 
+            $query = New-RscQuery -Gql mssqlTopLevelDescendants 
             $query.Var.filter = @()
 
             if($HostName) {

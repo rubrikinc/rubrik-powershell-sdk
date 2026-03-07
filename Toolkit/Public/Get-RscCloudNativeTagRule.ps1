@@ -58,7 +58,7 @@ function Get-RscCloudNativeTagRule {
     )
     
     Process {
-            $query = New-RscQuery -GqlQuery cloudNativeTagRules
+            $query = New-RscQuery -Gql cloudNativeTagRules
             $query.field.tagRules = New-Object -TypeName RubrikSecurityCloud.Types.CloudNativeTagRule
             $query.field.tagRules[0].name = "FETCH"
             $query.field.tagRules[0].id = "FETCH"

@@ -66,7 +66,7 @@ function Get-RscDb2Instance {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery db2Instance
+            $query = New-RscQuery -Gql db2Instance
             $query.var.filter = @()
             $query.Var.id = $Id
 
@@ -74,7 +74,7 @@ function Get-RscDb2Instance {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery db2Instances
+            $query = New-RscQuery -Gql db2Instances
             $query.var.filter = @()
 
             if ($Name) {

@@ -74,7 +74,7 @@ function Get-RscOracleDatabase {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery oracleDatabase
+            $query = New-RscQuery -Gql oracleDatabase
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -82,7 +82,7 @@ function Get-RscOracleDatabase {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery oracleDatabases
+            $query = New-RscQuery -Gql oracleDatabases
             $query.var.filter = @()
 
             if ($Name) {

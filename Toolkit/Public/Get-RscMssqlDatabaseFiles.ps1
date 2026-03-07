@@ -52,7 +52,7 @@ function Get-RscMssqlDatabaseFiles {
         }
         Write-Debug "- Running Get-RscMssqlDatabaseFiles"
         
-        $query = New-RscQueryMssql -Operation DatabaseRestoreFiles -FieldProfile $fieldProfile -Addfield Items.fileType, Items.logicalName, Items.originalName, Items.originalPath
+        $query = New-RscQuery -Gql allMssqlDatabaseRestoreFiles -FieldProfile $fieldProfile -Addfield Items.fileType, Items.logicalName, Items.originalName, Items.originalPath
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.MssqlGetRestoreFilesV1Input
         $query.Var.input.id = $RscMssqlDatabase.Id
         $query.Var.input.time = $RecoveryDateTime

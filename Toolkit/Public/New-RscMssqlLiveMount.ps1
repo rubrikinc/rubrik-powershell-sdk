@@ -64,7 +64,7 @@ function New-RscMssqlLiveMount {
     Process {
         Write-Debug "- Running New-RscMssqlLiveMount"
         #region Create Query         
-        $query = New-RscMutationMssql -Op CreateLiveMount 
+        $query = New-RscMutation -Gql createMssqlLiveMount 
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateMssqlLiveMountInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         $query.Var.input.config = New-Object RubrikSecurityCloud.Types.MountMssqlDbConfigInput

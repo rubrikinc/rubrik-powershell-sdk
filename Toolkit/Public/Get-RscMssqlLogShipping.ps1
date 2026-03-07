@@ -98,7 +98,7 @@ function Get-RscMssqlLogShipping {
     Process {
 
         if($Id) {
-            $query = New-RscQuery -GqlQuery cdmMssqlLogShippingTarget
+            $query = New-RscQuery -Gql cdmMssqlLogShippingTarget
             $query.var.Fid = $Id
 
             $query.Field.fid = "FETCH"
@@ -128,7 +128,7 @@ function Get-RscMssqlLogShipping {
             if ( $AsQuery ) { return $query }
         }
         else {
-            $query = New-RscQuery -GqlQuery cdmMssqlLogShippingTargets
+            $query = New-RscQuery -Gql cdmMssqlLogShippingTargets
             $query.Var.filters = @()
     
             if ($Cluster){

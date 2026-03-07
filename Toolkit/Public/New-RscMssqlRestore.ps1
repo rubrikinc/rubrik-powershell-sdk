@@ -82,7 +82,7 @@ function New-RscMssqlRestore {
     Process {
         Write-Debug "- Running New-RscMssqlRestore"
         #region Create Query
-        $query = New-RscMutationMssql -Operation RestoreDatabase
+        $query = New-RscMutation -Gql restoreMssqlDatabase
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.RestoreMssqlDatabaseInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
 

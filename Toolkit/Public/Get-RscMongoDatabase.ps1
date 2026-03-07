@@ -73,7 +73,7 @@ function Get-RscMongoDatabase {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery mongoDatabase
+            $query = New-RscQuery -Gql mongoDatabase
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -81,7 +81,7 @@ function Get-RscMongoDatabase {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery mongoDatabases
+            $query = New-RscQuery -Gql mongoDatabases
             $query.var.filter = @()
 
             if ($Name) {

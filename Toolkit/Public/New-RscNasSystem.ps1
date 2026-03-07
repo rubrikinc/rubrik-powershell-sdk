@@ -149,7 +149,7 @@ function New-RscNasSystem {
     )
 
     Process {
-        $mutation = New-RscMutationNas -Operation RegisterNasSystem
+        $mutation = New-RscMutation -Gql registerNasSystem
         $mutation.Var.Input =
             New-Object -TypeName RubrikSecurityCloud.Types.RegisterNasSystemInput
         $mutation.Var.Input.ClusterUuid = $Cluster.Id

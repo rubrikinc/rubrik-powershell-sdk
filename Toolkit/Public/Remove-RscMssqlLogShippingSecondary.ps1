@@ -62,7 +62,7 @@ function Remove-RscMssqlLogShippingSecondary {
         Write-Debug "- Running Remove-RscMssqlLiveMount"
         
         #region Create Query
-        $query = New-RscMutationMssql -Operation DeleteLogShipping  
+        $query = New-RscMutation -Gql deleteLogShipping  
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.DeleteLogShippingInput
         $query.Var.input.id = "$($RscMssqlLogShipping.Fid)"
         $query.Var.input.deleteSecondaryDatabase = $deleteSecondaryDatabase

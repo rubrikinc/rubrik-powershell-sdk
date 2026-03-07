@@ -59,7 +59,7 @@ function Get-RscMssqlLiveMount {
         Write-Host "Get-RscMssqlLiveMount field profile: $fieldProfile"
         
         #region Create Query
-        $query = New-RscQueryMssql -Operation DatabaseLiveMounts `
+        $query = New-RscQuery -Gql mssqlDatabaseLiveMounts `
             -AddField Nodes.MountedDatabaseName, `
                 Nodes.CreationDate, `
                 Nodes.RecoveryPoint #, `

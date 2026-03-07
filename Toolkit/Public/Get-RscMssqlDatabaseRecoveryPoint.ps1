@@ -75,7 +75,7 @@ function Get-RscMssqlDatabaseRecoveryPoint {
 
         #region Create Query
         if ($PSBoundParameters.ContainsKey('Latest')) {
-            $query = New-RscQueryMssql -Op RecoverableRanges -AddField Data.BeginTime, Data.EndTime
+            $query = New-RscQuery -Gql mssqlRecoverableRanges -AddField Data.BeginTime, Data.EndTime
             $query.Var.input.id = $RscMssqlDatabase.id
             if ( $AsQuery ) { return $query }
             $result = $query.Invoke()

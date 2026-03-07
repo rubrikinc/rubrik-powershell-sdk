@@ -67,7 +67,7 @@ function Get-RscAwsNativeEc2Instance {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery awsNativeEc2Instance
+            $query = New-RscQuery -Gql awsNativeEc2Instance
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -75,7 +75,7 @@ function Get-RscAwsNativeEc2Instance {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery awsNativeEc2Instances
+            $query = New-RscQuery -Gql awsNativeEc2Instances
             $query.var.ec2InstanceFilters = New-Object -TypeName RubrikSecurityCloud.Types.AwsNativeEc2InstanceFilters
 
             if ($Name) {

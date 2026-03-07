@@ -72,7 +72,7 @@ function Get-RscMssqlLinkedAvailabilityGroup {
     
     Process {
 
-        $query = New-RscQuery -GqlQuery mssqlAvailabilityGroupVirtualGroups
+        $query = New-RscQuery -Gql mssqlAvailabilityGroupVirtualGroups
         $query.var.filters = @()
 
         if ($Name) {

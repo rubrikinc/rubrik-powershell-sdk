@@ -50,8 +50,8 @@ function Get-RscOrganization {
     Process {
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $roleTempQuery = New-RscQuery -GqlQuery getRolesByIds -FieldProfile FULL
-            $query = New-RscQuery -GqlQuery org
+            $roleTempQuery = New-RscQuery -Gql getRolesByIds -FieldProfile FULL
+            $query = New-RscQuery -Gql org
             $query.var.orgId = $Id
             $query.field.Id = "tacos"
             $query.field.Name = "FETCH"
@@ -84,13 +84,13 @@ function Get-RscOrganization {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery orgs
+            $query = New-RscQuery -Gql orgs
             if ($Name) {
                 $query.var.nameFilter = $Name
             }
 
             # I'm using these to populate all fields instead of doing them individually.
-            $roleTempQuery = New-RscQuery -GqlQuery getRolesByIds -FieldProfile FULL
+            $roleTempQuery = New-RscQuery -Gql getRolesByIds -FieldProfile FULL
 
             $query.field.Nodes[0].Id = "tacos"
             $query.field.Nodes[0].Name = "FETCH"

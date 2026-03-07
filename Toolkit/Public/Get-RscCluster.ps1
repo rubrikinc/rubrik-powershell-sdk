@@ -123,7 +123,7 @@ function Get-RscCluster {
     Process {
         # Count clusters:
         if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
-            $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes
+            $query = New-RscQuery -Gql clusterConnection -RemoveField Nodes
             if ( $AsQuery ) {
                 return $query
             }
@@ -144,15 +144,15 @@ function Get-RscCluster {
         # Create Query
         switch ( $PSCmdlet.ParameterSetName ) {
             "List" {
-                $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile -Var @{First = $First}
+                $query = New-RscQuery -Gql clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile -Var @{First = $First}
             }
             "Id" {
-                $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQuery -Gql clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
                 $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
                 $query.Var.filter.id = $Id
             }
             "Name" {
-                $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
+                $query = New-RscQuery -Gql clusterConnection -RemoveField Nodes.isHealthy -FieldProfile $fieldProfile
                 $query.Var.filter = New-Object -TypeName RubrikSecurityCloud.Types.ClusterFilterInput
                 $query.Var.filter.Name = $Name
             }

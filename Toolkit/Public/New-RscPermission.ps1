@@ -59,7 +59,7 @@ function New-RscPermission
         }
     }
     End {
-        $globalResourceQuery = New-RscQuery -GqlQuery allAuthorizationsForGlobalResource
+        $globalResourceQuery = New-RscQuery -Gql allAuthorizationsForGlobalResource
         if ( $AsQuery ) { return $globalResourceQuery }
         $globalResourceOperations = Invoke-Rsc $globalResourceQuery
 

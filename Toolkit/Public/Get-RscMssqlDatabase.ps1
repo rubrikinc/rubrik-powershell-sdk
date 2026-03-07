@@ -113,7 +113,7 @@ function Get-RscMssqlDatabase {
         #region Create Query
         switch($PSCmdlet.ParameterSetName){
             "List"{
-                $query = New-RscQuery -GqlQuery mssqlDatabases `
+                $query = New-RscQuery -Gql mssqlDatabases `
                 -AddField Nodes.PhysicalPath
                 $query.field.nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
                 $query.field.nodes[0].Cluster.name = "Fetch"
@@ -121,7 +121,7 @@ function Get-RscMssqlDatabase {
                 $query.Var.filter = @()
             }
             { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
-                $query = New-RscQuery -GqlQuery mssqlDatabases `
+                $query = New-RscQuery -Gql mssqlDatabases `
                 -AddField Nodes.PhysicalPath, `
                     Nodes.PostBackupScript, `
                     Nodes.PreBackupScript, `
@@ -135,7 +135,7 @@ function Get-RscMssqlDatabase {
                 $query.Var.filter = @()
             }
             "Id"{
-                $query = New-RscQuery -GqlQuery mssqlDatabase
+                $query = New-RscQuery -Gql mssqlDatabase
                 $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
                 $query.Field.PhysicalPath.SelectForRetrieval() 
                 $query.Var.fid = $Id

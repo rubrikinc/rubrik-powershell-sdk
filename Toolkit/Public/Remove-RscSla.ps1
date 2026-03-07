@@ -76,7 +76,7 @@ function Remove-RscSla {
     )
 
     Process {
-        $query = (New-RscMutationSla -op "DeleteGlobal")
+        $query = (New-RscMutation -Gql deleteGlobalSla)
 
         if ($PsCmdlet.ParameterSetName -eq "GlobalSlaInput") {
             $SlaId = $GlobalSla.ID

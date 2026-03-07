@@ -129,7 +129,7 @@ function Set-RscNasSystem {
     Process {
         $NasVendorType = $null
 
-        $mutation = New-RscMutationNas -Operation UpdateNasSystem `
+        $mutation = New-RscMutation -Gql updateNasSystem `
             -AddField Hostname, VendorType
         $mutation.Var.Input =
             New-Object -TypeName RubrikSecurityCloud.Types.UpdateNasSystemInput

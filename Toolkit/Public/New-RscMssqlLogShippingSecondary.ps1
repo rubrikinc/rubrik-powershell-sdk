@@ -115,7 +115,7 @@ function New-RscMssqlLogShippingSecondary{
         Write-Debug "- Running New-RscMssqlLogShippingSecondary"
         
         #region Create Query         
-        $query = New-RscMutationMssql -Op CreateLogShippingConfiguration
+        $query = New-RscMutation -Gql createMssqlLogShippingConfiguration
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateMssqlLogShippingConfigurationInput
         $query.Var.input.Id = $RscMssqlDatabase.Id
         $query.Var.input.clusterUuid = $RscCluster.Id

@@ -545,7 +545,7 @@ function Set-RscSla
         }
         # ------------------------------- Function Block End ----------------------------------
 
-        $Mutation = New-RscMutationSla -Operation UpdateGlobal
+        $Mutation = New-RscMutation -Gql updateGlobalSla
         $Mutation.Var.Input =
             New-Object -TypeName RubrikSecurityCloud.Types.UpdateGlobalSlaInput
         $Mutation.Var.Input.Id = $Sla.Id

@@ -82,7 +82,7 @@ function Suspend-RscSla {
     )
 
     Process {
-        $query = (New-RscMutationSla -op "Pause")
+        $query = (New-RscMutation -Gql pauseSla)
 
         if ($PsCmdlet.ParameterSetName -eq "GlobalSlaInput") {
             $SlaId = $GlobalSla.ID

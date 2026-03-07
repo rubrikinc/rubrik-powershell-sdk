@@ -207,6 +207,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             HelpMessage = "The root GraphQL mutation to be called",
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
+        [Alias("Gql")]
         public SchemaMeta.GqlMutationName? GqlMutation
         {
             get {
@@ -242,6 +243,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             HelpMessage = "The root GraphQL query to be called",
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
+        [Alias("Gql")]
         public SchemaMeta.GqlQueryName? GqlQuery
         {
             get {

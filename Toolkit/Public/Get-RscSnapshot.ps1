@@ -164,7 +164,7 @@ function Get-RscSnapshot {
         # getting an error with a specific snapshot? It's probably SPARK-20396.
         if ($Id) {
             Write-Verbose "Trying RSC snapshot query..."
-            $polarisSnapshotQuery = New-RscQuery -GqlQuery polarisSnapshot
+            $polarisSnapshotQuery = New-RscQuery -Gql polarisSnapshot
             $polarisSnapshotQuery.var.snapshotFid = $Id
             $polarisSnapshotQuery.field = $polarisSnapshotFieldDef
             if ( $AsQuery ) { return $polarisSnapshotQuery }
@@ -174,7 +174,7 @@ function Get-RscSnapshot {
             }
             else {
                 Write-Verbose "Trying CDM snapshot query..."
-                $cdmSnapshotQuery = New-RscQuery -GqlQuery snapshot
+                $cdmSnapshotQuery = New-RscQuery -Gql snapshot
                 $cdmSnapshotQuery.var.snapshotFid = $Id
                 $cdmSnapshotQuery.field = $cdmSnapshotFieldDef
 
@@ -186,7 +186,7 @@ function Get-RscSnapshot {
             $result
         }
         else {
-            $query = New-RscQuery -GqlQuery snapshotOfASnappableConnection
+            $query = New-RscQuery -Gql snapshotOfASnappableConnection
 
             # This is for pipeline support from Get-RscWorkload.
             # Most objects in the API return .id with the RSC FID, but Get-RscWorkload(snappableConnection) returns .fid for the RSC FID, and .id is the CDM ID.

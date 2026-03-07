@@ -66,7 +66,7 @@ function Get-RscHypervVm {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery hypervVirtualMachine
+            $query = New-RscQuery -Gql hypervVirtualMachine
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -74,7 +74,7 @@ function Get-RscHypervVm {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery hypervVirtualMachines
+            $query = New-RscQuery -Gql hypervVirtualMachines
             $query.var.filter = @()
 
             if ($Name) {

@@ -76,7 +76,7 @@ function Get-RscMssqlDatabaseRecoverableRanges {
         }
         Write-Host "Get-RscMssqlDatabaseRecoverableRanges field profile: $fieldProfile"
 
-        $query = New-RscQueryMssql -Operation RecoverableRanges -FieldProfile $fieldProfile -AddField Data.BeginTime, Data.EndTime
+        $query = New-RscQuery -Gql mssqlRecoverableRanges -FieldProfile $fieldProfile -AddField Data.BeginTime, Data.EndTime
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.GetMssqlDbRecoverableRangesInput
         $query.Var.input.id = $RscMssqlDatabase.id
         if($PSBoundParameters.ContainsKey('afterTime')){

@@ -154,7 +154,7 @@ function Get-RscNasShare {
 
         Switch ($PSCmdlet.ParameterSetName) {
             "Id" {
-                $query = New-RscQueryNas -Operation Share `
+                $query = New-RscQuery -Gql nasShare `
                     -RemoveField ObjectType `
                     -AddField ShareType, `
                     ExportPoint, `
@@ -170,7 +170,7 @@ function Get-RscNasShare {
             }
 
             "Name" {
-                $query = New-RscQueryNas -Operation Shares
+                $query = New-RscQuery -Gql nasShares
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $InputObj.Field = "Name"
                 $InputObj.Texts = @($Name)
@@ -182,7 +182,7 @@ function Get-RscNasShare {
             }
 
             "List" {
-                $query = New-RscQueryNas -Operation Shares
+                $query = New-RscQuery -Gql nasShares
 
                 # Specify additional fields not in default field profile.
                 $query.Field.Nodes[0].HostAddress = "FETCH"
@@ -190,7 +190,7 @@ function Get-RscNasShare {
             }
 
             "NasSystem" {
-                $query = New-RscQueryNas -Operation System `
+                $query = New-RscQuery -Gql nasSystem `
                     -RemoveField ObjectType `
                     -AddField ShareCount, `
                     OsVersion, `

@@ -42,7 +42,7 @@ function Set-RscNasShare {
     )
 
     Process {
-        $mutation = New-RscMutationNas -Operation BulkUpdateNasShares
+        $mutation = New-RscMutation -Gql bulkUpdateNasShares
         $mutation.Var.Input =
             New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateNasSharesInput
         $mutation.Var.Input.BulkUpdateNasShareInput =

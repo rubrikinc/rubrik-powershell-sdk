@@ -73,7 +73,7 @@ function Get-RscSapHanaDatabase {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery sapHanaDatabase
+            $query = New-RscQuery -Gql sapHanaDatabase
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -81,7 +81,7 @@ function Get-RscSapHanaDatabase {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery sapHanaDatabases
+            $query = New-RscQuery -Gql sapHanaDatabases
             $query.var.filter = @()
 
             if ($Name) {

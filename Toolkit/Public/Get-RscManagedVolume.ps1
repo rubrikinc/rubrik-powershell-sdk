@@ -76,7 +76,7 @@ function Get-RscManagedVolume {
             $fieldProfile = "DETAIL"
         }
 
-        $query = New-RscQueryManagedVolume -Operation ManagedVolumes -FieldProfile $fieldProfile 
+        $query = New-RscQuery -Gql managedVolumes -FieldProfile $fieldProfile 
         $query.Var.filter = @()
 
         #region Create Query

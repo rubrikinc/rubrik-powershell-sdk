@@ -78,17 +78,17 @@ function Register-RscRubrikBackupService
     Process {
         if ($VM) {
             if($VM -is [RubrikSecurityCloud.Types.NutanixVm]){
-                $query = New-RscMutation -GqlMutation registerAgentNutanixVm
+                $query = New-RscMutation -Gql registerAgentNutanixVm
                 $query.var.input = New-Object RubrikSecurityCloud.Types.RegisterAgentNutanixVmInput
                 $query.var.input.id = $VM.id
             }
             elseif ($VM -is [RubrikSecurityCloud.Types.VsphereVm]) {
-                $query = New-RscMutation -GqlMutation vsphereVmRegisterAgent
+                $query = New-RscMutation -Gql vsphereVmRegisterAgent
                 $query.var.input = New-Object RubrikSecurityCloud.Types.VsphereVmRegisterAgentInput
                 $query.var.input.id = $VM.id
             }
             elseif ($VM -is [RubrikSecurityCloud.Types.HyperVvirtualMachine]) {
-                $query = New-RscMutation -GqlMutation registerAgentHypervVirtualMachine
+                $query = New-RscMutation -Gql registerAgentHypervVirtualMachine
                 $query.var.input = New-Object RubrikSecurityCloud.Types.RegisterAgentHypervVirtualMachineInput
                 $query.var.input.id = $VM.id
             }
@@ -99,11 +99,11 @@ function Register-RscRubrikBackupService
         elseif($Hostname) {
             if ($PSBoundParameters.ContainsKey('Async')) {
                 # Don't think we're actually doing Async here.
-                $query = New-RscMutation -GqlMutation bulkRegisterHostAsync
+                $query = New-RscMutation -Gql bulkRegisterHostAsync
                 $query.var.input =  New-Object -TypeName RubrikSecurityCloud.Types.BulkRegisterHostAsyncInput
             }
             else {
-                $query = New-RscMutation -GqlMutation bulkRegisterHost
+                $query = New-RscMutation -Gql bulkRegisterHost
                 $query.var.input =  New-Object -TypeName RubrikSecurityCloud.Types.BulkRegisterHostInput
             }
             

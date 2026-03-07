@@ -181,7 +181,7 @@ function New-RscMssqlExport{
         Write-Debug "- Running New-RscMssqlExport"
         
         #region Create Query         
-        $query = New-RscMutationMssql -Op ExportDatabase
+        $query = New-RscMutation -Gql exportMssqlDatabase
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.ExportMssqlDatabaseInput
         $query.Var.input.Id = $RscMssqlDatabase.Id
     

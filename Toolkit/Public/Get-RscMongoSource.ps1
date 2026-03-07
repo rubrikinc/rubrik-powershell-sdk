@@ -67,7 +67,7 @@ function Get-RscMongoSource {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery mongoSource
+            $query = New-RscQuery -Gql mongoSource
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -75,7 +75,7 @@ function Get-RscMongoSource {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery mongoSources
+            $query = New-RscQuery -Gql mongoSources
             $query.var.filter = @()
 
             if ($Name) {

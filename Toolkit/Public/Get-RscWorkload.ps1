@@ -109,7 +109,7 @@ function Get-RscWorkload {
     
     Process {
 
-        $query = New-RscQuery -GqlQuery snappableConnection
+        $query = New-RscQuery -Gql snappableConnection
         $query.Field.Nodes[0].Id = "FOO"
         $query.Field.Nodes[0].Location = "FOO"
         $query.Field.Nodes[0].complianceStatus = [RubrikSecurityCloud.Types.ComplianceStatusEnum]::IN_COMPLIANCE
@@ -170,7 +170,7 @@ function Get-RscWorkload {
             }
             else {
                 # Run workloadForeverId, add Id to snappableConnectionFilter then run snappableConnection
-                $fidQuery = New-RscQuery -GqlQuery workloadForeverId
+                $fidQuery = New-RscQuery -Gql workloadForeverId
                 $fidQuery.var.clusterUuid = $Cluster.Id
                 $fidQuery.var.managedId = $CdmId
                 $fidQueryResult = Invoke-Rsc $fidQuery

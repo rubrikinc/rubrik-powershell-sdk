@@ -58,7 +58,7 @@ function Get-RscOracleHost {
     )
     
     Process {
-        $query = New-RscQuery -GqlQuery oracleTopLevelDescendants
+        $query = New-RscQuery -Gql oracleTopLevelDescendants
         $query.var.filter = @()
 
         if ($Name) {
