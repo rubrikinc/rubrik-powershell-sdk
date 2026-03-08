@@ -21,9 +21,9 @@ and the number of items in lists.
   number of fields (and nested fields) requested. If needed,
   break up the fields and run multiple queries.
 - If you got that error without specifying fields explicitly
-  (for example by running a `Invoke-RscXxx` cmdlet), please open
-  an issue on GitHub with the full command you ran, and the
-  full error message you got back.
+  (for example by running an SDK cmdlet like `New-RscQueryCluster`
+  or `Get-RscCluster`), please open an issue on GitHub with the
+  full command you ran, and the full error message you got back.
 
 ## FAQ2 Nulls in response
 

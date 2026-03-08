@@ -66,7 +66,7 @@ them in a PowerShell array.
 With the SDK, you can do the same thing with a single cmdlet:
 
 ```powershell
-PS> (New-RscQueryCluster -List ).Nodes.Id
+PS> (New-RscQueryCluster -Operation List).Nodes.Id
 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
 fd326eaa-534d-4f2a-861e-250d192fbaae
 ```
@@ -77,31 +77,25 @@ PowerShell array, and you can use it directly.
 
 Let's break down what that one-liner does.
 
-First off, if you look at how many cmdlets are in the SDK, you could
-be intrigued by its pretty small size:
+While the SDK exports over 200 cmdlets, the number of _operation_ cmdlets
+(which map to the GraphQL schema) is relatively small:
 
-```powershell
-PS> (Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Measure-Object | Select-Object -ExpandProperty Count
-53
-```
-
-At the same time, the SDK covers all 650 queries
-in the RSC GraphQL schema. How can that be?
+The SDK covers the entire RSC GraphQL schema. How can that be?
 
 The answer is that the SDK is built with a 2-layer command/subcommand
 structure: Each cmdlet regroups a set of related queries, and each
 subcommand corresponds to a specific query.
 
 For example here, `New-RscQueryCluster` is the cmdlet that regroups
-all the queries related to clusters, and `-List` is the subcommand that
-corresponds to the query we want to run.
+all the queries related to clusters, and `-Operation List` is the
+subcommand that corresponds to the query we want to run.
 
 You can see the list of all the cmdlets and their subcommands in
 [this sample script](../Samples/AllCmdlets.sample.ps1)
 
 Now, about the `().Nodes.Id`:
 
-`New-RscQueryCluster -List` returns a
+`New-RscQueryCluster -Operation List` returns a
 [ClusterConnection object](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html)
 which contains a `Nodes` property, which is an array of `Cluster` objects,
 which in turn have an `Id` property.
@@ -130,12 +124,11 @@ the response is not JSON but native PowerShell objects.
 
 Instead of specifying the query as a string, you can
 also store your GraphQL queries in files
-and then use the `-OperationFile` parameter
-to run them. For example:
+and read them with `Get-Content`. For example:
 
 ```powershell
 $query = Get-Content -Path Samples/GetVsphereVmList.query.json -Raw
-Invoke-Rsc -OperationText $query
+Invoke-Rsc -GqlQuery $query
 ```
 
 You can also pass arguments to your query. For example if you wanted to
@@ -176,7 +169,7 @@ We also saw that with the `New-RscQueryCluster` operation cmdlet,
 you would do:
 
 ```powershell
-(New-RscQueryCluster -List ).Nodes.Id
+(New-RscQueryCluster -Operation List).Nodes.Id
 ```
 
 And finally, there is also a `Get-RscCluster` wrapper cmdlet:
@@ -190,7 +183,7 @@ schema, but we also curate a few wrapper scripts to cover very
 common cases. For example, when running the `clusterConnection()`
 GraphQL query, typically when looking at the response, you are
 only interested in its `Nodes` field. So
-[Get-RscCluster](../RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/Public/Get-RscCluster.psm1)
+[Get-RscCluster](../Toolkit/Public/Get-RscCluster.ps1)
 is a wrapper cmdlet that runs the `clusterConnection()` query,
 and returns the `Nodes` field (among other things).
 
@@ -212,70 +205,55 @@ $coreCmdlets = @('Set-RscServiceAccountFile', 'Connect-Rsc', 'Disconnect-Rsc', '
 
 ### Operation cmdlets
 
+There are 61 `New-RscQuery*` cmdlets and 61 `New-RscMutation*` cmdlets
+(122 total). Each one groups related GraphQL operations under a single
+domain. For example, `New-RscQueryCluster` covers all cluster-related
+queries, and `New-RscMutationCluster` covers all cluster-related mutations.
+
+Some examples:
+
 | Cmdlet | Description |
 | --- | --- |
-| `New-RscMutationActivitySeries` | Run an Activity Series related GraphQL mutation |
-| `New-RscMutationAws` | Run an AWS-related GraphQL mutation |
-| `New-RscMutationAzure` | Run an Azure-related GraphQL mutation |
-| `New-RscMutationCassandra` | Run a Cassandra-related GraphQL mutation|
-| `New-RscMutationCluster` | Run a Cluster-related GraphQL mutation|
-| `New-RscMutationDb2` | Run a DB2-related GraphQL mutation|
-| `New-RscMutationHyperv` | Run a HyperV-related GraphQL mutation|
-| `New-RscMutationLdap` | Run an LDAP-related GraphQL mutation|
-| `New-RscMutationMongo` | Run a Mongo-related GraphQL mutation|
-| `New-RscMutationMssql` | Run a MSSQL-related GraphQL mutation|
-| `New-RscMutationNutanix` | Run a Nutanix-related GraphQL mutation |
-| `New-RscMutationO365` | Run an Office365-related GraphQL mutation |
-| `New-RscMutationOracle` | Run an Oracle-related GraphQL mutation |
-| `New-RscMutationSla` | Run an SLA-related GraphQL mutation |
-| `New-RscMutationVcenter` | Run a VCenter-related GraphQL mutation |
-| `New-RscMutationVsphere` | Run a VSphere-related GraphQL mutation |
-| `New-RscMutationVsphereVm` | Run a VSphere VM-related GraphQL mutation |
-| `New-RscQueryAccount` | Run an Account-related GraphQL query |
-| `New-RscQueryActivitySeries` | Run an Activity Series-related GraphQL query |
-| `New-RscQueryAws` | Run an AWS-related GraphQL query |
-| `New-RscQueryAzure` | Run an Azure-related GraphQL query |
-| `New-RscQueryCassandra` | Run a Cassandra-related GraphQL query |
-| `New-RscQueryCluster` | Run a  Cluster-related GraphQL query |
-| `New-RscQueryDb2` | Run a DB2-related GraphQL query |
-| `New-RscQueryHyperv` | Run an HyperV-related GraphQL query |
-| `New-RscQueryLdap` | Run an LDAP-related GraphQL query |
-| `New-RscQueryMongo` | Run a Mongo-related GraphQL query |
-| `New-RscQueryMssql` | Run a MSSQL-related GraphQL query |
-| `New-RscQueryNutanix` | Run a Nutanix-related GraphQL query |
-| `New-RscQueryO365` | Run an Office365-related GraphQL query |
-| `New-RscQueryOracle` | Run an Oracle-related GraphQL query |
-| `New-RscQuerySla` | Run an SLA-related GraphQL query |
-| `New-RscQueryVcenter` | Run a VCenter-related GraphQL query |
-| `New-RscQueryVsphere` | Run a VSphere-related GraphQL query |
-| `New-RscQueryVsphereVm` | Run a VSphere VM-related GraphQL query |
+| `New-RscQueryCluster`  | Cluster-related GraphQL queries  |
+| `New-RscQueryVsphereVm`| VSphere VM-related queries       |
+| `New-RscQueryMssql`    | MSSQL-related queries            |
+| `New-RscQueryAws`      | AWS-related queries              |
+| `New-RscQuerySla`      | SLA-related queries              |
+| `New-RscMutationCluster` | Cluster-related mutations      |
+| `New-RscMutationSla`   | SLA-related mutations            |
+| `New-RscMutationSnapshot` | Snapshot-related mutations    |
 
-To obtain this list programmatically, you can do:
+To obtain the full list programmatically:
 
 ```powershell
-$opCmdlets=(Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object | Where-Object { $_ -like 'Invoke-Rsc*' -and $coreCmdlets -notcontains $_ }
+$opCmdlets = (Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object | Where-Object { $_ -like 'New-RscQuery*' -or $_ -like 'New-RscMutation*' }
 ```
 
 ### Wrapper cmdlets
 
+There are 77 wrapper cmdlets in `Toolkit/Public/`. These are
+handwritten PowerShell scripts built on top of the operation cmdlets.
+Some examples:
+
 | Cmdlet | Description |
 | --- | --- |
-| `Export-RscMssqlDatabase` | Export MSSQL Databases |
-| `Get-RscCluster` | Get the list of clusters, or get info about a specific cluster |
-| `Get-RscEventSeries` | Get activity series |
-| `Get-RscFileset` | Get info about filesets |
-| `Get-RscFilesetTemplate` | Get info about fileset templates |
-| `Get-RscHost` | Get info about hosts |
-| `Get-RscMssqlDatabase` | Get info about MSSQL databases |
-| `Get-RscMssqlDatabaseFiles` | Get info about MSSQL database files |
-| `Get-RscSnapshot` | Get snapshots |
-| `Get-RscVersion` | Get the RSC API server version |
-| `Get-RscVsphereVm` | Get info about VSphere VMs |
-| `Get-RscVsphereVm` | Get info about VSphere VMs |
-| `New-SlaDomain` | Create new SLA domains |
+| `Get-RscCluster`           | Get clusters                        |
+| `Get-RscSla`               | Get SLA domains                     |
+| `New-RscSla`               | Create new SLA domains              |
+| `Set-RscSla`               | Update SLA domains                  |
+| `Get-RscSnapshot`          | Get snapshots                       |
+| `Get-RscVsphereVm`         | Get VSphere VMs                     |
+| `Get-RscMssqlDatabase`     | Get MSSQL databases                 |
+| `Export-RscMssqlDatabase`   | Export MSSQL databases              |
+| `Get-RscAccount`           | Get account info                    |
+| `Get-RscEventSeries`       | Get activity series                 |
+| `Get-RscHelp`              | Get help on SDK operations          |
+| `Remove-NullProperties`    | Strip null fields from responses    |
+
+To obtain the full list programmatically:
 
 ```powershell
-$wrappers=(Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object | Where-Object { $coreCmdlets -notcontains $_ -and $opCmdlets -notcontains $_}
+$wrappers = (Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object | Where-Object { $coreCmdlets -notcontains $_ -and $opCmdlets -notcontains $_ }
 ```
 
 ## Finding your way around the SDK
@@ -378,7 +356,7 @@ Totpackstatus    Checks whether acknowledgement of the Time-based …
 
 ```
 
-Perousing the list, you can see that `List` is the subcommand you want.
+Perusing the list, you can see that `List` is the subcommand you want.
 
 ### Determining a cmdlet's inputs
 
@@ -390,26 +368,23 @@ a _field specification_ that determines what fields are returned. In the
 context of the SDK, we call the arguments `Var` and the field specification
 `Field` (because PowerShell has the convention to use singular nouns).
 
-You can see the arguments and fields for a given cmdlet by using the
-`-GetInput` parameter to `New-RscQueryCluster`:
+You can see the arguments and fields for a given cmdlet by calling
+`.Info()` on the query object:
 
 ```powershell
-PS> New-RscQueryCluster -List -GetInput
-
-Op   Var                                             Field
---   ---                                             -----
-List {[before, ], [filter, ], [after, ], [first, ]…} ClusterConnection
+PS> $q = New-RscQueryCluster -Operation List
+PS> $q.Info()
 ```
 
-Note that when passing `-GetInput` to a cmdlet, it does not actually
-reach out to the RSC API server, but only return info about its inputs.
+This does not reach out to the RSC API server — it only returns info
+about the operation's variables and field types.
 
-Also note that you are only required to pass arguments that are
-required by the GraphQL operation. For example, the `List` operation
-does not require any arguments, so you can call it like this:
+You are only required to pass arguments that are required by the
+GraphQL operation. For example, the `List` operation does not require
+any arguments, so you can call it like this:
 
 ```powershell
-PS> New-RscQueryCluster -List
+PS> New-RscQueryCluster -Operation List
 ```
 
 and the SDK automatically fills in the field specification.
@@ -418,16 +393,16 @@ Now let's say you only want to retrieve the first 3 clusters, you can
 pass the `first` argument like this:
 
 ```powershell
-$query=(New-RscQueryCluster -Operation List)
-$query.Var.first=3
+$query = (New-RscQueryCluster -Operation List)
+$query.Var.first = 3
 ```
 
 Subfields can also contain arguments. You can pass subfield
 arguments like this:
 
 ```powershell
-$query=(New-RscQueryVspherevm -Operation NewList)
-$query.Field.Nodes[0].Vars.VsphereVirtualDisks.Count=3
+$query = (New-RscQueryVsphereVm -Operation NewList)
+$query.Field.Nodes[0].Vars.VsphereVirtualDisks.Count = 3
 ```
 
 The field `Nodes` contains a subfield called `VsphereVirtualDisks`.
@@ -441,7 +416,7 @@ with sensible defaults, but you can also specify it yourself:
 Let's look at what the default field spec looks like for the `Nodes` field:
 
 ```powershell
-PS> (New-RscQueryCluster -List -Var $query.Var).Nodes[0]
+PS> (New-RscQueryCluster -Operation List -Var $query.Var).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED
@@ -485,7 +460,7 @@ Here we set it to `"fetch"` but anything would work.
 Now let's run the command again, with the new field spec:
 
 ```powershell
-PS> (New-RscQueryCluster -List -Var $query.Var -Field $query.Field).Nodes[0]
+PS> (New-RscQueryCluster -Operation List -Var $query.Var -Field $query.Field).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED
