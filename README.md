@@ -154,7 +154,26 @@ Get-RscAccount -Detail
 (Get-RscAccount).AccountId
 ```
 
-To list clusters:
+To list clusters using `New-RscQuery -Gql` (the recommended approach):
+
+```powershell
+# Create and run a query by GraphQL name
+$result = New-RscQuery -Gql clusterConnection | Invoke-Rsc
+$result.Nodes | Select-Object Id, Name, Status
+
+# With variables: get the first 3 clusters
+$result = New-RscQuery -Gql clusterConnection -Var @{ first = 3 } | Invoke-Rsc
+$result.Nodes.Name
+
+# Add fields not in the default set
+$result = New-RscQuery -Gql clusterConnection -AddField Nodes.Version | Invoke-Rsc
+$result.Nodes | Select-Object Name, Version
+```
+
+For mutations (creating, updating, deleting resources), see
+[How To Run Mutations](docs/HOWTO_mutations.md).
+
+Or use wrapper cmdlets for common operations:
 
 ```powershell
 $c=Get-RscCluster
@@ -167,9 +186,9 @@ $c.id # list cluster ids
 To run raw GraphQL queries:
 
 ```powershell
-Invoke-Rsc -GqlQuery "query accountSettings{accountSettings{isEulaAccepted}}"
+Invoke-Rsc -Gql "query accountSettings{accountSettings{isEulaAccepted}}"
 
-$vms=(Invoke-Rsc -GqlQuery 
+$vms=(Invoke-Rsc -Gql 
   "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}").Nodes
 ```
 

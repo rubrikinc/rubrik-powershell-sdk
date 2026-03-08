@@ -1,33 +1,33 @@
-. "${PSScriptRoot}\..\Utils\import.ps1"
-. "${PSScriptRoot}\SampleUtils.ps1"
+<#
+.SYNOPSIS
+    Connecting to RSC and running a simple query.
 
+.DESCRIPTION
+    This sample demonstrates:
+    1. Connecting to RSC using a service account file
+    2. Running a query with New-RscQuery -Gql
+    3. Disconnecting from RSC
 
-# Check if the RSC_SERVICE_ACCOUNT_FILE environment variable is defined
-if (!(Test-Path Env:RSC_SERVICE_ACCOUNT_FILE)) {
-   # RSC_SERVICE_ACCOUNT_FILE environment variable is not defined
-   throw "Error: RSC_SERVICE_ACCOUNT_FILE environment variable is not defined"
-}
+.NOTES
+    Prerequisites:
+    - Install-Module RubrikSecurityCloud
+    - Set-RscServiceAccountFile /path/to/service_account.json
+#>
 
-# Connect to the Rubrik Security Cloud using the service account
-# file specified in the RSC_SERVICE_ACCOUNT_FILE environment variable:
-Connect-Rsc -FromEnv
+# --- Connect ---
+# Connect-Rsc reuses an existing session or creates a new one.
+# Call it at the top of every script — it's safe to call repeatedly.
+Connect-Rsc
 
-Write-Message @"
-1. We start by building the inputs to the cluster list query. We'll
-   be supplying the "first" and "filter" arguments.
-"@
+# --- Check version ---
+$version = Get-RscVersion
+Write-Host "SDK schema: $($version.SdkSchemaVersion)  Server: $($version.ServerVersion)"
 
-Write-Code "`$filter = Get-RscType -Name `"ClusterFilterInput`" -InitialValues @{`"excludeEmptyCluster`"=`$false}"
-$filter = Get-RscType -Name "ClusterFilterInput" -InitialValues @{"excludeEmptyCluster"=$false}
+# --- Run a simple query ---
+# List clusters using the GraphQL query name directly
+$result = New-RscQuery -Gql clusterConnection -Var @{ first = 5 } | Invoke-Rsc
+Write-Host "`nFirst $($result.Nodes.Count) of $($result.Count) clusters:"
+$result.Nodes | Select-Object Id, Name, Status | Format-Table -AutoSize
 
-Write-Message @"
-2. Specifying which fields we want to retrieve from the cluster connection.
-"@
-Write-Code "`$clusters = Get-RscType -Name `"ClusterConnection`" -InitialProperties @(`"Count`", `"Nodes.Version`")"
-$connection = Get-RscType -Name "ClusterConnection" -InitialProperties @("Count", "Nodes.Version")
-
-Write-Message @"
-3. Calling the cluster connection query with the input fields and reply fields."
-"@
-Write-Code -Pause "`$clusters = Query-RscCluster -Connection -Input @{`"filter`"=`$filter; `"first`"=5} -Reply `$connection"
-Query-RscCluster -Connection -Input @{"filter"=$filter; "first"=5} -Reply $connection
+# --- Disconnect ---
+Disconnect-Rsc

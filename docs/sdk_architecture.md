@@ -5,19 +5,18 @@ The SDK is internally composed of two layers:
 - __GQL-SDK__ is the lower layer:
   it is a GraphQL client that handles the
   communication with the RSC GraphQL API, and
-  provide:
-    - the core cmdlets
-    - the operation cmdlets
-    and mutations.
+  provides:
+    - the core cmdlets (`New-RscQuery`, `New-RscMutation`, `Invoke-Rsc`, etc.)
+    - the domain cmdlets (generated, one per API domain)
 - __SDK-Extensions__ is the upper layer. It provides:
-    - the wrapper cmdlets
+    - the wrapper cmdlets (handwritten PowerShell scripts)
 
-Note that distinction is not visible to the user,
+Note that this distinction is not visible to the user;
 cmdlets and types from both layers are exposed
 in the same module. For example, both
-`Get-RscAccount` and `New-RscQueryAccount` are
-available to the user, but the latter is
-part of the GQL-SDK layer, and the former
+`Get-RscCluster` and `New-RscQuery -Gql clusterConnection` are
+available to the user, but the latter uses
+the GQL-SDK layer, and the former
 is part of the SDK-Extensions layer.
 
 ## GQL-SDK
@@ -26,56 +25,55 @@ is part of the SDK-Extensions layer.
 
 - Auto-generated SDK
 - Rubrik GraphQL schema has over 1000 operations
-  => impractical to have 1 cmdlet per operation
-- Operations are grouped under "commands"
-  Example: `New-RscQueryCluster` command regroups all operations from the
-  GraphQL Schema that start with the word "cluster"
+- Use `New-RscQuery -Gql <queryName>` to create a query object
+  for any GraphQL query by name
+- Use `New-RscMutation -Gql <mutationName>` for mutations
 
-### Commands and Operations
+### Creating a Query
 
-- Selecting an operation from a command is done with the `-Operation`
-  parameter, e.g. `-Operation List`, `-Operation Connected`, etc.
+```powershell
+# Create a query by GraphQL name
+$q = New-RscQuery -Gql clusterConnection
 
-Example: New-RscQueryCluster command
-
-- Operations: List, Connected, DefaultGateway, etc.
+# Find query names by keyword
+Get-RscCmdlet cluster
+```
 
 ### Working with Inputs
 
-- Inputs: Arguments and Fields
+- Inputs: Variables and Fields
     - Direct match with GraphQL:
-        - Operation = GQL Operation,
-        - Arguments = Arguments to the GQL Operation,
+        - Variables = Arguments to the GQL Operation,
         - Fields = Fields in the response.
 - Using `.Info()` on the query object
-    - Example: `(New-RscQueryCluster -Operation List).Info()` returns
+    - Example: `(New-RscQuery -Gql clusterConnection).Info()` returns
       information about the operation's variables and field types
 - Modifying inputs
     - Set the value of `Var` and `Field` and then invoke the query
-- Workflow: Define inputs using variables ahead of calling the query
-    - Create the query object
-    - Modify `Var` and `Field`
-    - Invoke the query
+- Workflow:
+    1. Create the query object
+    2. Modify `Var` and `Field`
+    3. Invoke the query
 
 ## SDK-Extensions
 
-- Handwritten PowerShell scripts that wrap calls around `New-RscQuery*`
-  and `New-RscMutation*` calls
+- Handwritten PowerShell scripts that wrap calls around `New-RscQuery`
+  and `New-RscMutation` calls
 - A few are provided by Rubrik Engineering
 - Community is encouraged to contribute
 
 ### Creating an Extension
 
 - Connect to RSC if needed
-- Get inputs using -GetInput
-- Modify inputs as required
-- Call the appropriate `New-RscQuery*` or `New-RscMutation*` cmdlet
+- Create a query with `New-RscQuery -Gql` or `New-RscMutation -Gql`
+- Set variables and fields as required
+- Call `Invoke-Rsc` to execute the query
 
 ### Example: Get-RscCluster.ps1
 
 - Parameters: First, Detail
 - Connect to RSC if needed
-- Get inputs
-- Modify inputs
-- Call the query
-- Filter the results
+- Create the query (`New-RscQuery -Gql clusterConnection`)
+- Set variables and field profile
+- Invoke the query
+- Filter and return the results

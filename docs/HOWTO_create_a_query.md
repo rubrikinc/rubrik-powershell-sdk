@@ -27,18 +27,18 @@ Get-RscCmdlet -ExactMatch clusterConnection   # exact lookup
 Use it directly:
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 ```
 
 ### You have a raw GraphQL string or file
 
 ```powershell
 # Inline string
-Invoke-Rsc -GqlQuery "query { clusterConnection { nodes { id name } } }"
+Invoke-Rsc -Gql "query { clusterConnection { nodes { id name } } }"
 
 # From a file
 $gql = Get-Content -Path ./my-query.gql -Raw
-Invoke-Rsc -GqlQuery $gql
+Invoke-Rsc -Gql $gql
 ```
 
 ## 2 — Set Variables
@@ -46,7 +46,7 @@ Invoke-Rsc -GqlQuery $gql
 ### See what variables are available
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 $q.Var                    # list all variables
 $q.Var.Example()          # show example values
 $q.Info()                 # full operation info (variables + field types)
@@ -55,13 +55,13 @@ $q.Info()                 # full operation info (variables + field types)
 ### Pass variables inline
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection -Var @{ first = 3 }
+$q = New-RscQuery -Gql clusterConnection -Var @{ first = 3 }
 ```
 
 ### Set variables on the query object
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 $q.Var.first = 3
 $q.Var.sortBy = "REGISTERED_AT"
 ```
@@ -77,7 +77,7 @@ For most queries, the defaults are sufficient — just invoke the query.
 ### Use the defaults (most common)
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 $q | Invoke-Rsc    # returns id, name, status, type, etc.
 ```
 
@@ -85,16 +85,16 @@ $q | Invoke-Rsc    # returns id, name, status, type, etc.
 
 ```powershell
 # More fields (depth ≤ 1 expansion)
-$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile DETAIL
+$q = New-RscQuery -Gql clusterConnection -FieldProfile DETAIL
 
 # Nearly all fields (can be very large)
-$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile FULL
+$q = New-RscQuery -Gql clusterConnection -FieldProfile FULL
 ```
 
 ### Add or remove specific fields
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection `
+$q = New-RscQuery -Gql clusterConnection `
     -AddField Nodes.SnapshotCount, Nodes.GeoLocation.Address `
     -RemoveField Nodes.Status
 ```
@@ -103,10 +103,10 @@ $q = New-RscQuery -GqlQuery clusterConnection `
 
 ```powershell
 # List all valid field paths
-New-RscQuery -GqlQuery clusterConnection -ValidPatchSet
+New-RscQuery -Gql clusterConnection -ValidPatchSet
 
 # Search for a specific field
-New-RscQuery -GqlQuery clusterConnection -ValidPatchSet |
+New-RscQuery -Gql clusterConnection -ValidPatchSet |
     Where-Object { $_ -match "snapshot" }
 ```
 
@@ -116,7 +116,7 @@ New-RscQuery -GqlQuery clusterConnection -ValidPatchSet |
 $fieldObj = Get-RscType -Name ClusterConnection -InitialProperties @(
     "Nodes.Id", "Nodes.Name", "Nodes.Version"
 )
-$q = New-RscQuery -GqlQuery clusterConnection -Field $fieldObj -FieldProfile EMPTY
+$q = New-RscQuery -Gql clusterConnection -Field $fieldObj -FieldProfile EMPTY
 ```
 
 See [AutoField](./autofield.md) for full details on profiles, patches,
@@ -132,7 +132,7 @@ $q | Invoke-Rsc
 $q.Invoke()
 
 # One-liner
-(New-RscQuery -GqlQuery clusterConnection | Invoke-Rsc).Nodes | Select-Object Id, Name
+(New-RscQuery -Gql clusterConnection | Invoke-Rsc).Nodes | Select-Object Id, Name
 ```
 
 ## Examples
@@ -140,7 +140,7 @@ $q.Invoke()
 ### List clusters with snapshot counts
 
 ```powershell
-$result = New-RscQuery -GqlQuery clusterConnection `
+$result = New-RscQuery -Gql clusterConnection `
     -Var @{ first = 5 } `
     -AddField Nodes.SnapshotCount |
     Invoke-Rsc
@@ -151,7 +151,7 @@ $result.Nodes | Select-Object Name, SnapshotCount, Status
 ### Get CDM upgrade info
 
 ```powershell
-$result = New-RscQuery -GqlQuery clusterConnection `
+$result = New-RscQuery -Gql clusterConnection `
     -Var @{ first = 1 } `
     -AddField Nodes.CdmUpgradeInfo |
     Invoke-Rsc
@@ -162,7 +162,7 @@ $result.Nodes[0].CdmUpgradeInfo | Remove-NullProperties
 ### Inspect the generated GraphQL
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection -AddField Nodes.SnapshotCount
+$q = New-RscQuery -Gql clusterConnection -AddField Nodes.SnapshotCount
 $q.GqlRequest().Query    # see the full query text
 ```
 

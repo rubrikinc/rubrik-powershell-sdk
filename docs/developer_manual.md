@@ -67,7 +67,7 @@ With the SDK, you can do the same thing with a single cmdlet,
 using the GraphQL query name directly:
 
 ```powershell
-PS> (New-RscQuery -GqlQuery clusterConnection).Nodes.Id
+PS> (New-RscQuery -Gql clusterConnection).Nodes.Id
 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
 fd326eaa-534d-4f2a-861e-250d192fbaae
 ```
@@ -76,9 +76,11 @@ That's it! You don't need to write the full GraphQL query, and you don't
 need to parse the JSON response. That list of cluster IDs is already in
 a PowerShell array, and you can use it directly.
 
-`New-RscQuery -GqlQuery clusterConnection` creates a query object for the
+`New-RscQuery -Gql clusterConnection` creates a query object for the
 `clusterConnection` GraphQL query. The SDK automatically fills in a
 sensible default set of fields (see [AutoField](./autofield.md)).
+For a step-by-step walkthrough of query creation, see
+[How To Create a Query](./HOWTO_create_a_query.md).
 The result is a
 [ClusterConnection object](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html)
 which contains a `Nodes` property, which is an array of `Cluster` objects,
@@ -93,10 +95,16 @@ PS> Get-RscCmdlet -ExactMatch clusterConnection   # exact lookup
 
 > **Note**: The SDK also has domain-specific cmdlets like
 > `New-RscQueryCluster -Operation List` which do the same thing.
-> These are still supported but `New-RscQuery -GqlQuery` is the
+> These are still supported but `New-RscQuery -Gql` is the
 > recommended approach — it's simpler and maps directly to the
 > GraphQL schema without needing to know which "API domain" a
 > query belongs to.
+
+For mutations (creating, updating, deleting resources), see
+[How To Run Mutations](./HOWTO_mutations.md).
+
+For paginating through large result sets, see
+[How To Paginate](./HOWTO_pagination.md).
 
 ## Working directly with GraphQL queries
 
@@ -126,7 +134,7 @@ and read them with `Get-Content`. For example:
 
 ```powershell
 $query = Get-Content -Path Samples/GetVsphereVmList.query.json -Raw
-Invoke-Rsc -GqlQuery $query
+Invoke-Rsc -Gql $query
 ```
 
 You can also pass arguments to your query. For example if you wanted to
@@ -147,7 +155,7 @@ The SDK cmdlets can be divided into 3 categories:
   `Get-RscType`, `Get-RscCmdlet` and `Set-RscServiceAccountFile`.
 - **Domain cmdlets** (generated): `New-RscQueryCluster`,
   `New-RscMutationSla`, etc. These group operations by API domain.
-  Still supported, but prefer `New-RscQuery -GqlQuery` instead.
+  Still supported, but prefer `New-RscQuery -Gql` instead.
 - **Wrapper cmdlets** (handwritten): `Get-RscCluster`, `Get-RscSla`,
   `New-RscSla`, etc. Built on top of the core/domain cmdlets for
   common use cases.
@@ -157,7 +165,7 @@ equivalent ways to get the same result:
 
 ```powershell
 # Recommended: use the GraphQL query name directly
-(New-RscQuery -GqlQuery clusterConnection | Invoke-Rsc).Nodes.Id
+(New-RscQuery -Gql clusterConnection | Invoke-Rsc).Nodes.Id
 
 # Raw GraphQL string (for complex or custom queries)
 (Invoke-Rsc "query {clusterConnection(sortBy:RegisteredAt){nodes{id}}}").Nodes.Id
@@ -188,9 +196,9 @@ runs the `clusterConnection()` query and returns the `Nodes` field
 
 ### Domain cmdlets (generated)
 
-> **Prefer `New-RscQuery -GqlQuery` over domain cmdlets.** Domain cmdlets
+> **Prefer `New-RscQuery -Gql` over domain cmdlets.** Domain cmdlets
 > group operations by "API domain" (e.g., Cluster, SLA), which requires
-> knowing which domain a query belongs to. `New-RscQuery -GqlQuery`
+> knowing which domain a query belongs to. `New-RscQuery -Gql`
 > accepts the GraphQL query name directly and resolves the domain
 > automatically.
 
@@ -254,7 +262,7 @@ The RSC schema is massive. Here's how to find the query you need:
 Use it directly:
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 ```
 
 ### If you're searching by keyword
@@ -270,10 +278,10 @@ clusterConnection New-RscQueryCluster -Operation List
 ...
 ```
 
-Then use the GraphQL operation name with `New-RscQuery -GqlQuery`:
+Then use the GraphQL operation name with `New-RscQuery -Gql`:
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 ```
 
 ### Determining a query's inputs
@@ -285,7 +293,7 @@ called `Var` and `Field`.
 Call `.Info()` on a query object to see its variables and field types:
 
 ```powershell
-PS> $q = New-RscQuery -GqlQuery clusterConnection
+PS> $q = New-RscQuery -Gql clusterConnection
 PS> $q.Info()
 ```
 
@@ -297,7 +305,7 @@ GraphQL operation. For example, `clusterConnection` does not require
 any variables, so you can invoke it directly:
 
 ```powershell
-PS> New-RscQuery -GqlQuery clusterConnection | Invoke-Rsc
+PS> New-RscQuery -Gql clusterConnection | Invoke-Rsc
 ```
 
 The SDK automatically fills in the field specification using
@@ -307,7 +315,7 @@ Now let's say you only want to retrieve the first 3 clusters, you can
 pass the `first` variable like this:
 
 ```powershell
-$query = New-RscQuery -GqlQuery clusterConnection
+$query = New-RscQuery -Gql clusterConnection
 $query.Var.first = 3
 ```
 
@@ -315,7 +323,7 @@ Subfields can also contain arguments. You can pass subfield
 arguments like this:
 
 ```powershell
-$query = New-RscQuery -GqlQuery vSphereVmNewConnection
+$query = New-RscQuery -Gql vSphereVmNewConnection
 $query.Field.Nodes[0].Vars.VsphereVirtualDisks.Count = 3
 ```
 
@@ -325,13 +333,15 @@ The field `Nodes` contains a subfield called `VsphereVirtualDisks`.
 arguments.
 
 If the field specification is not given, the SDK fills it in automatically
-with sensible defaults (see [AutoField](./autofield.md)),
-but you can also specify it yourself:
+with sensible defaults (see [AutoField](./autofield.md)).
+When working with GraphQL interfaces and composite objects, see
+[Retrieving Interface Fields](./retrieving_interface_fields.md).
+You can also specify fields yourself:
 
 Let's look at what the default field spec looks like for the `Nodes` field:
 
 ```powershell
-PS> (New-RscQuery -GqlQuery clusterConnection -Var @{first=3} | Invoke-Rsc).Nodes[0]
+PS> (New-RscQuery -Gql clusterConnection -Var @{first=3} | Invoke-Rsc).Nodes[0]
 
 PauseStatus                     : NOT_PAUSED
 Status                          : DISCONNECTED
@@ -368,7 +378,7 @@ it doesn't matter what, as long as it's not null.
 The easier way is to use `-AddField`:
 
 ```powershell
-$query = New-RscQuery -GqlQuery clusterConnection -AddField Nodes.Version
+$query = New-RscQuery -Gql clusterConnection -AddField Nodes.Version
 ```
 
 Or you can manually set it on the field object:
@@ -407,4 +417,18 @@ Version                         : 8.0.2-p2-22662
 
 ## SDK Architecture
 
-see [SDK Architecture](./sdk_architecture.md)
+See [SDK Architecture](./sdk_architecture.md).
+
+For schema introspection utilities, see
+[GraphQL Model](./graphql_model.md).
+
+## What's Next
+
+Recommended reading order:
+
+1. [How To Create a Query](./HOWTO_create_a_query.md) — step-by-step query creation
+2. [How To Run Mutations](./HOWTO_mutations.md) — creating, updating, deleting resources
+3. [How To Paginate](./HOWTO_pagination.md) — walking through large result sets
+4. [AutoField](./autofield.md) — field profiles, patches, and customization
+5. [Retrieving Interface Fields](./retrieving_interface_fields.md) — advanced: GraphQL interfaces
+6. [FAQ](./faq.md) — common errors and troubleshooting
