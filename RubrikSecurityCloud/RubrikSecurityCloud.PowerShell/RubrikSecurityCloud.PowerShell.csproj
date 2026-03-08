@@ -98,6 +98,20 @@
     <Copy SourceFiles="@(ToolkitFormatFiles)" DestinationFolder="$(TargetDir)/../Toolkit/Format" />
   </Target>
 
+  <Target Name="CopyToolkitTestE2eFiles" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net6.0'">
+    <ItemGroup>
+      <ToolkitTestE2eFiles Include="$(ProjectDir)/../../Toolkit/Tests/e2e/*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ToolkitTestE2eFiles)" DestinationFolder="$(TargetDir)/../Toolkit/Tests/e2e" />
+  </Target>
+
+  <Target Name="CopyToolkitTestInitFiles" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net6.0'">
+    <ItemGroup>
+      <ToolkitTestInitFiles Include="$(ProjectDir)/../../Toolkit/Tests/E2eTestInit.ps1;$(ProjectDir)/../../Toolkit/Tests/E2eDiagnostics.ps1" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ToolkitTestInitFiles)" DestinationFolder="$(TargetDir)/../Toolkit/Tests" />
+  </Target>
+
   <Target Name="GeneratePSD1File" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net6.0'">
     <Exec Command="pwsh -File $(ProjectDir)/UpdatePsd1.ps1" />
   </Target>
