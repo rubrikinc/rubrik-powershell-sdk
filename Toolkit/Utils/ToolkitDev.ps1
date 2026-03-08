@@ -43,18 +43,24 @@ if (-not (Test-Path $OutputDir)) {
 
 $tkdir = Resolve-Path "$PSScriptRoot/.."
 $opdir = Join-Path -Path $tkdir -ChildPath "Operations" -Resolve
+$testsDir = Join-Path -Path $tkdir -ChildPath "Tests"
+$testsE2eDir = Join-Path -Path $testsDir -ChildPath "e2e"
 $Toolkit = [PSCustomObject]@{
-    SdkDir     = Resolve-Path "$tkdir/.."
-    Dir        = $tkdir
-    PublicDir  = Join-Path -Path $tkdir -ChildPath "Public" -Resolve
-    PrivateDir = Join-Path -Path $tkdir -ChildPath "Private" -Resolve
-    FormatDir  = Join-Path -Path $tkdir -ChildPath "Format" -Resolve
+    SdkDir       = Resolve-Path "$tkdir/.."
+    Dir          = $tkdir
+    PublicDir    = Join-Path -Path $tkdir -ChildPath "Public" -Resolve
+    PrivateDir   = Join-Path -Path $tkdir -ChildPath "Private" -Resolve
+    FormatDir    = Join-Path -Path $tkdir -ChildPath "Format" -Resolve
     OpDefaultDir = Join-Path -Path $opdir -ChildPath "DEFAULT" -Resolve
     OpDetailDir  = Join-Path -Path $opdir -ChildPath "DETAIL" -Resolve
-    OutputDir  = Join-Path -Path $OutputDir -ChildPath "Toolkit"
+    TestsDir     = $testsDir
+    TestsE2eDir  = $testsE2eDir
+    OutputDir    = Join-Path -Path $OutputDir -ChildPath "Toolkit"
 }
 Remove-Variable -Name 'tkdir'
 Remove-Variable -Name 'opdir'
+Remove-Variable -Name 'testsDir'
+Remove-Variable -Name 'testsE2eDir'
 
 # make sure the Output directories exists
 New-Item -Path $Toolkit.OutputDir -ItemType Directory -Force | Out-Null
@@ -151,7 +157,21 @@ function Copy-ToolkitToOutputDir {
             $fileCount++
         }
     }
-    
+
+    # Copy test init files (E2eTestInit.ps1, E2eDiagnostics.ps1)
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.TestsDir)/*.ps1" -ErrorAction SilentlyContinue)) {
+        if (Copy-ToolkitFileToOutputDir $file) {
+            $fileCount++
+        }
+    }
+
+    # Copy e2e test files
+    Foreach ($file in (Get-ChildItem -Path "$($Toolkit.TestsE2eDir)/*" -ErrorAction SilentlyContinue)) {
+        if (Copy-ToolkitFileToOutputDir $file) {
+            $fileCount++
+        }
+    }
+
     return $fileCount
 }
 
@@ -217,7 +237,7 @@ Output directory: $tkOutputDir
 
     # Compare source files with destination files
     $results = @()
-    $srcDirs = @($Toolkit.PublicDir, $Toolkit.PrivateDir, $Toolkit.FormatDir, $Toolkit.OpDefaultDir, $Toolkit.OpDetailDir)
+    $srcDirs = @($Toolkit.PublicDir, $Toolkit.PrivateDir, $Toolkit.FormatDir, $Toolkit.OpDefaultDir, $Toolkit.OpDetailDir, $Toolkit.TestsDir, $Toolkit.TestsE2eDir)
     $different = $false
     Get-ChildItem -Path $srcDirs | ForEach-Object {
         $sourceFile = $_.FullName
