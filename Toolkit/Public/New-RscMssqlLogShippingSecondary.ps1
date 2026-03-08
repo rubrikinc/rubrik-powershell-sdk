@@ -46,6 +46,11 @@ function New-RscMssqlLogShippingSecondary{
     .PARAMETER AutomaticReseed
     Automatically reseed the log shipping configuration when the primary transaction log chain breaks
     
+
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
     #>
 
     [CmdletBinding()]
@@ -97,8 +102,13 @@ function New-RscMssqlLogShippingSecondary{
 
         [Parameter(
             Mandatory = $false
-        )][Switch]$AutomaticReseed
+        )][Switch]$AutomaticReseed,
 
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -151,7 +161,8 @@ function New-RscMssqlLogShippingSecondary{
         }        
         #endregion
 
+        if ( $AsQuery ) { return $query }
         $query.Invoke()
-        
-    } 
+
+    }
 }

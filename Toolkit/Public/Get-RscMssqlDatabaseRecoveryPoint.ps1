@@ -27,6 +27,11 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         - UTC: 2023-11-02 08:00:000Z
     All values will be converted into UTC and used as the recovery point.
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns exact point in time in UTC based on the latest recovery point
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -56,7 +61,13 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         [Parameter(ParameterSetName = 'LastFull')]
         [switch]$LastFull,
         [Parameter(ParameterSetName = 'RestoreTime')]
-        [datetime]$RestoreTime
+        [datetime]$RestoreTime,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -66,6 +77,7 @@ function Get-RscMssqlDatabaseRecoveryPoint {
         if ($PSBoundParameters.ContainsKey('Latest')) {
             $query = New-RscQueryMssql -Op RecoverableRanges -AddField Data.BeginTime, Data.EndTime
             $query.Var.input.id = $RscMssqlDatabase.id
+            if ( $AsQuery ) { return $query }
             $result = $query.Invoke()
             $LatestRecoveryRange = $result.Data | Sort-Object -Descending -Property EndTime 
             $RecoveryDateTime = $LatestRecoveryRange[0].EndTime.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.fffZ')

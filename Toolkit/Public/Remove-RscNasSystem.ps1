@@ -18,7 +18,9 @@ function Remove-RscNasSystem {
     The object representing the NAS system to be deleted.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Remove-RscNasSystem "b951f770-4519-5820-a451-5b2ff4a50f25"

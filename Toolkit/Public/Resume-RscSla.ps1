@@ -27,7 +27,9 @@ function Resume-RscSla {
     The Global Sla which should be resumed.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Resume an SLA on two clusters on which it is applied.

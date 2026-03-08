@@ -23,6 +23,11 @@ function Get-RscMssqlLogShipping {
     .PARAMETER Cluster
     Cluster object retrieved via Get-RscCluster
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns a list of all log shipping relationships
     Get-RscMssqlLogShipping
@@ -81,7 +86,13 @@ function Get-RscMssqlLogShipping {
             ValueFromPipeline = $true
         )]
         [Alias("RscCluster")]
-        [RubrikSecurityCloud.Types.Cluster]$Cluster
+        [RubrikSecurityCloud.Types.Cluster]$Cluster,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -114,6 +125,7 @@ function Get-RscMssqlLogShipping {
             $query.Field.PrimaryCluster.Name = "FETCH"
             $query.Field.PrimaryCluster.Id = "FETCH"
 
+            if ( $AsQuery ) { return $query }
         }
         else {
             $query = New-RscQuery -GqlQuery cdmMssqlLogShippingTargets
@@ -164,6 +176,7 @@ function Get-RscMssqlLogShipping {
             $query.Field.Nodes[0].PrimaryCluster.Name = "FETCH"
             $query.Field.Nodes[0].PrimaryCluster.Id = "FETCH"
     
+            if ( $AsQuery ) { return $query }
             $result = $query.Invoke()
             $result.Nodes
         }

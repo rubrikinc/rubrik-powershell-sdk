@@ -27,6 +27,11 @@ function Get-RscMssqlDatabase {
     .PARAMETER Detail
     Changes the data profile. This can affect the fields returned
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Return a list of MSSQL Databases
     Get-RscMssqlDatabase -List

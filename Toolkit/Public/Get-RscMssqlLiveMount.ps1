@@ -17,6 +17,11 @@ function Get-RscMssqlLiveMount {
     .PARAMETER MssqlDatabase
     Database object returned from Get-RscMssqlDatabase
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns the list of database files based on the latest recovery point
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -34,7 +39,13 @@ function Get-RscMssqlLiveMount {
             Mandatory = $false, 
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase
+        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -73,6 +84,7 @@ function Get-RscMssqlLiveMount {
             $query.Var.filters += $sourceDatabaseFilter
         }
         #endregion
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result.Nodes
     } 

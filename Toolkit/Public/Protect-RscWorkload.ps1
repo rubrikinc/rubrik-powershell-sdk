@@ -12,6 +12,11 @@ function Protect-RscWorkload
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Assign a VM named "foo" to the Gold SLA
     
@@ -61,7 +66,13 @@ function Protect-RscWorkload
 
     # RSC Snapshot retention setting
     [Parameter()]
-    [RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]$ExistingSnapshotAction
+    [RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]$ExistingSnapshotAction,
+
+    [Parameter(
+        Mandatory = $false,
+        ValueFromPipeline = $false,
+        HelpMessage = "Return the query object instead of running the query"
+    )][Switch]$AsQuery
   )
     Process {
 
@@ -89,6 +100,7 @@ function Protect-RscWorkload
           $query.Var.Input.ShouldApplyToNonPolicySnapshots = "true"
         }
         
+        if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc -Query $query
         $result
     }

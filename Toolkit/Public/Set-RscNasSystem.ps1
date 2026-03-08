@@ -50,7 +50,9 @@ function Set-RscNasSystem {
     in namespaces and recreate them.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Set-RscNasSystem "5dc44746-38d1-56d8-8570-a54b8dae0208"

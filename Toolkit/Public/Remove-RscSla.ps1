@@ -26,7 +26,9 @@ function Remove-RscSla {
     RSC.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Delete an SLA with the given SLA id and usernote

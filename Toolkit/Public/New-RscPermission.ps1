@@ -14,6 +14,11 @@ function New-RscPermission
 
 
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Create permission object to take on-demand snapshot of all VMs in the Gold SLA, then merge into a role.
     $permission = Get-RscSla -name "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
@@ -31,7 +36,13 @@ function New-RscPermission
         [RubrikSecurityCloud.Types.Operation]$Operation,
 
         [Parameter(ValueFromPipeline=$true)]
-        [RubrikSecurityCloud.Types.BaseType[]]$InputObject
+        [RubrikSecurityCloud.Types.BaseType[]]$InputObject,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     Begin {
         $objectIds = @()
@@ -49,6 +60,7 @@ function New-RscPermission
     }
     End {
         $globalResourceQuery = New-RscQuery -GqlQuery allAuthorizationsForGlobalResource
+        if ( $AsQuery ) { return $globalResourceQuery }
         $globalResourceOperations = Invoke-Rsc $globalResourceQuery
 
         $permission = New-Object -TypeName RubrikSecurityCloud.Types.Permission

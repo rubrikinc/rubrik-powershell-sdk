@@ -94,6 +94,11 @@ function Set-RscMssqlDatabase {
     .PARAMETER RemovePostBackupScript
     Removes the Post Script values
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Set-RscMssqlDatabase -RscMssqlDatabase $RscMssqlDatabase -RscCluster $RscCluster -RscSlaDomain $RscSlaDomain
     #>
@@ -201,7 +206,13 @@ function Set-RscMssqlDatabase {
         [Switch]$RemovePreBackupScript,
 
         [Parameter(ParameterSetName = "Remove Post-BackupScript", Mandatory = $true)]
-        [Switch]$RemovePostBackupScript
+        [Switch]$RemovePostBackupScript,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     Process {
         Write-Debug "- Running Set-RscMssqlDatabase"
@@ -389,6 +400,7 @@ function Set-RscMssqlDatabase {
             Default {}
         }
         #endregion
+        if ( $AsQuery ) { return $query }
         $query.Invoke()
-    } 
+    }
 }

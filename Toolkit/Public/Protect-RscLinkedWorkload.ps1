@@ -12,6 +12,11 @@ function Protect-RscLinkedWorkload
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     $ag1 = Get-RscMssqlAvailabilityGroup -AvailabilityGroupName "Foo" -Cluster (Get-RscCluster -Name "Bar") -Relic:$false -Replica:$false
     $ag2 = Get-RscMssqlAvailabilityGroup -AvailabilityGroupName "Foo" -Cluster (Get-RscCluster -Name "Baz") -Relic:$false -Replica:$false

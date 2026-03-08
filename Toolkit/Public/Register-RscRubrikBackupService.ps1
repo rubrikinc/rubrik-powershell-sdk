@@ -24,6 +24,11 @@ function Register-RscRubrikBackupService
     .PARAMETER Async
     Register physical host using async mutation
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Register RBS on a VMware VM
     Get-RscVmwareVm -Name "jake-001" | Register-RscRubrikBackupService
@@ -57,10 +62,16 @@ function Register-RscRubrikBackupService
         [RubrikSecurityCloud.Types.Cluster]$Cluster,
 
         # Async option.
-        [Parameter(Mandatory=$false, 
+        [Parameter(Mandatory=$false,
         ParameterSetName = "host",
         ValueFromPipeline=$false)]
-        [switch]$Async
+        [switch]$Async,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
 
     )
 
@@ -105,6 +116,7 @@ function Register-RscRubrikBackupService
             $query.var.input.clusterUuid = $Cluster.Id
         }
         
+        if ( $AsQuery ) { return $query }
         try {
             Invoke-Rsc $query
         }

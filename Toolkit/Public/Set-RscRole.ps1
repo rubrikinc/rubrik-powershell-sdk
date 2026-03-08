@@ -12,6 +12,11 @@ function Set-RscRole
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Update the description of a role
     
@@ -39,7 +44,13 @@ function Set-RscRole
 
     # RSC Sla Object
     [Parameter(ValueFromPipeline=$true)]
-    [RubrikSecurityCloud.Types.Role]$Role
+    [RubrikSecurityCloud.Types.Role]$Role,
+
+    [Parameter(
+        Mandatory = $false,
+        ValueFromPipeline = $false,
+        HelpMessage = "Return the query object instead of running the query"
+    )][Switch]$AsQuery
 
   )
     Process {
@@ -52,6 +63,7 @@ function Set-RscRole
         $query.Var.permissions = $Role.Permissions
         $query.Var.protectableClusters = $role.ProtectableClusters
         
+        if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc -Query $query
         $result
     }

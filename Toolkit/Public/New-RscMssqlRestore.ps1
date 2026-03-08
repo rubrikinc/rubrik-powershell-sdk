@@ -32,6 +32,11 @@ function New-RscMssqlRestore {
 
     # .PARAMETER RecoveryLSN
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Performs an in-place recovery of AdventureWorks2019 to a specific point in time. 
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -58,7 +63,13 @@ function New-RscMssqlRestore {
 
         [Parameter(
             Mandatory = $true
-        )][datetime]$RecoveryDateTime
+        )][datetime]$RecoveryDateTime,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
 
         # [Parameter(
         #     ParameterSetName = 'Recovery_LSN',
@@ -83,6 +94,7 @@ function New-RscMssqlRestore {
         $query.Var.input.config.recoveryPoint.date = $RecoveryDateTime
         #endregion
         
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

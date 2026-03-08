@@ -21,6 +21,11 @@ function New-RscNasShare {
     .PARAMTER AsQuery
     Instead of running the command, the query object is returned.
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     $createNasShare = New-RscNasShareInput -ShareType NFS -ExportPoint "/test_mounts/100_mb"
     New-RscNasShare -NasSystemId "b951f770-4519-5820-a451-5b2ff4a50f26" -NasShares @($createNasShare)

@@ -22,7 +22,9 @@ function Get-RscNasSystem {
     Switch to list all NAS systems.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Retrieve list of NAS systems.
