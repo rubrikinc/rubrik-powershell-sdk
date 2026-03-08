@@ -904,6 +904,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	dedicatedHostId = $someString
     /// 	# OPTIONAL
+    /// 	placement = @{
+    /// 		# REQUIRED
+    /// 		tenancyType = $someAwsInstanceTenancyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceTenancyType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		hostId = $someString
+    /// 		# OPTIONAL
+    /// 		hostResourceGroupArn = $someString
+    /// 	}
+    /// 	# OPTIONAL
     /// 	shouldResurrectSnapshot = $someBoolean
     /// }
     /// 
@@ -2267,6 +2276,15 @@ $query.Var.input = @{
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	dedicatedHostId = $someString
+	# OPTIONAL
+	placement = @{
+		# REQUIRED
+		tenancyType = $someAwsInstanceTenancyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceTenancyType]) for enum values.
+		# OPTIONAL
+		hostId = $someString
+		# OPTIONAL
+		hostResourceGroupArn = $someString
+	}
 	# OPTIONAL
 	shouldResurrectSnapshot = $someBoolean
 }"

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("googleSecops")]
         public GoogleSecOpsIntegrationConfig? GoogleSecops { get; set; }
 
+        //      C# -> MicrosoftDefenderIntegrationConfig? MicrosoftDefender
+        // GraphQL -> microsoftDefender: MicrosoftDefenderIntegrationConfig (type)
+        [JsonProperty("microsoftDefender")]
+        public MicrosoftDefenderIntegrationConfig? MicrosoftDefender { get; set; }
+
         //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
         // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)
         [JsonProperty("microsoftPurview")]
@@ -68,6 +73,7 @@ namespace RubrikSecurityCloud.Types
         CrowdStrikeIntegrationConfig? CrowdStrike = null,
         DlpConfig? DataLossPrevention = null,
         GoogleSecOpsIntegrationConfig? GoogleSecops = null,
+        MicrosoftDefenderIntegrationConfig? MicrosoftDefender = null,
         MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
         PamIntegrationConfig? Pam = null,
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GoogleSecops != null ) {
             this.GoogleSecops = GoogleSecops;
+        }
+        if ( MicrosoftDefender != null ) {
+            this.MicrosoftDefender = MicrosoftDefender;
         }
         if ( MicrosoftPurview != null ) {
             this.MicrosoftPurview = MicrosoftPurview;
@@ -142,6 +151,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "googleSecops" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MicrosoftDefenderIntegrationConfig? MicrosoftDefender
+        // GraphQL -> microsoftDefender: MicrosoftDefenderIntegrationConfig (type)
+        if (this.MicrosoftDefender != null) {
+            var fspec = this.MicrosoftDefender.AsFieldSpec(conf.Child("microsoftDefender"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "microsoftDefender" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -256,6 +277,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GoogleSecops != null && ec.Excludes("googleSecops",false))
         {
             this.GoogleSecops = null;
+        }
+        //      C# -> MicrosoftDefenderIntegrationConfig? MicrosoftDefender
+        // GraphQL -> microsoftDefender: MicrosoftDefenderIntegrationConfig (type)
+        if (ec.Includes("microsoftDefender",false))
+        {
+            if(this.MicrosoftDefender == null) {
+
+                this.MicrosoftDefender = new MicrosoftDefenderIntegrationConfig();
+                this.MicrosoftDefender.ApplyExploratoryFieldSpec(ec.NewChild("microsoftDefender"));
+
+            } else {
+
+                this.MicrosoftDefender.ApplyExploratoryFieldSpec(ec.NewChild("microsoftDefender"));
+
+            }
+        }
+        else if (this.MicrosoftDefender != null && ec.Excludes("microsoftDefender",false))
+        {
+            this.MicrosoftDefender = null;
         }
         //      C# -> MicrosoftPurviewConfig? MicrosoftPurview
         // GraphQL -> microsoftPurview: MicrosoftPurviewConfig (type)

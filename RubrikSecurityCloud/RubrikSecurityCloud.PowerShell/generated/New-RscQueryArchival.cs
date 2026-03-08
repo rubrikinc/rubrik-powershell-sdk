@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'Archival' API domain:
-    /// Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 14 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -251,6 +251,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Migration operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: Migration
+    /// 
+    /// $query = New-RscQueryArchival -Operation Migration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.sourceLocationId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalMigrationInfo
     /// 
     /// 
     /// 
@@ -586,6 +614,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FeaturePermissionForDataCenterRoleBased",
                 "HierarchyObjectRecoveryTarget",
                 "IsTotpMandatoryInTargetVersion",
+                "Migration",
                 "PerObjectInfo",
                 "RcsLocationsConsumptionStats",
                 "ReaderInfo",
@@ -623,6 +652,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsTotpMandatoryInTargetVersion":
                         this.ProcessRecord_IsTotpMandatoryInTargetVersion();
+                        break;
+                    case "Migration":
+                        this.ProcessRecord_Migration();
                         break;
                     case "PerObjectInfo":
                         this.ProcessRecord_PerObjectInfo();
@@ -701,6 +733,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTotpMandatoryInTargetVersion";
             // Create new graphql operation isTotpMandatoryInTargetVersion
             InitQueryIsTotpMandatoryInTargetVersion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalMigration.
+        internal void ProcessRecord_Migration()
+        {
+            this._logger.name += " -Migration";
+            // Create new graphql operation archivalMigration
+            InitQueryArchivalMigration();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -941,6 +982,26 @@ $query.Var.fid = $someString"
                 Query.IsTotpMandatoryInTargetVersionFieldSpec,
                 @"# REQUIRED
 $query.Var.version = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalMigration(sourceLocationId: UUID!): ArchivalMigrationInfo!
+        internal void InitQueryArchivalMigration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("sourceLocationId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalMigration",
+                "($sourceLocationId: UUID!)",
+                "ArchivalMigrationInfo",
+                Query.ArchivalMigration,
+                Query.ArchivalMigrationFieldSpec,
+                @"# REQUIRED
+$query.Var.sourceLocationId = $someString"
             );
         }
 

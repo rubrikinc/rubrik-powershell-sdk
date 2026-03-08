@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userData")]
         public System.String? UserData { get; set; }
 
+        //      C# -> RegionImageIds? RegionImageIds
+        // GraphQL -> regionImageIds: RegionImageIds! (type)
+        [JsonProperty("regionImageIds")]
+        public RegionImageIds? RegionImageIds { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         CloudDirectCloudProvider? CloudProvider = null,
         System.String? CloudRegion = null,
         System.String? ImageId = null,
-        System.String? UserData = null
+        System.String? UserData = null,
+        RegionImageIds? RegionImageIds = null
     ) 
     {
         if ( CloudProvider != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UserData != null ) {
             this.UserData = UserData;
+        }
+        if ( RegionImageIds != null ) {
+            this.RegionImageIds = RegionImageIds;
         }
         return this;
     }
@@ -116,6 +125,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "userData\n" ;
             } else {
                 s += ind + "userData\n" ;
+            }
+        }
+        //      C# -> RegionImageIds? RegionImageIds
+        // GraphQL -> regionImageIds: RegionImageIds! (type)
+        if (this.RegionImageIds != null) {
+            var fspec = this.RegionImageIds.AsFieldSpec(conf.Child("regionImageIds"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "regionImageIds" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,6 +213,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.UserData != null && ec.Excludes("userData",true))
         {
             this.UserData = null;
+        }
+        //      C# -> RegionImageIds? RegionImageIds
+        // GraphQL -> regionImageIds: RegionImageIds! (type)
+        if (ec.Includes("regionImageIds",false))
+        {
+            if(this.RegionImageIds == null) {
+
+                this.RegionImageIds = new RegionImageIds();
+                this.RegionImageIds.ApplyExploratoryFieldSpec(ec.NewChild("regionImageIds"));
+
+            } else {
+
+                this.RegionImageIds.ApplyExploratoryFieldSpec(ec.NewChild("regionImageIds"));
+
+            }
+        }
+        else if (this.RegionImageIds != null && ec.Excludes("regionImageIds",false))
+        {
+            this.RegionImageIds = null;
         }
     }
 

@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETING")]
         DELETING,
 
+        [EnumMember(Value = "INACTIVE")]
+        INACTIVE,
+
         [EnumMember(Value = "STATUS_UNSPECIFIED")]
         STATUS_UNSPECIFIED,
 

@@ -1,0 +1,93 @@
+// RemediationType.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace RubrikSecurityCloud.Types
+{
+    public enum RemediationType
+    {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_APPLY_MIP_LABEL")]
+        REMEDIATION_TYPE_APPLY_MIP_LABEL,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_CLEAR_ALTSECURITY_ATTRIBUTE")]
+        REMEDIATION_TYPE_CLEAR_ALTSECURITY_ATTRIBUTE,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_CLEAR_ATTRIBUTE_VALUE")]
+        REMEDIATION_TYPE_CLEAR_ATTRIBUTE_VALUE,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_DISABLE_DELEGATION")]
+        REMEDIATION_TYPE_DISABLE_DELEGATION,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_DISABLE_DES_ENCRYPTION")]
+        REMEDIATION_TYPE_DISABLE_DES_ENCRYPTION,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_DISABLE_INHERITANCE")]
+        REMEDIATION_TYPE_DISABLE_INHERITANCE,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_DISABLE_NEVER_EXPIRES")]
+        REMEDIATION_TYPE_DISABLE_NEVER_EXPIRES,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_DISABLE_PROTOCOL_TRANSITION")]
+        REMEDIATION_TYPE_DISABLE_PROTOCOL_TRANSITION,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_DISABLE_REVERSIBLE_ENCRYPTION")]
+        REMEDIATION_TYPE_DISABLE_REVERSIBLE_ENCRYPTION,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_ENABLE_AES_ENCRYPTION")]
+        REMEDIATION_TYPE_ENABLE_AES_ENCRYPTION,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_ENABLE_KERBEROS_PREAUTH")]
+        REMEDIATION_TYPE_ENABLE_KERBEROS_PREAUTH,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_EXPORT_ACTIONS_LOG_TO_CSV")]
+        REMEDIATION_TYPE_EXPORT_ACTIONS_LOG_TO_CSV,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_EXPORT_PERMISSIONS_TO_CSV")]
+        REMEDIATION_TYPE_EXPORT_PERMISSIONS_TO_CSV,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_GPO_ROLLBACK")]
+        REMEDIATION_TYPE_GPO_ROLLBACK,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_IDP_EVENT_REVERT")]
+        REMEDIATION_TYPE_IDP_EVENT_REVERT,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_REMEDIATE_AD_RISK")]
+        REMEDIATION_TYPE_REMEDIATE_AD_RISK,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_REMEDIATE_ENTRA_ID_RISK")]
+        REMEDIATION_TYPE_REMEDIATE_ENTRA_ID_RISK,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_REMOVE_IDENTITIES_FROM_GROUP")]
+        REMEDIATION_TYPE_REMOVE_IDENTITIES_FROM_GROUP,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_RESET_PASSWORD")]
+        REMEDIATION_TYPE_RESET_PASSWORD,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_REVOKE_ACCESS")]
+        REMEDIATION_TYPE_REVOKE_ACCESS,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_TICKETING_JIRA")]
+        REMEDIATION_TYPE_TICKETING_JIRA,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_TICKETING_SERVICENOW")]
+        REMEDIATION_TYPE_TICKETING_SERVICENOW,
+
+        [EnumMember(Value = "REMEDIATION_TYPE_UNSPECIFIED")]
+        REMEDIATION_TYPE_UNSPECIFIED
+
+
+    } // enum RemediationType
+
+} // namespace RubrikSecurityCloud.Types

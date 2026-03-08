@@ -49,3 +49,4 @@ Type of objects managed by SLA Domains.
 - GCP_CLOUD_SQL_OBJECT_TYPE - GCP Cloud SQL object.
 - PROXMOX_OBJECT_TYPE - Proxmox object.
 - GITHUB_OBJECT_TYPE - GitHub object.
+- AWS_CONFIG_OBJECT_TYPE - AWS Config object.

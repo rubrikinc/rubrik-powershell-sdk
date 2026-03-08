@@ -3,6 +3,21 @@
 ### activecustomanalyzers
 - The activecustomanalyzers subcommand takes no arguments.
 - Returns AnalyzerConnection.
+### activities
+List of activities.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - orderBy - OrderBy: The field and order to sort the activities.
+    - filter - ListActivitiesFilter: Filter for the query.
+    - includeRemediationStatus - System.Boolean: Whether to include remediation status for
+each activity.
+    - includeRemediationTypes - System.Boolean: Whether to include available remediation
+types for each activity.
+- Returns ActivityEntryConnection.
 ### adgroupmembers
 Objects that match the specifications of the AD group.
 
@@ -1382,6 +1397,14 @@ Determines if the SSO group already exists in the account.
     - ssoGroupName - System.String: SSO group name.
     - userDomainId - System.String: User auth domain ID.
 - Returns SsoGroupAlreadyExistsReply.
+### staticroutes
+Get all existing route configs
+
+Supported in v5.0+
+Lists all existing route configs.
+
+- There is a single argument of type GetRoutesInput.
+- Returns InternalGetRoutesResponse.
 ### supportbundle
 Get the status of generating support bundle
 
@@ -1747,7 +1770,7 @@ Get whether alerts for a given workload are enabled.
 ### workloadanomalies
 Specifies workloads that have an anomalous snapshot.
 
-- There are 19 arguments.
+- There are 20 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1767,6 +1790,7 @@ Specifies workloads that have an anomalous snapshot.
     - blueprintRecoveryTypes - list of BlueprintRecoveryTypes: Recovery type of the Recovery Plan.
     - locationsFilter - list of System.Strings: Filter results by their location.
     - resolutionStatusFilter - list of ResolutionStatuss: Filter by anomaly resolution.
+    - riskLevelTypesFilter - list of RiskLevelTypes: Filter by risk level type.
 - Returns WorkloadAnomalyConnection.
 ### workloadforeverid
 Returns the RSC forever ID of a workload.

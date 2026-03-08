@@ -77,5 +77,5 @@ Metadata for rendering an SLA Domain.
   - Source clusters configured in the SLA Domain.
 - haPolicy: HaPolicy
   - HA policy of the HA SLA Domain.
-- backupType: SlaBackupType
+- backupType: BackupType
   - Type of backup.

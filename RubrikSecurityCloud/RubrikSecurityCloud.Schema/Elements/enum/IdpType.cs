@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LOCAL_AD")]
         LOCAL_AD,
 
+        [EnumMember(Value = "OKTA")]
+        OKTA,
+
         [EnumMember(Value = "ON_PREM_AD")]
         ON_PREM_AD,
 

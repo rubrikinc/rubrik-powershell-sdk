@@ -12,3 +12,4 @@ Fields to sort workload anomalies.
 - SENSITIVE_HITS - Sort by number of sensitive hits.
 - SENSITIVE_FILES - Sort by number of sensitive files.
 - DETECTION_TIME - Sort by detection time.
+- HITS_BY_SENSITIVITY - Sort by hits per risk level (high, medium, low, no risk).

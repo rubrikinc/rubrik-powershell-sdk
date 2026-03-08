@@ -25,15 +25,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authType")]
         public AzureSqlAuthenticationType? AuthType { get; set; }
 
-        //      C# -> System.String? DatabaseId
-        // GraphQL -> databaseId: String! (scalar)
-        [JsonProperty("databaseId")]
-        public System.String? DatabaseId { get; set; }
-
         //      C# -> System.String? Script
         // GraphQL -> script: String! (scalar)
         [JsonProperty("script")]
         public System.String? Script { get; set; }
+
+        //      C# -> System.String? ServerId
+        // GraphQL -> serverId: UUID! (scalar)
+        [JsonProperty("serverId")]
+        public System.String? ServerId { get; set; }
 
 
         #endregion
@@ -46,18 +46,18 @@ namespace RubrikSecurityCloud.Types
 
     public SqlServerSetupScriptDetails Set(
         AzureSqlAuthenticationType? AuthType = null,
-        System.String? DatabaseId = null,
-        System.String? Script = null
+        System.String? Script = null,
+        System.String? ServerId = null
     ) 
     {
         if ( AuthType != null ) {
             this.AuthType = AuthType;
         }
-        if ( DatabaseId != null ) {
-            this.DatabaseId = DatabaseId;
-        }
         if ( Script != null ) {
             this.Script = Script;
+        }
+        if ( ServerId != null ) {
+            this.ServerId = ServerId;
         }
         return this;
     }
@@ -82,15 +82,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "authType\n" ;
             }
         }
-        //      C# -> System.String? DatabaseId
-        // GraphQL -> databaseId: String! (scalar)
-        if (this.DatabaseId != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "databaseId\n" ;
-            } else {
-                s += ind + "databaseId\n" ;
-            }
-        }
         //      C# -> System.String? Script
         // GraphQL -> script: String! (scalar)
         if (this.Script != null) {
@@ -98,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "script\n" ;
             } else {
                 s += ind + "script\n" ;
+            }
+        }
+        //      C# -> System.String? ServerId
+        // GraphQL -> serverId: UUID! (scalar)
+        if (this.ServerId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serverId\n" ;
+            } else {
+                s += ind + "serverId\n" ;
             }
         }
         return s;
@@ -124,23 +124,6 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthType = null;
         }
-        //      C# -> System.String? DatabaseId
-        // GraphQL -> databaseId: String! (scalar)
-        if (ec.Includes("databaseId",true))
-        {
-            if(this.DatabaseId == null) {
-
-                this.DatabaseId = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.DatabaseId != null && ec.Excludes("databaseId",true))
-        {
-            this.DatabaseId = null;
-        }
         //      C# -> System.String? Script
         // GraphQL -> script: String! (scalar)
         if (ec.Includes("script",true))
@@ -157,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Script != null && ec.Excludes("script",true))
         {
             this.Script = null;
+        }
+        //      C# -> System.String? ServerId
+        // GraphQL -> serverId: UUID! (scalar)
+        if (ec.Includes("serverId",true))
+        {
+            if(this.ServerId == null) {
+
+                this.ServerId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServerId != null && ec.Excludes("serverId",true))
+        {
+            this.ServerId = null;
         }
     }
 

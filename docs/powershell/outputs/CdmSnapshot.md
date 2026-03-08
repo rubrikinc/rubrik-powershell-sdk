@@ -53,6 +53,8 @@
   - MySQL instance-specific metadata. Null if the snapshot is not of a MySQL Instance.
 - k8sAppMetadata: K8sResourceSnapshotMetadata
   - K8S specific metadata for the snapshot.
+- hypervVirtualMachineAppMetadata: HypervAppMetadata
+  - Hyper-V virtual machine-specific metadata. Null if the snapshot is not of a Hyper-V virtual machine.
 - fileCount: System.Int64
   - Number of files in the snapshot.
 - pendingSnapshotDeletion: PendingSnapshotDeletion

@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NOT_ATTEMPTED")]
         NOT_ATTEMPTED,
 
+        [EnumMember(Value = "PARTIAL_SYNC_SUCCESS")]
+        PARTIAL_SYNC_SUCCESS,
+
         [EnumMember(Value = "PENDING")]
         PENDING,
 

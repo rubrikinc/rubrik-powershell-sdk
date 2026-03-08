@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_JIRA_OBJECT_TYPE")]
         ATLASSIAN_JIRA_OBJECT_TYPE,
 
+        [EnumMember(Value = "AWS_CONFIG_OBJECT_TYPE")]
+        AWS_CONFIG_OBJECT_TYPE,
+
         [EnumMember(Value = "AWS_DYNAMODB_OBJECT_TYPE")]
         AWS_DYNAMODB_OBJECT_TYPE,
 

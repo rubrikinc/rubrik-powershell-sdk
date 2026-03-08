@@ -7,7 +7,7 @@ A snippet of the related help topic.
   - Type of the related help topic.
 - title: System.String
   - Title of the related help topic.
-- description: System.String
-  - Summary of the related help topic.
 - link: System.String
   - URL pointing to the related help topic.
+- description: System.String
+  - Summary of the related help topic.

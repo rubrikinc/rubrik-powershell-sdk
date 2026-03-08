@@ -1,5 +1,5 @@
 ### LockMethodType
-Lock method type.
+The lock method.
 
 - lockMethod: LockMethod
   - The lock method.

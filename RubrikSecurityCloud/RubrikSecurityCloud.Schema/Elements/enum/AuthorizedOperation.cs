@@ -111,6 +111,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CREATE_THREAT_HUNT")]
         CREATE_THREAT_HUNT,
 
+        [EnumMember(Value = "CREATE_TICKETING")]
+        CREATE_TICKETING,
+
         [EnumMember(Value = "CROSS_ACCOUNT_REPLICATION")]
         CROSS_ACCOUNT_REPLICATION,
 
@@ -683,6 +686,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_SECURITY_SETTINGS")]
         VIEW_SECURITY_SETTINGS,
+
+        [EnumMember(Value = "VIEW_SENSITIVE_HITS_IN_IMPACTED_FILES")]
+        VIEW_SENSITIVE_HITS_IN_IMPACTED_FILES,
 
         [EnumMember(Value = "VIEW_SERVICENOW_INTEGRATION")]
         VIEW_SERVICENOW_INTEGRATION,

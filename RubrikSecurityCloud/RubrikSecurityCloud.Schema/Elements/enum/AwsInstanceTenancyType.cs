@@ -1,4 +1,4 @@
-// SlaBackupType.cs
+// AwsInstanceTenancyType.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -13,18 +13,21 @@ using System.Runtime.Serialization;
 
 namespace RubrikSecurityCloud.Types
 {
-    public enum SlaBackupType
+    public enum AwsInstanceTenancyType
     {
-        [EnumMember(Value = "NATIVE")]
-        NATIVE,
-
-        [EnumMember(Value = "RUBRIK")]
-        RUBRIK,
-
         [EnumMember(Value = "UNKNOWN")]
-        UNKNOWN
+        UNKNOWN,
+
+        [EnumMember(Value = "DEDICATED")]
+        DEDICATED,
+
+        [EnumMember(Value = "DEFAULT")]
+        DEFAULT,
+
+        [EnumMember(Value = "HOST")]
+        HOST
 
 
-    } // enum SlaBackupType
+    } // enum AwsInstanceTenancyType
 
 } // namespace RubrikSecurityCloud.Types

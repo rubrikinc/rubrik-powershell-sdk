@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'Cloud Native' API domain:
-    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 22 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -428,6 +428,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ObjectStoreSnapshotRegexSearch operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: ObjectStoreSnapshotRegexSearch
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation ObjectStoreSnapshotRegexSearch
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	objectStoreId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// 	# REQUIRED
+    /// 	regexPattern = $someString
+    /// 	# OPTIONAL
+    /// 	pagination = @{
+    /// 		# OPTIONAL
+    /// 		cursor = $someString
+    /// 		# OPTIONAL
+    /// 		limit = $someInt
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudNativeObjectStoreSnapshotRegexSearchReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RbaInstallers operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -775,6 +817,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "LabelKeys",
                 "LabelRules",
                 "LabelValues",
+                "ObjectStoreSnapshotRegexSearch",
                 "RbaInstallers",
                 "SnapshotDetailsForRecovery",
                 "SnapshotTypeDetails",
@@ -832,6 +875,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LabelValues":
                         this.ProcessRecord_LabelValues();
+                        break;
+                    case "ObjectStoreSnapshotRegexSearch":
+                        this.ProcessRecord_ObjectStoreSnapshotRegexSearch();
                         break;
                     case "RbaInstallers":
                         this.ProcessRecord_RbaInstallers();
@@ -970,6 +1016,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LabelValues";
             // Create new graphql operation allCloudNativeLabelValues
             InitQueryAllCloudNativeLabelValues();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudNativeObjectStoreSnapshotRegexSearch.
+        internal void ProcessRecord_ObjectStoreSnapshotRegexSearch()
+        {
+            this._logger.name += " -ObjectStoreSnapshotRegexSearch";
+            // Create new graphql operation cloudNativeObjectStoreSnapshotRegexSearch
+            InitQueryCloudNativeObjectStoreSnapshotRegexSearch();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1345,6 +1400,40 @@ $query.Var.key = $someString
 $query.Var.limit = $someInt
 # REQUIRED
 $query.Var.objectType = $someCloudNativeLabelObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLabelObjectType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudNativeObjectStoreSnapshotRegexSearch(input: CloudNativeObjectStoreSnapshotRegexSearchReq!): CloudNativeObjectStoreSnapshotRegexSearchReply!
+        internal void InitQueryCloudNativeObjectStoreSnapshotRegexSearch()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CloudNativeObjectStoreSnapshotRegexSearchReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeObjectStoreSnapshotRegexSearch",
+                "($input: CloudNativeObjectStoreSnapshotRegexSearchReq!)",
+                "CloudNativeObjectStoreSnapshotRegexSearchReply",
+                Query.CloudNativeObjectStoreSnapshotRegexSearch,
+                Query.CloudNativeObjectStoreSnapshotRegexSearchFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	objectStoreId = $someString
+	# REQUIRED
+	snapshotId = $someString
+	# REQUIRED
+	regexPattern = $someString
+	# OPTIONAL
+	pagination = @{
+		# OPTIONAL
+		cursor = $someString
+		# OPTIONAL
+		limit = $someInt
+	}
+}"
             );
         }
 

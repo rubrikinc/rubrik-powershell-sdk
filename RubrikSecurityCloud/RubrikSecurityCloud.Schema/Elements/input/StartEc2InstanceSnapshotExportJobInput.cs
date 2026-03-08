@@ -118,6 +118,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dedicatedHostId")]
         public System.String? DedicatedHostId { get; set; }
 
+        //      C# -> AwsInstancePlacementInput? Placement
+        // GraphQL -> placement: AwsInstancePlacementInput (input)
+        [JsonProperty("placement")]
+        public AwsInstancePlacementInput? Placement { get; set; }
+
         //      C# -> System.Boolean? ShouldResurrectSnapshot
         // GraphQL -> shouldResurrectSnapshot: Boolean (scalar)
         [JsonProperty("shouldResurrectSnapshot")]

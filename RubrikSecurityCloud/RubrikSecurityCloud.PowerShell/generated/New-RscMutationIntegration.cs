@@ -177,6 +177,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			serviceAccountId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftDefender = @{
+    /// 			# REQUIRED
+    /// 			domainName = $someString
+    /// 			# REQUIRED
+    /// 			applicationId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -295,6 +304,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					webhookId = $someInt
     /// 					# REQUIRED
     /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftDefender = @{
+    /// 					# REQUIRED
+    /// 					domainName = $someString
+    /// 					# REQUIRED
+    /// 					applicationId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -511,6 +529,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			serviceAccountId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftDefender = @{
+    /// 			# REQUIRED
+    /// 			domainName = $someString
+    /// 			# REQUIRED
+    /// 			applicationId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -631,6 +658,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					webhookId = $someInt
     /// 					# REQUIRED
     /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftDefender = @{
+    /// 					# REQUIRED
+    /// 					domainName = $someString
+    /// 					# REQUIRED
+    /// 					applicationId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
     /// 				}
     /// 			}
     /// 		}
@@ -885,6 +921,15 @@ $query.Var.input = @{
 			# REQUIRED
 			serviceAccountId = $someString
 		}
+		# OPTIONAL
+		microsoftDefender = @{
+			# REQUIRED
+			domainName = $someString
+			# REQUIRED
+			applicationId = $someString
+			# REQUIRED
+			clientSecret = $someString
+		}
 	}
 }"
             );
@@ -995,6 +1040,15 @@ $query.Var.input = @{
 					webhookId = $someInt
 					# REQUIRED
 					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				microsoftDefender = @{
+					# REQUIRED
+					domainName = $someString
+					# REQUIRED
+					applicationId = $someString
+					# REQUIRED
+					clientSecret = $someString
 				}
 			}
 		}
@@ -1179,6 +1233,15 @@ $query.Var.input = @{
 			# REQUIRED
 			serviceAccountId = $someString
 		}
+		# OPTIONAL
+		microsoftDefender = @{
+			# REQUIRED
+			domainName = $someString
+			# REQUIRED
+			applicationId = $someString
+			# REQUIRED
+			clientSecret = $someString
+		}
 	}
 }"
             );
@@ -1291,6 +1354,15 @@ $query.Var.input = @{
 					webhookId = $someInt
 					# REQUIRED
 					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				microsoftDefender = @{
+					# REQUIRED
+					domainName = $someString
+					# REQUIRED
+					applicationId = $someString
+					# REQUIRED
+					clientSecret = $someString
 				}
 			}
 		}

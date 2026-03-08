@@ -17,3 +17,5 @@ with IntegrationType will be considered.
   - The CrowdStrike configuration.
 - googleSecops: GoogleSecOpsIntegrationConfigInput
   - The Google SecOps configuration.
+- microsoftDefender: MicrosoftDefenderIntegrationConfigInput
+  - The Microsoft Defender configuration.

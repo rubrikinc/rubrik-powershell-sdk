@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Mongo' API domain:
-    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
+    /// BulkRecoverableRanges, Collection, Collections, Database, Databases, GetMissedCollectionSetSnapshots, GetMissedOpsManagerManagedSourceSnapshots, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
     /// </summary>
     /// <description>
     /// New-RscQueryMongo creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 11 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
+    /// one of: BulkRecoverableRanges, Collection, Collections, Database, Databases, GetMissedCollectionSetSnapshots, GetMissedOpsManagerManagedSourceSnapshots, RecoverableRanges, RestoreTargetsForSnapshot, Source, or Sources.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -324,6 +324,76 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the GetMissedCollectionSetSnapshots operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: GetMissedCollectionSetSnapshots
+    /// 
+    /// $query = New-RscQueryMongo -Operation GetMissedCollectionSetSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MissedSnapshotListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GetMissedOpsManagerManagedSourceSnapshots operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: GetMissedOpsManagerManagedSourceSnapshots
+    /// 
+    /// $query = New-RscQueryMongo -Operation GetMissedOpsManagerManagedSourceSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MissedSnapshotListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RecoverableRanges operation
     /// of the 'Mongo' API domain.
     /// <code>
@@ -518,6 +588,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Collections",
                 "Database",
                 "Databases",
+                "GetMissedCollectionSetSnapshots",
+                "GetMissedOpsManagerManagedSourceSnapshots",
                 "RecoverableRanges",
                 "RestoreTargetsForSnapshot",
                 "Source",
@@ -551,6 +623,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Databases":
                         this.ProcessRecord_Databases();
+                        break;
+                    case "GetMissedCollectionSetSnapshots":
+                        this.ProcessRecord_GetMissedCollectionSetSnapshots();
+                        break;
+                    case "GetMissedOpsManagerManagedSourceSnapshots":
+                        this.ProcessRecord_GetMissedOpsManagerManagedSourceSnapshots();
                         break;
                     case "RecoverableRanges":
                         this.ProcessRecord_RecoverableRanges();
@@ -617,6 +695,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Databases";
             // Create new graphql operation mongoDatabases
             InitQueryMongoDatabases();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // getMissedMongoCollectionSetSnapshots.
+        internal void ProcessRecord_GetMissedCollectionSetSnapshots()
+        {
+            this._logger.name += " -GetMissedCollectionSetSnapshots";
+            // Create new graphql operation getMissedMongoCollectionSetSnapshots
+            InitQueryGetMissedMongoCollectionSetSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // getMissedOpsManagerManagedMongoSourceSnapshots.
+        internal void ProcessRecord_GetMissedOpsManagerManagedSourceSnapshots()
+        {
+            this._logger.name += " -GetMissedOpsManagerManagedSourceSnapshots";
+            // Create new graphql operation getMissedOpsManagerManagedMongoSourceSnapshots
+            InitQueryGetMissedOpsManagerManagedMongoSourceSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -880,6 +976,60 @@ $query.Var.filter = @(
 		)
 }
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // getMissedMongoCollectionSetSnapshots(input: GetMissedMongoCollectionSetSnapshotsInput!): MissedSnapshotListResponse!
+        internal void InitQueryGetMissedMongoCollectionSetSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetMissedMongoCollectionSetSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGetMissedMongoCollectionSetSnapshots",
+                "($input: GetMissedMongoCollectionSetSnapshotsInput!)",
+                "MissedSnapshotListResponse",
+                Query.GetMissedMongoCollectionSetSnapshots,
+                Query.GetMissedMongoCollectionSetSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // getMissedOpsManagerManagedMongoSourceSnapshots(input: GetMissedOpsManagerManagedMongoSourceSnapshotsInput!): MissedSnapshotListResponse!
+        internal void InitQueryGetMissedOpsManagerManagedMongoSourceSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GetMissedOpsManagerManagedMongoSourceSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryGetMissedOpsManagerManagedMongoSourceSnapshots",
+                "($input: GetMissedOpsManagerManagedMongoSourceSnapshotsInput!)",
+                "MissedSnapshotListResponse",
+                Query.GetMissedOpsManagerManagedMongoSourceSnapshots,
+                Query.GetMissedOpsManagerManagedMongoSourceSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
+}"
             );
         }
 

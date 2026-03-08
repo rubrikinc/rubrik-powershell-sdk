@@ -44,6 +44,19 @@ Initiates a job to download one or more files or folders from an archived Filese
 
 - There is a single argument of type FilesetDownloadSnapshotFilesFromArchivalLocationInput.
 - Returns AsyncRequestStatus.
+### finishmigration
+Finishes an archival migration by swapping the source location's
+backing storage to point to the migration target.
+
+Prerequisites:
+- Data copy to the migration target must be complete.
+- Data validation must have succeeded.
+
+Calling this before prerequisites are met may result in data loss
+or an inconsistent location state.
+
+- There is a single argument of type FinishArchivalMigrationInput.
+- Returns FinishArchivalMigrationReply.
 ### pausetarget
 - There is a single argument of type PauseTargetInput.
 - Returns PauseTargetReply.
@@ -66,6 +79,12 @@ location, by passing the source location id and target location details.
 ### resumetarget
 - There is a single argument of type ResumeTargetInput.
 - Returns ResumeTargetReply.
+### terminatemigration
+Terminates an in-progress archival migration,
+marking the migration as cancelled.
+
+- There is a single argument of type TerminateArchivalMigrationInput.
+- Returns TerminateArchivalMigrationReply.
 ### updateglaciertarget
 Edit a target of type Glacier on a Rubrik cluster.
 

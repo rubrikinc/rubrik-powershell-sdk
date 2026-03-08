@@ -44,17 +44,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("categories")]
         public List<System.String>? Categories { get; set; }
 
-        //      C# -> System.String? Url
-        // GraphQL -> url: String (scalar)
-        [JsonProperty("url")]
-        public System.String? Url { get; set; }
-
         //      C# -> List<ProductDocumentationType>? ProductDocumentationTypes
         // GraphQL -> productDocumentationTypes: [ProductDocumentationType!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("productDocumentationTypes")]
         public List<ProductDocumentationType>? ProductDocumentationTypes { get; set; }
+
+        //      C# -> System.String? Url
+        // GraphQL -> url: String (scalar)
+        [JsonProperty("url")]
+        public System.String? Url { get; set; }
 
 
         #endregion

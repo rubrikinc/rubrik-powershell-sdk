@@ -1,5 +1,5 @@
 ### AzureInstanceType
-Azure Instance Type.
+Azure instance types.
 
 - TYPE_UNSPECIFIED - No instance type selected.
 - STANDARD_DS5_V2 - V2 Dense Node.

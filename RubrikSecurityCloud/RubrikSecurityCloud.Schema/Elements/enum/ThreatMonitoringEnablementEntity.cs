@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ThreatMonitoringEnablementEntity
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY")]
+        ACTIVE_DIRECTORY,
+
         [EnumMember(Value = "CDM_CLUSTER")]
         CDM_CLUSTER,
 

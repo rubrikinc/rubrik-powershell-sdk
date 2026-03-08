@@ -38,6 +38,12 @@ Checks whether enabling Time-based, One-Time Password (TOTP) is mandatory in the
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### migration
+Retrieves the current migration status and target location
+details for a given source archival location.
+
+- There is a single argument of type System.String.
+- Returns ArchivalMigrationInfo.
 ### perobjectinfo
 Get archival information for all objects with data archived to the specified location.
 

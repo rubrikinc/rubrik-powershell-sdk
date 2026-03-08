@@ -201,6 +201,7 @@ Authorized operations on an object.
 - VIEW_ANOMALY_DETECTION_FILE_DETAILS - View file details.
 - DOWNLOAD_ANOMALY_FORENSICS - Download suspicious files for forensics.
 - MANAGE_ANOMALY_DETECTION - Manage anomalies.
+- VIEW_SENSITIVE_HITS_IN_IMPACTED_FILES - View sensitive hits in impacted files.
 - VIEW_IDENTITY_RESILIENCY - View identity resiliency.
 - MANAGE_IDENTITY_RESILIENCY - Manage identity resiliency.
 - REMEDIATE_IDENTITY_RESILIENCY_VIOLATIONS - Remediate identity resiliency violations.
@@ -232,6 +233,7 @@ Authorized operations on an object.
 - DEACTIVATE_OTHERS_PERSONAL_ACCESS_TOKEN - Deactivate personal access token for other users.
 - MANAGE_AUTO_QUARANTINE - Allow users to manage auto quarantine settings.
 - MANAGE_TICKETING_PLATFORM - Manage integration and configuration of ticketing platforms.
+- CREATE_TICKETING - Create tickets on configured ticketing platforms.
 - VIEW_GOOGLE_SECOPS_INTEGRATION - View Google SecOps integrations.
 - MANAGE_GOOGLE_SECOPS_INTEGRATION - Manage Google SecOps integrations.
 - UPLOAD_SNAPSHOT_ON_DEMAND - Upload a snapshot to an archival location on demand.

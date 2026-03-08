@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
+        [EnumMember(Value = "AWS_NATIVE_CONFIG")]
+        AWS_NATIVE_CONFIG,
+
         [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
         AWS_NATIVE_DYNAMODB_TABLE,
 

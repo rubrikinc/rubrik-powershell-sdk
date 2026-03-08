@@ -221,6 +221,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("db2AppMetadata")]
         public Db2AppMetadata? Db2AppMetadata { get; set; }
 
+        //      C# -> HypervAppMetadata? HypervVirtualMachineAppMetadata
+        // GraphQL -> hypervVirtualMachineAppMetadata: HypervAppMetadata (type)
+        [JsonProperty("hypervVirtualMachineAppMetadata")]
+        public HypervAppMetadata? HypervVirtualMachineAppMetadata { get; set; }
+
         //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
         // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)
         [JsonProperty("k8sAppMetadata")]
@@ -356,6 +361,7 @@ namespace RubrikSecurityCloud.Types
         List<DataLocation>? CloudNativeLocations = null,
         Cluster? Cluster = null,
         Db2AppMetadata? Db2AppMetadata = null,
+        HypervAppMetadata? HypervVirtualMachineAppMetadata = null,
         K8sResourceSnapshotMetadata? K8sAppMetadata = null,
         LatestUserNote? LatestUserNote = null,
         LegalHoldInfo? LegalHoldInfo = null,
@@ -494,6 +500,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Db2AppMetadata != null ) {
             this.Db2AppMetadata = Db2AppMetadata;
+        }
+        if ( HypervVirtualMachineAppMetadata != null ) {
+            this.HypervVirtualMachineAppMetadata = HypervVirtualMachineAppMetadata;
         }
         if ( K8sAppMetadata != null ) {
             this.K8sAppMetadata = K8sAppMetadata;
@@ -953,6 +962,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "db2AppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> HypervAppMetadata? HypervVirtualMachineAppMetadata
+        // GraphQL -> hypervVirtualMachineAppMetadata: HypervAppMetadata (type)
+        if (this.HypervVirtualMachineAppMetadata != null) {
+            var fspec = this.HypervVirtualMachineAppMetadata.AsFieldSpec(conf.Child("hypervVirtualMachineAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervVirtualMachineAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1883,6 +1904,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Db2AppMetadata != null && ec.Excludes("db2AppMetadata",false))
         {
             this.Db2AppMetadata = null;
+        }
+        //      C# -> HypervAppMetadata? HypervVirtualMachineAppMetadata
+        // GraphQL -> hypervVirtualMachineAppMetadata: HypervAppMetadata (type)
+        if (ec.Includes("hypervVirtualMachineAppMetadata",false))
+        {
+            if(this.HypervVirtualMachineAppMetadata == null) {
+
+                this.HypervVirtualMachineAppMetadata = new HypervAppMetadata();
+                this.HypervVirtualMachineAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineAppMetadata"));
+
+            } else {
+
+                this.HypervVirtualMachineAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("hypervVirtualMachineAppMetadata"));
+
+            }
+        }
+        else if (this.HypervVirtualMachineAppMetadata != null && ec.Excludes("hypervVirtualMachineAppMetadata",false))
+        {
+            this.HypervVirtualMachineAppMetadata = null;
         }
         //      C# -> K8sResourceSnapshotMetadata? K8sAppMetadata
         // GraphQL -> k8sAppMetadata: K8sResourceSnapshotMetadata (type)

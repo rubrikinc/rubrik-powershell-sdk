@@ -6,6 +6,7 @@
 - AWS_NATIVE_S3_BUCKET - AWS native S3 Bucket.
 - AwsNativeRdsInstance
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
+- AWS_NATIVE_CONFIG - AWS Native Config.
 - O365SharePointList
 - AllSubHierarchyType
 - AzureSqlManagedInstanceDb

@@ -23,3 +23,5 @@ Filters for querying sign-in logs.
   - Filter by locations (city + country code, e.g. "New York, US").
 - displayNames: list of System.Strings
   - Filter by display names.
+- displayNameSearchTerm: System.String
+  - Free-text search term for filtering by actor display name.

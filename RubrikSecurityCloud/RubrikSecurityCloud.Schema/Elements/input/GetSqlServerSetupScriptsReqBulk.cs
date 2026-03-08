@@ -19,15 +19,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AccountId
-        // GraphQL -> accountId: String (scalar)
-        [JsonProperty("accountId")]
-        public System.String? AccountId { get; set; }
-
-        //      C# -> List<System.String>? DatabaseIds
-        // GraphQL -> databaseIds: [String!] (scalar)
-        [JsonProperty("databaseIds")]
-        public List<System.String>? DatabaseIds { get; set; }
+        //      C# -> List<System.String>? ServerIds
+        // GraphQL -> serverIds: [UUID!] (scalar)
+        [JsonProperty("serverIds")]
+        public List<System.String>? ServerIds { get; set; }
 
 
         #endregion

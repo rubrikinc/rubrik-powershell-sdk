@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EVENT_PROVIDER_UNSPECIFIED")]
         EVENT_PROVIDER_UNSPECIFIED,
 
+        [EnumMember(Value = "OKTA_AUDIT_LOG")]
+        OKTA_AUDIT_LOG,
+
         [EnumMember(Value = "OKTA_SIGNIN_LOG")]
         OKTA_SIGNIN_LOG,
 

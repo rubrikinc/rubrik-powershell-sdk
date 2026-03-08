@@ -84,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aggregateAtPath")]
         public System.Boolean? AggregateAtPath { get; set; }
 
+        //      C# -> List<AffectedFilesDeltaType>? AffectedFilesDeltaTypes
+        // GraphQL -> affectedFilesDeltaTypes: [AffectedFilesDeltaType!] (enum)
+        [JsonProperty("affectedFilesDeltaTypes")]
+        public List<AffectedFilesDeltaType>? AffectedFilesDeltaTypes { get; set; }
+
         //      C# -> List<System.String>? DocumentTypesFilter
         // GraphQL -> documentTypesFilter: [UUID!] (scalar)
         [JsonProperty("documentTypesFilter")]

@@ -37,6 +37,8 @@ Active Directory Domain Controller.
   - Host information of this Active Directory Domain Controller.
 - newestCleanSnapshot: CdmSnapshot
   - The most recent snapshot that is not corrupted.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
 - cluster: Cluster
   - Rubrik cluster UUID.
 - dcLocation: System.String
@@ -105,8 +107,6 @@ Active Directory Domain Controller.
   - GroupBy connection for the snapshots of this workload.
 - snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
   - GroupBy connection for the snapshots of this workload.
-- newestIndexedSnapshot: CdmSnapshot
-  - The most recent indexed snapshot of this workload.
 - newestSnapshot: CdmSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: CdmSnapshot

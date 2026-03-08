@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Archival' API domain:
-    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 20 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -491,6 +491,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the FinishMigration operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: FinishMigration
+    /// 
+    /// $query = New-RscMutationArchival -Operation FinishMigration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	sourceLocationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FinishArchivalMigrationReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PauseTarget operation
     /// of the 'Archival' API domain.
     /// <code>
@@ -676,6 +707,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ResumeTargetReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the TerminateMigration operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: TerminateMigration
+    /// 
+    /// $query = New-RscMutationArchival -Operation TerminateMigration
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	sourceLocationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: TerminateArchivalMigrationReply
     /// 
     /// 
     /// 
@@ -872,11 +934,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DisableTarget",
                 "EnableTarget",
                 "FilesetDownloadSnapshotFilesFromLocation",
+                "FinishMigration",
                 "PauseTarget",
                 "PromoteReaderTarget",
                 "RefreshReaderTarget",
                 "RegisterMigration",
                 "ResumeTarget",
+                "TerminateMigration",
                 "UpdateGlacierTarget",
                 "UpdateManualTargetMapping",
                 "UpdateS3CompatibleTarget",
@@ -923,6 +987,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "FilesetDownloadSnapshotFilesFromLocation":
                         this.ProcessRecord_FilesetDownloadSnapshotFilesFromLocation();
                         break;
+                    case "FinishMigration":
+                        this.ProcessRecord_FinishMigration();
+                        break;
                     case "PauseTarget":
                         this.ProcessRecord_PauseTarget();
                         break;
@@ -937,6 +1004,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ResumeTarget":
                         this.ProcessRecord_ResumeTarget();
+                        break;
+                    case "TerminateMigration":
+                        this.ProcessRecord_TerminateMigration();
                         break;
                     case "UpdateGlacierTarget":
                         this.ProcessRecord_UpdateGlacierTarget();
@@ -1042,6 +1112,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // finishArchivalMigration.
+        internal void ProcessRecord_FinishMigration()
+        {
+            this._logger.name += " -FinishMigration";
+            // Create new graphql operation finishArchivalMigration
+            InitMutationFinishArchivalMigration();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // pauseTarget.
         internal void ProcessRecord_PauseTarget()
         {
@@ -1084,6 +1163,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ResumeTarget";
             // Create new graphql operation resumeTarget
             InitMutationResumeTarget();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // terminateArchivalMigration.
+        internal void ProcessRecord_TerminateMigration()
+        {
+            this._logger.name += " -TerminateMigration";
+            // Create new graphql operation terminateArchivalMigration
+            InitMutationTerminateArchivalMigration();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1466,6 +1554,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // finishArchivalMigration(input: FinishArchivalMigrationInput!): FinishArchivalMigrationReply!
+        internal void InitMutationFinishArchivalMigration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FinishArchivalMigrationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationFinishArchivalMigration",
+                "($input: FinishArchivalMigrationInput!)",
+                "FinishArchivalMigrationReply",
+                Mutation.FinishArchivalMigration,
+                Mutation.FinishArchivalMigrationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	sourceLocationId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // pauseTarget(input: PauseTargetInput!): PauseTargetReply!
         internal void InitMutationPauseTarget()
         {
@@ -1614,6 +1725,29 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // terminateArchivalMigration(input: TerminateArchivalMigrationInput!): TerminateArchivalMigrationReply!
+        internal void InitMutationTerminateArchivalMigration()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TerminateArchivalMigrationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationTerminateArchivalMigration",
+                "($input: TerminateArchivalMigrationInput!)",
+                "TerminateArchivalMigrationReply",
+                Mutation.TerminateArchivalMigration,
+                Mutation.TerminateArchivalMigrationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	sourceLocationId = $someString
 }"
             );
         }

@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         DATOS,
 
         [EnumMember(Value = "POLARIS")]
-        POLARIS
+        POLARIS,
+
+        [EnumMember(Value = "RSCP_APPLIANCE")]
+        RSCP_APPLIANCE
 
 
     } // enum ClusterProductEnum

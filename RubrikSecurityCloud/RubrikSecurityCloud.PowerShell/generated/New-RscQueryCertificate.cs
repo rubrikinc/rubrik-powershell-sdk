@@ -202,7 +202,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryCertificate -Operation CertificatesWithKey
     /// 
-    /// # No variables for this query.
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// 
     /// # Execute the query
     /// 
@@ -847,20 +854,36 @@ $query.Var.searchTerm = $someString"
         }
 
         // Create new GraphQL Query:
-        // certificatesWithKey: CertificateConnection!
+        // certificatesWithKey(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //   ): CertificateConnection!
         internal void InitQueryCertificatesWithKey()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryCertificatesWithKey",
-                "",
+                "($first: Int,$after: String,$last: Int,$before: String)",
                 "CertificateConnection",
                 Query.CertificatesWithKey,
                 Query.CertificatesWithKeyFieldSpec,
-                @""
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString"
             );
         }
 

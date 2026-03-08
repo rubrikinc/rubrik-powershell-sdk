@@ -9,3 +9,7 @@ Response containing provisioning details for a NAS Cloud Direct virtual machine.
   - Cloud provider-specific image identifier for the virtual machine.
 - userData: System.String
   - Enrollment data for the NAS Cloud Direct virtual machine encoded as JSON.
+- regionImageIds: RegionImageIds
+  - Maps cloud region to image ID.
+Single entry returned when a specific region is requested.
+All available regions returned when no specific region is requested.

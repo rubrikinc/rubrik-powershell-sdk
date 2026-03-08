@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 
+        [EnumMember(Value = "HITS_BY_SENSITIVITY")]
+        HITS_BY_SENSITIVITY,
+
         [EnumMember(Value = "MODIFIED_FILE_COUNT")]
         MODIFIED_FILE_COUNT,
 

@@ -23,6 +23,8 @@
   - Flag to indicate if object level analysis is needed.
 - aggregateAtPath: System.Boolean
   - Flag to aggregate results at the current path level instead of returning children paths.
+- affectedFilesDeltaTypes: list of AffectedFilesDeltaTypes
+  - Filter by specific delta types of affected files. Only applicable when sensitiveDataDiscoveryScope is AFFECTED_FILES_ONLY.
 - documentTypesFilter: list of System.Strings
   - List of document type IDs to filter the paths.
 - sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope

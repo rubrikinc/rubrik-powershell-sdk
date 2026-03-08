@@ -8,3 +8,4 @@ Identity provider type of principal.
 - LOCAL_AD - Local Active Directory identity provider type.
 - SHAREPOINT - SharePoint identity provider type.
 - SYSTEM - System identity provider type.
+- OKTA - Okta identity provider type.

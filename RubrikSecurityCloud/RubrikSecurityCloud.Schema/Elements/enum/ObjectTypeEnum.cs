@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
         ACTIVE_DIRECTORY_FOREST,
 
+        [EnumMember(Value = "AWS_NATIVE_CONFIG")]
+        AWS_NATIVE_CONFIG,
+
         [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
         AWS_NATIVE_DYNAMODB_TABLE,
 

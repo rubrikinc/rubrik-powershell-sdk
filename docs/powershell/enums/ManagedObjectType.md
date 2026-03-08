@@ -189,6 +189,7 @@ All supported Rubrik managed objects.
 - PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
 - GITHUB_ORGANIZATION - GitHub organization.
 - GITHUB_REPOSITORY - GitHub repository.
+- AWS_NATIVE_CONFIG - Aws Native Config.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

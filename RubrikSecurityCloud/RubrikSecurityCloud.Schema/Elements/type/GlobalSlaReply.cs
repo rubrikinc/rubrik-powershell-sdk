@@ -21,10 +21,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> SlaBackupType? BackupType
-        // GraphQL -> backupType: SlaBackupType! (enum)
+        //      C# -> BackupType? BackupType
+        // GraphQL -> backupType: BackupType! (enum)
         [JsonProperty("backupType")]
-        public SlaBackupType? BackupType { get; set; }
+        public BackupType? BackupType { get; set; }
 
         //      C# -> List<SlaObjectType>? ObjectTypes
         // GraphQL -> objectTypes: [SlaObjectType!]! (enum)
@@ -226,7 +226,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GlobalSlaReply Set(
-        SlaBackupType? BackupType = null,
+        BackupType? BackupType = null,
         List<SlaObjectType>? ObjectTypes = null,
         RetentionLockMode? RetentionLockMode = null,
         System.String? ClusterUuid = null,
@@ -398,8 +398,8 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> SlaBackupType? BackupType
-        // GraphQL -> backupType: SlaBackupType! (enum)
+        //      C# -> BackupType? BackupType
+        // GraphQL -> backupType: BackupType! (enum)
         if (this.BackupType != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "backupType\n" ;
@@ -822,13 +822,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> SlaBackupType? BackupType
-        // GraphQL -> backupType: SlaBackupType! (enum)
+        //      C# -> BackupType? BackupType
+        // GraphQL -> backupType: BackupType! (enum)
         if (ec.Includes("backupType",true))
         {
             if(this.BackupType == null) {
 
-                this.BackupType = new SlaBackupType();
+                this.BackupType = new BackupType();
 
             } else {
 

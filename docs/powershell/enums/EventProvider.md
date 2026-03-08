@@ -9,3 +9,4 @@ which are uploaded.
 - ENTRA_ID_SIGNIN_LOG - Signifies a sign-in log from EntraID (cloud Azure AD).
 - OKTA_SIGNIN_LOG - Signifies an authentication event from Okta.
 - ON_PREM_AD_SIGNIN_LOG - Signifies Windows 4624/4625 sign-in events from on-prem AD.
+- OKTA_AUDIT_LOG - Signifies an audit log from Okta (system log events).

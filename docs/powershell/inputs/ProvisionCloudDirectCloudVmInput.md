@@ -7,3 +7,6 @@ Input for provisioning a NAS Cloud Direct virtual machine.
   - Cloud provider to provision the virtual machine in.
 - cloudRegion: System.String
   - Cloud region to provision the virtual machine in.
+- listRegions: System.Boolean
+  - Indicates whether to include image IDs for all available regions.
+Mutually exclusive with the cloud_region argument.

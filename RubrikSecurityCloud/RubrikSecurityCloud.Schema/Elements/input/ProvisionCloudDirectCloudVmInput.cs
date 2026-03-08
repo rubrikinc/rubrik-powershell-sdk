@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudRegion")]
         public System.String? CloudRegion { get; set; }
 
+        //      C# -> System.Boolean? ListRegions
+        // GraphQL -> listRegions: Boolean (scalar)
+        [JsonProperty("listRegions")]
+        public System.Boolean? ListRegions { get; set; }
+
 
         #endregion
 

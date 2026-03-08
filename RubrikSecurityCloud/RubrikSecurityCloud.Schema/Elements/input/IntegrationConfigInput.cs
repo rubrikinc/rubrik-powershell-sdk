@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("googleSecops")]
         public GoogleSecOpsIntegrationConfigInput? GoogleSecops { get; set; }
 
+        //      C# -> MicrosoftDefenderIntegrationConfigInput? MicrosoftDefender
+        // GraphQL -> microsoftDefender: MicrosoftDefenderIntegrationConfigInput (input)
+        [JsonProperty("microsoftDefender")]
+        public MicrosoftDefenderIntegrationConfigInput? MicrosoftDefender { get; set; }
+
 
         #endregion
 

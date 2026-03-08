@@ -1,5 +1,5 @@
 ### UnlockMethodType
-Unlock method type.
+The unlock method.
 
 - unlockMethod: UnlockMethod
   - The unlock method.

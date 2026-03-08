@@ -77,6 +77,12 @@ List of cloud native label values matched by substring.
     - limit - System.Int32: Number of results to return.
     - objectType - CloudNativeLabelObjectType: Type of managed object on which label rule will be applied.
 - Returns list of System.Strings.
+### objectstoresnapshotregexsearch
+Searches the object store snapshot using regex pattern matching on the
+directory field.
+
+- There is a single argument of type CloudNativeObjectStoreSnapshotRegexSearchReq.
+- Returns CloudNativeObjectStoreSnapshotRegexSearchReply.
 ### rbainstallers
 Fetches the URLs for the windows, linux and debian RBA installers.
 

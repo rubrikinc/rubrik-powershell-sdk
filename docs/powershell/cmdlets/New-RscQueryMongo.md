@@ -35,6 +35,22 @@ Paginated list of MongoDB databases.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
 - Returns MongoDatabaseConnection.
+### getmissedcollectionsetsnapshots
+Retrieve information on the missed snapshots for a MongoDB collection set
+
+Supported in v9.6
+Retrieve the time of day when the snapshots were missed for a MongoDB collection set.
+
+- There is a single argument of type GetMissedMongoCollectionSetSnapshotsInput.
+- Returns MissedSnapshotListResponse.
+### getmissedopsmanagermanagedsourcesnapshots
+Retrieve information on the missed snapshots for a MongoDB source managed by Ops Manager
+
+Supported in v9.6
+Retrieve the time of day when the snapshots were missed for a MongoDB source managed by Ops Manager.
+
+- There is a single argument of type GetMissedOpsManagerManagedMongoSourceSnapshotsInput.
+- Returns MissedSnapshotListResponse.
 ### recoverableranges
 Provides the point in time range for MongoDB object recovery.
 

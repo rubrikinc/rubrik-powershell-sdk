@@ -1,5 +1,5 @@
 ### GcpInstanceType
-GCP Instance Type.
+GCP instance types.
 
 - GCP_TYPE_UNSPECIFIED - None or other instance type selected.
 - N2_STANDARD_8 - N2-standard-8 instance type.

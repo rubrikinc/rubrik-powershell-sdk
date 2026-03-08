@@ -9829,6 +9829,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> FinishArchivalMigrationReply? FinishArchivalMigration
+        // GraphQL -> finishArchivalMigration: FinishArchivalMigrationReply! (type)
+        public static string FinishArchivalMigration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "finishArchivalMigration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FinishArchivalMigrationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FinishArchivalMigrationReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GcpCloudAccountAddProjectsReply? GcpCloudAccountAddProjects
         // GraphQL -> gcpCloudAccountAddProjects: GcpCloudAccountAddProjectsReply! (type)
         public static string GcpCloudAccountAddProjects(object fsObj)
@@ -13713,6 +13731,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new BatchAsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> TerminateArchivalMigrationReply? TerminateArchivalMigration
+        // GraphQL -> terminateArchivalMigration: TerminateArchivalMigrationReply! (type)
+        public static string TerminateArchivalMigration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "terminateArchivalMigration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object TerminateArchivalMigrationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new TerminateArchivalMigrationReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -4232,6 +4232,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cloudProvider = $someCloudDirectCloudProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectCloudProvider]) for enum values.
     /// 	# OPTIONAL
     /// 	cloudRegion = $someString
+    /// 	# OPTIONAL
+    /// 	listRegions = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -14659,6 +14661,8 @@ $query.Var.input = @{
 	cloudProvider = $someCloudDirectCloudProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectCloudProvider]) for enum values.
 	# OPTIONAL
 	cloudRegion = $someString
+	# OPTIONAL
+	listRegions = $someBoolean
 }"
             );
         }

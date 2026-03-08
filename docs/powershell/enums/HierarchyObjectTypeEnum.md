@@ -190,3 +190,4 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - PROXMOX_VIRTUAL_MACHINE - Proxmox Virtual Machine.
 - GITHUB_ORGANIZATION - GitHub Organization.
 - GITHUB_REPOSITORY - GitHub Repository.
+- AWS_NATIVE_CONFIG - AWS Native Config.

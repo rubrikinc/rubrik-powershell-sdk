@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("displayNames")]
         public List<System.String>? DisplayNames { get; set; }
 
+        //      C# -> System.String? DisplayNameSearchTerm
+        // GraphQL -> displayNameSearchTerm: String (scalar)
+        [JsonProperty("displayNameSearchTerm")]
+        public System.String? DisplayNameSearchTerm { get; set; }
+
 
         #endregion
 

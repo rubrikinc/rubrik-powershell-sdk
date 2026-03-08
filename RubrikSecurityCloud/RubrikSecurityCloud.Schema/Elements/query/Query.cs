@@ -1591,6 +1591,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ActivityEntryConnection? Activities
+        // GraphQL -> activities: ActivityEntryConnection! (type)
+        public static string Activities(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\norderBy: $orderBy\nfilter: $filter\nincludeRemediationStatus: $includeRemediationStatus\nincludeRemediationTypes: $includeRemediationTypes\n)";
+            return "activities" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ActivitiesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ActivityEntryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
         public static string ActivitySeries(object fsObj)
@@ -4021,6 +4039,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> ArchivalMigrationInfo? ArchivalMigration
+        // GraphQL -> archivalMigration: ArchivalMigrationInfo! (type)
+        public static string ArchivalMigration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nsourceLocationId: $sourceLocationId\n)";
+            return "archivalMigration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ArchivalMigrationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ArchivalMigrationInfo() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> ArchivalObjectInfoConnection? ArchivalPerObjectInfo
         // GraphQL -> archivalPerObjectInfo: ArchivalObjectInfoConnection! (type)
         public static string ArchivalPerObjectInfo(object fsObj)
@@ -6024,7 +6060,7 @@ namespace RubrikSecurityCloud.Types
         public static string CertificatesWithKey(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "certificatesWithKey" + args + "\n{\n" + fs + "}\n";
         }
         public static object CertificatesWithKeyFieldSpec(AutofieldContext? ec=null)
@@ -6573,6 +6609,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetCloudNativeLabelRulesReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudNativeObjectStoreSnapshotRegexSearchReply? CloudNativeObjectStoreSnapshotRegexSearch
+        // GraphQL -> cloudNativeObjectStoreSnapshotRegexSearch: CloudNativeObjectStoreSnapshotRegexSearchReply! (type)
+        public static string CloudNativeObjectStoreSnapshotRegexSearch(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudNativeObjectStoreSnapshotRegexSearch" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudNativeObjectStoreSnapshotRegexSearchFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudNativeObjectStoreSnapshotRegexSearchReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8787,6 +8841,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetTaskchainStatusReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MissedSnapshotListResponse? GetMissedMongoCollectionSetSnapshots
+        // GraphQL -> getMissedMongoCollectionSetSnapshots: MissedSnapshotListResponse! (type)
+        public static string GetMissedMongoCollectionSetSnapshots(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "getMissedMongoCollectionSetSnapshots" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GetMissedMongoCollectionSetSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MissedSnapshotListResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MissedSnapshotListResponse? GetMissedOpsManagerManagedMongoSourceSnapshots
+        // GraphQL -> getMissedOpsManagerManagedMongoSourceSnapshots: MissedSnapshotListResponse! (type)
+        public static string GetMissedOpsManagerManagedMongoSourceSnapshots(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "getMissedOpsManagerManagedMongoSourceSnapshots" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GetMissedOpsManagerManagedMongoSourceSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MissedSnapshotListResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15451,6 +15541,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> InternalGetRoutesResponse? StaticRoutes
+        // GraphQL -> staticRoutes: InternalGetRoutesResponse! (type)
+        public static string StaticRoutes(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "staticRoutes" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StaticRoutesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new InternalGetRoutesResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? SupportBundle
         // GraphQL -> supportBundle: AsyncRequestStatus! (type)
         public static string SupportBundle(object fsObj)
@@ -17760,7 +17868,7 @@ namespace RubrikSecurityCloud.Types
         public static string WorkloadAnomalies(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nworkloadNameSearch: $workloadNameSearch\nobjectTypeFilter: $objectTypeFilter\nclusterUuidFilter: $clusterUuidFilter\nslaFidFilter: $slaFidFilter\nencryptionFilter: $encryptionFilter\nseverityFilter: $severityFilter\nanalyzerGroupFilter: $analyzerGroupFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\norderParentsFirst: $orderParentsFirst\nblueprintRecoveryTypes: $blueprintRecoveryTypes\nlocationsFilter: $locationsFilter\nresolutionStatusFilter: $resolutionStatusFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nbeginTime: $beginTime\nendTime: $endTime\nworkloadNameSearch: $workloadNameSearch\nobjectTypeFilter: $objectTypeFilter\nclusterUuidFilter: $clusterUuidFilter\nslaFidFilter: $slaFidFilter\nencryptionFilter: $encryptionFilter\nseverityFilter: $severityFilter\nanalyzerGroupFilter: $analyzerGroupFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\norderParentsFirst: $orderParentsFirst\nblueprintRecoveryTypes: $blueprintRecoveryTypes\nlocationsFilter: $locationsFilter\nresolutionStatusFilter: $resolutionStatusFilter\nriskLevelTypesFilter: $riskLevelTypesFilter\n)";
             return "workloadAnomalies" + args + "\n{\n" + fs + "}\n";
         }
         public static object WorkloadAnomaliesFieldSpec(AutofieldContext? ec=null)

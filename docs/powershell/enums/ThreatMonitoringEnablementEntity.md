@@ -7,3 +7,4 @@ Entity type for Threat Monitoring.
 an Azure subscription, or a GCP project.
 - MICROSOFT_365 - Microsoft 365 subscription.
 - CLOUD_DIRECT_CLUSTER - NAS Cloud Direct.
+- ACTIVE_DIRECTORY - Active Directory workload-type enablement.
