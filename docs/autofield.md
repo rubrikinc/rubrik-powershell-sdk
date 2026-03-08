@@ -195,7 +195,7 @@ automatically when a query is created.
 ```
 Toolkit/Operations/
 ├── DEFAULT/                    # patches for DEFAULT profile
-│   ├── QueryClusterConnection.patch
+│   ├── QueryCdmMssqlLogShippingTargets.patch
 │   └── QueryMssqlDatabaseLiveMounts.patch
 ├── DETAIL/                     # patches for DETAIL profile
 │   ├── QueryClusterConnection.patch
@@ -344,9 +344,11 @@ any pattern in `Config.DefaultProfileLeafPatternWithExceptions`:
 #### DETAIL Profile
 
 Starts with everything DEFAULT includes, then adds:
-- All leaf fields regardless of name pattern
+- All leaf fields regardless of name pattern (at any depth)
 - All branch fields at depth ≤ 1
 - Skips `edges` (uses `nodes` instead)
+- Hardcoded exclusion: `datagovAutoEnablePolicyConfig` (API server bug
+  workaround, SPARK-230377)
 - Loop detection: if a field name appears earlier in the path, it's
   excluded as a probable loop
 
