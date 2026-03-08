@@ -42,6 +42,35 @@ at depth ≤ 1 from the root. It skips fields that would cause loops (e.g., a
 `FULL` goes deep (depth ≤ 40) — useful for exploration, but responses can
 be very large.
 
+`CUSTOM` uses the same field selection rules as DEFAULT, but reads
+operation patch files from a **user-specified directory** instead of the
+SDK's bundled `Toolkit/Operations/DEFAULT/`. This lets you maintain your
+own set of patch files outside the SDK — useful for org-wide defaults or
+per-project field customizations that shouldn't require forking the SDK.
+
+To use CUSTOM:
+
+1. Create a directory with your `.patch` files (same format as
+   `Toolkit/Operations/DEFAULT/` — see
+   [Operation Patch Files](#operation-patch-files)):
+   ```
+   ~/my-rsc-patches/
+   └── QueryClusterConnection.patch
+   ```
+
+2. Point `RSC_CUSTOM_DIR` to it:
+   ```powershell
+   $env:RSC_CUSTOM_DIR = "$HOME/my-rsc-patches"
+   ```
+
+3. Use `-FieldProfile CUSTOM`:
+   ```powershell
+   $q = New-RscQuery -GqlQuery clusterConnection -FieldProfile CUSTOM
+   ```
+
+If `RSC_CUSTOM_DIR` is not set or the directory doesn't exist, CUSTOM
+falls back to reading patches from the current working directory.
+
 ## How to Use AutoField
 
 ### Basic: Just Create the Query
@@ -384,7 +413,7 @@ The operation patch file (step 6) is loaded from a directory that
 depends on the profile:
 - `DEFAULT` or `UNSET` → `Toolkit/Operations/DEFAULT/`
 - `DETAIL` → `Toolkit/Operations/DETAIL/`
-- `CUSTOM` → user-specified custom directory
+- `CUSTOM` → `$env:RSC_CUSTOM_DIR` (or current working directory if unset)
 
 ## Global Configuration
 
