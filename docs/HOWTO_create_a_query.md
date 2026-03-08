@@ -86,9 +86,9 @@ You need to determine the API domain that root field is part of.
 Typically, the domain is part of the root field name, for example
 `clusterConnection()` is part of the "Cluster" domain.
 
-You can pass the GraphQL root field name as an Op parameter:
+You can pass the GraphQL root field name as an Operation parameter:
 
-`New-RscQuery<Domain> -Op <GQL root field name>`
+`New-RscQuery<Domain> -Operation <GQL root field name>`
 
 Note: if you guessed the domain wrong, you'll get an error message
 telling you what the domain is for that root field.
@@ -180,7 +180,7 @@ https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clustercon
 Say we want to see the snapshot count:
 
 ```shell
-PS > (New-RscQueryCluster -List -Var @{first=1} -Patch nodes.snapshotCount).Invoke().Nodes[0]|Remove-NullProperties
+PS > (New-RscQueryCluster -Operation List -Var @{first=1} -AddField nodes.snapshotCount).Invoke().Nodes[0]|Remove-NullProperties
 
 PauseStatus         : NOT_PAUSED
 Status              : DISCONNECTED
@@ -198,7 +198,7 @@ Version             : 8.0.2-p2-22662
 Say we want to see the CDM upgrade info:
 
 ```shell
-PS > (New-RscQueryCluster -List -Var @{first=1} -Patch nodes.cdmUpgradeInfo).Invoke().Nodes[0].CdmUpgradeInfo|Remove-NullProperties
+PS > (New-RscQueryCluster -Operation List -Var @{first=1} -AddField nodes.cdmUpgradeInfo).Invoke().Nodes[0].CdmUpgradeInfo|Remove-NullProperties
 
 ClusterJobStatus     : READY_FOR_DOWNLOAD
 VersionStatus        : UPGRADE_RECOMMENDED
@@ -213,7 +213,9 @@ StateMachineStatusAt : 3/13/2023 2:31:44 PM
 Version              : 8.0.2-p2-22662
 ```
 
-## Working with `-Input`
+## Related Documentation
 
-- no field profile (no autofield, no file overrides.
-  => FieldProfile is set to EMPTY)
+- [AutoField: Automatic GraphQL Field Selection](./autofield.md) — how
+  field profiles and patches work
+- [Retrieving Interface Fields](./retrieving_interface_fields.md) — working
+  with GraphQL interfaces and composite objects

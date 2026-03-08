@@ -28,15 +28,15 @@ is part of the SDK-Extensions layer.
 - Rubrik GraphQL schema has over 1000 operations
   => impractical to have 1 cmdlet per operation
 - Operations are grouped under "commands"
-  Example: `Query-RscCluster` command regroups all operations from the
+  Example: `New-RscQueryCluster` command regroups all operations from the
   GraphQL Schema that start with the word "cluster"
 
 ### Commands and Operations
 
-- Selecting an operation from a command is done with switches
-  like `-List`, `-Connected`, etc.
+- Selecting an operation from a command is done with the `-Operation`
+  parameter, e.g. `-Operation List`, `-Operation Connected`, etc.
 
-Example: Query-RscCluster command
+Example: New-RscQueryCluster command
 
 - Operations: List, Connected, DefaultGateway, etc.
 
@@ -47,17 +47,15 @@ Example: Query-RscCluster command
         - Operation = GQL Operation,
         - Arguments = Arguments to the GQL Operation,
         - Fields = Fields in the response.
-- Using -GetInput switch
-    - Example: `Query-RscCluster -List -GetInput` returns
-      an object with three fields: Var, Field, and Op
+- Using `.Info()` on the query object
+    - Example: `(New-RscQueryCluster -Operation List).Info()` returns
+      information about the operation's variables and field types
 - Modifying inputs
-    - Typically, you don't set `Op` since it's already
-      set to the operation you're calling.
-    - Set the value of `Var` and `Field` and then call the query
+    - Set the value of `Var` and `Field` and then invoke the query
 - Workflow: Define inputs using variables ahead of calling the query
-    - Call -GetInput
-    - Modify the inputs
-    - Call the query
+    - Create the query object
+    - Modify `Var` and `Field`
+    - Invoke the query
 
 ## SDK-Extensions
 
