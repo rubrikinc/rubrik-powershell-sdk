@@ -7,7 +7,7 @@ Most of the time, you don't need to think about interfaces at all.
 
 ```powershell
 # Add a field that only exists on GlobalSlaReply (not ClusterSlaDomain)
-$q = New-RscQuery -GqlQuery slaDomains -AddField Nodes.UiColor
+$q = New-RscQuery -Gql slaDomains -AddField Nodes.UiColor
 
 # The SDK places it in the correct fragment automatically
 ```
@@ -26,7 +26,7 @@ $t = [RubrikSecurityCloud.Types.AccountSetting]@{}
 $t.IsEulaAccepted = $false       # retrieve this field
 $t.IsEmailNotificationEnabled = $true  # retrieve this field too
 
-$q = New-RscQuery -GqlQuery accountSettings -Field $t -FieldProfile EMPTY
+$q = New-RscQuery -Gql accountSettings -Field $t -FieldProfile EMPTY
 $q | Invoke-Rsc
 ```
 
@@ -60,7 +60,7 @@ field is a `List<SlaDomain>`. The SDK populates this list with one
 element per concrete type:
 
 ```powershell
-$q = New-RscQuery -GqlQuery slaDomains
+$q = New-RscQuery -Gql slaDomains
 $q.Field.Nodes | ForEach-Object { $_.GetType().Name }
 # ClusterSlaDomain
 # GlobalSlaReply
@@ -76,10 +76,10 @@ Use `-AddField` — the SDK figures out which fragment(s) to put it in:
 
 ```powershell
 # UiColor only exists on GlobalSlaReply → added to that fragment only
-$q = New-RscQuery -GqlQuery slaDomains -AddField Nodes.UiColor
+$q = New-RscQuery -Gql slaDomains -AddField Nodes.UiColor
 
 # ProtectedObjectCount exists on both → added to both fragments
-$q = New-RscQuery -GqlQuery slaDomains -AddField Nodes.ProtectedObjectCount
+$q = New-RscQuery -Gql slaDomains -AddField Nodes.ProtectedObjectCount
 ```
 
 You can verify with `$q.GqlRequest().Query`.
@@ -94,7 +94,7 @@ The SDK solves this with **composite objects**: a linked list of
 concrete types that *looks like* a single object:
 
 ```powershell
-$q = New-RscQuery -GqlQuery slaDomain -Var @{id="0"}
+$q = New-RscQuery -Gql slaDomain -Var @{id="0"}
 
 $q.Field.GetType().Name       # ClusterSlaDomain (the "outer" type)
 $q.Field.IsComposite()        # True
@@ -127,7 +127,7 @@ $q.Field.AsList()["GlobalSlaReply"].UiColor = "FETCH"
 
 ```powershell
 # UiColor is added to the GlobalSlaReply fragment only
-$q = New-RscQuery -GqlQuery slaDomain -Var @{id="0"} -AddField UiColor
+$q = New-RscQuery -Gql slaDomain -Var @{id="0"} -AddField UiColor
 ```
 
 ### Alternative: navigating with `.GetNext()`

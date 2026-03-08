@@ -65,7 +65,7 @@ To use CUSTOM:
 
 3. Use `-FieldProfile CUSTOM`:
    ```powershell
-   $q = New-RscQuery -GqlQuery clusterConnection -FieldProfile CUSTOM
+   $q = New-RscQuery -Gql clusterConnection -FieldProfile CUSTOM
    ```
 
 If `RSC_CUSTOM_DIR` is not set or the directory doesn't exist, CUSTOM
@@ -78,7 +78,7 @@ falls back to reading patches from the current working directory.
 AutoField runs automatically with the `DEFAULT` profile:
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 $q | Invoke-Rsc   # returns clusters with id, name, status, type, etc.
 ```
 
@@ -86,13 +86,13 @@ $q | Invoke-Rsc   # returns clusters with id, name, status, type, etc.
 
 ```powershell
 # More fields (depth ≤ 1 expansion)
-$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile DETAIL
+$q = New-RscQuery -Gql clusterConnection -FieldProfile DETAIL
 
 # Nearly all fields
-$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile FULL
+$q = New-RscQuery -Gql clusterConnection -FieldProfile FULL
 
 # No fields (blank slate)
-$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile EMPTY
+$q = New-RscQuery -Gql clusterConnection -FieldProfile EMPTY
 ```
 
 ### Adding and Removing Fields
@@ -102,15 +102,15 @@ Fields are specified as dotted paths:
 
 ```powershell
 # Add specific fields to the default selection
-$q = New-RscQuery -GqlQuery clusterConnection `
+$q = New-RscQuery -Gql clusterConnection `
     -AddField Nodes.GeoLocation.Address, Nodes.EstimatedRunway
 
 # Remove a field you don't need
-$q = New-RscQuery -GqlQuery clusterConnection `
+$q = New-RscQuery -Gql clusterConnection `
     -RemoveField Nodes.Version
 
 # Combine both
-$q = New-RscQuery -GqlQuery clusterConnection `
+$q = New-RscQuery -Gql clusterConnection `
     -AddField Nodes.GeoLocation.Address `
     -RemoveField Nodes.Status
 ```
@@ -125,10 +125,10 @@ Use `-ValidPatchSet` to see all valid field paths for a query:
 
 ```powershell
 # List all patchable fields
-New-RscQuery -GqlQuery clusterConnection -ValidPatchSet
+New-RscQuery -Gql clusterConnection -ValidPatchSet
 
 # Filter to find specific fields
-New-RscQuery -GqlQuery clusterConnection -ValidPatchSet |
+New-RscQuery -Gql clusterConnection -ValidPatchSet |
     Where-Object { $_ -match "location" }
 ```
 
@@ -141,7 +141,7 @@ define the selected fields:
 $fieldObj = Get-RscType -Name ClusterConnection -InitialProperties @(
     "Nodes.Id", "Nodes.Name", "Nodes.Status"
 )
-$q = New-RscQuery -GqlQuery clusterConnection -Field $fieldObj
+$q = New-RscQuery -Gql clusterConnection -Field $fieldObj
 ```
 
 You can combine `-Field` with `-AddField` / `-RemoveField` — the field
@@ -152,7 +152,7 @@ object is applied first, then patches modify it.
 Clone an existing query and tweak it:
 
 ```powershell
-$q1 = New-RscQuery -GqlQuery clusterConnection
+$q1 = New-RscQuery -Gql clusterConnection
 $q2 = New-RscQuery -Copy $q1 -AddField Nodes.GeoLocation.Address
 ```
 
@@ -163,7 +163,7 @@ The copy is by value — modifying `$q2` does not affect `$q1`.
 Apply patches from a file:
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection `
+$q = New-RscQuery -Gql clusterConnection `
     -FilePatch ./my-cluster-fields.patch
 ```
 
@@ -180,7 +180,7 @@ The file format is one field per line, prefixed with `+` or `-`:
 After creating a query, inspect what fields AutoField selected:
 
 ```powershell
-$q = New-RscQuery -GqlQuery clusterConnection
+$q = New-RscQuery -Gql clusterConnection
 $q.GqlRequest().Query    # show the full GraphQL query text
 ```
 
@@ -249,7 +249,7 @@ connection sub-objects that would make the response very large:
 
 1. Create the query and inspect its fields:
    ```powershell
-   $q = New-RscQuery -GqlQuery mssqlDatabaseLiveMounts
+   $q = New-RscQuery -Gql mssqlDatabaseLiveMounts
    $q.GqlRequest().Query
    ```
 
