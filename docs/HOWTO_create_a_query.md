@@ -1,221 +1,175 @@
-# HOW TO Create A Query
+# How To Create a Query
 
-## 0- Introduction
+## Overview
 
-A query is fully defined by 4 elements:
+A query is defined by three elements:
 
-- The API domain
-  
-  A domain is a group of related API operations.
-  For example, the "Cluster" domain contains all the operations
-  that are related to clusters.
+1. **The GraphQL query name** — which operation to run
+   (e.g., `clusterConnection`, `slaDomains`)
+2. **Variables** — parameters passed to the operation
+   (e.g., how many results, filters)
+3. **Fields** — what data to return
+   (the SDK selects sensible defaults automatically via
+   [AutoField](./autofield.md))
 
-- The API operation
-  
-  An operation is a specific API call.
-  For example, the "List" operation withing the "Cluster" API
-  domain returns a list of clusters.
+## 1 — Find the Query Name
 
-- The variables
-  
-  Variables are the parameters that are passed to the API operation.
-  For example, the "List" operation withing the "Cluster" API
-  domain accepts a "first" variable that specifies how many
-  clusters to return.
+### You're exploring by keyword
 
-  Some variables are required, some are optional.
-
-- The fields
-
-  Fields are the data that is returned by the API operation.
-  For example, the "List" operation within the "Cluster" API
-  domain returns a list of clusters, and each cluster has
-  a "name" field.
-
-  If you come from REST, imagine you can place a REST call
-  where you can specify what fields you want in the response.
-
-:point_right: The API domain and operation determine **which** query to run.
-
-:point_right: The variables and the fields determine **what** data to return.
-
-The _domain_ and _operation_ are determined by what you want to do.
-
-The _variables_ are rather constrained,
-and you can get help to determine them. In particular, the SDK
-can generate an example of how to set the variables.
-
-Without this SDK, GraphQL can be challenging when it comes to specifying
-the _fields_ to select for retrieval,
-because they are not a lists of names, but trees of objects that can
-span multiple levels.
-
-We'll see below this SDK provides the concept of
-_field profiles_ and _field patches_
-that greatly simplify the selection of fields.
-
-## 1- Determine the operation
-
-Jump to the section that applies to you:
-
-### 1-1 You're exploring what's available in a domain
-
-`Get-Help New-RscQuery<Domain> -Full`
-
-`New-RscQuery<Domain> -`(press TAB)
-
----
-
-### 1-2 You know the API Domain and Operation names
-
-`New-RscQuery<Domain> -<Operation>`
-
----
-
-### 1-3 You already have a GraphQL file or string
-
-`Invoke-Rsc -GqlQuery <GQL query string>`
-
----
-
-### 1-4 You know the name of the GraphQL root field
-
-A _root field_ is a query or a mutation.
-
-You need to determine the API domain that root field is part of.
-Typically, the domain is part of the root field name, for example
-`clusterConnection()` is part of the "Cluster" domain.
-
-You can pass the GraphQL root field name as an Operation parameter:
-
-`New-RscQuery<Domain> -Operation <GQL root field name>`
-
-Note: if you guessed the domain wrong, you'll get an error message
-telling you what the domain is for that root field.
-
----
-
-## 2- Determine the variables
-
-Jump to the section that applies to you:
-
-### 2-1 You already have a GraphQL file or string
-
-`<GQL query string>` must contains the variables
-
-If working from a `.gql` file, the variables can be defined in the file.
-
----
-
-### 2-2 You know what the variables are
-
-Pass them as a hashtable to the `-Var` parameter:
-
-`New-RscQuery<Domain> -<Operation> -Var @{<var1>=<value1>; <var2>=<value2>}`
-
----
-
-### 2-3 You don't know what the variables are
-
-You can get an example of how to set the variables:
-
-`(New-RscQuery<Domain> -<Operation>).Var.Example()`
-
----
-
-## 3- Determine the fields
-
-Unless you already have a GraphQL file or string
-(see section 3-1 below), there are 2 approaches to determine the fields:
-Profiles & Patches, and Field objects.
-
-Any given query can use either approach, or a combination of both.
-
-### 3-1 You already have a GraphQL file or string
-
-The fields are listed in the GraphQL file or string.
-
-### 3-2 Profiles & Patches
-
-#### What are field profiles?
-
-A _field profile_ says what fields to select for a given query.
-
-For example `New-RscQueryCluster -List -FieldProfile DEFAULT` uses
-the DEFAULT profile to select fields for the "List" operation.
-
-The same profile applied to another query may select different fields,
-because a profile is a set of rules on how to select fields. For
-example the DEFAULT profile has the rule:
-
-"If there's a top-level field called `id`, select it".
-
-If no field profile is given, the SDK uses the DEFAULT profile,
-so the previous example is equivalent to `New-RscQueryCluster -List`.
-
-For most practical purposes, there are 2 profiles to choose from:
-`DEFAULT` and `DETAIL`. The `DETAIL` profile selects more fields
-on top of the `DEFAULT` profile.
-
-#### What is patching?
-
-A field profile will select fields for a given query, but sometimes
-you want to select additional fields, or remove fields that were
-selected by the profile.
-
-#### Combining profiles and patches
-
-### 3-3 Field objects
-
-## Working with queries
-
-`<GQL query string>` must contains the fields
-If you need help with the field names and types:
-
-```shell
-PS> (New-RscQueryCluster -List).Info()
-https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/clusterconnection.doc.html
+```powershell
+Get-RscCmdlet cluster          # search by keyword
+Get-RscCmdlet sla              # another example
+Get-RscCmdlet -ExactMatch clusterConnection   # exact lookup
 ```
 
-Say we want to see the snapshot count:
+### You already know the GraphQL query name
 
-```shell
-PS > (New-RscQueryCluster -Operation List -Var @{first=1} -AddField nodes.snapshotCount).Invoke().Nodes[0]|Remove-NullProperties
+Use it directly:
 
-PauseStatus         : NOT_PAUSED
-Status              : DISCONNECTED
-SubStatus           : DEFAULT
-SystemStatus        : OK
-Type                : ROBO
-Id                  : 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
-IsHealthy           : False
-Name                : WestWales
-SnapshotCount       : 68
-SystemStatusMessage : 1 Node Down.
-Version             : 8.0.2-p2-22662
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection
 ```
 
-Say we want to see the CDM upgrade info:
+### You have a raw GraphQL string or file
 
-```shell
-PS > (New-RscQueryCluster -Operation List -Var @{first=1} -AddField nodes.cdmUpgradeInfo).Invoke().Nodes[0].CdmUpgradeInfo|Remove-NullProperties
+```powershell
+# Inline string
+Invoke-Rsc -GqlQuery "query { clusterConnection { nodes { id name } } }"
 
-ClusterJobStatus     : READY_FOR_DOWNLOAD
-VersionStatus        : UPGRADE_RECOMMENDED
-ClusterUuid          : 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
-CurrentStateProgress : 0
-FastUpgradePreferred : True
-FinishedStates       :
-OverallProgress      : 0
-PendingStates        :
-StateMachineStatus   : IDLE
-StateMachineStatusAt : 3/13/2023 2:31:44 PM
-Version              : 8.0.2-p2-22662
+# From a file
+$gql = Get-Content -Path ./my-query.gql -Raw
+Invoke-Rsc -GqlQuery $gql
+```
+
+## 2 — Set Variables
+
+### See what variables are available
+
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection
+$q.Var                    # list all variables
+$q.Var.Example()          # show example values
+$q.Info()                 # full operation info (variables + field types)
+```
+
+### Pass variables inline
+
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection -Var @{ first = 3 }
+```
+
+### Set variables on the query object
+
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection
+$q.Var.first = 3
+$q.Var.sortBy = "REGISTERED_AT"
+```
+
+Variables that are not set default to null and are omitted from the
+request. Only required variables must be set.
+
+## 3 — Control Field Selection
+
+The SDK automatically selects fields using [AutoField](./autofield.md).
+For most queries, the defaults are sufficient — just invoke the query.
+
+### Use the defaults (most common)
+
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection
+$q | Invoke-Rsc    # returns id, name, status, type, etc.
+```
+
+### Choose a field profile
+
+```powershell
+# More fields (depth ≤ 1 expansion)
+$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile DETAIL
+
+# Nearly all fields (can be very large)
+$q = New-RscQuery -GqlQuery clusterConnection -FieldProfile FULL
+```
+
+### Add or remove specific fields
+
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection `
+    -AddField Nodes.SnapshotCount, Nodes.GeoLocation.Address `
+    -RemoveField Nodes.Status
+```
+
+### Discover what fields are available
+
+```powershell
+# List all valid field paths
+New-RscQuery -GqlQuery clusterConnection -ValidPatchSet
+
+# Search for a specific field
+New-RscQuery -GqlQuery clusterConnection -ValidPatchSet |
+    Where-Object { $_ -match "snapshot" }
+```
+
+### Use a field object for full manual control
+
+```powershell
+$fieldObj = Get-RscType -Name ClusterConnection -InitialProperties @(
+    "Nodes.Id", "Nodes.Name", "Nodes.Version"
+)
+$q = New-RscQuery -GqlQuery clusterConnection -Field $fieldObj -FieldProfile EMPTY
+```
+
+See [AutoField](./autofield.md) for full details on profiles, patches,
+and field objects.
+
+## 4 — Run the Query
+
+```powershell
+# Pipe to Invoke-Rsc
+$q | Invoke-Rsc
+
+# Or call .Invoke() on the query object
+$q.Invoke()
+
+# One-liner
+(New-RscQuery -GqlQuery clusterConnection | Invoke-Rsc).Nodes | Select-Object Id, Name
+```
+
+## Examples
+
+### List clusters with snapshot counts
+
+```powershell
+$result = New-RscQuery -GqlQuery clusterConnection `
+    -Var @{ first = 5 } `
+    -AddField Nodes.SnapshotCount |
+    Invoke-Rsc
+
+$result.Nodes | Select-Object Name, SnapshotCount, Status
+```
+
+### Get CDM upgrade info
+
+```powershell
+$result = New-RscQuery -GqlQuery clusterConnection `
+    -Var @{ first = 1 } `
+    -AddField Nodes.CdmUpgradeInfo |
+    Invoke-Rsc
+
+$result.Nodes[0].CdmUpgradeInfo | Remove-NullProperties
+```
+
+### Inspect the generated GraphQL
+
+```powershell
+$q = New-RscQuery -GqlQuery clusterConnection -AddField Nodes.SnapshotCount
+$q.GqlRequest().Query    # see the full query text
 ```
 
 ## Related Documentation
 
-- [AutoField: Automatic GraphQL Field Selection](./autofield.md) — how
-  field profiles and patches work
-- [Retrieving Interface Fields](./retrieving_interface_fields.md) — working
-  with GraphQL interfaces and composite objects
+- [AutoField](./autofield.md) — how field profiles and patches work
+- [Retrieving Interface Fields](./retrieving_interface_fields.md) —
+  working with GraphQL interfaces and composite objects
+- [Developer Manual](./developer_manual.md) — getting started,
+  cmdlet overview
