@@ -34,8 +34,10 @@ function Get-RscCluster {
     with a NULL in them. 
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
-    
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Return a list of all clusters managed by RSC
     
@@ -121,7 +123,11 @@ function Get-RscCluster {
     Process {
         # Count clusters:
         if ( $PSCmdlet.ParameterSetName -eq "Count" ) {
-            $r = (New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes).Invoke()
+            $query = New-RscQuery -GqlQuery clusterConnection -RemoveField Nodes
+            if ( $AsQuery ) {
+                return $query
+            }
+            $r = $query.Invoke()
             # Object's 'Count' property is hidden by the 'Count' method
             # so we can't do `$r.Count`
             $clusterCount = $r | Select-Object -ExpandProperty Count

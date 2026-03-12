@@ -13,6 +13,11 @@ function Remove-RscMssqlLogShippingSecondary {
     .PARAMETER deleteSecondaryDatabase
     Switch to delete the database off of the secondary host
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Removes the live mount from the SQL Server and cleans up the share and files on the Rubrik cluster
     $GetRscMssqlLogShipping = @{
@@ -40,10 +45,17 @@ function Remove-RscMssqlLogShippingSecondary {
         [RubrikSecurityCloud.Types.MssqlLogShippingTarget]$RscMssqlLogShipping,
 
         [Parameter(
-            Mandatory = $false, 
+            Mandatory = $false,
             ValueFromPipelineByPropertyName = $false
         )]
-        [Switch]$deleteSecondaryDatabase
+        [Switch]$deleteSecondaryDatabase,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )]
+        [Switch]$AsQuery
     )
     
     Process {
@@ -56,6 +68,7 @@ function Remove-RscMssqlLogShippingSecondary {
         $query.Var.input.deleteSecondaryDatabase = $deleteSecondaryDatabase
 
         #endregion
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

@@ -23,6 +23,11 @@ function New-RscMssqlLiveMount {
     .PARAMETER TargetMssqlInstance
     SQL Server Instance Object returned from Get-RscMssqlInstance
     
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns the list of database files based on the latest recovery point
     
@@ -47,7 +52,13 @@ function New-RscMssqlLiveMount {
        
         [Parameter(
             Mandatory = $true
-        )][datetime]$RecoveryDateTime
+        )][datetime]$RecoveryDateTime,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -63,6 +74,7 @@ function New-RscMssqlLiveMount {
         $query.Var.input.config.recoveryPoint.date = $RecoveryDateTime
         $query.Var.input.config.targetInstanceId = "$($TargetMssqlInstance.Id)"
 
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

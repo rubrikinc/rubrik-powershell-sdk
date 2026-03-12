@@ -23,6 +23,11 @@ function New-RscMssqlSnapshot {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Starts an On Demand Snapshot of a MSSQL Database with an SLA Domain ID
     $sla = Get-RscSla -Name "sdf"
@@ -43,9 +48,15 @@ function New-RscMssqlSnapshot {
         )][bool]$ForceFullSnapshot,
         
         [Parameter(
-            Mandatory = $true, 
+            Mandatory = $true,
             ValueFromPipeline = $false
-        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain
+        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -64,6 +75,7 @@ function New-RscMssqlSnapshot {
         $query.Var.input.config.baseOnDemandSnapshotConfig.slaId = $RscSlaDomain.Id
         #endregion
         
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

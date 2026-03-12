@@ -11,6 +11,11 @@ function Get-RscOrganization {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all roles
     Get-RscOrganization
@@ -34,7 +39,12 @@ function Get-RscOrganization {
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
-        [String]$Name
+        [String]$Name,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -70,6 +80,7 @@ function Get-RscOrganization {
             # $query.Nodes[0].AllClusterCapacityQuotas = New-Object -TypeName RubrikSecurityCloud.Types.ClusterWithCapacityQuota
             $query.field.CrossAccountCapabilities = @([RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED)
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -108,8 +119,9 @@ function Get-RscOrganization {
             # $query.Nodes[0].AllClusterCapacityQuotas = New-Object -TypeName RubrikSecurityCloud.Types.ClusterWithCapacityQuota
             $query.field.Nodes[0].CrossAccountCapabilities = @([RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED)
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
-    } 
+    }
 }

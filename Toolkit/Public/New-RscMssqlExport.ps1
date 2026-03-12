@@ -66,6 +66,11 @@ function New-RscMssqlExport{
     In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
     production setting without running some tests in a non-production environment. 
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Exports a database using the latest recovery point using the "Simple Method"
     This means you provide a single data and log path for all data and log files to go into. This does not allow for the 
@@ -163,7 +168,13 @@ function New-RscMssqlExport{
         [ValidateRange(1, 8)]
         [Parameter(
             Mandatory = $false
-        )][int]$MaxDataStreams = 2
+        )][int]$MaxDataStreams = 2,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -201,6 +212,7 @@ function New-RscMssqlExport{
         $query.Var.input.Config.targetInstanceId = $TargetMssqlInstance.Id
         #endregion
 
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

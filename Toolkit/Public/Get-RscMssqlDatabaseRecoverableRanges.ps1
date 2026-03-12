@@ -21,6 +21,11 @@ function Get-RscMssqlDatabaseRecoverableRanges {
     .PARAMETER beforeTime
     Used to filter ranges 
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns all of the ranges the database can be recovered to. 
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -52,7 +57,13 @@ function Get-RscMssqlDatabaseRecoverableRanges {
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $false
-        )][datetime]$beforeTime
+        )][datetime]$beforeTime,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -75,6 +86,7 @@ function Get-RscMssqlDatabaseRecoverableRanges {
             $query.Var.input.beforeTime = $beforeTime
         }
 
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result.Data
     } 

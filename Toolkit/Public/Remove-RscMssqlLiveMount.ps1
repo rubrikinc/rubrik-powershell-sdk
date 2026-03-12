@@ -14,7 +14,9 @@ function Remove-RscMssqlLiveMount {
     Forces the unmount of a database in the event Rubrik cannot connect to the SQL Server Instance or database. 
 
     .PARAMETER AsQuery
-    Instead of running the command, the query and variables used for the query will be returned. 
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Removes the live mount from the SQL Server and cleans up the share and files on the Rubrik cluster
@@ -39,10 +41,17 @@ function Remove-RscMssqlLiveMount {
         [RubrikSecurityCloud.Types.MssqlDatabaseLiveMount]$MssqlLiveMount, 
 
         [Parameter(
-            Mandatory = $false, 
+            Mandatory = $false,
             ValueFromPipelineByPropertyName = $false
         )]
-        [Switch]$Force
+        [Switch]$Force,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )]
+        [Switch]$AsQuery
     )
     
     Process {
@@ -56,6 +65,7 @@ function Remove-RscMssqlLiveMount {
         $query.Var.input.force = $force
 
         #endregion
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

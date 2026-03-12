@@ -11,6 +11,11 @@ function Get-RscVmwareVm {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all VMs
     Get-RscVmwareVm
@@ -70,7 +75,12 @@ function Get-RscVmwareVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.Org]$Org
+        [RubrikSecurityCloud.Types.Org]$Org,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -97,6 +107,7 @@ function Get-RscVmwareVm {
             $query.Field.allOrgs = New-Object RubrikSecurityCloud.Types.Org
             $query.Field.allOrgs[0].name = "FETCH"
             $query.Field.allOrgs[0].id = "FETCH"
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -163,8 +174,9 @@ function Get-RscVmwareVm {
                 $query.var.filter += $replicaFilter
             }
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
-    } 
+    }
 }

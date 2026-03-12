@@ -16,8 +16,10 @@ function Set-RscNasShare {
     The list of NAS shares to be updated. Create input objects using New-RscNasShareInput.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
-    
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     $updatedNasShare = New-RscNasShareInput -ExportPoint "/test_mounts/100_mb"
     -NasShareId "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb"

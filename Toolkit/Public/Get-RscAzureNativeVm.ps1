@@ -11,6 +11,11 @@ function Get-RscAzureNativeVm {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all
     Get-RscAzureNativeVm
@@ -43,7 +48,12 @@ function Get-RscAzureNativeVm {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla
+        [RubrikSecurityCloud.Types.GlobalSlaReply]$Sla,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -53,6 +63,7 @@ function Get-RscAzureNativeVm {
             $query = New-RscQuery -GqlQuery azureNativeVirtualMachine
             $query.Var.azureVirtualMachineRubrikId = $Id
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -69,6 +80,7 @@ function Get-RscAzureNativeVm {
                 $query.var.virtualMachineFilters.effectiveSlaFilter.effectiveSlaIds = @($Sla.id)
             }
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }

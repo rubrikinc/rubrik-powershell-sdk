@@ -18,6 +18,11 @@ function Stop-RscManagedVolumeSnapshot {
     .PARAMETER RscSlaDomain
     SLA Domain Object as retrieved from Get-RscSlaDomain
     
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
     Stop-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume -SlaDomainId $RscManagedVolume.EffectiveSlaDomain.Id
@@ -32,9 +37,15 @@ function Stop-RscManagedVolumeSnapshot {
         [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume,
 
         [Parameter(
-            Mandatory = $true, 
+            Mandatory = $true,
             ValueFromPipeline = $false
-        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain
+        )][RubrikSecurityCloud.Types.GlobalSlaReply]$RscSlaDomain,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -50,6 +61,7 @@ function Stop-RscManagedVolumeSnapshot {
         $query.Var.input.params.retentionConfig.slaId = $RscSlaDomain.Id
         #endregion
 
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

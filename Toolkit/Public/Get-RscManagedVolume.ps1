@@ -22,6 +22,11 @@ function Get-RscManagedVolume {
     RscCluster object retrieved via Get-RscCluster
 
    
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Return back a list of Managed Volumes.
     Get-RscManagedVolume -List
@@ -54,7 +59,12 @@ function Get-RscManagedVolume {
         
         [Parameter(
             Mandatory = $false
-        )][RubrikSecurityCloud.Types.Cluster]$RscCluster
+        )][RubrikSecurityCloud.Types.Cluster]$RscCluster,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -84,6 +94,7 @@ function Get-RscManagedVolume {
         }
         
         #endregion
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result.Nodes
     }

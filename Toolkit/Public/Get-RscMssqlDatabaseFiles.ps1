@@ -17,6 +17,11 @@ function Get-RscMssqlDatabaseFiles {
     .PARAMETER RecoveryDateTime
     Use Get-RscMssqlDatabaseRecoveryPoint to get a fully formatted date and time for the recovery point
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns the list of database files based on a specific point in time. 
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -31,7 +36,13 @@ function Get-RscMssqlDatabaseFiles {
         
         [Parameter(
             Mandatory = $true
-        )][datetime]$RecoveryDateTime
+        )][datetime]$RecoveryDateTime,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     Process {
         # Determine field profile:
@@ -46,6 +57,7 @@ function Get-RscMssqlDatabaseFiles {
         $query.Var.input.id = $RscMssqlDatabase.Id
         $query.Var.input.time = $RecoveryDateTime
 
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result.Items
     } 

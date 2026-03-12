@@ -11,6 +11,11 @@ function Get-RscMongoDatabase {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all
     Get-RscMongoDatabase
@@ -56,7 +61,12 @@ function Get-RscMongoDatabase {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.MongoSource]$MongoSource
+        [RubrikSecurityCloud.Types.MongoSource]$MongoSource,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -67,6 +77,7 @@ function Get-RscMongoDatabase {
             $query.var.filter = @()
             $query.Var.fid = $Id
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -109,6 +120,7 @@ function Get-RscMongoDatabase {
                 $query.var.filter += $MongoSourceFilter
             }
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }

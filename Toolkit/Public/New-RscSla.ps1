@@ -12,6 +12,11 @@ function New-RscSla
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Create a Snapshot schedule to take a snapshot every 1 hour and retain that snapshot for 7 days. Then create the SLA Domain with that schedule.
     
@@ -132,7 +137,13 @@ function New-RscSla
     
     # Postgres Db Cluster specific settings of this SLA.
     [Parameter()]
-    [RubrikSecurityCloud.Types.PostgresDbClusterSlaConfigInput]$PostgresDbClusterConfig
+    [RubrikSecurityCloud.Types.PostgresDbClusterSlaConfigInput]$PostgresDbClusterConfig,
+
+    [Parameter(
+        Mandatory = $false,
+        ValueFromPipeline = $false,
+        HelpMessage = "Return the query object instead of running the query"
+    )][Switch]$AsQuery
   )
     Process {
 
@@ -225,6 +236,7 @@ function New-RscSla
         }
         $query.Var.Input.ObjectSpecificConfigsInput = $objectSpecificConfig
 
+        if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc -Query $query
         $result
     }

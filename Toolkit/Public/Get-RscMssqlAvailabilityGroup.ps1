@@ -31,6 +31,11 @@ function Get-RscMssqlAvailabilityGroup {
     .PARAMETER Replica
     Switch to include or exclude replicated AGs
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns a list of Availability Groups in Rubrik, including relics and replicas.
     Get-RscMssqlAvailabilityGroup

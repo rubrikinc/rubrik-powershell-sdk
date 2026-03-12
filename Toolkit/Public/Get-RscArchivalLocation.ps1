@@ -11,6 +11,11 @@ function Get-RscArchivalLocation {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all archival locations
     Get-RscArchivalLocation
@@ -37,7 +42,12 @@ function Get-RscArchivalLocation {
             Mandatory = $false,
             ParameterSetName = "Name"
         )]
-        [String]$Name
+        [String]$Name,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -308,6 +318,7 @@ function Get-RscArchivalLocation {
             $query.Field[0].targets[$RubrikManagedTapeTargetType].syncFailureReason = "FETCH"
 
         }
+        if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc $query
         $result.targets
     } 

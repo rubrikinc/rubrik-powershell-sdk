@@ -11,6 +11,11 @@ function Get-RscDb2Instance {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all
     Get-RscDb2Instance
@@ -49,9 +54,14 @@ function Get-RscDb2Instance {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.Cluster]$Cluster
+        [RubrikSecurityCloud.Types.Cluster]$Cluster,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
-    
+
     Process {
 
        # The query is different for getting a single object by ID.
@@ -60,6 +70,7 @@ function Get-RscDb2Instance {
             $query.var.filter = @()
             $query.Var.id = $Id
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -95,6 +106,7 @@ function Get-RscDb2Instance {
                 $query.var.filter += $clusterFilter
             }
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }

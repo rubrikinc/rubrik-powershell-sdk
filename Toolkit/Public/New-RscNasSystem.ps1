@@ -60,7 +60,9 @@ function New-RscNasSystem {
     API token to add or update the Pure NAS system with API integration.
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     $cluster = Get-RscCluter -Name "Foo"

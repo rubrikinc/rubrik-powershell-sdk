@@ -11,6 +11,11 @@ function Get-RscSapHanaDatabase {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all
     Get-RscSapHanaDatabase
@@ -56,7 +61,12 @@ function Get-RscSapHanaDatabase {
             ValueFromPipeline = $true,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.SapHanaSystem]$SapHanaSystem
+        [RubrikSecurityCloud.Types.SapHanaSystem]$SapHanaSystem,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -67,6 +77,7 @@ function Get-RscSapHanaDatabase {
             $query.var.filter = @()
             $query.Var.fid = $Id
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
@@ -109,6 +120,7 @@ function Get-RscSapHanaDatabase {
                 $query.var.filter += $SapHanaSystemFilter
             }
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }

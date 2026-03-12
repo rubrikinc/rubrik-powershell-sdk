@@ -11,6 +11,11 @@ function Get-RscSnapshot {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get snapshots for a specific VM
     Get-RscVmwareVm -Name "jake-001" | Get-RscSnapshot
@@ -56,7 +61,12 @@ function Get-RscSnapshot {
             ValueFromPipeline = $false,
             ParameterSetName = "Object"
         )]
-        [switch]$Latest
+        [switch]$Latest,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
 
     )
     
@@ -157,6 +167,7 @@ function Get-RscSnapshot {
             $polarisSnapshotQuery = New-RscQuery -GqlQuery polarisSnapshot
             $polarisSnapshotQuery.var.snapshotFid = $Id
             $polarisSnapshotQuery.field = $polarisSnapshotFieldDef
+            if ( $AsQuery ) { return $polarisSnapshotQuery }
             $result = snapshotById($polarisSnapshotQuery)
             if ($null -ne $result) {
                 return $result
@@ -219,8 +230,9 @@ function Get-RscSnapshot {
             # CDM snapshot type
             $query.field.nodes[$cdmSnapshot] = $cdmSnapshotFieldDef
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.nodes
-        }    
+        }
     }
 } 

@@ -14,6 +14,11 @@ function New-RscMssqlLogBackup {
     .PARAMETER RscMssqlDatabase
     Database object returned from Get-RscMssqlDatabase
     
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     Returns the list of database files based on the latest recovery point
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
@@ -24,10 +29,17 @@ function New-RscMssqlLogBackup {
     )]
     Param(
         [Parameter(
-            Mandatory = $false, 
+            Mandatory = $false,
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase
+        [RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )]
+        [Switch]$AsQuery
     )
     Process {
         Write-Debug "- Running New-RscMssqlLogBackup"
@@ -37,6 +49,7 @@ function New-RscMssqlLogBackup {
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         #endregion
         
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 

@@ -33,7 +33,9 @@ function Get-RscMssqlInstance {
     Changes the data profile. This can affect the fields returned
 
     .PARAMETER AsQuery
-    Instead of running the command, the query object is returned.
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
 
     .EXAMPLE
     Returns a list of all SQL Server Hosts and clusters connected to RSC

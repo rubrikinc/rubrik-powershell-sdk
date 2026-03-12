@@ -11,6 +11,11 @@ function Get-RscCloudNativeTagRule {
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     # Get all
     Get-RscCloudNativeTagRule
@@ -44,7 +49,12 @@ function Get-RscCloudNativeTagRule {
             ValueFromPipeline = $false,
             ParameterSetName = "Name"
         )]
-        [RubrikSecurityCloud.Types.CloudNativeTagObjectType]$ObjectType
+        [RubrikSecurityCloud.Types.CloudNativeTagObjectType]$ObjectType,
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
@@ -75,6 +85,7 @@ function Get-RscCloudNativeTagRule {
 
             $query.var.ObjectType += $ObjectType
 
+            if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result.tagRules
     } 

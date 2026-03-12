@@ -18,16 +18,32 @@ function Get-RscAccount {
     The User type (returned by the allAccountOwners query):
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/user.doc.html
     
+
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
     #>
 
     [CmdletBinding(
     )]
     Param(
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )][Switch]$AsQuery
     )
     
     Process {
         $outputObj = @{}
-        
+
+        if ( $AsQuery ) {
+            $q1 = New-RscQuery -GqlQuery accountId
+            $q2 = New-RscQuery -GqlQuery allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas
+            return @($q1, $q2)
+        }
+
         # Add Account Id:
         $outputObj["AccountId"] = (New-RscQuery -GqlQuery accountId).Invoke()
 

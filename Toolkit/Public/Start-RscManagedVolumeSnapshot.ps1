@@ -14,6 +14,11 @@ function Start-RscManagedVolumeSnapshot {
     .PARAMETER RscManagedVolume
     Managed Volume Object as retrieved from Get-RscManagedVolume
    
+    .PARAMETER AsQuery
+    Return the query object instead of running the query.
+    Preliminary read-only queries may still run to gather IDs or
+    other data needed to build the main query.
+
     .EXAMPLE
     $RscManagedVolume = Get-RscManagedVolume -Name rp-mysql-01
     Start-RscManagedVolumeSnapshot -RscManagedVolume $RscManagedVolume
@@ -22,10 +27,17 @@ function Start-RscManagedVolumeSnapshot {
     [CmdletBinding()]
     Param(
         [Parameter(
-            Mandatory = $true, 
+            Mandatory = $true,
             ValueFromPipeline = $true
         )]
-        [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume
+        [RubrikSecurityCloud.Types.ManagedVolume]$RscManagedVolume,
+
+        [Parameter(
+            Mandatory = $false,
+            ValueFromPipeline = $false,
+            HelpMessage = "Return the query object instead of running the query"
+        )]
+        [Switch]$AsQuery
     )
     
     Process {
@@ -38,6 +50,7 @@ function Start-RscManagedVolumeSnapshot {
         $query.Var.input.config.isAsync = $true
 
         #endregion
+        if ( $AsQuery ) { return $query }
         $result = $query.Invoke()
         $result
     } 
