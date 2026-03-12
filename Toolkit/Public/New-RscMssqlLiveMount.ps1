@@ -2,20 +2,23 @@
 function New-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    Creates a Live Mount of a MSSQL Database
+    Creates a live mount of a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Creates a Live Mount of a MSSQL Database
+    Mounts a point-in-time copy of a SQL Server database onto a target instance as a fully operational database. Live mounts let you access data for testing, reporting, or validation without affecting the production database. The mounted database is backed by Rubrik storage and can be removed when no longer needed with Remove-RscMssqlLiveMount.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    The MSSQL database object to mount. Pipe from Get-RscMssqlDatabase.
 
     .PARAMETER MountedDatabaseName
-    Name of the database that was Live Mounted
+    The name for the mounted database on the target instance.
+
+    .PARAMETER TargetMssqlInstance
+    The destination SQL Server instance. Pipe from Get-RscMssqlInstance.
 
     .PARAMETER RecoveryDateTime
     Use Get-RscMssqlDatabaseRecoveryPoint to get a fully formatted date and time for the recovery point
@@ -33,6 +36,22 @@ function New-RscMssqlLiveMount {
     
     New-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -TargetMssqlInstance $RscTargetMssqlInstance -RecoveryDateTime $RecoveryDateTime
 
+The point-in-time to mount, in UTC. Use Get-RscMssqlDatabaseRecoveryPoint to obtain a properly formatted value.
+
+    .EXAMPLE
+    Live mount a database to a target instance at a specific recovery point.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $inst = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.com -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    $recovery = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $db -Latest
+    New-RscMssqlLiveMount -RscMssqlDatabase $db -MountedDatabaseName "AW2019_Mount" -TargetMssqlInstance $inst -RecoveryDateTime $recovery
+
+    .EXAMPLE
+    Mount using a specific point-in-time value.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $inst = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.com -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
+    New-RscMssqlLiveMount -RscMssqlDatabase $db -MountedDatabaseName "AW2019_Test" -TargetMssqlInstance $inst -RecoveryDateTime "2024-01-15T10:00:00.000Z"
     #>
 
     [CmdletBinding(
@@ -64,7 +83,7 @@ function New-RscMssqlLiveMount {
     Process {
         Write-Debug "- Running New-RscMssqlLiveMount"
         #region Create Query         
-        $query = New-RscMutationMssql -Op CreateLiveMount 
+        $query = New-RscMutation -Gql createMssqlLiveMount 
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateMssqlLiveMountInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         $query.Var.input.config = New-Object RubrikSecurityCloud.Types.MountMssqlDbConfigInput

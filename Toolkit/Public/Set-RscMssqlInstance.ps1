@@ -2,58 +2,69 @@
 function Set-RscMssqlInstance{
     <#
     .SYNOPSIS
-    Sets properties of a MSSQL Instance in RSC
+    Configures protection settings for a Microsoft SQL Server instance.
 
     .DESCRIPTION
-    Sets properties of a MSSQL Instance in RSC
+    Sets SLA Domain assignment and SQL Server-specific protection properties on an instance. All databases within the instance inherit these settings unless overridden at the database level. You can assign an SLA, set the instance to DO NOT PROTECT, configure log backup settings (frequency, retention, and host log retention), and control whether changes apply to existing snapshots.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlInstance
-    Database object returned from Get-RscMssqlInstance
+    The SQL Server instance object. Pipe from Get-RscMssqlInstance.
 
     .PARAMETER DoNotProtect
-    Sets the protection property on the database to DO NOT PROTECT
+    Remove SLA protection from the instance.
 
     .PARAMETER ExistingSnapshotRetention
-    Defines what should happen to existing snapshots when you set the database to DO NOT PROTECT
+    What to do with existing snapshots when setting to DO NOT PROTECT: EXPIRE_IMMEDIATELY, KEEP_FOREVER, or RETAIN_SNAPSHOTS.
 
     .PARAMETER RscSlaDomain
-    This will be the ID of the SLA Domain that will manage the retention of the snapshot
+    An SLA Domain object to assign. Pipe from Get-RscSla.
 
     .PARAMETER CopyOnly
-    When assigning an SLA, this will instruct RSC to take copy only snapshots of the database
+    Take copy-only snapshots, which do not interfere with native SQL Server backup chains.
 
     .PARAMETER EnableLogBackups
-    Including this parameter will enable log backups. If this parameter is omitted, then log backups wull be disabled
+    Enable transaction log backups. Omit to disable log backups.
 
     .PARAMETER UseSLALogConfig
-    If you enable log backups, this switch states to use the log configuration defined in the SLA
+    Use the log backup configuration defined in the SLA Domain instead of custom settings.
 
     .PARAMETER logBackupFrequencyInSeconds
-    If you do not include the UseSLALogConfig parameter and you Enable Log Backups, you must include this parameter to define the log backup freqency
+    Custom log backup frequency in seconds. Required when -EnableLogBackups is set without -UseSLALogConfig.
+
     .PARAMETER logRetentionHours
-    If you do not include the UseSLALogConfig parameter and you Enable Log Backups, you must include this parameter to define the log backup retention
+    Custom log backup retention in hours. Required when -EnableLogBackups is set without -UseSLALogConfig.
 
     .PARAMETER EnableHostLogRetention
-    Including this parameter will enable Host Log Retention. This feature will not be widely used as it is only for special use cases. 
+    Enable retention of log backups on the SQL Server host.
 
     .PARAMETER FollowSystemRetentionConfig
-    Uses the system retention value for when to remove the log backup from the host when Host Log Retention is enabled
+    Use the system-defined retention period for host log retention.
 
     .PARAMETER HostLogRetentionInSeconds
-    User defined retention value for when to remove the log backup from the host when Host Log Retention is enabled
+    Custom host log retention period in seconds.
 
     .PARAMETER ShouldApplyToExistingSnapshots
-    When setting the above SLA related properties, this defines what should happen to existing snapshots that are SLA Domain based
+    Apply the new SLA policy to existing SLA-based snapshots.
 
     .PARAMETER ShouldApplyToNonPolicySnapshots
-    When setting the above SLA related properties, this defines what should happen to existing snapshots that are NOT SLA Domain based
+    Apply the new SLA policy to existing snapshots not created by an SLA policy.
 
     .EXAMPLE
-    Set-RscMssqlInstance -RscMssqlInstance $RscMssqlInstance -RscSlaDomain $RscSlaDomain
+    Assign an SLA Domain to a SQL Server instance.
+
+    $inst = Get-RscMssqlInstance -HostName "sql01.example.com"
+    $sla = Get-RscSla -Name "Gold"
+    Set-RscMssqlInstance -RscMssqlInstance $inst -RscSlaDomain $sla
+
+    .EXAMPLE
+    Set an instance to DO NOT PROTECT and expire existing snapshots immediately.
+
+    $inst = Get-RscMssqlInstance -HostName "sql01.example.com"
+    Set-RscMssqlInstance -RscMssqlInstance $inst -DoNotProtect -ExistingSnapshotRetention EXPIRE_IMMEDIATELY
     #>
     Param(
         [Parameter(
@@ -145,7 +156,7 @@ function Set-RscMssqlInstance{
         #region Create Query
         switch ($PSCmdlet.ParameterSetName){
             "Do Not Protect" {
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -168,7 +179,7 @@ function Set-RscMssqlInstance{
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
             "Apply SLA Domain"{
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput

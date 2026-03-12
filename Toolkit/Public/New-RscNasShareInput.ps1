@@ -2,47 +2,56 @@
 function New-RscNasShareInput {
     <#
     .SYNOPSIS
-    Creates a new Input object for creating or updating a NAS Share.
+    Creates an input object for creating or updating a NAS share.
 
     .DESCRIPTION
-    The New-RscNasShareInput cmdlet creates a new Input object for creating or
-    updating a NAS Share using New-RscNasShare or Set-RscNasShare cmdlets.
+    Builds a typed input that describes a NAS share for registration or
+    modification. When ShareType and ExportPoint are provided, a create
+    input is returned for use with New-RscNasShare. When NasShareId is
+    provided, an update input is returned for use with Set-RscNasShare.
+    Credentials are attached automatically when Username or Password are
+    supplied.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER Username
-    Username to access the NAS server and share.
+    Username for authenticating to the NAS server and share.
 
     .PARAMETER Password
-    Password associated with the NAS user account.
+    Password for the NAS user account.
 
     .PARAMETER ShareType
-    The type of NAS share.
+    Protocol type of the NAS share (NFS or SMB). Required when creating a new share.
 
     .PARAMETER ExportPoint
-    The NFS export point or SMB share name for the NAS share.
+    The NFS export path or SMB share name (e.g. "/exports/data" or "ShareName").
+    Required when creating a new share.
 
     .PARAMETER IsilonChangelistEnabled
-    Specifies whether the Isilon changelist is enabled for the share.
+    Enable the Isilon changelist feature for this share. Only applies when updating.
 
     .PARAMETER NasShareId
-    ID of the NAS share that will be updated.
+    ID of an existing NAS share to update. Switches to update mode.
 
     .PARAMETER NasSourceId
-    Managed ID of the NAS system or NAS namespace where shares will be updated.
+    Managed ID of the NAS system or namespace that owns the share being updated.
 
     .EXAMPLE
-    Input for creating NAS share with NFS share type.
-    New-RscNasShareInput -ShareType NFS -ExportPoint "/test_mounts/100_mb"
+    Create an NFS share input and register it.
+
+    $input = New-RscNasShareInput -ShareType NFS -ExportPoint "/test_mounts/100_mb"
+    New-RscNasShare -Input $input -NasSourceId "4322ac6a-8be6-59cb-82e4-fa163fb426e3"
 
     .EXAMPLE
-    Input for updating NAS share.
-    New-RscNasShareInput -ExportPoint "/test_mounts/100_mb"
-    -NasShareId "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb"
-    -NasSourceId "4322ac6a-8be6-59cb-82e4-fa163fb426e3"
-    -IsilonChangelistEnabled
+    Update an existing NAS share to enable Isilon changelist.
+
+    $input = New-RscNasShareInput -ExportPoint "/test_mounts/100_mb" `
+        -NasShareId "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb" `
+        -NasSourceId "4322ac6a-8be6-59cb-82e4-fa163fb426e3" `
+        -IsilonChangelistEnabled
+    Set-RscNasShare -Input $input
     #>
 
     [CmdletBinding(

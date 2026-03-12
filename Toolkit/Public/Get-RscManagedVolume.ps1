@@ -2,42 +2,42 @@
 function Get-RscManagedVolume {
     <#
     .SYNOPSIS
-    Retrieve info about Persistent Mount Managed Volumes
+    Retrieves Managed Volumes from Rubrik Security Cloud.
 
     .DESCRIPTION
-    Retrieve info about Persistent Mount Managed Volumes. Persistent Mount Managed Volumes are controlled externally by the user, 
-    unlike SLA Managed Volumes which are controlled by the SLA Domain. 
+    Returns Persistent Mount Managed Volumes managed by Rubrik. These volumes are
+    externally controlled by the user (unlike SLA-managed volumes). You can list all
+    volumes or filter by name or cluster.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER List
-    Used to create a list of Managed Volumes
+    Return all items. This is the default behavior.
 
     .PARAMETER Name
-    Used to return a specific Managed Volume based on the name
+    Filter by name. Exact match on the Managed Volume name.
 
     .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
 
    
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
-
     .EXAMPLE
-    Return back a list of Managed Volumes.
+    # Get all Managed Volumes
     Get-RscManagedVolume -List
 
     .EXAMPLE
-    Return back a list of Managed Volumes for a specified Rubrik Cluster
-    Get-RscManagedVolume -List -RscCluster $RscCluster
+    # Get a Managed Volume by name
+    Get-RscManagedVolume -Name rp-mysql-01
 
     .EXAMPLE
-    Returns back information about a specific Managed Volume
-    Get-RscManagedVolume -Name rp-mysql-01 
+    # Get Managed Volumes on a specific cluster
+    Get-RscCluster -Name "cluster-east" | Get-RscManagedVolume -List
     #>
 
     [CmdletBinding(
@@ -76,7 +76,7 @@ function Get-RscManagedVolume {
             $fieldProfile = "DETAIL"
         }
 
-        $query = New-RscQueryManagedVolume -Operation ManagedVolumes -FieldProfile $fieldProfile 
+        $query = New-RscQuery -Gql managedVolumes -FieldProfile $fieldProfile 
         $query.Var.filter = @()
 
         #region Create Query

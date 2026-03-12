@@ -2,35 +2,63 @@
 function New-RscSlaSnapshotSchedule {
     <#
     .SYNOPSIS
-    Creates a Snapshot Schedule for use with New-RscSla
+    Creates a snapshot schedule input object for use with New-RscSla.
 
     .DESCRIPTION
-    Creates a Snapshot Schedule for use with New-RscSla
-
-    .PARAMETER Type
-    The Type of Schedule
-    (Minute, Hourly, Daily, Weekly, Monthly, Quarterly, Yearly)
-
-    .PARAMETER Frequency
-    The frequency to take a snapshot, based on the schedule type.
-
-    .PARAMETER Retention
-    Length of time to retain the snapshot
-
-    .PARAMETER RetentionUnit
-    Unit of time to retain the snapshot
-    (Minute, Hourly, Daily, Weekly, Monthly, Quarterly, Yearly)
+    Builds a typed snapshot schedule that defines how often snapshots are
+    taken and how long they are retained. The output is passed to New-RscSla
+    or Set-RscSla via the corresponding schedule parameter (e.g.
+    -HourlySchedule, -DailySchedule). Use one schedule per cadence and
+    combine several schedules in a single SLA domain.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER Type
+    The cadence of the schedule. Determines which schedule type is created
+    (Minute, Hourly, Daily, Weekly, Monthly, Quarterly, Yearly).
+
+    .PARAMETER Frequency
+    How often a snapshot is taken within the chosen cadence. For example,
+    a Frequency of 4 with Type Hourly means one snapshot every 4 hours.
+
+    .PARAMETER Retention
+    The number of time units to keep each snapshot before it expires.
+
+    .PARAMETER RetentionUnit
+    The unit of time for the Retention value
+    (Minutes, Hours, Days, Weeks, Months, Quarters, Years).
+
+    .PARAMETER DayOfWeek
+    Day of the week on which weekly snapshots are taken. Defaults to Friday.
+
+    .PARAMETER DayOfMonth
+    Day of the month on which monthly snapshots are taken. Defaults to LAST_DAY.
+
+    .PARAMETER DayOfQuarter
+    Day of the quarter on which quarterly snapshots are taken. Defaults to LAST_DAY.
+
+    .PARAMETER QuarterStartMonth
+    Month in which each quarter begins for quarterly schedules. Defaults to January.
+
+    .PARAMETER DayOfYear
+    Day of the year on which yearly snapshots are taken. Defaults to LAST_DAY.
+
+    .PARAMETER YearStartMonth
+    Month in which the year begins for yearly schedules. Defaults to January.
+
     .EXAMPLE
-    Create a Snapshot schedule to take a snapshot every 1 hour and retain that snapshot for 7 days. Then create the SLA Domain with that schedule.
+    Create an hourly schedule and pass it to New-RscSla.
 
     $hourlySchedule = New-RscSlaSnapshotSchedule -Type Hourly -Frequency 1 -Retention 7 -RetentionUnit DAYS
     New-RscSla -Name "Platinum" -HourlySchedule $hourlySchedule -ObjectType VSPHERE_OBJECT_TYPE
-    
+
+    .EXAMPLE
+    Create a weekly schedule that snapshots every Friday and retains for 4 weeks.
+
+    $weeklySchedule = New-RscSlaSnapshotSchedule -Type Weekly -Frequency 1 -Retention 4 -RetentionUnit WEEKS -DayOfWeek FRIDAY
+    New-RscSla -Name "Gold" -WeeklySchedule $weeklySchedule -ObjectType VSPHERE_OBJECT_TYPE
     #>
 
     [CmdletBinding()]

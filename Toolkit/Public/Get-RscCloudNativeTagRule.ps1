@@ -2,10 +2,13 @@
 function Get-RscCloudNativeTagRule {
     <#
     .SYNOPSIS
-    Retrieves RscCloudNativeTagRule objects protected by Rubrik Security Cloud
+    Retrieves cloud-native tag rules configured in Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'cloudNativeTagRules' to retrieve a list of VMs with a predetermined set of properties.
+    Returns tag-based auto-protection rules for cloud-native workloads. These rules
+    automatically assign SLA Domains to cloud resources that match specified tags.
+    The -ObjectType parameter is required to specify which cloud resource type
+    to query (e.g., AWS EC2, Azure VM).
 
     .LINK
     Schema reference:
@@ -20,13 +23,22 @@ function Get-RscCloudNativeTagRule {
     # Get all
     Get-RscCloudNativeTagRule
 
-    .EXAMPLE
-    # Get object with specific name
-    Get-RscCloudNativeTagRule -Name "jake-001"
+.PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER ObjectType
+    The cloud-native object type to query tag rules for. This parameter is required.
 
     .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscCloudNativeTagRule -Name "*jake*"
+    # Get all tag rules for AWS EC2 instances
+    Get-RscCloudNativeTagRule -ObjectType AWS_EC2_INSTANCE
+
+    .EXAMPLE
+    # Get tag rules assigned to a specific SLA
+    Get-RscSla -Name "Gold" | Get-RscCloudNativeTagRule -ObjectType AZURE_VM
     #>
 
     [CmdletBinding(
@@ -58,7 +70,7 @@ function Get-RscCloudNativeTagRule {
     )
     
     Process {
-            $query = New-RscQuery -GqlQuery cloudNativeTagRules
+            $query = New-RscQuery -Gql cloudNativeTagRules
             $query.field.tagRules = New-Object -TypeName RubrikSecurityCloud.Types.CloudNativeTagRule
             $query.field.tagRules[0].name = "FETCH"
             $query.field.tagRules[0].id = "FETCH"

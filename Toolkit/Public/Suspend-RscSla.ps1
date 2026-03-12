@@ -2,43 +2,40 @@
 function Suspend-RscSla {
     <#
     .SYNOPSIS
-    Suspend RSC SLA (service level agreement).
-    
+    Suspends an SLA Domain on one or more Rubrik clusters.
+
     .DESCRIPTION
-    The Suspend-RscSLA cmdlet is used to suspend a given
-    SLA (service level agreement) on one or more clusters
-    on which this SLA is applicable.
-    The -SlaId parameter is used for identifying the SLA, 
-    this parameter is required.
-    The -ClusterUuids specifies a list of cluster Uuids on 
-    which this SLA needs to be suspended.
+    Pauses snapshot scheduling for an SLA Domain on the specified clusters. While suspended, no new snapshots are taken for workloads governed by this SLA on those clusters. Existing snapshots and their retention are not affected. Use Resume-RscSla to reactivate the SLA. Pipe an SLA object from Get-RscSla or provide the SLA ID directly.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER SlaId
-    The Id of the SLA which needs to be suspended.
+    The RSC object ID of the SLA Domain to suspend.
 
     .PARAMETER ClusterUuids
-    The cluster IDs on which the SLA needs to be suspended.
+    One or more Rubrik cluster UUIDs on which to suspend the SLA Domain.
 
     .PARAMETER GlobalSla
-    The Global Sla which should be suspended.
+    An SLA Domain object to suspend. Pipe from Get-RscSla.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
-    .EXAMPLE
-    Suspend an SLA on two clusters on which it is applied.
-    Suspend-RscSLA -SlaId xxx-xxx -ClusterUuids @('yyy-yyy', 'zzz-zzz')
+Return the query object instead of executing it.
 
     .EXAMPLE
-    Use the powershell pipe to suspend the Global SLA.
-    $result = Get-RscSla -Name 'Sample SLA Domain'
-    $result | Suspend-RscSla -ClusterUuids @('9c930153-2a3c-4b7d-8603-48145315e71f')
+    Suspend an SLA on specific clusters by SLA ID.
+
+    Suspend-RscSla -SlaId "abc-123" -ClusterUuids @("cluster-uuid-1", "cluster-uuid-2")
+
+    .EXAMPLE
+    Pipe an SLA object and suspend it on a cluster.
+
+    Get-RscSla -Name "Gold" | Suspend-RscSla -ClusterUuids @("9c930153-2a3c-4b7d-8603-48145315e71f")
     #>
 
     [CmdletBinding(DefaultParameterSetName = "GlobalSlaInput")]
@@ -82,7 +79,7 @@ function Suspend-RscSla {
     )
 
     Process {
-        $query = (New-RscMutationSla -op "Pause")
+        $query = (New-RscMutation -Gql pauseSla)
 
         if ($PsCmdlet.ParameterSetName -eq "GlobalSlaInput") {
             $SlaId = $GlobalSla.ID

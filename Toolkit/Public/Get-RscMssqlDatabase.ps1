@@ -2,30 +2,53 @@
 function Get-RscMssqlDatabase {
     <#
     .SYNOPSIS
-    Returns information about a MSSQL Database
+    Retrieves SQL Server databases managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    Returns information about a MSSQL Database
+    Returns SQL Server databases that are protected or inventoried by Rubrik. You can
+    filter by name, instance, availability group, SLA Domain, cluster, or organization.
+    Use -Id to retrieve a single database by its RSC identifier. Use -List (the default)
+    to retrieve all databases.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER List
-    Used to create a list of Databases
-    
+    Return all items. This is the default behavior.
+
     .PARAMETER Name
-    Used to return a specific Database based on the name
+    Filter by name. Exact match on the database name.
 
     .PARAMETER RscMssqlInstance
-    SQL Server Instance Object returned from Get-RscMssqlInstance
-
+    A SQL Server instance object, typically obtained from Get-RscMssqlInstance.
 
     .PARAMETER RscMssqlAvailabilityGroup
-    SQL Server Availability Group Objeft returned from Get-RscMssqlAvailabilityGroup
+    A SQL Server availability group object, typically obtained from Get-RscMssqlAvailabilityGroup.
+
+    .PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Relic
+    Include deleted objects that still have snapshots in Rubrik.
+
+    .PARAMETER Replica
+    Include replicated copies.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
+    .PARAMETER Org
+    An RSC Organization to filter by. Pipe from Get-RscOrganization.
+
+    .PARAMETER AsQuery
+    Return the query object instead of executing it.
 
     .PARAMETER Detail
-    Changes the data profile. This can affect the fields returned
+    Return additional fields beyond the default set.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -33,17 +56,17 @@ function Get-RscMssqlDatabase {
     other data needed to build the main query.
 
     .EXAMPLE
-    Return a list of MSSQL Databases
+    # Get all SQL Server databases
     Get-RscMssqlDatabase -List
 
     .EXAMPLE
-    Return a list of MSSQL Databases named AdventureWorks2019
+    # Get a database by name
     Get-RscMssqlDatabase -Name AdventureWorks2019
 
     .EXAMPLE
-    Return a list of MSSQL Databases named AdventureWorks2019 on the SQL 2019 Instance
-    $RscMssqlInstance = Get-RscMssqlInstance -HostName sql19.demo.com -clusterID hja87-ajb43-v4avna-hnjag
-    Get-RscMssqlDatabase -Name AdventureWorks2019 -RscMssqlInstance $RscMssqlInstance
+    # Get databases on a specific SQL Server instance
+    $instance = Get-RscMssqlInstance -HostName sql19.demo.com
+    Get-RscMssqlDatabase -Name AdventureWorks2019 -RscMssqlInstance $instance
     #>
 
     [CmdletBinding(
@@ -113,7 +136,7 @@ function Get-RscMssqlDatabase {
         #region Create Query
         switch($PSCmdlet.ParameterSetName){
             "List"{
-                $query = New-RscQuery -GqlQuery mssqlDatabases `
+                $query = New-RscQuery -Gql mssqlDatabases `
                 -AddField Nodes.PhysicalPath
                 $query.field.nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
                 $query.field.nodes[0].Cluster.name = "Fetch"
@@ -121,7 +144,7 @@ function Get-RscMssqlDatabase {
                 $query.Var.filter = @()
             }
             { ($_ -eq "Name") -or ($_ -eq "Instance") -or ($_ -eq "AvailabilityGroup")  } {
-                $query = New-RscQuery -GqlQuery mssqlDatabases `
+                $query = New-RscQuery -Gql mssqlDatabases `
                 -AddField Nodes.PhysicalPath, `
                     Nodes.PostBackupScript, `
                     Nodes.PreBackupScript, `
@@ -135,7 +158,7 @@ function Get-RscMssqlDatabase {
                 $query.Var.filter = @()
             }
             "Id"{
-                $query = New-RscQuery -GqlQuery mssqlDatabase
+                $query = New-RscQuery -Gql mssqlDatabase
                 $query.Field.PhysicalPath = New-Object RubrikSecurityCloud.Types.PathNode
                 $query.Field.PhysicalPath.SelectForRetrieval() 
                 $query.Var.fid = $Id

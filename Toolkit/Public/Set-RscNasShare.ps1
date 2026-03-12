@@ -2,18 +2,17 @@
 function Set-RscNasShare {
     <#
     .SYNOPSIS
-    Update the properties of Nas share objectgs.
-    
+    Updates the properties of one or more NAS shares in Rubrik Security Cloud.
+
     .DESCRIPTION
-    This cmdlet can be used to bulk update the configuration of the
-    specified NAS shares.
-    
+    Bulk-updates the configuration of registered NAS shares. Use New-RscNasShareInput to create the update input objects with the desired property changes, then pass them to this cmdlet. This is useful for changing export points, enabling changelist, or updating credentials on existing shares.
+
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
-    
+
     .PARAMETER NasShares
-    The list of NAS shares to be updated. Create input objects using New-RscNasShareInput.
+    One or more NAS share update input objects. Create with New-RscNasShareInput.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -26,7 +25,20 @@ function Set-RscNasShare {
     -NasSourceId "4322ac6a-8be6-59cb-82e4-fa163fb426e3"
     -IsilonChangelistEnabled
 
-    Set-RscNasShare -NasShares @($updatedNasShare)
+Return the query object instead of executing it.
+
+    .EXAMPLE
+    Update a NAS share's export point and enable Isilon changelist.
+
+    $update = New-RscNasShareInput -ExportPoint "/test_mounts/100_mb" -NasShareId "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb" -NasSourceId "4322ac6a-8be6-59cb-82e4-fa163fb426e3" -IsilonChangelistEnabled
+    Set-RscNasShare -NasShares @($update)
+
+    .EXAMPLE
+    Bulk-update multiple NAS shares.
+
+    $share1 = New-RscNasShareInput -NasShareId "id1" -NasSourceId "src1" -ExportPoint "/new/path1"
+    $share2 = New-RscNasShareInput -NasShareId "id2" -NasSourceId "src2" -ExportPoint "/new/path2"
+    Set-RscNasShare -NasShares @($share1, $share2)
     #>
 
     [CmdletBinding()]
@@ -42,7 +54,7 @@ function Set-RscNasShare {
     )
 
     Process {
-        $mutation = New-RscMutationNas -Operation BulkUpdateNasShares
+        $mutation = New-RscMutation -Gql bulkUpdateNasShares
         $mutation.Var.Input =
             New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateNasSharesInput
         $mutation.Var.Input.BulkUpdateNasShareInput =

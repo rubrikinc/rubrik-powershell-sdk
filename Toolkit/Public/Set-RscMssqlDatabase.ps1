@@ -2,97 +2,98 @@
 function Set-RscMssqlDatabase {
     <#
     .SYNOPSIS
-    Sets properties of a database in RSC
+    Configures protection and operational settings for a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Sets properties of a database in RSC. Properties include SLA Domains and their properties, Pre and Post scripts, 
+    Sets SLA Domain assignment, log backup configuration, database-level properties, and pre/post backup scripts on a SQL Server database. You can assign or remove SLA protection, clear an override to inherit from the parent instance or AG, configure log backups, adjust data streams, pause or resume backups, and manage pre/post backup scripts. Use Get-RscMssqlDatabase to obtain the database object.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    The MSSQL database object. Pipe from Get-RscMssqlDatabase.
 
     .PARAMETER RscCluster
-    RscCluster object retrieved via Get-RscCluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
 
     .PARAMETER DoNotProtect
-    Sets the protection property on the database to DO NOT PROTECT
+    Remove SLA protection from the database.
 
     .PARAMETER ExistingSnapshotRetention
-    Defines what should happen to existing snapshots when you set the database to DO NOT PROTECT
+    What to do with existing snapshots when setting to DO NOT PROTECT: EXPIRE_IMMEDIATELY, KEEP_FOREVER, or RETAIN_SNAPSHOTS.
 
     .PARAMETER ClearExistingProtection
-    Reverts the DO NOT PROTECT and tells the database to inherit from the next highest level. Instance or AG. 
+    Revert DO NOT PROTECT and inherit the SLA from the parent instance or Availability Group.
+
+    .PARAMETER ApplySLADomain
+    Apply an SLA Domain to this database.
 
     .PARAMETER RscSlaDomain
-    This will be the ID of the SLA Domain that will manage the retention of the snapshot
+    An SLA Domain object to assign. Pipe from Get-RscSla.
 
     .PARAMETER CopyOnly
-    When assigning an SLA, this will instruct RSC to take copy only snapshots of the database
+    Take copy-only snapshots, which do not interfere with native SQL Server backup chains.
 
     .PARAMETER EnableLogBackups
-    Including this parameter will enable log backups. If this parameter is omitted, then log backups wull be disabled
+    Enable transaction log backups. Omit to disable log backups.
 
     .PARAMETER UseSLALogConfig
-    If you enable log backups, this switch states to use the log configuration defined in the SLA
+    Use the log backup configuration defined in the SLA Domain instead of custom settings.
 
     .PARAMETER logBackupFrequencyInSeconds
-    If you do not include the UseSLALogConfig parameter and you Enable Log Backups, you must include this parameter to define the log backup freqency
+    Custom log backup frequency in seconds.
+
     .PARAMETER logRetentionHours
-    If you do not include the UseSLALogConfig parameter and you Enable Log Backups, you must include this parameter to define the log backup retention
+    Custom log backup retention in hours.
 
     .PARAMETER EnableHostLogRetention
-    Including this parameter will enable Host Log Retention. This feature will not be widely used as it is only for special use cases. 
+    Enable retention of log backups on the SQL Server host.
 
     .PARAMETER FollowSystemRetentionConfig
-    Uses the system retention value for when to remove the log backup from the host when Host Log Retention is enabled
+    Use the system-defined retention period for host log retention.
 
     .PARAMETER HostLogRetentionInSeconds
-    User defined retention value for when to remove the log backup from the host when Host Log Retention is enabled
+    Custom host log retention period in seconds.
 
     .PARAMETER ShouldApplyToExistingSnapshots
-    When setting the above SLA related properties, this defines what should happen to existing snapshots that are SLA Domain based
+    Apply the new SLA policy to existing SLA-based snapshots.
 
     .PARAMETER ShouldApplyToNonPolicySnapshots
-    When setting the above SLA related properties, this defines what should happen to existing snapshots that are NOT SLA Domain based
+    Apply the new SLA policy to existing snapshots not created by an SLA policy.
 
     .PARAMETER MaxDataStreams
-    Is a performance parameter. Increasing may increase performance. The default is 2, and the max number of data streams is 8
-    A stream relates to a database file. 
+    Number of parallel data streams for snapshots (1-8, default 2).
 
     .PARAMETER IsPaused
-    Determines if backups should be paused or resumed
+    Pause or resume backups for this database.
 
     .PARAMETER ShouldForceFull
-    Determins if the next snapshot is a FULL instead of the normal incremental forever. There is almost no reason to use feature. 
+    Force the next snapshot to be a full backup instead of Incremental Forever.
 
     .PARAMETER PreBackupScriptErrorAction
-    Determines what should happen when the script fails. Can be 1 of 2 actions. 
-    SCRIPT_ERROR_ACTION_ABORT or SCRIPT_ERROR_ACTION_CONTINUE
+    Action when the pre-backup script fails: SCRIPT_ERROR_ACTION_ABORT or SCRIPT_ERROR_ACTION_CONTINUE.
 
     .PARAMETER PreBackupScriptPath
-    Path to a Windows batch script file. Script must reside in C:\Rubrik\Scripts\ as per the UI
-    
+    Path to the pre-backup script on the host (must be in C:\Rubrik\Scripts\).
+
     .PARAMETER PreBackupScriptTimeoutMs
-    Determines how long RSC should wait before timing out and failing the script. 
+    Timeout in milliseconds for the pre-backup script.
 
     .PARAMETER PostBackupScriptErrorAction
-    Determines what should happen when the script fails. Can be 1 of 2 actions. 
-    SCRIPT_ERROR_ACTION_ABORT or SCRIPT_ERROR_ACTION_CONTINUE
+    Action when the post-backup script fails: SCRIPT_ERROR_ACTION_CONTINUE.
 
     .PARAMETER PostBackupScriptPath
-    Path to a Windows batch script file. Script must reside in C:\Rubrik\Scripts\ as per the UI
-    
+    Path to the post-backup script on the host (must be in C:\Rubrik\Scripts\).
+
     .PARAMETER PostBackupScriptTimeoutMs
-    Determines how long RSC should wait before timing out and failing the script. 
-    
+    Timeout in milliseconds for the post-backup script.
+
     .PARAMETER RemovePreBackupScript
-    Removes the Pre Script values
+    Remove the pre-backup script configuration.
 
     .PARAMETER RemovePostBackupScript
-    Removes the Post Script values
+    Remove the post-backup script configuration.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -100,7 +101,19 @@ function Set-RscMssqlDatabase {
     other data needed to build the main query.
 
     .EXAMPLE
-    Set-RscMssqlDatabase -RscMssqlDatabase $RscMssqlDatabase -RscCluster $RscCluster -RscSlaDomain $RscSlaDomain
+    Assign an SLA Domain to a database.
+
+    $db = Get-RscMssqlDatabase -Name "AdventureWorks2019"
+    $cluster = Get-RscCluster -Name "MyCluster"
+    $sla = Get-RscSla -Name "Gold"
+    Set-RscMssqlDatabase -RscMssqlDatabase $db -RscCluster $cluster -ApplySLADomain -RscSlaDomain $sla
+
+    .EXAMPLE
+    Configure a pre-backup script on a database.
+
+    $db = Get-RscMssqlDatabase -Name "AdventureWorks2019"
+    $cluster = Get-RscCluster -Name "MyCluster"
+    Set-RscMssqlDatabase -RscMssqlDatabase $db -RscCluster $cluster -PreBackupScriptErrorAction SCRIPT_ERROR_ACTION_ABORT -PreBackupScriptPath "C:\Rubrik\Scripts\pre.bat" -PreBackupScriptTimeoutMs 30000
     #>
 
     [CmdletBinding()]
@@ -220,7 +233,7 @@ function Set-RscMssqlDatabase {
         #region Create Query
         switch ($PSCmdlet.ParameterSetName){
             "Do Not Protect" {
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -243,7 +256,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
             "Clear Existing Protection"{
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -257,7 +270,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
             }
             "Apply SLA Domain"{
-                $query = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $query = New-RscMutation -Gql assignMssqlSlaDomainPropertiesAsync
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $query.Var.input.userNote = ""
                 $query.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
@@ -303,7 +316,7 @@ function Set-RscMssqlDatabase {
                 }
             }
             "Database Properties"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -326,7 +339,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Add Pre-BackupScript" {
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -344,7 +357,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Add Post-BackupScript"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -362,7 +375,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Remove Pre-BackupScript"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 
@@ -380,7 +393,7 @@ function Set-RscMssqlDatabase {
                 $query.Var.input.dbsUpdateProperties += $dbsUpdateProperties
             }
             "Remove Post-BackupScript"{
-                $query = New-RscMutation -GqlMutation bulkUpdateMssqlDbs
+                $query = New-RscMutation -Gql bulkUpdateMssqlDbs
                 $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.BulkUpdateMssqlDbsInput
                 $query.Var.input.clusterUuid = $RscCluster.Id
 

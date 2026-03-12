@@ -1,42 +1,41 @@
 #Requires -Version 3
 function Get-RscEventSeries {
     <#
-  .SYNOPSIS
-  Retrieve RSC events.
+    .SYNOPSIS
+    Retrieves event series (activity logs) from Rubrik Security Cloud.
 
-  .DESCRIPTION
-  By default, retrieve info about events.
-  `Get-RscEventSeries` defaults to `Get-RscEventSeries -List -First 50`
-  which returns the first 50 events.
+    .DESCRIPTION
+    Returns event series that track backup, replication, archival, and other
+    activities in RSC. By default returns the first 50 events. Use -First to
+    control page size, -Id to retrieve a specific event, and -Detail for
+    additional fields.
 
-  To get info about a specific event, use the `-Id` parameter.
+    .LINK
+    Schema reference:
+    https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
-  By default, responses contain a minimal set of fields: mostly ids and names.
-  To get more details, use the `-Detail` parameter.
+    .PARAMETER List
+    Return all items. This is the default behavior.
 
-  .LINK
-  Schema reference:
-  https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
+    .PARAMETER Id
+    The RSC event series ID.
 
-  The ActivitySeriesConnection type:
-  https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/activityseriesconnection.doc.html
-  
-  The ActivitySeries type:
-  https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/activityseries.doc.html
+    .PARAMETER First
+    Return only the first N results.
 
-  .PARAMETER List
-  Retrieve paginated list of event series associated with RubrikSecurityCloud.
-  This is the default parameter set.
+    .PARAMETER Detail
+    Return additional fields beyond the default set.
 
-  .PARAMETER Id
-  Retrieve information about a specific event series based on Id.
+    .PARAMETER AsQuery
+    Return the query object instead of executing it.
 
-  .PARAMETER First
-  Specify the number of event series to retrieve.
+    .EXAMPLE
+    # Get the 3 most recent events
+    Get-RscEventSeries -First 3
 
-  .PARAMETER Detail
-  Use the DETAIL field profile instead of the DEFAULT field profile.
-  The DETAIL field profile returns more fields than the DEFAULT field profile.
+    .EXAMPLE
+    # Get a specific event series with full details
+    Get-RscEventSeries -Id "a17b691d-3935-4e1f-8abf-82f3229e836f" -Detail
 
   .PARAMETER AsQuery
   Return the query object instead of running the query.
@@ -100,6 +99,11 @@ function Get-RscEventSeries {
 
   #>
 
+.EXAMPLE
+    # Get event IDs only
+    (Get-RscEventSeries -First 10).ActivitySeriesId
+    #>
+
     [CmdletBinding(
         DefaultParameterSetName = "List"
     )]
@@ -147,11 +151,11 @@ function Get-RscEventSeries {
         }
 
         # Create query:
-        $operation = "List"
+        $gqlQuery = "activitySeriesConnection"
         if ( $Id ) {
-            $operation = "ActivitySeries"
+            $gqlQuery = "activitySeries"
         }
-        $query = (New-RscQueryActivitySeries -Op $operation -FieldProfile $fieldProfile)
+        $query = (New-RscQuery -Gql $gqlQuery -FieldProfile $fieldProfile)
 
         # Customize query:
         if ( $Id ) {

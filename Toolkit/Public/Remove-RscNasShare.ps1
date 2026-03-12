@@ -62,7 +62,7 @@ function Remove-RscNasShare {
     )
 
     Process {
-        $mutation = New-RscMutationNas -Operation BulkDeleteNasShares
+        $mutation = New-RscMutation -Gql bulkDeleteNasShares
 
         if ($PsCmdlet.ParameterSetName -eq "NasShare") {
             $Ids = $NasShares | ForEach-Object { $_.Id }

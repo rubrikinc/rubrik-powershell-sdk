@@ -2,35 +2,26 @@
 function New-RscMssqlRestore {
     <#
     .SYNOPSIS
-    Starts an in-place recovery of a MSSQL Database 
+    Performs an in-place restore of a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Starts an in-place recovery of a MSSQL Database
-
-    Be aware. Do not use this if you are attempting to copy a database. In that case you should use Export. This will take the point in time provided and recover your database
-    back to the original host, original instance, and the original database name to the point in time provided.
+    Restores a SQL Server database back to its original host, instance, and database name at the specified point in time. This is an in-place recovery operation; if you need to copy a database to a different location or name, use New-RscMssqlExport instead. Omitting -FinishRecovery leaves the database in NORECOVERY mode, which is useful when you plan to apply additional log backups.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
-    
+    The MSSQL database object to restore. Pipe from Get-RscMssqlDatabase.
+
     .PARAMETER FinishRecovery
-    Allows the database to be fully recovered and operational. If you omit this parameter, then when the database finishes being restored, the database will be left in
-    NORECOVERY mode. 
+    Bring the database fully online after restore. When omitted the database is left in NORECOVERY mode.
 
-    .PARAMETER maxDataStreams
-    This controls the number of streams used for the restore. By default, Rubrik will use 2 streams. This cannot exceed a value of 8. 
-
-    In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
-    production setting without running some tests in a non-production environment. 
+    .PARAMETER MaxDataStreams
+    Number of parallel data streams for the restore (1-8, default 2). Test in a non-production environment before increasing.
 
     .PARAMETER RecoveryDateTime
-    Use Get-RscMssqlDatabaseRecoveryPoint to get a fully formatted date and time for the recovery point
-
-    # .PARAMETER RecoveryLSN
+    The point-in-time to recover to, in UTC. Use Get-RscMssqlDatabaseRecoveryPoint to obtain a properly formatted value.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -38,9 +29,16 @@ function New-RscMssqlRestore {
     other data needed to build the main query.
 
     .EXAMPLE
-    Performs an in-place recovery of AdventureWorks2019 to a specific point in time. 
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    New-RscMssqlRestore -RscMssqlDatabase $RscMssqlDatabase -RecoveryDateTime "2023-10-27 08:37:00.000Z"
+    Restore AdventureWorks2019 to a specific point in time.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $db -RecoveryDateTime "2023-10-27 08:37:00.000Z" -FinishRecovery
+
+    .EXAMPLE
+    Restore a database and leave it in NORECOVERY mode for further log restores.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlRestore -RscMssqlDatabase $db -RecoveryDateTime "2023-10-27 08:37:00.000Z"
     #>
 
     [CmdletBinding(
@@ -82,7 +80,7 @@ function New-RscMssqlRestore {
     Process {
         Write-Debug "- Running New-RscMssqlRestore"
         #region Create Query
-        $query = New-RscMutationMssql -Operation RestoreDatabase
+        $query = New-RscMutation -Gql restoreMssqlDatabase
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.RestoreMssqlDatabaseInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
 

@@ -2,53 +2,47 @@
 function Get-RscNasShare {
     <#
     .SYNOPSIS
-    Retrieves Nas Shares present in Rubrik Security Cloud.
+    Retrieves NAS shares managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    Use this cmdlet to retrieve Network Attached Storage (NAS) shares
-    connected to Rubrik Security Cloud (RSC).
+    Returns Network Attached Storage (NAS) shares connected to RSC. You can list
+    all shares, filter by name, look up by ID, or scope to a specific NAS system
+    by piping from Get-RscNasSystem.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER Name
-    The Name of the Nas Share object.
+    Filter by name. Matches shares whose name contains the specified string.
 
     .PARAMETER Id
-    The Rubrik UUID of the Nas Share object.
+    The RSC object ID.
 
     .PARAMETER List
-    Switch to list all NAS Share objects.
+    Return all items. This is the default behavior.
 
     .PARAMETER NasSystem
-    The object representing the NAS system.
+    A NAS system object to scope results to. Pipe from Get-RscNasSystem.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+Return the query object instead of executing it.
+
     .EXAMPLE
-    Retrieve list of NAS shares.
+    # Get all NAS shares
     Get-RscNasShare
-        or 
-    Get-RscNasShare -List
-    
-    .EXAMPLE
-    Retrieve all NAS shares with the name containing "foo".
-    Get-RscNasShare -Name "foo"
-        or
-    Get-RscNasShare "foo"
 
     .EXAMPLE
-    Get details of the NAS share with specified ID.
-    Get-RscNasShare -Id "d93ddffc-5a70-53f4-9cfa-be54ebeaa5cb"
+    # Get NAS shares matching a name
+    Get-RscNasShare -Name "production"
 
     .EXAMPLE
-    Get details of all the Nas shares for a given Nas System.
-    Get-RscNasSystem -Id "72859a28-6276-555a-9a66-d93fe99d2751" | Get-RscNasShare
- 
+    # Get all shares on a specific NAS system
+    Get-RscNasSystem -Name "netapp-01" | Get-RscNasShare
     #>
 
     [CmdletBinding(
@@ -154,7 +148,7 @@ function Get-RscNasShare {
 
         Switch ($PSCmdlet.ParameterSetName) {
             "Id" {
-                $query = New-RscQueryNas -Operation Share `
+                $query = New-RscQuery -Gql nasShare `
                     -RemoveField ObjectType `
                     -AddField ShareType, `
                     ExportPoint, `
@@ -170,7 +164,7 @@ function Get-RscNasShare {
             }
 
             "Name" {
-                $query = New-RscQueryNas -Operation Shares
+                $query = New-RscQuery -Gql nasShares
                 $InputObj = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 $InputObj.Field = "Name"
                 $InputObj.Texts = @($Name)
@@ -182,7 +176,7 @@ function Get-RscNasShare {
             }
 
             "List" {
-                $query = New-RscQueryNas -Operation Shares
+                $query = New-RscQuery -Gql nasShares
 
                 # Specify additional fields not in default field profile.
                 $query.Field.Nodes[0].HostAddress = "FETCH"
@@ -190,7 +184,7 @@ function Get-RscNasShare {
             }
 
             "NasSystem" {
-                $query = New-RscQueryNas -Operation System `
+                $query = New-RscQuery -Gql nasSystem `
                     -RemoveField ObjectType `
                     -AddField ShareCount, `
                     OsVersion, `

@@ -2,26 +2,32 @@
 function Get-RscMssqlLogShipping {
     <#
     .SYNOPSIS
-    Returns MSSQL Log Shipping relationships
+    Retrieves SQL Server log shipping relationships from Rubrik Security Cloud.
 
     .DESCRIPTION
-    Returns MSSQL Log Shipping relationships
+    Returns log shipping relationships managed by Rubrik. You can list all
+    relationships, look up a specific one by primary database and secondary
+    database name, or filter by cluster. Pipe a database object to scope
+    results to that database's log shipping targets.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER Id
+    The RSC object ID.
+
     .PARAMETER List
-    Used to create a list of log shipping relationships
-    
+    Return all items. This is the default behavior.
+
     .PARAMETER PrimaryDatabase
-    Database object returned from Get-RscMssqlDatabase
+    A SQL Server database object, typically obtained from Get-RscMssqlDatabase.
 
     .PARAMETER SecondaryDatabaseName
-    Name of the secondary database 
+    The name of the secondary (target) database in the log shipping relationship.
 
     .PARAMETER Cluster
-    Cluster object retrieved via Get-RscCluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -29,24 +35,16 @@ function Get-RscMssqlLogShipping {
     other data needed to build the main query.
 
     .EXAMPLE
-    Returns a list of all log shipping relationships
+    # Get all log shipping relationships
     Get-RscMssqlLogShipping
 
     .EXAMPLE
-    Get a specific log shipping relationship
-
-    Get-RscMssqlLogShipping -PrimaryDatabase (Get-RscMssqlDatabase "foo") -SecondaryDatabaseName "bar" -Cluster (Get-RscCluster "baz")
-    
-    .EXAMPLE
-    Get all log shipping relationships on a specific Rubrik cluster
-
-    Get-RscCluster "foo" | Get-RscMssqlLogShipping
+    # Get log shipping on a specific cluster
+    Get-RscCluster -Name "cluster-east" | Get-RscMssqlLogShipping
 
     .EXAMPLE
-    Get log shipping relationships for a specific database
-
-    Get-RscMssqlInstance -HostName "foo.example.com" | Get-RscMssqlDatabase "foo" | Get-RscMssqlLogShipping
-
+    # Get log shipping for a specific database
+    Get-RscMssqlDatabase -Name "AdventureWorks" | Get-RscMssqlLogShipping
     #>
 
     [CmdletBinding(
@@ -98,7 +96,7 @@ function Get-RscMssqlLogShipping {
     Process {
 
         if($Id) {
-            $query = New-RscQuery -GqlQuery cdmMssqlLogShippingTarget
+            $query = New-RscQuery -Gql cdmMssqlLogShippingTarget
             $query.var.Fid = $Id
 
             $query.Field.fid = "FETCH"
@@ -128,7 +126,7 @@ function Get-RscMssqlLogShipping {
             if ( $AsQuery ) { return $query }
         }
         else {
-            $query = New-RscQuery -GqlQuery cdmMssqlLogShippingTargets
+            $query = New-RscQuery -Gql cdmMssqlLogShippingTargets
             $query.Var.filters = @()
     
             if ($Cluster){

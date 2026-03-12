@@ -2,43 +2,40 @@
 function Resume-RscSla {
     <#
     .SYNOPSIS
-    Resume RSC SLA (service level agreement).
-    
+    Resumes a suspended SLA Domain on one or more Rubrik clusters.
+
     .DESCRIPTION
-    The Resume-RscSla cmdlet is used to resume a given
-    SLA (service level agreement) on one or more clusters
-    on which this SLA is applicable.
-    The -SlaId parameter is used for identifying the SLA, 
-    this parameter is required.
-    The -ClusterUuids specifies a list of cluster Uuids on 
-    which this SLA needs to be resumed.
+    Reactivates snapshot scheduling for an SLA Domain that was previously suspended with Suspend-RscSla. You must specify which clusters to resume the SLA on, since an SLA can be suspended independently per cluster. Pipe an SLA object from Get-RscSla or provide the SLA ID directly.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER SlaId
-    The Id of the SLA which needs to be resumed.
+    The RSC object ID of the SLA Domain to resume.
 
     .PARAMETER ClusterUuids
-    The cluster IDs on which the SLA needs to be resumed.
+    One or more Rubrik cluster UUIDs on which to resume the SLA Domain.
 
     .PARAMETER GlobalSla
-    The Global Sla which should be resumed.
+    An SLA Domain object to resume. Pipe from Get-RscSla.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
-    .EXAMPLE
-    Resume an SLA on two clusters on which it is applied.
-    Resume-RscSLA -SlaId xxx-xxx -ClusterUuids @('yyy-yyy', 'zzz-zzz')
+Return the query object instead of executing it.
 
     .EXAMPLE
-    Use the powershell pipe to resume the Global SLA.
-    $result = Get-RscSla -Name 'Sample SLA Domain'
-    $result | Resume-RscSla -ClusterUuids @('9c930153-2a3c-4b7d-8603-48145315e71f')
+    Resume an SLA on specific clusters by SLA ID.
+
+    Resume-RscSla -SlaId "abc-123" -ClusterUuids @("cluster-uuid-1", "cluster-uuid-2")
+
+    .EXAMPLE
+    Pipe an SLA object and resume it on a cluster.
+
+    Get-RscSla -Name "Gold" | Resume-RscSla -ClusterUuids @("9c930153-2a3c-4b7d-8603-48145315e71f")
     #>
 
     [CmdletBinding(DefaultParameterSetName = "GlobalSlaInput")]
@@ -82,7 +79,7 @@ function Resume-RscSla {
     )
 
     Process {
-        $query = (New-RscMutationSla -op "Pause")
+        $query = (New-RscMutation -Gql pauseSla)
 
         if ($PsCmdlet.ParameterSetName -eq "GlobalSlaInput") {
             $SlaId = $GlobalSla.ID

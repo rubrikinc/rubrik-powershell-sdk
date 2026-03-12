@@ -2,10 +2,14 @@
 function Get-RscWorkload {
     <#
     .SYNOPSIS
-    Retrieves list of protectable objects in Rubrik Security Cloud
+    Retrieves workloads managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'snappableConnection' to retrieve a list of protectable objects with a predetermined set of properties.
+    Returns protectable objects (workloads) across all workload types. This is a
+    cross-workload search that spans VMs, databases, filesets, and other object types.
+    You can filter by name, type, SLA compliance status, protection status, cluster,
+    or organization. Use -Id to retrieve specific workloads by RSC ID, or -CdmId
+    with -Cluster to look up a workload by its CDM-side identifier.
 
     .LINK
     Schema reference:
@@ -17,33 +21,20 @@ function Get-RscWorkload {
     other data needed to build the main query.
 
     .EXAMPLE
-    # Get all Workloads
+    # Get all workloads
     Get-RscWorkload
 
     .EXAMPLE
-    # Get Workload with specific name
-    Get-RscWorkload -Name "jake-001"
-
-    .EXAMPLE
-    # Get Workloads by object type
-    Get-RscWorkload -Type WINDOWS_FILESET
-    
-    .EXAMPLE 
     # Get all workloads from a specific SLA
     Get-RscSla -Name "Gold" | Get-RscWorkload
 
     .EXAMPLE
-    # Get all out of compliance workloads on a specific Rubrik Cluster
+    # Get all out-of-compliance workloads on a specific cluster
     Get-RscCluster -Name "MyCluster" | Get-RscWorkload -ComplianceStatus OUT_OF_COMPLIANCE
 
     .EXAMPLE
-    # Get workload with specific RSC ID
-    Get-RscWorkload -Id "76CEDF7F-A65E-4264-9DE2-B918CA3CE15D"
-
-    .EXAMPLE
-    # Get workload with specific CDM ID
-    Get-RscWorkload -CdmId "MssqlDatabase:::76CEDF7F-A65E-4264-9DE2-B918CA3CE15D" -Cluster (Get-RscCluster -Name "MyCluster")
-
+    # Get workloads of a specific type
+    Get-RscWorkload -Type WINDOWS_FILESET
     #>
     [CmdletBinding(DefaultParameterSetName = "Name")]
     Param(
@@ -109,7 +100,7 @@ function Get-RscWorkload {
     
     Process {
 
-        $query = New-RscQuery -GqlQuery snappableConnection
+        $query = New-RscQuery -Gql snappableConnection
         $query.Field.Nodes[0].Id = "FOO"
         $query.Field.Nodes[0].Location = "FOO"
         $query.Field.Nodes[0].complianceStatus = [RubrikSecurityCloud.Types.ComplianceStatusEnum]::IN_COMPLIANCE
@@ -170,7 +161,7 @@ function Get-RscWorkload {
             }
             else {
                 # Run workloadForeverId, add Id to snappableConnectionFilter then run snappableConnection
-                $fidQuery = New-RscQuery -GqlQuery workloadForeverId
+                $fidQuery = New-RscQuery -Gql workloadForeverId
                 $fidQuery.var.clusterUuid = $Cluster.Id
                 $fidQuery.var.managedId = $CdmId
                 $fidQueryResult = Invoke-Rsc $fidQuery

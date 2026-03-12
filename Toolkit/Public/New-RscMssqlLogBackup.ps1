@@ -2,10 +2,10 @@
 function New-RscMssqlLogBackup {
     <#
     .SYNOPSIS
-    Starts an Log Backup of a MSSQL Database
+    Triggers an on-demand transaction log backup of a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Starts an Log Backup of a MSSQL Database
+    Initiates an immediate transaction log backup for the specified SQL Server database. Use this to capture the latest log activity before a planned recovery operation or to shorten the recovery point window between scheduled log backups.
 
     .LINK
     Schema reference:
@@ -19,10 +19,18 @@ function New-RscMssqlLogBackup {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+The MSSQL database object to back up. Pipe from Get-RscMssqlDatabase.
+
     .EXAMPLE
-    Returns the list of database files based on the latest recovery point
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    New-RscMssqlLogBackup -RscMssqlDatabase $RscMssqlDatabase
+    Trigger a log backup for a specific database.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlLogBackup -RscMssqlDatabase $db
+
+    .EXAMPLE
+    Pipe the database object directly.
+
+    Get-RscMssqlDatabase -Name AdventureWorks2019 | New-RscMssqlLogBackup
     #>
 
     [CmdletBinding(
@@ -44,7 +52,7 @@ function New-RscMssqlLogBackup {
     Process {
         Write-Debug "- Running New-RscMssqlLogBackup"
         #region Create Query
-        $query = New-RscMutationMssql -Operation TakeLogBackup
+        $query = New-RscMutation -Gql takeMssqlLogBackup
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.TakeMssqlLogBackupInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         #endregion

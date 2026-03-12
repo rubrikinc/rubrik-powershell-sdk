@@ -2,46 +2,44 @@
 function New-RscMssqlLogShippingSecondary{
     <#
     .SYNOPSIS
-    Adds a new log Shipping secondary to a database
+    Creates a new log shipping secondary for a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Adds a new log Shipping secondary to a database
+    Configures a log shipping secondary database on a target SQL Server instance. Log shipping continuously applies transaction log backups from the primary database to the secondary, keeping it synchronized. You can choose between RESTORING mode (no read access) and STANDBY mode (read-only access). Two file-placement methods are available: a simple mode with a single data and log path, or an advanced mode with per-file path control.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    The primary MSSQL database object. Pipe from Get-RscMssqlDatabase.
 
     .PARAMETER RscCluster
-    Database object returned from Get-RscCluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
 
     .PARAMETER TargetMssqlInstance
-    SQL Server Instance Object returned from Get-RscMssqlInstance
+    The destination SQL Server instance for the secondary database. Pipe from Get-RscMssqlInstance.
 
     .PARAMETER TargetDatabaseName
-    Any name you want to call your database when it is recovered onto the target instance
+    The name for the secondary database on the target instance.
 
     .PARAMETER TargetDataPath
-    Single path that all data files will be placed into 
+    A single directory path where all data files will be placed (simple mode).
 
     .PARAMETER TargeLogPath
-    Single path that all log files will be placed into
+    A single directory path where all log files will be placed (simple mode).
 
     .PARAMETER TargetFilePaths
-    Object can be built manually like the below example, or by using Get-RscMssqlDatabaseFiles. 
+    An array of objects specifying per-file paths (advanced mode). Build manually or use Get-RscMssqlDatabaseFiles.
 
     .PARAMETER MaxDataStreams
-    This controls the number of streams used for the restore. By default, Rubrik will use 2 streams. This cannot exceed a value of 8. 
-
-    In general, the default value of 2 performs best. However in some cases, increasing the value can provide better performance of the restore. Do not change this value in a
-    production setting without running some tests in a non-production environment. 
+    Number of parallel data streams for the restore (1-8, default 2). Test in a non-production environment before increasing.
 
     .PARAMETER DisconnectStandbyUsers
-    Automatically disconnect users when restoring backups
+    Automatically disconnect users from the secondary database when applying log backups.
+
     .PARAMETER State
-    State of Log Shipping Secondaary. Can be either RESTORING or STANDBY
+    The state of the log shipping secondary: RESTORING (no read access) or STANDBY (read-only access).
 
     .PARAMETER AutomaticReseed
     Automatically reseed the log shipping configuration when the primary transaction log chain breaks
@@ -51,6 +49,24 @@ function New-RscMssqlLogShippingSecondary{
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
+
+Automatically reseed the log shipping configuration when the primary transaction log chain breaks.
+
+    .EXAMPLE
+    Create a log shipping secondary in STANDBY mode with simple file paths.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $cluster = Get-RscCluster -Name "MyCluster"
+    $inst = Get-RscMssqlInstance -HostName rp-sql2.rubrik-demo.com -clusterId $cluster.Id
+    New-RscMssqlLogShippingSecondary -RscMssqlDatabase $db -RscCluster $cluster -TargetMssqlInstance $inst -TargetDatabaseName "AW2019_Secondary" -TargetDataPath "D:\SQLData" -TargeLogPath "L:\SQLLogs" -State STANDBY -DisconnectStandbyUsers
+
+    .EXAMPLE
+    Create a log shipping secondary in RESTORING mode with automatic reseed enabled.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $cluster = Get-RscCluster -Name "MyCluster"
+    $inst = Get-RscMssqlInstance -HostName rp-sql2.rubrik-demo.com -clusterId $cluster.Id
+    New-RscMssqlLogShippingSecondary -RscMssqlDatabase $db -RscCluster $cluster -TargetMssqlInstance $inst -TargetDatabaseName "AW2019_DR" -TargetDataPath "D:\SQLData" -TargeLogPath "L:\SQLLogs" -State RESTORING -AutomaticReseed
     #>
 
     [CmdletBinding()]
@@ -115,7 +131,7 @@ function New-RscMssqlLogShippingSecondary{
         Write-Debug "- Running New-RscMssqlLogShippingSecondary"
         
         #region Create Query         
-        $query = New-RscMutationMssql -Op CreateLogShippingConfiguration
+        $query = New-RscMutation -Gql createMssqlLogShippingConfiguration
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateMssqlLogShippingConfigurationInput
         $query.Var.input.Id = $RscMssqlDatabase.Id
         $query.Var.input.clusterUuid = $RscCluster.Id

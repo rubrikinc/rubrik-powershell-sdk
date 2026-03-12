@@ -2,22 +2,10 @@
 function New-RscMssqlSnapshot {
     <#
     .SYNOPSIS
-    Starts an On Demand Snapshot of a MSSQL Database
+    Takes an on-demand snapshot of a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Starts an On Demand Snapshot of a MSSQL Database
-
-    .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
-
-    .PARAMETER ForceFullSnapshot
-    Instead of taking an Incremental Forever snapshot, which the default, this will force a new Full snapshot. 
-
-    Incremental Forever snapshots are the equivalent of a SQL Server Full database backup. Do not use this parameter
-    if your intent is to reset a broken log chain. That can be achieved by taking a snapshot without this parameter. 
-
-    .PARAMETER RscSlaDomain
-    SLA Domain Object as retrieved from Get-RscSlaDomain
+    Triggers an immediate snapshot of the specified SQL Server database using the given SLA Domain for retention. By default, an Incremental Forever snapshot is taken, which is equivalent to a SQL Server full backup. Use -ForceFullSnapshot only when you need to force a new base full; a normal snapshot already resets a broken log chain.
 
     .LINK
     Schema reference:
@@ -28,11 +16,28 @@ function New-RscMssqlSnapshot {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER RscMssqlDatabase
+    The MSSQL database object to snapshot. Pipe from Get-RscMssqlDatabase.
+
+    .PARAMETER ForceFullSnapshot
+    Force a new full snapshot instead of the default Incremental Forever snapshot. Rarely needed; a standard snapshot already resets a broken log chain.
+
+    .PARAMETER RscSlaDomain
+    An SLA Domain object to use for snapshot retention. Pipe from Get-RscSla.
+
     .EXAMPLE
-    Starts an On Demand Snapshot of a MSSQL Database with an SLA Domain ID
-    $sla = Get-RscSla -Name "sdf"
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    New-RscMssqlSnapshot -RscMssqlDatabase $RscMssqlDatabase -RscSLADomain $sla
+    Take an on-demand snapshot of a database.
+
+    $sla = Get-RscSla -Name "Gold"
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlSnapshot -RscMssqlDatabase $db -RscSlaDomain $sla
+
+    .EXAMPLE
+    Force a full snapshot.
+
+    $sla = Get-RscSla -Name "Gold"
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    New-RscMssqlSnapshot -RscMssqlDatabase $db -RscSlaDomain $sla -ForceFullSnapshot $true
     #>
 
     [CmdletBinding()]
@@ -64,7 +69,7 @@ function New-RscMssqlSnapshot {
         Connect-Rsc -ErrorAction Stop | Out-Null
 
         #region Create Query
-        $query = New-RscMutationMssql -Op CreateOnDemandBackup
+        $query = New-RscMutation -Gql createOnDemandMssqlBackup
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.CreateOnDemandMssqlBackupInput
         $query.Var.input.id = "$($RscMssqlDatabase.Id)"
         

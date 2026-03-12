@@ -2,10 +2,12 @@
 function Get-RscAwsNativeEc2Instance {
     <#
     .SYNOPSIS
-    Retrieves RscAwsNativeEc2Instance objects protected by Rubrik Security Cloud
+    Retrieves AWS EC2 instances managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'awsNativeEc2Instances' to retrieve a list of VMs with a predetermined set of properties.
+    Returns AWS native EC2 instances that are protected or inventoried by Rubrik.
+    You can filter by name, SLA Domain, or cluster. Use -Id to retrieve a single
+    instance by its RSC identifier.
 
     .LINK
     Schema reference:
@@ -16,17 +18,29 @@ function Get-RscAwsNativeEc2Instance {
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Id
+    The RSC object ID.
+
+    .PARAMETER Name
+    Filter by name. Supports partial matching.
+
+    .PARAMETER Sla
+    An SLA Domain object to filter by. Pipe from Get-RscSla.
+
+    .PARAMETER Cluster
+    A Rubrik cluster object to filter by. Pipe from Get-RscCluster.
+
     .EXAMPLE
-    # Get all
+    # Get all AWS EC2 instances
     Get-RscAwsNativeEc2Instance
 
     .EXAMPLE
-    # Get object with specific name
-    Get-RscAwsNativeEc2Instance -Name "jake-001"
+    # Get an EC2 instance by name
+    Get-RscAwsNativeEc2Instance -Name "prod-api-server"
 
     .EXAMPLE
-    # Get objects by specifying part of a name
-    Get-RscAwsNativeEc2Instance -Name "*jake*"
+    # Get EC2 instances protected by a specific SLA
+    Get-RscSla -Name "Gold" | Get-RscAwsNativeEc2Instance
     #>
 
     [CmdletBinding(
@@ -67,7 +81,7 @@ function Get-RscAwsNativeEc2Instance {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery awsNativeEc2Instance
+            $query = New-RscQuery -Gql awsNativeEc2Instance
             $query.var.filter = @()
             $query.Var.fid = $Id
 
@@ -75,7 +89,7 @@ function Get-RscAwsNativeEc2Instance {
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery awsNativeEc2Instances
+            $query = New-RscQuery -Gql awsNativeEc2Instances
             $query.var.ec2InstanceFilters = New-Object -TypeName RubrikSecurityCloud.Types.AwsNativeEc2InstanceFilters
 
             if ($Name) {

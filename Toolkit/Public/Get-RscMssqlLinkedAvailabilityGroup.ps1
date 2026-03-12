@@ -2,10 +2,12 @@
 function Get-RscMssqlLinkedAvailabilityGroup {
     <#
     .SYNOPSIS
-    Retrieves linked MSSQL availability groups protected by Rubrik Security Cloud
+    Retrieves SQL Server linked availability groups managed by Rubrik Security Cloud.
 
     .DESCRIPTION
-    This cmdlet uses the GQL query 'mssqlAvailabilityGroupVirtualGroups' to retrieve a list of linked MSSQL availability groups with a predetermined set of properties.
+    Returns SQL Server Always On availability groups that are linked (virtual groups)
+    in Rubrik. You can filter by name, SLA Domain, cluster, or organization.
+    Use -AsQuery to return the query object without executing it.
 
     .LINK
     Schema reference:
@@ -18,12 +20,11 @@ function Get-RscMssqlLinkedAvailabilityGroup {
 
     .EXAMPLE
     # Get all linked availability groups
-    Get-RscMssqlLinkedAvailabilityGroups
+    Get-RscMssqlLinkedAvailabilityGroup
 
     .EXAMPLE
-    # Get linked availability group with specific name
-    Get-RscMssqlLinkedAvailabilityGroups -Name "jake-001"
-
+    # Get linked availability groups on a specific cluster
+    Get-RscCluster -Name "cluster-east" | Get-RscMssqlLinkedAvailabilityGroup
     #>
 
     [CmdletBinding(
@@ -72,7 +73,7 @@ function Get-RscMssqlLinkedAvailabilityGroup {
     
     Process {
 
-        $query = New-RscQuery -GqlQuery mssqlAvailabilityGroupVirtualGroups
+        $query = New-RscQuery -Gql mssqlAvailabilityGroupVirtualGroups
         $query.var.filters = @()
 
         if ($Name) {

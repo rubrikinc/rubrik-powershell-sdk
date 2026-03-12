@@ -2,20 +2,23 @@
 function Get-RscMssqlDatabaseFiles {
     <#
     .SYNOPSIS
-    Return a list of database files that existed at the time of the backup
+    Retrieves the file list for a SQL Server database at a given recovery point.
 
     .DESCRIPTION
-    Return a list of database files that existed at the time of the backup. This is used for Export-RscMssqlDatabase
+    Returns the data and log files that existed for a SQL Server database at a
+    specified point in time. This information is needed when performing database
+    exports to map files to new locations. Use Get-RscMssqlDatabaseRecoveryPoint
+    to obtain a valid recovery date/time.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER RscMssqlDatabase
-    Database object returned from Get-RscMssqlDatabase
+    A SQL Server database object, typically obtained from Get-RscMssqlDatabase.
 
     .PARAMETER RecoveryDateTime
-    Use Get-RscMssqlDatabaseRecoveryPoint to get a fully formatted date and time for the recovery point
+    The recovery point in time. Use Get-RscMssqlDatabaseRecoveryPoint to obtain a valid value.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -23,9 +26,15 @@ function Get-RscMssqlDatabaseFiles {
     other data needed to build the main query.
 
     .EXAMPLE
-    Returns the list of database files based on a specific point in time. 
-    $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
-    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $RscMssqlDatabase -RecoveryDateTime "2023-10-27 08:37:00.000Z"
+    # Get database files at a specific recovery point
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $db -RecoveryDateTime "2024-01-15 08:00:00.000Z"
+
+    .EXAMPLE
+    # Get database files at the latest recovery point
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $recoveryPoint = Get-RscMssqlDatabaseRecoveryPoint -RscMssqlDatabase $db -Latest
+    Get-RscMssqlDatabaseFiles -RscMssqlDatabase $db -RecoveryDateTime $recoveryPoint
     #>
 
     [CmdletBinding()]
@@ -52,7 +61,7 @@ function Get-RscMssqlDatabaseFiles {
         }
         Write-Debug "- Running Get-RscMssqlDatabaseFiles"
         
-        $query = New-RscQueryMssql -Operation DatabaseRestoreFiles -FieldProfile $fieldProfile -Addfield Items.fileType, Items.logicalName, Items.originalName, Items.originalPath
+        $query = New-RscQuery -Gql allMssqlDatabaseRestoreFiles -FieldProfile $fieldProfile -Addfield Items.fileType, Items.logicalName, Items.originalName, Items.originalPath
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.MssqlGetRestoreFilesV1Input
         $query.Var.input.id = $RscMssqlDatabase.Id
         $query.Var.input.time = $RecoveryDateTime

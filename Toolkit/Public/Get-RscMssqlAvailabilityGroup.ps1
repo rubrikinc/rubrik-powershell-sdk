@@ -134,7 +134,7 @@ function Get-RscMssqlAvailabilityGroup {
         $agFieldDef.effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties name,Id
         
          if ($Id) {
-            $query = New-RscQuery -GqlQuery mssqlAvailabilityGroup
+            $query = New-RscQuery -Gql mssqlAvailabilityGroup
             $query.Var.filter = @()
             $query.Var.fid = $id
             $query.Field = $agFieldDef
@@ -147,7 +147,7 @@ function Get-RscMssqlAvailabilityGroup {
 
          }
          else {
-            $query = New-RscQuery -GqlQuery mssqlTopLevelDescendants
+            $query = New-RscQuery -Gql mssqlTopLevelDescendants
             $query.var.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_AVAILABILITY_GROUP
             $query.Var.filter = @()
             $query.Field.Nodes = $agFieldDef

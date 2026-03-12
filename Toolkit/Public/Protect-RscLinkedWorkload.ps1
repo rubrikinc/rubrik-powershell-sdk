@@ -3,10 +3,10 @@ function Protect-RscLinkedWorkload
 {
   <#
     .SYNOPSIS
-    Creates linked workloads and assigns an SLA.
+    Links workloads across Rubrik clusters and assigns an SLA Domain.
 
     .DESCRIPTION
-    This cmdlet performs linking and SLA assignment operations for workloads such as a MSSQL availability groups that are spread across multiple Rubrik Clusters.
+    Manages linked protection for workloads that span multiple Rubrik clusters, such as SQL Server Always On Availability Groups. You can link two workload objects together and assign them a shared SLA Domain, assign an SLA to already-linked objects, or unlink them. Both objects must be the same workload type. Only one pair can be linked per call; use a loop for multiple pairs.
 
     .LINK
     Schema reference:
@@ -18,10 +18,16 @@ function Protect-RscLinkedWorkload
     other data needed to build the main query.
 
     .EXAMPLE
+    Link two Availability Groups across clusters and assign an SLA.
+
     $ag1 = Get-RscMssqlAvailabilityGroup -AvailabilityGroupName "Foo" -Cluster (Get-RscCluster -Name "Bar") -Relic:$false -Replica:$false
     $ag2 = Get-RscMssqlAvailabilityGroup -AvailabilityGroupName "Foo" -Cluster (Get-RscCluster -Name "Baz") -Relic:$false -Replica:$false
     Protect-RscLinkedWorkload -InputObject $ag1 -LinkedObject $ag2 -LinkingOperation LINK -AssignmentType PROTECT_WITH_SLA_ID -Sla (Get-RscSla -Name "Bronze")
-    
+
+    .EXAMPLE
+    Unlink two previously linked workloads.
+
+    Protect-RscLinkedWorkload -InputObject $ag1 -LinkedObject $ag2 -LinkingOperation UNLINK -AssignmentType PROTECT_WITH_SLA_ID
   #>
 
   [CmdletBinding()]
@@ -89,7 +95,7 @@ function Protect-RscLinkedWorkload
             throw "InputObject and LinkedObject must be the same type. InputObject: $($InputObjects[0].GetType().FullName) != $($LinkedObject.GetType().FullName)"
           }
           else {
-            $query = New-RscMutation -GqlMutation manageProtectionForLinkedObjects
+            $query = New-RscMutation -Gql manageProtectionForLinkedObjects
             $query.Var.input = Get-RscType -Name ManageProtectionForLinkedObjectsInput
             $query.var.input.operation = $LinkingOperation
             $query.Var.input.AssignSlaReq = Get-RscType -Name AssignSlaInput

@@ -3,16 +3,23 @@ function New-RscPermission
 {
     <#
     .SYNOPSIS
-    Creates a new Rubrik role permission
+    Creates a new permission object for use in an RSC role.
 
     .DESCRIPTION
-    The New-RscPermission creates a new permission for use inside of a role.
+    Builds a permission object that defines an operation and the set of objects it
+    applies to. Pipe workload objects to this cmdlet to scope the permission to
+    those objects. The resulting permission is passed to Merge-RscPermission to
+    add it to a role.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER Operation
+    The operation type for this permission (e.g., TAKE_ON_DEMAND_SNAPSHOT).
 
+    .PARAMETER InputObject
+    One or more workload objects to scope the permission to. Pipe from any Get-Rsc* cmdlet.
 
     .PARAMETER AsQuery
     Return the query object instead of running the query.
@@ -20,13 +27,13 @@ function New-RscPermission
     other data needed to build the main query.
 
     .EXAMPLE
-    # Create permission object to take on-demand snapshot of all VMs in the Gold SLA, then merge into a role.
-    $permission = Get-RscSla -name "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
-    $role = Get-RscRole "myRole"
-    Merge-RscPermission -Role $role -Permission $permission
+    # Create a permission for on-demand snapshots of VMs in the Gold SLA
+    $perm = Get-RscSla "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
+    Merge-RscPermission -Role (Get-RscRole "myRole") -Permission $perm
 
     .EXAMPLE
-    New-RscPermission
+    # Create a permission for all workloads
+    $perm = Get-RscWorkload | New-RscPermission -Operation VIEW_INVENTORY
     #>
 
     [CmdletBinding()]
@@ -59,7 +66,7 @@ function New-RscPermission
         }
     }
     End {
-        $globalResourceQuery = New-RscQuery -GqlQuery allAuthorizationsForGlobalResource
+        $globalResourceQuery = New-RscQuery -Gql allAuthorizationsForGlobalResource
         if ( $AsQuery ) { return $globalResourceQuery }
         $globalResourceOperations = Invoke-Rsc $globalResourceQuery
 

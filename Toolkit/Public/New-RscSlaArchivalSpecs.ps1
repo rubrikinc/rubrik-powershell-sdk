@@ -3,62 +3,76 @@ function New-RscSlaArchivalSpecs
 {
     <#
     .SYNOPSIS
-    Creates a new Rubrik SLA Archival Specs Input or Cascading Archival Specs Input
+    Creates an archival or cascading archival specification input object for use with New-RscSla.
 
     .DESCRIPTION
-    The New-RscSlaArchivalSpecs cmdlet will create a new SLA Archival Specs Input
-    or Cascading Archival Specs Input to use with New-RscSla and Set-RscSla Cmdlets.
+    Defines when and where snapshots are archived to long-term storage. When
+    ClusterUuids and LocationIds are provided, a standard archival spec is
+    created for New-RscSla or Set-RscSla. When ArchivalLocationId is provided
+    instead, a cascading archival spec is created for
+    New-RscSlaReplicationSpecs. Optional tiering parameters control cold
+    storage placement.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER ArchivalGroupId
-    ID of the Archival Group
+    ID of the archival group that owns the archival location.
 
     .PARAMETER ArchivalThreshold
-    The threshold for archival
+    Number of time units after which a snapshot becomes eligible for archival.
 
     .PARAMETER ArchivalThresholdUnit
-    The unit of the threshold for archival
+    Unit of time for the archival threshold (MINUTES, HOURS, DAYS, WEEKS,
+    MONTHS, QUARTERS, YEARS). Defaults to MINUTES.
 
     .PARAMETER Frequencies
-    Frequencies for archival of Snapshots
+    Which snapshot cadences are eligible for archival (e.g. MONTHS, YEARS).
 
     .PARAMETER InstantTiering
-    Should Instant Tiering be enabled
+    Enable instant tiering so snapshots are moved to cold storage immediately.
 
     .PARAMETER TierExistingSnapshots
-    Should existing snapshots be tiered
+    Tier snapshots that already exist, not only future ones.
 
     .PARAMETER MinAccessibleDuration
-    Min accessible duration in seconds specified for smart tiering
+    Minimum number of seconds archived data must remain instantly accessible
+    before being moved to cold storage (smart tiering).
 
     .PARAMETER ColdStorageClass
-    The cold storage class for tiering
+    Cold storage tier to use (AWS_GLACIER, AWS_GLACIER_DEEP_ARCHIVE,
+    AZURE_ARCHIVE).
 
     .PARAMETER ClusterUuids
-    The UUIDs of the clusters
+    UUIDs of clusters whose snapshots are archived. Must be the same length
+    and in the same order as LocationIds.
 
     .PARAMETER LocationIds
-    The location IDs associated with the provided clusters.
-    Must be of the same length as ClusterUuids and in the same order.
+    Archival location IDs that correspond to each cluster in ClusterUuids.
 
     .PARAMETER ArchivalLocationId
-    CDM archival location on the replication target the snapshot will be uploaded to.
+    Archival location on the replication target for cascading archival.
+    Using this parameter creates a cascading archival spec instead of a
+    standard archival spec.
 
     .EXAMPLE
-    New-RscSlaArchivalSpecs -ArchivalThreshold 230 -ArchivalThresholdUnit DAYS
-    -Frequencies @('MONTHS','YEARS')
-    -ClusterUuids @('9c930153-2a3c-4b7d-8603-48145315e71f')
-    -LocationIds @('aa137af1-6abf-59aa-984f-a9ac21301f0e')
+    Create a standard archival spec and pass it to New-RscSla.
+
+    $archival = New-RscSlaArchivalSpecs -ArchivalThreshold 230 -ArchivalThresholdUnit DAYS `
+        -Frequencies @('MONTHS','YEARS') `
+        -ClusterUuids @('9c930153-2a3c-4b7d-8603-48145315e71f') `
+        -LocationIds @('aa137af1-6abf-59aa-984f-a9ac21301f0e')
+    New-RscSla -Name "Archive-Gold" -ArchivalSpecs @($archival) -ObjectType VSPHERE_OBJECT_TYPE
 
     .EXAMPLE
-    Creates a cascading archival spec with the provided parameters.
-    New-RscSlaArchivalSpecs -ArchivalThreshold 230 -ArchivalThresholdUnit DAYS
-    -Frequencies @('MONTHS','YEARS') -InstantTiering -TierExistingSnapshots
-    -MinAccessibleDuration 86400 -ColdStorageClass AWS_GLACIER
-    -ArchivalLocationId 'aa137af1-6abf-59aa-984f-a9ac21301f0e'
+    Create a cascading archival spec with instant tiering for use with New-RscSlaReplicationSpecs.
+
+    $cascade = New-RscSlaArchivalSpecs -ArchivalThreshold 230 -ArchivalThresholdUnit DAYS `
+        -Frequencies @('MONTHS','YEARS') -InstantTiering -TierExistingSnapshots `
+        -MinAccessibleDuration 86400 -ColdStorageClass AWS_GLACIER `
+        -ArchivalLocationId 'aa137af1-6abf-59aa-984f-a9ac21301f0e'
+    New-RscSlaReplicationSpecs -CascadingArchivalSpecs @($cascade) -ClusterUuid '9c930153-...'
     #>
 
     [CmdletBinding(

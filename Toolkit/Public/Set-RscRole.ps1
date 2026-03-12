@@ -3,10 +3,10 @@ function Set-RscRole
 {
   <#
     .SYNOPSIS
-    Updates an RSC Role.
+    Creates or updates a role in Rubrik Security Cloud.
 
     .DESCRIPTION
-    RSC Roles are a collection of permissions and objects. This cmdlet overwrites the existing role with another role object.
+    Saves a role object to RSC. If the role has an Id, the existing role is updated; if the Id is null, a new role is created. Use Get-RscRole to retrieve a role, modify its properties (Name, Description, Permissions), and pipe it to this cmdlet. You can also use Merge-RscPermission to add permissions before saving.
 
     .LINK
     Schema reference:
@@ -17,23 +17,28 @@ function Set-RscRole
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
 
+.PARAMETER Role
+    The role object to create or update. Accepts pipeline input from Get-RscRole.
+
     .EXAMPLE
-    # Update the description of a role
-    
+    Update the description of a role.
+
     $role = Get-RscRole "foo"
-    $role.Description = "Test Role"
+    $role.Description = "Updated description"
     $role | Set-RscRole
 
     .EXAMPLE
-    # Copy a Role into a new role
+    Create a new role by copying an existing one.
+
     $role = Get-RscRole "foo"
     $role.Name = "bar"
     $role.Id = $null
     $role | Set-RscRole
 
     .EXAMPLE
-    # Create permission object to take on-demand snapshot of all VMs in the Gold SLA, merge into a new Role object, and update the role in RSC.
-    $permission = Get-RscSla -name "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
+    Add snapshot permissions for Gold SLA VMs to a role.
+
+    $permission = Get-RscSla -Name "Gold" | Get-RscVmwareVm | New-RscPermission -Operation TAKE_ON_DEMAND_SNAPSHOT
     $role = Get-RscRole "myRole"
     $newRole = Merge-RscPermission -Role $role -Permission $permission
     $newRole | Set-RscRole
@@ -54,7 +59,7 @@ function Set-RscRole
 
   )
     Process {
-        $query = New-RscMutation -GqlMutation mutateRole
+        $query = New-RscMutation -Gql mutateRole
         if ($Role.Id) {
           $query.Var.roleId = $Role.Id
         }

@@ -2,14 +2,12 @@
 function Get-RscAccount {
     <#
     .SYNOPSIS
-    Retrieve info about the current RSC account in use
+    Retrieves information about the current Rubrik Security Cloud account.
 
     .DESCRIPTION
-    Combines the output of 2 queries:
-    - accountId          : to retrieve the account id
-    - allAccountOwners   : to retrieve the account owner
-
-    Not all account owner fields are returned.
+    Returns the account ID and account owner details for the RSC account that
+    the current session is connected to. Useful for verifying which account
+    you are operating against.
 
     .LINK
     Schema reference:
@@ -23,6 +21,14 @@ function Get-RscAccount {
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
     other data needed to build the main query.
+
+.EXAMPLE
+    # Get current account info
+    Get-RscAccount
+
+    .EXAMPLE
+    # Display the account ID
+    (Get-RscAccount).AccountId
     #>
 
     [CmdletBinding(
@@ -45,9 +51,9 @@ function Get-RscAccount {
         }
 
         # Add Account Id:
-        $outputObj["AccountId"] = (New-RscQuery -GqlQuery accountId).Invoke()
+        $outputObj["AccountId"] = (New-RscQuery -Gql accountId).Invoke()
 
-        $owner = (New-RscQuery -GqlQuery allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas).Invoke()
+        $owner = (New-RscQuery -Gql allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas).Invoke()
 
 
         $owner | Get-Member -MemberType Properties | ForEach-Object {

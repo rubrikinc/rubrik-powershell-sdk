@@ -55,7 +55,7 @@ function Get-RscHelp {
     Name            Type               Description
     ----            ----               -----------
     GQL Field                          clusterConnection
-    Invocation                         $query = New-RscQuery -GqlQuery clusterConnection
+    Invocation                         $query = New-RscQuery -Gql clusterConnection
     Var.first       Int                Int
     Var.filter      ClusterFilterInput ClusterFilterInput: https://...
     Field           ClusterConnection  https://...
@@ -301,7 +301,7 @@ function Get-RscHelp {
                 if ( $value -eq $Match ) {
                     Write-Output "# GraphQL field: $value"
                     try {
-                        $query = New-RscQuery -GqlQuery $value
+                        $query = New-RscQuery -Gql $value
                         $info = $query.Info()
                     }
                     catch {
@@ -324,7 +324,7 @@ function Get-RscHelp {
                 if ( $value -eq $Match ) {
                     Write-Output "# GraphQL field: $value"
                     try {
-                        $query = New-RscMutation -GqlMutation $value
+                        $query = New-RscMutation -Gql $value
                         $info = $query.Info()
                     }
                     catch {

@@ -2,10 +2,10 @@
 function Remove-RscMssqlLiveMount {
     <#
     .SYNOPSIS
-    Removes a Live Mount of a MSSQL Database
+    Removes a live mount of a Microsoft SQL Server database.
 
     .DESCRIPTION
-    Removes a Live Mount of a MSSQL Database
+    Unmounts a previously live-mounted SQL Server database and cleans up the associated share and files on the Rubrik cluster. Use -Force to unmount even when Rubrik cannot connect to the SQL Server instance, for example when the host is offline. Obtain the live mount object with Get-RscMssqlLiveMount.
 
     .PARAMETER MssqlLiveMount
     Live Mount object returned from Get-RscMssqlLiveMount
@@ -23,13 +23,28 @@ function Remove-RscMssqlLiveMount {
     $RscMssqlDatabase = Get-RscMssqlDatabase -Name AdventureWorks2019
     Get-RscMssqlLiveMount -RscMssqlDatabase $RscMssqlDatabase -MountedDatabaseName AdventureWorks2019_LiveMount
     Remove-RscMssqlLiveMount -MssqlLiveMount $RscMssqlLiveMount
-    
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER MssqlLiveMount
+    The live mount object to remove. Pipe from Get-RscMssqlLiveMount.
+
+    .PARAMETER Force
+    Force the unmount even if Rubrik cannot connect to the SQL Server instance.
+
     .EXAMPLE
-    ___ Add example here ___
+    Remove a live mount by looking it up from the source database.
+
+    $db = Get-RscMssqlDatabase -Name AdventureWorks2019
+    $mount = Get-RscMssqlLiveMount -RscMssqlDatabase $db -MountedDatabaseName AdventureWorks2019_LiveMount
+    Remove-RscMssqlLiveMount -MssqlLiveMount $mount
+
+    .EXAMPLE
+    Force-remove a live mount when the SQL Server host is unreachable.
+
+    $mount = Get-RscMssqlLiveMount -RscMssqlDatabase $db -MountedDatabaseName AdventureWorks2019_LiveMount
+    Remove-RscMssqlLiveMount -MssqlLiveMount $mount -Force
     #>
 
     [CmdletBinding()]
@@ -58,7 +73,7 @@ function Remove-RscMssqlLiveMount {
         Write-Debug "- Running Remove-RscMssqlLiveMount"
         
         #region Create Query
-        $query = New-RscMutationMssql -Operation DeleteLiveMount  
+        $query = New-RscMutation -Gql deleteMssqlLiveMount  
         $query.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.DeleteMssqlLiveMountInput
 
         $query.Var.input.id = "$($MssqlLiveMount.Fid)"

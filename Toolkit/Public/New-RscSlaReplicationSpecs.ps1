@@ -3,56 +3,72 @@ function New-RscSlaReplicationSpecs
 {
     <#
     .SYNOPSIS
-    Creates a new Rubrik SLA Replication Specs Input
+    Creates a replication specification input object for use with New-RscSla or Set-RscSla.
 
     .DESCRIPTION
-    The New-RscSlaReplicationSpecs cmdlet will create a new SLA Replication
-    Specs Input to use with New-RscSlaDomain and Set-RscSlaDomain Cmdlets.
+    Defines how snapshots are replicated to a target Rubrik cluster or cloud
+    region, including retention and optional cascading archival. The output is
+    passed to New-RscSla or Set-RscSla via the -ReplicationSpecs parameter.
+    Use New-RscSlaDuration to build duration values and
+    New-RscSlaArchivalSpecs for cascading archival specs.
 
     .LINK
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
     .PARAMETER ClusterUuid
-    The UUID of the cluster
+    UUID of the target Rubrik cluster that will receive replicated snapshots.
 
     .PARAMETER StorageSettingId
-    The ID of the Storage Setting
+    ID of the storage setting on the target cluster.
 
     .PARAMETER RetentionDuration
-    Retention duration
+    How long replicated snapshots are retained on the target. Create with New-RscSlaDuration.
 
     .PARAMETER AwsAccount
-    The AWS Account
+    AWS account identifier when replicating to an AWS region.
 
     .PARAMETER AzureSubscription
-    The Azure Subscription
+    Azure subscription identifier when replicating to an Azure region.
 
     .PARAMETER AwsRegion
-    AWS Region
+    AWS region for the replication target.
 
     .PARAMETER AzureRegion
-    Azure Region
+    Azure region for the replication target.
 
     .PARAMETER ReplicationLocalRetentionDuration
-    Time snapshot is kept on local target cluster
+    How long the snapshot is kept on the local (source) cluster after replication.
+    Create with New-RscSlaDuration.
 
     .PARAMETER CascadingArchivalSpecs
-    Cascading Archival Specifications - create using New-RscSlaArchivalSpecs
+    One or more cascading archival specifications that archive replicated
+    snapshots to a secondary location. Create with New-RscSlaArchivalSpecs.
 
     .EXAMPLE
-    $cascadingArchivalSpecs = New-RscSlaArchivalSpecs -ArchivalThreshold 230
-    -ArchivalThresholdUnit DAYS
-    -Frequencies @('MONTHS','YEARS')
-    -ArchivalLocationId 'aa137af1-6abf-59aa-984f-a9ac21301f0e'
+    Replicate to an on-premises cluster with 7-month retention.
 
-    New-RscSlaReplicationSpecs -ClusterUuid '9c930153-2a3c-4b7d-8603-48145315e71f'
-    -StorageSettingId '7a937a41-6abf-5gja-984f-1f0ea9ac2130'
-    -RetentionDuration (New-RscSlaDuration -Duration 7 -Unit MONTHS)
-    -AwsAccount 'AWS_ACCOUNT'
-    -AwsRegion 'US_WEST_2'
-    -ReplicationLocalRetentionDuration (New-RscSlaDuration -Duration 3 -Unit MONTHS)
-    -CascadingArchivalSpecs @($cascadingArchivalSpecs)
+    $repl = New-RscSlaReplicationSpecs `
+        -ClusterUuid '9c930153-2a3c-4b7d-8603-48145315e71f' `
+        -StorageSettingId '7a937a41-6abf-5gja-984f-1f0ea9ac2130' `
+        -RetentionDuration (New-RscSlaDuration -Duration 7 -Unit MONTHS)
+    New-RscSla -Name "DR-Gold" -ReplicationSpecs @($repl) -ObjectType VSPHERE_OBJECT_TYPE
+
+    .EXAMPLE
+    Replicate to AWS with cascading archival to Glacier.
+
+    $archive = New-RscSlaArchivalSpecs -ArchivalThreshold 230 `
+        -ArchivalThresholdUnit DAYS `
+        -Frequencies @('MONTHS','YEARS') `
+        -ArchivalLocationId 'aa137af1-6abf-59aa-984f-a9ac21301f0e'
+    New-RscSlaReplicationSpecs `
+        -ClusterUuid '9c930153-2a3c-4b7d-8603-48145315e71f' `
+        -StorageSettingId '7a937a41-6abf-5gja-984f-1f0ea9ac2130' `
+        -RetentionDuration (New-RscSlaDuration -Duration 7 -Unit MONTHS) `
+        -AwsAccount 'AWS_ACCOUNT' `
+        -AwsRegion 'US_WEST_2' `
+        -ReplicationLocalRetentionDuration (New-RscSlaDuration -Duration 3 -Unit MONTHS) `
+        -CascadingArchivalSpecs @($archive)
     #>
 
     [CmdletBinding()]
