@@ -1,4 +1,4 @@
-.PHONY: default build build-debug build-nodocs clean test
+.PHONY: default build build-debug build-nodocs build-verbose clean test
 
 default: clean build test
 build: build-debug
@@ -9,6 +9,9 @@ build-debug:
 
 build-release:
 	pwsh -c "./Utils/Build-RscSdk.ps1 -Release"
+
+build-verbose:
+	pwsh -c "./Utils/Build-RscSdk.ps1 -NoClean -NoTests -VerboseDocs"
 
 build-nodocs:
 	pwsh -c "./Utils/Build-RscSdk.ps1 -NoDocs"

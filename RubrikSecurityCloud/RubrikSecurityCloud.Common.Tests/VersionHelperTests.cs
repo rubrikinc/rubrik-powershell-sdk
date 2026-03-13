@@ -14,7 +14,7 @@ namespace RubrikSecurityCloud.Tests
         {
             var date = VersionHelper.ExtractDate("v20260223-52");
             Assert.IsNotNull(date);
-            Assert.AreEqual(new DateTime(2026, 2, 23), date.Value);
+            Assert.AreEqual(new DateTime(2026, 2, 23), date!.Value);
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace RubrikSecurityCloud.Tests
         {
             var date = VersionHelper.ExtractDate("20260223-52");
             Assert.IsNotNull(date);
-            Assert.AreEqual(new DateTime(2026, 2, 23), date.Value);
+            Assert.AreEqual(new DateTime(2026, 2, 23), date!.Value);
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace RubrikSecurityCloud.Tests
         {
             var date = VersionHelper.ExtractDate("v20230101");
             Assert.IsNotNull(date);
-            Assert.AreEqual(new DateTime(2023, 1, 1), date.Value);
+            Assert.AreEqual(new DateTime(2023, 1, 1), date!.Value);
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace RubrikSecurityCloud.Tests
             var result = VersionHelper.Compare("v20260101-10", "v20260301-20");
             Assert.AreEqual(VersionHelper.Direction.SdkOlder, result.Direction);
             Assert.IsNotNull(result.Delta);
-            Assert.AreEqual(59, (int)result.Delta.Value.TotalDays);
+            Assert.AreEqual(59, (int)result.Delta!.Value.TotalDays);
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace RubrikSecurityCloud.Tests
             var result = VersionHelper.Compare("v20260301-20", "v20260101-10");
             Assert.AreEqual(VersionHelper.Direction.SdkNewer, result.Direction);
             Assert.IsNotNull(result.Delta);
-            Assert.AreEqual(59, (int)result.Delta.Value.TotalDays);
+            Assert.AreEqual(59, (int)result.Delta!.Value.TotalDays);
         }
 
         [Test]

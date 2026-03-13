@@ -22,6 +22,7 @@ param(
     [switch]$NoClean = $false,
     [switch]$Release = $false,
     [switch]$NoDocs = $false,
+    [switch]$VerboseDocs = $false,
     [switch]$NoTests = $false,
     [switch]$Pw5Tests = $false,
     [switch]$CI = $false
@@ -43,6 +44,7 @@ $buildCommand = "& '$scriptDir\_Build-RscSdk.ps1'"
 if ($NoClean) { $buildCommand += " -NoClean" }
 if ($Release) { $buildCommand += " -Release" }
 if ($NoDocs) { $buildCommand += " -NoDocs" }
+if ($VerboseDocs) { $buildCommand += " -VerboseDocs" }
 
 # Create a process to execute the command and stream output in real-time
 $processStartInfo = New-Object System.Diagnostics.ProcessStartInfo

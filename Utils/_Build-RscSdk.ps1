@@ -17,7 +17,8 @@ instead of Output/.
 param(
     [switch]$NoClean = $false,
     [switch]$Release = $false,
-    [switch]$NoDocs = $false
+    [switch]$NoDocs = $false,
+    [switch]$VerboseDocs = $false
 )
 
 # Change to the root of the repository
@@ -49,12 +50,13 @@ try {
 }
 
 # Build the project
+$verboseDocsFlag = if ($VerboseDocs) { " /p:VerboseDocs=true" } else { "" }
 $buildCommand = if ($Release) {
-    "dotnet build --configuration Release /p:GeneratePSDocs=true $ProjectDir"
+    "dotnet build --configuration Release /p:GeneratePSDocs=true$verboseDocsFlag $ProjectDir"
 } elseif ($NoDocs) {
     "dotnet build $ProjectDir"
 } else {
-    "dotnet build /p:GeneratePSDocs=true $ProjectDir"
+    "dotnet build /p:GeneratePSDocs=true$verboseDocsFlag $ProjectDir"
 }
 
 Invoke-Expression $buildCommand

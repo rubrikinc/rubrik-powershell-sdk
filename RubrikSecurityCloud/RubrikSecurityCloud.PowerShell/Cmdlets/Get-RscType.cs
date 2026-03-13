@@ -101,8 +101,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [ArgumentCompleter(typeof(RscTypeNameCompleter))]
         public string Name { get; set; }
 
+        /// <summary>Tab-completion for RSC type names.</summary>
         public class RscTypeNameCompleter : IArgumentCompleter
         {
+            /// <summary>Provide completions for the Name parameter.</summary>
             public IEnumerable<CompletionResult> CompleteArgument(
                 string commandName,
                 string parameterName,

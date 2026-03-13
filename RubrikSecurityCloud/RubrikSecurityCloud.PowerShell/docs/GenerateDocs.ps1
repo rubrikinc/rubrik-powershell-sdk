@@ -25,7 +25,10 @@ param (
     [string]$OutputPath,
 
     [Parameter(Mandatory=$false, Position=4)]
-    [switch]$IncludeFunctions = $false
+    [switch]$IncludeFunctions = $false,
+
+    [Parameter(Mandatory=$false, Position=5)]
+    [switch]$Quiet = $false
 )
 
 if ($null -eq (Get-Module -ListAvailable | Where-Object {$_.Name -eq "PlatyPS"})){
@@ -39,10 +42,10 @@ if ($null -eq (Get-Module -ListAvailable | Where-Object {$_.Name -eq "PlatyPS"})
 }
 
 Import-Module -Name PlatyPS
-Write-Host "Importing module from file $ModuleFilePath"
+if (-not $Quiet) { Write-Host "Importing module from file $ModuleFilePath" }
 Import-Module $ModuleFilePath -ErrorAction Stop
 #Generate markdown from Module Binary
-Write-Output("Writing cmdlet help markdown files, this could take a while. Please wait...")
+if (-not $Quiet) { Write-Output("Writing cmdlet help markdown files, this could take a while. Please wait...") }
 
 # We delete the tmp_help directory if it exists to ensure no stale files
 # from previous runs are present.
@@ -50,14 +53,13 @@ if (Test-Path -Path ./tmp_help) {
     Write-Output("Removing existing tmp_help directory...")
     Remove-Item -Recurse -Force -Path ./tmp_help
 }
-$null = New-MarkdownHelp -Module $ModuleName -OutputFolder ./tmp_help/
+$null = New-MarkdownHelp -Module $ModuleName -OutputFolder ./tmp_help/ -WarningAction SilentlyContinue
 
 if (!$IncludeFunctions){
-    # Remove .md files for functions
-    $fuctionCommands = Get-Command -Module $ModuleName -CommandType Function
-
-    foreach($functionCommand in $fuctionCommands){
-        Write-Output("Document Generation Disabled for fucntions. Found $($functionCommand.Name). Removing tmp_help/$($functionCommand.Name).md...")
+    # Remove .md files for functions (they are documented separately)
+    $functionCommands = Get-Command -Module $ModuleName -CommandType Function
+    if (-not $Quiet) { Write-Output("Removing $($functionCommands.Count) function doc files (IncludeFunctions=false)") }
+    foreach($functionCommand in $functionCommands){
         Remove-Item -Path "tmp_help/$($functionCommand.Name).md"
     }
 }
@@ -75,7 +77,7 @@ foreach ($memberItem in $xml.doc.members.member){
         
         $cmdletName = $nameArr[1].split(".")[$_.count -1]
         $cmdletName = $cmdLetName.Replace("_","-")
-        Write-Output("`nProcessing Cmdlet: " + $cmdletName);
+        if (-not $Quiet) { Write-Output("`nProcessing Cmdlet: " + $cmdletName) }
         #Write-Output("Opening markdownd for $cmdletName")
         
         # TODO: SPARK-517965 SDK Build fails in GenerateDocs.ps1
@@ -86,6 +88,10 @@ foreach ($memberItem in $xml.doc.members.member){
         }
 
         $mdFile = "tmp_help/$($cmdletName).md"
+        if (-not (Test-Path $mdFile)) {
+            if (-not $Quiet) { Write-Output("Skipping $cmdletName (no markdown file)") }
+            continue
+        }
         $cmdletMarkdown = Get-Content -Path $mdFile -Raw -ErrorAction Stop
 
         # Get the help text and exmaples for the Cmdlet
@@ -150,10 +156,10 @@ foreach ($memberItem in $xml.doc.members.member){
 }
 
 #Generate the .dll-help.xml file from the temporary Markdown files
-Write-Output("`nWriting external help file to path: $OutputPath`n")
+if (-not $Quiet) { Write-Output("`nWriting external help file to path: $OutputPath`n") }
 $null = New-ExternalHelp -Path ./tmp_help -OutputPath $OutputPath -Force:$true
 
 #Remove the temporary .md files.
 Remove-Item -Recurse:$true -Force -Path ./tmp_help
 
-Write-Output("Documentation generation completed!`n`n")
+Write-Output("Documentation generation completed!")

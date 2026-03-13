@@ -140,7 +140,11 @@
   </Target>
 
   <Target Name="GeneratePSDocs" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net6.0' AND '$(GeneratePSDocs)'=='true'">
-    <Message Text="############ GENERATING POWERSHELL HELP DOCUMENTATION ############" Importance="High" />
-    <Exec Command="pwsh -File $(ProjectDir)docs/GenerateDocs.ps1 -sourceXml $(TargetDir)RubrikSecurityCloud.PowerShell.xml -ModuleFilePath $(TargetDir)../RubrikSecurityCloud.psd1 -ModuleName RubrikSecurityCloud -OutputPath $(TargetDir)" />
+    <Message Text="############ GENERATING POWERSHELL HELP DOCUMENTATION ############" Importance="High" Condition="'$(VerboseDocs)' == 'true'" />
+    <Message Text="Generating PowerShell help documentation..." Importance="High" Condition="'$(VerboseDocs)' != 'true'" />
+    <PropertyGroup>
+      <_DocsQuietFlag Condition="'$(VerboseDocs)' != 'true'">-Quiet</_DocsQuietFlag>
+    </PropertyGroup>
+    <Exec Command="pwsh -File $(ProjectDir)docs/GenerateDocs.ps1 -sourceXml $(TargetDir)RubrikSecurityCloud.PowerShell.xml -ModuleFilePath $(TargetDir)../RubrikSecurityCloud.psd1 -ModuleName RubrikSecurityCloud -OutputPath $(TargetDir) $(_DocsQuietFlag)" />
   </Target>
 </Project>
