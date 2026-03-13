@@ -26,8 +26,10 @@ function Get-RscEventSeries {
     .PARAMETER Detail
     Return additional fields beyond the default set.
 
-    .PARAMETER AsQuery
-    Return the query object instead of executing it.
+  .PARAMETER AsQuery
+  Return the query object instead of running the query.
+  Preliminary read-only queries may still run to gather IDs or
+  other data needed to build the main query.
 
     .EXAMPLE
     # Get the 3 most recent events
@@ -36,11 +38,6 @@ function Get-RscEventSeries {
     .EXAMPLE
     # Get a specific event series with full details
     Get-RscEventSeries -Id "a17b691d-3935-4e1f-8abf-82f3229e836f" -Detail
-
-  .PARAMETER AsQuery
-  Return the query object instead of running the query.
-  Preliminary read-only queries may still run to gather IDs or
-  other data needed to build the main query.
 
   .EXAMPLE
   Get-RscEventSeries -First 3
@@ -98,11 +95,6 @@ function Get-RscEventSeries {
   Get-RscEventSeries -AsQuery
 
   #>
-
-.EXAMPLE
-    # Get event IDs only
-    (Get-RscEventSeries -First 10).ActivitySeriesId
-    #>
 
     [CmdletBinding(
         DefaultParameterSetName = "List"
