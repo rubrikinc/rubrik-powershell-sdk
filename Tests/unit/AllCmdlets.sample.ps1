@@ -4,8 +4,8 @@ param(
     [switch]$FieldCounts
 )
 
-. "${PSScriptRoot}\..\Utils\Import-RscModuleFromLocalOutputDir.ps1"
-. "${PSScriptRoot}\SampleUtils.ps1"
+. "${PSScriptRoot}/../../Utils/Import-RscModuleFromLocalOutputDir.ps1"
+. "${PSScriptRoot}/../../Samples/SampleUtils.ps1"
 
 if ($GetGqlRequest) {
     $gqlDir = "gql"

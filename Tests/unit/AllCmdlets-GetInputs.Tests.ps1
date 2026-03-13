@@ -2,7 +2,7 @@
 Describe 'AllCmdlets Sample Script' {
     It 'When running the sample script, it should not throw any errors' {
         $ErrorActionPreference = 'Stop'
-        $scriptPath = Join-Path $PSScriptRoot '../../Samples/AllCmdlets.sample.ps1'
+        $scriptPath = Join-Path $PSScriptRoot 'AllCmdlets.sample.ps1'
         {
             # Temporarily replace Write-Host with a no-op
             function Write-Host { return }
