@@ -102,6 +102,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Position = 0,
             ValueFromPipeline = true
         )]
+        [Alias("Gql")]
         public string GqlQuery { get; set; }
 
         /// <summary>

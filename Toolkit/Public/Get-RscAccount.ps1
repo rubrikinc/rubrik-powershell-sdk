@@ -45,8 +45,8 @@ function Get-RscAccount {
         $outputObj = @{}
 
         if ( $AsQuery ) {
-            $q1 = New-RscQuery -GqlQuery accountId
-            $q2 = New-RscQuery -GqlQuery allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas
+            $q1 = New-RscQuery -Gql accountId
+            $q2 = New-RscQuery -Gql allAccountOwners -RemoveField AllOrgs.AllClusterCapacityQuotas
             return @($q1, $q2)
         }
 

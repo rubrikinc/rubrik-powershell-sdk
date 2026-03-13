@@ -15,7 +15,7 @@ Example:
 We determined that AutoFieldSpec needs to be tweaked for the query:
 
 ```powershell
-> $q = New-RscQuery -GqlQuery mssqlDatabaseLiveMounts
+> $q = New-RscQuery -Gql mssqlDatabaseLiveMounts
 >  $q.GqlRequest().query
 query QueryMssqlDatabaseLiveMounts($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])
 {
@@ -135,7 +135,7 @@ and update the Output dir:
 and let's try it:
 
 ```powershell
-> $q3 = New-RscQuery -GqlQuery mssqlDatabaseLiveMounts
+> $q3 = New-RscQuery -Gql mssqlDatabaseLiveMounts
 > $q3.GqlRequest().Query
 query QueryMssqlDatabaseLiveMounts($first: Int,$after: String,$sortBy: MssqlDatabaseLiveMountSortByInput,$filters: [MssqlDatabaseLiveMountFilterInput!])
 {

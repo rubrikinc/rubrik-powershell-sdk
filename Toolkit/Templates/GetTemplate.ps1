@@ -67,14 +67,14 @@ function Get-__OBJECT_TYPE__ {
 
        # The query is different for getting a single object by ID.
         if ($Id) {
-            $query = New-RscQuery -GqlQuery __SINGLE_QUERY__
+            $query = New-RscQuery -Gql __SINGLE_QUERY__
             $query.var.filter = @()
             $query.Var.fid = $Id
 
             $result = Invoke-Rsc -Query $query
             $result
         } else {
-            $query = New-RscQuery -GqlQuery __MULTIPLE_QUERY__
+            $query = New-RscQuery -Gql __MULTIPLE_QUERY__
             $query.var.filter = @()
 
             if ($Name) {
