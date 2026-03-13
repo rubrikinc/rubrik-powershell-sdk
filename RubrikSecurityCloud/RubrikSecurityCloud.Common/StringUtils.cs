@@ -347,8 +347,13 @@ namespace RubrikSecurityCloud
 
             if (match.Success)
             {
-                string vars = match.Groups[1].Value.Trim();
-                vars = vars.Replace("Variables:", "");
+                string commentBody = match.Groups[1].Value;
+                string vars = "";
+                int varIdx = commentBody.LastIndexOf("Variables:");
+                if (varIdx >= 0)
+                {
+                    vars = commentBody.Substring(varIdx + "Variables:".Length).Trim();
+                }
                 string q = query.Substring(match.Index + match.Length).Trim();
                 return (vars, q);
             }
