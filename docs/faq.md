@@ -190,3 +190,46 @@ operations may not work.
 - Update the SDK: `Update-Module RubrikSecurityCloud`
 - The SDK is backward compatible for a limited time. If you see
   deprecation warnings, update as soon as possible.
+
+## FAQ8 Boolean field returns wrong value on arrays
+
+When I access a boolean field like `IsReadOnly` on an array, it returns
+a different value than what the table display shows:
+
+```powershell
+PS> $serviceAccount.Roles
+
+Name                     Description                  IsOrgAdmin IsReadOnly
+----                     -----------                  ---------- ----------
+Read-only Administrator  Has full read-only access.   False      True
+
+PS> $serviceAccount.Roles.IsReadOnly
+False
+```
+
+### FAQ8 Explanation
+
+This is a PowerShell property shadowing issue, not an SDK bug.
+`Roles` is an array, and `System.Array` implements `IList`, which has
+its own `IsReadOnly` property (always `False` for regular arrays).
+When you write `$array.IsReadOnly`, PowerShell resolves the array's
+own property instead of enumerating the field on each element.
+
+This affects any field whose name collides with a .NET array/collection
+property: `Count`, `Length`, `LongLength`, `Rank`, `SyncRoot`,
+`IsReadOnly`, `IsFixedSize`, `IsSynchronized`.
+
+### FAQ8 Resolution
+
+Index into the array or pipe to enumerate the elements:
+
+```powershell
+# Single element
+$serviceAccount.Roles[0].IsReadOnly
+
+# All elements
+$serviceAccount.Roles | ForEach-Object IsReadOnly
+
+# Or using the .ForEach() method
+$serviceAccount.Roles.ForEach({$_.IsReadOnly})
+```
