@@ -197,7 +197,7 @@ namespace RubrikSecurityCloud.Tests
         public void NullQueryReturnsNull()
         {
             string result = StringUtils.StripFieldsFromQuery(
-                null, new HashSet<string> { "x" });
+                null!, new HashSet<string> { "x" });
             Assert.IsNull(result);
         }
 
