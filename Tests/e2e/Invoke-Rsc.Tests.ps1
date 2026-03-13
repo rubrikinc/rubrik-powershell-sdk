@@ -31,13 +31,14 @@ Describe -Name "Send a generic GraphQL call" -Fixture {
         $owners = Invoke-Rsc $gqlFileName
         $owners[0].GetType().Name | Should -BeExactly 'User'
 
-        # Query file with variables embedded in top comment
-        $clusters = (Get-Content -Path $PSScriptRoot\..\..\Samples\queryClusterListFirst.gql -Raw | Invoke-Rsc)
+        # Query file with variables embedded in top comment (first=1)
+        $gqlPath = Join-Path -Path $PSScriptRoot -ChildPath "..\..\Samples\queryClusterList.gql" -Resolve
+        $clusters = (Get-Content -Path $gqlPath -Raw | Invoke-Rsc)
         $clusters.GetType().Name | Should -BeExactly 'ClusterConnection'
         $clusters.Nodes.Count | Should -BeExactly 1
 
-        # Query file with variables embedded in top comment
-        $clusters = (Get-Content -Path $PSScriptRoot\..\..\Samples\queryClusterListFirstTwo.gql -Raw | Invoke-Rsc)
+        # Same file, override variable from the command line (first=2)
+        $clusters = Invoke-Rsc -Gql (Get-Content -Path $gqlPath -Raw) -Var @{ first = 2 }
         $clusters.GetType().Name | Should -BeExactly 'ClusterConnection'
         $clusters.Nodes.Count | Should -BeExactly 2
 

@@ -20,9 +20,17 @@ function Get-RscSla {
     .PARAMETER Name
     Filter by name. Matches SLA Domains whose name contains the specified string.
 
+    .PARAMETER First
+    Maximum number of SLA Domains to return. When omitted, all matching
+    SLA Domains are returned (auto-paginated).
+
     .EXAMPLE
     # Get all SLA Domains
     Get-RscSla
+
+    .EXAMPLE
+    # Get the first 10 SLA Domains
+    Get-RscSla -First 10
 
     .EXAMPLE
     # Get SLA Domains with 'Gold' in the name
@@ -47,7 +55,12 @@ function Get-RscSla {
              Position = 0,
              ParameterSetName = "Name"
          )]
-         [String]$Name
+         [String]$Name,
+        [Parameter(
+             Mandatory = $false,
+             ParameterSetName = "Name"
+         )]
+         [Int]$First
     )
     
     Process {
@@ -566,6 +579,9 @@ function Get-RscSla {
             $query = New-RscQuery -Gql slaDomains
             $globalSlaReply = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "globalSlaReply"})
             $query.var.shouldShowProtectedObjectCount = $true
+            if ($First -gt 0) {
+                $query.var.first = $First
+            }
             $query.var.filter = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaFilterInput
             $query.var.filter.Field = [RubrikSecurityCloud.Types.GlobalSlaQueryFilterInputField]::NAME
             $query.var.filter.Text = $Name

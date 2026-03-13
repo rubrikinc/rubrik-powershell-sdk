@@ -61,7 +61,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// <code>
     /// #
     /// # text GraphQL query file with variables in the header
-    /// $gqlFile = "./Samples/queryAccountOwners.gql"
+    /// $gqlFile = "./Samples/queryClusterList.gql"
     /// $gqlQuery = Get-Content -Path $gqlFile -Raw
     /// 
     /// # Invoke the query - by piping to Invoke-Rsc:

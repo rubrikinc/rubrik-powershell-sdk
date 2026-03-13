@@ -1,3 +1,5 @@
 {
+  "_comment": "List all vSphere VMs (id and name only). Pass the whole JSON to Invoke-Rsc -Gql.",
+  "_usage": "Invoke-Rsc -Gql (Get-Content -Path Samples/GetVsphereVmList.query.json -Raw)",
   "query": "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}"
 }

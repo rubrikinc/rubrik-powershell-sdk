@@ -1,53 +1,79 @@
+<#
+.SYNOPSIS
+    Working with RSC clusters.
 
-. "${PSScriptRoot}\..\Utils\import.ps1"
-. "${PSScriptRoot}\SampleUtils.ps1"
+.DESCRIPTION
+    Interactive sample that demonstrates cluster operations:
+    1. List all clusters (Get-RscCluster)
+    2. Limit results with -First
+    3. Low-level equivalent using New-RscQuery -Gql clusterConnection
+
+.NOTES
+    Prerequisites:
+    - Install-Module RubrikSecurityCloud
+    - Set-RscServiceAccountFile /path/to/service_account.json
+#>
+
+. "$PSScriptRoot/SampleUtils.ps1"
 
 Connect-Rsc
 
-Write-Title "Working with clusters"
+try {
 
-Write-Message "Retrieve all clusters" -Pause
+# ------------------------------------------------------------------
+# 1. List all clusters
+# ------------------------------------------------------------------
+Write-Title "|  Step 1: List all clusters  |"
+
+Write-Message -GreenMessage "Retrieving all clusters with Get-RscCluster..."
+
 $clusters = Get-RscCluster
-$clusters
+Write-Message -GreenMessage "Retrieved $($clusters.Count) cluster(s)."
+$clusters | Select-Object Id, Name, Status, Type | Format-Table -AutoSize
 
-Write-Message "$($clusters.Count) clusters retrieved." -Pause
+Write-Code -Pause -CodeSnippet @'
+$clusters = Get-RscCluster
+$clusters | Select-Object Id, Name, Status, Type | Format-Table -AutoSize
+'@
 
-Write-Message "First cluster from the list:" $clusters[0] -Pause
+# ------------------------------------------------------------------
+# 2. Limit results with -First
+# ------------------------------------------------------------------
+Write-Title "|  Step 2: Limit results with -First  |"
 
-Write-Message "Retrieving just the first cluster" "Get-RscCluster -First 1" -Pause
-Get-RscCluster -First 1
+Write-Message -GreenMessage "Retrieving only the first cluster..."
 
-<# In GraphQL:
-  # List of the available cluster objects.
-  clusterConnection(
-    # Returns the first n elements from the list.
-    first: Int
-    # Returns the elements in the list that come after the specified cursor.
-    after: String
-    # Returns the last n elements from the list.
-    last: Int
-    # Returns the elements in the list that come before the specified cursor.
-    before: String
-    filter: ClusterFilterInput
-    # Cluster sort order.
-    sortOrder: SortOrder = DESC
-    # Sort clusters by field.
-    sortBy: ClusterSortByEnum = ClusterType
-  ): ClusterConnection!
+$first = Get-RscCluster -First 1
+Write-Message -GreenMessage "Cluster:" `
+    -YellowMessage "  Name: $($first.Name)`n  Id:   $($first.Id)`n  Status: $($first.Status)"
 
-# Paginated list of Cluster objects.
-type ClusterConnection {
-  # List of Cluster objects with supplemental pagination information. Use `nodes` if per-object cursors are not needed.
-  edges: [ClusterEdge!]!
-  # List of Cluster objects.
-  nodes: [Cluster!]!
-  # General information about this page of results.
-  pageInfo: PageInfo!
-  # Total number of Cluster objects matching the request arguments.
-  count: Int!
-  # Aggregate statistics across Clusters with respect for the applied filters and pagination arguments.
-  aggregateClusterStatistics: ClusterStatsAggregation!
-  # Aggregate Rubrik clusters' health information based on filters and pagination arguments.
-  aggregateClusterHealth: ClusterHealthAggregation!
+Write-Code -Pause -CodeSnippet @'
+$cluster = Get-RscCluster -First 1
+$cluster | Format-List Name, Id, Status, Type, Version
+'@
+
+# ------------------------------------------------------------------
+# 3. Low-level: New-RscQuery -Gql clusterConnection
+# ------------------------------------------------------------------
+Write-Title "|  Step 3: Low-level query  |"
+
+Write-Message -GreenMessage "Using New-RscQuery -Gql clusterConnection..." `
+    -YellowMessage "  This is the GraphQL query that Get-RscCluster wraps."
+
+$result = New-RscQuery -Gql clusterConnection -Var @{ first = 5 } | Invoke-Rsc
+Write-Message -GreenMessage "First $(@($result.Nodes).Count) of $($result.Count) clusters:"
+$result.Nodes | Select-Object Id, Name, Status | Format-Table -AutoSize
+
+Write-Code -Pause -CodeSnippet @'
+$result = New-RscQuery -Gql clusterConnection -Var @{ first = 5 } | Invoke-Rsc
+$result.Nodes | Select-Object Id, Name, Status | Format-Table -AutoSize
+$result.Count   # total clusters (even beyond 'first')
+'@
+
+Write-Title "|  Done!  |"
+
+} catch {
+    Write-Warning "Error: $_"
+} finally {
+    Disconnect-Rsc
 }
-#>

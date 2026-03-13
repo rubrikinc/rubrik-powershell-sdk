@@ -1,12 +1,20 @@
 <#
 .SYNOPSIS
-    Connecting to RSC and running a simple query.
+    Minimal "hello world" — connect, query, disconnect.
 
 .DESCRIPTION
-    This sample demonstrates:
-    1. Connecting to RSC using a service account file
-    2. Running a query with New-RscQuery -Gql
-    3. Disconnecting from RSC
+    The simplest possible RSC script. Shows the three-step pattern
+    that every SDK script follows:
+
+    1. Connect-Rsc        — reuses an existing session or creates one
+    2. (do work)          — any query, mutation, or Toolkit cmdlet
+    3. Disconnect-Rsc     — clean up the session
+
+    Before running, register your service account once:
+      Set-RscServiceAccountFile /path/to/service_account.json
+
+    That command encrypts the JSON into a per-user config file,
+    so Connect-Rsc can pick it up automatically from then on.
 
 .NOTES
     Prerequisites:
@@ -14,20 +22,21 @@
     - Set-RscServiceAccountFile /path/to/service_account.json
 #>
 
-# --- Connect ---
-# Connect-Rsc reuses an existing session or creates a new one.
-# Call it at the top of every script — it's safe to call repeatedly.
 Connect-Rsc
 
-# --- Check version ---
-$version = Get-RscVersion
-Write-Host "SDK schema: $($version.SdkSchemaVersion)  Server: $($version.ServerVersion)"
+try {
 
-# --- Run a simple query ---
-# List clusters using the GraphQL query name directly
-$result = New-RscQuery -Gql clusterConnection -Var @{ first = 5 } | Invoke-Rsc
-Write-Host "`nFirst $($result.Nodes.Count) of $($result.Count) clusters:"
-$result.Nodes | Select-Object Id, Name, Status | Format-Table -AutoSize
+# Show what we're connected to
+$v = Get-RscVersion
+Write-Host "Connected to RSC  (SDK: $($v.SdkSchemaVersion)  Server: $($v.ServerVersion))"
 
-# --- Disconnect ---
-Disconnect-Rsc
+# Run a simple query — count clusters as a quick smoke test
+$result = New-RscQuery -Gql clusterConnection -Var @{ first = 3 } | Invoke-Rsc
+Write-Host "$($result.Count) cluster(s) in this tenant:"
+$result.Nodes | Format-Table Name, Status, Type -AutoSize
+
+} catch {
+    Write-Warning "Error: $_"
+} finally {
+    Disconnect-Rsc
+}

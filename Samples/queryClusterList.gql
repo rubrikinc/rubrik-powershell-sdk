@@ -1,4 +1,16 @@
 /*
+Retrieve clusters from the clusterConnection query.
+Demonstrates passing variables in the header comment block —
+Invoke-Rsc parses the "Variables:" JSON automatically.
+
+Usage:
+  # Use the default variable (first=1):
+  Get-Content -Path Samples/queryClusterList.gql -Raw | Invoke-Rsc
+
+  # Override from the command line to get more clusters:
+  $gql = Get-Content -Path Samples/queryClusterList.gql -Raw
+  Invoke-Rsc -Gql $gql -Var @{ first = 5 }
+
 Variables:
 {"first":1}
 */
@@ -36,4 +48,3 @@ query QueryClusterConnection($first: Int,$after: String,$last: Int,$before: Stri
      __typename }
    __typename }
  __typename }
-

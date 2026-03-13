@@ -55,6 +55,10 @@ function CompareFiles {
     )
     $AInfo = Get-Item -Path $FileA -ErrorAction SilentlyContinue
     $Binfo = Get-Item -Path $FileB -ErrorAction SilentlyContinue
+    # Skip directories — this function compares file contents
+    if ( ($AInfo -and $AInfo.PSIsContainer) -or ($Binfo -and $Binfo.PSIsContainer) ) {
+        return "skipped (directory)"
+    }
     if ( $null -eq $AInfo -or $null -eq $Binfo ) {
         if ( $null -eq $AInfo -and $null -eq $Binfo ) {
             return "both missing"

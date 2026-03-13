@@ -1,4 +1,11 @@
 /*
+Query all account owners in the RSC tenant.
+Returns each owner's email, username, status, and whether they are
+the account owner.
+
+Usage:
+  Get-Content -Path Samples/queryAccountOwners.gql -Raw | Invoke-Rsc
+
 Variables:
 {}
 */
