@@ -30,4 +30,5 @@ Error code from Laminar flow processing.
 - RDS_DB_UNSUPPORTED_ENGINE - RDS instance with Unsupported Engine.
 - AZURE_SQL_ELASTIC_POOL_UNSUPPORTED - Azure SQL databases that are part of an Elastic Pool are unsupported.
 - HOST_CREDENTIALS_FOR_SDD_NOT_CONFIGURED - Host Credentials for SDD not configured.
+- SCAN_IN_PROGRESS - Scan is in progress.
 - SUCCESS - Operation completed successfully.

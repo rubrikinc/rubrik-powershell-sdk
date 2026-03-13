@@ -1,7 +1,9 @@
 ### SlaAssociatedOrganization
-Details of an organization associated with an SLA Domain.
+Details of an organization with basic information.
 
-- name: System.String
-  - Name of the organization.
 - id: System.String
   - ID of the organization.
+- name: System.String
+  - Name of the organization.
+- fullName: System.String
+  - Full name of the organization.

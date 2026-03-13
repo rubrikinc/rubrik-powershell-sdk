@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATTRIBUTE_RECOVERY_MODE_OVERWRITE")]
         ATTRIBUTE_RECOVERY_MODE_OVERWRITE,
 
+        [EnumMember(Value = "ATTRIBUTE_RECOVERY_MODE_SKIP")]
+        ATTRIBUTE_RECOVERY_MODE_SKIP,
+
         [EnumMember(Value = "ATTRIBUTE_RECOVERY_MODE_UNSPECIFIED")]
         ATTRIBUTE_RECOVERY_MODE_UNSPECIFIED
 

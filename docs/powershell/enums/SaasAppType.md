@@ -29,3 +29,5 @@ SaaS application type.
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
 - GOOGLE_MAIL - Google Workspace gmail application type.
+- ONEDRIVE - M365 OneDrive application type.
+- AUTH0 - Auth0 application type.

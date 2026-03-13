@@ -59,3 +59,4 @@ Inventory Card options that the user can select as a workload.
 - PROXMOX - Inventory card is Proxmox.
 - GITHUB - Inventory card is GitHub.
 - GCP_CLOUD_SQL - Inventory Card is GCP Cloud SQL.
+- CLOUD_NATIVE_APPLICATION - Inventory card is Cloud Applications.

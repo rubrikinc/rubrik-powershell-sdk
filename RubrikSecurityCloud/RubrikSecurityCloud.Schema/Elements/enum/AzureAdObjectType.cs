@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP")]
         GROUP,
 
+        [EnumMember(Value = "GROUP_ELIGIBLE_ASSIGNMENT")]
+        GROUP_ELIGIBLE_ASSIGNMENT,
+
         [EnumMember(Value = "LOCAL_ADMIN_PASSWORD")]
         LOCAL_ADMIN_PASSWORD,
 
@@ -89,6 +92,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
         ROLE_ASSIGNMENT,
+
+        [EnumMember(Value = "ROLE_ELIGIBLE_ASSIGNMENT")]
+        ROLE_ELIGIBLE_ASSIGNMENT,
 
         [EnumMember(Value = "SERVICE_PRINCIPAL")]
         SERVICE_PRINCIPAL,

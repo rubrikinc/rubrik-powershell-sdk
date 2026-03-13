@@ -40,6 +40,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("includedDataActions")]
         public List<System.String>? IncludedDataActions { get; set; }
 
+        //      C# -> List<AzurePermissionWithUseCase>? ExcludedActionsWithUseCase
+        // GraphQL -> excludedActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        [JsonProperty("excludedActionsWithUseCase")]
+        public List<AzurePermissionWithUseCase>? ExcludedActionsWithUseCase { get; set; }
+
+        //      C# -> List<AzurePermissionWithUseCase>? ExcludedDataActionsWithUseCase
+        // GraphQL -> excludedDataActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        [JsonProperty("excludedDataActionsWithUseCase")]
+        public List<AzurePermissionWithUseCase>? ExcludedDataActionsWithUseCase { get; set; }
+
+        //      C# -> List<AzurePermissionWithUseCase>? IncludedActionsWithUseCase
+        // GraphQL -> includedActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        [JsonProperty("includedActionsWithUseCase")]
+        public List<AzurePermissionWithUseCase>? IncludedActionsWithUseCase { get; set; }
+
+        //      C# -> List<AzurePermissionWithUseCase>? IncludedDataActionsWithUseCase
+        // GraphQL -> includedDataActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        [JsonProperty("includedDataActionsWithUseCase")]
+        public List<AzurePermissionWithUseCase>? IncludedDataActionsWithUseCase { get; set; }
+
 
         #endregion
 
@@ -53,7 +73,11 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? ExcludedActions = null,
         List<System.String>? ExcludedDataActions = null,
         List<System.String>? IncludedActions = null,
-        List<System.String>? IncludedDataActions = null
+        List<System.String>? IncludedDataActions = null,
+        List<AzurePermissionWithUseCase>? ExcludedActionsWithUseCase = null,
+        List<AzurePermissionWithUseCase>? ExcludedDataActionsWithUseCase = null,
+        List<AzurePermissionWithUseCase>? IncludedActionsWithUseCase = null,
+        List<AzurePermissionWithUseCase>? IncludedDataActionsWithUseCase = null
     ) 
     {
         if ( ExcludedActions != null ) {
@@ -67,6 +91,18 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IncludedDataActions != null ) {
             this.IncludedDataActions = IncludedDataActions;
+        }
+        if ( ExcludedActionsWithUseCase != null ) {
+            this.ExcludedActionsWithUseCase = ExcludedActionsWithUseCase;
+        }
+        if ( ExcludedDataActionsWithUseCase != null ) {
+            this.ExcludedDataActionsWithUseCase = ExcludedDataActionsWithUseCase;
+        }
+        if ( IncludedActionsWithUseCase != null ) {
+            this.IncludedActionsWithUseCase = IncludedActionsWithUseCase;
+        }
+        if ( IncludedDataActionsWithUseCase != null ) {
+            this.IncludedDataActionsWithUseCase = IncludedDataActionsWithUseCase;
         }
         return this;
     }
@@ -116,6 +152,54 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "includedDataActions\n" ;
             } else {
                 s += ind + "includedDataActions\n" ;
+            }
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? ExcludedActionsWithUseCase
+        // GraphQL -> excludedActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (this.ExcludedActionsWithUseCase != null) {
+            var fspec = this.ExcludedActionsWithUseCase.AsFieldSpec(conf.Child("excludedActionsWithUseCase"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "excludedActionsWithUseCase" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? ExcludedDataActionsWithUseCase
+        // GraphQL -> excludedDataActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (this.ExcludedDataActionsWithUseCase != null) {
+            var fspec = this.ExcludedDataActionsWithUseCase.AsFieldSpec(conf.Child("excludedDataActionsWithUseCase"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "excludedDataActionsWithUseCase" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? IncludedActionsWithUseCase
+        // GraphQL -> includedActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (this.IncludedActionsWithUseCase != null) {
+            var fspec = this.IncludedActionsWithUseCase.AsFieldSpec(conf.Child("includedActionsWithUseCase"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "includedActionsWithUseCase" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? IncludedDataActionsWithUseCase
+        // GraphQL -> includedDataActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (this.IncludedDataActionsWithUseCase != null) {
+            var fspec = this.IncludedDataActionsWithUseCase.AsFieldSpec(conf.Child("includedDataActionsWithUseCase"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "includedDataActionsWithUseCase" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,6 +276,82 @@ namespace RubrikSecurityCloud.Types
         else if (this.IncludedDataActions != null && ec.Excludes("includedDataActions",true))
         {
             this.IncludedDataActions = null;
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? ExcludedActionsWithUseCase
+        // GraphQL -> excludedActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (ec.Includes("excludedActionsWithUseCase",false))
+        {
+            if(this.ExcludedActionsWithUseCase == null) {
+
+                this.ExcludedActionsWithUseCase = new List<AzurePermissionWithUseCase>();
+                this.ExcludedActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("excludedActionsWithUseCase"));
+
+            } else {
+
+                this.ExcludedActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("excludedActionsWithUseCase"));
+
+            }
+        }
+        else if (this.ExcludedActionsWithUseCase != null && ec.Excludes("excludedActionsWithUseCase",false))
+        {
+            this.ExcludedActionsWithUseCase = null;
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? ExcludedDataActionsWithUseCase
+        // GraphQL -> excludedDataActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (ec.Includes("excludedDataActionsWithUseCase",false))
+        {
+            if(this.ExcludedDataActionsWithUseCase == null) {
+
+                this.ExcludedDataActionsWithUseCase = new List<AzurePermissionWithUseCase>();
+                this.ExcludedDataActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("excludedDataActionsWithUseCase"));
+
+            } else {
+
+                this.ExcludedDataActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("excludedDataActionsWithUseCase"));
+
+            }
+        }
+        else if (this.ExcludedDataActionsWithUseCase != null && ec.Excludes("excludedDataActionsWithUseCase",false))
+        {
+            this.ExcludedDataActionsWithUseCase = null;
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? IncludedActionsWithUseCase
+        // GraphQL -> includedActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (ec.Includes("includedActionsWithUseCase",false))
+        {
+            if(this.IncludedActionsWithUseCase == null) {
+
+                this.IncludedActionsWithUseCase = new List<AzurePermissionWithUseCase>();
+                this.IncludedActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("includedActionsWithUseCase"));
+
+            } else {
+
+                this.IncludedActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("includedActionsWithUseCase"));
+
+            }
+        }
+        else if (this.IncludedActionsWithUseCase != null && ec.Excludes("includedActionsWithUseCase",false))
+        {
+            this.IncludedActionsWithUseCase = null;
+        }
+        //      C# -> List<AzurePermissionWithUseCase>? IncludedDataActionsWithUseCase
+        // GraphQL -> includedDataActionsWithUseCase: [AzurePermissionWithUseCase!]! (type)
+        if (ec.Includes("includedDataActionsWithUseCase",false))
+        {
+            if(this.IncludedDataActionsWithUseCase == null) {
+
+                this.IncludedDataActionsWithUseCase = new List<AzurePermissionWithUseCase>();
+                this.IncludedDataActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("includedDataActionsWithUseCase"));
+
+            } else {
+
+                this.IncludedDataActionsWithUseCase.ApplyExploratoryFieldSpec(ec.NewChild("includedDataActionsWithUseCase"));
+
+            }
+        }
+        else if (this.IncludedDataActionsWithUseCase != null && ec.Excludes("includedDataActionsWithUseCase",false))
+        {
+            this.IncludedDataActionsWithUseCase = null;
         }
     }
 

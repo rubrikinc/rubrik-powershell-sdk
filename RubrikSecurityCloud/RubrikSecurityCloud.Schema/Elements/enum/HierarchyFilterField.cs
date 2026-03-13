@@ -285,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_INSTANCE_HOST_DESCENDANT_OBJECT_TYPE")]
         CLOUD_INSTANCE_HOST_DESCENDANT_OBJECT_TYPE,
 
+        [EnumMember(Value = "CLOUD_NATIVE_APPLICATION_MO_ID")]
+        CLOUD_NATIVE_APPLICATION_MO_ID,
+
         [EnumMember(Value = "CLOUD_NATIVE_SERVER_NAME_FILTER")]
         CLOUD_NATIVE_SERVER_NAME_FILTER,
 
@@ -485,6 +488,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_NATIVE_INSTANCE_TYPE")]
         GCP_NATIVE_INSTANCE_TYPE,
+
+        [EnumMember(Value = "GCP_NATIVE_PROJECT_ENABLED_FEATURE")]
+        GCP_NATIVE_PROJECT_ENABLED_FEATURE,
 
         [EnumMember(Value = "GCP_NATIVE_PROJECT_ID")]
         GCP_NATIVE_PROJECT_ID,
@@ -692,6 +698,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "LINUX_OS_TYPE")]
         LINUX_OS_TYPE,
+
+        [EnumMember(Value = "LIST_APPLICATION_FILTER")]
+        LIST_APPLICATION_FILTER,
 
         [EnumMember(Value = "LOCATION")]
         LOCATION,
@@ -971,6 +980,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SALESFORCE_NAME_OR_LABEL")]
         SALESFORCE_NAME_OR_LABEL,
+
+        [EnumMember(Value = "SALESFORCE_OBJECT_BACKUP_TYPE")]
+        SALESFORCE_OBJECT_BACKUP_TYPE,
 
         [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
         SALESFORCE_OBJECT_TYPE,

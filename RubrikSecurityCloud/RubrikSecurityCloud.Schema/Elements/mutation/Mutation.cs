@@ -7345,6 +7345,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CreateVrmReply? CreateVrm
+        // GraphQL -> createVrm: CreateVrmReply! (type)
+        public static string CreateVrm(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createVrm" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateVrmFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CreateVrmReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CreateVsphereAdvancedTagReply? CreateVsphereAdvancedTag
         // GraphQL -> createVsphereAdvancedTag: CreateVsphereAdvancedTagReply! (type)
         public static string CreateVsphereAdvancedTag(object fsObj)

@@ -59,6 +59,8 @@ Metadata for rendering an SLA Domain.
   - Specifies whether the SLA Domain is read-only.
 - backupLocationSpecs: list of BackupLocationSpecs
   - List of backup location specifications for the SLA Domain.
+- backupType: BackupType
+  - Type of backup.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode when enabled for the SLA Domain.
 - allOrgsWithAccess: list of Orgs
@@ -77,5 +79,3 @@ Metadata for rendering an SLA Domain.
   - Source clusters configured in the SLA Domain.
 - haPolicy: HaPolicy
   - HA policy of the HA SLA Domain.
-- backupType: BackupType
-  - Type of backup.

@@ -152,7 +152,7 @@ namespace RubrikSecurityCloud.Types
         public System.Boolean? IsSapHanaIncrementalSnapshot { get; set; }
 
         //      C# -> System.Boolean? IsThreatAnalysisCompleted
-        // GraphQL -> isThreatAnalysisCompleted: Boolean (scalar)
+        // GraphQL -> isThreatAnalysisCompleted: Boolean! (scalar)
         [JsonProperty("isThreatAnalysisCompleted")]
         public System.Boolean? IsThreatAnalysisCompleted { get; set; }
 
@@ -816,7 +816,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.Boolean? IsThreatAnalysisCompleted
-        // GraphQL -> isThreatAnalysisCompleted: Boolean (scalar)
+        // GraphQL -> isThreatAnalysisCompleted: Boolean! (scalar)
         if (this.IsThreatAnalysisCompleted != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "isThreatAnalysisCompleted\n" ;
@@ -1652,7 +1652,7 @@ namespace RubrikSecurityCloud.Types
             this.IsSapHanaIncrementalSnapshot = null;
         }
         //      C# -> System.Boolean? IsThreatAnalysisCompleted
-        // GraphQL -> isThreatAnalysisCompleted: Boolean (scalar)
+        // GraphQL -> isThreatAnalysisCompleted: Boolean! (scalar)
         if (ec.Includes("isThreatAnalysisCompleted",true))
         {
             if(this.IsThreatAnalysisCompleted == null) {

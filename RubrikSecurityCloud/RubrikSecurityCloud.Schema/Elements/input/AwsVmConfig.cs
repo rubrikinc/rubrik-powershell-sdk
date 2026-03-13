@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmVersion")]
         public System.String? CdmVersion { get; set; }
 
+        //      C# -> VmType? VmType
+        // GraphQL -> vmType: VmType (enum)
+        [JsonProperty("vmType")]
+        public VmType? VmType { get; set; }
+
         //      C# -> System.Int32? NodeSizeGb
         // GraphQL -> nodeSizeGb: Int (scalar)
         [JsonProperty("nodeSizeGb")]
@@ -33,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnet: String (scalar)
         [JsonProperty("subnet")]
         public System.String? Subnet { get; set; }
+
+        //      C# -> List<System.String>? SecurityGroups
+        // GraphQL -> securityGroups: [String!] (scalar)
+        [JsonProperty("securityGroups")]
+        public List<System.String>? SecurityGroups { get; set; }
 
         //      C# -> System.String? Vpc
         // GraphQL -> vpc: String (scalar)
@@ -59,26 +69,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmProduct")]
         public System.String? CdmProduct { get; set; }
 
-        //      C# -> System.String? PlacementGroupName
-        // GraphQL -> placementGroupName: String (scalar)
-        [JsonProperty("placementGroupName")]
-        public System.String? PlacementGroupName { get; set; }
-
-        //      C# -> List<SubnetAzConfigInput>? SubnetAzConfigs
-        // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
-        [JsonProperty("subnetAzConfigs")]
-        public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
-
-        //      C# -> VmType? VmType
-        // GraphQL -> vmType: VmType (enum)
-        [JsonProperty("vmType")]
-        public VmType? VmType { get; set; }
-
-        //      C# -> List<System.String>? SecurityGroups
-        // GraphQL -> securityGroups: [String!] (scalar)
-        [JsonProperty("securityGroups")]
-        public List<System.String>? SecurityGroups { get; set; }
-
         //      C# -> AwsInstanceType? InstanceType
         // GraphQL -> instanceType: AwsInstanceType (enum)
         [JsonProperty("instanceType")]
@@ -88,6 +78,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> networkConfig: [AwsVmNetworkConfig!] (input)
         [JsonProperty("networkConfig")]
         public List<AwsVmNetworkConfig>? NetworkConfig { get; set; }
+
+        //      C# -> System.String? PlacementGroupName
+        // GraphQL -> placementGroupName: String (scalar)
+        [JsonProperty("placementGroupName")]
+        public System.String? PlacementGroupName { get; set; }
+
+        //      C# -> List<SubnetAzConfigInput>? SubnetAzConfigs
+        // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
+        [JsonProperty("subnetAzConfigs")]
+        public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
 
 
         #endregion

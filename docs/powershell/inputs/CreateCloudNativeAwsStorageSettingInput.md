@@ -9,3 +9,5 @@ Input to create a storage setting for AWS.
 - kmsMasterKeyId: System.String
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType
 - bucketTags: TagsInput
+- awsKmsKey: AwsKmsKeyIdentifierInput
+  - AWS KMS key for client-side encryption of the archival target.

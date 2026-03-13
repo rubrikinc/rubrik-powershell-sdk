@@ -1,14 +1,14 @@
 ### ActivityStatusEnum
 Represents activity statuses.
 
-- Canceled - Represents a canceled activity.
-- Canceling - Represents an activity which is currently canceling.
-- Failure - Represents a failure.
-- Info - Represents an informational activity.
+- Canceled - Canceled.
+- Canceling - Canceling.
+- Failure - Failure.
+- Info - Information.
 - PARTIAL_SUCCESS - Represents completion with warnings.
-- Queued - Represents a queued activity.
-- Running - Represents a running activity.
-- Success - Represents a successful activity.
-- TaskFailure - Represents task failure.
-- TaskSuccess - Represents task success.
-- Warning - Represents a warning.
+- Queued - Queued status.
+- Running - Running.
+- Success - Success.
+- TaskFailure - Task failure status.
+- TaskSuccess - Task success status.
+- Warning - Warning.

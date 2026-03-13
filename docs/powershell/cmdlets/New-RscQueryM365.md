@@ -30,6 +30,20 @@ Display license entitlement for M365 workloads.
 
 - There is a single argument of type System.String.
 - Returns M365LicenseEntitlementReply.
+### mvc
+ListMvcProfiles lists MVC profiles for an org.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - orgId - System.String: UUID of the O365 organization.
+    - sortBy - MvcProfileSortField: Field to sort the results by.
+    - sortOrder - SortOrder: Sort order for the results.
+    - filter - list of MvcProfileFilters: Filters to apply to the results.
+    - includeArchived - System.Boolean: Whether to include archived MVC profiles.
+- Returns MvcProfileConnection.
 ### onboardingmodebackupstats
 Returns the backup statistics of an M365 organization product in onboarding mode.
 

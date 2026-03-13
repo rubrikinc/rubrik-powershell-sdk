@@ -30,3 +30,6 @@ sub-type of the target scope.
   - The action types of the activity to filter on.
 - statuses: list of LambdaEventStatuss
   - The statuses of the actor to filter on.
+- scopedTargetEntities: list of ActivityScopedTargetEntitys
+  - Scoped target entities for filtering. Use this instead of target_entity_ids
+for scope disambiguation to avoid ID collisions across targets from different resources.

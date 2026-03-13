@@ -879,7 +879,22 @@ Excludes datastores with type NFS and name matching regex
 +mo:filter:db:column=type
 - WORKLOADS - Filter workloads by object name or host details.
 +mo:filter:db:table=cdm_udf_db_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 +mo:filter:db:column=host_ids
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:column=name
++mo:filter:db:column=ipv4_addresses
++mo:filter:db:table=managed_object
++mo:filter:db:column=name
++mo:filter:db:index:key=sort_by_name_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
 - MANAGED_VOLUME_HAS_LAST_RESET_REASON - Filter Managed Volumes by whether they have a last reset reason.
 +mo:filter:db:table=cdm_managed_volume
 +mo:filter:db:column=last_reset_reason
@@ -983,6 +998,48 @@ and returns recovery plans that contain those domain controllers.
 +mo:filter:db:column=cluster_uuid
 +mo:filter:db:column=domain_sid
 +mo:filter:db:index:key=domain_sid_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- LIST_APPLICATION_FILTER - Filter for listing cloud native applications.
+Encodes filters specific to the cloud_native_application table.
+texts format: "cloud_type:<VALUE>" or "protection_status:<VALUE>".
+Multiple entries of the same key are OR-combined; different keys are
+AND-combined.
++mo:filter:db:table=cloud_native_application
++mo:filter:db:column=managed_object_id
++mo:filter:db:index:key=idx_cna_id
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=cloud_type
++mo:filter:db:index:key=NULL
++mo:filter:db:column=protection_status
++mo:filter:db:index:key=idx_cnar_protection
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- CLOUD_NATIVE_APPLICATION_MO_ID - Filter application workload resources by cloud native application ID.
++Implementation: Joins managed_object to
++cloud_native_application_resource (resource_id = MO ID)
++and filters on application_id.
++mo:filter:db:table=cloud_native_application_resource
++mo:filter:db:column=application_id
++mo:filter:db:column=resource_id
++mo:filter:db:index:key=uq_app_resource_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- SALESFORCE_OBJECT_BACKUP_TYPE - Filter by Salesforce object backup type (RECOMMENDED or NOT_RECOMMENDED).
+This filter computes the backup type dynamically by pattern matching on
+the object name.
++mo:filter:db:table=saasapps_salesforce_objects
++mo:filter:db:column=name
++mo:filter:db:index:key=NULL // no index on name column
+- GCP_NATIVE_PROJECT_ENABLED_FEATURE - Filter GCP native projects based on the features enabled for them.
++mo:filter:db:table=gcp_customer_features
++mo:filter:db:column=gcp_native_protection_feature_names
++mo:filter:db:index:key=gcp_native_project_enabled_feature_idx
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false

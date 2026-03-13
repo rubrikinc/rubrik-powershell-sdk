@@ -24,6 +24,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
+        //      C# -> ClusterConfigInput? ClusterConfig
+        // GraphQL -> clusterConfig: ClusterConfigInput (input)
+        [JsonProperty("clusterConfig")]
+        public ClusterConfigInput? ClusterConfig { get; set; }
+
+        //      C# -> AwsVmConfig? VmConfig
+        // GraphQL -> vmConfig: AwsVmConfig (input)
+        [JsonProperty("vmConfig")]
+        public AwsVmConfig? VmConfig { get; set; }
+
         //      C# -> System.Boolean? IsEsType
         // GraphQL -> isEsType: Boolean (scalar)
         [JsonProperty("isEsType")]
@@ -44,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("disableApiTermination")]
         public System.Boolean? DisableApiTermination { get; set; }
 
+        //      C# -> List<ClusterCreateValidations>? Validations
+        // GraphQL -> validations: [ClusterCreateValidations!] (enum)
+        [JsonProperty("validations")]
+        public List<ClusterCreateValidations>? Validations { get; set; }
+
         //      C# -> System.Boolean? UsePlacementGroups
         // GraphQL -> usePlacementGroups: Boolean (scalar)
         [JsonProperty("usePlacementGroups")]
@@ -53,21 +68,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isAzResilient: Boolean (scalar)
         [JsonProperty("isAzResilient")]
         public System.Boolean? IsAzResilient { get; set; }
-
-        //      C# -> ClusterConfigInput? ClusterConfig
-        // GraphQL -> clusterConfig: ClusterConfigInput (input)
-        [JsonProperty("clusterConfig")]
-        public ClusterConfigInput? ClusterConfig { get; set; }
-
-        //      C# -> AwsVmConfig? VmConfig
-        // GraphQL -> vmConfig: AwsVmConfig (input)
-        [JsonProperty("vmConfig")]
-        public AwsVmConfig? VmConfig { get; set; }
-
-        //      C# -> List<ClusterCreateValidations>? Validations
-        // GraphQL -> validations: [ClusterCreateValidations!] (enum)
-        [JsonProperty("validations")]
-        public List<ClusterCreateValidations>? Validations { get; set; }
 
 
         #endregion

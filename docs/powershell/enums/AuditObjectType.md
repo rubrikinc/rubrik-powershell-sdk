@@ -177,3 +177,4 @@ Represents all the object types for which we expect to see audits.
 - PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
 - CLI - Cli object.
 - RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
+- AGENT_CLOUD_POLICY - Agent Cloud policy object.

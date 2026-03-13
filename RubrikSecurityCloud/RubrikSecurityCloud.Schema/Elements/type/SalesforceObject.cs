@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> SalesforceObjectBackupType? ObjectBackupType
+        // GraphQL -> objectBackupType: SalesforceObjectBackupType! (enum)
+        [JsonProperty("objectBackupType")]
+        public SalesforceObjectBackupType? ObjectBackupType { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -292,6 +297,7 @@ namespace RubrikSecurityCloud.Types
 
     public SalesforceObject Set(
         List<Operation>? AuthorizedOperations = null,
+        SalesforceObjectBackupType? ObjectBackupType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -327,6 +333,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( ObjectBackupType != null ) {
+            this.ObjectBackupType = ObjectBackupType;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -442,6 +451,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> SalesforceObjectBackupType? ObjectBackupType
+        // GraphQL -> objectBackupType: SalesforceObjectBackupType! (enum)
+        if (this.ObjectBackupType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectBackupType\n" ;
+            } else {
+                s += ind + "objectBackupType\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -806,6 +824,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> SalesforceObjectBackupType? ObjectBackupType
+        // GraphQL -> objectBackupType: SalesforceObjectBackupType! (enum)
+        if (ec.Includes("objectBackupType",true))
+        {
+            if(this.ObjectBackupType == null) {
+
+                this.ObjectBackupType = new SalesforceObjectBackupType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectBackupType != null && ec.Excludes("objectBackupType",true))
+        {
+            this.ObjectBackupType = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

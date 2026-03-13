@@ -11,4 +11,4 @@ it's a regular backup window (BACKUP_WINDOW_TYPE_REGULAR) or a first full
 backup window (BACKUP_WINDOW_TYPE_FIRST_FULL).
 - terminateBackupsExceedingBackupWindow: System.Boolean
   - Terminates backup jobs that exceed the configured backup window
-boundaries.
+boundaries (Only applicable to Data Center Objects).

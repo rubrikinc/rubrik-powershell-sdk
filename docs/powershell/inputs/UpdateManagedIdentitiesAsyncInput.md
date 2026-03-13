@@ -2,8 +2,8 @@
 UpdateManagedIdentitiesRequest input for the Azure account.
 
 - cloudAccountId: System.String
-  - Cloud account ID.
+  - Cloud Account ID.
 - clusterUuid: System.String
   - Cluster UUID.
 - managedIdentity: AzureManagedIdentityName
-  - Managed identity info.
+  - Managed Identity Info.

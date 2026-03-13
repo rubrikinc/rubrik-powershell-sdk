@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? FullName
+        // GraphQL -> fullName: String! (scalar)
+        [JsonProperty("fullName")]
+        public System.String? FullName { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SlaAssociatedOrganization Set(
+        System.String? FullName = null,
         System.String? Id = null,
         System.String? Name = null
     ) 
     {
+        if ( FullName != null ) {
+            this.FullName = FullName;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? FullName
+        // GraphQL -> fullName: String! (scalar)
+        if (this.FullName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fullName\n" ;
+            } else {
+                s += ind + "fullName\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? FullName
+        // GraphQL -> fullName: String! (scalar)
+        if (ec.Includes("fullName",true))
+        {
+            if(this.FullName == null) {
+
+                this.FullName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FullName != null && ec.Excludes("fullName",true))
+        {
+            this.FullName = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))

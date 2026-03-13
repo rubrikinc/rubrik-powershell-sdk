@@ -19,16 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? AdminPassword
-        // GraphQL -> adminPassword: String (scalar)
-        [JsonProperty("adminPassword")]
-        public System.String? AdminPassword { get; set; }
-
-        //      C# -> System.String? UserEmail
-        // GraphQL -> userEmail: String (scalar)
-        [JsonProperty("userEmail")]
-        public System.String? UserEmail { get; set; }
-
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         [Required]
@@ -43,15 +33,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
-        //      C# -> System.String? AzureEsResourceGroup
-        // GraphQL -> azureEsResourceGroup: String (scalar)
-        [JsonProperty("azureEsResourceGroup")]
-        public System.String? AzureEsResourceGroup { get; set; }
-
         //      C# -> AzureVmConfig? AzureVmConfig
         // GraphQL -> azureVmConfig: AzureVmConfig (input)
         [JsonProperty("azureVmConfig")]
         public AzureVmConfig? AzureVmConfig { get; set; }
+
+        //      C# -> System.String? AzureEsResourceGroup
+        // GraphQL -> azureEsResourceGroup: String (scalar)
+        [JsonProperty("azureEsResourceGroup")]
+        public System.String? AzureEsResourceGroup { get; set; }
 
         //      C# -> AwsVmConfig? AwsVmConfig
         // GraphQL -> awsVmConfig: AwsVmConfig (input)
@@ -86,6 +76,16 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldKeepClusterOnFailure")]
         public System.Boolean? ShouldKeepClusterOnFailure { get; set; }
+
+        //      C# -> System.String? AdminPassword
+        // GraphQL -> adminPassword: String (scalar)
+        [JsonProperty("adminPassword")]
+        public System.String? AdminPassword { get; set; }
+
+        //      C# -> System.String? UserEmail
+        // GraphQL -> userEmail: String (scalar)
+        [JsonProperty("userEmail")]
+        public System.String? UserEmail { get; set; }
 
         //      C# -> List<System.String>? NtpServers
         // GraphQL -> ntpServers: [String!] (scalar)

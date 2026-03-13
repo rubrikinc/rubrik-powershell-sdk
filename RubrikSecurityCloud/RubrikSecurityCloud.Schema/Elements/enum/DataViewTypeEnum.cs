@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVITY_SERIES")]
         ACTIVITY_SERIES,
 
+        [EnumMember(Value = "ALLOWED_HITS")]
+        ALLOWED_HITS,
+
         [EnumMember(Value = "ANOMALIES")]
         ANOMALIES,
 

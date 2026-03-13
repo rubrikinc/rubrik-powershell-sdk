@@ -1,5 +1,5 @@
 ### CloudDirectExclusion
-Exclusion.
+Path or glob pattern exclusion.
 
 - path: System.String
   - Path of exclusion.

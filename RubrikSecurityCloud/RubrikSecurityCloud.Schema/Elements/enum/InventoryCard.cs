@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CASSANDRA")]
         CASSANDRA,
 
+        [EnumMember(Value = "CLOUD_NATIVE_APPLICATION")]
+        CLOUD_NATIVE_APPLICATION,
+
         [EnumMember(Value = "D365")]
         D365,
 

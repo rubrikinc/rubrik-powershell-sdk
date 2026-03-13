@@ -40,6 +40,11 @@ Returns a NAS Cloud Direct snapshot by ID.
 
 - There is a single argument of type System.String.
 - Returns CloudDirectSnapshot.
+### clouddirectexclusions
+Retrieves the full exclusion list for the input Cloud Direct snapshot ID.
+
+- There is a single argument of type System.String.
+- Returns CloudDirectSnapshotExclusions.
 ### clouddirects
 Returns a list of NAS Cloud Direct snapshots.
 

@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATTRIBUTE_SCHEMA")]
         ATTRIBUTE_SCHEMA,
 
+        [EnumMember(Value = "CERTIFICATE_TEMPLATE")]
+        CERTIFICATE_TEMPLATE,
+
         [EnumMember(Value = "CLASS_SCHEMA")]
         CLASS_SCHEMA,
 
@@ -35,6 +38,21 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CONTAINER")]
         CONTAINER,
+
+        [EnumMember(Value = "CONTROL_ACCESS_RIGHT")]
+        CONTROL_ACCESS_RIGHT,
+
+        [EnumMember(Value = "DFS_LINK")]
+        DFS_LINK,
+
+        [EnumMember(Value = "DFS_NAMESPACE_V1")]
+        DFS_NAMESPACE_V1,
+
+        [EnumMember(Value = "DFS_NAMESPACE_V2")]
+        DFS_NAMESPACE_V2,
+
+        [EnumMember(Value = "DNS_ZONE")]
+        DNS_ZONE,
 
         [EnumMember(Value = "DOMAIN_DNS")]
         DOMAIN_DNS,

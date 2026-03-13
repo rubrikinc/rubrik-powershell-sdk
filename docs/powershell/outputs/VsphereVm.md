@@ -59,6 +59,8 @@
   - Post-snap script.
 - duplicatedVms: list of DuplicatedVms
   - List of duplicated virtual machines.
+- linkedActiveVm: LinkedActiveVm
+  - The active virtual machine in a linked group for this virtual machine. Returns the active virtual machine for any inactive member (relic or unarchived). Returns null for virtual machines not in a group or already active. Used to show 'inactive member' banner with link to active virtual machine.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

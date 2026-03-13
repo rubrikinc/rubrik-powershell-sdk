@@ -1,4 +1,4 @@
-// RegionImageIds.cs
+// CreateVrmReply.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -15,15 +15,20 @@ using RubrikSecurityCloud;
 
 namespace RubrikSecurityCloud.Types
 {
-    #region RegionImageIds
-    public class RegionImageIds: BaseType
+    #region CreateVrmReply
+    public class CreateVrmReply: BaseType
     {
         #region members
 
-        //      C# -> List<RegionImageIdEntry>? RegionImageIdsField
-        // GraphQL -> regionImageIds: [RegionImageIdEntry!]! (type)
-        [JsonProperty("regionImageIds")]
-        public List<RegionImageIdEntry>? RegionImageIdsField { get; set; }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
+
+        //      C# -> AsyncRequestStatus? AsyncRequestStatus
+        // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
+        [JsonProperty("asyncRequestStatus")]
+        public AsyncRequestStatus? AsyncRequestStatus { get; set; }
 
 
         #endregion
@@ -31,15 +36,19 @@ namespace RubrikSecurityCloud.Types
     #region methods
 
     public override string GetGqlTypeName() {
-        return "RegionImageIds";
+        return "CreateVrmReply";
     }
 
-    public RegionImageIds Set(
-        List<RegionImageIdEntry>? RegionImageIdsField = null
+    public CreateVrmReply Set(
+        System.String? Id = null,
+        AsyncRequestStatus? AsyncRequestStatus = null
     ) 
     {
-        if ( RegionImageIdsField != null ) {
-            this.RegionImageIdsField = RegionImageIdsField;
+        if ( Id != null ) {
+            this.Id = Id;
+        }
+        if ( AsyncRequestStatus != null ) {
+            this.AsyncRequestStatus = AsyncRequestStatus;
         }
         return this;
     }
@@ -55,15 +64,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> List<RegionImageIdEntry>? RegionImageIdsField
-        // GraphQL -> regionImageIds: [RegionImageIdEntry!]! (type)
-        if (this.RegionImageIdsField != null) {
-            var fspec = this.RegionImageIdsField.AsFieldSpec(conf.Child("regionImageIds"));
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
+            }
+        }
+        //      C# -> AsyncRequestStatus? AsyncRequestStatus
+        // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
+        if (this.AsyncRequestStatus != null) {
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(conf.Child("asyncRequestStatus"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "regionImageIds" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "asyncRequestStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -74,35 +92,52 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> List<RegionImageIdEntry>? RegionImageIdsField
-        // GraphQL -> regionImageIds: [RegionImageIdEntry!]! (type)
-        if (ec.Includes("regionImageIds",false))
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (ec.Includes("id",true))
         {
-            if(this.RegionImageIdsField == null) {
+            if(this.Id == null) {
 
-                this.RegionImageIdsField = new List<RegionImageIdEntry>();
-                this.RegionImageIdsField.ApplyExploratoryFieldSpec(ec.NewChild("regionImageIds"));
+                this.Id = "FETCH";
 
             } else {
 
-                this.RegionImageIdsField.ApplyExploratoryFieldSpec(ec.NewChild("regionImageIds"));
 
             }
         }
-        else if (this.RegionImageIdsField != null && ec.Excludes("regionImageIds",false))
+        else if (this.Id != null && ec.Excludes("id",true))
         {
-            this.RegionImageIdsField = null;
+            this.Id = null;
+        }
+        //      C# -> AsyncRequestStatus? AsyncRequestStatus
+        // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
+        if (ec.Includes("asyncRequestStatus",false))
+        {
+            if(this.AsyncRequestStatus == null) {
+
+                this.AsyncRequestStatus = new AsyncRequestStatus();
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            } else {
+
+                this.AsyncRequestStatus.ApplyExploratoryFieldSpec(ec.NewChild("asyncRequestStatus"));
+
+            }
+        }
+        else if (this.AsyncRequestStatus != null && ec.Excludes("asyncRequestStatus",false))
+        {
+            this.AsyncRequestStatus = null;
         }
     }
 
 
     #endregion
 
-    } // class RegionImageIds
+    } // class CreateVrmReply
     
     #endregion
 
-    public static class ListRegionImageIdsExtensions
+    public static class ListCreateVrmReplyExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of properties that are not null in an object.
@@ -121,14 +156,14 @@ namespace RubrikSecurityCloud.Types
         // Note that L-II means that each item in the list is II (not the list itself).
         // This function handles L-SD and L-II cases.
         public static string AsFieldSpec(
-            this List<RegionImageIds> list,
+            this List<CreateVrmReply> list,
             FieldSpecConfig? conf=null)
         {
             conf=(conf==null)?new FieldSpecConfig():conf;
             return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
         }
 
-        public static List<string> SelectedFields(this List<RegionImageIds> list)
+        public static List<string> SelectedFields(this List<CreateVrmReply> list)
         {
             return StringUtils.FieldSpecStringToList(
                 list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
@@ -137,16 +172,16 @@ namespace RubrikSecurityCloud.Types
 
 
         public static void ApplyExploratoryFieldSpec(
-            this List<RegionImageIds> list, 
+            this List<CreateVrmReply> list, 
             AutofieldContext ec)
         {
             if ( list.Count == 0 ) {
-                list.Add(new RegionImageIds());
+                list.Add(new CreateVrmReply());
             }
             list[0].ApplyExploratoryFieldSpec(ec);
         }
 
-        public static void SelectForRetrieval(this List<RegionImageIds> list)
+        public static void SelectForRetrieval(this List<CreateVrmReply> list)
         {
             list.ApplyExploratoryFieldSpec(new AutofieldContext());
         }

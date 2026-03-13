@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Microsoft 365' API domain:
-    /// BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, Regions, or SearchBackupStorageObjectRestorePoints.
+    /// BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, Mvc, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, Regions, or SearchBackupStorageObjectRestorePoints.
     /// </summary>
     /// <description>
     /// New-RscQueryM365 creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Microsoft 365' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, Regions, or SearchBackupStorageObjectRestorePoints.
+    /// one of: BackupStorageLicenseUsage, BackupStorageObjectRestorePoints, DayToDayModeStats, DirectoryObjectAttributes, LicenseEntitlement, Mvc, OnboardingModeBackupStats, OnboardingModeStats, OrgBackupLocations, OrgOperationModes, Regions, or SearchBackupStorageObjectRestorePoints.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -241,6 +241,59 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: M365LicenseEntitlementReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the Mvc operation
+    /// of the 'Microsoft 365' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    M365
+    /// # API Operation: Mvc
+    /// 
+    /// $query = New-RscQueryM365 -Operation Mvc
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.orgId = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someMvcProfileSortField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MvcProfileSortField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		field = $someMvcProfileFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MvcProfileFilterField]) for enum values.
+    /// 		# REQUIRED
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.includeArchived = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MvcProfileConnection
     /// 
     /// 
     /// 
@@ -457,6 +510,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DayToDayModeStats",
                 "DirectoryObjectAttributes",
                 "LicenseEntitlement",
+                "Mvc",
                 "OnboardingModeBackupStats",
                 "OnboardingModeStats",
                 "OrgBackupLocations",
@@ -492,6 +546,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "LicenseEntitlement":
                         this.ProcessRecord_LicenseEntitlement();
+                        break;
+                    case "Mvc":
+                        this.ProcessRecord_Mvc();
                         break;
                     case "OnboardingModeBackupStats":
                         this.ProcessRecord_OnboardingModeBackupStats();
@@ -564,6 +621,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -LicenseEntitlement";
             // Create new graphql operation m365LicenseEntitlement
             InitQueryM365LicenseEntitlement();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // m365Mvc.
+        internal void ProcessRecord_Mvc()
+        {
+            this._logger.name += " -Mvc";
+            // Create new graphql operation m365Mvc
+            InitQueryM365Mvc();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -752,6 +818,69 @@ $query.Var.input = @{
                 Query.M365LicenseEntitlementFieldSpec,
                 @"# OPTIONAL
 $query.Var.orgID = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // m365Mvc(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     orgId: UUID!
+        //     sortBy: MvcProfileSortField
+        //     sortOrder: SortOrder
+        //     filter: [MvcProfileFilter!]
+        //     includeArchived: Boolean
+        //   ): MvcProfileConnection!
+        internal void InitQueryM365Mvc()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("orgId", "UUID!"),
+                Tuple.Create("sortBy", "MvcProfileSortField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[MvcProfileFilter!]"),
+                Tuple.Create("includeArchived", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryM365Mvc",
+                "($first: Int,$after: String,$last: Int,$before: String,$orgId: UUID!,$sortBy: MvcProfileSortField,$sortOrder: SortOrder,$filter: [MvcProfileFilter!],$includeArchived: Boolean)",
+                "MvcProfileConnection",
+                Query.M365Mvc,
+                Query.M365MvcFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.orgId = $someString
+# OPTIONAL
+$query.Var.sortBy = $someMvcProfileSortField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MvcProfileSortField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# REQUIRED
+		field = $someMvcProfileFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MvcProfileFilterField]) for enum values.
+		# REQUIRED
+		texts = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.includeArchived = $someBoolean"
             );
         }
 

@@ -142,10 +142,17 @@ Retrieves details about the Azure cloud account tenant including the Exocompute 
     - subscriptionIdsFilter - list of System.Strings: List of subscription IDs to filter on.
 - Returns AzureCloudAccountTenantWithExoConfigs.
 ### diskencryptionsetsbyregion
-List of all Azure Disk Encryption Sets in a region.
+List of all Azure Disk Encryption Sets in a region using Rubrik subscription ID.
 
 - There are 2 arguments.
     - azureSubscriptionRubrikId - System.String: Rubrik ID of the Azure Subscription.
+    - region - AzureNativeRegion: The azure region.
+- Returns list of AzureNativeDiskEncryptionSets.
+### diskencryptionsetsbyregionfromnativeid
+List of all Azure Disk Encryption Sets in a region using Azure's native subscription ID. Use this for exocompute-only subscriptions that don't have a Rubrik subscription ID.
+
+- There are 2 arguments.
+    - azureSubscriptionNativeId - System.String: Azure's native subscription ID.
     - region - AzureNativeRegion: The azure region.
 - Returns list of AzureNativeDiskEncryptionSets.
 ### encryptionkeys

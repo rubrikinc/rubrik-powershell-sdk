@@ -1126,9 +1126,9 @@ Get the health metric for the radar pipeline covering the backup, indexing, and 
 - There is a single argument of type InventorySubHierarchyRootEnum.
 - Returns PolarisInventorySubHierarchyRoot.
 ### policydetails
-Returns active policies for an account.
+Returns data categories for an account.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - dataCategoryIds - list of System.Strings: Filter for data category IDs.
     - dataTypeIds - list of System.Strings: Data type IDs to filter.
     - dataCategoryType - DataCategoryType: Filter for data category type.
@@ -1136,6 +1136,7 @@ Returns active policies for an account.
     - sortBy - PoliciesDetailSortByField: Field to sort policies detail entries by.
     - sortOrder - SortOrder: Sorts the order of results.
     - includeInactiveDataCategories - System.Boolean: Include inactive data categories.
+    - dataCategoryFilter - DataCategoryFilter: Filter controlling which data categories to include. Defaults to ACTIVE_DATA_CATEGORIES.
 - Returns PolicyDetailConnection.
 ### policyobj
 Returns details for one policy object.
@@ -1316,6 +1317,19 @@ scripts for non-OAuth permissions validation.
 
 - There is a single argument of type GetScriptsForManualPermissionValidationReq.
 - Returns GetScriptsForManualPermissionValidationReply.
+### searchclouddirectworkload
+SearchCloudDirectWorkload searches for files across all snapshots of a
+NAS Cloud Direct workload (share or bucket).
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - workloadFid - System.String: ID of the NAS Cloud Direct workload to search.
+    - searchQuery - System.String: Search query string to match against file names.
+    - versionLimit - System.Int32: Maximum number of file versions to return per file.
+- Returns SearchCloudDirectWorkloadEntryConnection.
 ### searchfilebyprefix
 Search file under given folder and with given prefix.
 

@@ -246,6 +246,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestUserNote")]
         public LatestUserNote? LatestUserNote { get; set; }
 
+        //      C# -> LinkedActiveVm? LinkedActiveVm
+        // GraphQL -> linkedActiveVm: LinkedActiveVm (type)
+        [JsonProperty("linkedActiveVm")]
+        public LinkedActiveVm? LinkedActiveVm { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -558,6 +563,7 @@ namespace RubrikSecurityCloud.Types
         List<DuplicatedVm>? DuplicatedVms = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
+        LinkedActiveVm? LinkedActiveVm = null,
         List<PathNode>? LogicalPath = null,
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
@@ -720,6 +726,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
+        }
+        if ( LinkedActiveVm != null ) {
+            this.LinkedActiveVm = LinkedActiveVm;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -1259,6 +1268,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "latestUserNote" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> LinkedActiveVm? LinkedActiveVm
+        // GraphQL -> linkedActiveVm: LinkedActiveVm (type)
+        if (this.LinkedActiveVm != null) {
+            var fspec = this.LinkedActiveVm.AsFieldSpec(conf.Child("linkedActiveVm"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "linkedActiveVm" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2391,6 +2412,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
         {
             this.LatestUserNote = null;
+        }
+        //      C# -> LinkedActiveVm? LinkedActiveVm
+        // GraphQL -> linkedActiveVm: LinkedActiveVm (type)
+        if (ec.Includes("linkedActiveVm",false))
+        {
+            if(this.LinkedActiveVm == null) {
+
+                this.LinkedActiveVm = new LinkedActiveVm();
+                this.LinkedActiveVm.ApplyExploratoryFieldSpec(ec.NewChild("linkedActiveVm"));
+
+            } else {
+
+                this.LinkedActiveVm.ApplyExploratoryFieldSpec(ec.NewChild("linkedActiveVm"));
+
+            }
+        }
+        else if (this.LinkedActiveVm != null && ec.Excludes("linkedActiveVm",false))
+        {
+            this.LinkedActiveVm = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

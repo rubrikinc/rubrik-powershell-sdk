@@ -3,6 +3,8 @@ The valid replication target Rubrik cluster-specific information.
 
 - name: System.String
   - Name of the Rubrik cluster.
+- uuid: System.String
+  - UUID of the Rubrik cluster.
 - version: System.String
   - Version of the Rubrik cluster.
 - accountName: System.String
@@ -15,5 +17,3 @@ The valid replication target Rubrik cluster-specific information.
   - Air-gap status of the Rubrik cluster.
 - isConnected: System.Boolean
   - Rubrik cluster connection with RSC.
-- uuid: System.String
-  - UUID of the Rubrik cluster.

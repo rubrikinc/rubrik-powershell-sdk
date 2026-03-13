@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("statuses")]
         public List<LambdaEventStatus>? Statuses { get; set; }
 
+        //      C# -> List<ActivityScopedTargetEntity>? ScopedTargetEntities
+        // GraphQL -> scopedTargetEntities: [ActivityScopedTargetEntity!] (input)
+        [JsonProperty("scopedTargetEntities")]
+        public List<ActivityScopedTargetEntity>? ScopedTargetEntities { get; set; }
+
 
         #endregion
 

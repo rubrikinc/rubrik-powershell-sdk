@@ -166,6 +166,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("summary")]
         public CloudDirectSnapshotSummary? Summary { get; set; }
 
+        //      C# -> CloudDirectExclusionSummary? UserExclusionDetails
+        // GraphQL -> userExclusionDetails: CloudDirectExclusionSummary (type)
+        [JsonProperty("userExclusionDetails")]
+        public CloudDirectExclusionSummary? UserExclusionDetails { get; set; }
+
         //      C# -> CloudDirectNasObject? Object
         // GraphQL -> object: CloudDirectNasObject! (union)
         [JsonProperty("object")]
@@ -210,6 +215,7 @@ namespace RubrikSecurityCloud.Types
         System.String? WorkloadId = null,
         CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo = null,
         CloudDirectSnapshotSummary? Summary = null,
+        CloudDirectExclusionSummary? UserExclusionDetails = null,
         CloudDirectNasObject? Object = null
     ) 
     {
@@ -299,6 +305,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Summary != null ) {
             this.Summary = Summary;
+        }
+        if ( UserExclusionDetails != null ) {
+            this.UserExclusionDetails = UserExclusionDetails;
         }
         if ( Object != null ) {
             this.Object = Object;
@@ -585,6 +594,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "summary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CloudDirectExclusionSummary? UserExclusionDetails
+        // GraphQL -> userExclusionDetails: CloudDirectExclusionSummary (type)
+        if (this.UserExclusionDetails != null) {
+            var fspec = this.UserExclusionDetails.AsFieldSpec(conf.Child("userExclusionDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "userExclusionDetails" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1110,6 +1131,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Summary != null && ec.Excludes("summary",false))
         {
             this.Summary = null;
+        }
+        //      C# -> CloudDirectExclusionSummary? UserExclusionDetails
+        // GraphQL -> userExclusionDetails: CloudDirectExclusionSummary (type)
+        if (ec.Includes("userExclusionDetails",false))
+        {
+            if(this.UserExclusionDetails == null) {
+
+                this.UserExclusionDetails = new CloudDirectExclusionSummary();
+                this.UserExclusionDetails.ApplyExploratoryFieldSpec(ec.NewChild("userExclusionDetails"));
+
+            } else {
+
+                this.UserExclusionDetails.ApplyExploratoryFieldSpec(ec.NewChild("userExclusionDetails"));
+
+            }
+        }
+        else if (this.UserExclusionDetails != null && ec.Excludes("userExclusionDetails",false))
+        {
+            this.UserExclusionDetails = null;
         }
         //      C# -> CloudDirectNasObject? Object
         // GraphQL -> object: CloudDirectNasObject! (union)

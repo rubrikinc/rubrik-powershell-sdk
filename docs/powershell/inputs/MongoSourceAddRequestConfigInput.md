@@ -39,3 +39,5 @@ Path to the SSL key file.
 - sourceAuthenticationType: MongoAuthenticationType
   - Supported in v9.0+
 Type of user authentication used when adding the MongoDB cluster.
+- sslKeyfilePassword: System.String
+  - Password for the encrypted SSL PEM keyfile.

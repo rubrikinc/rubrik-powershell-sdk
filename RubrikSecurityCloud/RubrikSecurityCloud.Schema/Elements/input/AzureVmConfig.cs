@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmVersion")]
         public System.String? CdmVersion { get; set; }
 
+        //      C# -> VmType? VmType
+        // GraphQL -> vmType: VmType (enum)
+        [JsonProperty("vmType")]
+        public VmType? VmType { get; set; }
+
         //      C# -> System.String? Location
         // GraphQL -> location: String (scalar)
         [JsonProperty("location")]
@@ -84,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmProduct")]
         public System.String? CdmProduct { get; set; }
 
+        //      C# -> AzureInstanceType? InstanceType
+        // GraphQL -> instanceType: AzureInstanceType (enum)
+        [JsonProperty("instanceType")]
+        public AzureInstanceType? InstanceType { get; set; }
+
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String (scalar)
         [JsonProperty("availabilityZone")]
@@ -93,16 +103,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
         [JsonProperty("subnetAzConfigs")]
         public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
-
-        //      C# -> VmType? VmType
-        // GraphQL -> vmType: VmType (enum)
-        [JsonProperty("vmType")]
-        public VmType? VmType { get; set; }
-
-        //      C# -> AzureInstanceType? InstanceType
-        // GraphQL -> instanceType: AzureInstanceType (enum)
-        [JsonProperty("instanceType")]
-        public AzureInstanceType? InstanceType { get; set; }
 
 
         #endregion

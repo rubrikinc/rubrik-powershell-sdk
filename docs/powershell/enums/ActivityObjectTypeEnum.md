@@ -1,226 +1,231 @@
 ### ActivityObjectTypeEnum
 List of object types for activities.
 
-- ACTIVE_DIRECTORY_DOMAIN - Specifies that the activity object type is related to Activity Directory domain.
-- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Specifies that the activity object type is related to Activity Directory domain controller.
-- ACTIVE_DIRECTORY_FOREST - Specifies that the activity object type is related to Active Directory forest.
-- ATLASSIAN_SITE - Specifies that the activity object type is Atlassian site.
-- AWS_NATIVE_DYNAMODB_TABLE - Specifies that the activity object type is AWS DynamoDB Table.
-- AWS_NATIVE_REGION - Specifies that the activity object type is AWS Native Region.
-- AWS_NATIVE_S3_BUCKET - Specifies that the activity object type is AWS S3 Bucket.
-- AZURE_AD_DIRECTORY - Specifies that the activity object type is Azure AD Directory.
-- AZURE_DEVOPS_ORGANIZATION - Specifies that the activity object type is Azure DevOps Organization.
-- AZURE_DEVOPS_PROJECT - Specifies that the activity object type is Azure DevOps Project.
-- AZURE_DEVOPS_REPOSITORY - Specifies that the activity object type is Azure DevOps Repository.
-- AZURE_NATIVE_REGION - Specifies that the activity object type is Azure Native Region.
-- AZURE_NATIVE_RESOURCE_GROUP - Specifies that the activity object type is Azure Native Resource Group.
-- AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
-- AppBlueprint - Specifies that the activity object type is App Blueprint.
-- AppFlows - Specifies that the activity object type is Orchestrated Application Recovery.
-- AuthDomain - Specifies that the activity object type is Auth Domain.
-- AwsAccount - Specifies that the activity object type is AWS Account.
-- AwsEventType - Specifies that the activity object type is AWS Event Type.
-- AwsNativeAccount - Specifies that the activity object type is AWS Native Account.
-- AwsNativeEbsVolume - Specifies that the activity object type is AWS Native EBS Volume.
-- AwsNativeEc2Instance - Specifies that the activity object type is AWS Native EC2 Instance.
-- AwsNativeRdsInstance - Specifies that the activity object type is AWS Native RDS Instance.
-- AzureNativeDisk - Specifies that the activity object type is Azure Native Disk.
-- AzureNativeSubscription - Specifies that the activity object type is Azure Native Subscription.
-- AzureNativeVm - Specifies that the activity object type is Azure Native Virtual Machine.
-- AzureSqlDatabase - Specifies that the activity object type is Azure SQL Database.
-- AzureSqlDatabaseServer - Specifies that the activity object type is Azure SQL Database Server.
-- AzureSqlManagedInstance - Specifies that the activity object type is Azure SQL Managed Instance.
-- AzureSqlManagedInstanceDatabase - Specifies that the activity object type is Azure SQL Managed Instance Database.
-- CASSANDRA_COLUMN_FAMILY - Specifies that the activity object type is Cassandra column family.
-- CASSANDRA_KEYSPACE - Specifies that the activity object type is Cassandra keyspace.
-- CASSANDRA_SOURCE - Specifies that the activity object type is Cassandra source.
-- CERTIFICATE_MANAGEMENT - Specifies that the activity object type is a certificate.
-- CLOUD_ACCOUNT - Specifies that the activity object type is Cloud Account.
-- CLOUD_DIRECT_NAS_BUCKET - Specifies that the activity object type is NAS Cloud Direct bucket.
-- CLOUD_DIRECT_NAS_EXPORT - Specifies that the activity object type is NAS Cloud Direct export.
-- CLOUD_DIRECT_NAS_NAMESPACE - Specifies that the activity object type is NAS Cloud Direct namespace.
-- CLOUD_DIRECT_NAS_SHARE - Specifies that the activity object type is NAS Cloud Direct share.
-- CLOUD_DIRECT_NAS_SYSTEM - Specifies that the activity object type is NAS Cloud Direct system.
-- CONFLUENCE_SPACE - Specifies that the activity object type is Confluence Space.
-- CROSS_ACCOUNT_PAIR - Cross-account pair.
-- CROWDSTRIKE_INTEGRATION - Specifies that the activity object type is CrowdStrike Integration.
-- CapacityBundle - Specifies that the activity object type is Capacity Bundle.
-- Certificate - Specifies that the activity object type is Certificate.
-- CloudNativeVirtualMachine - Specifies that the activity object type is Cloud Native Virtual Machine.
-- CloudNativeVm - Specifies that the activity object type is Cloud Native Virtual Machine.
-- Cluster - Specifies that the activity object type is Rubrik Cluster.
-- ComputeInstance - Specifies that the activity object type is Compute Instance.
-- D365_DATAVERSE_TABLE - Specifies that the activity object type is a Dynamics 365 dataverse table.
-- D365_METADATA - Specifies that the activity object type is Dynamics 365 metadata.
-- D365_ORGANIZATION - Specifies that the activity object type is a Dynamics 365 organization.
-- DataLocation - Specifies that the activity object type is Data Location.
-- Db2Database - Specifies that the activity object type is Db2 Database.
-- Db2Instance - Specifies that the activity object type is Db2 Instance.
-- ENCRYPTION_MANAGEMENT - Specifies that the activity object type is related to Encryption Management.
-- Ec2Instance - Specifies that the activity object type is EC2 Instance.
-- Envoy - Specifies that the activity object type is Envoy.
-- ExchangeDatabase - Specifies that the activity object type is Exchange Database.
-- Exocompute - Specifies that the activity object type is Exocompute.
-- FailoverClusterApp - Specifies that the activity object type is Failover Cluster App.
-- GCP_CLOUD_SQL_INSTANCE - Specifies that the activity object type is GCP Cloud SQL Instance.
-- GITHUB_ORGANIZATION - Specifies that the activity object type is GitHub Organization.
-- GITHUB_REPOSITORY - Specifies that the activity object type is GitHub Repository.
-- GOOGLE_WORKSPACE_ORGANIZATION - Specifies that the activity object type is Google Worksapce organization.
-- GOOGLE_WORKSPACE_ORG_UNIT - Specifies that the activity object type is a Google Worksapce organization unit.
-- GOOGLE_WORKSPACE_SHARED_DRIVE - Specifies that the activity object type is a Google Workspace shared drive.
-- GOOGLE_WORKSPACE_USER - Specifies that the activity object type is a Google Workspace user.
-- GOOGLE_WORKSPACE_USER_DRIVE - Specifies that the activity object type is a Google Workspace user drive.
-- GOOGLE_WORKSPACE_USER_MAILBOX - Specifies that the activity object type is a Google Workspace user mailbox.
-- GcpNativeDisk - Specifies that the activity object type is GCP Native Disk.
-- GcpNativeGceInstance - Specifies that the activity object type is GCP Native GCE Instance.
-- GcpNativeProject - Specifies that the activity object type is GCP Native Project.
-- HIGH_AVAILABILITY_POLICY - Specifies that the activity object type is High Availability Policy.
-- Hdfs - Specifies that the activity object type is HDFS.
-- Host - Specifies that the activity object type is Host.
-- HypervScvmm - Specifies that the activity object type is HyperV SCVMM.
-- HypervServer - Specifies that the activity object type is HyperV Server.
-- HypervVm - Specifies that the activity object type is Hyperv Virtual Machine.
-- IDP_AWS - Specifies that the activity object type is AWS IAM.
-- IDP_ENTRA_ID - Specifies that the activity object type is Microsoft Entra ID.
-- IDP_LOCAL_AD - Specifies that the activity object type is Local Windows Machine.
-- IDP_ON_PREM_AD - Specifies that the activity object type is On-prem AD.
-- IDP_SHAREPOINT - Specifies that the activity object type is SharePoint Site Domain.
-- INFORMIX_INSTANCE - Specifies that the activity object type is Informix Instance.
-- INTEL_FEED - Specifies that the activity object type is Intel feed.
-- JIRA_PROJECT - Specifies that the activity object type is Jira project.
-- JIRA_SETTINGS - Specifies that the activity object type is Jira settings.
-- JobInstance - Specifies that the activity object type is Job Instance.
-- K8S_CLUSTER - Specifies that the activity object type is Kubernetes Cluster.
-- K8S_LABEL - Specifies that the activity object type is Kubernetes label.
-- K8S_NAMESPACE_V2 - Specifies that the activity object type is Kubernetes Virtual Machine namespace.
-- K8S_PROTECTION_SET - Specifies that the activity object type is Kubernetes Protection Set.
-- K8S_VIRTUAL_MACHINE - Specifies that the activity object type is Kubernetes Virtual Machine.
-- KMS_KEY_VAULT - Specifies that the activity object type is KMS Key Vault.
-- KuprCluster - Specifies that the activity object type is Kubernetes Cluster.
-- KuprNamespace - Specifies that the activity object type is Kubernetes namespace.
-- Ldap - Specifies that the activity object type is LDAP.
-- LinuxFileset - Specifies that the activity object type is Linux Fileset.
-- LinuxHost - Specifies that the activity object type is Linux Host.
+- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
+- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
+- ACTIVE_DIRECTORY_FOREST - Active Directory forest.
+- ATLASSIAN_SITE - Atlassian site.
+- AWS_NATIVE_DYNAMODB_TABLE - AWS native dynamoDB table.
+- AWS_NATIVE_REGION - AWS native region.
+- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket object.
+- AZURE_AD_DIRECTORY - Azure AD Directory object.
+- AZURE_DEVOPS_ORGANIZATION - Azure DevOps Organisation.
+- AZURE_DEVOPS_PROJECT - Azure DevOps Project.
+- AZURE_DEVOPS_REPOSITORY - Azure DevOps Repository.
+- AZURE_NATIVE_REGION - Azure native region.
+- AZURE_NATIVE_RESOURCE_GROUP - Azure Native Resource Group.
+- AZURE_STORAGE_ACCOUNT - Azure storage account.
+- AppBlueprint - App Blueprint object.
+- AppFlows - AppRecovery object.
+- AuthDomain - Auth domain object.
+- AwsAccount - AWS account object.
+- AwsEventType - AWS object.
+- AwsNativeAccount - AWS native account object.
+- AwsNativeEbsVolume - AWS native EBS volume object.
+- AwsNativeEc2Instance - AWS native EC2 instance object.
+- AwsNativeRdsInstance - AWS native RDS instance.
+- AzureNativeDisk - Azure native disk object.
+- AzureNativeSubscription - Azure native subscription object.
+- AzureNativeVm - Azure native virtual machine object.
+- AzureSqlDatabase - Azure SQL database object.
+- AzureSqlDatabaseServer - Azure SQL database server object.
+- AzureSqlManagedInstance - Azure SQL managed instance object.
+- AzureSqlManagedInstanceDatabase - Azure SQL managed instance database object.
+- CASSANDRA_COLUMN_FAMILY - Cassandra column family.
+- CASSANDRA_KEYSPACE - Cassandra keyspace.
+- CASSANDRA_SOURCE - Cassandra source.
+- CERTIFICATE_MANAGEMENT - Certificate Management.
+- CLOUD_ACCOUNT - Cloud Account.
+- CLOUD_DIRECT_NAS_BUCKET - NAS Cloud Direct bucket.
+- CLOUD_DIRECT_NAS_EXPORT - NAS Cloud Direct export.
+- CLOUD_DIRECT_NAS_NAMESPACE - NAS Cloud Direct namespace.
+- CLOUD_DIRECT_NAS_SHARE - NAS Cloud Direct share.
+- CLOUD_DIRECT_NAS_SYSTEM - NAS Cloud Direct system.
+- CONFLUENCE_SPACE - Confluence Space.
+- CROSS_ACCOUNT_PAIR - Cross-account pair event type.
+- CROWDSTRIKE_INTEGRATION - CrowdStrike integration object.
+- CapacityBundle - Capacity bundle object.
+- Certificate - Certificate object.
+- CloudNativeVirtualMachine - Cloud-native virtual machine object.
+- CloudNativeVm - Cloud-native virtual machine.
+- Cluster - Cluster object.
+- ComputeInstance - Compute instance object.
+- D365_DATAVERSE_TABLE - Dynamics 365 dataverse table.
+- D365_METADATA - Dynamics 365 metadata.
+- D365_ORGANIZATION - Dynamics 365 organization.
+- DataLocation - Data location object.
+- Db2Database - Db2 database object.
+- Db2Instance - Db2 instance object.
+- ENCRYPTION_MANAGEMENT - Encryption Management object.
+- Ec2Instance - EC2 instance object.
+- Envoy - Envoy object.
+- ExchangeDatabase - Exchange database object.
+- Exocompute - Exocompute object.
+- FailoverClusterApp - Failover cluster app.
+- GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
+- GITHUB_ORGANIZATION - GitHub Organization.
+- GITHUB_REPOSITORY - GitHub Repository.
+- GOOGLE_WORKSPACE_ORGANIZATION - Google Workspace Organisation.
+- GOOGLE_WORKSPACE_ORG_UNIT - Google Workspace Organisation unit.
+- GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
+- GOOGLE_WORKSPACE_USER - Google Workspace User.
+- GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
+- GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- GcpNativeDisk - GCP native disk.
+- GcpNativeGceInstance - GCP native GCE instance.
+- GcpNativeProject - GCP native project.
+- HIGH_AVAILABILITY_POLICY - High availability policy for failover groups.
+- Hdfs - HDFS object.
+- Host - Host object.
+- HypervScvmm - HyperV SCVMM object.
+- HypervServer - HyperV server object.
+- HypervVm - HyperV virtual machine object.
+- IDP_AWS - AWS IDP type.
+- IDP_ENTRA_ID - Entra ID IDP type.
+- IDP_LOCAL_AD - Local AD type.
+- IDP_ON_PREM_AD - On-prem AD IDP type.
+- IDP_SHAREPOINT - SharePoint IDP type.
+- INFORMIX_INSTANCE - Informix instance.
+- INTEL_FEED - Orion threat feed.
+- JIRA_PROJECT - Atlassian Jira project.
+- JIRA_SETTINGS - Atlassian Jira settings.
+- JobInstance - Job instance.
+- K8S_CLUSTER - Kubernetes Cluster object.
+- K8S_LABEL - Kubernetes label object.
+- K8S_NAMESPACE_V2 - Kubernetes Virtual Machine namespace object.
+- K8S_PROTECTION_SET - Kubernetes Protection Set object.
+- K8S_VIRTUAL_MACHINE - Kubernetes Virtual Machine object.
+- KMS_KEY_VAULT - KMS Key Vault.
+- KuprCluster - Kubernetes cluster object.
+- KuprNamespace - Kubernetes namespace object.
+- Ldap - LDAP object.
+- LinuxFileset - Linux fileset object.
+- LinuxHost - Linux host object.
 - M365_BACKUP_STORAGE_GROUP - Microsoft 365 Backup Storage Group.
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
-- M365_BACKUP_STORAGE_ORG - M365 Backup Storage Organization.
+- M365_BACKUP_STORAGE_ORG - Microsoft 365 Backup Storage Subscription.
 - M365_BACKUP_STORAGE_SITE - Microsoft 365 Backup Storage SharePoint Site.
-- MONGODB_COLLECTION - Specifies that the activity object type is MongoDB collection.
-- MONGODB_DATABASE - Specifies that the activity object type is MongoDB database.
-- MONGODB_SOURCE - Specifies that the activity object type is MongoDB source.
-- MONGO_COLLECTION - Specifies that the activity object type is MongoDB collection.
-- MONGO_DATABASE - Specifies that the activity object type is MongoDB database.
-- MONGO_SOURCE - Specifies that the activity object type is MongoDB source.
-- MYSQLDB_INSTANCE - Specifies that the activity object type is MySQL instance.
-- ManagedVolume - Specifies that the activity object type is Managed Volume.
-- Mssql - Specifies that the activity object type is MSSQL.
-- NAS_FILESET - Specifies that the activity object type is NAS Fileset.
-- NUTANIX_ERA - Specifies that the activity object type is Nutanix Era.
-- NUTANIX_PRISM_CENTRAL - Specifies that the activity object type is Nutanix Prism Central.
-- NasHost - Specifies that the activity object type is NAS Host.
-- NasSystem - Specifies that the activity object type is NAS System.
-- NutanixCluster - Specifies that the activity object type is Nutanix Cluster.
-- NutanixVm - Specifies that the activity object type is Nutanix Virtual Machine.
-- O365Calendar - Specifies that the activity object type is O365 Calendar.
-- O365Group - Specifies that the activity object type is O365 Group.
-- O365Mailbox - Specifies that the activity object type is O365 Mailbox.
-- O365Onedrive - Specifies that the activity object type is O365 OneDrive.
-- O365Organization - Specifies that the activity object type is O365 Organization.
-- O365SharePointDrive - Specifies that the activity object type is O365 SharePoint Drive.
-- O365SharePointList - Specifies that the activity object type is O365 SharePoint List.
-- O365Site - Specifies that the activity object type is O365 Site.
-- O365Team - Specifies that the activity object type is O365 Team.
-- OAUTH_TOKEN - Specifies that the activity object type is OAuth Token.
-- OKTA_TENANT - Specifies that the activity object type is an Okta tenant.
-- OLVM_COMPUTE_CLUSTER - Specifies that the activity object type is OLVM Compute Cluster.
-- OLVM_DATACENTER - Specifies that the activity object type is OLVM Datacenter.
-- OLVM_HOST - Specifies that the activity object type is OLVM Host.
-- OLVM_MANAGER - Specifies that the activity object type is OLVM Manager.
-- OLVM_VIRTUAL_MACHINE - Specifies that the activity object type is OLVM Virtual Machine.
-- OPENSTACK_ENVIRONMENT - Specifies that the activity object type is Openstack Environment.
-- OPENSTACK_VIRTUAL_MACHINE - Specifies that the activity object type is Openstack Virtual Machine.
-- ORGANIZATION - Specifies that the activity object type is Tenant Organization.
-- ORION_THREAT_HUNT - Specifies that the activity object type is Threat Hunt.
-- ObjectProtection - Specifies that the activity object type is Object Protection.
-- Oracle - Specifies that the activity object type is Oracle.
-- OracleDb - Specifies that the activity object type is Oracle Database.
-- OracleHost - Specifies that the activity object type is Oracle Host.
-- OracleRac - Specifies that the activity object type is Oracle RAC.
-- POSTGRES_DB_CLUSTER - Specifies that the activity object type is Postgres Database Cluster.
-- PRINCIPAL_ACCESS_POLICY - Specifies that the activity object type is Access Policy.
-- PRINCIPAL_ASSUMABLE_IDENTITY - Specifies that the activity object type is Assumable Identity.
-- PRINCIPAL_ATTRIBUTE_SCHEMA - Specifies that the activity object type is Attribute Schema.
-- PRINCIPAL_CLASS_SCHEMA - Specifies that the activity object type is Class Schema.
-- PRINCIPAL_COMPUTER - Specifies that the activity object type is Computer.
-- PRINCIPAL_CONTACT - Specifies that the activity object type is Contact.
-- PRINCIPAL_CONTAINER - Specifies that the activity object type is Container.
-- PRINCIPAL_DOMAIN_DNS - Specifies that the activity object type is Domain DNS.
-- PRINCIPAL_EXTERNAL_ACCOUNT - Specifies that the activity object type is External Account.
-- PRINCIPAL_EXTERNAL_PRINCIPAL - Specifies that the activity object type is External Principal.
-- PRINCIPAL_FOREIGN_SECURITY_PRINCIPAL - Specifies that the activity object type is Foreign Security Principal.
-- PRINCIPAL_GPO - Specifies that the activity object type is GPO.
-- PRINCIPAL_GROUP - Specifies that the activity object type is Group.
-- PRINCIPAL_INFRASTRUCTURE_UPDATE - Specifies that the activity object type is Infrastructure Update.
-- PRINCIPAL_INTER_SITE_TRANSPORT - Specifies that the activity object type is Inter-Site Transport.
-- PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER - Specifies that the activity object type is Inter-Site Transport Container.
-- PRINCIPAL_LICENSING_SITE_SETTINGS - Specifies that the activity object type is Licensing Site Settings.
-- PRINCIPAL_MSDS_QUOTA_CONTAINER - Specifies that the activity object type is MSDS Quota Container.
-- PRINCIPAL_MSDS_QUOTA_CONTROL - Specifies that the activity object type is MSDS Quota Control.
-- PRINCIPAL_NAMED_LOCATION - Specifies that the activity object type is Named Location.
-- PRINCIPAL_NTDS_SITE_SETTINGS - Specifies that the activity object type is NTDS Site Settings.
-- PRINCIPAL_ORG_WIDE - Specifies that the activity object type is Org Wide Exposure.
-- PRINCIPAL_OU - Specifies that the activity object type is OU.
-- PRINCIPAL_PASSWORD_SETTINGS - Specifies that the activity object type is Password Settings.
-- PRINCIPAL_PASSWORD_SETTINGS_CONTAINER - Specifies that the activity object type is Password Settings Container.
-- PRINCIPAL_PRINT_QUEUE - Specifies that the activity object type is Print Queue.
-- PRINCIPAL_PUBLIC - Specifies that the activity object type is Public Exposure.
-- PRINCIPAL_RID_MANAGER - Specifies that the activity object type is RID Manager.
-- PRINCIPAL_SERVER - Specifies that the activity object type is Server.
-- PRINCIPAL_SERVERS_CONTAINER - Specifies that the activity object type is Servers Container.
-- PRINCIPAL_SERVICE_ACCOUNT - Specifies that the activity object type is Service Account.
-- PRINCIPAL_SITE - Specifies that the activity object type is Site.
-- PRINCIPAL_SITE_LINK - Specifies that the activity object type is Site Link.
-- PRINCIPAL_SITE_LINK_BRIDGE - Specifies that the activity object type is Site Link Bridge.
-- PRINCIPAL_SUBNET - Specifies that the activity object type is Subnet.
-- PRINCIPAL_SUBNET_CONTAINER - Specifies that the activity object type is Subnet Container.
-- PRINCIPAL_TRUSTED_DOMAIN - Specifies that the activity object type is Trusted Domain.
-- PRINCIPAL_VOLUME - Specifies that the activity object type is Volume.
-- PROXMOX_CLUSTER - Specifies that the activity object type is Proxmox Cluster.
-- PROXMOX_ENVIRONMENT - Specifies that the activity object type is Proxmox Environment.
-- PROXMOX_NODE - Specifies that the activity object type is Proxmox Node.
-- PROXMOX_VIRTUAL_MACHINE - Specifies that the activity object type is Proxmox Virtual Machine.
-- PolarisAccount - Specifies that the activity object type is RSC Account.
-- PublicCloudMachineInstance - Specifies that the activity object type is Public Cloud Machine Instance.
+- MONGODB_COLLECTION - MongoDB collection.
+- MONGODB_DATABASE - MongoDB database.
+- MONGODB_SOURCE - MongoDB source.
+- MONGO_COLLECTION - MongoDB collection.
+- MONGO_DATABASE - MongoDB database.
+- MONGO_SOURCE - MongoDB source.
+- MYSQLDB_INSTANCE - MySQL instance.
+- ManagedVolume - Managed Volume object.
+- Mssql - MsSQL Object.
+- NAS_FILESET - NAS fileset object.
+- NUTANIX_ERA - Nutanix Era object.
+- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central object.
+- NasHost - NAS host object.
+- NasSystem - NAS system.
+- NutanixCluster - Nutanix cluster object.
+- NutanixVm - Nutanix virtual machine object.
+- O365Calendar - O365 Calendar object.
+- O365Group - O365 Group.
+- O365Mailbox - O365 Mailbox object.
+- O365Onedrive - O365 OneDrive object.
+- O365Organization - O365 Organization object.
+- O365SharePointDrive - O365 SharePoint drive object.
+- O365SharePointList - O365 SharePoint list object.
+- O365Site - O365 Site object.
+- O365Team - O365 Team object.
+- OAUTH_TOKEN - OAuth token.
+- OKTA_TENANT - Okta tenant.
+- OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
+- OLVM_DATACENTER - OLVM Datacenter.
+- OLVM_HOST - OLVM Host.
+- OLVM_MANAGER - OLVM Manager.
+- OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- OPENSTACK_ENVIRONMENT - Openstack Environment.
+- OPENSTACK_VIRTUAL_MACHINE - Openstack Virtual Machine.
+- ORGANIZATION - Organization object.
+- ORION_THREAT_HUNT - Orion threat hunt.
+- ObjectProtection - Object protection.
+- Oracle - Oracle.
+- OracleDb - Oracle database object.
+- OracleHost - Oracle host object.
+- OracleRac - Oracle RAC object.
+- POSTGRES_DB_CLUSTER - Postgres Database Cluster.
+- PRINCIPAL_ACCESS_POLICY - Access Policy principal type.
+- PRINCIPAL_ASSUMABLE_IDENTITY - Assumable identity principal type.
+- PRINCIPAL_ATTRIBUTE_SCHEMA - Attribute Schema principal type.
+- PRINCIPAL_CLASS_SCHEMA - Class Schema principal type.
+- PRINCIPAL_COMPUTER - Computer principal type.
+- PRINCIPAL_CONTACT - Contact principal type.
+- PRINCIPAL_CONTAINER - Container principal type.
+- PRINCIPAL_DOMAIN_DNS - Domain DNS principal type.
+- PRINCIPAL_EXTERNAL_ACCOUNT - External account principal type.
+- PRINCIPAL_EXTERNAL_PRINCIPAL - External principal principal type.
+- PRINCIPAL_FOREIGN_SECURITY_PRINCIPAL - Foreign Security Principal type.
+- PRINCIPAL_GPO - GPO principal type.
+- PRINCIPAL_GROUP - Group principal type.
+- PRINCIPAL_INFRASTRUCTURE_UPDATE - Infrastructure Update principal type.
+- PRINCIPAL_INTER_SITE_TRANSPORT - Inter-Site Transport principal type.
+- PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER - Inter-Site Transport Container principal type.
+- PRINCIPAL_LICENSING_SITE_SETTINGS - Licensing Site Settings principal type.
+- PRINCIPAL_MSDS_QUOTA_CONTAINER - MSDS Quota Container principal type.
+- PRINCIPAL_MSDS_QUOTA_CONTROL - MSDS Quota Control principal type.
+- PRINCIPAL_NAMED_LOCATION - Named Location principal type.
+- PRINCIPAL_NTDS_SITE_SETTINGS - NTDS Site Settings principal type.
+- PRINCIPAL_ORG_WIDE - Org wide principal type.
+- PRINCIPAL_OU - OU principal type.
+- PRINCIPAL_PASSWORD_SETTINGS - Password Settings principal type.
+- PRINCIPAL_PASSWORD_SETTINGS_CONTAINER - Password Settings Container principal type.
+- PRINCIPAL_PRINT_QUEUE - Print Queue principal type.
+- PRINCIPAL_PUBLIC - Public principal type.
+- PRINCIPAL_RID_MANAGER - RID Manager principal type.
+- PRINCIPAL_SERVER - Server principal type.
+- PRINCIPAL_SERVERS_CONTAINER - Servers Container principal type.
+- PRINCIPAL_SERVICE_ACCOUNT - Service account principal type.
+- PRINCIPAL_SITE - Site principal type.
+- PRINCIPAL_SITE_LINK - Site Link principal type.
+- PRINCIPAL_SITE_LINK_BRIDGE - Site Link Bridge principal type.
+- PRINCIPAL_SUBNET - Subnet principal type.
+- PRINCIPAL_SUBNET_CONTAINER - Subnet Container principal type.
+- PRINCIPAL_TRUSTED_DOMAIN - Trusted Domain principal type.
+- PRINCIPAL_VOLUME - Volume principal type.
+- PROXMOX_CLUSTER - Proxmox cluster.
+- PROXMOX_ENVIRONMENT - Proxmox environment.
+- PROXMOX_NODE - Proxmox node.
+- PROXMOX_VIRTUAL_MACHINE - Proxmox virtual machine.
+- PolarisAccount - Rubrik SaaS account object.
+- PublicCloudMachineInstance - Public cloud machine instance.
 - REPLICATION_PAIR - Rubrik cluster replication pair.
-- RSC_CHILD_ACCOUNT - Specifies that the activity object type is RSC Child Account (Dedicated Tenant).
-- RubrikEbsVolume - Specifies that the activity object type is Rubrik EBS Volume.
-- RubrikEc2Instance - Specifies that the activity object type is Rubrik EC2 Instance.
-- SALESFORCE_METADATA - Specifies that the activity object type is Salesforce metadata.
-- SALESFORCE_OBJECT - Specifies that the activity object type is a Salesforce object.
-- SALESFORCE_ORGANIZATION - Specifies that the activity object type is a Salesforce organization.
-- SamlSso - Specifies that the activity object type is Saml SSO.
-- SapHanaDb - Specifies that the activity object type is Sap Hana Database.
-- SapHanaSystem - Specifies that the activity object type is Sap Hana System.
-- ShareFileset - Specifies that the activity object type is Share Fileset.
-- SlaDomain - Specifies that the activity object type is SLA Domain.
-- SmbDomain - Specifies that the activity object type is SMB Domain.
-- SnapMirrorCloud - Specifies that the activity object type is Snap Mirror Cloud.
-- StorageArray - Specifies that the activity object type is Storage Array.
-- StorageArrayVolumeGroup - Specifies that the activity object type is Storage Array Volume Group.
-- StorageLocation - Specifies that the activity object type is Storage Location.
-- Storm - Specifies that the activity object type is Storm.
-- SupportBundle - Specifies that the activity object type is Support Bundle.
-- UnknownObjectType - Specifies that the activity object type is Unknown Object Type.
-- Upgrade - Specifies that the activity object type is Upgrade.
-- User - Specifies that the activity object type is User.
-- VMWARE_HOST - Specifies that the activity object type is a VSphere host.
-- Vcd - Specifies that the activity object type is VCD.
-- VcdVapp - Specifies that the activity object type is VCD VApp.
-- Vcenter - Specifies that the activity object type is vCenter.
-- VmwareComputeCluster - Specifies that the activity object type is VMware Compute Cluster.
-- VmwareVm - Specifies that the activity object type is VMware Virtual Machine.
-- VolumeGroup - Specifies that the activity object type is Volume Group.
-- WEBHOOK - Specifies that the activity object type is Webhook.
-- WindowsFileset - Specifies that the activity object type is Windows Fileset.
-- WindowsHost - Specifies that the activity object type is Windows Host.
+- RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
+- RubrikEbsVolume - Rubrik SAAS EBS volume.
+- RubrikEc2Instance - Rubrik SAAS EC2 instance.
+- SALESFORCE_METADATA - Salesforce metadata.
+- SALESFORCE_OBJECT - Salesforce objects.
+- SALESFORCE_ORGANIZATION - Salesforce organization.
+- SamlSso - SAML single sign-on.
+- SapHanaDb - SAP HANA database.
+- SapHanaSystem - SAP HANA system.
+- ShareFileset - Share fileset object.
+- SlaDomain - SLA domain.
+- SmbDomain - Samba domain.
+- SnapMirrorCloud - SnapMirror cloud.
+- StorageArray - Storage array.
+- StorageArrayVolumeGroup - Storage array Volume group.
+- StorageLocation - Storage location.
+- Storm - Storm object.
+- SupportBundle - Support bundle.
+- UnknownObjectType - Unknown object type.
+- Upgrade - Upgrade.
+- User - User.
+- VMWARE_HOST - VMware host.
+- Vcd - VCD.
+- VcdVapp - VCD vApp.
+- Vcenter - VCenter.
+- VmwareComputeCluster - VMware compute cluster.
+- VmwareVm - VMware virtual machine.
+- VolumeGroup - Volume group.
+- WEBHOOK - Webhook object.
+- WindowsFileset - Windows fileset.
+- WindowsHost - Windows host.
+- PRINCIPAL_CONTROL_ACCESS_RIGHT - Specifies that the activity object type is Control Access Right.
+- PRINCIPAL_CERTIFICATE_TEMPLATE - Specifies that the activity object type is Certificate Template.
+- PRINCIPAL_DFS_NAMESPACE_V1 - Specifies that the activity object type is DFS Namespace V1.
+- PRINCIPAL_DFS_NAMESPACE_V2 - Specifies that the activity object type is DFS Namespace V2.
+- PRINCIPAL_DFS_LINK - Specifies that the activity object type is DFS Link.

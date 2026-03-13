@@ -129,6 +129,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_AZURE_CLOUD_ACCOUNT")]
         DELETE_AZURE_CLOUD_ACCOUNT,
 
+        [EnumMember(Value = "DELETE_CHILD_ACCOUNTS")]
+        DELETE_CHILD_ACCOUNTS,
+
         [EnumMember(Value = "DELETE_GCP_CLOUD_ACCOUNT")]
         DELETE_GCP_CLOUD_ACCOUNT,
 
@@ -495,6 +498,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SEND_LICENSE_NOTIFICATION")]
         SEND_LICENSE_NOTIFICATION,
 
+        [EnumMember(Value = "SUSPEND_CHILD_ACCOUNTS")]
+        SUSPEND_CHILD_ACCOUNTS,
+
         [EnumMember(Value = "TAKE_ON_DEMAND_SNAPSHOT")]
         TAKE_ON_DEMAND_SNAPSHOT,
 
@@ -584,6 +590,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_CLUSTER_LICENSES")]
         VIEW_CLUSTER_LICENSES,
+
+        [EnumMember(Value = "VIEW_CLUSTER_REFERENCE")]
+        VIEW_CLUSTER_REFERENCE,
 
         [EnumMember(Value = "VIEW_CORS_SETTINGS")]
         VIEW_CORS_SETTINGS,

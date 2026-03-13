@@ -430,6 +430,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// # OPTIONAL
     /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.gcpNativeProtectionFeatures = @(
+    /// 	$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -948,6 +952,7 @@ $query.Var.fid = $someString"
         //     projectFilters: GcpNativeProjectFilters
         //     authorizedOperationFilter: Operation
         //     workloadHierarchy: WorkloadLevelHierarchy
+        //     gcpNativeProtectionFeatures: [GcpNativeProtectionFeature!]
         //   ): GcpNativeProjectConnection!
         internal void InitQueryGcpNativeProjects()
         {
@@ -961,12 +966,13 @@ $query.Var.fid = $someString"
                 Tuple.Create("projectFilters", "GcpNativeProjectFilters"),
                 Tuple.Create("authorizedOperationFilter", "Operation"),
                 Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                Tuple.Create("gcpNativeProtectionFeatures", "[GcpNativeProtectionFeature!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryGcpNativeProjects",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GcpNativeProjectSortFields,$sortOrder: SortOrder,$projectFilters: GcpNativeProjectFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: GcpNativeProjectSortFields,$sortOrder: SortOrder,$projectFilters: GcpNativeProjectFilters,$authorizedOperationFilter: Operation,$workloadHierarchy: WorkloadLevelHierarchy,$gcpNativeProtectionFeatures: [GcpNativeProtectionFeature!])",
                 "GcpNativeProjectConnection",
                 Query.GcpNativeProjects,
                 Query.GcpNativeProjectsFieldSpec,
@@ -1005,7 +1011,11 @@ $query.Var.projectFilters = @{
 # OPTIONAL
 $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 # OPTIONAL
-$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+# OPTIONAL
+$query.Var.gcpNativeProtectionFeatures = @(
+	$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+)"
             );
         }
 

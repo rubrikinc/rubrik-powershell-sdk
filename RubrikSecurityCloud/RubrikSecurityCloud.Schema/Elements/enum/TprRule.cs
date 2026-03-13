@@ -93,6 +93,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MODIFY_PAM_INTEGRATION")]
         MODIFY_PAM_INTEGRATION,
 
+        [EnumMember(Value = "OBJECT_PROTECTION_PAUSE")]
+        OBJECT_PROTECTION_PAUSE,
+
         [EnumMember(Value = "PAUSE_CLUSTER")]
         PAUSE_CLUSTER,
 

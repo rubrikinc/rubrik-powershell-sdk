@@ -224,3 +224,9 @@ Enum representing all the possible object types which generate events.
 - HIGH_AVAILABILITY_POLICY - High availability policy for failover groups.
 - PRINCIPAL_NAMED_LOCATION - Named Location principal type.
 - CROWDSTRIKE_INTEGRATION - CrowdStrike integration object.
+- PRINCIPAL_CONTROL_ACCESS_RIGHT - Control Access Right principal type.
+- PRINCIPAL_CERTIFICATE_TEMPLATE - Certificate Template principal type.
+- PRINCIPAL_DFS_NAMESPACE_V1 - DFS Namespace V1 principal type.
+- PRINCIPAL_DFS_NAMESPACE_V2 - DFS Namespace V2 principal type.
+- PRINCIPAL_DFS_LINK - DFS Link principal type.
+- AGENT_CLOUD_POLICY - Agent Cloud policy object.

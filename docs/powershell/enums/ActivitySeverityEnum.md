@@ -1,6 +1,6 @@
 ### ActivitySeverityEnum
-Enum representing activity severity levels.
+Represents activity severity levels.
 
-- Critical - Critical severity level for events requiring immediate attention.
-- Info - Informational severity level for general information.
-- Warning - Warning severity level for potential issues that require attention.
+- Critical - Critical severity.
+- Info - Informational severity.
+- Warning - Warning severity.

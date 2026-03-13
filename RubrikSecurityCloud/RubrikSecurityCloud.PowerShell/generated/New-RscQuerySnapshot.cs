@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 31
+    /// Create a new RscQuery object for any of the 32
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 31 operations
+    /// There are 32 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -221,6 +221,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshot
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectExclusions operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CloudDirectExclusions
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation CloudDirectExclusions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.snapshotId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectSnapshotExclusions
     /// 
     /// 
     /// 
@@ -1733,6 +1761,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ByIds",
                 "ClosestToPointInTime",
                 "CloudDirect",
+                "CloudDirectExclusions",
                 "CloudDirects",
                 "EmailSearch",
                 "EventSearch",
@@ -1786,6 +1815,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CloudDirect":
                         this.ProcessRecord_CloudDirect();
+                        break;
+                    case "CloudDirectExclusions":
+                        this.ProcessRecord_CloudDirectExclusions();
                         break;
                     case "CloudDirects":
                         this.ProcessRecord_CloudDirects();
@@ -1912,6 +1944,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CloudDirect";
             // Create new graphql operation cloudDirectSnapshot
             InitQueryCloudDirectSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectSnapshotExclusions.
+        internal void ProcessRecord_CloudDirectExclusions()
+        {
+            this._logger.name += " -CloudDirectExclusions";
+            // Create new graphql operation cloudDirectSnapshotExclusions
+            InitQueryCloudDirectSnapshotExclusions();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2312,6 +2353,26 @@ $query.Var.archivalLocationId = $someString"
                 Query.CloudDirectSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.snapshotFid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudDirectSnapshotExclusions(snapshotId: UUID!): CloudDirectSnapshotExclusions!
+        internal void InitQueryCloudDirectSnapshotExclusions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudDirectSnapshotExclusions",
+                "($snapshotId: UUID!)",
+                "CloudDirectSnapshotExclusions",
+                Query.CloudDirectSnapshotExclusions,
+                Query.CloudDirectSnapshotExclusionsFieldSpec,
+                @"# REQUIRED
+$query.Var.snapshotId = $someString"
             );
         }
 

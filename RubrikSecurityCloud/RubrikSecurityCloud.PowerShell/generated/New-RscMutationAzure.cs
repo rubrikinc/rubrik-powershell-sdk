@@ -854,12 +854,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	cloudAccountId = $someString
     /// 	# OPTIONAL
-    /// 	isEsType = $someBoolean
-    /// 	# OPTIONAL
-    /// 	keepClusterOnFailure = $someBoolean
-    /// 	# OPTIONAL
-    /// 	isAzResilient = $someBoolean
-    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -950,6 +944,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmVersion = $someString
     /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
     /// 		location = $someString
     /// 		# OPTIONAL
     /// 		nodeSizeGb = $someInt
@@ -972,6 +968,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
+    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+    /// 		# OPTIONAL
     /// 		availabilityZone = $someString
     /// 		# OPTIONAL
     /// 		subnetAzConfigs = @(
@@ -982,15 +980,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEsType = $someBoolean
+    /// 	# OPTIONAL
+    /// 	keepClusterOnFailure = $someBoolean
     /// 	# OPTIONAL
     /// 	validations = @(
     /// 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAzResilient = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -4199,12 +4199,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = $someString
 	# OPTIONAL
-	isEsType = $someBoolean
-	# OPTIONAL
-	keepClusterOnFailure = $someBoolean
-	# OPTIONAL
-	isAzResilient = $someBoolean
-	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -4295,6 +4289,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		cdmVersion = $someString
 		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
 		location = $someString
 		# OPTIONAL
 		nodeSizeGb = $someInt
@@ -4317,6 +4313,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		cdmProduct = $someString
 		# OPTIONAL
+		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+		# OPTIONAL
 		availabilityZone = $someString
 		# OPTIONAL
 		subnetAzConfigs = @(
@@ -4327,15 +4325,17 @@ $query.Var.input = @{
 				availabilityZone = $someString
 			}
 		)
-		# OPTIONAL
-		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-		# OPTIONAL
-		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
 	}
+	# OPTIONAL
+	isEsType = $someBoolean
+	# OPTIONAL
+	keepClusterOnFailure = $someBoolean
 	# OPTIONAL
 	validations = @(
 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
 	)
+	# OPTIONAL
+	isAzResilient = $someBoolean
 }"
             );
         }

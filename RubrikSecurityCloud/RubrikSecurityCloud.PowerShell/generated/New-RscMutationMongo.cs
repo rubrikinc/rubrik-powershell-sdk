@@ -176,6 +176,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sslCertfilePath = $someString
     /// 		# OPTIONAL
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslKeyfilePassword = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -474,6 +476,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslKeyfilePassword = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -703,6 +707,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sslCertfilePath = $someString
     /// 		# OPTIONAL
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sslKeyfilePassword = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1025,6 +1031,8 @@ $query.Var.input = @{
 		sslCertfilePath = $someString
 		# OPTIONAL
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+		# OPTIONAL
+		sslKeyfilePassword = $someString
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -1268,6 +1276,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+		# OPTIONAL
+		sslKeyfilePassword = $someString
 	}
 	# REQUIRED
 	id = $someString
@@ -1465,6 +1475,8 @@ $query.Var.input = @{
 		sslCertfilePath = $someString
 		# OPTIONAL
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
+		# OPTIONAL
+		sslKeyfilePassword = $someString
 	}
 	# REQUIRED
 	id = $someString

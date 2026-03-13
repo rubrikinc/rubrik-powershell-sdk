@@ -44,3 +44,4 @@ configuration.
 - DELETE_BACKUP_OBJECT - Quorum authorization is required for deleting any backup object or its
 related configuration.
 - EXCLUDE_DISK - The TPR rule is for excluding disks from snapshots.
+- OBJECT_PROTECTION_PAUSE - TPR rule to apply Object level Protection Pause.

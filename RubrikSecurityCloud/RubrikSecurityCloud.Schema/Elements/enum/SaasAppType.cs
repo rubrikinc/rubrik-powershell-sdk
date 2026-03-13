@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_JIRA")]
         ATLASSIAN_JIRA,
 
+        [EnumMember(Value = "AUTH0")]
+        AUT_H0,
+
         [EnumMember(Value = "DYNAMICS_365")]
         DYNAMICS_365,
 
@@ -41,6 +44,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OKTA")]
         OKTA,
+
+        [EnumMember(Value = "ONEDRIVE")]
+        ONEDRIVE,
 
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,

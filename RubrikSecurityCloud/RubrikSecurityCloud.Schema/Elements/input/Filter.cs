@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unmanagedObjectAvailabilityFilter")]
         public List<UnmanagedObjectAvailabilityFilter>? UnmanagedObjectAvailabilityFilter { get; set; }
 
+        //      C# -> List<GcpNativeProtectionFeature>? GcpNativeProtectionFeatureNames
+        // GraphQL -> gcpNativeProtectionFeatureNames: [GcpNativeProtectionFeature!] (enum)
+        [JsonProperty("gcpNativeProtectionFeatureNames")]
+        public List<GcpNativeProtectionFeature>? GcpNativeProtectionFeatureNames { get; set; }
+
 
         #endregion
 

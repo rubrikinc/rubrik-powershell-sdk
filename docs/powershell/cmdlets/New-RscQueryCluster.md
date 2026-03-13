@@ -237,6 +237,20 @@ Rubrik cluster proxy information.
     - sortOrder - SortOrder: Cluster sort order.
     - sortBy - ClusterSortByEnum: Sort clusters by field.
 - Returns ClusterConnection.
+### reclaimableclusterstats
+Get reclaimable cluster stats data for multiple clusters.
+This RPC aggregates storage data from unmanaged_objects table
+and cluster stats.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - ReclaimableClusterStatsFilterInput: Filter criteria for clusters.
+    - sortBy - ReclaimableClusterStatsSortBy: Field to sort results by.
+    - sortOrder - SortOrder: Sort order (ascending or descending).
+- Returns ReclaimableClusterStatsDataConnection.
 ### refs
 Returns the list of cluster UUID to name mapping for an org.
 

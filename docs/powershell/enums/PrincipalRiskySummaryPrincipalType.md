@@ -41,3 +41,9 @@ Principal type for risk summary.
 - PASSWORD_SETTINGS_CONTAINER - Principal of the password settings container type.
 - PASSWORD_SETTINGS - Principal of the password settings type.
 - NAMED_LOCATION - Principal of the named location type.
+- CONTROL_ACCESS_RIGHT - Principal of the AD Control Access Right type.
+- CERTIFICATE_TEMPLATE - Principal of the AD Certificate Template type.
+- DFS_NAMESPACE_V1 - Principal of the AD DFS Namespace v1 type.
+- DFS_NAMESPACE_V2 - Principal of the AD DFS Namespace v2 type.
+- DFS_LINK - Principal of the AD DFS Link type.
+- DNS_ZONE - Principal of the AD DNS Zone.

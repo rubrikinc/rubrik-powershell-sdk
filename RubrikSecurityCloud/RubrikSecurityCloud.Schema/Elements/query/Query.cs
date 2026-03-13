@@ -2023,6 +2023,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<AzureNativeDiskEncryptionSet>? AllAzureDiskEncryptionSetsByRegionFromNativeId
+        // GraphQL -> allAzureDiskEncryptionSetsByRegionFromNativeId: [AzureNativeDiskEncryptionSet!]! (type)
+        public static string AllAzureDiskEncryptionSetsByRegionFromNativeId(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nazureSubscriptionNativeId: $azureSubscriptionNativeId\nregion: $region\n)";
+            return "allAzureDiskEncryptionSetsByRegionFromNativeId" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllAzureDiskEncryptionSetsByRegionFromNativeIdFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<AzureNativeDiskEncryptionSet>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<AzureEncryptionKey>? AllAzureEncryptionKeys
         // GraphQL -> allAzureEncryptionKeys: [AzureEncryptionKey!]! (type)
         public static string AllAzureEncryptionKeys(object fsObj)
@@ -3459,6 +3477,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<DetailedPrivateEndpointConnection>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ReclaimableClusterStatsDataConnection? AllReclaimableClusterStats
+        // GraphQL -> allReclaimableClusterStats: ReclaimableClusterStatsDataConnection! (type)
+        public static string AllReclaimableClusterStats(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            return "allReclaimableClusterStats" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllReclaimableClusterStatsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ReclaimableClusterStatsDataConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -6505,6 +6541,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudDirectSnapshotExclusions? CloudDirectSnapshotExclusions
+        // GraphQL -> cloudDirectSnapshotExclusions: CloudDirectSnapshotExclusions! (type)
+        public static string CloudDirectSnapshotExclusions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nsnapshotId: $snapshotId\n)";
+            return "cloudDirectSnapshotExclusions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectSnapshotExclusionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectSnapshotExclusions() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudDirectSnapshotConnection? CloudDirectSnapshots
         // GraphQL -> cloudDirectSnapshots: CloudDirectSnapshotConnection! (type)
         public static string CloudDirectSnapshots(object fsObj)
@@ -8598,7 +8652,7 @@ namespace RubrikSecurityCloud.Types
         public static string GcpNativeProjects(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nprojectFilters: $projectFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nworkloadHierarchy: $workloadHierarchy\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nprojectFilters: $projectFilters\nauthorizedOperationFilter: $authorizedOperationFilter\nworkloadHierarchy: $workloadHierarchy\ngcpNativeProtectionFeatures: $gcpNativeProtectionFeatures\n)";
             return "gcpNativeProjects" + args + "\n{\n" + fs + "}\n";
         }
         public static object GcpNativeProjectsFieldSpec(AutofieldContext? ec=null)
@@ -10569,6 +10623,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new M365LicenseEntitlementReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MvcProfileConnection? M365Mvc
+        // GraphQL -> m365Mvc: MvcProfileConnection! (type)
+        public static string M365Mvc(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\norgId: $orgId\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nincludeArchived: $includeArchived\n)";
+            return "m365Mvc" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object M365MvcFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MvcProfileConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13602,7 +13674,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyDetails(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ndataCategoryIds: $dataCategoryIds\ndataTypeIds: $dataTypeIds\ndataCategoryType: $dataCategoryType\ndocumentTypeIds: $documentTypeIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nincludeInactiveDataCategories: $includeInactiveDataCategories\n)";
+            string args = "\n(\ndataCategoryIds: $dataCategoryIds\ndataTypeIds: $dataTypeIds\ndataCategoryType: $dataCategoryType\ndocumentTypeIds: $documentTypeIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nincludeInactiveDataCategories: $includeInactiveDataCategories\ndataCategoryFilter: $dataCategoryFilter\n)";
             return "policyDetails" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyDetailsFieldSpec(AutofieldContext? ec=null)
@@ -14565,6 +14637,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureAdObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> SearchCloudDirectWorkloadEntryConnection? SearchCloudDirectWorkload
+        // GraphQL -> searchCloudDirectWorkload: SearchCloudDirectWorkloadEntryConnection! (type)
+        public static string SearchCloudDirectWorkload(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadFid: $workloadFid\nsearchQuery: $searchQuery\nversionLimit: $versionLimit\n)";
+            return "searchCloudDirectWorkload" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SearchCloudDirectWorkloadFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SearchCloudDirectWorkloadEntryConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

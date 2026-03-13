@@ -1,8 +1,6 @@
 ### TprRequestSummary
 Used in bulk query for TPR requests.
 
-- requester: UserSummary
-  - User making the TPR request.
 - orgId: System.String
   - ID of the organization.
 - orgName: System.String
@@ -17,3 +15,5 @@ Used in bulk query for TPR requests.
   - TPR Request ID.
 - operations: AuthorizedOps
   - Authorized operations.
+- requester: UserSummary
+  - User making the TPR request.

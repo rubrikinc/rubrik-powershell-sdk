@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILTER_POLICY_ASSIGNMENT")]
         FILTER_POLICY_ASSIGNMENT,
 
+        [EnumMember(Value = "GROUP_ELIGIBLE_ASSIGNMENT")]
+        GROUP_ELIGIBLE_ASSIGNMENT,
+
         [EnumMember(Value = "GROUP_POLICY_ACTION")]
         GROUP_POLICY_ACTION,
 
@@ -62,6 +65,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
         ROLE_ASSIGNMENT,
+
+        [EnumMember(Value = "ROLE_ELIGIBLE_ASSIGNMENT")]
+        ROLE_ELIGIBLE_ASSIGNMENT,
 
         [EnumMember(Value = "SCOPE_ROLE_ASSIGNMENT")]
         SCOPE_ROLE_ASSIGNMENT

@@ -58,6 +58,8 @@
   - List of descendants.
 - physicalChildConnection: PhysicalHostPhysicalChildTypeConnection
   - List of physical children.
+- hostRbaCertificate: GlobalCertificate
+  - The RBA certificate of the host.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

@@ -24,21 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
-        //      C# -> System.Boolean? IsEsType
-        // GraphQL -> isEsType: Boolean (scalar)
-        [JsonProperty("isEsType")]
-        public System.Boolean? IsEsType { get; set; }
-
-        //      C# -> System.Boolean? KeepClusterOnFailure
-        // GraphQL -> keepClusterOnFailure: Boolean (scalar)
-        [JsonProperty("keepClusterOnFailure")]
-        public System.Boolean? KeepClusterOnFailure { get; set; }
-
-        //      C# -> System.Boolean? IsAzResilient
-        // GraphQL -> isAzResilient: Boolean (scalar)
-        [JsonProperty("isAzResilient")]
-        public System.Boolean? IsAzResilient { get; set; }
-
         //      C# -> ClusterConfigInput? ClusterConfig
         // GraphQL -> clusterConfig: ClusterConfigInput (input)
         [JsonProperty("clusterConfig")]
@@ -49,10 +34,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmConfig")]
         public AzureVmConfig? VmConfig { get; set; }
 
+        //      C# -> System.Boolean? IsEsType
+        // GraphQL -> isEsType: Boolean (scalar)
+        [JsonProperty("isEsType")]
+        public System.Boolean? IsEsType { get; set; }
+
+        //      C# -> System.Boolean? KeepClusterOnFailure
+        // GraphQL -> keepClusterOnFailure: Boolean (scalar)
+        [JsonProperty("keepClusterOnFailure")]
+        public System.Boolean? KeepClusterOnFailure { get; set; }
+
         //      C# -> List<ClusterCreateValidations>? Validations
         // GraphQL -> validations: [ClusterCreateValidations!] (enum)
         [JsonProperty("validations")]
         public List<ClusterCreateValidations>? Validations { get; set; }
+
+        //      C# -> System.Boolean? IsAzResilient
+        // GraphQL -> isAzResilient: Boolean (scalar)
+        [JsonProperty("isAzResilient")]
+        public System.Boolean? IsAzResilient { get; set; }
 
 
         #endregion

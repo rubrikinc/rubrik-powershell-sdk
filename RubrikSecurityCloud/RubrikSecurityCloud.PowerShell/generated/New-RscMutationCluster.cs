@@ -562,22 +562,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	adminPassword = $someString
-    /// 	# OPTIONAL
-    /// 	userEmail = $someString
     /// 	# REQUIRED
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
-    /// 	# OPTIONAL
-    /// 	azureEsResourceGroup = $someString
     /// 	# OPTIONAL
     /// 	azureVmConfig = @{
     /// 		# OPTIONAL
     /// 		resourceGroup = $someString
     /// 		# OPTIONAL
     /// 		cdmVersion = $someString
+    /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
     /// 		# OPTIONAL
     /// 		location = $someString
     /// 		# OPTIONAL
@@ -601,6 +597,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
+    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+    /// 		# OPTIONAL
     /// 		availabilityZone = $someString
     /// 		# OPTIONAL
     /// 		subnetAzConfigs = @(
@@ -611,19 +609,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	azureEsResourceGroup = $someString
     /// 	# OPTIONAL
     /// 	awsVmConfig = @{
     /// 		# OPTIONAL
     /// 		cdmVersion = $someString
     /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
     /// 		nodeSizeGb = $someInt
     /// 		# OPTIONAL
     /// 		subnet = $someString
+    /// 		# OPTIONAL
+    /// 		securityGroups = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		vpc = $someString
     /// 		# OPTIONAL
@@ -635,23 +637,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
-    /// 		placementGroupName = $someString
-    /// 		# OPTIONAL
-    /// 		subnetAzConfigs = @(
-    /// 			@{
-    /// 				# OPTIONAL
-    /// 				subnet = $someString
-    /// 				# OPTIONAL
-    /// 				availabilityZone = $someString
-    /// 			}
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		securityGroups = @(
-    /// 			$someString
-    /// 		)
-    /// 		# OPTIONAL
     /// 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
     /// 		# OPTIONAL
     /// 		networkConfig = @(
@@ -662,6 +647,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				subnet = $someString
     /// 				# OPTIONAL
     /// 				vpc = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		placementGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		subnetAzConfigs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				subnet = $someString
+    /// 				# OPTIONAL
+    /// 				availabilityZone = $someString
     /// 			}
     /// 		)
     /// 	}
@@ -734,6 +730,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	gcpZone = $someString
     /// 	# REQUIRED
     /// 	shouldKeepClusterOnFailure = $someBoolean
+    /// 	# OPTIONAL
+    /// 	adminPassword = $someString
+    /// 	# OPTIONAL
+    /// 	userEmail = $someString
     /// 	# OPTIONAL
     /// 	ntpServers = @(
     /// 		$someString
@@ -1976,22 +1976,18 @@ $query.Var.input = @{
                 Mutation.RecoverCloudClusterFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	adminPassword = $someString
-	# OPTIONAL
-	userEmail = $someString
 	# REQUIRED
 	cloudAccountId = $someString
 	# REQUIRED
 	clusterUuid = $someString
-	# OPTIONAL
-	azureEsResourceGroup = $someString
 	# OPTIONAL
 	azureVmConfig = @{
 		# OPTIONAL
 		resourceGroup = $someString
 		# OPTIONAL
 		cdmVersion = $someString
+		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
 		# OPTIONAL
 		location = $someString
 		# OPTIONAL
@@ -2015,6 +2011,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		cdmProduct = $someString
 		# OPTIONAL
+		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+		# OPTIONAL
 		availabilityZone = $someString
 		# OPTIONAL
 		subnetAzConfigs = @(
@@ -2025,19 +2023,23 @@ $query.Var.input = @{
 				availabilityZone = $someString
 			}
 		)
-		# OPTIONAL
-		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-		# OPTIONAL
-		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
 	}
+	# OPTIONAL
+	azureEsResourceGroup = $someString
 	# OPTIONAL
 	awsVmConfig = @{
 		# OPTIONAL
 		cdmVersion = $someString
 		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
 		nodeSizeGb = $someInt
 		# OPTIONAL
 		subnet = $someString
+		# OPTIONAL
+		securityGroups = @(
+			$someString
+		)
 		# OPTIONAL
 		vpc = $someString
 		# OPTIONAL
@@ -2049,23 +2051,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		cdmProduct = $someString
 		# OPTIONAL
-		placementGroupName = $someString
-		# OPTIONAL
-		subnetAzConfigs = @(
-			@{
-				# OPTIONAL
-				subnet = $someString
-				# OPTIONAL
-				availabilityZone = $someString
-			}
-		)
-		# OPTIONAL
-		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-		# OPTIONAL
-		securityGroups = @(
-			$someString
-		)
-		# OPTIONAL
 		instanceType = $someAwsInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsInstanceType]) for enum values.
 		# OPTIONAL
 		networkConfig = @(
@@ -2076,6 +2061,17 @@ $query.Var.input = @{
 				subnet = $someString
 				# OPTIONAL
 				vpc = $someString
+			}
+		)
+		# OPTIONAL
+		placementGroupName = $someString
+		# OPTIONAL
+		subnetAzConfigs = @(
+			@{
+				# OPTIONAL
+				subnet = $someString
+				# OPTIONAL
+				availabilityZone = $someString
 			}
 		)
 	}
@@ -2148,6 +2144,10 @@ $query.Var.input = @{
 	gcpZone = $someString
 	# REQUIRED
 	shouldKeepClusterOnFailure = $someBoolean
+	# OPTIONAL
+	adminPassword = $someString
+	# OPTIONAL
+	userEmail = $someString
 	# OPTIONAL
 	ntpServers = @(
 		$someString

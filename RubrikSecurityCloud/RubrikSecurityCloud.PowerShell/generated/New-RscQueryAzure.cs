@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 60
+    /// Create a new RscQuery object for any of the 61
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 60 operations
+    /// There are 61 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -136,6 +136,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		unmanagedObjectAvailabilityFilter = @(
     /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
     /// }
     /// )
@@ -828,6 +832,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.azureSubscriptionRubrikId = $someString
+    /// # REQUIRED
+    /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;AzureNativeDiskEncryptionSet&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DiskEncryptionSetsByRegionFromNativeId operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DiskEncryptionSetsByRegionFromNativeId
+    /// 
+    /// $query = New-RscQueryAzure -Operation DiskEncryptionSetsByRegionFromNativeId
+    /// 
+    /// # REQUIRED
+    /// $query.Var.azureSubscriptionNativeId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
     /// 
@@ -2525,12 +2559,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	cloudAccountId = $someString
     /// 	# OPTIONAL
-    /// 	isEsType = $someBoolean
-    /// 	# OPTIONAL
-    /// 	keepClusterOnFailure = $someBoolean
-    /// 	# OPTIONAL
-    /// 	isAzResilient = $someBoolean
-    /// 	# OPTIONAL
     /// 	clusterConfig = @{
     /// 		# OPTIONAL
     /// 		userEmail = $someString
@@ -2621,6 +2649,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmVersion = $someString
     /// 		# OPTIONAL
+    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+    /// 		# OPTIONAL
     /// 		location = $someString
     /// 		# OPTIONAL
     /// 		nodeSizeGb = $someInt
@@ -2643,6 +2673,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		cdmProduct = $someString
     /// 		# OPTIONAL
+    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+    /// 		# OPTIONAL
     /// 		availabilityZone = $someString
     /// 		# OPTIONAL
     /// 		subnetAzConfigs = @(
@@ -2653,15 +2685,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				availabilityZone = $someString
     /// 			}
     /// 		)
-    /// 		# OPTIONAL
-    /// 		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-    /// 		# OPTIONAL
-    /// 		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEsType = $someBoolean
+    /// 	# OPTIONAL
+    /// 	keepClusterOnFailure = $someBoolean
     /// 	# OPTIONAL
     /// 	validations = @(
     /// 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAzResilient = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2712,6 +2746,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccountTenantWithExoConfigs",
                 "CloudAccountTenants",
                 "DiskEncryptionSetsByRegion",
+                "DiskEncryptionSetsByRegionFromNativeId",
                 "EncryptionKeys",
                 "ExocomputeConfigsInAccount",
                 "ExocomputeNetworkSetupTemplate",
@@ -2826,6 +2861,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DiskEncryptionSetsByRegion":
                         this.ProcessRecord_DiskEncryptionSetsByRegion();
+                        break;
+                    case "DiskEncryptionSetsByRegionFromNativeId":
+                        this.ProcessRecord_DiskEncryptionSetsByRegionFromNativeId();
                         break;
                     case "EncryptionKeys":
                         this.ProcessRecord_EncryptionKeys();
@@ -3135,6 +3173,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DiskEncryptionSetsByRegion";
             // Create new graphql operation allAzureDiskEncryptionSetsByRegion
             InitQueryAllAzureDiskEncryptionSetsByRegion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureDiskEncryptionSetsByRegionFromNativeId.
+        internal void ProcessRecord_DiskEncryptionSetsByRegionFromNativeId()
+        {
+            this._logger.name += " -DiskEncryptionSetsByRegionFromNativeId";
+            // Create new graphql operation allAzureDiskEncryptionSetsByRegionFromNativeId
+            InitQueryAllAzureDiskEncryptionSetsByRegionFromNativeId();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3570,6 +3617,10 @@ $query.Var.filter = @(
 		# OPTIONAL
 		unmanagedObjectAvailabilityFilter = @(
 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
 }
 )"
@@ -4175,6 +4226,29 @@ $query.Var.aggregateByTenant = $someBoolean"
                 Query.AllAzureDiskEncryptionSetsByRegionFieldSpec,
                 @"# REQUIRED
 $query.Var.azureSubscriptionRubrikId = $someString
+# REQUIRED
+$query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allAzureDiskEncryptionSetsByRegionFromNativeId(azureSubscriptionNativeId: UUID!, region: AzureNativeRegion!): [AzureNativeDiskEncryptionSet!]!
+        internal void InitQueryAllAzureDiskEncryptionSetsByRegionFromNativeId()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("azureSubscriptionNativeId", "UUID!"),
+                Tuple.Create("region", "AzureNativeRegion!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllAzureDiskEncryptionSetsByRegionFromNativeId",
+                "($azureSubscriptionNativeId: UUID!,$region: AzureNativeRegion!)",
+                "List<AzureNativeDiskEncryptionSet>",
+                Query.AllAzureDiskEncryptionSetsByRegionFromNativeId,
+                Query.AllAzureDiskEncryptionSetsByRegionFromNativeIdFieldSpec,
+                @"# REQUIRED
+$query.Var.azureSubscriptionNativeId = $someString
 # REQUIRED
 $query.Var.region = $someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values."
             );
@@ -5697,12 +5771,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	cloudAccountId = $someString
 	# OPTIONAL
-	isEsType = $someBoolean
-	# OPTIONAL
-	keepClusterOnFailure = $someBoolean
-	# OPTIONAL
-	isAzResilient = $someBoolean
-	# OPTIONAL
 	clusterConfig = @{
 		# OPTIONAL
 		userEmail = $someString
@@ -5793,6 +5861,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		cdmVersion = $someString
 		# OPTIONAL
+		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
+		# OPTIONAL
 		location = $someString
 		# OPTIONAL
 		nodeSizeGb = $someInt
@@ -5815,6 +5885,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		cdmProduct = $someString
 		# OPTIONAL
+		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
+		# OPTIONAL
 		availabilityZone = $someString
 		# OPTIONAL
 		subnetAzConfigs = @(
@@ -5825,15 +5897,17 @@ $query.Var.input = @{
 				availabilityZone = $someString
 			}
 		)
-		# OPTIONAL
-		vmType = $someVmType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VmType]) for enum values.
-		# OPTIONAL
-		instanceType = $someAzureInstanceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureInstanceType]) for enum values.
 	}
+	# OPTIONAL
+	isEsType = $someBoolean
+	# OPTIONAL
+	keepClusterOnFailure = $someBoolean
 	# OPTIONAL
 	validations = @(
 		$someClusterCreateValidations # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCreateValidations]) for enum values.
 	)
+	# OPTIONAL
+	isAzResilient = $someBoolean
 }"
             );
         }

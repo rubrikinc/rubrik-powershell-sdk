@@ -20,15 +20,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCommonRegion? Region
+        // GraphQL -> region: AwsCommonRegion! (enum)
+        [JsonProperty("region")]
+        public AwsCommonRegion? Region { get; set; }
+
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
         [JsonProperty("imageId")]
         public System.String? ImageId { get; set; }
-
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        [JsonProperty("region")]
-        public System.String? Region { get; set; }
 
 
         #endregion
@@ -40,15 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RegionImageIdEntry Set(
-        System.String? ImageId = null,
-        System.String? Region = null
+        AwsCommonRegion? Region = null,
+        System.String? ImageId = null
     ) 
     {
-        if ( ImageId != null ) {
-            this.ImageId = ImageId;
-        }
         if ( Region != null ) {
             this.Region = Region;
+        }
+        if ( ImageId != null ) {
+            this.ImageId = ImageId;
         }
         return this;
     }
@@ -64,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsCommonRegion? Region
+        // GraphQL -> region: AwsCommonRegion! (enum)
+        if (this.Region != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
+            }
+        }
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
         if (this.ImageId != null) {
@@ -73,15 +82,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "imageId\n" ;
             }
         }
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        if (this.Region != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "region\n" ;
-            } else {
-                s += ind + "region\n" ;
-            }
-        }
         return s;
     }
 
@@ -89,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsCommonRegion? Region
+        // GraphQL -> region: AwsCommonRegion! (enum)
+        if (ec.Includes("region",true))
+        {
+            if(this.Region == null) {
+
+                this.Region = new AwsCommonRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
+        }
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
         if (ec.Includes("imageId",true))
@@ -105,23 +122,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.ImageId != null && ec.Excludes("imageId",true))
         {
             this.ImageId = null;
-        }
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        if (ec.Includes("region",true))
-        {
-            if(this.Region == null) {
-
-                this.Region = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.Region != null && ec.Excludes("region",true))
-        {
-            this.Region = null;
         }
     }
 

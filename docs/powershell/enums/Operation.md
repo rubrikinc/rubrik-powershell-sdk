@@ -8,6 +8,7 @@ Operations defined in the RBAC system.
 - DELETE_REPORT
 - ADD_CLUSTER
 - VIEW_CLUSTER
+- VIEW_CLUSTER_REFERENCE - View cluster reference (name, type, status) for pickers and selectors.
 - MODIFY_CLUSTER
 - REMOVE_CLUSTER
 - UPGRADE_CLUSTER
@@ -223,6 +224,8 @@ Operations defined in the RBAC system.
 - PREVIEW_DATA_CLASSIFICATION_SAMPLES - Preview samples from customers data from classification results.
 - VIEW_CHILD_ACCOUNTS - View child accounts.
 - MANAGE_CHILD_ACCOUNTS - Manage child accounts.
+- SUSPEND_CHILD_ACCOUNTS - Suspend child accounts.
+- DELETE_CHILD_ACCOUNTS - Delete child accounts.
 - DOWNLOAD_ENTRA_ID_SECRETS - Download Entra ID secrets.
 - MANAGE_SERVICE_ACCOUNT_CREDENTIALS - Rotate service account secret.
 - SEND_LICENSE_NOTIFICATION - Send license notification.

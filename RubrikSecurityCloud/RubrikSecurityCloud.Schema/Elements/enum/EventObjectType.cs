@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
         ACTIVE_DIRECTORY_FOREST,
 
+        [EnumMember(Value = "AGENT_CLOUD_POLICY")]
+        AGENT_CLOUD_POLICY,
+
         [EnumMember(Value = "APP_BLUEPRINT")]
         APP_BLUEPRINT,
 
@@ -483,6 +486,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_ATTRIBUTE_SCHEMA")]
         PRINCIPAL_ATTRIBUTE_SCHEMA,
 
+        [EnumMember(Value = "PRINCIPAL_CERTIFICATE_TEMPLATE")]
+        PRINCIPAL_CERTIFICATE_TEMPLATE,
+
         [EnumMember(Value = "PRINCIPAL_CLASS_SCHEMA")]
         PRINCIPAL_CLASS_SCHEMA,
 
@@ -494,6 +500,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRINCIPAL_CONTAINER")]
         PRINCIPAL_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_CONTROL_ACCESS_RIGHT")]
+        PRINCIPAL_CONTROL_ACCESS_RIGHT,
+
+        [EnumMember(Value = "PRINCIPAL_DFS_LINK")]
+        PRINCIPAL_DFS_LINK,
+
+        [EnumMember(Value = "PRINCIPAL_DFS_NAMESPACE_V1")]
+        PRINCIPAL_DFS_NAMESPACE_V1,
+
+        [EnumMember(Value = "PRINCIPAL_DFS_NAMESPACE_V2")]
+        PRINCIPAL_DFS_NAMESPACE_V2,
 
         [EnumMember(Value = "PRINCIPAL_DOMAIN_DNS")]
         PRINCIPAL_DOMAIN_DNS,

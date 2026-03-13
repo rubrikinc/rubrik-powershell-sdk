@@ -7,3 +7,4 @@ Category of scan result for error classification.
 - ERROR_UNSUPPORTED_OBJECT - Error: Object type is not supported for scanning.
 - SUCCESS - Scan completed successfully.
 - PENDING - Scan is pending or in progress.
+- SCAN_IN_PROGRESS - Scan is in progress.

@@ -28,3 +28,5 @@ Entra ID object types.
 - REUSABLE_POLICY_SETTING - Sub-object type of COMPLIANCE_SCRIPT.
 - DEVICE_COMPLIANCE_POLICY - Sub-object type of COMPLIANCE_POLICY.
 - DEVICE_MANAGEMENT_COMPLIANCE_POLICY - Sub-object type of COMPLIANCE_POLICY.
+- ROLE_ELIGIBLE_ASSIGNMENT - Object type is role-eligible assignment.
+- GROUP_ELIGIBLE_ASSIGNMENT - Object type is group-eligible assignment.

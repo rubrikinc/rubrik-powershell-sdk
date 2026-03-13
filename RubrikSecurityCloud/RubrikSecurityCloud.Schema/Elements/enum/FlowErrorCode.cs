@@ -102,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RDS_UNSUPPORTED_RESTORE_DB_INSTANCE")]
         RDS_UNSUPPORTED_RESTORE_DB_INSTANCE,
 
+        [EnumMember(Value = "SCAN_IN_PROGRESS")]
+        SCAN_IN_PROGRESS,
+
         [EnumMember(Value = "SUCCESS")]
         SUCCESS,
 

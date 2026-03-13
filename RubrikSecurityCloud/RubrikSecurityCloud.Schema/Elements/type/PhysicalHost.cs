@@ -251,6 +251,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> GlobalCertificate? HostRbaCertificate
+        // GraphQL -> hostRbaCertificate: GlobalCertificate (type)
+        [JsonProperty("hostRbaCertificate")]
+        public GlobalCertificate? HostRbaCertificate { get; set; }
+
         //      C# -> List<CdmHostVolume>? HostVolumes
         // GraphQL -> hostVolumes: [CdmHostVolume!]! (type)
         [JsonProperty("hostVolumes")]
@@ -426,6 +431,7 @@ namespace RubrikSecurityCloud.Types
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         PhysicalHostDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        GlobalCertificate? HostRbaCertificate = null,
         List<CdmHostVolume>? HostVolumes = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -579,6 +585,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( HostRbaCertificate != null ) {
+            this.HostRbaCertificate = HostRbaCertificate;
         }
         if ( HostVolumes != null ) {
             this.HostVolumes = HostVolumes;
@@ -1088,6 +1097,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GlobalCertificate? HostRbaCertificate
+        // GraphQL -> hostRbaCertificate: GlobalCertificate (type)
+        if (this.HostRbaCertificate != null) {
+            var fspec = this.HostRbaCertificate.AsFieldSpec(conf.Child("hostRbaCertificate"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hostRbaCertificate" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2091,6 +2112,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> GlobalCertificate? HostRbaCertificate
+        // GraphQL -> hostRbaCertificate: GlobalCertificate (type)
+        if (ec.Includes("hostRbaCertificate",false))
+        {
+            if(this.HostRbaCertificate == null) {
+
+                this.HostRbaCertificate = new GlobalCertificate();
+                this.HostRbaCertificate.ApplyExploratoryFieldSpec(ec.NewChild("hostRbaCertificate"));
+
+            } else {
+
+                this.HostRbaCertificate.ApplyExploratoryFieldSpec(ec.NewChild("hostRbaCertificate"));
+
+            }
+        }
+        else if (this.HostRbaCertificate != null && ec.Excludes("hostRbaCertificate",false))
+        {
+            this.HostRbaCertificate = null;
         }
         //      C# -> List<CdmHostVolume>? HostVolumes
         // GraphQL -> hostVolumes: [CdmHostVolume!]! (type)

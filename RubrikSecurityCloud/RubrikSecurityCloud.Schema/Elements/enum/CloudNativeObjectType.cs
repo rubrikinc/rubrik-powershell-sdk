@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AWS_CONFIG")]
+        AWS_CONFIG,
+
         [EnumMember(Value = "AWS_DYNAMODB_TABLE")]
         AWS_DYNAMODB_TABLE,
 

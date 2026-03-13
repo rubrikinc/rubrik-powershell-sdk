@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PENDING")]
         PENDING,
 
+        [EnumMember(Value = "SCAN_IN_PROGRESS")]
+        SCAN_IN_PROGRESS,
+
         [EnumMember(Value = "SCAN_RESULT_CATEGORY_UNSPECIFIED")]
         SCAN_RESULT_CATEGORY_UNSPECIFIED,
 

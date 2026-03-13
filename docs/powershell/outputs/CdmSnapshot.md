@@ -28,11 +28,11 @@
   - Specifies whether custom retention is applied on the snapshot.
 - aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail
   - Details of all the locations where the snapshot is present. This is available only in some APIs for some conditions, as the location information is part of CdmSnapshotRetentionInfo most of the times.
+- cluster: Cluster
 - isThreatDetected: System.Boolean
   - Specifies whether a threat has been detected for this snapshot. This is true if the snapshot has any hash IOC match or YARA IOC match in the threat monitoring results.
 - isThreatAnalysisCompleted: System.Boolean
   - Specifies whether a threat analysis has been completed on this snapshot. This is true if there is any entry in the threat monitoring results table for this snapshot.
-- cluster: Cluster
 - parentSnapshotId: System.String
   - The ID of the parent snapshot.
 - sapHanaAppMetadata: SapHanaAppMetadata

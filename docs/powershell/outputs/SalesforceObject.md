@@ -9,6 +9,8 @@ Salesforce object.
   - Salesforce object type. It could either be a standard or a custom object.
 - isRelic: System.Boolean
   - True if the Salesforce object is a relic.
+- objectBackupType: SalesforceObjectBackupType
+  - Indicates whether the Salesforce object is recommended for backup. Objects matching certain patterns (e.g., *History, *Share, *Feed) are not recommended for backup.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

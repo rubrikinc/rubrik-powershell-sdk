@@ -1213,6 +1213,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		unmanagedObjectAvailabilityFilter = @(
     /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
     /// 	}
     /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
@@ -1253,6 +1257,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			unmanagedObjectAvailabilityFilter = @(
     /// 				$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			gcpNativeProtectionFeatureNames = @(
+    /// 				$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 			)
     /// 		}
     /// 	)
@@ -2750,6 +2758,10 @@ $query.Var.virtualMachineFilters = @{
 		unmanagedObjectAvailabilityFilter = @(
 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
 		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
 	}
 	# OPTIONAL
 	hierarchyFilters = @(
@@ -2790,6 +2802,10 @@ $query.Var.virtualMachineFilters = @{
 			# OPTIONAL
 			unmanagedObjectAvailabilityFilter = @(
 				$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+			)
+			# OPTIONAL
+			gcpNativeProtectionFeatureNames = @(
+				$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 			)
 		}
 	)

@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceAuthenticationType")]
         public MongoAuthenticationType? SourceAuthenticationType { get; set; }
 
+        //      C# -> System.String? SslKeyfilePassword
+        // GraphQL -> sslKeyfilePassword: String (scalar)
+        [JsonProperty("sslKeyfilePassword")]
+        public System.String? SslKeyfilePassword { get; set; }
+
 
         #endregion
 

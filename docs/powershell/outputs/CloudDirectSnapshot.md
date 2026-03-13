@@ -39,6 +39,8 @@ NAS Cloud Direct snapshot object.
   - Summary of statistics for this snapshot.
 - isCustomRetentionApplied: System.Boolean
   - Specifies whether the snapshot uses a custom retention period.
+- userExclusionDetails: CloudDirectExclusionSummary
+  - Summary of user-defined exclusions for this snapshot.
 - workloadId: System.String
   - Rubrik ID of NAS Cloud Direct workload.
 - snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo

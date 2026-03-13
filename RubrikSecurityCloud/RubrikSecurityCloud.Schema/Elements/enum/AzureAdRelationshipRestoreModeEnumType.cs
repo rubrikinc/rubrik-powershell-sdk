@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         ROLLBACK,
 
         [EnumMember(Value = "SKIP")]
-        SKIP
+        SKIP,
+
+        [EnumMember(Value = "SKIP_EXISTING")]
+        SKIP_EXISTING
 
 
     } // enum AzureAdRelationshipRestoreModeEnumType

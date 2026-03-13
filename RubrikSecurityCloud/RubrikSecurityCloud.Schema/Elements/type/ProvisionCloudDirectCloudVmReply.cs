@@ -40,10 +40,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userData")]
         public System.String? UserData { get; set; }
 
-        //      C# -> RegionImageIds? RegionImageIds
-        // GraphQL -> regionImageIds: RegionImageIds! (type)
+        //      C# -> List<RegionImageIdEntry>? RegionImageIds
+        // GraphQL -> regionImageIds: [RegionImageIdEntry!]! (type)
         [JsonProperty("regionImageIds")]
-        public RegionImageIds? RegionImageIds { get; set; }
+        public List<RegionImageIdEntry>? RegionImageIds { get; set; }
 
 
         #endregion
@@ -59,7 +59,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CloudRegion = null,
         System.String? ImageId = null,
         System.String? UserData = null,
-        RegionImageIds? RegionImageIds = null
+        List<RegionImageIdEntry>? RegionImageIds = null
     ) 
     {
         if ( CloudProvider != null ) {
@@ -127,8 +127,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "userData\n" ;
             }
         }
-        //      C# -> RegionImageIds? RegionImageIds
-        // GraphQL -> regionImageIds: RegionImageIds! (type)
+        //      C# -> List<RegionImageIdEntry>? RegionImageIds
+        // GraphQL -> regionImageIds: [RegionImageIdEntry!]! (type)
         if (this.RegionImageIds != null) {
             var fspec = this.RegionImageIds.AsFieldSpec(conf.Child("regionImageIds"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -214,13 +214,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.UserData = null;
         }
-        //      C# -> RegionImageIds? RegionImageIds
-        // GraphQL -> regionImageIds: RegionImageIds! (type)
+        //      C# -> List<RegionImageIdEntry>? RegionImageIds
+        // GraphQL -> regionImageIds: [RegionImageIdEntry!]! (type)
         if (ec.Includes("regionImageIds",false))
         {
             if(this.RegionImageIds == null) {
 
-                this.RegionImageIds = new RegionImageIds();
+                this.RegionImageIds = new List<RegionImageIdEntry>();
                 this.RegionImageIds.ApplyExploratoryFieldSpec(ec.NewChild("regionImageIds"));
 
             } else {
