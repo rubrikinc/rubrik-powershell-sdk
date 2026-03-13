@@ -2,6 +2,10 @@
 
 Sample scripts and query files for the Rubrik Security Cloud PowerShell SDK.
 
+Disclaimer: These scripts are educational templates, not production-ready code. 
+Use them at your own risk; ensure you review and secure any logic before 
+integrating it into a live environment.
+
 ## Prerequisites
 
 ```powershell
