@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +13,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
 
     /// <summary>
-    /// Create a new .NET object from the
-    /// RubrikSecurityCloud.Types namespace,
-    /// with pre-selected fields. 
+    /// Instantiate, inspect, or list .NET types from the RSC GraphQL schema.
     /// </summary>
     /// <description>
-    /// With -Name, the cmdlet returns a new .NET object from the
-    /// RubrikSecurityCloud.Types namespace (both output and input types),
-    /// with pre-selected fields with -InitialProperties or -InitialValues.
-    /// 
-    /// The -ListAvailable parameter will return a list of
-    /// valid RubrikSecurityCloud.Types.
+    /// Get-RscType serves three purposes, selected by parameter set:
+    ///
+    /// 1. **GetTypeByName** (-Name): Instantiate a schema type and optionally
+    ///    initialize selected properties. This is primarily used to build
+    ///    GraphQL field specs — the SDK convention is that null properties
+    ///    mean "don't request this field" and non-null means "request it."
+    ///
+    ///    -InitialProperties sets sentinel values (strings → "FETCH",
+    ///    bools → true, enums → index 0, etc.) to mark fields as requested.
+    ///    Supports dotted paths like "nodes.id" to walk into nested objects.
+    ///
+    ///    -InitialValues sets user-provided values on input type fields.
+    ///    Handles PowerShell → C# type coercion (PSObject unwrapping,
+    ///    object[] → List&lt;T&gt; conversion).
+    ///
+    ///    Only one of -InitialProperties and -InitialValues may be provided.
+    ///
+    /// 2. **GetTypeList** (-ListAvailable): List all schema types or
+    ///    interfaces, optionally filtered by name substring.
+    ///
+    /// 3. **ListImplementingTypes** (-Interface): List all concrete types
+    ///    that implement a given schema interface.
+    ///
+    /// Does not require an RSC connection (retrieveConnection: false).
+    ///
+    /// ## Known Issues
+    ///
+    /// - The -ListAvailable switch is in the default parameter set but is
+    ///   not mandatory. Bare "Get-RscType" (no params) falls into GetTypeList
+    ///   and returns the full type list regardless of the switch value.
+    ///   The switch is effectively meaningless.
+    ///
+    /// - The -Interfaces switch is at Position=3 in GetTypeList, but
+    ///   Position=2 is unused, creating a gap in positional parameters.
+    ///
+    /// - The tab completer (RscTypeNameCompleter) calls GetAllTypeNames()
+    ///   on every tab press, which does a full assembly scan each time.
+    ///   Should be cached in a static field.
+    ///
+    /// - RscTypeSummary only has a Name property. It adds no value over
+    ///   returning plain strings and forces users to do $result.Name.
     /// </description>
     /// <example>
     /// Create a filter input object with "a" "b" for text filters.
@@ -90,7 +123,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
 
         /// <summary>
-        /// The name of the RubrikSecurityCloud.Types Type to return
+        /// The name of an RSC schema type to instantiate.
+        /// Case-insensitive. Tab-completion is provided via RscTypeNameCompleter.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -101,7 +135,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         [ArgumentCompleter(typeof(RscTypeNameCompleter))]
         public string Name { get; set; }
 
-        /// <summary>Tab-completion for RSC type names.</summary>
+        /// <summary>
+        /// Tab-completion for the -Name parameter.
+        /// Calls GetAllTypeNames() on every invocation — no caching.
+        /// Known issue: full assembly scan on each tab press.
+        /// </summary>
         public class RscTypeNameCompleter : IArgumentCompleter
         {
             /// <summary>Provide completions for the Name parameter.</summary>
@@ -112,7 +150,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 CommandAst commandAst,
                 IDictionary fakeBoundParameters)
             {
-                // Fetch the list of valid type names
                 var validTypeSummaries = RscTypeInitializer.GetAllTypeNames();
                 var validNames = validTypeSummaries
                     .Select(summary => summary.Name)
@@ -120,14 +157,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                    name.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase))
                     .OrderBy(name => name);
 
-                // Return results as CompletionResult objects
                 return validNames.Select(name => new CompletionResult(name)).ToList();
             }
         }
 
         /// <summary>
-        /// Specify an array of string containing the names of the
-        /// properties to initialize.
+        /// Property names (or dotted paths) to initialize with sentinel values.
+        /// Supports dotted paths like "nodes.id" to walk into nested objects.
+        /// See RscTypeInitializer.InitializeTypeWithSelectedProperties for
+        /// the sentinel values used for each property type.
+        /// Mutually exclusive with -InitialValues.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -138,8 +177,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public string[] InitialProperties { get; set; }
 
         /// <summary>
-        /// Specify a hashtable mapping the requested
-        /// fields to their values.
+        /// A hashtable mapping property names to specific values.
+        /// Used for input types (e.g. filter inputs, mutation inputs).
+        /// Handles PowerShell → C# coercion (PSObject, object[] → List).
+        /// Mutually exclusive with -InitialProperties.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -150,7 +191,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public Hashtable InitialValues { get; set; }
 
         /// <summary>
-        /// Used to request a list of valid Rsc Type Names.
+        /// List all available schema types (or interfaces with -Interfaces).
+        /// Known issue: this switch is in the default parameter set but is
+        /// not mandatory. The GetTypeList code path runs regardless of its
+        /// value, so bare "Get-RscType" returns the full list.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -159,7 +203,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter ListAvailable { get; set; }
 
         /// <summary>
-        /// Optional to filter results by name.
+        /// Case-insensitive substring filter for -ListAvailable results.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -169,7 +213,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public string FilterByName { get; set; }
 
         /// <summary>
-        /// Flag to specify if interfaces should be returned.
+        /// When used with -ListAvailable, return interfaces instead of
+        /// classes. Only interfaces implementing IFieldSpec are included.
+        /// Known issue: Position=3, but Position=2 is unused (gap).
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -178,7 +224,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public SwitchParameter Interfaces { get; set; }
 
         /// <summary>
-        /// Used to request a list of types implementing a given interface.
+        /// Return a list of concrete type names that implement the
+        /// given interface. Delegates to ReflectionUtils.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -192,7 +239,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         public Get_RscType() : base(retrieveConnection: false)
         {
         }
-    
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -262,4 +309,3 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
     }
 }
-

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using RubrikSecurityCloud.PowerShell.Models;
 using System.Collections.Generic;
@@ -15,9 +15,41 @@ using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Private
 {
-	public class RscTypeInitializer
-	{
+    /// <summary>
+    /// Static helper for Get-RscType. Creates and initializes .NET objects
+    /// from the RSC GraphQL schema, using reflection against the
+    /// RubrikSecurityCloud.Schema assembly.
+    ///
+    /// Three entry points:
+    ///   - GetAllTypeNames()   → list types/interfaces (for -ListAvailable)
+    ///   - GetTypeByName()     → resolve a type name to a System.Type
+    ///   - InitializeTypeWithSelectedProperties() → build field-spec objects
+    ///     (for -InitialProperties)
+    ///   - InitializeInputWithSelectedFields() → build input objects with
+    ///     user-provided values (for -InitialValues)
+    ///
+    /// Known issues:
+    ///   - Assembly.Load("RubrikSecurityCloud.Schema") is called on every
+    ///     invocation of GetAllTypeNames() and GetTypeByName(). The assembly
+    ///     is immutable at runtime and should be cached in a static field.
+    ///   - GetAllTypeNames() iterates all types in the assembly on each call.
+    ///     Combined with the tab completer calling it on every tab press,
+    ///     this is unnecessarily expensive.
+    ///   - InitializeTypeWithSelectedProperties is a ~200-line method with
+    ///     deeply nested if/else chains handling every property type (string,
+    ///     list, interface, class, enum, bool, int, long, double, DateTime).
+    ///     Should be refactored into per-type handlers.
+    ///   - Property lookups are repeated redundantly: the code calls
+    ///     GetProperty() to check if a value is null, even though
+    ///     currentProperty already holds the same PropertyInfo.
+    ///     Should use currentProperty.GetValue(currentObject) instead.
+    /// </summary>
+    public class RscTypeInitializer
+    {
 
+        /// <summary>
+        /// Check if a PropertyInfo represents a Nullable&lt;Enum&gt;.
+        /// </summary>
         private static bool IsNullableEnum(PropertyInfo propertyInfo)
         {
             if (propertyInfo.PropertyType.IsGenericType &&
@@ -30,6 +62,10 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return false;
         }
 
+        /// <summary>
+        /// Unwrap Nullable&lt;T&gt; to T, or return the type as-is.
+        /// Used to get the underlying enum type for Nullable&lt;Enum&gt;.
+        /// </summary>
         private static System.Type GetNullableUnderlyingType(PropertyInfo propertyInfo)
         {
             if (propertyInfo.PropertyType.IsGenericType &&
@@ -43,10 +79,12 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// Get a list of all RSC schema types whose names contain a given string.
+        /// List all RSC schema types whose names contain nameFilter (case-insensitive).
+        /// Returns output types (subclasses of BaseType), input types (IInput),
+        /// or interfaces (IFieldSpec), depending on the interfaces flag.
+        ///
+        /// Known issue: loads the assembly and scans all types on every call.
         /// </summary>
-        /// <param name="nameFilter">string to match, case insensitive</param>
-        /// <param name="interfaces">if true, return interfaces; if false return classes</param>
         public static List<RscTypeSummary> GetAllTypeNames(
                string nameFilter = null,
                bool interfaces = false)
@@ -94,7 +132,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// Get an RSC schema type by name.
+        /// Resolve a short type name (e.g. "Cluster") to its System.Type
+        /// in the RubrikSecurityCloud.Types namespace. Case-insensitive.
+        /// Returns null if not found.
+        ///
+        /// Known issue: loads the assembly on every call.
         /// </summary>
         public static System.Type GetTypeByName(string name)
         {
@@ -112,13 +154,17 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// Return an instance of an input, with fields contained in
-        /// inputFields initialized to non-null values.
+        /// Create an instance of an input type and set fields to user-provided values.
+        /// Used by Get-RscType -InitialValues.
+        ///
+        /// Handles PowerShell → C# type coercion:
+        ///   - PSObject wrappers are unwrapped to their BaseObject.
+        ///   - PowerShell arrays (object[]) targeting a List&lt;T&gt; property
+        ///     are converted to the appropriate generic List.
+        ///
+        /// Property lookup is case-insensitive.
+        /// Throws on unknown field names or type mismatches.
         /// </summary>
-        /// <param name="inputTypeName"></param>
-        /// <param name="providedInputFields"></param>
-        /// <returns>object</returns>
-        /// <exception cref="Exception"></exception>
         public static object InitializeInputWithSelectedFields(
             string inputTypeName,
             Hashtable providedInputFields
@@ -171,31 +217,22 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 }
 
                 try {
-                    // non-scalar values in a PowerShell
-                    // hashtable are wrapped with PSObject
+                    // Non-scalar values in a PowerShell hashtable are
+                    // wrapped with PSObject. Unwrap to the real object.
                     if (fieldValue is PSObject) {
                         var psObject = (PSObject)fieldValue;
                         inputTypeField.SetValue(
                             inputInstance,
                             psObject.BaseObject
-                        ); 
+                        );
                     } else {
-                        // Auto type conversion for common use case:
-                        //
-                        // User specifies a list of values in PowerShell with:
-                        //   -InitialValues @{"texts" = @("text1", "text2")}
-                        // However it maps in C# here to an object[].
-                        // => If fieldValue is an object[] and the target property is a List<T>,
-                        //    attempt to convert it to the appropriate List<T>.
-
+                        // PowerShell arrays (@("a","b")) arrive as object[].
+                        // If the target property is List<T>, convert automatically.
                         if (fieldValue is object[] objArray &&
                             inputTypeField.PropertyType.IsGenericType &&
                             inputTypeField.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
                         {
-                            // Get the generic type argument of the List<>
                             var genericArgumentType = inputTypeField.PropertyType.GetGenericArguments()[0];
-
-                            // Create a new List of the appropriate type
                             var listType = typeof(List<>).MakeGenericType(genericArgumentType);
                             var list = (IList)Activator.CreateInstance(listType);
 
@@ -203,7 +240,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             {
                                 try
                                 {
-                                    // Attempt to convert each item to the target type
                                     var convertedItem = Convert.ChangeType(item, genericArgumentType);
                                     list.Add(convertedItem);
                                 }
@@ -239,13 +275,67 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// Return an instance of an class, with properties listed in
-        /// requestedProperties initialized to non-null values.
+        /// Create an instance of an output type and set requested properties
+        /// to sentinel values. Used by Get-RscType -InitialProperties.
+        ///
+        /// This is the main method for building GraphQL field-spec objects.
+        /// The SDK convention: null = "don't request", non-null = "request."
+        /// The actual sentinel values don't matter for the query — they just
+        /// make the property non-null. The response is deserialized into a
+        /// separate fresh object.
+        ///
+        /// ## Sentinel values by type
+        ///   string    → "FETCH"
+        ///   bool/bool? → true
+        ///   int/int?   → 0
+        ///   long/long? → 0L
+        ///   double     → 0.0
+        ///   DateTime?  → new DateTime()
+        ///   enum?      → first enum value (index 0, usually UNKNOWN)
+        ///   class      → new instance (Activator.CreateInstance)
+        ///   interface  → first implementing type (InterfaceHelper)
+        ///   List&lt;T&gt;    → new list with one element of type T
+        ///   List&lt;Interface&gt; → list with one instance of EVERY implementing
+        ///                       type, so the field spec includes all possible
+        ///                       inline fragments (... on TypeA, ... on TypeB).
+        ///
+        /// ## Dotted paths
+        /// Properties can be dotted paths like "nodes.id". The method splits
+        /// on '.' and walks into nested objects, instantiating intermediate
+        /// objects as needed. For example, "cloudInfo.name" will:
+        ///   1. Find/create the CloudInfo object on the parent
+        ///   2. Set CloudInfo.Name to "FETCH"
+        ///
+        /// ## List&lt;Interface&gt; behavior
+        /// When a property is a List of an interface type (e.g.
+        /// List&lt;MssqlTopLevelDescendantType&gt;), this method creates one
+        /// instance of EVERY implementing type and adds them all to the list.
+        /// This ensures the generated GraphQL query includes inline fragments
+        /// for all possible types.
+        ///
+        /// If you only want a SINGLE implementing type (e.g. just PhysicalHost),
+        /// you cannot achieve that with -InitialProperties alone. You must:
+        ///   1. Create the specific type separately with Get-RscType
+        ///   2. Manually assign it to the list property
+        /// See the unit test "Double interface list" for a worked example.
+        ///
+        /// The remaining property paths are stripped of the parent prefix
+        /// before being passed to recursive calls on implementing types.
+        /// For example, if requestedProperties is ["nodes.id"] and we're
+        /// processing "nodes" (a List&lt;Interface&gt;), each implementing type
+        /// receives ["id"], not ["nodes.id"].
+        ///
+        /// ## Known issues
+        ///   - This method is ~200 lines with deeply nested if/else chains.
+        ///     The type-dispatch logic (string, list, class, interface, enum,
+        ///     bool, int, etc.) should be refactored into separate handlers.
+        ///   - Property lookups are repeated: the code calls GetProperty()
+        ///     again to check if a value is null, even though currentProperty
+        ///     already holds the same PropertyInfo. Should just use
+        ///     currentProperty.GetValue(currentObject).
+        ///   - The `implementingInstances` variable (line ~325) is computed
+        ///     but never used — it's dead code.
         /// </summary>
-        /// <param name="objectClassName"></param>
-        /// <param name="requestedProperties"></param>
-        /// <returns>object</returns>
-        /// <exception cref="Exception"></exception>
         public static object InitializeTypeWithSelectedProperties(string objectClassName,
             string[] requestedProperties)
         {
@@ -255,15 +345,21 @@ namespace RubrikSecurityCloud.PowerShell.Private
             if (returnType != null)
             {
                 object returnInstance = Activator.CreateInstance(returnType);
+                // Note: returnInstanceProperties is fetched but never used
+                // directly — property lookup happens via currentObject.GetType()
+                // inside the loop, since currentObject changes as we walk
+                // dotted paths.
                 PropertyInfo[] returnInstanceProperties = returnType.GetProperties();
 
+                // Outer loop: each requestedProperty is an independent path.
+                // "currentObject" is reset to returnInstance for each one.
                 foreach (string requestedProperty in requestedProperties)
                 {
-                    //reset the object tree back to the return instance
                     object currentObject = returnInstance;
                     string[] requestedPropertyTree = requestedProperty.Split('.');
 
-                    //Walk the requestedPropertyTree
+                    // Inner loop: walk the dotted path segment by segment.
+                    // At each step, currentObject advances to the nested object.
                     for (int i = 0; i < requestedPropertyTree.Length; i++)
                     {
                         PropertyInfo currentProperty = currentObject.GetType()
@@ -280,37 +376,39 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             );
                         }
 
-                        //If current property is a string
+                        // --- Leaf types: set sentinel and continue ---
+
                         if (currentProperty.PropertyType == typeof(string))
                         {
                             currentProperty.SetValue(currentObject, "FETCH");
                             continue;
                         }
 
-                        //if the property is a list, load or init it.
+                        // --- List<T>: init the list if null, then advance
+                        // currentObject to the first element ---
+
                         if (currentProperty.PropertyType.IsGenericType &&
                             currentProperty.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
                         {
                             System.Type genericArgumentType = currentProperty.PropertyType
                                 .GetGenericArguments()[0];
 
+                            // Known issue: redundant GetProperty() call — should
+                            // use currentProperty.GetValue(currentObject) instead.
                             if (currentObject.GetType()
                                 .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
                                     BindingFlags.Instance |
                                     BindingFlags.Public).GetValue(currentObject) == null)
                             {
-                                // Reassign genericArgumentType to currentPropertyType
-                                // to make the code easier to read later on.
                                 System.Type currentPropertyType = genericArgumentType;
 
-                                // If the LIST is of an INTERFACE type,
-                                // instantiate a list of all types that implement
-                                // the interface, ensuring correct GQL fields in
-                                // query fragments
+                                // --- List<Interface>: create ALL implementing types ---
                                 if (genericArgumentType.IsInterface)
                                 {
-                                    // Get a list of concrete class instances
+                                    // Use reflection to call the generic method
+                                    // InterfaceHelper.CreateInstancesOfImplementingTypes<T>()
+                                    // with the correct type parameter.
                                     MethodInfo typeInstancesMethod =
                                         typeof(InterfaceHelper)
                                         .GetMethod("CreateInstancesOfImplementingTypes");
@@ -322,6 +420,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
                                     IList value = (IList)getInstancesMethod.Invoke(null, parameters);
 
+                                    // Known issue: implementingInstances is dead code —
+                                    // computed but never used.
                                     IList implementingInstances =
                                         InterfaceHelper
                                         .CreateInstancesOfImplementingTypes<object>(genericArgumentType);
@@ -329,14 +429,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
                                     IList rtnObjs = CopyList(value);
                                     rtnObjs.Clear();
 
-                                    // Build remaining property paths from current depth onward.
-                                    // e.g. if requestedProperty is "nodes.id" and we're at depth i=0 ("nodes"),
-                                    // the child types need ["id"], not ["nodes.id"].
+                                    // Strip the parent prefix from property paths before
+                                    // recursing into implementing types.
+                                    // e.g. ["nodes.id", "nodes.name"] at depth i=0 ("nodes")
+                                    //    → ["id", "name"] for each implementing type.
                                     string[] remainingProperties = requestedProperties
                                         .Select(rp => {
                                             string[] parts = rp.Split('.');
-                                            // If this property shares the same prefix up to depth i,
-                                            // strip that prefix and pass the rest.
                                             if (parts.Length > i + 1 && string.Equals(parts[i], requestedPropertyTree[i], StringComparison.OrdinalIgnoreCase))
                                             {
                                                 return string.Join(".", parts.Skip(i + 1));
@@ -363,7 +462,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
                                     currentProperty.SetValue(currentObject, rtnObjs);
                                     currentObject = rtnObjs[0];
                                 }
-                                else //It's not an interface, just init a type
+                                // --- List<ConcreteType>: create one element ---
+                                else
                                 {
                                     IList value = (IList)Activator.
                                         CreateInstance(currentProperty.PropertyType)
@@ -375,8 +475,10 @@ namespace RubrikSecurityCloud.PowerShell.Private
                                     currentObject = value[0];
                                 }
                             }
+                            // List already exists — advance into its first element.
                             else
                             {
+                                // Known issue: redundant GetProperty() call.
                                 IList value = (IList)currentObject?.GetType()?
                                     .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
@@ -387,10 +489,12 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
                             continue;
                         }
-                        //If a class, load or instantiate it
+
+                        // --- Class: instantiate if null, then advance ---
+
                         if (currentProperty.PropertyType.IsClass)
                         {
-    
+                            // Known issue: redundant GetProperty() call.
                             if (currentObject.GetType()
                                 .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
@@ -403,6 +507,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             }
                             else
                             {
+                                // Known issue: redundant GetProperty() call.
                                 object item = currentObject.GetType()
                                 .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
@@ -414,10 +519,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
                             continue;
                         }
-                        //If interface, get a compatible concrete class
+
+                        // --- Single interface (not a list): pick first
+                        // implementing type ---
+
                         if (currentProperty.PropertyType.IsInterface)
                         {
-                            //Console.WriteLine($"Property {currentProperty.Name} is an Interface");
+                            // Known issue: redundant GetProperty() call.
                             if (currentObject.GetType()
                                 .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
@@ -430,6 +538,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             }
                             else
                             {
+                                // Known issue: redundant GetProperty() call.
                                 object item = currentObject.GetType()
                                     .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
@@ -440,10 +549,12 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             continue;
                         }
 
-                        //If enum
+                        // --- Scalar leaf types: set sentinel values ---
+
                         else if (currentProperty.PropertyType.IsEnum ||
                             IsNullableEnum(currentProperty))
                         {
+                            // Always picks index 0, usually UNKNOWN/UNSPECIFIED.
                             currentProperty.SetValue(currentObject,
                                 Enum.GetValues(GetNullableUnderlyingType(currentProperty))
                                 .GetValue(0));
@@ -490,6 +601,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
             }
 		}
 
+        /// <summary>
+        /// Deep-copy an IList (preserving its concrete generic type).
+        /// </summary>
         private static IList CopyList(IList source)
         {
             IList copy = (IList)Activator.CreateInstance(source.GetType());
@@ -501,4 +615,3 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
     }
 }
-
