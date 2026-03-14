@@ -1,6 +1,6 @@
 # Changelog
 
-## Version TBD
+## Version 1.15.20260309
 
 New Features:
 - `Get-RscHelp` default search now shows queries and mutations with
@@ -819,4 +819,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
