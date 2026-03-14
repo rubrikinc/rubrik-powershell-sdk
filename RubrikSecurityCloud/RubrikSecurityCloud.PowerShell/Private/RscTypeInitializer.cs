@@ -274,10 +274,10 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
                         if (currentProperty == null)
                         {
-                            //Console.WriteLine($"WARN: Unable to find property: " +
-                            //    $"'{requestedPropertyTree[0]}' when evaluating " +
-                            //    $"'{ requestedProperty }'");
-                            continue;
+                            throw new Exception(
+                                $"Property '{requestedPropertyTree[i]}' not found on type " +
+                                $"'{currentObject.GetType().Name}' when evaluating '{requestedProperty}'."
+                            );
                         }
 
                         //If current property is a string
@@ -329,11 +329,35 @@ namespace RubrikSecurityCloud.PowerShell.Private
                                     IList rtnObjs = CopyList(value);
                                     rtnObjs.Clear();
 
+                                    // Build remaining property paths from current depth onward.
+                                    // e.g. if requestedProperty is "nodes.id" and we're at depth i=0 ("nodes"),
+                                    // the child types need ["id"], not ["nodes.id"].
+                                    string[] remainingProperties = requestedProperties
+                                        .Select(rp => {
+                                            string[] parts = rp.Split('.');
+                                            // If this property shares the same prefix up to depth i,
+                                            // strip that prefix and pass the rest.
+                                            if (parts.Length > i + 1 && string.Equals(parts[i], requestedPropertyTree[i], StringComparison.OrdinalIgnoreCase))
+                                            {
+                                                return string.Join(".", parts.Skip(i + 1));
+                                            }
+                                            return null;
+                                        })
+                                        .Where(rp => rp != null)
+                                        .ToArray();
+
                                     foreach (var item in value)
                                     {
-                                        rtnObjs.Add(InitializeTypeWithSelectedProperties(
-                                            item.GetType().Name,
-                                            requestedProperties));
+                                        if (remainingProperties.Length > 0)
+                                        {
+                                            rtnObjs.Add(InitializeTypeWithSelectedProperties(
+                                                item.GetType().Name,
+                                                remainingProperties));
+                                        }
+                                        else
+                                        {
+                                            rtnObjs.Add(item);
+                                        }
                                     }
 
                                     currentProperty.SetValue(currentObject, rtnObjs);
@@ -366,7 +390,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         //If a class, load or instantiate it
                         if (currentProperty.PropertyType.IsClass)
                         {
-                            //Console.WriteLine($"Property {currentProperty.Name} is a Class");
+    
                             if (currentObject.GetType()
                                 .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |

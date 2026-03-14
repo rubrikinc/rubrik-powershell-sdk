@@ -190,6 +190,43 @@ tab-completion.
 Do not hand-edit files under `RubrikSecurityCloud.Schema/` —
 they are regenerated from the upstream schema.
 
+### Null Semantics and Enum Ambiguity
+
+The SDK uses .NET objects both as **field specs** (to describe which
+fields to request) and as **response containers** (to hold the
+server's answer). The convention:
+
+- A **null** property means "don't request this field."
+- A **non-null** property means "request this field." The actual
+  value is irrelevant for the request — it's just a marker.
+
+For most types this works cleanly. `Get-RscType -InitialProperties`
+sets sentinel values to mark fields as requested:
+
+| Property type     | Sentinel value              |
+|-------------------|-----------------------------|
+| `string`          | `"FETCH"`                   |
+| `bool` / `bool?`  | `true`                     |
+| `int` / `int?`    | `0`                        |
+| `DateTime?`       | `new DateTime()`           |
+| `enum?`           | First enum value (index 0) |
+
+When the response comes back, the server replaces sentinels with
+real data. For strings, `"FETCH"` is obviously a sentinel. For
+nullable scalars, a null response means the field was empty.
+
+**Enums deserve a note.** `Get-RscType -InitialProperties` sets
+enum fields to index 0 (almost always `UNKNOWN` or `UNSPECIFIED`)
+to mark them as "requested." This might look like it could create
+an ambiguity with actual server responses — but it doesn't.
+
+The field-spec object is only used to generate the GraphQL query
+string. The response is deserialized into a **fresh** object
+(`JsonConvert.DeserializeObject<T>` in `RscGraphQLClientGenericCall`),
+with `NullValueHandling.Ignore` — so any field absent from the JSON
+stays `null` on the new object. The sentinel values from the
+field-spec object never carry over to the response.
+
 ## Query Lifecycle
 
 Here is what happens when you run:
