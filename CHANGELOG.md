@@ -1,6 +1,6 @@
 # Changelog
 
-## Version TBD
+## Version 1.16.20260309
 
 Fixes:
 - Fixed PowerShell 5.1 compatibility: replaced `??` (null-coalescing) operator
@@ -826,4 +826,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
