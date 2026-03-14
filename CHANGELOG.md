@@ -11,6 +11,12 @@ New Features:
 - Version mismatch warnings now show whether the SDK is older or newer
   than the server, display the number of days apart, and use Info level
   for minor drift (<30 days) vs Warning for significant drift (#225)
+- New `/ask` Claude Code skill: answer any question about the SDK,
+  grounded in the actual codebase. Accepts plain text or a URL
+  (Slack thread, GitHub issue, web page) as input, extracts the
+  question, researches the codebase, and provides a copy-pasteable
+  anonymized answer. Assumes connectivity with external services
+  (e.g. Slack, GitHub) is established outside of this skill.
 
 Fixes:
 - AutoField no longer includes non-GA fields in query field selection (#219)
