@@ -29,9 +29,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
     ///     user-provided values (for -InitialValues)
     ///
     /// Known issues:
-    ///   - Assembly.Load("RubrikSecurityCloud.Schema") is called on every
-    ///     invocation of GetAllTypeNames() and GetTypeByName(). The assembly
-    ///     is immutable at runtime and should be cached in a static field.
     ///   - GetAllTypeNames() iterates all types in the assembly on each call.
     ///     Combined with the tab completer calling it on every tab press,
     ///     this is unnecessarily expensive.
@@ -46,6 +43,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
     /// </summary>
     public class RscTypeInitializer
     {
+        /// <summary>
+        /// Cached reference to the RubrikSecurityCloud.Schema assembly.
+        /// Loaded once on first access; immutable at runtime.
+        /// </summary>
+        private static readonly Assembly _schemaAssembly =
+            Assembly.Load("RubrikSecurityCloud.Schema")
+            ?? throw new Exception("Unable to load RubrikSecurityCloud.Schema");
 
         /// <summary>
         /// Check if a PropertyInfo represents a Nullable&lt;Enum&gt;.
@@ -83,7 +87,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// Returns output types (subclasses of BaseType), input types (IInput),
         /// or interfaces (IFieldSpec), depending on the interfaces flag.
         ///
-        /// Known issue: loads the assembly and scans all types on every call.
         /// </summary>
         public static List<RscTypeSummary> GetAllTypeNames(
                string nameFilter = null,
@@ -93,13 +96,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             System.Type baseType = typeof(BaseType);
             System.Type inputInterface = typeof(IInput); // For input types
             System.Type fieldSpecInterface = typeof(IFieldSpec);
-            var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
-            if (assembly == null)
-            {
-                throw new Exception(
-                    "Unable to load RubrikSecurityCloud.Schema");
-            }
-            var allTypes = assembly.GetTypes();
+            var allTypes = _schemaAssembly.GetTypes();
             foreach (var type in allTypes)
             {
                 if (type.Namespace != "RubrikSecurityCloud.Types")
@@ -135,22 +132,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// Resolve a short type name (e.g. "Cluster") to its System.Type
         /// in the RubrikSecurityCloud.Types namespace. Case-insensitive.
         /// Returns null if not found.
-        ///
-        /// Known issue: loads the assembly on every call.
         /// </summary>
         public static System.Type GetTypeByName(string name)
         {
-            var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
-
-            if (assembly != null)
-            {
-                var type = assembly.GetType("RubrikSecurityCloud.Types." + name, false, true);
-                return type;
-            }
-            else
-            {
-                return null;
-            }
+            return _schemaAssembly.GetType(
+                "RubrikSecurityCloud.Types." + name, false, true);
         }
 
         /// <summary>
