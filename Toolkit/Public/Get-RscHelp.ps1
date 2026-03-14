@@ -551,11 +551,11 @@ function Get-RscHelp {
             $mutRts   = @{}
             foreach ($q in $queries) {
                 $rt = try { $SM::ReturnTypeLookupByGqlRootField($q) } catch { $null }
-                if ($rt) { $queryRts[$rt] = ($queryRts[$rt] ?? 0) + 1 }
+                if ($rt) { $queryRts[$rt] = ([int]$queryRts[$rt]) + 1 }
             }
             foreach ($m in $mutations) {
                 $rt = try { $SM::ReturnTypeLookupByGqlRootField($m) } catch { $null }
-                if ($rt) { $mutRts[$rt] = ($mutRts[$rt] ?? 0) + 1 }
+                if ($rt) { $mutRts[$rt] = ([int]$mutRts[$rt]) + 1 }
             }
 
             Write-Output "# Return Types"
