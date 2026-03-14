@@ -2,11 +2,10 @@
 
 ## Version TBD
 
-New Features:
-
 Fixes:
-
-Breaking Changes:
+- Fixed PowerShell 5.1 compatibility: replaced `??` (null-coalescing) operator
+  in `Get-RscHelp` with PS 5.1-compatible syntax
+- Build script now skips PowerShell 5.1 tests on non-Windows platforms
 
 ## Version 1.15.20260309
 
