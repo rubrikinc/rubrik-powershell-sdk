@@ -1,6 +1,6 @@
 BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
-    $Global:diag = New-E2eDiagnostics -Topic "Account"
+    $Global:diag = New-E2eDiagnostics -Api "Account"
 }
 
 Describe -Name 'Account' -Tag 'E2E' -Fixture {

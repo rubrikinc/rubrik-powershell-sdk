@@ -41,14 +41,14 @@ function New-E2eTestSlaName {
 function New-E2eDiagnostics {
     <#
     .SYNOPSIS
-    Create a new diagnostics object for a topic.
+    Create a new diagnostics object for an API area.
     #>
     param(
         [Parameter(Mandatory)]
-        [string]$Topic
+        [string]$Api
     )
     @{
-        Topic  = $Topic
+        Api    = $Api
         Checks = [System.Collections.ArrayList]::new()
     }
 }
@@ -75,7 +75,7 @@ function Save-E2eDiagnostics {
     <#
     .SYNOPSIS
     Write the diagnostics object to a YAML file under the SDK config directory.
-    Output path: ~/.config/powershell/rubrik-powershell-sdk/diagnostics/<Topic>.diagnostics.yaml
+    Output path: ~/.config/powershell/rubrik-powershell-sdk/diagnostics/<Api>.diagnostics.yaml
     #>
     param(
         [Parameter(Mandatory)]
@@ -85,10 +85,27 @@ function Save-E2eDiagnostics {
     if (-not (Test-Path $configDir)) {
         New-Item -ItemType Directory -Path $configDir -Force | Out-Null
     }
-    $path = Join-Path $configDir "$($Diag.Topic).diagnostics.yaml"
+    $path = Join-Path $configDir "$($Diag.Api).diagnostics.yaml"
 
-    $yaml = "topic: $($Diag.Topic)`n"
+    # Capture environment info
+    $sdkVersion = try { (Get-Module RubrikSecurityCloud).Version.ToString() } catch { "unknown" }
+    $deployVersion = try {
+        $v = (New-RscQuery -GqlQuery deploymentVersion).Invoke()
+        if ($v) { $v } else { "unknown" }
+    } catch { "unknown" }
+    $deployName = try {
+        $a = Get-RscAccount -ErrorAction SilentlyContinue
+        if ($a -and $a.AccountId) { $a.AccountId } else { "unknown" }
+    } catch { "unknown" }
+
+    $schemaVersion = try { [RubrikSecurityCloud.Types.SchemaMeta]::GraphqlSchemaVersion } catch { "unknown" }
+
+    $yaml = "api: $($Diag.Api)`n"
     $yaml += "timestamp: `"$(Get-Date -Format 'o')`"`n"
+    $yaml += "sdk_version: `"$sdkVersion`"`n"
+    $yaml += "schema_version: `"$schemaVersion`"`n"
+    $yaml += "deploy_version: `"$deployVersion`"`n"
+    $yaml += "deploy_name: `"$deployName`"`n"
     $yaml += "checks:`n"
     $passed = 0; $skipped = 0; $failed = 0
     foreach ($c in $Diag.Checks) {
