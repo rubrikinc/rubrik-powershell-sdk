@@ -59,32 +59,6 @@ $result.Nodes.Count   # 25 (or fewer if less exist)
 > or workloads, this can be slow and memory-intensive. Set `first` to
 > cap the total results when you don't need the full set.
 
-## When You Need Per-Page Control
-
-In rare cases (progress reporting, streaming to disk, etc.) you may
-want to handle pages yourself. Disable auto-pagination by managing
-the cursor manually with `New-RscQuery -Gql`:
-
-```powershell
-$q = New-RscQuery -Gql vSphereVmNewConnection `
-    -Var @{ first = 100 } `
-    -AddField PageInfo.HasNextPage, PageInfo.EndCursor, Nodes.Name
-
-do {
-    $result = $q | Invoke-Rsc
-    # Process this page
-    $result.Nodes | Export-Csv -Append vms.csv
-    Write-Host "Fetched $($result.Nodes.Count) VMs..."
-
-    $q.Var.after = $result.PageInfo.EndCursor
-} while ($result.PageInfo.HasNextPage)
-```
-
-Note: when `after` is set on the query before calling `Invoke-Rsc`,
-auto-pagination still applies from that cursor forward. To fetch a
-single page only, process the result and break before the next
-iteration.
-
 ## Tips
 
 - **You usually don't need pagination code** — `Invoke-Rsc` handles it.
