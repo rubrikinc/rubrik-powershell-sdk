@@ -2,13 +2,17 @@
 
 ## 1. Prerequisites
 
-- You need to be an admin on the github repo.
-- If you know what's on the dev branch right now is exactly
-  what you want to release, you can skip to [step 3](#3-create-a-new-release).
-- Step 2 is about curating the release: changing the version number,
-  updating the changelog, etc.
+- You need to be an admin on the GitHub repo.
+- On the `devel` branch with a clean working tree (`git status`).
+- `gh` CLI is authenticated (`gh auth status`).
+- `$env:RSC_PSGalleryKeyFile` is set and points to a valid JSON file
+  containing `{ "apiKey": "..." }`.
 
 ## 2. Curate the release
+
+> **Shortcut**: If the last commit on `devel` was the automatic schema
+> update pipeline, it succeeded, and no PR was merged since then, you can
+> skip the build/test in step 2.2 and go straight to step 2.3.
 
 ### 2.1. Check what is currently released
 
@@ -16,21 +20,14 @@
 .\Utils\admin\Test-RscSdkRelease.ps1
 ```
 
-This script checks the current release status of the SDK.
-It shows if the current release is coherent: what is on the `main`
-branch on GitHub is what's on the PowerShell gallery, etc.
+This checks the current release status: whether PSGallery version,
+GitHub release tag, and `main` branch all agree. If they don't,
+investigate before proceeding.
 
-### 2.2. Check the release candidate
+### 2.2. Build and test
 
-The release candidate is the `devel` branch. 
-If you are positive that the last commit on the devel branch
-was the automatic schema update pipeline,
-and it succeeded, and not PR was merged since then,
-then you can skip this step and go to 2.3. ; otherwise:
-Make sure the devel branch is up to date and
-clean of any uncommitted changes.
-
-Run a local build and test:
+Make sure the `devel` branch is up to date and clean of any uncommitted
+changes. Run a local build and test:
 
 ```powershell
 .\Utils\Build-RscSdk.ps1
@@ -38,7 +35,7 @@ Run a local build and test:
 
 ### 2.3. Curate the changelog
 
-The top entry in `CHANGELOG.md` should say `TBD` :
+The top entry in `CHANGELOG.md` should say `TBD`:
 
 ```markdown
 # Changelog
@@ -48,83 +45,79 @@ The top entry in `CHANGELOG.md` should say `TBD` :
 ... changes ...
 ```
 
-At this point leave the "TBD" as is, we will update it next. Make sure
-the content of the last entry is correct. In particular, make sure PR
-links are included and that the PRs are closed.
+Leave the "TBD" as is — we will update it next. Make sure the content of
+the last entry is correct. In particular, make sure PR links are included
+and that the PRs are closed.
 
-### 2.4. bump the version
+### 2.4. Bump the version
 
 ```powershell
 .\Utils\admin\Set-RscSdkVersion.ps1 <maj>.<min>
 ```
 
-and push to the branch:
+Commit and push to the branch:
 
 ```powershell
 git commit -a -m "Bump version to <maj>.<min>"
 git push
 ```
 
-### 2.5. Test the release candidate
+### 2.5. Validate the release candidate
 
 We're not running SDK tests here, we are only testing if the package
 is well formed.
 
 ```powershell
-PS > .\Utils\admin\Test-RscSdkCandidate.ps1
-
-version in RubrikSecurityCloud.psd1: 1.11
-version in CHANGELOG.md:             1.11
-Published on GitHub repo:            False
-
-This branch is a candidate for a release.
-
-semanticVersion isPublished versionTag   versionEntry
---------------- ----------- ----------   ------------
-1.11                  False Version_1.11 Version 1.11…
+.\Utils\admin\Test-RscSdkCandidate.ps1
 ```
+
+Confirms: not on `main`, changelog version matches `.psd1`, tag not
+already published on GitHub.
 
 ## 3. Create a new release
 
-### 3.1. From the local machine
-
-We first do a dry run to see if any error occurs during build, tests, packaging,
-updating the `main` branch (locally),
-or publishing to the PowerShell gallery (with `-WhatIf`).
+### 3.1. Dry run
 
 ```powershell
-PS> .\Utils\admin\New-RscSdkRelease.ps1
-...
-Dry run completed. Local changes were not pushed to the remote repository.
+.\Utils\admin\New-RscSdkRelease.ps1
 ```
 
-If no error occured, run the script again with the `-NotDry` switch:
+Without `-NotDry`, this runs the full release locally without pushing
+or publishing. Review the output for any issues.
+
+### 3.2. Execute release
 
 ```powershell
 .\Utils\admin\New-RscSdkRelease.ps1 -NotDry
 ```
 
-## 4. Troubleshoting
+This will:
+1. Validate candidate again
+2. Checkout `main` and `git reset --hard devel`
+3. Build release configuration
+4. Commit and force-push `main`
+5. Create GitHub release via `gh release create`
+6. Publish to PowerShell Gallery
+7. Return to `devel`
+8. Add new `## Version TBD` changelog entry and push
+
+## 4. Post-release verification
 
 ```powershell
-Exception:
-Line |
-     | Remove-Item:
-     | ..\Utils\Clean-RscSdk.ps1:15 Line
-     | -Recurse -Force .\Output.Release -ErrorAction Stop
-     | Access to the path
-     | '..\Output.Release\...'
-     | is denied.
+.\Utils\admin\Test-RscSdkRelease.ps1
 ```
 
-Part of the release process is to clean up build and output directories,
-if you're on Windows and you get this error, it's likely because you have
-a PowerShell session or an IDE holding files that the script is
-trying to clean up. Close everything and start a new `pwsh.exe` session.
+Confirm everything is coherent again (PSGallery, GitHub tag, `main` branch).
 
-If you keep running into this issue on Windows, you can try to run the
-script in a sub-session:
+## 5. Troubleshooting
 
-```powershell
-> pwsh.exe -NoProfile -Command "& { <SCRIPT>.ps1 }"
-```
+- **PSGallery publish fails**: check `$env:RSC_PSGalleryKeyFile` and API key validity.
+- **`gh release create` fails**: check `gh auth status` and repo permissions.
+- **Version mismatch**: run `.\Utils\admin\Test-RscSdkRelease.ps1` to diagnose.
+- **Build fails on release config**: run `make clean` then retry.
+- **Windows file-lock error** (`Access to the path ... is denied`):
+  A PowerShell session or IDE is holding files the script needs to clean.
+  Close everything and start a new `pwsh.exe` session, or run in a sub-session:
+  ```powershell
+  pwsh.exe -NoProfile -Command "& { <SCRIPT>.ps1 }"
+  ```

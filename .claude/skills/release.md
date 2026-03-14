@@ -20,6 +20,11 @@ This checks that PSGallery version, GitHub latest release tag, and `main`
 branch psd1+changelog all agree. If they don't, investigate before proceeding.
 
 ### 2. Build and test
+
+> **Shortcut**: If the last commit on `devel` was the automatic schema
+> update pipeline, it succeeded, and no PR was merged since then, you can
+> skip this step and go straight to step 3.
+
 ```powershell
 ./Utils/Build-RscSdk.ps1
 ```
