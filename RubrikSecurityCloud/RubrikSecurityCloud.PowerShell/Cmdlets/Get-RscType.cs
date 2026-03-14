@@ -51,10 +51,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// - The -Interfaces switch is at Position=3 in GetTypeList, but
     ///   Position=2 is unused, creating a gap in positional parameters.
     ///
-    /// - The tab completer (RscTypeNameCompleter) calls GetAllTypeNames()
-    ///   on every tab press, which does a full assembly scan each time.
-    ///   Should be cached in a static field.
-    ///
     /// - RscTypeSummary only has a Name property. It adds no value over
     ///   returning plain strings and forces users to do $result.Name.
     /// </description>
@@ -137,8 +133,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         /// <summary>
         /// Tab-completion for the -Name parameter.
-        /// Calls GetAllTypeNames() on every invocation — no caching.
-        /// Known issue: full assembly scan on each tab press.
+        /// Calls GetAllTypeNames() on every invocation, but the underlying
+        /// type list is cached after the first call.
         /// </summary>
         public class RscTypeNameCompleter : IArgumentCompleter
         {

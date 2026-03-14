@@ -29,9 +29,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
     ///     user-provided values (for -InitialValues)
     ///
     /// Known issues:
-    ///   - GetAllTypeNames() iterates all types in the assembly on each call.
-    ///     Combined with the tab completer calling it on every tab press,
-    ///     this is unnecessarily expensive.
     ///   - InitializeTypeWithSelectedProperties is a ~200-line method with
     ///     deeply nested if/else chains handling every property type (string,
     ///     list, interface, class, enum, bool, int, long, double, DateTime).
@@ -83,49 +80,82 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// List all RSC schema types whose names contain nameFilter (case-insensitive).
-        /// Returns output types (subclasses of BaseType), input types (IInput),
-        /// or interfaces (IFieldSpec), depending on the interfaces flag.
-        ///
+        /// Cached sorted list of all class type names (output + input types).
+        /// Built lazily on first access from the schema assembly.
         /// </summary>
-        public static List<RscTypeSummary> GetAllTypeNames(
-               string nameFilter = null,
-               bool interfaces = false)
+        private static List<RscTypeSummary> _allClassNames = null;
+
+        /// <summary>
+        /// Cached sorted list of all interface type names (IFieldSpec interfaces).
+        /// Built lazily on first access from the schema assembly.
+        /// </summary>
+        private static List<RscTypeSummary> _allInterfaceNames = null;
+
+        /// <summary>
+        /// Scan the schema assembly once and populate both caches.
+        /// </summary>
+        private static void EnsureTypeNameCaches()
         {
-            List<RscTypeSummary> types = new List<RscTypeSummary>();
+            if (_allClassNames != null)
+            {
+                return;
+            }
+
+            var classes = new List<RscTypeSummary>();
+            var ifaces = new List<RscTypeSummary>();
             System.Type baseType = typeof(BaseType);
-            System.Type inputInterface = typeof(IInput); // For input types
+            System.Type inputInterface = typeof(IInput);
             System.Type fieldSpecInterface = typeof(IFieldSpec);
-            var allTypes = _schemaAssembly.GetTypes();
-            foreach (var type in allTypes)
+
+            foreach (var type in _schemaAssembly.GetTypes())
             {
                 if (type.Namespace != "RubrikSecurityCloud.Types")
                 {
                     continue;
                 }
-                if (nameFilter != null
-                    && !type.Name.ToLower().Contains(nameFilter.ToLower()))
+                // Output types (derived from BaseType)
+                if (type.IsClass && type.IsSubclassOf(baseType))
                 {
-                    continue;
+                    classes.Add(new RscTypeSummary { Name = type.Name });
                 }
-                // Add output types (derived from BaseType)
-                if (!interfaces && type.IsClass && type.IsSubclassOf(baseType))
+                // Input types (implementing IInput)
+                else if (type.IsClass && inputInterface.IsAssignableFrom(type))
                 {
-                    types.Add(new RscTypeSummary { Name = type.Name });
+                    classes.Add(new RscTypeSummary { Name = type.Name });
                 }
-                // Add input types (implementing IInput)
-                else if (!interfaces && type.IsClass && inputInterface.IsAssignableFrom(type))
+                // Interfaces (implementing IFieldSpec)
+                if (type.IsInterface && fieldSpecInterface.IsAssignableFrom(type))
                 {
-                    types.Add(new RscTypeSummary { Name = type.Name });
-                }
-                // Add interfaces if requested
-                else if (interfaces && type.IsInterface && fieldSpecInterface.IsAssignableFrom(type))
-                {
-                    types.Add(new RscTypeSummary { Name = type.Name });
+                    ifaces.Add(new RscTypeSummary { Name = type.Name });
                 }
             }
 
-            return types.OrderBy(type => type.Name).ToList();
+            _allClassNames = classes.OrderBy(t => t.Name).ToList();
+            _allInterfaceNames = ifaces.OrderBy(t => t.Name).ToList();
+        }
+
+        /// <summary>
+        /// List RSC schema types whose names contain nameFilter (case-insensitive).
+        /// Returns output+input types by default, or interfaces with interfaces=true.
+        /// Results are filtered from a cached list built on first call.
+        /// </summary>
+        public static List<RscTypeSummary> GetAllTypeNames(
+               string nameFilter = null,
+               bool interfaces = false)
+        {
+            EnsureTypeNameCaches();
+
+            var source = interfaces ? _allInterfaceNames : _allClassNames;
+
+            if (nameFilter == null)
+            {
+                return source;
+            }
+
+            var lowerFilter = nameFilter.ToLower();
+            return source
+                .Where(t => t.Name.ToLower().Contains(lowerFilter))
+                .ToList();
         }
 
         /// <summary>
