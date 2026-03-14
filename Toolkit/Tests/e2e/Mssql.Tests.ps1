@@ -1,6 +1,6 @@
 BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
-    $Global:diag = New-E2eDiagnostics -Topic "Mssql"
+    $Global:diag = New-E2eDiagnostics -Api "Mssql"
     $Global:data = @{
         databases    = $null
         sqlHosts     = $null

@@ -1,6 +1,6 @@
 BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
-    $Global:diag = New-E2eDiagnostics -Topic "Snapshot"
+    $Global:diag = New-E2eDiagnostics -Api "Snapshot"
     $Global:data = @{ snapshots = $null }
 
     # Try VMware VMs first, then MSSQL databases

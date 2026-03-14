@@ -4,3 +4,4 @@
 -nodes.snappableConnection
 -nodes.cdmRbacMigrationStatus
 -nodes.isTprEnabled
+-nodes.metricTimeSeriesNew

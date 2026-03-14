@@ -239,7 +239,7 @@ Output directory: $tkOutputDir
     $results = @()
     $srcDirs = @($Toolkit.PublicDir, $Toolkit.PrivateDir, $Toolkit.FormatDir, $Toolkit.OpDefaultDir, $Toolkit.OpDetailDir, $Toolkit.TestsDir, $Toolkit.TestsE2eDir)
     $different = $false
-    Get-ChildItem -Path $srcDirs | ForEach-Object {
+    Get-ChildItem -Path $srcDirs -File | ForEach-Object {
         $sourceFile = $_.FullName
         $outputFile = MatchingOutputFileName $sourceFile
         $diff = (CompareFiles $sourceFile $outputFile) 

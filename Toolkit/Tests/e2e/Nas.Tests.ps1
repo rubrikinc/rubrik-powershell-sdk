@@ -1,6 +1,6 @@
 BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
-    $Global:diag = New-E2eDiagnostics -Topic "Nas"
+    $Global:diag = New-E2eDiagnostics -Api "Nas"
     $Global:data = @{
         nasShares  = $null
         nasSystems = $null
