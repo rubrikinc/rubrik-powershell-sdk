@@ -13,80 +13,84 @@ pageInfo  — pagination metadata
 count     — total number of objects matching the query
 ```
 
-## Basic Pattern
+## Automatic Pagination
 
-### Fetch a single page
+`Invoke-Rsc` **automatically fetches and collates all pages** for you.
+You don't need to write pagination loops — just pipe your query and
+get all results back at once:
 
 ```powershell
-$q = New-RscQuery -Gql clusterConnection `
-    -Var @{ first = 10 } `
-    -AddField PageInfo.HasNextPage, PageInfo.EndCursor
-
+$q = New-RscQuery -Gql clusterConnection
 $result = $q | Invoke-Rsc
-$result.Nodes           # first 10 clusters
-$result.PageInfo        # { HasNextPage = True, EndCursor = "abc..." }
+$result.Nodes   # all clusters, across all pages
+$result.Count   # total count
 ```
 
-### Fetch all pages
+Behind the scenes, `Invoke-Rsc` detects `PageInfo` in the response,
+follows `endCursor` links, and collates all `Nodes` into a single
+result.
+
+## Controlling Page Size
+
+The page size (how many objects per API call) is controlled by:
+
+- `[RubrikSecurityCloud.Config]::ConnectionMaxPageSize` (default: 50)
+- The `first` variable on the query
 
 ```powershell
-$allNodes = @()
-
-$q = New-RscQuery -Gql clusterConnection `
-    -Var @{ first = 50 } `
-    -AddField PageInfo.HasNextPage, PageInfo.EndCursor
-
-do {
-    $result = $q | Invoke-Rsc
-    $allNodes += $result.Nodes
-
-    # Set cursor for next page
-    $q.Var.after = $result.PageInfo.EndCursor
-} while ($result.PageInfo.HasNextPage)
-
-Write-Host "Retrieved $($allNodes.Count) clusters total"
+# Change default page size for all queries in this session
+[RubrikSecurityCloud.Config]::ConnectionMaxPageSize = 200
 ```
 
-## Page Size
+## Limiting Total Results
 
-The `first` variable controls how many objects are returned per page.
-
-- Default page size (if `first` is not set): depends on the query
-- SDK connection max page size: controlled by
-  `[RubrikSecurityCloud.Config]::ConnectionMaxPageSize` (default: 50)
-- The server may enforce its own maximum
-
-## Complete Example: All vSphere VMs
+If you set `first` on the query, `Invoke-Rsc` stops after collecting
+that many objects total (not per page):
 
 ```powershell
-$allVms = @()
-$pageSize = 100
+# Get exactly the first 25 clusters
+$q = New-RscQuery -Gql clusterConnection -Var @{ first = 25 }
+$result = $q | Invoke-Rsc
+$result.Nodes.Count   # 25 (or fewer if less exist)
+```
 
+> **Large datasets**: If you don't set `first`, `Invoke-Rsc` fetches
+> *all* matching objects. On environments with thousands of snapshots
+> or workloads, this can be slow and memory-intensive. Set `first` to
+> cap the total results when you don't need the full set.
+
+## When You Need Per-Page Control
+
+In rare cases (progress reporting, streaming to disk, etc.) you may
+want to handle pages yourself. Disable auto-pagination by managing
+the cursor manually with `New-RscQuery -Gql`:
+
+```powershell
 $q = New-RscQuery -Gql vSphereVmNewConnection `
-    -Var @{ first = $pageSize } `
+    -Var @{ first = 100 } `
     -AddField PageInfo.HasNextPage, PageInfo.EndCursor, Nodes.Name
 
 do {
     $result = $q | Invoke-Rsc
-    $allVms += $result.Nodes
-    Write-Host "Fetched $($allVms.Count) of $($result.Count) VMs..."
+    # Process this page
+    $result.Nodes | Export-Csv -Append vms.csv
+    Write-Host "Fetched $($result.Nodes.Count) VMs..."
+
     $q.Var.after = $result.PageInfo.EndCursor
 } while ($result.PageInfo.HasNextPage)
-
-$allVms | Select-Object Id, Name | Format-Table
 ```
+
+Note: when `after` is set on the query before calling `Invoke-Rsc`,
+auto-pagination still applies from that cursor forward. To fetch a
+single page only, process the result and break before the next
+iteration.
 
 ## Tips
 
-- **Always add `PageInfo` fields** when you intend to paginate.
-  Use `-AddField PageInfo.HasNextPage, PageInfo.EndCursor`.
+- **You usually don't need pagination code** — `Invoke-Rsc` handles it.
+- **Set `first`** to limit total results on large datasets.
 - **Use `$result.Count`** to know the total number of matching objects
-  (not just on the current page).
-- **Reuse the query object** — just update `$q.Var.after` between
-  iterations. The field spec and other variables stay the same.
-- **Don't use `$q.Var.last` / `$q.Var.before`** unless you need
-  backward pagination. Forward pagination with `first`/`after` is
-  the standard pattern.
+  (not just what was fetched).
 
 ## Related Documentation
 
