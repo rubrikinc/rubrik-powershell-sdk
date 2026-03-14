@@ -5,7 +5,7 @@ Describe 'Get-RscType' {
     Context 'When called with the -ListAvailable parameter' {
         It 'Should return a list of valid Rsc types' {
             $result = Get-RscType -ListAvailable
-            $result | Should -BeOfType [RubrikSecurityCloud.PowerShell.Models.RscTypeSummary]
+            $result | Should -BeOfType [string]
             $result.Count | Should -BeGreaterThan 0
         }
     }

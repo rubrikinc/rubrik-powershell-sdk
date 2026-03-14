@@ -6,7 +6,6 @@ using System.Management.Automation;
 using System.Management.Automation.Language;
 using System.Reflection;
 using RubrikSecurityCloud;
-using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
@@ -51,8 +50,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// - The -Interfaces switch is at Position=3 in GetTypeList, but
     ///   Position=2 is unused, creating a gap in positional parameters.
     ///
-    /// - RscTypeSummary only has a Name property. It adds no value over
-    ///   returning plain strings and forces users to do $result.Name.
     /// </description>
     /// <example>
     /// Create a filter input object with "a" "b" for text filters.
@@ -146,12 +143,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 CommandAst commandAst,
                 IDictionary fakeBoundParameters)
             {
-                var validTypeSummaries = RscTypeInitializer.GetAllTypeNames();
-                var validNames = validTypeSummaries
-                    .Select(summary => summary.Name)
+                var validNames = RscTypeInitializer.GetAllTypeNames()
                     .Where(name => string.IsNullOrEmpty(wordToComplete) ||
-                                   name.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase))
-                    .OrderBy(name => name);
+                                   name.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase));
 
                 return validNames.Select(name => new CompletionResult(name)).ToList();
             }

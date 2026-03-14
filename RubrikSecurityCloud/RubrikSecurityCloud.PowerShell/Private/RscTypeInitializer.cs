@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using RubrikSecurityCloud.PowerShell.Models;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Collections;
@@ -83,13 +82,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// Cached sorted list of all class type names (output + input types).
         /// Built lazily on first access from the schema assembly.
         /// </summary>
-        private static List<RscTypeSummary> _allClassNames = null;
+        private static List<string> _allClassNames = null;
 
         /// <summary>
         /// Cached sorted list of all interface type names (IFieldSpec interfaces).
         /// Built lazily on first access from the schema assembly.
         /// </summary>
-        private static List<RscTypeSummary> _allInterfaceNames = null;
+        private static List<string> _allInterfaceNames = null;
 
         /// <summary>
         /// Scan the schema assembly once and populate both caches.
@@ -101,8 +100,8 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 return;
             }
 
-            var classes = new List<RscTypeSummary>();
-            var ifaces = new List<RscTypeSummary>();
+            var classes = new List<string>();
+            var ifaces = new List<string>();
             System.Type baseType = typeof(BaseType);
             System.Type inputInterface = typeof(IInput);
             System.Type fieldSpecInterface = typeof(IFieldSpec);
@@ -116,30 +115,30 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 // Output types (derived from BaseType)
                 if (type.IsClass && type.IsSubclassOf(baseType))
                 {
-                    classes.Add(new RscTypeSummary { Name = type.Name });
+                    classes.Add(type.Name);
                 }
                 // Input types (implementing IInput)
                 else if (type.IsClass && inputInterface.IsAssignableFrom(type))
                 {
-                    classes.Add(new RscTypeSummary { Name = type.Name });
+                    classes.Add(type.Name);
                 }
                 // Interfaces (implementing IFieldSpec)
                 if (type.IsInterface && fieldSpecInterface.IsAssignableFrom(type))
                 {
-                    ifaces.Add(new RscTypeSummary { Name = type.Name });
+                    ifaces.Add(type.Name);
                 }
             }
 
-            _allClassNames = classes.OrderBy(t => t.Name).ToList();
-            _allInterfaceNames = ifaces.OrderBy(t => t.Name).ToList();
+            _allClassNames = classes.OrderBy(n => n).ToList();
+            _allInterfaceNames = ifaces.OrderBy(n => n).ToList();
         }
 
         /// <summary>
-        /// List RSC schema types whose names contain nameFilter (case-insensitive).
+        /// List RSC schema type names containing nameFilter (case-insensitive).
         /// Returns output+input types by default, or interfaces with interfaces=true.
         /// Results are filtered from a cached list built on first call.
         /// </summary>
-        public static List<RscTypeSummary> GetAllTypeNames(
+        public static List<string> GetAllTypeNames(
                string nameFilter = null,
                bool interfaces = false)
         {
@@ -154,7 +153,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
             var lowerFilter = nameFilter.ToLower();
             return source
-                .Where(t => t.Name.ToLower().Contains(lowerFilter))
+                .Where(n => n.ToLower().Contains(lowerFilter))
                 .ToList();
         }
 

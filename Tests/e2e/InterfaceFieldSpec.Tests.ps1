@@ -13,7 +13,7 @@ Describe -Name "Test field specs for interface fields" -Fixture {
         $interfaces = (Get-RscType -ListAvailable -Interfaces)
         # Inf1 should be one of them
         $inf = "MssqlTopLevelDescendantType"
-        ($interfaces | Where-Object { $_.Name -eq $inf }).Count | Should -Be 1
+        ($interfaces | Where-Object { $_ -eq $inf }).Count | Should -Be 1
         # inf should have at least one implementation
         $impls = (Get-RscType -Interface $inf)
         $impls.Count | Should -BeGreaterThan 0
