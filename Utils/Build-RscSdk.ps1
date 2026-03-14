@@ -101,14 +101,18 @@ if (-not $NoTests) {
 
     # Run tests in a PowerShell 5.1 sub-process (if requested)
     if ($Pw5Tests -or $CI -or $Release) {
-        Write-Host "Running tests in PowerShell 5..."
-        
-        $pwsh5TestProcess = Start-Process -FilePath "powershell.exe" `
-            -ArgumentList $pwshArgs -NoNewWindow -Wait -PassThru
-        if ($pwsh5TestProcess.ExitCode -ne 0) {
-            Write-Error "PowerShell 5 tests failed."
-            exit $pwsh5TestProcess.ExitCode
+        if ($IsWindows -or (-not (Get-Variable IsWindows -ErrorAction SilentlyContinue))) {
+            Write-Host "Running tests in PowerShell 5..."
+
+            $pwsh5TestProcess = Start-Process -FilePath "powershell.exe" `
+                -ArgumentList $pwshArgs -NoNewWindow -Wait -PassThru
+            if ($pwsh5TestProcess.ExitCode -ne 0) {
+                Write-Error "PowerShell 5 tests failed."
+                exit $pwsh5TestProcess.ExitCode
+            }
+            Write-Host "Tests passed in PowerShell 5." -back green -fore blue
+        } else {
+            Write-Host "Skipping PowerShell 5 tests (not on Windows)." -fore yellow
         }
-        Write-Host "Tests passed in PowerShell 5." -back green -fore blue
     }
 }
