@@ -199,6 +199,11 @@ The `.csproj` has MSBuild targets that copy files to the output dir:
 - Toolkit Private scripts are dot-sourced on demand (not auto-loaded)
 - Do not edit `FormatsToProcess` in `.psd1` — managed by `UpdatePsd1.ps1`
 - Do not edit generated C# files under `RubrikSecurityCloud.Schema/generated/`
+- **PowerShell 5.1 compatibility**: All `.ps1` scripts under `Toolkit/` must
+  use syntax compatible with PS 5.1 (Windows Desktop edition). Avoid PS 7+
+  features: `??` (null-coalescing), `??=`, `?.` (null-conditional),
+  ternary `? :`, `||` / `&&` pipeline chain operators. The module's import
+  test (`Import.Tests.ps1`) verifies that PS 5.1 can load all scripts.
 
 ## CHANGELOG.md
 PRs that introduce customer-facing changes **must** update `CHANGELOG.md`.
@@ -218,3 +223,13 @@ The changelog is included in public releases, so write for SDK users.
 
 The top entry in `CHANGELOG.md` is `## Version TBD` during development.
 At release time, `Set-RscSdkVersion.ps1` replaces `TBD` with the version number.
+
+### Version Numbering
+Format: `Major.Minor.YYYYMMDD`
+- The `YYYYMMDD` date comes from the **schema version**, not today's date.
+  Read it from the first line of `docs/graphql/schema-public.graphql`
+  (e.g. `# v20260309-27` → use `20260309`, strip any `-*` suffix).
+- Schema-only update (no new features/fixes): keep the current minor, bump date.
+- Changelog has features, fixes, or breaking changes: bump minor at least +1.
+- Hotfixes use the next minor with the same schema date
+  (e.g. `1.15.20260309` → `1.16.20260309`).
