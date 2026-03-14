@@ -1,5 +1,0 @@
-{
-  "name": "release",
-  "description": "Walk through a manual release of the RSC PowerShell SDK",
-  "instructions": ".claude/skills/release.md"
-}

@@ -1,4 +1,9 @@
-# Skill: RSC PowerShell SDK Release
+---
+name: release
+description: Walk through a manual release of the RSC PowerShell SDK
+---
+
+# RSC PowerShell SDK Release
 
 Walk the user through a manual release of the RSC PowerShell SDK.
 All scripts are under `Utils/` and `Utils/admin/`.
@@ -20,11 +25,6 @@ This checks that PSGallery version, GitHub latest release tag, and `main`
 branch psd1+changelog all agree. If they don't, investigate before proceeding.
 
 ### 2. Build and test
-
-> **Shortcut**: If the last commit on `devel` was the automatic schema
-> update pipeline, it succeeded, and no PR was merged since then, you can
-> skip this step and go straight to step 3.
-
 ```powershell
 ./Utils/Build-RscSdk.ps1
 ```
@@ -36,6 +36,17 @@ Make sure all notable changes are listed with PR links.
 Sections: New Features, Bug Fixes, Breaking Changes.
 
 ### 4. Bump version
+
+**Version number convention**: `Major.Minor.YYYYMMDD`
+- The `YYYYMMDD` date comes from the schema version, NOT today's date.
+  Read it from the first line of `docs/graphql/schema-public.graphql`
+  (e.g. `# v20260309-27` → use `20260309`, strip any `-*` suffix).
+- Schema-only update (no new features/fixes): keep the current minor, bump the date
+  (e.g. `1.14.20260105` → `1.14.20260309`)
+- Changelog has new features, fixes, or breaking changes beyond a schema update:
+  bump minor at least +1 (e.g. `1.14.20260105` → `1.15.20260309`)
+
+Suggest the version to the user based on the changelog content, then run:
 ```powershell
 ./Utils/admin/Set-RscSdkVersion.ps1 -NewVersion "X.Y"
 ```
