@@ -337,6 +337,8 @@ function Get-RscHelp {
             if (Test-Path $descFile) {
                 . $descFile
             }
+            $currentMatch = $Match
+          while ($true) {
             $rootFieldData = @()
             $otherData = @()
             # Get all the enums within the SchemaMeta class
@@ -348,13 +350,10 @@ function Get-RscHelp {
             # Iterate through each enum and check if it contains the lookup name
             foreach ($enum in $enums) {
                 $isRootField = $rootFieldEnumNames -contains $enum.Name
-                # Get all names in the current enum
                 $enumValues = [Enum]::GetValues($enum) | Where-Object { $_ -ine 'Unknown' }
-                # Check if any of the names match the provided pattern
                 foreach ($value in $enumValues) {
-                    if ($Match -eq "" -or $value -like $Match) {
+                    if ($currentMatch -eq "" -or $value -like $currentMatch) {
                         if ($isRootField) {
-                            # Look up kind and return type for root fields
                             $kind = try {
                                 [RubrikSecurityCloud.Types.SchemaMeta]::GetRootFieldKind($value)
                             } catch { $null }
@@ -382,162 +381,168 @@ function Get-RscHelp {
             }
             $total = $rootFieldData.Count + $otherData.Count
             if ($total -eq 0) {
-                Write-Output "# No match found for '$Match'."
+                Write-Host "# No match found for '$currentMatch'."
+                break
             }
-            else {
-                # Build a single unified table with numbered matches
-                $rows = @()
-                $n = 0
-                foreach ($rf in ($rootFieldData | Sort-Object Kind, GqlField)) {
-                    $n++
-                    $desc = ""
-                    if ($Script:SchemaDescriptions) {
-                        $desc = $Script:SchemaDescriptions["$($rf.Kind):$($rf.GqlField)"]
-                    }
-                    $info = "returns $($rf.ReturnType)"
-                    $rows += New-Object PSObject -Property ([ordered]@{
-                        '#'          = $n
-                        Kind         = $rf.Kind
-                        Name         = $rf.GqlField
-                        Info         = $info
-                        Description  = $desc
-                    })
-                }
-                foreach ($item in ($otherData | Sort-Object Type, Name)) {
-                    $n++
-                    $desc = ""
-                    if ($Script:SchemaDescriptions) {
-                        $desc = $Script:SchemaDescriptions["$($item.Type):$($item.Name)"]
-                    }
-                    $info = ""
-                    if ($item.Type -eq 'Interface') {
-                        $impls = try { [RubrikSecurityCloud.Types.SchemaMeta]::InterfaceImpls($item.Name) } catch { @() }
-                        if ($impls.Count -gt 0) {
-                            $info = "implemented by: $(($impls | Sort-Object) -join ', ')"
-                        }
-                    }
-                    elseif ($item.Type -eq 'Type' -and $Script:SchemaImplements) {
-                        $ifaces = $Script:SchemaImplements[$item.Name]
-                        if ($ifaces -and $ifaces.Count -gt 0) {
-                            $info = "implements: $(($ifaces | Sort-Object) -join ', ')"
-                        }
-                    }
-                    $rows += New-Object PSObject -Property ([ordered]@{
-                        '#'          = $n
-                        Kind         = $item.Type
-                        Name         = $item.Name
-                        Info         = $info
-                        Description  = $desc
-                    })
-                }
 
-                # --- Display functions ---
-                function ShowCompactTable {
-                    Write-Host ""
-                    Write-Host "# $total matches for '${Match}':"
-                    $rows | Format-Table -Property '#', Kind, Name, Info, Description -AutoSize | Out-Host
+            # Build a single unified table with numbered matches
+            $rows = @()
+            $n = 0
+            foreach ($rf in ($rootFieldData | Sort-Object Kind, GqlField)) {
+                $n++
+                $desc = ""
+                if ($Script:SchemaDescriptions) {
+                    $desc = $Script:SchemaDescriptions["$($rf.Kind):$($rf.GqlField)"]
                 }
+                $info = "returns $($rf.ReturnType)"
+                $rows += New-Object PSObject -Property ([ordered]@{
+                    '#'          = $n
+                    Kind         = $rf.Kind
+                    Name         = $rf.GqlField
+                    Info         = $info
+                    Description  = $desc
+                })
+            }
+            foreach ($item in ($otherData | Sort-Object Type, Name)) {
+                $n++
+                $desc = ""
+                if ($Script:SchemaDescriptions) {
+                    $desc = $Script:SchemaDescriptions["$($item.Type):$($item.Name)"]
+                }
+                $info = ""
+                if ($item.Type -eq 'Interface') {
+                    $impls = try { [RubrikSecurityCloud.Types.SchemaMeta]::InterfaceImpls($item.Name) } catch { @() }
+                    if ($impls.Count -gt 0) {
+                        $info = "implemented by: $(($impls | Sort-Object) -join ', ')"
+                    }
+                }
+                elseif ($item.Type -eq 'Type' -and $Script:SchemaImplements) {
+                    $ifaces = $Script:SchemaImplements[$item.Name]
+                    if ($ifaces -and $ifaces.Count -gt 0) {
+                        $info = "implements: $(($ifaces | Sort-Object) -join ', ')"
+                    }
+                }
+                $rows += New-Object PSObject -Property ([ordered]@{
+                    '#'          = $n
+                    Kind         = $item.Type
+                    Name         = $item.Name
+                    Info         = $info
+                    Description  = $desc
+                })
+            }
 
-                function ShowDetailForRow($row) {
-                    Write-Host ""
-                    Write-Host "--- [$($row.'#')] $($row.Kind): $($row.Name) ---" -ForegroundColor Cyan
-                    if ($row.Description) {
-                        Write-Host "  $($row.Description)"
-                    }
-                    if ($row.Info) {
-                        Write-Host "  $($row.Info)" -ForegroundColor DarkGray
-                    }
-                    $key = "$($row.Kind):$($row.Name)"
-                    # Query/Mutation: show arguments
-                    if ($row.Kind -eq 'Query' -or $row.Kind -eq 'Mutation') {
-                        $args2 = $Script:SchemaRootFieldArgs[$key]
-                        if ($args2 -and $args2.Count -gt 0) {
-                            Write-Host "  Parameters:" -ForegroundColor Yellow
-                            foreach ($a in $args2) {
-                                Write-Host "    $a"
-                            }
-                        }
-                    }
-                    # Interface: show implementing types with descriptions
-                    elseif ($row.Kind -eq 'Interface') {
-                        $impls = try { [RubrikSecurityCloud.Types.SchemaMeta]::InterfaceImpls($row.Name) } catch { @() }
-                        if ($impls.Count -gt 0) {
-                            Write-Host "  Implementing types:" -ForegroundColor Yellow
-                            foreach ($impl in ($impls | Sort-Object)) {
-                                $implDesc = $Script:SchemaDescriptions["Type:$impl"]
-                                if ($implDesc) {
-                                    Write-Host "    $impl - $implDesc"
-                                } else {
-                                    Write-Host "    $impl"
-                                }
-                            }
-                        }
-                    }
-                    # Type: show interfaces and field count
-                    elseif ($row.Kind -eq 'Type') {
-                        if ($Script:SchemaImplements) {
-                            $ifaces = $Script:SchemaImplements[$row.Name]
-                            if ($ifaces -and $ifaces.Count -gt 0) {
-                                Write-Host "  Implements:" -ForegroundColor Yellow
-                                foreach ($iface in ($ifaces | Sort-Object)) {
-                                    $ifaceDesc = $Script:SchemaDescriptions["Interface:$iface"]
-                                    if ($ifaceDesc) {
-                                        Write-Host "    $iface - $ifaceDesc"
-                                    } else {
-                                        Write-Host "    $iface"
-                                    }
-                                }
-                            }
+            # --- Display helpers ---
+            function ShowCompactTable {
+                Write-Host ""
+                Write-Host "# $total matches for '${currentMatch}':"
+                $rows | Format-Table -Property '#', Kind, Name, Info, Description -AutoSize | Out-Host
+            }
+
+            function ShowDetailForRow($row) {
+                Write-Host ""
+                Write-Host "--- [$($row.'#')] $($row.Kind): $($row.Name) ---" -ForegroundColor Cyan
+                if ($row.Description) {
+                    Write-Host "  $($row.Description)"
+                }
+                if ($row.Info) {
+                    Write-Host "  $($row.Info)" -ForegroundColor DarkGray
+                }
+                $key = "$($row.Kind):$($row.Name)"
+                # Query/Mutation: show arguments
+                if ($row.Kind -eq 'Query' -or $row.Kind -eq 'Mutation') {
+                    $args2 = $Script:SchemaRootFieldArgs[$key]
+                    if ($args2 -and $args2.Count -gt 0) {
+                        Write-Host "  Parameters:" -ForegroundColor Yellow
+                        foreach ($a in $args2) {
+                            Write-Host "    $a"
                         }
                     }
                 }
-
-                function ShowExpandedView {
-                    Write-Host ""
-                    Write-Host "# $total matches for '${Match}' (expanded):"
-                    foreach ($row in $rows) {
-                        ShowDetailForRow $row
-                    }
-                    Write-Host ""
-                }
-
-                # --- Initial display ---
-                $expanded = $false
-                ShowCompactTable
-
-                # --- Interactive loop (only in interactive host) ---
-                $isInteractive = $Host.Name -eq 'ConsoleHost' -and [Environment]::UserInteractive
-                if ($isInteractive -and $total -gt 0) {
-                    while ($true) {
-                        $input2 = Read-Host "[1-$total] detail  [d] expand all  [Enter] exit"
-                        $input2 = $input2.Trim()
-                        # Enter (empty) or q → exit
-                        if ($input2 -eq '' -or $input2 -eq 'q') {
-                            break
-                        }
-                        # 'd' → toggle expanded view
-                        if ($input2 -eq 'd') {
-                            $expanded = -not $expanded
-                            Clear-Host
-                            if ($expanded) {
-                                ShowExpandedView
+                # Interface: show implementing types with descriptions
+                elseif ($row.Kind -eq 'Interface') {
+                    $impls = try { [RubrikSecurityCloud.Types.SchemaMeta]::InterfaceImpls($row.Name) } catch { @() }
+                    if ($impls.Count -gt 0) {
+                        Write-Host "  Implementing types:" -ForegroundColor Yellow
+                        foreach ($impl in ($impls | Sort-Object)) {
+                            $implDesc = $Script:SchemaDescriptions["Type:$impl"]
+                            if ($implDesc) {
+                                Write-Host "    $impl - $implDesc"
                             } else {
-                                ShowCompactTable
+                                Write-Host "    $impl"
                             }
-                            continue
                         }
-                        # Number → show detail for that row
-                        $num = 0
-                        if ([int]::TryParse($input2, [ref]$num) -and $num -ge 1 -and $num -le $total) {
-                            Clear-Host
-                            ShowCompactTable
-                            ShowDetailForRow $rows[$num - 1]
-                            Write-Host ""
-                            continue
+                    }
+                }
+                # Type: show interfaces
+                elseif ($row.Kind -eq 'Type') {
+                    if ($Script:SchemaImplements) {
+                        $ifaces = $Script:SchemaImplements[$row.Name]
+                        if ($ifaces -and $ifaces.Count -gt 0) {
+                            Write-Host "  Implements:" -ForegroundColor Yellow
+                            foreach ($iface in ($ifaces | Sort-Object)) {
+                                $ifaceDesc = $Script:SchemaDescriptions["Interface:$iface"]
+                                if ($ifaceDesc) {
+                                    Write-Host "    $iface - $ifaceDesc"
+                                } else {
+                                    Write-Host "    $iface"
+                                }
+                            }
                         }
                     }
                 }
             }
+
+            function ShowExpandedView {
+                Write-Host ""
+                Write-Host "# $total matches for '${currentMatch}' (expanded):"
+                foreach ($row in $rows) {
+                    ShowDetailForRow $row
+                }
+                Write-Host ""
+            }
+
+            # --- Initial display ---
+            $expanded = $false
+            Clear-Host
+            ShowCompactTable
+
+            # --- Interactive loop (only in interactive host) ---
+            $isInteractive = $Host.Name -eq 'ConsoleHost' -and [Environment]::UserInteractive
+            if (-not $isInteractive -or $total -eq 0) {
+                break
+            }
+            while ($true) {
+                $input2 = Read-Host "[1-$total] detail  [d] expand all  [name] go to  [Enter] exit"
+                $input2 = $input2.Trim()
+                # Enter (empty) or q → exit
+                if ($input2 -eq '' -or $input2 -eq 'q') {
+                    break
+                }
+                # 'd' → toggle expanded view
+                if ($input2 -eq 'd') {
+                    $expanded = -not $expanded
+                    Clear-Host
+                    if ($expanded) {
+                        ShowExpandedView
+                    } else {
+                        ShowCompactTable
+                    }
+                    continue
+                }
+                # Number → show detail for that row
+                $num = 0
+                if ([int]::TryParse($input2, [ref]$num) -and $num -ge 1 -and $num -le $total) {
+                    Clear-Host
+                    ShowCompactTable
+                    ShowDetailForRow $rows[$num - 1]
+                    Write-Host ""
+                    continue
+                }
+                # Anything else → treat as a new search (go to)
+                $currentMatch = $input2
+                break  # break inner while, outer while re-runs with new $currentMatch
+            }
+          } # end while ($true) navigation loop
         }
 
         function LookupQuery {
