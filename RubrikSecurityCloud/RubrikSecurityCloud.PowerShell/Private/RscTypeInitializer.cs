@@ -313,6 +313,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     $"No type found matching: '{objectClassName}'");
             }
 
+            // Interface root: delegate to InitializeInterfaceRoot
+            if (returnType.IsInterface)
+            {
+                return InitializeInterfaceRoot(
+                    returnType, requestedProperties);
+            }
+
             object returnInstance = Activator.CreateInstance(returnType);
 
             // Outer loop: each requestedProperty is an independent path.
@@ -326,6 +333,19 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 // At each step, currentObject advances to the nested object.
                 for (int i = 0; i < segments.Length; i++)
                 {
+                    // "*" wildcard: set all scalar properties on
+                    // the current object. Must be the last segment.
+                    if (segments[i] == "*")
+                    {
+                        foreach (PropertyInfo p in currentObject.GetType()
+                            .GetProperties(BindingFlags.Instance |
+                                           BindingFlags.Public))
+                        {
+                            SetScalarSentinel(currentObject, p);
+                        }
+                        break;
+                    }
+
                     PropertyInfo prop = currentObject.GetType()
                         .GetProperty(segments[i],
                             BindingFlags.IgnoreCase |
@@ -358,8 +378,18 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         {
                             if (elementType.IsInterface)
                             {
+                                // Check for on: type selector in next segment
+                                string typeFilter = null;
+                                if (i + 1 < segments.Length &&
+                                    segments[i + 1].StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    string selector = segments[i + 1].Substring(3);
+                                    typeFilter = selector == "*" ? null : selector;
+                                    i++; // consume the on: segment
+                                }
                                 currentObject = InitializeInterfaceList(
                                     currentObject, prop, elementType,
+                                    typeFilter,
                                     requestedProperties, segments, i);
                             }
                             else
@@ -374,8 +404,55 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         }
                         else
                         {
-                            // List already exists — advance into first element.
-                            currentObject = ((IList)prop.GetValue(currentObject))[0];
+                            // List already exists.
+                            IList existingList = (IList)prop.GetValue(currentObject);
+
+                            // Check for on: type selector
+                            if (i + 1 < segments.Length &&
+                                segments[i + 1].StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                            {
+                                string selector = segments[i + 1].Substring(3);
+                                i++; // consume the on: segment
+
+                                if (selector != "*")
+                                {
+                                    // Find existing element of this type, or create and add one.
+                                    object match = null;
+                                    foreach (var item in existingList)
+                                    {
+                                        if (string.Equals(item.GetType().Name, selector,
+                                            StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            match = item;
+                                            break;
+                                        }
+                                    }
+                                    if (match == null)
+                                    {
+                                        System.Type matchType = GetTypeByName(selector);
+                                        if (matchType == null || !elementType.IsAssignableFrom(matchType))
+                                        {
+                                            throw new Exception(
+                                                $"Type '{selector}' does not implement " +
+                                                $"interface '{elementType.Name}'. " +
+                                                $"Use on:* to see all implementing types.");
+                                        }
+                                        match = Activator.CreateInstance(matchType);
+                                        existingList.Add(match);
+                                    }
+                                    currentObject = match;
+                                }
+                                else
+                                {
+                                    // on:* with existing list — advance into first element.
+                                    currentObject = existingList[0];
+                                }
+                            }
+                            else
+                            {
+                                // No on: selector — advance into first element.
+                                currentObject = existingList[0];
+                            }
                         }
                         continue;
                     }
@@ -384,8 +461,29 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     // then advance.
                     if (prop.PropertyType.IsClass || prop.PropertyType.IsInterface)
                     {
-                        currentObject = GetOrCreatePropertyValue(
-                            currentObject, prop);
+                        if (prop.PropertyType.IsInterface &&
+                            i + 1 < segments.Length &&
+                            segments[i + 1].StartsWith("on:",
+                                StringComparison.OrdinalIgnoreCase))
+                        {
+                            string selector = segments[i + 1].Substring(3);
+                            i++; // consume the on: segment
+                            if (selector == "*")
+                            {
+                                currentObject = GetOrCreatePropertyValue(
+                                    currentObject, prop);
+                            }
+                            else
+                            {
+                                currentObject = GetOrCreatePropertyValue(
+                                    currentObject, prop, selector);
+                            }
+                        }
+                        else
+                        {
+                            currentObject = GetOrCreatePropertyValue(
+                                currentObject, prop);
+                        }
                         continue;
                     }
 
@@ -396,6 +494,101 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 }
             }
             return returnInstance;
+        }
+
+        /// <summary>
+        /// Handle an interface as the root type. Groups requestedProperties
+        /// by on: type selector, initializes each implementing type
+        /// independently, then chains them into a composite via
+        /// MakeCompositeFromList.
+        ///
+        /// Supported property forms:
+        ///   on:TypeName.field  → only that implementing type
+        ///   on:*.field         → all implementing types
+        ///   field (no on:)     → all implementing types (backward compat)
+        /// </summary>
+        private static object InitializeInterfaceRoot(
+            System.Type interfaceType,
+            string[] requestedProperties)
+        {
+            var implNames = ReflectionUtils.GetTypesImplementingInterface(
+                interfaceType.Name);
+
+            // Group properties: key = type name or "*" for wildcard/bare.
+            var groups = new Dictionary<string, List<string>>(
+                StringComparer.OrdinalIgnoreCase);
+
+            foreach (string rp in requestedProperties)
+            {
+                string[] parts = rp.Split(new[] { '.' }, 2);
+                string first = parts[0];
+                string rest = parts.Length > 1 ? parts[1] : null;
+
+                if (first.StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                {
+                    string selector = first.Substring(3);
+                    string key = selector == "*" ? "*" : selector;
+                    if (!groups.ContainsKey(key))
+                        groups[key] = new List<string>();
+                    if (rest != null)
+                        groups[key].Add(rest);
+                }
+                else
+                {
+                    // Bare property — treat as wildcard
+                    if (!groups.ContainsKey("*"))
+                        groups["*"] = new List<string>();
+                    groups["*"].Add(rp);
+                }
+            }
+
+            // Validate specific type names
+            foreach (string key in groups.Keys)
+            {
+                if (key == "*") continue;
+                if (!implNames.Contains(key, StringComparer.OrdinalIgnoreCase))
+                {
+                    throw new Exception(
+                        $"Type '{key}' does not implement " +
+                        $"interface '{interfaceType.Name}'. " +
+                        $"Use on:* to see all implementing types.");
+                }
+            }
+
+            List<string> wildcardProps = groups.ContainsKey("*")
+                ? groups["*"] : null;
+
+            // Always create ALL implementing types so AsFieldSpec()
+            // produces proper inline fragments (... on TypeName).
+            // Only selected types get their properties initialized;
+            // unselected types remain empty (all nulls → skipped by
+            // AsFieldSpec).
+            var instances = new List<object>();
+            foreach (string typeName in implNames)
+            {
+                var props = new List<string>();
+
+                // Add wildcard properties
+                if (wildcardProps != null)
+                    props.AddRange(wildcardProps);
+
+                // Add type-specific properties
+                if (groups.ContainsKey(typeName))
+                    props.AddRange(groups[typeName]);
+
+                if (props.Count > 0)
+                {
+                    instances.Add(InitializeTypeWithSelectedProperties(
+                        typeName, props.ToArray()));
+                }
+                else
+                {
+                    instances.Add(Activator.CreateInstance(
+                        GetTypeByName(typeName)));
+                }
+            }
+
+            return InterfaceHelper.MakeCompositeFromList(instances);
         }
 
         /// <summary>
@@ -490,19 +683,39 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// Handle a List&lt;Interface&gt; property: create one instance of
-        /// EVERY implementing type so the field spec includes all possible
-        /// inline fragments (... on TypeA, ... on TypeB, etc.).
+        /// Overload: create a specific implementing type for an interface
+        /// property. Used when an on:TypeName selector is provided.
+        /// </summary>
+        private static object GetOrCreatePropertyValue(
+            object parent, PropertyInfo prop, string typeName)
+        {
+            object child = prop.GetValue(parent);
+            if (child != null) return child;
+
+            System.Type targetType = GetTypeByName(typeName);
+            if (targetType == null ||
+                !prop.PropertyType.IsAssignableFrom(targetType))
+            {
+                throw new Exception(
+                    $"Type '{typeName}' does not implement " +
+                    $"interface '{prop.PropertyType.Name}'.");
+            }
+            child = Activator.CreateInstance(targetType);
+            prop.SetValue(parent, child);
+            return child;
+        }
+
+        /// <summary>
+        /// Handle a List&lt;Interface&gt; property: create instances of
+        /// implementing types so the field spec includes inline fragments.
+        ///
+        /// When typeFilter is null, creates ALL implementing types
+        /// (... on TypeA, ... on TypeB, etc.).
+        /// When typeFilter is a type name, creates only that type.
         ///
         /// Strips the parent prefix from property paths before recursing.
         /// For example, ["nodes.id"] at depth i=0 ("nodes") becomes ["id"]
         /// for each implementing type.
-        ///
-        /// If you only want a SINGLE implementing type (e.g. just
-        /// PhysicalHost), you cannot achieve that with -InitialProperties.
-        /// You must create the type separately and manually assign it to
-        /// the list. See the unit test "Double interface list" for a
-        /// worked example.
         ///
         /// Returns the first element of the initialized list (for further
         /// walking by the caller).
@@ -511,6 +724,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             object currentObject,
             PropertyInfo prop,
             System.Type interfaceType,
+            string typeFilter,
             string[] requestedProperties,
             string[] currentSegments,
             int depth)
@@ -523,6 +737,35 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
             IList templateList = (IList)method.Invoke(
                 null, new object[] { interfaceType });
+
+            // Filter to a single implementing type if requested.
+            if (typeFilter != null)
+            {
+                var filtered = new List<object>();
+                foreach (var item in templateList)
+                {
+                    if (string.Equals(item.GetType().Name, typeFilter,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        filtered.Add(item);
+                    }
+                }
+                if (filtered.Count == 0)
+                {
+                    throw new Exception(
+                        $"Type '{typeFilter}' does not implement " +
+                        $"interface '{interfaceType.Name}'. " +
+                        $"Use on:* to see all implementing types.");
+                }
+                // Rebuild templateList with only the matching type.
+                IList filteredList = (IList)Activator.CreateInstance(
+                    templateList.GetType());
+                foreach (var item in filtered)
+                {
+                    filteredList.Add(item);
+                }
+                templateList = filteredList;
+            }
 
             // Build an empty list of the same generic type.
             IList resultList = (IList)Activator.CreateInstance(

@@ -135,13 +135,14 @@ New-RscQuery -Gql clusterConnection -ValidPatchSet |
 ### Using a Field Object (`-Field`)
 
 For full manual control, pass a typed object whose non-null properties
-define the selected fields:
+define the selected fields. This is the **field spec** approach — an
+alternative to AutoField where you specify exactly which fields to
+retrieve. See [Field Spec](./fieldspec.md) for the full guide, including
+the `on:` type selector syntax for interface fields.
 
 ```powershell
-$fieldObj = Get-RscType -Name ClusterConnection -InitialProperties @(
-    "Nodes.Id", "Nodes.Name", "Nodes.Status"
-)
-$q = New-RscQuery -Gql clusterConnection -Field $fieldObj
+$fieldObj = Get-RscType -Name ClusterConnection -InitialProperties Nodes.Id,Nodes.Name,Nodes.Status
+$q = New-RscQuery -Gql clusterConnection -Field $fieldObj -FieldProfile EMPTY
 ```
 
 You can combine `-Field` with `-AddField` / `-RemoveField` — the field

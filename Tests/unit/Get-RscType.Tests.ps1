@@ -187,6 +187,80 @@ Describe 'Get-RscType' {
         }
     }
 
+    Context 'on: type selector for List<Interface>' {
+        It '"nodes.on:*.id" — explicit all-types, same result as "nodes.id"' {
+            $explicit = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:*.id")
+            $implicit = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.id")
+            $explicit.nodes.Count | Should -Be $implicit.nodes.Count
+            foreach ($node in $explicit.nodes) {
+                $node.Id | Should -Be "FETCH"
+            }
+        }
+
+        It '"nodes.on:PhysicalHost.id" — single type, only PhysicalHost fragment' {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:PhysicalHost.id")
+            $result.nodes.Count | Should -Be 1
+            $result.nodes[0] | Should -BeOfType RubrikSecurityCloud.Types.PhysicalHost
+            $result.nodes[0].Id | Should -Be "FETCH"
+        }
+
+        It '"nodes.on:PhysicalHost.id", "nodes.on:MssqlDatabase.name" — two specific types' {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:PhysicalHost.id", "nodes.on:MssqlDatabase.name")
+            $result.nodes.Count | Should -Be 2
+            $phHost = $result.nodes | Where-Object { $_ -is [RubrikSecurityCloud.Types.PhysicalHost] }
+            $mssql = $result.nodes | Where-Object { $_ -is [RubrikSecurityCloud.Types.MssqlDatabase] }
+            $phHost | Should -Not -BeNull
+            $phHost.Id | Should -Be "FETCH"
+            $mssql | Should -Not -BeNull
+            $mssql.Name | Should -Be "FETCH"
+        }
+
+        It '"nodes.on:NonExistent.id" — throws with clear error' {
+            { Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:NonExistent.id") } |
+                Should -Throw "*does not implement*MssqlTopLevelDescendantType*"
+        }
+
+        It 'Backward compat: "nodes.id" still works unchanged' {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.id")
+            $typeList = Get-RscType -Interface "MssqlTopLevelDescendantType"
+            $result.nodes.Count | Should -Be $typeList.Count
+        }
+
+        It 'Double interface with on: produces same field spec as manual workaround' {
+            # A: new way — single Get-RscType call with on: selectors
+            $a = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @(
+                    "nodes.on:PhysicalHost.id",
+                    "nodes.on:PhysicalHost.name",
+                    "nodes.on:PhysicalHost.physicalChildConnection.count",
+                    "nodes.on:PhysicalHost.physicalChildConnection.nodes.on:MssqlInstance.id",
+                    "nodes.on:PhysicalHost.physicalChildConnection.nodes.on:MssqlInstance.name"
+                )
+
+            # B: old way — manual 4-step workaround
+            # (mirrors Tests/e2e/Invoke-RscQueryMssql-TopLevelDescendant.Tests.ps1)
+            $physicalHostFields =
+                Get-RscType -Name PhysicalHost -InitialProperties @(
+                    "id",
+                    "name",
+                    "physicalChildConnection.count"
+                )
+            $physicalHostFields.PhysicalChildConnection.Nodes =
+                Get-RscType -Name MssqlInstance -InitialProperties ("Id", "Name")
+            $b = Get-RscType -Name MssqlTopLevelDescendantTypeConnection
+            $b.nodes = $physicalHostFields
+
+            # A and B must produce the same field spec
+            $a.AsFieldSpec() | Should -Be $b.AsFieldSpec()
+        }
+    }
+
     Context 'Double interface list: manual field spec construction' {
         # This mirrors the e2e test in Invoke-RscQueryMssql-TopLevelDescendant.Tests.ps1
         # and exercises a real-world pattern for working with nested interface lists.
@@ -264,6 +338,135 @@ Describe 'Get-RscType' {
             # Count the fragments: exactly 6
             $fragmentCount = ([regex]::Matches($autoSpec, '\.\.\. on ')).Count
             $fragmentCount | Should -Be 6
+        }
+    }
+
+    Context 'on: type selector for root interface types' {
+        It 'Bare "Get-RscType -Name SlaDomain" returns a non-null object' {
+            $result = Get-RscType -Name SlaDomain
+            $result | Should -Not -BeNull
+        }
+
+        It '"on:ClusterSlaDomain.Id" — ClusterSlaDomain fragment has id' {
+            $result = Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:ClusterSlaDomain.Id")
+            $spec = $result.AsFieldSpec()
+            ($spec -match '\.\.\. on ClusterSlaDomain') | Should -Be $true
+            ($spec -match 'id') | Should -Be $true
+        }
+
+        It '"on:GlobalSlaReply.Id" — GlobalSlaReply fragment has id' {
+            $result = Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:GlobalSlaReply.Id")
+            $spec = $result.AsFieldSpec()
+            ($spec -match '\.\.\. on GlobalSlaReply') | Should -Be $true
+            ($spec -match 'id') | Should -Be $true
+        }
+
+        It '"on:*.Id" — composite of all implementing types, each with Id=FETCH' {
+            $result = Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:*.Id")
+            $result | Should -Not -BeNull
+            # Result should be a composite (BaseType with linked list)
+            $result.Id | Should -Be "FETCH"
+            # Verify it's a composite by checking AsFieldSpec has multiple fragments
+            $spec = $result.AsFieldSpec()
+            ($spec -match '\.\.\. on ClusterSlaDomain') | Should -Be $true
+            ($spec -match '\.\.\. on GlobalSlaReply') | Should -Be $true
+        }
+
+        It '"Id" (bare, no on:) — same as on:*.Id' {
+            $result = Get-RscType -Name SlaDomain `
+                -InitialProperties @("Id")
+            $result | Should -Not -BeNull
+            $spec = $result.AsFieldSpec()
+            ($spec -match '\.\.\. on ClusterSlaDomain') | Should -Be $true
+            ($spec -match '\.\.\. on GlobalSlaReply') | Should -Be $true
+        }
+
+        It '"on:NonExistent.Id" — throws' {
+            { Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:NonExistent.Id") } |
+                Should -Throw "*does not implement*SlaDomain*"
+        }
+
+        It 'on: result AsFieldSpec matches equivalent on:*.Id' {
+            # Both should produce the same field spec
+            $a = Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:ClusterSlaDomain.Id", "on:GlobalSlaReply.Id")
+            $b = Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:*.Id")
+            $a.AsFieldSpec() | Should -Be $b.AsFieldSpec()
+        }
+    }
+
+    Context 'on: type selector for single interface properties' {
+        It '"EffectiveSlaDomain.on:GlobalSlaReply.Id" — GlobalSlaReply with Id=FETCH' {
+            $result = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.on:GlobalSlaReply.Id")
+            $result.EffectiveSlaDomain | Should -Not -BeNull
+            $result.EffectiveSlaDomain | Should -BeOfType RubrikSecurityCloud.Types.GlobalSlaReply
+            $result.EffectiveSlaDomain.Id | Should -Be "FETCH"
+        }
+
+        It '"EffectiveSlaDomain.on:ClusterSlaDomain.Id" — ClusterSlaDomain with Id=FETCH' {
+            $result = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.on:ClusterSlaDomain.Id")
+            $result.EffectiveSlaDomain | Should -Not -BeNull
+            $result.EffectiveSlaDomain | Should -BeOfType RubrikSecurityCloud.Types.ClusterSlaDomain
+            $result.EffectiveSlaDomain.Id | Should -Be "FETCH"
+        }
+
+        It '"EffectiveSlaDomain.Id" (bare) — first implementing type with Id=FETCH (backward compat)' {
+            $result = Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.Id")
+            $result.EffectiveSlaDomain | Should -Not -BeNull
+            $result.EffectiveSlaDomain | Should -BeOfType RubrikSecurityCloud.Types.ClusterSlaDomain
+            $result.EffectiveSlaDomain.Id | Should -Be "FETCH"
+        }
+
+        It '"EffectiveSlaDomain.on:NonExistent.Id" — throws' {
+            { Get-RscType -Name MssqlDatabase `
+                -InitialProperties @("EffectiveSlaDomain.on:NonExistent.Id") } |
+                Should -Throw "*does not implement*"
+        }
+    }
+
+    Context '* wildcard for all scalar properties' {
+        It '"CloudInfo.*" sets all scalar fields on CloudInfo' {
+            $result = Get-RscType -Name Cluster -InitialProperties @("CloudInfo.*")
+            $result.CloudInfo | Should -Not -BeNull
+            # CcWithCloudInfo has string properties like Name, Uuid, Region
+            $result.CloudInfo.Name | Should -Be "FETCH"
+            $result.CloudInfo.Uuid | Should -Be "FETCH"
+            $result.CloudInfo.Region | Should -Be "FETCH"
+            # Root fields should not be set
+            $result.Name | Should -BeNullOrEmpty
+        }
+
+        It '"*" at root sets all scalar fields' {
+            $result = Get-RscType -Name AccountSetting -InitialProperties @("*")
+            $result.IsEulaAccepted | Should -Be $true
+        }
+
+        It 'Works with on: — "on:GlobalSlaReply.SnapshotSchedule.Minute.BasicSchedule.*"' {
+            $result = Get-RscType -Name SlaDomain `
+                -InitialProperties @("on:GlobalSlaReply.SnapshotSchedule.Minute.BasicSchedule.*")
+            $spec = $result.AsFieldSpec()
+            ($spec -match 'retention') | Should -Be $true
+            ($spec -match 'frequency') | Should -Be $true
+            ($spec -match 'retentionUnit') | Should -Be $true
+        }
+
+        It '"*" is equivalent to listing all scalar properties individually' {
+            $wildcard = Get-RscType -Name Cluster -InitialProperties @("CloudInfo.*")
+            $explicit = Get-RscType -Name Cluster -InitialProperties @(
+                "CloudInfo.Name", "CloudInfo.Uuid", "CloudInfo.Region"
+            )
+            # Wildcard sets at least the same fields as explicit
+            $explicit.CloudInfo.Name | Should -Be $wildcard.CloudInfo.Name
+            $explicit.CloudInfo.Uuid | Should -Be $wildcard.CloudInfo.Uuid
+            $explicit.CloudInfo.Region | Should -Be $wildcard.CloudInfo.Region
         }
     }
 }

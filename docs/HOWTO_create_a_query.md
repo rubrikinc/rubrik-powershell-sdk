@@ -113,14 +113,17 @@ New-RscQuery -Gql clusterConnection -ValidPatchSet |
 ### Use a field object for full manual control
 
 ```powershell
-$fieldObj = Get-RscType -Name ClusterConnection -InitialProperties @(
-    "Nodes.Id", "Nodes.Name", "Nodes.Version"
-)
+$fieldObj = Get-RscType -Name ClusterConnection -InitialProperties Nodes.Id,Nodes.Name,Nodes.Version
 $q = New-RscQuery -Gql clusterConnection -Field $fieldObj -FieldProfile EMPTY
 ```
 
-See [AutoField](./autofield.md) for full details on profiles, patches,
-and field objects.
+This is the **field spec** approach: you specify exactly which fields
+to retrieve, and the query never changes unless you change it. Good for
+production scripts and stable integrations.
+
+See [Field Spec](./fieldspec.md) for the full guide (including `on:`
+type selectors for interface fields), and [AutoField](./autofield.md)
+for the automatic approach.
 
 ## 4 — Run the Query
 
@@ -169,6 +172,7 @@ $q.GqlRequest().Query    # see the full query text
 ## Related Documentation
 
 - [AutoField](./autofield.md) — how field profiles and patches work
+- [Field Spec](./fieldspec.md) — explicit field selection with Get-RscType
 - [Retrieving Interface Fields](./retrieving_interface_fields.md) —
   working with GraphQL interfaces and composite objects
 - [Developer Manual](./developer_manual.md) — getting started,

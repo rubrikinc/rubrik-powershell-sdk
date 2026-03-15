@@ -132,7 +132,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 CommandAst commandAst,
                 IDictionary fakeBoundParameters)
             {
-                var validNames = RscTypeInitializer.GetAllTypeNames()
+                var classNames = RscTypeInitializer.GetAllTypeNames();
+                var ifaceNames = RscTypeInitializer.GetAllTypeNames(
+                    interfaces: true);
+                var validNames = classNames.Concat(ifaceNames)
                     .Where(name => string.IsNullOrEmpty(wordToComplete) ||
                                    name.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase));
 
@@ -143,6 +146,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         /// <summary>
         /// Property names (or dotted paths) to initialize with sentinel values.
         /// Supports dotted paths like "nodes.id" to walk into nested objects.
+        /// For List&lt;Interface&gt; fields, use "on:TypeName" to select a
+        /// specific implementing type (e.g. "nodes.on:PhysicalHost.id")
+        /// or "on:*" for all types.
         /// See RscTypeInitializer.InitializeTypeWithSelectedProperties for
         /// the sentinel values used for each property type.
         /// Mutually exclusive with -InitialValues.
@@ -153,7 +159,252 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             ParameterSetName = "GetTypeByName")]
         [ValidateNotNullOrEmpty]
+        [ArgumentCompleter(typeof(InitialPropertiesCompleter))]
         public string[] InitialProperties { get; set; }
+
+        /// <summary>
+        /// Tab-completion for the -InitialProperties parameter.
+        /// Walks the dotted path to determine the current type context,
+        /// then offers property names or on:TypeName selectors for
+        /// List&lt;Interface&gt; fields.
+        /// </summary>
+        public class InitialPropertiesCompleter : IArgumentCompleter
+        {
+            /// <summary>Provide completions for the InitialProperties parameter.</summary>
+            public IEnumerable<CompletionResult> CompleteArgument(
+                string commandName,
+                string parameterName,
+                string wordToComplete,
+                CommandAst commandAst,
+                IDictionary fakeBoundParameters)
+            {
+                // Need -Name to know which type we're completing for.
+                if (!fakeBoundParameters.Contains("Name"))
+                    return Enumerable.Empty<CompletionResult>();
+
+                string typeName = fakeBoundParameters["Name"]?.ToString();
+                if (string.IsNullOrEmpty(typeName))
+                    return Enumerable.Empty<CompletionResult>();
+
+                Type rootType = RscTypeInitializer.GetTypeByName(typeName);
+                if (rootType == null)
+                    return Enumerable.Empty<CompletionResult>();
+
+                // PowerShell passes the opening quote as part of wordToComplete
+                // when the user is typing inside quotes (e.g. "C or 'C).
+                // Strip it so matching works, and remember the quote char
+                // so we can wrap completion results.
+                string raw = wordToComplete ?? "";
+                char quoteChar = '\0';
+                if (raw.Length > 0 && (raw[0] == '"' || raw[0] == '\''))
+                {
+                    quoteChar = raw[0];
+                    raw = raw.Substring(1);
+                }
+                // Also strip a trailing quote if present.
+                if (raw.Length > 0 && quoteChar != '\0' &&
+                    raw[raw.Length - 1] == quoteChar)
+                {
+                    raw = raw.Substring(0, raw.Length - 1);
+                }
+
+                // Split the word being completed into segments.
+                // e.g. "nodes.on:PhysicalHost.i" → ["nodes", "on:PhysicalHost", "i"]
+                string[] segments = raw.Split('.');
+                string prefix = ""; // rebuilt prefix of completed segments
+                Type currentType = rootType;
+                bool atInterfaceList = false;
+                Type interfaceElementType = null;
+
+                // If the root type is an interface, offer on: selectors
+                // at the first position.
+                if (rootType.IsInterface && segments.Length == 1)
+                {
+                    atInterfaceList = true;
+                    interfaceElementType = rootType;
+                }
+
+                // Walk completed segments (all except the last, which is partial).
+                for (int i = 0; i < segments.Length - 1; i++)
+                {
+                    string seg = segments[i];
+                    if (string.IsNullOrEmpty(seg))
+                        return Enumerable.Empty<CompletionResult>();
+
+                    prefix += (i > 0 ? "." : "") + seg;
+
+                    // Handle on: selector — switch into the selected type.
+                    if (seg.StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string selector = seg.Substring(3);
+                        if (selector == "*")
+                        {
+                            // on:* — can't narrow type, but we know we're
+                            // past the interface list. Pick the first
+                            // implementing type for property completion.
+                            if (interfaceElementType != null)
+                            {
+                                var impls = ReflectionUtils.GetTypesImplementingInterface(
+                                    interfaceElementType.Name);
+                                if (impls.Count > 0)
+                                    currentType = RscTypeInitializer.GetTypeByName(impls[0]);
+                            }
+                        }
+                        else
+                        {
+                            Type selectedType = RscTypeInitializer.GetTypeByName(selector);
+                            if (selectedType != null)
+                                currentType = selectedType;
+                            else
+                                return Enumerable.Empty<CompletionResult>();
+                        }
+                        atInterfaceList = false;
+                        interfaceElementType = null;
+                        continue;
+                    }
+
+                    // Regular property segment — resolve it.
+                    PropertyInfo prop = currentType.GetProperty(seg,
+                        BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public);
+                    if (prop == null)
+                        return Enumerable.Empty<CompletionResult>();
+
+                    Type propType = prop.PropertyType;
+
+                    // Check for List<T>
+                    if (propType.IsGenericType &&
+                        propType.GetGenericTypeDefinition() == typeof(List<>))
+                    {
+                        Type elemType = propType.GetGenericArguments()[0];
+                        if (elemType.IsInterface)
+                        {
+                            atInterfaceList = true;
+                            interfaceElementType = elemType;
+                            continue;
+                        }
+                        currentType = elemType;
+                        atInterfaceList = false;
+                        interfaceElementType = null;
+                        continue;
+                    }
+
+                    // Single interface — offer on: selectors
+                    if (propType.IsInterface)
+                    {
+                        atInterfaceList = true;
+                        interfaceElementType = propType;
+                        continue;
+                    }
+
+                    // Scalar/leaf — no sub-properties to complete.
+                    if (propType == typeof(string) ||
+                        propType.IsPrimitive ||
+                        propType.IsEnum ||
+                        propType == typeof(DateTime) ||
+                        (Nullable.GetUnderlyingType(propType) != null))
+                    {
+                        return Enumerable.Empty<CompletionResult>();
+                    }
+
+                    // Class — advance
+                    currentType = propType;
+                    atInterfaceList = false;
+                    interfaceElementType = null;
+                }
+
+                // The last segment is the partial text being completed.
+                string partial = segments[segments.Length - 1];
+                if (segments.Length > 1)
+                    prefix += ".";
+
+                // Helper: wrap completionText in quotes when the user
+                // started typing inside quotes.
+                Func<string, string> q = (string val) =>
+                    quoteChar == '\0' ? val : quoteChar + val + quoteChar;
+
+                // If we're right after a List<Interface> field, offer on: selectors.
+                if (atInterfaceList && interfaceElementType != null)
+                {
+                    var results = new List<CompletionResult>();
+                    var impls = ReflectionUtils.GetTypesImplementingInterface(
+                        interfaceElementType.Name);
+
+                    // on:* completion
+                    string onStar = "on:*";
+                    if (onStar.StartsWith(partial, StringComparison.OrdinalIgnoreCase))
+                    {
+                        results.Add(new CompletionResult(
+                            q(prefix + onStar), onStar, CompletionResultType.ParameterValue,
+                            "All implementing types"));
+                    }
+
+                    // on:TypeName completions
+                    foreach (string impl in impls)
+                    {
+                        string onType = "on:" + impl;
+                        if (onType.StartsWith(partial, StringComparison.OrdinalIgnoreCase))
+                        {
+                            results.Add(new CompletionResult(
+                                q(prefix + onType), onType, CompletionResultType.ParameterValue,
+                                impl));
+                        }
+                    }
+
+                    // Also offer bare field names expanded to on:*.field
+                    // for backward compatibility discovery.
+                    if (!partial.StartsWith("on:", StringComparison.OrdinalIgnoreCase) &&
+                        impls.Count > 0)
+                    {
+                        Type firstImpl = RscTypeInitializer.GetTypeByName(impls[0]);
+                        if (firstImpl != null)
+                        {
+                            foreach (PropertyInfo p in firstImpl.GetProperties(
+                                BindingFlags.Instance | BindingFlags.Public))
+                            {
+                                if (string.IsNullOrEmpty(partial) ||
+                                    p.Name.StartsWith(partial, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    string expanded = "on:*." + p.Name;
+                                    results.Add(new CompletionResult(
+                                        q(prefix + expanded), expanded,
+                                        CompletionResultType.ParameterValue,
+                                        $"{p.Name} (all types)"));
+                                }
+                            }
+                        }
+                    }
+
+                    return results;
+                }
+
+                // Regular property completion on currentType.
+                var propResults = new List<CompletionResult>();
+
+                // Offer "*" wildcard (all scalar properties)
+                if (string.IsNullOrEmpty(partial) ||
+                    "*".StartsWith(partial, StringComparison.OrdinalIgnoreCase))
+                {
+                    propResults.Add(new CompletionResult(
+                        q(prefix + "*"), "*",
+                        CompletionResultType.ParameterValue,
+                        "All scalar properties"));
+                }
+
+                foreach (PropertyInfo p in currentType.GetProperties(
+                    BindingFlags.Instance | BindingFlags.Public))
+                {
+                    if (string.IsNullOrEmpty(partial) ||
+                        p.Name.StartsWith(partial, StringComparison.OrdinalIgnoreCase))
+                    {
+                        propResults.Add(new CompletionResult(
+                            q(prefix + p.Name), p.Name,
+                            CompletionResultType.ParameterValue,
+                            $"{p.PropertyType.Name}"));
+                    }
+                }
+                return propResults;
+            }
+        }
 
         /// <summary>
         /// A hashtable mapping property names to specific values.
@@ -278,7 +529,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         }
                         else
                         {
-                            WriteObject(Activator.CreateInstance(returnType));
+                            if (returnType.IsInterface)
+                            {
+                                WriteObject(
+                                    InterfaceHelper.CreateInstanceOfFirstType(
+                                        returnType));
+                            }
+                            else
+                            {
+                                WriteObject(
+                                    Activator.CreateInstance(returnType));
+                            }
                         }
                         break;
                 }
