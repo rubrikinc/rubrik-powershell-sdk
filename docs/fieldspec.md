@@ -109,17 +109,44 @@ $fields.AsFieldSpec()
 
 ## Interface Fields: The `on:` Type Selector
 
-When a field is a `List<Interface>` (e.g. a Connection's `Nodes` field
-backed by a GraphQL interface), the SDK needs to know which implementing
-types to include as inline fragments (`... on TypeName`).
+Interfaces appear in three contexts in the RSC schema. The `on:` type
+selector works uniformly in all three:
 
-### Default: All Implementing Types
+| Context                | Example type / property                          | What `on:` does                         |
+|------------------------|--------------------------------------------------|-----------------------------------------|
+| **Root interface**     | `SlaDomain`                                      | Choose which implementing types to include in the composite |
+| **List\<Interface\>**  | `MssqlTopLevelDescendantTypeConnection.Nodes`    | Choose which inline fragments to emit   |
+| **Single interface**   | `MssqlDatabase.EffectiveSlaDomain`               | Choose which implementing type to instantiate |
 
-Without `on:`, all implementing types are included:
+### 1. Root Interface
+
+When the type passed to `-Name` is itself an interface:
 
 ```powershell
-$fields = Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties Nodes.Id
+# Specific type — only GlobalSlaReply fragment
+$fields = Get-RscType -Name SlaDomain -InitialProperties on:GlobalSlaReply.Id
+$fields.AsFieldSpec()
+# ... on GlobalSlaReply { id }
 
+# Multiple types — one fragment per type
+$fields = Get-RscType -Name SlaDomain -InitialProperties on:ClusterSlaDomain.Id,on:GlobalSlaReply.UiColor
+$fields.AsFieldSpec()
+# ... on ClusterSlaDomain { id }
+# ... on GlobalSlaReply { uiColor }
+
+# All types
+$fields = Get-RscType -Name SlaDomain -InitialProperties on:*.Id
+```
+
+### 2. List\<Interface\>
+
+When a property is a `List<Interface>` (e.g. a Connection's `Nodes`
+field backed by a GraphQL interface), each `on:` selector becomes an
+inline fragment:
+
+```powershell
+# Default (no on:) — all implementing types
+$fields = Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties Nodes.Id
 $fields.AsFieldSpec()
 # nodes {
 #   ... on MssqlAvailabilityGroup { id }
@@ -129,35 +156,20 @@ $fields.AsFieldSpec()
 #   ... on PhysicalHost { id }
 #   ... on WindowsCluster { id }
 # }
-```
 
-This is usually more than you need.
-
-### Targeting Specific Types with `on:`
-
-Use `on:TypeName` after a `List<Interface>` field to include only that
-type:
-
-```powershell
+# Specific type — only PhysicalHost
 $fields = Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties Nodes.on:PhysicalHost.Id
-
 $fields.AsFieldSpec()
 # nodes {
 #   ... on PhysicalHost { id }
 # }
-```
 
-### Multiple Types
-
-Specify multiple `on:` selectors for different types:
-
-```powershell
+# Multiple types
 $fields = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
     -InitialProperties @(
         "Nodes.on:PhysicalHost.Id"
         "Nodes.on:MssqlDatabase.Name"
     )
-
 $fields.AsFieldSpec()
 # nodes {
 #   ... on PhysicalHost { id }
@@ -165,7 +177,21 @@ $fields.AsFieldSpec()
 # }
 ```
 
-### Explicit All-Types
+### 3. Single Interface Property
+
+When a property is a single interface (not a list):
+
+```powershell
+# Default (no on:) — picks the first implementing type (alphabetically)
+$fields = Get-RscType -Name MssqlDatabase -InitialProperties EffectiveSlaDomain.Name
+$fields.EffectiveSlaDomain.GetType().Name  # ClusterSlaDomain
+
+# Specific type — choose which implementing type to use
+$fields = Get-RscType -Name MssqlDatabase -InitialProperties EffectiveSlaDomain.on:GlobalSlaReply.UiColor
+$fields.EffectiveSlaDomain.GetType().Name  # GlobalSlaReply
+```
+
+### Explicit All-Types with `on:*`
 
 `on:*` explicitly requests all implementing types (same as omitting
 `on:`, but self-documenting):
@@ -196,20 +222,37 @@ implementing types are included.
 
 ### Tab Completion for `on:`
 
-After a `List<Interface>` field, tab completion shows type selectors
-instead of property names:
+Tab completion offers `on:` selectors whenever the current position is
+an interface — whether at root, after a `List<Interface>` field, or
+after a single interface property:
 
 ```
+Get-RscType -Name SlaDomain -InitialProperties <tab>
+# on:*  on:ClusterSlaDomain  on:GlobalSlaReply  ...
+
 Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
     -InitialProperties Nodes.<tab>
-# on:*
-# on:MssqlAvailabilityGroup
-# on:MssqlDatabase
-# on:MssqlHost
-# on:MssqlInstance
-# on:PhysicalHost
-# on:WindowsCluster
+# on:*  on:MssqlAvailabilityGroup  on:MssqlDatabase  ...
+
+Get-RscType -Name MssqlDatabase -InitialProperties EffectiveSlaDomain.<tab>
+# on:*  on:ClusterSlaDomain  on:GlobalSlaReply  ...
 ```
+
+### Stability: `on:*` vs `on:TypeName`
+
+Using `on:*` (or omitting `on:` entirely) means your field spec includes
+**all** implementing types. If a future schema update adds a new type
+that implements the interface, your query automatically grows a new
+inline fragment — which may be what you want (exploration, ad-hoc
+queries) or may not (stable automation).
+
+This is the same trade-off that exists in GraphQL itself: a query like
+`{ pets { name } }` returns fragments for every type implementing `Pet`,
+and grows as the schema grows.
+
+For production scripts where you want full control over the query shape,
+prefer naming specific types with `on:TypeName`. Your query will only
+include the types you listed, regardless of schema changes.
 
 ### The `on:` Prefix
 

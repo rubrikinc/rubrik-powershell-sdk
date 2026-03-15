@@ -313,6 +313,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     $"No type found matching: '{objectClassName}'");
             }
 
+            // Interface root: delegate to InitializeInterfaceRoot
+            if (returnType.IsInterface)
+            {
+                return InitializeInterfaceRoot(
+                    returnType, requestedProperties);
+            }
+
             object returnInstance = Activator.CreateInstance(returnType);
 
             // Outer loop: each requestedProperty is an independent path.
@@ -326,6 +333,19 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 // At each step, currentObject advances to the nested object.
                 for (int i = 0; i < segments.Length; i++)
                 {
+                    // "*" wildcard: set all scalar properties on
+                    // the current object. Must be the last segment.
+                    if (segments[i] == "*")
+                    {
+                        foreach (PropertyInfo p in currentObject.GetType()
+                            .GetProperties(BindingFlags.Instance |
+                                           BindingFlags.Public))
+                        {
+                            SetScalarSentinel(currentObject, p);
+                        }
+                        break;
+                    }
+
                     PropertyInfo prop = currentObject.GetType()
                         .GetProperty(segments[i],
                             BindingFlags.IgnoreCase |
@@ -441,8 +461,29 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     // then advance.
                     if (prop.PropertyType.IsClass || prop.PropertyType.IsInterface)
                     {
-                        currentObject = GetOrCreatePropertyValue(
-                            currentObject, prop);
+                        if (prop.PropertyType.IsInterface &&
+                            i + 1 < segments.Length &&
+                            segments[i + 1].StartsWith("on:",
+                                StringComparison.OrdinalIgnoreCase))
+                        {
+                            string selector = segments[i + 1].Substring(3);
+                            i++; // consume the on: segment
+                            if (selector == "*")
+                            {
+                                currentObject = GetOrCreatePropertyValue(
+                                    currentObject, prop);
+                            }
+                            else
+                            {
+                                currentObject = GetOrCreatePropertyValue(
+                                    currentObject, prop, selector);
+                            }
+                        }
+                        else
+                        {
+                            currentObject = GetOrCreatePropertyValue(
+                                currentObject, prop);
+                        }
                         continue;
                     }
 
@@ -453,6 +494,101 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 }
             }
             return returnInstance;
+        }
+
+        /// <summary>
+        /// Handle an interface as the root type. Groups requestedProperties
+        /// by on: type selector, initializes each implementing type
+        /// independently, then chains them into a composite via
+        /// MakeCompositeFromList.
+        ///
+        /// Supported property forms:
+        ///   on:TypeName.field  → only that implementing type
+        ///   on:*.field         → all implementing types
+        ///   field (no on:)     → all implementing types (backward compat)
+        /// </summary>
+        private static object InitializeInterfaceRoot(
+            System.Type interfaceType,
+            string[] requestedProperties)
+        {
+            var implNames = ReflectionUtils.GetTypesImplementingInterface(
+                interfaceType.Name);
+
+            // Group properties: key = type name or "*" for wildcard/bare.
+            var groups = new Dictionary<string, List<string>>(
+                StringComparer.OrdinalIgnoreCase);
+
+            foreach (string rp in requestedProperties)
+            {
+                string[] parts = rp.Split(new[] { '.' }, 2);
+                string first = parts[0];
+                string rest = parts.Length > 1 ? parts[1] : null;
+
+                if (first.StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                {
+                    string selector = first.Substring(3);
+                    string key = selector == "*" ? "*" : selector;
+                    if (!groups.ContainsKey(key))
+                        groups[key] = new List<string>();
+                    if (rest != null)
+                        groups[key].Add(rest);
+                }
+                else
+                {
+                    // Bare property — treat as wildcard
+                    if (!groups.ContainsKey("*"))
+                        groups["*"] = new List<string>();
+                    groups["*"].Add(rp);
+                }
+            }
+
+            // Validate specific type names
+            foreach (string key in groups.Keys)
+            {
+                if (key == "*") continue;
+                if (!implNames.Contains(key, StringComparer.OrdinalIgnoreCase))
+                {
+                    throw new Exception(
+                        $"Type '{key}' does not implement " +
+                        $"interface '{interfaceType.Name}'. " +
+                        $"Use on:* to see all implementing types.");
+                }
+            }
+
+            List<string> wildcardProps = groups.ContainsKey("*")
+                ? groups["*"] : null;
+
+            // Always create ALL implementing types so AsFieldSpec()
+            // produces proper inline fragments (... on TypeName).
+            // Only selected types get their properties initialized;
+            // unselected types remain empty (all nulls → skipped by
+            // AsFieldSpec).
+            var instances = new List<object>();
+            foreach (string typeName in implNames)
+            {
+                var props = new List<string>();
+
+                // Add wildcard properties
+                if (wildcardProps != null)
+                    props.AddRange(wildcardProps);
+
+                // Add type-specific properties
+                if (groups.ContainsKey(typeName))
+                    props.AddRange(groups[typeName]);
+
+                if (props.Count > 0)
+                {
+                    instances.Add(InitializeTypeWithSelectedProperties(
+                        typeName, props.ToArray()));
+                }
+                else
+                {
+                    instances.Add(Activator.CreateInstance(
+                        GetTypeByName(typeName)));
+                }
+            }
+
+            return InterfaceHelper.MakeCompositeFromList(instances);
         }
 
         /// <summary>
@@ -542,6 +678,29 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 child = Activator.CreateInstance(prop.PropertyType);
             }
 
+            prop.SetValue(parent, child);
+            return child;
+        }
+
+        /// <summary>
+        /// Overload: create a specific implementing type for an interface
+        /// property. Used when an on:TypeName selector is provided.
+        /// </summary>
+        private static object GetOrCreatePropertyValue(
+            object parent, PropertyInfo prop, string typeName)
+        {
+            object child = prop.GetValue(parent);
+            if (child != null) return child;
+
+            System.Type targetType = GetTypeByName(typeName);
+            if (targetType == null ||
+                !prop.PropertyType.IsAssignableFrom(targetType))
+            {
+                throw new Exception(
+                    $"Type '{typeName}' does not implement " +
+                    $"interface '{prop.PropertyType.Name}'.");
+            }
+            child = Activator.CreateInstance(targetType);
             prop.SetValue(parent, child);
             return child;
         }
