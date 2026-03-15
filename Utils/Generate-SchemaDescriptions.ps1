@@ -30,8 +30,14 @@ Write-Host "Parsing schema descriptions from $SchemaPath ..."
 
 $lines = [System.IO.File]::ReadAllLines($SchemaPath)
 $descriptions = @{}
+$implements = @{}  # Type -> list of interfaces
+$fieldDescs = @{}  # "TypeName.fieldName" -> description
+$rootFieldArgs = @{}  # "Query:fieldName" -> @("argName: ArgType - desc", ...)
 $commentLines = @()
 $inRootBlock = ""  # "Query" or "Mutation" when inside those blocks
+$inTypeBlock = ""  # type/input/interface name when inside their bodies
+$currentRootField = ""  # root field name when parsing its argument list
+$currentArgs = @()      # accumulated arguments for current root field
 $braceDepth = 0
 
 # Map GraphQL keywords to description key prefixes
@@ -90,9 +96,39 @@ for ($i = 0; $i -lt $lines.Count; $i++) {
         $braceDepth = $braceDepth + $openCount - $closeCount
 
         if ($braceDepth -le 0) {
-            # Exited the root block
             $inRootBlock = ""
+            $currentRootField = ""
+            $currentArgs = @()
             $braceDepth = 0
+            continue
+        }
+
+        # Inside an argument list for a root field?
+        if ($currentRootField -ne "") {
+            # Check for closing ) — may also have a final arg on same line
+            if ($line -match '\)') {
+                if ($line -match '^\s+([a-zA-Z_]\w*)\s*:\s*([^)]+)\)') {
+                    $argName = $Matches[1]
+                    $argType = $Matches[2].Trim().TrimEnd(',', ' ')
+                    $entry = "${argName}: ${argType}"
+                    if ($desc.Length -gt 0) { $entry += " - $desc" }
+                    $currentArgs += $entry
+                }
+                if ($currentArgs.Count -gt 0) {
+                    $rootFieldArgs["${inRootBlock}:${currentRootField}"] = $currentArgs
+                }
+                $currentRootField = ""
+                $currentArgs = @()
+                continue
+            }
+            # Argument line: argName: Type
+            if ($line -match '^\s+([a-zA-Z_]\w*)\s*:\s*(.+?)[,\s]*$') {
+                $argName = $Matches[1]
+                $argType = $Matches[2].Trim().TrimEnd(',', ' ')
+                $entry = "${argName}: ${argType}"
+                if ($desc.Length -gt 0) { $entry += " - $desc" }
+                $currentArgs += $entry
+            }
             continue
         }
 
@@ -102,6 +138,33 @@ for ($i = 0; $i -lt $lines.Count; $i++) {
             if ($desc.Length -gt 0) {
                 $key = "${inRootBlock}:${fieldName}"
                 $descriptions[$key] = $desc
+            }
+            # Has arguments? Enter arg-parsing mode
+            if ($line -match '\(' -and $line -notmatch '\)') {
+                $currentRootField = $fieldName
+                $currentArgs = @()
+            }
+        }
+        continue
+    }
+
+    # Inside a type/input/interface body: parse fields
+    if ($inTypeBlock -ne "") {
+        $openCount = ($line.ToCharArray() | Where-Object { $_ -eq '{' }).Count
+        $closeCount = ($line.ToCharArray() | Where-Object { $_ -eq '}' }).Count
+        $braceDepth = $braceDepth + $openCount - $closeCount
+
+        if ($braceDepth -le 0) {
+            $inTypeBlock = ""
+            $braceDepth = 0
+            continue
+        }
+
+        # Match a field: indented fieldName( or fieldName:
+        if ($line -match '^\s+([a-zA-Z_]\w*)\s*[\(:]') {
+            $fieldName = $Matches[1]
+            if ($desc.Length -gt 0) {
+                $fieldDescs["$inTypeBlock.$fieldName"] = $desc
             }
         }
         continue
@@ -123,30 +186,26 @@ for ($i = 0; $i -lt $lines.Count; $i++) {
             $key = "${kind}:${name}"
             $descriptions[$key] = $desc
         }
-        # Track braces for multi-line declarations
+        # Parse "implements Iface1 , Iface2 , ..." clause
+        if ($keyword -eq 'type' -and $line -match '\bimplements\s+(.+?)(\s*\{|$)') {
+            $ifaceList = $Matches[1] -split '\s*,\s*' | ForEach-Object { $_.Trim() } | Where-Object { $_.Length -gt 0 }
+            if ($ifaceList.Count -gt 0) {
+                $implements[$name] = $ifaceList
+            }
+        }
+        # For types, inputs, and interfaces: parse fields inside the body
+        $hasBody = $keyword -eq 'type' -or $keyword -eq 'input' -or $keyword -eq 'interface'
         $openCount = ($line.ToCharArray() | Where-Object { $_ -eq '{' }).Count
         $closeCount = ($line.ToCharArray() | Where-Object { $_ -eq '}' }).Count
-        if ($openCount -gt $closeCount) {
-            # Skip to closing brace (we don't need to parse inside non-root types)
-            $depth = $openCount - $closeCount
-            while ($depth -gt 0 -and $i -lt $lines.Count - 1) {
-                $i++
-                $nextLine = $lines[$i]
-                # Still accumulate comments for potential next declaration
-                if ($nextLine -match '^\s*#\s?(.*)$') {
-                    # comments inside type bodies are not top-level descriptions
-                    continue
-                }
-                $openCount = ($nextLine.ToCharArray() | Where-Object { $_ -eq '{' }).Count
-                $closeCount = ($nextLine.ToCharArray() | Where-Object { $_ -eq '}' }).Count
-                $depth = $depth + $openCount - $closeCount
-            }
+        if ($hasBody -and $openCount -gt $closeCount) {
+            $inTypeBlock = $name
+            $braceDepth = $openCount - $closeCount
         }
         continue
     }
 }
 
-Write-Host "  Found $($descriptions.Count) descriptions."
+Write-Host "  Found $($descriptions.Count) descriptions, $($implements.Count) implements clauses, $($fieldDescs.Count) field descriptions, $($rootFieldArgs.Count) root fields with arguments."
 
 # Write output file
 $sb = New-Object System.Text.StringBuilder
@@ -157,6 +216,30 @@ $sb = New-Object System.Text.StringBuilder
 foreach ($key in ($descriptions.Keys | Sort-Object)) {
     $val = $descriptions[$key] -replace "'", "''"
     [void]$sb.AppendLine("    '$key' = '$val'")
+}
+
+[void]$sb.AppendLine('}')
+[void]$sb.AppendLine('$Script:SchemaImplements = @{')
+
+foreach ($key in ($implements.Keys | Sort-Object)) {
+    $vals = ($implements[$key] | ForEach-Object { "'$_'" }) -join ', '
+    [void]$sb.AppendLine("    '$key' = @($vals)")
+}
+
+[void]$sb.AppendLine('}')
+[void]$sb.AppendLine('$Script:SchemaFieldDescriptions = @{')
+
+foreach ($key in ($fieldDescs.Keys | Sort-Object)) {
+    $val = $fieldDescs[$key] -replace "'", "''"
+    [void]$sb.AppendLine("    '$key' = '$val'")
+}
+
+[void]$sb.AppendLine('}')
+[void]$sb.AppendLine('$Script:SchemaRootFieldArgs = @{')
+
+foreach ($key in ($rootFieldArgs.Keys | Sort-Object)) {
+    $vals = ($rootFieldArgs[$key] | ForEach-Object { "'" + ($_ -replace "'", "''") + "'" }) -join ', '
+    [void]$sb.AppendLine("    '$key' = @($vals)")
 }
 
 [void]$sb.AppendLine('}')
