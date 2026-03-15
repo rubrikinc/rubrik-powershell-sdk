@@ -132,7 +132,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 CommandAst commandAst,
                 IDictionary fakeBoundParameters)
             {
-                var validNames = RscTypeInitializer.GetAllTypeNames()
+                var classNames = RscTypeInitializer.GetAllTypeNames();
+                var ifaceNames = RscTypeInitializer.GetAllTypeNames(
+                    interfaces: true);
+                var validNames = classNames.Concat(ifaceNames)
                     .Where(name => string.IsNullOrEmpty(wordToComplete) ||
                                    name.StartsWith(wordToComplete, StringComparison.OrdinalIgnoreCase));
 
@@ -213,6 +216,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 bool atInterfaceList = false;
                 Type interfaceElementType = null;
 
+                // If the root type is an interface, offer on: selectors
+                // at the first position.
+                if (rootType.IsInterface && segments.Length == 1)
+                {
+                    atInterfaceList = true;
+                    interfaceElementType = rootType;
+                }
+
                 // Walk completed segments (all except the last, which is partial).
                 for (int i = 0; i < segments.Length - 1; i++)
                 {
@@ -277,15 +288,22 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         continue;
                     }
 
-                    // Single interface
+                    // Single interface — offer on: selectors
                     if (propType.IsInterface)
                     {
-                        var impls = ReflectionUtils.GetTypesImplementingInterface(propType.Name);
-                        if (impls.Count > 0)
-                            currentType = RscTypeInitializer.GetTypeByName(impls[0]);
-                        atInterfaceList = false;
-                        interfaceElementType = null;
+                        atInterfaceList = true;
+                        interfaceElementType = propType;
                         continue;
+                    }
+
+                    // Scalar/leaf — no sub-properties to complete.
+                    if (propType == typeof(string) ||
+                        propType.IsPrimitive ||
+                        propType.IsEnum ||
+                        propType == typeof(DateTime) ||
+                        (Nullable.GetUnderlyingType(propType) != null))
+                    {
+                        return Enumerable.Empty<CompletionResult>();
                     }
 
                     // Class — advance
@@ -361,6 +379,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
                 // Regular property completion on currentType.
                 var propResults = new List<CompletionResult>();
+
+                // Offer "*" wildcard (all scalar properties)
+                if (string.IsNullOrEmpty(partial) ||
+                    "*".StartsWith(partial, StringComparison.OrdinalIgnoreCase))
+                {
+                    propResults.Add(new CompletionResult(
+                        q(prefix + "*"), "*",
+                        CompletionResultType.ParameterValue,
+                        "All scalar properties"));
+                }
+
                 foreach (PropertyInfo p in currentType.GetProperties(
                     BindingFlags.Instance | BindingFlags.Public))
                 {
@@ -500,7 +529,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         }
                         else
                         {
-                            WriteObject(Activator.CreateInstance(returnType));
+                            if (returnType.IsInterface)
+                            {
+                                WriteObject(
+                                    InterfaceHelper.CreateInstanceOfFirstType(
+                                        returnType));
+                            }
+                            else
+                            {
+                                WriteObject(
+                                    Activator.CreateInstance(returnType));
+                            }
                         }
                         break;
                 }
