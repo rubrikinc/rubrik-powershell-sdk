@@ -1,0 +1,166 @@
+<#
+.SYNOPSIS
+Parse GraphQL schema comments into a PowerShell hashtable data file.
+
+.DESCRIPTION
+Reads docs/graphql/schema-public.graphql and extracts # comment descriptions
+above top-level declarations and root fields (Query/Mutation fields).
+Writes Toolkit/Private/SchemaDescriptions.ps1 with a $Script:SchemaDescriptions
+hashtable mapping "Kind:Name" to description strings.
+#>
+param(
+    [string]$SchemaPath,
+    [string]$OutputPath
+)
+
+$repoRoot = Split-Path -Parent $PSScriptRoot
+if (-not $SchemaPath) {
+    $SchemaPath = Join-Path $repoRoot "docs/graphql/schema-public.graphql"
+}
+if (-not $OutputPath) {
+    $OutputPath = Join-Path $repoRoot "Toolkit/Private/SchemaDescriptions.ps1"
+}
+
+if (-not (Test-Path $SchemaPath)) {
+    Write-Warning "Schema file not found: $SchemaPath"
+    exit 1
+}
+
+Write-Host "Parsing schema descriptions from $SchemaPath ..."
+
+$lines = [System.IO.File]::ReadAllLines($SchemaPath)
+$descriptions = @{}
+$commentLines = @()
+$inRootBlock = ""  # "Query" or "Mutation" when inside those blocks
+$braceDepth = 0
+
+# Map GraphQL keywords to description key prefixes
+$kindMap = @{
+    'type'      = 'Type'
+    'enum'      = 'Enum'
+    'input'     = 'Input'
+    'interface' = 'Interface'
+    'union'     = 'Union'
+    'scalar'    = 'Scalar'
+}
+
+function TrimDescription([string[]]$lines) {
+    # Join comment lines, take first sentence, truncate at 120 chars
+    $text = ($lines -join ' ').Trim()
+    if ($text.Length -eq 0) { return "" }
+    # Take up to first period followed by space or end-of-string
+    if ($text -match '^(.+?\.)\s') {
+        $text = $Matches[1]
+    } elseif ($text -match '^(.+?\.)$') {
+        $text = $Matches[1]
+    }
+    if ($text.Length -gt 120) {
+        $text = $text.Substring(0, 117) + "..."
+    }
+    return $text
+}
+
+for ($i = 0; $i -lt $lines.Count; $i++) {
+    $line = $lines[$i]
+
+    # Blank line: reset accumulated comments
+    if ($line -match '^\s*$') {
+        $commentLines = @()
+        continue
+    }
+
+    # Comment line: accumulate
+    if ($line -match '^\s*#\s?(.*)$') {
+        $commentText = $Matches[1].Trim()
+        if ($commentText.Length -gt 0) {
+            $commentLines += $commentText
+        }
+        continue
+    }
+
+    # Non-comment, non-blank line
+    $desc = TrimDescription $commentLines
+    $commentLines = @()
+
+    if ($inRootBlock -ne "") {
+        # Inside type Query { ... } or type Mutation { ... }
+        # Track brace depth
+        $openCount = ($line.ToCharArray() | Where-Object { $_ -eq '{' }).Count
+        $closeCount = ($line.ToCharArray() | Where-Object { $_ -eq '}' }).Count
+        $braceDepth = $braceDepth + $openCount - $closeCount
+
+        if ($braceDepth -le 0) {
+            # Exited the root block
+            $inRootBlock = ""
+            $braceDepth = 0
+            continue
+        }
+
+        # Match a root field: indented fieldName( or fieldName:
+        if ($line -match '^\s+([a-zA-Z_]\w*)\s*[\(:]') {
+            $fieldName = $Matches[1]
+            if ($desc.Length -gt 0) {
+                $key = "${inRootBlock}:${fieldName}"
+                $descriptions[$key] = $desc
+            }
+        }
+        continue
+    }
+
+    # Top-level declaration: type Query { or type Mutation {
+    if ($line -match '^type\s+(Query|Mutation)\s*\{') {
+        $inRootBlock = $Matches[1]
+        $braceDepth = 1
+        continue
+    }
+
+    # Top-level declaration: type/enum/input/interface/union/scalar Name
+    if ($line -match '^(type|enum|input|interface|union|scalar)\s+([A-Za-z_]\w*)') {
+        $keyword = $Matches[1]
+        $name = $Matches[2]
+        $kind = $kindMap[$keyword]
+        if ($kind -and $desc.Length -gt 0) {
+            $key = "${kind}:${name}"
+            $descriptions[$key] = $desc
+        }
+        # Track braces for multi-line declarations
+        $openCount = ($line.ToCharArray() | Where-Object { $_ -eq '{' }).Count
+        $closeCount = ($line.ToCharArray() | Where-Object { $_ -eq '}' }).Count
+        if ($openCount -gt $closeCount) {
+            # Skip to closing brace (we don't need to parse inside non-root types)
+            $depth = $openCount - $closeCount
+            while ($depth -gt 0 -and $i -lt $lines.Count - 1) {
+                $i++
+                $nextLine = $lines[$i]
+                # Still accumulate comments for potential next declaration
+                if ($nextLine -match '^\s*#\s?(.*)$') {
+                    # comments inside type bodies are not top-level descriptions
+                    continue
+                }
+                $openCount = ($nextLine.ToCharArray() | Where-Object { $_ -eq '{' }).Count
+                $closeCount = ($nextLine.ToCharArray() | Where-Object { $_ -eq '}' }).Count
+                $depth = $depth + $openCount - $closeCount
+            }
+        }
+        continue
+    }
+}
+
+Write-Host "  Found $($descriptions.Count) descriptions."
+
+# Write output file
+$sb = New-Object System.Text.StringBuilder
+[void]$sb.AppendLine("# Auto-generated by Utils/Generate-SchemaDescriptions.ps1")
+[void]$sb.AppendLine("# Do not edit manually.")
+[void]$sb.AppendLine('$Script:SchemaDescriptions = @{')
+
+foreach ($key in ($descriptions.Keys | Sort-Object)) {
+    $val = $descriptions[$key] -replace "'", "''"
+    [void]$sb.AppendLine("    '$key' = '$val'")
+}
+
+[void]$sb.AppendLine('}')
+
+$content = $sb.ToString()
+[System.IO.File]::WriteAllText($OutputPath, $content)
+Write-Host "  Wrote $OutputPath"

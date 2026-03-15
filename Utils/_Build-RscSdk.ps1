@@ -66,6 +66,9 @@ if ($LASTEXITCODE -ne 0 ) {
     exit $LASTEXITCODE
 }
 
+# Generate schema descriptions data file
+& "$PSScriptRoot/Generate-SchemaDescriptions.ps1"
+
 # Copy the output to the output directory
 Copy-Item -Recurse -Force $ProjectOutputDir $OutputDir
 $helpXmlPath = "$OutputDir\net6.0\RubrikSecurityCloud.PowerShell.dll-Help.xml"

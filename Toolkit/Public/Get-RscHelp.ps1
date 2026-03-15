@@ -235,6 +235,11 @@ function Get-RscHelp {
                 GetCmdletHelp
                 return
             }
+            # Load schema descriptions
+            $descFile = Join-Path $PSScriptRoot "..\Private\SchemaDescriptions.ps1"
+            if (Test-Path $descFile) {
+                . $descFile
+            }
             $rootFieldData = @()
             $otherData = @()
             # Get all the enums within the SchemaMeta class
@@ -288,27 +293,39 @@ function Get-RscHelp {
                 $n = 0
                 foreach ($rf in ($rootFieldData | Sort-Object Kind, GqlField)) {
                     $n++
+                    $desc = ""
+                    if ($Script:SchemaDescriptions) {
+                        $desc = $Script:SchemaDescriptions["$($rf.Kind):$($rf.GqlField)"]
+                    }
+                    $infoParts = @()
+                    if ($desc) { $infoParts += $desc }
+                    $infoParts += "returns $($rf.ReturnType)"
                     $rows += New-Object PSObject -Property ([ordered]@{
                         '#'   = $n
                         Kind  = $rf.Kind
                         Name  = $rf.GqlField
-                        Info  = "returns $($rf.ReturnType)"
+                        Info  = ($infoParts -join ' ')
                     })
                 }
                 foreach ($item in ($otherData | Sort-Object Type, Name)) {
                     $n++
-                    $info = ""
+                    $desc = ""
+                    if ($Script:SchemaDescriptions) {
+                        $desc = $Script:SchemaDescriptions["$($item.Type):$($item.Name)"]
+                    }
+                    $infoParts = @()
+                    if ($desc) { $infoParts += $desc }
                     if ($item.Type -eq 'Interface') {
                         $impls = try { [RubrikSecurityCloud.Types.SchemaMeta]::InterfaceImpls($item.Name) } catch { @() }
                         if ($impls.Count -gt 0) {
-                            $info = "implemented by: $(($impls | Sort-Object) -join ', ')"
+                            $infoParts += "implemented by: $(($impls | Sort-Object) -join ', ')"
                         }
                     }
                     $rows += New-Object PSObject -Property ([ordered]@{
                         '#'   = $n
                         Kind  = $item.Type
                         Name  = $item.Name
-                        Info  = $info
+                        Info  = ($infoParts -join ' ')
                     })
                 }
                 Write-Output ""
