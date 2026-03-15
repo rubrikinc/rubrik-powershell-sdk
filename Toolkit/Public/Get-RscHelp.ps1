@@ -444,12 +444,11 @@ function Get-RscHelp {
                 if ($row.Description) {
                     Write-Host "  $($row.Description)"
                 }
-                if ($row.Info) {
-                    Write-Host "  $($row.Info)" -ForegroundColor DarkGray
-                }
                 $key = "$($row.Kind):$($row.Name)"
+                $hasExpandedDetail = $false
                 # Query/Mutation: show arguments
                 if ($row.Kind -eq 'Query' -or $row.Kind -eq 'Mutation') {
+                    Write-Host "  $($row.Info)" -ForegroundColor DarkGray
                     $args2 = $Script:SchemaRootFieldArgs[$key]
                     if ($args2 -and $args2.Count -gt 0) {
                         Write-Host "  Parameters:" -ForegroundColor Yellow
@@ -475,19 +474,23 @@ function Get-RscHelp {
                 }
                 # Type: show interfaces
                 elseif ($row.Kind -eq 'Type') {
-                    if ($Script:SchemaImplements) {
-                        $ifaces = $Script:SchemaImplements[$row.Name]
-                        if ($ifaces -and $ifaces.Count -gt 0) {
-                            Write-Host "  Implements:" -ForegroundColor Yellow
-                            foreach ($iface in ($ifaces | Sort-Object)) {
-                                $ifaceDesc = $Script:SchemaDescriptions["Interface:$iface"]
-                                if ($ifaceDesc) {
-                                    Write-Host "    $iface - $ifaceDesc"
-                                } else {
-                                    Write-Host "    $iface"
-                                }
+                    $ifaces = if ($Script:SchemaImplements) { $Script:SchemaImplements[$row.Name] } else { $null }
+                    if ($ifaces -and $ifaces.Count -gt 0) {
+                        Write-Host "  Implements:" -ForegroundColor Yellow
+                        foreach ($iface in ($ifaces | Sort-Object)) {
+                            $ifaceDesc = $Script:SchemaDescriptions["Interface:$iface"]
+                            if ($ifaceDesc) {
+                                Write-Host "    $iface - $ifaceDesc"
+                            } else {
+                                Write-Host "    $iface"
                             }
                         }
+                    }
+                }
+                else {
+                    # Other kinds: show Info line if present
+                    if ($row.Info) {
+                        Write-Host "  $($row.Info)" -ForegroundColor DarkGray
                     }
                 }
             }
@@ -516,7 +519,7 @@ function Get-RscHelp {
                 $input2 = $input2.Trim()
                 # Enter (empty) or q → exit
                 if ($input2 -eq '' -or $input2 -eq 'q') {
-                    break
+                    return
                 }
                 # 'd' → toggle expanded view
                 if ($input2 -eq 'd') {
