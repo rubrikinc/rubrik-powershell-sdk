@@ -82,6 +82,89 @@ Describe 'Get-RscType' {
         }
     }
 
+    Context 'Sentinel values by property type' {
+        # All tests use Cluster which has string, bool?, int?, long?,
+        # DateTime?, and enum? properties.
+
+        It 'string → "FETCH"' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("Name")
+            $r.Name | Should -Be "FETCH"
+        }
+
+        It 'bool? → true' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("EncryptionEnabled")
+            $r.EncryptionEnabled | Should -Be $true
+        }
+
+        It 'int? → 0' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("DefaultPort")
+            $r.DefaultPort | Should -Be 0
+        }
+
+        It 'long? → 0' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("EstimatedRunway")
+            $r.EstimatedRunway | Should -Be 0
+        }
+
+        It 'DateTime? → non-null' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("ConnectivityLastUpdated")
+            $r.ConnectivityLastUpdated | Should -Not -BeNull
+        }
+
+        It 'enum? → first value (UNKNOWN)' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("Status")
+            $r.Status | Should -Be ([RubrikSecurityCloud.Types.ClusterStatus]::UNKNOWN)
+        }
+
+        It 'class → non-null instance' {
+            $r = Get-RscType -Name Cluster -InitialProperties @("CloudInfo.Name")
+            $r.CloudInfo | Should -Not -BeNull
+            $r.CloudInfo | Should -BeOfType RubrikSecurityCloud.Types.CcWithCloudInfo
+        }
+
+        It 'single interface → first implementing type' {
+            # MssqlDatabase.EffectiveSlaDomain is a SlaDomain interface.
+            # GetOrCreatePropertyValue picks the first implementing type
+            # (ClusterSlaDomain, alphabetically before GlobalSlaReply).
+            $r = Get-RscType -Name MssqlDatabase -InitialProperties @("EffectiveSlaDomain.Name")
+            $r.EffectiveSlaDomain | Should -Not -BeNull
+            $r.EffectiveSlaDomain | Should -BeOfType RubrikSecurityCloud.Types.ClusterSlaDomain
+            $r.EffectiveSlaDomain.Name | Should -Be "FETCH"
+        }
+
+        It 'List<concrete> → list with one element' {
+            # Cluster.AllOrgs is List<Org>
+            $r = Get-RscType -Name Cluster -InitialProperties @("AllOrgs.Name")
+            $r.AllOrgs | Should -Not -BeNull
+            $r.AllOrgs.Count | Should -Be 1
+            $r.AllOrgs[0] | Should -BeOfType RubrikSecurityCloud.Types.Org
+            $r.AllOrgs[0].Name | Should -Be "FETCH"
+        }
+    }
+
+    Context 'Dotted path structural behavior' {
+        It 'Shared prefix: two paths with same parent create the object once' {
+            # "CloudInfo.Name" and "CloudInfo.Region" should both set
+            # fields on the SAME CloudInfo instance.
+            $r = Get-RscType -Name Cluster -InitialProperties @(
+                "CloudInfo.Name", "CloudInfo.Region"
+            )
+            $r.CloudInfo.Name | Should -Be "FETCH"
+            $r.CloudInfo.Region | Should -Be "FETCH"
+            # Other fields should still be null
+            $r.CloudInfo.Uuid | Should -BeNullOrEmpty
+        }
+
+        It 'List<concrete> mid-path walk sets leaf on first element' {
+            # "AllOrgs.Name" should create a list with one Org,
+            # then set Name on that Org.
+            $r = Get-RscType -Name Cluster -InitialProperties @("AllOrgs.Name")
+            $r.AllOrgs.Count | Should -Be 1
+            $r.AllOrgs[0].Name | Should -Be "FETCH"
+            $r.AllOrgs[0].Id | Should -BeNullOrEmpty
+        }
+    }
+
     Context 'When the -InitialProperties param contains a field that is of type List<Interface>'{
         It -Name 'Should return a list of types for an interface list' -Test {
             $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties @("nodes.id")

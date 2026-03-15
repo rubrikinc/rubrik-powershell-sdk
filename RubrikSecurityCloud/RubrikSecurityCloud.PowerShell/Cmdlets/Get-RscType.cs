@@ -42,11 +42,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// ## Known Issues
     ///
-    /// - The -ListAvailable switch is in the default parameter set but is
-    ///   not mandatory. Bare "Get-RscType" (no params) falls into GetTypeList
-    ///   and returns the full type list regardless of the switch value.
-    ///   The switch is effectively meaningless.
-    ///
     /// - The -Interfaces switch is at Position=3 in GetTypeList, but
     ///   Position=2 is unused, creating a gap in positional parameters.
     ///
@@ -111,7 +106,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </code>
     /// </example>
 
-    [Cmdlet(VerbsCommon.Get, "RscType", DefaultParameterSetName = "GetTypeList")]
+    [Cmdlet(VerbsCommon.Get, "RscType", DefaultParameterSetName = "GetTypeByName")]
     public class Get_RscType : RscBasePSCmdlet
     {
 
@@ -182,12 +177,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         /// <summary>
         /// List all available schema types (or interfaces with -Interfaces).
-        /// Known issue: this switch is in the default parameter set but is
-        /// not mandatory. The GetTypeList code path runs regardless of its
-        /// value, so bare "Get-RscType" returns the full list.
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             Position = 0,
             ParameterSetName = "GetTypeList")]
         public SwitchParameter ListAvailable { get; set; }
@@ -249,6 +241,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
 
                     case "GetTypeByName":
+                        if (string.IsNullOrEmpty(Name)) {
+                            throw new Exception(
+                                "Specify -Name <TypeName> to instantiate a type, " +
+                                "or -ListAvailable to list all types. " +
+                                "See Get-Help Get-RscType for usage.");
+                        }
+
                         Type returnType = RscTypeInitializer.GetTypeByName(Name);
 
                         if (returnType == null) {

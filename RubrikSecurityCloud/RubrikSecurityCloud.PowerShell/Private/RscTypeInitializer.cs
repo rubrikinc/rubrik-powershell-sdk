@@ -26,16 +26,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
     ///     (for -InitialProperties)
     ///   - InitializeInputWithSelectedFields() → build input objects with
     ///     user-provided values (for -InitialValues)
-    ///
-    /// Known issues:
-    ///   - InitializeTypeWithSelectedProperties is a ~200-line method with
-    ///     deeply nested if/else chains handling every property type (string,
-    ///     list, interface, class, enum, bool, int, long, double, DateTime).
-    ///     Should be refactored into per-type handlers.
-    ///   - Property lookups are repeated redundantly: the code calls
-    ///     GetProperty() to check if a value is null, even though
-    ///     currentProperty already holds the same PropertyInfo.
-    ///     Should use currentProperty.GetValue(currentObject) instead.
     /// </summary>
     public class RscTypeInitializer
     {
@@ -289,6 +279,10 @@ namespace RubrikSecurityCloud.PowerShell.Private
             return inputInstance;
         }
 
+        // ---------------------------------------------------------------
+        //  InitializeTypeWithSelectedProperties and its helpers
+        // ---------------------------------------------------------------
+
         /// <summary>
         /// Create an instance of an output type and set requested properties
         /// to sentinel values. Used by Get-RscType -InitialProperties.
@@ -299,334 +293,276 @@ namespace RubrikSecurityCloud.PowerShell.Private
         /// make the property non-null. The response is deserialized into a
         /// separate fresh object.
         ///
-        /// ## Sentinel values by type
-        ///   string    → "FETCH"
+        /// Properties can be dotted paths like "nodes.id". The method splits
+        /// on '.' and walks into nested objects, instantiating intermediate
+        /// objects as needed.
+        ///
+        /// See SetScalarSentinel for sentinel values by type.
+        /// See InitializeInterfaceList for List&lt;Interface&gt; behavior.
+        /// See GetOrCreatePropertyValue for class/interface instantiation.
+        /// </summary>
+        public static object InitializeTypeWithSelectedProperties(
+            string objectClassName,
+            string[] requestedProperties)
+        {
+            System.Type returnType = GetTypeByName(objectClassName);
+
+            if (returnType == null)
+            {
+                throw new Exception(
+                    $"No type found matching: '{objectClassName}'");
+            }
+
+            object returnInstance = Activator.CreateInstance(returnType);
+
+            // Outer loop: each requestedProperty is an independent path.
+            // "currentObject" is reset to returnInstance for each one.
+            foreach (string requestedProperty in requestedProperties)
+            {
+                object currentObject = returnInstance;
+                string[] segments = requestedProperty.Split('.');
+
+                // Inner loop: walk the dotted path segment by segment.
+                // At each step, currentObject advances to the nested object.
+                for (int i = 0; i < segments.Length; i++)
+                {
+                    PropertyInfo prop = currentObject.GetType()
+                        .GetProperty(segments[i],
+                            BindingFlags.IgnoreCase |
+                            BindingFlags.Instance |
+                            BindingFlags.Public);
+
+                    if (prop == null)
+                    {
+                        throw new Exception(
+                            $"Property '{segments[i]}' not found on type " +
+                            $"'{currentObject.GetType().Name}' " +
+                            $"when evaluating '{requestedProperty}'.");
+                    }
+
+                    // Scalar leaf: set sentinel and move to next property.
+                    if (SetScalarSentinel(currentObject, prop))
+                    {
+                        continue;
+                    }
+
+                    // List<T>: initialize if null, then advance into
+                    // the first element.
+                    if (prop.PropertyType.IsGenericType &&
+                        prop.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+                    {
+                        System.Type elementType =
+                            prop.PropertyType.GetGenericArguments()[0];
+
+                        if (prop.GetValue(currentObject) == null)
+                        {
+                            if (elementType.IsInterface)
+                            {
+                                currentObject = InitializeInterfaceList(
+                                    currentObject, prop, elementType,
+                                    requestedProperties, segments, i);
+                            }
+                            else
+                            {
+                                // List<ConcreteType>: create list with one element.
+                                IList list = (IList)Activator
+                                    .CreateInstance(prop.PropertyType);
+                                list.Add(Activator.CreateInstance(elementType));
+                                prop.SetValue(currentObject, list);
+                                currentObject = list[0];
+                            }
+                        }
+                        else
+                        {
+                            // List already exists — advance into first element.
+                            currentObject = ((IList)prop.GetValue(currentObject))[0];
+                        }
+                        continue;
+                    }
+
+                    // Class or interface: get existing value or create new,
+                    // then advance.
+                    if (prop.PropertyType.IsClass || prop.PropertyType.IsInterface)
+                    {
+                        currentObject = GetOrCreatePropertyValue(
+                            currentObject, prop);
+                        continue;
+                    }
+
+                    // Should not reach here — SetScalarSentinel handles
+                    // all known leaf types.
+                    throw new Exception(
+                        $"Property type not handled: '{prop.PropertyType}'");
+                }
+            }
+            return returnInstance;
+        }
+
+        /// <summary>
+        /// Try to set a sentinel value on a scalar/leaf property.
+        /// Returns true if the property was a scalar type (and was set),
+        /// false if the property is a complex type that needs further walking.
+        ///
+        /// Sentinel values:
+        ///   string     → "FETCH"
+        ///   enum?      → first enum value (index 0, usually UNKNOWN)
         ///   bool/bool? → true
         ///   int/int?   → 0
         ///   long/long? → 0L
         ///   double     → 0.0
         ///   DateTime?  → new DateTime()
-        ///   enum?      → first enum value (index 0, usually UNKNOWN)
-        ///   class      → new instance (Activator.CreateInstance)
-        ///   interface  → first implementing type (InterfaceHelper)
-        ///   List&lt;T&gt;    → new list with one element of type T
-        ///   List&lt;Interface&gt; → list with one instance of EVERY implementing
-        ///                       type, so the field spec includes all possible
-        ///                       inline fragments (... on TypeA, ... on TypeB).
-        ///
-        /// ## Dotted paths
-        /// Properties can be dotted paths like "nodes.id". The method splits
-        /// on '.' and walks into nested objects, instantiating intermediate
-        /// objects as needed. For example, "cloudInfo.name" will:
-        ///   1. Find/create the CloudInfo object on the parent
-        ///   2. Set CloudInfo.Name to "FETCH"
-        ///
-        /// ## List&lt;Interface&gt; behavior
-        /// When a property is a List of an interface type (e.g.
-        /// List&lt;MssqlTopLevelDescendantType&gt;), this method creates one
-        /// instance of EVERY implementing type and adds them all to the list.
-        /// This ensures the generated GraphQL query includes inline fragments
-        /// for all possible types.
-        ///
-        /// If you only want a SINGLE implementing type (e.g. just PhysicalHost),
-        /// you cannot achieve that with -InitialProperties alone. You must:
-        ///   1. Create the specific type separately with Get-RscType
-        ///   2. Manually assign it to the list property
-        /// See the unit test "Double interface list" for a worked example.
-        ///
-        /// The remaining property paths are stripped of the parent prefix
-        /// before being passed to recursive calls on implementing types.
-        /// For example, if requestedProperties is ["nodes.id"] and we're
-        /// processing "nodes" (a List&lt;Interface&gt;), each implementing type
-        /// receives ["id"], not ["nodes.id"].
-        ///
-        /// ## Known issues
-        ///   - This method is ~200 lines with deeply nested if/else chains.
-        ///     The type-dispatch logic (string, list, class, interface, enum,
-        ///     bool, int, etc.) should be refactored into separate handlers.
-        ///   - Property lookups are repeated: the code calls GetProperty()
-        ///     again to check if a value is null, even though currentProperty
-        ///     already holds the same PropertyInfo. Should just use
-        ///     currentProperty.GetValue(currentObject).
-        ///   - The `implementingInstances` variable (line ~325) is computed
-        ///     but never used — it's dead code.
         /// </summary>
-        public static object InitializeTypeWithSelectedProperties(string objectClassName,
-            string[] requestedProperties)
+        private static bool SetScalarSentinel(object obj, PropertyInfo prop)
         {
+            System.Type t = prop.PropertyType;
 
-            System.Type returnType = GetTypeByName(objectClassName);
-
-            if (returnType != null)
+            if (t == typeof(string))
             {
-                object returnInstance = Activator.CreateInstance(returnType);
-                // Note: returnInstanceProperties is fetched but never used
-                // directly — property lookup happens via currentObject.GetType()
-                // inside the loop, since currentObject changes as we walk
-                // dotted paths.
-                PropertyInfo[] returnInstanceProperties = returnType.GetProperties();
+                prop.SetValue(obj, "FETCH");
+                return true;
+            }
+            if (t.IsEnum || IsNullableEnum(prop))
+            {
+                prop.SetValue(obj,
+                    Enum.GetValues(GetNullableUnderlyingType(prop))
+                        .GetValue(0));
+                return true;
+            }
+            if (t == typeof(bool) || t == typeof(Boolean) || t == typeof(Boolean?))
+            {
+                prop.SetValue(obj, true);
+                return true;
+            }
+            if (t == typeof(int) || t == typeof(Int32) || t == typeof(Int32?))
+            {
+                prop.SetValue(obj, 0);
+                return true;
+            }
+            if (t == typeof(Int64) || t == typeof(Int64?))
+            {
+                prop.SetValue(obj, (Int64)0);
+                return true;
+            }
+            if (t == typeof(double) || t == typeof(Double))
+            {
+                prop.SetValue(obj, 0.0);
+                return true;
+            }
+            if (t == typeof(DateTime?) || t == typeof(DateTime))
+            {
+                prop.SetValue(obj, new DateTime());
+                return true;
+            }
 
-                // Outer loop: each requestedProperty is an independent path.
-                // "currentObject" is reset to returnInstance for each one.
-                foreach (string requestedProperty in requestedProperties)
-                {
-                    object currentObject = returnInstance;
-                    string[] requestedPropertyTree = requestedProperty.Split('.');
+            return false;
+        }
 
-                    // Inner loop: walk the dotted path segment by segment.
-                    // At each step, currentObject advances to the nested object.
-                    for (int i = 0; i < requestedPropertyTree.Length; i++)
-                    {
-                        PropertyInfo currentProperty = currentObject.GetType()
-                            .GetProperty(requestedPropertyTree[i],
-                            BindingFlags.IgnoreCase |
-                            BindingFlags.Instance |
-                            BindingFlags.Public);
+        /// <summary>
+        /// Get the current value of a class or interface property. If null,
+        /// create a new instance and set it on the parent.
+        ///
+        /// For interfaces, creates the first implementing type via
+        /// InterfaceHelper.CreateInstanceOfFirstType.
+        ///
+        /// Returns the (possibly new) child object for further walking.
+        /// </summary>
+        private static object GetOrCreatePropertyValue(
+            object parent, PropertyInfo prop)
+        {
+            object child = prop.GetValue(parent);
+            if (child != null)
+            {
+                return child;
+            }
 
-                        if (currentProperty == null)
-                        {
-                            throw new Exception(
-                                $"Property '{requestedPropertyTree[i]}' not found on type " +
-                                $"'{currentObject.GetType().Name}' when evaluating '{requestedProperty}'."
-                            );
-                        }
-
-                        // --- Leaf types: set sentinel and continue ---
-
-                        if (currentProperty.PropertyType == typeof(string))
-                        {
-                            currentProperty.SetValue(currentObject, "FETCH");
-                            continue;
-                        }
-
-                        // --- List<T>: init the list if null, then advance
-                        // currentObject to the first element ---
-
-                        if (currentProperty.PropertyType.IsGenericType &&
-                            currentProperty.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
-                        {
-                            System.Type genericArgumentType = currentProperty.PropertyType
-                                .GetGenericArguments()[0];
-
-                            // Known issue: redundant GetProperty() call — should
-                            // use currentProperty.GetValue(currentObject) instead.
-                            if (currentObject.GetType()
-                                .GetProperty(requestedPropertyTree[i],
-                                    BindingFlags.IgnoreCase |
-                                    BindingFlags.Instance |
-                                    BindingFlags.Public).GetValue(currentObject) == null)
-                            {
-                                System.Type currentPropertyType = genericArgumentType;
-
-                                // --- List<Interface>: create ALL implementing types ---
-                                if (genericArgumentType.IsInterface)
-                                {
-                                    // Use reflection to call the generic method
-                                    // InterfaceHelper.CreateInstancesOfImplementingTypes<T>()
-                                    // with the correct type parameter.
-                                    MethodInfo typeInstancesMethod =
-                                        typeof(InterfaceHelper)
-                                        .GetMethod("CreateInstancesOfImplementingTypes");
-                                    MethodInfo getInstancesMethod =
-                                        typeInstancesMethod
-                                        .MakeGenericMethod(genericArgumentType);
-
-                                    object[] parameters = new object[] { genericArgumentType };
-
-                                    IList value = (IList)getInstancesMethod.Invoke(null, parameters);
-
-                                    // Known issue: implementingInstances is dead code —
-                                    // computed but never used.
-                                    IList implementingInstances =
-                                        InterfaceHelper
-                                        .CreateInstancesOfImplementingTypes<object>(genericArgumentType);
-
-                                    IList rtnObjs = CopyList(value);
-                                    rtnObjs.Clear();
-
-                                    // Strip the parent prefix from property paths before
-                                    // recursing into implementing types.
-                                    // e.g. ["nodes.id", "nodes.name"] at depth i=0 ("nodes")
-                                    //    → ["id", "name"] for each implementing type.
-                                    string[] remainingProperties = requestedProperties
-                                        .Select(rp => {
-                                            string[] parts = rp.Split('.');
-                                            if (parts.Length > i + 1 && string.Equals(parts[i], requestedPropertyTree[i], StringComparison.OrdinalIgnoreCase))
-                                            {
-                                                return string.Join(".", parts.Skip(i + 1));
-                                            }
-                                            return null;
-                                        })
-                                        .Where(rp => rp != null)
-                                        .ToArray();
-
-                                    foreach (var item in value)
-                                    {
-                                        if (remainingProperties.Length > 0)
-                                        {
-                                            rtnObjs.Add(InitializeTypeWithSelectedProperties(
-                                                item.GetType().Name,
-                                                remainingProperties));
-                                        }
-                                        else
-                                        {
-                                            rtnObjs.Add(item);
-                                        }
-                                    }
-
-                                    currentProperty.SetValue(currentObject, rtnObjs);
-                                    currentObject = rtnObjs[0];
-                                }
-                                // --- List<ConcreteType>: create one element ---
-                                else
-                                {
-                                    IList value = (IList)Activator.
-                                        CreateInstance(currentProperty.PropertyType)
-                                        ?? new List<object>();
-                                    value.Add(Activator.
-                                        CreateInstance(currentPropertyType));
-
-                                    currentProperty.SetValue(currentObject, value);
-                                    currentObject = value[0];
-                                }
-                            }
-                            // List already exists — advance into its first element.
-                            else
-                            {
-                                // Known issue: redundant GetProperty() call.
-                                IList value = (IList)currentObject?.GetType()?
-                                    .GetProperty(requestedPropertyTree[i],
-                                    BindingFlags.IgnoreCase |
-                                    BindingFlags.Instance |
-                                    BindingFlags.Public)?.GetValue(currentObject);
-                                currentObject = value[0];
-                            }
-
-                            continue;
-                        }
-
-                        // --- Class: instantiate if null, then advance ---
-
-                        if (currentProperty.PropertyType.IsClass)
-                        {
-                            // Known issue: redundant GetProperty() call.
-                            if (currentObject.GetType()
-                                .GetProperty(requestedPropertyTree[i],
-                                    BindingFlags.IgnoreCase |
-                                    BindingFlags.Instance |
-                                    BindingFlags.Public).GetValue(currentObject) == null)
-                            {
-                                object item = Activator.CreateInstance(currentProperty.PropertyType);
-                                currentProperty.SetValue(currentObject, item);
-                                currentObject = item;
-                            }
-                            else
-                            {
-                                // Known issue: redundant GetProperty() call.
-                                object item = currentObject.GetType()
-                                .GetProperty(requestedPropertyTree[i],
-                                    BindingFlags.IgnoreCase |
-                                    BindingFlags.Instance |
-                                    BindingFlags.Public)
-                                .GetValue(currentObject);
-                                currentObject = item;
-                            }
-
-                            continue;
-                        }
-
-                        // --- Single interface (not a list): pick first
-                        // implementing type ---
-
-                        if (currentProperty.PropertyType.IsInterface)
-                        {
-                            // Known issue: redundant GetProperty() call.
-                            if (currentObject.GetType()
-                                .GetProperty(requestedPropertyTree[i],
-                                    BindingFlags.IgnoreCase |
-                                    BindingFlags.Instance |
-                                    BindingFlags.Public).GetValue(currentObject) == null)
-                            {
-                                object item = InterfaceHelper.CreateInstanceOfFirstType(currentProperty.PropertyType);
-                                currentProperty.SetValue(currentObject, item);
-                                currentObject = item;
-                            }
-                            else
-                            {
-                                // Known issue: redundant GetProperty() call.
-                                object item = currentObject.GetType()
-                                    .GetProperty(requestedPropertyTree[i],
-                                    BindingFlags.IgnoreCase |
-                                    BindingFlags.Instance |
-                                    BindingFlags.Public).GetValue(currentObject);
-                                currentObject = item;
-                            }
-                            continue;
-                        }
-
-                        // --- Scalar leaf types: set sentinel values ---
-
-                        else if (currentProperty.PropertyType.IsEnum ||
-                            IsNullableEnum(currentProperty))
-                        {
-                            // Always picks index 0, usually UNKNOWN/UNSPECIFIED.
-                            currentProperty.SetValue(currentObject,
-                                Enum.GetValues(GetNullableUnderlyingType(currentProperty))
-                                .GetValue(0));
-                        }
-
-                        else if (currentProperty.PropertyType == typeof(bool) ||
-                            currentProperty.PropertyType == typeof(Boolean) ||
-                            currentProperty.PropertyType == typeof(Boolean?))
-                        {
-                            currentProperty.SetValue(currentObject, true);
-                        }
-                        else if (currentProperty.PropertyType == typeof(int) ||
-                            currentProperty.PropertyType == typeof(Int32) ||
-                            currentProperty.PropertyType == typeof(Int32?))
-                        {
-                            currentProperty.SetValue(currentObject, 0);
-                        }
-                        else if (currentProperty.PropertyType == typeof(Int64) ||
-                            currentProperty.PropertyType == typeof(Int64?))
-                        {
-                            currentProperty.SetValue(currentObject, (Int64)0);
-                        }
-                        else if (currentProperty.PropertyType == typeof(double) ||
-                            currentProperty.PropertyType == typeof(Double))
-                        {
-                            currentProperty.SetValue(currentObject, 0);
-                        }
-                        else if (currentProperty.PropertyType == typeof(DateTime?) ||
-                            currentProperty.PropertyType == typeof(DateTime))
-                        {
-                            currentProperty.SetValue(currentObject, new DateTime());
-                        }
-                        else
-                        {
-                            throw new Exception($"Property type not handled: '{currentProperty.PropertyType}'");
-                        }
-                    }
-                }
-                return returnInstance;
+            if (prop.PropertyType.IsInterface)
+            {
+                child = InterfaceHelper.CreateInstanceOfFirstType(
+                    prop.PropertyType);
             }
             else
             {
-                throw new Exception($"No type found matching: '{ objectClassName }'");
+                child = Activator.CreateInstance(prop.PropertyType);
             }
-		}
+
+            prop.SetValue(parent, child);
+            return child;
+        }
 
         /// <summary>
-        /// Deep-copy an IList (preserving its concrete generic type).
+        /// Handle a List&lt;Interface&gt; property: create one instance of
+        /// EVERY implementing type so the field spec includes all possible
+        /// inline fragments (... on TypeA, ... on TypeB, etc.).
+        ///
+        /// Strips the parent prefix from property paths before recursing.
+        /// For example, ["nodes.id"] at depth i=0 ("nodes") becomes ["id"]
+        /// for each implementing type.
+        ///
+        /// If you only want a SINGLE implementing type (e.g. just
+        /// PhysicalHost), you cannot achieve that with -InitialProperties.
+        /// You must create the type separately and manually assign it to
+        /// the list. See the unit test "Double interface list" for a
+        /// worked example.
+        ///
+        /// Returns the first element of the initialized list (for further
+        /// walking by the caller).
         /// </summary>
-        private static IList CopyList(IList source)
+        private static object InitializeInterfaceList(
+            object currentObject,
+            PropertyInfo prop,
+            System.Type interfaceType,
+            string[] requestedProperties,
+            string[] currentSegments,
+            int depth)
         {
-            IList copy = (IList)Activator.CreateInstance(source.GetType());
-            foreach (var item in source)
+            // Create a typed List<Interface> with one instance per
+            // implementing type via InterfaceHelper.
+            MethodInfo method = typeof(InterfaceHelper)
+                .GetMethod("CreateInstancesOfImplementingTypes")
+                .MakeGenericMethod(interfaceType);
+
+            IList templateList = (IList)method.Invoke(
+                null, new object[] { interfaceType });
+
+            // Build an empty list of the same generic type.
+            IList resultList = (IList)Activator.CreateInstance(
+                templateList.GetType());
+
+            // Strip the parent prefix from property paths.
+            // e.g. ["nodes.id", "nodes.name"] at depth 0 ("nodes")
+            //    → ["id", "name"]
+            string currentSegment = currentSegments[depth];
+            string[] remainingProperties = requestedProperties
+                .Select(rp => {
+                    string[] parts = rp.Split('.');
+                    if (parts.Length > depth + 1 &&
+                        string.Equals(parts[depth], currentSegment,
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        return string.Join(".", parts.Skip(depth + 1));
+                    }
+                    return null;
+                })
+                .Where(rp => rp != null)
+                .ToArray();
+
+            // Recursively initialize each implementing type with the
+            // remaining property paths.
+            foreach (var item in templateList)
             {
-                copy.Add(item);
+                if (remainingProperties.Length > 0)
+                {
+                    resultList.Add(InitializeTypeWithSelectedProperties(
+                        item.GetType().Name, remainingProperties));
+                }
+                else
+                {
+                    resultList.Add(item);
+                }
             }
-            return copy;
+
+            prop.SetValue(currentObject, resultList);
+            return resultList[0];
         }
     }
 }
