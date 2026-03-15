@@ -39,12 +39,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///    that implement a given schema interface.
     ///
     /// Does not require an RSC connection (retrieveConnection: false).
-    ///
-    /// ## Known Issues
-    ///
-    /// - The -Interfaces switch is at Position=3 in GetTypeList, but
-    ///   Position=2 is unused, creating a gap in positional parameters.
-    ///
     /// </description>
     /// <example>
     /// Create a filter input object with "a" "b" for text filters.
@@ -197,11 +191,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         /// <summary>
         /// When used with -ListAvailable, return interfaces instead of
         /// classes. Only interfaces implementing IFieldSpec are included.
-        /// Known issue: Position=3, but Position=2 is unused (gap).
         /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 3,
+            Position = 2,
             ParameterSetName = "GetTypeList")]
         public SwitchParameter Interfaces { get; set; }
 
