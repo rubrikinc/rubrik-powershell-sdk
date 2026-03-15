@@ -468,5 +468,10 @@ Describe 'Get-RscType' {
             $explicit.CloudInfo.Uuid | Should -Be $wildcard.CloudInfo.Uuid
             $explicit.CloudInfo.Region | Should -Be $wildcard.CloudInfo.Region
         }
+
+        It '"CloudInfo.*.foo" — throws because * must be last segment' {
+            { Get-RscType -Name Cluster -InitialProperties @("CloudInfo.*.foo") } |
+                Should -Throw "*must be the last segment*"
+        }
     }
 }

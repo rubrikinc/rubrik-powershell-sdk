@@ -337,6 +337,13 @@ namespace RubrikSecurityCloud.PowerShell.Private
                     // the current object. Must be the last segment.
                     if (segments[i] == "*")
                     {
+                        if (i < segments.Length - 1)
+                        {
+                            throw new Exception(
+                                $"'*' must be the last segment in " +
+                                $"'{requestedProperty}'. Cannot continue " +
+                                $"with '.{segments[i + 1]}'.");
+                        }
                         foreach (PropertyInfo p in currentObject.GetType()
                             .GetProperties(BindingFlags.Instance |
                                            BindingFlags.Public))
