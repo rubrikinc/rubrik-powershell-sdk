@@ -283,13 +283,37 @@ function Get-RscHelp {
                 Write-Output "# No match found for '$Match'."
             }
             else {
-                if ($rootFieldData.Count -gt 0) {
-                    $rootFieldData | Sort-Object Kind, GqlField | Format-Table -Property Kind, GqlField, ReturnType -AutoSize
+                # Build a single unified table with numbered matches
+                $rows = @()
+                $n = 0
+                foreach ($rf in ($rootFieldData | Sort-Object Kind, GqlField)) {
+                    $n++
+                    $rows += New-Object PSObject -Property ([ordered]@{
+                        '#'   = $n
+                        Kind  = $rf.Kind
+                        Name  = $rf.GqlField
+                        Info  = "returns $($rf.ReturnType)"
+                    })
                 }
-                if ($otherData.Count -gt 0) {
-                    $otherData | Sort-Object Type, Name | Format-Table -Property Type, Name -AutoSize
+                foreach ($item in ($otherData | Sort-Object Type, Name)) {
+                    $n++
+                    $info = ""
+                    if ($item.Type -eq 'Interface') {
+                        $impls = try { [RubrikSecurityCloud.Types.SchemaMeta]::InterfaceImpls($item.Name) } catch { @() }
+                        if ($impls.Count -gt 0) {
+                            $info = "implemented by: $(($impls | Sort-Object) -join ', ')"
+                        }
+                    }
+                    $rows += New-Object PSObject -Property ([ordered]@{
+                        '#'   = $n
+                        Kind  = $item.Type
+                        Name  = $item.Name
+                        Info  = $info
+                    })
                 }
-                Write-Output "# ${total} matches found for '$Match'."
+                Write-Output ""
+                Write-Output "# $total matches for '$Match':"
+                $rows | Format-Table -Property '#', Kind, Name, Info -AutoSize
             }
         }
 

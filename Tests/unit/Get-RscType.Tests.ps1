@@ -187,6 +187,80 @@ Describe 'Get-RscType' {
         }
     }
 
+    Context 'on: type selector for List<Interface>' {
+        It '"nodes.on:*.id" — explicit all-types, same result as "nodes.id"' {
+            $explicit = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:*.id")
+            $implicit = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.id")
+            $explicit.nodes.Count | Should -Be $implicit.nodes.Count
+            foreach ($node in $explicit.nodes) {
+                $node.Id | Should -Be "FETCH"
+            }
+        }
+
+        It '"nodes.on:PhysicalHost.id" — single type, only PhysicalHost fragment' {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:PhysicalHost.id")
+            $result.nodes.Count | Should -Be 1
+            $result.nodes[0] | Should -BeOfType RubrikSecurityCloud.Types.PhysicalHost
+            $result.nodes[0].Id | Should -Be "FETCH"
+        }
+
+        It '"nodes.on:PhysicalHost.id", "nodes.on:MssqlDatabase.name" — two specific types' {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:PhysicalHost.id", "nodes.on:MssqlDatabase.name")
+            $result.nodes.Count | Should -Be 2
+            $phHost = $result.nodes | Where-Object { $_ -is [RubrikSecurityCloud.Types.PhysicalHost] }
+            $mssql = $result.nodes | Where-Object { $_ -is [RubrikSecurityCloud.Types.MssqlDatabase] }
+            $phHost | Should -Not -BeNull
+            $phHost.Id | Should -Be "FETCH"
+            $mssql | Should -Not -BeNull
+            $mssql.Name | Should -Be "FETCH"
+        }
+
+        It '"nodes.on:NonExistent.id" — throws with clear error' {
+            { Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.on:NonExistent.id") } |
+                Should -Throw "*does not implement*MssqlTopLevelDescendantType*"
+        }
+
+        It 'Backward compat: "nodes.id" still works unchanged' {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @("nodes.id")
+            $typeList = Get-RscType -Interface "MssqlTopLevelDescendantType"
+            $result.nodes.Count | Should -Be $typeList.Count
+        }
+
+        It 'Double interface with on: produces same field spec as manual workaround' {
+            # A: new way — single Get-RscType call with on: selectors
+            $a = Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+                -InitialProperties @(
+                    "nodes.on:PhysicalHost.id",
+                    "nodes.on:PhysicalHost.name",
+                    "nodes.on:PhysicalHost.physicalChildConnection.count",
+                    "nodes.on:PhysicalHost.physicalChildConnection.nodes.on:MssqlInstance.id",
+                    "nodes.on:PhysicalHost.physicalChildConnection.nodes.on:MssqlInstance.name"
+                )
+
+            # B: old way — manual 4-step workaround
+            # (mirrors Tests/e2e/Invoke-RscQueryMssql-TopLevelDescendant.Tests.ps1)
+            $physicalHostFields =
+                Get-RscType -Name PhysicalHost -InitialProperties @(
+                    "id",
+                    "name",
+                    "physicalChildConnection.count"
+                )
+            $physicalHostFields.PhysicalChildConnection.Nodes =
+                Get-RscType -Name MssqlInstance -InitialProperties ("Id", "Name")
+            $b = Get-RscType -Name MssqlTopLevelDescendantTypeConnection
+            $b.nodes = $physicalHostFields
+
+            # A and B must produce the same field spec
+            $a.AsFieldSpec() | Should -Be $b.AsFieldSpec()
+        }
+    }
+
     Context 'Double interface list: manual field spec construction' {
         # This mirrors the e2e test in Invoke-RscQueryMssql-TopLevelDescendant.Tests.ps1
         # and exercises a real-world pattern for working with nested interface lists.

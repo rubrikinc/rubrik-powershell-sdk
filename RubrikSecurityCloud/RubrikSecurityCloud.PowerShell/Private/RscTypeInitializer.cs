@@ -358,8 +358,18 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         {
                             if (elementType.IsInterface)
                             {
+                                // Check for on: type selector in next segment
+                                string typeFilter = null;
+                                if (i + 1 < segments.Length &&
+                                    segments[i + 1].StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    string selector = segments[i + 1].Substring(3);
+                                    typeFilter = selector == "*" ? null : selector;
+                                    i++; // consume the on: segment
+                                }
                                 currentObject = InitializeInterfaceList(
                                     currentObject, prop, elementType,
+                                    typeFilter,
                                     requestedProperties, segments, i);
                             }
                             else
@@ -374,8 +384,55 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         }
                         else
                         {
-                            // List already exists — advance into first element.
-                            currentObject = ((IList)prop.GetValue(currentObject))[0];
+                            // List already exists.
+                            IList existingList = (IList)prop.GetValue(currentObject);
+
+                            // Check for on: type selector
+                            if (i + 1 < segments.Length &&
+                                segments[i + 1].StartsWith("on:", StringComparison.OrdinalIgnoreCase))
+                            {
+                                string selector = segments[i + 1].Substring(3);
+                                i++; // consume the on: segment
+
+                                if (selector != "*")
+                                {
+                                    // Find existing element of this type, or create and add one.
+                                    object match = null;
+                                    foreach (var item in existingList)
+                                    {
+                                        if (string.Equals(item.GetType().Name, selector,
+                                            StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            match = item;
+                                            break;
+                                        }
+                                    }
+                                    if (match == null)
+                                    {
+                                        System.Type matchType = GetTypeByName(selector);
+                                        if (matchType == null || !elementType.IsAssignableFrom(matchType))
+                                        {
+                                            throw new Exception(
+                                                $"Type '{selector}' does not implement " +
+                                                $"interface '{elementType.Name}'. " +
+                                                $"Use on:* to see all implementing types.");
+                                        }
+                                        match = Activator.CreateInstance(matchType);
+                                        existingList.Add(match);
+                                    }
+                                    currentObject = match;
+                                }
+                                else
+                                {
+                                    // on:* with existing list — advance into first element.
+                                    currentObject = existingList[0];
+                                }
+                            }
+                            else
+                            {
+                                // No on: selector — advance into first element.
+                                currentObject = existingList[0];
+                            }
                         }
                         continue;
                     }
@@ -490,19 +547,16 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         /// <summary>
-        /// Handle a List&lt;Interface&gt; property: create one instance of
-        /// EVERY implementing type so the field spec includes all possible
-        /// inline fragments (... on TypeA, ... on TypeB, etc.).
+        /// Handle a List&lt;Interface&gt; property: create instances of
+        /// implementing types so the field spec includes inline fragments.
+        ///
+        /// When typeFilter is null, creates ALL implementing types
+        /// (... on TypeA, ... on TypeB, etc.).
+        /// When typeFilter is a type name, creates only that type.
         ///
         /// Strips the parent prefix from property paths before recursing.
         /// For example, ["nodes.id"] at depth i=0 ("nodes") becomes ["id"]
         /// for each implementing type.
-        ///
-        /// If you only want a SINGLE implementing type (e.g. just
-        /// PhysicalHost), you cannot achieve that with -InitialProperties.
-        /// You must create the type separately and manually assign it to
-        /// the list. See the unit test "Double interface list" for a
-        /// worked example.
         ///
         /// Returns the first element of the initialized list (for further
         /// walking by the caller).
@@ -511,6 +565,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             object currentObject,
             PropertyInfo prop,
             System.Type interfaceType,
+            string typeFilter,
             string[] requestedProperties,
             string[] currentSegments,
             int depth)
@@ -523,6 +578,35 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
             IList templateList = (IList)method.Invoke(
                 null, new object[] { interfaceType });
+
+            // Filter to a single implementing type if requested.
+            if (typeFilter != null)
+            {
+                var filtered = new List<object>();
+                foreach (var item in templateList)
+                {
+                    if (string.Equals(item.GetType().Name, typeFilter,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        filtered.Add(item);
+                    }
+                }
+                if (filtered.Count == 0)
+                {
+                    throw new Exception(
+                        $"Type '{typeFilter}' does not implement " +
+                        $"interface '{interfaceType.Name}'. " +
+                        $"Use on:* to see all implementing types.");
+                }
+                // Rebuild templateList with only the matching type.
+                IList filteredList = (IList)Activator.CreateInstance(
+                    templateList.GetType());
+                foreach (var item in filtered)
+                {
+                    filteredList.Add(item);
+                }
+                templateList = filteredList;
+            }
 
             // Build an empty list of the same generic type.
             IList resultList = (IList)Activator.CreateInstance(

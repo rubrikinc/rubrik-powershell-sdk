@@ -1,6 +1,6 @@
 # Design: Type Selector Syntax for -InitialProperties
 
-Status: Proposed (not implemented)
+Status: Implemented
 
 ## Problem
 
@@ -106,12 +106,36 @@ type selector because every field ends up inside an inline fragment.
 
 ## Implementation Notes
 
-Changes needed in `RscTypeInitializer.InitializeInterfaceList`:
-- Parse `on:*` and `on:<TypeName>` segments
-- Filter the implementing types list based on selector
-- Strip the `on:` segment before recursing
+### Files Changed
 
-Changes needed in the tab completer (`RscTypeNameCompleter`):
-- Detect when the current path segment follows a `List<Interface>` field
-- Return `on:*` and `on:<TypeName>` completions instead of bare field names
-- When user types a bare field prefix, expand to `on:*.<field>`
+- `RscTypeInitializer.cs` — `InitializeTypeWithSelectedProperties` parses `on:`
+  segments; `InitializeInterfaceList` accepts a `typeFilter` parameter to filter
+  implementing types.
+- `Get-RscType.cs` — new `InitialPropertiesCompleter` class attached to
+  `-InitialProperties`, offers `on:*` and `on:TypeName` completions after
+  `List<Interface>` fields.
+- `Get-RscType.Tests.ps1` — tests for `on:*`, `on:TypeName`, multi-type,
+  error cases, backward compat, and double interface via `on:`.
+
+### Examples
+
+```powershell
+# Only PhysicalHost — one fragment instead of 6
+Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties nodes.on:PhysicalHost.id
+
+# Two specific types
+Get-RscType -Name MssqlTopLevelDescendantTypeConnection `
+    -InitialProperties nodes.on:PhysicalHost.id,nodes.on:MssqlDatabase.name
+
+# Double interface — replaces the manual 4-step workaround
+Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties @(
+    "nodes.on:PhysicalHost.id"
+    "nodes.on:PhysicalHost.physicalChildConnection.nodes.on:MssqlInstance.id"
+)
+
+# Explicit all-types (same as bare field)
+Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties nodes.on:*.id
+
+# Backward compatible — still works
+Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties nodes.id
+```

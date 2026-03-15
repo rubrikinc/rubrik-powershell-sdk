@@ -2,42 +2,20 @@ BeforeAll {
     . "$PSScriptRoot\..\E2eTestInit.ps1"
 }
 Describe -Name 'Query mssqlTopLevelDescendants' -Fixture {
-    # This test exercises a key Get-RscType limitation with List<Interface>
-    # fields and shows the workaround.
+    # This test exercises manual field spec construction for List<Interface>
+    # fields. The same result can be achieved more concisely with the on:
+    # type selector syntax (e.g. "nodes.on:PhysicalHost.id"), but this
+    # manual approach remains valid and is kept here to exercise that path.
     #
     # MssqlTopLevelDescendantTypeConnection.nodes is a List<MssqlTopLevelDescendantType>,
     # where MssqlTopLevelDescendantType is an INTERFACE with 6 implementing types:
     #   MssqlAvailabilityGroup, MssqlDatabase, MssqlHost,
     #   MssqlInstance, PhysicalHost, WindowsCluster
     #
-    # If we used Get-RscType with -InitialProperties "nodes.id", the
-    # List<Interface> code path would create one instance of EVERY
-    # implementing type, producing a field spec with all 6 fragments:
-    #
-    #   nodes {
-    #     ... on MssqlAvailabilityGroup { id }
-    #     ... on MssqlDatabase { id }
-    #     ... on MssqlHost { id }
-    #     ... on MssqlInstance { id }
-    #     ... on PhysicalHost { id }
-    #     ... on WindowsCluster { id }
-    #   }
-    #
-    # But here we only want PhysicalHost (and its child MssqlInstances).
-    # Get-RscType has no way to select a single implementing type from an
-    # interface list. The workaround is to:
+    # Here we only want PhysicalHost (and its child MssqlInstances).
+    # The manual approach:
     #   1. Create the specific implementing type separately (PhysicalHost)
     #   2. Manually assign it to .nodes on an empty Connection object
-    #
-    # This gives us a targeted field spec with only the PhysicalHost fragment:
-    #
-    #   nodes {
-    #     ... on PhysicalHost {
-    #       id
-    #       name
-    #       physicalChildConnection { count nodes { ... } }
-    #     }
-    #   }
     #
     # The same pattern applies one level deeper:
     # PhysicalHost.physicalChildConnection.nodes is also a List<Interface>
