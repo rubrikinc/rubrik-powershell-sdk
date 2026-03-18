@@ -79,6 +79,10 @@ a PowerShell array, and you can use it directly.
 `New-RscQuery -Gql clusterConnection` creates a query object for the
 `clusterConnection` GraphQL query. The SDK automatically fills in a
 sensible default set of fields (see [AutoField](./autofield.md)).
+This auto-selection is great for exploration and reporting, but if
+your script processes specific known fields, you may prefer explicit
+field selection with [Field Spec](./fieldspec.md) for stability —
+see [AutoField vs Fixed Queries](./autofield.md#autofield-vs-fixed-queries).
 For a step-by-step walkthrough of query creation, see
 [How To Create a Query](./HOWTO_create_a_query.md).
 The result is a
@@ -333,7 +337,10 @@ The field `Nodes` contains a subfield called `VsphereVirtualDisks`.
 arguments.
 
 If the field specification is not given, the SDK fills it in automatically
-with sensible defaults (see [AutoField](./autofield.md)).
+with sensible defaults (see [AutoField](./autofield.md)). This is
+convenient for exploration and ad-hoc queries, but for scripts where
+you want full control over which fields are retrieved (and which aren't),
+see [Field Spec](./fieldspec.md).
 When working with GraphQL interfaces and composite objects, see
 [Retrieving Interface Fields](./retrieving_interface_fields.md).
 You can also specify fields yourself:

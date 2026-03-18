@@ -2,18 +2,26 @@
 
 ## Two Approaches to Field Selection
 
-The SDK provides two approaches to control which fields your GraphQL
-queries retrieve. They serve different needs:
+The SDK provides two field-selection strategies. The choice between them
+is not "production vs development" — it's **"do I want to react to
+schema changes, or be insulated from them?"**
 
 | Approach    | How it works                            | Best for                            |
 |-------------|-----------------------------------------|-------------------------------------|
-| [AutoField](./autofield.md) | SDK picks fields automatically via profiles | Exploration, scripts that want "enough data" without specifying every field |
-| **Field Spec** | You specify exactly which fields to retrieve | Production scripts, stable integrations, precise control |
+| [AutoField](./autofield.md) | SDK picks fields automatically via profiles | Exploration, reporting, data dumps, schema drift detection |
+| **Field Spec** | You specify exactly which fields to retrieve | ETL, stable integrations, scripts where correctness depends on specific fields |
+
+Both are valid in production. See
+[AutoField vs Fixed Queries](./autofield.md#autofield-vs-fixed-queries)
+for the full trade-off analysis.
 
 ### AutoField: Let the SDK Decide
 
 AutoField selects fields automatically based on name-pattern matching
-and profile depth. It's great for getting started quickly:
+and profile depth. It's great for getting started quickly, but also
+has legitimate production use cases: reporting scripts that want
+breadth, audit/inventory scripts that want completeness, and schema
+drift sentinels that use new fields as a change signal.
 
 ```powershell
 $q = New-RscQuery -Gql clusterConnection              # DEFAULT profile
@@ -22,11 +30,10 @@ $q = New-RscQuery -Gql clusterConnection -AddField Nodes.GeoLocation.Address
 ```
 
 AutoField results can change across SDK versions as profiles are tuned
-or new fields are added to the schema. This is a feature, not a bug: you
-automatically get useful new fields without changing your scripts.
-
-But if your script processes specific fields and you don't want surprises,
-use a field spec.
+or new fields are added to the schema. This is a feature when your
+script's job is to *discover* what's in the system. It's a liability
+when your script *processes* specific known data — use a field spec
+for that.
 
 ### Field Spec: You Decide
 
@@ -243,16 +250,20 @@ Get-RscType -Name MssqlDatabase -InitialProperties EffectiveSlaDomain.<tab>
 Using `on:*` (or omitting `on:` entirely) means your field spec includes
 **all** implementing types. If a future schema update adds a new type
 that implements the interface, your query automatically grows a new
-inline fragment — which may be what you want (exploration, ad-hoc
-queries) or may not (stable automation).
+inline fragment — which may be what you want (reporting, discovery)
+or may not (ETL, stable integrations).
 
-This is the same trade-off that exists in GraphQL itself: a query like
-`{ pets { name } }` returns fragments for every type implementing `Pet`,
-and grows as the schema grows.
+This is the same trade-off that exists in GraphQL itself — but with an
+important difference. In raw GraphQL, `{ pets { name } }` implicitly
+resolves *all* implementing types, and you can't prevent the server
+from resolving a newly added `Parrot` type. With the SDK's `on:TypeName`
+syntax, you produce explicit fragments (`... on Dog { name }`) that
+**exclude** types you didn't list. The SDK gives you stronger
+determinism than raw GraphQL.
 
-For production scripts where you want full control over the query shape,
-prefer naming specific types with `on:TypeName`. Your query will only
-include the types you listed, regardless of schema changes.
+When your script's job is to *discover* what's available, use `on:*`.
+When your script *processes* specific known types, name them explicitly
+with `on:TypeName` — your query won't change when the schema grows.
 
 ### The `on:` Prefix
 
@@ -277,14 +288,47 @@ default selections (which may add fields you didn't ask for).
 
 ## When to Use Which
 
-| Situation | Use |
-|-----------|-----|
-| Exploring the API, trying things out | AutoField (`New-RscQuery -Gql ...`) |
-| Quick scripts, ad-hoc queries | AutoField + `-AddField` / `-RemoveField` |
-| Production automation, CI/CD | Field Spec (`Get-RscType -InitialProperties`) |
-| Stable integration that shouldn't break on SDK updates | Field Spec |
-| Query with interface fields where you want specific types | Field Spec with `on:` |
-| You want the SDK to pick up new useful fields automatically | AutoField |
+The question is: **does your script want to react to schema changes
+or be insulated from them?**
+
+| Situation | Use | Why |
+|-----------|-----|-----|
+| Exploring the API, trying things out | AutoField | You want breadth without effort |
+| Reporting / data dumps (export to CSV, dashboards) | AutoField | New fields in the report = more data, which is the goal |
+| Audit / inventory ("show me everything about X") | AutoField | Completeness is the value |
+| Schema drift sentinel (detect when schema changed) | AutoField | New fields are the *signal*, not noise |
+| ETL feeding downstream systems with fixed schemas | Field Spec | Surprise fields break consumers |
+| Scripts where correctness depends on specific field semantics | Field Spec | You process known fields — extra fields are noise |
+| Stable integration that shouldn't change across SDK upgrades | Field Spec | The query is a contract |
+| Query with interface fields where you want specific types | Field Spec with `on:` | Pins the query to named types only |
+
+### A note on GraphQL determinism
+
+Even raw GraphQL queries are not fully deterministic. If the schema adds
+a new type implementing an interface, `{ pets { name } }` will resolve
+that new type — triggering new server-side code paths you didn't
+anticipate.
+
+The SDK's field spec with explicit `on:TypeName` selectors is **more
+deterministic than raw GraphQL**: it produces `... on Dog { name }`
+fragments that won't expand when new types are added. See
+[AutoField vs Fixed Queries](./autofield.md#autofield-vs-fixed-queries)
+for details.
+
+### Both cmdlets can be dynamic or fixed
+
+`New-RscQuery` and `Get-RscType` both have dynamic capabilities —
+it's not one cmdlet per strategy:
+
+- `New-RscQuery` uses AutoField by default. Use `-FieldProfile EMPTY`
+  to turn it off entirely.
+- `Get-RscType -InitialProperties "*"` wildcards all leaf fields
+  (scalars and enums) on the current type — but does not recurse into
+  nested objects. It's schema-dependent: new leaf fields will appear
+  when the schema changes.
+- `Get-RscType` without `on:` (or with `on:*`) expands to all
+  implementing types — also schema-dependent. Use `on:TypeName` for
+  stability.
 
 ## Related Documentation
 

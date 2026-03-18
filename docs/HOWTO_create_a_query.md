@@ -71,10 +71,21 @@ request. Only required variables must be set.
 
 ## 3 — Control Field Selection
 
-The SDK automatically selects fields using [AutoField](./autofield.md).
-For most queries, the defaults are sufficient — just invoke the query.
+The SDK offers two field-selection strategies:
 
-### Use the defaults (most common)
+- **AutoField** — the SDK picks fields automatically. Great for
+  exploration, reporting, and scripts that want breadth. Fields can
+  change across SDK versions as the schema evolves.
+- **Field Spec** — you specify exactly which fields to retrieve. Best
+  for ETL, stable integrations, and scripts where correctness depends
+  on specific fields.
+
+The choice is not "production vs development" — it's whether your
+script wants to **react to** schema changes or be **insulated from**
+them. See [AutoField vs Fixed Queries](./autofield.md#autofield-vs-fixed-queries)
+for the full analysis.
+
+### Use AutoField defaults (simplest)
 
 ```powershell
 $q = New-RscQuery -Gql clusterConnection
@@ -118,12 +129,20 @@ $q = New-RscQuery -Gql clusterConnection -Field $fieldObj -FieldProfile EMPTY
 ```
 
 This is the **field spec** approach: you specify exactly which fields
-to retrieve, and the query never changes unless you change it. Good for
-production scripts and stable integrations.
+to retrieve, and the query never changes unless you change it. The
+`-FieldProfile EMPTY` is critical — it turns off AutoField so only
+your explicitly marked fields are included.
+
+For interface fields, use `on:TypeName` to pin the query to specific
+implementing types (e.g., `Nodes.on:Dog.Name`). This is actually
+**more deterministic than raw GraphQL** — a bare GQL query like
+`{ pets { name } }` implicitly resolves all implementing types,
+including ones added after you wrote the query. The SDK's explicit
+fragments don't.
 
 See [Field Spec](./fieldspec.md) for the full guide (including `on:`
-type selectors for interface fields), and [AutoField](./autofield.md)
-for the automatic approach.
+type selectors), and [AutoField](./autofield.md) for the automatic
+approach.
 
 ## 4 — Run the Query
 

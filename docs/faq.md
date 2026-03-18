@@ -191,7 +191,88 @@ operations may not work.
 - The SDK is backward compatible for a limited time. If you see
   deprecation warnings, update as soon as possible.
 
-## FAQ8 Boolean field returns wrong value on arrays
+## FAQ8 Should I use AutoField in production?
+
+I'm writing a production script. Should I use AutoField or specify
+fields explicitly?
+
+### FAQ8 Explanation
+
+Both are valid in production. The question is: **does your script want
+to react to schema changes, or be insulated from them?**
+
+**Use AutoField** when your script's job is to *discover* what's in the
+system — reporting, data dumps, audit/inventory, or schema drift
+detection. AutoField automatically picks up new fields when the schema
+evolves, which is exactly what you want for these use cases.
+
+**Use explicit field specs** when your script *processes* specific known
+data — ETL pipelines, integrations with fixed downstream schemas, or
+scripts where correctness depends on specific field semantics.
+
+### FAQ8 Resolution
+
+For explicit field selection, use `Get-RscType -InitialProperties`
+and `New-RscQuery` with `-FieldProfile EMPTY`:
+
+```powershell
+# Fixed query — only these three fields, forever
+$fields = Get-RscType -Name ClusterConnection -InitialProperties Nodes.Id,Nodes.Name,Nodes.Status
+$q = New-RscQuery -Gql clusterConnection -Field $fields -FieldProfile EMPTY
+```
+
+For interface fields, use `on:TypeName` to pin the query to specific
+implementing types. This is actually **more deterministic than raw
+GraphQL** — a bare GQL query implicitly resolves all types implementing
+an interface, including ones added after you wrote the query.
+
+```powershell
+# Pinned to Dog and Cat — a new Parrot type won't appear
+$fields = Get-RscType -Name PetConnection -InitialProperties @(
+    "Nodes.on:Dog.Name"
+    "Nodes.on:Cat.Name"
+)
+```
+
+Be aware that `Get-RscType -InitialProperties "*"` wildcards all leaf
+fields on the current type. This is schema-dependent — new leaf fields
+will appear when the schema changes — so it's a middle ground between
+AutoField and fully explicit selection.
+
+The wildcard is most useful on **small, stable sub-objects** where you
+want completeness but the type is narrow enough that new fields are
+rare and welcome. For example, `Get-RscSla` uses a fixed field spec
+overall, but wildcards schedule details:
+
+```powershell
+$fields = Get-RscType -Name GlobalSlaReply -InitialProperties @(
+    "Id"
+    "Name"
+    "Description"
+    "ObjectTypes"
+    "BaseFrequency.Minute.BasicSchedule.*"   # wildcard here
+    "BaseFrequency.Hourly.BasicSchedule.*"
+)
+```
+
+`BasicSchedule` is a small leaf object — a handful of scalars like
+`frequency`, `retention`, `retentionUnit`. It changes rarely, and
+when it does, a new scalar there (say `retentionLockMode`) is
+almost certainly something you'd want in the SLA output. Spelling
+out each field would just create a maintenance burden for no safety
+benefit — you'd have to update the script every time a schedule
+property is added, and the "update" would always be "yes, include
+it."
+
+The rule of thumb: wildcard leaf fields on types where **any new
+scalar is likely relevant to your script's purpose**. Keep explicit
+field lists on types where new fields could be noise or could change
+the meaning of your output.
+
+See [AutoField vs Fixed Queries](./autofield.md#autofield-vs-fixed-queries)
+for the full trade-off analysis.
+
+## FAQ9 Boolean field returns wrong value on arrays
 
 When I access a boolean field like `IsReadOnly` on an array, it returns
 a different value than what the table display shows:
@@ -207,7 +288,7 @@ PS> $serviceAccount.Roles.IsReadOnly
 False
 ```
 
-### FAQ8 Explanation
+### FAQ9 Explanation
 
 This is a PowerShell property shadowing issue, not an SDK bug.
 `Roles` is an array, and `System.Array` implements `IList`, which has
@@ -219,7 +300,7 @@ This affects any field whose name collides with a .NET array/collection
 property: `Count`, `Length`, `LongLength`, `Rank`, `SyncRoot`,
 `IsReadOnly`, `IsFixedSize`, `IsSynchronized`.
 
-### FAQ8 Resolution
+### FAQ9 Resolution
 
 Index into the array or pipe to enumerate the elements:
 

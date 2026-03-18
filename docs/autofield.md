@@ -267,6 +267,134 @@ connection sub-objects that would make the response very large:
 
 5. Run `Update-RscToolkit` to deploy and test
 
+## AutoField vs Fixed Queries
+
+AutoField and fixed queries (field specs) are two field-selection
+strategies. The key question is not "production vs development" —
+it's **"do I want to react to schema changes, or be insulated from
+them?"**
+
+### When AutoField is the right choice
+
+| Use case | Why AutoField fits |
+|----------|--------------------|
+| **Exploration / interactive sessions** | You're poking at objects and want useful data without specifying every field |
+| **Reporting / data dumps** | You want breadth — export all cluster info to CSV, pull everything about an SLA. New fields showing up in the report is a *feature* |
+| **Audit / inventory scripts** | The script's value is completeness. If the schema adds `lastModifiedBy` next release, you want it automatically |
+| **Schema drift sentinel** | Run a script periodically with AutoField, diff the returned field set against a baseline. New fields = alert that the schema changed and client logic may need review. This turns AutoField into a monitoring tool |
+
+### When fixed queries are the right choice
+
+| Use case | Why fixed queries fit |
+|----------|-----------------------|
+| **ETL pipelines** | Downstream systems expect a fixed schema — surprise fields break them |
+| **Scripts where correctness depends on specific field semantics** | You process `status` and `state` — you don't want unrelated new fields polluting the logic |
+| **Stable integrations that shouldn't change across SDK upgrades** | The query is part of a contract |
+| **Anything where a surprise new field could break parsing or formatting** | Reports with fixed column layouts, structured logs, API bridges |
+
+### GraphQL is not fully deterministic either
+
+Even with a "fixed" raw GraphQL query, the server's behavior can
+change when the schema evolves. Consider:
+
+```graphql
+# Your "fixed" query
+query { pets { name } }
+```
+
+If the schema adds a new type `Parrot` implementing the `Pet`
+interface, the server now resolves Parrots too — even though your
+query didn't ask for them. This can trigger new server-side code
+paths (data fetching, authorization checks) that didn't exist when
+you wrote the query. You're exposed to more potential bugs without
+changing a single line.
+
+### The SDK can be *more* deterministic than raw GraphQL
+
+When you use `Get-RscType -InitialProperties` with explicit `on:`
+type selectors, the SDK expands your field spec into explicit inline
+fragments:
+
+```powershell
+# SDK field spec — explicit types
+$fields = Get-RscType -Name PetConnection -InitialProperties @(
+    "Nodes.on:Dog.Name"
+    "Nodes.on:Cat.Name"
+)
+# Produces: ... on Dog { name } ... on Cat { name }
+# A new Parrot type does NOT appear — your query is pinned.
+```
+
+Compare with raw GraphQL:
+
+```graphql
+# Raw GQL — implicit type resolution
+{ pets { name } }
+# Server resolves ALL implementing types, including future ones.
+```
+
+So the SDK with explicit `on:` selectors gives you **stronger
+determinism** than raw GraphQL. This is a genuine advantage of the
+field spec approach.
+
+### A note on dynamic field specs
+
+Both `New-RscQuery` and `Get-RscType` can produce dynamic field
+selections — it's not a simple "one cmdlet = autofield, the other =
+fixed" split:
+
+| Cmdlet | Dynamic behavior | How to pin it down |
+|--------|------------------|--------------------|
+| `New-RscQuery` | AutoField profiles expand fields based on schema | Use `-FieldProfile EMPTY` to turn off AutoField entirely |
+| `Get-RscType` | `-InitialProperties "*"` wildcards all leaf fields; omitting `on:` expands all implementing types | List fields explicitly; use `on:TypeName` instead of bare paths or `on:*` |
+
+`Get-RscType -InitialProperties "*"` is a leaf-only wildcard: it
+selects all scalar/enum fields on the current type but does not
+recurse into nested objects. You cannot write `"*.*"` or
+`"Nodes.*"`. This makes it less aggressive than AutoField's FULL
+profile, but it's still schema-dependent — new leaf fields will
+appear when the schema changes.
+
+The wildcard is most useful on **small, stable sub-objects** where
+you want completeness without maintenance burden. For example, a
+script that retrieves SLA details might use explicit fields on the
+top-level type but wildcard schedule internals:
+
+```powershell
+$fields = Get-RscType -Name GlobalSlaReply -InitialProperties @(
+    "Id"
+    "Name"
+    "Description"
+    "BaseFrequency.Minute.BasicSchedule.*"   # wildcard on a narrow leaf type
+)
+```
+
+`BasicSchedule` has a handful of scalars (`frequency`, `retention`,
+`retentionUnit`). New fields there are rare and almost certainly
+relevant — spelling them out individually would just create busywork.
+Wildcard leaf fields on types where **any new scalar is likely
+relevant**; keep explicit lists on types where new fields could be
+noise.
+
+### Choosing your strategy
+
+```
+                    Schema changes?
+                    ┌──── I want to see them ──── AutoField
+                    │
+     Your script ───┤
+                    │
+                    └──── I want stability ────── Field Spec
+                                                  (Get-RscType
+                                                   -InitialProperties
+                                                   + on:TypeName
+                                                   + -FieldProfile EMPTY)
+```
+
+Both are valid in production. The choice depends on whether your
+script's job is to **discover** what's in the system (use AutoField)
+or to **process** specific known data (use fixed queries).
+
 ## How AutoField Works Under the Covers
 
 ### Initialization

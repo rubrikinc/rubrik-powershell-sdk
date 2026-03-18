@@ -11,8 +11,8 @@ Recommended reading order for new users:
 3. [How To Create a Query](HOWTO_create_a_query.md) — step-by-step query creation
 4. [How To Run Mutations](HOWTO_mutations.md) — create, update, delete resources
 5. [How To Paginate](HOWTO_pagination.md) — walk through large result sets
-6. [AutoField](autofield.md) — field profiles and customization
-7. [Field Spec](fieldspec.md) — explicit field selection with Get-RscType
+6. [AutoField](autofield.md) — automatic field selection, and when to use it vs fixed queries
+7. [Field Spec](fieldspec.md) — explicit field selection for stability and determinism
 8. [FAQ](faq.md) — common errors and troubleshooting
 
 ## Guides
@@ -23,8 +23,8 @@ Recommended reading order for new users:
 | [How To Create a Query](HOWTO_create_a_query.md)               | Step-by-step query creation                                    |
 | [How To Run Mutations](HOWTO_mutations.md)                     | Creating, updating, and deleting resources                     |
 | [How To Paginate](HOWTO_pagination.md)                         | Cursor-based pagination for large result sets                  |
-| [AutoField](autofield.md)                                      | Automatic field selection: profiles, patches, internals        |
-| [Field Spec](fieldspec.md)                                     | Explicit field selection with Get-RscType -InitialProperties   |
+| [AutoField](autofield.md)                                      | Automatic field selection, and when to use it vs fixed queries  |
+| [Field Spec](fieldspec.md)                                     | Explicit field selection for stability and determinism          |
 | [Retrieving Interface Fields](retrieving_interface_fields.md)  | Working with GraphQL interfaces and composite objects          |
 | [GraphQL Model](graphql_model.md)                              | Schema introspection utilities                                 |
 | [SDK Architecture](sdk_architecture.md)                        | Internal architecture overview                                 |
