@@ -29,29 +29,32 @@ BeforeAll {
         Normalize-Gql ($q.Field.AsFieldSpec())
     }
 
-    # Load a baseline (pre-refactor) script, renaming its function so it
-    # doesn't collide with the module-imported version.
-    function Load-OldScript([string]$cmdletName) {
-        $oldPath = "$PSScriptRoot/Baselines/${cmdletName}.ps1"
+    # Load baseline (pre-refactor) scripts, renaming each function with
+    # an -Old suffix so it doesn't collide with the module-imported version.
+    # We write a temp file and dot-source it so the functions are defined
+    # in the current (Pester) scope.
+    $baselineDir = "$PSScriptRoot/Baselines"
+    $tempFile = [System.IO.Path]::GetTempFileName() + ".ps1"
+    $allContent = ""
+    foreach ($cmdletName in @(
+        'Get-RscNutanixVm',
+        'Get-RscVmwareVm',
+        'Get-RscMssqlLogShipping',
+        'Get-RscOrganization',
+        'Get-RscMssqlInstance',
+        'Get-RscArchivalLocation'
+    )) {
+        $oldPath = Join-Path $baselineDir "${cmdletName}.ps1"
         if (-not (Test-Path $oldPath)) {
             throw "Baseline script not found: $oldPath"
         }
         $content = Get-Content -Raw $oldPath
-        $oldFnName = "${cmdletName}-Old"
-        # Replace the function declaration — handles both
-        # "function Get-RscFoo {" and "function Get-RscFoo{" (no space).
-        $content = $content -replace "function\s+$cmdletName\b", "function $oldFnName"
-        # Execute in the caller's scope so the function is visible.
-        [scriptblock]::Create($content).Invoke()
+        $content = $content -replace "function\s+$cmdletName\b", "function ${cmdletName}-Old"
+        $allContent += $content + "`n"
     }
-
-    # --- Load all old scripts ---
-    Load-OldScript 'Get-RscNutanixVm'
-    Load-OldScript 'Get-RscVmwareVm'
-    Load-OldScript 'Get-RscMssqlLogShipping'
-    Load-OldScript 'Get-RscOrganization'
-    Load-OldScript 'Get-RscMssqlInstance'
-    Load-OldScript 'Get-RscArchivalLocation'
+    Set-Content -Path $tempFile -Value $allContent -Encoding UTF8
+    . $tempFile
+    Remove-Item $tempFile -ErrorAction SilentlyContinue
 }
 
 Describe 'Get-RscType Refactor — GQL query equivalence' {
