@@ -78,27 +78,28 @@ function Get-RscNutanixVm {
     
     Process {
 
-        # Shared helper: populate NutanixVm field spec.
-        function Set-VmFields($vm) {
-            $vm.Cluster = Get-RscType -Name Cluster -InitialProperties Id
-            $vm.AgentStatus = Get-RscType -Name NutanixVmAgentStatus -InitialProperties @("connectionStatus")
-            $vm.osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
-        }
-
        # The query is different for getting a single object by ID.
         if ($Id) {
             $query = New-RscQuery -Gql nutanixVm
             $query.var.filter = @()
             $query.Var.fid = $Id
-            Set-VmFields $query.Field
+            $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Cluster.id = "PIZZA" # Could Fields be a version of the type structure that has all booleans to define what we get back?
+            $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.NutanixVmAgentStatus
+            $query.Field.AgentStatus.connectionStatus = New-Object -typename RubrikSecurityCloud.Types.NutanixVmAgentConnectionStatus
+            $query.Field.osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
             if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
             $query = New-RscQuery -Gql nutanixVms
             $query.var.filter = @()
-            Set-VmFields $query.Field.Nodes[0]
+            $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[0].Cluster.id = "FETCH"
             $query.Field.Nodes[0].Cluster.name = "FETCH"
+            $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.NutanixVmAgentStatus
+            $query.Field.Nodes[0].AgentStatus.connectionStatus = New-Object -typename RubrikSecurityCloud.Types.NutanixVmAgentConnectionStatus
+            $query.Field.Nodes[0].osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
@@ -132,5 +133,10 @@ function Get-RscNutanixVm {
             $result = Invoke-Rsc -Query $query
             $result.nodes
         }
+
+
+
+
+
     } 
 }

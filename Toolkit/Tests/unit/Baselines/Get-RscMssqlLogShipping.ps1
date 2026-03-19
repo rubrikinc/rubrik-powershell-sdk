@@ -95,60 +95,88 @@ function Get-RscMssqlLogShipping {
     
     Process {
 
-        # Shared helper: populate log-shipping target field spec.
-        function Set-TargetFields($t) {
-            $t.fid = "FETCH"
-            $t.cdmId = "FETCH"
-            $t.location = "FETCH"
-            $t.LagTimeFromPrimary = 1
-            $t.LastAppliedPoint = "1900/01/01"
-            $t.State = "FETCH"
-            $t.Status = "FETCH"
-            $t.LogFrequency = 1
-            $t.PrimaryDatabase = Get-RscType -Name MssqlDatabase -InitialProperties Name, Id
-            $t.SecondaryDatabase = Get-RscType -Name MssqlDatabase -InitialProperties Name, Id
-            $t.SecondaryInstance = Get-RscType -Name MssqlInstance -InitialProperties Name, Id
-            $t.Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
-            $t.PrimaryCluster = Get-RscType -Name Cluster -InitialProperties Name, Id
-        }
-
         if($Id) {
             $query = New-RscQuery -Gql cdmMssqlLogShippingTarget
             $query.var.Fid = $Id
-            Set-TargetFields $query.Field
+
+            $query.Field.fid = "FETCH"
+            $query.Field.cdmId = "FETCH"
+            $query.Field.location = "FETCH"
+            $query.Field.LagTimeFromPrimary = 1
+            $query.Field.LastAppliedPoint = "1900/01/01"
+            $query.Field.State = "FETCH"
+            $query.Field.Status = "FETCH"
+            $query.Field.LogFrequency = 1
+            $query.Field.PrimaryDatabase = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDatabase
+            $query.Field.PrimaryDatabase.Name = "FETCH"
+            $query.Field.PrimaryDatabase.Id = "FETCH"
+            $query.Field.SecondaryDatabase = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDatabase
+            $query.Field.SecondaryDatabase.Name = "FETCH"
+            $query.Field.SecondaryDatabase.Id = "FETCH"
+            $query.Field.SecondaryInstance = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
+            $query.Field.SecondaryInstance.Name = "FETCH"
+            $query.Field.SecondaryInstance.Id = "FETCH"
+            $query.Field.Cluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.Cluster.Name = "FETCH"
+            $query.Field.Cluster.Id = "FETCH"
+            $query.Field.PrimaryCluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.PrimaryCluster.Name = "FETCH"
+            $query.Field.PrimaryCluster.Id = "FETCH"
 
             if ( $AsQuery ) { return $query }
         }
         else {
             $query = New-RscQuery -Gql cdmMssqlLogShippingTargets
             $query.Var.filters = @()
-
+    
             if ($Cluster){
                 $clusterFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
                 $clusterFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::CLUSTER_ID
                 $clusterFilter.texts = $Cluster.Id
                 $query.Var.filters += $clusterFilter
             }
-
+    
             if($SecondaryDatabaseName) {
                 $secondaryNameFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
                 $secondaryNameFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::SECONDARY_NAME
                 $secondaryNameFilter.texts = $SecondaryDatabaseName
                 $query.Var.filters += $secondaryNameFilter
             }
-
+    
             if($PrimaryDatabase) {
                 $primaryDBIDFilter = New-Object -TypeName RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterInput
                 $primaryDBIDFilter.Field = [RubrikSecurityCloud.Types.MssqlLogShippingTargetFilterField]::PRIMARY_DB_ID
                 $primaryDBIDFilter.texts = $PrimaryDatabase.CdmId
                 $query.Var.filters += $primaryDBIDFilter
             }
-
-            Set-TargetFields $query.Field.Nodes[0]
-
+    
+            $query.Field.Nodes[0].fid = "FETCH"
+            $query.Field.Nodes[0].cdmId = "FETCH"
+            $query.Field.Nodes[0].location = "FETCH"
+            $query.Field.Nodes[0].LagTimeFromPrimary = 1
+            $query.Field.Nodes[0].LastAppliedPoint = "1900/01/01"
+            $query.Field.Nodes[0].State = "FETCH"
+            $query.Field.Nodes[0].Status = "FETCH"
+            $query.Field.Nodes[0].LogFrequency = 1
+            $query.Field.Nodes[0].PrimaryDatabase = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDatabase
+            $query.Field.Nodes[0].PrimaryDatabase.Name = "FETCH"
+            $query.Field.Nodes[0].PrimaryDatabase.Id = "FETCH"
+            $query.Field.Nodes[0].SecondaryDatabase = New-Object -TypeName RubrikSecurityCloud.Types.MssqlDatabase
+            $query.Field.Nodes[0].SecondaryDatabase.Name = "FETCH"
+            $query.Field.Nodes[0].SecondaryDatabase.Id = "FETCH"
+            $query.Field.Nodes[0].SecondaryInstance = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
+            $query.Field.Nodes[0].SecondaryInstance.Name = "FETCH"
+            $query.Field.Nodes[0].SecondaryInstance.Id = "FETCH"
+            $query.Field.Nodes[0].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[0].Cluster.Name = "FETCH"
+            $query.Field.Nodes[0].Cluster.Id = "FETCH"
+            $query.Field.Nodes[0].PrimaryCluster = New-Object RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[0].PrimaryCluster.Name = "FETCH"
+            $query.Field.Nodes[0].PrimaryCluster.Id = "FETCH"
+    
             if ( $AsQuery ) { return $query }
             $result = $query.Invoke()
             $result.Nodes
         }
-    }
+    } 
 }

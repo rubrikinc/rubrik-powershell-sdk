@@ -118,28 +118,39 @@ function Get-RscVmwareVm {
             $inputProfile = "DETAIL"
         }
 
-        # Shared helper: populate VsphereVm field spec.
-        function Set-VmFields($vm) {
-            $vm.Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
-            $vm.GuestOsName = "FETCH"
-            $vm.AgentStatus = Get-RscType -Name AgentStatus -InitialProperties @("agentStatusField")
-            $vm.snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
-            $vm.allOrgs = Get-RscType -Name Org -InitialProperties Name, Id
-        }
-
        # The query is different for getting a single object by ID.
         if ($Id) {
+            #$query = New-RscQuery -Gql vSphereVmNew -FieldProfile $inputProfile
             $query = New-RscQuery -Gql vSphereVmNew -FieldProfile $inputProfile
             $query.var.filter = @()
             $query.Var.fid = $Id
-            Set-VmFields $query.Field
+            $query.Field.Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Cluster.name = "PIZZA"
+            $query.Field.Cluster.id = "PIZZA"
+            $query.Field.GuestOsName = "TACOS"
+            $query.Field.AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
+            $query.Field.AgentStatus.AgentStatusField = New-Object -typename RubrikSecurityCloud.Types.AgentConnectionStatus
+            $query.Field.snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
+            $query.Field.allOrgs = New-Object RubrikSecurityCloud.Types.Org
+            $query.Field.allOrgs[0].name = "FETCH"
+            $query.Field.allOrgs[0].id = "FETCH"
             if ( $AsQuery ) { return $query }
             $result = Invoke-Rsc -Query $query
             $result
         } else {
+            #$query = New-RscQuery -Gql vsphereVmNewConnection -FieldProfile $inputProfile
             $query = New-RscQuery -Gql vsphereVmNewConnection -FieldProfile $inputProfile
             $query.var.filter = @()
-            Set-VmFields $query.Field.Nodes[0]
+            $query.Field.Nodes[0].Cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
+            $query.Field.Nodes[0].Cluster.name = "PIZZA"
+            $query.Field.Nodes[0].Cluster.id = "PIZZA"
+            $query.Field.Nodes[0].GuestOsName = "TACOS"
+            $query.Field.Nodes[0].AgentStatus = New-Object -TypeName RubrikSecurityCloud.Types.AgentStatus
+            $query.Field.Nodes[0].AgentStatus.AgentStatusField = New-Object -TypeName RubrikSecurityCloud.Types.AgentConnectionStatus
+            $query.Field.Nodes[0].snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
+            $query.Field.Nodes[0].allOrgs = New-Object RubrikSecurityCloud.Types.Org
+            $query.Field.Nodes[0].allOrgs[0].name = "FETCH"
+            $query.Field.Nodes[0].allOrgs[0].id = "FETCH"
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 

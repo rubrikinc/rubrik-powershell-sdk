@@ -1,5 +1,5 @@
 ---
-name: ask
+name: sdk-support
 description: Ask anything about the RSC PowerShell SDK. Pass a question as text, or a URL (Slack, GitHub issue, web page) and the question will be extracted from it.
 ---
 
