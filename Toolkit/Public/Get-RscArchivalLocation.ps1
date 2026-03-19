@@ -58,72 +58,41 @@ function Get-RscArchivalLocation {
             HelpMessage = "Return the query object instead of running the query"
         )][Switch]$AsQuery
     )
-    
+
     Process {
 
-        function createQuery {
-            param (
-                $queryName
-            )
-            
+        # Shared helper: populate top-level TargetMapping field spec.
+        function Set-MappingFields($mapping) {
+            $mapping.id = "FETCH"
+            $mapping.name = "FETCH"
+            $mapping.groupType = [RubrikSecurityCloud.Types.ArchivalGroupType]::UNKNOWN_ARCHIVAL_GROUP
+            $mapping.targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
+            $mapping.connectionStatus = Get-RscType -Name ArchivalGroupConnectionStatus -InitialProperties @("status")
+            $mapping.tieringStatus = @([RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS)
         }
 
        # The query is different for getting a single object by ID.
         if ($Id) {
             $query = New-RscQuery -Gql targetMapping
             $query.var.targetMappingId = $Id
-
-            $query.Field.id = "FETCH"
-            $query.Field.name = "FETCH"
-            $query.Field.groupType = [RubrikSecurityCloud.Types.ArchivalGroupType]::UNKNOWN_ARCHIVAL_GROUP
-            $query.Field.targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
-            $query.Field.connectionStatus = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalGroupConnectionStatus
-            $query.Field.connectionStatus.status = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
-            $query.Field.tieringStatus = @([RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS)
+            Set-MappingFields $query.Field
 
             $query.Field.targets = New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAwsTarget
             $query.Field.targets.add((New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAzureTarget))
-            #$query.Field.targets[0].cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-            #$query.Field.targets[0].cluster.name = "FETCH"
-            #$query.Field.targets[0].cluster.id = "FETCH"
-            #$query.Field.targets[0].targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
-            #$query.Field.targets[0].id = "FETCH"
-            #$query.Field.targets[0].name = "FETCH"
-            #$query.Field.targets[0].locationScope = [RubrikSecurityCloud.Types.LocationScope]::UNKNOWN
-            #$query.Field.targets[0].isActive = $true
-            #$query.Field.targets[0].isArchived = $true
-            #$query.Field.targets[0].targetMapping = New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingBasic
-            #$query.Field.targets[0].targetMapping.name = "FETCH"
-            #$query.Field.targets[0].targetMapping.id = "FETCH"
-            #$query.Field.targets[0].clusterName = "FETCH"
-            #$query.Field.targets[0].status = [RubrikSecurityCloud.Types.ArchivalLocationStatus]::UNKNOWN_ARCHIVAL_LOCATION_STATUS
-            #$query.Field.targets[0].upgradeStatus = [RubrikSecurityCloud.Types.UpgradeStatus]::UPGRADE_UNSUPPORTED
-            #$query.Field.targets[0].consumedBytes = 1
-            #$query.Field.targets[0].runningTasks = 1
-            #$query.Field.targets[0].failedTasks = 1
-            #$query.Field.targets[0].readerRetrievalMethod = [RubrikSecurityCloud.Types.ReaderRetrievalMethod]::UNKNOWN_RETRIEVAL_METHOD
-            #$query.Field.targets[0].locationConnectionStatus = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
         } else {
             $query = New-RscQuery -Gql allTargetMappings
-            $query2 = New-RscQuery -Gql targets
             $query.var.filter = @()
             $query.var.filter += New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
             $query.var.filter[0].field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::ARCHIVAL_GROUP_TYPE
             $query.var.filter[0].text = "CLOUD_NATIVE_ARCHIVAL_GROUP"
-            
+
             if ($Name) {
                 $query.var.filter += New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
                 $query.var.filter[1].field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::NAME
                 $query.var.filter[1].text = $Name
             }
 
-            $query.Field[0].id = "FETCH"
-            $query.Field[0].name = "FETCH"
-            $query.Field[0].groupType = [RubrikSecurityCloud.Types.ArchivalGroupType]::UNKNOWN_ARCHIVAL_GROUP
-            $query.Field[0].targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
-            $query.Field[0].connectionStatus = New-Object -TypeName RubrikSecurityCloud.Types.ArchivalGroupConnectionStatus
-            $query.Field[0].connectionStatus.status = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
-            $query.Field[0].tieringStatus = @([RubrikSecurityCloud.Types.ArchivalGroupTieringStatus]::UNKNOWN_ARCHIVAL_GROUP_TIERING_STATUS)
+            Set-MappingFields $query.Field[0]
 
             $query.Field[0].targets = New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAwsTarget
             $query.Field[0].targets.add((New-Object -TypeName RubrikSecurityCloud.Types.RubrikManagedAzureTarget))
@@ -145,16 +114,12 @@ function Get-RscArchivalLocation {
             foreach ($targetType in $query.Field[0].targets) {
                 $targetType.name = "FETCH"
                 $targetType.id = "FETCH"
-                $targetType.cluster = New-Object -TypeName RubrikSecurityCloud.Types.Cluster
-                $targetType.cluster.name = "FETCH"
-                $targetType.cluster.id = "FETCH"
+                $targetType.cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
                 $targetType.targetType = [RubrikSecurityCloud.Types.TargetType]::AWS
                 $targetType.locationScope = [RubrikSecurityCloud.Types.LocationScope]::UNKNOWN
                 $targetType.isActive = $true
                 $targetType.isArchived = $true
-                $targetType.targetMapping = New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingBasic
-                $targetType.targetMapping.name = "FETCH"
-                $targetType.targetMapping.id = "FETCH"
+                $targetType.targetMapping = Get-RscType -Name TargetMappingBasic -InitialProperties Name, Id
                 $targetType.clusterName = "FETCH"
                 $targetType.status = [RubrikSecurityCloud.Types.ArchivalLocationStatus]::UNKNOWN_ARCHIVAL_LOCATION_STATUS
                 $targetType.upgradeStatus = [RubrikSecurityCloud.Types.UpgradeStatus]::UPGRADE_UNSUPPORTED
@@ -168,15 +133,12 @@ function Get-RscArchivalLocation {
             ### CdmManagedAwsTarget
             $CdmManagedAwsTarget = $query.field[0].targets.findIndex({param($item) $item.gettype().name -eq "CdmManagedAwsTarget"})
             $query.Field[0].targets[$CdmManagedAwsTarget].region = [RubrikSecurityCloud.Types.AwsRegion]::US_EAST_1
-            $query.Field[0].targets[$CdmManagedAwsTarget].immutabilitySettings = New-Object -TypeName RubrikSecurityCloud.Types.AwsImmutabilitySettingsType
-            $query.Field[0].targets[$CdmManagedAwsTarget].immutabilitySettings.lockDurationDays = 1
+            $query.Field[0].targets[$CdmManagedAwsTarget].immutabilitySettings = Get-RscType -Name AwsImmutabilitySettingsType -InitialProperties @("lockDurationDays")
             $query.Field[0].targets[$CdmManagedAwsTarget].storageClass = [RubrikSecurityCloud.Types.AwsStorageClass]::STANDARD
 
             ### CdmManagedAzureTarget
             $CdmManagedAzureTarget = $query.field[0].targets.findIndex({param($item) $item.gettype().name -eq "CdmManagedAzureTarget"})
-            $query.Field[0].targets[$CdmManagedAzureTarget].immutabilitySettings = New-Object -TypeName RubrikSecurityCloud.Types.AzureImmutabilitySettingsType
-            $query.Field[0].targets[$CdmManagedAzureTarget].immutabilitySettings.lockDurationDays = 1
-            $query.Field[0].targets[$CdmManagedAzureTarget].immutabilitySettings.isBlobImmutabilityEnabled = $true
+            $query.Field[0].targets[$CdmManagedAzureTarget].immutabilitySettings = Get-RscType -Name AzureImmutabilitySettingsType -InitialProperties @("lockDurationDays", "isBlobImmutabilityEnabled")
             $query.Field[0].targets[$CdmManagedAzureTarget].isAzureTieringSupported = $true
             $query.Field[0].targets[$CdmManagedAzureTarget].instanceType = [RubrikSecurityCloud.Types.InstanceTypeEnum]::AZURE_DEFAULT
 
@@ -206,44 +168,33 @@ function Get-RscArchivalLocation {
             $query.Field[0].targets[$RubrikManagedAwsTarget].s3Endpoint = "FETCH"
             $query.Field[0].targets[$RubrikManagedAwsTarget].kmsEndpoint = "FETCH"
             # May run into issues here if it's AwsRoleBasedAccount, but I don't have a constructor for generic cloudAccount
-            $query.Field[0].targets[$RubrikManagedAwsTarget].cloudAccount = New-Object -TypeName RubrikSecurityCloud.Types.AwsAccount
-            $query.Field[0].targets[$RubrikManagedAwsTarget].cloudAccount.cloudAccountId = "FETCH"
-            $query.Field[0].targets[$RubrikManagedAwsTarget].cloudAccount.name = "FETCH"
+            $query.Field[0].targets[$RubrikManagedAwsTarget].cloudAccount = Get-RscType -Name AwsAccount -InitialProperties @("cloudAccountId", "name")
             $query.Field[0].targets[$RubrikManagedAwsTarget].bucket = "FETCH"
             $query.Field[0].targets[$RubrikManagedAwsTarget].region = [RubrikSecurityCloud.Types.AwsRegion]::US_EAST_1
             $query.Field[0].targets[$RubrikManagedAwsTarget].syncStatus = [RubrikSecurityCloud.Types.TargetSyncStatus]::SYNCED
             $query.Field[0].targets[$RubrikManagedAwsTarget].awsRetrievalTier = [RubrikSecurityCloud.Types.AwsRetrievalTier]::STANDARD_TIER
-            $query.Field[0].targets[$RubrikManagedAwsTarget].computeSettings = New-Object -TypeName RubrikSecurityCloud.Types.AwsComputeSettings
-            $query.Field[0].targets[$RubrikManagedAwsTarget].computeSettings.name = "FETCH"
-            $query.Field[0].targets[$RubrikManagedAwsTarget].computeSettings.id = "FETCH"
-            $query.Field[0].targets[$RubrikManagedAwsTarget].proxySettings = New-Object -TypeName RubrikSecurityCloud.Types.ProxySettings
-            $query.Field[0].targets[$RubrikManagedAwsTarget].proxySettings.proxyServer = "FETCH"
+            $query.Field[0].targets[$RubrikManagedAwsTarget].computeSettings = Get-RscType -Name AwsComputeSettings -InitialProperties Name, Id
+            $query.Field[0].targets[$RubrikManagedAwsTarget].proxySettings = Get-RscType -Name ProxySettings -InitialProperties @("proxyServer")
             $query.Field[0].targets[$RubrikManagedAwsTarget].encryptionType = [RubrikSecurityCloud.Types.TargetEncryptionTypeEnum]::KMS_MASTER_KEY_BASED
             $query.Field[0].targets[$RubrikManagedAwsTarget].kmsMasterKeyId = "FETCH"
             $query.Field[0].targets[$RubrikManagedAwsTarget].isConsolidationEnabled = $true
             $query.Field[0].targets[$RubrikManagedAwsTarget].syncFailureReason = "FETCH"
             $query.Field[0].targets[$RubrikManagedAwsTarget].connectionStatus = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
             $query.Field[0].targets[$RubrikManagedAwsTarget].bypassProxy = $true
-            $query.Field[0].targets[$RubrikManagedAwsTarget].immutabilitySettings = New-Object -TypeName RubrikSecurityCloud.Types.AwsImmutabilitySettingsType
-            $query.Field[0].targets[$RubrikManagedAwsTarget].immutabilitySettings.lockDurationDays = 1
+            $query.Field[0].targets[$RubrikManagedAwsTarget].immutabilitySettings = Get-RscType -Name AwsImmutabilitySettingsType -InitialProperties @("lockDurationDays")
             $query.Field[0].targets[$RubrikManagedAwsTarget].storageClass = [RubrikSecurityCloud.Types.AwsStorageClass]::STANDARD
 
             ### RubrikManagedAzureTarget
             $RubrikManagedAzureTarget = $query.field[0].targets.findIndex({param($item) $item.gettype().name -eq "RubrikManagedAzureTarget"})
-            $query.Field[0].targets[$RubrikManagedAzureTarget].computeSettings = New-Object -TypeName RubrikSecurityCloud.Types.AzureComputeSettings
-            $query.Field[0].targets[$RubrikManagedAzureTarget].computeSettings.appId = "FETCH"
-            $query.Field[0].targets[$RubrikManagedAzureTarget].cloudAccount = New-Object -TypeName RubrikSecurityCloud.Types.AzureAccount
-            $query.Field[0].targets[$RubrikManagedAzureTarget].cloudAccount.cloudAccountId = "FETCH"
+            $query.Field[0].targets[$RubrikManagedAzureTarget].computeSettings = Get-RscType -Name AzureComputeSettings -InitialProperties @("appId")
+            $query.Field[0].targets[$RubrikManagedAzureTarget].cloudAccount = Get-RscType -Name AzureAccount -InitialProperties @("cloudAccountId")
             $query.Field[0].targets[$RubrikManagedAzureTarget].connectionStatus = [RubrikSecurityCloud.Types.ConnectionStatusType]::CONNECTED
-            $query.Field[0].targets[$RubrikManagedAzureTarget].immutabilitySettings = New-Object -TypeName RubrikSecurityCloud.Types.AzureImmutabilitySettingsType
-            $query.Field[0].targets[$RubrikManagedAzureTarget].immutabilitySettings.lockDurationDays = 1
-            $query.Field[0].targets[$RubrikManagedAzureTarget].immutabilitySettings.isBlobImmutabilityEnabled = $true
+            $query.Field[0].targets[$RubrikManagedAzureTarget].immutabilitySettings = Get-RscType -Name AzureImmutabilitySettingsType -InitialProperties @("lockDurationDays", "isBlobImmutabilityEnabled")
             $query.Field[0].targets[$RubrikManagedAzureTarget].storageAccountName = "FETCH"
             $query.Field[0].targets[$RubrikManagedAzureTarget].containerName = "FETCH"
             $query.Field[0].targets[$RubrikManagedAzureTarget].isAzureTieringSupported = $true
             $query.Field[0].targets[$RubrikManagedAzureTarget].instanceType = [RubrikSecurityCloud.Types.InstanceTypeEnum]::AZURE_DEFAULT
-            $query.Field[0].targets[$RubrikManagedAzureTarget].proxySettings = New-Object -TypeName RubrikSecurityCloud.Types.ProxySettings
-            $query.Field[0].targets[$RubrikManagedAzureTarget].proxySettings.proxyServer = "FETCH"
+            $query.Field[0].targets[$RubrikManagedAzureTarget].proxySettings = Get-RscType -Name ProxySettings -InitialProperties @("proxyServer")
             $query.Field[0].targets[$RubrikManagedAzureTarget].syncStatus = [RubrikSecurityCloud.Types.TargetSyncStatus]::SYNCED
             $query.Field[0].targets[$RubrikManagedAzureTarget].isConsolidationEnabled = $true
             $query.Field[0].targets[$RubrikManagedAzureTarget].syncFailureReason = "FETCH"
@@ -269,9 +220,7 @@ function Get-RscArchivalLocation {
 
             ### RubrikManagedGlacierTarget
             $RubrikManagedGlacierTarget = $query.field[0].targets.findIndex({param($item) $item.gettype().name -eq "RubrikManagedGlacierTarget"})
-            $query.Field[0].targets[$RubrikManagedGlacierTarget].cloudAccount = New-Object -TypeName RubrikSecurityCloud.Types.AwsAccount
-            $query.Field[0].targets[$RubrikManagedGlacierTarget].cloudAccount.cloudAccountId = "FETCH"
-            $query.Field[0].targets[$RubrikManagedGlacierTarget].cloudAccount.name = "FETCH"
+            $query.Field[0].targets[$RubrikManagedGlacierTarget].cloudAccount = Get-RscType -Name AwsAccount -InitialProperties @("cloudAccountId", "name")
             $query.Field[0].targets[$RubrikManagedGlacierTarget].vaultName = "FETCH"
             $query.Field[0].targets[$RubrikManagedGlacierTarget].region = [RubrikSecurityCloud.Types.AwsRegion]::US_EAST_1
             $query.Field[0].targets[$RubrikManagedGlacierTarget].syncStatus = [RubrikSecurityCloud.Types.TargetSyncStatus]::SYNCED
@@ -282,7 +231,7 @@ function Get-RscArchivalLocation {
             $RubrikManagedRcsTarget = $query.field[0].targets.findIndex({param($item) $item.gettype().name -eq "RubrikManagedRcsTarget"})
             $query.Field[0].targets[$RubrikManagedRcsTarget].shouldBypassProxy = $true
             $query.Field[0].targets[$RubrikManagedRcsTarget].isVersionLevelImmutabilityEnabled = $true
-            $query.Field[0].targets[$RubrikManagedRcsTarget].syncStatus = [RubrikSecurityCloud.Types.TargetSyncStatus]::SYNCED 
+            $query.Field[0].targets[$RubrikManagedRcsTarget].syncStatus = [RubrikSecurityCloud.Types.TargetSyncStatus]::SYNCED
             #REGION CONFLICT IN SDK
             #$query.Field[0].targets[$RubrikManagedRcsTarget].region = [RubrikSecurityCloud.Types.RcsRegionEnumType]::US_EAST
             $query.Field[0].targets[$RubrikManagedRcsTarget].tier = [RubrikSecurityCloud.Types.RcsTierEnumType]::ARCHIVE
@@ -294,9 +243,7 @@ function Get-RscArchivalLocation {
             $query.Field[0].targets[$RubrikManagedRcsTarget].syncFailureReason = "FETCH"
             $query.Field[0].targets[$RubrikManagedRcsTarget].storageConsumptionValue = 1
             $query.Field[0].targets[$RubrikManagedRcsTarget].immutabilityPeriodDays = 1
-            $query.Field[0].targets[$RubrikManagedRcsTarget].privateEndpointConnection = New-Object -TypeName RubrikSecurityCloud.Types.PrivateEndpointConnection
-            $query.Field[0].targets[$RubrikManagedRcsTarget].privateEndpointConnection.privateEndpointId = "FETCH"
-            $query.Field[0].targets[$RubrikManagedRcsTarget].privateEndpointConnection.privateEndpointConnectionStatus = [RubrikSecurityCloud.Types.PrivateEndpointConnectionStatus]::APPROVED
+            $query.Field[0].targets[$RubrikManagedRcsTarget].privateEndpointConnection = Get-RscType -Name PrivateEndpointConnection -InitialProperties @("privateEndpointId", "privateEndpointConnectionStatus")
 
             ### RubrikManagedS3CompatibleTarget
             $RubrikManagedS3CompatibleTarget = $query.field[0].targets.findIndex({param($item) $item.gettype().name -eq "RubrikManagedS3CompatibleTarget"})
@@ -306,11 +253,8 @@ function Get-RscArchivalLocation {
             $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].bucketPrefix = "FETCH"
             $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].numberOfBuckets = 1
             $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].subType = [RubrikSecurityCloud.Types.S3CompatibleSubType]::DEFAULT
-            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].ibmDetail = New-Object RubrikSecurityCloud.Types.IbmCosDetailsType
-            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].ibmDetail.provisioningCode = "FETCH"
-            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].ibmDetail.deploymentType = [RubrikSecurityCloud.Types.IbmDeploymentType]::CLOUD
-            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].immutabilitySetting = New-Object -TypeName RubrikSecurityCloud.Types.LocationImmutabilityType
-            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].immutabilitySetting.bucketLockDurationDays = 1
+            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].ibmDetail = Get-RscType -Name IbmCosDetailsType -InitialProperties @("provisioningCode", "deploymentType")
+            $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].immutabilitySetting = Get-RscType -Name LocationImmutabilityType -InitialProperties @("bucketLockDurationDays")
             $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].isConsolidationEnabled = $true
             $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].encryptionType = [RubrikSecurityCloud.Types.TargetEncryptionTypeEnum]::UNKNOWN_ENCRYPTION_TYPE
             $query.Field[0].targets[$RubrikManagedS3CompatibleTarget].useSystemProxy = $true
@@ -330,5 +274,5 @@ function Get-RscArchivalLocation {
         if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc $query
         $result.targets
-    } 
+    }
 }
