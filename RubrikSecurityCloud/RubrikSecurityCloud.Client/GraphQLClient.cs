@@ -323,10 +323,87 @@ namespace RubrikSecurityCloud.NetSDK.Client
                 localError = ex.Message;
             }
             logGraphQLResponse<T>(response, logger);
-            
+
             if (localError != null || response.Errors != null ||
                 response.StatusCode >= System.Net.HttpStatusCode.BadRequest)
             {
+                // Check if we can auto-retry by stripping feature-flagged fields
+                if (localError == null && response.Errors != null &&
+                    response.Data != null &&
+                    response.StatusCode < System.Net.HttpStatusCode.BadRequest)
+                {
+                    ClassifyErrors(
+                        response.Errors,
+                        out var featureFlagErrors,
+                        out var otherErrors);
+
+                    if (otherErrors.Count == 0 && featureFlagErrors.Count > 0)
+                    {
+                        var fieldsToStrip = ExtractFieldNamesFromErrors(
+                            featureFlagErrors);
+
+                        if (fieldsToStrip.Count > 0)
+                        {
+                            string fieldList = string.Join(", ", fieldsToStrip);
+                            string warnMsg =
+                                $"Auto-retrying query after stripping " +
+                                $"feature-flagged fields: [{fieldList}]. " +
+                                $"Consider upgrading the SDK.";
+                            if (RubrikSecurityCloud.Config.MuteSchemaWarnings)
+                            {
+                                logger?.Verbose(warnMsg);
+                            }
+                            else
+                            {
+                                logger?.Warning(warnMsg);
+                            }
+
+                            // Add to FieldsToSkip so subsequent queries
+                            // skip these fields proactively
+                            foreach (var f in fieldsToStrip)
+                            {
+                                RubrikSecurityCloud.Config.AddFieldToSkip(f);
+                            }
+
+                            // Strip fields from query and retry once
+                            string modifiedQuery =
+                                StringUtils.StripFieldsFromQuery(
+                                    Request.Query, fieldsToStrip);
+                            Request.Query = modifiedQuery;
+
+                            _apiCallCount++;
+                            logGraphQLRequest(Request, logger);
+                            GraphQL.Client.Http.GraphQLHttpResponse<T>
+                                retryResponse = null;
+                            string retryError = null;
+                            try
+                            {
+                                retryResponse =
+                                    (GraphQL.Client.Http.GraphQLHttpResponse<T>)
+                                    await graphQLClient
+                                        .SendQueryAsync<T>(Request);
+                            }
+                            catch (Exception ex)
+                            {
+                                retryError = ex.Message;
+                            }
+                            logGraphQLResponse<T>(retryResponse, logger);
+
+                            if (retryError == null &&
+                                (retryResponse.Errors == null ||
+                                 retryResponse.Errors.Length == 0) &&
+                                retryResponse.StatusCode <
+                                    System.Net.HttpStatusCode.BadRequest)
+                            {
+                                return retryResponse.Data;
+                            }
+                            // Retry failed — fall through to throw
+                            response = retryResponse;
+                            localError = retryError;
+                        }
+                    }
+                }
+
                 string msg = "The request generated an error.\n" +
                     this.GraphQLRequestToString(Request) + "\n\n" +
                     this.GraphQLResponseToString<T>(response) + "\n\n" +
@@ -339,6 +416,73 @@ namespace RubrikSecurityCloud.NetSDK.Client
             }
 
             return response.Data;
+        }
+
+        /// <summary>
+        /// Classify GraphQL errors into feature-flag (403) errors
+        /// and other errors.
+        /// </summary>
+        internal static void ClassifyErrors(
+            GraphQLError[] errors,
+            out List<GraphQLError> featureFlagErrors,
+            out List<GraphQLError> otherErrors)
+        {
+            featureFlagErrors = new List<GraphQLError>();
+            otherErrors = new List<GraphQLError>();
+
+            if (errors == null) return;
+
+            foreach (var e in errors)
+            {
+                if (IsFeatureFlagError(e))
+                {
+                    featureFlagErrors.Add(e);
+                }
+                else
+                {
+                    otherErrors.Add(e);
+                }
+            }
+        }
+
+        internal static bool IsFeatureFlagError(GraphQLError error)
+        {
+            if (error?.Extensions == null ||
+                !error.Extensions.ContainsKey("code"))
+            {
+                return false;
+            }
+            var code = error.Extensions["code"];
+            // Handle both int 403 and string "403"
+            return code?.ToString() == "403";
+        }
+
+        /// <summary>
+        /// Extract field names from 403 error paths.
+        /// The offending field is the last string element in the path
+        /// (numeric array indices are skipped).
+        /// Returns PascalCase names for Config.FieldsToSkip compatibility,
+        /// and also includes camelCase variants for query string stripping.
+        /// </summary>
+        internal static HashSet<string> ExtractFieldNamesFromErrors(
+            List<GraphQLError> errors)
+        {
+            var fields = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var e in errors)
+            {
+                if (e.Path == null) continue;
+                // Walk backwards to find the last non-numeric element
+                for (int i = e.Path.Count - 1; i >= 0; i--)
+                {
+                    string segment = e.Path[i]?.ToString();
+                    if (string.IsNullOrEmpty(segment)) continue;
+                    // Skip numeric array indices
+                    if (int.TryParse(segment, out _)) continue;
+                    fields.Add(segment);
+                    break;
+                }
+            }
+            return fields;
         }
 
         private string GraphQLRequestToString(GraphQLRequest request)

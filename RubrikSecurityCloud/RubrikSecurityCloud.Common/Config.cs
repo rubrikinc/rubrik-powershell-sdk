@@ -47,14 +47,33 @@ namespace RubrikSecurityCloud
         public static uint ApiClientTimeOutMinutes = 6;
 
         /// <summary>
-        /// List of fields that should be not be selected for consumption
+        /// List of fields that should be not be selected for consumption.
+        /// Fields are added here statically (known UFF fields) and
+        /// dynamically at runtime when the SDK retries a query after
+        /// encountering 403 feature-flag errors.
         /// </summary>
         /// TODO (SPARK-548179): Unskip these fields once it reaches GA.
-        public static readonly HashSet<string> FieldsToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        public static HashSet<string> FieldsToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "CdmPendingObjectPauseAssignment",
             "RscPendingObjectPauseAssignment"
         };
+
+        private static readonly object _fieldsToSkipLock = new object();
+
+        /// <summary>
+        /// Thread-safe addition of a field to the skip list.
+        /// Called automatically when the SDK retries a query after
+        /// a 403 feature-flag error.
+        /// </summary>
+        public static void AddFieldToSkip(string fieldName)
+        {
+            if (string.IsNullOrEmpty(fieldName)) return;
+            lock (_fieldsToSkipLock)
+            {
+                FieldsToSkip.Add(fieldName);
+            }
+        }
 
         /// <summary>
         /// Default profile leaf pattern. Keys are patterns to match against
