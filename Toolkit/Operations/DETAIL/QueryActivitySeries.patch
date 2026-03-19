@@ -1,0 +1,6 @@
+-cluster.activitySeriesConnection
+-cluster.clusterDiskConnection
+-cluster.clusterNodeConnection
+-cluster.snappableConnection
+-cluster.metricTimeSeriesNew
+-cluster.clusterNodeStats
