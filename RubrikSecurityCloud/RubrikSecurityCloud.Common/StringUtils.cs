@@ -338,6 +338,217 @@ namespace RubrikSecurityCloud
             }
         }
 
+        /// <summary>
+        /// Convert a PascalCase .NET name to camelCase GQL field name.
+        /// E.g. "CdmPendingObjectPauseAssignment" → "cdmPendingObjectPauseAssignment"
+        /// </summary>
+        public static string ToCamelCase(string name)
+        {
+            if (string.IsNullOrEmpty(name)) return name;
+            if (char.IsLower(name[0])) return name;
+            // Lowercase leading uppercase chars (handle acronyms like "CDM" → "cdm")
+            int i = 0;
+            while (i < name.Length && char.IsUpper(name[i])) i++;
+            if (i == 1)
+            {
+                return char.ToLower(name[0]) + name.Substring(1);
+            }
+            // Multiple uppercase: lowercase all but the last (e.g. "CDMFoo" → "cdmFoo")
+            if (i == name.Length)
+            {
+                return name.ToLower();
+            }
+            return name.Substring(0, i - 1).ToLower() + name.Substring(i - 1);
+        }
+
+        /// <summary>
+        /// Remove specified fields from a GraphQL query string.
+        /// Handles leaf fields, nested object fields (brace-balanced),
+        /// and fields with __typename suffixes.
+        /// Field names should be in camelCase (GQL naming convention).
+        /// </summary>
+        public static string StripFieldsFromQuery(
+            string query,
+            HashSet<string> fieldNames)
+        {
+            if (string.IsNullOrEmpty(query) || fieldNames == null || fieldNames.Count == 0)
+            {
+                return query;
+            }
+
+            // Build a case-insensitive set for matching
+            var fieldsToStrip = new HashSet<string>(
+                fieldNames, StringComparer.OrdinalIgnoreCase);
+
+            var result = new StringBuilder();
+            int pos = 0;
+
+            while (pos < query.Length)
+            {
+                // Try to match a field name at current position
+                // Fields appear after whitespace/newlines, possibly indented
+                if (IsFieldStart(query, pos))
+                {
+                    string fieldName = ReadIdentifier(query, pos);
+                    if (fieldName != null && fieldsToStrip.Contains(fieldName))
+                    {
+                        // Skip this field — determine if it's a leaf or nested
+                        int fieldEnd = pos + fieldName.Length;
+                        fieldEnd = SkipWhitespace(query, fieldEnd);
+
+                        if (fieldEnd < query.Length && query[fieldEnd] == '{')
+                        {
+                            // Nested field — skip the entire brace-balanced block
+                            fieldEnd = SkipBraceBlock(query, fieldEnd);
+                        }
+                        // Also skip trailing __typename if present
+                        int afterWs = SkipWhitespace(query, fieldEnd);
+                        if (afterWs + 10 <= query.Length &&
+                            query.Substring(afterWs, 10) == "__typename")
+                        {
+                            fieldEnd = afterWs + 10;
+                        }
+                        // Skip trailing whitespace/newline after the stripped field
+                        while (fieldEnd < query.Length &&
+                               (query[fieldEnd] == ' ' || query[fieldEnd] == '\t'))
+                        {
+                            fieldEnd++;
+                        }
+                        if (fieldEnd < query.Length && query[fieldEnd] == '\n')
+                        {
+                            fieldEnd++;
+                        }
+
+                        // Trim trailing whitespace on the line we're appending to
+                        // (removes the indentation that preceded the stripped field)
+                        TrimTrailingWhitespace(result);
+                        if (result.Length > 0 && result[result.Length - 1] != '\n')
+                        {
+                            result.Append('\n');
+                        }
+
+                        pos = fieldEnd;
+                        continue;
+                    }
+                }
+
+                // Skip over string literals without scanning for field names
+                if (query[pos] == '"')
+                {
+                    result.Append(query[pos]);
+                    pos++;
+                    while (pos < query.Length)
+                    {
+                        result.Append(query[pos]);
+                        if (query[pos] == '"' && query[pos - 1] != '\\')
+                        {
+                            pos++;
+                            break;
+                        }
+                        pos++;
+                    }
+                    continue;
+                }
+
+                // Skip over parenthesized argument blocks
+                if (query[pos] == '(')
+                {
+                    int depth = 0;
+                    while (pos < query.Length)
+                    {
+                        result.Append(query[pos]);
+                        if (query[pos] == '(') depth++;
+                        else if (query[pos] == ')') { depth--; if (depth == 0) { pos++; break; } }
+                        pos++;
+                    }
+                    continue;
+                }
+
+                result.Append(query[pos]);
+                pos++;
+            }
+
+            return result.ToString();
+        }
+
+        private static bool IsFieldStart(string query, int pos)
+        {
+            // A field starts at position pos if:
+            // 1. pos is at the start, or preceded by whitespace/newline/{
+            // 2. The character at pos is a letter (start of identifier)
+            if (!char.IsLetter(query[pos])) return false;
+            if (pos == 0) return true;
+            char prev = query[pos - 1];
+            return prev == ' ' || prev == '\t' || prev == '\n' || prev == '\r' || prev == '{';
+        }
+
+        private static string ReadIdentifier(string query, int pos)
+        {
+            int start = pos;
+            while (pos < query.Length && (char.IsLetterOrDigit(query[pos]) || query[pos] == '_'))
+            {
+                pos++;
+            }
+            if (pos == start) return null;
+            string id = query.Substring(start, pos - start);
+            // Don't match keywords/special tokens
+            if (id == "__typename" || id == "query" || id == "mutation" ||
+                id == "fragment" || id == "on" || id == "subscription")
+            {
+                return null;
+            }
+            return id;
+        }
+
+        private static int SkipWhitespace(string query, int pos)
+        {
+            while (pos < query.Length &&
+                   (query[pos] == ' ' || query[pos] == '\t' ||
+                    query[pos] == '\n' || query[pos] == '\r'))
+            {
+                pos++;
+            }
+            return pos;
+        }
+
+        private static int SkipBraceBlock(string query, int pos)
+        {
+            // pos should be at '{'
+            int depth = 0;
+            bool inString = false;
+            while (pos < query.Length)
+            {
+                char c = query[pos];
+                if (c == '"' && (pos == 0 || query[pos - 1] != '\\'))
+                {
+                    inString = !inString;
+                }
+                if (!inString)
+                {
+                    if (c == '{') depth++;
+                    else if (c == '}')
+                    {
+                        depth--;
+                        if (depth == 0)
+                        {
+                            return pos + 1; // past the closing '}'
+                        }
+                    }
+                }
+                pos++;
+            }
+            return pos; // unbalanced — return end
+        }
+
+        private static void TrimTrailingWhitespace(StringBuilder sb)
+        {
+            while (sb.Length > 0 &&
+                   (sb[sb.Length - 1] == ' ' || sb[sb.Length - 1] == '\t'))
+            {
+                sb.Length--;
+            }
+        }
+
         public static (string, string) ParseGqlAndVarString(string query)
         {
             // Regular expression to match the /**/ block

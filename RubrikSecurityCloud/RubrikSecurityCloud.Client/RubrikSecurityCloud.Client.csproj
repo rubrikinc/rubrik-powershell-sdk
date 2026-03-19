@@ -10,6 +10,9 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="RubrikSecurityCloud.Client.Tests" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj" />
     <ProjectReference Include="..\RubrikSecurityCloud.Common\RubrikSecurityCloud.Common.csproj" />
   </ItemGroup>
