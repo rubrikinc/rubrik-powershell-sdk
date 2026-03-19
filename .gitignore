@@ -380,3 +380,4 @@ Output.Release/
 
 # Claude / MCP
 .mcp.json
+.plans

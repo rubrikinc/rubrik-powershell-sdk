@@ -25,6 +25,11 @@ function Get-RscArchivalLocation {
     .PARAMETER Name
     Filter by name. Matches archival locations whose name contains the specified string.
 
+    .PARAMETER GroupType
+    Filter by archival group type. If not specified, all group types are returned.
+    Valid values: CLOUD_NATIVE_ARCHIVAL_GROUP, DATACENTER_ARCHIVAL_GROUP,
+    AUTOMATIC_ARCHIVAL_GROUP, MANUAL_ARCHIVAL_GROUP.
+
     .EXAMPLE
     # Get all archival locations
     Get-RscArchivalLocation
@@ -32,6 +37,10 @@ function Get-RscArchivalLocation {
     .EXAMPLE
     # Get archival locations matching a name
     Get-RscArchivalLocation -Name "S3-Production"
+
+    .EXAMPLE
+    # Get only cloud-native archival locations
+    Get-RscArchivalLocation -GroupType CLOUD_NATIVE_ARCHIVAL_GROUP
 
     .EXAMPLE
     # Get a specific archival location by ID
@@ -52,6 +61,17 @@ function Get-RscArchivalLocation {
             ParameterSetName = "Name"
         )]
         [String]$Name,
+        [Parameter(
+            Mandatory = $false,
+            ParameterSetName = "Name"
+        )]
+        [ValidateSet(
+            "CLOUD_NATIVE_ARCHIVAL_GROUP",
+            "DATACENTER_ARCHIVAL_GROUP",
+            "AUTOMATIC_ARCHIVAL_GROUP",
+            "MANUAL_ARCHIVAL_GROUP"
+        )]
+        [String]$GroupType,
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $false,
@@ -82,14 +102,17 @@ function Get-RscArchivalLocation {
         } else {
             $query = New-RscQuery -Gql allTargetMappings
             $query.var.filter = @()
-            $query.var.filter += New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
-            $query.var.filter[0].field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::ARCHIVAL_GROUP_TYPE
-            $query.var.filter[0].text = "CLOUD_NATIVE_ARCHIVAL_GROUP"
-
+            if ($GroupType) {
+                $f = New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
+                $f.field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::ARCHIVAL_GROUP_TYPE
+                $f.text = $GroupType
+                $query.var.filter += $f
+            }
             if ($Name) {
-                $query.var.filter += New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
-                $query.var.filter[1].field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::NAME
-                $query.var.filter[1].text = $Name
+                $f = New-Object -TypeName RubrikSecurityCloud.Types.TargetMappingFilterInput
+                $f.field = [RubrikSecurityCloud.Types.TargetMappingQueryFilterField]::NAME
+                $f.text = $Name
+                $query.var.filter += $f
             }
 
             Set-MappingFields $query.Field[0]
