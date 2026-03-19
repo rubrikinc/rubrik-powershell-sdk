@@ -81,7 +81,7 @@ function Get-RscNutanixVm {
         # Shared helper: populate NutanixVm field spec.
         function Set-VmFields($vm) {
             $vm.Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
-            $vm.AgentStatus = Get-RscType -Name NutanixVmAgentStatus -InitialProperties @("connectionStatus.*")
+            $vm.AgentStatus = Get-RscType -Name NutanixVmAgentStatus -InitialProperties @("connectionStatus")
             $vm.osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
         }
 

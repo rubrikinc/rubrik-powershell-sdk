@@ -122,7 +122,7 @@ function Get-RscVmwareVm {
         function Set-VmFields($vm) {
             $vm.Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
             $vm.GuestOsName = "FETCH"
-            $vm.AgentStatus = Get-RscType -Name AgentStatus -InitialProperties @("agentStatusField.*")
+            $vm.AgentStatus = Get-RscType -Name AgentStatus -InitialProperties @("agentStatusField")
             $vm.snapshotConsistencyMandate = [RubrikSecurityCloud.Types.ConsistencyLevelEnum]::CRASH_CONSISTENT
             $vm.allOrgs = Get-RscType -Name Org -InitialProperties Name, Id
         }

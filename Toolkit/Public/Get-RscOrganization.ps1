@@ -77,8 +77,8 @@ function Get-RscOrganization {
             $org.OrgAdminRole = $roleTempQuery.field[0]
             $org.Users = Get-RscType -Name ExistingUser -InitialProperties @("id", "isOrgAdmin", "user.email", "user.id")
             $org.Permissions = $roleTempQuery.field[0].Permissions[0]
-            $org.SelfServicePermissions = Get-RscType -Name SelfServicePermission -InitialProperties @("*")
-            $org.SsoGroups = Get-RscType -Name SsoGroup -InitialProperties @("*")
+            $org.SelfServicePermissions = New-Object -TypeName RubrikSecurityCloud.Types.SelfServicePermission
+            $org.SsoGroups = New-Object -TypeName RubrikSecurityCloud.Types.SsoGroup
             $org.PhysicalStorageUsed = 1
             $org.AllUrls = "FETCH"
             $org.CrossAccountCapabilities = @([RubrikSecurityCloud.Types.CrossAccountCapability]::CROSS_ACCOUNT_CAPABILITY_UNSPECIFIED)
