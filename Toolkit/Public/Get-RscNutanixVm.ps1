@@ -80,7 +80,7 @@ function Get-RscNutanixVm {
 
         # Shared helper: populate NutanixVm field spec.
         function Set-VmFields($vm) {
-            $vm.Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
+            $vm.Cluster = Get-RscType -Name Cluster -InitialProperties Id
             $vm.AgentStatus = Get-RscType -Name NutanixVmAgentStatus -InitialProperties @("connectionStatus")
             $vm.osType = New-Object -TypeName RubrikSecurityCloud.Types.OsType
         }
@@ -98,6 +98,7 @@ function Get-RscNutanixVm {
             $query = New-RscQuery -Gql nutanixVms
             $query.var.filter = @()
             Set-VmFields $query.Field.Nodes[0]
+            $query.Field.Nodes[0].Cluster.name = "FETCH"
             if ($Name) {
                 $nameFilter = New-Object -TypeName RubrikSecurityCloud.Types.Filter
                 # Regex filter doesn't work in the API right now, but we're going to play pretend. 
