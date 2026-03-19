@@ -5,6 +5,7 @@
 New Features:
 
 Fixes:
+- Fix module import not restoring the original working directory (#198)
 
 Breaking Changes:
 

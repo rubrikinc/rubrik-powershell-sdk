@@ -1,10 +1,10 @@
 #
 # Load Core DLL:
 #
+# Record the user's current working directory so that we can return to it when we
+# are done loading the module
+$currentPath = Get-Location
 try {
-    # Record the user's current working directory so that we can return to it when we 
-    # are done loading the module
-    $currentPath = Get-Location
 
     # Determine the module directory based on the PowerShell edition
     If ($PSVersionTable.PSEdition -eq "Desktop") {
