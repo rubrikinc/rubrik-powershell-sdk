@@ -6,6 +6,8 @@ New Features:
 
 Fixes:
 - Fix module import not restoring the original working directory (#198)
+- Fix `Get-RscEventSeries -Detail` failing with GraphQL validation error
+  due to required arguments on cluster sub-fields (#208)
 
 Breaking Changes:
 
