@@ -402,20 +402,29 @@ namespace RubrikSecurityCloud
         
         public static string GetObjFieldSpec(object obj, FieldSpecConfig? conf = null)
         {
+            if (obj == null)
+            {
+                return "";
+            }
+
             // If obj implements IFieldSpec, use AsFieldSpec method
             if (obj is IFieldSpec fieldSpec)
             {
                 return fieldSpec.AsFieldSpec(conf);
             }
 
-            // If obj is a collection, recurse on the first element
+            // If obj is a collection, recurse on the first non-null element
             if (obj is IEnumerable enumerable)
             {
                 var enumerator = enumerable.GetEnumerator();
-                if (enumerator.MoveNext())
+                while (enumerator.MoveNext())
                 {
-                    return GetObjFieldSpec(enumerator.Current, conf);
+                    if (enumerator.Current != null)
+                    {
+                        return GetObjFieldSpec(enumerator.Current, conf);
+                    }
                 }
+                return "";
             }
 
             // Fallback to ToString (for simple types like int, string, etc.)

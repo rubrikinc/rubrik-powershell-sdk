@@ -191,7 +191,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
                     NullValueHandling = NullValueHandling.Ignore,
                     Converters =
                     {
-                        new EnumJsonConverter(),
+                        new EnumJsonConverter(logger),
                         new GraphQLInterfaceConverter(typeof(T).FullName,logger)
                     },
                 }

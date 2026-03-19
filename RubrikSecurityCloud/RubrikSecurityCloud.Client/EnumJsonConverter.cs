@@ -10,6 +10,13 @@ namespace RubrikSecurityCloud.Client
 {
     public class EnumJsonConverter : JsonConverter
     {
+        private IRscLogger _logger = null;
+
+        public EnumJsonConverter(IRscLogger logger = null)
+        {
+            _logger = logger;
+        }
+
         public override bool CanConvert(Type objectType)
         {
             Type type = Nullable.GetUnderlyingType(objectType) ?? objectType;
@@ -117,7 +124,18 @@ namespace RubrikSecurityCloud.Client
                     $"SDK is using an outdated API schema. Could not convert value {reader.Value} to type '{enumType}'."
                 );
             }
-            // If no match is found, return the default UNKNOWN value
+            // If no match is found, log and return the default UNKNOWN value
+            string warnMsg = $"Unrecognized enum value \"{reader.Value}\" for type " +
+                $"'{enumType.Name}' at path '{reader.Path}'. Falling back to UNKNOWN. " +
+                $"Consider upgrading the SDK.";
+            if (RubrikSecurityCloud.Config.MuteSchemaWarnings)
+            {
+                _logger?.Verbose(warnMsg);
+            }
+            else
+            {
+                _logger?.Warning(warnMsg);
+            }
             return GetDefaultUnknownValue(enumType);
         }
 
