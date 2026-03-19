@@ -13,7 +13,8 @@ Recommended reading order for new users:
 5. [How To Paginate](HOWTO_pagination.md) — walk through large result sets
 6. [AutoField](autofield.md) — automatic field selection, and when to use it vs fixed queries
 7. [Field Spec](fieldspec.md) — explicit field selection for stability and determinism
-8. [FAQ](faq.md) — common errors and troubleshooting
+8. [Get-RscHelp](get_rschelp.md) — schema browser and lookup tool
+9. [FAQ](faq.md) — common errors and troubleshooting
 
 ## Guides
 
@@ -27,6 +28,7 @@ Recommended reading order for new users:
 | [Field Spec](fieldspec.md)                                     | Explicit field selection for stability and determinism          |
 | [Retrieving Interface Fields](retrieving_interface_fields.md)  | Working with GraphQL interfaces and composite objects          |
 | [GraphQL Model](graphql_model.md)                              | Schema introspection utilities                                 |
+| [Get-RscHelp](get_rschelp.md)                                  | Schema browser — search queries, types, fields interactively   |
 | [SDK Architecture](sdk_architecture.md)                        | Internal architecture overview                                 |
 | [FAQ](faq.md)                                                  | Common questions and troubleshooting                           |
 

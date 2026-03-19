@@ -90,11 +90,11 @@ The result is a
 which contains a `Nodes` property, which is an array of `Cluster` objects,
 which in turn have an `Id` property.
 
-To find the GraphQL query name you need, use `Get-RscCmdlet`:
+To find the GraphQL query name you need, use `Get-RscHelp`:
 
 ```powershell
-PS> Get-RscCmdlet cluster     # search by keyword
-PS> Get-RscCmdlet -ExactMatch clusterConnection   # exact lookup
+PS> Get-RscHelp cluster*                          # search by keyword
+PS> Get-RscHelp -Query clusterConnection          # exact query lookup (shows variables, return type)
 ```
 
 > **Note**: The SDK also has domain-specific cmdlets like
@@ -156,7 +156,7 @@ The SDK cmdlets can be divided into 3 categories:
 
 - **Core cmdlets**: `Connect-Rsc`, `Disconnect-Rsc`, `Invoke-Rsc`,
   `New-RscQuery`, `New-RscMutation`,
-  `Get-RscType`, `Get-RscCmdlet` and `Set-RscServiceAccountFile`.
+  `Get-RscType`, `Get-RscHelp` and `Set-RscServiceAccountFile`.
 - **Domain cmdlets** (generated): `New-RscQueryCluster`,
   `New-RscMutationSla`, etc. These group operations by API domain.
   Still supported, but prefer `New-RscQuery -Gql` instead.
@@ -196,7 +196,7 @@ runs the `clusterConnection()` query and returns the `Nodes` field
 | `New-RscMutation`          | Create a mutation by GraphQL mutation name (recommended) |
 | `Invoke-Rsc`               | Send a query to RSC and return results |
 | `Get-RscType`              | Work with GraphQL schema types |
-| `Get-RscCmdlet`            | Look up cmdlets by GraphQL operation name |
+| `Get-RscHelp`              | Browse the GraphQL schema (queries, types, fields) |
 
 ### Domain cmdlets (generated)
 
@@ -271,18 +271,21 @@ $q = New-RscQuery -Gql clusterConnection
 
 ### If you're searching by keyword
 
-Use `Get-RscCmdlet` to search:
+Use `Get-RscHelp` to search:
 
 ```powershell
-PS> Get-RscCmdlet cluster
+PS> Get-RscHelp cluster*
 
-GqlOperation      InvokeCommand
-------------      -------------
-clusterConnection New-RscQueryCluster -Operation List
-...
+ # Kind  Name              Info                      Description
+ -- ----  ----              ----                      -----------
+  1 Query cluster           returns Cluster
+  2 Query clusterConnection returns ClusterConnection
+  ...
+
+PS> Get-RscHelp -Query clusterConnection    # exact lookup → shows variables and invocation
 ```
 
-Then use the GraphQL operation name with `New-RscQuery -Gql`:
+Then use the GraphQL query name with `New-RscQuery -Gql`:
 
 ```powershell
 $q = New-RscQuery -Gql clusterConnection

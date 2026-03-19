@@ -6,7 +6,7 @@
 > New-RscQuery -Gql <queryName>
 > New-RscMutation -Gql <mutationName>
 > ```
-> Use `Get-RscCmdlet <keyword>` to search for the GraphQL query name.
+> Use `Get-RscHelp <keyword>` to search for the GraphQL query name.
 > See the [developer manual](developer_manual.md) for details.
 
 This document lists every domain cmdlet and its replacement.

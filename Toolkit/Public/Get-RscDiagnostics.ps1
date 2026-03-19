@@ -142,6 +142,24 @@ function Get-RscDiagnostics {
         "dlls:"
     )
     $reportLines += $dllVersions
+
+    # Collect SDK file system locations
+    $sdkLocations = try { Get-RscHelp -Locations } catch { @{} }
+    $reportLines += "locations:"
+    foreach ($key in @('CustomDir', 'ProfileDir', 'AssemblyDir')) {
+        $val = $sdkLocations[$key]
+        if ($val) { $reportLines += "  ${key}: `"$val`"" }
+    }
+    $customOps = $sdkLocations['CustomOperations']
+    if ($customOps -and $customOps.Count -gt 0) {
+        $reportLines += "  CustomOperations:"
+        foreach ($op in $customOps) {
+            $reportLines += "    - `"$op`""
+        }
+    } else {
+        $reportLines += "  CustomOperations: []"
+    }
+
     $reportLines += @(
         "summary:"
         "  total: $reportTotal"

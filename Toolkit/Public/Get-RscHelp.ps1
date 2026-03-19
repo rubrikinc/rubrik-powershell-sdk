@@ -104,7 +104,7 @@ function Get-RscHelp {
     Show full help for a PowerShell cmdlet (equivalent to Get-Help -Full).
 
     .PARAMETER About
-    Show the SDK About page (animated logo and credits).
+    Show the SDK build information.
 
     .PARAMETER Locations
     Show file system locations the SDK uses.
@@ -125,7 +125,7 @@ function Get-RscHelp {
     Param (
         [Parameter(
             ParameterSetName = 'About',
-            HelpMessage = 'Show the SDK About page (animated logo and credits).'
+            HelpMessage = 'Show SDK build information.'
         )]
         [Switch]$About,
 
@@ -253,7 +253,42 @@ function Get-RscHelp {
         Write-Debug "=> ParameterSetName: $($PSCmdlet.ParameterSetName) Match: $Match"
         function GetLocationHelp {
             Write-Debug "Getting locations"
-            Get-RscCmdlet -Locations
+            $locations = @{}
+
+            # CustomDir: RSC_CUSTOM_DIR env var, or CWD
+            $customDir = $env:RSC_CUSTOM_DIR
+            if (-not $customDir -or -not (Test-Path $customDir -PathType Container)) {
+                $customDir = (Get-Location).Path
+            }
+            $locations['CustomDir'] = $customDir
+
+            # CustomOperations: *.gql files in CustomDir
+            $gqlFiles = Get-ChildItem -Path $customDir -Filter '*.gql' -File -ErrorAction SilentlyContinue |
+                ForEach-Object { $_.BaseName }
+            $locations['CustomOperations'] = @($gqlFiles)
+
+            # ProfileDir: parent of $PROFILE / rubrik-powershell-sdk, or ~/rubrik-powershell-sdk
+            $profPath = $PROFILE
+            if (-not $profPath) { $profPath = $env:PROFILE }
+            if (-not $profPath) {
+                $profPath = [Environment]::GetFolderPath('UserProfile')
+            }
+            if (Test-Path $profPath -PathType Leaf) {
+                $profPath = Split-Path $profPath -Parent
+            } elseif (-not (Test-Path $profPath -PathType Container)) {
+                $profPath = Split-Path $profPath -Parent
+            }
+            $profPath = Join-Path $profPath 'rubrik-powershell-sdk'
+            if (-not (Test-Path $profPath)) {
+                New-Item -ItemType Directory -Path $profPath -Force | Out-Null
+            }
+            $locations['ProfileDir'] = $profPath
+
+            # AssemblyDir: directory of the SDK DLL
+            $asm = [RubrikSecurityCloud.Types.SchemaMeta].Assembly.Location
+            $locations['AssemblyDir'] = Split-Path $asm -Parent
+
+            $locations
         }
 
         function GetCmdletHelp {
@@ -506,7 +541,7 @@ function Get-RscHelp {
 
             # --- Initial display ---
             $expanded = $false
-            Clear-Host
+
             ShowCompactTable
 
             # --- Interactive loop (only in interactive host) ---
@@ -524,7 +559,7 @@ function Get-RscHelp {
                 # 'd' → toggle expanded view
                 if ($input2 -eq 'd') {
                     $expanded = -not $expanded
-                    Clear-Host
+        
                     if ($expanded) {
                         ShowExpandedView
                     } else {
@@ -535,7 +570,7 @@ function Get-RscHelp {
                 # Number → show detail for that row
                 $num = 0
                 if ([int]::TryParse($input2, [ref]$num) -and $num -ge 1 -and $num -le $total) {
-                    Clear-Host
+        
                     ShowCompactTable
                     ShowDetailForRow $rows[$num - 1]
                     Write-Host ""
@@ -567,7 +602,13 @@ function Get-RscHelp {
                 }
                 # print it if $Query is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    Write-Output $value
+                    $returnType = try {
+                        [RubrikSecurityCloud.Types.SchemaMeta]::ReturnTypeLookupByGqlRootField($value)
+                    } catch { "" }
+                    Write-Output (New-Object PSObject -Property ([ordered]@{
+                        GqlField   = [string]$value
+                        ReturnType = [string]$returnType
+                    }))
                 }
             }
         }
@@ -590,7 +631,13 @@ function Get-RscHelp {
                 }
                 # print it if $Query is empty, or if it matches the pattern
                 if ($Match -eq "" -or $value -like $Match) {
-                    Write-Output $value
+                    $returnType = try {
+                        [RubrikSecurityCloud.Types.SchemaMeta]::ReturnTypeLookupByGqlRootField($value)
+                    } catch { "" }
+                    Write-Output (New-Object PSObject -Property ([ordered]@{
+                        GqlField   = [string]$value
+                        ReturnType = [string]$returnType
+                    }))
                 }
             }
         }
@@ -876,7 +923,11 @@ function Get-RscHelp {
         switch ($PSCmdlet.ParameterSetName) {
             'About' {
                 . "$PSScriptRoot\..\Private\Show-RscAbout.ps1"
-                Show-RscAbout
+                if ($Match -ieq 'credits') {
+                    Show-RscAbout -Animated
+                } else {
+                    Show-RscAbout
+                }
                 return
             }
             'Locations' { GetLocationHelp }

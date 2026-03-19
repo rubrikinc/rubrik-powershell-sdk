@@ -17,9 +17,9 @@ A query is defined by three elements:
 ### You're exploring by keyword
 
 ```powershell
-Get-RscCmdlet cluster          # search by keyword
-Get-RscCmdlet sla              # another example
-Get-RscCmdlet -ExactMatch clusterConnection   # exact lookup
+Get-RscHelp cluster*                          # search by keyword
+Get-RscHelp sla*                              # another example
+Get-RscHelp -Query clusterConnection          # exact lookup (shows variables, invocation)
 ```
 
 ### You already know the GraphQL query name

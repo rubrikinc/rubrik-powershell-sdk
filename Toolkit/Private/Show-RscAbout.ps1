@@ -15,7 +15,18 @@ function Show-RscAbout {
     Show-RscAbout
     #>
     [CmdletBinding()]
-    param()
+    param(
+        [switch]$Animated
+    )
+
+    # Return SDK build information
+    $sdkVer = try { (Get-Module RubrikSecurityCloud).Version.ToString() } catch { "unknown" }
+    $schemaVer = try { [RubrikSecurityCloud.Types.SchemaMeta]::GraphqlSchemaVersion } catch { "unknown" }
+
+    if (-not $Animated) {
+        Write-Output "RSC PowerShell SDK v$sdkVer (schema $schemaVer)"
+        return
+    }
 
     $e = [char]27
     $RS = "$e[0m"
@@ -84,48 +95,52 @@ function Show-RscAbout {
     }
 
     function _DrawRSC {
+        param($c4=$P4, $c5=$P5, $c6=$P6, $c7=$P7)
         $rX = 10; $sX = 32; $cX = 54; $y0 = 6
 
-        _At $rX $y0;       _W $P5 '▄▄▄▄▄▄▄▄▄▄▄▄▄▄'
-        _At $sX $y0;       _W $P5 ' ▄▄▄▄▄▄▄▄▄▄▄▄ '
-        _At $cX $y0;       _W $P5 ' ▄▄▄▄▄▄▄▄▄▄▄▄ '
+        _At $rX $y0;       _W $c5 '▄▄▄▄▄▄▄▄▄▄▄▄▄▄'
+        _At $sX $y0;       _W $c5 ' ▄▄▄▄▄▄▄▄▄▄▄▄ '
+        _At $cX $y0;       _W $c5 ' ▄▄▄▄▄▄▄▄▄▄▄▄ '
 
-        _At $rX ($y0+1);   _W $P6 '█'; _W $P4 '████████████'; _W $P6 '█'
-        _At $sX ($y0+1);   _W $P6 '█'; _W $P4 '████████████'; _W $P6 '█'
-        _At $cX ($y0+1);   _W $P6 '█'; _W $P4 '████████████'; _W $P6 '█'
+        _At $rX ($y0+1);   _W $c6 '█'; _W $c4 '████████████'; _W $c6 '█'
+        _At $sX ($y0+1);   _W $c6 '█'; _W $c4 '████████████'; _W $c6 '█'
+        _At $cX ($y0+1);   _W $c6 '█'; _W $c4 '████████████'; _W $c6 '█'
 
-        _At $rX ($y0+2);   _W $P7 '██'; _W '' '      '; _W $P4 '░▒██'
-        _At $sX ($y0+2);   _W $P7 '██'; _W '' '      '; _W $P4 '░▒██'
-        _At $cX ($y0+2);   _W $P7 '██'; _W '' '      '; _W $P4 '░░░░'
+        _At $rX ($y0+2);   _W $c7 '██'; _W '' '      '; _W $c4 '░▒██'
+        _At $sX ($y0+2);   _W $c7 '██'; _W '' '      '; _W $c4 '░▒██'
+        _At $cX ($y0+2);   _W $c7 '██'; _W '' '      '; _W $c4 '░░░░'
 
-        _At $rX ($y0+3);   _W $P7 '██'; _W '' '     '; _W $P4 '░▒██'
-        _At $sX ($y0+3);   _W $P7 '██'; _W '' '     '; _W $P4 '░▒██'
-        _At $cX ($y0+3);   _W $P7 '██'
+        _At $rX ($y0+3);   _W $c7 '██'; _W '' '     '; _W $c4 '░▒██'
+        _At $sX ($y0+3);   _W $c7 '██'; _W '' '     '; _W $c4 '░▒██'
+        _At $cX ($y0+3);   _W $c7 '██'
 
-        _At $rX ($y0+4);   _W "$BO$P7" '████████████'; _W $P5 '▓▓'
-        _At $sX ($y0+4);   _W $P5 '▓▓'; _W "$BO$P7" '██████████'; _W $P5 '▓▓'
-        _At $cX ($y0+4);   _W $P7 '██'
+        _At $rX ($y0+4);   _W "$BO$c7" '████████████'; _W $c5 '▓▓'
+        _At $sX ($y0+4);   _W $c5 '▓▓'; _W "$BO$c7" '██████████'; _W $c5 '▓▓'
+        _At $cX ($y0+4);   _W $c7 '██'
 
-        _At $rX ($y0+5);   _W $P7 '██'; _W $P6 '▓▓▓▓▓▓▓▓▓▓'; _W $P5 '▒▒'
-        _At $sX ($y0+5);   _W $P5 '▒▒'; _W $P6 '▓▓▓▓▓▓▓▓▓▓'; _W $P5 '▒▒'
-        _At $cX ($y0+5);   _W $P7 '██'
+        _At $rX ($y0+5);   _W $c7 '██'; _W $c6 '▓▓▓▓▓▓▓▓▓▓'; _W $c5 '▒▒'
+        _At $sX ($y0+5);   _W $c5 '▒▒'; _W $c6 '▓▓▓▓▓▓▓▓▓▓'; _W $c5 '▒▒'
+        _At $cX ($y0+5);   _W $c7 '██'
 
-        _At $rX ($y0+6);   _W $P7 '██'; _W '' '   '; _W $P4 '▒███'
-        _At ($sX+8) ($y0+6); _W $P4 '░▒██'
-        _At $cX ($y0+6);   _W $P7 '██'; _W '' '      '; _W $P4 '░░░░'
+        _At $rX ($y0+6);   _W $c7 '██'; _W '' '   '; _W $c4 '▒███'
+        _At ($sX+8) ($y0+6); _W $c4 '░▒██'
+        _At $cX ($y0+6);   _W $c7 '██'; _W '' '      '; _W $c4 '░░░░'
 
-        _At $rX ($y0+7);   _W $P7 '██'; _W '' '    '; _W $P4 '▒███'
-        _At $sX ($y0+7);   _W $P7 '██'; _W '' '      '; _W $P4 '░▒██'
-        _At $cX ($y0+7);   _W $P6 '█'; _W $P4 '████████████'; _W $P6 '█'
+        _At $rX ($y0+7);   _W $c7 '██'; _W '' '    '; _W $c4 '▒███'
+        _At $sX ($y0+7);   _W $c7 '██'; _W '' '      '; _W $c4 '░▒██'
+        _At $cX ($y0+7);   _W $c6 '█'; _W $c4 '████████████'; _W $c6 '█'
 
-        _At $rX ($y0+8);   _W $P7 '██'; _W '' '     '; _W $P4 '▒███'
-        _At $sX ($y0+8);   _W $P6 '█'; _W $P4 '████████████'; _W $P6 '█'
-        _At $cX ($y0+8);   _W $P4 ' ░▒▓▓▓▓▓▓▓▓▓▓ '
+        _At $rX ($y0+8);   _W $c7 '██'; _W '' '     '; _W $c4 '▒███'
+        _At $sX ($y0+8);   _W $c6 '█'; _W $c4 '████████████'; _W $c6 '█'
+        _At $cX ($y0+8);   _W $c4 ' ░▒▓▓▓▓▓▓▓▓▓▓ '
 
-        _At $rX ($y0+9);   _W $P4 '▀▀'; _W '' '      '; _W $P4 '▀▀▀▀'
-        _At $sX ($y0+9);   _W $P4 ' ░▒▓▓▓▓▓▓▓▓▓▓ '
-        _At $cX ($y0+9);   _W $P4 ' ▀▀▀▀▀▀▀▀▀▀▀▀ '
+        _At $rX ($y0+9);   _W $c4 '▀▀'; _W '' '      '; _W $c4 '▀▀▀▀'
+        _At $sX ($y0+9);   _W $c4 ' ░▒▓▓▓▓▓▓▓▓▓▓ '
+        _At $cX ($y0+9);   _W $c4 ' ▀▀▀▀▀▀▀▀▀▀▀▀ '
     }
+
+    # Rainbow hue table: 12 steps around the 256-color wheel
+    $rainbowHues = @(196, 202, 208, 214, 220, 226, 190, 118, 48, 45, 39, 63)
 
     function _DrawPSBanner {
         $y = 17
@@ -157,10 +172,8 @@ function Show-RscAbout {
     }
 
     # ── Authors ──────────────────────────────────────────────────────
-    # Regenerate: git -C ~/src/rubrikinc/rubrik-powershell-sdk log --format='%an' | sort | uniq -c | sort -rn
-    # Then consolidate aliases (e.g. Gui/Guillaume → Gui Rava)
     $authors = @(
-        @{ Name = 'Gui Rava';            Color = _fg 51  }
+        @{ Name = 'Guillaume Rava';      Color = _fg 51  }
         @{ Name = 'Jake Robinson';       Color = _fg 220 }
         @{ Name = 'Evan Cheng';          Color = _fg 208 }
         @{ Name = 'Chris Lumnah';        Color = _fg 120 }
@@ -220,6 +233,8 @@ function Show-RscAbout {
     _At $tagLeft $tagY2; _W $DG '·····'; _W $T3 '▸ '; _W $GR $verLabel; _W $T3 '◂'; _W $DG '·····'
 
     $frame = 0
+    $rainbow = $false
+    $mqSpeed = 1
     $mqOff = 0
     $mqY = 24
     $mqVisW = 52
@@ -241,6 +256,17 @@ function Show-RscAbout {
                         _W '' ' '
                     }
                 }
+            }
+
+            # ── Rainbow RSC banner ──────────────────────────
+            if ($rainbow -and $frame % 2 -eq 0) {
+                $hi = $frame / 2
+                $n = $rainbowHues.Count
+                $rc4 = _fg $rainbowHues[$hi % $n]
+                $rc5 = _fg $rainbowHues[($hi + 1) % $n]
+                $rc6 = _fg $rainbowHues[($hi + 2) % $n]
+                $rc7 = _fg $rainbowHues[($hi + 3) % $n]
+                _DrawRSC -c4 $rc4 -c5 $rc5 -c6 $rc6 -c7 $rc7
             }
 
             # ── RSC title wave: gentle pulse right→left ──────────
@@ -313,12 +339,46 @@ function Show-RscAbout {
             }
 
             _W $T3 ' ◂'
-            $mqOff = ($mqOff + 1) % $creditLen
+            $mqOff = ($mqOff + $mqSpeed) % $creditLen
 
-            # ── Exit check ───────────────────────────────────
+            # ── Key check ─────────────────────────────────────
             if ([Console]::KeyAvailable) {
-                $null = [Console]::ReadKey($true)
-                break
+                $key = [Console]::ReadKey($true)
+                if ($key.Key -eq 'R') {
+                    $rainbow = -not $rainbow
+                    if (-not $rainbow) { _DrawRSC }
+                } elseif ($key.Key -eq 'S') {
+                    $mqSpeed = 4
+                } elseif ($key.KeyChar -ge '1' -and $key.KeyChar -le '9') {
+                    $mqSpeed = [int]($key.KeyChar.ToString())
+                } elseif ($key.Key -eq 'C') {
+                    # Screen-clear animation: fill with blank cells
+                    $cells = [System.Collections.ArrayList]::new()
+                    for ($cy = 0; $cy -lt $artH; $cy++) {
+                        for ($cx = 0; $cx -lt $artW; $cx++) {
+                            [void]$cells.Add(@($cx, $cy))
+                        }
+                    }
+                    # Fisher-Yates shuffle
+                    for ($i = $cells.Count - 1; $i -gt 0; $i--) {
+                        $j = Get-Random -Maximum ($i + 1)
+                        $tmp = $cells[$i]; $cells[$i] = $cells[$j]; $cells[$j] = $tmp
+                    }
+                    $batch = [Math]::Max(1, [Math]::Floor($cells.Count / 60))
+                    $ci = 0
+                    while ($ci -lt $cells.Count) {
+                        for ($b = 0; $b -lt $batch -and $ci -lt $cells.Count; $b++) {
+                            $cell = $cells[$ci]; $ci++
+                            _At $cell[0] $cell[1]
+                            Write-Host ' ' -NoNewline
+                        }
+                        Start-Sleep -Milliseconds 16
+                    }
+                    Start-Sleep -Milliseconds 200
+                    break
+                } else {
+                    break
+                }
             }
 
             $frame++

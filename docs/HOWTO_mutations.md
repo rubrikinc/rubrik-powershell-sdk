@@ -7,16 +7,16 @@ but use `New-RscMutation` instead of `New-RscQuery`.
 ## 1 — Find the Mutation Name
 
 ```powershell
-# Search by keyword
-Get-RscCmdlet sla              # lists both queries and mutations
-Get-RscCmdlet snapshot
+# Search by keyword (shows queries and mutations)
+Get-RscHelp sla*
+Get-RscHelp snapshot*
 
-# Exact lookup
-Get-RscCmdlet -ExactMatch createGlobalSla
+# Exact lookup (shows variables, return type, invocation)
+Get-RscHelp -Mutation createGlobalSla
 ```
 
-The `InvokeCommand` column shows the domain cmdlet equivalent, but
-the `GqlOperation` column is the name you pass to `New-RscMutation -Gql`.
+The output shows the GraphQL field name — that's the name you pass
+to `New-RscMutation -Gql`.
 
 ## 2 — Create the Mutation Object
 
@@ -99,7 +99,7 @@ $result | Remove-NullProperties
 
 ```powershell
 # Find the mutation
-Get-RscCmdlet -ExactMatch createOnDemandBackup
+Get-RscHelp -Mutation createOnDemandBackup
 
 # Build the mutation
 $m = New-RscMutation -Gql createOnDemandBackup

@@ -101,7 +101,7 @@ These are the foundational cmdlets that everything else builds on:
 | `Connect-Rsc`       | Establish a session with an RSC instance          |
 | `Disconnect-Rsc`    | Close the session                                 |
 | `Get-RscType`       | Instantiate or inspect .NET types from the schema |
-| `Get-RscCmdlet`     | Search for operations by keyword                  |
+| `Get-RscHelp`       | Browse the GraphQL schema (queries, types, fields) |
 | `Get-RscHelp`       | Get help for SDK types and operations             |
 | `Set-RscServiceAccountFile` | Configure service account credentials    |
 | `New-RscQueryClusterVerify` | (internal validation cmdlet)             |
@@ -184,7 +184,7 @@ $status = [RubrikSecurityCloud.Types.ClusterStatus]::CONNECTED
 The schema DLL also includes `SchemaMeta.cs`, which provides
 reflection capabilities: looking up GraphQL root field names,
 mapping them to domain cmdlets, and listing available operations.
-This is what powers `New-RscQuery -Gql`, `Get-RscCmdlet`, and
+This is what powers `New-RscQuery -Gql`, `Get-RscHelp`, and
 tab-completion.
 
 Do not hand-edit files under `RubrikSecurityCloud.Schema/` —
