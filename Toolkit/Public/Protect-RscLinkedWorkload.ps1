@@ -12,6 +12,12 @@ function Protect-RscLinkedWorkload
     Schema reference:
     https://rubrikinc.github.io/rubrik-api-documentation/schema/reference
 
+    .PARAMETER MssqlLogConfigFromSla
+    For MSSQL workloads: after linking and assigning the SLA, automatically
+    set the database to inherit its log backup configuration from the SLA Domain
+    (equivalent to the RSC UI option "Follow the log configuration in the SLA Domain").
+    This fires a follow-up assignMssqlSlaDomainPropertiesAsync mutation.
+
     .PARAMETER AsQuery
     Return the query object instead of running the query.
     Preliminary read-only queries may still run to gather IDs or
@@ -28,6 +34,14 @@ function Protect-RscLinkedWorkload
     Unlink two previously linked workloads.
 
     Protect-RscLinkedWorkload -InputObject $ag1 -LinkedObject $ag2 -LinkingOperation UNLINK -AssignmentType PROTECT_WITH_SLA_ID
+
+    .EXAMPLE
+    Link two AGs and use the SLA Domain's log backup configuration:
+
+    $ag1 = Get-RscMssqlAvailabilityGroup -AvailabilityGroupName "Foo" -Cluster (Get-RscCluster -Name "Bar") -Relic:$false -Replica:$false
+    $ag2 = Get-RscMssqlAvailabilityGroup -AvailabilityGroupName "Foo" -Cluster (Get-RscCluster -Name "Baz") -Relic:$false -Replica:$false
+    Protect-RscLinkedWorkload -InputObject $ag1 -LinkedObject $ag2 -LinkingOperation LINK -AssignmentType PROTECT_WITH_SLA_ID -Sla (Get-RscSla -Name "Bronze") -MssqlLogConfigFromSla
+
   #>
 
   [CmdletBinding()]
@@ -64,6 +78,10 @@ function Protect-RscLinkedWorkload
     # Linking Operation (LINK (and assign SLA), ASSIGN_SLA, UNLINK)
     [Parameter(Mandatory=$true)]
     [RubrikSecurityCloud.Types.ManageProtectionForLinkedObjectsOperationType]$LinkingOperation,
+
+    # For MSSQL workloads: inherit log backup configuration from the SLA Domain
+    [Parameter()]
+    [switch]$MssqlLogConfigFromSla,
 
     # Returns API query
     [Parameter()]
@@ -118,10 +136,36 @@ function Protect-RscLinkedWorkload
             }
             
             if ($AsQuery.IsPresent) {
+              if ($MssqlLogConfigFromSla) {
+                Write-Warning "-AsQuery returns the primary query only. The -MssqlLogConfigFromSla follow-up mutation is not included."
+              }
               return $query
             }
             else {
               $result = $query.invoke()
+
+              # Follow-up: set MSSQL log config to inherit from SLA Domain
+              if ($MssqlLogConfigFromSla) {
+                if (-not $Sla) {
+                  throw "-MssqlLogConfigFromSla requires -Sla to be specified."
+                }
+                $mssqlQuery = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
+                $mssqlQuery.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
+                $mssqlQuery.Var.input.userNote = ""
+                $mssqlQuery.Var.input.updateinfo = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaDomainAssignInfoInput
+                $mssqlQuery.Var.input.updateinfo.ids = @($InputObjects[0].id, $LinkedObject.id)
+                $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaPatchPropertiesInput
+                $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.configuredSLADomainId = $Sla.Id
+                $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties = New-Object -TypeName RubrikSecurityCloud.Types.MssqlSlaRelatedPropertiesInput
+                $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hasLogConfigFromSla = $true
+                $mssqlQuery.Var.input.updateinfo.mssqlSlaPatchProperties.mssqlSlaRelatedProperties.hostLogRetention = -1
+                try {
+                  $mssqlQuery.invoke() | Out-Null
+                } catch {
+                  Write-Warning "SLA assigned successfully, but failed to set MSSQL log config from SLA: $_"
+                }
+              }
+
               return $result
             }
 
