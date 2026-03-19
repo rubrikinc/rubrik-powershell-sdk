@@ -2,12 +2,37 @@
 
 ## Version TBD
 
+Schema Update:
+- Automatic schema update
+
 New Features:
+- `Protect-RscWorkload` and `Protect-RscLinkedWorkload`: new
+  `-MssqlLogConfigFromSla` switch to automatically set MSSQL databases
+  to inherit log backup configuration from the SLA Domain (#221)
+- `Get-RscHelp`: interactive detail view with field lookup and tab
+  completion; schema descriptions in output; navigation by typing a
+  name at the prompt (#240)
+- `Get-RscType`: `on:` syntax for selecting implementation types on
+  `List<Interface>` fields; `*` wildcard support in interface contexts;
+  throws on invalid property names (#240)
+- Auto-retry GraphQL queries that fail with 403 due to feature-flagged
+  fields (#246)
+- Unknown enum values from the API are now deserialized gracefully
+  instead of throwing (#245)
 
 Fixes:
 - Fix module import not restoring the original working directory (#198)
 - Fix `Get-RscEventSeries -Detail` failing with GraphQL validation error
   due to required arguments on cluster sub-fields (#208)
+- Fix `Get-RscVmwareVm` returning an extra string when filtering by
+  name with a wildcard (#215, #216)
+- Fix `Get-RscArchivalLocation` returning empty results for
+  non-cloud-native archival targets (#238)
+- Fix `-MssqlLogConfigFromSla` validation running after the API call
+  instead of before
+- Fix `-Interfaces` positional parameter gap in `Get-RscType`
+  (Position 3 changed to 2)
+- Fix `Get-RscType` `List<Interface>` infinite recursion
 
 Breaking Changes:
 
