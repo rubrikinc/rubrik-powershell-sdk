@@ -136,14 +136,16 @@ function Protect-RscWorkload
           $query.Var.Input.ShouldApplyToNonPolicySnapshots = "true"
         }
         
+        # Validate early: -MssqlLogConfigFromSla requires -Sla
+        if ($MssqlLogConfigFromSla -and -not $Sla) {
+            throw "-MssqlLogConfigFromSla requires -Sla to be specified."
+        }
+
         if ( $AsQuery ) { return $query }
         $result = Invoke-Rsc -Query $query
 
         # Follow-up: set MSSQL log config to inherit from SLA Domain
         if ($MssqlLogConfigFromSla) {
-            if (-not $Sla) {
-                throw "-MssqlLogConfigFromSla requires -Sla to be specified."
-            }
             $mssqlQuery = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
             $mssqlQuery.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
             $mssqlQuery.Var.input.userNote = ""

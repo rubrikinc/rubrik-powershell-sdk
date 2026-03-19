@@ -135,6 +135,11 @@ function Protect-RscLinkedWorkload
               $query.Var.Input.AssignSlaReq.ShouldApplyToNonPolicySnapshots = "true"
             }
             
+            # Validate early: -MssqlLogConfigFromSla requires -Sla
+            if ($MssqlLogConfigFromSla -and -not $Sla) {
+              throw "-MssqlLogConfigFromSla requires -Sla to be specified."
+            }
+
             if ($AsQuery.IsPresent) {
               if ($MssqlLogConfigFromSla) {
                 Write-Warning "-AsQuery returns the primary query only. The -MssqlLogConfigFromSla follow-up mutation is not included."
@@ -146,9 +151,6 @@ function Protect-RscLinkedWorkload
 
               # Follow-up: set MSSQL log config to inherit from SLA Domain
               if ($MssqlLogConfigFromSla) {
-                if (-not $Sla) {
-                  throw "-MssqlLogConfigFromSla requires -Sla to be specified."
-                }
                 $mssqlQuery = New-RscMutation -GqlMutation assignMssqlSlaDomainPropertiesAsync
                 $mssqlQuery.Var.input = New-Object -TypeName RubrikSecurityCloud.Types.AssignMssqlSlaDomainPropertiesAsyncInput
                 $mssqlQuery.Var.input.userNote = ""
