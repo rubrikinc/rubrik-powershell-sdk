@@ -1531,6 +1531,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? DeleteMvcProfiles
+        // GraphQL -> deleteMvcProfiles: Void (scalar)
+        public static string DeleteMvcProfiles(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "deleteMvcProfiles" + args + "\n";
+        }
+        public static object DeleteMvcProfilesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.Boolean? DeleteOrg
         // GraphQL -> deleteOrg: Boolean! (scalar)
         public static string DeleteOrg(object fsObj)

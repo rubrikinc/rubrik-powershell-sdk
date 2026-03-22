@@ -573,6 +573,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldGrantSmbShareRootAccess = $someBoolean
     /// 		# OPTIONAL
+    /// 		shouldAllowDuplicateSystemsWithSameIp = $someBoolean
+    /// 		# OPTIONAL
     /// 		nasFlashBladeApiCredentials = @{
     /// 			# REQUIRED
     /// 			hasSmbSupport = $someBoolean
@@ -1244,6 +1246,8 @@ $query.Var.input = @{
 		shouldResetGeneratedNamespaceSmbCredentials = $someBoolean
 		# OPTIONAL
 		shouldGrantSmbShareRootAccess = $someBoolean
+		# OPTIONAL
+		shouldAllowDuplicateSystemsWithSameIp = $someBoolean
 		# OPTIONAL
 		nasFlashBladeApiCredentials = @{
 			# REQUIRED

@@ -27,3 +27,5 @@ Recover a Rubrik Cloud Cluster.
   - Cloud account email.
 - ntpServers: list of System.Strings
   - Array of NTP servers.
+- isAzResilient: System.Boolean
+  - Recovers as an AZ-resilient Rubrik cluster with nodes distributed across multiple availability zones.

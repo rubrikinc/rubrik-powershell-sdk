@@ -513,6 +513,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_DFS_NAMESPACE_V2")]
         PRINCIPAL_DFS_NAMESPACE_V2,
 
+        [EnumMember(Value = "PRINCIPAL_DNS_ZONE")]
+        PRINCIPAL_DNS_ZONE,
+
         [EnumMember(Value = "PRINCIPAL_DOMAIN_DNS")]
         PRINCIPAL_DOMAIN_DNS,
 

@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> List<System.String>? DatabaseIds
-        // GraphQL -> databaseIds: [UUID!]! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> databaseIds: [UUID!] (scalar)
         [JsonProperty("databaseIds")]
         public List<System.String>? DatabaseIds { get; set; }
 
@@ -40,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sessionId: String (scalar)
         [JsonProperty("sessionId")]
         public System.String? SessionId { get; set; }
+
+        //      C# -> List<System.String>? ServerIds
+        // GraphQL -> serverIds: [UUID!] (scalar)
+        [JsonProperty("serverIds")]
+        public List<System.String>? ServerIds { get; set; }
 
 
         #endregion

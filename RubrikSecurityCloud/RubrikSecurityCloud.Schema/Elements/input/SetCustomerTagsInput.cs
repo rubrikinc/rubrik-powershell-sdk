@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldOverrideResourceTags")]
         public System.Boolean? ShouldOverrideResourceTags { get; set; }
 
+        //      C# -> List<System.String>? ExcludedTags
+        // GraphQL -> excludedTags: [String!] (scalar)
+        [JsonProperty("excludedTags")]
+        public List<System.String>? ExcludedTags { get; set; }
+
 
         #endregion
 

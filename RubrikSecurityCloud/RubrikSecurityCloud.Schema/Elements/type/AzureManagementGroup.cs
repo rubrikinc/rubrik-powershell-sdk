@@ -21,6 +21,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CustomerManagementGroupId
+        // GraphQL -> customerManagementGroupId: UUID! (scalar)
+        [JsonProperty("customerManagementGroupId")]
+        public System.String? CustomerManagementGroupId { get; set; }
+
+        //      C# -> System.Boolean? IsAuthorized
+        // GraphQL -> isAuthorized: Boolean! (scalar)
+        [JsonProperty("isAuthorized")]
+        public System.Boolean? IsAuthorized { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -41,10 +51,18 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureManagementGroup Set(
+        System.String? CustomerManagementGroupId = null,
+        System.Boolean? IsAuthorized = null,
         System.String? Name = null,
         System.String? NativeId = null
     ) 
     {
+        if ( CustomerManagementGroupId != null ) {
+            this.CustomerManagementGroupId = CustomerManagementGroupId;
+        }
+        if ( IsAuthorized != null ) {
+            this.IsAuthorized = IsAuthorized;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -65,6 +83,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CustomerManagementGroupId
+        // GraphQL -> customerManagementGroupId: UUID! (scalar)
+        if (this.CustomerManagementGroupId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "customerManagementGroupId\n" ;
+            } else {
+                s += ind + "customerManagementGroupId\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAuthorized
+        // GraphQL -> isAuthorized: Boolean! (scalar)
+        if (this.IsAuthorized != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAuthorized\n" ;
+            } else {
+                s += ind + "isAuthorized\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -90,6 +126,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? CustomerManagementGroupId
+        // GraphQL -> customerManagementGroupId: UUID! (scalar)
+        if (ec.Includes("customerManagementGroupId",true))
+        {
+            if(this.CustomerManagementGroupId == null) {
+
+                this.CustomerManagementGroupId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomerManagementGroupId != null && ec.Excludes("customerManagementGroupId",true))
+        {
+            this.CustomerManagementGroupId = null;
+        }
+        //      C# -> System.Boolean? IsAuthorized
+        // GraphQL -> isAuthorized: Boolean! (scalar)
+        if (ec.Includes("isAuthorized",true))
+        {
+            if(this.IsAuthorized == null) {
+
+                this.IsAuthorized = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAuthorized != null && ec.Excludes("isAuthorized",true))
+        {
+            this.IsAuthorized = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))

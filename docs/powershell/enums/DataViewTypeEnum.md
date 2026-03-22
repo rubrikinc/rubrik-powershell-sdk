@@ -63,3 +63,4 @@ for the single SLA in the NG Alpha report framework.
 - OBJECT_CAPACITY_OVER_TIME_HOURLY - Specifies the Object Capacity Over Time report information using hourly fact table.
 - VSPHERE_VM_EXCLUDED_DISKS - Specifies the vSphere virtual machine excluded disks report information.
 - ALLOWED_HITS - Specifies the allowed hits report information for DSPM.
+- CLOUD_OVERLAP_OBJECTS - Specifies the Cloud Overlap Objects report information.

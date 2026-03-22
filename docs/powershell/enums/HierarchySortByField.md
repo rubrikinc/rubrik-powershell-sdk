@@ -221,3 +221,17 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 +mo:sort:db:table=blackout_window
 +mo:sort:db:column=start_date
 +mo:sort:db:index:key=NULL
+- GITHUB_REPO_SIZE - Sort GitHub repositories by size.
++mo:sort:db:table=github_repositories
++mo:sort:db:column=size
++mo:sort:db:index:key=idx_size
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- AZURE_DEVOPS_REPO_SIZE - Sort Azure DevOps repositories by size.
++mo:sort:db:table=azure_devops_repositories
++mo:sort:db:column=size
++mo:sort:db:index:key=idx_size
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false

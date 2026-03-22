@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20260309-27" ;
+        public static string GraphqlSchemaVersion = "v20260316-43" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -235,6 +235,7 @@ namespace RubrikSecurityCloud.Types
             ActiveDirectorySnappableSearchResponse,
             ActiveDirectorySnappableSearchResponseConnection,
             ActiveDirectorySnappableSearchResponseEdge,
+            ActiveDirectorySnapshotStats,
             ActiveUpload,
             Activity,
             ActivityAuditorAclChange,
@@ -344,6 +345,9 @@ namespace RubrikSecurityCloud.Types
             ArchivalEntityTarget,
             ArchivalEntityTargetMapping,
             ArchivalGroupConnectionStatus,
+            ArchivalLocationForFailoverGroup,
+            ArchivalLocationForFailoverGroupConnection,
+            ArchivalLocationForFailoverGroupEdge,
             ArchivalLocationToClusterMapping,
             ArchivalLocationUpgradeInfo,
             ArchivalMigrationInfo,
@@ -598,6 +602,7 @@ namespace RubrikSecurityCloud.Types
             AzureSqlDatabaseDbConfig,
             AzureSqlDatabaseDbConnection,
             AzureSqlDatabaseDbEdge,
+            AzureSqlDatabaseDbSpecificSnapshot,
             AzureSqlDatabaseServer,
             AzureSqlDatabaseServerConnection,
             AzureSqlDatabaseServerEdge,
@@ -608,6 +613,7 @@ namespace RubrikSecurityCloud.Types
             AzureSqlManagedInstanceDatabaseConnection,
             AzureSqlManagedInstanceDatabaseEdge,
             AzureSqlManagedInstanceDbConfig,
+            AzureSqlManagedInstanceDbSpecificSnapshot,
             AzureSqlManagedInstanceServer,
             AzureSqlManagedInstanceServerConnection,
             AzureSqlManagedInstanceServerEdge,
@@ -812,10 +818,12 @@ namespace RubrikSecurityCloud.Types
             CloudAccountDetail,
             CloudAccountDetails,
             CloudAccountFeaturePermission,
+            CloudAccountFilterValues,
             CloudAccountInfo,
             CloudAccountsAzureSubscription,
             CloudAccountsCertificateInfo,
             CloudAccountsExocomputeAccountMapping,
+            CloudAccountsGetListFiltersReply,
             CloudAccountsTprReqChangesTemplate,
             CloudAccountSub,
             CloudAccountSubnet,
@@ -1488,6 +1496,9 @@ namespace RubrikSecurityCloud.Types
             HostFailoverClusterEdge,
             HostFailoverClusterPhysicalChildTypeConnection,
             HostFailoverClusterPhysicalChildTypeEdge,
+            HostForFailoverGroup,
+            HostForFailoverGroupConnection,
+            HostForFailoverGroupEdge,
             HostGroupInfo,
             HostInfo,
             HostRbsNetworkLimits,
@@ -2186,8 +2197,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharepointDrive,
             O365SharePointDrive,
+            O365SharepointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -3418,6 +3429,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalEntityFilterInput,
             ArchivalHealthCheckParamsInput,
             ArchivalLocationInfo,
+            ArchivalLocationsForFailoverGroupFilter,
             ArchivalLocationToClusterMappingInput,
             ArchivalMigrationTargetInput,
             ArchivalPerObjectInfoFilterInput,
@@ -3713,6 +3725,7 @@ namespace RubrikSecurityCloud.Types
             ClearCloudNativeSqlServerBackupCredentialsInput,
             ClearHostRbsNetworkLimitInput,
             CloudAccountFilterInput,
+            CloudAccountsGetListFiltersReq,
             CloudDirectAddSubdirBackupInput,
             CloudDirectCheckSharePathReq,
             CloudDirectDeleteGlobalSmbUserInput,
@@ -3952,6 +3965,7 @@ namespace RubrikSecurityCloud.Types
             DeleteMosaicStoreInput,
             DeleteMssqlDbSnapshotsInput,
             DeleteMssqlLiveMountInput,
+            DeleteMvcProfilesInput,
             DeleteMysqldbInstanceInput,
             DeleteMysqldbInstanceLiveMountInput,
             DeleteNasSystemInput,
@@ -4340,6 +4354,7 @@ namespace RubrikSecurityCloud.Types
             HostRbsNetworkLimitsInput,
             HostRecoveryTargetInput,
             HostRegisterInput,
+            HostsForFailoverGroupFilter,
             HostsInfo,
             HostUpdateIdInput,
             HostUpdateInput,
@@ -4380,6 +4395,7 @@ namespace RubrikSecurityCloud.Types
             HypervUpdateMountConfigInput,
             HypervVirtualMachineSnapshotDownloadConfigInput,
             HypervVirtualMachineUpdateInput,
+            HypervVirtualSwitchMappingInput,
             IbmCosDetails,
             IbmCosDetailsInput,
             IdentityDataLocationsFilter,
@@ -5652,6 +5668,7 @@ namespace RubrikSecurityCloud.Types
             anomalyResults,
             anomalyResultsGrouped,
             archivalEntities,
+            archivalLocationsForFailoverGroup,
             archivalMigration,
             archivalPerObjectInfo,
             archivalReaderInfo,
@@ -5775,6 +5792,7 @@ namespace RubrikSecurityCloud.Types
             checkClusterRuSupport,
             checkLatestVersionMgmtAppExists,
             cloudAccount,
+            cloudAccountsGetListFilters,
             cloudClusterInstanceProperties,
             cloudClusterNodesInstanceProperties,
             cloudClusterRecoveryValidation,
@@ -5961,6 +5979,7 @@ namespace RubrikSecurityCloud.Types
             hostFailoverCluster,
             hostFailoverClusters,
             hostRbsNetworkLimit,
+            hostsForFailoverGroup,
             hostShare,
             hostShares,
             hypervCluster,
@@ -6774,6 +6793,7 @@ namespace RubrikSecurityCloud.Types
             deleteMosaicStore,
             deleteMssqlDbSnapshots,
             deleteMssqlLiveMount,
+            deleteMvcProfiles,
             deleteMysqldbInstanceLiveMount,
             deleteMysqlInstance,
             deleteNasSystem,
@@ -7438,6 +7458,7 @@ namespace RubrikSecurityCloud.Types
             ArchivalGroupQuerySortByField,
             ArchivalGroupTieringStatus,
             ArchivalGroupType,
+            ArchivalLocationIneligibilityReason,
             ArchivalLocationOperationType,
             ArchivalLocationQuerySortByField,
             ArchivalLocationStatus,
@@ -7590,6 +7611,7 @@ namespace RubrikSecurityCloud.Types
             CloudAccountAction,
             CloudAccountFeature,
             CloudAccountFilterFieldEnum,
+            CloudAccountFilterType,
             CloudAccountOperation,
             CloudAccountSortByFieldEnum,
             CloudAccountState,
@@ -7833,9 +7855,11 @@ namespace RubrikSecurityCloud.Types
             HierarchyFilterField,
             HierarchyObjectTypeEnum,
             HierarchySortByField,
+            HostConnectivityStatus,
             HostConnectivityStatusEnum,
             HostFailoverClusterRoot,
             HostFilterStatus,
+            HostIneligibilityReason,
             HostMakePrimaryRequestShouldSkipCertificateUpdateOnSecondaryClusters,
             HostRbsConnectionStatus,
             HostRbsStatus,
@@ -9703,6 +9727,8 @@ namespace RubrikSecurityCloud.Types
                     "AwsNativeS3SpecificSnapshot",
                     "AzureNativeStorageAccountSpecificSnapshot",
                     "AzureNativeVmSpecificSnapshot",
+                    "AzureSqlDatabaseDbSpecificSnapshot",
+                    "AzureSqlManagedInstanceDbSpecificSnapshot",
                     "GcpNativeCloudSqlSpecificSnapshot",
                     "GcpNativeGceInstanceSpecificSnapshot",
                     "O365SiteSpecificSnapshot",
@@ -10626,6 +10652,7 @@ namespace RubrikSecurityCloud.Types
             approveRcvPrivateEndpoint,
             approveTprRequest,
             archivalEntities,
+            archivalLocationsForFailoverGroup,
             archivalMigration,
             archivalPerObjectInfo,
             archivalReaderInfo,
@@ -10840,6 +10867,7 @@ namespace RubrikSecurityCloud.Types
             clearCloudNativeSqlServerBackupCredentials,
             clearHostRbsNetworkLimit,
             cloudAccount,
+            cloudAccountsGetListFilters,
             cloudClusterInstanceProperties,
             cloudClusterNodesInstanceProperties,
             cloudClusterRecoveryValidation,
@@ -11098,6 +11126,7 @@ namespace RubrikSecurityCloud.Types
             deleteMosaicStore,
             deleteMssqlDbSnapshots,
             deleteMssqlLiveMount,
+            deleteMvcProfiles,
             deleteMysqlInstance,
             deleteMysqldbInstanceLiveMount,
             deleteNasSystem,
@@ -11359,6 +11388,7 @@ namespace RubrikSecurityCloud.Types
             hostRbsNetworkLimit,
             hostShare,
             hostShares,
+            hostsForFailoverGroup,
             hypervCluster,
             hypervDeleteAllSnapshots,
             hypervHostAsyncRequestStatus,
@@ -14130,6 +14160,14 @@ namespace RubrikSecurityCloud.Types
                     )
                 },
                 {
+                    GqlRootFieldName.archivalLocationsForFailoverGroup,
+                    new RscOp(
+                        cmdletName: "New-RscQueryArchival",
+                        cmdletSwitchName: "LocationsForFailoverGroup",
+                        gqlRootFieldName: "archivalLocationsForFailoverGroup"
+                    )
+                },
+                {
                     GqlRootFieldName.archivalMigration,
                     new RscOp(
                         cmdletName: "New-RscQueryArchival",
@@ -15839,6 +15877,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryCloudAccount",
                         cmdletSwitchName: "CloudAccount",
                         gqlRootFieldName: "cloudAccount"
+                    )
+                },
+                {
+                    GqlRootFieldName.cloudAccountsGetListFilters,
+                    new RscOp(
+                        cmdletName: "New-RscQueryCloudAccount",
+                        cmdletSwitchName: "GetListFilters",
+                        gqlRootFieldName: "cloudAccountsGetListFilters"
                     )
                 },
                 {
@@ -17903,6 +17949,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscMutationMssql",
                         cmdletSwitchName: "DeleteLiveMount",
                         gqlRootFieldName: "deleteMssqlLiveMount"
+                    )
+                },
+                {
+                    GqlRootFieldName.deleteMvcProfiles,
+                    new RscOp(
+                        cmdletName: "New-RscMutationMisc",
+                        cmdletSwitchName: "DeleteMvcProfiles",
+                        gqlRootFieldName: "deleteMvcProfiles"
                     )
                 },
                 {
@@ -19991,6 +20045,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryHost",
                         cmdletSwitchName: "Shares",
                         gqlRootFieldName: "hostShares"
+                    )
+                },
+                {
+                    GqlRootFieldName.hostsForFailoverGroup,
+                    new RscOp(
+                        cmdletName: "New-RscQueryHost",
+                        cmdletSwitchName: "ForFailoverGroup",
+                        gqlRootFieldName: "hostsForFailoverGroup"
                     )
                 },
                 {
@@ -28441,6 +28503,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.archivalEntities
                 },
                 {
+                    "New-RscQueryArchival -Op LocationsForFailoverGroup",
+                    GqlRootFieldName.archivalLocationsForFailoverGroup
+                },
+                {
                     "New-RscQueryArchival -Op Migration",
                     GqlRootFieldName.archivalMigration
                 },
@@ -29295,6 +29361,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryCloudAccount -Op CloudAccount",
                     GqlRootFieldName.cloudAccount
+                },
+                {
+                    "New-RscQueryCloudAccount -Op GetListFilters",
+                    GqlRootFieldName.cloudAccountsGetListFilters
                 },
                 {
                     "New-RscQueryCluster -Op CloudClusterInstanceProperties",
@@ -30327,6 +30397,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscMutationMssql -Op DeleteLiveMount",
                     GqlRootFieldName.deleteMssqlLiveMount
+                },
+                {
+                    "New-RscMutationMisc -Op DeleteMvcProfiles",
+                    GqlRootFieldName.deleteMvcProfiles
                 },
                 {
                     "New-RscMutationMisc -Op DeleteMysqlInstance",
@@ -31371,6 +31445,10 @@ namespace RubrikSecurityCloud.Types
                 {
                     "New-RscQueryHost -Op Shares",
                     GqlRootFieldName.hostShares
+                },
+                {
+                    "New-RscQueryHost -Op ForFailoverGroup",
+                    GqlRootFieldName.hostsForFailoverGroup
                 },
                 {
                     "New-RscQueryHyperv -Op Cluster",
@@ -35382,6 +35460,10 @@ namespace RubrikSecurityCloud.Types
                         "archivalEntities",
                     }
                 },
+                {   "ArchivalLocationForFailoverGroupConnection", new List<string> {
+                        "archivalLocationsForFailoverGroup",
+                    }
+                },
                 {   "ArchivalMigrationInfo", new List<string> {
                         "archivalMigration",
                     }
@@ -36294,6 +36376,10 @@ namespace RubrikSecurityCloud.Types
                         "createAzureAccount",
                         "updateAwsAccount",
                         "updateAzureAccount",
+                    }
+                },
+                {   "CloudAccountsGetListFiltersReply", new List<string> {
+                        "cloudAccountsGetListFilters",
                     }
                 },
                 {   "CloudDirectAddSubdirBackupReply", new List<string> {
@@ -37390,6 +37476,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "HostFailoverClusterConnection", new List<string> {
                         "hostFailoverClusters",
+                    }
+                },
+                {   "HostForFailoverGroupConnection", new List<string> {
+                        "hostsForFailoverGroup",
                     }
                 },
                 {   "HostShare", new List<string> {
@@ -39784,6 +39874,7 @@ namespace RubrikSecurityCloud.Types
                         "deleteIntegrations",
                         "deleteIntelFeed",
                         "deleteIpWhitelistEntries",
+                        "deleteMvcProfiles",
                         "deleteReplicationPair",
                         "deleteScheduledReport",
                         "deleteSmbDomain",
@@ -40857,6 +40948,10 @@ namespace RubrikSecurityCloud.Types
                         "targets",
                     }
                 },
+                {   "ArchivalLocationsForFailoverGroupFilter", new List<string> {
+                        "archivalLocationsForFailoverGroup",
+                    }
+                },
                 {   "ArchivalPerObjectInfoSortByField", new List<string> {
                         "archivalPerObjectInfo",
                     }
@@ -41636,6 +41731,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "CloudAccountSortByFieldEnum", new List<string> {
                         "allCloudAccounts",
+                    }
+                },
+                {   "CloudAccountsGetListFiltersReq", new List<string> {
+                        "cloudAccountsGetListFilters",
                     }
                 },
                 {   "CloudDirectAddSubdirBackupInput", new List<string> {
@@ -42456,6 +42555,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "DeleteMssqlLiveMountInput", new List<string> {
                         "deleteMssqlLiveMount",
+                    }
+                },
+                {   "DeleteMvcProfilesInput", new List<string> {
+                        "deleteMvcProfiles",
                     }
                 },
                 {   "DeleteMysqldbInstanceInput", new List<string> {
@@ -43626,6 +43729,10 @@ namespace RubrikSecurityCloud.Types
                         "physicalHosts",
                     }
                 },
+                {   "HostsForFailoverGroupFilter", new List<string> {
+                        "hostsForFailoverGroup",
+                    }
+                },
                 {   "HypervDeleteAllSnapshotsInput", new List<string> {
                         "hypervDeleteAllSnapshots",
                     }
@@ -43711,6 +43818,7 @@ namespace RubrikSecurityCloud.Types
                         "anomalyResults",
                         "anomalyResultsGrouped",
                         "archivalEntities",
+                        "archivalLocationsForFailoverGroup",
                         "archivalPerObjectInfo",
                         "assignableGlobalCertificates",
                         "awsNativeAccounts",
@@ -43800,6 +43908,7 @@ namespace RubrikSecurityCloud.Types
                         "helpContentSnippets",
                         "hierarchySnappables",
                         "hostFailoverClusters",
+                        "hostsForFailoverGroup",
                         "hostShares",
                         "hypervMounts",
                         "hypervScvmms",
@@ -45614,6 +45723,7 @@ namespace RubrikSecurityCloud.Types
                         "anomalyResults",
                         "anomalyResultsGrouped",
                         "archivalEntities",
+                        "archivalLocationsForFailoverGroup",
                         "archivalPerObjectInfo",
                         "archiveCrawl",
                         "assignableGlobalCertificates",
@@ -45769,6 +45879,7 @@ namespace RubrikSecurityCloud.Types
                         "hostDiagnosis",
                         "hostFailoverClusters",
                         "hostRbsNetworkLimit",
+                        "hostsForFailoverGroup",
                         "hostShares",
                         "hypervMounts",
                         "hypervScvmms",
@@ -46216,6 +46327,7 @@ namespace RubrikSecurityCloud.Types
                         "allVpcsByRegionFromAws",
                         "allVpcsFromAws",
                         "anomalyResultOpt",
+                        "archivalLocationsForFailoverGroup",
                         "archivalMigration",
                         "archivalPerObjectInfo",
                         "archivalStorageUsage",
@@ -46345,6 +46457,7 @@ namespace RubrikSecurityCloud.Types
                         "hierarchyObject",
                         "hierarchyObjectRecoveryTarget",
                         "hostFailoverCluster",
+                        "hostsForFailoverGroup",
                         "hostShare",
                         "hypervCluster",
                         "hypervScvmm",
@@ -47980,6 +48093,7 @@ namespace RubrikSecurityCloud.Types
                         "allAgentDeploymentSettings",
                         "allAuthorizationsForObjects",
                         "allAzureCloudAccountMissingPermissions",
+                        "allAzureCloudAccountTenants",
                         "allAzureExocomputeConfigsInAccount",
                         "allAzureSubscriptionWithExocomputeMappings",
                         "allBackupThrottleSettings",
@@ -48145,6 +48259,7 @@ namespace RubrikSecurityCloud.Types
                 { "anomalyResultsGrouped", "AnomalyResultGroupedDataConnection"},
                 { "approveRcvPrivateEndpoint", "ApproveRcvPrivateEndpointReply"},
                 { "archivalEntities", "ArchivalEntityConnection"},
+                { "archivalLocationsForFailoverGroup", "ArchivalLocationForFailoverGroupConnection"},
                 { "archivalMigration", "ArchivalMigrationInfo"},
                 { "archivalPerObjectInfo", "ArchivalObjectInfoConnection"},
                 { "archiveK8sCluster", "ArchiveK8sClusterReply"},
@@ -48624,6 +48739,7 @@ namespace RubrikSecurityCloud.Types
                 { "createAzureAccount", "CloudAccount"},
                 { "updateAwsAccount", "CloudAccount"},
                 { "updateAzureAccount", "CloudAccount"},
+                { "cloudAccountsGetListFilters", "CloudAccountsGetListFiltersReply"},
                 { "cloudDirectAddSubdirBackup", "CloudDirectAddSubdirBackupReply"},
                 { "cloudDirectCheckSharePath", "CloudDirectCheckSharePathResp"},
                 { "cloudDirectGlobalSearch", "CloudDirectGlobalSearchResult"},
@@ -48925,6 +49041,7 @@ namespace RubrikSecurityCloud.Types
                 { "hostDiagnosis", "HostDiagnosisSummary"},
                 { "hostFailoverCluster", "HostFailoverCluster"},
                 { "hostFailoverClusters", "HostFailoverClusterConnection"},
+                { "hostsForFailoverGroup", "HostForFailoverGroupConnection"},
                 { "hostShare", "HostShare"},
                 { "hostShares", "HostShareConnection"},
                 { "vCenterHotAddBandwidth", "HotAddBandwidthInfo"},
@@ -49675,6 +49792,7 @@ namespace RubrikSecurityCloud.Types
                 { "deleteIntegrations", "Void"},
                 { "deleteIntelFeed", "Void"},
                 { "deleteIpWhitelistEntries", "Void"},
+                { "deleteMvcProfiles", "Void"},
                 { "deleteReplicationPair", "Void"},
                 { "deleteScheduledReport", "Void"},
                 { "deleteSmbDomain", "Void"},
@@ -50352,6 +50470,7 @@ namespace RubrikSecurityCloud.Types
                     "FinishMigration",
                     "HierarchyObjectRecoveryTarget",
                     "IsTotpMandatoryInTargetVersion",
+                    "LocationsForFailoverGroup",
                     "Migration",
                     "PauseTarget",
                     "PerObjectInfo",
@@ -50706,6 +50825,7 @@ namespace RubrikSecurityCloud.Types
                     "CloudAccounts",
                     "CurrentFeaturePermissions",
                     "ExocomputeMappings",
+                    "GetListFilters",
                     "IamPairsByAndLocation",
                     "LatestFeaturePermissions",
                     "ListCertificateUsages",
@@ -51029,6 +51149,7 @@ namespace RubrikSecurityCloud.Types
                     "ClearRbsNetworkLimit",
                     "Diagnosis",
                     "FailoverGroup",
+                    "ForFailoverGroup",
                     "PhysicalHost",
                     "PhysicalHosts",
                     "RbsNetworkLimit",
@@ -51315,6 +51436,7 @@ namespace RubrikSecurityCloud.Types
                     "DeleteIdentityProviderById",
                     "DeleteIntelFeed",
                     "DeleteIpWhitelistEntries",
+                    "DeleteMvcProfiles",
                     "DeleteMysqlInstance",
                     "DeleteMysqldbInstanceLiveMount",
                     "DeleteVolumeGroupMount",

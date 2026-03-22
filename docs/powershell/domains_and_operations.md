@@ -6,7 +6,7 @@
 > New-RscQuery -Gql <queryName>
 > New-RscMutation -Gql <mutationName>
 > ```
-> Use `Get-RscHelp <keyword>` to search for the GraphQL query name.
+> Use `Get-RscCmdlet <keyword>` to search for the GraphQL query name.
 > See the [developer manual](developer_manual.md) for details.
 
 This document lists every domain cmdlet and its replacement.
@@ -20,15 +20,15 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | [Account (9,14)](#account-domain) | [Cluster (46,23)](#cluster-domain) | [LDAP (3,4)](#ldap-domain) | [Oracle (18,20)](#oracle-domain) | [Snapshot (32,26)](#snapshot-domain) |
 | [Active Directory (5,5)](#active-directory-domain) | [Cross Account (1,4)](#cross-account-domain) | [Microsoft 365 (12,4)](#microsoft-365-domain) | [Policy (10,16)](#policy-domain) | [SNMP (1,1)](#snmp-domain) |
 | [Activity series (5,3)](#activity-series-domain) | [Db2 (11,13)](#db2-domain) | [Managed Volume (4,12)](#managed-volume-domain) | [Ransomware (9,2)](#ransomware-domain) | [Sonar (2,0)](#sonar-domain) |
-| [Archival (14,20)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (241,202)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
+| [Archival (15,20)](#archival-domain) | [Report Download (4,23)](#report-download-domain) | [Miscellaneous (241,203)](#miscellaneous-domain) | [RCS (0,4)](#rcs-domain) | [Storage Arrays (1,4)](#storage-arrays-domain) |
 | [AWS (36,34)](#aws-domain) | [Microsoft Exchange (7,4)](#microsoft-exchange-domain) | [Mongo (11,13)](#mongo-domain) | [RCV (5,7)](#rcv-domain) | [Syslog (1,4)](#syslog-domain) |
 | [AWS Native (22,8)](#aws-native-domain) | [Failover Cluster (5,8)](#failover-cluster-domain) | [Mongo DB (8,6)](#mongo-db-domain) | [Replication (7,6)](#replication-domain) | [Tape (0,3)](#tape-domain) |
 | [Azure (61,46)](#azure-domain) | [Fileset (6,10)](#fileset-domain) | [Mosaic (4,3)](#mosaic-domain) | [Report (18,8)](#report-domain) | [Threat (18,7)](#threat-domain) |
 | [Azure Native (26,9)](#azure-native-domain) | [Google Cloud Platform (22,14)](#google-cloud-platform-domain) | [Microsoft SQL Server (20,25)](#microsoft-sql-server-domain) | [SAP HANA (8,15)](#sap-hana-domain) | [VMware vSphere vCenter (11,7)](#vmware-vsphere-vcenter-domain) |
 | [Azure Office365 (11,1)](#azure-office365-domain) | [Google Cloud Platform Native (8,5)](#google-cloud-platform-native-domain) | [NAS (12,10)](#nas-domain) | [Service Account (2,4)](#service-account-domain) | [VMware (4,1)](#vmware-domain) |
-| [Cassandra (8,5)](#cassandra-domain) | [Host (8,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
+| [Cassandra (8,5)](#cassandra-domain) | [Host (9,10)](#host-domain) | [NAS Cloud Direct (7,0)](#nas-cloud-direct-domain) | [Sharepoint (8,1)](#sharepoint-domain) | [VMware vSphere (26,12)](#vmware-vsphere-domain) |
 | [Certificates (11,12)](#certificates-domain) | [Microsoft Hyper-V (16,26)](#microsoft-hyper-v-domain) | [NFS (0,3)](#nfs-domain) | [SLA (15,12)](#sla-domain) | [VMware vSphere VM (8,29)](#vmware-vsphere-vm-domain) |
-| [Cloud Account (8,4)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,7)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
+| [Cloud Account (9,4)](#cloud-account-domain) | [Integration (2,7)](#integration-domain) | [Nutanix (21,30)](#nutanix-domain) | [SMB (2,7)](#smb-domain) | [Webhook (5,12)](#webhook-domain) |
 | [Cloud Native (22,15)](#cloud-native-domain) | [Kubernetes (13,24)](#kubernetes-domain) | [Office 365 (42,35)](#office-365-domain) | [Snappable (13,0)](#snappable-domain) |  |
 
 ## Account domain
@@ -125,6 +125,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscQueryArchival -Operation FeaturePermissionForDataCenterRoleBased` | `New-RscQuery -Gql featurePermissionForDataCenterRoleBasedArchival` | [featurePermissionForDataCenterRoleBasedArchival](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryArchival -Operation HierarchyObjectRecoveryTarget` | `New-RscQuery -Gql hierarchyObjectRecoveryTarget` | [hierarchyObjectRecoveryTarget](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryArchival -Operation IsTotpMandatoryInTargetVersion` | `New-RscQuery -Gql isTotpMandatoryInTargetVersion` | [isTotpMandatoryInTargetVersion](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryArchival -Operation LocationsForFailoverGroup` | `New-RscQuery -Gql archivalLocationsForFailoverGroup` | [archivalLocationsForFailoverGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryArchival -Operation Migration` | `New-RscQuery -Gql archivalMigration` | [archivalMigration](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryArchival -Operation PerObjectInfo` | `New-RscQuery -Gql archivalPerObjectInfo` | [archivalPerObjectInfo](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryArchival -Operation RcsLocationsConsumptionStats` | `New-RscQuery -Gql rcsArchivalLocationsConsumptionStats` | [rcsArchivalLocationsConsumptionStats](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -560,6 +561,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscQueryCloudAccount -Operation CloudAccounts` | `New-RscQuery -Gql allCloudAccounts` | [allCloudAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryCloudAccount -Operation CurrentFeaturePermissions` | `New-RscQuery -Gql allCurrentFeaturePermissionsForCloudAccounts` | [allCurrentFeaturePermissionsForCloudAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryCloudAccount -Operation ExocomputeMappings` | `New-RscQuery -Gql allCloudAccountExocomputeMappings` | [allCloudAccountExocomputeMappings](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryCloudAccount -Operation GetListFilters` | `New-RscQuery -Gql cloudAccountsGetListFilters` | [cloudAccountsGetListFilters](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryCloudAccount -Operation IamPairsByAndLocation` | `New-RscQuery -Gql allIamPairsByCloudAccountAndLocation` | [allIamPairsByCloudAccountAndLocation](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryCloudAccount -Operation LatestFeaturePermissions` | `New-RscQuery -Gql allLatestFeaturePermissionsForCloudAccounts` | [allLatestFeaturePermissionsForCloudAccounts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryCloudAccount -Operation ListCertificateUsages` | `New-RscQuery -Gql listCertificateUsagesForCloudAccount` | [listCertificateUsagesForCloudAccount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -975,6 +977,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | --- | --- | --- |
 | `New-RscQueryHost -Operation Diagnosis` | `New-RscQuery -Gql hostDiagnosis` | [hostDiagnosis](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryHost -Operation FailoverGroup` | `New-RscQuery -Gql failoverGroupHosts` | [failoverGroupHosts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscQueryHost -Operation ForFailoverGroup` | `New-RscQuery -Gql hostsForFailoverGroup` | [hostsForFailoverGroup](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryHost -Operation PhysicalHost` | `New-RscQuery -Gql physicalHost` | [physicalHost](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryHost -Operation PhysicalHosts` | `New-RscQuery -Gql physicalHosts` | [physicalHosts](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscQueryHost -Operation RbsNetworkLimit` | `New-RscQuery -Gql hostRbsNetworkLimit` | [hostRbsNetworkLimit](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
@@ -1520,6 +1523,7 @@ Numbers in parentheses indicate the number of queries and mutations in the domai
 | `New-RscMutationMisc -Operation DeleteIdentityProviderById` | `New-RscMutation -Gql deleteIdentityProviderById` | [deleteIdentityProviderById](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation DeleteIntelFeed` | `New-RscMutation -Gql deleteIntelFeed` | [deleteIntelFeed](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation DeleteIpWhitelistEntries` | `New-RscMutation -Gql deleteIpWhitelistEntries` | [deleteIpWhitelistEntries](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
+| `New-RscMutationMisc -Operation DeleteMvcProfiles` | `New-RscMutation -Gql deleteMvcProfiles` | [deleteMvcProfiles](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation DeleteMysqlInstance` | `New-RscMutation -Gql deleteMysqlInstance` | [deleteMysqlInstance](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation DeleteMysqldbInstanceLiveMount` | `New-RscMutation -Gql deleteMysqldbInstanceLiveMount` | [deleteMysqldbInstanceLiveMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |
 | `New-RscMutationMisc -Operation DeleteVolumeGroupMount` | `New-RscMutation -Gql deleteVolumeGroupMount` | [deleteVolumeGroupMount](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference/query.doc.html) |

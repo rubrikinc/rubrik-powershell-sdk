@@ -92,6 +92,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ntpServers")]
         public List<System.String>? NtpServers { get; set; }
 
+        //      C# -> System.Boolean? IsAzResilient
+        // GraphQL -> isAzResilient: Boolean (scalar)
+        [JsonProperty("isAzResilient")]
+        public System.Boolean? IsAzResilient { get; set; }
+
 
         #endregion
 

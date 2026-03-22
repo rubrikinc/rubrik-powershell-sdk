@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuids")]
         public List<System.String>? ClusterUuids { get; set; }
 
+        //      C# -> System.String? MinSoftwareVersion
+        // GraphQL -> minSoftwareVersion: String (scalar)
+        [JsonProperty("minSoftwareVersion")]
+        public System.String? MinSoftwareVersion { get; set; }
+
 
         #endregion
 

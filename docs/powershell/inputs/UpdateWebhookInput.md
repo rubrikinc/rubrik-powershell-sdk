@@ -25,3 +25,5 @@ Webhook configuration to update.
   - The URL endpoint to the receiving application.
 - shouldSendTestEvent: System.Boolean
   - Specifies whether a test event will be sent upon update.
+- updateAuthInfo: System.Boolean
+  - Specifies whether the authentication information was modified and should be updated.

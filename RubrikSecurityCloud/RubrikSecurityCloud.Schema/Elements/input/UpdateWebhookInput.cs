@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldSendTestEvent")]
         public System.Boolean? ShouldSendTestEvent { get; set; }
 
+        //      C# -> System.Boolean? UpdateAuthInfo
+        // GraphQL -> updateAuthInfo: Boolean (scalar)
+        [JsonProperty("updateAuthInfo")]
+        public System.Boolean? UpdateAuthInfo { get; set; }
+
 
         #endregion
 

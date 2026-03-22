@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,
 
+        [EnumMember(Value = "CLOUD_OVERLAP_OBJECTS")]
+        CLOUD_OVERLAP_OBJECTS,
+
         [EnumMember(Value = "CLUSTERS")]
         CLUSTERS,
 

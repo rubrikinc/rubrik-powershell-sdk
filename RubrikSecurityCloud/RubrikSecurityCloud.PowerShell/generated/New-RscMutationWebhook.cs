@@ -649,6 +649,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	url = $someString
     /// 	# OPTIONAL
     /// 	shouldSendTestEvent = $someBoolean
+    /// 	# OPTIONAL
+    /// 	updateAuthInfo = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -806,6 +808,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		serviceAccountId = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	updateAuthInfo = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1521,6 +1525,8 @@ $query.Var.input = @{
 	url = $someString
 	# OPTIONAL
 	shouldSendTestEvent = $someBoolean
+	# OPTIONAL
+	updateAuthInfo = $someBoolean
 }"
             );
         }
@@ -1662,6 +1668,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		serviceAccountId = $someString
 	}
+	# OPTIONAL
+	updateAuthInfo = $someBoolean
 }"
             );
         }

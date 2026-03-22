@@ -9,6 +9,10 @@ Response object for list store on mosaic.
   - UUID of Mosaic Cluster.
 - storageLocationName: System.String
   - Name of Storage Location.
+- storeConnectionStatus: MosaicStoreConnectionStatus
+  - Connection Status of Mosaic with Store.
+- storeType: MosaicStoreType
+  - Type of Mosaic Store.
 - geographicLocation: System.String
   - Geographic Location of Store.
 - backupCount: System.Int32
@@ -17,7 +21,3 @@ Response object for list store on mosaic.
   - Space consumed on storage location.
 - connectionParameters: MosaicStoreConnectionParameters
   - Various parameters used for connecting with store.
-- storeConnectionStatus: MosaicStoreConnectionStatus
-  - Connection Status of Mosaic with Store.
-- storeType: MosaicStoreType
-  - Type of Mosaic Store.

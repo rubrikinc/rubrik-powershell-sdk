@@ -110,6 +110,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					removeNetworkDevices = $someBoolean
     /// 					# OPTIONAL
     /// 					vmName = $someString
+    /// 					# OPTIONAL
+    /// 					keepMacAddress = $someBoolean
+    /// 					# OPTIONAL
+    /// 					virtualSwitchMappings = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							macAddress = $someString
+    /// 							# REQUIRED
+    /// 							switchId = $someString
+    /// 							# REQUIRED
+    /// 							adapterName = $someString
+    /// 						}
+    /// 					)
     /// 				}
     /// 				# OPTIONAL
     /// 				snapshotAfterDate = $someDateTime
@@ -629,6 +642,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
     /// 		# OPTIONAL
+    /// 		shouldUseStrongEncryption = $someBoolean
+    /// 		# OPTIONAL
     /// 		zipPassword = $someString
     /// 	}
     /// 	# REQUIRED
@@ -678,6 +693,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		removeNetworkDevices = $someBoolean
     /// 		# OPTIONAL
     /// 		vmName = $someString
+    /// 		# OPTIONAL
+    /// 		keepMacAddress = $someBoolean
+    /// 		# OPTIONAL
+    /// 		virtualSwitchMappings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				macAddress = $someString
+    /// 				# REQUIRED
+    /// 				switchId = $someString
+    /// 				# REQUIRED
+    /// 				adapterName = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1561,6 +1589,19 @@ $query.Var.input = @{
 					removeNetworkDevices = $someBoolean
 					# OPTIONAL
 					vmName = $someString
+					# OPTIONAL
+					keepMacAddress = $someBoolean
+					# OPTIONAL
+					virtualSwitchMappings = @(
+						@{
+							# REQUIRED
+							macAddress = $someString
+							# REQUIRED
+							switchId = $someString
+							# REQUIRED
+							adapterName = $someString
+						}
+					)
 				}
 				# OPTIONAL
 				snapshotAfterDate = $someDateTime
@@ -1984,6 +2025,8 @@ $query.Var.input = @{
 			isLegalHoldDownload = $someBoolean
 		}
 		# OPTIONAL
+		shouldUseStrongEncryption = $someBoolean
+		# OPTIONAL
 		zipPassword = $someString
 	}
 	# REQUIRED
@@ -2025,6 +2068,19 @@ $query.Var.input = @{
 		removeNetworkDevices = $someBoolean
 		# OPTIONAL
 		vmName = $someString
+		# OPTIONAL
+		keepMacAddress = $someBoolean
+		# OPTIONAL
+		virtualSwitchMappings = @(
+			@{
+				# REQUIRED
+				macAddress = $someString
+				# REQUIRED
+				switchId = $someString
+				# REQUIRED
+				adapterName = $someString
+			}
+		)
 	}
 	# REQUIRED
 	id = $someString

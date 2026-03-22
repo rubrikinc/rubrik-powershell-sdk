@@ -20,3 +20,9 @@ v5.0-v6.0: Determines whether to remove the network interfaces from the mounted 
 v7.0+: Specifies whether to remove the network interfaces from the exported virtual machine. When the value is 'true' all the network interfaces are removed. The default value is 'true'.
 - vmName: System.String
   - Name of the new virtual machine being exported.
+- keepMacAddress: System.Boolean
+  - Supported in v9.6
+Whether to preserve the original MAC addresses of network adapters.
+- virtualSwitchMappings: list of HypervVirtualSwitchMappingInputs
+  - Supported in v9.6
+Mapping of network adapter names to virtual switches and MAC addresses.

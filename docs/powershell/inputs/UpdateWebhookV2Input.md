@@ -5,3 +5,5 @@ The input values for updating the webhook configuration.
   - The ID of the webhook to be updated.
 - payload: WebhookPayload
   - Webhook configuration information.
+- updateAuthInfo: System.Boolean
+  - Specifies whether the authentication information was modified and should be updated.

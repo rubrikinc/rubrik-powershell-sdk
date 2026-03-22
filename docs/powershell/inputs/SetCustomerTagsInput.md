@@ -10,3 +10,5 @@ Input to set customer-specified tags for a particular cloud type.
            For example, {"Application":"Rubrik", "Environment":"Dev", "CreatedDate":"10/07/2023"}.
 - shouldOverrideResourceTags: System.Boolean
   - Specifies whether customer-specified tags should override resource tags. By default, this is true.
+- excludedTags: list of System.Strings
+  - List of exclusion patterns for tag filtering. Tags matching these prefix-based patterns are excluded from resources.

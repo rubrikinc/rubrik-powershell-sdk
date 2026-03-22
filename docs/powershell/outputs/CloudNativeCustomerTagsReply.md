@@ -5,3 +5,5 @@ All customer-specified tags and their associated value, determining whether reso
   - List of customer-specified tags applied to all resources associated with a specific cloud type.
 - shouldOverrideResourceTags: System.Boolean
   - Specifies whether customer-specified tags should override resource tags.
+- excludedTags: list of System.Strings
+  - List of exclusion patterns for tag filtering. Tags matching these prefix-based patterns are excluded from resources.

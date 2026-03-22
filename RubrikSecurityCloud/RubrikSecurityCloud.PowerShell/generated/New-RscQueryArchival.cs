@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 14
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'Archival' API domain:
-    /// Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationsForFailoverGroup, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 14 operations
+    /// There are 15 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationsForFailoverGroup, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -251,6 +251,55 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LocationsForFailoverGroup operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: LocationsForFailoverGroup
+    /// 
+    /// $query = New-RscQueryArchival -Operation LocationsForFailoverGroup
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.primaryClusterId = $someString
+    /// # REQUIRED
+    /// $query.Var.secondaryClusterId = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	locationType = @(
+    /// 		$someTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TargetType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	locationStatus = @(
+    /// 		$someArchivalLocationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationStatus]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalLocationForFailoverGroupConnection
     /// 
     /// 
     /// 
@@ -614,6 +663,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FeaturePermissionForDataCenterRoleBased",
                 "HierarchyObjectRecoveryTarget",
                 "IsTotpMandatoryInTargetVersion",
+                "LocationsForFailoverGroup",
                 "Migration",
                 "PerObjectInfo",
                 "RcsLocationsConsumptionStats",
@@ -652,6 +702,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsTotpMandatoryInTargetVersion":
                         this.ProcessRecord_IsTotpMandatoryInTargetVersion();
+                        break;
+                    case "LocationsForFailoverGroup":
+                        this.ProcessRecord_LocationsForFailoverGroup();
                         break;
                     case "Migration":
                         this.ProcessRecord_Migration();
@@ -733,6 +786,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTotpMandatoryInTargetVersion";
             // Create new graphql operation isTotpMandatoryInTargetVersion
             InitQueryIsTotpMandatoryInTargetVersion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalLocationsForFailoverGroup.
+        internal void ProcessRecord_LocationsForFailoverGroup()
+        {
+            this._logger.name += " -LocationsForFailoverGroup";
+            // Create new graphql operation archivalLocationsForFailoverGroup
+            InitQueryArchivalLocationsForFailoverGroup();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -982,6 +1044,61 @@ $query.Var.fid = $someString"
                 Query.IsTotpMandatoryInTargetVersionFieldSpec,
                 @"# REQUIRED
 $query.Var.version = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalLocationsForFailoverGroup(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     primaryClusterId: UUID!
+        //     secondaryClusterId: UUID!
+        //     filter: ArchivalLocationsForFailoverGroupFilter
+        //   ): ArchivalLocationForFailoverGroupConnection!
+        internal void InitQueryArchivalLocationsForFailoverGroup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("primaryClusterId", "UUID!"),
+                Tuple.Create("secondaryClusterId", "UUID!"),
+                Tuple.Create("filter", "ArchivalLocationsForFailoverGroupFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalLocationsForFailoverGroup",
+                "($first: Int,$after: String,$last: Int,$before: String,$primaryClusterId: UUID!,$secondaryClusterId: UUID!,$filter: ArchivalLocationsForFailoverGroupFilter)",
+                "ArchivalLocationForFailoverGroupConnection",
+                Query.ArchivalLocationsForFailoverGroup,
+                Query.ArchivalLocationsForFailoverGroupFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.primaryClusterId = $someString
+# REQUIRED
+$query.Var.secondaryClusterId = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	locationType = @(
+		$someTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TargetType]) for enum values.
+	)
+	# OPTIONAL
+	locationStatus = @(
+		$someArchivalLocationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ArchivalLocationStatus]) for enum values.
+	)
+}"
             );
         }
 

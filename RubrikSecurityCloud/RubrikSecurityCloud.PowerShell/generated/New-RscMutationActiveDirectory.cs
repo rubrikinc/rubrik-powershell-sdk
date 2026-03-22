@@ -96,6 +96,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		shouldUseStrongEncryption = $someBoolean
+    /// 		# OPTIONAL
     /// 		zipPassword = $someString
     /// 		# REQUIRED
     /// 		paths = @(
@@ -472,6 +474,8 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		shouldUseStrongEncryption = $someBoolean
 		# OPTIONAL
 		zipPassword = $someString
 		# REQUIRED

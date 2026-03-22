@@ -1992,7 +1992,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllAzureCloudAccountTenants(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\nazureTenants: $azureTenants\nstatus: $status\naggregateByTenant: $aggregateByTenant\n)";
+            string args = "\n(\nfeatures: $features\nfeature: $feature\nincludeSubscriptionDetails: $includeSubscriptionDetails\nazureTenants: $azureTenants\nstatus: $status\naggregateByTenant: $aggregateByTenant\nmanagementGroupCustomerIds: $managementGroupCustomerIds\n)";
             return "allAzureCloudAccountTenants" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllAzureCloudAccountTenantsFieldSpec(AutofieldContext? ec=null)
@@ -4071,6 +4071,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ArchivalEntityConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ArchivalLocationForFailoverGroupConnection? ArchivalLocationsForFailoverGroup
+        // GraphQL -> archivalLocationsForFailoverGroup: ArchivalLocationForFailoverGroupConnection! (type)
+        public static string ArchivalLocationsForFailoverGroup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nprimaryClusterId: $primaryClusterId\nsecondaryClusterId: $secondaryClusterId\nfilter: $filter\n)";
+            return "archivalLocationsForFailoverGroup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ArchivalLocationsForFailoverGroupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ArchivalLocationForFailoverGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -6213,6 +6231,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CheckLatestVersionMgmtAppExistsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudAccountsGetListFiltersReply? CloudAccountsGetListFilters
+        // GraphQL -> cloudAccountsGetListFilters: CloudAccountsGetListFiltersReply! (type)
+        public static string CloudAccountsGetListFilters(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "cloudAccountsGetListFilters" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudAccountsGetListFiltersFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudAccountsGetListFiltersReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -9399,6 +9435,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new HostShareConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> HostForFailoverGroupConnection? HostsForFailoverGroup
+        // GraphQL -> hostsForFailoverGroup: HostForFailoverGroupConnection! (type)
+        public static string HostsForFailoverGroup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nprimaryClusterId: $primaryClusterId\nsecondaryClusterId: $secondaryClusterId\nfilter: $filter\n)";
+            return "hostsForFailoverGroup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object HostsForFailoverGroupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new HostForFailoverGroupConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

@@ -738,6 +738,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	ntpServers = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAzResilient = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2152,6 +2154,8 @@ $query.Var.input = @{
 	ntpServers = @(
 		$someString
 	)
+	# OPTIONAL
+	isAzResilient = $someBoolean
 }"
             );
         }

@@ -15,3 +15,5 @@ Active Directory workload related app metadata for a snapshot.
   - Indicates whether UMD (Unified Metadata) was created for this snapshot.
 - cdmVersion: System.String
   - CDM version of the cluster at the time of the snapshot.
+- stats: ActiveDirectorySnapshotStats
+  - Stats related to the Active Directory snapshot (backed by managed volume).

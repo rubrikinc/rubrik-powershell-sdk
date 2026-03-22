@@ -44,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("orgs")]
         public List<System.String>? Orgs { get; set; }
 
+        //      C# -> System.String? ReqIdPartial
+        // GraphQL -> reqIdPartial: String (scalar)
+        [JsonProperty("reqIdPartial")]
+        public System.String? ReqIdPartial { get; set; }
+
 
         #endregion
 

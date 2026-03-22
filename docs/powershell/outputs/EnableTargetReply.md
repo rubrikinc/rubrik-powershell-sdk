@@ -1,5 +1,5 @@
 ### EnableTargetReply
-Archival location enable result.
+Archival location enable/disable result.
 
 - locationId: System.String
   - Rubrik Security Cloud managed location ID.

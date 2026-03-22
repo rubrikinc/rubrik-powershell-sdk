@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
 
+        //      C# -> List<Filter>? HierarchyFilters
+        // GraphQL -> hierarchyFilters: [Filter!] (input)
+        [JsonProperty("hierarchyFilters")]
+        public List<Filter>? HierarchyFilters { get; set; }
+
 
         #endregion
 

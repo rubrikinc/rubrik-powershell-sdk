@@ -38,7 +38,7 @@ Paginated list of MongoDB databases.
 ### getmissedcollectionsetsnapshots
 Retrieve information on the missed snapshots for a MongoDB collection set
 
-Supported in v9.6
+Supported in v9.5+
 Retrieve the time of day when the snapshots were missed for a MongoDB collection set.
 
 - There is a single argument of type GetMissedMongoCollectionSetSnapshotsInput.
@@ -46,7 +46,7 @@ Retrieve the time of day when the snapshots were missed for a MongoDB collection
 ### getmissedopsmanagermanagedsourcesnapshots
 Retrieve information on the missed snapshots for a MongoDB source managed by Ops Manager
 
-Supported in v9.6
+Supported in v9.5+
 Retrieve the time of day when the snapshots were missed for a MongoDB source managed by Ops Manager.
 
 - There is a single argument of type GetMissedOpsManagerManagedMongoSourceSnapshotsInput.

@@ -230,3 +230,4 @@ Enum representing all the possible object types which generate events.
 - PRINCIPAL_DFS_NAMESPACE_V2 - DFS Namespace V2 principal type.
 - PRINCIPAL_DFS_LINK - DFS Link principal type.
 - AGENT_CLOUD_POLICY - Agent Cloud policy object.
+- PRINCIPAL_DNS_ZONE - DNS Zone principal type.

@@ -122,13 +122,14 @@ Retrieves the details of the Azure tenant and all the subscriptions of the tenan
 ### cloudaccounttenants
 Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, subscription name, and tenant domain names.
 
-- There are 6 arguments.
+- There are 7 arguments.
     - features - list of CloudAccountFeatures: Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
     - feature - CloudAccountFeature: A cloud account feature of Rubrik Security Cloud.
     - includeSubscriptionDetails - System.Boolean: Specifies whether the details about the subscriptions in the tenants are included in the response or not.
     - azureTenants - list of System.Strings: List of Azure tenants domain names.
     - status - list of CloudAccountStatuss: List of cloud account status filters.
     - aggregateByTenant - System.Boolean: When true, returns one tenant per actual tenant (deduplicated by tenant_id). When false or not set (default), returns one tenant per (tenant, feature) pair (legacy behavior). Use this when you need accurate subscription counts and don't want duplicate tenants.
+    - managementGroupCustomerIds - list of System.Strings: Filter subscriptions by management group customer IDs. When provided, only subscriptions belonging to these management groups are returned. Empty or not set means no filter (all subscriptions included).
 - Returns list of AzureCloudAccountTenants.
 ### cloudaccounttenantwithexoconfigs
 Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.

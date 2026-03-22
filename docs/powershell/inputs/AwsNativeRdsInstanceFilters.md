@@ -33,3 +33,5 @@ Filters for list of AWS RDS instances.
   - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- hierarchyFilters: list of Filters
+  - Filter by hierarchy.

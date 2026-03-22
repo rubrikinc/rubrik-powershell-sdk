@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osDetailsOpt")]
         public OsDetails? OsDetailsOpt { get; set; }
 
+        //      C# -> ActiveDirectorySnapshotStats? Stats
+        // GraphQL -> stats: ActiveDirectorySnapshotStats (type)
+        [JsonProperty("stats")]
+        public ActiveDirectorySnapshotStats? Stats { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         WindowsDiskLayoutDetails? DiskLayoutDetailsOpt = null,
         NtdsDatabaseConsistency? NtdsDatabaseConsistencyOpt = null,
         ActiveDirectoryObjectsCount? ObjectsCount = null,
-        OsDetails? OsDetailsOpt = null
+        OsDetails? OsDetailsOpt = null,
+        ActiveDirectorySnapshotStats? Stats = null
     ) 
     {
         if ( CdmVersion != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OsDetailsOpt != null ) {
             this.OsDetailsOpt = OsDetailsOpt;
+        }
+        if ( Stats != null ) {
+            this.Stats = Stats;
         }
         return this;
     }
@@ -181,6 +190,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "osDetailsOpt" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ActiveDirectorySnapshotStats? Stats
+        // GraphQL -> stats: ActiveDirectorySnapshotStats (type)
+        if (this.Stats != null) {
+            var fspec = this.Stats.AsFieldSpec(conf.Child("stats"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "stats" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -317,6 +338,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsDetailsOpt != null && ec.Excludes("osDetailsOpt",false))
         {
             this.OsDetailsOpt = null;
+        }
+        //      C# -> ActiveDirectorySnapshotStats? Stats
+        // GraphQL -> stats: ActiveDirectorySnapshotStats (type)
+        if (ec.Includes("stats",false))
+        {
+            if(this.Stats == null) {
+
+                this.Stats = new ActiveDirectorySnapshotStats();
+                this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+
+            } else {
+
+                this.Stats.ApplyExploratoryFieldSpec(ec.NewChild("stats"));
+
+            }
+        }
+        else if (this.Stats != null && ec.Excludes("stats",false))
+        {
+            this.Stats = null;
         }
     }
 

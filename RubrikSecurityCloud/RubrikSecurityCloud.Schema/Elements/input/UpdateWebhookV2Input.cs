@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("payload")]
         public WebhookPayload? Payload { get; set; }
 
+        //      C# -> System.Boolean? UpdateAuthInfo
+        // GraphQL -> updateAuthInfo: Boolean (scalar)
+        [JsonProperty("updateAuthInfo")]
+        public System.Boolean? UpdateAuthInfo { get; set; }
+
 
         #endregion
 

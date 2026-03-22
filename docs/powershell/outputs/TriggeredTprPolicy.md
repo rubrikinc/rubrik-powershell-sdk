@@ -3,6 +3,10 @@ Policy triggered by a TPR request.
 
 - name: System.String
   - Name of the policy.
+- id: System.String
+  - ID of the policy.
+- status: TprPolicyStatus
+  - Status of the policy.
 - archived: System.Boolean
   - Specifies whether the policy is archived.
 - quorumRequirement: System.Int32
@@ -11,7 +15,3 @@ Policy triggered by a TPR request.
   - IDs of the users who have approved the request for the triggered policy.
 - orgName: System.String
   - Name of the organization the policy is in.
-- status: TprPolicyStatus
-  - Status of the policy.
-- id: System.String
-  - ID of the policy.

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? ShouldUseStrongEncryption
+        // GraphQL -> shouldUseStrongEncryption: Boolean (scalar)
+        [JsonProperty("shouldUseStrongEncryption")]
+        public System.Boolean? ShouldUseStrongEncryption { get; set; }
+
         //      C# -> System.String? ZipPassword
         // GraphQL -> zipPassword: String (scalar)
         [JsonProperty("zipPassword")]

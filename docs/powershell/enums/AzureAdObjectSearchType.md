@@ -23,5 +23,6 @@ Entra ID object search keyword names.
 - GROUP_TYPE - Group type of the group.
 - TERMS_OF_USE_NAME - Name of the terms of use.
 - NOTIFICATION_TEMPLATE_NAME - Name of the notification template.
+- COMPLIANCE_POLICY_TYPE - Type of the compliance policy.
 - CONDITIONAL_ACCESS_POLICY_NAME - Name of the conditional access policy.
 - ASSIGNMENT_FILTER_NAME - Name of the assignment filter.

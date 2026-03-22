@@ -804,6 +804,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # OPTIONAL
     /// $query.Var.aggregateByTenant = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.managementGroupCustomerIds = @(
+    /// 	$someString
+    /// )
     /// 
     /// # Execute the query
     /// 
@@ -4168,6 +4172,7 @@ $query.Var.subscriptionIdsFilter = @(
         //     azureTenants: [String!]
         //     status: [CloudAccountStatus!]
         //     aggregateByTenant: Boolean
+        //     managementGroupCustomerIds: [UUID!]
         //   ): [AzureCloudAccountTenant!]!
         internal void InitQueryAllAzureCloudAccountTenants()
         {
@@ -4178,12 +4183,13 @@ $query.Var.subscriptionIdsFilter = @(
                 Tuple.Create("azureTenants", "[String!]"),
                 Tuple.Create("status", "[CloudAccountStatus!]"),
                 Tuple.Create("aggregateByTenant", "Boolean"),
+                Tuple.Create("managementGroupCustomerIds", "[UUID!]"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllAzureCloudAccountTenants",
-                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!,$azureTenants: [String!],$status: [CloudAccountStatus!],$aggregateByTenant: Boolean)",
+                "($features: [CloudAccountFeature!],$feature: CloudAccountFeature!,$includeSubscriptionDetails: Boolean!,$azureTenants: [String!],$status: [CloudAccountStatus!],$aggregateByTenant: Boolean,$managementGroupCustomerIds: [UUID!])",
                 "List<AzureCloudAccountTenant>",
                 Query.AllAzureCloudAccountTenants,
                 Query.AllAzureCloudAccountTenantsFieldSpec,
@@ -4204,7 +4210,11 @@ $query.Var.status = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
 )
 # OPTIONAL
-$query.Var.aggregateByTenant = $someBoolean"
+$query.Var.aggregateByTenant = $someBoolean
+# OPTIONAL
+$query.Var.managementGroupCustomerIds = @(
+	$someString
+)"
             );
         }
 

@@ -123,7 +123,9 @@ Authorized operations on an object.
 - MANAGE_CDP_IO_FILTER - The operation to manage CDP IO Filter.
 - VIEW_CERTIFICATE - View certificates and certificate signing requests.
 - MANAGE_CERTIFICATE - Manage certificates and certificate signing requests.
-- ALLOW_SUPPORT_USER_SESSIONS
+- ALLOW_SUPPORT_USER_SESSIONS - Allow Rubrik Support to impersonate any user.
+- ALLOW_OWN_SUPPORT_USER_SESSIONS - Allow Rubrik Support to impersonate himself/herself.
+- VIEW_SUPPORT_USER_SESSIONS - View Rubrik Support user sessions.
 - VIEW_ORCHESTRATED_RECOVERY_APP - View Orchestrated Recovery application.
 - MANAGE_RECOVERY_PLAN - Manage Recovery Plans within Orchestrated Recovery.
 - MANAGE_ORCHESTRATED_RECOVERY - Manage recoveries within Orchestrated Recovery.
@@ -242,6 +244,9 @@ Authorized operations on an object.
 - UPLOAD_SNAPSHOT_ON_DEMAND - Upload a snapshot to an archival location on demand.
 - VIEW_CDM_ADMIN - View cluster local administrator user login information.
 - MANAGE_CDM_ADMIN - Manage cluster local administrator user credentials.
+- CREATE_CLOUD_NATIVE_APPLICATION - Create a cloud native application.
+- EDIT_CLOUD_NATIVE_APPLICATION - Edit a cloud native application.
+- DELETE_CLOUD_NATIVE_APPLICATION - Delete a cloud native application.
 - CATEGORY_VIEW_DATA_SOURCE
 - CATEGORY_MANAGE_DATA_SOURCE
 - CATEGORY_PROTECTION

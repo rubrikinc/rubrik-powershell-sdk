@@ -60,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT")]
         AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT,
 
+        [EnumMember(Value = "AZURE_DEVOPS_REPO_SIZE")]
+        AZURE_DEVOPS_REPO_SIZE,
+
         [EnumMember(Value = "AZURE_DISK_ATTACHED_VM")]
         AZURE_DISK_ATTACHED_VM,
 
@@ -305,6 +308,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_PROJECT_ORG_NAME")]
         GCP_PROJECT_ORG_NAME,
+
+        [EnumMember(Value = "GITHUB_REPO_SIZE")]
+        GITHUB_REPO_SIZE,
 
         [EnumMember(Value = "GWS_USER_EMAIL_ADDRESS")]
         GWS_USER_EMAIL_ADDRESS,

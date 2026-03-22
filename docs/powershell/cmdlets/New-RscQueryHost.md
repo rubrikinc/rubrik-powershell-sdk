@@ -19,6 +19,18 @@ Get all hosts for a given failover group.
     - failoverGroupId - System.String: Failover group ID to get hosts for.
     - filter - FailoverGroupHostFilter: Filters to apply to the query.
 - Returns FailoverGroupHostConnection.
+### forfailovergroup
+Get hosts eligible for adding to a failover group.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - primaryClusterId - System.String: Primary cluster ID.
+    - secondaryClusterId - System.String: Secondary cluster ID.
+    - filter - HostsForFailoverGroupFilter: Filters to apply to the query.
+- Returns HostForFailoverGroupConnection.
 ### physicalhost
 - There is a single argument of type System.String.
 - Returns PhysicalHost.

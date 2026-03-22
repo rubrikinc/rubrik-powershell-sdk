@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ADD_TAG")]
         ADD_TAG,
 
+        [EnumMember(Value = "ALLOW_OWN_SUPPORT_USER_SESSIONS")]
+        ALLOW_OWN_SUPPORT_USER_SESSIONS,
+
         [EnumMember(Value = "ALLOW_SUPPORT_USER_SESSIONS")]
         ALLOW_SUPPORT_USER_SESSIONS,
 
@@ -99,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONFIGURE_DB_LOG_REPORT_PROPERTIES")]
         CONFIGURE_DB_LOG_REPORT_PROPERTIES,
 
+        [EnumMember(Value = "CREATE_CLOUD_NATIVE_APPLICATION")]
+        CREATE_CLOUD_NATIVE_APPLICATION,
+
         [EnumMember(Value = "CREATE_CROSS_ACCOUNT_PAIR")]
         CREATE_CROSS_ACCOUNT_PAIR,
 
@@ -131,6 +137,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DELETE_CHILD_ACCOUNTS")]
         DELETE_CHILD_ACCOUNTS,
+
+        [EnumMember(Value = "DELETE_CLOUD_NATIVE_APPLICATION")]
+        DELETE_CLOUD_NATIVE_APPLICATION,
 
         [EnumMember(Value = "DELETE_CLUSTER")]
         DELETE_CLUSTER,
@@ -194,6 +203,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EDIT_CDM_SYS_CONFIG")]
         EDIT_CDM_SYS_CONFIG,
+
+        [EnumMember(Value = "EDIT_CLOUD_NATIVE_APPLICATION")]
+        EDIT_CLOUD_NATIVE_APPLICATION,
 
         [EnumMember(Value = "EDIT_GCP_CLOUD_ACCOUNT")]
         EDIT_GCP_CLOUD_ACCOUNT,
@@ -719,6 +731,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_SUPPORT_BUNDLE")]
         VIEW_SUPPORT_BUNDLE,
+
+        [EnumMember(Value = "VIEW_SUPPORT_USER_SESSIONS")]
+        VIEW_SUPPORT_USER_SESSIONS,
 
         [EnumMember(Value = "VIEW_SYSLOG")]
         VIEW_SYSLOG,

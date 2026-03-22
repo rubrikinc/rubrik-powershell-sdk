@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? ExcludedTags
+        // GraphQL -> excludedTags: [String!]! (scalar)
+        [JsonProperty("excludedTags")]
+        public List<System.String>? ExcludedTags { get; set; }
+
         //      C# -> System.Boolean? ShouldOverrideResourceTags
         // GraphQL -> shouldOverrideResourceTags: Boolean! (scalar)
         [JsonProperty("shouldOverrideResourceTags")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CloudNativeCustomerTagsReply Set(
+        List<System.String>? ExcludedTags = null,
         System.Boolean? ShouldOverrideResourceTags = null,
         List<TagObject>? CustomerTags = null
     ) 
     {
+        if ( ExcludedTags != null ) {
+            this.ExcludedTags = ExcludedTags;
+        }
         if ( ShouldOverrideResourceTags != null ) {
             this.ShouldOverrideResourceTags = ShouldOverrideResourceTags;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<System.String>? ExcludedTags
+        // GraphQL -> excludedTags: [String!]! (scalar)
+        if (this.ExcludedTags != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludedTags\n" ;
+            } else {
+                s += ind + "excludedTags\n" ;
+            }
+        }
         //      C# -> System.Boolean? ShouldOverrideResourceTags
         // GraphQL -> shouldOverrideResourceTags: Boolean! (scalar)
         if (this.ShouldOverrideResourceTags != null) {
@@ -92,6 +110,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<System.String>? ExcludedTags
+        // GraphQL -> excludedTags: [String!]! (scalar)
+        if (ec.Includes("excludedTags",true))
+        {
+            if(this.ExcludedTags == null) {
+
+                this.ExcludedTags = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludedTags != null && ec.Excludes("excludedTags",true))
+        {
+            this.ExcludedTags = null;
+        }
         //      C# -> System.Boolean? ShouldOverrideResourceTags
         // GraphQL -> shouldOverrideResourceTags: Boolean! (scalar)
         if (ec.Includes("shouldOverrideResourceTags",true))

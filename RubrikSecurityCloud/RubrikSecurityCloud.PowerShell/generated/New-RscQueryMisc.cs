@@ -8186,10 +8186,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.filters = @(
     /// 	@{
-    /// 		# OPTIONAL
-    /// 		text = $someString
     /// 		# REQUIRED
     /// 		field = $someSupportUserAccessFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SupportUserAccessFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		text = $someString
     /// }
     /// )
     /// 
@@ -8623,6 +8623,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	orgs = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	reqIdPartial = $someString
     /// }
     /// 
     /// # Execute the query
@@ -21056,10 +21058,10 @@ $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCl
 # OPTIONAL
 $query.Var.filters = @(
 	@{
-		# OPTIONAL
-		text = $someString
 		# REQUIRED
 		field = $someSupportUserAccessFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SupportUserAccessFilterField]) for enum values.
+		# OPTIONAL
+		text = $someString
 }
 )"
             );
@@ -21455,6 +21457,8 @@ $query.Var.filter = @{
 	orgs = @(
 		$someString
 	)
+	# OPTIONAL
+	reqIdPartial = $someString
 }"
             );
         }

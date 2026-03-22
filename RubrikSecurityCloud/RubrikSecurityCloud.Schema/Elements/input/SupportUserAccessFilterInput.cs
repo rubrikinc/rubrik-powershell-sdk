@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Text
-        // GraphQL -> text: String (scalar)
-        [JsonProperty("text")]
-        public System.String? Text { get; set; }
-
         //      C# -> SupportUserAccessFilterField? Field
         // GraphQL -> field: SupportUserAccessFilterField! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("field")]
         public SupportUserAccessFilterField? Field { get; set; }
+
+        //      C# -> System.String? Text
+        // GraphQL -> text: String (scalar)
+        [JsonProperty("text")]
+        public System.String? Text { get; set; }
 
 
         #endregion

@@ -1448,6 +1448,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			isLegalHoldDownload = $someBoolean
     /// 		}
     /// 		# OPTIONAL
+    /// 		shouldUseStrongEncryption = $someBoolean
+    /// 		# OPTIONAL
     /// 		zipPassword = $someString
     /// 	}
     /// 	# OPTIONAL
@@ -3054,6 +3056,8 @@ $query.Var.input = @{
 			# REQUIRED
 			isLegalHoldDownload = $someBoolean
 		}
+		# OPTIONAL
+		shouldUseStrongEncryption = $someBoolean
 		# OPTIONAL
 		zipPassword = $someString
 	}

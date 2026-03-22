@@ -1640,6 +1640,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	clusterUuids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	minSoftwareVersion = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.sortBy = $someReclaimableClusterStatsSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReclaimableClusterStatsSortBy]) for enum values.
@@ -4135,6 +4137,8 @@ $query.Var.filter = @{
 	clusterUuids = @(
 		$someString
 	)
+	# OPTIONAL
+	minSoftwareVersion = $someString
 }
 # OPTIONAL
 $query.Var.sortBy = $someReclaimableClusterStatsSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReclaimableClusterStatsSortBy]) for enum values.

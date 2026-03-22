@@ -97,7 +97,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# REQUIRED
     /// 	workloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	backupCredentials = @{
     /// 		# REQUIRED
     /// 		login = $someString
@@ -108,6 +108,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	logicAppName = $someString
     /// 	# OPTIONAL
     /// 	logicAppApiKey = $someString
+    /// 	# OPTIONAL
+    /// 	shouldUseAad = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -539,7 +541,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	databaseIds = @(
     /// 		$someString
     /// 	)
@@ -554,6 +556,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	authMechanism = $someSqlAuthenticationMechanism # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SqlAuthenticationMechanism]) for enum values.
     /// 	# OPTIONAL
     /// 	sessionId = $someString
+    /// 	# OPTIONAL
+    /// 	serverIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1039,7 +1045,7 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	workloadType = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	backupCredentials = @{
 		# REQUIRED
 		login = $someString
@@ -1050,6 +1056,8 @@ $query.Var.input = @{
 	logicAppName = $someString
 	# OPTIONAL
 	logicAppApiKey = $someString
+	# OPTIONAL
+	shouldUseAad = $someBoolean
 }"
             );
         }
@@ -1409,7 +1417,7 @@ $query.Var.input = @{
                 Mutation.SetupCloudNativeSqlServerBackupFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	databaseIds = @(
 		$someString
 	)
@@ -1424,6 +1432,10 @@ $query.Var.input = @{
 	authMechanism = $someSqlAuthenticationMechanism # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SqlAuthenticationMechanism]) for enum values.
 	# OPTIONAL
 	sessionId = $someString
+	# OPTIONAL
+	serverIds = @(
+		$someString
+	)
 }"
             );
         }

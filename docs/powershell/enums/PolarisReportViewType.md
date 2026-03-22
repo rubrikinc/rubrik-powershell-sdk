@@ -43,3 +43,4 @@ cloud accounts (e.g., Azure, AWS, GCP).
 - DISK_STATUS_REPORT - Disk Status report.
 - VSPHERE_VM_EXCLUDED_DISKS_REPORT - VSphere virtual machine excluded disks report.
 - ALLOWED_HITS_REPORT - Allowed hits report for DSPM allowlisted classification hits.
+- CLOUD_OVERLAP_OBJECTS_REPORT - Cloud overlap objects report.

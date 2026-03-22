@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COMPLIANCE_POLICY_NAME")]
         COMPLIANCE_POLICY_NAME,
 
+        [EnumMember(Value = "COMPLIANCE_POLICY_TYPE")]
+        COMPLIANCE_POLICY_TYPE,
+
         [EnumMember(Value = "COMPLIANCE_SCRIPT_NAME")]
         COMPLIANCE_SCRIPT_NAME,
 

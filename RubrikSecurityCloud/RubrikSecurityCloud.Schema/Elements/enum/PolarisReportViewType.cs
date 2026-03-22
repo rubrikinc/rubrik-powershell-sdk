@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_STRIKES_REPORT")]
         BACKUP_STRIKES_REPORT,
 
+        [EnumMember(Value = "CLOUD_OVERLAP_OBJECTS_REPORT")]
+        CLOUD_OVERLAP_OBJECTS_REPORT,
+
         [EnumMember(Value = "CNP_OBJECT_CAPACITY_REPORT")]
         CNP_OBJECT_CAPACITY_REPORT,
 

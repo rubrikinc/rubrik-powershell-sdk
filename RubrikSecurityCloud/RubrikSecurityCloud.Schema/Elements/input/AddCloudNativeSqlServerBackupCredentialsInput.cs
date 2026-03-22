@@ -34,9 +34,7 @@ namespace RubrikSecurityCloud.Types
         public WorkloadLevelHierarchy? WorkloadType { get; set; }
 
         //      C# -> LoginCredentials? BackupCredentials
-        // GraphQL -> backupCredentials: LoginCredentials! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> backupCredentials: LoginCredentials (input)
         [JsonProperty("backupCredentials")]
         public LoginCredentials? BackupCredentials { get; set; }
 
@@ -49,6 +47,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> logicAppApiKey: String (scalar)
         [JsonProperty("logicAppApiKey")]
         public System.String? LogicAppApiKey { get; set; }
+
+        //      C# -> System.Boolean? ShouldUseAad
+        // GraphQL -> shouldUseAad: Boolean (scalar)
+        [JsonProperty("shouldUseAad")]
+        public System.Boolean? ShouldUseAad { get; set; }
 
 
         #endregion

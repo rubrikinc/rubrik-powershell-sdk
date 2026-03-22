@@ -306,6 +306,11 @@ Delete entries from the IP allowlist.
 
 - There is a single argument of type DeleteIpWhitelistEntriesInput.
 - Returns System.String.
+### deletemvcprofiles
+DeleteMvcProfiles archives the minimum viable company profiles.
+
+- There is a single argument of type DeleteMvcProfilesInput.
+- Returns System.String.
 ### deletemysqldbinstancelivemount
 Delete a Live Mount of a MySQL instance
 

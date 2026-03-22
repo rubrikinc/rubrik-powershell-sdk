@@ -11,3 +11,5 @@ Input for filtering TPR requests.
   - Statuses for filtering TPR requests.
 - orgs: list of System.Strings
   - List of organizations for filtering TPR requests.
+- reqIdPartial: System.String
+  - Partial match on request Id.

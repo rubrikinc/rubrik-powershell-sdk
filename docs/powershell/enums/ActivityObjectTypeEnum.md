@@ -1,5 +1,5 @@
 ### ActivityObjectTypeEnum
-List of object types for activities.
+Represents different types of activity objects.
 
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
 - ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.
@@ -224,8 +224,10 @@ List of object types for activities.
 - WEBHOOK - Webhook object.
 - WindowsFileset - Windows fileset.
 - WindowsHost - Windows host.
-- PRINCIPAL_CONTROL_ACCESS_RIGHT - Specifies that the activity object type is Control Access Right.
-- PRINCIPAL_CERTIFICATE_TEMPLATE - Specifies that the activity object type is Certificate Template.
-- PRINCIPAL_DFS_NAMESPACE_V1 - Specifies that the activity object type is DFS Namespace V1.
-- PRINCIPAL_DFS_NAMESPACE_V2 - Specifies that the activity object type is DFS Namespace V2.
-- PRINCIPAL_DFS_LINK - Specifies that the activity object type is DFS Link.
+- PRINCIPAL_CONTROL_ACCESS_RIGHT - Control Access Right principal type.
+- PRINCIPAL_CERTIFICATE_TEMPLATE - Certificate Template principal type.
+- PRINCIPAL_DFS_NAMESPACE_V1 - DFS Namespace V1 principal type.
+- PRINCIPAL_DFS_NAMESPACE_V2 - DFS Namespace V2 principal type.
+- PRINCIPAL_DFS_LINK - DFS Link principal type.
+- AGENT_CLOUD_POLICY - Agent Cloud policy object.
+- PRINCIPAL_DNS_ZONE - DNS Zone principal type.

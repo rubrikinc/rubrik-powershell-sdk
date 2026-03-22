@@ -3,8 +3,6 @@ Column represents a report table column for the UI.
 
 - name: System.String
   - The identifier of the column.
-- dataViewType: DataViewTypeEnum
-  - The type of the data view that the column belongs to.
 - type: DataTypeEnum
   - Specifies the data type of the column.
 - nullable: System.Boolean

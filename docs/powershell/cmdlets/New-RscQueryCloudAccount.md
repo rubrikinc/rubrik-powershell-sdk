@@ -28,6 +28,12 @@ List the mappings from accounts to Exocompute cloud accounts with specified filt
     - cloudVendor - CloudVendor: Vendor of the cloud account.
     - exocomputeAccountIdsFilter - list of System.Strings: List of mapped Exocompute account IDs.
 - Returns list of CloudAccountsExocomputeAccountMappings.
+### getlistfilters
+CloudAccountsGetListFilters returns available filter values for cloud
+account list APIs (e.g., tenant domain names and management group IDs).
+
+- There is a single argument of type CloudAccountsGetListFiltersReq.
+- Returns CloudAccountsGetListFiltersReply.
 ### iampairsbyandlocation
 List the IAM pairs of the provided cloud account and any missing permission groups, if applicable, for an optional archival location.
 
