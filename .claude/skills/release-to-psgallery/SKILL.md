@@ -14,6 +14,11 @@ Before starting, verify:
 - [ ] `gh` CLI is authenticated (`gh auth status`)
 - [ ] `$env:RSC_PSGalleryKeyFile` is set and points to a valid JSON file
 - [ ] Working tree is clean (`git status`)
+- [ ] `dotnet` is available in PATH. If not, look for an `sdmain` repo
+  (check `~/src/sdmain` or siblings of the current repo) and activate its
+  build environment: `source <sdmain>/polaris/.buildenv/bin/activate`.
+  Run this in the shell before proceeding — it adds `dotnet` and other
+  build tools to PATH.
 
 ## Step-by-step
 
