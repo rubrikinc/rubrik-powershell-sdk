@@ -1,5 +1,5 @@
 ---
-name: release
+name: release-to-psgallery
 description: Walk through a manual release of the RSC PowerShell SDK
 ---
 
@@ -24,11 +24,12 @@ Before starting, verify:
 This checks that PSGallery version, GitHub latest release tag, and `main`
 branch psd1+changelog all agree. If they don't, investigate before proceeding.
 
-### 2. Build and test
+### 2. Build and test (pre-flight)
 ```powershell
 ./Utils/Build-RscSdk.ps1
 ```
-Ensure the build passes cleanly. Fix any issues before continuing.
+This is a debug build to catch issues early. The actual release build
+happens later inside `New-RscSdkRelease.ps1`. Fix any issues before continuing.
 
 ### 3. Curate CHANGELOG.md
 Open `CHANGELOG.md` and review the top entry (which says `## Version TBD`).
@@ -48,12 +49,16 @@ Sections: New Features, Bug Fixes, Breaking Changes.
 
 Suggest the version to the user based on the changelog content, then run:
 ```powershell
-./Utils/admin/Set-RscSdkVersion.ps1 -NewVersion "X.Y"
+./Utils/admin/Set-RscSdkVersion.ps1 -NewVersion "Major.Minor.YYYYMMDD"
 ```
+For example: `./Utils/admin/Set-RscSdkVersion.ps1 -NewVersion "1.15.20260309"`
+
 This updates `ModuleVersion` in the `.psd1` and the `## Version` heading in
 `CHANGELOG.md`. Commit and push to devel:
 ```powershell
-git add -A && git commit -m "Bump version to X.Y" && git push
+git add CHANGELOG.md RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/RubrikSecurityCloud.psd1
+git commit -m "Bump version to Major.Minor.YYYYMMDD"
+git push
 ```
 
 ### 5. Validate release candidate
