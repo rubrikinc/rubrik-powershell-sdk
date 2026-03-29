@@ -1009,12 +1009,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	uuid = $someString
     /// 	# OPTIONAL
     /// 	disconnectedState = $someMissingClusterDisconnectedState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterDisconnectedState]) for enum values.
     /// 	# OPTIONAL
     /// 	exclusionReason = $someString
-    /// 	# REQUIRED
-    /// 	uuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2371,12 +2371,12 @@ $query.Var.input = @{
                 Mutation.SetMissingClusterStatusFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	uuid = $someString
 	# OPTIONAL
 	disconnectedState = $someMissingClusterDisconnectedState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterDisconnectedState]) for enum values.
 	# OPTIONAL
 	exclusionReason = $someString
-	# REQUIRED
-	uuid = $someString
 }"
             );
         }

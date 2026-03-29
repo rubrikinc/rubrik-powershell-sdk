@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isThreatMonitoringEnabled")]
         public System.Boolean? IsThreatMonitoringEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsThreatMonitoringEnabledForActiveDirectory
+        // GraphQL -> isThreatMonitoringEnabledForActiveDirectory: Boolean! (scalar)
+        [JsonProperty("isThreatMonitoringEnabledForActiveDirectory")]
+        public System.Boolean? IsThreatMonitoringEnabledForActiveDirectory { get; set; }
+
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
         [JsonProperty("maxSnapshotsToUploadAutomatically")]
@@ -87,6 +92,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? EnableFmdUploadForAllResources = null,
         System.Boolean? EnableThreatMonitoringFullScan = null,
         System.Boolean? IsThreatMonitoringEnabled = null,
+        System.Boolean? IsThreatMonitoringEnabledForActiveDirectory = null,
         System.Int32? MaxSnapshotsToUploadAutomatically = null,
         System.Boolean? OrionYaraRemoteProcessingEnabled = null,
         List<System.String>? ThreatMonitoringExtensions = null
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsThreatMonitoringEnabled != null ) {
             this.IsThreatMonitoringEnabled = IsThreatMonitoringEnabled;
+        }
+        if ( IsThreatMonitoringEnabledForActiveDirectory != null ) {
+            this.IsThreatMonitoringEnabledForActiveDirectory = IsThreatMonitoringEnabledForActiveDirectory;
         }
         if ( MaxSnapshotsToUploadAutomatically != null ) {
             this.MaxSnapshotsToUploadAutomatically = MaxSnapshotsToUploadAutomatically;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isThreatMonitoringEnabled\n" ;
             } else {
                 s += ind + "isThreatMonitoringEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsThreatMonitoringEnabledForActiveDirectory
+        // GraphQL -> isThreatMonitoringEnabledForActiveDirectory: Boolean! (scalar)
+        if (this.IsThreatMonitoringEnabledForActiveDirectory != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isThreatMonitoringEnabledForActiveDirectory\n" ;
+            } else {
+                s += ind + "isThreatMonitoringEnabledForActiveDirectory\n" ;
             }
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
@@ -351,6 +369,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsThreatMonitoringEnabled != null && ec.Excludes("isThreatMonitoringEnabled",true))
         {
             this.IsThreatMonitoringEnabled = null;
+        }
+        //      C# -> System.Boolean? IsThreatMonitoringEnabledForActiveDirectory
+        // GraphQL -> isThreatMonitoringEnabledForActiveDirectory: Boolean! (scalar)
+        if (ec.Includes("isThreatMonitoringEnabledForActiveDirectory",true))
+        {
+            if(this.IsThreatMonitoringEnabledForActiveDirectory == null) {
+
+                this.IsThreatMonitoringEnabledForActiveDirectory = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsThreatMonitoringEnabledForActiveDirectory != null && ec.Excludes("isThreatMonitoringEnabledForActiveDirectory",true))
+        {
+            this.IsThreatMonitoringEnabledForActiveDirectory = null;
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("macAddress")]
         public System.String? MacAddress { get; set; }
 
+        //      C# -> System.Int32? NicIndex
+        // GraphQL -> nicIndex: Int! (scalar)
+        [JsonProperty("nicIndex")]
+        public System.Int32? NicIndex { get; set; }
+
         //      C# -> System.String? VirtualSwitchName
         // GraphQL -> virtualSwitchName: String (scalar)
         [JsonProperty("virtualSwitchName")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? Ipv4Addresses = null,
         List<System.String>? Ipv6Addresses = null,
         System.String? MacAddress = null,
+        System.Int32? NicIndex = null,
         System.String? VirtualSwitchName = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MacAddress != null ) {
             this.MacAddress = MacAddress;
+        }
+        if ( NicIndex != null ) {
+            this.NicIndex = NicIndex;
         }
         if ( VirtualSwitchName != null ) {
             this.VirtualSwitchName = VirtualSwitchName;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "macAddress\n" ;
             } else {
                 s += ind + "macAddress\n" ;
+            }
+        }
+        //      C# -> System.Int32? NicIndex
+        // GraphQL -> nicIndex: Int! (scalar)
+        if (this.NicIndex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nicIndex\n" ;
+            } else {
+                s += ind + "nicIndex\n" ;
             }
         }
         //      C# -> System.String? VirtualSwitchName
@@ -210,6 +228,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MacAddress != null && ec.Excludes("macAddress",true))
         {
             this.MacAddress = null;
+        }
+        //      C# -> System.Int32? NicIndex
+        // GraphQL -> nicIndex: Int! (scalar)
+        if (ec.Includes("nicIndex",true))
+        {
+            if(this.NicIndex == null) {
+
+                this.NicIndex = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NicIndex != null && ec.Excludes("nicIndex",true))
+        {
+            this.NicIndex = null;
         }
         //      C# -> System.String? VirtualSwitchName
         // GraphQL -> virtualSwitchName: String (scalar)

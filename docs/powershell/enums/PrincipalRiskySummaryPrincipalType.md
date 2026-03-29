@@ -47,3 +47,4 @@ Principal type for risk summary.
 - DFS_NAMESPACE_V2 - Principal of the AD DFS Namespace v2 type.
 - DFS_LINK - Principal of the AD DFS Link type.
 - DNS_ZONE - Principal of the AD DNS Zone.
+- SYSTEM_IDENTITY - Principal representing an objectless system identity.

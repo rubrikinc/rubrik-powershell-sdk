@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
 
+        //      C# -> System.String? FilterDescription
+        // GraphQL -> filterDescription: String (scalar)
+        [JsonProperty("filterDescription")]
+        public System.String? FilterDescription { get; set; }
+
         //      C# -> System.Boolean? HasDatastoresForRecovery
         // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)
         [JsonProperty("hasDatastoresForRecovery")]
@@ -292,6 +297,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CdmId = null,
+        System.String? FilterDescription = null,
         System.Boolean? HasDatastoresForRecovery = null,
         System.String? Id = null,
         System.String? Name = null,
@@ -350,6 +356,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
+        }
+        if ( FilterDescription != null ) {
+            this.FilterDescription = FilterDescription;
         }
         if ( HasDatastoresForRecovery != null ) {
             this.HasDatastoresForRecovery = HasDatastoresForRecovery;
@@ -554,6 +563,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdmId\n" ;
             } else {
                 s += ind + "cdmId\n" ;
+            }
+        }
+        //      C# -> System.String? FilterDescription
+        // GraphQL -> filterDescription: String (scalar)
+        if (this.FilterDescription != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "filterDescription\n" ;
+            } else {
+                s += ind + "filterDescription\n" ;
             }
         }
         //      C# -> System.Boolean? HasDatastoresForRecovery
@@ -1046,6 +1064,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CdmId != null && ec.Excludes("cdmId",true))
         {
             this.CdmId = null;
+        }
+        //      C# -> System.String? FilterDescription
+        // GraphQL -> filterDescription: String (scalar)
+        if (ec.Includes("filterDescription",true))
+        {
+            if(this.FilterDescription == null) {
+
+                this.FilterDescription = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FilterDescription != null && ec.Excludes("filterDescription",true))
+        {
+            this.FilterDescription = null;
         }
         //      C# -> System.Boolean? HasDatastoresForRecovery
         // GraphQL -> hasDatastoresForRecovery: Boolean! (scalar)

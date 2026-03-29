@@ -6,7 +6,8 @@ Create a new organization under global org.
 - There is a single argument of type CreateOrgInput.
 - Returns CreateOrgReply.
 ### createorgswitchsession
-Generate a new authentication token for a user to switch organizations.
+CreateOrgSwitchSessionV2 creates a new auth token for a user switching between orgs.
+V2 version that consolidates resolver/DAL logic into the RPC handler.
 
 - There is a single argument of type CreateOrgSwitchSessionInput.
 - Returns CreateOrgSwitchSessionReply.

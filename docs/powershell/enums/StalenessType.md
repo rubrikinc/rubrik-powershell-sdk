@@ -1,3 +1,3 @@
 ### StalenessType
-- NOT_STALE
-- IS_STALE
+- NOT_STALE - File is not stale.
+- IS_STALE - File is stale.

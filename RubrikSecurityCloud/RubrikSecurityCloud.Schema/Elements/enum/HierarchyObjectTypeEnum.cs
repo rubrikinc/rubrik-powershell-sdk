@@ -24,9 +24,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
-        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
-        ACTIVE_DIRECTORY_FOREST,
-
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
@@ -59,6 +56,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_STORAGE_ACCOUNT")]
         AZURE_STORAGE_ACCOUNT,
+
+        [EnumMember(Value = "ActiveDirectoryForest")]
+        ACTIVE_DIRECTORY_FOREST,
 
         [EnumMember(Value = "AllSubHierarchyType")]
         ALL_SUB_HIERARCHY_TYPE,
@@ -167,6 +167,27 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FAILOVER_CLUSTER_APP")]
         FAILOVER_CLUSTER_APP,
+
+        [EnumMember(Value = "FUSION_COMPUTE_CLUSTER")]
+        FUSION_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "FUSION_COMPUTE_DATASTORE")]
+        FUSION_COMPUTE_DATASTORE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_HOST")]
+        FUSION_COMPUTE_HOST,
+
+        [EnumMember(Value = "FUSION_COMPUTE_NETWORK")]
+        FUSION_COMPUTE_NETWORK,
+
+        [EnumMember(Value = "FUSION_COMPUTE_SITE")]
+        FUSION_COMPUTE_SITE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VIRTUAL_MACHINE")]
+        FUSION_COMPUTE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VRM")]
+        FUSION_COMPUTE_VRM,
 
         [EnumMember(Value = "FeldsparSite")]
         FELDSPAR_SITE,
@@ -431,6 +452,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OPENSTACK_HOST")]
         OPENSTACK_HOST,
+
+        [EnumMember(Value = "OPENSTACK_IMAGE")]
+        OPENSTACK_IMAGE,
 
         [EnumMember(Value = "OPENSTACK_PROJECT")]
         OPENSTACK_PROJECT,

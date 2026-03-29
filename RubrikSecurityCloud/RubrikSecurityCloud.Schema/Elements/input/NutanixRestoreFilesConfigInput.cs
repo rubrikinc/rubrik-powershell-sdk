@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetVirtualMachineId")]
         public System.String? TargetVirtualMachineId { get; set; }
 
+        //      C# -> System.Boolean? IgnoreErrors
+        // GraphQL -> ignoreErrors: Boolean (scalar)
+        [JsonProperty("ignoreErrors")]
+        public System.Boolean? IgnoreErrors { get; set; }
+
 
         #endregion
 

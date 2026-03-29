@@ -3,6 +3,8 @@ Information on the account.
 
 - accountState: AccountState
   - Account state.
+- accountStateUpdatedAt: DateTime
+  - Last state update date of account.
 - accountType: AccountType
   - Account Type.
 - accountExpiryDate: DateTime
@@ -11,7 +13,5 @@ Information on the account.
   - Specifies the number of days before account goes from hold to deleted state.
 - holdWarningLength: System.Int64
   - Specifies number of days for which ui should show the warning.
-- accountStateUpdatedAt: DateTime
-  - Specifies last state update date of account.
 - subdomain: System.String
   - Account subdomain.

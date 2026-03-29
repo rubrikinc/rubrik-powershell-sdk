@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Uuid
+        // GraphQL -> uuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("uuid")]
+        public System.String? Uuid { get; set; }
+
         //      C# -> MissingClusterDisconnectedState? DisconnectedState
         // GraphQL -> disconnectedState: MissingClusterDisconnectedState (enum)
         [JsonProperty("disconnectedState")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exclusionReason: String (scalar)
         [JsonProperty("exclusionReason")]
         public System.String? ExclusionReason { get; set; }
-
-        //      C# -> System.String? Uuid
-        // GraphQL -> uuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("uuid")]
-        public System.String? Uuid { get; set; }
 
 
         #endregion

@@ -1,5 +1,5 @@
 ### LambdaEventType
-EventType specifies the type of the event.
+IdentityAlertEventType specifies the type of the event.
 
 - EVENT_TYPE_UNSPECIFIED - Unspecified event type.
 - EVENT_TYPE_IDENTITY_MEMBERSHIP_ADD - Identity events.

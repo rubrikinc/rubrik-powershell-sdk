@@ -190,6 +190,14 @@ All supported Rubrik managed objects.
 - GITHUB_ORGANIZATION - GitHub organization.
 - GITHUB_REPOSITORY - GitHub repository.
 - AWS_NATIVE_CONFIG - Aws Native Config.
+- FUSION_COMPUTE_VRM - FusionCompute VRM (Virtual Resource Manager).
+- FUSION_COMPUTE_SITE - FusionCompute site.
+- FUSION_COMPUTE_CLUSTER - FusionCompute cluster.
+- FUSION_COMPUTE_HOST - FusionCompute host.
+- FUSION_COMPUTE_VIRTUAL_MACHINE - FusionCompute virtual machine.
+- FUSION_COMPUTE_NETWORK - FusionCompute network.
+- FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
+- OPENSTACK_IMAGE - Openstack Image.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

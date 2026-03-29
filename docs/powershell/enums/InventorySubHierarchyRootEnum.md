@@ -46,3 +46,4 @@ Inventory workloads that are supported on Rubrik.
 - OKTA_ROOT - Okta root.
 - PROXMOX_ROOT - Proxmox root.
 - GITHUB_ROOT - GitHub root.
+- FUSION_COMPUTE_ROOT - FusionCompute root.

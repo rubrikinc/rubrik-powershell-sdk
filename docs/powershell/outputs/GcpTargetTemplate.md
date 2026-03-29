@@ -17,3 +17,5 @@ Specific info for GCP Target Template.
   - Cloud Account information of the GCP target.
 - targetType: TargetType
   - The type of this Target.
+- templateLocationId: System.String
+  - The internal ID of the template archival location.

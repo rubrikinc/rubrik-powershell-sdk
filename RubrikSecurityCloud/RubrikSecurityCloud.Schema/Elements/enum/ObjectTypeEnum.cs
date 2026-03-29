@@ -21,9 +21,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
-        [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
-        ACTIVE_DIRECTORY_FOREST,
-
         [EnumMember(Value = "AWS_NATIVE_CONFIG")]
         AWS_NATIVE_CONFIG,
 
@@ -47,6 +44,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_STORAGE_ACCOUNT")]
         AZURE_STORAGE_ACCOUNT,
+
+        [EnumMember(Value = "ActiveDirectoryForest")]
+        ACTIVE_DIRECTORY_FOREST,
 
         [EnumMember(Value = "AppBlueprint")]
         APP_BLUEPRINT,
@@ -101,6 +101,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ExchangeDatabase")]
         EXCHANGE_DATABASE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VIRTUAL_MACHINE")]
+        FUSION_COMPUTE_VIRTUAL_MACHINE,
 
         [EnumMember(Value = "Fileset")]
         FILESET,

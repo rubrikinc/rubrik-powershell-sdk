@@ -1,25 +1,35 @@
 ### GcpCloudAccountProject
-GCP Cloud Account Project.
+GcpProject represents a Google Cloud Platform (GCP) project within the
+Rubrik platform.
 
 - id: System.String
   - Rubrik ID of the GCP project.
 - projectId: System.String
-  - Native ID of the GCP Project.
+  - The native ID of a GCP project, which is a unique identifier assigned
+by Google for the project.
 - name: System.String
-  - Name of the GCP project.
+  - Human-readable name of the GCP project as configured in Google Cloud.
 - projectNumber: System.Int64
-  - Native Project Number of the GCP Project.
+  - Google-assigned numeric identifier for the project, which is immutable
+and unique across all Google Cloud projects.
 - roleId: System.String
-  - Google managed ID of the role created in the GCP project.
+  - Google managed ID of the role created in the GCP project for Rubrik
+operations, used for permission management and access control.
 - usesGlobalConfig: System.Boolean
-  - Whether the GCP project uses global configuration for authentication.
+  - Specifies if the global JWT config is used for authentication instead
+of project-specific credentials.
 - organizationName: System.String
-  - The name of the organization containing the GCP Project.
+  - Organization name of the GCP project.
 - isArchived: System.Boolean
-  - Specifies if the project is archived.
+  - Specifies if the project is archived and no longer actively managed
+by Rubrik operations.
 - effectiveServiceAccount: System.String
-  - Service account that will be used to make cloud calls for this project.
+  - The service account which will be applicable for making all the cloud
+interaction calls. This comes directly from the applicable credentials
+for the project and determines the identity used for GCP API calls.
 - projectManagedObjectId: System.String
   - The managed object id of the project in the authz service.
 - credentialsManagedBy: CredentialsManagedBy
-  - CredentialsManagedBy specifies who manages the GCP credentials used for authentication and authorization when accessing GCP resources within the Rubrik platform.
+  - CredentialsManagedBy specifies who manages the GCP credentials used for
+authentication and authorization when accessing GCP resources within the
+Rubrik platform.

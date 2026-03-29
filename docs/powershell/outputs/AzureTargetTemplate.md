@@ -19,3 +19,5 @@ Specific info for Azure Target Template.
   - Cloud Account information of the Azure target.
 - targetType: TargetType
   - The type of this Target.
+- templateLocationId: System.String
+  - The internal ID of the template archival location.

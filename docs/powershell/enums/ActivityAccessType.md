@@ -1,5 +1,5 @@
 ### ActivityAccessType
-- READ_ACTIVITY
-- WRITE_ACTIVITY
-- CREATE_ACTIVITY
-- DELETE_ACTIVITY
+- READ_ACTIVITY - Read activity.
+- WRITE_ACTIVITY - Write activity.
+- CREATE_ACTIVITY - Create activity.
+- DELETE_ACTIVITY - Delete activity.

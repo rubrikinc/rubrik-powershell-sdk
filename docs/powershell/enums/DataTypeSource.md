@@ -1,5 +1,5 @@
 ### DataTypeSource
-Source of data type can be either CUSTOM or PREDEFINED.
+Type of data category.
 
 - DEFAULT - All classification source type.
 - PREDEFINED - Predefined classification source.

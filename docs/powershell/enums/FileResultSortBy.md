@@ -1,21 +1,21 @@
 ### FileResultSortBy
 Parameter for sorting file results.
 
-- HITS
-- NAME
-- DAILY_CHANGE
-- LAST_ACCESS_TIME
-- OPEN_ACCESS_TYPE
-- FILES_WITH_HITS
-- FILES_WITH_OPEN_ACCESS_HITS
-- STALE_FILES_WITH_HITS
-- CLUSTER
-- OBJECT_NAME
-- OBJECT_LOCATION
-- SNAPSHOT_TIME
-- NUM_ACTIVITIES
-- NUM_ACTIVITIES_DELTA
-- NATIVE_PATH
+- HITS - Sort by number of hits.
+- NAME - Sort by name.
+- DAILY_CHANGE - Sort by daily change.
+- LAST_ACCESS_TIME - Sort by last access time.
+- OPEN_ACCESS_TYPE - Sort by open access type.
+- FILES_WITH_HITS - Sort by files with hits.
+- FILES_WITH_OPEN_ACCESS_HITS - Sort by files with open access hits.
+- STALE_FILES_WITH_HITS - Sort by stale files with hits.
+- CLUSTER - Sort by cluster.
+- OBJECT_NAME - Sort by object name.
+- OBJECT_LOCATION - Sort by object location.
+- SNAPSHOT_TIME - Sort by snapshot time.
+- NUM_ACTIVITIES - Sort by number of activities.
+- NUM_ACTIVITIES_DELTA - Sort by number of activities delta.
+- NATIVE_PATH - Sort by native path.
 - HITS_BY_SENSITIVITY - Sort by number of hits by sensitivity.
 - LAST_MODIFIED - Sort by last modified time.
 - CREATION_TIME - Sort by creation time.

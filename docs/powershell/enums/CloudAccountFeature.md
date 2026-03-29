@@ -44,5 +44,6 @@ protection of Azure DevOps repositories and related workload.
 protection of GitHub repositories and related workload.
 - AWS_CONFIG_PROTECTION - Cloud account feature is Application Config Protection.
 - CLOUD_NATIVE_CONFIG_PROTECTION - Cloud account feature is Config Protection.
+- ALLOY_DB_PROTECTION - Cloud account feature is AlloyDB Protection.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

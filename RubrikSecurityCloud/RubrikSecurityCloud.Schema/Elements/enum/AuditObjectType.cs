@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_ACCOUNT")]
         AWS_NATIVE_ACCOUNT,
 
+        [EnumMember(Value = "AWS_NATIVE_CONFIG")]
+        AWS_NATIVE_CONFIG,
+
         [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
         AWS_NATIVE_DYNAMODB_TABLE,
 
@@ -194,6 +197,27 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FEDERATED_ACCESS")]
         FEDERATED_ACCESS,
+
+        [EnumMember(Value = "FUSION_COMPUTE_CLUSTER")]
+        FUSION_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "FUSION_COMPUTE_DATASTORE")]
+        FUSION_COMPUTE_DATASTORE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_HOST")]
+        FUSION_COMPUTE_HOST,
+
+        [EnumMember(Value = "FUSION_COMPUTE_NETWORK")]
+        FUSION_COMPUTE_NETWORK,
+
+        [EnumMember(Value = "FUSION_COMPUTE_SITE")]
+        FUSION_COMPUTE_SITE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VIRTUAL_MACHINE")]
+        FUSION_COMPUTE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VRM")]
+        FUSION_COMPUTE_VRM,
 
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
@@ -410,6 +434,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,
+
+        [EnumMember(Value = "OPENSTACK_IMAGE")]
+        OPENSTACK_IMAGE,
 
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,

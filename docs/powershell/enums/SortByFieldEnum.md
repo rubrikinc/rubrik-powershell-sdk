@@ -77,7 +77,7 @@
 - TotalSnapshots
 - ObjectType
 - OBJECT_NAME
-- Time
+- Time - Sort user audits by time.
 - SUSPICIOUS_FILES_COUNT - Count of suspicious files.
 - ActivityType
 - Severity

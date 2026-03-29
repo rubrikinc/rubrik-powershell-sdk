@@ -87,6 +87,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN_AZURE_AD_REGION")]
         UNKNOWN_AZURE_AD_REGION,
 
+        [EnumMember(Value = "USGOVARIZONA")]
+        USGOVARIZONA,
+
+        [EnumMember(Value = "USGOVTEXAS")]
+        USGOVTEXAS,
+
         [EnumMember(Value = "USGOVVIRGINIA")]
         USGOVVIRGINIA,
 

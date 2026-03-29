@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetType")]
         TargetType? TargetType { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        System.String? TemplateLocationId { get; set; }
+
 
         #endregion
 

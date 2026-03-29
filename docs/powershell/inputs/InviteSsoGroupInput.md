@@ -1,5 +1,6 @@
 ### InviteSsoGroupInput
-Specifies the input required for inviting new SSO groups to the current organization.
+Specifies the input required for inviting new SSO groups
+to the current organization.
 
 - groupName: System.String
   - SSO group name.

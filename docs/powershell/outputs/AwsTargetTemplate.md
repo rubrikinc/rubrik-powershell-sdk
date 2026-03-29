@@ -25,3 +25,5 @@ Specific info for AWS Target Template.
   - Cloud account details of the AWS target.
 - targetType: TargetType
   - The type of this Target.
+- templateLocationId: System.String
+  - The internal ID of the template archival location.

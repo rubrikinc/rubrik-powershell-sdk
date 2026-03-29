@@ -88,6 +88,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsChildOus")]
         public List<AwsOuInput>? AwsChildOus { get; set; }
 
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
 
         #endregion
 

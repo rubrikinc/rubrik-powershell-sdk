@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastState")]
         public DeviceState? LastState { get; set; }
 
+        //      C# -> System.String? HardwareId
+        // GraphQL -> hardwareId: String! (scalar)
+        [JsonProperty("hardwareId")]
+        public System.String? HardwareId { get; set; }
+
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         [JsonProperty("ipAddress")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public CloudDirectDeviceDetails Set(
         DeviceState? LastState = null,
+        System.String? HardwareId = null,
         System.String? IpAddress = null,
         DateTime? LastConnectedAt = null,
         DateTime? RemovedAt = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( LastState != null ) {
             this.LastState = LastState;
+        }
+        if ( HardwareId != null ) {
+            this.HardwareId = HardwareId;
         }
         if ( IpAddress != null ) {
             this.IpAddress = IpAddress;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lastState\n" ;
             } else {
                 s += ind + "lastState\n" ;
+            }
+        }
+        //      C# -> System.String? HardwareId
+        // GraphQL -> hardwareId: String! (scalar)
+        if (this.HardwareId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hardwareId\n" ;
+            } else {
+                s += ind + "hardwareId\n" ;
             }
         }
         //      C# -> System.String? IpAddress
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastState != null && ec.Excludes("lastState",true))
         {
             this.LastState = null;
+        }
+        //      C# -> System.String? HardwareId
+        // GraphQL -> hardwareId: String! (scalar)
+        if (ec.Includes("hardwareId",true))
+        {
+            if(this.HardwareId == null) {
+
+                this.HardwareId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HardwareId != null && ec.Excludes("hardwareId",true))
+        {
+            this.HardwareId = null;
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)

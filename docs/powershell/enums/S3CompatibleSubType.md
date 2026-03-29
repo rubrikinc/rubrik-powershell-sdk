@@ -56,3 +56,4 @@ of a S3Compatible location.
 - WESTERN_DIGITAL - Western Digital subtype.
 - ZADARA - Zadara subtype.
 - POINT_ARCHIVAL_GATEWAY - PoINT Archival Gateway.
+- CUBBIT - Cubbit subtype.

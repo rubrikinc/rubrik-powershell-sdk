@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("type")]
         public CloudDirectSnapshotType? Type { get; set; }
 
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        [JsonProperty("pendingSla")]
+        public SlaDomain? PendingSla { get; set; }
+
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         [JsonProperty("slaDomain")]
@@ -189,6 +194,7 @@ namespace RubrikSecurityCloud.Types
         CloudDirectSnapshotProtocolType? Protocol = null,
         CloudDirectSnapshotSateType? State = null,
         CloudDirectSnapshotType? Type = null,
+        SlaDomain? PendingSla = null,
         SlaDomain? SlaDomain = null,
         System.String? CloudDirectId = null,
         System.String? ClusterUuid = null,
@@ -227,6 +233,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Type != null ) {
             this.Type = Type;
+        }
+        if ( PendingSla != null ) {
+            this.PendingSla = PendingSla;
         }
         if ( SlaDomain != null ) {
             this.SlaDomain = SlaDomain;
@@ -351,6 +360,19 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "type\n" ;
             } else {
                 s += ind + "type\n" ;
+            }
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (this.PendingSla != null) {
+                var fspec = InterfaceHelper.CompositeAsFieldSpec((BaseType)this.PendingSla, conf.Child("pendingSla"));
+            string trimmedFspec = fspec.Replace(" ", "").Replace("\n", "");
+            if(trimmedFspec.Length > 0 && !trimmedFspec.Contains("{}")) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pendingSla" + " " + "{\n" + fspec + ind + "}\n";
+                }
             }
         }
         //      C# -> SlaDomain? SlaDomain
@@ -678,6 +700,30 @@ namespace RubrikSecurityCloud.Types
         else if (this.Type != null && ec.Excludes("type",true))
         {
             this.Type = null;
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (ec.Includes("pendingSla",false))
+        {
+            if(this.PendingSla == null) {
+
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            } else {
+
+                // NOT IMPLEMENTED: 
+                // adding on to an existing composite object
+                var impls = new List<SlaDomain>();
+                impls.ApplyExploratoryFieldSpec(ec.NewChild("pendingSla"));
+                this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+
+            }
+        }
+        else if (this.PendingSla != null && ec.Excludes("pendingSla",false))
+        {
+            this.PendingSla = null;
         }
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)

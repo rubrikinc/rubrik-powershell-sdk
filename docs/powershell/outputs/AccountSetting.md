@@ -1,4 +1,6 @@
 ### AccountSetting
+Depreciated, use ListAccountSettingValuesReq and
+ListAccountSettingValuesReply instead
 User account setting per Rubrik account.
 
 - isEulaAccepted: System.Boolean

@@ -150,6 +150,27 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Ec2Instance")]
         EC2_INSTANCE,
 
+        [EnumMember(Value = "FUSION_COMPUTE_CLUSTER")]
+        FUSION_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "FUSION_COMPUTE_DATASTORE")]
+        FUSION_COMPUTE_DATASTORE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_HOST")]
+        FUSION_COMPUTE_HOST,
+
+        [EnumMember(Value = "FUSION_COMPUTE_NETWORK")]
+        FUSION_COMPUTE_NETWORK,
+
+        [EnumMember(Value = "FUSION_COMPUTE_SITE")]
+        FUSION_COMPUTE_SITE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VIRTUAL_MACHINE")]
+        FUSION_COMPUTE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VRM")]
+        FUSION_COMPUTE_VRM,
+
         [EnumMember(Value = "FailoverClusterApp")]
         FAILOVER_CLUSTER_APP,
 

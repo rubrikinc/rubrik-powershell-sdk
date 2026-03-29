@@ -15,7 +15,7 @@ namespace RubrikSecurityCloud.Types
         /// <summary>
         /// The version of the schema used to generate the SDK.
         /// </summary>
-        public static string GraphqlSchemaVersion = "v20260316-43" ;
+        public static string GraphqlSchemaVersion = "v20260323-39" ;
 
         /// <summary>
         /// All GraphQL interface names.
@@ -1981,6 +1981,7 @@ namespace RubrikSecurityCloud.Types
             MssqlTopLevelDescendantTypeConnection,
             MssqlTopLevelDescendantTypeEdge,
             MssqlUnprotectableReason,
+            MultiHopUpgradePathReply,
             MultiTenancyConsumptionType,
             MultiTenantHostSpec,
             MutateRoleReqChangesTemplate,
@@ -2197,8 +2198,8 @@ namespace RubrikSecurityCloud.Types
             O365SaasSetupKickoffReply,
             O365ServiceAccountStatusResp,
             O365SetupKickoffResp,
-            O365SharePointDrive,
             O365SharepointDrive,
+            O365SharePointDrive,
             O365SharepointDriveConnection,
             O365SharepointDriveEdge,
             O365SharepointList,
@@ -6117,6 +6118,7 @@ namespace RubrikSecurityCloud.Types
             mssqlLogShippingTargets,
             mssqlRecoverableRanges,
             mssqlTopLevelDescendants,
+            multiHopUpgradePath,
             mysqlDatabase,
             mysqlDatabases,
             mysqlInstance,
@@ -7483,6 +7485,7 @@ namespace RubrikSecurityCloud.Types
             AwsAccountStatus,
             AwsAuthServerBasedCloudAccountRegion,
             AwsCloudAccountRegion,
+            AwsCloudAccountServiceType,
             AwsCloudExternalArtifact,
             AwsCloudType,
             AwsCommonRegion,
@@ -11560,6 +11563,7 @@ namespace RubrikSecurityCloud.Types
             mssqlLogShippingTargets,
             mssqlRecoverableRanges,
             mssqlTopLevelDescendants,
+            multiHopUpgradePath,
             mutateRole,
             mysqlDatabase,
             mysqlDatabases,
@@ -21421,6 +21425,14 @@ namespace RubrikSecurityCloud.Types
                         cmdletName: "New-RscQueryMssql",
                         cmdletSwitchName: "TopLevelDescendants",
                         gqlRootFieldName: "mssqlTopLevelDescendants"
+                    )
+                },
+                {
+                    GqlRootFieldName.multiHopUpgradePath,
+                    new RscOp(
+                        cmdletName: "New-RscQueryMisc",
+                        cmdletSwitchName: "MultiHopUpgradePath",
+                        gqlRootFieldName: "multiHopUpgradePath"
                     )
                 },
                 {
@@ -32135,6 +32147,10 @@ namespace RubrikSecurityCloud.Types
                     GqlRootFieldName.mssqlTopLevelDescendants
                 },
                 {
+                    "New-RscQueryMisc -Op MultiHopUpgradePath",
+                    GqlRootFieldName.multiHopUpgradePath
+                },
+                {
                     "New-RscMutationAccount -Op MutateRole",
                     GqlRootFieldName.mutateRole
                 },
@@ -38029,6 +38045,10 @@ namespace RubrikSecurityCloud.Types
                 },
                 {   "MssqlTopLevelDescendantTypeConnection", new List<string> {
                         "mssqlTopLevelDescendants",
+                    }
+                },
+                {   "MultiHopUpgradePathReply", new List<string> {
+                        "multiHopUpgradePath",
                     }
                 },
                 {   "MvcProfileConnection", new List<string> {
@@ -45930,6 +45950,7 @@ namespace RubrikSecurityCloud.Types
                         "mssqlDatabaseLiveMounts",
                         "mssqlDatabases",
                         "mssqlTopLevelDescendants",
+                        "multiHopUpgradePath",
                         "mutateRole",
                         "mysqlDatabases",
                         "mysqlInstanceLiveMounts",
@@ -46506,6 +46527,7 @@ namespace RubrikSecurityCloud.Types
                         "mssqlAvailabilityGroup",
                         "mssqlDatabase",
                         "mssqlInstance",
+                        "multiHopUpgradePath",
                         "mysqlDatabase",
                         "mysqlInstance",
                         "nasFileset",
@@ -49201,6 +49223,7 @@ namespace RubrikSecurityCloud.Types
                 { "mssqlRecoverableRanges", "MssqlRecoverableRangeListResponse"},
                 { "mssqlDatabaseRestoreEstimate", "MssqlRestoreEstimateResult"},
                 { "mssqlTopLevelDescendants", "MssqlTopLevelDescendantTypeConnection"},
+                { "multiHopUpgradePath", "MultiHopUpgradePathReply"},
                 { "m365Mvc", "MvcProfileConnection"},
                 { "mysqlDatabase", "MysqldbDatabase"},
                 { "mysqlDatabases", "MysqldbDatabaseConnection"},
@@ -51549,6 +51572,7 @@ namespace RubrikSecurityCloud.Types
                     "ModifyIdentityProvider",
                     "ModifyIpmi",
                     "MountDisk",
+                    "MultiHopUpgradePath",
                     "MysqlDatabase",
                     "MysqlDatabases",
                     "MysqlInstance",

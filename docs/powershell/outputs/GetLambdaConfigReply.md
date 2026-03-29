@@ -21,3 +21,5 @@ Lambda configuration details of the Rubrik cluster.
   - Enable or disable yara remote processing (sandboxing).
 - threatMonitoringExtensions: list of System.Strings
   - The extension allowlist used for threat monitoring scans.
+- isThreatMonitoringEnabledForActiveDirectory: System.Boolean
+  - Whether threat monitoring is enabled for Active Directory workloads.

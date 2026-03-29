@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AKS_CUSTOM_PRIVATE_DNS_ZONE")]
         AKS_CUSTOM_PRIVATE_DNS_ZONE,
 
+        [EnumMember(Value = "ALLOYDB")]
+        ALLOYDB,
+
         [EnumMember(Value = "AUTOMATED_NETWORKING_SETUP")]
         AUTOMATED_NETWORKING_SETUP,
 
@@ -86,6 +89,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
+
+        [EnumMember(Value = "RECOVERY_NETWORKING")]
+        RECOVERY_NETWORKING,
 
         [EnumMember(Value = "RESTORE")]
         RESTORE,

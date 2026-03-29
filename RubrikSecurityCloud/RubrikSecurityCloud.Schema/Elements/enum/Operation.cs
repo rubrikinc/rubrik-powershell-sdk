@@ -576,8 +576,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_CDM_ADMIN")]
         VIEW_CDM_ADMIN,
 
+        [EnumMember(Value = "VIEW_CDM_CLUSTER_STORAGE_STAT")]
+        VIEW_CDM_CLUSTER_STORAGE_STAT,
+
         [EnumMember(Value = "VIEW_CDM_NETWORK_SETTING")]
         VIEW_CDM_NETWORK_SETTING,
+
+        [EnumMember(Value = "VIEW_CDM_NETWORK_STAT")]
+        VIEW_CDM_NETWORK_STAT,
 
         [EnumMember(Value = "VIEW_CDM_REPORT")]
         VIEW_CDM_REPORT,

@@ -2,4 +2,4 @@
 Day of the week.
 
 - day: DayOfWeek
-  - Day.
+  - Day of the week.

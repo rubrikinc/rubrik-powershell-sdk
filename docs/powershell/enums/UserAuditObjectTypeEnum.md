@@ -154,3 +154,10 @@ User audit object type.
 - CLI - Command Line Interface.
 - RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
+- FUSION_COMPUTE_VRM - FusionCompute VRM (Virtual Resource Manager).
+- FUSION_COMPUTE_SITE - FusionCompute site.
+- FUSION_COMPUTE_CLUSTER - FusionCompute cluster.
+- FUSION_COMPUTE_HOST - FusionCompute host.
+- FUSION_COMPUTE_VIRTUAL_MACHINE - FusionCompute virtual machine.
+- FUSION_COMPUTE_NETWORK - FusionCompute network.
+- FUSION_COMPUTE_DATASTORE - FusionCompute datastore.

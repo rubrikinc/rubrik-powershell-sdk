@@ -28,13 +28,13 @@ The session inactivity timeout in seconds.
     - resource - ResourceInput
     - nativePath - System.String
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
     - timeGranularity - TimeGranularity
 - Returns ActivityTimelineResultConnection.
 ### usertimeline
 - There are 4 arguments.
     - userId - System.String
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
     - uniqueActivities - System.Boolean
 - Returns ActivityTimelineResultConnection.

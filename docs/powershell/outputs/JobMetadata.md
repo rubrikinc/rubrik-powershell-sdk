@@ -1,23 +1,43 @@
 ### JobMetadata
-
+Metadata about a cluster job.
 
 - id: System.Int64
+  - ID of the job.
 - createdAt: DateTime
+  - Timestamp when the job was created.
 - updatedAt: DateTime
+  - Timestamp when the job was last updated.
 - currentInstance: System.Int32
+  - Current instance number of the job.
 - state: System.String
+  - Current state of the job.
 - progress: System.String
+  - Progress of the job.
 - progressedAt: DateTime
+  - Timestamp when the job last progressed.
 - retryAttempts: System.Int32
+  - Number of retry attempts for the job.
 - startTime: DateTime
+  - Start time of the job.
 - owner: System.String
+  - Current owner of the job.
 - info: System.String
+  - Additional information about the job.
 - lastOwner: System.String
+  - Previous owner of the job.
 - lastSuccess: DateTime
+  - Timestamp of the last successful run.
 - lastFailure: DateTime
+  - Timestamp of the last failed run.
 - startedAt: DateTime
+  - Timestamp when the job started.
 - jobType: System.String
+  - Type of the job.
 - numSuccessfulRuns: System.Int32
+  - Number of successful runs.
 - numScheduledRuns: System.Int32
+  - Number of scheduled runs.
 - lastSkipped: DateTime
+  - Timestamp when the job was last skipped.
 - logLevel: LogLevel
+  - Log level for the job.

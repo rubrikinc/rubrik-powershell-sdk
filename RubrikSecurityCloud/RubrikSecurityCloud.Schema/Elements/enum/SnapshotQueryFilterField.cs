@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_LOCATION_IDS")]
         ARCHIVAL_LOCATION_IDS,
 
+        [EnumMember(Value = "BACKUP_MANAGED_BY")]
+        BACKUP_MANAGED_BY,
+
         [EnumMember(Value = "EBS_AWS_NATIVE_ACCOUNT_ID")]
         EBS_AWS_NATIVE_ACCOUNT_ID,
 

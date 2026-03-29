@@ -11,6 +11,8 @@ Atlassian site.
 - status: SaasOrganizationStatus
 - lastRefreshTime: DateTime
   - The time at which the Atlassian site was last synced to Rubrik.
+- exocomputeId: System.String
+  - Denotes the ID of the exocompute cluster associated with the org.
 - saasOrgType: SaasOrgType
   - The organization type that categorizes the SaaS provider.
 - jiraSettingsWorkloadID: System.String

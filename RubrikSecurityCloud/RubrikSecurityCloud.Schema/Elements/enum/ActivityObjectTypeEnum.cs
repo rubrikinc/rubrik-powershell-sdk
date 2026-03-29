@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
+        [EnumMember(Value = "AWS_NATIVE_CONFIG")]
+        AWS_NATIVE_CONFIG,
+
         [EnumMember(Value = "AWS_NATIVE_DYNAMODB_TABLE")]
         AWS_NATIVE_DYNAMODB_TABLE,
 
@@ -200,6 +203,27 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "Exocompute")]
         EXOCOMPUTE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_CLUSTER")]
+        FUSION_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "FUSION_COMPUTE_DATASTORE")]
+        FUSION_COMPUTE_DATASTORE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_HOST")]
+        FUSION_COMPUTE_HOST,
+
+        [EnumMember(Value = "FUSION_COMPUTE_NETWORK")]
+        FUSION_COMPUTE_NETWORK,
+
+        [EnumMember(Value = "FUSION_COMPUTE_SITE")]
+        FUSION_COMPUTE_SITE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VIRTUAL_MACHINE")]
+        FUSION_COMPUTE_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_VRM")]
+        FUSION_COMPUTE_VRM,
 
         [EnumMember(Value = "FailoverClusterApp")]
         FAILOVER_CLUSTER_APP,
@@ -435,6 +459,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
         OPENSTACK_ENVIRONMENT,
 
+        [EnumMember(Value = "OPENSTACK_IMAGE")]
+        OPENSTACK_IMAGE,
+
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,
 
@@ -587,6 +614,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRINCIPAL_SUBNET_CONTAINER")]
         PRINCIPAL_SUBNET_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_SYSTEM_IDENTITY")]
+        PRINCIPAL_SYSTEM_IDENTITY,
 
         [EnumMember(Value = "PRINCIPAL_TRUSTED_DOMAIN")]
         PRINCIPAL_TRUSTED_DOMAIN,

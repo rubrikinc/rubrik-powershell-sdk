@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? ExocomputeId
+        // GraphQL -> exocomputeId: UUID (scalar)
+        [JsonProperty("exocomputeId")]
+        public System.String? ExocomputeId { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -230,6 +235,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? ExocomputeId = null,
         System.String? Id = null,
         DateTime? LastRefreshTime = null,
         System.String? MetadataWorkloadId = null,
@@ -286,6 +292,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( ExocomputeId != null ) {
+            this.ExocomputeId = ExocomputeId;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -476,6 +485,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.String? ExocomputeId
+        // GraphQL -> exocomputeId: UUID (scalar)
+        if (this.ExocomputeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "exocomputeId\n" ;
+            } else {
+                s += ind + "exocomputeId\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -929,6 +947,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.String? ExocomputeId
+        // GraphQL -> exocomputeId: UUID (scalar)
+        if (ec.Includes("exocomputeId",true))
+        {
+            if(this.ExocomputeId == null) {
+
+                this.ExocomputeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExocomputeId != null && ec.Excludes("exocomputeId",true))
+        {
+            this.ExocomputeId = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

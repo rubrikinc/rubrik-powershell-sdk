@@ -5,7 +5,7 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - ORCHESTRATED_APPLICATION_RECOVERY_BLUEPRINT - Orchestrated Application Recovery Blueprint.
 - ORCHESTRATED_APPLICATION_RECOVERY_PLAN - Orchestrated Application Recovery Plan.
 - ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
-- ACTIVE_DIRECTORY_FOREST - Active Directory forest.
+- ActiveDirectoryForest - Active Directory forest.
 - AwsNativeAccount - Aws Native Account.
 - AwsNativeRegion - Aws Native Region.
 - AzureNativeSubscription - Azure Native Subscription.
@@ -191,3 +191,11 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - GITHUB_ORGANIZATION - GitHub Organization.
 - GITHUB_REPOSITORY - GitHub Repository.
 - AWS_NATIVE_CONFIG - AWS Native Config.
+- FUSION_COMPUTE_VRM - FusionCompute VRM (Virtual Resource Manager).
+- FUSION_COMPUTE_SITE - FusionCompute site.
+- FUSION_COMPUTE_CLUSTER - FusionCompute cluster.
+- FUSION_COMPUTE_HOST - FusionCompute host.
+- FUSION_COMPUTE_VIRTUAL_MACHINE - FusionCompute virtual machine.
+- FUSION_COMPUTE_NETWORK - FusionCompute network.
+- FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
+- OPENSTACK_IMAGE - OpenStack Image.

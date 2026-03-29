@@ -1138,6 +1138,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		targetVirtualMachineId = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreErrors = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1183,6 +1185,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		targetVirtualMachineId = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreErrors = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	snapshotId = $someString
@@ -2687,6 +2691,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		targetVirtualMachineId = $someString
+		# OPTIONAL
+		ignoreErrors = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2724,6 +2730,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		targetVirtualMachineId = $someString
+		# OPTIONAL
+		ignoreErrors = $someBoolean
 	}
 	# REQUIRED
 	snapshotId = $someString

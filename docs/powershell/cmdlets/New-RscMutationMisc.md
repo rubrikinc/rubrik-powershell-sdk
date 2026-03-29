@@ -1108,7 +1108,7 @@ Patch Volume Group with specified properties.
 Update whitelisted analyzers for a path.
 
 - There are 5 arguments.
-    - stdPath - System.String
+    - stdPath - System.String: The standard path of the directory to browse.
     - snappableFid - System.String
     - snapshotFid - System.String
     - analyzerIds - list of System.Strings

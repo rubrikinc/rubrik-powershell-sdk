@@ -19,3 +19,4 @@ state.
 - REMEDIATION_DISABLED_REASON_CROSS_DOMAIN - Activities are from different domains (SourceId mismatch).
 Bulk remediation requires all activities to be in the same security boundary.
 - REMEDIATION_DISABLED_REASON_POLICY_DELETED_OR_DISABLED - Policy is deleted or inactive.
+- REMEDIATION_DISABLED_REASON_ACTOR_TYPE_SYSTEM - Actor type is system.

@@ -1252,6 +1252,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	serviceType = $someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2278,6 +2280,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	roleChainingAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	serviceType = $someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -3867,6 +3871,8 @@ $query.Var.input = @{
 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
 	)
+	# OPTIONAL
+	serviceType = $someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
 }"
             );
         }
@@ -4757,6 +4763,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	roleChainingAccountId = $someString
+	# OPTIONAL
+	serviceType = $someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
 }"
             );
         }

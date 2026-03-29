@@ -141,6 +141,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SUBNET_CONTAINER")]
         SUBNET_CONTAINER,
 
+        [EnumMember(Value = "SYSTEM_IDENTITY")]
+        SYSTEM_IDENTITY,
+
         [EnumMember(Value = "TRUSTED_DOMAIN")]
         TRUSTED_DOMAIN,
 

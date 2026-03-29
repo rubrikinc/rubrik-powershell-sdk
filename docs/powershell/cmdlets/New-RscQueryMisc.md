@@ -404,7 +404,7 @@ Returns permissions associated with a path.
 - There are 5 arguments.
     - snappableFid - System.String
     - snapshotFid - System.String
-    - stdPath - System.String
+    - stdPath - System.String: The standard path of the directory to browse.
     - skipResolveSids - System.Boolean: Skip converting SIDs in response to friendly names
     - filters - SddlRequestFiltersInput: Filter for resolving security descriptor.
 - Returns QuerySDDLReply.
@@ -473,7 +473,7 @@ Returns timeline data for all policies of an account.
 - There are 9 arguments.
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
     - endDay - System.String: End time, in string format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
     - getWhitelistedResults - System.Boolean: Include whitelisted objects in the results.
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - useOptimisedDiscoveryTimeline - System.Boolean: Specifies whether the optimized discovery timeline must be used for the request. If not passed, default is taken as false.
@@ -919,6 +919,18 @@ Returns all the MIP Labels for an account.
     - onlyAppliableFilter - System.Boolean: Restricts the search to appliable labels only.
     - tenantIdFilter - System.String: Filter for Tenant ID.
 - Returns list of MicrosoftMipLabels.
+### multihopupgradepath
+Support portal related APIs
+Returns the ordered sequence of CDM versions required to upgrade
+from source_version to target_version. If source_version is omitted,
+the current installed version for cluster_uuid is used.
+
+- There are 3 arguments.
+    - clusterUuid - System.String: The UUID of the cluster to upgrade.
+    - sourceVersion - System.String: CDM version to upgrade from (e.g. "9.3.1-p1").
+If empty, retrieved from the cdm_upgrades table.
+    - targetVersion - System.String: The CDM version to upgrade to (e.g. "9.5.0").
+- Returns MultiHopUpgradePathReply.
 ### mysqldatabase
 Details of a MySQL database for a given FID.
 
@@ -1023,7 +1035,7 @@ Reply for request to download Rubrik Edge from Rubrik Security Cloud.
     - filter - ListObjectFilesFiltersInput
     - sort - FileResultSortInput: Sorts to apply when listing file results.
     - day - System.String: Date in the format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1149,9 +1161,9 @@ Returns details for one policy object.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
 
-- There are 45 arguments.
+- There are 46 arguments.
     - day - System.String: Date in the format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - sortBy - System.String: Name of the column to sort result by.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -1191,6 +1203,7 @@ Returns status for all objects at a specified timestamp.
     - exposureFilter - list of OpenAccessTypes: Exposure to filter.
     - accessTypeFilter - list of AccessVias: Access types to filter by.
     - accessGrantingIdFilter - System.String: Filter policy objects by access granting identity ID. This filter should only be applied when an identity ID filter is also present, as access granting entities are only relevant in the context of specific identities.
+    - totalPrincipalCountsOnly - System.Boolean: When true, only total principal counts are computed, skipping per-risk-level breakdown.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1584,7 +1597,7 @@ Determines if the user already exists in the account.
 - There are 4 arguments.
     - userId - System.String
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
     - limit - System.Int32: Maximum number of entries in the response.
 - Returns AnalyzerAccessUsageConnection.
 ### userauditlist
@@ -1603,7 +1616,7 @@ Paginated list of user audit data. Each page of the results will include at most
 - There are 3 arguments.
     - userId - System.String
     - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - timezone - System.String
+    - timezone - System.String: The timezone in which to display timestamps.
 - Returns GetUserDetailReply.
 ### userfile
 User file.

@@ -1,3 +1,3 @@
 ### TimeGranularity
-- DAY
-- MONTH
+- DAY - Day granularity.
+- MONTH - Month granularity.

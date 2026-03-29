@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ALL")]
         ALL,
 
+        [EnumMember(Value = "ALLOY_DB_PROTECTION")]
+        ALLOY_DB_PROTECTION,
+
         [EnumMember(Value = "APP_FLOWS")]
         APP_FLOWS,
 

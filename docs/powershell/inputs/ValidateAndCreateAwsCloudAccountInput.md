@@ -23,3 +23,5 @@ Input to validate and set up an AWS account.
   - List of the AWS Organization units.
 - roleChainingAccountId: System.String
   - The UUID of the AWS account to be used for role chaining.
+- serviceType: AwsCloudAccountServiceType
+  - Service type of the AWS cloud account.

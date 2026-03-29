@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum ExocomputeHealthCheckStatusValue
     {
+        [EnumMember(Value = "CANCELLED")]
+        CANCELLED,
+
         [EnumMember(Value = "CUSTOMER_MANAGED_CLUSTER_NOT_REGISTERED")]
         CUSTOMER_MANAGED_CLUSTER_NOT_REGISTERED,
 

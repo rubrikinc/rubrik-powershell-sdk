@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("kmsMasterKeyId")]
         public System.String? KmsMasterKeyId { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        public System.String? TemplateLocationId { get; set; }
+
         //      C# -> List<TagObject>? BucketTags
         // GraphQL -> bucketTags: [TagObject!]! (type)
         [JsonProperty("bucketTags")]
@@ -100,6 +105,7 @@ namespace RubrikSecurityCloud.Types
         System.String? BucketPrefix = null,
         System.Boolean? IsConsolidationEnabled = null,
         System.String? KmsMasterKeyId = null,
+        System.String? TemplateLocationId = null,
         List<TagObject>? BucketTags = null,
         AwsComputeSettings? ComputeSettings = null,
         ProxySettings? ProxySettings = null
@@ -131,6 +137,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( KmsMasterKeyId != null ) {
             this.KmsMasterKeyId = KmsMasterKeyId;
+        }
+        if ( TemplateLocationId != null ) {
+            this.TemplateLocationId = TemplateLocationId;
         }
         if ( BucketTags != null ) {
             this.BucketTags = BucketTags;
@@ -238,6 +247,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "kmsMasterKeyId\n" ;
             } else {
                 s += ind + "kmsMasterKeyId\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (this.TemplateLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateLocationId\n" ;
+            } else {
+                s += ind + "templateLocationId\n" ;
             }
         }
         //      C# -> List<TagObject>? BucketTags
@@ -442,6 +460,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.KmsMasterKeyId != null && ec.Excludes("kmsMasterKeyId",true))
         {
             this.KmsMasterKeyId = null;
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (ec.Includes("templateLocationId",true))
+        {
+            if(this.TemplateLocationId == null) {
+
+                this.TemplateLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateLocationId != null && ec.Excludes("templateLocationId",true))
+        {
+            this.TemplateLocationId = null;
         }
         //      C# -> List<TagObject>? BucketTags
         // GraphQL -> bucketTags: [TagObject!]! (type)

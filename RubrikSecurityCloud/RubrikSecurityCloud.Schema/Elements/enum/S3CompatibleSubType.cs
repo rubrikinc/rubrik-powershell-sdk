@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUDIAN")]
         CLOUDIAN,
 
+        [EnumMember(Value = "CUBBIT")]
+        CUBBIT,
+
         [EnumMember(Value = "CYNNY_SPACE")]
         CYNNY_SPACE,
 

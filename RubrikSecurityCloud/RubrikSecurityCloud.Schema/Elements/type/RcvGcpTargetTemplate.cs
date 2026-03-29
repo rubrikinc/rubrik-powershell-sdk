@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tier")]
         public RcsTierEnumType? Tier { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        public System.String? TemplateLocationId { get; set; }
+
 
         #endregion
 
@@ -54,7 +59,8 @@ namespace RubrikSecurityCloud.Types
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
-        RcsTierEnumType? Tier = null
+        RcsTierEnumType? Tier = null,
+        System.String? TemplateLocationId = null
     ) 
     {
         if ( CloudNativeLocTemplateType != null ) {
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Tier != null ) {
             this.Tier = Tier;
+        }
+        if ( TemplateLocationId != null ) {
+            this.TemplateLocationId = TemplateLocationId;
         }
         return this;
     }
@@ -117,6 +126,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "tier\n" ;
             } else {
                 s += ind + "tier\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (this.TemplateLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateLocationId\n" ;
+            } else {
+                s += ind + "templateLocationId\n" ;
             }
         }
         return s;
@@ -193,6 +211,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Tier != null && ec.Excludes("tier",true))
         {
             this.Tier = null;
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (ec.Includes("templateLocationId",true))
+        {
+            if(this.TemplateLocationId == null) {
+
+                this.TemplateLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateLocationId != null && ec.Excludes("templateLocationId",true))
+        {
+            this.TemplateLocationId = null;
         }
     }
 

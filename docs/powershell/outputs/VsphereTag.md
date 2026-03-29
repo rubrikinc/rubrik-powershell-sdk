@@ -9,6 +9,8 @@
   - Specifies whether this tag is a multi-tag filter or a vSphere tag.
 - condition: System.String
   - Conditional logic for the multi-tag filter.
+- filterDescription: System.String
+  - Description of the multi-tag filter.
 - snapshotConsistencyMandate: ConsistencyLevelEnum
   - Snapshot consistency mandate.
 - id: System.String

@@ -47,6 +47,8 @@ NAS Cloud Direct snapshot object.
   - Snapshot retention-related information.
 - slaDomain: SlaDomain
   - SLA Domain of the snapshot.
+- pendingSla: SlaDomain
+  - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
 - isDownloadedSnapshot: System.Boolean
   - Specifies whether the snapshot was downloaded.
 - isQuarantined: System.Boolean

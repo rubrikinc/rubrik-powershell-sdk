@@ -231,3 +231,13 @@ Enum representing all the possible object types which generate events.
 - PRINCIPAL_DFS_LINK - DFS Link principal type.
 - AGENT_CLOUD_POLICY - Agent Cloud policy object.
 - PRINCIPAL_DNS_ZONE - DNS Zone principal type.
+- AWS_NATIVE_CONFIG - AWS configuration.
+- FUSION_COMPUTE_VRM - FusionCompute VRM (Virtual Resource Manager).
+- FUSION_COMPUTE_SITE - FusionCompute site.
+- FUSION_COMPUTE_CLUSTER - FusionCompute cluster.
+- FUSION_COMPUTE_HOST - FusionCompute host.
+- FUSION_COMPUTE_VIRTUAL_MACHINE - FusionCompute virtual machine.
+- FUSION_COMPUTE_NETWORK - FusionCompute network.
+- FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
+- PRINCIPAL_SYSTEM_IDENTITY - System Identity principal type.
+- OPENSTACK_IMAGE - Openstack Image.

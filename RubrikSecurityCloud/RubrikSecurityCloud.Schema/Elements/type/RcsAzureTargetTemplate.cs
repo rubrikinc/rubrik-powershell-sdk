@@ -46,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tier")]
         public RcsTierEnumType? Tier { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        public System.String? TemplateLocationId { get; set; }
+
         //      C# -> RcsImmutabilitySettings? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: RcsImmutabilitySettings! (type)
         [JsonProperty("immutabilitySettings")]
@@ -66,6 +71,7 @@ namespace RubrikSecurityCloud.Types
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
         RcsTierEnumType? Tier = null,
+        System.String? TemplateLocationId = null,
         RcsImmutabilitySettings? ImmutabilitySettings = null
     ) 
     {
@@ -83,6 +89,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Tier != null ) {
             this.Tier = Tier;
+        }
+        if ( TemplateLocationId != null ) {
+            this.TemplateLocationId = TemplateLocationId;
         }
         if ( ImmutabilitySettings != null ) {
             this.ImmutabilitySettings = ImmutabilitySettings;
@@ -144,6 +153,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "tier\n" ;
             } else {
                 s += ind + "tier\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (this.TemplateLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateLocationId\n" ;
+            } else {
+                s += ind + "templateLocationId\n" ;
             }
         }
         //      C# -> RcsImmutabilitySettings? ImmutabilitySettings
@@ -249,6 +267,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Tier != null && ec.Excludes("tier",true))
         {
             this.Tier = null;
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (ec.Includes("templateLocationId",true))
+        {
+            if(this.TemplateLocationId == null) {
+
+                this.TemplateLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateLocationId != null && ec.Excludes("templateLocationId",true))
+        {
+            this.TemplateLocationId = null;
         }
         //      C# -> RcsImmutabilitySettings? ImmutabilitySettings
         // GraphQL -> immutabilitySettings: RcsImmutabilitySettings! (type)

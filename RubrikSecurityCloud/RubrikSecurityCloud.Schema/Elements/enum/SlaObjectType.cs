@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_OBJECT_TYPE")]
         FILESET_OBJECT_TYPE,
 
+        [EnumMember(Value = "FUSION_COMPUTE_OBJECT_TYPE")]
+        FUSION_COMPUTE_OBJECT_TYPE,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_OBJECT_TYPE")]
         GCP_CLOUD_SQL_OBJECT_TYPE,
 

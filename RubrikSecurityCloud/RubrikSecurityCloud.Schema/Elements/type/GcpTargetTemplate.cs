@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("bucketPrefix")]
         public System.String? BucketPrefix { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        public System.String? TemplateLocationId { get; set; }
+
         //      C# -> List<GcpCmk>? CmkInfo
         // GraphQL -> cmkInfo: [GcpCmk!]! (type)
         [JsonProperty("cmkInfo")]
@@ -77,6 +82,7 @@ namespace RubrikSecurityCloud.Types
         TargetType? TargetType = null,
         CloudAccount? CloudAccount = null,
         System.String? BucketPrefix = null,
+        System.String? TemplateLocationId = null,
         List<GcpCmk>? CmkInfo = null,
         List<TagObject>? Labels = null
     ) 
@@ -98,6 +104,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BucketPrefix != null ) {
             this.BucketPrefix = BucketPrefix;
+        }
+        if ( TemplateLocationId != null ) {
+            this.TemplateLocationId = TemplateLocationId;
         }
         if ( CmkInfo != null ) {
             this.CmkInfo = CmkInfo;
@@ -175,6 +184,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "bucketPrefix\n" ;
             } else {
                 s += ind + "bucketPrefix\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (this.TemplateLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateLocationId\n" ;
+            } else {
+                s += ind + "templateLocationId\n" ;
             }
         }
         //      C# -> List<GcpCmk>? CmkInfo
@@ -316,6 +334,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BucketPrefix != null && ec.Excludes("bucketPrefix",true))
         {
             this.BucketPrefix = null;
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (ec.Includes("templateLocationId",true))
+        {
+            if(this.TemplateLocationId == null) {
+
+                this.TemplateLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateLocationId != null && ec.Excludes("templateLocationId",true))
+        {
+            this.TemplateLocationId = null;
         }
         //      C# -> List<GcpCmk>? CmkInfo
         // GraphQL -> cmkInfo: [GcpCmk!]! (type)

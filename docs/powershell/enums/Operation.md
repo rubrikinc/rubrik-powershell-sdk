@@ -244,6 +244,8 @@ Operations defined in the RBAC system.
 - UPLOAD_SNAPSHOT_ON_DEMAND - Upload a snapshot to an archival location on demand.
 - VIEW_CDM_ADMIN - View cluster local administrator user login information.
 - MANAGE_CDM_ADMIN - Manage cluster local administrator user credentials.
+- VIEW_CDM_CLUSTER_STORAGE_STAT - View CDM cluster storage statistics.
+- VIEW_CDM_NETWORK_STAT - View CDM network statistics.
 - CREATE_CLOUD_NATIVE_APPLICATION - Create a cloud native application.
 - EDIT_CLOUD_NATIVE_APPLICATION - Edit a cloud native application.
 - DELETE_CLOUD_NATIVE_APPLICATION - Delete a cloud native application.

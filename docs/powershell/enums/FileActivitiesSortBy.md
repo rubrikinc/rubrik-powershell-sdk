@@ -1,3 +1,3 @@
 ### FileActivitiesSortBy
-- USER_NAME
-- NUM_ACTIVITIES
+- USER_NAME - Sort by user name.
+- NUM_ACTIVITIES - Sort by number of activities.

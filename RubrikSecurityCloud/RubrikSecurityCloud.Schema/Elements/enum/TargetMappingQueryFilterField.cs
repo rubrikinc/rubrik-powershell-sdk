@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_NATIVE_USE_CASE")]
         CLOUD_NATIVE_USE_CASE,
 
+        [EnumMember(Value = "COMPATIBLE_SNAPPABLE_TYPES")]
+        COMPATIBLE_SNAPPABLE_TYPES,
+
         [EnumMember(Value = "EXCLUDE_ARCHIVAL_LOCATION_TYPE")]
         EXCLUDE_ARCHIVAL_LOCATION_TYPE,
 

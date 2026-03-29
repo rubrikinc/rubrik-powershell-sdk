@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        [JsonProperty("encryptionType")]
+        public TargetEncryptionTypeEnum? EncryptionType { get; set; }
+
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)
         [JsonProperty("redundancy")]
@@ -46,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tier")]
         public RcsTierEnumType? Tier { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        public System.String? TemplateLocationId { get; set; }
+
 
         #endregion
 
@@ -57,14 +67,19 @@ namespace RubrikSecurityCloud.Types
 
     public RcvAwsTargetTemplate Set(
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
+        TargetEncryptionTypeEnum? EncryptionType = null,
         RcvRedundancy? Redundancy = null,
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
-        RcsTierEnumType? Tier = null
+        RcsTierEnumType? Tier = null,
+        System.String? TemplateLocationId = null
     ) 
     {
         if ( CloudNativeLocTemplateType != null ) {
             this.CloudNativeLocTemplateType = CloudNativeLocTemplateType;
+        }
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
         }
         if ( Redundancy != null ) {
             this.Redundancy = Redundancy;
@@ -77,6 +92,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Tier != null ) {
             this.Tier = Tier;
+        }
+        if ( TemplateLocationId != null ) {
+            this.TemplateLocationId = TemplateLocationId;
         }
         return this;
     }
@@ -99,6 +117,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
             } else {
                 s += ind + "cloudNativeLocTemplateType\n" ;
+            }
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
             }
         }
         //      C# -> RcvRedundancy? Redundancy
@@ -137,6 +164,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "tier\n" ;
             }
         }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (this.TemplateLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateLocationId\n" ;
+            } else {
+                s += ind + "templateLocationId\n" ;
+            }
+        }
         return s;
     }
 
@@ -160,6 +196,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
         {
             this.CloudNativeLocTemplateType = null;
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new TargetEncryptionTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)
@@ -228,6 +281,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Tier != null && ec.Excludes("tier",true))
         {
             this.Tier = null;
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (ec.Includes("templateLocationId",true))
+        {
+            if(this.TemplateLocationId == null) {
+
+                this.TemplateLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateLocationId != null && ec.Excludes("templateLocationId",true))
+        {
+            this.TemplateLocationId = null;
         }
     }
 

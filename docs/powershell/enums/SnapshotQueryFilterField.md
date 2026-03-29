@@ -77,3 +77,7 @@ on-demand snapshots that have an on-demand SLA assigned.
 - THREAT_DETECTED - When true, returns snapshots with detected threats.
 When false, returns snapshots with no detected threats.
 - THREAT_ANALYSIS_COMPLETED_ONLY - When true, returns only snapshots where threat analysis has completed.
+- BACKUP_MANAGED_BY - Filters snapshots by their backup managed-by type. Valid values are from
+common_sla.BackupType enum:
+"RUBRIK" (Backups performed by Rubrik),
+"NATIVE" (Backups performed by native providers).

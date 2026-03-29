@@ -27,3 +27,5 @@ Represents regions for Entra ID.
 - UAENORTH - Azure region is UAE North.
 - USGOVVIRGINIA - Azure region is US Gov Virginia.
 - ISRAELCENTRAL - Azure region is Israel Central.
+- USGOVTEXAS - Azure region is US Gov Texas.
+- USGOVARIZONA - Azure region is US Gov Arizona.

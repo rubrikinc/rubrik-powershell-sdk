@@ -13,3 +13,5 @@ Specific info for Rcs Azure Target Template.
   - Cloud native template type.
 - targetType: TargetType
   - The type of this Target.
+- templateLocationId: System.String
+  - The internal ID of the template archival location.

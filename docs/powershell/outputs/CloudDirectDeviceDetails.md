@@ -1,6 +1,8 @@
 ### CloudDirectDeviceDetails
 Details about a device in a NAS Cloud Direct site.
 
+- hardwareId: System.String
+  - Unique hardware identifier of the device.
 - ipAddress: System.String
   - The IP address and netmask of the device.
 - lastConnectedAt: DateTime

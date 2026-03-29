@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("condition")]
         public System.String? Condition { get; set; }
 
+        //      C# -> System.String? FilterDescription
+        // GraphQL -> filterDescription: String (scalar)
+        [JsonProperty("filterDescription")]
+        public System.String? FilterDescription { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -258,6 +263,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? Condition = null,
+        System.String? FilterDescription = null,
         System.String? Id = null,
         System.Boolean? IsFilter = null,
         System.String? Name = null,
@@ -317,6 +323,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Condition != null ) {
             this.Condition = Condition;
+        }
+        if ( FilterDescription != null ) {
+            this.FilterDescription = FilterDescription;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -524,6 +533,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "condition\n" ;
             } else {
                 s += ind + "condition\n" ;
+            }
+        }
+        //      C# -> System.String? FilterDescription
+        // GraphQL -> filterDescription: String (scalar)
+        if (this.FilterDescription != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "filterDescription\n" ;
+            } else {
+                s += ind + "filterDescription\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -1019,6 +1037,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Condition != null && ec.Excludes("condition",true))
         {
             this.Condition = null;
+        }
+        //      C# -> System.String? FilterDescription
+        // GraphQL -> filterDescription: String (scalar)
+        if (ec.Includes("filterDescription",true))
+        {
+            if(this.FilterDescription == null) {
+
+                this.FilterDescription = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FilterDescription != null && ec.Excludes("filterDescription",true))
+        {
+            this.FilterDescription = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

@@ -3,7 +3,7 @@ GcpProject represents a Google Cloud Platform (GCP) project within the
 Rubrik platform.
 
 - id: System.String
-  - UUID in our customers used to represent the project within Rubrik.
+  - Rubrik ID of the GCP project.
 - projectId: System.String
   - The native ID of a GCP project, which is a unique identifier assigned
 by Google for the project.
@@ -19,8 +19,7 @@ operations, used for permission management and access control.
   - Specifies if the global JWT config is used for authentication instead
 of project-specific credentials.
 - organizationName: System.String
-  - Organization name of the GCP project. This field is optional and may
-be empty if the project is not part of an organization.
+  - Organization name of the GCP project.
 - isArchived: System.Boolean
   - Specifies if the project is archived and no longer actively managed
 by Rubrik operations.

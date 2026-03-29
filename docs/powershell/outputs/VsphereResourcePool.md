@@ -1,6 +1,8 @@
 ### VsphereResourcePool
 - cdmId: System.String
   - CDM ID of the vSphere resource pool.
+- filterDescription: System.String
+  - Description of the resource pool.
 - snapshotConsistencyMandate: ConsistencyLevelEnum
   - Snapshot consistency mandate.
 - snapshotConsistencySource: System.String

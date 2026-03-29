@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FELDSPAR_ROOT")]
         FELDSPAR_ROOT,
 
+        [EnumMember(Value = "FUSION_COMPUTE_ROOT")]
+        FUSION_COMPUTE_ROOT,
+
         [EnumMember(Value = "GCPNATIVE_ROOT")]
         GCPNATIVE_ROOT,
 

@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("storageAccountName")]
         public System.String? StorageAccountName { get; set; }
 
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        [JsonProperty("templateLocationId")]
+        public System.String? TemplateLocationId { get; set; }
+
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)
         [JsonProperty("cloudNativeCompanion")]
@@ -82,6 +87,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ContainerNamePrefix = null,
         System.Boolean? IsConsolidationEnabled = null,
         System.String? StorageAccountName = null,
+        System.String? TemplateLocationId = null,
         AzureCloudNativeTargetCompanion? CloudNativeCompanion = null,
         AzureComputeSettings? ComputeSettings = null,
         ProxySettings? ProxySettings = null
@@ -104,6 +110,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StorageAccountName != null ) {
             this.StorageAccountName = StorageAccountName;
+        }
+        if ( TemplateLocationId != null ) {
+            this.TemplateLocationId = TemplateLocationId;
         }
         if ( CloudNativeCompanion != null ) {
             this.CloudNativeCompanion = CloudNativeCompanion;
@@ -184,6 +193,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "storageAccountName\n" ;
             } else {
                 s += ind + "storageAccountName\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (this.TemplateLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateLocationId\n" ;
+            } else {
+                s += ind + "templateLocationId\n" ;
             }
         }
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
@@ -337,6 +355,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.StorageAccountName != null && ec.Excludes("storageAccountName",true))
         {
             this.StorageAccountName = null;
+        }
+        //      C# -> System.String? TemplateLocationId
+        // GraphQL -> templateLocationId: UUID! (scalar)
+        if (ec.Includes("templateLocationId",true))
+        {
+            if(this.TemplateLocationId == null) {
+
+                this.TemplateLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateLocationId != null && ec.Excludes("templateLocationId",true))
+        {
+            this.TemplateLocationId = null;
         }
         //      C# -> AzureCloudNativeTargetCompanion? CloudNativeCompanion
         // GraphQL -> cloudNativeCompanion: AzureCloudNativeTargetCompanion (type)

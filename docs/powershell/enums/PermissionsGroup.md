@@ -88,3 +88,8 @@ These permissions are applicable to the Laminar Outpost Application
 feature.
 - CLOUDSQL - Represents the set of permissions required for CloudSQL operations.
 These permissions are applicable to the GCP Exocompute feature.
+- RECOVERY_NETWORKING - Represents the set of permissions required for networking recovery
+operations in AWS Config Protection (App Resilience). These permissions
+cover VPC, ELB, and Route 53 resources.
+- ALLOYDB - Represents the set of permissions required for AlloyDb operations.
+These permissions are applicable to the GCP AlloyDB Protection feature.

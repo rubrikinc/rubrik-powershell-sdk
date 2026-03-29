@@ -10,6 +10,8 @@ Dynamics 365 organization.
   - The status of the Dynamics 365 organization.
 - lastRefreshTime: DateTime
   - The time at which the Dynamics 365 organization was last synced to Rubrik.
+- exocomputeId: System.String
+  - Denotes the ID of the exocompute cluster associated with the org.
 - saasOrgType: SaasOrgType
   - The organization type that categorizes the SaaS provider.
 - metadataWorkloadID: System.String

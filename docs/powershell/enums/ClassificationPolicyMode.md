@@ -1,3 +1,3 @@
 ### ClassificationPolicyMode
-- DISCOVERY
-- COMPLIANCE
+- DISCOVERY - Discovery mode.
+- COMPLIANCE - Compliance mode.

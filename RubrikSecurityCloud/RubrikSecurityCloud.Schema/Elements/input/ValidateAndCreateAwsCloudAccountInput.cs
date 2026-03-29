@@ -78,6 +78,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleChainingAccountId")]
         public System.String? RoleChainingAccountId { get; set; }
 
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
 
         #endregion
 
