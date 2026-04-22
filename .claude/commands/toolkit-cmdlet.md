@@ -61,7 +61,14 @@ File location: `~/rubrik-powershell-sdk/Toolkit/Public/<Verb>-Rsc<Noun>.ps1`
 **Comment-based help** (immediately after `function Name {`)
 - `.SYNOPSIS` — one line, present tense, no period
 - `.DESCRIPTION` — multi-sentence; cover what it retrieves, default behavior, available filters, what `-Detail` adds if applicable
-- `.LINK` — always `https://rubrikinc.github.io/rubrik-api-documentation/schema/reference`
+- `.LINK` — one entry per backing operation, pointing to the specific page on the developer center. PowerShell supports multiple `.LINK` blocks and all appear under "RELATED LINKS" in `Get-Help`:
+  ```
+  .LINK
+  https://developer.rubrik.com/Rubrik-Security-Cloud-API/API-Reference/queries/mssqlDatabases/
+  .LINK
+  https://developer.rubrik.com/Rubrik-Security-Cloud-API/API-Reference/queries/mssqlDatabase/
+  ```
+  Use the pattern `queries/<operationName>/` for queries and `mutations/<operationName>/` for mutations.
 - `.PARAMETER` — one block per parameter; include `.PARAMETER AsQuery` with this exact text:
   ```
   Return the query object instead of running the query.
