@@ -81,6 +81,7 @@ File location: `~/rubrik-powershell-sdk/Toolkit/Public/<Verb>-Rsc<Noun>.ps1`
 - Standard parameter sets for Get-* cmdlets:
   - `"Id"` — lookup by FID
   - `"List"` (default) — filterable list with Name, Sla, Cluster, Relic, Replica
+- `-Name` must be `Position = 0` in the `"List"` parameter set so callers can omit the parameter name: `Get-RscMssqlDatabase "foo"` instead of `Get-RscMssqlDatabase -Name "foo"`
 - Always include `-AsQuery [Switch]` (no ParameterSetName, so available in all sets)
 - Never include a `-Detail [Switch]` parameter. Field selection is always explicit in code (see below) — there is no profile switching at runtime.
 - Pipeline parameters use `ValueFromPipeline = $true` with the correct RSC type:
