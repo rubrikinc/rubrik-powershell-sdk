@@ -366,3 +366,4 @@ After writing both files:
 3. Confirm no use of `-FieldProfile`, `-AddField`, `-Detail`, or `Connect-Rsc` in the cmdlet body
 4. For audits: confirm no existing use of `-Detail` parameter — flag it as a deviation to remove
 5. Summarize: what files were created/modified, what GQL operation backs the cmdlet, what parameter sets and pipeline types are supported
+6. When opening a PR, target the `devel` branch — `main` is the release branch
