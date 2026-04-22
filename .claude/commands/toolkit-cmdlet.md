@@ -22,13 +22,13 @@ If no description is provided, infer it from the verb and noun.
 
 Before writing any code, research using only what's inside the SDK repo:
 
-1. **Find the operation name** — The generated domain cmdlets enumerate all available operations. Read the relevant generated file for the domain (e.g., `~/rubrik-powershell-sdk/RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/generated/New-RscQueryMssql.cs` or `New-RscMutationMssql.cs`) and search for operations related to the noun. The `-Operation` parameter's `[ValidateSet]` in those files is the authoritative list of valid operation names to pass to `New-RscQuery -Gql` / `New-RscMutation -Gql`.
+1. **Find the operation name** — The generated domain cmdlets enumerate all available operations. Read the relevant generated file for the domain (e.g., `./RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/generated/New-RscQueryMssql.cs` or `New-RscMutationMssql.cs`) and search for operations related to the noun. The `-Operation` parameter's `[ValidateSet]` in those files is the authoritative list of valid operation names to pass to `New-RscQuery -Gql` / `New-RscMutation -Gql`.
 
-2. **Understand the return type and fields** — Use `Get-RscType -Name <TypeName>` (once the module is loaded) or read the generated C# type files in `~/rubrik-powershell-sdk/RubrikSecurityCloud/RubrikSecurityCloud.Schema/Elements/` to understand what fields are available for explicit field selection.
+2. **Understand the return type and fields** — From the operation's dev portal page (e.g., `https://developer.rubrik.com/Rubrik-Security-Cloud-API/API-Reference/queries/<operationName>/`), find the return type link and follow it to the type's field table. Each field has a name, type, and description. Read the field table and **present it to the user**, then ask which fields they want included. The user understands the domain — let them choose. Once confirmed, map chosen field names to the corresponding C# property names in `./RubrikSecurityCloud/RubrikSecurityCloud.Schema/Elements/type/<TypeName>.cs` (comments in those files show the GraphQL → C# name mapping).
 
-3. **Related existing cmdlets** — Find the closest analogous cmdlet in `~/rubrik-powershell-sdk/Toolkit/Public/` and read it in full as a style reference for field construction, filter patterns, and pipeline types.
+3. **Related existing cmdlets** — Find the closest analogous cmdlet in `./Toolkit/Public/` and read it in full as a style reference for field construction, filter patterns, and pipeline types.
 
-4. **Existing nouns** — Confirm the noun follows established patterns (e.g., `RscMssqlLinkedAvailabilityGroup` matches the domain prefix `Mssql`). List `~/rubrik-powershell-sdk/Toolkit/Public/` to verify.
+4. **Existing nouns** — Confirm the noun follows established patterns (e.g., `RscMssqlLinkedAvailabilityGroup` matches the domain prefix `Mssql`). List `./Toolkit/Public/` to verify.
 
 5. **Relevant RSC types for pipeline input** — Look at how similar cmdlets declare pipeline params (e.g., `[RubrikSecurityCloud.Types.Cluster]`, `[RubrikSecurityCloud.Types.GlobalSlaReply]`) and match the pattern for this domain.
 
@@ -49,7 +49,7 @@ If any of these are ambiguous, ask before writing code:
 
 ## Step 3: Write the cmdlet
 
-File location: `~/rubrik-powershell-sdk/Toolkit/Public/<Verb>-Rsc<Noun>.ps1`
+File location: `./Toolkit/Public/<Verb>-Rsc<Noun>.ps1`
 
 ### Conventions (MUST follow all of these):
 
@@ -134,7 +134,7 @@ $node.EffectiveSlaDomain = $sla
 $query.Field.Nodes = @( $node )
 ```
 
-Use `"FETCH"` as the placeholder string value and `$true` for booleans. Nest types as deeply as needed. Research the RSC .NET type names from the schema or existing cmdlets.
+Use `"FETCH"` as the placeholder string value and `$true` for booleans. Nest types as deeply as needed. Derive C# type names from the comments in `./RubrikSecurityCloud/RubrikSecurityCloud.Schema/Elements/type/<TypeName>.cs` — each field has a comment showing its GraphQL name and the C# type to use for nested objects.
 
 **Query construction (Get-* cmdlets)**
 ```powershell
@@ -228,7 +228,7 @@ Non-destructive mutations (snapshots, mounts, exports) do not require `ShouldPro
 
 ## Step 4: Write the format file
 
-File location: `~/rubrik-powershell-sdk/Toolkit/Format/<TypeName>.Format.ps1xml`
+File location: `./Toolkit/Format/<TypeName>.Format.ps1xml`
 
 Every Get-* cmdlet that returns a new object type needs a format file so the default table view shows sensible columns. Choose 4-6 fields that give the most useful at-a-glance information (typically: Id, Name, status/health field, cluster or location, SLA domain, and one domain-specific field).
 
@@ -276,7 +276,7 @@ If the cmdlet returns an existing type that already has a format file, skip this
 
 ## Step 5: Write the e2e test
 
-File location: `~/rubrik-powershell-sdk/Toolkit/Tests/e2e/<Noun>.Tests.ps1`
+File location: `./Toolkit/Tests/e2e/<Noun>.Tests.ps1`
 
 If a test file already exists for this noun's domain (e.g., `Mssql.Tests.ps1`), add new `Context` blocks to the existing file instead of creating a new one.
 
@@ -361,8 +361,8 @@ When a parameter type change would be breaking (e.g., `[String]$Id` → typed ob
 
 After writing both files:
 
-1. Check `~/rubrik-powershell-sdk/Toolkit/Tests/unit/ToolkitIntegrity.Tests.ps1` — confirm the new filename matches the `^[a-zA-Z]+-Rsc[a-zA-Z0-9]+\.ps1$` pattern (it should automatically pass if naming is correct)
-2. Confirm the function is exported — check `~/rubrik-powershell-sdk/RubrikSecurityCloud.psd1` or the module manifest for the `FunctionsToExport` list; add the new function name if it uses an explicit list
+1. Check `./Toolkit/Tests/unit/ToolkitIntegrity.Tests.ps1` — confirm the new filename matches the `^[a-zA-Z]+-Rsc[a-zA-Z0-9]+\.ps1$` pattern (it should automatically pass if naming is correct)
+2. Confirm the function is exported — check `./RubrikSecurityCloud.psd1` or the module manifest for the `FunctionsToExport` list; add the new function name if it uses an explicit list
 3. Confirm no use of `-FieldProfile`, `-AddField`, `-Detail`, or `Connect-Rsc` in the cmdlet body
 4. For audits: confirm no existing use of `-Detail` parameter — flag it as a deviation to remove
 5. Summarize: what files were created/modified, what GQL operation backs the cmdlet, what parameter sets and pipeline types are supported
