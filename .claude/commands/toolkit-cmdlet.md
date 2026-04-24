@@ -24,7 +24,13 @@ Before writing any code, research using only what's inside the SDK repo:
 
 1. **Find the operation name** — The generated domain cmdlets enumerate all available operations. Read the relevant generated file for the domain (e.g., `./RubrikSecurityCloud/RubrikSecurityCloud.PowerShell/generated/New-RscQueryMssql.cs` or `New-RscMutationMssql.cs`) and search for operations related to the noun. The `-Operation` parameter's `[ValidateSet]` in those files is the authoritative list of valid operation names to pass to `New-RscQuery -Gql` / `New-RscMutation -Gql`.
 
-2. **Understand the return type and fields** — From the operation's dev portal page (e.g., `https://developer.rubrik.com/Rubrik-Security-Cloud-API/API-Reference/queries/<operationName>/`), find the return type link and follow it to the type's field table. Each field has a name, type, and description. Read the field table and **present it to the user**, then ask which fields they want included. The user understands the domain — let them choose. Once confirmed, map chosen field names to the corresponding C# property names in `./RubrikSecurityCloud/RubrikSecurityCloud.Schema/Elements/type/<TypeName>.cs` (comments in those files show the GraphQL → C# name mapping).
+2. **Check for existing coverage** — Search `./Toolkit/Public/` for any cmdlet that already uses the target GQL operation:
+   ```bash
+   grep -rl "<operationName>" ./Toolkit/Public/
+   ```
+   If a match exists, report it to the user and ask whether they want to proceed with the new cmdlet or audit the existing one instead.
+
+3. **Understand the return type and fields** — From the operation's dev portal page (e.g., `https://developer.rubrik.com/Rubrik-Security-Cloud-API/API-Reference/queries/<operationName>/`), find the return type link and follow it to the type's field table. Each field has a name, type, and description. Read the field table and **present it to the user**, then ask which fields they want included. The user understands the domain — let them choose. Once confirmed, map chosen field names to the corresponding C# property names in `./RubrikSecurityCloud/RubrikSecurityCloud.Schema/Elements/type/<TypeName>.cs` (comments in those files show the GraphQL → C# name mapping).
 
 3. **Related existing cmdlets** — Find the closest analogous cmdlet in `./Toolkit/Public/` and read it in full as a style reference for field construction, filter patterns, and pipeline types.
 
@@ -40,10 +46,12 @@ Report all findings before proceeding.
 
 If any of these are ambiguous, ask before writing code:
 
-- Which verb? (`Get`, `New`, `Set`, `Remove`, `Start`, `Stop`, `Protect`, `Suspend`, `Resume`, `Register`)
+- Which verb? Must be an approved PowerShell verb — run `Get-Verb` to see the full list. Common ones: `Get`, `New`, `Set`, `Remove`, `Start`, `Stop`, `Protect`, `Suspend`, `Resume`, `Register`
 - Is this a list/single-object query, a mutation, or both?
 - What parameter sets make sense? (e.g., `Id`, `Name`, `List`)
 - What should pipe in? (Cluster, Sla, MssqlDatabase, etc.)
+
+**Naming rule: nouns are always singular.** PowerShell convention is `Get-Item` not `Get-Items`, even when the cmdlet returns a list. Use `Get-RscGcpInstance`, not `Get-RscGcpInstances`.
 
 ---
 
@@ -90,7 +98,7 @@ File location: `./Toolkit/Public/<Verb>-Rsc<Noun>.ps1`
   - Org: `[RubrikSecurityCloud.Types.Org]$Org`
   - Domain-specific objects: use the exact RSC type (e.g., `[RubrikSecurityCloud.Types.MssqlDatabase]$RscMssqlDatabase`)
 - Use `[ValidateSet(...)]` for string parameters with a fixed set of values
-- Use `$PSBoundParameters.ContainsKey('paramName')` (not `if ($param)`) for switches where `$false` is a meaningful value to pass to the API (e.g., `-Relic`, `-Replica`)
+- Use `[System.Nullable[bool]]` (not `[Boolean]`) for three-state parameters like `-Relic` and `-Replica`, and detect "not specified" with `$PSBoundParameters.ContainsKey('paramName')`. Never use `[Boolean]` for user-facing parameters — it forces callers to write `-Relic:$true` instead of `-Relic $true`.
 
 **Prefer typed RSC objects over raw string IDs for parameters**
 Parameters that represent RSC objects (workloads, SLA domains, clusters, instances, etc.) should be typed as the RSC .NET type, not as `[String]`. Extract the `.Id` property internally. This applies to both pipeline inputs and named parameters on mutations.
@@ -223,6 +231,37 @@ Process {
 Non-destructive mutations (snapshots, mounts, exports) do not require `ShouldProcess`.
 
 **Always add `-AsQuery` guard immediately before `Invoke()`.**
+
+---
+
+### PowerShell best practices (from Microsoft strongly-encouraged guidelines)
+
+These apply to every cmdlet. Reference: https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines
+
+**Singular parameter names** — even for parameters that accept arrays or lists, use the singular form (e.g., `-Name`, not `-Names`). This matches PowerShell built-in conventions.
+
+**`[Switch]` vs `[Boolean]` vs `Nullable<bool>`**
+- Use `[Switch]` for flags that are simply present or absent (e.g., `-AsQuery`, `-PassThru`). Do **not** use `[Boolean]` for these.
+- Use `[System.Nullable[bool]]` when a parameter has three meaningful states: true, false, and "not specified" (e.g., `-Relic` — filter to relics, filter to non-relics, or don't filter at all). Check with `$PSBoundParameters.ContainsKey('Relic')` to detect "not specified".
+- Never use `[Boolean]` for user-facing parameters; it forces callers to write `-Relic:$true` instead of `-Relic $true`.
+
+**Wildcard support for `-Name`** — where the underlying API supports substring or pattern matching, accept wildcards in the `-Name` parameter and document it in `.PARAMETER Name`. If the API only supports exact match, say so explicitly.
+
+**`PassThru` parameter for mutations** — cmdlets that modify state and return nothing by default should support `-PassThru` so callers can receive the result object in the pipeline. Add it as a `[Switch]` and conditionally return the result:
+
+```powershell
+[Parameter(Mandatory = $false)][Switch]$PassThru
+
+# In Process:
+$result = $query.Invoke()
+if ($PassThru) { $result }
+```
+
+**`WriteVerbose` and `WriteWarning`**
+- Call `Write-Verbose` for informational steps callers may want when running with `-Verbose` (e.g., "Filtering by SLA: Gold").
+- Call `Write-Warning` before operations that may have unintended consequences (e.g., relic filtering that returns zero results).
+
+**Consistent parameter types** — if a parameter name (e.g., `-Cluster`, `-Sla`) appears in multiple cmdlets, always use the same .NET type. Never use `[String]` for `-Sla` in one cmdlet and `[RubrikSecurityCloud.Types.GlobalSlaReply]` in another.
 
 ---
 

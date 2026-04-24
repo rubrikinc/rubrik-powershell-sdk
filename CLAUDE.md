@@ -117,21 +117,43 @@ Get-RscToolkitStatus                     # compare source vs Output (shows which
 Test-RscToolkit                          # run toolkit tests only (Pester, skips core C# tests)
 ```
 
-**Typical edit-test cycle when modifying a Toolkit cmdlet (e.g. `Get-RscSla.ps1`):**
+**Prerequisite**: `ToolkitDev.ps1` requires `Output/` (or `Output.Release/`) to exist. If you get
+"Output directory not found", run `make build` first to create it.
+
+**Full workflow after creating a new cmdlet with `/toolkit-cmdlet`:**
+1. Run `make build` once to create `Output/` (only needed on a fresh clone or after `make clean`)
+2. Dot-source the dev utilities: `. ./Toolkit/Utils/ToolkitDev.ps1`
+3. Sync the new files and reimport: `Update-RscToolkit -SkipTest`
+4. Run unit tests (no RSC connection needed): `Test-RscToolkit -SkipE2ETests`
+   - `ToolkitIntegrity.Tests.ps1` confirms the cmdlet is correctly named and exported
+   - `AsQuery.Tests.ps1` confirms `-AsQuery` returns an `RscQuery` object
+5. Run e2e tests against a live RSC environment: `Test-RscToolkit -SkipUnitTests`
+
+**Typical edit-test cycle when modifying an existing Toolkit cmdlet:**
 1. Edit the source file in `Toolkit/Public/`
-2. Run `Update-RscToolkit` — copies to `Output/Toolkit/Public/`, reimports module, runs tests
-3. If tests fail, fix and repeat from step 1
+2. Run `Update-RscToolkit -SkipTest` — syncs to `Output/`, reimports module
+3. Run `Test-RscToolkit -SkipE2ETests` to check unit tests
+4. If tests fail, fix and repeat from step 1
 
 `Update-RscToolkit` copies from all five toolkit subdirs (Public, Private,
 Format, Operations/DEFAULT, Operations/DETAIL) to their counterparts under
 `Output/Toolkit/`. It only copies files that have actually changed.
 
 **Claude Code workflow**: When editing Toolkit scripts, after making changes:
-- Tell the user to run `Update-RscToolkit` to install and test
+- Tell the user to run `Update-RscToolkit -SkipTest` then `Test-RscToolkit -SkipE2ETests`
 - Or, if running tests via `Utils/Test-RscSdk.ps1`, do a `make build` first
   since the build also copies toolkit files to Output via MSBuild targets
 
 ### Build (`Makefile` / `Utils/Build-RscSdk.ps1`)
+
+**Prerequisites**: `pwsh` (PowerShell 7+) and the .NET SDK (`dotnet`). Both must be on `PATH`.
+Before running `make build`, verify they are present:
+```bash
+pwsh --version   # if missing: brew install powershell
+dotnet --version # if missing: brew install dotnet
+```
+If either is missing, install it via Homebrew and then proceed.
+
 ```bash
 make build          # debug build (quick)
 make test           # run all tests
