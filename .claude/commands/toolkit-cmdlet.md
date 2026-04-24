@@ -417,7 +417,20 @@ After writing both files:
 3. Confirm no use of `-FieldProfile`, `-AddField`, `-Detail`, or `Connect-Rsc` in the cmdlet body
 4. For audits: confirm no existing use of `-Detail` parameter — flag it as a deviation to remove
 5. Summarize: what files were created/modified, what GQL operation backs the cmdlet, what parameter sets and pipeline types are supported
-6. When opening a PR, target the `devel` branch — `main` is the release branch. Name the branch after the cmdlet (e.g., `Add-RscMssqlSnapshot` or `Get-RscNutanixVirtualMachine`) for reviewer readability
+6. Offer to handle the git and GitHub steps for the user — do not ask them to run commands themselves. Ask if they'd like you to commit, push, and open a PR before proceeding.
+
+   When they say yes, follow this flow:
+
+   **Check the remotes first** (`git remote -v`):
+   - If `origin` points to `rubrikinc/rubrik-powershell-sdk` (they cloned upstream directly): run `gh repo fork --clone=false` to create a fork under their GitHub account, add it as a remote named `fork`, push the branch there, and open a PR targeting `rubrikinc/rubrik-powershell-sdk`'s `devel` branch.
+   - If `origin` already points to their personal fork (URL contains their GitHub username, not `rubrikinc`): push directly to `origin` and open the PR targeting `rubrikinc/rubrik-powershell-sdk`'s `devel` branch using `gh pr create --repo rubrikinc/rubrik-powershell-sdk --base devel`.
+   - If `origin` points to `rubrikinc` and they have push access (Rubrik team member): push directly to `origin` and open the PR with `gh pr create --base devel`.
+
+   In all cases:
+   - Create a feature branch named after the cmdlet (e.g., `Get-RscNutanixVirtualMachine`)
+   - Stage only the files created in this session (cmdlet, format file, e2e test, CHANGELOG)
+   - Write a clear PR description summarizing what the cmdlet does and how to test it
+
 7. Tell the user to load the dev utilities and sync the files — and emphasize the leading dot-space:
    ```powershell
    # The leading ". " (dot space) is required — without it, functions are
@@ -427,3 +440,9 @@ After writing both files:
    Update-RscToolkit -SkipTest
    Test-RscToolkit -SkipE2ETests
    ```
+
+8. If a new format file was created in Step 4, tell the user to load it for the current session. `Update-RscToolkit` copies the file to `Output/Toolkit/Format/`, but `FormatsToProcess` in the module manifest is only updated at build time (`make build`). To see the formatted table output immediately without a full rebuild, run:
+   ```powershell
+   Update-FormatData -PrependPath ./Output/Toolkit/Format/<TypeName>.Format.ps1xml
+   ```
+   After a `make build`, the format file is included in `FormatsToProcess` and loads automatically on module import — `Update-FormatData` is only needed for the current interactive dev session.
