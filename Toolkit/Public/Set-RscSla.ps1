@@ -451,7 +451,9 @@ Return the query object instead of executing it.
                     $CascadingArchivalSpecInput.ArchivalTieringSpecInput = $null
                 }
                 $CascadingArchivalSpecInput.Frequency = $CascadingArchivalSpec.Frequency
-                $CascadingArchivalSpecInput.ArchivalLocationId = [string]$CascadingArchivalSpec.ArchivalLocation.Id
+                if ($CascadingArchivalSpec.ArchivalLocation) {
+                    $CascadingArchivalSpecInput.ArchivalLocationId = [string]$CascadingArchivalSpec.ArchivalLocation.Id
+                }
                 $ArchivalLocationToClusterMappingInputs = @()
                 foreach ($Mapping in $CascadingArchivalSpec.ArchivalLocationToClusterMapping) {
                     $MappingInput = New-Object RubrikSecurityCloud.Types.ArchivalLocationToClusterMappingInput
