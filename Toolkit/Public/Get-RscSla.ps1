@@ -164,7 +164,10 @@ function Get-RscSla {
                 "archivalTieringSpec.shouldTierExistingSnapshots",
                 "frequencies",
                 "archivalLocationToClusterMapping.cluster.id",
+                "archivalLocationToClusterMapping.cluster.name",
                 "archivalLocationToClusterMapping.location.id",
+                "archivalLocationToClusterMapping.location.name",
+                "archivalLocationToClusterMapping.location.targetType",
                 "storageSetting.id"
             )
 
@@ -184,6 +187,8 @@ function Get-RscSla {
                 "cascadingArchivalSpecs.archivalTieringSpec.shouldTierExistingSnapshots",
                 "cascadingArchivalSpecs.frequency",
                 "cascadingArchivalSpecs.archivalLocation.on:RubrikManagedAwsTarget.id",
+                "cascadingArchivalSpecs.archivalLocationToClusterMapping.cluster.id",
+                "cascadingArchivalSpecs.archivalLocationToClusterMapping.cluster.name",
                 "cluster.id",
                 "cluster.name",
                 "awsRegion",
@@ -196,9 +201,45 @@ function Get-RscSla {
                 "azureTarget.region"
             )
             # Commented-out fields kept for reference:
-            #   cascadingArchivalSpecs.archivalLocationToClusterMapping (not needed)
             #   targetMapping (not needed for SLA updates)
             #   replicationPairs (feature still in development)
+
+            # cascadingArchivalSpecs.archivalLocationToClusterMapping.location is a Target
+            # interface with 22 implementations. Multiple on:TypeName paths in InitialProperties
+            # don't stack — use SetNext() to build a composite chain covering all common types.
+            $_replSpec = $gsr.ReplicationSpecsV2[0]
+            $_caSpec   = $_replSpec.CascadingArchivalSpecs[0]
+            $_mapping  = $_caSpec.ArchivalLocationToClusterMapping[0]
+
+            $_tAws    = New-Object RubrikSecurityCloud.Types.RubrikManagedAwsTarget
+            $_tAzure  = New-Object RubrikSecurityCloud.Types.RubrikManagedAzureTarget
+            $_tGcp    = New-Object RubrikSecurityCloud.Types.RubrikManagedGcpTarget
+            $_tNfs    = New-Object RubrikSecurityCloud.Types.RubrikManagedNfsTarget
+            $_tS3c    = New-Object RubrikSecurityCloud.Types.RubrikManagedS3CompatibleTarget
+            $_tCdmAws   = New-Object RubrikSecurityCloud.Types.CdmManagedAwsTarget
+            $_tCdmAzure = New-Object RubrikSecurityCloud.Types.CdmManagedAzureTarget
+            $_tCdmGcp   = New-Object RubrikSecurityCloud.Types.CdmManagedGcpTarget
+            $_tCdmNfs   = New-Object RubrikSecurityCloud.Types.CdmManagedNfsTarget
+            $_tCdmS3c   = New-Object RubrikSecurityCloud.Types.CdmManagedS3CompatibleTarget
+
+            foreach ($_t in @($_tAws, $_tAzure, $_tGcp, $_tNfs, $_tS3c,
+                              $_tCdmAws, $_tCdmAzure, $_tCdmGcp, $_tCdmNfs, $_tCdmS3c)) {
+                $_t.Id         = "FETCH"
+                $_t.Name       = "FETCH"
+                $_t.TargetType = [RubrikSecurityCloud.Types.TargetType]::UNKNOWN
+            }
+
+            $_tAws.SetNext($_tAzure)
+            $_tAzure.SetNext($_tGcp)
+            $_tGcp.SetNext($_tNfs)
+            $_tNfs.SetNext($_tS3c)
+            $_tS3c.SetNext($_tCdmAws)
+            $_tCdmAws.SetNext($_tCdmAzure)
+            $_tCdmAzure.SetNext($_tCdmGcp)
+            $_tCdmGcp.SetNext($_tCdmNfs)
+            $_tCdmNfs.SetNext($_tCdmS3c)
+
+            $_mapping.Location = $_tAws
 
             # baseFrequency: Duration
             # Base frequency for the SLA Domain.

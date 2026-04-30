@@ -31,6 +31,38 @@ Describe -Name "Get-RscSla composite chain lookup" -Fixture {
     }
 }
 
+Describe -Name "Get-RscSla archival location fields" -Fixture {
+
+    It -Name "archivalSpecs includes cluster.name, location.name, and location.targetType" -Test {
+        $query = Get-RscSla -AsQuery
+        $gsr = $query.field.nodes |
+            Where-Object { $_.GetType().Name -eq "GlobalSlaReply" } |
+            Select-Object -First 1
+        $mapping = $gsr.ArchivalSpecs[0].ArchivalLocationToClusterMapping[0]
+        $mapping.Cluster.Id   | Should -Not -BeNullOrEmpty
+        $mapping.Cluster.Name | Should -Not -BeNullOrEmpty
+        $mapping.Location.Id  | Should -Not -BeNullOrEmpty
+        $mapping.Location.Name | Should -Not -BeNullOrEmpty
+        $mapping.Location.AsFieldSpec() | Should -Match "targetType"
+    }
+
+    It -Name "cascadingArchivalSpecs includes archivalLocationToClusterMapping with multi-type location" -Test {
+        $query = Get-RscSla -AsQuery
+        $gsr = $query.field.nodes |
+            Where-Object { $_.GetType().Name -eq "GlobalSlaReply" } |
+            Select-Object -First 1
+        $mapping = $gsr.ReplicationSpecsV2[0].CascadingArchivalSpecs[0].ArchivalLocationToClusterMapping[0]
+        $mapping.Cluster.Id   | Should -Not -BeNullOrEmpty
+        $mapping.Cluster.Name | Should -Not -BeNullOrEmpty
+        $fs = $mapping.Location.AsFieldSpec()
+        $fs | Should -Match "on RubrikManagedAwsTarget"
+        $fs | Should -Match "on RubrikManagedAzureTarget"
+        $fs | Should -Match "on RubrikManagedGcpTarget"
+        $fs | Should -Match "on CdmManagedAwsTarget"
+        $fs | Should -Match "on CdmManagedGcpTarget"
+    }
+}
+
 Describe -Name "Get-RscSla -AsQuery" -Fixture {
 
     It -Name "List path: -AsQuery returns a query object" -Test {
