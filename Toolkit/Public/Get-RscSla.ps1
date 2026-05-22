@@ -164,7 +164,10 @@ function Get-RscSla {
                 "archivalTieringSpec.shouldTierExistingSnapshots",
                 "frequencies",
                 "archivalLocationToClusterMapping.cluster.id",
+                "archivalLocationToClusterMapping.cluster.name",
                 "archivalLocationToClusterMapping.location.id",
+                "archivalLocationToClusterMapping.location.name",
+                "archivalLocationToClusterMapping.location.targetType",
                 "storageSetting.id"
             )
 
@@ -184,6 +187,8 @@ function Get-RscSla {
                 "cascadingArchivalSpecs.archivalTieringSpec.shouldTierExistingSnapshots",
                 "cascadingArchivalSpecs.frequency",
                 "cascadingArchivalSpecs.archivalLocation.on:RubrikManagedAwsTarget.id",
+                "cascadingArchivalSpecs.archivalLocationToClusterMapping.cluster.id",
+                "cascadingArchivalSpecs.archivalLocationToClusterMapping.cluster.name",
                 "cluster.id",
                 "cluster.name",
                 "awsRegion",
@@ -193,12 +198,113 @@ function Get-RscSla {
                 "awsTarget.region",
                 "azureTarget.subscriptionId",
                 "azureTarget.subscriptionName",
-                "azureTarget.region"
+                "azureTarget.region",
+                "targetMapping.connectionStatus.status",
+                "targetMapping.groupType",
+                "targetMapping.id",
+                "targetMapping.name",
+                "targetMapping.targetType"
             )
             # Commented-out fields kept for reference:
-            #   cascadingArchivalSpecs.archivalLocationToClusterMapping (not needed)
-            #   targetMapping (not needed for SLA updates)
             #   replicationPairs (feature still in development)
+
+            # cascadingArchivalSpecs.archivalLocationToClusterMapping.location is a Target
+            # interface with 22 implementations. Multiple on:TypeName paths in InitialProperties
+            # don't stack — use SetNext() to build a composite chain covering all common types.
+            $_replSpec = $gsr.ReplicationSpecsV2[0]
+            $_caSpec   = $_replSpec.CascadingArchivalSpecs[0]
+            $_mapping  = $_caSpec.ArchivalLocationToClusterMapping[0]
+
+            $_tAws    = New-Object RubrikSecurityCloud.Types.RubrikManagedAwsTarget
+            $_tAzure  = New-Object RubrikSecurityCloud.Types.RubrikManagedAzureTarget
+            $_tGcp    = New-Object RubrikSecurityCloud.Types.RubrikManagedGcpTarget
+            $_tNfs    = New-Object RubrikSecurityCloud.Types.RubrikManagedNfsTarget
+            $_tS3c    = New-Object RubrikSecurityCloud.Types.RubrikManagedS3CompatibleTarget
+            $_tDca     = New-Object RubrikSecurityCloud.Types.RubrikManagedDcaTarget
+            $_tGlacier = New-Object RubrikSecurityCloud.Types.RubrikManagedGlacierTarget
+            $_tLck     = New-Object RubrikSecurityCloud.Types.RubrikManagedLckTarget
+            $_tTape    = New-Object RubrikSecurityCloud.Types.RubrikManagedTapeTargetType
+            $_tCdmAws   = New-Object RubrikSecurityCloud.Types.CdmManagedAwsTarget
+            $_tCdmAzure = New-Object RubrikSecurityCloud.Types.CdmManagedAzureTarget
+            $_tCdmGcp   = New-Object RubrikSecurityCloud.Types.CdmManagedGcpTarget
+            $_tCdmNfs   = New-Object RubrikSecurityCloud.Types.CdmManagedNfsTarget
+            $_tCdmS3c   = New-Object RubrikSecurityCloud.Types.CdmManagedS3CompatibleTarget
+            $_tCdmDca     = New-Object RubrikSecurityCloud.Types.CdmManagedDcaTarget
+            $_tCdmGlacier = New-Object RubrikSecurityCloud.Types.CdmManagedGlacierTarget
+            $_tCdmLck     = New-Object RubrikSecurityCloud.Types.CdmManagedLckTarget
+            $_tCdmTape    = New-Object RubrikSecurityCloud.Types.CdmManagedTapeTarget
+            $_tCdmGeneric = New-Object RubrikSecurityCloud.Types.CdmTarget
+            $_tRcvAws   = New-Object RubrikSecurityCloud.Types.RubrikManagedRcvAwsTarget
+            $_tRcvGcp   = New-Object RubrikSecurityCloud.Types.RubrikManagedRcvGcpTarget
+            $_tRcs      = New-Object RubrikSecurityCloud.Types.RubrikManagedRcsTarget
+
+            foreach ($_t in @($_tAws, $_tAzure, $_tGcp, $_tNfs, $_tS3c,
+                              $_tDca, $_tGlacier, $_tLck, $_tTape,
+                              $_tCdmAws, $_tCdmAzure, $_tCdmGcp, $_tCdmNfs, $_tCdmS3c,
+                              $_tCdmDca, $_tCdmGlacier, $_tCdmLck, $_tCdmTape, $_tCdmGeneric,
+                              $_tRcvAws, $_tRcvGcp, $_tRcs)) {
+                $_t.Id                       = "FETCH"
+                $_t.Name                     = "FETCH"
+                $_t.ClusterName              = "FETCH"
+                $_t.TargetType               = [RubrikSecurityCloud.Types.TargetType]::UNKNOWN
+                $_t.LocationScope            = [RubrikSecurityCloud.Types.LocationScope]::UNKNOWN
+                $_t.ReaderRetrievalMethod    = [RubrikSecurityCloud.Types.ReaderRetrievalMethod]::UNKNOWN
+                $_t.LocationConnectionStatus = [RubrikSecurityCloud.Types.ConnectionStatusType]::UNKNOWN
+                $_t.Status                   = [RubrikSecurityCloud.Types.ArchivalLocationStatus]::UNKNOWN
+                $_t.UpgradeStatus            = [RubrikSecurityCloud.Types.UpgradeStatus]::UNKNOWN
+                $_t.TargetMapping            = Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")
+                $_t.TargetMappingBasic       = @((Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")))
+            }
+
+            # ConnectionStatus is only defined on the RubrikManaged* targets, not the CDM-managed ones.
+            foreach ($_t in @($_tAws, $_tAzure, $_tGcp, $_tNfs, $_tS3c,
+                              $_tDca, $_tGlacier, $_tLck, $_tTape)) {
+                $_t.ConnectionStatus = [RubrikSecurityCloud.Types.ConnectionStatusType]::UNKNOWN
+            }
+
+            # SyncStatus is defined on the 9 RubrikManaged* targets and the 3 Rcv/Rcs targets.
+            foreach ($_t in @($_tAws, $_tAzure, $_tGcp, $_tNfs, $_tS3c,
+                              $_tDca, $_tGlacier, $_tLck, $_tTape,
+                              $_tRcvAws, $_tRcvGcp, $_tRcs)) {
+                $_t.SyncStatus = [RubrikSecurityCloud.Types.TargetSyncStatus]::UNKNOWN
+            }
+
+            # Tier is defined on the 3 Rcv/Rcs targets.
+            foreach ($_t in @($_tRcvAws, $_tRcvGcp, $_tRcs)) {
+                $_t.Tier = [RubrikSecurityCloud.Types.RcsTierEnumType]::UNKNOWN
+            }
+
+            # Redundancy is defined on RubrikManagedRcvAwsTarget and RubrikManagedRcsTarget.
+            foreach ($_t in @($_tRcvAws, $_tRcs)) {
+                $_t.Redundancy = [RubrikSecurityCloud.Types.RcvRedundancy]::UNKNOWN
+            }
+
+            # RedundancyState is defined only on RubrikManagedRcsTarget.
+            $_tRcs.RedundancyState = [RubrikSecurityCloud.Types.RcvRedundancyState]::UNKNOWN
+
+            $_tAws.SetNext($_tAzure)
+            $_tAzure.SetNext($_tGcp)
+            $_tGcp.SetNext($_tNfs)
+            $_tNfs.SetNext($_tS3c)
+            $_tS3c.SetNext($_tDca)
+            $_tDca.SetNext($_tGlacier)
+            $_tGlacier.SetNext($_tLck)
+            $_tLck.SetNext($_tTape)
+            $_tTape.SetNext($_tCdmAws)
+            $_tCdmAws.SetNext($_tCdmAzure)
+            $_tCdmAzure.SetNext($_tCdmGcp)
+            $_tCdmGcp.SetNext($_tCdmNfs)
+            $_tCdmNfs.SetNext($_tCdmS3c)
+            $_tCdmS3c.SetNext($_tCdmDca)
+            $_tCdmDca.SetNext($_tCdmGlacier)
+            $_tCdmGlacier.SetNext($_tCdmLck)
+            $_tCdmLck.SetNext($_tCdmTape)
+            $_tCdmTape.SetNext($_tCdmGeneric)
+            $_tCdmGeneric.SetNext($_tRcvAws)
+            $_tRcvAws.SetNext($_tRcvGcp)
+            $_tRcvGcp.SetNext($_tRcs)
+
+            $_mapping.Location = $_tAws
 
             # baseFrequency: Duration
             # Base frequency for the SLA Domain.
