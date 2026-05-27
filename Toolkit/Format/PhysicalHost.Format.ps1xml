@@ -5,6 +5,7 @@
                 <Name>Default</Name>
                 <ViewSelectedBy>
                     <TypeName>RubrikSecurityCloud.Types.PhysicalHost</TypeName>
+                    <TypeName>RubrikSecurityCloud.Types.MssqlHost</TypeName>
                 </ViewSelectedBy>
                 <TableControl>
                     <TableHeaders>

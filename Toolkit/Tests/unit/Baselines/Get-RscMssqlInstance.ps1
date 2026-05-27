@@ -202,6 +202,7 @@ Return the query object instead of executing it.
 
             $physicalHostIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "PhysicalHost"})
             $windowsClusterIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "WindowsCluster"})
+            $mssqlHostIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlHost"})
 
             $query.field.Nodes[$physicalHostIndex].cluster = Get-RscType -Name Cluster -InitialProperties name,id
             $query.Field.Nodes[$physicalHostIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
@@ -211,13 +212,24 @@ Return the query object instead of executing it.
             $mssqlInstanceIndex = $query.field.nodes[$physicalHostIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
             $query.field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].name = "FETCH"
             $query.field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].id = "FETCH"
-            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = New-Object RubrikSecurityCloud.Types.Cluster
-            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.name = "FETCH"
-            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster.id = "FETCH"
-            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
-            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
-            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
-            
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
+            $query.Field.Nodes[$physicalHostIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties Name, Id
+
+            # MssqlHost is the new HierarchyOverlapFix top-level type. The authz
+            # service registers MSSQL_HOST -> MSSQL_INSTANCE as a child edge
+            # (physicalChildConnection returns the instances) but not as a
+            # descendant edge (descendantConnection comes back empty). Wire the
+            # physicalChildConnection here so MssqlHost rows surface instances.
+            $query.field.Nodes[$mssqlHostIndex].cluster = Get-RscType -Name Cluster -InitialProperties name,id
+            $query.field.Nodes[$mssqlHostIndex].physicalChildConnection = New-Object -TypeName RubrikSecurityCloud.Types.MssqlHostPhysicalChildTypeConnection
+            $query.field.Nodes[$mssqlHostIndex].physicalChildConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
+
+            $mssqlInstanceIndex = $query.field.nodes[$mssqlHostIndex].physicalChildConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
+            $query.field.Nodes[$mssqlHostIndex].physicalChildConnection.Nodes[$mssqlInstanceIndex].name = "FETCH"
+            $query.field.Nodes[$mssqlHostIndex].physicalChildConnection.Nodes[$mssqlInstanceIndex].id = "FETCH"
+            $query.Field.Nodes[$mssqlHostIndex].physicalChildConnection.Nodes[$mssqlInstanceIndex].Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
+            $query.Field.Nodes[$mssqlHostIndex].physicalChildConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties Name, Id
+
             $query.Field.Nodes[$windowsClusterIndex].cluster = Get-RscType -Name Cluster -InitialProperties name,id
             $query.Field.Nodes[$windowsClusterIndex].effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties name,id
             $query.Field.Nodes[$windowsClusterIndex].Vars.descendantConnection.typeFilter = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::MSSQL_INSTANCE
@@ -225,10 +237,8 @@ Return the query object instead of executing it.
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
 
             $mssqlInstanceIndex = $query.field.nodes[$windowsClusterIndex].descendantConnection.Nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = Get-RscType -Name Cluster -InitialProperties name,Id
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = New-Object -TypeName RubrikSecurityCloud.Types.GlobalSlaReply
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.name = "FETCH"
-            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain.id = "FETCH"
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].Cluster = Get-RscType -Name Cluster -InitialProperties Name, Id
+            $query.Field.Nodes[$windowsClusterIndex].descendantConnection.Nodes[$mssqlInstanceIndex].effectiveSlaDomain = Get-RscType -Name GlobalSlaReply -InitialProperties Name, Id
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes[$mssqlInstanceIndex].name = "FETCH"
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes[$mssqlInstanceIndex].id = "FETCH"
 
@@ -239,9 +249,29 @@ Return the query object instead of executing it.
                 $results = Invoke-Rsc $query
 
                 # If we passed in a specific host or windows cluster name, we return the instances from that host, otherwise, we return the host and windows cluster objects.
-                # I'm not a fan of this as returning mixed object types results in bad formatting and goes against 
                 if ($HostName -or $WindowsClusterName) {
-                    $results.nodes.descendantConnection.nodes
+                    # Collect MssqlInstance children from each top-level row.
+                    # PhysicalHost / WindowsCluster expose them via
+                    # descendantConnection. MssqlHost exposes them via
+                    # physicalChildConnection. Both returns MssqlInstance Type,
+                    # so create a generic List of type  RubrikSecurityCloud.Types.MssqlInstance.
+                    $instances = New-Object -TypeName 'System.Collections.Generic.List[RubrikSecurityCloud.Types.MssqlInstance]'
+                    $seenIds   = New-Object -TypeName 'System.Collections.Generic.HashSet[string]'
+
+                    foreach ($node in $results.nodes) {
+                        $childNodes = switch ($node.GetType().Name) {
+                            "PhysicalHost"   { $node.descendantConnection.nodes }
+                            "WindowsCluster" { $node.descendantConnection.nodes }
+                            "MssqlHost"      { $node.physicalChildConnection.nodes }
+                        }
+                        foreach ($child in $childNodes) {
+                            if ($child -is [RubrikSecurityCloud.Types.MssqlInstance] -and $seenIds.Add($child.id)) {
+                                $instances.Add($child)
+                            }
+                        }
+                    }
+
+                    return $instances
                 }
                 else {
                     $results.nodes
