@@ -242,6 +242,30 @@ Return the query object instead of executing it.
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes[$mssqlInstanceIndex].name = "FETCH"
             $query.field.Nodes[$windowsClusterIndex].descendantConnection.nodes[$mssqlInstanceIndex].id = "FETCH"
 
+            # TODO: SPARK-900409
+            # mssqlTopLevelDescendants expands all MssqlTopLevelDescendantType
+            # implementers. MssqlDatabase (version: String, hasPermissions:
+            # Boolean!) and MssqlInstance (version: String!, hasPermissions:
+            # Boolean) declare these scalars with conflicting nullability.
+            # MssqlInstance's version/hasPermissions were added in a recent
+            # schema update, so we exclude them on MssqlInstance (not
+            # MssqlDatabase) to preserve backward compatibility while clearing
+            # the conflict. Nulling doesn't stick (GqlRequest re-explores and
+            # re-adds the non-null version), so copy the node's fields into a
+            # fresh, non-explored MssqlInstance, skipping Version and
+            # HasPermissions.
+            $topMssqlInstanceIndex = $query.field.nodes.FindIndex({param($item) $item.gettype().name -eq "MssqlInstance"})
+            if ($topMssqlInstanceIndex -ge 0) {
+                $src = $query.field.Nodes[$topMssqlInstanceIndex]
+                $trimmed = New-Object -TypeName RubrikSecurityCloud.Types.MssqlInstance
+                foreach ($prop in $src.PSObject.Properties) {
+                    if ($null -ne $prop.Value -and $prop.Name -ne "Version" -and $prop.Name -ne "HasPermissions") {
+                        try { $trimmed.($prop.Name) = $prop.Value } catch {}
+                    }
+                }
+                $query.field.Nodes[$topMssqlInstanceIndex] = $trimmed
+            }
+
             if ( $AsQuery ) {
                 return $query
             }

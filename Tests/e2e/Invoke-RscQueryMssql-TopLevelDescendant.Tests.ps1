@@ -23,32 +23,49 @@ Describe -Name 'Query mssqlTopLevelDescendants' -Fixture {
     # MssqlInstance to avoid expanding all 9 implementing types.
 
     It -Name 'PhysicalHost with MssqlInstance children' -Test {
-        # Step 1: Build a PhysicalHost field spec.
-        # "physicalChildConnection.count" walks into the Connection object
-        # and selects its "count" field. This also instantiates
-        # PhysicalChildConnection as a side effect, so we can assign
-        # .Nodes in the next step.
-        $physicalHostFields =
-        Get-RscType -Name PhysicalHost -InitialProperties @(
-            "id",
-            "name",
-            "physicalChildConnection.count"
-        )
+        # Mutate the Autofield-built spec in place — the same pattern
+        # Get-RscMssqlInstance uses (see Toolkit/Public/Get-RscMssqlInstance.ps1
+        # and rubrik-powershell-sdk PR #253). Passing -Field to override
+        # the spec does NOT work reliably: the SDK still runs Autofield
+        # DEFAULT on top of any -Field input, re-pulling fields the test
+        # didn't ask for.
+        $query = New-RscQuery -Gql mssqlTopLevelDescendants
 
-        # Step 2: PhysicalChildConnection.Nodes is a List<Interface>.
-        # Manually set it to MssqlInstance to avoid expanding all
-        # implementing types (ExchangeServer, FilesetTemplate, etc.).
-        $physicalHostFields.PhysicalChildConnection.Nodes =
-        Get-RscType -Name MssqlInstance -InitialProperties ("Id", "Name")
+        # Reduce the top-level nodes list to PhysicalHost only. This
+        # eliminates the GraphQL field-merging conflict between
+        # MssqlDatabase (hasPermissions: Boolean!, version: String) and
+        # MssqlInstance (hasPermissions: Boolean, version: String!) that
+        # Autofield's DEFAULT profile triggers when both implementers
+        # appear as sibling inline fragments under the same nodes selection.
+        # (Schema split on 2026-04-20, commit 375007994861.)
+        #
+        # Mutate the underlying List<T> directly with RemoveAt — Clear()
+        # + Add() with a pipeline-retrieved $physicalHost silently
+        # no-ops, likely because the pipeline returns a PSObject wrapper
+        # the typed list rejects.
+        for ($i = $query.Field.Nodes.Count - 1; $i -ge 0; $i--) {
+            if ($query.Field.Nodes[$i].GetType().Name -ne "PhysicalHost") {
+                $query.Field.Nodes.RemoveAt($i)
+            }
+        }
+        $physicalHost = $query.Field.Nodes[0]
 
-        # Step 3: Build the top-level Connection and assign .nodes to
-        # our PhysicalHost (instead of letting Get-RscType expand all
-        # 6 implementing types of MssqlTopLevelDescendantType).
-        $fields = Get-RscType -Name MssqlTopLevelDescendantTypeConnection
-        $fields.nodes = $physicalHostFields
+        # Replace PhysicalHost.physicalChildConnection (which Autofield
+        # filled with all 9 implementers of PhysicalHostPhysicalChildType)
+        # with a fresh connection holding only MssqlInstance — this
+        # exercises the manual List<Interface> construction the test was
+        # written to validate.
+        $physicalHost.PhysicalChildConnection = New-Object `
+            -TypeName RubrikSecurityCloud.Types.PhysicalHostPhysicalChildTypeConnection
+        $physicalHost.PhysicalChildConnection.Count = [Int32]::MinValue
+        $physicalHost.PhysicalChildConnection.Nodes = New-Object `
+            -TypeName RubrikSecurityCloud.Types.MssqlInstance
+        $childIndex = $physicalHost.PhysicalChildConnection.Nodes.FindIndex(
+            {param($n) $n.GetType().Name -eq "MssqlInstance"})
+        $physicalHost.PhysicalChildConnection.Nodes[$childIndex].Id = "FETCH"
+        $physicalHost.PhysicalChildConnection.Nodes[$childIndex].Name = "FETCH"
 
-        # Step 4: Query using the hand-crafted field spec.
-        $sqlObjects = (New-RscQuery -Gql mssqlTopLevelDescendants -Field $fields).Invoke()
+        $sqlObjects = $query.Invoke()
         $sqlObjects.nodes | Should -Not -BeNullOrEmpty
     }
 }
