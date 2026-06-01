@@ -42,7 +42,7 @@ Describe -Name "AsQuery Parameter Tests" -Fixture {
             'Get-RscMssqlDatabaseRecoverableRanges'  = @{ RscMssqlDatabase = $mockMssqlDb }
             'Get-RscMssqlDatabaseRecoveryPoint'      = @{ RscMssqlDatabase = $mockMssqlDb; Latest = $true }
             'Get-RscSnapshot'                        = @{ Id = '00000000-0000-0000-0000-000000000000' }
-            'New-RscMssqlExport'                     = @{ RscMssqlDatabase = $mockMssqlDb; RecoveryDateTime = [datetime]'2024-01-01'; TargetMssqlInstance = $mockMssqlInstance; TargetDatabaseName = 'mock'; TargetDataPath = 'c:\data'; TargeLogPath = 'c:\log' }
+            'New-RscMssqlExport'                     = @{ RscMssqlDatabase = $mockMssqlDb; RecoveryDateTime = [datetime]'2024-01-01'; TargetInstance = $mockMssqlInstance; TargetDatabaseName = 'mock'; TargetDataPath = 'c:\data'; TargetLogPath = 'c:\log' }
             'New-RscMssqlLiveMount'                  = @{ RscMssqlDatabase = $mockMssqlDb; MountedDatabaseName = 'mock'; TargetMssqlInstance = $mockMssqlInstance; RecoveryDateTime = [datetime]'2024-01-01' }
             'New-RscMssqlLogBackup'                  = @{ RscMssqlDatabase = $mockMssqlDb }
             'New-RscMssqlLogShippingSecondary'       = @{ RscMssqlDatabase = $mockMssqlDb; TargetMssqlInstance = $mockMssqlInstance; TargetDatabaseName = 'mock'; State = 'RESTORING'; TargetDataPath = 'c:\data'; TargeLogPath = 'c:\log' }
@@ -108,5 +108,18 @@ Describe -Name "AsQuery Parameter Tests" -Fixture {
             $msg = "$($failures.Count) command(s) failed:`n" + ($failures -join "`n")
             $msg | Should -BeNullOrEmpty
         }
+    }
+}
+
+Describe -Name "New-RscMssqlExport parameter aliases" -Fixture {
+
+    # Verify backward-compatible aliases are retained after the
+    # TargeLogPath -> TargetLogPath and TargetMssqlInstance -> TargetInstance
+    # renames, so existing scripts using the old names keep working.
+    It -Name '<Old> is an alias for <New>' -ForEach @(
+        @{ Old = 'TargetMssqlInstance'; New = 'TargetInstance' }
+        @{ Old = 'TargeLogPath';        New = 'TargetLogPath'  }
+    ) -Test {
+        (Get-Command New-RscMssqlExport).Parameters[$New].Aliases | Should -Contain $Old
     }
 }

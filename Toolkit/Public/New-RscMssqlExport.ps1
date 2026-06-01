@@ -17,8 +17,9 @@ function New-RscMssqlExport{
     .PARAMETER RecoveryDateTime
     The point-in-time to recover to, in UTC. Use Get-RscMssqlDatabaseRecoveryPoint to obtain a properly formatted value.
 
-    .PARAMETER TargetMssqlInstance
+    .PARAMETER TargetInstance
     The destination SQL Server instance. Pipe from Get-RscMssqlInstance.
+    Alias: TargetMssqlInstance (retained for backward compatibility).
 
     .PARAMETER TargetDatabaseName
     The name for the exported database on the target instance.
@@ -26,8 +27,9 @@ function New-RscMssqlExport{
     .PARAMETER TargetDataPath
     A single directory path where all data files will be placed (simple mode).
 
-    .PARAMETER TargeLogPath
+    .PARAMETER TargetLogPath
     A single directory path where all log files will be placed (simple mode).
+    Alias: TargeLogPath (retained for backward compatibility).
 
     .PARAMETER TargetFilePaths
     An array of objects specifying per-file exportPath, logicalName, and newFilename (advanced mode). Build manually or use Get-RscMssqlDatabaseFiles. The logicalName must match the original database; exportPath and newFilename can be customized.
@@ -53,10 +55,10 @@ function New-RscMssqlExport{
     $inst = Get-RscMssqlInstance -HostName rp-sql1.rubrik-demo.com -clusterId "124d26df-c31f-49a3-a8c3-77b10c9470c2"
     New-RscMssqlExport -RscMssqlDatabase $db `
         -RecoveryDateTime "2024-03-05T19:17:30.000Z" `
-        -TargetMssqlInstance $inst `
+        -TargetInstance $inst `
         -TargetDatabaseName "AW2019_Copy" `
         -TargetDataPath "c:\mnt\sqldata" `
-        -TargeLogPath "c:\mnt\sqllogs" `
+        -TargetLogPath "c:\mnt\sqllogs" `
         -Overwrite -FinishRecovery
 
     .EXAMPLE
@@ -70,7 +72,7 @@ function New-RscMssqlExport{
     )
     New-RscMssqlExport -RscMssqlDatabase $db `
         -RecoveryDateTime "2024-03-05T19:17:30.000Z" `
-        -TargetMssqlInstance $inst `
+        -TargetInstance $inst `
         -TargetDatabaseName "AW2019_Copy" `
         -TargetFilePaths $filePaths `
         -Overwrite -FinishRecovery
@@ -93,7 +95,9 @@ function New-RscMssqlExport{
 
         [Parameter(
             Mandatory = $true
-        )][RubrikSecurityCloud.Types.MssqlInstance]$TargetMssqlInstance, 
+        )]
+        [Alias("TargetMssqlInstance")]
+        [RubrikSecurityCloud.Types.MssqlInstance]$TargetInstance,
 
         [Parameter(
             Mandatory = $true
@@ -107,7 +111,9 @@ function New-RscMssqlExport{
         [Parameter(
             ParameterSetName = "Simple Method",
             Mandatory = $false
-        )][String]$TargeLogPath,
+        )]
+        [Alias("TargeLogPath")]
+        [String]$TargetLogPath,
 
         [Parameter(
             ParameterSetName = "Advanced Method",
@@ -155,9 +161,9 @@ function New-RscMssqlExport{
         # $query.Var.input.Config.recoveryPoint.lsnPoint = New-Object -TypeName RubrikSecurityCloud.Types.LsnRecoveryPointInput 
 
         # Simple Method
-        If (![string]::IsNullOrEmpty($TargetDataPath) -and ![string]::IsNullOrEmpty($TargeLogPath)){
+        If (![string]::IsNullOrEmpty($TargetDataPath) -and ![string]::IsNullOrEmpty($TargetLogPath)){
                 $query.Var.input.Config.targetDataFilePath = $TargetDataPath
-                $query.Var.input.Config.targetLogFilePath = $TargeLogPath
+                $query.Var.input.Config.targetLogFilePath = $TargetLogPath
         }
 
         # Advanced Method
@@ -166,7 +172,7 @@ function New-RscMssqlExport{
             $query.Var.input.Config.targetFilePaths = $TargetFilePaths
         }
     
-        $query.Var.input.Config.targetInstanceId = $TargetMssqlInstance.Id
+        $query.Var.input.Config.targetInstanceId = $TargetInstance.Id
         #endregion
 
         if ( $AsQuery ) { return $query }
