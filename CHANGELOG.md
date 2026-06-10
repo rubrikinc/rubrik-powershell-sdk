@@ -1,6 +1,6 @@
 # Changelog
 
-## Version TBD
+## Version 1.18.20260601
 
 Schema Update:
 - Automatic schema update
@@ -881,4 +881,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
