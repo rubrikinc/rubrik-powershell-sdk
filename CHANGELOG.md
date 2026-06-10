@@ -2,9 +2,20 @@
 
 ## Version TBD
 
+Schema Update:
+- Automatic schema update
+
 New Features:
+- `New-RscMssqlExport`: renamed `-TargetMssqlInstance` to `-TargetInstance`
+  and fixed the `-TargeLogPath` typo to `-TargetLogPath`. The old names are
+  retained as aliases for backward compatibility (#255)
 
 Fixes:
+- Fix `Get-RscMssqlInstance` returning no instances when the host is the new
+  `MssqlHost` object type; instances are now collected from
+  `physicalChildConnection` and de-duplicated across host types (#253)
+- Fix `Get-RscSla` not returning cascaded archival location details, including
+  archival location names, target types, and target mapping information (#252)
 
 Breaking Changes:
 
