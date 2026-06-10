@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldHoldInPlace")]
         public System.Boolean? ShouldHoldInPlace { get; set; }
 
+        //      C# -> System.Boolean? HoldReplica
+        // GraphQL -> holdReplica: Boolean (scalar)
+        [JsonProperty("holdReplica")]
+        public System.Boolean? HoldReplica { get; set; }
+
 
         #endregion
 

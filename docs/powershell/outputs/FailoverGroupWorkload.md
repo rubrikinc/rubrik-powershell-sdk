@@ -7,6 +7,8 @@ Information about a workload in a failover group.
   - Name of the workload.
 - workloadType: FlexmotionWorkloadType
   - Type of the workload.
+- managedObjectType: ManagedObjectType
+  - Type of the workload.
 - status: FailoverGroupObjectStatus
   - Status of the workload.
 - statusMessage: System.String
@@ -17,3 +19,5 @@ Information about a workload in a failover group.
   - List of host FIDs associated with this workload.
 - counterpartIds: list of System.Strings
   - List of counterpart workload IDs on other clusters.
+- hostNames: list of System.Strings
+  - List of host names for the hosts associated with this workload.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 46
+    /// Create a new RscQuery object for any of the 54
     /// operations in the 'Cluster' API domain:
-    /// CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 46 operations
+    /// There are 54 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -839,6 +839,278 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the FusionCompute operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: FusionCompute
+    /// 
+    /// $query = New-RscQueryCluster -Operation FusionCompute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FusionComputeCluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FusionComputeClusters operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: FusionComputeClusters
+    /// 
+    /// $query = New-RscQueryCluster -Operation FusionComputeClusters
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FusionComputeClusterConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FusionComputeClustersAndHosts operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: FusionComputeClustersAndHosts
+    /// 
+    /// $query = New-RscQueryCluster -Operation FusionComputeClustersAndHosts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.typeFilter = @(
+    /// 	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CdmHierarchyObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FusionComputeRecoverableClustersAndHosts operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: FusionComputeRecoverableClustersAndHosts
+    /// 
+    /// $query = New-RscQueryCluster -Operation FusionComputeRecoverableClustersAndHosts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CdmHierarchyObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the GetCdmReleaseDetailsForClusterFromSupportPortal operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -1106,6 +1378,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	newNodeCount = $someInt
     /// 	# OPTIONAL
     /// 	newInstanceType = $someInt
+    /// 	# OPTIONAL
+    /// 	isAzMigration = $someBoolean
+    /// 	# OPTIONAL
+    /// 	subnetAzConfigs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			subnet = $someString
+    /// 			# OPTIONAL
+    /// 			availabilityZone = $someString
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1468,6 +1751,192 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClusterOperationJobProgress
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: PostgreSqlDb
+    /// 
+    /// $query = New-RscQueryCluster -Operation PostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.fid = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PostgreSqlDbCluster
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PostgreSqlDbClusters operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: PostgreSqlDbClusters
+    /// 
+    /// $query = New-RscQueryCluster -Operation PostgreSqlDbClusters
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PostgreSqlDbClusterConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PostgresDbClusterAsyncRequestStatus operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: PostgresDbClusterAsyncRequestStatus
+    /// 
+    /// $query = New-RscQueryCluster -Operation PostgresDbClusterAsyncRequestStatus
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuid = $someString
+    /// # REQUIRED
+    /// $query.Var.id = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PostgresDbClusterLiveMounts operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: PostgresDbClusterLiveMounts
+    /// 
+    /// $query = New-RscQueryCluster -Operation PostgresDbClusterLiveMounts
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.filters = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someKosmosWorkloadLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KosmosWorkloadLiveMountFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = @{
+    /// 	# OPTIONAL
+    /// 	field = $someKosmosWorkloadLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KosmosWorkloadLiveMountSortByField]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: KosmosWorkloadLiveMountConnection
     /// 
     /// 
     /// 
@@ -2118,6 +2587,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "EncryptionInfo",
                 "ExocomputeGetClusterConnectionInfo",
                 "FloatingIps",
+                "FusionCompute",
+                "FusionComputeClusters",
+                "FusionComputeClustersAndHosts",
+                "FusionComputeRecoverableClustersAndHosts",
                 "GetCdmReleaseDetailsForClusterFromSupportPortal",
                 "GetGroupCountByCdmClusterStatus",
                 "GroupByList",
@@ -2133,6 +2606,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Nodes",
                 "NtpServers",
                 "OperationJobProgress",
+                "PostgreSqlDb",
+                "PostgreSqlDbClusters",
+                "PostgresDbClusterAsyncRequestStatus",
+                "PostgresDbClusterLiveMounts",
                 "Proxy",
                 "RadarClusterList",
                 "ReclaimableClusterStats",
@@ -2213,6 +2690,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "FloatingIps":
                         this.ProcessRecord_FloatingIps();
                         break;
+                    case "FusionCompute":
+                        this.ProcessRecord_FusionCompute();
+                        break;
+                    case "FusionComputeClusters":
+                        this.ProcessRecord_FusionComputeClusters();
+                        break;
+                    case "FusionComputeClustersAndHosts":
+                        this.ProcessRecord_FusionComputeClustersAndHosts();
+                        break;
+                    case "FusionComputeRecoverableClustersAndHosts":
+                        this.ProcessRecord_FusionComputeRecoverableClustersAndHosts();
+                        break;
                     case "GetCdmReleaseDetailsForClusterFromSupportPortal":
                         this.ProcessRecord_GetCdmReleaseDetailsForClusterFromSupportPortal();
                         break;
@@ -2257,6 +2746,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OperationJobProgress":
                         this.ProcessRecord_OperationJobProgress();
+                        break;
+                    case "PostgreSqlDb":
+                        this.ProcessRecord_PostgreSqlDb();
+                        break;
+                    case "PostgreSqlDbClusters":
+                        this.ProcessRecord_PostgreSqlDbClusters();
+                        break;
+                    case "PostgresDbClusterAsyncRequestStatus":
+                        this.ProcessRecord_PostgresDbClusterAsyncRequestStatus();
+                        break;
+                    case "PostgresDbClusterLiveMounts":
+                        this.ProcessRecord_PostgresDbClusterLiveMounts();
                         break;
                     case "Proxy":
                         this.ProcessRecord_Proxy();
@@ -2464,6 +2965,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // fusionComputeCluster.
+        internal void ProcessRecord_FusionCompute()
+        {
+            this._logger.name += " -FusionCompute";
+            // Create new graphql operation fusionComputeCluster
+            InitQueryFusionComputeCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // fusionComputeClusters.
+        internal void ProcessRecord_FusionComputeClusters()
+        {
+            this._logger.name += " -FusionComputeClusters";
+            // Create new graphql operation fusionComputeClusters
+            InitQueryFusionComputeClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // fusionComputeClustersAndHosts.
+        internal void ProcessRecord_FusionComputeClustersAndHosts()
+        {
+            this._logger.name += " -FusionComputeClustersAndHosts";
+            // Create new graphql operation fusionComputeClustersAndHosts
+            InitQueryFusionComputeClustersAndHosts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // fusionComputeRecoverableClustersAndHosts.
+        internal void ProcessRecord_FusionComputeRecoverableClustersAndHosts()
+        {
+            this._logger.name += " -FusionComputeRecoverableClustersAndHosts";
+            // Create new graphql operation fusionComputeRecoverableClustersAndHosts
+            InitQueryFusionComputeRecoverableClustersAndHosts();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // getCdmReleaseDetailsForClusterFromSupportPortal.
         internal void ProcessRecord_GetCdmReleaseDetailsForClusterFromSupportPortal()
         {
@@ -2596,6 +3133,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OperationJobProgress";
             // Create new graphql operation clusterOperationJobProgress
             InitQueryClusterOperationJobProgress();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // postgreSQLDbCluster.
+        internal void ProcessRecord_PostgreSqlDb()
+        {
+            this._logger.name += " -PostgreSqlDb";
+            // Create new graphql operation postgreSQLDbCluster
+            InitQueryPostgreSqlDbCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // postgreSQLDbClusters.
+        internal void ProcessRecord_PostgreSqlDbClusters()
+        {
+            this._logger.name += " -PostgreSqlDbClusters";
+            // Create new graphql operation postgreSQLDbClusters
+            InitQueryPostgreSqlDbClusters();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // postgresDbClusterAsyncRequestStatus.
+        internal void ProcessRecord_PostgresDbClusterAsyncRequestStatus()
+        {
+            this._logger.name += " -PostgresDbClusterAsyncRequestStatus";
+            // Create new graphql operation postgresDbClusterAsyncRequestStatus
+            InitQueryPostgresDbClusterAsyncRequestStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // postgresDbClusterLiveMounts.
+        internal void ProcessRecord_PostgresDbClusterLiveMounts()
+        {
+            this._logger.name += " -PostgresDbClusterLiveMounts";
+            // Create new graphql operation postgresDbClusterLiveMounts
+            InitQueryPostgresDbClusterLiveMounts();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3400,6 +3973,278 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // fusionComputeCluster(fid: UUID!): FusionComputeCluster!
+        internal void InitQueryFusionComputeCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeCluster",
+                "($fid: UUID!)",
+                "FusionComputeCluster",
+                Query.FusionComputeCluster,
+                Query.FusionComputeClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // fusionComputeClusters(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): FusionComputeClusterConnection!
+        internal void InitQueryFusionComputeClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeClusters",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "FusionComputeClusterConnection",
+                Query.FusionComputeClusters,
+                Query.FusionComputeClustersFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // fusionComputeClustersAndHosts(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //     typeFilter: [HierarchyObjectTypeEnum!]
+        //   ): CdmHierarchyObjectConnection!
+        internal void InitQueryFusionComputeClustersAndHosts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+                Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeClustersAndHosts",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!],$typeFilter: [HierarchyObjectTypeEnum!])",
+                "CdmHierarchyObjectConnection",
+                Query.FusionComputeClustersAndHosts,
+                Query.FusionComputeClustersAndHostsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.typeFilter = @(
+	$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // fusionComputeRecoverableClustersAndHosts(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): CdmHierarchyObjectConnection!
+        internal void InitQueryFusionComputeRecoverableClustersAndHosts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeRecoverableClustersAndHosts",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "CdmHierarchyObjectConnection",
+                Query.FusionComputeRecoverableClustersAndHosts,
+                Query.FusionComputeRecoverableClustersAndHostsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
         // getCdmReleaseDetailsForClusterFromSupportPortal(
         //     listClusterUuid: [UUID!]!
         //     filterVersion: String! = ""
@@ -3656,6 +4501,17 @@ $query.Var.input = @{
 	newNodeCount = $someInt
 	# OPTIONAL
 	newInstanceType = $someInt
+	# OPTIONAL
+	isAzMigration = $someBoolean
+	# OPTIONAL
+	subnetAzConfigs = @(
+		@{
+			# OPTIONAL
+			subnet = $someString
+			# OPTIONAL
+			availabilityZone = $someString
+		}
+	)
 }"
             );
         }
@@ -3954,6 +4810,179 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# REQUIRED
 	jobType = $someCcpJobType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpJobType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // postgreSQLDbCluster(fid: UUID!): PostgreSQLDbCluster!
+        internal void InitQueryPostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("fid", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryPostgreSqlDbCluster",
+                "($fid: UUID!)",
+                "PostgreSqlDbCluster",
+                Query.PostgreSqlDbCluster,
+                Query.PostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.fid = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // postgreSQLDbClusters(
+        //     first: Int
+        //     after: String
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     filter: [Filter!]
+        //   ): PostgreSQLDbClusterConnection!
+        internal void InitQueryPostgreSqlDbClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryPostgreSqlDbClusters",
+                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "PostgreSqlDbClusterConnection",
+                Query.PostgreSqlDbClusters,
+                Query.PostgreSqlDbClustersFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // postgresDbClusterAsyncRequestStatus(clusterUuid: UUID!, id: String!): AsyncRequestStatus!
+        internal void InitQueryPostgresDbClusterAsyncRequestStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("id", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryPostgresDbClusterAsyncRequestStatus",
+                "($clusterUuid: UUID!,$id: String!)",
+                "AsyncRequestStatus",
+                Query.PostgresDbClusterAsyncRequestStatus,
+                Query.PostgresDbClusterAsyncRequestStatusFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuid = $someString
+# REQUIRED
+$query.Var.id = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // postgresDbClusterLiveMounts(
+        //     first: Int
+        //     after: String
+        //     filters: [KosmosWorkloadLiveMountFilterInput!]
+        //     sortBy: KosmosWorkloadLiveMountSortByInput
+        //   ): KosmosWorkloadLiveMountConnection!
+        internal void InitQueryPostgresDbClusterLiveMounts()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("filters", "[KosmosWorkloadLiveMountFilterInput!]"),
+                Tuple.Create("sortBy", "KosmosWorkloadLiveMountSortByInput"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryPostgresDbClusterLiveMounts",
+                "($first: Int,$after: String,$filters: [KosmosWorkloadLiveMountFilterInput!],$sortBy: KosmosWorkloadLiveMountSortByInput)",
+                "KosmosWorkloadLiveMountConnection",
+                Query.PostgresDbClusterLiveMounts,
+                Query.PostgresDbClusterLiveMountsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.filters = @(
+	@{
+		# OPTIONAL
+		field = $someKosmosWorkloadLiveMountFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KosmosWorkloadLiveMountFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = @{
+	# OPTIONAL
+	field = $someKosmosWorkloadLiveMountSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KosmosWorkloadLiveMountSortByField]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
 }"
             );
         }

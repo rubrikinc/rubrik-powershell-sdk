@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nicIndex")]
         public System.Int32? NicIndex { get; set; }
 
+        //      C# -> System.String? VirtualSwitchId
+        // GraphQL -> virtualSwitchId: String (scalar)
+        [JsonProperty("virtualSwitchId")]
+        public System.String? VirtualSwitchId { get; set; }
+
         //      C# -> System.String? VirtualSwitchName
         // GraphQL -> virtualSwitchName: String (scalar)
         [JsonProperty("virtualSwitchName")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? Ipv6Addresses = null,
         System.String? MacAddress = null,
         System.Int32? NicIndex = null,
+        System.String? VirtualSwitchId = null,
         System.String? VirtualSwitchName = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NicIndex != null ) {
             this.NicIndex = NicIndex;
+        }
+        if ( VirtualSwitchId != null ) {
+            this.VirtualSwitchId = VirtualSwitchId;
         }
         if ( VirtualSwitchName != null ) {
             this.VirtualSwitchName = VirtualSwitchName;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nicIndex\n" ;
             } else {
                 s += ind + "nicIndex\n" ;
+            }
+        }
+        //      C# -> System.String? VirtualSwitchId
+        // GraphQL -> virtualSwitchId: String (scalar)
+        if (this.VirtualSwitchId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualSwitchId\n" ;
+            } else {
+                s += ind + "virtualSwitchId\n" ;
             }
         }
         //      C# -> System.String? VirtualSwitchName
@@ -245,6 +263,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NicIndex != null && ec.Excludes("nicIndex",true))
         {
             this.NicIndex = null;
+        }
+        //      C# -> System.String? VirtualSwitchId
+        // GraphQL -> virtualSwitchId: String (scalar)
+        if (ec.Includes("virtualSwitchId",true))
+        {
+            if(this.VirtualSwitchId == null) {
+
+                this.VirtualSwitchId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualSwitchId != null && ec.Excludes("virtualSwitchId",true))
+        {
+            this.VirtualSwitchId = null;
         }
         //      C# -> System.String? VirtualSwitchName
         // GraphQL -> virtualSwitchName: String (scalar)

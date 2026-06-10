@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ThreatFeedType? IocType
+        // GraphQL -> iocType: ThreatFeedType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("iocType")]
+        public ThreatFeedType? IocType { get; set; }
+
         //      C# -> System.String? IocString
         // GraphQL -> iocString: String (scalar)
         [JsonProperty("iocString")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> threatFamily: String (scalar)
         [JsonProperty("threatFamily")]
         public System.String? ThreatFamily { get; set; }
-
-        //      C# -> ThreatFeedType? IocType
-        // GraphQL -> iocType: ThreatFeedType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("iocType")]
-        public ThreatFeedType? IocType { get; set; }
 
 
         #endregion

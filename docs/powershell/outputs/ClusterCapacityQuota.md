@@ -10,7 +10,8 @@ Cluster capacity quota.
 - currentUsageGb: System.Int64
   - The organization's current usage on the cluster.
 - usageComputedAt: DateTime
-  - The time at which the current usage was computed. If null, the usage has not been computed yet.
+  - The time at which the current usage was computed.
+If null, the usage has not been computed yet.
 - clusterCapacityQuotaType: ClusterCapacityQuotaType
   - The type of capacity quota, either physical or logical bytes.
 - cluster: Cluster

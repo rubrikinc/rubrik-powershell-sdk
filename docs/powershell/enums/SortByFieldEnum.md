@@ -7,7 +7,7 @@
 - PATH
 - ESTIMATED_RUNWAY - Estimated time before cluster runs out of storage.
 - ReplicationSnapshotLag
-- Location
+- Location - Sort by location.
 - IS_ENCRYPTED - Specifies whether the result is encrypted.
 - SEVERITY - Severity of the anomaly.
 - LocalSnapshots
@@ -30,7 +30,7 @@
 - NUM_OBJECTS
 - ClusterType - Rubrik cluster type.
 - AVAILABLE_SPACE_PERCENT - Percentage of available storage space in the cluster.
-- LastUpdated
+- LastUpdated - Sort by last updated time.
 - ArchivalComplianceStatus
 - DataReduction
 - AwaitingFirstFull
@@ -39,7 +39,7 @@
 - POLICY_NAME
 - TransferredBytes
 - LogicalDataReduction
-- StartTime
+- StartTime - Sort by start time.
 - ArchiveStorage
 - PREVIOUS_SNAPSHOT_ID - Id of the previous snapshot.
 - MissedSnapshots
@@ -49,7 +49,7 @@
 - TOTAL_HITS
 - SlaDomainName
 - CLUSTER_LOCATION - Location of the Rubrik cluster.
-- ObjectName
+- ObjectName - Sort by object name.
 - ReplicationComplianceStatus
 - LocalSLASnapshots
 - LOCATION
@@ -58,7 +58,7 @@
 - FILES_WITH_HITS
 - TargetSiteName
 - IS_ANOMALY - Specifies whether the result is an anomaly.
-- ActivityStatus
+- ActivityStatus - Sort by activity status.
 - ArchivalSnapshotLag
 - ReplicaSnapshots
 - FILES_DELETED_COUNT - Count of deleted files.
@@ -75,12 +75,12 @@
 - Cluster
 - WORKLOAD_TYPE - Type of the object.
 - TotalSnapshots
-- ObjectType
+- ObjectType - Sort by object type.
 - OBJECT_NAME
 - Time - Sort user audits by time.
 - SUSPICIOUS_FILES_COUNT - Count of suspicious files.
-- ActivityType
-- Severity
+- ActivityType - Sort by activity type.
+- Severity - Sort by severity.
 - LocalOnDemandSnapshots
 - WORKLOAD_NAME - Name of the object.
 - BYTES_MODIFIED_COUNT - Count of modified bytes.

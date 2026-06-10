@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        [JsonProperty("encryptionType")]
+        public TargetEncryptionTypeEnum? EncryptionType { get; set; }
+
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)
         [JsonProperty("redundancy")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
 
     public RcsAzureTargetTemplate Set(
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
+        TargetEncryptionTypeEnum? EncryptionType = null,
         RcvRedundancy? Redundancy = null,
         RcsRegionEnumType? Region = null,
         TargetType? TargetType = null,
@@ -77,6 +83,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CloudNativeLocTemplateType != null ) {
             this.CloudNativeLocTemplateType = CloudNativeLocTemplateType;
+        }
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
         }
         if ( Redundancy != null ) {
             this.Redundancy = Redundancy;
@@ -117,6 +126,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
             } else {
                 s += ind + "cloudNativeLocTemplateType\n" ;
+            }
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
             }
         }
         //      C# -> RcvRedundancy? Redundancy
@@ -199,6 +217,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
         {
             this.CloudNativeLocTemplateType = null;
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new TargetEncryptionTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy! (enum)

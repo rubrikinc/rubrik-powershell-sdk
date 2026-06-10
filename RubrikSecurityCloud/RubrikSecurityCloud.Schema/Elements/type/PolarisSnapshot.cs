@@ -221,6 +221,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestUserNote")]
         public LatestUserNote? LatestUserNote { get; set; }
 
+        //      C# -> LegalHoldInfo? LegalHoldInfo
+        // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
+        [JsonProperty("legalHoldInfo")]
+        public LegalHoldInfo? LegalHoldInfo { get; set; }
+
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         [JsonProperty("replicationLocations")]
@@ -281,6 +286,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? UnexpiredReplicaCount = null,
         List<ArchivedSnapshot>? ArchivedSnapshots = null,
         LatestUserNote? LatestUserNote = null,
+        LegalHoldInfo? LegalHoldInfo = null,
         List<DataLocation>? ReplicationLocations = null,
         RscSnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
@@ -404,6 +410,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
+        }
+        if ( LegalHoldInfo != null ) {
+            this.LegalHoldInfo = LegalHoldInfo;
         }
         if ( ReplicationLocations != null ) {
             this.ReplicationLocations = ReplicationLocations;
@@ -800,6 +809,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "latestUserNote" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> LegalHoldInfo? LegalHoldInfo
+        // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
+        if (this.LegalHoldInfo != null) {
+            var fspec = this.LegalHoldInfo.AsFieldSpec(conf.Child("legalHoldInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "legalHoldInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1538,6 +1559,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
         {
             this.LatestUserNote = null;
+        }
+        //      C# -> LegalHoldInfo? LegalHoldInfo
+        // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
+        if (ec.Includes("legalHoldInfo",false))
+        {
+            if(this.LegalHoldInfo == null) {
+
+                this.LegalHoldInfo = new LegalHoldInfo();
+                this.LegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("legalHoldInfo"));
+
+            } else {
+
+                this.LegalHoldInfo.ApplyExploratoryFieldSpec(ec.NewChild("legalHoldInfo"));
+
+            }
+        }
+        else if (this.LegalHoldInfo != null && ec.Excludes("legalHoldInfo",false))
+        {
+            this.LegalHoldInfo = null;
         }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accessStatus")]
         public SupportUserAccessStatus? AccessStatus { get; set; }
 
+        //      C# -> DateTime? ActualEndTime
+        // GraphQL -> actualEndTime: DateTime (scalar)
+        [JsonProperty("actualEndTime")]
+        public DateTime? ActualEndTime { get; set; }
+
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
         [JsonProperty("durationInHours")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
 
     public SupportUserAccess Set(
         SupportUserAccessStatus? AccessStatus = null,
+        DateTime? ActualEndTime = null,
         System.Int32? DurationInHours = null,
         DateTime? EndTime = null,
         System.Int32? Id = null,
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AccessStatus != null ) {
             this.AccessStatus = AccessStatus;
+        }
+        if ( ActualEndTime != null ) {
+            this.ActualEndTime = ActualEndTime;
         }
         if ( DurationInHours != null ) {
             this.DurationInHours = DurationInHours;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accessStatus\n" ;
             } else {
                 s += ind + "accessStatus\n" ;
+            }
+        }
+        //      C# -> DateTime? ActualEndTime
+        // GraphQL -> actualEndTime: DateTime (scalar)
+        if (this.ActualEndTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "actualEndTime\n" ;
+            } else {
+                s += ind + "actualEndTime\n" ;
             }
         }
         //      C# -> System.Int32? DurationInHours
@@ -219,6 +237,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccessStatus != null && ec.Excludes("accessStatus",true))
         {
             this.AccessStatus = null;
+        }
+        //      C# -> DateTime? ActualEndTime
+        // GraphQL -> actualEndTime: DateTime (scalar)
+        if (ec.Includes("actualEndTime",true))
+        {
+            if(this.ActualEndTime == null) {
+
+                this.ActualEndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActualEndTime != null && ec.Excludes("actualEndTime",true))
+        {
+            this.ActualEndTime = null;
         }
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)

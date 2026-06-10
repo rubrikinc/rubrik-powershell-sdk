@@ -5,3 +5,5 @@ Represents upgrade duration in seconds.
   - Time taken by the last successful rolling upgrade, in seconds.
 - fastUpgradeDuration: System.Int64
   - Time taken by the last successful fast upgrade, in seconds.
+- clusterUuid: System.String
+  - Cluster UUID.

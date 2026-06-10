@@ -475,7 +475,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	db2DatabaseConfig = @{
     /// 		# OPTIONAL
+    /// 		isBackupCompressionEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		backupParallelism = $someInt
+    /// 		# OPTIONAL
+    /// 		backupCompressionLibraryPath = $someString
     /// 		# OPTIONAL
     /// 		backupSessions = $someInt
     /// 	}
@@ -1102,7 +1106,11 @@ $query.Var.input = @{
 	# REQUIRED
 	db2DatabaseConfig = @{
 		# OPTIONAL
+		isBackupCompressionEnabled = $someBoolean
+		# OPTIONAL
 		backupParallelism = $someInt
+		# OPTIONAL
+		backupCompressionLibraryPath = $someString
 		# OPTIONAL
 		backupSessions = $someInt
 	}

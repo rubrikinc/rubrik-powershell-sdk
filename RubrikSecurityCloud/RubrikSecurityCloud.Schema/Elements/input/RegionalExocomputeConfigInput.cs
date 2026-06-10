@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("projectId")]
         public System.String? ProjectId { get; set; }
 
+        //      C# -> System.String? ClusterSecondaryRangeName
+        // GraphQL -> clusterSecondaryRangeName: String (scalar)
+        [JsonProperty("clusterSecondaryRangeName")]
+        public System.String? ClusterSecondaryRangeName { get; set; }
+
 
         #endregion
 

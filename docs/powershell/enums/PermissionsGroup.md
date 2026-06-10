@@ -93,3 +93,5 @@ operations in AWS Config Protection (App Resilience). These permissions
 cover VPC, ELB, and Route 53 resources.
 - ALLOYDB - Represents the set of permissions required for AlloyDb operations.
 These permissions are applicable to the GCP AlloyDB Protection feature.
+- BAAS_BASIC - Represents the basic set of permissions required for BaaS feature
+These permissions may be applicable to any feature that can run on BaaS.

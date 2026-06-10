@@ -15,3 +15,15 @@ Information about an archival location in a failover group.
   - Target cluster archival location status.
 - targetLastRefreshTime: DateTime
   - Target cluster last refresh time.
+- sourceLocationType: TargetType
+  - Source archival location type (e.g. AWS, Azure, GCP).
+- sourceStorageLocation: System.String
+  - Source storage location display string (e.g. bucket name, container).
+- isSourceImmutabilityEnabled: System.Boolean
+  - Whether immutability is enabled on source location.
+- targetLocationType: TargetType
+  - Target archival location type (e.g. AWS, Azure, GCP).
+- targetStorageLocation: System.String
+  - Target storage location display string (e.g. bucket name, container).
+- isTargetImmutabilityEnabled: System.Boolean
+  - Whether immutability is enabled on target location.

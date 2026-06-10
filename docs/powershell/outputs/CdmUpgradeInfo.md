@@ -1,52 +1,54 @@
 ### CdmUpgradeInfo
+Rubrik cluster upgrade Information.
+
 - clusterUuid: System.String
   - The cluster UUID.
 - version: System.String
   - Version of the Rubrik cluster.
 - downloadedVersion: System.String
   - Downloaded version of tarball.
-- upgradeStatusV2: UpgradeStatusV2
-  - Upgrade status for CDM Upgrade Service 2.0.
 - clusterJobStatus: ClusterJobStatusTypeEnum
   - Cluster job status.
 - stateMachineStatus: System.String
   - Upgrade state machine status.
 - stateMachineStatusAt: DateTime
-  - The time at which the state machine was last updated..
+  - The time at which the state machine was last updated.
 - scheduleUpgradeAt: DateTime
   - Scheduled-Upgrade timestamp.
-- scheduleUpgradeMode: System.String
-  - Scheduled-Upgrade mode.
 - scheduleUpgradeAction: System.String
   - Scheduled-Upgrade action.
+- scheduleUpgradeMode: System.String
+  - Scheduled-Upgrade mode.
 - currentStateProgress: System.Single
   - Current running state progress percentage.
 - overallProgress: System.Single
   - Overall upgrade progress.
 - upgradeStartAt: DateTime
   - The time at which the upgrade started.
-- upgradeEndAt: DateTime
-  - The time at which the upgrade ended.
-- previousVersion: System.String
-  - The version of the cluster before the upgrade.
 - versionStatus: VersionStatus
   - Version status of the Rubrik cluster.
-- upgradeRecommendationInfo: UpgradeRecommendationInfo
-  - Recommended upgrade version of the Rubrik cluster.
 - pendingStates: System.String
   - Pending states of upgrade.
 - finishedStates: System.String
   - Finished states of upgrade.
-- clusterStatus: CdmClusterStatus
-  - Status of the Rubrik cluster.
-- authorizedOperations: AuthorizedOperations
-  - You are authorized to perform operations on the Rubrik cluster.
 - upgradeEventSeriesId: System.String
   - The upgrade event series ID.
-- lastUpgradeDuration: UpgradeDurationReply
-  - Time taken by the last upgrade.
+- upgradeEndAt: DateTime
+  - The time at which the upgrade ended.
+- previousVersion: System.String
+  - The version of the cluster before the upgrade.
 - fastUpgradePreferred: System.Boolean
   - Upgrade type in cdm cluster.
+- upgradeStatusV2: UpgradeStatusV2
+  - Rubrik cluster upgrade Information.
+- clusterStatus: CdmClusterStatus
+  - Status of the Rubrik cluster.
+- lastUpgradeDuration: UpgradeDurationReply
+  - Time taken by the last upgrade.
+- authorizedOperations: AuthorizedOperations
+  - The authorized operations on the Rubrik cluster.
+- upgradeRecommendationInfo: UpgradeRecommendationInfo
+  - Recommended upgrade version of the Rubrik cluster.
 - cdmClusterNodeDetails: list of CdmNodeDetails
   - Rubrik CDM cluster node details.
 - isRuSupported: System.Boolean

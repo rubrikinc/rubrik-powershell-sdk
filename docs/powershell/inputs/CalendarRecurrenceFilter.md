@@ -1,4 +1,5 @@
 ### CalendarRecurrenceFilter
-Calendar recurrence object type.
+Calendar recurrence filter type.
 
 - recurrenceType: CalendarRecurrenceType
+  - 

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? NamespacesToRestore
+        // GraphQL -> namespacesToRestore: [String!] (scalar)
+        [JsonProperty("namespacesToRestore")]
+        public List<System.String>? NamespacesToRestore { get; set; }
+
         //      C# -> System.String? Filter
         // GraphQL -> filter: String (scalar)
         [JsonProperty("filter")]

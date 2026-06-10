@@ -2,3 +2,4 @@
 Search object type.
 
 - searchObjectType: SearchObjectType
+  - 

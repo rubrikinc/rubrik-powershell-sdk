@@ -2,8 +2,8 @@
 Status of the Gcp Cloud Account upgrade operation.
 
 - projectUuid: System.String
-  - GCP project ID.
+  - UUID of the project.
 - success: System.Boolean
-  - Specifies whether upgrade succeeded.
+  - Whether the upgrade was successful.
 - error: System.String
-  - Error during upgrade, if any.
+  - Error message, if any.

@@ -1,11 +1,11 @@
 ### VsphereSnapshotDownloadFilesFromLocationInput
 Input for downloading vSphere snapshot files from a location.
 
-- clusterUuid: System.String
-  - UUID used to identify the cluster the request goes to.
 - snapshotFid: System.String
-  - ID of the virtual machine snapshot.
-- locationId: System.String
-  - ID of the location.
+  - Required. ID of the virtual machine snapshot.
 - config: DownloadFilesJobConfigInput
-  - Configuration for the download request.
+  - Required. Configuration for the download request.
+- clusterUuid: System.String
+  - Required. UUID used to identify the cluster the request goes to.
+- locationId: System.String
+  - Required. ID of the location.

@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("forceChangePasswordWithMfa")]
         public System.Boolean? ForceChangePasswordWithMfa { get; set; }
 
+        //      C# -> List<ObjectInfoType>? ObjectsToDelete
+        // GraphQL -> objectsToDelete: [ObjectInfoType!] (input)
+        [JsonProperty("objectsToDelete")]
+        public List<ObjectInfoType>? ObjectsToDelete { get; set; }
+
         //      C# -> AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode
         // GraphQL -> relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType! (enum)
         [Required]

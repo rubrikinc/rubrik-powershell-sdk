@@ -161,3 +161,5 @@ User audit object type.
 - FUSION_COMPUTE_VIRTUAL_MACHINE - FusionCompute virtual machine.
 - FUSION_COMPUTE_NETWORK - FusionCompute network.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure PostgreSQL Flexible Server.
+- FailoverGroup - Failover Group (HA Policy) type.

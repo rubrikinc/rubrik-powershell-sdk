@@ -15,3 +15,7 @@ Information about the feed.
   - Status of the feed.
 - autoQuarantineMetadata: AutoQuarantineMetadataType
   - Metadata for auto quarantine.
+- providerConfig: ThreatIntelProviderConfigType
+  - Configuration specific to the Threat Intel provider (for example, TAXII
+server URLs and collection IDs). Populated only for providers requiring
+non-credential configuration. Credentials are never returned here.

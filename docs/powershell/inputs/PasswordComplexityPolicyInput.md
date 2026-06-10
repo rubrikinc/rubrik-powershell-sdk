@@ -1,5 +1,5 @@
 ### PasswordComplexityPolicyInput
-Specifies the password policy to be used by the organization.
+Represents the password complexity policy that applies when users in the organization set or update passwords.
 
 - lengthPolicy: PasswordComplexityPolicyTemplateInput
   - Policy for the length of each password string.

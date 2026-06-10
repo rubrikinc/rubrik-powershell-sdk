@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("turnOff")]
         public System.Boolean? TurnOff { get; set; }
 
+        //      C# -> System.Boolean? IsLightDiskLed
+        // GraphQL -> isLightDiskLed: Boolean (scalar)
+        [JsonProperty("isLightDiskLed")]
+        public System.Boolean? IsLightDiskLed { get; set; }
+
 
         #endregion
 

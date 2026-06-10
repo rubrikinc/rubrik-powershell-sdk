@@ -1,5 +1,5 @@
 ### CreateAwsClusterInput
-CreateAwsClusterInput for Aws account.
+Input for creating an AWS cloud cluster.
 
 - cloudAccountId: System.String
   - Cloud account ID of the AWS account.
@@ -20,4 +20,5 @@ CreateAwsClusterInput for Aws account.
 - usePlacementGroups: System.Boolean
   - Flag to enable use of placement group on the cluster.
 - isAzResilient: System.Boolean
-  - Indicates whether the cluster should be deployed across multiple availability zones.
+  - Indicates whether the cluster should be deployed across multiple
+availability zones.

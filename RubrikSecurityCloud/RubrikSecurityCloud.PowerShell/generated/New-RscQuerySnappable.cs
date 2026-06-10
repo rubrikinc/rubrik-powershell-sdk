@@ -435,6 +435,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		end = $someDateTime
     /// 	}
     /// 	# OPTIONAL
+    /// 	searchTerm = $someString
+    /// 	# OPTIONAL
     /// 	slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
     /// 	# OPTIONAL
     /// 	orgId = @(
@@ -610,6 +612,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		type = @(
     /// 			$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
     /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	timeRange = @{
+    /// 		# REQUIRED
+    /// 		start = $someDateTime
+    /// 		# REQUIRED
+    /// 		end = $someDateTime
     /// 	}
     /// 	# OPTIONAL
     /// 	searchTerm = $someString
@@ -1649,6 +1658,8 @@ $query.Var.filter = @{
 		end = $someDateTime
 	}
 	# OPTIONAL
+	searchTerm = $someString
+	# OPTIONAL
 	slaTimeRange = $someSlaComplianceTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaComplianceTimeRange]) for enum values.
 	# OPTIONAL
 	orgId = @(
@@ -1832,6 +1843,13 @@ $query.Var.filter = @{
 		type = @(
 			$someClusterTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterTypeEnum]) for enum values.
 		)
+	}
+	# OPTIONAL
+	timeRange = @{
+		# REQUIRED
+		start = $someDateTime
+		# REQUIRED
+		end = $someDateTime
 	}
 	# OPTIONAL
 	searchTerm = $someString

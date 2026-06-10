@@ -35,10 +35,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationName")]
         public System.String? LocationName { get; set; }
 
+        //      C# -> System.String? RcvTier
+        // GraphQL -> rcvTier: String (scalar)
+        [JsonProperty("rcvTier")]
+        public System.String? RcvTier { get; set; }
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
+
+        //      C# -> System.String? StorageClassTier
+        // GraphQL -> storageClassTier: String (scalar)
+        [JsonProperty("storageClassTier")]
+        public System.String? StorageClassTier { get; set; }
 
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
@@ -63,7 +73,9 @@ namespace RubrikSecurityCloud.Types
         CloudProviderType? CloudType = null,
         SnapshotType? SnapshotType = null,
         System.String? LocationName = null,
+        System.String? RcvTier = null,
         System.String? SnapshotId = null,
+        System.String? StorageClassTier = null,
         CloudNativeAccountIdWithName? CloudNativeAccountId = null,
         CloudNativeRegion? SnapshotRegion = null
     ) 
@@ -77,8 +89,14 @@ namespace RubrikSecurityCloud.Types
         if ( LocationName != null ) {
             this.LocationName = LocationName;
         }
+        if ( RcvTier != null ) {
+            this.RcvTier = RcvTier;
+        }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
+        }
+        if ( StorageClassTier != null ) {
+            this.StorageClassTier = StorageClassTier;
         }
         if ( CloudNativeAccountId != null ) {
             this.CloudNativeAccountId = CloudNativeAccountId;
@@ -127,6 +145,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "locationName\n" ;
             }
         }
+        //      C# -> System.String? RcvTier
+        // GraphQL -> rcvTier: String (scalar)
+        if (this.RcvTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rcvTier\n" ;
+            } else {
+                s += ind + "rcvTier\n" ;
+            }
+        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId != null) {
@@ -134,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotId\n" ;
             } else {
                 s += ind + "snapshotId\n" ;
+            }
+        }
+        //      C# -> System.String? StorageClassTier
+        // GraphQL -> storageClassTier: String (scalar)
+        if (this.StorageClassTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageClassTier\n" ;
+            } else {
+                s += ind + "storageClassTier\n" ;
             }
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
@@ -218,6 +254,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LocationName = null;
         }
+        //      C# -> System.String? RcvTier
+        // GraphQL -> rcvTier: String (scalar)
+        if (ec.Includes("rcvTier",true))
+        {
+            if(this.RcvTier == null) {
+
+                this.RcvTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RcvTier != null && ec.Excludes("rcvTier",true))
+        {
+            this.RcvTier = null;
+        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (ec.Includes("snapshotId",true))
@@ -234,6 +287,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
         {
             this.SnapshotId = null;
+        }
+        //      C# -> System.String? StorageClassTier
+        // GraphQL -> storageClassTier: String (scalar)
+        if (ec.Includes("storageClassTier",true))
+        {
+            if(this.StorageClassTier == null) {
+
+                this.StorageClassTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageClassTier != null && ec.Excludes("storageClassTier",true))
+        {
+            this.StorageClassTier = null;
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)

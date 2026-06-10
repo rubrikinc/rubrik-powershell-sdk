@@ -2,6 +2,7 @@
 AWS role based Account specific info.
 
 - awsSpecificInfo: AwsCloudAccountWithFeatures
+  - AWS role based Account specific info.
 - cloudAccountId: System.String
   - The ID of this Cloud Account.
 - name: System.String

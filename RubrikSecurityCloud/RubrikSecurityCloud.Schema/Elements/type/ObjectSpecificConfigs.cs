@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureBlobConfig")]
         public AzureBlobConfig? AzureBlobConfig { get; set; }
 
+        //      C# -> AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig
+        // GraphQL -> azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig (type)
+        [JsonProperty("azurePostgresFlexibleServerConfig")]
+        public AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig { get; set; }
+
         //      C# -> AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig
         // GraphQL -> azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig (type)
         [JsonProperty("azureSqlDatabaseDbConfig")]
@@ -124,6 +129,7 @@ namespace RubrikSecurityCloud.Types
         AwsNativeS3SlaConfig? AwsNativeS3SlaConfig = null,
         AwsRdsConfig? AwsRdsConfig = null,
         AzureBlobConfig? AzureBlobConfig = null,
+        AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig = null,
         AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig = null,
         AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig = null,
         Db2Config? Db2Config = null,
@@ -151,6 +157,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureBlobConfig != null ) {
             this.AzureBlobConfig = AzureBlobConfig;
+        }
+        if ( AzurePostgresFlexibleServerConfig != null ) {
+            this.AzurePostgresFlexibleServerConfig = AzurePostgresFlexibleServerConfig;
         }
         if ( AzureSqlDatabaseDbConfig != null ) {
             this.AzureSqlDatabaseDbConfig = AzureSqlDatabaseDbConfig;
@@ -253,6 +262,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureBlobConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig
+        // GraphQL -> azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig (type)
+        if (this.AzurePostgresFlexibleServerConfig != null) {
+            var fspec = this.AzurePostgresFlexibleServerConfig.AsFieldSpec(conf.Child("azurePostgresFlexibleServerConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azurePostgresFlexibleServerConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -506,6 +527,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureBlobConfig != null && ec.Excludes("azureBlobConfig",false))
         {
             this.AzureBlobConfig = null;
+        }
+        //      C# -> AzurePostgresFlexibleServerConfig? AzurePostgresFlexibleServerConfig
+        // GraphQL -> azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig (type)
+        if (ec.Includes("azurePostgresFlexibleServerConfig",false))
+        {
+            if(this.AzurePostgresFlexibleServerConfig == null) {
+
+                this.AzurePostgresFlexibleServerConfig = new AzurePostgresFlexibleServerConfig();
+                this.AzurePostgresFlexibleServerConfig.ApplyExploratoryFieldSpec(ec.NewChild("azurePostgresFlexibleServerConfig"));
+
+            } else {
+
+                this.AzurePostgresFlexibleServerConfig.ApplyExploratoryFieldSpec(ec.NewChild("azurePostgresFlexibleServerConfig"));
+
+            }
+        }
+        else if (this.AzurePostgresFlexibleServerConfig != null && ec.Excludes("azurePostgresFlexibleServerConfig",false))
+        {
+            this.AzurePostgresFlexibleServerConfig = null;
         }
         //      C# -> AzureSqlDatabaseDbConfig? AzureSqlDatabaseDbConfig
         // GraphQL -> azureSqlDatabaseDbConfig: AzureSqlDatabaseDbConfig (type)

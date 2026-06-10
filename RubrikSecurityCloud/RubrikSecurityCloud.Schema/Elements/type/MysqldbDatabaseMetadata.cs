@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("approxDbSizeInBytes")]
         public System.Int64? ApproxDbSizeInBytes { get; set; }
 
+        //      C# -> System.Boolean? IsSystem
+        // GraphQL -> isSystem: Boolean! (scalar)
+        [JsonProperty("isSystem")]
+        public System.Boolean? IsSystem { get; set; }
+
         //      C# -> System.Int64? ProtectableTables
         // GraphQL -> protectableTables: Long! (scalar)
         [JsonProperty("protectableTables")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public MysqldbDatabaseMetadata Set(
         MysqldbDatabaseProtectionStateEnum? ProtectionState = null,
         System.Int64? ApproxDbSizeInBytes = null,
+        System.Boolean? IsSystem = null,
         System.Int64? ProtectableTables = null,
         System.Int64? TotalTables = null,
         List<System.String>? UnprotectedStorageEngines = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ApproxDbSizeInBytes != null ) {
             this.ApproxDbSizeInBytes = ApproxDbSizeInBytes;
+        }
+        if ( IsSystem != null ) {
+            this.IsSystem = IsSystem;
         }
         if ( ProtectableTables != null ) {
             this.ProtectableTables = ProtectableTables;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "approxDbSizeInBytes\n" ;
             } else {
                 s += ind + "approxDbSizeInBytes\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSystem
+        // GraphQL -> isSystem: Boolean! (scalar)
+        if (this.IsSystem != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSystem\n" ;
+            } else {
+                s += ind + "isSystem\n" ;
             }
         }
         //      C# -> System.Int64? ProtectableTables
@@ -176,6 +194,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ApproxDbSizeInBytes != null && ec.Excludes("approxDbSizeInBytes",true))
         {
             this.ApproxDbSizeInBytes = null;
+        }
+        //      C# -> System.Boolean? IsSystem
+        // GraphQL -> isSystem: Boolean! (scalar)
+        if (ec.Includes("isSystem",true))
+        {
+            if(this.IsSystem == null) {
+
+                this.IsSystem = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSystem != null && ec.Excludes("isSystem",true))
+        {
+            this.IsSystem = null;
         }
         //      C# -> System.Int64? ProtectableTables
         // GraphQL -> protectableTables: Long! (scalar)

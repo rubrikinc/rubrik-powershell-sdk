@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudType")]
         public AwsCloudType? CloudType { get; set; }
 
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        [JsonProperty("crossAccountRoleModel")]
+        public CrossAccountRoleModel? CrossAccountRoleModel { get; set; }
+
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         [JsonProperty("accountName")]
@@ -76,6 +86,8 @@ namespace RubrikSecurityCloud.Types
 
     public AwsCloudAccount Set(
         AwsCloudType? CloudType = null,
+        CrossAccountRoleModel? CrossAccountRoleModel = null,
+        AwsCloudAccountServiceType? ServiceType = null,
         System.String? AccountName = null,
         System.String? Id = null,
         System.String? Message = null,
@@ -88,6 +100,12 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CloudType != null ) {
             this.CloudType = CloudType;
+        }
+        if ( CrossAccountRoleModel != null ) {
+            this.CrossAccountRoleModel = CrossAccountRoleModel;
+        }
+        if ( ServiceType != null ) {
+            this.ServiceType = ServiceType;
         }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
@@ -134,6 +152,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudType\n" ;
             } else {
                 s += ind + "cloudType\n" ;
+            }
+        }
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        if (this.CrossAccountRoleModel != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "crossAccountRoleModel\n" ;
+            } else {
+                s += ind + "crossAccountRoleModel\n" ;
+            }
+        }
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (this.ServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
             }
         }
         //      C# -> System.String? AccountName
@@ -231,6 +267,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudType != null && ec.Excludes("cloudType",true))
         {
             this.CloudType = null;
+        }
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        if (ec.Includes("crossAccountRoleModel",true))
+        {
+            if(this.CrossAccountRoleModel == null) {
+
+                this.CrossAccountRoleModel = new CrossAccountRoleModel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CrossAccountRoleModel != null && ec.Excludes("crossAccountRoleModel",true))
+        {
+            this.CrossAccountRoleModel = null;
+        }
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (ec.Includes("serviceType",true))
+        {
+            if(this.ServiceType == null) {
+
+                this.ServiceType = new AwsCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)

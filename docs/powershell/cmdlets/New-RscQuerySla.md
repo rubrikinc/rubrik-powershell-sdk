@@ -22,9 +22,11 @@ Returns paginated list of SLA domains that were created on Rubrik CDM.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ClusterSlaDomainConnection.
 ### clusterglobals
-Global SLA Domains protecting at least one object on the specified Rubrik cluster.
+Retrieve global SLA Domains associated with the specified Rubrik cluster. By default, only SLA Domains protecting at least one object are returned.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - cdmClusterUUID - System.String: UUID of the Rubrik cluster.
+    - onlyWithProtectedObjects - System.Boolean: When true, only return SLA Domains that protect at least one object on the cluster. Defaults to true.
 - Returns list of SlaInfos.
 ### conflictobjects
 Conflicting objects for an SLA Domain assignment.

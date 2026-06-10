@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isNfsSupported")]
         public System.Boolean? IsNfsSupported { get; set; }
 
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        [JsonProperty("isNutanixCftEnabled")]
+        public System.Boolean? IsNutanixCftEnabled { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -125,6 +130,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> namespaceCount: Int! (scalar)
         [JsonProperty("namespaceCount")]
         public System.Int32? NamespaceCount { get; set; }
+
+        //      C# -> System.String? NfsPseudoFsPrefix
+        // GraphQL -> nfsPseudoFsPrefix: String (scalar)
+        [JsonProperty("nfsPseudoFsPrefix")]
+        public System.String? NfsPseudoFsPrefix { get; set; }
 
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
@@ -325,12 +335,14 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsChangelistEnabled = null,
         System.Boolean? IsNetAppMetroClusterEnabled = null,
         System.Boolean? IsNfsSupported = null,
+        System.Boolean? IsNutanixCftEnabled = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsSmbSupported = null,
         System.Boolean? IsUserSuppliedSmbCredentials = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
         System.Int32? NamespaceCount = null,
+        System.String? NfsPseudoFsPrefix = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? OsVersion = null,
         System.Int32? ReplicatedObjectCount = null,
@@ -403,6 +415,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsNfsSupported != null ) {
             this.IsNfsSupported = IsNfsSupported;
         }
+        if ( IsNutanixCftEnabled != null ) {
+            this.IsNutanixCftEnabled = IsNutanixCftEnabled;
+        }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
@@ -420,6 +435,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NamespaceCount != null ) {
             this.NamespaceCount = NamespaceCount;
+        }
+        if ( NfsPseudoFsPrefix != null ) {
+            this.NfsPseudoFsPrefix = NfsPseudoFsPrefix;
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
@@ -665,6 +683,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isNfsSupported\n" ;
             }
         }
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        if (this.IsNutanixCftEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isNutanixCftEnabled\n" ;
+            } else {
+                s += ind + "isNutanixCftEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
@@ -717,6 +744,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "namespaceCount\n" ;
             } else {
                 s += ind + "namespaceCount\n" ;
+            }
+        }
+        //      C# -> System.String? NfsPseudoFsPrefix
+        // GraphQL -> nfsPseudoFsPrefix: String (scalar)
+        if (this.NfsPseudoFsPrefix != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfsPseudoFsPrefix\n" ;
+            } else {
+                s += ind + "nfsPseudoFsPrefix\n" ;
             }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
@@ -1284,6 +1320,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsNfsSupported = null;
         }
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        if (ec.Includes("isNutanixCftEnabled",true))
+        {
+            if(this.IsNutanixCftEnabled == null) {
+
+                this.IsNutanixCftEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNutanixCftEnabled != null && ec.Excludes("isNutanixCftEnabled",true))
+        {
+            this.IsNutanixCftEnabled = null;
+        }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         if (ec.Includes("isRelic",true))
@@ -1385,6 +1438,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NamespaceCount != null && ec.Excludes("namespaceCount",true))
         {
             this.NamespaceCount = null;
+        }
+        //      C# -> System.String? NfsPseudoFsPrefix
+        // GraphQL -> nfsPseudoFsPrefix: String (scalar)
+        if (ec.Includes("nfsPseudoFsPrefix",true))
+        {
+            if(this.NfsPseudoFsPrefix == null) {
+
+                this.NfsPseudoFsPrefix = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfsPseudoFsPrefix != null && ec.Excludes("nfsPseudoFsPrefix",true))
+        {
+            this.NfsPseudoFsPrefix = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)

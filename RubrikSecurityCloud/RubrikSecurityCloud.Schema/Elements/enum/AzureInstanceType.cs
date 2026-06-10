@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "STANDARD_D16AS_V5")]
         STANDARD_D16AS_V5,
 
+        [EnumMember(Value = "STANDARD_D16AS_V6")]
+        STANDARD_D16AS_V6,
+
         [EnumMember(Value = "STANDARD_D16S_V5")]
         STANDARD_D16S_V5,
 
@@ -36,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "STANDARD_D8AS_V5")]
         STANDARD_D8AS_V5,
 
+        [EnumMember(Value = "STANDARD_D8AS_V6")]
+        STANDARD_D8AS_V6,
+
         [EnumMember(Value = "STANDARD_D8S_V5")]
         STANDARD_D8S_V5,
 
@@ -47,6 +53,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "STANDARD_E16AS_V5")]
         STANDARD_E16AS_V5,
+
+        [EnumMember(Value = "STANDARD_E16AS_V6")]
+        STANDARD_E16AS_V6,
 
         [EnumMember(Value = "STANDARD_E16S_V5")]
         STANDARD_E16S_V5,

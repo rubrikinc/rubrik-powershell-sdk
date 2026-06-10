@@ -1,5 +1,5 @@
 ### MapCloudAccountExocomputeAccountReply
-Response of the operation to map cloud accounts to an Exocompute account.
+Response for mapping exocompute account.
 
 - isSuccess: System.Boolean
-  - Specifies whether the mapping was completed successfully.
+  - Whether the mapping was successful.

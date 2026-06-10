@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_OBJECT_TYPE")]
         AZURE_OBJECT_TYPE,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_OBJECT_TYPE")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER_OBJECT_TYPE,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE_OBJECT_TYPE")]
         AZURE_SQL_DATABASE_OBJECT_TYPE,
 
@@ -75,6 +78,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FUSION_COMPUTE_OBJECT_TYPE")]
         FUSION_COMPUTE_OBJECT_TYPE,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER_OBJECT_TYPE")]
+        GCP_ALLOY_DB_CLUSTER_OBJECT_TYPE,
+
+        [EnumMember(Value = "GCP_BIGQUERY_OBJECT_TYPE")]
+        GCP_BIGQUERY_OBJECT_TYPE,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_OBJECT_TYPE")]
         GCP_CLOUD_SQL_OBJECT_TYPE,
 
@@ -83,6 +92,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_OBJECT_TYPE")]
         GITHUB_OBJECT_TYPE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE_OBJECT_TYPE")]
+        GLUE_ICEBERG_TABLE_OBJECT_TYPE,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_OBJECT_TYPE")]
         GOOGLE_WORKSPACE_OBJECT_TYPE,
@@ -141,11 +153,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLE_OBJECT_TYPE")]
         ORACLE_OBJECT_TYPE,
 
+        [EnumMember(Value = "PING_FEDERATE_OBJECT_TYPE")]
+        PING_FEDERATE_OBJECT_TYPE,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_OBJECT_TYPE")]
         POSTGRES_DB_CLUSTER_OBJECT_TYPE,
 
         [EnumMember(Value = "PROXMOX_OBJECT_TYPE")]
         PROXMOX_OBJECT_TYPE,
+
+        [EnumMember(Value = "PURE_STORAGE_OBJECT_TYPE")]
+        PURE_STORAGE_OBJECT_TYPE,
+
+        [EnumMember(Value = "RSC_TAG_OBJECT_TYPE")]
+        RSC_TAG_OBJECT_TYPE,
 
         [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
         SALESFORCE_OBJECT_TYPE,

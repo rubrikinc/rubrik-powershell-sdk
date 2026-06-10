@@ -8,9 +8,10 @@ Retrieves the AWS artifacts that need to be deleted when an account is being del
 ### availabilityzonesbyregion
 List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
+    - feature - CloudAccountFeature: Cloud-account feature for credential routing on MULTI_ROLE accounts.
 - Returns list of System.Strings.
 ### batchsupportedrdsdatabaseinstanceclasses
 Batch query to list all the database instance classes supported by AWS RDS database for multiple DB engine and engine version combinations.
@@ -86,14 +87,19 @@ All DB subnet groups in a given region. Refers to logical isolation of RDS on a 
     - region - AwsNativeRegion: Region in AWS.
 - Returns list of SubnetGroups.
 ### ec2instancetypesbyregion
-List of all EC2 instance types available in the region.
+List of EC2 instance types available in a region, optionally scoped to a single AWS Outpost.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
+    - outpostArn - System.String: Optional ARN of an AWS Outpost. When set, scopes the result to instance types available on that Outpost.
 - Returns list of AwsNativeEc2InstanceTypeOfferings.
 ### ec2keypairsbyregion
-List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
+List of all key pairs for a given region. A key pair, consisting of a
+public key and a private key, is a set of security credentials that you
+use to prove your identity when connecting to an EC2 instance. For more
+information, see
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
 
 - There are 2 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
@@ -127,7 +133,8 @@ All Rubrik CC-ES instance profiles in the AWS account.
     - region - System.String: Region of AWS account.
 - Returns list of System.Strings.
 ### iss3bucketnameavailable
-Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
+Specifies whether an S3 bucket name is available for use in AWS or not.
+When true, the bucket name is available for use.
 
 - There are 2 arguments.
     - bucketName - System.String: Name of the AWS S3 bucket.
@@ -136,9 +143,10 @@ Specifies whether an S3 bucket name is available for use in AWS or not. When tru
 ### kmsencryptionkeysbyregion
 List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
+    - feature - CloudAccountFeature: Cloud account feature to filter encryption keys for accounts that support per-feature IAM roles.
 - Returns list of KmsEncryptionKeys.
 ### marketplacesubscriptioninfo
 Check AWS marketplace subscription status for a given CDM version.
@@ -166,7 +174,7 @@ Details of the RDS Instance in the AWS Native account.
 - There are 4 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
-    - rdsInstanceName - System.String: Name of the RDS DB Instance
+    - rdsInstanceName - System.String: Name of the RDS DB Instance.
     - rdsDatabaseRubrikId - System.String: The Rubrik ID for the AWS RDS database.
 - Returns RdsInstanceDetailsFromAws.
 ### regiondetails
@@ -192,7 +200,8 @@ List of all S3 bucket details across regions for the AWS Native account.
     - region - AwsNativeRegion: The region in AWS. If no region is provided, the AWS function will return all buckets.
 - Returns list of S3BucketDetailss.
 ### s3bucketstateforrecovery
-Retrieves the versioning and object ACL state of the Amazon S3 bucket, which is required to initiate the recovery process.
+Retrieves the versioning and object ACL state of the Amazon S3 bucket,
+which is required to initiate the recovery process.
 
 - There are 3 arguments.
     - bucketName - System.String: Name of the AWS S3 bucket.
@@ -205,7 +214,10 @@ List of all the AWS EKS versions supported by Rubrik.
 - The supportedeksversions subcommand takes no arguments.
 - Returns list of System.Strings.
 ### supportedrdsdatabaseinstanceclasses
-List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
+List of all the database instance classes supported by AWS RDS database
+for the provided DB engine and engine version. DB engine version is a
+optional argument, it can be ignored if we want to retrieve all the
+supported instance class for a DB engine irrespective of DB engine version.
 
 - There are 4 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
@@ -219,7 +231,7 @@ Retrieves the AWS trust policy that will be attached with each role (cross-accou
 - There is a single argument of type AwsTrustPolicyInput.
 - Returns AwsTrustPolicy.
 ### validatecreateclusterinput
-Validates aws cluster create input.
+Validates AWS cluster create input.
 
 - There is a single argument of type CreateAwsClusterInput.
 - Returns ValidationReply.
@@ -237,7 +249,8 @@ List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 ### vpcsbyregion
 List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
+    - feature - CloudAccountFeature: Cloud-account feature for credential routing on MULTI_ROLE accounts.
 - Returns list of AwsVpcs.

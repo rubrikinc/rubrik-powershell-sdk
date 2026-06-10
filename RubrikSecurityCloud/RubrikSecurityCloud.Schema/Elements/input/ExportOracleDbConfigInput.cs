@@ -98,6 +98,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldSkipDropDbInUndo")]
         public System.Boolean? ShouldSkipDropDbInUndo { get; set; }
 
+        //      C# -> System.Boolean? ShouldRecoverToLatestFromRedo
+        // GraphQL -> shouldRecoverToLatestFromRedo: Boolean (scalar)
+        [JsonProperty("shouldRecoverToLatestFromRedo")]
+        public System.Boolean? ShouldRecoverToLatestFromRedo { get; set; }
+
         //      C# -> List<System.String>? TargetRacHostIds
         // GraphQL -> targetRacHostIds: [String!] (scalar)
         [JsonProperty("targetRacHostIds")]

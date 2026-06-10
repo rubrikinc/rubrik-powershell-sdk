@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timeRange")]
         public TimeRangeInput? TimeRange { get; set; }
 
+        //      C# -> System.String? SearchTerm
+        // GraphQL -> searchTerm: String (scalar)
+        [JsonProperty("searchTerm")]
+        public System.String? SearchTerm { get; set; }
+
         //      C# -> SlaComplianceTimeRange? SlaTimeRange
         // GraphQL -> slaTimeRange: SlaComplianceTimeRange (enum)
         [JsonProperty("slaTimeRange")]

@@ -13,10 +13,8 @@ An Azure Native Region. Refers to a specific location where Azure resources are 
   - Count of Azure SQL Managed Instance databases in the region.
 - azureStorageAccountCount: System.Int32
   - The number of Azure storage accounts in the region.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- azurePostgresFlexibleServerCount: System.Int32
+  - The number of Azure PostgreSQL Flexible Servers in the region.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -51,3 +49,7 @@ An Azure Native Region. Refers to a specific location where Azure resources are 
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.

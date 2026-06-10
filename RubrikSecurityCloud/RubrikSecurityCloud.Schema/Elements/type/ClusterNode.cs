@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipAddress")]
         public System.String? IpAddress { get; set; }
 
+        //      C# -> DateTime? LastStatusChangeTime
+        // GraphQL -> lastStatusChangeTime: DateTime (scalar)
+        [JsonProperty("lastStatusChangeTime")]
+        public DateTime? LastStatusChangeTime { get; set; }
+
         //      C# -> System.Boolean? NeedsInspection
         // GraphQL -> needsInspection: Boolean (scalar)
         [JsonProperty("needsInspection")]
@@ -121,6 +126,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Hostname = null,
         System.String? Id = null,
         System.String? IpAddress = null,
+        DateTime? LastStatusChangeTime = null,
         System.Boolean? NeedsInspection = null,
         System.String? NetworkSpeed = null,
         System.Int64? Ram = null,
@@ -160,6 +166,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IpAddress != null ) {
             this.IpAddress = IpAddress;
+        }
+        if ( LastStatusChangeTime != null ) {
+            this.LastStatusChangeTime = LastStatusChangeTime;
         }
         if ( NeedsInspection != null ) {
             this.NeedsInspection = NeedsInspection;
@@ -287,6 +296,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ipAddress\n" ;
             } else {
                 s += ind + "ipAddress\n" ;
+            }
+        }
+        //      C# -> DateTime? LastStatusChangeTime
+        // GraphQL -> lastStatusChangeTime: DateTime (scalar)
+        if (this.LastStatusChangeTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastStatusChangeTime\n" ;
+            } else {
+                s += ind + "lastStatusChangeTime\n" ;
             }
         }
         //      C# -> System.Boolean? NeedsInspection
@@ -533,6 +551,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IpAddress != null && ec.Excludes("ipAddress",true))
         {
             this.IpAddress = null;
+        }
+        //      C# -> DateTime? LastStatusChangeTime
+        // GraphQL -> lastStatusChangeTime: DateTime (scalar)
+        if (ec.Includes("lastStatusChangeTime",true))
+        {
+            if(this.LastStatusChangeTime == null) {
+
+                this.LastStatusChangeTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastStatusChangeTime != null && ec.Excludes("lastStatusChangeTime",true))
+        {
+            this.LastStatusChangeTime = null;
         }
         //      C# -> System.Boolean? NeedsInspection
         // GraphQL -> needsInspection: Boolean (scalar)

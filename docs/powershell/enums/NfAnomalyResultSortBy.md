@@ -1,5 +1,5 @@
 ### NfAnomalyResultSortBy
-Sort non-filtesystem anomaly results by field.
+Sort non-filesystem anomaly results by field.
 
 - IS_ANOMALY - Specifies whether the result is an anomaly.
 - CLUSTER_UUID - Unique ID of the cluster.

@@ -717,6 +717,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	rootIds = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	shouldScanAllFiles = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1561,6 +1563,8 @@ $query.Var.input = @{
 	rootIds = @(
 		$someString
 	)
+	# OPTIONAL
+	shouldScanAllFiles = $someBoolean
 }"
             );
         }

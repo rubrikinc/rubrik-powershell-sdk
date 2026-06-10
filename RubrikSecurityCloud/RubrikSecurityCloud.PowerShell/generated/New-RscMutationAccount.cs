@@ -94,9 +94,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	name = $someString
     /// 	# REQUIRED
-    /// 	fullName = $someString
-    /// 	# REQUIRED
     /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	fullName = $someString
     /// 	# REQUIRED
     /// 	authDomainConfig = $someTenantAuthDomainConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TenantAuthDomainConfig]) for enum values.
     /// 	# REQUIRED
@@ -105,10 +105,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isEnvoyRequired = $someBoolean
     /// 	# REQUIRED
     /// 	allowedClusters = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	replicationOnlyClusters = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
@@ -149,6 +145,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	existingSsoGroups = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			isOrgAdmin = $someBoolean
+    /// 			# REQUIRED
+    /// 			id = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	newSsoGroups = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 			# REQUIRED
+    /// 			isOrgAdmin = $someBoolean
+    /// 			# OPTIONAL
+    /// 			authDomainId = $someString
+    /// 		}
+    /// 	)
     /// 	# REQUIRED
     /// 	selfServicePermissions = @(
     /// 		@{
@@ -165,34 +181,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
-    /// 	existingSsoGroups = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			id = $someString
-    /// 			# REQUIRED
-    /// 			isOrgAdmin = $someBoolean
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	newSsoGroups = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			isOrgAdmin = $someBoolean
-    /// 			# OPTIONAL
-    /// 			authDomainId = $someString
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
     /// 	isServiceAccountEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	crossAccountCapabilities = @(
+    /// 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+    /// 	)
     /// 	# OPTIONAL
     /// 	isServiceAccountDisabled = $someBoolean
     /// 	# OPTIONAL
     /// 	isInheritIpAllowlistDisabled = $someBoolean
     /// 	# OPTIONAL
-    /// 	crossAccountCapabilities = @(
-    /// 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+    /// 	replicationOnlyClusters = @(
+    /// 		$someString
     /// 	)
     /// }
     /// 
@@ -614,9 +614,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	name = $someString
     /// 	# REQUIRED
-    /// 	fullName = $someString
-    /// 	# REQUIRED
     /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	fullName = $someString
     /// 	# REQUIRED
     /// 	authDomainConfig = $someTenantAuthDomainConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TenantAuthDomainConfig]) for enum values.
     /// 	# REQUIRED
@@ -625,10 +625,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isEnvoyRequired = $someBoolean
     /// 	# REQUIRED
     /// 	allowedClusters = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	replicationOnlyClusters = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
@@ -669,6 +665,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	existingSsoGroups = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			isOrgAdmin = $someBoolean
+    /// 			# REQUIRED
+    /// 			id = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	newSsoGroups = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 			# REQUIRED
+    /// 			isOrgAdmin = $someBoolean
+    /// 			# OPTIONAL
+    /// 			authDomainId = $someString
+    /// 		}
+    /// 	)
     /// 	# REQUIRED
     /// 	selfServicePermissions = @(
     /// 		@{
@@ -685,27 +701,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
-    /// 	existingSsoGroups = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			id = $someString
-    /// 			# REQUIRED
-    /// 			isOrgAdmin = $someBoolean
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	newSsoGroups = @(
-    /// 		@{
-    /// 			# REQUIRED
-    /// 			name = $someString
-    /// 			# REQUIRED
-    /// 			isOrgAdmin = $someBoolean
-    /// 			# OPTIONAL
-    /// 			authDomainId = $someString
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
     /// 	isServiceAccountEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	crossAccountCapabilities = @(
+    /// 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+    /// 	)
     /// 	# OPTIONAL
     /// 	isServiceAccountDisabled = $someBoolean
     /// 	# OPTIONAL
@@ -713,8 +713,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldKeepGlobalIpAllowlist = $someBoolean
     /// 	# OPTIONAL
-    /// 	crossAccountCapabilities = @(
-    /// 		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+    /// 	replicationOnlyClusters = @(
+    /// 		$someString
     /// 	)
     /// }
     /// 
@@ -1026,9 +1026,9 @@ $query.Var.input = @{
 	# REQUIRED
 	name = $someString
 	# REQUIRED
-	fullName = $someString
-	# REQUIRED
 	description = $someString
+	# REQUIRED
+	fullName = $someString
 	# REQUIRED
 	authDomainConfig = $someTenantAuthDomainConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TenantAuthDomainConfig]) for enum values.
 	# REQUIRED
@@ -1037,10 +1037,6 @@ $query.Var.input = @{
 	isEnvoyRequired = $someBoolean
 	# REQUIRED
 	allowedClusters = @(
-		$someString
-	)
-	# OPTIONAL
-	replicationOnlyClusters = @(
 		$someString
 	)
 	# OPTIONAL
@@ -1081,6 +1077,26 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	existingSsoGroups = @(
+		@{
+			# REQUIRED
+			isOrgAdmin = $someBoolean
+			# REQUIRED
+			id = $someString
+		}
+	)
+	# OPTIONAL
+	newSsoGroups = @(
+		@{
+			# REQUIRED
+			name = $someString
+			# REQUIRED
+			isOrgAdmin = $someBoolean
+			# OPTIONAL
+			authDomainId = $someString
+		}
+	)
 	# REQUIRED
 	selfServicePermissions = @(
 		@{
@@ -1097,34 +1113,18 @@ $query.Var.input = @{
 		}
 	)
 	# OPTIONAL
-	existingSsoGroups = @(
-		@{
-			# REQUIRED
-			id = $someString
-			# REQUIRED
-			isOrgAdmin = $someBoolean
-		}
-	)
-	# OPTIONAL
-	newSsoGroups = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			isOrgAdmin = $someBoolean
-			# OPTIONAL
-			authDomainId = $someString
-		}
-	)
-	# OPTIONAL
 	isServiceAccountEnabled = $someBoolean
+	# OPTIONAL
+	crossAccountCapabilities = @(
+		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+	)
 	# OPTIONAL
 	isServiceAccountDisabled = $someBoolean
 	# OPTIONAL
 	isInheritIpAllowlistDisabled = $someBoolean
 	# OPTIONAL
-	crossAccountCapabilities = @(
-		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+	replicationOnlyClusters = @(
+		$someString
 	)
 }"
             );
@@ -1471,9 +1471,9 @@ $query.Var.input = @{
 	# REQUIRED
 	name = $someString
 	# REQUIRED
-	fullName = $someString
-	# REQUIRED
 	description = $someString
+	# REQUIRED
+	fullName = $someString
 	# REQUIRED
 	authDomainConfig = $someTenantAuthDomainConfig # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TenantAuthDomainConfig]) for enum values.
 	# REQUIRED
@@ -1482,10 +1482,6 @@ $query.Var.input = @{
 	isEnvoyRequired = $someBoolean
 	# REQUIRED
 	allowedClusters = @(
-		$someString
-	)
-	# OPTIONAL
-	replicationOnlyClusters = @(
 		$someString
 	)
 	# OPTIONAL
@@ -1526,6 +1522,26 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	existingSsoGroups = @(
+		@{
+			# REQUIRED
+			isOrgAdmin = $someBoolean
+			# REQUIRED
+			id = $someString
+		}
+	)
+	# OPTIONAL
+	newSsoGroups = @(
+		@{
+			# REQUIRED
+			name = $someString
+			# REQUIRED
+			isOrgAdmin = $someBoolean
+			# OPTIONAL
+			authDomainId = $someString
+		}
+	)
 	# REQUIRED
 	selfServicePermissions = @(
 		@{
@@ -1542,27 +1558,11 @@ $query.Var.input = @{
 		}
 	)
 	# OPTIONAL
-	existingSsoGroups = @(
-		@{
-			# REQUIRED
-			id = $someString
-			# REQUIRED
-			isOrgAdmin = $someBoolean
-		}
-	)
-	# OPTIONAL
-	newSsoGroups = @(
-		@{
-			# REQUIRED
-			name = $someString
-			# REQUIRED
-			isOrgAdmin = $someBoolean
-			# OPTIONAL
-			authDomainId = $someString
-		}
-	)
-	# OPTIONAL
 	isServiceAccountEnabled = $someBoolean
+	# OPTIONAL
+	crossAccountCapabilities = @(
+		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+	)
 	# OPTIONAL
 	isServiceAccountDisabled = $someBoolean
 	# OPTIONAL
@@ -1570,8 +1570,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldKeepGlobalIpAllowlist = $someBoolean
 	# OPTIONAL
-	crossAccountCapabilities = @(
-		$someCrossAccountCapability # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrossAccountCapability]) for enum values.
+	replicationOnlyClusters = @(
+		$someString
 	)
 }"
             );

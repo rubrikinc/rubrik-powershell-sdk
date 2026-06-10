@@ -37,3 +37,7 @@ AWS native regions.
 - US_ISO_WEST_1 - AWS DCA native US West region.
 - US_WEST_1 - AWS native US West (N. California) region.
 - US_WEST_2 - AWS native US West (Oregon) region.
+- AP_SOUTHEAST_5 - AWS native Asia Pacific (Malaysia) region.
+- AP_SOUTHEAST_7 - AWS native Asia Pacific (Thailand) region.
+- MX_CENTRAL_1 - AWS native Mexico (Central) region.
+- EU_CENTRAL_2 - AWS native Europe (Zurich) region.

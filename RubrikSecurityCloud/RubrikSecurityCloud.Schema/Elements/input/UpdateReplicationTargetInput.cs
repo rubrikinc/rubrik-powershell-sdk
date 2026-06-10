@@ -19,21 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ReplicationGatewayInfo? SourceGateway
-        // GraphQL -> sourceGateway: ReplicationGatewayInfo (input)
-        [JsonProperty("sourceGateway")]
-        public ReplicationGatewayInfo? SourceGateway { get; set; }
-
-        //      C# -> ReplicationGatewayInfo? TargetGateway
-        // GraphQL -> targetGateway: ReplicationGatewayInfo (input)
-        [JsonProperty("targetGateway")]
-        public ReplicationGatewayInfo? TargetGateway { get; set; }
-
-        //      C# -> NetworkInterfaceSelection? NetworkInterface
-        // GraphQL -> networkInterface: NetworkInterfaceSelection (input)
-        [JsonProperty("networkInterface")]
-        public NetworkInterfaceSelection? NetworkInterface { get; set; }
-
         //      C# -> System.String? SourceClusterUuid
         // GraphQL -> sourceClusterUuid: UUID! (scalar)
         [Required]
@@ -54,6 +39,21 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("setupType")]
         public ReplicationSetupType? SetupType { get; set; }
+
+        //      C# -> ReplicationGatewayInfo? SourceGateway
+        // GraphQL -> sourceGateway: ReplicationGatewayInfo (input)
+        [JsonProperty("sourceGateway")]
+        public ReplicationGatewayInfo? SourceGateway { get; set; }
+
+        //      C# -> ReplicationGatewayInfo? TargetGateway
+        // GraphQL -> targetGateway: ReplicationGatewayInfo (input)
+        [JsonProperty("targetGateway")]
+        public ReplicationGatewayInfo? TargetGateway { get; set; }
+
+        //      C# -> NetworkInterfaceSelection? NetworkInterface
+        // GraphQL -> networkInterface: NetworkInterfaceSelection (input)
+        [JsonProperty("networkInterface")]
+        public NetworkInterfaceSelection? NetworkInterface { get; set; }
 
         //      C# -> System.Boolean? UseIpv6
         // GraphQL -> useIpv6: Boolean (scalar)

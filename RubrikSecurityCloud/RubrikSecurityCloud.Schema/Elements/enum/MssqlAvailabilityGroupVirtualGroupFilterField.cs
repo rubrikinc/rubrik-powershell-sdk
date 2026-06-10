@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FIELD_UNSPECIFIED")]
         FIELD_UNSPECIFIED,
 
+        [EnumMember(Value = "IS_RBA_ROLE_SECONDARY")]
+        IS_RBA_ROLE_SECONDARY,
+
         [EnumMember(Value = "IS_RELIC")]
         IS_RELIC,
 

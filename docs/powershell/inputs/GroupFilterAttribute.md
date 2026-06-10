@@ -1,13 +1,15 @@
 ### GroupFilterAttribute
-Group filter attribute configuration.
+Specifies Attribute Filtering criteria to define member of groups.
+For AD group, members would be users, whereas for Configured group members would
+be Teams/ SharePoint.
 
 - filterOpType: JoinOpType
-  - Specifies the filter operation with other filter attributes.
+  - Defines the criteria for multiple filter join type.
 - attributeType: AttributeType
-  - Specifies the type of Microsoft directory object attribute type to apply filer. For more information, see https://learn.microsoft.com/en-us/graph/extensibility-overview?tabs=http#comparison-of-extension-types.
+  - Specifies the attribute type.
 - attributeKey: System.String
-  - Specifies the name of the attribute to apply filter.
+  - Specifies the name of the attribute to apply the filter.
 - attributeValue: System.String
-  - Specifies the value of the attribute key.
+  - Specifies the value of the attribute to apply filter.
 - dataType: AttributeDataType
-  - Specifies the data type of attribute.
+  - Specifies the data type of the attribute.

@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_CONFIG_PROTECTION")]
         AWS_CONFIG_PROTECTION,
 
+        [EnumMember(Value = "AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION")]
+        AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION,
+
         [EnumMember(Value = "AZURE_DEVOPS_PROTECTION")]
         AZURE_DEVOPS_PROTECTION,
 
@@ -50,6 +53,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_LAMINAR_TARGET_MANAGED_IDENTITY")]
         AZURE_LAMINAR_TARGET_MANAGED_IDENTITY,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_PROTECTION")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER_PROTECTION,
 
         [EnumMember(Value = "AZURE_SQL_DB_PROTECTION")]
         AZURE_SQL_DB_PROTECTION,
@@ -108,11 +114,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FEATURE_UNSPECIFIED")]
         FEATURE_UNSPECIFIED,
 
+        [EnumMember(Value = "GCP_BIGQUERY_PROTECTION")]
+        GCP_BIGQUERY_PROTECTION,
+
+        [EnumMember(Value = "GCP_BIGQUERY_RESERVATION")]
+        GCP_BIGQUERY_RESERVATION,
+
         [EnumMember(Value = "GCP_SHARED_VPC_HOST")]
         GCP_SHARED_VPC_HOST,
 
         [EnumMember(Value = "GITHUB_REPOSITORY_PROTECTION")]
         GITHUB_REPOSITORY_PROTECTION,
+
+        [EnumMember(Value = "GLUE_ICEBERG_PROTECTION")]
+        GLUE_ICEBERG_PROTECTION,
 
         [EnumMember(Value = "KUBERNETES_PROTECTION")]
         KUBERNETES_PROTECTION,

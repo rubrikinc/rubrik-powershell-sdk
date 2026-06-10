@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudTypeFilter")]
         public AwsCloudTypeFilter? CloudTypeFilter { get; set; }
 
+        //      C# -> AwsServiceTypeFilter? ServiceTypeFilter
+        // GraphQL -> serviceTypeFilter: AwsServiceTypeFilter (input)
+        [JsonProperty("serviceTypeFilter")]
+        public AwsServiceTypeFilter? ServiceTypeFilter { get; set; }
+
 
         #endregion
 

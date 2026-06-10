@@ -170,6 +170,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isConsolidationEnabled = $someBoolean
     /// 	# OPTIONAL
     /// 	encryptionPassword = $someString
+    /// 	# OPTIONAL
+    /// 	subType = $someNfsSubType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NfsSubType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -396,6 +398,8 @@ $query.Var.input = @{
 	isConsolidationEnabled = $someBoolean
 	# OPTIONAL
 	encryptionPassword = $someString
+	# OPTIONAL
+	subType = $someNfsSubType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NfsSubType]) for enum values.
 }"
             );
         }

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ArchivalLocationImmutabilityMode? ImmutabilityMode
+        // GraphQL -> immutabilityMode: ArchivalLocationImmutabilityMode (enum)
+        [JsonProperty("immutabilityMode")]
+        public ArchivalLocationImmutabilityMode? ImmutabilityMode { get; set; }
+
         //      C# -> System.Int32? BucketLockDurationDays
         // GraphQL -> bucketLockDurationDays: Int! (scalar)
         [JsonProperty("bucketLockDurationDays")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public LocationImmutabilityType Set(
+        ArchivalLocationImmutabilityMode? ImmutabilityMode = null,
         System.Int32? BucketLockDurationDays = null,
         System.Boolean? IsObjectLockEnabled = null
     ) 
     {
+        if ( ImmutabilityMode != null ) {
+            this.ImmutabilityMode = ImmutabilityMode;
+        }
         if ( BucketLockDurationDays != null ) {
             this.BucketLockDurationDays = BucketLockDurationDays;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ArchivalLocationImmutabilityMode? ImmutabilityMode
+        // GraphQL -> immutabilityMode: ArchivalLocationImmutabilityMode (enum)
+        if (this.ImmutabilityMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "immutabilityMode\n" ;
+            } else {
+                s += ind + "immutabilityMode\n" ;
+            }
+        }
         //      C# -> System.Int32? BucketLockDurationDays
         // GraphQL -> bucketLockDurationDays: Int! (scalar)
         if (this.BucketLockDurationDays != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ArchivalLocationImmutabilityMode? ImmutabilityMode
+        // GraphQL -> immutabilityMode: ArchivalLocationImmutabilityMode (enum)
+        if (ec.Includes("immutabilityMode",true))
+        {
+            if(this.ImmutabilityMode == null) {
+
+                this.ImmutabilityMode = new ArchivalLocationImmutabilityMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ImmutabilityMode != null && ec.Excludes("immutabilityMode",true))
+        {
+            this.ImmutabilityMode = null;
+        }
         //      C# -> System.Int32? BucketLockDurationDays
         // GraphQL -> bucketLockDurationDays: Int! (scalar)
         if (ec.Includes("bucketLockDurationDays",true))

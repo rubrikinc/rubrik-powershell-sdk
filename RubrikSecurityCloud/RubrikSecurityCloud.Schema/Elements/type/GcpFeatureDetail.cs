@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleId")]
         public System.String? RoleId { get; set; }
 
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        [JsonProperty("permissionsGroupVersions")]
+        public List<PermissionsGroupWithVersion>? PermissionsGroupVersions { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         List<PermissionsGroup>? EnabledPermissionGroups = null,
         CloudAccountFeature? Feature = null,
         CloudAccountStatus? Status = null,
-        System.String? RoleId = null
+        System.String? RoleId = null,
+        List<PermissionsGroupWithVersion>? PermissionsGroupVersions = null
     ) 
     {
         if ( EnabledPermissionGroups != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RoleId != null ) {
             this.RoleId = RoleId;
+        }
+        if ( PermissionsGroupVersions != null ) {
+            this.PermissionsGroupVersions = PermissionsGroupVersions;
         }
         return this;
     }
@@ -116,6 +125,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "roleId\n" ;
             } else {
                 s += ind + "roleId\n" ;
+            }
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (this.PermissionsGroupVersions != null) {
+            var fspec = this.PermissionsGroupVersions.AsFieldSpec(conf.Child("permissionsGroupVersions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "permissionsGroupVersions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -192,6 +213,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RoleId != null && ec.Excludes("roleId",true))
         {
             this.RoleId = null;
+        }
+        //      C# -> List<PermissionsGroupWithVersion>? PermissionsGroupVersions
+        // GraphQL -> permissionsGroupVersions: [PermissionsGroupWithVersion!]! (type)
+        if (ec.Includes("permissionsGroupVersions",false))
+        {
+            if(this.PermissionsGroupVersions == null) {
+
+                this.PermissionsGroupVersions = new List<PermissionsGroupWithVersion>();
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            } else {
+
+                this.PermissionsGroupVersions.ApplyExploratoryFieldSpec(ec.NewChild("permissionsGroupVersions"));
+
+            }
+        }
+        else if (this.PermissionsGroupVersions != null && ec.Excludes("permissionsGroupVersions",false))
+        {
+            this.PermissionsGroupVersions = null;
         }
     }
 

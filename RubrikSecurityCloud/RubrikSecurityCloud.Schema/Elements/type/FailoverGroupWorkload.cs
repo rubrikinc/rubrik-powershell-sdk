@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ManagedObjectType? ManagedObjectType
+        // GraphQL -> managedObjectType: ManagedObjectType! (enum)
+        [JsonProperty("managedObjectType")]
+        public ManagedObjectType? ManagedObjectType { get; set; }
+
         //      C# -> FailoverGroupObjectStatus? Status
         // GraphQL -> status: FailoverGroupObjectStatus! (enum)
         [JsonProperty("status")]
@@ -39,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> hostIds: [UUID!]! (scalar)
         [JsonProperty("hostIds")]
         public List<System.String>? HostIds { get; set; }
+
+        //      C# -> List<System.String>? HostNames
+        // GraphQL -> hostNames: [String!]! (scalar)
+        [JsonProperty("hostNames")]
+        public List<System.String>? HostNames { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -70,16 +80,21 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FailoverGroupWorkload Set(
+        ManagedObjectType? ManagedObjectType = null,
         FailoverGroupObjectStatus? Status = null,
         FlexmotionWorkloadType? WorkloadType = null,
         List<System.String>? CounterpartIds = null,
         List<System.String>? HostIds = null,
+        List<System.String>? HostNames = null,
         System.String? Name = null,
         System.String? PrimaryClusterUuid = null,
         System.String? StatusMessage = null,
         System.String? WorkloadId = null
     ) 
     {
+        if ( ManagedObjectType != null ) {
+            this.ManagedObjectType = ManagedObjectType;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -91,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HostIds != null ) {
             this.HostIds = HostIds;
+        }
+        if ( HostNames != null ) {
+            this.HostNames = HostNames;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -118,6 +136,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ManagedObjectType? ManagedObjectType
+        // GraphQL -> managedObjectType: ManagedObjectType! (enum)
+        if (this.ManagedObjectType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "managedObjectType\n" ;
+            } else {
+                s += ind + "managedObjectType\n" ;
+            }
+        }
         //      C# -> FailoverGroupObjectStatus? Status
         // GraphQL -> status: FailoverGroupObjectStatus! (enum)
         if (this.Status != null) {
@@ -152,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hostIds\n" ;
             } else {
                 s += ind + "hostIds\n" ;
+            }
+        }
+        //      C# -> List<System.String>? HostNames
+        // GraphQL -> hostNames: [String!]! (scalar)
+        if (this.HostNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hostNames\n" ;
+            } else {
+                s += ind + "hostNames\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -197,6 +233,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ManagedObjectType? ManagedObjectType
+        // GraphQL -> managedObjectType: ManagedObjectType! (enum)
+        if (ec.Includes("managedObjectType",true))
+        {
+            if(this.ManagedObjectType == null) {
+
+                this.ManagedObjectType = new ManagedObjectType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManagedObjectType != null && ec.Excludes("managedObjectType",true))
+        {
+            this.ManagedObjectType = null;
+        }
         //      C# -> FailoverGroupObjectStatus? Status
         // GraphQL -> status: FailoverGroupObjectStatus! (enum)
         if (ec.Includes("status",true))
@@ -264,6 +317,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HostIds != null && ec.Excludes("hostIds",true))
         {
             this.HostIds = null;
+        }
+        //      C# -> List<System.String>? HostNames
+        // GraphQL -> hostNames: [String!]! (scalar)
+        if (ec.Includes("hostNames",true))
+        {
+            if(this.HostNames == null) {
+
+                this.HostNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostNames != null && ec.Excludes("hostNames",true))
+        {
+            this.HostNames = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

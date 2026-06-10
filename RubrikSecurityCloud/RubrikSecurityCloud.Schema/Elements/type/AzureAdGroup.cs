@@ -40,10 +40,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupType")]
         public System.String? GroupType { get; set; }
 
+        //      C# -> System.Boolean? IsPimEnabled
+        // GraphQL -> isPimEnabled: Boolean! (scalar)
+        [JsonProperty("isPimEnabled")]
+        public System.Boolean? IsPimEnabled { get; set; }
+
+        //      C# -> AzureAdPimPolicy? MemberPolicy
+        // GraphQL -> memberPolicy: AzureAdPimPolicy (type)
+        [JsonProperty("memberPolicy")]
+        public AzureAdPimPolicy? MemberPolicy { get; set; }
+
         //      C# -> AzureAdOnPremSyncInfo? OnPremSyncInfo
         // GraphQL -> onPremSyncInfo: AzureAdOnPremSyncInfo (type)
         [JsonProperty("onPremSyncInfo")]
         public AzureAdOnPremSyncInfo? OnPremSyncInfo { get; set; }
+
+        //      C# -> AzureAdPimPolicy? OwnerPolicy
+        // GraphQL -> ownerPolicy: AzureAdPimPolicy (type)
+        [JsonProperty("ownerPolicy")]
+        public AzureAdPimPolicy? OwnerPolicy { get; set; }
 
 
         #endregion
@@ -59,7 +74,10 @@ namespace RubrikSecurityCloud.Types
         System.String? DisplayName = null,
         System.String? Email = null,
         System.String? GroupType = null,
-        AzureAdOnPremSyncInfo? OnPremSyncInfo = null
+        System.Boolean? IsPimEnabled = null,
+        AzureAdPimPolicy? MemberPolicy = null,
+        AzureAdOnPremSyncInfo? OnPremSyncInfo = null,
+        AzureAdPimPolicy? OwnerPolicy = null
     ) 
     {
         if ( OnPremSyncStatus != null ) {
@@ -74,8 +92,17 @@ namespace RubrikSecurityCloud.Types
         if ( GroupType != null ) {
             this.GroupType = GroupType;
         }
+        if ( IsPimEnabled != null ) {
+            this.IsPimEnabled = IsPimEnabled;
+        }
+        if ( MemberPolicy != null ) {
+            this.MemberPolicy = MemberPolicy;
+        }
         if ( OnPremSyncInfo != null ) {
             this.OnPremSyncInfo = OnPremSyncInfo;
+        }
+        if ( OwnerPolicy != null ) {
+            this.OwnerPolicy = OwnerPolicy;
         }
         return this;
     }
@@ -127,6 +154,27 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "groupType\n" ;
             }
         }
+        //      C# -> System.Boolean? IsPimEnabled
+        // GraphQL -> isPimEnabled: Boolean! (scalar)
+        if (this.IsPimEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPimEnabled\n" ;
+            } else {
+                s += ind + "isPimEnabled\n" ;
+            }
+        }
+        //      C# -> AzureAdPimPolicy? MemberPolicy
+        // GraphQL -> memberPolicy: AzureAdPimPolicy (type)
+        if (this.MemberPolicy != null) {
+            var fspec = this.MemberPolicy.AsFieldSpec(conf.Child("memberPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "memberPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdOnPremSyncInfo? OnPremSyncInfo
         // GraphQL -> onPremSyncInfo: AzureAdOnPremSyncInfo (type)
         if (this.OnPremSyncInfo != null) {
@@ -136,6 +184,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "onPremSyncInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdPimPolicy? OwnerPolicy
+        // GraphQL -> ownerPolicy: AzureAdPimPolicy (type)
+        if (this.OwnerPolicy != null) {
+            var fspec = this.OwnerPolicy.AsFieldSpec(conf.Child("ownerPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "ownerPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -214,6 +274,42 @@ namespace RubrikSecurityCloud.Types
         {
             this.GroupType = null;
         }
+        //      C# -> System.Boolean? IsPimEnabled
+        // GraphQL -> isPimEnabled: Boolean! (scalar)
+        if (ec.Includes("isPimEnabled",true))
+        {
+            if(this.IsPimEnabled == null) {
+
+                this.IsPimEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPimEnabled != null && ec.Excludes("isPimEnabled",true))
+        {
+            this.IsPimEnabled = null;
+        }
+        //      C# -> AzureAdPimPolicy? MemberPolicy
+        // GraphQL -> memberPolicy: AzureAdPimPolicy (type)
+        if (ec.Includes("memberPolicy",false))
+        {
+            if(this.MemberPolicy == null) {
+
+                this.MemberPolicy = new AzureAdPimPolicy();
+                this.MemberPolicy.ApplyExploratoryFieldSpec(ec.NewChild("memberPolicy"));
+
+            } else {
+
+                this.MemberPolicy.ApplyExploratoryFieldSpec(ec.NewChild("memberPolicy"));
+
+            }
+        }
+        else if (this.MemberPolicy != null && ec.Excludes("memberPolicy",false))
+        {
+            this.MemberPolicy = null;
+        }
         //      C# -> AzureAdOnPremSyncInfo? OnPremSyncInfo
         // GraphQL -> onPremSyncInfo: AzureAdOnPremSyncInfo (type)
         if (ec.Includes("onPremSyncInfo",false))
@@ -232,6 +328,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnPremSyncInfo != null && ec.Excludes("onPremSyncInfo",false))
         {
             this.OnPremSyncInfo = null;
+        }
+        //      C# -> AzureAdPimPolicy? OwnerPolicy
+        // GraphQL -> ownerPolicy: AzureAdPimPolicy (type)
+        if (ec.Includes("ownerPolicy",false))
+        {
+            if(this.OwnerPolicy == null) {
+
+                this.OwnerPolicy = new AzureAdPimPolicy();
+                this.OwnerPolicy.ApplyExploratoryFieldSpec(ec.NewChild("ownerPolicy"));
+
+            } else {
+
+                this.OwnerPolicy.ApplyExploratoryFieldSpec(ec.NewChild("ownerPolicy"));
+
+            }
+        }
+        else if (this.OwnerPolicy != null && ec.Excludes("ownerPolicy",false))
+        {
+            this.OwnerPolicy = null;
         }
     }
 

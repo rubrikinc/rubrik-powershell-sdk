@@ -9,3 +9,5 @@ Input to get AWS cloud account configurations.
   - Admin account ID to filter.
 - columnSearchFilter: System.String
   - Search text to match in native ID, account name, or role ARN.
+- serviceTypeFilter: list of AwsCloudAccountServiceTypes
+  - Filter accounts by BaaS or non-BaaS service type.

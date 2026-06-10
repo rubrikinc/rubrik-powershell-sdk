@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILED_CREATION")]
         FAILED_CREATION,
 
+        [EnumMember(Value = "FAILED_DELETION")]
+        FAILED_DELETION,
+
         [EnumMember(Value = "GRACE_STATE")]
         GRACE_STATE,
 
@@ -38,6 +41,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PENDING_CREATION")]
         PENDING_CREATION,
+
+        [EnumMember(Value = "PENDING_DEPROVISIONING")]
+        PENDING_DEPROVISIONING,
 
         [EnumMember(Value = "PENDING_MIGRATION")]
         PENDING_MIGRATION,

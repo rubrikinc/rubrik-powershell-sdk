@@ -1,0 +1,89 @@
+### TableViewType
+All valid table views.
+
+- TABLE_UNSPECIFIED - The table view type is unspecified.
+- PROTECTION_TASKS_DETAIL_TABLE - Protection task detail report's main table.
+- PROTECTION_TASKS_DETAIL_BY_CLUSTER_TABLE - Table displaying protection task status statistics for each cluster.
+- PROTECTION_TASKS_DETAIL_BY_CLUSTER_TYPE_TABLE - Table displaying protection task status statistics for each cluster type.
+- PROTECTION_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE - Table displaying protection task status statistics for each object type.
+- PROTECTION_TASKS_DETAIL_BY_LOCATION_TABLE - Table displaying protection task status statistics for each location.
+- PROTECTION_TASKS_DETAIL_BY_TIME_TABLE - Table displaying protection task status statistics for a period of time.
+- OBJECT_CAPACITY_OVERTIME_ALL_TABLE - Table displaying capacity per object over time.
+- OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE - Table displaying total capacity over time.
+- OBJECT_CAPACITY_OVERTIME_BY_CLUSTER_TABLE - Table displaying capacity per cluster over time.
+- OBJECT_CAPACITY_OVERTIME_BY_LOCATION_TABLE - Table displaying capacity per location over time.
+- OBJECT_CAPACITY_OVERTIME_OBJECT_TYPE_TABLE - Table displaying capacity per object type over time.
+- RECOVERY_TASKS_DETAIL_TABLE - Recovery task detail report's main table.
+- RECOVERY_TASKS_DETAIL_BY_CLUSTER_TABLE - Table displaying recovery task status statistics for each cluster.
+- RECOVERY_TASKS_DETAIL_BY_CLUSTER_TYPE_TABLE - Table displaying recovery task status statistics for each cluster type.
+- RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE - Table displaying recovery task status statistics for each object type.
+- RECOVERY_TASKS_DETAIL_BY_TIME_TABLE - Table displaying recovery task status statistics for a period of time.
+- THREAT_MONITORING_LIST_TABLE - Table displaying a list of workloads where files were matched by IOC rules.
+- SLA_AUDIT_LIST_TABLE - Table displaying a list of latest audits for each SLA Domain.
+- SLA_AUDIT_DETAIL_TABLE - Table displaying a list of audits for the single SLA Domain.
+- OBJECT_AUDIT_LIST_TABLE - Table displaying a list of latest protection audits for each protected workload.
+- OBJECT_AUDIT_LIST_EXPORT_TABLE - Table in the exported file displaying a list of protection audits for all protected workloads.
+- OBJECT_AUDIT_DETAIL_TABLE - Table displaying a list of protection audits for the single protected workload.
+- COMPLIANCE_ALL_TABLE - Main table for the compliance report.
+- COMPLIANCE_BY_CLUSTER_TABLE - Table displaying compliance status statistics for each cluster.
+- COMPLIANCE_BY_OBJECT_TYPE_TABLE - Table displaying compliance status statistics for each object type.
+- COMPLIANCE_BY_CLUSTER_TYPE_TABLE - Table displaying compliance status statistics for each cluster type.
+- COMPLIANCE_BY_LOCATION_TABLE - Table displaying compliance status statistics for each location.
+- INDEXING_REPORT_ALL_TABLE - Main table for the indexing report.
+- INDEXING_REPORT_BY_SLA_TABLE - Table displaying indexing statistics for each SLA Domain.
+- INDEXING_REPORT_BY_OBJECT_TYPE_TABLE - Table displaying indexing statistics for each Object Type.
+- INDEXING_REPORT_BY_LOCATION_TABLE - Table displaying indexing statistics for each Location.
+- QAUTH_OBJECTS_ALL_TABLE - Table displaying all QAuth objects.
+- QAUTH_ROLES_ALL_TABLE - Table displaying all QAuth roles.
+- OBJECT_CAPACITY_ALL_TABLE - Main table for the object capacity report.
+- OBJECT_CAPACITY_BY_CLUSTER_TABLE - Table displaying object capacity for each cluster.
+- OBJECT_CAPACITY_BY_CLUSTER_TYPE_TABLE - Table displaying object capacity for each cluster type.
+- OBJECT_CAPACITY_BY_OBJECT_TYPE_TABLE - Table displaying object capacity for each object type.
+- OBJECT_CAPACITY_BY_LOCATION_TABLE - Table displaying object capacity for each location.
+- CNP_OBJECT_CAPACITY_ALL_TABLE - Table displaying information for each cloud native protection object capacity report.
+- CNP_OBJECT_CAPACITY_BY_OBJECT_TYPE_TABLE - Table displaying CNP object capacity for each object type.
+- OBJECT_BACKUP_TASK_SUMMARY_ALL_TABLE - Table displaying object backup task summary data.
+- PROTECTION_ALL_TABLE - Main table for the protection report.
+- PROTECTION_BY_CLUSTER_TABLE - Table displaying protection status statistics for each cluster.
+- PROTECTION_BY_CLUSTER_TYPE_TABLE - Table displaying protection status statistics for each cluster type.
+- PROTECTION_BY_OBJECT_TYPE_TABLE - Table displaying protection status statistics for each object type.
+- PROTECTION_BY_TIME_TABLE - Table displaying protection status statistics for a period of time.
+- PROTECTION_BY_LOCATION_TABLE - Table displaying protection status statistics for each location.
+- AUDIT_ALL_TABLE - Table showing audits.
+- READABLE_SNAPSHOTS_TABLE - Table displaying a list of readable snapshots.
+- UNREADABLE_OBJECTS_TABLE - Table displaying a list of unreadable objects.
+- INFRASTRUCTURE_ALL_TABLE - Table displaying statistics for each cluster.
+- ACTIVITY_SERIES_ALL_TABLE - Main table for the Events report.
+- ACTIVITY_SERIES_BY_CLUSTER_TABLE - Table displaying events information for each cluster.
+- ACTIVITY_SERIES_BY_CLUSTER_TYPE_TABLE - Table displaying events information for each cluster type.
+- ACTIVITY_SERIES_BY_OBJECT_TYPE_TABLE - Table displaying events information for each object type.
+- ACTIVITY_SERIES_BY_TIME_TABLE - Table displaying events information for certain time periods.
+- BACKUP_STRIKE_BY_OBJECT_TABLE - Table displaying back up strikes for each object.
+- EVENT_SERIES_ALL_TABLE - Main table for the Events report.
+- EVENT_SERIES_BY_CLUSTER_TABLE - Table displaying events information for each cluster.
+- EVENT_SERIES_BY_CLUSTER_TYPE_TABLE - Table displaying events information for each cluster type.
+- EVENT_SERIES_BY_OBJECT_TYPE_TABLE - Table displaying events information for each object type.
+- EVENT_SERIES_BY_TIME_TABLE - Table displaying events information for certain time periods.
+- DATA_DISCOVERY_OBJECT_DETAILS_TABLE - Table displaying data discovery statistics for all workloads on a specified date.
+- SERVICE_ACCOUNT_TABLE - Table displaying a list of service accounts.
+- SSO_GROUP_TABLE - Table displaying a list of SSO groups.
+- ROLE_TABLE - Table displaying a list of role table.
+- USER_REPORT_TABLE - Table displaying information for each users.
+- IDENTITY_RISKS_TABLE - Table displaying list of policies and the number of violations.
+- IDENTITY_ACTIVITY_TABLE - Table displaying a list of identity activities.
+- ACTIVE_DIRECTORY_FOREST_RECOVERY_TABLE - Table displaying information for each forest recovery report.
+- LOG_TASKS_TABLE - Main table for Protection Log Tasks Report.
+- LOG_TASKS_BY_CLUSTER_TABLE - Table displaying log tasks information for each cluster.
+- LOG_TASKS_BY_CLUSTER_TYPE_TABLE - Table displaying log tasks information for each cluster type.
+- LOG_TASKS_BY_OBJECT_TYPE_TABLE - Table displaying log tasks information for each object type.
+- LOG_TASKS_BY_LOCATION_TABLE - Table displaying log tasks information for each location.
+- LOG_TASKS_BY_TIME_TABLE - Table displaying log tasks information for certain time periods.
+- THREAT_MONITORING_COMPLIANCE_TABLE - Main table for the Threat Monitoring Compliance report.
+- THREAT_MONITORING_THREAT_DETECTION_TABLE - Main table for the Threat Monitoring Threat Detection report.
+- DISK_STATUS_TABLE - Table displaying disk status information.
+- VSPHERE_VM_EXCLUDED_DISKS_TABLE - Table displaying vSphere virtual machine virtual disks that are excluded
+from snapshots.
+- ALLOWED_HITS_TABLE - Table displaying allowlisted classification hits for DSPM.
+- CLOUD_OVERLAP_OBJECTS_ALL_TABLE - Table displaying all the cloud overlap objects.
+- ANOMALY_DETECTION_COMPLIANCE_TABLE - Anomaly detection compliance report table.
+- SIGNIN_LOGS_TABLE - Table displaying sign-in logs.

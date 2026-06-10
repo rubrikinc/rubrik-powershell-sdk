@@ -45,6 +45,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AP_SOUTHEAST_4")]
         AP_SOUTHEAST_4,
 
+        [EnumMember(Value = "AP_SOUTHEAST_5")]
+        AP_SOUTHEAST_5,
+
+        [EnumMember(Value = "AP_SOUTHEAST_7")]
+        AP_SOUTHEAST_7,
+
         [EnumMember(Value = "AP_SOUTH_1")]
         AP_SOUTH_1,
 
@@ -65,6 +71,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EU_CENTRAL_1")]
         EU_CENTRAL_1,
+
+        [EnumMember(Value = "EU_CENTRAL_2")]
+        EU_CENTRAL_2,
 
         [EnumMember(Value = "EU_NORTH_1")]
         EU_NORTH_1,
@@ -92,6 +101,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ME_SOUTH_1")]
         ME_SOUTH_1,
+
+        [EnumMember(Value = "MX_CENTRAL_1")]
+        MX_CENTRAL_1,
 
         [EnumMember(Value = "NOT_SPECIFIED")]
         NOT_SPECIFIED,

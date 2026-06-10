@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isBatchEnabled")]
         public System.Boolean? IsBatchEnabled { get; set; }
 
+        //      C# -> System.Boolean? ShouldScanAllFiles
+        // GraphQL -> shouldScanAllFiles: Boolean (scalar)
+        [JsonProperty("shouldScanAllFiles")]
+        public System.Boolean? ShouldScanAllFiles { get; set; }
+
 
         #endregion
 

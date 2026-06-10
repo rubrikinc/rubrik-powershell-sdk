@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isNasShareManuallyAdded")]
         public System.Boolean? IsNasShareManuallyAdded { get; set; }
 
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        [JsonProperty("isNutanixCftEnabled")]
+        public System.Boolean? IsNutanixCftEnabled { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -323,6 +328,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsChangelistEnabled = null,
         System.Boolean? IsHidden = null,
         System.Boolean? IsNasShareManuallyAdded = null,
+        System.Boolean? IsNutanixCftEnabled = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsStale = null,
         System.String? Name = null,
@@ -405,6 +411,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsNasShareManuallyAdded != null ) {
             this.IsNasShareManuallyAdded = IsNasShareManuallyAdded;
+        }
+        if ( IsNutanixCftEnabled != null ) {
+            this.IsNutanixCftEnabled = IsNutanixCftEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -681,6 +690,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isNasShareManuallyAdded\n" ;
             } else {
                 s += ind + "isNasShareManuallyAdded\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        if (this.IsNutanixCftEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isNutanixCftEnabled\n" ;
+            } else {
+                s += ind + "isNutanixCftEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1325,6 +1343,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsNasShareManuallyAdded != null && ec.Excludes("isNasShareManuallyAdded",true))
         {
             this.IsNasShareManuallyAdded = null;
+        }
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        if (ec.Includes("isNutanixCftEnabled",true))
+        {
+            if(this.IsNutanixCftEnabled == null) {
+
+                this.IsNutanixCftEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNutanixCftEnabled != null && ec.Excludes("isNutanixCftEnabled",true))
+        {
+            this.IsNutanixCftEnabled = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

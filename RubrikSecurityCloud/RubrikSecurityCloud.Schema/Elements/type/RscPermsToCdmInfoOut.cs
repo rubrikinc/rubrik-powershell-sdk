@@ -40,10 +40,52 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syncedClusters")]
         public SyncedClusterConnection? SyncedClusters { get; set; }
 
+        [JsonProperty("vars")]
+        public InlineVars Vars { get; set; }
 
         #endregion
 
     #region methods
+    public class InlineVars {
+        public RscGqlVars IncompatibleClusters { get; set; }
+
+        public RscGqlVars RemovedClusters { get; set; }
+
+        public RscGqlVars SyncedClusters { get; set; }
+
+
+        public InlineVars() {
+            Tuple<string, string>[] incompatibleClustersArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.IncompatibleClusters =
+                new RscGqlVars(null, incompatibleClustersArgs, null, true);
+            Tuple<string, string>[] removedClustersArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.RemovedClusters =
+                new RscGqlVars(null, removedClustersArgs, null, true);
+            Tuple<string, string>[] syncedClustersArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
+                };
+            this.SyncedClusters =
+                new RscGqlVars(null, syncedClustersArgs, null, true);
+        }
+    }
+
+    public RscPermsToCdmInfoOut()
+    {
+        this.Vars = new InlineVars();
+    }
 
     public override string GetGqlTypeName() {
         return "RscPermsToCdmInfoOut";
@@ -99,7 +141,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "incompatibleClusters" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "incompatibleClusters" + "\n(" + this.Vars.IncompatibleClusters.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -111,7 +153,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "removedClusters" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "removedClusters" + "\n(" + this.Vars.RemovedClusters.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -123,7 +165,7 @@ namespace RubrikSecurityCloud.Types
                 if (conf.Flat) {
                     s += conf.Prefix + fspec;
                 } else {
-                    s += ind + "syncedClusters" + " " + "{\n" + fspec + ind + "}\n" ;
+                    s += ind + "syncedClusters" + "\n(" + this.Vars.SyncedClusters.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }

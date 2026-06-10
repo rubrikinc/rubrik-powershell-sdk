@@ -438,8 +438,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	storageClass = $someGcpStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpStorageClass]) for enum values.
     /// 	# REQUIRED
     /// 	bucket = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	encryptionPassword = $someString
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
     /// 	# REQUIRED
     /// 	serviceAccountJsonKey = $someString
     /// 	# OPTIONAL
@@ -502,8 +504,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	storageClass = $someGcpStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpStorageClass]) for enum values.
     /// 	# REQUIRED
     /// 	bucket = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	encryptionPassword = $someString
+    /// 	# OPTIONAL
+    /// 	rsaKey = $someString
     /// 	# REQUIRED
     /// 	serviceAccountJsonKey = $someString
     /// 	# OPTIONAL
@@ -596,6 +600,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			subnetName = $someString
     /// 			# OPTIONAL
     /// 			projectId = $someString
+    /// 			# OPTIONAL
+    /// 			clusterSecondaryRangeName = $someString
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -1245,8 +1251,10 @@ $query.Var.input = @{
 	storageClass = $someGcpStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpStorageClass]) for enum values.
 	# REQUIRED
 	bucket = $someString
-	# REQUIRED
+	# OPTIONAL
 	encryptionPassword = $someString
+	# OPTIONAL
+	rsaKey = $someString
 	# REQUIRED
 	serviceAccountJsonKey = $someString
 	# OPTIONAL
@@ -1301,8 +1309,10 @@ $query.Var.input = @{
 	storageClass = $someGcpStorageClass # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpStorageClass]) for enum values.
 	# REQUIRED
 	bucket = $someString
-	# REQUIRED
+	# OPTIONAL
 	encryptionPassword = $someString
+	# OPTIONAL
+	rsaKey = $someString
 	# REQUIRED
 	serviceAccountJsonKey = $someString
 	# OPTIONAL
@@ -1379,6 +1389,8 @@ $query.Var.input = @{
 			subnetName = $someString
 			# OPTIONAL
 			projectId = $someString
+			# OPTIONAL
+			clusterSecondaryRangeName = $someString
 		}
 	)
 	# REQUIRED

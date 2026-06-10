@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("smbCredentials")]
         public GenericNasSystemCredentialsInput? SmbCredentials { get; set; }
 
+        //      C# -> System.String? NfsPseudoFsPrefix
+        // GraphQL -> nfsPseudoFsPrefix: String (scalar)
+        [JsonProperty("nfsPseudoFsPrefix")]
+        public System.String? NfsPseudoFsPrefix { get; set; }
+
 
         #endregion
 

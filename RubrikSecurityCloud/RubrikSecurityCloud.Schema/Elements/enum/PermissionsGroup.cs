@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUTOMATED_NETWORKING_SETUP")]
         AUTOMATED_NETWORKING_SETUP,
 
+        [EnumMember(Value = "BAAS_BASIC")]
+        BAAS_BASIC,
+
         [EnumMember(Value = "BACKUP_V2")]
         BACKUP_V2,
 

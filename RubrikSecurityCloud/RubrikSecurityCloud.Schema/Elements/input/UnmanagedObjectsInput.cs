@@ -87,6 +87,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasDownloadedSnapshots")]
         public System.Boolean? HasDownloadedSnapshots { get; set; }
 
+        //      C# -> System.Boolean? HasLocalSnapshots
+        // GraphQL -> hasLocalSnapshots: Boolean (scalar)
+        [JsonProperty("hasLocalSnapshots")]
+        public System.Boolean? HasLocalSnapshots { get; set; }
+
         //      C# -> CloudVendor? ManagedBy
         // GraphQL -> managedBy: CloudVendor (enum)
         [JsonProperty("managedBy")]

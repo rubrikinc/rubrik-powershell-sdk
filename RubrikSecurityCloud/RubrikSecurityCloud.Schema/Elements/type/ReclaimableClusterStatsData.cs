@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("otherStorage")]
         public System.Int64? OtherStorage { get; set; }
 
+        //      C# -> System.Int64? ProtectedObjectsStorage
+        // GraphQL -> protectedObjectsStorage: Long! (scalar)
+        [JsonProperty("protectedObjectsStorage")]
+        public System.Int64? ProtectedObjectsStorage { get; set; }
+
         //      C# -> System.Int64? RelicStorage
         // GraphQL -> relicStorage: Long! (scalar)
         [JsonProperty("relicStorage")]
@@ -55,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalUsedStorage")]
         public System.Int64? TotalUsedStorage { get; set; }
 
+        //      C# -> System.Int64? UnprotectedObjectsStorage
+        // GraphQL -> unprotectedObjectsStorage: Long! (scalar)
+        [JsonProperty("unprotectedObjectsStorage")]
+        public System.Int64? UnprotectedObjectsStorage { get; set; }
+
 
         #endregion
 
@@ -69,9 +79,11 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterUuid = null,
         System.Int64? DownloadedSnapshotsStorage = null,
         System.Int64? OtherStorage = null,
+        System.Int64? ProtectedObjectsStorage = null,
         System.Int64? RelicStorage = null,
         System.Int64? TotalCapacity = null,
-        System.Int64? TotalUsedStorage = null
+        System.Int64? TotalUsedStorage = null,
+        System.Int64? UnprotectedObjectsStorage = null
     ) 
     {
         if ( ClusterName != null ) {
@@ -86,6 +98,9 @@ namespace RubrikSecurityCloud.Types
         if ( OtherStorage != null ) {
             this.OtherStorage = OtherStorage;
         }
+        if ( ProtectedObjectsStorage != null ) {
+            this.ProtectedObjectsStorage = ProtectedObjectsStorage;
+        }
         if ( RelicStorage != null ) {
             this.RelicStorage = RelicStorage;
         }
@@ -94,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalUsedStorage != null ) {
             this.TotalUsedStorage = TotalUsedStorage;
+        }
+        if ( UnprotectedObjectsStorage != null ) {
+            this.UnprotectedObjectsStorage = UnprotectedObjectsStorage;
         }
         return this;
     }
@@ -145,6 +163,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "otherStorage\n" ;
             }
         }
+        //      C# -> System.Int64? ProtectedObjectsStorage
+        // GraphQL -> protectedObjectsStorage: Long! (scalar)
+        if (this.ProtectedObjectsStorage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectedObjectsStorage\n" ;
+            } else {
+                s += ind + "protectedObjectsStorage\n" ;
+            }
+        }
         //      C# -> System.Int64? RelicStorage
         // GraphQL -> relicStorage: Long! (scalar)
         if (this.RelicStorage != null) {
@@ -170,6 +197,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalUsedStorage\n" ;
             } else {
                 s += ind + "totalUsedStorage\n" ;
+            }
+        }
+        //      C# -> System.Int64? UnprotectedObjectsStorage
+        // GraphQL -> unprotectedObjectsStorage: Long! (scalar)
+        if (this.UnprotectedObjectsStorage != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unprotectedObjectsStorage\n" ;
+            } else {
+                s += ind + "unprotectedObjectsStorage\n" ;
             }
         }
         return s;
@@ -247,6 +283,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.OtherStorage = null;
         }
+        //      C# -> System.Int64? ProtectedObjectsStorage
+        // GraphQL -> protectedObjectsStorage: Long! (scalar)
+        if (ec.Includes("protectedObjectsStorage",true))
+        {
+            if(this.ProtectedObjectsStorage == null) {
+
+                this.ProtectedObjectsStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectedObjectsStorage != null && ec.Excludes("protectedObjectsStorage",true))
+        {
+            this.ProtectedObjectsStorage = null;
+        }
         //      C# -> System.Int64? RelicStorage
         // GraphQL -> relicStorage: Long! (scalar)
         if (ec.Includes("relicStorage",true))
@@ -297,6 +350,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalUsedStorage != null && ec.Excludes("totalUsedStorage",true))
         {
             this.TotalUsedStorage = null;
+        }
+        //      C# -> System.Int64? UnprotectedObjectsStorage
+        // GraphQL -> unprotectedObjectsStorage: Long! (scalar)
+        if (ec.Includes("unprotectedObjectsStorage",true))
+        {
+            if(this.UnprotectedObjectsStorage == null) {
+
+                this.UnprotectedObjectsStorage = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnprotectedObjectsStorage != null && ec.Excludes("unprotectedObjectsStorage",true))
+        {
+            this.UnprotectedObjectsStorage = null;
         }
     }
 

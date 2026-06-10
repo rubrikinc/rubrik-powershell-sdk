@@ -160,6 +160,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	ids = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	sourceClusterUuids = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	targetClusterUuids = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -710,6 +718,14 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	ids = @(
+		$someString
+	)
+	# OPTIONAL
+	sourceClusterUuids = @(
+		$someString
+	)
+	# OPTIONAL
+	targetClusterUuids = @(
 		$someString
 	)
 }"

@@ -2,6 +2,6 @@
 List of permissions missing for project addition for projects ineligible for addition.
 
 - projectId: System.String
-  - GCP project ID.
+  - Project ID of the project for which permissions are checked.
 - missingPermissions: list of System.Strings
-  - Permissions which are missing for adding a GCP project.
+  - List of permissions which are missing for the project.

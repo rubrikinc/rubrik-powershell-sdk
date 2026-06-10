@@ -2,6 +2,6 @@
 Artifacts to be deleted for a feature.
 
 - feature: CloudAccountFeature
-  - Feature Enum.
+  - The feature for which the deletion is requested.
 - artifactsToDelete: list of ExternalArtifactMapReplys
-  - Native ID of the AWS account.
+  - Artifact map that should be deleted for the feature.

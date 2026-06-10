@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nutanixFileServerParameters")]
         public NutanixFileServerParametersInput? NutanixFileServerParameters { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppSnapDiffEnabled")]
+        public System.Boolean? IsNetAppSnapDiffEnabled { get; set; }
+
         //      C# -> System.Boolean? ShouldGrantNfsShareRootAccess
         // GraphQL -> shouldGrantNfsShareRootAccess: Boolean (scalar)
         [JsonProperty("shouldGrantNfsShareRootAccess")]
@@ -88,6 +93,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> userSelectedNfsInterfaces: [String!] (scalar)
         [JsonProperty("userSelectedNfsInterfaces")]
         public List<System.String>? UserSelectedNfsInterfaces { get; set; }
+
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        [JsonProperty("isNutanixCftEnabled")]
+        public System.Boolean? IsNutanixCftEnabled { get; set; }
 
 
         #endregion

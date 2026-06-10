@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
         public ClusterSystemStatus? SystemStatus { get; set; }
 
         //      C# -> ClusterTypeEnum? Type
-        // GraphQL -> type: ClusterTypeEnum! (enum)
+        // GraphQL -> type: ClusterTypeEnum (enum)
         [JsonProperty("type")]
         public ClusterTypeEnum? Type { get; set; }
 
@@ -120,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isAirGapped: Boolean (scalar)
         [JsonProperty("isAirGapped")]
         public System.Boolean? IsAirGapped { get; set; }
+
+        //      C# -> System.Boolean? IsAssignedByParentAccount
+        // GraphQL -> isAssignedByParentAccount: Boolean! (scalar)
+        [JsonProperty("isAssignedByParentAccount")]
+        public System.Boolean? IsAssignedByParentAccount { get; set; }
 
         //      C# -> System.Boolean? IsClusterRemovalTprEnabled
         // GraphQL -> isClusterRemovalTprEnabled: Boolean (scalar)
@@ -395,9 +400,9 @@ namespace RubrikSecurityCloud.Types
             this.ClusterNodeConnection =
                 new RscGqlVars(null, clusterNodeConnectionArgs, null, true);
             Tuple<string, string>[] clusterNodeStatsArgs = {
-                    Tuple.Create("cdmClusterNodeID", "String"),
                     Tuple.Create("timeRange", "TimeRangeInput"),
                     Tuple.Create("aggregationType", "NodeStatsAggregationType"),
+                    Tuple.Create("cdmClusterNodeID", "String"),
                 };
             this.ClusterNodeStats =
                 new RscGqlVars(null, clusterNodeStatsArgs, null, true);
@@ -455,6 +460,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
         System.Boolean? IsAirGapped = null,
+        System.Boolean? IsAssignedByParentAccount = null,
         System.Boolean? IsClusterRemovalTprEnabled = null,
         System.Boolean? IsHealthy = null,
         System.Boolean? IsTprEnabled = null,
@@ -560,6 +566,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAirGapped != null ) {
             this.IsAirGapped = IsAirGapped;
+        }
+        if ( IsAssignedByParentAccount != null ) {
+            this.IsAssignedByParentAccount = IsAssignedByParentAccount;
         }
         if ( IsClusterRemovalTprEnabled != null ) {
             this.IsClusterRemovalTprEnabled = IsClusterRemovalTprEnabled;
@@ -798,7 +807,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> ClusterTypeEnum? Type
-        // GraphQL -> type: ClusterTypeEnum! (enum)
+        // GraphQL -> type: ClusterTypeEnum (enum)
         if (this.Type != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "type\n" ;
@@ -885,6 +894,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAirGapped\n" ;
             } else {
                 s += ind + "isAirGapped\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAssignedByParentAccount
+        // GraphQL -> isAssignedByParentAccount: Boolean! (scalar)
+        if (this.IsAssignedByParentAccount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAssignedByParentAccount\n" ;
+            } else {
+                s += ind + "isAssignedByParentAccount\n" ;
             }
         }
         //      C# -> System.Boolean? IsClusterRemovalTprEnabled
@@ -1554,7 +1572,7 @@ namespace RubrikSecurityCloud.Types
             this.SystemStatus = null;
         }
         //      C# -> ClusterTypeEnum? Type
-        // GraphQL -> type: ClusterTypeEnum! (enum)
+        // GraphQL -> type: ClusterTypeEnum (enum)
         if (ec.Includes("type",true))
         {
             if(this.Type == null) {
@@ -1722,6 +1740,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAirGapped != null && ec.Excludes("isAirGapped",true))
         {
             this.IsAirGapped = null;
+        }
+        //      C# -> System.Boolean? IsAssignedByParentAccount
+        // GraphQL -> isAssignedByParentAccount: Boolean! (scalar)
+        if (ec.Includes("isAssignedByParentAccount",true))
+        {
+            if(this.IsAssignedByParentAccount == null) {
+
+                this.IsAssignedByParentAccount = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAssignedByParentAccount != null && ec.Excludes("isAssignedByParentAccount",true))
+        {
+            this.IsAssignedByParentAccount = null;
         }
         //      C# -> System.Boolean? IsClusterRemovalTprEnabled
         // GraphQL -> isClusterRemovalTprEnabled: Boolean (scalar)

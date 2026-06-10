@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE_DB")]
         AZURE_SQL_DATABASE_DB,
 
@@ -198,6 +201,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FilesetTemplate")]
         FILESET_TEMPLATE,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER")]
+        GCP_ALLOY_DB_CLUSTER,
+
+        [EnumMember(Value = "GCP_BIGQUERY_DATASET")]
+        GCP_BIGQUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
@@ -206,6 +215,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,
+
+        [EnumMember(Value = "GLUE_ICEBERG_CATALOG")]
+        GLUE_ICEBERG_CATALOG,
+
+        [EnumMember(Value = "GLUE_ICEBERG_DATABASE")]
+        GLUE_ICEBERG_DATABASE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
+        GLUE_ICEBERG_TABLE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_GROUP")]
+        GOOGLE_WORKSPACE_GROUP,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,
@@ -483,6 +504,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OracleRac")]
         ORACLE_RAC,
 
+        [EnumMember(Value = "PING_FEDERATE_CLUSTER")]
+        PING_FEDERATE_CLUSTER,
+
         [EnumMember(Value = "POSTGRES_DATABASE")]
         POSTGRES_DATABASE,
 
@@ -500,6 +524,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
         PROXMOX_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "PURE_STORAGE_ARRAY")]
+        PURE_STORAGE_ARRAY,
+
+        [EnumMember(Value = "PURE_STORAGE_PROTECTION_GROUP")]
+        PURE_STORAGE_PROTECTION_GROUP,
+
+        [EnumMember(Value = "PURE_STORAGE_VOLUME")]
+        PURE_STORAGE_VOLUME,
 
         [EnumMember(Value = "PhysicalHost")]
         PHYSICAL_HOST,

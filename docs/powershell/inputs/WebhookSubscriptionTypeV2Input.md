@@ -5,3 +5,5 @@ Webhook subscription settings.
   - Event subscription settings.
 - auditSubscription: WebhookAuditSubscriptionInput
   - Audit subscription settings.
+- identityActivitySubscription: WebhookIdentityActivitySubscriptionInput
+  - Identity activity subscription settings.

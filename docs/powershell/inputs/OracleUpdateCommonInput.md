@@ -37,3 +37,6 @@ v9.5+: Specifies, in megabytes per second, the RMAN RATE parameter, which limits
 - isPaused: System.Boolean
   - Supported in v9.1+
 Whether to pause or resume backups and archival for this database. This setting is supported for Oracle databases and Data Guard groups but is not supported for Oracle hosts and RACs.
+- shouldEnableZeroRpo: System.Boolean
+  - Supported in v9.6
+Enable or disable Zero RPO (near-zero recovery point) protection. When enabled, Oracle redo logs are streamed in real-time to CDM. Requires librubrik.so and Log Forwarder components on the host.

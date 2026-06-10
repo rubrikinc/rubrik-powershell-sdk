@@ -1,11 +1,11 @@
 ### PasswordComplexityPolicyTemplateInput
-Specifies the format of each password policy field.
+Specifies range of values for each password complexity policy field.
 
 - minValue: System.Int32
-  - Minimum value for the password policy field.
+  - Minimum value for the password complexity policy field.
 - maxValue: System.Int32
-  - Maximum value for the password policy field.
-- defaultValue: System.Int32
-  - Default value for the password policy field.
+  - Maximum value for the password complexity policy field.
 - isActive: System.Boolean
   - Specifies if the password complexity policy field is being used.
+- defaultValue: System.Int32
+  - Default value for the password complexity policy field.

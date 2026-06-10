@@ -8,5 +8,6 @@ Snappable type.
 - SHAREPOINT_SITE - Sharepoint site snappable.
 - TEAMS - Teams snappable.
 - SHAREPOINT_LIST - Sharepoint list snappable.
-- EXCHANGE - Exchange snappable. Used for recovery of any subsnappable (Mailbox, Calendar, Contacts) objects.
+- EXCHANGE - Exchange snappable. Used for recovery of any subsnappable
+(Mailbox, Calendar, Contacts) objects.
 - CONTACTS - Used for search of the Contacts subsnappable of Exchange.

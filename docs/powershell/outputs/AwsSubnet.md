@@ -7,3 +7,5 @@ A Subnet in AWS realm.
   - Name of the subnet.
 - availabilityZone: System.String
   - Availability zone in which the subnet resides.
+- outpostArn: System.String
+  - ARN of the AWS Outpost this subnet resides on, if applicable.

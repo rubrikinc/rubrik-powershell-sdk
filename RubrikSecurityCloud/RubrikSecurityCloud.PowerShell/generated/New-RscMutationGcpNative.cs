@@ -209,9 +209,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	targetZone = $someString
     /// 	# REQUIRED
     /// 	targetInstanceName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	targetMachineType = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	targetSubnetName = $someString
     /// 	# OPTIONAL
     /// 	targetNetworkTags = @(
@@ -562,9 +562,9 @@ $query.Var.input = @{
 	targetZone = $someString
 	# REQUIRED
 	targetInstanceName = $someString
-	# REQUIRED
+	# OPTIONAL
 	targetMachineType = $someString
-	# REQUIRED
+	# OPTIONAL
 	targetSubnetName = $someString
 	# OPTIONAL
 	targetNetworkTags = @(

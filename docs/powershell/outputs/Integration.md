@@ -15,3 +15,5 @@ Holds an integration and its configuration.
   - The configuration.
 - enabled: IntegrationEnabledStatus
   - The enabled status of the integration.
+- settings: IntegrationSettings
+  - The integration settings (user preferences).

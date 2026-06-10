@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        [JsonProperty("accountName")]
+        public System.String? AccountName { get; set; }
+
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
         [JsonProperty("apiVersion")]
@@ -60,6 +65,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DataLocationSupportedCluster Set(
+        System.String? AccountName = null,
         System.String? ApiVersion = null,
         System.Boolean? IsAirGapped = null,
         System.Boolean? IsArchived = null,
@@ -68,6 +74,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Version = null
     ) 
     {
+        if ( AccountName != null ) {
+            this.AccountName = AccountName;
+        }
         if ( ApiVersion != null ) {
             this.ApiVersion = ApiVersion;
         }
@@ -100,6 +109,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "accountName\n" ;
+            } else {
+                s += ind + "accountName\n" ;
+            }
+        }
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
         if (this.ApiVersion != null) {
@@ -161,6 +179,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (ec.Includes("accountName",true))
+        {
+            if(this.AccountName == null) {
+
+                this.AccountName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AccountName != null && ec.Excludes("accountName",true))
+        {
+            this.AccountName = null;
+        }
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
         if (ec.Includes("apiVersion",true))

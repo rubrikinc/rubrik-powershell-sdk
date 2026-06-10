@@ -31,3 +31,7 @@ Identity Provider is an entity responsible for authenticating a user account.
   - Number of users from the identity provider that have an active session.
 - idpClaimAttributes: list of IdpClaimAttributeTypes
   - List of claim attributes of the identity provider.
+- isForceAuthnEnabled: System.Boolean
+  - Whether the SAML AuthnRequest sent to this identity provider sets
+ForceAuthn="true", asking the IdP to re-authenticate the user on
+every login instead of reusing a cached IdP session.

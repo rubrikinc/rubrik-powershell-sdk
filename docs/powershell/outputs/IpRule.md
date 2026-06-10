@@ -1,5 +1,5 @@
 ### IpRule
-IP Rules for Azure storage account.
+IPRule defines IP action for that IP.
 
 - ip: System.String
-  - IP for which the network access should be allowed.
+  - The IP for which this IP rule is defined.

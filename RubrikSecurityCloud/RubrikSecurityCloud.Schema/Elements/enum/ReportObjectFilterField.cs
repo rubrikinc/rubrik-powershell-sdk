@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPORT_CLUSTER_TYPE")]
         REPORT_CLUSTER_TYPE,
 
+        [EnumMember(Value = "REPORT_OBJECT_LOCATION")]
+        REPORT_OBJECT_LOCATION,
+
         [EnumMember(Value = "REPORT_OBJECT_TYPE")]
         REPORT_OBJECT_TYPE
 

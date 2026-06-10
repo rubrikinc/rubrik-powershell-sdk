@@ -2,8 +2,8 @@
 GCP user information received after OAuth flow is completed.
 
 - emailId: System.String
-  - Email ID.
+  - Google e-mail id used for the oAuth flow.
 - firstName: System.String
-  - First name.
+  - Name associated with the e-mail id used for the OAuth flow.
 - domain: System.String
-  - Domain name.
+  - G-suite domain.

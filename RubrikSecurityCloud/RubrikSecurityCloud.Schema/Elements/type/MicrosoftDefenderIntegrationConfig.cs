@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("domainName")]
         public System.String? DomainName { get; set; }
 
+        //      C# -> MicrosoftDefenderStatus? Status
+        // GraphQL -> status: MicrosoftDefenderStatus (type)
+        [JsonProperty("status")]
+        public MicrosoftDefenderStatus? Status { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public MicrosoftDefenderIntegrationConfig Set(
         System.String? ApplicationId = null,
         System.String? ClientSecret = null,
-        System.String? DomainName = null
+        System.String? DomainName = null,
+        MicrosoftDefenderStatus? Status = null
     ) 
     {
         if ( ApplicationId != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DomainName != null ) {
             this.DomainName = DomainName;
+        }
+        if ( Status != null ) {
+            this.Status = Status;
         }
         return this;
     }
@@ -98,6 +107,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "domainName\n" ;
             } else {
                 s += ind + "domainName\n" ;
+            }
+        }
+        //      C# -> MicrosoftDefenderStatus? Status
+        // GraphQL -> status: MicrosoftDefenderStatus (type)
+        if (this.Status != null) {
+            var fspec = this.Status.AsFieldSpec(conf.Child("status"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "status" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -157,6 +178,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DomainName != null && ec.Excludes("domainName",true))
         {
             this.DomainName = null;
+        }
+        //      C# -> MicrosoftDefenderStatus? Status
+        // GraphQL -> status: MicrosoftDefenderStatus (type)
+        if (ec.Includes("status",false))
+        {
+            if(this.Status == null) {
+
+                this.Status = new MicrosoftDefenderStatus();
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            } else {
+
+                this.Status.ApplyExploratoryFieldSpec(ec.NewChild("status"));
+
+            }
+        }
+        else if (this.Status != null && ec.Excludes("status",false))
+        {
+            this.Status = null;
         }
     }
 

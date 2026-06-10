@@ -48,6 +48,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_REGION_S3_BUCKET_COUNT")]
         AWS_NATIVE_REGION_S3_BUCKET_COUNT,
 
+        [EnumMember(Value = "AWS_NATIVE_S3_BUCKET_OBJECT_COUNT")]
+        AWS_NATIVE_S3_BUCKET_OBJECT_COUNT,
+
+        [EnumMember(Value = "AWS_NATIVE_S3_BUCKET_SIZE_BYTES")]
+        AWS_NATIVE_S3_BUCKET_SIZE_BYTES,
+
         [EnumMember(Value = "AWS_REGION")]
         AWS_REGION,
 
@@ -77,6 +83,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_DISK_TYPE")]
         AZURE_DISK_TYPE,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_REGION")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER_REGION,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_RESOURCE_GROUP")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER_RESOURCE_GROUP,
 
         [EnumMember(Value = "AZURE_REGION")]
         AZURE_REGION,
@@ -252,6 +264,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_TEMPLATE_INCLUDES")]
         FILESET_TEMPLATE_INCLUDES,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER_NATIVE_ID")]
+        GCP_ALLOY_DB_CLUSTER_NATIVE_ID,
+
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER_PROJECT_NAME")]
+        GCP_ALLOY_DB_CLUSTER_PROJECT_NAME,
+
+        [EnumMember(Value = "GCP_BIG_QUERY_DATASET_NATIVE_ID")]
+        GCP_BIG_QUERY_DATASET_NATIVE_ID,
+
+        [EnumMember(Value = "GCP_BIG_QUERY_DATASET_PROJECT_NAME")]
+        GCP_BIG_QUERY_DATASET_PROJECT_NAME,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE")]
         GCP_CLOUD_SQL_INSTANCE_ENGINE_TYPE,
 
@@ -311,6 +335,21 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_REPO_SIZE")]
         GITHUB_REPO_SIZE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_DATABASE_AWS_ACCOUNT_NAME")]
+        GLUE_ICEBERG_DATABASE_AWS_ACCOUNT_NAME,
+
+        [EnumMember(Value = "GLUE_ICEBERG_DATABASE_CATALOG_NAME")]
+        GLUE_ICEBERG_DATABASE_CATALOG_NAME,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE_AWS_ACCOUNT_NAME")]
+        GLUE_ICEBERG_TABLE_AWS_ACCOUNT_NAME,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE_CATALOG_NAME")]
+        GLUE_ICEBERG_TABLE_CATALOG_NAME,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE_DATABASE_NAME")]
+        GLUE_ICEBERG_TABLE_DATABASE_NAME,
 
         [EnumMember(Value = "GWS_USER_EMAIL_ADDRESS")]
         GWS_USER_EMAIL_ADDRESS,

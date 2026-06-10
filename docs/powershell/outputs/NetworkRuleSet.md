@@ -1,7 +1,8 @@
 ### NetworkRuleSet
-Network rules for Azure storage account.
+NetworkRuleSet defines network rules for Azure storage account.
 
 - defaultAction: DefaultActionType
-  - Default Action for any request coming for any IP for the Azure storage account.
+  - Specifies the default action of allow or deny when no other rules match.
+Possible values include: 'DefaultActionAllow', 'DefaultActionDeny'
 - ipRules: list of IpRules
-  - IP rules for a specific set of IPs.
+  - Specifies the IP ACL rules.

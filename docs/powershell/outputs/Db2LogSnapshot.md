@@ -5,10 +5,10 @@ Db2 log snapshot object.
   - The Rubrik FID of the Db2 snapshot object.
 - cdmId: System.String
   - The CDM fid of the Db2 snapshot object.
-- clusterUuid: System.String
-  - UUID of the CDM cluster associated with Db2 workload.
 - internalTimestamp: System.Int64
   - The internal time stamp of the Db2 snapshot object.
+- clusterUuid: System.String
+  - UUID of the CDM cluster associated with Db2 workload.
 - isArchived: System.Boolean
   - Boolean for archival status of the Db2 snapshot object.
 - workloadType: System.String

@@ -99,6 +99,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
 
+        //      C# -> AwsServiceTypeFilter? ServiceTypeFilter
+        // GraphQL -> serviceTypeFilter: AwsServiceTypeFilter (input)
+        [JsonProperty("serviceTypeFilter")]
+        public AwsServiceTypeFilter? ServiceTypeFilter { get; set; }
+
+        //      C# -> AwsNativeOutpostArnFilter? OutpostArnFilter
+        // GraphQL -> outpostArnFilter: AwsNativeOutpostArnFilter (input)
+        [JsonProperty("outpostArnFilter")]
+        public AwsNativeOutpostArnFilter? OutpostArnFilter { get; set; }
+
 
         #endregion
 

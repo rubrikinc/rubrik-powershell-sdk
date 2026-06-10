@@ -142,6 +142,78 @@ Retrieves details about the Azure cloud account tenant including the Exocompute 
     - subscriptionSearchText - System.String: Search text for subscription name and native ID.
     - subscriptionIdsFilter - list of System.Strings: List of subscription IDs to filter on.
 - Returns AzureCloudAccountTenantWithExoConfigs.
+### clusterstorageaccountredundancy
+Retrieves the current redundancy and conversion status for the Azure
+storage account associated with the specified cloud cluster.
+
+- There is a single argument of type AzureClusterStorageAccountRedundancyInput.
+- Returns AzureClusterStorageAccountRedundancyReply.
+### devopsconnectionstatussummary
+AzureDevOpsOrgConnectionStatusSummary returns the connection status of
+all the Azure DevOps cloud accounts for a given organization.
+
+- The devopsconnectionstatussummary subcommand takes no arguments.
+- Returns AzureDevOpsConnectionStatusSummaryReply.
+### devopsorganization
+Query Azure DevOps organization object.
+
+- There is a single argument of type System.String.
+- Returns AzureDevOpsOrganization.
+### devopsorganizations
+Query Azure DevOps organization objects.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - ancestorId - System.String: Ancestor object/root ID.
+    - filter - list of Filters: The hierarchy object filter.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+- Returns AzureDevOpsOrganizationConnection.
+### devopsproject
+Query Azure DevOps project object.
+
+- There is a single argument of type System.String.
+- Returns AzureDevOpsProject.
+### devopsprojects
+Query Azure DevOps project objects.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - ancestorId - System.String: Ancestor object/root ID.
+    - filter - list of Filters: The hierarchy object filter.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+- Returns AzureDevOpsProjectConnection.
+### devopsrepositories
+Query Azure DevOps repository objects.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - ancestorId - System.String: Ancestor object/root ID.
+    - filter - list of Filters: The hierarchy object filter.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+- Returns AzureDevOpsRepositoryConnection.
+### devopsrepository
+Query Azure DevOps repository object.
+
+- There is a single argument of type System.String.
+- Returns AzureDevOpsRepository.
 ### diskencryptionsetsbyregion
 List of all Azure Disk Encryption Sets in a region using Rubrik subscription ID.
 
@@ -224,6 +296,23 @@ Get all available network security groups for Azure.
 
 - There is a single argument of type AzureNsgRequest.
 - Returns list of System.Strings.
+### postgresflexibleserver
+Retrieves an Azure Postgres Flexible Server. For more information, see https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview.
+
+- There is a single argument of type System.String.
+- Returns AzurePostgresFlexibleServer.
+### postgresflexibleservers
+Retrieves a paginated list of all Azure Postgres Flexible Servers.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - AzurePostgresFlexibleServerSortFields: Sort fields for list of Azure Postgres Flexible Servers.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - azurePostgresFlexibleServerFilters - AzurePostgresFlexibleServerFilters: Filters for listing Azure Postgres Flexible Servers.
+- Returns AzurePostgresFlexibleServerConnection.
 ### rcvblimigrationdetails
 ListRCVAzureBLIMigrationDetails lists blob immutability migration details
 of RCV Azure locations.
@@ -438,13 +527,19 @@ Lists all the supported Azure AD regions.
 
 - The supportedadregions subcommand takes no arguments.
 - Returns SupportedAzureAdRegions.
+### validatebackuplocationusablefordevops
+Validates that the backup location is available and suitable for Azure
+DevOps protection.
+
+- There is a single argument of type ValidateBackupLocationUsableForAzureDevOpsReq.
+- Returns System.String.
 ### validatecloudaccountexocomputeconfigurations
 Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
 
 - There is a single argument of type ValidateAzureCloudAccountExocomputeConfigurationsInput.
 - Returns ValidateAzureSubnetsForCloudAccountExocomputeReply.
 ### validatecreateclusterinput
-Validates azure cluster create request.
+Validates Azure cluster create request.
 
 - There is a single argument of type CreateAzureClusterInput.
 - Returns ValidationReply.

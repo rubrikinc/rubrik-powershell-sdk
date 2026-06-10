@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userEmails")]
         public List<System.String>? UserEmails { get; set; }
 
-        //      C# -> List<System.String>? RoleIds
-        // GraphQL -> roleIds: [UUID!]! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("roleIds")]
-        public List<System.String>? RoleIds { get; set; }
-
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("authDomainId")]
         public System.String? AuthDomainId { get; set; }
+
+        //      C# -> List<System.String>? RoleIds
+        // GraphQL -> roleIds: [UUID!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("roleIds")]
+        public List<System.String>? RoleIds { get; set; }
 
 
         #endregion

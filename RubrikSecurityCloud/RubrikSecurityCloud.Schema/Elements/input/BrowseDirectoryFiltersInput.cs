@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("whitelistEnabled")]
         public System.Boolean? WhitelistEnabled { get; set; }
 
+        //      C# -> SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope
+        // GraphQL -> sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope (enum)
+        [JsonProperty("sensitiveDataDiscoveryScope")]
+        public SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope { get; set; }
+
         //      C# -> List<System.String>? Sids
         // GraphQL -> sids: [String!] (scalar)
         [JsonProperty("sids")]
@@ -74,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mipLabelsFilter")]
         public List<MipLabelsFilterInput>? MipLabelsFilter { get; set; }
 
+        //      C# -> List<System.String>? DocumentTypesFilter
+        // GraphQL -> documentTypesFilter: [UUID!] (scalar)
+        [JsonProperty("documentTypesFilter")]
+        public List<System.String>? DocumentTypesFilter { get; set; }
+
         //      C# -> System.Boolean? IsObjectLevelAnalysis
         // GraphQL -> isObjectLevelAnalysis: Boolean (scalar)
         [JsonProperty("isObjectLevelAnalysis")]
@@ -84,25 +94,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aggregateAtPath")]
         public System.Boolean? AggregateAtPath { get; set; }
 
+        //      C# -> BrowseAggregationScope? AggregationScope
+        // GraphQL -> aggregationScope: BrowseAggregationScope (enum)
+        [JsonProperty("aggregationScope")]
+        public BrowseAggregationScope? AggregationScope { get; set; }
+
         //      C# -> List<AffectedFilesDeltaType>? AffectedFilesDeltaTypes
         // GraphQL -> affectedFilesDeltaTypes: [AffectedFilesDeltaType!] (enum)
         [JsonProperty("affectedFilesDeltaTypes")]
         public List<AffectedFilesDeltaType>? AffectedFilesDeltaTypes { get; set; }
 
-        //      C# -> List<System.String>? DocumentTypesFilter
-        // GraphQL -> documentTypesFilter: [UUID!] (scalar)
-        [JsonProperty("documentTypesFilter")]
-        public List<System.String>? DocumentTypesFilter { get; set; }
-
-        //      C# -> SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope
-        // GraphQL -> sensitiveDataDiscoveryScope: SensitiveDataDiscoveryScope (enum)
-        [JsonProperty("sensitiveDataDiscoveryScope")]
-        public SensitiveDataDiscoveryScope? SensitiveDataDiscoveryScope { get; set; }
-
-        //      C# -> BrowseAggregationScope? AggregationScope
-        // GraphQL -> aggregationScope: BrowseAggregationScope (enum)
-        [JsonProperty("aggregationScope")]
-        public BrowseAggregationScope? AggregationScope { get; set; }
+        //      C# -> System.String? BaseSnapshotId
+        // GraphQL -> baseSnapshotId: UUID (scalar)
+        [JsonProperty("baseSnapshotId")]
+        public System.String? BaseSnapshotId { get; set; }
 
 
         #endregion

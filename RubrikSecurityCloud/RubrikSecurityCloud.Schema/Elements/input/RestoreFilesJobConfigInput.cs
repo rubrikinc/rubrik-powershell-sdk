@@ -71,6 +71,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("guestCredentialId")]
         public System.String? GuestCredentialId { get; set; }
 
+        //      C# -> List<System.String>? ExcludePaths
+        // GraphQL -> excludePaths: [String!] (scalar)
+        [JsonProperty("excludePaths")]
+        public List<System.String>? ExcludePaths { get; set; }
+
+        //      C# -> System.String? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: String (scalar)
+        [JsonProperty("recoveryPurpose")]
+        public System.String? RecoveryPurpose { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         [JsonProperty("description")]

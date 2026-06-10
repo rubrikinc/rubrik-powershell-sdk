@@ -46,10 +46,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("userSelectedInterfaces")]
         public List<System.String>? UserSelectedInterfaces { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppSnapDiffEnabled")]
+        public System.Boolean? IsNetAppSnapDiffEnabled { get; set; }
+
         //      C# -> System.String? NasSourceId
         // GraphQL -> nasSourceId: String (scalar)
         [JsonProperty("nasSourceId")]
         public System.String? NasSourceId { get; set; }
+
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        [JsonProperty("isNutanixCftEnabled")]
+        public System.Boolean? IsNutanixCftEnabled { get; set; }
 
 
         #endregion

@@ -1,5 +1,21 @@
 # New-RscQueryCloudNative
 ## Subcommands
+### applicationsnapshots
+GetCloudNativeApplicationSnapshots returns the config
+snapshot and all workload snapshots for a cloud native
+application. Retrieves the config snapshot via
+allOptimizedSnapshots, resolves workloads from the
+config snapshot, then retrieves workload snapshots with
+per-workload-type filter policies (e.g., compute
+instances get all filters, databases get time-only).
+
+- There are 5 arguments.
+    - applicationId - System.String: Application managed object ID.
+    - timeFilter - SnapshotTimeFilter: Time range filter.
+    - qualityFilter - SnapshotQualityFilter: Quality and status filters.
+    - getFullDetails - System.Boolean: Whether to include full details.
+    - preferredLocationType - CloudNativeSnapshotLocationType: Preferred snapshot location.
+- Returns GetCloudNativeApplicationSnapshotsReply.
 ### checkarchivedsnapshotslocked
 Archived snapshot locking related details for a workload. If no snapshots IDs are passed, all the expired source snapshots and the source snapshots that have a unexpired archival copy will be checked.
 

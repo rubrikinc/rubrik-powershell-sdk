@@ -11,6 +11,8 @@ Specific info for Rcs Azure Target Template.
   - Immutability setting of the template, that defines thenumber of days for which stored data will be immutable.
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType
   - Cloud native template type.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type for the RCS Azure location template.
 - targetType: TargetType
   - The type of this Target.
 - templateLocationId: System.String

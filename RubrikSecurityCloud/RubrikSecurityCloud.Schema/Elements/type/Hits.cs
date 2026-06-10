@@ -20,35 +20,35 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? PermittedHits
-        // GraphQL -> permittedHits: Int! (scalar)
+        //      C# -> System.Int64? PermittedHits
+        // GraphQL -> permittedHits: Long! (scalar)
         [JsonProperty("permittedHits")]
-        public System.Int32? PermittedHits { get; set; }
+        public System.Int64? PermittedHits { get; set; }
 
-        //      C# -> System.Int32? PermittedHitsDelta
-        // GraphQL -> permittedHitsDelta: Int! (scalar)
+        //      C# -> System.Int64? PermittedHitsDelta
+        // GraphQL -> permittedHitsDelta: Long! (scalar)
         [JsonProperty("permittedHitsDelta")]
-        public System.Int32? PermittedHitsDelta { get; set; }
+        public System.Int64? PermittedHitsDelta { get; set; }
 
-        //      C# -> System.Int32? TotalHits
-        // GraphQL -> totalHits: Int! (scalar)
+        //      C# -> System.Int64? TotalHits
+        // GraphQL -> totalHits: Long! (scalar)
         [JsonProperty("totalHits")]
-        public System.Int32? TotalHits { get; set; }
+        public System.Int64? TotalHits { get; set; }
 
-        //      C# -> System.Int32? TotalHitsDelta
-        // GraphQL -> totalHitsDelta: Int! (scalar)
+        //      C# -> System.Int64? TotalHitsDelta
+        // GraphQL -> totalHitsDelta: Long! (scalar)
         [JsonProperty("totalHitsDelta")]
-        public System.Int32? TotalHitsDelta { get; set; }
+        public System.Int64? TotalHitsDelta { get; set; }
 
-        //      C# -> System.Int32? Violations
-        // GraphQL -> violations: Int! (scalar)
+        //      C# -> System.Int64? Violations
+        // GraphQL -> violations: Long! (scalar)
         [JsonProperty("violations")]
-        public System.Int32? Violations { get; set; }
+        public System.Int64? Violations { get; set; }
 
-        //      C# -> System.Int32? ViolationsDelta
-        // GraphQL -> violationsDelta: Int! (scalar)
+        //      C# -> System.Int64? ViolationsDelta
+        // GraphQL -> violationsDelta: Long! (scalar)
         [JsonProperty("violationsDelta")]
-        public System.Int32? ViolationsDelta { get; set; }
+        public System.Int64? ViolationsDelta { get; set; }
 
 
         #endregion
@@ -60,12 +60,12 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Hits Set(
-        System.Int32? PermittedHits = null,
-        System.Int32? PermittedHitsDelta = null,
-        System.Int32? TotalHits = null,
-        System.Int32? TotalHitsDelta = null,
-        System.Int32? Violations = null,
-        System.Int32? ViolationsDelta = null
+        System.Int64? PermittedHits = null,
+        System.Int64? PermittedHitsDelta = null,
+        System.Int64? TotalHits = null,
+        System.Int64? TotalHitsDelta = null,
+        System.Int64? Violations = null,
+        System.Int64? ViolationsDelta = null
     ) 
     {
         if ( PermittedHits != null ) {
@@ -100,8 +100,8 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.Int32? PermittedHits
-        // GraphQL -> permittedHits: Int! (scalar)
+        //      C# -> System.Int64? PermittedHits
+        // GraphQL -> permittedHits: Long! (scalar)
         if (this.PermittedHits != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "permittedHits\n" ;
@@ -109,8 +109,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "permittedHits\n" ;
             }
         }
-        //      C# -> System.Int32? PermittedHitsDelta
-        // GraphQL -> permittedHitsDelta: Int! (scalar)
+        //      C# -> System.Int64? PermittedHitsDelta
+        // GraphQL -> permittedHitsDelta: Long! (scalar)
         if (this.PermittedHitsDelta != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "permittedHitsDelta\n" ;
@@ -118,8 +118,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "permittedHitsDelta\n" ;
             }
         }
-        //      C# -> System.Int32? TotalHits
-        // GraphQL -> totalHits: Int! (scalar)
+        //      C# -> System.Int64? TotalHits
+        // GraphQL -> totalHits: Long! (scalar)
         if (this.TotalHits != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "totalHits\n" ;
@@ -127,8 +127,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "totalHits\n" ;
             }
         }
-        //      C# -> System.Int32? TotalHitsDelta
-        // GraphQL -> totalHitsDelta: Int! (scalar)
+        //      C# -> System.Int64? TotalHitsDelta
+        // GraphQL -> totalHitsDelta: Long! (scalar)
         if (this.TotalHitsDelta != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "totalHitsDelta\n" ;
@@ -136,8 +136,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "totalHitsDelta\n" ;
             }
         }
-        //      C# -> System.Int32? Violations
-        // GraphQL -> violations: Int! (scalar)
+        //      C# -> System.Int64? Violations
+        // GraphQL -> violations: Long! (scalar)
         if (this.Violations != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "violations\n" ;
@@ -145,8 +145,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "violations\n" ;
             }
         }
-        //      C# -> System.Int32? ViolationsDelta
-        // GraphQL -> violationsDelta: Int! (scalar)
+        //      C# -> System.Int64? ViolationsDelta
+        // GraphQL -> violationsDelta: Long! (scalar)
         if (this.ViolationsDelta != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "violationsDelta\n" ;
@@ -161,13 +161,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.Int32? PermittedHits
-        // GraphQL -> permittedHits: Int! (scalar)
+        //      C# -> System.Int64? PermittedHits
+        // GraphQL -> permittedHits: Long! (scalar)
         if (ec.Includes("permittedHits",true))
         {
             if(this.PermittedHits == null) {
 
-                this.PermittedHits = Int32.MinValue;
+                this.PermittedHits = new System.Int64();
 
             } else {
 
@@ -178,13 +178,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.PermittedHits = null;
         }
-        //      C# -> System.Int32? PermittedHitsDelta
-        // GraphQL -> permittedHitsDelta: Int! (scalar)
+        //      C# -> System.Int64? PermittedHitsDelta
+        // GraphQL -> permittedHitsDelta: Long! (scalar)
         if (ec.Includes("permittedHitsDelta",true))
         {
             if(this.PermittedHitsDelta == null) {
 
-                this.PermittedHitsDelta = Int32.MinValue;
+                this.PermittedHitsDelta = new System.Int64();
 
             } else {
 
@@ -195,13 +195,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.PermittedHitsDelta = null;
         }
-        //      C# -> System.Int32? TotalHits
-        // GraphQL -> totalHits: Int! (scalar)
+        //      C# -> System.Int64? TotalHits
+        // GraphQL -> totalHits: Long! (scalar)
         if (ec.Includes("totalHits",true))
         {
             if(this.TotalHits == null) {
 
-                this.TotalHits = Int32.MinValue;
+                this.TotalHits = new System.Int64();
 
             } else {
 
@@ -212,13 +212,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.TotalHits = null;
         }
-        //      C# -> System.Int32? TotalHitsDelta
-        // GraphQL -> totalHitsDelta: Int! (scalar)
+        //      C# -> System.Int64? TotalHitsDelta
+        // GraphQL -> totalHitsDelta: Long! (scalar)
         if (ec.Includes("totalHitsDelta",true))
         {
             if(this.TotalHitsDelta == null) {
 
-                this.TotalHitsDelta = Int32.MinValue;
+                this.TotalHitsDelta = new System.Int64();
 
             } else {
 
@@ -229,13 +229,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.TotalHitsDelta = null;
         }
-        //      C# -> System.Int32? Violations
-        // GraphQL -> violations: Int! (scalar)
+        //      C# -> System.Int64? Violations
+        // GraphQL -> violations: Long! (scalar)
         if (ec.Includes("violations",true))
         {
             if(this.Violations == null) {
 
-                this.Violations = Int32.MinValue;
+                this.Violations = new System.Int64();
 
             } else {
 
@@ -246,13 +246,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.Violations = null;
         }
-        //      C# -> System.Int32? ViolationsDelta
-        // GraphQL -> violationsDelta: Int! (scalar)
+        //      C# -> System.Int64? ViolationsDelta
+        // GraphQL -> violationsDelta: Long! (scalar)
         if (ec.Includes("violationsDelta",true))
         {
             if(this.ViolationsDelta == null) {
 
-                this.ViolationsDelta = Int32.MinValue;
+                this.ViolationsDelta = new System.Int64();
 
             } else {
 

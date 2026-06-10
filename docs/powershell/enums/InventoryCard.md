@@ -60,3 +60,8 @@ Inventory Card options that the user can select as a workload.
 - GITHUB - Inventory card is GitHub.
 - GCP_CLOUD_SQL - Inventory Card is GCP Cloud SQL.
 - CLOUD_NATIVE_APPLICATION - Inventory card is Cloud Applications.
+- FUSION_COMPUTE - Inventory Card is FusionCompute.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Inventory card is Azure Postgres Flexible Server.
+- PURE_STORAGE - Inventory Card is Pure Storage.
+- GLUE_ICEBERG - Inventory card is AWS Glue Iceberg.
+- GCP_BIGQUERY - Inventory card is GCP BigQuery.

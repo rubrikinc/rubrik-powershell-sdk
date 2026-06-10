@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRemote")]
         public System.Boolean? IsRemote { get; set; }
 
+        //      C# -> System.Int64? LocalSnapshotsCount
+        // GraphQL -> localSnapshotsCount: Long! (scalar)
+        [JsonProperty("localSnapshotsCount")]
+        public System.Int64? LocalSnapshotsCount { get; set; }
+
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long! (scalar)
         [JsonProperty("localStorage")]
@@ -179,6 +184,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasSnapshotsWithPolicy = null,
         System.String? Id = null,
         System.Boolean? IsRemote = null,
+        System.Int64? LocalSnapshotsCount = null,
         System.Int64? LocalStorage = null,
         System.String? Name = null,
         System.Int64? NonPolicySnapshotsCount = null,
@@ -235,6 +241,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRemote != null ) {
             this.IsRemote = IsRemote;
+        }
+        if ( LocalSnapshotsCount != null ) {
+            this.LocalSnapshotsCount = LocalSnapshotsCount;
         }
         if ( LocalStorage != null ) {
             this.LocalStorage = LocalStorage;
@@ -421,6 +430,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRemote\n" ;
             } else {
                 s += ind + "isRemote\n" ;
+            }
+        }
+        //      C# -> System.Int64? LocalSnapshotsCount
+        // GraphQL -> localSnapshotsCount: Long! (scalar)
+        if (this.LocalSnapshotsCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "localSnapshotsCount\n" ;
+            } else {
+                s += ind + "localSnapshotsCount\n" ;
             }
         }
         //      C# -> System.Int64? LocalStorage
@@ -810,6 +828,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRemote != null && ec.Excludes("isRemote",true))
         {
             this.IsRemote = null;
+        }
+        //      C# -> System.Int64? LocalSnapshotsCount
+        // GraphQL -> localSnapshotsCount: Long! (scalar)
+        if (ec.Includes("localSnapshotsCount",true))
+        {
+            if(this.LocalSnapshotsCount == null) {
+
+                this.LocalSnapshotsCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocalSnapshotsCount != null && ec.Excludes("localSnapshotsCount",true))
+        {
+            this.LocalSnapshotsCount = null;
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long! (scalar)

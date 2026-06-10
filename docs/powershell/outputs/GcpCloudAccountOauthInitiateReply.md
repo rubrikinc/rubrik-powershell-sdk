@@ -2,12 +2,12 @@
 GCP Cloud Account OAuth Initiate Response.
 
 - clientId: System.String
-  - Client ID.
+  - OAuth client ID.
 - sessionId: System.String
-  - Session ID.
+  - OAuth session ID.
 - state: System.String
-  - State.
+  - Base64 url encoded json string.
 - redirectUrl: System.String
   - Redirect URL.
 - scope: list of System.Strings
-  - Scope.
+  - OAuth scope.

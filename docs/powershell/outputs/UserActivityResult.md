@@ -1,5 +1,5 @@
 ### UserActivityResult
-Represents the activity for a specific user.
+User activity result.
 
 - user: AccessUser
   - The user that this result corresponds to.

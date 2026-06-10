@@ -1,0 +1,41 @@
+### Recovery
+Recovery contains information around a particular recovery.
+
+- id: System.String
+  - Identifier of a particular recovery.
+- recoveryName: System.String
+  - Name of the recovery.
+- recoveryPlanId: System.String
+  - Recovery plan ID.
+- dataTransferType: DataTransferType
+  - Data transfer type for the recovery.
+- canSaveAsPlan: System.Boolean
+  - Can be saved as recovery plan.
+- startTime: System.Int64
+  - Timestamp, in Unix milliseconds, when the recovery job started.
+- endTime: System.Int64
+  - Timestamp, in Unix milliseconds, when the recovery job completed.
+- elapsedTime: System.Int64
+  - Duration of the recovery job, in milliseconds.
+- recoveryFailureAction: RecoveryFailureAction
+  - Action to be taken if recovery fails.
+- isArchived: System.Boolean
+  - If recovery has been archived.
+- recoveryType: RecoveryType
+  - Recovery Type.
+- numWorkloads: System.Int64
+  - Number of workloads.
+- progress: System.Single
+  - Progress of the recovery.
+- status: RecoveryStatus
+  - Status of the recovery.
+- recoveryOutcome: RecoveryOutcome
+  - Outcome of the recovery.
+- triggeredFrom: RecoveryTriggeredFrom
+  - Specifies how was recovery triggered.
+- isAdhocRecovery: System.Boolean
+  - Whether this recovery is an adhoc recovery.
+- steps: StepsOneof
+  - Comprehensive recovery steps.
+- recoveryPlanBasicInfo: RecoveryPlanBasicInfo
+  - Basic information about the recovery plan associated with this recovery.

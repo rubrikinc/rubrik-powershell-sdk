@@ -113,6 +113,14 @@ The current default properties for Microsoft SQL databases.
 
 - There is a single argument of type ClusterUuidWithMssqlObjectIdInput.
 - Returns MssqlDefaultPropertiesOnClusterReply.
+### hostconfiguration
+Get the configuration for a specific host
+
+Supported in v6.0+
+Returns the configuration for the specified SQL Server host.
+
+- There is a single argument of type MssqlHostConfigInput.
+- Returns MssqlHostConfiguration.
 ### instance
 A Microsoft SQL Instance.
 

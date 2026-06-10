@@ -85,5 +85,7 @@ NAS Cloud Direct bucket.
   - Cluster from which this workload originated.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
+- cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for Cloud Direct objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

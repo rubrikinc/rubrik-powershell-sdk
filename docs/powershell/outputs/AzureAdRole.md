@@ -15,3 +15,7 @@ Entra ID role.
   - Specifies whether the Entra ID role is active.
 - isPrivileged: System.Boolean
   - Specifies whether the Entra ID role is privileged.
+- policy: AzureAdPimPolicy
+  - Parsed PIM policy detail, populated only on detail view.
+- isPimEnabled: System.Boolean
+  - Specifies whether PIM is enabled for this role.

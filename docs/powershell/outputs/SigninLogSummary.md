@@ -31,3 +31,21 @@ Sign-in log summary for list view.
   - The state or province from which the sign-in occurred (geographic location).
 - actorDisplayName: System.String
   - The identity's display name.
+- userId: System.String
+  - The unique identifier of the user who performed the sign-in.
+- errorCode: System.String
+  - The error code if sign-in failed.
+- logonType: System.String
+  - The logon type description.
+- resourceName: System.String
+  - The resource name accessed during sign-in.
+- processName: System.String
+  - The name of the application or service that processed the sign-in request.
+- authenticationMethod: System.String
+  - The authentication method used.
+- mfaStatus: System.String
+  - The MFA status.
+- failureCategory: SigninLogFailureCategory
+  - The failure category for this sign-in event.
+- tenantId: System.String
+  - The tenant ID from the identity provider.

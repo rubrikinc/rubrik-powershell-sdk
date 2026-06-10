@@ -1,13 +1,13 @@
 ### StorageAccountConfigItem
-Storage Account Config Item.
+Storage account configuration item.
 
 - name: System.String
-  - The name of storage account.
+  - The name of the storage account.
 - tier: StorageAccountTier
-  - The tier of storage account.
+  - The tier of the storage account.
 - sku: StorageAccountSku
-  - The sku of storage account.
+  - The SKU of the storage account.
 - containerImmutabilityStatus: ColossusStorageContainerImmutabilityStatus
-  - The immutability status for colossus container in storage account.
+  - The immutability status for the Colossus container in the storage account.
 - versioningEnabled: System.Boolean
-  - Implies if storage versioning is enabled.
+  - Specifies whether storage versioning is enabled.

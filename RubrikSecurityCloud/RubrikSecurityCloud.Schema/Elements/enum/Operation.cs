@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPROVE_TPR_REQUEST")]
         APPROVE_TPR_REQUEST,
 
+        [EnumMember(Value = "ASSIGN_COPY_SCHEDULES")]
+        ASSIGN_COPY_SCHEDULES,
+
         [EnumMember(Value = "ASSIGN_KMS_KEY_VAULT")]
         ASSIGN_KMS_KEY_VAULT,
 
@@ -74,6 +77,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ASSIGN_ROLE")]
         ASSIGN_ROLE,
+
+        [EnumMember(Value = "BROWSE_WORKLOAD_CONTENTS")]
+        BROWSE_WORKLOAD_CONTENTS,
 
         [EnumMember(Value = "CANCEL_RUNNING_ACTIVITY")]
         CANCEL_RUNNING_ACTIVITY,
@@ -107,6 +113,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CREATE_CROSS_ACCOUNT_PAIR")]
         CREATE_CROSS_ACCOUNT_PAIR,
+
+        [EnumMember(Value = "CREATE_FAILOVER_GROUP")]
+        CREATE_FAILOVER_GROUP,
 
         [EnumMember(Value = "CREATE_REPORT")]
         CREATE_REPORT,
@@ -294,6 +303,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_CLUSTER_SETTINGS")]
         MANAGE_CLUSTER_SETTINGS,
 
+        [EnumMember(Value = "MANAGE_COPY_SCHEDULES")]
+        MANAGE_COPY_SCHEDULES,
+
         [EnumMember(Value = "MANAGE_CORS_SETTINGS")]
         MANAGE_CORS_SETTINGS,
 
@@ -315,6 +327,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_DSPM_INTEGRATIONS")]
         MANAGE_DSPM_INTEGRATIONS,
 
+        [EnumMember(Value = "MANAGE_FAILOVER_GROUP")]
+        MANAGE_FAILOVER_GROUP,
+
         [EnumMember(Value = "MANAGE_GOOGLE_SECOPS_INTEGRATION")]
         MANAGE_GOOGLE_SECOPS_INTEGRATION,
 
@@ -323,6 +338,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_GUEST_OS_CREDENTIAL")]
         MANAGE_GUEST_OS_CREDENTIAL,
+
+        [EnumMember(Value = "MANAGE_HIGH_IMPACT_CHANGE_FEATURES")]
+        MANAGE_HIGH_IMPACT_CHANGE_FEATURES,
 
         [EnumMember(Value = "MANAGE_IDENTITY_RESILIENCY")]
         MANAGE_IDENTITY_RESILIENCY,
@@ -375,6 +393,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_ROLLING_UPGRADES")]
         MANAGE_ROLLING_UPGRADES,
 
+        [EnumMember(Value = "MANAGE_RSCP_CLUSTER_SETTINGS")]
+        MANAGE_RSCP_CLUSTER_SETTINGS,
+
         [EnumMember(Value = "MANAGE_RUBY")]
         MANAGE_RUBY,
 
@@ -404,6 +425,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_SNMP")]
         MANAGE_SNMP,
+
+        [EnumMember(Value = "MANAGE_SPLUNK_INTEGRATION")]
+        MANAGE_SPLUNK_INTEGRATION,
 
         [EnumMember(Value = "MANAGE_STORAGE_ENCRYPTION")]
         MANAGE_STORAGE_ENCRYPTION,
@@ -543,6 +567,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UPLOAD_SNAPSHOT_ON_DEMAND")]
         UPLOAD_SNAPSHOT_ON_DEMAND,
 
+        [EnumMember(Value = "USE_AS_COPY_TARGET")]
+        USE_AS_COPY_TARGET,
+
         [EnumMember(Value = "USE_AS_REPLICATION_TARGET")]
         USE_AS_REPLICATION_TARGET,
 
@@ -612,6 +639,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_CLUSTER_REFERENCE")]
         VIEW_CLUSTER_REFERENCE,
 
+        [EnumMember(Value = "VIEW_COPY_SCHEDULES")]
+        VIEW_COPY_SCHEDULES,
+
         [EnumMember(Value = "VIEW_CORS_SETTINGS")]
         VIEW_CORS_SETTINGS,
 
@@ -647,6 +677,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_EVENT_CLUSTER_SETTING")]
         VIEW_EVENT_CLUSTER_SETTING,
+
+        [EnumMember(Value = "VIEW_FAILOVER_GROUP")]
+        VIEW_FAILOVER_GROUP,
 
         [EnumMember(Value = "VIEW_GCP_CLOUD_ACCOUNT")]
         VIEW_GCP_CLOUD_ACCOUNT,
@@ -708,6 +741,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_ROLE")]
         VIEW_ROLE,
 
+        [EnumMember(Value = "VIEW_RSCP_CLUSTER")]
+        VIEW_RSCP_CLUSTER,
+
         [EnumMember(Value = "VIEW_RUBY_INSIGHTS")]
         VIEW_RUBY_INSIGHTS,
 
@@ -734,6 +770,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_SNMP")]
         VIEW_SNMP,
+
+        [EnumMember(Value = "VIEW_SPLUNK_INTEGRATION")]
+        VIEW_SPLUNK_INTEGRATION,
 
         [EnumMember(Value = "VIEW_STORAGE_SETTINGS")]
         VIEW_STORAGE_SETTINGS,

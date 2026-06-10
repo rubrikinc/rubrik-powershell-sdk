@@ -114,6 +114,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "THREAT_HUNT")]
         THREAT_HUNT,
 
+        [EnumMember(Value = "THREAT_MONITORING")]
+        THREAT_MONITORING,
+
         [EnumMember(Value = "UnknownUserAuditType")]
         UNKNOWN_USER_AUDIT_TYPE
 

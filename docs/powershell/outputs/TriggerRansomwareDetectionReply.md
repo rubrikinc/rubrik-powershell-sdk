@@ -1,5 +1,5 @@
 ### TriggerRansomwareDetectionReply
-Lambda job information on certain cluster.
+Reply containing information about a ransomware detection job.
 
 - clusterUuid: System.String
   - Id of the Rubrik cluster running the ransomware detection job.

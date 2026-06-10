@@ -1071,6 +1071,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nameSubstring = $someString
     /// 	}
     /// 	# OPTIONAL
+    /// 	namePrefixFilter = @{
+    /// 		# REQUIRED
+    /// 		namePrefix = $someString
+    /// 	}
+    /// 	# OPTIONAL
     /// 	effectiveSlaFilter = @{
     /// 		# REQUIRED
     /// 		effectiveSlaIds = @(
@@ -2614,6 +2619,11 @@ $query.Var.virtualMachineFilters = @{
 	nameSubstringFilter = @{
 		# REQUIRED
 		nameSubstring = $someString
+	}
+	# OPTIONAL
+	namePrefixFilter = @{
+		# REQUIRED
+		namePrefix = $someString
 	}
 	# OPTIONAL
 	effectiveSlaFilter = @{

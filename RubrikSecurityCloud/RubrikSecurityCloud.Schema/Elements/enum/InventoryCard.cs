@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_DEVOPS")]
         AZURE_DEVOPS,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_SQL_DB")]
         AZURE_SQL_DB,
 
@@ -69,14 +72,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXCHANGE")]
         EXCHANGE,
 
+        [EnumMember(Value = "FUSION_COMPUTE")]
+        FUSION_COMPUTE,
+
         [EnumMember(Value = "GCP")]
         GCP,
+
+        [EnumMember(Value = "GCP_BIGQUERY")]
+        GCP_BIGQUERY,
 
         [EnumMember(Value = "GCP_CLOUD_SQL")]
         GCP_CLOUD_SQL,
 
         [EnumMember(Value = "GITHUB")]
         GITHUB,
+
+        [EnumMember(Value = "GLUE_ICEBERG")]
+        GLUE_ICEBERG,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE")]
         GOOGLE_WORKSPACE,
@@ -161,6 +173,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PROXMOX")]
         PROXMOX,
+
+        [EnumMember(Value = "PURE_STORAGE")]
+        PURE_STORAGE,
 
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,

@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> System.Boolean? IsOrgAdmin
         // GraphQL -> isOrgAdmin: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("isOrgAdmin")]
         public System.Boolean? IsOrgAdmin { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

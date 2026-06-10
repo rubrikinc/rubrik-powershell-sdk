@@ -53,6 +53,10 @@ AWS native EC2 instance.
   - AWS native account details.
 - isProtectable: System.Boolean
   - Indicates whether this EC2 instance is protectable or not.
+- cloudNativeApplications: list of CloudNativeApplicationInfos
+  - List of cloud native applications associated with this EC2 instance.
+- outpostArn: System.String
+  - ARN of the AWS Outpost this instance resides on, if applicable.
 - fileIndexingStatus: FileIndexingStatus
   - Specifies the file indexing status for this EC2 instance. When enabled, Rubrik scans the file structure within the EC2 instance in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik.If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
@@ -67,10 +71,6 @@ AWS native EC2 instance.
   - Rubrik CDM host information for the AWS EC2 instance added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
 - recoveryPlansInfo: list of RecoveryPlansInfos
   - List of Recovery Plans associated with the virtual machine.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -105,6 +105,10 @@ AWS native EC2 instance.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

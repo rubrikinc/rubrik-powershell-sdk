@@ -187,3 +187,17 @@ Represents all the object types for which we expect to see audits.
 - FUSION_COMPUTE_NETWORK - FusionCompute network.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
 - OPENSTACK_IMAGE - Openstack Image.
+- GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
+- PURE_STORAGE_ARRAY - Pure Storage array.
+- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
+- PURE_STORAGE_VOLUME - Pure Storage volume.
+- GCP_BIG_QUERY_DATASET - GCP BigQuery Dataset.
+- GOOGLE_WORKSPACE_GROUP - Google Workspace Group.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure PostgreSQL Flexible Server.
+- FAILOVER_GROUP - Failover Group (HA Policy) object.
+- GLUE_ICEBERG_CATALOG - AWS Glue Iceberg Catalog.
+- GLUE_ICEBERG_DATABASE - AWS Glue Iceberg Database.
+- GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
+- PING_FEDERATE_CLUSTER - Ping Federate Cluster.
+- AGENT_CLOUD_ALERT - Agent Cloud alert object.
+- AGENT_CLOUD_VIOLATION - Agent Cloud violation object.

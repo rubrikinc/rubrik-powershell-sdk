@@ -11,3 +11,6 @@ MySQL database metadata object.
   - The protection status of the MySQL database.
 - unprotectedStorageEngines: list of System.Strings
   - List of unsupported storage engines in the MySQL database.
+- isSystem: System.Boolean
+  - True for MySQL system/virtual schemas -- visible in inventory
+but not user-protectable.

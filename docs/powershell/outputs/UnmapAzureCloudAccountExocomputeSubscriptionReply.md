@@ -1,5 +1,5 @@
 ### UnmapAzureCloudAccountExocomputeSubscriptionReply
-Response of the operation to unmap Azure cloud accounts from the mapped Exocompute subscription.
+Response for unmapping Azure exocompute subscription.
 
 - isSuccess: System.Boolean
-  - Specifies whether the unmapping was completed successfully.
+  - Whether the unmapping was successful.

@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_VIRTUAL_MACHINE")]
         AZURE_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "GCP_BIGQUERY_DATASET")]
+        GCP_BIGQUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 

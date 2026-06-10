@@ -25,10 +25,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalLag")]
         public System.Int64? ArchivalLag { get; set; }
 
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String! (scalar)
+        [JsonProperty("archivalLocationId")]
+        public System.String? ArchivalLocationId { get; set; }
+
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String! (scalar)
+        [JsonProperty("archivalLocationName")]
+        public System.String? ArchivalLocationName { get; set; }
+
+        //      C# -> System.Boolean? IsRcv
+        // GraphQL -> isRcv: Boolean! (scalar)
+        [JsonProperty("isRcv")]
+        public System.Boolean? IsRcv { get; set; }
+
         //      C# -> DateTime? LatestArchivedSnapshotDate
         // GraphQL -> latestArchivedSnapshotDate: DateTime (scalar)
         [JsonProperty("latestArchivedSnapshotDate")]
         public DateTime? LatestArchivedSnapshotDate { get; set; }
+
+        //      C# -> System.String? LocationType
+        // GraphQL -> locationType: String! (scalar)
+        [JsonProperty("locationType")]
+        public System.String? LocationType { get; set; }
+
+        //      C# -> System.Single? MonthlyGrowthBytes
+        // GraphQL -> monthlyGrowthBytes: Float! (scalar)
+        [JsonProperty("monthlyGrowthBytes")]
+        public System.Single? MonthlyGrowthBytes { get; set; }
 
         //      C# -> System.Int64? NumActiveSnapshots
         // GraphQL -> numActiveSnapshots: Long! (scalar)
@@ -60,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaDomain")]
         public System.String? SlaDomain { get; set; }
 
+        //      C# -> System.String? StorageTier
+        // GraphQL -> storageTier: String! (scalar)
+        [JsonProperty("storageTier")]
+        public System.String? StorageTier { get; set; }
+
         //      C# -> System.Int64? StorageUsage
         // GraphQL -> storageUsage: Long! (scalar)
         [JsonProperty("storageUsage")]
@@ -81,13 +111,19 @@ namespace RubrikSecurityCloud.Types
 
     public ArchivalObjectInfo Set(
         System.Int64? ArchivalLag = null,
+        System.String? ArchivalLocationId = null,
+        System.String? ArchivalLocationName = null,
+        System.Boolean? IsRcv = null,
         DateTime? LatestArchivedSnapshotDate = null,
+        System.String? LocationType = null,
+        System.Single? MonthlyGrowthBytes = null,
         System.Int64? NumActiveSnapshots = null,
         System.String? ObjectLocation = null,
         System.String? ObjectName = null,
         System.String? ObjectStatus = null,
         System.String? ObjectType = null,
         System.String? SlaDomain = null,
+        System.String? StorageTier = null,
         System.Int64? StorageUsage = null,
         System.String? WorkloadId = null
     ) 
@@ -95,8 +131,23 @@ namespace RubrikSecurityCloud.Types
         if ( ArchivalLag != null ) {
             this.ArchivalLag = ArchivalLag;
         }
+        if ( ArchivalLocationId != null ) {
+            this.ArchivalLocationId = ArchivalLocationId;
+        }
+        if ( ArchivalLocationName != null ) {
+            this.ArchivalLocationName = ArchivalLocationName;
+        }
+        if ( IsRcv != null ) {
+            this.IsRcv = IsRcv;
+        }
         if ( LatestArchivedSnapshotDate != null ) {
             this.LatestArchivedSnapshotDate = LatestArchivedSnapshotDate;
+        }
+        if ( LocationType != null ) {
+            this.LocationType = LocationType;
+        }
+        if ( MonthlyGrowthBytes != null ) {
+            this.MonthlyGrowthBytes = MonthlyGrowthBytes;
         }
         if ( NumActiveSnapshots != null ) {
             this.NumActiveSnapshots = NumActiveSnapshots;
@@ -115,6 +166,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaDomain != null ) {
             this.SlaDomain = SlaDomain;
+        }
+        if ( StorageTier != null ) {
+            this.StorageTier = StorageTier;
         }
         if ( StorageUsage != null ) {
             this.StorageUsage = StorageUsage;
@@ -145,6 +199,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "archivalLag\n" ;
             }
         }
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String! (scalar)
+        if (this.ArchivalLocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationId\n" ;
+            } else {
+                s += ind + "archivalLocationId\n" ;
+            }
+        }
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String! (scalar)
+        if (this.ArchivalLocationName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalLocationName\n" ;
+            } else {
+                s += ind + "archivalLocationName\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsRcv
+        // GraphQL -> isRcv: Boolean! (scalar)
+        if (this.IsRcv != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isRcv\n" ;
+            } else {
+                s += ind + "isRcv\n" ;
+            }
+        }
         //      C# -> DateTime? LatestArchivedSnapshotDate
         // GraphQL -> latestArchivedSnapshotDate: DateTime (scalar)
         if (this.LatestArchivedSnapshotDate != null) {
@@ -152,6 +233,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestArchivedSnapshotDate\n" ;
             } else {
                 s += ind + "latestArchivedSnapshotDate\n" ;
+            }
+        }
+        //      C# -> System.String? LocationType
+        // GraphQL -> locationType: String! (scalar)
+        if (this.LocationType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "locationType\n" ;
+            } else {
+                s += ind + "locationType\n" ;
+            }
+        }
+        //      C# -> System.Single? MonthlyGrowthBytes
+        // GraphQL -> monthlyGrowthBytes: Float! (scalar)
+        if (this.MonthlyGrowthBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "monthlyGrowthBytes\n" ;
+            } else {
+                s += ind + "monthlyGrowthBytes\n" ;
             }
         }
         //      C# -> System.Int64? NumActiveSnapshots
@@ -208,6 +307,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "slaDomain\n" ;
             }
         }
+        //      C# -> System.String? StorageTier
+        // GraphQL -> storageTier: String! (scalar)
+        if (this.StorageTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageTier\n" ;
+            } else {
+                s += ind + "storageTier\n" ;
+            }
+        }
         //      C# -> System.Int64? StorageUsage
         // GraphQL -> storageUsage: Long! (scalar)
         if (this.StorageUsage != null) {
@@ -250,6 +358,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.ArchivalLag = null;
         }
+        //      C# -> System.String? ArchivalLocationId
+        // GraphQL -> archivalLocationId: String! (scalar)
+        if (ec.Includes("archivalLocationId",true))
+        {
+            if(this.ArchivalLocationId == null) {
+
+                this.ArchivalLocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationId != null && ec.Excludes("archivalLocationId",true))
+        {
+            this.ArchivalLocationId = null;
+        }
+        //      C# -> System.String? ArchivalLocationName
+        // GraphQL -> archivalLocationName: String! (scalar)
+        if (ec.Includes("archivalLocationName",true))
+        {
+            if(this.ArchivalLocationName == null) {
+
+                this.ArchivalLocationName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalLocationName != null && ec.Excludes("archivalLocationName",true))
+        {
+            this.ArchivalLocationName = null;
+        }
+        //      C# -> System.Boolean? IsRcv
+        // GraphQL -> isRcv: Boolean! (scalar)
+        if (ec.Includes("isRcv",true))
+        {
+            if(this.IsRcv == null) {
+
+                this.IsRcv = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsRcv != null && ec.Excludes("isRcv",true))
+        {
+            this.IsRcv = null;
+        }
         //      C# -> DateTime? LatestArchivedSnapshotDate
         // GraphQL -> latestArchivedSnapshotDate: DateTime (scalar)
         if (ec.Includes("latestArchivedSnapshotDate",true))
@@ -266,6 +425,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestArchivedSnapshotDate != null && ec.Excludes("latestArchivedSnapshotDate",true))
         {
             this.LatestArchivedSnapshotDate = null;
+        }
+        //      C# -> System.String? LocationType
+        // GraphQL -> locationType: String! (scalar)
+        if (ec.Includes("locationType",true))
+        {
+            if(this.LocationType == null) {
+
+                this.LocationType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationType != null && ec.Excludes("locationType",true))
+        {
+            this.LocationType = null;
+        }
+        //      C# -> System.Single? MonthlyGrowthBytes
+        // GraphQL -> monthlyGrowthBytes: Float! (scalar)
+        if (ec.Includes("monthlyGrowthBytes",true))
+        {
+            if(this.MonthlyGrowthBytes == null) {
+
+                this.MonthlyGrowthBytes = new System.Single();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MonthlyGrowthBytes != null && ec.Excludes("monthlyGrowthBytes",true))
+        {
+            this.MonthlyGrowthBytes = null;
         }
         //      C# -> System.Int64? NumActiveSnapshots
         // GraphQL -> numActiveSnapshots: Long! (scalar)
@@ -368,6 +561,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaDomain != null && ec.Excludes("slaDomain",true))
         {
             this.SlaDomain = null;
+        }
+        //      C# -> System.String? StorageTier
+        // GraphQL -> storageTier: String! (scalar)
+        if (ec.Includes("storageTier",true))
+        {
+            if(this.StorageTier == null) {
+
+                this.StorageTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageTier != null && ec.Excludes("storageTier",true))
+        {
+            this.StorageTier = null;
         }
         //      C# -> System.Int64? StorageUsage
         // GraphQL -> storageUsage: Long! (scalar)

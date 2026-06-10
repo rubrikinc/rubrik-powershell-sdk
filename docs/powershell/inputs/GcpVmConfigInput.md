@@ -8,7 +8,7 @@ Inputs needed to create VMs on GCP.
 - nodeSizeGb: System.Int32
   - The size of the node in GB. This field is only needed for creating disk-based cluster.
 - imageId: System.String
-  - The image ID to use for the cluster. This field must not be used if the cluster is created using a marketplace image (using the cdm_version field). If this field is used, the cdm_version field will be ignored.
+  - Image resource URL (selfLink) to use for the cluster, such as "projects/<project>/global/images/<image>". Must not be used with marketplace images (cdm_version). If set, cdm_version is ignored.
 - labels: System.String
   - Labels to apply to the GCP instance. List of tag key=value separated by commas.
 - serviceAccounts: list of GcpServiceAccountInputs

@@ -198,7 +198,7 @@ those without a reset reason.
 +mo:sort:db:index:unique=false
 - GCP_CLOUD_SQL_INSTANCE_PROJECT_NAME - Sort CloudSQL instances by project name.
 +Implementation: Joins cloud_native_resource
-+(parent_id) → gcp_native_projects (native_name)
++(parent_id) -> gcp_native_projects (native_name)
 +mo:sort:db:table=gcp_native_projects
 +mo:sort:db:column=native_name
 +mo:sort:db:index:not_needed
@@ -232,6 +232,113 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 +mo:sort:db:table=azure_devops_repositories
 +mo:sort:db:column=size
 +mo:sort:db:index:key=idx_size
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GCP_ALLOY_DB_CLUSTER_PROJECT_NAME - Sort AlloyDB clusters by project name.
++mo:sort:db:table=gcp_native_projects
++mo:sort:db:column=native_name
++mo:sort:db:index:not_needed
+- GCP_ALLOY_DB_CLUSTER_NATIVE_ID - Sort AlloyDB clusters by native ID.
++mo:sort:db:table=cloud_native_resource
++mo:sort:db:column=native_uri
++mo:sort:db:index:key=native_uri_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GCP_BIG_QUERY_DATASET_PROJECT_NAME - Sort BigQuery datasets by project name.
++mo:sort:db:table=gcp_native_projects
++mo:sort:db:column=native_name
++mo:sort:db:index:not_needed
+- GCP_BIG_QUERY_DATASET_NATIVE_ID - Sort BigQuery datasets by native ID.
++mo:sort:db:table=cloud_native_resource
++mo:sort:db:column=native_uri
++mo:sort:db:index:key=native_uri_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- AWS_NATIVE_S3_BUCKET_SIZE_BYTES - Sort AWS S3 buckets by bucket size in bytes.
+- AWS_NATIVE_S3_BUCKET_OBJECT_COUNT - Sort AWS S3 buckets by number of objects.
+- AZURE_POSTGRES_FLEXIBLE_SERVER_REGION - Sort Azure Postgres Flexible Servers by region.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed
+- AZURE_POSTGRES_FLEXIBLE_SERVER_RESOURCE_GROUP - Sort Azure Postgres Flexible Servers by resource group.
++mo:sort:db:table=azure_native_resource_groups
++mo:sort:db:column=native_resource_group_name
++mo:sort:db:index:not_needed
+- GLUE_ICEBERG_TABLE_DATABASE_NAME - Sort Glue Iceberg Tables by parent database name.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=1
++mo:sort:db:table=managed_hierarchy_descendant
++mo:sort:db:column=descendant_id
++mo:sort:db:index:key=des_anc_level_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=true
++mo:sort:db:table=managed_object
++mo:sort:db:column=name
++mo:sort:db:index:key=sort_by_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GLUE_ICEBERG_TABLE_CATALOG_NAME - Sort Glue Iceberg Tables by grandparent catalog name.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=2
++mo:sort:db:table=managed_hierarchy_descendant
++mo:sort:db:column=descendant_id
++mo:sort:db:index:key=des_anc_level_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=true
++mo:sort:db:table=managed_object
++mo:sort:db:column=name
++mo:sort:db:index:key=sort_by_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GLUE_ICEBERG_TABLE_AWS_ACCOUNT_NAME - Sort Glue Iceberg Tables by ancestor AWS account name.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=4
++mo:sort:db:table=managed_hierarchy_descendant
++mo:sort:db:column=descendant_id
++mo:sort:db:index:key=des_anc_level_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=true
++mo:sort:db:table=managed_object
++mo:sort:db:column=name
++mo:sort:db:index:key=sort_by_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GLUE_ICEBERG_DATABASE_CATALOG_NAME - Sort Glue Iceberg Databases by parent catalog name.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=1
++mo:sort:db:table=managed_hierarchy_descendant
++mo:sort:db:column=descendant_id
++mo:sort:db:index:key=des_anc_level_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=true
++mo:sort:db:table=managed_object
++mo:sort:db:column=name
++mo:sort:db:index:key=sort_by_name_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- GLUE_ICEBERG_DATABASE_AWS_ACCOUNT_NAME - Sort Glue Iceberg Databases by ancestor AWS account name.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=3
++mo:sort:db:table=managed_hierarchy_descendant
++mo:sort:db:column=descendant_id
++mo:sort:db:index:key=des_anc_level_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=true
++mo:sort:db:table=managed_object
++mo:sort:db:column=name
++mo:sort:db:index:key=sort_by_name_index
 +mo:sort:db:index:seq=1
 +mo:sort:db:index:type=BTREE
 +mo:sort:db:index:unique=false

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("connectedState")]
         public ClusterStatus? ConnectedState { get; set; }
 
+        //      C# -> ClusterSubStatus? SubStatus
+        // GraphQL -> subStatus: ClusterSubStatus! (enum)
+        [JsonProperty("subStatus")]
+        public ClusterSubStatus? SubStatus { get; set; }
+
         //      C# -> DateTime? ClusterRemovalCreatedAt
         // GraphQL -> clusterRemovalCreatedAt: DateTime (scalar)
         [JsonProperty("clusterRemovalCreatedAt")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public ClusterState Set(
         ClusterRemovalState? ClusterRemovalState = null,
         ClusterStatus? ConnectedState = null,
+        ClusterSubStatus? SubStatus = null,
         DateTime? ClusterRemovalCreatedAt = null,
         DateTime? ClusterRemovalUpdatedAt = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ConnectedState != null ) {
             this.ConnectedState = ConnectedState;
+        }
+        if ( SubStatus != null ) {
+            this.SubStatus = SubStatus;
         }
         if ( ClusterRemovalCreatedAt != null ) {
             this.ClusterRemovalCreatedAt = ClusterRemovalCreatedAt;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "connectedState\n" ;
             } else {
                 s += ind + "connectedState\n" ;
+            }
+        }
+        //      C# -> ClusterSubStatus? SubStatus
+        // GraphQL -> subStatus: ClusterSubStatus! (enum)
+        if (this.SubStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subStatus\n" ;
+            } else {
+                s += ind + "subStatus\n" ;
             }
         }
         //      C# -> DateTime? ClusterRemovalCreatedAt
@@ -158,6 +176,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConnectedState != null && ec.Excludes("connectedState",true))
         {
             this.ConnectedState = null;
+        }
+        //      C# -> ClusterSubStatus? SubStatus
+        // GraphQL -> subStatus: ClusterSubStatus! (enum)
+        if (ec.Includes("subStatus",true))
+        {
+            if(this.SubStatus == null) {
+
+                this.SubStatus = new ClusterSubStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubStatus != null && ec.Excludes("subStatus",true))
+        {
+            this.SubStatus = null;
         }
         //      C# -> DateTime? ClusterRemovalCreatedAt
         // GraphQL -> clusterRemovalCreatedAt: DateTime (scalar)

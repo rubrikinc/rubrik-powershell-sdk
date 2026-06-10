@@ -98,13 +98,13 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
 - Returns SearchResponseListResponse.
 ### snapshotdetail
 Supported in v5.0+. Get Nutanix virtual machine snapshot details.
- Retrieve detailed information about a snapshot.
+Retrieve detailed information about a snapshot.
 
 - There is a single argument of type GetNutanixSnapshotDetailInput.
 - Returns NutanixVmSnapshotDetail.
 ### snapshotvdisks
 Supported in v9.2+. Get virtual disks from Nutanix virtual machine snapshot.
- Retrieve detailed information about the virtual disks.
+Retrieve detailed information about the virtual disks.
 
 - There is a single argument of type GetNutanixVmSnapshotVdisksInput.
 - Returns NutanixVmSnapshotVdiskDetailListResponse.

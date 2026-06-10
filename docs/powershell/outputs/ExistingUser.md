@@ -1,9 +1,9 @@
 ### ExistingUser
-Details of an existing user.
+Details of the existing user.
 
 - id: System.String
   - ID of the user.
 - isOrgAdmin: System.Boolean
-  - Specifies whether the user is an org admin.
+  - Specifies whether the user should be an org admin or not.
 - user: User
   - Specifies user details.

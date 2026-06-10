@@ -21,5 +21,13 @@ Represents the details of a role assignment between a principal object, role def
   - Name of the principal object to which the role is assigned.
 - roleName: System.String
   - Name of the role object associated with this assignment.
+- assignmentType: AzureAdPimAssignmentType
+  - How this role assignment was created. Unset for legacy assignments.
+- memberType: AzureAdPimEligibilityMemberType
+  - How this assignment was conferred. Unset for legacy assignments.
+- startDateTime: DateTime
+  - Assignment start time. Unset for legacy assignments.
+- endDateTime: DateTime
+  - Assignment expiration time. Unset for permanent or legacy assignments.
 - principalObject: PrincipalObject
   - The Entra ID object to which the role is assigned.

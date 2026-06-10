@@ -92,3 +92,8 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - ActiveDirectoryForest - Active Directory forest.
 - AWS_NATIVE_CONFIG - AWS Native Config.
 - FUSION_COMPUTE_VIRTUAL_MACHINE - FusionCompute virtual machine.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure Postgres Flexible Server.
+- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
+- GLUE_ICEBERG_TABLE - Glue Iceberg table.
+- PING_FEDERATE_CLUSTER - Ping Federate cluster.
+- GCP_BIGQUERY_DATASET - GCP BigQuery dataset.

@@ -1,7 +1,11 @@
 ### AwsExocomputeConfigsDeletionStatusType
-AWS Exocompute configurations Deletion status.
+DeletionStatus stores the exocompute config id
+and corresponding deletion status after a delete
+operation is performed.
 
 - exocomputeConfigId: System.String
   - Exocompute configuration ID.
 - success: System.Boolean
-  - Specifies whether the deletion of the Exocompute configuration was successful.
+  - Whether the deletion was successful.
+- region: DeletionRegionOneof
+  - Region of the deleted exocompute configuration.

@@ -15,3 +15,7 @@ Paginated list of SnapshotFileDeltaV2 objects. Each page of the results includes
   - The snapshot using which deltas are computed.
 - isSensitiveDataDiscoverySupported: System.Boolean
   - Flag to indicate if sensitive data discovery is supported for the object type.
+- lastProcessedSddSnapshotId: System.String
+  - The FID of the last snapshot processed by Sensitive Data Discovery (SDD) at the time of anomaly detection.
+- lastProcessedSddSnapshotDate: DateTime
+  - The date of the last snapshot processed by Sensitive Data Discovery (SDD) at the time of anomaly detection.

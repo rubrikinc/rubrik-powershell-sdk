@@ -94,12 +94,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	entities = @(
     /// 		@{
-    /// 			# OPTIONAL
-    /// 			entityName = $someString
     /// 			# REQUIRED
     /// 			entityType = $someDataThreatAnalyticsEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataThreatAnalyticsEnablementEntity]) for enum values.
     /// 			# REQUIRED
     /// 			entityId = $someString
+    /// 			# OPTIONAL
+    /// 			entityName = $someString
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -245,12 +245,12 @@ $query.Var.input = @{
 	# REQUIRED
 	entities = @(
 		@{
-			# OPTIONAL
-			entityName = $someString
 			# REQUIRED
 			entityType = $someDataThreatAnalyticsEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataThreatAnalyticsEnablementEntity]) for enum values.
 			# REQUIRED
 			entityId = $someString
+			# OPTIONAL
+			entityName = $someString
 		}
 	)
 	# REQUIRED

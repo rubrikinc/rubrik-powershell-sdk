@@ -35,6 +35,11 @@ Download a snapshot from archival.
 - There is a single argument of type CreateDownloadSnapshotForVolumeGroupInput.
 - Returns AsyncRequestStatus.
 ### createfileset
+Initiate an on-demand backup for a fileset
+
+Supported in v5.0+
+Create an on-demand backup request for the given fileset.
+
 - There is a single argument of type CreateFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
 ### createondemandmysqldbinstance
@@ -56,6 +61,12 @@ Deletes the Rubrik Security Cloud on-demand snapshot by ID.
 - There is a single argument of type DeleteCloudWorkloadSnapshotInput.
 - Returns System.Boolean.
 ### deletefilesetsnapshots
+Delete all snapshots of a fileset
+
+Supported in v5.0+
+Delete all snapshots that were created based on a fileset by providing the fileset ID.
+Requires an unprotected fileset. Remove the fileset from all SLA Domains.
+
 - There is a single argument of type DeleteFilesetSnapshotsInput.
 - Returns ResponseSuccess.
 ### deletesofunmanagedobjects
@@ -68,6 +79,14 @@ Deletes the snapshots of an unmanaged object using the object IDs.
 
 - There is a single argument of type DeleteUnmanagedSnapshotsInput.
 - Returns RequestSuccess.
+### exportfusioncompute
+Export a FusionCompute virtual machine
+
+Supported in v9.6
+Export a FusionCompute virtual machine from a snapshot.
+
+- There is a single argument of type ExportFusionComputeSnapshotInput.
+- Returns AsyncRequestStatus.
 ### exportproxmoxvm
 Export a Proxmox virtual machine
 
@@ -99,6 +118,14 @@ Supported in v9.0+
 Initiates a job to restore Active Directory snapshots to their corresponding Domain Controllers or alternate hosts. Returns the job instance ID.
 
 - There is a single argument of type RestoreDomainControllerSnapshotInput.
+- Returns AsyncRequestStatus.
+### restorefilesfromfusioncompute
+Recover files from a snapshot of FusionCompute
+
+Supported in v9.6
+Recover files from a snapshot of a FusionCompute virtual machine.
+
+- There is a single argument of type RestoreFilesFromFusionComputeSnapshotInput.
 - Returns AsyncRequestStatus.
 ### restoreopenstackvmfiles
 Restore files from an OpenStack virtual machine snapshot
@@ -132,7 +159,7 @@ NAS Cloud Direct on demand snapshot.
 - There is a single argument of type TakeCloudDirectSnapshotInput.
 - Returns BatchAsyncRequestStatus.
 ### takeondemand
-Triggers on-demand snapshot for the given workloads.
+Triggers an on-demand snapshot for cloud-native workloads.
 
 - There is a single argument of type TakeOnDemandSnapshotInput.
 - Returns TakeOnDemandSnapshotReply.

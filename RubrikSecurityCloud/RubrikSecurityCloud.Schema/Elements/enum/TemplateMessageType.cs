@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EVENT")]
         EVENT,
 
+        [EnumMember(Value = "IDENTITY_ACTIVITY")]
+        IDENTITY_ACTIVITY,
+
         [EnumMember(Value = "TEMPLATE_MESSAGE_TYPE_UNSPECIFIED")]
         TEMPLATE_MESSAGE_TYPE_UNSPECIFIED
 

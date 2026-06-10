@@ -55,11 +55,14 @@ namespace RubrikSecurityCloud.Types
         public System.String? Bucket { get; set; }
 
         //      C# -> System.String? EncryptionPassword
-        // GraphQL -> encryptionPassword: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> encryptionPassword: String (scalar)
         [JsonProperty("encryptionPassword")]
         public System.String? EncryptionPassword { get; set; }
+
+        //      C# -> System.String? RsaKey
+        // GraphQL -> rsaKey: String (scalar)
+        [JsonProperty("rsaKey")]
+        public System.String? RsaKey { get; set; }
 
         //      C# -> System.String? ServiceAccountJsonKey
         // GraphQL -> serviceAccountJsonKey: String! (scalar)

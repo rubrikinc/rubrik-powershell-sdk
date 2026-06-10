@@ -8,11 +8,11 @@ Input required to export a GCP GCE instance snapshot.
 - targetInstanceName: System.String
   - The name of the exported instance.
 - targetMachineType: System.String
-  - The machine type of the exported instance.
+  - The machine type of the exported instance. If not provided, the machine type of the source instance at the time of taking the snapshot will be used.
 - targetSubnetName: System.String
-  - The subnet name of the exported instance.
+  - The subnet name of the exported instance. If not provided, the subnet of the source instance at the time of taking the snapshot will be used.
 - targetNetworkTags: list of System.Strings
-  - The network tags of the exported instance.
+  - The network tags of the exported instance. If not provided, the network tags of the source instance at the time of taking the snapshot will be used.
 - shouldPowerOff: System.Boolean
   - Specifies whether the exported instance will be created in a powered-off state.
 - shouldCopyLabels: System.Boolean
@@ -20,7 +20,7 @@ Input required to export a GCP GCE instance snapshot.
 - shouldAddRubrikLabels: System.Boolean
   - Specifies whether to allow Rubrik labels on the exported disk or not.
 - sharedVpcHostProjectNativeId: System.String
-  - Native ID of the shared VPC host project for the current service project.
+  - Native ID of the shared VPC host project for the current service project. If not provided, the exported instance will have its network in the target project. If provided, targetSubnetName must be provided.
 - diskEncryptionType: DiskEncryptionType
   - Encryption type of created disk.
 - kmsCryptoKey: KmsCryptoKey
@@ -28,7 +28,7 @@ Input required to export a GCP GCE instance snapshot.
 - kmsCryptoKeyResourceId: System.String
   - Customer managed key to encrypt exported instance. This is only applicable when encryption type is CustomerManagedKeyResourceId.
 - targetGcpProjectRubrikId: System.String
-  - The target project cloud account ID for cross project export.
+  - The target project cloud account ID for cross project export. If provided, targetSubnetName must be provided.
 - snapshotType: GcpSnapshotType
   - The type of the snapshot to recover from.
 - archivedSnapshotId: System.String

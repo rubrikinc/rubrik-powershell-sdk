@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 18
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Report' API domain:
-    /// ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// CloudDirectEventSeriesTask, CloudDirectJobRecentErrors, ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// </summary>
     /// <description>
     /// New-RscQueryReport creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 18 operations
+    /// There are 20 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// one of: CloudDirectEventSeriesTask, CloudDirectJobRecentErrors, ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryReport -ClusterMigrationCount).Info().
+    /// (New-RscQueryReport -CloudDirectEventSeriesTask).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,75 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryReport -ClusterMigrationCount).Info().
+    /// (New-RscQueryReport -CloudDirectEventSeriesTask).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the CloudDirectEventSeriesTask operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: CloudDirectEventSeriesTask
+    /// 
+    /// $query = New-RscQueryReport -Operation CloudDirectEventSeriesTask
+    /// 
+    /// # REQUIRED
+    /// $query.Var.eventSeriesId = $someString
+    /// # REQUIRED
+    /// $query.Var.clusterId = $someString
+    /// # REQUIRED
+    /// $query.Var.objectId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectEventSeriesTaskReportReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CloudDirectJobRecentErrors operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: CloudDirectJobRecentErrors
+    /// 
+    /// $query = New-RscQueryReport -Operation CloudDirectJobRecentErrors
+    /// 
+    /// # REQUIRED
+    /// $query.Var.eventSeriesId = $someString
+    /// # REQUIRED
+    /// $query.Var.clusterId = $someString
+    /// # REQUIRED
+    /// $query.Var.objectId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CloudDirectJobRecentErrorsReportReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the ClusterMigrationCount operation
@@ -647,6 +711,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryReport -Operation Sonar
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.sonarReportGroupBy = $someDiscoveryReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportGroupBy]) for enum values.
     /// # OPTIONAL
@@ -762,6 +834,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQueryReport -Operation SonarRow
     /// 
     /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someDiscoveryReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportSortBy]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -771,14 +851,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # OPTIONAL
     /// $query.Var.endTime = $someString
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
     /// 
     /// # Execute the query
     /// 
@@ -843,6 +915,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "CloudDirectEventSeriesTask",
+                "CloudDirectJobRecentErrors",
                 "ClusterMigrationCount",
                 "ClusterMigrationJobStatus",
                 "ClusterMigrationStatus",
@@ -876,6 +950,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "CloudDirectEventSeriesTask":
+                        this.ProcessRecord_CloudDirectEventSeriesTask();
+                        break;
+                    case "CloudDirectJobRecentErrors":
+                        this.ProcessRecord_CloudDirectJobRecentErrors();
+                        break;
                     case "ClusterMigrationCount":
                         this.ProcessRecord_ClusterMigrationCount();
                         break;
@@ -938,6 +1018,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectEventSeriesTaskReport.
+        internal void ProcessRecord_CloudDirectEventSeriesTask()
+        {
+            this._logger.name += " -CloudDirectEventSeriesTask";
+            // Create new graphql operation cloudDirectEventSeriesTaskReport
+            InitQueryCloudDirectEventSeriesTaskReport();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudDirectJobRecentErrorsReport.
+        internal void ProcessRecord_CloudDirectJobRecentErrors()
+        {
+            this._logger.name += " -CloudDirectJobRecentErrors";
+            // Create new graphql operation cloudDirectJobRecentErrorsReport
+            InitQueryCloudDirectJobRecentErrorsReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1102,6 +1200,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAllReportTemplatesByCategories();
         }
 
+
+        // Create new GraphQL Query:
+        // cloudDirectEventSeriesTaskReport(eventSeriesId: String!, clusterId: UUID!, objectId: UUID!): CloudDirectEventSeriesTaskReportReply!
+        internal void InitQueryCloudDirectEventSeriesTaskReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("eventSeriesId", "String!"),
+                Tuple.Create("clusterId", "UUID!"),
+                Tuple.Create("objectId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudDirectEventSeriesTaskReport",
+                "($eventSeriesId: String!,$clusterId: UUID!,$objectId: UUID!)",
+                "CloudDirectEventSeriesTaskReportReply",
+                Query.CloudDirectEventSeriesTaskReport,
+                Query.CloudDirectEventSeriesTaskReportFieldSpec,
+                @"# REQUIRED
+$query.Var.eventSeriesId = $someString
+# REQUIRED
+$query.Var.clusterId = $someString
+# REQUIRED
+$query.Var.objectId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // cloudDirectJobRecentErrorsReport(eventSeriesId: String!, clusterId: UUID!, objectId: UUID!): CloudDirectJobRecentErrorsReportReply!
+        internal void InitQueryCloudDirectJobRecentErrorsReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("eventSeriesId", "String!"),
+                Tuple.Create("clusterId", "UUID!"),
+                Tuple.Create("objectId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudDirectJobRecentErrorsReport",
+                "($eventSeriesId: String!,$clusterId: UUID!,$objectId: UUID!)",
+                "CloudDirectJobRecentErrorsReportReply",
+                Query.CloudDirectJobRecentErrorsReport,
+                Query.CloudDirectJobRecentErrorsReportFieldSpec,
+                @"# REQUIRED
+$query.Var.eventSeriesId = $someString
+# REQUIRED
+$query.Var.clusterId = $someString
+# REQUIRED
+$query.Var.objectId = $someString"
+            );
+        }
 
         // Create new GraphQL Query:
         // clusterReportMigrationCount(status: [CdmReportMigrationStatus!], clusterUuid: UUID): ReportsMigrationCount!
@@ -1627,10 +1777,22 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // sonarReport(sonarReportGroupBy: DiscoveryReportGroupBy!, filter: [String!], timeFilter: TimeFilterInput): SonarReportConnection!
+        // sonarReport(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sonarReportGroupBy: DiscoveryReportGroupBy!
+        //     filter: [String!]
+        //     timeFilter: TimeFilterInput
+        //   ): SonarReportConnection!
         internal void InitQuerySonarReport()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sonarReportGroupBy", "DiscoveryReportGroupBy!"),
                 Tuple.Create("filter", "[String!]"),
                 Tuple.Create("timeFilter", "TimeFilterInput"),
@@ -1639,11 +1801,19 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QuerySonarReport",
-                "($sonarReportGroupBy: DiscoveryReportGroupBy!,$filter: [String!],$timeFilter: TimeFilterInput)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sonarReportGroupBy: DiscoveryReportGroupBy!,$filter: [String!],$timeFilter: TimeFilterInput)",
                 "SonarReportConnection",
                 Query.SonarReport,
                 Query.SonarReportFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.sonarReportGroupBy = $someDiscoveryReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportGroupBy]) for enum values.
 # OPTIONAL
 $query.Var.filter = @(
@@ -1750,36 +1920,44 @@ $query.Var.before = $someString"
 
         // Create new GraphQL Query:
         // sonarReportRow(
-        //     sortBy: DiscoveryReportSortBy
-        //     sortOrder: SortOrder
-        //     filter: [String!]
-        //     endTime: String
         //     first: Int
         //     after: String
         //     last: Int
         //     before: String
+        //     sortBy: DiscoveryReportSortBy
+        //     sortOrder: SortOrder
+        //     filter: [String!]
+        //     endTime: String
         //   ): SonarReportRowConnection!
         internal void InitQuerySonarReportRow()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("sortBy", "DiscoveryReportSortBy"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("filter", "[String!]"),
-                Tuple.Create("endTime", "String"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "DiscoveryReportSortBy"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("filter", "[String!]"),
+                Tuple.Create("endTime", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySonarReportRow",
-                "($sortBy: DiscoveryReportSortBy,$sortOrder: SortOrder,$filter: [String!],$endTime: String,$first: Int,$after: String,$last: Int,$before: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: DiscoveryReportSortBy,$sortOrder: SortOrder,$filter: [String!],$endTime: String)",
                 "SonarReportRowConnection",
                 Query.SonarReportRow,
                 Query.SonarReportRowFieldSpec,
                 @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
 $query.Var.sortBy = $someDiscoveryReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryReportSortBy]) for enum values.
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -1788,15 +1966,7 @@ $query.Var.filter = @(
 	$someString
 )
 # OPTIONAL
-$query.Var.endTime = $someString
-# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
+$query.Var.endTime = $someString"
             );
         }
 

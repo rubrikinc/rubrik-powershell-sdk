@@ -204,7 +204,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllSnapshotsByIds(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nsnapshotFids: $snapshotFids\nshouldShowSnapshotRetentionInfo: $shouldShowSnapshotRetentionInfo\n)";
+            string args = "\n(\nsnapshotFids: $snapshotFids\nshouldShowSnapshotRetentionInfo: $shouldShowSnapshotRetentionInfo\nsnapshotLocationView: $snapshotLocationView\n)";
             return "allSnapshotsByIds" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllSnapshotsByIdsFieldSpec(AutofieldContext? ec=null)
@@ -426,7 +426,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllAvailabilityZonesByRegionFromAws(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nfeature: $feature\n)";
             return "allAvailabilityZonesByRegionFromAws" + args + "\n";
         }
         public static object AllAvailabilityZonesByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
@@ -844,6 +844,24 @@ namespace RubrikSecurityCloud.Types
             return "allIssuesJobIds" + args + "\n";
         }
         public static object AllIssuesJobIdsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return new List<System.String>() ;
+        }
+
+        //      C# -> List<System.String>? AllM365OrgOutboundIps
+        // GraphQL -> allM365OrgOutboundIps: [String!]! (scalar)
+        public static string AllM365OrgOutboundIps(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\norgId: $orgId\n)";
+            return "allM365OrgOutboundIps" + args + "\n";
+        }
+        public static object AllM365OrgOutboundIpsFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -1447,6 +1465,24 @@ namespace RubrikSecurityCloud.Types
             return Int32.MinValue ;
         }
 
+        //      C# -> System.String? ValidateBackupLocationUsableForAzureDevOps
+        // GraphQL -> validateBackupLocationUsableForAzureDevOps: Void (scalar)
+        public static string ValidateBackupLocationUsableForAzureDevOps(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "validateBackupLocationUsableForAzureDevOps" + args + "\n";
+        }
+        public static object ValidateBackupLocationUsableForAzureDevOpsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? WorkloadForeverId
         // GraphQL -> workloadForeverId: UUID! (scalar)
         public static string WorkloadForeverId(object fsObj)
@@ -1488,7 +1524,7 @@ namespace RubrikSecurityCloud.Types
         public static string ActiveCustomAnalyzers(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "activeCustomAnalyzers" + args + "\n{\n" + fs + "}\n";
         }
         public static object ActiveCustomAnalyzersFieldSpec(AutofieldContext? ec=null)
@@ -1767,6 +1803,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new List<AgentDeploymentSettingsInfo>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> List<ArchivalLocationForecast>? AllArchivalLocationForecasts
+        // GraphQL -> allArchivalLocationForecasts: [ArchivalLocationForecast!]! (type)
+        public static string AllArchivalLocationForecasts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nlocationIds: $locationIds\n)";
+            return "allArchivalLocationForecasts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllArchivalLocationForecastsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<ArchivalLocationForecast>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ArchivalObjectInfoConnection? AllArchivalPerObjectInfo
+        // GraphQL -> allArchivalPerObjectInfo: ArchivalObjectInfoConnection! (type)
+        public static string AllArchivalPerObjectInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nfilter: $filter\nactiveOnly: $activeOnly\nuseCase: $useCase\n)";
+            return "allArchivalPerObjectInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllArchivalPerObjectInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ArchivalObjectInfoConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -2496,7 +2568,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllClusterGlobalSlas(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\n)";
+            string args = "\n(\ncdmClusterUUID: $cdmClusterUUID\nonlyWithProtectedObjects: $onlyWithProtectedObjects\n)";
             return "allClusterGlobalSlas" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllClusterGlobalSlasFieldSpec(AutofieldContext? ec=null)
@@ -2748,7 +2820,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllEc2InstanceTypesByRegionFromAws(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\noutpostArn: $outpostArn\n)";
             return "allEc2InstanceTypesByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllEc2InstanceTypesByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
@@ -3054,7 +3126,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllKmsEncryptionKeysByRegionFromAws(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nfeature: $feature\n)";
             return "allKmsEncryptionKeysByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllKmsEncryptionKeysByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
@@ -3594,7 +3666,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllSnapshotsClosestToPointInTime(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\nquarantinedOnly: $quarantinedOnly\nanomalousOnly: $anomalousOnly\ngetFullDetails: $getFullDetails\nexcludeReplica: $excludeReplica\nexcludeArchivalLocationTypes: $excludeArchivalLocationTypes\narchivalLocationId: $archivalLocationId\n)";
+            string args = "\n(\nbeforeTime: $beforeTime\nafterTime: $afterTime\nsnappableIds: $snappableIds\nincludeLinked: $includeLinked\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nexcludeQuarantined: $excludeQuarantined\nexcludeAnomalous: $excludeAnomalous\nquarantinedOnly: $quarantinedOnly\nanomalousOnly: $anomalousOnly\ngetFullDetails: $getFullDetails\nexcludeReplica: $excludeReplica\nshouldExcludeNonIndexed: $shouldExcludeNonIndexed\nexcludeArchivalLocationTypes: $excludeArchivalLocationTypes\narchivalLocationId: $archivalLocationId\n)";
             return "allSnapshotsClosestToPointInTime" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllSnapshotsClosestToPointInTimeFieldSpec(AutofieldContext? ec=null)
@@ -3666,7 +3738,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllUserFiles(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilenamePrefix: $filenamePrefix\n)";
             return "allUserFiles" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllUserFilesFieldSpec(AutofieldContext? ec=null)
@@ -3846,7 +3918,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllVpcsByRegionFromAws(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nfeature: $feature\n)";
             return "allVpcsByRegionFromAws" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllVpcsByRegionFromAwsFieldSpec(AutofieldContext? ec=null)
@@ -3949,6 +4021,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> List<WorkloadResourceSpec>? AllWorkloadResourceSpecs
+        // GraphQL -> allWorkloadResourceSpecs: [WorkloadResourceSpec!]! (type)
+        public static string AllWorkloadResourceSpecs(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "allWorkloadResourceSpecs" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AllWorkloadResourceSpecsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new List<WorkloadResourceSpec>() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AmiTypeForAwsNativeArchivedSnapshotExportReply? AmiTypeForAwsNativeArchivedSnapshotExport
         // GraphQL -> amiTypeForAwsNativeArchivedSnapshotExport: AmiTypeForAwsNativeArchivedSnapshotExportReply! (type)
         public static string AmiTypeForAwsNativeArchivedSnapshotExport(object fsObj)
@@ -3972,7 +4062,7 @@ namespace RubrikSecurityCloud.Types
         public static string AnalyzerGroups(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "analyzerGroups" + args + "\n{\n" + fs + "}\n";
         }
         public static object AnalyzerGroupsFieldSpec(AutofieldContext? ec=null)
@@ -3990,7 +4080,7 @@ namespace RubrikSecurityCloud.Types
         public static string AnalyzerUsages(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ndataCategoryIdsFilter: $dataCategoryIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\ndataTypeSourceFilter: $dataTypeSourceFilter\ndataTypeNameSearchFilter: $dataTypeNameSearchFilter\nanalyzerStatusFilter: $analyzerStatusFilter\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\ndataCategoryIdsFilter: $dataCategoryIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\ndataTypeSourceFilter: $dataTypeSourceFilter\ndataTypeNameSearchFilter: $dataTypeNameSearchFilter\nanalyzerStatusFilter: $analyzerStatusFilter\n)";
             return "analyzerUsages" + args + "\n{\n" + fs + "}\n";
         }
         public static object AnalyzerUsagesFieldSpec(AutofieldContext? ec=null)
@@ -4795,6 +4885,150 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> AzureClusterStorageAccountRedundancyReply? AzureClusterStorageAccountRedundancy
+        // GraphQL -> azureClusterStorageAccountRedundancy: AzureClusterStorageAccountRedundancyReply! (type)
+        public static string AzureClusterStorageAccountRedundancy(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "azureClusterStorageAccountRedundancy" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureClusterStorageAccountRedundancyFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureClusterStorageAccountRedundancyReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsConnectionStatusSummaryReply? AzureDevOpsConnectionStatusSummary
+        // GraphQL -> azureDevOpsConnectionStatusSummary: AzureDevOpsConnectionStatusSummaryReply! (type)
+        public static string AzureDevOpsConnectionStatusSummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "azureDevOpsConnectionStatusSummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsConnectionStatusSummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsConnectionStatusSummaryReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsOrganization? AzureDevOpsOrganization
+        // GraphQL -> azureDevOpsOrganization: AzureDevOpsOrganization! (type)
+        public static string AzureDevOpsOrganization(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nworkloadId: $workloadId\n)";
+            return "azureDevOpsOrganization" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsOrganizationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsOrganization() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsOrganizationConnection? AzureDevOpsOrganizations
+        // GraphQL -> azureDevOpsOrganizations: AzureDevOpsOrganizationConnection! (type)
+        public static string AzureDevOpsOrganizations(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nqueryType: $queryType\nancestorId: $ancestorId\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
+            return "azureDevOpsOrganizations" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsOrganizationsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsOrganizationConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsProject? AzureDevOpsProject
+        // GraphQL -> azureDevOpsProject: AzureDevOpsProject! (type)
+        public static string AzureDevOpsProject(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nworkloadId: $workloadId\n)";
+            return "azureDevOpsProject" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsProjectFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsProject() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsProjectConnection? AzureDevOpsProjects
+        // GraphQL -> azureDevOpsProjects: AzureDevOpsProjectConnection! (type)
+        public static string AzureDevOpsProjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nqueryType: $queryType\nancestorId: $ancestorId\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
+            return "azureDevOpsProjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsProjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsProjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsRepositoryConnection? AzureDevOpsRepositories
+        // GraphQL -> azureDevOpsRepositories: AzureDevOpsRepositoryConnection! (type)
+        public static string AzureDevOpsRepositories(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nqueryType: $queryType\nancestorId: $ancestorId\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
+            return "azureDevOpsRepositories" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsRepositoriesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsRepositoryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzureDevOpsRepository? AzureDevOpsRepository
+        // GraphQL -> azureDevOpsRepository: AzureDevOpsRepository! (type)
+        public static string AzureDevOpsRepository(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nworkloadId: $workloadId\n)";
+            return "azureDevOpsRepository" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzureDevOpsRepositoryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzureDevOpsRepository() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GetAzureExocomputeNetworkSetupTemplateReply? AzureExocomputeNetworkSetupTemplate
         // GraphQL -> azureExocomputeNetworkSetupTemplate: GetAzureExocomputeNetworkSetupTemplateReply! (type)
         public static string AzureExocomputeNetworkSetupTemplate(object fsObj)
@@ -5259,6 +5493,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AzureUserRoleResp() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzurePostgresFlexibleServer? AzurePostgresFlexibleServer
+        // GraphQL -> azurePostgresFlexibleServer: AzurePostgresFlexibleServer! (type)
+        public static string AzurePostgresFlexibleServer(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nazurePostgresFlexibleServerRubrikId: $azurePostgresFlexibleServerRubrikId\n)";
+            return "azurePostgresFlexibleServer" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzurePostgresFlexibleServerFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzurePostgresFlexibleServer() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AzurePostgresFlexibleServerConnection? AzurePostgresFlexibleServers
+        // GraphQL -> azurePostgresFlexibleServers: AzurePostgresFlexibleServerConnection! (type)
+        public static string AzurePostgresFlexibleServers(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazurePostgresFlexibleServerFilters: $azurePostgresFlexibleServerFilters\n)";
+            return "azurePostgresFlexibleServers" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AzurePostgresFlexibleServersFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AzurePostgresFlexibleServerConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -5736,7 +6006,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseSnapshotFileConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\npath: $path\nsnapshotFid: $snapshotFid\nsearchPrefix: $searchPrefix\nisPrefixSearch: $isPrefixSearch\n)";
             return "browseSnapshotFileConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseSnapshotFileConnectionFieldSpec(AutofieldContext? ec=null)
@@ -5799,6 +6069,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new IgnoreClusterRemovalPrecheckReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CapSettingsData? CapSettingsData
+        // GraphQL -> capSettingsData: CapSettingsData! (type)
+        public static string CapSettingsData(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "capSettingsData" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CapSettingsDataFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CapSettingsData() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -6361,6 +6649,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CloudDirectEventSeriesTaskReportReply? CloudDirectEventSeriesTaskReport
+        // GraphQL -> cloudDirectEventSeriesTaskReport: CloudDirectEventSeriesTaskReportReply! (type)
+        public static string CloudDirectEventSeriesTaskReport(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\neventSeriesId: $eventSeriesId\nclusterId: $clusterId\nobjectId: $objectId\n)";
+            return "cloudDirectEventSeriesTaskReport" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectEventSeriesTaskReportFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectEventSeriesTaskReportReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CloudDirectGlobalSearchResult? CloudDirectGlobalSearch
         // GraphQL -> cloudDirectGlobalSearch: CloudDirectGlobalSearchResult! (type)
         public static string CloudDirectGlobalSearch(object fsObj)
@@ -6375,6 +6681,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectGlobalSearchResult() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CloudDirectJobRecentErrorsReportReply? CloudDirectJobRecentErrorsReport
+        // GraphQL -> cloudDirectJobRecentErrorsReport: CloudDirectJobRecentErrorsReportReply! (type)
+        public static string CloudDirectJobRecentErrorsReport(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\neventSeriesId: $eventSeriesId\nclusterId: $clusterId\nobjectId: $objectId\n)";
+            return "cloudDirectJobRecentErrorsReport" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudDirectJobRecentErrorsReportFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CloudDirectJobRecentErrorsReportReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -6627,6 +6951,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CloudDirectSystems() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetCloudNativeApplicationSnapshotsReply? CloudNativeApplicationSnapshots
+        // GraphQL -> cloudNativeApplicationSnapshots: GetCloudNativeApplicationSnapshotsReply! (type)
+        public static string CloudNativeApplicationSnapshots(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\napplicationId: $applicationId\ntimeFilter: $timeFilter\nqualityFilter: $qualityFilter\ngetFullDetails: $getFullDetails\npreferredLocationType: $preferredLocationType\n)";
+            return "cloudNativeApplicationSnapshots" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CloudNativeApplicationSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetCloudNativeApplicationSnapshotsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7387,6 +7729,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> CoordinatorLabelsReply? CoordinatorLabels
+        // GraphQL -> coordinatorLabels: CoordinatorLabelsReply! (type)
+        public static string CoordinatorLabels(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "coordinatorLabels" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CoordinatorLabelsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CoordinatorLabelsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> CountClustersReply? CountClusters
         // GraphQL -> countClusters: CountClustersReply! (type)
         public static string CountClusters(object fsObj)
@@ -7491,6 +7851,42 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new CrowdStrikeIngestionStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CrowdstrikeAlertActivitySummary? CrowdstrikeAlertActivitySummary
+        // GraphQL -> crowdstrikeAlertActivitySummary: CrowdstrikeAlertActivitySummary (type)
+        public static string CrowdstrikeAlertActivitySummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ndetectionId: $detectionId\n)";
+            return "crowdstrikeAlertActivitySummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CrowdstrikeAlertActivitySummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CrowdstrikeAlertActivitySummary() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CrowdstrikeCaseActivitySummary? CrowdstrikeCaseActivitySummary
+        // GraphQL -> crowdstrikeCaseActivitySummary: CrowdstrikeCaseActivitySummary (type)
+        public static string CrowdstrikeCaseActivitySummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ndetectionIds: $detectionIds\n)";
+            return "crowdstrikeCaseActivitySummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CrowdstrikeCaseActivitySummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CrowdstrikeCaseActivitySummary() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7869,6 +8265,78 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ExportUrlSpecs() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DevOpsBackupJobInformation? DevOpsBackupJobInformation
+        // GraphQL -> devOpsBackupJobInformation: DevOpsBackupJobInformation! (type)
+        public static string DevOpsBackupJobInformation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ndevopsOrgType: $devopsOrgType\n)";
+            return "devOpsBackupJobInformation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DevOpsBackupJobInformationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DevOpsBackupJobInformation() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DevOpsCloudAccountListCurrentPermissionsReply? DevOpsCloudAccountListCurrentPermissions
+        // GraphQL -> devOpsCloudAccountListCurrentPermissions: DevOpsCloudAccountListCurrentPermissionsReply! (type)
+        public static string DevOpsCloudAccountListCurrentPermissions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "devOpsCloudAccountListCurrentPermissions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DevOpsCloudAccountListCurrentPermissionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DevOpsCloudAccountListCurrentPermissionsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DevOpsCloudAccountListLatestPermissionsReply? DevOpsCloudAccountListLatestPermissions
+        // GraphQL -> devOpsCloudAccountListLatestPermissions: DevOpsCloudAccountListLatestPermissionsReply! (type)
+        public static string DevOpsCloudAccountListLatestPermissions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "devOpsCloudAccountListLatestPermissions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DevOpsCloudAccountListLatestPermissionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DevOpsCloudAccountListLatestPermissionsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> DevOpsProtectedObjectCountSummary? DevOpsProtectedObjectCountSummary
+        // GraphQL -> devOpsProtectedObjectCountSummary: DevOpsProtectedObjectCountSummary! (type)
+        public static string DevOpsProtectedObjectCountSummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nobjectType: $objectType\n)";
+            return "devOpsProtectedObjectCountSummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DevOpsProtectedObjectCountSummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DevOpsProtectedObjectCountSummary() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8503,6 +8971,438 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> FusionComputeCluster? FusionComputeCluster
+        // GraphQL -> fusionComputeCluster: FusionComputeCluster! (type)
+        public static string FusionComputeCluster(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeCluster" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeClusterFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeCluster() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeClusterConnection? FusionComputeClusters
+        // GraphQL -> fusionComputeClusters: FusionComputeClusterConnection! (type)
+        public static string FusionComputeClusters(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeClusters" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeClustersFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeClusterConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CdmHierarchyObjectConnection? FusionComputeClustersAndHosts
+        // GraphQL -> fusionComputeClustersAndHosts: CdmHierarchyObjectConnection! (type)
+        public static string FusionComputeClustersAndHosts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\ntypeFilter: $typeFilter\n)";
+            return "fusionComputeClustersAndHosts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeClustersAndHostsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CdmHierarchyObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeDatastore? FusionComputeDatastore
+        // GraphQL -> fusionComputeDatastore: FusionComputeDatastore! (type)
+        public static string FusionComputeDatastore(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeDatastore" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeDatastoreFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeDatastore() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeDatastoreConnection? FusionComputeDatastores
+        // GraphQL -> fusionComputeDatastores: FusionComputeDatastoreConnection! (type)
+        public static string FusionComputeDatastores(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeDatastores" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeDatastoresFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeDatastoreConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeEchoResponse? FusionComputeEcho
+        // GraphQL -> fusionComputeEcho: FusionComputeEchoResponse! (type)
+        public static string FusionComputeEcho(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "fusionComputeEcho" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeEchoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeEchoResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeHost? FusionComputeHost
+        // GraphQL -> fusionComputeHost: FusionComputeHost! (type)
+        public static string FusionComputeHost(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeHost" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeHostFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeHost() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeHostConnection? FusionComputeHosts
+        // GraphQL -> fusionComputeHosts: FusionComputeHostConnection! (type)
+        public static string FusionComputeHosts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeHosts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeHostsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeHostConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> MissedSnapshotListResponse? FusionComputeMissedSnapshots
+        // GraphQL -> fusionComputeMissedSnapshots: MissedSnapshotListResponse! (type)
+        public static string FusionComputeMissedSnapshots(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "fusionComputeMissedSnapshots" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeMissedSnapshotsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MissedSnapshotListResponse() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeMountDetailConnection? FusionComputeMounts
+        // GraphQL -> fusionComputeMounts: FusionComputeMountDetailConnection! (type)
+        public static string FusionComputeMounts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            return "fusionComputeMounts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeMountsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeMountDetailConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeNetwork? FusionComputeNetwork
+        // GraphQL -> fusionComputeNetwork: FusionComputeNetwork! (type)
+        public static string FusionComputeNetwork(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeNetwork" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeNetworkFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeNetwork() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeNetworkConnection? FusionComputeNetworks
+        // GraphQL -> fusionComputeNetworks: FusionComputeNetworkConnection! (type)
+        public static string FusionComputeNetworks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeNetworks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeNetworksFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeNetworkConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CdmHierarchyObjectConnection? FusionComputeRecoverableClustersAndHosts
+        // GraphQL -> fusionComputeRecoverableClustersAndHosts: CdmHierarchyObjectConnection! (type)
+        public static string FusionComputeRecoverableClustersAndHosts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeRecoverableClustersAndHosts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeRecoverableClustersAndHostsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CdmHierarchyObjectConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeDatastoreConnection? FusionComputeRecoverableDatastores
+        // GraphQL -> fusionComputeRecoverableDatastores: FusionComputeDatastoreConnection! (type)
+        public static string FusionComputeRecoverableDatastores(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeRecoverableDatastores" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeRecoverableDatastoresFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeDatastoreConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeNetworkConnection? FusionComputeRecoverableNetworks
+        // GraphQL -> fusionComputeRecoverableNetworks: FusionComputeNetworkConnection! (type)
+        public static string FusionComputeRecoverableNetworks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeRecoverableNetworks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeRecoverableNetworksFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeNetworkConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeSite? FusionComputeSite
+        // GraphQL -> fusionComputeSite: FusionComputeSite! (type)
+        public static string FusionComputeSite(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeSite" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeSiteFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeSite() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeSiteConnection? FusionComputeSites
+        // GraphQL -> fusionComputeSites: FusionComputeSiteConnection! (type)
+        public static string FusionComputeSites(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeSites" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeSitesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeSiteConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeSnapshotResourceSpecReply? FusionComputeSnapshotResourceSpec
+        // GraphQL -> fusionComputeSnapshotResourceSpec: FusionComputeSnapshotResourceSpecReply! (type)
+        public static string FusionComputeSnapshotResourceSpec(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "fusionComputeSnapshotResourceSpec" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeSnapshotResourceSpecFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeSnapshotResourceSpecReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeVirtualDiskConnection? FusionComputeVirtualDisks
+        // GraphQL -> fusionComputeVirtualDisks: FusionComputeVirtualDiskConnection! (type)
+        public static string FusionComputeVirtualDisks(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfusionComputeVirtualMachineFid: $fusionComputeVirtualMachineFid\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            return "fusionComputeVirtualDisks" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeVirtualDisksFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeVirtualDiskConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeVirtualMachine? FusionComputeVirtualMachine
+        // GraphQL -> fusionComputeVirtualMachine: FusionComputeVirtualMachine! (type)
+        public static string FusionComputeVirtualMachine(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeVirtualMachine" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeVirtualMachineFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeVirtualMachine() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeVirtualMachineConnection? FusionComputeVirtualMachines
+        // GraphQL -> fusionComputeVirtualMachines: FusionComputeVirtualMachineConnection! (type)
+        public static string FusionComputeVirtualMachines(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeVirtualMachines" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeVirtualMachinesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeVirtualMachineConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? FusionComputeVmRequestStatus
+        // GraphQL -> fusionComputeVmRequestStatus: AsyncRequestStatus! (type)
+        public static string FusionComputeVmRequestStatus(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "fusionComputeVmRequestStatus" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeVmRequestStatusFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeVrm? FusionComputeVrm
+        // GraphQL -> fusionComputeVrm: FusionComputeVrm! (type)
+        public static string FusionComputeVrm(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "fusionComputeVrm" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeVrmFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeVrm() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> FusionComputeVrmConnection? FusionComputeVrms
+        // GraphQL -> fusionComputeVrms: FusionComputeVrmConnection! (type)
+        public static string FusionComputeVrms(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "fusionComputeVrms" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FusionComputeVrmsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new FusionComputeVrmConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GcpCloudAccountGetProjectResponse? GcpCloudAccountGetProject
         // GraphQL -> gcpCloudAccountGetProject: GcpCloudAccountGetProjectResponse! (type)
         public static string GcpCloudAccountGetProject(object fsObj)
@@ -9025,6 +9925,96 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GitHubConnectionStatusSummaryReply? GitHubConnectionStatusSummary
+        // GraphQL -> gitHubConnectionStatusSummary: GitHubConnectionStatusSummaryReply! (type)
+        public static string GitHubConnectionStatusSummary(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "gitHubConnectionStatusSummary" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GitHubConnectionStatusSummaryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GitHubConnectionStatusSummaryReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GithubOrganization? GitHubOrganization
+        // GraphQL -> gitHubOrganization: GithubOrganization! (type)
+        public static string GitHubOrganization(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nworkloadId: $workloadId\n)";
+            return "gitHubOrganization" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GitHubOrganizationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GithubOrganization() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GithubOrganizationConnection? GitHubOrganizations
+        // GraphQL -> gitHubOrganizations: GithubOrganizationConnection! (type)
+        public static string GitHubOrganizations(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nqueryType: $queryType\nancestorId: $ancestorId\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
+            return "gitHubOrganizations" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GitHubOrganizationsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GithubOrganizationConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GithubRepositoryConnection? GitHubRepositories
+        // GraphQL -> gitHubRepositories: GithubRepositoryConnection! (type)
+        public static string GitHubRepositories(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nqueryType: $queryType\nancestorId: $ancestorId\nfilter: $filter\nsortBy: $sortBy\nsortOrder: $sortOrder\nworkloadHierarchy: $workloadHierarchy\n)";
+            return "gitHubRepositories" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GitHubRepositoriesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GithubRepositoryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GithubRepository? GitHubRepository
+        // GraphQL -> gitHubRepository: GithubRepository! (type)
+        public static string GitHubRepository(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nworkloadId: $workloadId\n)";
+            return "gitHubRepository" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object GitHubRepositoryFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GithubRepository() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GlobalCertificate? GlobalCertificate
         // GraphQL -> globalCertificate: GlobalCertificate! (type)
         public static string GlobalCertificate(object fsObj)
@@ -9489,6 +10479,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> HypervVirtualSwitchesResponse? HypervHostVirtualSwitches
+        // GraphQL -> hypervHostVirtualSwitches: HypervVirtualSwitchesResponse! (type)
+        public static string HypervHostVirtualSwitches(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "hypervHostVirtualSwitches" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object HypervHostVirtualSwitchesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new HypervVirtualSwitchesResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10375,12 +11383,30 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetLatestGpoSettingsRes? LatestGpoSettings
+        // GraphQL -> latestGpoSettings: GetLatestGpoSettingsRes! (type)
+        public static string LatestGpoSettings(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "latestGpoSettings" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object LatestGpoSettingsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetLatestGpoSettingsRes() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AuthorizedPrincipalConnection? LdapAuthorizedPrincipalConnection
         // GraphQL -> ldapAuthorizedPrincipalConnection: AuthorizedPrincipalConnection! (type)
         public static string LdapAuthorizedPrincipalConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nsearchText: $searchText\nroleIds: $roleIds\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsearchText: $searchText\nroleIds: $roleIds\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "ldapAuthorizedPrincipalConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object LdapAuthorizedPrincipalConnectionFieldSpec(AutofieldContext? ec=null)
@@ -10416,7 +11442,7 @@ namespace RubrikSecurityCloud.Types
         public static string LdapPrincipalConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\nid: $id\nsearchText: $searchText\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nid: $id\nsearchText: $searchText\nsortOrder: $sortOrder\nsortBy: $sortBy\n)";
             return "ldapPrincipalConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object LdapPrincipalConnectionFieldSpec(AutofieldContext? ec=null)
@@ -11527,6 +12553,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> MssqlHostConfiguration? MssqlHostConfiguration
+        // GraphQL -> mssqlHostConfiguration: MssqlHostConfiguration! (type)
+        public static string MssqlHostConfiguration(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "mssqlHostConfiguration" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object MssqlHostConfigurationFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new MssqlHostConfiguration() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> MssqlInstance? MssqlInstance
         // GraphQL -> mssqlInstance: MssqlInstance! (type)
         public static string MssqlInstance(object fsObj)
@@ -11622,7 +12666,7 @@ namespace RubrikSecurityCloud.Types
         public static string MultiHopUpgradePath(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nclusterUuid: $clusterUuid\nsourceVersion: $sourceVersion\ntargetVersion: $targetVersion\n)";
+            string args = "\n(\nclusterUuid: $clusterUuid\nsourceVersion: $sourceVersion\ntargetVersion: $targetVersion\nshouldIncludeFullVersionName: $shouldIncludeFullVersionName\n)";
             return "multiHopUpgradePath" + args + "\n{\n" + fs + "}\n";
         }
         public static object MultiHopUpgradePathFieldSpec(AutofieldContext? ec=null)
@@ -12081,6 +13125,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new NodeTunnelStatusConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> NodeToRemoveByCountConnection? NodesToRemoveByCount
+        // GraphQL -> nodesToRemoveByCount: NodeToRemoveByCountConnection! (type)
+        public static string NodesToRemoveByCount(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nclusterUuid: $clusterUuid\nnodeCount: $nodeCount\n)";
+            return "nodesToRemoveByCount" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object NodesToRemoveByCountFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new NodeToRemoveByCountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13579,6 +14641,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetPausedObjectResConnection? PausedObjects
+        // GraphQL -> pausedObjects: GetPausedObjectResConnection! (type)
+        public static string PausedObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nfilter: $filter\n)";
+            return "pausedObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PausedObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetPausedObjectResConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> PendingAction? PendingAction
         // GraphQL -> pendingAction: pendingAction! (type)
         public static string PendingAction(object fsObj)
@@ -13813,6 +14893,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> PolicyViolationConnection? PolicyViolations
+        // GraphQL -> policyViolations: PolicyViolationConnection! (type)
+        public static string PolicyViolations(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npolicyIds: $policyIds\nresourceIds: $resourceIds\nstatuses: $statuses\nstatusReasons: $statusReasons\npolicyTypes: $policyTypes\npolicyViolationIds: $policyViolationIds\npolicySeverities: $policySeverities\npolicyCategories: $policyCategories\nincludeDeletedPolicies: $includeDeletedPolicies\nresourceTypes: $resourceTypes\nsensitivityLevels: $sensitivityLevels\ndetectionDate: $detectionDate\nupdateDate: $updateDate\nincludeResourceCounts: $includeResourceCounts\nresourceMetadataFilter: $resourceMetadataFilter\nparentViolationId: $parentViolationId\ndataTypeIds: $dataTypeIds\ndocumentTypeIds: $documentTypeIds\ndataCategoryIds: $dataCategoryIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nprincipalFilter: $principalFilter\npolicyViolationNameSearch: $policyViolationNameSearch\npolicyFrameworks: $policyFrameworks\nticketNumbers: $ticketNumbers\nviolationNames: $violationNames\n)";
+            return "policyViolations" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PolicyViolationsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PolicyViolationConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> GetPossibleSnapshotLocationsForObjectsResp? PossibleSnapshotLocationsForObjects
         // GraphQL -> possibleSnapshotLocationsForObjects: GetPossibleSnapshotLocationsForObjectsResp! (type)
         public static string PossibleSnapshotLocationsForObjects(object fsObj)
@@ -13827,6 +14925,114 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetPossibleSnapshotLocationsForObjectsResp() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> PostgreSqlDatabase? PostgreSqlDatabase
+        // GraphQL -> postgreSQLDatabase: PostgreSQLDatabase! (type)
+        public static string PostgreSqlDatabase(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "postgreSQLDatabase" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PostgreSqlDatabaseFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PostgreSqlDatabase() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> PostgreSqlDatabaseConnection? PostgreSqlDatabases
+        // GraphQL -> postgreSQLDatabases: PostgreSQLDatabaseConnection! (type)
+        public static string PostgreSqlDatabases(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "postgreSQLDatabases" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PostgreSqlDatabasesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PostgreSqlDatabaseConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> PostgreSqlDbCluster? PostgreSqlDbCluster
+        // GraphQL -> postgreSQLDbCluster: PostgreSQLDbCluster! (type)
+        public static string PostgreSqlDbCluster(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfid: $fid\n)";
+            return "postgreSQLDbCluster" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PostgreSqlDbClusterFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PostgreSqlDbCluster() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> PostgreSqlDbClusterConnection? PostgreSqlDbClusters
+        // GraphQL -> postgreSQLDbClusters: PostgreSQLDbClusterConnection! (type)
+        public static string PostgreSqlDbClusters(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            return "postgreSQLDbClusters" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PostgreSqlDbClustersFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PostgreSqlDbClusterConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? PostgresDbClusterAsyncRequestStatus
+        // GraphQL -> postgresDbClusterAsyncRequestStatus: AsyncRequestStatus! (type)
+        public static string PostgresDbClusterAsyncRequestStatus(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nclusterUuid: $clusterUuid\nid: $id\n)";
+            return "postgresDbClusterAsyncRequestStatus" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PostgresDbClusterAsyncRequestStatusFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> KosmosWorkloadLiveMountConnection? PostgresDbClusterLiveMounts
+        // GraphQL -> postgresDbClusterLiveMounts: KosmosWorkloadLiveMountConnection! (type)
+        public static string PostgresDbClusterLiveMounts(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            return "postgresDbClusterLiveMounts" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PostgresDbClusterLiveMountsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new KosmosWorkloadLiveMountConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -13935,6 +15141,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ProtectedObjectsConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ProtectionSummaryV2? ProtectionSummaryV2
+        // GraphQL -> protectionSummaryV2: ProtectionSummaryV2! (type)
+        public static string ProtectionSummaryV2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "protectionSummaryV2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ProtectionSummaryV2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ProtectionSummaryV2() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14227,6 +15451,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> RecoveryConnection? Recoveries
+        // GraphQL -> recoveries: RecoveryConnection! (type)
+        public static string Recoveries(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nrecoveryIds: $recoveryIds\nrecoveryType: $recoveryType\nendTime: $endTime\nstartTime: $startTime\nrecoveryPlanNames: $recoveryPlanNames\nworkloadIds: $workloadIds\nrecoveryStatuses: $recoveryStatuses\nrecoveryOutcomes: $recoveryOutcomes\nrecoveryNames: $recoveryNames\nrecoveryTriggeredFrom: $recoveryTriggeredFrom\nrecoveryPlanIds: $recoveryPlanIds\nworkloadTypeFilter: $workloadTypeFilter\nrecoveryNameSubstring: $recoveryNameSubstring\nsortParam: $sortParam\n)";
+            return "recoveries" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoveriesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RecoveryConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> RemoveNodeDetailsReply? RemovedNodeDetails
         // GraphQL -> removedNodeDetails: RemoveNodeDetailsReply! (type)
         public static string RemovedNodeDetails(object fsObj)
@@ -14412,7 +15654,7 @@ namespace RubrikSecurityCloud.Types
         public static string RscPermsToCdmInfo(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npermissions: $permissions\nroleId: $roleId\nprotectableClusters: $protectableClusters\n)";
+            string args = "\n(\nroleId: $roleId\nprotectableClusters: $protectableClusters\npermissions: $permissions\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             return "rscPermsToCdmInfo" + args + "\n{\n" + fs + "}\n";
         }
         public static object RscPermsToCdmInfoFieldSpec(AutofieldContext? ec=null)
@@ -15402,7 +16644,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfAsnappableConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\nshouldShowCdmSnapshotLocationInfoArg: $shouldShowCdmSnapshotLocationInfoArg\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nshowSnapshotRetentionInfo: $showSnapshotRetentionInfo\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\nshouldShowCdmSnapshotLocationInfoArg: $shouldShowCdmSnapshotLocationInfoArg\nsnapshotLocationView: $snapshotLocationView\n)";
             return "snapshotOfASnappableConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotOfAsnappableConnectionFieldSpec(AutofieldContext? ec=null)
@@ -15420,7 +16662,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotOfSnappablesConnection(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\nshouldShowCdmSnapshotLocationInfoArg: $shouldShowCdmSnapshotLocationInfoArg\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableIds: $snappableIds\nsnapshotFilter: $snapshotFilter\nsortOrder: $sortOrder\nsortBy: $sortBy\ntimeRange: $timeRange\nignoreActiveWorkloadCheck: $ignoreActiveWorkloadCheck\nincludeOnlySourceSnapshots: $includeOnlySourceSnapshots\nshouldExcludeCdmSnapshotRetentionInfo: $shouldExcludeCdmSnapshotRetentionInfo\nshouldShowCdmSnapshotLocationInfoArg: $shouldShowCdmSnapshotLocationInfoArg\nsnapshotLocationView: $snapshotLocationView\n)";
             return "snapshotOfSnappablesConnection" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotOfSnappablesConnectionFieldSpec(AutofieldContext? ec=null)
@@ -15456,7 +16698,7 @@ namespace RubrikSecurityCloud.Types
         public static string SnapshotResults(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nsnappableFid: $snappableFid\nstartTimeMs: $startTimeMs\nendTimeMs: $endTimeMs\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nstartTimeMs: $startTimeMs\nendTimeMs: $endTimeMs\n)";
             return "snapshotResults" + args + "\n{\n" + fs + "}\n";
         }
         public static object SnapshotResultsFieldSpec(AutofieldContext? ec=null)
@@ -15541,6 +16783,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SnapshotSecurityInfoConnection? SnapshotsSecurityInfo
+        // GraphQL -> snapshotsSecurityInfo: SnapshotSecurityInfoConnection! (type)
+        public static string SnapshotsSecurityInfo(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadIds: $workloadIds\nstartTime: $startTime\nendTime: $endTime\nsortOrder: $sortOrder\nincludeThreatHunts: $includeThreatHunts\n)";
+            return "snapshotsSecurityInfo" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SnapshotsSecurityInfoFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SnapshotSecurityInfoConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> SnmpConfiguration? SnmpConfigurations
         // GraphQL -> snmpConfigurations: SnmpConfiguration! (type)
         public static string SnmpConfigurations(object fsObj)
@@ -15600,7 +16860,7 @@ namespace RubrikSecurityCloud.Types
         public static string SonarReport(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nsonarReportGroupBy: $sonarReportGroupBy\nfilter: $filter\ntimeFilter: $timeFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsonarReportGroupBy: $sonarReportGroupBy\nfilter: $filter\ntimeFilter: $timeFilter\n)";
             return "sonarReport" + args + "\n{\n" + fs + "}\n";
         }
         public static object SonarReportFieldSpec(AutofieldContext? ec=null)
@@ -15618,7 +16878,7 @@ namespace RubrikSecurityCloud.Types
         public static string SonarReportRow(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nendTime: $endTime\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nendTime: $endTime\n)";
             return "sonarReportRow" + args + "\n{\n" + fs + "}\n";
         }
         public static object SonarReportRowFieldSpec(AutofieldContext? ec=null)
@@ -15685,6 +16945,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> SsmDocumentForEc2Reply? SsmDocumentForEc2
+        // GraphQL -> ssmDocumentForEc2: SsmDocumentForEc2Reply! (type)
+        public static string SsmDocumentForEc2(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "ssmDocumentForEc2" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SsmDocumentForEc2FieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new SsmDocumentForEc2Reply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> SsoGroupAlreadyExistsReply? SsoGroupAlreadyExists
         // GraphQL -> ssoGroupAlreadyExists: SsoGroupAlreadyExistsReply! (type)
         public static string SsoGroupAlreadyExists(object fsObj)
@@ -15735,6 +17013,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> GetSupportCaseCommentsReply? SupportCaseComments
+        // GraphQL -> supportCaseComments: GetSupportCaseCommentsReply! (type)
+        public static string SupportCaseComments(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ncaseId: $caseId\n)";
+            return "supportCaseComments" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object SupportCaseCommentsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetSupportCaseCommentsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -16419,6 +17715,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UnmanagedObjectDetailConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpgradePathEligibilityReply? UpgradePathEligibility
+        // GraphQL -> upgradePathEligibility: UpgradePathEligibilityReply! (type)
+        public static string UpgradePathEligibility(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nclusterUuid: $clusterUuid\ntargetVersion: $targetVersion\noperation: $operation\n)";
+            return "upgradePathEligibility" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpgradePathEligibilityFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpgradePathEligibilityReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17571,6 +18885,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ValidateOrgNameReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> ValidateOutpostAccountNetworkReply? ValidateOutpostAccountNetwork
+        // GraphQL -> validateOutpostAccountNetwork: ValidateOutpostAccountNetworkReply! (type)
+        public static string ValidateOutpostAccountNetwork(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "validateOutpostAccountNetwork" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ValidateOutpostAccountNetworkFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new ValidateOutpostAccountNetworkReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

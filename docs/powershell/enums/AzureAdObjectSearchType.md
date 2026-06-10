@@ -2,27 +2,49 @@
 Entra ID object search keyword names.
 
 - USER_NAME - User name of the user.
-- COMPLIANCE_POLICY_NAME - Name of the compliance policy.
-- COMPLIANCE_POLICY_ASSIGNMENT_POLICY_NAME - Name of the policy associated with the compliance policy assignment.
-- BIT_LOCKER_KEY_DEVICE_NAME - Name of the BitLocker key device.
-- NAMED_LOCATION_NAME - Name of the named location.
-- LOCAL_ADMIN_PASSWORD_DEVICE_NAME - Name of the local admin password device.
-- APPLICATION_NAME - Name of the application.
-- GROUP_NAME - Group name of the group.
-- ROLE_NAME - Name of the Role.
-- DEVICE_NAME - Name of the device.
-- AUTHENTICATION_CONTEXT_NAME - Name of the service authentication context.
-- COMPLIANCE_POLICY_ASSIGNMENT_GROUP_NAME - Name of the group associated with the compliance policy assignment.
-- ADMINISTRATIVE_UNIT_NAME - Name of the administrative unit.
-- COMPLIANCE_SCRIPT_NAME - Name of the compliance script.
-- COMPLIANCE_POLICY_ASSIGNMENT_TYPE - Type of compliance policy assignment.
-- USER_TYPE - User type of the user.
-- SERVICE_PRINCIPAL_NAME - Name of the service principal.
-- AUTHENTICATION_STRENGTH_NAME - Name of the service authentication strength.
 - PRINCIPAL_USER_NAME - Principal user name of the user.
+- USER_TYPE - User type of the user.
+- GROUP_NAME - Group name of the group.
 - GROUP_TYPE - Group type of the group.
-- TERMS_OF_USE_NAME - Name of the terms of use.
-- NOTIFICATION_TEMPLATE_NAME - Name of the notification template.
-- COMPLIANCE_POLICY_TYPE - Type of the compliance policy.
+- ROLE_NAME - Name of the role.
+- APPLICATION_NAME - Name of the application.
+- SERVICE_PRINCIPAL_NAME - Name of the service principal.
 - CONDITIONAL_ACCESS_POLICY_NAME - Name of the conditional access policy.
+- NAMED_LOCATION_NAME - Name of the named location.
+- TERMS_OF_USE_NAME - Name of the terms of use.
+- AUTHENTICATION_CONTEXT_NAME - Name of the service authentication context.
+- AUTHENTICATION_STRENGTH_NAME - Name of the service authentication strength.
+- ADMINISTRATIVE_UNIT_NAME - Name of the administrative unit.
+- DEVICE_NAME - Name of the device.
+- BIT_LOCKER_KEY_DEVICE_NAME - Name of the BitLocker key device.
+- LOCAL_ADMIN_PASSWORD_DEVICE_NAME - Name of the local admin password device.
+- COMPLIANCE_POLICY_NAME - Name of the compliance policy.
+- COMPLIANCE_POLICY_TYPE - Type of the compliance policy.
+- NOTIFICATION_TEMPLATE_NAME - Name of the notification template.
+- COMPLIANCE_SCRIPT_NAME - Name of the compliance script.
 - ASSIGNMENT_FILTER_NAME - Name of the assignment filter.
+- COMPLIANCE_POLICY_ASSIGNMENT_GROUP_NAME - Name of the group associated with the compliance policy assignment.
+- COMPLIANCE_POLICY_ASSIGNMENT_TYPE - Type of compliance policy assignment.
+- COMPLIANCE_POLICY_ASSIGNMENT_POLICY_NAME - Name of the policy associated with the compliance policy assignment.
+- GROUP_IS_PIM_ENABLED - Filter for PIM-enabled groups.
+- DEVICE_MANAGEMENT_POLICY_NAME - Name of the Intune device management policy.
+- DEVICE_MANAGEMENT_POLICY_TYPE - Type of the Intune device management policy.
+- REUSABLE_POLICY_SETTING_NAME - Name of the Intune endpoint security reusable policy setting.
+- APP_PROTECTION_POLICY_NAME - Name of the Intune app protection policy.
+- AUTOPILOT_DEPLOYMENT_PROFILE_NAME - Name of the Intune autopilot deployment profile.
+- INTUNE_ROLE_DEFINITION_SEARCH_NAME - Name of the Intune role definition.
+- INTUNE_ROLE_ASSIGNMENT_SEARCH_NAME - Name of the Intune role assignment.
+- INTUNE_SCOPE_TAG_SEARCH_NAME - Name of the Intune scope tag.
+- INTUNE_POLICY_ASSIGNMENT_SEARCH_GROUP_NAME - Name of the group associated with the Intune policy assignment.
+- INTUNE_POLICY_ASSIGNMENT_SEARCH_TYPE - Type of the Intune policy assignment.
+- INTUNE_SCOPE_TAG_ASSIGNMENT_SEARCH_GROUP_NAME - Name of the group associated with the Intune scope tag assignment.
+- INTUNE_POLICY_ASSIGNMENT_SEARCH_CATEGORY - Category of the Intune policy assignment (target object type).
+- ROLE_ELIGIBLE_ASSIGNMENT_PRINCIPAL_NAME - Principal name of the PIM role-eligible assignment.
+- ROLE_ELIGIBLE_ASSIGNMENT_ROLE_NAME - Role name of the PIM role-eligible assignment.
+- GROUP_ELIGIBLE_ASSIGNMENT_PRINCIPAL_NAME - Principal name of the PIM group-eligible assignment.
+- GROUP_ELIGIBLE_ASSIGNMENT_GROUP_NAME - Group name of the PIM group-eligible assignment.
+- GROUP_ACTIVE_ASSIGNMENT_PRINCIPAL_NAME - Principal name of the PIM group active assignment.
+- GROUP_ACTIVE_ASSIGNMENT_GROUP_NAME - Group name of the PIM group active assignment.
+- ACCESS_REVIEW_SCHEDULE_DEFINITION_RESOURCE_TYPE - Resource type of the object being reviewed in an access review (e.g. GROUP, SERVICE_PRINCIPAL).
+- ROLE_IS_PIM_ENABLED - Filter for PIM-enabled roles.
+- NAME - Common name used for Display Name.

@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BLOB")]
         BLOB,
 
+        [EnumMember(Value = "POSTGRES_FLEXIBLE_SERVER")]
+        POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "SQL_DB")]
         SQL_DB,
 

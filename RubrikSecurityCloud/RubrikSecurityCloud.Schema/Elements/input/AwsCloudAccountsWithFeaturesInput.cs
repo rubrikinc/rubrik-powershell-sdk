@@ -58,6 +58,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("includeInternalFeatures")]
         public System.Boolean? IncludeInternalFeatures { get; set; }
 
+        //      C# -> List<AwsCloudAccountServiceType>? ServiceTypeFilter
+        // GraphQL -> serviceTypeFilter: [AwsCloudAccountServiceType!] (enum)
+        [JsonProperty("serviceTypeFilter")]
+        public List<AwsCloudAccountServiceType>? ServiceTypeFilter { get; set; }
+
 
         #endregion
 

@@ -48,3 +48,6 @@ Name of product.
 - OKTA - Okta protection.
 - GOOGLE_WORKSPACE - Google Workspace protection.
 - RUBRIK_AGENT_CLOUD - Rubrik Agent Cloud.
+- AWS_BAAS - AWS BaaS.
+- EDGE - Edge virtual cluster deployment.
+- OKTA_CYBER_POSTURE - Okta Cyber Posture - enables IR Room for Okta-only customers.

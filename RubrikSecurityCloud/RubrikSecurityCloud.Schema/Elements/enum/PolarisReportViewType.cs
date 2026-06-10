@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ALLOWED_HITS_REPORT")]
         ALLOWED_HITS_REPORT,
 
+        [EnumMember(Value = "ANOMALY_DETECTION_COMPLIANCE_REPORT")]
+        ANOMALY_DETECTION_COMPLIANCE_REPORT,
+
         [EnumMember(Value = "ANOMALY_REPORT")]
         ANOMALY_REPORT,
 
@@ -104,6 +107,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SERVICE_ACCOUNT_REPORT")]
         SERVICE_ACCOUNT_REPORT,
+
+        [EnumMember(Value = "SIGNIN_LOGS_REPORT")]
+        SIGNIN_LOGS_REPORT,
 
         [EnumMember(Value = "SLA_AUDIT_REPORT")]
         SLA_AUDIT_REPORT,

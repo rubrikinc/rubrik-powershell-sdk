@@ -91,6 +91,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	sourceClusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	targetClusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
     /// 	# OPTIONAL
     /// 	sourceGateway = @{
     /// 		# REQUIRED
@@ -116,12 +122,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sourceInterfaceName = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	sourceClusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	targetClusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
     /// 	# OPTIONAL
     /// 	useIpv6 = $someBoolean
     /// }
@@ -153,12 +153,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	forceDelete = $someBoolean
     /// 	# REQUIRED
     /// 	sourceClusterUuid = $someString
     /// 	# REQUIRED
     /// 	targetClusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	forceDelete = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -308,6 +308,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	sourceClusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	targetClusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
     /// 	# OPTIONAL
     /// 	sourceGateway = @{
     /// 		# REQUIRED
@@ -333,12 +339,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sourceInterfaceName = $someString
     /// 	}
-    /// 	# REQUIRED
-    /// 	sourceClusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	targetClusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
     /// 	# OPTIONAL
     /// 	useIpv6 = $someBoolean
     /// }
@@ -492,6 +492,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.CreateReplicationPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	sourceClusterUuid = $someString
+	# REQUIRED
+	targetClusterUuid = $someString
+	# REQUIRED
+	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
 	# OPTIONAL
 	sourceGateway = @{
 		# REQUIRED
@@ -517,12 +523,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		sourceInterfaceName = $someString
 	}
-	# REQUIRED
-	sourceClusterUuid = $someString
-	# REQUIRED
-	targetClusterUuid = $someString
-	# REQUIRED
-	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
 	# OPTIONAL
 	useIpv6 = $someBoolean
 }"
@@ -546,12 +546,12 @@ $query.Var.input = @{
                 Mutation.DeleteReplicationPairFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	forceDelete = $someBoolean
 	# REQUIRED
 	sourceClusterUuid = $someString
 	# REQUIRED
 	targetClusterUuid = $someString
+	# OPTIONAL
+	forceDelete = $someBoolean
 }"
             );
         }
@@ -669,6 +669,12 @@ $query.Var.input = @{
                 Mutation.UpdateReplicationTargetFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	sourceClusterUuid = $someString
+	# REQUIRED
+	targetClusterUuid = $someString
+	# REQUIRED
+	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
 	# OPTIONAL
 	sourceGateway = @{
 		# REQUIRED
@@ -694,12 +700,6 @@ $query.Var.input = @{
 		# OPTIONAL
 		sourceInterfaceName = $someString
 	}
-	# REQUIRED
-	sourceClusterUuid = $someString
-	# REQUIRED
-	targetClusterUuid = $someString
-	# REQUIRED
-	setupType = $someReplicationSetupType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReplicationSetupType]) for enum values.
 	# OPTIONAL
 	useIpv6 = $someBoolean
 }"

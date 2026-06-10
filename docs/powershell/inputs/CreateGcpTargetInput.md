@@ -12,7 +12,9 @@ Input for creating a GCP archival target.
 - bucket: System.String
   - Bucket of the GCP archival target.
 - encryptionPassword: System.String
-  - Encryption password for the GCP archival target.
+  - Encryption password for the GCP archival target. Required when GCP UEKM is disabled. Mutually exclusive with rsaKey.
+- rsaKey: System.String
+  - RSA private key (PEM format) for GCP UEKM. Required when GCP UEKM is enabled. Mutually exclusive with encryptionPassword.
 - serviceAccountJsonKey: System.String
   - Service account JSON key for the GCP archival target.
 - archivalProxySettings: ProxySettingsInput

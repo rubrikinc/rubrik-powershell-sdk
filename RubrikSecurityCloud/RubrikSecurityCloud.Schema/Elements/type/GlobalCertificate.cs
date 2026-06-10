@@ -90,6 +90,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("issuedTo")]
         public System.String? IssuedTo { get; set; }
 
+        //      C# -> System.String? KeyStrength
+        // GraphQL -> keyStrength: String! (scalar)
+        [JsonProperty("keyStrength")]
+        public System.String? KeyStrength { get; set; }
+
+        //      C# -> System.String? KeyType
+        // GraphQL -> keyType: String! (scalar)
+        [JsonProperty("keyType")]
+        public System.String? KeyType { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -169,6 +179,8 @@ namespace RubrikSecurityCloud.Types
         System.String? IssuedBy = null,
         DateTime? IssuedOn = null,
         System.String? IssuedTo = null,
+        System.String? KeyStrength = null,
+        System.String? KeyType = null,
         System.String? Name = null,
         System.String? SerialNumber = null,
         System.String? Sha1Fingerprint = null,
@@ -223,6 +235,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IssuedTo != null ) {
             this.IssuedTo = IssuedTo;
+        }
+        if ( KeyStrength != null ) {
+            this.KeyStrength = KeyStrength;
+        }
+        if ( KeyType != null ) {
+            this.KeyType = KeyType;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -395,6 +413,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "issuedTo\n" ;
             } else {
                 s += ind + "issuedTo\n" ;
+            }
+        }
+        //      C# -> System.String? KeyStrength
+        // GraphQL -> keyStrength: String! (scalar)
+        if (this.KeyStrength != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "keyStrength\n" ;
+            } else {
+                s += ind + "keyStrength\n" ;
+            }
+        }
+        //      C# -> System.String? KeyType
+        // GraphQL -> keyType: String! (scalar)
+        if (this.KeyType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "keyType\n" ;
+            } else {
+                s += ind + "keyType\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -758,6 +794,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IssuedTo != null && ec.Excludes("issuedTo",true))
         {
             this.IssuedTo = null;
+        }
+        //      C# -> System.String? KeyStrength
+        // GraphQL -> keyStrength: String! (scalar)
+        if (ec.Includes("keyStrength",true))
+        {
+            if(this.KeyStrength == null) {
+
+                this.KeyStrength = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyStrength != null && ec.Excludes("keyStrength",true))
+        {
+            this.KeyStrength = null;
+        }
+        //      C# -> System.String? KeyType
+        // GraphQL -> keyType: String! (scalar)
+        if (ec.Includes("keyType",true))
+        {
+            if(this.KeyType == null) {
+
+                this.KeyType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.KeyType != null && ec.Excludes("keyType",true))
+        {
+            this.KeyType = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

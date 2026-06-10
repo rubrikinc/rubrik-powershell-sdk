@@ -1,5 +1,5 @@
 ### QuarantineSpecInput
-Configuration which indicates which files and snapshots to quarantine.
+Spec for quarantine.
 
 - snapshotId: System.String
   - Id of the snapshot.

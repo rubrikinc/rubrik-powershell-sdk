@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> System.String? FullName
-        // GraphQL -> fullName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("fullName")]
-        public System.String? FullName { get; set; }
-
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("description")]
         public System.String? Description { get; set; }
+
+        //      C# -> System.String? FullName
+        // GraphQL -> fullName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("fullName")]
+        public System.String? FullName { get; set; }
 
         //      C# -> TenantAuthDomainConfig? AuthDomainConfig
         // GraphQL -> authDomainConfig: TenantAuthDomainConfig! (enum)
@@ -68,11 +68,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allowedClusters")]
         public List<System.String>? AllowedClusters { get; set; }
 
-        //      C# -> List<System.String>? ReplicationOnlyClusters
-        // GraphQL -> replicationOnlyClusters: [String!] (scalar)
-        [JsonProperty("replicationOnlyClusters")]
-        public List<System.String>? ReplicationOnlyClusters { get; set; }
-
         //      C# -> List<ExistingUserInput>? ExistingUsers
         // GraphQL -> existingUsers: [ExistingUserInput!] (input)
         [JsonProperty("existingUsers")]
@@ -90,13 +85,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissions")]
         public List<PermissionInput>? Permissions { get; set; }
 
-        //      C# -> List<SelfServicePermissionInput>? SelfServicePermissions
-        // GraphQL -> selfServicePermissions: [SelfServicePermissionInput!]! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("selfServicePermissions")]
-        public List<SelfServicePermissionInput>? SelfServicePermissions { get; set; }
-
         //      C# -> List<ExistingSsoGroupInput>? ExistingSsoGroups
         // GraphQL -> existingSsoGroups: [ExistingSsoGroupInput!] (input)
         [JsonProperty("existingSsoGroups")]
@@ -107,10 +95,22 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newSsoGroups")]
         public List<NewSsoGroupInput>? NewSsoGroups { get; set; }
 
+        //      C# -> List<SelfServicePermissionInput>? SelfServicePermissions
+        // GraphQL -> selfServicePermissions: [SelfServicePermissionInput!]! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("selfServicePermissions")]
+        public List<SelfServicePermissionInput>? SelfServicePermissions { get; set; }
+
         //      C# -> System.Boolean? IsServiceAccountEnabled
         // GraphQL -> isServiceAccountEnabled: Boolean (scalar)
         [JsonProperty("isServiceAccountEnabled")]
         public System.Boolean? IsServiceAccountEnabled { get; set; }
+
+        //      C# -> List<CrossAccountCapability>? CrossAccountCapabilities
+        // GraphQL -> crossAccountCapabilities: [CrossAccountCapability!] (enum)
+        [JsonProperty("crossAccountCapabilities")]
+        public List<CrossAccountCapability>? CrossAccountCapabilities { get; set; }
 
         //      C# -> System.Boolean? IsServiceAccountDisabled
         // GraphQL -> isServiceAccountDisabled: Boolean (scalar)
@@ -122,10 +122,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isInheritIpAllowlistDisabled")]
         public System.Boolean? IsInheritIpAllowlistDisabled { get; set; }
 
-        //      C# -> List<CrossAccountCapability>? CrossAccountCapabilities
-        // GraphQL -> crossAccountCapabilities: [CrossAccountCapability!] (enum)
-        [JsonProperty("crossAccountCapabilities")]
-        public List<CrossAccountCapability>? CrossAccountCapabilities { get; set; }
+        //      C# -> List<System.String>? ReplicationOnlyClusters
+        // GraphQL -> replicationOnlyClusters: [String!] (scalar)
+        [JsonProperty("replicationOnlyClusters")]
+        public List<System.String>? ReplicationOnlyClusters { get; set; }
 
 
         #endregion

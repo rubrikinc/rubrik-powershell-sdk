@@ -1,0 +1,65 @@
+### ReportAttribute
+All reporting attributes.
+
+- ATTRIBUTE_UNSPECIFIED - Unspecified attribute.
+- ALL_ATTRIBUTES - Represents all attributes in the table or chart schema.
+- NO_ATTRIBUTE - No attribute.
+- CLUSTER - The cluster name attribute in the report.
+- CLUSTER_TYPE - The cluster type attribute in the report.
+- OBJECT_TYPE - The object type attribute in the report.
+- TIME - The time attribute in the report.
+- TIME_RANGE - The time range in the report.
+- START_TIME - The start time in the report.
+- END_TIME - The end time in the report.
+- TASK_STATUS - The task status in the report.
+- TASK_TYPE - The task type in the report.
+- COMPLIANCE_STATUS - The compliance status attribute in the report.
+- PROTECTION_STATUS - The protection status attribute in the report.
+- SLA - The SLA Domain attribute in the report.
+- OBJECT - The object attribute in the report.
+- LOCATION - The location attribute in the report.
+- CLUSTER_LOCATION - The cluster location attribute in the report.
+- SEVERITY - The severity attribute in the report.
+- ANOMALY_STATUS - The anomaly status attribute in the report.
+- THREAT_STATUS - The threat status attribute in the report.
+- ACTIVITY_TYPE - The activity type attribute in the report.
+- STRIKE_STATUS - The strike status attribute in the report.
+- OBJECT_STATE - The object state attribute in the report.
+- ORG - The organization attribute in the report.
+- SOURCE_PROTOCOL - The source protocol attribute in the report.
+- NCD_SITE - The NCD site attribute in the report.
+- NCD_POLICY - The NCD policy attribute in the report.
+- PROTECTED_ON - The protected on status in the report.
+- LATEST_LOCAL_SNAPSHOT - The latest local snapshot in the report.
+- LATEST_ARCHIVAL_SNAPSHOT - The latest archival snapshot in the report.
+- LATEST_REPLICATION_SNAPSHOT - The latest replication snapshot in the report.
+- ARCHIVAL_COMPLIANCE_STATUS - The archival compliance status in the report.
+- REPLICATION_COMPLIANCE_STATUS - The replication compliance status in the report.
+- CURRENT_REPLICATION_TASK_STATUS - The current replication task status in the report.
+- ARCHIVE_TARGET - The archive target in the report
+- DIRECT_ARCHIVE - Specifies if the data is archived directly to storage.
+- REPLICATION_SOURCE - The replication source in the report.
+- REPLICATION_TARGET - The replication target in the report.
+- AWAITING_FIRST_FULL - The awaiting first full status in the report.
+- LAST_SUCCESSFUL_BACKUP - The last successful backup in the report.
+- NCD_SNAPSHOT_TYPE - The NCD snapshot type in the report.
+- FAILURE_REASON - The reason for task failure in the report.
+- SNAPSHOT_CONSISTENCY - Specifies the reliability and state of the snapshot for recovery.
+- PROTECTED_VOLUME - The storage unit whose data is backed up and protected.
+- RECOVERY_POINT - A specific snapshot of data for restoration at a particular time.
+- RECOVERY_POINT_TYPE - The type or nature of the recovery point in the backup process.
+- USERNAME - The username in the report.
+- SNAPSHOT_TYPE - The type of snapshot in the report.
+- RISK_SEVERITY - Severity of the policy.
+- RISK_CATEGORY - Category of the policy.
+- FOREST_RECOVERY_STATUS - Status of the forest recovery.
+- FOREST_NAME - The Active Directory forest name.
+- DATA_SOURCE - The data source attribute in the report.
+- THREAT_MONITORING_SCAN_STATUS - The threat monitoring scan status attribute in the report.
+- WORKLOAD_TYPE - The workload type attribute in the report.
+- IOC_TYPE - The threat monitoring ioc type in the report.
+- ANALYZED_SNAPSHOT - The analyzed snapshot attribute in the report.
+- THREAT_MONITORING_UNSCANNED_REASON - The threat monitoring unscanned reason attribute in the report.
+- NODE - The node in the report.
+- ANOMALY_DETECTION_SCAN_OUTCOME - The anomaly detection scan outcome in the report.
+- ANOMALY_DETECTION_UNSCANNED_REASON - The anomaly detection unscanned reason in the report.

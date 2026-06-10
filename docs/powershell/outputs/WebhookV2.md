@@ -29,3 +29,5 @@ Webhook configuration to add to an account.
   - The authentication type that the endpoint uses.
 - serviceAccountId: System.String
   - The ID of the service account attached to the webhook.
+- readOnlyAuthInfo: WebhookReadOnlyAuthInfoV2
+  - Read-only authentication metadata (username, header keys).

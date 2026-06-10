@@ -1,12 +1,22 @@
 ### CreateCustomAnalyzerInput
+Represents the analyzer.
+
 - analyzerType: AnalyzerTypeEnum
+  - Represents the analyzer type.
 - id: System.String
+  - Represents the analyzer ID.
 - name: System.String
+  - Represents the analyzer name.
 - dictionaryCsv: System.String
+  - Represents the dictionary CSV.
 - dictionary: list of System.Strings
+  - Represents the dictionary.
 - regex: System.String
+  - Represents the regex.
 - analyzerRiskInstance: AnalyzerRiskInstanceInput
   - Represents the latest analyzer risk.
+- risk: RiskLevelType
+  - Represents risk associated with the given analyzer.
 - tagId: System.Int32
   - Represents the tag ID for the given analyzer.
 - ruleTypes: list of AnalyzerRuleTypes
@@ -24,14 +34,12 @@
 - structuredKeyDictionary: list of System.Strings
   - Parsed list of keywords from structuredKeyDictionaryCsv.
 - proximityKeywordsRegex: System.String
-  - Regex pattern for proximity keywords used to filter hits based on contextual proximity.
+  - Regex pattern for proximity keywords used to filter hits.
 - proximityDistance: System.Int32
-  - Maximum character distance for proximity keyword matching to filter analyzer hits.
+  - Maximum character distance for proximity keyword matching.
 - isInactive: System.Boolean
   - Represent whether the analyzer is inactive or not.
 - excludeFieldNamePattern: System.String
   - Regex pattern to exclude fields by name.
 - excludePathPattern: System.String
   - Regex pattern to exclude files by path.
-- risk: RiskLevelType
-  - Represents risk associated with the given analyzer.

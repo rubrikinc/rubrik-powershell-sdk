@@ -2,8 +2,8 @@
 Snapshot scan config.
 
 - startTime: DateTime
-  - Start time for the snapshot scan.
+  - Specifies the start time of the snapshot scan.
 - endTime: DateTime
-  - End time for the snapshot scan.
+  - Specifies the end time of the snapshot scan.
 - maxSnapshotsPerObject: System.Int32
-  - Maximum number of snapshots to scan.
+  - Specifies the max snapshots per object.

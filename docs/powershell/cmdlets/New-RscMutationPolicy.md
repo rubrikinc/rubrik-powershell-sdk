@@ -9,6 +9,11 @@ Add policies to objects.
     - objectRootIds - list of System.Strings: List of supported root IDs.
     - clusterIds - list of System.Strings: List of Rubrik cluster IDs.
 - Returns System.String.
+### bulkupdatepolicyviolations
+Bulk update policy violations' status.
+
+- There is a single argument of type BulkUpdatePolicyViolationsInput.
+- Returns System.String.
 ### createpolicy
 Create a classification policy.
 

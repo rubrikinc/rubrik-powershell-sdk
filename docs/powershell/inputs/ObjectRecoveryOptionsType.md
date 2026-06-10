@@ -10,4 +10,8 @@ Configuration to retrieve Azure AD object recovery.
 - conditionalAccessPolicyRecoveryOption: ConditionalAccessPolicyRecoveryOption
   - Specifies the recovery option of Azure AD conditional access policy.
 - administrativeUnitRecoveryOption: AdministrativeUnitRecoveryOption
-  - Specifies the recovery option for an Azure AD administrative unit.
+  - Deprecated, this field is no longer used and will be ignored.
+- deviceConfigPolicyRecoveryOption: DeviceConfigPolicyRecoveryOption
+  - Specifies the recovery option for device configuration policies.
+- governanceRecoveryOption: GovernanceRecoveryOptionType
+  - Specifies the governance-aware classifier configuration for Member, Owner, and RoleAssignment edge restore.

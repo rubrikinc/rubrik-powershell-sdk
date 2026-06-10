@@ -1,47 +1,45 @@
 ### ClusterDisk
 Rubrik cluster disk type.
 
-- status: ClusterDiskStatus
-  - Disk status.
+- diskId: System.String
+  - ID of the Rubrik cluster disk type.
 - isEncrypted: System.Boolean
   - Specifies if the disk is encrypted.
-- diskType: ClusterDiskType
-  - Disk type.
 - nodeId: System.String
   - ID of the Rubrik cluster node.
+- clusterId: System.String
+  - ID of the Rubrik cluster.
 - capacityBytes: System.Int64
   - Disk capacity, in bytes.
-- path: System.String
-  - Disk path.
 - unallocatedBytes: System.Int64
   - Disk unallocated bytes.
 - usableBytes: System.Int64
   - Disk usable bytes.
-- clusterId: System.String
-  - ID of the Rubrik cluster.
-- ledStatus: System.Boolean
-  - LED status of the disk, where true means ON and false is OFF.
+- path: System.String
+  - Disk path.
 - serial: System.String
   - Disk serial ID.
+- ledStatus: System.Boolean
+  - LED status of the disk, where true means ON and false is OFF.
 - isResizable: System.Boolean
   - Specifies if the disk is resizable.
 - manufacturer: System.String
   - Disk manufacturer.
 - model: System.String
   - Disk model.
-- diskMode: ClusterDiskMode
-  - Disk mode.
-- raidType: ClusterRaidType
-  - RAID type.
-- raidStatus: ClusterRaidStatus
-  - RAID status.
 - raidError: System.String
   - RAID error message.
 - raidRebuildingPercentage: System.Single
   - RAID rebuilding percentage (0-100) when RAID status is REBUILDING.
 - hasIndicatorLed: System.Boolean
   - Specifies if the disk has an LED.
-- id: System.String
-  - This field is deprecated.
-- diskId: System.String
-  - ID of the Rubrik cluster disk type.
+- diskType: ClusterDiskType
+  - Disk type.
+- diskMode: ClusterDiskMode
+  - Disk mode.
+- raidType: ClusterRaidType
+  - RAID type.
+- raidStatus: ClusterRaidStatus
+  - RAID status.
+- status: ClusterDiskStatus
+  - Disk status.

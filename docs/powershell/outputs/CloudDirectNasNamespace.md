@@ -37,12 +37,6 @@ NAS Cloud Direct namespace object.
   - Total number of objects in this NAS namespace.
 - protectedSharesCount: System.Int32
   - Total number of protected shares in this NAS namespace.
-- cluster: Cluster
-  - NAS Cloud Direct cluster where this object originated.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -75,3 +69,11 @@ NAS Cloud Direct namespace object.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- cluster: Cluster
+  - NAS Cloud Direct cluster where this object originated.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
+- cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for Cloud Direct objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

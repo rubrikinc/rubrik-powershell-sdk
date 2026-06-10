@@ -13,6 +13,10 @@ Specific info for GCP Target Template.
   - Cloud native template type.
 - labels: list of TagObjects
   - GCP target bucket labels.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type for the GCP location template.
+- bucketNetworkAccess: GcpBucketNetworkAccess
+  - Network access setting for the GCP bucket.
 - cloudAccount: CloudAccount
   - Cloud Account information of the GCP target.
 - targetType: TargetType

@@ -13,3 +13,5 @@ Azure subscription with features.
   - Azure tenant ID.
 - featureDetails: list of AzureCloudAccountFeatureDetails
   - Feature details for the cloud account.
+- managementGroup: AzureManagementGroup
+  - Management group of the Azure subscription.

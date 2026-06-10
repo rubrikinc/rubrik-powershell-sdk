@@ -658,6 +658,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	limit = $someInt
+    /// 	# OPTIONAL
+    /// 	offset = $someInt
     /// }
     /// 
     /// # Execute the query
@@ -1428,6 +1432,10 @@ $query.Var.isReplica = $someBoolean"
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+	# OPTIONAL
+	limit = $someInt
+	# OPTIONAL
+	offset = $someInt
 }"
             );
         }

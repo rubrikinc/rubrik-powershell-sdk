@@ -25,3 +25,23 @@ Filters for querying sign-in logs.
   - Filter by display names.
 - displayNameSearchTerm: System.String
   - Free-text search term for filtering by actor display name.
+- userIds: list of System.Strings
+  - Filter by user IDs.
+- errorCodes: list of System.Strings
+  - Filter by error codes.
+- logonTypes: list of System.Strings
+  - Filter by logon type descriptions.
+- deviceNames: list of System.Strings
+  - Filter by device names.
+- resourceNames: list of System.Strings
+  - Filter by resource names.
+- processNames: list of System.Strings
+  - Filter by process names.
+- authenticationMethods: list of System.Strings
+  - Filter by authentication methods.
+- mfaStatuses: list of System.Strings
+  - Filter by MFA status.
+- failureCategories: list of SigninLogFailureCategorys
+  - Filter by normalized failure category.
+- eventIds: list of System.Strings
+  - Filter by event IDs (unique sign-in event identifiers).

@@ -12,3 +12,4 @@ TOTP status for a user.
 - isSupported: System.Boolean
   - Specifies whether TOTP is supported for the user.
 - isEnforcedUserLevel: System.Boolean
+  - Specifies whether TOTP is enforced at the user level.

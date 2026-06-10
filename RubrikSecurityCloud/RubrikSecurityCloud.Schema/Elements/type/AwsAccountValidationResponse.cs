@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudType")]
         public AwsCloudType? CloudType { get; set; }
 
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        [JsonProperty("crossAccountRoleModel")]
+        public CrossAccountRoleModel? CrossAccountRoleModel { get; set; }
+
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         [JsonProperty("accountName")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
 
     public AwsAccountValidationResponse Set(
         AwsCloudType? CloudType = null,
+        CrossAccountRoleModel? CrossAccountRoleModel = null,
         System.String? AccountName = null,
         System.String? Message = null,
         System.String? NativeId = null,
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CloudType != null ) {
             this.CloudType = CloudType;
+        }
+        if ( CrossAccountRoleModel != null ) {
+            this.CrossAccountRoleModel = CrossAccountRoleModel;
         }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudType\n" ;
             } else {
                 s += ind + "cloudType\n" ;
+            }
+        }
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        if (this.CrossAccountRoleModel != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "crossAccountRoleModel\n" ;
+            } else {
+                s += ind + "crossAccountRoleModel\n" ;
             }
         }
         //      C# -> System.String? AccountName
@@ -213,6 +231,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudType != null && ec.Excludes("cloudType",true))
         {
             this.CloudType = null;
+        }
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        if (ec.Includes("crossAccountRoleModel",true))
+        {
+            if(this.CrossAccountRoleModel == null) {
+
+                this.CrossAccountRoleModel = new CrossAccountRoleModel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CrossAccountRoleModel != null && ec.Excludes("crossAccountRoleModel",true))
+        {
+            this.CrossAccountRoleModel = null;
         }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)

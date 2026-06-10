@@ -21,9 +21,11 @@ This endpoint is deprecated.
     - permissions - list of PermissionInputs: Permissions in the role.
 - Returns System.String.
 ### createuser
+Create a new user.
+
 - There are 2 arguments.
     - email - System.String: User email.
-    - roleIds - list of System.Strings
+    - roleIds - list of System.Strings: Role IDs to assign to the user.
 - Returns System.String.
 ### createuserwithpassword
 Creates a new user with a set password.
@@ -36,6 +38,8 @@ Delete an organization.
 - There is a single argument of type DeleteOrgInput.
 - Returns System.Boolean.
 ### deleterole
+Deletes a role.
+
 - There is a single argument of type System.String.
 - Returns System.Boolean.
 ### deletetotpconfig
@@ -44,11 +48,13 @@ Reset TOTP configuration for a user. Return true when the operation succeeds.
 - There is a single argument of type System.String.
 - Returns System.Boolean.
 ### deletetotpconfigs
-Reset TOTP configuration for users in batch. Return true when the operation succeeds.
+Reset TOTP configuration for multiple users. Return true when the operation succeeds.
 
 - There is a single argument of type DeleteTotpConfigsInput.
 - Returns System.Boolean.
 ### deleteusers
+Deletes specified users from the account.
+
 - There is a single argument of type list of System.Strings.
 - Returns System.Boolean.
 ### generatetotpsecret
@@ -57,10 +63,12 @@ Generate TOTP secret for a user.
 - There is a single argument of type System.String.
 - Returns GenerateTotpSecretReply.
 ### mutaterole
+Creates a role if `roleId` is not provided; otherwise updates the existing role.
+
 - There are 6 arguments.
     - roleId - System.String: ID of the role.
-    - name - System.String
-    - description - System.String
+    - name - System.String: Name of the role.
+    - description - System.String: Description of the role.
     - permissions - list of PermissionInputs: Permissions in the role.
     - protectableClusters - list of System.Strings: List of protectable clusters.
     - isSynced - System.Boolean: Determines whether the role is marked to be synced to Rubrik CDM; false if null.

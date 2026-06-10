@@ -45,5 +45,12 @@ protection of GitHub repositories and related workload.
 - AWS_CONFIG_PROTECTION - Cloud account feature is Application Config Protection.
 - CLOUD_NATIVE_CONFIG_PROTECTION - Cloud account feature is Config Protection.
 - ALLOY_DB_PROTECTION - Cloud account feature is AlloyDB Protection.
+- AZURE_POSTGRES_FLEXIBLE_SERVER_PROTECTION - Cloud account feature is Azure PostgreSQL Flexible Server Protection.
+- GCP_BIGQUERY_PROTECTION - Cloud account feature is GCP BigQuery Protection.
+- GLUE_ICEBERG_PROTECTION - Cloud account feature is Glue Iceberg Protection.
+- GCP_BIGQUERY_RESERVATION - Cloud account feature is GCP BigQuery Reservation host.
+- AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION - AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION refers to the feature
+enabling backup of non-repo Azure DevOps project content (work items,
+boards, sprints, wikis, teams).
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

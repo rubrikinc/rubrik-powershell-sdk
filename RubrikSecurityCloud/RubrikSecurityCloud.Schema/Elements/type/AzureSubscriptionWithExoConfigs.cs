@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("globalRegionExocomputeConfigs")]
         public List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs { get; set; }
 
+        //      C# -> AzureManagementGroup? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroup (type)
+        [JsonProperty("managementGroup")]
+        public AzureManagementGroup? ManagementGroup { get; set; }
+
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
         [JsonProperty("mappedCloudAccounts")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         List<AzureExocomputeConfigDetails>? ExocomputeConfigs = null,
         AzureCloudAccountFeatureDetail? FeatureDetail = null,
         List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs = null,
+        AzureManagementGroup? ManagementGroup = null,
         List<CloudAccountDetails>? MappedCloudAccounts = null,
         List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs = null,
         AzureMappedExocomputeSubscription? MappedExocomputeSubscription = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GlobalRegionExocomputeConfigs != null ) {
             this.GlobalRegionExocomputeConfigs = GlobalRegionExocomputeConfigs;
+        }
+        if ( ManagementGroup != null ) {
+            this.ManagementGroup = ManagementGroup;
         }
         if ( MappedCloudAccounts != null ) {
             this.MappedCloudAccounts = MappedCloudAccounts;
@@ -223,6 +232,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "globalRegionExocomputeConfigs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureManagementGroup? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroup (type)
+        if (this.ManagementGroup != null) {
+            var fspec = this.ManagementGroup.AsFieldSpec(conf.Child("managementGroup"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managementGroup" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -410,6 +431,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GlobalRegionExocomputeConfigs != null && ec.Excludes("globalRegionExocomputeConfigs",false))
         {
             this.GlobalRegionExocomputeConfigs = null;
+        }
+        //      C# -> AzureManagementGroup? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroup (type)
+        if (ec.Includes("managementGroup",false))
+        {
+            if(this.ManagementGroup == null) {
+
+                this.ManagementGroup = new AzureManagementGroup();
+                this.ManagementGroup.ApplyExploratoryFieldSpec(ec.NewChild("managementGroup"));
+
+            } else {
+
+                this.ManagementGroup.ApplyExploratoryFieldSpec(ec.NewChild("managementGroup"));
+
+            }
+        }
+        else if (this.ManagementGroup != null && ec.Excludes("managementGroup",false))
+        {
+            this.ManagementGroup = null;
         }
         //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
         // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)

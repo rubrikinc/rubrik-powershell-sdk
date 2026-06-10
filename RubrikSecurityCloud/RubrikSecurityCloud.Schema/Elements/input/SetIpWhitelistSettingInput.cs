@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CurrentIpAddress
+        // GraphQL -> currentIpAddress: String (scalar)
+        [JsonProperty("currentIpAddress")]
+        public System.String? CurrentIpAddress { get; set; }
+
         //      C# -> System.Boolean? IsIpWhitelistEnabled
         // GraphQL -> isIpWhitelistEnabled: Boolean! (scalar)
         [Required]

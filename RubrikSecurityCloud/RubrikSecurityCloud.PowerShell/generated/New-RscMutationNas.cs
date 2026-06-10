@@ -236,7 +236,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 				# OPTIONAL
+    /// 				isNetAppSnapDiffEnabled = $someBoolean
+    /// 				# OPTIONAL
     /// 				nasSourceId = $someString
+    /// 				# OPTIONAL
+    /// 				isNutanixCftEnabled = $someBoolean
     /// 			}
     /// 		)
     /// 	}
@@ -389,6 +393,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			nfsPseudoFsPrefix = $someString
     /// 		}
     /// 		# REQUIRED
     /// 		hostname = $someString
@@ -461,7 +467,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			apiUsername = $someString
     /// 		}
     /// 		# OPTIONAL
+    /// 		isNetAppSnapDiffEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isNutanixCftEnabled = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -503,6 +513,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				id = $someString
     /// 				# OPTIONAL
     /// 				isIsilonChangelistEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isNetAppSnapDiffEnabled = $someBoolean
+    /// 				# OPTIONAL
+    /// 				isNutanixCftEnabled = $someBoolean
     /// 			}
     /// 		)
     /// 	}
@@ -550,6 +564,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# REQUIRED
     /// 				username = $someString
     /// 			}
+    /// 			# OPTIONAL
+    /// 			nfsPseudoFsPrefix = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		hostname = $someString
@@ -626,11 +642,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			apiUsername = $someString
     /// 		}
     /// 		# OPTIONAL
+    /// 		isNetAppSnapDiffEnabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		shouldGrantNfsShareRootAccess = $someBoolean
     /// 		# OPTIONAL
     /// 		userSelectedNfsInterfaces = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		isNutanixCftEnabled = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -958,7 +978,11 @@ $query.Var.input = @{
 					$someString
 				)
 				# OPTIONAL
+				isNetAppSnapDiffEnabled = $someBoolean
+				# OPTIONAL
 				nasSourceId = $someString
+				# OPTIONAL
+				isNutanixCftEnabled = $someBoolean
 			}
 		)
 	}
@@ -1079,6 +1103,8 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
+			# OPTIONAL
+			nfsPseudoFsPrefix = $someString
 		}
 		# REQUIRED
 		hostname = $someString
@@ -1151,7 +1177,11 @@ $query.Var.input = @{
 			apiUsername = $someString
 		}
 		# OPTIONAL
+		isNetAppSnapDiffEnabled = $someBoolean
+		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
+		# OPTIONAL
+		isNutanixCftEnabled = $someBoolean
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -1185,6 +1215,10 @@ $query.Var.input = @{
 				id = $someString
 				# OPTIONAL
 				isIsilonChangelistEnabled = $someBoolean
+				# OPTIONAL
+				isNetAppSnapDiffEnabled = $someBoolean
+				# OPTIONAL
+				isNutanixCftEnabled = $someBoolean
 			}
 		)
 	}
@@ -1224,6 +1258,8 @@ $query.Var.input = @{
 				# REQUIRED
 				username = $someString
 			}
+			# OPTIONAL
+			nfsPseudoFsPrefix = $someString
 		}
 		# OPTIONAL
 		hostname = $someString
@@ -1300,11 +1336,15 @@ $query.Var.input = @{
 			apiUsername = $someString
 		}
 		# OPTIONAL
+		isNetAppSnapDiffEnabled = $someBoolean
+		# OPTIONAL
 		shouldGrantNfsShareRootAccess = $someBoolean
 		# OPTIONAL
 		userSelectedNfsInterfaces = @(
 			$someString
 		)
+		# OPTIONAL
+		isNutanixCftEnabled = $someBoolean
 	}
 	# REQUIRED
 	id = $someString

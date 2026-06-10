@@ -20,11 +20,35 @@ Add nodes to cloud cluster.
 
 - There is a single argument of type AddNodesToCloudClusterInput.
 - Returns CcProvisionJobReply.
+### addpostgresqldb
+Create a PostgreSQL database cluster instance
+
+Supported in v9.2+
+Start an asynchronous job to create an instance of PostgreSQL database cluster.
+
+- There is a single argument of type AddPostgreSqlDbClusterInput.
+- Returns AddPostgreSqlDbClusterReply.
 ### deleteclusterroute
 Delete an existing route on a Rubrik cluster. Supported in Rubrik CDM v5.0+
 
 - There is a single argument of type DeleteClusterRouteInput.
 - Returns System.String.
+### deletepostgresqldb
+Delete a PostgreSQL database cluster
+
+Supported in v9.2+
+Initiates a job to delete a PostgreSQL database cluster. GET /postgresql/db_cluster/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type DeletePostgresDbClusterInput.
+- Returns AsyncRequestStatus.
+### deletepostgresqldbclusterlivemount
+Delete a Live Mount of a PostgreSQL database cluster
+
+Supported in v9.2+
+Deletes the Live Mount of a PostgreSQL database cluster associated with the specified ID.
+
+- There is a single argument of type DeletePostgresDbClusterLiveMountInput.
+- Returns AsyncRequestStatus.
 ### deleteterminatedclusteroperationjobdata
 Delete the metadata of a Rubrik cluster operation job that is in a terminal state.
 
@@ -50,11 +74,35 @@ Migrate the disks on cloud cluster.
 
 - There is a single argument of type MigrateCloudClusterDisksInput.
 - Returns CcProvisionJobReply.
+### patchpostgresqldb
+Update properties of the PostgreSQL database cluster instance
+
+Supported in v9.2+
+Start an asynchronous job to update the properties of the PostgreSQL database cluster.
+
+- There is a single argument of type PatchPostgresDbClusterInput.
+- Returns PatchPostgresDbClusterResponse.
+### pitrestorepostgresqldb
+Point-in-time recovery of the specified PostgreSQL database cluster to host
+
+Supported in v9.2+
+Initiates a job to export the data and log snapshot to the given host. The GET /postgresql/db_cluster/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type PitRestorePostgresDbClusterInput.
+- Returns PitRestorePostgresDbClusterResponse.
 ### recovercloud
 Recover a Rubrik Cloud Cluster.
 
 - There is a single argument of type RecoverCloudClusterInput.
 - Returns CcProvisionJobReply.
+### refreshpostgresqldb
+Refresh PostgreSQL database cluster metadata
+
+Supported in v9.2+
+Initiates a job to refresh metadata of a PostgreSQL database cluster object. The GET /postgresql/db_cluster/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type RefreshPostgresDbClusterInput.
+- Returns AsyncRequestStatus.
 ### registercloud
 Register a cloud cluster.
 
@@ -86,11 +134,36 @@ Requests a persistent Exocompute clusters for a region configuration in a cloud 
 
 - There is a single argument of type RequestPersistentExoclusterInput.
 - Returns RequestPersistentExoclusterReply.
+### restorepostgresqldb
+Restore of the specified PostgreSQL database cluster to host
+
+Supported in v9.4+
+v9.4: Initiates a job to do the restore of the PostgreSQL database cluster in the given host. The GET /postgresql/db_cluster/request/{id} endpoint can be used to monitor the progress of the job.
+v9.5+: Initiates a job to restore the PostgreSQL database cluster on the given host. The GET /postgresql/db_cluster/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type RestorePostgreSqlDbClusterInput.
+- Returns RestorePostgreSqlDbClusterReply.
+### restorepostgresqldbclustertosnapshot
+Mount the specified PostgreSQL database cluster snapshot to host
+
+Supported in v9.2+
+Initiates a job to mount the snapshot to the given host. The GET /postgresql/db_cluster/request/{id} endpoint can be used to monitor the progress of the job.
+
+- There is a single argument of type RestorePostgresDbClusterSnapshotInput.
+- Returns RestorePostgresDbClusterSnapshotResponse.
 ### setmissingclusterstatus
 Update missing cluster connection status.
 
 - There is a single argument of type SetMissingClusterStatusInput.
 - Returns SetMissingClusterStatusReply.
+### takeondemandpostgresqldbclustersnapshot
+Create an on-demand snapshot for the PostgreSQL database cluster
+
+Supported in v9.2+
+Initiates a job to take an on-demand snapshot of a specified PostgreSQL database cluster. You can use the GET /postgresql/db_cluster/request/{id} endpoint to monitor the progress of the job.
+
+- There is a single argument of type TakeOnDemandPostgreSQLDbClusterSnapshotInput.
+- Returns AsyncRequestStatus.
 ### updateclusterdefaultaddress
 Update the default address of a Rubrik cluster.
 

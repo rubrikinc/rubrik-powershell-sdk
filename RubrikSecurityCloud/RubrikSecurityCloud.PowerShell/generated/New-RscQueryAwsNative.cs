@@ -152,6 +152,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		serviceTypes = @(
+    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 		)
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
@@ -428,6 +435,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		serviceTypes = @(
+    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	outpostArnFilter = @{
+    /// 		# REQUIRED
+    /// 		outpostArns = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -660,6 +681,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isEligibleForProtection = $someBoolean
     /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		serviceTypes = @(
+    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -705,6 +733,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	discoveryMethodFilter = @{
+    /// 		# REQUIRED
+    /// 		discoveryMethods = @(
+    /// 			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	outpostArnFilter = @{
+    /// 		# REQUIRED
+    /// 		outpostArns = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1033,6 +1075,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isEligibleForProtection = $someBoolean
     /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @{
+    /// 		# REQUIRED
+    /// 		serviceTypes = @(
+    /// 			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -1078,6 +1127,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	discoveryMethodFilter = @{
+    /// 		# REQUIRED
+    /// 		discoveryMethods = @(
+    /// 			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
+    /// 		)
+    /// 	}
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -1700,6 +1756,13 @@ $query.Var.accountFilters = @{
 			$someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		)
 	}
+	# OPTIONAL
+	serviceTypeFilter = @{
+		# REQUIRED
+		serviceTypes = @(
+			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+		)
+	}
 }
 # OPTIONAL
 $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
@@ -1954,6 +2017,20 @@ $query.Var.ebsVolumeFilters = @{
 	}
 	# OPTIONAL
 	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	serviceTypeFilter = @{
+		# REQUIRED
+		serviceTypes = @(
+			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+		)
+	}
+	# OPTIONAL
+	outpostArnFilter = @{
+		# REQUIRED
+		outpostArns = @(
+			$someString
+		)
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2195,6 +2272,13 @@ $query.Var.ec2InstanceFilters = @{
 	# OPTIONAL
 	isEligibleForProtection = $someBoolean
 	# OPTIONAL
+	serviceTypeFilter = @{
+		# REQUIRED
+		serviceTypes = @(
+			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+		)
+	}
+	# OPTIONAL
 	hierarchyFilters = @(
 		@{
 			# OPTIONAL
@@ -2240,6 +2324,20 @@ $query.Var.ec2InstanceFilters = @{
 			)
 		}
 	)
+	# OPTIONAL
+	discoveryMethodFilter = @{
+		# REQUIRED
+		discoveryMethods = @(
+			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
+		)
+	}
+	# OPTIONAL
+	outpostArnFilter = @{
+		# REQUIRED
+		outpostArns = @(
+			$someString
+		)
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -2581,6 +2679,13 @@ $query.Var.rdsInstanceFilters = @{
 	# OPTIONAL
 	isEligibleForProtection = $someBoolean
 	# OPTIONAL
+	serviceTypeFilter = @{
+		# REQUIRED
+		serviceTypes = @(
+			$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+		)
+	}
+	# OPTIONAL
 	hierarchyFilters = @(
 		@{
 			# OPTIONAL
@@ -2626,6 +2731,13 @@ $query.Var.rdsInstanceFilters = @{
 			)
 		}
 	)
+	# OPTIONAL
+	discoveryMethodFilter = @{
+		# REQUIRED
+		discoveryMethods = @(
+			$someCloudNativeAppDiscoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeAppDiscoveryMethod]) for enum values.
+		)
+	}
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

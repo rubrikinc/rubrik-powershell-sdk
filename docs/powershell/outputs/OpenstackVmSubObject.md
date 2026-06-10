@@ -5,3 +5,7 @@ A virtual disk captured in an Openstack virtual machine snapshot.
   - ID of the virtual disk.
 - remoteFilePath: System.String
   - ID of the virtual disk.
+- volumeTypeName: System.String
+  - Name of the OpenStack volume type.
+- volumeTypeId: System.String
+  - ID of the OpenStack volume type.

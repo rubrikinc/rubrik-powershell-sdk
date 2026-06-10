@@ -23,3 +23,5 @@ Azure Cloud Account Subscription with exocompute configurations for feature conf
   - Cloud Account details of subscriptions that are mapped to this Exocompute account.
 - exocomputeMappableRegions: list of AzureCloudAccountRegions
   - Regions with protected objects that can be mapped to exocompute configurations.
+- managementGroup: AzureManagementGroup
+  - Management group of the Azure subscription.

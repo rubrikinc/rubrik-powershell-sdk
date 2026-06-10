@@ -3,6 +3,8 @@ Specific info for Gcp target created on Cdm.
 
 - id: System.String
   - Id of the GCP location.
+- immutabilitySettings: GcpImmutabilitySettings
+  - Immutability settings of the GCP archival target.
 - region: GcpRegion
   - Region of the GCP location.
 - cluster: Cluster

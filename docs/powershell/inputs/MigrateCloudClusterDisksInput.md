@@ -15,3 +15,7 @@ Disk migration request for a cloud cluster.
   - Specifies whether new nodes must be extra dense.
 - newInstanceType: System.Int32
   - Instance type enum value for the choosen cloud vendor.
+- isAzMigration: System.Boolean
+  - Specifies whether RSC is migrating the cluster to AZ-resilient mode.
+- subnetAzConfigs: list of SubnetAzConfigInputs
+  - Target subnet and availability zone pairs for AZ-resilient migration.

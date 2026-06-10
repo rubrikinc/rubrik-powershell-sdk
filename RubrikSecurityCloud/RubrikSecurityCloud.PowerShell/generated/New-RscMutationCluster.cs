@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 23
+    /// Create a new RscQuery object for any of the 32
     /// operations in the 'Cluster' API domain:
-    /// AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, AddPostgreSqlDb, DeleteClusterRoute, DeletePostgreSqlDb, DeletePostgreSqlDbClusterLiveMount, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, PatchPostgreSqlDb, PitRestorePostgreSqlDb, RecoverCloud, RefreshPostgreSqlDb, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, RestorePostgreSqlDb, RestorePostgreSqlDbClusterToSnapshot, SetMissingClusterStatus, TakeOnDemandPostgreSqlDbClusterSnapshot, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// </summary>
     /// <description>
     /// New-RscMutationCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 23 operations
+    /// There are 32 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, DeleteClusterRoute, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, RecoverCloud, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, SetMissingClusterStatus, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
+    /// one of: AcknowledgeClusterNotification, AddClusterNodes, AddClusterRoute, AddNodesToCloud, AddPostgreSqlDb, DeleteClusterRoute, DeletePostgreSqlDb, DeletePostgreSqlDbClusterLiveMount, DeleteTerminatedClusterOperationJobData, DisconnectExocompute, ExocomputeClusterConnect, GenerateClusterRegistrationToken, MigrateCloudClusterDisks, PatchPostgreSqlDb, PitRestorePostgreSqlDb, RecoverCloud, RefreshPostgreSqlDb, RegisterCloud, ReleasePersistentExo, RemoveCdm, RemoveClusterNodes, ReplaceClusterNode, RequestPersistentExo, RestorePostgreSqlDb, RestorePostgreSqlDbClusterToSnapshot, SetMissingClusterStatus, TakeOnDemandPostgreSqlDbClusterSnapshot, UpdateClusterDefaultAddress, UpdateClusterNtpServers, UpdateClusterPauseStatus, UpdateClusterSettings, or UpdatePreviewerClusterConfig.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -306,6 +306,88 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the AddPostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: AddPostgreSqlDb
+    /// 
+    /// $query = New-RscMutationCluster -Operation AddPostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	postgresqlDbClusterConfig = @{
+    /// 		# REQUIRED
+    /// 		systemUsername = $someString
+    /// 		# OPTIONAL
+    /// 		loginInfo = @{
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		discoveryInfo = @{
+    /// 			# REQUIRED
+    /// 			entityInfo = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			hostInfo = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					portNumber = $someInt
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		haClusterConfig = @{
+    /// 			# REQUIRED
+    /// 			haGroupName = $someString
+    /// 			# REQUIRED
+    /// 			replicas = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					role = $somePostgresHaReplicaConfigRole # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PostgresHaReplicaConfigRole]) for enum values.
+    /// 					# REQUIRED
+    /// 					portNumber = $someInt
+    /// 					# OPTIONAL
+    /// 					replicaId = $someString
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 					# REQUIRED
+    /// 					replicaName = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AddPostgreSqlDbClusterReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteClusterRoute operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -338,6 +420,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeletePostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: DeletePostgreSqlDb
+    /// 
+    /// $query = New-RscMutationCluster -Operation DeletePostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeletePostgreSqlDbClusterLiveMount operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: DeletePostgreSqlDbClusterLiveMount
+    /// 
+    /// $query = New-RscMutationCluster -Operation DeletePostgreSqlDbClusterLiveMount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -533,6 +679,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	migrateToExtraDense = $someBoolean
     /// 	# OPTIONAL
     /// 	newInstanceType = $someInt
+    /// 	# OPTIONAL
+    /// 	isAzMigration = $someBoolean
+    /// 	# OPTIONAL
+    /// 	subnetAzConfigs = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			subnet = $someString
+    /// 			# OPTIONAL
+    /// 			availabilityZone = $someString
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -540,6 +697,155 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PatchPostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: PatchPostgreSqlDb
+    /// 
+    /// $query = New-RscMutationCluster -Operation PatchPostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# REQUIRED
+    /// 	postgresqlDbClusterConfig = @{
+    /// 		# REQUIRED
+    /// 		systemUsername = $someString
+    /// 		# OPTIONAL
+    /// 		loginInfo = @{
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		discoveryInfo = @{
+    /// 			# REQUIRED
+    /// 			entityInfo = @{
+    /// 				# REQUIRED
+    /// 				name = $someString
+    /// 			}
+    /// 			# REQUIRED
+    /// 			hostInfo = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					portNumber = $someInt
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		haClusterConfig = @{
+    /// 			# REQUIRED
+    /// 			haGroupName = $someString
+    /// 			# REQUIRED
+    /// 			replicas = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					role = $somePostgresHaReplicaConfigRole # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PostgresHaReplicaConfigRole]) for enum values.
+    /// 					# REQUIRED
+    /// 					portNumber = $someInt
+    /// 					# OPTIONAL
+    /// 					replicaId = $someString
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 					# REQUIRED
+    /// 					replicaName = $someString
+    /// 					# OPTIONAL
+    /// 					username = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PatchPostgresDbClusterResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PitRestorePostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: PitRestorePostgreSqlDb
+    /// 
+    /// $query = New-RscMutationCluster -Operation PitRestorePostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	postgresqlDbClusterPitRestoreConfig = @{
+    /// 		# OPTIONAL
+    /// 		nodeInfo = @{
+    /// 			# OPTIONAL
+    /// 			nodeHint = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			subnet = $someString
+    /// 		}
+    /// 		# REQUIRED
+    /// 		pitRestoreInfo = @{
+    /// 			# REQUIRED
+    /// 			hostRecoveryTargets = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					hostMountPaths = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryName = $someString
+    /// 			# OPTIONAL
+    /// 			recoveryTime = $someDateTime
+    /// 			# OPTIONAL
+    /// 			extendedRecoveryTimeInSec = $someInt64
+    /// 			# OPTIONAL
+    /// 			locationId = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PitRestorePostgresDbClusterResponse
     /// 
     /// 
     /// 
@@ -740,6 +1046,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAzResilient = $someBoolean
+    /// 	# OPTIONAL
+    /// 	dnsNameServers = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	dnsSearchDomains = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -747,6 +1061,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CcProvisionJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RefreshPostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: RefreshPostgreSqlDb
+    /// 
+    /// $query = New-RscMutationCluster -Operation RefreshPostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -995,6 +1340,186 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestorePostgreSqlDb operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: RestorePostgreSqlDb
+    /// 
+    /// $query = New-RscMutationCluster -Operation RestorePostgreSqlDb
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	restoreConfig = @{
+    /// 		# REQUIRED
+    /// 		restoreInfo = @{
+    /// 			# REQUIRED
+    /// 			locationMap = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					snapshotId = $someString
+    /// 					# REQUIRED
+    /// 					locationId = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			restoreSettings = @{
+    /// 				# OPTIONAL
+    /// 				shouldRestoreOnlyDataSnapshot = $someBoolean
+    /// 			}
+    /// 			# REQUIRED
+    /// 			restoreName = $someString
+    /// 			# OPTIONAL
+    /// 			restoreTime = $someDateTime
+    /// 			# REQUIRED
+    /// 			restoreEntities = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			hostRestoreTargets = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					portNumber = $someInt
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			preferredDataSnapshotId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		nodeInfo = @{
+    /// 			# OPTIONAL
+    /// 			nodeHint = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			subnet = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		postgresRestoreSettings = @{
+    /// 			# OPTIONAL
+    /// 			shouldRestoreAsReadOnly = $someBoolean
+    /// 			# OPTIONAL
+    /// 			systemUsername = $someString
+    /// 			# OPTIONAL
+    /// 			shouldRestoreAsReplica = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldOverrideConfFiles = $someBoolean
+    /// 			# OPTIONAL
+    /// 			dbUsername = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		multiPostgresRestoreSettings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				portNumber = $someInt
+    /// 				# REQUIRED
+    /// 				restoreSettings = @{
+    /// 					# OPTIONAL
+    /// 					shouldRestoreAsReadOnly = $someBoolean
+    /// 					# OPTIONAL
+    /// 					systemUsername = $someString
+    /// 					# OPTIONAL
+    /// 					shouldRestoreAsReplica = $someBoolean
+    /// 					# OPTIONAL
+    /// 					shouldOverrideConfFiles = $someBoolean
+    /// 					# OPTIONAL
+    /// 					dbUsername = $someString
+    /// 				}
+    /// 				# REQUIRED
+    /// 				hostId = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RestorePostgreSqlDbClusterReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RestorePostgreSqlDbClusterToSnapshot operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: RestorePostgreSqlDbClusterToSnapshot
+    /// 
+    /// $query = New-RscMutationCluster -Operation RestorePostgreSqlDbClusterToSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	postgresqlDbClusterRestoreConfig = @{
+    /// 		# REQUIRED
+    /// 		restoreInfo = @{
+    /// 			# REQUIRED
+    /// 			hostRecoveryTargets = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					hostMountPaths = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			snapshotId = $someString
+    /// 			# OPTIONAL
+    /// 			logSnapshotTimeRange = @{
+    /// 				# OPTIONAL
+    /// 				startTime = $someDateTime
+    /// 				# OPTIONAL
+    /// 				endTime = $someDateTime
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		nodeInfo = @{
+    /// 			# OPTIONAL
+    /// 			nodeHint = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			subnet = $someString
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RestorePostgresDbClusterSnapshotResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SetMissingClusterStatus operation
     /// of the 'Cluster' API domain.
     /// <code>
@@ -1022,6 +1547,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: SetMissingClusterStatusReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the TakeOnDemandPostgreSqlDbClusterSnapshot operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: TakeOnDemandPostgreSqlDbClusterSnapshot
+    /// 
+    /// $query = New-RscMutationCluster -Operation TakeOnDemandPostgreSqlDbClusterSnapshot
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -1249,20 +1812,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddClusterNodes",
                 "AddClusterRoute",
                 "AddNodesToCloud",
+                "AddPostgreSqlDb",
                 "DeleteClusterRoute",
+                "DeletePostgreSqlDb",
+                "DeletePostgreSqlDbClusterLiveMount",
                 "DeleteTerminatedClusterOperationJobData",
                 "DisconnectExocompute",
                 "ExocomputeClusterConnect",
                 "GenerateClusterRegistrationToken",
                 "MigrateCloudClusterDisks",
+                "PatchPostgreSqlDb",
+                "PitRestorePostgreSqlDb",
                 "RecoverCloud",
+                "RefreshPostgreSqlDb",
                 "RegisterCloud",
                 "ReleasePersistentExo",
                 "RemoveCdm",
                 "RemoveClusterNodes",
                 "ReplaceClusterNode",
                 "RequestPersistentExo",
+                "RestorePostgreSqlDb",
+                "RestorePostgreSqlDbClusterToSnapshot",
                 "SetMissingClusterStatus",
+                "TakeOnDemandPostgreSqlDbClusterSnapshot",
                 "UpdateClusterDefaultAddress",
                 "UpdateClusterNtpServers",
                 "UpdateClusterPauseStatus",
@@ -1295,8 +1867,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AddNodesToCloud":
                         this.ProcessRecord_AddNodesToCloud();
                         break;
+                    case "AddPostgreSqlDb":
+                        this.ProcessRecord_AddPostgreSqlDb();
+                        break;
                     case "DeleteClusterRoute":
                         this.ProcessRecord_DeleteClusterRoute();
+                        break;
+                    case "DeletePostgreSqlDb":
+                        this.ProcessRecord_DeletePostgreSqlDb();
+                        break;
+                    case "DeletePostgreSqlDbClusterLiveMount":
+                        this.ProcessRecord_DeletePostgreSqlDbClusterLiveMount();
                         break;
                     case "DeleteTerminatedClusterOperationJobData":
                         this.ProcessRecord_DeleteTerminatedClusterOperationJobData();
@@ -1313,8 +1894,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "MigrateCloudClusterDisks":
                         this.ProcessRecord_MigrateCloudClusterDisks();
                         break;
+                    case "PatchPostgreSqlDb":
+                        this.ProcessRecord_PatchPostgreSqlDb();
+                        break;
+                    case "PitRestorePostgreSqlDb":
+                        this.ProcessRecord_PitRestorePostgreSqlDb();
+                        break;
                     case "RecoverCloud":
                         this.ProcessRecord_RecoverCloud();
+                        break;
+                    case "RefreshPostgreSqlDb":
+                        this.ProcessRecord_RefreshPostgreSqlDb();
                         break;
                     case "RegisterCloud":
                         this.ProcessRecord_RegisterCloud();
@@ -1334,8 +1924,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RequestPersistentExo":
                         this.ProcessRecord_RequestPersistentExo();
                         break;
+                    case "RestorePostgreSqlDb":
+                        this.ProcessRecord_RestorePostgreSqlDb();
+                        break;
+                    case "RestorePostgreSqlDbClusterToSnapshot":
+                        this.ProcessRecord_RestorePostgreSqlDbClusterToSnapshot();
+                        break;
                     case "SetMissingClusterStatus":
                         this.ProcessRecord_SetMissingClusterStatus();
+                        break;
+                    case "TakeOnDemandPostgreSqlDbClusterSnapshot":
+                        this.ProcessRecord_TakeOnDemandPostgreSqlDbClusterSnapshot();
                         break;
                     case "UpdateClusterDefaultAddress":
                         this.ProcessRecord_UpdateClusterDefaultAddress();
@@ -1399,12 +1998,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addPostgreSQLDbCluster.
+        internal void ProcessRecord_AddPostgreSqlDb()
+        {
+            this._logger.name += " -AddPostgreSqlDb";
+            // Create new graphql operation addPostgreSQLDbCluster
+            InitMutationAddPostgreSqlDbCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteClusterRoute.
         internal void ProcessRecord_DeleteClusterRoute()
         {
             this._logger.name += " -DeleteClusterRoute";
             // Create new graphql operation deleteClusterRoute
             InitMutationDeleteClusterRoute();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deletePostgreSQLDbCluster.
+        internal void ProcessRecord_DeletePostgreSqlDb()
+        {
+            this._logger.name += " -DeletePostgreSqlDb";
+            // Create new graphql operation deletePostgreSQLDbCluster
+            InitMutationDeletePostgreSqlDbCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deletePostgreSQLDbClusterLiveMount.
+        internal void ProcessRecord_DeletePostgreSqlDbClusterLiveMount()
+        {
+            this._logger.name += " -DeletePostgreSqlDbClusterLiveMount";
+            // Create new graphql operation deletePostgreSQLDbClusterLiveMount
+            InitMutationDeletePostgreSqlDbClusterLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1453,12 +2079,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // patchPostgreSQLDbCluster.
+        internal void ProcessRecord_PatchPostgreSqlDb()
+        {
+            this._logger.name += " -PatchPostgreSqlDb";
+            // Create new graphql operation patchPostgreSQLDbCluster
+            InitMutationPatchPostgreSqlDbCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // pitRestorePostgreSQLDbCluster.
+        internal void ProcessRecord_PitRestorePostgreSqlDb()
+        {
+            this._logger.name += " -PitRestorePostgreSqlDb";
+            // Create new graphql operation pitRestorePostgreSQLDbCluster
+            InitMutationPitRestorePostgreSqlDbCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // recoverCloudCluster.
         internal void ProcessRecord_RecoverCloud()
         {
             this._logger.name += " -RecoverCloud";
             // Create new graphql operation recoverCloudCluster
             InitMutationRecoverCloudCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // refreshPostgreSQLDbCluster.
+        internal void ProcessRecord_RefreshPostgreSqlDb()
+        {
+            this._logger.name += " -RefreshPostgreSqlDb";
+            // Create new graphql operation refreshPostgreSQLDbCluster
+            InitMutationRefreshPostgreSqlDbCluster();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1516,12 +2169,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // restorePostgreSqlDbCluster.
+        internal void ProcessRecord_RestorePostgreSqlDb()
+        {
+            this._logger.name += " -RestorePostgreSqlDb";
+            // Create new graphql operation restorePostgreSqlDbCluster
+            InitMutationRestorePostgreSqlDbCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restorePostgreSQLDbClusterToSnapshot.
+        internal void ProcessRecord_RestorePostgreSqlDbClusterToSnapshot()
+        {
+            this._logger.name += " -RestorePostgreSqlDbClusterToSnapshot";
+            // Create new graphql operation restorePostgreSQLDbClusterToSnapshot
+            InitMutationRestorePostgreSqlDbClusterToSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // setMissingClusterStatus.
         internal void ProcessRecord_SetMissingClusterStatus()
         {
             this._logger.name += " -SetMissingClusterStatus";
             // Create new graphql operation setMissingClusterStatus
             InitMutationSetMissingClusterStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // takeOnDemandPostgreSQLDbClusterSnapshot.
+        internal void ProcessRecord_TakeOnDemandPostgreSqlDbClusterSnapshot()
+        {
+            this._logger.name += " -TakeOnDemandPostgreSqlDbClusterSnapshot";
+            // Create new graphql operation takeOnDemandPostgreSQLDbClusterSnapshot
+            InitMutationTakeOnDemandPostgreSqlDbClusterSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1768,6 +2448,80 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // addPostgreSQLDbCluster(input: AddPostgreSqlDbClusterInput!): AddPostgreSqlDbClusterReply!
+        internal void InitMutationAddPostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddPostgreSqlDbClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddPostgreSqlDbCluster",
+                "($input: AddPostgreSqlDbClusterInput!)",
+                "AddPostgreSqlDbClusterReply",
+                Mutation.AddPostgreSqlDbCluster,
+                Mutation.AddPostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	postgresqlDbClusterConfig = @{
+		# REQUIRED
+		systemUsername = $someString
+		# OPTIONAL
+		loginInfo = @{
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+		# REQUIRED
+		discoveryInfo = @{
+			# REQUIRED
+			entityInfo = @{
+				# REQUIRED
+				name = $someString
+			}
+			# REQUIRED
+			hostInfo = @(
+				@{
+					# OPTIONAL
+					portNumber = $someInt
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+		}
+		# OPTIONAL
+		haClusterConfig = @{
+			# REQUIRED
+			haGroupName = $someString
+			# REQUIRED
+			replicas = @(
+				@{
+					# OPTIONAL
+					role = $somePostgresHaReplicaConfigRole # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PostgresHaReplicaConfigRole]) for enum values.
+					# REQUIRED
+					portNumber = $someInt
+					# OPTIONAL
+					replicaId = $someString
+					# REQUIRED
+					hostId = $someString
+					# REQUIRED
+					replicaName = $someString
+					# OPTIONAL
+					username = $someString
+				}
+			)
+		}
+	}
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteClusterRoute(input: DeleteClusterRouteInput!): Void
         internal void InitMutationDeleteClusterRoute()
         {
@@ -1795,6 +2549,54 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deletePostgreSQLDbCluster(input: DeletePostgresDbClusterInput!): AsyncRequestStatus!
+        internal void InitMutationDeletePostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeletePostgresDbClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeletePostgreSqlDbCluster",
+                "($input: DeletePostgresDbClusterInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeletePostgreSqlDbCluster,
+                Mutation.DeletePostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deletePostgreSQLDbClusterLiveMount(input: DeletePostgresDbClusterLiveMountInput!): AsyncRequestStatus!
+        internal void InitMutationDeletePostgreSqlDbClusterLiveMount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeletePostgresDbClusterLiveMountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeletePostgreSqlDbClusterLiveMount",
+                "($input: DeletePostgresDbClusterLiveMountInput!)",
+                "AsyncRequestStatus",
+                Mutation.DeletePostgreSqlDbClusterLiveMount,
+                Mutation.DeletePostgreSqlDbClusterLiveMountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -1957,6 +2759,150 @@ $query.Var.input = @{
 	migrateToExtraDense = $someBoolean
 	# OPTIONAL
 	newInstanceType = $someInt
+	# OPTIONAL
+	isAzMigration = $someBoolean
+	# OPTIONAL
+	subnetAzConfigs = @(
+		@{
+			# OPTIONAL
+			subnet = $someString
+			# OPTIONAL
+			availabilityZone = $someString
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // patchPostgreSQLDbCluster(input: PatchPostgresDbClusterInput!): PatchPostgresDbClusterResponse!
+        internal void InitMutationPatchPostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PatchPostgresDbClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPatchPostgreSqlDbCluster",
+                "($input: PatchPostgresDbClusterInput!)",
+                "PatchPostgresDbClusterResponse",
+                Mutation.PatchPostgreSqlDbCluster,
+                Mutation.PatchPostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+	# REQUIRED
+	postgresqlDbClusterConfig = @{
+		# REQUIRED
+		systemUsername = $someString
+		# OPTIONAL
+		loginInfo = @{
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+		}
+		# REQUIRED
+		discoveryInfo = @{
+			# REQUIRED
+			entityInfo = @{
+				# REQUIRED
+				name = $someString
+			}
+			# REQUIRED
+			hostInfo = @(
+				@{
+					# OPTIONAL
+					portNumber = $someInt
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+		}
+		# OPTIONAL
+		haClusterConfig = @{
+			# REQUIRED
+			haGroupName = $someString
+			# REQUIRED
+			replicas = @(
+				@{
+					# OPTIONAL
+					role = $somePostgresHaReplicaConfigRole # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PostgresHaReplicaConfigRole]) for enum values.
+					# REQUIRED
+					portNumber = $someInt
+					# OPTIONAL
+					replicaId = $someString
+					# REQUIRED
+					hostId = $someString
+					# REQUIRED
+					replicaName = $someString
+					# OPTIONAL
+					username = $someString
+				}
+			)
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // pitRestorePostgreSQLDbCluster(input: PitRestorePostgresDbClusterInput!): PitRestorePostgresDbClusterResponse!
+        internal void InitMutationPitRestorePostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "PitRestorePostgresDbClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationPitRestorePostgreSqlDbCluster",
+                "($input: PitRestorePostgresDbClusterInput!)",
+                "PitRestorePostgresDbClusterResponse",
+                Mutation.PitRestorePostgreSqlDbCluster,
+                Mutation.PitRestorePostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	postgresqlDbClusterPitRestoreConfig = @{
+		# OPTIONAL
+		nodeInfo = @{
+			# OPTIONAL
+			nodeHint = @(
+				$someString
+			)
+			# OPTIONAL
+			subnet = $someString
+		}
+		# REQUIRED
+		pitRestoreInfo = @{
+			# REQUIRED
+			hostRecoveryTargets = @(
+				@{
+					# OPTIONAL
+					hostMountPaths = @(
+						$someString
+					)
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+			# OPTIONAL
+			recoveryName = $someString
+			# OPTIONAL
+			recoveryTime = $someDateTime
+			# OPTIONAL
+			extendedRecoveryTimeInSec = $someInt64
+			# OPTIONAL
+			locationId = $someString
+		}
+	}
 }"
             );
         }
@@ -2156,6 +3102,37 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isAzResilient = $someBoolean
+	# OPTIONAL
+	dnsNameServers = @(
+		$someString
+	)
+	# OPTIONAL
+	dnsSearchDomains = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // refreshPostgreSQLDbCluster(input: RefreshPostgresDbClusterInput!): AsyncRequestStatus!
+        internal void InitMutationRefreshPostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RefreshPostgresDbClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRefreshPostgreSqlDbCluster",
+                "($input: RefreshPostgresDbClusterInput!)",
+                "AsyncRequestStatus",
+                Mutation.RefreshPostgreSqlDbCluster,
+                Mutation.RefreshPostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 }"
             );
         }
@@ -2355,6 +3332,170 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // restorePostgreSqlDbCluster(input: RestorePostgreSqlDbClusterInput!): RestorePostgreSqlDbClusterReply!
+        internal void InitMutationRestorePostgreSqlDbCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestorePostgreSqlDbClusterInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestorePostgreSqlDbCluster",
+                "($input: RestorePostgreSqlDbClusterInput!)",
+                "RestorePostgreSqlDbClusterReply",
+                Mutation.RestorePostgreSqlDbCluster,
+                Mutation.RestorePostgreSqlDbClusterFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	restoreConfig = @{
+		# REQUIRED
+		restoreInfo = @{
+			# REQUIRED
+			locationMap = @(
+				@{
+					# REQUIRED
+					snapshotId = $someString
+					# REQUIRED
+					locationId = $someString
+				}
+			)
+			# OPTIONAL
+			restoreSettings = @{
+				# OPTIONAL
+				shouldRestoreOnlyDataSnapshot = $someBoolean
+			}
+			# REQUIRED
+			restoreName = $someString
+			# OPTIONAL
+			restoreTime = $someDateTime
+			# REQUIRED
+			restoreEntities = @(
+				$someString
+			)
+			# OPTIONAL
+			hostRestoreTargets = @(
+				@{
+					# OPTIONAL
+					portNumber = $someInt
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+			# OPTIONAL
+			preferredDataSnapshotId = $someString
+		}
+		# OPTIONAL
+		nodeInfo = @{
+			# OPTIONAL
+			nodeHint = @(
+				$someString
+			)
+			# OPTIONAL
+			subnet = $someString
+		}
+		# OPTIONAL
+		postgresRestoreSettings = @{
+			# OPTIONAL
+			shouldRestoreAsReadOnly = $someBoolean
+			# OPTIONAL
+			systemUsername = $someString
+			# OPTIONAL
+			shouldRestoreAsReplica = $someBoolean
+			# OPTIONAL
+			shouldOverrideConfFiles = $someBoolean
+			# OPTIONAL
+			dbUsername = $someString
+		}
+		# OPTIONAL
+		multiPostgresRestoreSettings = @(
+			@{
+				# REQUIRED
+				portNumber = $someInt
+				# REQUIRED
+				restoreSettings = @{
+					# OPTIONAL
+					shouldRestoreAsReadOnly = $someBoolean
+					# OPTIONAL
+					systemUsername = $someString
+					# OPTIONAL
+					shouldRestoreAsReplica = $someBoolean
+					# OPTIONAL
+					shouldOverrideConfFiles = $someBoolean
+					# OPTIONAL
+					dbUsername = $someString
+				}
+				# REQUIRED
+				hostId = $someString
+			}
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restorePostgreSQLDbClusterToSnapshot(input: RestorePostgresDbClusterSnapshotInput!): RestorePostgresDbClusterSnapshotResponse!
+        internal void InitMutationRestorePostgreSqlDbClusterToSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestorePostgresDbClusterSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestorePostgreSqlDbClusterToSnapshot",
+                "($input: RestorePostgresDbClusterSnapshotInput!)",
+                "RestorePostgresDbClusterSnapshotResponse",
+                Mutation.RestorePostgreSqlDbClusterToSnapshot,
+                Mutation.RestorePostgreSqlDbClusterToSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	postgresqlDbClusterRestoreConfig = @{
+		# REQUIRED
+		restoreInfo = @{
+			# REQUIRED
+			hostRecoveryTargets = @(
+				@{
+					# OPTIONAL
+					hostMountPaths = @(
+						$someString
+					)
+					# REQUIRED
+					hostId = $someString
+				}
+			)
+			# REQUIRED
+			snapshotId = $someString
+			# OPTIONAL
+			logSnapshotTimeRange = @{
+				# OPTIONAL
+				startTime = $someDateTime
+				# OPTIONAL
+				endTime = $someDateTime
+			}
+		}
+		# OPTIONAL
+		nodeInfo = @{
+			# OPTIONAL
+			nodeHint = @(
+				$someString
+			)
+			# OPTIONAL
+			subnet = $someString
+		}
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // setMissingClusterStatus(input: SetMissingClusterStatusInput!): SetMissingClusterStatusReply!
         internal void InitMutationSetMissingClusterStatus()
         {
@@ -2377,6 +3518,36 @@ $query.Var.input = @{
 	disconnectedState = $someMissingClusterDisconnectedState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterDisconnectedState]) for enum values.
 	# OPTIONAL
 	exclusionReason = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // takeOnDemandPostgreSQLDbClusterSnapshot(input: TakeOnDemandPostgreSQLDbClusterSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationTakeOnDemandPostgreSqlDbClusterSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "TakeOnDemandPostgreSQLDbClusterSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationTakeOnDemandPostgreSqlDbClusterSnapshot",
+                "($input: TakeOnDemandPostgreSQLDbClusterSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.TakeOnDemandPostgreSqlDbClusterSnapshot,
+                Mutation.TakeOnDemandPostgreSqlDbClusterSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

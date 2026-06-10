@@ -2,8 +2,8 @@
 Detail of the Gcp Cloud Account Add operations.
 
 - uuid: System.String
-  - Rubrik ID of the project.
+  - UUID of the project.
 - projectId: System.String
-  - GCP project ID.
+  - Project ID.
 - error: System.String
-  - Error while adding a GCP project, if any.
+  - Error message, if any.

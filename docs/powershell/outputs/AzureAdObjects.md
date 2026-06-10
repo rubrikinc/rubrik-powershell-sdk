@@ -45,3 +45,45 @@ Entra ID object.
   - Intune compliance policy assignment object.
 - intuneCompliancePolicyAction: IntuneCompliancePolicyAction
   - Intune compliance policy action object.
+- azureAdEmCatalog: AzureAdEmCatalog
+  - Entitlement Management catalog object.
+- azureAdEmAccessPackage: AzureAdEmAccessPackage
+  - Entitlement Management access package object.
+- azureAdEmAssignmentPolicy: AzureAdEmAssignmentPolicy
+  - Entitlement Management assignment policy object.
+- azureAdEmCatalogResource: AzureAdEmCatalogResource
+  - Entitlement Management catalog resource object.
+- azureAdEmCatalogRoleAssignment: AzureAdEmCatalogRoleAssignment
+  - Role assignment granting access to manage a catalog or its access packages.
+- azureAdEmResourceRoleScope: AzureAdEmResourceRoleScope
+  - Entitlement Management resource role scope object.
+- azureAdEmIncompatibilities: AzureAdEmIncompatibilities
+  - Entitlement Management incompatible object.
+- azureAdEmAssignment: AzureAdEmAssignment
+  - Entitlement Management assignment object.
+- intuneDeviceManagementPolicy: IntuneDeviceManagementPolicy
+  - Intune device management configuration policy object.
+- intuneEndpointSecurityReusableSetting: IntuneEndpointSecurityReusableSetting
+  - Intune endpoint security reusable setting object.
+- intuneAppProtectionPolicy: IntuneAppProtectionPolicy
+  - Intune app protection policy object.
+- intuneAutopilotDeploymentProfile: IntuneAutopilotDeploymentProfile
+  - Intune autopilot deployment profile object.
+- intuneRoleDefinition: IntuneRoleDefinition
+  - Intune role definition object.
+- intuneScopeTag: IntuneScopeTag
+  - Intune scope tag object.
+- intunePolicyAssignment: IntunePolicyAssignment
+  - Intune policy assignment object.
+- intuneScopeTagAssignment: IntuneScopeTagAssignment
+  - Intune scope tag assignment object.
+- intuneRoleAssignment: IntuneRoleAssignment
+  - Intune role assignment object.
+- azureAdRoleEligibleAssignment: AzureAdRoleEligibleAssignment
+  - PIM role-eligible assignment object.
+- azureAdGroupEligibleAssignment: AzureAdGroupEligibleAssignment
+  - PIM group-eligible assignment object.
+- azureAdAccessReviewScheduleDefinition: AzureAdAccessReviewScheduleDefinition
+  - Access review schedule definition object.
+- azureAdGroupActiveAssignment: AzureAdGroupActiveAssignment
+  - PIM group active assignment object.

@@ -74,6 +74,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRubrikManaged")]
         public System.Boolean? IsRubrikManaged { get; set; }
 
+        //      C# -> List<CertificateUsage>? RscUsages
+        // GraphQL -> rscUsages: [CertificateUsage!] (enum)
+        [JsonProperty("rscUsages")]
+        public List<CertificateUsage>? RscUsages { get; set; }
+
+        //      C# -> List<CertificateUsageLocation>? UsageLocations
+        // GraphQL -> usageLocations: [CertificateUsageLocation!] (enum)
+        [JsonProperty("usageLocations")]
+        public List<CertificateUsageLocation>? UsageLocations { get; set; }
+
+        //      C# -> List<KeyType>? KeyTypes
+        // GraphQL -> keyTypes: [KeyType!] (enum)
+        [JsonProperty("keyTypes")]
+        public List<KeyType>? KeyTypes { get; set; }
+
 
         #endregion
 

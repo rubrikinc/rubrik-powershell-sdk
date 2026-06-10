@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("featureDetails")]
         public List<AzureCloudAccountFeatureDetail>? FeatureDetails { get; set; }
 
+        //      C# -> AzureManagementGroup? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroup (type)
+        [JsonProperty("managementGroup")]
+        public AzureManagementGroup? ManagementGroup { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.String? NativeId = null,
-        List<AzureCloudAccountFeatureDetail>? FeatureDetails = null
+        List<AzureCloudAccountFeatureDetail>? FeatureDetails = null,
+        AzureManagementGroup? ManagementGroup = null
     ) 
     {
         if ( CloudType != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FeatureDetails != null ) {
             this.FeatureDetails = FeatureDetails;
+        }
+        if ( ManagementGroup != null ) {
+            this.ManagementGroup = ManagementGroup;
         }
         return this;
     }
@@ -154,6 +163,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "featureDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureManagementGroup? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroup (type)
+        if (this.ManagementGroup != null) {
+            var fspec = this.ManagementGroup.AsFieldSpec(conf.Child("managementGroup"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "managementGroup" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,6 +288,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FeatureDetails != null && ec.Excludes("featureDetails",false))
         {
             this.FeatureDetails = null;
+        }
+        //      C# -> AzureManagementGroup? ManagementGroup
+        // GraphQL -> managementGroup: AzureManagementGroup (type)
+        if (ec.Includes("managementGroup",false))
+        {
+            if(this.ManagementGroup == null) {
+
+                this.ManagementGroup = new AzureManagementGroup();
+                this.ManagementGroup.ApplyExploratoryFieldSpec(ec.NewChild("managementGroup"));
+
+            } else {
+
+                this.ManagementGroup.ApplyExploratoryFieldSpec(ec.NewChild("managementGroup"));
+
+            }
+        }
+        else if (this.ManagementGroup != null && ec.Excludes("managementGroup",false))
+        {
+            this.ManagementGroup = null;
         }
     }
 

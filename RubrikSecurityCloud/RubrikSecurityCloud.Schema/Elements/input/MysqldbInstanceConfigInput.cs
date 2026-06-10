@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("discoveryInfo")]
         public DiscoverableInputInput? DiscoveryInfo { get; set; }
 
+        //      C# -> MysqldbAdvancedConfigInfoInput? AdvancedConfigInfo
+        // GraphQL -> advancedConfigInfo: MysqldbAdvancedConfigInfoInput (input)
+        [JsonProperty("advancedConfigInfo")]
+        public MysqldbAdvancedConfigInfoInput? AdvancedConfigInfo { get; set; }
+
         //      C# -> MysqldbConnectionInfoInput? ConnectionInfo
         // GraphQL -> connectionInfo: MysqldbConnectionInfoInput (input)
         [JsonProperty("connectionInfo")]

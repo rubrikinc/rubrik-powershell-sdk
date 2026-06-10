@@ -12,3 +12,5 @@ Specifies whether to enable SMB for this server.
 - smbCredentials: GenericNasSystemCredentialsInput
   - Supported in v7.0+
 The credentials to access SMB server.
+- nfsPseudoFsPrefix: System.String
+  - The NFSv4 pseudo-filesystem prefix removed from the mountd export paths, which are used to derive the NFSv4-accessible paths. Defaults to an empty string when not set, meaning no prefix is removed.

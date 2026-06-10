@@ -45,16 +45,14 @@ AWS native RDS instance.
   - AWS native name of the object.
 - isProtectable: System.Boolean
   - Indicates whether this RDS instance is protectable or not.
+- cloudNativeApplications: list of CloudNativeApplicationInfos
+  - List of cloud native applications associated with this RDS instance.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
   - AWS account of the Amazon Relational Database Service (RDS) instance.
 - awsAccount: AwsNativeAccount
   - AWS account of the Amazon Relational Database Service (RDS) instance.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -89,6 +87,10 @@ AWS native RDS instance.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

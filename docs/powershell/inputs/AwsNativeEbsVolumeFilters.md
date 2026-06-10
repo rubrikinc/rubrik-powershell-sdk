@@ -33,3 +33,7 @@ Filters for list of AWS EBS volumes.
   - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- serviceTypeFilter: AwsServiceTypeFilter
+  - Filter by BaaS or non-BaaS service type.
+- outpostArnFilter: AwsNativeOutpostArnFilter
+  - Filter by AWS Outpost ARN.

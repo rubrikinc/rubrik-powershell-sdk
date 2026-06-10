@@ -1,5 +1,5 @@
 ### TimeRangeFilter
-Timerange filter.
+Time range filter.
 
 - fromTime: DateTime
 - untilTime: DateTime

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isHealthy")]
         public System.Boolean? IsHealthy { get; set; }
 
+        //      C# -> System.Boolean? ShouldScanAllFiles
+        // GraphQL -> shouldScanAllFiles: Boolean! (scalar)
+        [JsonProperty("shouldScanAllFiles")]
+        public System.Boolean? ShouldScanAllFiles { get; set; }
+
         //      C# -> System.Boolean? ThreatMonitoringEnabled
         // GraphQL -> threatMonitoringEnabled: Boolean! (scalar)
         [JsonProperty("threatMonitoringEnabled")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? DataThreatAnalyticsEnabled = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
+        System.Boolean? ShouldScanAllFiles = null,
         System.Boolean? ThreatMonitoringEnabled = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
+        }
+        if ( ShouldScanAllFiles != null ) {
+            this.ShouldScanAllFiles = ShouldScanAllFiles;
         }
         if ( ThreatMonitoringEnabled != null ) {
             this.ThreatMonitoringEnabled = ThreatMonitoringEnabled;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHealthy\n" ;
             } else {
                 s += ind + "isHealthy\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldScanAllFiles
+        // GraphQL -> shouldScanAllFiles: Boolean! (scalar)
+        if (this.ShouldScanAllFiles != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldScanAllFiles\n" ;
+            } else {
+                s += ind + "shouldScanAllFiles\n" ;
             }
         }
         //      C# -> System.Boolean? ThreatMonitoringEnabled
@@ -210,6 +228,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHealthy != null && ec.Excludes("isHealthy",true))
         {
             this.IsHealthy = null;
+        }
+        //      C# -> System.Boolean? ShouldScanAllFiles
+        // GraphQL -> shouldScanAllFiles: Boolean! (scalar)
+        if (ec.Includes("shouldScanAllFiles",true))
+        {
+            if(this.ShouldScanAllFiles == null) {
+
+                this.ShouldScanAllFiles = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldScanAllFiles != null && ec.Excludes("shouldScanAllFiles",true))
+        {
+            this.ShouldScanAllFiles = null;
         }
         //      C# -> System.Boolean? ThreatMonitoringEnabled
         // GraphQL -> threatMonitoringEnabled: Boolean! (scalar)

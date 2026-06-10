@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RUBRIK")]
         RUBRIK,
 
+        [EnumMember(Value = "TAXII_2_1")]
+        TAXII_2_1,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN
 

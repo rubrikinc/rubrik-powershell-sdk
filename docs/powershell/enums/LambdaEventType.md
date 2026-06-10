@@ -14,3 +14,5 @@ Identity event for principal membership addition.
 - EVENT_TYPE_IDENTITY_ACL_CHANGE - Identity event for ACL change.
 - EVENT_TYPE_IDENTITY_ATTRIBUTE_CHANGE - Identity event for Attribute change.
 - EVENT_TYPE_AUTHENTICATION - Event type for authentication-related events (login, lockout, enable/disable).
+- EVENT_TYPE_IDENTITY_APP_ROLE_ASSIGNMENT_ADD - Identity event for app role assignment addition.
+- EVENT_TYPE_IDENTITY_APP_ROLE_ASSIGNMENT_REMOVE - Identity event for app role assignment removal.

@@ -51,3 +51,11 @@ Type of objects managed by SLA Domains.
 - GITHUB_OBJECT_TYPE - GitHub object.
 - AWS_CONFIG_OBJECT_TYPE - AWS Config object.
 - FUSION_COMPUTE_OBJECT_TYPE - FusionCompute object.
+- GCP_ALLOY_DB_CLUSTER_OBJECT_TYPE - GCP AlloyDB Cluster object.
+- PURE_STORAGE_OBJECT_TYPE - Pure Storage object.
+- GCP_BIGQUERY_OBJECT_TYPE - GCP BigQuery object.
+- AZURE_POSTGRES_FLEXIBLE_SERVER_OBJECT_TYPE - Azure PostgreSQL Flexible Server object.
+- GLUE_ICEBERG_TABLE_OBJECT_TYPE - Glue Iceberg Table object.
+- RSC_TAG_OBJECT_TYPE - RSC tag object. Used when an SLA Domain is assigned to an RSC tag so
+that assigned objects inherit the SLA Domain from the tag.
+- PING_FEDERATE_OBJECT_TYPE - Ping Federate object.

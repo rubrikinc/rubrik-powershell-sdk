@@ -19,6 +19,8 @@ Information about a certificate on Rubrik Security Cloud.
   - The issuer of the certificate.
 - issuedOn: DateTime
   - The date on which the certificate was issued.
+- clusters: list of CertificateClusterInfos
+  - The Rubrik clusters to which the certificate has been uploaded.
 - isCaSigned: System.Boolean
   - Specifies if the certificate is signed by a Certificate Authority.
 - status: GlobalCertificateStatus
@@ -29,25 +31,30 @@ Information about a certificate on Rubrik Security Cloud.
   - The SHA-256 fingerprint of the certificate, in hexadecimal format.
 - serialNumber: System.String
   - The serial number of the certificate, in hexadecimal format.
-- isCdmBorn: System.Boolean
-  - Specifies whether the certificate was imported directly from Rubrik CDM.
-- isCa: System.Boolean
-  - Specifies whether the certificate is a CA.
-- userHasPrivilegeToScheduleRotation: System.Boolean
-  - Specifies whether the user has the privilege to schedule a certificate rotation.
-- certificateFid: System.String
-  - The FID of the certificate.
-- clusters: list of CertificateClusterInfos
-  - The Rubrik clusters to which the certificate has been uploaded.
 - cdmUsages: list of CdmCertificateUsageInfos
   - The usages for the certificate on Rubrik clusters.
 - usages: list of CertificateUsageInfos
   - The usages for the certificate on Rubrik Security Cloud.
+- isCdmBorn: System.Boolean
+  - Specifies whether the certificate was imported directly from Rubrik CDM.
+- certificateFid: System.String
+  - The FID of the certificate.
 - issuerType: IssuerType
   - Specifies the type of the certificate issuer.
 - certificateRotation: CertificateRotation
   - Specifies the certificate rotation details.
+- isCa: System.Boolean
+  - Specifies whether the certificate is a CA.
+- userHasPrivilegeToScheduleRotation: System.Boolean
+  - Specifies whether the user has the privilege to schedule a certificate rotation.
 - rbsHostUsage: RbsHostUsage
   - Specifies the host that uses this certificate for Rubrik Backup Service (RBS).
+- keyType: System.String
+  - The cryptographic key type of the certificate (for example, "rsa", "ec").
+Empty for legacy certificates whose key metadata was never extracted.
+- keyStrength: System.String
+  - The cryptographic key strength of the certificate (for example, "2048",
+"secp384r1"). Empty for legacy certificates or keys whose strength does
+not map to a canonical value.
 - org: Org
   - The organization to which the certificate has been assigned.

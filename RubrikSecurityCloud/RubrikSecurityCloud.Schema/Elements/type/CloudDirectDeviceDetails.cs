@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastConnectedAt")]
         public DateTime? LastConnectedAt { get; set; }
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
         //      C# -> DateTime? RemovedAt
         // GraphQL -> removedAt: DateTime (scalar)
         [JsonProperty("removedAt")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         System.String? HardwareId = null,
         System.String? IpAddress = null,
         DateTime? LastConnectedAt = null,
+        System.String? Name = null,
         DateTime? RemovedAt = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastConnectedAt != null ) {
             this.LastConnectedAt = LastConnectedAt;
+        }
+        if ( Name != null ) {
+            this.Name = Name;
         }
         if ( RemovedAt != null ) {
             this.RemovedAt = RemovedAt;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lastConnectedAt\n" ;
             } else {
                 s += ind + "lastConnectedAt\n" ;
+            }
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "name\n" ;
+            } else {
+                s += ind + "name\n" ;
             }
         }
         //      C# -> DateTime? RemovedAt
@@ -210,6 +228,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastConnectedAt != null && ec.Excludes("lastConnectedAt",true))
         {
             this.LastConnectedAt = null;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (ec.Includes("name",true))
+        {
+            if(this.Name == null) {
+
+                this.Name = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Name != null && ec.Excludes("name",true))
+        {
+            this.Name = null;
         }
         //      C# -> DateTime? RemovedAt
         // GraphQL -> removedAt: DateTime (scalar)

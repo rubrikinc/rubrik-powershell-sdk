@@ -264,6 +264,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	shouldResurrectSnapshot = $someBoolean
+    /// 	# OPTIONAL
+    /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -375,6 +379,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -693,6 +701,10 @@ $query.Var.input = @{
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	shouldResurrectSnapshot = $someBoolean
+	# OPTIONAL
+	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }
@@ -780,6 +792,10 @@ $query.Var.input = @{
 	snapshotTypeToUseIfSourceExpired = $someSnapshotTypeToUseIfSourceExpired # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotTypeToUseIfSourceExpired]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }

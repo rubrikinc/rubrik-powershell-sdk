@@ -1,5 +1,6 @@
 ### FlexmotionWorkloadType
 Workload types supported by FlexMotion failover operations.
+Kept for backwards compatibility during rolling upgrades.
 
 - WORKLOAD_TYPE_UNSPECIFIED - Unspecified workload type.
 - VMWARE_VIRTUAL_MACHINE - VMware vSphere Virtual Machine.

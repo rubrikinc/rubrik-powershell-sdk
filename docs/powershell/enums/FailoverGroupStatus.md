@@ -10,3 +10,4 @@ Status of a failover group (HA Policy).
 - FAILOVER_GROUP_STATUS_FAILBACK_COMPLETED - Failback completed.
 - FAILOVER_GROUP_STATUS_PARTIAL_FAILOVER - Partial failover.
 - FAILOVER_GROUP_STATUS_FAILOVER_FAILED - Failover failed.
+- FAILOVER_GROUP_STATUS_DELETING - Failover group is being deleted.

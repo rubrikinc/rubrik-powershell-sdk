@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastFailedErrorInfo")]
         public WebhookErrorInfo? LastFailedErrorInfo { get; set; }
 
+        //      C# -> WebhookReadOnlyAuthInfoV2? ReadOnlyAuthInfo
+        // GraphQL -> readOnlyAuthInfo: WebhookReadOnlyAuthInfoV2 (type)
+        [JsonProperty("readOnlyAuthInfo")]
+        public WebhookReadOnlyAuthInfoV2? ReadOnlyAuthInfo { get; set; }
+
         //      C# -> SubscriptionTypeV2? SubscriptionType
         // GraphQL -> subscriptionType: SubscriptionTypeV2 (type)
         [JsonProperty("subscriptionType")]
@@ -113,6 +118,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? UpdatedAt = null,
         System.String? Url = null,
         WebhookErrorInfo? LastFailedErrorInfo = null,
+        WebhookReadOnlyAuthInfoV2? ReadOnlyAuthInfo = null,
         SubscriptionTypeV2? SubscriptionType = null
     ) 
     {
@@ -154,6 +160,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastFailedErrorInfo != null ) {
             this.LastFailedErrorInfo = LastFailedErrorInfo;
+        }
+        if ( ReadOnlyAuthInfo != null ) {
+            this.ReadOnlyAuthInfo = ReadOnlyAuthInfo;
         }
         if ( SubscriptionType != null ) {
             this.SubscriptionType = SubscriptionType;
@@ -289,6 +298,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "lastFailedErrorInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> WebhookReadOnlyAuthInfoV2? ReadOnlyAuthInfo
+        // GraphQL -> readOnlyAuthInfo: WebhookReadOnlyAuthInfoV2 (type)
+        if (this.ReadOnlyAuthInfo != null) {
+            var fspec = this.ReadOnlyAuthInfo.AsFieldSpec(conf.Child("readOnlyAuthInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "readOnlyAuthInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -533,6 +554,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastFailedErrorInfo != null && ec.Excludes("lastFailedErrorInfo",false))
         {
             this.LastFailedErrorInfo = null;
+        }
+        //      C# -> WebhookReadOnlyAuthInfoV2? ReadOnlyAuthInfo
+        // GraphQL -> readOnlyAuthInfo: WebhookReadOnlyAuthInfoV2 (type)
+        if (ec.Includes("readOnlyAuthInfo",false))
+        {
+            if(this.ReadOnlyAuthInfo == null) {
+
+                this.ReadOnlyAuthInfo = new WebhookReadOnlyAuthInfoV2();
+                this.ReadOnlyAuthInfo.ApplyExploratoryFieldSpec(ec.NewChild("readOnlyAuthInfo"));
+
+            } else {
+
+                this.ReadOnlyAuthInfo.ApplyExploratoryFieldSpec(ec.NewChild("readOnlyAuthInfo"));
+
+            }
+        }
+        else if (this.ReadOnlyAuthInfo != null && ec.Excludes("readOnlyAuthInfo",false))
+        {
+            this.ReadOnlyAuthInfo = null;
         }
         //      C# -> SubscriptionTypeV2? SubscriptionType
         // GraphQL -> subscriptionType: SubscriptionTypeV2 (type)

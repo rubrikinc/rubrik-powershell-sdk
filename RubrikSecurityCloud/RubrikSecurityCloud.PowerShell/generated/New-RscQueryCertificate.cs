@@ -135,6 +135,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isRubrikManaged = $someBoolean
+    /// 	# OPTIONAL
+    /// 	rscUsages = @(
+    /// 		$someCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsage]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	usageLocations = @(
+    /// 		$someCertificateUsageLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsageLocation]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	keyTypes = @(
+    /// 		$someKeyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KeyType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -427,6 +439,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isRubrikManaged = $someBoolean
+    /// 	# OPTIONAL
+    /// 	rscUsages = @(
+    /// 		$someCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsage]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	usageLocations = @(
+    /// 		$someCertificateUsageLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsageLocation]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	keyTypes = @(
+    /// 		$someKeyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KeyType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -803,6 +827,18 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isRubrikManaged = $someBoolean
+	# OPTIONAL
+	rscUsages = @(
+		$someCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsage]) for enum values.
+	)
+	# OPTIONAL
+	usageLocations = @(
+		$someCertificateUsageLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsageLocation]) for enum values.
+	)
+	# OPTIONAL
+	keyTypes = @(
+		$someKeyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KeyType]) for enum values.
+	)
 }"
             );
         }
@@ -1075,6 +1111,18 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isRubrikManaged = $someBoolean
+	# OPTIONAL
+	rscUsages = @(
+		$someCertificateUsage # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsage]) for enum values.
+	)
+	# OPTIONAL
+	usageLocations = @(
+		$someCertificateUsageLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CertificateUsageLocation]) for enum values.
+	)
+	# OPTIONAL
+	keyTypes = @(
+		$someKeyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.KeyType]) for enum values.
+	)
 }"
             );
         }

@@ -19,6 +19,8 @@ AWS native account.
   - Count of Amazon DynamoDB Tables in the AWS native account.
 - cloudType: AwsCloudType
   - AWS cloud type.
+- serviceType: AwsCloudAccountServiceType
+  - Service type indicating whether the account is onboarded for Backup-as-a-Service (BaaS) or non-BaaS use case.
 - cloudAccountState: CloudAccountState
   - Specifies the status of the cloud account associated with the feature requested.
 - enabledFeatures: list of AwsNativeAccountEnabledFeatures
@@ -41,10 +43,8 @@ AWS native account.
   - Paginated list of AWS native regions in this account.
 - isProtectable: System.Boolean
   - Whether the AWS account is protectable for the specified protection features.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- featureDetails: list of FeatureDetails
+  - Cloud account feature details including permissions groups for the AWS account.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -79,3 +79,7 @@ AWS native account.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.

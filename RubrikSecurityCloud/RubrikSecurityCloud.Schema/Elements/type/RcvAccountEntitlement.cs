@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("entitlements")]
         public List<RcvEntitlementsUsageDetails>? Entitlements { get; set; }
 
+        //      C# -> List<RcvEntitlementGroup>? RcvEntitlementGroups
+        // GraphQL -> rcvEntitlementGroups: [RcvEntitlementGroup!]! (type)
+        [JsonProperty("rcvEntitlementGroups")]
+        public List<RcvEntitlementGroup>? RcvEntitlementGroups { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public RcvAccountEntitlement Set(
         RcvEntitlement? ArchiveEntitlement = null,
         RcvEntitlement? BackupEntitlement = null,
-        List<RcvEntitlementsUsageDetails>? Entitlements = null
+        List<RcvEntitlementsUsageDetails>? Entitlements = null,
+        List<RcvEntitlementGroup>? RcvEntitlementGroups = null
     ) 
     {
         if ( ArchiveEntitlement != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Entitlements != null ) {
             this.Entitlements = Entitlements;
+        }
+        if ( RcvEntitlementGroups != null ) {
+            this.RcvEntitlementGroups = RcvEntitlementGroups;
         }
         return this;
     }
@@ -106,6 +115,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "entitlements" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RcvEntitlementGroup>? RcvEntitlementGroups
+        // GraphQL -> rcvEntitlementGroups: [RcvEntitlementGroup!]! (type)
+        if (this.RcvEntitlementGroups != null) {
+            var fspec = this.RcvEntitlementGroups.AsFieldSpec(conf.Child("rcvEntitlementGroups"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rcvEntitlementGroups" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -172,6 +193,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Entitlements != null && ec.Excludes("entitlements",false))
         {
             this.Entitlements = null;
+        }
+        //      C# -> List<RcvEntitlementGroup>? RcvEntitlementGroups
+        // GraphQL -> rcvEntitlementGroups: [RcvEntitlementGroup!]! (type)
+        if (ec.Includes("rcvEntitlementGroups",false))
+        {
+            if(this.RcvEntitlementGroups == null) {
+
+                this.RcvEntitlementGroups = new List<RcvEntitlementGroup>();
+                this.RcvEntitlementGroups.ApplyExploratoryFieldSpec(ec.NewChild("rcvEntitlementGroups"));
+
+            } else {
+
+                this.RcvEntitlementGroups.ApplyExploratoryFieldSpec(ec.NewChild("rcvEntitlementGroups"));
+
+            }
+        }
+        else if (this.RcvEntitlementGroups != null && ec.Excludes("rcvEntitlementGroups",false))
+        {
+            this.RcvEntitlementGroups = null;
         }
     }
 

@@ -2,6 +2,6 @@
 Response to prepare updation of AWS cloud account.
 
 - cloudFormationUrl: System.String
-  - CloudFormation URL to update cloud account.
+  - AWS CloudFormation URL.
 - templateUrl: System.String
-  - AWS CloudFormation template URL.
+  - Template URL of the CloudFormation stack.

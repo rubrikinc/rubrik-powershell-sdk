@@ -1,6 +1,6 @@
 ### ShareTypeEnum
-Share type for fileset.
+Fileset share type.
 
+- NoShareType - Not shared.
 - SMB - SMB share.
 - NFS - NFS share.
-- NoShareType - Not shared.

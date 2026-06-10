@@ -19,3 +19,5 @@ with IntegrationType will be considered.
   - The Google SecOps configuration.
 - microsoftDefender: MicrosoftDefenderIntegrationConfig
   - The Microsoft Defender configuration.
+- splunk: SplunkIntegrationConfig
+  - The Splunk configuration.

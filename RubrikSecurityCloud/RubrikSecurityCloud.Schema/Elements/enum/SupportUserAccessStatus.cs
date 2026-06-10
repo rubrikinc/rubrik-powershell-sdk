@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SUPPORT_ACCESS_STATUS_OPEN")]
         SUPPORT_ACCESS_STATUS_OPEN,
 
+        [EnumMember(Value = "SUPPORT_ACCESS_STATUS_REVOKED")]
+        SUPPORT_ACCESS_STATUS_REVOKED,
+
         [EnumMember(Value = "SUPPORT_ACCESS_STATUS_UNSPECIFIED")]
         SUPPORT_ACCESS_STATUS_UNSPECIFIED
 

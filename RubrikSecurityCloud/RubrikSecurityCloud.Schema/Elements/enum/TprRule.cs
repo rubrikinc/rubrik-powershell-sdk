@@ -123,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RESET_USER_TOTP_CONFIG")]
         RESET_USER_TOTP_CONFIG,
 
+        [EnumMember(Value = "RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION")]
+        RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION,
+
         [EnumMember(Value = "RETENTION_LOCK_OBJECT")]
         RETENTION_LOCK_OBJECT,
 

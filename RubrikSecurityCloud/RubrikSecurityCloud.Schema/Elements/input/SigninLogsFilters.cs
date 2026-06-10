@@ -79,6 +79,56 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("displayNameSearchTerm")]
         public System.String? DisplayNameSearchTerm { get; set; }
 
+        //      C# -> List<System.String>? UserIds
+        // GraphQL -> userIds: [String!] (scalar)
+        [JsonProperty("userIds")]
+        public List<System.String>? UserIds { get; set; }
+
+        //      C# -> List<System.String>? ErrorCodes
+        // GraphQL -> errorCodes: [String!] (scalar)
+        [JsonProperty("errorCodes")]
+        public List<System.String>? ErrorCodes { get; set; }
+
+        //      C# -> List<System.String>? LogonTypes
+        // GraphQL -> logonTypes: [String!] (scalar)
+        [JsonProperty("logonTypes")]
+        public List<System.String>? LogonTypes { get; set; }
+
+        //      C# -> List<System.String>? DeviceNames
+        // GraphQL -> deviceNames: [String!] (scalar)
+        [JsonProperty("deviceNames")]
+        public List<System.String>? DeviceNames { get; set; }
+
+        //      C# -> List<System.String>? ResourceNames
+        // GraphQL -> resourceNames: [String!] (scalar)
+        [JsonProperty("resourceNames")]
+        public List<System.String>? ResourceNames { get; set; }
+
+        //      C# -> List<System.String>? ProcessNames
+        // GraphQL -> processNames: [String!] (scalar)
+        [JsonProperty("processNames")]
+        public List<System.String>? ProcessNames { get; set; }
+
+        //      C# -> List<System.String>? AuthenticationMethods
+        // GraphQL -> authenticationMethods: [String!] (scalar)
+        [JsonProperty("authenticationMethods")]
+        public List<System.String>? AuthenticationMethods { get; set; }
+
+        //      C# -> List<System.String>? MfaStatuses
+        // GraphQL -> mfaStatuses: [String!] (scalar)
+        [JsonProperty("mfaStatuses")]
+        public List<System.String>? MfaStatuses { get; set; }
+
+        //      C# -> List<SigninLogFailureCategory>? FailureCategories
+        // GraphQL -> failureCategories: [SigninLogFailureCategory!] (enum)
+        [JsonProperty("failureCategories")]
+        public List<SigninLogFailureCategory>? FailureCategories { get; set; }
+
+        //      C# -> List<System.String>? EventIds
+        // GraphQL -> eventIds: [String!] (scalar)
+        [JsonProperty("eventIds")]
+        public List<System.String>? EventIds { get; set; }
+
 
         #endregion
 

@@ -601,6 +601,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
+    /// 	locationId = $someString
+    /// 	# OPTIONAL
     /// 	localDataSourceIds = @(
     /// 		$someString
     /// 	)
@@ -608,8 +610,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	archivalDataSourceIds = @(
     /// 		$someString
     /// 	)
-    /// 	# OPTIONAL
-    /// 	locationId = $someString
     /// 	# OPTIONAL
     /// 	externalLocationId = $someString
     /// 	# OPTIONAL
@@ -1644,6 +1644,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
+	locationId = $someString
+	# OPTIONAL
 	localDataSourceIds = @(
 		$someString
 	)
@@ -1651,8 +1653,6 @@ $query.Var.input = @{
 	archivalDataSourceIds = @(
 		$someString
 	)
-	# OPTIONAL
-	locationId = $someString
 	# OPTIONAL
 	externalLocationId = $someString
 	# OPTIONAL

@@ -22,7 +22,8 @@ Optional parameter that specifies whether to remove the system-generated (not us
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root user access to SMB shares on Isilon NAS systems. The root user access is granted on first fileset creation for the SMB share. The default value is true. This setting is applicable only when system-generated credentials are used.
 - shouldAllowDuplicateSystemsWithSameIp: System.Boolean
-  - Optional parameter that specifies whether to allow updating a NAS system hostname to one that has the same IP address as an existing NAS system. The default value is false. Rubrik expects that you use this setting judiciously, primarily for Azure Files and similar hosted file systems where multiple NAS devices can have same IP address.
+  - Supported in v9.5+
+Optional parameter that specifies whether to allow updating a NAS system hostname to one that has the same IP address as an existing NAS system. The default value is false. Rubrik expects that you use this setting judiciously, primarily for Azure Files and similar hosted file systems where multiple NAS devices can have same IP address.
 - nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
   - Supported in v8.1+
 - userSelectedSmbInterfaces: list of System.Strings
@@ -37,9 +38,14 @@ v9.1+: Enables the Metro Cluster feature for the NetApp NAS system. If the NetAp
 Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
 - nutanixFileServerParameters: NutanixFileServerParametersInput
   - Supported in v8.1+
+- isNetAppSnapDiffEnabled: System.Boolean
+  - Supported in v9.5+
+Specifies the default SnapDiff setting for all shares in the NetApp NAS system.
 - shouldGrantNfsShareRootAccess: System.Boolean
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
 - userSelectedNfsInterfaces: list of System.Strings
   - Supported in v9.3+
 List of hostnames or IP addresses used for Fileset jobs on NFS shares in the NAS system.
+- isNutanixCftEnabled: System.Boolean
+  - Specifies the default CFT (Changed File Tracking) setting for all shares in the Nutanix Files NAS system.

@@ -6,7 +6,7 @@ Specifies information about lockout configuration.
 - selfServiceTokenValidityInMins: System.Int32
   - Specifies the validity of the current self service token.
 - selfServiceAttemptsLimit: System.Int32
-  - Specifies the number of times self service is allowed to unlock the account.
+  - Specifies the number of times self-service is allowed to unlock the account.
 - isSelfServiceEnabled: System.Boolean
   - Specifies whether self service is enabled for all users in this organization.
 - accountAutoUnlockDurationInMins: System.Int32

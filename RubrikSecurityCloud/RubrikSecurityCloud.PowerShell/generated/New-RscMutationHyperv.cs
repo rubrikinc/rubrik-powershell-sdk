@@ -116,11 +116,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					virtualSwitchMappings = @(
     /// 						@{
     /// 							# REQUIRED
-    /// 							macAddress = $someString
-    /// 							# REQUIRED
     /// 							switchId = $someString
     /// 							# REQUIRED
-    /// 							adapterName = $someString
+    /// 							nicIndex = $someInt
     /// 						}
     /// 					)
     /// 				}
@@ -179,6 +177,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					hostId = $someString
     /// 					# OPTIONAL
     /// 					vmName = $someString
+    /// 					# OPTIONAL
+    /// 					removeNetworkDevices = $someBoolean
+    /// 					# OPTIONAL
+    /// 					shouldMigrateDataStore = $someBoolean
+    /// 					# OPTIONAL
+    /// 					keepMacAddress = $someBoolean
+    /// 					# OPTIONAL
+    /// 					virtualSwitchMappings = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							switchId = $someString
+    /// 							# REQUIRED
+    /// 							nicIndex = $someInt
+    /// 						}
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					destinationFolder = $someString
     /// 				}
     /// 				# OPTIONAL
     /// 				snapshotAfterDate = $someDateTime
@@ -241,6 +256,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					vmName = $someString
     /// 					# OPTIONAL
     /// 					shouldMigrateDataStore = $someBoolean
+    /// 					# OPTIONAL
+    /// 					keepMacAddress = $someBoolean
+    /// 					# OPTIONAL
+    /// 					virtualSwitchMappings = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							switchId = $someString
+    /// 							# REQUIRED
+    /// 							nicIndex = $someInt
+    /// 						}
+    /// 					)
     /// 					# OPTIONAL
     /// 					destinationFolder = $someString
     /// 				}
@@ -388,6 +414,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		vmName = $someString
     /// 		# OPTIONAL
     /// 		shouldMigrateDataStore = $someBoolean
+    /// 		# OPTIONAL
+    /// 		keepMacAddress = $someBoolean
+    /// 		# OPTIONAL
+    /// 		virtualSwitchMappings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				switchId = $someString
+    /// 				# REQUIRED
+    /// 				nicIndex = $someInt
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		destinationFolder = $someString
     /// 	}
@@ -699,11 +736,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		virtualSwitchMappings = @(
     /// 			@{
     /// 				# REQUIRED
-    /// 				macAddress = $someString
-    /// 				# REQUIRED
     /// 				switchId = $someString
     /// 				# REQUIRED
-    /// 				adapterName = $someString
+    /// 				nicIndex = $someInt
     /// 			}
     /// 		)
     /// 	}
@@ -784,6 +819,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		hostId = $someString
     /// 		# OPTIONAL
     /// 		vmName = $someString
+    /// 		# OPTIONAL
+    /// 		removeNetworkDevices = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldMigrateDataStore = $someBoolean
+    /// 		# OPTIONAL
+    /// 		keepMacAddress = $someBoolean
+    /// 		# OPTIONAL
+    /// 		virtualSwitchMappings = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				switchId = $someString
+    /// 				# REQUIRED
+    /// 				nicIndex = $someInt
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		destinationFolder = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1595,11 +1647,9 @@ $query.Var.input = @{
 					virtualSwitchMappings = @(
 						@{
 							# REQUIRED
-							macAddress = $someString
-							# REQUIRED
 							switchId = $someString
 							# REQUIRED
-							adapterName = $someString
+							nicIndex = $someInt
 						}
 					)
 				}
@@ -1650,6 +1700,23 @@ $query.Var.input = @{
 					hostId = $someString
 					# OPTIONAL
 					vmName = $someString
+					# OPTIONAL
+					removeNetworkDevices = $someBoolean
+					# OPTIONAL
+					shouldMigrateDataStore = $someBoolean
+					# OPTIONAL
+					keepMacAddress = $someBoolean
+					# OPTIONAL
+					virtualSwitchMappings = @(
+						@{
+							# REQUIRED
+							switchId = $someString
+							# REQUIRED
+							nicIndex = $someInt
+						}
+					)
+					# OPTIONAL
+					destinationFolder = $someString
 				}
 				# OPTIONAL
 				snapshotAfterDate = $someDateTime
@@ -1704,6 +1771,17 @@ $query.Var.input = @{
 					vmName = $someString
 					# OPTIONAL
 					shouldMigrateDataStore = $someBoolean
+					# OPTIONAL
+					keepMacAddress = $someBoolean
+					# OPTIONAL
+					virtualSwitchMappings = @(
+						@{
+							# REQUIRED
+							switchId = $someString
+							# REQUIRED
+							nicIndex = $someInt
+						}
+					)
 					# OPTIONAL
 					destinationFolder = $someString
 				}
@@ -1827,6 +1905,17 @@ $query.Var.input = @{
 		vmName = $someString
 		# OPTIONAL
 		shouldMigrateDataStore = $someBoolean
+		# OPTIONAL
+		keepMacAddress = $someBoolean
+		# OPTIONAL
+		virtualSwitchMappings = @(
+			@{
+				# REQUIRED
+				switchId = $someString
+				# REQUIRED
+				nicIndex = $someInt
+			}
+		)
 		# OPTIONAL
 		destinationFolder = $someString
 	}
@@ -2074,11 +2163,9 @@ $query.Var.input = @{
 		virtualSwitchMappings = @(
 			@{
 				# REQUIRED
-				macAddress = $someString
-				# REQUIRED
 				switchId = $someString
 				# REQUIRED
-				adapterName = $someString
+				nicIndex = $someInt
 			}
 		)
 	}
@@ -2143,6 +2230,23 @@ $query.Var.input = @{
 		hostId = $someString
 		# OPTIONAL
 		vmName = $someString
+		# OPTIONAL
+		removeNetworkDevices = $someBoolean
+		# OPTIONAL
+		shouldMigrateDataStore = $someBoolean
+		# OPTIONAL
+		keepMacAddress = $someBoolean
+		# OPTIONAL
+		virtualSwitchMappings = @(
+			@{
+				# REQUIRED
+				switchId = $someString
+				# REQUIRED
+				nicIndex = $someInt
+			}
+		)
+		# OPTIONAL
+		destinationFolder = $someString
 	}
 	# REQUIRED
 	id = $someString

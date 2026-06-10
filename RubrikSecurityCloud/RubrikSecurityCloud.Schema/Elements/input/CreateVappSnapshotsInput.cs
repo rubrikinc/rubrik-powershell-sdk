@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("inputs")]
         public List<CreateVappSnapshotInput>? Inputs { get; set; }
 
+        //      C# -> System.String? UserNote
+        // GraphQL -> userNote: String (scalar)
+        [JsonProperty("userNote")]
+        public System.String? UserNote { get; set; }
+
 
         #endregion
 

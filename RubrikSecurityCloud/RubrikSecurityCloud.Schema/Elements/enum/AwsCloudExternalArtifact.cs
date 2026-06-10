@@ -48,6 +48,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IAM_USER_ARN")]
         IAM_USER_ARN,
 
+        [EnumMember(Value = "ROLE_CHAINING_ROLE_ARN")]
+        ROLE_CHAINING_ROLE_ARN,
+
         [EnumMember(Value = "SECRET_KEY")]
         SECRET_KEY,
 

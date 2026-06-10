@@ -19,13 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? MacAddress
-        // GraphQL -> macAddress: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("macAddress")]
-        public System.String? MacAddress { get; set; }
-
         //      C# -> System.String? SwitchId
         // GraphQL -> switchId: String! (scalar)
         [Required]
@@ -33,12 +26,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("switchId")]
         public System.String? SwitchId { get; set; }
 
-        //      C# -> System.String? AdapterName
-        // GraphQL -> adapterName: String! (scalar)
+        //      C# -> System.Int32? NicIndex
+        // GraphQL -> nicIndex: Int! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("adapterName")]
-        public System.String? AdapterName { get; set; }
+        [JsonProperty("nicIndex")]
+        public System.Int32? NicIndex { get; set; }
 
 
         #endregion

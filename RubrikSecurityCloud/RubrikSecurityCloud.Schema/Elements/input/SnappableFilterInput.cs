@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public CommonClusterFilterInput? Cluster { get; set; }
 
+        //      C# -> TimeRangeInput? TimeRange
+        // GraphQL -> timeRange: TimeRangeInput (input)
+        [JsonProperty("timeRange")]
+        public TimeRangeInput? TimeRange { get; set; }
+
         //      C# -> System.String? SearchTerm
         // GraphQL -> searchTerm: String (scalar)
         [JsonProperty("searchTerm")]

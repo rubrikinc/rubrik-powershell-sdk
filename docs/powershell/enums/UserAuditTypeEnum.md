@@ -34,3 +34,5 @@ User audit type.
 - IDENTITY_ALERT - Audit type for identity alerts.
 - STAGED_UPGRADE - Audit type for upgrade operations.
 - IDENTITY_ACTIVITY - Audit type for identity activities.
+- THREAT_MONITORING - Audit type for Threat Monitoring enable/disable on a cluster, cloud
+account, subscription, project, or M365 organization.

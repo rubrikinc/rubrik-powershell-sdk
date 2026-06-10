@@ -199,3 +199,14 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - FUSION_COMPUTE_NETWORK - FusionCompute network.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
 - OPENSTACK_IMAGE - OpenStack Image.
+- GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure Postgres Flexible Server.
+- PURE_STORAGE_ARRAY - Pure Storage array.
+- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
+- PURE_STORAGE_VOLUME - Pure Storage volume.
+- GCP_BIGQUERY_DATASET - GCP BigQuery Dataset.
+- GOOGLE_WORKSPACE_GROUP - Google Workspace Group.
+- GLUE_ICEBERG_CATALOG - Glue Iceberg Catalog.
+- GLUE_ICEBERG_DATABASE - Glue Iceberg Database.
+- GLUE_ICEBERG_TABLE - Glue Iceberg Table.
+- PING_FEDERATE_CLUSTER - Ping Federate cluster.

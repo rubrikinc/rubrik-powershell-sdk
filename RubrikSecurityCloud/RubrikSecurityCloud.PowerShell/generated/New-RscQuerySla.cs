@@ -172,6 +172,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.cdmClusterUUID = $someString
+    /// # OPTIONAL
+    /// $query.Var.onlyWithProtectedObjects = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -1081,22 +1083,25 @@ $query.Var.before = $someString"
         }
 
         // Create new GraphQL Query:
-        // allClusterGlobalSlas(cdmClusterUUID: UUID!): [SlaInfo!]!
+        // allClusterGlobalSlas(cdmClusterUUID: UUID!, onlyWithProtectedObjects: Boolean = true): [SlaInfo!]!
         internal void InitQueryAllClusterGlobalSlas()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("cdmClusterUUID", "UUID!"),
+                Tuple.Create("onlyWithProtectedObjects", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllClusterGlobalSlas",
-                "($cdmClusterUUID: UUID!)",
+                "($cdmClusterUUID: UUID!,$onlyWithProtectedObjects: Boolean)",
                 "List<SlaInfo>",
                 Query.AllClusterGlobalSlas,
                 Query.AllClusterGlobalSlasFieldSpec,
                 @"# REQUIRED
-$query.Var.cdmClusterUUID = $someString"
+$query.Var.cdmClusterUUID = $someString
+# OPTIONAL
+$query.Var.onlyWithProtectedObjects = $someBoolean"
             );
         }
 

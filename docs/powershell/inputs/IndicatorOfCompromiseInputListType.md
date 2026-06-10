@@ -1,5 +1,5 @@
 ### IndicatorOfCompromiseInputListType
-Indicators of compromise.
+List of IOCs.
 
 - indicatorsOfCompromise: list of IndicatorOfCompromiseInputTypes
-  - Indicator of compromise.
+  - List of IndicatorOfCompromise.

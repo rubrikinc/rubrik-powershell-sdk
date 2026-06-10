@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("yearStartMonth")]
         public Month? YearStartMonth { get; set; }
 
+        //      C# -> List<YearlyDaySpecInput>? DaysOfYear
+        // GraphQL -> daysOfYear: [YearlyDaySpecInput!] (input)
+        [JsonProperty("daysOfYear")]
+        public List<YearlyDaySpecInput>? DaysOfYear { get; set; }
+
 
         #endregion
 

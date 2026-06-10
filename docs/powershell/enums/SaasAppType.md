@@ -1,5 +1,7 @@
 ### SaasAppType
-SaaS application type.
+Enumerates the different SaaS applications.
+Each SaaS application type corresponds to exactly one
+SaaS organization type.
 
 - ATLASSIAN_JIRA - Atlassian Jira application type.
 - SALESFORCE - Salesforce application type.
@@ -31,3 +33,12 @@ SaaS application type.
 - GOOGLE_MAIL - Google Workspace gmail application type.
 - ONEDRIVE - M365 OneDrive application type.
 - AUTH0 - Auth0 application type.
+- O365_COMMON - Shared Microsoft 365 application type used internally across M365
+workloads. Not intended for direct customer use.
+- EXCHANGE - Exchange application type.
+- TEAMS - Teams application type.
+- SHAREPOINT - SharePoint application type.
+- SAAS_AZURE_DEVOPS - Azure DevOps application type.
+- SAAS_GITHUB - GitHub application type.
+- POWER_PLATFORM_APP - Power Platform Apps application type.
+- POWER_PLATFORM_FLOW - Power Platform Flows (Power Automate) application type.

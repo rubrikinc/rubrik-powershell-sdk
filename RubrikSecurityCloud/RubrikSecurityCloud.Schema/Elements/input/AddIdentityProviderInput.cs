@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("idpClaimAttributes")]
         public List<IdpClaimAttribute>? IdpClaimAttributes { get; set; }
 
+        //      C# -> System.Boolean? IsForceAuthnEnabled
+        // GraphQL -> isForceAuthnEnabled: Boolean (scalar)
+        [JsonProperty("isForceAuthnEnabled")]
+        public System.Boolean? IsForceAuthnEnabled { get; set; }
+
 
         #endregion
 

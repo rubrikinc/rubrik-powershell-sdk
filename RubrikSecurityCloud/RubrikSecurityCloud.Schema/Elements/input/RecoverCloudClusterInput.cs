@@ -97,6 +97,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAzResilient")]
         public System.Boolean? IsAzResilient { get; set; }
 
+        //      C# -> List<System.String>? DnsNameServers
+        // GraphQL -> dnsNameServers: [String!] (scalar)
+        [JsonProperty("dnsNameServers")]
+        public List<System.String>? DnsNameServers { get; set; }
+
+        //      C# -> List<System.String>? DnsSearchDomains
+        // GraphQL -> dnsSearchDomains: [String!] (scalar)
+        [JsonProperty("dnsSearchDomains")]
+        public List<System.String>? DnsSearchDomains { get; set; }
+
 
         #endregion
 

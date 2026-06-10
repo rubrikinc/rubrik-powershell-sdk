@@ -45,3 +45,5 @@ configuration.
 related configuration.
 - EXCLUDE_DISK - The TPR rule is for excluding disks from snapshots.
 - OBJECT_PROTECTION_PAUSE - TPR rule to apply Object level Protection Pause.
+- RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION - Quorum authorization is required to restore a service account's
+quorum authorization exemption.

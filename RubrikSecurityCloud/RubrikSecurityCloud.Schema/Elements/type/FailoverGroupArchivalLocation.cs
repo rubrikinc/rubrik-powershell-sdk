@@ -25,10 +25,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceLocationStatus")]
         public ArchivalLocationStatus? SourceLocationStatus { get; set; }
 
+        //      C# -> TargetType? SourceLocationType
+        // GraphQL -> sourceLocationType: TargetType! (enum)
+        [JsonProperty("sourceLocationType")]
+        public TargetType? SourceLocationType { get; set; }
+
         //      C# -> ArchivalLocationStatus? TargetLocationStatus
         // GraphQL -> targetLocationStatus: ArchivalLocationStatus! (enum)
         [JsonProperty("targetLocationStatus")]
         public ArchivalLocationStatus? TargetLocationStatus { get; set; }
+
+        //      C# -> TargetType? TargetLocationType
+        // GraphQL -> targetLocationType: TargetType! (enum)
+        [JsonProperty("targetLocationType")]
+        public TargetType? TargetLocationType { get; set; }
+
+        //      C# -> System.Boolean? IsSourceImmutabilityEnabled
+        // GraphQL -> isSourceImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isSourceImmutabilityEnabled")]
+        public System.Boolean? IsSourceImmutabilityEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsTargetImmutabilityEnabled
+        // GraphQL -> isTargetImmutabilityEnabled: Boolean! (scalar)
+        [JsonProperty("isTargetImmutabilityEnabled")]
+        public System.Boolean? IsTargetImmutabilityEnabled { get; set; }
 
         //      C# -> System.String? SourceLocationId
         // GraphQL -> sourceLocationId: UUID! (scalar)
@@ -39,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> sourceLocationName: String! (scalar)
         [JsonProperty("sourceLocationName")]
         public System.String? SourceLocationName { get; set; }
+
+        //      C# -> System.String? SourceStorageLocation
+        // GraphQL -> sourceStorageLocation: String! (scalar)
+        [JsonProperty("sourceStorageLocation")]
+        public System.String? SourceStorageLocation { get; set; }
 
         //      C# -> DateTime? TargetLastRefreshTime
         // GraphQL -> targetLastRefreshTime: DateTime (scalar)
@@ -55,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetLocationName")]
         public System.String? TargetLocationName { get; set; }
 
+        //      C# -> System.String? TargetStorageLocation
+        // GraphQL -> targetStorageLocation: String! (scalar)
+        [JsonProperty("targetStorageLocation")]
+        public System.String? TargetStorageLocation { get; set; }
+
 
         #endregion
 
@@ -66,25 +96,46 @@ namespace RubrikSecurityCloud.Types
 
     public FailoverGroupArchivalLocation Set(
         ArchivalLocationStatus? SourceLocationStatus = null,
+        TargetType? SourceLocationType = null,
         ArchivalLocationStatus? TargetLocationStatus = null,
+        TargetType? TargetLocationType = null,
+        System.Boolean? IsSourceImmutabilityEnabled = null,
+        System.Boolean? IsTargetImmutabilityEnabled = null,
         System.String? SourceLocationId = null,
         System.String? SourceLocationName = null,
+        System.String? SourceStorageLocation = null,
         DateTime? TargetLastRefreshTime = null,
         System.String? TargetLocationId = null,
-        System.String? TargetLocationName = null
+        System.String? TargetLocationName = null,
+        System.String? TargetStorageLocation = null
     ) 
     {
         if ( SourceLocationStatus != null ) {
             this.SourceLocationStatus = SourceLocationStatus;
         }
+        if ( SourceLocationType != null ) {
+            this.SourceLocationType = SourceLocationType;
+        }
         if ( TargetLocationStatus != null ) {
             this.TargetLocationStatus = TargetLocationStatus;
+        }
+        if ( TargetLocationType != null ) {
+            this.TargetLocationType = TargetLocationType;
+        }
+        if ( IsSourceImmutabilityEnabled != null ) {
+            this.IsSourceImmutabilityEnabled = IsSourceImmutabilityEnabled;
+        }
+        if ( IsTargetImmutabilityEnabled != null ) {
+            this.IsTargetImmutabilityEnabled = IsTargetImmutabilityEnabled;
         }
         if ( SourceLocationId != null ) {
             this.SourceLocationId = SourceLocationId;
         }
         if ( SourceLocationName != null ) {
             this.SourceLocationName = SourceLocationName;
+        }
+        if ( SourceStorageLocation != null ) {
+            this.SourceStorageLocation = SourceStorageLocation;
         }
         if ( TargetLastRefreshTime != null ) {
             this.TargetLastRefreshTime = TargetLastRefreshTime;
@@ -94,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TargetLocationName != null ) {
             this.TargetLocationName = TargetLocationName;
+        }
+        if ( TargetStorageLocation != null ) {
+            this.TargetStorageLocation = TargetStorageLocation;
         }
         return this;
     }
@@ -118,6 +172,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "sourceLocationStatus\n" ;
             }
         }
+        //      C# -> TargetType? SourceLocationType
+        // GraphQL -> sourceLocationType: TargetType! (enum)
+        if (this.SourceLocationType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceLocationType\n" ;
+            } else {
+                s += ind + "sourceLocationType\n" ;
+            }
+        }
         //      C# -> ArchivalLocationStatus? TargetLocationStatus
         // GraphQL -> targetLocationStatus: ArchivalLocationStatus! (enum)
         if (this.TargetLocationStatus != null) {
@@ -125,6 +188,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "targetLocationStatus\n" ;
             } else {
                 s += ind + "targetLocationStatus\n" ;
+            }
+        }
+        //      C# -> TargetType? TargetLocationType
+        // GraphQL -> targetLocationType: TargetType! (enum)
+        if (this.TargetLocationType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetLocationType\n" ;
+            } else {
+                s += ind + "targetLocationType\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSourceImmutabilityEnabled
+        // GraphQL -> isSourceImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsSourceImmutabilityEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSourceImmutabilityEnabled\n" ;
+            } else {
+                s += ind + "isSourceImmutabilityEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTargetImmutabilityEnabled
+        // GraphQL -> isTargetImmutabilityEnabled: Boolean! (scalar)
+        if (this.IsTargetImmutabilityEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTargetImmutabilityEnabled\n" ;
+            } else {
+                s += ind + "isTargetImmutabilityEnabled\n" ;
             }
         }
         //      C# -> System.String? SourceLocationId
@@ -143,6 +233,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sourceLocationName\n" ;
             } else {
                 s += ind + "sourceLocationName\n" ;
+            }
+        }
+        //      C# -> System.String? SourceStorageLocation
+        // GraphQL -> sourceStorageLocation: String! (scalar)
+        if (this.SourceStorageLocation != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceStorageLocation\n" ;
+            } else {
+                s += ind + "sourceStorageLocation\n" ;
             }
         }
         //      C# -> DateTime? TargetLastRefreshTime
@@ -172,6 +271,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "targetLocationName\n" ;
             }
         }
+        //      C# -> System.String? TargetStorageLocation
+        // GraphQL -> targetStorageLocation: String! (scalar)
+        if (this.TargetStorageLocation != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetStorageLocation\n" ;
+            } else {
+                s += ind + "targetStorageLocation\n" ;
+            }
+        }
         return s;
     }
 
@@ -196,6 +304,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SourceLocationStatus = null;
         }
+        //      C# -> TargetType? SourceLocationType
+        // GraphQL -> sourceLocationType: TargetType! (enum)
+        if (ec.Includes("sourceLocationType",true))
+        {
+            if(this.SourceLocationType == null) {
+
+                this.SourceLocationType = new TargetType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceLocationType != null && ec.Excludes("sourceLocationType",true))
+        {
+            this.SourceLocationType = null;
+        }
         //      C# -> ArchivalLocationStatus? TargetLocationStatus
         // GraphQL -> targetLocationStatus: ArchivalLocationStatus! (enum)
         if (ec.Includes("targetLocationStatus",true))
@@ -212,6 +337,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.TargetLocationStatus != null && ec.Excludes("targetLocationStatus",true))
         {
             this.TargetLocationStatus = null;
+        }
+        //      C# -> TargetType? TargetLocationType
+        // GraphQL -> targetLocationType: TargetType! (enum)
+        if (ec.Includes("targetLocationType",true))
+        {
+            if(this.TargetLocationType == null) {
+
+                this.TargetLocationType = new TargetType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetLocationType != null && ec.Excludes("targetLocationType",true))
+        {
+            this.TargetLocationType = null;
+        }
+        //      C# -> System.Boolean? IsSourceImmutabilityEnabled
+        // GraphQL -> isSourceImmutabilityEnabled: Boolean! (scalar)
+        if (ec.Includes("isSourceImmutabilityEnabled",true))
+        {
+            if(this.IsSourceImmutabilityEnabled == null) {
+
+                this.IsSourceImmutabilityEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSourceImmutabilityEnabled != null && ec.Excludes("isSourceImmutabilityEnabled",true))
+        {
+            this.IsSourceImmutabilityEnabled = null;
+        }
+        //      C# -> System.Boolean? IsTargetImmutabilityEnabled
+        // GraphQL -> isTargetImmutabilityEnabled: Boolean! (scalar)
+        if (ec.Includes("isTargetImmutabilityEnabled",true))
+        {
+            if(this.IsTargetImmutabilityEnabled == null) {
+
+                this.IsTargetImmutabilityEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTargetImmutabilityEnabled != null && ec.Excludes("isTargetImmutabilityEnabled",true))
+        {
+            this.IsTargetImmutabilityEnabled = null;
         }
         //      C# -> System.String? SourceLocationId
         // GraphQL -> sourceLocationId: UUID! (scalar)
@@ -246,6 +422,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SourceLocationName != null && ec.Excludes("sourceLocationName",true))
         {
             this.SourceLocationName = null;
+        }
+        //      C# -> System.String? SourceStorageLocation
+        // GraphQL -> sourceStorageLocation: String! (scalar)
+        if (ec.Includes("sourceStorageLocation",true))
+        {
+            if(this.SourceStorageLocation == null) {
+
+                this.SourceStorageLocation = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceStorageLocation != null && ec.Excludes("sourceStorageLocation",true))
+        {
+            this.SourceStorageLocation = null;
         }
         //      C# -> DateTime? TargetLastRefreshTime
         // GraphQL -> targetLastRefreshTime: DateTime (scalar)
@@ -297,6 +490,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TargetLocationName != null && ec.Excludes("targetLocationName",true))
         {
             this.TargetLocationName = null;
+        }
+        //      C# -> System.String? TargetStorageLocation
+        // GraphQL -> targetStorageLocation: String! (scalar)
+        if (ec.Includes("targetStorageLocation",true))
+        {
+            if(this.TargetStorageLocation == null) {
+
+                this.TargetStorageLocation = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetStorageLocation != null && ec.Excludes("targetStorageLocation",true))
+        {
+            this.TargetStorageLocation = null;
         }
     }
 

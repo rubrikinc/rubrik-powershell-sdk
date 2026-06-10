@@ -41,7 +41,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? Filename { get; set; }
 
         //      C# -> DateTime? LastModified
-        // GraphQL -> lastModified: DateTime! (scalar)
+        // GraphQL -> lastModified: DateTime (scalar)
         [JsonProperty("lastModified")]
         public DateTime? LastModified { get; set; }
 
@@ -173,7 +173,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> DateTime? LastModified
-        // GraphQL -> lastModified: DateTime! (scalar)
+        // GraphQL -> lastModified: DateTime (scalar)
         if (this.LastModified != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "lastModified\n" ;
@@ -308,7 +308,7 @@ namespace RubrikSecurityCloud.Types
             this.Filename = null;
         }
         //      C# -> DateTime? LastModified
-        // GraphQL -> lastModified: DateTime! (scalar)
+        // GraphQL -> lastModified: DateTime (scalar)
         if (ec.Includes("lastModified",true))
         {
             if(this.LastModified == null) {

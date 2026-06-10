@@ -1,3 +1,5 @@
 ### ParentLabelInfo
+Parent label information.
+
 - displayName: System.String
-  - The display name of the parent label.
+  - Display name of the parent label.

@@ -1,9 +1,56 @@
 # New-RscMutationFileset
 ## Subcommands
 ### bulkcreate
+Create filesets for a host
+
+Supported in v5.0+
+Create filesets for a network host. Each fileset is a fileset template applied to a host.
+
 - There is a single argument of type BulkCreateFilesetsInput.
 - Returns BulkCreateFilesetsReply.
 ### bulkcreatetemplates
+Create fileset templates
+
+Supported in v5.0+
+v5.0-v5.3: Create fileset templates. The template is applied to the host.  Each template is a set of paths on the host.
+
+A template uses full paths and wildcards to define the objects to include, exclude, and exempt from exclusion.
+
+The **_exceptions_** value specifies paths that should not be excluded from the fileset by the **_exclude_** value.
+
+Specify an array of full path descriptions for each property **_include_**, **_exclude_**, and **_exceptions_**.
+
+Acceptable wildcard characters are
++ **_\*_** Single asterisk matches zero or more characters up to a path deliminator
++ **_\*\*_** Double asterisk matches zero or more characters
+
+The following rules apply to path descriptions
++ Accepts UTF-8 characters
++ Case sensitive
++ Forward slash character **_/_** is the path deliminator
++ Symbolic links must point to a subset of a non symbolic link path
++ Paths that do not start with **_/_** are modified to start with **_\*\*/_**
++ Paths that do not end with **_\*_** are modified to end with **_/\*\*_**
+v6.0+: Create fileset templates. The template is applied to the host.  Each template is a set of paths on the host.
+
+A template uses full paths and wildcards to define the objects to include, exclude, and exempt from exclusion.
+
+The **_exceptions_** value specifies paths that should not be excluded from the fileset by the **_exclude_** value.
+
+Specify an array of full path descriptions for each property **_include_**, **_exclude_**, and **_exceptions_**.
+
+Acceptable wildcard characters are.
++ **_\*_** Single asterisk matches zero or more characters up to a path deliminator.
++ **_\*\*_** Double asterisk matches zero or more characters.
+
+The following rules apply to path descriptions.
++ Accepts UTF-8 characters.
++ Case sensitive.
++ Forward slash character **_/_** is the path deliminator.
++ Symbolic links must point to a subset of a non symbolic link path.
++ Paths that do not start with **_/_** are modified to start with **_\*\*/_**.
++ Paths that do not end with **_\*_** are modified to end with **_/\*\*_**.
+
 - There is a single argument of type BulkCreateFilesetTemplatesInput.
 - Returns BulkCreateFilesetTemplatesReply.
 ### bulkdelete

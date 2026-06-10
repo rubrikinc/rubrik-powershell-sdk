@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
+        [EnumMember(Value = "AUTH0_TENANT")]
+        AUTH0_TENANT,
+
         [EnumMember(Value = "AWS_NATIVE_ACCOUNT")]
         AWS_NATIVE_ACCOUNT,
 
@@ -71,6 +74,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_MANAGED_DISK")]
         AZURE_MANAGED_DISK,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
 
         [EnumMember(Value = "AZURE_REGION")]
         AZURE_REGION,
@@ -201,6 +207,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FUSION_COMPUTE_VRM")]
         FUSION_COMPUTE_VRM,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER")]
+        GCP_ALLOY_DB_CLUSTER,
+
+        [EnumMember(Value = "GCP_BIGQUERY_DATASET")]
+        GCP_BIGQUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
@@ -218,6 +230,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,
+
+        [EnumMember(Value = "GLUE_ICEBERG_CATALOG")]
+        GLUE_ICEBERG_CATALOG,
+
+        [EnumMember(Value = "GLUE_ICEBERG_DATABASE")]
+        GLUE_ICEBERG_DATABASE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
+        GLUE_ICEBERG_TABLE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_GROUP")]
+        GOOGLE_WORKSPACE_GROUP,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,
@@ -492,6 +516,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST")]
         PHYSICAL_HOST,
 
+        [EnumMember(Value = "PING_FEDERATE_CLUSTER")]
+        PING_FEDERATE_CLUSTER,
+
         [EnumMember(Value = "POSTGRES_DATABASE")]
         POSTGRES_DATABASE,
 
@@ -510,11 +537,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
         PROXMOX_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "PURE_STORAGE_ARRAY")]
+        PURE_STORAGE_ARRAY,
+
+        [EnumMember(Value = "PURE_STORAGE_PROTECTION_GROUP")]
+        PURE_STORAGE_PROTECTION_GROUP,
+
+        [EnumMember(Value = "PURE_STORAGE_VOLUME")]
+        PURE_STORAGE_VOLUME,
+
         [EnumMember(Value = "RECOVERY_PLAN")]
         RECOVERY_PLAN,
 
         [EnumMember(Value = "ROOT")]
         ROOT,
+
+        [EnumMember(Value = "RSC_TAG")]
+        RSC_TAG,
 
         [EnumMember(Value = "SALESFORCE_FIXED_OBJECT")]
         SALESFORCE_FIXED_OBJECT,

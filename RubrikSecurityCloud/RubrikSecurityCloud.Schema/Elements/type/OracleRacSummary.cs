@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldDistributeBackupsAutomatically")]
         public System.Boolean? ShouldDistributeBackupsAutomatically { get; set; }
 
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean (scalar)
+        [JsonProperty("shouldEnableMultiNodeBackup")]
+        public System.Boolean? ShouldEnableMultiNodeBackup { get; set; }
+
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         [JsonProperty("status")]
@@ -92,6 +97,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumNodes = null,
         System.String? PrimaryClusterId = null,
         System.Boolean? ShouldDistributeBackupsAutomatically = null,
+        System.Boolean? ShouldEnableMultiNodeBackup = null,
         System.String? Status = null,
         List<OracleNodeOrder>? NodeOrder = null,
         List<OracleNodeProperties>? Nodes = null,
@@ -118,6 +124,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ShouldDistributeBackupsAutomatically != null ) {
             this.ShouldDistributeBackupsAutomatically = ShouldDistributeBackupsAutomatically;
+        }
+        if ( ShouldEnableMultiNodeBackup != null ) {
+            this.ShouldEnableMultiNodeBackup = ShouldEnableMultiNodeBackup;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shouldDistributeBackupsAutomatically\n" ;
             } else {
                 s += ind + "shouldDistributeBackupsAutomatically\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean (scalar)
+        if (this.ShouldEnableMultiNodeBackup != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldEnableMultiNodeBackup\n" ;
+            } else {
+                s += ind + "shouldEnableMultiNodeBackup\n" ;
             }
         }
         //      C# -> System.String? Status
@@ -378,6 +396,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShouldDistributeBackupsAutomatically != null && ec.Excludes("shouldDistributeBackupsAutomatically",true))
         {
             this.ShouldDistributeBackupsAutomatically = null;
+        }
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean (scalar)
+        if (ec.Includes("shouldEnableMultiNodeBackup",true))
+        {
+            if(this.ShouldEnableMultiNodeBackup == null) {
+
+                this.ShouldEnableMultiNodeBackup = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldEnableMultiNodeBackup != null && ec.Excludes("shouldEnableMultiNodeBackup",true))
+        {
+            this.ShouldEnableMultiNodeBackup = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)

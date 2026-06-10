@@ -1,0 +1,52 @@
+### IdentityEventMetadata
+
+
+- eventTime: DateTime
+  - Time of the origin event.
+- eventType: IdentityAlertEventType
+  - Origin event type.
+- targetIdentityName: System.String
+  - Target identity name.
+- targetIdentitySource: System.String
+  - Target identity source name.
+- targetIdentityType: ViolationPrincipalType
+  - Target identity type.
+- idpType: IdpType
+  - Target identity IDP type.
+- sourceIdentityId: System.String
+  - Source identity ID.
+- sourceIdentityName: System.String
+  - Source identity name.
+- sourceIdentityType: ViolationPrincipalType
+  - Source Identity type.
+- targetPrivilegeType: PrivilegeType
+  - Target identity privilege type.
+- sourcePrivilegeType: PrivilegeType
+  - Source identity privilege type.
+- entityId: System.String
+  - Entity ID.
+- entityName: System.String
+  - Entity name can be a domain name or a cloud account name, as described in
+IDPSpecificPrincipalProperties.GetEntityName().
+- targetIdentityUniqueIdentifier: System.String
+  - Target identity unique identifier.
+- sourceIdentityUniqueIdentifier: System.String
+  - Source identity unique identifier.
+- targetIdentityStatus: IdentityStatus
+  - Target identity status.
+- sourceIdentityStatus: IdentityStatus
+  - Source identity status.
+- sourceIdentityEntityId: System.String
+  - Source identity entity ID.
+- sourceIdentityEntityName: System.String
+  - Source identity entity name.
+- actorIdentityName: System.String
+  - Actor identity name.
+- actorIdentityId: System.String
+  - Identity ID of the actor.
+- actorState: IdentityEventActorIdentificationState
+  - The identification state of the actor.
+- actorIdentityType: ViolationPrincipalType
+  - Type of the actor identity.
+- actorPrivilegeType: PrivilegeType
+  - Privilege type of the actor identity.

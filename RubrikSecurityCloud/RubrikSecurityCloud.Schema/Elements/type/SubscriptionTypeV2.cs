@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("eventSubscription")]
         public EventSubscription? EventSubscription { get; set; }
 
+        //      C# -> IdentityActivitySubscription? IdentityActivitySubscription
+        // GraphQL -> identityActivitySubscription: IdentityActivitySubscription (type)
+        [JsonProperty("identityActivitySubscription")]
+        public IdentityActivitySubscription? IdentityActivitySubscription { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public SubscriptionTypeV2 Set(
         AuditSubscription? AuditSubscription = null,
-        EventSubscription? EventSubscription = null
+        EventSubscription? EventSubscription = null,
+        IdentityActivitySubscription? IdentityActivitySubscription = null
     ) 
     {
         if ( AuditSubscription != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EventSubscription != null ) {
             this.EventSubscription = EventSubscription;
+        }
+        if ( IdentityActivitySubscription != null ) {
+            this.IdentityActivitySubscription = IdentityActivitySubscription;
         }
         return this;
     }
@@ -85,6 +94,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "eventSubscription" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IdentityActivitySubscription? IdentityActivitySubscription
+        // GraphQL -> identityActivitySubscription: IdentityActivitySubscription (type)
+        if (this.IdentityActivitySubscription != null) {
+            var fspec = this.IdentityActivitySubscription.AsFieldSpec(conf.Child("identityActivitySubscription"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "identityActivitySubscription" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -132,6 +153,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EventSubscription != null && ec.Excludes("eventSubscription",false))
         {
             this.EventSubscription = null;
+        }
+        //      C# -> IdentityActivitySubscription? IdentityActivitySubscription
+        // GraphQL -> identityActivitySubscription: IdentityActivitySubscription (type)
+        if (ec.Includes("identityActivitySubscription",false))
+        {
+            if(this.IdentityActivitySubscription == null) {
+
+                this.IdentityActivitySubscription = new IdentityActivitySubscription();
+                this.IdentityActivitySubscription.ApplyExploratoryFieldSpec(ec.NewChild("identityActivitySubscription"));
+
+            } else {
+
+                this.IdentityActivitySubscription.ApplyExploratoryFieldSpec(ec.NewChild("identityActivitySubscription"));
+
+            }
+        }
+        else if (this.IdentityActivitySubscription != null && ec.Excludes("identityActivitySubscription",false))
+        {
+            this.IdentityActivitySubscription = null;
         }
     }
 

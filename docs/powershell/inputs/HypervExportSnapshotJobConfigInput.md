@@ -25,4 +25,4 @@ v7.0+: Specifies whether to remove the network interfaces from the exported virt
 Whether to preserve the original MAC addresses of network adapters.
 - virtualSwitchMappings: list of HypervVirtualSwitchMappingInputs
   - Supported in v9.6
-Mapping of network adapter names to virtual switches and MAC addresses.
+Mapping of NIC indices to virtual switches.

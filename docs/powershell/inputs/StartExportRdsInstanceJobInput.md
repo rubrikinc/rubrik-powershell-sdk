@@ -57,3 +57,5 @@ Input to trigger AWS native RDS Instance export job.
   - ID of the archived snapshot.
 - shouldResurrectSnapshot: System.Boolean
   - Specifies whether to resurrect an archived snapshot.
+- retrievalTier: AwsRetrievalTier
+  - AWS Glacier retrieval tier to use when hydrating archived objects for this export. Only meaningful when exporting from a Glacier-tier archival location.

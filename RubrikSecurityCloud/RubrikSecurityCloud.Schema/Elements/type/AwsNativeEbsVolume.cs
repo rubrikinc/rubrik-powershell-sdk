@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("onDemandSnapshotCount")]
         public System.Int32? OnDemandSnapshotCount { get; set; }
 
+        //      C# -> System.String? OutpostArn
+        // GraphQL -> outpostArn: String! (scalar)
+        [JsonProperty("outpostArn")]
+        public System.String? OutpostArn { get; set; }
+
         //      C# -> System.Int32? SizeInGiBs
         // GraphQL -> sizeInGiBs: Int! (scalar)
         [JsonProperty("sizeInGiBs")]
@@ -410,6 +415,7 @@ namespace RubrikSecurityCloud.Types
         System.String? NativeName = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
+        System.String? OutpostArn = null,
         System.Int32? SizeInGiBs = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? VolumeName = null,
@@ -510,6 +516,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OnDemandSnapshotCount != null ) {
             this.OnDemandSnapshotCount = OnDemandSnapshotCount;
+        }
+        if ( OutpostArn != null ) {
+            this.OutpostArn = OutpostArn;
         }
         if ( SizeInGiBs != null ) {
             this.SizeInGiBs = SizeInGiBs;
@@ -832,6 +841,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "onDemandSnapshotCount\n" ;
             } else {
                 s += ind + "onDemandSnapshotCount\n" ;
+            }
+        }
+        //      C# -> System.String? OutpostArn
+        // GraphQL -> outpostArn: String! (scalar)
+        if (this.OutpostArn != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "outpostArn\n" ;
+            } else {
+                s += ind + "outpostArn\n" ;
             }
         }
         //      C# -> System.Int32? SizeInGiBs
@@ -1578,6 +1596,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnDemandSnapshotCount != null && ec.Excludes("onDemandSnapshotCount",true))
         {
             this.OnDemandSnapshotCount = null;
+        }
+        //      C# -> System.String? OutpostArn
+        // GraphQL -> outpostArn: String! (scalar)
+        if (ec.Includes("outpostArn",true))
+        {
+            if(this.OutpostArn == null) {
+
+                this.OutpostArn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OutpostArn != null && ec.Excludes("outpostArn",true))
+        {
+            this.OutpostArn = null;
         }
         //      C# -> System.Int32? SizeInGiBs
         // GraphQL -> sizeInGiBs: Int! (scalar)

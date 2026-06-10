@@ -17,3 +17,5 @@ Input for Fileset recover files from an archival location.
   - OS type of the fileset host.
 - locationId: System.String
   - Required. ID of the archival location.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the restore (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

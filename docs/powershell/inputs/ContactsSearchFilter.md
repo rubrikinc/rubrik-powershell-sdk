@@ -2,10 +2,10 @@
 Parameters for contacts search.
 
 - searchKeywordFilter: ContactsSearchKeywordFilter
-  - Filters on keywords appearing in the contact name, company name, emails or addresses.
+  - Filters on keywords.
 - searchObjectFilter: ContactsSearchObjectFilter
-  - Filters on object type (contact, folder, or all).
+  - Filters on object type.
 - lambdaFilters: LambdaPathFilters
-  - Parameters for using Lambda filters in the query.
+  - Used for Lambda search/browse, diff/full FMD paths for Contact.
 - skipRifItems: System.Boolean
-  - Specifies whether to skip items in the Recoverable Items folder.
+  - Specifies whether or not to skip items in Recoverable Items Folder.

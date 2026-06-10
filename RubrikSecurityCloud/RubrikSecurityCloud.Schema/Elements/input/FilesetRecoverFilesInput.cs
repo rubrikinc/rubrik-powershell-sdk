@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osType")]
         public GuestOsType? OsType { get; set; }
 
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

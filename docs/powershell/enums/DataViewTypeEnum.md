@@ -64,3 +64,5 @@ for the single SLA in the NG Alpha report framework.
 - VSPHERE_VM_EXCLUDED_DISKS - Specifies the vSphere virtual machine excluded disks report information.
 - ALLOWED_HITS - Specifies the allowed hits report information for DSPM.
 - CLOUD_OVERLAP_OBJECTS - Specifies the Cloud Overlap Objects report information.
+- ANOMALY_DETECTION_COMPLIANCE - Anomaly detection compliance report information.
+- SIGNIN_LOGS - Specifies the sign-in logs report information.

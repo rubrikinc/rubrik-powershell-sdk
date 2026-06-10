@@ -385,6 +385,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
     /// 			# OPTIONAL
     /// 			yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 			# OPTIONAL
+    /// 			daysOfYear = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# REQUIRED
+    /// 					dayOfMonthSpecification = @{
+    /// 						# OPTIONAL
+    /// 						specificDate = @{
+    /// 							# OPTIONAL
+    /// 							dateOffset = $someInt
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfWeekPattern = @{
+    /// 							# OPTIONAL
+    /// 							weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					}
+    /// 				}
+    /// 			)
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -861,6 +883,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			continuousBackupRetentionInDays = $someInt
     /// 		}
+    /// 		# OPTIONAL
+    /// 		azurePostgresFlexibleServerConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			backupRetentionInDays = $someInt
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -1020,6 +1047,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		terminateBackupsExceedingBackupWindow = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	purpose = $someSlaPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaPurpose]) for enum values.
     /// 	# OPTIONAL
     /// 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
     /// }
@@ -1372,6 +1401,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
     /// 			# OPTIONAL
     /// 			yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 			# OPTIONAL
+    /// 			daysOfYear = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+    /// 					# REQUIRED
+    /// 					dayOfMonthSpecification = @{
+    /// 						# OPTIONAL
+    /// 						specificDate = @{
+    /// 							# OPTIONAL
+    /// 							dateOffset = $someInt
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						dayOfWeekPattern = @{
+    /// 							# OPTIONAL
+    /// 							weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+    /// 							# OPTIONAL
+    /// 							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 						}
+    /// 					}
+    /// 				}
+    /// 			)
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -1849,6 +1900,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			continuousBackupsEnabled = $someBoolean
     /// 			# OPTIONAL
     /// 			continuousBackupRetentionInDays = $someInt
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		azurePostgresFlexibleServerConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			backupRetentionInDays = $someInt
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -2614,6 +2670,28 @@ $query.Var.input = @{
 			dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
 			# OPTIONAL
 			yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+			# OPTIONAL
+			daysOfYear = @(
+				@{
+					# REQUIRED
+					monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# REQUIRED
+					dayOfMonthSpecification = @{
+						# OPTIONAL
+						specificDate = @{
+							# OPTIONAL
+							dateOffset = $someInt
+						}
+						# OPTIONAL
+						dayOfWeekPattern = @{
+							# OPTIONAL
+							weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					}
+				}
+			)
 		}
 	}
 	# OPTIONAL
@@ -3090,6 +3168,11 @@ $query.Var.input = @{
 			# OPTIONAL
 			continuousBackupRetentionInDays = $someInt
 		}
+		# OPTIONAL
+		azurePostgresFlexibleServerConfigInput = @{
+			# OPTIONAL
+			backupRetentionInDays = $someInt
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -3249,6 +3332,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		terminateBackupsExceedingBackupWindow = $someBoolean
 	}
+	# OPTIONAL
+	purpose = $someSlaPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SlaPurpose]) for enum values.
 	# OPTIONAL
 	retentionLockMode = $someRetentionLockMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionLockMode]) for enum values.
 }"
@@ -3562,6 +3647,28 @@ $query.Var.input = @{
 			dayOfYear = $someDayOfYear # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfYear]) for enum values.
 			# OPTIONAL
 			yearStartMonth = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+			# OPTIONAL
+			daysOfYear = @(
+				@{
+					# REQUIRED
+					monthInYear = $someMonth # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Month]) for enum values.
+					# REQUIRED
+					dayOfMonthSpecification = @{
+						# OPTIONAL
+						specificDate = @{
+							# OPTIONAL
+							dateOffset = $someInt
+						}
+						# OPTIONAL
+						dayOfWeekPattern = @{
+							# OPTIONAL
+							weekOrdinal = $someWeekOrdinal # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekOrdinal]) for enum values.
+							# OPTIONAL
+							dayOfWeek = $someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+						}
+					}
+				}
+			)
 		}
 	}
 	# OPTIONAL
@@ -4039,6 +4146,11 @@ $query.Var.input = @{
 			continuousBackupsEnabled = $someBoolean
 			# OPTIONAL
 			continuousBackupRetentionInDays = $someInt
+		}
+		# OPTIONAL
+		azurePostgresFlexibleServerConfigInput = @{
+			# OPTIONAL
+			backupRetentionInDays = $someInt
 		}
 	}
 	# OPTIONAL

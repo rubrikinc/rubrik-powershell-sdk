@@ -25,22 +25,6 @@ M365 Backup Storage Groups from M365 Backup Storage hierarchy.
   - The authorized operations on the object.
 - id: System.String
   - Group ID of M365 Backup Storage Group object.
-- snapshotConnection: PolarisSnapshotConnection
-  - The list of snapshots taken for this workload.
-- workloadSnapshotConnection: GenericSnapshotConnection
-  - The list of snapshots taken for this workload.
-- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
-- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
-- newestSnapshot: PolarisSnapshot
-  - The most recent snapshot of this workload.
-- oldestSnapshot: PolarisSnapshot
-  - The oldest snapshot of this workload.
-- onDemandSnapshotCount: System.Int32
-  - The number of on-demand snapshots.
-- newestIndexedSnapshot: PolarisSnapshot
-  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -73,6 +57,22 @@ M365 Backup Storage Groups from M365 Backup Storage hierarchy.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus

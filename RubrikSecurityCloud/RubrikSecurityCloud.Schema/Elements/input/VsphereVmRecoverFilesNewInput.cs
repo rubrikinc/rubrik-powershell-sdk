@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("deltaRequest")]
         public DeltaRecoveryInput? DeltaRequest { get; set; }
 
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

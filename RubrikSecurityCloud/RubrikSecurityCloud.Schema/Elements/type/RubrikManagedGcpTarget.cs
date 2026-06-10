@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("connectionStatus")]
         public ConnectionStatusType? ConnectionStatus { get; set; }
 
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        [JsonProperty("encryptionType")]
+        public TargetEncryptionTypeEnum? EncryptionType { get; set; }
+
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("locationConnectionStatus")]
@@ -146,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cnpSpecificFields")]
         public GcpCloudNativeTarget? CnpSpecificFields { get; set; }
 
+        //      C# -> GcpImmutabilitySettings? ImmutabilitySettings
+        // GraphQL -> immutabilitySettings: GcpImmutabilitySettings (type)
+        [JsonProperty("immutabilitySettings")]
+        public GcpImmutabilitySettings? ImmutabilitySettings { get; set; }
+
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         [JsonProperty("targetMapping")]
@@ -167,6 +177,7 @@ namespace RubrikSecurityCloud.Types
 
     public RubrikManagedGcpTarget Set(
         ConnectionStatusType? ConnectionStatus = null,
+        TargetEncryptionTypeEnum? EncryptionType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
@@ -191,12 +202,16 @@ namespace RubrikSecurityCloud.Types
         ProxySettings? ArchivalProxySettings = null,
         Cluster? Cluster = null,
         GcpCloudNativeTarget? CnpSpecificFields = null,
+        GcpImmutabilitySettings? ImmutabilitySettings = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
         if ( ConnectionStatus != null ) {
             this.ConnectionStatus = ConnectionStatus;
+        }
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
         }
         if ( LocationConnectionStatus != null ) {
             this.LocationConnectionStatus = LocationConnectionStatus;
@@ -270,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         if ( CnpSpecificFields != null ) {
             this.CnpSpecificFields = CnpSpecificFields;
         }
+        if ( ImmutabilitySettings != null ) {
+            this.ImmutabilitySettings = ImmutabilitySettings;
+        }
         if ( TargetMapping != null ) {
             this.TargetMapping = TargetMapping;
         }
@@ -297,6 +315,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "connectionStatus\n" ;
             } else {
                 s += ind + "connectionStatus\n" ;
+            }
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
             }
         }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
@@ -524,6 +551,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> GcpImmutabilitySettings? ImmutabilitySettings
+        // GraphQL -> immutabilitySettings: GcpImmutabilitySettings (type)
+        if (this.ImmutabilitySettings != null) {
+            var fspec = this.ImmutabilitySettings.AsFieldSpec(conf.Child("immutabilitySettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "immutabilitySettings" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         if (this.TargetMapping != null) {
@@ -571,6 +610,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConnectionStatus != null && ec.Excludes("connectionStatus",true))
         {
             this.ConnectionStatus = null;
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new TargetEncryptionTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
@@ -985,6 +1041,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.CnpSpecificFields != null && ec.Excludes("cnpSpecificFields",false))
         {
             this.CnpSpecificFields = null;
+        }
+        //      C# -> GcpImmutabilitySettings? ImmutabilitySettings
+        // GraphQL -> immutabilitySettings: GcpImmutabilitySettings (type)
+        if (ec.Includes("immutabilitySettings",false))
+        {
+            if(this.ImmutabilitySettings == null) {
+
+                this.ImmutabilitySettings = new GcpImmutabilitySettings();
+                this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+
+            } else {
+
+                this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+
+            }
+        }
+        else if (this.ImmutabilitySettings != null && ec.Excludes("immutabilitySettings",false))
+        {
+            this.ImmutabilitySettings = null;
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)

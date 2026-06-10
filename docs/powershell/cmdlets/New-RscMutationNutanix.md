@@ -28,7 +28,10 @@ Take bulk backups for multiple Nutanix virtual machines.
 Add Nutanix cluster
 
 Supported in v5.0+
-Create a Nutanix cluster object by providing an address and account credentials for Prism. Initiates an asynchronous job to establish a connection with the cluster and retrieve all metadata. Use GET /nutanix_cluster/{id}/status to check status.
+Create a Nutanix cluster object by providing an address and account
+credentials for Prism. Initiates an asynchronous job to establish a
+connection with the cluster and retrieve all metadata. Use GET
+/nutanix_cluster/{id}/status to check status.
 
 - There is a single argument of type CreateNutanixClusterInput.
 - Returns AsyncRequestStatus.
@@ -133,7 +136,10 @@ Start an asynchronous job to download multiple virtual disks from a specified Nu
 Download a snapshot from a replication target
 
 Supported in v7.0+
-Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
+Initiates a job to download a snapshot from the specified location when
+the snapshot does not exist locally. The specified location has to be a
+replication target connected to this Rubrik cluster. If an SLA Domain is
+not provided, the snapshot will be retained forever.
 
 - There is a single argument of type DownloadNutanixVmFromLocationInput.
 - Returns AsyncRequestStatus.
@@ -167,7 +173,8 @@ Initiate a request to migrate the virtual disks of a specified Nutanix Live Moun
 Initiate a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
-Initiates a request to perform a Live Mount of a Nutanix virtual machine snapshot identified by the snapshot ID.
+Initiates a request to perform a Live Mount of a Nutanix virtual
+machine snapshot identified by the snapshot ID.
 
 - There is a single argument of type MountNutanixSnapshotV1Input.
 - Returns AsyncRequestStatus.

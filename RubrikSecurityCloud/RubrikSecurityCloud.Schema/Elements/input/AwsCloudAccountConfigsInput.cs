@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("columnSearchFilter")]
         public System.String? ColumnSearchFilter { get; set; }
 
+        //      C# -> List<AwsCloudAccountServiceType>? ServiceTypeFilter
+        // GraphQL -> serviceTypeFilter: [AwsCloudAccountServiceType!] (enum)
+        [JsonProperty("serviceTypeFilter")]
+        public List<AwsCloudAccountServiceType>? ServiceTypeFilter { get; set; }
+
 
         #endregion
 

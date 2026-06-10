@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String (scalar)
+        [JsonProperty("locationId")]
+        public System.String? LocationId { get; set; }
+
         //      C# -> List<System.String>? LocalDataSourceIds
         // GraphQL -> localDataSourceIds: [String!] (scalar)
         [JsonProperty("localDataSourceIds")]
@@ -28,11 +33,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> archivalDataSourceIds: [String!] (scalar)
         [JsonProperty("archivalDataSourceIds")]
         public List<System.String>? ArchivalDataSourceIds { get; set; }
-
-        //      C# -> System.String? LocationId
-        // GraphQL -> locationId: String (scalar)
-        [JsonProperty("locationId")]
-        public System.String? LocationId { get; set; }
 
         //      C# -> System.String? ExternalLocationId
         // GraphQL -> externalLocationId: String (scalar)

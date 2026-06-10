@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        [JsonProperty("retentionLockMode")]
+        public RetentionLockMode? RetentionLockMode { get; set; }
+
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         [JsonProperty("snapshotFrequency")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CdmSnapshotLocationRetentionInfo Set(
+        RetentionLockMode? RetentionLockMode = null,
         SnapshotFrequency? SnapshotFrequency = null,
         DateTime? ExpirationTime = null,
         System.Boolean? IsExpirationDateCalculated = null,
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null
     ) 
     {
+        if ( RetentionLockMode != null ) {
+            this.RetentionLockMode = RetentionLockMode;
+        }
         if ( SnapshotFrequency != null ) {
             this.SnapshotFrequency = SnapshotFrequency;
         }
@@ -118,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionLockMode\n" ;
+            } else {
+                s += ind + "retentionLockMode\n" ;
+            }
+        }
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         if (this.SnapshotFrequency != null) {
@@ -197,6 +215,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (ec.Includes("retentionLockMode",true))
+        {
+            if(this.RetentionLockMode == null) {
+
+                this.RetentionLockMode = new RetentionLockMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionLockMode != null && ec.Excludes("retentionLockMode",true))
+        {
+            this.RetentionLockMode = null;
+        }
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         if (ec.Includes("snapshotFrequency",true))

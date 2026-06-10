@@ -11,6 +11,8 @@ Support user access object details.
   - Support user access end time.
 - ticketNumber: System.String
   - Ticket number associated to the support user access request.
+- actualEndTime: DateTime
+  - Actual time when the support access session ended. Null while open.
 - accessProviderUser: User
   - User providing support user access.
 - impersonatedUser: User

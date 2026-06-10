@@ -3,56 +3,20 @@ A Rubrik CDM Cluster.
 
 - id: System.String
   - The cluster uuid.
-- name: System.String
-  - The cluster name.
-- defaultAddress: System.String
-  - The cluster's default IP address.
-- defaultPort: System.Int32
-  - The cluster's default port.
-- systemStatus: ClusterSystemStatus
-  - System status of the cluster. For Mosaic clusters and Rubrik clusters running CDM versions earlier than 5.0, this value is null.
-- pauseStatus: ClusterPauseStatus
-  - Pause status of the cluster.
-- cyberEventLockdownMode: ClusterCyberEventLockdownMode
-  - Cyber Event Lockdown mode of the Rubrik cluster.
-- cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails
-  - Cyber Event Lockdown support case details.
-- eosDate: System.String
-  - End of support date.
-- eosStatus: ClusterEosStatus
-  - End of support status.
-- isTprEnabled: System.Boolean
-  - Indicates if TPR is enabled on the cluster.
-- systemStatusMessage: System.String
-  - Human readable message explaining the systemStatus.
-- systemStatusAffectedNodes: list of ClusterNodes
-  - List of affected nodes in the cluster.
 - registrationTime: DateTime
   - The time the cluster was registered.
 - lastConnectionTime: DateTime
   - The time the cluster was last connected.
-- productType: ClusterProductEnum
-  - The cluster product type (e.g., CDM, DATOS, etc.).
-- version: System.String
-  - The software version.
-- encryptionEnabled: System.Boolean
-  - Whether or not the cluster is encrypted.
-- estimatedRunway: System.Int64
-  - The number of days remaining before the system fills up.
-- snapshotCount: System.Int64
-  - The total number of snapshots.
-- type: ClusterTypeEnum
-  - The cluster type.
-- status: ClusterStatus
-  - The cluster status.
-- statusFromDb: ClusterConnectionStatusFromDb
-  - The cluster status from the database.
-- subStatus: ClusterSubStatus
-  - The cluster sub status.
-- state: clusterState
-  - The cluster state.
-- isHealthy: System.Boolean
-  - Whether or not the cluster is healthy.
+- isAirGapped: System.Boolean
+  - Air-gap status of the Rubrik cluster.
+- isAssignedByParentAccount: System.Boolean
+  - Whether this cluster is assigned by a parent account. Tenant accounts with assigned clusters have restricted cluster management options.
+- defaultAddress: System.String
+  - The cluster's default IP address.
+- defaultPort: System.Int32
+  - The cluster's default port.
+- systemStatusMessage: System.String
+  - Human readable message explaining the systemStatus.
 - geoLocation: GeoLocation
   - The cluster's location.
 - timezone: System.String
@@ -65,67 +29,105 @@ A Rubrik CDM Cluster.
   - The cluster's global manager connectivity status.
 - passesConnectivityCheck: System.Boolean
   - Whether the global manager connectivity is healthy.
+- registeredMode: ClusterRegistrationMode
+  - The Rubrik cluster's registered mode.
+- rawAddress: System.String
+  - The cluster's raw address.
+- systemStatus: ClusterSystemStatus
+  - System status of the cluster. For Mosaic clusters and Rubrik clusters running CDM versions earlier than 5.0, this value is null.
+- encryptionEnabled: System.Boolean
+  - Whether or not the cluster is encrypted.
+- type: ClusterTypeEnum
+  - The cluster type.
 - connectivityLastUpdated: DateTime
   - When the global manager connectivity was last updated.
-- replicationSources: list of ReplicationSources
-  - The cluster's replication sources.
-- replicationTargets: list of ReplicationTargets
-  - The cluster's replication targets.
-- metric: ClusterMetric
-  - The most recent metric of a cluster.
+- pauseStatus: ClusterPauseStatus
+  - Pause status of the cluster.
+- eosDate: System.String
+  - End of support date.
+- eosStatus: ClusterEosStatus
+  - End of support status.
+- isClusterRemovalTprEnabled: System.Boolean
+  - Specifies whether Quorum Authorization is enabled for cluster removal.
+- isTprEnabled: System.Boolean
+  - Indicates if TPR is enabled on the cluster.
+- cdmRbacMigrationStatus: System.String
+  - CDM to RSC RBAC migration status for the current cluster.
+- status: ClusterStatus
+  - The cluster status.
+- subStatus: ClusterSubStatus
+  - The cluster sub status.
+- statusFromDb: ClusterConnectionStatusFromDb
+  - The cluster status from the database.
+- systemStatusAffectedNodes: list of ClusterNodes
+  - List of affected nodes in the cluster.
+- clusterNodeConnection: ClusterNodeConnection
+  - The cluster nodes.
+- clusterDiskConnection: ClusterDiskConnection
+  - The cluster disks.
 - metricTimeSeries: list of metricTimeSeriess
   - The metric time series of a cluster.
 - metricTimeSeriesNew: list of ClusterMetricTimeSeriesNews
   - The metric time series of a cluster.
-- rubrikSyncStatus: RubrikSyncStatus
-  - This field lists jobs that sync CDM cluster data to RSC.
-- allOrgs: list of Orgs
-  - The organizations to which this cluster is authorized.
-- activitySeriesConnection: ActivitySeriesConnection
-  - The cluster's activity series.
-- cdmNotificationSettings: NotificationSettingSummaryListResponse
-  - Rubrik cluster email notification settings.
-- snappableConnection: SnappableConnection
-  - The cluster's snappables.
-- clusterNodeConnection: ClusterNodeConnection
-  - The cluster nodes.
-- cdmClusterNodeDetails: list of CdmNodeDetails
-  - The CDM cluster node details.
-- clusterNodeStats: list of ClusterNodeStatss
-  - The node-level performance statistics of a Rubrik cluster.
-- clusterDiskConnection: ClusterDiskConnection
-  - The cluster disks.
-- lambdaConfig: GetLambdaConfigReply
-  - Lambda configuration.
-- lambdaFeatureHistory: LambdaFeatureHistory
-  - Lambda feature history.
-- datagovPreviewerConfig: PreviewerClusterConfig
-  - Sonar previewer configuration.
-- datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply
-  - Auto Enable Sensitive Data Discovery policy configuration.
-- metadataPullScheduler: JobsReply
-  - Metadata pull scheduler.
+- metric: ClusterMetric
+  - The most recent metric of a cluster.
 - cdmUpgradeInfo: CdmUpgradeInfo
   - Cluster upgrade information.
+- configProtectionInfo: ConfigProtectionInfo
+  - Config protection information.
 - ccprovisionInfo: CcprovisionInfo
   - Job status of a create cluster operation.
 - cloudInfo: CcWithCloudInfo
   - Cloud information for this cluster.
+- rubrikSyncStatus: RubrikSyncStatus
+  - This field lists jobs that sync CDM cluster data to RSC.
+- datagovPreviewerConfig: PreviewerClusterConfig
+  - Sonar previewer configuration.
+- datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply
+  - Auto Enable Sensitive Data Discovery policy configuration.
 - authorizedOperations: AuthorizedOperations
   - Operations that the user is authorized to perform on the Rubrik cluster.
+- cdmClusterNodeDetails: list of CdmNodeDetails
+  - The CDM cluster node details.
+- name: System.String
+  - The cluster name.
+- replicationSources: list of ReplicationSources
+  - The cluster's replication sources.
+- replicationTargets: list of ReplicationTargets
+  - The cluster's replication targets.
+- cdmNotificationSettings: NotificationSettingSummaryListResponse
+  - Rubrik cluster email notification settings.
+- lambdaConfig: GetLambdaConfigReply
+  - Lambda configuration.
+- lambdaFeatureHistory: LambdaFeatureHistory
+  - Lambda feature history.
+- metadataPullScheduler: JobsReply
+  - Metadata pull scheduler.
 - noSqlWorkloadCount: System.Int32
   - Total number of protected NoSQL workloads.
-- configProtectionInfo: ConfigProtectionInfo
-  - Config protection information.
 - licensedProducts: list of Products
   - The licensed products that belong to this cluster.
-- registeredMode: ClusterRegistrationMode
-  - The Rubrik cluster's registered mode.
-- cdmRbacMigrationStatus: System.String
-  - CDM to RSC RBAC migration status for the current cluster.
-- rawAddress: System.String
-  - The cluster's raw address.
-- isAirGapped: System.Boolean
-  - Air-gap status of the Rubrik cluster.
-- isClusterRemovalTprEnabled: System.Boolean
-  - Specifies whether Quorum Authorization is enabled for cluster removal.
+- version: System.String
+  - The software version.
+- estimatedRunway: System.Int64
+  - The number of days remaining before the system fills up.
+- snapshotCount: System.Int64
+  - The total number of snapshots.
+- isHealthy: System.Boolean
+  - Whether or not the cluster is healthy.
+- cyberEventLockdownMode: ClusterCyberEventLockdownMode
+  - Cyber Event Lockdown mode of the Rubrik cluster.
+- cyberEventLockdownSupportCaseDetails: CyberEventLockdownSupportCaseDetails
+  - Cyber Event Lockdown support case details.
+- clusterNodeStats: list of ClusterNodeStatss
+  - The node-level performance statistics of a Rubrik cluster.
+- productType: ClusterProductEnum
+  - The cluster product type (e.g., CDM, DATOS, etc.).
+- state: clusterState
+  - The cluster state.
+- allOrgs: list of Orgs
+  - The organizations to which this cluster is authorized.
+- activitySeriesConnection: ActivitySeriesConnection
+  - The cluster's activity series.
+- snappableConnection: SnappableConnection
+  - The cluster's snappables.

@@ -1,0 +1,7 @@
+### FusionComputeDatastoreEdge
+Wrapper around the FusionComputeDatastore object. This wrapper is used for pagination.
+
+- cursor: System.String
+  - String used to identify this edge.
+- node: FusionComputeDatastore
+  - The actual FusionComputeDatastore object wrapped by this edge.

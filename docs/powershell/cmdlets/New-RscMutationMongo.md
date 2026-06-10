@@ -64,6 +64,38 @@ Initiates an on-demand job to discover a MongoDB source.
 
 - There is a single argument of type DiscoverMongoSourceInput.
 - Returns AsyncRequestStatus.
+### downloadcollectionsetsnapshotsforpointintimerecovery
+Download MongoDB collection set snapshots for a point in time recovery
+
+Supported in v9.5+
+Downloads the most recent full snapshot and the log snapshots taken after the full snapshot, required for the point in time recovery of a MongoDB collection set.
+
+- There is a single argument of type DownloadMongoCollectionSetSnapshotsForPointInTimeRecoveryInput.
+- Returns AsyncRequestStatus.
+### downloadopsmanagersourcesnapshotsforpointintimerecovery
+Download MongoDB OpsManager source snapshots for a point in time recovery
+
+Supported in v9.5+
+Downloads the most recent full snapshot and the log snapshots taken after the full snapshot, required for the point in time recovery of a MongoDB source managed by Ops Manager.
+
+- There is a single argument of type DownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecoveryInput.
+- Returns AsyncRequestStatus.
+### expirecollectionsetdownloadedsnapshots
+Expire downloaded snapshots of a MongoDB collection set
+
+Supported in v9.5+
+Expires all downloaded data and log snapshots. You can specify a begin time, an end time, or both to provide a time range to expire only the downloaded data and log snapshots that were taken within the specified time range. The time is relative to when the snapshot was originally taken, not when it was downloaded. You can also configure a flag to expire only the log snapshots.
+
+- There is a single argument of type ExpireMongoCollectionSetDownloadedSnapshotsInput.
+- Returns AsyncRequestStatus.
+### expireopsmanagersourcedownloadedsnapshots
+Expire downloaded snapshots of a MongoDB source managed by Ops Manager
+
+Supported in v9.5+
+Expires all downloaded data and log snapshots. You can specify a begin time, an end time, or both to provide a time range to expire only the downloaded data and log snapshots that were taken within the specified time range. The time is relative to when the snapshot was originally taken, not when it was downloaded. You can also configure a flag to expire only the log snapshots.
+
+- There is a single argument of type ExpireMongoOpsManagerSourceDownloadedSnapshotsInput.
+- Returns AsyncRequestStatus.
 ### patchopsmanagermanagedsource
 v9.2: Edit a MongoDB source
 v9.3+: Edit a MongoDB source managed by Ops Manager

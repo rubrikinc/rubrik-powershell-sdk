@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_STORAGE_ACCOUNT")]
         AZURE_STORAGE_ACCOUNT,
 
@@ -173,6 +176,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FailoverClusterApp")]
         FAILOVER_CLUSTER_APP,
+
+        [EnumMember(Value = "FailoverGroup")]
+        FAILOVER_GROUP,
 
         [EnumMember(Value = "FederatedAccess")]
         FEDERATED_ACCESS,

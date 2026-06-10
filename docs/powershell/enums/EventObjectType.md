@@ -190,6 +190,7 @@ Enum representing all the possible object types which generate events.
 - AZURE_NATIVE_REGION - Azure native region.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - RSC_CHILD_ACCOUNT - RSC Child Account (Dedicated Tenant).
+- PRINCIPAL_OAUTH2_PERMISSION_GRANT - OAuth2 Permission Grant principal type.
 - PROXMOX_ENVIRONMENT - Proxmox environment.
 - PROXMOX_CLUSTER - Proxmox cluster.
 - PROXMOX_NODE - Proxmox node.
@@ -241,3 +242,27 @@ Enum representing all the possible object types which generate events.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
 - PRINCIPAL_SYSTEM_IDENTITY - System Identity principal type.
 - OPENSTACK_IMAGE - Openstack Image.
+- GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
+- PRINCIPAL_APP_ROLE - App Role principal type.
+- PURE_STORAGE_ARRAY - Pure Storage array.
+- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
+- PURE_STORAGE_VOLUME - Pure Storage volume.
+- GCP_BIG_QUERY_DATASET - GCP BigQuery Dataset.
+- PRINCIPAL_CONTRACT - Contract principal type.
+- PRINCIPAL_DEVICE - Device principal type.
+- PRINCIPAL_INVITATION - Invitation principal type.
+- PRINCIPAL_AU - Administrative Unit principal type.
+- PRINCIPAL_TERMS_OF_USE - Terms of Use principal type.
+- PRINCIPAL_AUTHENTICATION_CONTEXT - Authentication Context principal type.
+- PRINCIPAL_AUTHENTICATION_STRENGTH - Authentication Strength principal type.
+- MICROSOFT_DEFENDER_INTEGRATION - Microsoft Defender for Identity integration object.
+- GOOGLE_WORKSPACE_GROUP - Google Workspace Group.
+- PRINCIPAL_MSKDS_PROV_ROOT_KEY - MS Key Distribution Service Root Key principal type.
+- PRINCIPAL_NTFRS_SUBSCRIBER - NTFRS Subscriber principal type.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure PostgreSQL Flexible Server.
+- PRINCIPAL_DNS_NODE - DNS Node principal type.
+- GLUE_ICEBERG_CATALOG - AWS Glue Iceberg Catalog.
+- GLUE_ICEBERG_DATABASE - AWS Glue Iceberg Database.
+- GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
+- PRINCIPAL_PKI_ENROLLMENT_SERVICE - PKI Enrollment Service (AD CS CA) principal type.
+- PING_FEDERATE_CLUSTER - Ping Federate Cluster.

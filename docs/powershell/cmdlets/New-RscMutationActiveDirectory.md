@@ -32,6 +32,12 @@ Modifies the parameters of a Live Mount of an Active Directory domain controller
 
 - There is a single argument of type ModifyActiveDirectoryLiveMountInput.
 - Returns System.String.
+### restoreforestv2
+RestoreActiveDirectoryForestV2 initiates an Active Directory Forest Recovery job
+with simplified input.
+
+- There is a single argument of type RestoreActiveDirectoryForestV2Input.
+- Returns RestoreActiveDirectoryForestV2Reply.
 ### restoreobjects
 Restore the given objects to the Active Directory
 

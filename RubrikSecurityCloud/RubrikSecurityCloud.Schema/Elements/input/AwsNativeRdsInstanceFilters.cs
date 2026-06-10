@@ -99,10 +99,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
 
+        //      C# -> AwsServiceTypeFilter? ServiceTypeFilter
+        // GraphQL -> serviceTypeFilter: AwsServiceTypeFilter (input)
+        [JsonProperty("serviceTypeFilter")]
+        public AwsServiceTypeFilter? ServiceTypeFilter { get; set; }
+
         //      C# -> List<Filter>? HierarchyFilters
         // GraphQL -> hierarchyFilters: [Filter!] (input)
         [JsonProperty("hierarchyFilters")]
         public List<Filter>? HierarchyFilters { get; set; }
+
+        //      C# -> CloudNativeApplicationDiscoveryMethodFilter? DiscoveryMethodFilter
+        // GraphQL -> discoveryMethodFilter: CloudNativeApplicationDiscoveryMethodFilter (input)
+        [JsonProperty("discoveryMethodFilter")]
+        public CloudNativeApplicationDiscoveryMethodFilter? DiscoveryMethodFilter { get; set; }
 
 
         #endregion

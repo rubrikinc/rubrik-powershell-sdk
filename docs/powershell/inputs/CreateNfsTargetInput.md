@@ -23,3 +23,5 @@ Input to create the NFS archival location.
   - Flag to determine if consolidation is enabled in the NFS archival location.
 - encryptionPassword: System.String
   - Encryption password for the NFS archival location.
+- subType: NfsSubType
+  - Subtype of the NFS archival location.

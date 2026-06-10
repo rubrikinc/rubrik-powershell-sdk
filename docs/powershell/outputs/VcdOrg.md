@@ -5,6 +5,8 @@
   - List of descendants.
 - logicalChildConnection: VcdOrgLogicalChildTypeConnection
   - List of logical children.
+- recoveryLogicalChildConnection: VcdOrgLogicalChildTypeConnection
+  - List of recoveryLogical children.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String

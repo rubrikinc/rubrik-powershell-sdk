@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountConnectionId")]
         public System.String? AccountConnectionId { get; set; }
 
+        //      C# -> System.Int32? AzurePostgresFlexibleServerCount
+        // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
+        [JsonProperty("azurePostgresFlexibleServerCount")]
+        public System.Int32? AzurePostgresFlexibleServerCount { get; set; }
+
         //      C# -> System.Int32? AzureSqlDatabaseDbCount
         // GraphQL -> azureSqlDatabaseDbCount: Int! (scalar)
         [JsonProperty("azureSqlDatabaseDbCount")]
@@ -275,6 +280,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? AccountConnectionId = null,
+        System.Int32? AzurePostgresFlexibleServerCount = null,
         System.Int32? AzureSqlDatabaseDbCount = null,
         System.Int32? AzureSqlManagedInstanceDbCount = null,
         System.Int32? AzureStorageAccountCount = null,
@@ -334,6 +340,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccountConnectionId != null ) {
             this.AccountConnectionId = AccountConnectionId;
+        }
+        if ( AzurePostgresFlexibleServerCount != null ) {
+            this.AzurePostgresFlexibleServerCount = AzurePostgresFlexibleServerCount;
         }
         if ( AzureSqlDatabaseDbCount != null ) {
             this.AzureSqlDatabaseDbCount = AzureSqlDatabaseDbCount;
@@ -533,6 +542,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountConnectionId\n" ;
             } else {
                 s += ind + "accountConnectionId\n" ;
+            }
+        }
+        //      C# -> System.Int32? AzurePostgresFlexibleServerCount
+        // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
+        if (this.AzurePostgresFlexibleServerCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azurePostgresFlexibleServerCount\n" ;
+            } else {
+                s += ind + "azurePostgresFlexibleServerCount\n" ;
             }
         }
         //      C# -> System.Int32? AzureSqlDatabaseDbCount
@@ -1026,6 +1044,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccountConnectionId != null && ec.Excludes("accountConnectionId",true))
         {
             this.AccountConnectionId = null;
+        }
+        //      C# -> System.Int32? AzurePostgresFlexibleServerCount
+        // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
+        if (ec.Includes("azurePostgresFlexibleServerCount",true))
+        {
+            if(this.AzurePostgresFlexibleServerCount == null) {
+
+                this.AzurePostgresFlexibleServerCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzurePostgresFlexibleServerCount != null && ec.Excludes("azurePostgresFlexibleServerCount",true))
+        {
+            this.AzurePostgresFlexibleServerCount = null;
         }
         //      C# -> System.Int32? AzureSqlDatabaseDbCount
         // GraphQL -> azureSqlDatabaseDbCount: Int! (scalar)

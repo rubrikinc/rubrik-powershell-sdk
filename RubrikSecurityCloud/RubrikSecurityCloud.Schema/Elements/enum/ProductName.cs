@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_JIRA")]
         ATLASSIAN_JIRA,
 
+        [EnumMember(Value = "AWS_BAAS")]
+        AWS_BAAS,
+
         [EnumMember(Value = "CC_ES")]
         CC_ES,
 
@@ -59,6 +62,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DYNAMICS_365")]
         DYNAMICS_365,
+
+        [EnumMember(Value = "EDGE")]
+        EDGE,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE")]
         GOOGLE_WORKSPACE,
@@ -89,6 +95,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OKTA")]
         OKTA,
+
+        [EnumMember(Value = "OKTA_CYBER_POSTURE")]
+        OKTA_CYBER_POSTURE,
 
         [EnumMember(Value = "ONPREM_AD")]
         ONPREM_AD,

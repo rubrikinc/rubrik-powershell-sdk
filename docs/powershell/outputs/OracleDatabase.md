@@ -47,6 +47,10 @@
   - Specifies the OS names for the Oracle host or RAC that the Oracle database is running on.
 - rbaRole: System.String
   - The RBS role of the Oracle database in a multi-cluster RBS configuration.
+- ratePerRmanChannelInMb: System.Int32
+  - Supported in v9.5+. Specifies the RMAN RATE parameter in megabytes per second to limit backup throughput per channel.
+- logRatePerRmanChannelInMb: System.Int32
+  - Supported in v9.5+. Specifies the RMAN RATE parameter in megabytes per second to limit log backup throughput per channel.
 - dataGuardGroup: OracleDataGuardGroup
   - The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
 - liveMounts: OracleLiveMountConnection

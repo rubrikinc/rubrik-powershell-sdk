@@ -9,6 +9,8 @@ Instance of a registered NAS system.
   - Vendor type of the registered NAS system.
 - isChangelistEnabled: System.Boolean
   - Specifies whether the Changelist option is enabled.
+- isNutanixCftEnabled: System.Boolean
+  - Specifies whether Nutanix Files Changed File Tracking (CFT) is enabled.
 - isSmbSupported: System.Boolean
   - Specifies whether SMB is supported by the NAS System.
 - isNfsSupported: System.Boolean
@@ -28,6 +30,8 @@ Instance of a registered NAS system.
   - List of hostnames or IP addresses used for NFS operations on the system.
 - userSelectedSmbInterfaces: list of System.Strings
   - List of hostnames or IP addresses used for SMB operations on the system.
+- nfsPseudoFsPrefix: System.String
+  - NFSv4 pseudo-filesystem prefix removed from mountd export paths to derive NFSv4-accessible paths during NFS share discovery and mount-time path reconstruction. Only applicable to Generic NAS systems.
 - id: System.String
   - Object ID.
 - descendantConnection: NasSystemDescendantTypeConnection
@@ -40,26 +44,6 @@ Instance of a registered NAS system.
   - The total number of shares in this NAS system.
 - namespaceCount: System.Int32
   - The total number of namespaces in this NAS system.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -92,3 +76,23 @@ Instance of a registered NAS system.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.

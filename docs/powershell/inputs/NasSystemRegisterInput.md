@@ -31,6 +31,11 @@ v9.1+: Enables the Metro Cluster feature for the NetApp NAS system. If the NetAp
 Optional credentials that will be used to access all the SMB shares on the NAS system unless overridden at the NAS namespace level or at the NAS share level. This is applicable for NetApp and Isilon NAS systems only.
 - nutanixFileServerParameters: NutanixFileServerParametersInput
   - Supported in v8.1+
+- isNetAppSnapDiffEnabled: System.Boolean
+  - Supported in v9.5+
+Specifies the default SnapDiff setting for all shares in the NetApp NAS system.
 - shouldGrantNfsShareRootAccess: System.Boolean
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
+- isNutanixCftEnabled: System.Boolean
+  - Specifies the default CFT (Changed File Tracking) setting for all shares in the Nutanix Files NAS system.

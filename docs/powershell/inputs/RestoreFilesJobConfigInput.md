@@ -40,6 +40,12 @@ v8.0+: Boolean field specifying whether to use the Rubrik Backup Service or VMwa
   - Supported in v7.0+
 v7.0: ID of the guest OS credential that should be used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields will be ignored.
 v8.0+: ID of the guest OS credential used for authentication when restoring files through the VMware tools. When this ID is specified, the 'domainName', 'username', 'password', and 'shouldSaveCredentials' fields are ignored.
+- excludePaths: list of System.Strings
+  - Supported in v9.6
+Optional field which excludes the paths specified during recovery.
+- recoveryPurpose: System.String
+  - Supported in v9.6
+Optional field that identifies the purpose of the recovery. Set to 'SURGICAL_RECOVERY' for surgical recovery jobs which exclude quarantined files.
 - description: System.String
   - Supported in v9.2+
 Description.

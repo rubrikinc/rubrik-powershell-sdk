@@ -84,6 +84,9 @@ Regions for Rubrik Cloud Storage Archival Location.
 - GOV_US_ARIZONA - Gov US Arizona or US Gov Arizona.
 - GOV_US_TEXAS - Gov US Texas or US Gov Texas.
 - GOV_US_VIRGINIA - Gov US Virginia or US Gov Virginia.
+- GOV_US_EAST_1 - Gov US East 1 or US Gov East 1.
+- GOV_US_WEST_1 - Gov US West 1 or US Gov West 1.
 - UNKNOWN_AZURE_REGION - Rubrik Cloud Vault Azure region is unknown.
 - UNKNOWN_AWS_REGION - Rubrik Cloud Vault AWS region is unknown.
 - UNKNOWN_GCP_REGION - Rubrik Cloud Vault GCP region is unknown.
+- ASIA_PACIFIC_THAILAND - Asia pacific thailand.

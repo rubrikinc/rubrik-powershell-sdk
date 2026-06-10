@@ -3,6 +3,8 @@ Filters for list of Azure virtual machines.
 
 - nameSubstringFilter: NameSubstringFilter
   - Filter by name substring.
+- namePrefixFilter: NamePrefixFilter
+  - Filter by name prefix.
 - effectiveSlaFilter: EffectiveSlaFilter
   - Filter by effective SLA Domain.
 - resourceGroupFilter: AzureNativeVmResourceGroupFilter

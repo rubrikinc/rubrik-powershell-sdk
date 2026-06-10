@@ -199,11 +199,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				useWindowsVss = $someBoolean
     /// 			}
     /// 			# OPTIONAL
+    /// 			templateBlocklistFilesystemTypes = $someString
+    /// 			# OPTIONAL
     /// 			templateBlocklistedFilesystemPaths = $someString
     /// 			# OPTIONAL
     /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
     /// 			# OPTIONAL
     /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
+    /// 			# OPTIONAL
+    /// 			templateAllowlistFilesystemPaths = $someString
     /// 		}
     /// 	)
     /// 	# REQUIRED
@@ -385,11 +389,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				useWindowsVss = $someBoolean
     /// 			}
     /// 			# OPTIONAL
+    /// 			templateBlocklistFilesystemTypes = $someString
+    /// 			# OPTIONAL
     /// 			templateBlocklistedFilesystemPaths = $someString
     /// 			# OPTIONAL
     /// 			shouldRetryPrescriptIfBackupFails = $someBoolean
     /// 			# OPTIONAL
     /// 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
+    /// 			# OPTIONAL
+    /// 			templateAllowlistFilesystemPaths = $someString
     /// 		}
     /// 	)
     /// }
@@ -490,6 +498,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		recoveryPurpose = $someFilesetRestoreFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetRestoreFilesJobConfigRecoveryPurpose]) for enum values.
+    /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# OPTIONAL
     /// 		postRestoreScript = $someString
@@ -500,6 +510,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
     /// 	# REQUIRED
     /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -567,6 +579,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		recoveryPurpose = $someFilesetRestoreFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetRestoreFilesJobConfigRecoveryPurpose]) for enum values.
+    /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# OPTIONAL
     /// 		postRestoreScript = $someString
@@ -579,6 +593,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
     /// 	# REQUIRED
     /// 	locationId = $someString
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -928,11 +944,15 @@ $query.Var.input = @{
 				useWindowsVss = $someBoolean
 			}
 			# OPTIONAL
+			templateBlocklistFilesystemTypes = $someString
+			# OPTIONAL
 			templateBlocklistedFilesystemPaths = $someString
 			# OPTIONAL
 			shouldRetryPrescriptIfBackupFails = $someBoolean
 			# OPTIONAL
 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
+			# OPTIONAL
+			templateAllowlistFilesystemPaths = $someString
 		}
 	)
 	# REQUIRED
@@ -1082,11 +1102,15 @@ $query.Var.input = @{
 				useWindowsVss = $someBoolean
 			}
 			# OPTIONAL
+			templateBlocklistFilesystemTypes = $someString
+			# OPTIONAL
 			templateBlocklistedFilesystemPaths = $someString
 			# OPTIONAL
 			shouldRetryPrescriptIfBackupFails = $someBoolean
 			# OPTIONAL
 			shouldOverrideClusterWideBlocklistedFilesystemPaths = $someBoolean
+			# OPTIONAL
+			templateAllowlistFilesystemPaths = $someString
 		}
 	)
 }"
@@ -1171,6 +1195,8 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		recoveryPurpose = $someFilesetRestoreFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetRestoreFilesJobConfigRecoveryPurpose]) for enum values.
+		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
 		# OPTIONAL
 		postRestoreScript = $someString
@@ -1181,6 +1207,8 @@ $query.Var.input = @{
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }
@@ -1240,6 +1268,8 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		recoveryPurpose = $someFilesetRestoreFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetRestoreFilesJobConfigRecoveryPurpose]) for enum values.
+		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
 		# OPTIONAL
 		postRestoreScript = $someString
@@ -1252,6 +1282,8 @@ $query.Var.input = @{
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
 	# REQUIRED
 	locationId = $someString
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }

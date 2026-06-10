@@ -1,5 +1,5 @@
 ### CommonClusterFilterInput
-Filter cluster data.
+Filter input for clusters.
 
 - id: list of System.Strings
   - Rubrik cluster UUID.

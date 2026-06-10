@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? InvalidateAllSessions
-        // GraphQL -> invalidateAllSessions: Boolean (scalar)
-        [JsonProperty("invalidateAllSessions")]
-        public System.Boolean? InvalidateAllSessions { get; set; }
-
         //      C# -> System.String? CurrentPassword
         // GraphQL -> currentPassword: String! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("newPassword")]
         public System.String? NewPassword { get; set; }
+
+        //      C# -> System.Boolean? InvalidateAllSessions
+        // GraphQL -> invalidateAllSessions: Boolean (scalar)
+        [JsonProperty("invalidateAllSessions")]
+        public System.Boolean? InvalidateAllSessions { get; set; }
 
 
         #endregion

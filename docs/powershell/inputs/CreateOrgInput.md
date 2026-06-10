@@ -3,37 +3,39 @@ Details for creating a new organization.
 
 - name: System.String
   - Unique name ID of the organization.
-- fullName: System.String
-  - Full name of the tenant organization.
 - description: System.String
   - Description for organization.
+- fullName: System.String
+  - Full name of the tenant organization.
 - authDomainConfig: TenantAuthDomainConfig
-  - Use the SSO/LDAP configuration of the global organization or set the configuration specific to this organization.
+  - Use the SSO/LDAP configuration of the global organization or set the
+configuration specific to this organization.
 - shouldEnforceMfaForAll: System.Boolean
   - Enforce MFA for all users in the organization.
 - isEnvoyRequired: System.Boolean
   - Force organization to use envoy to connect their hosts.
 - allowedClusters: list of System.Strings
   - Allowed clusters for the organization.
-- replicationOnlyClusters: list of System.Strings
-  - Clusters designated as replication-only for the organization.
 - existingUsers: list of ExistingUserInputs
   - Existing users to add to the tenant organization.
 - userInvites: list of UserInviteInputs
   - Invitations to invite new users to the tenant organization.
 - permissions: list of PermissionInputs
   - Permissions to be given to the org admin role.
-- selfServicePermissions: list of SelfServicePermissionInputs
-  - Self-service permissions to be assigned to the organization.
 - existingSsoGroups: list of ExistingSsoGroupInputs
   - Existing SSO groups to be authorized for this tenant organization.
 - newSsoGroups: list of NewSsoGroupInputs
   - New SSO groups to be authorized for this tenant organization.
+- selfServicePermissions: list of SelfServicePermissionInputs
+  - Self-service permissions to be assigned to the organization.
 - isServiceAccountEnabled: System.Boolean
   - Deprecated. Use isServiceAccountDisabled instead.
+- crossAccountCapabilities: list of CrossAccountCapabilitys
+  - Specifies cross-account capabilities enabled for this organization.
 - isServiceAccountDisabled: System.Boolean
   - Specifies whether service accounts are not enabled for this organization.
 - isInheritIpAllowlistDisabled: System.Boolean
-  - Specifies whether IP allowlist settings and entries are not inherited for this organization.
-- crossAccountCapabilities: list of CrossAccountCapabilitys
-  - Specifies cross-account capabilities enabled for this organization.
+  - Specifies whether IP allowlist settings and entries are not inherited for
+this organization.
+- replicationOnlyClusters: list of System.Strings
+  - Clusters designated as replication-only for the organization.

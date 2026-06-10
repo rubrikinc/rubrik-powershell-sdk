@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Activity series' API domain:
-    /// ActivitySeries, List, SessionInTimeoutInSeconds, UserFileTimeline, or UserTimeline.
+    /// ActivitySeries, CrowdstrikeAlertSummary, CrowdstrikeCaseSummary, List, SessionInTimeoutInSeconds, UserFileTimeline, or UserTimeline.
     /// </summary>
     /// <description>
     /// New-RscQueryActivitySeries creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 7 operations
     /// in the 'Activity series' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActivitySeries, List, SessionInTimeoutInSeconds, UserFileTimeline, or UserTimeline.
+    /// one of: ActivitySeries, CrowdstrikeAlertSummary, CrowdstrikeCaseSummary, List, SessionInTimeoutInSeconds, UserFileTimeline, or UserTimeline.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -102,6 +102,64 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ActivitySeries
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CrowdstrikeAlertSummary operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: CrowdstrikeAlertSummary
+    /// 
+    /// $query = New-RscQueryActivitySeries -Operation CrowdstrikeAlertSummary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.detectionId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CrowdstrikeAlertActivitySummary
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CrowdstrikeCaseSummary operation
+    /// of the 'Activity series' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActivitySeries
+    /// # API Operation: CrowdstrikeCaseSummary
+    /// 
+    /// $query = New-RscQueryActivitySeries -Operation CrowdstrikeCaseSummary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.detectionIds = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CrowdstrikeCaseActivitySummary
     /// 
     /// 
     /// 
@@ -321,6 +379,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "ActivitySeries",
+                "CrowdstrikeAlertSummary",
+                "CrowdstrikeCaseSummary",
                 "List",
                 "SessionInTimeoutInSeconds",
                 "UserFileTimeline",
@@ -342,6 +402,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "ActivitySeries":
                         this.ProcessRecord_ActivitySeries();
+                        break;
+                    case "CrowdstrikeAlertSummary":
+                        this.ProcessRecord_CrowdstrikeAlertSummary();
+                        break;
+                    case "CrowdstrikeCaseSummary":
+                        this.ProcessRecord_CrowdstrikeCaseSummary();
                         break;
                     case "List":
                         this.ProcessRecord_List();
@@ -372,6 +438,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ActivitySeries";
             // Create new graphql operation activitySeries
             InitQueryActivitySeries();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // crowdstrikeAlertActivitySummary.
+        internal void ProcessRecord_CrowdstrikeAlertSummary()
+        {
+            this._logger.name += " -CrowdstrikeAlertSummary";
+            // Create new graphql operation crowdstrikeAlertActivitySummary
+            InitQueryCrowdstrikeAlertActivitySummary();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // crowdstrikeCaseActivitySummary.
+        internal void ProcessRecord_CrowdstrikeCaseSummary()
+        {
+            this._logger.name += " -CrowdstrikeCaseSummary";
+            // Create new graphql operation crowdstrikeCaseActivitySummary
+            InitQueryCrowdstrikeCaseActivitySummary();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -433,6 +517,48 @@ $query.Var.input = @{
 	# OPTIONAL
 	clusterUuid = $someString
 }"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // crowdstrikeAlertActivitySummary(detectionId: String!): CrowdstrikeAlertActivitySummary
+        internal void InitQueryCrowdstrikeAlertActivitySummary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("detectionId", "String!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCrowdstrikeAlertActivitySummary",
+                "($detectionId: String!)",
+                "CrowdstrikeAlertActivitySummary",
+                Query.CrowdstrikeAlertActivitySummary,
+                Query.CrowdstrikeAlertActivitySummaryFieldSpec,
+                @"# REQUIRED
+$query.Var.detectionId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // crowdstrikeCaseActivitySummary(detectionIds: [String!]!): CrowdstrikeCaseActivitySummary
+        internal void InitQueryCrowdstrikeCaseActivitySummary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("detectionIds", "[String!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCrowdstrikeCaseActivitySummary",
+                "($detectionIds: [String!]!)",
+                "CrowdstrikeCaseActivitySummary",
+                Query.CrowdstrikeCaseActivitySummary,
+                Query.CrowdstrikeCaseActivitySummaryFieldSpec,
+                @"# REQUIRED
+$query.Var.detectionIds = @(
+	$someString
+)"
             );
         }
 

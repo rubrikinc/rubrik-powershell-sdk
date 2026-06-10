@@ -1,6 +1,8 @@
 ### O365Mailbox
 - isRelic: System.Boolean
 - userPrincipalName: System.String
+- jobTitle: System.String
+  - The job title of the Microsoft 365 user.
 - preferredDataLocation: System.String
   - The preferred data location of the mailbox.
 - authorizedOperations: list of Operations

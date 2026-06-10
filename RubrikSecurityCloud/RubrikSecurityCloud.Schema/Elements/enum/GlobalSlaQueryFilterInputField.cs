@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAME")]
         NAME,
 
+        [EnumMember(Value = "NAME_EXACT_MATCH")]
+        NAME_EXACT_MATCH,
+
         [EnumMember(Value = "OBJECT_TYPE")]
         OBJECT_TYPE,
 
@@ -62,6 +65,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SHOW_PAUSED_SLAS_ONLY")]
         SHOW_PAUSED_SLAS_ONLY,
+
+        [EnumMember(Value = "SLA_PURPOSE")]
+        SLA_PURPOSE,
 
         [EnumMember(Value = "UPGRADE_STATUS")]
         UPGRADE_STATUS

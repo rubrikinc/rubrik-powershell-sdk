@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectTypes")]
         public List<SlaObjectType>? ObjectTypes { get; set; }
 
+        //      C# -> SlaPurpose? Purpose
+        // GraphQL -> purpose: SlaPurpose! (enum)
+        [JsonProperty("purpose")]
+        public SlaPurpose? Purpose { get; set; }
+
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
         [JsonProperty("retentionLockMode")]
@@ -228,6 +233,7 @@ namespace RubrikSecurityCloud.Types
     public GlobalSlaReply Set(
         BackupType? BackupType = null,
         List<SlaObjectType>? ObjectTypes = null,
+        SlaPurpose? Purpose = null,
         RetentionLockMode? RetentionLockMode = null,
         System.String? ClusterUuid = null,
         System.String? Description = null,
@@ -272,6 +278,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectTypes != null ) {
             this.ObjectTypes = ObjectTypes;
+        }
+        if ( Purpose != null ) {
+            this.Purpose = Purpose;
         }
         if ( RetentionLockMode != null ) {
             this.RetentionLockMode = RetentionLockMode;
@@ -414,6 +423,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectTypes\n" ;
             } else {
                 s += ind + "objectTypes\n" ;
+            }
+        }
+        //      C# -> SlaPurpose? Purpose
+        // GraphQL -> purpose: SlaPurpose! (enum)
+        if (this.Purpose != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "purpose\n" ;
+            } else {
+                s += ind + "purpose\n" ;
             }
         }
         //      C# -> RetentionLockMode? RetentionLockMode
@@ -855,6 +873,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectTypes != null && ec.Excludes("objectTypes",true))
         {
             this.ObjectTypes = null;
+        }
+        //      C# -> SlaPurpose? Purpose
+        // GraphQL -> purpose: SlaPurpose! (enum)
+        if (ec.Includes("purpose",true))
+        {
+            if(this.Purpose == null) {
+
+                this.Purpose = new SlaPurpose();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Purpose != null && ec.Excludes("purpose",true))
+        {
+            this.Purpose = null;
         }
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode! (enum)

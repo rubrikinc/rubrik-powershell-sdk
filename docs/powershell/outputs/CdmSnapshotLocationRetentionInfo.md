@@ -23,3 +23,5 @@ Indicates whether expiration information of the snapshot is unavailable at this 
   - Location ID for snapshot retention.
 - isSnapshotOnLegalHold: System.Boolean
   - Boolean to indicate whether the snapshot is legally held at the specified location.
+- retentionLockMode: RetentionLockMode
+  - Specifies the retention lock mode at this location. Can be NO_MODE, COMPLIANCE, or GOVERNANCE. Populated by the cdmSnapshotWithPerLocationRetentionInfo query.

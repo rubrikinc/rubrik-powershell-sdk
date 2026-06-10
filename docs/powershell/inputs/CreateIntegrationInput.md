@@ -7,3 +7,5 @@ Holds the input to a create integration request.
   - The integration type.
 - config: IntegrationConfigInput
   - The integration configuration.
+- settings: IntegrationSettingsInput
+  - The integration settings (user preferences).

@@ -1,0 +1,59 @@
+### AzurePostgresFlexibleServer
+An Azure Postgres Flexible Server. For more info, see https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/overview.
+
+- tags: list of AzureTags
+  - List of tags associated with the Azure Postgres Flexible Server.
+- isRelic: System.Boolean
+  - Specifies whether the Azure Postgres Flexible Server is a relic or not. A resource is a relic when it is unprotected or deleted, but the previously taken snapshots of the resource continue to exist within the Rubrik ecosystem.
+- cloudNativeId: System.String
+  - Native ID of the Azure Postgres Flexible Server.
+- nativeName: System.String
+  - Name of the Azure Postgres Flexible Server.
+- region: AzureNativeRegion
+  - Azure region where the Azure Postgres Flexible Server is located.
+- isProtectable: System.Boolean
+  - Specifies whether the Azure Postgres Flexible Server is protectable.
+- azureResourceGroupDetails: AzureResourceGroupDetails
+  - Azure native resource group and subscription details.
+- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- azureNativeResourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure Postgres Flexible Server.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.

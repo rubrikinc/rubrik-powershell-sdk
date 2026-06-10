@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.Int32? AzurePostgresFlexibleServerCount
+        // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
+        [JsonProperty("azurePostgresFlexibleServerCount")]
+        public System.Int32? AzurePostgresFlexibleServerCount { get; set; }
+
         //      C# -> System.Int32? AzureSqlDatabaseCount
         // GraphQL -> azureSqlDatabaseCount: Int! (scalar)
         [JsonProperty("azureSqlDatabaseCount")]
@@ -272,6 +277,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.Int32? AzurePostgresFlexibleServerCount = null,
         System.Int32? AzureSqlDatabaseCount = null,
         System.Int32? AzureSqlManagedInstanceDbCount = null,
         System.Int32? AzureStorageAccountCount = null,
@@ -327,6 +333,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( AzurePostgresFlexibleServerCount != null ) {
+            this.AzurePostgresFlexibleServerCount = AzurePostgresFlexibleServerCount;
         }
         if ( AzureSqlDatabaseCount != null ) {
             this.AzureSqlDatabaseCount = AzureSqlDatabaseCount;
@@ -514,6 +523,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.Int32? AzurePostgresFlexibleServerCount
+        // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
+        if (this.AzurePostgresFlexibleServerCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azurePostgresFlexibleServerCount\n" ;
+            } else {
+                s += ind + "azurePostgresFlexibleServerCount\n" ;
             }
         }
         //      C# -> System.Int32? AzureSqlDatabaseCount
@@ -1006,6 +1024,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.Int32? AzurePostgresFlexibleServerCount
+        // GraphQL -> azurePostgresFlexibleServerCount: Int! (scalar)
+        if (ec.Includes("azurePostgresFlexibleServerCount",true))
+        {
+            if(this.AzurePostgresFlexibleServerCount == null) {
+
+                this.AzurePostgresFlexibleServerCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzurePostgresFlexibleServerCount != null && ec.Excludes("azurePostgresFlexibleServerCount",true))
+        {
+            this.AzurePostgresFlexibleServerCount = null;
         }
         //      C# -> System.Int32? AzureSqlDatabaseCount
         // GraphQL -> azureSqlDatabaseCount: Int! (scalar)

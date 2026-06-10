@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE_DB")]
         AZURE_SQL_DATABASE_DB,
 
@@ -108,11 +111,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Fileset")]
         FILESET,
 
+        [EnumMember(Value = "GCP_BIGQUERY_DATASET")]
+        GCP_BIGQUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
+        GLUE_ICEBERG_TABLE,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE")]
         GOOGLE_WORKSPACE_SHARED_DRIVE,
@@ -243,11 +252,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OracleDatabase")]
         ORACLE_DATABASE,
 
+        [EnumMember(Value = "PING_FEDERATE_CLUSTER")]
+        PING_FEDERATE_CLUSTER,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
         [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
         PROXMOX_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "PURE_STORAGE_PROTECTION_GROUP")]
+        PURE_STORAGE_PROTECTION_GROUP,
 
         [EnumMember(Value = "RubrikEbsVolume")]
         RUBRIK_EBS_VOLUME,

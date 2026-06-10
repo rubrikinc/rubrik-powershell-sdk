@@ -71,3 +71,17 @@ value and is added for maintaining backward compatability.
 - SALESFORCE_ROOT - Represents the Salesforce root.
 - SALESFORCE_ORGANIZATION - Represents the Salesforce organization.
 - AWS_NATIVE_DYNAMODB_TABLE - Represents the AWS DynamoDB Table.
+- OLVM_VIRTUAL_MACHINE - Represents the OLVM virtual machine.
+- OLVM_MANAGER - Represents the OLVM manager.
+- OLVM_DATACENTER - Represents the OLVM datacenter.
+- OLVM_COMPUTE_CLUSTER - Represents the OLVM compute cluster.
+- OLVM_HOST - Represents the OLVM host.
+- OLVM_ROOT - Represents the OLVM root.
+- OPENSTACK_VIRTUAL_MACHINE - Represents the OpenStack virtual machine.
+- OPENSTACK_ENVIRONMENT - Represents the OpenStack environment.
+- OPENSTACK_REGION - Represents the OpenStack region.
+- OPENSTACK_AVAILABILITY_ZONE - Represents the OpenStack availability zone.
+- OPENSTACK_HOST - Represents the OpenStack host.
+- OPENSTACK_ROOT - Represents the OpenStack root.
+- OPENSTACK_DOMAIN - Represents the OpenStack domain.
+- OPENSTACK_PROJECT - Represents the OpenStack project.

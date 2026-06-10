@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excludePaths")]
         public List<System.String>? ExcludePaths { get; set; }
 
+        //      C# -> FilesetRestoreFilesJobConfigRecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: FilesetRestoreFilesJobConfigRecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public FilesetRestoreFilesJobConfigRecoveryPurpose? RecoveryPurpose { get; set; }
+
         //      C# -> System.Boolean? ShouldRecreateDirectoryStructure
         // GraphQL -> shouldRecreateDirectoryStructure: Boolean (scalar)
         [JsonProperty("shouldRecreateDirectoryStructure")]

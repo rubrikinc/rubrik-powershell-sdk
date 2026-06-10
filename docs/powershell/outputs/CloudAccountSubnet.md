@@ -2,12 +2,12 @@
 AWS subnet information.
 
 - name: System.String
-  - Subnet name.
+  - Name of the subnet.
 - cidrBlock: CloudAccountAddressBlockV4
   - CIDR block of the subnet.
 - subnetId: System.String
-  - ID of the subnet.
+  - Subnet ID.
 - availabilityZone: System.String
-  - Availability zone in which the subnet resides.
+  - Availability zone.
 - vpcId: System.String
-  - ID of the virtual private cloud (VPC).
+  - VPC ID.

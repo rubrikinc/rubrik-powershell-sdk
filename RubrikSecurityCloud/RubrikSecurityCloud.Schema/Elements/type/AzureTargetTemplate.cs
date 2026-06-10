@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        [JsonProperty("encryptionType")]
+        public TargetEncryptionTypeEnum? EncryptionType { get; set; }
+
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
         [JsonProperty("instanceType")]
@@ -81,6 +86,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureTargetTemplate Set(
+        TargetEncryptionTypeEnum? EncryptionType = null,
         InstanceTypeEnum? InstanceType = null,
         TargetType? TargetType = null,
         CloudAccount? CloudAccount = null,
@@ -93,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         ProxySettings? ProxySettings = null
     ) 
     {
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
+        }
         if ( InstanceType != null ) {
             this.InstanceType = InstanceType;
         }
@@ -137,6 +146,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
+            }
+        }
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
         if (this.InstanceType != null) {
@@ -247,6 +265,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new TargetEncryptionTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
+        }
         //      C# -> InstanceTypeEnum? InstanceType
         // GraphQL -> instanceType: InstanceTypeEnum! (enum)
         if (ec.Includes("instanceType",true))

@@ -43,7 +43,10 @@ namespace RubrikSecurityCloud.Types
         PRIVILEGED_ACCESS_MANAGEMENT,
 
         [EnumMember(Value = "SERVICENOW_ITSM")]
-        SERVICENOW_ITSM
+        SERVICENOW_ITSM,
+
+        [EnumMember(Value = "SPLUNK")]
+        SPLUNK
 
 
     } // enum IntegrationType

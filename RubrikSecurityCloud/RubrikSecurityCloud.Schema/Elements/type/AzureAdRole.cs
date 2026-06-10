@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isBuiltIn")]
         public System.Boolean? IsBuiltIn { get; set; }
 
+        //      C# -> System.Boolean? IsPimEnabled
+        // GraphQL -> isPimEnabled: Boolean! (scalar)
+        [JsonProperty("isPimEnabled")]
+        public System.Boolean? IsPimEnabled { get; set; }
+
         //      C# -> System.Boolean? IsPrivileged
         // GraphQL -> isPrivileged: Boolean! (scalar)
         [JsonProperty("isPrivileged")]
@@ -55,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("roleName")]
         public System.String? RoleName { get; set; }
 
+        //      C# -> AzureAdPimPolicy? Policy
+        // GraphQL -> policy: AzureAdPimPolicy (type)
+        [JsonProperty("policy")]
+        public AzureAdPimPolicy? Policy { get; set; }
+
 
         #endregion
 
@@ -68,10 +78,12 @@ namespace RubrikSecurityCloud.Types
         System.String? Description = null,
         System.Boolean? IsActive = null,
         System.Boolean? IsBuiltIn = null,
+        System.Boolean? IsPimEnabled = null,
         System.Boolean? IsPrivileged = null,
         System.String? RoleDefinitionId = null,
         System.String? RoleId = null,
-        System.String? RoleName = null
+        System.String? RoleName = null,
+        AzureAdPimPolicy? Policy = null
     ) 
     {
         if ( Description != null ) {
@@ -82,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsBuiltIn != null ) {
             this.IsBuiltIn = IsBuiltIn;
+        }
+        if ( IsPimEnabled != null ) {
+            this.IsPimEnabled = IsPimEnabled;
         }
         if ( IsPrivileged != null ) {
             this.IsPrivileged = IsPrivileged;
@@ -94,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RoleName != null ) {
             this.RoleName = RoleName;
+        }
+        if ( Policy != null ) {
+            this.Policy = Policy;
         }
         return this;
     }
@@ -136,6 +154,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isBuiltIn\n" ;
             }
         }
+        //      C# -> System.Boolean? IsPimEnabled
+        // GraphQL -> isPimEnabled: Boolean! (scalar)
+        if (this.IsPimEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isPimEnabled\n" ;
+            } else {
+                s += ind + "isPimEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsPrivileged
         // GraphQL -> isPrivileged: Boolean! (scalar)
         if (this.IsPrivileged != null) {
@@ -170,6 +197,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "roleName\n" ;
             } else {
                 s += ind + "roleName\n" ;
+            }
+        }
+        //      C# -> AzureAdPimPolicy? Policy
+        // GraphQL -> policy: AzureAdPimPolicy (type)
+        if (this.Policy != null) {
+            var fspec = this.Policy.AsFieldSpec(conf.Child("policy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "policy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -229,6 +268,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsBuiltIn != null && ec.Excludes("isBuiltIn",true))
         {
             this.IsBuiltIn = null;
+        }
+        //      C# -> System.Boolean? IsPimEnabled
+        // GraphQL -> isPimEnabled: Boolean! (scalar)
+        if (ec.Includes("isPimEnabled",true))
+        {
+            if(this.IsPimEnabled == null) {
+
+                this.IsPimEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsPimEnabled != null && ec.Excludes("isPimEnabled",true))
+        {
+            this.IsPimEnabled = null;
         }
         //      C# -> System.Boolean? IsPrivileged
         // GraphQL -> isPrivileged: Boolean! (scalar)
@@ -297,6 +353,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RoleName != null && ec.Excludes("roleName",true))
         {
             this.RoleName = null;
+        }
+        //      C# -> AzureAdPimPolicy? Policy
+        // GraphQL -> policy: AzureAdPimPolicy (type)
+        if (ec.Includes("policy",false))
+        {
+            if(this.Policy == null) {
+
+                this.Policy = new AzureAdPimPolicy();
+                this.Policy.ApplyExploratoryFieldSpec(ec.NewChild("policy"));
+
+            } else {
+
+                this.Policy.ApplyExploratoryFieldSpec(ec.NewChild("policy"));
+
+            }
+        }
+        else if (this.Policy != null && ec.Excludes("policy",false))
+        {
+            this.Policy = null;
         }
     }
 

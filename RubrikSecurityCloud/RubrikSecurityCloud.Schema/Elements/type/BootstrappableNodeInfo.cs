@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isBond1Eth3Enabled")]
         public System.Boolean? IsBond1Eth3Enabled { get; set; }
 
+        //      C# -> System.Boolean? IsVirtual
+        // GraphQL -> isVirtual: Boolean (scalar)
+        [JsonProperty("isVirtual")]
+        public System.Boolean? IsVirtual { get; set; }
+
         //      C# -> System.String? NodePosition
         // GraphQL -> nodePosition: String (scalar)
         [JsonProperty("nodePosition")]
@@ -105,6 +110,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsBond0Reachable = null,
         System.Boolean? IsBond1Eth2Enabled = null,
         System.Boolean? IsBond1Eth3Enabled = null,
+        System.Boolean? IsVirtual = null,
         System.String? NodePosition = null,
         System.String? PlatformName = null,
         System.String? Version = null
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsBond1Eth3Enabled != null ) {
             this.IsBond1Eth3Enabled = IsBond1Eth3Enabled;
+        }
+        if ( IsVirtual != null ) {
+            this.IsVirtual = IsVirtual;
         }
         if ( NodePosition != null ) {
             this.NodePosition = NodePosition;
@@ -251,6 +260,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isBond1Eth3Enabled\n" ;
             } else {
                 s += ind + "isBond1Eth3Enabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsVirtual
+        // GraphQL -> isVirtual: Boolean (scalar)
+        if (this.IsVirtual != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isVirtual\n" ;
+            } else {
+                s += ind + "isVirtual\n" ;
             }
         }
         //      C# -> System.String? NodePosition
@@ -456,6 +474,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsBond1Eth3Enabled != null && ec.Excludes("isBond1Eth3Enabled",true))
         {
             this.IsBond1Eth3Enabled = null;
+        }
+        //      C# -> System.Boolean? IsVirtual
+        // GraphQL -> isVirtual: Boolean (scalar)
+        if (ec.Includes("isVirtual",true))
+        {
+            if(this.IsVirtual == null) {
+
+                this.IsVirtual = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVirtual != null && ec.Excludes("isVirtual",true))
+        {
+            this.IsVirtual = null;
         }
         //      C# -> System.String? NodePosition
         // GraphQL -> nodePosition: String (scalar)

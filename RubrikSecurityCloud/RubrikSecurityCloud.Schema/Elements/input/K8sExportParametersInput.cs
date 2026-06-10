@@ -68,6 +68,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldKeepVirtualMachineMacAddresses")]
         public System.Boolean? ShouldKeepVirtualMachineMacAddresses { get; set; }
 
+        //      C# -> NamespaceMappingInput? NamespaceMappings
+        // GraphQL -> namespaceMappings: NamespaceMappingInput (input)
+        [JsonProperty("namespaceMappings")]
+        public NamespaceMappingInput? NamespaceMappings { get; set; }
+
 
         #endregion
 

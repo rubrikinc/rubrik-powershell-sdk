@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
+        // GraphQL -> isSnapshotOffloadingEnabled: Boolean (scalar)
+        [JsonProperty("isSnapshotOffloadingEnabled")]
+        public System.Boolean? IsSnapshotOffloadingEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsVolumeProtectionEnabled
+        // GraphQL -> isVolumeProtectionEnabled: Boolean (scalar)
+        [JsonProperty("isVolumeProtectionEnabled")]
+        public System.Boolean? IsVolumeProtectionEnabled { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
@@ -64,6 +74,8 @@ namespace RubrikSecurityCloud.Types
         System.String? CaCerts = null,
         System.String? Hostname = null,
         System.String? Id = null,
+        System.Boolean? IsSnapshotOffloadingEnabled = null,
+        System.Boolean? IsVolumeProtectionEnabled = null,
         System.String? Username = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null
     ) 
@@ -79,6 +91,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsSnapshotOffloadingEnabled != null ) {
+            this.IsSnapshotOffloadingEnabled = IsSnapshotOffloadingEnabled;
+        }
+        if ( IsVolumeProtectionEnabled != null ) {
+            this.IsVolumeProtectionEnabled = IsVolumeProtectionEnabled;
         }
         if ( Username != null ) {
             this.Username = Username;
@@ -134,6 +152,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
+        // GraphQL -> isSnapshotOffloadingEnabled: Boolean (scalar)
+        if (this.IsSnapshotOffloadingEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotOffloadingEnabled\n" ;
+            } else {
+                s += ind + "isSnapshotOffloadingEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsVolumeProtectionEnabled
+        // GraphQL -> isVolumeProtectionEnabled: Boolean (scalar)
+        if (this.IsVolumeProtectionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isVolumeProtectionEnabled\n" ;
+            } else {
+                s += ind + "isVolumeProtectionEnabled\n" ;
             }
         }
         //      C# -> System.String? Username
@@ -231,6 +267,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsSnapshotOffloadingEnabled
+        // GraphQL -> isSnapshotOffloadingEnabled: Boolean (scalar)
+        if (ec.Includes("isSnapshotOffloadingEnabled",true))
+        {
+            if(this.IsSnapshotOffloadingEnabled == null) {
+
+                this.IsSnapshotOffloadingEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotOffloadingEnabled != null && ec.Excludes("isSnapshotOffloadingEnabled",true))
+        {
+            this.IsSnapshotOffloadingEnabled = null;
+        }
+        //      C# -> System.Boolean? IsVolumeProtectionEnabled
+        // GraphQL -> isVolumeProtectionEnabled: Boolean (scalar)
+        if (ec.Includes("isVolumeProtectionEnabled",true))
+        {
+            if(this.IsVolumeProtectionEnabled == null) {
+
+                this.IsVolumeProtectionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsVolumeProtectionEnabled != null && ec.Excludes("isVolumeProtectionEnabled",true))
+        {
+            this.IsVolumeProtectionEnabled = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

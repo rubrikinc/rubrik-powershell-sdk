@@ -2,7 +2,8 @@
 Supported in v9.5+
 
 - shouldUseStrongEncryption: System.Boolean
-  - When true, uses AES-256 encryption for the generated zip file. When absent, falls back to the per-workload or global configuration.
+  - Supported in v9.5+
+When true, uses AES-256 encryption for the generated zip file. When absent, falls back to the per-workload or global configuration.
 - zipPassword: System.String
   - Supported in v9.5+
 Password to protect the generated zip file.

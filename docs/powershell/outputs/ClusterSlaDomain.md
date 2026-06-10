@@ -3,8 +3,6 @@ Metadata for rendering a Rubrik cluster SLA Domain.
 
 - name: System.String
   - Rubrik Cluster SLA Domain name.
-- version: System.String
-  - Version for the SLA Domain.
 - fid: System.String
   - FID.
 - snapshotSchedule: SnapshotSchedule
@@ -25,8 +23,6 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - First full backup windows.
 - backupWindows: list of BackupWindows
   - Backup windows for the SLA Domain.
-- polarisManagedId: System.String
-  - Rubrik SaaS managed ID for the SLA Domain.
 - protectedObjectCount: System.Int32
   - Protected object count for the SLA Domain.
 - upgradeInfo: SlaUpgradeInfo
@@ -35,8 +31,6 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - Specifies if this SLA Domain is Retention Locked or not.
 - objectSpecificConfigs: ObjectSpecificConfigs
   - The object-specific configurations of the SLA Domain.
-- isReadOnly: System.Boolean
-  - Specifies whether the SLA Domain is read-only.
 - cluster: Cluster
   - Rubrik cluster ID of SLA Domain.
 - id: System.String
@@ -51,5 +45,11 @@ Metadata for rendering a Rubrik cluster SLA Domain.
   - Specifies the retention lock mode when enabled for the SLA Domain.
 - backupWindowSpec: BackupWindowSpec
   - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
+- polarisManagedId: System.String
+  - Rubrik SaaS managed ID for the SLA Domain.
+- version: System.String
+  - Version for the SLA Domain.
 - archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
   - Upgrade information about the configured archival locations and cascading archival locations.
+- isReadOnly: System.Boolean
+  - Specifies whether the SLA Domain is read-only.

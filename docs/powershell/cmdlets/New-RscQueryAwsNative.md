@@ -160,7 +160,7 @@ Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account
 - There are 4 arguments.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
     - region - AwsNativeRegion: Region in AWS.
-    - rdsInstanceName - System.String: Name of the RDS DB Instance
+    - rdsInstanceName - System.String: Name of the RDS DB Instance.
     - rdsDatabaseRubrikId - System.String: The Rubrik ID for the AWS RDS database.
 - Returns AwsNativeRdsPointInTimeRestoreWindow.
 ### root

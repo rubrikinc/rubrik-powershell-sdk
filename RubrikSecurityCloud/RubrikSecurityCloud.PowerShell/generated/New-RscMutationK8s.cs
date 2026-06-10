@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 24
+    /// Create a new RscQuery object for any of the 25
     /// operations in the 'Kubernetes' API domain:
-    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, ExportVirtualMachineSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
+    /// AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadProtectionSetSnapshotFiles, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, ExportVirtualMachineSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
     /// </summary>
     /// <description>
     /// New-RscMutationK8s creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 24 operations
+    /// There are 25 operations
     /// in the 'Kubernetes' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, ExportVirtualMachineSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
+    /// one of: AddCluster, AddProtectionSet, ArchiveCluster, CreateAgentManifest, CreateCluster, CreateNamespaceSnapshots, CreateProtectionSetSnapshot, DeleteCluster, DeleteProtectionSet, DeleteVmMount, DownloadProtectionSetSnapshotFiles, DownloadSnapshotFromLocation, ExportNamespace, ExportProtectionSetSnapshot, ExportVirtualMachineSnapshot, GenerateManifest, RefreshCluster, RefreshV2Cluster, RegenerateManifest, RestoreNamespace, RestoreProtectionSetSnapshot, StartDiagnosticsJob, StartVmMountJob, UpdateCluster, or UpdateProtectionSet.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -179,10 +179,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		creationType = $someString
     /// 		# REQUIRED
     /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		customResourceDependencies = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				group = $someString
+    /// 				# REQUIRED
+    /// 				selectionMode = $someString
+    /// 				# REQUIRED
+    /// 				resource = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		labelSelector = @{
+    /// 			# OPTIONAL
+    /// 			matchExpressions = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					key = $someString
+    /// 					# OPTIONAL
+    /// 					values = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					operator = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			matchLabels = $someString
+    /// 		}
     /// 		# REQUIRED
     /// 		rsType = $someString
+    /// 		# OPTIONAL
+    /// 		namespaceExcludePatterns = @(
+    /// 			$someString
+    /// 		)
     /// 		# REQUIRED
     /// 		definition = $someString
+    /// 		# OPTIONAL
+    /// 		namespaceIncludePatterns = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		kubernetesNamespace = $someString
     /// 		# REQUIRED
@@ -507,6 +544,55 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DownloadProtectionSetSnapshotFiles operation
+    /// of the 'Kubernetes' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    K8s
+    /// # API Operation: DownloadProtectionSetSnapshotFiles
+    /// 
+    /// $query = New-RscMutationK8s -Operation DownloadProtectionSetSnapshotFiles
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		paths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		legalHoldDownloadConfig = @{
+    /// 			# REQUIRED
+    /// 			isLegalHoldDownload = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUseStrongEncryption = $someBoolean
+    /// 		# OPTIONAL
+    /// 		zipPassword = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DownloadSnapshotFromLocation operation
     /// of the 'Kubernetes' API domain.
     /// <code>
@@ -659,6 +745,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		ignoreErrors = $someBoolean
     /// 		# OPTIONAL
     /// 		shouldKeepVirtualMachineMacAddresses = $someBoolean
+    /// 		# OPTIONAL
+    /// 		namespaceMappings = @{
+    /// 			# REQUIRED
+    /// 			namespaceMappingList = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					sourceNamespace = $someString
+    /// 					# OPTIONAL
+    /// 					targetNamespace = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -994,6 +1092,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	jobConfig = @{
     /// 		# OPTIONAL
+    /// 		namespacesToRestore = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
     /// 		filter = $someString
     /// 		# OPTIONAL
     /// 		storageMapping = @{
@@ -1224,6 +1326,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		customResourceDependencies = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				group = $someString
+    /// 				# REQUIRED
+    /// 				selectionMode = $someString
+    /// 				# REQUIRED
+    /// 				resource = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
     /// 		definition = $someString
     /// 		# OPTIONAL
     /// 		hookConfigs = @(
@@ -1270,6 +1383,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteCluster",
                 "DeleteProtectionSet",
                 "DeleteVmMount",
+                "DownloadProtectionSetSnapshotFiles",
                 "DownloadSnapshotFromLocation",
                 "ExportNamespace",
                 "ExportProtectionSetSnapshot",
@@ -1328,6 +1442,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteVmMount":
                         this.ProcessRecord_DeleteVmMount();
+                        break;
+                    case "DownloadProtectionSetSnapshotFiles":
+                        this.ProcessRecord_DownloadProtectionSetSnapshotFiles();
                         break;
                     case "DownloadSnapshotFromLocation":
                         this.ProcessRecord_DownloadSnapshotFromLocation();
@@ -1469,6 +1586,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteVmMount";
             // Create new graphql operation deleteK8sVmMount
             InitMutationDeleteK8sVmMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadK8sProtectionSetSnapshotFiles.
+        internal void ProcessRecord_DownloadProtectionSetSnapshotFiles()
+        {
+            this._logger.name += " -DownloadProtectionSetSnapshotFiles";
+            // Create new graphql operation downloadK8sProtectionSetSnapshotFiles
+            InitMutationDownloadK8sProtectionSetSnapshotFiles();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1695,10 +1821,47 @@ $query.Var.input = @{
 		creationType = $someString
 		# REQUIRED
 		name = $someString
+		# OPTIONAL
+		customResourceDependencies = @(
+			@{
+				# REQUIRED
+				group = $someString
+				# REQUIRED
+				selectionMode = $someString
+				# REQUIRED
+				resource = $someString
+			}
+		)
+		# OPTIONAL
+		labelSelector = @{
+			# OPTIONAL
+			matchExpressions = @(
+				@{
+					# REQUIRED
+					key = $someString
+					# OPTIONAL
+					values = @(
+						$someString
+					)
+					# REQUIRED
+					operator = $someString
+				}
+			)
+			# OPTIONAL
+			matchLabels = $someString
+		}
 		# REQUIRED
 		rsType = $someString
+		# OPTIONAL
+		namespaceExcludePatterns = @(
+			$someString
+		)
 		# REQUIRED
 		definition = $someString
+		# OPTIONAL
+		namespaceIncludePatterns = @(
+			$someString
+		)
 		# OPTIONAL
 		kubernetesNamespace = $someString
 		# REQUIRED
@@ -1949,6 +2112,47 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // downloadK8sProtectionSetSnapshotFiles(input: DownloadK8sProtectionSetSnapshotFilesInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadK8sProtectionSetSnapshotFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadK8sProtectionSetSnapshotFilesInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadK8sProtectionSetSnapshotFiles",
+                "($input: DownloadK8sProtectionSetSnapshotFilesInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadK8sProtectionSetSnapshotFiles,
+                Mutation.DownloadK8sProtectionSetSnapshotFilesFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		paths = @(
+			$someString
+		)
+		# OPTIONAL
+		legalHoldDownloadConfig = @{
+			# REQUIRED
+			isLegalHoldDownload = $someBoolean
+		}
+		# OPTIONAL
+		shouldUseStrongEncryption = $someBoolean
+		# OPTIONAL
+		zipPassword = $someString
+	}
+	# REQUIRED
+	locationId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // downloadK8sSnapshotFromLocation(input: DownloadK8sSnapshotFromLocationInput!): AsyncRequestStatus!
         internal void InitMutationDownloadK8sSnapshotFromLocation()
         {
@@ -2087,6 +2291,18 @@ $query.Var.input = @{
 		ignoreErrors = $someBoolean
 		# OPTIONAL
 		shouldKeepVirtualMachineMacAddresses = $someBoolean
+		# OPTIONAL
+		namespaceMappings = @{
+			# REQUIRED
+			namespaceMappingList = @(
+				@{
+					# OPTIONAL
+					sourceNamespace = $someString
+					# OPTIONAL
+					targetNamespace = $someString
+				}
+			)
+		}
 	}
 }"
             );
@@ -2366,6 +2582,10 @@ $query.Var.input = @{
 	# REQUIRED
 	jobConfig = @{
 		# OPTIONAL
+		namespacesToRestore = @(
+			$someString
+		)
+		# OPTIONAL
 		filter = $someString
 		# OPTIONAL
 		storageMapping = @{
@@ -2563,6 +2783,17 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		customResourceDependencies = @(
+			@{
+				# REQUIRED
+				group = $someString
+				# REQUIRED
+				selectionMode = $someString
+				# REQUIRED
+				resource = $someString
+			}
+		)
 		# OPTIONAL
 		definition = $someString
 		# OPTIONAL

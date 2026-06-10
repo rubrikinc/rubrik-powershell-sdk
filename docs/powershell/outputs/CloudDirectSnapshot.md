@@ -57,6 +57,8 @@ NAS Cloud Direct snapshot object.
   - The name of the target associated with this snapshot.
 - object: CloudDirectNasObject
   - NAS Cloud Direct object (Bucket or Share) to which this snapshot belongs.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
 - isExpired: System.Boolean
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String

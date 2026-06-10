@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isSensitiveDataDiscoverySupported")]
         public System.Boolean? IsSensitiveDataDiscoverySupported { get; set; }
 
+        //      C# -> DateTime? LastProcessedSddSnapshotDate
+        // GraphQL -> lastProcessedSddSnapshotDate: DateTime (scalar)
+        [JsonProperty("lastProcessedSddSnapshotDate")]
+        public DateTime? LastProcessedSddSnapshotDate { get; set; }
+
+        //      C# -> System.String? LastProcessedSddSnapshotId
+        // GraphQL -> lastProcessedSddSnapshotId: UUID (scalar)
+        [JsonProperty("lastProcessedSddSnapshotId")]
+        public System.String? LastProcessedSddSnapshotId { get; set; }
+
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)
         [JsonProperty("edges")]
@@ -69,6 +79,8 @@ namespace RubrikSecurityCloud.Types
         GenericSnapshot? PreviousSnapshot = null,
         System.Int32? Count = null,
         System.Boolean? IsSensitiveDataDiscoverySupported = null,
+        DateTime? LastProcessedSddSnapshotDate = null,
+        System.String? LastProcessedSddSnapshotId = null,
         List<SnapshotFileDeltaV2Edge>? Edges = null,
         List<SnapshotFileDeltaV2>? Nodes = null,
         PageInfo? PageInfo = null
@@ -85,6 +97,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsSensitiveDataDiscoverySupported != null ) {
             this.IsSensitiveDataDiscoverySupported = IsSensitiveDataDiscoverySupported;
+        }
+        if ( LastProcessedSddSnapshotDate != null ) {
+            this.LastProcessedSddSnapshotDate = LastProcessedSddSnapshotDate;
+        }
+        if ( LastProcessedSddSnapshotId != null ) {
+            this.LastProcessedSddSnapshotId = LastProcessedSddSnapshotId;
         }
         if ( Edges != null ) {
             this.Edges = Edges;
@@ -151,6 +169,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isSensitiveDataDiscoverySupported\n" ;
             } else {
                 s += ind + "isSensitiveDataDiscoverySupported\n" ;
+            }
+        }
+        //      C# -> DateTime? LastProcessedSddSnapshotDate
+        // GraphQL -> lastProcessedSddSnapshotDate: DateTime (scalar)
+        if (this.LastProcessedSddSnapshotDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastProcessedSddSnapshotDate\n" ;
+            } else {
+                s += ind + "lastProcessedSddSnapshotDate\n" ;
+            }
+        }
+        //      C# -> System.String? LastProcessedSddSnapshotId
+        // GraphQL -> lastProcessedSddSnapshotId: UUID (scalar)
+        if (this.LastProcessedSddSnapshotId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastProcessedSddSnapshotId\n" ;
+            } else {
+                s += ind + "lastProcessedSddSnapshotId\n" ;
             }
         }
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
@@ -277,6 +313,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsSensitiveDataDiscoverySupported != null && ec.Excludes("isSensitiveDataDiscoverySupported",true))
         {
             this.IsSensitiveDataDiscoverySupported = null;
+        }
+        //      C# -> DateTime? LastProcessedSddSnapshotDate
+        // GraphQL -> lastProcessedSddSnapshotDate: DateTime (scalar)
+        if (ec.Includes("lastProcessedSddSnapshotDate",true))
+        {
+            if(this.LastProcessedSddSnapshotDate == null) {
+
+                this.LastProcessedSddSnapshotDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastProcessedSddSnapshotDate != null && ec.Excludes("lastProcessedSddSnapshotDate",true))
+        {
+            this.LastProcessedSddSnapshotDate = null;
+        }
+        //      C# -> System.String? LastProcessedSddSnapshotId
+        // GraphQL -> lastProcessedSddSnapshotId: UUID (scalar)
+        if (ec.Includes("lastProcessedSddSnapshotId",true))
+        {
+            if(this.LastProcessedSddSnapshotId == null) {
+
+                this.LastProcessedSddSnapshotId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastProcessedSddSnapshotId != null && ec.Excludes("lastProcessedSddSnapshotId",true))
+        {
+            this.LastProcessedSddSnapshotId = null;
         }
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)

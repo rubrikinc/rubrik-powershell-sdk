@@ -1,0 +1,51 @@
+### DSPMPolicy
+Policy definition.
+
+- policyId: System.String
+  - DSPM policy ID.
+- policyType: PolicyType
+  - The type of the policy.
+- name: System.String
+  - The name of the policy.
+- filter: PolicyFilter
+  - The root filter of the policy.
+- policySeverity: Severity
+  - The severity of the policy.
+- policyCategory: Category
+  - The category of the policy.
+- isPredefined: System.Boolean
+  - Indicates if the policy is predefined.
+- latestPolicyVersion: System.Int32
+  - The latest version of the policy.
+- isEnabled: System.Boolean
+  - Indicates if the policy is enabled.
+- description: System.String
+  - A description of the policy.
+- createdBy: System.String
+  - The ID of the user who created this policy.
+- createdAt: DateTime
+  - The time when the policy was created.
+- updatedAt: DateTime
+  - The time when the policy was updated.
+- frameworks: list of System.Strings
+  - The frameworks which are associated with the policy.
+- manualRemediationProcess: System.String
+  - An explanation of how to remediate the policy manually.
+- probabilityOfCompromise: System.String
+  - The probability of compromise for this policy.
+- containsAccessFilters: System.Boolean
+  - Specifies if the policy contains access filters or exposure filters.
+- automationRules: list of AutomationRules
+  - The automation rules associated with the policy.
+- isAutomationEnabled: System.Boolean
+  - Indicates if the policy is enabled for automation.
+- labels: list of FilterTypeLabelEntrys
+  - The labels for the filter values.
+- thresholdFilter: PolicyFilter
+  - Threshold filter for the policy that is applied on top of the root filter
+and requires special handling by the UI.
+- isDeleted: System.Boolean
+  - Indicates if the policy is deleted.
+- policyTypeInfo: PolicyTypeInfo
+  - Policy-type-specific configuration (e.g., event providers for identity
+event policies).

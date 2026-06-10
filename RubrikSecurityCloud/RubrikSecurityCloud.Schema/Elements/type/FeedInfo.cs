@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("feedStats")]
         public FeedSummaryStats? FeedStats { get; set; }
 
+        //      C# -> ThreatIntelProviderConfigType? ProviderConfig
+        // GraphQL -> providerConfig: ThreatIntelProviderConfigType (type)
+        [JsonProperty("providerConfig")]
+        public ThreatIntelProviderConfigType? ProviderConfig { get; set; }
+
         //      C# -> ProviderInfo? ProviderInfo
         // GraphQL -> providerInfo: ProviderInfo (type)
         [JsonProperty("providerInfo")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LastUpdatedTime = null,
         AutoQuarantineMetadataType? AutoQuarantineMetadata = null,
         FeedSummaryStats? FeedStats = null,
+        ThreatIntelProviderConfigType? ProviderConfig = null,
         ProviderInfo? ProviderInfo = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FeedStats != null ) {
             this.FeedStats = FeedStats;
+        }
+        if ( ProviderConfig != null ) {
+            this.ProviderConfig = ProviderConfig;
         }
         if ( ProviderInfo != null ) {
             this.ProviderInfo = ProviderInfo;
@@ -166,6 +175,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "feedStats" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ThreatIntelProviderConfigType? ProviderConfig
+        // GraphQL -> providerConfig: ThreatIntelProviderConfigType (type)
+        if (this.ProviderConfig != null) {
+            var fspec = this.ProviderConfig.AsFieldSpec(conf.Child("providerConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "providerConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -293,6 +314,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FeedStats != null && ec.Excludes("feedStats",false))
         {
             this.FeedStats = null;
+        }
+        //      C# -> ThreatIntelProviderConfigType? ProviderConfig
+        // GraphQL -> providerConfig: ThreatIntelProviderConfigType (type)
+        if (ec.Includes("providerConfig",false))
+        {
+            if(this.ProviderConfig == null) {
+
+                this.ProviderConfig = new ThreatIntelProviderConfigType();
+                this.ProviderConfig.ApplyExploratoryFieldSpec(ec.NewChild("providerConfig"));
+
+            } else {
+
+                this.ProviderConfig.ApplyExploratoryFieldSpec(ec.NewChild("providerConfig"));
+
+            }
+        }
+        else if (this.ProviderConfig != null && ec.Excludes("providerConfig",false))
+        {
+            this.ProviderConfig = null;
         }
         //      C# -> ProviderInfo? ProviderInfo
         // GraphQL -> providerInfo: ProviderInfo (type)

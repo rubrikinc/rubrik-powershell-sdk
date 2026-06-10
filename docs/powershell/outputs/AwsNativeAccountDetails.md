@@ -9,3 +9,5 @@ AWS native account details.
   - Status of the AWS account for the relevant feature.
 - enabledFeatures: list of AwsNativeAccountEnabledFeatures
   - List of protection features enabled for the AWS account.
+- serviceType: AwsCloudAccountServiceType
+  - Service type indicating whether the account is onboarded for Backup-as-a-Service (BaaS) or non-BaaS use case.

@@ -1,0 +1,64 @@
+### ViolationPrincipalType
+Principal type for risk summary.
+
+- UNKNOWN - Principal of the unknown type.
+- USER - Principal of the user type.
+- GROUP - Principal of the group type.
+- ASSUMABLE_IDENTITY - Principal of the assumable identity type.
+- EXTERNAL_ACCOUNT - Principal of the external account type.
+- SERVICE_ACCOUNT - Principal of the service account type.
+- EXTERNAL_PRINCIPAL - Principal of the external principal type.
+- PUBLIC - Principal of the public identity type.
+- ORG_WIDE - Principal of the org-wide identity type.
+- GPO - Principal of the Active Directory GPO type.
+- COMPUTER - Principal of the computer type.
+- CONTACT - Principal of the contact type.
+- CONTAINER - Principal of the container type.
+- OU - Principal of the OU type.
+- ACCESS_POLICY - Principal of the access policy type.
+- VOLUME - Principal of the volume type.
+- PRINT_QUEUE - Principal of the print queue type.
+- FOREIGN_SECURITY_PRINCIPAL - Principal of the foreign security principal type.
+- CLASS_SCHEMA - Principal of the class schema type.
+- ATTRIBUTE_SCHEMA - Principal of the attribute schema type.
+- SITE - Principal of the site type.
+- SITE_LINK - Principal of the site link type.
+- SUBNET - Principal of the subnet type.
+- SITE_LINK_BRIDGE - Principal of the site link bridge type.
+- INTER_SITE_TRANSPORT - Principal of the inter-site transport type.
+- NTDS_SITE_SETTINGS - Principal of the NTDS site settings type.
+- SERVER - Principal of the server type.
+- INTER_SITE_TRANSPORT_CONTAINER - Principal of the inter-site transport container type.
+- SUBNET_CONTAINER - Principal of the subnet container type.
+- SERVERS_CONTAINER - Principal of the servers container type.
+- LICENSING_SITE_SETTINGS - Principal of the licensing site settings type.
+- DOMAIN_DNS - Principal of the domain DNS type.
+- MSDS_QUOTA_CONTAINER - Principal of the MSDS quota container type.
+- MSDS_QUOTA_CONTROL - Principal of the MSDS quota control type.
+- RID_MANAGER - Principal of the RID manager type.
+- INFRASTRUCTURE_UPDATE - Principal of the infrastructure update type.
+- TRUSTED_DOMAIN - Principal of the trusted domain type.
+- PASSWORD_SETTINGS_CONTAINER - Principal of the password settings container type.
+- PASSWORD_SETTINGS - Principal of the password settings type.
+- NAMED_LOCATION - Principal of the named location type.
+- CONTROL_ACCESS_RIGHT - Principal of the AD Control Access Right type.
+- CERTIFICATE_TEMPLATE - Principal of the AD Certificate Template type.
+- DFS_NAMESPACE_V1 - Principal of the AD DFS Namespace v1 type.
+- DFS_NAMESPACE_V2 - Principal of the AD DFS Namespace v2 type.
+- DFS_LINK - Principal of the AD DFS Link type.
+- DNS_ZONE - Principal of the AD DNS Zone.
+- SYSTEM_IDENTITY - Principal representing an objectless system identity.
+- APP_ROLE - Principal of the app role type.
+- CONTRACT - Principal of the contract type.
+- DEVICE - Principal of the device type.
+- INVITATION - Principal of the invitation type.
+- OAUTH2_PERMISSION_GRANT - Principal of the OAuth2 permission grant type.
+- AU - Principal of the Entra ID administrative unit type.
+- TERMS_OF_USE - Principal of the terms of use type.
+- AUTHENTICATION_CONTEXT - Principal of the authentication context type.
+- AUTHENTICATION_STRENGTH - Principal of the authentication strength type.
+- OTHER - Principal of the other/unclassified type.
+- DNS_NODE - Principal of the AD DNS Record.
+- MSKDS_PROV_ROOT_KEY - Principal of the MS Key Distribution Service root key type.
+- NTFRS_SUBSCRIBER - Principal of the NTFRS Subscriber type (File Replication Service).
+- PKI_ENROLLMENT_SERVICE - Principal of the AD PKI Enrollment Service type (CA).

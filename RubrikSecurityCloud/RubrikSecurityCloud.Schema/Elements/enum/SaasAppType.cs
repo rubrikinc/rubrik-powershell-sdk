@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENTRA_ID")]
         ENTRA_ID,
 
+        [EnumMember(Value = "EXCHANGE")]
+        EXCHANGE,
+
         [EnumMember(Value = "GOOGLE_DRIVE")]
         GOOGLE_DRIVE,
 
@@ -42,17 +45,38 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "M365_BACKUP_STORAGE")]
         M365_BACKUP_STORAGE,
 
+        [EnumMember(Value = "O365_COMMON")]
+        O365_COMMON,
+
         [EnumMember(Value = "OKTA")]
         OKTA,
 
         [EnumMember(Value = "ONEDRIVE")]
         ONEDRIVE,
 
+        [EnumMember(Value = "POWER_PLATFORM_APP")]
+        POWER_PLATFORM_APP,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW")]
+        POWER_PLATFORM_FLOW,
+
+        [EnumMember(Value = "SAAS_AZURE_DEVOPS")]
+        SAAS_AZURE_DEVOPS,
+
+        [EnumMember(Value = "SAAS_GITHUB")]
+        SAAS_GITHUB,
+
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,
 
+        [EnumMember(Value = "SHAREPOINT")]
+        SHAREPOINT,
+
         [EnumMember(Value = "SLACK")]
-        SLACK
+        SLACK,
+
+        [EnumMember(Value = "TEAMS")]
+        TEAMS
 
 
     } // enum SaasAppType

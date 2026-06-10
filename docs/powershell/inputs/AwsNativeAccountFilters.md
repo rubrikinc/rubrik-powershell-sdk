@@ -7,3 +7,5 @@ Filters for list of AWS accounts.
   - Filter by effective SLA Domain.
 - cloudTypeFilter: AwsCloudTypeFilter
   - Filter by AWS cloud type.
+- serviceTypeFilter: AwsServiceTypeFilter
+  - Filter by BaaS or non-BaaS service type.

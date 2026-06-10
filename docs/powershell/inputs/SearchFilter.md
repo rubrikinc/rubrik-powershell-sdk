@@ -3,14 +3,17 @@ Parameters for mail or folder search.
 
 - searchKeywordFilter: SearchKeywordFilter
 - emailAddresses: list of EmailAddressFilters
+  - 
 - fromTime: DateTime
+  - Represents the start time of the search filter.
 - untilTime: DateTime
 - searchObjectFilter: SearchObjectFilter
+  - Filters on object type.
 - lambdaFilters: LambdaPathFilters
-  - Parameters for using Lambda filters in the query.
+  - Used for Lambda search/browse, diff/full FMD paths for mailbox.
 - archiveFolderAction: ArchiveFolderAction
-  - Specifies actions for the in-place archive folder.
+  - Used to identify that how to deal with in-place archive folder.
 - skipRifItems: System.Boolean
-  - Specifies whether to skip items in the Recoverable Items folder.
+  - Specifies whether or not to skip items in Recoverable Items Folder.
 - useExactVersionMatch: System.Boolean
-  - Determines whether you should use a query that is an exact version match.
+  - Specifies whether to query items for exact version match.

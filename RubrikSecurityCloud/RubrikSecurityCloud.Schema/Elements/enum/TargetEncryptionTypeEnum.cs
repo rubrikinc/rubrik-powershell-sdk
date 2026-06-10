@@ -27,6 +27,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RSA_KEY_BASED")]
         RSA_KEY_BASED,
 
+        [EnumMember(Value = "SSE_CMK")]
+        SSE_CMK,
+
+        [EnumMember(Value = "SSE_CPK")]
+        SSE_CPK,
+
+        [EnumMember(Value = "SSE_DEFAULT_PMK")]
+        SSE_DEFAULT_PMK,
+
+        [EnumMember(Value = "UEKM_AKV_BASED")]
+        UEKM_AKV_BASED,
+
         [EnumMember(Value = "UEKM_AWS_KMS_BASED")]
         UEKM_AWS_KMS_BASED,
 

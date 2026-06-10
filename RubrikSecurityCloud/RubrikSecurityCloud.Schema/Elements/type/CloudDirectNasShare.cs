@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment
+        // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cloudDirectPendingObjectPauseAssignment")]
+        public PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -76,10 +81,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exportPath")]
         public System.String? ExportPath { get; set; }
 
+        //      C# -> System.String? FullSnapshotNamePattern
+        // GraphQL -> fullSnapshotNamePattern: String (scalar)
+        [JsonProperty("fullSnapshotNamePattern")]
+        public System.String? FullSnapshotNamePattern { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.String? IncrementalSnapshotNamePattern
+        // GraphQL -> incrementalSnapshotNamePattern: String (scalar)
+        [JsonProperty("incrementalSnapshotNamePattern")]
+        public System.String? IncrementalSnapshotNamePattern { get; set; }
 
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -329,6 +344,7 @@ namespace RubrikSecurityCloud.Types
 
     public CloudDirectNasShare Set(
         List<Operation>? AuthorizedOperations = null,
+        PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         CloudDirectNasProtocolType? Protocol = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -339,7 +355,9 @@ namespace RubrikSecurityCloud.Types
         System.String? CloudDirectId = null,
         System.String? ClusterUuid = null,
         System.String? ExportPath = null,
+        System.String? FullSnapshotNamePattern = null,
         System.String? Id = null,
+        System.String? IncrementalSnapshotNamePattern = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsHidden = null,
         System.Boolean? IsNasShareManuallyAdded = null,
@@ -378,6 +396,9 @@ namespace RubrikSecurityCloud.Types
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
+        if ( CloudDirectPendingObjectPauseAssignment != null ) {
+            this.CloudDirectPendingObjectPauseAssignment = CloudDirectPendingObjectPauseAssignment;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -408,8 +429,14 @@ namespace RubrikSecurityCloud.Types
         if ( ExportPath != null ) {
             this.ExportPath = ExportPath;
         }
+        if ( FullSnapshotNamePattern != null ) {
+            this.FullSnapshotNamePattern = FullSnapshotNamePattern;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IncrementalSnapshotNamePattern != null ) {
+            this.IncrementalSnapshotNamePattern = IncrementalSnapshotNamePattern;
         }
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
@@ -533,6 +560,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "authorizedOperations\n" ;
             }
         }
+        //      C# -> PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment
+        // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (this.CloudDirectPendingObjectPauseAssignment != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudDirectPendingObjectPauseAssignment\n" ;
+            } else {
+                s += ind + "cloudDirectPendingObjectPauseAssignment\n" ;
+            }
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (this.ObjectType != null) {
@@ -639,6 +675,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "exportPath\n" ;
             }
         }
+        //      C# -> System.String? FullSnapshotNamePattern
+        // GraphQL -> fullSnapshotNamePattern: String (scalar)
+        if (this.FullSnapshotNamePattern != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fullSnapshotNamePattern\n" ;
+            } else {
+                s += ind + "fullSnapshotNamePattern\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -646,6 +691,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.String? IncrementalSnapshotNamePattern
+        // GraphQL -> incrementalSnapshotNamePattern: String (scalar)
+        if (this.IncrementalSnapshotNamePattern != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "incrementalSnapshotNamePattern\n" ;
+            } else {
+                s += ind + "incrementalSnapshotNamePattern\n" ;
             }
         }
         //      C# -> System.Boolean? IsArchived
@@ -1026,6 +1080,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthorizedOperations = null;
         }
+        //      C# -> PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment
+        // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (ec.Includes("cloudDirectPendingObjectPauseAssignment",true))
+        {
+            if(this.CloudDirectPendingObjectPauseAssignment == null) {
+
+                this.CloudDirectPendingObjectPauseAssignment = new PendingObjectPauseAssignmentStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudDirectPendingObjectPauseAssignment != null && ec.Excludes("cloudDirectPendingObjectPauseAssignment",true))
+        {
+            this.CloudDirectPendingObjectPauseAssignment = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -1224,6 +1295,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ExportPath = null;
         }
+        //      C# -> System.String? FullSnapshotNamePattern
+        // GraphQL -> fullSnapshotNamePattern: String (scalar)
+        if (ec.Includes("fullSnapshotNamePattern",true))
+        {
+            if(this.FullSnapshotNamePattern == null) {
+
+                this.FullSnapshotNamePattern = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FullSnapshotNamePattern != null && ec.Excludes("fullSnapshotNamePattern",true))
+        {
+            this.FullSnapshotNamePattern = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1240,6 +1328,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.String? IncrementalSnapshotNamePattern
+        // GraphQL -> incrementalSnapshotNamePattern: String (scalar)
+        if (ec.Includes("incrementalSnapshotNamePattern",true))
+        {
+            if(this.IncrementalSnapshotNamePattern == null) {
+
+                this.IncrementalSnapshotNamePattern = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IncrementalSnapshotNamePattern != null && ec.Excludes("incrementalSnapshotNamePattern",true))
+        {
+            this.IncrementalSnapshotNamePattern = null;
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)

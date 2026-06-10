@@ -66,20 +66,55 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? ActiveNode
+        // GraphQL -> activeNode: String (scalar)
+        [JsonProperty("activeNode")]
+        public System.String? ActiveNode { get; set; }
+
+        //      C# -> System.Int64? ConfigurationVersion
+        // GraphQL -> configurationVersion: Long (scalar)
+        [JsonProperty("configurationVersion")]
+        public System.Int64? ConfigurationVersion { get; set; }
+
+        //      C# -> System.String? DiscoveredAddress
+        // GraphQL -> discoveredAddress: String (scalar)
+        [JsonProperty("discoveredAddress")]
+        public System.String? DiscoveredAddress { get; set; }
+
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean! (scalar)
         [JsonProperty("hasLogConfigFromSla")]
         public System.Boolean? HasLogConfigFromSla { get; set; }
+
+        //      C# -> System.Boolean? HasPermissions
+        // GraphQL -> hasPermissions: Boolean (scalar)
+        [JsonProperty("hasPermissions")]
+        public System.Boolean? HasPermissions { get; set; }
+
+        //      C# -> System.Boolean? HasSysadminRole
+        // GraphQL -> hasSysadminRole: Boolean (scalar)
+        [JsonProperty("hasSysadminRole")]
+        public System.Boolean? HasSysadminRole { get; set; }
 
         //      C# -> System.Int64? HostLogRetention
         // GraphQL -> hostLogRetention: Long! (scalar)
         [JsonProperty("hostLogRetention")]
         public System.Int64? HostLogRetention { get; set; }
 
+        //      C# -> List<System.String>? HostsInstalled
+        // GraphQL -> hostsInstalled: [String!]! (scalar)
+        [JsonProperty("hostsInstalled")]
+        public List<System.String>? HostsInstalled { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsClusterInstance
+        // GraphQL -> isClusterInstance: Boolean! (scalar)
+        [JsonProperty("isClusterInstance")]
+        public System.Boolean? IsClusterInstance { get; set; }
 
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)
@@ -96,15 +131,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? NetworkName
+        // GraphQL -> networkName: String (scalar)
+        [JsonProperty("networkName")]
+        public System.String? NetworkName { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        [JsonProperty("protectionDate")]
+        public DateTime? ProtectionDate { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
+
+        //      C# -> System.String? ServiceAccountUser
+        // GraphQL -> serviceAccountUser: String (scalar)
+        [JsonProperty("serviceAccountUser")]
+        public System.String? ServiceAccountUser { get; set; }
 
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -115,6 +165,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> unprotectableReasons: [String!]! (scalar)
         [JsonProperty("unprotectableReasons")]
         public List<System.String>? UnprotectableReasons { get; set; }
+
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -259,16 +314,27 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? ActiveNode = null,
+        System.Int64? ConfigurationVersion = null,
+        System.String? DiscoveredAddress = null,
         System.Boolean? HasLogConfigFromSla = null,
+        System.Boolean? HasPermissions = null,
+        System.Boolean? HasSysadminRole = null,
         System.Int64? HostLogRetention = null,
+        List<System.String>? HostsInstalled = null,
         System.String? Id = null,
+        System.Boolean? IsClusterInstance = null,
         System.Int64? LogBackupFrequencyInSeconds = null,
         System.Int32? LogBackupRetentionInHours = null,
         System.String? Name = null,
+        System.String? NetworkName = null,
         System.Int32? NumWorkloadDescendants = null,
+        DateTime? ProtectionDate = null,
         System.Int32? ReplicatedObjectCount = null,
+        System.String? ServiceAccountUser = null,
         System.Boolean? SlaPauseStatus = null,
         List<System.String>? UnprotectableReasons = null,
+        System.String? Version = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -313,14 +379,35 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( ActiveNode != null ) {
+            this.ActiveNode = ActiveNode;
+        }
+        if ( ConfigurationVersion != null ) {
+            this.ConfigurationVersion = ConfigurationVersion;
+        }
+        if ( DiscoveredAddress != null ) {
+            this.DiscoveredAddress = DiscoveredAddress;
+        }
         if ( HasLogConfigFromSla != null ) {
             this.HasLogConfigFromSla = HasLogConfigFromSla;
+        }
+        if ( HasPermissions != null ) {
+            this.HasPermissions = HasPermissions;
+        }
+        if ( HasSysadminRole != null ) {
+            this.HasSysadminRole = HasSysadminRole;
         }
         if ( HostLogRetention != null ) {
             this.HostLogRetention = HostLogRetention;
         }
+        if ( HostsInstalled != null ) {
+            this.HostsInstalled = HostsInstalled;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsClusterInstance != null ) {
+            this.IsClusterInstance = IsClusterInstance;
         }
         if ( LogBackupFrequencyInSeconds != null ) {
             this.LogBackupFrequencyInSeconds = LogBackupFrequencyInSeconds;
@@ -331,17 +418,29 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( NetworkName != null ) {
+            this.NetworkName = NetworkName;
+        }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
+        if ( ProtectionDate != null ) {
+            this.ProtectionDate = ProtectionDate;
+        }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
+        }
+        if ( ServiceAccountUser != null ) {
+            this.ServiceAccountUser = ServiceAccountUser;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
         if ( UnprotectableReasons != null ) {
             this.UnprotectableReasons = UnprotectableReasons;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -503,6 +602,33 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? ActiveNode
+        // GraphQL -> activeNode: String (scalar)
+        if (this.ActiveNode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "activeNode\n" ;
+            } else {
+                s += ind + "activeNode\n" ;
+            }
+        }
+        //      C# -> System.Int64? ConfigurationVersion
+        // GraphQL -> configurationVersion: Long (scalar)
+        if (this.ConfigurationVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "configurationVersion\n" ;
+            } else {
+                s += ind + "configurationVersion\n" ;
+            }
+        }
+        //      C# -> System.String? DiscoveredAddress
+        // GraphQL -> discoveredAddress: String (scalar)
+        if (this.DiscoveredAddress != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "discoveredAddress\n" ;
+            } else {
+                s += ind + "discoveredAddress\n" ;
+            }
+        }
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean! (scalar)
         if (this.HasLogConfigFromSla != null) {
@@ -510,6 +636,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasLogConfigFromSla\n" ;
             } else {
                 s += ind + "hasLogConfigFromSla\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasPermissions
+        // GraphQL -> hasPermissions: Boolean (scalar)
+        if (this.HasPermissions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasPermissions\n" ;
+            } else {
+                s += ind + "hasPermissions\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasSysadminRole
+        // GraphQL -> hasSysadminRole: Boolean (scalar)
+        if (this.HasSysadminRole != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasSysadminRole\n" ;
+            } else {
+                s += ind + "hasSysadminRole\n" ;
             }
         }
         //      C# -> System.Int64? HostLogRetention
@@ -521,6 +665,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "hostLogRetention\n" ;
             }
         }
+        //      C# -> List<System.String>? HostsInstalled
+        // GraphQL -> hostsInstalled: [String!]! (scalar)
+        if (this.HostsInstalled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hostsInstalled\n" ;
+            } else {
+                s += ind + "hostsInstalled\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -528,6 +681,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsClusterInstance
+        // GraphQL -> isClusterInstance: Boolean! (scalar)
+        if (this.IsClusterInstance != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isClusterInstance\n" ;
+            } else {
+                s += ind + "isClusterInstance\n" ;
             }
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
@@ -557,6 +719,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.String? NetworkName
+        // GraphQL -> networkName: String (scalar)
+        if (this.NetworkName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkName\n" ;
+            } else {
+                s += ind + "networkName\n" ;
+            }
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
@@ -566,6 +737,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "numWorkloadDescendants\n" ;
             }
         }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "protectionDate\n" ;
+            } else {
+                s += ind + "protectionDate\n" ;
+            }
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount != null) {
@@ -573,6 +753,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "replicatedObjectCount\n" ;
             } else {
                 s += ind + "replicatedObjectCount\n" ;
+            }
+        }
+        //      C# -> System.String? ServiceAccountUser
+        // GraphQL -> serviceAccountUser: String (scalar)
+        if (this.ServiceAccountUser != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceAccountUser\n" ;
+            } else {
+                s += ind + "serviceAccountUser\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -591,6 +780,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "unprotectableReasons\n" ;
             } else {
                 s += ind + "unprotectableReasons\n" ;
+            }
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -963,6 +1161,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = null;
         }
+        //      C# -> System.String? ActiveNode
+        // GraphQL -> activeNode: String (scalar)
+        if (ec.Includes("activeNode",true))
+        {
+            if(this.ActiveNode == null) {
+
+                this.ActiveNode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActiveNode != null && ec.Excludes("activeNode",true))
+        {
+            this.ActiveNode = null;
+        }
+        //      C# -> System.Int64? ConfigurationVersion
+        // GraphQL -> configurationVersion: Long (scalar)
+        if (ec.Includes("configurationVersion",true))
+        {
+            if(this.ConfigurationVersion == null) {
+
+                this.ConfigurationVersion = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ConfigurationVersion != null && ec.Excludes("configurationVersion",true))
+        {
+            this.ConfigurationVersion = null;
+        }
+        //      C# -> System.String? DiscoveredAddress
+        // GraphQL -> discoveredAddress: String (scalar)
+        if (ec.Includes("discoveredAddress",true))
+        {
+            if(this.DiscoveredAddress == null) {
+
+                this.DiscoveredAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiscoveredAddress != null && ec.Excludes("discoveredAddress",true))
+        {
+            this.DiscoveredAddress = null;
+        }
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean! (scalar)
         if (ec.Includes("hasLogConfigFromSla",true))
@@ -979,6 +1228,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasLogConfigFromSla != null && ec.Excludes("hasLogConfigFromSla",true))
         {
             this.HasLogConfigFromSla = null;
+        }
+        //      C# -> System.Boolean? HasPermissions
+        // GraphQL -> hasPermissions: Boolean (scalar)
+        if (ec.Includes("hasPermissions",true))
+        {
+            if(this.HasPermissions == null) {
+
+                this.HasPermissions = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasPermissions != null && ec.Excludes("hasPermissions",true))
+        {
+            this.HasPermissions = null;
+        }
+        //      C# -> System.Boolean? HasSysadminRole
+        // GraphQL -> hasSysadminRole: Boolean (scalar)
+        if (ec.Includes("hasSysadminRole",true))
+        {
+            if(this.HasSysadminRole == null) {
+
+                this.HasSysadminRole = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasSysadminRole != null && ec.Excludes("hasSysadminRole",true))
+        {
+            this.HasSysadminRole = null;
         }
         //      C# -> System.Int64? HostLogRetention
         // GraphQL -> hostLogRetention: Long! (scalar)
@@ -997,6 +1280,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.HostLogRetention = null;
         }
+        //      C# -> List<System.String>? HostsInstalled
+        // GraphQL -> hostsInstalled: [String!]! (scalar)
+        if (ec.Includes("hostsInstalled",true))
+        {
+            if(this.HostsInstalled == null) {
+
+                this.HostsInstalled = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HostsInstalled != null && ec.Excludes("hostsInstalled",true))
+        {
+            this.HostsInstalled = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1013,6 +1313,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsClusterInstance
+        // GraphQL -> isClusterInstance: Boolean! (scalar)
+        if (ec.Includes("isClusterInstance",true))
+        {
+            if(this.IsClusterInstance == null) {
+
+                this.IsClusterInstance = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsClusterInstance != null && ec.Excludes("isClusterInstance",true))
+        {
+            this.IsClusterInstance = null;
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)
@@ -1065,6 +1382,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.String? NetworkName
+        // GraphQL -> networkName: String (scalar)
+        if (ec.Includes("networkName",true))
+        {
+            if(this.NetworkName == null) {
+
+                this.NetworkName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkName != null && ec.Excludes("networkName",true))
+        {
+            this.NetworkName = null;
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (ec.Includes("numWorkloadDescendants",true))
@@ -1082,6 +1416,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.NumWorkloadDescendants = null;
         }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (ec.Includes("protectionDate",true))
+        {
+            if(this.ProtectionDate == null) {
+
+                this.ProtectionDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
+        {
+            this.ProtectionDate = null;
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (ec.Includes("replicatedObjectCount",true))
@@ -1098,6 +1449,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjectCount != null && ec.Excludes("replicatedObjectCount",true))
         {
             this.ReplicatedObjectCount = null;
+        }
+        //      C# -> System.String? ServiceAccountUser
+        // GraphQL -> serviceAccountUser: String (scalar)
+        if (ec.Includes("serviceAccountUser",true))
+        {
+            if(this.ServiceAccountUser == null) {
+
+                this.ServiceAccountUser = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceAccountUser != null && ec.Excludes("serviceAccountUser",true))
+        {
+            this.ServiceAccountUser = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -1132,6 +1500,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.UnprotectableReasons != null && ec.Excludes("unprotectableReasons",true))
         {
             this.UnprotectableReasons = null;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

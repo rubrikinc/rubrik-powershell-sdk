@@ -1344,6 +1344,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			newObjectType = $someSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
     /// 			# OPTIONAL
     /// 			newObjectName = $someString
+    /// 			# OPTIONAL
+    /// 			shouldRestoreFileVersions = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		OneDriveRestoreConfig = @{
@@ -3794,6 +3796,8 @@ $query.Var.input = @{
 			newObjectType = $someSnappableType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnappableType]) for enum values.
 			# OPTIONAL
 			newObjectName = $someString
+			# OPTIONAL
+			shouldRestoreFileVersions = $someBoolean
 		}
 		# OPTIONAL
 		OneDriveRestoreConfig = @{

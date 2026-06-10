@@ -37,5 +37,11 @@ Filters for list of AWS EC2 instances.
   - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- serviceTypeFilter: AwsServiceTypeFilter
+  - Filter by BaaS or non-BaaS service type.
 - hierarchyFilters: list of Filters
   - Filter by hierarchy.
+- discoveryMethodFilter: CloudNativeApplicationDiscoveryMethodFilter
+  - Filter by cloud native application discovery method.
+- outpostArnFilter: AwsNativeOutpostArnFilter
+  - Filter by AWS Outpost ARN.

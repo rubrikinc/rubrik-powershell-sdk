@@ -7,3 +7,7 @@ Filter for high-availability policies query.
   - Status filter for high-availability policies.
 - ids: list of System.Strings
   - IDs filter gets high-availability policies by their unique identifiers.
+- sourceClusterUuids: list of System.Strings
+  - Source cluster filter for high-availability policies.
+- targetClusterUuids: list of System.Strings
+  - Target cluster filter for high-availability policies.

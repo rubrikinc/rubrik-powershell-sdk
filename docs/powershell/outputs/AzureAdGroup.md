@@ -11,3 +11,9 @@ Entra ID group.
   - On-prem sync status of the Azure AD group.
 - onPremSyncInfo: AzureAdOnPremSyncInfo
   - On-prem sync information of the Entra ID group.
+- isPimEnabled: System.Boolean
+  - Whether this group has PIM enabled.
+- memberPolicy: AzureAdPimPolicy
+  - PIM member access-type policy.
+- ownerPolicy: AzureAdPimPolicy
+  - PIM owner access-type policy.

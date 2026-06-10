@@ -1,13 +1,10 @@
 ### HypervVirtualSwitchMappingInput
 Supported in v9.6
-Mapping of a network adapter to a virtual switch and MAC address.
+Mapping of a NIC index to a virtual switch.
 
-- macAddress: System.String
-  - Required. Supported in v9.6
-MAC address to assign to the adapter.
 - switchId: System.String
   - Required. Supported in v9.6
 ID of the virtual switch to connect to.
-- adapterName: System.String
+- nicIndex: System.Int32
   - Required. Supported in v9.6
-Name of the network adapter.
+Index of the network adapter.

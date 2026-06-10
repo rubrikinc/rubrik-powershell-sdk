@@ -21,10 +21,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> GcpBucketNetworkAccess? BucketNetworkAccess
+        // GraphQL -> bucketNetworkAccess: GcpBucketNetworkAccess! (enum)
+        [JsonProperty("bucketNetworkAccess")]
+        public GcpBucketNetworkAccess? BucketNetworkAccess { get; set; }
+
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
+
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        [JsonProperty("encryptionType")]
+        public TargetEncryptionTypeEnum? EncryptionType { get; set; }
 
         //      C# -> GcpRegion? Region
         // GraphQL -> region: GcpRegion! (enum)
@@ -76,7 +86,9 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpTargetTemplate Set(
+        GcpBucketNetworkAccess? BucketNetworkAccess = null,
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
+        TargetEncryptionTypeEnum? EncryptionType = null,
         GcpRegion? Region = null,
         GcpStorageClass? StorageClass = null,
         TargetType? TargetType = null,
@@ -87,8 +99,14 @@ namespace RubrikSecurityCloud.Types
         List<TagObject>? Labels = null
     ) 
     {
+        if ( BucketNetworkAccess != null ) {
+            this.BucketNetworkAccess = BucketNetworkAccess;
+        }
         if ( CloudNativeLocTemplateType != null ) {
             this.CloudNativeLocTemplateType = CloudNativeLocTemplateType;
+        }
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
         }
         if ( Region != null ) {
             this.Region = Region;
@@ -128,6 +146,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> GcpBucketNetworkAccess? BucketNetworkAccess
+        // GraphQL -> bucketNetworkAccess: GcpBucketNetworkAccess! (enum)
+        if (this.BucketNetworkAccess != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "bucketNetworkAccess\n" ;
+            } else {
+                s += ind + "bucketNetworkAccess\n" ;
+            }
+        }
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         if (this.CloudNativeLocTemplateType != null) {
@@ -135,6 +162,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudNativeLocTemplateType\n" ;
             } else {
                 s += ind + "cloudNativeLocTemplateType\n" ;
+            }
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
             }
         }
         //      C# -> GcpRegion? Region
@@ -226,6 +262,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> GcpBucketNetworkAccess? BucketNetworkAccess
+        // GraphQL -> bucketNetworkAccess: GcpBucketNetworkAccess! (enum)
+        if (ec.Includes("bucketNetworkAccess",true))
+        {
+            if(this.BucketNetworkAccess == null) {
+
+                this.BucketNetworkAccess = new GcpBucketNetworkAccess();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BucketNetworkAccess != null && ec.Excludes("bucketNetworkAccess",true))
+        {
+            this.BucketNetworkAccess = null;
+        }
         //      C# -> CloudNativeLocTemplateType? CloudNativeLocTemplateType
         // GraphQL -> cloudNativeLocTemplateType: CloudNativeLocTemplateType! (enum)
         if (ec.Includes("cloudNativeLocTemplateType",true))
@@ -242,6 +295,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudNativeLocTemplateType != null && ec.Excludes("cloudNativeLocTemplateType",true))
         {
             this.CloudNativeLocTemplateType = null;
+        }
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new TargetEncryptionTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
         }
         //      C# -> GcpRegion? Region
         // GraphQL -> region: GcpRegion! (enum)

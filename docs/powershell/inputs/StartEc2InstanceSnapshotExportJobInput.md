@@ -39,3 +39,7 @@ Input to initiate an export job for an AWS native EC2 instance.
   - Placement configuration for the exported EC2 instance. Use this field to specify tenancy type, dedicated host ID, or host resource group ARN. Mutually exclusive with dedicatedHostId.
 - shouldResurrectSnapshot: System.Boolean
   - Specifies whether to resurrect an archived snapshot.
+- retrievalTier: AwsRetrievalTier
+  - AWS Glacier retrieval tier to use when hydrating archived objects for this export. Only meaningful when exporting from a Glacier-tier archival location.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported instance (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

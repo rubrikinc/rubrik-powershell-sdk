@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostRestoreTargets")]
         public List<HostDiscoveryInfoInput>? HostRestoreTargets { get; set; }
 
+        //      C# -> System.String? PreferredDataSnapshotId
+        // GraphQL -> preferredDataSnapshotId: String (scalar)
+        [JsonProperty("preferredDataSnapshotId")]
+        public System.String? PreferredDataSnapshotId { get; set; }
+
 
         #endregion
 

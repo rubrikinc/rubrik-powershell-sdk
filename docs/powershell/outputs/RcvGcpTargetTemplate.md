@@ -7,6 +7,8 @@ Specific information for the RCV GCP target template.
   - Access tier for the RCV GCP location.
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType
   - Cloud native template type.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type for the RCV GCP location template.
 - targetType: TargetType
   - The type of this Target.
 - templateLocationId: System.String

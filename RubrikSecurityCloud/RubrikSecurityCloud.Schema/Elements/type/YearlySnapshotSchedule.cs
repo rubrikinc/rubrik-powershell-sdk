@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("basicSchedule")]
         public BasicSnapshotSchedule? BasicSchedule { get; set; }
 
+        //      C# -> List<YearlyDaySpecification>? DaysOfYear
+        // GraphQL -> daysOfYear: [YearlyDaySpecification!]! (type)
+        [JsonProperty("daysOfYear")]
+        public List<YearlyDaySpecification>? DaysOfYear { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public YearlySnapshotSchedule Set(
         DayOfYear? DayOfYear = null,
         Month? YearStartMonth = null,
-        BasicSnapshotSchedule? BasicSchedule = null
+        BasicSnapshotSchedule? BasicSchedule = null,
+        List<YearlyDaySpecification>? DaysOfYear = null
     ) 
     {
         if ( DayOfYear != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BasicSchedule != null ) {
             this.BasicSchedule = BasicSchedule;
+        }
+        if ( DaysOfYear != null ) {
+            this.DaysOfYear = DaysOfYear;
         }
         return this;
     }
@@ -100,6 +109,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "basicSchedule" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<YearlyDaySpecification>? DaysOfYear
+        // GraphQL -> daysOfYear: [YearlyDaySpecification!]! (type)
+        if (this.DaysOfYear != null) {
+            var fspec = this.DaysOfYear.AsFieldSpec(conf.Child("daysOfYear"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "daysOfYear" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -162,6 +183,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.BasicSchedule != null && ec.Excludes("basicSchedule",false))
         {
             this.BasicSchedule = null;
+        }
+        //      C# -> List<YearlyDaySpecification>? DaysOfYear
+        // GraphQL -> daysOfYear: [YearlyDaySpecification!]! (type)
+        if (ec.Includes("daysOfYear",false))
+        {
+            if(this.DaysOfYear == null) {
+
+                this.DaysOfYear = new List<YearlyDaySpecification>();
+                this.DaysOfYear.ApplyExploratoryFieldSpec(ec.NewChild("daysOfYear"));
+
+            } else {
+
+                this.DaysOfYear.ApplyExploratoryFieldSpec(ec.NewChild("daysOfYear"));
+
+            }
+        }
+        else if (this.DaysOfYear != null && ec.Excludes("daysOfYear",false))
+        {
+            this.DaysOfYear = null;
         }
     }
 

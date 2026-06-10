@@ -20,5 +20,6 @@ LDAP authorized principal.
 - lockoutStatus: LdapLockoutStatus
   - Lockout status for an LDAP principal.
 - roles: list of Roles
+  - 
 - emailConfig: list of EventDigests
   - Email notification configurations.

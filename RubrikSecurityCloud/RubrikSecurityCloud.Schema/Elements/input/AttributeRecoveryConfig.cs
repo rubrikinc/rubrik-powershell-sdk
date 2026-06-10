@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? IdString
+        // GraphQL -> idString: String (scalar)
+        [JsonProperty("idString")]
+        public System.String? IdString { get; set; }
+
         //      C# -> List<System.String>? Attributes
         // GraphQL -> attributes: [String!]! (scalar)
         [Required]

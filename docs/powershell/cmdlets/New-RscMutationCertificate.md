@@ -31,7 +31,7 @@ Delete an existing global certificate.
 ### generatecsr
 Generate CSR.
 
-- There are 10 arguments.
+- There are 11 arguments.
     - name - System.String: Name for your CSR.
     - hostnames - list of System.Strings: Hostnames for your CSR.
     - organization - System.String: Organization for your CSR.
@@ -42,6 +42,7 @@ Generate CSR.
     - email - System.String: Email for your CSR.
     - surname - System.String: Surname for your CSR.
     - userId - System.String: User ID for your CSR.
+    - keyGenerationParams - KeyGenerationParamsInput: Key generation parameters for the CSR (key type and strength).
 - Returns Csr.
 ### markagentsecondary
 Mark a certificate to be added to agents

@@ -1,15 +1,24 @@
 ### ListFileResultFiltersInput
+
+
 - analyzerGroupIds: list of System.Strings
+  - List of data categories ids to filter the paths.
 - snappablePaths: list of SnappablePathInputs
+  - List of prefix paths to filter the paths.
 - snappableTypes: list of System.Strings
+  - List of workload types to filter the paths.
 - searchText: System.String
+  - Infix search on path of file results.
 - whitelistEnabled: System.Boolean
+  - Whether to include whitelisted results in response.
+- fileType: FileCountType
+  - The type of files to include in the results.
 - sids: list of System.Strings
   - List of principal IDs to filter the paths.
 - dataTypeIds: list of System.Strings
-  - List of data type IDs to filter snapshot file results.
+  - Filter result by data_types.
 - riskLevelTypesFilter: list of RiskLevelTypes
-  - List of sensitivity levels to filter the paths.
+  - List of risk levels to filter the paths.
 - lastAccessFilter: UserTimeRangeInput
   - Last access time range specified in the local timezone of the user.
 - lastModifiedFilter: UserTimeRangeInput
@@ -19,13 +28,12 @@
 - lastScanFilter: UserTimeRangeInput
   - Last scan time range specified in the local timezone of the user.
 - mipLabelsFilter: list of MipLabelsFilterInputs
-  - List of Microsoft Purview Information Protection labels used to filter paths.
+  - List of mip labels to filter the paths.
 - violationId: System.String
-  - Violation ID to filter the paths.
+  - Files that are part of this violation.
 - exposureFilter: list of OpenAccessTypes
-  - List to exposure types to filter the paths.
-- accessVia: AccessVia
-  - Filter results by access type.
-- fileType: FileCountType
+  - Filter results by exposure.
 - documentTypesFilter: list of System.Strings
   - List of document type IDs to filter the paths.
+- accessVia: AccessVia
+  - Filter results by access type.

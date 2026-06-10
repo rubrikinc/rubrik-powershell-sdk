@@ -29,10 +29,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
-        //      C# -> GcpCloudSqlInstanceProjectFilter? ProjectFilter
-        // GraphQL -> projectFilter: GcpCloudSqlInstanceProjectFilter (input)
+        //      C# -> GcpNativeProjectFilter? ProjectFilter
+        // GraphQL -> projectFilter: GcpNativeProjectFilter (input)
         [JsonProperty("projectFilter")]
-        public GcpCloudSqlInstanceProjectFilter? ProjectFilter { get; set; }
+        public GcpNativeProjectFilter? ProjectFilter { get; set; }
 
         //      C# -> GcpNativeRegionFilter? RegionFilter
         // GraphQL -> regionFilter: GcpNativeRegionFilter (input)

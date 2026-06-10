@@ -49,17 +49,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("whitelistEnabled")]
         public System.Boolean? WhitelistEnabled { get; set; }
 
-        //      C# -> System.String? PolicyViolationId
-        // GraphQL -> policyViolationId: String (scalar)
-        [JsonProperty("policyViolationId")]
-        public System.String? PolicyViolationId { get; set; }
-
         //      C# -> FileCountType? FileType
         // GraphQL -> fileType: FileCountType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("fileType")]
         public FileCountType? FileType { get; set; }
+
+        //      C# -> System.String? PolicyViolationId
+        // GraphQL -> policyViolationId: String (scalar)
+        [JsonProperty("policyViolationId")]
+        public System.String? PolicyViolationId { get; set; }
 
 
         #endregion

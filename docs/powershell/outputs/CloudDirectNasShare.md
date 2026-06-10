@@ -27,6 +27,10 @@ NAS Cloud Direct share.
   - UUID of the NAS Cloud Direct share on the NCD cluster.
 - policyName: System.String
   - Name of the policy assigned to the NAS Cloud Direct share.
+- fullSnapshotNamePattern: System.String
+  - Regex pattern for matching full snapshot names.
+- incrementalSnapshotNamePattern: System.String
+  - Regex pattern for matching incremental snapshot names.
 - excludes: list of Excludes
   - List of exclusions for the NAS share.
 - id: System.String
@@ -89,5 +93,7 @@ NAS Cloud Direct share.
   - Cluster from which this workload originated.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
+- cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for Cloud Direct objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

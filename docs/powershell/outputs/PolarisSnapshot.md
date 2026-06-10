@@ -32,6 +32,8 @@
   - Specifies whether the snapshot is retention locked.
 - retentionLockModeAcrossLocations: RetentionLockMode
   - Specifies the mode of the retention lock if it's enabled across any locations.
+- legalHoldInfo: LegalHoldInfo
+  - Contains info regarding legal hold on snapshot, null otherwise.
 - replicationLocations: list of DataLocations
 - hasUnexpiredReplica: System.Boolean
   - Indicates whether the snapshot has a valid replica.

@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public LambdaEventStatus? Status { get; set; }
 
+        //      C# -> System.String? ActorIpAddress
+        // GraphQL -> actorIpAddress: String! (scalar)
+        [JsonProperty("actorIpAddress")]
+        public System.String? ActorIpAddress { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -137,6 +142,7 @@ namespace RubrikSecurityCloud.Types
         ActivityCategory? Category = null,
         ActivityOperation? Operation = null,
         LambdaEventStatus? Status = null,
+        System.String? ActorIpAddress = null,
         System.String? Id = null,
         System.String? NativeCorrelationId = null,
         System.String? SourceId = null,
@@ -172,6 +178,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( ActorIpAddress != null ) {
+            this.ActorIpAddress = ActorIpAddress;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -287,6 +296,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? ActorIpAddress
+        // GraphQL -> actorIpAddress: String! (scalar)
+        if (this.ActorIpAddress != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "actorIpAddress\n" ;
+            } else {
+                s += ind + "actorIpAddress\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -555,6 +573,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? ActorIpAddress
+        // GraphQL -> actorIpAddress: String! (scalar)
+        if (ec.Includes("actorIpAddress",true))
+        {
+            if(this.ActorIpAddress == null) {
+
+                this.ActorIpAddress = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActorIpAddress != null && ec.Excludes("actorIpAddress",true))
+        {
+            this.ActorIpAddress = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

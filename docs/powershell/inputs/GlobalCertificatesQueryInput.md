@@ -23,3 +23,10 @@ Input to list global certificates.
   - Specifies the CDM certificate usages to return.
 - isRubrikManaged: System.Boolean
   - Specifies whether to include only Rubrik-managed certificates.
+- rscUsages: list of CertificateUsages
+  - Specifies the RSC certificate usages to return.
+- usageLocations: list of CertificateUsageLocations
+  - Filters certificates by where they are used.
+- keyTypes: list of KeyTypes
+  - Filters certificates by cryptographic key type. Empty list applies no
+filter.

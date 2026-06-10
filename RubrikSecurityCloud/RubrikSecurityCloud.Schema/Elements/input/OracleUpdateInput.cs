@@ -69,6 +69,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("oracleUpdateCommon")]
         public OracleUpdateCommonInput? OracleUpdateCommon { get; set; }
 
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String (scalar)
+        [JsonProperty("primaryNode")]
+        public System.String? PrimaryNode { get; set; }
+
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean (scalar)
+        [JsonProperty("shouldEnableMultiNodeBackup")]
+        public System.Boolean? ShouldEnableMultiNodeBackup { get; set; }
+
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!] (scalar)
+        [JsonProperty("secondaryNodes")]
+        public List<System.String>? SecondaryNodes { get; set; }
+
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!] (scalar)
+        [JsonProperty("backupNodes")]
+        public List<System.String>? BackupNodes { get; set; }
+
 
         #endregion
 

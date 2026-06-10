@@ -3,6 +3,8 @@ An object that can be backed-up by taking snapshots.
 
 - id: System.String
   - The ID of the workload.
+- fid: System.String
+  - The ID of the snappable.
 - name: System.String
   - The name of the workload.
 - complianceStatus: ComplianceStatusEnum
@@ -22,17 +24,27 @@ An object that can be backed-up by taking snapshots.
 - lastSnapshot: DateTime
   - The timestamp of the last taken snapshot.
 - latestArchivalSnapshot: DateTime
+  - The timestamp of the latest archival snapshot.
 - latestReplicationSnapshot: DateTime
+  - The timestamp of the latest replication snapshot.
 - localOnDemandSnapshots: System.Int32
+  - The number of local on-demand snapshots.
 - localSlaSnapshots: System.Int32
+  - The number of local SLA snapshots.
 - archivalSnapshotLag: System.Int32
+  - The archival snapshot lag.
 - replicationSnapshotLag: System.Int32
+  - The replication snapshot lag.
 - archivalComplianceStatus: ComplianceStatusEnum
+  - The archival compliance status.
 - replicationComplianceStatus: ComplianceStatusEnum
+  - The replication compliance status.
 - awaitingFirstFull: System.Boolean
+  - Whether the snappable is awaiting first full backup.
 - pullTime: DateTime
   - The time at which the workload data was retrieved from CDM.
 - location: System.String
+  - The location of the snappable.
 - localStorage: System.Int64
   - The local storage size in bytes.
 - localMeteredData: System.Int64
@@ -57,11 +69,6 @@ An object that can be backed-up by taking snapshots.
   - The NASCD snapshot type.
 - ncdLatestArchiveSnapshot: DateTime
   - The timestamp of the last taken NASCD archive snapshot.
-- slaDomain: SlaDomain
-  - The SLA Domain of the protected objects.
-- cluster: Cluster
-  - The Rubrik cluster to which the protected objects belong.
-- fid: System.String
 - localSnapshots: System.Int32
   - The number of snapshots locally present.
 - replicaSnapshots: System.Int32
@@ -81,7 +88,12 @@ An object that can be backed-up by taking snapshots.
 - dataReduction: System.Single
   - The change from transferred bytes to physical bytes.
 - logicalDataReduction: System.Single
+  - The logical data reduction ratio.
 - orgName: System.String
   - The organization name related to the workload. This is deprecated.
 - workloadOrg: WorkloadOrganization
   - Specifies the owner organization of the workload.
+- slaDomain: SlaDomain
+  - The SLA Domain of the protected objects.
+- cluster: Cluster
+  - The Rubrik cluster to which the protected objects belong.

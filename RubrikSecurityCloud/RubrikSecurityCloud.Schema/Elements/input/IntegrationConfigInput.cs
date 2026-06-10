@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("microsoftDefender")]
         public MicrosoftDefenderIntegrationConfigInput? MicrosoftDefender { get; set; }
 
+        //      C# -> SplunkIntegrationConfigInput? Splunk
+        // GraphQL -> splunk: SplunkIntegrationConfigInput (input)
+        [JsonProperty("splunk")]
+        public SplunkIntegrationConfigInput? Splunk { get; set; }
+
 
         #endregion
 

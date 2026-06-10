@@ -1,5 +1,5 @@
 ### MultiTenancyConsumptionType
-Stores per-tenant (RSC) consumption statsistics.
+Stores per-tenant (RSC) consumption statistics.
 
 - mspOrgId: System.String
   - UUID of a multi-tenancy org.

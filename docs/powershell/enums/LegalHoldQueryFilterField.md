@@ -8,3 +8,5 @@ Legal hold query filter field.
 - SNAPPABLE_TYPE - Workload type.
 - SNAPSHOT_TYPE - Snapshot type.
 - SNAPSHOT_CUSTOMIZATION
+- CLOUD_VENDOR - Cloud vendor of the workload (AWS, Azure, or GCP).
+- CLOUD_REGION - Cloud region of the workload.

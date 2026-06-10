@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 32
+    /// Create a new RscQuery object for any of the 35
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, FusionComputeMisseds, FusionComputeResourceSpec, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SSecurityInfo, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 32 operations
+    /// There are 35 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, FusionComputeMisseds, FusionComputeResourceSpec, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SSecurityInfo, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -99,6 +99,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.snapshotFid = $someString
     /// # OPTIONAL
     /// $query.Var.searchPrefix = $someString
+    /// # OPTIONAL
+    /// $query.Var.isPrefixSearch = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -131,6 +133,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # REQUIRED
     /// $query.Var.shouldShowSnapshotRetentionInfo = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.snapshotLocationView = $someSnapshotLocationView # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotLocationView]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -181,6 +185,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.getFullDetails = $someBoolean
     /// # OPTIONAL
     /// $query.Var.excludeReplica = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.shouldExcludeNonIndexed = $someBoolean
     /// # OPTIONAL
     /// $query.Var.excludeArchivalLocationTypes = @(
     /// 	$someString
@@ -711,6 +717,68 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the FusionComputeMisseds operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: FusionComputeMisseds
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation FusionComputeMisseds
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: MissedSnapshotListResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FusionComputeResourceSpec operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: FusionComputeResourceSpec
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation FusionComputeResourceSpec
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: FusionComputeSnapshotResourceSpecReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the LegalHoldSnappable operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -733,7 +801,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	snappableId = $someString
@@ -759,6 +827,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			snapshotCustomizations = @(
     /// 				$someSnapshotCustomization # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotCustomization]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// 			# OPTIONAL
+    /// 			cloudRegions = @(
+    /// 				$someString
     /// 			)
     /// 		}
     /// 	)
@@ -1151,6 +1225,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQuerySnapshot -Operation Results
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -1319,6 +1401,52 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SSecurityInfo operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: SSecurityInfo
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation SSecurityInfo
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.workloadIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.startTime = $someDateTime
+    /// # OPTIONAL
+    /// $query.Var.endTime = $someDateTime
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.includeThreatHunts = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SnapshotSecurityInfoConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SnappableList operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -1387,6 +1515,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean
     /// # OPTIONAL
     /// $query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.snapshotLocationView = $someSnapshotLocationView # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotLocationView]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1469,6 +1599,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean
     /// # OPTIONAL
     /// $query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.snapshotLocationView = $someSnapshotLocationView # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotLocationView]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1505,7 +1637,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	clusterUuid = $someString
     /// 	# REQUIRED
     /// 	filterParams = @(
@@ -1529,6 +1661,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			snapshotCustomizations = @(
     /// 				$someSnapshotCustomization # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotCustomization]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// 			# OPTIONAL
+    /// 			cloudRegions = @(
+    /// 				$someString
     /// 			)
     /// 		}
     /// 	)
@@ -1769,6 +1907,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FilesDeltaV2",
                 "Fileset",
                 "FilesetFiles",
+                "FusionComputeMisseds",
+                "FusionComputeResourceSpec",
                 "LegalHoldSnappable",
                 "ListDiffFilesFor",
                 "NewestForCloudDirectObject",
@@ -1781,6 +1921,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Results",
                 "SOfCloudDirectBucket",
                 "SOfCloudDirectShare",
+                "SSecurityInfo",
                 "SnappableList",
                 "SnappablesList",
                 "SnappablesWithLegalHoldsSummary",
@@ -1840,6 +1981,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "FilesetFiles":
                         this.ProcessRecord_FilesetFiles();
                         break;
+                    case "FusionComputeMisseds":
+                        this.ProcessRecord_FusionComputeMisseds();
+                        break;
+                    case "FusionComputeResourceSpec":
+                        this.ProcessRecord_FusionComputeResourceSpec();
+                        break;
                     case "LegalHoldSnappable":
                         this.ProcessRecord_LegalHoldSnappable();
                         break;
@@ -1875,6 +2022,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SOfCloudDirectShare":
                         this.ProcessRecord_SOfCloudDirectShare();
+                        break;
+                    case "SSecurityInfo":
+                        this.ProcessRecord_SSecurityInfo();
                         break;
                     case "SnappableList":
                         this.ProcessRecord_SnappableList();
@@ -2019,6 +2169,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // fusionComputeMissedSnapshots.
+        internal void ProcessRecord_FusionComputeMisseds()
+        {
+            this._logger.name += " -FusionComputeMisseds";
+            // Create new graphql operation fusionComputeMissedSnapshots
+            InitQueryFusionComputeMissedSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // fusionComputeSnapshotResourceSpec.
+        internal void ProcessRecord_FusionComputeResourceSpec()
+        {
+            this._logger.name += " -FusionComputeResourceSpec";
+            // Create new graphql operation fusionComputeSnapshotResourceSpec
+            InitQueryFusionComputeSnapshotResourceSpec();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // legalHoldSnapshotsForSnappable.
         internal void ProcessRecord_LegalHoldSnappable()
         {
@@ -2127,6 +2295,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // snapshotsSecurityInfo.
+        internal void ProcessRecord_SSecurityInfo()
+        {
+            this._logger.name += " -SSecurityInfo";
+            // Create new graphql operation snapshotsSecurityInfo
+            InitQuerySnapshotsSecurityInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // snapshotOfASnappableConnection.
         internal void ProcessRecord_SnappableList()
         {
@@ -2206,6 +2383,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     path: String!
         //     snapshotFid: UUID!
         //     searchPrefix: String
+        //     isPrefixSearch: Boolean
         //   ): SnapshotFileConnection!
         internal void InitQueryBrowseSnapshotFileConnection()
         {
@@ -2215,12 +2393,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("path", "String!"),
                 Tuple.Create("snapshotFid", "UUID!"),
                 Tuple.Create("searchPrefix", "String"),
+                Tuple.Create("isPrefixSearch", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryBrowseSnapshotFileConnection",
-                "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$searchPrefix: String)",
+                "($first: Int,$after: String,$path: String!,$snapshotFid: UUID!,$searchPrefix: String,$isPrefixSearch: Boolean)",
                 "SnapshotFileConnection",
                 Query.BrowseSnapshotFileConnection,
                 Query.BrowseSnapshotFileConnectionFieldSpec,
@@ -2233,23 +2412,26 @@ $query.Var.path = $someString
 # REQUIRED
 $query.Var.snapshotFid = $someString
 # OPTIONAL
-$query.Var.searchPrefix = $someString"
+$query.Var.searchPrefix = $someString
+# OPTIONAL
+$query.Var.isPrefixSearch = $someBoolean"
             );
         }
 
         // Create new GraphQL Query:
-        // allSnapshotsByIds(snapshotFids: [UUID!]!, shouldShowSnapshotRetentionInfo: Boolean! = false): [GenericSnapshot!]!
+        // allSnapshotsByIds(snapshotFids: [UUID!]!, shouldShowSnapshotRetentionInfo: Boolean! = false, snapshotLocationView: SnapshotLocationView): [GenericSnapshot!]!
         internal void InitQueryAllSnapshotsByIds()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("snapshotFids", "[UUID!]!"),
                 Tuple.Create("shouldShowSnapshotRetentionInfo", "Boolean!"),
+                Tuple.Create("snapshotLocationView", "SnapshotLocationView"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllSnapshotsByIds",
-                "($snapshotFids: [UUID!]!,$shouldShowSnapshotRetentionInfo: Boolean!)",
+                "($snapshotFids: [UUID!]!,$shouldShowSnapshotRetentionInfo: Boolean!,$snapshotLocationView: SnapshotLocationView)",
                 "List<GenericSnapshot>",
                 Query.AllSnapshotsByIds,
                 Query.AllSnapshotsByIdsFieldSpec,
@@ -2258,7 +2440,9 @@ $query.Var.snapshotFids = @(
 	$someString
 )
 # REQUIRED
-$query.Var.shouldShowSnapshotRetentionInfo = $someBoolean"
+$query.Var.shouldShowSnapshotRetentionInfo = $someBoolean
+# OPTIONAL
+$query.Var.snapshotLocationView = $someSnapshotLocationView # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotLocationView]) for enum values."
             );
         }
 
@@ -2275,6 +2459,7 @@ $query.Var.shouldShowSnapshotRetentionInfo = $someBoolean"
         //     anomalousOnly: Boolean
         //     getFullDetails: Boolean
         //     excludeReplica: Boolean
+        //     shouldExcludeNonIndexed: Boolean
         //     excludeArchivalLocationTypes: [String!]
         //     archivalLocationId: String
         //   ): [ClosestSnapshotSearchResult!]!
@@ -2292,6 +2477,7 @@ $query.Var.shouldShowSnapshotRetentionInfo = $someBoolean"
                 Tuple.Create("anomalousOnly", "Boolean"),
                 Tuple.Create("getFullDetails", "Boolean"),
                 Tuple.Create("excludeReplica", "Boolean"),
+                Tuple.Create("shouldExcludeNonIndexed", "Boolean"),
                 Tuple.Create("excludeArchivalLocationTypes", "[String!]"),
                 Tuple.Create("archivalLocationId", "String"),
             };
@@ -2299,7 +2485,7 @@ $query.Var.shouldShowSnapshotRetentionInfo = $someBoolean"
                 argDefs,
                 "query",
                 "QueryAllSnapshotsClosestToPointInTime",
-                "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean,$quarantinedOnly: Boolean,$anomalousOnly: Boolean,$getFullDetails: Boolean,$excludeReplica: Boolean,$excludeArchivalLocationTypes: [String!],$archivalLocationId: String)",
+                "($beforeTime: DateTime,$afterTime: DateTime,$snappableIds: [String!]!,$includeLinked: Boolean,$ignoreActiveWorkloadCheck: Boolean,$excludeQuarantined: Boolean,$excludeAnomalous: Boolean,$quarantinedOnly: Boolean,$anomalousOnly: Boolean,$getFullDetails: Boolean,$excludeReplica: Boolean,$shouldExcludeNonIndexed: Boolean,$excludeArchivalLocationTypes: [String!],$archivalLocationId: String)",
                 "List<ClosestSnapshotSearchResult>",
                 Query.AllSnapshotsClosestToPointInTime,
                 Query.AllSnapshotsClosestToPointInTimeFieldSpec,
@@ -2327,6 +2513,8 @@ $query.Var.anomalousOnly = $someBoolean
 $query.Var.getFullDetails = $someBoolean
 # OPTIONAL
 $query.Var.excludeReplica = $someBoolean
+# OPTIONAL
+$query.Var.shouldExcludeNonIndexed = $someBoolean
 # OPTIONAL
 $query.Var.excludeArchivalLocationTypes = @(
 	$someString
@@ -2856,6 +3044,52 @@ $query.Var.path = $someString"
         }
 
         // Create new GraphQL Query:
+        // fusionComputeMissedSnapshots(input: FusionComputeMissedSnapshotsInput!): MissedSnapshotListResponse!
+        internal void InitQueryFusionComputeMissedSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FusionComputeMissedSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeMissedSnapshots",
+                "($input: FusionComputeMissedSnapshotsInput!)",
+                "MissedSnapshotListResponse",
+                Query.FusionComputeMissedSnapshots,
+                Query.FusionComputeMissedSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // fusionComputeSnapshotResourceSpec(input: FusionComputeSnapshotResourceSpecInput!): FusionComputeSnapshotResourceSpecReply!
+        internal void InitQueryFusionComputeSnapshotResourceSpec()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FusionComputeSnapshotResourceSpecInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryFusionComputeSnapshotResourceSpec",
+                "($input: FusionComputeSnapshotResourceSpecInput!)",
+                "FusionComputeSnapshotResourceSpecReply",
+                Query.FusionComputeSnapshotResourceSpec,
+                Query.FusionComputeSnapshotResourceSpecFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	snapshotId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // legalHoldSnapshotsForSnappable(
         //     first: Int
         //     after: String
@@ -2890,7 +3124,7 @@ $query.Var.last = $someInt
 $query.Var.before = $someString
 # REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	clusterUuid = $someString
 	# REQUIRED
 	snappableId = $someString
@@ -2916,6 +3150,12 @@ $query.Var.input = @{
 			# OPTIONAL
 			snapshotCustomizations = @(
 				$someSnapshotCustomization # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotCustomization]) for enum values.
+			)
+			# OPTIONAL
+			cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+			# OPTIONAL
+			cloudRegions = @(
+				$someString
 			)
 		}
 	)
@@ -3254,10 +3494,22 @@ $query.Var.snapshotIds = @(
         }
 
         // Create new GraphQL Query:
-        // snapshotResults(snappableFid: String!, startTimeMs: Long!, endTimeMs: Long!): SnapshotResultConnection!
+        // snapshotResults(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     snappableFid: String!
+        //     startTimeMs: Long!
+        //     endTimeMs: Long!
+        //   ): SnapshotResultConnection!
         internal void InitQuerySnapshotResults()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "String!"),
                 Tuple.Create("startTimeMs", "Long!"),
                 Tuple.Create("endTimeMs", "Long!"),
@@ -3266,11 +3518,19 @@ $query.Var.snapshotIds = @(
                 argDefs,
                 "query",
                 "QuerySnapshotResults",
-                "($snappableFid: String!,$startTimeMs: Long!,$endTimeMs: Long!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: String!,$startTimeMs: Long!,$endTimeMs: Long!)",
                 "SnapshotResultConnection",
                 Query.SnapshotResults,
                 Query.SnapshotResultsFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
 $query.Var.startTimeMs = $someInt64
@@ -3452,6 +3712,62 @@ $query.Var.cloudDirectTargetId = $someString"
         }
 
         // Create new GraphQL Query:
+        // snapshotsSecurityInfo(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     workloadIds: [UUID!]!
+        //     startTime: DateTime
+        //     endTime: DateTime
+        //     sortOrder: SortOrder
+        //     includeThreatHunts: Boolean
+        //   ): SnapshotSecurityInfoConnection!
+        internal void InitQuerySnapshotsSecurityInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("workloadIds", "[UUID!]!"),
+                Tuple.Create("startTime", "DateTime"),
+                Tuple.Create("endTime", "DateTime"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("includeThreatHunts", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnapshotsSecurityInfo",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadIds: [UUID!]!,$startTime: DateTime,$endTime: DateTime,$sortOrder: SortOrder,$includeThreatHunts: Boolean)",
+                "SnapshotSecurityInfoConnection",
+                Query.SnapshotsSecurityInfo,
+                Query.SnapshotsSecurityInfoFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.workloadIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.startTime = $someDateTime
+# OPTIONAL
+$query.Var.endTime = $someDateTime
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.includeThreatHunts = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
         // snapshotOfASnappableConnection(
         //     first: Int
         //     after: String
@@ -3467,6 +3783,7 @@ $query.Var.cloudDirectTargetId = $someString"
         //     includeOnlySourceSnapshots: Boolean
         //     shouldExcludeCdmSnapshotRetentionInfo: Boolean
         //     shouldShowCdmSnapshotLocationInfoArg: Boolean
+        //     snapshotLocationView: SnapshotLocationView
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfAsnappableConnection()
         {
@@ -3485,12 +3802,13 @@ $query.Var.cloudDirectTargetId = $someString"
                 Tuple.Create("includeOnlySourceSnapshots", "Boolean"),
                 Tuple.Create("shouldExcludeCdmSnapshotRetentionInfo", "Boolean"),
                 Tuple.Create("shouldShowCdmSnapshotLocationInfoArg", "Boolean"),
+                Tuple.Create("snapshotLocationView", "SnapshotLocationView"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfAsnappableConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean,$includeOnlySourceSnapshots: Boolean,$shouldExcludeCdmSnapshotRetentionInfo: Boolean,$shouldShowCdmSnapshotLocationInfoArg: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$workloadId: String!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$showSnapshotRetentionInfo: Boolean,$includeOnlySourceSnapshots: Boolean,$shouldExcludeCdmSnapshotRetentionInfo: Boolean,$shouldShowCdmSnapshotLocationInfoArg: Boolean,$snapshotLocationView: SnapshotLocationView)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfAsnappableConnection,
                 Query.SnapshotOfAsnappableConnectionFieldSpec,
@@ -3549,7 +3867,9 @@ $query.Var.includeOnlySourceSnapshots = $someBoolean
 # OPTIONAL
 $query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean
 # OPTIONAL
-$query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean"
+$query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean
+# OPTIONAL
+$query.Var.snapshotLocationView = $someSnapshotLocationView # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotLocationView]) for enum values."
             );
         }
 
@@ -3568,6 +3888,7 @@ $query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean"
         //     includeOnlySourceSnapshots: Boolean
         //     shouldExcludeCdmSnapshotRetentionInfo: Boolean
         //     shouldShowCdmSnapshotLocationInfoArg: Boolean
+        //     snapshotLocationView: SnapshotLocationView
         //   ): GenericSnapshotConnection!
         internal void InitQuerySnapshotOfSnappablesConnection()
         {
@@ -3585,12 +3906,13 @@ $query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean"
                 Tuple.Create("includeOnlySourceSnapshots", "Boolean"),
                 Tuple.Create("shouldExcludeCdmSnapshotRetentionInfo", "Boolean"),
                 Tuple.Create("shouldShowCdmSnapshotLocationInfoArg", "Boolean"),
+                Tuple.Create("snapshotLocationView", "SnapshotLocationView"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySnapshotOfSnappablesConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$includeOnlySourceSnapshots: Boolean,$shouldExcludeCdmSnapshotRetentionInfo: Boolean,$shouldShowCdmSnapshotLocationInfoArg: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableIds: [String!]!,$snapshotFilter: [SnapshotQueryFilterInput!],$sortOrder: SortOrder,$sortBy: SnapshotQuerySortByField,$timeRange: TimeRangeInput,$ignoreActiveWorkloadCheck: Boolean,$includeOnlySourceSnapshots: Boolean,$shouldExcludeCdmSnapshotRetentionInfo: Boolean,$shouldShowCdmSnapshotLocationInfoArg: Boolean,$snapshotLocationView: SnapshotLocationView)",
                 "GenericSnapshotConnection",
                 Query.SnapshotOfSnappablesConnection,
                 Query.SnapshotOfSnappablesConnectionFieldSpec,
@@ -3649,7 +3971,9 @@ $query.Var.includeOnlySourceSnapshots = $someBoolean
 # OPTIONAL
 $query.Var.shouldExcludeCdmSnapshotRetentionInfo = $someBoolean
 # OPTIONAL
-$query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean"
+$query.Var.shouldShowCdmSnapshotLocationInfoArg = $someBoolean
+# OPTIONAL
+$query.Var.snapshotLocationView = $someSnapshotLocationView # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotLocationView]) for enum values."
             );
         }
 
@@ -3688,7 +4012,7 @@ $query.Var.last = $someInt
 $query.Var.before = $someString
 # REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	clusterUuid = $someString
 	# REQUIRED
 	filterParams = @(
@@ -3712,6 +4036,12 @@ $query.Var.input = @{
 			# OPTIONAL
 			snapshotCustomizations = @(
 				$someSnapshotCustomization # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotCustomization]) for enum values.
+			)
+			# OPTIONAL
+			cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+			# OPTIONAL
+			cloudRegions = @(
+				$someString
 			)
 		}
 	)

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 9
+    /// Create a new RscQuery object for any of the 11
     /// operations in the 'Cloud Account' API domain:
-    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
+    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, DevOpsListCurrentPermissions, DevOpsListLatestPermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudAccount creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 9 operations
+    /// There are 11 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
+    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, DevOpsListCurrentPermissions, DevOpsListLatestPermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -185,6 +185,88 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;CloudAccountFeaturePermission&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsListCurrentPermissions operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: DevOpsListCurrentPermissions
+    /// 
+    /// $query = New-RscQueryCloudAccount -Operation DevOpsListCurrentPermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# OPTIONAL
+    /// 	featuresWithPermissionsGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DevOpsCloudAccountListCurrentPermissionsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsListLatestPermissions operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: DevOpsListLatestPermissions
+    /// 
+    /// $query = New-RscQueryCloudAccount -Operation DevOpsListLatestPermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	featuresWithPermissionsGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DevOpsCloudAccountListLatestPermissionsReply
     /// 
     /// 
     /// 
@@ -427,6 +509,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccount",
                 "CloudAccounts",
                 "CurrentFeaturePermissions",
+                "DevOpsListCurrentPermissions",
+                "DevOpsListLatestPermissions",
                 "ExocomputeMappings",
                 "GetListFilters",
                 "IamPairsByAndLocation",
@@ -456,6 +540,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CurrentFeaturePermissions":
                         this.ProcessRecord_CurrentFeaturePermissions();
+                        break;
+                    case "DevOpsListCurrentPermissions":
+                        this.ProcessRecord_DevOpsListCurrentPermissions();
+                        break;
+                    case "DevOpsListLatestPermissions":
+                        this.ProcessRecord_DevOpsListLatestPermissions();
                         break;
                     case "ExocomputeMappings":
                         this.ProcessRecord_ExocomputeMappings();
@@ -510,6 +600,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CurrentFeaturePermissions";
             // Create new graphql operation allCurrentFeaturePermissionsForCloudAccounts
             InitQueryAllCurrentFeaturePermissionsForCloudAccounts();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // devOpsCloudAccountListCurrentPermissions.
+        internal void ProcessRecord_DevOpsListCurrentPermissions()
+        {
+            this._logger.name += " -DevOpsListCurrentPermissions";
+            // Create new graphql operation devOpsCloudAccountListCurrentPermissions
+            InitQueryDevOpsCloudAccountListCurrentPermissions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // devOpsCloudAccountListLatestPermissions.
+        internal void ProcessRecord_DevOpsListLatestPermissions()
+        {
+            this._logger.name += " -DevOpsListLatestPermissions";
+            // Create new graphql operation devOpsCloudAccountListLatestPermissions
+            InitQueryDevOpsCloudAccountListLatestPermissions();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -672,6 +780,72 @@ $query.Var.permissionsGroupFilters = @(
 )
 # OPTIONAL
 $query.Var.awsIamPairId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // devOpsCloudAccountListCurrentPermissions(input: DevOpsCloudAccountListCurrentPermissionsReq!): DevOpsCloudAccountListCurrentPermissionsReply!
+        internal void InitQueryDevOpsCloudAccountListCurrentPermissions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DevOpsCloudAccountListCurrentPermissionsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDevOpsCloudAccountListCurrentPermissions",
+                "($input: DevOpsCloudAccountListCurrentPermissionsReq!)",
+                "DevOpsCloudAccountListCurrentPermissionsReply",
+                Query.DevOpsCloudAccountListCurrentPermissions,
+                Query.DevOpsCloudAccountListCurrentPermissionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# OPTIONAL
+	featuresWithPermissionsGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // devOpsCloudAccountListLatestPermissions(input: DevOpsCloudAccountListLatestPermissionsReq!): DevOpsCloudAccountListLatestPermissionsReply!
+        internal void InitQueryDevOpsCloudAccountListLatestPermissions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DevOpsCloudAccountListLatestPermissionsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryDevOpsCloudAccountListLatestPermissions",
+                "($input: DevOpsCloudAccountListLatestPermissionsReq!)",
+                "DevOpsCloudAccountListLatestPermissionsReply",
+                Query.DevOpsCloudAccountListLatestPermissions,
+                Query.DevOpsCloudAccountListLatestPermissionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	featuresWithPermissionsGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
+	)
+}"
             );
         }
 

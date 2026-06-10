@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("auditSubscription")]
         public WebhookAuditSubscriptionInput? AuditSubscription { get; set; }
 
+        //      C# -> WebhookIdentityActivitySubscriptionInput? IdentityActivitySubscription
+        // GraphQL -> identityActivitySubscription: WebhookIdentityActivitySubscriptionInput (input)
+        [JsonProperty("identityActivitySubscription")]
+        public WebhookIdentityActivitySubscriptionInput? IdentityActivitySubscription { get; set; }
+
 
         #endregion
 

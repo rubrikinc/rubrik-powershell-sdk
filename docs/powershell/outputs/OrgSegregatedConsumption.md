@@ -24,3 +24,5 @@ Rich org-level segregated consumption data with detailed breakdowns
 application. If this is false, protected user counts are 0 because user
 count calculation requires an authenticated management application. Storage
 consumption is populated regardless of the status of this field.
+- segregatedObjectTypeConsumption: list of SegregatedObjectTypeConsumptionEntrys
+  - Consumption breakdown by object type, state, and protection status.

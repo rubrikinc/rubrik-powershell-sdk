@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "FAILOVER_GROUP_STATUS_DELETING")]
+        FAILOVER_GROUP_STATUS_DELETING,
+
         [EnumMember(Value = "FAILOVER_GROUP_STATUS_FAILBACK_COMPLETED")]
         FAILOVER_GROUP_STATUS_FAILBACK_COMPLETED,
 

@@ -11,3 +11,6 @@ Threat Analytics Enablement Item Type.
   - Indicates whether Threat Monitoring is enabled.
 - isHealthy: System.Boolean
   - Indicates whether item is healthy.
+- shouldScanAllFiles: System.Boolean
+  - When true, threat monitoring scans all files regardless of extension.
+Cloud workloads only; always false for M365 and Cloud Direct.

@@ -5,8 +5,6 @@ Metadata for rendering an SLA Domain.
   - SLA Domain ID.
 - name: System.String
   - SLA Domain name.
-- version: System.String
-  - Version for the SLA Domain.
 - description: System.String
   - Description of the SLA Domain.
 - protectedObjectCount: System.Int32
@@ -21,8 +19,6 @@ Metadata for rendering an SLA Domain.
   - Archiving specification for the SLA Domain.
 - archivalSpecs: list of ArchivalSpecs
   - List of archival specifications for SLA Domain.
-- replicationSpec: ReplicationSpec
-  - Replication specification for the SLA Domain.
 - replicationSpecsV2: list of ReplicationSpecV2s
   - Replication specification for the SLA Domain.
 - snapshotScheduleLastUpdatedAt: DateTime
@@ -55,10 +51,6 @@ Metadata for rendering an SLA Domain.
   - Information about Rubrik clusters where this SLA Domain is paused.
 - isRetentionLockedSla: System.Boolean
   - Specifies if this SLA Domain is retention-locked or not.
-- isReadOnly: System.Boolean
-  - Specifies whether the SLA Domain is read-only.
-- backupLocationSpecs: list of BackupLocationSpecs
-  - List of backup location specifications for the SLA Domain.
 - backupType: BackupType
   - Type of backup.
 - retentionLockMode: RetentionLockMode
@@ -73,9 +65,19 @@ Metadata for rendering an SLA Domain.
   - Specifies the owner organization of the SLA Domain.
 - backupWindowSpec: BackupWindowSpec
   - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
+- replicationSpec: ReplicationSpec
+  - Replication specification for the SLA Domain.
+- version: System.String
+  - Version for the SLA Domain.
 - archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
   - Upgrade information about the configured archival locations and cascading archival locations.
+- isReadOnly: System.Boolean
+  - Specifies whether the SLA Domain is read-only.
 - sourceClusters: list of SlaDataLocationClusters
   - Source clusters configured in the SLA Domain.
+- backupLocationSpecs: list of BackupLocationSpecs
+  - List of backup location specifications for the SLA Domain.
 - haPolicy: HaPolicy
   - HA policy of the HA SLA Domain.
+- purpose: SlaPurpose
+  - Purpose of the SLA Domain.

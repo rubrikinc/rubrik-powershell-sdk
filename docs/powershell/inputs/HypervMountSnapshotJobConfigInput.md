@@ -24,6 +24,12 @@ v7.0+: Name of the mounted virtual machine.
 - shouldMigrateDataStore: System.Boolean
   - Supported in v9.4+
 Determines whether we should do datastore migration right after the mount.
+- keepMacAddress: System.Boolean
+  - Supported in v9.6
+Whether to preserve the original MAC addresses of network adapters.
+- virtualSwitchMappings: list of HypervVirtualSwitchMappingInputs
+  - Supported in v9.6
+Mapping of NIC indices to virtual switches.
 - destinationFolder: System.String
   - Supported in v9.4+
 The destination folder for datastore migration.

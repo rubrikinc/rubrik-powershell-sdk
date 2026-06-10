@@ -8,5 +8,6 @@ Role template.
 - description: System.String
   - Role template description.
 - permissions: list of Permissions
+  - Role permissions.
 - explicitlyAssignedPermissions: list of Permissions
   - Role permissions that are explicitly assigned to the template.

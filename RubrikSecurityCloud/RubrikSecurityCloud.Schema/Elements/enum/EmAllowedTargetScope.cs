@@ -1,0 +1,60 @@
+// EmAllowedTargetScope.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace RubrikSecurityCloud.Types
+{
+    public enum EmAllowedTargetScope
+    {
+        [EnumMember(Value = "UNKNOWN")]
+        UNKNOWN,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_ALL_CONFIGURED_CONNECTED_ORGANIZATION_USERS")]
+        EM_ALLOWED_TARGET_SCOPE_ALL_CONFIGURED_CONNECTED_ORGANIZATION_USERS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_ALL_DIRECTORY_AGENT_IDENTITIES")]
+        EM_ALLOWED_TARGET_SCOPE_ALL_DIRECTORY_AGENT_IDENTITIES,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_ALL_DIRECTORY_SERVICE_PRINCIPALS")]
+        EM_ALLOWED_TARGET_SCOPE_ALL_DIRECTORY_SERVICE_PRINCIPALS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_ALL_DIRECTORY_USERS")]
+        EM_ALLOWED_TARGET_SCOPE_ALL_DIRECTORY_USERS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_ALL_EXTERNAL_USERS")]
+        EM_ALLOWED_TARGET_SCOPE_ALL_EXTERNAL_USERS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_ALL_MEMBER_USERS")]
+        EM_ALLOWED_TARGET_SCOPE_ALL_MEMBER_USERS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_NOT_SPECIFIED")]
+        EM_ALLOWED_TARGET_SCOPE_NOT_SPECIFIED,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_SPECIFIC_CONNECTED_ORGANIZATION_USERS")]
+        EM_ALLOWED_TARGET_SCOPE_SPECIFIC_CONNECTED_ORGANIZATION_USERS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_SPECIFIC_DIRECTORY_SERVICE_PRINCIPALS")]
+        EM_ALLOWED_TARGET_SCOPE_SPECIFIC_DIRECTORY_SERVICE_PRINCIPALS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_SPECIFIC_DIRECTORY_USERS")]
+        EM_ALLOWED_TARGET_SCOPE_SPECIFIC_DIRECTORY_USERS,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_UNKNOWN_FUTURE_VALUE")]
+        EM_ALLOWED_TARGET_SCOPE_UNKNOWN_FUTURE_VALUE,
+
+        [EnumMember(Value = "EM_ALLOWED_TARGET_SCOPE_UNSPECIFIED")]
+        EM_ALLOWED_TARGET_SCOPE_UNSPECIFIED
+
+
+    } // enum EmAllowedTargetScope
+
+} // namespace RubrikSecurityCloud.Types

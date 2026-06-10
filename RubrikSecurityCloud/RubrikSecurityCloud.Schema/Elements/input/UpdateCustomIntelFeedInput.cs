@@ -19,20 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? User
-        // GraphQL -> user: String (scalar)
-        [JsonProperty("user")]
-        public System.String? User { get; set; }
+        //      C# -> System.String? ProviderId
+        // GraphQL -> providerId: String (scalar)
+        [JsonProperty("providerId")]
+        public System.String? ProviderId { get; set; }
 
         //      C# -> ProviderName? Name
         // GraphQL -> name: ProviderName (input)
         [JsonProperty("name")]
         public ProviderName? Name { get; set; }
-
-        //      C# -> System.String? ProviderId
-        // GraphQL -> providerId: String (scalar)
-        [JsonProperty("providerId")]
-        public System.String? ProviderId { get; set; }
 
         //      C# -> ProviderDescription? Description
         // GraphQL -> description: ProviderDescription (input)
@@ -48,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> entriesToRemove: [String!] (scalar)
         [JsonProperty("entriesToRemove")]
         public List<System.String>? EntriesToRemove { get; set; }
+
+        //      C# -> System.String? User
+        // GraphQL -> user: String (scalar)
+        [JsonProperty("user")]
+        public System.String? User { get; set; }
 
 
         #endregion

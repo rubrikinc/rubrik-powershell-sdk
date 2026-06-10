@@ -35,6 +35,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> ChartSchema? ChartSchema
+        // GraphQL -> chartSchema: ChartSchema (type)
+        [JsonProperty("chartSchema")]
+        public ChartSchema? ChartSchema { get; set; }
+
+        //      C# -> List<TemplateFilterDetail>? Filters
+        // GraphQL -> filters: [TemplateFilterDetail!]! (type)
+        [JsonProperty("filters")]
+        public List<TemplateFilterDetail>? Filters { get; set; }
+
+        //      C# -> List<TemplateTableDetail>? Tables
+        // GraphQL -> tables: [TemplateTableDetail!]! (type)
+        [JsonProperty("tables")]
+        public List<TemplateTableDetail>? Tables { get; set; }
+
 
         #endregion
 
@@ -47,7 +62,10 @@ namespace RubrikSecurityCloud.Types
     public RscReportTemplate Set(
         PolarisReportViewType? ReportViewType = null,
         System.String? Description = null,
-        System.String? Name = null
+        System.String? Name = null,
+        ChartSchema? ChartSchema = null,
+        List<TemplateFilterDetail>? Filters = null,
+        List<TemplateTableDetail>? Tables = null
     ) 
     {
         if ( ReportViewType != null ) {
@@ -58,6 +76,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ChartSchema != null ) {
+            this.ChartSchema = ChartSchema;
+        }
+        if ( Filters != null ) {
+            this.Filters = Filters;
+        }
+        if ( Tables != null ) {
+            this.Tables = Tables;
         }
         return this;
     }
@@ -98,6 +125,42 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> ChartSchema? ChartSchema
+        // GraphQL -> chartSchema: ChartSchema (type)
+        if (this.ChartSchema != null) {
+            var fspec = this.ChartSchema.AsFieldSpec(conf.Child("chartSchema"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "chartSchema" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TemplateFilterDetail>? Filters
+        // GraphQL -> filters: [TemplateFilterDetail!]! (type)
+        if (this.Filters != null) {
+            var fspec = this.Filters.AsFieldSpec(conf.Child("filters"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "filters" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TemplateTableDetail>? Tables
+        // GraphQL -> tables: [TemplateTableDetail!]! (type)
+        if (this.Tables != null) {
+            var fspec = this.Tables.AsFieldSpec(conf.Child("tables"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tables" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -157,6 +220,63 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> ChartSchema? ChartSchema
+        // GraphQL -> chartSchema: ChartSchema (type)
+        if (ec.Includes("chartSchema",false))
+        {
+            if(this.ChartSchema == null) {
+
+                this.ChartSchema = new ChartSchema();
+                this.ChartSchema.ApplyExploratoryFieldSpec(ec.NewChild("chartSchema"));
+
+            } else {
+
+                this.ChartSchema.ApplyExploratoryFieldSpec(ec.NewChild("chartSchema"));
+
+            }
+        }
+        else if (this.ChartSchema != null && ec.Excludes("chartSchema",false))
+        {
+            this.ChartSchema = null;
+        }
+        //      C# -> List<TemplateFilterDetail>? Filters
+        // GraphQL -> filters: [TemplateFilterDetail!]! (type)
+        if (ec.Includes("filters",false))
+        {
+            if(this.Filters == null) {
+
+                this.Filters = new List<TemplateFilterDetail>();
+                this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
+
+            } else {
+
+                this.Filters.ApplyExploratoryFieldSpec(ec.NewChild("filters"));
+
+            }
+        }
+        else if (this.Filters != null && ec.Excludes("filters",false))
+        {
+            this.Filters = null;
+        }
+        //      C# -> List<TemplateTableDetail>? Tables
+        // GraphQL -> tables: [TemplateTableDetail!]! (type)
+        if (ec.Includes("tables",false))
+        {
+            if(this.Tables == null) {
+
+                this.Tables = new List<TemplateTableDetail>();
+                this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
+
+            } else {
+
+                this.Tables.ApplyExploratoryFieldSpec(ec.NewChild("tables"));
+
+            }
+        }
+        else if (this.Tables != null && ec.Excludes("tables",false))
+        {
+            this.Tables = null;
         }
     }
 

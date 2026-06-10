@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logBackupFrequency")]
         public System.Int32? LogBackupFrequency { get; set; }
 
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int! (scalar)
+        [JsonProperty("logRatePerRmanChannelInMb")]
+        public System.Int32? LogRatePerRmanChannelInMb { get; set; }
+
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         [JsonProperty("logRetentionHours")]
@@ -170,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> osNames: [String!]! (scalar)
         [JsonProperty("osNames")]
         public List<System.String>? OsNames { get; set; }
+
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int! (scalar)
+        [JsonProperty("ratePerRmanChannelInMb")]
+        public System.Int32? RatePerRmanChannelInMb { get; set; }
 
         //      C# -> System.String? RbaRole
         // GraphQL -> rbaRole: String! (scalar)
@@ -496,6 +506,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsLiveMount = null,
         System.Boolean? IsRelic = null,
         System.Int32? LogBackupFrequency = null,
+        System.Int32? LogRatePerRmanChannelInMb = null,
         System.Int32? LogRetentionHours = null,
         System.String? Name = null,
         System.Int64? NumChannels = null,
@@ -505,6 +516,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         List<System.String>? OsNames = null,
+        System.Int32? RatePerRmanChannelInMb = null,
         System.String? RbaRole = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Int32? SectionSizeInGigabytes = null,
@@ -608,6 +620,9 @@ namespace RubrikSecurityCloud.Types
         if ( LogBackupFrequency != null ) {
             this.LogBackupFrequency = LogBackupFrequency;
         }
+        if ( LogRatePerRmanChannelInMb != null ) {
+            this.LogRatePerRmanChannelInMb = LogRatePerRmanChannelInMb;
+        }
         if ( LogRetentionHours != null ) {
             this.LogRetentionHours = LogRetentionHours;
         }
@@ -634,6 +649,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OsNames != null ) {
             this.OsNames = OsNames;
+        }
+        if ( RatePerRmanChannelInMb != null ) {
+            this.RatePerRmanChannelInMb = RatePerRmanChannelInMb;
         }
         if ( RbaRole != null ) {
             this.RbaRole = RbaRole;
@@ -972,6 +990,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "logBackupFrequency\n" ;
             }
         }
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int! (scalar)
+        if (this.LogRatePerRmanChannelInMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logRatePerRmanChannelInMb\n" ;
+            } else {
+                s += ind + "logRatePerRmanChannelInMb\n" ;
+            }
+        }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours != null) {
@@ -1051,6 +1078,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "osNames\n" ;
             } else {
                 s += ind + "osNames\n" ;
+            }
+        }
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int! (scalar)
+        if (this.RatePerRmanChannelInMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ratePerRmanChannelInMb\n" ;
+            } else {
+                s += ind + "ratePerRmanChannelInMb\n" ;
             }
         }
         //      C# -> System.String? RbaRole
@@ -1885,6 +1921,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LogBackupFrequency = null;
         }
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int! (scalar)
+        if (ec.Includes("logRatePerRmanChannelInMb",true))
+        {
+            if(this.LogRatePerRmanChannelInMb == null) {
+
+                this.LogRatePerRmanChannelInMb = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRatePerRmanChannelInMb != null && ec.Excludes("logRatePerRmanChannelInMb",true))
+        {
+            this.LogRatePerRmanChannelInMb = null;
+        }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (ec.Includes("logRetentionHours",true))
@@ -2037,6 +2090,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsNames != null && ec.Excludes("osNames",true))
         {
             this.OsNames = null;
+        }
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int! (scalar)
+        if (ec.Includes("ratePerRmanChannelInMb",true))
+        {
+            if(this.RatePerRmanChannelInMb == null) {
+
+                this.RatePerRmanChannelInMb = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RatePerRmanChannelInMb != null && ec.Excludes("ratePerRmanChannelInMb",true))
+        {
+            this.RatePerRmanChannelInMb = null;
         }
         //      C# -> System.String? RbaRole
         // GraphQL -> rbaRole: String! (scalar)

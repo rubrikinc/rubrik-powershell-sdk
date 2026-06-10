@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SIGNIN_LOG_FILTER_APPLICATION_NAME")]
         SIGNIN_LOG_FILTER_APPLICATION_NAME,
 
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_AUTHENTICATION_METHOD")]
+        SIGNIN_LOG_FILTER_AUTHENTICATION_METHOD,
+
         [EnumMember(Value = "SIGNIN_LOG_FILTER_CITY")]
         SIGNIN_LOG_FILTER_CITY,
 
@@ -33,17 +36,38 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SIGNIN_LOG_FILTER_DISPLAY_NAME")]
         SIGNIN_LOG_FILTER_DISPLAY_NAME,
 
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_ERROR_CODE")]
+        SIGNIN_LOG_FILTER_ERROR_CODE,
+
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_EVENT_ID")]
+        SIGNIN_LOG_FILTER_EVENT_ID,
+
         [EnumMember(Value = "SIGNIN_LOG_FILTER_IP_ADDRESS")]
         SIGNIN_LOG_FILTER_IP_ADDRESS,
 
         [EnumMember(Value = "SIGNIN_LOG_FILTER_LOCATION")]
         SIGNIN_LOG_FILTER_LOCATION,
 
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_LOGON_TYPE")]
+        SIGNIN_LOG_FILTER_LOGON_TYPE,
+
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_MFA_STATUS")]
+        SIGNIN_LOG_FILTER_MFA_STATUS,
+
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_PROCESS_NAME")]
+        SIGNIN_LOG_FILTER_PROCESS_NAME,
+
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_RESOURCE_NAME")]
+        SIGNIN_LOG_FILTER_RESOURCE_NAME,
+
         [EnumMember(Value = "SIGNIN_LOG_FILTER_TENANT")]
         SIGNIN_LOG_FILTER_TENANT,
 
         [EnumMember(Value = "SIGNIN_LOG_FILTER_USER")]
-        SIGNIN_LOG_FILTER_USER
+        SIGNIN_LOG_FILTER_USER,
+
+        [EnumMember(Value = "SIGNIN_LOG_FILTER_USER_ID")]
+        SIGNIN_LOG_FILTER_USER_ID
 
 
     } // enum SigninLogFilterType

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clientSecret")]
         public System.String? ClientSecret { get; set; }
 
+        //      C# -> MicrosoftDefenderStatusInput? Status
+        // GraphQL -> status: MicrosoftDefenderStatusInput (input)
+        [JsonProperty("status")]
+        public MicrosoftDefenderStatusInput? Status { get; set; }
+
 
         #endregion
 

@@ -1,13 +1,14 @@
 ### AzureArmTemplateByFeature
-Custom role ARM template corresponding to the feature.
+ARM template for an Azure feature.
 
 - feature: CloudAccountFeature
-  - Cloud native protections features.
+  - The cloud account feature.
 - roleDefinitionAssignmentTemplate: System.String
-  - The template required for supporting the feature specified by the feature field. During the upgrade operation, only the role definition template is returned.
+  - Role definition assignment template.
 - version: System.Int32
-  - Policy permission version to be used for adding and upgrading the subscription.
+  - Template version.
 - permissionsGroupVersions: list of PermissionsGroupWithVersions
-  - Policy permissions groups versions to be used for adding and upgrading the subscription.
+  - Policy version for each permissions group used to generate the template.
 - deploymentLevel: ArmTemplateDeploymentLevel
-  - The level at which the template should be deployed.
+  - Whether the template should be deployed at the subscription or
+resource group level.

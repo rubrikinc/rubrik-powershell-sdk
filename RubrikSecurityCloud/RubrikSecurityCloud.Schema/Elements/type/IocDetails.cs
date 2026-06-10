@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> FeedType? FeedType
+        // GraphQL -> feedType: FeedType! (enum)
+        [JsonProperty("feedType")]
+        public FeedType? FeedType { get; set; }
+
         //      C# -> FeedEntryStatus? IocStatus
         // GraphQL -> iocStatus: FeedEntryStatus! (enum)
         [JsonProperty("iocStatus")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public IocDetails Set(
+        FeedType? FeedType = null,
         FeedEntryStatus? IocStatus = null,
         IndicatorOfCompromiseKind? MatchType = null,
         System.String? IntelFeedName = null,
@@ -74,6 +80,9 @@ namespace RubrikSecurityCloud.Types
         System.String? MalwareName = null
     ) 
     {
+        if ( FeedType != null ) {
+            this.FeedType = FeedType;
+        }
         if ( IocStatus != null ) {
             this.IocStatus = IocStatus;
         }
@@ -109,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> FeedType? FeedType
+        // GraphQL -> feedType: FeedType! (enum)
+        if (this.FeedType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "feedType\n" ;
+            } else {
+                s += ind + "feedType\n" ;
+            }
+        }
         //      C# -> FeedEntryStatus? IocStatus
         // GraphQL -> iocStatus: FeedEntryStatus! (enum)
         if (this.IocStatus != null) {
@@ -179,6 +197,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> FeedType? FeedType
+        // GraphQL -> feedType: FeedType! (enum)
+        if (ec.Includes("feedType",true))
+        {
+            if(this.FeedType == null) {
+
+                this.FeedType = new FeedType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FeedType != null && ec.Excludes("feedType",true))
+        {
+            this.FeedType = null;
+        }
         //      C# -> FeedEntryStatus? IocStatus
         // GraphQL -> iocStatus: FeedEntryStatus! (enum)
         if (ec.Includes("iocStatus",true))

@@ -23,3 +23,5 @@ Lambda configuration details of the Rubrik cluster.
   - The extension allowlist used for threat monitoring scans.
 - isThreatMonitoringEnabledForActiveDirectory: System.Boolean
   - Whether threat monitoring is enabled for Active Directory workloads.
+- threatMonitoringSortByOffset: System.Boolean
+  - Whether FMD entries are sorted by physical disk offset before DPS scan.

@@ -44,6 +44,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("administrativeUnitRecoveryOption")]
         public AdministrativeUnitRecoveryOption? AdministrativeUnitRecoveryOption { get; set; }
 
+        //      C# -> DeviceConfigPolicyRecoveryOption? DeviceConfigPolicyRecoveryOption
+        // GraphQL -> deviceConfigPolicyRecoveryOption: DeviceConfigPolicyRecoveryOption (input)
+        [JsonProperty("deviceConfigPolicyRecoveryOption")]
+        public DeviceConfigPolicyRecoveryOption? DeviceConfigPolicyRecoveryOption { get; set; }
+
+        //      C# -> GovernanceRecoveryOptionType? GovernanceRecoveryOption
+        // GraphQL -> governanceRecoveryOption: GovernanceRecoveryOptionType (input)
+        [JsonProperty("governanceRecoveryOption")]
+        public GovernanceRecoveryOptionType? GovernanceRecoveryOption { get; set; }
+
 
         #endregion
 

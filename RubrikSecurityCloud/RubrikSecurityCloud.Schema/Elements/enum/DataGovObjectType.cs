@@ -159,6 +159,48 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_TYPE_UNSPECIFIED")]
         OBJECT_TYPE_UNSPECIFIED,
 
+        [EnumMember(Value = "OLVM_COMPUTE_CLUSTER")]
+        OLVM_COMPUTE_CLUSTER,
+
+        [EnumMember(Value = "OLVM_DATACENTER")]
+        OLVM_DATACENTER,
+
+        [EnumMember(Value = "OLVM_HOST")]
+        OLVM_HOST,
+
+        [EnumMember(Value = "OLVM_MANAGER")]
+        OLVM_MANAGER,
+
+        [EnumMember(Value = "OLVM_ROOT")]
+        OLVM_ROOT,
+
+        [EnumMember(Value = "OLVM_VIRTUAL_MACHINE")]
+        OLVM_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "OPENSTACK_AVAILABILITY_ZONE")]
+        OPENSTACK_AVAILABILITY_ZONE,
+
+        [EnumMember(Value = "OPENSTACK_DOMAIN")]
+        OPENSTACK_DOMAIN,
+
+        [EnumMember(Value = "OPENSTACK_ENVIRONMENT")]
+        OPENSTACK_ENVIRONMENT,
+
+        [EnumMember(Value = "OPENSTACK_HOST")]
+        OPENSTACK_HOST,
+
+        [EnumMember(Value = "OPENSTACK_PROJECT")]
+        OPENSTACK_PROJECT,
+
+        [EnumMember(Value = "OPENSTACK_REGION")]
+        OPENSTACK_REGION,
+
+        [EnumMember(Value = "OPENSTACK_ROOT")]
+        OPENSTACK_ROOT,
+
+        [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
+        OPENSTACK_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "ORACLE_DATABASE")]
         ORACLE_DATABASE,
 

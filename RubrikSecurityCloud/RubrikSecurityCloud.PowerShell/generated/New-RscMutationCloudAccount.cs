@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 7
     /// operations in the 'Cloud Account' API domain:
-    /// AssignToCluster, MapExocomputeAccount, UnmapExocomputeAccount, or UpdateCertificateUsages.
+    /// AddGitHub, AssignToCluster, DeleteGitHub, MapExocomputeAccount, UnmapExocomputeAccount, UpdateCertificateUsages, or UpdateGitHub.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudAccount creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 7 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AssignToCluster, MapExocomputeAccount, UnmapExocomputeAccount, or UpdateCertificateUsages.
+    /// one of: AddGitHub, AssignToCluster, DeleteGitHub, MapExocomputeAccount, UnmapExocomputeAccount, UpdateCertificateUsages, or UpdateGitHub.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCloudAccount -AssignToCluster).Info().
+    /// (New-RscMutationCloudAccount -AddGitHub).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,54 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationCloudAccount -AssignToCluster).Info().
+    /// (New-RscMutationCloudAccount -AddGitHub).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the AddGitHub operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: AddGitHub
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation AddGitHub
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationName = $someString
+    /// 	# OPTIONAL
+    /// 	archivalGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	exocomputeCloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	exocomputeRegion = $someString
+    /// 	# OPTIONAL
+    /// 	organizationUrl = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the AssignToCluster operation
@@ -102,6 +145,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AssignCloudAccountToClusterReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteGitHub operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: DeleteGitHub
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation DeleteGitHub
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# OPTIONAL
+    /// 	deleteSnapshots = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -220,6 +296,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpdateGitHub operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: UpdateGitHub
+    /// 
+    /// $query = New-RscMutationCloudAccount -Operation UpdateGitHub
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# OPTIONAL
+    /// 	archivalGroupId = $someString
+    /// 	# OPTIONAL
+    /// 	exocomputeCloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	exocomputeRegion = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -236,10 +353,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "AddGitHub",
                 "AssignToCluster",
+                "DeleteGitHub",
                 "MapExocomputeAccount",
                 "UnmapExocomputeAccount",
                 "UpdateCertificateUsages",
+                "UpdateGitHub",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -255,8 +375,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "AddGitHub":
+                        this.ProcessRecord_AddGitHub();
+                        break;
                     case "AssignToCluster":
                         this.ProcessRecord_AssignToCluster();
+                        break;
+                    case "DeleteGitHub":
+                        this.ProcessRecord_DeleteGitHub();
                         break;
                     case "MapExocomputeAccount":
                         this.ProcessRecord_MapExocomputeAccount();
@@ -266,6 +392,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateCertificateUsages":
                         this.ProcessRecord_UpdateCertificateUsages();
+                        break;
+                    case "UpdateGitHub":
+                        this.ProcessRecord_UpdateGitHub();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -278,12 +407,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // addGitHubCloudAccount.
+        internal void ProcessRecord_AddGitHub()
+        {
+            this._logger.name += " -AddGitHub";
+            // Create new graphql operation addGitHubCloudAccount
+            InitMutationAddGitHubCloudAccount();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // assignCloudAccountToCluster.
         internal void ProcessRecord_AssignToCluster()
         {
             this._logger.name += " -AssignToCluster";
             // Create new graphql operation assignCloudAccountToCluster
             InitMutationAssignCloudAccountToCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteGitHubCloudAccount.
+        internal void ProcessRecord_DeleteGitHub()
+        {
+            this._logger.name += " -DeleteGitHub";
+            // Create new graphql operation deleteGitHubCloudAccount
+            InitMutationDeleteGitHubCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -313,6 +460,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateCertificateUsagesForCloudAccount();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // updateGitHubCloudAccount.
+        internal void ProcessRecord_UpdateGitHub()
+        {
+            this._logger.name += " -UpdateGitHub";
+            // Create new graphql operation updateGitHubCloudAccount
+            InitMutationUpdateGitHubCloudAccount();
+        }
+
+
+        // Create new GraphQL Mutation:
+        // addGitHubCloudAccount(input: AddGitHubCloudAccountInput!): Void
+        internal void InitMutationAddGitHubCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddGitHubCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddGitHubCloudAccount",
+                "($input: AddGitHubCloudAccountInput!)",
+                "System.String",
+                Mutation.AddGitHubCloudAccount,
+                Mutation.AddGitHubCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationName = $someString
+	# OPTIONAL
+	archivalGroupId = $someString
+	# OPTIONAL
+	exocomputeCloudAccountId = $someString
+	# OPTIONAL
+	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+	# OPTIONAL
+	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+	# OPTIONAL
+	exocomputeRegion = $someString
+	# OPTIONAL
+	organizationUrl = $someString
+}"
+            );
+        }
 
         // Create new GraphQL Mutation:
         // assignCloudAccountToCluster(input: AssignCloudAccountToClusterInput!): AssignCloudAccountToClusterReply!
@@ -335,6 +526,31 @@ $query.Var.input = @{
 	clusterUuid = $someString
 	# OPTIONAL
 	vendor = $someVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VendorType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteGitHubCloudAccount(input: DeleteGitHubCloudAccountInput!): Void
+        internal void InitMutationDeleteGitHubCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteGitHubCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteGitHubCloudAccount",
+                "($input: DeleteGitHubCloudAccountInput!)",
+                "System.String",
+                Mutation.DeleteGitHubCloudAccount,
+                Mutation.DeleteGitHubCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# OPTIONAL
+	deleteSnapshots = $someBoolean
 }"
             );
         }
@@ -422,6 +638,39 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	cloudType = $someCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudType]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateGitHubCloudAccount(input: UpdateGitHubCloudAccountInput!): Void
+        internal void InitMutationUpdateGitHubCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateGitHubCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateGitHubCloudAccount",
+                "($input: UpdateGitHubCloudAccountInput!)",
+                "System.String",
+                Mutation.UpdateGitHubCloudAccount,
+                Mutation.UpdateGitHubCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# OPTIONAL
+	archivalGroupId = $someString
+	# OPTIONAL
+	exocomputeCloudAccountId = $someString
+	# OPTIONAL
+	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+	# OPTIONAL
+	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+	# OPTIONAL
+	exocomputeRegion = $someString
 }"
             );
         }

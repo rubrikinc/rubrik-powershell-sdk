@@ -17,11 +17,13 @@ Fileset template patch.
   - Script to run after backup of this fileset ends.
 - preBackupScript: System.String
   - Script to run before backup of this fileset starts.
+- templateBlocklistFilesystemTypes: System.String
 - templateBlocklistedFilesystemPaths: System.String
   - Comma-separated list of blocklisted filesystem paths specific to this template.
 - shouldRetryPrescriptIfBackupFails: System.Boolean
   - Specifies whether to retry the pre-backup script if the backup fails.
 - shouldOverrideClusterWideBlocklistedFilesystemPaths: System.Boolean
   - Specifies whether to override the cluster-wide blocklisted filesystem paths.
+- templateAllowlistFilesystemPaths: System.String
 - filesetOptions: TprFilesetOptions
   - Fileset options.

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsSuspended
+        // GraphQL -> isSuspended: Boolean! (scalar)
+        [JsonProperty("isSuspended")]
+        public System.Boolean? IsSuspended { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public ServiceAccountClient Set(
         System.String? Id = null,
+        System.Boolean? IsSuspended = null,
         System.String? Name = null
     ) 
     {
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsSuspended != null ) {
+            this.IsSuspended = IsSuspended;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -71,6 +80,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSuspended
+        // GraphQL -> isSuspended: Boolean! (scalar)
+        if (this.IsSuspended != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSuspended\n" ;
+            } else {
+                s += ind + "isSuspended\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -105,6 +123,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsSuspended
+        // GraphQL -> isSuspended: Boolean! (scalar)
+        if (ec.Includes("isSuspended",true))
+        {
+            if(this.IsSuspended == null) {
+
+                this.IsSuspended = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSuspended != null && ec.Excludes("isSuspended",true))
+        {
+            this.IsSuspended = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -1,6 +1,8 @@
 ### Activity
 An activity that occurred on RSC or a Rubrik cluster.
 
+- id: System.String
+  - The ID of the activity.
 - time: DateTime
   - The time at which this activity occurred.
 - type: ActivityTypeEnum
@@ -15,15 +17,13 @@ An activity that occurred on RSC or a Rubrik cluster.
   - The ID of the object associated with this activity.
 - objectType: ActivityObjectTypeEnum
   - The type of the object associated with this activity.
+- clusterId: System.String
+  - The ID of the Rubrik cluster where this activity occurred.
 - progress: System.String
   - The current progress of this activity.
 - activityInfo: System.String
   - Additional information pertaining to this activity.
 - errorInfo: System.String
   - Information about the Rubrik error associated with this activity.
-- id: System.String
-  - The ID of the activity.
 - activitySeries: ActivitySeries
   - The activity series to which this activity belongs.
-- clusterId: System.String
-  - The ID of the Rubrik cluster where this activity occurred.

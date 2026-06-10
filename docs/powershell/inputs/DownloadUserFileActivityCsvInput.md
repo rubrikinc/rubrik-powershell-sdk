@@ -1,6 +1,8 @@
 ### DownloadUserFileActivityCsvInput
+Input for downloading a CSV of user file activity.
+
 - userId: System.String
-  - The user to fetch activity for.
+  - The user to get activity for.
 - snapshot: ResourceInput
   - The path's corresponding snapshot.
 - nativePath: System.String

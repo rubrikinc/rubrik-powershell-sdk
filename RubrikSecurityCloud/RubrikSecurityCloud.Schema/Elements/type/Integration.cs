@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("config")]
         public IntegrationConfig? Config { get; set; }
 
+        //      C# -> IntegrationSettings? Settings
+        // GraphQL -> settings: IntegrationSettings (type)
+        [JsonProperty("settings")]
+        public IntegrationSettings? Settings { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Id = null,
         System.String? Name = null,
         DateTime? UpdatedAt = null,
-        IntegrationConfig? Config = null
+        IntegrationConfig? Config = null,
+        IntegrationSettings? Settings = null
     ) 
     {
         if ( Enabled != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Config != null ) {
             this.Config = Config;
+        }
+        if ( Settings != null ) {
+            this.Settings = Settings;
         }
         return this;
     }
@@ -172,6 +181,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "config" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntegrationSettings? Settings
+        // GraphQL -> settings: IntegrationSettings (type)
+        if (this.Settings != null) {
+            var fspec = this.Settings.AsFieldSpec(conf.Child("settings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "settings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -302,6 +323,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Config != null && ec.Excludes("config",false))
         {
             this.Config = null;
+        }
+        //      C# -> IntegrationSettings? Settings
+        // GraphQL -> settings: IntegrationSettings (type)
+        if (ec.Includes("settings",false))
+        {
+            if(this.Settings == null) {
+
+                this.Settings = new IntegrationSettings();
+                this.Settings.ApplyExploratoryFieldSpec(ec.NewChild("settings"));
+
+            } else {
+
+                this.Settings.ApplyExploratoryFieldSpec(ec.NewChild("settings"));
+
+            }
+        }
+        else if (this.Settings != null && ec.Excludes("settings",false))
+        {
+            this.Settings = null;
         }
     }
 

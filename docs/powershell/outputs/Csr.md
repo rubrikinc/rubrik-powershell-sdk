@@ -31,3 +31,7 @@ Certificate Signing Request (CSR) information.
   - User ID of the Certificate Signing Request.
 - csrFid: System.String
   - The FID of the Certificate Signing Request.
+- keyType: System.String
+  - The key type used to generate this CSR (e.g., "rsa", "ec").
+- keyStrength: System.String
+  - The key strength used to generate this CSR (e.g., "3072", "secp384r1").

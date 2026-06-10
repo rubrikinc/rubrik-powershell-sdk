@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? OutpostArn
+        // GraphQL -> outpostArn: String! (scalar)
+        [JsonProperty("outpostArn")]
+        public System.String? OutpostArn { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public AwsNativeSubnet Set(
         System.String? AvailabilityZone = null,
         System.String? Id = null,
-        System.String? Name = null
+        System.String? Name = null,
+        System.String? OutpostArn = null
     ) 
     {
         if ( AvailabilityZone != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( OutpostArn != null ) {
+            this.OutpostArn = OutpostArn;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? OutpostArn
+        // GraphQL -> outpostArn: String! (scalar)
+        if (this.OutpostArn != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "outpostArn\n" ;
+            } else {
+                s += ind + "outpostArn\n" ;
             }
         }
         return s;
@@ -157,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? OutpostArn
+        // GraphQL -> outpostArn: String! (scalar)
+        if (ec.Includes("outpostArn",true))
+        {
+            if(this.OutpostArn == null) {
+
+                this.OutpostArn = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OutpostArn != null && ec.Excludes("outpostArn",true))
+        {
+            this.OutpostArn = null;
         }
     }
 

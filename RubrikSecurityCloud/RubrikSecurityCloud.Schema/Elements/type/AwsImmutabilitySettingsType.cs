@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ArchivalLocationImmutabilityMode? ImmutabilityMode
+        // GraphQL -> immutabilityMode: ArchivalLocationImmutabilityMode (enum)
+        [JsonProperty("immutabilityMode")]
+        public ArchivalLocationImmutabilityMode? ImmutabilityMode { get; set; }
+
         //      C# -> System.Boolean? IsObjectLockEnabled
         // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
         [JsonProperty("isObjectLockEnabled")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsImmutabilitySettingsType Set(
+        ArchivalLocationImmutabilityMode? ImmutabilityMode = null,
         System.Boolean? IsObjectLockEnabled = null,
         System.Int32? LockDurationDays = null
     ) 
     {
+        if ( ImmutabilityMode != null ) {
+            this.ImmutabilityMode = ImmutabilityMode;
+        }
         if ( IsObjectLockEnabled != null ) {
             this.IsObjectLockEnabled = IsObjectLockEnabled;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ArchivalLocationImmutabilityMode? ImmutabilityMode
+        // GraphQL -> immutabilityMode: ArchivalLocationImmutabilityMode (enum)
+        if (this.ImmutabilityMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "immutabilityMode\n" ;
+            } else {
+                s += ind + "immutabilityMode\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsObjectLockEnabled
         // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
         if (this.IsObjectLockEnabled != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ArchivalLocationImmutabilityMode? ImmutabilityMode
+        // GraphQL -> immutabilityMode: ArchivalLocationImmutabilityMode (enum)
+        if (ec.Includes("immutabilityMode",true))
+        {
+            if(this.ImmutabilityMode == null) {
+
+                this.ImmutabilityMode = new ArchivalLocationImmutabilityMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ImmutabilityMode != null && ec.Excludes("immutabilityMode",true))
+        {
+            this.ImmutabilityMode = null;
+        }
         //      C# -> System.Boolean? IsObjectLockEnabled
         // GraphQL -> isObjectLockEnabled: Boolean! (scalar)
         if (ec.Includes("isObjectLockEnabled",true))

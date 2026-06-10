@@ -61,7 +61,7 @@ Represents different types of activities.
 - TENANT_OVERLAP - Tenant overlap event type.
 - TENANT_QUOTA - Tenant quota event type.
 - THREAT_FEED - Threat feed event type.
-- THREAT_MONITORING - Threat monitoring event type.
+- THREAT_MONITORING - Threat monitoring event/audit type.
 - TestFailover - Test failover type.
 - ThreatHunt - Threat hunt type.
 - Tpr - TPR type.

@@ -1690,6 +1690,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
     /// 		# OPTIONAL
+    /// 		excludePaths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		recoveryPurpose = $someString
+    /// 		# OPTIONAL
     /// 		description = $someString
     /// 		# OPTIONAL
     /// 		shouldUseMountDisks = $someBoolean
@@ -1703,6 +1709,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -3884,6 +3892,12 @@ $query.Var.input = @{
 		# OPTIONAL
 		guestCredentialId = $someString
 		# OPTIONAL
+		excludePaths = @(
+			$someString
+		)
+		# OPTIONAL
+		recoveryPurpose = $someString
+		# OPTIONAL
 		description = $someString
 		# OPTIONAL
 		shouldUseMountDisks = $someBoolean
@@ -3897,6 +3911,8 @@ $query.Var.input = @{
 			$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 		)
 	}
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }

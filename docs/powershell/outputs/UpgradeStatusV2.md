@@ -1,9 +1,9 @@
 ### UpgradeStatusV2
-Upgrade status for CDM Upgrade Service 2.0.
+Rubrik cluster upgrade Information.
 
-- uiStatus: System.String
-  - UI status.
 - rscClusterUpgradeStatus: RscUpgradeStatusType
   - RSC cluster upgrade status.
+- uiStatus: System.String
+  - UI status.
 - uiStatusAttributes: UiStatusAttributes
   - UI status attributes.

@@ -13,3 +13,7 @@ Disk upgrade request for a cloud cluster.
   - The total count of nodes after migration. This is applicable only when switching the instance type.
 - newInstanceType: System.Int32
   - Instance type enum value for the choosen cloud vendor.
+- isAzMigration: System.Boolean
+  - Specifies whether RSC is migrating the cluster to AZ-resilient mode.
+- subnetAzConfigs: list of SubnetAzConfigInputs
+  - Target subnet and availability zone pairs for AZ-resilient migration.

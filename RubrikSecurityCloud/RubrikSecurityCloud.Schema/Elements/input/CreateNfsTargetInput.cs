@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("encryptionPassword")]
         public System.String? EncryptionPassword { get; set; }
 
+        //      C# -> NfsSubType? SubType
+        // GraphQL -> subType: NfsSubType (enum)
+        [JsonProperty("subType")]
+        public NfsSubType? SubType { get; set; }
+
 
         #endregion
 

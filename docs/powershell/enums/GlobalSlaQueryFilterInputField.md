@@ -17,3 +17,5 @@ Sort Global SLA Domains by filter.
 - SHOW_PAUSED_SLAS_ONLY - Filter SLA Domains that are paused on at least one of the clusters.
 - IS_HA_SLA - Filter SLA Domains based on whether they are HA SLAs. Use 'true' to get only HA SLAs, 'false' to get only non-HA SLAs.
 - HA_POLICY_ID - Filter SLA Domains by HA Policy ID. Returns SLAs associated with any of the specified HA Policy IDs.
+- NAME_EXACT_MATCH - Filter by exact SLA Domain name. For substring match, use NAME.
+- SLA_PURPOSE - Filter SLA Domains by their purpose.

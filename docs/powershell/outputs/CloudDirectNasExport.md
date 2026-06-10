@@ -19,8 +19,6 @@ Cloud Direct NAS export object.
   - NAS System name derived from the export path.
 - shareName: System.String
   - NAS Share name derived from the export path.
-- cluster: Cluster
-  - Cluster from which this workload originated.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -55,7 +53,11 @@ Cloud Direct NAS export object.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- cluster: Cluster
+  - Cluster from which this workload originated.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
+- cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for Cloud Direct objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.

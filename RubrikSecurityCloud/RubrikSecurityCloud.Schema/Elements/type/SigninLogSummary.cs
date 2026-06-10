@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SigninLogFailureCategory? FailureCategory
+        // GraphQL -> failureCategory: SigninLogFailureCategory (enum)
+        [JsonProperty("failureCategory")]
+        public SigninLogFailureCategory? FailureCategory { get; set; }
+
         //      C# -> EventProvider? Provider
         // GraphQL -> provider: EventProvider! (enum)
         [JsonProperty("provider")]
@@ -50,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("applicationName")]
         public System.String? ApplicationName { get; set; }
 
+        //      C# -> System.String? AuthenticationMethod
+        // GraphQL -> authenticationMethod: String! (scalar)
+        [JsonProperty("authenticationMethod")]
+        public System.String? AuthenticationMethod { get; set; }
+
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
         [JsonProperty("city")]
@@ -64,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deviceName: String! (scalar)
         [JsonProperty("deviceName")]
         public System.String? DeviceName { get; set; }
+
+        //      C# -> System.String? ErrorCode
+        // GraphQL -> errorCode: String! (scalar)
+        [JsonProperty("errorCode")]
+        public System.String? ErrorCode { get; set; }
 
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
@@ -85,10 +100,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipAddress")]
         public System.String? IpAddress { get; set; }
 
+        //      C# -> System.String? LogonType
+        // GraphQL -> logonType: String! (scalar)
+        [JsonProperty("logonType")]
+        public System.String? LogonType { get; set; }
+
+        //      C# -> System.String? MfaStatus
+        // GraphQL -> mfaStatus: String! (scalar)
+        [JsonProperty("mfaStatus")]
+        public System.String? MfaStatus { get; set; }
+
+        //      C# -> System.String? ProcessName
+        // GraphQL -> processName: String! (scalar)
+        [JsonProperty("processName")]
+        public System.String? ProcessName { get; set; }
+
+        //      C# -> System.String? ResourceName
+        // GraphQL -> resourceName: String! (scalar)
+        [JsonProperty("resourceName")]
+        public System.String? ResourceName { get; set; }
+
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         [JsonProperty("state")]
         public System.String? State { get; set; }
+
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        [JsonProperty("tenantId")]
+        public System.String? TenantId { get; set; }
+
+        //      C# -> System.String? UserId
+        // GraphQL -> userId: String! (scalar)
+        [JsonProperty("userId")]
+        public System.String? UserId { get; set; }
 
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)
@@ -105,23 +150,35 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SigninLogSummary Set(
+        SigninLogFailureCategory? FailureCategory = null,
         EventProvider? Provider = null,
         SigninLogResult? Result = null,
         SigninLogRiskLevel? RiskLevel = null,
         System.String? ActorDisplayName = null,
         System.String? ActorPrincipalName = null,
         System.String? ApplicationName = null,
+        System.String? AuthenticationMethod = null,
         System.String? City = null,
         System.String? Country = null,
         System.String? DeviceName = null,
+        System.String? ErrorCode = null,
         System.String? EventId = null,
         DateTime? EventTimestamp = null,
         System.String? EventType = null,
         System.String? IpAddress = null,
+        System.String? LogonType = null,
+        System.String? MfaStatus = null,
+        System.String? ProcessName = null,
+        System.String? ResourceName = null,
         System.String? State = null,
+        System.String? TenantId = null,
+        System.String? UserId = null,
         System.String? UserSid = null
     ) 
     {
+        if ( FailureCategory != null ) {
+            this.FailureCategory = FailureCategory;
+        }
         if ( Provider != null ) {
             this.Provider = Provider;
         }
@@ -140,6 +197,9 @@ namespace RubrikSecurityCloud.Types
         if ( ApplicationName != null ) {
             this.ApplicationName = ApplicationName;
         }
+        if ( AuthenticationMethod != null ) {
+            this.AuthenticationMethod = AuthenticationMethod;
+        }
         if ( City != null ) {
             this.City = City;
         }
@@ -148,6 +208,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DeviceName != null ) {
             this.DeviceName = DeviceName;
+        }
+        if ( ErrorCode != null ) {
+            this.ErrorCode = ErrorCode;
         }
         if ( EventId != null ) {
             this.EventId = EventId;
@@ -161,8 +224,26 @@ namespace RubrikSecurityCloud.Types
         if ( IpAddress != null ) {
             this.IpAddress = IpAddress;
         }
+        if ( LogonType != null ) {
+            this.LogonType = LogonType;
+        }
+        if ( MfaStatus != null ) {
+            this.MfaStatus = MfaStatus;
+        }
+        if ( ProcessName != null ) {
+            this.ProcessName = ProcessName;
+        }
+        if ( ResourceName != null ) {
+            this.ResourceName = ResourceName;
+        }
         if ( State != null ) {
             this.State = State;
+        }
+        if ( TenantId != null ) {
+            this.TenantId = TenantId;
+        }
+        if ( UserId != null ) {
+            this.UserId = UserId;
         }
         if ( UserSid != null ) {
             this.UserSid = UserSid;
@@ -181,6 +262,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> SigninLogFailureCategory? FailureCategory
+        // GraphQL -> failureCategory: SigninLogFailureCategory (enum)
+        if (this.FailureCategory != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "failureCategory\n" ;
+            } else {
+                s += ind + "failureCategory\n" ;
+            }
+        }
         //      C# -> EventProvider? Provider
         // GraphQL -> provider: EventProvider! (enum)
         if (this.Provider != null) {
@@ -235,6 +325,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "applicationName\n" ;
             }
         }
+        //      C# -> System.String? AuthenticationMethod
+        // GraphQL -> authenticationMethod: String! (scalar)
+        if (this.AuthenticationMethod != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authenticationMethod\n" ;
+            } else {
+                s += ind + "authenticationMethod\n" ;
+            }
+        }
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
         if (this.City != null) {
@@ -260,6 +359,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "deviceName\n" ;
             } else {
                 s += ind + "deviceName\n" ;
+            }
+        }
+        //      C# -> System.String? ErrorCode
+        // GraphQL -> errorCode: String! (scalar)
+        if (this.ErrorCode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "errorCode\n" ;
+            } else {
+                s += ind + "errorCode\n" ;
             }
         }
         //      C# -> System.String? EventId
@@ -298,6 +406,42 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "ipAddress\n" ;
             }
         }
+        //      C# -> System.String? LogonType
+        // GraphQL -> logonType: String! (scalar)
+        if (this.LogonType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logonType\n" ;
+            } else {
+                s += ind + "logonType\n" ;
+            }
+        }
+        //      C# -> System.String? MfaStatus
+        // GraphQL -> mfaStatus: String! (scalar)
+        if (this.MfaStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mfaStatus\n" ;
+            } else {
+                s += ind + "mfaStatus\n" ;
+            }
+        }
+        //      C# -> System.String? ProcessName
+        // GraphQL -> processName: String! (scalar)
+        if (this.ProcessName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "processName\n" ;
+            } else {
+                s += ind + "processName\n" ;
+            }
+        }
+        //      C# -> System.String? ResourceName
+        // GraphQL -> resourceName: String! (scalar)
+        if (this.ResourceName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceName\n" ;
+            } else {
+                s += ind + "resourceName\n" ;
+            }
+        }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State != null) {
@@ -305,6 +449,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "state\n" ;
             } else {
                 s += ind + "state\n" ;
+            }
+        }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        if (this.TenantId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
+        }
+        //      C# -> System.String? UserId
+        // GraphQL -> userId: String! (scalar)
+        if (this.UserId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "userId\n" ;
+            } else {
+                s += ind + "userId\n" ;
             }
         }
         //      C# -> System.String? UserSid
@@ -323,6 +485,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> SigninLogFailureCategory? FailureCategory
+        // GraphQL -> failureCategory: SigninLogFailureCategory (enum)
+        if (ec.Includes("failureCategory",true))
+        {
+            if(this.FailureCategory == null) {
+
+                this.FailureCategory = new SigninLogFailureCategory();
+
+            } else {
+
+
+            }
+        }
+        else if (this.FailureCategory != null && ec.Excludes("failureCategory",true))
+        {
+            this.FailureCategory = null;
+        }
         //      C# -> EventProvider? Provider
         // GraphQL -> provider: EventProvider! (enum)
         if (ec.Includes("provider",true))
@@ -425,6 +604,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ApplicationName = null;
         }
+        //      C# -> System.String? AuthenticationMethod
+        // GraphQL -> authenticationMethod: String! (scalar)
+        if (ec.Includes("authenticationMethod",true))
+        {
+            if(this.AuthenticationMethod == null) {
+
+                this.AuthenticationMethod = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthenticationMethod != null && ec.Excludes("authenticationMethod",true))
+        {
+            this.AuthenticationMethod = null;
+        }
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
         if (ec.Includes("city",true))
@@ -475,6 +671,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DeviceName != null && ec.Excludes("deviceName",true))
         {
             this.DeviceName = null;
+        }
+        //      C# -> System.String? ErrorCode
+        // GraphQL -> errorCode: String! (scalar)
+        if (ec.Includes("errorCode",true))
+        {
+            if(this.ErrorCode == null) {
+
+                this.ErrorCode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ErrorCode != null && ec.Excludes("errorCode",true))
+        {
+            this.ErrorCode = null;
         }
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
@@ -544,6 +757,74 @@ namespace RubrikSecurityCloud.Types
         {
             this.IpAddress = null;
         }
+        //      C# -> System.String? LogonType
+        // GraphQL -> logonType: String! (scalar)
+        if (ec.Includes("logonType",true))
+        {
+            if(this.LogonType == null) {
+
+                this.LogonType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogonType != null && ec.Excludes("logonType",true))
+        {
+            this.LogonType = null;
+        }
+        //      C# -> System.String? MfaStatus
+        // GraphQL -> mfaStatus: String! (scalar)
+        if (ec.Includes("mfaStatus",true))
+        {
+            if(this.MfaStatus == null) {
+
+                this.MfaStatus = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MfaStatus != null && ec.Excludes("mfaStatus",true))
+        {
+            this.MfaStatus = null;
+        }
+        //      C# -> System.String? ProcessName
+        // GraphQL -> processName: String! (scalar)
+        if (ec.Includes("processName",true))
+        {
+            if(this.ProcessName == null) {
+
+                this.ProcessName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProcessName != null && ec.Excludes("processName",true))
+        {
+            this.ProcessName = null;
+        }
+        //      C# -> System.String? ResourceName
+        // GraphQL -> resourceName: String! (scalar)
+        if (ec.Includes("resourceName",true))
+        {
+            if(this.ResourceName == null) {
+
+                this.ResourceName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceName != null && ec.Excludes("resourceName",true))
+        {
+            this.ResourceName = null;
+        }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (ec.Includes("state",true))
@@ -560,6 +841,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.State != null && ec.Excludes("state",true))
         {
             this.State = null;
+        }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        if (ec.Includes("tenantId",true))
+        {
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
+        }
+        //      C# -> System.String? UserId
+        // GraphQL -> userId: String! (scalar)
+        if (ec.Includes("userId",true))
+        {
+            if(this.UserId == null) {
+
+                this.UserId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UserId != null && ec.Excludes("userId",true))
+        {
+            this.UserId = null;
         }
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)

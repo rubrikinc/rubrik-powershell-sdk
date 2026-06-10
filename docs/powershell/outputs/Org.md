@@ -17,10 +17,18 @@ Details of an org.
   - Specifies whether organization is forced to use Rubrik Envoy to connect their hosts.
 - allowedClusters: list of System.Strings
   - Allowed clusters for the organization.
+- permissions: list of Permissions
+  - Permissions given to the organization.
+- ssoGroups: list of SsoGroups
+  - SSO groups authorized for the organization.
 - tenantNetworkHealth: TenantNetworkHealth
   - Health of the tenant networks associated with the organization.
+- selfServicePermissions: list of SelfServicePermissions
+  - Self-service permissions assigned to the organization.
 - hasOwnIdpConfigured: System.Boolean
   - Specifies whether this tenant organization has configured its own identity providers.
+- crossAccountCapabilities: list of CrossAccountCapabilitys
+  - Specifies cross-account capabilities enabled for this organization.
 - isServiceAccountDisabled: System.Boolean
   - Specifies whether service accounts are not enabled for this organization.
 - isInheritIpAllowlistDisabled: System.Boolean
@@ -31,19 +39,11 @@ Details of an org.
   - Clusters designated as replication-only for the organization.
 - orgAdminRole: Role
   - Organization admin role.
-- users: list of ExistingUsers
-  - Existing users in the organization.
-- permissions: list of Permissions
-  - Permissions given to the organization.
-- selfServicePermissions: list of SelfServicePermissions
-  - Self-service permissions assigned to the organization.
-- ssoGroups: list of SsoGroups
-  - SSO groups authorized for the organization.
 - physicalStorageUsed: System.Int64
   - Physical storage used by the organization.
 - allUrls: list of System.Strings
   - All URLs associated with the organization.
+- users: list of ExistingUsers
+  - Existing users in the organization.
 - allClusterCapacityQuotas: list of ClusterWithCapacityQuotas
   - All cluster capacity quotas enforced on the organization.
-- crossAccountCapabilities: list of CrossAccountCapabilitys
-  - Specifies cross-account capabilities enabled for this organization.

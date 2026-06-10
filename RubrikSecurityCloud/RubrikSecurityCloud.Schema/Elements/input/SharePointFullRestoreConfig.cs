@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newObjectName")]
         public System.String? NewObjectName { get; set; }
 
+        //      C# -> System.Boolean? ShouldRestoreFileVersions
+        // GraphQL -> shouldRestoreFileVersions: Boolean (scalar)
+        [JsonProperty("shouldRestoreFileVersions")]
+        public System.Boolean? ShouldRestoreFileVersions { get; set; }
+
 
         #endregion
 

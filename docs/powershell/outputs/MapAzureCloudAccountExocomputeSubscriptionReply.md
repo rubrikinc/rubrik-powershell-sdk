@@ -1,5 +1,5 @@
 ### MapAzureCloudAccountExocomputeSubscriptionReply
-Response of the operation to map Azure cloud accounts to an Exocompute subscription.
+Response for mapping Azure exocompute subscription.
 
 - isSuccess: System.Boolean
-  - Specifies whether the mapping was completed successfully.
+  - Whether the mapping was successful.

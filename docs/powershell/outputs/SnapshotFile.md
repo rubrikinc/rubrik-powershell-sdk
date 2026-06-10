@@ -6,6 +6,9 @@ File or folder data returned by browse or search delta response.
 - absolutePath: System.String
 - displayPath: System.String
 - lastModified: DateTime
+  - Last modified timestamp. Null when modification time
+is not available for the entry like directories in
+S3/Blob.
 - size: System.Int64
 - fileMode: FileModeEnum
 - statusMessage: System.String

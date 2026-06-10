@@ -1,8 +1,9 @@
 ### MultiTenantHostSpec
-MultiTenant host specification.
+MultiTenant host specification contains the specs, app ID and network config required
+for operations on a multi-tenant host.
 
 - multiTenantHostAzureAppId: System.String
-  - Azure App ID of the multi-tenant host.
+  - Azure App ID of Microsoft Entra ID app used to manage the multi-tenant host.
 - multiTenantHostNetworkConfig: NetworkConfig
   - Network configuration of the multi-tenant host.
 - multiTenantHostId: System.String
@@ -12,4 +13,4 @@ MultiTenant host specification.
 - tunnelMode: System.String
   - Tunnel mode for the multi-tenant host.
 - namespace: System.String
-  - Namespace assigned to the exocluster on the multi-tenant host.
+  - Namespace assigned to the exocluster on the multi-tenant host, where the pods will be deployed.

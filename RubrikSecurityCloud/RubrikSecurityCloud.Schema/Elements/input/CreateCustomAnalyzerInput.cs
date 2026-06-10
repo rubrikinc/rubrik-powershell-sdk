@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerRiskInstance")]
         public AnalyzerRiskInstanceInput? AnalyzerRiskInstance { get; set; }
 
+        //      C# -> RiskLevelType? Risk
+        // GraphQL -> risk: RiskLevelType (enum)
+        [JsonProperty("risk")]
+        public RiskLevelType? Risk { get; set; }
+
         //      C# -> System.Int32? TagId
         // GraphQL -> tagId: Int (scalar)
         [JsonProperty("tagId")]
@@ -118,11 +123,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> excludePathPattern: String (scalar)
         [JsonProperty("excludePathPattern")]
         public System.String? ExcludePathPattern { get; set; }
-
-        //      C# -> RiskLevelType? Risk
-        // GraphQL -> risk: RiskLevelType (enum)
-        [JsonProperty("risk")]
-        public RiskLevelType? Risk { get; set; }
 
 
         #endregion

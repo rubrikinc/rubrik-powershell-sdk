@@ -44,6 +44,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("whitelistEnabled")]
         public System.Boolean? WhitelistEnabled { get; set; }
 
+        //      C# -> FileCountType? FileType
+        // GraphQL -> fileType: FileCountType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("fileType")]
+        public FileCountType? FileType { get; set; }
+
         //      C# -> List<System.String>? Sids
         // GraphQL -> sids: [String!] (scalar)
         [JsonProperty("sids")]
@@ -94,22 +101,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exposureFilter")]
         public List<OpenAccessType>? ExposureFilter { get; set; }
 
-        //      C# -> AccessVia? AccessVia
-        // GraphQL -> accessVia: AccessVia (enum)
-        [JsonProperty("accessVia")]
-        public AccessVia? AccessVia { get; set; }
-
-        //      C# -> FileCountType? FileType
-        // GraphQL -> fileType: FileCountType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("fileType")]
-        public FileCountType? FileType { get; set; }
-
         //      C# -> List<System.String>? DocumentTypesFilter
         // GraphQL -> documentTypesFilter: [UUID!] (scalar)
         [JsonProperty("documentTypesFilter")]
         public List<System.String>? DocumentTypesFilter { get; set; }
+
+        //      C# -> AccessVia? AccessVia
+        // GraphQL -> accessVia: AccessVia (enum)
+        [JsonProperty("accessVia")]
+        public AccessVia? AccessVia { get; set; }
 
 
         #endregion

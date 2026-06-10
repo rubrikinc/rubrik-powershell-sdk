@@ -17,3 +17,5 @@ Validate given aws accounts.
   - Native ID of the AWS Outpost account.
 - orgId: System.String
   - The UUID of the onboarded AWS organization.
+- crossAccountRoleModel: CrossAccountRoleModel
+  - The cross-account role model for this account (SINGLE_ROLE or MULTI_ROLE).

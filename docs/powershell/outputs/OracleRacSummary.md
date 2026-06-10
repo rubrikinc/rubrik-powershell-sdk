@@ -31,3 +31,6 @@ Boolean value that specifies whether the Rubrik cluster should automatically dis
   - Supported in v7.0+
 Boolean value specifying whether the database obtains the log backup configurations from the SLA Domain.
 - slaAssignable: SlaAssignable
+- shouldEnableMultiNodeBackup: System.Boolean
+  - Supported in v9.6
+Boolean value that specifies whether multi-node backup is enabled for this Oracle RAC.

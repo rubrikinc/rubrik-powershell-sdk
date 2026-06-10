@@ -26,12 +26,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isConcurrentSessionLimitationEnabled")]
         public System.Boolean? IsConcurrentSessionLimitationEnabled { get; set; }
 
-        //      C# -> System.Int64? InactivityTimeoutInSeconds
-        // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
+        //      C# -> System.Int32? MaxConcurrentSessions
+        // GraphQL -> maxConcurrentSessions: Int! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("inactivityTimeoutInSeconds")]
-        public System.Int64? InactivityTimeoutInSeconds { get; set; }
+        [JsonProperty("maxConcurrentSessions")]
+        public System.Int32? MaxConcurrentSessions { get; set; }
 
         //      C# -> System.Boolean? IsInactivityTimeoutEnabled
         // GraphQL -> isInactivityTimeoutEnabled: Boolean! (scalar)
@@ -40,12 +40,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isInactivityTimeoutEnabled")]
         public System.Boolean? IsInactivityTimeoutEnabled { get; set; }
 
-        //      C# -> System.Int32? MaxConcurrentSessions
-        // GraphQL -> maxConcurrentSessions: Int! (scalar)
+        //      C# -> System.Int64? InactivityTimeoutInSeconds
+        // GraphQL -> inactivityTimeoutInSeconds: Long! (scalar)
         [Required]
         [JsonRequired]
-        [JsonProperty("maxConcurrentSessions")]
-        public System.Int32? MaxConcurrentSessions { get; set; }
+        [JsonProperty("inactivityTimeoutInSeconds")]
+        public System.Int64? InactivityTimeoutInSeconds { get; set; }
 
         //      C# -> System.Int64? SessionTimeoutInSeconds
         // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)

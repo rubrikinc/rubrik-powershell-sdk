@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         CLUSTER_REQUIRES_UPGRADE,
 
         [EnumMember(Value = "MIGRATION_UNAVAILABILITY_REASON_UNSPECIFIED")]
-        MIGRATION_UNAVAILABILITY_REASON_UNSPECIFIED
+        MIGRATION_UNAVAILABILITY_REASON_UNSPECIFIED,
+
+        [EnumMember(Value = "NOT_SUPPORTED")]
+        NOT_SUPPORTED
 
 
     } // enum MigrationUnavailabilityReason

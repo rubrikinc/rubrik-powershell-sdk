@@ -54,6 +54,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotCustomizations")]
         public List<SnapshotCustomization>? SnapshotCustomizations { get; set; }
 
+        //      C# -> CloudVendor? CloudVendor
+        // GraphQL -> cloudVendor: CloudVendor (enum)
+        [JsonProperty("cloudVendor")]
+        public CloudVendor? CloudVendor { get; set; }
+
+        //      C# -> List<System.String>? CloudRegions
+        // GraphQL -> cloudRegions: [String!] (scalar)
+        [JsonProperty("cloudRegions")]
+        public List<System.String>? CloudRegions { get; set; }
+
 
         #endregion
 

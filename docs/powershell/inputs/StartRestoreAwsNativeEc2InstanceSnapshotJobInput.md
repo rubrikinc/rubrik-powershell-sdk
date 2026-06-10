@@ -11,3 +11,7 @@ Trigger AWS EC2 instance snapshot restore job.
   - Snapshot type to use if source snapshot is expired.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot to be restored. This field should be specified only when `snapshotTypeToUseIfSourceExpired` is set to `Archived`. In such cases, the archived snapshot will be used for restore. If `snapshotTypeToUseIfSourceExpired` is not `Archived`, this field is ignored.
+- retrievalTier: AwsRetrievalTier
+  - AWS Glacier retrieval tier to use when hydrating archived objects for this restore. Only meaningful when restoring from a Glacier-tier archival location.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the restored instance (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

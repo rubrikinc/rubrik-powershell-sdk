@@ -29,3 +29,7 @@ Input to initiate an export job for the AWS native EBS volume.
   - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
 - shouldResurrectSnapshot: System.Boolean
   - Specifies whether to resurrect an archived snapshot.
+- retrievalTier: AwsRetrievalTier
+  - AWS Glacier retrieval tier to use when hydrating archived objects for this export. Only meaningful when exporting from a Glacier-tier archival location.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported volume (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

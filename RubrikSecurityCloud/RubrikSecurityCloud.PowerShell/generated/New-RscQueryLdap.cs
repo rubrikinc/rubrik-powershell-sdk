@@ -97,16 +97,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.last = $someInt
     /// # OPTIONAL
     /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someLdapAuthorizedPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapAuthorizedPrincipalFieldEnum]) for enum values.
     /// # REQUIRED
     /// $query.Var.searchText = $someString
     /// # OPTIONAL
     /// $query.Var.roleIds = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someLdapAuthorizedPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapAuthorizedPrincipalFieldEnum]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -179,14 +179,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.last = $someInt
     /// # OPTIONAL
     /// $query.Var.before = $someString
-    /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// # OPTIONAL
-    /// $query.Var.sortBy = $someLdapPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapPrincipalFieldEnum]) for enum values.
     /// # REQUIRED
     /// $query.Var.id = $someString
     /// # REQUIRED
     /// $query.Var.searchText = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someLdapPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapPrincipalFieldEnum]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -287,10 +287,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         //     after: String
         //     last: Int
         //     before: String
-        //     sortOrder: SortOrder
-        //     sortBy: LdapAuthorizedPrincipalFieldEnum
         //     searchText: String!
         //     roleIds: [UUID!]
+        //     sortOrder: SortOrder
+        //     sortBy: LdapAuthorizedPrincipalFieldEnum
         //   ): AuthorizedPrincipalConnection!
         internal void InitQueryLdapAuthorizedPrincipalConnection()
         {
@@ -299,16 +299,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("sortBy", "LdapAuthorizedPrincipalFieldEnum"),
                 Tuple.Create("searchText", "String!"),
                 Tuple.Create("roleIds", "[UUID!]"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "LdapAuthorizedPrincipalFieldEnum"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryLdapAuthorizedPrincipalConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum,$searchText: String!,$roleIds: [UUID!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$searchText: String!,$roleIds: [UUID!],$sortOrder: SortOrder,$sortBy: LdapAuthorizedPrincipalFieldEnum)",
                 "AuthorizedPrincipalConnection",
                 Query.LdapAuthorizedPrincipalConnection,
                 Query.LdapAuthorizedPrincipalConnectionFieldSpec,
@@ -320,16 +320,16 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.sortBy = $someLdapAuthorizedPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapAuthorizedPrincipalFieldEnum]) for enum values.
 # REQUIRED
 $query.Var.searchText = $someString
 # OPTIONAL
 $query.Var.roleIds = @(
 	$someString
-)"
+)
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someLdapAuthorizedPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapAuthorizedPrincipalFieldEnum]) for enum values."
             );
         }
 
@@ -381,10 +381,10 @@ $query.Var.sortBy = $someLdapIntegrationFieldEnum # Call [Enum]::GetValues([Rubr
         //     after: String
         //     last: Int
         //     before: String
-        //     sortOrder: SortOrder
-        //     sortBy: LdapPrincipalFieldEnum
         //     id: UUID!
         //     searchText: String!
+        //     sortOrder: SortOrder
+        //     sortBy: LdapPrincipalFieldEnum
         //   ): PrincipalConnection!
         internal void InitQueryLdapPrincipalConnection()
         {
@@ -393,16 +393,16 @@ $query.Var.sortBy = $someLdapIntegrationFieldEnum # Call [Enum]::GetValues([Rubr
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
-                Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("sortBy", "LdapPrincipalFieldEnum"),
                 Tuple.Create("id", "UUID!"),
                 Tuple.Create("searchText", "String!"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "LdapPrincipalFieldEnum"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryLdapPrincipalConnection",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum,$id: UUID!,$searchText: String!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$id: UUID!,$searchText: String!,$sortOrder: SortOrder,$sortBy: LdapPrincipalFieldEnum)",
                 "PrincipalConnection",
                 Query.LdapPrincipalConnection,
                 Query.LdapPrincipalConnectionFieldSpec,
@@ -414,14 +414,14 @@ $query.Var.after = $someString
 $query.Var.last = $someInt
 # OPTIONAL
 $query.Var.before = $someString
-# OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-# OPTIONAL
-$query.Var.sortBy = $someLdapPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapPrincipalFieldEnum]) for enum values.
 # REQUIRED
 $query.Var.id = $someString
 # REQUIRED
-$query.Var.searchText = $someString"
+$query.Var.searchText = $someString
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.sortBy = $someLdapPrincipalFieldEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LdapPrincipalFieldEnum]) for enum values."
             );
         }
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 16
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Policy' API domain:
-    /// AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
+    /// AddPolicyObjects, BulkUpdatePolicyViolations, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
     /// </summary>
     /// <description>
     /// New-RscMutationPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 16 operations
+    /// There are 17 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddPolicyObjects, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
+    /// one of: AddPolicyObjects, BulkUpdatePolicyViolations, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -119,6 +119,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the BulkUpdatePolicyViolations operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: BulkUpdatePolicyViolations
+    /// 
+    /// $query = New-RscMutationPolicy -Operation BulkUpdatePolicyViolations
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policyViolationIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# REQUIRED
+    /// 	newPolicyViolationStatus = $somePolicyViolationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationStatus]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CreatePolicy operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -148,6 +183,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
+    /// 	documentTypeIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	updateName = $someBoolean
     /// 	# OPTIONAL
     /// 	updateDescription = $someBoolean
@@ -155,10 +194,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	updateMode = $someBoolean
     /// 	# OPTIONAL
     /// 	updateAnalyzerIds = $someBoolean
-    /// 	# OPTIONAL
-    /// 	documentTypeIds = @(
-    /// 		$someString
-    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -494,10 +529,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# REQUIRED
     /// 		lowercasePolicy = @{
@@ -505,10 +540,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# REQUIRED
     /// 		uppercasePolicy = @{
@@ -516,10 +551,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# REQUIRED
     /// 		specialCharsPolicy = @{
@@ -527,10 +562,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# REQUIRED
     /// 		numericPolicy = @{
@@ -538,10 +573,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# REQUIRED
     /// 		passwordReusePolicy = @{
@@ -549,10 +584,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# REQUIRED
     /// 		passwordExpirationPolicy = @{
@@ -560,10 +595,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 		# OPTIONAL
     /// 		leakedDetectionPolicy = @{
@@ -571,12 +606,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			minValue = $someInt
     /// 			# OPTIONAL
     /// 			maxValue = $someInt
-    /// 			# OPTIONAL
-    /// 			defaultValue = $someInt
     /// 			# REQUIRED
     /// 			isActive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			defaultValue = $someInt
     /// 		}
     /// 	}
+    /// 	# OPTIONAL
+    /// 	shouldResetAllOrgUsersPasswords = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -830,6 +867,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AddPolicyObjects",
+                "BulkUpdatePolicyViolations",
                 "CreatePolicy",
                 "CreateTprPolicy",
                 "DeactivatePolicy",
@@ -862,6 +900,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     case "AddPolicyObjects":
                         this.ProcessRecord_AddPolicyObjects();
+                        break;
+                    case "BulkUpdatePolicyViolations":
+                        this.ProcessRecord_BulkUpdatePolicyViolations();
                         break;
                     case "CreatePolicy":
                         this.ProcessRecord_CreatePolicy();
@@ -925,6 +966,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddPolicyObjects";
             // Create new graphql operation addPolicyObjects
             InitMutationAddPolicyObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // bulkUpdatePolicyViolations.
+        internal void ProcessRecord_BulkUpdatePolicyViolations()
+        {
+            this._logger.name += " -BulkUpdatePolicyViolations";
+            // Create new graphql operation bulkUpdatePolicyViolations
+            InitMutationBulkUpdatePolicyViolations();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1106,6 +1156,33 @@ $query.Var.clusterIds = @(
         }
 
         // Create new GraphQL Mutation:
+        // bulkUpdatePolicyViolations(input: BulkUpdatePolicyViolationsInput!): Void
+        internal void InitMutationBulkUpdatePolicyViolations()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdatePolicyViolationsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdatePolicyViolations",
+                "($input: BulkUpdatePolicyViolationsInput!)",
+                "System.String",
+                Mutation.BulkUpdatePolicyViolations,
+                Mutation.BulkUpdatePolicyViolationsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policyViolationIds = @(
+		$someString
+	)
+	# REQUIRED
+	newPolicyViolationStatus = $somePolicyViolationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationStatus]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createPolicy(input: CreatePolicyInput!): ClassificationPolicyDetail!
         internal void InitMutationCreatePolicy()
         {
@@ -1137,6 +1214,10 @@ $query.Var.input = @{
 		$someString
 	)
 	# OPTIONAL
+	documentTypeIds = @(
+		$someString
+	)
+	# OPTIONAL
 	updateName = $someBoolean
 	# OPTIONAL
 	updateDescription = $someBoolean
@@ -1144,10 +1225,6 @@ $query.Var.input = @{
 	updateMode = $someBoolean
 	# OPTIONAL
 	updateAnalyzerIds = $someBoolean
-	# OPTIONAL
-	documentTypeIds = @(
-		$someString
-	)
 }"
             );
         }
@@ -1421,10 +1498,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# REQUIRED
 		lowercasePolicy = @{
@@ -1432,10 +1509,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# REQUIRED
 		uppercasePolicy = @{
@@ -1443,10 +1520,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# REQUIRED
 		specialCharsPolicy = @{
@@ -1454,10 +1531,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# REQUIRED
 		numericPolicy = @{
@@ -1465,10 +1542,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# REQUIRED
 		passwordReusePolicy = @{
@@ -1476,10 +1553,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# REQUIRED
 		passwordExpirationPolicy = @{
@@ -1487,10 +1564,10 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 		# OPTIONAL
 		leakedDetectionPolicy = @{
@@ -1498,12 +1575,14 @@ $query.Var.input = @{
 			minValue = $someInt
 			# OPTIONAL
 			maxValue = $someInt
-			# OPTIONAL
-			defaultValue = $someInt
 			# REQUIRED
 			isActive = $someBoolean
+			# OPTIONAL
+			defaultValue = $someInt
 		}
 	}
+	# OPTIONAL
+	shouldResetAllOrgUsersPasswords = $someBoolean
 }"
             );
         }

@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isGlobalCatalog")]
         public System.Boolean? IsGlobalCatalog { get; set; }
 
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        [JsonProperty("isReadOnly")]
+        public System.Boolean? IsReadOnly { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -441,6 +446,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Hostname = null,
         System.String? Id = null,
         System.Boolean? IsGlobalCatalog = null,
+        System.Boolean? IsReadOnly = null,
         System.Boolean? IsRelic = null,
         System.String? MacAddress = null,
         List<System.String>? MacAddresses = null,
@@ -538,6 +544,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsGlobalCatalog != null ) {
             this.IsGlobalCatalog = IsGlobalCatalog;
+        }
+        if ( IsReadOnly != null ) {
+            this.IsReadOnly = IsReadOnly;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -859,6 +868,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isGlobalCatalog\n" ;
             } else {
                 s += ind + "isGlobalCatalog\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        if (this.IsReadOnly != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReadOnly\n" ;
+            } else {
+                s += ind + "isReadOnly\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1664,6 +1682,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsGlobalCatalog != null && ec.Excludes("isGlobalCatalog",true))
         {
             this.IsGlobalCatalog = null;
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean (scalar)
+        if (ec.Includes("isReadOnly",true))
+        {
+            if(this.IsReadOnly == null) {
+
+                this.IsReadOnly = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReadOnly != null && ec.Excludes("isReadOnly",true))
+        {
+            this.IsReadOnly = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rootIds")]
         public List<System.String>? RootIds { get; set; }
 
+        //      C# -> System.Boolean? ShouldScanAllFiles
+        // GraphQL -> shouldScanAllFiles: Boolean (scalar)
+        [JsonProperty("shouldScanAllFiles")]
+        public System.Boolean? ShouldScanAllFiles { get; set; }
+
 
         #endregion
 

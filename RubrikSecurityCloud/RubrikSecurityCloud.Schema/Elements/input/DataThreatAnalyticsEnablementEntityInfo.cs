@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? EntityName
-        // GraphQL -> entityName: String (scalar)
-        [JsonProperty("entityName")]
-        public System.String? EntityName { get; set; }
-
         //      C# -> DataThreatAnalyticsEnablementEntity? EntityType
         // GraphQL -> entityType: DataThreatAnalyticsEnablementEntity! (enum)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("entityId")]
         public System.String? EntityId { get; set; }
+
+        //      C# -> System.String? EntityName
+        // GraphQL -> entityName: String (scalar)
+        [JsonProperty("entityName")]
+        public System.String? EntityName { get; set; }
 
 
         #endregion

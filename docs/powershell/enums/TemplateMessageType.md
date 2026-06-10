@@ -4,3 +4,4 @@ The type of message template.
 - TEMPLATE_MESSAGE_TYPE_UNSPECIFIED - Unused default value.
 - EVENT - Event message template type.
 - AUDIT - Audit message template type.
+- IDENTITY_ACTIVITY - Identity activity message template type.

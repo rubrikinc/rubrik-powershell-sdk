@@ -183,6 +183,7 @@ All supported Rubrik managed objects.
 - OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
 - OKTA_TENANT - Okta tenant.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- GOOGLE_WORKSPACE_GROUP - Google Workspace Group.
 - PROXMOX_ENVIRONMENT - Proxmox environment.
 - PROXMOX_CLUSTER - Proxmox cluster.
 - PROXMOX_NODE - Proxmox node.
@@ -198,6 +199,19 @@ All supported Rubrik managed objects.
 - FUSION_COMPUTE_NETWORK - FusionCompute network.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
 - OPENSTACK_IMAGE - Openstack Image.
+- GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure Postgres Flexible Server.
+- PURE_STORAGE_ARRAY - Pure Storage array.
+- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
+- PURE_STORAGE_VOLUME - Pure Storage volume.
+- AUTH0_TENANT - Auth0 tenant.
+- GCP_BIGQUERY_DATASET - GCP BigQuery Dataset.
+- GLUE_ICEBERG_CATALOG - Glue Iceberg catalog.
+- GLUE_ICEBERG_DATABASE - Glue Iceberg database.
+- GLUE_ICEBERG_TABLE - Glue Iceberg table.
+- RSC_TAG - RSC tag. Logical container used to group inventory objects for
+organization and policy assignment (e.g., SLA Domain inheritance via tag).
+- PING_FEDERATE_CLUSTER - Ping Federate cluster.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

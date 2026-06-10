@@ -1,5 +1,19 @@
 # New-RscQueryArchival
 ## Subcommands
+### archivalperobjectinfo
+Get archival information for all objects across every archival location the caller can view. Each row is one (object, archival location) pair; an object protected to multiple locations emits one row per location. The five per-location fields (archivalLocationId, archivalLocationName, storageTier, locationType, isRcv) are populated only by this field; archivalPerObjectInfo leaves them empty.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - sortBy - ArchivalPerObjectInfoSortByField: Specifies the field by which the list of archival object info will be sorted.
+    - filter - list of ArchivalPerObjectInfoFilterInputs: Specifies how to filter the list of archival object info.
+    - activeOnly - System.Boolean: When true (default), excludes soft-deleted (archived) managed objects from the all-locations result. Pass false to include them.
+    - useCase - ArchivalEntityUseCaseType: Selects which data plane's archival locations to return. CLOUD_NATIVE returns CNP locations; DATA_CENTER returns CDM locations; NAS_CD returns NCD locations. USE_CASE_TYPE_UNSPECIFIED and BACKUP are rejected.
+- Returns ArchivalObjectInfoConnection.
 ### entities
 Lists all the user-created archival entities. This includes data center archival targets and cloud-native archival target mappings.
 
@@ -38,6 +52,12 @@ Checks whether enabling Time-based, One-Time Password (TOTP) is mandatory in the
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### locationforecasts
+Returns forecasted archival storage for the requested locations.
+Data is aggregated per location across all protected objects.
+
+- There is a single argument of type list of System.Strings.
+- Returns list of ArchivalLocationForecasts.
 ### locationsforfailovergroup
 Retrieve archival locations eligible for adding to a failover
 group.

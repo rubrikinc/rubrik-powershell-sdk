@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdAccessReviewScheduleDefinition? AzureAdAccessReviewScheduleDefinition
+        // GraphQL -> azureAdAccessReviewScheduleDefinition: AzureAdAccessReviewScheduleDefinition (type)
+        [JsonProperty("azureAdAccessReviewScheduleDefinition")]
+        public AzureAdAccessReviewScheduleDefinition? AzureAdAccessReviewScheduleDefinition { get; set; }
+
         //      C# -> AzureAdAdministrativeUnit? AzureAdAdministrativeUnit
         // GraphQL -> azureAdAdministrativeUnit: AzureAdAdministrativeUnit (type)
         [JsonProperty("azureAdAdministrativeUnit")]
@@ -60,10 +65,60 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdDevice")]
         public AzureAdDevice? AzureAdDevice { get; set; }
 
+        //      C# -> AzureAdEmAccessPackage? AzureAdEmAccessPackage
+        // GraphQL -> azureAdEmAccessPackage: AzureAdEmAccessPackage (type)
+        [JsonProperty("azureAdEmAccessPackage")]
+        public AzureAdEmAccessPackage? AzureAdEmAccessPackage { get; set; }
+
+        //      C# -> AzureAdEmAssignment? AzureAdEmAssignment
+        // GraphQL -> azureAdEmAssignment: AzureAdEmAssignment (type)
+        [JsonProperty("azureAdEmAssignment")]
+        public AzureAdEmAssignment? AzureAdEmAssignment { get; set; }
+
+        //      C# -> AzureAdEmAssignmentPolicy? AzureAdEmAssignmentPolicy
+        // GraphQL -> azureAdEmAssignmentPolicy: AzureAdEmAssignmentPolicy (type)
+        [JsonProperty("azureAdEmAssignmentPolicy")]
+        public AzureAdEmAssignmentPolicy? AzureAdEmAssignmentPolicy { get; set; }
+
+        //      C# -> AzureAdEmCatalog? AzureAdEmCatalog
+        // GraphQL -> azureAdEmCatalog: AzureAdEmCatalog (type)
+        [JsonProperty("azureAdEmCatalog")]
+        public AzureAdEmCatalog? AzureAdEmCatalog { get; set; }
+
+        //      C# -> AzureAdEmCatalogResource? AzureAdEmCatalogResource
+        // GraphQL -> azureAdEmCatalogResource: AzureAdEmCatalogResource (type)
+        [JsonProperty("azureAdEmCatalogResource")]
+        public AzureAdEmCatalogResource? AzureAdEmCatalogResource { get; set; }
+
+        //      C# -> AzureAdEmCatalogRoleAssignment? AzureAdEmCatalogRoleAssignment
+        // GraphQL -> azureAdEmCatalogRoleAssignment: AzureAdEmCatalogRoleAssignment (type)
+        [JsonProperty("azureAdEmCatalogRoleAssignment")]
+        public AzureAdEmCatalogRoleAssignment? AzureAdEmCatalogRoleAssignment { get; set; }
+
+        //      C# -> AzureAdEmIncompatibilities? AzureAdEmIncompatibilities
+        // GraphQL -> azureAdEmIncompatibilities: AzureAdEmIncompatibilities (type)
+        [JsonProperty("azureAdEmIncompatibilities")]
+        public AzureAdEmIncompatibilities? AzureAdEmIncompatibilities { get; set; }
+
+        //      C# -> AzureAdEmResourceRoleScope? AzureAdEmResourceRoleScope
+        // GraphQL -> azureAdEmResourceRoleScope: AzureAdEmResourceRoleScope (type)
+        [JsonProperty("azureAdEmResourceRoleScope")]
+        public AzureAdEmResourceRoleScope? AzureAdEmResourceRoleScope { get; set; }
+
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         [JsonProperty("azureAdGroup")]
         public AzureAdGroup? AzureAdGroup { get; set; }
+
+        //      C# -> AzureAdGroupActiveAssignment? AzureAdGroupActiveAssignment
+        // GraphQL -> azureAdGroupActiveAssignment: AzureAdGroupActiveAssignment (type)
+        [JsonProperty("azureAdGroupActiveAssignment")]
+        public AzureAdGroupActiveAssignment? AzureAdGroupActiveAssignment { get; set; }
+
+        //      C# -> AzureAdGroupEligibleAssignment? AzureAdGroupEligibleAssignment
+        // GraphQL -> azureAdGroupEligibleAssignment: AzureAdGroupEligibleAssignment (type)
+        [JsonProperty("azureAdGroupEligibleAssignment")]
+        public AzureAdGroupEligibleAssignment? AzureAdGroupEligibleAssignment { get; set; }
 
         //      C# -> AzureAdLocalAdminPassword? AzureAdLocalAdminPassword
         // GraphQL -> azureAdLocalAdminPassword: AzureAdLocalAdminPassword (type)
@@ -85,6 +140,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdRoleAssignment")]
         public AzureAdRoleAssignment? AzureAdRoleAssignment { get; set; }
 
+        //      C# -> AzureAdRoleEligibleAssignment? AzureAdRoleEligibleAssignment
+        // GraphQL -> azureAdRoleEligibleAssignment: AzureAdRoleEligibleAssignment (type)
+        [JsonProperty("azureAdRoleEligibleAssignment")]
+        public AzureAdRoleEligibleAssignment? AzureAdRoleEligibleAssignment { get; set; }
+
         //      C# -> AzureAdServicePrincipal? AzureAdServicePrincipal
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)
         [JsonProperty("azureAdServicePrincipal")]
@@ -100,10 +160,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdUser")]
         public AzureAdUser? AzureAdUser { get; set; }
 
+        //      C# -> IntuneAppProtectionPolicy? IntuneAppProtectionPolicy
+        // GraphQL -> intuneAppProtectionPolicy: IntuneAppProtectionPolicy (type)
+        [JsonProperty("intuneAppProtectionPolicy")]
+        public IntuneAppProtectionPolicy? IntuneAppProtectionPolicy { get; set; }
+
         //      C# -> IntuneAssignmentFilter? IntuneAssignmentFilter
         // GraphQL -> intuneAssignmentFilter: IntuneAssignmentFilter (type)
         [JsonProperty("intuneAssignmentFilter")]
         public IntuneAssignmentFilter? IntuneAssignmentFilter { get; set; }
+
+        //      C# -> IntuneAutopilotDeploymentProfile? IntuneAutopilotDeploymentProfile
+        // GraphQL -> intuneAutopilotDeploymentProfile: IntuneAutopilotDeploymentProfile (type)
+        [JsonProperty("intuneAutopilotDeploymentProfile")]
+        public IntuneAutopilotDeploymentProfile? IntuneAutopilotDeploymentProfile { get; set; }
 
         //      C# -> IntuneCompliancePolicy? IntuneCompliancePolicy
         // GraphQL -> intuneCompliancePolicy: IntuneCompliancePolicy (type)
@@ -125,10 +195,45 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("intuneComplianceScript")]
         public IntuneComplianceScript? IntuneComplianceScript { get; set; }
 
+        //      C# -> IntuneDeviceManagementPolicy? IntuneDeviceManagementPolicy
+        // GraphQL -> intuneDeviceManagementPolicy: IntuneDeviceManagementPolicy (type)
+        [JsonProperty("intuneDeviceManagementPolicy")]
+        public IntuneDeviceManagementPolicy? IntuneDeviceManagementPolicy { get; set; }
+
+        //      C# -> IntuneEndpointSecurityReusableSetting? IntuneEndpointSecurityReusableSetting
+        // GraphQL -> intuneEndpointSecurityReusableSetting: IntuneEndpointSecurityReusableSetting (type)
+        [JsonProperty("intuneEndpointSecurityReusableSetting")]
+        public IntuneEndpointSecurityReusableSetting? IntuneEndpointSecurityReusableSetting { get; set; }
+
         //      C# -> IntuneNotificationTemplate? IntuneNotificationTemplate
         // GraphQL -> intuneNotificationTemplate: IntuneNotificationTemplate (type)
         [JsonProperty("intuneNotificationTemplate")]
         public IntuneNotificationTemplate? IntuneNotificationTemplate { get; set; }
+
+        //      C# -> IntunePolicyAssignment? IntunePolicyAssignment
+        // GraphQL -> intunePolicyAssignment: IntunePolicyAssignment (type)
+        [JsonProperty("intunePolicyAssignment")]
+        public IntunePolicyAssignment? IntunePolicyAssignment { get; set; }
+
+        //      C# -> IntuneRoleAssignment? IntuneRoleAssignment
+        // GraphQL -> intuneRoleAssignment: IntuneRoleAssignment (type)
+        [JsonProperty("intuneRoleAssignment")]
+        public IntuneRoleAssignment? IntuneRoleAssignment { get; set; }
+
+        //      C# -> IntuneRoleDefinition? IntuneRoleDefinition
+        // GraphQL -> intuneRoleDefinition: IntuneRoleDefinition (type)
+        [JsonProperty("intuneRoleDefinition")]
+        public IntuneRoleDefinition? IntuneRoleDefinition { get; set; }
+
+        //      C# -> IntuneScopeTag? IntuneScopeTag
+        // GraphQL -> intuneScopeTag: IntuneScopeTag (type)
+        [JsonProperty("intuneScopeTag")]
+        public IntuneScopeTag? IntuneScopeTag { get; set; }
+
+        //      C# -> IntuneScopeTagAssignment? IntuneScopeTagAssignment
+        // GraphQL -> intuneScopeTagAssignment: IntuneScopeTagAssignment (type)
+        [JsonProperty("intuneScopeTagAssignment")]
+        public IntuneScopeTagAssignment? IntuneScopeTagAssignment { get; set; }
 
 
         #endregion
@@ -140,6 +245,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdObjects Set(
+        AzureAdAccessReviewScheduleDefinition? AzureAdAccessReviewScheduleDefinition = null,
         AzureAdAdministrativeUnit? AzureAdAdministrativeUnit = null,
         AzureAdAppRoleAssignment? AzureAdAppRoleAssignment = null,
         AzureAdApplication? AzureAdApplication = null,
@@ -148,22 +254,45 @@ namespace RubrikSecurityCloud.Types
         AzureAdBitLockerKey? AzureAdBitLockerKey = null,
         AzureAdConditionalAccessPolicy? AzureAdConditionalAccessPolicy = null,
         AzureAdDevice? AzureAdDevice = null,
+        AzureAdEmAccessPackage? AzureAdEmAccessPackage = null,
+        AzureAdEmAssignment? AzureAdEmAssignment = null,
+        AzureAdEmAssignmentPolicy? AzureAdEmAssignmentPolicy = null,
+        AzureAdEmCatalog? AzureAdEmCatalog = null,
+        AzureAdEmCatalogResource? AzureAdEmCatalogResource = null,
+        AzureAdEmCatalogRoleAssignment? AzureAdEmCatalogRoleAssignment = null,
+        AzureAdEmIncompatibilities? AzureAdEmIncompatibilities = null,
+        AzureAdEmResourceRoleScope? AzureAdEmResourceRoleScope = null,
         AzureAdGroup? AzureAdGroup = null,
+        AzureAdGroupActiveAssignment? AzureAdGroupActiveAssignment = null,
+        AzureAdGroupEligibleAssignment? AzureAdGroupEligibleAssignment = null,
         AzureAdLocalAdminPassword? AzureAdLocalAdminPassword = null,
         AzureAdNamedLocation? AzureAdNamedLocation = null,
         AzureAdRole? AzureAdRole = null,
         AzureAdRoleAssignment? AzureAdRoleAssignment = null,
+        AzureAdRoleEligibleAssignment? AzureAdRoleEligibleAssignment = null,
         AzureAdServicePrincipal? AzureAdServicePrincipal = null,
         AzureAdTermsOfUse? AzureAdTermsOfUse = null,
         AzureAdUser? AzureAdUser = null,
+        IntuneAppProtectionPolicy? IntuneAppProtectionPolicy = null,
         IntuneAssignmentFilter? IntuneAssignmentFilter = null,
+        IntuneAutopilotDeploymentProfile? IntuneAutopilotDeploymentProfile = null,
         IntuneCompliancePolicy? IntuneCompliancePolicy = null,
         IntuneCompliancePolicyAction? IntuneCompliancePolicyAction = null,
         IntuneCompliancePolicyAssignment? IntuneCompliancePolicyAssignment = null,
         IntuneComplianceScript? IntuneComplianceScript = null,
-        IntuneNotificationTemplate? IntuneNotificationTemplate = null
+        IntuneDeviceManagementPolicy? IntuneDeviceManagementPolicy = null,
+        IntuneEndpointSecurityReusableSetting? IntuneEndpointSecurityReusableSetting = null,
+        IntuneNotificationTemplate? IntuneNotificationTemplate = null,
+        IntunePolicyAssignment? IntunePolicyAssignment = null,
+        IntuneRoleAssignment? IntuneRoleAssignment = null,
+        IntuneRoleDefinition? IntuneRoleDefinition = null,
+        IntuneScopeTag? IntuneScopeTag = null,
+        IntuneScopeTagAssignment? IntuneScopeTagAssignment = null
     ) 
     {
+        if ( AzureAdAccessReviewScheduleDefinition != null ) {
+            this.AzureAdAccessReviewScheduleDefinition = AzureAdAccessReviewScheduleDefinition;
+        }
         if ( AzureAdAdministrativeUnit != null ) {
             this.AzureAdAdministrativeUnit = AzureAdAdministrativeUnit;
         }
@@ -188,8 +317,38 @@ namespace RubrikSecurityCloud.Types
         if ( AzureAdDevice != null ) {
             this.AzureAdDevice = AzureAdDevice;
         }
+        if ( AzureAdEmAccessPackage != null ) {
+            this.AzureAdEmAccessPackage = AzureAdEmAccessPackage;
+        }
+        if ( AzureAdEmAssignment != null ) {
+            this.AzureAdEmAssignment = AzureAdEmAssignment;
+        }
+        if ( AzureAdEmAssignmentPolicy != null ) {
+            this.AzureAdEmAssignmentPolicy = AzureAdEmAssignmentPolicy;
+        }
+        if ( AzureAdEmCatalog != null ) {
+            this.AzureAdEmCatalog = AzureAdEmCatalog;
+        }
+        if ( AzureAdEmCatalogResource != null ) {
+            this.AzureAdEmCatalogResource = AzureAdEmCatalogResource;
+        }
+        if ( AzureAdEmCatalogRoleAssignment != null ) {
+            this.AzureAdEmCatalogRoleAssignment = AzureAdEmCatalogRoleAssignment;
+        }
+        if ( AzureAdEmIncompatibilities != null ) {
+            this.AzureAdEmIncompatibilities = AzureAdEmIncompatibilities;
+        }
+        if ( AzureAdEmResourceRoleScope != null ) {
+            this.AzureAdEmResourceRoleScope = AzureAdEmResourceRoleScope;
+        }
         if ( AzureAdGroup != null ) {
             this.AzureAdGroup = AzureAdGroup;
+        }
+        if ( AzureAdGroupActiveAssignment != null ) {
+            this.AzureAdGroupActiveAssignment = AzureAdGroupActiveAssignment;
+        }
+        if ( AzureAdGroupEligibleAssignment != null ) {
+            this.AzureAdGroupEligibleAssignment = AzureAdGroupEligibleAssignment;
         }
         if ( AzureAdLocalAdminPassword != null ) {
             this.AzureAdLocalAdminPassword = AzureAdLocalAdminPassword;
@@ -203,6 +362,9 @@ namespace RubrikSecurityCloud.Types
         if ( AzureAdRoleAssignment != null ) {
             this.AzureAdRoleAssignment = AzureAdRoleAssignment;
         }
+        if ( AzureAdRoleEligibleAssignment != null ) {
+            this.AzureAdRoleEligibleAssignment = AzureAdRoleEligibleAssignment;
+        }
         if ( AzureAdServicePrincipal != null ) {
             this.AzureAdServicePrincipal = AzureAdServicePrincipal;
         }
@@ -212,8 +374,14 @@ namespace RubrikSecurityCloud.Types
         if ( AzureAdUser != null ) {
             this.AzureAdUser = AzureAdUser;
         }
+        if ( IntuneAppProtectionPolicy != null ) {
+            this.IntuneAppProtectionPolicy = IntuneAppProtectionPolicy;
+        }
         if ( IntuneAssignmentFilter != null ) {
             this.IntuneAssignmentFilter = IntuneAssignmentFilter;
+        }
+        if ( IntuneAutopilotDeploymentProfile != null ) {
+            this.IntuneAutopilotDeploymentProfile = IntuneAutopilotDeploymentProfile;
         }
         if ( IntuneCompliancePolicy != null ) {
             this.IntuneCompliancePolicy = IntuneCompliancePolicy;
@@ -227,8 +395,29 @@ namespace RubrikSecurityCloud.Types
         if ( IntuneComplianceScript != null ) {
             this.IntuneComplianceScript = IntuneComplianceScript;
         }
+        if ( IntuneDeviceManagementPolicy != null ) {
+            this.IntuneDeviceManagementPolicy = IntuneDeviceManagementPolicy;
+        }
+        if ( IntuneEndpointSecurityReusableSetting != null ) {
+            this.IntuneEndpointSecurityReusableSetting = IntuneEndpointSecurityReusableSetting;
+        }
         if ( IntuneNotificationTemplate != null ) {
             this.IntuneNotificationTemplate = IntuneNotificationTemplate;
+        }
+        if ( IntunePolicyAssignment != null ) {
+            this.IntunePolicyAssignment = IntunePolicyAssignment;
+        }
+        if ( IntuneRoleAssignment != null ) {
+            this.IntuneRoleAssignment = IntuneRoleAssignment;
+        }
+        if ( IntuneRoleDefinition != null ) {
+            this.IntuneRoleDefinition = IntuneRoleDefinition;
+        }
+        if ( IntuneScopeTag != null ) {
+            this.IntuneScopeTag = IntuneScopeTag;
+        }
+        if ( IntuneScopeTagAssignment != null ) {
+            this.IntuneScopeTagAssignment = IntuneScopeTagAssignment;
         }
         return this;
     }
@@ -244,6 +433,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdAccessReviewScheduleDefinition? AzureAdAccessReviewScheduleDefinition
+        // GraphQL -> azureAdAccessReviewScheduleDefinition: AzureAdAccessReviewScheduleDefinition (type)
+        if (this.AzureAdAccessReviewScheduleDefinition != null) {
+            var fspec = this.AzureAdAccessReviewScheduleDefinition.AsFieldSpec(conf.Child("azureAdAccessReviewScheduleDefinition"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdAccessReviewScheduleDefinition" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdAdministrativeUnit? AzureAdAdministrativeUnit
         // GraphQL -> azureAdAdministrativeUnit: AzureAdAdministrativeUnit (type)
         if (this.AzureAdAdministrativeUnit != null) {
@@ -340,6 +541,102 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdEmAccessPackage? AzureAdEmAccessPackage
+        // GraphQL -> azureAdEmAccessPackage: AzureAdEmAccessPackage (type)
+        if (this.AzureAdEmAccessPackage != null) {
+            var fspec = this.AzureAdEmAccessPackage.AsFieldSpec(conf.Child("azureAdEmAccessPackage"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmAccessPackage" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmAssignment? AzureAdEmAssignment
+        // GraphQL -> azureAdEmAssignment: AzureAdEmAssignment (type)
+        if (this.AzureAdEmAssignment != null) {
+            var fspec = this.AzureAdEmAssignment.AsFieldSpec(conf.Child("azureAdEmAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmAssignmentPolicy? AzureAdEmAssignmentPolicy
+        // GraphQL -> azureAdEmAssignmentPolicy: AzureAdEmAssignmentPolicy (type)
+        if (this.AzureAdEmAssignmentPolicy != null) {
+            var fspec = this.AzureAdEmAssignmentPolicy.AsFieldSpec(conf.Child("azureAdEmAssignmentPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmAssignmentPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmCatalog? AzureAdEmCatalog
+        // GraphQL -> azureAdEmCatalog: AzureAdEmCatalog (type)
+        if (this.AzureAdEmCatalog != null) {
+            var fspec = this.AzureAdEmCatalog.AsFieldSpec(conf.Child("azureAdEmCatalog"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmCatalog" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmCatalogResource? AzureAdEmCatalogResource
+        // GraphQL -> azureAdEmCatalogResource: AzureAdEmCatalogResource (type)
+        if (this.AzureAdEmCatalogResource != null) {
+            var fspec = this.AzureAdEmCatalogResource.AsFieldSpec(conf.Child("azureAdEmCatalogResource"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmCatalogResource" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmCatalogRoleAssignment? AzureAdEmCatalogRoleAssignment
+        // GraphQL -> azureAdEmCatalogRoleAssignment: AzureAdEmCatalogRoleAssignment (type)
+        if (this.AzureAdEmCatalogRoleAssignment != null) {
+            var fspec = this.AzureAdEmCatalogRoleAssignment.AsFieldSpec(conf.Child("azureAdEmCatalogRoleAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmCatalogRoleAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmIncompatibilities? AzureAdEmIncompatibilities
+        // GraphQL -> azureAdEmIncompatibilities: AzureAdEmIncompatibilities (type)
+        if (this.AzureAdEmIncompatibilities != null) {
+            var fspec = this.AzureAdEmIncompatibilities.AsFieldSpec(conf.Child("azureAdEmIncompatibilities"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmIncompatibilities" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdEmResourceRoleScope? AzureAdEmResourceRoleScope
+        // GraphQL -> azureAdEmResourceRoleScope: AzureAdEmResourceRoleScope (type)
+        if (this.AzureAdEmResourceRoleScope != null) {
+            var fspec = this.AzureAdEmResourceRoleScope.AsFieldSpec(conf.Child("azureAdEmResourceRoleScope"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdEmResourceRoleScope" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (this.AzureAdGroup != null) {
@@ -349,6 +646,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdGroup" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdGroupActiveAssignment? AzureAdGroupActiveAssignment
+        // GraphQL -> azureAdGroupActiveAssignment: AzureAdGroupActiveAssignment (type)
+        if (this.AzureAdGroupActiveAssignment != null) {
+            var fspec = this.AzureAdGroupActiveAssignment.AsFieldSpec(conf.Child("azureAdGroupActiveAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdGroupActiveAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureAdGroupEligibleAssignment? AzureAdGroupEligibleAssignment
+        // GraphQL -> azureAdGroupEligibleAssignment: AzureAdGroupEligibleAssignment (type)
+        if (this.AzureAdGroupEligibleAssignment != null) {
+            var fspec = this.AzureAdGroupEligibleAssignment.AsFieldSpec(conf.Child("azureAdGroupEligibleAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdGroupEligibleAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -400,6 +721,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureAdRoleEligibleAssignment? AzureAdRoleEligibleAssignment
+        // GraphQL -> azureAdRoleEligibleAssignment: AzureAdRoleEligibleAssignment (type)
+        if (this.AzureAdRoleEligibleAssignment != null) {
+            var fspec = this.AzureAdRoleEligibleAssignment.AsFieldSpec(conf.Child("azureAdRoleEligibleAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "azureAdRoleEligibleAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> AzureAdServicePrincipal? AzureAdServicePrincipal
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)
         if (this.AzureAdServicePrincipal != null) {
@@ -436,6 +769,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> IntuneAppProtectionPolicy? IntuneAppProtectionPolicy
+        // GraphQL -> intuneAppProtectionPolicy: IntuneAppProtectionPolicy (type)
+        if (this.IntuneAppProtectionPolicy != null) {
+            var fspec = this.IntuneAppProtectionPolicy.AsFieldSpec(conf.Child("intuneAppProtectionPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneAppProtectionPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> IntuneAssignmentFilter? IntuneAssignmentFilter
         // GraphQL -> intuneAssignmentFilter: IntuneAssignmentFilter (type)
         if (this.IntuneAssignmentFilter != null) {
@@ -445,6 +790,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "intuneAssignmentFilter" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneAutopilotDeploymentProfile? IntuneAutopilotDeploymentProfile
+        // GraphQL -> intuneAutopilotDeploymentProfile: IntuneAutopilotDeploymentProfile (type)
+        if (this.IntuneAutopilotDeploymentProfile != null) {
+            var fspec = this.IntuneAutopilotDeploymentProfile.AsFieldSpec(conf.Child("intuneAutopilotDeploymentProfile"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneAutopilotDeploymentProfile" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -496,6 +853,30 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> IntuneDeviceManagementPolicy? IntuneDeviceManagementPolicy
+        // GraphQL -> intuneDeviceManagementPolicy: IntuneDeviceManagementPolicy (type)
+        if (this.IntuneDeviceManagementPolicy != null) {
+            var fspec = this.IntuneDeviceManagementPolicy.AsFieldSpec(conf.Child("intuneDeviceManagementPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneDeviceManagementPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneEndpointSecurityReusableSetting? IntuneEndpointSecurityReusableSetting
+        // GraphQL -> intuneEndpointSecurityReusableSetting: IntuneEndpointSecurityReusableSetting (type)
+        if (this.IntuneEndpointSecurityReusableSetting != null) {
+            var fspec = this.IntuneEndpointSecurityReusableSetting.AsFieldSpec(conf.Child("intuneEndpointSecurityReusableSetting"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneEndpointSecurityReusableSetting" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> IntuneNotificationTemplate? IntuneNotificationTemplate
         // GraphQL -> intuneNotificationTemplate: IntuneNotificationTemplate (type)
         if (this.IntuneNotificationTemplate != null) {
@@ -508,6 +889,66 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> IntunePolicyAssignment? IntunePolicyAssignment
+        // GraphQL -> intunePolicyAssignment: IntunePolicyAssignment (type)
+        if (this.IntunePolicyAssignment != null) {
+            var fspec = this.IntunePolicyAssignment.AsFieldSpec(conf.Child("intunePolicyAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intunePolicyAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneRoleAssignment? IntuneRoleAssignment
+        // GraphQL -> intuneRoleAssignment: IntuneRoleAssignment (type)
+        if (this.IntuneRoleAssignment != null) {
+            var fspec = this.IntuneRoleAssignment.AsFieldSpec(conf.Child("intuneRoleAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneRoleAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneRoleDefinition? IntuneRoleDefinition
+        // GraphQL -> intuneRoleDefinition: IntuneRoleDefinition (type)
+        if (this.IntuneRoleDefinition != null) {
+            var fspec = this.IntuneRoleDefinition.AsFieldSpec(conf.Child("intuneRoleDefinition"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneRoleDefinition" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneScopeTag? IntuneScopeTag
+        // GraphQL -> intuneScopeTag: IntuneScopeTag (type)
+        if (this.IntuneScopeTag != null) {
+            var fspec = this.IntuneScopeTag.AsFieldSpec(conf.Child("intuneScopeTag"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneScopeTag" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IntuneScopeTagAssignment? IntuneScopeTagAssignment
+        // GraphQL -> intuneScopeTagAssignment: IntuneScopeTagAssignment (type)
+        if (this.IntuneScopeTagAssignment != null) {
+            var fspec = this.IntuneScopeTagAssignment.AsFieldSpec(conf.Child("intuneScopeTagAssignment"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "intuneScopeTagAssignment" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -515,6 +956,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureAdAccessReviewScheduleDefinition? AzureAdAccessReviewScheduleDefinition
+        // GraphQL -> azureAdAccessReviewScheduleDefinition: AzureAdAccessReviewScheduleDefinition (type)
+        if (ec.Includes("azureAdAccessReviewScheduleDefinition",false))
+        {
+            if(this.AzureAdAccessReviewScheduleDefinition == null) {
+
+                this.AzureAdAccessReviewScheduleDefinition = new AzureAdAccessReviewScheduleDefinition();
+                this.AzureAdAccessReviewScheduleDefinition.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAccessReviewScheduleDefinition"));
+
+            } else {
+
+                this.AzureAdAccessReviewScheduleDefinition.ApplyExploratoryFieldSpec(ec.NewChild("azureAdAccessReviewScheduleDefinition"));
+
+            }
+        }
+        else if (this.AzureAdAccessReviewScheduleDefinition != null && ec.Excludes("azureAdAccessReviewScheduleDefinition",false))
+        {
+            this.AzureAdAccessReviewScheduleDefinition = null;
+        }
         //      C# -> AzureAdAdministrativeUnit? AzureAdAdministrativeUnit
         // GraphQL -> azureAdAdministrativeUnit: AzureAdAdministrativeUnit (type)
         if (ec.Includes("azureAdAdministrativeUnit",false))
@@ -667,6 +1127,158 @@ namespace RubrikSecurityCloud.Types
         {
             this.AzureAdDevice = null;
         }
+        //      C# -> AzureAdEmAccessPackage? AzureAdEmAccessPackage
+        // GraphQL -> azureAdEmAccessPackage: AzureAdEmAccessPackage (type)
+        if (ec.Includes("azureAdEmAccessPackage",false))
+        {
+            if(this.AzureAdEmAccessPackage == null) {
+
+                this.AzureAdEmAccessPackage = new AzureAdEmAccessPackage();
+                this.AzureAdEmAccessPackage.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmAccessPackage"));
+
+            } else {
+
+                this.AzureAdEmAccessPackage.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmAccessPackage"));
+
+            }
+        }
+        else if (this.AzureAdEmAccessPackage != null && ec.Excludes("azureAdEmAccessPackage",false))
+        {
+            this.AzureAdEmAccessPackage = null;
+        }
+        //      C# -> AzureAdEmAssignment? AzureAdEmAssignment
+        // GraphQL -> azureAdEmAssignment: AzureAdEmAssignment (type)
+        if (ec.Includes("azureAdEmAssignment",false))
+        {
+            if(this.AzureAdEmAssignment == null) {
+
+                this.AzureAdEmAssignment = new AzureAdEmAssignment();
+                this.AzureAdEmAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmAssignment"));
+
+            } else {
+
+                this.AzureAdEmAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmAssignment"));
+
+            }
+        }
+        else if (this.AzureAdEmAssignment != null && ec.Excludes("azureAdEmAssignment",false))
+        {
+            this.AzureAdEmAssignment = null;
+        }
+        //      C# -> AzureAdEmAssignmentPolicy? AzureAdEmAssignmentPolicy
+        // GraphQL -> azureAdEmAssignmentPolicy: AzureAdEmAssignmentPolicy (type)
+        if (ec.Includes("azureAdEmAssignmentPolicy",false))
+        {
+            if(this.AzureAdEmAssignmentPolicy == null) {
+
+                this.AzureAdEmAssignmentPolicy = new AzureAdEmAssignmentPolicy();
+                this.AzureAdEmAssignmentPolicy.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmAssignmentPolicy"));
+
+            } else {
+
+                this.AzureAdEmAssignmentPolicy.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmAssignmentPolicy"));
+
+            }
+        }
+        else if (this.AzureAdEmAssignmentPolicy != null && ec.Excludes("azureAdEmAssignmentPolicy",false))
+        {
+            this.AzureAdEmAssignmentPolicy = null;
+        }
+        //      C# -> AzureAdEmCatalog? AzureAdEmCatalog
+        // GraphQL -> azureAdEmCatalog: AzureAdEmCatalog (type)
+        if (ec.Includes("azureAdEmCatalog",false))
+        {
+            if(this.AzureAdEmCatalog == null) {
+
+                this.AzureAdEmCatalog = new AzureAdEmCatalog();
+                this.AzureAdEmCatalog.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmCatalog"));
+
+            } else {
+
+                this.AzureAdEmCatalog.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmCatalog"));
+
+            }
+        }
+        else if (this.AzureAdEmCatalog != null && ec.Excludes("azureAdEmCatalog",false))
+        {
+            this.AzureAdEmCatalog = null;
+        }
+        //      C# -> AzureAdEmCatalogResource? AzureAdEmCatalogResource
+        // GraphQL -> azureAdEmCatalogResource: AzureAdEmCatalogResource (type)
+        if (ec.Includes("azureAdEmCatalogResource",false))
+        {
+            if(this.AzureAdEmCatalogResource == null) {
+
+                this.AzureAdEmCatalogResource = new AzureAdEmCatalogResource();
+                this.AzureAdEmCatalogResource.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmCatalogResource"));
+
+            } else {
+
+                this.AzureAdEmCatalogResource.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmCatalogResource"));
+
+            }
+        }
+        else if (this.AzureAdEmCatalogResource != null && ec.Excludes("azureAdEmCatalogResource",false))
+        {
+            this.AzureAdEmCatalogResource = null;
+        }
+        //      C# -> AzureAdEmCatalogRoleAssignment? AzureAdEmCatalogRoleAssignment
+        // GraphQL -> azureAdEmCatalogRoleAssignment: AzureAdEmCatalogRoleAssignment (type)
+        if (ec.Includes("azureAdEmCatalogRoleAssignment",false))
+        {
+            if(this.AzureAdEmCatalogRoleAssignment == null) {
+
+                this.AzureAdEmCatalogRoleAssignment = new AzureAdEmCatalogRoleAssignment();
+                this.AzureAdEmCatalogRoleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmCatalogRoleAssignment"));
+
+            } else {
+
+                this.AzureAdEmCatalogRoleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmCatalogRoleAssignment"));
+
+            }
+        }
+        else if (this.AzureAdEmCatalogRoleAssignment != null && ec.Excludes("azureAdEmCatalogRoleAssignment",false))
+        {
+            this.AzureAdEmCatalogRoleAssignment = null;
+        }
+        //      C# -> AzureAdEmIncompatibilities? AzureAdEmIncompatibilities
+        // GraphQL -> azureAdEmIncompatibilities: AzureAdEmIncompatibilities (type)
+        if (ec.Includes("azureAdEmIncompatibilities",false))
+        {
+            if(this.AzureAdEmIncompatibilities == null) {
+
+                this.AzureAdEmIncompatibilities = new AzureAdEmIncompatibilities();
+                this.AzureAdEmIncompatibilities.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmIncompatibilities"));
+
+            } else {
+
+                this.AzureAdEmIncompatibilities.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmIncompatibilities"));
+
+            }
+        }
+        else if (this.AzureAdEmIncompatibilities != null && ec.Excludes("azureAdEmIncompatibilities",false))
+        {
+            this.AzureAdEmIncompatibilities = null;
+        }
+        //      C# -> AzureAdEmResourceRoleScope? AzureAdEmResourceRoleScope
+        // GraphQL -> azureAdEmResourceRoleScope: AzureAdEmResourceRoleScope (type)
+        if (ec.Includes("azureAdEmResourceRoleScope",false))
+        {
+            if(this.AzureAdEmResourceRoleScope == null) {
+
+                this.AzureAdEmResourceRoleScope = new AzureAdEmResourceRoleScope();
+                this.AzureAdEmResourceRoleScope.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmResourceRoleScope"));
+
+            } else {
+
+                this.AzureAdEmResourceRoleScope.ApplyExploratoryFieldSpec(ec.NewChild("azureAdEmResourceRoleScope"));
+
+            }
+        }
+        else if (this.AzureAdEmResourceRoleScope != null && ec.Excludes("azureAdEmResourceRoleScope",false))
+        {
+            this.AzureAdEmResourceRoleScope = null;
+        }
         //      C# -> AzureAdGroup? AzureAdGroup
         // GraphQL -> azureAdGroup: AzureAdGroup (type)
         if (ec.Includes("azureAdGroup",false))
@@ -685,6 +1297,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdGroup != null && ec.Excludes("azureAdGroup",false))
         {
             this.AzureAdGroup = null;
+        }
+        //      C# -> AzureAdGroupActiveAssignment? AzureAdGroupActiveAssignment
+        // GraphQL -> azureAdGroupActiveAssignment: AzureAdGroupActiveAssignment (type)
+        if (ec.Includes("azureAdGroupActiveAssignment",false))
+        {
+            if(this.AzureAdGroupActiveAssignment == null) {
+
+                this.AzureAdGroupActiveAssignment = new AzureAdGroupActiveAssignment();
+                this.AzureAdGroupActiveAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroupActiveAssignment"));
+
+            } else {
+
+                this.AzureAdGroupActiveAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroupActiveAssignment"));
+
+            }
+        }
+        else if (this.AzureAdGroupActiveAssignment != null && ec.Excludes("azureAdGroupActiveAssignment",false))
+        {
+            this.AzureAdGroupActiveAssignment = null;
+        }
+        //      C# -> AzureAdGroupEligibleAssignment? AzureAdGroupEligibleAssignment
+        // GraphQL -> azureAdGroupEligibleAssignment: AzureAdGroupEligibleAssignment (type)
+        if (ec.Includes("azureAdGroupEligibleAssignment",false))
+        {
+            if(this.AzureAdGroupEligibleAssignment == null) {
+
+                this.AzureAdGroupEligibleAssignment = new AzureAdGroupEligibleAssignment();
+                this.AzureAdGroupEligibleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroupEligibleAssignment"));
+
+            } else {
+
+                this.AzureAdGroupEligibleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdGroupEligibleAssignment"));
+
+            }
+        }
+        else if (this.AzureAdGroupEligibleAssignment != null && ec.Excludes("azureAdGroupEligibleAssignment",false))
+        {
+            this.AzureAdGroupEligibleAssignment = null;
         }
         //      C# -> AzureAdLocalAdminPassword? AzureAdLocalAdminPassword
         // GraphQL -> azureAdLocalAdminPassword: AzureAdLocalAdminPassword (type)
@@ -762,6 +1412,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AzureAdRoleAssignment = null;
         }
+        //      C# -> AzureAdRoleEligibleAssignment? AzureAdRoleEligibleAssignment
+        // GraphQL -> azureAdRoleEligibleAssignment: AzureAdRoleEligibleAssignment (type)
+        if (ec.Includes("azureAdRoleEligibleAssignment",false))
+        {
+            if(this.AzureAdRoleEligibleAssignment == null) {
+
+                this.AzureAdRoleEligibleAssignment = new AzureAdRoleEligibleAssignment();
+                this.AzureAdRoleEligibleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdRoleEligibleAssignment"));
+
+            } else {
+
+                this.AzureAdRoleEligibleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("azureAdRoleEligibleAssignment"));
+
+            }
+        }
+        else if (this.AzureAdRoleEligibleAssignment != null && ec.Excludes("azureAdRoleEligibleAssignment",false))
+        {
+            this.AzureAdRoleEligibleAssignment = null;
+        }
         //      C# -> AzureAdServicePrincipal? AzureAdServicePrincipal
         // GraphQL -> azureAdServicePrincipal: AzureAdServicePrincipal (type)
         if (ec.Includes("azureAdServicePrincipal",false))
@@ -819,6 +1488,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AzureAdUser = null;
         }
+        //      C# -> IntuneAppProtectionPolicy? IntuneAppProtectionPolicy
+        // GraphQL -> intuneAppProtectionPolicy: IntuneAppProtectionPolicy (type)
+        if (ec.Includes("intuneAppProtectionPolicy",false))
+        {
+            if(this.IntuneAppProtectionPolicy == null) {
+
+                this.IntuneAppProtectionPolicy = new IntuneAppProtectionPolicy();
+                this.IntuneAppProtectionPolicy.ApplyExploratoryFieldSpec(ec.NewChild("intuneAppProtectionPolicy"));
+
+            } else {
+
+                this.IntuneAppProtectionPolicy.ApplyExploratoryFieldSpec(ec.NewChild("intuneAppProtectionPolicy"));
+
+            }
+        }
+        else if (this.IntuneAppProtectionPolicy != null && ec.Excludes("intuneAppProtectionPolicy",false))
+        {
+            this.IntuneAppProtectionPolicy = null;
+        }
         //      C# -> IntuneAssignmentFilter? IntuneAssignmentFilter
         // GraphQL -> intuneAssignmentFilter: IntuneAssignmentFilter (type)
         if (ec.Includes("intuneAssignmentFilter",false))
@@ -837,6 +1525,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IntuneAssignmentFilter != null && ec.Excludes("intuneAssignmentFilter",false))
         {
             this.IntuneAssignmentFilter = null;
+        }
+        //      C# -> IntuneAutopilotDeploymentProfile? IntuneAutopilotDeploymentProfile
+        // GraphQL -> intuneAutopilotDeploymentProfile: IntuneAutopilotDeploymentProfile (type)
+        if (ec.Includes("intuneAutopilotDeploymentProfile",false))
+        {
+            if(this.IntuneAutopilotDeploymentProfile == null) {
+
+                this.IntuneAutopilotDeploymentProfile = new IntuneAutopilotDeploymentProfile();
+                this.IntuneAutopilotDeploymentProfile.ApplyExploratoryFieldSpec(ec.NewChild("intuneAutopilotDeploymentProfile"));
+
+            } else {
+
+                this.IntuneAutopilotDeploymentProfile.ApplyExploratoryFieldSpec(ec.NewChild("intuneAutopilotDeploymentProfile"));
+
+            }
+        }
+        else if (this.IntuneAutopilotDeploymentProfile != null && ec.Excludes("intuneAutopilotDeploymentProfile",false))
+        {
+            this.IntuneAutopilotDeploymentProfile = null;
         }
         //      C# -> IntuneCompliancePolicy? IntuneCompliancePolicy
         // GraphQL -> intuneCompliancePolicy: IntuneCompliancePolicy (type)
@@ -914,6 +1621,44 @@ namespace RubrikSecurityCloud.Types
         {
             this.IntuneComplianceScript = null;
         }
+        //      C# -> IntuneDeviceManagementPolicy? IntuneDeviceManagementPolicy
+        // GraphQL -> intuneDeviceManagementPolicy: IntuneDeviceManagementPolicy (type)
+        if (ec.Includes("intuneDeviceManagementPolicy",false))
+        {
+            if(this.IntuneDeviceManagementPolicy == null) {
+
+                this.IntuneDeviceManagementPolicy = new IntuneDeviceManagementPolicy();
+                this.IntuneDeviceManagementPolicy.ApplyExploratoryFieldSpec(ec.NewChild("intuneDeviceManagementPolicy"));
+
+            } else {
+
+                this.IntuneDeviceManagementPolicy.ApplyExploratoryFieldSpec(ec.NewChild("intuneDeviceManagementPolicy"));
+
+            }
+        }
+        else if (this.IntuneDeviceManagementPolicy != null && ec.Excludes("intuneDeviceManagementPolicy",false))
+        {
+            this.IntuneDeviceManagementPolicy = null;
+        }
+        //      C# -> IntuneEndpointSecurityReusableSetting? IntuneEndpointSecurityReusableSetting
+        // GraphQL -> intuneEndpointSecurityReusableSetting: IntuneEndpointSecurityReusableSetting (type)
+        if (ec.Includes("intuneEndpointSecurityReusableSetting",false))
+        {
+            if(this.IntuneEndpointSecurityReusableSetting == null) {
+
+                this.IntuneEndpointSecurityReusableSetting = new IntuneEndpointSecurityReusableSetting();
+                this.IntuneEndpointSecurityReusableSetting.ApplyExploratoryFieldSpec(ec.NewChild("intuneEndpointSecurityReusableSetting"));
+
+            } else {
+
+                this.IntuneEndpointSecurityReusableSetting.ApplyExploratoryFieldSpec(ec.NewChild("intuneEndpointSecurityReusableSetting"));
+
+            }
+        }
+        else if (this.IntuneEndpointSecurityReusableSetting != null && ec.Excludes("intuneEndpointSecurityReusableSetting",false))
+        {
+            this.IntuneEndpointSecurityReusableSetting = null;
+        }
         //      C# -> IntuneNotificationTemplate? IntuneNotificationTemplate
         // GraphQL -> intuneNotificationTemplate: IntuneNotificationTemplate (type)
         if (ec.Includes("intuneNotificationTemplate",false))
@@ -932,6 +1677,101 @@ namespace RubrikSecurityCloud.Types
         else if (this.IntuneNotificationTemplate != null && ec.Excludes("intuneNotificationTemplate",false))
         {
             this.IntuneNotificationTemplate = null;
+        }
+        //      C# -> IntunePolicyAssignment? IntunePolicyAssignment
+        // GraphQL -> intunePolicyAssignment: IntunePolicyAssignment (type)
+        if (ec.Includes("intunePolicyAssignment",false))
+        {
+            if(this.IntunePolicyAssignment == null) {
+
+                this.IntunePolicyAssignment = new IntunePolicyAssignment();
+                this.IntunePolicyAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intunePolicyAssignment"));
+
+            } else {
+
+                this.IntunePolicyAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intunePolicyAssignment"));
+
+            }
+        }
+        else if (this.IntunePolicyAssignment != null && ec.Excludes("intunePolicyAssignment",false))
+        {
+            this.IntunePolicyAssignment = null;
+        }
+        //      C# -> IntuneRoleAssignment? IntuneRoleAssignment
+        // GraphQL -> intuneRoleAssignment: IntuneRoleAssignment (type)
+        if (ec.Includes("intuneRoleAssignment",false))
+        {
+            if(this.IntuneRoleAssignment == null) {
+
+                this.IntuneRoleAssignment = new IntuneRoleAssignment();
+                this.IntuneRoleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intuneRoleAssignment"));
+
+            } else {
+
+                this.IntuneRoleAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intuneRoleAssignment"));
+
+            }
+        }
+        else if (this.IntuneRoleAssignment != null && ec.Excludes("intuneRoleAssignment",false))
+        {
+            this.IntuneRoleAssignment = null;
+        }
+        //      C# -> IntuneRoleDefinition? IntuneRoleDefinition
+        // GraphQL -> intuneRoleDefinition: IntuneRoleDefinition (type)
+        if (ec.Includes("intuneRoleDefinition",false))
+        {
+            if(this.IntuneRoleDefinition == null) {
+
+                this.IntuneRoleDefinition = new IntuneRoleDefinition();
+                this.IntuneRoleDefinition.ApplyExploratoryFieldSpec(ec.NewChild("intuneRoleDefinition"));
+
+            } else {
+
+                this.IntuneRoleDefinition.ApplyExploratoryFieldSpec(ec.NewChild("intuneRoleDefinition"));
+
+            }
+        }
+        else if (this.IntuneRoleDefinition != null && ec.Excludes("intuneRoleDefinition",false))
+        {
+            this.IntuneRoleDefinition = null;
+        }
+        //      C# -> IntuneScopeTag? IntuneScopeTag
+        // GraphQL -> intuneScopeTag: IntuneScopeTag (type)
+        if (ec.Includes("intuneScopeTag",false))
+        {
+            if(this.IntuneScopeTag == null) {
+
+                this.IntuneScopeTag = new IntuneScopeTag();
+                this.IntuneScopeTag.ApplyExploratoryFieldSpec(ec.NewChild("intuneScopeTag"));
+
+            } else {
+
+                this.IntuneScopeTag.ApplyExploratoryFieldSpec(ec.NewChild("intuneScopeTag"));
+
+            }
+        }
+        else if (this.IntuneScopeTag != null && ec.Excludes("intuneScopeTag",false))
+        {
+            this.IntuneScopeTag = null;
+        }
+        //      C# -> IntuneScopeTagAssignment? IntuneScopeTagAssignment
+        // GraphQL -> intuneScopeTagAssignment: IntuneScopeTagAssignment (type)
+        if (ec.Includes("intuneScopeTagAssignment",false))
+        {
+            if(this.IntuneScopeTagAssignment == null) {
+
+                this.IntuneScopeTagAssignment = new IntuneScopeTagAssignment();
+                this.IntuneScopeTagAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intuneScopeTagAssignment"));
+
+            } else {
+
+                this.IntuneScopeTagAssignment.ApplyExploratoryFieldSpec(ec.NewChild("intuneScopeTagAssignment"));
+
+            }
+        }
+        else if (this.IntuneScopeTagAssignment != null && ec.Excludes("intuneScopeTagAssignment",false))
+        {
+            this.IntuneScopeTagAssignment = null;
         }
     }
 

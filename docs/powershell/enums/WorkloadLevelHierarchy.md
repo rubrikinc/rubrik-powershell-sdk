@@ -2,6 +2,7 @@
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - KuprNamespace
 - O365Teams
+- GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
 - O365Onedrive
 - AWS_NATIVE_S3_BUCKET - AWS native S3 Bucket.
 - AwsNativeRdsInstance
@@ -11,11 +12,13 @@
 - AllSubHierarchyType
 - AzureSqlManagedInstanceDb
 - O365SharePointDrive
+- GCP_BIGQUERY_DATASET - GCP BigQuery Dataset.
 - AwsNativeEc2Instance
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - O365Mailbox
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - GcpNativeGCEInstance
+- AZURE_POSTGRES_FLEXIBLE_SERVER
 - AZURE_AD_DIRECTORY - Azure AD Directory.
 - AwsNativeEbsVolume
 - AzureSqlDatabaseDb

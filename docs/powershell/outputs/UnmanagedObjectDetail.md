@@ -55,3 +55,5 @@ UnmanagedObjectDetails.
   - Total size in bytes of downloaded snapshots for this unmanaged object.
 - downloadedSnapshotsCount: System.Int64
   - Total number of downloaded snapshots for this unmanaged object.
+- localSnapshotsCount: System.Int64
+  - Total number of snapshots whose location is the local cluster for this unmanaged object.

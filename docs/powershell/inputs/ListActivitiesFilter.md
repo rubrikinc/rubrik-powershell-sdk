@@ -33,3 +33,5 @@ sub-type of the target scope.
 - scopedTargetEntities: list of ActivityScopedTargetEntitys
   - Scoped target entities for filtering. Use this instead of target_entity_ids
 for scope disambiguation to avoid ID collisions across targets from different resources.
+- actorIpAddresses: list of System.Strings
+  - The IP addresses of the actors to filter on.

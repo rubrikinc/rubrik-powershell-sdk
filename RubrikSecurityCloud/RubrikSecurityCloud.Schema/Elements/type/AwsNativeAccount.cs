@@ -46,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rscPendingObjectPauseAssignment")]
         public PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment { get; set; }
 
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         [JsonProperty("slaAssignment")]
@@ -175,6 +180,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enabledFeatures: [AwsNativeAccountEnabledFeature!]! (type)
         [JsonProperty("enabledFeatures")]
         public List<AwsNativeAccountEnabledFeature>? EnabledFeatures { get; set; }
+
+        //      C# -> List<FeatureDetail>? FeatureDetails
+        // GraphQL -> featureDetails: [FeatureDetail!]! (type)
+        [JsonProperty("featureDetails")]
+        public List<FeatureDetail>? FeatureDetails { get; set; }
 
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -315,6 +325,7 @@ namespace RubrikSecurityCloud.Types
         AwsCloudType? CloudType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
+        AwsCloudAccountServiceType? ServiceType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         AwsAccountStatus? Status = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -341,6 +352,7 @@ namespace RubrikSecurityCloud.Types
         AwsNativeRegionHierarchyObjectConnection? AwsRegions = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<AwsNativeAccountEnabledFeature>? EnabledFeatures = null,
+        List<FeatureDetail>? FeatureDetails = null,
         List<PathNode>? LogicalPath = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -365,6 +377,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RscPendingObjectPauseAssignment != null ) {
             this.RscPendingObjectPauseAssignment = RscPendingObjectPauseAssignment;
+        }
+        if ( ServiceType != null ) {
+            this.ServiceType = ServiceType;
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
@@ -443,6 +458,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnabledFeatures != null ) {
             this.EnabledFeatures = EnabledFeatures;
+        }
+        if ( FeatureDetails != null ) {
+            this.FeatureDetails = FeatureDetails;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -525,6 +543,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "rscPendingObjectPauseAssignment\n" ;
             } else {
                 s += ind + "rscPendingObjectPauseAssignment\n" ;
+            }
+        }
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (this.ServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
             }
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
@@ -800,6 +827,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<FeatureDetail>? FeatureDetails
+        // GraphQL -> featureDetails: [FeatureDetail!]! (type)
+        if (this.FeatureDetails != null) {
+            var fspec = this.FeatureDetails.AsFieldSpec(conf.Child("featureDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "featureDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -987,6 +1026,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RscPendingObjectPauseAssignment != null && ec.Excludes("rscPendingObjectPauseAssignment",true))
         {
             this.RscPendingObjectPauseAssignment = null;
+        }
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (ec.Includes("serviceType",true))
+        {
+            if(this.ServiceType == null) {
+
+                this.ServiceType = new AwsCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
         }
         //      C# -> SlaAssignmentTypeEnum? SlaAssignment
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
@@ -1468,6 +1524,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnabledFeatures != null && ec.Excludes("enabledFeatures",false))
         {
             this.EnabledFeatures = null;
+        }
+        //      C# -> List<FeatureDetail>? FeatureDetails
+        // GraphQL -> featureDetails: [FeatureDetail!]! (type)
+        if (ec.Includes("featureDetails",false))
+        {
+            if(this.FeatureDetails == null) {
+
+                this.FeatureDetails = new List<FeatureDetail>();
+                this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+
+            } else {
+
+                this.FeatureDetails.ApplyExploratoryFieldSpec(ec.NewChild("featureDetails"));
+
+            }
+        }
+        else if (this.FeatureDetails != null && ec.Excludes("featureDetails",false))
+        {
+            this.FeatureDetails = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

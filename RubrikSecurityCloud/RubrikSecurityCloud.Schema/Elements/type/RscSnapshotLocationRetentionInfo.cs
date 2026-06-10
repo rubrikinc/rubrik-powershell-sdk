@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        [JsonProperty("retentionLockMode")]
+        public RetentionLockMode? RetentionLockMode { get; set; }
+
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         [JsonProperty("snapshotFrequency")]
@@ -34,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isExpirationDateCalculated: Boolean! (scalar)
         [JsonProperty("isExpirationDateCalculated")]
         public System.Boolean? IsExpirationDateCalculated { get; set; }
+
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
+        [JsonProperty("isSnapshotOnLegalHold")]
+        public System.Boolean? IsSnapshotOnLegalHold { get; set; }
 
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
@@ -60,14 +70,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RscSnapshotLocationRetentionInfo Set(
+        RetentionLockMode? RetentionLockMode = null,
         SnapshotFrequency? SnapshotFrequency = null,
         DateTime? ExpirationTime = null,
         System.Boolean? IsExpirationDateCalculated = null,
+        System.Boolean? IsSnapshotOnLegalHold = null,
         System.Boolean? IsSnapshotPresent = null,
         System.String? LocationId = null,
         System.String? LocationName = null
     ) 
     {
+        if ( RetentionLockMode != null ) {
+            this.RetentionLockMode = RetentionLockMode;
+        }
         if ( SnapshotFrequency != null ) {
             this.SnapshotFrequency = SnapshotFrequency;
         }
@@ -76,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsExpirationDateCalculated != null ) {
             this.IsExpirationDateCalculated = IsExpirationDateCalculated;
+        }
+        if ( IsSnapshotOnLegalHold != null ) {
+            this.IsSnapshotOnLegalHold = IsSnapshotOnLegalHold;
         }
         if ( IsSnapshotPresent != null ) {
             this.IsSnapshotPresent = IsSnapshotPresent;
@@ -100,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (this.RetentionLockMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "retentionLockMode\n" ;
+            } else {
+                s += ind + "retentionLockMode\n" ;
+            }
+        }
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         if (this.SnapshotFrequency != null) {
@@ -125,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isExpirationDateCalculated\n" ;
             } else {
                 s += ind + "isExpirationDateCalculated\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
+        if (this.IsSnapshotOnLegalHold != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotOnLegalHold\n" ;
+            } else {
+                s += ind + "isSnapshotOnLegalHold\n" ;
             }
         }
         //      C# -> System.Boolean? IsSnapshotPresent
@@ -161,6 +197,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RetentionLockMode? RetentionLockMode
+        // GraphQL -> retentionLockMode: RetentionLockMode! (enum)
+        if (ec.Includes("retentionLockMode",true))
+        {
+            if(this.RetentionLockMode == null) {
+
+                this.RetentionLockMode = new RetentionLockMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RetentionLockMode != null && ec.Excludes("retentionLockMode",true))
+        {
+            this.RetentionLockMode = null;
+        }
         //      C# -> SnapshotFrequency? SnapshotFrequency
         // GraphQL -> snapshotFrequency: SnapshotFrequency! (enum)
         if (ec.Includes("snapshotFrequency",true))
@@ -211,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsExpirationDateCalculated != null && ec.Excludes("isExpirationDateCalculated",true))
         {
             this.IsExpirationDateCalculated = null;
+        }
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean! (scalar)
+        if (ec.Includes("isSnapshotOnLegalHold",true))
+        {
+            if(this.IsSnapshotOnLegalHold == null) {
+
+                this.IsSnapshotOnLegalHold = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotOnLegalHold != null && ec.Excludes("isSnapshotOnLegalHold",true))
+        {
+            this.IsSnapshotOnLegalHold = null;
         }
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)

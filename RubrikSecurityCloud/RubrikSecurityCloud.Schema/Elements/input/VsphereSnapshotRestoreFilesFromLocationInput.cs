@@ -19,13 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: UUID! (scalar)
         [Required]
@@ -33,19 +26,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotFid")]
         public System.String? SnapshotFid { get; set; }
 
-        //      C# -> System.String? LocationId
-        // GraphQL -> locationId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("locationId")]
-        public System.String? LocationId { get; set; }
-
         //      C# -> RestoreFilesJobConfigInput? Config
         // GraphQL -> config: RestoreFilesJobConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("config")]
         public RestoreFilesJobConfigInput? Config { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("locationId")]
+        public System.String? LocationId { get; set; }
 
 
         #endregion

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lockDurationDays")]
         public System.Int32? LockDurationDays { get; set; }
 
+        //      C# -> System.Boolean? IsObjectLockEnabled
+        // GraphQL -> isObjectLockEnabled: Boolean (scalar)
+        [JsonProperty("isObjectLockEnabled")]
+        public System.Boolean? IsObjectLockEnabled { get; set; }
+
 
         #endregion
 

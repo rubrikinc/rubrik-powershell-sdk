@@ -12,7 +12,9 @@ Input for GCP Reader Target.
 - bucket: System.String
   - Field for specifying GCP bucket name.
 - encryptionPassword: System.String
-  - Field for specifying encryption password.
+  - Encryption password matching the source GCP location. Required when the source location was created without UEKM. Mutually exclusive with rsaKey.
+- rsaKey: System.String
+  - RSA private key (PEM format) matching the source GCP location. Required when the source location was created with UEKM. Mutually exclusive with encryptionPassword.
 - serviceAccountJsonKey: System.String
   - Field for specifying service account JSON key.
 - archivalProxySettings: ProxySettingsInput

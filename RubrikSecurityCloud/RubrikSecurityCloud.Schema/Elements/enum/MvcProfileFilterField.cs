@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ID")]
+        ID,
+
         [EnumMember(Value = "NAME")]
         NAME,
 

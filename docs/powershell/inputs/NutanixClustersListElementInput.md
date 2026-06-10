@@ -1,5 +1,5 @@
 ### NutanixClustersListElementInput
-Supported in v9.0+
+Nutanix Cluster with its natural uuid and name.
 
 - clusterUuid: System.String
   - Required. Supported in v9.0+

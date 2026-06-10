@@ -47,6 +47,18 @@ Details of the Azure AD directory object.
   - Count of compliance scripts from the latest snapshot.
 - latestNotificationTemplateCount: System.Int32
   - Count of notification templates from the latest snapshot.
+- latestAccessReviewScheduleDefinitionCount: System.Int32
+  - Count of access review schedule definitions from the latest snapshot.
+- latestEmCatalogCount: System.Int32
+  - Count of entitlement management catalogs from the latest snapshot.
+- latestEmAccessPackageCount: System.Int32
+  - Count of entitlement management access packages from the latest snapshot.
+- latestRoleEligibleAssignmentCount: System.Int32
+  - Count of PIM role-eligible assignments from the latest snapshot.
+- latestGroupEligibleAssignmentCount: System.Int32
+  - Count of PIM group-eligible assignments from the latest snapshot.
+- latestGroupActiveAssignmentCount: System.Int32
+  - Count of PIM group active assignments from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
 - latestSnapshotTime: DateTime
@@ -71,6 +83,8 @@ Details of the Azure AD directory object.
   - Specifies the host type of the exocompute resource for this tenant.
 - isIntuneEnabled: System.Boolean
   - Specifies whether Intune protection is enabled for the tenant.
+- latestEntraObjectCounts: list of LatestEntraObjectCounts
+  - Counts of Entra ID and Intune object types from the latest snapshot.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String

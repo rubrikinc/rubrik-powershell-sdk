@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nameSubstringFilter")]
         public NameSubstringFilter? NameSubstringFilter { get; set; }
 
+        //      C# -> NamePrefixFilter? NamePrefixFilter
+        // GraphQL -> namePrefixFilter: NamePrefixFilter (input)
+        [JsonProperty("namePrefixFilter")]
+        public NamePrefixFilter? NamePrefixFilter { get; set; }
+
         //      C# -> EffectiveSlaFilter? EffectiveSlaFilter
         // GraphQL -> effectiveSlaFilter: EffectiveSlaFilter (input)
         [JsonProperty("effectiveSlaFilter")]

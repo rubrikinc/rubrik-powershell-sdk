@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numChannels")]
         public System.Int32? NumChannels { get; set; }
 
+        //      C# -> System.Boolean? ShouldRecoverToLatestFromRedo
+        // GraphQL -> shouldRecoverToLatestFromRedo: Boolean (scalar)
+        [JsonProperty("shouldRecoverToLatestFromRedo")]
+        public System.Boolean? ShouldRecoverToLatestFromRedo { get; set; }
+
         //      C# -> System.Boolean? ShouldSkipDropDbInUndo
         // GraphQL -> shouldSkipDropDbInUndo: Boolean (scalar)
         [JsonProperty("shouldSkipDropDbInUndo")]

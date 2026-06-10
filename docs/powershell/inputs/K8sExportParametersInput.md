@@ -30,3 +30,5 @@ Specifies whether to ignore errors during the export operation. By default, this
 - shouldKeepVirtualMachineMacAddresses: System.Boolean
   - Supported in v9.3+
 Determines whether the MAC addresses of the network interfaces on the source virtual machine are assigned to the new virtual machine. Set to 'true' to keep the MAC addresses of the new virtual machine the same as the original virtual machine. Set to 'false' to assign new MAC addresses.
+- namespaceMappings: NamespaceMappingInput
+  - Optional mapping of source namespace names to target namespace names for Application Protection Set exports.

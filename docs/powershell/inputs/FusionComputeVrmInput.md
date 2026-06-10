@@ -1,5 +1,5 @@
 ### FusionComputeVrmInput
-The hostname and account credentials of a FusionCompute VRM instance.
+The hostname and account credentials of a FusionCompute Virtual Resource Management (VRM) instance.
 
 - caCerts: System.String
   - Optional CA certificate content for SSL verification.

@@ -185,6 +185,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			applicationId = $someString
     /// 			# REQUIRED
     /// 			clientSecret = $someString
+    /// 			# OPTIONAL
+    /// 			status = @{
+    /// 				# OPTIONAL
+    /// 				code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+    /// 				# OPTIONAL
+    /// 				credentialExpiresAt = $someDateTime
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		splunk = @{
+    /// 			# REQUIRED
+    /// 			configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+    /// 			# REQUIRED
+    /// 			webhookId = $someInt
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	settings = @{
+    /// 		# OPTIONAL
+    /// 		crowdStrike = @{
+    /// 			# OPTIONAL
+    /// 			minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftDefender = @{
+    /// 			# OPTIONAL
+    /// 			minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
     /// 		}
     /// 	}
     /// }
@@ -313,6 +342,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					applicationId = $someString
     /// 					# REQUIRED
     /// 					clientSecret = $someString
+    /// 					# OPTIONAL
+    /// 					status = @{
+    /// 						# OPTIONAL
+    /// 						code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+    /// 						# OPTIONAL
+    /// 						credentialExpiresAt = $someDateTime
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				splunk = @{
+    /// 					# REQUIRED
+    /// 					configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+    /// 					# REQUIRED
+    /// 					webhookId = $someInt
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			settings = @{
+    /// 				# OPTIONAL
+    /// 				crowdStrike = @{
+    /// 					# OPTIONAL
+    /// 					minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftDefender = @{
+    /// 					# OPTIONAL
+    /// 					minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
     /// 				}
     /// 			}
     /// 		}
@@ -447,7 +505,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	name = $someString
     /// 	# REQUIRED
     /// 	integrationType = $someIntegrationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationType]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		dataLossPrevention = @{
@@ -537,6 +595,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			applicationId = $someString
     /// 			# REQUIRED
     /// 			clientSecret = $someString
+    /// 			# OPTIONAL
+    /// 			status = @{
+    /// 				# OPTIONAL
+    /// 				code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+    /// 				# OPTIONAL
+    /// 				credentialExpiresAt = $someDateTime
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		splunk = @{
+    /// 			# REQUIRED
+    /// 			configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+    /// 			# REQUIRED
+    /// 			webhookId = $someInt
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	settings = @{
+    /// 		# OPTIONAL
+    /// 		crowdStrike = @{
+    /// 			# OPTIONAL
+    /// 			minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		microsoftDefender = @{
+    /// 			# OPTIONAL
+    /// 			minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
     /// 		}
     /// 	}
     /// }
@@ -577,7 +664,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			name = $someString
     /// 			# REQUIRED
     /// 			integrationType = $someIntegrationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationType]) for enum values.
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			config = @{
     /// 				# OPTIONAL
     /// 				dataLossPrevention = @{
@@ -667,6 +754,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					applicationId = $someString
     /// 					# REQUIRED
     /// 					clientSecret = $someString
+    /// 					# OPTIONAL
+    /// 					status = @{
+    /// 						# OPTIONAL
+    /// 						code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+    /// 						# OPTIONAL
+    /// 						credentialExpiresAt = $someDateTime
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				splunk = @{
+    /// 					# REQUIRED
+    /// 					configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+    /// 					# REQUIRED
+    /// 					webhookId = $someInt
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
+    /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			settings = @{
+    /// 				# OPTIONAL
+    /// 				crowdStrike = @{
+    /// 					# OPTIONAL
+    /// 					minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				microsoftDefender = @{
+    /// 					# OPTIONAL
+    /// 					minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
     /// 				}
     /// 			}
     /// 		}
@@ -929,6 +1045,35 @@ $query.Var.input = @{
 			applicationId = $someString
 			# REQUIRED
 			clientSecret = $someString
+			# OPTIONAL
+			status = @{
+				# OPTIONAL
+				code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+				# OPTIONAL
+				credentialExpiresAt = $someDateTime
+			}
+		}
+		# OPTIONAL
+		splunk = @{
+			# REQUIRED
+			configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+			# REQUIRED
+			webhookId = $someInt
+			# REQUIRED
+			serviceAccountId = $someString
+		}
+	}
+	# OPTIONAL
+	settings = @{
+		# OPTIONAL
+		crowdStrike = @{
+			# OPTIONAL
+			minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+		}
+		# OPTIONAL
+		microsoftDefender = @{
+			# OPTIONAL
+			minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
 		}
 	}
 }"
@@ -1049,6 +1194,35 @@ $query.Var.input = @{
 					applicationId = $someString
 					# REQUIRED
 					clientSecret = $someString
+					# OPTIONAL
+					status = @{
+						# OPTIONAL
+						code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+						# OPTIONAL
+						credentialExpiresAt = $someDateTime
+					}
+				}
+				# OPTIONAL
+				splunk = @{
+					# REQUIRED
+					configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+					# REQUIRED
+					webhookId = $someInt
+					# REQUIRED
+					serviceAccountId = $someString
+				}
+			}
+			# OPTIONAL
+			settings = @{
+				# OPTIONAL
+				crowdStrike = @{
+					# OPTIONAL
+					minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+				}
+				# OPTIONAL
+				microsoftDefender = @{
+					# OPTIONAL
+					minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
 				}
 			}
 		}
@@ -1151,7 +1325,7 @@ $query.Var.input = @{
 	name = $someString
 	# REQUIRED
 	integrationType = $someIntegrationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationType]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	config = @{
 		# OPTIONAL
 		dataLossPrevention = @{
@@ -1241,6 +1415,35 @@ $query.Var.input = @{
 			applicationId = $someString
 			# REQUIRED
 			clientSecret = $someString
+			# OPTIONAL
+			status = @{
+				# OPTIONAL
+				code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+				# OPTIONAL
+				credentialExpiresAt = $someDateTime
+			}
+		}
+		# OPTIONAL
+		splunk = @{
+			# REQUIRED
+			configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+			# REQUIRED
+			webhookId = $someInt
+			# REQUIRED
+			serviceAccountId = $someString
+		}
+	}
+	# OPTIONAL
+	settings = @{
+		# OPTIONAL
+		crowdStrike = @{
+			# OPTIONAL
+			minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+		}
+		# OPTIONAL
+		microsoftDefender = @{
+			# OPTIONAL
+			minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
 		}
 	}
 }"
@@ -1273,7 +1476,7 @@ $query.Var.input = @{
 			name = $someString
 			# REQUIRED
 			integrationType = $someIntegrationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IntegrationType]) for enum values.
-			# REQUIRED
+			# OPTIONAL
 			config = @{
 				# OPTIONAL
 				dataLossPrevention = @{
@@ -1363,6 +1566,35 @@ $query.Var.input = @{
 					applicationId = $someString
 					# REQUIRED
 					clientSecret = $someString
+					# OPTIONAL
+					status = @{
+						# OPTIONAL
+						code = $someMicrosoftDefenderStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MicrosoftDefenderStatusCode]) for enum values.
+						# OPTIONAL
+						credentialExpiresAt = $someDateTime
+					}
+				}
+				# OPTIONAL
+				splunk = @{
+					# REQUIRED
+					configType = $someSplunkIntegrationConfigType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SplunkIntegrationConfigType]) for enum values.
+					# REQUIRED
+					webhookId = $someInt
+					# REQUIRED
+					serviceAccountId = $someString
+				}
+			}
+			# OPTIONAL
+			settings = @{
+				# OPTIONAL
+				crowdStrike = @{
+					# OPTIONAL
+					minSeverity = $someCrowdStrikeAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CrowdStrikeAlertSeverity]) for enum values.
+				}
+				# OPTIONAL
+				microsoftDefender = @{
+					# OPTIONAL
+					minSeverity = $someDefenderAlertSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DefenderAlertSeverity]) for enum values.
 				}
 			}
 		}

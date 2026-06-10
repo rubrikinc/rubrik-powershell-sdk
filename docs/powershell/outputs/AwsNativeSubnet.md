@@ -7,3 +7,5 @@ Represents a subnet in AWS.
   - Name of the subnet.
 - availabilityZone: System.String
   - Availability Zone corresponding to the subnet.
+- outpostArn: System.String
+  - ARN of the AWS Outpost this subnet resides on, if applicable.

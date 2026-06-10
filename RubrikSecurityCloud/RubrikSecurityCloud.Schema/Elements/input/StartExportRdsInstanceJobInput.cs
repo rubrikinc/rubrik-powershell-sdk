@@ -179,6 +179,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldResurrectSnapshot")]
         public System.Boolean? ShouldResurrectSnapshot { get; set; }
 
+        //      C# -> AwsRetrievalTier? RetrievalTier
+        // GraphQL -> retrievalTier: AwsRetrievalTier (enum)
+        [JsonProperty("retrievalTier")]
+        public AwsRetrievalTier? RetrievalTier { get; set; }
+
 
         #endregion
 

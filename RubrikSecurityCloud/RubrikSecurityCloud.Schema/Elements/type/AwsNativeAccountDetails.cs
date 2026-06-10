@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
         //      C# -> AwsAccountStatus? Status
         // GraphQL -> status: AwsAccountStatus! (enum)
         [JsonProperty("status")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsNativeAccountDetails Set(
+        AwsCloudAccountServiceType? ServiceType = null,
         AwsAccountStatus? Status = null,
         System.String? Id = null,
         System.String? Name = null,
         List<AwsNativeAccountEnabledFeature>? EnabledFeatures = null
     ) 
     {
+        if ( ServiceType != null ) {
+            this.ServiceType = ServiceType;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -82,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (this.ServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
+            }
+        }
         //      C# -> AwsAccountStatus? Status
         // GraphQL -> status: AwsAccountStatus! (enum)
         if (this.Status != null) {
@@ -128,6 +146,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (ec.Includes("serviceType",true))
+        {
+            if(this.ServiceType == null) {
+
+                this.ServiceType = new AwsCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
+        }
         //      C# -> AwsAccountStatus? Status
         // GraphQL -> status: AwsAccountStatus! (enum)
         if (ec.Includes("status",true))

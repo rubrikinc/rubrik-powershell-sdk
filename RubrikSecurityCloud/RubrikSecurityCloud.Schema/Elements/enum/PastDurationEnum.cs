@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PAST_24_HOURS")]
         PAST_24_HOURS,
 
+        [EnumMember(Value = "PAST_24_MONTHS")]
+        PAST_24_MONTHS,
+
         [EnumMember(Value = "PAST_30_DAYS")]
         PAST_30_DAYS,
 

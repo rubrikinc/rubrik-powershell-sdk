@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationId")]
         public System.String? LocationId { get; set; }
 
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

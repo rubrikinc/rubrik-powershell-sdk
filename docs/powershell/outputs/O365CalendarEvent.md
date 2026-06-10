@@ -2,19 +2,29 @@
 An O365 calendar event object.
 
 - id: System.String
+  - The ID of the calendar event.
 - name: System.String
+  - The subject of the calendar event.
 - eventType: CalendarEventType
+  - The type of the calendar event.
 - parentFolderId: System.String
+  - The parent folder ID of the calendar event.
 - organizer: System.String
+  - The organizer of the calendar event.
 - attendees: list of System.Strings
+  - The attendees of the calendar event.
 - startDateTime: DateTime
+  - The start time of the calendar event.
 - endDateTime: DateTime
+  - The end time of the calendar event.
 - lastModifiedDateTime: DateTime
   - The timestamp when the calendar event was last modified.
 - snapshotId: System.String
+  - The snapshot ID of this version of the event.
 - snapshotTime: DateTime
   - The snapshot time of this version of the event.
 - versionStartSnapshotId: System.String
+  - The snapshot ID of the snapshot in which this version of the event started.
 - recurrence: O365CalendarEventRecurrence
   - The recurrence of the event (if part of a series).
 - hierarchyType: ExchangeItemHierarchyType

@@ -1,5 +1,5 @@
 ### PermissionInput
-
+Specifies permissions.
 
 - operation: Operation
   - The operations granted to the newly added org.

@@ -50,10 +50,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<System.String>? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: [String!]! (scalar)
+        [JsonProperty("namespaceExcludePatterns")]
+        public List<System.String>? NamespaceExcludePatterns { get; set; }
+
+        //      C# -> List<System.String>? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: [String!]! (scalar)
+        [JsonProperty("namespaceIncludePatterns")]
+        public List<System.String>? NamespaceIncludePatterns { get; set; }
+
         //      C# -> System.String? RsType
         // GraphQL -> rsType: String! (scalar)
         [JsonProperty("rsType")]
         public System.String? RsType { get; set; }
+
+        //      C# -> List<CustomResourceDependency>? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: [CustomResourceDependency!]! (type)
+        [JsonProperty("customResourceDependencies")]
+        public List<CustomResourceDependency>? CustomResourceDependencies { get; set; }
+
+        //      C# -> CdmLabelSelector? LabelSelector
+        // GraphQL -> labelSelector: CdmLabelSelector (type)
+        [JsonProperty("labelSelector")]
+        public CdmLabelSelector? LabelSelector { get; set; }
 
 
         #endregion
@@ -71,7 +91,11 @@ namespace RubrikSecurityCloud.Types
         System.String? KubernetesClusterUuid = null,
         System.String? KubernetesNamespace = null,
         System.String? Name = null,
-        System.String? RsType = null
+        List<System.String>? NamespaceExcludePatterns = null,
+        List<System.String>? NamespaceIncludePatterns = null,
+        System.String? RsType = null,
+        List<CustomResourceDependency>? CustomResourceDependencies = null,
+        CdmLabelSelector? LabelSelector = null
     ) 
     {
         if ( Definition != null ) {
@@ -92,8 +116,20 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( NamespaceExcludePatterns != null ) {
+            this.NamespaceExcludePatterns = NamespaceExcludePatterns;
+        }
+        if ( NamespaceIncludePatterns != null ) {
+            this.NamespaceIncludePatterns = NamespaceIncludePatterns;
+        }
         if ( RsType != null ) {
             this.RsType = RsType;
+        }
+        if ( CustomResourceDependencies != null ) {
+            this.CustomResourceDependencies = CustomResourceDependencies;
+        }
+        if ( LabelSelector != null ) {
+            this.LabelSelector = LabelSelector;
         }
         return this;
     }
@@ -163,6 +199,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> List<System.String>? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: [String!]! (scalar)
+        if (this.NamespaceExcludePatterns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "namespaceExcludePatterns\n" ;
+            } else {
+                s += ind + "namespaceExcludePatterns\n" ;
+            }
+        }
+        //      C# -> List<System.String>? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: [String!]! (scalar)
+        if (this.NamespaceIncludePatterns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "namespaceIncludePatterns\n" ;
+            } else {
+                s += ind + "namespaceIncludePatterns\n" ;
+            }
+        }
         //      C# -> System.String? RsType
         // GraphQL -> rsType: String! (scalar)
         if (this.RsType != null) {
@@ -170,6 +224,30 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "rsType\n" ;
             } else {
                 s += ind + "rsType\n" ;
+            }
+        }
+        //      C# -> List<CustomResourceDependency>? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: [CustomResourceDependency!]! (type)
+        if (this.CustomResourceDependencies != null) {
+            var fspec = this.CustomResourceDependencies.AsFieldSpec(conf.Child("customResourceDependencies"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "customResourceDependencies" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> CdmLabelSelector? LabelSelector
+        // GraphQL -> labelSelector: CdmLabelSelector (type)
+        if (this.LabelSelector != null) {
+            var fspec = this.LabelSelector.AsFieldSpec(conf.Child("labelSelector"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "labelSelector" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -281,6 +359,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> List<System.String>? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: [String!]! (scalar)
+        if (ec.Includes("namespaceExcludePatterns",true))
+        {
+            if(this.NamespaceExcludePatterns == null) {
+
+                this.NamespaceExcludePatterns = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NamespaceExcludePatterns != null && ec.Excludes("namespaceExcludePatterns",true))
+        {
+            this.NamespaceExcludePatterns = null;
+        }
+        //      C# -> List<System.String>? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: [String!]! (scalar)
+        if (ec.Includes("namespaceIncludePatterns",true))
+        {
+            if(this.NamespaceIncludePatterns == null) {
+
+                this.NamespaceIncludePatterns = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NamespaceIncludePatterns != null && ec.Excludes("namespaceIncludePatterns",true))
+        {
+            this.NamespaceIncludePatterns = null;
+        }
         //      C# -> System.String? RsType
         // GraphQL -> rsType: String! (scalar)
         if (ec.Includes("rsType",true))
@@ -297,6 +409,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.RsType != null && ec.Excludes("rsType",true))
         {
             this.RsType = null;
+        }
+        //      C# -> List<CustomResourceDependency>? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: [CustomResourceDependency!]! (type)
+        if (ec.Includes("customResourceDependencies",false))
+        {
+            if(this.CustomResourceDependencies == null) {
+
+                this.CustomResourceDependencies = new List<CustomResourceDependency>();
+                this.CustomResourceDependencies.ApplyExploratoryFieldSpec(ec.NewChild("customResourceDependencies"));
+
+            } else {
+
+                this.CustomResourceDependencies.ApplyExploratoryFieldSpec(ec.NewChild("customResourceDependencies"));
+
+            }
+        }
+        else if (this.CustomResourceDependencies != null && ec.Excludes("customResourceDependencies",false))
+        {
+            this.CustomResourceDependencies = null;
+        }
+        //      C# -> CdmLabelSelector? LabelSelector
+        // GraphQL -> labelSelector: CdmLabelSelector (type)
+        if (ec.Includes("labelSelector",false))
+        {
+            if(this.LabelSelector == null) {
+
+                this.LabelSelector = new CdmLabelSelector();
+                this.LabelSelector.ApplyExploratoryFieldSpec(ec.NewChild("labelSelector"));
+
+            } else {
+
+                this.LabelSelector.ApplyExploratoryFieldSpec(ec.NewChild("labelSelector"));
+
+            }
+        }
+        else if (this.LabelSelector != null && ec.Excludes("labelSelector",false))
+        {
+            this.LabelSelector = null;
         }
     }
 

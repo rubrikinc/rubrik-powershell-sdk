@@ -31,6 +31,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isIsilonChangelistEnabled")]
         public System.Boolean? IsIsilonChangelistEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppSnapDiffEnabled")]
+        public System.Boolean? IsNetAppSnapDiffEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        [JsonProperty("isNutanixCftEnabled")]
+        public System.Boolean? IsNutanixCftEnabled { get; set; }
+
 
         #endregion
 

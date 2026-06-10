@@ -30,3 +30,39 @@ Entra ID object types.
 - DEVICE_MANAGEMENT_COMPLIANCE_POLICY - Sub-object type of COMPLIANCE_POLICY.
 - ROLE_ELIGIBLE_ASSIGNMENT - Object type is role-eligible assignment.
 - GROUP_ELIGIBLE_ASSIGNMENT - Object type is group-eligible assignment.
+- DEVICE_MANAGEMENT_CONFIGURATION_POLICY - Object type is Intune device management configuration policy.
+- ANTIVIRUS - Object type is Intune endpoint security antivirus policy.
+- DISK_ENCRYPTION - Object type is Intune endpoint security disk encryption policy.
+- FIREWALL - Object type is Intune endpoint security firewall policy.
+- ENDPOINT_DETECTION_RESPONSE - Object type is Intune endpoint security endpoint detection and response policy.
+- ATTACK_SURFACE_REDUCTION - Object type is Intune endpoint security attack surface reduction policy.
+- ACCOUNT_PROTECTION - Object type is Intune endpoint security account protection policy.
+- APP_CONTROL - Object type is Intune endpoint security app control for business policy.
+- ENDPOINT_PRIVILEGE_MANAGEMENT - Object type is Intune endpoint security endpoint privilege management policy.
+- UPDATE_RING - Object type is Intune Windows update ring.
+- REUSABLE_POLICY_SETTING_MDM_STORE - Object type is Intune reusable policy setting for firewall MDM store.
+- REUSABLE_POLICY_SETTING_DEVICE_CONTROL - Object type is Intune reusable policy setting for device control.
+- REUSABLE_POLICY_SETTING_PRIVILEGE_MANAGEMENT - Object type is Intune reusable policy setting for privilege management.
+- APP_PROTECTION_POLICY - Object type is Intune app protection policy.
+- AUTOPILOT_DEPLOYMENT_PROFILE - Object type is Intune autopilot deployment profile.
+- INTUNE_ROLE_DEFINITION - Object type is Intune role definition.
+- INTUNE_SCOPE_TAG - Object type is Intune scope tag.
+- EM_CATALOG - Object type is Entitlement Management catalog.
+- EM_ACCESS_PACKAGE - Object type is Entitlement Management access package.
+- EM_ASSIGNMENT_POLICY - Object type is Entitlement Management assignment policy.
+- EM_CATALOG_RESOURCE - Object type is Entitlement Management catalog resource.
+- EM_CATALOG_ROLE_ASSIGNMENT - Object type is Entitlement Management catalog role assignment.
+- EM_RESOURCE_ROLE_SCOPE - Object type is Entitlement Management resource role scope.
+- EM_INCOMPATIBILITIES - Object type is Entitlement Management incompatibilities.
+- EM_ASSIGNMENT - Object type is Entitlement Management assignment.
+- INTUNE_ROLE_ASSIGNMENT - Object type is Intune role assignment.
+- INTUNE_POLICY_ASSIGNMENT - Object type is Intune policy assignment.
+- INTUNE_SCOPE_TAG_ASSIGNMENT - Object type is Intune scope tag assignment.
+- SUBTYPE_CONFIGURATION_POLICY - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: configuration policy.
+- SUBTYPE_DEVICE_MANAGEMENT_INTENT - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: device management intent.
+- SUBTYPE_DEVICE_CONFIGURATION - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: device configuration.
+- SUBTYPE_GROUP_POLICY_CONFIGURATION - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: group policy configuration.
+- SUBTYPE_HARDWARE_CONFIGURATION - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: hardware configuration.
+- SUBTYPE_MOBILE_APP_CONFIGURATION - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: mobile app configuration.
+- ACCESS_REVIEW_SCHEDULE_DEFINITION - Object type is access review schedule definition.
+- GROUP_ACTIVE_ASSIGNMENT - Object type is PIM group active assignment.

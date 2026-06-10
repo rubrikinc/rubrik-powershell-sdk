@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Boolean? ForceDelete
-        // GraphQL -> forceDelete: Boolean (scalar)
-        [JsonProperty("forceDelete")]
-        public System.Boolean? ForceDelete { get; set; }
-
         //      C# -> System.String? SourceClusterUuid
         // GraphQL -> sourceClusterUuid: UUID! (scalar)
         [Required]
@@ -37,6 +32,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetClusterUuid")]
         public System.String? TargetClusterUuid { get; set; }
+
+        //      C# -> System.Boolean? ForceDelete
+        // GraphQL -> forceDelete: Boolean (scalar)
+        [JsonProperty("forceDelete")]
+        public System.Boolean? ForceDelete { get; set; }
 
 
         #endregion

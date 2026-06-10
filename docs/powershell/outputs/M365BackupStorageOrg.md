@@ -7,22 +7,6 @@ Microsoft 365 Backup Storage Organization.
   - Status of the Microsoft 365 Backup Storage Organization controller.
 - activationTime: DateTime
   - Time when the Microsoft 365 Backup Storage Organization controller will be activated.
-- snapshotConnection: PolarisSnapshotConnection
-  - The list of snapshots taken for this workload.
-- workloadSnapshotConnection: GenericSnapshotConnection
-  - The list of snapshots taken for this workload.
-- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
-- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
-- newestSnapshot: PolarisSnapshot
-  - The most recent snapshot of this workload.
-- oldestSnapshot: PolarisSnapshot
-  - The oldest snapshot of this workload.
-- onDemandSnapshotCount: System.Int32
-  - The number of on-demand snapshots.
-- newestIndexedSnapshot: PolarisSnapshot
-  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -57,6 +41,22 @@ Microsoft 365 Backup Storage Organization.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - workloadSummary: list of O365WorkloadSummarys
   - Summary of workload by type.
 - groupsSummary: O365GroupsSummary

@@ -109,6 +109,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeDynamoDbSlaConfigInput")]
         public AwsNativeDynamoDbSlaConfigInput? AwsNativeDynamoDbSlaConfigInput { get; set; }
 
+        //      C# -> AzurePostgresFlexibleServerConfigInput? AzurePostgresFlexibleServerConfigInput
+        // GraphQL -> azurePostgresFlexibleServerConfigInput: AzurePostgresFlexibleServerConfigInput (input)
+        [JsonProperty("azurePostgresFlexibleServerConfigInput")]
+        public AzurePostgresFlexibleServerConfigInput? AzurePostgresFlexibleServerConfigInput { get; set; }
+
 
         #endregion
 

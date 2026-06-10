@@ -206,6 +206,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeAccountDetails")]
         public AwsNativeAccountDetails? AwsNativeAccountDetails { get; set; }
 
+        //      C# -> List<CloudNativeApplicationInfo>? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: [CloudNativeApplicationInfo!]! (type)
+        [JsonProperty("cloudNativeApplications")]
+        public List<CloudNativeApplicationInfo>? CloudNativeApplications { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -428,6 +433,7 @@ namespace RubrikSecurityCloud.Types
         AwsNativeAccount? AwsAccount = null,
         AwsNativeAccount? AwsNativeAccount = null,
         AwsNativeAccountDetails? AwsNativeAccountDetails = null,
+        List<CloudNativeApplicationInfo>? CloudNativeApplications = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -555,6 +561,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AwsNativeAccountDetails != null ) {
             this.AwsNativeAccountDetails = AwsNativeAccountDetails;
+        }
+        if ( CloudNativeApplications != null ) {
+            this.CloudNativeApplications = CloudNativeApplications;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -972,6 +981,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "awsNativeAccountDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<CloudNativeApplicationInfo>? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: [CloudNativeApplicationInfo!]! (type)
+        if (this.CloudNativeApplications != null) {
+            var fspec = this.CloudNativeApplications.AsFieldSpec(conf.Child("cloudNativeApplications"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudNativeApplications" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1821,6 +1842,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AwsNativeAccountDetails != null && ec.Excludes("awsNativeAccountDetails",false))
         {
             this.AwsNativeAccountDetails = null;
+        }
+        //      C# -> List<CloudNativeApplicationInfo>? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: [CloudNativeApplicationInfo!]! (type)
+        if (ec.Includes("cloudNativeApplications",false))
+        {
+            if(this.CloudNativeApplications == null) {
+
+                this.CloudNativeApplications = new List<CloudNativeApplicationInfo>();
+                this.CloudNativeApplications.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeApplications"));
+
+            } else {
+
+                this.CloudNativeApplications.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeApplications"));
+
+            }
+        }
+        else if (this.CloudNativeApplications != null && ec.Excludes("cloudNativeApplications",false))
+        {
+            this.CloudNativeApplications = null;
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)

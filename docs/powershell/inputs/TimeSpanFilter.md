@@ -1,7 +1,7 @@
 ### TimeSpanFilter
-Configuration for Time span filter.
+Defines a time-bounded filter with optional from and until times.
 
 - fromTime: DateTime
-  - Represents start time of range filter.
+  - Represents the lower bound of the filter.
 - untilTime: DateTime
-  - Represents end time of range filter.
+  - Represents the upper bound of the filter.

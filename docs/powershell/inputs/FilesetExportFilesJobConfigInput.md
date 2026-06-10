@@ -16,6 +16,9 @@ Network share ID.
 - excludePaths: list of System.Strings
   - Supported in v8.1+
 Optional field which excludes the paths specified during recovery.
+- recoveryPurpose: FilesetExportFilesJobConfigRecoveryPurpose
+  - Supported in v9.6
+Optional field indicating the purpose of the recovery operation. Set to SURGICAL_RECOVERY for surgical recovery where quarantined files are automatically excluded.
 - shouldRecreateDirectoryStructure: System.Boolean
   - Supported in v8.1+
 Optional field that specifies whether to recreate directory structure when using the 'Export to host' option in the UI.

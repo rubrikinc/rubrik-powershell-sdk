@@ -26,11 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuids")]
         public List<System.String>? ClusterUuids { get; set; }
 
-        //      C# -> List<System.String>? CloudProviders
-        // GraphQL -> cloudProviders: [String!] (scalar)
-        [JsonProperty("cloudProviders")]
-        public List<System.String>? CloudProviders { get; set; }
-
         //      C# -> List<IndicatorOfCompromiseKind>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromiseKind!]! (enum)
         [Required]
@@ -44,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("objectScanStatus")]
         public List<ThreatHuntObjectStatus>? ObjectScanStatus { get; set; }
+
+        //      C# -> List<System.String>? CloudProviders
+        // GraphQL -> cloudProviders: [String!] (scalar)
+        [JsonProperty("cloudProviders")]
+        public List<System.String>? CloudProviders { get; set; }
 
 
         #endregion

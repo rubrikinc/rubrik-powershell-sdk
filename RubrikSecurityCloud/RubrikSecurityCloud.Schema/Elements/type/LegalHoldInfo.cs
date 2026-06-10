@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? HoldReplica
+        // GraphQL -> holdReplica: Boolean! (scalar)
+        [JsonProperty("holdReplica")]
+        public System.Boolean? HoldReplica { get; set; }
+
         //      C# -> System.Boolean? ShouldHoldInPlace
         // GraphQL -> shouldHoldInPlace: Boolean! (scalar)
         [JsonProperty("shouldHoldInPlace")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public LegalHoldInfo Set(
+        System.Boolean? HoldReplica = null,
         System.Boolean? ShouldHoldInPlace = null
     ) 
     {
+        if ( HoldReplica != null ) {
+            this.HoldReplica = HoldReplica;
+        }
         if ( ShouldHoldInPlace != null ) {
             this.ShouldHoldInPlace = ShouldHoldInPlace;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? HoldReplica
+        // GraphQL -> holdReplica: Boolean! (scalar)
+        if (this.HoldReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "holdReplica\n" ;
+            } else {
+                s += ind + "holdReplica\n" ;
+            }
+        }
         //      C# -> System.Boolean? ShouldHoldInPlace
         // GraphQL -> shouldHoldInPlace: Boolean! (scalar)
         if (this.ShouldHoldInPlace != null) {
@@ -71,6 +89,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? HoldReplica
+        // GraphQL -> holdReplica: Boolean! (scalar)
+        if (ec.Includes("holdReplica",true))
+        {
+            if(this.HoldReplica == null) {
+
+                this.HoldReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HoldReplica != null && ec.Excludes("holdReplica",true))
+        {
+            this.HoldReplica = null;
+        }
         //      C# -> System.Boolean? ShouldHoldInPlace
         // GraphQL -> shouldHoldInPlace: Boolean! (scalar)
         if (ec.Includes("shouldHoldInPlace",true))

@@ -31,6 +31,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<CustomResourceDependencyInput>? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: [CustomResourceDependencyInput!] (input)
+        [JsonProperty("customResourceDependencies")]
+        public List<CustomResourceDependencyInput>? CustomResourceDependencies { get; set; }
+
+        //      C# -> CdmLabelSelectorInput? LabelSelector
+        // GraphQL -> labelSelector: CdmLabelSelectorInput (input)
+        [JsonProperty("labelSelector")]
+        public CdmLabelSelectorInput? LabelSelector { get; set; }
+
         //      C# -> System.String? RsType
         // GraphQL -> rsType: String! (scalar)
         [Required]
@@ -38,12 +48,22 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rsType")]
         public System.String? RsType { get; set; }
 
+        //      C# -> List<System.String>? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: [String!] (scalar)
+        [JsonProperty("namespaceExcludePatterns")]
+        public List<System.String>? NamespaceExcludePatterns { get; set; }
+
         //      C# -> System.String? Definition
         // GraphQL -> definition: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("definition")]
         public System.String? Definition { get; set; }
+
+        //      C# -> List<System.String>? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: [String!] (scalar)
+        [JsonProperty("namespaceIncludePatterns")]
+        public List<System.String>? NamespaceIncludePatterns { get; set; }
 
         //      C# -> System.String? KubernetesNamespace
         // GraphQL -> kubernetesNamespace: String (scalar)

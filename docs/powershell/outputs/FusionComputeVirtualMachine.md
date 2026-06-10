@@ -1,0 +1,115 @@
+### FusionComputeVirtualMachine
+FusionCompute virtual machine.
+
+- cdmId: System.String
+  - ID of FusionCompute virtual machine on Rubrik CDM.
+- clusterUuid: System.String
+  - UUID of the CDM cluster.
+- primaryClusterUuid: System.String
+  - UUID of the primary CDM cluster.
+- fcVmId: System.String
+  - ID of the virtual machine in FusionCompute.
+- vmName: System.String
+  - Name of the FusionCompute virtual machine.
+- vrmId: System.String
+  - ID of the VRM that manages this virtual machine.
+- siteId: System.String
+  - ID of the site that contains this virtual machine.
+- clusterId: System.String
+  - ID of the cluster that contains this virtual machine.
+- hostId: System.String
+  - ID of the host that contains this virtual machine.
+- guestOsName: System.String
+  - Guest operating system name.
+- ipAddresses: System.String
+  - IP addresses of the FusionCompute virtual machine.
+- agentStatus: System.String
+  - FusionCompute virtual machine agent status.
+- resourceSpec: System.String
+  - Resource specification for FusionCompute virtual machine.
+- snapshotConsistencyMandate: System.String
+  - Snapshot consistency mandate for the virtual machine.
+- disks: System.String
+  - Disk information for the virtual machine.
+- isRelic: System.Boolean
+  - Whether the virtual machine is a relic.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- reportWorkload: Snappable
+  - Contains statistics for the protected objects, including physical bytes and archive storage for virtual machine archival.
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestIndexedSnapshot: CdmSnapshot
+  - The most recent indexed snapshot of this workload.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.

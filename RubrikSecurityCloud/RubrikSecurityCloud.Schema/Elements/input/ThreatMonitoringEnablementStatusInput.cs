@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? EntityId
-        // GraphQL -> entityId: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("entityId")]
-        public System.String? EntityId { get; set; }
-
         //      C# -> ThreatMonitoringEnablementEntity? EntityType
         // GraphQL -> entityType: ThreatMonitoringEnablementEntity! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("entityType")]
         public ThreatMonitoringEnablementEntity? EntityType { get; set; }
+
+        //      C# -> System.String? EntityId
+        // GraphQL -> entityId: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("entityId")]
+        public System.String? EntityId { get; set; }
 
         //      C# -> System.Boolean? Enabled
         // GraphQL -> enabled: Boolean! (scalar)

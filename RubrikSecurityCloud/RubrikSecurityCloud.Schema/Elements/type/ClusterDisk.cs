@@ -65,11 +65,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasIndicatorLed")]
         public System.Boolean? HasIndicatorLed { get; set; }
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
         [JsonProperty("isEncrypted")]
@@ -149,7 +144,6 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterId = null,
         System.String? DiskId = null,
         System.Boolean? HasIndicatorLed = null,
-        System.String? Id = null,
         System.Boolean? IsEncrypted = null,
         System.Boolean? IsResizable = null,
         System.Boolean? LedStatus = null,
@@ -190,9 +184,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HasIndicatorLed != null ) {
             this.HasIndicatorLed = HasIndicatorLed;
-        }
-        if ( Id != null ) {
-            this.Id = Id;
         }
         if ( IsEncrypted != null ) {
             this.IsEncrypted = IsEncrypted;
@@ -323,15 +314,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hasIndicatorLed\n" ;
             } else {
                 s += ind + "hasIndicatorLed\n" ;
-            }
-        }
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (this.Id != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "id\n" ;
-            } else {
-                s += ind + "id\n" ;
             }
         }
         //      C# -> System.Boolean? IsEncrypted
@@ -601,23 +583,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.HasIndicatorLed != null && ec.Excludes("hasIndicatorLed",true))
         {
             this.HasIndicatorLed = null;
-        }
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        if (ec.Includes("id",true))
-        {
-            if(this.Id == null) {
-
-                this.Id = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.Id != null && ec.Excludes("id",true))
-        {
-            this.Id = null;
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)

@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isThreatMonitoring")]
         public System.Boolean? IsThreatMonitoring { get; set; }
 
+        //      C# -> QmcMetadata? QmcMetadata
+        // GraphQL -> qmcMetadata: QmcMetadata (input)
+        [JsonProperty("qmcMetadata")]
+        public QmcMetadata? QmcMetadata { get; set; }
+
 
         #endregion
 

@@ -15,3 +15,5 @@ AWS cloud accounts with features.
   - Filter by the operation defined in the RBAC system.
 - includeInternalFeatures: System.Boolean
   - Include internal features in the response.
+- serviceTypeFilter: list of AwsCloudAccountServiceTypes
+  - Filter accounts by BaaS or non-BaaS service type.

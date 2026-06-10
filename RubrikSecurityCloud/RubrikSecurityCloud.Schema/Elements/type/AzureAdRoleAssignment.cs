@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdPimAssignmentType? AssignmentType
+        // GraphQL -> assignmentType: AzureAdPimAssignmentType (enum)
+        [JsonProperty("assignmentType")]
+        public AzureAdPimAssignmentType? AssignmentType { get; set; }
+
+        //      C# -> AzureAdPimEligibilityMemberType? MemberType
+        // GraphQL -> memberType: AzureAdPimEligibilityMemberType (enum)
+        [JsonProperty("memberType")]
+        public AzureAdPimEligibilityMemberType? MemberType { get; set; }
+
         //      C# -> AzureAdRoleAssignmentPrincipalType? PrincipalType
         // GraphQL -> principalType: AzureAdRoleAssignmentPrincipalType! (enum)
         [JsonProperty("principalType")]
@@ -29,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> scopeObjType: AzureAdRoleAssignmentScopeType! (enum)
         [JsonProperty("scopeObjType")]
         public AzureAdRoleAssignmentScopeType? ScopeObjType { get; set; }
+
+        //      C# -> DateTime? EndDateTime
+        // GraphQL -> endDateTime: DateTime (scalar)
+        [JsonProperty("endDateTime")]
+        public DateTime? EndDateTime { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -65,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("scopeObjName")]
         public System.String? ScopeObjName { get; set; }
 
+        //      C# -> DateTime? StartDateTime
+        // GraphQL -> startDateTime: DateTime (scalar)
+        [JsonProperty("startDateTime")]
+        public DateTime? StartDateTime { get; set; }
+
         //      C# -> PrincipalObject? PrincipalObject
         // GraphQL -> principalObject: PrincipalObject! (type)
         [JsonProperty("principalObject")]
@@ -85,8 +105,11 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureAdRoleAssignment Set(
+        AzureAdPimAssignmentType? AssignmentType = null,
+        AzureAdPimEligibilityMemberType? MemberType = null,
         AzureAdRoleAssignmentPrincipalType? PrincipalType = null,
         AzureAdRoleAssignmentScopeType? ScopeObjType = null,
+        DateTime? EndDateTime = null,
         System.String? Id = null,
         System.String? PrincipalId = null,
         System.String? PrincipalName = null,
@@ -94,15 +117,25 @@ namespace RubrikSecurityCloud.Types
         System.String? RoleName = null,
         System.String? ScopeObjId = null,
         System.String? ScopeObjName = null,
+        DateTime? StartDateTime = null,
         PrincipalObject? PrincipalObject = null,
         AzureAdRole? RoleObject = null
     ) 
     {
+        if ( AssignmentType != null ) {
+            this.AssignmentType = AssignmentType;
+        }
+        if ( MemberType != null ) {
+            this.MemberType = MemberType;
+        }
         if ( PrincipalType != null ) {
             this.PrincipalType = PrincipalType;
         }
         if ( ScopeObjType != null ) {
             this.ScopeObjType = ScopeObjType;
+        }
+        if ( EndDateTime != null ) {
+            this.EndDateTime = EndDateTime;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -125,6 +158,9 @@ namespace RubrikSecurityCloud.Types
         if ( ScopeObjName != null ) {
             this.ScopeObjName = ScopeObjName;
         }
+        if ( StartDateTime != null ) {
+            this.StartDateTime = StartDateTime;
+        }
         if ( PrincipalObject != null ) {
             this.PrincipalObject = PrincipalObject;
         }
@@ -145,6 +181,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureAdPimAssignmentType? AssignmentType
+        // GraphQL -> assignmentType: AzureAdPimAssignmentType (enum)
+        if (this.AssignmentType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "assignmentType\n" ;
+            } else {
+                s += ind + "assignmentType\n" ;
+            }
+        }
+        //      C# -> AzureAdPimEligibilityMemberType? MemberType
+        // GraphQL -> memberType: AzureAdPimEligibilityMemberType (enum)
+        if (this.MemberType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "memberType\n" ;
+            } else {
+                s += ind + "memberType\n" ;
+            }
+        }
         //      C# -> AzureAdRoleAssignmentPrincipalType? PrincipalType
         // GraphQL -> principalType: AzureAdRoleAssignmentPrincipalType! (enum)
         if (this.PrincipalType != null) {
@@ -161,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "scopeObjType\n" ;
             } else {
                 s += ind + "scopeObjType\n" ;
+            }
+        }
+        //      C# -> DateTime? EndDateTime
+        // GraphQL -> endDateTime: DateTime (scalar)
+        if (this.EndDateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "endDateTime\n" ;
+            } else {
+                s += ind + "endDateTime\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -226,6 +289,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "scopeObjName\n" ;
             }
         }
+        //      C# -> DateTime? StartDateTime
+        // GraphQL -> startDateTime: DateTime (scalar)
+        if (this.StartDateTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "startDateTime\n" ;
+            } else {
+                s += ind + "startDateTime\n" ;
+            }
+        }
         //      C# -> PrincipalObject? PrincipalObject
         // GraphQL -> principalObject: PrincipalObject! (type)
         if (this.PrincipalObject != null) {
@@ -257,6 +329,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureAdPimAssignmentType? AssignmentType
+        // GraphQL -> assignmentType: AzureAdPimAssignmentType (enum)
+        if (ec.Includes("assignmentType",true))
+        {
+            if(this.AssignmentType == null) {
+
+                this.AssignmentType = new AzureAdPimAssignmentType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AssignmentType != null && ec.Excludes("assignmentType",true))
+        {
+            this.AssignmentType = null;
+        }
+        //      C# -> AzureAdPimEligibilityMemberType? MemberType
+        // GraphQL -> memberType: AzureAdPimEligibilityMemberType (enum)
+        if (ec.Includes("memberType",true))
+        {
+            if(this.MemberType == null) {
+
+                this.MemberType = new AzureAdPimEligibilityMemberType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MemberType != null && ec.Excludes("memberType",true))
+        {
+            this.MemberType = null;
+        }
         //      C# -> AzureAdRoleAssignmentPrincipalType? PrincipalType
         // GraphQL -> principalType: AzureAdRoleAssignmentPrincipalType! (enum)
         if (ec.Includes("principalType",true))
@@ -290,6 +396,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ScopeObjType != null && ec.Excludes("scopeObjType",true))
         {
             this.ScopeObjType = null;
+        }
+        //      C# -> DateTime? EndDateTime
+        // GraphQL -> endDateTime: DateTime (scalar)
+        if (ec.Includes("endDateTime",true))
+        {
+            if(this.EndDateTime == null) {
+
+                this.EndDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EndDateTime != null && ec.Excludes("endDateTime",true))
+        {
+            this.EndDateTime = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -409,6 +532,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ScopeObjName != null && ec.Excludes("scopeObjName",true))
         {
             this.ScopeObjName = null;
+        }
+        //      C# -> DateTime? StartDateTime
+        // GraphQL -> startDateTime: DateTime (scalar)
+        if (ec.Includes("startDateTime",true))
+        {
+            if(this.StartDateTime == null) {
+
+                this.StartDateTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StartDateTime != null && ec.Excludes("startDateTime",true))
+        {
+            this.StartDateTime = null;
         }
         //      C# -> PrincipalObject? PrincipalObject
         // GraphQL -> principalObject: PrincipalObject! (type)

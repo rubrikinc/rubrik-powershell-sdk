@@ -26,6 +26,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int32? Limit
+        // GraphQL -> limit: Int (scalar)
+        [JsonProperty("limit")]
+        public System.Int32? Limit { get; set; }
+
+        //      C# -> System.Int32? Offset
+        // GraphQL -> offset: Int (scalar)
+        [JsonProperty("offset")]
+        public System.Int32? Offset { get; set; }
+
 
         #endregion
 

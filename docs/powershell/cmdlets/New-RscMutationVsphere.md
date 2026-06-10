@@ -40,7 +40,7 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 - There is a single argument of type DownloadVsphereVirtualMachineFilesInput.
 - Returns AsyncRequestStatus.
 ### exportsnapshottostandalonehostv2
-Export snapshot of a virtual machine to standalone ESXi server.
+Initiates an export job for a vSphere snapshot to a standalone ESXi host.
 
 - There is a single argument of type VsphereExportSnapshotToStandaloneHostV2Input.
 - Returns AsyncRequestStatus.

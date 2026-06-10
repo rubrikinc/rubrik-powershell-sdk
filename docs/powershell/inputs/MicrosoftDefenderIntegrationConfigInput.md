@@ -7,3 +7,5 @@ Holds the configuration of the Microsoft Defender integration.
   - The Entra ID application (client) ID.
 - clientSecret: System.String
   - The Entra ID client secret.
+- status: MicrosoftDefenderStatusInput
+  - The status of the integration.

@@ -1,4 +1,6 @@
 ### AzureRoleBasedAccount
+
+
 - subscriptionWithFeatures: AzureSubscriptionWithFeaturesType
   - The subscription info with feature details.
 - cloudAccountId: System.String

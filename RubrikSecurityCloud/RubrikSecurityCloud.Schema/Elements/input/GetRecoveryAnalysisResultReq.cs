@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupId")]
         public System.String? GroupId { get; set; }
 
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: UUID (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
+
 
         #endregion
 

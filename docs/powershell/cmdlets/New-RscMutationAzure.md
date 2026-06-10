@@ -15,6 +15,12 @@ Add the Azure Subscription cloud account for the given feature without OAuth.
 
 - There is a single argument of type AddAzureCloudAccountWithoutOauthInput.
 - Returns AddAzureCloudAccountWithoutOauthReply.
+### adddevopscloudaccount
+Creates a new Azure DevOps cloud account configuration with backup and
+exocompute settings.
+
+- There is a single argument of type AddAzureDevOpsCloudAccountInput.
+- Returns System.String.
 ### backupaddirectory
 Backs up the Azure AD directory.
 
@@ -43,6 +49,12 @@ Complete the Azure OAuth flow and pass the authorization code.
 
 - There is a single argument of type CompleteAzureCloudAccountOauthInput.
 - Returns CompleteAzureCloudAccountOauthReply.
+### completedevopsoauth
+Completes the Azure DevOps OAuth flow by saving the authorization code
+in the in-memory session store.
+
+- There is a single argument of type CompleteAzureDevOpsOauthInput.
+- Returns System.String.
 ### createaccount
 - There is a single argument of type CreateAzureAccountInput.
 - Returns CloudAccount.
@@ -99,6 +111,12 @@ Delete the Azure Subscriptions cloud account for the given feature without OAuth
 
 - There is a single argument of type DeleteAzureCloudAccountWithoutOauthInput.
 - Returns DeleteAzureCloudAccountWithoutOauthReply.
+### deletedevopscloudaccount
+Deletes an Azure DevOps cloud account and optionally deletes associated
+snapshots.
+
+- There is a single argument of type DeleteAzureDevOpsCloudAccountInput.
+- Returns System.String.
 ### excludestorageaccountcontainers
 Updates the list of containers excluded from protection for the specified storage account.
 
@@ -198,10 +216,22 @@ Updates an existing Rubrik Cloud Vault Azure storage settings for the archival o
 ### updatecloudnativestoragesetting
 - There is a single argument of type UpdateCloudNativeAzureStorageSettingInput.
 - Returns UpdateCloudNativeAzureStorageSettingReply.
+### updateclusterstorageaccountredundancy
+Initiates a redundancy conversion for the Azure storage account
+associated with the specified cloud cluster.
+
+- There is a single argument of type UpdateAzureClusterStorageAccountRedundancyInput.
+- Returns UpdateAzureClusterStorageAccountRedundancyReply.
 ### updatecustomerapppermissionforsql
 Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
 
 - The updatecustomerapppermissionforsql subcommand takes no arguments.
+- Returns System.String.
+### updatedevopscloudaccount
+Updates backup location, region, and exocompute settings for an
+existing Azure DevOps cloud account.
+
+- There is a single argument of type UpdateAzureDevOpsCloudAccountInput.
 - Returns System.String.
 ### updatetarget
 - There is a single argument of type UpdateAzureTargetInput.
@@ -221,3 +251,9 @@ Set Azure Cloud Account feature status to Connected from Update Permissions stat
 
 - There is a single argument of type UpgradeAzureCloudAccountPermissionsWithoutOauthInput.
 - Returns UpgradeAzureCloudAccountPermissionsWithoutOauthReply.
+### upgradedevopscloudaccount
+Upgrades permissions for an Azure DevOps cloud account to support
+additional features or permission groups.
+
+- There is a single argument of type UpgradeAzureDevOpsCloudAccountInput.
+- Returns UpgradeAzureDevOpsCloudAccountReply.

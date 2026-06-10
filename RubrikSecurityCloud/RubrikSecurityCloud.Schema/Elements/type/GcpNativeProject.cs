@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.Int32? BigQueryDatasetCount
+        // GraphQL -> bigQueryDatasetCount: Int! (scalar)
+        [JsonProperty("bigQueryDatasetCount")]
+        public System.Int32? BigQueryDatasetCount { get; set; }
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)
         [JsonProperty("cloudAccountId")]
@@ -268,6 +273,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.Int32? BigQueryDatasetCount = null,
         System.String? CloudAccountId = null,
         System.String? CloudNativeId = null,
         System.Int32? DiskCount = null,
@@ -321,6 +327,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( BigQueryDatasetCount != null ) {
+            this.BigQueryDatasetCount = BigQueryDatasetCount;
         }
         if ( CloudAccountId != null ) {
             this.CloudAccountId = CloudAccountId;
@@ -502,6 +511,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.Int32? BigQueryDatasetCount
+        // GraphQL -> bigQueryDatasetCount: Int! (scalar)
+        if (this.BigQueryDatasetCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "bigQueryDatasetCount\n" ;
+            } else {
+                s += ind + "bigQueryDatasetCount\n" ;
             }
         }
         //      C# -> System.String? CloudAccountId
@@ -955,6 +973,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.Int32? BigQueryDatasetCount
+        // GraphQL -> bigQueryDatasetCount: Int! (scalar)
+        if (ec.Includes("bigQueryDatasetCount",true))
+        {
+            if(this.BigQueryDatasetCount == null) {
+
+                this.BigQueryDatasetCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.BigQueryDatasetCount != null && ec.Excludes("bigQueryDatasetCount",true))
+        {
+            this.BigQueryDatasetCount = null;
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String! (scalar)

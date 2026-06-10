@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Active Directory' API domain:
-    /// CreateDownloadFilesJob, CreateLiveMount, CreateUnmount, ModifyLiveMount, or RestoreObjects.
+    /// CreateDownloadFilesJob, CreateLiveMount, CreateUnmount, ModifyLiveMount, RestoreForestV2, or RestoreObjects.
     /// </summary>
     /// <description>
     /// New-RscMutationActiveDirectory creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 6 operations
     /// in the 'Active Directory' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateDownloadFilesJob, CreateLiveMount, CreateUnmount, ModifyLiveMount, or RestoreObjects.
+    /// one of: CreateDownloadFilesJob, CreateLiveMount, CreateUnmount, ModifyLiveMount, RestoreForestV2, or RestoreObjects.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -255,6 +255,93 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RestoreForestV2 operation
+    /// of the 'Active Directory' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    ActiveDirectory
+    /// # API Operation: RestoreForestV2
+    /// 
+    /// $query = New-RscMutationActiveDirectory -Operation RestoreForestV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	forestConfig = @{
+    /// 		# REQUIRED
+    /// 		forestId = $someString
+    /// 		# OPTIONAL
+    /// 		dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		customDnsIps = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldRebuildGc = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldResetKerberos = $someBoolean
+    /// 		# OPTIONAL
+    /// 		winTimeServers = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# REQUIRED
+    /// 	domainConfigs = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			domainSid = $someString
+    /// 			# OPTIONAL
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			password = $someString
+    /// 			# OPTIONAL
+    /// 			dcConfigs = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					altHostId = $someString
+    /// 					# OPTIONAL
+    /// 					recoveryMethod = $someDcRecoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DcRecoveryMethod]) for enum values.
+    /// 					# OPTIONAL
+    /// 					unselectedDcBehavior = $someUnselectedDcBehavior # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnselectedDcBehavior]) for enum values.
+    /// 					# OPTIONAL
+    /// 					networkInterfaceSetting = $someNetworkInterfaceSetting # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkInterfaceSetting]) for enum values.
+    /// 					# OPTIONAL
+    /// 					dsrmPassword = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			hostPromotionConfigs = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostId = $someString
+    /// 					# OPTIONAL
+    /// 					dsrmPassword = $someString
+    /// 					# OPTIONAL
+    /// 					ifmSnapshotId = $someString
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RestoreActiveDirectoryForestV2Reply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RestoreObjects operation
     /// of the 'Active Directory' API domain.
     /// <code>
@@ -366,6 +453,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateLiveMount",
                 "CreateUnmount",
                 "ModifyLiveMount",
+                "RestoreForestV2",
                 "RestoreObjects",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -393,6 +481,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ModifyLiveMount":
                         this.ProcessRecord_ModifyLiveMount();
+                        break;
+                    case "RestoreForestV2":
+                        this.ProcessRecord_RestoreForestV2();
                         break;
                     case "RestoreObjects":
                         this.ProcessRecord_RestoreObjects();
@@ -441,6 +532,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ModifyLiveMount";
             // Create new graphql operation modifyActiveDirectoryLiveMount
             InitMutationModifyActiveDirectoryLiveMount();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreActiveDirectoryForestV2.
+        internal void ProcessRecord_RestoreForestV2()
+        {
+            this._logger.name += " -RestoreForestV2";
+            // Create new graphql operation restoreActiveDirectoryForestV2
+            InitMutationRestoreActiveDirectoryForestV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -595,6 +695,85 @@ $query.Var.input = @{
 		# OPTIONAL
 		subnet = $someString
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreActiveDirectoryForestV2(input: RestoreActiveDirectoryForestV2Input!): RestoreActiveDirectoryForestV2Reply!
+        internal void InitMutationRestoreActiveDirectoryForestV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreActiveDirectoryForestV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreActiveDirectoryForestV2",
+                "($input: RestoreActiveDirectoryForestV2Input!)",
+                "RestoreActiveDirectoryForestV2Reply",
+                Mutation.RestoreActiveDirectoryForestV2,
+                Mutation.RestoreActiveDirectoryForestV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	forestConfig = @{
+		# REQUIRED
+		forestId = $someString
+		# OPTIONAL
+		dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+		# OPTIONAL
+		customDnsIps = @(
+			$someString
+		)
+		# OPTIONAL
+		shouldRebuildGc = $someBoolean
+		# OPTIONAL
+		shouldResetKerberos = $someBoolean
+		# OPTIONAL
+		winTimeServers = @(
+			$someString
+		)
+	}
+	# REQUIRED
+	domainConfigs = @(
+		@{
+			# REQUIRED
+			domainSid = $someString
+			# OPTIONAL
+			username = $someString
+			# OPTIONAL
+			password = $someString
+			# OPTIONAL
+			dcConfigs = @(
+				@{
+					# REQUIRED
+					snapshotId = $someString
+					# OPTIONAL
+					altHostId = $someString
+					# OPTIONAL
+					recoveryMethod = $someDcRecoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DcRecoveryMethod]) for enum values.
+					# OPTIONAL
+					unselectedDcBehavior = $someUnselectedDcBehavior # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnselectedDcBehavior]) for enum values.
+					# OPTIONAL
+					networkInterfaceSetting = $someNetworkInterfaceSetting # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkInterfaceSetting]) for enum values.
+					# OPTIONAL
+					dsrmPassword = $someString
+				}
+			)
+			# OPTIONAL
+			hostPromotionConfigs = @(
+				@{
+					# REQUIRED
+					hostId = $someString
+					# OPTIONAL
+					dsrmPassword = $someString
+					# OPTIONAL
+					ifmSnapshotId = $someString
+				}
+			)
+		}
+	)
 }"
             );
         }

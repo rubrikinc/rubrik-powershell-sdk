@@ -975,6 +975,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	immutabilitySettings = @{
     /// 		# OPTIONAL
     /// 		lockDurationDays = $someInt
+    /// 		# OPTIONAL
+    /// 		isObjectLockEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	s3Endpoint = $someString
@@ -2062,6 +2064,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	immutabilitySettings = @{
     /// 		# OPTIONAL
     /// 		lockDurationDays = $someInt
+    /// 		# OPTIONAL
+    /// 		isObjectLockEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	s3Endpoint = $someString
@@ -3634,6 +3638,8 @@ $query.Var.input = @{
 	immutabilitySettings = @{
 		# OPTIONAL
 		lockDurationDays = $someInt
+		# OPTIONAL
+		isObjectLockEnabled = $someBoolean
 	}
 	# OPTIONAL
 	s3Endpoint = $someString
@@ -4569,6 +4575,8 @@ $query.Var.input = @{
 	immutabilitySettings = @{
 		# OPTIONAL
 		lockDurationDays = $someInt
+		# OPTIONAL
+		isObjectLockEnabled = $someBoolean
 	}
 	# OPTIONAL
 	s3Endpoint = $someString

@@ -55,6 +55,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldRecurse")]
         public System.Boolean? ShouldRecurse { get; set; }
 
+        //      C# -> List<System.String>? ScopedManagementGroupIds
+        // GraphQL -> scopedManagementGroupIds: [String!] (scalar)
+        [JsonProperty("scopedManagementGroupIds")]
+        public List<System.String>? ScopedManagementGroupIds { get; set; }
+
+        //      C# -> CloudAccountOperation? OperationType
+        // GraphQL -> operationType: CloudAccountOperation (enum)
+        [JsonProperty("operationType")]
+        public CloudAccountOperation? OperationType { get; set; }
+
+        //      C# -> System.String? SearchText
+        // GraphQL -> searchText: String (scalar)
+        [JsonProperty("searchText")]
+        public System.String? SearchText { get; set; }
+
 
         #endregion
 

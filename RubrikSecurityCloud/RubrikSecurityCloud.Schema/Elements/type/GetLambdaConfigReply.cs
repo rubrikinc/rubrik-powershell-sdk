@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("threatMonitoringExtensions")]
         public List<System.String>? ThreatMonitoringExtensions { get; set; }
 
+        //      C# -> System.Boolean? ThreatMonitoringSortByOffset
+        // GraphQL -> threatMonitoringSortByOffset: Boolean! (scalar)
+        [JsonProperty("threatMonitoringSortByOffset")]
+        public System.Boolean? ThreatMonitoringSortByOffset { get; set; }
+
 
         #endregion
 
@@ -95,7 +100,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsThreatMonitoringEnabledForActiveDirectory = null,
         System.Int32? MaxSnapshotsToUploadAutomatically = null,
         System.Boolean? OrionYaraRemoteProcessingEnabled = null,
-        List<System.String>? ThreatMonitoringExtensions = null
+        List<System.String>? ThreatMonitoringExtensions = null,
+        System.Boolean? ThreatMonitoringSortByOffset = null
     ) 
     {
         if ( AccountId != null ) {
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ThreatMonitoringExtensions != null ) {
             this.ThreatMonitoringExtensions = ThreatMonitoringExtensions;
+        }
+        if ( ThreatMonitoringSortByOffset != null ) {
+            this.ThreatMonitoringSortByOffset = ThreatMonitoringSortByOffset;
         }
         return this;
     }
@@ -242,6 +251,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "threatMonitoringExtensions\n" ;
             } else {
                 s += ind + "threatMonitoringExtensions\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ThreatMonitoringSortByOffset
+        // GraphQL -> threatMonitoringSortByOffset: Boolean! (scalar)
+        if (this.ThreatMonitoringSortByOffset != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "threatMonitoringSortByOffset\n" ;
+            } else {
+                s += ind + "threatMonitoringSortByOffset\n" ;
             }
         }
         return s;
@@ -437,6 +455,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ThreatMonitoringExtensions != null && ec.Excludes("threatMonitoringExtensions",true))
         {
             this.ThreatMonitoringExtensions = null;
+        }
+        //      C# -> System.Boolean? ThreatMonitoringSortByOffset
+        // GraphQL -> threatMonitoringSortByOffset: Boolean! (scalar)
+        if (ec.Includes("threatMonitoringSortByOffset",true))
+        {
+            if(this.ThreatMonitoringSortByOffset == null) {
+
+                this.ThreatMonitoringSortByOffset = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ThreatMonitoringSortByOffset != null && ec.Excludes("threatMonitoringSortByOffset",true))
+        {
+            this.ThreatMonitoringSortByOffset = null;
         }
     }
 

@@ -1,0 +1,31 @@
+### IntuneDeviceManagementPolicy
+Intune device management configuration policy.
+
+- displayName: System.String
+  - Display name of the policy.
+- platform: IntuneDevicePlatformType
+  - Platform type of the policy.
+- policyType: IntuneDeviceManagementPolicyType
+  - Policy type of the policy.
+- version: System.String
+  - Version of the policy.
+- lastModifiedDateTime: DateTime
+  - Date and time when the policy was last modified.
+- isAssigned: System.Boolean
+  - Specifies whether the policy is assigned.
+- target: System.String
+  - Target of the endpoint security policy.
+- qualityUpdateStatus: System.String
+  - Quality update status.
+- featureUpdateStatus: System.String
+  - Feature update status.
+- qualityDeferral: System.Int32
+  - Quality deferral days.
+- featureDeferral: System.Int32
+  - Feature deferral days.
+- secretSettings: list of IntuneDeviceManagementSecretSettings
+  - Secret settings of the policy.
+- roleScopeTagNames: list of System.Strings
+  - Role scope tag names associated with the policy.
+- roleScopeTagIds: list of System.Strings
+  - Role scope tag IDs associated with the policy.

@@ -15,3 +15,4 @@ Represents the objects or items to be restored from a site collection. Either th
   - Type of object to create under the target.
 - newObjectName: System.String
   - The name for the new object.
+- shouldRestoreFileVersions: System.Boolean

@@ -1,56 +1,56 @@
 ### AuthorizedOperation
 Authorized operations on an object.
 
-- CREATE_REPORT
-- VIEW_REPORT
+- CREATE_REPORT - Create reports.
+- VIEW_REPORT - View reports.
 - VIEW_CDM_REPORT - View CDM report.
-- MODIFY_REPORT
-- DELETE_REPORT
-- ADD_CLUSTER
-- VIEW_CLUSTER
+- MODIFY_REPORT - Edit reports.
+- DELETE_REPORT - Delete reports.
+- ADD_CLUSTER - Add clusters.
+- VIEW_CLUSTER - View clusters.
 - VIEW_CLUSTER_REFERENCE - View cluster reference (name, type, status) for pickers and selectors.
-- MODIFY_CLUSTER
-- DELETE_CLUSTER
-- UPGRADE_CLUSTER
+- MODIFY_CLUSTER - Edit clusters.
+- DELETE_CLUSTER - Remove clusters.
+- UPGRADE_CLUSTER - Upgrade clusters.
 - MANAGE_CLUSTER_SETTINGS - Edit cluster settings.
 - MANAGE_CLUSTER_DISKS - Set up or remove disks on a cluster.
 - ADD_CLUSTER_NODES - Add nodes to the cluster.
 - REMOVE_CLUSTER_NODES - Remove nodes from the cluster.
-- VIEW_DASHBOARD
-- VIEW_SLA
-- MODIFY_SLA
-- CREATE_SLA
-- DELETE_SLA
-- MANAGE_SLA
-- TOGGLE_BLACKOUT_WINDOW
-- VIEW_SYS_EVENT
-- VIEW_NON_SYS_EVENT
-- CANCEL_RUNNING_EVENT
-- VIEW_AUDIT_LOG
-- VIEW_SYS_PREFERENCE
-- EDIT_SYS_PREFERENCE
-- VIEW_INVENTORY
-- MODIFY_INVENTORY
-- ADD_INVENTORY
-- DELETE_INVENTORY
-- MOUNT
-- EXPORT
-- INSTANT_RECOVER
-- DOWNLOAD
-- DOWNLOAD_FROM_ARCHIVAL_LOCATION
-- DELETE_SNAPSHOT
-- RESTORE
-- TAKE_ONDEMAND_SNAPSHOT
-- MANAGE_PROTECTION
+- VIEW_DASHBOARD - View dashboard.
+- VIEW_SLA - View SLA Domain.
+- MODIFY_SLA - Edit SLA Domains.
+- CREATE_SLA - Create SLA Domains.
+- DELETE_SLA - Delete SLA Domains.
+- MANAGE_SLA - Manage SLA Domains.
+- TOGGLE_BLACKOUT_WINDOW - Pause or resume cluster protection.
+- VIEW_SYS_EVENT - View system events.
+- VIEW_NON_SYS_EVENT - View user activity.
+- CANCEL_RUNNING_EVENT - Cancel a running activity.
+- VIEW_AUDIT_LOG - View audit logs.
+- VIEW_SYS_PREFERENCE - View system preferences.
+- EDIT_SYS_PREFERENCE - Edit system preferences.
+- VIEW_INVENTORY - View protectable objects.
+- MODIFY_INVENTORY - Edit settings.
+- ADD_INVENTORY - Add objects.
+- DELETE_INVENTORY - Remove an object.
+- MOUNT - Mount snapshot.
+- EXPORT - Export data.
+- INSTANT_RECOVER - Instant recovery.
+- DOWNLOAD - Download files.
+- DOWNLOAD_FROM_ARCHIVAL_LOCATION - Download from data center archival location.
+- DELETE_SNAPSHOT - Delete snapshots.
+- RESTORE - Restore data.
+- TAKE_ONDEMAND_SNAPSHOT - Take On-Demand Snapshot.
+- MANAGE_PROTECTION - Manage protection.
 - RENEW_CERTIFICATE - Renew RSC-managed certificates.
-- MANAGE_DATA_SOURCE
-- REFRESH_DATA_SOURCE
-- EXPORT_FILES
-- EXPORT_SNAPSHOTS
-- RESTORE_TO_ORIGIN
-- PROVISION_ON_INFRASTRUCTURE
-- TRANSFER_ACCOUNT_OWNER
-- UPDATE_ACCOUNT_OWNERSHIP
+- MANAGE_DATA_SOURCE - Manage data source.
+- REFRESH_DATA_SOURCE - Refresh data sources.
+- EXPORT_FILES - Export files.
+- EXPORT_SNAPSHOTS - Export snapshots.
+- RESTORE_TO_ORIGIN - Restore over original.
+- PROVISION_ON_INFRASTRUCTURE - Provision on infrastructure.
+- TRANSFER_ACCOUNT_OWNER - Transfer account ownership.
+- UPDATE_ACCOUNT_OWNERSHIP - Upgrade account ownership.
 - VIEW_DATA_CLASS_GLOBAL - View data classification.
 - VIEW_DATA_SECURITY_POSTURE_RESULTS - View data security posture results.
 - CONFIGURE_DATA_CLASS_GLOBAL - Manage data classification settings.
@@ -62,24 +62,24 @@ Authorized operations on an object.
 - VIEW_DATA_DETECTION_AND_RESPONSE_ALERTS - View data threat alerts.
 - VIEW_DSPM_INTEGRATIONS - View security integrations.
 - MANAGE_DSPM_INTEGRATIONS - Manage security integrations.
-- ADD_AWS_CLOUD_ACCOUNT
-- EDIT_AWS_CLOUD_ACCOUNT
-- VIEW_AWS_CLOUD_ACCOUNT
-- DELETE_AWS_CLOUD_ACCOUNT
-- ADD_STORAGE_SETTINGS
-- EDIT_STORAGE_SETTINGS
-- VIEW_STORAGE_SETTINGS
-- DELETE_STORAGE_SETTINGS
-- VIEW_SECURITY_SETTINGS
-- EDIT_SECURITY_SETTINGS
-- VIEW_USER_MANAGEMENT
-- EDIT_USER_MANAGEMENT
-- VIEW_ACCESS
+- ADD_AWS_CLOUD_ACCOUNT - Add AWS accounts.
+- EDIT_AWS_CLOUD_ACCOUNT - Edit AWS accounts.
+- VIEW_AWS_CLOUD_ACCOUNT - View AWS accounts.
+- DELETE_AWS_CLOUD_ACCOUNT - Delete AWS accounts.
+- ADD_STORAGE_SETTINGS - Add archival location.
+- EDIT_STORAGE_SETTINGS - Edit archival location (pause/resume, enable/disable, and promote cluster as reader).
+- VIEW_STORAGE_SETTINGS - View cloud, NoSQL, and Rubrik Cloud Vault archival locations.
+- DELETE_STORAGE_SETTINGS - Delete archival location.
+- VIEW_SECURITY_SETTINGS - View security settings.
+- EDIT_SECURITY_SETTINGS - Edit security settings.
+- VIEW_USER_MANAGEMENT - View user management.
+- EDIT_USER_MANAGEMENT - Configure user management.
+- VIEW_ACCESS - View user access.
 - VIEW_USER - View User.
 - VIEW_ROLE - View Role.
 - VIEW_SERVICE_ACCOUNT - View Service Account.
 - VIEW_SECURITY_POLICY - View Security Policy.
-- MANAGE_ACCESS
+- MANAGE_ACCESS - Manage user access.
 - MANAGE_USER - Manage User.
 - MANAGE_ROLE - Manage Role.
 - MANAGE_SERVICE_ACCOUNT - Manage Service Account.
@@ -88,32 +88,32 @@ Authorized operations on an object.
 - MANAGE_CREDENTIALS - Manage Credential.
 - MANAGE_LOCKOUT - Manage Lockout.
 - MANAGE_AUTH_DOMAIN - Manage Auth Domain.
-- ADD_AZURE_CLOUD_ACCOUNT
-- EDIT_AZURE_CLOUD_ACCOUNT
-- VIEW_AZURE_CLOUD_ACCOUNT
-- DELETE_AZURE_CLOUD_ACCOUNT
-- ADD_GCP_CLOUD_ACCOUNT
-- EDIT_GCP_CLOUD_ACCOUNT
-- VIEW_GCP_CLOUD_ACCOUNT
-- DELETE_GCP_CLOUD_ACCOUNT
-- VIEW_CDM_SYS_CONFIG
-- EDIT_CDM_SYS_CONFIG
-- VIEW_CDM_SUPPORT_SETTING
-- EDIT_CDM_SUPPORT_SETTING
-- VIEW_CDM_NETWORK_SETTING
-- EDIT_CDM_NETWORK_SETTING
-- MANAGE_LEGAL_HOLD
+- ADD_AZURE_CLOUD_ACCOUNT - Add Azure accounts.
+- EDIT_AZURE_CLOUD_ACCOUNT - Edit Azure accounts.
+- VIEW_AZURE_CLOUD_ACCOUNT - View Azure accounts.
+- DELETE_AZURE_CLOUD_ACCOUNT - Delete Azure accounts.
+- ADD_GCP_CLOUD_ACCOUNT - Add GCP accounts.
+- EDIT_GCP_CLOUD_ACCOUNT - Edit GCP accounts.
+- VIEW_GCP_CLOUD_ACCOUNT - View GCP account.
+- DELETE_GCP_CLOUD_ACCOUNT - Delete GCP accounts.
+- VIEW_CDM_SYS_CONFIG - View system configuration.
+- EDIT_CDM_SYS_CONFIG - Edit system configuration.
+- VIEW_CDM_SUPPORT_SETTING - View support settings.
+- EDIT_CDM_SUPPORT_SETTING - Edit support settings.
+- VIEW_CDM_NETWORK_SETTING - View network settings.
+- EDIT_CDM_NETWORK_SETTING - Edit network settings.
+- MANAGE_LEGAL_HOLD - Place and remove legal hold.
 - MANAGE_ROLLING_UPGRADES - Manage rolling upgrades on account level.
-- VIEW_ORGANIZATION
-- EDIT_ORGANIZATION
-- VIEW_REPLICATION_SETTINGS
-- EDIT_REPLICATION_SETTINGS
-- EDIT_NETWORK_THROTTLE_SETTINGS
-- VIEW_THREAT_HUNT_RESULTS
-- CREATE_THREAT_HUNT
-- EDIT_QUARANTINE
-- RECOVER_FROM_QUARANTINE
-- DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET
+- VIEW_ORGANIZATION - View organization.
+- EDIT_ORGANIZATION - Edit organization.
+- VIEW_REPLICATION_SETTINGS - View replication settings.
+- EDIT_REPLICATION_SETTINGS - Edit replication settings.
+- EDIT_NETWORK_THROTTLE_SETTINGS - Edit replication network throttle settings.
+- VIEW_THREAT_HUNT_RESULTS - View threat hunt results.
+- CREATE_THREAT_HUNT - Create threat hunt.
+- EDIT_QUARANTINE - Add files to quarantine and remove files from quarantine.
+- RECOVER_FROM_QUARANTINE - Recover quarantined files and snapshots.
+- DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET - Download from replication target.
 - VIEW_WEBHOOKS - View webhooks configuration.
 - MANAGE_WEBHOOKS - Manage webhook configuration.
 - RESIZE_MANAGED_VOLUME - Operation to Resize Managed Volume.
@@ -249,8 +249,21 @@ Authorized operations on an object.
 - CREATE_CLOUD_NATIVE_APPLICATION - Create a cloud native application.
 - EDIT_CLOUD_NATIVE_APPLICATION - Edit a cloud native application.
 - DELETE_CLOUD_NATIVE_APPLICATION - Delete a cloud native application.
-- CATEGORY_VIEW_DATA_SOURCE
-- CATEGORY_MANAGE_DATA_SOURCE
-- CATEGORY_PROTECTION
-- CATEGORY_RECOVERY
+- BROWSE_WORKLOAD_CONTENTS - Browse snapshot and object contents.
+- MANAGE_HIGH_IMPACT_CHANGE_FEATURES - Enable or disable High Impact Change features for the account.
+- VIEW_RSCP_CLUSTER - View RSC-P cluster.
+- MANAGE_RSCP_CLUSTER_SETTINGS - Manage RSC-P cluster settings.
+- CREATE_FAILOVER_GROUP - Create failover groups.
+- MANAGE_FAILOVER_GROUP - Manage failover groups.
+- VIEW_FAILOVER_GROUP - View failover groups.
+- VIEW_SPLUNK_INTEGRATION - View Splunk integrations.
+- MANAGE_SPLUNK_INTEGRATION - Manage Splunk integrations.
+- VIEW_COPY_SCHEDULES - View NAS Cloud Direct copy schedules.
+- MANAGE_COPY_SCHEDULES - Create, update, and delete NAS Cloud Direct copy schedules.
+- ASSIGN_COPY_SCHEDULES - Assign NAS shares to NAS Cloud Direct copy schedules.
+- USE_AS_COPY_TARGET - Use a NAS share or cloud bucket as a NAS Cloud Direct copy destination.
+- CATEGORY_VIEW_DATA_SOURCE - View data source.
+- CATEGORY_MANAGE_DATA_SOURCE - Manage data source.
+- CATEGORY_PROTECTION - Manage protection.
+- CATEGORY_RECOVERY - Recover data.
 - UNKNOWN_OPERATION - Unknown operation.

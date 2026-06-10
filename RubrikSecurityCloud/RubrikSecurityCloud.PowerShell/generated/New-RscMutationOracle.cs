@@ -150,7 +150,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				ratePerRmanChannelInMb = $someInt
     /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldEnableZeroRpo = $someBoolean
     /// 			}
+    /// 			# OPTIONAL
+    /// 			primaryNode = $someString
+    /// 			# OPTIONAL
+    /// 			shouldEnableMultiNodeBackup = $someBoolean
+    /// 			# OPTIONAL
+    /// 			secondaryNodes = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			backupNodes = @(
+    /// 				$someString
+    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -241,7 +255,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				ratePerRmanChannelInMb = $someInt
     /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldEnableZeroRpo = $someBoolean
     /// 			}
+    /// 			# OPTIONAL
+    /// 			primaryNode = $someString
+    /// 			# OPTIONAL
+    /// 			shouldEnableMultiNodeBackup = $someBoolean
+    /// 			# OPTIONAL
+    /// 			secondaryNodes = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			backupNodes = @(
+    /// 				$someString
+    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -332,7 +360,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				ratePerRmanChannelInMb = $someInt
     /// 				# OPTIONAL
     /// 				isPaused = $someBoolean
+    /// 				# OPTIONAL
+    /// 				shouldEnableZeroRpo = $someBoolean
     /// 			}
+    /// 			# OPTIONAL
+    /// 			primaryNode = $someString
+    /// 			# OPTIONAL
+    /// 			shouldEnableMultiNodeBackup = $someBoolean
+    /// 			# OPTIONAL
+    /// 			secondaryNodes = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			backupNodes = @(
+    /// 				$someString
+    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -621,6 +663,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldSkipDropDbInUndo = $someBoolean
     /// 			# OPTIONAL
+    /// 			shouldRecoverToLatestFromRedo = $someBoolean
+    /// 			# OPTIONAL
     /// 			targetRacHostIds = @(
     /// 				$someString
     /// 			)
@@ -733,6 +777,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		numChannels = $someInt
     /// 		# OPTIONAL
+    /// 		shouldRecoverToLatestFromRedo = $someBoolean
+    /// 		# OPTIONAL
     /// 		shouldSkipDropDbInUndo = $someBoolean
     /// 	}
     /// 	# REQUIRED
@@ -801,6 +847,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			pdbsToLiveMount = @(
     /// 				$someString
     /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldRecoverToLatestFromRedo = $someBoolean
     /// 			# OPTIONAL
     /// 			targetRacHostIds = @(
     /// 				$someString
@@ -1051,6 +1099,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			ratePerRmanChannelInMb = $someInt
     /// 			# OPTIONAL
     /// 			isPaused = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldEnableZeroRpo = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUseSepsWallet = $someBoolean
@@ -1543,7 +1593,21 @@ $query.Var.input = @{
 				ratePerRmanChannelInMb = $someInt
 				# OPTIONAL
 				isPaused = $someBoolean
+				# OPTIONAL
+				shouldEnableZeroRpo = $someBoolean
 			}
+			# OPTIONAL
+			primaryNode = $someString
+			# OPTIONAL
+			shouldEnableMultiNodeBackup = $someBoolean
+			# OPTIONAL
+			secondaryNodes = @(
+				$someString
+			)
+			# OPTIONAL
+			backupNodes = @(
+				$someString
+			)
 		}
 	}
 }"
@@ -1626,7 +1690,21 @@ $query.Var.input = @{
 				ratePerRmanChannelInMb = $someInt
 				# OPTIONAL
 				isPaused = $someBoolean
+				# OPTIONAL
+				shouldEnableZeroRpo = $someBoolean
 			}
+			# OPTIONAL
+			primaryNode = $someString
+			# OPTIONAL
+			shouldEnableMultiNodeBackup = $someBoolean
+			# OPTIONAL
+			secondaryNodes = @(
+				$someString
+			)
+			# OPTIONAL
+			backupNodes = @(
+				$someString
+			)
 		}
 	}
 }"
@@ -1709,7 +1787,21 @@ $query.Var.input = @{
 				ratePerRmanChannelInMb = $someInt
 				# OPTIONAL
 				isPaused = $someBoolean
+				# OPTIONAL
+				shouldEnableZeroRpo = $someBoolean
 			}
+			# OPTIONAL
+			primaryNode = $someString
+			# OPTIONAL
+			shouldEnableMultiNodeBackup = $someBoolean
+			# OPTIONAL
+			secondaryNodes = @(
+				$someString
+			)
+			# OPTIONAL
+			backupNodes = @(
+				$someString
+			)
 		}
 	}
 }"
@@ -1942,6 +2034,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			shouldSkipDropDbInUndo = $someBoolean
 			# OPTIONAL
+			shouldRecoverToLatestFromRedo = $someBoolean
+			# OPTIONAL
 			targetRacHostIds = @(
 				$someString
 			)
@@ -2038,6 +2132,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		numChannels = $someInt
 		# OPTIONAL
+		shouldRecoverToLatestFromRedo = $someBoolean
+		# OPTIONAL
 		shouldSkipDropDbInUndo = $someBoolean
 	}
 	# REQUIRED
@@ -2098,6 +2194,8 @@ $query.Var.input = @{
 			pdbsToLiveMount = @(
 				$someString
 			)
+			# OPTIONAL
+			shouldRecoverToLatestFromRedo = $someBoolean
 			# OPTIONAL
 			targetRacHostIds = @(
 				$someString
@@ -2308,6 +2406,8 @@ $query.Var.input = @{
 			ratePerRmanChannelInMb = $someInt
 			# OPTIONAL
 			isPaused = $someBoolean
+			# OPTIONAL
+			shouldEnableZeroRpo = $someBoolean
 		}
 		# OPTIONAL
 		shouldUseSepsWallet = $someBoolean

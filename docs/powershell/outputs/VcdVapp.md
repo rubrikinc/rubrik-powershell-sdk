@@ -16,6 +16,8 @@
   - List of duplicated vApps.
 - logicalChildConnection: VcdVappLogicalChildTypeConnection
   - List of logical children.
+- recoveryLogicalChildConnection: VcdVappLogicalChildTypeConnection
+  - List of recoveryLogical children.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String

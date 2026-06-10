@@ -1,6 +1,9 @@
 ### DocumentAttribute
-- type: DocumentAttributeType
+Represents the document attribute.
+
 - id: System.String
-  - The ID of the document type.
+  - Represents the ID of the attribute.
 - name: System.String
-  - The name of the document type.
+  - Represents the title of the attribute.
+- type: DocumentAttributeType
+  - Represents the type of the attribute.

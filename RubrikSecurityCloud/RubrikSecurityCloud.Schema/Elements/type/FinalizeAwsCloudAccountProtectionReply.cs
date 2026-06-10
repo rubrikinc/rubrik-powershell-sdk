@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        [JsonProperty("crossAccountRoleModel")]
+        public CrossAccountRoleModel? CrossAccountRoleModel { get; set; }
+
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         [JsonProperty("message")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public FinalizeAwsCloudAccountProtectionReply Set(
+        CrossAccountRoleModel? CrossAccountRoleModel = null,
         System.String? Message = null,
         List<AwsCloudAccount>? AwsChildAccounts = null
     ) 
     {
+        if ( CrossAccountRoleModel != null ) {
+            this.CrossAccountRoleModel = CrossAccountRoleModel;
+        }
         if ( Message != null ) {
             this.Message = Message;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        if (this.CrossAccountRoleModel != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "crossAccountRoleModel\n" ;
+            } else {
+                s += ind + "crossAccountRoleModel\n" ;
+            }
+        }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         if (this.Message != null) {
@@ -92,6 +110,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CrossAccountRoleModel? CrossAccountRoleModel
+        // GraphQL -> crossAccountRoleModel: CrossAccountRoleModel! (enum)
+        if (ec.Includes("crossAccountRoleModel",true))
+        {
+            if(this.CrossAccountRoleModel == null) {
+
+                this.CrossAccountRoleModel = new CrossAccountRoleModel();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CrossAccountRoleModel != null && ec.Excludes("crossAccountRoleModel",true))
+        {
+            this.CrossAccountRoleModel = null;
+        }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         if (ec.Includes("message",true))

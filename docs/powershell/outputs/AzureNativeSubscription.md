@@ -21,6 +21,8 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Count of Azure SQL Managed Instance databases in the subscription.
 - azureStorageAccountCount: System.Int32
   - The number of Azure storage accounts in the subscription.
+- azurePostgresFlexibleServerCount: System.Int32
+  - The number of Azure PostgreSQL Flexible Servers in the subscription.
 - azureCloudType: AzureCloudType
   - Type of Azure cloud, for example, Azure Public Cloud and Azure China Cloud.
 - enabledFeatures: list of AzureNativeSubscriptionEnabledFeatures
@@ -39,10 +41,6 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Whether the subscription is protectable for the specified protection features.
 - azureNativeResourceGroups: AzureNativeResourceGroupConnection
   - Paginated list of all Azure Resource Groups in the subscription.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -77,3 +75,7 @@ An Azure Native Subscription. Refers to the logical entity that provides entitle
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.

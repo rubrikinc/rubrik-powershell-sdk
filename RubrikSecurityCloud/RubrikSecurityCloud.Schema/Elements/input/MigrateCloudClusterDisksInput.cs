@@ -60,6 +60,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newInstanceType")]
         public System.Int32? NewInstanceType { get; set; }
 
+        //      C# -> System.Boolean? IsAzMigration
+        // GraphQL -> isAzMigration: Boolean (scalar)
+        [JsonProperty("isAzMigration")]
+        public System.Boolean? IsAzMigration { get; set; }
+
+        //      C# -> List<SubnetAzConfigInput>? SubnetAzConfigs
+        // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
+        [JsonProperty("subnetAzConfigs")]
+        public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
+
 
         #endregion
 

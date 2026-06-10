@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectionDate")]
         public DateTime? ProtectionDate { get; set; }
 
+        //      C# -> System.String? RbaRole
+        // GraphQL -> rbaRole: String! (scalar)
+        [JsonProperty("rbaRole")]
+        public System.String? RbaRole { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
@@ -448,6 +453,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? OnDemandSnapshotCount = null,
         System.String? PrimaryClusterUuid = null,
         DateTime? ProtectionDate = null,
+        System.String? RbaRole = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? SystemId = null,
@@ -548,6 +554,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProtectionDate != null ) {
             this.ProtectionDate = ProtectionDate;
+        }
+        if ( RbaRole != null ) {
+            this.RbaRole = RbaRole;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -878,6 +887,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "protectionDate\n" ;
             } else {
                 s += ind + "protectionDate\n" ;
+            }
+        }
+        //      C# -> System.String? RbaRole
+        // GraphQL -> rbaRole: String! (scalar)
+        if (this.RbaRole != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbaRole\n" ;
+            } else {
+                s += ind + "rbaRole\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1674,6 +1692,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProtectionDate != null && ec.Excludes("protectionDate",true))
         {
             this.ProtectionDate = null;
+        }
+        //      C# -> System.String? RbaRole
+        // GraphQL -> rbaRole: String! (scalar)
+        if (ec.Includes("rbaRole",true))
+        {
+            if(this.RbaRole == null) {
+
+                this.RbaRole = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbaRole != null && ec.Excludes("rbaRole",true))
+        {
+            this.RbaRole = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

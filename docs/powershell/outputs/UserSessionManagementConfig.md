@@ -2,7 +2,7 @@
 Specifies information about the session management configuration for the user account.
 
 - isConcurrentSessionLimitationEnabled: System.Boolean
-  - Specifies whether the user has enforced a limit on the maximum number of sessions. The value is true if the user has enforced a limit on the maximum number of sessions and false otherwise.
+  - Specifies whether the user has enforced a limit on the maximum number of sessions.
 - maxConcurrentSessions: System.Int32
   - Integer value indicating the maximum number of sessions set by the user.
 - isInactivityTimeoutEnabled: System.Boolean
@@ -12,7 +12,7 @@ Specifies information about the session management configuration for the user ac
 - inactivityTimeoutInSecondsMaxLimit: System.Int64
   - Integer value, in seconds, specifying maximum value for inactivity timeout configuration.
 - inactivityTimeoutInSecondsMinLimit: System.Int64
-  - Integer value , in seconds, specifying minimum value for inactivity timeout configuration.
+  - Integer value, in seconds, specifying minimum value for inactivity timeout configuration.
 - maxConcurrentSessionsMaxLimit: System.Int32
   - Integer value specifying maximum value for concurrent session limit configuration.
 - sessionTimeoutInSeconds: System.Int64
@@ -22,7 +22,7 @@ Specifies information about the session management configuration for the user ac
 - sessionTimeoutInSecondsMaxLimit: System.Int64
   - Maximum value, in seconds, for session timeout configuration.
 - isGlobalPolicyEnforced: System.Boolean
-  - Specifies whether the Global Organization has enforced it's policy.
+  - Specifies whether the Global Organization has enforced its policy.
 - clientSessionTimeoutInSeconds: System.Int64
   - Indicates the number of seconds before the service account session logs out.
 - clientSessionTimeoutInSecondsMinLimit: System.Int64

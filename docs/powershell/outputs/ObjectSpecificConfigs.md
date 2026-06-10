@@ -37,3 +37,5 @@ Object-specific configurations.
   - SLA Domain configuration for GCP Cloud SQL object.
 - awsNativeDynamoDbSlaConfig: AwsNativeDynamoDbSlaConfig
   - SLA Domain configuration for AWS DynamoDB table.
+- azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig
+  - SLA Domain configuration for Azure PostgreSQL Flexible Server.

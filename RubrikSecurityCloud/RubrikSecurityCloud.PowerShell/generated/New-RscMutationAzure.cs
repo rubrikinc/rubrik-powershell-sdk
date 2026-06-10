@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 46
+    /// Create a new RscQuery object for any of the 52
     /// operations in the 'Azure' API domain:
-    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
     /// </summary>
     /// <description>
     /// New-RscMutationAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 46 operations
+    /// There are 52 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateCustomerAppPermissionForSql, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, or UpgradeCloudAccountPermissionsWithoutOauth.
+    /// one of: AddCloudAccount, AddCloudAccountExocomputeConfigurations, AddCloudAccountWithoutOauth, AddDevOpsCloudAccount, BackupAdDirectory, CloudAccountAddWithCustomerAppInitiate, CompleteAdAppSetup, CompleteAdAppUpdate, CompleteCloudAccountOauth, CompleteDevOpsOauth, CreateAccount, CreateAutomaticTargetMapping, CreateCloudNativeRcvStorageSetting, CreateCloudNativeStorageSetting, CreateCluster, CreateReaderTarget, CreateSaasAppAad, CreateTarget, DeleteAdDirectory, DeleteCloudAccount, DeleteCloudAccountExocomputeConfigurations, DeleteCloudAccountWithoutOauth, DeleteDevOpsCloudAccount, ExcludeStorageAccountContainers, GetOrCreateByokApp, MapCloudAccountExocomputeSubscription, MapCloudAccountToPersistentStorageLocation, OauthConsentComplete, OauthConsentKickoff, RestoreAdObjectsWithPasswords, SetCloudAccountCustomerAppCredentials, StartAdAppSetup, StartAdAppUpdate, StartCloudAccountOauth, StartDisableCloudAccountJob, StartExportSqlDatabaseDbJob, StartExportSqlManagedInstanceDbJob, UnmapCloudAccountExocomputeSubscription, UnmapPersistentStorageSubscription, UpdateAccount, UpdateAutomaticTargetMapping, UpdateCloudAccount, UpdateCloudNativeRcvStorageSetting, UpdateCloudNativeStorageSetting, UpdateClusterStorageAccountRedundancy, UpdateCustomerAppPermissionForSql, UpdateDevOpsCloudAccount, UpdateTarget, UpdateTenantForSubscription, UpgradeCloudAccount, UpgradeCloudAccountPermissionsWithoutOauth, or UpgradeDevOpsCloudAccount.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -362,6 +362,64 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the AddDevOpsCloudAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: AddDevOpsCloudAccount
+    /// 
+    /// $query = New-RscMutationAzure -Operation AddDevOpsCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationNativeId = $someString
+    /// 	# REQUIRED
+    /// 	tenantId = $someString
+    /// 	# OPTIONAL
+    /// 	backupLocationId = $someString
+    /// 	# OPTIONAL
+    /// 	backupRegion = $someString
+    /// 	# OPTIONAL
+    /// 	exocomputeCloudAccountId = $someString
+    /// 	# REQUIRED
+    /// 	sessionId = $someString
+    /// 	# REQUIRED
+    /// 	featuresWithPermissionsGroups = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	exocomputeRegion = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the BackupAdDirectory operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -575,6 +633,54 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CompleteAzureCloudAccountOauthReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CompleteDevOpsOauth operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: CompleteDevOpsOauth
+    /// 
+    /// $query = New-RscMutationAzure -Operation CompleteDevOpsOauth
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	sessionId = $someString
+    /// 	# REQUIRED
+    /// 	tenantDomainName = $someString
+    /// 	# REQUIRED
+    /// 	redirectUrl = $someString
+    /// 	# REQUIRED
+    /// 	cloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	keepRefreshToken = $someBoolean
+    /// 	# OPTIONAL
+    /// 	organizationName = $someString
+    /// 	# OPTIONAL
+    /// 	azureDevopsAuthMethod = @{
+    /// 		# OPTIONAL
+    /// 		authCode = $someString
+    /// 		# OPTIONAL
+    /// 		personalAccessToken = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -1437,6 +1543,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeleteDevOpsCloudAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DeleteDevOpsCloudAccount
+    /// 
+    /// $query = New-RscMutationAzure -Operation DeleteDevOpsCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# OPTIONAL
+    /// 	deleteSnapshots = $someBoolean
+    /// 	# OPTIONAL
+    /// 	sessionId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ExcludeStorageAccountContainers operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1664,6 +1805,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			userId = $someString
+    /// 			# OPTIONAL
+    /// 			userIdString = $someString
     /// 			# REQUIRED
     /// 			password = $someString
     /// 		}
@@ -1673,12 +1816,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		@{
     /// 			# REQUIRED
     /// 			objectId = $someString
+    /// 			# OPTIONAL
+    /// 			objectIdString = $someString
     /// 			# REQUIRED
     /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 		}
     /// 	)
     /// 	# REQUIRED
     /// 	forceChangePasswordWithMfa = $someBoolean
+    /// 	# OPTIONAL
+    /// 	objectsToDelete = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			objectId = $someString
+    /// 			# OPTIONAL
+    /// 			objectIdString = $someString
+    /// 			# REQUIRED
+    /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+    /// 		}
+    /// 	)
     /// 	# REQUIRED
     /// 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
     /// 	# OPTIONAL
@@ -1706,6 +1862,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					id = $someString
     /// 					# OPTIONAL
+    /// 					idString = $someString
+    /// 					# OPTIONAL
     /// 					exportedPolicyName = $someString
     /// 					# REQUIRED
     /// 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
@@ -1719,6 +1877,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			skipRestrictedManagementAdministrativeUnits = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		deviceConfigPolicyRecoveryOption = @{
+    /// 			# REQUIRED
+    /// 			policySecretConfigs = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					policyId = $someString
+    /// 					# REQUIRED
+    /// 					secrets = @(
+    /// 						@{
+    /// 							# REQUIRED
+    /// 							settingDefinitionId = $someString
+    /// 							# REQUIRED
+    /// 							secretValue = $someString
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		governanceRecoveryOption = @{
+    /// 			# OPTIONAL
+    /// 			newGovernanceEndTime = $someDateTime
+    /// 			# REQUIRED
+    /// 			recoverLinkedCatalogs = $someBoolean
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
@@ -1729,6 +1913,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# REQUIRED
     /// 				id = $someString
+    /// 				# OPTIONAL
+    /// 				idString = $someString
     /// 				# REQUIRED
     /// 				attributes = @(
     /// 					$someString
@@ -1739,9 +1925,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	ctrConfig = @{
     /// 		# REQUIRED
-    /// 		defaultTargetDomainName = $someString
-    /// 		# REQUIRED
     /// 		targetWorkloadFid = $someString
+    /// 		# REQUIRED
+    /// 		defaultTargetDomainName = $someString
     /// 		# OPTIONAL
     /// 		domainMapping = @{
     /// 			# REQUIRED
@@ -2485,6 +2671,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateClusterStorageAccountRedundancy operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: UpdateClusterStorageAccountRedundancy
+    /// 
+    /// $query = New-RscMutationAzure -Operation UpdateClusterStorageAccountRedundancy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	targetRedundancy = $someAzureClusterStorageRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureClusterStorageRedundancy]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateAzureClusterStorageAccountRedundancyReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateCustomerAppPermissionForSql operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -2498,6 +2719,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscMutationAzure -Operation UpdateCustomerAppPermissionForSql
     /// 
     /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateDevOpsCloudAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: UpdateDevOpsCloudAccount
+    /// 
+    /// $query = New-RscMutationAzure -Operation UpdateDevOpsCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# OPTIONAL
+    /// 	backupLocationId = $someString
+    /// 	# OPTIONAL
+    /// 	backupRegion = $someString
+    /// 	# OPTIONAL
+    /// 	exocomputeCloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	exocomputeRegion = $someString
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -2875,6 +3139,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     ///
     /// </example>
     ///
+    /// <example>
+    /// Runs the UpgradeDevOpsCloudAccount operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: UpgradeDevOpsCloudAccount
+    /// 
+    /// $query = New-RscMutationAzure -Operation UpgradeDevOpsCloudAccount
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	organizationId = $someString
+    /// 	# REQUIRED
+    /// 	sessionId = $someString
+    /// 	# OPTIONAL
+    /// 	featuresToUpgrade = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// 			# OPTIONAL
+    /// 			permissionsGroups = @(
+    /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpgradeAzureDevOpsCloudAccountReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
     [CmdletBinding()]
     [Cmdlet(
         "New",
@@ -2894,11 +3202,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddCloudAccount",
                 "AddCloudAccountExocomputeConfigurations",
                 "AddCloudAccountWithoutOauth",
+                "AddDevOpsCloudAccount",
                 "BackupAdDirectory",
                 "CloudAccountAddWithCustomerAppInitiate",
                 "CompleteAdAppSetup",
                 "CompleteAdAppUpdate",
                 "CompleteCloudAccountOauth",
+                "CompleteDevOpsOauth",
                 "CreateAccount",
                 "CreateAutomaticTargetMapping",
                 "CreateCloudNativeRcvStorageSetting",
@@ -2911,6 +3221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteCloudAccount",
                 "DeleteCloudAccountExocomputeConfigurations",
                 "DeleteCloudAccountWithoutOauth",
+                "DeleteDevOpsCloudAccount",
                 "ExcludeStorageAccountContainers",
                 "GetOrCreateByokApp",
                 "MapCloudAccountExocomputeSubscription",
@@ -2932,11 +3243,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateCloudAccount",
                 "UpdateCloudNativeRcvStorageSetting",
                 "UpdateCloudNativeStorageSetting",
+                "UpdateClusterStorageAccountRedundancy",
                 "UpdateCustomerAppPermissionForSql",
+                "UpdateDevOpsCloudAccount",
                 "UpdateTarget",
                 "UpdateTenantForSubscription",
                 "UpgradeCloudAccount",
                 "UpgradeCloudAccountPermissionsWithoutOauth",
+                "UpgradeDevOpsCloudAccount",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -2961,6 +3275,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AddCloudAccountWithoutOauth":
                         this.ProcessRecord_AddCloudAccountWithoutOauth();
                         break;
+                    case "AddDevOpsCloudAccount":
+                        this.ProcessRecord_AddDevOpsCloudAccount();
+                        break;
                     case "BackupAdDirectory":
                         this.ProcessRecord_BackupAdDirectory();
                         break;
@@ -2975,6 +3292,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CompleteCloudAccountOauth":
                         this.ProcessRecord_CompleteCloudAccountOauth();
+                        break;
+                    case "CompleteDevOpsOauth":
+                        this.ProcessRecord_CompleteDevOpsOauth();
                         break;
                     case "CreateAccount":
                         this.ProcessRecord_CreateAccount();
@@ -3011,6 +3331,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteCloudAccountWithoutOauth":
                         this.ProcessRecord_DeleteCloudAccountWithoutOauth();
+                        break;
+                    case "DeleteDevOpsCloudAccount":
+                        this.ProcessRecord_DeleteDevOpsCloudAccount();
                         break;
                     case "ExcludeStorageAccountContainers":
                         this.ProcessRecord_ExcludeStorageAccountContainers();
@@ -3075,8 +3398,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UpdateCloudNativeStorageSetting":
                         this.ProcessRecord_UpdateCloudNativeStorageSetting();
                         break;
+                    case "UpdateClusterStorageAccountRedundancy":
+                        this.ProcessRecord_UpdateClusterStorageAccountRedundancy();
+                        break;
                     case "UpdateCustomerAppPermissionForSql":
                         this.ProcessRecord_UpdateCustomerAppPermissionForSql();
+                        break;
+                    case "UpdateDevOpsCloudAccount":
+                        this.ProcessRecord_UpdateDevOpsCloudAccount();
                         break;
                     case "UpdateTarget":
                         this.ProcessRecord_UpdateTarget();
@@ -3089,6 +3418,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpgradeCloudAccountPermissionsWithoutOauth":
                         this.ProcessRecord_UpgradeCloudAccountPermissionsWithoutOauth();
+                        break;
+                    case "UpgradeDevOpsCloudAccount":
+                        this.ProcessRecord_UpgradeDevOpsCloudAccount();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -3125,6 +3457,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AddCloudAccountWithoutOauth";
             // Create new graphql operation addAzureCloudAccountWithoutOauth
             InitMutationAddAzureCloudAccountWithoutOauth();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // addAzureDevOpsCloudAccount.
+        internal void ProcessRecord_AddDevOpsCloudAccount()
+        {
+            this._logger.name += " -AddDevOpsCloudAccount";
+            // Create new graphql operation addAzureDevOpsCloudAccount
+            InitMutationAddAzureDevOpsCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3170,6 +3511,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CompleteCloudAccountOauth";
             // Create new graphql operation completeAzureCloudAccountOauth
             InitMutationCompleteAzureCloudAccountOauth();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // completeAzureDevOpsOauth.
+        internal void ProcessRecord_CompleteDevOpsOauth()
+        {
+            this._logger.name += " -CompleteDevOpsOauth";
+            // Create new graphql operation completeAzureDevOpsOauth
+            InitMutationCompleteAzureDevOpsOauth();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3278,6 +3628,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteCloudAccountWithoutOauth";
             // Create new graphql operation deleteAzureCloudAccountWithoutOauth
             InitMutationDeleteAzureCloudAccountWithoutOauth();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteAzureDevOpsCloudAccount.
+        internal void ProcessRecord_DeleteDevOpsCloudAccount()
+        {
+            this._logger.name += " -DeleteDevOpsCloudAccount";
+            // Create new graphql operation deleteAzureDevOpsCloudAccount
+            InitMutationDeleteAzureDevOpsCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3470,12 +3829,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // updateAzureClusterStorageAccountRedundancy.
+        internal void ProcessRecord_UpdateClusterStorageAccountRedundancy()
+        {
+            this._logger.name += " -UpdateClusterStorageAccountRedundancy";
+            // Create new graphql operation updateAzureClusterStorageAccountRedundancy
+            InitMutationUpdateAzureClusterStorageAccountRedundancy();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateCustomerAppPermissionForAzureSql.
         internal void ProcessRecord_UpdateCustomerAppPermissionForSql()
         {
             this._logger.name += " -UpdateCustomerAppPermissionForSql";
             // Create new graphql operation updateCustomerAppPermissionForAzureSql
             InitMutationUpdateCustomerAppPermissionForAzureSql();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateAzureDevOpsCloudAccount.
+        internal void ProcessRecord_UpdateDevOpsCloudAccount()
+        {
+            this._logger.name += " -UpdateDevOpsCloudAccount";
+            // Create new graphql operation updateAzureDevOpsCloudAccount
+            InitMutationUpdateAzureDevOpsCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3512,6 +3889,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpgradeCloudAccountPermissionsWithoutOauth";
             // Create new graphql operation upgradeAzureCloudAccountPermissionsWithoutOauth
             InitMutationUpgradeAzureCloudAccountPermissionsWithoutOauth();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // upgradeAzureDevOpsCloudAccount.
+        internal void ProcessRecord_UpgradeDevOpsCloudAccount()
+        {
+            this._logger.name += " -UpgradeDevOpsCloudAccount";
+            // Create new graphql operation upgradeAzureDevOpsCloudAccount
+            InitMutationUpgradeAzureDevOpsCloudAccount();
         }
 
 
@@ -3777,6 +4163,56 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // addAzureDevOpsCloudAccount(input: AddAzureDevOpsCloudAccountInput!): Void
+        internal void InitMutationAddAzureDevOpsCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddAzureDevOpsCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddAzureDevOpsCloudAccount",
+                "($input: AddAzureDevOpsCloudAccountInput!)",
+                "System.String",
+                Mutation.AddAzureDevOpsCloudAccount,
+                Mutation.AddAzureDevOpsCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationNativeId = $someString
+	# REQUIRED
+	tenantId = $someString
+	# OPTIONAL
+	backupLocationId = $someString
+	# OPTIONAL
+	backupRegion = $someString
+	# OPTIONAL
+	exocomputeCloudAccountId = $someString
+	# REQUIRED
+	sessionId = $someString
+	# REQUIRED
+	featuresWithPermissionsGroups = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
+	)
+	# OPTIONAL
+	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+	# OPTIONAL
+	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+	# OPTIONAL
+	exocomputeRegion = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!): [CreateOnDemandJobReply!]!
         internal void InitMutationBackupAzureAdDirectory()
         {
@@ -3953,6 +4389,46 @@ $query.Var.input = @{
 	performBasicOauth = $someBoolean
 	# OPTIONAL
 	shouldKeepRefreshToken = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // completeAzureDevOpsOauth(input: CompleteAzureDevOpsOauthInput!): Void
+        internal void InitMutationCompleteAzureDevOpsOauth()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CompleteAzureDevOpsOauthInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCompleteAzureDevOpsOauth",
+                "($input: CompleteAzureDevOpsOauthInput!)",
+                "System.String",
+                Mutation.CompleteAzureDevOpsOauth,
+                Mutation.CompleteAzureDevOpsOauthFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	sessionId = $someString
+	# REQUIRED
+	tenantDomainName = $someString
+	# REQUIRED
+	redirectUrl = $someString
+	# REQUIRED
+	cloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+	# OPTIONAL
+	keepRefreshToken = $someBoolean
+	# OPTIONAL
+	organizationName = $someString
+	# OPTIONAL
+	azureDevopsAuthMethod = @{
+		# OPTIONAL
+		authCode = $someString
+		# OPTIONAL
+		personalAccessToken = $someString
+	}
 }"
             );
         }
@@ -4715,6 +5191,33 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // deleteAzureDevOpsCloudAccount(input: DeleteAzureDevOpsCloudAccountInput!): Void
+        internal void InitMutationDeleteAzureDevOpsCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteAzureDevOpsCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteAzureDevOpsCloudAccount",
+                "($input: DeleteAzureDevOpsCloudAccountInput!)",
+                "System.String",
+                Mutation.DeleteAzureDevOpsCloudAccount,
+                Mutation.DeleteAzureDevOpsCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# OPTIONAL
+	deleteSnapshots = $someBoolean
+	# OPTIONAL
+	sessionId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // excludeAzureStorageAccountContainers(input: ExcludeAzureStorageAccountContainersInput!): Void
         internal void InitMutationExcludeAzureStorageAccountContainers()
         {
@@ -4894,6 +5397,8 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			userId = $someString
+			# OPTIONAL
+			userIdString = $someString
 			# REQUIRED
 			password = $someString
 		}
@@ -4903,12 +5408,25 @@ $query.Var.input = @{
 		@{
 			# REQUIRED
 			objectId = $someString
+			# OPTIONAL
+			objectIdString = $someString
 			# REQUIRED
 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 		}
 	)
 	# REQUIRED
 	forceChangePasswordWithMfa = $someBoolean
+	# OPTIONAL
+	objectsToDelete = @(
+		@{
+			# REQUIRED
+			objectId = $someString
+			# OPTIONAL
+			objectIdString = $someString
+			# REQUIRED
+			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+		}
+	)
 	# REQUIRED
 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
 	# OPTIONAL
@@ -4936,6 +5454,8 @@ $query.Var.input = @{
 					# REQUIRED
 					id = $someString
 					# OPTIONAL
+					idString = $someString
+					# OPTIONAL
 					exportedPolicyName = $someString
 					# REQUIRED
 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
@@ -4949,6 +5469,32 @@ $query.Var.input = @{
 			# REQUIRED
 			skipRestrictedManagementAdministrativeUnits = $someBoolean
 		}
+		# OPTIONAL
+		deviceConfigPolicyRecoveryOption = @{
+			# REQUIRED
+			policySecretConfigs = @(
+				@{
+					# REQUIRED
+					policyId = $someString
+					# REQUIRED
+					secrets = @(
+						@{
+							# REQUIRED
+							settingDefinitionId = $someString
+							# REQUIRED
+							secretValue = $someString
+						}
+					)
+				}
+			)
+		}
+		# OPTIONAL
+		governanceRecoveryOption = @{
+			# OPTIONAL
+			newGovernanceEndTime = $someDateTime
+			# REQUIRED
+			recoverLinkedCatalogs = $someBoolean
+		}
 	}
 	# OPTIONAL
 	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
@@ -4959,6 +5505,8 @@ $query.Var.input = @{
 			@{
 				# REQUIRED
 				id = $someString
+				# OPTIONAL
+				idString = $someString
 				# REQUIRED
 				attributes = @(
 					$someString
@@ -4969,9 +5517,9 @@ $query.Var.input = @{
 	# OPTIONAL
 	ctrConfig = @{
 		# REQUIRED
-		defaultTargetDomainName = $someString
-		# REQUIRED
 		targetWorkloadFid = $someString
+		# REQUIRED
+		defaultTargetDomainName = $someString
 		# OPTIONAL
 		domainMapping = @{
 			# REQUIRED
@@ -5593,6 +6141,33 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // updateAzureClusterStorageAccountRedundancy(input: UpdateAzureClusterStorageAccountRedundancyInput!): UpdateAzureClusterStorageAccountRedundancyReply!
+        internal void InitMutationUpdateAzureClusterStorageAccountRedundancy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAzureClusterStorageAccountRedundancyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAzureClusterStorageAccountRedundancy",
+                "($input: UpdateAzureClusterStorageAccountRedundancyInput!)",
+                "UpdateAzureClusterStorageAccountRedundancyReply",
+                Mutation.UpdateAzureClusterStorageAccountRedundancy,
+                Mutation.UpdateAzureClusterStorageAccountRedundancyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	clusterUuid = $someString
+	# OPTIONAL
+	targetRedundancy = $someAzureClusterStorageRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureClusterStorageRedundancy]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // updateCustomerAppPermissionForAzureSql: Void
         internal void InitMutationUpdateCustomerAppPermissionForAzureSql()
         {
@@ -5607,6 +6182,41 @@ $query.Var.input = @{
                 Mutation.UpdateCustomerAppPermissionForAzureSql,
                 Mutation.UpdateCustomerAppPermissionForAzureSqlFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateAzureDevOpsCloudAccount(input: UpdateAzureDevOpsCloudAccountInput!): Void
+        internal void InitMutationUpdateAzureDevOpsCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateAzureDevOpsCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateAzureDevOpsCloudAccount",
+                "($input: UpdateAzureDevOpsCloudAccountInput!)",
+                "System.String",
+                Mutation.UpdateAzureDevOpsCloudAccount,
+                Mutation.UpdateAzureDevOpsCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# OPTIONAL
+	backupLocationId = $someString
+	# OPTIONAL
+	backupRegion = $someString
+	# OPTIONAL
+	exocomputeCloudAccountId = $someString
+	# OPTIONAL
+	hostType = $someDevopsHostType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevopsHostType]) for enum values.
+	# OPTIONAL
+	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
+	# OPTIONAL
+	exocomputeRegion = $someString
+}"
             );
         }
 
@@ -5938,6 +6548,42 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	entraIdGroupId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // upgradeAzureDevOpsCloudAccount(input: UpgradeAzureDevOpsCloudAccountInput!): UpgradeAzureDevOpsCloudAccountReply!
+        internal void InitMutationUpgradeAzureDevOpsCloudAccount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpgradeAzureDevOpsCloudAccountInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpgradeAzureDevOpsCloudAccount",
+                "($input: UpgradeAzureDevOpsCloudAccountInput!)",
+                "UpgradeAzureDevOpsCloudAccountReply",
+                Mutation.UpgradeAzureDevOpsCloudAccount,
+                Mutation.UpgradeAzureDevOpsCloudAccountFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	organizationId = $someString
+	# REQUIRED
+	sessionId = $someString
+	# OPTIONAL
+	featuresToUpgrade = @(
+		@{
+			# OPTIONAL
+			featureType = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+			# OPTIONAL
+			permissionsGroups = @(
+				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+		}
+	)
 }"
             );
         }

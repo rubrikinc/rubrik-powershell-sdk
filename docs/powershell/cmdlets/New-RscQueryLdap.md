@@ -8,10 +8,10 @@ Browse LDAP-authorized principals.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - sortBy - LdapAuthorizedPrincipalFieldEnum: Field to sort LDAP authorized principals by.
     - searchText - System.String: Search Text for LDAP principal.
     - roleIds - list of System.Strings: Assigned role IDs for LDAP principal.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - sortBy - LdapAuthorizedPrincipalFieldEnum: Field to sort LDAP authorized principals by.
 - Returns AuthorizedPrincipalConnection.
 ### integrationlist
 Browse LDAP integrations.
@@ -32,8 +32,8 @@ Search LDAP Principals.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - sortBy - LdapPrincipalFieldEnum: Field to sort LDAP principals by.
     - id - System.String: ID for your LDAP integration.
     - searchText - System.String: Search Text for LDAP principal.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - sortBy - LdapPrincipalFieldEnum: Field to sort LDAP principals by.
 - Returns PrincipalConnection.

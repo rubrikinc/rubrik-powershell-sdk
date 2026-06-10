@@ -1,7 +1,7 @@
 ### ReplicationGatewayInfo
-Gateway information for a Rubrik cluster.
+Gateway information for replication setup.
 
 - address: System.String
-  - Gateway IPv4 address.
+  - IPv4 address of the gateway.
 - ports: list of System.Int32s
-  - Gateway ports.
+  - Ports of the gateway.

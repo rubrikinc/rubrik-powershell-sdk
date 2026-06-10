@@ -9,3 +9,5 @@ RCS Azure archival locations consumption stats record.
   - Consumption stats metric value.
 - tier: RcsTierEnumType
   - RCS archival location tier.
+- redundancy: RcvRedundancy
+  - RCV archival location redundancy.

@@ -1,6 +1,10 @@
 ### ActivityEntry
 This struct represents an activity.
 
+IMPORTANT: When adding new fields here, consider whether they should also
+appear in webhook payloads. If so, update IdentityActivityWebhookMessage
+in activityauditor/proto/identity_activity_webhook_message.proto as well.
+
 - id: System.String
   - The unique identifier for the activity.
 - time: DateTime
@@ -46,3 +50,6 @@ Will be empty if no remediations exist for this activity.
   - The remediation types that are available for this activity.
 - sourceId: System.String
   - The source (domain/tenant) of this activity.
+- actorIpAddress: System.String
+  - The IP address of the actor who initiated the event (IPv4 or IPv6).
+Empty for events without IP information.

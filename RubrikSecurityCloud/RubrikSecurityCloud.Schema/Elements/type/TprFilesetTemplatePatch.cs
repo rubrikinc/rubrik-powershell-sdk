@@ -70,6 +70,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldRetryPrescriptIfBackupFails")]
         public System.Boolean? ShouldRetryPrescriptIfBackupFails { get; set; }
 
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String (scalar)
+        [JsonProperty("templateAllowlistFilesystemPaths")]
+        public System.String? TemplateAllowlistFilesystemPaths { get; set; }
+
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String (scalar)
+        [JsonProperty("templateBlocklistFilesystemTypes")]
+        public System.String? TemplateBlocklistFilesystemTypes { get; set; }
+
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
         // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
         [JsonProperty("templateBlocklistedFilesystemPaths")]
@@ -100,6 +110,8 @@ namespace RubrikSecurityCloud.Types
         System.String? PreBackupScript = null,
         System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths = null,
         System.Boolean? ShouldRetryPrescriptIfBackupFails = null,
+        System.String? TemplateAllowlistFilesystemPaths = null,
+        System.String? TemplateBlocklistFilesystemTypes = null,
         System.String? TemplateBlocklistedFilesystemPaths = null,
         TprFilesetOptions? FilesetOptions = null
     ) 
@@ -133,6 +145,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ShouldRetryPrescriptIfBackupFails != null ) {
             this.ShouldRetryPrescriptIfBackupFails = ShouldRetryPrescriptIfBackupFails;
+        }
+        if ( TemplateAllowlistFilesystemPaths != null ) {
+            this.TemplateAllowlistFilesystemPaths = TemplateAllowlistFilesystemPaths;
+        }
+        if ( TemplateBlocklistFilesystemTypes != null ) {
+            this.TemplateBlocklistFilesystemTypes = TemplateBlocklistFilesystemTypes;
         }
         if ( TemplateBlocklistedFilesystemPaths != null ) {
             this.TemplateBlocklistedFilesystemPaths = TemplateBlocklistedFilesystemPaths;
@@ -242,6 +260,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shouldRetryPrescriptIfBackupFails\n" ;
             } else {
                 s += ind + "shouldRetryPrescriptIfBackupFails\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String (scalar)
+        if (this.TemplateAllowlistFilesystemPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateAllowlistFilesystemPaths\n" ;
+            } else {
+                s += ind + "templateAllowlistFilesystemPaths\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String (scalar)
+        if (this.TemplateBlocklistFilesystemTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateBlocklistFilesystemTypes\n" ;
+            } else {
+                s += ind + "templateBlocklistFilesystemTypes\n" ;
             }
         }
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
@@ -441,6 +477,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShouldRetryPrescriptIfBackupFails != null && ec.Excludes("shouldRetryPrescriptIfBackupFails",true))
         {
             this.ShouldRetryPrescriptIfBackupFails = null;
+        }
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String (scalar)
+        if (ec.Includes("templateAllowlistFilesystemPaths",true))
+        {
+            if(this.TemplateAllowlistFilesystemPaths == null) {
+
+                this.TemplateAllowlistFilesystemPaths = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateAllowlistFilesystemPaths != null && ec.Excludes("templateAllowlistFilesystemPaths",true))
+        {
+            this.TemplateAllowlistFilesystemPaths = null;
+        }
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String (scalar)
+        if (ec.Includes("templateBlocklistFilesystemTypes",true))
+        {
+            if(this.TemplateBlocklistFilesystemTypes == null) {
+
+                this.TemplateBlocklistFilesystemTypes = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateBlocklistFilesystemTypes != null && ec.Excludes("templateBlocklistFilesystemTypes",true))
+        {
+            this.TemplateBlocklistFilesystemTypes = null;
         }
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
         // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)

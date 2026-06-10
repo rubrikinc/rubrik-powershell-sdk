@@ -2,8 +2,8 @@
 Input to trigger asynchronous Anomaly Details CSV file download.
 
 - clusterUuid: System.String
-  - Rubrik cluster UUID corresponding to the object.
+  - CDM Cluster UUID.
 - workloadId: System.String
-  - The ID of the workload.
+  - Workload ID.
 - snapshotId: System.String
-  - The ID of the snapshot.
+  - Snapshot ID.

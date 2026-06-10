@@ -8,4 +8,6 @@ Holds the input to an update integration request.
 - integrationType: IntegrationType
   - The integration type.
 - config: IntegrationConfigInput
-  - The integration configuration.
+  - The integration configuration. Optional on update.
+- settings: IntegrationSettingsInput
+  - The integration settings (user preferences).

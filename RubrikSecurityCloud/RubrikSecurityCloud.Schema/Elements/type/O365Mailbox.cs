@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.String? JobTitle
+        // GraphQL -> jobTitle: String! (scalar)
+        [JsonProperty("jobTitle")]
+        public System.String? JobTitle { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -295,6 +300,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.String? JobTitle = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -345,6 +351,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( JobTitle != null ) {
+            this.JobTitle = JobTitle;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -517,6 +526,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.String? JobTitle
+        // GraphQL -> jobTitle: String! (scalar)
+        if (this.JobTitle != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "jobTitle\n" ;
+            } else {
+                s += ind + "jobTitle\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -945,6 +963,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.String? JobTitle
+        // GraphQL -> jobTitle: String! (scalar)
+        if (ec.Includes("jobTitle",true))
+        {
+            if(this.JobTitle == null) {
+
+                this.JobTitle = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.JobTitle != null && ec.Excludes("jobTitle",true))
+        {
+            this.JobTitle = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

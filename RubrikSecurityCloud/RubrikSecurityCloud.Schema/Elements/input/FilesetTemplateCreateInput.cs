@@ -93,6 +93,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("filesetOptions")]
         public FilesetOptionsInput? FilesetOptions { get; set; }
 
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String (scalar)
+        [JsonProperty("templateBlocklistFilesystemTypes")]
+        public System.String? TemplateBlocklistFilesystemTypes { get; set; }
+
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
         // GraphQL -> templateBlocklistedFilesystemPaths: String (scalar)
         [JsonProperty("templateBlocklistedFilesystemPaths")]
@@ -107,6 +112,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldOverrideClusterWideBlocklistedFilesystemPaths: Boolean (scalar)
         [JsonProperty("shouldOverrideClusterWideBlocklistedFilesystemPaths")]
         public System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths { get; set; }
+
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String (scalar)
+        [JsonProperty("templateAllowlistFilesystemPaths")]
+        public System.String? TemplateAllowlistFilesystemPaths { get; set; }
 
 
         #endregion

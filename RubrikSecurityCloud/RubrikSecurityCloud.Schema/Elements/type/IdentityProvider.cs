@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isDefault")]
         public System.Boolean? IsDefault { get; set; }
 
+        //      C# -> System.Boolean? IsForceAuthnEnabled
+        // GraphQL -> isForceAuthnEnabled: Boolean! (scalar)
+        [JsonProperty("isForceAuthnEnabled")]
+        public System.Boolean? IsForceAuthnEnabled { get; set; }
+
         //      C# -> System.String? MetadataJson
         // GraphQL -> metadataJson: String! (scalar)
         [JsonProperty("metadataJson")]
@@ -111,6 +116,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ExpirationDate = null,
         System.String? Id = null,
         System.Boolean? IsDefault = null,
+        System.Boolean? IsForceAuthnEnabled = null,
         System.String? MetadataJson = null,
         System.String? Name = null,
         System.String? OwnerOrgId = null,
@@ -139,6 +145,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsDefault != null ) {
             this.IsDefault = IsDefault;
+        }
+        if ( IsForceAuthnEnabled != null ) {
+            this.IsForceAuthnEnabled = IsForceAuthnEnabled;
         }
         if ( MetadataJson != null ) {
             this.MetadataJson = MetadataJson;
@@ -233,6 +242,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isDefault\n" ;
             } else {
                 s += ind + "isDefault\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsForceAuthnEnabled
+        // GraphQL -> isForceAuthnEnabled: Boolean! (scalar)
+        if (this.IsForceAuthnEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isForceAuthnEnabled\n" ;
+            } else {
+                s += ind + "isForceAuthnEnabled\n" ;
             }
         }
         //      C# -> System.String? MetadataJson
@@ -427,6 +445,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsDefault != null && ec.Excludes("isDefault",true))
         {
             this.IsDefault = null;
+        }
+        //      C# -> System.Boolean? IsForceAuthnEnabled
+        // GraphQL -> isForceAuthnEnabled: Boolean! (scalar)
+        if (ec.Includes("isForceAuthnEnabled",true))
+        {
+            if(this.IsForceAuthnEnabled == null) {
+
+                this.IsForceAuthnEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsForceAuthnEnabled != null && ec.Excludes("isForceAuthnEnabled",true))
+        {
+            this.IsForceAuthnEnabled = null;
         }
         //      C# -> System.String? MetadataJson
         // GraphQL -> metadataJson: String! (scalar)

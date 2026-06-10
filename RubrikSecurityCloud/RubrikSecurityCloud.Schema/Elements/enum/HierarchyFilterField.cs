@@ -39,11 +39,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_ACCOUNT_ID")]
         AWS_NATIVE_ACCOUNT_ID,
 
+        [EnumMember(Value = "AWS_NATIVE_ACCOUNT_SERVICE_TYPE")]
+        AWS_NATIVE_ACCOUNT_SERVICE_TYPE,
+
         [EnumMember(Value = "AWS_NATIVE_CLOUD_TYPE")]
         AWS_NATIVE_CLOUD_TYPE,
 
+        [EnumMember(Value = "AWS_NATIVE_EBS_OUTPOST_ARN")]
+        AWS_NATIVE_EBS_OUTPOST_ARN,
+
         [EnumMember(Value = "AWS_NATIVE_EC2_INSTANCE_ID")]
         AWS_NATIVE_EC2_INSTANCE_ID,
+
+        [EnumMember(Value = "AWS_NATIVE_EC2_OUTPOST_ARN")]
+        AWS_NATIVE_EC2_OUTPOST_ARN,
 
         [EnumMember(Value = "AWS_NATIVE_FEATURE_CONNECTED_STATUS")]
         AWS_NATIVE_FEATURE_CONNECTED_STATUS,
@@ -149,6 +158,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_NATIVE_VM_INDEXING_STATUS")]
         AZURE_NATIVE_VM_INDEXING_STATUS,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_RG_NAME")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER_RG_NAME,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_SUBSCRIPTION_ID")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER_SUBSCRIPTION_ID,
 
         [EnumMember(Value = "AZURE_REGION")]
         AZURE_REGION,
@@ -285,6 +300,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_INSTANCE_HOST_DESCENDANT_OBJECT_TYPE")]
         CLOUD_INSTANCE_HOST_DESCENDANT_OBJECT_TYPE,
 
+        [EnumMember(Value = "CLOUD_NATIVE_APPLICATION_DISCOVERY_METHOD")]
+        CLOUD_NATIVE_APPLICATION_DISCOVERY_METHOD,
+
         [EnumMember(Value = "CLOUD_NATIVE_APPLICATION_MO_ID")]
         CLOUD_NATIVE_APPLICATION_MO_ID,
 
@@ -321,6 +339,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS")]
         DEDUPE_NUTANIX_PRISM_CENTRAL_OBJECTS,
 
+        [EnumMember(Value = "DEVOPS_ARCHIVAL_LOCATION_ID")]
+        DEVOPS_ARCHIVAL_LOCATION_ID,
+
+        [EnumMember(Value = "DEVOPS_EXOCOMPUTE_CLOUD_ACCOUNT_ID")]
+        DEVOPS_EXOCOMPUTE_CLOUD_ACCOUNT_ID,
+
         [EnumMember(Value = "DEVOPS_NATIVE_ID")]
         DEVOPS_NATIVE_ID,
 
@@ -356,6 +380,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
         DOMAIN_CONTROLLER_FSMO_ROLE,
+
+        [EnumMember(Value = "DOMAIN_CONTROLLER_HAS_AGENT")]
+        DOMAIN_CONTROLLER_HAS_AGENT,
 
         [EnumMember(Value = "DOMAIN_HAS_FOREST")]
         DOMAIN_HAS_FOREST,
@@ -456,6 +483,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILESET_TEMPLATE_OS_TYPE")]
         FILESET_TEMPLATE_OS_TYPE,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER_NAME_OR_NATIVE_ID")]
+        GCP_ALLOY_DB_CLUSTER_NAME_OR_NATIVE_ID,
+
+        [EnumMember(Value = "GCP_BIG_QUERY_DATASET_NAME_OR_NATIVE_ID")]
+        GCP_BIG_QUERY_DATASET_NAME_OR_NATIVE_ID,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_ENGINE_TYPE")]
         GCP_CLOUD_SQL_ENGINE_TYPE,
 
@@ -536,6 +569,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "HAS_EXPIRED_NON_GCED_SNAPSHOT_COUNT_UNSET")]
         HAS_EXPIRED_NON_GCED_SNAPSHOT_COUNT_UNSET,
+
+        [EnumMember(Value = "HAS_OBJECT_BACKUP_WINDOW_OVERRIDE")]
+        HAS_OBJECT_BACKUP_WINDOW_OVERRIDE,
 
         [EnumMember(Value = "HAS_PARENT_SNAPPABLE")]
         HAS_PARENT_SNAPPABLE,
@@ -633,6 +669,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_PROTECTED")]
         IS_PROTECTED,
 
+        [EnumMember(Value = "IS_PURE_STORAGE_VOLUME")]
+        IS_PURE_STORAGE_VOLUME,
+
+        [EnumMember(Value = "IS_RBA_ROLE_SECONDARY")]
+        IS_RBA_ROLE_SECONDARY,
+
         [EnumMember(Value = "IS_RECOVERY_PLAN_VISIBLE")]
         IS_RECOVERY_PLAN_VISIBLE,
 
@@ -641,6 +683,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IS_REPLICATED")]
         IS_REPLICATED,
+
+        [EnumMember(Value = "IS_RSC_CLUSTER")]
+        IS_RSC_CLUSTER,
 
         [EnumMember(Value = "IS_SAP_HANA_SYSTEMDB")]
         IS_SAP_HANA_SYSTEMDB,
@@ -777,6 +822,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSSQL_IS_HOST_PROTECTED")]
         MSSQL_IS_HOST_PROTECTED,
 
+        [EnumMember(Value = "MYSQLDB_DATABASE_CDM_ID")]
+        MYSQLDB_DATABASE_CDM_ID,
+
         [EnumMember(Value = "MYSQLDB_HOST_CONNECTION_STATUS")]
         MYSQLDB_HOST_CONNECTION_STATUS,
 
@@ -791,6 +839,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NAME_OR_EMAIL_ADDRESS")]
         NAME_OR_EMAIL_ADDRESS,
+
+        [EnumMember(Value = "NAME_PREFIX")]
+        NAME_PREFIX,
 
         [EnumMember(Value = "NAS_NAMESPACE_ID")]
         NAS_NAMESPACE_ID,
@@ -867,8 +918,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "O365_SPECIFIC_TYPE")]
         O365_SPECIFIC_TYPE,
 
+        [EnumMember(Value = "OBJECT_ID")]
+        OBJECT_ID,
+
         [EnumMember(Value = "ON_OR_ABOVE_CLUSTER_VERSION")]
         ON_OR_ABOVE_CLUSTER_VERSION,
+
+        [EnumMember(Value = "OPENSTACK_IMAGE_PROJECT_ID")]
+        OPENSTACK_IMAGE_PROJECT_ID,
+
+        [EnumMember(Value = "OPENSTACK_IMAGE_REGION_ID")]
+        OPENSTACK_IMAGE_REGION_ID,
+
+        [EnumMember(Value = "OPENSTACK_PROJECT_NATIVE_ID")]
+        OPENSTACK_PROJECT_NATIVE_ID,
 
         [EnumMember(Value = "ORACLE_OS_TYPE")]
         ORACLE_OS_TYPE,
@@ -1046,6 +1109,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VSPHERE_GET_ROOT_RESTORE_HIERARCHY")]
         VSPHERE_GET_ROOT_RESTORE_HIERARCHY,
+
+        [EnumMember(Value = "VSPHERE_VCENTER_CONNECTION_STATUS")]
+        VSPHERE_VCENTER_CONNECTION_STATUS,
 
         [EnumMember(Value = "WORKLOADS")]
         WORKLOADS

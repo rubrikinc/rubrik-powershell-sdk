@@ -1268,8 +1268,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	patchProperties = @{
     /// 		# OPTIONAL
     /// 		caCerts = $someString
@@ -1310,6 +1308,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2797,8 +2797,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	patchProperties = @{
 		# OPTIONAL
 		caCerts = $someString
@@ -2839,6 +2837,8 @@ $query.Var.input = @{
 			}
 		)
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

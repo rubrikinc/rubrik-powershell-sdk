@@ -1,3 +1,5 @@
 ### GetAzureHostTypeResp
+GetAzureHostTypeResp is the response for getting the Azure host type.
+
 - hostType: AzureHostType
-  - Host type.
+  - Azure Host type.

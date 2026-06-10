@@ -6,6 +6,6 @@ Custom intel feed input.
 - description: System.String
   - Custom feed description.
 - entries: list of CustomEntriess
-  - Custom entries.
+  - IOC entries.
 - autoQuarantineMetadata: AutoQuarantineMetadataInput
   - Metadata for auto quarantine.

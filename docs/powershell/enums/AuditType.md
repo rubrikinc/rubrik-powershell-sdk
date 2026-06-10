@@ -35,3 +35,5 @@ Represents audit types.
 - IDENTITY_ALERT - Identity alerts type.
 - STAGED_UPGRADE - Upgrade audit type.
 - IDENTITY_ACTIVITY - Identity activity event type.
+- FEATURE_FLAG_TOGGLE - Feature flag toggle audit type.
+- THREAT_MONITORING - Threat monitoring event/audit type.

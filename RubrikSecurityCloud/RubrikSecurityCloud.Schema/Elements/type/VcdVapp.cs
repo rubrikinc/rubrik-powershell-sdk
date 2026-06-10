@@ -226,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         public DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> VcdVappLogicalChildTypeConnection? RecoveryLogicalChildConnection
+        // GraphQL -> recoveryLogicalChildConnection: VcdVappLogicalChildTypeConnection! (type)
+        [JsonProperty("recoveryLogicalChildConnection")]
+        public VcdVappLogicalChildTypeConnection? RecoveryLogicalChildConnection { get; set; }
+
         //      C# -> Snappable? ReportWorkload
         // GraphQL -> reportWorkload: Snappable (type)
         [JsonProperty("reportWorkload")]
@@ -277,6 +282,8 @@ namespace RubrikSecurityCloud.Types
         public RscGqlVars MissedSnapshotGroupByConnection { get; set; }
 
         public RscGqlVars NewestSnapshot { get; set; }
+
+        public RscGqlVars RecoveryLogicalChildConnection { get; set; }
 
         public RscGqlVars SnapshotConnection { get; set; }
 
@@ -330,6 +337,17 @@ namespace RubrikSecurityCloud.Types
                 };
             this.NewestSnapshot =
                 new RscGqlVars(null, newestSnapshotArgs, null, true);
+            Tuple<string, string>[] recoveryLogicalChildConnectionArgs = {
+                    Tuple.Create("first", "Int"),
+                    Tuple.Create("after", "String"),
+                    Tuple.Create("sortBy", "HierarchySortByField"),
+                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("typeFilter", "[HierarchyObjectTypeEnum!]"),
+                    Tuple.Create("filter", "[Filter!]"),
+                    Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+                };
+            this.RecoveryLogicalChildConnection =
+                new RscGqlVars(null, recoveryLogicalChildConnectionArgs, null, true);
             Tuple<string, string>[] snapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
@@ -419,6 +437,7 @@ namespace RubrikSecurityCloud.Types
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
         DataLocation? PrimaryClusterLocation = null,
+        VcdVappLogicalChildTypeConnection? RecoveryLogicalChildConnection = null,
         Snappable? ReportWorkload = null,
         SecurityMetadata? SecurityMetadata = null,
         CdmSnapshotConnection? SnapshotConnection = null,
@@ -550,6 +569,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterLocation != null ) {
             this.PrimaryClusterLocation = PrimaryClusterLocation;
+        }
+        if ( RecoveryLogicalChildConnection != null ) {
+            this.RecoveryLogicalChildConnection = RecoveryLogicalChildConnection;
         }
         if ( ReportWorkload != null ) {
             this.ReportWorkload = ReportWorkload;
@@ -1032,6 +1054,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "primaryClusterLocation" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> VcdVappLogicalChildTypeConnection? RecoveryLogicalChildConnection
+        // GraphQL -> recoveryLogicalChildConnection: VcdVappLogicalChildTypeConnection! (type)
+        if (this.RecoveryLogicalChildConnection != null) {
+            var fspec = this.RecoveryLogicalChildConnection.AsFieldSpec(conf.Child("recoveryLogicalChildConnection"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryLogicalChildConnection" + "\n(" + this.Vars.RecoveryLogicalChildConnection.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1892,6 +1926,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterLocation != null && ec.Excludes("primaryClusterLocation",false))
         {
             this.PrimaryClusterLocation = null;
+        }
+        //      C# -> VcdVappLogicalChildTypeConnection? RecoveryLogicalChildConnection
+        // GraphQL -> recoveryLogicalChildConnection: VcdVappLogicalChildTypeConnection! (type)
+        if (ec.Includes("recoveryLogicalChildConnection",false))
+        {
+            if(this.RecoveryLogicalChildConnection == null) {
+
+                this.RecoveryLogicalChildConnection = new VcdVappLogicalChildTypeConnection();
+                this.RecoveryLogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryLogicalChildConnection"));
+
+            } else {
+
+                this.RecoveryLogicalChildConnection.ApplyExploratoryFieldSpec(ec.NewChild("recoveryLogicalChildConnection"));
+
+            }
+        }
+        else if (this.RecoveryLogicalChildConnection != null && ec.Excludes("recoveryLogicalChildConnection",false))
+        {
+            this.RecoveryLogicalChildConnection = null;
         }
         //      C# -> Snappable? ReportWorkload
         // GraphQL -> reportWorkload: Snappable (type)

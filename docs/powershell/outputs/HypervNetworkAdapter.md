@@ -13,3 +13,5 @@ Network adapter information for Hyper-V virtual machines.
   - List of IPv6 addresses assigned to the adapter.
 - nicIndex: System.Int32
   - NIC index of the network adapter.
+- virtualSwitchId: System.String
+  - ID of the virtual switch the adapter is connected to.

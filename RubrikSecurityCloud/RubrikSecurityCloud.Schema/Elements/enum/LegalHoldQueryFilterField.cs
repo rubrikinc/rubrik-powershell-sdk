@@ -15,6 +15,12 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LegalHoldQueryFilterField
     {
+        [EnumMember(Value = "CLOUD_REGION")]
+        CLOUD_REGION,
+
+        [EnumMember(Value = "CLOUD_VENDOR")]
+        CLOUD_VENDOR,
+
         [EnumMember(Value = "LEGAL_HOLD_TIME")]
         LEGAL_HOLD_TIME,
 

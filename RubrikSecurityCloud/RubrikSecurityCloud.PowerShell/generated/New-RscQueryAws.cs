@@ -128,6 +128,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -238,6 +240,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsAdminAccountFilter = $someString
     /// 	# OPTIONAL
     /// 	columnSearchFilter = $someString
+    /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @(
+    /// 		$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -422,6 +428,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 	# OPTIONAL
     /// 	includeInternalFeatures = $someBoolean
+    /// 	# OPTIONAL
+    /// 	serviceTypeFilter = @(
+    /// 		$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -519,6 +529,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.outpostArn = $someString
     /// 
     /// # Execute the query
     /// 
@@ -740,6 +752,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -1154,10 +1168,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	awsNativeAccounts = @(
     /// 		@{
-    /// 			# OPTIONAL
-    /// 			externalId = $someString
     /// 			# REQUIRED
     /// 			id = $someString
+    /// 			# OPTIONAL
+    /// 			externalId = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1460,6 +1474,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.awsAccountRubrikId = $someString
     /// # REQUIRED
     /// $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -2011,25 +2027,28 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [String!]!
+        // allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, feature: CloudAccountFeature): [String!]!
         internal void InitQueryAllAvailabilityZonesByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("feature", "CloudAccountFeature"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllAvailabilityZonesByRegionFromAws",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$feature: CloudAccountFeature)",
                 "List<System.String>",
                 Query.AllAvailabilityZonesByRegionFromAws,
                 Query.AllAvailabilityZonesByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# OPTIONAL
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
             );
         }
 
@@ -2118,6 +2137,10 @@ $query.Var.awsCloudAccountsArg = @{
 	awsAdminAccountFilter = $someString
 	# OPTIONAL
 	columnSearchFilter = $someString
+	# OPTIONAL
+	serviceTypeFilter = @(
+		$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+	)
 }"
             );
         }
@@ -2281,6 +2304,10 @@ $query.Var.awsCloudAccountsArg = @{
 	operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
 	# OPTIONAL
 	includeInternalFeatures = $someBoolean
+	# OPTIONAL
+	serviceTypeFilter = @(
+		$someAwsCloudAccountServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountServiceType]) for enum values.
+	)
 }"
             );
         }
@@ -2347,25 +2374,28 @@ $query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurit
         }
 
         // Create new GraphQL Query:
-        // allEc2InstanceTypesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [AwsNativeEc2InstanceTypeOffering!]!
+        // allEc2InstanceTypesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, outpostArn: String): [AwsNativeEc2InstanceTypeOffering!]!
         internal void InitQueryAllEc2InstanceTypesByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("outpostArn", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllEc2InstanceTypesByRegionFromAws",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$outpostArn: String)",
                 "List<AwsNativeEc2InstanceTypeOffering>",
                 Query.AllEc2InstanceTypesByRegionFromAws,
                 Query.AllEc2InstanceTypesByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# OPTIONAL
+$query.Var.outpostArn = $someString"
             );
         }
 
@@ -2526,25 +2556,28 @@ $query.Var.awsAccountRubrikId = $someString"
         }
 
         // Create new GraphQL Query:
-        // allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [KmsEncryptionKey!]!
+        // allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, feature: CloudAccountFeature): [KmsEncryptionKey!]!
         internal void InitQueryAllKmsEncryptionKeysByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("feature", "CloudAccountFeature"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllKmsEncryptionKeysByRegionFromAws",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$feature: CloudAccountFeature)",
                 "List<KmsEncryptionKey>",
                 Query.AllKmsEncryptionKeysByRegionFromAws,
                 Query.AllKmsEncryptionKeysByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# OPTIONAL
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
             );
         }
 
@@ -2891,10 +2924,10 @@ $query.Var.input = @{
 	# REQUIRED
 	awsNativeAccounts = @(
 		@{
-			# OPTIONAL
-			externalId = $someString
 			# REQUIRED
 			id = $someString
+			# OPTIONAL
+			externalId = $someString
 		}
 	)
 	# OPTIONAL
@@ -3147,25 +3180,28 @@ $query.Var.awsAccountRubrikId = $someString"
         }
 
         // Create new GraphQL Query:
-        // allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!): [AwsVpc!]!
+        // allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, feature: CloudAccountFeature): [AwsVpc!]!
         internal void InitQueryAllVpcsByRegionFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("feature", "CloudAccountFeature"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllVpcsByRegionFromAws",
-                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)",
+                "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$feature: CloudAccountFeature)",
                 "List<AwsVpc>",
                 Query.AllVpcsByRegionFromAws,
                 Query.AllVpcsByRegionFromAwsFieldSpec,
                 @"# REQUIRED
 $query.Var.awsAccountRubrikId = $someString
 # REQUIRED
-$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values."
+$query.Var.region = $someAwsNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegion]) for enum values.
+# OPTIONAL
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
             );
         }
 

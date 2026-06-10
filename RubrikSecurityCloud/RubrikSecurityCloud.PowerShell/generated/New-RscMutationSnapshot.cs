@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 26
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 26 operations
+    /// There are 28 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -379,6 +379,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			id = $someString
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -516,6 +518,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportFusionCompute operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: ExportFusionCompute
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation ExportFusionCompute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		targetHostId = $someString
+    /// 		# REQUIRED
+    /// 		snapshotId = $someString
+    /// 		# OPTIONAL
+    /// 		targetClusterId = $someString
+    /// 		# OPTIONAL
+    /// 		shouldPowerOn = $someBoolean
+    /// 		# OPTIONAL
+    /// 		targetDatastoreId = $someString
+    /// 		# OPTIONAL
+    /// 		diskToDatastoreMap = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				datastoreId = $someString
+    /// 				# REQUIRED
+    /// 				diskId = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		recoveredVmName = $someString
+    /// 		# OPTIONAL
+    /// 		networkToNicMap = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				nicId = $someString
+    /// 				# REQUIRED
+    /// 				networkId = $someString
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -683,6 +749,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		recoveryPurpose = $someFilesetExportFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetExportFilesJobConfigRecoveryPurpose]) for enum values.
+    /// 		# OPTIONAL
     /// 		shouldRecreateDirectoryStructure = $someBoolean
     /// 		# OPTIONAL
     /// 		postRestoreScript = $someString
@@ -693,6 +761,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
     /// 	# REQUIRED
     /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -741,6 +811,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		snapshotForAuthoritativeRestore = $someString
     /// 		# OPTIONAL
     /// 		networkInterfaceSetting = $someNetworkInterfaceSetting # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkInterfaceSetting]) for enum values.
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RestoreFilesFromFusionCompute operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: RestoreFilesFromFusionCompute
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation RestoreFilesFromFusionCompute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		restoreConfig = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				path = $someString
+    /// 				# REQUIRED
+    /// 				restorePath = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		targetVmId = $someString
     /// 	}
     /// }
     /// 
@@ -916,6 +1031,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	shouldResurrectSnapshot = $someBoolean
+    /// 	# OPTIONAL
+    /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1241,10 +1360,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeleteFilesetSnapshots",
                 "DeleteUnmanageds",
                 "DeletesOfUnmanagedObjects",
+                "ExportFusionCompute",
                 "ExportProxmoxVm",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
                 "RestoreDomainController",
+                "RestoreFilesFromFusionCompute",
                 "RestoreOpenstackVmFiles",
                 "RestoreVolumeGroupFiles",
                 "StartEc2InstanceExportJob",
@@ -1306,6 +1427,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeletesOfUnmanagedObjects":
                         this.ProcessRecord_DeletesOfUnmanagedObjects();
                         break;
+                    case "ExportFusionCompute":
+                        this.ProcessRecord_ExportFusionCompute();
+                        break;
                     case "ExportProxmoxVm":
                         this.ProcessRecord_ExportProxmoxVm();
                         break;
@@ -1317,6 +1441,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RestoreDomainController":
                         this.ProcessRecord_RestoreDomainController();
+                        break;
+                    case "RestoreFilesFromFusionCompute":
+                        this.ProcessRecord_RestoreFilesFromFusionCompute();
                         break;
                     case "RestoreOpenstackVmFiles":
                         this.ProcessRecord_RestoreOpenstackVmFiles();
@@ -1467,6 +1594,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // exportFusionComputeSnapshot.
+        internal void ProcessRecord_ExportFusionCompute()
+        {
+            this._logger.name += " -ExportFusionCompute";
+            // Create new graphql operation exportFusionComputeSnapshot
+            InitMutationExportFusionComputeSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // exportProxmoxVmSnapshot.
         internal void ProcessRecord_ExportProxmoxVm()
         {
@@ -1500,6 +1636,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RestoreDomainController";
             // Create new graphql operation restoreDomainControllerSnapshot
             InitMutationRestoreDomainControllerSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // restoreFilesFromFusionComputeSnapshot.
+        internal void ProcessRecord_RestoreFilesFromFusionCompute()
+        {
+            this._logger.name += " -RestoreFilesFromFusionCompute";
+            // Create new graphql operation restoreFilesFromFusionComputeSnapshot
+            InitMutationRestoreFilesFromFusionComputeSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1842,6 +1987,8 @@ $query.Var.input = @{
 			id = $someString
 		}
 	)
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -1940,6 +2087,62 @@ $query.Var.input = @{
 	objectIds = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportFusionComputeSnapshot(input: ExportFusionComputeSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationExportFusionComputeSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportFusionComputeSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportFusionComputeSnapshot",
+                "($input: ExportFusionComputeSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExportFusionComputeSnapshot,
+                Mutation.ExportFusionComputeSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# OPTIONAL
+		targetHostId = $someString
+		# REQUIRED
+		snapshotId = $someString
+		# OPTIONAL
+		targetClusterId = $someString
+		# OPTIONAL
+		shouldPowerOn = $someBoolean
+		# OPTIONAL
+		targetDatastoreId = $someString
+		# OPTIONAL
+		diskToDatastoreMap = @(
+			@{
+				# REQUIRED
+				datastoreId = $someString
+				# REQUIRED
+				diskId = $someString
+			}
+		)
+		# OPTIONAL
+		recoveredVmName = $someString
+		# OPTIONAL
+		networkToNicMap = @(
+			@{
+				# REQUIRED
+				nicId = $someString
+				# REQUIRED
+				networkId = $someString
+			}
+		)
+	}
 }"
             );
         }
@@ -2090,6 +2293,8 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		recoveryPurpose = $someFilesetExportFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetExportFilesJobConfigRecoveryPurpose]) for enum values.
+		# OPTIONAL
 		shouldRecreateDirectoryStructure = $someBoolean
 		# OPTIONAL
 		postRestoreScript = $someString
@@ -2100,6 +2305,8 @@ $query.Var.input = @{
 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }
@@ -2140,6 +2347,43 @@ $query.Var.input = @{
 		snapshotForAuthoritativeRestore = $someString
 		# OPTIONAL
 		networkInterfaceSetting = $someNetworkInterfaceSetting # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkInterfaceSetting]) for enum values.
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // restoreFilesFromFusionComputeSnapshot(input: RestoreFilesFromFusionComputeSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationRestoreFilesFromFusionComputeSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RestoreFilesFromFusionComputeSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRestoreFilesFromFusionComputeSnapshot",
+                "($input: RestoreFilesFromFusionComputeSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.RestoreFilesFromFusionComputeSnapshot,
+                Mutation.RestoreFilesFromFusionComputeSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		restoreConfig = @(
+			@{
+				# REQUIRED
+				path = $someString
+				# REQUIRED
+				restorePath = $someString
+			}
+		)
+		# OPTIONAL
+		targetVmId = $someString
 	}
 }"
             );
@@ -2291,6 +2535,10 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	shouldResurrectSnapshot = $someBoolean
+	# OPTIONAL
+	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }

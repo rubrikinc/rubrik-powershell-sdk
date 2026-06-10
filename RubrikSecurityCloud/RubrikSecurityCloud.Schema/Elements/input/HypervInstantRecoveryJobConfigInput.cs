@@ -29,6 +29,31 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmName")]
         public System.String? VmName { get; set; }
 
+        //      C# -> System.Boolean? RemoveNetworkDevices
+        // GraphQL -> removeNetworkDevices: Boolean (scalar)
+        [JsonProperty("removeNetworkDevices")]
+        public System.Boolean? RemoveNetworkDevices { get; set; }
+
+        //      C# -> System.Boolean? ShouldMigrateDataStore
+        // GraphQL -> shouldMigrateDataStore: Boolean (scalar)
+        [JsonProperty("shouldMigrateDataStore")]
+        public System.Boolean? ShouldMigrateDataStore { get; set; }
+
+        //      C# -> System.Boolean? KeepMacAddress
+        // GraphQL -> keepMacAddress: Boolean (scalar)
+        [JsonProperty("keepMacAddress")]
+        public System.Boolean? KeepMacAddress { get; set; }
+
+        //      C# -> List<HypervVirtualSwitchMappingInput>? VirtualSwitchMappings
+        // GraphQL -> virtualSwitchMappings: [HypervVirtualSwitchMappingInput!] (input)
+        [JsonProperty("virtualSwitchMappings")]
+        public List<HypervVirtualSwitchMappingInput>? VirtualSwitchMappings { get; set; }
+
+        //      C# -> System.String? DestinationFolder
+        // GraphQL -> destinationFolder: String (scalar)
+        [JsonProperty("destinationFolder")]
+        public System.String? DestinationFolder { get; set; }
+
 
         #endregion
 

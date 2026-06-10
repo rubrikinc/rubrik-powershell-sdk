@@ -1,7 +1,7 @@
 ### DeleteAzureCloudAccountExocomputeConfigurationsReply
-Response of the operation to delete Exocompute Configuration from the Azure Cloud Account.
+Response for deleting the Azure cloud account exocompute configurations.
 
 - deletionSuccessIds: list of System.Strings
-  - IDs of the Azure Cloud Accounts that were deleted successfully.
+  - List of successfully deleted IDs.
 - deletionFailedIds: list of System.Strings
-  - IDs of the Azure Cloud Accounts that could not be deleted.
+  - List of failed deletion IDs.

@@ -3,24 +3,26 @@
 ### browsefilelist
 Returns a list files whose name is prefixed by the query in the given snapshot.
 
-- There are 5 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - path - System.String: The path under which you want your search to run.
     - snapshotFid - System.String: Snapshot persistent UUID in RSC.
     - searchPrefix - System.String: Prefix arg for searching for files within a snapshot.
+    - isPrefixSearch - System.Boolean: Determines whether to use a prefix search.
 - Returns SnapshotFileConnection.
 ### byids
 Returns the details for the passed snapshot IDs.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - snapshotFids - list of System.Strings: List of snapshot UUIDs.
     - shouldShowSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention.
+    - snapshotLocationView - SnapshotLocationView: Filter for per-location entries in snapshot retention info. Defaults to EXCLUDE_EXPIRED when omitted.
 - Returns list of GenericSnapshots.
 ### closesttopointintime
 Details of the unexpired snapshot closest to the specified point in time for each provided workload ID.
 
-- There are 13 arguments.
+- There are 14 arguments.
     - beforeTime - DateTime: Specifies the time at which or before which the snapshot was taken.
     - afterTime - DateTime: Specifies the time at which or after which the snapshot was taken.
     - snappableIds - list of System.Strings: Workload UUIDs.
@@ -32,6 +34,7 @@ Details of the unexpired snapshot closest to the specified point in time for eac
     - anomalousOnly - System.Boolean: Specifies whether to only include anomalous snapshots.
     - getFullDetails - System.Boolean: Specifies whether to include full snapshot workload details.
     - excludeReplica - System.Boolean: Specifies whether to exclude replica snapshots.
+    - shouldExcludeNonIndexed - System.Boolean: Specifies whether to exclude non-indexed snapshots.
     - excludeArchivalLocationTypes - list of System.Strings: List of archival location types that, if a snapshot is stored in them, will exclude the snapshot from query results.
     - archivalLocationId - System.String: Filter snapshots by archival location ID. Only snapshots stored at this archival location will be returned. If the value is null, no filter is applied.
 - Returns list of ClosestSnapshotSearchResults.
@@ -103,9 +106,14 @@ Browse or search the given path for files and directories along with their delta
     - workloadFieldsArg - WorkloadFieldsInput: Workload fields in BrowseSnapshotFileDelta request.
 - Returns SnapshotFileDeltaV2Connection.
 ### fileset
+Get information for a fileset snapshot
+
+Supported in v5.0+
+Retrieve summary information for a fileset snapshot by specifying the snapshot ID.
+
 - There are 2 arguments.
     - id - System.String: ID of snapshot.
-    - verbose - System.Boolean: Whether or not to fetch verbose fileset snapshot information. The performance of this endpoint will decrease if set to true.
+    - verbose - System.Boolean: Whether or not to retrieve verbose fileset snapshot information. The performance of this endpoint will decrease if set to true.
 - Returns FilesetSnapshotDetail.
 ### filesetfiles
 Lists all files and directories in a given path
@@ -119,6 +127,19 @@ Lists all files and directories in a given path.
     - offset - System.Int32: Starting position in the list of path entries contained in the query results, sorted by lexicographical order. The response includes the specified numbered entry and all higher numbered entries.
     - path - System.String: The absolute path of the starting point for the directory listing.
 - Returns BrowseResponseListResponse.
+### fusioncomputemisseds
+Retrieve details about missed snapshots for a virtual machine
+
+Supported in v9.6
+Retrieve the time of day when the snapshots were missed to a specific FusionCompute virtual machine.
+
+- There is a single argument of type FusionComputeMissedSnapshotsInput.
+- Returns MissedSnapshotListResponse.
+### fusioncomputeresourcespec
+Retrieve the resource specification from a FusionCompute snapshot.
+
+- There is a single argument of type FusionComputeSnapshotResourceSpecInput.
+- Returns FusionComputeSnapshotResourceSpecReply.
 ### legalholdsnappable
 List of legal hold snapshots for a workload.
 
@@ -171,9 +192,13 @@ Returns the RSC snapshot according to ID.
 - There is a single argument of type System.String.
 - Returns PolarisSnapshot.
 ### possiblelocationsforobjects
-GetPossibleSnapshotLocationsForObjects returns all valid
-locations where unexpired snapshots of the objects are present.
-This includes both RSC (MBL archival groups) and CDM snapshot locations.
+Returns all valid locations where unexpired snapshots of the input
+objects are present, including both RSC (MBL archival groups) and CDM
+snapshot locations. The returned snapshotCount per location is
+aggregated across all input objects.
+
+For a per-(object, location) snapshot count breakdown of the same
+input objects, see snapshotSummariesByLocationForObjects.
 
 - There is a single argument of type GetPossibleSnapshotLocationsForObjectsInput.
 - Returns GetPossibleSnapshotLocationsForObjectsResp.
@@ -193,15 +218,19 @@ Quarantine details of all snapshots.
 ### results
 Returns snapshot results for a workload.
 
-- There are 3 arguments.
-    - snappableFid - System.String
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: FID of the workload to query.
     - startTimeMs - System.Int64: Begin time of the range (in milliseconds since epoch)
     - endTimeMs - System.Int64: End time of the range (in milliseconds since epoch)
 - Returns SnapshotResultConnection.
 ### snappablelist
 Returns a list of snapshots for a workload.
 
-- There are 14 arguments.
+- There are 15 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -216,11 +245,12 @@ Returns a list of snapshots for a workload.
     - includeOnlySourceSnapshots - System.Boolean: Specifies whether to include source snapshots or not. If its true, response will contain only source snapshots.
     - shouldExcludeCdmSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention for snapshots of CDM workloads.
     - shouldShowCdmSnapshotLocationInfoArg - System.Boolean: Specifies whether to show snapshot location information.
+    - snapshotLocationView - SnapshotLocationView: Filter for per-location entries in snapshot retention info. Defaults to EXCLUDE_EXPIRED when omitted.
 - Returns GenericSnapshotConnection.
 ### snappableslist
 Returns list of snapshots for a list of workloads.
 
-- There are 13 arguments.
+- There are 14 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -234,6 +264,7 @@ Returns list of snapshots for a list of workloads.
     - includeOnlySourceSnapshots - System.Boolean: Specifies whether to include source snapshots or not. If its true, response will contain only source snapshots.
     - shouldExcludeCdmSnapshotRetentionInfo - System.Boolean: Specifies whether to show snapshot retention for snapshots of CDM workloads.
     - shouldShowCdmSnapshotLocationInfoArg - System.Boolean: Specifies whether to show snapshot location information.
+    - snapshotLocationView - SnapshotLocationView: Filter for per-location entries in snapshot retention info. Defaults to EXCLUDE_EXPIRED when omitted.
 - Returns GenericSnapshotConnection.
 ### snappableswithlegalholdssummary
 List of workloads with legal hold snapshots.
@@ -282,6 +313,21 @@ Returns a list of NAS Cloud Direct snapshots for a share.
     - timeRange - TimeRangeInput: Time range input.
     - cloudDirectTargetId - System.String: The NAS Cloud Direct target ID.
 - Returns CloudDirectSnapshotConnection.
+### ssecurityinfo
+Returns security information (anomaly, malware, quarantine) for snapshots of
+the given workloads.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - workloadIds - list of System.Strings: List of workload IDs for which to retrieve snapshot security information.
+    - startTime - DateTime: Optional filter to consider only snapshots at or after this time.
+    - endTime - DateTime: Optional filter to consider only snapshots at or before this time.
+    - sortOrder - SortOrder: Sort order based on timestamp.
+    - includeThreatHunts - System.Boolean: Include threat hunt information in results.
+- Returns SnapshotSecurityInfoConnection.
 ### totalclouddirectobject
 Retrieves the total count of snapshots for a Cloud Direct object.
 The results can be filtered optionally by target ID.

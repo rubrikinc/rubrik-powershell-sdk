@@ -94,6 +94,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("scopedTargetEntities")]
         public List<ActivityScopedTargetEntity>? ScopedTargetEntities { get; set; }
 
+        //      C# -> List<System.String>? ActorIpAddresses
+        // GraphQL -> actorIpAddresses: [String!] (scalar)
+        [JsonProperty("actorIpAddresses")]
+        public List<System.String>? ActorIpAddresses { get; set; }
+
 
         #endregion
 

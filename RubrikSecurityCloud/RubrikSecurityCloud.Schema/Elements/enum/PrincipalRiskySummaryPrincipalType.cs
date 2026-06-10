@@ -18,11 +18,23 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACCESS_POLICY")]
         ACCESS_POLICY,
 
+        [EnumMember(Value = "APP_ROLE")]
+        APP_ROLE,
+
         [EnumMember(Value = "ASSUMABLE_IDENTITY")]
         ASSUMABLE_IDENTITY,
 
         [EnumMember(Value = "ATTRIBUTE_SCHEMA")]
         ATTRIBUTE_SCHEMA,
+
+        [EnumMember(Value = "AU")]
+        AU,
+
+        [EnumMember(Value = "AUTHENTICATION_CONTEXT")]
+        AUTHENTICATION_CONTEXT,
+
+        [EnumMember(Value = "AUTHENTICATION_STRENGTH")]
+        AUTHENTICATION_STRENGTH,
 
         [EnumMember(Value = "CERTIFICATE_TEMPLATE")]
         CERTIFICATE_TEMPLATE,
@@ -39,8 +51,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CONTAINER")]
         CONTAINER,
 
+        [EnumMember(Value = "CONTRACT")]
+        CONTRACT,
+
         [EnumMember(Value = "CONTROL_ACCESS_RIGHT")]
         CONTROL_ACCESS_RIGHT,
+
+        [EnumMember(Value = "DEVICE")]
+        DEVICE,
 
         [EnumMember(Value = "DFS_LINK")]
         DFS_LINK,
@@ -50,6 +68,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DFS_NAMESPACE_V2")]
         DFS_NAMESPACE_V2,
+
+        [EnumMember(Value = "DNS_NODE")]
+        DNS_NODE,
 
         [EnumMember(Value = "DNS_ZONE")]
         DNS_ZONE,
@@ -81,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INTER_SITE_TRANSPORT_CONTAINER")]
         INTER_SITE_TRANSPORT_CONTAINER,
 
+        [EnumMember(Value = "INVITATION")]
+        INVITATION,
+
         [EnumMember(Value = "LICENSING_SITE_SETTINGS")]
         LICENSING_SITE_SETTINGS,
 
@@ -90,14 +114,26 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MSDS_QUOTA_CONTROL")]
         MSDS_QUOTA_CONTROL,
 
+        [EnumMember(Value = "MSKDS_PROV_ROOT_KEY")]
+        MSKDS_PROV_ROOT_KEY,
+
         [EnumMember(Value = "NAMED_LOCATION")]
         NAMED_LOCATION,
 
         [EnumMember(Value = "NTDS_SITE_SETTINGS")]
         NTDS_SITE_SETTINGS,
 
+        [EnumMember(Value = "NTFRS_SUBSCRIBER")]
+        NTFRS_SUBSCRIBER,
+
+        [EnumMember(Value = "OAUTH2_PERMISSION_GRANT")]
+        OAUTH2_PERMISSION_GRANT,
+
         [EnumMember(Value = "ORG_WIDE")]
         ORG_WIDE,
+
+        [EnumMember(Value = "OTHER")]
+        OTHER,
 
         [EnumMember(Value = "OU")]
         OU,
@@ -107,6 +143,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PASSWORD_SETTINGS_CONTAINER")]
         PASSWORD_SETTINGS_CONTAINER,
+
+        [EnumMember(Value = "PKI_ENROLLMENT_SERVICE")]
+        PKI_ENROLLMENT_SERVICE,
 
         [EnumMember(Value = "PRINT_QUEUE")]
         PRINT_QUEUE,
@@ -143,6 +182,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SYSTEM_IDENTITY")]
         SYSTEM_IDENTITY,
+
+        [EnumMember(Value = "TERMS_OF_USE")]
+        TERMS_OF_USE,
 
         [EnumMember(Value = "TRUSTED_DOMAIN")]
         TRUSTED_DOMAIN,

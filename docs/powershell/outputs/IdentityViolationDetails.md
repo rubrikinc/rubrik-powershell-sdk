@@ -1,0 +1,35 @@
+### IdentityViolationDetails
+
+
+- time: DateTime
+  - Reference time.
+- name: System.String
+  - Name of the user.
+- userPrincipalName: System.String
+  - Name of the principal.
+- domainUniqueId: System.String
+  - Unique ID of the domain to which the principal belongs.
+- domainFid: System.String
+  - Domain FID of principal.
+- title: System.String
+  - Title of the principal.
+- idpType: IdpType
+  - Source of the principal.
+- principalType: ViolationPrincipalType
+  - Type of the principal.
+- privilegeType: PrivilegeType
+  - Type of privilege of the principal.
+- domainName: System.String
+  - The name associated with the domain FID.
+- uniqueId: System.String
+  - A unique identifier of the principal.
+- principalUniqueId: System.String
+  - The principal unique identifier for user awareness.
+- origin: PrincipalOrigin
+  - The principal origin from user-awareness.
+- identityTags: list of IdentityTags
+  - List of identity tags for the principal.
+- nativeType: NativeType
+  - Native type of the principal.
+- entityName: System.String
+  - The entity name of the principal.

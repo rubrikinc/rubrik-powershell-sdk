@@ -1,5 +1,5 @@
 ### ClusterTypeEnum
-Cluster type.
+Type of the registered cluster.
 
 - OnPrem - On-premises cluster.
 - Robo - Robo cluster.

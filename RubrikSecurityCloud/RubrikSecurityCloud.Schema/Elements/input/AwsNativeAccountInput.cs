@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ExternalId
-        // GraphQL -> externalId: String (scalar)
-        [JsonProperty("externalId")]
-        public System.String? ExternalId { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.String? ExternalId
+        // GraphQL -> externalId: String (scalar)
+        [JsonProperty("externalId")]
+        public System.String? ExternalId { get; set; }
 
 
         #endregion

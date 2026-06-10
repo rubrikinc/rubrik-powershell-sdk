@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SnapshotLocType? LocationType
+        // GraphQL -> locationType: SnapshotLocType! (enum)
+        [JsonProperty("locationType")]
+        public SnapshotLocType? LocationType { get; set; }
+
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         [JsonProperty("locationId")]
@@ -29,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> locationName: String! (scalar)
         [JsonProperty("locationName")]
         public System.String? LocationName { get; set; }
+
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int (scalar)
+        [JsonProperty("snapshotCount")]
+        public System.Int32? SnapshotCount { get; set; }
 
 
         #endregion
@@ -40,15 +50,23 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotLocation Set(
+        SnapshotLocType? LocationType = null,
         System.String? LocationId = null,
-        System.String? LocationName = null
+        System.String? LocationName = null,
+        System.Int32? SnapshotCount = null
     ) 
     {
+        if ( LocationType != null ) {
+            this.LocationType = LocationType;
+        }
         if ( LocationId != null ) {
             this.LocationId = LocationId;
         }
         if ( LocationName != null ) {
             this.LocationName = LocationName;
+        }
+        if ( SnapshotCount != null ) {
+            this.SnapshotCount = SnapshotCount;
         }
         return this;
     }
@@ -64,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> SnapshotLocType? LocationType
+        // GraphQL -> locationType: SnapshotLocType! (enum)
+        if (this.LocationType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "locationType\n" ;
+            } else {
+                s += ind + "locationType\n" ;
+            }
+        }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
@@ -82,6 +109,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "locationName\n" ;
             }
         }
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int (scalar)
+        if (this.SnapshotCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotCount\n" ;
+            } else {
+                s += ind + "snapshotCount\n" ;
+            }
+        }
         return s;
     }
 
@@ -89,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> SnapshotLocType? LocationType
+        // GraphQL -> locationType: SnapshotLocType! (enum)
+        if (ec.Includes("locationType",true))
+        {
+            if(this.LocationType == null) {
+
+                this.LocationType = new SnapshotLocType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationType != null && ec.Excludes("locationType",true))
+        {
+            this.LocationType = null;
+        }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (ec.Includes("locationId",true))
@@ -122,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LocationName != null && ec.Excludes("locationName",true))
         {
             this.LocationName = null;
+        }
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int (scalar)
+        if (ec.Includes("snapshotCount",true))
+        {
+            if(this.SnapshotCount == null) {
+
+                this.SnapshotCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotCount != null && ec.Excludes("snapshotCount",true))
+        {
+            this.SnapshotCount = null;
         }
     }
 

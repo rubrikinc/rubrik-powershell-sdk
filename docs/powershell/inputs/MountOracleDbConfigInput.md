@@ -38,6 +38,8 @@ Boolean value that determines whether to stop the recovery task if the pre-scrip
 - pdbsToLiveMount: list of System.Strings
   - Supported in v8.0+
 List of PDB names to be live mounted in the target database.
+- shouldRecoverToLatestFromRedo: System.Boolean
+  - When true, applies Zero RPO redo logs after RMAN recovery to achieve maximum data recovery up to the latest streamed transaction. Requires Zero RPO to be enabled on the source database.
 - targetRacHostIds: list of System.Strings
   - Supported in v9.0+
 List of RAC host simple IDs to recover the database during the Live Mount.

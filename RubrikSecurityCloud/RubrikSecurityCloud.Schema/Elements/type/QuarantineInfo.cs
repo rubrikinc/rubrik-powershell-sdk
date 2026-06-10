@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQuarantined")]
         public System.Boolean? IsQuarantined { get; set; }
 
+        //      C# -> System.Int32? QuarantinedFileCount
+        // GraphQL -> quarantinedFileCount: Int! (scalar)
+        [JsonProperty("quarantinedFileCount")]
+        public System.Int32? QuarantinedFileCount { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public QuarantineInfo Set(
         System.Boolean? ContainsQuarantinedFiles = null,
-        System.Boolean? IsQuarantined = null
+        System.Boolean? IsQuarantined = null,
+        System.Int32? QuarantinedFileCount = null
     ) 
     {
         if ( ContainsQuarantinedFiles != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
+        }
+        if ( QuarantinedFileCount != null ) {
+            this.QuarantinedFileCount = QuarantinedFileCount;
         }
         return this;
     }
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isQuarantined\n" ;
             } else {
                 s += ind + "isQuarantined\n" ;
+            }
+        }
+        //      C# -> System.Int32? QuarantinedFileCount
+        // GraphQL -> quarantinedFileCount: Int! (scalar)
+        if (this.QuarantinedFileCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "quarantinedFileCount\n" ;
+            } else {
+                s += ind + "quarantinedFileCount\n" ;
             }
         }
         return s;
@@ -122,6 +140,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsQuarantined != null && ec.Excludes("isQuarantined",true))
         {
             this.IsQuarantined = null;
+        }
+        //      C# -> System.Int32? QuarantinedFileCount
+        // GraphQL -> quarantinedFileCount: Int! (scalar)
+        if (ec.Includes("quarantinedFileCount",true))
+        {
+            if(this.QuarantinedFileCount == null) {
+
+                this.QuarantinedFileCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.QuarantinedFileCount != null && ec.Excludes("quarantinedFileCount",true))
+        {
+            this.QuarantinedFileCount = null;
         }
     }
 

@@ -7,34 +7,8 @@ MySQL instance details object.
   - The connectivity status of MySQL instance.
 - metadata: MysqldbInstanceMetadata
   - The metadata field of MySQL instance.
-- hostsInfo: list of HostDiscoverableInfos
-  - The host information of the discoverable entity.
-- entityInfo: EntityInfo
-  - The basic entity information.
-- descendantConnection: KosmosParentHierarchyObjectDescendantTypeConnection
-  - List of descendants.
-- physicalChildConnection: KosmosParentHierarchyObjectPhysicalChildTypeConnection
-  - List of physical children.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- advancedConfig: MysqldbInstanceAdvancedConfig
+  - Advanced configuration for the MySQL instance.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -69,6 +43,34 @@ MySQL instance details object.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- hostsInfo: list of HostDiscoverableInfos
+  - The host information of the discoverable entity.
+- entityInfo: EntityInfo
+  - The basic entity information.
+- descendantConnection: KosmosParentHierarchyObjectDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: KosmosParentHierarchyObjectPhysicalChildTypeConnection
+  - List of physical children.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - isRelic: System.Boolean
   - Indicates whether the workload type is Relic.
 - liveMounts: KosmosWorkloadLiveMountConnection

@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("createdAt")]
         public DateTime? CreatedAt { get; set; }
 
+        //      C# -> System.String? CreatedByEmail
+        // GraphQL -> createdByEmail: String! (scalar)
+        [JsonProperty("createdByEmail")]
+        public System.String? CreatedByEmail { get; set; }
+
+        //      C# -> System.String? CreatedById
+        // GraphQL -> createdById: String! (scalar)
+        [JsonProperty("createdById")]
+        public System.String? CreatedById { get; set; }
+
         //      C# -> System.String? RemediationId
         // GraphQL -> remediationId: String! (scalar)
         [JsonProperty("remediationId")]
@@ -53,6 +63,8 @@ namespace RubrikSecurityCloud.Types
         RemediationType? RemediationType = null,
         RemediationState? State = null,
         DateTime? CreatedAt = null,
+        System.String? CreatedByEmail = null,
+        System.String? CreatedById = null,
         System.String? RemediationId = null
     ) 
     {
@@ -64,6 +76,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CreatedAt != null ) {
             this.CreatedAt = CreatedAt;
+        }
+        if ( CreatedByEmail != null ) {
+            this.CreatedByEmail = CreatedByEmail;
+        }
+        if ( CreatedById != null ) {
+            this.CreatedById = CreatedById;
         }
         if ( RemediationId != null ) {
             this.RemediationId = RemediationId;
@@ -107,6 +125,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "createdAt\n" ;
             } else {
                 s += ind + "createdAt\n" ;
+            }
+        }
+        //      C# -> System.String? CreatedByEmail
+        // GraphQL -> createdByEmail: String! (scalar)
+        if (this.CreatedByEmail != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdByEmail\n" ;
+            } else {
+                s += ind + "createdByEmail\n" ;
+            }
+        }
+        //      C# -> System.String? CreatedById
+        // GraphQL -> createdById: String! (scalar)
+        if (this.CreatedById != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdById\n" ;
+            } else {
+                s += ind + "createdById\n" ;
             }
         }
         //      C# -> System.String? RemediationId
@@ -175,6 +211,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
         {
             this.CreatedAt = null;
+        }
+        //      C# -> System.String? CreatedByEmail
+        // GraphQL -> createdByEmail: String! (scalar)
+        if (ec.Includes("createdByEmail",true))
+        {
+            if(this.CreatedByEmail == null) {
+
+                this.CreatedByEmail = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedByEmail != null && ec.Excludes("createdByEmail",true))
+        {
+            this.CreatedByEmail = null;
+        }
+        //      C# -> System.String? CreatedById
+        // GraphQL -> createdById: String! (scalar)
+        if (ec.Includes("createdById",true))
+        {
+            if(this.CreatedById == null) {
+
+                this.CreatedById = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedById != null && ec.Excludes("createdById",true))
+        {
+            this.CreatedById = null;
         }
         //      C# -> System.String? RemediationId
         // GraphQL -> remediationId: String! (scalar)

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("success")]
         public System.Boolean? Success { get; set; }
 
+        //      C# -> DeletionRegionOneof? Region
+        // GraphQL -> region: DeletionRegionOneof (type)
+        [JsonProperty("region")]
+        public DeletionRegionOneof? Region { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public AwsExocomputeConfigsDeletionStatusType Set(
         System.String? ExocomputeConfigId = null,
-        System.Boolean? Success = null
+        System.Boolean? Success = null,
+        DeletionRegionOneof? Region = null
     ) 
     {
         if ( ExocomputeConfigId != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Success != null ) {
             this.Success = Success;
+        }
+        if ( Region != null ) {
+            this.Region = Region;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "success\n" ;
             } else {
                 s += ind + "success\n" ;
+            }
+        }
+        //      C# -> DeletionRegionOneof? Region
+        // GraphQL -> region: DeletionRegionOneof (type)
+        if (this.Region != null) {
+            var fspec = this.Region.AsFieldSpec(conf.Child("region"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "region" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Success != null && ec.Excludes("success",true))
         {
             this.Success = null;
+        }
+        //      C# -> DeletionRegionOneof? Region
+        // GraphQL -> region: DeletionRegionOneof (type)
+        if (ec.Includes("region",false))
+        {
+            if(this.Region == null) {
+
+                this.Region = new DeletionRegionOneof();
+                this.Region.ApplyExploratoryFieldSpec(ec.NewChild("region"));
+
+            } else {
+
+                this.Region.ApplyExploratoryFieldSpec(ec.NewChild("region"));
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",false))
+        {
+            this.Region = null;
         }
     }
 

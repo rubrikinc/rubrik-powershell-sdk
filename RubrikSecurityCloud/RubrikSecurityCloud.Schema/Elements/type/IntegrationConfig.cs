@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceNowItsm")]
         public ServiceNowItsmIntegrationConfig? ServiceNowItsm { get; set; }
 
+        //      C# -> SplunkIntegrationConfig? Splunk
+        // GraphQL -> splunk: SplunkIntegrationConfig (type)
+        [JsonProperty("splunk")]
+        public SplunkIntegrationConfig? Splunk { get; set; }
+
 
         #endregion
 
@@ -77,7 +82,8 @@ namespace RubrikSecurityCloud.Types
         MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
         PamIntegrationConfig? Pam = null,
-        ServiceNowItsmIntegrationConfig? ServiceNowItsm = null
+        ServiceNowItsmIntegrationConfig? ServiceNowItsm = null,
+        SplunkIntegrationConfig? Splunk = null
     ) 
     {
         if ( CrowdStrike != null ) {
@@ -103,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ServiceNowItsm != null ) {
             this.ServiceNowItsm = ServiceNowItsm;
+        }
+        if ( Splunk != null ) {
+            this.Splunk = Splunk;
         }
         return this;
     }
@@ -211,6 +220,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "serviceNowItsm" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SplunkIntegrationConfig? Splunk
+        // GraphQL -> splunk: SplunkIntegrationConfig (type)
+        if (this.Splunk != null) {
+            var fspec = this.Splunk.AsFieldSpec(conf.Child("splunk"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "splunk" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -372,6 +393,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ServiceNowItsm != null && ec.Excludes("serviceNowItsm",false))
         {
             this.ServiceNowItsm = null;
+        }
+        //      C# -> SplunkIntegrationConfig? Splunk
+        // GraphQL -> splunk: SplunkIntegrationConfig (type)
+        if (ec.Includes("splunk",false))
+        {
+            if(this.Splunk == null) {
+
+                this.Splunk = new SplunkIntegrationConfig();
+                this.Splunk.ApplyExploratoryFieldSpec(ec.NewChild("splunk"));
+
+            } else {
+
+                this.Splunk.ApplyExploratoryFieldSpec(ec.NewChild("splunk"));
+
+            }
+        }
+        else if (this.Splunk != null && ec.Excludes("splunk",false))
+        {
+            this.Splunk = null;
         }
     }
 

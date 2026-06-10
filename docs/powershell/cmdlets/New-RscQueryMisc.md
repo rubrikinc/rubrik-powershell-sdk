@@ -1,7 +1,13 @@
 # New-RscQueryMisc
 ## Subcommands
 ### activecustomanalyzers
-- The activecustomanalyzers subcommand takes no arguments.
+Returns active custom analyzers.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns AnalyzerConnection.
 ### activities
 List of activities.
@@ -55,12 +61,22 @@ Returns privileges that are allowed to be asssigned to org admin roles.
 - The allowedorgadminoperations subcommand takes no arguments.
 - Returns list of Operations.
 ### analyzergroups
-- The analyzergroups subcommand takes no arguments.
+Returns analyzer groups available for configuring a crawl.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns AnalyzerGroupConnection.
 ### analyzerusages
 Returns which policies are using each analyzer.
 
 - There are 11 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - dataCategoryIdsFilter - list of System.Strings: List of data categories used for filtering results.
     - riskLevelsFilter - list of RiskLevelTypes: List of risk levels used for filtering results.
     - sortBy - AnalyzerUsagesSortBy: Name of the column to sort result by.
@@ -68,10 +84,6 @@ Returns which policies are using each analyzer.
     - dataTypeSourceFilter - DataTypeSource: Filter for data category type.
     - dataTypeNameSearchFilter - System.String: Data type name to search.
     - analyzerStatusFilter - AnalyzerStatusFilter: Filter for analyzer status.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns AnalyzerUsageConnection.
 ### anomalyresultopt
 Optional result of the Anomaly Investigation.
@@ -213,6 +225,12 @@ Browse team files.
     - teamsDriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
 - Returns O365OnedriveObjectConnection.
+### capsettingsdata
+GetCapSettings returns the current CAP configuration JSON for an
+Entra ID Conditional Access Policy principal.
+
+- There is a single argument of type CapSettingsDataInput.
+- Returns CapSettingsData.
 ### ccprovisionmetadata
 Retrieves ccprovision metadata.
 
@@ -343,6 +361,12 @@ Objects that match the specifications of a configured group.
     - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
     - groupFilterAttributes - list of GroupFilterAttributes: A list of attributes to filter out group members.
 - Returns O365ConfiguredGroupMemberConnection.
+### coordinatorlabels
+GetCoordinatorLabels retrieves the current coordinator
+labels for all virtual machines in a Cloud Direct cluster.
+
+- There is a single argument of type GetCoordinatorLabelsReq.
+- Returns CoordinatorLabelsReply.
 ### crawl
 Returns details for one crawl.
 
@@ -391,6 +415,8 @@ Lists all identity providers for the current organization.
 - The currentorgidentityproviders subcommand takes no arguments.
 - Returns list of IdentityProviders.
 ### customanalyzer
+Returns the custom analyzer with the given ID.
+
 - There is a single argument of type System.String.
 - Returns Analyzer.
 ### dashboardsummary
@@ -402,8 +428,8 @@ Returns hits grouped by analyzer and policy.
 Returns permissions associated with a path.
 
 - There are 5 arguments.
-    - snappableFid - System.String
-    - snapshotFid - System.String
+    - snappableFid - System.String: FID of the workload to query.
+    - snapshotFid - System.String: Snapshot FID to query permissions in.
     - stdPath - System.String: The standard path of the directory to browse.
     - skipResolveSids - System.Boolean: Skip converting SIDs in response to friendly names
     - filters - SddlRequestFiltersInput: Filter for resolving security descriptor.
@@ -430,6 +456,16 @@ Polaris deployment version.
 
 - The deploymentversion subcommand takes no arguments.
 - Returns System.String.
+### devopsbackupjobinformation
+Retrieves account specific backup information.
+
+- There is a single argument of type DevopsOrgType.
+- Returns DevOpsBackupJobInformation.
+### devopsprotectedobjectcountsummary
+DevOps Protected object count summary.
+
+- There is a single argument of type ManagedObjectType.
+- Returns DevOpsProtectedObjectCountSummary.
 ### dhrcactiverecommendations
 Active DHRC recommendations for the requested categories.
 
@@ -557,17 +593,153 @@ List user activity for a specific file on a specific snapshot.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns UserActivityResultConnection.
+### fusioncomputedatastore
+Summary of a FusionCompute datastore.
+
+- There is a single argument of type System.String.
+- Returns FusionComputeDatastore.
+### fusioncomputedatastores
+Summary of all FusionCompute datastores.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeDatastoreConnection.
+### fusioncomputeecho
+Test endpoint. Remove once we have a real API.
+
+- There is a single argument of type FusionComputeEchoRequest.
+- Returns FusionComputeEchoResponse.
+### fusioncomputemounts
+Retrieve the list of FusionCompute live mounts.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - list of QueryFusionComputeMountsFilters: Filter for the query.
+    - sortBy - FusionComputeMountsSortByField: Field to sort by.
+    - sortOrder - SortOrder: Sort order.
+- Returns FusionComputeMountDetailConnection.
+### fusioncomputenetwork
+Summary of a FusionCompute network.
+
+- There is a single argument of type System.String.
+- Returns FusionComputeNetwork.
+### fusioncomputenetworks
+Summary of all FusionCompute networks.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeNetworkConnection.
+### fusioncomputerecoverabledatastores
+Summary of all FusionCompute datastores that the user can recover to.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeDatastoreConnection.
+### fusioncomputerecoverablenetworks
+Summary of all FusionCompute networks that the user can recover to.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeNetworkConnection.
+### fusioncomputesite
+Summary of a FusionCompute site.
+
+- There is a single argument of type System.String.
+- Returns FusionComputeSite.
+### fusioncomputesites
+Summary of all FusionCompute sites.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeSiteConnection.
+### fusioncomputevirtualdisks
+Get FusionCompute virtual disks for a virtual machine.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - fusionComputeVirtualMachineFid - System.String: FID of a FusionCompute virtual machine.
+    - filter - list of QueryFusionComputeVirtualDisksFilters: Filter for the query.
+    - sortBy - FusionComputeVirtualDisksSortByField: Field to sort by.
+    - sortOrder - SortOrder: Sort order.
+- Returns FusionComputeVirtualDiskConnection.
+### fusioncomputevirtualmachine
+Summary of a FusionCompute virtual machine.
+
+- There is a single argument of type System.String.
+- Returns FusionComputeVirtualMachine.
+### fusioncomputevirtualmachines
+Summary of all FusionCompute virtual machines.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeVirtualMachineConnection.
+### fusioncomputevmrequeststatus
+Get asynchronous request details for FusionCompute requests
+
+Supported in v9.6
+Get the details of an asynchronous request that involves FusionCompute operations.
+
+- There is a single argument of type FusionComputeVmRequestStatusInput.
+- Returns AsyncRequestStatus.
+### fusioncomputevrm
+Summary of a FusionCompute VRM.
+
+- There is a single argument of type System.String.
+- Returns FusionComputeVrm.
+### fusioncomputevrms
+Summary of all FusionCompute VRMs.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeVrmConnection.
 ### geolocationlist
 - The geolocationlist subcommand takes no arguments.
 - Returns list of GroupCounts.
 ### getallrolesinorglist
+Get all roles in the current organization with filtering, sorting, and
+pagination support.
+
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortOrder - SortOrder: Sorts the order of results.
-    - sortBy - RoleFieldEnum
+    - sortBy - RoleFieldEnum: Field to sort roles by (e.g., Name or Assignment).
     - nameFilter - System.String: Name to filter the results.
     - assignedRoleIds - list of System.Strings: List of role IDs that have already been assigned to a set of users. This list will be used to sort the set of all roles.
     - roleSyncedFilter - System.Boolean: Argument to filter roles based on whether they are marked to be synced to Rubrik cluster.
@@ -616,8 +788,10 @@ Permissions assigned to the role that are in effect.
 - There is a single argument of type System.String.
 - Returns list of Permissions.
 ### getrolesbyids
+Get roles by IDs.
+
 - There are 2 arguments.
-    - roleIds - list of System.Strings
+    - roleIds - list of System.Strings: List of role IDs to retrieve.
     - syncedClustersFilter - System.String: Name to filter the synced clusters for role.
 - Returns list of Roles.
 ### getuserdownloads
@@ -627,6 +801,52 @@ Permissions assigned to the role that are in effect.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns list of UserDownloads.
+### githubconnectionstatussummary
+GitHubConnectionStatusSummary returns the connection status of all the
+GitHub cloud accounts.
+
+- The githubconnectionstatussummary subcommand takes no arguments.
+- Returns GitHubConnectionStatusSummaryReply.
+### githuborganization
+Query GitHub organization object.
+
+- There is a single argument of type System.String.
+- Returns GithubOrganization.
+### githuborganizations
+Query GitHub organization objects.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - ancestorId - System.String: Ancestor object/root ID.
+    - filter - list of Filters: The hierarchy object filter.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+- Returns GithubOrganizationConnection.
+### githubrepositories
+Query GitHub repository objects.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - queryType - QueryType: The type of query to perform (CHILDREN or DESCENDANTS).
+    - ancestorId - System.String: Ancestor object/root ID.
+    - filter - list of Filters: The hierarchy object filter.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+- Returns GithubRepositoryConnection.
+### githubrepository
+Query GitHub repository object.
+
+- There is a single argument of type System.String.
+- Returns GithubRepository.
 ### globalfilesearch
 All files matching input filters.
 
@@ -811,7 +1031,7 @@ Returns all issues filtered by status.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns IssueConnection.
 ### issuesjobids
-List IDs of running SONAR issues jobs.
+List IDs of running issues jobs.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of System.Strings.
@@ -843,7 +1063,7 @@ allowed to access the field.
 - There is a single argument of type JobInfoRequest.
 - Returns JobInfo.
 ### knowledgebasearticle
-A knowledge base article.
+Retrieves the contents of a single knowledge base article.
 
 - There is a single argument of type System.String.
 - Returns KnowledgeBaseArticle.
@@ -860,6 +1080,14 @@ Check if the cluster has at least 1 node with its bond interfaces configured wit
 ### lambdasettings
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
+### latestgposettings
+GetLatestGpoSettings returns the current GPO settings from the latest
+DC snapshot, without requiring a change event. Use this when the GPO
+has no activity events or when you need the current state regardless
+of event history.
+
+- There is a single argument of type GetLatestGpoSettingsReq.
+- Returns GetLatestGpoSettingsRes.
 ### licensedproducts
 Information about the licenses at the product level.
 
@@ -925,11 +1153,14 @@ Returns the ordered sequence of CDM versions required to upgrade
 from source_version to target_version. If source_version is omitted,
 the current installed version for cluster_uuid is used.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - clusterUuid - System.String: The UUID of the cluster to upgrade.
     - sourceVersion - System.String: CDM version to upgrade from (e.g. "9.3.1-p1").
 If empty, retrieved from the cdm_upgrades table.
     - targetVersion - System.String: The CDM version to upgrade to (e.g. "9.5.0").
+    - shouldIncludeFullVersionName - System.Boolean: When true, returns the full release
+version name including patch and build
+number for each hop.
 - Returns MultiHopUpgradePathReply.
 ### mysqldatabase
 Details of a MySQL database for a given FID.
@@ -1005,6 +1236,19 @@ Check if the running node-removal job is cancelable.
 
 - There is a single argument of type NodeRemovalCancelPermissionInput.
 - Returns NodeRemovalCancelPermissionReply.
+### nodestoremovebycount
+Calculates which nodes to remove based on a specified removal count.
+The backend auto-selects nodes while maintaining the dynamic-to-static
+node ratio.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - clusterUuid - System.String: Unique ID of the Rubrik cluster.
+    - nodeCount - System.Int32: Number of nodes to remove.
+- Returns NodeToRemoveByCountConnection.
 ### nodetoreplace
 The ID of the Rubrik cluster node to replace.
 
@@ -1106,7 +1350,20 @@ Information about passkey config and current user's passkeys.
 
 - The passkeyinfo subcommand takes no arguments.
 - Returns GetPasskeyInfoReply.
+### pausedobjects
+Retrieves a list of directly paused objects based on the provided filters and arguments.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - GetObjectPauseListSortByParams: Optional paramater to sort the response based on the provided field and order.
+    - filter - GetObjectPauseListFilterParams: Optional paramater to filter the response based on the provided fields.
+- Returns GetPausedObjectResConnection.
 ### pendingaction
+Retrieve a specific pending action by its ID.
+
 - There is a single argument of type System.String.
 - Returns pendingAction.
 ### pendingactions
@@ -1209,6 +1466,56 @@ Returns status for all objects at a specified timestamp.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns PolicyObjConnection.
+### policyviolations
+Get a paginated list of policy violations.
+
+- There are 30 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - policyIds - list of System.Strings: Policy IDs to filter by. If empty or null, the results will not be filtered.
+    - resourceIds - list of System.Strings: Resource IDs to filter by. If empty or null, the results will not be filtered.
+    - statuses - list of PolicyViolationStatuss: Policy violation statuses to filter by. If empty or null, the results will not be filtered.
+    - statusReasons - list of PolicyViolationStatusReasons: Policy violation status reasons to filter by. If empty or null, the results will not be filtered.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+    - policyViolationIds - list of System.Strings: Policy violation IDs to filter by. If empty or null, the results will not be filtered.
+    - policySeverities - list of Severitys: Policy severities to filter by. If empty or null, the results will not be filtered.
+    - policyCategories - list of Categorys: Policy categories to filter by. If empty or null, the results will not be filtered.
+    - includeDeletedPolicies - System.Boolean: Include deleted policies in the results. If null or false, deleted policies will be excluded.
+    - resourceTypes - list of PolicyResourceTypes: Resource types to filter by. If empty or null, the results will not be filtered.
+    - sensitivityLevels - list of SensitivityLevels: Sensitivity levels to filter by. If empty or null, the results will not be filtered.
+    - detectionDate - TimeRangeInput: Detection date range to filter by. If null, the results will not be filtered.
+    - updateDate - TimeRangeInput: Violation update date range to filter by.
+    - includeResourceCounts - System.Boolean: Include resource-level total violation counts. If null, the data will not be included.
+    - resourceMetadataFilter - ResourceMetadataFiltersInput: Resource metadata fields to filter by. If null, the results will not be filtered.
+    - parentViolationId - System.String: Parent violation ID.
+    - dataTypeIds - list of System.Strings: Data type IDs to filter.
+    - documentTypeIds - list of System.Strings: Document type IDs to filter.
+    - dataCategoryIds - list of System.Strings: Filter for data category IDs.
+    - sortBy - PolicyViolationSortField: Field by which to sort policy violations.
+    - sortOrder - SortOrder: Sort order for policy violations.
+    - principalFilter - PrincipalSummariesFilterInput: Principal fields to filter by. If null, the results will not be filtered.
+    - policyViolationNameSearch - System.String: Policy violation name to search for (substring match).
+    - policyFrameworks - list of System.Strings: Policy frameworks to filter by. If empty or null, the results will not be filtered.
+    - ticketNumbers - list of System.Strings: Ticket numbers to filter violations by. If empty or null, the results will not be filtered.
+    - violationNames - list of System.Strings: Exact violation names to filter by. OR-combined with policyIds: a violation matches if its policyId is in policyIds OR its violationName is in violationNames. Distinct from policyViolationNameSearch (substring match, AND-combined).
+- Returns PolicyViolationConnection.
+### postgresqldatabase
+Details of a PostgreSQL database for a given FID.
+
+- There is a single argument of type System.String.
+- Returns PostgreSQLDatabase.
+### postgresqldatabases
+Connection of filtered postgres database based on specific filters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns PostgreSQLDatabaseConnection.
 ### prechecksstatus
 Gets status of last prechecks job.
 
@@ -1249,6 +1556,12 @@ Total number of protected volumes across all hosts.
 
 - There is a single argument of type list of Filters.
 - Returns System.Int32.
+### protectionsummaryv2
+Returns the protection summary for the Orchestrated Application Recovery
+dashboard.
+
+- The protectionsummaryv2 subcommand takes no arguments.
+- Returns ProtectionSummaryV2.
 ### quarantineddetailsforworkload
 Quarantine details of a workload.
 
@@ -1259,6 +1572,30 @@ Query datastore threshold configurations.
 
 - There is a single argument of type list of QueryDatastoreFreespaceThresholdInputs.
 - Returns QueryDatastoreFreespaceThresholdsReply.
+### recoveries
+Return list of recoveries corresponding to the filter passed.
+RSC prioritizes recovery_ids if they are passed in the filter. All the filters, if passed, will work as AND logic.
+
+- There are 18 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - recoveryIds - list of System.Strings: Filter by specific recovery IDs.
+    - recoveryType - list of RecoveryTypes: Filter by recovery type.
+    - endTime - DateTime: Only consider recoveries that started before this date.
+    - startTime - DateTime: Only consider recoveries that started after this date.
+    - recoveryPlanNames - list of System.Strings: Filter by recovery plan names.
+    - workloadIds - list of System.Strings: Filter by workload IDs.
+    - recoveryStatuses - list of RecoveryStatuss: Filter by recovery statuses.
+    - recoveryOutcomes - list of RecoveryOutcomes: Filter by recovery outcomes.
+    - recoveryNames - list of System.Strings: Filter by recovery names.
+    - recoveryTriggeredFrom - list of RecoveryTriggeredFroms: Filter by how the recovery was triggered.
+    - recoveryPlanIds - list of System.Strings: Filter by recovery plan IDs.
+    - workloadTypeFilter - ManagedObjectType: Filter by workload type.
+    - recoveryNameSubstring - System.String: Filter by recovery name substring.
+    - sortParam - RecoverySortParamInput: Sorting parameters for the recovery list.
+- Returns RecoveryConnection.
 ### removednodedetails
 Get the information for removed nodes.
 
@@ -1283,13 +1620,13 @@ The list of available role templates.
 Synced cluster information for RSC permissions.
 
 - There are 7 arguments.
+    - roleId - System.String: ID of the role.
+    - protectableClusters - list of System.Strings: List of protectable clusters.
+    - permissions - list of PermissionInputs: Permissions in the role.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
-    - permissions - list of PermissionInputs: Permissions in the role.
-    - roleId - System.String: ID of the role.
-    - protectableClusters - list of System.Strings: List of protectable clusters.
 - Returns RscPermsToCdmInfoOut.
 ### saasapporganizations
 List of SaaS app organization.
@@ -1417,6 +1754,13 @@ the list of object IDs.
 
 - There is a single argument of type GetSqlServerSetupScriptsReqBulk.
 - Returns GetSqlServerSetupScriptsReplyBulk.
+### ssmdocumentforec2
+GetSSMDocumentForEC2 retrieves the SSM document that allows RSC to
+trigger scripts on EC2 instances. This will be used for triggering post
+recovery script for application resilience.
+
+- The ssmdocumentforec2 subcommand takes no arguments.
+- Returns SsmDocumentForEc2Reply.
 ### ssogroupalreadyexists
 Determines if the SSO group already exists in the account.
 
@@ -1440,6 +1784,11 @@ Given a request ID for generate support bundle request, provide the status of th
 
 - There is a single argument of type QuerySupportBundleInput.
 - Returns AsyncRequestStatus.
+### supportcasecomments
+GetSupportCaseComments retrieves the comments for a support case.
+
+- There is a single argument of type System.String.
+- Returns GetSupportCaseCommentsReply.
 ### supportuseraccesses
 All support user access objects that satisfy the query criteria.
 
@@ -1569,6 +1918,17 @@ List of supported object types.
     - cloudVendor - CloudVendor: The cloud vendor type.
     - snapshotManagementType - SnapshotManagementType: Type of snapshot management.
 - Returns list of ManagedObjectTypes.
+### upgradepatheligibility
+Checks whether the upgrade path from a cluster's current version to the
+to the target version is eligible for the given operation without
+initiating any download or upgrade. Returns all blocking reasons if the
+path is not eligible.
+
+- There are 3 arguments.
+    - clusterUuid - System.String: Specifies the cluster UUID.
+    - targetVersion - System.String: The CDM version to upgrade to (e.g. "9.5.0").
+    - operation - System.String: The operation to validate: "download" or "upgrade".
+- Returns UpgradePathEligibilityReply.
 ### upgradestatus
 Gets the status for completed/running upgrade process.
 
@@ -1626,11 +1986,12 @@ User file.
 ### userfiles
 All user files.
 
-- There are 4 arguments.
+- There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filenamePrefix - System.String: Optional prefix to filter files by filename.
 - Returns list of GetCustomerFacingDownloadsReplys.
 ### usergroups
 - There are 5 arguments.
@@ -1695,6 +2056,12 @@ Checks whether the tenant org name is valid and unique.
 
 - There is a single argument of type ValidateOrgNameInput.
 - Returns ValidateOrgNameReply.
+### validateoutpostaccountnetwork
+ValidateOutpostNetwork validates the network configuration of an outpost
+account.
+
+- There is a single argument of type ValidateOutpostAccountNetworkInput.
+- Returns ValidateOutpostAccountNetworkReply.
 ### validaterdsexportexocomputeport
 ValidateRdsExportExocomputePort checks if the exocompute worker node security group used for RDS export allows outbound traffic on a port.
 
@@ -1826,3 +2193,9 @@ Returns the RSC forever ID of a workload.
     - clusterUuid - System.String: The Rubrik cluster ID.
     - managedId - System.String: Workload managed ID.
 - Returns System.String.
+### workloadresourcespecs
+Lists resource specifications for the specified workloads of a particular
+type.
+
+- There is a single argument of type ListWorkloadResourceSpecsInput.
+- Returns list of WorkloadResourceSpecs.

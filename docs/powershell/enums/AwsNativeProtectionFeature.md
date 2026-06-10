@@ -7,3 +7,4 @@ AWS native protection features.
 - DYNAMODB - AWS native protection feature is DynamoDB.
 - CLOUD_DISCOVERY - AWS native protection feature is Cloud Discovery.
 - CONFIG - AWS native protection feature is Config.
+- GLUE_ICEBERG - AWS native protection feature is Glue Iceberg.

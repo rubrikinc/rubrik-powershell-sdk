@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("config")]
         public IntegrationConfigInput? Config { get; set; }
 
+        //      C# -> IntegrationSettingsInput? Settings
+        // GraphQL -> settings: IntegrationSettingsInput (input)
+        [JsonProperty("settings")]
+        public IntegrationSettingsInput? Settings { get; set; }
+
 
         #endregion
 

@@ -16,3 +16,4 @@ REPLICATED_TARGET, DELETED, UNAUTHORIZED).
 - HOST_INELIGIBILITY_REASON_NO_AGENT - Host does not have a Rubrik Backup Agent installed.
 - HOST_INELIGIBILITY_REASON_UNKNOWN - Indicates an error while trying to determine the host's
 eligibility.
+- HOST_INELIGIBILITY_REASON_NOT_IN_PRIMARY_CLUSTER - Host does not belong to the primary cluster of the failover group.

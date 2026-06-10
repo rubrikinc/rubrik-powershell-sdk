@@ -12,3 +12,4 @@ data hits to prevent them from being exfiltrated.
 - CROWD_STRIKE - Represents a CrowdStrike integration.
 - GOOGLE_SECOPS - Represents a Google SecOps integration.
 - MICROSOFT_DEFENDER - Represents a Microsoft Defender integration.
+- SPLUNK - Represents a Splunk integration.

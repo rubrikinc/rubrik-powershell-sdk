@@ -15,6 +15,8 @@ Specific info for Azure Target Template.
   - Specifies whether Azure target has consolidation enabled or not.
 - cloudNativeCompanion: AzureCloudNativeTargetCompanion
   - Cloud native companion information of the Azure target.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type for the Azure location template.
 - cloudAccount: CloudAccount
   - Cloud Account information of the Azure target.
 - targetType: TargetType

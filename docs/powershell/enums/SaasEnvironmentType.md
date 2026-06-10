@@ -1,5 +1,5 @@
 ### SaasEnvironmentType
-The environment type of the SaaS resource.
+The different environments that describe a SaaS organization.
 
 - ENVIRONMENT_TYPE_UNSPECIFIED - Unspecified SaaS environment type.
 +comment: Not relevant for filtering or sorting.

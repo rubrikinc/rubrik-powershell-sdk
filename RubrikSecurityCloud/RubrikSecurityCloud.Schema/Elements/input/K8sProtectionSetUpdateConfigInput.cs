@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<CustomResourceDependencyInput>? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: [CustomResourceDependencyInput!] (input)
+        [JsonProperty("customResourceDependencies")]
+        public List<CustomResourceDependencyInput>? CustomResourceDependencies { get; set; }
+
         //      C# -> System.String? Definition
         // GraphQL -> definition: String (scalar)
         [JsonProperty("definition")]

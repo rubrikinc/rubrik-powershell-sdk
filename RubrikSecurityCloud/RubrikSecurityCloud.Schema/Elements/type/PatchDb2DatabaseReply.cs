@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        [JsonProperty("backupCompressionLibraryPath")]
+        public System.String? BackupCompressionLibraryPath { get; set; }
+
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int (scalar)
         [JsonProperty("backupParallelism")]
@@ -29,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupSessions: Int (scalar)
         [JsonProperty("backupSessions")]
         public System.Int32? BackupSessions { get; set; }
+
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean (scalar)
+        [JsonProperty("isBackupCompressionEnabled")]
+        public System.Boolean? IsBackupCompressionEnabled { get; set; }
 
 
         #endregion
@@ -40,15 +50,23 @@ namespace RubrikSecurityCloud.Types
     }
 
     public PatchDb2DatabaseReply Set(
+        System.String? BackupCompressionLibraryPath = null,
         System.Int32? BackupParallelism = null,
-        System.Int32? BackupSessions = null
+        System.Int32? BackupSessions = null,
+        System.Boolean? IsBackupCompressionEnabled = null
     ) 
     {
+        if ( BackupCompressionLibraryPath != null ) {
+            this.BackupCompressionLibraryPath = BackupCompressionLibraryPath;
+        }
         if ( BackupParallelism != null ) {
             this.BackupParallelism = BackupParallelism;
         }
         if ( BackupSessions != null ) {
             this.BackupSessions = BackupSessions;
+        }
+        if ( IsBackupCompressionEnabled != null ) {
+            this.IsBackupCompressionEnabled = IsBackupCompressionEnabled;
         }
         return this;
     }
@@ -64,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        if (this.BackupCompressionLibraryPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupCompressionLibraryPath\n" ;
+            } else {
+                s += ind + "backupCompressionLibraryPath\n" ;
+            }
+        }
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int (scalar)
         if (this.BackupParallelism != null) {
@@ -82,6 +109,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "backupSessions\n" ;
             }
         }
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean (scalar)
+        if (this.IsBackupCompressionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isBackupCompressionEnabled\n" ;
+            } else {
+                s += ind + "isBackupCompressionEnabled\n" ;
+            }
+        }
         return s;
     }
 
@@ -89,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        if (ec.Includes("backupCompressionLibraryPath",true))
+        {
+            if(this.BackupCompressionLibraryPath == null) {
+
+                this.BackupCompressionLibraryPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupCompressionLibraryPath != null && ec.Excludes("backupCompressionLibraryPath",true))
+        {
+            this.BackupCompressionLibraryPath = null;
+        }
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int (scalar)
         if (ec.Includes("backupParallelism",true))
@@ -122,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BackupSessions != null && ec.Excludes("backupSessions",true))
         {
             this.BackupSessions = null;
+        }
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean (scalar)
+        if (ec.Includes("isBackupCompressionEnabled",true))
+        {
+            if(this.IsBackupCompressionEnabled == null) {
+
+                this.IsBackupCompressionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBackupCompressionEnabled != null && ec.Excludes("isBackupCompressionEnabled",true))
+        {
+            this.IsBackupCompressionEnabled = null;
         }
     }
 

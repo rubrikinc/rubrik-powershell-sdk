@@ -7,3 +7,5 @@ for a given taskchain, providing per-user statistics and aggregate summaries.
   - The ID of the recovery analysis taskchain.
 - groupId: System.String
   - The O365 group ID.
+- orgId: System.String
+  - The org ID associated with the recovery analysis.

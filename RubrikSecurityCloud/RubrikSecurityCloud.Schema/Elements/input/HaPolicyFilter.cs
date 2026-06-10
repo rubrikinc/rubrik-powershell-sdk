@@ -34,6 +34,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
 
+        //      C# -> List<System.String>? SourceClusterUuids
+        // GraphQL -> sourceClusterUuids: [UUID!] (scalar)
+        [JsonProperty("sourceClusterUuids")]
+        public List<System.String>? SourceClusterUuids { get; set; }
+
+        //      C# -> List<System.String>? TargetClusterUuids
+        // GraphQL -> targetClusterUuids: [UUID!] (scalar)
+        [JsonProperty("targetClusterUuids")]
+        public List<System.String>? TargetClusterUuids { get; set; }
+
 
         #endregion
 

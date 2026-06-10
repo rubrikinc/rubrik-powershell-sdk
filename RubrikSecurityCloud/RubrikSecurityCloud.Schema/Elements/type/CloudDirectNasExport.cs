@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment
+        // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cloudDirectPendingObjectPauseAssignment")]
+        public PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -200,6 +205,7 @@ namespace RubrikSecurityCloud.Types
 
     public CloudDirectNasExport Set(
         List<Operation>? AuthorizedOperations = null,
+        PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -232,6 +238,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( CloudDirectPendingObjectPauseAssignment != null ) {
+            this.CloudDirectPendingObjectPauseAssignment = CloudDirectPendingObjectPauseAssignment;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -338,6 +347,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authorizedOperations\n" ;
             } else {
                 s += ind + "authorizedOperations\n" ;
+            }
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment
+        // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (this.CloudDirectPendingObjectPauseAssignment != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cloudDirectPendingObjectPauseAssignment\n" ;
+            } else {
+                s += ind + "cloudDirectPendingObjectPauseAssignment\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -658,6 +676,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthorizedOperations != null && ec.Excludes("authorizedOperations",true))
         {
             this.AuthorizedOperations = null;
+        }
+        //      C# -> PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment
+        // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        if (ec.Includes("cloudDirectPendingObjectPauseAssignment",true))
+        {
+            if(this.CloudDirectPendingObjectPauseAssignment == null) {
+
+                this.CloudDirectPendingObjectPauseAssignment = new PendingObjectPauseAssignmentStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CloudDirectPendingObjectPauseAssignment != null && ec.Excludes("cloudDirectPendingObjectPauseAssignment",true))
+        {
+            this.CloudDirectPendingObjectPauseAssignment = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

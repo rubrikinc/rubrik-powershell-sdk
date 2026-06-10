@@ -25,3 +25,7 @@ Parameter for sorting file results.
 - TOTAL_SENSITIVE_HITS - Sort by total sensitive hits.
 - EXPOSED_FILES - Sort by number of files for PUBLIC, EXPLICIT, and NOT_OPEN access types.
 - DOCUMENT_TYPE - Sort by document type.
+- SUSPICIOUS_COUNT - Sort by number of suspicious files.
+- DELETED_COUNT - Sort by number of deleted files.
+- ADDED_COUNT - Sort by number of added/created files.
+- MODIFIED_COUNT - Sort by number of modified files.

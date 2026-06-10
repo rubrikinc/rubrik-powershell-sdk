@@ -8,3 +8,5 @@ Includes per-user analysis data, aggregate statistics, and metadata about the an
   - Aggregate statistics summarizing activity across all users.
 - metadata: RecoveryAnalysisMetadata
   - Metadata about the analysis including time range and data source paths.
+- estimatedRecoveryTimeSeconds: System.Int64
+  - Estimated time to complete the recovery operation, in seconds.

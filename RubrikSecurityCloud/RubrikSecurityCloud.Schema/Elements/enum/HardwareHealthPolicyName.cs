@@ -18,8 +18,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "BIOS_CHECKER")]
+        BIOS_CHECKER,
+
         [EnumMember(Value = "CHASSIS_CHECKER")]
         CHASSIS_CHECKER,
+
+        [EnumMember(Value = "CMOS_CHECKER")]
+        CMOS_CHECKER,
 
         [EnumMember(Value = "DIMM_CHECKER")]
         DIMM_CHECKER,

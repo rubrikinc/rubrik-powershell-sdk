@@ -9,3 +9,5 @@ Input for recovering files from snapshot.
   - Required. Configuration for the restore request.
 - deltaRequest: DeltaRecoveryInput
   - An object providing the parameters for the recovery of a snapshot and a next snapshot delta.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation.

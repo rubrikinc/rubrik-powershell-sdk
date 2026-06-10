@@ -69,6 +69,12 @@ Returns the operation modes of an M365 organization.
 
 - There is a single argument of type System.String.
 - Returns M365OrgOperationModes.
+### orgoutboundips
+Outbound IP addresses for a Microsoft 365 organization
+across all exocompute clusters.
+
+- There is a single argument of type System.String.
+- Returns list of System.Strings.
 ### regions
 Retrieves the M365 regions for the organization.
 

@@ -11,3 +11,5 @@ Account state.
 - PENDING_POST_PROCESSING - Post-processing steps for the account are pending.
 - SUSPENDED_STATE - Suspended.
 - FAILED_CREATION - Failed creation.
+- PENDING_DEPROVISIONING - Pending deprovisioning.
+- FAILED_DELETION - Failed deletion.

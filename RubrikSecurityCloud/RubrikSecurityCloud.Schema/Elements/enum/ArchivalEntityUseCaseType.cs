@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "BACKUP")]
+        BACKUP,
+
         [EnumMember(Value = "CLOUD_NATIVE")]
         CLOUD_NATIVE,
 

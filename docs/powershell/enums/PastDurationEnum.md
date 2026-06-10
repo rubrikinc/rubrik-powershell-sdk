@@ -7,3 +7,4 @@ All valid time ranges in the reporting table.
 - PAST_30_DAYS - Enum used to filter data in the past 30 days.
 - PAST_12_MONTHS - Enum used to filter data in the past 12 months.
 - PAST_3_DAYS - Enum used to filter data in the past 3 days.
+- PAST_24_MONTHS - Enum used to filter data in the past 24 months.

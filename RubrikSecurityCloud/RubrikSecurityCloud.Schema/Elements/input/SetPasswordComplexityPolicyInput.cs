@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("policy")]
         public PasswordComplexityPolicyInput? Policy { get; set; }
 
+        //      C# -> System.Boolean? ShouldResetAllOrgUsersPasswords
+        // GraphQL -> shouldResetAllOrgUsersPasswords: Boolean (scalar)
+        [JsonProperty("shouldResetAllOrgUsersPasswords")]
+        public System.Boolean? ShouldResetAllOrgUsersPasswords { get; set; }
+
 
         #endregion
 

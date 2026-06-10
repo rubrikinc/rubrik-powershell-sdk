@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int64? EstimatedRecoveryTimeSeconds
+        // GraphQL -> estimatedRecoveryTimeSeconds: Long! (scalar)
+        [JsonProperty("estimatedRecoveryTimeSeconds")]
+        public System.Int64? EstimatedRecoveryTimeSeconds { get; set; }
+
         //      C# -> RecoveryAnalysisMetadata? Metadata
         // GraphQL -> metadata: RecoveryAnalysisMetadata (type)
         [JsonProperty("metadata")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GetRecoveryAnalysisResultResp Set(
+        System.Int64? EstimatedRecoveryTimeSeconds = null,
         RecoveryAnalysisMetadata? Metadata = null,
         RecoveryAnalysisSummary? Summary = null,
         List<UserRecoveryAnalysis>? UserAnalyses = null
     ) 
     {
+        if ( EstimatedRecoveryTimeSeconds != null ) {
+            this.EstimatedRecoveryTimeSeconds = EstimatedRecoveryTimeSeconds;
+        }
         if ( Metadata != null ) {
             this.Metadata = Metadata;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int64? EstimatedRecoveryTimeSeconds
+        // GraphQL -> estimatedRecoveryTimeSeconds: Long! (scalar)
+        if (this.EstimatedRecoveryTimeSeconds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "estimatedRecoveryTimeSeconds\n" ;
+            } else {
+                s += ind + "estimatedRecoveryTimeSeconds\n" ;
+            }
+        }
         //      C# -> RecoveryAnalysisMetadata? Metadata
         // GraphQL -> metadata: RecoveryAnalysisMetadata (type)
         if (this.Metadata != null) {
@@ -116,6 +134,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Int64? EstimatedRecoveryTimeSeconds
+        // GraphQL -> estimatedRecoveryTimeSeconds: Long! (scalar)
+        if (ec.Includes("estimatedRecoveryTimeSeconds",true))
+        {
+            if(this.EstimatedRecoveryTimeSeconds == null) {
+
+                this.EstimatedRecoveryTimeSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EstimatedRecoveryTimeSeconds != null && ec.Excludes("estimatedRecoveryTimeSeconds",true))
+        {
+            this.EstimatedRecoveryTimeSeconds = null;
+        }
         //      C# -> RecoveryAnalysisMetadata? Metadata
         // GraphQL -> metadata: RecoveryAnalysisMetadata (type)
         if (ec.Includes("metadata",false))

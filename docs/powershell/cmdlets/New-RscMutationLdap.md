@@ -1,6 +1,8 @@
 # New-RscMutationLdap
 ## Subcommands
 ### deleteprincipals
+Delete LDAP principals.
+
 - There is a single argument of type list of System.Strings.
 - Returns System.Boolean.
 ### removeintegration

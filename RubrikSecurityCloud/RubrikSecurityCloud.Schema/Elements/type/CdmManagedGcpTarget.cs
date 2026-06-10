@@ -106,6 +106,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> GcpImmutabilitySettings? ImmutabilitySettings
+        // GraphQL -> immutabilitySettings: GcpImmutabilitySettings (type)
+        [JsonProperty("immutabilitySettings")]
+        public GcpImmutabilitySettings? ImmutabilitySettings { get; set; }
+
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         [JsonProperty("targetMapping")]
@@ -143,6 +148,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? RunningTasks = null,
         Cluster? Cluster = null,
+        GcpImmutabilitySettings? ImmutabilitySettings = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
@@ -197,6 +203,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( ImmutabilitySettings != null ) {
+            this.ImmutabilitySettings = ImmutabilitySettings;
         }
         if ( TargetMapping != null ) {
             this.TargetMapping = TargetMapping;
@@ -371,6 +380,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> GcpImmutabilitySettings? ImmutabilitySettings
+        // GraphQL -> immutabilitySettings: GcpImmutabilitySettings (type)
+        if (this.ImmutabilitySettings != null) {
+            var fspec = this.ImmutabilitySettings.AsFieldSpec(conf.Child("immutabilitySettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "immutabilitySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -695,6 +716,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> GcpImmutabilitySettings? ImmutabilitySettings
+        // GraphQL -> immutabilitySettings: GcpImmutabilitySettings (type)
+        if (ec.Includes("immutabilitySettings",false))
+        {
+            if(this.ImmutabilitySettings == null) {
+
+                this.ImmutabilitySettings = new GcpImmutabilitySettings();
+                this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+
+            } else {
+
+                this.ImmutabilitySettings.ApplyExploratoryFieldSpec(ec.NewChild("immutabilitySettings"));
+
+            }
+        }
+        else if (this.ImmutabilitySettings != null && ec.Excludes("immutabilitySettings",false))
+        {
+            this.ImmutabilitySettings = null;
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)

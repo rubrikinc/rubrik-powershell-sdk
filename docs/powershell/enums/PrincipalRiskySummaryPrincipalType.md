@@ -48,3 +48,17 @@ Principal type for risk summary.
 - DFS_LINK - Principal of the AD DFS Link type.
 - DNS_ZONE - Principal of the AD DNS Zone.
 - SYSTEM_IDENTITY - Principal representing an objectless system identity.
+- APP_ROLE - Principal of the app role type.
+- CONTRACT - Principal of the contract type.
+- DEVICE - Principal of the device type.
+- INVITATION - Principal of the invitation type.
+- OAUTH2_PERMISSION_GRANT - Principal of the OAuth2 permission grant type.
+- AU - Principal of the Entra ID administrative unit type.
+- TERMS_OF_USE - Principal of the terms of use type.
+- AUTHENTICATION_CONTEXT - Principal of the authentication context type.
+- AUTHENTICATION_STRENGTH - Principal of the authentication strength type.
+- OTHER - Principal of the other/unclassified type.
+- DNS_NODE - Principal of the AD DNS Record.
+- MSKDS_PROV_ROOT_KEY - Principal of the MS Key Distribution Service root key type.
+- NTFRS_SUBSCRIBER - Principal of the NTFRS Subscriber type (File Replication Service).
+- PKI_ENROLLMENT_SERVICE - Principal of the AD PKI Enrollment Service type (CA).

@@ -210,6 +210,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldBackupFromPrimaryDgGroupMemberOnly")]
         public System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly { get; set; }
 
+        //      C# -> System.Boolean? ShouldEnableZeroRpo
+        // GraphQL -> shouldEnableZeroRpo: Boolean (scalar)
+        [JsonProperty("shouldEnableZeroRpo")]
+        public System.Boolean? ShouldEnableZeroRpo { get; set; }
+
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
         [JsonProperty("snapshotCount")]
@@ -303,6 +308,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? RatePerRmanChannelInMb = null,
         System.Int32? SectionSizeInGb = null,
         System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly = null,
+        System.Boolean? ShouldEnableZeroRpo = null,
         System.Int32? SnapshotCount = null,
         List<System.String>? Tablespaces = null,
         BlackoutWindowResponseInfo? BlackoutWindowResponseInfo = null,
@@ -427,6 +433,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ShouldBackupFromPrimaryDgGroupMemberOnly != null ) {
             this.ShouldBackupFromPrimaryDgGroupMemberOnly = ShouldBackupFromPrimaryDgGroupMemberOnly;
+        }
+        if ( ShouldEnableZeroRpo != null ) {
+            this.ShouldEnableZeroRpo = ShouldEnableZeroRpo;
         }
         if ( SnapshotCount != null ) {
             this.SnapshotCount = SnapshotCount;
@@ -809,6 +818,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shouldBackupFromPrimaryDgGroupMemberOnly\n" ;
             } else {
                 s += ind + "shouldBackupFromPrimaryDgGroupMemberOnly\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldEnableZeroRpo
+        // GraphQL -> shouldEnableZeroRpo: Boolean (scalar)
+        if (this.ShouldEnableZeroRpo != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldEnableZeroRpo\n" ;
+            } else {
+                s += ind + "shouldEnableZeroRpo\n" ;
             }
         }
         //      C# -> System.Int32? SnapshotCount
@@ -1565,6 +1583,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShouldBackupFromPrimaryDgGroupMemberOnly != null && ec.Excludes("shouldBackupFromPrimaryDgGroupMemberOnly",true))
         {
             this.ShouldBackupFromPrimaryDgGroupMemberOnly = null;
+        }
+        //      C# -> System.Boolean? ShouldEnableZeroRpo
+        // GraphQL -> shouldEnableZeroRpo: Boolean (scalar)
+        if (ec.Includes("shouldEnableZeroRpo",true))
+        {
+            if(this.ShouldEnableZeroRpo == null) {
+
+                this.ShouldEnableZeroRpo = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldEnableZeroRpo != null && ec.Excludes("shouldEnableZeroRpo",true))
+        {
+            this.ShouldEnableZeroRpo = null;
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)

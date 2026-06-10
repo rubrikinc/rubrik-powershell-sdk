@@ -409,11 +409,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	snapshotFid = $someString
-    /// 	# REQUIRED
-    /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -430,6 +426,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		zipPassword = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -460,11 +460,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	snapshotFid = $someString
-    /// 	# REQUIRED
-    /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
@@ -498,10 +494,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		guestCredentialId = $someString
     /// 		# OPTIONAL
+    /// 		excludePaths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		recoveryPurpose = $someString
+    /// 		# OPTIONAL
     /// 		description = $someString
     /// 		# OPTIONAL
     /// 		shouldUseMountDisks = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1139,11 +1145,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	snapshotFid = $someString
-	# REQUIRED
-	locationId = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -1160,6 +1162,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		zipPassword = $someString
 	}
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }
@@ -1182,11 +1188,7 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	snapshotFid = $someString
-	# REQUIRED
-	locationId = $someString
 	# REQUIRED
 	config = @{
 		# OPTIONAL
@@ -1220,10 +1222,20 @@ $query.Var.input = @{
 		# OPTIONAL
 		guestCredentialId = $someString
 		# OPTIONAL
+		excludePaths = @(
+			$someString
+		)
+		# OPTIONAL
+		recoveryPurpose = $someString
+		# OPTIONAL
 		description = $someString
 		# OPTIONAL
 		shouldUseMountDisks = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	locationId = $someString
 }"
             );
         }

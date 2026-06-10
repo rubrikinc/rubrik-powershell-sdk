@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public GcpCloudAccountRegion? Region { get; set; }
 
+        //      C# -> System.String? ClusterSecondaryRangeName
+        // GraphQL -> clusterSecondaryRangeName: String! (scalar)
+        [JsonProperty("clusterSecondaryRangeName")]
+        public System.String? ClusterSecondaryRangeName { get; set; }
+
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
         [JsonProperty("projectId")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public RegionalExocomputeConfig Set(
         GcpCloudAccountRegion? Region = null,
+        System.String? ClusterSecondaryRangeName = null,
         System.String? ProjectId = null,
         System.String? SubnetName = null,
         System.String? VpcNetworkName = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Region != null ) {
             this.Region = Region;
+        }
+        if ( ClusterSecondaryRangeName != null ) {
+            this.ClusterSecondaryRangeName = ClusterSecondaryRangeName;
         }
         if ( ProjectId != null ) {
             this.ProjectId = ProjectId;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "region\n" ;
             } else {
                 s += ind + "region\n" ;
+            }
+        }
+        //      C# -> System.String? ClusterSecondaryRangeName
+        // GraphQL -> clusterSecondaryRangeName: String! (scalar)
+        if (this.ClusterSecondaryRangeName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterSecondaryRangeName\n" ;
+            } else {
+                s += ind + "clusterSecondaryRangeName\n" ;
             }
         }
         //      C# -> System.String? ProjectId
@@ -141,6 +159,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Region != null && ec.Excludes("region",true))
         {
             this.Region = null;
+        }
+        //      C# -> System.String? ClusterSecondaryRangeName
+        // GraphQL -> clusterSecondaryRangeName: String! (scalar)
+        if (ec.Includes("clusterSecondaryRangeName",true))
+        {
+            if(this.ClusterSecondaryRangeName == null) {
+
+                this.ClusterSecondaryRangeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterSecondaryRangeName != null && ec.Excludes("clusterSecondaryRangeName",true))
+        {
+            this.ClusterSecondaryRangeName = null;
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("values")]
         public List<System.String>? Values { get; set; }
 
+        //      C# -> List<CloudAccountFilterValueEntry>? NamedValues
+        // GraphQL -> namedValues: [CloudAccountFilterValueEntry!]! (type)
+        [JsonProperty("namedValues")]
+        public List<CloudAccountFilterValueEntry>? NamedValues { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public CloudAccountFilterValues Set(
         CloudAccountFilterType? FilterType = null,
-        List<System.String>? Values = null
+        List<System.String>? Values = null,
+        List<CloudAccountFilterValueEntry>? NamedValues = null
     ) 
     {
         if ( FilterType != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Values != null ) {
             this.Values = Values;
+        }
+        if ( NamedValues != null ) {
+            this.NamedValues = NamedValues;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "values\n" ;
             } else {
                 s += ind + "values\n" ;
+            }
+        }
+        //      C# -> List<CloudAccountFilterValueEntry>? NamedValues
+        // GraphQL -> namedValues: [CloudAccountFilterValueEntry!]! (type)
+        if (this.NamedValues != null) {
+            var fspec = this.NamedValues.AsFieldSpec(conf.Child("namedValues"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "namedValues" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Values != null && ec.Excludes("values",true))
         {
             this.Values = null;
+        }
+        //      C# -> List<CloudAccountFilterValueEntry>? NamedValues
+        // GraphQL -> namedValues: [CloudAccountFilterValueEntry!]! (type)
+        if (ec.Includes("namedValues",false))
+        {
+            if(this.NamedValues == null) {
+
+                this.NamedValues = new List<CloudAccountFilterValueEntry>();
+                this.NamedValues.ApplyExploratoryFieldSpec(ec.NewChild("namedValues"));
+
+            } else {
+
+                this.NamedValues.ApplyExploratoryFieldSpec(ec.NewChild("namedValues"));
+
+            }
+        }
+        else if (this.NamedValues != null && ec.Excludes("namedValues",false))
+        {
+            this.NamedValues = null;
         }
     }
 

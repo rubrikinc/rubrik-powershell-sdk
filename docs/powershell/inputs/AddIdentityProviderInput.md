@@ -13,3 +13,7 @@ Identity provider to add.
   - Specifies if the identity provider should be set as the temporary identity provider.
 - idpClaimAttributes: list of IdpClaimAttributes
   - Custom claims for the identity provider.
+- isForceAuthnEnabled: System.Boolean
+  - Whether the SAML AuthnRequest sent to this identity provider sets
+ForceAuthn="true", asking the IdP to re-authenticate the user on
+every login instead of reusing a cached IdP session.

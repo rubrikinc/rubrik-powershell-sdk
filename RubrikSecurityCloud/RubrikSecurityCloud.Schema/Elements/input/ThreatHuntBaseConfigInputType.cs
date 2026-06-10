@@ -19,17 +19,24 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Notes
-        // GraphQL -> notes: String (scalar)
-        [JsonProperty("notes")]
-        public System.String? Notes { get; set; }
-
         //      C# -> ThreatHuntType? ThreatHuntType
         // GraphQL -> threatHuntType: ThreatHuntType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("threatHuntType")]
         public ThreatHuntType? ThreatHuntType { get; set; }
+
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
+        //      C# -> System.String? Notes
+        // GraphQL -> notes: String (scalar)
+        [JsonProperty("notes")]
+        public System.String? Notes { get; set; }
 
         //      C# -> IocInputType? Ioc
         // GraphQL -> ioc: IocInputType! (input)
@@ -47,13 +54,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> fileScanCriteria: HuntScanFileCriteriaInputType (input)
         [JsonProperty("fileScanCriteria")]
         public HuntScanFileCriteriaInputType? FileScanCriteria { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("name")]
-        public System.String? Name { get; set; }
 
         //      C# -> System.Int32? MaxMatchesPerSnapshot
         // GraphQL -> maxMatchesPerSnapshot: Int (scalar)

@@ -270,6 +270,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					customTemplate = $someString
     /// 				}
     /// 			}
+    /// 			# OPTIONAL
+    /// 			identityActivitySubscription = @{
+    /// 				# REQUIRED
+    /// 				templateInfo = @{
+    /// 					# OPTIONAL
+    /// 					templateId = $someInt64
+    /// 					# OPTIONAL
+    /// 					customTemplate = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				actionTypes = @(
+    /// 					$someLambdaEventActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LambdaEventActionType]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activityProviders = @(
+    /// 					$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+    /// 				)
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		description = $someString
@@ -800,6 +818,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					customTemplate = $someString
     /// 				}
     /// 			}
+    /// 			# OPTIONAL
+    /// 			identityActivitySubscription = @{
+    /// 				# REQUIRED
+    /// 				templateInfo = @{
+    /// 					# OPTIONAL
+    /// 					templateId = $someInt64
+    /// 					# OPTIONAL
+    /// 					customTemplate = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				actionTypes = @(
+    /// 					$someLambdaEventActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LambdaEventActionType]) for enum values.
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				activityProviders = @(
+    /// 					$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+    /// 				)
+    /// 			}
     /// 		}
     /// 		# OPTIONAL
     /// 		description = $someString
@@ -1209,6 +1245,24 @@ $query.Var.input = @{
 					# OPTIONAL
 					customTemplate = $someString
 				}
+			}
+			# OPTIONAL
+			identityActivitySubscription = @{
+				# REQUIRED
+				templateInfo = @{
+					# OPTIONAL
+					templateId = $someInt64
+					# OPTIONAL
+					customTemplate = $someString
+				}
+				# OPTIONAL
+				actionTypes = @(
+					$someLambdaEventActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LambdaEventActionType]) for enum values.
+				)
+				# OPTIONAL
+				activityProviders = @(
+					$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+				)
 			}
 		}
 		# OPTIONAL
@@ -1659,6 +1713,24 @@ $query.Var.input = @{
 					# OPTIONAL
 					customTemplate = $someString
 				}
+			}
+			# OPTIONAL
+			identityActivitySubscription = @{
+				# REQUIRED
+				templateInfo = @{
+					# OPTIONAL
+					templateId = $someInt64
+					# OPTIONAL
+					customTemplate = $someString
+				}
+				# OPTIONAL
+				actionTypes = @(
+					$someLambdaEventActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LambdaEventActionType]) for enum values.
+				)
+				# OPTIONAL
+				activityProviders = @(
+					$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+				)
 			}
 		}
 		# OPTIONAL

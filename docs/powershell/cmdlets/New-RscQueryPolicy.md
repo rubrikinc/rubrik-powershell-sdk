@@ -33,7 +33,7 @@ Organization security policy.
 - The orgsecuritypolicy subcommand takes no arguments.
 - Returns OrgSecurityPolicy.
 ### passwordcomplexitypolicy
-Get the password policy for the current organization.
+Get the password complexity policy for the current organization.
 
 - The passwordcomplexitypolicy subcommand takes no arguments.
 - Returns PasswordComplexityPolicy.

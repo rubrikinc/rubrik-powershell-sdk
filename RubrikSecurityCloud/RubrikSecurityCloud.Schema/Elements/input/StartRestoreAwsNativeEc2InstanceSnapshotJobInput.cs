@@ -50,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshotId")]
         public System.String? ArchivedSnapshotId { get; set; }
 
+        //      C# -> AwsRetrievalTier? RetrievalTier
+        // GraphQL -> retrievalTier: AwsRetrievalTier (enum)
+        [JsonProperty("retrievalTier")]
+        public AwsRetrievalTier? RetrievalTier { get; set; }
+
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

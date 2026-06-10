@@ -1,5 +1,5 @@
 ### MapAzureCloudAccountToPersistentStorageLocationReply
-Response of the operation to map Azure cloud accounts to a persistent storage location.
+Response for mapping Azure cloud account to persistent storage location.
 
 - isSuccess: System.Boolean
-  - Specifies whether the mapping was completed successfully.
+  - Whether the mapping was successful.

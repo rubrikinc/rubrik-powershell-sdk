@@ -7,6 +7,8 @@ Specific information for Google Cloud Platform (GCP) target created on Rubrik.
   - Connection status of the GCP target.
 - cnpSpecificFields: GcpCloudNativeTarget
   - CNP specific fields for the GCP target location..
+- immutabilitySettings: GcpImmutabilitySettings
+  - Immutability settings of the GCP archival target.
 - region: GcpRegion
   - Region of GCP target.
 - syncStatus: TargetSyncStatus
@@ -19,6 +21,8 @@ Specific information for Google Cloud Platform (GCP) target created on Rubrik.
   - Reason why sync of this target with CDM failed.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type to be used for the GCP target.
 - cluster: Cluster
   - The cluster to which this target belongs.
 - targetType: TargetType

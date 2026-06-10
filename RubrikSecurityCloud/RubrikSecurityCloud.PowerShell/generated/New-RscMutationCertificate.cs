@@ -299,6 +299,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.surname = $someString
     /// # OPTIONAL
     /// $query.Var.userId = $someString
+    /// # OPTIONAL
+    /// $query.Var.keyGenerationParams = @{
+    /// 	# OPTIONAL
+    /// 	keyType = $someString
+    /// 	# OPTIONAL
+    /// 	keyStrength = $someString
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -885,6 +892,7 @@ $query.Var.input = @{
         //     email: String
         //     surname: String
         //     userId: String
+        //     keyGenerationParams: KeyGenerationParamsInput
         //   ): Csr!
         internal void InitMutationGenerateCsr()
         {
@@ -899,12 +907,13 @@ $query.Var.input = @{
                 Tuple.Create("email", "String"),
                 Tuple.Create("surname", "String"),
                 Tuple.Create("userId", "String"),
+                Tuple.Create("keyGenerationParams", "KeyGenerationParamsInput"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationGenerateCsr",
-                "($name: String!,$hostnames: [String!]!,$organization: String,$organizationUnit: String,$country: String,$state: String,$city: String,$email: String,$surname: String,$userId: String)",
+                "($name: String!,$hostnames: [String!]!,$organization: String,$organizationUnit: String,$country: String,$state: String,$city: String,$email: String,$surname: String,$userId: String,$keyGenerationParams: KeyGenerationParamsInput)",
                 "Csr",
                 Mutation.GenerateCsr,
                 Mutation.GenerateCsrFieldSpec,
@@ -929,7 +938,14 @@ $query.Var.email = $someString
 # OPTIONAL
 $query.Var.surname = $someString
 # OPTIONAL
-$query.Var.userId = $someString"
+$query.Var.userId = $someString
+# OPTIONAL
+$query.Var.keyGenerationParams = @{
+	# OPTIONAL
+	keyType = $someString
+	# OPTIONAL
+	keyStrength = $someString
+}"
             );
         }
 

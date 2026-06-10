@@ -143,8 +143,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	groupsIds = @(
     /// 		$someString
     /// 	)
-    /// 	# OPTIONAL
-    /// 	search = $someString
     /// 	# REQUIRED
     /// 	timeRange = @{
     /// 		# OPTIONAL
@@ -154,6 +152,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		timezone = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	search = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.first = $someInt
@@ -327,8 +327,6 @@ $query.Var.filter = @{
 	groupsIds = @(
 		$someString
 	)
-	# OPTIONAL
-	search = $someString
 	# REQUIRED
 	timeRange = @{
 		# OPTIONAL
@@ -338,6 +336,8 @@ $query.Var.filter = @{
 		# OPTIONAL
 		timezone = $someString
 	}
+	# OPTIONAL
+	search = $someString
 }
 # OPTIONAL
 $query.Var.first = $someInt

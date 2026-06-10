@@ -41,16 +41,12 @@ namespace RubrikSecurityCloud.Types
         public System.String? TargetInstanceName { get; set; }
 
         //      C# -> System.String? TargetMachineType
-        // GraphQL -> targetMachineType: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> targetMachineType: String (scalar)
         [JsonProperty("targetMachineType")]
         public System.String? TargetMachineType { get; set; }
 
         //      C# -> System.String? TargetSubnetName
-        // GraphQL -> targetSubnetName: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> targetSubnetName: String (scalar)
         [JsonProperty("targetSubnetName")]
         public System.String? TargetSubnetName { get; set; }
 

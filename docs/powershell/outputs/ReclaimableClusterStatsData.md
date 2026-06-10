@@ -16,3 +16,9 @@ Reclaimable cluster stats data for a single cluster.
 downloaded_snapshots_storage, in bytes).
 - clusterName: System.String
   - Name of the cluster.
+- protectedObjectsStorage: System.Int64
+  - Storage taken by protected objects excluding downloaded snapshots
+(in bytes).
+- unprotectedObjectsStorage: System.Int64
+  - Storage taken by unprotected objects excluding downloaded snapshots
+(in bytes).

@@ -24,17 +24,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectFid")]
         public System.String? ObjectFid { get; set; }
 
-        //      C# -> System.String? ClusterVersion
-        // GraphQL -> clusterVersion: String (scalar)
-        [JsonProperty("clusterVersion")]
-        public System.String? ClusterVersion { get; set; }
-
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
+        //      C# -> System.String? ClusterVersion
+        // GraphQL -> clusterVersion: String (scalar)
+        [JsonProperty("clusterVersion")]
+        public System.String? ClusterVersion { get; set; }
 
 
         #endregion

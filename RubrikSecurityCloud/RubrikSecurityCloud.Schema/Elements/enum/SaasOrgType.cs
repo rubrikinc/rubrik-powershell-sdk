@@ -21,8 +21,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_ORG")]
         ATLASSIAN_ORG,
 
+        [EnumMember(Value = "AUTH0_ORG")]
+        AUTH0_ORG,
+
+        [EnumMember(Value = "AZURE_DEVOPS_ORG")]
+        AZURE_DEVOPS_ORG,
+
         [EnumMember(Value = "DYNAMICS_365_ORG")]
         DYNAMICS_365_ORG,
+
+        [EnumMember(Value = "GITHUB_ORG")]
+        GITHUB_ORG,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORG")]
         GOOGLE_WORKSPACE_ORG,
@@ -32,6 +41,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OKTA_ORG")]
         OKTA_ORG,
+
+        [EnumMember(Value = "POWER_PLATFORM_ORG")]
+        POWER_PLATFORM_ORG,
 
         [EnumMember(Value = "SAAS_ORG_TYPE_UNSPECIFIED")]
         SAAS_ORG_TYPE_UNSPECIFIED,

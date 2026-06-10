@@ -21,6 +21,8 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The name of the object associated with the activity series.
 - objectType: ActivityObjectTypeEnum
   - The type of the object associated with the activity series.
+- activitySeriesId: System.String
+  - The ID of the activity series.
 - clusterUuid: System.String
   - The UUID of the cluster which the activity series belongs to.
 - clusterName: System.String
@@ -29,10 +31,10 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The time at which the most recent activity was added to the activity series.
 - lastVerifiedAt: DateTime
   - The most recent time that the activity series was verified.
-- isCancelable: System.Boolean
-  - Whether the activity series can be canceled or not.
 - location: System.String
   - The location of this activity series.
+- isCancelable: System.Boolean
+  - Whether the activity series can be canceled or not.
 - isPolarisEventSeries: System.Boolean
   - Whether the event series is native to RSC or not.
 - orgId: System.String
@@ -51,22 +53,18 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The final event message in the event series.
 - attemptNumber: System.Int32
   - The attempt number of the related job.
-- isOnDemand: System.Boolean
-  - Specifies whether the activity series is triggered on demand or is driven by the SLA Domain.
 - isTransactionLogEventSeries: System.Boolean
   - Specifies whether the event series is a transaction log event.
+- isOnDemand: System.Boolean
+  - Specifies whether the activity series is triggered on demand or is driven by the SLA Domain.
 - username: System.String
   - The user who triggered the related job.
 - slaDomainName: System.String
   - The name of the SLA Domain associated with this activity series.
-- activitySeriesId: System.String
-  - The ID of the activity series.
-- progress: System.String
-  - The total progress of the event series.
-- organizations: list of Orgs
-  - The organizations associated with this event series.
 - failureReason: System.String
   - The reason the activity series failed.
+- progress: System.String
+  - The total progress of the event series.
 - causeErrorMessage: System.String
   - The cause of the activity series failure.
 - causeErrorCode: System.String
@@ -75,7 +73,9 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The reason for the activity series failure.
 - causeErrorRemedy: System.String
   - The remedy for the cause of the activity series failure.
-- cluster: Cluster
-  - Information about the cluster that the activity series belongs to.
 - activityConnection: ActivityConnection
   - The list of activities.
+- cluster: Cluster
+  - Information about the cluster that the activity series belongs to.
+- organizations: list of Orgs
+  - The organizations associated with this event series.

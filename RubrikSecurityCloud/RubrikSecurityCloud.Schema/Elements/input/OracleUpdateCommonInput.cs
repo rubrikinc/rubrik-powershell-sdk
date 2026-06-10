@@ -79,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPaused")]
         public System.Boolean? IsPaused { get; set; }
 
+        //      C# -> System.Boolean? ShouldEnableZeroRpo
+        // GraphQL -> shouldEnableZeroRpo: Boolean (scalar)
+        [JsonProperty("shouldEnableZeroRpo")]
+        public System.Boolean? ShouldEnableZeroRpo { get; set; }
+
 
         #endregion
 

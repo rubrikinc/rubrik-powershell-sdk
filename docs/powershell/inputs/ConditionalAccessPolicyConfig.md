@@ -3,6 +3,8 @@ Configuration of an Azure AD Conditional Access Policy.
 
 - id: System.String
   - Id of the Azure AD Conditional Access Policy recovered.
+- idString: System.String
+  - String Id of the Entra ID Conditional Access Policy recovered.
 - exportedPolicyName: System.String
   - Name of the Azure AD conditional access policy recovered.
 - recoveryState: AzureAdConditionalAccessPolicyStateEnumType

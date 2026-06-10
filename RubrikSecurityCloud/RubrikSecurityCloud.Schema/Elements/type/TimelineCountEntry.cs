@@ -20,10 +20,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
+        //      C# -> System.Int64? Count
+        // GraphQL -> count: Long! (scalar)
         [JsonProperty("count")]
-        public System.Int32? Count { get; set; }
+        public System.Int64? Count { get; set; }
 
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
@@ -40,7 +40,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public TimelineCountEntry Set(
-        System.Int32? Count = null,
+        System.Int64? Count = null,
         System.String? Day = null
     ) 
     {
@@ -64,8 +64,8 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
+        //      C# -> System.Int64? Count
+        // GraphQL -> count: Long! (scalar)
         if (this.Count != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "count\n" ;
@@ -89,13 +89,13 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
+        //      C# -> System.Int64? Count
+        // GraphQL -> count: Long! (scalar)
         if (ec.Includes("count",true))
         {
             if(this.Count == null) {
 
-                this.Count = Int32.MinValue;
+                this.Count = new System.Int64();
 
             } else {
 

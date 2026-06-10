@@ -5,6 +5,17 @@ Retrieve an activity series.
 
 - There is a single argument of type ActivitySeriesInput.
 - Returns ActivitySeries.
+### crowdstrikealertsummary
+Compact actor summary for a single CrowdStrike alert.
+
+- There is a single argument of type System.String.
+- Returns CrowdstrikeAlertActivitySummary.
+### crowdstrikecasesummary
+Compact case-level actor summary across the alerts that compose a
+CrowdStrike incident.
+
+- There is a single argument of type list of System.Strings.
+- Returns CrowdstrikeCaseActivitySummary.
 ### list
 Paginated list of event series objects. Each page of the results will include at most 50 entries unless otherwise specified using the first parameter. Query the pageInfo.hasNextPage field to know whether all objects were returned.
 
@@ -18,7 +29,7 @@ Paginated list of event series objects. Each page of the results will include at
     - filters - ActivitySeriesFilter
 - Returns ActivitySeriesConnection.
 ### sessionintimeoutinseconds
-The session inactivity timeout in seconds.
+The session inactivity timeout in seconds for the authenticated user.
 
 - The sessionintimeoutinseconds subcommand takes no arguments.
 - Returns System.Int64.

@@ -1,12 +1,20 @@
 ### ClusterEncryptionInfo
 The Rubrik cluster's encryption-at-rest information.
 
+- uuid: System.String
+  - The ID of the Rubrik cluster.
 - name: System.String
   - The name of the Rubrik cluster.
 - isEncrypted: System.Boolean
   - Specifies if the Rubrik cluster is encrypted.
+- encryptionType: ClusterEncryptionType
+  - The type of encryption used by the Rubrik cluster.
+- latestRotationCompletedInfo: ClusterKeyRotation
+  - The latest completed key rotation on the Rubrik cluster.
 - cipher: System.String
   - The encryption cipher.
+- supportedKeyTypes: list of ClusterKeyProtections
+  - The supported key protection types for the Rubrik cluster.
 - totalKmipServers: System.Int64
   - The number of KMIP servers used by the cluster.
 - kmipClientUsername: System.String
@@ -15,17 +23,11 @@ The Rubrik cluster's encryption-at-rest information.
   - Specifies if the Rubrik cluster is connected.
 - softwareVersion: System.String
   - The software version running on the Rubrik cluster.
+- mostRecentRscRequest: RscKeyRotationRequest
+  - The most recent key rotation request made on RSC for the Rubrik cluster.
 - canUserManageCluster: System.Boolean
   - Specifies if the user can manage the cluster settings.
 - isOnCloud: System.Boolean
   - Specifies whether the Rubrik cluster is hosted in the cloud.
-- uuid: System.String
-  - The ID of the Rubrik cluster.
-- encryptionType: ClusterEncryptionType
-  - The type of encryption used by the Rubrik cluster.
-- latestRotationCompletedInfo: ClusterKeyRotation
-  - The latest completed key rotation on the Rubrik cluster.
-- supportedKeyTypes: list of ClusterKeyProtections
-  - The supported key protection types for the Rubrik cluster.
-- mostRecentRscRequest: RscKeyRotationRequest
-  - The most recent key rotation request made on RSC for the Rubrik cluster.
+- clusterProductType: ClusterProductType
+  - The product type of the Rubrik cluster.

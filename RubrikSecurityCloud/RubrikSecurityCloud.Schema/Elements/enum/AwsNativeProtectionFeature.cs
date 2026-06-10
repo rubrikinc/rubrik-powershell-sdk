@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EC2")]
         EC2,
 
+        [EnumMember(Value = "GLUE_ICEBERG")]
+        GLUE_ICEBERG,
+
         [EnumMember(Value = "RDS")]
         RDS,
 

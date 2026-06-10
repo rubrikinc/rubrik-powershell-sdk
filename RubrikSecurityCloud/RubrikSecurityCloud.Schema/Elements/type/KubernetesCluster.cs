@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmPendingObjectPauseAssignment")]
         public PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
 
+        //      C# -> HelmStatus? HelmStatus
+        // GraphQL -> helmStatus: HelmStatus (enum)
+        [JsonProperty("helmStatus")]
+        public HelmStatus? HelmStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -100,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> externalIp: String (scalar)
         [JsonProperty("externalIp")]
         public System.String? ExternalIp { get; set; }
+
+        //      C# -> System.String? HelmVersion
+        // GraphQL -> helmVersion: String (scalar)
+        [JsonProperty("helmVersion")]
+        public System.String? HelmVersion { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -341,6 +351,7 @@ namespace RubrikSecurityCloud.Types
     public KubernetesCluster Set(
         List<Operation>? AuthorizedOperations = null,
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
+        HelmStatus? HelmStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         KubernetesOnboardingType? OnboardingType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
@@ -355,6 +366,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Distribution = null,
         System.String? EksClusterArn = null,
         System.String? ExternalIp = null,
+        System.String? HelmVersion = null,
         System.String? Id = null,
         System.Boolean? IsAutoPsCreationEnabled = null,
         System.Boolean? IsPullSecretConfigured = null,
@@ -397,6 +409,9 @@ namespace RubrikSecurityCloud.Types
         if ( CdmPendingObjectPauseAssignment != null ) {
             this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
         }
+        if ( HelmStatus != null ) {
+            this.HelmStatus = HelmStatus;
+        }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
         }
@@ -438,6 +453,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExternalIp != null ) {
             this.ExternalIp = ExternalIp;
+        }
+        if ( HelmVersion != null ) {
+            this.HelmVersion = HelmVersion;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -571,6 +589,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdmPendingObjectPauseAssignment\n" ;
             } else {
                 s += ind + "cdmPendingObjectPauseAssignment\n" ;
+            }
+        }
+        //      C# -> HelmStatus? HelmStatus
+        // GraphQL -> helmStatus: HelmStatus (enum)
+        if (this.HelmStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "helmStatus\n" ;
+            } else {
+                s += ind + "helmStatus\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -717,6 +744,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "externalIp\n" ;
             } else {
                 s += ind + "externalIp\n" ;
+            }
+        }
+        //      C# -> System.String? HelmVersion
+        // GraphQL -> helmVersion: String (scalar)
+        if (this.HelmVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "helmVersion\n" ;
+            } else {
+                s += ind + "helmVersion\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -1117,6 +1153,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CdmPendingObjectPauseAssignment = null;
         }
+        //      C# -> HelmStatus? HelmStatus
+        // GraphQL -> helmStatus: HelmStatus (enum)
+        if (ec.Includes("helmStatus",true))
+        {
+            if(this.HelmStatus == null) {
+
+                this.HelmStatus = new HelmStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.HelmStatus != null && ec.Excludes("helmStatus",true))
+        {
+            this.HelmStatus = null;
+        }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         if (ec.Includes("objectType",true))
@@ -1384,6 +1437,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExternalIp != null && ec.Excludes("externalIp",true))
         {
             this.ExternalIp = null;
+        }
+        //      C# -> System.String? HelmVersion
+        // GraphQL -> helmVersion: String (scalar)
+        if (ec.Includes("helmVersion",true))
+        {
+            if(this.HelmVersion == null) {
+
+                this.HelmVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HelmVersion != null && ec.Excludes("helmVersion",true))
+        {
+            this.HelmVersion = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

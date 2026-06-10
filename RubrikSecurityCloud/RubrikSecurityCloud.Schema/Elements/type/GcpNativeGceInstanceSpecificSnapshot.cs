@@ -21,6 +21,21 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? MachineType
+        // GraphQL -> machineType: String! (scalar)
+        [JsonProperty("machineType")]
+        public System.String? MachineType { get; set; }
+
+        //      C# -> System.String? NetworkHostProjectNativeId
+        // GraphQL -> networkHostProjectNativeId: String! (scalar)
+        [JsonProperty("networkHostProjectNativeId")]
+        public System.String? NetworkHostProjectNativeId { get; set; }
+
+        //      C# -> List<System.String>? NetworkTags
+        // GraphQL -> networkTags: [String!]! (scalar)
+        [JsonProperty("networkTags")]
+        public List<System.String>? NetworkTags { get; set; }
+
         //      C# -> System.String? ServiceAccountEmail
         // GraphQL -> serviceAccountEmail: String! (scalar)
         [JsonProperty("serviceAccountEmail")]
@@ -30,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotId: UUID! (scalar)
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
+
+        //      C# -> System.String? SubnetName
+        // GraphQL -> subnetName: String! (scalar)
+        [JsonProperty("subnetName")]
+        public System.String? SubnetName { get; set; }
+
+        //      C# -> System.String? VpcName
+        // GraphQL -> vpcName: String! (scalar)
+        [JsonProperty("vpcName")]
+        public System.String? VpcName { get; set; }
 
 
         #endregion
@@ -41,15 +66,35 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GcpNativeGceInstanceSpecificSnapshot Set(
+        System.String? MachineType = null,
+        System.String? NetworkHostProjectNativeId = null,
+        List<System.String>? NetworkTags = null,
         System.String? ServiceAccountEmail = null,
-        System.String? SnapshotId = null
+        System.String? SnapshotId = null,
+        System.String? SubnetName = null,
+        System.String? VpcName = null
     ) 
     {
+        if ( MachineType != null ) {
+            this.MachineType = MachineType;
+        }
+        if ( NetworkHostProjectNativeId != null ) {
+            this.NetworkHostProjectNativeId = NetworkHostProjectNativeId;
+        }
+        if ( NetworkTags != null ) {
+            this.NetworkTags = NetworkTags;
+        }
         if ( ServiceAccountEmail != null ) {
             this.ServiceAccountEmail = ServiceAccountEmail;
         }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
+        }
+        if ( SubnetName != null ) {
+            this.SubnetName = SubnetName;
+        }
+        if ( VpcName != null ) {
+            this.VpcName = VpcName;
         }
         return this;
     }
@@ -65,6 +110,33 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? MachineType
+        // GraphQL -> machineType: String! (scalar)
+        if (this.MachineType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "machineType\n" ;
+            } else {
+                s += ind + "machineType\n" ;
+            }
+        }
+        //      C# -> System.String? NetworkHostProjectNativeId
+        // GraphQL -> networkHostProjectNativeId: String! (scalar)
+        if (this.NetworkHostProjectNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkHostProjectNativeId\n" ;
+            } else {
+                s += ind + "networkHostProjectNativeId\n" ;
+            }
+        }
+        //      C# -> List<System.String>? NetworkTags
+        // GraphQL -> networkTags: [String!]! (scalar)
+        if (this.NetworkTags != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkTags\n" ;
+            } else {
+                s += ind + "networkTags\n" ;
+            }
+        }
         //      C# -> System.String? ServiceAccountEmail
         // GraphQL -> serviceAccountEmail: String! (scalar)
         if (this.ServiceAccountEmail != null) {
@@ -83,6 +155,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "snapshotId\n" ;
             }
         }
+        //      C# -> System.String? SubnetName
+        // GraphQL -> subnetName: String! (scalar)
+        if (this.SubnetName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetName\n" ;
+            } else {
+                s += ind + "subnetName\n" ;
+            }
+        }
+        //      C# -> System.String? VpcName
+        // GraphQL -> vpcName: String! (scalar)
+        if (this.VpcName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "vpcName\n" ;
+            } else {
+                s += ind + "vpcName\n" ;
+            }
+        }
         return s;
     }
 
@@ -90,6 +180,57 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? MachineType
+        // GraphQL -> machineType: String! (scalar)
+        if (ec.Includes("machineType",true))
+        {
+            if(this.MachineType == null) {
+
+                this.MachineType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.MachineType != null && ec.Excludes("machineType",true))
+        {
+            this.MachineType = null;
+        }
+        //      C# -> System.String? NetworkHostProjectNativeId
+        // GraphQL -> networkHostProjectNativeId: String! (scalar)
+        if (ec.Includes("networkHostProjectNativeId",true))
+        {
+            if(this.NetworkHostProjectNativeId == null) {
+
+                this.NetworkHostProjectNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkHostProjectNativeId != null && ec.Excludes("networkHostProjectNativeId",true))
+        {
+            this.NetworkHostProjectNativeId = null;
+        }
+        //      C# -> List<System.String>? NetworkTags
+        // GraphQL -> networkTags: [String!]! (scalar)
+        if (ec.Includes("networkTags",true))
+        {
+            if(this.NetworkTags == null) {
+
+                this.NetworkTags = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkTags != null && ec.Excludes("networkTags",true))
+        {
+            this.NetworkTags = null;
+        }
         //      C# -> System.String? ServiceAccountEmail
         // GraphQL -> serviceAccountEmail: String! (scalar)
         if (ec.Includes("serviceAccountEmail",true))
@@ -123,6 +264,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
         {
             this.SnapshotId = null;
+        }
+        //      C# -> System.String? SubnetName
+        // GraphQL -> subnetName: String! (scalar)
+        if (ec.Includes("subnetName",true))
+        {
+            if(this.SubnetName == null) {
+
+                this.SubnetName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetName != null && ec.Excludes("subnetName",true))
+        {
+            this.SubnetName = null;
+        }
+        //      C# -> System.String? VpcName
+        // GraphQL -> vpcName: String! (scalar)
+        if (ec.Includes("vpcName",true))
+        {
+            if(this.VpcName == null) {
+
+                this.VpcName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VpcName != null && ec.Excludes("vpcName",true))
+        {
+            this.VpcName = null;
         }
     }
 

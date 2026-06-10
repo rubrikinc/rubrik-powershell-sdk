@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectId")]
         public System.String? ObjectId { get; set; }
 
+        //      C# -> System.String? ObjectIdString
+        // GraphQL -> objectIdString: String (scalar)
+        [JsonProperty("objectIdString")]
+        public System.String? ObjectIdString { get; set; }
+
         //      C# -> AzureAdObjectType? AzureAdObjectType
         // GraphQL -> azureAdObjectType: AzureAdObjectType! (enum)
         [Required]

@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<System.String>? ObjectIds
-        // GraphQL -> objectIds: [String!] (scalar)
-        [JsonProperty("objectIds")]
-        public List<System.String>? ObjectIds { get; set; }
-
         //      C# -> ThreatHuntRootObjectType? ObjectType
         // GraphQL -> objectType: ThreatHuntRootObjectType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("objectType")]
         public ThreatHuntRootObjectType? ObjectType { get; set; }
+
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!] (scalar)
+        [JsonProperty("objectIds")]
+        public List<System.String>? ObjectIds { get; set; }
 
 
         #endregion

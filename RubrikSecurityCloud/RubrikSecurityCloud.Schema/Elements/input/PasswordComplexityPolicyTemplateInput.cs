@@ -29,17 +29,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxValue")]
         public System.Int32? MaxValue { get; set; }
 
-        //      C# -> System.Int32? DefaultValue
-        // GraphQL -> defaultValue: Int (scalar)
-        [JsonProperty("defaultValue")]
-        public System.Int32? DefaultValue { get; set; }
-
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("isActive")]
         public System.Boolean? IsActive { get; set; }
+
+        //      C# -> System.Int32? DefaultValue
+        // GraphQL -> defaultValue: Int (scalar)
+        [JsonProperty("defaultValue")]
+        public System.Int32? DefaultValue { get; set; }
 
 
         #endregion

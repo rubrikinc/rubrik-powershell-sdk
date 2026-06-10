@@ -6,3 +6,5 @@ the source of the quarantine operation.
   - Hunt ID for threat hunt related quarantine operations.
 - isThreatMonitoring: System.Boolean
   - Flag to indicate if the quarantine operation is from threat monitoring.
+- qmcMetadata: QmcMetadata
+  - QMC metadata for quarantine management center operations.

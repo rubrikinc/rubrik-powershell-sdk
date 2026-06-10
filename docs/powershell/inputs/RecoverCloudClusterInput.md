@@ -29,3 +29,7 @@ Recover a Rubrik Cloud Cluster.
   - Array of NTP servers.
 - isAzResilient: System.Boolean
   - Recovers as an AZ-resilient Rubrik cluster with nodes distributed across multiple availability zones.
+- dnsNameServers: list of System.Strings
+  - Optional override for DNS nameservers. If not provided, the original cluster's DNS nameservers are used.
+- dnsSearchDomains: list of System.Strings
+  - Optional override for DNS search domains. If not provided, the original cluster's DNS search domains are used.

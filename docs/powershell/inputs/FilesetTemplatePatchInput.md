@@ -35,6 +35,9 @@ Specifies whether this is created by a Kupr Host.
   - Specifies whether the template was created for Rubrik Security Cloud NAS.
 - filesetOptions: FilesetOptionsInput
   - Fileset options.
+- templateBlocklistFilesystemTypes: System.String
+  - Supported in v9.6
+Comma-separated list of filesystem types to dynamically block from backup (such as "gpfs,lustre").
 - templateBlocklistedFilesystemPaths: System.String
   - Supported in v9.5+
 Comma-separated list of blocklisted filesystem paths specific to this template.
@@ -44,3 +47,6 @@ Specifies whether to retry the pre-backup script if the backup fails. If set to 
 - shouldOverrideClusterWideBlocklistedFilesystemPaths: System.Boolean
   - Supported in v9.5+
 Specifies whether to override the cluster-wide blocklisted filesystem paths.
+- templateAllowlistFilesystemPaths: System.String
+  - Supported in v9.6
+Comma-separated list of paths that override blocklist exclusions.

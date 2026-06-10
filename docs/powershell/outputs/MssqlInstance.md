@@ -11,6 +11,28 @@ SQL Server instance.
   - Interval, in seconds, between the deletion of archived log files whose 'nextTime' field specifies a time longer than this interval. To specify an interval, enter a positive integer. To immediately delete archived log files regardless of age, specify an interval of -1. To preserve all archived log files, specify an interval of -2.
 - hasLogConfigFromSla: System.Boolean
   - Boolean flag indicating if the instance derives log backup configurations from SLA.
+- version: System.String
+  - SQL Server version string of the instance.
+- isClusterInstance: System.Boolean
+  - Whether this instance is a SQL Server Failover Cluster Instance (FCI).
+- activeNode: System.String
+  - Name of the currently active node for a Failover Cluster Instance.
+- serviceAccountUser: System.String
+  - Service account username used by the SQL Server instance.
+- protectionDate: DateTime
+  - Date when this instance was first protected by Rubrik.
+- discoveredAddress: System.String
+  - Network address discovered during instance registration.
+- hasPermissions: System.Boolean
+  - Whether Rubrik has the required permissions on this instance. Returns null during rolling upgrades when the value is unavailable.
+- hasSysadminRole: System.Boolean
+  - Whether the Rubrik service account has sysadmin role on this instance. Returns null during rolling upgrades when the value is unavailable.
+- networkName: System.String
+  - Network name of the SQL Server instance.
+- hostsInstalled: list of System.Strings
+  - List of hosts where this SQL Server instance is installed.
+- configurationVersion: System.Int64
+  - Version of the instance configuration. Changes when the instance configuration is modified.
 - descendantConnection: MssqlInstanceDescendantTypeConnection
   - List of descendants.
 - logicalChildConnection: MssqlInstanceLogicalChildTypeConnection

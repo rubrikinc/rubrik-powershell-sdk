@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 61
+    /// Create a new RscQuery object for any of the 72
     /// operations in the 'Azure' API domain:
-    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, ClusterStorageAccountRedundancy, DevOpsConnectionStatusSummary, DevOpsOrganization, DevOpsOrganizations, DevOpsProject, DevOpsProjects, DevOpsRepositories, DevOpsRepository, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, PostgresFlexibleServer, PostgresFlexibleServers, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateBackupLocationUsableForDevOps, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// </summary>
     /// <description>
     /// New-RscQueryAzure creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 61 operations
+    /// There are 72 operations
     /// in the 'Azure' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
+    /// one of: AdDirectories, AdDirectory, AdObjectsByType, ArmTemplatesByFeature, AzureRegions, AzureStorageAccounts, AzureVnets, BlobContainersByStorageAccount, CdmVersions, CheckPersistentStorageSubscriptionCanUnmap, CloudAccountDetailsForFeature, CloudAccountMissingPermissions, CloudAccountPermissionConfig, CloudAccountSubnetsByRegion, CloudAccountSubscriptionWithFeatures, CloudAccountSubscriptionsByFeature, CloudAccountTenant, CloudAccountTenantWithExoConfigs, CloudAccountTenants, ClusterStorageAccountRedundancy, DevOpsConnectionStatusSummary, DevOpsOrganization, DevOpsOrganizations, DevOpsProject, DevOpsProjects, DevOpsRepositories, DevOpsRepository, DiskEncryptionSetsByRegion, DiskEncryptionSetsByRegionFromNativeId, EncryptionKeys, ExocomputeConfigsInAccount, ExocomputeNetworkSetupTemplate, HasRelicAdSnapshot, HostedAzureRegions, IsStorageAccountNameAvailable, KeyVaultsByRegion, ListManagementGroupHierarchy, ListManagementGroups, ManagedIdentities, MarketplaceTermsInfo, Nsgs, PostgresFlexibleServer, PostgresFlexibleServers, RcvBliMigrationDetails, Regions, RegionsWithAzDetails, ResourceGroups, ResourceGroupsFromAzure, SearchAdSnapshot, SqlDatabase, SqlDatabaseDbPointInTimeRestoreWindowFromAzure, SqlDatabaseServer, SqlDatabaseServerElasticPools, SqlDatabaseServers, SqlDatabases, SqlManagedInstanceDatabase, SqlManagedInstanceDatabases, SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, SqlManagedInstanceServer, SqlManagedInstanceServers, StorageAccountContainers, StorageAccountExcludedContainers, StorageAccounts, StorageAccountsByRegion, Subnets, SubscriptionWithExocomputeMappings, Subscriptions, SupportedAdRegions, VNets, ValidateBackupLocationUsableForDevOps, ValidateCloudAccountExocomputeConfigurations, or ValidateCreateClusterInput.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -822,6 +822,420 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ClusterStorageAccountRedundancy operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ClusterStorageAccountRedundancy
+    /// 
+    /// $query = New-RscQueryAzure -Operation ClusterStorageAccountRedundancy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureClusterStorageAccountRedundancyReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsConnectionStatusSummary operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsConnectionStatusSummary
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsConnectionStatusSummary
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsConnectionStatusSummaryReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsOrganization operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsOrganization
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsOrganization
+    /// 
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsOrganization
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsOrganizations operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsOrganizations
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsOrganizations
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.queryType = $someQueryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.ancestorId = $someString
+    /// # REQUIRED
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsOrganizationConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsProject operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsProject
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsProject
+    /// 
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsProject
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsProjects operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsProjects
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsProjects
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.queryType = $someQueryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.ancestorId = $someString
+    /// # REQUIRED
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsProjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsRepositories operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsRepositories
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsRepositories
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.queryType = $someQueryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.ancestorId = $someString
+    /// # REQUIRED
+    /// $query.Var.filter = @(
+    /// 	@{
+    /// 		# OPTIONAL
+    /// 		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+    /// 		# OPTIONAL
+    /// 		texts = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				tagKey = $someString
+    /// 				# OPTIONAL
+    /// 				tagValue = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		objectTypeFilterParams = @(
+    /// 			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		awsNativeProtectionFeatureNames = @(
+    /// 			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		isNegative = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSlowSearchEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		azureNativeProtectionFeatureNames = @(
+    /// 			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		unmanagedObjectAvailabilityFilter = @(
+    /// 			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		gcpNativeProtectionFeatureNames = @(
+    /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+    /// 		)
+    /// }
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsRepositoryConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DevOpsRepository operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: DevOpsRepository
+    /// 
+    /// $query = New-RscQueryAzure -Operation DevOpsRepository
+    /// 
+    /// # REQUIRED
+    /// $query.Var.workloadId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzureDevOpsRepository
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DiskEncryptionSetsByRegion operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -1133,6 +1547,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	shouldRecurse = $someBoolean
+    /// 	# OPTIONAL
+    /// 	scopedManagementGroupIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
+    /// 	# OPTIONAL
+    /// 	searchText = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1272,6 +1694,108 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PostgresFlexibleServer operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: PostgresFlexibleServer
+    /// 
+    /// $query = New-RscQueryAzure -Operation PostgresFlexibleServer
+    /// 
+    /// # REQUIRED
+    /// $query.Var.azurePostgresFlexibleServerRubrikId = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzurePostgresFlexibleServer
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PostgresFlexibleServers operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: PostgresFlexibleServers
+    /// 
+    /// $query = New-RscQueryAzure -Operation PostgresFlexibleServers
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someAzurePostgresFlexibleServerSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzurePostgresFlexibleServerSortFields]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.azurePostgresFlexibleServerFilters = @{
+    /// 	# OPTIONAL
+    /// 	nameSubstringFilter = @{
+    /// 		# REQUIRED
+    /// 		nameSubstring = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	effectiveSlaFilter = @{
+    /// 		# REQUIRED
+    /// 		effectiveSlaIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	resourceGroupFilter = @{
+    /// 		# REQUIRED
+    /// 		resourceGroupNames = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	subscriptionFilter = @{
+    /// 		# REQUIRED
+    /// 		subscriptionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AzurePostgresFlexibleServerConnection
     /// 
     /// 
     /// 
@@ -2471,6 +2995,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ValidateBackupLocationUsableForDevOps operation
+    /// of the 'Azure' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Azure
+    /// # API Operation: ValidateBackupLocationUsableForDevOps
+    /// 
+    /// $query = New-RscQueryAzure -Operation ValidateBackupLocationUsableForDevOps
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	backupLocationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ValidateCloudAccountExocomputeConfigurations operation
     /// of the 'Azure' API domain.
     /// <code>
@@ -2749,6 +3304,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CloudAccountTenant",
                 "CloudAccountTenantWithExoConfigs",
                 "CloudAccountTenants",
+                "ClusterStorageAccountRedundancy",
+                "DevOpsConnectionStatusSummary",
+                "DevOpsOrganization",
+                "DevOpsOrganizations",
+                "DevOpsProject",
+                "DevOpsProjects",
+                "DevOpsRepositories",
+                "DevOpsRepository",
                 "DiskEncryptionSetsByRegion",
                 "DiskEncryptionSetsByRegionFromNativeId",
                 "EncryptionKeys",
@@ -2763,6 +3326,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ManagedIdentities",
                 "MarketplaceTermsInfo",
                 "Nsgs",
+                "PostgresFlexibleServer",
+                "PostgresFlexibleServers",
                 "RcvBliMigrationDetails",
                 "Regions",
                 "RegionsWithAzDetails",
@@ -2789,6 +3354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Subscriptions",
                 "SupportedAdRegions",
                 "VNets",
+                "ValidateBackupLocationUsableForDevOps",
                 "ValidateCloudAccountExocomputeConfigurations",
                 "ValidateCreateClusterInput",
                 IgnoreCase = true)]
@@ -2863,6 +3429,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CloudAccountTenants":
                         this.ProcessRecord_CloudAccountTenants();
                         break;
+                    case "ClusterStorageAccountRedundancy":
+                        this.ProcessRecord_ClusterStorageAccountRedundancy();
+                        break;
+                    case "DevOpsConnectionStatusSummary":
+                        this.ProcessRecord_DevOpsConnectionStatusSummary();
+                        break;
+                    case "DevOpsOrganization":
+                        this.ProcessRecord_DevOpsOrganization();
+                        break;
+                    case "DevOpsOrganizations":
+                        this.ProcessRecord_DevOpsOrganizations();
+                        break;
+                    case "DevOpsProject":
+                        this.ProcessRecord_DevOpsProject();
+                        break;
+                    case "DevOpsProjects":
+                        this.ProcessRecord_DevOpsProjects();
+                        break;
+                    case "DevOpsRepositories":
+                        this.ProcessRecord_DevOpsRepositories();
+                        break;
+                    case "DevOpsRepository":
+                        this.ProcessRecord_DevOpsRepository();
+                        break;
                     case "DiskEncryptionSetsByRegion":
                         this.ProcessRecord_DiskEncryptionSetsByRegion();
                         break;
@@ -2904,6 +3494,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Nsgs":
                         this.ProcessRecord_Nsgs();
+                        break;
+                    case "PostgresFlexibleServer":
+                        this.ProcessRecord_PostgresFlexibleServer();
+                        break;
+                    case "PostgresFlexibleServers":
+                        this.ProcessRecord_PostgresFlexibleServers();
                         break;
                     case "RcvBliMigrationDetails":
                         this.ProcessRecord_RcvBliMigrationDetails();
@@ -2982,6 +3578,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "VNets":
                         this.ProcessRecord_VNets();
+                        break;
+                    case "ValidateBackupLocationUsableForDevOps":
+                        this.ProcessRecord_ValidateBackupLocationUsableForDevOps();
                         break;
                     case "ValidateCloudAccountExocomputeConfigurations":
                         this.ProcessRecord_ValidateCloudAccountExocomputeConfigurations();
@@ -3171,6 +3770,78 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // azureClusterStorageAccountRedundancy.
+        internal void ProcessRecord_ClusterStorageAccountRedundancy()
+        {
+            this._logger.name += " -ClusterStorageAccountRedundancy";
+            // Create new graphql operation azureClusterStorageAccountRedundancy
+            InitQueryAzureClusterStorageAccountRedundancy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsConnectionStatusSummary.
+        internal void ProcessRecord_DevOpsConnectionStatusSummary()
+        {
+            this._logger.name += " -DevOpsConnectionStatusSummary";
+            // Create new graphql operation azureDevOpsConnectionStatusSummary
+            InitQueryAzureDevOpsConnectionStatusSummary();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsOrganization.
+        internal void ProcessRecord_DevOpsOrganization()
+        {
+            this._logger.name += " -DevOpsOrganization";
+            // Create new graphql operation azureDevOpsOrganization
+            InitQueryAzureDevOpsOrganization();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsOrganizations.
+        internal void ProcessRecord_DevOpsOrganizations()
+        {
+            this._logger.name += " -DevOpsOrganizations";
+            // Create new graphql operation azureDevOpsOrganizations
+            InitQueryAzureDevOpsOrganizations();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsProject.
+        internal void ProcessRecord_DevOpsProject()
+        {
+            this._logger.name += " -DevOpsProject";
+            // Create new graphql operation azureDevOpsProject
+            InitQueryAzureDevOpsProject();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsProjects.
+        internal void ProcessRecord_DevOpsProjects()
+        {
+            this._logger.name += " -DevOpsProjects";
+            // Create new graphql operation azureDevOpsProjects
+            InitQueryAzureDevOpsProjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsRepositories.
+        internal void ProcessRecord_DevOpsRepositories()
+        {
+            this._logger.name += " -DevOpsRepositories";
+            // Create new graphql operation azureDevOpsRepositories
+            InitQueryAzureDevOpsRepositories();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azureDevOpsRepository.
+        internal void ProcessRecord_DevOpsRepository()
+        {
+            this._logger.name += " -DevOpsRepository";
+            // Create new graphql operation azureDevOpsRepository
+            InitQueryAzureDevOpsRepository();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAzureDiskEncryptionSetsByRegion.
         internal void ProcessRecord_DiskEncryptionSetsByRegion()
         {
@@ -3294,6 +3965,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Nsgs";
             // Create new graphql operation allAzureNsgs
             InitQueryAllAzureNsgs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azurePostgresFlexibleServer.
+        internal void ProcessRecord_PostgresFlexibleServer()
+        {
+            this._logger.name += " -PostgresFlexibleServer";
+            // Create new graphql operation azurePostgresFlexibleServer
+            InitQueryAzurePostgresFlexibleServer();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // azurePostgresFlexibleServers.
+        internal void ProcessRecord_PostgresFlexibleServers()
+        {
+            this._logger.name += " -PostgresFlexibleServers";
+            // Create new graphql operation azurePostgresFlexibleServers
+            InitQueryAzurePostgresFlexibleServers();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3528,6 +4217,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -VNets";
             // Create new graphql operation azureVNets
             InitQueryAzureVnets();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // validateBackupLocationUsableForAzureDevOps.
+        internal void ProcessRecord_ValidateBackupLocationUsableForDevOps()
+        {
+            this._logger.name += " -ValidateBackupLocationUsableForDevOps";
+            // Create new graphql operation validateBackupLocationUsableForAzureDevOps
+            InitQueryValidateBackupLocationUsableForAzureDevOps();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -4219,6 +4917,415 @@ $query.Var.managementGroupCustomerIds = @(
         }
 
         // Create new GraphQL Query:
+        // azureClusterStorageAccountRedundancy(input: AzureClusterStorageAccountRedundancyInput!): AzureClusterStorageAccountRedundancyReply!
+        internal void InitQueryAzureClusterStorageAccountRedundancy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AzureClusterStorageAccountRedundancyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureClusterStorageAccountRedundancy",
+                "($input: AzureClusterStorageAccountRedundancyInput!)",
+                "AzureClusterStorageAccountRedundancyReply",
+                Query.AzureClusterStorageAccountRedundancy,
+                Query.AzureClusterStorageAccountRedundancyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsConnectionStatusSummary: AzureDevOpsConnectionStatusSummaryReply!
+        internal void InitQueryAzureDevOpsConnectionStatusSummary()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsConnectionStatusSummary",
+                "",
+                "AzureDevOpsConnectionStatusSummaryReply",
+                Query.AzureDevOpsConnectionStatusSummary,
+                Query.AzureDevOpsConnectionStatusSummaryFieldSpec,
+                @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsOrganization(workloadId: UUID!): AzureDevOpsOrganization!
+        internal void InitQueryAzureDevOpsOrganization()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsOrganization",
+                "($workloadId: UUID!)",
+                "AzureDevOpsOrganization",
+                Query.AzureDevOpsOrganization,
+                Query.AzureDevOpsOrganizationFieldSpec,
+                @"# REQUIRED
+$query.Var.workloadId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsOrganizations(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     queryType: QueryType!
+        //     ancestorId: String!
+        //     filter: [Filter!]! = []
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     workloadHierarchy: WorkloadLevelHierarchy
+        //   ): AzureDevOpsOrganizationConnection!
+        internal void InitQueryAzureDevOpsOrganizations()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("queryType", "QueryType!"),
+                Tuple.Create("ancestorId", "String!"),
+                Tuple.Create("filter", "[Filter!]!"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsOrganizations",
+                "($first: Int,$after: String,$last: Int,$before: String,$queryType: QueryType!,$ancestorId: String!,$filter: [Filter!]!,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$workloadHierarchy: WorkloadLevelHierarchy)",
+                "AzureDevOpsOrganizationConnection",
+                Query.AzureDevOpsOrganizations,
+                Query.AzureDevOpsOrganizationsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.queryType = $someQueryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryType]) for enum values.
+# REQUIRED
+$query.Var.ancestorId = $someString
+# REQUIRED
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsProject(workloadId: UUID!): AzureDevOpsProject!
+        internal void InitQueryAzureDevOpsProject()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsProject",
+                "($workloadId: UUID!)",
+                "AzureDevOpsProject",
+                Query.AzureDevOpsProject,
+                Query.AzureDevOpsProjectFieldSpec,
+                @"# REQUIRED
+$query.Var.workloadId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsProjects(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     queryType: QueryType!
+        //     ancestorId: String!
+        //     filter: [Filter!]! = []
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     workloadHierarchy: WorkloadLevelHierarchy
+        //   ): AzureDevOpsProjectConnection!
+        internal void InitQueryAzureDevOpsProjects()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("queryType", "QueryType!"),
+                Tuple.Create("ancestorId", "String!"),
+                Tuple.Create("filter", "[Filter!]!"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsProjects",
+                "($first: Int,$after: String,$last: Int,$before: String,$queryType: QueryType!,$ancestorId: String!,$filter: [Filter!]!,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$workloadHierarchy: WorkloadLevelHierarchy)",
+                "AzureDevOpsProjectConnection",
+                Query.AzureDevOpsProjects,
+                Query.AzureDevOpsProjectsFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.queryType = $someQueryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryType]) for enum values.
+# REQUIRED
+$query.Var.ancestorId = $someString
+# REQUIRED
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsRepositories(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     queryType: QueryType!
+        //     ancestorId: String!
+        //     filter: [Filter!]! = []
+        //     sortBy: HierarchySortByField
+        //     sortOrder: SortOrder
+        //     workloadHierarchy: WorkloadLevelHierarchy
+        //   ): AzureDevOpsRepositoryConnection!
+        internal void InitQueryAzureDevOpsRepositories()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("queryType", "QueryType!"),
+                Tuple.Create("ancestorId", "String!"),
+                Tuple.Create("filter", "[Filter!]!"),
+                Tuple.Create("sortBy", "HierarchySortByField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("workloadHierarchy", "WorkloadLevelHierarchy"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsRepositories",
+                "($first: Int,$after: String,$last: Int,$before: String,$queryType: QueryType!,$ancestorId: String!,$filter: [Filter!]!,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$workloadHierarchy: WorkloadLevelHierarchy)",
+                "AzureDevOpsRepositoryConnection",
+                Query.AzureDevOpsRepositories,
+                Query.AzureDevOpsRepositoriesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.queryType = $someQueryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.QueryType]) for enum values.
+# REQUIRED
+$query.Var.ancestorId = $someString
+# REQUIRED
+$query.Var.filter = @(
+	@{
+		# OPTIONAL
+		field = $someHierarchyFilterField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyFilterField]) for enum values.
+		# OPTIONAL
+		texts = @(
+			$someString
+		)
+		# OPTIONAL
+		tagFilterParams = @(
+			@{
+				# OPTIONAL
+				filterType = $someTagFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagFilterType]) for enum values.
+				# OPTIONAL
+				tagKey = $someString
+				# OPTIONAL
+				tagValue = $someString
+			}
+		)
+		# OPTIONAL
+		objectTypeFilterParams = @(
+			$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		)
+		# OPTIONAL
+		awsNativeProtectionFeatureNames = @(
+			$someAwsNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		isNegative = $someBoolean
+		# OPTIONAL
+		isSlowSearchEnabled = $someBoolean
+		# OPTIONAL
+		azureNativeProtectionFeatureNames = @(
+			$someAzureNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeProtectionFeature]) for enum values.
+		)
+		# OPTIONAL
+		unmanagedObjectAvailabilityFilter = @(
+			$someUnmanagedObjectAvailabilityFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.UnmanagedObjectAvailabilityFilter]) for enum values.
+		)
+		# OPTIONAL
+		gcpNativeProtectionFeatureNames = @(
+			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
+		)
+}
+)
+# OPTIONAL
+$query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.workloadHierarchy = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azureDevOpsRepository(workloadId: UUID!): AzureDevOpsRepository!
+        internal void InitQueryAzureDevOpsRepository()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzureDevOpsRepository",
+                "($workloadId: UUID!)",
+                "AzureDevOpsRepository",
+                Query.AzureDevOpsRepository,
+                Query.AzureDevOpsRepositoryFieldSpec,
+                @"# REQUIRED
+$query.Var.workloadId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
         // allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!): [AzureNativeDiskEncryptionSet!]!
         internal void InitQueryAllAzureDiskEncryptionSetsByRegion()
         {
@@ -4463,6 +5570,14 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	shouldRecurse = $someBoolean
+	# OPTIONAL
+	scopedManagementGroupIds = @(
+		$someString
+	)
+	# OPTIONAL
+	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
+	# OPTIONAL
+	searchText = $someString
 }"
             );
         }
@@ -4563,6 +5678,106 @@ $query.Var.nsgRequest = @{
 	cloudAccountId = $someString
 	# OPTIONAL
 	resourceGroup = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azurePostgresFlexibleServer(azurePostgresFlexibleServerRubrikId: UUID!): AzurePostgresFlexibleServer!
+        internal void InitQueryAzurePostgresFlexibleServer()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("azurePostgresFlexibleServerRubrikId", "UUID!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzurePostgresFlexibleServer",
+                "($azurePostgresFlexibleServerRubrikId: UUID!)",
+                "AzurePostgresFlexibleServer",
+                Query.AzurePostgresFlexibleServer,
+                Query.AzurePostgresFlexibleServerFieldSpec,
+                @"# REQUIRED
+$query.Var.azurePostgresFlexibleServerRubrikId = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // azurePostgresFlexibleServers(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortBy: AzurePostgresFlexibleServerSortFields
+        //     sortOrder: SortOrder
+        //     azurePostgresFlexibleServerFilters: AzurePostgresFlexibleServerFilters
+        //   ): AzurePostgresFlexibleServerConnection!
+        internal void InitQueryAzurePostgresFlexibleServers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortBy", "AzurePostgresFlexibleServerSortFields"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("azurePostgresFlexibleServerFilters", "AzurePostgresFlexibleServerFilters"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAzurePostgresFlexibleServers",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzurePostgresFlexibleServerSortFields,$sortOrder: SortOrder,$azurePostgresFlexibleServerFilters: AzurePostgresFlexibleServerFilters)",
+                "AzurePostgresFlexibleServerConnection",
+                Query.AzurePostgresFlexibleServers,
+                Query.AzurePostgresFlexibleServersFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.sortBy = $someAzurePostgresFlexibleServerSortFields # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzurePostgresFlexibleServerSortFields]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.azurePostgresFlexibleServerFilters = @{
+	# OPTIONAL
+	nameSubstringFilter = @{
+		# REQUIRED
+		nameSubstring = $someString
+	}
+	# OPTIONAL
+	effectiveSlaFilter = @{
+		# REQUIRED
+		effectiveSlaIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
 }"
             );
         }
@@ -5691,6 +6906,29 @@ $query.Var.tenantId = $someString
 $query.Var.subscriptionId = $someString
 # REQUIRED
 $query.Var.regionName = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // validateBackupLocationUsableForAzureDevOps(input: ValidateBackupLocationUsableForAzureDevOpsReq!): Void
+        internal void InitQueryValidateBackupLocationUsableForAzureDevOps()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ValidateBackupLocationUsableForAzureDevOpsReq!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryValidateBackupLocationUsableForAzureDevOps",
+                "($input: ValidateBackupLocationUsableForAzureDevOpsReq!)",
+                "System.String",
+                Query.ValidateBackupLocationUsableForAzureDevOps,
+                Query.ValidateBackupLocationUsableForAzureDevOpsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	backupLocationId = $someString
+}"
             );
         }
 

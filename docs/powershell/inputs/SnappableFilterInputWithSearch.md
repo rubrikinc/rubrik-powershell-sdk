@@ -1,5 +1,5 @@
 ### SnappableFilterInputWithSearch
-Filter workload data, including search capability.
+Filter workload data.
 
 - protectionStatus: list of ProtectionStatusEnums
   - The protection status of the workload.
@@ -10,19 +10,21 @@ Filter workload data, including search capability.
 - objectType: list of ObjectTypeEnums
   - The object type of the workload.
 - excludedObjectTypes: list of ObjectTypeEnums
-  - List of workload types to exclude. This should NOT be specified along with objectType.
+  - List of workload types to exclude. This should NOT be specified along
+with objectType.
 - cluster: CommonClusterFilterInput
-  - The cluster UUID of the workload.
+  - The cluster filter for the workload.
 - timeRange: TimeRangeInput
+  - The time range filter.
 - searchTerm: System.String
   - The search term applied to the workload.
 - slaTimeRange: SlaComplianceTimeRange
   - The SLA Domain time range applied to the workload.
 - orgId: list of System.Strings
-  - The organization ID of the workload.
+  - The organization IDs of the workload.
 - objectState: list of ObjectStates
   - The state of the workload.
 - isLocal: System.Boolean
   - True if the workload is local; false if the workload is remote.
 - objectFid: list of System.Strings
-  - The FID of the workload.
+  - The FIDs of the workload.

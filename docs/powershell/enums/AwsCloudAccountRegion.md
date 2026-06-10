@@ -34,3 +34,7 @@ AWS cloud account regions enum.
 - AP_SOUTHEAST_4 - AWS cloud Asia Pacific (Melbourne) region.
 - EU_SOUTH_2 - AWS cloud EU (Spain) region.
 - ME_CENTRAL_1 - AWS cloud Middle East (UAE) region.
+- AP_SOUTHEAST_5 - AWS cloud Asia Pacific (Malaysia) region.
+- AP_SOUTHEAST_7 - AWS cloud Asia Pacific (Thailand) region.
+- MX_CENTRAL_1 - AWS cloud Mexico (Central) region.
+- EU_CENTRAL_2 - AWS cloud Europe (Zurich) region.

@@ -2,12 +2,12 @@
 AWS security group information.
 
 - name: System.String
-  - Security group name.
+  - Name of the security group.
 - securityGroupId: System.String
-  - ID of the security group.
+  - Security group ID.
 - description: System.String
   - Description of the security group.
 - ownerId: System.String
-  - ID of the security group's owner.
+  - Owner ID.
 - vpcId: System.String
-  - ID of the virtual private cloud (VPC).
+  - VPC ID.

@@ -19,3 +19,8 @@ Details of AWS account.
   - Native ID of the AWS Outpost account.
 - orgId: System.String
   - The UUID of the onboarded AWS organization.
+- serviceType: AwsCloudAccountServiceType
+  - Service type indicating whether the account is onboarded for BaaS or
+non-BaaS use case.
+- crossAccountRoleModel: CrossAccountRoleModel
+  - Cross-account role model: SINGLE_ROLE or MULTI_ROLE.

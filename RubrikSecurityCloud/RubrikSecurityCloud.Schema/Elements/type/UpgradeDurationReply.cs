@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.Int64? FastUpgradeDuration
         // GraphQL -> fastUpgradeDuration: Long! (scalar)
         [JsonProperty("fastUpgradeDuration")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UpgradeDurationReply Set(
+        System.String? ClusterUuid = null,
         System.Int64? FastUpgradeDuration = null,
         System.Int64? RollingUpgradeDuration = null
     ) 
     {
+        if ( ClusterUuid != null ) {
+            this.ClusterUuid = ClusterUuid;
+        }
         if ( FastUpgradeDuration != null ) {
             this.FastUpgradeDuration = FastUpgradeDuration;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        if (this.ClusterUuid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUuid\n" ;
+            } else {
+                s += ind + "clusterUuid\n" ;
+            }
+        }
         //      C# -> System.Int64? FastUpgradeDuration
         // GraphQL -> fastUpgradeDuration: Long! (scalar)
         if (this.FastUpgradeDuration != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        if (ec.Includes("clusterUuid",true))
+        {
+            if(this.ClusterUuid == null) {
+
+                this.ClusterUuid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUuid != null && ec.Excludes("clusterUuid",true))
+        {
+            this.ClusterUuid = null;
+        }
         //      C# -> System.Int64? FastUpgradeDuration
         // GraphQL -> fastUpgradeDuration: Long! (scalar)
         if (ec.Includes("fastUpgradeDuration",true))

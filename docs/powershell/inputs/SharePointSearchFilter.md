@@ -4,12 +4,12 @@ Parameters for SharePoint site descendant search.
 - searchKeywordFilter: SharePointSearchKeywordFilter
   - Filters by keywords appearing in the descendant object name.
 - modifiedTime: TimeRangeFilter
-  - Filters by modified time.
+  - Filters on modified time.
 - createTime: TimeRangeFilter
-  - Filters by on create time.
+  - Filters on create time.
 - searchObjectFilter: SharePointSearchObjectFilter
-  - Filters by object type (site, library, list or all).
+  - Filters on object type.
 - lambdaFilters: LambdaPathFilters
-  - Parameters for using Lambda filters in the query.
+  - Used for Lambda search/browse, diff/full FMD paths for Onedrive.
 - descendantWorkloadId: System.String
-  - The descendant workload ID to filter in the query.
+  - The descendant workload identifier to filter in the query.

@@ -271,6 +271,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mysqldbInstanceAppMetadata")]
         public KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata { get; set; }
 
+        //      C# -> MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2
+        // GraphQL -> mysqldbInstanceAppMetadataV2: MysqldbInstanceAppMetadata (type)
+        [JsonProperty("mysqldbInstanceAppMetadataV2")]
+        public MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2 { get; set; }
+
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)
         [JsonProperty("pendingSnapshotDeletion")]
@@ -371,6 +376,7 @@ namespace RubrikSecurityCloud.Types
         MongoSourceAppMetadata? MongoSourceAppMetadata = null,
         MssqlAppMetadata? MssqlAppMetadata = null,
         KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata = null,
+        MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2 = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
         KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata = null,
         List<DataLocation>? ReplicationLocations = null,
@@ -530,6 +536,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MysqldbInstanceAppMetadata != null ) {
             this.MysqldbInstanceAppMetadata = MysqldbInstanceAppMetadata;
+        }
+        if ( MysqldbInstanceAppMetadataV2 != null ) {
+            this.MysqldbInstanceAppMetadataV2 = MysqldbInstanceAppMetadataV2;
         }
         if ( PendingSnapshotDeletion != null ) {
             this.PendingSnapshotDeletion = PendingSnapshotDeletion;
@@ -1082,6 +1091,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mysqldbInstanceAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2
+        // GraphQL -> mysqldbInstanceAppMetadataV2: MysqldbInstanceAppMetadata (type)
+        if (this.MysqldbInstanceAppMetadataV2 != null) {
+            var fspec = this.MysqldbInstanceAppMetadataV2.AsFieldSpec(conf.Child("mysqldbInstanceAppMetadataV2"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mysqldbInstanceAppMetadataV2" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2094,6 +2115,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MysqldbInstanceAppMetadata != null && ec.Excludes("mysqldbInstanceAppMetadata",false))
         {
             this.MysqldbInstanceAppMetadata = null;
+        }
+        //      C# -> MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2
+        // GraphQL -> mysqldbInstanceAppMetadataV2: MysqldbInstanceAppMetadata (type)
+        if (ec.Includes("mysqldbInstanceAppMetadataV2",false))
+        {
+            if(this.MysqldbInstanceAppMetadataV2 == null) {
+
+                this.MysqldbInstanceAppMetadataV2 = new MysqldbInstanceAppMetadata();
+                this.MysqldbInstanceAppMetadataV2.ApplyExploratoryFieldSpec(ec.NewChild("mysqldbInstanceAppMetadataV2"));
+
+            } else {
+
+                this.MysqldbInstanceAppMetadataV2.ApplyExploratoryFieldSpec(ec.NewChild("mysqldbInstanceAppMetadataV2"));
+
+            }
+        }
+        else if (this.MysqldbInstanceAppMetadataV2 != null && ec.Excludes("mysqldbInstanceAppMetadataV2",false))
+        {
+            this.MysqldbInstanceAppMetadataV2 = null;
         }
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)

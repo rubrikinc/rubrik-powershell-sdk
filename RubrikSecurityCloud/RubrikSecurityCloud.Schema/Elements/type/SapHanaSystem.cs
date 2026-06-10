@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterUuid")]
         public System.String? PrimaryClusterUuid { get; set; }
 
+        //      C# -> System.String? RbaRole
+        // GraphQL -> rbaRole: String! (scalar)
+        [JsonProperty("rbaRole")]
+        public System.String? RbaRole { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
@@ -455,6 +460,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.String? PrimaryClusterUuid = null,
+        System.String? RbaRole = null,
         System.Int32? ReplicatedObjectCount = null,
         System.String? Sid = null,
         System.Boolean? SlaPauseStatus = null,
@@ -560,6 +566,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrimaryClusterUuid != null ) {
             this.PrimaryClusterUuid = PrimaryClusterUuid;
+        }
+        if ( RbaRole != null ) {
+            this.RbaRole = RbaRole;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -905,6 +914,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "primaryClusterUuid\n" ;
             } else {
                 s += ind + "primaryClusterUuid\n" ;
+            }
+        }
+        //      C# -> System.String? RbaRole
+        // GraphQL -> rbaRole: String! (scalar)
+        if (this.RbaRole != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbaRole\n" ;
+            } else {
+                s += ind + "rbaRole\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1723,6 +1741,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrimaryClusterUuid != null && ec.Excludes("primaryClusterUuid",true))
         {
             this.PrimaryClusterUuid = null;
+        }
+        //      C# -> System.String? RbaRole
+        // GraphQL -> rbaRole: String! (scalar)
+        if (ec.Includes("rbaRole",true))
+        {
+            if(this.RbaRole == null) {
+
+                this.RbaRole = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbaRole != null && ec.Excludes("rbaRole",true))
+        {
+            this.RbaRole = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

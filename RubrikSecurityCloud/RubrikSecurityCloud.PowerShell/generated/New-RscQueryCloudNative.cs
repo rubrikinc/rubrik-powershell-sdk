@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 22
+    /// Create a new RscQuery object for any of the 23
     /// operations in the 'Cloud Native' API domain:
-    /// CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// ApplicationSnapshots, CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudNative creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 22 operations
+    /// There are 23 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
+    /// one of: ApplicationSnapshots, CheckArchivedSnapshotsLocked, CheckLabelRuleNameUniqueness, CheckRequiredPermissionsForFeature, CheckTagRuleNameUniqueness, CustomerTags, FileRecoveryEligibleSnapshots, GatewayKmsKeys, IsFileRecoveryFeasible, LabelKeys, LabelRules, LabelValues, ObjectStoreSnapshotRegexSearch, RbaInstallers, SnapshotDetailsForRecovery, SnapshotTypeDetails, Snapshots, SqlServerSetupScript, TagKeys, TagRules, TagRulesObjectType, TagValues, or WorkloadVersionedFiles.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCloudNative -CheckArchivedSnapshotsLocked).Info().
+    /// (New-RscQueryCloudNative -ApplicationSnapshots).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,69 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCloudNative -CheckArchivedSnapshotsLocked).Info().
+    /// (New-RscQueryCloudNative -ApplicationSnapshots).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the ApplicationSnapshots operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: ApplicationSnapshots
+    /// 
+    /// $query = New-RscQueryCloudNative -Operation ApplicationSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.applicationId = $someString
+    /// # REQUIRED
+    /// $query.Var.timeFilter = @{
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.qualityFilter = @{
+    /// 	# OPTIONAL
+    /// 	excludeQuarantined = $someBoolean
+    /// 	# OPTIONAL
+    /// 	excludeAnomalous = $someBoolean
+    /// 	# OPTIONAL
+    /// 	excludeNonIndexed = $someBoolean
+    /// 	# OPTIONAL
+    /// 	quarantinedOnly = $someBoolean
+    /// 	# OPTIONAL
+    /// 	anomalousOnly = $someBoolean
+    /// 	# OPTIONAL
+    /// 	excludeReplica = $someBoolean
+    /// 	# OPTIONAL
+    /// 	excludeArchivalLocationTypes = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.getFullDetails = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.preferredLocationType = $someCloudNativeSnapshotLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeSnapshotLocationType]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetCloudNativeApplicationSnapshotsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CheckArchivedSnapshotsLocked operation
@@ -806,6 +864,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "ApplicationSnapshots",
                 "CheckArchivedSnapshotsLocked",
                 "CheckLabelRuleNameUniqueness",
                 "CheckRequiredPermissionsForFeature",
@@ -843,6 +902,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "ApplicationSnapshots":
+                        this.ProcessRecord_ApplicationSnapshots();
+                        break;
                     case "CheckArchivedSnapshotsLocked":
                         this.ProcessRecord_CheckArchivedSnapshotsLocked();
                         break;
@@ -917,6 +979,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudNativeApplicationSnapshots.
+        internal void ProcessRecord_ApplicationSnapshots()
+        {
+            this._logger.name += " -ApplicationSnapshots";
+            // Create new graphql operation cloudNativeApplicationSnapshots
+            InitQueryCloudNativeApplicationSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1117,6 +1188,66 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryCloudNativeWorkloadVersionedFiles();
         }
 
+
+        // Create new GraphQL Query:
+        // cloudNativeApplicationSnapshots(
+        //     applicationId: UUID!
+        //     timeFilter: SnapshotTimeFilter!
+        //     qualityFilter: SnapshotQualityFilter
+        //     getFullDetails: Boolean
+        //     preferredLocationType: CloudNativeSnapshotLocationType
+        //   ): GetCloudNativeApplicationSnapshotsReply!
+        internal void InitQueryCloudNativeApplicationSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("applicationId", "UUID!"),
+                Tuple.Create("timeFilter", "SnapshotTimeFilter!"),
+                Tuple.Create("qualityFilter", "SnapshotQualityFilter"),
+                Tuple.Create("getFullDetails", "Boolean"),
+                Tuple.Create("preferredLocationType", "CloudNativeSnapshotLocationType"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudNativeApplicationSnapshots",
+                "($applicationId: UUID!,$timeFilter: SnapshotTimeFilter!,$qualityFilter: SnapshotQualityFilter,$getFullDetails: Boolean,$preferredLocationType: CloudNativeSnapshotLocationType)",
+                "GetCloudNativeApplicationSnapshotsReply",
+                Query.CloudNativeApplicationSnapshots,
+                Query.CloudNativeApplicationSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.applicationId = $someString
+# REQUIRED
+$query.Var.timeFilter = @{
+	# OPTIONAL
+	beforeTime = $someDateTime
+	# OPTIONAL
+	afterTime = $someDateTime
+}
+# OPTIONAL
+$query.Var.qualityFilter = @{
+	# OPTIONAL
+	excludeQuarantined = $someBoolean
+	# OPTIONAL
+	excludeAnomalous = $someBoolean
+	# OPTIONAL
+	excludeNonIndexed = $someBoolean
+	# OPTIONAL
+	quarantinedOnly = $someBoolean
+	# OPTIONAL
+	anomalousOnly = $someBoolean
+	# OPTIONAL
+	excludeReplica = $someBoolean
+	# OPTIONAL
+	excludeArchivalLocationTypes = @(
+		$someString
+	)
+}
+# OPTIONAL
+$query.Var.getFullDetails = $someBoolean
+# OPTIONAL
+$query.Var.preferredLocationType = $someCloudNativeSnapshotLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeSnapshotLocationType]) for enum values."
+            );
+        }
 
         // Create new GraphQL Query:
         // cloudNativeCheckArchivedSnapshotsLocked(workloadId: UUID!, snapshotIds: [UUID!]): CheckArchivedSnapshotsLockedReply!
@@ -1534,7 +1665,7 @@ $query.Var.searchPrefix = $someString"
         }
 
         // Create new GraphQL Query:
-        // cloudNativeSqlServerSetupScript(cloudNativeObjectType: CloudNativeObjectType): CloudNativeSqlServerSetupScript!
+        // cloudNativeSqlServerSetupScript(cloudNativeObjectType: CloudNativeObjectType = AZURE_SQL_DATABASE_DB): CloudNativeSqlServerSetupScript!
         internal void InitQueryCloudNativeSqlServerSetupScript()
         {
             Tuple<string, string>[] argDefs = {

@@ -1,7 +1,7 @@
 ### IocInputType
-Indicators of compromise.
+IOC input of threat hunt.
 
 - iocList: IndicatorOfCompromiseInputListType
-  - Indicators of compromise.
+  - List of IOCs.
 - feedProviderId: System.String
   - Specifies the feed provider ID.

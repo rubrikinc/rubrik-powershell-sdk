@@ -1,6 +1,8 @@
 ### ClusterNode
 Rubrik cluster node.
 
+- id: System.String
+  - Node ID.
 - brikId: System.String
   - Brik ID of the Rubrik cluster node.
 - status: ClusterNodeStatus
@@ -8,7 +10,7 @@ Rubrik cluster node.
 - ipAddress: System.String
   - IP address of the Rubrik cluster node.
 - needsInspection: System.Boolean
-  - Platform type of the Rubrik cluster node.
+  - Whether the node needs inspection.
 - cpuCores: System.Int32
   - CPU cores count of the Rubrik cluster node.
 - ram: System.Int64
@@ -23,13 +25,13 @@ Rubrik cluster node.
   - Rear view position of the Rubrik cluster node.
 - platformType: ClusterNodePlatformType
   - Platform type of the Rubrik cluster node.
-- role: ClusterNodeRole
-  - Role of the node in a dynamic scaling cluster (NONE, STATIC, or DYNAMIC).
-- subStatus: ClusterNodeSubStatus
-  - Sub-status of the Rubrik cluster node providing additional status details.
-- id: System.String
-  - Node ID.
 - interfaceCidrs: list of ClusterNodeInterfaceCidrs
   - Network interface of a Rubrik cluster node.
 - hardwareHealth: list of HealthPolicyStatuss
   - Hardware health status of a Rubrik cluster node. The value is null when hardware health status is not available.
+- role: ClusterNodeRole
+  - Role of the node in a dynamic scaling cluster (NONE, STATIC, or DYNAMIC).
+- subStatus: ClusterNodeSubStatus
+  - Sub-status of the Rubrik cluster node providing additional status details.
+- lastStatusChangeTime: DateTime
+  - Timestamp of the last status change for the node.

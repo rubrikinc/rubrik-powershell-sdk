@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("remoteFilePath")]
         public System.String? RemoteFilePath { get; set; }
 
+        //      C# -> System.String? VolumeTypeId
+        // GraphQL -> volumeTypeId: String! (scalar)
+        [JsonProperty("volumeTypeId")]
+        public System.String? VolumeTypeId { get; set; }
+
+        //      C# -> System.String? VolumeTypeName
+        // GraphQL -> volumeTypeName: String! (scalar)
+        [JsonProperty("volumeTypeName")]
+        public System.String? VolumeTypeName { get; set; }
+
 
         #endregion
 
@@ -41,7 +51,9 @@ namespace RubrikSecurityCloud.Types
 
     public OpenstackVmSubObject Set(
         System.String? DiskId = null,
-        System.String? RemoteFilePath = null
+        System.String? RemoteFilePath = null,
+        System.String? VolumeTypeId = null,
+        System.String? VolumeTypeName = null
     ) 
     {
         if ( DiskId != null ) {
@@ -49,6 +61,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RemoteFilePath != null ) {
             this.RemoteFilePath = RemoteFilePath;
+        }
+        if ( VolumeTypeId != null ) {
+            this.VolumeTypeId = VolumeTypeId;
+        }
+        if ( VolumeTypeName != null ) {
+            this.VolumeTypeName = VolumeTypeName;
         }
         return this;
     }
@@ -80,6 +98,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "remoteFilePath\n" ;
             } else {
                 s += ind + "remoteFilePath\n" ;
+            }
+        }
+        //      C# -> System.String? VolumeTypeId
+        // GraphQL -> volumeTypeId: String! (scalar)
+        if (this.VolumeTypeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeTypeId\n" ;
+            } else {
+                s += ind + "volumeTypeId\n" ;
+            }
+        }
+        //      C# -> System.String? VolumeTypeName
+        // GraphQL -> volumeTypeName: String! (scalar)
+        if (this.VolumeTypeName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "volumeTypeName\n" ;
+            } else {
+                s += ind + "volumeTypeName\n" ;
             }
         }
         return s;
@@ -122,6 +158,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.RemoteFilePath != null && ec.Excludes("remoteFilePath",true))
         {
             this.RemoteFilePath = null;
+        }
+        //      C# -> System.String? VolumeTypeId
+        // GraphQL -> volumeTypeId: String! (scalar)
+        if (ec.Includes("volumeTypeId",true))
+        {
+            if(this.VolumeTypeId == null) {
+
+                this.VolumeTypeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeTypeId != null && ec.Excludes("volumeTypeId",true))
+        {
+            this.VolumeTypeId = null;
+        }
+        //      C# -> System.String? VolumeTypeName
+        // GraphQL -> volumeTypeName: String! (scalar)
+        if (ec.Includes("volumeTypeName",true))
+        {
+            if(this.VolumeTypeName == null) {
+
+                this.VolumeTypeName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VolumeTypeName != null && ec.Excludes("volumeTypeName",true))
+        {
+            this.VolumeTypeName = null;
         }
     }
 

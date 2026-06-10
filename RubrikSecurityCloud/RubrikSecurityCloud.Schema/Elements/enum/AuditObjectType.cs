@@ -27,8 +27,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
         ACTIVE_DIRECTORY_FOREST,
 
+        [EnumMember(Value = "AGENT_CLOUD_ALERT")]
+        AGENT_CLOUD_ALERT,
+
         [EnumMember(Value = "AGENT_CLOUD_POLICY")]
         AGENT_CLOUD_POLICY,
+
+        [EnumMember(Value = "AGENT_CLOUD_VIOLATION")]
+        AGENT_CLOUD_VIOLATION,
 
         [EnumMember(Value = "AGENT_OPERATIONS_MODEL_ROUTER")]
         AGENT_OPERATIONS_MODEL_ROUTER,
@@ -95,6 +101,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_NATIVE_VM")]
         AZURE_NATIVE_VM,
+
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
 
         [EnumMember(Value = "AZURE_SQL_DATABASE")]
         AZURE_SQL_DATABASE,
@@ -195,6 +204,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER_CLUSTER_APP")]
         FAILOVER_CLUSTER_APP,
 
+        [EnumMember(Value = "FAILOVER_GROUP")]
+        FAILOVER_GROUP,
+
         [EnumMember(Value = "FEDERATED_ACCESS")]
         FEDERATED_ACCESS,
 
@@ -219,6 +231,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FUSION_COMPUTE_VRM")]
         FUSION_COMPUTE_VRM,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER")]
+        GCP_ALLOY_DB_CLUSTER,
+
+        [EnumMember(Value = "GCP_BIG_QUERY_DATASET")]
+        GCP_BIG_QUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
@@ -236,6 +254,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,
+
+        [EnumMember(Value = "GLUE_ICEBERG_CATALOG")]
+        GLUE_ICEBERG_CATALOG,
+
+        [EnumMember(Value = "GLUE_ICEBERG_DATABASE")]
+        GLUE_ICEBERG_DATABASE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
+        GLUE_ICEBERG_TABLE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_GROUP")]
+        GOOGLE_WORKSPACE_GROUP,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,
@@ -456,6 +486,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORGANIZATION")]
         ORGANIZATION,
 
+        [EnumMember(Value = "PING_FEDERATE_CLUSTER")]
+        PING_FEDERATE_CLUSTER,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
@@ -467,6 +500,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PUBLIC_CLOUD_MACHINE_INSTANCE")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,
+
+        [EnumMember(Value = "PURE_STORAGE_ARRAY")]
+        PURE_STORAGE_ARRAY,
+
+        [EnumMember(Value = "PURE_STORAGE_PROTECTION_GROUP")]
+        PURE_STORAGE_PROTECTION_GROUP,
+
+        [EnumMember(Value = "PURE_STORAGE_VOLUME")]
+        PURE_STORAGE_VOLUME,
 
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,

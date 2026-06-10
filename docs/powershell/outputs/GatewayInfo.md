@@ -1,5 +1,5 @@
 ### GatewayInfo
-Gateway information for NAT replication setup.
+Gateway information for replication setup.
 
 - address: System.String
   - IPv4 address of the gateway.

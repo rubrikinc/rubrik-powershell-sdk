@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> MysqldbInstanceAdvancedConfig? AdvancedConfig
+        // GraphQL -> advancedConfig: MysqldbInstanceAdvancedConfig! (type)
+        [JsonProperty("advancedConfig")]
+        public MysqldbInstanceAdvancedConfig? AdvancedConfig { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -429,6 +434,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? OnDemandSnapshotCount = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        MysqldbInstanceAdvancedConfig? AdvancedConfig = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -516,6 +522,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( AdvancedConfig != null ) {
+            this.AdvancedConfig = AdvancedConfig;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -807,6 +816,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> MysqldbInstanceAdvancedConfig? AdvancedConfig
+        // GraphQL -> advancedConfig: MysqldbInstanceAdvancedConfig! (type)
+        if (this.AdvancedConfig != null) {
+            var fspec = this.AdvancedConfig.AsFieldSpec(conf.Child("advancedConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "advancedConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1535,6 +1556,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> MysqldbInstanceAdvancedConfig? AdvancedConfig
+        // GraphQL -> advancedConfig: MysqldbInstanceAdvancedConfig! (type)
+        if (ec.Includes("advancedConfig",false))
+        {
+            if(this.AdvancedConfig == null) {
+
+                this.AdvancedConfig = new MysqldbInstanceAdvancedConfig();
+                this.AdvancedConfig.ApplyExploratoryFieldSpec(ec.NewChild("advancedConfig"));
+
+            } else {
+
+                this.AdvancedConfig.ApplyExploratoryFieldSpec(ec.NewChild("advancedConfig"));
+
+            }
+        }
+        else if (this.AdvancedConfig != null && ec.Excludes("advancedConfig",false))
+        {
+            this.AdvancedConfig = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

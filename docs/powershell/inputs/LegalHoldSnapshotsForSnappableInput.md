@@ -2,7 +2,7 @@
 Input to query workloads with legal hold snapshots.
 
 - clusterUuid: System.String
-  - Rubrik cluster UUID of the workload.
+  - Rubrik cluster UUID. Omit for RSC native snapshots.
 - snappableId: System.String
   - Workload ID.
 - filterParams: list of LegalHoldQueryFilters

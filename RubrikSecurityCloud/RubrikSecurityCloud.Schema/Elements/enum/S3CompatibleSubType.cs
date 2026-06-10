@@ -69,6 +69,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HITACHI_HCS")]
         HITACHI_HCS,
 
+        [EnumMember(Value = "HITACHI_VSP_ONE_OBJECT")]
+        HITACHI_VSP_ONE_OBJECT,
+
         [EnumMember(Value = "HUAWEI_FUSIONSTORAGE")]
         HUAWEI_FUSIONSTORAGE,
 

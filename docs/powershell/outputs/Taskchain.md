@@ -1,23 +1,43 @@
 ### Taskchain
-Taskchain.
+Taskchain information.
 
 - id: System.Int64
+  - The ID of the taskchain.
 - taskchainUuid: System.String
+  - The UUID of the taskchain.
 - name: System.String
+  - The name of the taskchain.
 - state: TaskchainState
+  - The taskchain state.
 - startTime: DateTime
+  - The start time of the taskchain.
 - endTime: DateTime
+  - The end time of the taskchain.
 - progress: System.Int64
+  - The progress of the taskchain.
 - progressedAt: DateTime
+  - The time of last progress.
 - config: System.String
+  - The taskchain configuration.
 - jobId: System.Int64
+  - The job ID of the taskchain.
 - workflowName: System.String
+  - The workflow name.
 - jobType: System.String
+  - The job type.
 - component: System.String
+  - The component.
 - error: System.String
+  - The error message.
 - currentTaskIndex: System.Int32
+  - The current task index.
 - account: System.String
+  - The account.
 - parentTaskchainId: System.String
+  - The parent taskchain ID.
 - podName: System.String
+  - The pod name.
 - priority: System.Int32
+  - The priority.
 - currentTaskExecutionAttempts: System.Int32
+  - The current task execution attempts.

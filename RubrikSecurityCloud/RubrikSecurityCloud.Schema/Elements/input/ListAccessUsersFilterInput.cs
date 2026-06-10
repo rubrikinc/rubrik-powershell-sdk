@@ -24,17 +24,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("groupsIds")]
         public List<System.String>? GroupsIds { get; set; }
 
-        //      C# -> System.String? Search
-        // GraphQL -> search: String (scalar)
-        [JsonProperty("search")]
-        public System.String? Search { get; set; }
-
         //      C# -> UserTimeRangeInput? TimeRange
         // GraphQL -> timeRange: UserTimeRangeInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("timeRange")]
         public UserTimeRangeInput? TimeRange { get; set; }
+
+        //      C# -> System.String? Search
+        // GraphQL -> search: String (scalar)
+        [JsonProperty("search")]
+        public System.String? Search { get; set; }
 
 
         #endregion

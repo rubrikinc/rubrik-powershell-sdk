@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "BIGQUERY")]
+        BIGQUERY,
+
         [EnumMember(Value = "CLOUD_SQL")]
         CLOUD_SQL,
 

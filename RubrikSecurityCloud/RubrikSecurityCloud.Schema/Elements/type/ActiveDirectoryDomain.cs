@@ -196,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
+        //      C# -> List<UnregisteredDomainControllerInfo>? UnregisteredDomainControllers
+        // GraphQL -> unregisteredDomainControllers: [UnregisteredDomainControllerInfo!]! (type)
+        [JsonProperty("unregisteredDomainControllers")]
+        public List<UnregisteredDomainControllerInfo>? UnregisteredDomainControllers { get; set; }
+
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
 
@@ -289,7 +294,8 @@ namespace RubrikSecurityCloud.Types
         DataLocation? PrimaryClusterLocation = null,
         SecurityMetadata? SecurityMetadata = null,
         SmbDomain? SmbDomain = null,
-        SnapshotDistribution? SnapshotDistribution = null
+        SnapshotDistribution? SnapshotDistribution = null,
+        List<UnregisteredDomainControllerInfo>? UnregisteredDomainControllers = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -396,6 +402,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
+        }
+        if ( UnregisteredDomainControllers != null ) {
+            this.UnregisteredDomainControllers = UnregisteredDomainControllers;
         }
         return this;
     }
@@ -791,6 +800,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "snapshotDistribution" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<UnregisteredDomainControllerInfo>? UnregisteredDomainControllers
+        // GraphQL -> unregisteredDomainControllers: [UnregisteredDomainControllerInfo!]! (type)
+        if (this.UnregisteredDomainControllers != null) {
+            var fspec = this.UnregisteredDomainControllers.AsFieldSpec(conf.Child("unregisteredDomainControllers"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "unregisteredDomainControllers" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1457,6 +1478,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotDistribution != null && ec.Excludes("snapshotDistribution",false))
         {
             this.SnapshotDistribution = null;
+        }
+        //      C# -> List<UnregisteredDomainControllerInfo>? UnregisteredDomainControllers
+        // GraphQL -> unregisteredDomainControllers: [UnregisteredDomainControllerInfo!]! (type)
+        if (ec.Includes("unregisteredDomainControllers",false))
+        {
+            if(this.UnregisteredDomainControllers == null) {
+
+                this.UnregisteredDomainControllers = new List<UnregisteredDomainControllerInfo>();
+                this.UnregisteredDomainControllers.ApplyExploratoryFieldSpec(ec.NewChild("unregisteredDomainControllers"));
+
+            } else {
+
+                this.UnregisteredDomainControllers.ApplyExploratoryFieldSpec(ec.NewChild("unregisteredDomainControllers"));
+
+            }
+        }
+        else if (this.UnregisteredDomainControllers != null && ec.Excludes("unregisteredDomainControllers",false))
+        {
+            this.UnregisteredDomainControllers = null;
         }
     }
 

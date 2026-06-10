@@ -47,3 +47,6 @@ Inventory workloads that are supported on Rubrik.
 - PROXMOX_ROOT - Proxmox root.
 - GITHUB_ROOT - GitHub root.
 - FUSION_COMPUTE_ROOT - FusionCompute root.
+- PURE_STORAGE_ROOT - Pure Storage root.
+- AUTH0_ROOT - Auth0 root.
+- PING_FEDERATE_ROOT - Ping Federate root.

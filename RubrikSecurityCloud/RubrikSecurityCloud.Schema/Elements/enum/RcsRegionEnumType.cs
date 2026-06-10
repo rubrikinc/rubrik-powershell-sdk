@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASIA_PACIFIC_SYDNEY")]
         ASIA_PACIFIC_SYDNEY,
 
+        [EnumMember(Value = "ASIA_PACIFIC_THAILAND")]
+        ASIA_PACIFIC_THAILAND,
+
         [EnumMember(Value = "ASIA_SOUTHEAST")]
         ASIA_SOUTHEAST,
 
@@ -105,11 +108,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOV_US_ARIZONA")]
         GOV_US_ARIZONA,
 
+        [EnumMember(Value = "GOV_US_EAST_1")]
+        GOV_US_EAST_1,
+
         [EnumMember(Value = "GOV_US_TEXAS")]
         GOV_US_TEXAS,
 
         [EnumMember(Value = "GOV_US_VIRGINIA")]
         GOV_US_VIRGINIA,
+
+        [EnumMember(Value = "GOV_US_WEST_1")]
+        GOV_US_WEST_1,
 
         [EnumMember(Value = "INDIA_CENTRAL")]
         INDIA_CENTRAL,

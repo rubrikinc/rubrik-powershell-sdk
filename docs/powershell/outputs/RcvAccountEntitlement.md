@@ -7,3 +7,5 @@ Rubrik Cloud Vault (RCV) account capacity entitlement.
   - Rubrik Cloud Vault (RCV) Archive Tier Entitlement details.
 - entitlements: list of RcvEntitlementsUsageDetailss
   - Rubrik Cloud Vault (RCV) Entitlements.
+- rcvEntitlementGroups: list of RcvEntitlementGroups
+  - Entitlement groups for capacity consolidation. Only populated when SKU consolidation is enabled.

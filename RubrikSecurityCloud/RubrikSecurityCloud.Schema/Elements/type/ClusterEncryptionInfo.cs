@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterProductType? ClusterProductType
+        // GraphQL -> clusterProductType: ClusterProductType! (enum)
+        [JsonProperty("clusterProductType")]
+        public ClusterProductType? ClusterProductType { get; set; }
+
         //      C# -> ClusterEncryptionType? EncryptionType
         // GraphQL -> encryptionType: ClusterEncryptionType! (enum)
         [JsonProperty("encryptionType")]
@@ -100,6 +105,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ClusterEncryptionInfo Set(
+        ClusterProductType? ClusterProductType = null,
         ClusterEncryptionType? EncryptionType = null,
         List<ClusterKeyProtection>? SupportedKeyTypes = null,
         System.Boolean? CanUserManageCluster = null,
@@ -116,6 +122,9 @@ namespace RubrikSecurityCloud.Types
         RscKeyRotationRequest? MostRecentRscRequest = null
     ) 
     {
+        if ( ClusterProductType != null ) {
+            this.ClusterProductType = ClusterProductType;
+        }
         if ( EncryptionType != null ) {
             this.EncryptionType = EncryptionType;
         }
@@ -172,6 +181,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ClusterProductType? ClusterProductType
+        // GraphQL -> clusterProductType: ClusterProductType! (enum)
+        if (this.ClusterProductType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterProductType\n" ;
+            } else {
+                s += ind + "clusterProductType\n" ;
+            }
+        }
         //      C# -> ClusterEncryptionType? EncryptionType
         // GraphQL -> encryptionType: ClusterEncryptionType! (enum)
         if (this.EncryptionType != null) {
@@ -311,6 +329,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ClusterProductType? ClusterProductType
+        // GraphQL -> clusterProductType: ClusterProductType! (enum)
+        if (ec.Includes("clusterProductType",true))
+        {
+            if(this.ClusterProductType == null) {
+
+                this.ClusterProductType = new ClusterProductType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterProductType != null && ec.Excludes("clusterProductType",true))
+        {
+            this.ClusterProductType = null;
+        }
         //      C# -> ClusterEncryptionType? EncryptionType
         // GraphQL -> encryptionType: ClusterEncryptionType! (enum)
         if (ec.Includes("encryptionType",true))

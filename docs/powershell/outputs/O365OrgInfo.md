@@ -1,32 +1,32 @@
 ### O365OrgInfo
-The O365 subscription status and ID info.
+The O365 includes provision status and ID of O365 org.
 
 - orgId: System.String
-  - Polaris ID of O365 subscription.
+  - ID of O365 subscription.
 - status: ProvisionStatus
   - Provision status of O365 subscription.
 - exchangeOnColossus: System.Boolean
   - Exchange colossus status.
 - past1DayMailboxComplianceCount: System.Int32
-  - Mailboxes compliant.
+  - Count of mailboxes compliant.
 - past1DayMailboxOutOfComplianceCount: System.Int32
-  - Mailboxes not compliant.
+  - Count of mailboxes out of compliance.
 - past1DayOnedriveComplianceCount: System.Int32
-  - Onedrives compliant.
+  - Count of OneDrives compliant.
 - past1DayOnedriveOutOfComplianceCount: System.Int32
-  - Onedrives not compliant.
+  - Count of OneDrives out of compliance.
 - past1DaySharepointComplianceCount: System.Int32
-  - Sharepoints compliant.
+  - Count of SharePoint drives compliant.
 - past1DaySharepointOutOfComplianceCount: System.Int32
-  - Sharepoints not compliant.
+  - Count of SharePoint drives out of compliance.
 - past1DayTeamsComplianceCount: System.Int32
-  - Teams compliant.
+  - Count of Teams compliant.
 - past1DayTeamsOutOfComplianceCount: System.Int32
-  - Teams not compliant.
+  - Count of Teams out of compliance.
 - past1DaySpListComplianceCount: System.Int32
-  - Sharepoint Lists compliant.
+  - Count of SharePoint lists compliant.
 - past1DaySpListOutOfComplianceCount: System.Int32
-  - Sharepoint Lists not compliant.
+  - Count of SharePoint lists out of compliance.
 - past1DaySpSiteCollectionComplianceCount: System.Int32
   - Compliance count for SharePoint site collections.
 - past1DaySpSiteCollectionOutOfComplianceCount: System.Int32

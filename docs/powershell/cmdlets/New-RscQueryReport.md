@@ -1,5 +1,24 @@
 # New-RscQueryReport
 ## Subcommands
+### clouddirecteventseriestask
+Retrieves a CSV report of failed file paths for a completed
+Cloud Direct job which completed with errors. The report is made available for
+download.
+
+- There are 3 arguments.
+    - eventSeriesId - System.String: The event series ID for the completed job.
+    - clusterId - System.String: The UUID of the cluster.
+    - objectId - System.String: The ID of the object whose job has completed.
+- Returns CloudDirectEventSeriesTaskReportReply.
+### clouddirectjobrecenterrors
+Retrieves a CSV report of recent per-file errors for an in-progress
+Cloud Direct job. The report is made available for download.
+
+- There are 3 arguments.
+    - eventSeriesId - System.String: The event series ID for the job.
+    - clusterId - System.String: The UUID of the cluster.
+    - objectId - System.String: The ID of the object whose job is running.
+- Returns CloudDirectJobRecentErrorsReportReply.
 ### clustermigrationcount
 Retrieve details of the Rubrik clusters' reports migration.
 
@@ -133,10 +152,14 @@ sites for sharepoint bulk recovery.
 ### sonar
 Returns groupBy for SonarReport.
 
-- There are 3 arguments.
-    - sonarReportGroupBy - DiscoveryReportGroupBy
-    - filter - list of System.Strings
-    - timeFilter - TimeFilterInput
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sonarReportGroupBy - DiscoveryReportGroupBy: Group-by field for the report.
+    - filter - list of System.Strings: Optional list of policy IDs to filter by.
+    - timeFilter - TimeFilterInput: Optional time range filter.
 - Returns SonarReportConnection.
 ### sonarcontent
 Returns groupBy results for SonarContentReport.
@@ -155,17 +178,18 @@ Returns groupBy results for SonarContentReport.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns SonarContentReportConnection.
 ### sonarrow
+Endpoints for DC Reports
 Returns rows for SonarReport table.
 
 - There are 8 arguments.
-    - sortBy - DiscoveryReportSortBy
-    - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of System.Strings
-    - endTime - System.String
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - DiscoveryReportSortBy: Field to sort the report rows by.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of System.Strings: Optional list of policy IDs to filter by.
+    - endTime - System.String: Timestamp in RFC3339 (UTC) to filter rows by.
 - Returns SonarReportRowConnection.
 ### templatesbycategories
 Retrieve all report templates by category.

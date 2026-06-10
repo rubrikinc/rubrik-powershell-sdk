@@ -42,12 +42,7 @@ subtype knowledge there. To query for shared users, we can either:
 (api-server way)
 2. Specify O365_SHARED_USER in object type, ignore this filter
 (others should do this).
-- NAME_EXACT_MATCH - There is already a filter called NAME which filters for all the rows
-where name is "LIKE" the provided string. We have a use-case in
-Azure where we would like to Filter by name but exact-match, not just
-similar match. The use case is that resource groups are identified by
-the tuple of subscription ID and resource group name, similarity
-measure will not distinguish between two similar names.
+- NAME_EXACT_MATCH - Filter by exact name match.
 - FILESET_SLA - Filter physical hosts by SLAs attached to their filesets.
 - FILESET_TEMPLATE_ID - Filter physical hosts by which fileset templates are attached
 to them.
@@ -62,7 +57,7 @@ filter are generated strings from AwsIndexingStatusFilter enum.
 - AZURE_DISK_TYPE - Filter Azure disks on Disk type.
 - HAS_PARENT_SNAPPABLE - Filter if a workload has parent workload.
 - CLUSTER_TYPE - Filter clusters by the ClusterTypeEnum.
-- GCP_NATIVE_PROJECT_ID - Filter by GCP project ID for GCE instances.
+- GCP_NATIVE_PROJECT_ID - Filter by GCP project ID.
 - AWS_NATIVE_ACCOUNT_ENABLED_FEATURE - Filter AWS native accounts based on the features enabled for them.
 - AWS_NATIVE_RDS_DB_ENGINE - Filter by RDS Instace DB Engine.
 - AWS_NATIVE_RDS_DB_INSTANCE_CLASS - Filter by RDS Instance DB Instance Class.
@@ -939,19 +934,19 @@ Supports values: "CONNECTED", "DISCONNECTED".
 +4. In-memory filtering on the small result set
 +(<1000 instances typically) is efficient
 - GCP_CLOUD_SQL_INSTANCE_NAME_OR_NATIVE_ID - Filter GCP Cloud SQL instances by native ID or native name.
-This filter searches both the native_uri and native_name fields
-in the cloud_native_resource table.
-Implementation: Joins cloud_native_resource table and filters by
-native_uri LIKE or native_name LIKE
++comment: This filter searches both the native_uri and native_name fields
++comment: in the cloud_native_resource table.
++comment: Implementation: Joins cloud_native_resource table and filters by
++comment: native_uri LIKE or native_name LIKE
++comment: Note: This filter is specific to GCP Cloud SQL instances and should
++comment: be used instead of the generic NAME filter for CloudSQL to ensure
++comment: consistent behavior across multi-object-type queries and Global Search.
 +mo:filter:db:table=cloud_native_resource
 +mo:filter:db:column=native_uri,native_name
 +mo:filter:db:index:key=native_uri_index
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
-Note: This filter is specific to GCP Cloud SQL instances and should
-be used instead of the generic NAME filter for CloudSQL to ensure
-consistent behavior across multi-object-type queries and Global Search.
 - NUTANIX_BY_SLA_ASSIGNMENT_TYPE - Filter Nutanix objects by SLA assignment type.
 Supports values: Direct, Derived, Unassigned.
 This is a multi-select filter.
@@ -973,11 +968,12 @@ This is a multi-select filter.
 +mo:filter:db:index:key=object_id_idx
 +mo:filter:db:column=end_date (filter)
 +mo:filter:db:index:key=NULL
-- RECOVERY_PLAN_ROOT_DOMAIN_SID - Filter recovery plans by root domain SID.
-Given a root domain SID, this filter finds the domain from
-cdm_active_directory_domain table, then finds the corresponding
-domain controller IDs from cdm_active_directory_domain_controller,
-and returns recovery plans that contain those domain controllers.
+- RECOVERY_PLAN_ROOT_DOMAIN_SID - Filter recovery plans by forest root domain SID.
+Given a forest root domain SID, this filter finds the forest from
+cdm_active_directory_forest table, then finds domains belonging to
+that forest, then finds the corresponding domain controller IDs
+from cdm_active_directory_domain_controller, and returns recovery
+plans that contain those domain controllers.
 +mo:filter:db:table=appflows_blueprint_child
 +mo:filter:db:column=blueprint_id
 +mo:filter:db:column=snappable_id
@@ -996,8 +992,12 @@ and returns recovery plans that contain those domain controllers.
 +mo:filter:db:table=cdm_active_directory_domain
 +mo:filter:db:column=id
 +mo:filter:db:column=cluster_uuid
-+mo:filter:db:column=domain_sid
-+mo:filter:db:index:key=domain_sid_idx
++mo:filter:db:column=forest_id
++mo:filter:db:table=cdm_active_directory_forest
++mo:filter:db:column=id
++mo:filter:db:column=cluster_uuid
++mo:filter:db:column=forest_root_domain_sid
++mo:filter:db:index:key=forest_root_domain_sid_idx
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
@@ -1043,3 +1043,163 @@ the object name.
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
+- GCP_ALLOY_DB_CLUSTER_NAME_OR_NATIVE_ID - Filter GCP AlloyDB clusters by native ID or name.
++mo:filter:db:table=cloud_native_resource
++mo:filter:db:column=native_uri,native_name
++mo:filter:db:index:key=native_uri_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- NAME_PREFIX - Filter objects whose name starts with the specified prefix.
++mo:filter:db:table=managed_object
++mo:filter:db:column=name
++mo:filter:db:index:key=updated_global_search_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- IS_RBA_ROLE_SECONDARY - Filter objects by RBA role secondary status.
++mo:filter:db:table=cdm_snappable
++mo:filter:db:column=fid
++mo:filter:db:column=rba_role
++mo:filter:db:index:key=NULL // no index on rba_role
+- MYSQLDB_DATABASE_CDM_ID - Filter MySQL Databases by their CDM internal ID. Joins on
+cdm_mysqldb_database.fid = managed_object.id, then filters
+on cdm_mysqldb_database.id (the CDM-assigned identifier).
++mo:filter:db:table=cdm_mysqldb_database
++mo:filter:db:column=id
++mo:filter:db:index:key=cluster_mds_index_v2
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- DEVOPS_ARCHIVAL_LOCATION_ID - Filter DevOps organizations by their archival
+location ID, stored in devops_organizations
+and share the backup_location_id column.
++mo:filter:db:table=devops_organizations
++mo:filter:db:column=backup_location_id
++comment: No dedicated index on backup_location_id.
++comment: devops_organizations is a per-customer-account table with
++comment: very low cardinality.
++comment: An index can be added if table size grows significantly.
+- DEVOPS_EXOCOMPUTE_CLOUD_ACCOUNT_ID - Filter DevOps organizations by their exocompute
+cloud account ID, stored in devops_organizations.
++mo:filter:db:table=devops_organizations
++mo:filter:db:column=exocompute_cloud_account_id
++comment: No dedicated index on exocompute_cloud_account_id.
++comment: devops_organizations is a per-customer-account table with
++comment: very low cardinality.
++comment: An index can be added if table size grows significantly.
+- OBJECT_ID - Filter managed objects by their ID (FID).
++mo:filter:db:table=managed_object
++mo:filter:db:column=id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- GCP_BIG_QUERY_DATASET_NAME_OR_NATIVE_ID - Filter GCP BigQuery datasets by native ID or name.
++mo:filter:db:table=cloud_native_resource
++mo:filter:db:column=native_uri,native_name
++mo:filter:db:index:key=native_uri_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- CLOUD_NATIVE_APPLICATION_DISCOVERY_METHOD - Filter cloud native application resources by discovery method
+(TAG_BASED or AUTO_DISCOVERY).
++mo:filter:db:table=cloud_native_application_resource
++mo:filter:db:column=discovery_method
++mo:filter:db:index:key=NULL
+- AWS_NATIVE_ACCOUNT_SERVICE_TYPE - Filter AWS native accounts and their child objects (EC2, EBS, RDS, S3,
+DynamoDB) by BaaS or non-BaaS service type.
+Use texts param with values "BAAS" or "NON_BAAS".
++mo:filter:db:table=aws_native_accounts
++mo:filter:db:column=account_id
++mo:filter:db:index:key=PRIMARY
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:column=service_type
++mo:filter:db:index:key=NULL
+- IS_PURE_STORAGE_VOLUME - Filter Pure Storage protection groups by type. Set to true to
+return volume-level entries; set to false to return real
+protection groups.
++mo:filter:db:table=cdm_pure_storage_protection_group
++mo:filter:db:column=is_volume
++mo:filter:db:index:key=NULL
+- OPENSTACK_PROJECT_NATIVE_ID - Filter OpenStack projects by their native OpenStack project ID.
++mo:filter:db:table=cdm_openstack_project
++mo:filter:db:column=openstack_id
++mo:filter:db:index:key=openstack_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- VSPHERE_VCENTER_CONNECTION_STATUS - Filter VMware vCenters by their connection status
+Supports values: "Disconnected", "Connected", "Refreshing",
+"BadlyConfigured", "Deleting", "Remote".
++mo:filter:db:table=cdm_vmware_vcenter
++mo:filter:db:column=connection_status
++mo:filter:db:index:key=NULL
+- AZURE_POSTGRES_FLEXIBLE_SERVER_RG_NAME - Filter Azure Postgres Flexible Servers on resource group name.
++mo:filter:db:table=azure_native_resource_groups
++mo:filter:db:column=native_resource_group_name
++mo:filter:db:index:not_needed
+- AZURE_POSTGRES_FLEXIBLE_SERVER_SUBSCRIPTION_ID - Filter Azure Postgres Flexible Servers on subscription ID.
++mo:filter:db:table=managed_object
++mo:filter:db:column=parent_id
++mo:filter:db:index:key=parent_id_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- IS_RSC_CLUSTER - Companion to the CLUSTER_ID filter. When set, results also
+include workloads on Rubrik-native clusters (workloads that
+are not associated with a CDM cluster).
++mo:filter:db:table=N/A -- indicator filter; handled by CLUSTER_ID
++mo:filter:db:column=N/A
++mo:filter:db:index:key=NULL
+- AWS_NATIVE_EC2_OUTPOST_ARN - Filter EC2 instances by AWS Outpost ARN.
++mo:filter:db:table=aws_native_ec2_instances
++mo:filter:db:column=outpost_arn
++mo:filter:db:index:key=outpost_arn_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AWS_NATIVE_EBS_OUTPOST_ARN - Filter EBS volumes by AWS Outpost ARN.
++mo:filter:db:table=aws_native_ebs_volumes
++mo:filter:db:column=outpost_arn
++mo:filter:db:index:key=outpost_arn_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- OPENSTACK_IMAGE_PROJECT_ID - Filter OpenStack images by the ID of the parent OpenStack project.
+Can be combined with OPENSTACK_IMAGE_REGION_ID to filter by both.
++mo:filter:db:table=managed_hierarchy_descendant
++mo:filter:db:column=descendant_id
++mo:filter:db:column=ancestor_id
++mo:filter:db:index:key=descendant_ancestor_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- OPENSTACK_IMAGE_REGION_ID - Filter OpenStack images by the ID of the parent OpenStack region.
+Can be combined with OPENSTACK_IMAGE_PROJECT_ID to filter by both.
++mo:filter:db:table=managed_hierarchy_descendant
++mo:filter:db:column=descendant_id
++mo:filter:db:column=ancestor_id
++mo:filter:db:index:key=descendant_ancestor_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- HAS_OBJECT_BACKUP_WINDOW_OVERRIDE - Filter managed objects by whether they have an object-level backup
+window override configured. true = only objects with overrides
+configured; false = only objects without overrides; absent = no
+filter (all objects).
++mo:filter:db:table=managed_object_to_backup_window_group
++mo:filter:db:column=managed_object_id
++mo:filter:db:index:key=UQ_ManagedObjectToBackupWindowGroup_ManagedObject
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- DOMAIN_CONTROLLER_HAS_AGENT - Filter Active Directory domain controllers by whether an RBS agent is
+registered for the domain controller. Pass texts = ["true"] to keep
+only domain controllers with an agent; ["false"] to return only
+domain controllers without an agent.
++mo:filter:db:table=cdm_active_directory_domain_controller
++mo:filter:db:column=agent_uuid
++mo:filter:db:index:key=NULL // no index on agent_uuid

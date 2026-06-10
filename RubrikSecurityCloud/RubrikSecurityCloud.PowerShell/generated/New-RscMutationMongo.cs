@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 17
     /// operations in the 'Mongo' API domain:
-    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, DownloadCollectionSetSnapshotsForPointInTimeRecovery, DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery, ExpireCollectionSetDownloadedSnapshots, ExpireOpsManagerSourceDownloadedSnapshots, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
     /// </summary>
     /// <description>
     /// New-RscMutationMongo creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 17 operations
     /// in the 'Mongo' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
+    /// one of: AddOpsManagerManagedSource, AddSource, CreateOnDemandDatabaseBackup, CreateOnDemandDatabaseBackupV2, CreateOpsManagerManagedSourceOnDemandSnapshot, DeleteSource, DiscoverSource, DownloadCollectionSetSnapshotsForPointInTimeRecovery, DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery, ExpireCollectionSetDownloadedSnapshots, ExpireOpsManagerSourceDownloadedSnapshots, PatchOpsManagerManagedSource, PatchSource, RecoverOpsManagerManagedSource, RecoverSource, RetryAddOpsManagerManagedSource, or RetryAddSource.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -374,6 +374,164 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DownloadCollectionSetSnapshotsForPointInTimeRecovery operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: DownloadCollectionSetSnapshotsForPointInTimeRecovery
+    /// 
+    /// $query = New-RscMutationMongo -Operation DownloadCollectionSetSnapshotsForPointInTimeRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# REQUIRED
+    /// 	downloadConfig = @{
+    /// 		# OPTIONAL
+    /// 		pointInTime = $someDateTime
+    /// 		# REQUIRED
+    /// 		preferredLocationId = $someString
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery
+    /// 
+    /// $query = New-RscMutationMongo -Operation DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# REQUIRED
+    /// 	downloadConfig = @{
+    /// 		# OPTIONAL
+    /// 		pointInTime = $someDateTime
+    /// 		# REQUIRED
+    /// 		preferredLocationId = $someString
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExpireCollectionSetDownloadedSnapshots operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: ExpireCollectionSetDownloadedSnapshots
+    /// 
+    /// $query = New-RscMutationMongo -Operation ExpireCollectionSetDownloadedSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldExpireLogsOnly = $someBoolean
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExpireOpsManagerSourceDownloadedSnapshots operation
+    /// of the 'Mongo' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Mongo
+    /// # API Operation: ExpireOpsManagerSourceDownloadedSnapshots
+    /// 
+    /// $query = New-RscMutationMongo -Operation ExpireOpsManagerSourceDownloadedSnapshots
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	shouldExpireLogsOnly = $someBoolean
+    /// 	# OPTIONAL
+    /// 	afterTime = $someDateTime
+    /// 	# OPTIONAL
+    /// 	beforeTime = $someDateTime
     /// }
     /// 
     /// # Execute the query
@@ -749,6 +907,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateOpsManagerManagedSourceOnDemandSnapshot",
                 "DeleteSource",
                 "DiscoverSource",
+                "DownloadCollectionSetSnapshotsForPointInTimeRecovery",
+                "DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery",
+                "ExpireCollectionSetDownloadedSnapshots",
+                "ExpireOpsManagerSourceDownloadedSnapshots",
                 "PatchOpsManagerManagedSource",
                 "PatchSource",
                 "RecoverOpsManagerManagedSource",
@@ -790,6 +952,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DiscoverSource":
                         this.ProcessRecord_DiscoverSource();
+                        break;
+                    case "DownloadCollectionSetSnapshotsForPointInTimeRecovery":
+                        this.ProcessRecord_DownloadCollectionSetSnapshotsForPointInTimeRecovery();
+                        break;
+                    case "DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery":
+                        this.ProcessRecord_DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery();
+                        break;
+                    case "ExpireCollectionSetDownloadedSnapshots":
+                        this.ProcessRecord_ExpireCollectionSetDownloadedSnapshots();
+                        break;
+                    case "ExpireOpsManagerSourceDownloadedSnapshots":
+                        this.ProcessRecord_ExpireOpsManagerSourceDownloadedSnapshots();
                         break;
                     case "PatchOpsManagerManagedSource":
                         this.ProcessRecord_PatchOpsManagerManagedSource();
@@ -880,6 +1054,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DiscoverSource";
             // Create new graphql operation discoverMongoSource
             InitMutationDiscoverMongoSource();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadMongoCollectionSetSnapshotsForPointInTimeRecovery.
+        internal void ProcessRecord_DownloadCollectionSetSnapshotsForPointInTimeRecovery()
+        {
+            this._logger.name += " -DownloadCollectionSetSnapshotsForPointInTimeRecovery";
+            // Create new graphql operation downloadMongoCollectionSetSnapshotsForPointInTimeRecovery
+            InitMutationDownloadMongoCollectionSetSnapshotsForPointInTimeRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery.
+        internal void ProcessRecord_DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery()
+        {
+            this._logger.name += " -DownloadOpsManagerSourceSnapshotsForPointInTimeRecovery";
+            // Create new graphql operation downloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery
+            InitMutationDownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // expireMongoCollectionSetDownloadedSnapshots.
+        internal void ProcessRecord_ExpireCollectionSetDownloadedSnapshots()
+        {
+            this._logger.name += " -ExpireCollectionSetDownloadedSnapshots";
+            // Create new graphql operation expireMongoCollectionSetDownloadedSnapshots
+            InitMutationExpireMongoCollectionSetDownloadedSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // expireMongoOpsManagerSourceDownloadedSnapshots.
+        internal void ProcessRecord_ExpireOpsManagerSourceDownloadedSnapshots()
+        {
+            this._logger.name += " -ExpireOpsManagerSourceDownloadedSnapshots";
+            // Create new graphql operation expireMongoOpsManagerSourceDownloadedSnapshots
+            InitMutationExpireMongoOpsManagerSourceDownloadedSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1190,6 +1400,132 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadMongoCollectionSetSnapshotsForPointInTimeRecovery(input: DownloadMongoCollectionSetSnapshotsForPointInTimeRecoveryInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadMongoCollectionSetSnapshotsForPointInTimeRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadMongoCollectionSetSnapshotsForPointInTimeRecoveryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadMongoCollectionSetSnapshotsForPointInTimeRecovery",
+                "($input: DownloadMongoCollectionSetSnapshotsForPointInTimeRecoveryInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadMongoCollectionSetSnapshotsForPointInTimeRecovery,
+                Mutation.DownloadMongoCollectionSetSnapshotsForPointInTimeRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+	# REQUIRED
+	downloadConfig = @{
+		# OPTIONAL
+		pointInTime = $someDateTime
+		# REQUIRED
+		preferredLocationId = $someString
+		# OPTIONAL
+		slaId = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery(input: DownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecoveryInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecoveryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery",
+                "($input: DownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecoveryInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecovery,
+                Mutation.DownloadMongoOpsManagerSourceSnapshotsForPointInTimeRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	userNote = $someString
+	# REQUIRED
+	downloadConfig = @{
+		# OPTIONAL
+		pointInTime = $someDateTime
+		# REQUIRED
+		preferredLocationId = $someString
+		# OPTIONAL
+		slaId = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // expireMongoCollectionSetDownloadedSnapshots(input: ExpireMongoCollectionSetDownloadedSnapshotsInput!): AsyncRequestStatus!
+        internal void InitMutationExpireMongoCollectionSetDownloadedSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExpireMongoCollectionSetDownloadedSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExpireMongoCollectionSetDownloadedSnapshots",
+                "($input: ExpireMongoCollectionSetDownloadedSnapshotsInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExpireMongoCollectionSetDownloadedSnapshots,
+                Mutation.ExpireMongoCollectionSetDownloadedSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	shouldExpireLogsOnly = $someBoolean
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // expireMongoOpsManagerSourceDownloadedSnapshots(input: ExpireMongoOpsManagerSourceDownloadedSnapshotsInput!): AsyncRequestStatus!
+        internal void InitMutationExpireMongoOpsManagerSourceDownloadedSnapshots()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExpireMongoOpsManagerSourceDownloadedSnapshotsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExpireMongoOpsManagerSourceDownloadedSnapshots",
+                "($input: ExpireMongoOpsManagerSourceDownloadedSnapshotsInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExpireMongoOpsManagerSourceDownloadedSnapshots,
+                Mutation.ExpireMongoOpsManagerSourceDownloadedSnapshotsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	shouldExpireLogsOnly = $someBoolean
+	# OPTIONAL
+	afterTime = $someDateTime
+	# OPTIONAL
+	beforeTime = $someDateTime
 }"
             );
         }

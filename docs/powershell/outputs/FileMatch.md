@@ -15,8 +15,14 @@ Data for a matched file.
   - Name of the file that was matched.
 - fileSize: System.Int64
   - Size of the file that was matched.
+- objectFid: System.String
+  - FID of the object.
 - matchId: System.Int64
   - ID of the matched file being returned.
+- matchedSnapshotFid: System.String
+  - FID of the matched snapshot.
+- firstObservedSnapshotFid: System.String
+  - FID of the first observed snapshot.
 - firstObservedSnapshotDate: DateTime
   - Date of the snapshot when the match was first observed.
 - mtime: DateTime
@@ -25,12 +31,6 @@ Data for a matched file.
   - File Metadata for the matched file.
 - isFileVersionQuarantined: System.Boolean
   - Indicates whether the workload file version is quarantined.
-- objectFid: System.String
-  - FID of the object.
-- matchedSnapshotFid: System.String
-  - FID of the matched snapshot.
-- firstObservedSnapshotFid: System.String
-  - FID of the first observed snapshot.
 - isFirstObservedSnapshotExpired: System.Boolean
   - Specifies whether the first observed snapshot has expired.
 - isMatchedSnapshotExpired: System.Boolean

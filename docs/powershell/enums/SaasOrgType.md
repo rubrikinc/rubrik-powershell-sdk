@@ -1,5 +1,5 @@
 ### SaasOrgType
-The organization type that categorizes the SaaS provider.
+The different SaaS organization types supported.
 
 - SAAS_ORG_TYPE_UNSPECIFIED - Unspecified SaaS application type.
 - ATLASSIAN_ORG - Atlassian Org type.
@@ -16,3 +16,7 @@ The organization type that categorizes the SaaS provider.
 +comment: on this column is expected to be performant due to limited number
 +comment: of SaaS organization types and relatively small dataset size.
 - OKTA_ORG - OKTA Org type.
+- AUTH0_ORG - Auth0 Org type.
+- AZURE_DEVOPS_ORG - Azure DevOps Org type.
+- GITHUB_ORG - GitHub Org type.
+- POWER_PLATFORM_ORG - Power Platform Org type.

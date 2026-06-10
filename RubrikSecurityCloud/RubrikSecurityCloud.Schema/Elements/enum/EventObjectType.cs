@@ -96,6 +96,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_NATIVE_VM")]
         AZURE_NATIVE_VM,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE")]
         AZURE_SQL_DATABASE,
 
@@ -219,6 +222,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FUSION_COMPUTE_VRM")]
         FUSION_COMPUTE_VRM,
 
+        [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER")]
+        GCP_ALLOY_DB_CLUSTER,
+
+        [EnumMember(Value = "GCP_BIG_QUERY_DATASET")]
+        GCP_BIG_QUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
 
@@ -236,6 +245,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GITHUB_REPOSITORY")]
         GITHUB_REPOSITORY,
+
+        [EnumMember(Value = "GLUE_ICEBERG_CATALOG")]
+        GLUE_ICEBERG_CATALOG,
+
+        [EnumMember(Value = "GLUE_ICEBERG_DATABASE")]
+        GLUE_ICEBERG_DATABASE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
+        GLUE_ICEBERG_TABLE,
+
+        [EnumMember(Value = "GOOGLE_WORKSPACE_GROUP")]
+        GOOGLE_WORKSPACE_GROUP,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_ORGANIZATION")]
         GOOGLE_WORKSPACE_ORGANIZATION,
@@ -344,6 +365,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGED_VOLUME")]
         MANAGED_VOLUME,
+
+        [EnumMember(Value = "MICROSOFT_DEFENDER_INTEGRATION")]
+        MICROSOFT_DEFENDER_INTEGRATION,
 
         [EnumMember(Value = "MONGODB_COLLECTION")]
         MONGODB_COLLECTION,
@@ -501,17 +525,32 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORION_THREAT_HUNT")]
         ORION_THREAT_HUNT,
 
+        [EnumMember(Value = "PING_FEDERATE_CLUSTER")]
+        PING_FEDERATE_CLUSTER,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
         [EnumMember(Value = "PRINCIPAL_ACCESS_POLICY")]
         PRINCIPAL_ACCESS_POLICY,
 
+        [EnumMember(Value = "PRINCIPAL_APP_ROLE")]
+        PRINCIPAL_APP_ROLE,
+
         [EnumMember(Value = "PRINCIPAL_ASSUMABLE_IDENTITY")]
         PRINCIPAL_ASSUMABLE_IDENTITY,
 
         [EnumMember(Value = "PRINCIPAL_ATTRIBUTE_SCHEMA")]
         PRINCIPAL_ATTRIBUTE_SCHEMA,
+
+        [EnumMember(Value = "PRINCIPAL_AU")]
+        PRINCIPAL_AU,
+
+        [EnumMember(Value = "PRINCIPAL_AUTHENTICATION_CONTEXT")]
+        PRINCIPAL_AUTHENTICATION_CONTEXT,
+
+        [EnumMember(Value = "PRINCIPAL_AUTHENTICATION_STRENGTH")]
+        PRINCIPAL_AUTHENTICATION_STRENGTH,
 
         [EnumMember(Value = "PRINCIPAL_CERTIFICATE_TEMPLATE")]
         PRINCIPAL_CERTIFICATE_TEMPLATE,
@@ -528,8 +567,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_CONTAINER")]
         PRINCIPAL_CONTAINER,
 
+        [EnumMember(Value = "PRINCIPAL_CONTRACT")]
+        PRINCIPAL_CONTRACT,
+
         [EnumMember(Value = "PRINCIPAL_CONTROL_ACCESS_RIGHT")]
         PRINCIPAL_CONTROL_ACCESS_RIGHT,
+
+        [EnumMember(Value = "PRINCIPAL_DEVICE")]
+        PRINCIPAL_DEVICE,
 
         [EnumMember(Value = "PRINCIPAL_DFS_LINK")]
         PRINCIPAL_DFS_LINK,
@@ -539,6 +584,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRINCIPAL_DFS_NAMESPACE_V2")]
         PRINCIPAL_DFS_NAMESPACE_V2,
+
+        [EnumMember(Value = "PRINCIPAL_DNS_NODE")]
+        PRINCIPAL_DNS_NODE,
 
         [EnumMember(Value = "PRINCIPAL_DNS_ZONE")]
         PRINCIPAL_DNS_ZONE,
@@ -570,6 +618,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER")]
         PRINCIPAL_INTER_SITE_TRANSPORT_CONTAINER,
 
+        [EnumMember(Value = "PRINCIPAL_INVITATION")]
+        PRINCIPAL_INVITATION,
+
         [EnumMember(Value = "PRINCIPAL_LICENSING_SITE_SETTINGS")]
         PRINCIPAL_LICENSING_SITE_SETTINGS,
 
@@ -579,11 +630,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_MSDS_QUOTA_CONTROL")]
         PRINCIPAL_MSDS_QUOTA_CONTROL,
 
+        [EnumMember(Value = "PRINCIPAL_MSKDS_PROV_ROOT_KEY")]
+        PRINCIPAL_MSKDS_PROV_ROOT_KEY,
+
         [EnumMember(Value = "PRINCIPAL_NAMED_LOCATION")]
         PRINCIPAL_NAMED_LOCATION,
 
         [EnumMember(Value = "PRINCIPAL_NTDS_SITE_SETTINGS")]
         PRINCIPAL_NTDS_SITE_SETTINGS,
+
+        [EnumMember(Value = "PRINCIPAL_NTFRS_SUBSCRIBER")]
+        PRINCIPAL_NTFRS_SUBSCRIBER,
+
+        [EnumMember(Value = "PRINCIPAL_OAUTH2_PERMISSION_GRANT")]
+        PRINCIPAL_OAUTH2_PERMISSION_GRANT,
 
         [EnumMember(Value = "PRINCIPAL_ORG_WIDE")]
         PRINCIPAL_ORG_WIDE,
@@ -596,6 +656,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRINCIPAL_PASSWORD_SETTINGS_CONTAINER")]
         PRINCIPAL_PASSWORD_SETTINGS_CONTAINER,
+
+        [EnumMember(Value = "PRINCIPAL_PKI_ENROLLMENT_SERVICE")]
+        PRINCIPAL_PKI_ENROLLMENT_SERVICE,
 
         [EnumMember(Value = "PRINCIPAL_PRINT_QUEUE")]
         PRINCIPAL_PRINT_QUEUE,
@@ -633,6 +696,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRINCIPAL_SYSTEM_IDENTITY")]
         PRINCIPAL_SYSTEM_IDENTITY,
 
+        [EnumMember(Value = "PRINCIPAL_TERMS_OF_USE")]
+        PRINCIPAL_TERMS_OF_USE,
+
         [EnumMember(Value = "PRINCIPAL_TRUSTED_DOMAIN")]
         PRINCIPAL_TRUSTED_DOMAIN,
 
@@ -653,6 +719,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PUBLIC_CLOUD_MACHINE_INSTANCE")]
         PUBLIC_CLOUD_MACHINE_INSTANCE,
+
+        [EnumMember(Value = "PURE_STORAGE_ARRAY")]
+        PURE_STORAGE_ARRAY,
+
+        [EnumMember(Value = "PURE_STORAGE_PROTECTION_GROUP")]
+        PURE_STORAGE_PROTECTION_GROUP,
+
+        [EnumMember(Value = "PURE_STORAGE_VOLUME")]
+        PURE_STORAGE_VOLUME,
 
         [EnumMember(Value = "REPLICATION_PAIR")]
         REPLICATION_PAIR,

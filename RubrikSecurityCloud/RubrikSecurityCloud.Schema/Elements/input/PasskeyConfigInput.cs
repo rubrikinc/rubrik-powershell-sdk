@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("passkeysAllowed")]
         public System.Boolean? PasskeysAllowed { get; set; }
 
-        //      C# -> System.Boolean? PlatformPasskeyAllowed
-        // GraphQL -> platformPasskeyAllowed: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("platformPasskeyAllowed")]
-        public System.Boolean? PlatformPasskeyAllowed { get; set; }
-
         //      C# -> System.Boolean? RoamingPasskeyAllowed
         // GraphQL -> roamingPasskeyAllowed: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("roamingPasskeyAllowed")]
         public System.Boolean? RoamingPasskeyAllowed { get; set; }
+
+        //      C# -> System.Boolean? PlatformPasskeyAllowed
+        // GraphQL -> platformPasskeyAllowed: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("platformPasskeyAllowed")]
+        public System.Boolean? PlatformPasskeyAllowed { get; set; }
 
         //      C# -> System.Int32? MaxPasskeysAllowed
         // GraphQL -> maxPasskeysAllowed: Int! (scalar)

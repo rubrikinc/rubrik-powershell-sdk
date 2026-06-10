@@ -19,10 +19,20 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean (scalar)
+        [JsonProperty("isBackupCompressionEnabled")]
+        public System.Boolean? IsBackupCompressionEnabled { get; set; }
+
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int (scalar)
         [JsonProperty("backupParallelism")]
         public System.Int32? BackupParallelism { get; set; }
+
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        [JsonProperty("backupCompressionLibraryPath")]
+        public System.String? BackupCompressionLibraryPath { get; set; }
 
         //      C# -> System.Int32? BackupSessions
         // GraphQL -> backupSessions: Int (scalar)

@@ -1,7 +1,7 @@
 ### ScanLimitInputType
-Scan limit.
+Scan scope of each object with respect to its snapshots.
 
 - scanConfig: SnapshotScanConfigInput
-  - Snapshot scan config.
+  - Config of the snapshot scan.
 - objectSnapshotConfig: ObjectSnapshotMappingListInputType
-  - Object snapshot config.
+  - List of object snapshot mappings.

@@ -54,10 +54,13 @@ Start an asynchronous job to create an instance of MySQL database.
 - There is a single argument of type AddMysqldbInstanceInput.
 - Returns AddMysqldbInstanceResponse.
 ### addroleassignments
+Add RBAC role assignments to the given users and/or groups.
+Existing role assignments are preserved.
+
 - There are 3 arguments.
     - userIds - list of System.Strings: List of user IDs.
     - groupIds - list of System.Strings: List of group IDs.
-    - roleIds - list of System.Strings
+    - roleIds - list of System.Strings: List of role IDs to assign.
 - Returns System.Boolean.
 ### addvlan
 Add VLAN to Rubrik cluster.
@@ -89,7 +92,22 @@ Assign protection to cassandra objects.
 
 - There is a single argument of type AssignProtectionInput.
 - Returns SlaAssignResult.
+### assignvmname
+AssignVmName assigns a user-defined display name to an NCD virtual machine
+device. Names must be unique within a cluster. Duplicate names within the
+same cluster are rejected. Assigning a new name to a device that already
+has one replaces the previous name.
+
+- There is a single argument of type AssignVmNameInput.
+- Returns System.String.
+### backupdevopsrepository
+Take a backup of a DevOps repository.
+
+- There is a single argument of type BackupDevOpsRepositoryInput.
+- Returns BackupDevOpsRepositoryReply.
 ### batchdeassignrolefromusergroups
+Batch deassign roles from the given user groups.
+
 - There is a single argument of type list of UserGroupToRolesInputs.
 - Returns System.Boolean.
 ### batchquarantineoperations
@@ -102,6 +120,17 @@ Initiates an on-demand Exocompute health check for a batch of exocompute configu
 
 - There is a single argument of type BatchTriggerExocomputeHealthCheckInput.
 - Returns BatchTriggerExocomputeHealthCheckReply.
+### bulkcreatefusioncomputevmbackup
+Initiate on-demand backups for multiple FusionCompute virtual machines in
+a single request. Fans out to the per-virtual-machine CDM REST endpoint
+server-side and returns one AsyncRequestStatus per input ID, in the same
+order. A per-virtual-machine failure (translation, RBAC inside CDM,
+cluster-unreachable, or per-virtual-machine timeout) appears as an entry
+with `error` populated; the request itself does not return an RPC error
+for per-virtual-machine failures.
+
+- There is a single argument of type BulkCreateFusionComputeVmBackupInput.
+- Returns BatchAsyncRequestStatus.
 ### bulkcreatenasfilesets
 Create filesets in bulk for NAS shares
 
@@ -110,6 +139,11 @@ Create primary filesets for a list of NAS shares.
 
 - There is a single argument of type BulkCreateNasFilesetsInput.
 - Returns BulkCreateNasFilesetsReply.
+### bulkobjectpause
+Toggle pause at object level and refresh pause status of their descendants.
+
+- There is a single argument of type ToggleObjectPauseReq.
+- Returns ToggleObjectPauseRes.
 ### bulkupdatenasnamespaces
 Update NAS namespaces with SMB credentials
 
@@ -152,8 +186,15 @@ Change the password for the current user.
 - There is a single argument of type ChangeCurrentUserPasswordInput.
 - Returns System.String.
 ### changepassword
+Changes a users password without using email.
+
 - There is a single argument of type ChangePasswordInput.
 - Returns System.Boolean.
+### cleanuprecoveries
+Cleans up recoveries by scheduling a clean up job for each recovery.
+
+- There is a single argument of type CleanupRecoveriesInput.
+- Returns CleanupRecoveriesReply.
 ### clouddirectaddsubdirbackup
 CloudDirectAddSubdirBackup is used to add Details of Subdir for backup.
 
@@ -185,6 +226,28 @@ CloudDirectValidateSubdir is used to validate SubDir on an export.
 
 - There is a single argument of type CloudDirectValidateSubdirInput.
 - Returns CloudDirectValidateSubdirReply.
+### completegithubappinstallation
+Completes the GitHub App installation (step 3 of the 3-step flow).
+
+After calling completeGitHubAppRegistration (step 2) and the user
+installs the app on their GitHub organization, GitHub provides an
+installation ID. Pass this ID along with the session ID from step 1 to
+finalize the setup. After this step the GitHub App is fully configured
+and ready for use.
+
+- There is a single argument of type CompleteGitHubAppInstallationInput.
+- Returns System.String.
+### completegithubappregistration
+Completes the GitHub App registration (step 2 of the 3-step flow).
+
+After calling startGitHubAppSetup (step 1) and the user creates the app
+on GitHub using the manifest, GitHub returns a setup code. Pass this code
+along with the session ID from step 1 to exchange it for app credentials.
+Returns the installation URL where the user should install the app on
+their GitHub organization.
+
+- There is a single argument of type CompleteGitHubAppRegistrationInput.
+- Returns CompleteGitHubAppRegistrationReply.
 ### completeuploadsession
 Complete the upload session with Minio.
 
@@ -215,6 +278,16 @@ Create event digests for specific recipients.
 
 - There is a single argument of type CreateEventDigestBatchInput.
 - Returns System.String.
+### createfusioncomputemount
+Mount a FusionCompute virtual machine from a snapshot.
+
+- There is a single argument of type CreateFusionComputeMountInput.
+- Returns AsyncRequestStatus.
+### createfusioncomputevmbackup
+Initiate an on-demand backup for a FusionCompute virtual machine.
+
+- There is a single argument of type CreateFusionComputeVmBackupInput.
+- Returns AsyncRequestStatus.
 ### createguestcredential
 Create guest OS credentials.
 
@@ -233,6 +306,11 @@ Create an on-demand snapshot for the given Volume Group ID.
 
 - There is a single argument of type CreateOnDemandVolumeGroupBackupInput.
 - Returns AsyncRequestStatus.
+### createrecoveryschedulev2
+Creates a recovery schedule for a recovery plan.
+
+- There is a single argument of type CreateRecoveryScheduleV2Input.
+- Returns System.String.
 ### createssousers
 Create SSO users.
 
@@ -286,6 +364,19 @@ Delete event digests for specific recipients.
 
 - There is a single argument of type DeleteEventDigestInput.
 - Returns System.String.
+### deletefusioncomputemount
+Delete a mounted FusionCompute virtual machine.
+
+- There is a single argument of type DeleteFusionComputeMountInput.
+- Returns AsyncRequestStatus.
+### deletefusioncomputevrm
+Delete a FusionCompute VRM instance
+
+Supported in v9.6
+Delete a FusionCompute VRM instance object and archive all associated objects.
+
+- There is a single argument of type DeleteFusionComputeVrmInput.
+- Returns AsyncRequestStatus.
 ### deleteguestcredentialbyid
 Delete guest OS credentials.
 
@@ -327,6 +418,16 @@ Initiates a job to delete a MySQL instance. GET /mysqldb/instance/request/{id} e
 
 - There is a single argument of type DeleteMysqldbInstanceInput.
 - Returns AsyncRequestStatus.
+### deleterecoveryplansv2
+Deletes recovery plans.
+
+- There is a single argument of type DeleteRecoveryPlansV2Input.
+- Returns DeleteRecoveryPlansV2Reply.
+### deleterecoveryschedulev2
+Deletes a recovery schedule for a recovery plan.
+
+- There is a single argument of type DeleteRecoveryScheduleV2Input.
+- Returns System.String.
 ### deletevolumegroupmount
 Request to delete a mount
 
@@ -419,6 +520,8 @@ To be used by Admin to collect necessary Rubrik's log files from all the nodes. 
 - There is a single argument of type GenerateSupportBundleInput.
 - Returns AsyncRequestStatus.
 ### getdownloadurl
+Get the download URL for a user file.
+
 - There is a single argument of type System.Int64.
 - Returns UserDownloadUrl.
 ### hiderevealnasnamespaces
@@ -485,6 +588,14 @@ Manage protection for linked objects, allowing objects to be linked or unlinked 
 
 - There is a single argument of type ManageProtectionForLinkedObjectsInput.
 - Returns CreateOnDemandJobReply.
+### migratefusioncomputemount
+Migrate a FusionCompute Live Mount to another datastore
+
+Supported in v9.6
+Run storage migration to relocate a FusionCompute Live Mount into another datastore.
+
+- There is a single argument of type MigrateFusionComputeMountInput.
+- Returns AsyncRequestStatus.
 ### migratevmdatastore
 Migrate datastore of a Live Mount
 
@@ -526,6 +637,14 @@ Send notification when the user clicks on the Get License button.
 
 - There is a single argument of type NotificationForGetLicenseInput.
 - Returns NotificationForGetLicenseReply.
+### patchfusioncomputevm
+Patch FusionCompute virtual machine
+
+Supported in v9.6
+Patch a FusionCompute virtual machine with specified properties.
+
+- There is a single argument of type PatchFusionComputeVmInput.
+- Returns System.String.
 ### patchmysqlinstance
 Update properties of the MySQL instance
 
@@ -563,10 +682,29 @@ Cloud Direct Path Recovery.
 
 - There is a single argument of type RecoverCloudDirectPathInput.
 - Returns AsyncRequestStatus.
+### recoverdevopsrepository
+Recover DevOps repository.
+
+- There is a single argument of type RecoverDevOpsRepositoryInput.
+- Returns RecoverDevOpsRepositoryReply.
+### refreshdevopsorganizations
+RefreshDevOpsOrganizations triggers a refresh of the specified
+DevOps organizations to sync their data with the RSC.
+
+- There is a single argument of type RefreshDevOpsOrganizationsInput.
+- Returns RefreshDevOpsOrganizationsReply.
 ### refreshdomain
 Initiates an on-demand refresh job of a specified Active Directory domain.
 
 - There is a single argument of type RefreshDomainInput.
+- Returns AsyncRequestStatus.
+### refreshfusioncomputevrm
+Refresh the FusionCompute VRM metadata
+
+Supported in v9.6
+Create a job to refresh the metadata for the specified FusionCompute VRM instance.
+
+- There is a single argument of type RefreshFusionComputeVrmInput.
 - Returns AsyncRequestStatus.
 ### refreshglobalmanagerconnectivitystatus
 - There is a single argument of type System.String.
@@ -719,6 +857,12 @@ system already added to the NCD cluster.
 
 - There is a single argument of type SetCloudDirectSystemOverrideInput.
 - Returns System.String.
+### setcoordinatorlabels
+SetCoordinatorLabels replaces the coordinator labels
+for virtual machines on a Cloud Direct cluster.
+
+- There is a single argument of type SetCoordinatorLabelsInput.
+- Returns SetCoordinatorLabelsReply.
 ### setcustomertags
 Sets customer-specified tags and the value whether the resource tags should be overridden by customer-specified tags for a given cloud type.
 
@@ -740,7 +884,8 @@ Update the IP allowlist settings for the account.
 - There is a single argument of type SetIpWhitelistSettingInput.
 - Returns System.String.
 ### setmfasetting
-Update the MFA settings for the account. Return true when the operation succeeds.
+Update the MFA settings for the account.
+Return true when the operation succeeds.
 
 - There is a single argument of type SetMfaSettingInput.
 - Returns System.Boolean.
@@ -808,6 +953,35 @@ Start a job to export RDS Instance. The job creates a new RDS Instance with the 
 
 - There is a single argument of type StartExportRdsInstanceJobInput.
 - Returns AsyncJobStatus.
+### startgithubappsetup
+Starts the GitHub App setup flow for the specified organization and app
+purposes. This is step 1 of the 3-step GitHub App registration flow:
+
+Step 1: Call startGitHubAppSetup -- returns a session ID, the current app
+status for each requested purpose, and setup info. If the app
+status is NOT_REGISTERED or MISSING_LATEST_PERMISSIONS, the
+response includes a GitHub App manifest (JSON) and a create_url.
+The manifest contains the app name, homepage URL, visibility
+setting, and the required GitHub permissions. Before submitting
+the manifest, add two additional fields:
+- setup_url: The URL where GitHub redirects users after they
+install the app. GitHub appends the installation_id as a query
+parameter to this URL.
+- redirect_url: The URL where GitHub redirects after the app is
+created. GitHub appends the setup code as a query parameter
+to this URL.
+Then POST the manifest to the create_url to begin app creation
+on GitHub (see GitHubAppRegistrationInfo for details).
+Step 2: Call completeGitHubAppRegistration -- after the user approves the
+app on GitHub, pass the returned setup code along with the
+session ID to exchange it for app credentials. Returns an
+installation URL.
+Step 3: Call completeGitHubAppInstallation -- after the user installs the
+app on their GitHub organization, pass the installation ID along
+with the session ID to finalize the setup.
+
+- There is a single argument of type StartGitHubAppSetupInput.
+- Returns StartGitHubAppSetupReply.
 ### startperiodicupgradeprechecksondemandjob
 Starts an on demand periodic upgrade prechecks job in CDM cluster.
 
@@ -875,6 +1049,11 @@ Initiates on-demand Exocompute health check.
 
 - There is a single argument of type TriggerExocomputeHealthCheckInput.
 - Returns TriggerExocomputeHealthCheckReply.
+### uninstallgithubapp
+Uninstalls a GitHub App for the specified organization and permission group.
+
+- There is a single argument of type UninstallGitHubAppInput.
+- Returns System.String.
 ### uninstalliofilter
 Uninstall the Rubrik ioFilter from the VMware cluster with a specific ID
 
@@ -995,6 +1174,22 @@ Modify the list of cluster IPs.
 
 - There is a single argument of type UpdateFloatingIpsInput.
 - Returns UpdateFloatingIpsReply.
+### updatefusioncomputemount
+Power a FusionCompute Live Mount on and off
+
+Supported in v9.6
+Power a specified FusionCompute Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
+
+- There is a single argument of type UpdateFusionComputeMountInput.
+- Returns UpdateFusionComputeMountReply.
+### updatefusioncomputevrm
+Update FusionCompute VRM instance
+
+Supported in v9.6
+Update the metadata and configs of the specified FusionCompute VRM instance object.
+
+- There is a single argument of type UpdateFusionComputeVrmInput.
+- Returns UpdateFusionComputeVrmReply.
 ### updateguestcredential
 Update guest OS credentials.
 
@@ -1039,7 +1234,7 @@ Transition to Managed Identities.
 - There is a single argument of type UpdateManagedIdentitiesInput.
 - Returns UpdateManagedIdentitiesReply.
 ### updatemanagedidentitiesasync
-Async transition to managed identities.
+Async transition of Azure Cloud Cluster to managed identities.
 
 - There is a single argument of type UpdateManagedIdentitiesAsyncInput.
 - Returns CcProvisionJobReply.
@@ -1064,11 +1259,19 @@ Update proxy config.
 
 - There is a single argument of type UpdateProxyConfigInput.
 - Returns UpdateProxyConfigReply.
+### updaterecoveryschedulev2
+Updates a recovery schedule for a recovery plan.
+
+- There is a single argument of type UpdateRecoveryScheduleV2Input.
+- Returns System.String.
 ### updateroleassignments
+Replaces RBAC role assignments for the given users and/or groups.
+Existing role assignments are overwritten with the provided role IDs.
+
 - There are 3 arguments.
     - userIds - list of System.Strings: List of user IDs.
     - groupIds - list of System.Strings: List of group IDs.
-    - roleIds - list of System.Strings
+    - roleIds - list of System.Strings: List of role IDs to assign.
 - Returns System.Boolean.
 ### updatesupportuseraccess
 Updates a Rubrik Support representative's access to the customer's account.

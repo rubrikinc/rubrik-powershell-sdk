@@ -57,6 +57,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER")]
         FAILOVER,
 
+        [EnumMember(Value = "FEATURE_FLAG_TOGGLE")]
+        FEATURE_FLAG_TOGGLE,
+
         [EnumMember(Value = "FILE_DOWNLOAD")]
         FILE_DOWNLOAD,
 
@@ -116,6 +119,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "THREAT_HUNT")]
         THREAT_HUNT,
+
+        [EnumMember(Value = "THREAT_MONITORING")]
+        THREAT_MONITORING,
 
         [EnumMember(Value = "TPR")]
         TPR

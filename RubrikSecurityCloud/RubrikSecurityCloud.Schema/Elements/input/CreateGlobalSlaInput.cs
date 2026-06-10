@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupWindowSpec")]
         public BackupWindowSpecInput? BackupWindowSpec { get; set; }
 
+        //      C# -> SlaPurpose? Purpose
+        // GraphQL -> purpose: SlaPurpose (enum)
+        [JsonProperty("purpose")]
+        public SlaPurpose? Purpose { get; set; }
+
         //      C# -> RetentionLockMode? RetentionLockMode
         // GraphQL -> retentionLockMode: RetentionLockMode (enum)
         [JsonProperty("retentionLockMode")]

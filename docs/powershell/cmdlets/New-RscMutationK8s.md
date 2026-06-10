@@ -68,6 +68,14 @@ Initiates a request to remove a Live Mount of a Kubernetes virtual machine snaps
 
 - There is a single argument of type DeleteK8sVmMountInput.
 - Returns AsyncRequestStatus.
+### downloadprotectionsetsnapshotfiles
+Download multiple files and folders
+
+Supported in v9.4+
+Start an asynchronous job to download multiple files and folders from a specified Kubernetes protection set backup.
+
+- There is a single argument of type DownloadK8sProtectionSetSnapshotFilesInput.
+- Returns AsyncRequestStatus.
 ### downloadsnapshotfromlocation
 Download a snapshot from a remote target
 

@@ -56,7 +56,7 @@ Enum representing all the possible event types.
 - TENANT_OVERLAP - Tenant overlap event type.
 - ENCRYPTION_MANAGEMENT_OPERATION - Encryption Management event type.
 - THREAT_FEED - Threat feed event type.
-- THREAT_MONITORING - Threat monitoring event type.
+- THREAT_MONITORING - Threat monitoring event/audit type.
 - SCHEDULE_RECOVERY - Orchestrated Application Recovery schedule-recovery event type.
 - TENANT_QUOTA - Tenant quota event type.
 - USER_INTELLIGENCE - User intelligence event type.

@@ -5,7 +5,7 @@ Filters for list of GCP Cloud SQL instances.
   - Filter by name or ID substring.
 - effectiveSlaFilter: EffectiveSlaFilter
   - Filter by the effective SLA Domain.
-- projectFilter: GcpCloudSqlInstanceProjectFilter
+- projectFilter: GcpNativeProjectFilter
   - Filter by GCP project ID.
 - regionFilter: GcpNativeRegionFilter
   - Filter by GCP region.

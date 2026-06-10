@@ -1,4 +1,6 @@
 ### AceFlags
+Flags that modify how an ACE (Access Control Entry) is applied.
+
 - EMPTY_FLAG - Empty flag.
 - OBJECT_INHERIT - Object inherit flag.
 - CONTAINER_INHERIT - Container inherit flag.

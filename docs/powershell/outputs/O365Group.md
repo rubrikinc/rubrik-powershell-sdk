@@ -29,22 +29,6 @@ O365 Groups from O365 hierarchy.
   - Recovery analysis job information for this group.
 - orgId: System.String
   - UUID of the O365 organization.
-- snapshotConnection: PolarisSnapshotConnection
-  - The list of snapshots taken for this workload.
-- workloadSnapshotConnection: GenericSnapshotConnection
-  - The list of snapshots taken for this workload.
-- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
-- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
-- newestSnapshot: PolarisSnapshot
-  - The most recent snapshot of this workload.
-- oldestSnapshot: PolarisSnapshot
-  - The oldest snapshot of this workload.
-- onDemandSnapshotCount: System.Int32
-  - The number of on-demand snapshots.
-- newestIndexedSnapshot: PolarisSnapshot
-  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -77,6 +61,22 @@ O365 Groups from O365 hierarchy.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.
 - rscNativeObjectPendingSla: CompactSlaDomain
   - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus

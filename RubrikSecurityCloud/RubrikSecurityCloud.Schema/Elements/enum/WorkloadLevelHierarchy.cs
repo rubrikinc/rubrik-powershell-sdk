@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_STORAGE_ACCOUNT")]
         AZURE_STORAGE_ACCOUNT,
 
@@ -57,8 +60,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AzureSqlManagedInstanceDb")]
         AZURE_SQL_MANAGED_INSTANCE_DB,
 
+        [EnumMember(Value = "GCP_BIGQUERY_DATASET")]
+        GCP_BIGQUERY_DATASET,
+
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,
+
+        [EnumMember(Value = "GLUE_ICEBERG_TABLE")]
+        GLUE_ICEBERG_TABLE,
 
         [EnumMember(Value = "GOOGLE_WORKSPACE_SHARED_DRIVE")]
         GOOGLE_WORKSPACE_SHARED_DRIVE,

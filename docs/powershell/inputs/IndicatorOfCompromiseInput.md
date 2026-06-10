@@ -4,6 +4,6 @@ The data which represents indicator of compromise: a file path/pattern, hash, or
 - threatFamily: System.String
   - The threat family associated with the IOC.
 - iocKind: IndicatorOfCompromiseKind
-  - IOC kind.
+  - Specifies the IOC kind.
 - iocValue: System.String
-  - IOC value as a string.
+  - Specifies the IOC value.

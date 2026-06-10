@@ -40,6 +40,11 @@ Downloads a Microsoft Exchange database snapshot from the specified archival loc
 - There is a single argument of type DownloadExchangeSnapshotV2Input.
 - Returns AsyncRequestStatus.
 ### filesetsnapshot
+Create a download fileset snapshot from archival request
+
+Supported in v5.0+
+Create a download fileset snapshot from archival request.
+
 - There is a single argument of type DownloadFilesetSnapshotInput.
 - Returns AsyncRequestStatus.
 ### filesetsnapshotfromlocation
@@ -50,10 +55,23 @@ Initiates a job to download a snapshot from the specified location when the snap
 
 - There is a single argument of type DownloadFilesetSnapshotFromLocationInput.
 - Returns AsyncRequestStatus.
+### filesfromfusioncomputesnapshot
+Download files from a FusionCompute virtual machine backup.
+
+- There is a single argument of type DownloadFilesFromFusionComputeSnapshotInput.
+- Returns AsyncRequestStatus.
 ### fromarchivev2
 Download Microsoft SQL Server Database snapshot from archival location.
 
 - There is a single argument of type DownloadFromArchiveV2Input.
+- Returns AsyncRequestStatus.
+### fusioncomputesnapshotfromlocation
+Download a snapshot from a remote target
+
+Supported in v9.6
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location must be a remote target connected to this Rubrik cluster. If no SLA Domain is selected, the snapshot is retained forever.
+
+- There is a single argument of type DownloadFusionComputeSnapshotFromLocationInput.
 - Returns AsyncRequestStatus.
 ### objectfilescsv
 Schedule a download CSV job for cross object files.

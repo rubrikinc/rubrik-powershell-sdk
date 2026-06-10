@@ -39,10 +39,6 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Resource Group of the Azure SQL Managed Instance Server.
 - azureResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -77,3 +73,7 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.

@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ANOMALIES")]
         ANOMALIES,
 
+        [EnumMember(Value = "ANOMALY_DETECTION_COMPLIANCE")]
+        ANOMALY_DETECTION_COMPLIANCE,
+
         [EnumMember(Value = "AUDIT_LIST")]
         AUDIT_LIST,
 
@@ -161,6 +164,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SERVICE_ACCOUNT")]
         SERVICE_ACCOUNT,
+
+        [EnumMember(Value = "SIGNIN_LOGS")]
+        SIGNIN_LOGS,
 
         [EnumMember(Value = "SLA_AUDIT_DETAIL")]
         SLA_AUDIT_DETAIL,

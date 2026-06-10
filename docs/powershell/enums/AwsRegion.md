@@ -35,3 +35,6 @@ Regions for AWS.
 - AP_SOUTHEAST_4 - AWS Asia Pacific (Melbourne) region.
 - EU_SOUTH_2 - AWS EU (Spain) region.
 - ME_CENTRAL_1 - AWS Middle East (UAE) region.
+- MX_CENTRAL_1 - AWS Mexico (Central) region.
+- AP_SOUTHEAST_5 - AWS Asia Pacific (Malaysia) region.
+- AP_SOUTHEAST_7 - AWS Asia Pacific (Thailand) region.

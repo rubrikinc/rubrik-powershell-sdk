@@ -1,7 +1,7 @@
 ### AzureAdRegion
 Represents regions for Entra ID.
 
-- UNKNOWN_AZURE_AD_REGION - AzureAd region is Unknown.
+- UNKNOWN_AZURE_AD_REGION - Azure region is Unknown.
 - AUSTRALIAEAST - Azure region is Australia East.
 - BRAZILSOUTH - Azure region is Brazil South.
 - CANADACENTRAL - Azure region is Canada Central.

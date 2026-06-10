@@ -116,6 +116,42 @@ Get a list of a cluster's always-available Ips.
 
 - There is a single argument of type GetClusterIpsInput.
 - Returns InternalGetClusterIpsResponse.
+### fusioncompute
+Summary of a FusionCompute cluster.
+
+- There is a single argument of type System.String.
+- Returns FusionComputeCluster.
+### fusioncomputeclusters
+Summary of all FusionCompute clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns FusionComputeClusterConnection.
+### fusioncomputeclustersandhosts
+Summary of all FusionCompute clusters and hosts.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+    - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
+- Returns CdmHierarchyObjectConnection.
+### fusioncomputerecoverableclustersandhosts
+Summary of all FusionCompute clusters and hosts that the user can recover to.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns CdmHierarchyObjectConnection.
 ### getcdmreleasedetailsforclusterfromsupportportal
 Get CDM release details from support portal for a given list of clusters.
 
@@ -222,6 +258,40 @@ Get updates on the job progress of the Rubrik cluster operation.
 
 - There is a single argument of type ClusterOperationJobProgressInput.
 - Returns ClusterOperationJobProgress.
+### postgresdbclusterasyncrequeststatus
+Get the status of a PostgreSQL database cluster job request
+
+Supported in v9.2+
+Get details about a PostgreSQL database cluster-related request, which includes the status of the cluster-related job.
+
+- There are 2 arguments.
+    - clusterUuid - System.String: UUID of the Rubrik cluster.
+    - id - System.String: ID of the asynchronous request.
+- Returns AsyncRequestStatus.
+### postgresdbclusterlivemounts
+The live mounts of the given workloads.
+
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - filters - list of KosmosWorkloadLiveMountFilterInputs: Filter for Kosmos workload live mounts.
+    - sortBy - KosmosWorkloadLiveMountSortByInput: Sort the live mounts of the Kosmos Workload based on the argument.
+- Returns KosmosWorkloadLiveMountConnection.
+### postgresqldb
+Details of a PostgreSQL database cluster for a given FID.
+
+- There is a single argument of type System.String.
+- Returns PostgreSQLDbCluster.
+### postgresqldbclusters
+Connection of filtered PostgreSQL database cluster based on specific filters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns PostgreSQLDbClusterConnection.
 ### proxy
 Rubrik cluster proxy information.
 

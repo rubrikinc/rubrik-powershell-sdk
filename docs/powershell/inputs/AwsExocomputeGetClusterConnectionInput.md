@@ -1,5 +1,6 @@
 ### AwsExocomputeGetClusterConnectionInput
-Input to obtain the connection command and yaml which can be used to connect a customer-managed cluster to RSC.
+Input to obtain the connection command and yaml which can be used to connect
+a customer-managed cluster to RSC.
 
 - clusterName: System.String
   - Name of the customer managed cluster.

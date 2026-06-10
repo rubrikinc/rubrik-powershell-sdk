@@ -856,6 +856,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	taskchainId = $someString
     /// 	# OPTIONAL
     /// 	groupId = $someString
+    /// 	# OPTIONAL
+    /// 	orgId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3332,6 +3334,8 @@ $query.Var.input = @{
 	taskchainId = $someString
 	# OPTIONAL
 	groupId = $someString
+	# OPTIONAL
+	orgId = $someString
 }"
             );
         }

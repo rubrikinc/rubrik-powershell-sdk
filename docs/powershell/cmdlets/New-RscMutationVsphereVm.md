@@ -57,12 +57,12 @@ Download a snapshot from an archival location and then export a virtual machine 
 - There is a single argument of type VsphereVmExportSnapshotWithDownloadFromCloudInput.
 - Returns AsyncRequestStatus.
 ### initiatebatchinstantrecovery
-Initiate a mass instant recovery for a group of VMs.
+Initiate a mass instant recovery for a group of virtual machines.
 
 - There is a single argument of type VsphereVmInitiateBatchInstantRecoveryInput.
 - Returns BatchAsyncRequestStatus.
 ### initiatebatchlivemountv2
-Initiate a mass live mount for a group of VMs.
+Initiate a mass live mount for a group of virtual machines.
 
 - There is a single argument of type VsphereVmInitiateBatchLiveMountV2Input.
 - Returns BatchAsyncRequestStatus.
@@ -131,7 +131,7 @@ Restores multiple files/directories from snapshot.
 ### refreshagent
 Refresh Rubrik Backup Service
 
-Supported in v9.5
+Supported in v9.5+
 Refresh the Rubrik Backup Service state for a specified virtual machine.
 
 - There is a single argument of type VmRefreshAgentInput.
@@ -155,7 +155,7 @@ Register the Rubrik Backup Service that is running on a specified host with the 
 ### unregisteragent
 Unregister Rubrik Backup Service
 
-Supported in v9.5
+Supported in v9.5+
 Unregister the Rubrik Backup Service state for a specified virtual machine.
 
 - There is a single argument of type VmUnregisterAgentInput.
@@ -171,7 +171,7 @@ Update a virtual machine with specified properties. Use the guestCredential fiel
 ### updateagentcertificate
 Update certificate for Rubrik Backup Service
 
-Supported in v9.5
+Supported in v9.5+
 Update the Rubrik Backup Service certificate for a specified virtual machine.
 
 - There is a single argument of type VmUpdateAgentCertificateInput.

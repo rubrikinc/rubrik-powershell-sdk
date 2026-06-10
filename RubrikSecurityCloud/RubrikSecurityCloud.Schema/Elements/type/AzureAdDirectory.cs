@@ -131,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Int32? LatestAccessReviewScheduleDefinitionCount
+        // GraphQL -> latestAccessReviewScheduleDefinitionCount: Int! (scalar)
+        [JsonProperty("latestAccessReviewScheduleDefinitionCount")]
+        public System.Int32? LatestAccessReviewScheduleDefinitionCount { get; set; }
+
         //      C# -> System.Int32? LatestAdministrativeUnitsCount
         // GraphQL -> latestAdministrativeUnitsCount: Int! (scalar)
         [JsonProperty("latestAdministrativeUnitsCount")]
@@ -181,10 +186,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestDeviceCount")]
         public System.Int32? LatestDeviceCount { get; set; }
 
+        //      C# -> System.Int32? LatestEmAccessPackageCount
+        // GraphQL -> latestEmAccessPackageCount: Int! (scalar)
+        [JsonProperty("latestEmAccessPackageCount")]
+        public System.Int32? LatestEmAccessPackageCount { get; set; }
+
+        //      C# -> System.Int32? LatestEmCatalogCount
+        // GraphQL -> latestEmCatalogCount: Int! (scalar)
+        [JsonProperty("latestEmCatalogCount")]
+        public System.Int32? LatestEmCatalogCount { get; set; }
+
+        //      C# -> System.Int32? LatestGroupActiveAssignmentCount
+        // GraphQL -> latestGroupActiveAssignmentCount: Int! (scalar)
+        [JsonProperty("latestGroupActiveAssignmentCount")]
+        public System.Int32? LatestGroupActiveAssignmentCount { get; set; }
+
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         [JsonProperty("latestGroupCount")]
         public System.Int32? LatestGroupCount { get; set; }
+
+        //      C# -> System.Int32? LatestGroupEligibleAssignmentCount
+        // GraphQL -> latestGroupEligibleAssignmentCount: Int! (scalar)
+        [JsonProperty("latestGroupEligibleAssignmentCount")]
+        public System.Int32? LatestGroupEligibleAssignmentCount { get; set; }
 
         //      C# -> System.Int32? LatestLocalAdminPasswordCount
         // GraphQL -> latestLocalAdminPasswordCount: Int! (scalar)
@@ -200,6 +225,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> latestNotificationTemplateCount: Int! (scalar)
         [JsonProperty("latestNotificationTemplateCount")]
         public System.Int32? LatestNotificationTemplateCount { get; set; }
+
+        //      C# -> System.Int32? LatestRoleEligibleAssignmentCount
+        // GraphQL -> latestRoleEligibleAssignmentCount: Int! (scalar)
+        [JsonProperty("latestRoleEligibleAssignmentCount")]
+        public System.Int32? LatestRoleEligibleAssignmentCount { get; set; }
 
         //      C# -> System.Int32? LatestRolesCount
         // GraphQL -> latestRolesCount: Int! (scalar)
@@ -270,6 +300,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> List<LatestEntraObjectCount>? LatestEntraObjectCounts
+        // GraphQL -> latestEntraObjectCounts: [LatestEntraObjectCount!]! (type)
+        [JsonProperty("latestEntraObjectCounts")]
+        public List<LatestEntraObjectCount>? LatestEntraObjectCounts { get; set; }
 
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
@@ -473,6 +508,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsJitEnabled = null,
         System.Boolean? IsProvisioned = null,
         System.Boolean? IsRelic = null,
+        System.Int32? LatestAccessReviewScheduleDefinitionCount = null,
         System.Int32? LatestAdministrativeUnitsCount = null,
         System.Int32? LatestApplicationsCount = null,
         System.Int32? LatestAssignmentFilterCount = null,
@@ -483,10 +519,15 @@ namespace RubrikSecurityCloud.Types
         System.Int32? LatestComplianceScriptCount = null,
         System.Int32? LatestConditionalAccessPoliciesCount = null,
         System.Int32? LatestDeviceCount = null,
+        System.Int32? LatestEmAccessPackageCount = null,
+        System.Int32? LatestEmCatalogCount = null,
+        System.Int32? LatestGroupActiveAssignmentCount = null,
         System.Int32? LatestGroupCount = null,
+        System.Int32? LatestGroupEligibleAssignmentCount = null,
         System.Int32? LatestLocalAdminPasswordCount = null,
         System.Int32? LatestNamedLocationsCount = null,
         System.Int32? LatestNotificationTemplateCount = null,
+        System.Int32? LatestRoleEligibleAssignmentCount = null,
         System.Int32? LatestRolesCount = null,
         System.Int32? LatestServicePrincipalsCount = null,
         DateTime? LatestSnapshotTime = null,
@@ -501,6 +542,7 @@ namespace RubrikSecurityCloud.Types
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
+        List<LatestEntraObjectCount>? LatestEntraObjectCounts = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
@@ -583,6 +625,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
+        if ( LatestAccessReviewScheduleDefinitionCount != null ) {
+            this.LatestAccessReviewScheduleDefinitionCount = LatestAccessReviewScheduleDefinitionCount;
+        }
         if ( LatestAdministrativeUnitsCount != null ) {
             this.LatestAdministrativeUnitsCount = LatestAdministrativeUnitsCount;
         }
@@ -613,8 +658,20 @@ namespace RubrikSecurityCloud.Types
         if ( LatestDeviceCount != null ) {
             this.LatestDeviceCount = LatestDeviceCount;
         }
+        if ( LatestEmAccessPackageCount != null ) {
+            this.LatestEmAccessPackageCount = LatestEmAccessPackageCount;
+        }
+        if ( LatestEmCatalogCount != null ) {
+            this.LatestEmCatalogCount = LatestEmCatalogCount;
+        }
+        if ( LatestGroupActiveAssignmentCount != null ) {
+            this.LatestGroupActiveAssignmentCount = LatestGroupActiveAssignmentCount;
+        }
         if ( LatestGroupCount != null ) {
             this.LatestGroupCount = LatestGroupCount;
+        }
+        if ( LatestGroupEligibleAssignmentCount != null ) {
+            this.LatestGroupEligibleAssignmentCount = LatestGroupEligibleAssignmentCount;
         }
         if ( LatestLocalAdminPasswordCount != null ) {
             this.LatestLocalAdminPasswordCount = LatestLocalAdminPasswordCount;
@@ -624,6 +681,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LatestNotificationTemplateCount != null ) {
             this.LatestNotificationTemplateCount = LatestNotificationTemplateCount;
+        }
+        if ( LatestRoleEligibleAssignmentCount != null ) {
+            this.LatestRoleEligibleAssignmentCount = LatestRoleEligibleAssignmentCount;
         }
         if ( LatestRolesCount != null ) {
             this.LatestRolesCount = LatestRolesCount;
@@ -666,6 +726,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( LatestEntraObjectCounts != null ) {
+            this.LatestEntraObjectCounts = LatestEntraObjectCounts;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -933,6 +996,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isRelic\n" ;
             }
         }
+        //      C# -> System.Int32? LatestAccessReviewScheduleDefinitionCount
+        // GraphQL -> latestAccessReviewScheduleDefinitionCount: Int! (scalar)
+        if (this.LatestAccessReviewScheduleDefinitionCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestAccessReviewScheduleDefinitionCount\n" ;
+            } else {
+                s += ind + "latestAccessReviewScheduleDefinitionCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LatestAdministrativeUnitsCount
         // GraphQL -> latestAdministrativeUnitsCount: Int! (scalar)
         if (this.LatestAdministrativeUnitsCount != null) {
@@ -1023,6 +1095,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestDeviceCount\n" ;
             }
         }
+        //      C# -> System.Int32? LatestEmAccessPackageCount
+        // GraphQL -> latestEmAccessPackageCount: Int! (scalar)
+        if (this.LatestEmAccessPackageCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestEmAccessPackageCount\n" ;
+            } else {
+                s += ind + "latestEmAccessPackageCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestEmCatalogCount
+        // GraphQL -> latestEmCatalogCount: Int! (scalar)
+        if (this.LatestEmCatalogCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestEmCatalogCount\n" ;
+            } else {
+                s += ind + "latestEmCatalogCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestGroupActiveAssignmentCount
+        // GraphQL -> latestGroupActiveAssignmentCount: Int! (scalar)
+        if (this.LatestGroupActiveAssignmentCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestGroupActiveAssignmentCount\n" ;
+            } else {
+                s += ind + "latestGroupActiveAssignmentCount\n" ;
+            }
+        }
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (this.LatestGroupCount != null) {
@@ -1030,6 +1129,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestGroupCount\n" ;
             } else {
                 s += ind + "latestGroupCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestGroupEligibleAssignmentCount
+        // GraphQL -> latestGroupEligibleAssignmentCount: Int! (scalar)
+        if (this.LatestGroupEligibleAssignmentCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestGroupEligibleAssignmentCount\n" ;
+            } else {
+                s += ind + "latestGroupEligibleAssignmentCount\n" ;
             }
         }
         //      C# -> System.Int32? LatestLocalAdminPasswordCount
@@ -1057,6 +1165,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "latestNotificationTemplateCount\n" ;
             } else {
                 s += ind + "latestNotificationTemplateCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? LatestRoleEligibleAssignmentCount
+        // GraphQL -> latestRoleEligibleAssignmentCount: Int! (scalar)
+        if (this.LatestRoleEligibleAssignmentCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRoleEligibleAssignmentCount\n" ;
+            } else {
+                s += ind + "latestRoleEligibleAssignmentCount\n" ;
             }
         }
         //      C# -> System.Int32? LatestRolesCount
@@ -1191,6 +1308,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<LatestEntraObjectCount>? LatestEntraObjectCounts
+        // GraphQL -> latestEntraObjectCounts: [LatestEntraObjectCount!]! (type)
+        if (this.LatestEntraObjectCounts != null) {
+            var fspec = this.LatestEntraObjectCounts.AsFieldSpec(conf.Child("latestEntraObjectCounts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestEntraObjectCounts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1764,6 +1893,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsRelic = null;
         }
+        //      C# -> System.Int32? LatestAccessReviewScheduleDefinitionCount
+        // GraphQL -> latestAccessReviewScheduleDefinitionCount: Int! (scalar)
+        if (ec.Includes("latestAccessReviewScheduleDefinitionCount",true))
+        {
+            if(this.LatestAccessReviewScheduleDefinitionCount == null) {
+
+                this.LatestAccessReviewScheduleDefinitionCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestAccessReviewScheduleDefinitionCount != null && ec.Excludes("latestAccessReviewScheduleDefinitionCount",true))
+        {
+            this.LatestAccessReviewScheduleDefinitionCount = null;
+        }
         //      C# -> System.Int32? LatestAdministrativeUnitsCount
         // GraphQL -> latestAdministrativeUnitsCount: Int! (scalar)
         if (ec.Includes("latestAdministrativeUnitsCount",true))
@@ -1934,6 +2080,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestDeviceCount = null;
         }
+        //      C# -> System.Int32? LatestEmAccessPackageCount
+        // GraphQL -> latestEmAccessPackageCount: Int! (scalar)
+        if (ec.Includes("latestEmAccessPackageCount",true))
+        {
+            if(this.LatestEmAccessPackageCount == null) {
+
+                this.LatestEmAccessPackageCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestEmAccessPackageCount != null && ec.Excludes("latestEmAccessPackageCount",true))
+        {
+            this.LatestEmAccessPackageCount = null;
+        }
+        //      C# -> System.Int32? LatestEmCatalogCount
+        // GraphQL -> latestEmCatalogCount: Int! (scalar)
+        if (ec.Includes("latestEmCatalogCount",true))
+        {
+            if(this.LatestEmCatalogCount == null) {
+
+                this.LatestEmCatalogCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestEmCatalogCount != null && ec.Excludes("latestEmCatalogCount",true))
+        {
+            this.LatestEmCatalogCount = null;
+        }
+        //      C# -> System.Int32? LatestGroupActiveAssignmentCount
+        // GraphQL -> latestGroupActiveAssignmentCount: Int! (scalar)
+        if (ec.Includes("latestGroupActiveAssignmentCount",true))
+        {
+            if(this.LatestGroupActiveAssignmentCount == null) {
+
+                this.LatestGroupActiveAssignmentCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestGroupActiveAssignmentCount != null && ec.Excludes("latestGroupActiveAssignmentCount",true))
+        {
+            this.LatestGroupActiveAssignmentCount = null;
+        }
         //      C# -> System.Int32? LatestGroupCount
         // GraphQL -> latestGroupCount: Int! (scalar)
         if (ec.Includes("latestGroupCount",true))
@@ -1950,6 +2147,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestGroupCount != null && ec.Excludes("latestGroupCount",true))
         {
             this.LatestGroupCount = null;
+        }
+        //      C# -> System.Int32? LatestGroupEligibleAssignmentCount
+        // GraphQL -> latestGroupEligibleAssignmentCount: Int! (scalar)
+        if (ec.Includes("latestGroupEligibleAssignmentCount",true))
+        {
+            if(this.LatestGroupEligibleAssignmentCount == null) {
+
+                this.LatestGroupEligibleAssignmentCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestGroupEligibleAssignmentCount != null && ec.Excludes("latestGroupEligibleAssignmentCount",true))
+        {
+            this.LatestGroupEligibleAssignmentCount = null;
         }
         //      C# -> System.Int32? LatestLocalAdminPasswordCount
         // GraphQL -> latestLocalAdminPasswordCount: Int! (scalar)
@@ -2001,6 +2215,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LatestNotificationTemplateCount != null && ec.Excludes("latestNotificationTemplateCount",true))
         {
             this.LatestNotificationTemplateCount = null;
+        }
+        //      C# -> System.Int32? LatestRoleEligibleAssignmentCount
+        // GraphQL -> latestRoleEligibleAssignmentCount: Int! (scalar)
+        if (ec.Includes("latestRoleEligibleAssignmentCount",true))
+        {
+            if(this.LatestRoleEligibleAssignmentCount == null) {
+
+                this.LatestRoleEligibleAssignmentCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRoleEligibleAssignmentCount != null && ec.Excludes("latestRoleEligibleAssignmentCount",true))
+        {
+            this.LatestRoleEligibleAssignmentCount = null;
         }
         //      C# -> System.Int32? LatestRolesCount
         // GraphQL -> latestRolesCount: Int! (scalar)
@@ -2245,6 +2476,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> List<LatestEntraObjectCount>? LatestEntraObjectCounts
+        // GraphQL -> latestEntraObjectCounts: [LatestEntraObjectCount!]! (type)
+        if (ec.Includes("latestEntraObjectCounts",false))
+        {
+            if(this.LatestEntraObjectCounts == null) {
+
+                this.LatestEntraObjectCounts = new List<LatestEntraObjectCount>();
+                this.LatestEntraObjectCounts.ApplyExploratoryFieldSpec(ec.NewChild("latestEntraObjectCounts"));
+
+            } else {
+
+                this.LatestEntraObjectCounts.ApplyExploratoryFieldSpec(ec.NewChild("latestEntraObjectCounts"));
+
+            }
+        }
+        else if (this.LatestEntraObjectCounts != null && ec.Excludes("latestEntraObjectCounts",false))
+        {
+            this.LatestEntraObjectCounts = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

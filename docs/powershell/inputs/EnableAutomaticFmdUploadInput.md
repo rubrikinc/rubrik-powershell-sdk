@@ -1,7 +1,8 @@
 ### EnableAutomaticFmdUploadInput
-Enable/disable auto fmd upload on given cluster.
+EnableAutomaticFmdUploadReq sets or unsets the automaticFmdUpload flag on the
+cluster.
 
 - clusterId: System.String
-  - The uuid of the cluster.
+  - The cluster UUID.
 - enabled: System.Boolean
-  - To enable or disable auto fmd upload.
+  - Whether to enabled or disable automaticFmdUpload for the cluster.

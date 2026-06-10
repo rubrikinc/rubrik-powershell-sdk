@@ -1,5 +1,5 @@
 ### DeleteCloudNativeTagRuleInput
-Input required to delete a tag rule.
+Input required to delete a tag or label rule.
 
 - ruleId: System.String
-  - Tag rule ID.
+  - Rule ID.

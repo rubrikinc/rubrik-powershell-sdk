@@ -21,6 +21,18 @@ Current permissions are granted by the client to Rubrik. For Azure, permissions 
     - permissionsGroupFilters - list of FeatureWithPermissionsGroupss: List of feature-to-permission group filters to apply.
     - awsIamPairId - System.String: Internal ID of the IAM pair. When provided, DCRB feature permissions for this IAM pair will also be included. Only applicable for AWS cloud vendor.
 - Returns list of CloudAccountFeaturePermissions.
+### devopslistcurrentpermissions
+Retrieves currently configured permissions for a DevOps cloud account
+organization.
+
+- There is a single argument of type DevOpsCloudAccountListCurrentPermissionsReq.
+- Returns DevOpsCloudAccountListCurrentPermissionsReply.
+### devopslistlatestpermissions
+Retrieves the most recent permission definitions available for DevOps
+features and permission groups.
+
+- There is a single argument of type DevOpsCloudAccountListLatestPermissionsReq.
+- Returns DevOpsCloudAccountListLatestPermissionsReply.
 ### exocomputemappings
 List the mappings from accounts to Exocompute cloud accounts with specified filters.
 

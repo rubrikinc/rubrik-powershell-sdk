@@ -28,7 +28,10 @@ namespace RubrikSecurityCloud.Types
         ON,
 
         [EnumMember(Value = "REPORT_ONLY")]
-        REPORT_ONLY
+        REPORT_ONLY,
+
+        [EnumMember(Value = "SNAPSHOT_STATE")]
+        SNAPSHOT_STATE
 
 
     } // enum AzureAdConditionalAccessPolicyStateEnumType

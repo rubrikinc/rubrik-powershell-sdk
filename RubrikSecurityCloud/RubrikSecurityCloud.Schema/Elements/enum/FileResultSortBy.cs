@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ADDED_COUNT")]
+        ADDED_COUNT,
+
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
 
@@ -32,6 +35,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DATA_TYPE")]
         DATA_TYPE,
+
+        [EnumMember(Value = "DELETED_COUNT")]
+        DELETED_COUNT,
 
         [EnumMember(Value = "DOCUMENT_TYPE")]
         DOCUMENT_TYPE,
@@ -60,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LAST_SCAN_TIME")]
         LAST_SCAN_TIME,
 
+        [EnumMember(Value = "MODIFIED_COUNT")]
+        MODIFIED_COUNT,
+
         [EnumMember(Value = "NAME")]
         NAME,
 
@@ -86,6 +95,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "STALE_FILES_WITH_HITS")]
         STALE_FILES_WITH_HITS,
+
+        [EnumMember(Value = "SUSPICIOUS_COUNT")]
+        SUSPICIOUS_COUNT,
 
         [EnumMember(Value = "TOTAL_SENSITIVE_HITS")]
         TOTAL_SENSITIVE_HITS

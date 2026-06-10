@@ -1,8 +1,10 @@
 ### ListFileActivitiesInput
+Input for listing user activities on a file.
+
 - snappableFid: System.String
-  - The corresponding snappable's FID.
+  - The corresponding object FID.
 - stdPath: System.String
-  - The standardized path to fetch user activities for.
+  - The standardized path to list user activities for.
 - startDateTime: System.String
   - The datetime to collect user activity from.
 - timezone: System.String

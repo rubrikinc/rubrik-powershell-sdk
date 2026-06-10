@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("onedriveConsumption")]
         public SegregatedFetbConsumption? OnedriveConsumption { get; set; }
 
+        //      C# -> List<SegregatedObjectTypeConsumptionEntry>? SegregatedObjectTypeConsumption
+        // GraphQL -> segregatedObjectTypeConsumption: [SegregatedObjectTypeConsumptionEntry!]! (type)
+        [JsonProperty("segregatedObjectTypeConsumption")]
+        public List<SegregatedObjectTypeConsumptionEntry>? SegregatedObjectTypeConsumption { get; set; }
+
         //      C# -> SegregatedFetbConsumption? SharepointConsumption
         // GraphQL -> sharepointConsumption: SegregatedFETBConsumption (type)
         [JsonProperty("sharepointConsumption")]
@@ -88,6 +93,7 @@ namespace RubrikSecurityCloud.Types
         SegregatedFetbConsumption? ExchangeConsumption = null,
         List<ObjectTypeUsage>? ObjectTypeUsage = null,
         SegregatedFetbConsumption? OnedriveConsumption = null,
+        List<SegregatedObjectTypeConsumptionEntry>? SegregatedObjectTypeConsumption = null,
         SegregatedFetbConsumption? SharepointConsumption = null,
         SegregatedFetbConsumption? TotalConsumption = null
     ) 
@@ -115,6 +121,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OnedriveConsumption != null ) {
             this.OnedriveConsumption = OnedriveConsumption;
+        }
+        if ( SegregatedObjectTypeConsumption != null ) {
+            this.SegregatedObjectTypeConsumption = SegregatedObjectTypeConsumption;
         }
         if ( SharepointConsumption != null ) {
             this.SharepointConsumption = SharepointConsumption;
@@ -214,6 +223,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "onedriveConsumption" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<SegregatedObjectTypeConsumptionEntry>? SegregatedObjectTypeConsumption
+        // GraphQL -> segregatedObjectTypeConsumption: [SegregatedObjectTypeConsumptionEntry!]! (type)
+        if (this.SegregatedObjectTypeConsumption != null) {
+            var fspec = this.SegregatedObjectTypeConsumption.AsFieldSpec(conf.Child("segregatedObjectTypeConsumption"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "segregatedObjectTypeConsumption" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -389,6 +410,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnedriveConsumption != null && ec.Excludes("onedriveConsumption",false))
         {
             this.OnedriveConsumption = null;
+        }
+        //      C# -> List<SegregatedObjectTypeConsumptionEntry>? SegregatedObjectTypeConsumption
+        // GraphQL -> segregatedObjectTypeConsumption: [SegregatedObjectTypeConsumptionEntry!]! (type)
+        if (ec.Includes("segregatedObjectTypeConsumption",false))
+        {
+            if(this.SegregatedObjectTypeConsumption == null) {
+
+                this.SegregatedObjectTypeConsumption = new List<SegregatedObjectTypeConsumptionEntry>();
+                this.SegregatedObjectTypeConsumption.ApplyExploratoryFieldSpec(ec.NewChild("segregatedObjectTypeConsumption"));
+
+            } else {
+
+                this.SegregatedObjectTypeConsumption.ApplyExploratoryFieldSpec(ec.NewChild("segregatedObjectTypeConsumption"));
+
+            }
+        }
+        else if (this.SegregatedObjectTypeConsumption != null && ec.Excludes("segregatedObjectTypeConsumption",false))
+        {
+            this.SegregatedObjectTypeConsumption = null;
         }
         //      C# -> SegregatedFetbConsumption? SharepointConsumption
         // GraphQL -> sharepointConsumption: SegregatedFETBConsumption (type)

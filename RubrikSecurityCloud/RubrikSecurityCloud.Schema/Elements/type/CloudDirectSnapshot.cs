@@ -161,6 +161,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadId")]
         public System.String? WorkloadId { get; set; }
 
+        //      C# -> LatestUserNote? LatestUserNote
+        // GraphQL -> latestUserNote: LatestUserNote (type)
+        [JsonProperty("latestUserNote")]
+        public LatestUserNote? LatestUserNote { get; set; }
+
         //      C# -> CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo (type)
         [JsonProperty("snapshotRetentionInfo")]
@@ -219,6 +224,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SystemId = null,
         System.String? Target = null,
         System.String? WorkloadId = null,
+        LatestUserNote? LatestUserNote = null,
         CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo = null,
         CloudDirectSnapshotSummary? Summary = null,
         CloudDirectExclusionSummary? UserExclusionDetails = null,
@@ -308,6 +314,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
+        }
+        if ( LatestUserNote != null ) {
+            this.LatestUserNote = LatestUserNote;
         }
         if ( SnapshotRetentionInfo != null ) {
             this.SnapshotRetentionInfo = SnapshotRetentionInfo;
@@ -593,6 +602,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "workloadId\n" ;
             } else {
                 s += ind + "workloadId\n" ;
+            }
+        }
+        //      C# -> LatestUserNote? LatestUserNote
+        // GraphQL -> latestUserNote: LatestUserNote (type)
+        if (this.LatestUserNote != null) {
+            var fspec = this.LatestUserNote.AsFieldSpec(conf.Child("latestUserNote"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "latestUserNote" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo
@@ -1139,6 +1160,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.WorkloadId != null && ec.Excludes("workloadId",true))
         {
             this.WorkloadId = null;
+        }
+        //      C# -> LatestUserNote? LatestUserNote
+        // GraphQL -> latestUserNote: LatestUserNote (type)
+        if (ec.Includes("latestUserNote",false))
+        {
+            if(this.LatestUserNote == null) {
+
+                this.LatestUserNote = new LatestUserNote();
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            } else {
+
+                this.LatestUserNote.ApplyExploratoryFieldSpec(ec.NewChild("latestUserNote"));
+
+            }
+        }
+        else if (this.LatestUserNote != null && ec.Excludes("latestUserNote",false))
+        {
+            this.LatestUserNote = null;
         }
         //      C# -> CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo (type)

@@ -2,6 +2,6 @@
 Response of the operation to initiate Azure Cloud Account OAuth.
 
 - clientId: System.String
-  - Client ID of the application configured for authentication of the Azure tenant.
+  - Azure OAuth client ID.
 - sessionId: System.String
-  - Session ID of the current OAuth session.
+  - Azure OAuth session ID.

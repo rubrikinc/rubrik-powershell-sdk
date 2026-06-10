@@ -37,6 +37,8 @@ Kubernetes cluster.
   - Specifies the namespace for the Network Attachment Definition (NAD) for multus transport.
 - nadName: System.String
   - Specifies the name for the Network Attachment Definition (NAD) for multus transport.
+- helmVersion: System.String
+  - Deployed Helm chart version on the cluster. NULL for non-Helm onboarded clusters.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - descendantConnection: KubernetesClusterDescendantConnection
@@ -49,6 +51,8 @@ Kubernetes cluster.
   - Storage classes in the Kubernetes cluster.
 - onboardingType: KubernetesOnboardingType
   - Onboarding type of Kubernetes cluster.
+- helmStatus: HelmStatus
+  - Compatibility status between the deployed Helm chart and the running Rubrik CDM. NULL for non-Helm onboarded clusters.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
