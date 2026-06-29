@@ -135,7 +135,7 @@ function Get-RscWorkload {
         $query.Field.Nodes[0].ncdLatestArchiveSnapshot = [System.Datetime]"1/1/2000"
         $query.Field.Nodes[0].slaDomain = New-Object RubrikSecurityCloud.Types.GlobalSlaReply
         $query.Field.Nodes[0].slaDomain.name = "FOO"
-        $query.Field.Nodes[0].slaDomain.id = "FOO"
+        $query.Field.Nodes[0].slaDomain.fid = "FOO"
         $query.Field.Nodes[0].cluster = New-Object RubrikSecurityCloud.Types.Cluster
         $query.Field.Nodes[0].cluster.name = "FOO"
         $query.Field.Nodes[0].cluster.id = "FOO"
