@@ -71,3 +71,4 @@ Represents different types of activities.
 - VCenter - Vcenter type.
 - Vcd - VCD type.
 - VolumeGroup - Volume group type.
+- AGENT_CLOUD_SECURITY_ALERT - Agent Cloud security alert event type.

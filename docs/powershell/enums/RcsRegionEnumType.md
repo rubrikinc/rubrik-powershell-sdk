@@ -90,3 +90,8 @@ Regions for Rubrik Cloud Storage Archival Location.
 - UNKNOWN_AWS_REGION - Rubrik Cloud Vault AWS region is unknown.
 - UNKNOWN_GCP_REGION - Rubrik Cloud Vault GCP region is unknown.
 - ASIA_PACIFIC_THAILAND - Asia pacific thailand.
+- EUROPE_NORTH_FINLAND - Europe North (Finland).
+- EUROPE_WEST_BELGIUM - Europe West (Belgium).
+- US_WEST_LOS_ANGELES - US West (Los Angeles).
+- US_EAST_2_VIRGINIA - Virginia (East US 2).
+- ASIA_EAST_TAIWAN - Asia East (Taiwan).

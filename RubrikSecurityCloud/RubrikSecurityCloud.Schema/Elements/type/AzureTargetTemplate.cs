@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("instanceType")]
         public InstanceTypeEnum? InstanceType { get; set; }
 
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        [JsonProperty("sourceWorkloadCloud")]
+        public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
+
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
         [JsonProperty("targetType")]
@@ -88,6 +93,7 @@ namespace RubrikSecurityCloud.Types
     public AzureTargetTemplate Set(
         TargetEncryptionTypeEnum? EncryptionType = null,
         InstanceTypeEnum? InstanceType = null,
+        SourceWorkloadCloud? SourceWorkloadCloud = null,
         TargetType? TargetType = null,
         CloudAccount? CloudAccount = null,
         System.String? ContainerNamePrefix = null,
@@ -104,6 +110,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( InstanceType != null ) {
             this.InstanceType = InstanceType;
+        }
+        if ( SourceWorkloadCloud != null ) {
+            this.SourceWorkloadCloud = SourceWorkloadCloud;
         }
         if ( TargetType != null ) {
             this.TargetType = TargetType;
@@ -162,6 +171,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "instanceType\n" ;
             } else {
                 s += ind + "instanceType\n" ;
+            }
+        }
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        if (this.SourceWorkloadCloud != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceWorkloadCloud\n" ;
+            } else {
+                s += ind + "sourceWorkloadCloud\n" ;
             }
         }
         //      C# -> TargetType? TargetType
@@ -298,6 +316,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.InstanceType != null && ec.Excludes("instanceType",true))
         {
             this.InstanceType = null;
+        }
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        if (ec.Includes("sourceWorkloadCloud",true))
+        {
+            if(this.SourceWorkloadCloud == null) {
+
+                this.SourceWorkloadCloud = new SourceWorkloadCloud();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceWorkloadCloud != null && ec.Excludes("sourceWorkloadCloud",true))
+        {
+            this.SourceWorkloadCloud = null;
         }
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)

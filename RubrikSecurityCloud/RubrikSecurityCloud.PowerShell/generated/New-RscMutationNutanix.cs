@@ -114,6 +114,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					nicNetworkUuids = @(
     /// 						$someString
     /// 					)
+    /// 					# OPTIONAL
+    /// 					shouldRecoverCategories = $someBoolean
     /// 				}
     /// 				# OPTIONAL
     /// 				snapshotAfterDate = $someDateTime
@@ -186,6 +188,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					nicNetworkUuids = @(
     /// 						$someString
     /// 					)
+    /// 					# OPTIONAL
+    /// 					shouldRecoverCategories = $someBoolean
     /// 				}
     /// 				# OPTIONAL
     /// 				snapshotAfterDate = $someDateTime
@@ -789,6 +793,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nicNetworkUuids = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldRecoverCategories = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -916,6 +922,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nicNetworkUuids = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		shouldRecoverCategories = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1294,6 +1302,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		isDrEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shouldUseV4 = $someBoolean
     /// 		# OPTIONAL
     /// 		nutanixClusters = @(
     /// 			@{
@@ -1867,6 +1877,8 @@ $query.Var.input = @{
 					nicNetworkUuids = @(
 						$someString
 					)
+					# OPTIONAL
+					shouldRecoverCategories = $someBoolean
 				}
 				# OPTIONAL
 				snapshotAfterDate = $someDateTime
@@ -1931,6 +1943,8 @@ $query.Var.input = @{
 					nicNetworkUuids = @(
 						$someString
 					)
+					# OPTIONAL
+					shouldRecoverCategories = $someBoolean
 				}
 				# OPTIONAL
 				snapshotAfterDate = $someDateTime
@@ -2414,6 +2428,8 @@ $query.Var.input = @{
 		nicNetworkUuids = @(
 			$someString
 		)
+		# OPTIONAL
+		shouldRecoverCategories = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2517,6 +2533,8 @@ $query.Var.input = @{
 		nicNetworkUuids = @(
 			$someString
 		)
+		# OPTIONAL
+		shouldRecoverCategories = $someBoolean
 	}
 	# REQUIRED
 	id = $someString
@@ -2823,6 +2841,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		isDrEnabled = $someBoolean
+		# OPTIONAL
+		shouldUseV4 = $someBoolean
 		# OPTIONAL
 		nutanixClusters = @(
 			@{

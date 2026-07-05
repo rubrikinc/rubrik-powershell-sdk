@@ -63,6 +63,15 @@ A series of activities on either the RSC or a Rubrik cluster.
   - The name of the SLA Domain associated with this activity series.
 - failureReason: System.String
   - The reason the activity series failed.
+- estimatedTimeRemaining: System.Int64
+  - Estimated time remaining for the job corresponding to the activity
+series, in seconds. A value of 0 is ambiguous: it may mean either
+the running series is about to finish, OR the system cannot yet
+provide an estimate (the series does not correspond to a job, no
+throughput sample yet, or the series has reached a terminal
+status). Callers should treat 0 as "unknown / not running" rather
+than as imminent completion. The field is int64 with no presence
+semantics; true null cannot be expressed today.
 - progress: System.String
   - The total progress of the event series.
 - causeErrorMessage: System.String

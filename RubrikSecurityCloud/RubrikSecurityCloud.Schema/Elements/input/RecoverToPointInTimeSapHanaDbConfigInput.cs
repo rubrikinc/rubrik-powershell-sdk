@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbId")]
         public System.String? DbId { get; set; }
 
+        //      C# -> System.String? LssPassword
+        // GraphQL -> lssPassword: String (scalar)
+        [JsonProperty("lssPassword")]
+        public System.String? LssPassword { get; set; }
+
 
         #endregion
 

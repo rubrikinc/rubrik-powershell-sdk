@@ -16,6 +16,9 @@ Specifies the run strategy of the exported virtual machine.
 The storage mapping to be used for the export operation.
 - pvcNames: list of System.Strings
   - Supported in v9.3+
+- transforms: K8sTransformsInput
+  - Supported in v9.6+
+Resource transformations to apply during the export operation.
 - targetClusterId: System.String
   - Required. Supported in v9.3+
 The UUID of the target Kubernetes cluster to which the resources should be exported.

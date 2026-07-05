@@ -1,40 +1,38 @@
 ### RubrikManagedLckTarget
 Specific information for LCK archival target created on Rubrik cluster.
 
+- bucketName: System.String
+  - Bucket name of the LCK target.
 - s3Endpoint: System.String
   - Amazon S3 endpoint of the LCK target.
 - roleName: System.String
   - Role name provided for the LCK target.
 - agency: System.String
   - Agency provided for the LCK target.
-- certificateContent: System.String
-  - Certificate content provided for the LCK target.
-- kmsMasterKeyId: System.String
-  - KMS master key provided for the LCK target.
-- connectionStatus: ConnectionStatusType
-  - Connection status of the LCK target.
-- accountName: System.String
-  - Account name of the LCK target.
-- bucketName: System.String
-  - Bucket name of the LCK target.
-- geoAxisEndpoint: System.String
-  - Geo axis endpoint of the LCK target.
+- storageClass: AwsStorageClass
+  - Storage class of the LCK target.
 - region: AwsLckRegion
   - Region of the LCK target.
+- certificateContent: System.String
+  - Certificate content provided for the LCK target.
 - rsaKey: System.String
   - RSA key of the LCK target.
+- kmsMasterKeyId: System.String
+  - KMS master key provided for the LCK target.
+- geoAxisEndpoint: System.String
+  - Geo axis endpoint of the LCK target.
+- accountName: System.String
+  - Account name of the LCK target.
+- awsRetrievalTier: AwsRetrievalTier
+  - AWS retrieval tier of the LCK target.
 - syncStatus: TargetSyncStatus
   - Synchronization status of LCK location.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the LCK target.
 - encryptionType: TargetEncryptionTypeEnum
   - Encryption type provided for the LCK target.
-- storageClass: AwsStorageClass
-  - Storage class of the LCK target.
-- awsRetrievalTier: AwsRetrievalTier
-  - AWS retrieval tier of the LCK target.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -69,3 +67,5 @@ Specific information for LCK archival target created on Rubrik cluster.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

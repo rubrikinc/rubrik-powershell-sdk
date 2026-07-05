@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        [JsonProperty("encryptionType")]
+        public TargetEncryptionTypeEnum? EncryptionType { get; set; }
+
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         [JsonProperty("locationConnectionStatus")]
@@ -126,6 +131,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serviceAccountNativeId")]
         public System.String? ServiceAccountNativeId { get; set; }
 
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean! (scalar)
+        [JsonProperty("shouldBypassProxy")]
+        public System.Boolean? ShouldBypassProxy { get; set; }
+
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
         [JsonProperty("syncFailureReason")]
@@ -156,6 +166,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RubrikManagedRcvGcpTarget Set(
+        TargetEncryptionTypeEnum? EncryptionType = null,
         ConnectionStatusType? LocationConnectionStatus = null,
         LocationScope? LocationScope = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
@@ -177,12 +188,16 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? RunningTasks = null,
         System.String? ServiceAccountNativeId = null,
+        System.Boolean? ShouldBypassProxy = null,
         System.String? SyncFailureReason = null,
         Cluster? Cluster = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
     {
+        if ( EncryptionType != null ) {
+            this.EncryptionType = EncryptionType;
+        }
         if ( LocationConnectionStatus != null ) {
             this.LocationConnectionStatus = LocationConnectionStatus;
         }
@@ -246,6 +261,9 @@ namespace RubrikSecurityCloud.Types
         if ( ServiceAccountNativeId != null ) {
             this.ServiceAccountNativeId = ServiceAccountNativeId;
         }
+        if ( ShouldBypassProxy != null ) {
+            this.ShouldBypassProxy = ShouldBypassProxy;
+        }
         if ( SyncFailureReason != null ) {
             this.SyncFailureReason = SyncFailureReason;
         }
@@ -272,6 +290,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (this.EncryptionType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "encryptionType\n" ;
+            } else {
+                s += ind + "encryptionType\n" ;
+            }
+        }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (this.LocationConnectionStatus != null) {
@@ -461,6 +488,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "serviceAccountNativeId\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean! (scalar)
+        if (this.ShouldBypassProxy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldBypassProxy\n" ;
+            } else {
+                s += ind + "shouldBypassProxy\n" ;
+            }
+        }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
         if (this.SyncFailureReason != null) {
@@ -513,6 +549,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> TargetEncryptionTypeEnum? EncryptionType
+        // GraphQL -> encryptionType: TargetEncryptionTypeEnum! (enum)
+        if (ec.Includes("encryptionType",true))
+        {
+            if(this.EncryptionType == null) {
+
+                this.EncryptionType = new TargetEncryptionTypeEnum();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EncryptionType != null && ec.Excludes("encryptionType",true))
+        {
+            this.EncryptionType = null;
+        }
         //      C# -> ConnectionStatusType? LocationConnectionStatus
         // GraphQL -> locationConnectionStatus: ConnectionStatusType! (enum)
         if (ec.Includes("locationConnectionStatus",true))
@@ -869,6 +922,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ServiceAccountNativeId != null && ec.Excludes("serviceAccountNativeId",true))
         {
             this.ServiceAccountNativeId = null;
+        }
+        //      C# -> System.Boolean? ShouldBypassProxy
+        // GraphQL -> shouldBypassProxy: Boolean! (scalar)
+        if (ec.Includes("shouldBypassProxy",true))
+        {
+            if(this.ShouldBypassProxy == null) {
+
+                this.ShouldBypassProxy = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldBypassProxy != null && ec.Excludes("shouldBypassProxy",true))
+        {
+            this.ShouldBypassProxy = null;
         }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)

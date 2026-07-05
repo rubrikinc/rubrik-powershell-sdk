@@ -1,21 +1,21 @@
 ### UpdateDistributionListDigestInput
-Information required to save a distribution list digest.
+Information required to save an event digest.
 
 - digestId: System.Int32
-  - ID of the distribution list digest.
+  - ID of the event digest.
 - digestName: System.String
-  - Name of the distribution list digest.
+  - Name of the event digest.
 - frequencyHours: System.Int32
-  - Frequency, in hours, with which the distribution list digests are sent.
+  - Frequency, in hours, with which the event digests are sent.
 - isImmediate: System.Boolean
-  - Specifies whether to immediately send distribution list digest.
+  - Specifies whether to send event digest immediately or not.
 - includeAudits: System.Boolean
-  - Specifies whether to include audits in the distribution list digest or not.
+  - Specifies whether to include audits in the event digest or not.
 - includeEvents: System.Boolean
-  - Specifies whether to include events in the distribution list digest or not.
+  - Specifies whether to include events in the event digest or not.
 - eventDigestConfig: EventDigestConfig
-  - Distribution list digest configuration.
+  - Event digest configuration.
 - recipientUserIds: list of System.Strings
-  - User IDs of the recipients of the distribution list digest.
+  - User IDs of the recipients of the event digest.
 - clusterUuids: list of System.Strings
   - List of Rubrik cluster UUIDs.

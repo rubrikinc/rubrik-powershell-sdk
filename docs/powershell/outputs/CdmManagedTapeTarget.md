@@ -1,14 +1,12 @@
 ### CdmManagedTapeTarget
 Specific information for Tape target created on CDM cluster.
 
-- id: System.String
-  - ID of the Tape location.
 - hostName: System.String
   - Host name of the Tape location.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
+- id: System.String
+  - The ID of the target.
 - name: System.String
   - The name of the target.
 - locationScope: LocationScope
@@ -39,3 +37,5 @@ Specific information for Tape target created on CDM cluster.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

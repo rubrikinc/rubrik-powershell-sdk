@@ -1222,6 +1222,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// 	}
     /// 	# OPTIONAL
     /// 	hierarchyFilters = @(
@@ -1267,6 +1269,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			gcpNativeProtectionFeatureNames = @(
     /// 				$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			timeParam = $someDateTime
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2772,6 +2776,8 @@ $query.Var.virtualMachineFilters = @{
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 	}
 	# OPTIONAL
 	hierarchyFilters = @(
@@ -2817,6 +2823,8 @@ $query.Var.virtualMachineFilters = @{
 			gcpNativeProtectionFeatureNames = @(
 				$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 			)
+			# OPTIONAL
+			timeParam = $someDateTime
 		}
 	)
 	# OPTIONAL

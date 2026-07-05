@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enableVdiDb")]
         public HostConfigurationPropertyEnabled? EnableVdiDb { get; set; }
 
+        //      C# -> HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForAgQuery
+        // GraphQL -> mssqlAllowDirtyReadForAgQuery: HostConfigurationPropertyEnabled (enum)
+        [JsonProperty("mssqlAllowDirtyReadForAgQuery")]
+        public HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForAgQuery { get; set; }
+
         //      C# -> HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForDbSizeQuery
         // GraphQL -> mssqlAllowDirtyReadForDbSizeQuery: HostConfigurationPropertyEnabled (enum)
         [JsonProperty("mssqlAllowDirtyReadForDbSizeQuery")]
@@ -182,6 +187,7 @@ namespace RubrikSecurityCloud.Types
         HostConfigurationPropertyEnabled? EnableMssqlMultiNodeRestore = null,
         HostConfigurationPropertyEnabled? EnableVdi = null,
         HostConfigurationPropertyEnabled? EnableVdiDb = null,
+        HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForAgQuery = null,
         HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForDbSizeQuery = null,
         HostConfigurationPropertyEnabled? MssqlEnableCleanupOnRestoreFailure = null,
         HostConfigurationPropertyEnabled? MssqlUseDmFileSpaceUsage = null,
@@ -226,6 +232,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnableVdiDb != null ) {
             this.EnableVdiDb = EnableVdiDb;
+        }
+        if ( MssqlAllowDirtyReadForAgQuery != null ) {
+            this.MssqlAllowDirtyReadForAgQuery = MssqlAllowDirtyReadForAgQuery;
         }
         if ( MssqlAllowDirtyReadForDbSizeQuery != null ) {
             this.MssqlAllowDirtyReadForDbSizeQuery = MssqlAllowDirtyReadForDbSizeQuery;
@@ -368,6 +377,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "enableVdiDb\n" ;
             } else {
                 s += ind + "enableVdiDb\n" ;
+            }
+        }
+        //      C# -> HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForAgQuery
+        // GraphQL -> mssqlAllowDirtyReadForAgQuery: HostConfigurationPropertyEnabled (enum)
+        if (this.MssqlAllowDirtyReadForAgQuery != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mssqlAllowDirtyReadForAgQuery\n" ;
+            } else {
+                s += ind + "mssqlAllowDirtyReadForAgQuery\n" ;
             }
         }
         //      C# -> HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForDbSizeQuery
@@ -693,6 +711,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnableVdiDb != null && ec.Excludes("enableVdiDb",true))
         {
             this.EnableVdiDb = null;
+        }
+        //      C# -> HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForAgQuery
+        // GraphQL -> mssqlAllowDirtyReadForAgQuery: HostConfigurationPropertyEnabled (enum)
+        if (ec.Includes("mssqlAllowDirtyReadForAgQuery",true))
+        {
+            if(this.MssqlAllowDirtyReadForAgQuery == null) {
+
+                this.MssqlAllowDirtyReadForAgQuery = new HostConfigurationPropertyEnabled();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MssqlAllowDirtyReadForAgQuery != null && ec.Excludes("mssqlAllowDirtyReadForAgQuery",true))
+        {
+            this.MssqlAllowDirtyReadForAgQuery = null;
         }
         //      C# -> HostConfigurationPropertyEnabled? MssqlAllowDirtyReadForDbSizeQuery
         // GraphQL -> mssqlAllowDirtyReadForDbSizeQuery: HostConfigurationPropertyEnabled (enum)

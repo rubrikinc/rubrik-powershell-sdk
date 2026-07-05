@@ -346,6 +346,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAssignedByParentAccount = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -484,6 +486,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAssignedByParentAccount = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -645,6 +649,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAssignedByParentAccount = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -931,6 +937,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -1011,6 +1019,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// # OPTIONAL
@@ -1095,6 +1105,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -1273,6 +1285,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAssignedByParentAccount = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -1582,6 +1596,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAssignedByParentAccount = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -1851,6 +1867,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -2064,6 +2082,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	cyberEventLockdownMode = @(
     /// 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isAssignedByParentAccount = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -3536,6 +3556,8 @@ $query.Var.filter = @{
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
+	# OPTIONAL
+	isAssignedByParentAccount = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -3672,6 +3694,8 @@ $query.Var.filter = @{
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
+	# OPTIONAL
+	isAssignedByParentAccount = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -3809,6 +3833,8 @@ $query.Var.filter = @{
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
+	# OPTIONAL
+	isAssignedByParentAccount = $someBoolean
 }"
             );
         }
@@ -4069,6 +4095,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
             );
@@ -4153,6 +4181,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )
 # OPTIONAL
@@ -4239,6 +4269,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
             );
@@ -4420,6 +4452,8 @@ $query.Var.filter = @{
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
+	# OPTIONAL
+	isAssignedByParentAccount = $someBoolean
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle"
@@ -4687,6 +4721,8 @@ $query.Var.filter = @{
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
+	# OPTIONAL
+	isAssignedByParentAccount = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -4911,6 +4947,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
             );
@@ -5115,6 +5153,8 @@ $query.Var.filter = @{
 	cyberEventLockdownMode = @(
 		$someClusterCyberEventLockdownMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterCyberEventLockdownMode]) for enum values.
 	)
+	# OPTIONAL
+	isAssignedByParentAccount = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.

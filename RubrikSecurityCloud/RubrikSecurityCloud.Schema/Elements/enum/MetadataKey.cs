@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JSON_STRING_ARRAY")]
         JSON_STRING_ARRAY,
 
+        [EnumMember(Value = "MANAGED_OBJECT_TYPE")]
+        MANAGED_OBJECT_TYPE,
+
         [EnumMember(Value = "METADATA_KEY_UNSPECIFIED")]
         METADATA_KEY_UNSPECIFIED,
 

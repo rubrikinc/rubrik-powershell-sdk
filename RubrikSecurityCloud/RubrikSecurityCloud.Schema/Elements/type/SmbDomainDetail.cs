@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allowTrustedDomain")]
         public System.Boolean? AllowTrustedDomain { get; set; }
 
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        [JsonProperty("dnsServers")]
+        public List<System.String>? DnsServers { get; set; }
+
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)
         [JsonProperty("isStickySmbService")]
@@ -57,6 +62,7 @@ namespace RubrikSecurityCloud.Types
     public SmbDomainDetail Set(
         SmbDomainStatus? Status = null,
         System.Boolean? AllowTrustedDomain = null,
+        List<System.String>? DnsServers = null,
         System.Boolean? IsStickySmbService = null,
         System.String? Name = null,
         System.String? ServiceAccount = null
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllowTrustedDomain != null ) {
             this.AllowTrustedDomain = AllowTrustedDomain;
+        }
+        if ( DnsServers != null ) {
+            this.DnsServers = DnsServers;
         }
         if ( IsStickySmbService != null ) {
             this.IsStickySmbService = IsStickySmbService;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "allowTrustedDomain\n" ;
             } else {
                 s += ind + "allowTrustedDomain\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (this.DnsServers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dnsServers\n" ;
+            } else {
+                s += ind + "dnsServers\n" ;
             }
         }
         //      C# -> System.Boolean? IsStickySmbService
@@ -176,6 +194,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AllowTrustedDomain != null && ec.Excludes("allowTrustedDomain",true))
         {
             this.AllowTrustedDomain = null;
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (ec.Includes("dnsServers",true))
+        {
+            if(this.DnsServers == null) {
+
+                this.DnsServers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DnsServers != null && ec.Excludes("dnsServers",true))
+        {
+            this.DnsServers = null;
         }
         //      C# -> System.Boolean? IsStickySmbService
         // GraphQL -> isStickySmbService: Boolean! (scalar)

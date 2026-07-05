@@ -13,3 +13,5 @@ data hits to prevent them from being exfiltrated.
 - GOOGLE_SECOPS - Represents a Google SecOps integration.
 - MICROSOFT_DEFENDER - Represents a Microsoft Defender integration.
 - SPLUNK - Represents a Splunk integration.
+- PAN_XSOAR - Represents a Palo Alto Networks XSOAR integration.
+- WORKDAY - Represents a Workday HRIS integration.

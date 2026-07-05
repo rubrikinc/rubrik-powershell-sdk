@@ -1,12 +1,6 @@
 ### RubrikManagedRcsTarget
 Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik.
 
-- shouldBypassProxy: System.Boolean
-  - Specifies whether the proxy settings is bypassed for  the RCV Azure archival target.
-- isVersionLevelImmutabilityEnabled: System.Boolean
-  - Specifies whether blob immutability is enabled for the RCV Azure archival target.
-- syncStatus: TargetSyncStatus
-  - Sync status of RCV target.
 - region: RcsRegionEnumType
   - Region of RCV Azure target.
 - tier: RcsTierEnumType
@@ -25,6 +19,8 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - Last time when redundancy state was synchronized for the RCV Azure target.
 - spaceUsageAlertThreshold: System.Int32
   - Space usage threshold of RCV Azure target above which alert will be raised.
+- syncStatus: TargetSyncStatus
+  - Sync status of RCV target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
 - storageConsumptionValue: System.Single
@@ -35,6 +31,10 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - RCV Private endpoint connection details.
 - clusterIpMapping: ClusterIpMapping
   - IP allow list for location.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings is bypassed for the RCV Azure archival target.
+- isVersionLevelImmutabilityEnabled: System.Boolean
+  - Specifies whether blob immutability is enabled for the RCV Azure archival target.
 - conversionOpt: RcvConversionType
   - Latest conversion for this RCV Azure location.
 - privateEndpointConnections: list of PrivateEndpointConnections
@@ -43,8 +43,6 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - BLI migration status for this RCV Azure target.
 - rcvConversion: list of RcvConversionTypes
   - List of conversions for this RCV location.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -79,3 +77,5 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

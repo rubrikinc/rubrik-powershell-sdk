@@ -12,7 +12,7 @@ v6.0+: Absolute file path.. and restore path if not restored back to itself.
   - Supported in v8.1+
 Optional field which excludes the paths specified during recovery.
 - recoveryPurpose: FilesetRestoreFilesJobConfigRecoveryPurpose
-  - Supported in v9.6
+  - Supported in v9.6+
 Optional field indicating the purpose of the recovery operation. Set to SURGICAL_RECOVERY for surgical recovery where quarantined files are automatically excluded.
 - shouldRecreateDirectoryStructure: System.Boolean
   - Supported in v8.1+
@@ -20,5 +20,8 @@ Optional field that specifies whether to recreate directory structure when using
 - postRestoreScript: System.String
   - Supported in v9.4+
 Optional script to run after restore of this fileset ends.
+- previousJobInstanceId: System.String
+  - Supported in v9.6+
+Composite ID of a previously failed or canceled restore job to resume. This is the id field from the original restore response. When specified, the new restore job reads checkpoints and failed-inodes artifacts from the previous job instance instead of starting from scratch.
 - shouldRestoreOnlyAcls: System.Boolean
   - Optional field to determine if only ACLs should be restored during the restore process. The default value is false.

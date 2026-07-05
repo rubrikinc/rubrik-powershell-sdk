@@ -32,7 +32,7 @@ NAS Cloud Direct snapshot object.
 - state: CloudDirectSnapshotSateType
   - State of snapshot on NAS Cloud Direct.
 - type: CloudDirectSnapshotType
-  - Type of snapshot on NAS Cloud Direct.
+  - Type of snapshot for NAS Cloud Direct.
 - policyName: System.String
   - Name of policy assigned to the snapshot in NAS Cloud Direct.
 - summary: CloudDirectSnapshotSummary
@@ -55,6 +55,8 @@ NAS Cloud Direct snapshot object.
   - Specifies whether the snapshot is quarantined.
 - target: System.String
   - The name of the target associated with this snapshot.
+- targetId: System.String
+  - The ID of the target associated with this snapshot.
 - object: CloudDirectNasObject
   - NAS Cloud Direct object (Bucket or Share) to which this snapshot belongs.
 - latestUserNote: LatestUserNote

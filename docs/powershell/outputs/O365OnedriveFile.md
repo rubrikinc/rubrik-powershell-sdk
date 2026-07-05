@@ -1,34 +1,37 @@
 ### O365OnedriveFile
+
+
 - id: System.String
   - The ID of the file.
-- name: System.String
-  - The name of the file.
 - parentFolderId: System.String
   - The ID of the parent folder.
+- name: System.String
+  - The name of the file.
+- size: System.Int64
+  - The size of the file.
+- createTime: DateTime
+  - The time the file was created.
+- modifiedTime: DateTime
+  - The time the file was modified.
+- channelName: System.String
+  - The name of the Teams channel containing this file.
+- channelFolderName: System.String
+  - The folder name of the Teams channel containing this file.
+- channelMembershipType: ChannelMembershipType
+  - The membership type of the channel containing this file for Teams files.
+- path: System.String
+  - The path of the file from the root.
 - snapshotId: System.String
   - The ID of the snapshot containing this file.
 - snapshotNum: System.Int32
   - The sequence number of the snapshot containing this file.
 - snapshotTime: DateTime
   - The time at which the snapshot containing this file was taken.
-- createTime: DateTime
-  - The time the file was created.
-- modifiedTime: DateTime
-  - The time the file was modified.
-- fileType: System.String
-- size: System.Int64
-  - The size of the file.
-- channelName: System.String
-  - The name of the Teams channel containing this folder.
 - channelId: System.String
-  - The ID of the Teams channel containing this folder.
-- channelFolderName: System.String
-  - The folder name of the Teams channel containing this folder.
-- channelMembershipType: ChannelMembershipType
-  - The membership type of the channel containing this file for Teams files.
+  - The ID of the Teams channel containing this file.
 - objectType: SharePointDescendantType
   - The object type of this file, for example, Onedrive or SharePoint drive.
-- path: System.String
-  - The path of the file from the root.
 - o365QuarantineInfo: O365QuarantineInfo
   - Quarantine information for the file.
+- fileType: System.String
+  - The file type or extension of the file.

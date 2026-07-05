@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudType")]
         public CloudProviderType? CloudType { get; set; }
 
+        //      C# -> RcsTierEnumType? RcvTier
+        // GraphQL -> rcvTier: RcsTierEnumType (enum)
+        [JsonProperty("rcvTier")]
+        public RcsTierEnumType? RcvTier { get; set; }
+
         //      C# -> SnapshotType? SnapshotType
         // GraphQL -> snapshotType: SnapshotType! (enum)
         [JsonProperty("snapshotType")]
@@ -35,20 +40,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationName")]
         public System.String? LocationName { get; set; }
 
-        //      C# -> System.String? RcvTier
-        // GraphQL -> rcvTier: String (scalar)
-        [JsonProperty("rcvTier")]
-        public System.String? RcvTier { get; set; }
-
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
-
-        //      C# -> System.String? StorageClassTier
-        // GraphQL -> storageClassTier: String (scalar)
-        [JsonProperty("storageClassTier")]
-        public System.String? StorageClassTier { get; set; }
 
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
@@ -59,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> snapshotRegion: CloudNativeRegion! (type)
         [JsonProperty("snapshotRegion")]
         public CloudNativeRegion? SnapshotRegion { get; set; }
+
+        //      C# -> CloudNativeStorageClassTier? StorageClassTier
+        // GraphQL -> storageClassTier: CloudNativeStorageClassTier! (type)
+        [JsonProperty("storageClassTier")]
+        public CloudNativeStorageClassTier? StorageClassTier { get; set; }
 
 
         #endregion
@@ -71,17 +71,20 @@ namespace RubrikSecurityCloud.Types
 
     public CloudNativeSnapshotTypeDetails Set(
         CloudProviderType? CloudType = null,
+        RcsTierEnumType? RcvTier = null,
         SnapshotType? SnapshotType = null,
         System.String? LocationName = null,
-        System.String? RcvTier = null,
         System.String? SnapshotId = null,
-        System.String? StorageClassTier = null,
         CloudNativeAccountIdWithName? CloudNativeAccountId = null,
-        CloudNativeRegion? SnapshotRegion = null
+        CloudNativeRegion? SnapshotRegion = null,
+        CloudNativeStorageClassTier? StorageClassTier = null
     ) 
     {
         if ( CloudType != null ) {
             this.CloudType = CloudType;
+        }
+        if ( RcvTier != null ) {
+            this.RcvTier = RcvTier;
         }
         if ( SnapshotType != null ) {
             this.SnapshotType = SnapshotType;
@@ -89,20 +92,17 @@ namespace RubrikSecurityCloud.Types
         if ( LocationName != null ) {
             this.LocationName = LocationName;
         }
-        if ( RcvTier != null ) {
-            this.RcvTier = RcvTier;
-        }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
-        }
-        if ( StorageClassTier != null ) {
-            this.StorageClassTier = StorageClassTier;
         }
         if ( CloudNativeAccountId != null ) {
             this.CloudNativeAccountId = CloudNativeAccountId;
         }
         if ( SnapshotRegion != null ) {
             this.SnapshotRegion = SnapshotRegion;
+        }
+        if ( StorageClassTier != null ) {
+            this.StorageClassTier = StorageClassTier;
         }
         return this;
     }
@@ -127,6 +127,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cloudType\n" ;
             }
         }
+        //      C# -> RcsTierEnumType? RcvTier
+        // GraphQL -> rcvTier: RcsTierEnumType (enum)
+        if (this.RcvTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rcvTier\n" ;
+            } else {
+                s += ind + "rcvTier\n" ;
+            }
+        }
         //      C# -> SnapshotType? SnapshotType
         // GraphQL -> snapshotType: SnapshotType! (enum)
         if (this.SnapshotType != null) {
@@ -145,15 +154,6 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "locationName\n" ;
             }
         }
-        //      C# -> System.String? RcvTier
-        // GraphQL -> rcvTier: String (scalar)
-        if (this.RcvTier != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "rcvTier\n" ;
-            } else {
-                s += ind + "rcvTier\n" ;
-            }
-        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId != null) {
@@ -161,15 +161,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotId\n" ;
             } else {
                 s += ind + "snapshotId\n" ;
-            }
-        }
-        //      C# -> System.String? StorageClassTier
-        // GraphQL -> storageClassTier: String (scalar)
-        if (this.StorageClassTier != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "storageClassTier\n" ;
-            } else {
-                s += ind + "storageClassTier\n" ;
             }
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
@@ -196,6 +187,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CloudNativeStorageClassTier? StorageClassTier
+        // GraphQL -> storageClassTier: CloudNativeStorageClassTier! (type)
+        if (this.StorageClassTier != null) {
+            var fspec = this.StorageClassTier.AsFieldSpec(conf.Child("storageClassTier"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "storageClassTier" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -219,6 +222,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudType != null && ec.Excludes("cloudType",true))
         {
             this.CloudType = null;
+        }
+        //      C# -> RcsTierEnumType? RcvTier
+        // GraphQL -> rcvTier: RcsTierEnumType (enum)
+        if (ec.Includes("rcvTier",true))
+        {
+            if(this.RcvTier == null) {
+
+                this.RcvTier = new RcsTierEnumType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RcvTier != null && ec.Excludes("rcvTier",true))
+        {
+            this.RcvTier = null;
         }
         //      C# -> SnapshotType? SnapshotType
         // GraphQL -> snapshotType: SnapshotType! (enum)
@@ -254,23 +274,6 @@ namespace RubrikSecurityCloud.Types
         {
             this.LocationName = null;
         }
-        //      C# -> System.String? RcvTier
-        // GraphQL -> rcvTier: String (scalar)
-        if (ec.Includes("rcvTier",true))
-        {
-            if(this.RcvTier == null) {
-
-                this.RcvTier = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.RcvTier != null && ec.Excludes("rcvTier",true))
-        {
-            this.RcvTier = null;
-        }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (ec.Includes("snapshotId",true))
@@ -287,23 +290,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
         {
             this.SnapshotId = null;
-        }
-        //      C# -> System.String? StorageClassTier
-        // GraphQL -> storageClassTier: String (scalar)
-        if (ec.Includes("storageClassTier",true))
-        {
-            if(this.StorageClassTier == null) {
-
-                this.StorageClassTier = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.StorageClassTier != null && ec.Excludes("storageClassTier",true))
-        {
-            this.StorageClassTier = null;
         }
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
@@ -342,6 +328,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotRegion != null && ec.Excludes("snapshotRegion",false))
         {
             this.SnapshotRegion = null;
+        }
+        //      C# -> CloudNativeStorageClassTier? StorageClassTier
+        // GraphQL -> storageClassTier: CloudNativeStorageClassTier! (type)
+        if (ec.Includes("storageClassTier",false))
+        {
+            if(this.StorageClassTier == null) {
+
+                this.StorageClassTier = new CloudNativeStorageClassTier();
+                this.StorageClassTier.ApplyExploratoryFieldSpec(ec.NewChild("storageClassTier"));
+
+            } else {
+
+                this.StorageClassTier.ApplyExploratoryFieldSpec(ec.NewChild("storageClassTier"));
+
+            }
+        }
+        else if (this.StorageClassTier != null && ec.Excludes("storageClassTier",false))
+        {
+            this.StorageClassTier = null;
         }
     }
 

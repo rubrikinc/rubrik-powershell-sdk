@@ -5,6 +5,7 @@ Object Type for cloud-native tag rule.
 - AWS_EBS_VOLUME - AWS EBS Volume.
 - AZURE_VIRTUAL_MACHINE - Azure Virtual Machine.
 - AZURE_STORAGE_ACCOUNT - Azure Storage Account.
+- AZURE_POSTGRES_FLEXIBLE_SERVER - Azure Postgres Flexible Server.
 - AZURE_SQL_DATABASE_DB - Azure SQL Database DB.
 - AWS_DYNAMODB_TABLE - AWS DynamoDB Table.
 - AZURE_SQL_DATABASE_SERVER - Azure SQL Database Server.

@@ -17,9 +17,9 @@ Compute setting for AWS Target.
   - Name of the AWS cloud compute setting.
 - isArchived: System.Boolean
   - Specifies whether this AWS target is archived.
+- isRscManaged: System.Boolean
+  - Managed by Rubrik SaaS.
 - clusterInterfaceCidrs: list of ClusterInfCidrss
   - List of cluster interface CIDR.
 - cloudAccount: CloudAccount
   - Cloud account details of the AWS target.
-- isRscManaged: System.Boolean
-  - Managed by Rubrik SaaS.

@@ -170,6 +170,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			mssqlSddCertificateId = $someString
     /// 			# OPTIONAL
+    /// 			wsfcEnvironmentTag = $someString
+    /// 			# OPTIONAL
     /// 			oracleSddWalletPath = $someString
     /// 			# OPTIONAL
     /// 			oracleSddUserCredentials = @{
@@ -2027,6 +2029,8 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			mssqlSddCertificateId = $someString
+			# OPTIONAL
+			wsfcEnvironmentTag = $someString
 			# OPTIONAL
 			oracleSddWalletPath = $someString
 			# OPTIONAL

@@ -1,5 +1,5 @@
 ### EventDigestConfig
-Event digest configuration to specify events criteria.
+An event digest configuration.
 
 - objectType: list of ActivityObjectTypeEnums
   - Object type to include in event digest.

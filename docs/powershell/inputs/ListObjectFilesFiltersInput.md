@@ -1,15 +1,31 @@
 ### ListObjectFilesFiltersInput
+Filters applied when listing the files of one or more objects.
+
 - openAccessTypes: list of OpenAccessTypes
+  - Only include files exposed through these open-access types.
 - stalenessTypes: list of StalenessTypes
+  - Only include files matching these staleness types.
 - analyzerGroupIds: list of System.Strings
+  - Only include files classified by these analyzer groups.
 - clusterIds: list of System.Strings
+  - Only include files from these Rubrik clusters.
 - pathPrefix: System.String
+  - Only include files whose path starts with this prefix.
 - snappableTypes: list of System.Strings
+  - Only include files belonging to these workload types.
 - searchText: System.String
+  - Infix search on path of FileResult.
 - whitelistEnabled: System.Boolean
+  - Whether to include whitelists in the results.
 - fileCountTypes: list of FileCountTypes
+  - Only include in the results files of this type.
 - accessTypes: list of AccessTypes
+  - Only include files matching these access types.
 - activityTypes: list of ActivityAccessTypes
+  - Only include files matching these activity access types.
 - objectIds: list of System.Strings
+  - Only include files belonging to these object IDs.
 - inodeTypes: list of InodeTypes
+  - Only include files matching these inode types (file, directory).
 - objectTypes: list of HierarchyObjectTypeEnums
+  - Only include files belonging to objects of these managed object types.

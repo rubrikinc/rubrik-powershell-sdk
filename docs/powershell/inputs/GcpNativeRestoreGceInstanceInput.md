@@ -13,3 +13,5 @@ Input required to restore a GCP GCE instance snapshot.
   - The type of the snapshot to recover from.
 - archivedSnapshotId: System.String
   - The archived snapshot ID from which the recovery should happen.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the restored instance (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

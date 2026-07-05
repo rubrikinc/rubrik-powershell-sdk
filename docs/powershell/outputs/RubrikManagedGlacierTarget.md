@@ -7,16 +7,14 @@ Information about the Amazon Glacier target created on Rubrik.
   - Vault name of the Amazon Glacier target.
 - region: AwsRegion
   - Region of the Amazon Glacier target.
-- syncStatus: TargetSyncStatus
-  - Sync status of Amazon Glacier target.
 - retrievalTier: AwsRetrievalTier
   - Retrieval tier of the Amazon Glacier target.
+- syncStatus: TargetSyncStatus
+  - Sync status of Amazon Glacier target.
 - syncFailureReason: System.String
   - Reason of sync failure of this target with Rubrik CDM. This is empty if syncStatus is not failed.
 - connectionStatus: ConnectionStatusType
-  - Connection status of the AWS target.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+  - Connection status of the Amazon Glacier target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -51,3 +49,5 @@ Information about the Amazon Glacier target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

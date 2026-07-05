@@ -7,12 +7,6 @@ Retrieve the details of an asynchronous request that includes a VMware virtual m
     - clusterUuid - System.String: UUID of the Rubrik cluster.
     - id - System.String: ID of the asynchronous request.
 - Returns AsyncRequestStatus.
-### missedrecoverablerange
-- There are 3 arguments.
-    - snappableFid - System.String: The ID of the workload.
-    - beforeTime - DateTime
-    - afterTime - DateTime
-- Returns RecoverableRangeResponse.
 ### new
 - There is a single argument of type System.String.
 - Returns VsphereVm.
@@ -24,12 +18,6 @@ Retrieve the details of an asynchronous request that includes a VMware virtual m
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
 - Returns VsphereVmConnection.
-### recoverablerange
-- There are 3 arguments.
-    - snappableFid - System.String: The ID of the workload.
-    - beforeTime - DateTime
-    - afterTime - DateTime
-- Returns RecoverableRangeResponse.
 ### recoverablerangeinbatch
 - There is a single argument of type BatchVmwareVmRecoverableRangesRequestInput.
 - Returns BatchVmwareVmRecoverableRanges.

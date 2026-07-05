@@ -1,16 +1,14 @@
 ### CdmManagedGcpTarget
-Specific info for Gcp target created on Cdm.
+Specific information for GCP target created on CDM cluster.
 
-- id: System.String
-  - Id of the GCP location.
-- immutabilitySettings: GcpImmutabilitySettings
-  - Immutability settings of the GCP archival target.
 - region: GcpRegion
   - Region of the GCP location.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+- immutabilitySettings: GcpImmutabilitySettings
+  - Immutability settings of the GCP archival target.
 - targetType: TargetType
   - The type of the target.
+- id: System.String
+  - The ID of the target.
 - name: System.String
   - The name of the target.
 - locationScope: LocationScope
@@ -41,3 +39,5 @@ Specific info for Gcp target created on Cdm.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("imageId")]
         public System.String? ImageId { get; set; }
 
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        [JsonProperty("projectId")]
+        public System.String? ProjectId { get; set; }
+
         //      C# -> System.String? UserData
         // GraphQL -> userData: String! (scalar)
         [JsonProperty("userData")]
@@ -58,6 +63,7 @@ namespace RubrikSecurityCloud.Types
         CloudDirectCloudProvider? CloudProvider = null,
         System.String? CloudRegion = null,
         System.String? ImageId = null,
+        System.String? ProjectId = null,
         System.String? UserData = null,
         List<RegionImageIdEntry>? RegionImageIds = null
     ) 
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ImageId != null ) {
             this.ImageId = ImageId;
+        }
+        if ( ProjectId != null ) {
+            this.ProjectId = ProjectId;
         }
         if ( UserData != null ) {
             this.UserData = UserData;
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "imageId\n" ;
             } else {
                 s += ind + "imageId\n" ;
+            }
+        }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (this.ProjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "projectId\n" ;
+            } else {
+                s += ind + "projectId\n" ;
             }
         }
         //      C# -> System.String? UserData
@@ -196,6 +214,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ImageId != null && ec.Excludes("imageId",true))
         {
             this.ImageId = null;
+        }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (ec.Includes("projectId",true))
+        {
+            if(this.ProjectId == null) {
+
+                this.ProjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ProjectId != null && ec.Excludes("projectId",true))
+        {
+            this.ProjectId = null;
         }
         //      C# -> System.String? UserData
         // GraphQL -> userData: String! (scalar)

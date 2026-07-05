@@ -4,7 +4,8 @@ Contains parameters to create a new Azure DevOps cloud account configuration.
 - organizationNativeId: System.String
   - Azure DevOps organization native identifier. This is the organization name
 visible in the Azure DevOps URL (e.g., "my-org" from
-https://dev.azure.com/my-org).
+https://dev.azure.com/my-org). Used for single-org onboarding; bulk
+onboarding callers populate organization_native_ids instead.
 - tenantId: System.String
   - Azure AD (Entra ID) tenant identifier. The directory (tenant) ID of the
 Azure AD tenant that the Azure DevOps organization is linked to. Can be
@@ -42,3 +43,9 @@ auto-provisions storage.
   - Azure region for Rubrik-hosted exocompute (e.g., "eastus", "westus2").
 Required when host_type is RUBRIK_HOST. Must match backup_region when
 storage_type is BYOS.
+- organizationNativeIds: list of System.Strings
+  - Azure DevOps organization native identifiers for bulk onboarding. When
+set, each organization in this list is onboarded with the same tenant,
+OAuth session, feature set, and storage/exocompute configuration as
+organization_native_id. Callers use this for bulk onboarding flows and
+organization_native_id for single-org onboarding.

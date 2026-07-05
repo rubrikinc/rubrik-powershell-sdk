@@ -13,6 +13,8 @@ Input for creating Rubrik Cloud Vault Azure storage settings.
   - Tier for the Rubrik Cloud Vault Azure location supports Backup and Archive tier.
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType
   - Template type of the storage settings - SOURCE_REGION or SPECIFIC_REGION.
+- sourceWorkloadCloud: SourceWorkloadCloud
+  - Cloud where the source workload's data originates. When omitted, it is derived from the destination type.
 - redundancy: RcvRedundancy
   - Redundancy for the RCV location.
 - rsaKey: System.String

@@ -27,3 +27,6 @@ tag referenced by an Intune role assignment.
 - ACCESS_PACKAGE_ASSIGNMENT_OF - Principal (User, Group, or ServicePrincipal) with an active Access Package assignment.
 - INCOMPATIBLE_ACCESS_PACKAGE_OF - Access Package marked incompatible with another Access Package.
 - INCOMPATIBLE_GROUP_OF - Group marked incompatible with an Access Package.
+- REVIEWER_OF - Access Review schedule definition on which the principal (User or Group) is a reviewer or fallback reviewer, either top-level or within stageSettings.
+- NOTIFICATION_RECIPIENT_OF - Access Review schedule definition for which the principal (User or Group) is an additional notification recipient.
+- DIRECT_REPORT - Direct report of a manager.

@@ -1156,6 +1156,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				restoreFolderPath = $someString
+    /// 				# OPTIONAL
+    /// 				shouldRestoreFileVersions = $someBoolean
     /// 			}
     /// 			# OPTIONAL
     /// 			docLibName = $someString
@@ -1416,6 +1418,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# REQUIRED
     /// 			restoreFolderPath = $someString
+    /// 			# OPTIONAL
+    /// 			shouldRestoreFileVersions = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		TeamsRestoreConfig = @{
@@ -1488,6 +1492,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# REQUIRED
     /// 				restoreFolderPath = $someString
+    /// 				# OPTIONAL
+    /// 				shouldRestoreFileVersions = $someBoolean
     /// 			}
     /// 			# OPTIONAL
     /// 			conversationsRestoreConfig = @{
@@ -1832,6 +1838,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			includeAncestors = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		itemId = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	refreshTokenEncrypted = $someString
@@ -3608,6 +3616,8 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				restoreFolderPath = $someString
+				# OPTIONAL
+				shouldRestoreFileVersions = $someBoolean
 			}
 			# OPTIONAL
 			docLibName = $someString
@@ -3868,6 +3878,8 @@ $query.Var.input = @{
 			)
 			# REQUIRED
 			restoreFolderPath = $someString
+			# OPTIONAL
+			shouldRestoreFileVersions = $someBoolean
 		}
 		# OPTIONAL
 		TeamsRestoreConfig = @{
@@ -3940,6 +3952,8 @@ $query.Var.input = @{
 				)
 				# REQUIRED
 				restoreFolderPath = $someString
+				# OPTIONAL
+				shouldRestoreFileVersions = $someBoolean
 			}
 			# OPTIONAL
 			conversationsRestoreConfig = @{
@@ -4276,6 +4290,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			includeAncestors = $someBoolean
 		}
+		# OPTIONAL
+		itemId = $someString
 	}
 	# REQUIRED
 	refreshTokenEncrypted = $someString

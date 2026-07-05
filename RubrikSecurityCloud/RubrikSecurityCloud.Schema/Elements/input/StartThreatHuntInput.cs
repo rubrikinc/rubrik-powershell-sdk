@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Notes
-        // GraphQL -> notes: String (scalar)
-        [JsonProperty("notes")]
-        public System.String? Notes { get; set; }
-
         //      C# -> MalwareScanFileCriteriaInput? FileScanCriteria
         // GraphQL -> fileScanCriteria: MalwareScanFileCriteriaInput (input)
         [JsonProperty("fileScanCriteria")]
@@ -47,6 +42,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> System.String? Notes
+        // GraphQL -> notes: String (scalar)
+        [JsonProperty("notes")]
+        public System.String? Notes { get; set; }
 
         //      C# -> List<System.String>? ObjectFids
         // GraphQL -> objectFids: [UUID!]! (scalar)

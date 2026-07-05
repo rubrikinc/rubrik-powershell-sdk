@@ -348,6 +348,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DEVOPS_NATIVE_ID")]
         DEVOPS_NATIVE_ID,
 
+        [EnumMember(Value = "DIRECTLY_PAUSED_SINCE")]
+        DIRECTLY_PAUSED_SINCE,
+
         [EnumMember(Value = "DOES_NAS_SHARE_HAVE_RELIC_FILESETS")]
         DOES_NAS_SHARE_HAVE_RELIC_FILESETS,
 
@@ -482,6 +485,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FILESET_TEMPLATE_OS_TYPE")]
         FILESET_TEMPLATE_OS_TYPE,
+
+        [EnumMember(Value = "FUSION_COMPUTE_NETWORK_TYPE")]
+        FUSION_COMPUTE_NETWORK_TYPE,
 
         [EnumMember(Value = "GCP_ALLOY_DB_CLUSTER_NAME_OR_NATIVE_ID")]
         GCP_ALLOY_DB_CLUSTER_NAME_OR_NATIVE_ID,
@@ -660,6 +666,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IS_MOUNT")]
         IS_MOUNT,
 
+        [EnumMember(Value = "IS_MYSQLDB_SYSTEM_DATABASE")]
+        IS_MYSQLDB_SYSTEM_DATABASE,
+
         [EnumMember(Value = "IS_NAS_SHARE_PROTECTED")]
         IS_NAS_SHARE_PROTECTED,
 
@@ -776,6 +785,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGED_VOLUME_TYPE")]
         MANAGED_VOLUME_TYPE,
+
+        [EnumMember(Value = "MARIADB_DATABASE_CDM_ID")]
+        MARIADB_DATABASE_CDM_ID,
+
+        [EnumMember(Value = "MARIADB_HOST_CONNECTION_STATUS")]
+        MARIADB_HOST_CONNECTION_STATUS,
+
+        [EnumMember(Value = "MARIADB_INSTANCE_ID")]
+        MARIADB_INSTANCE_ID,
 
         [EnumMember(Value = "MIGRATED_HOSTS_WITH_GHOST_OBJECTS")]
         MIGRATED_HOSTS_WITH_GHOST_OBJECTS,
@@ -975,8 +993,35 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_ID")]
         POSTGRES_DB_CLUSTER_ID,
 
+        [EnumMember(Value = "POSTGRES_DB_CLUSTER_MODE")]
+        POSTGRES_DB_CLUSTER_MODE,
+
+        [EnumMember(Value = "POWER_PLATFORM_APP_PUBLISHER")]
+        POWER_PLATFORM_APP_PUBLISHER,
+
+        [EnumMember(Value = "POWER_PLATFORM_APP_STATUS")]
+        POWER_PLATFORM_APP_STATUS,
+
+        [EnumMember(Value = "POWER_PLATFORM_APP_TYPE")]
+        POWER_PLATFORM_APP_TYPE,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_OWNER")]
+        POWER_PLATFORM_FLOW_OWNER,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_PUBLISHER")]
+        POWER_PLATFORM_FLOW_PUBLISHER,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_STATUS")]
+        POWER_PLATFORM_FLOW_STATUS,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_TYPE")]
+        POWER_PLATFORM_FLOW_TYPE,
+
         [EnumMember(Value = "PROTECTION_STATUS")]
         PROTECTION_STATUS,
+
+        [EnumMember(Value = "PROXMOX_NODE_RBS_CONFIGURED")]
+        PROXMOX_NODE_RBS_CONFIGURED,
 
         [EnumMember(Value = "RECOVERY_PLAN_AWS_REGION")]
         RECOVERY_PLAN_AWS_REGION,

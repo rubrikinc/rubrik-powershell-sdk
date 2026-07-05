@@ -1,5 +1,6 @@
 ### FullSpSiteExclusions
-SharePoint objects excluded from protection under a site collection.
+SharePoint objects excluded under a site collection. Used as GraphQL input
+`O365FullSpSiteExclusions` and output `FullSpSiteExclusions`.
 
 - siteFid: System.String
   - The fid of the SharePoint site collection.

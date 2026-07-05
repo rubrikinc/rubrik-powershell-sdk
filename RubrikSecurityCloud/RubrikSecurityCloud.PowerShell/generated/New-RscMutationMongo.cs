@@ -672,10 +672,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		recoveryMode = $someMongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode]) for enum values.
     /// 		# REQUIRED
     /// 		sourceMongoClusterId = $someString
     /// 		# OPTIONAL
     /// 		restoreTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		customNodes = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				port = $someInt
+    /// 				# REQUIRED
+    /// 				hostId = $someString
+    /// 			}
+    /// 		)
     /// 		# OPTIONAL
     /// 		oplogDumpDirPath = $someString
     /// 		# REQUIRED
@@ -1642,10 +1653,21 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		recoveryMode = $someMongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode]) for enum values.
 		# REQUIRED
 		sourceMongoClusterId = $someString
 		# OPTIONAL
 		restoreTime = $someDateTime
+		# OPTIONAL
+		customNodes = @(
+			@{
+				# REQUIRED
+				port = $someInt
+				# REQUIRED
+				hostId = $someString
+			}
+		)
 		# OPTIONAL
 		oplogDumpDirPath = $someString
 		# REQUIRED

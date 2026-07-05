@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUDIT_OBJECT_TYPE_UNSPECIFIED")]
         AUDIT_OBJECT_TYPE_UNSPECIFIED,
 
+        [EnumMember(Value = "AUTH0_TENANT")]
+        AUTH0_TENANT,
+
         [EnumMember(Value = "AUTH_DOMAIN")]
         AUTH_DOMAIN,
 
@@ -89,6 +92,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_DEVOPS_PROJECT")]
         AZURE_DEVOPS_PROJECT,
+
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT_FIXED_OBJECT")]
+        AZURE_DEVOPS_PROJECT_FIXED_OBJECT,
 
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
@@ -366,6 +372,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME")]
         MANAGED_VOLUME,
 
+        [EnumMember(Value = "MARIADB_INSTANCE")]
+        MARIADB_INSTANCE,
+
         [EnumMember(Value = "MONGODB_SOURCE")]
         MONGODB_SOURCE,
 
@@ -491,6 +500,30 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
+
+        [EnumMember(Value = "POWER_PLATFORM_BUSINESS_PROCESS_FLOW")]
+        POWER_PLATFORM_BUSINESS_PROCESS_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_BUSINESS_RULE")]
+        POWER_PLATFORM_BUSINESS_RULE,
+
+        [EnumMember(Value = "POWER_PLATFORM_CANVAS_APP")]
+        POWER_PLATFORM_CANVAS_APP,
+
+        [EnumMember(Value = "POWER_PLATFORM_CLASSIC_WORKFLOW")]
+        POWER_PLATFORM_CLASSIC_WORKFLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_CLOUD_FLOW")]
+        POWER_PLATFORM_CLOUD_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_CUSTOM_ACTION")]
+        POWER_PLATFORM_CUSTOM_ACTION,
+
+        [EnumMember(Value = "POWER_PLATFORM_DESKTOP_FLOW")]
+        POWER_PLATFORM_DESKTOP_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_MODEL_DRIVEN_APP")]
+        POWER_PLATFORM_MODEL_DRIVEN_APP,
 
         [EnumMember(Value = "PROXMOX_ENVIRONMENT")]
         PROXMOX_ENVIRONMENT,

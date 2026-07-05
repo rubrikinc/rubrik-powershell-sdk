@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? OrganizationNativeId
-        // GraphQL -> organizationNativeId: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> organizationNativeId: String (scalar)
         [JsonProperty("organizationNativeId")]
         public System.String? OrganizationNativeId { get; set; }
 
@@ -76,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exocomputeRegion: String (scalar)
         [JsonProperty("exocomputeRegion")]
         public System.String? ExocomputeRegion { get; set; }
+
+        //      C# -> List<System.String>? OrganizationNativeIds
+        // GraphQL -> organizationNativeIds: [String!] (scalar)
+        [JsonProperty("organizationNativeIds")]
+        public List<System.String>? OrganizationNativeIds { get; set; }
 
 
         #endregion

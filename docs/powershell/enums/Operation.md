@@ -262,6 +262,12 @@ Operations defined in the RBAC system.
 - MANAGE_COPY_SCHEDULES - Create, update, and delete NAS Cloud Direct copy schedules.
 - ASSIGN_COPY_SCHEDULES - Assign NAS shares to NAS Cloud Direct copy schedules.
 - USE_AS_COPY_TARGET - Use a NAS share or cloud bucket as a NAS Cloud Direct copy destination.
+- VIEW_SUPPRESS_EVENT_NOTIFICATION_RULE - View suppress event notification rules.
+- EDIT_SUPPRESS_EVENT_NOTIFICATION_RULE - Edit suppress event notification rules.
+- VIEW_FEATURE_ENABLEMENT - View feature enablement.
+- MANAGE_FEATURE_ENABLEMENT - Manage feature enablement.
+- VIEW_PAN_XSOAR_INTEGRATION - View Palo Alto Networks Cortex XSOAR integrations.
+- MANAGE_PAN_XSOAR_INTEGRATION - Manage Palo Alto Networks Cortex XSOAR integrations.
 - CATEGORY_VIEW_DATA_SOURCE - View data source.
 - CATEGORY_MANAGE_DATA_SOURCE - Manage data source.
 - CATEGORY_PROTECTION - Manage protection.

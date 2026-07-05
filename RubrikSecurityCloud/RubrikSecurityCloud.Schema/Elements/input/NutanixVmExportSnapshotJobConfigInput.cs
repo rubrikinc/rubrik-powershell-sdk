@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nicNetworkUuids")]
         public List<System.String>? NicNetworkUuids { get; set; }
 
+        //      C# -> System.Boolean? ShouldRecoverCategories
+        // GraphQL -> shouldRecoverCategories: Boolean (scalar)
+        [JsonProperty("shouldRecoverCategories")]
+        public System.Boolean? ShouldRecoverCategories { get; set; }
+
 
         #endregion
 

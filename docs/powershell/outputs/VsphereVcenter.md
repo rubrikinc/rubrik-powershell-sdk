@@ -13,6 +13,8 @@
   - The compute cluster visibility rules.
 - isHotAddEnabledForOnPremVcenter: System.Boolean
   - Is HotAdd enabled for this on-prem vCenter.
+- isComputeVisibilityFilterDisabled: System.Boolean
+  - Whether compute cluster visibility is turned off for this vCenter.
 - connectionStatus: RefreshableObjectConnectionStatus
   - Connection status for this vCenter Server.
 - isStandaloneHost: System.Boolean
@@ -72,6 +74,8 @@
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion

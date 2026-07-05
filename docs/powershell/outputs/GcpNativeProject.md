@@ -69,8 +69,6 @@ Represents a GCP project.
   - Object pause pending assignment details for RSC objects.
 - cloudNativeId: System.String
   - GCP Native ID of the object.
-- region: System.String
-  - The GCP region to which the object belongs.
 - labels: list of Labels
   - List of labels that are assigned to the object.
 - isRelic: System.Boolean

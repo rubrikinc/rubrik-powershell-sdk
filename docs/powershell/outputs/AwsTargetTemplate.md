@@ -7,10 +7,6 @@ Specific info for AWS Target Template.
   - AWS target region.
 - storageClass: AwsStorageClass
   - AWS target storage class.
-- computeSettings: AwsComputeSettings
-  - AWS target compute settings.
-- proxySettings: ProxySettings
-  - AWS target proxy settings.
 - encryptionType: TargetEncryptionTypeEnum
   - AWS target encryption type.
 - kmsMasterKeyId: System.String
@@ -19,11 +15,17 @@ Specific info for AWS Target Template.
   - Specifies whether AWS target has consolidation enabled or not.
 - cloudNativeLocTemplateType: CloudNativeLocTemplateType
   - Cloud native template type.
-- bucketTags: list of TagObjects
-  - AWS target bucket tags.
+- proxySettings: ProxySettings
+  - AWS target proxy settings.
 - cloudAccount: CloudAccount
   - Cloud account details of the AWS target.
+- computeSettings: AwsComputeSettings
+  - AWS target compute settings.
+- bucketTags: list of TagObjects
+  - AWS target bucket tags.
 - targetType: TargetType
   - The type of this Target.
 - templateLocationId: System.String
   - The internal ID of the template archival location.
+- sourceWorkloadCloud: SourceWorkloadCloud
+  - Specifies the source workload cloud of this template. This field is optional.

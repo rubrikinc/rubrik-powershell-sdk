@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? UniqueIdentifier
+        // GraphQL -> uniqueIdentifier: String! (scalar)
+        [JsonProperty("uniqueIdentifier")]
+        public System.String? UniqueIdentifier { get; set; }
+
         //      C# -> ActivityAuditorEntityDetails? Details
         // GraphQL -> details: ActivityAuditorEntityDetails (type)
         [JsonProperty("details")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         ActivityEntityType? Type = null,
         System.String? Id = null,
         System.String? Name = null,
+        System.String? UniqueIdentifier = null,
         ActivityAuditorEntityDetails? Details = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( UniqueIdentifier != null ) {
+            this.UniqueIdentifier = UniqueIdentifier;
         }
         if ( Details != null ) {
             this.Details = Details;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.String? UniqueIdentifier
+        // GraphQL -> uniqueIdentifier: String! (scalar)
+        if (this.UniqueIdentifier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "uniqueIdentifier\n" ;
+            } else {
+                s += ind + "uniqueIdentifier\n" ;
             }
         }
         //      C# -> ActivityAuditorEntityDetails? Details
@@ -213,6 +231,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.String? UniqueIdentifier
+        // GraphQL -> uniqueIdentifier: String! (scalar)
+        if (ec.Includes("uniqueIdentifier",true))
+        {
+            if(this.UniqueIdentifier == null) {
+
+                this.UniqueIdentifier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UniqueIdentifier != null && ec.Excludes("uniqueIdentifier",true))
+        {
+            this.UniqueIdentifier = null;
         }
         //      C# -> ActivityAuditorEntityDetails? Details
         // GraphQL -> details: ActivityAuditorEntityDetails (type)

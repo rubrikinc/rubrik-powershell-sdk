@@ -99,6 +99,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_ROOT")]
         MANAGED_VOLUME_ROOT,
 
+        [EnumMember(Value = "MARIADB_ROOT")]
+        MARIADB_ROOT,
+
         [EnumMember(Value = "MONGODB_ROOT")]
         MONGODB_ROOT,
 
@@ -143,6 +146,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POSTGRES_ROOT")]
         POSTGRES_ROOT,
+
+        [EnumMember(Value = "POWER_PLATFORM_ROOT")]
+        POWER_PLATFORM_ROOT,
 
         [EnumMember(Value = "PROXMOX_ROOT")]
         PROXMOX_ROOT,

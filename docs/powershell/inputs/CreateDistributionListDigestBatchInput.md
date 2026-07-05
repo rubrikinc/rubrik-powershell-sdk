@@ -1,5 +1,5 @@
 ### CreateDistributionListDigestBatchInput
-Input for creating distribution list digests.
+Input for creating event digests.
 
 - digests: list of EventDigestInputs
-  - List of event digests to create.
+  - A list of event digests to create.

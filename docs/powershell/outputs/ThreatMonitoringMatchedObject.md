@@ -1,6 +1,8 @@
 ### ThreatMonitoringMatchedObject
 Details about the scanned object.
 
+- objectFid: System.String
+  - FID of the object.
 - filesMatched: System.Int64
   - Number of files matched to threat in object.
 - lastDetection: DateTime
@@ -13,7 +15,5 @@ Details about the scanned object.
   - The aggregated severity of the matches found.
 - cluster: Cluster
   - The cluster of the scan.
-- objectFid: System.String
-  - FID of the object.
 - objectType: HierarchyObjectTypeEnum
   - Object type.

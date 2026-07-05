@@ -19,3 +19,5 @@ Attributes to add for an organization's identity provider.
   - Whether the SAML AuthnRequest sent to this identity provider sets
 ForceAuthn="true", asking the IdP to re-authenticate the user on
 every login instead of reusing a cached IdP session.
+- allowIdpInitiatedSso: System.Boolean
+  - Specifies whether to allow IdP-initiated SSO for this identity provider.

@@ -1,20 +1,14 @@
 ### RubrikManagedNfsTarget
-Specific information for Network File System (NFS) target created on Rubrik.
+Specific information for NFS target created on Rubrik.
 
-- nfsAuthType: AuthTypeEnum
-  - Field for specifying the authentication type of NFS.
-- connectionStatus: ConnectionStatusType
-  - Connection status of the NFS target.
-- immutabilitySetting: LocationImmutabilityType
-  - Immutability settings for the NFS target.
 - host: System.String
-  - Host of the Nfs location.
-- syncStatus: TargetSyncStatus
-  - Sync status of NFS location.
+  - Host of the NFS location.
 - exportDir: System.String
   - Directory in the NFS location where snapshots will be exported.
 - nfsVersion: System.Int32
   - Version of NFS target.
+- nfsAuthType: AuthTypeEnum
+  - Authentication type of NFS.
 - otherNfsOptions: System.String
   - Other NFS options.
 - fileLockPeriodInSeconds: System.Int32
@@ -23,10 +17,16 @@ Specific information for Network File System (NFS) target created on Rubrik.
   - Destination folder in the NFS location.
 - isConsolidationEnabled: System.Boolean
   - Flag to check if consolidation is enabled or not in this target.
+- syncStatus: TargetSyncStatus
+  - Sync status of NFS location.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the NFS target.
+- immutabilitySetting: LocationImmutabilityType
+  - Immutability settings for the NFS target.
+- subType: NfsSubType
+  - Vendor subtype of the NFS archival location.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -61,3 +61,5 @@ Specific information for Network File System (NFS) target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

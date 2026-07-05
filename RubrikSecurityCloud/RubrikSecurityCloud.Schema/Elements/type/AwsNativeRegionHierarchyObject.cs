@@ -66,6 +66,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ec2InstanceCount")]
         public System.Int32? Ec2InstanceCount { get; set; }
 
+        //      C# -> System.Int32? GlueIcebergCatalogCount
+        // GraphQL -> glueIcebergCatalogCount: Int! (scalar)
+        [JsonProperty("glueIcebergCatalogCount")]
+        public System.Int32? GlueIcebergCatalogCount { get; set; }
+
+        //      C# -> System.Int32? GlueIcebergDatabaseCount
+        // GraphQL -> glueIcebergDatabaseCount: Int! (scalar)
+        [JsonProperty("glueIcebergDatabaseCount")]
+        public System.Int32? GlueIcebergDatabaseCount { get; set; }
+
+        //      C# -> System.Int32? GlueIcebergTableCount
+        // GraphQL -> glueIcebergTableCount: Int! (scalar)
+        [JsonProperty("glueIcebergTableCount")]
+        public System.Int32? GlueIcebergTableCount { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -198,6 +213,9 @@ namespace RubrikSecurityCloud.Types
         System.Int32? DynamoDbTableCount = null,
         System.Int32? EbsVolumeCount = null,
         System.Int32? Ec2InstanceCount = null,
+        System.Int32? GlueIcebergCatalogCount = null,
+        System.Int32? GlueIcebergDatabaseCount = null,
+        System.Int32? GlueIcebergTableCount = null,
         System.String? Id = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -244,6 +262,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Ec2InstanceCount != null ) {
             this.Ec2InstanceCount = Ec2InstanceCount;
+        }
+        if ( GlueIcebergCatalogCount != null ) {
+            this.GlueIcebergCatalogCount = GlueIcebergCatalogCount;
+        }
+        if ( GlueIcebergDatabaseCount != null ) {
+            this.GlueIcebergDatabaseCount = GlueIcebergDatabaseCount;
+        }
+        if ( GlueIcebergTableCount != null ) {
+            this.GlueIcebergTableCount = GlueIcebergTableCount;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -404,6 +431,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ec2InstanceCount\n" ;
             } else {
                 s += ind + "ec2InstanceCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? GlueIcebergCatalogCount
+        // GraphQL -> glueIcebergCatalogCount: Int! (scalar)
+        if (this.GlueIcebergCatalogCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "glueIcebergCatalogCount\n" ;
+            } else {
+                s += ind + "glueIcebergCatalogCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? GlueIcebergDatabaseCount
+        // GraphQL -> glueIcebergDatabaseCount: Int! (scalar)
+        if (this.GlueIcebergDatabaseCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "glueIcebergDatabaseCount\n" ;
+            } else {
+                s += ind + "glueIcebergDatabaseCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? GlueIcebergTableCount
+        // GraphQL -> glueIcebergTableCount: Int! (scalar)
+        if (this.GlueIcebergTableCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "glueIcebergTableCount\n" ;
+            } else {
+                s += ind + "glueIcebergTableCount\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -778,6 +832,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.Ec2InstanceCount != null && ec.Excludes("ec2InstanceCount",true))
         {
             this.Ec2InstanceCount = null;
+        }
+        //      C# -> System.Int32? GlueIcebergCatalogCount
+        // GraphQL -> glueIcebergCatalogCount: Int! (scalar)
+        if (ec.Includes("glueIcebergCatalogCount",true))
+        {
+            if(this.GlueIcebergCatalogCount == null) {
+
+                this.GlueIcebergCatalogCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.GlueIcebergCatalogCount != null && ec.Excludes("glueIcebergCatalogCount",true))
+        {
+            this.GlueIcebergCatalogCount = null;
+        }
+        //      C# -> System.Int32? GlueIcebergDatabaseCount
+        // GraphQL -> glueIcebergDatabaseCount: Int! (scalar)
+        if (ec.Includes("glueIcebergDatabaseCount",true))
+        {
+            if(this.GlueIcebergDatabaseCount == null) {
+
+                this.GlueIcebergDatabaseCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.GlueIcebergDatabaseCount != null && ec.Excludes("glueIcebergDatabaseCount",true))
+        {
+            this.GlueIcebergDatabaseCount = null;
+        }
+        //      C# -> System.Int32? GlueIcebergTableCount
+        // GraphQL -> glueIcebergTableCount: Int! (scalar)
+        if (ec.Includes("glueIcebergTableCount",true))
+        {
+            if(this.GlueIcebergTableCount == null) {
+
+                this.GlueIcebergTableCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.GlueIcebergTableCount != null && ec.Excludes("glueIcebergTableCount",true))
+        {
+            this.GlueIcebergTableCount = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)

@@ -217,6 +217,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				diskEncryptionSetId = $someString
     /// 				# OPTIONAL
+    /// 				azurePostgresFlexServerSubnetNativeId = $someString
+    /// 				# OPTIONAL
+    /// 				azurePostgresFlexServerPrivateDnsZoneId = $someString
+    /// 				# OPTIONAL
+    /// 				healthCheckVmNamePrefix = $someString
+    /// 				# OPTIONAL
     /// 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
     /// 				# OPTIONAL
     /// 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
@@ -242,6 +248,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		runCloudslabCheck = $someBoolean
     /// 		# OPTIONAL
     /// 		runGcsConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runSqlMiConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runSqlDbConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		requestedChecks = @(
+    /// 			$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -376,7 +390,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	organizationNativeId = $someString
     /// 	# REQUIRED
     /// 	tenantId = $someString
@@ -405,6 +419,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
     /// 	# OPTIONAL
     /// 	exocomputeRegion = $someString
+    /// 	# OPTIONAL
+    /// 	organizationNativeIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -851,6 +869,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
     /// 	# OPTIONAL
+    /// 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
+    /// 	# OPTIONAL
     /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
     /// 	# OPTIONAL
     /// 	rsaKey = $someString
@@ -926,6 +946,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
     /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// }
@@ -1814,7 +1836,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	objectTypeToIdMap = @(
     /// 		@{
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			objectId = $someString
     /// 			# OPTIONAL
     /// 			objectIdString = $someString
@@ -1827,7 +1849,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	objectsToDelete = @(
     /// 		@{
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			objectId = $someString
     /// 			# OPTIONAL
     /// 			objectIdString = $someString
@@ -1835,6 +1857,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	cleanRecoverySessionId = $someString
     /// 	# REQUIRED
     /// 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
     /// 	# OPTIONAL
@@ -1889,8 +1913,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						@{
     /// 							# REQUIRED
     /// 							settingDefinitionId = $someString
-    /// 							# REQUIRED
+    /// 							# OPTIONAL
     /// 							secretValue = $someString
+    /// 							# OPTIONAL
+    /// 							collectionDefinitionId = $someString
+    /// 							# OPTIONAL
+    /// 							rowIndex = $someInt
+    /// 							# OPTIONAL
+    /// 							secretValues = @(
+    /// 								$someString
+    /// 							)
     /// 						}
     /// 					)
     /// 				}
@@ -2017,8 +2049,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	domainName = $someString
-    /// 	# OPTIONAL
-    /// 	includeIntune = $someBoolean
     /// 	# REQUIRED
     /// 	region = $someAzureAdRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
     /// 	# OPTIONAL
@@ -2030,6 +2060,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	permissionAccessMode = $somePermissionAccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionAccessMode]) for enum values.
+    /// 	# OPTIONAL
+    /// 	includeIntune = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2062,8 +2094,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	workloadFid = $someString
     /// 	# OPTIONAL
-    /// 	includeIntune = $someBoolean
-    /// 	# OPTIONAL
     /// 	azureAdApp = @{
     /// 		# OPTIONAL
     /// 		clientId = $someString
@@ -2076,6 +2106,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	missingObjectTypes = @(
     /// 		$someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	includeIntune = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -4036,6 +4068,12 @@ $query.Var.input = @{
 				# OPTIONAL
 				diskEncryptionSetId = $someString
 				# OPTIONAL
+				azurePostgresFlexServerSubnetNativeId = $someString
+				# OPTIONAL
+				azurePostgresFlexServerPrivateDnsZoneId = $someString
+				# OPTIONAL
+				healthCheckVmNamePrefix = $someString
+				# OPTIONAL
 				aksClusterTier = $someAKSProvisionTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSProvisionTier]) for enum values.
 				# OPTIONAL
 				aksNodeCountBucket = $someAKSNodeCountBucket # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AKSNodeCountBucket]) for enum values.
@@ -4061,6 +4099,14 @@ $query.Var.input = @{
 		runCloudslabCheck = $someBoolean
 		# OPTIONAL
 		runGcsConnectivityCheck = $someBoolean
+		# OPTIONAL
+		runSqlMiConnectivityCheck = $someBoolean
+		# OPTIONAL
+		runSqlDbConnectivityCheck = $someBoolean
+		# OPTIONAL
+		requestedChecks = @(
+			$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+		)
 	}
 }"
             );
@@ -4179,7 +4225,7 @@ $query.Var.input = @{
                 Mutation.AddAzureDevOpsCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	organizationNativeId = $someString
 	# REQUIRED
 	tenantId = $someString
@@ -4208,6 +4254,10 @@ $query.Var.input = @{
 	storageType = $someDevOpsStorageType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DevOpsStorageType]) for enum values.
 	# OPTIONAL
 	exocomputeRegion = $someString
+	# OPTIONAL
+	organizationNativeIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -4582,6 +4632,8 @@ $query.Var.input = @{
 	# REQUIRED
 	cloudNativeLocTemplateType = $someCloudNativeLocTemplateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeLocTemplateType]) for enum values.
 	# OPTIONAL
+	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
+	# OPTIONAL
 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 	# OPTIONAL
 	rsaKey = $someString
@@ -4649,6 +4701,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	networkAccessType = $someAzureStorageAccountNetworkAccess # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureStorageAccountNetworkAccess]) for enum values.
+	# OPTIONAL
+	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 }"
@@ -5406,7 +5460,7 @@ $query.Var.input = @{
 	# REQUIRED
 	objectTypeToIdMap = @(
 		@{
-			# REQUIRED
+			# OPTIONAL
 			objectId = $someString
 			# OPTIONAL
 			objectIdString = $someString
@@ -5419,7 +5473,7 @@ $query.Var.input = @{
 	# OPTIONAL
 	objectsToDelete = @(
 		@{
-			# REQUIRED
+			# OPTIONAL
 			objectId = $someString
 			# OPTIONAL
 			objectIdString = $someString
@@ -5427,6 +5481,8 @@ $query.Var.input = @{
 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 		}
 	)
+	# OPTIONAL
+	cleanRecoverySessionId = $someString
 	# REQUIRED
 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
 	# OPTIONAL
@@ -5481,8 +5537,16 @@ $query.Var.input = @{
 						@{
 							# REQUIRED
 							settingDefinitionId = $someString
-							# REQUIRED
+							# OPTIONAL
 							secretValue = $someString
+							# OPTIONAL
+							collectionDefinitionId = $someString
+							# OPTIONAL
+							rowIndex = $someInt
+							# OPTIONAL
+							secretValues = @(
+								$someString
+							)
 						}
 					)
 				}
@@ -5593,8 +5657,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	domainName = $someString
-	# OPTIONAL
-	includeIntune = $someBoolean
 	# REQUIRED
 	region = $someAzureAdRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRegion]) for enum values.
 	# OPTIONAL
@@ -5606,6 +5668,8 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	permissionAccessMode = $somePermissionAccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionAccessMode]) for enum values.
+	# OPTIONAL
+	includeIntune = $someBoolean
 }"
             );
         }
@@ -5630,8 +5694,6 @@ $query.Var.input = @{
 	# REQUIRED
 	workloadFid = $someString
 	# OPTIONAL
-	includeIntune = $someBoolean
-	# OPTIONAL
 	azureAdApp = @{
 		# OPTIONAL
 		clientId = $someString
@@ -5644,6 +5706,8 @@ $query.Var.input = @{
 	missingObjectTypes = @(
 		$someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 	)
+	# OPTIONAL
+	includeIntune = $someBoolean
 }"
             );
         }

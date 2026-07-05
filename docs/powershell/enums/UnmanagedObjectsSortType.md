@@ -8,3 +8,4 @@ Unmanaged objects sort type Enum.
 - ARCHIVAL_STORAGE - Archival storage.
 - RETENTION_SLA_DOMAIN_NAME - Retention SLA domain name.
 - SNAPSHOTS_COUNT - Snapshot count.
+- DOWNLOADED_STORAGE - Downloaded storage.

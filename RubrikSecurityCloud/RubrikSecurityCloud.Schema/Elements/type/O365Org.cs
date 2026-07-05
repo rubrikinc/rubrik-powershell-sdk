@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int32? MailboxesPendingGraphMigration
+        // GraphQL -> mailboxesPendingGraphMigration: Int! (scalar)
+        [JsonProperty("mailboxesPendingGraphMigration")]
+        public System.Int32? MailboxesPendingGraphMigration { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -185,6 +190,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus
+        // GraphQL -> exchangeGraphMigrationStatus: ExchangeGraphMigrationStatus! (type)
+        [JsonProperty("exchangeGraphMigrationStatus")]
+        public ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus { get; set; }
 
         //      C# -> O365GroupsSummary? GroupsSummary
         // GraphQL -> groupsSummary: O365GroupsSummary! (type)
@@ -416,6 +426,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ExocomputeId = null,
         System.Boolean? HasSharePointLegacySnapshots = null,
         System.String? Id = null,
+        System.Int32? MailboxesPendingGraphMigration = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -438,6 +449,7 @@ namespace RubrikSecurityCloud.Types
         List<AssignedRscTag>? AllTags = null,
         O365UserConnection? ChildConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
+        ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus = null,
         O365GroupsSummary? GroupsSummary = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
@@ -488,6 +500,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( MailboxesPendingGraphMigration != null ) {
+            this.MailboxesPendingGraphMigration = MailboxesPendingGraphMigration;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -554,6 +569,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( ExchangeGraphMigrationStatus != null ) {
+            this.ExchangeGraphMigrationStatus = ExchangeGraphMigrationStatus;
         }
         if ( GroupsSummary != null ) {
             this.GroupsSummary = GroupsSummary;
@@ -726,6 +744,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Int32? MailboxesPendingGraphMigration
+        // GraphQL -> mailboxesPendingGraphMigration: Int! (scalar)
+        if (this.MailboxesPendingGraphMigration != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "mailboxesPendingGraphMigration\n" ;
+            } else {
+                s += ind + "mailboxesPendingGraphMigration\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -935,6 +962,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "effectiveSlaSourceObject" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus
+        // GraphQL -> exchangeGraphMigrationStatus: ExchangeGraphMigrationStatus! (type)
+        if (this.ExchangeGraphMigrationStatus != null) {
+            var fspec = this.ExchangeGraphMigrationStatus.AsFieldSpec(conf.Child("exchangeGraphMigrationStatus"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "exchangeGraphMigrationStatus" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1345,6 +1384,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Int32? MailboxesPendingGraphMigration
+        // GraphQL -> mailboxesPendingGraphMigration: Int! (scalar)
+        if (ec.Includes("mailboxesPendingGraphMigration",true))
+        {
+            if(this.MailboxesPendingGraphMigration == null) {
+
+                this.MailboxesPendingGraphMigration = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MailboxesPendingGraphMigration != null && ec.Excludes("mailboxesPendingGraphMigration",true))
+        {
+            this.MailboxesPendingGraphMigration = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1726,6 +1782,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaSourceObject != null && ec.Excludes("effectiveSlaSourceObject",false))
         {
             this.EffectiveSlaSourceObject = null;
+        }
+        //      C# -> ExchangeGraphMigrationStatus? ExchangeGraphMigrationStatus
+        // GraphQL -> exchangeGraphMigrationStatus: ExchangeGraphMigrationStatus! (type)
+        if (ec.Includes("exchangeGraphMigrationStatus",false))
+        {
+            if(this.ExchangeGraphMigrationStatus == null) {
+
+                this.ExchangeGraphMigrationStatus = new ExchangeGraphMigrationStatus();
+                this.ExchangeGraphMigrationStatus.ApplyExploratoryFieldSpec(ec.NewChild("exchangeGraphMigrationStatus"));
+
+            } else {
+
+                this.ExchangeGraphMigrationStatus.ApplyExploratoryFieldSpec(ec.NewChild("exchangeGraphMigrationStatus"));
+
+            }
+        }
+        else if (this.ExchangeGraphMigrationStatus != null && ec.Excludes("exchangeGraphMigrationStatus",false))
+        {
+            this.ExchangeGraphMigrationStatus = null;
         }
         //      C# -> O365GroupsSummary? GroupsSummary
         // GraphQL -> groupsSummary: O365GroupsSummary! (type)

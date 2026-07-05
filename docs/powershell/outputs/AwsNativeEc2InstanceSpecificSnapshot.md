@@ -17,6 +17,10 @@ Specific information for AWS EC2 snapshot created on Polaris.
   - Volume snapshots excluded from the EC2 snapshot.
 - iamInstanceProfileArn: System.String
   - IAM instance profile ARN of the EC2 object at the time EC2 snapshot was taken.
++ Carried as the raw EC2 metadata JSON bytes (deserialized to the type at
++ rubrik/aws/ec2/manager/resources_metadata.go#EC2Metadata); the
++ iam_instance_profile_arn value is extracted by the
++ CUSTOM_FIELD_TRANSFORM_EC2_METADATA_TO_IAM_INSTANCE_PROFILE_ARN transform.
 - devicePathToVolumeSnapshotIdMap: DevicePathToVolumeSnapshotIdMap
   - List of key-value pairs that map device path to volume snapshot.
 - snapshotId: System.String

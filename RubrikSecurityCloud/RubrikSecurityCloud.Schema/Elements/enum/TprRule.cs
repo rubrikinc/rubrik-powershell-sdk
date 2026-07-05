@@ -84,6 +84,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "LEGAL_HOLD")]
         LEGAL_HOLD,
 
+        [EnumMember(Value = "MANAGE_CUSTOM_CERTIFICATES")]
+        MANAGE_CUSTOM_CERTIFICATES,
+
         [EnumMember(Value = "MANAGE_SECURITY_SETTINGS")]
         MANAGE_SECURITY_SETTINGS,
 
@@ -107,6 +110,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PAUSE_SLA")]
         PAUSE_SLA,
+
+        [EnumMember(Value = "RCV_BACKUP_TO_ARCHIVE_CONVERSION")]
+        RCV_BACKUP_TO_ARCHIVE_CONVERSION,
 
         [EnumMember(Value = "REMOVE_CLUSTER")]
         REMOVE_CLUSTER,

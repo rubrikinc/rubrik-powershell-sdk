@@ -193,7 +193,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		url = $someString
     /// 		# REQUIRED
     /// 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
-    /// 		# REQUIRED
+    /// 		# OPTIONAL
     /// 		authInfo = @{
     /// 			# REQUIRED
     /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
@@ -295,6 +295,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		serverCertificate = $someString
     /// 		# OPTIONAL
     /// 		serviceAccountId = $someString
+    /// 		# OPTIONAL
+    /// 		encodedUrl = $someString
+    /// 		# OPTIONAL
+    /// 		encodedAuthInfo = @{
+    /// 			# REQUIRED
+    /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			token = $someString
+    /// 			# OPTIONAL
+    /// 			userCredentials = @{
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			customHeaders = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					headerKey = $someString
+    /// 					# REQUIRED
+    /// 					headerValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -424,7 +449,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	url = $someString
     /// 	# REQUIRED
     /// 	providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	authInfo = @{
     /// 		# REQUIRED
     /// 		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
@@ -449,6 +474,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	serverCertificate = $someString
+    /// 	# OPTIONAL
+    /// 	encodedUrl = $someString
+    /// 	# OPTIONAL
+    /// 	encodedAuthInfo = @{
+    /// 		# REQUIRED
+    /// 		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 		# OPTIONAL
+    /// 		token = $someString
+    /// 		# OPTIONAL
+    /// 		userCredentials = @{
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		customHeaders = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				headerKey = $someString
+    /// 				# REQUIRED
+    /// 				headerValue = $someString
+    /// 			}
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -741,7 +791,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		url = $someString
     /// 		# REQUIRED
     /// 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
-    /// 		# REQUIRED
+    /// 		# OPTIONAL
     /// 		authInfo = @{
     /// 			# REQUIRED
     /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
@@ -843,6 +893,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		serverCertificate = $someString
     /// 		# OPTIONAL
     /// 		serviceAccountId = $someString
+    /// 		# OPTIONAL
+    /// 		encodedUrl = $someString
+    /// 		# OPTIONAL
+    /// 		encodedAuthInfo = @{
+    /// 			# REQUIRED
+    /// 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			token = $someString
+    /// 			# OPTIONAL
+    /// 			userCredentials = @{
+    /// 				# REQUIRED
+    /// 				username = $someString
+    /// 				# REQUIRED
+    /// 				password = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			customHeaders = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					headerKey = $someString
+    /// 					# REQUIRED
+    /// 					headerValue = $someString
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	updateAuthInfo = $someBoolean
@@ -1169,7 +1244,7 @@ $query.Var.input = @{
 		url = $someString
 		# REQUIRED
 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
-		# REQUIRED
+		# OPTIONAL
 		authInfo = @{
 			# REQUIRED
 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
@@ -1271,6 +1346,31 @@ $query.Var.input = @{
 		serverCertificate = $someString
 		# OPTIONAL
 		serviceAccountId = $someString
+		# OPTIONAL
+		encodedUrl = $someString
+		# OPTIONAL
+		encodedAuthInfo = @{
+			# REQUIRED
+			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+			# OPTIONAL
+			token = $someString
+			# OPTIONAL
+			userCredentials = @{
+				# REQUIRED
+				username = $someString
+				# REQUIRED
+				password = $someString
+			}
+			# OPTIONAL
+			customHeaders = @(
+				@{
+					# REQUIRED
+					headerKey = $someString
+					# REQUIRED
+					headerValue = $someString
+				}
+			)
+		}
 	}
 }"
             );
@@ -1368,7 +1468,7 @@ $query.Var.input = @{
 	url = $someString
 	# REQUIRED
 	providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
-	# REQUIRED
+	# OPTIONAL
 	authInfo = @{
 		# REQUIRED
 		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
@@ -1393,6 +1493,31 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	serverCertificate = $someString
+	# OPTIONAL
+	encodedUrl = $someString
+	# OPTIONAL
+	encodedAuthInfo = @{
+		# REQUIRED
+		authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+		# OPTIONAL
+		token = $someString
+		# OPTIONAL
+		userCredentials = @{
+			# REQUIRED
+			username = $someString
+			# REQUIRED
+			password = $someString
+		}
+		# OPTIONAL
+		customHeaders = @(
+			@{
+				# REQUIRED
+				headerKey = $someString
+				# REQUIRED
+				headerValue = $someString
+			}
+		)
+	}
 }"
             );
         }
@@ -1637,7 +1762,7 @@ $query.Var.input = @{
 		url = $someString
 		# REQUIRED
 		providerType = $someProviderTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProviderTypeV2]) for enum values.
-		# REQUIRED
+		# OPTIONAL
 		authInfo = @{
 			# REQUIRED
 			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
@@ -1739,6 +1864,31 @@ $query.Var.input = @{
 		serverCertificate = $someString
 		# OPTIONAL
 		serviceAccountId = $someString
+		# OPTIONAL
+		encodedUrl = $someString
+		# OPTIONAL
+		encodedAuthInfo = @{
+			# REQUIRED
+			authType = $someAuthenticationTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AuthenticationTypeV2]) for enum values.
+			# OPTIONAL
+			token = $someString
+			# OPTIONAL
+			userCredentials = @{
+				# REQUIRED
+				username = $someString
+				# REQUIRED
+				password = $someString
+			}
+			# OPTIONAL
+			customHeaders = @(
+				@{
+					# REQUIRED
+					headerKey = $someString
+					# REQUIRED
+					headerValue = $someString
+				}
+			)
+		}
 	}
 	# OPTIONAL
 	updateAuthInfo = $someBoolean

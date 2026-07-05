@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("certificateId")]
         public System.String? CertificateId { get; set; }
 
+        //      C# -> System.String? PermittedPeers
+        // GraphQL -> permittedPeers: String (scalar)
+        [JsonProperty("permittedPeers")]
+        public System.String? PermittedPeers { get; set; }
+
 
         #endregion
 

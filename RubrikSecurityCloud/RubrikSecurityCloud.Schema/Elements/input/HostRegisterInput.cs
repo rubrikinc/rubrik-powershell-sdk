@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mssqlSddCertificateId")]
         public System.String? MssqlSddCertificateId { get; set; }
 
+        //      C# -> System.String? WsfcEnvironmentTag
+        // GraphQL -> wsfcEnvironmentTag: String (scalar)
+        [JsonProperty("wsfcEnvironmentTag")]
+        public System.String? WsfcEnvironmentTag { get; set; }
+
         //      C# -> System.String? OracleSddWalletPath
         // GraphQL -> oracleSddWalletPath: String (scalar)
         [JsonProperty("oracleSddWalletPath")]

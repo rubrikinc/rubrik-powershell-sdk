@@ -151,6 +151,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -184,6 +188,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -215,6 +221,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -267,6 +277,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	skipRifItems = $someBoolean
     /// 	# OPTIONAL
     /// 	useExactVersionMatch = $someBoolean
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -298,6 +310,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -354,6 +370,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	skipRifItems = $someBoolean
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -452,6 +470,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectFid = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	awsServiceType = @(
+    /// 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
+    /// 	)
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -537,6 +559,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -638,6 +662,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	objectFid = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	awsServiceType = @(
+    /// 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -734,6 +762,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -833,6 +863,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	objectFid = @(
     /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	awsServiceType = @(
+    /// 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
     /// 	)
     /// }
     /// 
@@ -966,6 +1000,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		includeAncestors = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1066,6 +1102,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1337,6 +1375,8 @@ $query.Var.fids = @(
         // snappableContactSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     orgId: UUID!
         //     contactsSearchFilter: ContactsSearchFilter
@@ -1346,6 +1386,8 @@ $query.Var.fids = @(
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("contactsSearchFilter", "ContactsSearchFilter"),
@@ -1354,7 +1396,7 @@ $query.Var.fids = @(
                 argDefs,
                 "query",
                 "QuerySnappableContactSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$contactsSearchFilter: ContactsSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$contactsSearchFilter: ContactsSearchFilter)",
                 "O365ExchangeObjectConnection",
                 Query.SnappableContactSearch,
                 Query.SnappableContactSearchFieldSpec,
@@ -1362,6 +1404,10 @@ $query.Var.fids = @(
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
@@ -1395,6 +1441,8 @@ $query.Var.contactsSearchFilter = @{
 	}
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }
@@ -1403,6 +1451,8 @@ $query.Var.contactsSearchFilter = @{
         // snappableEmailSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     orgId: UUID!
         //     searchFilter: SearchFilter
@@ -1412,6 +1462,8 @@ $query.Var.contactsSearchFilter = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("searchFilter", "SearchFilter"),
@@ -1420,7 +1472,7 @@ $query.Var.contactsSearchFilter = @{
                 argDefs,
                 "query",
                 "QuerySnappableEmailSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$searchFilter: SearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$searchFilter: SearchFilter)",
                 "O365ExchangeObjectConnection",
                 Query.SnappableEmailSearch,
                 Query.SnappableEmailSearchFieldSpec,
@@ -1428,6 +1480,10 @@ $query.Var.contactsSearchFilter = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
@@ -1480,6 +1536,8 @@ $query.Var.searchFilter = @{
 	skipRifItems = $someBoolean
 	# OPTIONAL
 	useExactVersionMatch = $someBoolean
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }
@@ -1488,6 +1546,8 @@ $query.Var.searchFilter = @{
         // snappableEventSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     orgId: UUID!
         //     calendarSearchFilter: CalendarSearchFilter
@@ -1497,6 +1557,8 @@ $query.Var.searchFilter = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("calendarSearchFilter", "CalendarSearchFilter"),
@@ -1505,7 +1567,7 @@ $query.Var.searchFilter = @{
                 argDefs,
                 "query",
                 "QuerySnappableEventSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$calendarSearchFilter: CalendarSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$calendarSearchFilter: CalendarSearchFilter)",
                 "O365ExchangeObjectConnection",
                 Query.SnappableEventSearch,
                 Query.SnappableEventSearchFieldSpec,
@@ -1513,6 +1575,10 @@ $query.Var.searchFilter = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
@@ -1569,6 +1635,8 @@ $query.Var.calendarSearchFilter = @{
 	}
 	# OPTIONAL
 	skipRifItems = $someBoolean
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }
@@ -1675,6 +1743,10 @@ $query.Var.filter = @{
 	objectFid = @(
 		$someString
 	)
+	# OPTIONAL
+	awsServiceType = @(
+		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
+	)
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle
@@ -1762,6 +1834,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
             );
@@ -1869,6 +1943,10 @@ $query.Var.filter = @{
 	objectFid = @(
 		$someString
 	)
+	# OPTIONAL
+	awsServiceType = @(
+		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
+	)
 }"
             );
         }
@@ -1967,6 +2045,8 @@ $query.Var.onedriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }
@@ -2072,6 +2152,10 @@ $query.Var.filter = @{
 	# OPTIONAL
 	objectFid = @(
 		$someString
+	)
+	# OPTIONAL
+	awsServiceType = @(
+		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
 	)
 }"
             );
@@ -2213,6 +2297,8 @@ $query.Var.teamsConversationsSearchFilter = @{
 		# OPTIONAL
 		includeAncestors = $someBoolean
 	}
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }
@@ -2319,6 +2405,8 @@ $query.Var.teamsDriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }

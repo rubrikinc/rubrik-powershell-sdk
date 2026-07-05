@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("label")]
         public System.String? Label { get; set; }
 
+        //      C# -> IdentityFilterValueDetails? IdentityDetails
+        // GraphQL -> identityDetails: IdentityFilterValueDetails (type)
+        [JsonProperty("identityDetails")]
+        public IdentityFilterValueDetails? IdentityDetails { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public FilterValue Set(
         System.String? Id = null,
-        System.String? Label = null
+        System.String? Label = null,
+        IdentityFilterValueDetails? IdentityDetails = null
     ) 
     {
         if ( Id != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Label != null ) {
             this.Label = Label;
+        }
+        if ( IdentityDetails != null ) {
+            this.IdentityDetails = IdentityDetails;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "label\n" ;
             } else {
                 s += ind + "label\n" ;
+            }
+        }
+        //      C# -> IdentityFilterValueDetails? IdentityDetails
+        // GraphQL -> identityDetails: IdentityFilterValueDetails (type)
+        if (this.IdentityDetails != null) {
+            var fspec = this.IdentityDetails.AsFieldSpec(conf.Child("identityDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "identityDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Label != null && ec.Excludes("label",true))
         {
             this.Label = null;
+        }
+        //      C# -> IdentityFilterValueDetails? IdentityDetails
+        // GraphQL -> identityDetails: IdentityFilterValueDetails (type)
+        if (ec.Includes("identityDetails",false))
+        {
+            if(this.IdentityDetails == null) {
+
+                this.IdentityDetails = new IdentityFilterValueDetails();
+                this.IdentityDetails.ApplyExploratoryFieldSpec(ec.NewChild("identityDetails"));
+
+            } else {
+
+                this.IdentityDetails.ApplyExploratoryFieldSpec(ec.NewChild("identityDetails"));
+
+            }
+        }
+        else if (this.IdentityDetails != null && ec.Excludes("identityDetails",false))
+        {
+            this.IdentityDetails = null;
         }
     }
 

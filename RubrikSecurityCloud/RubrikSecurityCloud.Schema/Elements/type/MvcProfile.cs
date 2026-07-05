@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analysisJob")]
         public MvcAnalysisJob? AnalysisJob { get; set; }
 
+        //      C# -> List<M365AbrRecoveryPlan>? RecoveryPlans
+        // GraphQL -> recoveryPlans: [M365AbrRecoveryPlan!]! (type)
+        [JsonProperty("recoveryPlans")]
+        public List<M365AbrRecoveryPlan>? RecoveryPlans { get; set; }
+
 
         #endregion
 
@@ -89,7 +94,8 @@ namespace RubrikSecurityCloud.Types
         System.Int32? TotalUniqueUsers = null,
         DateTime? UpdatedAt = null,
         List<System.String>? UserIds = null,
-        MvcAnalysisJob? AnalysisJob = null
+        MvcAnalysisJob? AnalysisJob = null,
+        List<M365AbrRecoveryPlan>? RecoveryPlans = null
     ) 
     {
         if ( Description != null ) {
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AnalysisJob != null ) {
             this.AnalysisJob = AnalysisJob;
+        }
+        if ( RecoveryPlans != null ) {
+            this.RecoveryPlans = RecoveryPlans;
         }
         return this;
     }
@@ -226,6 +235,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "analysisJob" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<M365AbrRecoveryPlan>? RecoveryPlans
+        // GraphQL -> recoveryPlans: [M365AbrRecoveryPlan!]! (type)
+        if (this.RecoveryPlans != null) {
+            var fspec = this.RecoveryPlans.AsFieldSpec(conf.Child("recoveryPlans"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "recoveryPlans" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -407,6 +428,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnalysisJob != null && ec.Excludes("analysisJob",false))
         {
             this.AnalysisJob = null;
+        }
+        //      C# -> List<M365AbrRecoveryPlan>? RecoveryPlans
+        // GraphQL -> recoveryPlans: [M365AbrRecoveryPlan!]! (type)
+        if (ec.Includes("recoveryPlans",false))
+        {
+            if(this.RecoveryPlans == null) {
+
+                this.RecoveryPlans = new List<M365AbrRecoveryPlan>();
+                this.RecoveryPlans.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlans"));
+
+            } else {
+
+                this.RecoveryPlans.ApplyExploratoryFieldSpec(ec.NewChild("recoveryPlans"));
+
+            }
+        }
+        else if (this.RecoveryPlans != null && ec.Excludes("recoveryPlans",false))
+        {
+            this.RecoveryPlans = null;
         }
     }
 

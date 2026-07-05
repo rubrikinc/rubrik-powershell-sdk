@@ -39,3 +39,5 @@ Filters for the cluster list.
   - Include Rubrik clusters which are disconnected  or in fatal state.
 - cyberEventLockdownMode: list of ClusterCyberEventLockdownModes
   - Cyber Event Lockdown mode of the Rubrik cluster.
+- isAssignedByParentAccount: System.Boolean
+  - Filter on shared (parent-assigned) clusters. When true, return only shared clusters; when false, exclude them; omit for no filter.

@@ -201,3 +201,14 @@ Represents all the object types for which we expect to see audits.
 - PING_FEDERATE_CLUSTER - Ping Federate Cluster.
 - AGENT_CLOUD_ALERT - Agent Cloud alert object.
 - AGENT_CLOUD_VIOLATION - Agent Cloud violation object.
+- AUTH0_TENANT - Auth0 tenant.
+- MARIADB_INSTANCE - MariaDB instance.
+- AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps Developer Collaboration (work items, boards, wikis) per project.
+- POWER_PLATFORM_CANVAS_APP - Power Platform canvas app.
+- POWER_PLATFORM_MODEL_DRIVEN_APP - Power Platform model-driven app.
+- POWER_PLATFORM_CLOUD_FLOW - Power Platform cloud flow.
+- POWER_PLATFORM_BUSINESS_PROCESS_FLOW - Power Platform business process flow.
+- POWER_PLATFORM_DESKTOP_FLOW - Power Platform desktop flow.
+- POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform classic workflow.
+- POWER_PLATFORM_BUSINESS_RULE - Power Platform business rule.
+- POWER_PLATFORM_CUSTOM_ACTION - Power Platform custom action.

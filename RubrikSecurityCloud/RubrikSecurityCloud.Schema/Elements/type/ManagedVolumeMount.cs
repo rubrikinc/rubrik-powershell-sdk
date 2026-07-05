@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.Int64? LogicalUsedSize
         // GraphQL -> logicalUsedSize: Long! (scalar)
         [JsonProperty("logicalUsedSize")]
@@ -229,6 +234,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? Id = null,
+        System.Boolean? IsReplica = null,
         System.Int64? LogicalUsedSize = null,
         System.String? Name = null,
         System.Int32? NumChannels = null,
@@ -283,6 +289,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( LogicalUsedSize != null ) {
             this.LogicalUsedSize = LogicalUsedSize;
@@ -475,6 +484,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Int64? LogicalUsedSize
@@ -941,6 +959,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Int64? LogicalUsedSize
         // GraphQL -> logicalUsedSize: Long! (scalar)

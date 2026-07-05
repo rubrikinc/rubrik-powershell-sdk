@@ -15,14 +15,36 @@ An Azure Postgres Flexible Server. For more info, see https://learn.microsoft.co
   - Specifies whether the Azure Postgres Flexible Server is protectable.
 - azureResourceGroupDetails: AzureResourceGroupDetails
   - Azure native resource group and subscription details.
+- hostname: System.String
+  - Fully qualified domain name of the Azure Postgres Flexible Server.
+- engineVersion: System.String
+  - PostgreSQL engine major version of the Azure Postgres Flexible Server (e.g., "14", "15", "16").
+- computeTier: AzurePostgresFlexibleServerComputeTier
+  - Compute tier of the Azure Postgres Flexible Server.
+- storageSizeGb: System.Int32
+  - Storage size allocated to the Azure Postgres Flexible Server in GB.
+- haMode: System.String
+  - High availability mode of the Azure Postgres Flexible Server (e.g., "ZoneRedundant" or "SameZone").
+- vCoresCount: System.Int32
+  - Number of vCores allocated to the Azure Postgres Flexible Server.
+- dataEncryptionType: AzureNativeResourceEncryptionType
+  - Data encryption type of the Azure Postgres Flexible Server (platform-managed key or customer-managed key).
+- availabilityZone: System.String
+  - Availability zone in which the Azure Postgres Flexible Server is located. The value is empty for regional deployments that are not pinned to a specific zone.
+- computeSize: System.String
+  - Name of the compute SKU assigned to the Azure Postgres Flexible Server, for example, Standard_D2ds_v5.
+- backupRetentionDays: System.Int32
+  - Number of days that backups are retained for the Azure Postgres Flexible Server, as reported by Azure. The value is 0 when Azure has not reported a retention period.
+- isPublicNetworkAccess: System.Boolean
+  - Specifies whether the Azure Postgres Flexible Server accepts traffic from the public internet. When the value is false, the server uses a private endpoint or virtual network integration.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for the region in which the Azure Postgres Flexible Server is located. When the value is true, exocompute can be used to perform tasks like file indexing.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - azureNativeResourceGroup: AzureNativeResourceGroup
   - Resource Group of the Azure Postgres Flexible Server.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- skuTier: System.String
+  - Compute tier of the Azure Postgres Flexible Server.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -57,3 +79,23 @@ An Azure Postgres Flexible Server. For more info, see https://learn.microsoft.co
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The latest snapshot that is indexed and unexpired, and therefore restorable.

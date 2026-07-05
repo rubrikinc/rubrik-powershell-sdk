@@ -1,23 +1,23 @@
 ### O365FullSpDescendant
 An O365 SharePoint descendant object.
 
+- o365QuarantineInfo: O365QuarantineInfo
+  - Quarantine information for the SharePoint descendant object.
 - sharepointId: System.String
-  - The ID of the sharepoint descendant object.
+  - The SharePoint natural ID of the SharePoint descendant object.
 - fid: System.String
   - The fid of the SharePoint descendant object.
 - parentId: System.String
-  - The parent id of the SharePoint descendant object.
+  - The parent ID of the SharePoint descendant object.
 - objectType: SharePointDescendantType
-  - The SharePoint descendant object type.
+  - The object type.
 - name: System.String
   - The name of the SharePoint descendant object.
-- snapshotId: System.String
-  - The snapshot ID of this SharePoint descendant object.
-- snapshotNum: System.Int32
-  - The snapshot number of this SharePoint descendant object.
 - createTime: DateTime
-  - The create time of this SharePoint descendant object.
+  - The time when this SharePoint descendant object was created.
 - modifiedTime: DateTime
-  - The modified time of this SharePoint descendant object.
-- o365QuarantineInfo: O365QuarantineInfo
-  - Quarantine information for the SharePoint descendant object.
+  - The time when this SharePoint descendant object was modified.
+- snapshotId: System.String
+  - The ID of the snapshot.
+- snapshotNum: System.Int32
+  - The sequence number of the snapshot.

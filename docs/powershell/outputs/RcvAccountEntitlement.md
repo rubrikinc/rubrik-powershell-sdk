@@ -8,4 +8,5 @@ Rubrik Cloud Vault (RCV) account capacity entitlement.
 - entitlements: list of RcvEntitlementsUsageDetailss
   - Rubrik Cloud Vault (RCV) Entitlements.
 - rcvEntitlementGroups: list of RcvEntitlementGroups
-  - Entitlement groups for capacity consolidation. Only populated when SKU consolidation is enabled.
+  - Entitlement groups for capacity consolidation. Only populated when SKU
+consolidation is enabled.

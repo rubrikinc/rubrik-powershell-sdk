@@ -1,4 +1,6 @@
 ### PrincipalSummaryCategoryType
+Category of principals to summarize.
+
 - PRINCIPAL_SUMMARY_CATEGORY_UNSPECIFIED - Default summarization.
 - USERS_WITH_SENSITIVE_ACCESS - Users with sensitive access.
 - NEW_USERS_WITH_SENSITIVE_ACCESS - New users with sensitive access.

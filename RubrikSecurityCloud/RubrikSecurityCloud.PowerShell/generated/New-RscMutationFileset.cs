@@ -462,8 +462,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	snapshotFid = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotFid = $someString
+    /// 	# REQUIRED
+    /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# REQUIRED
+    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
     /// 	# REQUIRED
     /// 	restorePathPairList = @(
     /// 		@{
@@ -477,6 +479,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	deltaTypeFilter = @(
     /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotFid = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
@@ -504,12 +508,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		postRestoreScript = $someString
     /// 		# OPTIONAL
+    /// 		previousJobInstanceId = $someString
+    /// 		# OPTIONAL
     /// 		shouldRestoreOnlyAcls = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
-    /// 	# REQUIRED
-    /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
@@ -543,8 +545,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	snapshotId = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotId = $someString
+    /// 	# REQUIRED
+    /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# REQUIRED
+    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
     /// 	# REQUIRED
     /// 	restorePathPairList = @(
     /// 		@{
@@ -558,6 +562,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	deltaTypeFilter = @(
     /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotId = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
@@ -585,12 +591,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		postRestoreScript = $someString
     /// 		# OPTIONAL
+    /// 		previousJobInstanceId = $someString
+    /// 		# OPTIONAL
     /// 		shouldRestoreOnlyAcls = $someBoolean
     /// 	}
-    /// 	# REQUIRED
-    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
-    /// 	# REQUIRED
-    /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
     /// 	# REQUIRED
     /// 	locationId = $someString
     /// 	# OPTIONAL
@@ -1159,8 +1163,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	snapshotFid = $someString
-	# OPTIONAL
-	nextSnapshotFid = $someString
+	# REQUIRED
+	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# REQUIRED
+	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	restorePathPairList = @(
 		@{
@@ -1174,6 +1180,8 @@ $query.Var.input = @{
 	deltaTypeFilter = @(
 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 	)
+	# OPTIONAL
+	nextSnapshotFid = $someString
 	# REQUIRED
 	config = @{
 		# OPTIONAL
@@ -1201,12 +1209,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		postRestoreScript = $someString
 		# OPTIONAL
+		previousJobInstanceId = $someString
+		# OPTIONAL
 		shouldRestoreOnlyAcls = $someBoolean
 	}
-	# REQUIRED
-	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
-	# REQUIRED
-	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
@@ -1232,8 +1238,10 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	snapshotId = $someString
-	# OPTIONAL
-	nextSnapshotId = $someString
+	# REQUIRED
+	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# REQUIRED
+	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
 	# REQUIRED
 	restorePathPairList = @(
 		@{
@@ -1247,6 +1255,8 @@ $query.Var.input = @{
 	deltaTypeFilter = @(
 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 	)
+	# OPTIONAL
+	nextSnapshotId = $someString
 	# REQUIRED
 	config = @{
 		# OPTIONAL
@@ -1274,12 +1284,10 @@ $query.Var.input = @{
 		# OPTIONAL
 		postRestoreScript = $someString
 		# OPTIONAL
+		previousJobInstanceId = $someString
+		# OPTIONAL
 		shouldRestoreOnlyAcls = $someBoolean
 	}
-	# REQUIRED
-	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
-	# REQUIRED
-	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
 	# REQUIRED
 	locationId = $someString
 	# OPTIONAL

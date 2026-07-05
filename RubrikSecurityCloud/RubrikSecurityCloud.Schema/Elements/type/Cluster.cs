@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
         public ClusterSystemStatus? SystemStatus { get; set; }
 
         //      C# -> ClusterTypeEnum? Type
-        // GraphQL -> type: ClusterTypeEnum (enum)
+        // GraphQL -> type: ClusterTypeEnum! (enum)
         [JsonProperty("type")]
         public ClusterTypeEnum? Type { get; set; }
 
@@ -807,7 +807,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> ClusterTypeEnum? Type
-        // GraphQL -> type: ClusterTypeEnum (enum)
+        // GraphQL -> type: ClusterTypeEnum! (enum)
         if (this.Type != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "type\n" ;
@@ -1572,7 +1572,7 @@ namespace RubrikSecurityCloud.Types
             this.SystemStatus = null;
         }
         //      C# -> ClusterTypeEnum? Type
-        // GraphQL -> type: ClusterTypeEnum (enum)
+        // GraphQL -> type: ClusterTypeEnum! (enum)
         if (ec.Includes("type",true))
         {
             if(this.Type == null) {

@@ -10,3 +10,4 @@ For AD, Okta, EntraID, AWS Identity center etc.
 For identity-related events, such as changes to group memberships and GPOs
 - POLICY_TYPE_CROWDSTRIKE - Crowdstrike policy type.
 - POLICY_TYPE_MICROSOFT_DEFENDER - Microsoft Defender for Identity policy type.
+- POLICY_TYPE_SIGNIN_ANOMALY - Sign-in anomaly policy type.

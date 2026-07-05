@@ -38,3 +38,6 @@ v8.0: An optional field that identifies the vCenter Server with a unique identif
 v9.0+: An optional field that identifies the vCenter Server with a unique identifier.
 - slaAssignable: SlaAssignable
 - vcenterPatch: VcenterPatch
+- isComputeVisibilityFilterDisabled: System.Boolean
+  - Supported in v9.6+
+A Boolean value that indicates whether compute cluster visibility is disabled for this vCenter. When this value is `true`, no compute clusters, hosts, or virtual machines are visible to this Rubrik cluster from this vCenter (cross-site disaster recovery standby mode). When this value is `false`, compute visibility behaves normally and the configured `computeVisibilityFilter` is applied. When this value is not specified, the vCenter was added on a cluster version that predates this field; treat it as equivalent to `false`.

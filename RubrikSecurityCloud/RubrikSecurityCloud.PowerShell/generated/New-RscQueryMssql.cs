@@ -628,6 +628,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -952,6 +954,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -1798,6 +1802,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
             );
@@ -1920,7 +1926,7 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!): MssqlLogShippingSummaryV2ListResponse
+        // mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!): MssqlLogShippingSummaryV2ListResponse!
         internal void InitQueryMssqlLogShippingTargets()
         {
             Tuple<string, string>[] argDefs = {
@@ -2070,6 +2076,8 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
             );

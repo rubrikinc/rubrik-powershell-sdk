@@ -181,6 +181,7 @@ All supported Rubrik managed objects.
 - OLVM_COMPUTE_CLUSTER - OLVM Compute Cluster.
 - OLVM_HOST - OLVM Host.
 - OLVM_VIRTUAL_MACHINE - OLVM Virtual Machine.
+- OLVM_TAG - OLVM Tag.
 - OKTA_TENANT - Okta tenant.
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
 - GOOGLE_WORKSPACE_GROUP - Google Workspace Group.
@@ -209,9 +210,26 @@ All supported Rubrik managed objects.
 - GLUE_ICEBERG_CATALOG - Glue Iceberg catalog.
 - GLUE_ICEBERG_DATABASE - Glue Iceberg database.
 - GLUE_ICEBERG_TABLE - Glue Iceberg table.
+- S3_TABLES_ICEBERG_CATALOG - S3 Tables Iceberg catalog.
+- S3_TABLES_ICEBERG_NAMESPACE - S3 Tables Iceberg namespace.
+- S3_TABLES_ICEBERG_TABLE - S3 Tables Iceberg table.
 - RSC_TAG - RSC tag. Logical container used to group inventory objects for
 organization and policy assignment (e.g., SLA Domain inheritance via tag).
 - PING_FEDERATE_CLUSTER - Ping Federate cluster.
+- POWER_PLATFORM_ENVIRONMENT - Power Platform environment.
+- POWER_PLATFORM_CANVAS_APP - Power Platform Canvas App.
+- POWER_PLATFORM_MODEL_DRIVEN_APP - Power Platform Model-Driven App.
+- POWER_PLATFORM_CLOUD_FLOW - Power Platform Cloud Flow.
+- POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform Classic Workflow.
+- POWER_PLATFORM_DIALOG - Power Platform Dialog.
+- POWER_PLATFORM_BUSINESS_RULE - Power Platform Business Rule.
+- POWER_PLATFORM_CUSTOM_ACTION - Power Platform Custom Action.
+- POWER_PLATFORM_BUSINESS_PROCESS_FLOW - Power Platform Business Process Flow.
+- POWER_PLATFORM_DESKTOP_FLOW - Power Platform Desktop Flow.
+- POWER_PLATFORM_AI_FLOW - Power Platform AI Flow.
+- MARIADB_INSTANCE - MariaDB Instance.
+- MARIADB_DATABASE - MariaDB Database.
+- AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps project-scoped fixed object to represent non repo entity.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

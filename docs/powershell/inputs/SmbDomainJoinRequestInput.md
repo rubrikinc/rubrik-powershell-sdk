@@ -21,6 +21,9 @@ Password for joining Active Directory.
 - username: System.String
   - Required. Supported in v5.0+
 Username for joining Active Directory.
+- dnsServers: list of System.Strings
+  - Supported in v9.6+
+DNS servers authoritative for this AD domain (max 3, glibc resolver limit). Each must be a usable IPv4 or IPv6 address (not loopback, link-local, multicast, broadcast, or unspecified).
 - orgNetworkId: System.String
   - Supported in v9.2+
 Organizational network ID used by the domain. Applicable only when Rubrik Envoy is used to reach SMB domain from the Rubrik cluster.

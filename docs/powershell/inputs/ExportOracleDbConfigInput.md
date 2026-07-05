@@ -50,7 +50,8 @@ List of PDB names to be cloned in the target database.
 v8.1-v9.0: Indicates whether to skip dropping the database in undo task if the database was partially recovered.
 v9.1+: Indicates whether to skip dropping the database during an undo task if the database was partially recovered.
 - shouldRecoverToLatestFromRedo: System.Boolean
-  - When true, applies Zero RPO redo logs after RMAN recovery to achieve maximum data recovery up to the latest streamed transaction. Requires Zero RPO to be enabled on the source database.
+  - Supported in v9.6+
+When true, applies Zero RPO redo logs after RMAN recovery to achieve maximum data recovery up to the latest streamed transaction. Requires Zero RPO to be enabled on the source database.
 - targetRacHostIds: list of System.Strings
   - Supported in v9.0+
 List of RAC host simple IDs to recover the database during the clone.

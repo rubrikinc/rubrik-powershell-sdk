@@ -7,7 +7,7 @@ Cascading archival specification info.
   - Archival tiering specification.
 - frequency: list of RetentionUnits
   - Frequencies that are associated with this cascaded archival location.
-- archivalLocation: Target
-  - Archival location for snapshot on target.
 - archivalLocationToClusterMapping: list of CascadingArchivalLocationToClusterMappings
   - Mapping between the archival location and the Rubrik cluster.
+- archivalLocation: Target
+  - Archival location for snapshot on target.

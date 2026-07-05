@@ -26,10 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotFid")]
         public System.String? SnapshotFid { get; set; }
 
-        //      C# -> System.String? NextSnapshotFid
-        // GraphQL -> nextSnapshotFid: UUID (scalar)
-        [JsonProperty("nextSnapshotFid")]
-        public System.String? NextSnapshotFid { get; set; }
+        //      C# -> GuestOsType? OsType
+        // GraphQL -> osType: GuestOsType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("osType")]
+        public GuestOsType? OsType { get; set; }
+
+        //      C# -> ShareTypeEnum? ShareType
+        // GraphQL -> shareType: ShareTypeEnum! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shareType")]
+        public ShareTypeEnum? ShareType { get; set; }
 
         //      C# -> List<OldRestorePathPairInput>? RestorePathPairList
         // GraphQL -> restorePathPairList: [OldRestorePathPairInput!]! (input)
@@ -43,26 +52,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("deltaTypeFilter")]
         public List<DeltaType>? DeltaTypeFilter { get; set; }
 
+        //      C# -> System.String? NextSnapshotFid
+        // GraphQL -> nextSnapshotFid: UUID (scalar)
+        [JsonProperty("nextSnapshotFid")]
+        public System.String? NextSnapshotFid { get; set; }
+
         //      C# -> FilesetRestoreFilesJobConfigInput? Config
         // GraphQL -> config: FilesetRestoreFilesJobConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("config")]
         public FilesetRestoreFilesJobConfigInput? Config { get; set; }
-
-        //      C# -> ShareTypeEnum? ShareType
-        // GraphQL -> shareType: ShareTypeEnum! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shareType")]
-        public ShareTypeEnum? ShareType { get; set; }
-
-        //      C# -> GuestOsType? OsType
-        // GraphQL -> osType: GuestOsType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("osType")]
-        public GuestOsType? OsType { get; set; }
 
         //      C# -> RecoveryPurpose? RecoveryPurpose
         // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)

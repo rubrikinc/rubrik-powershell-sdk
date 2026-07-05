@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'VMware vSphere VM' API domain:
-    /// AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, RecoverableRangeInBatch, RecoveryRangeStatuses, or WithProvisionOnInfrastructure.
+    /// AsyncRequestStatus, New, NewList, RecoverableRangeInBatch, RecoveryRangeStatuses, or WithProvisionOnInfrastructure.
     /// </summary>
     /// <description>
     /// New-RscQueryVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 6 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AsyncRequestStatus, MissedRecoverableRange, New, NewList, RecoverableRange, RecoverableRangeInBatch, RecoveryRangeStatuses, or WithProvisionOnInfrastructure.
+    /// one of: AsyncRequestStatus, New, NewList, RecoverableRangeInBatch, RecoveryRangeStatuses, or WithProvisionOnInfrastructure.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -99,38 +99,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the MissedRecoverableRange operation
-    /// of the 'VMware vSphere VM' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    VsphereVm
-    /// # API Operation: MissedRecoverableRange
-    /// 
-    /// $query = New-RscQueryVsphereVm -Operation MissedRecoverableRange
-    /// 
-    /// # REQUIRED
-    /// $query.Var.snappableFid = $someString
-    /// # OPTIONAL
-    /// $query.Var.beforeTime = $someDateTime
-    /// # OPTIONAL
-    /// $query.Var.afterTime = $someDateTime
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RecoverableRangeResponse
     /// 
     /// 
     /// 
@@ -231,6 +199,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		gcpNativeProtectionFeatureNames = @(
     /// 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
     /// 		)
+    /// 		# OPTIONAL
+    /// 		timeParam = $someDateTime
     /// }
     /// )
     /// 
@@ -239,38 +209,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: VsphereVmConnection
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
-    /// Runs the RecoverableRange operation
-    /// of the 'VMware vSphere VM' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    VsphereVm
-    /// # API Operation: RecoverableRange
-    /// 
-    /// $query = New-RscQueryVsphereVm -Operation RecoverableRange
-    /// 
-    /// # REQUIRED
-    /// $query.Var.snappableFid = $someString
-    /// # OPTIONAL
-    /// $query.Var.beforeTime = $someDateTime
-    /// # OPTIONAL
-    /// $query.Var.afterTime = $someDateTime
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: RecoverableRangeResponse
     /// 
     /// 
     /// 
@@ -395,10 +333,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "AsyncRequestStatus",
-                "MissedRecoverableRange",
                 "New",
                 "NewList",
-                "RecoverableRange",
                 "RecoverableRangeInBatch",
                 "RecoveryRangeStatuses",
                 "WithProvisionOnInfrastructure",
@@ -420,17 +356,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "AsyncRequestStatus":
                         this.ProcessRecord_AsyncRequestStatus();
                         break;
-                    case "MissedRecoverableRange":
-                        this.ProcessRecord_MissedRecoverableRange();
-                        break;
                     case "New":
                         this.ProcessRecord_New();
                         break;
                     case "NewList":
                         this.ProcessRecord_NewList();
-                        break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
                         break;
                     case "RecoverableRangeInBatch":
                         this.ProcessRecord_RecoverableRangeInBatch();
@@ -461,15 +391,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // vsphereVMMissedRecoverableRange.
-        internal void ProcessRecord_MissedRecoverableRange()
-        {
-            this._logger.name += " -MissedRecoverableRange";
-            // Create new graphql operation vsphereVMMissedRecoverableRange
-            InitQueryVsphereVmMissedRecoverableRange();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vSphereVmNew.
         internal void ProcessRecord_New()
         {
@@ -485,15 +406,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -NewList";
             // Create new graphql operation vSphereVmNewConnection
             InitQueryVsphereVmNewConnection();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereVMRecoverableRange.
-        internal void ProcessRecord_RecoverableRange()
-        {
-            this._logger.name += " -RecoverableRange";
-            // Create new graphql operation vsphereVMRecoverableRange
-            InitQueryVsphereVmRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -544,32 +456,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 $query.Var.clusterUuid = $someString
 # REQUIRED
 $query.Var.id = $someString"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse!
-        internal void InitQueryVsphereVmMissedRecoverableRange()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snappableFid", "UUID!"),
-                Tuple.Create("beforeTime", "DateTime"),
-                Tuple.Create("afterTime", "DateTime"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVsphereVmMissedRecoverableRange",
-                "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
-                "RecoverableRangeResponse",
-                Query.VsphereVmMissedRecoverableRange,
-                Query.VsphereVmMissedRecoverableRangeFieldSpec,
-                @"# REQUIRED
-$query.Var.snappableFid = $someString
-# OPTIONAL
-$query.Var.beforeTime = $someDateTime
-# OPTIONAL
-$query.Var.afterTime = $someDateTime"
             );
         }
 
@@ -670,34 +556,10 @@ $query.Var.filter = @(
 		gcpNativeProtectionFeatureNames = @(
 			$someGcpNativeProtectionFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpNativeProtectionFeature]) for enum values.
 		)
+		# OPTIONAL
+		timeParam = $someDateTime
 }
 )"
-            );
-        }
-
-        // Create new GraphQL Query:
-        // vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime): RecoverableRangeResponse!
-        internal void InitQueryVsphereVmRecoverableRange()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("snappableFid", "UUID!"),
-                Tuple.Create("beforeTime", "DateTime"),
-                Tuple.Create("afterTime", "DateTime"),
-            };
-            Initialize(
-                argDefs,
-                "query",
-                "QueryVsphereVmRecoverableRange",
-                "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)",
-                "RecoverableRangeResponse",
-                Query.VsphereVmRecoverableRange,
-                Query.VsphereVmRecoverableRangeFieldSpec,
-                @"# REQUIRED
-$query.Var.snappableFid = $someString
-# OPTIONAL
-$query.Var.beforeTime = $someDateTime
-# OPTIONAL
-$query.Var.afterTime = $someDateTime"
             );
         }
 

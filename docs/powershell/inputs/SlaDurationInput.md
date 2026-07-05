@@ -1,7 +1,7 @@
 ### SlaDurationInput
-Input to SLA Domain duration.
+Duration.
 
 - duration: System.Int32
-  - Duration of SLA Domain.
+  - Duration.
 - unit: RetentionUnit
   - Unit of duration.

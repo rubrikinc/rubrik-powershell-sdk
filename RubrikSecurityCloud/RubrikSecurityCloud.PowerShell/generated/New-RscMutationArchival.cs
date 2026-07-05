@@ -450,12 +450,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotId = $someString
-    /// 	# OPTIONAL
-    /// 	userNote = $someString
-    /// 	# OPTIONAL
-    /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -476,6 +470,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	deltaTypeFilter = @(
     /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# OPTIONAL
+    /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	locationId = $someString
     /// }
@@ -668,6 +668,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					# REQUIRED
     /// 					deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
     /// 				}
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			rcvAws = @{
+    /// 				# REQUIRED
+    /// 				region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+    /// 				# REQUIRED
+    /// 				rcvTier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
+    /// 				# REQUIRED
+    /// 				redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 				# REQUIRED
+    /// 				encryptionKeyInDer = $someString
     /// 			}
     /// 		}
     /// 	}
@@ -1525,12 +1536,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
-	# OPTIONAL
-	nextSnapshotId = $someString
-	# OPTIONAL
-	userNote = $someString
-	# OPTIONAL
-	zipPassword = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -1551,6 +1556,12 @@ $query.Var.input = @{
 	deltaTypeFilter = @(
 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 	)
+	# OPTIONAL
+	nextSnapshotId = $someString
+	# OPTIONAL
+	userNote = $someString
+	# OPTIONAL
+	zipPassword = $someString
 	# REQUIRED
 	locationId = $someString
 }"
@@ -1703,6 +1714,17 @@ $query.Var.input = @{
 					# REQUIRED
 					deploymentType = $someIbmDeploymentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IbmDeploymentType]) for enum values.
 				}
+			}
+			# OPTIONAL
+			rcvAws = @{
+				# REQUIRED
+				region = $someAwsRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRegion]) for enum values.
+				# REQUIRED
+				rcvTier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
+				# REQUIRED
+				redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+				# REQUIRED
+				encryptionKeyInDer = $someString
 			}
 		}
 	}

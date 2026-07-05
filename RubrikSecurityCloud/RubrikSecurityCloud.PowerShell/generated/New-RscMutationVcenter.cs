@@ -119,6 +119,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
     /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
+    /// 		# OPTIONAL
     /// 		isStandaloneHost = $someBoolean
     /// 		# OPTIONAL
     /// 		orgNetworkId = $someString
@@ -247,6 +249,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV51 = @{
@@ -275,6 +279,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV52 = @{
@@ -303,6 +309,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV53 = @{
@@ -331,6 +339,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV60 = @{
@@ -359,6 +369,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV70 = @{
@@ -387,6 +399,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV80 = @{
@@ -415,6 +429,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV81 = @{
@@ -443,6 +459,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV90 = @{
@@ -471,6 +489,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV91 = @{
@@ -499,6 +519,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	updatePropertiesV92 = @{
@@ -529,6 +551,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			isComputeVisibilityFilterDisabled = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -562,6 +586,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			isComputeVisibilityFilterDisabled = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -595,6 +621,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			isComputeVisibilityFilterDisabled = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -628,6 +656,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			isComputeVisibilityFilterDisabled = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -661,6 +691,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			isComputeVisibilityFilterDisabled = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	updatePropertiesV97 = @{
+    /// 		# OPTIONAL
+    /// 		vcenterConfig = @{
+    /// 			# OPTIONAL
+    /// 			caCerts = $someString
+    /// 			# OPTIONAL
+    /// 			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+    /// 			# REQUIRED
+    /// 			hostname = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 			# OPTIONAL
+    /// 			computeVisibilityFilter = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					hostGroupFilter = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					isVmwareMetroStorageCluster = $someBoolean
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+    /// 			# OPTIONAL
+    /// 			isComputeVisibilityFilterDisabled = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -787,6 +854,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	updateProperties = @{
+    /// 		# OPTIONAL
+    /// 		isComputeVisibilityFilterDisabled = $someBoolean
     /// 		# OPTIONAL
     /// 		conflictResolutionAuthz = $someVcenterUpdateConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterUpdateConfigV2ConflictResolutionAuthz]) for enum values.
     /// 		# OPTIONAL
@@ -992,6 +1061,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
 		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
+		# OPTIONAL
 		isStandaloneHost = $someBoolean
 		# OPTIONAL
 		orgNetworkId = $someString
@@ -1096,6 +1167,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV51 = @{
@@ -1124,6 +1197,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV52 = @{
@@ -1152,6 +1227,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV53 = @{
@@ -1180,6 +1257,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV60 = @{
@@ -1208,6 +1287,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV70 = @{
@@ -1236,6 +1317,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV80 = @{
@@ -1264,6 +1347,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV81 = @{
@@ -1292,6 +1377,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV90 = @{
@@ -1320,6 +1407,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV91 = @{
@@ -1348,6 +1437,8 @@ $query.Var.input = @{
 		)
 		# OPTIONAL
 		shouldEnableHotAddProxyForOnPrem = $someBoolean
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 	}
 	# OPTIONAL
 	updatePropertiesV92 = @{
@@ -1378,6 +1469,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			isComputeVisibilityFilterDisabled = $someBoolean
 		}
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -1411,6 +1504,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			isComputeVisibilityFilterDisabled = $someBoolean
 		}
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -1444,6 +1539,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			isComputeVisibilityFilterDisabled = $someBoolean
 		}
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -1477,6 +1574,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			isComputeVisibilityFilterDisabled = $someBoolean
 		}
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -1510,6 +1609,43 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			isComputeVisibilityFilterDisabled = $someBoolean
+		}
+		# OPTIONAL
+		shouldUpdateComputeVisibilityFilter = $someBoolean
+	}
+	# OPTIONAL
+	updatePropertiesV97 = @{
+		# OPTIONAL
+		vcenterConfig = @{
+			# OPTIONAL
+			caCerts = $someString
+			# OPTIONAL
+			conflictResolutionAuthz = $someVcenterConfigConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterConfigConflictResolutionAuthz]) for enum values.
+			# REQUIRED
+			hostname = $someString
+			# REQUIRED
+			password = $someString
+			# REQUIRED
+			username = $someString
+			# OPTIONAL
+			computeVisibilityFilter = @(
+				@{
+					# REQUIRED
+					hostGroupFilter = @(
+						$someString
+					)
+					# REQUIRED
+					id = $someString
+					# OPTIONAL
+					isVmwareMetroStorageCluster = $someBoolean
+				}
+			)
+			# OPTIONAL
+			shouldEnableHotAddProxyForOnPrem = $someBoolean
+			# OPTIONAL
+			isComputeVisibilityFilterDisabled = $someBoolean
 		}
 		# OPTIONAL
 		shouldUpdateComputeVisibilityFilter = $someBoolean
@@ -1612,6 +1748,8 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	updateProperties = @{
+		# OPTIONAL
+		isComputeVisibilityFilterDisabled = $someBoolean
 		# OPTIONAL
 		conflictResolutionAuthz = $someVcenterUpdateConfigV2ConflictResolutionAuthz # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VcenterUpdateConfigV2ConflictResolutionAuthz]) for enum values.
 		# OPTIONAL

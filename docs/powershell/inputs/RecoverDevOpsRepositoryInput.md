@@ -4,7 +4,7 @@ Request message for the API to recover a DevOps repository from a snapshot.
 - repositoryId: System.String
   - RSC-assigned UUID of the source DevOps repository to recover from.
 - repoType: DevopsOrgType
-  - The type of DevOps organization — AZURE_DEVOPS or GITHUB.
+  - The type of DevOps organization -- AZURE_DEVOPS or GITHUB.
 - orgId: System.String
   - RSC-assigned UUID of the destination organization where the repository
 will be recovered.

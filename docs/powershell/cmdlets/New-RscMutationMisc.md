@@ -298,6 +298,12 @@ Place legal hold on snapshots.
 
 - There is a single argument of type CreateLegalHoldInput.
 - Returns CreateLegalHoldReply.
+### createondemandglueicebergtablebackup
+Schedules an on-demand job to take a backup snapshot of a Glue
+Iceberg table.
+
+- There is a single argument of type CreateOnDemandGlueIcebergTableBackupInput.
+- Returns CreateOnDemandGlueIcebergTableBackupReply.
 ### createondemandvolumegroupbackup
 Create on-demand snapshot for the Volume Group
 
@@ -321,6 +327,11 @@ Initiate instant recovery from vApp snapshots.
 
 - There is a single argument of type CreateVappsInstantRecoveryInput.
 - Returns CreateVappsInstantRecoveryReply.
+### createviolationremediation
+Create remediation for targets.
+
+- There is a single argument of type CreateViolationRemediationInput.
+- Returns CreateRemediationMetadata.
 ### createvrm
 Add a FusionCompute VRM instance
 
@@ -333,7 +344,7 @@ Create a FusionCompute VRM instance by providing the hostname and account creden
 Deactivate a custom analyzer.
 
 - There are 2 arguments.
-    - analyzerId - System.String
+    - analyzerId - System.String: Identifier of the custom analyzer to deactivate.
     - disableAnalyzer - System.Boolean: If true, disable the underlying requested analyzer.
 - Returns System.String.
 ### deleteadgroupsfromhierarchy
@@ -496,6 +507,14 @@ Expire snoozed directories.
 
 - There is a single argument of type ExpireSnoozedDirectoriesInput.
 - Returns ExpireSnoozedDirectoriesReply.
+### generatecdmtotpsecret
+Generate a TOTP secret key for the given user
+
+Supported in v5.3+
+Use this endpoint to generate the time-based one time password (TOTP) secret key for a specified user account. The secret is a key value encoded in Base32 and includes a URI for generating a scannable QR code.
+
+- There is a single argument of type GenerateCdmTotpSecretInput.
+- Returns GenerateCdmTotpSecretReply.
 ### generateconfigprotectionrestoreform
 Generate restore form for the configuration backup file.
 
@@ -791,6 +810,11 @@ Marks that the user has resolved that there are no conflicting volume groups on 
 
 - There is a single argument of type ResolveVolumeGroupsConflictInput.
 - Returns RequestSuccess.
+### resumerecovery
+Resume existing paused recovery.
+
+- There is a single argument of type ResumeRecoveryInput.
+- Returns System.String.
 ### retrybackup
 Initiates retry for a failed job.
 
@@ -809,6 +833,8 @@ Revoke all roles of the current organization from the specified users and groups
 - There is a single argument of type RevokeAllOrgRolesInput.
 - Returns System.String.
 ### runcustomanalyzer
+Runs a custom analyzer against sample content and returns the matches.
+
 - There is a single argument of type RunCustomAnalyzerInput.
 - Returns RunCustomAnalyzerReply.
 ### scheduleupgradebatchjob
@@ -904,6 +930,14 @@ Setup TOTP configuration for a user. Return true when the operation succeeds.
 
 - There is a single argument of type SetTotpConfigInput.
 - Returns System.Boolean.
+### setupcdmtotp
+Configure the TOTP secret for the given user
+
+Supported in v5.3+
+Use this endpoint to configure the time-based one time password (TOTP) secret for a specified user account. The endpoint replaces an existing secret with the new one. The Rubrik cluster checks the secret against a one time password (OTP) to ensure validity.
+
+- There is a single argument of type SetupCdmTotpInput.
+- Returns System.String.
 ### setupdisk
 Setup an unformatted disk.
 
@@ -930,13 +964,14 @@ Enable/disable alerts for given workload on given cluster.
 - There is a single argument of type SetWorkloadAlertSettingInput.
 - Returns SetWorkloadAlertSettingReply.
 ### startcrawl
+Endpoints for ODC
 Start a crawl.
 
 - There are 4 arguments.
-    - name - System.String
-    - resources - list of ResourceInputs
-    - analyzerGroups - list of AnalyzerGroupInputs
-    - extWhiteList - list of System.Strings
+    - name - System.String: Name of the crawl.
+    - resources - list of ResourceInputs: Resources to include in the crawl.
+    - analyzerGroups - list of AnalyzerGroupInputs: Analyzer groups to run during the crawl.
+    - extWhiteList - list of System.Strings: External whitelist entries for the crawl.
 - Returns StartCrawlReply.
 ### startdownloadpackagebatchjob
 Starts CDM job to download installer package in batch.
@@ -1073,6 +1108,8 @@ Unmount selected disks.
 - There is a single argument of type UnmountDiskInput.
 - Returns System.String.
 ### updateaccountowner
+Updates the account owner.
+
 - There is a single argument of type System.String.
 - Returns System.Boolean.
 ### updateadgroup
@@ -1121,6 +1158,14 @@ Find bad disk of a node in the CDM cluster.
 
 - There is a single argument of type UpdateBadDiskLedStatusInput.
 - Returns UpdateBadDiskLedStatusReply.
+### updatecdmuser
+ADMIN ONLY: Update existing User
+
+Supported in v5.0+
+To be used by Admin to update existing User.
+
+- There is a single argument of type UpdateCdmUserInput.
+- Returns UpdateCdmUserReply.
 ### updateclouddirectkerberoscredential
 UpdateCloudDirectKerberosCredential updates an existing Kerberos credential for NCD systems.
 
@@ -1312,10 +1357,10 @@ Update whitelisted analyzers for a path.
 
 - There are 5 arguments.
     - stdPath - System.String: The standard path of the directory to browse.
-    - snappableFid - System.String
-    - snapshotFid - System.String
-    - analyzerIds - list of System.Strings
-    - runAsync - System.Boolean
+    - snappableFid - System.String: Identifier of the object the path belongs to.
+    - snapshotFid - System.String: Identifier of the snapshot the path belongs to.
+    - analyzerIds - list of System.Strings: Identifiers of the analyzers to whitelist on the path.
+    - runAsync - System.Boolean: Determines whether to run this asynchronously.
 - Returns System.String.
 ### upgradeiofilter
 Upgrade the Rubrik ioFilter for the VMware cluster with a specific ID

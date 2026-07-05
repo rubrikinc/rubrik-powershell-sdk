@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> ListObjectFilesFiltersInput? Filters
-        // GraphQL -> filters: ListObjectFilesFiltersInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("filters")]
-        public ListObjectFilesFiltersInput? Filters { get; set; }
-
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("day")]
         public System.String? Day { get; set; }
+
+        //      C# -> ListObjectFilesFiltersInput? Filters
+        // GraphQL -> filters: ListObjectFilesFiltersInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("filters")]
+        public ListObjectFilesFiltersInput? Filters { get; set; }
 
         //      C# -> System.String? Timezone
         // GraphQL -> timezone: String! (scalar)

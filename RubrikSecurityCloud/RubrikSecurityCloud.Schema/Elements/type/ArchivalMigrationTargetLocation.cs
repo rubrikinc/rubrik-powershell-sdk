@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RcvAwsArchivalMigrationTarget? RcvAws
+        // GraphQL -> rcvAws: RcvAwsArchivalMigrationTarget (type)
+        [JsonProperty("rcvAws")]
+        public RcvAwsArchivalMigrationTarget? RcvAws { get; set; }
+
         //      C# -> S3CompatibleArchivalMigrationTarget? S3Compatible
         // GraphQL -> s3Compatible: S3CompatibleArchivalMigrationTarget (type)
         [JsonProperty("s3Compatible")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ArchivalMigrationTargetLocation Set(
+        RcvAwsArchivalMigrationTarget? RcvAws = null,
         S3CompatibleArchivalMigrationTarget? S3Compatible = null
     ) 
     {
+        if ( RcvAws != null ) {
+            this.RcvAws = RcvAws;
+        }
         if ( S3Compatible != null ) {
             this.S3Compatible = S3Compatible;
         }
@@ -55,6 +64,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RcvAwsArchivalMigrationTarget? RcvAws
+        // GraphQL -> rcvAws: RcvAwsArchivalMigrationTarget (type)
+        if (this.RcvAws != null) {
+            var fspec = this.RcvAws.AsFieldSpec(conf.Child("rcvAws"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "rcvAws" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> S3CompatibleArchivalMigrationTarget? S3Compatible
         // GraphQL -> s3Compatible: S3CompatibleArchivalMigrationTarget (type)
         if (this.S3Compatible != null) {
@@ -74,6 +95,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RcvAwsArchivalMigrationTarget? RcvAws
+        // GraphQL -> rcvAws: RcvAwsArchivalMigrationTarget (type)
+        if (ec.Includes("rcvAws",false))
+        {
+            if(this.RcvAws == null) {
+
+                this.RcvAws = new RcvAwsArchivalMigrationTarget();
+                this.RcvAws.ApplyExploratoryFieldSpec(ec.NewChild("rcvAws"));
+
+            } else {
+
+                this.RcvAws.ApplyExploratoryFieldSpec(ec.NewChild("rcvAws"));
+
+            }
+        }
+        else if (this.RcvAws != null && ec.Excludes("rcvAws",false))
+        {
+            this.RcvAws = null;
+        }
         //      C# -> S3CompatibleArchivalMigrationTarget? S3Compatible
         // GraphQL -> s3Compatible: S3CompatibleArchivalMigrationTarget (type)
         if (ec.Includes("s3Compatible",false))

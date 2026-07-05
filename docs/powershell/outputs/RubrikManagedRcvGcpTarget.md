@@ -1,22 +1,24 @@
 ### RubrikManagedRcvGcpTarget
-Specific information for Rubrik Cloud Vault (RCV)GCP target created on Rubrik.
+Specific information for Rubrik Cloud Vault (RCV) GCP target created on Rubrik.
 
 - bucket: System.String
   - Specifies the bucket for the RCV GCP archival target.
+- region: RcsRegionEnumType
+  - Region of RCV GCP target.
+- tier: RcsTierEnumType
+  - Tier for RCV GCP target.
+- syncStatus: TargetSyncStatus
+  - Sync status of RCV GCP target.
+- syncFailureReason: System.String
+  - Reason why sync of this target with CDM failed.
 - serviceAccountNativeId: System.String
   - Native id of the service account for the RCV GCP archival target.
 - exocloudId: System.String
   - Exocloud instance ID used to provision resources for the RCV GCP archival target.
-- syncStatus: TargetSyncStatus
-  - Sync status of RCV GCP target.
-- region: RcsRegionEnumType
-  - Region of RCV GCP target.
-- tier: RcsTierEnumType
-  - Tiers for RCV GCP target.
-- syncFailureReason: System.String
-  - Reason why sync of this target with CDM failed.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type used for the RCV GCP target.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings is bypassed for the RCV GCP archival target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -51,3 +53,5 @@ Specific information for Rubrik Cloud Vault (RCV)GCP target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

@@ -117,6 +117,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshotId")]
         public System.String? ArchivedSnapshotId { get; set; }
 
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

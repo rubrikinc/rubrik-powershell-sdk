@@ -42,3 +42,7 @@ definition. Targets the scope tags constraining the role.
 - ROLE_SCOPE_TAG_REFERENCE - Role scope tag relationship for an Intune object.
 - CONFIG_BINDING - Config binding relationship of an Intune policy object.
 - ACCESS_PACKAGE_POLICY_PRINCIPAL - Principal (User, Group, or ServicePrincipal) referenced in an Access Package assignment policy.
+- REVIEWER - Reviewer (User or Group) assigned to an Access Review schedule definition, either top-level or within stageSettings.
+- NOTIFICATION_RECIPIENT - Additional notification recipient (User or Group) for an Access Review schedule definition.
+- INTUNE_ROLE_ASSIGNMENT_MEMBER - Member (Group) of an Intune role assignment; resolves the assignments a group belongs to.
+- MANAGER - Manager relationship of an Entra ID object.

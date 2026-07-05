@@ -112,6 +112,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			username = $someString
     /// 			# OPTIONAL
+    /// 			dnsServers = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 		}
     /// 	}
@@ -261,6 +265,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		password = $someString
     /// 		# REQUIRED
     /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		dnsServers = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		orgNetworkId = $someString
     /// 	}
@@ -522,6 +530,10 @@ $query.Var.input = @{
 			# REQUIRED
 			username = $someString
 			# OPTIONAL
+			dnsServers = @(
+				$someString
+			)
+			# OPTIONAL
 			orgNetworkId = $someString
 		}
 	}
@@ -639,6 +651,10 @@ $query.Var.input = @{
 		password = $someString
 		# REQUIRED
 		username = $someString
+		# OPTIONAL
+		dnsServers = @(
+			$someString
+		)
 		# OPTIONAL
 		orgNetworkId = $someString
 	}

@@ -81,6 +81,8 @@ Details of the Azure AD directory object.
   - Specifies whether the tenant was onboarded using the Just In Time permissions feature.
 - exoHostType: AzureAdExocomputeHostType
   - Specifies the host type of the exocompute resource for this tenant.
+- tenantType: AzureAdTenantType
+  - Specifies the Microsoft cloud environment type of this tenant.
 - isIntuneEnabled: System.Boolean
   - Specifies whether Intune protection is enabled for the tenant.
 - latestEntraObjectCounts: list of LatestEntraObjectCounts

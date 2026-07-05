@@ -60,6 +60,46 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled")]
         public System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete
+        // GraphQL -> isAzurePostgresFlexServerNetworkingIncomplete: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerNetworkingIncomplete")]
+        public System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist")]
+        public System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription")]
+        public System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInvalid
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneInvalid: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerPrivateDnsZoneInvalid")]
+        public System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInvalid { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet")]
+        public System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres
+        // GraphQL -> isAzurePostgresFlexServerSubnetNotDelegatedToPostgres: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerSubnetNotDelegatedToPostgres")]
+        public System.Boolean? IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetNotInExocomputeVnet
+        // GraphQL -> isAzurePostgresFlexServerSubnetNotInExocomputeVnet: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerSubnetNotInExocomputeVnet")]
+        public System.Boolean? IsAzurePostgresFlexServerSubnetNotInExocomputeVnet { get; set; }
+
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetTooSmall
+        // GraphQL -> isAzurePostgresFlexServerSubnetTooSmall: Boolean! (scalar)
+        [JsonProperty("isAzurePostgresFlexServerSubnetTooSmall")]
+        public System.Boolean? IsAzurePostgresFlexServerSubnetTooSmall { get; set; }
+
         //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist
         // GraphQL -> isAzureSqlPrivateDnsZoneDoesNotExist: Boolean! (scalar)
         [JsonProperty("isAzureSqlPrivateDnsZoneDoesNotExist")]
@@ -163,6 +203,14 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAksCustomPrivateDnsZoneInvalid = null,
         System.Boolean? IsAksCustomPrivateDnsZoneNotLinkedToVnet = null,
         System.Boolean? IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null,
+        System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete = null,
+        System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist = null,
+        System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription = null,
+        System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInvalid = null,
+        System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet = null,
+        System.Boolean? IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres = null,
+        System.Boolean? IsAzurePostgresFlexServerSubnetNotInExocomputeVnet = null,
+        System.Boolean? IsAzurePostgresFlexServerSubnetTooSmall = null,
         System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist = null,
         System.Boolean? IsAzureSqlPrivateDnsZoneInDifferentSubscription = null,
         System.Boolean? IsAzureSqlPrivateDnsZoneInvalid = null,
@@ -205,6 +253,30 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null ) {
             this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled;
+        }
+        if ( IsAzurePostgresFlexServerNetworkingIncomplete != null ) {
+            this.IsAzurePostgresFlexServerNetworkingIncomplete = IsAzurePostgresFlexServerNetworkingIncomplete;
+        }
+        if ( IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist != null ) {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist = IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist;
+        }
+        if ( IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription != null ) {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription = IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription;
+        }
+        if ( IsAzurePostgresFlexServerPrivateDnsZoneInvalid != null ) {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneInvalid = IsAzurePostgresFlexServerPrivateDnsZoneInvalid;
+        }
+        if ( IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet != null ) {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet = IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet;
+        }
+        if ( IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres != null ) {
+            this.IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres = IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres;
+        }
+        if ( IsAzurePostgresFlexServerSubnetNotInExocomputeVnet != null ) {
+            this.IsAzurePostgresFlexServerSubnetNotInExocomputeVnet = IsAzurePostgresFlexServerSubnetNotInExocomputeVnet;
+        }
+        if ( IsAzurePostgresFlexServerSubnetTooSmall != null ) {
+            this.IsAzurePostgresFlexServerSubnetTooSmall = IsAzurePostgresFlexServerSubnetTooSmall;
         }
         if ( IsAzureSqlPrivateDnsZoneDoesNotExist != null ) {
             this.IsAzureSqlPrivateDnsZoneDoesNotExist = IsAzureSqlPrivateDnsZoneDoesNotExist;
@@ -341,6 +413,78 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
             } else {
                 s += ind + "isAksCustomPrivateDnsZonePermissionsGroupNotEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete
+        // GraphQL -> isAzurePostgresFlexServerNetworkingIncomplete: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerNetworkingIncomplete != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerNetworkingIncomplete\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerNetworkingIncomplete\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInvalid
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerPrivateDnsZoneInvalid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerPrivateDnsZoneInvalid\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerPrivateDnsZoneInvalid\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres
+        // GraphQL -> isAzurePostgresFlexServerSubnetNotDelegatedToPostgres: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerSubnetNotDelegatedToPostgres\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerSubnetNotDelegatedToPostgres\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetNotInExocomputeVnet
+        // GraphQL -> isAzurePostgresFlexServerSubnetNotInExocomputeVnet: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerSubnetNotInExocomputeVnet != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerSubnetNotInExocomputeVnet\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerSubnetNotInExocomputeVnet\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetTooSmall
+        // GraphQL -> isAzurePostgresFlexServerSubnetTooSmall: Boolean! (scalar)
+        if (this.IsAzurePostgresFlexServerSubnetTooSmall != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isAzurePostgresFlexServerSubnetTooSmall\n" ;
+            } else {
+                s += ind + "isAzurePostgresFlexServerSubnetTooSmall\n" ;
             }
         }
         //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist
@@ -641,6 +785,142 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled != null && ec.Excludes("isAksCustomPrivateDnsZonePermissionsGroupNotEnabled",true))
         {
             this.IsAksCustomPrivateDnsZonePermissionsGroupNotEnabled = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerNetworkingIncomplete
+        // GraphQL -> isAzurePostgresFlexServerNetworkingIncomplete: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerNetworkingIncomplete",true))
+        {
+            if(this.IsAzurePostgresFlexServerNetworkingIncomplete == null) {
+
+                this.IsAzurePostgresFlexServerNetworkingIncomplete = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerNetworkingIncomplete != null && ec.Excludes("isAzurePostgresFlexServerNetworkingIncomplete",true))
+        {
+            this.IsAzurePostgresFlexServerNetworkingIncomplete = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist",true))
+        {
+            if(this.IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist == null) {
+
+                this.IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist != null && ec.Excludes("isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist",true))
+        {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneDoesNotExist = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription",true))
+        {
+            if(this.IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription == null) {
+
+                this.IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription != null && ec.Excludes("isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription",true))
+        {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneInvalid
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneInvalid: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerPrivateDnsZoneInvalid",true))
+        {
+            if(this.IsAzurePostgresFlexServerPrivateDnsZoneInvalid == null) {
+
+                this.IsAzurePostgresFlexServerPrivateDnsZoneInvalid = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerPrivateDnsZoneInvalid != null && ec.Excludes("isAzurePostgresFlexServerPrivateDnsZoneInvalid",true))
+        {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneInvalid = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet
+        // GraphQL -> isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            if(this.IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet == null) {
+
+                this.IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet != null && ec.Excludes("isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet",true))
+        {
+            this.IsAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres
+        // GraphQL -> isAzurePostgresFlexServerSubnetNotDelegatedToPostgres: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerSubnetNotDelegatedToPostgres",true))
+        {
+            if(this.IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres == null) {
+
+                this.IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres != null && ec.Excludes("isAzurePostgresFlexServerSubnetNotDelegatedToPostgres",true))
+        {
+            this.IsAzurePostgresFlexServerSubnetNotDelegatedToPostgres = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetNotInExocomputeVnet
+        // GraphQL -> isAzurePostgresFlexServerSubnetNotInExocomputeVnet: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerSubnetNotInExocomputeVnet",true))
+        {
+            if(this.IsAzurePostgresFlexServerSubnetNotInExocomputeVnet == null) {
+
+                this.IsAzurePostgresFlexServerSubnetNotInExocomputeVnet = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerSubnetNotInExocomputeVnet != null && ec.Excludes("isAzurePostgresFlexServerSubnetNotInExocomputeVnet",true))
+        {
+            this.IsAzurePostgresFlexServerSubnetNotInExocomputeVnet = null;
+        }
+        //      C# -> System.Boolean? IsAzurePostgresFlexServerSubnetTooSmall
+        // GraphQL -> isAzurePostgresFlexServerSubnetTooSmall: Boolean! (scalar)
+        if (ec.Includes("isAzurePostgresFlexServerSubnetTooSmall",true))
+        {
+            if(this.IsAzurePostgresFlexServerSubnetTooSmall == null) {
+
+                this.IsAzurePostgresFlexServerSubnetTooSmall = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsAzurePostgresFlexServerSubnetTooSmall != null && ec.Excludes("isAzurePostgresFlexServerSubnetTooSmall",true))
+        {
+            this.IsAzurePostgresFlexServerSubnetTooSmall = null;
         }
         //      C# -> System.Boolean? IsAzureSqlPrivateDnsZoneDoesNotExist
         // GraphQL -> isAzureSqlPrivateDnsZoneDoesNotExist: Boolean! (scalar)

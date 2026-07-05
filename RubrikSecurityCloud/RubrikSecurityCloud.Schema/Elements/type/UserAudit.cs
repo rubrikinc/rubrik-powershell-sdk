@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ActorType? ActorType
+        // GraphQL -> actorType: ActorType (enum)
+        [JsonProperty("actorType")]
+        public ActorType? ActorType { get; set; }
+
         //      C# -> UserAuditTypeEnum? AuditType
         // GraphQL -> auditType: UserAuditTypeEnum (enum)
         [JsonProperty("auditType")]
@@ -105,6 +110,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UserAudit Set(
+        ActorType? ActorType = null,
         UserAuditTypeEnum? AuditType = null,
         UserAuditObjectTypeEnum? ObjectType = null,
         UserAuditSeverityEnum? Severity = null,
@@ -122,6 +128,9 @@ namespace RubrikSecurityCloud.Types
         Cluster? Cluster = null
     ) 
     {
+        if ( ActorType != null ) {
+            this.ActorType = ActorType;
+        }
         if ( AuditType != null ) {
             this.AuditType = AuditType;
         }
@@ -181,6 +190,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ActorType? ActorType
+        // GraphQL -> actorType: ActorType (enum)
+        if (this.ActorType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "actorType\n" ;
+            } else {
+                s += ind + "actorType\n" ;
+            }
+        }
         //      C# -> UserAuditTypeEnum? AuditType
         // GraphQL -> auditType: UserAuditTypeEnum (enum)
         if (this.AuditType != null) {
@@ -326,6 +344,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ActorType? ActorType
+        // GraphQL -> actorType: ActorType (enum)
+        if (ec.Includes("actorType",true))
+        {
+            if(this.ActorType == null) {
+
+                this.ActorType = new ActorType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ActorType != null && ec.Excludes("actorType",true))
+        {
+            this.ActorType = null;
+        }
         //      C# -> UserAuditTypeEnum? AuditType
         // GraphQL -> auditType: UserAuditTypeEnum (enum)
         if (ec.Includes("auditType",true))

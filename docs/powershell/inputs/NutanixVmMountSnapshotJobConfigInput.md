@@ -28,7 +28,10 @@ The target network on the newly mounted virtual machine if network configuration
 Name of the newly mounted virtual machine.
 - keepMacAddresses: System.Boolean
   - Supported in v8.1+
-Determines whether the MAC addresses of the network interfaces on the source virtual machine are assigned to the new virtual machine. Set to 'true' to assign the original MAC addresses to the new virtual machine if nicNetworkUuids is provided. Set to 'false' to assign new MAC addresses.The default is 'false'. When removeNetworkDevices is set to true, this property is ignored.
+Determines whether the MAC addresses of the network interfaces on the source virtual machine are assigned to the new virtual machine. Set to 'true' to assign the original MAC addresses to the new virtual machine if nicNetworkUuids is provided. Set to 'false' to assign new MAC addresses. The default is 'false'. When removeNetworkDevices is set to true, this property is ignored.
 - nicNetworkUuids: list of System.Strings
   - Supported in v8.1+
 The IDs of the Nutanix networks used to create NICs on the exported virtual machine.
+- shouldRecoverCategories: System.Boolean
+  - Supported in v9.6+
+Indicates if the Prism Central categories assigned to the source virtual machine are restored on the mounted virtual machine. When unset, defaults to false. Restoration is non-blocking - failures emit warning events but do not fail the Live Mount job.

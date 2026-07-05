@@ -1,30 +1,28 @@
 ### RubrikManagedGcpTarget
-Specific information for Google Cloud Platform (GCP) target created on Rubrik.
+Specific information for GCP target created on Rubrik.
 
-- archivalProxySettings: ProxySettings
-  - Proxy setting of this GCP target.
-- connectionStatus: ConnectionStatusType
-  - Connection status of the GCP target.
-- cnpSpecificFields: GcpCloudNativeTarget
-  - CNP specific fields for the GCP target location..
-- immutabilitySettings: GcpImmutabilitySettings
-  - Immutability settings of the GCP archival target.
 - region: GcpRegion
   - Region of GCP target.
-- syncStatus: TargetSyncStatus
-  - Sync status of GCP target.
 - storageClass: GcpStorageClass
   - Storage class of the GCP target.
 - bucket: System.String
   - Bucket of the GCP target.
+- archivalProxySettings: ProxySettings
+  - Proxy setting of this GCP target.
+- syncStatus: TargetSyncStatus
+  - Sync status of GCP target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the GCP target.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
+- cnpSpecificFields: GcpCloudNativeTarget
+  - CNP specific fields for the GCP target location.
+- immutabilitySettings: GcpImmutabilitySettings
+  - Immutability settings of the GCP archival target.
 - encryptionType: TargetEncryptionTypeEnum
   - Encryption type to be used for the GCP target.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -59,3 +57,5 @@ Specific information for Google Cloud Platform (GCP) target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

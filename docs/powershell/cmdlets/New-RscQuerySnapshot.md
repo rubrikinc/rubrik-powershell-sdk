@@ -60,18 +60,34 @@ Returns a list of NAS Cloud Direct snapshots.
     - sortBy - CloudDirectSnapshotsSortByInput: Sort NAS Cloud Direct snapshots.
 - Returns CloudDirectSnapshotConnection.
 ### emailsearch
-- There are 6 arguments.
+SearchSnapshotEmails returns a paginated, GraphQL-shaped list of
+mailbox folders and emails inside a single snapshot. Encapsulates
+the snapshot-expiry data check and the mailbox response shaping
+previously performed in the GraphQL resolver
+`snapshotEmailSearch`.
+
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - searchFilter - SearchFilter: search filters
 - Returns O365ExchangeObjectConnection.
 ### eventsearch
-- There are 6 arguments.
+SearchSnapshotEvents returns a paginated, GraphQL-shaped list of
+calendar folders and events inside a single snapshot.
+Encapsulates the snapshot-expiry data check and the calendar
+response shaping previously performed in the GraphQL resolver
+`snapshotEventSearch`.
+
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.

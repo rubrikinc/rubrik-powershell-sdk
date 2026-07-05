@@ -47,3 +47,7 @@ related configuration.
 - OBJECT_PROTECTION_PAUSE - TPR rule to apply Object level Protection Pause.
 - RESTORE_SERVICE_ACCOUNT_TPR_EXEMPTION - Quorum authorization is required to restore a service account's
 quorum authorization exemption.
+- MANAGE_CUSTOM_CERTIFICATES - Quorum authorization is required for managing custom (trust store)
+certificates: add, update, delete.
+- RCV_BACKUP_TO_ARCHIVE_CONVERSION - The TPR rule for converting an Azure Rubrik Cloud Vault (RCV) location's
+backup tier to the archive tier.

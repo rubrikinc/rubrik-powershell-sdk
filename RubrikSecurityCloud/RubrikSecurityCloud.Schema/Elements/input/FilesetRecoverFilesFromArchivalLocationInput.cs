@@ -26,10 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
-        //      C# -> System.String? NextSnapshotId
-        // GraphQL -> nextSnapshotId: UUID (scalar)
-        [JsonProperty("nextSnapshotId")]
-        public System.String? NextSnapshotId { get; set; }
+        //      C# -> GuestOsType? OsType
+        // GraphQL -> osType: GuestOsType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("osType")]
+        public GuestOsType? OsType { get; set; }
+
+        //      C# -> ShareTypeEnum? ShareType
+        // GraphQL -> shareType: ShareTypeEnum! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shareType")]
+        public ShareTypeEnum? ShareType { get; set; }
 
         //      C# -> List<OldRestorePathPairInput>? RestorePathPairList
         // GraphQL -> restorePathPairList: [OldRestorePathPairInput!]! (input)
@@ -43,26 +52,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("deltaTypeFilter")]
         public List<DeltaType>? DeltaTypeFilter { get; set; }
 
+        //      C# -> System.String? NextSnapshotId
+        // GraphQL -> nextSnapshotId: UUID (scalar)
+        [JsonProperty("nextSnapshotId")]
+        public System.String? NextSnapshotId { get; set; }
+
         //      C# -> FilesetRestoreFilesJobConfigInput? Config
         // GraphQL -> config: FilesetRestoreFilesJobConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("config")]
         public FilesetRestoreFilesJobConfigInput? Config { get; set; }
-
-        //      C# -> ShareTypeEnum? ShareType
-        // GraphQL -> shareType: ShareTypeEnum! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shareType")]
-        public ShareTypeEnum? ShareType { get; set; }
-
-        //      C# -> GuestOsType? OsType
-        // GraphQL -> osType: GuestOsType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("osType")]
-        public GuestOsType? OsType { get; set; }
 
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)

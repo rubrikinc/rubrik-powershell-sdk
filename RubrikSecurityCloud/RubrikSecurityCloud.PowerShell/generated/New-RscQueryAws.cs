@@ -625,6 +625,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.awsNativeAccountIdOrNamePrefix = $someString
+    /// # REQUIRED
+    /// $query.Var.operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -2461,22 +2463,25 @@ $query.Var.awsOrganizationUuid = $someString"
         }
 
         // Create new GraphQL Query:
-        // allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!): [AwsExocomputeConfig!]!
+        // allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!, operation: Operation! = CREATE_REPORT): [AwsExocomputeConfig!]!
         internal void InitQueryAllAwsExocomputeConfigs()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsNativeAccountIdOrNamePrefix", "String!"),
+                Tuple.Create("operation", "Operation!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllAwsExocomputeConfigs",
-                "($awsNativeAccountIdOrNamePrefix: String!)",
+                "($awsNativeAccountIdOrNamePrefix: String!,$operation: Operation!)",
                 "List<AwsExocomputeConfig>",
                 Query.AllAwsExocomputeConfigs,
                 Query.AllAwsExocomputeConfigsFieldSpec,
                 @"# REQUIRED
-$query.Var.awsNativeAccountIdOrNamePrefix = $someString"
+$query.Var.awsNativeAccountIdOrNamePrefix = $someString
+# REQUIRED
+$query.Var.operation = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
             );
         }
 

@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)
         [JsonProperty("lastRefreshTime")]
@@ -293,6 +298,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmId = null,
         System.String? HostName = null,
         System.String? Id = null,
+        System.Boolean? IsReplica = null,
         DateTime? LastRefreshTime = null,
         System.String? Name = null,
         System.String? NaturalId = null,
@@ -360,6 +366,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( LastRefreshTime != null ) {
             this.LastRefreshTime = LastRefreshTime;
@@ -591,6 +600,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> DateTime? LastRefreshTime
@@ -1150,6 +1168,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime (scalar)

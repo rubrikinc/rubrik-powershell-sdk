@@ -13,6 +13,14 @@
   - The log retention, in hours, of the Oracle RAC.
 - hostLogRetentionHours: System.Int32
   - The host log retention, in hours, of the Oracle RAC.
+- shouldEnableMultiNodeBackup: System.Boolean
+  - Boolean value that specifies whether multi-node backup is enabled for this Oracle RAC.
+- backupNodes: list of System.Strings
+  - List of RAC node names designated for multi-node backup. The array order defines channel round-robin assignment. Empty when multi-node backup is not configured.
+- primaryNode: System.String
+  - Name of the RAC node designated as the primary backup node. Empty string when multi-node backup is not configured.
+- secondaryNodes: list of System.Strings
+  - Ordered list of secondary RAC node names. Array position defines fallback priority when the primary node is unavailable (position 0 = first fallback). Empty when multi-node backup is not configured.
 - nodeOrder: list of CdmOracleRacNodeOrders
   - The list of node order priority objects of the Oracle RAC.
 - descendantConnection: OracleRacDescendantTypeConnection
@@ -63,6 +71,8 @@
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion

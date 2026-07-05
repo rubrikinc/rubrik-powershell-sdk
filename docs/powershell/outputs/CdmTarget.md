@@ -2,8 +2,7 @@
 Target-specific information created and synchronized from a Rubrik CDM cluster.
 
 - id: System.String
-- cluster: Cluster
-  - The cluster to which this target belongs.
+  - ID of the CDM target.
 - targetType: TargetType
   - The type of the target.
 - name: System.String
@@ -36,3 +35,5 @@ Target-specific information created and synchronized from a Rubrik CDM cluster.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

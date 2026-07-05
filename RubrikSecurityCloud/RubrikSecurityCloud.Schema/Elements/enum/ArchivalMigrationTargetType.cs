@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ARCHIVAL_MIGRATION_TARGET_RCV_AWS")]
+        ARCHIVAL_MIGRATION_TARGET_RCV_AWS,
+
         [EnumMember(Value = "ARCHIVAL_MIGRATION_TARGET_S3_COMPATIBLE")]
         ARCHIVAL_MIGRATION_TARGET_S3_COMPATIBLE
 

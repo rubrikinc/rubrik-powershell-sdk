@@ -1,5 +1,5 @@
 ### TagInput
-Input for tag.
+Key-value pair of string.
 
 - key: System.String
   - Key for the tag.

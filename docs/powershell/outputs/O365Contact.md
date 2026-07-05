@@ -1,8 +1,6 @@
 ### O365Contact
-An O365 contact object.
+A contact.
 
-- id: System.String
-  - The ID of the contact.
 - name: System.String
   - The name for this contact.
 - emailAddresses: list of System.Strings
@@ -13,11 +11,13 @@ An O365 contact object.
   - Addresses associated with this contact.
 - company: System.String
   - The company at which this contact works.
-- parentFolderId: System.String
-  - The parent folder ID of the contact.
 - snapshotId: System.String
   - The snapshot ID of this version of the contact.
 - snapshotTime: DateTime
   - The snapshot time of this version of the contact.
 - snapshotNum: System.Int32
   - The snapshot number of this version of the contact.
+- id: System.String
+  - The ID of the Microsoft 365 Exchange object.
+- parentFolderId: System.String
+  - The parent folder ID of the object (ROOT indicates root folder).

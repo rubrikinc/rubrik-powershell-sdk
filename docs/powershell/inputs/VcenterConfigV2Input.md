@@ -22,6 +22,9 @@ Select compute clusters that must be visible to this Rubrik Cluster. All other c
 - shouldEnableHotAddProxyForOnPrem: System.Boolean
   - Supported in v7.0+
 A Boolean value that determines whether to enable HotAdd transport mode for On-Premise vCenter. When this value is `true`, VMware virtual machines can use HotAdd proxy to transport virtual disk data in addition to NBD(SSL). When this value is `false`, VMware virtual machines can ONLY usee NBD(SSL) to transport virtual disk data. Default value is `false`.
+- isComputeVisibilityFilterDisabled: System.Boolean
+  - Supported in v9.6+
+A Boolean value that determines whether compute cluster visibility is disabled for this vCenter. When this value is `true`, no compute clusters, hosts, or virtual machines are visible to this Rubrik cluster from this vCenter. The vCenter registration and any configured compute visibility filter are preserved. Set to `true` for cross-site disaster recovery standby configurations. When this value is `false` or not specified, compute visibility behaves normally. Default value is `false`.
 - isStandaloneHost: System.Boolean
   - Supported in v9.2+
 Specifies whether the API call is creating a standalone host or a virtual center.

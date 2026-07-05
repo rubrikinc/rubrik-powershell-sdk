@@ -24,10 +24,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("customResourceDependencies")]
         public List<CustomResourceDependencyInput>? CustomResourceDependencies { get; set; }
 
+        //      C# -> CdmLabelSelectorInput? LabelSelector
+        // GraphQL -> labelSelector: CdmLabelSelectorInput (input)
+        [JsonProperty("labelSelector")]
+        public CdmLabelSelectorInput? LabelSelector { get; set; }
+
+        //      C# -> List<System.String>? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: [String!] (scalar)
+        [JsonProperty("namespaceExcludePatterns")]
+        public List<System.String>? NamespaceExcludePatterns { get; set; }
+
         //      C# -> System.String? Definition
         // GraphQL -> definition: String (scalar)
         [JsonProperty("definition")]
         public System.String? Definition { get; set; }
+
+        //      C# -> List<System.String>? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: [String!] (scalar)
+        [JsonProperty("namespaceIncludePatterns")]
+        public List<System.String>? NamespaceIncludePatterns { get; set; }
 
         //      C# -> List<System.String>? HookConfigs
         // GraphQL -> hookConfigs: [String!] (scalar)

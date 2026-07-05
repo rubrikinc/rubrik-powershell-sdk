@@ -21,6 +21,9 @@ Username for the Nutanix Prism Central used for all the cluster connections.
 - isDrEnabled: System.Boolean
   - Supported in v9.2+
 Specifies whether Nutanix DR support is enabled for the the Prism Central object.
+- shouldUseV4: System.Boolean
+  - Supported in v9.6+
+Specifies whether the Prism Central uses the Nutanix V4 API for backup and recovery operations.
 - nutanixClusters: list of NutanixClustersListElementInputs
   - Supported in v9.1+
 The list of new Nutanix Clusters to protect as part of the given Nutanix Prism Central object.

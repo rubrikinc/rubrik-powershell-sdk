@@ -51,6 +51,8 @@
   - Supported in v9.5+. Specifies the RMAN RATE parameter in megabytes per second to limit backup throughput per channel.
 - logRatePerRmanChannelInMb: System.Int32
   - Supported in v9.5+. Specifies the RMAN RATE parameter in megabytes per second to limit log backup throughput per channel.
+- isZeroRpoEnabled: System.Boolean
+  - Supported in v9.6+. Indicates whether Zero RPO (near-zero recovery point) protection is enabled on this database. Null if the database has no ZRPO configuration.
 - dataGuardGroup: OracleDataGuardGroup
   - The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
 - liveMounts: OracleLiveMountConnection
@@ -99,6 +101,8 @@
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion

@@ -15,3 +15,5 @@ snappable types. text_list values must be SlaObjectType enum names
 (e.g. "AWS_EC2_EBS_OBJECT_TYPE"). Groups containing CSE-enabled
 archival locations are filtered out when the corresponding UEM
 feature flag is not enabled for the snappable types.
+- SOURCE_WORKLOAD_CLOUD - Filter by the cloud platform of the source workload associated with
+the archival group's template. Accepts a single value.

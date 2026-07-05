@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public O365MvbAnalysisJobStatus? Status { get; set; }
 
+        //      C# -> System.String? RecoveryPlanId
+        // GraphQL -> recoveryPlanId: UUID (scalar)
+        [JsonProperty("recoveryPlanId")]
+        public System.String? RecoveryPlanId { get; set; }
+
         //      C# -> DateTime? ResultsExpiryTime
         // GraphQL -> resultsExpiryTime: DateTime (scalar)
         [JsonProperty("resultsExpiryTime")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public MvcAnalysisJob Set(
         O365MvbAnalysisJobStatus? Status = null,
+        System.String? RecoveryPlanId = null,
         DateTime? ResultsExpiryTime = null,
         System.String? TaskchainId = null
     ) 
     {
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( RecoveryPlanId != null ) {
+            this.RecoveryPlanId = RecoveryPlanId;
         }
         if ( ResultsExpiryTime != null ) {
             this.ResultsExpiryTime = ResultsExpiryTime;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> System.String? RecoveryPlanId
+        // GraphQL -> recoveryPlanId: UUID (scalar)
+        if (this.RecoveryPlanId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "recoveryPlanId\n" ;
+            } else {
+                s += ind + "recoveryPlanId\n" ;
             }
         }
         //      C# -> DateTime? ResultsExpiryTime
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> System.String? RecoveryPlanId
+        // GraphQL -> recoveryPlanId: UUID (scalar)
+        if (ec.Includes("recoveryPlanId",true))
+        {
+            if(this.RecoveryPlanId == null) {
+
+                this.RecoveryPlanId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecoveryPlanId != null && ec.Excludes("recoveryPlanId",true))
+        {
+            this.RecoveryPlanId = null;
         }
         //      C# -> DateTime? ResultsExpiryTime
         // GraphQL -> resultsExpiryTime: DateTime (scalar)

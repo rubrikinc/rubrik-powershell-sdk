@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 10
+    /// Create a new RscQuery object for any of the 15
     /// operations in the 'Policy' API domain:
-    /// CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyObjectUsages, SecurityPolicies, SecurityPolicy, TopRiskPolicySummaries, or TprPolicyDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 10 operations
+    /// There are 15 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyObjectUsages, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// one of: CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyObjectUsages, SecurityPolicies, SecurityPolicy, TopRiskPolicySummaries, or TprPolicyDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -355,6 +355,116 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the PolicyCategories operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyCategories
+    /// 
+    /// $query = New-RscQueryPolicy -Operation PolicyCategories
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyTypes = @(
+    /// 	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetPossibleCategoriesType
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PolicyFilterTypes operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyFilterTypes
+    /// 
+    /// $query = New-RscQueryPolicy -Operation PolicyFilterTypes
+    /// 
+    /// # REQUIRED
+    /// $query.Var.resourceType = $somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.idpTypes = @(
+    /// 	$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;FilterType&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PolicyFilterValues operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyFilterValues
+    /// 
+    /// $query = New-RscQueryPolicy -Operation PolicyFilterValues
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyFilterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.searchTerm = $someString
+    /// # REQUIRED
+    /// $query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.policyTypeFilter = @{
+    /// 	# OPTIONAL
+    /// 	identityEventFilter = @{
+    /// 		# OPTIONAL
+    /// 		eventProviders = @(
+    /// 			$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+    /// 		)
+    /// 	}
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.eventProviders = @(
+    /// 	$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetPolicyFilterValuesType
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PolicyObjectUsages operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -377,6 +487,223 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: PolicyObjectUsageConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SecurityPolicies operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SecurityPolicies
+    /// 
+    /// $query = New-RscQueryPolicy -Operation SecurityPolicies
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.isPolicyEnabled = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.isCustomPolicy = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.policyCategories = @(
+    /// 	$someCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Category]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.policySeverities = @(
+    /// 	$someSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Severity]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.includeViolationInsights = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.policyIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.resourceIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.statuses = @(
+    /// 	$somePolicyViolationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationStatus]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.statusReasons = @(
+    /// 	$somePolicyViolationStatusReason # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationStatusReason]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.policyViolationIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.resourceTypes = @(
+    /// 	$somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sensitivityLevels = @(
+    /// 	$someSensitivityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SensitivityLevel]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.detectionDate = @{
+    /// 	# REQUIRED
+    /// 	start = $someDateTime
+    /// 	# REQUIRED
+    /// 	end = $someDateTime
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.updateDate = @{
+    /// 	# REQUIRED
+    /// 	start = $someDateTime
+    /// 	# REQUIRED
+    /// 	end = $someDateTime
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.policyName = $someString
+    /// # OPTIONAL
+    /// $query.Var.exactPolicyName = $someString
+    /// # OPTIONAL
+    /// $query.Var.policyUpdateDate = @{
+    /// 	# REQUIRED
+    /// 	start = $someDateTime
+    /// 	# REQUIRED
+    /// 	end = $someDateTime
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.parentViolationId = $someString
+    /// # OPTIONAL
+    /// $query.Var.dataTypeIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.documentTypeIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.dataCategoryIds = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $somePolicyViolationSortField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationSortField]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.resourceMetadataFilter = @{
+    /// 	# OPTIONAL
+    /// 	objectTypes = @(
+    /// 		$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cloudAccountIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	managedObjectTypes = @(
+    /// 		$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	principalTypes = @(
+    /// 		$someViolationPrincipalType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ViolationPrincipalType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	resolutionTypes = @(
+    /// 		$someIdentityResolutionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdentityResolutionType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	domainFids = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	identityNameSearch = $someString
+    /// 	# OPTIONAL
+    /// 	accessTypes = @(
+    /// 		$someAccessVia # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AccessVia]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	sources = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	idpTypes = @(
+    /// 		$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	originEventDateRange = @{
+    /// 		# REQUIRED
+    /// 		start = $someDateTime
+    /// 		# REQUIRED
+    /// 		end = $someDateTime
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	identityTags = @(
+    /// 		$someIdentityTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdentityTag]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	actorIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	identityOrigins = @(
+    /// 		$somePrincipalOrigin # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrincipalOrigin]) for enum values.
+    /// 	)
+    /// }
+    /// # OPTIONAL
+    /// $query.Var.policyViolationNameSearch = $someString
+    /// # OPTIONAL
+    /// $query.Var.violationNames = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.policyFrameworks = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.policyTypes = @(
+    /// 	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;PolicyResult&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SecurityPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SecurityPolicy
+    /// 
+    /// $query = New-RscQueryPolicy -Operation SecurityPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyId = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeViolationInsights = $someBoolean
+    /// # REQUIRED
+    /// $query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PolicyResult
     /// 
     /// 
     /// 
@@ -469,7 +796,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "PasswordComplexityPolicy",
                 "Policies",
                 "Policy",
+                "PolicyCategories",
+                "PolicyFilterTypes",
+                "PolicyFilterValues",
                 "PolicyObjectUsages",
+                "SecurityPolicies",
+                "SecurityPolicy",
                 "TopRiskPolicySummaries",
                 "TprPolicyDetail",
                 IgnoreCase = true)]
@@ -508,8 +840,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Policy":
                         this.ProcessRecord_Policy();
                         break;
+                    case "PolicyCategories":
+                        this.ProcessRecord_PolicyCategories();
+                        break;
+                    case "PolicyFilterTypes":
+                        this.ProcessRecord_PolicyFilterTypes();
+                        break;
+                    case "PolicyFilterValues":
+                        this.ProcessRecord_PolicyFilterValues();
+                        break;
                     case "PolicyObjectUsages":
                         this.ProcessRecord_PolicyObjectUsages();
+                        break;
+                    case "SecurityPolicies":
+                        this.ProcessRecord_SecurityPolicies();
+                        break;
+                    case "SecurityPolicy":
+                        this.ProcessRecord_SecurityPolicy();
                         break;
                     case "TopRiskPolicySummaries":
                         this.ProcessRecord_TopRiskPolicySummaries();
@@ -591,12 +938,57 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allPolicyCategories.
+        internal void ProcessRecord_PolicyCategories()
+        {
+            this._logger.name += " -PolicyCategories";
+            // Create new graphql operation allPolicyCategories
+            InitQueryAllPolicyCategories();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allPolicyFilterTypes.
+        internal void ProcessRecord_PolicyFilterTypes()
+        {
+            this._logger.name += " -PolicyFilterTypes";
+            // Create new graphql operation allPolicyFilterTypes
+            InitQueryAllPolicyFilterTypes();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allPolicyFilterValues.
+        internal void ProcessRecord_PolicyFilterValues()
+        {
+            this._logger.name += " -PolicyFilterValues";
+            // Create new graphql operation allPolicyFilterValues
+            InitQueryAllPolicyFilterValues();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // policyObjectUsages.
         internal void ProcessRecord_PolicyObjectUsages()
         {
             this._logger.name += " -PolicyObjectUsages";
             // Create new graphql operation policyObjectUsages
             InitQueryPolicyObjectUsages();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allSecurityPolicies.
+        internal void ProcessRecord_SecurityPolicies()
+        {
+            this._logger.name += " -SecurityPolicies";
+            // Create new graphql operation allSecurityPolicies
+            InitQueryAllSecurityPolicies();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // securityPolicy.
+        internal void ProcessRecord_SecurityPolicy()
+        {
+            this._logger.name += " -SecurityPolicy";
+            // Create new graphql operation securityPolicy
+            InitQuerySecurityPolicy();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -892,6 +1284,104 @@ $query.Var.before = $someString"
         }
 
         // Create new GraphQL Query:
+        // allPolicyCategories(policyTypes: [PolicyType!]!): GetPossibleCategoriesType!
+        internal void InitQueryAllPolicyCategories()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyTypes", "[PolicyType!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllPolicyCategories",
+                "($policyTypes: [PolicyType!]!)",
+                "GetPossibleCategoriesType",
+                Query.AllPolicyCategories,
+                Query.AllPolicyCategoriesFieldSpec,
+                @"# REQUIRED
+$query.Var.policyTypes = @(
+	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allPolicyFilterTypes(resourceType: PolicyResourceType!, policyType: PolicyType!, idpTypes: [IdpType!]): [FilterType!]!
+        internal void InitQueryAllPolicyFilterTypes()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("resourceType", "PolicyResourceType!"),
+                Tuple.Create("policyType", "PolicyType!"),
+                Tuple.Create("idpTypes", "[IdpType!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllPolicyFilterTypes",
+                "($resourceType: PolicyResourceType!,$policyType: PolicyType!,$idpTypes: [IdpType!])",
+                "List<FilterType>",
+                Query.AllPolicyFilterTypes,
+                Query.AllPolicyFilterTypesFieldSpec,
+                @"# REQUIRED
+$query.Var.resourceType = $somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+# REQUIRED
+$query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+# OPTIONAL
+$query.Var.idpTypes = @(
+	$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allPolicyFilterValues(
+        //     policyFilterType: FilterType!
+        //     searchTerm: String
+        //     policyType: PolicyType!
+        //     policyTypeFilter: PolicyTypeFilter
+        //     eventProviders: [EventProvider!]
+        //   ): GetPolicyFilterValuesType!
+        internal void InitQueryAllPolicyFilterValues()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyFilterType", "FilterType!"),
+                Tuple.Create("searchTerm", "String"),
+                Tuple.Create("policyType", "PolicyType!"),
+                Tuple.Create("policyTypeFilter", "PolicyTypeFilter"),
+                Tuple.Create("eventProviders", "[EventProvider!]"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllPolicyFilterValues",
+                "($policyFilterType: FilterType!,$searchTerm: String,$policyType: PolicyType!,$policyTypeFilter: PolicyTypeFilter,$eventProviders: [EventProvider!])",
+                "GetPolicyFilterValuesType",
+                Query.AllPolicyFilterValues,
+                Query.AllPolicyFilterValuesFieldSpec,
+                @"# REQUIRED
+$query.Var.policyFilterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+# OPTIONAL
+$query.Var.searchTerm = $someString
+# REQUIRED
+$query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+# OPTIONAL
+$query.Var.policyTypeFilter = @{
+	# OPTIONAL
+	identityEventFilter = @{
+		# OPTIONAL
+		eventProviders = @(
+			$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+		)
+	}
+}
+# OPTIONAL
+$query.Var.eventProviders = @(
+	$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
         // policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
         internal void InitQueryPolicyObjectUsages()
         {
@@ -910,6 +1400,265 @@ $query.Var.before = $someString"
 $query.Var.objectIds = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allSecurityPolicies(
+        //     isPolicyEnabled: Boolean
+        //     isCustomPolicy: Boolean
+        //     policyCategories: [Category!]
+        //     policySeverities: [Severity!]
+        //     includeViolationInsights: Boolean = false
+        //     policyIds: [UUID!]
+        //     resourceIds: [String!]
+        //     statuses: [PolicyViolationStatus!]
+        //     statusReasons: [PolicyViolationStatusReason!]
+        //     policyViolationIds: [UUID!]
+        //     resourceTypes: [PolicyResourceType!]
+        //     sensitivityLevels: [SensitivityLevel!]
+        //     detectionDate: TimeRangeInput
+        //     updateDate: TimeRangeInput
+        //     policyName: String
+        //     exactPolicyName: String
+        //     policyUpdateDate: TimeRangeInput
+        //     parentViolationId: UUID
+        //     dataTypeIds: [String!]
+        //     documentTypeIds: [UUID!]
+        //     dataCategoryIds: [String!]
+        //     sortBy: PolicyViolationSortField
+        //     sortOrder: SortOrder
+        //     resourceMetadataFilter: ResourceMetadataFiltersInput
+        //     policyViolationNameSearch: String
+        //     violationNames: [String!]
+        //     policyFrameworks: [String!]
+        //     policyTypes: [PolicyType!]!
+        //   ): [PolicyResult!]!
+        internal void InitQueryAllSecurityPolicies()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("isPolicyEnabled", "Boolean"),
+                Tuple.Create("isCustomPolicy", "Boolean"),
+                Tuple.Create("policyCategories", "[Category!]"),
+                Tuple.Create("policySeverities", "[Severity!]"),
+                Tuple.Create("includeViolationInsights", "Boolean"),
+                Tuple.Create("policyIds", "[UUID!]"),
+                Tuple.Create("resourceIds", "[String!]"),
+                Tuple.Create("statuses", "[PolicyViolationStatus!]"),
+                Tuple.Create("statusReasons", "[PolicyViolationStatusReason!]"),
+                Tuple.Create("policyViolationIds", "[UUID!]"),
+                Tuple.Create("resourceTypes", "[PolicyResourceType!]"),
+                Tuple.Create("sensitivityLevels", "[SensitivityLevel!]"),
+                Tuple.Create("detectionDate", "TimeRangeInput"),
+                Tuple.Create("updateDate", "TimeRangeInput"),
+                Tuple.Create("policyName", "String"),
+                Tuple.Create("exactPolicyName", "String"),
+                Tuple.Create("policyUpdateDate", "TimeRangeInput"),
+                Tuple.Create("parentViolationId", "UUID"),
+                Tuple.Create("dataTypeIds", "[String!]"),
+                Tuple.Create("documentTypeIds", "[UUID!]"),
+                Tuple.Create("dataCategoryIds", "[String!]"),
+                Tuple.Create("sortBy", "PolicyViolationSortField"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("resourceMetadataFilter", "ResourceMetadataFiltersInput"),
+                Tuple.Create("policyViolationNameSearch", "String"),
+                Tuple.Create("violationNames", "[String!]"),
+                Tuple.Create("policyFrameworks", "[String!]"),
+                Tuple.Create("policyTypes", "[PolicyType!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllSecurityPolicies",
+                "($isPolicyEnabled: Boolean,$isCustomPolicy: Boolean,$policyCategories: [Category!],$policySeverities: [Severity!],$includeViolationInsights: Boolean,$policyIds: [UUID!],$resourceIds: [String!],$statuses: [PolicyViolationStatus!],$statusReasons: [PolicyViolationStatusReason!],$policyViolationIds: [UUID!],$resourceTypes: [PolicyResourceType!],$sensitivityLevels: [SensitivityLevel!],$detectionDate: TimeRangeInput,$updateDate: TimeRangeInput,$policyName: String,$exactPolicyName: String,$policyUpdateDate: TimeRangeInput,$parentViolationId: UUID,$dataTypeIds: [String!],$documentTypeIds: [UUID!],$dataCategoryIds: [String!],$sortBy: PolicyViolationSortField,$sortOrder: SortOrder,$resourceMetadataFilter: ResourceMetadataFiltersInput,$policyViolationNameSearch: String,$violationNames: [String!],$policyFrameworks: [String!],$policyTypes: [PolicyType!]!)",
+                "List<PolicyResult>",
+                Query.AllSecurityPolicies,
+                Query.AllSecurityPoliciesFieldSpec,
+                @"# OPTIONAL
+$query.Var.isPolicyEnabled = $someBoolean
+# OPTIONAL
+$query.Var.isCustomPolicy = $someBoolean
+# OPTIONAL
+$query.Var.policyCategories = @(
+	$someCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Category]) for enum values.
+)
+# OPTIONAL
+$query.Var.policySeverities = @(
+	$someSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Severity]) for enum values.
+)
+# OPTIONAL
+$query.Var.includeViolationInsights = $someBoolean
+# OPTIONAL
+$query.Var.policyIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.resourceIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.statuses = @(
+	$somePolicyViolationStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationStatus]) for enum values.
+)
+# OPTIONAL
+$query.Var.statusReasons = @(
+	$somePolicyViolationStatusReason # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationStatusReason]) for enum values.
+)
+# OPTIONAL
+$query.Var.policyViolationIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.resourceTypes = @(
+	$somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+)
+# OPTIONAL
+$query.Var.sensitivityLevels = @(
+	$someSensitivityLevel # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SensitivityLevel]) for enum values.
+)
+# OPTIONAL
+$query.Var.detectionDate = @{
+	# REQUIRED
+	start = $someDateTime
+	# REQUIRED
+	end = $someDateTime
+}
+# OPTIONAL
+$query.Var.updateDate = @{
+	# REQUIRED
+	start = $someDateTime
+	# REQUIRED
+	end = $someDateTime
+}
+# OPTIONAL
+$query.Var.policyName = $someString
+# OPTIONAL
+$query.Var.exactPolicyName = $someString
+# OPTIONAL
+$query.Var.policyUpdateDate = @{
+	# REQUIRED
+	start = $someDateTime
+	# REQUIRED
+	end = $someDateTime
+}
+# OPTIONAL
+$query.Var.parentViolationId = $someString
+# OPTIONAL
+$query.Var.dataTypeIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.documentTypeIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.dataCategoryIds = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.sortBy = $somePolicyViolationSortField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyViolationSortField]) for enum values.
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.resourceMetadataFilter = @{
+	# OPTIONAL
+	objectTypes = @(
+		$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
+	)
+	# OPTIONAL
+	cloudAccountIds = @(
+		$someString
+	)
+	# OPTIONAL
+	managedObjectTypes = @(
+		$someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+	)
+	# OPTIONAL
+	principalTypes = @(
+		$someViolationPrincipalType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ViolationPrincipalType]) for enum values.
+	)
+	# OPTIONAL
+	resolutionTypes = @(
+		$someIdentityResolutionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdentityResolutionType]) for enum values.
+	)
+	# OPTIONAL
+	domainFids = @(
+		$someString
+	)
+	# OPTIONAL
+	identityNameSearch = $someString
+	# OPTIONAL
+	accessTypes = @(
+		$someAccessVia # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AccessVia]) for enum values.
+	)
+	# OPTIONAL
+	sources = @(
+		$someString
+	)
+	# OPTIONAL
+	idpTypes = @(
+		$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+	)
+	# OPTIONAL
+	originEventDateRange = @{
+		# REQUIRED
+		start = $someDateTime
+		# REQUIRED
+		end = $someDateTime
+	}
+	# OPTIONAL
+	identityTags = @(
+		$someIdentityTag # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdentityTag]) for enum values.
+	)
+	# OPTIONAL
+	actorIds = @(
+		$someString
+	)
+	# OPTIONAL
+	identityOrigins = @(
+		$somePrincipalOrigin # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrincipalOrigin]) for enum values.
+	)
+}
+# OPTIONAL
+$query.Var.policyViolationNameSearch = $someString
+# OPTIONAL
+$query.Var.violationNames = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.policyFrameworks = @(
+	$someString
+)
+# REQUIRED
+$query.Var.policyTypes = @(
+	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // securityPolicy(policyId: UUID!, includeViolationInsights: Boolean = false, policyType: PolicyType!): PolicyResult!
+        internal void InitQuerySecurityPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyId", "UUID!"),
+                Tuple.Create("includeViolationInsights", "Boolean"),
+                Tuple.Create("policyType", "PolicyType!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySecurityPolicy",
+                "($policyId: UUID!,$includeViolationInsights: Boolean,$policyType: PolicyType!)",
+                "PolicyResult",
+                Query.SecurityPolicy,
+                Query.SecurityPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.policyId = $someString
+# OPTIONAL
+$query.Var.includeViolationInsights = $someBoolean
+# REQUIRED
+$query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values."
             );
         }
 

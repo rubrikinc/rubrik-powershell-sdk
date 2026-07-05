@@ -5,3 +5,5 @@ FilterValue represents a possible filter value.
   - The ID of the value.
 - label: System.String
   - The label of the value.
+- identityDetails: IdentityFilterValueDetails
+  - Populated only for identity filter types (actor / target entity).

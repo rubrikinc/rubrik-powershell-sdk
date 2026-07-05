@@ -202,6 +202,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			serviceAccountId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		panXsoar = @{
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		workday = @{
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# REQUIRED
+    /// 			refreshToken = $someString
+    /// 			# REQUIRED
+    /// 			tokenEndpoint = $someString
+    /// 			# OPTIONAL
+    /// 			status = @{
+    /// 				# OPTIONAL
+    /// 				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	settings = @{
@@ -358,6 +379,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					webhookId = $someInt
     /// 					# REQUIRED
     /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				panXsoar = @{
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				workday = @{
+    /// 					# REQUIRED
+    /// 					clientId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
+    /// 					# REQUIRED
+    /// 					refreshToken = $someString
+    /// 					# REQUIRED
+    /// 					tokenEndpoint = $someString
+    /// 					# OPTIONAL
+    /// 					status = @{
+    /// 						# OPTIONAL
+    /// 						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+    /// 					}
     /// 				}
     /// 			}
     /// 			# OPTIONAL
@@ -612,6 +654,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			serviceAccountId = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		panXsoar = @{
+    /// 			# REQUIRED
+    /// 			serviceAccountId = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		workday = @{
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# REQUIRED
+    /// 			refreshToken = $someString
+    /// 			# REQUIRED
+    /// 			tokenEndpoint = $someString
+    /// 			# OPTIONAL
+    /// 			status = @{
+    /// 				# OPTIONAL
+    /// 				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	settings = @{
@@ -770,6 +833,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					webhookId = $someInt
     /// 					# REQUIRED
     /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				panXsoar = @{
+    /// 					# REQUIRED
+    /// 					serviceAccountId = $someString
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				workday = @{
+    /// 					# REQUIRED
+    /// 					clientId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
+    /// 					# REQUIRED
+    /// 					refreshToken = $someString
+    /// 					# REQUIRED
+    /// 					tokenEndpoint = $someString
+    /// 					# OPTIONAL
+    /// 					status = @{
+    /// 						# OPTIONAL
+    /// 						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+    /// 					}
     /// 				}
     /// 			}
     /// 			# OPTIONAL
@@ -1062,6 +1146,27 @@ $query.Var.input = @{
 			# REQUIRED
 			serviceAccountId = $someString
 		}
+		# OPTIONAL
+		panXsoar = @{
+			# REQUIRED
+			serviceAccountId = $someString
+		}
+		# OPTIONAL
+		workday = @{
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# REQUIRED
+			refreshToken = $someString
+			# REQUIRED
+			tokenEndpoint = $someString
+			# OPTIONAL
+			status = @{
+				# OPTIONAL
+				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	settings = @{
@@ -1210,6 +1315,27 @@ $query.Var.input = @{
 					webhookId = $someInt
 					# REQUIRED
 					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				panXsoar = @{
+					# REQUIRED
+					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				workday = @{
+					# REQUIRED
+					clientId = $someString
+					# REQUIRED
+					clientSecret = $someString
+					# REQUIRED
+					refreshToken = $someString
+					# REQUIRED
+					tokenEndpoint = $someString
+					# OPTIONAL
+					status = @{
+						# OPTIONAL
+						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+					}
 				}
 			}
 			# OPTIONAL
@@ -1432,6 +1558,27 @@ $query.Var.input = @{
 			# REQUIRED
 			serviceAccountId = $someString
 		}
+		# OPTIONAL
+		panXsoar = @{
+			# REQUIRED
+			serviceAccountId = $someString
+		}
+		# OPTIONAL
+		workday = @{
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# REQUIRED
+			refreshToken = $someString
+			# REQUIRED
+			tokenEndpoint = $someString
+			# OPTIONAL
+			status = @{
+				# OPTIONAL
+				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	settings = @{
@@ -1582,6 +1729,27 @@ $query.Var.input = @{
 					webhookId = $someInt
 					# REQUIRED
 					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				panXsoar = @{
+					# REQUIRED
+					serviceAccountId = $someString
+				}
+				# OPTIONAL
+				workday = @{
+					# REQUIRED
+					clientId = $someString
+					# REQUIRED
+					clientSecret = $someString
+					# REQUIRED
+					refreshToken = $someString
+					# REQUIRED
+					tokenEndpoint = $someString
+					# OPTIONAL
+					status = @{
+						# OPTIONAL
+						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+					}
 				}
 			}
 			# OPTIONAL

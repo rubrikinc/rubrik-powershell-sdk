@@ -26,6 +26,18 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> FilesetDownloadFilesJobConfigInput? Config
+        // GraphQL -> config: FilesetDownloadFilesJobConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public FilesetDownloadFilesJobConfigInput? Config { get; set; }
+
+        //      C# -> List<DeltaType>? DeltaTypeFilter
+        // GraphQL -> deltaTypeFilter: [DeltaType!] (enum)
+        [JsonProperty("deltaTypeFilter")]
+        public List<DeltaType>? DeltaTypeFilter { get; set; }
+
         //      C# -> System.String? NextSnapshotFid
         // GraphQL -> nextSnapshotFid: UUID (scalar)
         [JsonProperty("nextSnapshotFid")]
@@ -40,18 +52,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> zipPassword: String (scalar)
         [JsonProperty("zipPassword")]
         public System.String? ZipPassword { get; set; }
-
-        //      C# -> FilesetDownloadFilesJobConfigInput? Config
-        // GraphQL -> config: FilesetDownloadFilesJobConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("config")]
-        public FilesetDownloadFilesJobConfigInput? Config { get; set; }
-
-        //      C# -> List<DeltaType>? DeltaTypeFilter
-        // GraphQL -> deltaTypeFilter: [DeltaType!] (enum)
-        [JsonProperty("deltaTypeFilter")]
-        public List<DeltaType>? DeltaTypeFilter { get; set; }
 
 
         #endregion

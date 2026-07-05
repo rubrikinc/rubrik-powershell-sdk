@@ -13,3 +13,6 @@ Parameters for SharePoint site descendant search.
   - Used for Lambda search/browse, diff/full FMD paths for Onedrive.
 - descendantWorkloadId: System.String
   - The descendant workload identifier to filter in the query.
+- itemId: System.String
+  - Optional: filter to a single object by its M365 item ID.
+Empty or unset = no filter.

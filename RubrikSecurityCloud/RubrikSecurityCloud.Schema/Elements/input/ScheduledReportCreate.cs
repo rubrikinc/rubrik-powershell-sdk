@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dailyTime")]
         public DateTime? DailyTime { get; set; }
 
+        //      C# -> List<WeekDay>? WeeklyDays
+        // GraphQL -> weeklyDays: [WeekDay!] (enum)
+        [JsonProperty("weeklyDays")]
+        public List<WeekDay>? WeeklyDays { get; set; }
+
         //      C# -> DateTime? WeeklyTime
         // GraphQL -> weeklyTime: LocalTime (scalar)
         [JsonProperty("weeklyTime")]
@@ -53,6 +58,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("monthlyTime")]
         public DateTime? MonthlyTime { get; set; }
 
+        //      C# -> List<ReportAttachmentType>? AttachmentTypes
+        // GraphQL -> attachmentTypes: [ReportAttachmentType!] (enum)
+        [JsonProperty("attachmentTypes")]
+        public List<ReportAttachmentType>? AttachmentTypes { get; set; }
+
         //      C# -> List<System.String>? RubrikRecipientUserIds
         // GraphQL -> rubrikRecipientUserIds: [String!]! (scalar)
         [Required]
@@ -67,6 +77,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nonRubrikRecipientEmails")]
         public List<System.String>? NonRubrikRecipientEmails { get; set; }
 
+        //      C# -> System.Boolean? UpdateCreator
+        // GraphQL -> updateCreator: Boolean (scalar)
+        [JsonProperty("updateCreator")]
+        public System.Boolean? UpdateCreator { get; set; }
+
         //      C# -> System.String? TimeZone
         // GraphQL -> timeZone: String (scalar)
         [JsonProperty("timeZone")]
@@ -76,21 +91,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> showChartsInEmailBody: Boolean (scalar)
         [JsonProperty("showChartsInEmailBody")]
         public System.Boolean? ShowChartsInEmailBody { get; set; }
-
-        //      C# -> System.Boolean? UpdateCreator
-        // GraphQL -> updateCreator: Boolean (scalar)
-        [JsonProperty("updateCreator")]
-        public System.Boolean? UpdateCreator { get; set; }
-
-        //      C# -> List<WeekDay>? WeeklyDays
-        // GraphQL -> weeklyDays: [WeekDay!] (enum)
-        [JsonProperty("weeklyDays")]
-        public List<WeekDay>? WeeklyDays { get; set; }
-
-        //      C# -> List<ReportAttachmentType>? AttachmentTypes
-        // GraphQL -> attachmentTypes: [ReportAttachmentType!] (enum)
-        [JsonProperty("attachmentTypes")]
-        public List<ReportAttachmentType>? AttachmentTypes { get; set; }
 
 
         #endregion

@@ -53,6 +53,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!] (scalar)
+        [JsonProperty("dnsServers")]
+        public List<System.String>? DnsServers { get; set; }
+
         //      C# -> System.String? OrgNetworkId
         // GraphQL -> orgNetworkId: String (scalar)
         [JsonProperty("orgNetworkId")]

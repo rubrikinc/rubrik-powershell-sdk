@@ -50,3 +50,5 @@ Inventory workloads that are supported on Rubrik.
 - PURE_STORAGE_ROOT - Pure Storage root.
 - AUTH0_ROOT - Auth0 root.
 - PING_FEDERATE_ROOT - Ping Federate root.
+- POWER_PLATFORM_ROOT - Power Platform root.
+- MARIADB_ROOT - MariaDB root.

@@ -35,3 +35,5 @@ Identity Provider is an entity responsible for authenticating a user account.
   - Whether the SAML AuthnRequest sent to this identity provider sets
 ForceAuthn="true", asking the IdP to re-authenticate the user on
 every login instead of reusing a cached IdP session.
+- allowIdpInitiatedSso: System.Boolean
+  - Specifies whether IdP-initiated SSO is allowed for this identity provider.

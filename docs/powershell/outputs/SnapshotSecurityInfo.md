@@ -17,3 +17,5 @@ Security information (anomaly, malware, quarantine) of a snapshot.
   - Snapshot date.
 - threatHuntInfo: list of ThreatHuntSnapshotInfos
   - Information about threat hunts on snapshot.
+- suspiciousFileCount: System.Int64
+  - Number of suspicious files detected in this snapshot.

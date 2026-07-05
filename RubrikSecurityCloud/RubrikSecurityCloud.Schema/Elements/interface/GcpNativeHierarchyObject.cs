@@ -24,11 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeId")]
         System.String? CloudNativeId { get; set; }
 
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        [JsonProperty("region")]
-        System.String? Region { get; set; }
-
         //      C# -> List<Label>? Labels
         // GraphQL -> labels: [Label!]! (type)
         [JsonProperty("labels")]

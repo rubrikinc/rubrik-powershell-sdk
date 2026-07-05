@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isLocal")]
         public System.Boolean? IsLocal { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.Boolean? IsStandaloneDatastore
         // GraphQL -> isStandaloneDatastore: Boolean! (scalar)
         [JsonProperty("isStandaloneDatastore")]
@@ -240,6 +245,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsLocal = null,
+        System.Boolean? IsReplica = null,
         System.Boolean? IsStandaloneDatastore = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -307,6 +313,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsLocal != null ) {
             this.IsLocal = IsLocal;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( IsStandaloneDatastore != null ) {
             this.IsStandaloneDatastore = IsStandaloneDatastore;
@@ -538,6 +547,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isLocal\n" ;
             } else {
                 s += ind + "isLocal\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Boolean? IsStandaloneDatastore
@@ -1049,6 +1067,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsLocal != null && ec.Excludes("isLocal",true))
         {
             this.IsLocal = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Boolean? IsStandaloneDatastore
         // GraphQL -> isStandaloneDatastore: Boolean! (scalar)

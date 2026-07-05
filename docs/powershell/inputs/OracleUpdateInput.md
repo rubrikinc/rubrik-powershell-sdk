@@ -30,14 +30,14 @@ Specifies an order for the RAC nodes. Automated Oracle backups use the RAC nodes
 Boolean value that specifies whether the Rubrik cluster should automatically distribute backups across Oracle database instances running on the RAC nodes. By default, backups are run from the first connected node in the RAC priority order.
 - oracleUpdateCommon: OracleUpdateCommonInput
 - primaryNode: System.String
-  - Supported in v9.6
-Name of the RAC node designated as the primary backup node.
+  - Supported in v9.6+
+Name of the RAC node designated as the primary backup node. REQUIRED when shouldEnableMultiNodeBackup is true.
 - shouldEnableMultiNodeBackup: System.Boolean
-  - Supported in v9.6
-Boolean value that specifies whether multi-node backup is enabled for this Oracle RAC. When set to true, backupNodes and primaryNode must also be provided in the same request. When set to false, all stored multi-node backup configuration (backupNodes, primaryNode, secondaryNodes) is cleared.
+  - Supported in v9.6+
+Boolean value that specifies whether multi-node backup is enabled for this Oracle RAC. When set to true, backupNodes, primaryNode, and secondaryNodes must all be provided in the same request (pass an empty array for secondaryNodes if no secondary fallback nodes are configured). When set to false, all stored multi-node backup configuration (backupNodes, primaryNode, secondaryNodes) is cleared.
 - secondaryNodes: list of System.Strings
-  - Supported in v9.6
-Ordered list of secondary RAC node names. Array position defines fallback priority when the primary node is unavailable (position 0 = first fallback).
+  - Supported in v9.6+
+Ordered list of secondary RAC node names. Array position defines fallback priority when the primary node is unavailable (position 0 = first fallback). REQUIRED when shouldEnableMultiNodeBackup is true (pass an empty array if no secondary fallback nodes are configured).
 - backupNodes: list of System.Strings
-  - Supported in v9.6
-List of RAC node names designated for parallel backup. The array order defines channel round-robin assignment.
+  - Supported in v9.6+
+List of RAC node names designated for multi-node backup. The array order defines channel round-robin assignment. REQUIRED when shouldEnableMultiNodeBackup is true.

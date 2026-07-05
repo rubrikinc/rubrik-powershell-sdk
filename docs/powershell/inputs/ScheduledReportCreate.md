@@ -1,27 +1,33 @@
 ### ScheduledReportCreate
+Configuration to create a new scheduled report.
+
 - reportId: System.Int32
   - ID of the report for which a schedule needs to be created.
 - title: System.String
   - Title of the report.
 - dailyTime: DateTime
   - Time of the day for daily report delivery.
+- weeklyDays: list of WeekDays
+  - List of weekdays for weekly schedule of reports.
 - weeklyTime: DateTime
   - Time of the day for weekly report delivery on the configured weekdays.
 - monthlyDate: System.Int32
   - Date of the month for monthly report delivery.
 - monthlyTime: DateTime
   - Time of the day for monthly report delivery on the configured monthly date.
+- attachmentTypes: list of ReportAttachmentTypes
+  - List of attachment types for report emails.
 - rubrikRecipientUserIds: list of System.Strings
-  - List of Rubrik user IDs that are the intended recipients of the scheduled report.
+  - List of Rubrik user IDs that are the intended recipients of the
+scheduled report.
 - nonRubrikRecipientEmails: list of System.Strings
-  - List of email addresses of non-Rubrik user recipients of the scheduled report.
+  - List of email addresses of non-Rubrik user recipients of the
+scheduled report.
+- updateCreator: System.Boolean
+  - Specifies whether to update the creator with the current user. This is
+typically used when the user account that was the schedule creator has
+been deleted from Rubrik. It will be null in createScheduledReport.
 - timeZone: System.String
   - Time zone of the schedule time in IANA format.
 - showChartsInEmailBody: System.Boolean
   - Specifies whether to show charts in email body.
-- updateCreator: System.Boolean
-  - Specifies whether to update the creator with the current user. This is typically used when the user account that was the schedule creator has been deleted from Rubrik. It will be null in createScheduledReport.
-- weeklyDays: list of WeekDays
-  - List of weekdays for weekly schedule of reports.
-- attachmentTypes: list of ReportAttachmentTypes
-  - List of attachment types for report emails.

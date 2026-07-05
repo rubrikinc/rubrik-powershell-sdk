@@ -93,7 +93,7 @@ An object that can be backed-up by taking snapshots.
   - The organization name related to the workload. This is deprecated.
 - workloadOrg: WorkloadOrganization
   - Specifies the owner organization of the workload.
-- slaDomain: SlaDomain
-  - The SLA Domain of the protected objects.
 - cluster: Cluster
   - The Rubrik cluster to which the protected objects belong.
+- slaDomain: SlaDomain
+  - The SLA Domain of the protected objects.

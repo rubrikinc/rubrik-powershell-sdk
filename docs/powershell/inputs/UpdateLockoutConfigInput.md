@@ -1,5 +1,5 @@
 ### UpdateLockoutConfigInput
-Specifies the input required to update the lockout config by the admin.
+Specifies information about lockout configuration.
 
 - loginAttemptsLimit: System.Int32
   - Specifies the number of failed login attempts allowed after which the account is locked.

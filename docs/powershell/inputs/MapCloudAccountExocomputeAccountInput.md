@@ -7,3 +7,5 @@ Input for mapping cloud accounts to an Exocompute account.
   - Rubrik ID of the Exocompute cloud account to which the Exocompute launch must be mapped.
 - cloudVendor: CloudVendor
   - Cloud provider type.
+- cloudSpecificParams: CloudSpecificParamsInput
+  - Cloud-specific mapping options keyed by cloud provider.

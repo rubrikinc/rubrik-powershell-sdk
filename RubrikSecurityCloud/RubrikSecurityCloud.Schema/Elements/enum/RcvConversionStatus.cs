@@ -30,6 +30,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INTERMEDIATE_FAILED")]
         INTERMEDIATE_FAILED,
 
+        [EnumMember(Value = "POST_CONVERSION_IN_PROGRESS")]
+        POST_CONVERSION_IN_PROGRESS,
+
+        [EnumMember(Value = "POST_CONVERSION_SUCCEEDED")]
+        POST_CONVERSION_SUCCEEDED,
+
         [EnumMember(Value = "SUBMITTED")]
         SUBMITTED,
 

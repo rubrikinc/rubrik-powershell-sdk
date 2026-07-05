@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> Cluster? Cluster
-        // GraphQL -> cluster: Cluster! (type)
-        [JsonProperty("cluster")]
-        Cluster? Cluster { get; set; }
-
         //      C# -> TargetType? TargetType
         // GraphQL -> targetType: TargetType! (enum)
         [JsonProperty("targetType")]
@@ -108,6 +103,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isComplianceImmutabilitySupported: Boolean! (scalar)
         [JsonProperty("isComplianceImmutabilitySupported")]
         System.Boolean? IsComplianceImmutabilitySupported { get; set; }
+
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        [JsonProperty("cluster")]
+        Cluster? Cluster { get; set; }
 
 
         #endregion

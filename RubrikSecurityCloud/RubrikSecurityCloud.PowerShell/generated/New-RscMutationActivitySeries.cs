@@ -125,6 +125,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
+    /// 	day = $someString
+    /// 	# REQUIRED
     /// 	filters = @{
     /// 		# OPTIONAL
     /// 		openAccessTypes = @(
@@ -177,8 +179,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
     /// 		)
     /// 	}
-    /// 	# REQUIRED
-    /// 	day = $someString
     /// 	# REQUIRED
     /// 	timezone = $someString
     /// }
@@ -363,6 +363,8 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
+	day = $someString
+	# REQUIRED
 	filters = @{
 		# OPTIONAL
 		openAccessTypes = @(
@@ -415,8 +417,6 @@ $query.Var.input = @{
 			$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
 		)
 	}
-	# REQUIRED
-	day = $someString
 	# REQUIRED
 	timezone = $someString
 }"

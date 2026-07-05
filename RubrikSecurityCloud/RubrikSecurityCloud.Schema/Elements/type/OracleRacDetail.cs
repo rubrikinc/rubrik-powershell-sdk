@@ -20,10 +20,25 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!]! (scalar)
+        [JsonProperty("backupNodes")]
+        public List<System.String>? BackupNodes { get; set; }
+
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String (scalar)
+        [JsonProperty("primaryNode")]
+        public System.String? PrimaryNode { get; set; }
+
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
         [JsonProperty("scan")]
         public System.String? Scan { get; set; }
+
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!]! (scalar)
+        [JsonProperty("secondaryNodes")]
+        public List<System.String>? SecondaryNodes { get; set; }
 
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
@@ -45,13 +60,25 @@ namespace RubrikSecurityCloud.Types
     }
 
     public OracleRacDetail Set(
+        List<System.String>? BackupNodes = null,
+        System.String? PrimaryNode = null,
         System.String? Scan = null,
+        List<System.String>? SecondaryNodes = null,
         OracleNonSlaProperties? OracleNonSlaProperties = null,
         OracleRacSummary? OracleRacSummary = null
     ) 
     {
+        if ( BackupNodes != null ) {
+            this.BackupNodes = BackupNodes;
+        }
+        if ( PrimaryNode != null ) {
+            this.PrimaryNode = PrimaryNode;
+        }
         if ( Scan != null ) {
             this.Scan = Scan;
+        }
+        if ( SecondaryNodes != null ) {
+            this.SecondaryNodes = SecondaryNodes;
         }
         if ( OracleNonSlaProperties != null ) {
             this.OracleNonSlaProperties = OracleNonSlaProperties;
@@ -73,6 +100,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!]! (scalar)
+        if (this.BackupNodes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupNodes\n" ;
+            } else {
+                s += ind + "backupNodes\n" ;
+            }
+        }
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String (scalar)
+        if (this.PrimaryNode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryNode\n" ;
+            } else {
+                s += ind + "primaryNode\n" ;
+            }
+        }
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
         if (this.Scan != null) {
@@ -80,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "scan\n" ;
             } else {
                 s += ind + "scan\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!]! (scalar)
+        if (this.SecondaryNodes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "secondaryNodes\n" ;
+            } else {
+                s += ind + "secondaryNodes\n" ;
             }
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
@@ -113,6 +167,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!]! (scalar)
+        if (ec.Includes("backupNodes",true))
+        {
+            if(this.BackupNodes == null) {
+
+                this.BackupNodes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupNodes != null && ec.Excludes("backupNodes",true))
+        {
+            this.BackupNodes = null;
+        }
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String (scalar)
+        if (ec.Includes("primaryNode",true))
+        {
+            if(this.PrimaryNode == null) {
+
+                this.PrimaryNode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryNode != null && ec.Excludes("primaryNode",true))
+        {
+            this.PrimaryNode = null;
+        }
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
         if (ec.Includes("scan",true))
@@ -129,6 +217,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Scan != null && ec.Excludes("scan",true))
         {
             this.Scan = null;
+        }
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!]! (scalar)
+        if (ec.Includes("secondaryNodes",true))
+        {
+            if(this.SecondaryNodes == null) {
+
+                this.SecondaryNodes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecondaryNodes != null && ec.Excludes("secondaryNodes",true))
+        {
+            this.SecondaryNodes = null;
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)

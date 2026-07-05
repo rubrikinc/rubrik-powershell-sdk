@@ -85,6 +85,8 @@ Information about MongoDB Source.
   - A link to view the workload on the CDM cluster. For dev use only.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection

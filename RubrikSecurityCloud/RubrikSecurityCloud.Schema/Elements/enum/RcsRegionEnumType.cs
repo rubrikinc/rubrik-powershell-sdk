@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ASIA_EAST_2")]
         ASIA_EAST_2,
 
+        [EnumMember(Value = "ASIA_EAST_TAIWAN")]
+        ASIA_EAST_TAIWAN,
+
         [EnumMember(Value = "ASIA_PACIFIC_HYDERABAD")]
         ASIA_PACIFIC_HYDERABAD,
 
@@ -81,6 +84,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EUROPE_NORTH")]
         EUROPE_NORTH,
 
+        [EnumMember(Value = "EUROPE_NORTH_FINLAND")]
+        EUROPE_NORTH_FINLAND,
+
         [EnumMember(Value = "EUROPE_STOCKHOLM")]
         EUROPE_STOCKHOLM,
 
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "EUROPE_WEST_4")]
         EUROPE_WEST_4,
+
+        [EnumMember(Value = "EUROPE_WEST_BELGIUM")]
+        EUROPE_WEST_BELGIUM,
 
         [EnumMember(Value = "FRANCE_CENTRAL")]
         FRANCE_CENTRAL,
@@ -246,6 +255,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "US_EAST_2")]
         US_EAST_2,
 
+        [EnumMember(Value = "US_EAST_2_VIRGINIA")]
+        US_EAST_2_VIRGINIA,
+
         [EnumMember(Value = "US_EAST_5")]
         US_EAST_5,
 
@@ -281,6 +293,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "US_WEST_CENTRAL")]
         US_WEST_CENTRAL,
+
+        [EnumMember(Value = "US_WEST_LOS_ANGELES")]
+        US_WEST_LOS_ANGELES,
 
         [EnumMember(Value = "WEST_US3")]
         WEST_US3

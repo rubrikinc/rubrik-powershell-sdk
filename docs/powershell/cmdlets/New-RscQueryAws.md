@@ -116,9 +116,11 @@ Retrieves the list of accounts eligible for migration to an AWS organization.
     - awsOrganizationUuid - System.String: The ID of the AWS organization.
 - Returns AwsCloudAccountConnection.
 ### exocomputeconfigs
-List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
+List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix. When an operation is supplied, the returned accounts are scoped to those the caller can perform that operation on.
 
-- There is a single argument of type System.String.
+- There are 2 arguments.
+    - awsNativeAccountIdOrNamePrefix - System.String: A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
+    - operation - Operation: The operation used to scope the returned accounts to those the caller is authorized to perform. Defaults to CREATE_REPORT, which returns all accounts without operation-based scoping.
 - Returns list of AwsExocomputeConfigs.
 ### exocomputegetclusterconnectioninfo
 Obtains the connection command and yaml which can be used to connect a customer-managed cluster to RSC.

@@ -17,6 +17,12 @@ AWS native account.
   - Count of Amazon S3 Buckets in the AWS native account.
 - dynamoDbTableCount: System.Int32
   - Count of Amazon DynamoDB Tables in the AWS native account.
+- glueIcebergCatalogCount: System.Int32
+  - Count of Glue Iceberg catalogs in the AWS native account.
+- glueIcebergDatabaseCount: System.Int32
+  - Count of Glue Iceberg databases in the AWS native account.
+- glueIcebergTableCount: System.Int32
+  - Count of Glue Iceberg tables in the AWS native account.
 - cloudType: AwsCloudType
   - AWS cloud type.
 - serviceType: AwsCloudAccountServiceType

@@ -5,10 +5,10 @@ Snapshot information specific to the GCP Cloud SQL instance.
   - Size of allocated storage of the Cloud SQL instance in GiB.
 - kmsKey: System.String
   - KMS key used for encryption, if any.
-- databaseVersion: System.String
-  - Database version of the Cloud SQL instance.
 - edition: GcpCloudSqlEdition
   - Edition of the Cloud SQL instance.
+- databaseVersion: System.String
+  - Database version of the Cloud SQL instance.
 - instanceTier: System.String
   - Instance tier of the Cloud SQL instance.
 - snapshotId: System.String

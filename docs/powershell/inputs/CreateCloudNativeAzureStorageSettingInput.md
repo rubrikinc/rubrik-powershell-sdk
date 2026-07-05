@@ -25,5 +25,7 @@ Input for create storage settings for an account.
   - Information about the customer-managed key and key vault.
 - networkAccessType: AzureStorageAccountNetworkAccess
   - Information about the network access type of the storage account.
+- sourceWorkloadCloud: SourceWorkloadCloud
+  - Cloud where the source workload's data originates. When omitted, it is derived from the destination type.
 - azureCloudType: AzureCloudType
   - Cloud type of Azure cloud account.

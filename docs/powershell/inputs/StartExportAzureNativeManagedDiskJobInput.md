@@ -25,7 +25,9 @@ Input for the job to export the specified Azure Native Managed Disk to the speci
   - Specifies whether to run only the export job or to run both the export and replace jobs. When true, the attached managed disk is exported and replaced.
 - shouldUseReplica: System.Boolean
   - Specifies whether to recover from the replica of the source snapshot or not. Default value is false.
-- snapshotType: AzureSnapshotType
-  - The type of the snapshot to recover from.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
+- snapshotType: AzureSnapshotType
+  - The type of the snapshot to recover from.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported disk (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

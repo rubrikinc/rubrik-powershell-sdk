@@ -126,11 +126,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("projectNumber")]
         public System.String? ProjectNumber { get; set; }
 
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        [JsonProperty("region")]
-        public System.String? Region { get; set; }
-
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -286,7 +281,6 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.String? OrganizationName = null,
         System.String? ProjectNumber = null,
-        System.String? Region = null,
         System.Boolean? SlaPauseStatus = null,
         System.Int32? SqlInstanceCount = null,
         System.Int32? VmCount = null,
@@ -366,9 +360,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ProjectNumber != null ) {
             this.ProjectNumber = ProjectNumber;
-        }
-        if ( Region != null ) {
-            this.Region = Region;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -628,15 +619,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "projectNumber\n" ;
             } else {
                 s += ind + "projectNumber\n" ;
-            }
-        }
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        if (this.Region != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "region\n" ;
-            } else {
-                s += ind + "region\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -1194,23 +1176,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.ProjectNumber != null && ec.Excludes("projectNumber",true))
         {
             this.ProjectNumber = null;
-        }
-        //      C# -> System.String? Region
-        // GraphQL -> region: String! (scalar)
-        if (ec.Includes("region",true))
-        {
-            if(this.Region == null) {
-
-                this.Region = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.Region != null && ec.Excludes("region",true))
-        {
-            this.Region = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

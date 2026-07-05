@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicas")]
         public List<PostgresHaReplicaConfigInput>? Replicas { get; set; }
 
+        //      C# -> BackupNodePreferenceInput? BackupNodePreference
+        // GraphQL -> backupNodePreference: BackupNodePreferenceInput (input)
+        [JsonProperty("backupNodePreference")]
+        public BackupNodePreferenceInput? BackupNodePreference { get; set; }
+
 
         #endregion
 

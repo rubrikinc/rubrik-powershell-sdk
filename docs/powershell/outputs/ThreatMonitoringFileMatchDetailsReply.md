@@ -23,11 +23,11 @@ Response to ThreatMonitoringFileMatchDetails.
   - Author of the rule that matched.
 - iocRuleDescription: System.String
   - Description of the rule that matched.
+- objectFid: System.String
+  - FID of the object.
 - filePath: System.String
   - Filepath that was matched.
 - fileName: System.String
   - Name of the file that was matched.
-- objectFid: System.String
-  - FID of the object.
 - cluster: Cluster
   - The Rubrik cluster associated with the workload.

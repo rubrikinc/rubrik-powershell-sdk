@@ -84,6 +84,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP_UNSPECIFIED")]
         GROUP_UNSPECIFIED,
 
+        [EnumMember(Value = "KMS_KEY_SHARING")]
+        KMS_KEY_SHARING,
+
         [EnumMember(Value = "NAT_GATEWAY")]
         NAT_GATEWAY,
 

@@ -7,27 +7,51 @@
 - There is a single argument of type list of System.Strings.
 - Returns list of CdmHierarchySnappableNews.
 ### contactsearch
-Search over Exchange contacts.
+SearchSnappableContacts returns a paginated, GraphQL-shaped list of
+contact folders and contacts for the given snappable across all
+snapshots. Dispatches the raw index hit to the search proxy's
+SnappableSearch RPC, then enriches each item with snapshot_time via the
+authz GetSnapshot lookup. Encapsulates the response shaping that
+previously lived in the GraphQL resolver `snappableContactSearch`.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - contactsSearchFilter - ContactsSearchFilter: Search filter for contacts search.
 - Returns O365ExchangeObjectConnection.
 ### emailsearch
-- There are 5 arguments.
+SearchSnappableEmails returns a paginated, GraphQL-shaped list of
+mailbox folders and emails for the given snappable across all
+snapshots. Encapsulates the response shaping (folders + emails
+merged as O365ExchangeObject) that previously lived in the
+GraphQL resolver `snappableEmailSearch`.
+
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - searchFilter - SearchFilter: search filters
 - Returns O365ExchangeObjectConnection.
 ### eventsearch
-- There are 5 arguments.
+SearchSnappableEvents returns a paginated, GraphQL-shaped list of
+calendar folders and events for the given snappable across all
+snapshots. Dispatches the raw index hit to the search proxy's
+SnappableSearch RPC, then enriches each item with snapshot_time via the
+authz GetSnapshot lookup. Encapsulates the response shaping that
+previously lived in the GraphQL resolver `snappableEventSearch`.
+
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.

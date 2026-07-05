@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OKTA")]
         OKTA,
 
+        [EnumMember(Value = "PAN_XSOAR")]
+        PAN_XSOAR,
+
         [EnumMember(Value = "PRIVILEGED_ACCESS_MANAGEMENT")]
         PRIVILEGED_ACCESS_MANAGEMENT,
 
@@ -46,7 +49,10 @@ namespace RubrikSecurityCloud.Types
         SERVICENOW_ITSM,
 
         [EnumMember(Value = "SPLUNK")]
-        SPLUNK
+        SPLUNK,
+
+        [EnumMember(Value = "WORKDAY")]
+        WORKDAY
 
 
     } // enum IntegrationType

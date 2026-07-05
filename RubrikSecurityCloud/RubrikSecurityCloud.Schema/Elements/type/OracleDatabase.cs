@@ -121,6 +121,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
+        //      C# -> System.Boolean? IsZeroRpoEnabled
+        // GraphQL -> isZeroRpoEnabled: Boolean (scalar)
+        [JsonProperty("isZeroRpoEnabled")]
+        public System.Boolean? IsZeroRpoEnabled { get; set; }
+
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         [JsonProperty("logBackupFrequency")]
@@ -505,6 +515,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsLiveMount = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsReplica = null,
+        System.Boolean? IsZeroRpoEnabled = null,
         System.Int32? LogBackupFrequency = null,
         System.Int32? LogRatePerRmanChannelInMb = null,
         System.Int32? LogRetentionHours = null,
@@ -616,6 +628,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
+        }
+        if ( IsZeroRpoEnabled != null ) {
+            this.IsZeroRpoEnabled = IsZeroRpoEnabled;
         }
         if ( LogBackupFrequency != null ) {
             this.LogBackupFrequency = LogBackupFrequency;
@@ -979,6 +997,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsZeroRpoEnabled
+        // GraphQL -> isZeroRpoEnabled: Boolean (scalar)
+        if (this.IsZeroRpoEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isZeroRpoEnabled\n" ;
+            } else {
+                s += ind + "isZeroRpoEnabled\n" ;
             }
         }
         //      C# -> System.Int32? LogBackupFrequency
@@ -1903,6 +1939,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
+        }
+        //      C# -> System.Boolean? IsZeroRpoEnabled
+        // GraphQL -> isZeroRpoEnabled: Boolean (scalar)
+        if (ec.Includes("isZeroRpoEnabled",true))
+        {
+            if(this.IsZeroRpoEnabled == null) {
+
+                this.IsZeroRpoEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsZeroRpoEnabled != null && ec.Excludes("isZeroRpoEnabled",true))
+        {
+            this.IsZeroRpoEnabled = null;
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)

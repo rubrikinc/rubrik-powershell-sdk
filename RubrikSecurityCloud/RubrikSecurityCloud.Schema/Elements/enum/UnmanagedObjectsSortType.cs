@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_STORAGE")]
         ARCHIVAL_STORAGE,
 
+        [EnumMember(Value = "DOWNLOADED_STORAGE")]
+        DOWNLOADED_STORAGE,
+
         [EnumMember(Value = "LOCAL_STORAGE")]
         LOCAL_STORAGE,
 

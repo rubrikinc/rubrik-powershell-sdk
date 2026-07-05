@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.String? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: String (scalar)
+        [JsonProperty("customResourceDependencies")]
+        public System.String? CustomResourceDependencies { get; set; }
+
         //      C# -> System.String? Definition
         // GraphQL -> definition: String! (scalar)
         [JsonProperty("definition")]
@@ -101,6 +106,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.String? K8sClusterName
         // GraphQL -> k8sClusterName: String! (scalar)
         [JsonProperty("k8sClusterName")]
@@ -111,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sClusterUuid")]
         public System.String? K8sClusterUuid { get; set; }
 
+        //      C# -> System.String? LabelSelector
+        // GraphQL -> labelSelector: String (scalar)
+        [JsonProperty("labelSelector")]
+        public System.String? LabelSelector { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -120,6 +135,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> namespace: String (scalar)
         [JsonProperty("namespace")]
         public System.String? Namespace { get; set; }
+
+        //      C# -> System.String? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: String (scalar)
+        [JsonProperty("namespaceExcludePatterns")]
+        public System.String? NamespaceExcludePatterns { get; set; }
+
+        //      C# -> System.String? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: String (scalar)
+        [JsonProperty("namespaceIncludePatterns")]
+        public System.String? NamespaceIncludePatterns { get; set; }
 
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
@@ -388,13 +413,18 @@ namespace RubrikSecurityCloud.Types
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? ClusterUuid = null,
+        System.String? CustomResourceDependencies = null,
         System.String? Definition = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsReplica = null,
         System.String? K8sClusterName = null,
         System.String? K8sClusterUuid = null,
+        System.String? LabelSelector = null,
         System.String? Name = null,
         System.String? Namespace = null,
+        System.String? NamespaceExcludePatterns = null,
+        System.String? NamespaceIncludePatterns = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         System.String? PrimaryClusterUuid = null,
@@ -466,6 +496,9 @@ namespace RubrikSecurityCloud.Types
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
+        if ( CustomResourceDependencies != null ) {
+            this.CustomResourceDependencies = CustomResourceDependencies;
+        }
         if ( Definition != null ) {
             this.Definition = Definition;
         }
@@ -475,17 +508,29 @@ namespace RubrikSecurityCloud.Types
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
+        }
         if ( K8sClusterName != null ) {
             this.K8sClusterName = K8sClusterName;
         }
         if ( K8sClusterUuid != null ) {
             this.K8sClusterUuid = K8sClusterUuid;
         }
+        if ( LabelSelector != null ) {
+            this.LabelSelector = LabelSelector;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
         if ( Namespace != null ) {
             this.Namespace = Namespace;
+        }
+        if ( NamespaceExcludePatterns != null ) {
+            this.NamespaceExcludePatterns = NamespaceExcludePatterns;
+        }
+        if ( NamespaceIncludePatterns != null ) {
+            this.NamespaceIncludePatterns = NamespaceIncludePatterns;
         }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
@@ -728,6 +773,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "clusterUuid\n" ;
             }
         }
+        //      C# -> System.String? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: String (scalar)
+        if (this.CustomResourceDependencies != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "customResourceDependencies\n" ;
+            } else {
+                s += ind + "customResourceDependencies\n" ;
+            }
+        }
         //      C# -> System.String? Definition
         // GraphQL -> definition: String! (scalar)
         if (this.Definition != null) {
@@ -755,6 +809,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isRelic\n" ;
             }
         }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
+            }
+        }
         //      C# -> System.String? K8sClusterName
         // GraphQL -> k8sClusterName: String! (scalar)
         if (this.K8sClusterName != null) {
@@ -773,6 +836,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "k8sClusterUuid\n" ;
             }
         }
+        //      C# -> System.String? LabelSelector
+        // GraphQL -> labelSelector: String (scalar)
+        if (this.LabelSelector != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "labelSelector\n" ;
+            } else {
+                s += ind + "labelSelector\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -789,6 +861,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "namespace\n" ;
             } else {
                 s += ind + "namespace\n" ;
+            }
+        }
+        //      C# -> System.String? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: String (scalar)
+        if (this.NamespaceExcludePatterns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "namespaceExcludePatterns\n" ;
+            } else {
+                s += ind + "namespaceExcludePatterns\n" ;
+            }
+        }
+        //      C# -> System.String? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: String (scalar)
+        if (this.NamespaceIncludePatterns != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "namespaceIncludePatterns\n" ;
+            } else {
+                s += ind + "namespaceIncludePatterns\n" ;
             }
         }
         //      C# -> System.Int32? NumWorkloadDescendants
@@ -1388,6 +1478,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ClusterUuid = null;
         }
+        //      C# -> System.String? CustomResourceDependencies
+        // GraphQL -> customResourceDependencies: String (scalar)
+        if (ec.Includes("customResourceDependencies",true))
+        {
+            if(this.CustomResourceDependencies == null) {
+
+                this.CustomResourceDependencies = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CustomResourceDependencies != null && ec.Excludes("customResourceDependencies",true))
+        {
+            this.CustomResourceDependencies = null;
+        }
         //      C# -> System.String? Definition
         // GraphQL -> definition: String! (scalar)
         if (ec.Includes("definition",true))
@@ -1439,6 +1546,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsRelic = null;
         }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
+        }
         //      C# -> System.String? K8sClusterName
         // GraphQL -> k8sClusterName: String! (scalar)
         if (ec.Includes("k8sClusterName",true))
@@ -1473,6 +1597,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.K8sClusterUuid = null;
         }
+        //      C# -> System.String? LabelSelector
+        // GraphQL -> labelSelector: String (scalar)
+        if (ec.Includes("labelSelector",true))
+        {
+            if(this.LabelSelector == null) {
+
+                this.LabelSelector = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LabelSelector != null && ec.Excludes("labelSelector",true))
+        {
+            this.LabelSelector = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1506,6 +1647,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.Namespace != null && ec.Excludes("namespace",true))
         {
             this.Namespace = null;
+        }
+        //      C# -> System.String? NamespaceExcludePatterns
+        // GraphQL -> namespaceExcludePatterns: String (scalar)
+        if (ec.Includes("namespaceExcludePatterns",true))
+        {
+            if(this.NamespaceExcludePatterns == null) {
+
+                this.NamespaceExcludePatterns = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NamespaceExcludePatterns != null && ec.Excludes("namespaceExcludePatterns",true))
+        {
+            this.NamespaceExcludePatterns = null;
+        }
+        //      C# -> System.String? NamespaceIncludePatterns
+        // GraphQL -> namespaceIncludePatterns: String (scalar)
+        if (ec.Includes("namespaceIncludePatterns",true))
+        {
+            if(this.NamespaceIncludePatterns == null) {
+
+                this.NamespaceIncludePatterns = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NamespaceIncludePatterns != null && ec.Excludes("namespaceIncludePatterns",true))
+        {
+            this.NamespaceIncludePatterns = null;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)

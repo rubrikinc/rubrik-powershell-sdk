@@ -621,6 +621,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		runCloudslabCheck = $someBoolean
     /// 		# OPTIONAL
     /// 		runGcsConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runSqlMiConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runSqlDbConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		requestedChecks = @(
+    /// 			$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -1410,6 +1418,14 @@ $query.Var.input = @{
 		runCloudslabCheck = $someBoolean
 		# OPTIONAL
 		runGcsConnectivityCheck = $someBoolean
+		# OPTIONAL
+		runSqlMiConnectivityCheck = $someBoolean
+		# OPTIONAL
+		runSqlDbConnectivityCheck = $someBoolean
+		# OPTIONAL
+		requestedChecks = @(
+			$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+		)
 	}
 }"
             );

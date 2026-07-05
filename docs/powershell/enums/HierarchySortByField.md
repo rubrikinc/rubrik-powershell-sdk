@@ -342,3 +342,26 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 +mo:sort:db:index:seq=1
 +mo:sort:db:index:type=BTREE
 +mo:sort:db:index:unique=false
+- POWER_PLATFORM_APP_LAST_MODIFIED - Sort Power Platform apps by last modified time.
++mo:sort:db:table=saasapps_power_platform_apps
++mo:sort:db:column=last_modified_on
++mo:sort:db:index:key=NULL
+- POWER_PLATFORM_APP_TYPE - Sort Power Platform apps by app type.
++mo:sort:db:table=managed_object
++mo:sort:db:column=object_type
++mo:sort:db:index:key=NULL
+- POWER_PLATFORM_FLOW_LAST_MODIFIED - Sort Power Platform flows by last modified time.
++mo:sort:db:table=saasapps_power_platform_flows
++mo:sort:db:column=last_modified_on
++mo:sort:db:index:key=NULL
+- POWER_PLATFORM_FLOW_TYPE - Sort Power Platform flows by flow type.
++mo:sort:db:table=managed_object
++mo:sort:db:column=object_type
++mo:sort:db:index:key=NULL
+- UNMANAGED_OBJECTS_DOWNLOADED_SNAPSHOTS_BYTES - Sort unmanaged objects by downloaded (rehydrated) snapshot storage size.
++mo:sort:db:table=unmanaged_objects
++mo:sort:db:column=rehydrated_snapshots_bytes
++mo:sort:db:index:key=rehydrated_snapshots_bytes_index
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false

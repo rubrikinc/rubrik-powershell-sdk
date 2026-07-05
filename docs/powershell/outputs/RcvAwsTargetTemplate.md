@@ -15,3 +15,5 @@ Specific information for the RCV AWS target template.
   - The type of this Target.
 - templateLocationId: System.String
   - The internal ID of the template archival location.
+- sourceWorkloadCloud: SourceWorkloadCloud
+  - Specifies the source workload cloud of this template. This field is optional.

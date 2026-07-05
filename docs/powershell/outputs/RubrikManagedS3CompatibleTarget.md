@@ -3,36 +3,34 @@ Specific information for Amazon S3 compatible target created on Rubrik.
 
 - accessKey: System.String
   - Access key for authentication to the S3Compatible target.
-- connectionStatus: ConnectionStatusType
-  - Connection status of the S3Compatible target.
 - endpoint: System.String
   - Host of the S3Compatible location.
-- syncStatus: TargetSyncStatus
-  - Sync status of S3Compatible target.
 - bucketPrefix: System.String
   - Prefix of the S3Compatible target bucket.
 - numberOfBuckets: System.Int32
   - Number of buckets in the S3Compatible target.
 - subType: S3CompatibleSubType
   - S3-compatible target subtype.
+- immutabilitySetting: LocationImmutabilityType
+  - Immutability information of S3-compatible location.
+- immutabilitySettings: LocationImmutabilityType
+  - Immutability information of S3-compatible location.
 - ibmDetail: IbmCosDetailsType
   - IBM subtype specific details.
 - ibmDetails: System.String
   - IBM subtype specific details.
-- immutabilitySettings: LocationImmutabilityType
-  - Immutability information of S3-compatible location.
-- immutabilitySetting: LocationImmutabilityType
-  - Immutability information of S3-compatible location.
+- syncStatus: TargetSyncStatus
+  - Sync status of S3Compatible target.
 - isConsolidationEnabled: System.Boolean
   - Flag to check if consolidation is enabled or not in this target.
-- encryptionType: TargetEncryptionTypeEnum
-  - Encryption type to be used for the S3-compatible target.
 - useSystemProxy: System.Boolean
   - Flag to check if system proxy is being used in this target.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type to be used for the S3-compatible target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the S3Compatible target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -67,3 +65,5 @@ Specific information for Amazon S3 compatible target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

@@ -13,6 +13,8 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Specifies whether to enable MFA during the recovery of one or more users.
 - objectsToDelete: list of ObjectInfoTypes
   - List of Entra ID objects to soft-delete from the target tenant after restore completes.
+- cleanRecoverySessionId: System.String
+  - Identifier of the clean-recovery session being committed. When set, the operator-approved set of objects and attributes is read from the granular-recovery data written during StartCleanRecovery, and the in-request selection is ignored.
 - relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType
   - Represents the modes for relationship restore for Azure AD objects.
 - objectRecoveryOptions: ObjectRecoveryOptionsType

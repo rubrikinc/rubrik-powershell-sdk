@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastLogin")]
         public DateTime? LastLogin { get; set; }
 
+        //      C# -> System.String? PatId
+        // GraphQL -> patId: String! (scalar)
+        [JsonProperty("patId")]
+        public System.String? PatId { get; set; }
+
         //      C# -> System.Int64? UnreadCount
         // GraphQL -> unreadCount: Long! (scalar)
         [JsonProperty("unreadCount")]
@@ -155,6 +160,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsEmailEnabled = null,
         System.Boolean? IsHidden = null,
         DateTime? LastLogin = null,
+        System.String? PatId = null,
         System.Int64? UnreadCount = null,
         System.String? Username = null,
         List<Org>? AllOrgs = null,
@@ -199,6 +205,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LastLogin != null ) {
             this.LastLogin = LastLogin;
+        }
+        if ( PatId != null ) {
+            this.PatId = PatId;
         }
         if ( UnreadCount != null ) {
             this.UnreadCount = UnreadCount;
@@ -341,6 +350,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lastLogin\n" ;
             } else {
                 s += ind + "lastLogin\n" ;
+            }
+        }
+        //      C# -> System.String? PatId
+        // GraphQL -> patId: String! (scalar)
+        if (this.PatId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "patId\n" ;
+            } else {
+                s += ind + "patId\n" ;
             }
         }
         //      C# -> System.Int64? UnreadCount
@@ -669,6 +687,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastLogin != null && ec.Excludes("lastLogin",true))
         {
             this.LastLogin = null;
+        }
+        //      C# -> System.String? PatId
+        // GraphQL -> patId: String! (scalar)
+        if (ec.Includes("patId",true))
+        {
+            if(this.PatId == null) {
+
+                this.PatId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PatId != null && ec.Excludes("patId",true))
+        {
+            this.PatId = null;
         }
         //      C# -> System.Int64? UnreadCount
         // GraphQL -> unreadCount: Long! (scalar)

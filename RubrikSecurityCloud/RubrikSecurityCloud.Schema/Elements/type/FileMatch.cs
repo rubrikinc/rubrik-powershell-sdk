@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectType")]
         public HierarchyObjectTypeEnum? ObjectType { get; set; }
 
+        //      C# -> MatchSeverity? Severity
+        // GraphQL -> severity: MatchSeverity! (enum)
+        [JsonProperty("severity")]
+        public MatchSeverity? Severity { get; set; }
+
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
         [JsonProperty("detectedTime")]
@@ -80,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQuarantinedInFirstObservedSnapshot")]
         public System.Boolean? IsQuarantinedInFirstObservedSnapshot { get; set; }
 
+        //      C# -> System.Boolean? IsValidated
+        // GraphQL -> isValidated: Boolean! (scalar)
+        [JsonProperty("isValidated")]
+        public System.Boolean? IsValidated { get; set; }
+
         //      C# -> System.Int64? MatchId
         // GraphQL -> matchId: Long! (scalar)
         [JsonProperty("matchId")]
@@ -127,6 +137,7 @@ namespace RubrikSecurityCloud.Types
     public FileMatch Set(
         IndicatorOfCompromiseKind? MatchType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
+        MatchSeverity? Severity = null,
         DateTime? DetectedTime = null,
         System.String? FileName = null,
         System.Int64? FileSize = null,
@@ -137,6 +148,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsFirstObservedSnapshotExpired = null,
         System.Boolean? IsMatchedSnapshotExpired = null,
         System.Boolean? IsQuarantinedInFirstObservedSnapshot = null,
+        System.Boolean? IsValidated = null,
         System.Int64? MatchId = null,
         DateTime? MatchedSnapshotDate = null,
         System.String? MatchedSnapshotFid = null,
@@ -151,6 +163,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
+        }
+        if ( Severity != null ) {
+            this.Severity = Severity;
         }
         if ( DetectedTime != null ) {
             this.DetectedTime = DetectedTime;
@@ -181,6 +196,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsQuarantinedInFirstObservedSnapshot != null ) {
             this.IsQuarantinedInFirstObservedSnapshot = IsQuarantinedInFirstObservedSnapshot;
+        }
+        if ( IsValidated != null ) {
+            this.IsValidated = IsValidated;
         }
         if ( MatchId != null ) {
             this.MatchId = MatchId;
@@ -233,6 +251,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "objectType\n" ;
             } else {
                 s += ind + "objectType\n" ;
+            }
+        }
+        //      C# -> MatchSeverity? Severity
+        // GraphQL -> severity: MatchSeverity! (enum)
+        if (this.Severity != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "severity\n" ;
+            } else {
+                s += ind + "severity\n" ;
             }
         }
         //      C# -> DateTime? DetectedTime
@@ -323,6 +350,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isQuarantinedInFirstObservedSnapshot\n" ;
             } else {
                 s += ind + "isQuarantinedInFirstObservedSnapshot\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsValidated
+        // GraphQL -> isValidated: Boolean! (scalar)
+        if (this.IsValidated != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isValidated\n" ;
+            } else {
+                s += ind + "isValidated\n" ;
             }
         }
         //      C# -> System.Int64? MatchId
@@ -431,6 +467,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectType != null && ec.Excludes("objectType",true))
         {
             this.ObjectType = null;
+        }
+        //      C# -> MatchSeverity? Severity
+        // GraphQL -> severity: MatchSeverity! (enum)
+        if (ec.Includes("severity",true))
+        {
+            if(this.Severity == null) {
+
+                this.Severity = new MatchSeverity();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Severity != null && ec.Excludes("severity",true))
+        {
+            this.Severity = null;
         }
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
@@ -601,6 +654,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsQuarantinedInFirstObservedSnapshot != null && ec.Excludes("isQuarantinedInFirstObservedSnapshot",true))
         {
             this.IsQuarantinedInFirstObservedSnapshot = null;
+        }
+        //      C# -> System.Boolean? IsValidated
+        // GraphQL -> isValidated: Boolean! (scalar)
+        if (ec.Includes("isValidated",true))
+        {
+            if(this.IsValidated == null) {
+
+                this.IsValidated = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsValidated != null && ec.Excludes("isValidated",true))
+        {
+            this.IsValidated = null;
         }
         //      C# -> System.Int64? MatchId
         // GraphQL -> matchId: Long! (scalar)

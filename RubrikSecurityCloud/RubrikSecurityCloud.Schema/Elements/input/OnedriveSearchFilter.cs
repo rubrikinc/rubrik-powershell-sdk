@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("parentWorkloadId")]
         public System.String? ParentWorkloadId { get; set; }
 
+        //      C# -> System.String? ItemId
+        // GraphQL -> itemId: String (scalar)
+        [JsonProperty("itemId")]
+        public System.String? ItemId { get; set; }
+
 
         #endregion
 

@@ -1,8 +1,6 @@
 ### StartThreatHuntInput
 The configuration to start a hunt, including which objects, indicators of compromise, and advanced parameters.
 
-- notes: System.String
-  - Notes to describe this threat hunt.
 - fileScanCriteria: MalwareScanFileCriteriaInput
   - Criteria to restrict files to scan.
 - indicatorsOfCompromise: list of IndicatorOfCompromiseInputs
@@ -11,6 +9,8 @@ The configuration to start a hunt, including which objects, indicators of compro
   - Maximum number of matches per shapshot, per IOC.  Scanning for an Indicator Of Compromise within a snapshot will terminate once this many matches have been detected. Defaults to one.
 - name: System.String
   - Name of this threat hunt.
+- notes: System.String
+  - Notes to describe this threat hunt.
 - objectFids: list of System.Strings
   - Object FIDs to scan for malware.
 - requestedMatchDetails: RequestedMatchDetailsInput

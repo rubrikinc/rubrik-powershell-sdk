@@ -53,6 +53,9 @@ A Boolean that specifies whether the host refresh is paused or not.
 Contains Oracle SEPS settings for the host such as enabling or disabling SEPS-based authentication.
 - mssqlSddCertificateId: System.String
   - Supported in v9.3. The certificate ID is the identifier associated with the public key certificate issued by the Certificate Authority (CA) that signed the SQL Server certificate. This ID is used to validate the identity of the SQL Server host during Sensitive Data Discovery.
+- wsfcEnvironmentTag: System.String
+  - Supported in v9.4+
+WSFC environment tag used to distinguish WSFC clusters that share the same ClusterInstanceId (for example, clusters in a Simulated Isolated Recovery Environment). Must be alphanumeric only (a-z, A-Z, 0-9), maximum 36 characters. When absent or not provided, no action is taken. When set to a non-empty value, the tag is written to the host metadata. When set to an empty string, any existing tag is removed.
 - oracleSddWalletPath: System.String
   - Supported in v9.3+
 Contains the wallet path on the Oracle host which is used to authenticate the client trying to make remote connections to oracle databases during Sensitive Data Discovery.

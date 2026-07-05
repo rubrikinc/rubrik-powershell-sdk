@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectsToDelete")]
         public List<ObjectInfoType>? ObjectsToDelete { get; set; }
 
+        //      C# -> System.String? CleanRecoverySessionId
+        // GraphQL -> cleanRecoverySessionId: UUID (scalar)
+        [JsonProperty("cleanRecoverySessionId")]
+        public System.String? CleanRecoverySessionId { get; set; }
+
         //      C# -> AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode
         // GraphQL -> relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType! (enum)
         [Required]

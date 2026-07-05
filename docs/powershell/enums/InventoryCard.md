@@ -65,3 +65,4 @@ Inventory Card options that the user can select as a workload.
 - PURE_STORAGE - Inventory Card is Pure Storage.
 - GLUE_ICEBERG - Inventory card is AWS Glue Iceberg.
 - GCP_BIGQUERY - Inventory card is GCP BigQuery.
+- POWER_PLATFORM - Inventory card is Microsoft Power Platform.

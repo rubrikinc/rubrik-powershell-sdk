@@ -58,6 +58,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nadName")]
         public System.String? NadName { get; set; }
 
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        [JsonProperty("maxPvcsPerAgent")]
+        public System.Int32? MaxPvcsPerAgent { get; set; }
+
         //      C# -> System.String? Transport
         // GraphQL -> transport: String! (scalar)
         [Required]
@@ -74,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nadNamespace: String (scalar)
         [JsonProperty("nadNamespace")]
         public System.String? NadNamespace { get; set; }
+
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        [JsonProperty("maxConcurrentAgents")]
+        public System.Int32? MaxConcurrentAgents { get; set; }
 
         //      C# -> ServiceAccountInputInput? ServiceAccount
         // GraphQL -> serviceAccount: ServiceAccountInputInput! (input)

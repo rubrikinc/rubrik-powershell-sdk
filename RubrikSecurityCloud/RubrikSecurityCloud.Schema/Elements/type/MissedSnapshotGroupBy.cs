@@ -51,8 +51,10 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] missedSnapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
-                    Tuple.Create("sortOrder", "SortOrder"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("sortBy", "MissedSnapshotSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
                 };
             this.MissedSnapshotConnection =
                 new RscGqlVars(null, missedSnapshotConnectionArgs, null, true);

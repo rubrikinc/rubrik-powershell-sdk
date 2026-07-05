@@ -50,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("aksNodeRgPrefix")]
         public System.String? AksNodeRgPrefix { get; set; }
 
+        //      C# -> System.String? AzurePostgresFlexServerPrivateDnsZoneId
+        // GraphQL -> azurePostgresFlexServerPrivateDnsZoneId: String! (scalar)
+        [JsonProperty("azurePostgresFlexServerPrivateDnsZoneId")]
+        public System.String? AzurePostgresFlexServerPrivateDnsZoneId { get; set; }
+
+        //      C# -> System.String? AzurePostgresFlexServerSubnetNativeId
+        // GraphQL -> azurePostgresFlexServerSubnetNativeId: String! (scalar)
+        [JsonProperty("azurePostgresFlexServerSubnetNativeId")]
+        public System.String? AzurePostgresFlexServerSubnetNativeId { get; set; }
+
         //      C# -> System.String? AzureSqlPrivateDnsZoneId
         // GraphQL -> azureSqlPrivateDnsZoneId: String! (scalar)
         [JsonProperty("azureSqlPrivateDnsZoneId")]
@@ -69,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> enableUserDefinedRouting: Boolean! (scalar)
         [JsonProperty("enableUserDefinedRouting")]
         public System.Boolean? EnableUserDefinedRouting { get; set; }
+
+        //      C# -> System.String? HealthCheckVmNamePrefix
+        // GraphQL -> healthCheckVmNamePrefix: String! (scalar)
+        [JsonProperty("healthCheckVmNamePrefix")]
+        public System.String? HealthCheckVmNamePrefix { get; set; }
 
         //      C# -> System.String? PrivateDnsZoneId
         // GraphQL -> privateDnsZoneId: String! (scalar)
@@ -96,10 +111,13 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? AdditionalWhitelistIps = null,
         System.String? AksCustomPrivateDnsZoneId = null,
         System.String? AksNodeRgPrefix = null,
+        System.String? AzurePostgresFlexServerPrivateDnsZoneId = null,
+        System.String? AzurePostgresFlexServerSubnetNativeId = null,
         System.String? AzureSqlPrivateDnsZoneId = null,
         System.Boolean? DiskEncryptionAtHost = null,
         System.String? DiskEncryptionSetId = null,
         System.Boolean? EnableUserDefinedRouting = null,
+        System.String? HealthCheckVmNamePrefix = null,
         System.String? PrivateDnsZoneId = null,
         System.Boolean? ShouldWhitelistRubrikIps = null
     ) 
@@ -122,6 +140,12 @@ namespace RubrikSecurityCloud.Types
         if ( AksNodeRgPrefix != null ) {
             this.AksNodeRgPrefix = AksNodeRgPrefix;
         }
+        if ( AzurePostgresFlexServerPrivateDnsZoneId != null ) {
+            this.AzurePostgresFlexServerPrivateDnsZoneId = AzurePostgresFlexServerPrivateDnsZoneId;
+        }
+        if ( AzurePostgresFlexServerSubnetNativeId != null ) {
+            this.AzurePostgresFlexServerSubnetNativeId = AzurePostgresFlexServerSubnetNativeId;
+        }
         if ( AzureSqlPrivateDnsZoneId != null ) {
             this.AzureSqlPrivateDnsZoneId = AzureSqlPrivateDnsZoneId;
         }
@@ -133,6 +157,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnableUserDefinedRouting != null ) {
             this.EnableUserDefinedRouting = EnableUserDefinedRouting;
+        }
+        if ( HealthCheckVmNamePrefix != null ) {
+            this.HealthCheckVmNamePrefix = HealthCheckVmNamePrefix;
         }
         if ( PrivateDnsZoneId != null ) {
             this.PrivateDnsZoneId = PrivateDnsZoneId;
@@ -208,6 +235,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "aksNodeRgPrefix\n" ;
             }
         }
+        //      C# -> System.String? AzurePostgresFlexServerPrivateDnsZoneId
+        // GraphQL -> azurePostgresFlexServerPrivateDnsZoneId: String! (scalar)
+        if (this.AzurePostgresFlexServerPrivateDnsZoneId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azurePostgresFlexServerPrivateDnsZoneId\n" ;
+            } else {
+                s += ind + "azurePostgresFlexServerPrivateDnsZoneId\n" ;
+            }
+        }
+        //      C# -> System.String? AzurePostgresFlexServerSubnetNativeId
+        // GraphQL -> azurePostgresFlexServerSubnetNativeId: String! (scalar)
+        if (this.AzurePostgresFlexServerSubnetNativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azurePostgresFlexServerSubnetNativeId\n" ;
+            } else {
+                s += ind + "azurePostgresFlexServerSubnetNativeId\n" ;
+            }
+        }
         //      C# -> System.String? AzureSqlPrivateDnsZoneId
         // GraphQL -> azureSqlPrivateDnsZoneId: String! (scalar)
         if (this.AzureSqlPrivateDnsZoneId != null) {
@@ -242,6 +287,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "enableUserDefinedRouting\n" ;
             } else {
                 s += ind + "enableUserDefinedRouting\n" ;
+            }
+        }
+        //      C# -> System.String? HealthCheckVmNamePrefix
+        // GraphQL -> healthCheckVmNamePrefix: String! (scalar)
+        if (this.HealthCheckVmNamePrefix != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "healthCheckVmNamePrefix\n" ;
+            } else {
+                s += ind + "healthCheckVmNamePrefix\n" ;
             }
         }
         //      C# -> System.String? PrivateDnsZoneId
@@ -371,6 +425,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.AksNodeRgPrefix = null;
         }
+        //      C# -> System.String? AzurePostgresFlexServerPrivateDnsZoneId
+        // GraphQL -> azurePostgresFlexServerPrivateDnsZoneId: String! (scalar)
+        if (ec.Includes("azurePostgresFlexServerPrivateDnsZoneId",true))
+        {
+            if(this.AzurePostgresFlexServerPrivateDnsZoneId == null) {
+
+                this.AzurePostgresFlexServerPrivateDnsZoneId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzurePostgresFlexServerPrivateDnsZoneId != null && ec.Excludes("azurePostgresFlexServerPrivateDnsZoneId",true))
+        {
+            this.AzurePostgresFlexServerPrivateDnsZoneId = null;
+        }
+        //      C# -> System.String? AzurePostgresFlexServerSubnetNativeId
+        // GraphQL -> azurePostgresFlexServerSubnetNativeId: String! (scalar)
+        if (ec.Includes("azurePostgresFlexServerSubnetNativeId",true))
+        {
+            if(this.AzurePostgresFlexServerSubnetNativeId == null) {
+
+                this.AzurePostgresFlexServerSubnetNativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzurePostgresFlexServerSubnetNativeId != null && ec.Excludes("azurePostgresFlexServerSubnetNativeId",true))
+        {
+            this.AzurePostgresFlexServerSubnetNativeId = null;
+        }
         //      C# -> System.String? AzureSqlPrivateDnsZoneId
         // GraphQL -> azureSqlPrivateDnsZoneId: String! (scalar)
         if (ec.Includes("azureSqlPrivateDnsZoneId",true))
@@ -438,6 +526,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnableUserDefinedRouting != null && ec.Excludes("enableUserDefinedRouting",true))
         {
             this.EnableUserDefinedRouting = null;
+        }
+        //      C# -> System.String? HealthCheckVmNamePrefix
+        // GraphQL -> healthCheckVmNamePrefix: String! (scalar)
+        if (ec.Includes("healthCheckVmNamePrefix",true))
+        {
+            if(this.HealthCheckVmNamePrefix == null) {
+
+                this.HealthCheckVmNamePrefix = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.HealthCheckVmNamePrefix != null && ec.Excludes("healthCheckVmNamePrefix",true))
+        {
+            this.HealthCheckVmNamePrefix = null;
         }
         //      C# -> System.String? PrivateDnsZoneId
         // GraphQL -> privateDnsZoneId: String! (scalar)

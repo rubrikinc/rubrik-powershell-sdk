@@ -90,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveThroughput")]
         public System.Int64? EffectiveThroughput { get; set; }
 
+        //      C# -> System.Int64? EstimatedTimeRemaining
+        // GraphQL -> estimatedTimeRemaining: Long (scalar)
+        [JsonProperty("estimatedTimeRemaining")]
+        public System.Int64? EstimatedTimeRemaining { get; set; }
+
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String (scalar)
         [JsonProperty("failureReason")]
@@ -261,6 +266,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterUuid = null,
         System.Int64? DataTransferred = null,
         System.Int64? EffectiveThroughput = null,
+        System.Int64? EstimatedTimeRemaining = null,
         System.String? FailureReason = null,
         System.String? Fid = null,
         System.Int64? Id = null,
@@ -329,6 +335,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveThroughput != null ) {
             this.EffectiveThroughput = EffectiveThroughput;
+        }
+        if ( EstimatedTimeRemaining != null ) {
+            this.EstimatedTimeRemaining = EstimatedTimeRemaining;
         }
         if ( FailureReason != null ) {
             this.FailureReason = FailureReason;
@@ -543,6 +552,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "effectiveThroughput\n" ;
             } else {
                 s += ind + "effectiveThroughput\n" ;
+            }
+        }
+        //      C# -> System.Int64? EstimatedTimeRemaining
+        // GraphQL -> estimatedTimeRemaining: Long (scalar)
+        if (this.EstimatedTimeRemaining != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "estimatedTimeRemaining\n" ;
+            } else {
+                s += ind + "estimatedTimeRemaining\n" ;
             }
         }
         //      C# -> System.String? FailureReason
@@ -1023,6 +1041,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveThroughput != null && ec.Excludes("effectiveThroughput",true))
         {
             this.EffectiveThroughput = null;
+        }
+        //      C# -> System.Int64? EstimatedTimeRemaining
+        // GraphQL -> estimatedTimeRemaining: Long (scalar)
+        if (ec.Includes("estimatedTimeRemaining",true))
+        {
+            if(this.EstimatedTimeRemaining == null) {
+
+                this.EstimatedTimeRemaining = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EstimatedTimeRemaining != null && ec.Excludes("estimatedTimeRemaining",true))
+        {
+            this.EstimatedTimeRemaining = null;
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String (scalar)

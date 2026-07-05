@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> AzureAdTenantType? TenantType
+        // GraphQL -> tenantType: AzureAdTenantType! (enum)
+        [JsonProperty("tenantType")]
+        public AzureAdTenantType? TenantType { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -492,6 +497,7 @@ namespace RubrikSecurityCloud.Types
         AzureAdProvisioningState? ProvisioningState = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        AzureAdTenantType? TenantType = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -576,6 +582,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( TenantType != null ) {
+            this.TenantType = TenantType;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -838,6 +847,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaAssignment\n" ;
             } else {
                 s += ind + "slaAssignment\n" ;
+            }
+        }
+        //      C# -> AzureAdTenantType? TenantType
+        // GraphQL -> tenantType: AzureAdTenantType! (enum)
+        if (this.TenantType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantType\n" ;
+            } else {
+                s += ind + "tenantType\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -1599,6 +1617,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
         {
             this.SlaAssignment = null;
+        }
+        //      C# -> AzureAdTenantType? TenantType
+        // GraphQL -> tenantType: AzureAdTenantType! (enum)
+        if (ec.Includes("tenantType",true))
+        {
+            if(this.TenantType == null) {
+
+                this.TenantType = new AzureAdTenantType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantType != null && ec.Excludes("tenantType",true))
+        {
+            this.TenantType = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)

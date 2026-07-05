@@ -27,6 +27,8 @@ An audit triggered by a user.
   - The organization name of this user audit.
 - ipAddress: System.String
   - The IP address of the user who triggered this audit.
+- actorType: ActorType
+  - The kind of user that triggered this audit. Null when the user could not be classified.
 - id: System.String
   - The ID of the user audit.
 - cluster: Cluster

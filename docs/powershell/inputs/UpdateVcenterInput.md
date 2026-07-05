@@ -33,3 +33,5 @@
   - Object containing updated vCenter Server information.
 - updatePropertiesV96: VcenterUpdateConfigInput
   - Object containing updated vCenter Server information.
+- updatePropertiesV97: VcenterUpdateConfigInput
+  - Object containing updated vCenter Server information.

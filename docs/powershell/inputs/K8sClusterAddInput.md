@@ -28,9 +28,15 @@ The configuration for the kupr server proxy to be added.
 - pullSecret: System.String
   - Supported in v9.1+
 The pull secret required for pulling Rubrik container images.
+- helmChartVersion: System.String
+  - Supported in v9.6+
+Helm chart version installed on the Kubernetes cluster. Set by the chart at install time. Empty for non-Helm onboarding.
 - nadName: System.String
   - Supported in v9.4+
 The name of the network attachment definition object.
+- maxPvcsPerAgent: System.Int32
+  - Supported in v9.6+
+Maximum number of PVCs assigned to a single kupr backup agent. Required by the count grouping strategy and used as a per-group cap for the node_affinity strategy. Defaults to 30 when omitted. Set to 0 to disable the per-agent cap.
 - transport: System.String
   - Supported in v9.1+
 The transport type used for communication with the Kubernetes cluster.
@@ -43,9 +49,15 @@ The client secret for the service account.
 - nadNamespace: System.String
   - Supported in v9.4+
 The namespace to which the network attachment definition object belongs.
+- maxConcurrentAgents: System.Int32
+  - Supported in v9.6+
+Maximum number of kupr backup agents allowed to run concurrently against this Kubernetes cluster. Set to 0 (or omit) to leave the throttle unlimited.
 - accessToken: System.String
   - Supported in v9.1+
 The access token for the service account.
+- helmMinCdmVersion: System.String
+  - Supported in v9.6+
+Minimum CDM version required by the Helm chart being installed. Empty for non-Helm onboarding.
 - region: System.String
   - Supported in v9.1+
 Region of the Kubernetes cluster to be added.
@@ -55,3 +67,6 @@ The type of onboarding. It can be kubeconfig or manifest.
 - clientId: System.String
   - Supported in v9.1+
 The client ID for the service account.
+- pvcGroupingStrategy: System.String
+  - Supported in v9.6+
+PVC grouping strategy used for multi-agent backup. Determines how PVCs are partitioned across kupr backup agents. One of: node_affinity, count, none. Defaults to node_affinity when omitted.

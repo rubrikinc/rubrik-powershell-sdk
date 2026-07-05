@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? ObjectId
-        // GraphQL -> objectId: UUID! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> objectId: UUID (scalar)
         [JsonProperty("objectId")]
         public System.String? ObjectId { get; set; }
 

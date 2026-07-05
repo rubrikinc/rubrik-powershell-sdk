@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostname")]
         public System.String? Hostname { get; set; }
 
+        //      C# -> System.String? PermittedPeers
+        // GraphQL -> permittedPeers: String (scalar)
+        [JsonProperty("permittedPeers")]
+        public System.String? PermittedPeers { get; set; }
+
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         [JsonProperty("port")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.String? CertificateId = null,
         System.Boolean? EnableTls = null,
         System.String? Hostname = null,
+        System.String? PermittedPeers = null,
         System.Int32? Port = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
+        }
+        if ( PermittedPeers != null ) {
+            this.PermittedPeers = PermittedPeers;
         }
         if ( Port != null ) {
             this.Port = Port;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hostname\n" ;
             } else {
                 s += ind + "hostname\n" ;
+            }
+        }
+        //      C# -> System.String? PermittedPeers
+        // GraphQL -> permittedPeers: String (scalar)
+        if (this.PermittedPeers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "permittedPeers\n" ;
+            } else {
+                s += ind + "permittedPeers\n" ;
             }
         }
         //      C# -> System.Int32? Port
@@ -280,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Hostname != null && ec.Excludes("hostname",true))
         {
             this.Hostname = null;
+        }
+        //      C# -> System.String? PermittedPeers
+        // GraphQL -> permittedPeers: String (scalar)
+        if (ec.Includes("permittedPeers",true))
+        {
+            if(this.PermittedPeers == null) {
+
+                this.PermittedPeers = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PermittedPeers != null && ec.Excludes("permittedPeers",true))
+        {
+            this.PermittedPeers = null;
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)

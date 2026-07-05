@@ -66,3 +66,4 @@ for the single SLA in the NG Alpha report framework.
 - CLOUD_OVERLAP_OBJECTS - Specifies the Cloud Overlap Objects report information.
 - ANOMALY_DETECTION_COMPLIANCE - Anomaly detection compliance report information.
 - SIGNIN_LOGS - Specifies the sign-in logs report information.
+- CONSOLIDATED_LICENSE_USAGE - Consolidated per-child-account license usage report information.

@@ -111,6 +111,13 @@ Starts a job that exports one or more files or folders from a fileset backup to 
 
 - There is a single argument of type FilesetExportSnapshotFilesInput.
 - Returns AsyncRequestStatus.
+### recoverglueicebergtable
+Schedules an on-demand job to recover a Glue Iceberg table snapshot.
+Only in-place recovery (into a branch on the source table) is supported
+today.
+
+- There is a single argument of type RecoverGlueIcebergTableSnapshotInput.
+- Returns RecoverGlueIcebergTableSnapshotReply.
 ### restoredomaincontroller
 Initiate Active Directory restore job
 

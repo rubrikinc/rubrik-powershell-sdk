@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> MongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode? RecoveryMode
+        // GraphQL -> recoveryMode: MongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode (enum)
+        [JsonProperty("recoveryMode")]
+        public MongoOpsManagerManagedSourceRecoveryRequestConfigRecoveryMode? RecoveryMode { get; set; }
+
         //      C# -> System.String? SourceMongoClusterId
         // GraphQL -> sourceMongoClusterId: String! (scalar)
         [Required]
@@ -30,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> restoreTime: DateTime (scalar)
         [JsonProperty("restoreTime")]
         public DateTime? RestoreTime { get; set; }
+
+        //      C# -> List<MongoOpsManagerCustomNodeConfigInput>? CustomNodes
+        // GraphQL -> customNodes: [MongoOpsManagerCustomNodeConfigInput!] (input)
+        [JsonProperty("customNodes")]
+        public List<MongoOpsManagerCustomNodeConfigInput>? CustomNodes { get; set; }
 
         //      C# -> System.String? OplogDumpDirPath
         // GraphQL -> oplogDumpDirPath: String (scalar)

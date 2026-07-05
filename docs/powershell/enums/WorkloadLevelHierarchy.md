@@ -1,6 +1,8 @@
 ### WorkloadLevelHierarchy
 - GOOGLE_WORKSPACE_USER_MAILBOX - Google Workspace User Mailbox.
+- POWER_PLATFORM_DIALOG - Power Platform dialog.
 - KuprNamespace
+- POWER_PLATFORM_CLOUD_FLOW - Power Platform cloud flow.
 - O365Teams
 - GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
 - O365Onedrive
@@ -8,6 +10,7 @@
 - AwsNativeRdsInstance
 - M365_BACKUP_STORAGE_MAILBOX - Microsoft 365 Backup Storage Mailbox.
 - AWS_NATIVE_CONFIG - AWS Native Config.
+- POWER_PLATFORM_BUSINESS_RULE - Power Platform business rule.
 - O365SharePointList
 - AllSubHierarchyType
 - AzureSqlManagedInstanceDb
@@ -16,19 +19,28 @@
 - AwsNativeEc2Instance
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - O365Mailbox
+- POWER_PLATFORM_CANVAS_APP - Power Platform canvas app.
+- POWER_PLATFORM_BUSINESS_PROCESS_FLOW - Power Platform business process flow.
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - GcpNativeGCEInstance
 - AZURE_POSTGRES_FLEXIBLE_SERVER
 - AZURE_AD_DIRECTORY - Azure AD Directory.
+- POWER_PLATFORM_MODEL_DRIVEN_APP - Power Platform model-driven app.
 - AwsNativeEbsVolume
 - AzureSqlDatabaseDb
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - OKTA_TENANT - Okta tenant.
 - AzureNativeManagedDisk
+- S3_TABLES_ICEBERG_TABLE - AWS S3 Tables Iceberg table.
 - GOOGLE_WORKSPACE_SHARED_DRIVE - Google Workspace Shared Drive.
+- POWER_PLATFORM_CUSTOM_ACTION - Power Platform custom action.
 - O365Site
 - M365_BACKUP_STORAGE_SHAREPOINT_SITE - Microsoft 365 Backup Storage SharePoint site.
+- POWER_PLATFORM_DESKTOP_FLOW - Power Platform desktop flow.
 - AzureNativeVirtualMachine
+- POWER_PLATFORM_AI_FLOW - Power Platform AI flow.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
+- POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform classic workflow.
+- AUTH0_TENANT - Auth0 tenant.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
 - GcpNativeDisk - GCP Native Disk.

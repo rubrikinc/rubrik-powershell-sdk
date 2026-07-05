@@ -32,10 +32,11 @@ Optional credentials that will be used to access all the SMB shares on the NAS s
 - nutanixFileServerParameters: NutanixFileServerParametersInput
   - Supported in v8.1+
 - isNetAppSnapDiffEnabled: System.Boolean
-  - Supported in v9.5+
+  - Supported in v9.4+
 Specifies the default SnapDiff setting for all shares in the NetApp NAS system.
 - shouldGrantNfsShareRootAccess: System.Boolean
   - Supported in v8.1+
 Optional parameter that specifies whether to grant root client access to NFS shares on Isilon and NetApp NAS systems. The root client access is granted on first fileset creation for the NFS share. The default value is true.
 - isNutanixCftEnabled: System.Boolean
-  - Specifies the default CFT (Changed File Tracking) setting for all shares in the Nutanix Files NAS system.
+  - Supported in v9.6+
+Specifies the default CFT (Changed File Tracking) setting for all shares in the Nutanix Files NAS system.

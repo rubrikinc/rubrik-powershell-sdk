@@ -152,8 +152,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryGcp -Operation CloudAccountProjectsByFeature
     /// 
-    /// # REQUIRED
+    /// # OPTIONAL
     /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.features = @(
+    /// 	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+    /// )
     /// # REQUIRED
     /// $query.Var.projectStatusFilters = @(
     /// 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.
@@ -1200,7 +1204,8 @@ $query.Var.projectIds = @(
 
         // Create new GraphQL Query:
         // allGcpCloudAccountProjectsByFeature(
-        //     feature: CloudAccountFeature!
+        //     feature: CloudAccountFeature
+        //     features: [CloudAccountFeature!]
         //     projectStatusFilters: [CloudAccountStatus!]!
         //     projectSearchText: String!
         //     aggregateFeatures: Boolean
@@ -1208,7 +1213,8 @@ $query.Var.projectIds = @(
         internal void InitQueryAllGcpCloudAccountProjectsByFeature()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("feature", "CloudAccountFeature"),
+                Tuple.Create("features", "[CloudAccountFeature!]"),
                 Tuple.Create("projectStatusFilters", "[CloudAccountStatus!]!"),
                 Tuple.Create("projectSearchText", "String!"),
                 Tuple.Create("aggregateFeatures", "Boolean"),
@@ -1217,12 +1223,16 @@ $query.Var.projectIds = @(
                 argDefs,
                 "query",
                 "QueryAllGcpCloudAccountProjectsByFeature",
-                "($feature: CloudAccountFeature!,$projectStatusFilters: [CloudAccountStatus!]!,$projectSearchText: String!,$aggregateFeatures: Boolean)",
+                "($feature: CloudAccountFeature,$features: [CloudAccountFeature!],$projectStatusFilters: [CloudAccountStatus!]!,$projectSearchText: String!,$aggregateFeatures: Boolean)",
                 "List<GcpCloudAccountProjectDetail>",
                 Query.AllGcpCloudAccountProjectsByFeature,
                 Query.AllGcpCloudAccountProjectsByFeatureFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
 $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+# OPTIONAL
+$query.Var.features = @(
+	$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
+)
 # REQUIRED
 $query.Var.projectStatusFilters = @(
 	$someCloudAccountStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountStatus]) for enum values.

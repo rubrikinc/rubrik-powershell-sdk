@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isNetAppMetroClusterEnabled")]
         public System.Boolean? IsNetAppMetroClusterEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppSnapDiffEnabled")]
+        public System.Boolean? IsNetAppSnapDiffEnabled { get; set; }
+
         //      C# -> System.Boolean? IsNfsSupported
         // GraphQL -> isNfsSupported: Boolean! (scalar)
         [JsonProperty("isNfsSupported")]
@@ -105,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
+
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
 
         //      C# -> System.Boolean? IsSmbSupported
         // GraphQL -> isSmbSupported: Boolean! (scalar)
@@ -334,9 +344,11 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsChangelistEnabled = null,
         System.Boolean? IsNetAppMetroClusterEnabled = null,
+        System.Boolean? IsNetAppSnapDiffEnabled = null,
         System.Boolean? IsNfsSupported = null,
         System.Boolean? IsNutanixCftEnabled = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsReplica = null,
         System.Boolean? IsSmbSupported = null,
         System.Boolean? IsUserSuppliedSmbCredentials = null,
         DateTime? LastRefreshTime = null,
@@ -412,6 +424,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsNetAppMetroClusterEnabled != null ) {
             this.IsNetAppMetroClusterEnabled = IsNetAppMetroClusterEnabled;
         }
+        if ( IsNetAppSnapDiffEnabled != null ) {
+            this.IsNetAppSnapDiffEnabled = IsNetAppSnapDiffEnabled;
+        }
         if ( IsNfsSupported != null ) {
             this.IsNfsSupported = IsNfsSupported;
         }
@@ -420,6 +435,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( IsSmbSupported != null ) {
             this.IsSmbSupported = IsSmbSupported;
@@ -674,6 +692,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isNetAppMetroClusterEnabled\n" ;
             }
         }
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        if (this.IsNetAppSnapDiffEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isNetAppSnapDiffEnabled\n" ;
+            } else {
+                s += ind + "isNetAppSnapDiffEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsNfsSupported
         // GraphQL -> isNfsSupported: Boolean! (scalar)
         if (this.IsNfsSupported != null) {
@@ -699,6 +726,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Boolean? IsSmbSupported
@@ -1303,6 +1339,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsNetAppMetroClusterEnabled = null;
         }
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        if (ec.Includes("isNetAppSnapDiffEnabled",true))
+        {
+            if(this.IsNetAppSnapDiffEnabled == null) {
+
+                this.IsNetAppSnapDiffEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNetAppSnapDiffEnabled != null && ec.Excludes("isNetAppSnapDiffEnabled",true))
+        {
+            this.IsNetAppSnapDiffEnabled = null;
+        }
         //      C# -> System.Boolean? IsNfsSupported
         // GraphQL -> isNfsSupported: Boolean! (scalar)
         if (ec.Includes("isNfsSupported",true))
@@ -1353,6 +1406,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Boolean? IsSmbSupported
         // GraphQL -> isSmbSupported: Boolean! (scalar)

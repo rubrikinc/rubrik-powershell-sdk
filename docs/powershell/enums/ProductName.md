@@ -51,3 +51,13 @@ Name of product.
 - AWS_BAAS - AWS BaaS.
 - EDGE - Edge virtual cluster deployment.
 - OKTA_CYBER_POSTURE - Okta Cyber Posture - enables IR Room for Okta-only customers.
+- RADAR_BAAS - Anomaly Detection on BaaS workloads (full AWS).
+- TM_BAAS - Threat Monitoring on BaaS workloads (full AWS).
+- TH_BAAS - Threat Hunting on BaaS workloads (full AWS).
+- RADAR_BAAS_UNSTRUCTURED - Anomaly Detection on BaaS unstructured (AWS S3).
+- TM_BAAS_UNSTRUCTURED - Threat Monitoring on BaaS unstructured (AWS S3).
+- TH_BAAS_UNSTRUCTURED - Threat Hunting on BaaS unstructured (AWS S3).
+- BAAS_UNSTRUCTURED - BaaS Cloud Unstructured (S3) data protection.
+- SONAR_BAAS - Sensitive Data Discovery on BaaS workloads (full AWS).
+- APPFLOWS_ADFR - AppFlows for Active Directory Forest Recovery.
+- OKTA_CIAM - Okta Customer Identity Access Management Recovery.

@@ -52,5 +52,8 @@ protection of GitHub repositories and related workload.
 - AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION - AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION refers to the feature
 enabling backup of non-repo Azure DevOps project content (work items,
 boards, sprints, wikis, teams).
+- CCES_BAAS - Cloud account feature is CCES BaaS or Rubrik-managed CCES clusters
+for database backup on customer-owned AWS accounts.
+- S3_TABLES_ICEBERG_PROTECTION - Cloud account feature is S3 Tables Iceberg Protection.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

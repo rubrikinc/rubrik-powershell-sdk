@@ -298,6 +298,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryActivitySeries -Operation UserFileTimeline
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.userId = $someString
     /// # OPTIONAL
@@ -341,6 +349,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryActivitySeries -Operation UserTimeline
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.userId = $someString
     /// # REQUIRED
@@ -679,6 +695,10 @@ $query.Var.filters = @{
 
         // Create new GraphQL Query:
         // userFileActivityTimeline(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
         //     userId: String!
         //     resource: ResourceInput
         //     nativePath: String!
@@ -689,6 +709,10 @@ $query.Var.filters = @{
         internal void InitQueryUserFileActivityTimeline()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("userId", "String!"),
                 Tuple.Create("resource", "ResourceInput"),
                 Tuple.Create("nativePath", "String!"),
@@ -700,11 +724,19 @@ $query.Var.filters = @{
                 argDefs,
                 "query",
                 "QueryUserFileActivityTimeline",
-                "($userId: String!,$resource: ResourceInput,$nativePath: String!,$startDay: String!,$timezone: String!,$timeGranularity: TimeGranularity!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$userId: String!,$resource: ResourceInput,$nativePath: String!,$startDay: String!,$timezone: String!,$timeGranularity: TimeGranularity!)",
                 "ActivityTimelineResultConnection",
                 Query.UserFileActivityTimeline,
                 Query.UserFileActivityTimelineFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.userId = $someString
 # OPTIONAL
 $query.Var.resource = @{
@@ -726,6 +758,10 @@ $query.Var.timeGranularity = $someTimeGranularity # Call [Enum]::GetValues([Rubr
 
         // Create new GraphQL Query:
         // userActivityTimeline(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
         //     userId: String!
         //     startDay: String!
         //     timezone: String!
@@ -734,6 +770,10 @@ $query.Var.timeGranularity = $someTimeGranularity # Call [Enum]::GetValues([Rubr
         internal void InitQueryUserActivityTimeline()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("userId", "String!"),
                 Tuple.Create("startDay", "String!"),
                 Tuple.Create("timezone", "String!"),
@@ -743,11 +783,19 @@ $query.Var.timeGranularity = $someTimeGranularity # Call [Enum]::GetValues([Rubr
                 argDefs,
                 "query",
                 "QueryUserActivityTimeline",
-                "($userId: String!,$startDay: String!,$timezone: String!,$uniqueActivities: Boolean!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$userId: String!,$startDay: String!,$timezone: String!,$uniqueActivities: Boolean!)",
                 "ActivityTimelineResultConnection",
                 Query.UserActivityTimeline,
                 Query.UserActivityTimelineFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.userId = $someString
 # REQUIRED
 $query.Var.startDay = $someString

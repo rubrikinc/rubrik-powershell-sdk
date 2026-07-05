@@ -63,11 +63,75 @@ Returns detailed policy information.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ClassificationPolicyDetail.
+### policycategories
+The list of possible policy categories.
+
+- There is a single argument of type list of PolicyTypes.
+- Returns GetPossibleCategoriesType.
+### policyfiltertypes
+Get the list of possible types for selection for account.
+
+- There are 3 arguments.
+    - resourceType - PolicyResourceType: Resource type to filter by.
+    - policyType - PolicyType: Policy type.
+    - idpTypes - list of IdpTypes: Identity provider types to scope the filter types. If null, no scoping is applied. If empty list, returns cross-IDP filters only.
+- Returns list of FilterTypes.
+### policyfiltervalues
+Get the list of possible values for selection for a policy filter.
+
+- There are 5 arguments.
+    - policyFilterType - FilterType: Policy filter type.
+    - searchTerm - System.String: Search term to filter by.
+    - policyType - PolicyType: Policy type.
+    - policyTypeFilter - PolicyTypeFilter: Structured filter for policy-type-specific scoping (e.g., identity event providers).
+    - eventProviders - list of EventProviders: DEPRECATED: use policyTypeFilter instead. List of identity event providers to scope the values.
+- Returns GetPolicyFilterValuesType.
 ### policyobjectusages
 Returns the policies assigned to each object.
 
 - There is a single argument of type list of System.Strings.
 - Returns PolicyObjectUsageConnection.
+### securitypolicies
+All security policies.
+
+- There are 28 arguments.
+    - isPolicyEnabled - System.Boolean: Is the policy enabled? If null, both enabled and disabled policies will be returned.
+    - isCustomPolicy - System.Boolean: Is the policy custom, not built-in? If null, both custom and built-in policies will be returned.
+    - policyCategories - list of Categorys: Policy categories to filter by. If empty or null, the results will not be filtered.
+    - policySeverities - list of Severitys: Policy severities to filter by. If empty or null, the results will not be filtered.
+    - includeViolationInsights - System.Boolean: Include violated hits.
+    - policyIds - list of System.Strings: Policy IDs to filter by. If empty or null, the results will not be filtered.
+    - resourceIds - list of System.Strings: Resource IDs to filter by. If empty or null, the results will not be filtered.
+    - statuses - list of PolicyViolationStatuss: Policy violation statuses to filter by. If empty or null, the results will not be filtered.
+    - statusReasons - list of PolicyViolationStatusReasons: Policy violation status reasons to filter by. If empty or null, the results will not be filtered.
+    - policyViolationIds - list of System.Strings: Policy violation IDs to filter by. If empty or null, the results will not be filtered.
+    - resourceTypes - list of PolicyResourceTypes: Resource types to filter by. If empty or null, the results will not be filtered.
+    - sensitivityLevels - list of SensitivityLevels: Sensitivity levels to filter by. If empty or null, the results will not be filtered.
+    - detectionDate - TimeRangeInput: Detection date range to filter by. If null, the results will not be filtered.
+    - updateDate - TimeRangeInput: Violation update date range to filter by.
+    - policyName - System.String: Policy name to filter by.
+    - exactPolicyName - System.String: Exact policy name to filter by.
+    - policyUpdateDate - TimeRangeInput: Policy update date range to filter by.
+    - parentViolationId - System.String: Parent violation ID.
+    - dataTypeIds - list of System.Strings: Data type IDs to filter.
+    - documentTypeIds - list of System.Strings: Document type IDs to filter.
+    - dataCategoryIds - list of System.Strings: Filter for data category IDs.
+    - sortBy - PolicyViolationSortField: Field by which to sort policy violations.
+    - sortOrder - SortOrder: Sort order for policy violations.
+    - resourceMetadataFilter - ResourceMetadataFiltersInput: Resource metadata fields to filter by. If null, the results will not be filtered.
+    - policyViolationNameSearch - System.String: Policy violation name to search for (substring match).
+    - violationNames - list of System.Strings: Exact violation names to filter by. OR-combined with policyIds: a violation matches if its policyId is in policyIds OR its violationName is in violationNames. Distinct from policyViolationNameSearch (substring match, AND-combined).
+    - policyFrameworks - list of System.Strings: Policy frameworks to filter by. If empty or null, the results will not be filtered.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+- Returns list of PolicyResults.
+### securitypolicy
+The full details of a policy and its definition.
+
+- There are 3 arguments.
+    - policyId - System.String: Policy ID.
+    - includeViolationInsights - System.Boolean: Include violated hits.
+    - policyType - PolicyType: Policy type.
+- Returns PolicyResult.
 ### topriskpolicysummaries
 Retrieve most risky policies.
 

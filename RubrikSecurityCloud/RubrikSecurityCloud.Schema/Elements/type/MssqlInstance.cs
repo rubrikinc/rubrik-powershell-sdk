@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isClusterInstance")]
         public System.Boolean? IsClusterInstance { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)
         [JsonProperty("logBackupFrequencyInSeconds")]
@@ -324,6 +329,7 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? HostsInstalled = null,
         System.String? Id = null,
         System.Boolean? IsClusterInstance = null,
+        System.Boolean? IsReplica = null,
         System.Int64? LogBackupFrequencyInSeconds = null,
         System.Int32? LogBackupRetentionInHours = null,
         System.String? Name = null,
@@ -408,6 +414,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsClusterInstance != null ) {
             this.IsClusterInstance = IsClusterInstance;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( LogBackupFrequencyInSeconds != null ) {
             this.LogBackupFrequencyInSeconds = LogBackupFrequencyInSeconds;
@@ -690,6 +699,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isClusterInstance\n" ;
             } else {
                 s += ind + "isClusterInstance\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
@@ -1330,6 +1348,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsClusterInstance != null && ec.Excludes("isClusterInstance",true))
         {
             this.IsClusterInstance = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Int64? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Long! (scalar)

@@ -21,3 +21,7 @@ with IntegrationType will be considered.
   - The Microsoft Defender configuration.
 - splunk: SplunkIntegrationConfigInput
   - The Splunk configuration.
+- panXsoar: PanXsoarIntegrationConfigInput
+  - The Palo Alto Networks XSOAR configuration.
+- workday: WorkdayIntegrationConfigInput
+  - The Workday configuration.

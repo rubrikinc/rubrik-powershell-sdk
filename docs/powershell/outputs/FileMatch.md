@@ -31,6 +31,10 @@ Data for a matched file.
   - File Metadata for the matched file.
 - isFileVersionQuarantined: System.Boolean
   - Indicates whether the workload file version is quarantined.
+- isValidated: System.Boolean
+  - Indicates whether the match has been validated.
+- severity: MatchSeverity
+  - Severity of the match.
 - isFirstObservedSnapshotExpired: System.Boolean
   - Specifies whether the first observed snapshot has expired.
 - isMatchedSnapshotExpired: System.Boolean

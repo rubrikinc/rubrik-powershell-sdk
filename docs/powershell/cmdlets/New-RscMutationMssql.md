@@ -69,7 +69,7 @@ Create log shipping configuration of a Microsoft SQL Database.
 - There is a single argument of type CreateMssqlLogShippingConfigurationInput.
 - Returns AsyncRequestStatus.
 ### createondemandbackup
-Take an on-demand backup of a Microsoft SQL Database
+Take an on-demand backup of a Microsoft SQL Database.
 
 - There is a single argument of type CreateOnDemandMssqlBackupInput.
 - Returns AsyncRequestStatus.

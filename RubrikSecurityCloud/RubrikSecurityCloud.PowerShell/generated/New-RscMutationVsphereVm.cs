@@ -143,6 +143,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						removeNetworkDevices = $someBoolean
     /// 						# OPTIONAL
     /// 						vmName = $someString
+    /// 						# OPTIONAL
+    /// 						excludePaths = @(
+    /// 							$someString
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 					}
     /// 					# OPTIONAL
     /// 					requiredRecoveryParameters = @{
@@ -265,6 +271,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						removeNetworkDevices = $someBoolean
     /// 						# OPTIONAL
     /// 						vmName = $someString
+    /// 						# OPTIONAL
+    /// 						excludePaths = @(
+    /// 							$someString
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 					}
     /// 					# OPTIONAL
     /// 					requiredRecoveryParameters = @{
@@ -576,6 +588,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			removeNetworkDevices = $someBoolean
     /// 			# OPTIONAL
     /// 			vmName = $someString
+    /// 			# OPTIONAL
+    /// 			excludePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
@@ -678,6 +696,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			removeNetworkDevices = $someBoolean
     /// 			# OPTIONAL
     /// 			vmName = $someString
+    /// 			# OPTIONAL
+    /// 			excludePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
@@ -771,6 +795,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			removeNetworkDevices = $someBoolean
     /// 			# OPTIONAL
     /// 			vmName = $someString
+    /// 			# OPTIONAL
+    /// 			excludePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
@@ -867,6 +897,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						removeNetworkDevices = $someBoolean
     /// 						# OPTIONAL
     /// 						vmName = $someString
+    /// 						# OPTIONAL
+    /// 						excludePaths = @(
+    /// 							$someString
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 					}
     /// 					# OPTIONAL
     /// 					requiredRecoveryParameters = @{
@@ -1032,6 +1068,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						removeNetworkDevices = $someBoolean
     /// 						# OPTIONAL
     /// 						vmName = $someString
+    /// 						# OPTIONAL
+    /// 						excludePaths = @(
+    /// 							$someString
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 					}
     /// 					# OPTIONAL
     /// 					requiredRecoveryParameters = @{
@@ -1223,6 +1265,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			removeNetworkDevices = $someBoolean
     /// 			# OPTIONAL
     /// 			vmName = $someString
+    /// 			# OPTIONAL
+    /// 			excludePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
@@ -1372,6 +1420,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			removeNetworkDevices = $someBoolean
     /// 			# OPTIONAL
     /// 			vmName = $someString
+    /// 			# OPTIONAL
+    /// 			excludePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
     /// 		}
     /// 		# OPTIONAL
     /// 		requiredRecoveryParameters = @{
@@ -2513,6 +2567,12 @@ $query.Var.input = @{
 						removeNetworkDevices = $someBoolean
 						# OPTIONAL
 						vmName = $someString
+						# OPTIONAL
+						excludePaths = @(
+							$someString
+						)
+						# OPTIONAL
+						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 					}
 					# OPTIONAL
 					requiredRecoveryParameters = @{
@@ -2627,6 +2687,12 @@ $query.Var.input = @{
 						removeNetworkDevices = $someBoolean
 						# OPTIONAL
 						vmName = $someString
+						# OPTIONAL
+						excludePaths = @(
+							$someString
+						)
+						# OPTIONAL
+						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 					}
 					# OPTIONAL
 					requiredRecoveryParameters = @{
@@ -2890,6 +2956,12 @@ $query.Var.input = @{
 			removeNetworkDevices = $someBoolean
 			# OPTIONAL
 			vmName = $someString
+			# OPTIONAL
+			excludePaths = @(
+				$someString
+			)
+			# OPTIONAL
+			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 		}
 		# OPTIONAL
 		requiredRecoveryParameters = @{
@@ -2984,6 +3056,12 @@ $query.Var.input = @{
 			removeNetworkDevices = $someBoolean
 			# OPTIONAL
 			vmName = $someString
+			# OPTIONAL
+			excludePaths = @(
+				$someString
+			)
+			# OPTIONAL
+			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 		}
 		# OPTIONAL
 		requiredRecoveryParameters = @{
@@ -3069,6 +3147,12 @@ $query.Var.input = @{
 			removeNetworkDevices = $someBoolean
 			# OPTIONAL
 			vmName = $someString
+			# OPTIONAL
+			excludePaths = @(
+				$someString
+			)
+			# OPTIONAL
+			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 		}
 		# OPTIONAL
 		requiredRecoveryParameters = @{
@@ -3157,6 +3241,12 @@ $query.Var.input = @{
 						removeNetworkDevices = $someBoolean
 						# OPTIONAL
 						vmName = $someString
+						# OPTIONAL
+						excludePaths = @(
+							$someString
+						)
+						# OPTIONAL
+						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 					}
 					# OPTIONAL
 					requiredRecoveryParameters = @{
@@ -3314,6 +3404,12 @@ $query.Var.input = @{
 						removeNetworkDevices = $someBoolean
 						# OPTIONAL
 						vmName = $someString
+						# OPTIONAL
+						excludePaths = @(
+							$someString
+						)
+						# OPTIONAL
+						recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 					}
 					# OPTIONAL
 					requiredRecoveryParameters = @{
@@ -3481,6 +3577,12 @@ $query.Var.input = @{
 			removeNetworkDevices = $someBoolean
 			# OPTIONAL
 			vmName = $someString
+			# OPTIONAL
+			excludePaths = @(
+				$someString
+			)
+			# OPTIONAL
+			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 		}
 		# OPTIONAL
 		requiredRecoveryParameters = @{
@@ -3622,6 +3724,12 @@ $query.Var.input = @{
 			removeNetworkDevices = $someBoolean
 			# OPTIONAL
 			vmName = $someString
+			# OPTIONAL
+			excludePaths = @(
+				$someString
+			)
+			# OPTIONAL
+			recoveryPurpose = $someMountExportSnapshotJobCommonOptionsV2RecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MountExportSnapshotJobCommonOptionsV2RecoveryPurpose]) for enum values.
 		}
 		# OPTIONAL
 		requiredRecoveryParameters = @{

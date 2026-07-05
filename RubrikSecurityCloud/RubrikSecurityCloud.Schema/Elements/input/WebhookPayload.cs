@@ -37,9 +37,7 @@ namespace RubrikSecurityCloud.Types
         public ProviderTypeV2? ProviderType { get; set; }
 
         //      C# -> WebhookAuthInfoV2Input? AuthInfo
-        // GraphQL -> authInfo: WebhookAuthInfoV2Input! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> authInfo: WebhookAuthInfoV2Input (input)
         [JsonProperty("authInfo")]
         public WebhookAuthInfoV2Input? AuthInfo { get; set; }
 
@@ -64,6 +62,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> serviceAccountId: String (scalar)
         [JsonProperty("serviceAccountId")]
         public System.String? ServiceAccountId { get; set; }
+
+        //      C# -> System.String? EncodedUrl
+        // GraphQL -> encodedUrl: String (scalar)
+        [JsonProperty("encodedUrl")]
+        public System.String? EncodedUrl { get; set; }
+
+        //      C# -> WebhookEncodedAuthInfoV2Input? EncodedAuthInfo
+        // GraphQL -> encodedAuthInfo: WebhookEncodedAuthInfoV2Input (input)
+        [JsonProperty("encodedAuthInfo")]
+        public WebhookEncodedAuthInfoV2Input? EncodedAuthInfo { get; set; }
 
 
         #endregion

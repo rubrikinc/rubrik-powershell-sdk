@@ -28,12 +28,16 @@ Number of concurrent requests for transferring a file from a remote host to the 
 - maxNodesForMultiNodeRestore: System.Int32
   - Supported in v9.5+
 v9.5: Maximum number of Rubrik nodes to use for multi-node restore on this host. Overrides the global maxNodesForMultiNodeRestore setting. Valid range is from 1 to the total number of nodes available in the cluster.
-v9.6: Maximum number of Rubrik nodes to use for multi-node restore on this host. Overrides the global maxNodesForMultiNodeRestore setting. Valid range is 1 to the total number of nodes available in the cluster.
+v9.6+: Maximum number of Rubrik nodes to use for multi-node restore on this host. Overrides the global maxNodesForMultiNodeRestore setting. Valid range is 1 to the total number of nodes available in the cluster.
+- mssqlAllowDirtyReadForAgQuery: HostConfigurationPropertyEnabled
+  - Supported in v9.5+
+Controls whether to use the WITH (NOLOCK) hint when querying SQL Server Availability Group metadata DMVs. When enabled, AG discovery and status queries avoid blocking on internal LCK_M_U locks during AG state transitions, at the cost of potential dirty reads.
 - enableMssqlMultiNodeRestore: HostConfigurationPropertyEnabled
   - Supported in v9.2+
 Enables SQL Server multi-node restore.
 - copyLogsToHostDuringLiveMount: HostConfigurationPropertyEnabled
-  - Specifies whether to copy logs to be applied on the host during a live mount operation instead of exposing them via mount.
+  - Supported in v9.6+
+Specifies whether to copy logs to be applied on the host during a live mount operation instead of exposing them via mount.
 - physicalHostLogBackupThrottleMaxRefCount: System.Int32
   - Supported in v6.0+
 Maximum number of concurrent SQL Server log backup jobs per physical host.
@@ -44,11 +48,12 @@ The maximum memory size in MB that a CBT driver can use.
   - Supported in v6.0+
 Maximum number of concurrent snapshots per physical host.
 - mssqlEnableCleanupOnRestoreFailure: HostConfigurationPropertyEnabled
-  - Specifies whether to delete orphaned database files (MDF/LDF) at the target restore path during cleanup of a failed restore job.
+  - Supported in v9.6+
+Specifies whether to delete orphaned database files (MDF/LDF) at the target restore path during cleanup of a failed restore job.
 - maxNodesForMultiNodeBackup: System.Int32
   - Supported in v9.5+
 v9.5: Maximum number of Rubrik nodes to use for multi-node backup on this host. Overrides the global maxNodesForMultiNodeBackup setting. Valid range is from 1 to the total number of nodes available in the cluster.
-v9.6: Maximum number of Rubrik nodes to use for multi-node backup on this host. Overrides the global maxNodesForMultiNodeBackup setting. Valid range is 1 to the total number of nodes available in the cluster.
+v9.6+: Maximum number of Rubrik nodes to use for multi-node backup on this host. Overrides the global maxNodesForMultiNodeBackup setting. Valid range is 1 to the total number of nodes available in the cluster.
 - fileRestoreWriteParallelism: System.Int32
   - Supported in v6.0+
 Number of concurrent write requests for restoring a file from the Rubrik cluster to a remote host.

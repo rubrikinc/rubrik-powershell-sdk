@@ -28,7 +28,13 @@ namespace RubrikSecurityCloud.Types
         UNKNOWN,
 
         [EnumMember(Value = "UNSUPPORTED_HOSTED_REGION")]
-        UNSUPPORTED_HOSTED_REGION
+        UNSUPPORTED_HOSTED_REGION,
+
+        [EnumMember(Value = "UNSUPPORTED_RCV_TIER")]
+        UNSUPPORTED_RCV_TIER,
+
+        [EnumMember(Value = "UNSUPPORTED_STORAGE_CLASS")]
+        UNSUPPORTED_STORAGE_CLASS
 
 
     } // enum FileRecoveryFeasibility

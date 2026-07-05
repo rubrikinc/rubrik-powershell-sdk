@@ -64,6 +64,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("diskEncryptionSetId")]
         public System.String? DiskEncryptionSetId { get; set; }
 
+        //      C# -> System.String? AzurePostgresFlexServerSubnetNativeId
+        // GraphQL -> azurePostgresFlexServerSubnetNativeId: String (scalar)
+        [JsonProperty("azurePostgresFlexServerSubnetNativeId")]
+        public System.String? AzurePostgresFlexServerSubnetNativeId { get; set; }
+
+        //      C# -> System.String? AzurePostgresFlexServerPrivateDnsZoneId
+        // GraphQL -> azurePostgresFlexServerPrivateDnsZoneId: String (scalar)
+        [JsonProperty("azurePostgresFlexServerPrivateDnsZoneId")]
+        public System.String? AzurePostgresFlexServerPrivateDnsZoneId { get; set; }
+
+        //      C# -> System.String? HealthCheckVmNamePrefix
+        // GraphQL -> healthCheckVmNamePrefix: String (scalar)
+        [JsonProperty("healthCheckVmNamePrefix")]
+        public System.String? HealthCheckVmNamePrefix { get; set; }
+
         //      C# -> AksProvisionTier? AksClusterTier
         // GraphQL -> aksClusterTier: AKSProvisionTier (enum)
         [JsonProperty("aksClusterTier")]

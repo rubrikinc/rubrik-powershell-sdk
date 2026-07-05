@@ -61,6 +61,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isForceAuthnEnabled")]
         public System.Boolean? IsForceAuthnEnabled { get; set; }
 
+        //      C# -> System.Boolean? AllowIdpInitiatedSso
+        // GraphQL -> allowIdpInitiatedSso: Boolean (scalar)
+        [JsonProperty("allowIdpInitiatedSso")]
+        public System.Boolean? AllowIdpInitiatedSso { get; set; }
+
 
         #endregion
 

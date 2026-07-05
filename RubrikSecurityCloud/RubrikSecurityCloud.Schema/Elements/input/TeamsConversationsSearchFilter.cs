@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lambdaFilters")]
         public LambdaPathFilters? LambdaFilters { get; set; }
 
+        //      C# -> System.String? ItemId
+        // GraphQL -> itemId: String (scalar)
+        [JsonProperty("itemId")]
+        public System.String? ItemId { get; set; }
+
 
         #endregion
 

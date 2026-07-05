@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.Int32? NumChildren
+        // GraphQL -> numChildren: Int! (scalar)
+        [JsonProperty("numChildren")]
+        public System.Int32? NumChildren { get; set; }
+
         //      C# -> System.Int64? Version
         // GraphQL -> version: Long! (scalar)
         [JsonProperty("version")]
@@ -95,6 +100,7 @@ namespace RubrikSecurityCloud.Types
         ManagedObjectType? WorkloadType = null,
         System.String? Id = null,
         System.String? Name = null,
+        System.Int32? NumChildren = null,
         System.Int64? Version = null,
         Recovery? LatestRecovery = null,
         RecoveryPlanStats? RecoveryPlanStats = null,
@@ -118,6 +124,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( NumChildren != null ) {
+            this.NumChildren = NumChildren;
         }
         if ( Version != null ) {
             this.Version = Version;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> System.Int32? NumChildren
+        // GraphQL -> numChildren: Int! (scalar)
+        if (this.NumChildren != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "numChildren\n" ;
+            } else {
+                s += ind + "numChildren\n" ;
             }
         }
         //      C# -> System.Int64? Version
@@ -371,6 +389,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> System.Int32? NumChildren
+        // GraphQL -> numChildren: Int! (scalar)
+        if (ec.Includes("numChildren",true))
+        {
+            if(this.NumChildren == null) {
+
+                this.NumChildren = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumChildren != null && ec.Excludes("numChildren",true))
+        {
+            this.NumChildren = null;
         }
         //      C# -> System.Int64? Version
         // GraphQL -> version: Long! (scalar)

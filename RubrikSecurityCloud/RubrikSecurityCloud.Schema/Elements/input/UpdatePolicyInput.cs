@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("analyzerIds")]
         public List<System.String>? AnalyzerIds { get; set; }
 
+        //      C# -> List<System.String>? DocumentTypeIds
+        // GraphQL -> documentTypeIds: [UUID!] (scalar)
+        [JsonProperty("documentTypeIds")]
+        public List<System.String>? DocumentTypeIds { get; set; }
+
         //      C# -> System.Boolean? UpdateName
         // GraphQL -> updateName: Boolean (scalar)
         [JsonProperty("updateName")]
@@ -68,11 +73,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> updateAnalyzerIds: Boolean (scalar)
         [JsonProperty("updateAnalyzerIds")]
         public System.Boolean? UpdateAnalyzerIds { get; set; }
-
-        //      C# -> List<System.String>? DocumentTypeIds
-        // GraphQL -> documentTypeIds: [UUID!] (scalar)
-        [JsonProperty("documentTypeIds")]
-        public List<System.String>? DocumentTypeIds { get; set; }
 
 
         #endregion

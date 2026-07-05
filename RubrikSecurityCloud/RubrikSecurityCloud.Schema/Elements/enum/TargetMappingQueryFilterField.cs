@@ -46,7 +46,10 @@ namespace RubrikSecurityCloud.Types
         INCLUDE_INLINE,
 
         [EnumMember(Value = "NAME")]
-        NAME
+        NAME,
+
+        [EnumMember(Value = "SOURCE_WORKLOAD_CLOUD")]
+        SOURCE_WORKLOAD_CLOUD
 
 
     } // enum TargetMappingQueryFilterField

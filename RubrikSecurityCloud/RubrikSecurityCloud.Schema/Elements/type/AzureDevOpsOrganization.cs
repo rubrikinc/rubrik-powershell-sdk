@@ -21,6 +21,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> DevopsAuthMechanism? AuthenticationMechanism
+        // GraphQL -> authenticationMechanism: DevopsAuthMechanism! (enum)
+        [JsonProperty("authenticationMechanism")]
+        public DevopsAuthMechanism? AuthenticationMechanism { get; set; }
+
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]
@@ -85,6 +90,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> backupRegion: String! (scalar)
         [JsonProperty("backupRegion")]
         public System.String? BackupRegion { get; set; }
+
+        //      C# -> System.String? ClientId
+        // GraphQL -> clientId: String! (scalar)
+        [JsonProperty("clientId")]
+        public System.String? ClientId { get; set; }
 
         //      C# -> System.String? ExocomputeHostName
         // GraphQL -> exocomputeHostName: String! (scalar)
@@ -244,6 +254,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureDevOpsOrganization Set(
+        DevopsAuthMechanism? AuthenticationMechanism = null,
         List<Operation>? AuthorizedOperations = null,
         DevopsConnectionStatus? ConnectionStatus = null,
         DevopsOrgType? DevOpsOrgType = null,
@@ -257,6 +268,7 @@ namespace RubrikSecurityCloud.Types
         System.String? BackupLocationId = null,
         System.String? BackupLocationName = null,
         System.String? BackupRegion = null,
+        System.String? ClientId = null,
         System.String? ExocomputeHostName = null,
         System.String? ExocomputeId = null,
         System.String? Id = null,
@@ -284,6 +296,9 @@ namespace RubrikSecurityCloud.Types
         SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
+        if ( AuthenticationMechanism != null ) {
+            this.AuthenticationMechanism = AuthenticationMechanism;
+        }
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
@@ -322,6 +337,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( BackupRegion != null ) {
             this.BackupRegion = BackupRegion;
+        }
+        if ( ClientId != null ) {
+            this.ClientId = ClientId;
         }
         if ( ExocomputeHostName != null ) {
             this.ExocomputeHostName = ExocomputeHostName;
@@ -412,6 +430,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> DevopsAuthMechanism? AuthenticationMechanism
+        // GraphQL -> authenticationMechanism: DevopsAuthMechanism! (enum)
+        if (this.AuthenticationMechanism != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "authenticationMechanism\n" ;
+            } else {
+                s += ind + "authenticationMechanism\n" ;
+            }
+        }
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         if (this.AuthorizedOperations != null) {
@@ -539,6 +566,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "backupRegion\n" ;
             } else {
                 s += ind + "backupRegion\n" ;
+            }
+        }
+        //      C# -> System.String? ClientId
+        // GraphQL -> clientId: String! (scalar)
+        if (this.ClientId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clientId\n" ;
+            } else {
+                s += ind + "clientId\n" ;
             }
         }
         //      C# -> System.String? ExocomputeHostName
@@ -809,6 +845,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> DevopsAuthMechanism? AuthenticationMechanism
+        // GraphQL -> authenticationMechanism: DevopsAuthMechanism! (enum)
+        if (ec.Includes("authenticationMechanism",true))
+        {
+            if(this.AuthenticationMechanism == null) {
+
+                this.AuthenticationMechanism = new DevopsAuthMechanism();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AuthenticationMechanism != null && ec.Excludes("authenticationMechanism",true))
+        {
+            this.AuthenticationMechanism = null;
+        }
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         if (ec.Includes("authorizedOperations",true))
@@ -1050,6 +1103,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BackupRegion != null && ec.Excludes("backupRegion",true))
         {
             this.BackupRegion = null;
+        }
+        //      C# -> System.String? ClientId
+        // GraphQL -> clientId: String! (scalar)
+        if (ec.Includes("clientId",true))
+        {
+            if(this.ClientId == null) {
+
+                this.ClientId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClientId != null && ec.Excludes("clientId",true))
+        {
+            this.ClientId = null;
         }
         //      C# -> System.String? ExocomputeHostName
         // GraphQL -> exocomputeHostName: String! (scalar)

@@ -76,6 +76,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isChangelistEnabled")]
         public System.Boolean? IsChangelistEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -251,6 +256,7 @@ namespace RubrikSecurityCloud.Types
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? Id = null,
         System.Boolean? IsChangelistEnabled = null,
+        System.Boolean? IsReplica = null,
         System.String? Name = null,
         System.String? NasMigrationInfo = null,
         System.String? NasShareType = null,
@@ -306,6 +312,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsChangelistEnabled != null ) {
             this.IsChangelistEnabled = IsChangelistEnabled;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -501,6 +510,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isChangelistEnabled\n" ;
             } else {
                 s += ind + "isChangelistEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -960,6 +978,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsChangelistEnabled != null && ec.Excludes("isChangelistEnabled",true))
         {
             this.IsChangelistEnabled = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -591,7 +591,9 @@ by CDM (database_id column).
 - AWS_NATIVE_REGION_NON_EMPTY - Filter AWS native regions that have at least one workload.
 A region is considered non-empty if any of its workload counters,
 such as ec2_instance_count, ebs_volume_count, rds_instance_count,
-s3_bucket_count, or dynamo_db_table_count, are greater than zero.
+s3_bucket_count, dynamo_db_table_count, glue_iceberg_catalog_count,
+glue_iceberg_database_count, or glue_iceberg_table_count, are
+greater than zero.
 +mo:filter:db:table=aws_native_hierarchy_region
 +mo:filter:db:column=region_id
 +mo:filter:db:column=ec2_instance_count
@@ -599,6 +601,9 @@ s3_bucket_count, or dynamo_db_table_count, are greater than zero.
 +mo:filter:db:column=rds_instance_count
 +mo:filter:db:column=s3_bucket_count
 +mo:filter:db:column=dynamo_db_table_count
++mo:filter:db:column=glue_iceberg_catalog_count
++mo:filter:db:column=glue_iceberg_database_count
++mo:filter:db:column=glue_iceberg_table_count
 +mo:filter:db:index:key=region_id
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
@@ -1067,8 +1072,8 @@ cdm_mysqldb_database.fid = managed_object.id, then filters
 on cdm_mysqldb_database.id (the CDM-assigned identifier).
 +mo:filter:db:table=cdm_mysqldb_database
 +mo:filter:db:column=id
-+mo:filter:db:index:key=cluster_mds_index_v2
-+mo:filter:db:index:seq=2
++mo:filter:db:index:key=id_idx
++mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=false
 - DEVOPS_ARCHIVAL_LOCATION_ID - Filter DevOps organizations by their archival
@@ -1203,3 +1208,95 @@ domain controllers without an agent.
 +mo:filter:db:table=cdm_active_directory_domain_controller
 +mo:filter:db:column=agent_uuid
 +mo:filter:db:index:key=NULL // no index on agent_uuid
+- IS_MYSQLDB_SYSTEM_DATABASE - Filter MySQL databases by whether they are system databases
+(sys, mysql, information_schema, performance_schema, etc.).
++mo:filter:db:table=cdm_mysqldb_database
++mo:filter:db:column=is_system
++mo:filter:db:index:key=NULL // no index on is_system
+- FUSION_COMPUTE_NETWORK_TYPE - Filter FusionCompute network objects by their network type. Pass
+texts = ["PortGroup"] to keep only port groups (the only network kind
+valid as a NIC attachment target on export / live mount); ["DVSwitch"]
+to keep only distributed virtual switches. The CDM-side refresh
+ingests both kinds into the same cdm_fusion_compute_network table,
+so this filter is what callers use to scope the list to the right
+kind for their use case.
++mo:filter:db:table=cdm_fusion_compute_network
++mo:filter:db:column=network_type
++mo:filter:db:index:key=NULL // no index on network_type; the list is small
+- POSTGRES_DB_CLUSTER_MODE - Filter PostgreSQL database clusters by cluster mode. Pass
+texts = ["HA"] to keep only high-availability clusters, or
+["STANDALONE"] to keep only single-instance clusters. Any cluster
+that is not high-availability is treated as STANDALONE.
++mo:filter:db:table=cdm_postgres_db_cluster
++mo:filter:db:column=app_metadata
++mo:filter:db:index:key=NULL // cluster mode is a derived value; no index
+- MARIADB_INSTANCE_ID - Filter the MariaDB Databases based on its Instance Id.
++mo:filter:db:table=cdm_mariadb_database
++mo:filter:db:column=parent_id
++mo:filter:db:index:key=parent_id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- MARIADB_HOST_CONNECTION_STATUS - Filter MariaDB instances by their host connection status.
++mo:filter:db:table=cdm_mariadb_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- MARIADB_DATABASE_CDM_ID - Filter MariaDB databases by their CDM-assigned identifier.
++mo:filter:db:table=cdm_mariadb_database
++mo:filter:db:column=id
++mo:filter:db:index:key=id_idx
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- DIRECTLY_PAUSED_SINCE - Filter objects whose direct object level pause started on or after
+the timestamp in timeParam.
++mo:filter:db:table=blackout_window
++mo:filter:db:column=object_id (join)
++mo:filter:db:index:key=object_id_idx
++mo:filter:db:column=start_date (filter)
++mo:filter:db:index:key=NULL
+- PROXMOX_NODE_RBS_CONFIGURED - Filter Proxmox nodes by Rubrik Backup Service configuration status.
+No index on `rbs_configured` is required: `cdm_pve_node` is small
+(bounded by per-cluster node count, typically a few hundred rows),
+and the filter is always combined with the unique-keyed JOIN on
+`managed_object.id = cdm_pve_node.fid`, so the filter scan is
+already bounded by the JOIN's index lookup.
++mo:filter:db:table=cdm_pve_node
++mo:filter:db:column=rbs_configured
+- POWER_PLATFORM_APP_PUBLISHER - Filter Power Platform apps by publisher unique name.
++mo:filter:db:table=saasapps_power_platform_apps
++mo:filter:db:column=publisher_unique_name
++mo:filter:db:index:key=NULL
+- POWER_PLATFORM_APP_TYPE - Filter Power Platform apps by app type.
++mo:filter:db:table=managed_object
++mo:filter:db:column=object_type
++mo:filter:db:index:key=NULL
+- POWER_PLATFORM_APP_STATUS - Filter Power Platform apps by status.
++mo:filter:db:table=saasapps_power_platform_apps
++mo:filter:db:column=status
++mo:filter:db:index:key=NULL
+- POWER_PLATFORM_FLOW_PUBLISHER - Filter Power Platform flows by publisher unique name.
++mo:filter:db:table=saasapps_power_platform_flows
++mo:filter:db:column=publisher_unique_name
++mo:filter:db:index:key=NULL
+- POWER_PLATFORM_FLOW_TYPE - Filter Power Platform flows by flow type.
++mo:filter:db:table=managed_object
++mo:filter:db:column=object_type
++mo:filter:db:index:key=NULL
+- POWER_PLATFORM_FLOW_STATUS - Filter Power Platform flows by status.
++mo:filter:db:table=saasapps_power_platform_flows
++mo:filter:db:column=status
++mo:filter:db:index:key=NULL
+- POWER_PLATFORM_FLOW_OWNER - Filter Power Platform flows by owner display name.
++mo:filter:db:table=saasapps_power_platform_flows
++mo:filter:db:column=owner
++mo:filter:db:index:key=NULL

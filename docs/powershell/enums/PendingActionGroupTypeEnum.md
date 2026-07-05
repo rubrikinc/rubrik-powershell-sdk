@@ -11,3 +11,6 @@ The group type for the pending action.
 - SECURITY_SETTING - The group type of the pending action is a security setting.
 - USERMANAGEMENT - Usermanagement type is used to perform user management operations.
 - OBJECT_PAUSE - Object Pause is used to perform object pause operations.
+- OBJECT_BACKUP_WINDOW - Object Backup Window is used to perform per-object backup-window
+override operations.
+- PERSONAL_ACCESS_TOKEN - Group type for personal access token operations.

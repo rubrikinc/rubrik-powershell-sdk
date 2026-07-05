@@ -25,6 +25,10 @@ Azure DevOps Organization.
   - Name of the backup location associated with the Azure DevOps organization.
 - tenantId: System.String
   - Tenant ID associated with the Azure DevOps organization.
+- authenticationMechanism: DevopsAuthMechanism
+  - Authentication mechanism (OAuth or non-OAuth) the organization's tenant was onboarded with. Derived per-tenant; UNSPECIFIED when it cannot be determined.
+- clientId: System.String
+  - Azure AD application (client) ID of the per-tenant application the organization's tenant was onboarded with. Populated only for non-OAuth tenants; empty otherwise.
 - repoHostType: DevopsHostType
   - Exocompute host type of the Azure DevOps organization.
 - id: System.String

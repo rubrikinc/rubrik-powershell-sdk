@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isDrEnabled")]
         public System.Boolean? IsDrEnabled { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean (scalar)
+        [JsonProperty("shouldUseV4")]
+        public System.Boolean? ShouldUseV4 { get; set; }
+
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public UpdateNutanixPrismCentralReply Set(
         System.String? Hostname = null,
         System.Boolean? IsDrEnabled = null,
+        System.Boolean? ShouldUseV4 = null,
         System.String? Username = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         ManagedObjectPendingSlaInfo? PendingSlaDomain = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsDrEnabled != null ) {
             this.IsDrEnabled = IsDrEnabled;
+        }
+        if ( ShouldUseV4 != null ) {
+            this.ShouldUseV4 = ShouldUseV4;
         }
         if ( Username != null ) {
             this.Username = Username;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isDrEnabled\n" ;
             } else {
                 s += ind + "isDrEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean (scalar)
+        if (this.ShouldUseV4 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldUseV4\n" ;
+            } else {
+                s += ind + "shouldUseV4\n" ;
             }
         }
         //      C# -> System.String? Username
@@ -224,6 +242,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsDrEnabled != null && ec.Excludes("isDrEnabled",true))
         {
             this.IsDrEnabled = null;
+        }
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean (scalar)
+        if (ec.Includes("shouldUseV4",true))
+        {
+            if(this.ShouldUseV4 == null) {
+
+                this.ShouldUseV4 = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldUseV4 != null && ec.Excludes("shouldUseV4",true))
+        {
+            this.ShouldUseV4 = null;
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)

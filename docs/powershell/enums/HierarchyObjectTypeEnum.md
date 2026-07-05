@@ -210,3 +210,22 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - GLUE_ICEBERG_DATABASE - Glue Iceberg Database.
 - GLUE_ICEBERG_TABLE - Glue Iceberg Table.
 - PING_FEDERATE_CLUSTER - Ping Federate cluster.
+- OLVM_TAG - OLVM Tag.
+- AUTH0_TENANT - Auth0 tenant.
+- POWER_PLATFORM_ENVIRONMENT - Power Platform environment.
+- POWER_PLATFORM_CANVAS_APP - Power Platform Canvas App.
+- POWER_PLATFORM_MODEL_DRIVEN_APP - Power Platform Model-Driven App.
+- POWER_PLATFORM_CLOUD_FLOW - Power Platform Cloud Flow.
+- POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform Classic Workflow.
+- POWER_PLATFORM_DIALOG - Power Platform Dialog.
+- POWER_PLATFORM_BUSINESS_RULE - Power Platform Business Rule.
+- POWER_PLATFORM_CUSTOM_ACTION - Power Platform Custom Action.
+- POWER_PLATFORM_BUSINESS_PROCESS_FLOW - Power Platform Business Process Flow.
+- POWER_PLATFORM_DESKTOP_FLOW - Power Platform Desktop Flow.
+- POWER_PLATFORM_AI_FLOW - Power Platform AI Flow.
+- MARIADB_DATABASE - MariaDB Database.
+- MARIADB_INSTANCE - MariaDB Instance.
+- AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps project-scoped fixed object to represent non repo entity.
+- S3_TABLES_ICEBERG_CATALOG - S3 Tables Iceberg catalog.
+- S3_TABLES_ICEBERG_NAMESPACE - S3 Tables Iceberg namespace.
+- S3_TABLES_ICEBERG_TABLE - S3 Tables Iceberg table.

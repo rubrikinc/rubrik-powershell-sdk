@@ -10,4 +10,5 @@ Username for accessing the OS user.
 - discoveryInfo: DiscoverableInputInput
   - Required. Supported in v9.2+
 - haClusterConfig: PostgresHaClusterConfigInput
-  - Optional HA cluster configuration for multi-host setups.
+  - Supported in v9.6+
+Optional HA cluster configuration for multi-host setups.

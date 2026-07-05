@@ -124,7 +124,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
+    /// 		helmChartVersion = $someString
+    /// 		# OPTIONAL
     /// 		nadName = $someString
+    /// 		# OPTIONAL
+    /// 		maxPvcsPerAgent = $someInt
     /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
@@ -134,13 +138,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		nadNamespace = $someString
     /// 		# OPTIONAL
+    /// 		maxConcurrentAgents = $someInt
+    /// 		# OPTIONAL
     /// 		accessToken = $someString
+    /// 		# OPTIONAL
+    /// 		helmMinCdmVersion = $someString
     /// 		# OPTIONAL
     /// 		region = $someString
     /// 		# OPTIONAL
     /// 		onboardingType = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
+    /// 		# OPTIONAL
+    /// 		pvcGroupingStrategy = $someString
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -463,6 +473,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	forceDelete = $someBoolean
     /// 	# OPTIONAL
     /// 	preserveSnapshots = $someBoolean
+    /// 	# OPTIONAL
+    /// 	source = $someV1DeleteK8sClusterRequestSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1DeleteK8sClusterRequestSource]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -736,6 +748,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		transforms = @{
+    /// 			# OPTIONAL
+    /// 			patchesJson = $someString
+    /// 			# OPTIONAL
+    /// 			images = @{
+    /// 				# REQUIRED
+    /// 				imageMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceImage = $someString
+    /// 						# OPTIONAL
+    /// 						replacementImage = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			configmapNames = @{
+    /// 				# REQUIRED
+    /// 				configmapNameMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceConfigmapName = $someString
+    /// 						# OPTIONAL
+    /// 						replacementConfigmapName = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			secretNames = @{
+    /// 				# REQUIRED
+    /// 				secretNameMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceSecretName = $someString
+    /// 						# OPTIONAL
+    /// 						replacementSecretName = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
     /// 		virtualMachineRunStrategy = $someString
     /// 		# REQUIRED
     /// 		targetClusterId = $someString
@@ -828,6 +881,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		pvcNames = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		transforms = @{
+    /// 			# OPTIONAL
+    /// 			patchesJson = $someString
+    /// 			# OPTIONAL
+    /// 			images = @{
+    /// 				# REQUIRED
+    /// 				imageMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceImage = $someString
+    /// 						# OPTIONAL
+    /// 						replacementImage = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			configmapNames = @{
+    /// 				# REQUIRED
+    /// 				configmapNameMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceConfigmapName = $someString
+    /// 						# OPTIONAL
+    /// 						replacementConfigmapName = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			secretNames = @{
+    /// 				# REQUIRED
+    /// 				secretNameMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceSecretName = $someString
+    /// 						# OPTIONAL
+    /// 						replacementSecretName = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
     /// 		# REQUIRED
     /// 		targetClusterId = $someString
     /// 		# OPTIONAL
@@ -880,12 +974,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		pullSecret = $someString
     /// 		# OPTIONAL
     /// 		nadName = $someString
+    /// 		# OPTIONAL
+    /// 		maxPvcsPerAgent = $someInt
     /// 		# REQUIRED
     /// 		transport = $someString
     /// 		# OPTIONAL
     /// 		isAutoPsCreationEnabled = $someBoolean
     /// 		# OPTIONAL
     /// 		nadNamespace = $someString
+    /// 		# OPTIONAL
+    /// 		maxConcurrentAgents = $someInt
     /// 		# REQUIRED
     /// 		serviceAccount = @{
     /// 			# REQUIRED
@@ -995,6 +1093,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	id = $someString
     /// 	# REQUIRED
     /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		maxPvcsPerAgent = $someInt
+    /// 		# OPTIONAL
+    /// 		maxConcurrentAgents = $someInt
     /// 		# REQUIRED
     /// 		serviceAccount = @{
     /// 			# REQUIRED
@@ -1128,6 +1230,47 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		pvcNames = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		transforms = @{
+    /// 			# OPTIONAL
+    /// 			patchesJson = $someString
+    /// 			# OPTIONAL
+    /// 			images = @{
+    /// 				# REQUIRED
+    /// 				imageMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceImage = $someString
+    /// 						# OPTIONAL
+    /// 						replacementImage = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			configmapNames = @{
+    /// 				# REQUIRED
+    /// 				configmapNameMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceConfigmapName = $someString
+    /// 						# OPTIONAL
+    /// 						replacementConfigmapName = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			secretNames = @{
+    /// 				# REQUIRED
+    /// 				secretNameMappingList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						sourceSecretName = $someString
+    /// 						# OPTIONAL
+    /// 						replacementSecretName = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
     /// 		# OPTIONAL
     /// 		ignoreErrors = $someBoolean
     /// 	}
@@ -1278,6 +1421,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		nadName = $someString
     /// 		# OPTIONAL
+    /// 		maxPvcsPerAgent = $someInt
+    /// 		# OPTIONAL
     /// 		transport = $someString
     /// 		# OPTIONAL
     /// 		isAutoPsCreationEnabled = $someBoolean
@@ -1286,11 +1431,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		nadNamespace = $someString
     /// 		# OPTIONAL
+    /// 		maxConcurrentAgents = $someInt
+    /// 		# OPTIONAL
     /// 		accessToken = $someString
     /// 		# OPTIONAL
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
     /// 		clientId = $someString
+    /// 		# OPTIONAL
+    /// 		pvcGroupingStrategy = $someString
     /// 	}
     /// }
     /// 
@@ -1337,7 +1486,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 		# OPTIONAL
+    /// 		labelSelector = @{
+    /// 			# OPTIONAL
+    /// 			matchExpressions = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					key = $someString
+    /// 					# OPTIONAL
+    /// 					values = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					operator = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			matchLabels = $someString
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		namespaceExcludePatterns = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
     /// 		definition = $someString
+    /// 		# OPTIONAL
+    /// 		namespaceIncludePatterns = @(
+    /// 			$someString
+    /// 		)
     /// 		# OPTIONAL
     /// 		hookConfigs = @(
     /// 			$someString
@@ -1774,7 +1949,11 @@ $query.Var.input = @{
 		# OPTIONAL
 		pullSecret = $someString
 		# OPTIONAL
+		helmChartVersion = $someString
+		# OPTIONAL
 		nadName = $someString
+		# OPTIONAL
+		maxPvcsPerAgent = $someInt
 		# OPTIONAL
 		transport = $someString
 		# OPTIONAL
@@ -1784,13 +1963,19 @@ $query.Var.input = @{
 		# OPTIONAL
 		nadNamespace = $someString
 		# OPTIONAL
+		maxConcurrentAgents = $someInt
+		# OPTIONAL
 		accessToken = $someString
+		# OPTIONAL
+		helmMinCdmVersion = $someString
 		# OPTIONAL
 		region = $someString
 		# OPTIONAL
 		onboardingType = $someString
 		# OPTIONAL
 		clientId = $someString
+		# OPTIONAL
+		pvcGroupingStrategy = $someString
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -2057,6 +2242,8 @@ $query.Var.input = @{
 	forceDelete = $someBoolean
 	# OPTIONAL
 	preserveSnapshots = $someBoolean
+	# OPTIONAL
+	source = $someV1DeleteK8sClusterRequestSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.V1DeleteK8sClusterRequestSource]) for enum values.
 }"
             );
         }
@@ -2282,6 +2469,47 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		transforms = @{
+			# OPTIONAL
+			patchesJson = $someString
+			# OPTIONAL
+			images = @{
+				# REQUIRED
+				imageMappingList = @(
+					@{
+						# OPTIONAL
+						sourceImage = $someString
+						# OPTIONAL
+						replacementImage = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			configmapNames = @{
+				# REQUIRED
+				configmapNameMappingList = @(
+					@{
+						# OPTIONAL
+						sourceConfigmapName = $someString
+						# OPTIONAL
+						replacementConfigmapName = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			secretNames = @{
+				# REQUIRED
+				secretNameMappingList = @(
+					@{
+						# OPTIONAL
+						sourceSecretName = $someString
+						# OPTIONAL
+						replacementSecretName = $someString
+					}
+				)
+			}
+		}
+		# OPTIONAL
 		virtualMachineRunStrategy = $someString
 		# REQUIRED
 		targetClusterId = $someString
@@ -2366,6 +2594,47 @@ $query.Var.input = @{
 		pvcNames = @(
 			$someString
 		)
+		# OPTIONAL
+		transforms = @{
+			# OPTIONAL
+			patchesJson = $someString
+			# OPTIONAL
+			images = @{
+				# REQUIRED
+				imageMappingList = @(
+					@{
+						# OPTIONAL
+						sourceImage = $someString
+						# OPTIONAL
+						replacementImage = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			configmapNames = @{
+				# REQUIRED
+				configmapNameMappingList = @(
+					@{
+						# OPTIONAL
+						sourceConfigmapName = $someString
+						# OPTIONAL
+						replacementConfigmapName = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			secretNames = @{
+				# REQUIRED
+				secretNameMappingList = @(
+					@{
+						# OPTIONAL
+						sourceSecretName = $someString
+						# OPTIONAL
+						replacementSecretName = $someString
+					}
+				)
+			}
+		}
 		# REQUIRED
 		targetClusterId = $someString
 		# OPTIONAL
@@ -2410,12 +2679,16 @@ $query.Var.input = @{
 		pullSecret = $someString
 		# OPTIONAL
 		nadName = $someString
+		# OPTIONAL
+		maxPvcsPerAgent = $someInt
 		# REQUIRED
 		transport = $someString
 		# OPTIONAL
 		isAutoPsCreationEnabled = $someBoolean
 		# OPTIONAL
 		nadNamespace = $someString
+		# OPTIONAL
+		maxConcurrentAgents = $someInt
 		# REQUIRED
 		serviceAccount = @{
 			# REQUIRED
@@ -2501,6 +2774,10 @@ $query.Var.input = @{
 	id = $someString
 	# REQUIRED
 	config = @{
+		# OPTIONAL
+		maxPvcsPerAgent = $someInt
+		# OPTIONAL
+		maxConcurrentAgents = $someInt
 		# REQUIRED
 		serviceAccount = @{
 			# REQUIRED
@@ -2618,6 +2895,47 @@ $query.Var.input = @{
 		pvcNames = @(
 			$someString
 		)
+		# OPTIONAL
+		transforms = @{
+			# OPTIONAL
+			patchesJson = $someString
+			# OPTIONAL
+			images = @{
+				# REQUIRED
+				imageMappingList = @(
+					@{
+						# OPTIONAL
+						sourceImage = $someString
+						# OPTIONAL
+						replacementImage = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			configmapNames = @{
+				# REQUIRED
+				configmapNameMappingList = @(
+					@{
+						# OPTIONAL
+						sourceConfigmapName = $someString
+						# OPTIONAL
+						replacementConfigmapName = $someString
+					}
+				)
+			}
+			# OPTIONAL
+			secretNames = @{
+				# REQUIRED
+				secretNameMappingList = @(
+					@{
+						# OPTIONAL
+						sourceSecretName = $someString
+						# OPTIONAL
+						replacementSecretName = $someString
+					}
+				)
+			}
+		}
 		# OPTIONAL
 		ignoreErrors = $someBoolean
 	}
@@ -2744,6 +3062,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		nadName = $someString
 		# OPTIONAL
+		maxPvcsPerAgent = $someInt
+		# OPTIONAL
 		transport = $someString
 		# OPTIONAL
 		isAutoPsCreationEnabled = $someBoolean
@@ -2752,11 +3072,15 @@ $query.Var.input = @{
 		# OPTIONAL
 		nadNamespace = $someString
 		# OPTIONAL
+		maxConcurrentAgents = $someInt
+		# OPTIONAL
 		accessToken = $someString
 		# OPTIONAL
 		cloudAccountId = $someString
 		# OPTIONAL
 		clientId = $someString
+		# OPTIONAL
+		pvcGroupingStrategy = $someString
 	}
 }"
             );
@@ -2795,7 +3119,33 @@ $query.Var.input = @{
 			}
 		)
 		# OPTIONAL
+		labelSelector = @{
+			# OPTIONAL
+			matchExpressions = @(
+				@{
+					# REQUIRED
+					key = $someString
+					# OPTIONAL
+					values = @(
+						$someString
+					)
+					# REQUIRED
+					operator = $someString
+				}
+			)
+			# OPTIONAL
+			matchLabels = $someString
+		}
+		# OPTIONAL
+		namespaceExcludePatterns = @(
+			$someString
+		)
+		# OPTIONAL
 		definition = $someString
+		# OPTIONAL
+		namespaceIncludePatterns = @(
+			$someString
+		)
 		# OPTIONAL
 		hookConfigs = @(
 			$someString

@@ -105,8 +105,8 @@ Download a report asynchronously in PDF format.
 Download file results in CSV format.
 
 - There are 2 arguments.
-    - crawlId - System.String
-    - downloadFilter - DownloadResultsCsvFiltersInput
+    - crawlId - System.String: Identifier of the crawl whose file results are downloaded.
+    - downloadFilter - DownloadResultsCsvFiltersInput: Filters applied to the file results included in the CSV.
 - Returns DownloadResultsCsvReply.
 ### saphanasnapshot
 Download SAP HANA database snapshot from archive
@@ -136,9 +136,9 @@ Downloads the most recent full snapshot and the log snapshots taken after the fu
 Download snapshot policy results in CSV format.
 
 - There are 3 arguments.
-    - snappableFid - System.String
-    - snapshotFid - System.String
-    - downloadFilter - DownloadResultsCsvFiltersInput
+    - snappableFid - System.String: Identifier of the object whose snapshot results are downloaded.
+    - snapshotFid - System.String: Identifier of the snapshot whose results are downloaded.
+    - downloadFilter - DownloadResultsCsvFiltersInput: Filters applied to the snapshot results included in the CSV.
 - Returns DownloadCsvReply.
 ### threathuntcsv
 Download threat hunt result in CSV format.

@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
+        //      C# -> System.Int64? SuspiciousFileCount
+        // GraphQL -> suspiciousFileCount: Long! (scalar)
+        [JsonProperty("suspiciousFileCount")]
+        public System.Int64? SuspiciousFileCount { get; set; }
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         [JsonProperty("workloadId")]
@@ -76,6 +81,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAnomaly = null,
         System.Boolean? IsQuarantined = null,
         System.String? SnapshotId = null,
+        System.Int64? SuspiciousFileCount = null,
         System.String? WorkloadId = null,
         List<ThreatHuntSnapshotInfo>? ThreatHuntInfo = null
     ) 
@@ -97,6 +103,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnapshotId != null ) {
             this.SnapshotId = SnapshotId;
+        }
+        if ( SuspiciousFileCount != null ) {
+            this.SuspiciousFileCount = SuspiciousFileCount;
         }
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
@@ -170,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "snapshotId\n" ;
             } else {
                 s += ind + "snapshotId\n" ;
+            }
+        }
+        //      C# -> System.Int64? SuspiciousFileCount
+        // GraphQL -> suspiciousFileCount: Long! (scalar)
+        if (this.SuspiciousFileCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "suspiciousFileCount\n" ;
+            } else {
+                s += ind + "suspiciousFileCount\n" ;
             }
         }
         //      C# -> System.String? WorkloadId
@@ -301,6 +319,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SnapshotId != null && ec.Excludes("snapshotId",true))
         {
             this.SnapshotId = null;
+        }
+        //      C# -> System.Int64? SuspiciousFileCount
+        // GraphQL -> suspiciousFileCount: Long! (scalar)
+        if (ec.Includes("suspiciousFileCount",true))
+        {
+            if(this.SuspiciousFileCount == null) {
+
+                this.SuspiciousFileCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuspiciousFileCount != null && ec.Excludes("suspiciousFileCount",true))
+        {
+            this.SuspiciousFileCount = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)

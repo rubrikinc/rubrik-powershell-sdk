@@ -27,11 +27,24 @@ namespace RubrikSecurityCloud.Types
         public System.String? SettingDefinitionId { get; set; }
 
         //      C# -> System.String? SecretValue
-        // GraphQL -> secretValue: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> secretValue: String (scalar)
         [JsonProperty("secretValue")]
         public System.String? SecretValue { get; set; }
+
+        //      C# -> System.String? CollectionDefinitionId
+        // GraphQL -> collectionDefinitionId: String (scalar)
+        [JsonProperty("collectionDefinitionId")]
+        public System.String? CollectionDefinitionId { get; set; }
+
+        //      C# -> System.Int32? RowIndex
+        // GraphQL -> rowIndex: Int (scalar)
+        [JsonProperty("rowIndex")]
+        public System.Int32? RowIndex { get; set; }
+
+        //      C# -> List<System.String>? SecretValues
+        // GraphQL -> secretValues: [String!] (scalar)
+        [JsonProperty("secretValues")]
+        public List<System.String>? SecretValues { get; set; }
 
 
         #endregion

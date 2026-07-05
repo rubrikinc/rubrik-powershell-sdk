@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("postRestoreScript")]
         public System.String? PostRestoreScript { get; set; }
 
+        //      C# -> System.String? PreviousJobInstanceId
+        // GraphQL -> previousJobInstanceId: String (scalar)
+        [JsonProperty("previousJobInstanceId")]
+        public System.String? PreviousJobInstanceId { get; set; }
+
         //      C# -> System.Boolean? ShouldRestoreOnlyAcls
         // GraphQL -> shouldRestoreOnlyAcls: Boolean (scalar)
         [JsonProperty("shouldRestoreOnlyAcls")]

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 5
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'RCV' API domain:
-    /// AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, MigrationInfo, or PrivateEndpointConnections.
+    /// AccountEntitlement, AccountEntitlements, EntitlementRunways, IsTriggerGrsTprConfigured, MigrationInfo, or PrivateEndpointConnections.
     /// </summary>
     /// <description>
     /// New-RscQueryRcv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 5 operations
+    /// There are 6 operations
     /// in the 'RCV' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AccountEntitlement, AccountEntitlements, IsTriggerGrsTprConfigured, MigrationInfo, or PrivateEndpointConnections.
+    /// one of: AccountEntitlement, AccountEntitlements, EntitlementRunways, IsTriggerGrsTprConfigured, MigrationInfo, or PrivateEndpointConnections.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -123,6 +123,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AllRcvAccountEntitlements
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the EntitlementRunways operation
+    /// of the 'RCV' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Rcv
+    /// # API Operation: EntitlementRunways
+    /// 
+    /// $query = New-RscQueryRcv -Operation EntitlementRunways
+    /// 
+    /// # REQUIRED
+    /// $query.Var.groups = @(
+    /// 	@{
+    /// 		# REQUIRED
+    /// 		tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
+    /// 		# REQUIRED
+    /// 		redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// }
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;RcvEntitlementRunway&gt;
     /// 
     /// 
     /// 
@@ -231,6 +266,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "AccountEntitlement",
                 "AccountEntitlements",
+                "EntitlementRunways",
                 "IsTriggerGrsTprConfigured",
                 "MigrationInfo",
                 "PrivateEndpointConnections",
@@ -254,6 +290,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "AccountEntitlements":
                         this.ProcessRecord_AccountEntitlements();
+                        break;
+                    case "EntitlementRunways":
+                        this.ProcessRecord_EntitlementRunways();
                         break;
                     case "IsTriggerGrsTprConfigured":
                         this.ProcessRecord_IsTriggerGrsTprConfigured();
@@ -290,6 +329,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -AccountEntitlements";
             // Create new graphql operation allRcvAccountEntitlements
             InitQueryAllRcvAccountEntitlements();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allRcvEntitlementRunways.
+        internal void ProcessRecord_EntitlementRunways()
+        {
+            this._logger.name += " -EntitlementRunways";
+            // Create new graphql operation allRcvEntitlementRunways
+            InitQueryAllRcvEntitlementRunways();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -353,6 +401,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Query.AllRcvAccountEntitlements,
                 Query.AllRcvAccountEntitlementsFieldSpec,
                 @""
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allRcvEntitlementRunways(groups: [RcvEntitlementGroupQueryInput!]!): [RcvEntitlementRunway!]!
+        internal void InitQueryAllRcvEntitlementRunways()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("groups", "[RcvEntitlementGroupQueryInput!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllRcvEntitlementRunways",
+                "($groups: [RcvEntitlementGroupQueryInput!]!)",
+                "List<RcvEntitlementRunway>",
+                Query.AllRcvEntitlementRunways,
+                Query.AllRcvEntitlementRunwaysFieldSpec,
+                @"# REQUIRED
+$query.Var.groups = @(
+	@{
+		# REQUIRED
+		tier = $someRcsTierEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcsTierEnumType]) for enum values.
+		# REQUIRED
+		redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+}
+)"
             );
         }
 

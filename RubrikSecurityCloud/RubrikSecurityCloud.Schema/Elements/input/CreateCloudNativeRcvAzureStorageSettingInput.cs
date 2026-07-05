@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeLocTemplateType")]
         public CloudNativeLocTemplateType? CloudNativeLocTemplateType { get; set; }
 
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        [JsonProperty("sourceWorkloadCloud")]
+        public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
+
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy (enum)
         [JsonProperty("redundancy")]

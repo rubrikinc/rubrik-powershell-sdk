@@ -41,7 +41,8 @@ Capacity of the node in bytes.
   - Supported in v7.0+
 indicates if Rubrik node is reachable through bond0.
 - isVirtual: System.Boolean
-  - True if the candidate reports running under a hypervisor (no BMC).
+  - Supported in v9.5+
+True if the candidate reports running under a hypervisor (no BMC).
 Populated from the candidate's PreBootstrapClusterConfig.isVirtualNode
 thrift call during discovery. Consumed by rkcli add_node to decide
 whether to prompt for IPMI configuration.

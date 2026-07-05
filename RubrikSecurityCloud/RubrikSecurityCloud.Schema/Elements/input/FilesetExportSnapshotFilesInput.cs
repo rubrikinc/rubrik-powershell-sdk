@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> FilesetExportFilesJobConfigInput? Config
+        // GraphQL -> config: FilesetExportFilesJobConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("config")]
+        public FilesetExportFilesJobConfigInput? Config { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -26,22 +33,12 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> System.String? NextSnapshotFid
-        // GraphQL -> nextSnapshotFid: UUID (scalar)
-        [JsonProperty("nextSnapshotFid")]
-        public System.String? NextSnapshotFid { get; set; }
-
-        //      C# -> List<DeltaType>? DeltaTypeFilter
-        // GraphQL -> deltaTypeFilter: [DeltaType!] (enum)
-        [JsonProperty("deltaTypeFilter")]
-        public List<DeltaType>? DeltaTypeFilter { get; set; }
-
-        //      C# -> FilesetExportFilesJobConfigInput? Config
-        // GraphQL -> config: FilesetExportFilesJobConfigInput! (input)
+        //      C# -> GuestOsType? OsType
+        // GraphQL -> osType: GuestOsType! (enum)
         [Required]
         [JsonRequired]
-        [JsonProperty("config")]
-        public FilesetExportFilesJobConfigInput? Config { get; set; }
+        [JsonProperty("osType")]
+        public GuestOsType? OsType { get; set; }
 
         //      C# -> ShareTypeEnum? ShareType
         // GraphQL -> shareType: ShareTypeEnum! (enum)
@@ -50,12 +47,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shareType")]
         public ShareTypeEnum? ShareType { get; set; }
 
-        //      C# -> GuestOsType? OsType
-        // GraphQL -> osType: GuestOsType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("osType")]
-        public GuestOsType? OsType { get; set; }
+        //      C# -> List<DeltaType>? DeltaTypeFilter
+        // GraphQL -> deltaTypeFilter: [DeltaType!] (enum)
+        [JsonProperty("deltaTypeFilter")]
+        public List<DeltaType>? DeltaTypeFilter { get; set; }
+
+        //      C# -> System.String? NextSnapshotFid
+        // GraphQL -> nextSnapshotFid: UUID (scalar)
+        [JsonProperty("nextSnapshotFid")]
+        public System.String? NextSnapshotFid { get; set; }
 
         //      C# -> RecoveryPurpose? RecoveryPurpose
         // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)

@@ -338,6 +338,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	certId = $someString
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	hostId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -970,6 +972,8 @@ $query.Var.input = @{
 	certId = $someString
 	# REQUIRED
 	clusterUuid = $someString
+	# OPTIONAL
+	hostId = $someString
 }"
             );
         }

@@ -21,8 +21,8 @@ v7.0+: Specifies whether to remove the network interfaces from the exported virt
 - vmName: System.String
   - Name of the new virtual machine being exported.
 - keepMacAddress: System.Boolean
-  - Supported in v9.6
+  - Supported in v9.6+
 Whether to preserve the original MAC addresses of network adapters.
 - virtualSwitchMappings: list of HypervVirtualSwitchMappingInputs
-  - Supported in v9.6
+  - Supported in v9.6+
 Mapping of NIC indices to virtual switches.

@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pam")]
         public PamIntegrationConfig? Pam { get; set; }
 
+        //      C# -> PanXsoarIntegrationConfig? PanXsoar
+        // GraphQL -> panXsoar: PanXsoarIntegrationConfig (type)
+        [JsonProperty("panXsoar")]
+        public PanXsoarIntegrationConfig? PanXsoar { get; set; }
+
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
         [JsonProperty("serviceNowItsm")]
@@ -64,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> splunk: SplunkIntegrationConfig (type)
         [JsonProperty("splunk")]
         public SplunkIntegrationConfig? Splunk { get; set; }
+
+        //      C# -> WorkdayIntegrationConfig? Workday
+        // GraphQL -> workday: WorkdayIntegrationConfig (type)
+        [JsonProperty("workday")]
+        public WorkdayIntegrationConfig? Workday { get; set; }
 
 
         #endregion
@@ -82,8 +92,10 @@ namespace RubrikSecurityCloud.Types
         MicrosoftPurviewConfig? MicrosoftPurview = null,
         OktaIntegrationConfig? Okta = null,
         PamIntegrationConfig? Pam = null,
+        PanXsoarIntegrationConfig? PanXsoar = null,
         ServiceNowItsmIntegrationConfig? ServiceNowItsm = null,
-        SplunkIntegrationConfig? Splunk = null
+        SplunkIntegrationConfig? Splunk = null,
+        WorkdayIntegrationConfig? Workday = null
     ) 
     {
         if ( CrowdStrike != null ) {
@@ -107,11 +119,17 @@ namespace RubrikSecurityCloud.Types
         if ( Pam != null ) {
             this.Pam = Pam;
         }
+        if ( PanXsoar != null ) {
+            this.PanXsoar = PanXsoar;
+        }
         if ( ServiceNowItsm != null ) {
             this.ServiceNowItsm = ServiceNowItsm;
         }
         if ( Splunk != null ) {
             this.Splunk = Splunk;
+        }
+        if ( Workday != null ) {
+            this.Workday = Workday;
         }
         return this;
     }
@@ -211,6 +229,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> PanXsoarIntegrationConfig? PanXsoar
+        // GraphQL -> panXsoar: PanXsoarIntegrationConfig (type)
+        if (this.PanXsoar != null) {
+            var fspec = this.PanXsoar.AsFieldSpec(conf.Child("panXsoar"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "panXsoar" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
         if (this.ServiceNowItsm != null) {
@@ -232,6 +262,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "splunk" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> WorkdayIntegrationConfig? Workday
+        // GraphQL -> workday: WorkdayIntegrationConfig (type)
+        if (this.Workday != null) {
+            var fspec = this.Workday.AsFieldSpec(conf.Child("workday"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workday" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -375,6 +417,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.Pam = null;
         }
+        //      C# -> PanXsoarIntegrationConfig? PanXsoar
+        // GraphQL -> panXsoar: PanXsoarIntegrationConfig (type)
+        if (ec.Includes("panXsoar",false))
+        {
+            if(this.PanXsoar == null) {
+
+                this.PanXsoar = new PanXsoarIntegrationConfig();
+                this.PanXsoar.ApplyExploratoryFieldSpec(ec.NewChild("panXsoar"));
+
+            } else {
+
+                this.PanXsoar.ApplyExploratoryFieldSpec(ec.NewChild("panXsoar"));
+
+            }
+        }
+        else if (this.PanXsoar != null && ec.Excludes("panXsoar",false))
+        {
+            this.PanXsoar = null;
+        }
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
         if (ec.Includes("serviceNowItsm",false))
@@ -412,6 +473,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Splunk != null && ec.Excludes("splunk",false))
         {
             this.Splunk = null;
+        }
+        //      C# -> WorkdayIntegrationConfig? Workday
+        // GraphQL -> workday: WorkdayIntegrationConfig (type)
+        if (ec.Includes("workday",false))
+        {
+            if(this.Workday == null) {
+
+                this.Workday = new WorkdayIntegrationConfig();
+                this.Workday.ApplyExploratoryFieldSpec(ec.NewChild("workday"));
+
+            } else {
+
+                this.Workday.ApplyExploratoryFieldSpec(ec.NewChild("workday"));
+
+            }
+        }
+        else if (this.Workday != null && ec.Excludes("workday",false))
+        {
+            this.Workday = null;
         }
     }
 

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 228
+    /// Create a new RscQuery object for any of the 234
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateRecoveryScheduleV2, CreateSsoUsers, CreateVappsInstantRecovery, CreateVrm, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryScheduleV2, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 228 operations
+    /// There are 234 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandVolumeGroupBackup, CreateRecoveryScheduleV2, CreateSsoUsers, CreateVappsInstantRecovery, CreateVrm, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// one of: AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryScheduleV2, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1092,6 +1092,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				runCloudslabCheck = $someBoolean
     /// 				# OPTIONAL
     /// 				runGcsConnectivityCheck = $someBoolean
+    /// 				# OPTIONAL
+    /// 				runSqlMiConnectivityCheck = $someBoolean
+    /// 				# OPTIONAL
+    /// 				runSqlDbConnectivityCheck = $someBoolean
+    /// 				# OPTIONAL
+    /// 				requestedChecks = @(
+    /// 					$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+    /// 				)
     /// 			}
     /// 		}
     /// 	)
@@ -2510,6 +2518,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateOnDemandGlueIcebergTableBackup operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateOnDemandGlueIcebergTableBackup
+    /// 
+    /// $query = New-RscMutationMisc -Operation CreateOnDemandGlueIcebergTableBackup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	sourceTableId = $someString
+    /// 	# OPTIONAL
+    /// 	retentionSlaId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateOnDemandGlueIcebergTableBackupReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CreateOnDemandVolumeGroupBackup operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -2708,6 +2749,143 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: CreateVappsInstantRecoveryReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateViolationRemediation operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateViolationRemediation
+    /// 
+    /// $query = New-RscMutationMisc -Operation CreateViolationRemediation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	resourceId = $someString
+    /// 	# OPTIONAL
+    /// 	remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	policyViolationId = $someString
+    /// 	# OPTIONAL
+    /// 	targets = @{
+    /// 		# REQUIRED
+    /// 		targetIds = @(
+    /// 			$someString
+    /// 		)
+    /// 		# REQUIRED
+    /// 		targetType = $someRemediationTargetTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTargetTypeEnum]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	location = $someRemediationLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationLocation]) for enum values.
+    /// 	# OPTIONAL
+    /// 	resourceType = $somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	ticketInfo = @{
+    /// 		# OPTIONAL
+    /// 		title = $someString
+    /// 		# OPTIONAL
+    /// 		reason = $someString
+    /// 		# OPTIONAL
+    /// 		attachmentTypes = @(
+    /// 			$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		comment = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	mipLabelInfo = @{
+    /// 		# OPTIONAL
+    /// 		labelId = $someString
+    /// 		# OPTIONAL
+    /// 		allowDowngrade = $someBoolean
+    /// 		# OPTIONAL
+    /// 		labelName = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	adIrInfo = @{
+    /// 		# OPTIONAL
+    /// 		domainControllerFid = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	ticketDetails = @{
+    /// 		# REQUIRED
+    /// 		ticketContents = @{
+    /// 			# OPTIONAL
+    /// 			title = $someString
+    /// 			# OPTIONAL
+    /// 			description = $someString
+    /// 			# OPTIONAL
+    /// 			comment = $someString
+    /// 			# OPTIONAL
+    /// 			projectKey = $someString
+    /// 			# OPTIONAL
+    /// 			ticketTypeId = $someString
+    /// 			# OPTIONAL
+    /// 			requiredFields = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					fieldKey = $someString
+    /// 					# REQUIRED
+    /// 					fieldValue = @{
+    /// 						# REQUIRED
+    /// 						fieldType = $someTicketFieldType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TicketFieldType]) for enum values.
+    /// 						# OPTIONAL
+    /// 						stringValue = $someString
+    /// 						# OPTIONAL
+    /// 						numberValue = $someInt64
+    /// 						# OPTIONAL
+    /// 						optionValue = $someString
+    /// 						# OPTIONAL
+    /// 						multiOptionValues = @{
+    /// 							# REQUIRED
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						arrayValues = @{
+    /// 							# REQUIRED
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						userValue = $someString
+    /// 						# OPTIONAL
+    /// 						dateValue = $someString
+    /// 						# OPTIONAL
+    /// 						datetimeValue = $someString
+    /// 						# OPTIONAL
+    /// 						booleanValue = $someBoolean
+    /// 						# OPTIONAL
+    /// 						textAreaValue = $someString
+    /// 					}
+    /// 				}
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		attachmentTypes = @(
+    /// 			$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateRemediationMetadata
     /// 
     /// 
     /// 
@@ -3750,6 +3928,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the GenerateCdmTotpSecret operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: GenerateCdmTotpSecret
+    /// 
+    /// $query = New-RscMutationMisc -Operation GenerateCdmTotpSecret
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# OPTIONAL
+    /// 	reauthRequest = @{
+    /// 		# REQUIRED
+    /// 		reauthCode = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GenerateCdmTotpSecretReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the GenerateConfigProtectionRestoreForm operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -4634,6 +4850,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isForceAuthnEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	allowIdpInitiatedSso = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -5797,6 +6015,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the ResumeRecovery operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ResumeRecovery
+    /// 
+    /// $query = New-RscMutationMisc -Operation ResumeRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recoveryId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RetryBackup operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -6764,6 +7013,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SetupCdmTotp operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: SetupCdmTotp
+    /// 
+    /// $query = New-RscMutationMisc -Operation SetupCdmTotp
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	configRequest = @{
+    /// 		# REQUIRED
+    /// 		otpForValidation = $someString
+    /// 		# REQUIRED
+    /// 		secret = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the SetupDisk operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -7478,6 +7767,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		runCloudslabCheck = $someBoolean
     /// 		# OPTIONAL
     /// 		runGcsConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runSqlMiConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		runSqlDbConnectivityCheck = $someBoolean
+    /// 		# OPTIONAL
+    /// 		requestedChecks = @(
+    /// 			$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -8001,6 +8298,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: UpdateBadDiskLedStatusReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateCdmUser operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateCdmUser
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdateCdmUser
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	userInfo = @{
+    /// 		# OPTIONAL
+    /// 		sshKey = $someString
+    /// 		# OPTIONAL
+    /// 		lastName = $someString
+    /// 		# OPTIONAL
+    /// 		firstName = $someString
+    /// 		# OPTIONAL
+    /// 		mfaServerId = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		isTotpEnforced = $someBoolean
+    /// 		# OPTIONAL
+    /// 		contactNumber = $someString
+    /// 		# OPTIONAL
+    /// 		emailAddress = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateCdmUserReply
     /// 
     /// 
     /// 
@@ -9801,10 +10150,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateFusionComputeVmBackup",
                 "CreateGuestCredential",
                 "CreateLegalHold",
+                "CreateOnDemandGlueIcebergTableBackup",
                 "CreateOnDemandVolumeGroupBackup",
                 "CreateRecoveryScheduleV2",
                 "CreateSsoUsers",
                 "CreateVappsInstantRecovery",
+                "CreateViolationRemediation",
                 "CreateVrm",
                 "DeactivateCustomAnalyzer",
                 "DeleteAdGroupsFromHierarchy",
@@ -9836,6 +10187,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ExcludeVmDisks",
                 "ExecuteTprRequests",
                 "ExpireSnoozedDirectories",
+                "GenerateCdmTotpSecret",
                 "GenerateConfigProtectionRestoreForm",
                 "GeneratePresignedUrlForDownload",
                 "GeneratePresignedUrlForPartUpload",
@@ -9886,6 +10238,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ResizeDisk",
                 "ResolveAnomaly",
                 "ResolveVolumeGroupsConflict",
+                "ResumeRecovery",
                 "RetryBackup",
                 "RetryDownloadPackageJob",
                 "RevokeAllOrgRoles",
@@ -9910,6 +10263,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SetUserLevelTotpEnforcement",
                 "SetUserSessionManagementConfig",
                 "SetWorkloadAlertSetting",
+                "SetupCdmTotp",
                 "SetupDisk",
                 "StartCrawl",
                 "StartDownloadPackageBatchJob",
@@ -9939,6 +10293,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateBackupThrottleSetting",
                 "UpdateBackupTriggerForWorkloads",
                 "UpdateBadDiskLedStatus",
+                "UpdateCdmUser",
                 "UpdateCloudDirectKerberosCredential",
                 "UpdateConfiguredGroup",
                 "UpdateCustomAnalyzer",
@@ -10148,6 +10503,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateLegalHold":
                         this.ProcessRecord_CreateLegalHold();
                         break;
+                    case "CreateOnDemandGlueIcebergTableBackup":
+                        this.ProcessRecord_CreateOnDemandGlueIcebergTableBackup();
+                        break;
                     case "CreateOnDemandVolumeGroupBackup":
                         this.ProcessRecord_CreateOnDemandVolumeGroupBackup();
                         break;
@@ -10159,6 +10517,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CreateVappsInstantRecovery":
                         this.ProcessRecord_CreateVappsInstantRecovery();
+                        break;
+                    case "CreateViolationRemediation":
+                        this.ProcessRecord_CreateViolationRemediation();
                         break;
                     case "CreateVrm":
                         this.ProcessRecord_CreateVrm();
@@ -10252,6 +10613,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExpireSnoozedDirectories":
                         this.ProcessRecord_ExpireSnoozedDirectories();
+                        break;
+                    case "GenerateCdmTotpSecret":
+                        this.ProcessRecord_GenerateCdmTotpSecret();
                         break;
                     case "GenerateConfigProtectionRestoreForm":
                         this.ProcessRecord_GenerateConfigProtectionRestoreForm();
@@ -10403,6 +10767,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ResolveVolumeGroupsConflict":
                         this.ProcessRecord_ResolveVolumeGroupsConflict();
                         break;
+                    case "ResumeRecovery":
+                        this.ProcessRecord_ResumeRecovery();
+                        break;
                     case "RetryBackup":
                         this.ProcessRecord_RetryBackup();
                         break;
@@ -10474,6 +10841,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SetWorkloadAlertSetting":
                         this.ProcessRecord_SetWorkloadAlertSetting();
+                        break;
+                    case "SetupCdmTotp":
+                        this.ProcessRecord_SetupCdmTotp();
                         break;
                     case "SetupDisk":
                         this.ProcessRecord_SetupDisk();
@@ -10561,6 +10931,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateBadDiskLedStatus":
                         this.ProcessRecord_UpdateBadDiskLedStatus();
+                        break;
+                    case "UpdateCdmUser":
+                        this.ProcessRecord_UpdateCdmUser();
                         break;
                     case "UpdateCloudDirectKerberosCredential":
                         this.ProcessRecord_UpdateCloudDirectKerberosCredential();
@@ -11155,6 +11528,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createOnDemandGlueIcebergTableBackup.
+        internal void ProcessRecord_CreateOnDemandGlueIcebergTableBackup()
+        {
+            this._logger.name += " -CreateOnDemandGlueIcebergTableBackup";
+            // Create new graphql operation createOnDemandGlueIcebergTableBackup
+            InitMutationCreateOnDemandGlueIcebergTableBackup();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createOnDemandVolumeGroupBackup.
         internal void ProcessRecord_CreateOnDemandVolumeGroupBackup()
         {
@@ -11188,6 +11570,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -CreateVappsInstantRecovery";
             // Create new graphql operation createVappsInstantRecovery
             InitMutationCreateVappsInstantRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createViolationRemediation.
+        internal void ProcessRecord_CreateViolationRemediation()
+        {
+            this._logger.name += " -CreateViolationRemediation";
+            // Create new graphql operation createViolationRemediation
+            InitMutationCreateViolationRemediation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11467,6 +11858,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExpireSnoozedDirectories";
             // Create new graphql operation expireSnoozedDirectories
             InitMutationExpireSnoozedDirectories();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // generateCdmTotpSecret.
+        internal void ProcessRecord_GenerateCdmTotpSecret()
+        {
+            this._logger.name += " -GenerateCdmTotpSecret";
+            // Create new graphql operation generateCdmTotpSecret
+            InitMutationGenerateCdmTotpSecret();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11920,6 +12320,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // resumeRecovery.
+        internal void ProcessRecord_ResumeRecovery()
+        {
+            this._logger.name += " -ResumeRecovery";
+            // Create new graphql operation resumeRecovery
+            InitMutationResumeRecovery();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // retryBackup.
         internal void ProcessRecord_RetryBackup()
         {
@@ -12133,6 +12542,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SetWorkloadAlertSetting";
             // Create new graphql operation setWorkloadAlertSetting
             InitMutationSetWorkloadAlertSetting();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // setupCdmTotp.
+        internal void ProcessRecord_SetupCdmTotp()
+        {
+            this._logger.name += " -SetupCdmTotp";
+            // Create new graphql operation setupCdmTotp
+            InitMutationSetupCdmTotp();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -12394,6 +12812,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateBadDiskLedStatus";
             // Create new graphql operation updateBadDiskLedStatus
             InitMutationUpdateBadDiskLedStatus();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCdmUser.
+        internal void ProcessRecord_UpdateCdmUser()
+        {
+            this._logger.name += " -UpdateCdmUser";
+            // Create new graphql operation updateCdmUser
+            InitMutationUpdateCdmUser();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -13591,6 +14018,14 @@ $query.Var.input = @{
 				runCloudslabCheck = $someBoolean
 				# OPTIONAL
 				runGcsConnectivityCheck = $someBoolean
+				# OPTIONAL
+				runSqlMiConnectivityCheck = $someBoolean
+				# OPTIONAL
+				runSqlDbConnectivityCheck = $someBoolean
+				# OPTIONAL
+				requestedChecks = @(
+					$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+				)
 			}
 		}
 	)
@@ -14759,6 +15194,31 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createOnDemandGlueIcebergTableBackup(input: CreateOnDemandGlueIcebergTableBackupInput!): CreateOnDemandGlueIcebergTableBackupReply!
+        internal void InitMutationCreateOnDemandGlueIcebergTableBackup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateOnDemandGlueIcebergTableBackupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateOnDemandGlueIcebergTableBackup",
+                "($input: CreateOnDemandGlueIcebergTableBackupInput!)",
+                "CreateOnDemandGlueIcebergTableBackupReply",
+                Mutation.CreateOnDemandGlueIcebergTableBackup,
+                Mutation.CreateOnDemandGlueIcebergTableBackupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	sourceTableId = $someString
+	# OPTIONAL
+	retentionSlaId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createOnDemandVolumeGroupBackup(input: CreateOnDemandVolumeGroupBackupInput!): AsyncRequestStatus!
         internal void InitMutationCreateOnDemandVolumeGroupBackup()
         {
@@ -14928,6 +15388,135 @@ $query.Var.input = @{
 			snapshotId = $someString
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createViolationRemediation(input: CreateViolationRemediationInput!): CreateRemediationMetadata!
+        internal void InitMutationCreateViolationRemediation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateViolationRemediationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateViolationRemediation",
+                "($input: CreateViolationRemediationInput!)",
+                "CreateRemediationMetadata",
+                Mutation.CreateViolationRemediation,
+                Mutation.CreateViolationRemediationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	resourceId = $someString
+	# OPTIONAL
+	remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
+	# OPTIONAL
+	policyViolationId = $someString
+	# OPTIONAL
+	targets = @{
+		# REQUIRED
+		targetIds = @(
+			$someString
+		)
+		# REQUIRED
+		targetType = $someRemediationTargetTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTargetTypeEnum]) for enum values.
+	}
+	# OPTIONAL
+	location = $someRemediationLocation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationLocation]) for enum values.
+	# OPTIONAL
+	resourceType = $somePolicyResourceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyResourceType]) for enum values.
+	# OPTIONAL
+	ticketInfo = @{
+		# OPTIONAL
+		title = $someString
+		# OPTIONAL
+		reason = $someString
+		# OPTIONAL
+		attachmentTypes = @(
+			$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+		)
+		# OPTIONAL
+		comment = $someString
+	}
+	# OPTIONAL
+	mipLabelInfo = @{
+		# OPTIONAL
+		labelId = $someString
+		# OPTIONAL
+		allowDowngrade = $someBoolean
+		# OPTIONAL
+		labelName = $someString
+	}
+	# OPTIONAL
+	adIrInfo = @{
+		# OPTIONAL
+		domainControllerFid = $someString
+	}
+	# OPTIONAL
+	ticketDetails = @{
+		# REQUIRED
+		ticketContents = @{
+			# OPTIONAL
+			title = $someString
+			# OPTIONAL
+			description = $someString
+			# OPTIONAL
+			comment = $someString
+			# OPTIONAL
+			projectKey = $someString
+			# OPTIONAL
+			ticketTypeId = $someString
+			# OPTIONAL
+			requiredFields = @(
+				@{
+					# OPTIONAL
+					fieldKey = $someString
+					# REQUIRED
+					fieldValue = @{
+						# REQUIRED
+						fieldType = $someTicketFieldType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TicketFieldType]) for enum values.
+						# OPTIONAL
+						stringValue = $someString
+						# OPTIONAL
+						numberValue = $someInt64
+						# OPTIONAL
+						optionValue = $someString
+						# OPTIONAL
+						multiOptionValues = @{
+							# REQUIRED
+							values = @(
+								$someString
+							)
+						}
+						# OPTIONAL
+						arrayValues = @{
+							# REQUIRED
+							values = @(
+								$someString
+							)
+						}
+						# OPTIONAL
+						userValue = $someString
+						# OPTIONAL
+						dateValue = $someString
+						# OPTIONAL
+						datetimeValue = $someString
+						# OPTIONAL
+						booleanValue = $someBoolean
+						# OPTIONAL
+						textAreaValue = $someString
+					}
+				}
+			)
+		}
+		# OPTIONAL
+		attachmentTypes = @(
+			$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+		)
+	}
 }"
             );
         }
@@ -15720,6 +16309,36 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // generateCdmTotpSecret(input: GenerateCdmTotpSecretInput!): GenerateCdmTotpSecretReply!
+        internal void InitMutationGenerateCdmTotpSecret()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GenerateCdmTotpSecretInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationGenerateCdmTotpSecret",
+                "($input: GenerateCdmTotpSecretInput!)",
+                "GenerateCdmTotpSecretReply",
+                Mutation.GenerateCdmTotpSecret,
+                Mutation.GenerateCdmTotpSecretFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	clusterUuid = $someString
+	# OPTIONAL
+	reauthRequest = @{
+		# REQUIRED
+		reauthCode = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // generateConfigProtectionRestoreForm(input: GenerateConfigProtectionRestoreFormInput!): GenerateConfigProtectionRestoreFormReply!
         internal void InitMutationGenerateConfigProtectionRestoreForm()
         {
@@ -16445,6 +17064,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isForceAuthnEnabled = $someBoolean
+	# OPTIONAL
+	allowIdpInitiatedSso = $someBoolean
 }"
             );
         }
@@ -17365,6 +17986,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // resumeRecovery(input: ResumeRecoveryInput!): Void
+        internal void InitMutationResumeRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ResumeRecoveryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationResumeRecovery",
+                "($input: ResumeRecoveryInput!)",
+                "System.String",
+                Mutation.ResumeRecovery,
+                Mutation.ResumeRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recoveryId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // retryBackup(backupObjects: [BackupObject!]!, backupRunConfig: BackupRunConfig): RetryBackupResp!
         internal void InitMutationRetryBackup()
         {
@@ -18153,6 +18797,38 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // setupCdmTotp(input: SetupCdmTotpInput!): Void
+        internal void InitMutationSetupCdmTotp()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "SetupCdmTotpInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetupCdmTotp",
+                "($input: SetupCdmTotpInput!)",
+                "System.String",
+                Mutation.SetupCdmTotp,
+                Mutation.SetupCdmTotpFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	configRequest = @{
+		# REQUIRED
+		otpForValidation = $someString
+		# REQUIRED
+		secret = $someString
+	}
+	# REQUIRED
+	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // setupDisk(input: SetupDiskInput!): DiskInfo!
         internal void InitMutationSetupDisk()
         {
@@ -18777,6 +19453,14 @@ $query.Var.input = @{
 		runCloudslabCheck = $someBoolean
 		# OPTIONAL
 		runGcsConnectivityCheck = $someBoolean
+		# OPTIONAL
+		runSqlMiConnectivityCheck = $someBoolean
+		# OPTIONAL
+		runSqlDbConnectivityCheck = $someBoolean
+		# OPTIONAL
+		requestedChecks = @(
+			$someExoHealthCheckType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ExoHealthCheckType]) for enum values.
+		)
 	}
 }"
             );
@@ -19189,6 +19873,50 @@ $query.Var.input = @{
 	turnOff = $someBoolean
 	# OPTIONAL
 	isLightDiskLed = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCdmUser(input: UpdateCdmUserInput!): UpdateCdmUserReply!
+        internal void InitMutationUpdateCdmUser()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCdmUserInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCdmUser",
+                "($input: UpdateCdmUserInput!)",
+                "UpdateCdmUserReply",
+                Mutation.UpdateCdmUser,
+                Mutation.UpdateCdmUserFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	userInfo = @{
+		# OPTIONAL
+		sshKey = $someString
+		# OPTIONAL
+		lastName = $someString
+		# OPTIONAL
+		firstName = $someString
+		# OPTIONAL
+		mfaServerId = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		isTotpEnforced = $someBoolean
+		# OPTIONAL
+		contactNumber = $someString
+		# OPTIONAL
+		emailAddress = $someString
+	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

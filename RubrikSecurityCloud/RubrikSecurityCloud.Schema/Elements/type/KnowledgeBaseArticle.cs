@@ -25,6 +25,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("articleNumber")]
         public System.String? ArticleNumber { get; set; }
 
+        //      C# -> System.String? Author
+        // GraphQL -> author: String! (scalar)
+        [JsonProperty("author")]
+        public System.String? Author { get; set; }
+
+        //      C# -> DateTime? CreatedDate
+        // GraphQL -> createdDate: DateTime (scalar)
+        [JsonProperty("createdDate")]
+        public DateTime? CreatedDate { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -35,10 +45,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> DateTime? LastModified
+        // GraphQL -> lastModified: DateTime (scalar)
+        [JsonProperty("lastModified")]
+        public DateTime? LastModified { get; set; }
+
+        //      C# -> System.String? RecordType
+        // GraphQL -> recordType: String! (scalar)
+        [JsonProperty("recordType")]
+        public System.String? RecordType { get; set; }
+
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         [JsonProperty("title")]
         public System.String? Title { get; set; }
+
+        //      C# -> System.Int32? ViewCount
+        // GraphQL -> viewCount: Int! (scalar)
+        [JsonProperty("viewCount")]
+        public System.Int32? ViewCount { get; set; }
 
         //      C# -> List<ContentNode>? Cause
         // GraphQL -> cause: [ContentNode!]! (type)
@@ -76,9 +101,14 @@ namespace RubrikSecurityCloud.Types
 
     public KnowledgeBaseArticle Set(
         System.String? ArticleNumber = null,
+        System.String? Author = null,
+        DateTime? CreatedDate = null,
         System.String? Description = null,
         System.String? Id = null,
+        DateTime? LastModified = null,
+        System.String? RecordType = null,
         System.String? Title = null,
+        System.Int32? ViewCount = null,
         List<ContentNode>? Cause = null,
         List<ContentNode>? Environment = null,
         List<ContentNode>? Notes = null,
@@ -89,14 +119,29 @@ namespace RubrikSecurityCloud.Types
         if ( ArticleNumber != null ) {
             this.ArticleNumber = ArticleNumber;
         }
+        if ( Author != null ) {
+            this.Author = Author;
+        }
+        if ( CreatedDate != null ) {
+            this.CreatedDate = CreatedDate;
+        }
         if ( Description != null ) {
             this.Description = Description;
         }
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( LastModified != null ) {
+            this.LastModified = LastModified;
+        }
+        if ( RecordType != null ) {
+            this.RecordType = RecordType;
+        }
         if ( Title != null ) {
             this.Title = Title;
+        }
+        if ( ViewCount != null ) {
+            this.ViewCount = ViewCount;
         }
         if ( Cause != null ) {
             this.Cause = Cause;
@@ -136,6 +181,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "articleNumber\n" ;
             }
         }
+        //      C# -> System.String? Author
+        // GraphQL -> author: String! (scalar)
+        if (this.Author != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "author\n" ;
+            } else {
+                s += ind + "author\n" ;
+            }
+        }
+        //      C# -> DateTime? CreatedDate
+        // GraphQL -> createdDate: DateTime (scalar)
+        if (this.CreatedDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "createdDate\n" ;
+            } else {
+                s += ind + "createdDate\n" ;
+            }
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
@@ -154,6 +217,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> DateTime? LastModified
+        // GraphQL -> lastModified: DateTime (scalar)
+        if (this.LastModified != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastModified\n" ;
+            } else {
+                s += ind + "lastModified\n" ;
+            }
+        }
+        //      C# -> System.String? RecordType
+        // GraphQL -> recordType: String! (scalar)
+        if (this.RecordType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "recordType\n" ;
+            } else {
+                s += ind + "recordType\n" ;
+            }
+        }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title != null) {
@@ -161,6 +242,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "title\n" ;
             } else {
                 s += ind + "title\n" ;
+            }
+        }
+        //      C# -> System.Int32? ViewCount
+        // GraphQL -> viewCount: Int! (scalar)
+        if (this.ViewCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "viewCount\n" ;
+            } else {
+                s += ind + "viewCount\n" ;
             }
         }
         //      C# -> List<ContentNode>? Cause
@@ -247,6 +337,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.ArticleNumber = null;
         }
+        //      C# -> System.String? Author
+        // GraphQL -> author: String! (scalar)
+        if (ec.Includes("author",true))
+        {
+            if(this.Author == null) {
+
+                this.Author = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Author != null && ec.Excludes("author",true))
+        {
+            this.Author = null;
+        }
+        //      C# -> DateTime? CreatedDate
+        // GraphQL -> createdDate: DateTime (scalar)
+        if (ec.Includes("createdDate",true))
+        {
+            if(this.CreatedDate == null) {
+
+                this.CreatedDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CreatedDate != null && ec.Excludes("createdDate",true))
+        {
+            this.CreatedDate = null;
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (ec.Includes("description",true))
@@ -281,6 +405,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> DateTime? LastModified
+        // GraphQL -> lastModified: DateTime (scalar)
+        if (ec.Includes("lastModified",true))
+        {
+            if(this.LastModified == null) {
+
+                this.LastModified = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastModified != null && ec.Excludes("lastModified",true))
+        {
+            this.LastModified = null;
+        }
+        //      C# -> System.String? RecordType
+        // GraphQL -> recordType: String! (scalar)
+        if (ec.Includes("recordType",true))
+        {
+            if(this.RecordType == null) {
+
+                this.RecordType = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RecordType != null && ec.Excludes("recordType",true))
+        {
+            this.RecordType = null;
+        }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (ec.Includes("title",true))
@@ -297,6 +455,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Title != null && ec.Excludes("title",true))
         {
             this.Title = null;
+        }
+        //      C# -> System.Int32? ViewCount
+        // GraphQL -> viewCount: Int! (scalar)
+        if (ec.Includes("viewCount",true))
+        {
+            if(this.ViewCount == null) {
+
+                this.ViewCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ViewCount != null && ec.Excludes("viewCount",true))
+        {
+            this.ViewCount = null;
         }
         //      C# -> List<ContentNode>? Cause
         // GraphQL -> cause: [ContentNode!]! (type)

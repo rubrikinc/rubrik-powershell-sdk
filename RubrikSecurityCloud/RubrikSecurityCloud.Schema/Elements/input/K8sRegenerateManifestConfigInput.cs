@@ -19,6 +19,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        [JsonProperty("maxPvcsPerAgent")]
+        public System.Int32? MaxPvcsPerAgent { get; set; }
+
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        [JsonProperty("maxConcurrentAgents")]
+        public System.Int32? MaxConcurrentAgents { get; set; }
+
         //      C# -> ServiceAccountInputInput? ServiceAccount
         // GraphQL -> serviceAccount: ServiceAccountInputInput! (input)
         [Required]

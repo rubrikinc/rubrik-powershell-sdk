@@ -27,6 +27,10 @@ Fileset template.
   - Indicates whether to retry the pre-backup script if the backup fails. When set to true, the system retries the pre-backup script if the backup fails. When set to false, the system does not retry the pre-backup script if the backup fails.
 - templateBlocklistedFilesystemPaths: System.String
   - List of blocklisted filesystem paths for the template.
+- templateBlocklistFilesystemTypes: System.String
+  - Comma-separated list of filesystem types to dynamically block from backup (such as "gpfs,lustre").
+- templateAllowlistFilesystemPaths: System.String
+  - Comma-separated list of paths that override blocklist exclusions.
 - shouldOverrideClusterWideBlocklistedFilesystemPaths: System.Boolean
   - Indicates whether to override the cluster-wide blocklisted filesystem paths.
 - shareType: ShareTypeEnum
@@ -73,6 +77,8 @@ Fileset template.
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion

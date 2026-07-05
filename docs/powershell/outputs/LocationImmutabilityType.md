@@ -1,5 +1,6 @@
 ### LocationImmutabilityType
-Immutability settings for target.
+View of location immutability settings exposed in the GraphQL schema.
+Combines DLS-provided settings with NCD immutability mode.
 
 - bucketLockDurationDays: System.Int32
   - Number of days location is immutable.

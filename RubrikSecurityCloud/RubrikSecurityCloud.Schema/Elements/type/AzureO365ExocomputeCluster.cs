@@ -170,6 +170,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("databaseIds")]
         public ZeusDatabaseIds? DatabaseIds { get; set; }
 
+        //      C# -> KmsSpec? InternalKmsSpec
+        // GraphQL -> internalKmsSpec: KmsSpec (type)
+        [JsonProperty("internalKmsSpec")]
+        public KmsSpec? InternalKmsSpec { get; set; }
+
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)
         [JsonProperty("kmsSpec")]
@@ -230,6 +235,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SubscriptionId = null,
         System.String? TenantId = null,
         ZeusDatabaseIds? DatabaseIds = null,
+        KmsSpec? InternalKmsSpec = null,
         KmsSpec? KmsSpec = null,
         MultiTenantHostSpec? MultiTenantHostSpec = null,
         ScaleRuntime? ScaleRuntime = null,
@@ -325,6 +331,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DatabaseIds != null ) {
             this.DatabaseIds = DatabaseIds;
+        }
+        if ( InternalKmsSpec != null ) {
+            this.InternalKmsSpec = InternalKmsSpec;
         }
         if ( KmsSpec != null ) {
             this.KmsSpec = KmsSpec;
@@ -622,6 +631,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "databaseIds" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> KmsSpec? InternalKmsSpec
+        // GraphQL -> internalKmsSpec: KmsSpec (type)
+        if (this.InternalKmsSpec != null) {
+            var fspec = this.InternalKmsSpec.AsFieldSpec(conf.Child("internalKmsSpec"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "internalKmsSpec" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1191,6 +1212,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.DatabaseIds != null && ec.Excludes("databaseIds",false))
         {
             this.DatabaseIds = null;
+        }
+        //      C# -> KmsSpec? InternalKmsSpec
+        // GraphQL -> internalKmsSpec: KmsSpec (type)
+        if (ec.Includes("internalKmsSpec",false))
+        {
+            if(this.InternalKmsSpec == null) {
+
+                this.InternalKmsSpec = new KmsSpec();
+                this.InternalKmsSpec.ApplyExploratoryFieldSpec(ec.NewChild("internalKmsSpec"));
+
+            } else {
+
+                this.InternalKmsSpec.ApplyExploratoryFieldSpec(ec.NewChild("internalKmsSpec"));
+
+            }
+        }
+        else if (this.InternalKmsSpec != null && ec.Excludes("internalKmsSpec",false))
+        {
+            this.InternalKmsSpec = null;
         }
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)

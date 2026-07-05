@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("locationId")]
         public System.String? LocationId { get; set; }
 
+        //      C# -> RecoveryPlanLocationDetails? LocationDetails
+        // GraphQL -> locationDetails: RecoveryPlanLocationDetails (type)
+        [JsonProperty("locationDetails")]
+        public RecoveryPlanLocationDetails? LocationDetails { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public RecoveryPlanLocation Set(
         RecoveryLocationType? RecoveryLocationType = null,
-        System.String? LocationId = null
+        System.String? LocationId = null,
+        RecoveryPlanLocationDetails? LocationDetails = null
     ) 
     {
         if ( RecoveryLocationType != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LocationId != null ) {
             this.LocationId = LocationId;
+        }
+        if ( LocationDetails != null ) {
+            this.LocationDetails = LocationDetails;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "locationId\n" ;
             } else {
                 s += ind + "locationId\n" ;
+            }
+        }
+        //      C# -> RecoveryPlanLocationDetails? LocationDetails
+        // GraphQL -> locationDetails: RecoveryPlanLocationDetails (type)
+        if (this.LocationDetails != null) {
+            var fspec = this.LocationDetails.AsFieldSpec(conf.Child("locationDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "locationDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LocationId != null && ec.Excludes("locationId",true))
         {
             this.LocationId = null;
+        }
+        //      C# -> RecoveryPlanLocationDetails? LocationDetails
+        // GraphQL -> locationDetails: RecoveryPlanLocationDetails (type)
+        if (ec.Includes("locationDetails",false))
+        {
+            if(this.LocationDetails == null) {
+
+                this.LocationDetails = new RecoveryPlanLocationDetails();
+                this.LocationDetails.ApplyExploratoryFieldSpec(ec.NewChild("locationDetails"));
+
+            } else {
+
+                this.LocationDetails.ApplyExploratoryFieldSpec(ec.NewChild("locationDetails"));
+
+            }
+        }
+        else if (this.LocationDetails != null && ec.Excludes("locationDetails",false))
+        {
+            this.LocationDetails = null;
         }
     }
 

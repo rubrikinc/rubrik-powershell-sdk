@@ -13,8 +13,11 @@ Parameters for Teams conversations search.
 - includeArchived: System.Boolean
   - Specifies whether to include archived conversations.
 - fetchAllPostSenders: System.String
-  - Specifies whether to send post senders.
+  - Specifies whether to retrieve the full list of post-senders.
 - skipPostsAttachments: System.Boolean
   - Specifies whether to skip attachments.
 - lambdaFilters: LambdaPathFilters
   - Parameters for using Lambda filters in the query.
+- itemId: System.String
+  - Optional: filter to a single object by its M365 item ID.
+Empty or unset = no filter.

@@ -7,10 +7,6 @@ Replication specification.
   - Time snapshot is kept on local target cluster.
 - cascadingArchivalSpecs: list of CascadingArchivalSpecs
   - Cascading Archival Specifications.
-- targetMapping: TargetMapping
-  - Replication target mapping.
-- cluster: SlaReplicationCluster
-  - Rubrik cluster used as the replication target.
 - replicationPairs: list of SlaReplicationPairs
   - Datacenter replication pairs.
 - awsRegion: System.String
@@ -21,3 +17,7 @@ Replication specification.
   - AWS location used as the replication target.
 - azureTarget: AzureReplicationTarget
   - Azure location used as the replication target.
+- cluster: SlaReplicationCluster
+  - Rubrik cluster used as the replication target.
+- targetMapping: TargetMapping
+  - Replication target mapping.

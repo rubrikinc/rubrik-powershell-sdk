@@ -46,3 +46,15 @@ cloud accounts (e.g., Azure, AWS, GCP).
 - CLOUD_OVERLAP_OBJECTS_REPORT - Cloud overlap objects report.
 - ANOMALY_DETECTION_COMPLIANCE_REPORT - Anomaly detection compliance report.
 - SIGNIN_LOGS_REPORT - Sign-in logs report.
+- PAUSED_OBJECTS_REPORT - Paused objects report.
+- PAUSED_CLUSTERS_REPORT - Paused clusters report.
+- PAUSED_SLA_REPORT - Paused SLA Domains report.
+- CNP_OBJECT_CAPACITY_OVER_TIME_REPORT - Cloud Native Protection Object Capacity Over Time Report.
+
+This report presents capacity metrics over time for cloud-native
+protection features, specifically for resources managed under
+customer-onboarded cloud accounts (e.g., Azure, AWS, GCP).
+- DNS_ACTIVITY_REPORT - DNS Activity Log report (Identity Activity scoped to AD DNS targets).
+- CLOUD_COMPLIANCE_REPORT - Cloud Compliance Report - cloud-native workloads with dimensional model.
+- LICENSE_USAGE_REPORT - License usage report.
+- CONSOLIDATED_LICENSE_USAGE_REPORT - Consolidated per-child-account license usage report.

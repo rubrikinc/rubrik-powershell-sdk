@@ -12,3 +12,5 @@ A set of parameters to filter objects.
 - unmanagedObjectAvailabilityFilter: list of UnmanagedObjectAvailabilityFilters
 - gcpNativeProtectionFeatureNames: list of GcpNativeProtectionFeatures
   - Param for GCP_NATIVE_PROJECT_ENABLED_FEATURE filter.
+- timeParam: DateTime
+  - Timestamp param; semantics determined by the filter field.

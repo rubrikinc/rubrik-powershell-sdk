@@ -19,3 +19,8 @@ Determines whether to remove the network interfaces from the mounted or exported
 v5.1-v5.3: Name of the new VM created by mount or export
 v6.0-v8.0: Name of the new VM created by mount or export.
 v8.1+: Name of the new virtual machine created by mount or export.
+- excludePaths: list of System.Strings
+  - Supported in v9.6+
+Optional list of absolute guest file paths to exclude from the recovered image before delivery.
+- recoveryPurpose: MountExportSnapshotJobCommonOptionsV2RecoveryPurpose
+  - Optional field that identifies the purpose of the recovery. Set to 'SURGICAL_RECOVERY' for surgical recovery jobs, which exclude quarantined files from the recovered virtual machine image.

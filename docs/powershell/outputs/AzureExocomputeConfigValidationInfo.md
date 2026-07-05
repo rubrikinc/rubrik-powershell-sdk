@@ -49,5 +49,21 @@ Contains validation information, such as blockers or errors encountered in valid
   - Specifies that the Azure SQL custom private DNS zone provided for Private Endpoint Automation does not exist on Azure.
 - isAzureSqlPrivateDnsZoneNotLinkedToVnet: System.Boolean
   - Specifies that the private DNS zone provided for Private Endpoint Automation is not linked to the Exocompute VNet on Azure.
+- isAzurePostgresFlexServerSubnetNotInExocomputeVnet: System.Boolean
+  - Specifies that the Azure Postgres Flexible Server subnet provided for Exocompute configuration is not in the Exocompute VNet (subscription, resource group, or VNet name differs from the Exocompute subnet).
+- isAzurePostgresFlexServerSubnetNotDelegatedToPostgres: System.Boolean
+  - Specifies that the Azure Postgres Flexible Server subnet provided for Exocompute configuration is not delegated to Microsoft.DBforPostgreSQL/flexibleServers.
+- isAzurePostgresFlexServerSubnetTooSmall: System.Boolean
+  - Specifies that the Azure Postgres Flexible Server subnet provided for Exocompute configuration is smaller than the minimum required size (/28).
+- isAzurePostgresFlexServerPrivateDnsZoneInvalid: System.Boolean
+  - Specifies that the Azure resource ID of the Azure Postgres Flexible Server private DNS zone provided for Exocompute configuration is invalid. The DNS zone name must end with '.postgres.database.azure.com'.
+- isAzurePostgresFlexServerPrivateDnsZoneInDifferentSubscription: System.Boolean
+  - Specifies that the Azure Postgres Flexible Server private DNS zone provided for Exocompute configuration belongs to a different subscription than the Exocompute VNet. The customer must ensure that the private DNS zone is linked to the Exocompute VNet, as Rubrik does not have permissions for the same.
+- isAzurePostgresFlexServerPrivateDnsZoneDoesNotExist: System.Boolean
+  - Specifies that the Azure Postgres Flexible Server private DNS zone provided for Exocompute configuration does not exist on Azure.
+- isAzurePostgresFlexServerPrivateDnsZoneNotLinkedToVnet: System.Boolean
+  - Specifies that the Azure Postgres Flexible Server private DNS zone provided for Exocompute configuration is not linked to the Exocompute VNet on Azure.
+- isAzurePostgresFlexServerNetworkingIncomplete: System.Boolean
+  - Specifies that only one of azurePostgresFlexServerSubnetNativeId and azurePostgresFlexServerPrivateDnsZoneId was supplied. Both must be set together for Azure Postgres Flexible Server networking to be usable.
 - errorMessage: System.String
   - Error received while validating Exocompute configuration.

@@ -21,6 +21,14 @@ Kubernetes Protection Set.
   - Specifies whether the Protection Set is a relic.
 - definition: System.String
   - Definition of Protection Set.
+- namespaceIncludePatterns: System.String
+  - Namespace name patterns to include when selecting resources protected by this Protection Set.
+- labelSelector: System.String
+  - Label selector used to match Kubernetes resources protected by this Protection Set.
+- namespaceExcludePatterns: System.String
+  - Namespace name patterns to exclude when selecting resources protected by this Protection Set.
+- customResourceDependencies: System.String
+  - Custom resource dependencies captured as part of this Protection Set.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - id: System.String
@@ -63,6 +71,8 @@ Kubernetes Protection Set.
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion

@@ -8,4 +8,5 @@ Filters for SLA Domains.
 - objectTypeList: list of SlaObjectTypes
   - List of workload types for the SLA Domain filter.
 - textList: list of System.Strings
-  - List of values for the SLA Domain filter. Entries that match any of these values are eligible to be returned as per this filter.
+  - List of values for the SLA Domain filter. Entries that match any of
+these values are eligible to be returned as per this filter.

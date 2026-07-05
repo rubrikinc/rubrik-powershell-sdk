@@ -40,6 +40,8 @@ Azure O365 Exocompute cluster details.
   - Sharding strategy for the Exocompute.
 - multiTenantHostSpec: MultiTenantHostSpec
   - Specifies the multitenant host details.
+- internalKmsSpec: KmsSpec
+  - Specifies the Rubrik-owned internal key vault details used during KMS rekey.
 - aksLbIps: list of System.Strings
   - List of AKS load balancer IPs.
 - kmsHostType: AzureHostType

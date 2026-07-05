@@ -1,28 +1,18 @@
 ### RubrikManagedAwsTarget
-Specific information for Amazon Web Services (AWS) target created on Rubrik.
+Specific information for AWS target created on Rubrik.
 
-- cloudNativeLocTemplateType: CloudNativeLocTemplateType
-  - Template type of the storage settings.
-- s3Endpoint: System.String
-  - Optional field of an Amazon S3 endpoint for example, a VPC endpoint. When not provided, the default, region-based Amazon S3 endpoint is used.
-- kmsEndpoint: System.String
-  - Optional field of the KMS server endpoint when using KMS-based encryption for example, a VPC endpoint. When not provided, the default, region-based KMS server endpoint is used.
-- awsIamPairId: System.String
-  - Optional field of an AWS IAM pair ID that is used to identify AWS role-based credentials used by the target location.
 - cloudAccount: CloudAccount
   - Cloud account details of the AWS target.
 - bucket: System.String
   - Bucket name of the AWS target.
 - region: AwsRegion
   - Region of the AWS target.
-- syncStatus: TargetSyncStatus
-  - Sync status of AWS target.
-- immutabilitySettings: AwsImmutabilitySettingsType
-  - Immutability settings of the AWS target.
-- awsRetrievalTier: AwsRetrievalTier
-  - Retrieval tier of the AWS target.
 - storageClass: AwsStorageClass
   - Storage class of the AWS target.
+- awsRetrievalTier: AwsRetrievalTier
+  - Retrieval tier of the AWS target.
+- syncStatus: TargetSyncStatus
+  - Sync status of AWS target.
 - computeSettings: AwsComputeSettings
   - Compute settings of the AWS target.
 - proxySettings: ProxySettings
@@ -35,16 +25,24 @@ Specific information for Amazon Web Services (AWS) target created on Rubrik.
   - Flag to check if consolidation is enabled or not in this target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
+- cloudNativeLocTemplateType: CloudNativeLocTemplateType
+  - Template type of the storage settings.
 - connectionStatus: ConnectionStatusType
   - Connected/Disconnected status of the AWS target.
+- immutabilitySettings: AwsImmutabilitySettingsType
+  - Immutability settings of the AWS target.
+- s3Endpoint: System.String
+  - Optional field of an Amazon S3 endpoint for example, a VPC endpoint.
+- kmsEndpoint: System.String
+  - Optional field of the KMS server endpoint when using KMS-based encryption.
 - bypassProxy: System.Boolean
   - Specifies whether the proxy settings should be bypassed for creating this target location.
+- awsIamPairId: System.String
+  - Optional field of an AWS IAM pair ID that is used to identify AWS role-based credentials used by the target location.
 - awsKmsKeyManager: System.String
   - Name of the AWS KMS key manager.
 - awsKmsKeyId: System.String
   - AWS KMS key ID.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -79,3 +77,5 @@ Specific information for Amazon Web Services (AWS) target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

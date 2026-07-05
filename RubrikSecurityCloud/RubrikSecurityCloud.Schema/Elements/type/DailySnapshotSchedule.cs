@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<DayOfWeek>? RestrictToDaysOfWeek
+        // GraphQL -> restrictToDaysOfWeek: [DayOfWeek!] (enum)
+        [JsonProperty("restrictToDaysOfWeek")]
+        public List<DayOfWeek>? RestrictToDaysOfWeek { get; set; }
+
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
         [JsonProperty("basicSchedule")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DailySnapshotSchedule Set(
+        List<DayOfWeek>? RestrictToDaysOfWeek = null,
         BasicSnapshotSchedule? BasicSchedule = null
     ) 
     {
+        if ( RestrictToDaysOfWeek != null ) {
+            this.RestrictToDaysOfWeek = RestrictToDaysOfWeek;
+        }
         if ( BasicSchedule != null ) {
             this.BasicSchedule = BasicSchedule;
         }
@@ -55,6 +64,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<DayOfWeek>? RestrictToDaysOfWeek
+        // GraphQL -> restrictToDaysOfWeek: [DayOfWeek!] (enum)
+        if (this.RestrictToDaysOfWeek != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "restrictToDaysOfWeek\n" ;
+            } else {
+                s += ind + "restrictToDaysOfWeek\n" ;
+            }
+        }
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
         if (this.BasicSchedule != null) {
@@ -74,6 +92,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<DayOfWeek>? RestrictToDaysOfWeek
+        // GraphQL -> restrictToDaysOfWeek: [DayOfWeek!] (enum)
+        if (ec.Includes("restrictToDaysOfWeek",true))
+        {
+            if(this.RestrictToDaysOfWeek == null) {
+
+                this.RestrictToDaysOfWeek = new List<DayOfWeek>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.RestrictToDaysOfWeek != null && ec.Excludes("restrictToDaysOfWeek",true))
+        {
+            this.RestrictToDaysOfWeek = null;
+        }
         //      C# -> BasicSnapshotSchedule? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
         if (ec.Includes("basicSchedule",false))

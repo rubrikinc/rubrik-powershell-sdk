@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pvcNames")]
         public List<System.String>? PvcNames { get; set; }
 
+        //      C# -> K8sTransformsInput? Transforms
+        // GraphQL -> transforms: K8sTransformsInput (input)
+        [JsonProperty("transforms")]
+        public K8sTransformsInput? Transforms { get; set; }
+
         //      C# -> System.String? VirtualMachineRunStrategy
         // GraphQL -> virtualMachineRunStrategy: String (scalar)
         [JsonProperty("virtualMachineRunStrategy")]

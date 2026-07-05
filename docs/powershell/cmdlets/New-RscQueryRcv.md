@@ -10,6 +10,14 @@ Rubrik Cloud Vault (RCV) account entitlements with their respective order number
 
 - The accountentitlements subcommand takes no arguments.
 - Returns AllRcvAccountEntitlements.
+### entitlementrunways
+Returns projected runway in days per RCV entitlement group. Each
+requested group is identified by tier and redundancy; the response
+includes aggregated current storage, weekly growth rate, projected
+runway in days, and the freshness of the underlying forecast.
+
+- There is a single argument of type list of RcvEntitlementGroupQueryInputs.
+- Returns list of RcvEntitlementRunways.
 ### istriggergrstprconfigured
 Verify whether the trigger RCV GRS failover quorum authorization policy is set.
 

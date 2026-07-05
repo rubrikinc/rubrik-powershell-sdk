@@ -21,3 +21,6 @@ Displays the status of the initiated refresh job.
 - isDrEnabled: System.Boolean
   - Supported in v9.2+
 Specifies whether Nutanix DR support is enabled for the the Prism Central object.
+- shouldUseV4: System.Boolean
+  - Supported in v9.6+
+Specifies whether the Prism Central uses the Nutanix V4 API for backup and recovery operations.

@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostId")]
         public System.String? HostId { get; set; }
 
+        //      C# -> System.String? DbUsername
+        // GraphQL -> dbUsername: String (scalar)
+        [JsonProperty("dbUsername")]
+        public System.String? DbUsername { get; set; }
+
         //      C# -> System.String? ReplicaName
         // GraphQL -> replicaName: String! (scalar)
         [Required]

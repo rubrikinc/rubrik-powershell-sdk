@@ -18,10 +18,11 @@ Optional credentials to access the NAS share.
   - Supported in v9.3+
 List of hostnames or IP addresses used for Fileset jobs on the share.
 - isNetAppSnapDiffEnabled: System.Boolean
-  - Supported in v9.5+
+  - Supported in v9.4+
 Specifies whether NetApp SnapDiff is enabled for the share.
 - nasSourceId: System.String
   - Supported in v8.1+
 Managed ID of the NAS system or NAS namespace where shares will be updated.
 - isNutanixCftEnabled: System.Boolean
-  - Specifies whether Nutanix CFT (Changed File Tracking) is enabled for the share.
+  - Supported in v9.6+
+Specifies whether Nutanix CFT (Changed File Tracking) is enabled for the share.

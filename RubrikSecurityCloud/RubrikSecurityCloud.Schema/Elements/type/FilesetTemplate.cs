@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArrayEnabled")]
         public System.Boolean? IsArrayEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -160,6 +165,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String! (scalar)
+        [JsonProperty("templateAllowlistFilesystemPaths")]
+        public System.String? TemplateAllowlistFilesystemPaths { get; set; }
+
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String! (scalar)
+        [JsonProperty("templateBlocklistFilesystemTypes")]
+        public System.String? TemplateBlocklistFilesystemTypes { get; set; }
 
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
         // GraphQL -> templateBlocklistedFilesystemPaths: String! (scalar)
@@ -320,6 +335,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         List<System.String>? Includes = null,
         System.Boolean? IsArrayEnabled = null,
+        System.Boolean? IsReplica = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.String? PostBackupScript = null,
@@ -328,6 +344,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? ShouldOverrideClusterWideBlocklistedFilesystemPaths = null,
         System.Boolean? ShouldRetryPrescriptIfBackupFails = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? TemplateAllowlistFilesystemPaths = null,
+        System.String? TemplateBlocklistFilesystemTypes = null,
         System.String? TemplateBlocklistedFilesystemPaths = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -406,6 +424,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsArrayEnabled != null ) {
             this.IsArrayEnabled = IsArrayEnabled;
         }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -429,6 +450,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( TemplateAllowlistFilesystemPaths != null ) {
+            this.TemplateAllowlistFilesystemPaths = TemplateAllowlistFilesystemPaths;
+        }
+        if ( TemplateBlocklistFilesystemTypes != null ) {
+            this.TemplateBlocklistFilesystemTypes = TemplateBlocklistFilesystemTypes;
         }
         if ( TemplateBlocklistedFilesystemPaths != null ) {
             this.TemplateBlocklistedFilesystemPaths = TemplateBlocklistedFilesystemPaths;
@@ -692,6 +719,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isArrayEnabled\n" ;
             }
         }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -762,6 +798,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaPauseStatus\n" ;
             } else {
                 s += ind + "slaPauseStatus\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String! (scalar)
+        if (this.TemplateAllowlistFilesystemPaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateAllowlistFilesystemPaths\n" ;
+            } else {
+                s += ind + "templateAllowlistFilesystemPaths\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String! (scalar)
+        if (this.TemplateBlocklistFilesystemTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateBlocklistFilesystemTypes\n" ;
+            } else {
+                s += ind + "templateBlocklistFilesystemTypes\n" ;
             }
         }
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
@@ -1330,6 +1384,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArrayEnabled = null;
         }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1465,6 +1536,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaPauseStatus != null && ec.Excludes("slaPauseStatus",true))
         {
             this.SlaPauseStatus = null;
+        }
+        //      C# -> System.String? TemplateAllowlistFilesystemPaths
+        // GraphQL -> templateAllowlistFilesystemPaths: String! (scalar)
+        if (ec.Includes("templateAllowlistFilesystemPaths",true))
+        {
+            if(this.TemplateAllowlistFilesystemPaths == null) {
+
+                this.TemplateAllowlistFilesystemPaths = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateAllowlistFilesystemPaths != null && ec.Excludes("templateAllowlistFilesystemPaths",true))
+        {
+            this.TemplateAllowlistFilesystemPaths = null;
+        }
+        //      C# -> System.String? TemplateBlocklistFilesystemTypes
+        // GraphQL -> templateBlocklistFilesystemTypes: String! (scalar)
+        if (ec.Includes("templateBlocklistFilesystemTypes",true))
+        {
+            if(this.TemplateBlocklistFilesystemTypes == null) {
+
+                this.TemplateBlocklistFilesystemTypes = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateBlocklistFilesystemTypes != null && ec.Excludes("templateBlocklistFilesystemTypes",true))
+        {
+            this.TemplateBlocklistFilesystemTypes = null;
         }
         //      C# -> System.String? TemplateBlocklistedFilesystemPaths
         // GraphQL -> templateBlocklistedFilesystemPaths: String! (scalar)

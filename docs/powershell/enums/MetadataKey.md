@@ -19,3 +19,4 @@ The types of metadata key.
 - ROW_ACTION_BUTTON - Specifies UI to render an action button for the row.
 - JSON_STRING_ARRAY - Specifies UI to render a popover with a list of strings from a JSON string
 array.
+- MANAGED_OBJECT_TYPE - Type of the managed object associated with this metadata entry.

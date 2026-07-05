@@ -31,11 +31,13 @@ Input for the job to export the specified Azure Native Virtual Machine to the sp
   - The native ID of the availability set used by the virtual machine created by the export job.
 - shouldEnableAcceleratedNetworking: System.Boolean
   - Specifies whether to enable accelerated networking for the virtual machine created by the export job. This value is false by default.
-- snapshotType: AzureSnapshotType
-  - The type of the snapshot to recover from.
 - recoveryDiskIds: list of System.Strings
   - Specifies a list of Azure disk unique native IDs that will be exported. When empty, all disks from the snapshot will be exported.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot to be exported. This field should be specified only when `snapshotType` is set to `Archived`. In such cases, the archived snapshot will be used for export. If `snapshotType` is not `Archived`, this field is ignored.
 - destinationKeyVaultName: System.String
   - Name of the key vault created in the destination region.This is required for cross region export of ADE enabled VMs.
+- snapshotType: AzureSnapshotType
+  - The type of the snapshot to recover from.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported virtual machine (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

@@ -13,3 +13,5 @@ Update a TPR policy.
   - IDs of service accounts exempt from the TPR policy.
 - quorumRequirement: System.Int32
   - Quorum authorization requirement of the TPR policy.
+- clearSuspensionServiceAccounts: list of System.Strings
+  - IDs of service accounts whose exemption suspension should be cleared.

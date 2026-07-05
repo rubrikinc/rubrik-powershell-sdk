@@ -28,3 +28,7 @@ with objectType.
   - True if the workload is local; false if the workload is remote.
 - objectFid: list of System.Strings
   - The FIDs of the workload.
+- awsServiceType: list of AwsServiceTypes
+  - The AWS deployment model of the workload (BaaS / non-BaaS).
+Filters only AWS workloads; non-AWS workloads pass through unfiltered.
+Empty list disables the filter.

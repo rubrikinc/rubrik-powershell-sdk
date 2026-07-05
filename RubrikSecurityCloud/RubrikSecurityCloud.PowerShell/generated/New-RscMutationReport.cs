@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 8
+    /// Create a new RscQuery object for any of the 9
     /// operations in the 'Report' API domain:
-    /// CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
+    /// CreateScheduled, DeleteCustom, DeleteScheduledReport, GenerateRecovery, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// </summary>
     /// <description>
     /// New-RscMutationReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 8 operations
+    /// There are 9 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateScheduled, DeleteCustom, DeleteScheduledReport, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
+    /// one of: CreateScheduled, DeleteCustom, DeleteScheduledReport, GenerateRecovery, SendPdf, SendScheduledReportAsync, StartClusterMigrationJob, UpdateDatabaseLogingPropertiesForCluster, or UpdateScheduledReport.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -196,6 +196,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the GenerateRecovery operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: GenerateRecovery
+    /// 
+    /// $query = New-RscMutationReport -Operation GenerateRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recoveryId = $someString
+    /// 	# OPTIONAL
+    /// 	timezoneOffset = $someSingle
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GenerateRecoveryReportReply
     /// 
     /// 
     /// 
@@ -386,11 +419,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		dailyTime = $someDateTime
     /// 		# OPTIONAL
+    /// 		weeklyDays = @(
+    /// 			$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
     /// 		weeklyTime = $someDateTime
     /// 		# OPTIONAL
     /// 		monthlyDate = $someInt
     /// 		# OPTIONAL
     /// 		monthlyTime = $someDateTime
+    /// 		# OPTIONAL
+    /// 		attachmentTypes = @(
+    /// 			$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
+    /// 		)
     /// 		# REQUIRED
     /// 		rubrikRecipientUserIds = @(
     /// 			$someString
@@ -400,19 +441,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someString
     /// 		)
     /// 		# OPTIONAL
+    /// 		updateCreator = $someBoolean
+    /// 		# OPTIONAL
     /// 		timeZone = $someString
     /// 		# OPTIONAL
     /// 		showChartsInEmailBody = $someBoolean
-    /// 		# OPTIONAL
-    /// 		updateCreator = $someBoolean
-    /// 		# OPTIONAL
-    /// 		weeklyDays = @(
-    /// 			$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
-    /// 		)
-    /// 		# OPTIONAL
-    /// 		attachmentTypes = @(
-    /// 			$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
-    /// 		)
     /// 	}
     /// }
     /// 
@@ -447,6 +480,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateScheduled",
                 "DeleteCustom",
                 "DeleteScheduledReport",
+                "GenerateRecovery",
                 "SendPdf",
                 "SendScheduledReportAsync",
                 "StartClusterMigrationJob",
@@ -475,6 +509,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "DeleteScheduledReport":
                         this.ProcessRecord_DeleteScheduledReport();
+                        break;
+                    case "GenerateRecovery":
+                        this.ProcessRecord_GenerateRecovery();
                         break;
                     case "SendPdf":
                         this.ProcessRecord_SendPdf();
@@ -526,6 +563,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteScheduledReport";
             // Create new graphql operation deleteScheduledReport
             InitMutationDeleteScheduledReport();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // generateRecoveryReport.
+        internal void ProcessRecord_GenerateRecovery()
+        {
+            this._logger.name += " -GenerateRecovery";
+            // Create new graphql operation generateRecoveryReport
+            InitMutationGenerateRecoveryReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -673,6 +719,31 @@ $query.Var.input = @{
 	id = $someInt
 	# OPTIONAL
 	reportId = $someInt
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // generateRecoveryReport(input: GenerateRecoveryReportInput!): GenerateRecoveryReportReply!
+        internal void InitMutationGenerateRecoveryReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "GenerateRecoveryReportInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationGenerateRecoveryReport",
+                "($input: GenerateRecoveryReportInput!)",
+                "GenerateRecoveryReportReply",
+                Mutation.GenerateRecoveryReport,
+                Mutation.GenerateRecoveryReportFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recoveryId = $someString
+	# OPTIONAL
+	timezoneOffset = $someSingle
 }"
             );
         }
@@ -830,11 +901,19 @@ $query.Var.input = @{
 		# OPTIONAL
 		dailyTime = $someDateTime
 		# OPTIONAL
+		weeklyDays = @(
+			$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
+		)
+		# OPTIONAL
 		weeklyTime = $someDateTime
 		# OPTIONAL
 		monthlyDate = $someInt
 		# OPTIONAL
 		monthlyTime = $someDateTime
+		# OPTIONAL
+		attachmentTypes = @(
+			$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
+		)
 		# REQUIRED
 		rubrikRecipientUserIds = @(
 			$someString
@@ -844,19 +923,11 @@ $query.Var.input = @{
 			$someString
 		)
 		# OPTIONAL
+		updateCreator = $someBoolean
+		# OPTIONAL
 		timeZone = $someString
 		# OPTIONAL
 		showChartsInEmailBody = $someBoolean
-		# OPTIONAL
-		updateCreator = $someBoolean
-		# OPTIONAL
-		weeklyDays = @(
-			$someWeekDay # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WeekDay]) for enum values.
-		)
-		# OPTIONAL
-		attachmentTypes = @(
-			$someReportAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportAttachmentType]) for enum values.
-		)
 	}
 }"
             );

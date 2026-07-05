@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("source")]
         public HelpContentSource? Source { get; set; }
 
+        //      C# -> System.String? Category
+        // GraphQL -> category: String! (scalar)
+        [JsonProperty("category")]
+        public System.String? Category { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -35,10 +40,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> DateTime? LastUpdated
+        // GraphQL -> lastUpdated: DateTime (scalar)
+        [JsonProperty("lastUpdated")]
+        public DateTime? LastUpdated { get; set; }
+
         //      C# -> System.String? Link
         // GraphQL -> link: URL (scalar)
         [JsonProperty("link")]
         public System.String? Link { get; set; }
+
+        //      C# -> System.String? SourceLabel
+        // GraphQL -> sourceLabel: String! (scalar)
+        [JsonProperty("sourceLabel")]
+        public System.String? SourceLabel { get; set; }
 
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
@@ -56,14 +71,20 @@ namespace RubrikSecurityCloud.Types
 
     public HelpContentSnippet Set(
         HelpContentSource? Source = null,
+        System.String? Category = null,
         System.String? Description = null,
         System.String? Id = null,
+        DateTime? LastUpdated = null,
         System.String? Link = null,
+        System.String? SourceLabel = null,
         System.String? Title = null
     ) 
     {
         if ( Source != null ) {
             this.Source = Source;
+        }
+        if ( Category != null ) {
+            this.Category = Category;
         }
         if ( Description != null ) {
             this.Description = Description;
@@ -71,8 +92,14 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( LastUpdated != null ) {
+            this.LastUpdated = LastUpdated;
+        }
         if ( Link != null ) {
             this.Link = Link;
+        }
+        if ( SourceLabel != null ) {
+            this.SourceLabel = SourceLabel;
         }
         if ( Title != null ) {
             this.Title = Title;
@@ -100,6 +127,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "source\n" ;
             }
         }
+        //      C# -> System.String? Category
+        // GraphQL -> category: String! (scalar)
+        if (this.Category != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "category\n" ;
+            } else {
+                s += ind + "category\n" ;
+            }
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
@@ -118,6 +154,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> DateTime? LastUpdated
+        // GraphQL -> lastUpdated: DateTime (scalar)
+        if (this.LastUpdated != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastUpdated\n" ;
+            } else {
+                s += ind + "lastUpdated\n" ;
+            }
+        }
         //      C# -> System.String? Link
         // GraphQL -> link: URL (scalar)
         if (this.Link != null) {
@@ -125,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "link\n" ;
             } else {
                 s += ind + "link\n" ;
+            }
+        }
+        //      C# -> System.String? SourceLabel
+        // GraphQL -> sourceLabel: String! (scalar)
+        if (this.SourceLabel != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceLabel\n" ;
+            } else {
+                s += ind + "sourceLabel\n" ;
             }
         }
         //      C# -> System.String? Title
@@ -160,6 +214,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Source = null;
         }
+        //      C# -> System.String? Category
+        // GraphQL -> category: String! (scalar)
+        if (ec.Includes("category",true))
+        {
+            if(this.Category == null) {
+
+                this.Category = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Category != null && ec.Excludes("category",true))
+        {
+            this.Category = null;
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (ec.Includes("description",true))
@@ -194,6 +265,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> DateTime? LastUpdated
+        // GraphQL -> lastUpdated: DateTime (scalar)
+        if (ec.Includes("lastUpdated",true))
+        {
+            if(this.LastUpdated == null) {
+
+                this.LastUpdated = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastUpdated != null && ec.Excludes("lastUpdated",true))
+        {
+            this.LastUpdated = null;
+        }
         //      C# -> System.String? Link
         // GraphQL -> link: URL (scalar)
         if (ec.Includes("link",true))
@@ -210,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Link != null && ec.Excludes("link",true))
         {
             this.Link = null;
+        }
+        //      C# -> System.String? SourceLabel
+        // GraphQL -> sourceLabel: String! (scalar)
+        if (ec.Includes("sourceLabel",true))
+        {
+            if(this.SourceLabel == null) {
+
+                this.SourceLabel = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceLabel != null && ec.Excludes("sourceLabel",true))
+        {
+            this.SourceLabel = null;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)

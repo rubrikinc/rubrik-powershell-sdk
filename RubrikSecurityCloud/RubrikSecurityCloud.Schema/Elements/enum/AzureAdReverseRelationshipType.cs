@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CATALOG_ROLE_ASSIGNMENT_OF")]
         CATALOG_ROLE_ASSIGNMENT_OF,
 
+        [EnumMember(Value = "DIRECT_REPORT")]
+        DIRECT_REPORT,
+
         [EnumMember(Value = "INCLUDED_IN_POLICY")]
         INCLUDED_IN_POLICY,
 
@@ -57,6 +60,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MEMBER_OF")]
         MEMBER_OF,
 
+        [EnumMember(Value = "NOTIFICATION_RECIPIENT_OF")]
+        NOTIFICATION_RECIPIENT_OF,
+
         [EnumMember(Value = "OWNER_OF")]
         OWNER_OF,
 
@@ -77,6 +83,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REVERSE_RELATIONSHIP_TYPE_UNKNOWN")]
         REVERSE_RELATIONSHIP_TYPE_UNKNOWN,
+
+        [EnumMember(Value = "REVIEWER_OF")]
+        REVIEWER_OF,
 
         [EnumMember(Value = "ROLE_ASSIGNMENT_OF")]
         ROLE_ASSIGNMENT_OF,

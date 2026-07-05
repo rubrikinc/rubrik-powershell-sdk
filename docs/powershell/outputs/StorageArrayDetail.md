@@ -17,8 +17,8 @@ Resolvable hostname or IPv4 address of the storage array.
 - username: System.String
   - Required. Supported in v5.0+
 - isVolumeProtectionEnabled: System.Boolean
-  - Supported in v9.6
+  - Supported in v9.6+
 Whether Volume Protection features are enabled for this storage array. Optional for backward compatibility - older clusters omit this field.
 - isSnapshotOffloadingEnabled: System.Boolean
-  - Supported in v9.6
+  - Supported in v9.6+
 Whether Array Integration (Snapshot Offloading) features are enabled for this storage array. Optional for backward compatibility - older clusters omit this field.

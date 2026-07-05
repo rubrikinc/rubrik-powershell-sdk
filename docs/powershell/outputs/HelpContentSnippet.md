@@ -11,3 +11,9 @@ A snippet of help content.
   - Datasource for help content.
 - link: System.String
   - URL pointing to the complete help content.
+- sourceLabel: System.String
+  - Display label for the datasource (for example "RSC User Guide 25.1").
+- lastUpdated: DateTime
+  - Timestamp of when the content was last updated.
+- category: System.String
+  - Category of the content.

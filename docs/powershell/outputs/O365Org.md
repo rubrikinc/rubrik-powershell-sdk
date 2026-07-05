@@ -29,6 +29,8 @@
   - Out of compliance count for SharePoint site collections.
 - hasSharePointLegacySnapshots: System.Boolean
   - Specifies whether the org has legacy SharePoint Snapshots.
+- mailboxesPendingGraphMigration: System.Int32
+  - Count of protected, active mailboxes not yet on Microsoft Graph.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - childConnection: O365UserConnection
@@ -37,6 +39,8 @@
   - List of all descendants of O365Org.
 - unprotectedUsersCount: System.Int32
   - Number of O365 Users with no SLA assigned.
+- exchangeGraphMigrationStatus: ExchangeGraphMigrationStatus
+  - Status of the EWS to Microsoft Graph migration for the org's protected Exchange mailboxes.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String

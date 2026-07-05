@@ -44,6 +44,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmName")]
         public System.String? VmName { get; set; }
 
+        //      C# -> List<System.String>? ExcludePaths
+        // GraphQL -> excludePaths: [String!] (scalar)
+        [JsonProperty("excludePaths")]
+        public List<System.String>? ExcludePaths { get; set; }
+
+        //      C# -> MountExportSnapshotJobCommonOptionsV2RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: MountExportSnapshotJobCommonOptionsV2RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public MountExportSnapshotJobCommonOptionsV2RecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

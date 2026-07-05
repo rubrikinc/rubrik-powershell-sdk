@@ -64,6 +64,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("splunk")]
         public SplunkIntegrationConfigInput? Splunk { get; set; }
 
+        //      C# -> PanXsoarIntegrationConfigInput? PanXsoar
+        // GraphQL -> panXsoar: PanXsoarIntegrationConfigInput (input)
+        [JsonProperty("panXsoar")]
+        public PanXsoarIntegrationConfigInput? PanXsoar { get; set; }
+
+        //      C# -> WorkdayIntegrationConfigInput? Workday
+        // GraphQL -> workday: WorkdayIntegrationConfigInput (input)
+        [JsonProperty("workday")]
+        public WorkdayIntegrationConfigInput? Workday { get; set; }
+
 
         #endregion
 

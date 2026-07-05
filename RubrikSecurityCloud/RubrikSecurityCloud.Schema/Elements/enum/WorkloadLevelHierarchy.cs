@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AUTH0_TENANT")]
+        AUTH0_TENANT,
+
         [EnumMember(Value = "AWS_NATIVE_CONFIG")]
         AWS_NATIVE_CONFIG,
 
@@ -115,7 +118,40 @@ namespace RubrikSecurityCloud.Types
         O365_TEAMS,
 
         [EnumMember(Value = "OKTA_TENANT")]
-        OKTA_TENANT
+        OKTA_TENANT,
+
+        [EnumMember(Value = "POWER_PLATFORM_AI_FLOW")]
+        POWER_PLATFORM_AI_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_BUSINESS_PROCESS_FLOW")]
+        POWER_PLATFORM_BUSINESS_PROCESS_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_BUSINESS_RULE")]
+        POWER_PLATFORM_BUSINESS_RULE,
+
+        [EnumMember(Value = "POWER_PLATFORM_CANVAS_APP")]
+        POWER_PLATFORM_CANVAS_APP,
+
+        [EnumMember(Value = "POWER_PLATFORM_CLASSIC_WORKFLOW")]
+        POWER_PLATFORM_CLASSIC_WORKFLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_CLOUD_FLOW")]
+        POWER_PLATFORM_CLOUD_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_CUSTOM_ACTION")]
+        POWER_PLATFORM_CUSTOM_ACTION,
+
+        [EnumMember(Value = "POWER_PLATFORM_DESKTOP_FLOW")]
+        POWER_PLATFORM_DESKTOP_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_DIALOG")]
+        POWER_PLATFORM_DIALOG,
+
+        [EnumMember(Value = "POWER_PLATFORM_MODEL_DRIVEN_APP")]
+        POWER_PLATFORM_MODEL_DRIVEN_APP,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_TABLE")]
+        S3_TABLES_ICEBERG_TABLE
 
 
     } // enum WorkloadLevelHierarchy

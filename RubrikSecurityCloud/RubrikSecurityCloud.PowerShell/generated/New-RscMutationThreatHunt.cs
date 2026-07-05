@@ -158,8 +158,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	notes = $someString
-    /// 	# OPTIONAL
     /// 	fileScanCriteria = @{
     /// 		# OPTIONAL
     /// 		fileSizeLimits = @{
@@ -198,18 +196,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	indicatorsOfCompromise = @(
     /// 		@{
-    /// 			# OPTIONAL
-    /// 			threatFamily = $someString
     /// 			# REQUIRED
     /// 			iocKind = $someIndicatorOfCompromiseKind # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IndicatorOfCompromiseKind]) for enum values.
     /// 			# REQUIRED
     /// 			iocValue = $someString
+    /// 			# OPTIONAL
+    /// 			threatFamily = $someString
     /// 		}
     /// 	)
     /// 	# OPTIONAL
     /// 	maxMatchesPerSnapshot = $someInt
     /// 	# REQUIRED
     /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	notes = $someString
     /// 	# REQUIRED
     /// 	objectFids = @(
     /// 		$someString
@@ -836,8 +836,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
-	notes = $someString
-	# OPTIONAL
 	fileScanCriteria = @{
 		# OPTIONAL
 		fileSizeLimits = @{
@@ -876,18 +874,20 @@ $query.Var.input = @{
 	# REQUIRED
 	indicatorsOfCompromise = @(
 		@{
-			# OPTIONAL
-			threatFamily = $someString
 			# REQUIRED
 			iocKind = $someIndicatorOfCompromiseKind # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IndicatorOfCompromiseKind]) for enum values.
 			# REQUIRED
 			iocValue = $someString
+			# OPTIONAL
+			threatFamily = $someString
 		}
 	)
 	# OPTIONAL
 	maxMatchesPerSnapshot = $someInt
 	# REQUIRED
 	name = $someString
+	# OPTIONAL
+	notes = $someString
 	# REQUIRED
 	objectFids = @(
 		$someString

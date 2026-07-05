@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
+        [EnumMember(Value = "AUTH0_TENANT")]
+        AUTH0_TENANT,
+
         [EnumMember(Value = "AWS_NATIVE_CONFIG")]
         AWS_NATIVE_CONFIG,
 
@@ -44,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_DEVOPS_PROJECT")]
         AZURE_DEVOPS_PROJECT,
+
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT_FIXED_OBJECT")]
+        AZURE_DEVOPS_PROJECT_FIXED_OBJECT,
 
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
@@ -330,6 +336,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_EXPORT")]
         MANAGED_VOLUME_EXPORT,
 
+        [EnumMember(Value = "MARIADB_DATABASE")]
+        MARIADB_DATABASE,
+
+        [EnumMember(Value = "MARIADB_INSTANCE")]
+        MARIADB_INSTANCE,
+
         [EnumMember(Value = "MONGODB_COLLECTION")]
         MONGODB_COLLECTION,
 
@@ -459,6 +471,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OLVM_MANAGER")]
         OLVM_MANAGER,
 
+        [EnumMember(Value = "OLVM_TAG")]
+        OLVM_TAG,
+
         [EnumMember(Value = "OLVM_VIRTUAL_MACHINE")]
         OLVM_VIRTUAL_MACHINE,
 
@@ -513,6 +528,39 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
+        [EnumMember(Value = "POWER_PLATFORM_AI_FLOW")]
+        POWER_PLATFORM_AI_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_BUSINESS_PROCESS_FLOW")]
+        POWER_PLATFORM_BUSINESS_PROCESS_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_BUSINESS_RULE")]
+        POWER_PLATFORM_BUSINESS_RULE,
+
+        [EnumMember(Value = "POWER_PLATFORM_CANVAS_APP")]
+        POWER_PLATFORM_CANVAS_APP,
+
+        [EnumMember(Value = "POWER_PLATFORM_CLASSIC_WORKFLOW")]
+        POWER_PLATFORM_CLASSIC_WORKFLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_CLOUD_FLOW")]
+        POWER_PLATFORM_CLOUD_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_CUSTOM_ACTION")]
+        POWER_PLATFORM_CUSTOM_ACTION,
+
+        [EnumMember(Value = "POWER_PLATFORM_DESKTOP_FLOW")]
+        POWER_PLATFORM_DESKTOP_FLOW,
+
+        [EnumMember(Value = "POWER_PLATFORM_DIALOG")]
+        POWER_PLATFORM_DIALOG,
+
+        [EnumMember(Value = "POWER_PLATFORM_ENVIRONMENT")]
+        POWER_PLATFORM_ENVIRONMENT,
+
+        [EnumMember(Value = "POWER_PLATFORM_MODEL_DRIVEN_APP")]
+        POWER_PLATFORM_MODEL_DRIVEN_APP,
+
         [EnumMember(Value = "PROXMOX_CLUSTER")]
         PROXMOX_CLUSTER,
 
@@ -542,6 +590,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RubrikEc2Instance")]
         RUBRIK_EC2_INSTANCE,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_CATALOG")]
+        S3_TABLES_ICEBERG_CATALOG,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_NAMESPACE")]
+        S3_TABLES_ICEBERG_NAMESPACE,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_TABLE")]
+        S3_TABLES_ICEBERG_TABLE,
 
         [EnumMember(Value = "SALESFORCE_FIXED_OBJECT")]
         SALESFORCE_FIXED_OBJECT,

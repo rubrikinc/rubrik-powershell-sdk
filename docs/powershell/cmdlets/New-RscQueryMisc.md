@@ -157,36 +157,55 @@ Get all backup throttle settings.
 - There is a single argument of type list of System.Strings.
 - Returns list of BackupThrottleSettings.
 ### browsecalendar
-Browse Exchange calendar.
+BrowseCalendarFolderItems returns the contents (calendar folders +
+events) of a calendar folder inside a single snapshot. Encapsulates
+the snapshot-expiry data check and the root-folder resolution logic
+(In-Place Archive filter + multi-root disambiguation) previously
+performed in the GraphQL resolver `browseCalendar`.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
+    - folderId - System.String: The folder being browsed.
     - orgId - System.String: Org UUID.
     - calendarSearchFilter - CalendarSearchFilter: Search filter for calendar search.
 - Returns O365ExchangeObjectConnection.
 ### browsecontacts
-Browse Exchange contacts.
+BrowseContactsFolderItems returns the contents (contact folders +
+contacts) of a contact folder inside a single snapshot.
+Encapsulates the snapshot-expiry data check and the contacts
+response shaping previously performed in the GraphQL resolver
+`browseContacts`.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
+    - folderId - System.String: The folder being browsed.
     - orgId - System.String: Org UUID.
     - contactsSearchFilter - ContactsSearchFilter: Search filter for contacts search.
 - Returns O365ExchangeObjectConnection.
 ### browsefolder
-- There are 6 arguments.
+BrowseMailboxFolderItems returns the contents (folders + emails) of
+a mailbox folder inside a single snapshot. Encapsulates the
+snapshot-expiry data check and the mailbox response shaping
+previously performed in the GraphQL resolver `browseFolder`.
+
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
+    - folderId - System.String: The folder being browsed.
     - orgId - System.String: Org UUID.
 - Returns O365ExchangeObjectConnection.
 ### browseonedrive
@@ -236,6 +255,11 @@ Retrieves ccprovision metadata.
 
 - There is a single argument of type CcProvisionMetadataReq.
 - Returns CcProvisionMetadataReply.
+### cdmadminuser
+Retrieves the admin user metadata for a list of clusters.
+
+- There is a single argument of type GetCdmUserRequest.
+- Returns GetCdmUserResponse.
 ### cdmguestcredentials
 Get all cdm guest credentials.
 
@@ -419,6 +443,16 @@ Returns the custom analyzer with the given ID.
 
 - There is a single argument of type System.String.
 - Returns Analyzer.
+### dailyviolationssummary
+Daily summary of violations.
+
+- There are 5 arguments.
+    - startDate - DateTime: Start date for fetching summary.
+    - endDate - DateTime: End date for fetching summary.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+    - resourceFilter - ResourceFilterInput: Resource to filter by.
+    - idpTypes - list of IdpTypes: Identity provider types to filter by. If empty or null, the results will not be filtered.
+- Returns DailyViolationsSummary.
 ### dashboardsummary
 Returns hits grouped by analyzer and policy.
 
@@ -554,6 +588,11 @@ Exocompute configuration.
 
 - There is a single argument of type ExocomputeHealthChecksReq.
 - Returns ExocomputeHealthChecksReply.
+### exotaskimagebundle
+Gets the list of exo-task images in the bundle along with information on how to download the images.
+
+- There is a single argument of type GetExotaskImageBundleInput.
+- Returns GetExotaskImageBundleReply.
 ### externaldeploymentname
 Customer facing Polaris deployment name.
 
@@ -586,12 +625,12 @@ Status of the federated login.
 List user activity for a specific file on a specific snapshot.
 
 - There are 6 arguments.
-    - ListFileActivitiesInput - ListFileActivitiesInput: Request for getting user activity for a specific path on a specific snapshot.
-    - FileActivitiesSort - FileActivitiesSort: Sorts to apply when listing a file's user activities.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - ListFileActivitiesInput - ListFileActivitiesInput: Request for getting user activity for a specific path on a specific snapshot.
+    - FileActivitiesSort - FileActivitiesSort: Sorts to apply when listing a file's user activities.
 - Returns UserActivityResultConnection.
 ### fusioncomputedatastore
 Summary of a FusionCompute datastore.
@@ -795,6 +834,8 @@ Get roles by IDs.
     - syncedClustersFilter - System.String: Name to filter the synced clusters for role.
 - Returns list of Roles.
 ### getuserdownloads
+GetUserDownloads returns downloads of a user in the last 24 hours.
+
 - There are 4 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
@@ -873,6 +914,21 @@ Get global multifactor authentication (MFA) for an account.
     - filter - list of Filters: Hierarchy object filter.
     - objectTypeFilterParams - list of ManagedObjectTypes: List of object types to filter by. If not provided, uses default global search types.
 - Returns HierarchyObjectConnection.
+### glueiceberginventorystats
+Returns aggregate counts for the AWS Glue Iceberg inventory card:
+AWS native accounts with the Glue Iceberg feature enabled, total
+catalogs, total databases, total tables, and protected tables. All
+counts are scoped to what the caller can see.
+
+- The glueiceberginventorystats subcommand takes no arguments.
+- Returns GlueIcebergInventoryStatsReply.
+### glueicebergtable
+Represents an AWS Glue Iceberg Table with a specific Rubrik ID.
+
+- There are 2 arguments.
+    - glueIcebergTableRubrikId - System.String: Rubrik ID for the AWS Glue Iceberg table object.
+    - includeSecurityMetadata - System.Boolean: Filter to include the security metadata.
+- Returns GlueIcebergTable.
 ### groupsincurrentanddescendantorganization
 Retrieve groups from current and descendant organizations based on the specified filters.
 
@@ -1297,6 +1353,10 @@ Returns objects that have already been assigned to existing orgs.
 Returns total sensitive hits grouped by object type and also gives policy level breakdown for each object type.
 
 - There are 11 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - timelineDate - System.String: Date for which the results will be retrieved.
     - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
     - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
@@ -1304,10 +1364,6 @@ Returns total sensitive hits grouped by object type and also gives policy level 
     - filter - ObjectTypeSummariesFilter: Filter for object type summary.
     - sort - ObjectTypeAccessSummarySortBy: Field on which to perform the sorting operation.
     - groupBy - ObjectTypeAccessSummaryGroupBy: Field on which to perform the grouping operation.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns ObjectTypeAccessSummaryConnection.
 ### org
 Org details of the given org ID.
@@ -1394,6 +1450,11 @@ Get the health metric for the radar pipeline covering the backup, indexing, and 
 ### polarisinventorysubhierarchyroot
 - There is a single argument of type InventorySubHierarchyRootEnum.
 - Returns PolarisInventorySubHierarchyRoot.
+### policiesmaxlastevaluatedat
+Get the maximum 'Last evaluated at' timestamp for policies.
+
+- There is a single argument of type list of PolicyTypes.
+- Returns GetPoliciesMaxLastEvaluatedAtType.
 ### policydetails
 Returns data categories for an account.
 
@@ -1466,6 +1527,13 @@ Returns status for all objects at a specified timestamp.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns PolicyObjConnection.
+### policyviolation
+Get a single policy violation.
+
+- There are 2 arguments.
+    - violationId - System.String: Violation ID.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+- Returns PolicyViolation.
 ### policyviolations
 Get a paginated list of policy violations.
 
@@ -1501,6 +1569,38 @@ Get a paginated list of policy violations.
     - ticketNumbers - list of System.Strings: Ticket numbers to filter violations by. If empty or null, the results will not be filtered.
     - violationNames - list of System.Strings: Exact violation names to filter by. OR-combined with policyIds: a violation matches if its policyId is in policyIds OR its violationName is in violationNames. Distinct from policyViolationNameSearch (substring match, AND-combined).
 - Returns PolicyViolationConnection.
+### policyviolationsbyresource
+Get a paginated list of policy violations grouped by resource.
+
+- There are 27 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - policyIds - list of System.Strings: Policy IDs to filter by. If empty or null, the results will not be filtered.
+    - resourceIds - list of System.Strings: Resource IDs to filter by. If empty or null, the results will not be filtered.
+    - statuses - list of PolicyViolationStatuss: Policy violation statuses to filter by. If empty or null, the results will not be filtered.
+    - statusReasons - list of PolicyViolationStatusReasons: Policy violation status reasons to filter by. If empty or null, the results will not be filtered.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+    - policyViolationIds - list of System.Strings: Policy violation IDs to filter by. If empty or null, the results will not be filtered.
+    - policySeverities - list of Severitys: Policy severities to filter by. If empty or null, the results will not be filtered.
+    - policyCategories - list of Categorys: Policy categories to filter by. If empty or null, the results will not be filtered.
+    - includeDeletedPolicies - System.Boolean: Include deleted policies in the results. If null or false, deleted policies will be excluded.
+    - resourceTypes - list of PolicyResourceTypes: Resource types to filter by. If empty or null, the results will not be filtered.
+    - sensitivityLevels - list of SensitivityLevels: Sensitivity levels to filter by. If empty or null, the results will not be filtered.
+    - detectionDate - TimeRangeInput: Detection date range to filter by. If null, the results will not be filtered.
+    - updateDate - TimeRangeInput: Violation update date range to filter by.
+    - parentViolationId - System.String: Parent violation ID.
+    - dataTypeIds - list of System.Strings: Data type IDs to filter.
+    - documentTypeIds - list of System.Strings: Document type IDs to filter.
+    - dataCategoryIds - list of System.Strings: Filter for data category IDs.
+    - sortBy - PolicyViolationSortField: Field by which to sort policy violations.
+    - sortOrder - SortOrder: Sort order for policy violations.
+    - policyViolationNameSearch - System.String: Policy violation name to search for (substring match).
+    - principalMetadataFilters - PrincipalMetadataFiltersInput: Principal metadata fields to filter by. If null, the results will not be filtered.
+    - policyFrameworks - list of System.Strings: Policy frameworks to filter by. If empty or null, the results will not be filtered.
+    - violationNames - list of System.Strings: Exact violation names to filter by. OR-combined with policyIds: a violation matches if its policyId is in policyIds OR its violationName is in violationNames. Distinct from policyViolationNameSearch (substring match, AND-combined).
+- Returns PolicyViolationsByResourceConnection.
 ### postgresqldatabase
 Details of a PostgreSQL database for a given FID.
 
@@ -1596,6 +1696,16 @@ RSC prioritizes recovery_ids if they are passed in the filter. All the filters, 
     - recoveryNameSubstring - System.String: Filter by recovery name substring.
     - sortParam - RecoverySortParamInput: Sorting parameters for the recovery list.
 - Returns RecoveryConnection.
+### remediationtypes
+Get the list of possible remediation types for targets.
+
+- There are 5 arguments.
+    - violationId - System.String: Violation ID.
+    - targets - RemediationTargetsInput: Remediation target IDs and their type.
+    - location - RemediationLocation: Remediation location.
+    - resourceType - PolicyResourceType: Resource type.
+    - resourceId - System.String: Resource ID.
+- Returns GetRemediationTypesType.
 ### removednodedetails
 Get the information for removed nodes.
 
@@ -1606,6 +1716,14 @@ Get the reset type of a node removal job.
 
 - There is a single argument of type ResetTypeOfRemovalJobInput.
 - Returns ResetTypeOfRemovalJob.
+### resourcespecs
+Lists resource specifications for the specified Recovery Plan or recovery.
+If both a recovery ID and a Recovery Plan ID are provided, we return the
+resource specifications used by that recovery and ignore the Recovery
+Plan ID.
+
+- There is a single argument of type ListResourceSpecsReq.
+- Returns list of WorkloadResourceSpecs.
 ### roletemplates
 The list of available role templates.
 
@@ -1895,6 +2013,19 @@ To be used by Admin to check status of the support tunnel.
 
 - There is a single argument of type GetTunnelStatusInput.
 - Returns SupportTunnelInfo.
+### unifiedunregistereddomaincontrollers
+Lists auto-discovered AD domain controllers without RBS, deduplicated
+across all Rubrik clusters in the account.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - UnregisteredDcSortByField: Field to sort the results by.
+    - sortOrder - SortOrder: Sort order (ASC / DESC).
+    - filter - list of UnregisteredDcFilters: Filters to apply to the result set.
+- Returns UnregisteredDomainControllerWithDomainConnection.
 ### uniquevcdcount
 Number of unique vCloud Director instances.
 
@@ -1954,10 +2085,17 @@ Determines if the user already exists in the account.
     - userDomainId - System.String: User auth domain ID.
 - Returns UserAlreadyExistsReply.
 ### useranalyzeraccess
-- There are 4 arguments.
-    - userId - System.String
-    - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - timezone - System.String: The timezone in which to display timestamps.
+Returns a paginated list of the analyzers a user accessed, ranked by access
+usage for the anchored day.
+
+- There are 8 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - userId - System.String: Stable identifier of the user.
+    - startDay - System.String: Day to anchor the summary, in YYYY-MM-DD format.
+    - timezone - System.String: Official IANA timezone name.
     - limit - System.Int32: Maximum number of entries in the response.
 - Returns AnalyzerAccessUsageConnection.
 ### userauditlist
@@ -1973,10 +2111,13 @@ Paginated list of user audit data. Each page of the results will include at most
     - filters - UserAuditFilter
 - Returns UserAuditConnection.
 ### userdetail
+Returns summary details for a single user, including identity information
+and an overview of their data access for the anchored day.
+
 - There are 3 arguments.
-    - userId - System.String
-    - startDay - System.String: Start time, in string format (YYYY-MM-DD).
-    - timezone - System.String: The timezone in which to display timestamps.
+    - userId - System.String: Stable identifier of the user.
+    - startDay - System.String: Day to anchor the summary, in YYYY-MM-DD format.
+    - timezone - System.String: Official IANA timezone name.
 - Returns GetUserDetailReply.
 ### userfile
 User file.
@@ -2130,6 +2271,21 @@ Verify TOTP for current user.
 
 - There is a single argument of type VerifyTotpInput.
 - Returns VerifyTotpReply.
+### violationscategorysummary
+Summary of violations in each of the category.
+
+- There are 3 arguments.
+    - historicalDays - System.Int32: Number of days to lookback from the current day.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+    - idpTypes - list of IdpTypes: Identity provider types to filter by. If empty or null, the results will not be filtered.
+- Returns ViolationsCategorySummary.
+### violationsenvironmentsummary
+Summary of violations in each of the environment.
+
+- There are 2 arguments.
+    - historicalDays - System.Int32: Number of days to lookback from the current day.
+    - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
+- Returns ViolationsEnvironmentSummaries.
 ### virtualmachinefiles
 Get virtual machine files for a snapshot
 

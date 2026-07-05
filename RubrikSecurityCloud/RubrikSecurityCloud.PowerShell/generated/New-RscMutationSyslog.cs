@@ -118,6 +118,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			permittedPeers = $someString
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -136,6 +138,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV53 = @{
@@ -153,6 +157,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV60 = @{
@@ -170,6 +176,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV70 = @{
@@ -187,6 +195,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV80 = @{
@@ -204,6 +214,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV81 = @{
@@ -221,6 +233,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV90 = @{
@@ -238,6 +252,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV91 = @{
@@ -255,6 +271,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV92 = @{
@@ -272,6 +290,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV93 = @{
@@ -289,6 +309,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV94 = @{
@@ -306,6 +328,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV95 = @{
@@ -323,6 +347,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV96 = @{
@@ -340,6 +366,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogExportRuleV97 = @{
+    /// 		# REQUIRED
+    /// 		enableTls = $someBoolean
+    /// 		# REQUIRED
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# REQUIRED
+    /// 		port = $someInt
+    /// 		# REQUIRED
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# REQUIRED
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// }
     /// 
@@ -430,6 +477,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			permittedPeers = $someString
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -448,6 +497,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV53 = @{
@@ -465,6 +516,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV60 = @{
@@ -482,6 +535,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV70 = @{
@@ -499,6 +554,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV80 = @{
@@ -516,6 +573,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV81 = @{
@@ -533,6 +592,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV90 = @{
@@ -550,6 +611,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV91 = @{
@@ -567,6 +630,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV92 = @{
@@ -584,6 +649,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV93 = @{
@@ -601,6 +668,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV94 = @{
@@ -618,6 +687,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV95 = @{
@@ -635,6 +706,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogExportRuleV96 = @{
@@ -652,6 +725,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogExportRuleV97 = @{
+    /// 		# REQUIRED
+    /// 		enableTls = $someBoolean
+    /// 		# REQUIRED
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# REQUIRED
+    /// 		port = $someInt
+    /// 		# REQUIRED
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# REQUIRED
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// }
     /// 
@@ -711,6 +805,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 			# OPTIONAL
     /// 			certificateId = $someString
+    /// 			# OPTIONAL
+    /// 			permittedPeers = $someString
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -729,6 +825,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV53 = @{
@@ -746,6 +844,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV60 = @{
@@ -763,6 +863,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV70 = @{
@@ -780,6 +882,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV80 = @{
@@ -797,6 +901,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV81 = @{
@@ -814,6 +920,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV90 = @{
@@ -831,6 +939,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV91 = @{
@@ -848,6 +958,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV92 = @{
@@ -865,6 +977,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV93 = @{
@@ -882,6 +996,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV94 = @{
@@ -899,6 +1015,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV95 = @{
@@ -916,6 +1034,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	syslogSettingsV96 = @{
@@ -933,6 +1053,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
     /// 		# OPTIONAL
     /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	syslogSettingsV97 = @{
+    /// 		# OPTIONAL
+    /// 		enableTls = $someBoolean
+    /// 		# OPTIONAL
+    /// 		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+    /// 		# OPTIONAL
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		port = $someInt
+    /// 		# OPTIONAL
+    /// 		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+    /// 		# OPTIONAL
+    /// 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		permittedPeers = $someString
     /// 	}
     /// }
     /// 
@@ -1086,6 +1227,8 @@ $query.Var.input = @{
 			severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 			# OPTIONAL
 			certificateId = $someString
+			# OPTIONAL
+			permittedPeers = $someString
 		}
 	}
 	# OPTIONAL
@@ -1104,6 +1247,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV53 = @{
@@ -1121,6 +1266,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV60 = @{
@@ -1138,6 +1285,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV70 = @{
@@ -1155,6 +1304,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV80 = @{
@@ -1172,6 +1323,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV81 = @{
@@ -1189,6 +1342,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV90 = @{
@@ -1206,6 +1361,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV91 = @{
@@ -1223,6 +1380,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV92 = @{
@@ -1240,6 +1399,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV93 = @{
@@ -1257,6 +1418,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV94 = @{
@@ -1274,6 +1437,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV95 = @{
@@ -1291,6 +1456,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV96 = @{
@@ -1308,6 +1475,27 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
+	}
+	# OPTIONAL
+	syslogExportRuleV97 = @{
+		# REQUIRED
+		enableTls = $someBoolean
+		# REQUIRED
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# REQUIRED
+		hostname = $someString
+		# REQUIRED
+		port = $someInt
+		# REQUIRED
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# REQUIRED
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# OPTIONAL
+		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 }"
             );
@@ -1382,6 +1570,8 @@ $query.Var.input = @{
 			severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 			# OPTIONAL
 			certificateId = $someString
+			# OPTIONAL
+			permittedPeers = $someString
 		}
 	}
 	# OPTIONAL
@@ -1400,6 +1590,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV53 = @{
@@ -1417,6 +1609,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV60 = @{
@@ -1434,6 +1628,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV70 = @{
@@ -1451,6 +1647,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV80 = @{
@@ -1468,6 +1666,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV81 = @{
@@ -1485,6 +1685,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV90 = @{
@@ -1502,6 +1704,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV91 = @{
@@ -1519,6 +1723,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV92 = @{
@@ -1536,6 +1742,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV93 = @{
@@ -1553,6 +1761,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV94 = @{
@@ -1570,6 +1780,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV95 = @{
@@ -1587,6 +1799,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogExportRuleV96 = @{
@@ -1604,6 +1818,27 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
+	}
+	# OPTIONAL
+	syslogExportRuleV97 = @{
+		# REQUIRED
+		enableTls = $someBoolean
+		# REQUIRED
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# REQUIRED
+		hostname = $someString
+		# REQUIRED
+		port = $someInt
+		# REQUIRED
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# REQUIRED
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# OPTIONAL
+		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 }"
             );
@@ -1655,6 +1890,8 @@ $query.Var.input = @{
 			severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 			# OPTIONAL
 			certificateId = $someString
+			# OPTIONAL
+			permittedPeers = $someString
 		}
 	}
 	# OPTIONAL
@@ -1673,6 +1910,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV53 = @{
@@ -1690,6 +1929,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV60 = @{
@@ -1707,6 +1948,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV70 = @{
@@ -1724,6 +1967,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV80 = @{
@@ -1741,6 +1986,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV81 = @{
@@ -1758,6 +2005,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV90 = @{
@@ -1775,6 +2024,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV91 = @{
@@ -1792,6 +2043,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV92 = @{
@@ -1809,6 +2062,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV93 = @{
@@ -1826,6 +2081,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV94 = @{
@@ -1843,6 +2100,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV95 = @{
@@ -1860,6 +2119,8 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 	# OPTIONAL
 	syslogSettingsV96 = @{
@@ -1877,6 +2138,27 @@ $query.Var.input = @{
 		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
 		# OPTIONAL
 		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
+	}
+	# OPTIONAL
+	syslogSettingsV97 = @{
+		# OPTIONAL
+		enableTls = $someBoolean
+		# OPTIONAL
+		facility = $someSyslogFacility # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogFacility]) for enum values.
+		# OPTIONAL
+		hostname = $someString
+		# OPTIONAL
+		port = $someInt
+		# OPTIONAL
+		protocol = $someTransportLayerProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TransportLayerProtocol]) for enum values.
+		# OPTIONAL
+		severity = $someSyslogSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SyslogSeverity]) for enum values.
+		# OPTIONAL
+		certificateId = $someString
+		# OPTIONAL
+		permittedPeers = $someString
 	}
 }"
             );

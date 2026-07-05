@@ -1,4 +1,6 @@
 ### AccessType
+Type of access a principal has to a file.
+
 - FULL_CONTROL - Full control access.
 - READ_ACCESS - Read access.
 - WRITE_ACCESS - Write access.

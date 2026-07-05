@@ -110,11 +110,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldEnableAcceleratedNetworking")]
         public System.Boolean? ShouldEnableAcceleratedNetworking { get; set; }
 
-        //      C# -> AzureSnapshotType? SnapshotType
-        // GraphQL -> snapshotType: AzureSnapshotType (enum)
-        [JsonProperty("snapshotType")]
-        public AzureSnapshotType? SnapshotType { get; set; }
-
         //      C# -> List<System.String>? RecoveryDiskIds
         // GraphQL -> recoveryDiskIds: [UUID!] (scalar)
         [JsonProperty("recoveryDiskIds")]
@@ -129,6 +124,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> destinationKeyVaultName: String (scalar)
         [JsonProperty("destinationKeyVaultName")]
         public System.String? DestinationKeyVaultName { get; set; }
+
+        //      C# -> AzureSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: AzureSnapshotType (enum)
+        [JsonProperty("snapshotType")]
+        public AzureSnapshotType? SnapshotType { get; set; }
+
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
 
 
         #endregion

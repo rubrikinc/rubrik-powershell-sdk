@@ -176,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRetentionLocked")]
         public System.Boolean? IsRetentionLocked { get; set; }
 
+        //      C# -> System.Boolean? IsSnapshotSearchable
+        // GraphQL -> isSnapshotSearchable: Boolean! (scalar)
+        [JsonProperty("isSnapshotSearchable")]
+        public System.Boolean? IsSnapshotSearchable { get; set; }
+
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)
         [JsonProperty("isUnindexable")]
@@ -277,6 +282,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsReplica = null,
         System.Boolean? IsReplicated = null,
         System.Boolean? IsRetentionLocked = null,
+        System.Boolean? IsSnapshotSearchable = null,
         System.Boolean? IsUnindexable = null,
         System.String? ParentSnapshotId = null,
         System.Int32? SequenceNumber = null,
@@ -383,6 +389,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRetentionLocked != null ) {
             this.IsRetentionLocked = IsRetentionLocked;
+        }
+        if ( IsSnapshotSearchable != null ) {
+            this.IsSnapshotSearchable = IsSnapshotSearchable;
         }
         if ( IsUnindexable != null ) {
             this.IsUnindexable = IsUnindexable;
@@ -723,6 +732,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRetentionLocked\n" ;
             } else {
                 s += ind + "isRetentionLocked\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSnapshotSearchable
+        // GraphQL -> isSnapshotSearchable: Boolean! (scalar)
+        if (this.IsSnapshotSearchable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSnapshotSearchable\n" ;
+            } else {
+                s += ind + "isSnapshotSearchable\n" ;
             }
         }
         //      C# -> System.Boolean? IsUnindexable
@@ -1402,6 +1420,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRetentionLocked != null && ec.Excludes("isRetentionLocked",true))
         {
             this.IsRetentionLocked = null;
+        }
+        //      C# -> System.Boolean? IsSnapshotSearchable
+        // GraphQL -> isSnapshotSearchable: Boolean! (scalar)
+        if (ec.Includes("isSnapshotSearchable",true))
+        {
+            if(this.IsSnapshotSearchable == null) {
+
+                this.IsSnapshotSearchable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSnapshotSearchable != null && ec.Excludes("isSnapshotSearchable",true))
+        {
+            this.IsSnapshotSearchable = null;
         }
         //      C# -> System.Boolean? IsUnindexable
         // GraphQL -> isUnindexable: Boolean! (scalar)

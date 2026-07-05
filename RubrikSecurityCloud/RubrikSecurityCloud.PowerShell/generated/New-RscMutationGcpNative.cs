@@ -174,6 +174,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -248,6 +250,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	archivedSnapshotId = $someString
     /// 	# OPTIONAL
     /// 	serviceAccountId = $someString
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -322,6 +326,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
     /// 	# OPTIONAL
     /// 	archivedSnapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -535,6 +541,8 @@ $query.Var.input = @{
 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }
@@ -601,6 +609,8 @@ $query.Var.input = @{
 	archivedSnapshotId = $someString
 	# OPTIONAL
 	serviceAccountId = $someString
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }
@@ -659,6 +669,8 @@ $query.Var.input = @{
 	snapshotType = $someGcpSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GcpSnapshotType]) for enum values.
 	# OPTIONAL
 	archivedSnapshotId = $someString
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }

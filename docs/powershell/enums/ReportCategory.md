@@ -9,3 +9,4 @@ requirements.
 - USERS_AND_ORG_MANAGEMENT - Reports related to user activity, organization structure, and access
 management.
 - OTHERS - Reports that don't fit into the above categories.
+- PROTECTION_PAUSE - Reports related to Paused Protection.

@@ -37,7 +37,10 @@ namespace RubrikSecurityCloud.Types
         RDS,
 
         [EnumMember(Value = "S3")]
-        S3
+        S3,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG")]
+        S3_TABLES_ICEBERG
 
 
     } // enum AwsNativeProtectionFeature

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeUserCount")]
         public System.Int32? ActiveUserCount { get; set; }
 
+        //      C# -> System.Boolean? AllowIdpInitiatedSso
+        // GraphQL -> allowIdpInitiatedSso: Boolean! (scalar)
+        [JsonProperty("allowIdpInitiatedSso")]
+        public System.Boolean? AllowIdpInitiatedSso { get; set; }
+
         //      C# -> System.Int32? AuthorizedGroupsCount
         // GraphQL -> authorizedGroupsCount: Int! (scalar)
         [JsonProperty("authorizedGroupsCount")]
@@ -111,6 +116,7 @@ namespace RubrikSecurityCloud.Types
 
     public IdentityProvider Set(
         System.Int32? ActiveUserCount = null,
+        System.Boolean? AllowIdpInitiatedSso = null,
         System.Int32? AuthorizedGroupsCount = null,
         System.String? EntityId = null,
         DateTime? ExpirationDate = null,
@@ -130,6 +136,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ActiveUserCount != null ) {
             this.ActiveUserCount = ActiveUserCount;
+        }
+        if ( AllowIdpInitiatedSso != null ) {
+            this.AllowIdpInitiatedSso = AllowIdpInitiatedSso;
         }
         if ( AuthorizedGroupsCount != null ) {
             this.AuthorizedGroupsCount = AuthorizedGroupsCount;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "activeUserCount\n" ;
             } else {
                 s += ind + "activeUserCount\n" ;
+            }
+        }
+        //      C# -> System.Boolean? AllowIdpInitiatedSso
+        // GraphQL -> allowIdpInitiatedSso: Boolean! (scalar)
+        if (this.AllowIdpInitiatedSso != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "allowIdpInitiatedSso\n" ;
+            } else {
+                s += ind + "allowIdpInitiatedSso\n" ;
             }
         }
         //      C# -> System.Int32? AuthorizedGroupsCount
@@ -360,6 +378,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActiveUserCount != null && ec.Excludes("activeUserCount",true))
         {
             this.ActiveUserCount = null;
+        }
+        //      C# -> System.Boolean? AllowIdpInitiatedSso
+        // GraphQL -> allowIdpInitiatedSso: Boolean! (scalar)
+        if (ec.Includes("allowIdpInitiatedSso",true))
+        {
+            if(this.AllowIdpInitiatedSso == null) {
+
+                this.AllowIdpInitiatedSso = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AllowIdpInitiatedSso != null && ec.Excludes("allowIdpInitiatedSso",true))
+        {
+            this.AllowIdpInitiatedSso = null;
         }
         //      C# -> System.Int32? AuthorizedGroupsCount
         // GraphQL -> authorizedGroupsCount: Int! (scalar)

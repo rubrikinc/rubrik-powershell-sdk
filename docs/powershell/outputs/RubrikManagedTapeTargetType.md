@@ -1,10 +1,6 @@
 ### RubrikManagedTapeTargetType
 Specific information for Q-star target created on Rubrik.
 
-- connectionStatus: ConnectionStatusType
-  - Connection status of the tape target.
-- syncStatus: TargetSyncStatus
-  - Sync status of tape target.
 - hostName: System.String
   - Name of the target host.
 - hostPort: System.Int32
@@ -15,10 +11,12 @@ Specific information for Q-star target created on Rubrik.
   - Destination folder name of target.
 - username: System.String
   - Username of the target.
+- syncStatus: TargetSyncStatus
+  - Sync status of tape target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the tape target.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -53,3 +51,5 @@ Specific information for Q-star target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

@@ -1,6 +1,6 @@
 ### AuthCounts
 Represents the counts of apps in an O365 service
- type based on their authentication status.
+type based on their authentication status.
 
 - authenticated: System.Int32
   - The count of authenticated apps for the service type.

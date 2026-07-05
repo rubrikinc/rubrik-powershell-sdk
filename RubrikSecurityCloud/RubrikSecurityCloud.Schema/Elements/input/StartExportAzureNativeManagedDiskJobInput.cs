@@ -95,15 +95,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldUseReplica")]
         public System.Boolean? ShouldUseReplica { get; set; }
 
+        //      C# -> System.String? ArchivedSnapshotId
+        // GraphQL -> archivedSnapshotId: UUID (scalar)
+        [JsonProperty("archivedSnapshotId")]
+        public System.String? ArchivedSnapshotId { get; set; }
+
         //      C# -> AzureSnapshotType? SnapshotType
         // GraphQL -> snapshotType: AzureSnapshotType (enum)
         [JsonProperty("snapshotType")]
         public AzureSnapshotType? SnapshotType { get; set; }
 
-        //      C# -> System.String? ArchivedSnapshotId
-        // GraphQL -> archivedSnapshotId: UUID (scalar)
-        [JsonProperty("archivedSnapshotId")]
-        public System.String? ArchivedSnapshotId { get; set; }
+        //      C# -> RecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: RecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public RecoveryPurpose? RecoveryPurpose { get; set; }
 
 
         #endregion

@@ -2,12 +2,14 @@
 The request object includes parameters such as backupSessions and backupParallelism to update the Db2 database properties on the Rubrik cluster.
 
 - isBackupCompressionEnabled: System.Boolean
-  - When true, Db2 backups are taken with compression. When false or unset, backups are not compressed.
+  - Supported in v9.6+
+When true, Db2 backups are taken with compression. When false or unset, backups are not compressed.
 - backupParallelism: System.Int32
   - Supported in v9.0+
 Specifies the value of the configuration parameter for parallelism in backup operations.
 - backupCompressionLibraryPath: System.String
-  - Absolute path on the Db2 host to a custom compression library to load
+  - Supported in v9.6+
+Absolute path on the Db2 host to a custom compression library to load
 with the backup. Server-side validation enforces a 4096-character cap
 and a per-platform character allowlist.
 Linux/AIX path format:  /<allowed-chars>; allowed chars are A-Z a-z 0-9 / _ . - and space

@@ -95,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("networkAccessType")]
         public AzureStorageAccountNetworkAccess? NetworkAccessType { get; set; }
 
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        [JsonProperty("sourceWorkloadCloud")]
+        public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
+
         //      C# -> AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: AzureCloudType (enum)
         [JsonProperty("azureCloudType")]

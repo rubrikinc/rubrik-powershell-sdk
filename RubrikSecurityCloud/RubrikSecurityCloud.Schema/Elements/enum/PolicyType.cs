@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POLICY_TYPE_MICROSOFT_DEFENDER")]
         POLICY_TYPE_MICROSOFT_DEFENDER,
 
+        [EnumMember(Value = "POLICY_TYPE_SIGNIN_ANOMALY")]
+        POLICY_TYPE_SIGNIN_ANOMALY,
+
         [EnumMember(Value = "POLICY_TYPE_UNSPECIFIED")]
         POLICY_TYPE_UNSPECIFIED
 

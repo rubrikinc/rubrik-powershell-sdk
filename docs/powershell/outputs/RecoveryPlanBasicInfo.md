@@ -17,6 +17,8 @@ Basic information about the recovery plans.
   - Source location information.
 - targetLocation: RecoveryPlanLocation
   - Target location information.
+- numChildren: System.Int32
+  - Number of non-archived child objects in the recovery plan.
 - recoveryPlanStats: RecoveryPlanStats
   - Recovery statistics for this recovery plan.
 - targetConsistencyInfo: RecoveryPlanTargetConsistencyInfo

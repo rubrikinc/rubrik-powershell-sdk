@@ -33,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
 
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        [JsonProperty("hostId")]
+        public System.String? HostId { get; set; }
+
 
         #endregion
 

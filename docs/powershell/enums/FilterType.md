@@ -93,3 +93,4 @@ FilterType represents the possible types of filters.
 - SECURITY_IDENTITY_EVENT_CHANGED_ATT_OLD_VAL - Identity event changed attribute old value.
 - SECURITY_IDENTITY_EVENT_CHANGED_ATT_NEW_VAL - Identity event changed attribute new value.
 - SECURITY_IDENTITY_EVENT_TITLE - Identity event title attribute.
+- SECURITY_IDENTITY_EVENT_GROUP_IS_PRIVILEGED - Identity event group is privileged filter.

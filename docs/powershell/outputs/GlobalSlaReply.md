@@ -1,10 +1,6 @@
 ### GlobalSlaReply
 Metadata for rendering an SLA Domain.
 
-- id: System.String
-  - SLA Domain ID.
-- name: System.String
-  - SLA Domain name.
 - description: System.String
   - Description of the SLA Domain.
 - protectedObjectCount: System.Int32
@@ -33,12 +29,12 @@ Metadata for rendering an SLA Domain.
   - First full backup windows.
 - backupWindows: list of BackupWindows
   - Backup windows for the SLA Domain.
+- backupWindowSpec: BackupWindowSpec
+  - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
 - clusterToSyncStatusMap: list of GlobalSlaSyncStatuss
   - Sync status of the clusters.
 - logConfig: LogConfigResult
   - Log configuration of the SLA Domain.
-- objectSpecificConfigs: ObjectSpecificConfigs
-  - The object-specific configurations of the SLA Domain.
 - objectTypes: list of SlaObjectTypes
   - The object-types supported by the SLA Domain.
 - clusterUuid: System.String
@@ -51,33 +47,37 @@ Metadata for rendering an SLA Domain.
   - Information about Rubrik clusters where this SLA Domain is paused.
 - isRetentionLockedSla: System.Boolean
   - Specifies if this SLA Domain is retention-locked or not.
-- backupType: BackupType
-  - Type of backup.
 - retentionLockMode: RetentionLockMode
   - Specifies the retention lock mode when enabled for the SLA Domain.
-- allOrgsWithAccess: list of Orgs
-  - This field is deprecated.
-- allOrgsHavingAccess: list of SlaAssociatedOrganizations
-  - Specifies the list of organizations that have view access for the SLA Domain.
-- ownerOrgName: System.String
-  - This field is deprecated.
-- ownerOrg: SlaAssociatedOrganization
-  - Specifies the owner organization of the SLA Domain.
-- backupWindowSpec: BackupWindowSpec
-  - Group of backup windows allowing backup termination. This groups regular backup windows and first full backup windows together with a shared setting that controls whether backups should be automatically terminated when they run longer than their allocated backup window.
-- replicationSpec: ReplicationSpec
-  - Replication specification for the SLA Domain.
-- version: System.String
-  - Version for the SLA Domain.
 - archivalLocationsUpgradeInfo: list of ArchivalLocationUpgradeInfos
   - Upgrade information about the configured archival locations and cascading archival locations.
 - isReadOnly: System.Boolean
   - Specifies whether the SLA Domain is read-only.
-- sourceClusters: list of SlaDataLocationClusters
-  - Source clusters configured in the SLA Domain.
 - backupLocationSpecs: list of BackupLocationSpecs
   - List of backup location specifications for the SLA Domain.
-- haPolicy: HaPolicy
-  - HA policy of the HA SLA Domain.
+- backupType: BackupType
+  - Type of backup.
 - purpose: SlaPurpose
   - Purpose of the SLA Domain.
+- replicationSpec: ReplicationSpec
+  - Replication specification for the SLA Domain.
+- allOrgsHavingAccess: list of SlaAssociatedOrganizations
+  - Specifies the list of organizations that have view access for the SLA Domain.
+- allOrgsWithAccess: list of Orgs
+  - This field is deprecated.
+- ownerOrg: SlaAssociatedOrganization
+  - Specifies the owner organization of the SLA Domain.
+- ownerOrgName: System.String
+  - This field is deprecated.
+- sourceClusters: list of SlaDataLocationClusters
+  - Source clusters configured in the SLA Domain.
+- haPolicy: HaPolicy
+  - HA policy of the HA SLA Domain.
+- id: System.String
+  - The ID of the SLA Domain.
+- name: System.String
+  - The name of the SLA Domain.
+- version: System.String
+  - The version of the SLA Domain.
+- objectSpecificConfigs: ObjectSpecificConfigs
+  - The object-specific configurations of the SLA Domain.

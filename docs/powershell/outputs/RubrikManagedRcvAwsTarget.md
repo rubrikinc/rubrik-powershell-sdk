@@ -1,26 +1,24 @@
 ### RubrikManagedRcvAwsTarget
-Specific information for Rubrik Cloud Vault (RCV)AWS target created on Rubrik.
+Specific information for Rubrik Cloud Vault (RCV) AWS target created on Rubrik.
 
 - bucket: System.String
   - Specifies the bucket for the RCV AWS archival target.
-- shouldBypassProxy: System.Boolean
-  - Specifies whether the proxy settings is bypassed for  the RCV AWS archival target.
-- syncStatus: TargetSyncStatus
-  - Sync status of RCV AWS target.
 - region: RcsRegionEnumType
   - Region of RCV AWS target.
 - tier: RcsTierEnumType
-  - Tiers for RCV AWS target.
+  - Tier for RCV AWS target.
 - redundancy: RcvRedundancy
-  - Redundancy for RCV Azure target.
+  - Redundancy for RCV AWS target.
+- syncStatus: TargetSyncStatus
+  - Sync status of RCV AWS target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
 - encryptionType: TargetEncryptionTypeEnum
-  - Encryption type to be used for the S3-compatible target.
+  - Encryption type to be used for the RCV AWS target.
+- shouldBypassProxy: System.Boolean
+  - Specifies whether the proxy settings is bypassed for the RCV AWS archival target.
 - rcvConversion: list of RcvConversionTypes
   - List of conversions for this RCV location.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -55,3 +53,5 @@ Specific information for Rubrik Cloud Vault (RCV)AWS target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

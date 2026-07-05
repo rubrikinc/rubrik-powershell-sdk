@@ -208,6 +208,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	exocomputeCloudAccountId = $someString
     /// 	# REQUIRED
     /// 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+    /// 	# OPTIONAL
+    /// 	cloudSpecificParams = @{
+    /// 		# OPTIONAL
+    /// 		awsParams = @{
+    /// 			# OPTIONAL
+    /// 			shouldEnableGatewayKeyCreation = $someBoolean
+    /// 			# OPTIONAL
+    /// 			shouldEnableAutomatedKeySharing = $someBoolean
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -580,6 +590,16 @@ $query.Var.input = @{
 	exocomputeCloudAccountId = $someString
 	# REQUIRED
 	cloudVendor = $someCloudVendor # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudVendor]) for enum values.
+	# OPTIONAL
+	cloudSpecificParams = @{
+		# OPTIONAL
+		awsParams = @{
+			# OPTIONAL
+			shouldEnableGatewayKeyCreation = $someBoolean
+			# OPTIONAL
+			shouldEnableAutomatedKeySharing = $someBoolean
+		}
+	}
 }"
             );
         }

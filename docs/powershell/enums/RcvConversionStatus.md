@@ -7,3 +7,5 @@ Rubrik Cloud Vault (RCV) redundancy conversion status.
 - INTERMEDIATE_FAILED - Rubrik Cloud Vault (RCV) conversion status intermediate failed.
 - FAILED - Rubrik Cloud Vault (RCV) conversion status failed.
 - SUCCEEDED - Rubrik Cloud Vault (RCV) conversion status succeeded.
+- POST_CONVERSION_IN_PROGRESS - Rubrik Cloud Vault (RCV) conversion status post-processing in progress.
+- POST_CONVERSION_SUCCEEDED - Rubrik Cloud Vault (RCV) conversion status post-processing succeeded.

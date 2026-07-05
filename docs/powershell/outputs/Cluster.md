@@ -65,6 +65,8 @@ A Rubrik CDM Cluster.
   - The cluster nodes.
 - clusterDiskConnection: ClusterDiskConnection
   - The cluster disks.
+- snappableConnection: SnappableConnection
+  - The cluster's snappables.
 - metricTimeSeries: list of metricTimeSeriess
   - The metric time series of a cluster.
 - metricTimeSeriesNew: list of ClusterMetricTimeSeriesNews
@@ -129,5 +131,3 @@ A Rubrik CDM Cluster.
   - The organizations to which this cluster is authorized.
 - activitySeriesConnection: ActivitySeriesConnection
   - The cluster's activity series.
-- snappableConnection: SnappableConnection
-  - The cluster's snappables.

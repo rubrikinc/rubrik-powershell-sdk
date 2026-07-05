@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("region")]
         public AwsRegion? Region { get; set; }
 
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        [JsonProperty("sourceWorkloadCloud")]
+        public SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
+
         //      C# -> AwsStorageClass? StorageClass
         // GraphQL -> storageClass: AwsStorageClass! (enum)
         [JsonProperty("storageClass")]
@@ -99,6 +104,7 @@ namespace RubrikSecurityCloud.Types
         CloudNativeLocTemplateType? CloudNativeLocTemplateType = null,
         TargetEncryptionTypeEnum? EncryptionType = null,
         AwsRegion? Region = null,
+        SourceWorkloadCloud? SourceWorkloadCloud = null,
         AwsStorageClass? StorageClass = null,
         TargetType? TargetType = null,
         CloudAccount? CloudAccount = null,
@@ -119,6 +125,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Region != null ) {
             this.Region = Region;
+        }
+        if ( SourceWorkloadCloud != null ) {
+            this.SourceWorkloadCloud = SourceWorkloadCloud;
         }
         if ( StorageClass != null ) {
             this.StorageClass = StorageClass;
@@ -189,6 +198,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "region\n" ;
             } else {
                 s += ind + "region\n" ;
+            }
+        }
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        if (this.SourceWorkloadCloud != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sourceWorkloadCloud\n" ;
+            } else {
+                s += ind + "sourceWorkloadCloud\n" ;
             }
         }
         //      C# -> AwsStorageClass? StorageClass
@@ -351,6 +369,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Region != null && ec.Excludes("region",true))
         {
             this.Region = null;
+        }
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        if (ec.Includes("sourceWorkloadCloud",true))
+        {
+            if(this.SourceWorkloadCloud == null) {
+
+                this.SourceWorkloadCloud = new SourceWorkloadCloud();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SourceWorkloadCloud != null && ec.Excludes("sourceWorkloadCloud",true))
+        {
+            this.SourceWorkloadCloud = null;
         }
         //      C# -> AwsStorageClass? StorageClass
         // GraphQL -> storageClass: AwsStorageClass! (enum)

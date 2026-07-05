@@ -171,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRESQL")]
         POSTGRESQL,
 
+        [EnumMember(Value = "POWER_PLATFORM")]
+        POWER_PLATFORM,
+
         [EnumMember(Value = "PROXMOX")]
         PROXMOX,
 

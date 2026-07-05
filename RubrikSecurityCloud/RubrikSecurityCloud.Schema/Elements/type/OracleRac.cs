@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!]! (scalar)
+        [JsonProperty("backupNodes")]
+        public List<System.String>? BackupNodes { get; set; }
+
         //      C# -> System.Boolean? DistributeBackupsAutomatically
         // GraphQL -> distributeBackupsAutomatically: Boolean! (scalar)
         [JsonProperty("distributeBackupsAutomatically")]
@@ -80,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
 
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
@@ -106,10 +116,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String! (scalar)
+        [JsonProperty("primaryNode")]
+        public System.String? PrimaryNode { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
+
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!]! (scalar)
+        [JsonProperty("secondaryNodes")]
+        public List<System.String>? SecondaryNodes { get; set; }
+
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean! (scalar)
+        [JsonProperty("shouldEnableMultiNodeBackup")]
+        public System.Boolean? ShouldEnableMultiNodeBackup { get; set; }
 
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -289,15 +314,20 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        List<System.String>? BackupNodes = null,
         System.Boolean? DistributeBackupsAutomatically = null,
         System.Int32? HostLogRetentionHours = null,
         System.String? Id = null,
+        System.Boolean? IsReplica = null,
         System.Int32? LogBackupFrequency = null,
         System.Int32? LogRetentionHours = null,
         System.String? Name = null,
         System.Int64? NumChannels = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.String? PrimaryNode = null,
         System.Int32? ReplicatedObjectCount = null,
+        List<System.String>? SecondaryNodes = null,
+        System.Boolean? ShouldEnableMultiNodeBackup = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -349,6 +379,9 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( BackupNodes != null ) {
+            this.BackupNodes = BackupNodes;
+        }
         if ( DistributeBackupsAutomatically != null ) {
             this.DistributeBackupsAutomatically = DistributeBackupsAutomatically;
         }
@@ -357,6 +390,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( LogBackupFrequency != null ) {
             this.LogBackupFrequency = LogBackupFrequency;
@@ -373,8 +409,17 @@ namespace RubrikSecurityCloud.Types
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
+        if ( PrimaryNode != null ) {
+            this.PrimaryNode = PrimaryNode;
+        }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
+        }
+        if ( SecondaryNodes != null ) {
+            this.SecondaryNodes = SecondaryNodes;
+        }
+        if ( ShouldEnableMultiNodeBackup != null ) {
+            this.ShouldEnableMultiNodeBackup = ShouldEnableMultiNodeBackup;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -557,6 +602,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!]! (scalar)
+        if (this.BackupNodes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupNodes\n" ;
+            } else {
+                s += ind + "backupNodes\n" ;
+            }
+        }
         //      C# -> System.Boolean? DistributeBackupsAutomatically
         // GraphQL -> distributeBackupsAutomatically: Boolean! (scalar)
         if (this.DistributeBackupsAutomatically != null) {
@@ -582,6 +636,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Int32? LogBackupFrequency
@@ -629,6 +692,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "numWorkloadDescendants\n" ;
             }
         }
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String! (scalar)
+        if (this.PrimaryNode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "primaryNode\n" ;
+            } else {
+                s += ind + "primaryNode\n" ;
+            }
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount != null) {
@@ -636,6 +708,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "replicatedObjectCount\n" ;
             } else {
                 s += ind + "replicatedObjectCount\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!]! (scalar)
+        if (this.SecondaryNodes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "secondaryNodes\n" ;
+            } else {
+                s += ind + "secondaryNodes\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean! (scalar)
+        if (this.ShouldEnableMultiNodeBackup != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldEnableMultiNodeBackup\n" ;
+            } else {
+                s += ind + "shouldEnableMultiNodeBackup\n" ;
             }
         }
         //      C# -> System.Boolean? SlaPauseStatus
@@ -1089,6 +1179,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = null;
         }
+        //      C# -> List<System.String>? BackupNodes
+        // GraphQL -> backupNodes: [String!]! (scalar)
+        if (ec.Includes("backupNodes",true))
+        {
+            if(this.BackupNodes == null) {
+
+                this.BackupNodes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupNodes != null && ec.Excludes("backupNodes",true))
+        {
+            this.BackupNodes = null;
+        }
         //      C# -> System.Boolean? DistributeBackupsAutomatically
         // GraphQL -> distributeBackupsAutomatically: Boolean! (scalar)
         if (ec.Includes("distributeBackupsAutomatically",true))
@@ -1139,6 +1246,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
@@ -1225,6 +1349,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.NumWorkloadDescendants = null;
         }
+        //      C# -> System.String? PrimaryNode
+        // GraphQL -> primaryNode: String! (scalar)
+        if (ec.Includes("primaryNode",true))
+        {
+            if(this.PrimaryNode == null) {
+
+                this.PrimaryNode = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrimaryNode != null && ec.Excludes("primaryNode",true))
+        {
+            this.PrimaryNode = null;
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (ec.Includes("replicatedObjectCount",true))
@@ -1241,6 +1382,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjectCount != null && ec.Excludes("replicatedObjectCount",true))
         {
             this.ReplicatedObjectCount = null;
+        }
+        //      C# -> List<System.String>? SecondaryNodes
+        // GraphQL -> secondaryNodes: [String!]! (scalar)
+        if (ec.Includes("secondaryNodes",true))
+        {
+            if(this.SecondaryNodes == null) {
+
+                this.SecondaryNodes = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SecondaryNodes != null && ec.Excludes("secondaryNodes",true))
+        {
+            this.SecondaryNodes = null;
+        }
+        //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
+        // GraphQL -> shouldEnableMultiNodeBackup: Boolean! (scalar)
+        if (ec.Includes("shouldEnableMultiNodeBackup",true))
+        {
+            if(this.ShouldEnableMultiNodeBackup == null) {
+
+                this.ShouldEnableMultiNodeBackup = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldEnableMultiNodeBackup != null && ec.Excludes("shouldEnableMultiNodeBackup",true))
+        {
+            this.ShouldEnableMultiNodeBackup = null;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

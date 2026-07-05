@@ -114,6 +114,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cyberEventLockdownMode")]
         public List<ClusterCyberEventLockdownMode>? CyberEventLockdownMode { get; set; }
 
+        //      C# -> System.Boolean? IsAssignedByParentAccount
+        // GraphQL -> isAssignedByParentAccount: Boolean (scalar)
+        [JsonProperty("isAssignedByParentAccount")]
+        public System.Boolean? IsAssignedByParentAccount { get; set; }
+
 
         #endregion
 

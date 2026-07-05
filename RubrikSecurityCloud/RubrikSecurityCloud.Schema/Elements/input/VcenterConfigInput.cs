@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldEnableHotAddProxyForOnPrem")]
         public System.Boolean? ShouldEnableHotAddProxyForOnPrem { get; set; }
 
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean (scalar)
+        [JsonProperty("isComputeVisibilityFilterDisabled")]
+        public System.Boolean? IsComputeVisibilityFilterDisabled { get; set; }
+
 
         #endregion
 

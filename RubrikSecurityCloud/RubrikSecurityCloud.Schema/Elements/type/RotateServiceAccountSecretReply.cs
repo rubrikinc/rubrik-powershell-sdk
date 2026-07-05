@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> List<System.String>? SuspendedTprPolicyIds
+        // GraphQL -> suspendedTprPolicyIds: [String!]! (scalar)
+        [JsonProperty("suspendedTprPolicyIds")]
+        public List<System.String>? SuspendedTprPolicyIds { get; set; }
+
 
         #endregion
 
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         System.String? AccessTokenUri = null,
         System.String? ClientId = null,
         System.String? ClientSecret = null,
-        System.String? Name = null
+        System.String? Name = null,
+        List<System.String>? SuspendedTprPolicyIds = null
     ) 
     {
         if ( AccessTokenUri != null ) {
@@ -67,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( SuspendedTprPolicyIds != null ) {
+            this.SuspendedTprPolicyIds = SuspendedTprPolicyIds;
         }
         return this;
     }
@@ -116,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> List<System.String>? SuspendedTprPolicyIds
+        // GraphQL -> suspendedTprPolicyIds: [String!]! (scalar)
+        if (this.SuspendedTprPolicyIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "suspendedTprPolicyIds\n" ;
+            } else {
+                s += ind + "suspendedTprPolicyIds\n" ;
             }
         }
         return s;
@@ -192,6 +210,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> List<System.String>? SuspendedTprPolicyIds
+        // GraphQL -> suspendedTprPolicyIds: [String!]! (scalar)
+        if (ec.Includes("suspendedTprPolicyIds",true))
+        {
+            if(this.SuspendedTprPolicyIds == null) {
+
+                this.SuspendedTprPolicyIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SuspendedTprPolicyIds != null && ec.Excludes("suspendedTprPolicyIds",true))
+        {
+            this.SuspendedTprPolicyIds = null;
         }
     }
 

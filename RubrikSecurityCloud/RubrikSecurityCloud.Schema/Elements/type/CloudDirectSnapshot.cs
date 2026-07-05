@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("target")]
         public System.String? Target { get; set; }
 
+        //      C# -> System.String? TargetId
+        // GraphQL -> targetId: UUID (scalar)
+        [JsonProperty("targetId")]
+        public System.String? TargetId { get; set; }
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         [JsonProperty("workloadId")]
@@ -223,6 +228,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SnappableId = null,
         System.String? SystemId = null,
         System.String? Target = null,
+        System.String? TargetId = null,
         System.String? WorkloadId = null,
         LatestUserNote? LatestUserNote = null,
         CloudDirectSnapshotRetentionInfo? SnapshotRetentionInfo = null,
@@ -311,6 +317,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Target != null ) {
             this.Target = Target;
+        }
+        if ( TargetId != null ) {
+            this.TargetId = TargetId;
         }
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
@@ -593,6 +602,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "target\n" ;
             } else {
                 s += ind + "target\n" ;
+            }
+        }
+        //      C# -> System.String? TargetId
+        // GraphQL -> targetId: UUID (scalar)
+        if (this.TargetId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "targetId\n" ;
+            } else {
+                s += ind + "targetId\n" ;
             }
         }
         //      C# -> System.String? WorkloadId
@@ -1143,6 +1161,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Target != null && ec.Excludes("target",true))
         {
             this.Target = null;
+        }
+        //      C# -> System.String? TargetId
+        // GraphQL -> targetId: UUID (scalar)
+        if (ec.Includes("targetId",true))
+        {
+            if(this.TargetId == null) {
+
+                this.TargetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TargetId != null && ec.Excludes("targetId",true))
+        {
+            this.TargetId = null;
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)

@@ -363,12 +363,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					replicaId = $someString
     /// 					# REQUIRED
     /// 					hostId = $someString
+    /// 					# OPTIONAL
+    /// 					dbUsername = $someString
     /// 					# REQUIRED
     /// 					replicaName = $someString
     /// 					# OPTIONAL
     /// 					username = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			backupNodePreference = @{
+    /// 				# OPTIONAL
+    /// 				excludedReplicaIds = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				orderedReplicaPreferences = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				strategy = $someBackupNodePreferenceStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupNodePreferenceStrategy]) for enum values.
+    /// 			}
     /// 		}
     /// 	}
     /// 	# REQUIRED
@@ -766,12 +781,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					replicaId = $someString
     /// 					# REQUIRED
     /// 					hostId = $someString
+    /// 					# OPTIONAL
+    /// 					dbUsername = $someString
     /// 					# REQUIRED
     /// 					replicaName = $someString
     /// 					# OPTIONAL
     /// 					username = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			backupNodePreference = @{
+    /// 				# OPTIONAL
+    /// 				excludedReplicaIds = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				orderedReplicaPreferences = @(
+    /// 					$someString
+    /// 				)
+    /// 				# REQUIRED
+    /// 				strategy = $someBackupNodePreferenceStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupNodePreferenceStrategy]) for enum values.
+    /// 			}
     /// 		}
     /// 	}
     /// }
@@ -2507,12 +2537,27 @@ $query.Var.input = @{
 					replicaId = $someString
 					# REQUIRED
 					hostId = $someString
+					# OPTIONAL
+					dbUsername = $someString
 					# REQUIRED
 					replicaName = $someString
 					# OPTIONAL
 					username = $someString
 				}
 			)
+			# OPTIONAL
+			backupNodePreference = @{
+				# OPTIONAL
+				excludedReplicaIds = @(
+					$someString
+				)
+				# OPTIONAL
+				orderedReplicaPreferences = @(
+					$someString
+				)
+				# REQUIRED
+				strategy = $someBackupNodePreferenceStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupNodePreferenceStrategy]) for enum values.
+			}
 		}
 	}
 	# REQUIRED
@@ -2838,12 +2883,27 @@ $query.Var.input = @{
 					replicaId = $someString
 					# REQUIRED
 					hostId = $someString
+					# OPTIONAL
+					dbUsername = $someString
 					# REQUIRED
 					replicaName = $someString
 					# OPTIONAL
 					username = $someString
 				}
 			)
+			# OPTIONAL
+			backupNodePreference = @{
+				# OPTIONAL
+				excludedReplicaIds = @(
+					$someString
+				)
+				# OPTIONAL
+				orderedReplicaPreferences = @(
+					$someString
+				)
+				# REQUIRED
+				strategy = $someBackupNodePreferenceStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupNodePreferenceStrategy]) for enum values.
+			}
 		}
 	}
 }"

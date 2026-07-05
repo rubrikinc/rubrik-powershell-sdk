@@ -15,6 +15,9 @@ The filter for selecting resources from the snapshot to export.
 The storage mapping to be used for the export operation.
 - pvcNames: list of System.Strings
   - Supported in v9.1+
+- transforms: K8sTransformsInput
+  - Supported in v9.6+
+Resource transformations to apply during the export operation.
 - virtualMachineRunStrategy: System.String
   - Supported in v9.3+
 Specifies the run strategy of the exported virtual machine.

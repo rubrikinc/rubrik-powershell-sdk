@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostname")]
         public System.String? Hostname { get; set; }
 
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean (scalar)
+        [JsonProperty("isComputeVisibilityFilterDisabled")]
+        public System.Boolean? IsComputeVisibilityFilterDisabled { get; set; }
+
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
         // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
         [JsonProperty("isHotAddProxyEnabledForOnPremVcenter")]
@@ -103,6 +108,7 @@ namespace RubrikSecurityCloud.Types
         VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz = null,
         System.String? ConfiguredSlaDomainPolarisManagedId = null,
         System.String? Hostname = null,
+        System.Boolean? IsComputeVisibilityFilterDisabled = null,
         System.Boolean? IsHotAddProxyEnabledForOnPremVcenter = null,
         System.Boolean? IsIoFilterInstalled = null,
         System.Boolean? IsVmc = null,
@@ -124,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Hostname != null ) {
             this.Hostname = Hostname;
+        }
+        if ( IsComputeVisibilityFilterDisabled != null ) {
+            this.IsComputeVisibilityFilterDisabled = IsComputeVisibilityFilterDisabled;
         }
         if ( IsHotAddProxyEnabledForOnPremVcenter != null ) {
             this.IsHotAddProxyEnabledForOnPremVcenter = IsHotAddProxyEnabledForOnPremVcenter;
@@ -197,6 +206,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hostname\n" ;
             } else {
                 s += ind + "hostname\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean (scalar)
+        if (this.IsComputeVisibilityFilterDisabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComputeVisibilityFilterDisabled\n" ;
+            } else {
+                s += ind + "isComputeVisibilityFilterDisabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
@@ -367,6 +385,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Hostname != null && ec.Excludes("hostname",true))
         {
             this.Hostname = null;
+        }
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean (scalar)
+        if (ec.Includes("isComputeVisibilityFilterDisabled",true))
+        {
+            if(this.IsComputeVisibilityFilterDisabled == null) {
+
+                this.IsComputeVisibilityFilterDisabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComputeVisibilityFilterDisabled != null && ec.Excludes("isComputeVisibilityFilterDisabled",true))
+        {
+            this.IsComputeVisibilityFilterDisabled = null;
         }
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
         // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)

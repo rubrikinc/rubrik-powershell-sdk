@@ -1,14 +1,10 @@
 ### O365CalendarEvent
-An O365 calendar event object.
+A calendar event.
 
-- id: System.String
-  - The ID of the calendar event.
 - name: System.String
   - The subject of the calendar event.
 - eventType: CalendarEventType
   - The type of the calendar event.
-- parentFolderId: System.String
-  - The parent folder ID of the calendar event.
 - organizer: System.String
   - The organizer of the calendar event.
 - attendees: list of System.Strings
@@ -29,3 +25,7 @@ An O365 calendar event object.
   - The recurrence of the event (if part of a series).
 - hierarchyType: ExchangeItemHierarchyType
   - Type of hierarchy for the specified calendar event.
+- id: System.String
+  - The ID of the Microsoft 365 Exchange object.
+- parentFolderId: System.String
+  - The parent folder ID of the object (ROOT indicates root folder).

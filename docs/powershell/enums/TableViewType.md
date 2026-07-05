@@ -87,3 +87,26 @@ from snapshots.
 - CLOUD_OVERLAP_OBJECTS_ALL_TABLE - Table displaying all the cloud overlap objects.
 - ANOMALY_DETECTION_COMPLIANCE_TABLE - Anomaly detection compliance report table.
 - SIGNIN_LOGS_TABLE - Table displaying sign-in logs.
+- PAUSED_OBJECTS_TABLE - Table displaying paused objects.
+- PAUSED_CLUSTERS_TABLE - Table displaying paused clusters.
+- PAUSED_SLA_TABLE - Table displaying paused SLA Domains.
+- CNP_OBJECT_CAPACITY_OVERTIME_ALL_TABLE - Main table for the CNP object capacity over time report.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_CLOUD_ACCOUNT_NAME_TABLE - CNP object capacity over time grouped by cloud account name.
+Declared for future wiring; not yet registered in the V2 adaptor
+or surfaced by the CNP-OCOT report. A separate change will wire
+group-by cloud account when the data model supports it.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_CLOUD_ACCOUNT_ID_TABLE - CNP object capacity over time grouped by cloud account native ID.
+Declared for future wiring; not yet registered in the V2 adaptor
+or surfaced by the CNP-OCOT report.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_OBJECT_TYPE_TABLE - Table displaying CNP object capacity over time for each object type.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE - Table displaying total CNP object capacity over time.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_PROTECTION_STATUS_TABLE - Table displaying CNP object capacity over time for each protection status.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_SOURCE_LOCATION_TABLE - Table displaying CNP object capacity over time for each source location.
+- CNP_OBJECT_CAPACITY_OVERTIME_BY_SLA_DOMAIN_TABLE - Table displaying CNP object capacity over time for each SLA Domain.
+- DNS_ACTIVITY_TABLE - Table displaying DNS activity log entries.
+- CLOUD_COMPLIANCE_ALL_TABLE - All cloud-native objects with compliance status (Cloud Compliance Report).
+- CLOUD_COMPLIANCE_BY_OBJECT_TYPE_TABLE - Cloud Compliance Report grouped by object type.
+- CLOUD_COMPLIANCE_BY_LOCATION_TABLE - Cloud Compliance Report grouped by source location.
+- CLOUD_COMPLIANCE_BY_SLA_TABLE - Cloud Compliance Report grouped by SLA domain.
+- LICENSE_USAGE_TABLE - Table displaying object level license usage report.
+- CONSOLIDATED_LICENSE_USAGE_TABLE - Table displaying consolidated per-child-account license usage report.

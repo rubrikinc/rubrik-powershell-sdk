@@ -69,17 +69,26 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INTUNE_ROLE_ASSIGNMENT")]
         INTUNE_ROLE_ASSIGNMENT,
 
+        [EnumMember(Value = "INTUNE_ROLE_ASSIGNMENT_MEMBER")]
+        INTUNE_ROLE_ASSIGNMENT_MEMBER,
+
         [EnumMember(Value = "INTUNE_ROLE_ASSIGNMENT_SCOPE")]
         INTUNE_ROLE_ASSIGNMENT_SCOPE,
 
         [EnumMember(Value = "INTUNE_ROLE_ASSIGNMENT_SCOPE_TAG")]
         INTUNE_ROLE_ASSIGNMENT_SCOPE_TAG,
 
+        [EnumMember(Value = "MANAGER")]
+        MANAGER,
+
         [EnumMember(Value = "MEMBER")]
         MEMBER,
 
         [EnumMember(Value = "NOTIFICATION_POLICY_ACTION")]
         NOTIFICATION_POLICY_ACTION,
+
+        [EnumMember(Value = "NOTIFICATION_RECIPIENT")]
+        NOTIFICATION_RECIPIENT,
 
         [EnumMember(Value = "OWNER")]
         OWNER,
@@ -116,6 +125,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REUSABLE_SETTING_REFERENCE")]
         REUSABLE_SETTING_REFERENCE,
+
+        [EnumMember(Value = "REVIEWER")]
+        REVIEWER,
 
         [EnumMember(Value = "ROLE_ASSIGNMENT")]
         ROLE_ASSIGNMENT,

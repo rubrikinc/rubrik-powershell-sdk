@@ -84,6 +84,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectFid")]
         public List<System.String>? ObjectFid { get; set; }
 
+        //      C# -> List<AwsServiceType>? AwsServiceType
+        // GraphQL -> awsServiceType: [AwsServiceType!] (enum)
+        [JsonProperty("awsServiceType")]
+        public List<AwsServiceType>? AwsServiceType { get; set; }
+
 
         #endregion
 

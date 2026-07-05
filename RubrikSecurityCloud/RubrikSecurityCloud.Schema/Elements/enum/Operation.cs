@@ -237,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EDIT_STORAGE_SETTINGS")]
         EDIT_STORAGE_SETTINGS,
 
+        [EnumMember(Value = "EDIT_SUPPRESS_EVENT_NOTIFICATION_RULE")]
+        EDIT_SUPPRESS_EVENT_NOTIFICATION_RULE,
+
         [EnumMember(Value = "EDIT_SYSTEM_PREFERENCE")]
         EDIT_SYSTEM_PREFERENCE,
 
@@ -330,6 +333,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_FAILOVER_GROUP")]
         MANAGE_FAILOVER_GROUP,
 
+        [EnumMember(Value = "MANAGE_FEATURE_ENABLEMENT")]
+        MANAGE_FEATURE_ENABLEMENT,
+
         [EnumMember(Value = "MANAGE_GOOGLE_SECOPS_INTEGRATION")]
         MANAGE_GOOGLE_SECOPS_INTEGRATION,
 
@@ -380,6 +386,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_PAM_INTEGRATION")]
         MANAGE_PAM_INTEGRATION,
+
+        [EnumMember(Value = "MANAGE_PAN_XSOAR_INTEGRATION")]
+        MANAGE_PAN_XSOAR_INTEGRATION,
 
         [EnumMember(Value = "MANAGE_PROTECTION")]
         MANAGE_PROTECTION,
@@ -681,6 +690,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_FAILOVER_GROUP")]
         VIEW_FAILOVER_GROUP,
 
+        [EnumMember(Value = "VIEW_FEATURE_ENABLEMENT")]
+        VIEW_FEATURE_ENABLEMENT,
+
         [EnumMember(Value = "VIEW_GCP_CLOUD_ACCOUNT")]
         VIEW_GCP_CLOUD_ACCOUNT,
 
@@ -728,6 +740,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_ORGANIZATION_NETWORKS")]
         VIEW_ORGANIZATION_NETWORKS,
+
+        [EnumMember(Value = "VIEW_PAN_XSOAR_INTEGRATION")]
+        VIEW_PAN_XSOAR_INTEGRATION,
 
         [EnumMember(Value = "VIEW_PERSONAL_ACCESS_TOKENS")]
         VIEW_PERSONAL_ACCESS_TOKENS,
@@ -782,6 +797,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_SUPPORT_USER_SESSIONS")]
         VIEW_SUPPORT_USER_SESSIONS,
+
+        [EnumMember(Value = "VIEW_SUPPRESS_EVENT_NOTIFICATION_RULE")]
+        VIEW_SUPPRESS_EVENT_NOTIFICATION_RULE,
 
         [EnumMember(Value = "VIEW_SYSLOG")]
         VIEW_SYSLOG,

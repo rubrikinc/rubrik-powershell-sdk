@@ -5,3 +5,5 @@ Input for operation to mark a secondary cluster certificate to be asynchronously
   - Required. ID of certificate to add.
 - clusterUuid: System.String
   - Required. UUID used to identify the cluster the request goes to.
+- hostId: System.String
+  - Host to scope the certificate to.

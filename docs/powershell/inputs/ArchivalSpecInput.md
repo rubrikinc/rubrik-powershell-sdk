@@ -14,4 +14,5 @@ Archiving specification.
 - archivalLocationToClusterMapping: list of ArchivalLocationToClusterMappingInputs
   - Mapping between archival location and Rubrik cluster.
 - isComplianceImmutabilityEnabled: System.Boolean
-  - Deprecated: Compliance Retention Lock for CNP is no longer supported. This field is no longer read or written.
+  - DEPRECATED: Compliance immutability for CNP has been reverted.
+This field is no longer read or written.

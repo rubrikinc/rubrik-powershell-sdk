@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syslogExportRuleV96")]
         public SyslogExportRuleFullInput? SyslogExportRuleV96 { get; set; }
 
+        //      C# -> SyslogExportRuleFullInput? SyslogExportRuleV97
+        // GraphQL -> syslogExportRuleV97: SyslogExportRuleFullInput (input)
+        [JsonProperty("syslogExportRuleV97")]
+        public SyslogExportRuleFullInput? SyslogExportRuleV97 { get; set; }
+
 
         #endregion
 

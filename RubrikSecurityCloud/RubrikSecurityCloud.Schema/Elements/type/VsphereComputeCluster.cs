@@ -91,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ioFilterStatus")]
         public System.String? IoFilterStatus { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -300,6 +305,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? HasDatastoresForRecovery = null,
         System.String? Id = null,
         System.String? IoFilterStatus = null,
+        System.Boolean? IsReplica = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? ReplicatedObjectCount = null,
@@ -365,6 +371,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IoFilterStatus != null ) {
             this.IoFilterStatus = IoFilterStatus;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -590,6 +599,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ioFilterStatus\n" ;
             } else {
                 s += ind + "ioFilterStatus\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1115,6 +1133,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IoFilterStatus != null && ec.Excludes("ioFilterStatus",true))
         {
             this.IoFilterStatus = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

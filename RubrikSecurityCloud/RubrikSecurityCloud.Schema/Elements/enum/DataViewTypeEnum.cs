@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTERS")]
         CLUSTERS,
 
+        [EnumMember(Value = "CONSOLIDATED_LICENSE_USAGE")]
+        CONSOLIDATED_LICENSE_USAGE,
+
         [EnumMember(Value = "DATAGOV_TIMELINE")]
         DATAGOV_TIMELINE,
 

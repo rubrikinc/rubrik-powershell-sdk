@@ -49,6 +49,8 @@
   - Specifies the name of the location where the snapshot is uploaded.
 - isRansomwareInvestigatedSnapshot: System.Boolean
   - Specifies whether the snapshot has been analyzed by Ransomware Detection.
+- isSnapshotSearchable: System.Boolean
+  - Indicates whether snapshot-level file search is available for this snapshot. Might return false while search indexing is actively in progress.
 - slaDomain: SlaDomain
 - snapshotRetentionInfo: RscSnapshotRetentionInfo
   - Snapshot retention-related information for local, archival, and replication locations.

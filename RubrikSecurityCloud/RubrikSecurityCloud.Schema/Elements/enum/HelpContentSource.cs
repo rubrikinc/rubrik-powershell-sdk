@@ -18,6 +18,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ANNOUNCEMENTS")]
+        ANNOUNCEMENTS,
+
+        [EnumMember(Value = "COMPATIBILITY_MATRIX")]
+        COMPATIBILITY_MATRIX,
+
         [EnumMember(Value = "KB_ARTICLES")]
         KB_ARTICLES,
 
@@ -26,6 +32,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PRODUCT_DOCS")]
         PRODUCT_DOCS,
+
+        [EnumMember(Value = "RELEASES_AND_DOCS")]
+        RELEASES_AND_DOCS,
 
         [EnumMember(Value = "SOURCE_UNSPECIFIED")]
         SOURCE_UNSPECIFIED

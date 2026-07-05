@@ -2,6 +2,6 @@
 Key-value pair of string.
 
 - key: System.String
-  - Key of the tag or label.
+  - Key for the tag.
 - value: System.String
-  - Value of the tag or label.
+  - Value for the tag.

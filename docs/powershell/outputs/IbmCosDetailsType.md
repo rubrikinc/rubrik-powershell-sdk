@@ -1,7 +1,9 @@
 ### IbmCosDetailsType
-IBM COS details for target.
+IbmCosDetail is an object representing the information needed to create
+an IBM location.
 
 - provisioningCode: System.String
-  - Provisioning code.
+  - Provisioning code for the location.
 - deploymentType: IbmDeploymentType
-  - IBM deployment type.
+  - DeploymentType represents the type of deployment needed for IBM
+locations.

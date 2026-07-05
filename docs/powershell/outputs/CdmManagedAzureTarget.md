@@ -1,18 +1,16 @@
 ### CdmManagedAzureTarget
-Specific info for Azure target created on Cdm.
+Specific information for Azure target created on CDM cluster.
 
-- id: System.String
-  - ID of the Azure location.
-- isAzureTieringSupported: System.Boolean
-  - Specifies whether Azure archival tiering is supported or not.
 - instanceType: InstanceTypeEnum
   - Instance type of the Azure location.
 - immutabilitySettings: AzureImmutabilitySettingsType
-  - Immutability info of Azure location.
-- cluster: Cluster
-  - The cluster to which this target belongs.
+  - Immutability settings of the Azure archival target.
+- isAzureTieringSupported: System.Boolean
+  - Specifies whether Azure archival tiering is supported or not.
 - targetType: TargetType
   - The type of the target.
+- id: System.String
+  - The ID of the target.
 - name: System.String
   - The name of the target.
 - locationScope: LocationScope
@@ -43,3 +41,5 @@ Specific info for Azure target created on Cdm.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

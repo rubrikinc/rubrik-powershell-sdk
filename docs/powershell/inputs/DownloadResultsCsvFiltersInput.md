@@ -1,5 +1,5 @@
 ### DownloadResultsCsvFiltersInput
-
+Filters applied when downloading file results as CSV.
 
 - analyzerGroupIds: list of System.Strings
   - The analyzer groups used to filter either browse directory or list file results.
@@ -8,7 +8,7 @@
 - listFileResultsSnappablePaths: list of SnappablePathInputs
   - Object FID and optional path for list file results CSV download.
 - listFileResultsSnappableTypes: list of System.Strings
-  - 
+  - Object types used to filter list file results CSV download.
 - listFileResultsSearchText: System.String
   - Search text for filtering file results by path in CSV download.
 - whitelistEnabled: System.Boolean

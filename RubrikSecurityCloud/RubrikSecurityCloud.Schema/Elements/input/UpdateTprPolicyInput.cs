@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("quorumRequirement")]
         public System.Int32? QuorumRequirement { get; set; }
 
+        //      C# -> List<System.String>? ClearSuspensionServiceAccounts
+        // GraphQL -> clearSuspensionServiceAccounts: [String!] (scalar)
+        [JsonProperty("clearSuspensionServiceAccounts")]
+        public List<System.String>? ClearSuspensionServiceAccounts { get; set; }
+
 
         #endregion
 

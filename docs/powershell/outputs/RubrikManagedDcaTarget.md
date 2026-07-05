@@ -1,42 +1,40 @@
 ### RubrikManagedDcaTarget
 Specific information for DCA archival target created on Rubrik cluster.
 
+- bucketName: System.String
+  - Bucket name of the DCA target.
 - s3Endpoint: System.String
   - Amazon S3 endpoint of the DCA target.
 - roleName: System.String
   - Role name provided for the DCA target.
 - agency: System.String
   - Agency provided for the DCA target.
-- certificateContent: System.String
-  - Certificate content provided for the DCA target.
-- kmsMasterKeyId: System.String
-  - KMS master key provided for the DCA target.
-- tokenDuration: System.Int32
-  - Token duration in minutes of the DCA target.
-- connectionStatus: ConnectionStatusType
-  - Connection status of the DCA target.
-- bucketName: System.String
-  - Bucket name of the DCA target.
-- capEndpoint: System.String
-  - CAP endpoint of the DCA target.
-- mission: System.String
-  - Mission of the DCA target.
+- storageClass: AwsStorageClass
+  - Storage class of the DCA target.
 - region: AwsDcaRegion
   - Region of the DCA target.
+- certificateContent: System.String
+  - Certificate content provided for the DCA target.
 - rsaKey: System.String
   - RSA key of the DCA target.
+- kmsMasterKeyId: System.String
+  - KMS master key provided for the DCA target.
+- mission: System.String
+  - Mission of the DCA target.
+- capEndpoint: System.String
+  - CAP endpoint of the DCA target.
+- tokenDuration: System.Int32
+  - Token duration in minutes of the DCA target.
+- awsRetrievalTier: AwsRetrievalTier
+  - AWS retrieval tier of the DCA target.
 - syncStatus: TargetSyncStatus
   - Synchronization status of DCA location.
 - syncFailureReason: System.String
   - Reason for the synchronization failure between this target and Rubrik CDM.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the DCA target.
 - encryptionType: TargetEncryptionTypeEnum
   - Encryption type provided for the DCA target.
-- awsRetrievalTier: AwsRetrievalTier
-  - AWS retrieval tier of the DCA target.
-- storageClass: AwsStorageClass
-  - Storage class of the DCA target.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -71,3 +69,5 @@ Specific information for DCA archival target created on Rubrik cluster.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Policy' API domain:
-    /// AddPolicyObjects, BulkUpdatePolicyViolations, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
+    /// AddPolicyObjects, BulkUpdatePolicyViolations, CreatePolicy, CreateSecurityPolicy, CreateTprPolicy, DeactivatePolicy, DeleteSecurityPolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, UpdateSecurityPolicy, or UpdateTprPolicy.
     /// </summary>
     /// <description>
     /// New-RscMutationPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 20 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddPolicyObjects, BulkUpdatePolicyViolations, CreatePolicy, CreateTprPolicy, DeactivatePolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, or UpdateTprPolicy.
+    /// one of: AddPolicyObjects, BulkUpdatePolicyViolations, CreatePolicy, CreateSecurityPolicy, CreateTprPolicy, DeactivatePolicy, DeleteSecurityPolicy, DeleteTprPolicy, FailoverHaPolicy, GetHealthMonitorPolicyStatus, RemovePolicyObjects, SeedEnabledPolicies, SeedInitialPolicies, SetPasswordComplexityPolicy, UpdateAutoEnablePolicyClusterConfig, UpdateHealthMonitorPolicyStatus, UpdateOrgSecurityPolicy, UpdatePolicy, UpdateSecurityPolicy, or UpdateTprPolicy.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -209,6 +209,265 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateSecurityPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: CreateSecurityPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -Operation CreateSecurityPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policyName = $someString
+    /// 	# REQUIRED
+    /// 	description = $someString
+    /// 	# REQUIRED
+    /// 	policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// 	# REQUIRED
+    /// 	filter = @{
+    /// 		# REQUIRED
+    /// 		filterList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterConfig = @{
+    /// 					# REQUIRED
+    /// 					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 					# REQUIRED
+    /// 					values = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				filterGroupConfig = @{
+    /// 					# REQUIRED
+    /// 					filterList = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							filterConfig = @{
+    /// 								# REQUIRED
+    /// 								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 								# REQUIRED
+    /// 								values = @(
+    /// 									$someString
+    /// 								)
+    /// 								# REQUIRED
+    /// 								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							filterGroupConfig = @{<FilterGroupConfigInput>}
+    /// 						}
+    /// 					)
+    /// 					# REQUIRED
+    /// 					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# REQUIRED
+    /// 		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	policySeverity = $someSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Severity]) for enum values.
+    /// 	# OPTIONAL
+    /// 	policyCategory = $someCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Category]) for enum values.
+    /// 	# OPTIONAL
+    /// 	isAutomationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	automationRules = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			action = @{
+    /// 				# REQUIRED
+    /// 				remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				remediationDetails = @{
+    /// 					# OPTIONAL
+    /// 					ticketInfo = @{
+    /// 						# OPTIONAL
+    /// 						title = $someString
+    /// 						# OPTIONAL
+    /// 						reason = $someString
+    /// 						# OPTIONAL
+    /// 						attachmentTypes = @(
+    /// 							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						comment = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					mipLabelInfo = @{
+    /// 						# OPTIONAL
+    /// 						labelId = $someString
+    /// 						# OPTIONAL
+    /// 						allowDowngrade = $someBoolean
+    /// 						# OPTIONAL
+    /// 						labelName = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					adIrInfo = @{
+    /// 						# OPTIONAL
+    /// 						domainControllerFid = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					ticketDetails = @{
+    /// 						# REQUIRED
+    /// 						ticketContents = @{
+    /// 							# OPTIONAL
+    /// 							title = $someString
+    /// 							# OPTIONAL
+    /// 							description = $someString
+    /// 							# OPTIONAL
+    /// 							comment = $someString
+    /// 							# OPTIONAL
+    /// 							projectKey = $someString
+    /// 							# OPTIONAL
+    /// 							ticketTypeId = $someString
+    /// 							# OPTIONAL
+    /// 							requiredFields = @(
+    /// 								@{
+    /// 									# OPTIONAL
+    /// 									fieldKey = $someString
+    /// 									# REQUIRED
+    /// 									fieldValue = @{
+    /// 										# REQUIRED
+    /// 										fieldType = $someTicketFieldType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TicketFieldType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										stringValue = $someString
+    /// 										# OPTIONAL
+    /// 										numberValue = $someInt64
+    /// 										# OPTIONAL
+    /// 										optionValue = $someString
+    /// 										# OPTIONAL
+    /// 										multiOptionValues = @{
+    /// 											# REQUIRED
+    /// 											values = @(
+    /// 												$someString
+    /// 											)
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										arrayValues = @{
+    /// 											# REQUIRED
+    /// 											values = @(
+    /// 												$someString
+    /// 											)
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										userValue = $someString
+    /// 										# OPTIONAL
+    /// 										dateValue = $someString
+    /// 										# OPTIONAL
+    /// 										datetimeValue = $someString
+    /// 										# OPTIONAL
+    /// 										booleanValue = $someBoolean
+    /// 										# OPTIONAL
+    /// 										textAreaValue = $someString
+    /// 									}
+    /// 								}
+    /// 							)
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						attachmentTypes = @(
+    /// 							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+    /// 						)
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	thresholdFilter = @{
+    /// 		# REQUIRED
+    /// 		filterList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterConfig = @{
+    /// 					# REQUIRED
+    /// 					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 					# REQUIRED
+    /// 					values = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				filterGroupConfig = @{
+    /// 					# REQUIRED
+    /// 					filterList = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							filterConfig = @{
+    /// 								# REQUIRED
+    /// 								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 								# REQUIRED
+    /// 								values = @(
+    /// 									$someString
+    /// 								)
+    /// 								# REQUIRED
+    /// 								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							filterGroupConfig = @{<FilterGroupConfigInput>}
+    /// 						}
+    /// 					)
+    /// 					# REQUIRED
+    /// 					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# REQUIRED
+    /// 		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	policyTypeInfo = @{
+    /// 		# OPTIONAL
+    /// 		identityEventPolicyInfo = @{
+    /// 			# OPTIONAL
+    /// 			eventProviders = @(
+    /// 				$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		identityPolicyInfo = @{
+    /// 			# OPTIONAL
+    /// 			idpType = @(
+    /// 				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		idpPolicyInfo = @{
+    /// 			# OPTIONAL
+    /// 			idpType = @(
+    /// 				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	frameworks = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateSecurityPolicyReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CreateTprPolicy operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -294,6 +553,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteSecurityPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: DeleteSecurityPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -Operation DeleteSecurityPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyId = $someString
+    /// # REQUIRED
+    /// $query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.keepViolationsOpenArg = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -764,6 +1055,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
+    /// 	documentTypeIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
     /// 	updateName = $someBoolean
     /// 	# OPTIONAL
     /// 	updateDescription = $someBoolean
@@ -771,10 +1066,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	updateMode = $someBoolean
     /// 	# OPTIONAL
     /// 	updateAnalyzerIds = $someBoolean
-    /// 	# OPTIONAL
-    /// 	documentTypeIds = @(
-    /// 		$someString
-    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -782,6 +1073,273 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClassificationPolicyDetail
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateSecurityPolicy operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: UpdateSecurityPolicy
+    /// 
+    /// $query = New-RscMutationPolicy -Operation UpdateSecurityPolicy
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	policyId = $someString
+    /// 	# REQUIRED
+    /// 	policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	filter = @{
+    /// 		# REQUIRED
+    /// 		filterList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterConfig = @{
+    /// 					# REQUIRED
+    /// 					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 					# REQUIRED
+    /// 					values = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				filterGroupConfig = @{
+    /// 					# REQUIRED
+    /// 					filterList = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							filterConfig = @{
+    /// 								# REQUIRED
+    /// 								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 								# REQUIRED
+    /// 								values = @(
+    /// 									$someString
+    /// 								)
+    /// 								# REQUIRED
+    /// 								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							filterGroupConfig = @{<FilterGroupConfigInput>}
+    /// 						}
+    /// 					)
+    /// 					# REQUIRED
+    /// 					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# REQUIRED
+    /// 		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	isEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	policyName = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
+    /// 	# OPTIONAL
+    /// 	policySeverity = $someSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Severity]) for enum values.
+    /// 	# OPTIONAL
+    /// 	policyCategory = $someCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Category]) for enum values.
+    /// 	# OPTIONAL
+    /// 	isAutomationEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	automationRules = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			action = @{
+    /// 				# REQUIRED
+    /// 				remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
+    /// 				# OPTIONAL
+    /// 				remediationDetails = @{
+    /// 					# OPTIONAL
+    /// 					ticketInfo = @{
+    /// 						# OPTIONAL
+    /// 						title = $someString
+    /// 						# OPTIONAL
+    /// 						reason = $someString
+    /// 						# OPTIONAL
+    /// 						attachmentTypes = @(
+    /// 							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+    /// 						)
+    /// 						# OPTIONAL
+    /// 						comment = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					mipLabelInfo = @{
+    /// 						# OPTIONAL
+    /// 						labelId = $someString
+    /// 						# OPTIONAL
+    /// 						allowDowngrade = $someBoolean
+    /// 						# OPTIONAL
+    /// 						labelName = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					adIrInfo = @{
+    /// 						# OPTIONAL
+    /// 						domainControllerFid = $someString
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					ticketDetails = @{
+    /// 						# REQUIRED
+    /// 						ticketContents = @{
+    /// 							# OPTIONAL
+    /// 							title = $someString
+    /// 							# OPTIONAL
+    /// 							description = $someString
+    /// 							# OPTIONAL
+    /// 							comment = $someString
+    /// 							# OPTIONAL
+    /// 							projectKey = $someString
+    /// 							# OPTIONAL
+    /// 							ticketTypeId = $someString
+    /// 							# OPTIONAL
+    /// 							requiredFields = @(
+    /// 								@{
+    /// 									# OPTIONAL
+    /// 									fieldKey = $someString
+    /// 									# REQUIRED
+    /// 									fieldValue = @{
+    /// 										# REQUIRED
+    /// 										fieldType = $someTicketFieldType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TicketFieldType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										stringValue = $someString
+    /// 										# OPTIONAL
+    /// 										numberValue = $someInt64
+    /// 										# OPTIONAL
+    /// 										optionValue = $someString
+    /// 										# OPTIONAL
+    /// 										multiOptionValues = @{
+    /// 											# REQUIRED
+    /// 											values = @(
+    /// 												$someString
+    /// 											)
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										arrayValues = @{
+    /// 											# REQUIRED
+    /// 											values = @(
+    /// 												$someString
+    /// 											)
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										userValue = $someString
+    /// 										# OPTIONAL
+    /// 										dateValue = $someString
+    /// 										# OPTIONAL
+    /// 										datetimeValue = $someString
+    /// 										# OPTIONAL
+    /// 										booleanValue = $someBoolean
+    /// 										# OPTIONAL
+    /// 										textAreaValue = $someString
+    /// 									}
+    /// 								}
+    /// 							)
+    /// 						}
+    /// 						# OPTIONAL
+    /// 						attachmentTypes = @(
+    /// 							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+    /// 						)
+    /// 					}
+    /// 				}
+    /// 			}
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	thresholdFilter = @{
+    /// 		# REQUIRED
+    /// 		filterList = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				filterConfig = @{
+    /// 					# REQUIRED
+    /// 					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 					# REQUIRED
+    /// 					values = @(
+    /// 						$someString
+    /// 					)
+    /// 					# REQUIRED
+    /// 					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				filterGroupConfig = @{
+    /// 					# REQUIRED
+    /// 					filterList = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							filterConfig = @{
+    /// 								# REQUIRED
+    /// 								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+    /// 								# REQUIRED
+    /// 								values = @(
+    /// 									$someString
+    /// 								)
+    /// 								# REQUIRED
+    /// 								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							filterGroupConfig = @{<FilterGroupConfigInput>}
+    /// 						}
+    /// 					)
+    /// 					# REQUIRED
+    /// 					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# REQUIRED
+    /// 		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	keepViolationsOpen = $someBoolean
+    /// 	# OPTIONAL
+    /// 	frameworks = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	policyTypeInfo = @{
+    /// 		# OPTIONAL
+    /// 		identityEventPolicyInfo = @{
+    /// 			# OPTIONAL
+    /// 			eventProviders = @(
+    /// 				$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		identityPolicyInfo = @{
+    /// 			# OPTIONAL
+    /// 			idpType = @(
+    /// 				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		idpPolicyInfo = @{
+    /// 			# OPTIONAL
+    /// 			idpType = @(
+    /// 				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// 			)
+    /// 		}
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	forceUpdateThresholdFilter = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -836,6 +1394,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	quorumRequirement = $someInt
+    /// 	# OPTIONAL
+    /// 	clearSuspensionServiceAccounts = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -869,8 +1431,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "AddPolicyObjects",
                 "BulkUpdatePolicyViolations",
                 "CreatePolicy",
+                "CreateSecurityPolicy",
                 "CreateTprPolicy",
                 "DeactivatePolicy",
+                "DeleteSecurityPolicy",
                 "DeleteTprPolicy",
                 "FailoverHaPolicy",
                 "GetHealthMonitorPolicyStatus",
@@ -882,6 +1446,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateHealthMonitorPolicyStatus",
                 "UpdateOrgSecurityPolicy",
                 "UpdatePolicy",
+                "UpdateSecurityPolicy",
                 "UpdateTprPolicy",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
@@ -907,11 +1472,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreatePolicy":
                         this.ProcessRecord_CreatePolicy();
                         break;
+                    case "CreateSecurityPolicy":
+                        this.ProcessRecord_CreateSecurityPolicy();
+                        break;
                     case "CreateTprPolicy":
                         this.ProcessRecord_CreateTprPolicy();
                         break;
                     case "DeactivatePolicy":
                         this.ProcessRecord_DeactivatePolicy();
+                        break;
+                    case "DeleteSecurityPolicy":
+                        this.ProcessRecord_DeleteSecurityPolicy();
                         break;
                     case "DeleteTprPolicy":
                         this.ProcessRecord_DeleteTprPolicy();
@@ -945,6 +1516,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdatePolicy":
                         this.ProcessRecord_UpdatePolicy();
+                        break;
+                    case "UpdateSecurityPolicy":
+                        this.ProcessRecord_UpdateSecurityPolicy();
                         break;
                     case "UpdateTprPolicy":
                         this.ProcessRecord_UpdateTprPolicy();
@@ -987,6 +1561,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createSecurityPolicy.
+        internal void ProcessRecord_CreateSecurityPolicy()
+        {
+            this._logger.name += " -CreateSecurityPolicy";
+            // Create new graphql operation createSecurityPolicy
+            InitMutationCreateSecurityPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createTprPolicy.
         internal void ProcessRecord_CreateTprPolicy()
         {
@@ -1002,6 +1585,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeactivatePolicy";
             // Create new graphql operation deactivatePolicy
             InitMutationDeactivatePolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteSecurityPolicy.
+        internal void ProcessRecord_DeleteSecurityPolicy()
+        {
+            this._logger.name += " -DeleteSecurityPolicy";
+            // Create new graphql operation deleteSecurityPolicy
+            InitMutationDeleteSecurityPolicy();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1101,6 +1693,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdatePolicy";
             // Create new graphql operation updatePolicy
             InitMutationUpdatePolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateSecurityPolicy.
+        internal void ProcessRecord_UpdateSecurityPolicy()
+        {
+            this._logger.name += " -UpdateSecurityPolicy";
+            // Create new graphql operation updateSecurityPolicy
+            InitMutationUpdateSecurityPolicy();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1230,6 +1831,257 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createSecurityPolicy(input: CreateSecurityPolicyInput!): CreateSecurityPolicyReply!
+        internal void InitMutationCreateSecurityPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateSecurityPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateSecurityPolicy",
+                "($input: CreateSecurityPolicyInput!)",
+                "CreateSecurityPolicyReply",
+                Mutation.CreateSecurityPolicy,
+                Mutation.CreateSecurityPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policyName = $someString
+	# REQUIRED
+	description = $someString
+	# REQUIRED
+	policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+	# REQUIRED
+	filter = @{
+		# REQUIRED
+		filterList = @(
+			@{
+				# OPTIONAL
+				filterConfig = @{
+					# REQUIRED
+					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+					# REQUIRED
+					values = @(
+						$someString
+					)
+					# REQUIRED
+					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+				}
+				# OPTIONAL
+				filterGroupConfig = @{
+					# REQUIRED
+					filterList = @(
+						@{
+							# OPTIONAL
+							filterConfig = @{
+								# REQUIRED
+								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+								# REQUIRED
+								values = @(
+									$someString
+								)
+								# REQUIRED
+								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+							}
+							# OPTIONAL
+							filterGroupConfig = @{<FilterGroupConfigInput>}
+						}
+					)
+					# REQUIRED
+					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+				}
+			}
+		)
+		# REQUIRED
+		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+	}
+	# OPTIONAL
+	policySeverity = $someSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Severity]) for enum values.
+	# OPTIONAL
+	policyCategory = $someCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Category]) for enum values.
+	# OPTIONAL
+	isAutomationEnabled = $someBoolean
+	# OPTIONAL
+	automationRules = @(
+		@{
+			# OPTIONAL
+			action = @{
+				# REQUIRED
+				remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
+				# OPTIONAL
+				remediationDetails = @{
+					# OPTIONAL
+					ticketInfo = @{
+						# OPTIONAL
+						title = $someString
+						# OPTIONAL
+						reason = $someString
+						# OPTIONAL
+						attachmentTypes = @(
+							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+						)
+						# OPTIONAL
+						comment = $someString
+					}
+					# OPTIONAL
+					mipLabelInfo = @{
+						# OPTIONAL
+						labelId = $someString
+						# OPTIONAL
+						allowDowngrade = $someBoolean
+						# OPTIONAL
+						labelName = $someString
+					}
+					# OPTIONAL
+					adIrInfo = @{
+						# OPTIONAL
+						domainControllerFid = $someString
+					}
+					# OPTIONAL
+					ticketDetails = @{
+						# REQUIRED
+						ticketContents = @{
+							# OPTIONAL
+							title = $someString
+							# OPTIONAL
+							description = $someString
+							# OPTIONAL
+							comment = $someString
+							# OPTIONAL
+							projectKey = $someString
+							# OPTIONAL
+							ticketTypeId = $someString
+							# OPTIONAL
+							requiredFields = @(
+								@{
+									# OPTIONAL
+									fieldKey = $someString
+									# REQUIRED
+									fieldValue = @{
+										# REQUIRED
+										fieldType = $someTicketFieldType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TicketFieldType]) for enum values.
+										# OPTIONAL
+										stringValue = $someString
+										# OPTIONAL
+										numberValue = $someInt64
+										# OPTIONAL
+										optionValue = $someString
+										# OPTIONAL
+										multiOptionValues = @{
+											# REQUIRED
+											values = @(
+												$someString
+											)
+										}
+										# OPTIONAL
+										arrayValues = @{
+											# REQUIRED
+											values = @(
+												$someString
+											)
+										}
+										# OPTIONAL
+										userValue = $someString
+										# OPTIONAL
+										dateValue = $someString
+										# OPTIONAL
+										datetimeValue = $someString
+										# OPTIONAL
+										booleanValue = $someBoolean
+										# OPTIONAL
+										textAreaValue = $someString
+									}
+								}
+							)
+						}
+						# OPTIONAL
+						attachmentTypes = @(
+							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+						)
+					}
+				}
+			}
+		}
+	)
+	# OPTIONAL
+	thresholdFilter = @{
+		# REQUIRED
+		filterList = @(
+			@{
+				# OPTIONAL
+				filterConfig = @{
+					# REQUIRED
+					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+					# REQUIRED
+					values = @(
+						$someString
+					)
+					# REQUIRED
+					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+				}
+				# OPTIONAL
+				filterGroupConfig = @{
+					# REQUIRED
+					filterList = @(
+						@{
+							# OPTIONAL
+							filterConfig = @{
+								# REQUIRED
+								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+								# REQUIRED
+								values = @(
+									$someString
+								)
+								# REQUIRED
+								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+							}
+							# OPTIONAL
+							filterGroupConfig = @{<FilterGroupConfigInput>}
+						}
+					)
+					# REQUIRED
+					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+				}
+			}
+		)
+		# REQUIRED
+		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+	}
+	# OPTIONAL
+	policyTypeInfo = @{
+		# OPTIONAL
+		identityEventPolicyInfo = @{
+			# OPTIONAL
+			eventProviders = @(
+				$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+			)
+		}
+		# OPTIONAL
+		identityPolicyInfo = @{
+			# OPTIONAL
+			idpType = @(
+				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+			)
+		}
+		# OPTIONAL
+		idpPolicyInfo = @{
+			# OPTIONAL
+			idpType = @(
+				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+			)
+		}
+	}
+	# OPTIONAL
+	frameworks = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createTprPolicy(input: CreateTprPolicyInput!): CreateTprPolicyReply!
         internal void InitMutationCreateTprPolicy()
         {
@@ -1305,6 +2157,32 @@ $query.Var.policyId = $someString
 $query.Var.runAsync = $someBoolean
 # OPTIONAL
 $query.Var.disableDataCategory = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteSecurityPolicy(policyId: UUID!, policyType: PolicyType!, keepViolationsOpenArg: Boolean = false): Void
+        internal void InitMutationDeleteSecurityPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyId", "UUID!"),
+                Tuple.Create("policyType", "PolicyType!"),
+                Tuple.Create("keepViolationsOpenArg", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteSecurityPolicy",
+                "($policyId: UUID!,$policyType: PolicyType!,$keepViolationsOpenArg: Boolean)",
+                "System.String",
+                Mutation.DeleteSecurityPolicy,
+                Mutation.DeleteSecurityPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.policyId = $someString
+# REQUIRED
+$query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+# OPTIONAL
+$query.Var.keepViolationsOpenArg = $someBoolean"
             );
         }
 
@@ -1701,6 +2579,10 @@ $query.Var.input = @{
 		$someString
 	)
 	# OPTIONAL
+	documentTypeIds = @(
+		$someString
+	)
+	# OPTIONAL
 	updateName = $someBoolean
 	# OPTIONAL
 	updateDescription = $someBoolean
@@ -1708,10 +2590,265 @@ $query.Var.input = @{
 	updateMode = $someBoolean
 	# OPTIONAL
 	updateAnalyzerIds = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateSecurityPolicy(input: UpdateDSPMPolicyInput!): Void
+        internal void InitMutationUpdateSecurityPolicy()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateDSPMPolicyInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateSecurityPolicy",
+                "($input: UpdateDSPMPolicyInput!)",
+                "System.String",
+                Mutation.UpdateSecurityPolicy,
+                Mutation.UpdateSecurityPolicyFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	policyId = $someString
+	# REQUIRED
+	policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
 	# OPTIONAL
-	documentTypeIds = @(
+	filter = @{
+		# REQUIRED
+		filterList = @(
+			@{
+				# OPTIONAL
+				filterConfig = @{
+					# REQUIRED
+					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+					# REQUIRED
+					values = @(
+						$someString
+					)
+					# REQUIRED
+					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+				}
+				# OPTIONAL
+				filterGroupConfig = @{
+					# REQUIRED
+					filterList = @(
+						@{
+							# OPTIONAL
+							filterConfig = @{
+								# REQUIRED
+								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+								# REQUIRED
+								values = @(
+									$someString
+								)
+								# REQUIRED
+								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+							}
+							# OPTIONAL
+							filterGroupConfig = @{<FilterGroupConfigInput>}
+						}
+					)
+					# REQUIRED
+					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+				}
+			}
+		)
+		# REQUIRED
+		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+	}
+	# OPTIONAL
+	isEnabled = $someBoolean
+	# OPTIONAL
+	policyName = $someString
+	# OPTIONAL
+	description = $someString
+	# OPTIONAL
+	policySeverity = $someSeverity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Severity]) for enum values.
+	# OPTIONAL
+	policyCategory = $someCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Category]) for enum values.
+	# OPTIONAL
+	isAutomationEnabled = $someBoolean
+	# OPTIONAL
+	automationRules = @(
+		@{
+			# OPTIONAL
+			action = @{
+				# REQUIRED
+				remediationType = $someRemediationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationType]) for enum values.
+				# OPTIONAL
+				remediationDetails = @{
+					# OPTIONAL
+					ticketInfo = @{
+						# OPTIONAL
+						title = $someString
+						# OPTIONAL
+						reason = $someString
+						# OPTIONAL
+						attachmentTypes = @(
+							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+						)
+						# OPTIONAL
+						comment = $someString
+					}
+					# OPTIONAL
+					mipLabelInfo = @{
+						# OPTIONAL
+						labelId = $someString
+						# OPTIONAL
+						allowDowngrade = $someBoolean
+						# OPTIONAL
+						labelName = $someString
+					}
+					# OPTIONAL
+					adIrInfo = @{
+						# OPTIONAL
+						domainControllerFid = $someString
+					}
+					# OPTIONAL
+					ticketDetails = @{
+						# REQUIRED
+						ticketContents = @{
+							# OPTIONAL
+							title = $someString
+							# OPTIONAL
+							description = $someString
+							# OPTIONAL
+							comment = $someString
+							# OPTIONAL
+							projectKey = $someString
+							# OPTIONAL
+							ticketTypeId = $someString
+							# OPTIONAL
+							requiredFields = @(
+								@{
+									# OPTIONAL
+									fieldKey = $someString
+									# REQUIRED
+									fieldValue = @{
+										# REQUIRED
+										fieldType = $someTicketFieldType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TicketFieldType]) for enum values.
+										# OPTIONAL
+										stringValue = $someString
+										# OPTIONAL
+										numberValue = $someInt64
+										# OPTIONAL
+										optionValue = $someString
+										# OPTIONAL
+										multiOptionValues = @{
+											# REQUIRED
+											values = @(
+												$someString
+											)
+										}
+										# OPTIONAL
+										arrayValues = @{
+											# REQUIRED
+											values = @(
+												$someString
+											)
+										}
+										# OPTIONAL
+										userValue = $someString
+										# OPTIONAL
+										dateValue = $someString
+										# OPTIONAL
+										datetimeValue = $someString
+										# OPTIONAL
+										booleanValue = $someBoolean
+										# OPTIONAL
+										textAreaValue = $someString
+									}
+								}
+							)
+						}
+						# OPTIONAL
+						attachmentTypes = @(
+							$someRemediationTicketAttachmentType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RemediationTicketAttachmentType]) for enum values.
+						)
+					}
+				}
+			}
+		}
+	)
+	# OPTIONAL
+	thresholdFilter = @{
+		# REQUIRED
+		filterList = @(
+			@{
+				# OPTIONAL
+				filterConfig = @{
+					# REQUIRED
+					filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+					# REQUIRED
+					values = @(
+						$someString
+					)
+					# REQUIRED
+					relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+				}
+				# OPTIONAL
+				filterGroupConfig = @{
+					# REQUIRED
+					filterList = @(
+						@{
+							# OPTIONAL
+							filterConfig = @{
+								# REQUIRED
+								filterType = $someFilterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilterType]) for enum values.
+								# REQUIRED
+								values = @(
+									$someString
+								)
+								# REQUIRED
+								relationship = $someRelationship # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Relationship]) for enum values.
+							}
+							# OPTIONAL
+							filterGroupConfig = @{<FilterGroupConfigInput>}
+						}
+					)
+					# REQUIRED
+					logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+				}
+			}
+		)
+		# REQUIRED
+		logicalOp = $someLogicalOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.LogicalOperator]) for enum values.
+	}
+	# OPTIONAL
+	keepViolationsOpen = $someBoolean
+	# OPTIONAL
+	frameworks = @(
 		$someString
 	)
+	# OPTIONAL
+	policyTypeInfo = @{
+		# OPTIONAL
+		identityEventPolicyInfo = @{
+			# OPTIONAL
+			eventProviders = @(
+				$someEventProvider # Call [Enum]::GetValues([RubrikSecurityCloud.Types.EventProvider]) for enum values.
+			)
+		}
+		# OPTIONAL
+		identityPolicyInfo = @{
+			# OPTIONAL
+			idpType = @(
+				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+			)
+		}
+		# OPTIONAL
+		idpPolicyInfo = @{
+			# OPTIONAL
+			idpType = @(
+				$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+			)
+		}
+	}
+	# OPTIONAL
+	forceUpdateThresholdFilter = $someBoolean
 }"
             );
         }
@@ -1765,6 +2902,10 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	quorumRequirement = $someInt
+	# OPTIONAL
+	clearSuspensionServiceAccounts = @(
+		$someString
+	)
 }"
             );
         }

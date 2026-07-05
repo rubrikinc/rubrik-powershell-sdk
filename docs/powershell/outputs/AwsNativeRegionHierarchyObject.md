@@ -17,6 +17,12 @@ AWS native region.
   - Number of S3 buckets in this region.
 - dynamoDbTableCount: System.Int32
   - Number of DynamoDB tables in this region.
+- glueIcebergCatalogCount: System.Int32
+  - Number of Glue Iceberg catalogs in this region.
+- glueIcebergDatabaseCount: System.Int32
+  - Number of Glue Iceberg databases in this region.
+- glueIcebergTableCount: System.Int32
+  - Number of Glue Iceberg tables in this region.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String

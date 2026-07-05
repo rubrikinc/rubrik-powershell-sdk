@@ -17,3 +17,6 @@ Specifies whether TLS should be used to communicate with the syslog server.
 - certificateId: System.String
   - Supported in v5.2+
 The ID corresponding to the imported certificate used by the syslog server.
+- permittedPeers: System.String
+  - Supported in v9.6+
+Comma-separated list of permitted peer names for TLS certificate verification. Supports wildcards (for example, "*.example.com"). When set, rsyslog uses this pattern instead of the server address for certificate CN/SAN matching.

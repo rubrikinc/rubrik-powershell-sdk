@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_GRAPH_GROUP_RW")]
         AZURE_GRAPH_GROUP_RW,
 
+        [EnumMember(Value = "AZURE_OSS_RDBMS_IMPERSONATION")]
+        AZURE_OSS_RDBMS_IMPERSONATION,
+
         [EnumMember(Value = "AZURE_SQL_IMPERSONATION")]
         AZURE_SQL_IMPERSONATION,
 

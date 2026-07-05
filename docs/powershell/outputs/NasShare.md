@@ -9,6 +9,8 @@ NAS share instance of a registered NAS system.
   - Specifies whether the Changelist option is enabled.
 - isNutanixCftEnabled: System.Boolean
   - Specifies whether Nutanix Files Changed File Tracking (CFT) is enabled.
+- isNetAppSnapDiffEnabled: System.Boolean
+  - Specifies whether NetApp SnapDiff is enabled.
 - isStale: System.Boolean
   - Specifies if the share is deleted on the NAS System.
 - isHidden: System.Boolean
@@ -77,6 +79,8 @@ NAS share instance of a registered NAS system.
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion

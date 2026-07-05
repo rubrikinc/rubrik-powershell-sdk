@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryClusterLocation")]
         DataLocation? PrimaryClusterLocation { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        System.Boolean? IsReplica { get; set; }
+
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         [JsonProperty("pendingSla")]

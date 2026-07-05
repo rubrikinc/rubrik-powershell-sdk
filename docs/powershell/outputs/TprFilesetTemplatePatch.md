@@ -18,6 +18,7 @@ Fileset template patch.
 - preBackupScript: System.String
   - Script to run before backup of this fileset starts.
 - templateBlocklistFilesystemTypes: System.String
+  - Comma-separated list of filesystem types to dynamically block from backup (such as "gpfs,lustre").
 - templateBlocklistedFilesystemPaths: System.String
   - Comma-separated list of blocklisted filesystem paths specific to this template.
 - shouldRetryPrescriptIfBackupFails: System.Boolean
@@ -25,5 +26,6 @@ Fileset template patch.
 - shouldOverrideClusterWideBlocklistedFilesystemPaths: System.Boolean
   - Specifies whether to override the cluster-wide blocklisted filesystem paths.
 - templateAllowlistFilesystemPaths: System.String
+  - Comma-separated list of paths that override blocklist exclusions.
 - filesetOptions: TprFilesetOptions
   - Fileset options.

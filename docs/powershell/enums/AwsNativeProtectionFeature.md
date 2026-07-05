@@ -8,3 +8,4 @@ AWS native protection features.
 - CLOUD_DISCOVERY - AWS native protection feature is Cloud Discovery.
 - CONFIG - AWS native protection feature is Config.
 - GLUE_ICEBERG - AWS native protection feature is Glue Iceberg.
+- S3_TABLES_ICEBERG - AWS native protection feature is S3 Tables Iceberg.

@@ -1,11 +1,11 @@
 ### SlaReplicationCluster
-Replication cluster specific information.
+Cluster specific information.
 
 - id: System.String
-  - ID of the replication cluster.
+  - ID of the Rubrik cluster.
 - name: System.String
-  - Name of the replication cluster.
+  - Name of the Rubrik cluster.
 - version: System.String
-  - Version of the replication cluster.
+  - Version of the Rubrik cluster.
 - clusterInfo: DataLocationClusterInfo
   - Specific information of the Rubrik cluster.

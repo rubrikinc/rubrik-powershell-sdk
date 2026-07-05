@@ -111,10 +111,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
+        //      C# -> System.Boolean? IsZeroRpoEnabled
+        // GraphQL -> isZeroRpoEnabled: Boolean (scalar)
+        [JsonProperty("isZeroRpoEnabled")]
+        public System.Boolean? IsZeroRpoEnabled { get; set; }
+
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         [JsonProperty("logBackupFrequency")]
         public System.Int32? LogBackupFrequency { get; set; }
+
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int! (scalar)
+        [JsonProperty("logRatePerRmanChannelInMb")]
+        public System.Int32? LogRatePerRmanChannelInMb { get; set; }
 
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
@@ -160,6 +175,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> preferredDataGuardMemberUniqueNames: [String!]! (scalar)
         [JsonProperty("preferredDataGuardMemberUniqueNames")]
         public List<System.String>? PreferredDataGuardMemberUniqueNames { get; set; }
+
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int! (scalar)
+        [JsonProperty("ratePerRmanChannelInMb")]
+        public System.Int32? RatePerRmanChannelInMb { get; set; }
 
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
@@ -489,7 +509,10 @@ namespace RubrikSecurityCloud.Types
         System.Int32? HostLogRetentionHours = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsReplica = null,
+        System.Boolean? IsZeroRpoEnabled = null,
         System.Int32? LogBackupFrequency = null,
+        System.Int32? LogRatePerRmanChannelInMb = null,
         System.Int32? LogRetentionHours = null,
         System.String? Name = null,
         System.Int64? NumChannels = null,
@@ -499,6 +522,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
         List<System.String>? PreferredDataGuardMemberUniqueNames = null,
+        System.Int32? RatePerRmanChannelInMb = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Int32? SectionSizeInGigabytes = null,
         System.Boolean? ShouldBackupFromPrimaryOnly = null,
@@ -591,8 +615,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
         }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
+        }
+        if ( IsZeroRpoEnabled != null ) {
+            this.IsZeroRpoEnabled = IsZeroRpoEnabled;
+        }
         if ( LogBackupFrequency != null ) {
             this.LogBackupFrequency = LogBackupFrequency;
+        }
+        if ( LogRatePerRmanChannelInMb != null ) {
+            this.LogRatePerRmanChannelInMb = LogRatePerRmanChannelInMb;
         }
         if ( LogRetentionHours != null ) {
             this.LogRetentionHours = LogRetentionHours;
@@ -620,6 +653,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PreferredDataGuardMemberUniqueNames != null ) {
             this.PreferredDataGuardMemberUniqueNames = PreferredDataGuardMemberUniqueNames;
+        }
+        if ( RatePerRmanChannelInMb != null ) {
+            this.RatePerRmanChannelInMb = RatePerRmanChannelInMb;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -925,6 +961,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isRelic\n" ;
             }
         }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsZeroRpoEnabled
+        // GraphQL -> isZeroRpoEnabled: Boolean (scalar)
+        if (this.IsZeroRpoEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isZeroRpoEnabled\n" ;
+            } else {
+                s += ind + "isZeroRpoEnabled\n" ;
+            }
+        }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (this.LogBackupFrequency != null) {
@@ -932,6 +986,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "logBackupFrequency\n" ;
             } else {
                 s += ind + "logBackupFrequency\n" ;
+            }
+        }
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int! (scalar)
+        if (this.LogRatePerRmanChannelInMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "logRatePerRmanChannelInMb\n" ;
+            } else {
+                s += ind + "logRatePerRmanChannelInMb\n" ;
             }
         }
         //      C# -> System.Int32? LogRetentionHours
@@ -1013,6 +1076,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "preferredDataGuardMemberUniqueNames\n" ;
             } else {
                 s += ind + "preferredDataGuardMemberUniqueNames\n" ;
+            }
+        }
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int! (scalar)
+        if (this.RatePerRmanChannelInMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ratePerRmanChannelInMb\n" ;
+            } else {
+                s += ind + "ratePerRmanChannelInMb\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1772,6 +1844,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsRelic = null;
         }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
+        }
+        //      C# -> System.Boolean? IsZeroRpoEnabled
+        // GraphQL -> isZeroRpoEnabled: Boolean (scalar)
+        if (ec.Includes("isZeroRpoEnabled",true))
+        {
+            if(this.IsZeroRpoEnabled == null) {
+
+                this.IsZeroRpoEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsZeroRpoEnabled != null && ec.Excludes("isZeroRpoEnabled",true))
+        {
+            this.IsZeroRpoEnabled = null;
+        }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (ec.Includes("logBackupFrequency",true))
@@ -1788,6 +1894,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogBackupFrequency != null && ec.Excludes("logBackupFrequency",true))
         {
             this.LogBackupFrequency = null;
+        }
+        //      C# -> System.Int32? LogRatePerRmanChannelInMb
+        // GraphQL -> logRatePerRmanChannelInMb: Int! (scalar)
+        if (ec.Includes("logRatePerRmanChannelInMb",true))
+        {
+            if(this.LogRatePerRmanChannelInMb == null) {
+
+                this.LogRatePerRmanChannelInMb = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LogRatePerRmanChannelInMb != null && ec.Excludes("logRatePerRmanChannelInMb",true))
+        {
+            this.LogRatePerRmanChannelInMb = null;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
@@ -1941,6 +2064,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PreferredDataGuardMemberUniqueNames != null && ec.Excludes("preferredDataGuardMemberUniqueNames",true))
         {
             this.PreferredDataGuardMemberUniqueNames = null;
+        }
+        //      C# -> System.Int32? RatePerRmanChannelInMb
+        // GraphQL -> ratePerRmanChannelInMb: Int! (scalar)
+        if (ec.Includes("ratePerRmanChannelInMb",true))
+        {
+            if(this.RatePerRmanChannelInMb == null) {
+
+                this.RatePerRmanChannelInMb = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RatePerRmanChannelInMb != null && ec.Excludes("ratePerRmanChannelInMb",true))
+        {
+            this.RatePerRmanChannelInMb = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)

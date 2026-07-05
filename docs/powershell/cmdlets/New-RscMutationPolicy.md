@@ -4,8 +4,8 @@
 Add policies to objects.
 
 - There are 4 arguments.
-    - policyIds - list of System.Strings
-    - objectIds - list of System.Strings
+    - policyIds - list of System.Strings: Identifiers of the classification policies to add objects to.
+    - objectIds - list of System.Strings: Identifiers of the hierarchy objects to add to the policies.
     - objectRootIds - list of System.Strings: List of supported root IDs.
     - clusterIds - list of System.Strings: List of Rubrik cluster IDs.
 - Returns System.String.
@@ -19,6 +19,11 @@ Create a classification policy.
 
 - There is a single argument of type CreatePolicyInput.
 - Returns ClassificationPolicyDetail.
+### createsecuritypolicy
+Create a security policy.
+
+- There is a single argument of type CreateSecurityPolicyInput.
+- Returns CreateSecurityPolicyReply.
 ### createtprpolicy
 Create a TPR policy.
 
@@ -28,10 +33,18 @@ Create a TPR policy.
 Deactivate a classification policy.
 
 - There are 3 arguments.
-    - policyId - System.String
-    - runAsync - System.Boolean
+    - policyId - System.String: Identifier of the classification policy to deactivate.
+    - runAsync - System.Boolean: Determines whether to run this asynchronously.
     - disableDataCategory - System.Boolean: Disable data category.
 - Returns list of System.Strings.
+### deletesecuritypolicy
+Delete an existing policy.
+
+- There are 3 arguments.
+    - policyId - System.String: Policy ID.
+    - policyType - PolicyType: Policy type.
+    - keepViolationsOpenArg - System.Boolean: Whether to keep related violations open if the policy is closed.
+- Returns System.String.
 ### deletetprpolicy
 Delete a TPR policy.
 
@@ -54,11 +67,11 @@ Get health monitor policies on the Rubrik cluster.
 Remove policies from objects.
 
 - There are 5 arguments.
-    - policyIds - list of System.Strings
-    - objectIds - list of System.Strings
+    - policyIds - list of System.Strings: Identifiers of the classification policies to remove objects from.
+    - objectIds - list of System.Strings: Identifiers of the hierarchy objects to remove from the policies.
     - objectRootIds - list of System.Strings: List of supported root IDs.
     - clusterIds - list of System.Strings: List of Rubrik cluster IDs.
-    - runAsync - System.Boolean
+    - runAsync - System.Boolean: Determines whether to run this asynchronously.
 - Returns list of System.Strings.
 ### seedenabledpolicies
 Seed account with enabled policies.
@@ -95,6 +108,11 @@ Update a classification policy.
 
 - There is a single argument of type UpdatePolicyInput.
 - Returns ClassificationPolicyDetail.
+### updatesecuritypolicy
+Update an existing policy.
+
+- There is a single argument of type UpdateDSPMPolicyInput.
+- Returns System.String.
 ### updatetprpolicy
 Update a TPR policy.
 

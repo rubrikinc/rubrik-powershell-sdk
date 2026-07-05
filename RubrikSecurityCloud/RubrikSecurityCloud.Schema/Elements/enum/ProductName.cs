@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPFLOWS")]
         APPFLOWS,
 
+        [EnumMember(Value = "APPFLOWS_ADFR")]
+        APPFLOWS_ADFR,
+
         [EnumMember(Value = "APPFLOWS_UCL")]
         APPFLOWS_UCL,
 
@@ -41,6 +44,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AWS_BAAS")]
         AWS_BAAS,
+
+        [EnumMember(Value = "BAAS_UNSTRUCTURED")]
+        BAAS_UNSTRUCTURED,
 
         [EnumMember(Value = "CC_ES")]
         CC_ES,
@@ -96,6 +102,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OKTA")]
         OKTA,
 
+        [EnumMember(Value = "OKTA_CIAM")]
+        OKTA_CIAM,
+
         [EnumMember(Value = "OKTA_CYBER_POSTURE")]
         OKTA_CYBER_POSTURE,
 
@@ -110,6 +119,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RADAR")]
         RADAR,
+
+        [EnumMember(Value = "RADAR_BAAS")]
+        RADAR_BAAS,
+
+        [EnumMember(Value = "RADAR_BAAS_UNSTRUCTURED")]
+        RADAR_BAAS_UNSTRUCTURED,
 
         [EnumMember(Value = "RADAR_CLU")]
         RADAR_CLU,
@@ -150,6 +165,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SONAR")]
         SONAR,
 
+        [EnumMember(Value = "SONAR_BAAS")]
+        SONAR_BAAS,
+
         [EnumMember(Value = "SONAR_NAS")]
         SONAR_NAS,
 
@@ -158,6 +176,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SONAR_UCL")]
         SONAR_UCL,
+
+        [EnumMember(Value = "TH_BAAS")]
+        TH_BAAS,
+
+        [EnumMember(Value = "TH_BAAS_UNSTRUCTURED")]
+        TH_BAAS_UNSTRUCTURED,
+
+        [EnumMember(Value = "TM_BAAS")]
+        TM_BAAS,
+
+        [EnumMember(Value = "TM_BAAS_UNSTRUCTURED")]
+        TM_BAAS_UNSTRUCTURED,
 
         [EnumMember(Value = "UNSPECIFIED_NAME")]
         UNSPECIFIED_NAME,

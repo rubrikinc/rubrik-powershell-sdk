@@ -1,4 +1,6 @@
 ### ListAccessUsersSort
+Field to sort access users by.
+
 - USERNAME - Sort by username.
 - EMAIL - Sort by email.
 - NUM_ACTIVITIES - Sort by number of activities.

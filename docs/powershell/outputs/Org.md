@@ -17,6 +17,8 @@ Details of an org.
   - Specifies whether organization is forced to use Rubrik Envoy to connect their hosts.
 - allowedClusters: list of System.Strings
   - Allowed clusters for the organization.
+- users: list of ExistingUsers
+  - Existing users in the organization.
 - permissions: list of Permissions
   - Permissions given to the organization.
 - ssoGroups: list of SsoGroups
@@ -43,7 +45,5 @@ Details of an org.
   - Physical storage used by the organization.
 - allUrls: list of System.Strings
   - All URLs associated with the organization.
-- users: list of ExistingUsers
-  - Existing users in the organization.
 - allClusterCapacityQuotas: list of ClusterWithCapacityQuotas
   - All cluster capacity quotas enforced on the organization.

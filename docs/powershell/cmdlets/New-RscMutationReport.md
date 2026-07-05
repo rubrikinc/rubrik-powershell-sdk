@@ -15,6 +15,11 @@ Delete a scheduled report.
 
 - There is a single argument of type DeleteScheduledReportInput.
 - Returns System.String.
+### generaterecovery
+Generate recovery report for download.
+
+- There is a single argument of type GenerateRecoveryReportInput.
+- Returns GenerateRecoveryReportReply.
 ### sendpdf
 DHRC PDF report generation.
 

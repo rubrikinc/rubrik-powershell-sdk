@@ -20,10 +20,35 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> IntuneSettingItemKeyType? ItemKeyType
+        // GraphQL -> itemKeyType: IntuneSettingItemKeyType! (enum)
+        [JsonProperty("itemKeyType")]
+        public IntuneSettingItemKeyType? ItemKeyType { get; set; }
+
         //      C# -> IntuneDeviceManagementSecretSettingType? SettingType
         // GraphQL -> settingType: IntuneDeviceManagementSecretSettingType! (enum)
         [JsonProperty("settingType")]
         public IntuneDeviceManagementSecretSettingType? SettingType { get; set; }
+
+        //      C# -> System.String? CollectionDefinitionId
+        // GraphQL -> collectionDefinitionId: String! (scalar)
+        [JsonProperty("collectionDefinitionId")]
+        public System.String? CollectionDefinitionId { get; set; }
+
+        //      C# -> System.String? ItemKeyValue
+        // GraphQL -> itemKeyValue: String! (scalar)
+        [JsonProperty("itemKeyValue")]
+        public System.String? ItemKeyValue { get; set; }
+
+        //      C# -> System.Int32? PasswordCount
+        // GraphQL -> passwordCount: Int! (scalar)
+        [JsonProperty("passwordCount")]
+        public System.Int32? PasswordCount { get; set; }
+
+        //      C# -> System.Int32? RowIndex
+        // GraphQL -> rowIndex: Int! (scalar)
+        [JsonProperty("rowIndex")]
+        public System.Int32? RowIndex { get; set; }
 
         //      C# -> System.String? SettingDefinitionId
         // GraphQL -> settingDefinitionId: String! (scalar)
@@ -40,12 +65,32 @@ namespace RubrikSecurityCloud.Types
     }
 
     public IntuneDeviceManagementSecretSetting Set(
+        IntuneSettingItemKeyType? ItemKeyType = null,
         IntuneDeviceManagementSecretSettingType? SettingType = null,
+        System.String? CollectionDefinitionId = null,
+        System.String? ItemKeyValue = null,
+        System.Int32? PasswordCount = null,
+        System.Int32? RowIndex = null,
         System.String? SettingDefinitionId = null
     ) 
     {
+        if ( ItemKeyType != null ) {
+            this.ItemKeyType = ItemKeyType;
+        }
         if ( SettingType != null ) {
             this.SettingType = SettingType;
+        }
+        if ( CollectionDefinitionId != null ) {
+            this.CollectionDefinitionId = CollectionDefinitionId;
+        }
+        if ( ItemKeyValue != null ) {
+            this.ItemKeyValue = ItemKeyValue;
+        }
+        if ( PasswordCount != null ) {
+            this.PasswordCount = PasswordCount;
+        }
+        if ( RowIndex != null ) {
+            this.RowIndex = RowIndex;
         }
         if ( SettingDefinitionId != null ) {
             this.SettingDefinitionId = SettingDefinitionId;
@@ -64,6 +109,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> IntuneSettingItemKeyType? ItemKeyType
+        // GraphQL -> itemKeyType: IntuneSettingItemKeyType! (enum)
+        if (this.ItemKeyType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "itemKeyType\n" ;
+            } else {
+                s += ind + "itemKeyType\n" ;
+            }
+        }
         //      C# -> IntuneDeviceManagementSecretSettingType? SettingType
         // GraphQL -> settingType: IntuneDeviceManagementSecretSettingType! (enum)
         if (this.SettingType != null) {
@@ -71,6 +125,42 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "settingType\n" ;
             } else {
                 s += ind + "settingType\n" ;
+            }
+        }
+        //      C# -> System.String? CollectionDefinitionId
+        // GraphQL -> collectionDefinitionId: String! (scalar)
+        if (this.CollectionDefinitionId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "collectionDefinitionId\n" ;
+            } else {
+                s += ind + "collectionDefinitionId\n" ;
+            }
+        }
+        //      C# -> System.String? ItemKeyValue
+        // GraphQL -> itemKeyValue: String! (scalar)
+        if (this.ItemKeyValue != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "itemKeyValue\n" ;
+            } else {
+                s += ind + "itemKeyValue\n" ;
+            }
+        }
+        //      C# -> System.Int32? PasswordCount
+        // GraphQL -> passwordCount: Int! (scalar)
+        if (this.PasswordCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "passwordCount\n" ;
+            } else {
+                s += ind + "passwordCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? RowIndex
+        // GraphQL -> rowIndex: Int! (scalar)
+        if (this.RowIndex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rowIndex\n" ;
+            } else {
+                s += ind + "rowIndex\n" ;
             }
         }
         //      C# -> System.String? SettingDefinitionId
@@ -89,6 +179,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> IntuneSettingItemKeyType? ItemKeyType
+        // GraphQL -> itemKeyType: IntuneSettingItemKeyType! (enum)
+        if (ec.Includes("itemKeyType",true))
+        {
+            if(this.ItemKeyType == null) {
+
+                this.ItemKeyType = new IntuneSettingItemKeyType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ItemKeyType != null && ec.Excludes("itemKeyType",true))
+        {
+            this.ItemKeyType = null;
+        }
         //      C# -> IntuneDeviceManagementSecretSettingType? SettingType
         // GraphQL -> settingType: IntuneDeviceManagementSecretSettingType! (enum)
         if (ec.Includes("settingType",true))
@@ -105,6 +212,74 @@ namespace RubrikSecurityCloud.Types
         else if (this.SettingType != null && ec.Excludes("settingType",true))
         {
             this.SettingType = null;
+        }
+        //      C# -> System.String? CollectionDefinitionId
+        // GraphQL -> collectionDefinitionId: String! (scalar)
+        if (ec.Includes("collectionDefinitionId",true))
+        {
+            if(this.CollectionDefinitionId == null) {
+
+                this.CollectionDefinitionId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CollectionDefinitionId != null && ec.Excludes("collectionDefinitionId",true))
+        {
+            this.CollectionDefinitionId = null;
+        }
+        //      C# -> System.String? ItemKeyValue
+        // GraphQL -> itemKeyValue: String! (scalar)
+        if (ec.Includes("itemKeyValue",true))
+        {
+            if(this.ItemKeyValue == null) {
+
+                this.ItemKeyValue = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ItemKeyValue != null && ec.Excludes("itemKeyValue",true))
+        {
+            this.ItemKeyValue = null;
+        }
+        //      C# -> System.Int32? PasswordCount
+        // GraphQL -> passwordCount: Int! (scalar)
+        if (ec.Includes("passwordCount",true))
+        {
+            if(this.PasswordCount == null) {
+
+                this.PasswordCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PasswordCount != null && ec.Excludes("passwordCount",true))
+        {
+            this.PasswordCount = null;
+        }
+        //      C# -> System.Int32? RowIndex
+        // GraphQL -> rowIndex: Int! (scalar)
+        if (ec.Includes("rowIndex",true))
+        {
+            if(this.RowIndex == null) {
+
+                this.RowIndex = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.RowIndex != null && ec.Excludes("rowIndex",true))
+        {
+            this.RowIndex = null;
         }
         //      C# -> System.String? SettingDefinitionId
         // GraphQL -> settingDefinitionId: String! (scalar)

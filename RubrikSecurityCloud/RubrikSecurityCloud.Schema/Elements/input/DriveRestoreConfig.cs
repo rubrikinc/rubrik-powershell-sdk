@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("restoreFolderPath")]
         public System.String? RestoreFolderPath { get; set; }
 
+        //      C# -> System.Boolean? ShouldRestoreFileVersions
+        // GraphQL -> shouldRestoreFileVersions: Boolean (scalar)
+        [JsonProperty("shouldRestoreFileVersions")]
+        public System.Boolean? ShouldRestoreFileVersions { get; set; }
+
 
         #endregion
 

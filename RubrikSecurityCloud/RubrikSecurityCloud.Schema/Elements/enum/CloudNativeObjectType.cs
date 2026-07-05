@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_MANAGED_DISK")]
         AZURE_MANAGED_DISK,
 
+        [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
+        AZURE_POSTGRES_FLEXIBLE_SERVER,
+
         [EnumMember(Value = "AZURE_SQL_DATABASE_DB")]
         AZURE_SQL_DATABASE_DB,
 

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean (scalar)
+        [JsonProperty("isComputeVisibilityFilterDisabled")]
+        public System.Boolean? IsComputeVisibilityFilterDisabled { get; set; }
+
         //      C# -> VcenterUpdateConfigV2ConflictResolutionAuthz? ConflictResolutionAuthz
         // GraphQL -> conflictResolutionAuthz: VcenterUpdateConfigV2ConflictResolutionAuthz (enum)
         [JsonProperty("conflictResolutionAuthz")]

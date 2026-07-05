@@ -10,7 +10,8 @@ ID of NAS share.
   - Supported in v7.0+
 Specifies whether Isilon changelist is enabled for the share.
 - isNetAppSnapDiffEnabled: System.Boolean
-  - Supported in v9.5+
+  - Supported in v9.4+
 Specifies whether NetApp SnapDiff is enabled for the share.
 - isNutanixCftEnabled: System.Boolean
-  - Specifies whether Nutanix CFT (Changed File Tracking) is enabled for the share.
+  - Supported in v9.6+
+Specifies whether Nutanix CFT (Changed File Tracking) is enabled for the share.

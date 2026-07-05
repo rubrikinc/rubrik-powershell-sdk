@@ -12,3 +12,5 @@ The time to which the SAP HANA database has to be recovered.
 - dbId: System.String
   - Required. Supported in v9.4+
 The database ID that you want to recover.
+- lssPassword: System.String
+  - The Local Secure Store (LSS) backup encryption password. Required for restoring backups created with LSS encryption enabled. This password is not stored and is only used during the restore operation.

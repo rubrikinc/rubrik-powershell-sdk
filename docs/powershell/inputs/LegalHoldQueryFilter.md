@@ -18,3 +18,5 @@ Legal Hold query filter.
   - Cloud vendor to filter by (AWS, Azure, or GCP).
 - cloudRegions: list of System.Strings
   - Cloud regions to filter by.
+- cloudAccountIds: list of System.Strings
+  - Cloud account IDs to filter by. Only valid for RSC native legal holds. These are the Rubrik Security Cloud IDs of cloud-account hierarchy nodes, not CSP-native account numbers.

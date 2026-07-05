@@ -1,5 +1,7 @@
 ### AzureNativeAttachedDiskSpecificSnapshot
 Azure Virtual Machine attached disks snapshot.
++ AzureNativeAttachedDiskSnapshot represents the information about
++ attached disk snapshots of a virtual machine snapshot.
 
 - diskName: System.String
   - Name of the attached disk.

@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("preserveSnapshots")]
         public System.Boolean? PreserveSnapshots { get; set; }
 
+        //      C# -> V1DeleteK8sClusterRequestSource? Source
+        // GraphQL -> source: V1DeleteK8sClusterRequestSource (enum)
+        [JsonProperty("source")]
+        public V1DeleteK8sClusterRequestSource? Source { get; set; }
+
 
         #endregion
 

@@ -126,6 +126,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isPullSecretConfigured")]
         public System.Boolean? IsPullSecretConfigured { get; set; }
 
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
+
         //      C# -> System.String? K8sName
         // GraphQL -> k8sName: String! (scalar)
         [JsonProperty("k8sName")]
@@ -370,6 +375,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsAutoPsCreationEnabled = null,
         System.Boolean? IsPullSecretConfigured = null,
+        System.Boolean? IsReplica = null,
         System.String? K8sName = null,
         System.String? K8sVersion = null,
         System.String? NadName = null,
@@ -465,6 +471,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsPullSecretConfigured != null ) {
             this.IsPullSecretConfigured = IsPullSecretConfigured;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( K8sName != null ) {
             this.K8sName = K8sName;
@@ -780,6 +789,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isPullSecretConfigured\n" ;
             } else {
                 s += ind + "isPullSecretConfigured\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.String? K8sName
@@ -1505,6 +1523,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsPullSecretConfigured != null && ec.Excludes("isPullSecretConfigured",true))
         {
             this.IsPullSecretConfigured = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.String? K8sName
         // GraphQL -> k8sName: String! (scalar)

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("basicSchedule")]
         public BasicSnapshotScheduleInput? BasicSchedule { get; set; }
 
+        //      C# -> List<DayOfWeek>? RestrictToDaysOfWeek
+        // GraphQL -> restrictToDaysOfWeek: [DayOfWeek!] (enum)
+        [JsonProperty("restrictToDaysOfWeek")]
+        public List<DayOfWeek>? RestrictToDaysOfWeek { get; set; }
+
 
         #endregion
 

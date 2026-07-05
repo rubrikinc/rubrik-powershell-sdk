@@ -19,3 +19,13 @@ A knowledge base article.
   - A flattened list of nodes representing the resolution section of the knowledge base article.
 - summary: list of ContentNodes
   - A flattened list of nodes representing the summary section of the knowledge base article.
+- createdDate: DateTime
+  - Timestamp when the article was created.
+- lastModified: DateTime
+  - Timestamp when the article was last modified.
+- viewCount: System.Int32
+  - Number of times this article has been viewed.
+- recordType: System.String
+  - Record type name, for example "Troubleshooting".
+- author: System.String
+  - Display name of the article author.

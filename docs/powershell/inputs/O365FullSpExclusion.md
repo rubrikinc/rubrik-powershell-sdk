@@ -1,5 +1,6 @@
 ### O365FullSpExclusion
-Configuration for the exclusion of a SharePoint object from protection.
+SharePoint object excluded from protection. Used as GraphQL input
+`O365FullSpExclusion` and output `FullSpObjectExclusion`.
 
 - fid: System.String
   - The fid of the SharePoint object.

@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudVendor")]
         public CloudVendor? CloudVendor { get; set; }
 
+        //      C# -> CloudSpecificParamsInput? CloudSpecificParams
+        // GraphQL -> cloudSpecificParams: CloudSpecificParamsInput (input)
+        [JsonProperty("cloudSpecificParams")]
+        public CloudSpecificParamsInput? CloudSpecificParams { get; set; }
+
 
         #endregion
 

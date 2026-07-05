@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestRecoveryPointV96")]
         public DateTime? LatestRecoveryPointV96 { get; set; }
 
+        //      C# -> DateTime? LatestRecoveryPointV97
+        // GraphQL -> latestRecoveryPointV97: DateTime (scalar)
+        [JsonProperty("latestRecoveryPointV97")]
+        public DateTime? LatestRecoveryPointV97 { get; set; }
+
         //      C# -> System.Int32? LogRatePerRmanChannelInMb
         // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
         [JsonProperty("logRatePerRmanChannelInMb")]
@@ -184,6 +189,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> oldestRecoveryPointV96: DateTime (scalar)
         [JsonProperty("oldestRecoveryPointV96")]
         public DateTime? OldestRecoveryPointV96 { get; set; }
+
+        //      C# -> DateTime? OldestRecoveryPointV97
+        // GraphQL -> oldestRecoveryPointV97: DateTime (scalar)
+        [JsonProperty("oldestRecoveryPointV97")]
+        public DateTime? OldestRecoveryPointV97 { get; set; }
 
         //      C# -> System.String? OracleHome
         // GraphQL -> oracleHome: String (scalar)
@@ -287,6 +297,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? LatestRecoveryPointV94 = null,
         DateTime? LatestRecoveryPointV95 = null,
         DateTime? LatestRecoveryPointV96 = null,
+        DateTime? LatestRecoveryPointV97 = null,
         System.Int32? LogRatePerRmanChannelInMb = null,
         System.String? OldestRecoveryPointV50 = null,
         System.String? OldestRecoveryPointV51 = null,
@@ -303,6 +314,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? OldestRecoveryPointV94 = null,
         DateTime? OldestRecoveryPointV95 = null,
         DateTime? OldestRecoveryPointV96 = null,
+        DateTime? OldestRecoveryPointV97 = null,
         System.String? OracleHome = null,
         List<System.String>? PreferredDgMemberUniqueNames = null,
         System.Int32? RatePerRmanChannelInMb = null,
@@ -371,6 +383,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestRecoveryPointV96 != null ) {
             this.LatestRecoveryPointV96 = LatestRecoveryPointV96;
         }
+        if ( LatestRecoveryPointV97 != null ) {
+            this.LatestRecoveryPointV97 = LatestRecoveryPointV97;
+        }
         if ( LogRatePerRmanChannelInMb != null ) {
             this.LogRatePerRmanChannelInMb = LogRatePerRmanChannelInMb;
         }
@@ -418,6 +433,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OldestRecoveryPointV96 != null ) {
             this.OldestRecoveryPointV96 = OldestRecoveryPointV96;
+        }
+        if ( OldestRecoveryPointV97 != null ) {
+            this.OldestRecoveryPointV97 = OldestRecoveryPointV97;
         }
         if ( OracleHome != null ) {
             this.OracleHome = OracleHome;
@@ -631,6 +649,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "latestRecoveryPointV96\n" ;
             }
         }
+        //      C# -> DateTime? LatestRecoveryPointV97
+        // GraphQL -> latestRecoveryPointV97: DateTime (scalar)
+        if (this.LatestRecoveryPointV97 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestRecoveryPointV97\n" ;
+            } else {
+                s += ind + "latestRecoveryPointV97\n" ;
+            }
+        }
         //      C# -> System.Int32? LogRatePerRmanChannelInMb
         // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
         if (this.LogRatePerRmanChannelInMb != null) {
@@ -773,6 +800,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "oldestRecoveryPointV96\n" ;
             } else {
                 s += ind + "oldestRecoveryPointV96\n" ;
+            }
+        }
+        //      C# -> DateTime? OldestRecoveryPointV97
+        // GraphQL -> oldestRecoveryPointV97: DateTime (scalar)
+        if (this.OldestRecoveryPointV97 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "oldestRecoveryPointV97\n" ;
+            } else {
+                s += ind + "oldestRecoveryPointV97\n" ;
             }
         }
         //      C# -> System.String? OracleHome
@@ -1227,6 +1263,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestRecoveryPointV96 = null;
         }
+        //      C# -> DateTime? LatestRecoveryPointV97
+        // GraphQL -> latestRecoveryPointV97: DateTime (scalar)
+        if (ec.Includes("latestRecoveryPointV97",true))
+        {
+            if(this.LatestRecoveryPointV97 == null) {
+
+                this.LatestRecoveryPointV97 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestRecoveryPointV97 != null && ec.Excludes("latestRecoveryPointV97",true))
+        {
+            this.LatestRecoveryPointV97 = null;
+        }
         //      C# -> System.Int32? LogRatePerRmanChannelInMb
         // GraphQL -> logRatePerRmanChannelInMb: Int (scalar)
         if (ec.Includes("logRatePerRmanChannelInMb",true))
@@ -1498,6 +1551,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OldestRecoveryPointV96 != null && ec.Excludes("oldestRecoveryPointV96",true))
         {
             this.OldestRecoveryPointV96 = null;
+        }
+        //      C# -> DateTime? OldestRecoveryPointV97
+        // GraphQL -> oldestRecoveryPointV97: DateTime (scalar)
+        if (ec.Includes("oldestRecoveryPointV97",true))
+        {
+            if(this.OldestRecoveryPointV97 == null) {
+
+                this.OldestRecoveryPointV97 = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OldestRecoveryPointV97 != null && ec.Excludes("oldestRecoveryPointV97",true))
+        {
+            this.OldestRecoveryPointV97 = null;
         }
         //      C# -> System.String? OracleHome
         // GraphQL -> oracleHome: String (scalar)

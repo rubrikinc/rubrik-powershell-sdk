@@ -86,10 +86,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean! (scalar)
+        [JsonProperty("isComputeVisibilityFilterDisabled")]
+        public System.Boolean? IsComputeVisibilityFilterDisabled { get; set; }
+
         //      C# -> System.Boolean? IsHotAddEnabledForOnPremVcenter
         // GraphQL -> isHotAddEnabledForOnPremVcenter: Boolean! (scalar)
         [JsonProperty("isHotAddEnabledForOnPremVcenter")]
         public System.Boolean? IsHotAddEnabledForOnPremVcenter { get; set; }
+
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
 
         //      C# -> System.Boolean? IsStandaloneHost
         // GraphQL -> isStandaloneHost: Boolean! (scalar)
@@ -385,7 +395,9 @@ namespace RubrikSecurityCloud.Types
         List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.String? CaCerts = null,
         System.String? Id = null,
+        System.Boolean? IsComputeVisibilityFilterDisabled = null,
         System.Boolean? IsHotAddEnabledForOnPremVcenter = null,
+        System.Boolean? IsReplica = null,
         System.Boolean? IsStandaloneHost = null,
         System.Boolean? IsVmc = null,
         DateTime? LastRefreshTime = null,
@@ -461,8 +473,14 @@ namespace RubrikSecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( IsComputeVisibilityFilterDisabled != null ) {
+            this.IsComputeVisibilityFilterDisabled = IsComputeVisibilityFilterDisabled;
+        }
         if ( IsHotAddEnabledForOnPremVcenter != null ) {
             this.IsHotAddEnabledForOnPremVcenter = IsHotAddEnabledForOnPremVcenter;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( IsStandaloneHost != null ) {
             this.IsStandaloneHost = IsStandaloneHost;
@@ -717,6 +735,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean! (scalar)
+        if (this.IsComputeVisibilityFilterDisabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isComputeVisibilityFilterDisabled\n" ;
+            } else {
+                s += ind + "isComputeVisibilityFilterDisabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsHotAddEnabledForOnPremVcenter
         // GraphQL -> isHotAddEnabledForOnPremVcenter: Boolean! (scalar)
         if (this.IsHotAddEnabledForOnPremVcenter != null) {
@@ -724,6 +751,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHotAddEnabledForOnPremVcenter\n" ;
             } else {
                 s += ind + "isHotAddEnabledForOnPremVcenter\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Boolean? IsStandaloneHost
@@ -1359,6 +1395,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Boolean? IsComputeVisibilityFilterDisabled
+        // GraphQL -> isComputeVisibilityFilterDisabled: Boolean! (scalar)
+        if (ec.Includes("isComputeVisibilityFilterDisabled",true))
+        {
+            if(this.IsComputeVisibilityFilterDisabled == null) {
+
+                this.IsComputeVisibilityFilterDisabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsComputeVisibilityFilterDisabled != null && ec.Excludes("isComputeVisibilityFilterDisabled",true))
+        {
+            this.IsComputeVisibilityFilterDisabled = null;
+        }
         //      C# -> System.Boolean? IsHotAddEnabledForOnPremVcenter
         // GraphQL -> isHotAddEnabledForOnPremVcenter: Boolean! (scalar)
         if (ec.Includes("isHotAddEnabledForOnPremVcenter",true))
@@ -1375,6 +1428,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHotAddEnabledForOnPremVcenter != null && ec.Excludes("isHotAddEnabledForOnPremVcenter",true))
         {
             this.IsHotAddEnabledForOnPremVcenter = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Boolean? IsStandaloneHost
         // GraphQL -> isStandaloneHost: Boolean! (scalar)

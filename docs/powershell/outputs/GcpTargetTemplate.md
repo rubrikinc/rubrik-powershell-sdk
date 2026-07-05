@@ -7,19 +7,21 @@ Specific info for GCP Target Template.
   - GCP target region.
 - storageClass: GcpStorageClass
   - GCP target storage class.
-- cmkInfo: list of GcpCmks
-  - List of Customer managed key ring and key information for a region.
-- cloudNativeLocTemplateType: CloudNativeLocTemplateType
-  - Cloud native template type.
-- labels: list of TagObjects
-  - GCP target bucket labels.
 - encryptionType: TargetEncryptionTypeEnum
   - Encryption type for the GCP location template.
+- cloudNativeLocTemplateType: CloudNativeLocTemplateType
+  - Cloud native template type.
+- cmkInfo: list of GcpCmks
+  - List of Customer managed key ring and key information for a region.
 - bucketNetworkAccess: GcpBucketNetworkAccess
   - Network access setting for the GCP bucket.
 - cloudAccount: CloudAccount
   - Cloud Account information of the GCP target.
+- labels: list of TagObjects
+  - GCP target bucket labels.
 - targetType: TargetType
   - The type of this Target.
 - templateLocationId: System.String
   - The internal ID of the template archival location.
+- sourceWorkloadCloud: SourceWorkloadCloud
+  - Specifies the source workload cloud of this template. This field is optional.

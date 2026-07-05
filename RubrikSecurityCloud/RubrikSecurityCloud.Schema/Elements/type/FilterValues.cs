@@ -16,7 +16,8 @@ using RubrikSecurityCloud;
 namespace RubrikSecurityCloud.Types
 {
     #region FilterValues
-    public class FilterValues: BaseType
+ 
+    public class FilterValues: BaseType, PossibleFilterValues
     {
         #region members
 

@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AZURE_OSS_RDBMS")]
+        AZURE_OSS_RDBMS,
+
         [EnumMember(Value = "AZURE_RESOURCE_MANAGER")]
         AZURE_RESOURCE_MANAGER,
 

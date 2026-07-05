@@ -95,3 +95,6 @@ cover VPC, ELB, and Route 53 resources.
 These permissions are applicable to the GCP AlloyDB Protection feature.
 - BAAS_BASIC - Represents the basic set of permissions required for BaaS feature
 These permissions may be applicable to any feature that can run on BaaS.
+- KMS_KEY_SHARING - Represents the permissions for automated KMS key sharing with the
+exocompute account (kms:CreateGrant on customer CMKs). Applicable to the
+cloud native protection feature.

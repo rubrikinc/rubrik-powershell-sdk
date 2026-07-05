@@ -97,3 +97,15 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - GLUE_ICEBERG_TABLE - Glue Iceberg table.
 - PING_FEDERATE_CLUSTER - Ping Federate cluster.
 - GCP_BIGQUERY_DATASET - GCP BigQuery dataset.
+- MARIADB_INSTANCE - MariaDB Instance.
+- POWER_PLATFORM_CANVAS_APP - Microsoft Power Platform canvas app.
+- POWER_PLATFORM_MODEL_DRIVEN_APP - Microsoft Power Platform model-driven app.
+- POWER_PLATFORM_CLOUD_FLOW - Microsoft Power Platform cloud flow.
+- POWER_PLATFORM_CLASSIC_WORKFLOW - Microsoft Power Platform classic workflow.
+- POWER_PLATFORM_DIALOG - Microsoft Power Platform dialog.
+- POWER_PLATFORM_BUSINESS_RULE - Microsoft Power Platform business rule.
+- POWER_PLATFORM_CUSTOM_ACTION - Microsoft Power Platform custom action.
+- POWER_PLATFORM_BUSINESS_PROCESS_FLOW - Microsoft Power Platform business process flow.
+- POWER_PLATFORM_DESKTOP_FLOW - Microsoft Power Platform desktop flow.
+- POWER_PLATFORM_AI_FLOW - Microsoft Power Platform AI flow.
+- S3_TABLES_ICEBERG_TABLE - S3 Tables Iceberg table.

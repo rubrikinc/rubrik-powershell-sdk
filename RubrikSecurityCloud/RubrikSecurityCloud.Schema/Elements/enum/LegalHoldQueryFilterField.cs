@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum LegalHoldQueryFilterField
     {
+        [EnumMember(Value = "CLOUD_ACCOUNT_ID")]
+        CLOUD_ACCOUNT_ID,
+
         [EnumMember(Value = "CLOUD_REGION")]
         CLOUD_REGION,
 

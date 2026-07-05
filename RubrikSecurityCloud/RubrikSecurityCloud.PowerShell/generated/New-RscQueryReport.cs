@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 20
+    /// Create a new RscQuery object for any of the 21
     /// operations in the 'Report' API domain:
-    /// CloudDirectEventSeriesTask, CloudDirectJobRecentErrors, ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// CloudDirectEventSeriesTask, CloudDirectJobRecentErrors, ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, Recovery, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// </summary>
     /// <description>
     /// New-RscQueryReport creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 20 operations
+    /// There are 21 operations
     /// in the 'Report' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudDirectEventSeriesTask, CloudDirectJobRecentErrors, ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
+    /// one of: CloudDirectEventSeriesTask, CloudDirectJobRecentErrors, ClusterMigrationCount, ClusterMigrationJobStatus, ClusterMigrationStatus, Custom, CustomReports, Data, DatabaseLogForCluster, DatabaseLogingPropertiesForCluster, GenerateCloudDirectTask, HealthCheckError, Objects, Recovery, ScheduledReport, ScheduledReports, SkippedTeamsSite, Sonar, SonarContent, SonarRow, or TemplatesByCategories.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -599,6 +599,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the Recovery operation
+    /// of the 'Report' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Report
+    /// # API Operation: Recovery
+    /// 
+    /// $query = New-RscQueryReport -Operation Recovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	reportId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RecoveryReport
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the ScheduledReport operation
     /// of the 'Report' API domain.
     /// <code>
@@ -928,6 +959,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GenerateCloudDirectTask",
                 "HealthCheckError",
                 "Objects",
+                "Recovery",
                 "ScheduledReport",
                 "ScheduledReports",
                 "SkippedTeamsSite",
@@ -988,6 +1020,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Objects":
                         this.ProcessRecord_Objects();
+                        break;
+                    case "Recovery":
+                        this.ProcessRecord_Recovery();
                         break;
                     case "ScheduledReport":
                         this.ProcessRecord_ScheduledReport();
@@ -1135,6 +1170,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Objects";
             // Create new graphql operation reportObjects
             InitQueryReportObjects();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoveryReport.
+        internal void ProcessRecord_Recovery()
+        {
+            this._logger.name += " -Recovery";
+            // Create new graphql operation recoveryReport
+            InitQueryRecoveryReport();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1687,6 +1731,29 @@ $query.Var.filter = @(
 $query.Var.sortBy = $someReportObjectSortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ReportObjectSortByField]) for enum values.
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // recoveryReport(input: RecoveryReportInput!): RecoveryReport!
+        internal void InitQueryRecoveryReport()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoveryReportInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryRecoveryReport",
+                "($input: RecoveryReportInput!)",
+                "RecoveryReport",
+                Query.RecoveryReport,
+                Query.RecoveryReportFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	reportId = $someString
+}"
             );
         }
 

@@ -36,8 +36,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BACKUP_STRIKES_REPORT")]
         BACKUP_STRIKES_REPORT,
 
+        [EnumMember(Value = "CLOUD_COMPLIANCE_REPORT")]
+        CLOUD_COMPLIANCE_REPORT,
+
         [EnumMember(Value = "CLOUD_OVERLAP_OBJECTS_REPORT")]
         CLOUD_OVERLAP_OBJECTS_REPORT,
+
+        [EnumMember(Value = "CNP_OBJECT_CAPACITY_OVER_TIME_REPORT")]
+        CNP_OBJECT_CAPACITY_OVER_TIME_REPORT,
 
         [EnumMember(Value = "CNP_OBJECT_CAPACITY_REPORT")]
         CNP_OBJECT_CAPACITY_REPORT,
@@ -45,8 +51,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "COMPLIANCE_REPORT")]
         COMPLIANCE_REPORT,
 
+        [EnumMember(Value = "CONSOLIDATED_LICENSE_USAGE_REPORT")]
+        CONSOLIDATED_LICENSE_USAGE_REPORT,
+
         [EnumMember(Value = "DISK_STATUS_REPORT")]
         DISK_STATUS_REPORT,
+
+        [EnumMember(Value = "DNS_ACTIVITY_REPORT")]
+        DNS_ACTIVITY_REPORT,
 
         [EnumMember(Value = "EVENTS_REPORT")]
         EVENTS_REPORT,
@@ -66,6 +78,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INFRASTRUCTURE_REPORT")]
         INFRASTRUCTURE_REPORT,
 
+        [EnumMember(Value = "LICENSE_USAGE_REPORT")]
+        LICENSE_USAGE_REPORT,
+
         [EnumMember(Value = "LOG_TASKS_REPORT")]
         LOG_TASKS_REPORT,
 
@@ -80,6 +95,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OBJECT_CAPACITY_REPORT")]
         OBJECT_CAPACITY_REPORT,
+
+        [EnumMember(Value = "PAUSED_CLUSTERS_REPORT")]
+        PAUSED_CLUSTERS_REPORT,
+
+        [EnumMember(Value = "PAUSED_OBJECTS_REPORT")]
+        PAUSED_OBJECTS_REPORT,
+
+        [EnumMember(Value = "PAUSED_SLA_REPORT")]
+        PAUSED_SLA_REPORT,
 
         [EnumMember(Value = "PROTECTION_REPORT")]
         PROTECTION_REPORT,

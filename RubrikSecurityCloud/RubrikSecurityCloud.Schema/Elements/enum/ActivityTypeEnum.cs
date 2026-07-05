@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AGENT_CLOUD_SECURITY_ALERT")]
+        AGENT_CLOUD_SECURITY_ALERT,
+
         [EnumMember(Value = "Anomaly")]
         ANOMALY,
 

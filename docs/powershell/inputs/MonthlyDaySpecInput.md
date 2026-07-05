@@ -4,6 +4,6 @@ Specification for day selection for monthly snapshot schedule. You can choose on
 2. Choose the day of week pattern using 'dayOfWeekPattern'. For example, First Monday, Last Friday.
 
 - specificDate: SpecificDateInput
-  - Input for selecting a specific date in a month to schedule a snapshot. For example, dateOffset=15 for the 15th day.
+  - Specific date in a month to schedule a snapshot. For example, dateOffset=15 for the 15th day.
 - dayOfWeekPattern: DayOfWeekPatternInput
-  - Input for selecting a specific day of the week in a month to schedule a snapshot. For example, First Monday or Last Friday.
+  - Specific day of the week in a month to schedule a snapshot. For example, First Monday or Last Friday.

@@ -40,6 +40,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("language")]
         public System.String? Language { get; set; }
 
+        //      C# -> System.String? NextDocId
+        // GraphQL -> nextDocId: String! (scalar)
+        [JsonProperty("nextDocId")]
+        public System.String? NextDocId { get; set; }
+
+        //      C# -> System.String? NextDocTitle
+        // GraphQL -> nextDocTitle: String! (scalar)
+        [JsonProperty("nextDocTitle")]
+        public System.String? NextDocTitle { get; set; }
+
+        //      C# -> System.String? PrevDocId
+        // GraphQL -> prevDocId: String! (scalar)
+        [JsonProperty("prevDocId")]
+        public System.String? PrevDocId { get; set; }
+
+        //      C# -> System.String? PrevDocTitle
+        // GraphQL -> prevDocTitle: String! (scalar)
+        [JsonProperty("prevDocTitle")]
+        public System.String? PrevDocTitle { get; set; }
+
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         [JsonProperty("title")]
@@ -69,6 +89,10 @@ namespace RubrikSecurityCloud.Types
         System.String? Description = null,
         System.String? Id = null,
         System.String? Language = null,
+        System.String? NextDocId = null,
+        System.String? NextDocTitle = null,
+        System.String? PrevDocId = null,
+        System.String? PrevDocTitle = null,
         System.String? Title = null,
         List<ContentNode>? Contents = null,
         List<RelatedContent>? Related = null
@@ -85,6 +109,18 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Language != null ) {
             this.Language = Language;
+        }
+        if ( NextDocId != null ) {
+            this.NextDocId = NextDocId;
+        }
+        if ( NextDocTitle != null ) {
+            this.NextDocTitle = NextDocTitle;
+        }
+        if ( PrevDocId != null ) {
+            this.PrevDocId = PrevDocId;
+        }
+        if ( PrevDocTitle != null ) {
+            this.PrevDocTitle = PrevDocTitle;
         }
         if ( Title != null ) {
             this.Title = Title;
@@ -143,6 +179,42 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "language\n" ;
             } else {
                 s += ind + "language\n" ;
+            }
+        }
+        //      C# -> System.String? NextDocId
+        // GraphQL -> nextDocId: String! (scalar)
+        if (this.NextDocId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nextDocId\n" ;
+            } else {
+                s += ind + "nextDocId\n" ;
+            }
+        }
+        //      C# -> System.String? NextDocTitle
+        // GraphQL -> nextDocTitle: String! (scalar)
+        if (this.NextDocTitle != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nextDocTitle\n" ;
+            } else {
+                s += ind + "nextDocTitle\n" ;
+            }
+        }
+        //      C# -> System.String? PrevDocId
+        // GraphQL -> prevDocId: String! (scalar)
+        if (this.PrevDocId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prevDocId\n" ;
+            } else {
+                s += ind + "prevDocId\n" ;
+            }
+        }
+        //      C# -> System.String? PrevDocTitle
+        // GraphQL -> prevDocTitle: String! (scalar)
+        if (this.PrevDocTitle != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prevDocTitle\n" ;
+            } else {
+                s += ind + "prevDocTitle\n" ;
             }
         }
         //      C# -> System.String? Title
@@ -252,6 +324,74 @@ namespace RubrikSecurityCloud.Types
         else if (this.Language != null && ec.Excludes("language",true))
         {
             this.Language = null;
+        }
+        //      C# -> System.String? NextDocId
+        // GraphQL -> nextDocId: String! (scalar)
+        if (ec.Includes("nextDocId",true))
+        {
+            if(this.NextDocId == null) {
+
+                this.NextDocId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NextDocId != null && ec.Excludes("nextDocId",true))
+        {
+            this.NextDocId = null;
+        }
+        //      C# -> System.String? NextDocTitle
+        // GraphQL -> nextDocTitle: String! (scalar)
+        if (ec.Includes("nextDocTitle",true))
+        {
+            if(this.NextDocTitle == null) {
+
+                this.NextDocTitle = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NextDocTitle != null && ec.Excludes("nextDocTitle",true))
+        {
+            this.NextDocTitle = null;
+        }
+        //      C# -> System.String? PrevDocId
+        // GraphQL -> prevDocId: String! (scalar)
+        if (ec.Includes("prevDocId",true))
+        {
+            if(this.PrevDocId == null) {
+
+                this.PrevDocId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrevDocId != null && ec.Excludes("prevDocId",true))
+        {
+            this.PrevDocId = null;
+        }
+        //      C# -> System.String? PrevDocTitle
+        // GraphQL -> prevDocTitle: String! (scalar)
+        if (ec.Includes("prevDocTitle",true))
+        {
+            if(this.PrevDocTitle == null) {
+
+                this.PrevDocTitle = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrevDocTitle != null && ec.Excludes("prevDocTitle",true))
+        {
+            this.PrevDocTitle = null;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)

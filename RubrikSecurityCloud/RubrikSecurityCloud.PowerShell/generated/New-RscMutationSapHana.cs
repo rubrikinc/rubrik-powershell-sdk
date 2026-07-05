@@ -179,6 +179,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			@{
     /// 				# REQUIRED
     /// 				sourceDbId = $someString
+    /// 				# OPTIONAL
+    /// 				lssPassword = $someString
     /// 				# REQUIRED
     /// 				targetDbId = $someString
     /// 			}
@@ -597,6 +599,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 		# REQUIRED
     /// 		dbId = $someString
+    /// 		# OPTIONAL
+    /// 		lssPassword = $someString
     /// 		# REQUIRED
     /// 		fullSnapshotId = $someString
     /// 	}
@@ -644,6 +648,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		recoveryPoint = $someDateTime
     /// 		# REQUIRED
     /// 		dbId = $someString
+    /// 		# OPTIONAL
+    /// 		lssPassword = $someString
     /// 	}
     /// 	# OPTIONAL
     /// 	userNote = $someString
@@ -1066,6 +1072,8 @@ $query.Var.input = @{
 			@{
 				# REQUIRED
 				sourceDbId = $someString
+				# OPTIONAL
+				lssPassword = $someString
 				# REQUIRED
 				targetDbId = $someString
 			}
@@ -1404,6 +1412,8 @@ $query.Var.input = @{
 		}
 		# REQUIRED
 		dbId = $someString
+		# OPTIONAL
+		lssPassword = $someString
 		# REQUIRED
 		fullSnapshotId = $someString
 	}
@@ -1443,6 +1453,8 @@ $query.Var.input = @{
 		recoveryPoint = $someDateTime
 		# REQUIRED
 		dbId = $someString
+		# OPTIONAL
+		lssPassword = $someString
 	}
 	# OPTIONAL
 	userNote = $someString

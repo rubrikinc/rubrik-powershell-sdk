@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("s3Compatible")]
         public S3CompatibleArchivalMigrationTargetInput? S3Compatible { get; set; }
 
+        //      C# -> RcvAwsArchivalMigrationTargetInput? RcvAws
+        // GraphQL -> rcvAws: RcvAwsArchivalMigrationTargetInput (input)
+        [JsonProperty("rcvAws")]
+        public RcvAwsArchivalMigrationTargetInput? RcvAws { get; set; }
+
 
         #endregion
 

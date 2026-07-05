@@ -35,3 +35,5 @@ Input required to export a GCP GCE instance snapshot.
   - The archived snapshot ID from which the recovery should happen.
 - serviceAccountId: System.String
   - Optional service account email to attach to the exported instance. If not provided or empty, no service account will be attached.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported instance (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

@@ -1,34 +1,37 @@
 ### O365OnedriveFolder
+
+
 - id: System.String
   - The ID of the folder.
-- name: System.String
-  - The name of the folder.
 - parentFolderId: System.String
   - The ID of the parent folder.
+- name: System.String
+  - The name of the folder.
+- size: System.Int64
+  - The size of the folder contents in bytes.
+- createTime: DateTime
+  - The time the folder was created.
+- modifiedTime: DateTime
+  - The time the folder was modified.
+- channelName: System.String
+  - The name of the Teams channel containing this folder.
+- channelFolderName: System.String
+  - The folder name of the Teams channel containing this folder.
+- channelMembershipType: ChannelMembershipType
+  - The membership type of the Teams channel.
+- path: System.String
+  - The path of the folder from the root.
 - snapshotId: System.String
   - The ID of the snapshot containing this folder.
 - snapshotNum: System.Int32
   - The sequence number of the snapshot containing this folder.
 - snapshotTime: DateTime
   - The time at which the snapshot containing this folder was taken.
-- createTime: DateTime
-  - The time the folder was created.
-- modifiedTime: DateTime
-  - The time the folder was modified.
-- size: System.Int64
-- itemCount: System.Int32
-  - The count of items in the folder.
-- channelName: System.String
-  - The name of the Teams channel containing this folder.
 - channelId: System.String
   - The ID of the Teams channel containing this folder.
-- channelFolderName: System.String
-  - The folder name of the Teams channel containing this folder.
-- channelMembershipType: ChannelMembershipType
-  - The membership type of the Teams channel.
 - objectType: SharePointDescendantType
   - The object type of this folder, for example, Onedrive or SharePoint drive.
-- path: System.String
-  - The path of the folder from the root.
 - o365QuarantineInfo: O365QuarantineInfo
   - Quarantine information for the folder.
+- itemCount: System.Int32
+  - The count of items in the folder.

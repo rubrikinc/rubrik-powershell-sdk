@@ -18,3 +18,12 @@ ExoHealthCheckType represents the type of health check.
 - ECR_CONNECTIVITY - AWS ECR connectivity check.
 - ADDITIONAL_CONNECTIVITY - Additional connectivity check from Exocompute.
 - GCP_ARTIFACT_REGISTRY_CONNECTIVITY - GCP Artifact Registry connectivity check.
+- SQL_DB_CONNECTIVITY_OPTIONAL - Azure SQL DB (logical server) connectivity check from Exocompute.
+- SQL_MI_CONNECTIVITY_OPTIONAL - Azure SQL Managed Instance connectivity check from Exocompute.
+- DNS_RESOLUTION - DNS resolution check.
+- NETWORK_PATH_TRACE - Network path trace diagnostic.
+- AWS_NETWORK_CONFIG - AWS network configuration check. Reads the exocompute VPC networking
+(route tables, VPC endpoints, security groups, NACLs, ENIs/subnets) in a
+single pass and reports per-resource findings in one result.
+- AWS_NODE_SCALING_DIAGNOSTICS - AWS node scaling diagnostics.
+- AWS_NODE_BOOT_DIAGNOSTICS - AWS node boot diagnostics.

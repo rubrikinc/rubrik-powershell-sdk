@@ -55,3 +55,6 @@ The specific subgroup type that defines the exact operation to be performed with
 - REVOKE_AUTHZ - Subgroup used for revoking authorization to the CDM role using RSC.
 - CLOUD_ACCOUNT_UPDATE - Updates access credentials of a cloud account to CDM using RSC.
 - TOGGLE_OBJECT_PAUSE - Subgroup used for toggling protection pause status at object level.
+- OBJECT_BACKUP_WINDOW_SYNC - Subgroup used to sync a per-object backup-window override to CDM.
+- PERSONAL_ACCESS_TOKEN_SYNC - Subgroup used to sync a personal access token to CDM.
+- PERSONAL_ACCESS_TOKEN_DELETE - Subgroup used to delete personal access token from CDM.

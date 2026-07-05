@@ -71,3 +71,4 @@ Enum representing all the possible event types.
 - COPY - Copy job event.
 - DISCOVER - Discover job event.
 - CLOUD_DIRECT_ARCHIVE - CloudDirect archive event.
+- AGENT_CLOUD_SECURITY_ALERT - Agent Cloud security alert event type.

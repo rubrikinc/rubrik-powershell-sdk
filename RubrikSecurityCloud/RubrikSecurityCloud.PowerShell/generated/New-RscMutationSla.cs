@@ -301,6 +301,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 			# OPTIONAL
+    /// 			restrictToDaysOfWeek = @(
+    /// 				$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		weekly = @{
@@ -754,9 +758,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		awsNativeS3SlaConfigInput = @{
     /// 			# OPTIONAL
-    /// 			archivalLocationId = $someString
-    /// 			# OPTIONAL
     /// 			continuousBackupRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			archivalLocationId = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		managedVolumeSlaConfigInput = @{
@@ -1317,6 +1321,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
+    /// 			# OPTIONAL
+    /// 			restrictToDaysOfWeek = @(
+    /// 				$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		weekly = @{
@@ -1772,9 +1780,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		awsNativeS3SlaConfigInput = @{
     /// 			# OPTIONAL
-    /// 			archivalLocationId = $someString
-    /// 			# OPTIONAL
     /// 			continuousBackupRetentionInDays = $someInt
+    /// 			# OPTIONAL
+    /// 			archivalLocationId = $someString
     /// 		}
     /// 		# OPTIONAL
     /// 		managedVolumeSlaConfigInput = @{
@@ -2586,6 +2594,10 @@ $query.Var.input = @{
 				# OPTIONAL
 				retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+			# OPTIONAL
+			restrictToDaysOfWeek = @(
+				$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+			)
 		}
 		# OPTIONAL
 		weekly = @{
@@ -3039,9 +3051,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		awsNativeS3SlaConfigInput = @{
 			# OPTIONAL
-			archivalLocationId = $someString
-			# OPTIONAL
 			continuousBackupRetentionInDays = $someInt
+			# OPTIONAL
+			archivalLocationId = $someString
 		}
 		# OPTIONAL
 		managedVolumeSlaConfigInput = @{
@@ -3563,6 +3575,10 @@ $query.Var.input = @{
 				# OPTIONAL
 				retentionUnit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
+			# OPTIONAL
+			restrictToDaysOfWeek = @(
+				$someDayOfWeek # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DayOfWeek]) for enum values.
+			)
 		}
 		# OPTIONAL
 		weekly = @{
@@ -4018,9 +4034,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		awsNativeS3SlaConfigInput = @{
 			# OPTIONAL
-			archivalLocationId = $someString
-			# OPTIONAL
 			continuousBackupRetentionInDays = $someInt
+			# OPTIONAL
+			archivalLocationId = $someString
 		}
 		# OPTIONAL
 		managedVolumeSlaConfigInput = @{

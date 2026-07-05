@@ -174,6 +174,13 @@ Query Azure DevOps organization objects.
     - sortOrder - SortOrder: Sorts the order of results.
     - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
 - Returns AzureDevOpsOrganizationConnection.
+### devopsorgsintenant
+Lists all Azure DevOps organizations in the tenant that the OAuth user
+has access to. Must be called after completeAzureDevOpsOauth in the same
+OAuth session.
+
+- There is a single argument of type System.String.
+- Returns list of AzureDevOpsOrgInfos.
 ### devopsproject
 Query Azure DevOps project object.
 
@@ -330,9 +337,13 @@ for RCV Azure BLI migration details.
 ### regions
 Gets the Azure regions for the given subscription.
 
-- There are 2 arguments.
-    - tenantId - System.String
-    - subscriptionId - System.String
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - tenantId - System.String: Azure tenant ID.
+    - subscriptionId - System.String: Azure subscription ID.
 - Returns RegionConnection.
 ### regionswithazdetails
 Retrieve all available regions for Azure with availability zone details.
@@ -342,9 +353,13 @@ Retrieve all available regions for Azure with availability zone details.
 ### resourcegroups
 Gets the Azure resource groups for the given subscription.
 
-- There are 2 arguments.
-    - tenantId - System.String
-    - subscriptionId - System.String
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - tenantId - System.String: Azure tenant ID.
+    - subscriptionId - System.String: Azure subscription ID.
 - Returns ResourceGroupConnection.
 ### resourcegroupsfromazure
 Retrieves a list og all resource groups in the specified account.
@@ -492,10 +507,14 @@ Retrieves the list of containers excluded from protection for the specified stor
 ### storageaccounts
 Gets the storage accounts for the given subscription.
 
-- There are 3 arguments.
-    - tenantId - System.String
-    - subscriptionId - System.String
-    - regionName - System.String
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - tenantId - System.String: Azure tenant ID.
+    - subscriptionId - System.String: Azure subscription ID.
+    - regionName - System.String: Azure region name.
 - Returns StorageAccountConnection.
 ### storageaccountsbyregion
 List all Azure storage accounts by region.
@@ -513,7 +532,12 @@ Gets the subnets for the given subscription.
 ### subscriptions
 Gets the subscriptions for the given Azure tenant.
 
-- There is a single argument of type System.String.
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - tenantId - System.String: Azure tenant ID.
 - Returns AzureSubscriptionConnection.
 ### subscriptionwithexocomputemappings
 Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
@@ -546,8 +570,12 @@ Validates Azure cluster create request.
 ### vnets
 Gets the VNets for the given subscription.
 
-- There are 3 arguments.
-    - tenantId - System.String
-    - subscriptionId - System.String
-    - regionName - System.String
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - tenantId - System.String: Azure tenant ID.
+    - subscriptionId - System.String: Azure subscription ID.
+    - regionName - System.String: Azure region name.
 - Returns VnetConnection.

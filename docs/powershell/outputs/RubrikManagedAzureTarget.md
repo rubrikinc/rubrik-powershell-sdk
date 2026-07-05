@@ -1,42 +1,40 @@
 ### RubrikManagedAzureTarget
 Specific information for Azure target created on Rubrik.
 
-- computeSettings: AzureComputeSettings
-  - Compute settings of the Azure target.
-- connectionStatus: ConnectionStatusType
-  - Connection status of the Azure target.
-- cloudNativeCompanion: AzureCloudNativeTargetCompanion
-  - Cloud native information of the Azure target.
+- storageAccountName: System.String
+  - Storage account name of the Azure target.
+- accessKey: System.String
+  - Access key of the Azure target.
+- containerName: System.String
+  - Container name of the Azure target.
 - cloudAccount: CloudAccount
   - Cloud account details of the Azure target.
 - instanceType: InstanceTypeEnum
   - Instance type of the Azure location.
-- immutabilitySettings: AzureImmutabilitySettingsType
-  - Immutability settings of the Azure target.
-- storageAccountName: System.String
-  - Storage account name of the Azure target.
-- containerName: System.String
-  - Container name of the Azure target.
-- proxySettings: ProxySettings
-  - Proxy settings of the AWS target.
-- accessKey: System.String
-  - Access key of the Azure target.
 - syncStatus: TargetSyncStatus
   - Sync status of Azure location.
+- computeSettings: AzureComputeSettings
+  - Compute settings of the Azure target.
+- proxySettings: ProxySettings
+  - Proxy settings of the Azure target.
 - isConsolidationEnabled: System.Boolean
   - Flag to check if consolidation is enabled or not in this target.
 - syncFailureReason: System.String
   - Reason why sync of this target with CDM failed.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the Azure target.
+- cloudNativeCompanion: AzureCloudNativeTargetCompanion
+  - Cloud native information of the Azure target.
+- immutabilitySettings: AzureImmutabilitySettingsType
+  - Immutability settings of the Azure target.
 - isAzureTieringSupported: System.Boolean
-  - Flag to determine if tiering is supported in the Azure target.
-- bypassProxy: System.Boolean
-  - Specifies whether the proxy settings should be bypassed for creating this target location.
+  - Specifies whether Azure archival tiering is supported or not.
 - retrievalTier: AzureRetrievalTier
   - Retrieval tier of the Azure target.
+- bypassProxy: System.Boolean
+  - Specifies whether the proxy settings should be bypassed for creating this target location.
 - accessTier: AzureStorageTier
   - Access tier of the Azure target.
-- cluster: Cluster
-  - The cluster to which this target belongs.
 - targetType: TargetType
   - The type of the target.
 - id: System.String
@@ -71,3 +69,5 @@ Specific information for Azure target created on Rubrik.
   - Status of the target.
 - isComplianceImmutabilitySupported: System.Boolean
   - Specifies whether the archival location supports compliance immutability for retention locked snapshots.
+- cluster: Cluster
+  - The cluster to which this target belongs.

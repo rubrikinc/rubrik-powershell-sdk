@@ -19,6 +19,12 @@ Represents optional parameters that are to be configured during the configuratio
   - Azure resource ID of the private DNS zone which will be used to resolve the Azure SQL Private Endpoints.
 - diskEncryptionSetId: System.String
   - Azure resource ID of the disk encryption set which will be used to encrypt the AKS node disks using customer managed keys.
+- azurePostgresFlexServerSubnetNativeId: System.String
+  - Azure resource ID of the subnet, in the exocompute VNet, that is delegated to Microsoft.DBforPostgreSQL/flexibleServers. Used for VNet integration of Rubrik-managed Azure Postgres Flexible Servers. Must be different from the exocompute (AKS) subnet. Per-region only: not valid on the globalConfig argument of azureExocomputeConfigsUpdate.
+- azurePostgresFlexServerPrivateDnsZoneId: System.String
+  - Azure resource ID of the private DNS zone used to resolve FQDNs of Rubrik-managed Azure Postgres Flexible Servers from the exocompute subnet. The DNS zone name must end with '.postgres.database.azure.com' and be linked to the exocompute VNet. Per-region only: not valid on the globalConfig argument of azureExocomputeConfigsUpdate.
+- healthCheckVmNamePrefix: System.String
+  - Customer-configured name prefix for the health-check launch virtual machine. When empty, the default prefix is used; a Rubrik-owned marker and a UUID suffix are appended automatically and are not part of this value.
 - aksClusterTier: AKSProvisionTier
   - Cluster tier of the provisioned aks cluster.
 - aksNodeCountBucket: AKSNodeCountBucket

@@ -123,11 +123,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NFS_LOCATION_READER_POST")]
         NFS_LOCATION_READER_POST,
 
+        [EnumMember(Value = "OBJECT_BACKUP_WINDOW_SYNC")]
+        OBJECT_BACKUP_WINDOW_SYNC,
+
         [EnumMember(Value = "OBJECT_STORE_LOCATION_PUT")]
         OBJECT_STORE_LOCATION_PUT,
 
         [EnumMember(Value = "OBJECT_STORE_LOCATION_READER_POST")]
         OBJECT_STORE_LOCATION_READER_POST,
+
+        [EnumMember(Value = "PERSONAL_ACCESS_TOKEN_DELETE")]
+        PERSONAL_ACCESS_TOKEN_DELETE,
+
+        [EnumMember(Value = "PERSONAL_ACCESS_TOKEN_SYNC")]
+        PERSONAL_ACCESS_TOKEN_SYNC,
 
         [EnumMember(Value = "QSTAR_LOCATION_PUT")]
         QSTAR_LOCATION_PUT,

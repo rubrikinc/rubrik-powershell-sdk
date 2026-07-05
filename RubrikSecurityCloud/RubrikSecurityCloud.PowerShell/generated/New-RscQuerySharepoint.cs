@@ -160,6 +160,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -264,6 +266,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -350,6 +354,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	descendantWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// # REQUIRED
     /// $query.Var.orgId = $someString
@@ -464,6 +470,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	descendantWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -560,6 +568,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.siteChildId = $someString
@@ -660,6 +670,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// # OPTIONAL
     /// $query.Var.siteChildId = $someString
@@ -760,6 +772,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	filePath = $someString
     /// 	# OPTIONAL
     /// 	parentWorkloadId = $someString
+    /// 	# OPTIONAL
+    /// 	itemId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1024,6 +1038,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString
@@ -1136,6 +1152,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString
@@ -1228,6 +1246,8 @@ $query.Var.sharepointSiteSearchFilter = @{
 	}
 	# OPTIONAL
 	descendantWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }
 # REQUIRED
 $query.Var.orgId = $someString"
@@ -1337,6 +1357,8 @@ $query.Var.sharepointSiteSearchFilter = @{
 	}
 	# OPTIONAL
 	descendantWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }
@@ -1439,6 +1461,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }
 # OPTIONAL
 $query.Var.siteChildId = $someString
@@ -1543,6 +1567,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }
 # OPTIONAL
 $query.Var.siteChildId = $someString"
@@ -1647,6 +1673,8 @@ $query.Var.sharepointDriveSearchFilter = @{
 	filePath = $someString
 	# OPTIONAL
 	parentWorkloadId = $someString
+	# OPTIONAL
+	itemId = $someString
 }"
             );
         }

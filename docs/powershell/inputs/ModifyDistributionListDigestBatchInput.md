@@ -2,4 +2,4 @@
 Input for modifying event digests.
 
 - digests: list of EventDigestInputs
-  - List of event digests to modify.
+  - A list of event digests to modify.

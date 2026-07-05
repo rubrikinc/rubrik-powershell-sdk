@@ -16,7 +16,7 @@ Get details about a Hyper-V host related async request.
 ### hostvirtualswitches
 Get virtual switches on Hyper-V host
 
-Supported in v9.6
+Supported in v9.6+
 Retrieves the list of virtual switches configured on a Hyper-V host.
 
 - There is a single argument of type GetHypervHostVirtualSwitchesInput.

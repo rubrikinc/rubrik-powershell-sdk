@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ALL")]
         ALL,
 
+        [EnumMember(Value = "ARCHIVAL_LOCATION_IDS")]
+        ARCHIVAL_LOCATION_IDS,
+
         [EnumMember(Value = "HAS_UNEXPIRED_ARCHIVED_OR_SOURCE_SNAPSHOTS")]
         HAS_UNEXPIRED_ARCHIVED_OR_SOURCE_SNAPSHOTS,
 

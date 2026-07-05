@@ -128,6 +128,11 @@ Get report objects with report-specific filtering and pagination.
     - sortBy - ReportObjectSortByField: Field to sort by.
     - sortOrder - SortOrder: Sort order (ASC/DESC).
 - Returns ReportObjectConnection.
+### recovery
+Returns status and information about a recovery report.
+
+- There is a single argument of type RecoveryReportInput.
+- Returns RecoveryReport.
 ### scheduledreport
 Retrieve details of a scheduled report.
 

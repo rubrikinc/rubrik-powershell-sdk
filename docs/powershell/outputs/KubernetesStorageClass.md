@@ -2,9 +2,9 @@
 Kubernetes storage class.
 
 - fid: System.String
-  - FID of the storage class. 
+  - FID of the storage class.
 - id: System.String
-  - Object ID of the storage class on the CDM cluster. 
+  - Object ID of the storage class on the CDM cluster.
 - clusterUuid: System.String
   - UUID of the CDM cluster.
 - k8sClusterUuid: System.String

@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public ArchivalLocationStatus? Status { get; set; }
 
+        //      C# -> NfsSubType? SubType
+        // GraphQL -> subType: NfsSubType (enum)
+        [JsonProperty("subType")]
+        public NfsSubType? SubType { get; set; }
+
         //      C# -> TargetSyncStatus? SyncStatus
         // GraphQL -> syncStatus: TargetSyncStatus! (enum)
         [JsonProperty("syncStatus")]
@@ -187,6 +192,7 @@ namespace RubrikSecurityCloud.Types
         AuthTypeEnum? NfsAuthType = null,
         ReaderRetrievalMethod? ReaderRetrievalMethod = null,
         ArchivalLocationStatus? Status = null,
+        NfsSubType? SubType = null,
         TargetSyncStatus? SyncStatus = null,
         TargetType? TargetType = null,
         UpgradeStatus? UpgradeStatus = null,
@@ -230,6 +236,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( SubType != null ) {
+            this.SubType = SubType;
         }
         if ( SyncStatus != null ) {
             this.SyncStatus = SyncStatus;
@@ -369,6 +378,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> NfsSubType? SubType
+        // GraphQL -> subType: NfsSubType (enum)
+        if (this.SubType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subType\n" ;
+            } else {
+                s += ind + "subType\n" ;
             }
         }
         //      C# -> TargetSyncStatus? SyncStatus
@@ -707,6 +725,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> NfsSubType? SubType
+        // GraphQL -> subType: NfsSubType (enum)
+        if (ec.Includes("subType",true))
+        {
+            if(this.SubType == null) {
+
+                this.SubType = new NfsSubType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubType != null && ec.Excludes("subType",true))
+        {
+            this.SubType = null;
         }
         //      C# -> TargetSyncStatus? SyncStatus
         // GraphQL -> syncStatus: TargetSyncStatus! (enum)

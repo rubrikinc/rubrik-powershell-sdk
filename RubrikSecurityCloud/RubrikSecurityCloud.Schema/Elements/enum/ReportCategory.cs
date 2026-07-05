@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OTHERS")]
         OTHERS,
 
+        [EnumMember(Value = "PROTECTION_PAUSE")]
+        PROTECTION_PAUSE,
+
         [EnumMember(Value = "REPORT_CATEGORY_UNSPECIFIED")]
         REPORT_CATEGORY_UNSPECIFIED,
 

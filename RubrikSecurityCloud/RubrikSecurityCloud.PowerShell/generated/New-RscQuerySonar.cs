@@ -90,13 +90,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQuerySonar -Operation UserGroups
     /// 
     /// # OPTIONAL
-    /// $query.Var.filter = @{
-    /// 	# OPTIONAL
-    /// 	groupName = $someString
-    /// 	# OPTIONAL
-    /// 	userId = $someString
-    /// }
-    /// # OPTIONAL
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
@@ -104,6 +97,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.last = $someInt
     /// # OPTIONAL
     /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	groupName = $someString
+    /// 	# OPTIONAL
+    /// 	userId = $someString
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -131,12 +131,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQuerySonar -Operation Users
     /// 
     /// # OPTIONAL
-    /// $query.Var.sort = @{
-    /// 	# OPTIONAL
-    /// 	sortBy = $someListAccessUsersSort # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListAccessUsersSort]) for enum values.
-    /// 	# OPTIONAL
-    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-    /// }
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.filter = @{
     /// 	# OPTIONAL
@@ -156,13 +157,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	search = $someString
     /// }
     /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
+    /// $query.Var.sort = @{
+    /// 	# OPTIONAL
+    /// 	sortBy = $someListAccessUsersSort # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListAccessUsersSort]) for enum values.
+    /// 	# OPTIONAL
+    /// 	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// }
     /// 
     /// # Execute the query
     /// 
@@ -246,81 +246,82 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         // Create new GraphQL Query:
         // sonarUserGroups(
-        //     filter: ListAccessGroupsFilterInput
         //     first: Int
         //     after: String
         //     last: Int
         //     before: String
+        //     filter: ListAccessGroupsFilterInput
         //   ): AccessGroupConnection!
         internal void InitQuerySonarUserGroups()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("filter", "ListAccessGroupsFilterInput"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
+                Tuple.Create("filter", "ListAccessGroupsFilterInput"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySonarUserGroups",
-                "($filter: ListAccessGroupsFilterInput,$first: Int,$after: String,$last: Int,$before: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: ListAccessGroupsFilterInput)",
                 "AccessGroupConnection",
                 Query.SonarUserGroups,
                 Query.SonarUserGroupsFieldSpec,
                 @"# OPTIONAL
-$query.Var.filter = @{
-	# OPTIONAL
-	groupName = $someString
-	# OPTIONAL
-	userId = $someString
-}
-# OPTIONAL
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
 $query.Var.last = $someInt
 # OPTIONAL
-$query.Var.before = $someString"
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	groupName = $someString
+	# OPTIONAL
+	userId = $someString
+}"
             );
         }
 
         // Create new GraphQL Query:
         // sonarUsers(
-        //     sort: ListAccessUsersSortInput
-        //     filter: ListAccessUsersFilterInput
         //     first: Int
         //     after: String
         //     last: Int
         //     before: String
+        //     filter: ListAccessUsersFilterInput
+        //     sort: ListAccessUsersSortInput
         //   ): AccessUserConnection!
         internal void InitQuerySonarUsers()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("sort", "ListAccessUsersSortInput"),
-                Tuple.Create("filter", "ListAccessUsersFilterInput"),
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
                 Tuple.Create("last", "Int"),
                 Tuple.Create("before", "String"),
+                Tuple.Create("filter", "ListAccessUsersFilterInput"),
+                Tuple.Create("sort", "ListAccessUsersSortInput"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySonarUsers",
-                "($sort: ListAccessUsersSortInput,$filter: ListAccessUsersFilterInput,$first: Int,$after: String,$last: Int,$before: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: ListAccessUsersFilterInput,$sort: ListAccessUsersSortInput)",
                 "AccessUserConnection",
                 Query.SonarUsers,
                 Query.SonarUsersFieldSpec,
                 @"# OPTIONAL
-$query.Var.sort = @{
-	# OPTIONAL
-	sortBy = $someListAccessUsersSort # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListAccessUsersSort]) for enum values.
-	# OPTIONAL
-	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
-}
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.filter = @{
 	# OPTIONAL
@@ -340,13 +341,12 @@ $query.Var.filter = @{
 	search = $someString
 }
 # OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
+$query.Var.sort = @{
+	# OPTIONAL
+	sortBy = $someListAccessUsersSort # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ListAccessUsersSort]) for enum values.
+	# OPTIONAL
+	sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+}"
             );
         }
 

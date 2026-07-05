@@ -25,10 +25,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionsGroup")]
         public PermissionsGroup? PermissionsGroup { get; set; }
 
+        //      C# -> System.Boolean? DeltaMigrated
+        // GraphQL -> deltaMigrated: Boolean! (scalar)
+        [JsonProperty("deltaMigrated")]
+        public System.Boolean? DeltaMigrated { get; set; }
+
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
         [JsonProperty("version")]
         public System.Int32? Version { get; set; }
+
+        //      C# -> List<DeltaInterval>? DeltaInterval
+        // GraphQL -> deltaInterval: [DeltaInterval!]! (type)
+        [JsonProperty("deltaInterval")]
+        public List<DeltaInterval>? DeltaInterval { get; set; }
 
 
         #endregion
@@ -41,14 +51,22 @@ namespace RubrikSecurityCloud.Types
 
     public PermissionsGroupWithVersion Set(
         PermissionsGroup? PermissionsGroup = null,
-        System.Int32? Version = null
+        System.Boolean? DeltaMigrated = null,
+        System.Int32? Version = null,
+        List<DeltaInterval>? DeltaInterval = null
     ) 
     {
         if ( PermissionsGroup != null ) {
             this.PermissionsGroup = PermissionsGroup;
         }
+        if ( DeltaMigrated != null ) {
+            this.DeltaMigrated = DeltaMigrated;
+        }
         if ( Version != null ) {
             this.Version = Version;
+        }
+        if ( DeltaInterval != null ) {
+            this.DeltaInterval = DeltaInterval;
         }
         return this;
     }
@@ -73,6 +91,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "permissionsGroup\n" ;
             }
         }
+        //      C# -> System.Boolean? DeltaMigrated
+        // GraphQL -> deltaMigrated: Boolean! (scalar)
+        if (this.DeltaMigrated != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "deltaMigrated\n" ;
+            } else {
+                s += ind + "deltaMigrated\n" ;
+            }
+        }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
         if (this.Version != null) {
@@ -80,6 +107,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "version\n" ;
             } else {
                 s += ind + "version\n" ;
+            }
+        }
+        //      C# -> List<DeltaInterval>? DeltaInterval
+        // GraphQL -> deltaInterval: [DeltaInterval!]! (type)
+        if (this.DeltaInterval != null) {
+            var fspec = this.DeltaInterval.AsFieldSpec(conf.Child("deltaInterval"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "deltaInterval" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -106,6 +145,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.PermissionsGroup = null;
         }
+        //      C# -> System.Boolean? DeltaMigrated
+        // GraphQL -> deltaMigrated: Boolean! (scalar)
+        if (ec.Includes("deltaMigrated",true))
+        {
+            if(this.DeltaMigrated == null) {
+
+                this.DeltaMigrated = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DeltaMigrated != null && ec.Excludes("deltaMigrated",true))
+        {
+            this.DeltaMigrated = null;
+        }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
         if (ec.Includes("version",true))
@@ -122,6 +178,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Version != null && ec.Excludes("version",true))
         {
             this.Version = null;
+        }
+        //      C# -> List<DeltaInterval>? DeltaInterval
+        // GraphQL -> deltaInterval: [DeltaInterval!]! (type)
+        if (ec.Includes("deltaInterval",false))
+        {
+            if(this.DeltaInterval == null) {
+
+                this.DeltaInterval = new List<DeltaInterval>();
+                this.DeltaInterval.ApplyExploratoryFieldSpec(ec.NewChild("deltaInterval"));
+
+            } else {
+
+                this.DeltaInterval.ApplyExploratoryFieldSpec(ec.NewChild("deltaInterval"));
+
+            }
+        }
+        else if (this.DeltaInterval != null && ec.Excludes("deltaInterval",false))
+        {
+            this.DeltaInterval = null;
         }
     }
 

@@ -15,3 +15,11 @@ A help topic in the product documentation.
   - A flattened list of nodes representing the contents of the help topic.
 - related: list of RelatedContents
   - List of related help topics.
+- prevDocId: System.String
+  - ID of the previous topic in sequential reading order.
+- prevDocTitle: System.String
+  - Title of the previous topic.
+- nextDocId: System.String
+  - ID of the next topic in sequential reading order.
+- nextDocTitle: System.String
+  - Title of the next topic.

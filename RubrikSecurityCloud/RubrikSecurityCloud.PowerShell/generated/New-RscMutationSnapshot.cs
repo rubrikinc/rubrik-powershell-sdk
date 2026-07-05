@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 28
+    /// Create a new RscQuery object for any of the 29
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 28 operations
+    /// There are 29 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -661,12 +661,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotFid = $someString
-    /// 	# OPTIONAL
-    /// 	userNote = $someString
-    /// 	# OPTIONAL
-    /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -687,6 +681,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	deltaTypeFilter = @(
     /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotFid = $someString
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
+    /// 	# OPTIONAL
+    /// 	zipPassword = $someString
     /// }
     /// 
     /// # Execute the query
@@ -716,14 +716,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotFid = $someString
-    /// 	# OPTIONAL
-    /// 	deltaTypeFilter = @(
-    /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
-    /// 	)
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -758,9 +750,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		shouldRestoreOnlyAcls = $someBoolean
     /// 	}
     /// 	# REQUIRED
-    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+    /// 	id = $someString
     /// 	# REQUIRED
     /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# REQUIRED
+    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+    /// 	# OPTIONAL
+    /// 	deltaTypeFilter = @(
+    /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotFid = $someString
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
@@ -770,6 +770,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RecoverGlueIcebergTable operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: RecoverGlueIcebergTable
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation RecoverGlueIcebergTable
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	sourceTableId = $someString
+    /// 	# OPTIONAL
+    /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	inPlace = @{
+    /// 		# OPTIONAL
+    /// 		branchName = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	exportToExistingTable = @{
+    /// 		# REQUIRED
+    /// 		destTableId = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	exportToNewTable = @{
+    /// 		# REQUIRED
+    /// 		destDatabaseId = $someString
+    /// 		# REQUIRED
+    /// 		tableName = $someString
+    /// 		# REQUIRED
+    /// 		tableDataLocation = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RecoverGlueIcebergTableSnapshotReply
     /// 
     /// 
     /// 
@@ -1113,6 +1165,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	objectFid = $someString
     /// 	# OPTIONAL
@@ -1364,6 +1418,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ExportProxmoxVm",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
+                "RecoverGlueIcebergTable",
                 "RestoreDomainController",
                 "RestoreFilesFromFusionCompute",
                 "RestoreOpenstackVmFiles",
@@ -1438,6 +1493,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "FilesetExportFiles":
                         this.ProcessRecord_FilesetExportFiles();
+                        break;
+                    case "RecoverGlueIcebergTable":
+                        this.ProcessRecord_RecoverGlueIcebergTable();
                         break;
                     case "RestoreDomainController":
                         this.ProcessRecord_RestoreDomainController();
@@ -1627,6 +1685,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -FilesetExportFiles";
             // Create new graphql operation filesetExportSnapshotFiles
             InitMutationFilesetExportSnapshotFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // recoverGlueIcebergTableSnapshot.
+        internal void ProcessRecord_RecoverGlueIcebergTable()
+        {
+            this._logger.name += " -RecoverGlueIcebergTable";
+            // Create new graphql operation recoverGlueIcebergTableSnapshot
+            InitMutationRecoverGlueIcebergTableSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2213,12 +2280,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
-	# OPTIONAL
-	nextSnapshotFid = $someString
-	# OPTIONAL
-	userNote = $someString
-	# OPTIONAL
-	zipPassword = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -2239,6 +2300,12 @@ $query.Var.input = @{
 	deltaTypeFilter = @(
 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 	)
+	# OPTIONAL
+	nextSnapshotFid = $someString
+	# OPTIONAL
+	userNote = $someString
+	# OPTIONAL
+	zipPassword = $someString
 }"
             );
         }
@@ -2260,14 +2327,6 @@ $query.Var.input = @{
                 Mutation.FilesetExportSnapshotFilesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
-	id = $someString
-	# OPTIONAL
-	nextSnapshotFid = $someString
-	# OPTIONAL
-	deltaTypeFilter = @(
-		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
-	)
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -2302,11 +2361,63 @@ $query.Var.input = @{
 		shouldRestoreOnlyAcls = $someBoolean
 	}
 	# REQUIRED
-	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+	id = $someString
 	# REQUIRED
 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# REQUIRED
+	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+	# OPTIONAL
+	deltaTypeFilter = @(
+		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+	)
+	# OPTIONAL
+	nextSnapshotFid = $someString
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // recoverGlueIcebergTableSnapshot(input: RecoverGlueIcebergTableSnapshotInput!): RecoverGlueIcebergTableSnapshotReply!
+        internal void InitMutationRecoverGlueIcebergTableSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RecoverGlueIcebergTableSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRecoverGlueIcebergTableSnapshot",
+                "($input: RecoverGlueIcebergTableSnapshotInput!)",
+                "RecoverGlueIcebergTableSnapshotReply",
+                Mutation.RecoverGlueIcebergTableSnapshot,
+                Mutation.RecoverGlueIcebergTableSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	sourceTableId = $someString
+	# OPTIONAL
+	snapshotId = $someString
+	# OPTIONAL
+	inPlace = @{
+		# OPTIONAL
+		branchName = $someString
+	}
+	# OPTIONAL
+	exportToExistingTable = @{
+		# REQUIRED
+		destTableId = $someString
+	}
+	# OPTIONAL
+	exportToNewTable = @{
+		# REQUIRED
+		destDatabaseId = $someString
+		# REQUIRED
+		tableName = $someString
+		# REQUIRED
+		tableDataLocation = $someString
+	}
 }"
             );
         }
@@ -2601,6 +2712,8 @@ $query.Var.input = @{
                 Mutation.TakeCloudDirectSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	userNote = $someString
 	# REQUIRED
 	objectFid = $someString
 	# OPTIONAL

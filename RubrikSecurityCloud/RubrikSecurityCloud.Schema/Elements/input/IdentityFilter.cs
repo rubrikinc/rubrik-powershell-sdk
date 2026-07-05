@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("targetSourceIds")]
         public List<System.String>? TargetSourceIds { get; set; }
 
+        //      C# -> List<PrincipalRiskySummaryPrincipalType>? ExcludedTargetEntityTypes
+        // GraphQL -> excludedTargetEntityTypes: [PrincipalRiskySummaryPrincipalType!] (enum)
+        [JsonProperty("excludedTargetEntityTypes")]
+        public List<PrincipalRiskySummaryPrincipalType>? ExcludedTargetEntityTypes { get; set; }
+
 
         #endregion
 

@@ -26,11 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("domainName")]
         public System.String? DomainName { get; set; }
 
-        //      C# -> System.Boolean? IncludeIntune
-        // GraphQL -> includeIntune: Boolean (scalar)
-        [JsonProperty("includeIntune")]
-        public System.Boolean? IncludeIntune { get; set; }
-
         //      C# -> AzureAdRegion? Region
         // GraphQL -> region: AzureAdRegion! (enum)
         [Required]
@@ -47,6 +42,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> permissionAccessMode: PermissionAccessMode (enum)
         [JsonProperty("permissionAccessMode")]
         public PermissionAccessMode? PermissionAccessMode { get; set; }
+
+        //      C# -> System.Boolean? IncludeIntune
+        // GraphQL -> includeIntune: Boolean (scalar)
+        [JsonProperty("includeIntune")]
+        public System.Boolean? IncludeIntune { get; set; }
 
 
         #endregion

@@ -30,6 +30,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AUTOSCALER_CONNECTIVITY")]
         AUTOSCALER_CONNECTIVITY,
 
+        [EnumMember(Value = "AWS_NETWORK_CONFIG")]
+        AWS_NETWORK_CONFIG,
+
+        [EnumMember(Value = "AWS_NODE_BOOT_DIAGNOSTICS")]
+        AWS_NODE_BOOT_DIAGNOSTICS,
+
+        [EnumMember(Value = "AWS_NODE_SCALING_DIAGNOSTICS")]
+        AWS_NODE_SCALING_DIAGNOSTICS,
+
         [EnumMember(Value = "AZURE_PLATFORM_IP_CONNECTIVITY")]
         AZURE_PLATFORM_IP_CONNECTIVITY,
 
@@ -38,6 +47,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUDSLAB_CONNECTIVITY_OPTIONAL")]
         CLOUDSLAB_CONNECTIVITY_OPTIONAL,
+
+        [EnumMember(Value = "DNS_RESOLUTION")]
+        DNS_RESOLUTION,
 
         [EnumMember(Value = "EC2_CONNECTIVITY")]
         EC2_CONNECTIVITY,
@@ -63,8 +75,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "KMS_CONNECTIVITY")]
         KMS_CONNECTIVITY,
 
+        [EnumMember(Value = "NETWORK_PATH_TRACE")]
+        NETWORK_PATH_TRACE,
+
         [EnumMember(Value = "RSC_IP_CONNECTIVITY")]
         RSC_IP_CONNECTIVITY,
+
+        [EnumMember(Value = "SQL_DB_CONNECTIVITY_OPTIONAL")]
+        SQL_DB_CONNECTIVITY_OPTIONAL,
+
+        [EnumMember(Value = "SQL_MI_CONNECTIVITY_OPTIONAL")]
+        SQL_MI_CONNECTIVITY_OPTIONAL,
 
         [EnumMember(Value = "STS_CONNECTIVITY")]
         STS_CONNECTIVITY

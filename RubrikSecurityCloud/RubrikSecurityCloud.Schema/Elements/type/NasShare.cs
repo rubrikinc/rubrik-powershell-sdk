@@ -111,6 +111,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isNasShareManuallyAdded")]
         public System.Boolean? IsNasShareManuallyAdded { get; set; }
 
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        [JsonProperty("isNetAppSnapDiffEnabled")]
+        public System.Boolean? IsNetAppSnapDiffEnabled { get; set; }
+
         //      C# -> System.Boolean? IsNutanixCftEnabled
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
         [JsonProperty("isNutanixCftEnabled")]
@@ -120,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
+
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        public System.Boolean? IsReplica { get; set; }
 
         //      C# -> System.Boolean? IsStale
         // GraphQL -> isStale: Boolean! (scalar)
@@ -328,8 +338,10 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsChangelistEnabled = null,
         System.Boolean? IsHidden = null,
         System.Boolean? IsNasShareManuallyAdded = null,
+        System.Boolean? IsNetAppSnapDiffEnabled = null,
         System.Boolean? IsNutanixCftEnabled = null,
         System.Boolean? IsRelic = null,
+        System.Boolean? IsReplica = null,
         System.Boolean? IsStale = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -412,11 +424,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsNasShareManuallyAdded != null ) {
             this.IsNasShareManuallyAdded = IsNasShareManuallyAdded;
         }
+        if ( IsNetAppSnapDiffEnabled != null ) {
+            this.IsNetAppSnapDiffEnabled = IsNetAppSnapDiffEnabled;
+        }
         if ( IsNutanixCftEnabled != null ) {
             this.IsNutanixCftEnabled = IsNutanixCftEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( IsReplica != null ) {
+            this.IsReplica = IsReplica;
         }
         if ( IsStale != null ) {
             this.IsStale = IsStale;
@@ -692,6 +710,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isNasShareManuallyAdded\n" ;
             }
         }
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        if (this.IsNetAppSnapDiffEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isNetAppSnapDiffEnabled\n" ;
+            } else {
+                s += ind + "isNetAppSnapDiffEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsNutanixCftEnabled
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
         if (this.IsNutanixCftEnabled != null) {
@@ -708,6 +735,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRelic\n" ;
             } else {
                 s += ind + "isRelic\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (this.IsReplica != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isReplica\n" ;
+            } else {
+                s += ind + "isReplica\n" ;
             }
         }
         //      C# -> System.Boolean? IsStale
@@ -1344,6 +1380,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsNasShareManuallyAdded = null;
         }
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        if (ec.Includes("isNetAppSnapDiffEnabled",true))
+        {
+            if(this.IsNetAppSnapDiffEnabled == null) {
+
+                this.IsNetAppSnapDiffEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsNetAppSnapDiffEnabled != null && ec.Excludes("isNetAppSnapDiffEnabled",true))
+        {
+            this.IsNetAppSnapDiffEnabled = null;
+        }
         //      C# -> System.Boolean? IsNutanixCftEnabled
         // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
         if (ec.Includes("isNutanixCftEnabled",true))
@@ -1377,6 +1430,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRelic != null && ec.Excludes("isRelic",true))
         {
             this.IsRelic = null;
+        }
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        if (ec.Includes("isReplica",true))
+        {
+            if(this.IsReplica == null) {
+
+                this.IsReplica = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsReplica != null && ec.Excludes("isReplica",true))
+        {
+            this.IsReplica = null;
         }
         //      C# -> System.Boolean? IsStale
         // GraphQL -> isStale: Boolean! (scalar)

@@ -21,3 +21,7 @@ MvcProfile represents an MVC (Minimum Viable Company) profile for an org.
   - Most recent MVC analysis job for this profile.
 - updatedAt: DateTime
   - Timestamp when the profile was last updated.
+- recoveryPlans: list of M365AbrRecoveryPlans
+  - Recovery Plans associated with this minimum viable company profile.
+Archived Recovery Plans are excluded. Empty list when no Recovery
+Plans exist.

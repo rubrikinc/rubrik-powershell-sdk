@@ -59,3 +59,5 @@ Type of objects managed by SLA Domains.
 - RSC_TAG_OBJECT_TYPE - RSC tag object. Used when an SLA Domain is assigned to an RSC tag so
 that assigned objects inherit the SLA Domain from the tag.
 - PING_FEDERATE_OBJECT_TYPE - Ping Federate object.
+- POWER_PLATFORM_OBJECT_TYPE - Power Platform SLA object type. Covers the environment plus all
+Power Platform objects (canvas app, model-driven app, flow).

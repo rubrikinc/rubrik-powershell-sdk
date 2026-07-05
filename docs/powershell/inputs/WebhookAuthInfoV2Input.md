@@ -4,7 +4,7 @@ The authentication type that the endpoint uses.
 - authType: AuthenticationTypeV2
   - Authentication type that the endpoint uses.
 - token: System.String
-  - Webhook authentication token.
+  - Webhook authentication token. Auto-redacted in logs.
 - userCredentials: UserCredentials
   - Authentication user credentials.
 - customHeaders: list of CustomHeaders

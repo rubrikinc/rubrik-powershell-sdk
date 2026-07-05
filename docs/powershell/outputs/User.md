@@ -35,6 +35,8 @@ User account details.
   - The user's username.
 - unreadCount: System.Int64
   - The number of unread notifications for the current user.
+- patId: System.String
+  - The user's active Personal Access Token ID.
 - inheritedRoles: list of Roles
   - Roles inherited by the user.
 - directlyAssignedRoles: list of Roles

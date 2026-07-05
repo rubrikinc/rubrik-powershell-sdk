@@ -13,3 +13,5 @@ Inputs to trigger the job to restore Azure Native Virtual Machine.
   - Specifies a list of Azure disk unique native IDs that will be restored. When empty, all disks from the snapshot will be restored.
 - archivedSnapshotId: System.String
   - ID of the archived snapshot to be restored. This field should be specified only when `snapshotTypeToUseIfSourceExpired` is set to `Archived`. In such cases, the archived snapshot will be used for restore. If `snapshotTypeToUseIfSourceExpired` is not `Archived`, this field is ignored.
+- recoveryPurpose: RecoveryPurpose
+  - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the restored virtual machine (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.

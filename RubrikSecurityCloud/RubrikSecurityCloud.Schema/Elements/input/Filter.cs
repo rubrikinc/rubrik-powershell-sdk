@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("gcpNativeProtectionFeatureNames")]
         public List<GcpNativeProtectionFeature>? GcpNativeProtectionFeatureNames { get; set; }
 
+        //      C# -> DateTime? TimeParam
+        // GraphQL -> timeParam: DateTime (scalar)
+        [JsonProperty("timeParam")]
+        public DateTime? TimeParam { get; set; }
+
 
         #endregion
 

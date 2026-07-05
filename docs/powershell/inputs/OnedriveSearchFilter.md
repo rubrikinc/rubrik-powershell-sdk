@@ -28,3 +28,6 @@ Teams Files search.
   - Filters on file path.
 - parentWorkloadId: System.String
   - Specifies the parent workload identifier for searching using the full path from the parent site.
+- itemId: System.String
+  - Optional: filter to a single object by its M365 item ID.
+Empty or unset = no filter.

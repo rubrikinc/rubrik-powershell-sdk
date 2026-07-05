@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_SQL_MI_PROTECTION")]
         AZURE_SQL_MI_PROTECTION,
 
+        [EnumMember(Value = "CCES_BAAS")]
+        CCES_BAAS,
+
         [EnumMember(Value = "CLOUDACCOUNTS")]
         CLOUDACCOUNTS,
 
@@ -158,6 +161,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE_CHAINING")]
         ROLE_CHAINING,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_PROTECTION")]
+        S3_TABLES_ICEBERG_PROTECTION,
 
         [EnumMember(Value = "SERVERS_AND_APPS")]
         SERVERS_AND_APPS

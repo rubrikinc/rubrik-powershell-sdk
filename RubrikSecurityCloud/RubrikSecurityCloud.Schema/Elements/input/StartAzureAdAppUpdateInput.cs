@@ -26,11 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadFid")]
         public System.String? WorkloadFid { get; set; }
 
-        //      C# -> System.Boolean? IncludeIntune
-        // GraphQL -> includeIntune: Boolean (scalar)
-        [JsonProperty("includeIntune")]
-        public System.Boolean? IncludeIntune { get; set; }
-
         //      C# -> AzureAdApp? AzureAdApp
         // GraphQL -> azureAdApp: AzureAdApp (input)
         [JsonProperty("azureAdApp")]
@@ -45,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> missingObjectTypes: [AzureAdObjectType!] (enum)
         [JsonProperty("missingObjectTypes")]
         public List<AzureAdObjectType>? MissingObjectTypes { get; set; }
+
+        //      C# -> System.Boolean? IncludeIntune
+        // GraphQL -> includeIntune: Boolean (scalar)
+        [JsonProperty("includeIntune")]
+        public System.Boolean? IncludeIntune { get; set; }
 
 
         #endregion

@@ -34,6 +34,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("runGcsConnectivityCheck")]
         public System.Boolean? RunGcsConnectivityCheck { get; set; }
 
+        //      C# -> System.Boolean? RunSqlMiConnectivityCheck
+        // GraphQL -> runSqlMiConnectivityCheck: Boolean (scalar)
+        [JsonProperty("runSqlMiConnectivityCheck")]
+        public System.Boolean? RunSqlMiConnectivityCheck { get; set; }
+
+        //      C# -> System.Boolean? RunSqlDbConnectivityCheck
+        // GraphQL -> runSqlDbConnectivityCheck: Boolean (scalar)
+        [JsonProperty("runSqlDbConnectivityCheck")]
+        public System.Boolean? RunSqlDbConnectivityCheck { get; set; }
+
+        //      C# -> List<ExoHealthCheckType>? RequestedChecks
+        // GraphQL -> requestedChecks: [ExoHealthCheckType!] (enum)
+        [JsonProperty("requestedChecks")]
+        public List<ExoHealthCheckType>? RequestedChecks { get; set; }
+
 
         #endregion
 

@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("templateLocationId")]
         System.String? TemplateLocationId { get; set; }
 
+        //      C# -> SourceWorkloadCloud? SourceWorkloadCloud
+        // GraphQL -> sourceWorkloadCloud: SourceWorkloadCloud (enum)
+        [JsonProperty("sourceWorkloadCloud")]
+        SourceWorkloadCloud? SourceWorkloadCloud { get; set; }
+
 
         #endregion
 

@@ -34,3 +34,5 @@ snapshot details are not required.
 - SNAPSHOT_IDS - When configured, it returns snapshots with IDs present in the list.
 - SEQUENCE_NUMS - SEQUENCE_NUMS will only return results matching one of the sequence
 numbers in the list.
+- ARCHIVAL_LOCATION_IDS - ARCHIVAL_LOCATION_IDS will only return results matching one of the
+archival locations in the list.
