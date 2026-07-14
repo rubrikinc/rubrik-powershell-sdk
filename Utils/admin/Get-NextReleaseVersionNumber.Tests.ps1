@@ -15,7 +15,7 @@ Describe 'Get-NextReleaseVersionNumber' {
             return $path
         }
 
-        function New-TempChangelog($features, $fixes, $breaking, $lastMajor) {
+        function New-TempChangelog($features, $fixes, $breaking, $lastMajor, $lastMinor = 5) {
             $path = [System.IO.Path]::GetTempFileName()
             @"
 # Changelog
@@ -28,7 +28,7 @@ Fixes:
 $fixes
 Breaking Changes:
 $breaking
-## Version ${lastMajor}.5.20260101
+## Version ${lastMajor}.${lastMinor}.20260101
 
 New Features:
 - Initial release
@@ -50,7 +50,7 @@ New Features:
     Context 'Schema version' {
         It 'reads schema date from psd1 Description' {
             $vf = New-TempVersionMd 1 5
-            $cf = New-TempChangelog '' '' '' 1
+            $cf = New-TempChangelog '' '' '' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf
@@ -64,7 +64,7 @@ New Features:
     Context 'Minor version — no changelog entries' {
         It 'keeps Minor unchanged when TBD sections are empty' {
             $vf = New-TempVersionMd 1 18
-            $cf = New-TempChangelog '' '' '' 1
+            $cf = New-TempChangelog '' '' '' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf
@@ -76,7 +76,7 @@ New Features:
 
         It 'keeps Minor unchanged when all TBD sections contain only "None"' {
             $vf = New-TempVersionMd 1 18
-            $cf = New-TempChangelog 'None' 'None' 'None' 1
+            $cf = New-TempChangelog 'None' 'None' 'None' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf
@@ -90,7 +90,7 @@ New Features:
     Context 'Minor version — changelog has entries' {
         It 'increments Minor by 1 when New Features has an entry' {
             $vf = New-TempVersionMd 1 18
-            $cf = New-TempChangelog '- New cmdlet added' '' '' 1
+            $cf = New-TempChangelog '- New cmdlet added' '' '' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf
@@ -102,7 +102,7 @@ New Features:
 
         It 'increments Minor by 1 when Fixes has an entry' {
             $vf = New-TempVersionMd 1 18
-            $cf = New-TempChangelog '' '- Fixed a bug' '' 1
+            $cf = New-TempChangelog '' '- Fixed a bug' '' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf
@@ -114,7 +114,7 @@ New Features:
 
         It 'increments Minor by 1 when Breaking Changes has an entry' {
             $vf = New-TempVersionMd 1 18
-            $cf = New-TempChangelog '' '' '- Removed old parameter' 1
+            $cf = New-TempChangelog '' '' '- Removed old parameter' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf
@@ -128,7 +128,7 @@ New Features:
     Context 'Major version bump' {
         It 'resets Minor to 0 when Major in VERSION.md is greater than last released Major' {
             $vf = New-TempVersionMd 2 18
-            $cf = New-TempChangelog '- New feature' '' '' 1
+            $cf = New-TempChangelog '- New feature' '' '' 1 18
             $pf = New-TempPsd1 '20260601'
             try {
                 $result = & $script:scriptPath -VersionFile $vf -ChangelogFile $cf -Psd1File $pf

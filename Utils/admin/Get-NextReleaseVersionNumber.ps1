@@ -43,6 +43,19 @@ function GetLastReleasedMajor($changelogFile) {
     return [int]$Matches[1]
 }
 
+# Returns the Minor version number from the last released entry in CHANGELOG.md
+# (i.e. the first "## Version X.Y.Z" line that is not TBD).
+function GetLastReleasedMinor($changelogFile) {
+    $line = Get-Content $changelogFile |
+        Where-Object { $_ -match '^## Version \d+\.(\d+)\.\d+' } |
+        Select-Object -First 1
+    if (-not $line) {
+        throw "Could not find a released version entry in $changelogFile"
+    }
+    $null = $line -match '^## Version \d+\.(\d+)'
+    return [int]$Matches[1]
+}
+
 # Check whether the "## Version TBD" block in CHANGELOG.md has any real entries
 # (non-empty, non-"None") under New Features, Fixes, or Breaking Changes.
 function HasChangelogEntries($changelogFile) {
@@ -74,9 +87,9 @@ function HasChangelogEntries($changelogFile) {
 
 $versionLines      = Get-Content $versionFile
 $major             = ParseVersionField $versionLines "Major Version"
-$minor             = ParseVersionField $versionLines "Minor Version"
 $schema            = GetSchemaVersionFromPsd1 $psd1File
 $lastReleasedMajor = GetLastReleasedMajor $changelogFile
+$minor             = GetLastReleasedMinor $changelogFile
 
 if ($major -gt $lastReleasedMajor) {
     # Major version bumped — reset Minor to 0
