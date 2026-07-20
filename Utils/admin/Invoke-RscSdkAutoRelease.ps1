@@ -85,6 +85,24 @@ if ($nextVersion -eq $currentVersion) {
 }
 
 # ---------------------------------------------------------------------------
+# 1b. Ensure "Schema Update" entry exists in the TBD changelog block
+# ---------------------------------------------------------------------------
+Step "Ensuring 'Schema Update' section in CHANGELOG.md TBD block"
+RunIfNotDry {
+    $changelogPath = Join-Path $SdkRoot "CHANGELOG.md"
+    $raw = Get-Content $changelogPath -Raw
+    $raw = $raw -replace "`r`n", "`n"
+    $tbdMatch = [regex]::Match($raw, '## Version TBD\n(.*?)(?=\n## Version |\z)', 'Singleline')
+    if ($tbdMatch.Success -and $tbdMatch.Value -notmatch 'Schema Update:') {
+        $raw = $raw -replace '(## Version TBD\n+)', "`$1Schema Update:`n- Automatic schema update`n`n"
+        Set-Content -Path $changelogPath -Value $raw -NoNewline
+        Write-Host "Added 'Schema Update' section to TBD block." -ForegroundColor Green
+    } else {
+        Write-Host "'Schema Update' already present — no change needed." -ForegroundColor Green
+    }
+}
+
+# ---------------------------------------------------------------------------
 # 2. Apply version to .psd1 and CHANGELOG.md
 # ---------------------------------------------------------------------------
 Step "Applying version $nextVersion"

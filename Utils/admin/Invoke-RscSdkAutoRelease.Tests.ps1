@@ -84,3 +84,80 @@ Describe 'Invoke-RscSdkAutoRelease - VERSION.md update (step 2b)' {
         }
     }
 }
+
+Describe 'Invoke-RscSdkAutoRelease - Schema Update in changelog TBD block (step 1b)' {
+
+    BeforeAll {
+        function New-TempChangelog($tbdBody) {
+            $path = [System.IO.Path]::GetTempFileName()
+            @"
+# Changelog
+
+## Version TBD
+
+$tbdBody
+## Version 1.18.20260601
+
+Schema Update:
+- Automatic schema update
+
+New Features:
+- Some prior feature
+"@ | Set-Content -Path $path -NoNewline
+            return $path
+        }
+
+        # Mirrors the logic in Invoke-RscSdkAutoRelease step 1b.
+        function Ensure-SchemaUpdateEntry($path) {
+            $raw = Get-Content $path -Raw
+            $raw = $raw -replace "`r`n", "`n"
+            $tbdMatch = [regex]::Match($raw, '## Version TBD\n(.*?)(?=\n## Version |\z)', 'Singleline')
+            if ($tbdMatch.Success -and $tbdMatch.Value -notmatch 'Schema Update:') {
+                $raw = $raw -replace '(## Version TBD\n+)', "`$1Schema Update:`n- Automatic schema update`n`n"
+                Set-Content -Path $path -Value $raw -NoNewline
+            }
+        }
+    }
+
+    Context 'Schema Update section missing from TBD block' {
+        It 'inserts Schema Update before New Features when absent' {
+            $p = New-TempChangelog "New Features:`n`nFixes:`n`nBreaking Changes:`n"
+            try {
+                Ensure-SchemaUpdateEntry $p
+                $raw = Get-Content $p -Raw
+                $raw | Should -Match 'Schema Update:'
+                $raw | Should -Match '- Automatic schema update'
+            } finally { Remove-Item $p -ErrorAction SilentlyContinue }
+        }
+
+        It 'places Schema Update before New Features' {
+            $p = New-TempChangelog "New Features:`n`nFixes:`n`nBreaking Changes:`n"
+            try {
+                Ensure-SchemaUpdateEntry $p
+                $raw = Get-Content $p -Raw
+                $raw.IndexOf('Schema Update:') | Should -BeLessThan $raw.IndexOf('New Features:')
+            } finally { Remove-Item $p -ErrorAction SilentlyContinue }
+        }
+
+        It 'inserts exactly one Schema Update entry' {
+            $p = New-TempChangelog "New Features:`n`nFixes:`n`nBreaking Changes:`n"
+            try {
+                Ensure-SchemaUpdateEntry $p
+                $raw = Get-Content $p -Raw
+                ([regex]::Matches($raw, 'Schema Update:')).Count | Should -Be 2  # one in TBD, one in prior release
+            } finally { Remove-Item $p -ErrorAction SilentlyContinue }
+        }
+    }
+
+    Context 'Schema Update section already present in TBD block' {
+        It 'does not add a duplicate Schema Update entry' {
+            $tbdBody = "Schema Update:`n- Automatic schema update`n`nNew Features:`n`nFixes:`n`nBreaking Changes:`n"
+            $p = New-TempChangelog $tbdBody
+            try {
+                Ensure-SchemaUpdateEntry $p
+                $raw = Get-Content $p -Raw
+                ([regex]::Matches($raw, 'Schema Update:')).Count | Should -Be 2  # TBD + prior release, no extra
+            } finally { Remove-Item $p -ErrorAction SilentlyContinue }
+        }
+    }
+}
