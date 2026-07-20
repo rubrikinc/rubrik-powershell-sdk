@@ -93,6 +93,18 @@ RunIfNotDry {
 }
 
 # ---------------------------------------------------------------------------
+# 2b. Update VERSION.md with the computed minor and schema versions
+# ---------------------------------------------------------------------------
+Step "Updating VERSION.md to Minor=$($v.Minor), Schema=$($v.Schema)"
+RunIfNotDry {
+    $versionMdPath = Join-Path $SdkRoot "RubrikSecurityCloud\VERSION.md"
+    $content = Get-Content $versionMdPath -Raw
+    $content = $content -replace '(###\s+Minor Version:\s*)\d+', "`${1}$($v.Minor)"
+    $content = $content -replace '(###\s+Schema Version:\s*)\d+', "`${1}$($v.Schema)"
+    Set-Content -Path $versionMdPath -Value $content -NoNewline
+}
+
+# ---------------------------------------------------------------------------
 # 3. Commit and push version bump
 # ---------------------------------------------------------------------------
 Step "Committing and pushing version bump"
