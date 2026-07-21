@@ -60,7 +60,7 @@ Same as the manual release:
 
 | Component | Source |
 |-----------|--------|
-| **Major** | `### Major Version` field in `RubrikSecurityCloud/VERSION.md` |
+| **Major** | `### Major Version` field in `VERSION.md` |
 | **Minor** | `### Minor Version` field in `VERSION.md`, then adjusted (see rules below) |
 | **Schema** | Extracted from the `Description` field in `RubrikSecurityCloud.psd1` — updated automatically by the Jenkins schema pipeline |
 

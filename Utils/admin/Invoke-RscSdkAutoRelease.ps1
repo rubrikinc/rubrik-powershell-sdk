@@ -115,7 +115,7 @@ RunIfNotDry {
 # ---------------------------------------------------------------------------
 Step "Updating VERSION.md to Minor=$($v.Minor), Schema=$($v.Schema)"
 RunIfNotDry {
-    $versionMdPath = Join-Path $SdkRoot "RubrikSecurityCloud\VERSION.md"
+    $versionMdPath = Join-Path $SdkRoot "VERSION.md"
     $content = Get-Content $versionMdPath -Raw
     $content = $content -replace '(###\s+Minor Version:\s*)\d+', "`${1}$($v.Minor)"
     $content = $content -replace '(###\s+Schema Version:\s*)\d+', "`${1}$($v.Schema)"

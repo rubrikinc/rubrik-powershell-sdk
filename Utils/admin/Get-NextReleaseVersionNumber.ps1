@@ -1,5 +1,5 @@
 param(
-    [string]$VersionFile   = (Join-Path $PSScriptRoot "..\..\RubrikSecurityCloud\VERSION.md"),
+    [string]$VersionFile   = (Join-Path $PSScriptRoot "..\..\VERSION.md"),
     [string]$ChangelogFile = (Join-Path $PSScriptRoot "..\..\CHANGELOG.md"),
     [string]$Psd1File      = (Join-Path $PSScriptRoot "..\..\RubrikSecurityCloud\RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.psd1")
 )
