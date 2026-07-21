@@ -211,6 +211,13 @@ with `Disconnect-Rsc`. Note however that it is not strictly
 necessary, as the connection will be closed automatically
 when the session ends.
 
+## Contributing
+
+Before opening a pull request, please read the
+[PR requirements](Utils/admin/HOWTO_AUTO_RELEASE.md#pr-requirements) —
+every PR that introduces a user-facing change must update `CHANGELOG.md`
+with the PR number and a short description.
+
 ## Learning more about this SDK
 
 :point_right: Start with the
