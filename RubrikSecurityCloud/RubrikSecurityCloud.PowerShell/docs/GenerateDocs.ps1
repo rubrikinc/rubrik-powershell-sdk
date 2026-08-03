@@ -80,10 +80,10 @@ foreach ($memberItem in $xml.doc.members.member){
         if (-not $Quiet) { Write-Output("`nProcessing Cmdlet: " + $cmdletName) }
         #Write-Output("Opening markdownd for $cmdletName")
         
-        # TODO: SPARK-517965 SDK Build fails in GenerateDocs.ps1
-        # see https://rubrik.atlassian.net/browse/SPARK-517965
-        if ($cmdletName -eq "New-RscQueryAzureNative"){
-            Write-Warning("Skipping $cmdletName due to known issue SPARK-517965")
+        # TODO: SPARK-953829 SDK Build fails in GenerateDocs.ps1
+        # see https://rubrik.atlassian.net/browse/SPARK-953829
+        if ($cmdletName -eq "New-RscQueryAwsNative"){
+            Write-Warning("Skipping $cmdletName due to known issue SPARK-953829")
             continue
         }
 
