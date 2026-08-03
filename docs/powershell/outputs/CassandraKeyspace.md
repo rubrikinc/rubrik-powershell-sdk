@@ -19,6 +19,11 @@ Cassandra Keyspace information.
   - Parent source connection.
 - cluster: Cluster
   - Mosaic cluster information.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -53,7 +58,5 @@ Cassandra Keyspace information.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

@@ -58,3 +58,5 @@ The specific subgroup type that defines the exact operation to be performed with
 - OBJECT_BACKUP_WINDOW_SYNC - Subgroup used to sync a per-object backup-window override to CDM.
 - PERSONAL_ACCESS_TOKEN_SYNC - Subgroup used to sync a personal access token to CDM.
 - PERSONAL_ACCESS_TOKEN_DELETE - Subgroup used to delete personal access token from CDM.
+- QAUTH_POLICY_CDM_PUT - Subgroup used to put a QAuth policy block-list to CDM.
+- QAUTH_POLICY_CDM_DELETE - Subgroup used to delete a QAuth policy block-list from CDM.

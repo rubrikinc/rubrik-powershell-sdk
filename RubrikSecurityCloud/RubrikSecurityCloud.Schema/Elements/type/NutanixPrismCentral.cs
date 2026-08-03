@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean! (scalar)
+        [JsonProperty("shouldUseV4")]
+        public System.Boolean? ShouldUseV4 { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -200,6 +205,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> nutanixClusters: CdmHierarchyObjectConnection! (type)
         [JsonProperty("nutanixClusters")]
         public CdmHierarchyObjectConnection? NutanixClusters { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -324,6 +334,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         List<System.String>? NutanixClusterIds = null,
         System.Int32? ReplicatedObjectCount = null,
+        System.Boolean? ShouldUseV4 = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? UserName = null,
         List<Org>? AllOrgs = null,
@@ -337,6 +348,7 @@ namespace RubrikSecurityCloud.Types
         NutanixPrismCentralLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         CdmHierarchyObjectConnection? NutanixClusters = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -414,6 +426,9 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
         }
+        if ( ShouldUseV4 != null ) {
+            this.ShouldUseV4 = ShouldUseV4;
+        }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
@@ -452,6 +467,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NutanixClusters != null ) {
             this.NutanixClusters = NutanixClusters;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -716,6 +734,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "replicatedObjectCount\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean! (scalar)
+        if (this.ShouldUseV4 != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldUseV4\n" ;
+            } else {
+                s += ind + "shouldUseV4\n" ;
+            }
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
@@ -863,6 +890,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "nutanixClusters" + "\n(" + this.Vars.NutanixClusters.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1368,6 +1407,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjectCount = null;
         }
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean! (scalar)
+        if (ec.Includes("shouldUseV4",true))
+        {
+            if(this.ShouldUseV4 == null) {
+
+                this.ShouldUseV4 = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldUseV4 != null && ec.Excludes("shouldUseV4",true))
+        {
+            this.ShouldUseV4 = null;
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (ec.Includes("slaPauseStatus",true))
@@ -1610,6 +1666,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NutanixClusters != null && ec.Excludes("nutanixClusters",false))
         {
             this.NutanixClusters = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

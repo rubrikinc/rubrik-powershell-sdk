@@ -74,10 +74,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("primaryNode")]
         public System.String? PrimaryNode { get; set; }
 
+        //      C# -> System.Boolean? ShouldClearExcludedDbUniqueNames
+        // GraphQL -> shouldClearExcludedDbUniqueNames: Boolean (scalar)
+        [JsonProperty("shouldClearExcludedDbUniqueNames")]
+        public System.Boolean? ShouldClearExcludedDbUniqueNames { get; set; }
+
         //      C# -> System.Boolean? ShouldEnableMultiNodeBackup
         // GraphQL -> shouldEnableMultiNodeBackup: Boolean (scalar)
         [JsonProperty("shouldEnableMultiNodeBackup")]
         public System.Boolean? ShouldEnableMultiNodeBackup { get; set; }
+
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!] (scalar)
+        [JsonProperty("excludedDbUniqueNames")]
+        public List<System.String>? ExcludedDbUniqueNames { get; set; }
 
         //      C# -> List<System.String>? SecondaryNodes
         // GraphQL -> secondaryNodes: [String!] (scalar)

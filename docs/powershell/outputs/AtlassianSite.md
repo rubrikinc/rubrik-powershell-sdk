@@ -11,6 +11,8 @@ Atlassian site.
 - status: SaasOrganizationStatus
 - lastRefreshTime: DateTime
   - The time at which the Atlassian site was last synced to Rubrik.
+- onboardedAppTypes: list of SaasAppTypes
+  - The list of SaaS application types that are onboarded for the organization.
 - exocomputeId: System.String
   - Denotes the ID of the exocompute cluster associated with the org.
 - saasOrgType: SaasOrgType
@@ -19,6 +21,11 @@ Atlassian site.
   - Rubrik ID of the Jira Settings workload.
 - jiraFeaturesWorkloadID: System.String
   - Rubrik ID of the Jira Features workload.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -53,6 +60,8 @@ Atlassian site.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - storageRegion: System.String
   - The RSC storage region for the organization.
 - backupJobsStats: backupJobsStats
@@ -63,11 +72,5 @@ Atlassian site.
   - The API usage of the organization during the last 24 hours.
 - saasAppsOrgInfo: SaasAppsOrgInfo
   - The information of the Saas Apps organization.
-- onboardedAppTypes: list of SaasAppTypes
-  - The list of SaaS application types that are onboarded for the organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

@@ -11,3 +11,5 @@ Resource specification for the workload.
   - AWS EC2 instance resource specification.
 - awsNativeRdsInstance: AwsRdsInstanceResourceSpec
   - AWS RDS instance resource specification.
+- hypervVm: HypervVirtualMachineResourceSpec
+  - HyperV virtual machine resource specification.

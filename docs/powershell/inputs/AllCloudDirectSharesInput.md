@@ -1,5 +1,5 @@
 ### AllCloudDirectSharesInput
-Input for recovering Cloud Direct path.
+Input for retrieving all Cloud Direct shares from a system.
 
 - systemName: System.String
   - Cloud Direct system to retrieve shares from.

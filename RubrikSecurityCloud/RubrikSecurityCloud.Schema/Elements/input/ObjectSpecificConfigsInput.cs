@@ -114,6 +114,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azurePostgresFlexibleServerConfigInput")]
         public AzurePostgresFlexibleServerConfigInput? AzurePostgresFlexibleServerConfigInput { get; set; }
 
+        //      C# -> MariadbSlaConfigInput? MariadbConfigInput
+        // GraphQL -> mariadbConfigInput: MariadbSlaConfigInput (input)
+        [JsonProperty("mariadbConfigInput")]
+        public MariadbSlaConfigInput? MariadbConfigInput { get; set; }
+
 
         #endregion
 

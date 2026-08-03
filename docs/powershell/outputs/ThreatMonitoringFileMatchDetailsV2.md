@@ -23,3 +23,6 @@ Reply to ThreatMonitoringFileMatchDetailsV2.
   - Modified time of the matched file.
 - isFileVersionQuarantined: System.Boolean
   - Indicates whether the workload file version is quarantined.
+- containerArchiveDetails: ContainerArchiveDetails
+  - Details of the archive container when the matched file is an inner entry
+discovered via archive expansion. Unset when is_inside_archive is false.

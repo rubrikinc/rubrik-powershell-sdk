@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState
+        // GraphQL -> clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState! (enum)
+        [JsonProperty("clusterUnsupportedWorkloadState")]
+        public ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [JsonProperty("clusterUuid")]
@@ -35,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ruUnsupportabilityReason")]
         public System.String? RuUnsupportabilityReason { get; set; }
 
+        //      C# -> List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads
+        // GraphQL -> unsupportedWorkloads: [UnsupportedWorkloadTypeInfo!]! (type)
+        [JsonProperty("unsupportedWorkloads")]
+        public List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads { get; set; }
+
 
         #endregion
 
@@ -45,11 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public CheckClusterRuSupportReply Set(
+        ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState = null,
         System.String? ClusterUuid = null,
         System.Boolean? IsRuSupported = null,
-        System.String? RuUnsupportabilityReason = null
+        System.String? RuUnsupportabilityReason = null,
+        List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads = null
     ) 
     {
+        if ( ClusterUnsupportedWorkloadState != null ) {
+            this.ClusterUnsupportedWorkloadState = ClusterUnsupportedWorkloadState;
+        }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
@@ -58,6 +73,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RuUnsupportabilityReason != null ) {
             this.RuUnsupportabilityReason = RuUnsupportabilityReason;
+        }
+        if ( UnsupportedWorkloads != null ) {
+            this.UnsupportedWorkloads = UnsupportedWorkloads;
         }
         return this;
     }
@@ -73,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState
+        // GraphQL -> clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState! (enum)
+        if (this.ClusterUnsupportedWorkloadState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUnsupportedWorkloadState\n" ;
+            } else {
+                s += ind + "clusterUnsupportedWorkloadState\n" ;
+            }
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid != null) {
@@ -100,6 +127,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "ruUnsupportabilityReason\n" ;
             }
         }
+        //      C# -> List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads
+        // GraphQL -> unsupportedWorkloads: [UnsupportedWorkloadTypeInfo!]! (type)
+        if (this.UnsupportedWorkloads != null) {
+            var fspec = this.UnsupportedWorkloads.AsFieldSpec(conf.Child("unsupportedWorkloads"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "unsupportedWorkloads" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -107,6 +146,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState
+        // GraphQL -> clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState! (enum)
+        if (ec.Includes("clusterUnsupportedWorkloadState",true))
+        {
+            if(this.ClusterUnsupportedWorkloadState == null) {
+
+                this.ClusterUnsupportedWorkloadState = new ClusterUnsupportedWorkloadState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUnsupportedWorkloadState != null && ec.Excludes("clusterUnsupportedWorkloadState",true))
+        {
+            this.ClusterUnsupportedWorkloadState = null;
+        }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (ec.Includes("clusterUuid",true))
@@ -157,6 +213,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.RuUnsupportabilityReason != null && ec.Excludes("ruUnsupportabilityReason",true))
         {
             this.RuUnsupportabilityReason = null;
+        }
+        //      C# -> List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads
+        // GraphQL -> unsupportedWorkloads: [UnsupportedWorkloadTypeInfo!]! (type)
+        if (ec.Includes("unsupportedWorkloads",false))
+        {
+            if(this.UnsupportedWorkloads == null) {
+
+                this.UnsupportedWorkloads = new List<UnsupportedWorkloadTypeInfo>();
+                this.UnsupportedWorkloads.ApplyExploratoryFieldSpec(ec.NewChild("unsupportedWorkloads"));
+
+            } else {
+
+                this.UnsupportedWorkloads.ApplyExploratoryFieldSpec(ec.NewChild("unsupportedWorkloads"));
+
+            }
+        }
+        else if (this.UnsupportedWorkloads != null && ec.Excludes("unsupportedWorkloads",false))
+        {
+            this.UnsupportedWorkloads = null;
         }
     }
 

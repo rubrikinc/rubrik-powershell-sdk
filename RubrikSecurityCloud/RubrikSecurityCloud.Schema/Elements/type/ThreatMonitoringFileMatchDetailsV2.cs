@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mtime")]
         public DateTime? Mtime { get; set; }
 
+        //      C# -> ContainerArchiveDetails? ContainerArchiveDetails
+        // GraphQL -> containerArchiveDetails: ContainerArchiveDetails (type)
+        [JsonProperty("containerArchiveDetails")]
+        public ContainerArchiveDetails? ContainerArchiveDetails { get; set; }
+
         //      C# -> List<IocDetails>? IocDetails
         // GraphQL -> iocDetails: [IOCDetails!]! (type)
         [JsonProperty("iocDetails")]
@@ -95,6 +100,7 @@ namespace RubrikSecurityCloud.Types
         System.String? MatchedFileSha1 = null,
         System.String? MatchedFileSha256 = null,
         DateTime? Mtime = null,
+        ContainerArchiveDetails? ContainerArchiveDetails = null,
         List<IocDetails>? IocDetails = null
     ) 
     {
@@ -127,6 +133,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Mtime != null ) {
             this.Mtime = Mtime;
+        }
+        if ( ContainerArchiveDetails != null ) {
+            this.ContainerArchiveDetails = ContainerArchiveDetails;
         }
         if ( IocDetails != null ) {
             this.IocDetails = IocDetails;
@@ -233,6 +242,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mtime\n" ;
             } else {
                 s += ind + "mtime\n" ;
+            }
+        }
+        //      C# -> ContainerArchiveDetails? ContainerArchiveDetails
+        // GraphQL -> containerArchiveDetails: ContainerArchiveDetails (type)
+        if (this.ContainerArchiveDetails != null) {
+            var fspec = this.ContainerArchiveDetails.AsFieldSpec(conf.Child("containerArchiveDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "containerArchiveDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<IocDetails>? IocDetails
@@ -423,6 +444,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Mtime != null && ec.Excludes("mtime",true))
         {
             this.Mtime = null;
+        }
+        //      C# -> ContainerArchiveDetails? ContainerArchiveDetails
+        // GraphQL -> containerArchiveDetails: ContainerArchiveDetails (type)
+        if (ec.Includes("containerArchiveDetails",false))
+        {
+            if(this.ContainerArchiveDetails == null) {
+
+                this.ContainerArchiveDetails = new ContainerArchiveDetails();
+                this.ContainerArchiveDetails.ApplyExploratoryFieldSpec(ec.NewChild("containerArchiveDetails"));
+
+            } else {
+
+                this.ContainerArchiveDetails.ApplyExploratoryFieldSpec(ec.NewChild("containerArchiveDetails"));
+
+            }
+        }
+        else if (this.ContainerArchiveDetails != null && ec.Excludes("containerArchiveDetails",false))
+        {
+            this.ContainerArchiveDetails = null;
         }
         //      C# -> List<IocDetails>? IocDetails
         // GraphQL -> iocDetails: [IOCDetails!]! (type)

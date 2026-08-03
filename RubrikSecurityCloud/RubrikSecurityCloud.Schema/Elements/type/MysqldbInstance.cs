@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cdmPendingObjectPauseAssignment")]
         public PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
 
+        //      C# -> KosmosClusterMode? ClusterMode
+        // GraphQL -> clusterMode: KosmosClusterMode! (enum)
+        [JsonProperty("clusterMode")]
+        public KosmosClusterMode? ClusterMode { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -191,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("missedSnapshotGroupByConnection")]
         public MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection { get; set; }
 
+        //      C# -> MysqlHaClusterInfo? MysqlHaClusterInfo
+        // GraphQL -> mysqlHaClusterInfo: MysqlHaClusterInfo (type)
+        [JsonProperty("mysqlHaClusterInfo")]
+        public MysqlHaClusterInfo? MysqlHaClusterInfo { get; set; }
+
         //      C# -> CdmSnapshot? NewestArchivedSnapshot
         // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
         [JsonProperty("newestArchivedSnapshot")]
@@ -210,6 +220,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> newestSnapshot: CdmSnapshot (type)
         [JsonProperty("newestSnapshot")]
         public CdmSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -341,6 +356,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] missedSnapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "MissedSnapshotFilterInput"),
                 };
             this.MissedSnapshotConnection =
@@ -423,6 +440,7 @@ namespace RubrikSecurityCloud.Types
     public MysqldbInstance Set(
         List<Operation>? AuthorizedOperations = null,
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
+        KosmosClusterMode? ClusterMode = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? ConfiguredSlaDomain = null,
@@ -455,10 +473,12 @@ namespace RubrikSecurityCloud.Types
         MysqldbInstanceMetadata? Metadata = null,
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
+        MysqlHaClusterInfo? MysqlHaClusterInfo = null,
         CdmSnapshot? NewestArchivedSnapshot = null,
         CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         CdmSnapshot? OldestSnapshot = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
@@ -480,6 +500,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CdmPendingObjectPauseAssignment != null ) {
             this.CdmPendingObjectPauseAssignment = CdmPendingObjectPauseAssignment;
+        }
+        if ( ClusterMode != null ) {
+            this.ClusterMode = ClusterMode;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -577,6 +600,9 @@ namespace RubrikSecurityCloud.Types
         if ( MissedSnapshotGroupByConnection != null ) {
             this.MissedSnapshotGroupByConnection = MissedSnapshotGroupByConnection;
         }
+        if ( MysqlHaClusterInfo != null ) {
+            this.MysqlHaClusterInfo = MysqlHaClusterInfo;
+        }
         if ( NewestArchivedSnapshot != null ) {
             this.NewestArchivedSnapshot = NewestArchivedSnapshot;
         }
@@ -588,6 +614,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -661,6 +690,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cdmPendingObjectPauseAssignment\n" ;
             } else {
                 s += ind + "cdmPendingObjectPauseAssignment\n" ;
+            }
+        }
+        //      C# -> KosmosClusterMode? ClusterMode
+        // GraphQL -> clusterMode: KosmosClusterMode! (enum)
+        if (this.ClusterMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterMode\n" ;
+            } else {
+                s += ind + "clusterMode\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -1016,6 +1054,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> MysqlHaClusterInfo? MysqlHaClusterInfo
+        // GraphQL -> mysqlHaClusterInfo: MysqlHaClusterInfo (type)
+        if (this.MysqlHaClusterInfo != null) {
+            var fspec = this.MysqlHaClusterInfo.AsFieldSpec(conf.Child("mysqlHaClusterInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mysqlHaClusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> CdmSnapshot? NewestArchivedSnapshot
         // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
         if (this.NewestArchivedSnapshot != null) {
@@ -1061,6 +1111,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1272,6 +1334,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CdmPendingObjectPauseAssignment != null && ec.Excludes("cdmPendingObjectPauseAssignment",true))
         {
             this.CdmPendingObjectPauseAssignment = null;
+        }
+        //      C# -> KosmosClusterMode? ClusterMode
+        // GraphQL -> clusterMode: KosmosClusterMode! (enum)
+        if (ec.Includes("clusterMode",true))
+        {
+            if(this.ClusterMode == null) {
+
+                this.ClusterMode = new KosmosClusterMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterMode != null && ec.Excludes("clusterMode",true))
+        {
+            this.ClusterMode = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
@@ -1877,6 +1956,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.MissedSnapshotGroupByConnection = null;
         }
+        //      C# -> MysqlHaClusterInfo? MysqlHaClusterInfo
+        // GraphQL -> mysqlHaClusterInfo: MysqlHaClusterInfo (type)
+        if (ec.Includes("mysqlHaClusterInfo",false))
+        {
+            if(this.MysqlHaClusterInfo == null) {
+
+                this.MysqlHaClusterInfo = new MysqlHaClusterInfo();
+                this.MysqlHaClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("mysqlHaClusterInfo"));
+
+            } else {
+
+                this.MysqlHaClusterInfo.ApplyExploratoryFieldSpec(ec.NewChild("mysqlHaClusterInfo"));
+
+            }
+        }
+        else if (this.MysqlHaClusterInfo != null && ec.Excludes("mysqlHaClusterInfo",false))
+        {
+            this.MysqlHaClusterInfo = null;
+        }
         //      C# -> CdmSnapshot? NewestArchivedSnapshot
         // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
         if (ec.Includes("newestArchivedSnapshot",false))
@@ -1952,6 +2050,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

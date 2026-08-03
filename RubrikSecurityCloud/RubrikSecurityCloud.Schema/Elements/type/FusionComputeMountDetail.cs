@@ -120,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sourceVmName")]
         public System.String? SourceVmName { get; set; }
 
+        //      C# -> DateTime? UnmountTimestamp
+        // GraphQL -> unmountTimestamp: DateTime (scalar)
+        [JsonProperty("unmountTimestamp")]
+        public DateTime? UnmountTimestamp { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -155,6 +160,7 @@ namespace RubrikSecurityCloud.Types
         System.String? SourceVmFid = null,
         System.String? SourceVmId = null,
         System.String? SourceVmName = null,
+        DateTime? UnmountTimestamp = null,
         Cluster? Cluster = null
     ) 
     {
@@ -217,6 +223,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SourceVmName != null ) {
             this.SourceVmName = SourceVmName;
+        }
+        if ( UnmountTimestamp != null ) {
+            this.UnmountTimestamp = UnmountTimestamp;
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
@@ -413,6 +422,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "sourceVmName\n" ;
             } else {
                 s += ind + "sourceVmName\n" ;
+            }
+        }
+        //      C# -> DateTime? UnmountTimestamp
+        // GraphQL -> unmountTimestamp: DateTime (scalar)
+        if (this.UnmountTimestamp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "unmountTimestamp\n" ;
+            } else {
+                s += ind + "unmountTimestamp\n" ;
             }
         }
         //      C# -> Cluster? Cluster
@@ -773,6 +791,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SourceVmName != null && ec.Excludes("sourceVmName",true))
         {
             this.SourceVmName = null;
+        }
+        //      C# -> DateTime? UnmountTimestamp
+        // GraphQL -> unmountTimestamp: DateTime (scalar)
+        if (ec.Includes("unmountTimestamp",true))
+        {
+            if(this.UnmountTimestamp == null) {
+
+                this.UnmountTimestamp = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UnmountTimestamp != null && ec.Excludes("unmountTimestamp",true))
+        {
+            this.UnmountTimestamp = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

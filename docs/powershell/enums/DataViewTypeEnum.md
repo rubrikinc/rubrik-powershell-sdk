@@ -11,8 +11,8 @@ All reporting table schemas.
 - MONITORING_RETRYABLE_CANCELED - Monitoring retryable cancelled database schema.
 - BACKUP_COMPLIANCE - Backup compliance database schema.
 - INDEXING - Indexing database schema.
-- OBJECT_AUDIT_LIST
-- OBJECT_AUDIT_DETAIL
+- OBJECT_AUDIT_LIST - Legacy object audit list database schema.
+- OBJECT_AUDIT_DETAIL - Legacy object audit detail database schema.
 - SLA_AUDIT_LIST - The DataView, which queries Audits DB table, lists the latest SLA
 audits for each SLA in the NG Alpha report framework.
 - SLA_AUDIT_DETAIL - The DataView, which queries Audits DB table, lists all SLA audits
@@ -20,7 +20,7 @@ for the single SLA in the NG Alpha report framework.
 - MONITORING_TASK_COUNT_TIME_SERIES - Monitoring task count over time.
 - SLA_COMPLIANCE - Sla Compliance.
 - CDM_UPGRADES - Cdm upgrades.
-- PROTECTION_TASK_DETAILS
+- PROTECTION_TASK_DETAILS - Legacy protection task details database schema.
 - TASK_DETAILS - Specifies the Protection Task Detail report information.
 - GLOBAL_OBJECT - Global object database table schema.
 - GLOBAL_OBJECT_SUMMARY_DAILY - Global object summary daily database table schema.
@@ -30,9 +30,18 @@ for the single SLA in the NG Alpha report framework.
 - THREAT_MONITORING_SNAPSHOT_RESULTS - Specifies the Threat Monitoring snapshot result information.
 - SLA_AUDIT_LIST_NG - Specifies the latest audit information for each SLA Domain.
 - SLA_AUDIT_DETAIL_NG - Specifies all audit information for the single SLA Domain.
-- OBJECT_PROTECTION_AUDIT_LIST - Specifies the latest protection audit information for each protected workload.
-- OBJECT_PROTECTION_AUDIT_LIST_EXPORT - Specifies the protection audit information for all protected workloads.
-- OBJECT_PROTECTION_AUDIT_DETAIL - Specifies all protection audit information for the single protected workload.
+- OBJECT_PROTECTION_AUDIT_LIST - The DataView type, which queries `object_protection_log` DB table, list
+the latest object audits about SOURCE_CLUSTER_REFRESH user
+action for all snappable in the NG report framework.
+Specifies the latest protection audit information for each protected workload.
+- OBJECT_PROTECTION_AUDIT_LIST_EXPORT - The file exported DataView type of OBJECT_PROTECTION_AUDIT_LIST.
+It queries `object_protection_log` DB table, list all object audits
+about SOURCE_CLUSTER_REFRESH user action in the NG report framework.
+Specifies the protection audit information for all protected workloads.
+- OBJECT_PROTECTION_AUDIT_DETAIL - The DataView type, which queries `object_protection_log` DB table, list
+all object audits about SOURCE_CLUSTER_REFRESH user action for the
+specific snappable in the NG report framework.
+Specifies all protection audit information for the single protected workload.
 - QAUTH_OBJECTS - Specifies the database schema for QAuth objects.
 - QAUTH_ROLES - Specifies the database schema for QAuth roles.
 - OBJECT_BACKUP_TASK_SUMMARY - Specifies the database schema for the object backup task summary.
@@ -67,3 +76,7 @@ for the single SLA in the NG Alpha report framework.
 - ANOMALY_DETECTION_COMPLIANCE - Anomaly detection compliance report information.
 - SIGNIN_LOGS - Specifies the sign-in logs report information.
 - CONSOLIDATED_LICENSE_USAGE - Consolidated per-child-account license usage report information.
+- IDENTITY_SEGMENTATION_AUDIT - Specifies the Entra identity-segmentation audit report information:
+per-user licensing classification for a selected month.
+- CLOUD_COST_DAILY - Cloud cost daily report -- raw daily costs per cloud account.
+- CLOUD_COST_MONTHLY - Cloud cost monthly report -- aggregated monthly costs per cloud account.

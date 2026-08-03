@@ -1,5 +1,5 @@
 ### IdentityEventMetadata
-
+Metadata describing an identity-event resource involved in a policy violation.
 
 - eventTime: DateTime
   - Time of the origin event.

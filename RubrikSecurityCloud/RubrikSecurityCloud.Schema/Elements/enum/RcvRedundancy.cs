@@ -18,15 +18,6 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
-        [EnumMember(Value = "AZURE_GRS")]
-        AZURE_GRS,
-
-        [EnumMember(Value = "AZURE_LRS")]
-        AZURE_LRS,
-
-        [EnumMember(Value = "AZURE_ZRS")]
-        AZURE_ZRS,
-
         [EnumMember(Value = "MULTI_REGION")]
         MULTI_REGION,
 
@@ -37,10 +28,7 @@ namespace RubrikSecurityCloud.Types
         REDUNDANCY_UNKNOWN,
 
         [EnumMember(Value = "SINGLE_ZONE")]
-        SINGLE_ZONE,
-
-        [EnumMember(Value = "UNKNOWN_AZURE_REDUNDANCY")]
-        UNKNOWN_AZURE_REDUNDANCY
+        SINGLE_ZONE
 
 
     } // enum RcvRedundancy

@@ -76,6 +76,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.Boolean? ArchivalEnabled
+        // GraphQL -> archivalEnabled: Boolean! (scalar)
+        [JsonProperty("archivalEnabled")]
+        public System.Boolean? ArchivalEnabled { get; set; }
+
+        //      C# -> System.String? ArchivalExocomputeId
+        // GraphQL -> archivalExocomputeId: UUID (scalar)
+        [JsonProperty("archivalExocomputeId")]
+        public System.String? ArchivalExocomputeId { get; set; }
+
         //      C# -> System.String? ExocomputeId
         // GraphQL -> exocomputeId: UUID (scalar)
         [JsonProperty("exocomputeId")]
@@ -166,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -240,6 +255,8 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.Boolean? ArchivalEnabled = null,
+        System.String? ArchivalExocomputeId = null,
         System.String? ExocomputeId = null,
         System.String? Id = null,
         DateTime? LastRefreshTime = null,
@@ -258,6 +275,7 @@ namespace RubrikSecurityCloud.Types
         ConnectionStatus? ConnectionStatus = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
@@ -298,6 +316,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( ArchivalEnabled != null ) {
+            this.ArchivalEnabled = ArchivalEnabled;
+        }
+        if ( ArchivalExocomputeId != null ) {
+            this.ArchivalExocomputeId = ArchivalExocomputeId;
         }
         if ( ExocomputeId != null ) {
             this.ExocomputeId = ExocomputeId;
@@ -352,6 +376,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -494,6 +521,24 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "effectiveSlaDomain" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> System.Boolean? ArchivalEnabled
+        // GraphQL -> archivalEnabled: Boolean! (scalar)
+        if (this.ArchivalEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalEnabled\n" ;
+            } else {
+                s += ind + "archivalEnabled\n" ;
+            }
+        }
+        //      C# -> System.String? ArchivalExocomputeId
+        // GraphQL -> archivalExocomputeId: UUID (scalar)
+        if (this.ArchivalExocomputeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archivalExocomputeId\n" ;
+            } else {
+                s += ind + "archivalExocomputeId\n" ;
             }
         }
         //      C# -> System.String? ExocomputeId
@@ -679,6 +724,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -968,6 +1025,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.EffectiveSlaDomain != null && ec.Excludes("effectiveSlaDomain",false))
         {
             this.EffectiveSlaDomain = null;
+        }
+        //      C# -> System.Boolean? ArchivalEnabled
+        // GraphQL -> archivalEnabled: Boolean! (scalar)
+        if (ec.Includes("archivalEnabled",true))
+        {
+            if(this.ArchivalEnabled == null) {
+
+                this.ArchivalEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalEnabled != null && ec.Excludes("archivalEnabled",true))
+        {
+            this.ArchivalEnabled = null;
+        }
+        //      C# -> System.String? ArchivalExocomputeId
+        // GraphQL -> archivalExocomputeId: UUID (scalar)
+        if (ec.Includes("archivalExocomputeId",true))
+        {
+            if(this.ArchivalExocomputeId == null) {
+
+                this.ArchivalExocomputeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchivalExocomputeId != null && ec.Excludes("archivalExocomputeId",true))
+        {
+            this.ArchivalExocomputeId = null;
         }
         //      C# -> System.String? ExocomputeId
         // GraphQL -> exocomputeId: UUID (scalar)
@@ -1290,6 +1381,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

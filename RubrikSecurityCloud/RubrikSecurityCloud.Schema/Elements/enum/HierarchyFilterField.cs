@@ -612,6 +612,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_VM_BY_AGENT_STATUS")]
         HYPERV_VM_BY_AGENT_STATUS,
 
+        [EnumMember(Value = "HYPERV_VM_BY_LINKED_NATIVE_TAG")]
+        HYPERV_VM_BY_LINKED_NATIVE_TAG,
+
+        [EnumMember(Value = "HYPERV_VM_BY_SUBTYPE")]
+        HYPERV_VM_BY_SUBTYPE,
+
         [EnumMember(Value = "HYPERV_VM_MAC_ADDRESS")]
         HYPERV_VM_MAC_ADDRESS,
 
@@ -647,6 +653,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IS_HOST_PROTECTED")]
         IS_HOST_PROTECTED,
+
+        [EnumMember(Value = "IS_INFRASTRUCTURE_ALERTS_ENABLED")]
+        IS_INFRASTRUCTURE_ALERTS_ENABLED,
 
         [EnumMember(Value = "IS_KUPR_HOST")]
         IS_KUPR_HOST,
@@ -846,6 +855,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MYSQLDB_HOST_CONNECTION_STATUS")]
         MYSQLDB_HOST_CONNECTION_STATUS,
 
+        [EnumMember(Value = "MYSQLDB_INSTANCE_CLUSTER_MODE")]
+        MYSQLDB_INSTANCE_CLUSTER_MODE,
+
         [EnumMember(Value = "MYSQLDB_INSTANCE_ID")]
         MYSQLDB_INSTANCE_ID,
 
@@ -996,6 +1008,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER_MODE")]
         POSTGRES_DB_CLUSTER_MODE,
 
+        [EnumMember(Value = "POWER_PLATFORM_APP_DISPLAY_NAME")]
+        POWER_PLATFORM_APP_DISPLAY_NAME,
+
+        [EnumMember(Value = "POWER_PLATFORM_APP_ID")]
+        POWER_PLATFORM_APP_ID,
+
+        [EnumMember(Value = "POWER_PLATFORM_APP_LAST_MODIFIED_AFTER")]
+        POWER_PLATFORM_APP_LAST_MODIFIED_AFTER,
+
+        [EnumMember(Value = "POWER_PLATFORM_APP_OWNER")]
+        POWER_PLATFORM_APP_OWNER,
+
         [EnumMember(Value = "POWER_PLATFORM_APP_PUBLISHER")]
         POWER_PLATFORM_APP_PUBLISHER,
 
@@ -1004,6 +1028,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POWER_PLATFORM_APP_TYPE")]
         POWER_PLATFORM_APP_TYPE,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_DISPLAY_NAME")]
+        POWER_PLATFORM_FLOW_DISPLAY_NAME,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_ID")]
+        POWER_PLATFORM_FLOW_ID,
+
+        [EnumMember(Value = "POWER_PLATFORM_FLOW_LAST_MODIFIED_AFTER")]
+        POWER_PLATFORM_FLOW_LAST_MODIFIED_AFTER,
 
         [EnumMember(Value = "POWER_PLATFORM_FLOW_OWNER")]
         POWER_PLATFORM_FLOW_OWNER,
@@ -1076,6 +1109,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT")]
         RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT,
+
+        [EnumMember(Value = "SAASAPPS_IS_HIDDEN")]
+        SAASAPPS_IS_HIDDEN,
 
         [EnumMember(Value = "SAASAPPS_IS_RECOVERY_TARGET_ONLY")]
         SAASAPPS_IS_RECOVERY_TARGET_ONLY,

@@ -1,10 +1,32 @@
 # New-RscMutationMisc
 ## Subcommands
+### activatedatacategory
+Activate data category for a given ID.
+
+- There is a single argument of type ActivateDataCategoryInput.
+- Returns ActivateDataCategoryReply.
+### activatedatatype
+Activate data type for a given ID.
+
+- There is a single argument of type ActivateDataTypeInput.
+- Returns ActivateDataTypeReply.
+### activatedocumentattribute
+Activate document attribute for a given ID.
+
+- There is a single argument of type ActivateDocumentAttributeInput.
+- Returns ActivateDocumentAttributeReply.
 ### addadgroupstohierarchy
-Add AD Groups to O365 hierarchy.
+AddADGroupsToHierarchyV2 is the V2 GraphQL entry point for
+AddADGroupsToHierarchy.
 
 - There is a single argument of type AddAdGroupsToHierarchyInput.
 - Returns RequestStatus.
+### addclouddirectgenerics3tenantcredentials
+AddCloudDirectGenericS3TenantCredential adds or updates a tenant credential
+on an existing generic S3 system (upsert by name).
+
+- There is a single argument of type AddCloudDirectGenericS3TenantCredentialsInput.
+- Returns System.String.
 ### addclouddirectkerberoscredential
 AddCloudDirectKerberosCredential creates a new Kerberos credential for NCD systems.
 
@@ -21,7 +43,7 @@ AddCloudDirectSystem is used to add a new system to the NCD cluster.
 - There is a single argument of type AddCloudDirectSystemInput.
 - Returns AddCloudDirectSystemReply.
 ### addconfiguredgrouptohierarchy
-Add a Configured Group to the O365 hierarchy.
+Adds a configured group to the O365 hierarchy.
 
 - There is a single argument of type AddConfiguredGroupToHierarchyInput.
 - Returns AddConfiguredGroupToHierarchyReply.
@@ -152,6 +174,11 @@ Add, update, or remove SMB credentials for NAS namespaces.
 
 - There is a single argument of type BulkUpdateNasNamespacesInput.
 - Returns System.String.
+### bulkupdatesupporttunnel
+Updates the support tunnel status for multiple Rubrik clusters in bulk.
+
+- There is a single argument of type BulkUpdateSupportTunnelInput.
+- Returns BulkUpdateSupportTunnelReply.
 ### bulkupdatesystemconfig
 Bulk update system config params
 
@@ -268,6 +295,11 @@ Create a new custom analyzer.
 
 - There is a single argument of type CreateCustomAnalyzerInput.
 - Returns Analyzer.
+### createcustomdatatype
+Create a new custom data type.
+
+- There is a single argument of type CreateCustomDataTypeInput.
+- Returns CreateCustomDataTypeReply.
 ### createdistributionlistdigestbatch
 Create distribution list digests for specific recipients.
 
@@ -312,11 +344,21 @@ Create an on-demand snapshot for the given Volume Group ID.
 
 - There is a single argument of type CreateOnDemandVolumeGroupBackupInput.
 - Returns AsyncRequestStatus.
+### createrecoveryplanv2
+CreateRecoveryPlan creates a new recovery plan with the specified configuration.
+
+- There is a single argument of type CreateRecoveryPlanV2Input.
+- Returns CreateRecoveryPlanV2Reply.
 ### createrecoveryschedulev2
 Creates a recovery schedule for a recovery plan.
 
 - There is a single argument of type CreateRecoveryScheduleV2Input.
 - Returns System.String.
+### createrecoveryspecs
+Creates recovery specifications for a recovery plan.
+
+- There is a single argument of type CreateRecoverySpecsInput.
+- Returns CreateRecoverySpecsReply.
 ### createssousers
 Create SSO users.
 
@@ -347,8 +389,19 @@ Deactivate a custom analyzer.
     - analyzerId - System.String: Identifier of the custom analyzer to deactivate.
     - disableAnalyzer - System.Boolean: If true, disable the underlying requested analyzer.
 - Returns System.String.
+### deactivatedatatype
+Deactivate data type for a given ID.
+
+- There is a single argument of type DeactivateDataTypeInput.
+- Returns DeactivateDataTypeReply.
+### deactivatedocumentattribute
+Deactivate document attribute for a given ID.
+
+- There is a single argument of type DeactivateDocumentAttributeInput.
+- Returns DeactivateDocumentAttributeReply.
 ### deleteadgroupsfromhierarchy
-Delete AD Groups from O365 hierarchy.
+DeleteADGroupsFromHierarchyV2 is the V2 GraphQL entry point for
+DeleteADGroupsFromHierarchy.
 
 - There is a single argument of type DeleteAdGroupsFromHierarchyInput.
 - Returns RequestStatus.
@@ -359,6 +412,11 @@ Supported in v9.5+
 Delete a specific Ceph storage setting for an OpenStack Availability Zone.
 
 - There is a single argument of type DeleteCephSettingInput.
+- Returns System.String.
+### deleteclouddirectgenerics3tenantcredential
+DeleteCloudDirectGenericS3TenantCredential removes a tenant credential from a generic S3 system.
+
+- There is a single argument of type DeleteCloudDirectGenericS3TenantCredentialInput.
 - Returns System.String.
 ### deleteclouddirectkerberoscredential
 DeleteCloudDirectKerberosCredential deletes an existing Kerberos credential for NCD systems.
@@ -507,6 +565,20 @@ Expire snoozed directories.
 
 - There is a single argument of type ExpireSnoozedDirectoriesInput.
 - Returns ExpireSnoozedDirectoriesReply.
+### exportpermissions
+Generates a CSV file containing permissions information
+for the specified paths in a snapshot.
+
+- There is a single argument of type ExportPermissionsInput.
+- Returns ExportPermissionsReply.
+### exportprincipalssummary
+Export the user summary data.
+
+- There are 3 arguments.
+    - filter - ExportPrincipalsSummaryFilterInput: Filter to be applied when exporting principal summaries.
+    - timelineDate - System.String: Date for which the results will be retrieved.
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
+- Returns ExportPrincipalSummaryResp.
 ### generatecdmtotpsecret
 Generate a TOTP secret key for the given user
 
@@ -736,6 +808,15 @@ Initiates a job to refresh metadata of a MySQL instance object. The GET /mysqldb
 
 - There is a single argument of type RefreshMysqldbInstanceInput.
 - Returns AsyncRequestStatus.
+### registerproductinterest
+RegisterProductInterest records that the caller has expressed interest
+in a Rubrik product (a CTA click). Returns void via the EMPTY_VALUE
+transform -- the auto-increment row id stays internal. Best-effort
+email notification is dispatched server-side; failure does not fail
+the mutation.
+
+- There is a single argument of type RegisterProductInterestInput.
+- Returns System.String.
 ### removedisk
 Marks the disk removed and updates cluster metadata.
 
@@ -909,6 +990,11 @@ Update the IP allowlist settings for the account.
 
 - There is a single argument of type SetIpWhitelistSettingInput.
 - Returns System.String.
+### setisidentitysecurityroleassignmentcomplete
+Set the IR room configuration.
+
+- There is a single argument of type System.Boolean.
+- Returns System.String.
 ### setmfasetting
 Update the MFA settings for the account.
 Return true when the operation succeeds.
@@ -967,11 +1053,14 @@ Enable/disable alerts for given workload on given cluster.
 Endpoints for ODC
 Start a crawl.
 
-- There are 4 arguments.
+- There are 5 arguments.
     - name - System.String: Name of the crawl.
     - resources - list of ResourceInputs: Resources to include in the crawl.
-    - analyzerGroups - list of AnalyzerGroupInputs: Analyzer groups to run during the crawl.
+    - analyzerGroups - list of AnalyzerGroupInputs: Analyzer groups to run during the crawl. Mutually
+exclusive with dataCategoryIds: exactly one of the two must be supplied.
     - extWhiteList - list of System.Strings: External whitelist entries for the crawl.
+    - dataCategoryIds - list of System.Strings: Data category IDs to scan. Mutually exclusive with
+analyzerGroups.
 - Returns StartCrawlReply.
 ### startdownloadpackagebatchjob
 Starts CDM job to download installer package in batch.
@@ -1022,6 +1111,11 @@ Starts an on demand periodic upgrade prechecks job in CDM cluster.
 
 - There is a single argument of type System.String.
 - Returns PrechecksJobReply.
+### startrecovery
+StartRecovery triggers a recovery job for the relevant recovery spec.
+
+- There is a single argument of type StartRecoveryInput.
+- Returns StartRecoveryReply.
 ### startupgradebatchjob
 Starts cdm upgrades instantly, monitors the upgrade until terminal state is reached.
 
@@ -1181,6 +1275,11 @@ Update a custom analyzer.
 
 - There is a single argument of type CreateCustomAnalyzerInput.
 - Returns Analyzer.
+### updatecustomdatatype
+Update a custom data type.
+
+- There is a single argument of type UpdateCustomDataTypeInput.
+- Returns UpdateCustomDataTypeReply.
 ### updatecustomerapppermissions
 Updates the Azure app for the specified account with specified permissions in an idempotent manner.
 
@@ -1201,6 +1300,11 @@ Update cluster DNS servers and search domains.
 
 - There is a single argument of type UpdateDnsServersAndSearchDomainsInput.
 - Returns ResponseSuccess.
+### updatedocumenttype
+Update a document type with the specified details.
+
+- There is a single argument of type UpdateDocumentTypeInput.
+- Returns UpdateDocumentTypeReply.
 ### updateeventdigest
 Update event digests for specific recipients.
 
@@ -1291,6 +1395,11 @@ Update the configuration of a specified network throttle object.
 
 - There is a single argument of type UpdateNetworkThrottleInput.
 - Returns UpdateNetworkThrottleReply.
+### updatepredefineddatatype
+Update a predefined data type.
+
+- There is a single argument of type UpdatePredefinedDataTypeInput.
+- Returns UpdatePredefinedDataTypeReply.
 ### updateproxmoxenvironment
 Update Proxmox environment.
 
@@ -1304,6 +1413,27 @@ Update proxy config.
 
 - There is a single argument of type UpdateProxyConfigInput.
 - Returns UpdateProxyConfigReply.
+### updatepurestorageprotectiongroup
+Update a Pure Storage protection group
+
+Supported in v9.6+
+Update the snapshot consistency mandate of a Pure Storage protection group.
+
+- There is a single argument of type UpdatePureStorageProtectionGroupInput.
+- Returns UpdatePureStorageProtectionGroupReply.
+### updatepurestorageprotectiongroupvolumeexclusions
+Update volume exclusions from snapshots for a Pure Storage protection group
+
+Supported in v9.6+
+Exclude or include multiple volumes from snapshot processing for a specific protection group. Accepts a map of volume IDs to their desired exclusion status.
+
+- There is a single argument of type UpdatePureStorageProtectionGroupVolumeExclusionsInput.
+- Returns UpdatePureStorageProtectionGroupVolumeExclusionsReply.
+### updaterecoveryplanv2
+Updates an existing recovery plan.
+
+- There is a single argument of type UpdateRecoveryPlanV2Input.
+- Returns UpdateRecoveryPlanV2Reply.
 ### updaterecoveryschedulev2
 Updates a recovery schedule for a recovery plan.
 

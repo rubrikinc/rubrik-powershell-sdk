@@ -11,6 +11,8 @@ Summary of a threat hunt for an object.
   - Earliest snapshot date containing a match.
 - latestMatchedSnapshotDate: DateTime
   - Latest snapshot date containing a match.
+- snapshotsStats: list of ThreatHuntResultSnapshotStatss
+  - Threat hunt summaries for each snapshot.
 - latestSnapshotWithoutMatchDate: DateTime
   - Latest snapshot date not containing a match.
 - totalMatchedSnapshots: System.Int32
@@ -19,13 +21,11 @@ Summary of a threat hunt for an object.
   - Scan status of the object.
 - hasQuarantinedMatches: System.Boolean
   - Specifies whether the object has quarantined matches.
-- snapshotsStats: list of ThreatHuntResultSnapshotStatss
-  - Threat hunt summaries for each snapshot.
 - objectV2: HierarchySnappable
   - The scanned object.
 - object: CdmHierarchySnappableNew
   - The scanned object, if it is a CDM object.
-- clusterInfo: Cluster
-  - Cluster information.
 - location: System.String
   - The object location.
+- clusterInfo: Cluster
+  - Cluster information.

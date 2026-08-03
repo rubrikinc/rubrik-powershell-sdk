@@ -34,86 +34,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recoverableRanges")]
         List<KosmosWorkloadRecoverableRange>? RecoverableRanges { get; set; }
 
-        //      C# -> Cluster? Cluster
-        // GraphQL -> cluster: Cluster! (type)
-        [JsonProperty("cluster")]
-        Cluster? Cluster { get; set; }
-
-        //      C# -> System.String? CdmId
-        // GraphQL -> cdmId: String! (scalar)
-        [JsonProperty("cdmId")]
-        System.String? CdmId { get; set; }
-
-        //      C# -> System.String? CdmLink
-        // GraphQL -> cdmLink: String! (scalar)
-        [JsonProperty("cdmLink")]
-        System.String? CdmLink { get; set; }
-
-        //      C# -> DataLocation? PrimaryClusterLocation
-        // GraphQL -> primaryClusterLocation: DataLocation! (type)
-        [JsonProperty("primaryClusterLocation")]
-        DataLocation? PrimaryClusterLocation { get; set; }
-
-        //      C# -> System.Boolean? IsReplica
-        // GraphQL -> isReplica: Boolean (scalar)
-        [JsonProperty("isReplica")]
-        System.Boolean? IsReplica { get; set; }
-
-        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
-        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
-        [JsonProperty("missedSnapshotConnection")]
-        MissedSnapshotCommonConnection? MissedSnapshotConnection { get; set; }
-
-        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
-        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
-        [JsonProperty("missedSnapshotGroupByConnection")]
-        MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection { get; set; }
-
-        //      C# -> CdmSnapshotConnection? SnapshotConnection
-        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
-        [JsonProperty("snapshotConnection")]
-        CdmSnapshotConnection? SnapshotConnection { get; set; }
-
-        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
-        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
-        [JsonProperty("snapshotGroupByConnection")]
-        CdmSnapshotGroupByConnection? SnapshotGroupByConnection { get; set; }
-
-        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
-        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
-        [JsonProperty("snapshotGroupBySummary")]
-        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
-
-        //      C# -> CdmSnapshot? NewestIndexedSnapshot
-        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
-        [JsonProperty("newestIndexedSnapshot")]
-        CdmSnapshot? NewestIndexedSnapshot { get; set; }
-
-        //      C# -> CdmSnapshot? NewestSnapshot
-        // GraphQL -> newestSnapshot: CdmSnapshot (type)
-        [JsonProperty("newestSnapshot")]
-        CdmSnapshot? NewestSnapshot { get; set; }
-
-        //      C# -> CdmSnapshot? OldestSnapshot
-        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
-        [JsonProperty("oldestSnapshot")]
-        CdmSnapshot? OldestSnapshot { get; set; }
-
-        //      C# -> System.Int32? OnDemandSnapshotCount
-        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
-        [JsonProperty("onDemandSnapshotCount")]
-        System.Int32? OnDemandSnapshotCount { get; set; }
-
-        //      C# -> CdmSnapshot? NewestArchivedSnapshot
-        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
-        [JsonProperty("newestArchivedSnapshot")]
-        CdmSnapshot? NewestArchivedSnapshot { get; set; }
-
-        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
-        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
-        [JsonProperty("newestReplicatedSnapshot")]
-        CdmSnapshot? NewestReplicatedSnapshot { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -198,6 +118,91 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
         ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        [JsonProperty("cluster")]
+        Cluster? Cluster { get; set; }
+
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        [JsonProperty("cdmId")]
+        System.String? CdmId { get; set; }
+
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        [JsonProperty("cdmLink")]
+        System.String? CdmLink { get; set; }
+
+        //      C# -> DataLocation? PrimaryClusterLocation
+        // GraphQL -> primaryClusterLocation: DataLocation! (type)
+        [JsonProperty("primaryClusterLocation")]
+        DataLocation? PrimaryClusterLocation { get; set; }
+
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        System.Boolean? IsReplica { get; set; }
+
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
+        [JsonProperty("missedSnapshotConnection")]
+        MissedSnapshotCommonConnection? MissedSnapshotConnection { get; set; }
+
+        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
+        [JsonProperty("missedSnapshotGroupByConnection")]
+        MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection { get; set; }
+
+        //      C# -> CdmSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
+        [JsonProperty("snapshotConnection")]
+        CdmSnapshotConnection? SnapshotConnection { get; set; }
+
+        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
+        [JsonProperty("snapshotGroupByConnection")]
+        CdmSnapshotGroupByConnection? SnapshotGroupByConnection { get; set; }
+
+        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
+        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
+        [JsonProperty("snapshotGroupBySummary")]
+        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
+
+        //      C# -> CdmSnapshot? NewestIndexedSnapshot
+        // GraphQL -> newestIndexedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestIndexedSnapshot")]
+        CdmSnapshot? NewestIndexedSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestSnapshot")]
+        CdmSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
+        [JsonProperty("oldestSnapshot")]
+        CdmSnapshot? OldestSnapshot { get; set; }
+
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        [JsonProperty("onDemandSnapshotCount")]
+        System.Int32? OnDemandSnapshotCount { get; set; }
+
+        //      C# -> CdmSnapshot? NewestArchivedSnapshot
+        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestArchivedSnapshot")]
+        CdmSnapshot? NewestArchivedSnapshot { get; set; }
+
+        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
+        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
+        [JsonProperty("newestReplicatedSnapshot")]
+        CdmSnapshot? NewestReplicatedSnapshot { get; set; }
 
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)

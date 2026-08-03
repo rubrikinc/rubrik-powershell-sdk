@@ -86,12 +86,18 @@ previously lived in the GraphQL resolver `snappableEventSearch`.
     - filter - SnappableFilterInput: Filter protected objects by input.
 - Returns SnappableConnection.
 ### onedrivesearch
-- There are 5 arguments.
+Returns OneDrive folders and files for the given workload across all
+snapshots, merged as a single O365OnedriveObject interface list
+(folders then files).
+
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
-    - onedriveSearchFilter - OnedriveSearchFilter
+    - onedriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
 - Returns O365OnedriveObjectConnection.
 ### search
 - There are 7 arguments.

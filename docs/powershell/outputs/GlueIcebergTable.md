@@ -13,12 +13,17 @@ AWS Glue Iceberg Table.
   - Size of the Iceberg table in bytes.
 - location: System.String
   - S3 data location for this table.
+- dataLocationRegion: System.String
+  - Region of the storage location where the table's data resides.
 - nativeName: System.String
   - AWS native name of the table.
+- isExocomputeConfigured: System.Boolean
+  - Whether exocompute is configured for the region where the table's data is located.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
 - id: System.String
@@ -55,6 +60,8 @@ AWS Glue Iceberg Table.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

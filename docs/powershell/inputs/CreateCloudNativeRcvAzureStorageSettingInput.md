@@ -19,3 +19,5 @@ Input for creating Rubrik Cloud Vault Azure storage settings.
   - Redundancy for the RCV location.
 - rsaKey: System.String
   - Optional RSA encryption key for the Rubrik Cloud Vault Azure location. If not provided, RCV will create and manage the encryption key automatically.
+- azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
+  - Azure Key Vault key for client-side encryption of the archival target.

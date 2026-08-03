@@ -236,7 +236,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	siteFid = $someString
     /// 	# OPTIONAL
     /// 	retentionSlaId = $someString
@@ -302,7 +302,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	snappableUuid = $someString
     /// }
     /// 
@@ -796,9 +796,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	orgId = $someString
-    /// 	# REQUIRED
     /// 	appType = $someString
+    /// 	# REQUIRED
+    /// 	orgId = $someString
     /// 	# OPTIONAL
     /// 	resourceId = $someString
     /// 	# OPTIONAL
@@ -1079,6 +1079,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	sourceSnappableUuid = $someString
     /// 	# REQUIRED
     /// 	destinationSnappableUuid = $someString
+    /// 	# REQUIRED
+    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
     /// 	# REQUIRED
     /// 	restoreConfig = @{
     /// 		# OPTIONAL
@@ -1705,8 +1707,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			unused = $someBoolean
     /// 		}
     /// 	}
-    /// 	# REQUIRED
-    /// 	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2863,7 +2863,7 @@ $query.Var.input = @{
                 Mutation.BackupO365SharePointSiteFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	siteFid = $someString
 	# OPTIONAL
 	retentionSlaId = $someString
@@ -2913,7 +2913,7 @@ $query.Var.input = @{
                 Mutation.BackupO365SharepointListFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	snappableUuid = $someString
 }"
             );
@@ -3304,9 +3304,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	orgId = $someString
-	# REQUIRED
 	appType = $someString
+	# REQUIRED
+	orgId = $someString
 	# OPTIONAL
 	resourceId = $someString
 	# OPTIONAL
@@ -3539,6 +3539,8 @@ $query.Var.input = @{
 	sourceSnappableUuid = $someString
 	# REQUIRED
 	destinationSnappableUuid = $someString
+	# REQUIRED
+	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
 	# REQUIRED
 	restoreConfig = @{
 		# OPTIONAL
@@ -4165,8 +4167,6 @@ $query.Var.input = @{
 			unused = $someBoolean
 		}
 	}
-	# REQUIRED
-	actionType = $someO365RestoreActionType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365RestoreActionType]) for enum values.
 }"
             );
         }

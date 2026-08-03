@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("syncedClusters")]
         public List<SyncedCluster>? SyncedClusters { get; set; }
 
+        //      C# -> List<TagPermission>? TagPermissions
+        // GraphQL -> tagPermissions: [TagPermission!]! (type)
+        [JsonProperty("tagPermissions")]
+        public List<TagPermission>? TagPermissions { get; set; }
+
         [JsonProperty("vars")]
         public InlineVars Vars { get; set; }
 
@@ -148,7 +153,8 @@ namespace RubrikSecurityCloud.Types
         List<Permission>? ExplicitlyAssignedPermissions = null,
         SyncedClusterConnection? PaginatedSyncedClusters = null,
         List<Permission>? Permissions = null,
-        List<SyncedCluster>? SyncedClusters = null
+        List<SyncedCluster>? SyncedClusters = null,
+        List<TagPermission>? TagPermissions = null
     ) 
     {
         if ( AlreadySyncedClusters != null ) {
@@ -198,6 +204,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SyncedClusters != null ) {
             this.SyncedClusters = SyncedClusters;
+        }
+        if ( TagPermissions != null ) {
+            this.TagPermissions = TagPermissions;
         }
         return this;
     }
@@ -372,6 +381,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "syncedClusters" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TagPermission>? TagPermissions
+        // GraphQL -> tagPermissions: [TagPermission!]! (type)
+        if (this.TagPermissions != null) {
+            var fspec = this.TagPermissions.AsFieldSpec(conf.Child("tagPermissions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "tagPermissions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -665,6 +686,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SyncedClusters != null && ec.Excludes("syncedClusters",false))
         {
             this.SyncedClusters = null;
+        }
+        //      C# -> List<TagPermission>? TagPermissions
+        // GraphQL -> tagPermissions: [TagPermission!]! (type)
+        if (ec.Includes("tagPermissions",false))
+        {
+            if(this.TagPermissions == null) {
+
+                this.TagPermissions = new List<TagPermission>();
+                this.TagPermissions.ApplyExploratoryFieldSpec(ec.NewChild("tagPermissions"));
+
+            } else {
+
+                this.TagPermissions.ApplyExploratoryFieldSpec(ec.NewChild("tagPermissions"));
+
+            }
+        }
+        else if (this.TagPermissions != null && ec.Excludes("tagPermissions",false))
+        {
+            this.TagPermissions = null;
         }
     }
 

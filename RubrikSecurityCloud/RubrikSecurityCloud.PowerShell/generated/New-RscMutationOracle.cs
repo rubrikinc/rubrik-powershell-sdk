@@ -156,7 +156,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			primaryNode = $someString
     /// 			# OPTIONAL
+    /// 			shouldClearExcludedDbUniqueNames = $someBoolean
+    /// 			# OPTIONAL
     /// 			shouldEnableMultiNodeBackup = $someBoolean
+    /// 			# OPTIONAL
+    /// 			excludedDbUniqueNames = @(
+    /// 				$someString
+    /// 			)
     /// 			# OPTIONAL
     /// 			secondaryNodes = @(
     /// 				$someString
@@ -261,7 +267,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			primaryNode = $someString
     /// 			# OPTIONAL
+    /// 			shouldClearExcludedDbUniqueNames = $someBoolean
+    /// 			# OPTIONAL
     /// 			shouldEnableMultiNodeBackup = $someBoolean
+    /// 			# OPTIONAL
+    /// 			excludedDbUniqueNames = @(
+    /// 				$someString
+    /// 			)
     /// 			# OPTIONAL
     /// 			secondaryNodes = @(
     /// 				$someString
@@ -366,7 +378,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			primaryNode = $someString
     /// 			# OPTIONAL
+    /// 			shouldClearExcludedDbUniqueNames = $someBoolean
+    /// 			# OPTIONAL
     /// 			shouldEnableMultiNodeBackup = $someBoolean
+    /// 			# OPTIONAL
+    /// 			excludedDbUniqueNames = @(
+    /// 				$someString
+    /// 			)
     /// 			# OPTIONAL
     /// 			secondaryNodes = @(
     /// 				$someString
@@ -668,6 +686,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			targetRacHostIds = @(
     /// 				$someString
     /// 			)
+    /// 			# OPTIONAL
+    /// 			shouldRestoreWithExactTime = $someBoolean
     /// 			# OPTIONAL
     /// 			targetRacPrimaryHostId = $someString
     /// 			# OPTIONAL
@@ -1599,7 +1619,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			primaryNode = $someString
 			# OPTIONAL
+			shouldClearExcludedDbUniqueNames = $someBoolean
+			# OPTIONAL
 			shouldEnableMultiNodeBackup = $someBoolean
+			# OPTIONAL
+			excludedDbUniqueNames = @(
+				$someString
+			)
 			# OPTIONAL
 			secondaryNodes = @(
 				$someString
@@ -1696,7 +1722,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			primaryNode = $someString
 			# OPTIONAL
+			shouldClearExcludedDbUniqueNames = $someBoolean
+			# OPTIONAL
 			shouldEnableMultiNodeBackup = $someBoolean
+			# OPTIONAL
+			excludedDbUniqueNames = @(
+				$someString
+			)
 			# OPTIONAL
 			secondaryNodes = @(
 				$someString
@@ -1793,7 +1825,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			primaryNode = $someString
 			# OPTIONAL
+			shouldClearExcludedDbUniqueNames = $someBoolean
+			# OPTIONAL
 			shouldEnableMultiNodeBackup = $someBoolean
+			# OPTIONAL
+			excludedDbUniqueNames = @(
+				$someString
+			)
 			# OPTIONAL
 			secondaryNodes = @(
 				$someString
@@ -2039,6 +2077,8 @@ $query.Var.input = @{
 			targetRacHostIds = @(
 				$someString
 			)
+			# OPTIONAL
+			shouldRestoreWithExactTime = $someBoolean
 			# OPTIONAL
 			targetRacPrimaryHostId = $someString
 			# OPTIONAL

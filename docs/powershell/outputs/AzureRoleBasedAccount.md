@@ -1,5 +1,5 @@
 ### AzureRoleBasedAccount
-
+Azure role based Account specific info.
 
 - subscriptionWithFeatures: AzureSubscriptionWithFeaturesType
   - The subscription info with feature details.

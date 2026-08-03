@@ -1,5 +1,5 @@
 ### IdentityViolationDetails
-
+Details of an identity-related policy violation.
 
 - time: DateTime
   - Reference time.

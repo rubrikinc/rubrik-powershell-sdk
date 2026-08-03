@@ -19,6 +19,10 @@ Db2 Database details object.
   - Specifies the value of the configuration parameter for parallelism in backup operations.
 - backupSessions: System.Int32
   - Specifies the value of the configuration parameter for sessions in backup operations.
+- isBackupCompressionEnabled: System.Boolean
+  - Specifies whether Db2 backup compression is enabled for backup operations.
+- backupCompressionLibraryPath: System.String
+  - The fully qualified path to a custom Db2 backup compression library. This field is empty when compression is turned off or when the Db2-default compression library is used.
 - status: Db2DatabaseStatus
   - Status of Db2 database: OK, WARNING, ERROR, UNKNOWN or UNSPECIFIED.
 - statusMessage: list of System.Strings
@@ -39,6 +43,35 @@ Db2 Database details object.
   - The list of hosts authorized for recovery.
 - backupTriggerType: BackupTriggerType
   - The backup trigger type for the Db2 database.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because
+there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being
+communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by
+replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this
+object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this
+object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -73,28 +106,8 @@ Db2 Database details object.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - cdmLink: System.String
   - A link to view the workload on the CDM cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

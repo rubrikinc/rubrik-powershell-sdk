@@ -95,8 +95,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	locationId = $someString
     /// 	# REQUIRED
     /// 	privateEndpointId = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	requestMessage = $someString
+    /// 	# OPTIONAL
+    /// 	name = $someString
+    /// 	# OPTIONAL
+    /// 	description = $someString
     /// }
     /// 
     /// # Execute the query
@@ -520,8 +524,12 @@ $query.Var.input = @{
 	locationId = $someString
 	# REQUIRED
 	privateEndpointId = $someString
-	# REQUIRED
+	# OPTIONAL
 	requestMessage = $someString
+	# OPTIONAL
+	name = $someString
+	# OPTIONAL
+	description = $someString
 }"
             );
         }

@@ -362,9 +362,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 			}
+    /// 			# OPTIONAL
+    /// 			shouldExpandArchiveFiles = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		maxMatchesPerSnapshot = $someInt
+    /// 		# OPTIONAL
+    /// 		shouldIncludeArchive = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	objectFids = @(
@@ -489,9 +493,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 						$someString
     /// 					)
     /// 				}
+    /// 				# OPTIONAL
+    /// 				shouldExpandArchiveFiles = $someBoolean
     /// 			}
     /// 			# OPTIONAL
     /// 			maxMatchesPerSnapshot = $someInt
+    /// 			# OPTIONAL
+    /// 			shouldIncludeArchive = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		clusterIds = @(
@@ -626,9 +634,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					$someString
     /// 				)
     /// 			}
+    /// 			# OPTIONAL
+    /// 			shouldExpandArchiveFiles = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		maxMatchesPerSnapshot = $someInt
+    /// 		# OPTIONAL
+    /// 		shouldIncludeArchive = $someBoolean
     /// 	}
     /// 	# REQUIRED
     /// 	objectFids = @(
@@ -1032,9 +1044,13 @@ $query.Var.input = @{
 					$someString
 				)
 			}
+			# OPTIONAL
+			shouldExpandArchiveFiles = $someBoolean
 		}
 		# OPTIONAL
 		maxMatchesPerSnapshot = $someInt
+		# OPTIONAL
+		shouldIncludeArchive = $someBoolean
 	}
 	# REQUIRED
 	objectFids = @(
@@ -1151,9 +1167,13 @@ $query.Var.input = @{
 						$someString
 					)
 				}
+				# OPTIONAL
+				shouldExpandArchiveFiles = $someBoolean
 			}
 			# OPTIONAL
 			maxMatchesPerSnapshot = $someInt
+			# OPTIONAL
+			shouldIncludeArchive = $someBoolean
 		}
 		# OPTIONAL
 		clusterIds = @(
@@ -1280,9 +1300,13 @@ $query.Var.input = @{
 					$someString
 				)
 			}
+			# OPTIONAL
+			shouldExpandArchiveFiles = $someBoolean
 		}
 		# OPTIONAL
 		maxMatchesPerSnapshot = $someInt
+		# OPTIONAL
+		shouldIncludeArchive = $someBoolean
 	}
 	# REQUIRED
 	objectFids = @(

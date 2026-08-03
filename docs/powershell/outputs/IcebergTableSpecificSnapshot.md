@@ -13,5 +13,7 @@ Iceberg table-specific snapshot information. Vendor-neutral: covers Glue, S3 Tab
   - True when some files failed to copy and the snapshot represents a partial backup. Consumers should treat partial snapshots as best-effort and surface the state to the user.
 - icebergSnapshotFileCount: System.Int64
   - Total number of files pointed to by this Iceberg snapshot at source, across all Iceberg file types: data files (Parquet/ORC/Avro), manifest files, manifest list files, the metadata.json itself, position/equality delete files, and any statistics or puffin files. Independent of incremental backup state.
+- icebergNativeCommitTime: DateTime
+  - Commit timestamp recorded in the source table's metadata.json for the snapshot identified by icebergSnapshotId. Distinct from the snapshot's Rubrik backup time (the wall-clock when Rubrik triggered the backup).
 - snapshotId: System.String
   - ID of the snapshot.

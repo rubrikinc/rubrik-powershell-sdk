@@ -43,6 +43,12 @@ Specific information for Rubrik Cloud Vault (RCV) Azure target created on Rubrik
   - BLI migration status for this RCV Azure target.
 - rcvConversion: list of RcvConversionTypes
   - List of conversions for this RCV location.
+- proxySettings: ProxySettings
+  - Proxy configuration used by the Rubrik cluster to reach this Rubrik
+Cloud Vault Azure location.
+- shouldBypassProxyForDatapaths: System.Boolean
+  - When enabled, blob storage (data path) traffic bypasses the configured
+proxy, while Azure AD authentication traffic continues to use it.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

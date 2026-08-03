@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("certificateKeyPassword")]
         public System.String? CertificateKeyPassword { get; set; }
 
+        //      C# -> List<NcdCredential>? Creds
+        // GraphQL -> creds: [NcdCredential!] (input)
+        [JsonProperty("creds")]
+        public List<NcdCredential>? Creds { get; set; }
+
 
         #endregion
 

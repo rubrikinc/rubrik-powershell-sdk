@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldSkipPermissionChecks")]
         public System.Boolean? ShouldSkipPermissionChecks { get; set; }
 
+        //      C# -> System.Boolean? IsEntraIdInitiatedOnboarding
+        // GraphQL -> isEntraIdInitiatedOnboarding: Boolean (scalar)
+        [JsonProperty("isEntraIdInitiatedOnboarding")]
+        public System.Boolean? IsEntraIdInitiatedOnboarding { get; set; }
+
         //      C# -> AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: AzureCloudType (enum)
         [JsonProperty("azureCloudType")]

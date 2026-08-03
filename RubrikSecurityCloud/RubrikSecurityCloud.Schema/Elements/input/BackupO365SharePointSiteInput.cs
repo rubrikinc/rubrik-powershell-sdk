@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> System.String? SiteFid
-        // GraphQL -> siteFid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> siteFid: UUID (scalar)
         [JsonProperty("siteFid")]
         public System.String? SiteFid { get; set; }
 

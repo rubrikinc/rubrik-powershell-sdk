@@ -23,6 +23,9 @@ RBAC role.
   - Explicit list of clusters to which role is synced.
 - alreadySyncedClusters: System.Int32
   - Clusters to which role is already synced.
+- tagPermissions: list of TagPermissions
+  - Tag-scoped permissions of the role. Populated for tag-scoped roles and
+empty for object-scoped roles.
 - permissions: list of Permissions
   - Role permissions.
 - effectivePermissions: list of Permissions

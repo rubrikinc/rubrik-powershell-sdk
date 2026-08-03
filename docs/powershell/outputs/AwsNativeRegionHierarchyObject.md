@@ -23,6 +23,17 @@ AWS native region.
   - Number of Glue Iceberg databases in this region.
 - glueIcebergTableCount: System.Int32
   - Number of Glue Iceberg tables in this region.
+- s3TablesIcebergCatalogCount: System.Int32
+  - Number of S3 Tables Iceberg catalogs in this region.
+- s3TablesIcebergNamespaceCount: System.Int32
+  - Number of S3 Tables Iceberg namespaces in this region.
+- s3TablesIcebergTableCount: System.Int32
+  - Number of S3 Tables Iceberg tables in this region.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -57,7 +68,5 @@ AWS native region.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

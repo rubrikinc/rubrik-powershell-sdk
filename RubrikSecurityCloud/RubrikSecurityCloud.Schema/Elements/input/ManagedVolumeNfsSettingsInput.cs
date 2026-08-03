@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? IsTlsEnabled
+        // GraphQL -> isTlsEnabled: Boolean (scalar)
+        [JsonProperty("isTlsEnabled")]
+        public System.Boolean? IsTlsEnabled { get; set; }
+
         //      C# -> ManagedVolumeNfsVersion? Version
         // GraphQL -> version: ManagedVolumeNFSVersion (enum)
         [JsonProperty("version")]

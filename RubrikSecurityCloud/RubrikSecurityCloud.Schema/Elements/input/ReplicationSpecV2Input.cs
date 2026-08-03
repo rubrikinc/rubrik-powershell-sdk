@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicationPairs")]
         public List<ReplicationPairInput>? ReplicationPairs { get; set; }
 
+        //      C# -> DatabaseLogRetentionInfo? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfo (input)
+        [JsonProperty("databaseLogRetentionInfo")]
+        public DatabaseLogRetentionInfo? DatabaseLogRetentionInfo { get; set; }
+
         //      C# -> AwsNativeRegionForReplication? AwsRegion
         // GraphQL -> awsRegion: AwsNativeRegionForReplication (enum)
         [JsonProperty("awsRegion")]

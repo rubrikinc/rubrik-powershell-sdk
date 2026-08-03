@@ -15,6 +15,15 @@ A Microsoft Power Platform environment, the org-level entity for Power Apps and 
   - Denotes the ID of the exocompute cluster associated with the env.
 - saasOrgType: SaasOrgType
   - The organization type that categorizes the SaaS provider.
+- dynamicsRscOrgId: System.String
+  - Dynamics RSC org ID that is onboarded for this environment. The field is empty for environments where the linked Dynamics org is not yet onboarded in RSC.
+- dataverseOrgUrl: System.String
+  - Dataverse instance URL when the environment has Dataverse enabled. The field is empty for environments without Dataverse.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -49,6 +58,8 @@ A Microsoft Power Platform environment, the org-level entity for Power Apps and 
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - storageRegion: System.String
   - The RSC storage region for the organization.
 - backupJobsStats: backupJobsStats
@@ -63,7 +74,3 @@ A Microsoft Power Platform environment, the org-level entity for Power Apps and 
   - The list of SaaS application types that are onboarded for the organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

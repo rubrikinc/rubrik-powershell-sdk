@@ -6,4 +6,8 @@ Input for approving an RCV private endpoint connection.
 - privateEndpointId: System.String
   - Unique identifier of the private endpoint from cloud provider.
 - requestMessage: System.String
-  - Secret message shared at the time of creating the approval request.
+  - Secret message associated with the private endpoint approval request.
+- name: System.String
+  - Name of the private endpoint.
+- description: System.String
+  - Description of the private endpoint.

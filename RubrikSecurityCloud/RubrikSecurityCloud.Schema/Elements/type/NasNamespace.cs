@@ -181,6 +181,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("netAppMetroClusterInfo")]
         public NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo { get; set; }
 
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -302,6 +307,7 @@ namespace RubrikSecurityCloud.Types
         NasNamespaceLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
         NasNamespaceNetAppMetroClusterInfo? NetAppMetroClusterInfo = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -405,6 +411,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NetAppMetroClusterInfo != null ) {
             this.NetAppMetroClusterInfo = NetAppMetroClusterInfo;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -773,6 +782,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "netAppMetroClusterInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1448,6 +1469,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NetAppMetroClusterInfo != null && ec.Excludes("netAppMetroClusterInfo",false))
         {
             this.NetAppMetroClusterInfo = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

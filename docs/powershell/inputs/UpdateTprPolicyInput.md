@@ -15,3 +15,5 @@ Update a TPR policy.
   - Quorum authorization requirement of the TPR policy.
 - clearSuspensionServiceAccounts: list of System.Strings
   - IDs of service accounts whose exemption suspension should be cleared.
+- isCdmEnforcementDisabled: System.Boolean
+  - Whether CDM enforcement is turned off for the policy; omit to leave unchanged.

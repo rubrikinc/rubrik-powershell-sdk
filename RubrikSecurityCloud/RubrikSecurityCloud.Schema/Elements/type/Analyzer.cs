@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excludePathPattern")]
         public System.String? ExcludePathPattern { get; set; }
 
+        //      C# -> System.String? ExcludeValueRegex
+        // GraphQL -> excludeValueRegex: String! (scalar)
+        [JsonProperty("excludeValueRegex")]
+        public System.String? ExcludeValueRegex { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -142,6 +147,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DictionaryCsv = null,
         System.String? ExcludeFieldNamePattern = null,
         System.String? ExcludePathPattern = null,
+        System.String? ExcludeValueRegex = null,
         System.String? Id = null,
         System.Boolean? IsInactive = null,
         System.String? KeyRegex = null,
@@ -178,6 +184,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExcludePathPattern != null ) {
             this.ExcludePathPattern = ExcludePathPattern;
+        }
+        if ( ExcludeValueRegex != null ) {
+            this.ExcludeValueRegex = ExcludeValueRegex;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -296,6 +305,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "excludePathPattern\n" ;
             } else {
                 s += ind + "excludePathPattern\n" ;
+            }
+        }
+        //      C# -> System.String? ExcludeValueRegex
+        // GraphQL -> excludeValueRegex: String! (scalar)
+        if (this.ExcludeValueRegex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludeValueRegex\n" ;
+            } else {
+                s += ind + "excludeValueRegex\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -552,6 +570,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExcludePathPattern != null && ec.Excludes("excludePathPattern",true))
         {
             this.ExcludePathPattern = null;
+        }
+        //      C# -> System.String? ExcludeValueRegex
+        // GraphQL -> excludeValueRegex: String! (scalar)
+        if (ec.Includes("excludeValueRegex",true))
+        {
+            if(this.ExcludeValueRegex == null) {
+
+                this.ExcludeValueRegex = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludeValueRegex != null && ec.Excludes("excludeValueRegex",true))
+        {
+            this.ExcludeValueRegex = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)

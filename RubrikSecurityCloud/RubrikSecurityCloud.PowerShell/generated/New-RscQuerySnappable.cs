@@ -474,6 +474,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsServiceType = @(
     /// 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isInfrastructureAlertsEnabled = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -561,6 +563,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -666,6 +679,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsServiceType = @(
     /// 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isInfrastructureAlertsEnabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -697,6 +712,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -868,6 +887,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	awsServiceType = @(
     /// 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	isInfrastructureAlertsEnabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1747,6 +1768,8 @@ $query.Var.filter = @{
 	awsServiceType = @(
 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
 	)
+	# OPTIONAL
+	isInfrastructureAlertsEnabled = $someBoolean
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle
@@ -1836,6 +1859,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );
@@ -1947,6 +1981,8 @@ $query.Var.filter = @{
 	awsServiceType = @(
 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
 	)
+	# OPTIONAL
+	isInfrastructureAlertsEnabled = $someBoolean
 }"
             );
         }
@@ -1955,6 +1991,8 @@ $query.Var.filter = @{
         // snappableOnedriveSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     orgId: UUID!
         //     onedriveSearchFilter: OnedriveSearchFilter
@@ -1964,6 +2002,8 @@ $query.Var.filter = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("onedriveSearchFilter", "OnedriveSearchFilter"),
@@ -1972,7 +2012,7 @@ $query.Var.filter = @{
                 argDefs,
                 "query",
                 "QuerySnappableOnedriveSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$onedriveSearchFilter: OnedriveSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$onedriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
                 Query.SnappableOnedriveSearch,
                 Query.SnappableOnedriveSearchFieldSpec,
@@ -1980,6 +2020,10 @@ $query.Var.filter = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
@@ -2157,6 +2201,8 @@ $query.Var.filter = @{
 	awsServiceType = @(
 		$someAwsServiceType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsServiceType]) for enum values.
 	)
+	# OPTIONAL
+	isInfrastructureAlertsEnabled = $someBoolean
 }"
             );
         }

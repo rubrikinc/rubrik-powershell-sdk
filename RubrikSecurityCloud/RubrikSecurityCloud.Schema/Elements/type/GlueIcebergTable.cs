@@ -66,10 +66,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeId")]
         public System.String? CloudNativeId { get; set; }
 
+        //      C# -> System.String? DataLocationRegion
+        // GraphQL -> dataLocationRegion: String! (scalar)
+        [JsonProperty("dataLocationRegion")]
+        public System.String? DataLocationRegion { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        [JsonProperty("isExocomputeConfigured")]
+        public System.Boolean? IsExocomputeConfigured { get; set; }
 
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -140,6 +150,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> newestSnapshot: PolarisSnapshot (type)
         [JsonProperty("newestSnapshot")]
         public PolarisSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -315,7 +330,9 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
         System.String? CloudNativeId = null,
+        System.String? DataLocationRegion = null,
         System.String? Id = null,
+        System.Boolean? IsExocomputeConfigured = null,
         System.Boolean? IsRelic = null,
         System.String? Location = null,
         System.String? Name = null,
@@ -330,6 +347,7 @@ namespace RubrikSecurityCloud.Types
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
@@ -370,8 +388,14 @@ namespace RubrikSecurityCloud.Types
         if ( CloudNativeId != null ) {
             this.CloudNativeId = CloudNativeId;
         }
+        if ( DataLocationRegion != null ) {
+            this.DataLocationRegion = DataLocationRegion;
+        }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsExocomputeConfigured != null ) {
+            this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -414,6 +438,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -555,6 +582,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cloudNativeId\n" ;
             }
         }
+        //      C# -> System.String? DataLocationRegion
+        // GraphQL -> dataLocationRegion: String! (scalar)
+        if (this.DataLocationRegion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataLocationRegion\n" ;
+            } else {
+                s += ind + "dataLocationRegion\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -562,6 +598,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (this.IsExocomputeConfigured != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExocomputeConfigured\n" ;
+            } else {
+                s += ind + "isExocomputeConfigured\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -705,6 +750,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1021,6 +1078,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CloudNativeId = null;
         }
+        //      C# -> System.String? DataLocationRegion
+        // GraphQL -> dataLocationRegion: String! (scalar)
+        if (ec.Includes("dataLocationRegion",true))
+        {
+            if(this.DataLocationRegion == null) {
+
+                this.DataLocationRegion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataLocationRegion != null && ec.Excludes("dataLocationRegion",true))
+        {
+            this.DataLocationRegion = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -1037,6 +1111,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsExocomputeConfigured
+        // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
+        if (ec.Includes("isExocomputeConfigured",true))
+        {
+            if(this.IsExocomputeConfigured == null) {
+
+                this.IsExocomputeConfigured = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExocomputeConfigured != null && ec.Excludes("isExocomputeConfigured",true))
+        {
+            this.IsExocomputeConfigured = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -1287,6 +1378,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

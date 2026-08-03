@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("upgradeStatus")]
         public UpgradeStatus? UpgradeStatus { get; set; }
 
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        [JsonProperty("cdmId")]
+        public System.String? CdmId { get; set; }
+
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
         [JsonProperty("clusterName")]
@@ -127,6 +132,7 @@ namespace RubrikSecurityCloud.Types
         ArchivalLocationStatus? Status = null,
         TargetType? TargetType = null,
         UpgradeStatus? UpgradeStatus = null,
+        System.String? CdmId = null,
         System.String? ClusterName = null,
         System.Int64? ConsumedBytes = null,
         System.Int32? FailedTasks = null,
@@ -158,6 +164,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UpgradeStatus != null ) {
             this.UpgradeStatus = UpgradeStatus;
+        }
+        if ( CdmId != null ) {
+            this.CdmId = CdmId;
         }
         if ( ClusterName != null ) {
             this.ClusterName = ClusterName;
@@ -261,6 +270,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "upgradeStatus\n" ;
             } else {
                 s += ind + "upgradeStatus\n" ;
+            }
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "cdmId\n" ;
+            } else {
+                s += ind + "cdmId\n" ;
             }
         }
         //      C# -> System.String? ClusterName
@@ -488,6 +506,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.UpgradeStatus != null && ec.Excludes("upgradeStatus",true))
         {
             this.UpgradeStatus = null;
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (ec.Includes("cdmId",true))
+        {
+            if(this.CdmId == null) {
+
+                this.CdmId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CdmId != null && ec.Excludes("cdmId",true))
+        {
+            this.CdmId = null;
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)

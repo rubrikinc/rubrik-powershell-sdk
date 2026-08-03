@@ -2,6 +2,8 @@
 Mapping of disk to storage for Proxmox virtual machine export.
 
 - storageId: System.String
-  - Required. ID of the storage.
+  - Required. Supported in v9.5+
+ID of the storage.
 - diskId: System.String
-  - Required. ID of the disk.
+  - Required. Supported in v9.5+
+ID of the disk.

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exocomputeMappableRegions")]
         public List<AwsCloudAccountRegion>? ExocomputeMappableRegions { get; set; }
 
+        //      C# -> KmsSharingMode? KmsSharingMode
+        // GraphQL -> kmsSharingMode: KmsSharingMode! (enum)
+        [JsonProperty("kmsSharingMode")]
+        public KmsSharingMode? KmsSharingMode { get; set; }
+
         //      C# -> System.Boolean? HasCloudDiscovery
         // GraphQL -> hasCloudDiscovery: Boolean! (scalar)
         [JsonProperty("hasCloudDiscovery")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public CloudAccountWithExocomputeMapping Set(
         List<AwsCloudAccountRegion>? ExocomputeMappableRegions = null,
+        KmsSharingMode? KmsSharingMode = null,
         System.Boolean? HasCloudDiscovery = null,
         CloudAccountDetails? ApplicationAccount = null,
         CloudAccountDetails? ExocomputeAccount = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ExocomputeMappableRegions != null ) {
             this.ExocomputeMappableRegions = ExocomputeMappableRegions;
+        }
+        if ( KmsSharingMode != null ) {
+            this.KmsSharingMode = KmsSharingMode;
         }
         if ( HasCloudDiscovery != null ) {
             this.HasCloudDiscovery = HasCloudDiscovery;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "exocomputeMappableRegions\n" ;
             } else {
                 s += ind + "exocomputeMappableRegions\n" ;
+            }
+        }
+        //      C# -> KmsSharingMode? KmsSharingMode
+        // GraphQL -> kmsSharingMode: KmsSharingMode! (enum)
+        if (this.KmsSharingMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "kmsSharingMode\n" ;
+            } else {
+                s += ind + "kmsSharingMode\n" ;
             }
         }
         //      C# -> System.Boolean? HasCloudDiscovery
@@ -147,6 +165,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExocomputeMappableRegions != null && ec.Excludes("exocomputeMappableRegions",true))
         {
             this.ExocomputeMappableRegions = null;
+        }
+        //      C# -> KmsSharingMode? KmsSharingMode
+        // GraphQL -> kmsSharingMode: KmsSharingMode! (enum)
+        if (ec.Includes("kmsSharingMode",true))
+        {
+            if(this.KmsSharingMode == null) {
+
+                this.KmsSharingMode = new KmsSharingMode();
+
+            } else {
+
+
+            }
+        }
+        else if (this.KmsSharingMode != null && ec.Excludes("kmsSharingMode",true))
+        {
+            this.KmsSharingMode = null;
         }
         //      C# -> System.Boolean? HasCloudDiscovery
         // GraphQL -> hasCloudDiscovery: Boolean! (scalar)

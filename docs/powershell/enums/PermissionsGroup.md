@@ -98,3 +98,35 @@ These permissions may be applicable to any feature that can run on BaaS.
 - KMS_KEY_SHARING - Represents the permissions for automated KMS key sharing with the
 exocompute account (kms:CreateGrant on customer CMKs). Applicable to the
 cloud native protection feature.
+- ADVANCED_DIAGNOSTICS - Represents the set of read-only diagnostic permissions for Exocompute.
+These permissions let RSC surface Exocompute reachability, networking,
+scaling, and worker-node boot diagnostics. Currently applicable only to
+the AWS Exocompute feature.
+- INVENTORY_GENERATION - Represents the set of permissions required to create, read, update, and
+delete the Azure Blob Storage Inventory rule used by the scaled Azure
+Blob backup pipeline. Applicable to the Azure Blob Protection feature.
+- BASIC_2 - Represents the networking-discovery permissions carved out of BASIC for
+the granular AWS Config Protection (App Resilience) split. Applicable to
+the cloud native config protection feature when the granular split is
+enabled.
+- RECOVERY_2 - Represents the compute-recovery permissions carved out of RECOVERY for
+the granular AWS Config Protection (App Resilience) split (EC2,
+autoscaling, instance-profile, and the relocated ELB/route-table
+statements). Applicable to the cloud native config protection feature.
+- RECOVERY_3 - Represents the networking-recovery permissions for the granular AWS
+Config Protection (App Resilience) split (VPC, ELB, and Route 53
+resources); carries the same content as RECOVERY_NETWORKING under a
+numbered name. Applicable to the cloud native config protection feature.
+- RECOVERY_4 - Represents the container/EKS recovery permissions for the granular AWS
+Config Protection (App Resilience) split (EKS, IAM OIDC provider, and
+ServiceQuotas). Applicable to the cloud native config protection feature.
+- GATEWAY_KEY_CREATION - Represents the permissions for creating and replicating the RSC gateway
+KMS key (kms:ReplicateKey) used for automated key sharing. This
+permission group is applicable to the cloud native protection feature
+and implies KMS_KEY_SHARING.
+- SURGICAL_RECOVERY - Represents the set of permissions required for surgical recovery:
+snapshot relocation and cleanup operations
+(ec2:CopySnapshot, ec2:CreateSnapshot, ec2:DeleteSnapshot,
+ec2:ModifySnapshotAttribute, ec2:DescribeSnapshotAttribute), tag-gated on
+rk_component where AWS supports it. Applicable to the AWS Exocompute
+feature.

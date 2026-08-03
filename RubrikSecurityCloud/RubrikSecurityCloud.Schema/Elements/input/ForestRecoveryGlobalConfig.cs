@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("winTimeServers")]
         public List<System.String>? WinTimeServers { get; set; }
 
+        //      C# -> DateTime? RecoveryPointInTime
+        // GraphQL -> recoveryPointInTime: DateTime (scalar)
+        [JsonProperty("recoveryPointInTime")]
+        public DateTime? RecoveryPointInTime { get; set; }
+
 
         #endregion
 

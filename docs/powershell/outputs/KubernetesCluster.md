@@ -39,6 +39,10 @@ Kubernetes cluster.
   - Specifies the name for the Network Attachment Definition (NAD) for multus transport.
 - helmVersion: System.String
   - Deployed Helm chart version on the cluster. NULL for non-Helm onboarded clusters.
+- maxPvcsPerAgent: System.Int32
+  - Specifies the maximum number of PVCs per backup agent.
+- maxConcurrentAgents: System.Int32
+  - Specifies the maximum number of concurrent backup agents.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - descendantConnection: KubernetesClusterDescendantConnection
@@ -53,6 +57,33 @@ Kubernetes cluster.
   - Onboarding type of Kubernetes cluster.
 - helmStatus: HelmStatus
   - Compatibility status between the deployed Helm chart and the running Rubrik CDM. NULL for non-Helm onboarded clusters.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because
+there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being
+communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by
+replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this
+object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this
+object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -87,23 +118,5 @@ Kubernetes cluster.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

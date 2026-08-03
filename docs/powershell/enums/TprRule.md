@@ -51,3 +51,8 @@ quorum authorization exemption.
 certificates: add, update, delete.
 - RCV_BACKUP_TO_ARCHIVE_CONVERSION - The TPR rule for converting an Azure Rubrik Cloud Vault (RCV) location's
 backup tier to the archive tier.
+- EDIT_TPR_BREAK_GLASS_CONFIG - Quorum authorization is required to edit the break-glass access
+configuration.
+- OBJECT_BACKUP_WINDOW_CHANGE - Quorum authorization is required for changing the object-level backup
+window override (enabling, turning off, or editing the per-object backup
+window).

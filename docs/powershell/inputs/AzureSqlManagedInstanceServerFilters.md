@@ -5,15 +5,15 @@ Filters for list of Azure SQL Managed Instance Servers.
   - Filter by name substring.
 - effectiveSlaFilter: EffectiveSlaFilter
   - Filter by effective SLA Domain.
-- resourceGroupFilter: AzureSqlManagedInstanceServerResourceGroupFilter
-  - Filter by resource group name.
-- subscriptionFilter: AzureSqlManagedInstanceServerSubscriptionFilter
-  - Filter by subscription.
 - regionFilter: AzureNativeRegionFilter
   - Filter by region.
 - tagFilter: AzureNativeTagFilter
   - Filter by tag.
-- azureNativeIsEligibleForSqlMiServerProtectionFilter: AzureNativeIsEligibleForSqlMiServerProtectionFilter
-  - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- resourceGroupFilter: AzureSqlManagedInstanceServerResourceGroupFilter
+  - Filter by resource group name.
+- subscriptionFilter: AzureSqlManagedInstanceServerSubscriptionFilter
+  - Filter by subscription.
+- azureNativeIsEligibleForSqlMiServerProtectionFilter: AzureNativeIsEligibleForSqlMiServerProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).

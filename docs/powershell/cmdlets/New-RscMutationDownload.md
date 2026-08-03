@@ -91,6 +91,11 @@ Initiates a job to download a snapshot from the specified location when the snap
 
 - There is a single argument of type DownloadOpenstackSnapshotFromLocationInput.
 - Returns AsyncRequestStatus.
+### purestorageprotectiongroupsnapshotfromlocation
+Download a Pure Storage protection group snapshot from a remote target to the local cluster.
+
+- There is a single argument of type DownloadPureStorageProtectionGroupSnapshotFromLocationInput.
+- Returns AsyncRequestStatus.
 ### reportcsvasync
 Download a report in CSV format asynchronously.
 

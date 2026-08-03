@@ -13,6 +13,13 @@ Get details about a Hyper-V host related async request.
 
 - There is a single argument of type GetHypervHostAsyncRequestStatusInput.
 - Returns AsyncRequestStatus.
+### hostsvirtualswitches
+Returns the virtual switches available on each of the requested HyperV
+hosts. A per-host failure is reported on that host's result entry without
+failing the entire request.
+
+- There is a single argument of type list of System.Strings.
+- Returns HypervHostsVirtualSwitchesReply.
 ### hostvirtualswitches
 Get virtual switches on Hyper-V host
 

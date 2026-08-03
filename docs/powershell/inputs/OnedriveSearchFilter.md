@@ -2,6 +2,7 @@
 Parameters for OneDrive file or folder search.
 
 - searchKeywordFilter: OnedriveSearchKeywordFilter
+  - Filters on file or folder name/type keyword.
 - modifiedTime: TimeRangeFilter
   - Filters on modified time.
 - createTime: TimeRangeFilter
@@ -11,13 +12,15 @@ Parameters for OneDrive file or folder search.
 - channelId: System.String
   - Used for Teams search over SharePoint Document Library.
 - channelFolderName: System.String
+  - Name of the Teams channel folder to search within.
 - channelMembershipType: ChannelMembershipType
-  - 
+  - Membership type of the Teams channel to search within.
 - excludeItemsUnderRoot: System.Boolean
   - This filter excludes any items under root from the
 search results. This is used to hide channel items from
 Teams Files search.
 - channelNameKeyword: System.String
+  - Keyword to match against the Teams channel name.
 - useExactVersionMatch: System.Boolean
   - Determines whether to use exact version match query.
 - lambdaFilters: LambdaPathFilters

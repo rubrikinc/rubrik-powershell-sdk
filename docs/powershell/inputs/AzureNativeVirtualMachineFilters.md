@@ -7,16 +7,8 @@ Filters for list of Azure virtual machines.
   - Filter by name prefix.
 - effectiveSlaFilter: EffectiveSlaFilter
   - Filter by effective SLA Domain.
-- resourceGroupFilter: AzureNativeVmResourceGroupFilter
-  - Filter by resource group.
-- subscriptionFilter: AzureNativeVmSubscriptionFilter
-  - Filter by subscription.
 - regionFilter: AzureNativeRegionFilter
   - Filter by region.
-- vmSizeFilter: AzureNativeVmSizeFilter
-  - Filter by virtual machine sizes.
-- vnetFilter: AzureNativeVnetFilter
-  - Filter by VNet.
 - relicFilter: RelicFilter
   - Filter by relics.
 - sensitivityStatusFilter: SensitivityStatusFilter
@@ -25,8 +17,6 @@ Filters for list of Azure virtual machines.
   - Filter by protection status.
 - tagFilter: AzureNativeTagFilter
   - Filter by tag.
-- exocomputeConnectedFilter: AzureNativeVmExocomputeConnectedFilter
-  - Filter by configured Exocompute.
 - fileIndexingFilter: AzureNativeVmFileIndexingFilter
   - Filter by file indexing status.
 - appProtectionStatusFilter: CloudNativeInstaceAppProtectionFilter
@@ -39,7 +29,17 @@ Filters for list of Azure virtual machines.
   - Deprecated, use hierarchyFilters.
 - hierarchyFilters: list of Filters
   - Filter by hierarchy.
-- azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter
-  - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- exocomputeConnectedFilter: AzureNativeVmExocomputeConnectedFilter
+  - Filter by configured Exocompute.
+- resourceGroupFilter: AzureNativeVmResourceGroupFilter
+  - Filter by resource group.
+- subscriptionFilter: AzureNativeVmSubscriptionFilter
+  - Filter by subscription.
+- vmSizeFilter: AzureNativeVmSizeFilter
+  - Filter by virtual machine sizes.
+- vnetFilter: AzureNativeVnetFilter
+  - Filter by VNet.
+- azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).

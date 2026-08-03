@@ -51,6 +51,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_COMPLIANCE_ALL_TABLE")]
         CLOUD_COMPLIANCE_ALL_TABLE,
 
+        [EnumMember(Value = "CLOUD_COMPLIANCE_BY_CLOUD_ACCOUNT_TABLE")]
+        CLOUD_COMPLIANCE_BY_CLOUD_ACCOUNT_TABLE,
+
         [EnumMember(Value = "CLOUD_COMPLIANCE_BY_LOCATION_TABLE")]
         CLOUD_COMPLIANCE_BY_LOCATION_TABLE,
 
@@ -59,6 +62,21 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_COMPLIANCE_BY_SLA_TABLE")]
         CLOUD_COMPLIANCE_BY_SLA_TABLE,
+
+        [EnumMember(Value = "CLOUD_COST_BY_ACCOUNT_NAME_TABLE")]
+        CLOUD_COST_BY_ACCOUNT_NAME_TABLE,
+
+        [EnumMember(Value = "CLOUD_COST_BY_CLOUD_ACCOUNT_ID_TABLE")]
+        CLOUD_COST_BY_CLOUD_ACCOUNT_ID_TABLE,
+
+        [EnumMember(Value = "CLOUD_COST_BY_PROVIDER_TABLE")]
+        CLOUD_COST_BY_PROVIDER_TABLE,
+
+        [EnumMember(Value = "CLOUD_COST_EXPORT_TABLE")]
+        CLOUD_COST_EXPORT_TABLE,
+
+        [EnumMember(Value = "CLOUD_COST_TABLE")]
+        CLOUD_COST_TABLE,
 
         [EnumMember(Value = "CLOUD_OVERLAP_OBJECTS_ALL_TABLE")]
         CLOUD_OVERLAP_OBJECTS_ALL_TABLE,
@@ -92,6 +110,30 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CNP_OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE")]
         CNP_OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE,
+
+        [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_BY_LOCATION_TABLE")]
+        CNP_PROTECTION_TASKS_DETAIL_BY_LOCATION_TABLE,
+
+        [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE")]
+        CNP_PROTECTION_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE,
+
+        [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_BY_TIME_TABLE")]
+        CNP_PROTECTION_TASKS_DETAIL_BY_TIME_TABLE,
+
+        [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_TABLE")]
+        CNP_PROTECTION_TASKS_DETAIL_TABLE,
+
+        [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_BY_LOCATION_TABLE")]
+        CNP_RECOVERY_TASKS_DETAIL_BY_LOCATION_TABLE,
+
+        [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE")]
+        CNP_RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE,
+
+        [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_BY_TIME_TABLE")]
+        CNP_RECOVERY_TASKS_DETAIL_BY_TIME_TABLE,
+
+        [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_TABLE")]
+        CNP_RECOVERY_TASKS_DETAIL_TABLE,
 
         [EnumMember(Value = "COMPLIANCE_ALL_TABLE")]
         COMPLIANCE_ALL_TABLE,
@@ -140,6 +182,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IDENTITY_RISKS_TABLE")]
         IDENTITY_RISKS_TABLE,
+
+        [EnumMember(Value = "IDENTITY_SEGMENTATION_AUDIT_TABLE")]
+        IDENTITY_SEGMENTATION_AUDIT_TABLE,
 
         [EnumMember(Value = "INDEXING_REPORT_ALL_TABLE")]
         INDEXING_REPORT_ALL_TABLE,
@@ -290,6 +335,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE_TABLE")]
         ROLE_TABLE,
+
+        [EnumMember(Value = "SCRIPT_REPORT_TABLE")]
+        SCRIPT_REPORT_TABLE,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_TABLE")]
         SERVICE_ACCOUNT_TABLE,

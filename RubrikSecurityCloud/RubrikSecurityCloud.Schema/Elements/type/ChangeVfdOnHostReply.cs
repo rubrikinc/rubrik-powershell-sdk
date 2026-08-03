@@ -21,7 +21,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> InternalChangeVfdOnHostResponse? Output
-        // GraphQL -> output: InternalChangeVfdOnHostResponse (type)
+        // GraphQL -> output: InternalChangeVfdOnHostResponse! (type)
         [JsonProperty("output")]
         public InternalChangeVfdOnHostResponse? Output { get; set; }
 
@@ -56,7 +56,7 @@ namespace RubrikSecurityCloud.Types
         string ind = conf.IndentStr();
         string s = "";
         //      C# -> InternalChangeVfdOnHostResponse? Output
-        // GraphQL -> output: InternalChangeVfdOnHostResponse (type)
+        // GraphQL -> output: InternalChangeVfdOnHostResponse! (type)
         if (this.Output != null) {
             var fspec = this.Output.AsFieldSpec(conf.Child("output"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -75,7 +75,7 @@ namespace RubrikSecurityCloud.Types
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
         //      C# -> InternalChangeVfdOnHostResponse? Output
-        // GraphQL -> output: InternalChangeVfdOnHostResponse (type)
+        // GraphQL -> output: InternalChangeVfdOnHostResponse! (type)
         if (ec.Includes("output",false))
         {
             if(this.Output == null) {

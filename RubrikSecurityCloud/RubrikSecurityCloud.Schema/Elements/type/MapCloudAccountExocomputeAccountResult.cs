@@ -35,10 +35,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("errorMessage")]
         public System.String? ErrorMessage { get; set; }
 
-        //      C# -> System.Boolean? IsPendingCftApproval
-        // GraphQL -> isPendingCftApproval: Boolean! (scalar)
-        [JsonProperty("isPendingCftApproval")]
-        public System.Boolean? IsPendingCftApproval { get; set; }
+        //      C# -> System.Boolean? IsPendingApproval
+        // GraphQL -> isPendingApproval: Boolean! (scalar)
+        [JsonProperty("isPendingApproval")]
+        public System.Boolean? IsPendingApproval { get; set; }
+
+        //      C# -> System.String? ManualRolePolicyJson
+        // GraphQL -> manualRolePolicyJson: String! (scalar)
+        [JsonProperty("manualRolePolicyJson")]
+        public System.String? ManualRolePolicyJson { get; set; }
 
 
         #endregion
@@ -53,7 +58,8 @@ namespace RubrikSecurityCloud.Types
         System.String? ApplicationCloudAccountId = null,
         System.String? CloudFormationUrl = null,
         System.String? ErrorMessage = null,
-        System.Boolean? IsPendingCftApproval = null
+        System.Boolean? IsPendingApproval = null,
+        System.String? ManualRolePolicyJson = null
     ) 
     {
         if ( ApplicationCloudAccountId != null ) {
@@ -65,8 +71,11 @@ namespace RubrikSecurityCloud.Types
         if ( ErrorMessage != null ) {
             this.ErrorMessage = ErrorMessage;
         }
-        if ( IsPendingCftApproval != null ) {
-            this.IsPendingCftApproval = IsPendingCftApproval;
+        if ( IsPendingApproval != null ) {
+            this.IsPendingApproval = IsPendingApproval;
+        }
+        if ( ManualRolePolicyJson != null ) {
+            this.ManualRolePolicyJson = ManualRolePolicyJson;
         }
         return this;
     }
@@ -109,13 +118,22 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "errorMessage\n" ;
             }
         }
-        //      C# -> System.Boolean? IsPendingCftApproval
-        // GraphQL -> isPendingCftApproval: Boolean! (scalar)
-        if (this.IsPendingCftApproval != null) {
+        //      C# -> System.Boolean? IsPendingApproval
+        // GraphQL -> isPendingApproval: Boolean! (scalar)
+        if (this.IsPendingApproval != null) {
             if (conf.Flat) {
-                s += conf.Prefix + "isPendingCftApproval\n" ;
+                s += conf.Prefix + "isPendingApproval\n" ;
             } else {
-                s += ind + "isPendingCftApproval\n" ;
+                s += ind + "isPendingApproval\n" ;
+            }
+        }
+        //      C# -> System.String? ManualRolePolicyJson
+        // GraphQL -> manualRolePolicyJson: String! (scalar)
+        if (this.ManualRolePolicyJson != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "manualRolePolicyJson\n" ;
+            } else {
+                s += ind + "manualRolePolicyJson\n" ;
             }
         }
         return s;
@@ -176,22 +194,39 @@ namespace RubrikSecurityCloud.Types
         {
             this.ErrorMessage = null;
         }
-        //      C# -> System.Boolean? IsPendingCftApproval
-        // GraphQL -> isPendingCftApproval: Boolean! (scalar)
-        if (ec.Includes("isPendingCftApproval",true))
+        //      C# -> System.Boolean? IsPendingApproval
+        // GraphQL -> isPendingApproval: Boolean! (scalar)
+        if (ec.Includes("isPendingApproval",true))
         {
-            if(this.IsPendingCftApproval == null) {
+            if(this.IsPendingApproval == null) {
 
-                this.IsPendingCftApproval = true;
+                this.IsPendingApproval = true;
 
             } else {
 
 
             }
         }
-        else if (this.IsPendingCftApproval != null && ec.Excludes("isPendingCftApproval",true))
+        else if (this.IsPendingApproval != null && ec.Excludes("isPendingApproval",true))
         {
-            this.IsPendingCftApproval = null;
+            this.IsPendingApproval = null;
+        }
+        //      C# -> System.String? ManualRolePolicyJson
+        // GraphQL -> manualRolePolicyJson: String! (scalar)
+        if (ec.Includes("manualRolePolicyJson",true))
+        {
+            if(this.ManualRolePolicyJson == null) {
+
+                this.ManualRolePolicyJson = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ManualRolePolicyJson != null && ec.Excludes("manualRolePolicyJson",true))
+        {
+            this.ManualRolePolicyJson = null;
         }
     }
 

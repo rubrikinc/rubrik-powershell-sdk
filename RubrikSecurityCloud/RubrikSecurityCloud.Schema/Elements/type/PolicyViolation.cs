@@ -187,7 +187,7 @@ namespace RubrikSecurityCloud.Types
 
         public InlineVars() {
             Tuple<string, string>[] violationSummaryForResourceArgs = {
-                    Tuple.Create("policyTypes", "[PolicyType!]!"),
+                    Tuple.Create("policyTypes", "[PolicyType!]"),
                 };
             this.ViolationSummaryForResource =
                 new RscGqlVars(null, violationSummaryForResourceArgs, null, true);

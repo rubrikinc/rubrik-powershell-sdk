@@ -31,6 +31,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fileCount")]
         public System.Int64? FileCount { get; set; }
 
+        //      C# -> DateTime? IcebergNativeCommitTime
+        // GraphQL -> icebergNativeCommitTime: DateTime (scalar)
+        [JsonProperty("icebergNativeCommitTime")]
+        public DateTime? IcebergNativeCommitTime { get; set; }
+
         //      C# -> System.Int64? IcebergSnapshotFileCount
         // GraphQL -> icebergSnapshotFileCount: Long! (scalar)
         [JsonProperty("icebergSnapshotFileCount")]
@@ -68,6 +73,7 @@ namespace RubrikSecurityCloud.Types
     public IcebergTableSpecificSnapshot Set(
         System.Int64? BytesCopied = null,
         System.Int64? FileCount = null,
+        DateTime? IcebergNativeCommitTime = null,
         System.Int64? IcebergSnapshotFileCount = null,
         System.Int64? IcebergSnapshotId = null,
         System.Int64? IcebergSnapshotSize = null,
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FileCount != null ) {
             this.FileCount = FileCount;
+        }
+        if ( IcebergNativeCommitTime != null ) {
+            this.IcebergNativeCommitTime = IcebergNativeCommitTime;
         }
         if ( IcebergSnapshotFileCount != null ) {
             this.IcebergSnapshotFileCount = IcebergSnapshotFileCount;
@@ -126,6 +135,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "fileCount\n" ;
             } else {
                 s += ind + "fileCount\n" ;
+            }
+        }
+        //      C# -> DateTime? IcebergNativeCommitTime
+        // GraphQL -> icebergNativeCommitTime: DateTime (scalar)
+        if (this.IcebergNativeCommitTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "icebergNativeCommitTime\n" ;
+            } else {
+                s += ind + "icebergNativeCommitTime\n" ;
             }
         }
         //      C# -> System.Int64? IcebergSnapshotFileCount
@@ -213,6 +231,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.FileCount != null && ec.Excludes("fileCount",true))
         {
             this.FileCount = null;
+        }
+        //      C# -> DateTime? IcebergNativeCommitTime
+        // GraphQL -> icebergNativeCommitTime: DateTime (scalar)
+        if (ec.Includes("icebergNativeCommitTime",true))
+        {
+            if(this.IcebergNativeCommitTime == null) {
+
+                this.IcebergNativeCommitTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IcebergNativeCommitTime != null && ec.Excludes("icebergNativeCommitTime",true))
+        {
+            this.IcebergNativeCommitTime = null;
         }
         //      C# -> System.Int64? IcebergSnapshotFileCount
         // GraphQL -> icebergSnapshotFileCount: Long! (scalar)

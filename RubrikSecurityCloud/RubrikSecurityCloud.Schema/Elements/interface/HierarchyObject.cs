@@ -74,15 +74,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allTags")]
         List<AssignedRscTag>? AllTags { get; set; }
 
-        //      C# -> System.Boolean? SlaPauseStatus
-        // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        [JsonProperty("slaPauseStatus")]
-        System.Boolean? SlaPauseStatus { get; set; }
-
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
         ObjectPauseStatus? ObjectPauseStatus { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
+        //      C# -> List<Org>? AllOrgs
+        // GraphQL -> allOrgs: [Org!]! (type)
+        [JsonProperty("allOrgs")]
+        List<Org>? AllOrgs { get; set; }
+
+        //      C# -> System.Boolean? SlaPauseStatus
+        // GraphQL -> slaPauseStatus: Boolean! (scalar)
+        [JsonProperty("slaPauseStatus")]
+        System.Boolean? SlaPauseStatus { get; set; }
 
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
@@ -98,11 +108,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> List<Org>? AllOrgs
-        // GraphQL -> allOrgs: [Org!]! (type)
-        [JsonProperty("allOrgs")]
-        List<Org>? AllOrgs { get; set; }
 
 
         #endregion

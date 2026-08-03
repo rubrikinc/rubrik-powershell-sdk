@@ -117,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_OBJECT_TYPE")]
         MANAGED_VOLUME_OBJECT_TYPE,
 
+        [EnumMember(Value = "MARIADB_OBJECT_TYPE")]
+        MARIADB_OBJECT_TYPE,
+
         [EnumMember(Value = "MONGODB_OBJECT_TYPE")]
         MONGODB_OBJECT_TYPE,
 
@@ -170,6 +173,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RSC_TAG_OBJECT_TYPE")]
         RSC_TAG_OBJECT_TYPE,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_TABLE_OBJECT_TYPE")]
+        S3_TABLES_ICEBERG_TABLE_OBJECT_TYPE,
 
         [EnumMember(Value = "SALESFORCE_OBJECT_TYPE")]
         SALESFORCE_OBJECT_TYPE,

@@ -29,16 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
-        //      C# -> AzureSqlManagedInstanceDatabaseResourceGroupFilter? ResourceGroupFilter
-        // GraphQL -> resourceGroupFilter: AzureSqlManagedInstanceDatabaseResourceGroupFilter (input)
-        [JsonProperty("resourceGroupFilter")]
-        public AzureSqlManagedInstanceDatabaseResourceGroupFilter? ResourceGroupFilter { get; set; }
-
-        //      C# -> AzureSqlManagedInstanceDatabaseSubscriptionFilter? SubscriptionFilter
-        // GraphQL -> subscriptionFilter: AzureSqlManagedInstanceDatabaseSubscriptionFilter (input)
-        [JsonProperty("subscriptionFilter")]
-        public AzureSqlManagedInstanceDatabaseSubscriptionFilter? SubscriptionFilter { get; set; }
-
         //      C# -> AzureNativeRegionFilter? RegionFilter
         // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
         [JsonProperty("regionFilter")]
@@ -69,15 +59,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("serverId")]
         public System.String? ServerId { get; set; }
 
-        //      C# -> AzureNativeIsEligibleForSqlMiDbProtectionFilter? AzureNativeIsEligibleForSqlMiDbProtectionFilter
-        // GraphQL -> azureNativeIsEligibleForSqlMiDbProtectionFilter: AzureNativeIsEligibleForSqlMiDbProtectionFilter (input)
-        [JsonProperty("azureNativeIsEligibleForSqlMiDbProtectionFilter")]
-        public AzureNativeIsEligibleForSqlMiDbProtectionFilter? AzureNativeIsEligibleForSqlMiDbProtectionFilter { get; set; }
-
         //      C# -> System.Boolean? IsEligibleForProtection
         // GraphQL -> isEligibleForProtection: Boolean (scalar)
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
+
+        //      C# -> AzureSqlManagedInstanceDatabaseResourceGroupFilter? ResourceGroupFilter
+        // GraphQL -> resourceGroupFilter: AzureSqlManagedInstanceDatabaseResourceGroupFilter (input)
+        [JsonProperty("resourceGroupFilter")]
+        public AzureSqlManagedInstanceDatabaseResourceGroupFilter? ResourceGroupFilter { get; set; }
+
+        //      C# -> AzureSqlManagedInstanceDatabaseSubscriptionFilter? SubscriptionFilter
+        // GraphQL -> subscriptionFilter: AzureSqlManagedInstanceDatabaseSubscriptionFilter (input)
+        [JsonProperty("subscriptionFilter")]
+        public AzureSqlManagedInstanceDatabaseSubscriptionFilter? SubscriptionFilter { get; set; }
+
+        //      C# -> AzureNativeIsEligibleForSqlMiDbProtectionFilter? AzureNativeIsEligibleForSqlMiDbProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForSqlMiDbProtectionFilter: AzureNativeIsEligibleForSqlMiDbProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForSqlMiDbProtectionFilter")]
+        public AzureNativeIsEligibleForSqlMiDbProtectionFilter? AzureNativeIsEligibleForSqlMiDbProtectionFilter { get; set; }
 
 
         #endregion

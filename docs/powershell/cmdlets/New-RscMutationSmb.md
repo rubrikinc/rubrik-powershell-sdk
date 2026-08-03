@@ -49,3 +49,8 @@ the NCD cluster.
 
 - There is a single argument of type SetCloudDirectGlobalSmbSettingsInput.
 - Returns SetCloudDirectGlobalSmbSettingsReply.
+### updatedomain
+Update the DNS servers for an SMB domain.
+
+- There is a single argument of type UpdateSmbDomainInput.
+- Returns UpdateSmbDomainReply.

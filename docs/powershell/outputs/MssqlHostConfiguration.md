@@ -48,7 +48,7 @@ The maximum memory size in MB that a CBT driver can use.
   - Supported in v6.0+
 Maximum number of concurrent snapshots per physical host.
 - mssqlEnableCleanupOnRestoreFailure: HostConfigurationPropertyEnabled
-  - Supported in v9.6+
+  - Supported in v9.5+
 Specifies whether to delete orphaned database files (MDF/LDF) at the target restore path during cleanup of a failed restore job.
 - maxNodesForMultiNodeBackup: System.Int32
   - Supported in v9.5+

@@ -21,3 +21,6 @@ Response for getting the TPR Policy detail.
   - Quorum requirement for the TPR policy.
 - orgId: System.String
   - Organization the TPR policy is in.
+- isCdmEnforcementDisabled: System.Boolean
+  - Whether enforcement on the corresponding CDM REST APIs is turned off for
+this policy. False (the default) means the policy is enforced on CDM.

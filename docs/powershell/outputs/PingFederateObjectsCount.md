@@ -1,0 +1,53 @@
+### PingFederateObjectsCount
+Count of different types of PingFederate objects in a snapshot.
+
+- spConnections: System.Int64
+  - Count of SP connections.
+- idpConnections: System.Int64
+  - Count of IdP connections.
+- oauthClients: System.Int64
+  - Count of OAuth/OIDC clients.
+- idpAdapters: System.Int64
+  - Count of IdP adapters.
+- dataStores: System.Int64
+  - Count of data stores.
+- oauthAccessTokenManagers: System.Int64
+  - Count of OAuth access token managers.
+- authenticationPolicyContracts: System.Int64
+  - Count of authentication policy contracts.
+- passwordCredentialValidators: System.Int64
+  - Count of password credential validators.
+- signingKeyPairs: System.Int64
+  - Count of signing key pairs.
+- oauthAccessTokenMappings: System.Int64
+  - Count of OAuth access token mappings.
+- oauthIdpAdapterMappings: System.Int64
+  - Count of OAuth IdP adapter mappings.
+- oauthOidcPolicies: System.Int64
+  - Count of OAuth OpenID Connect policies.
+- sslServerKeyPairs: System.Int64
+  - Count of SSL server key pairs.
+- sslClientKeyPairs: System.Int64
+  - Count of SSL client key pairs.
+- oauthAccessTokenManagersSettings: System.Int64
+  - Count of OAuth access token manager settings.
+- oauthAuthServerSettings: System.Int64
+  - Count of OAuth authorization server settings.
+- oauthOidcSettings: System.Int64
+  - Count of OAuth OpenID Connect settings.
+- oauthOidcKeysSettings: System.Int64
+  - Count of OAuth OpenID Connect keys settings.
+- oauthTokenExchangeProcessorSettings: System.Int64
+  - Count of OAuth token exchange processor settings.
+- defaultAuthenticationPolicy: System.Int64
+  - Count of default authentication policy settings.
+- authenticationPolicySettings: System.Int64
+  - Count of authentication policy settings.
+- serverSettings: System.Int64
+  - Count of server settings.
+- generalSettings: System.Int64
+  - Count of general settings.
+- outboundProvisioningSettings: System.Int64
+  - Count of outbound provisioning settings.
+- wsTrustStsSettings: System.Int64
+  - Count of WS-Trust STS settings.

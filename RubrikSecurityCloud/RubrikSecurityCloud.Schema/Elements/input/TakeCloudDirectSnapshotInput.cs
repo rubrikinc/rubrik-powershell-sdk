@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? UserNote
-        // GraphQL -> userNote: String (scalar)
-        [JsonProperty("userNote")]
-        public System.String? UserNote { get; set; }
-
         //      C# -> System.String? ObjectFid
         // GraphQL -> objectFid: UUID! (scalar)
         [Required]
@@ -40,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> exclusions: [CloudDirectExclusionInput!] (input)
         [JsonProperty("exclusions")]
         public List<CloudDirectExclusionInput>? Exclusions { get; set; }
+
+        //      C# -> System.String? UserNote
+        // GraphQL -> userNote: String (scalar)
+        [JsonProperty("userNote")]
+        public System.String? UserNote { get; set; }
 
 
         #endregion

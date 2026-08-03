@@ -1,15 +1,28 @@
 ### GetPoliciesTimelineReply
+Timeline of policy hits and object counts for an account, by day.
+
 - policyHitsEntries: list of TimelineEntrys
+  - Per-policy sensitive-hit counts over time.
 - totalHitsEntries: list of TimelineEntrys
+  - Total sensitive-hit counts over time.
 - policyFilesHitsEntries: list of TimelineEntrys
+  - Per-policy sensitive-file counts over time.
 - totalFilesHitsEntries: list of TimelineEntrys
+  - Total sensitive-file counts over time.
 - policyOaFilesHitsEntries: list of TimelineEntrys
+  - Per-policy open-access sensitive-file counts over time.
 - totalOaFilesHitsEntries: list of TimelineEntrys
+  - Total open-access sensitive-file counts over time.
 - policyStaleFilesHitsEntries: list of TimelineEntrys
+  - Per-policy stale sensitive-file counts over time.
 - totalStaleFilesHitsEntries: list of TimelineEntrys
+  - Total stale sensitive-file counts over time.
 - totalOaFilesEntries: list of TimelineEntrys
+  - Total open-access file counts over time.
 - totalOaFoldersEntries: list of TimelineEntrys
+  - Total open-access folder counts over time.
 - totalStaleOaFilesEntries: list of TimelineEntrys
+  - Total stale open-access file counts over time.
 - highRiskObjects: list of TimelineEntrys
   - Count of high-risk objects.
 - lowRiskObjects: list of TimelineEntrys
@@ -49,3 +62,4 @@
 - totalRiskObjects: list of TimelineEntrys
   - Count of objects with non-zero sensitive hits.
 - policySummaries: list of ClassificationPolicySummarys
+  - Summaries of the policies in this timeline.

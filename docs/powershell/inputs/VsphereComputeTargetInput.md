@@ -1,0 +1,33 @@
+### VsphereComputeTargetInput
+VSphere compute target.
+
+- vcenterId: System.String
+  - Identifier for vCenter.
+- vcenterName: System.String
+  - Name of vCenter.
+- vcenterCdmId: System.String
+  - CDM ID of vCenter.
+- computeClusterId: System.String
+  - Identifier for compute cluster.
+- computeClusterCdmId: System.String
+  - CDM ID of compute cluster.
+- computeClusterName: System.String
+  - Name of compute cluster.
+- resourcePoolId: System.String
+  - Identifier for resource pool.
+- resourcePoolCdmId: System.String
+  - CDM ID of resource pool.
+- resourcePoolName: System.String
+  - Name of resource pool.
+- hostId: System.String
+  - Identifier for host.
+- hostName: System.String
+  - Name of host.
+- hostCdmId: System.String
+  - CDM ID of host.
+- datacenterId: System.String
+  - Identifier for data center.
+- datacenterCdmId: System.String
+  - CDM ID of data center.
+- datacenterName: System.String
+  - Name of data center.

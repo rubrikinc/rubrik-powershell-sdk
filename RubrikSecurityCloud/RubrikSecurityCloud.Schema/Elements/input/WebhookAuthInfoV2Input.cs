@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("customHeaders")]
         public List<CustomHeader>? CustomHeaders { get; set; }
 
+        //      C# -> WebhookOauth2InfoV2Input? Oauth2Info
+        // GraphQL -> oauth2Info: WebhookOauth2InfoV2Input (input)
+        [JsonProperty("oauth2Info")]
+        public WebhookOauth2InfoV2Input? Oauth2Info { get; set; }
+
 
         #endregion
 

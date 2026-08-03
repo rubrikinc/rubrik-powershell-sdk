@@ -16,3 +16,4 @@ Represents the objects or items to be restored from a site collection. Either th
 - newObjectName: System.String
   - The name for the new object.
 - shouldRestoreFileVersions: System.Boolean
+  - Whether to restore all file versions.

@@ -8,3 +8,5 @@ types to add their own info messages without schema changes.
   - Configuration for identity policies.
 - idpPolicyInfo: IdpPolicyInfo
   - Configuration for IDP policies.
+- signinAnomalyPolicyInfo: SigninAnomalyPolicyInfo
+  - Configuration for sign-in anomaly policies.

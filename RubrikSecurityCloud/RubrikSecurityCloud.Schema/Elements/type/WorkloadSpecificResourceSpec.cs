@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureNativeVm")]
         public AzureNativeVirtualMachineResourceSpec? AzureNativeVm { get; set; }
 
+        //      C# -> HypervVirtualMachineResourceSpec? HypervVm
+        // GraphQL -> hypervVm: HypervVirtualMachineResourceSpec (type)
+        [JsonProperty("hypervVm")]
+        public HypervVirtualMachineResourceSpec? HypervVm { get; set; }
+
         //      C# -> NutanixVirtualMachineResourceSpec? NutanixVm
         // GraphQL -> nutanixVm: NutanixVirtualMachineResourceSpec (type)
         [JsonProperty("nutanixVm")]
@@ -58,6 +63,7 @@ namespace RubrikSecurityCloud.Types
         AwsEc2InstanceResourceSpec? AwsNativeEc2Instance = null,
         AwsRdsInstanceResourceSpec? AwsNativeRdsInstance = null,
         AzureNativeVirtualMachineResourceSpec? AzureNativeVm = null,
+        HypervVirtualMachineResourceSpec? HypervVm = null,
         NutanixVirtualMachineResourceSpec? NutanixVm = null,
         VmwareVirtualMachineResourceSpec? VmwareVm = null
     ) 
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureNativeVm != null ) {
             this.AzureNativeVm = AzureNativeVm;
+        }
+        if ( HypervVm != null ) {
+            this.HypervVm = HypervVm;
         }
         if ( NutanixVm != null ) {
             this.NutanixVm = NutanixVm;
@@ -124,6 +133,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureNativeVm" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> HypervVirtualMachineResourceSpec? HypervVm
+        // GraphQL -> hypervVm: HypervVirtualMachineResourceSpec (type)
+        if (this.HypervVm != null) {
+            var fspec = this.HypervVm.AsFieldSpec(conf.Child("hypervVm"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervVm" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -214,6 +235,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureNativeVm != null && ec.Excludes("azureNativeVm",false))
         {
             this.AzureNativeVm = null;
+        }
+        //      C# -> HypervVirtualMachineResourceSpec? HypervVm
+        // GraphQL -> hypervVm: HypervVirtualMachineResourceSpec (type)
+        if (ec.Includes("hypervVm",false))
+        {
+            if(this.HypervVm == null) {
+
+                this.HypervVm = new HypervVirtualMachineResourceSpec();
+                this.HypervVm.ApplyExploratoryFieldSpec(ec.NewChild("hypervVm"));
+
+            } else {
+
+                this.HypervVm.ApplyExploratoryFieldSpec(ec.NewChild("hypervVm"));
+
+            }
+        }
+        else if (this.HypervVm != null && ec.Excludes("hypervVm",false))
+        {
+            this.HypervVm = null;
         }
         //      C# -> NutanixVirtualMachineResourceSpec? NutanixVm
         // GraphQL -> nutanixVm: NutanixVirtualMachineResourceSpec (type)

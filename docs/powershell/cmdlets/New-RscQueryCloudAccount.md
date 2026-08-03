@@ -1,5 +1,10 @@
 # New-RscQueryCloudAccount
 ## Subcommands
+### accounts
+List of cloud accounts.
+
+- The accounts subcommand takes no arguments.
+- Returns list of CloudAccountInfos.
 ### cloudaccount
 - There is a single argument of type System.String.
 - Returns CloudAccount.

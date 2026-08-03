@@ -17,6 +17,8 @@ Nutanix Prism Central details.
   - List of Nutanix Clusters that are protected as part of this Nutanix Prism Central.
 - isDrEnabled: System.Boolean
   - Specifies whether Nutanix DR support is enabled for the Prism Central object.
+- shouldUseV4: System.Boolean
+  - Indicates whether requests for this Prism Central should dispatch through the Nutanix V4 API on supported Rubrik clusters. Defaults to false when no preference has been set.
 - id: System.String
   - Object ID.
 - connectionStatus: RefreshableObjectConnectionStatus
@@ -27,6 +29,35 @@ Nutanix Prism Central details.
   - List of descendants.
 - logicalChildConnection: NutanixPrismCentralLogicalChildTypeConnection
   - List of logical children.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because
+there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being
+communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by
+replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this
+object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this
+object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -59,28 +90,8 @@ Nutanix Prism Central details.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - duplicateObjectsAbsoluteCount: System.Int32
   - Determine the total count of duplicate objects for the Multi Cluster Object, regardless of the user's RBAC permissions.
 - duplicateObjects: list of CdmHierarchyObjects

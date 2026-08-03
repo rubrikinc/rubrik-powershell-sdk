@@ -32,3 +32,6 @@ with objectType.
   - The AWS deployment model of the workload (BaaS / non-BaaS).
 Filters only AWS workloads; non-AWS workloads pass through unfiltered.
 Empty list disables the filter.
+- isInfrastructureAlertsEnabled: System.Boolean
+  - Filters S3 buckets by whether infrastructure deletion alerts are
+enabled. Null means no filter is applied.

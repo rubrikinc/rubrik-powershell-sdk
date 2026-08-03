@@ -19,3 +19,5 @@ Additional information about backint and database configuration.
   - CDM ID of the database from which system-copy has been configured.
 - logMode: System.String
   - SAP HANA log mode (overwrite / normal).
+- isCompressionEnabled: System.Boolean
+  - Whether SAP HANA native backup compression is enabled for this database.

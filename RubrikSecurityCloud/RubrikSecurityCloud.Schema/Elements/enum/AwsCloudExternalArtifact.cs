@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EXOCOMPUTE_FLUENTD_ROLE_ARN")]
         EXOCOMPUTE_FLUENTD_ROLE_ARN,
 
+        [EnumMember(Value = "GATEWAY_KMS_KEY_ARN")]
+        GATEWAY_KMS_KEY_ARN,
+
         [EnumMember(Value = "IAM_USER_ARN")]
         IAM_USER_ARN,
 

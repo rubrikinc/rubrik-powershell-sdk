@@ -40,19 +40,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("destinationSnappableUuid")]
         public System.String? DestinationSnappableUuid { get; set; }
 
-        //      C# -> SnappableRestoreConfig? RestoreConfig
-        // GraphQL -> restoreConfig: SnappableRestoreConfig! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("restoreConfig")]
-        public SnappableRestoreConfig? RestoreConfig { get; set; }
-
         //      C# -> O365RestoreActionType? ActionType
         // GraphQL -> actionType: O365RestoreActionType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("actionType")]
         public O365RestoreActionType? ActionType { get; set; }
+
+        //      C# -> SnappableRestoreConfig? RestoreConfig
+        // GraphQL -> restoreConfig: SnappableRestoreConfig! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("restoreConfig")]
+        public SnappableRestoreConfig? RestoreConfig { get; set; }
 
 
         #endregion

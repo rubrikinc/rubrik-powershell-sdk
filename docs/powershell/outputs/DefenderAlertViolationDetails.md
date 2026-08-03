@@ -23,3 +23,5 @@ Microsoft Defender for Identity alert violation details.
   - MITRE ATT&CK technique IDs (array, unlike CrowdStrike's single value).
 - alertWebUrl: System.String
   - Link to the Microsoft Security portal.
+- detectorId: System.String
+  - Microsoft Defender detector ID (the Graph detectorId).

@@ -17,6 +17,8 @@ Input for completing authentication of the Azure Cloud Accounts.
   - Client secret key of the application. The appSecretKey is empty if the tenant uses a Rubrik app or a custom app.
 - shouldSkipPermissionChecks: System.Boolean
   - Specifies whether to skip permission checks of Azure subscriptions required for addition.
+- isEntraIdInitiatedOnboarding: System.Boolean
+  - Indicates that this OAuth flow is an Entra ID initiated Event Hub onboarding, which is authorized in the Entra ID data-source domain rather than the cloud-native domain.
 - azureCloudType: AzureCloudType
   - Type of Azure Tenant. Possible values: Azure Public Cloud, Azure China Cloud.
 - resource: AzureOauthResource

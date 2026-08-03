@@ -25,3 +25,6 @@ Details of the Cloud Direct System to be added.
   - Certificate type for client certificate authentication.
 - certificateKeyPassword: System.String
   - Password for encrypted certificate keys.
+- creds: list of NcdCredentials
+  - Multiple named credentials for multi-tenant generic S3 systems.
+When non-empty, Mesa uses these instead of username/password.

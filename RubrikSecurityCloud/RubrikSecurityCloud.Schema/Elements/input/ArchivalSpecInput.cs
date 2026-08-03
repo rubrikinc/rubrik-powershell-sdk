@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isComplianceImmutabilityEnabled")]
         public System.Boolean? IsComplianceImmutabilityEnabled { get; set; }
 
+        //      C# -> DatabaseLogRetentionInfo? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfo (input)
+        [JsonProperty("databaseLogRetentionInfo")]
+        public DatabaseLogRetentionInfo? DatabaseLogRetentionInfo { get; set; }
+
 
         #endregion
 

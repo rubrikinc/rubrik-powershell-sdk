@@ -26,12 +26,24 @@ Take on-demand snapshot for Sharepoint drive.
 - There is a single argument of type BackupO365SharepointDriveInput.
 - Returns BatchAsyncJobStatus.
 ### backupsharepointlist
-Take on-demand snapshot for SharePoint list.
+BackupO365SharepointListV2 schedules an on-demand backup of the given
+SharePoint list workload. V2 replacement for the legacy api-server
+resolver `backupO365SharepointV2` (GraphQL name
+`backupO365SharepointList`). Identity is carried in req_ctx; the
+handler builds the JobInfo with SharepointObjectType="LIST" and a nil
+retention SLA Domain (both hardcoded in V1) and schedules using the
+korg-job-backup-o365-sharepoint-v2 job service.
 
 - There is a single argument of type BackupO365SharePointListInput.
 - Returns CreateOnDemandJobReply.
 ### backupsharepointsite
-Take on-demand snapshot for a SharePoint site.
+BackupO365SharePointSiteV2 schedules an on-demand backup of the given
+SharePoint site workload. V2 replacement for the legacy api-server
+resolver `backupO365SharePointSite`. Identity is carried in req_ctx;
+the handler builds the JobInfo with SharepointObjectType="SITE" and
+forwards the optional retention SLA Domain, then schedules using the
+korg-job-backup-o365-sharepoint-v2 job service (same job type as the
+list variant -- they differ only in JobInfo).
 
 - There is a single argument of type BackupO365SharePointSiteInput.
 - Returns CreateOnDemandJobReply.
@@ -128,7 +140,9 @@ Restores an Exchange mailbox data.
 - There is a single argument of type RestoreO365MailboxInput.
 - Returns list of CreateOnDemandJobReplys.
 ### restoresnappable
-Restores an O365 snappable.
+Restores an O365 workload (OneDrive, SharePoint, Exchange, Calendar,
+Contacts, Teams). The account, user, and RSC org id are resolved from
+req_ctx.
 
 - There is a single argument of type RestoreO365SnappableInput.
 - Returns CreateOnDemandJobReply.
@@ -138,7 +152,9 @@ Restore Team conversations.
 - There is a single argument of type RestoreO365TeamsConversationsInput.
 - Returns CreateOnDemandJobReply.
 ### restoreteamsfiles
-Restore Team files.
+Schedules an on-demand restore job for files and folders within a
+Teams channel. The account, user, and RSC org id are resolved from
+req_ctx.
 
 - There is a single argument of type RestoreO365TeamsFilesInput.
 - Returns CreateOnDemandJobReply.
@@ -148,18 +164,26 @@ Completes a Rubrik-Hosted setup flow.
 - There is a single argument of type O365SaasSetupCompleteInput.
 - Returns AddO365OrgResponse.
 ### saassetupkickoff
+O365SaaSSetupKickoff starts the first-leg of an O365 OAuth client-secret code
+flow for the fully hosted solution.
+
 - The saassetupkickoff subcommand takes no arguments.
 - Returns O365SaasSetupKickoffReply.
 ### setserviceaccount
-Sets the service account for the org.
+SetO365ServiceAccountV2 sets the Microsoft 365 service account
+credentials for an organization. V2 replacement for the legacy
+cloud-manager SetO365ServiceAccount RPC. Identity is carried in
+req_ctx; the handler delegates to the existing cloud-manager RPC.
 
 - There are 3 arguments.
-    - username - System.String
-    - appPassword - System.String
-    - orgId - System.String: Org UUID.
+    - username - System.String: Service account username.
+    - appPassword - System.String: Service account app password.
+    - orgId - System.String: Microsoft 365 organization ID for which the service
+account is being set.
 - Returns RequestStatus.
 ### setupkickoff
-Kicks off an O365 subscription setup flow.
+O365SetupKickoff starts the first-leg of an O365 OAuth client-secret code
+flow.
 
 - The setupkickoff subcommand takes no arguments.
 - Returns O365SetupKickoffResp.

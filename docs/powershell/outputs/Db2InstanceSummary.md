@@ -50,3 +50,6 @@ List of relic database IDs present in this Db2 instance.
 - hadrDatabaseIds: list of System.Strings
   - Supported in v8.1+
 List of HADR database IDs present in this Db2 instance.
+- instanceType: Db2InstanceSummaryInstanceType
+  - Supported in v9.6+
+Specifies the type of the Db2 instance.

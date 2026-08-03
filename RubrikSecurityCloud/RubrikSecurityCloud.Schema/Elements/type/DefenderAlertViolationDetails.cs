@@ -51,6 +51,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("detectionTime")]
         public DateTime? DetectionTime { get; set; }
 
+        //      C# -> System.String? DetectorId
+        // GraphQL -> detectorId: String! (scalar)
+        [JsonProperty("detectorId")]
+        public System.String? DetectorId { get; set; }
+
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         [JsonProperty("endTime")]
@@ -92,6 +97,7 @@ namespace RubrikSecurityCloud.Types
         System.String? DetectionDescription = null,
         System.String? DetectionName = null,
         DateTime? DetectionTime = null,
+        System.String? DetectorId = null,
         DateTime? EndTime = null,
         System.String? MitreTactic = null,
         List<System.String>? MitreTechniques = null,
@@ -116,6 +122,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DetectionTime != null ) {
             this.DetectionTime = DetectionTime;
+        }
+        if ( DetectorId != null ) {
+            this.DetectorId = DetectorId;
         }
         if ( EndTime != null ) {
             this.EndTime = EndTime;
@@ -198,6 +207,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "detectionTime\n" ;
             } else {
                 s += ind + "detectionTime\n" ;
+            }
+        }
+        //      C# -> System.String? DetectorId
+        // GraphQL -> detectorId: String! (scalar)
+        if (this.DetectorId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "detectorId\n" ;
+            } else {
+                s += ind + "detectorId\n" ;
             }
         }
         //      C# -> DateTime? EndTime
@@ -353,6 +371,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DetectionTime != null && ec.Excludes("detectionTime",true))
         {
             this.DetectionTime = null;
+        }
+        //      C# -> System.String? DetectorId
+        // GraphQL -> detectorId: String! (scalar)
+        if (ec.Includes("detectorId",true))
+        {
+            if(this.DetectorId == null) {
+
+                this.DetectorId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DetectorId != null && ec.Excludes("detectorId",true))
+        {
+            this.DetectorId = null;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)

@@ -13,6 +13,8 @@ Replication specification.
   - AWS region.
 - azureRegion: System.String
   - Azure Region.
+- databaseLogRetentionInfo: DatabaseLogRetentionInfoType
+  - Per-workload database transaction log retention policy for this location.
 - awsTarget: AwsReplicationTarget
   - AWS location used as the replication target.
 - azureTarget: AzureReplicationTarget

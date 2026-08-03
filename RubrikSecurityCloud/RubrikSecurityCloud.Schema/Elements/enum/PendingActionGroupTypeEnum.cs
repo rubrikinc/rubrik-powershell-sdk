@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PERSONAL_ACCESS_TOKEN")]
         PERSONAL_ACCESS_TOKEN,
 
+        [EnumMember(Value = "QAUTH")]
+        QAUTH,
+
         [EnumMember(Value = "REPLICATION")]
         REPLICATION,
 

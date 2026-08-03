@@ -48,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("chassisId")]
         public System.String? ChassisId { get; set; }
 
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        [JsonProperty("networkZoneName")]
+        public System.String? NetworkZoneName { get; set; }
+
 
         #endregion
 

@@ -19,6 +19,9 @@ Specific information for Rubrik Cloud Vault (RCV) GCP target created on Rubrik.
   - Encryption type used for the RCV GCP target.
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings is bypassed for the RCV GCP archival target.
+- proxySettings: ProxySettings
+  - Proxy configuration used by the Rubrik cluster to reach this Rubrik
+Cloud Vault GCP location.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

@@ -31,12 +31,21 @@ AWS native S3 Bucket.
   - Flag to specify if the S3 bucket is being onboarded for backup.
 - isProtectable: System.Boolean
   - Indicates whether this S3 bucket is protectable or not.
+- cloudNativeApplications: list of CloudNativeApplicationInfos
+  - List of cloud native applications associated with this S3 bucket.
+- isInfrastructureAlertsEnabled: System.Boolean
+  - Whether infrastructure deletion alerts are enabled for the S3 bucket.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount
   - AWS account of the Amazon S3 bucket.
 - awsAccount: AwsNativeAccount
   - AWS account of the Amazon S3 bucket.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -71,10 +80,8 @@ AWS native S3 Bucket.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

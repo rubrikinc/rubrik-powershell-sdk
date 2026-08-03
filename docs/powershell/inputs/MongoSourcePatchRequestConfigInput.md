@@ -32,3 +32,5 @@ Type of user authentication used when adding the MongoDB cluster.
 - sslKeyfilePassword: System.String
   - Supported in v9.6+
 Password for the encrypted SSL PEM keyfile.
+- nodePreference: MongoNodePreference
+  - Node-role preference for selecting replica-set nodes during logical backup. Defaults to NoPreference (current behavior) when omitted.

@@ -1,4 +1,6 @@
 ### O365TeamConvChannel
+Channel object consisting naturalId and name.
+
 - naturalId: System.String
   - The natural ID of Microsoft 365 Teams channel.
 - channelId: System.String

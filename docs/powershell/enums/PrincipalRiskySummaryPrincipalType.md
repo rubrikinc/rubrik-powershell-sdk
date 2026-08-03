@@ -62,3 +62,5 @@ Principal type for risk summary.
 - MSKDS_PROV_ROOT_KEY - Principal of the MS Key Distribution Service root key type.
 - NTFRS_SUBSCRIBER - Principal of the NTFRS Subscriber type (File Replication Service).
 - PKI_ENROLLMENT_SERVICE - Principal of the AD PKI Enrollment Service type (CA).
+- UNIDENTIFIED - Principal that could not be matched to a known identity (unidentified
+target on a third-party alert).

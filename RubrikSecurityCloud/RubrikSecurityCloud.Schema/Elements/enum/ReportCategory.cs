@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CAPACITY_MANAGEMENT")]
         CAPACITY_MANAGEMENT,
 
+        [EnumMember(Value = "COST_ANALYSIS")]
+        COST_ANALYSIS,
+
         [EnumMember(Value = "HEALTH_AND_PERFORMANCE")]
         HEALTH_AND_PERFORMANCE,
 
@@ -35,6 +38,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REPORT_CATEGORY_UNSPECIFIED")]
         REPORT_CATEGORY_UNSPECIFIED,
+
+        [EnumMember(Value = "SCRIPT_REPORTS")]
+        SCRIPT_REPORTS,
 
         [EnumMember(Value = "USERS_AND_ORG_MANAGEMENT")]
         USERS_AND_ORG_MANAGEMENT

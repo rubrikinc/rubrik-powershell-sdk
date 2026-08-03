@@ -29,5 +29,7 @@ Filters for the cluster list.
   - Product type of Rubrik cluster.
 - upgradeStatusCategory: list of System.Strings
   - Upgrade status categories for filtering clusters. Valid values are defined in the GPS service.
+- isAssignedByParentAccount: System.Boolean
+  - Filter on shared (parent-assigned) Rubrik clusters. When true, return only shared Rubrik clusters; when false, exclude them; omit for no filter.
 - eosStatus: list of ClusterEosStatuss
   - End of support status of the Rubrik cluster.

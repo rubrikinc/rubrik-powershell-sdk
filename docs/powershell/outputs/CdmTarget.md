@@ -1,10 +1,12 @@
 ### CdmTarget
 Target-specific information created and synchronized from a Rubrik CDM cluster.
 
-- id: System.String
+- cdmId: System.String
   - ID of the CDM target.
 - targetType: TargetType
   - The type of the target.
+- id: System.String
+  - The ID of the target.
 - name: System.String
   - The name of the target.
 - locationScope: LocationScope

@@ -27,6 +27,11 @@ Information about MongoDB Collection.
   - The most recent snapshot of this workload.
 - oldestSnapshot: MosaicSnapshot
   - The oldest snapshot of this workload.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -59,7 +64,5 @@ Information about MongoDB Collection.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

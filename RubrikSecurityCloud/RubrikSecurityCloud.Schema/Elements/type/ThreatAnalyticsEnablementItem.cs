@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCloudAccountServiceType? AwsServiceType
+        // GraphQL -> awsServiceType: AwsCloudAccountServiceType! (enum)
+        [JsonProperty("awsServiceType")]
+        public AwsCloudAccountServiceType? AwsServiceType { get; set; }
+
         //      C# -> System.Boolean? DataThreatAnalyticsEnabled
         // GraphQL -> dataThreatAnalyticsEnabled: Boolean! (scalar)
         [JsonProperty("dataThreatAnalyticsEnabled")]
@@ -34,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isHealthy: Boolean! (scalar)
         [JsonProperty("isHealthy")]
         public System.Boolean? IsHealthy { get; set; }
+
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        [JsonProperty("isYaraProcessingEnabled")]
+        public System.Boolean? IsYaraProcessingEnabled { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -60,14 +70,19 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatAnalyticsEnablementItem Set(
+        AwsCloudAccountServiceType? AwsServiceType = null,
         System.Boolean? DataThreatAnalyticsEnabled = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
+        System.Boolean? IsYaraProcessingEnabled = null,
         System.String? Name = null,
         System.Boolean? ShouldScanAllFiles = null,
         System.Boolean? ThreatMonitoringEnabled = null
     ) 
     {
+        if ( AwsServiceType != null ) {
+            this.AwsServiceType = AwsServiceType;
+        }
         if ( DataThreatAnalyticsEnabled != null ) {
             this.DataThreatAnalyticsEnabled = DataThreatAnalyticsEnabled;
         }
@@ -76,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
+        }
+        if ( IsYaraProcessingEnabled != null ) {
+            this.IsYaraProcessingEnabled = IsYaraProcessingEnabled;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -100,6 +118,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsCloudAccountServiceType? AwsServiceType
+        // GraphQL -> awsServiceType: AwsCloudAccountServiceType! (enum)
+        if (this.AwsServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "awsServiceType\n" ;
+            } else {
+                s += ind + "awsServiceType\n" ;
+            }
+        }
         //      C# -> System.Boolean? DataThreatAnalyticsEnabled
         // GraphQL -> dataThreatAnalyticsEnabled: Boolean! (scalar)
         if (this.DataThreatAnalyticsEnabled != null) {
@@ -125,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHealthy\n" ;
             } else {
                 s += ind + "isHealthy\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        if (this.IsYaraProcessingEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isYaraProcessingEnabled\n" ;
+            } else {
+                s += ind + "isYaraProcessingEnabled\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -161,6 +197,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsCloudAccountServiceType? AwsServiceType
+        // GraphQL -> awsServiceType: AwsCloudAccountServiceType! (enum)
+        if (ec.Includes("awsServiceType",true))
+        {
+            if(this.AwsServiceType == null) {
+
+                this.AwsServiceType = new AwsCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AwsServiceType != null && ec.Excludes("awsServiceType",true))
+        {
+            this.AwsServiceType = null;
+        }
         //      C# -> System.Boolean? DataThreatAnalyticsEnabled
         // GraphQL -> dataThreatAnalyticsEnabled: Boolean! (scalar)
         if (ec.Includes("dataThreatAnalyticsEnabled",true))
@@ -211,6 +264,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHealthy != null && ec.Excludes("isHealthy",true))
         {
             this.IsHealthy = null;
+        }
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        if (ec.Includes("isYaraProcessingEnabled",true))
+        {
+            if(this.IsYaraProcessingEnabled == null) {
+
+                this.IsYaraProcessingEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsYaraProcessingEnabled != null && ec.Excludes("isYaraProcessingEnabled",true))
+        {
+            this.IsYaraProcessingEnabled = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

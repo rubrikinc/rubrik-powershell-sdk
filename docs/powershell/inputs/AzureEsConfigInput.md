@@ -10,7 +10,8 @@ ES storage for Azure account.
 - containerName: System.String
   - Storage container name in Azure.
 - shouldCreateContainer: System.Boolean
-  - Whether to create a new container or not.
+  - Whether RSC should create the blob container. This field is no longer
+honored.
 - enableImmutability: System.Boolean
   - Specifies whether to enable support for immutable filesystem in SDFS.
 - managedIdentity: AzureManagedIdentityName

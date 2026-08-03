@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vmId")]
         public System.Int32? VmId { get; set; }
 
+        //      C# -> System.Boolean? PowerOn
+        // GraphQL -> powerOn: Boolean (scalar)
+        [JsonProperty("powerOn")]
+        public System.Boolean? PowerOn { get; set; }
+
         //      C# -> System.String? StorageId
         // GraphQL -> storageId: String (scalar)
         [JsonProperty("storageId")]

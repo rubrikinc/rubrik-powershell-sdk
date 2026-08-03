@@ -20,3 +20,5 @@ The different SaaS organization types supported.
 - AZURE_DEVOPS_ORG - Azure DevOps Org type.
 - GITHUB_ORG - GitHub Org type.
 - POWER_PLATFORM_ORG - Power Platform Org type.
+- ANTHROPIC_CLOUD_ORG - Anthropic cloud org type (control plane + chat surfaces).
+- ANTHROPIC_ENDPOINT_ORG - Anthropic endpoint org type (code + cowork surfaces).

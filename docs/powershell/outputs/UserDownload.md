@@ -9,9 +9,9 @@ A user-initiated download.
   - The status of the download.
 - progress: System.Int32
   - The progress of the download, where 0 <= progress <= 100.
+- identifier: DownloadIdentifierEnum
+  - The identifier of the download.
 - createTime: System.String
   - The time at which the download was created.
 - completeTime: System.String
   - The time at which the download completed.
-- identifier: DownloadIdentifierEnum
-  - The identifier of the download.

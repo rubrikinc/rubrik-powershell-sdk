@@ -53,6 +53,10 @@ NAS Cloud Direct snapshot object.
   - Specifies whether the snapshot was downloaded.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
 - target: System.String
   - The name of the target associated with this snapshot.
 - targetId: System.String
@@ -65,7 +69,3 @@ NAS Cloud Direct snapshot object.
   - Specifies whether or not the snapshot is expired.
 - snappableId: System.String
   - The workload ID of the snapshot.
-- isQuarantineProcessing: System.Boolean
-  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
-- isAnomaly: System.Boolean
-  - Flag if the snapshot is an anomaly.

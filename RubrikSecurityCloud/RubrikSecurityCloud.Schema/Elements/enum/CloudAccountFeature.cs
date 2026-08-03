@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_LAMINAR_TARGET_MANAGED_IDENTITY")]
         AZURE_LAMINAR_TARGET_MANAGED_IDENTITY,
 
+        [EnumMember(Value = "AZURE_LOCAL_CLOUD_ACCOUNT")]
+        AZURE_LOCAL_CLOUD_ACCOUNT,
+
         [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER_PROTECTION")]
         AZURE_POSTGRES_FLEXIBLE_SERVER_PROTECTION,
 
@@ -68,6 +71,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUDACCOUNTS")]
         CLOUDACCOUNTS,
+
+        [EnumMember(Value = "CLOUD_COST_REPORT")]
+        CLOUD_COST_REPORT,
 
         [EnumMember(Value = "CLOUD_DISCOVERY")]
         CLOUD_DISCOVERY,
@@ -92,6 +98,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_NATIVE_S3_PROTECTION")]
         CLOUD_NATIVE_S3_PROTECTION,
+
+        [EnumMember(Value = "CLOUD_NATIVE_UEM_KEY_MANAGEMENT")]
+        CLOUD_NATIVE_UEM_KEY_MANAGEMENT,
 
         [EnumMember(Value = "CLOUD_SQL_PROTECTION")]
         CLOUD_SQL_PROTECTION,

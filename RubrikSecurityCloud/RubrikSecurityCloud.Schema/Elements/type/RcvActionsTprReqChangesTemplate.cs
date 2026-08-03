@@ -21,15 +21,40 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CurrentRedundancy
+        // GraphQL -> currentRedundancy: String (scalar)
+        [JsonProperty("currentRedundancy")]
+        public System.String? CurrentRedundancy { get; set; }
+
+        //      C# -> System.String? CurrentTier
+        // GraphQL -> currentTier: String (scalar)
+        [JsonProperty("currentTier")]
+        public System.String? CurrentTier { get; set; }
+
         //      C# -> System.String? RequestedAction
         // GraphQL -> requestedAction: String! (scalar)
         [JsonProperty("requestedAction")]
         public System.String? RequestedAction { get; set; }
 
+        //      C# -> System.String? RequestedRedundancy
+        // GraphQL -> requestedRedundancy: String (scalar)
+        [JsonProperty("requestedRedundancy")]
+        public System.String? RequestedRedundancy { get; set; }
+
+        //      C# -> System.String? RequestedTier
+        // GraphQL -> requestedTier: String (scalar)
+        [JsonProperty("requestedTier")]
+        public System.String? RequestedTier { get; set; }
+
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         [JsonProperty("templateName")]
         public System.String? TemplateName { get; set; }
+
+        //      C# -> System.String? VaultId
+        // GraphQL -> vaultId: String (scalar)
+        [JsonProperty("vaultId")]
+        public System.String? VaultId { get; set; }
 
         //      C# -> System.String? VaultName
         // GraphQL -> vaultName: String! (scalar)
@@ -46,16 +71,36 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RcvActionsTprReqChangesTemplate Set(
+        System.String? CurrentRedundancy = null,
+        System.String? CurrentTier = null,
         System.String? RequestedAction = null,
+        System.String? RequestedRedundancy = null,
+        System.String? RequestedTier = null,
         System.String? TemplateName = null,
+        System.String? VaultId = null,
         System.String? VaultName = null
     ) 
     {
+        if ( CurrentRedundancy != null ) {
+            this.CurrentRedundancy = CurrentRedundancy;
+        }
+        if ( CurrentTier != null ) {
+            this.CurrentTier = CurrentTier;
+        }
         if ( RequestedAction != null ) {
             this.RequestedAction = RequestedAction;
         }
+        if ( RequestedRedundancy != null ) {
+            this.RequestedRedundancy = RequestedRedundancy;
+        }
+        if ( RequestedTier != null ) {
+            this.RequestedTier = RequestedTier;
+        }
         if ( TemplateName != null ) {
             this.TemplateName = TemplateName;
+        }
+        if ( VaultId != null ) {
+            this.VaultId = VaultId;
         }
         if ( VaultName != null ) {
             this.VaultName = VaultName;
@@ -74,6 +119,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? CurrentRedundancy
+        // GraphQL -> currentRedundancy: String (scalar)
+        if (this.CurrentRedundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "currentRedundancy\n" ;
+            } else {
+                s += ind + "currentRedundancy\n" ;
+            }
+        }
+        //      C# -> System.String? CurrentTier
+        // GraphQL -> currentTier: String (scalar)
+        if (this.CurrentTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "currentTier\n" ;
+            } else {
+                s += ind + "currentTier\n" ;
+            }
+        }
         //      C# -> System.String? RequestedAction
         // GraphQL -> requestedAction: String! (scalar)
         if (this.RequestedAction != null) {
@@ -83,6 +146,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "requestedAction\n" ;
             }
         }
+        //      C# -> System.String? RequestedRedundancy
+        // GraphQL -> requestedRedundancy: String (scalar)
+        if (this.RequestedRedundancy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "requestedRedundancy\n" ;
+            } else {
+                s += ind + "requestedRedundancy\n" ;
+            }
+        }
+        //      C# -> System.String? RequestedTier
+        // GraphQL -> requestedTier: String (scalar)
+        if (this.RequestedTier != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "requestedTier\n" ;
+            } else {
+                s += ind + "requestedTier\n" ;
+            }
+        }
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         if (this.TemplateName != null) {
@@ -90,6 +171,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "templateName\n" ;
             } else {
                 s += ind + "templateName\n" ;
+            }
+        }
+        //      C# -> System.String? VaultId
+        // GraphQL -> vaultId: String (scalar)
+        if (this.VaultId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "vaultId\n" ;
+            } else {
+                s += ind + "vaultId\n" ;
             }
         }
         //      C# -> System.String? VaultName
@@ -108,6 +198,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? CurrentRedundancy
+        // GraphQL -> currentRedundancy: String (scalar)
+        if (ec.Includes("currentRedundancy",true))
+        {
+            if(this.CurrentRedundancy == null) {
+
+                this.CurrentRedundancy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentRedundancy != null && ec.Excludes("currentRedundancy",true))
+        {
+            this.CurrentRedundancy = null;
+        }
+        //      C# -> System.String? CurrentTier
+        // GraphQL -> currentTier: String (scalar)
+        if (ec.Includes("currentTier",true))
+        {
+            if(this.CurrentTier == null) {
+
+                this.CurrentTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.CurrentTier != null && ec.Excludes("currentTier",true))
+        {
+            this.CurrentTier = null;
+        }
         //      C# -> System.String? RequestedAction
         // GraphQL -> requestedAction: String! (scalar)
         if (ec.Includes("requestedAction",true))
@@ -125,6 +249,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.RequestedAction = null;
         }
+        //      C# -> System.String? RequestedRedundancy
+        // GraphQL -> requestedRedundancy: String (scalar)
+        if (ec.Includes("requestedRedundancy",true))
+        {
+            if(this.RequestedRedundancy == null) {
+
+                this.RequestedRedundancy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RequestedRedundancy != null && ec.Excludes("requestedRedundancy",true))
+        {
+            this.RequestedRedundancy = null;
+        }
+        //      C# -> System.String? RequestedTier
+        // GraphQL -> requestedTier: String (scalar)
+        if (ec.Includes("requestedTier",true))
+        {
+            if(this.RequestedTier == null) {
+
+                this.RequestedTier = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RequestedTier != null && ec.Excludes("requestedTier",true))
+        {
+            this.RequestedTier = null;
+        }
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         if (ec.Includes("templateName",true))
@@ -141,6 +299,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TemplateName != null && ec.Excludes("templateName",true))
         {
             this.TemplateName = null;
+        }
+        //      C# -> System.String? VaultId
+        // GraphQL -> vaultId: String (scalar)
+        if (ec.Includes("vaultId",true))
+        {
+            if(this.VaultId == null) {
+
+                this.VaultId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.VaultId != null && ec.Excludes("vaultId",true))
+        {
+            this.VaultId = null;
         }
         //      C# -> System.String? VaultName
         // GraphQL -> vaultName: String! (scalar)

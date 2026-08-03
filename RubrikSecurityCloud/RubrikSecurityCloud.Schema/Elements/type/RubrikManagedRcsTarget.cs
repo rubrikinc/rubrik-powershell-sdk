@@ -151,6 +151,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldBypassProxy")]
         public System.Boolean? ShouldBypassProxy { get; set; }
 
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean! (scalar)
+        [JsonProperty("shouldBypassProxyForDatapaths")]
+        public System.Boolean? ShouldBypassProxyForDatapaths { get; set; }
+
         //      C# -> System.Int32? SpaceUsageAlertThreshold
         // GraphQL -> spaceUsageAlertThreshold: Int! (scalar)
         [JsonProperty("spaceUsageAlertThreshold")]
@@ -200,6 +205,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> privateEndpointConnections: [PrivateEndpointConnection!] (type)
         [JsonProperty("privateEndpointConnections")]
         public List<PrivateEndpointConnection>? PrivateEndpointConnections { get; set; }
+
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        [JsonProperty("proxySettings")]
+        public ProxySettings? ProxySettings { get; set; }
 
         //      C# -> List<RcvConversionType>? RcvConversion
         // GraphQL -> rcvConversion: [RcvConversionType!] (type)
@@ -252,6 +262,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ResourceGroup = null,
         System.Int32? RunningTasks = null,
         System.Boolean? ShouldBypassProxy = null,
+        System.Boolean? ShouldBypassProxyForDatapaths = null,
         System.Int32? SpaceUsageAlertThreshold = null,
         System.String? StorageAccountName = null,
         System.Single? StorageConsumptionValue = null,
@@ -262,6 +273,7 @@ namespace RubrikSecurityCloud.Types
         RcvConversionType? ConversionOpt = null,
         PrivateEndpointConnection? PrivateEndpointConnection = null,
         List<PrivateEndpointConnection>? PrivateEndpointConnections = null,
+        ProxySettings? ProxySettings = null,
         List<RcvConversionType>? RcvConversion = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
@@ -345,6 +357,9 @@ namespace RubrikSecurityCloud.Types
         if ( ShouldBypassProxy != null ) {
             this.ShouldBypassProxy = ShouldBypassProxy;
         }
+        if ( ShouldBypassProxyForDatapaths != null ) {
+            this.ShouldBypassProxyForDatapaths = ShouldBypassProxyForDatapaths;
+        }
         if ( SpaceUsageAlertThreshold != null ) {
             this.SpaceUsageAlertThreshold = SpaceUsageAlertThreshold;
         }
@@ -374,6 +389,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PrivateEndpointConnections != null ) {
             this.PrivateEndpointConnections = PrivateEndpointConnections;
+        }
+        if ( ProxySettings != null ) {
+            this.ProxySettings = ProxySettings;
         }
         if ( RcvConversion != null ) {
             this.RcvConversion = RcvConversion;
@@ -632,6 +650,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "shouldBypassProxy\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean! (scalar)
+        if (this.ShouldBypassProxyForDatapaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldBypassProxyForDatapaths\n" ;
+            } else {
+                s += ind + "shouldBypassProxyForDatapaths\n" ;
+            }
+        }
         //      C# -> System.Int32? SpaceUsageAlertThreshold
         // GraphQL -> spaceUsageAlertThreshold: Int! (scalar)
         if (this.SpaceUsageAlertThreshold != null) {
@@ -734,6 +761,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "privateEndpointConnections" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (this.ProxySettings != null) {
+            var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "proxySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1222,6 +1261,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ShouldBypassProxy = null;
         }
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean! (scalar)
+        if (ec.Includes("shouldBypassProxyForDatapaths",true))
+        {
+            if(this.ShouldBypassProxyForDatapaths == null) {
+
+                this.ShouldBypassProxyForDatapaths = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldBypassProxyForDatapaths != null && ec.Excludes("shouldBypassProxyForDatapaths",true))
+        {
+            this.ShouldBypassProxyForDatapaths = null;
+        }
         //      C# -> System.Int32? SpaceUsageAlertThreshold
         // GraphQL -> spaceUsageAlertThreshold: Int! (scalar)
         if (ec.Includes("spaceUsageAlertThreshold",true))
@@ -1401,6 +1457,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PrivateEndpointConnections != null && ec.Excludes("privateEndpointConnections",false))
         {
             this.PrivateEndpointConnections = null;
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (ec.Includes("proxySettings",false))
+        {
+            if(this.ProxySettings == null) {
+
+                this.ProxySettings = new ProxySettings();
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            } else {
+
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            }
+        }
+        else if (this.ProxySettings != null && ec.Excludes("proxySettings",false))
+        {
+            this.ProxySettings = null;
         }
         //      C# -> List<RcvConversionType>? RcvConversion
         // GraphQL -> rcvConversion: [RcvConversionType!] (type)

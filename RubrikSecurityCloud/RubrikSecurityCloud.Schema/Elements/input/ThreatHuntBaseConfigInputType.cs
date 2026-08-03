@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("maxMatchesPerSnapshot")]
         public System.Int32? MaxMatchesPerSnapshot { get; set; }
 
+        //      C# -> System.Boolean? ShouldIncludeArchive
+        // GraphQL -> shouldIncludeArchive: Boolean (scalar)
+        [JsonProperty("shouldIncludeArchive")]
+        public System.Boolean? ShouldIncludeArchive { get; set; }
+
 
         #endregion
 

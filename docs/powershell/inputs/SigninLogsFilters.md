@@ -45,3 +45,5 @@ Filters for querying sign-in logs.
   - Filter by normalized failure category.
 - eventIds: list of System.Strings
   - Filter by event IDs (unique sign-in event identifiers).
+- capIds: list of System.Strings
+  - Filter by Conditional Access Policy IDs.

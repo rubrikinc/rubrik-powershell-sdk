@@ -2,28 +2,54 @@
 Azure O365 Exocompute cluster details.
 
 - id: System.String
+  - The Exocompute cluster ID.
 - tenantId: System.String
+  - Azure tenant ID.
 - subscriptionId: System.String
+  - Azure subscription ID.
 - groupName: System.String
+  - Azure resource group name.
 - regionName: System.String
+  - Azure region name.
 - aksId: System.String
+  - The AKS resource ID.
 - acrId: System.String
+  - The container registry resource ID.
 - storageId: System.String
+  - The storage account resource ID.
 - kmsId: System.String
+  - The KMS resource ID.
 - isProvisioned: System.Boolean
+  - Whether the cluster is provisioned.
 - scaleRuntime: ScaleRuntime
+  - The scale runtime configuration.
 - orgId: System.String
+  - The M365 org ID.
 - orgName: System.String
+  - The M365 org name.
 - orgStatus: System.String
+  - The M365 org status.
 - aksVersion: System.String
+  - The AKS version.
 - setupConfiguration: System.String
+  - The serialized setup configuration.
 - azureAppId: System.String
+  - The Azure app ID.
 - polarisAccount: System.String
+  - The Rubrik Security Cloud account ID.
 - orgTenantId: System.String
+  - The org's Azure tenant ID.
 - azureCloudType: O365AzureCloudType
+  - The Azure cloud type.
+- hostType: AzureHostType
+  - Azure host type details.
 - storageIds: ExocomputeStorageAccountIds
+  - This list has the secondary storage account ids apart from the primary
+storage account id and this list can be empty.
 - kmsSpec: KmsSpec
   - KMS and key details.
+- kmsHostType: AzureHostType
+  - KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
 - saasFeature: SaasFeature
   - Rubrik SaaS feature type using the Exocompute cluster.
 - colossusBackupStorageAccountId: System.String
@@ -40,13 +66,9 @@ Azure O365 Exocompute cluster details.
   - Sharding strategy for the Exocompute.
 - multiTenantHostSpec: MultiTenantHostSpec
   - Specifies the multitenant host details.
+- provisioningState: ClusterProvisioningState
+  - Cluster provisioning state.
 - internalKmsSpec: KmsSpec
   - Specifies the Rubrik-owned internal key vault details used during KMS rekey.
 - aksLbIps: list of System.Strings
   - List of AKS load balancer IPs.
-- kmsHostType: AzureHostType
-  - KMS host type details. The possible values are RUBRIK_HOST and CUSTOMER_HOST.
-- hostType: AzureHostType
-  - Azure host type details.
-- provisioningState: ClusterProvisioningState
-  - Cluster provisioning state.

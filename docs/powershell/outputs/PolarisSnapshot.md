@@ -1,66 +1,92 @@
 ### PolarisSnapshot
+A cloud-managed snapshot type that extends the generic snapshot with
+additional fields for cloud-managed snapshots.
+
 - id: System.String
+  - The ID of the snapshot.
 - date: DateTime
-- expirationDate: DateTime
-- expiryHint: System.Boolean
-- snappableId: System.String
-- parentSnapshotId: System.String
+  - The date of the snapshot.
 - isCorrupted: System.Boolean
-- indexingAttempts: System.Int64
+  - Specifies whether or not the snapshot is corrupted.
 - isIndexed: System.Boolean
   - Specifies whether or not the snapshot is indexed.
-- indexTime: DateTime
 - isUnindexable: System.Boolean
+  - Specifies whether or not the snapshot is unindexable.
+- indexingAttempts: System.Int64
+  - The number of indexing attempts for the snapshot.
+- expirationDate: DateTime
+  - The expiration date of the snapshot.
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
 - isOnDemandSnapshot: System.Boolean
-- isDeletedFromSource: System.Boolean
-- isReplicated: System.Boolean
-- unexpiredReplicaCount: System.Int32
-- isArchived: System.Boolean
-- unexpiredArchivedSnapshotCount: System.Int32
-- sequenceNumber: System.Int32
-- consistencyLevel: SnapshotConsistencyLevel
-- isDownloadedSnapshot: System.Boolean
-- isReplica: System.Boolean
-- isArchivalCopy: System.Boolean
+  - Specifies whether the snapshot is an on-demand snapshot.
+- snappableId: System.String
+  - The workload ID of the snapshot.
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.
+- archivalLocationId: System.String
+  - Specifies the ID of the location where the snapshot is uploaded to.
 - archivedSnapshots: list of ArchivedSnapshots
   - Archived copies of the snapshot.
-- archivalLocationId: System.String
-  - Specifies ID of the location where snapshot is uploaded to.
-- sourceSnapshotId: System.String
-  - Specifies the source snapshot ID.
-- isRetentionLocked: System.Boolean
-  - Specifies whether the snapshot is retention locked.
-- retentionLockModeAcrossLocations: RetentionLockMode
-  - Specifies the mode of the retention lock if it's enabled across any locations.
-- legalHoldInfo: LegalHoldInfo
-  - Contains info regarding legal hold on snapshot, null otherwise.
-- replicationLocations: list of DataLocations
-- hasUnexpiredReplica: System.Boolean
-  - Indicates whether the snapshot has a valid replica.
+- backupType: BackupType
+  - Specifies backup type for this snapshot.
+- consistencyLevel: SnapshotConsistencyLevel
+  - The consistency level of the snapshot.
+- expiryHint: System.Boolean
+  - Specifies whether the snapshot will expire soon.
 - hasUnexpiredArchivedCopy: System.Boolean
   - Indicates whether the snapshot has a valid archived copy.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
+- hasUnexpiredReplica: System.Boolean
+  - Indicates whether the snapshot has a valid replica.
+- indexTime: DateTime
+  - The time when the snapshot was indexed.
+- isArchivalCopy: System.Boolean
+  - Specifies whether the snapshot is an archival copy.
+- isArchived: System.Boolean
+  - Specifies whether the snapshot has been archived to an archival location.
+- isDeletedFromSource: System.Boolean
+  - Specifies whether the snapshot has been deleted from its source cluster.
+- isDownloadedSnapshot: System.Boolean
+  - Specifies whether the snapshot was downloaded from an archival location.
+- isReplica: System.Boolean
+  - Specifies whether the snapshot is a replica.
+- isReplicated: System.Boolean
+  - Specifies whether the snapshot has been replicated to another location.
+- isRetentionLocked: System.Boolean
+  - Specifies whether the snapshot is retention locked.
+- legalHoldInfo: LegalHoldInfo
+  - Contains info regarding legal hold on the snapshot; null otherwise.
+- parentSnapshotId: System.String
+  - Specifies the parent snapshot ID.
+- retentionLockModeAcrossLocations: RetentionLockMode
+  - Specifies the mode of the retention lock if it's enabled across any locations.
+- sequenceNumber: System.Int32
+  - The sequence number of this snapshot (ordering within the workload).
+- snapshotRetentionInfo: RscSnapshotRetentionInfo
+  - Snapshot retention-related information for local, archival, and replication locations.
+- sourceSnapshotId: System.String
+  - Specifies the source snapshot ID.
+- unexpiredArchivedSnapshotCount: System.Int32
+  - The count of unexpired archived snapshot copies.
+- unexpiredReplicaCount: System.Int32
+  - The count of unexpired replica copies.
 - polarisSpecificSnapshot: PolarisSpecificSnapshot
   - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
+- replicationLocations: list of DataLocations
+  - The replication data locations for the snapshot.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
 - pendingSla: SlaDomain
   - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
 - archivalLocationName: System.String
   - Specifies the name of the location where the snapshot is uploaded.
 - isRansomwareInvestigatedSnapshot: System.Boolean
   - Specifies whether the snapshot has been analyzed by Ransomware Detection.
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
 - isSnapshotSearchable: System.Boolean
   - Indicates whether snapshot-level file search is available for this snapshot. Might return false while search indexing is actively in progress.
 - slaDomain: SlaDomain
-- snapshotRetentionInfo: RscSnapshotRetentionInfo
-  - Snapshot retention-related information for local, archival, and replication locations.
-- backupType: BackupType
-  - Specifies backup type for this snapshot.
-- isExpired: System.Boolean
-  - Specifies whether or not the snapshot is expired.
-- isQuarantineProcessing: System.Boolean
-  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
-- isQuarantined: System.Boolean
-  - Specifies whether the snapshot is quarantined.
-- isAnomaly: System.Boolean
-  - Flag if the snapshot is an anomaly.
+  - The effective SLA Domain of this snapshot.

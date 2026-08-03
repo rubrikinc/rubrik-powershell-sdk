@@ -86,11 +86,36 @@ Get the list of possible values for selection for a policy filter.
     - policyTypeFilter - PolicyTypeFilter: Structured filter for policy-type-specific scoping (e.g., identity event providers).
     - eventProviders - list of EventProviders: DEPRECATED: use policyTypeFilter instead. List of identity event providers to scope the values.
 - Returns GetPolicyFilterValuesType.
+### policyframeworks
+Get the list of possible policy frameworks.
+
+- There is a single argument of type list of PolicyTypes.
+- Returns list of System.Strings.
 ### policyobjectusages
 Returns the policies assigned to each object.
 
 - There is a single argument of type list of System.Strings.
 - Returns PolicyObjectUsageConnection.
+### policyrisksummaries
+List of policy risk summaries for the requested policies on a given date.
+
+- There are 3 arguments.
+    - policyIds - list of System.Strings: Policy IDs whose risk summaries should be returned.
+    - summaryDate - System.String: Date for which risk summaries are requested.
+    - includeWhitelistedResults - System.Boolean: Specifies whether allowlisted results should be included.
+- Returns list of PolicyRiskSummarys.
+### policyviolationticketnumbers
+Returns distinct ticket numbers (ServiceNow / Jira) associated
+with policy violation remediations, optionally filtered by a
+search term. When the search term is empty, the most recent
+distinct ticket numbers are returned.
+
+- There are 2 arguments.
+    - policyTypes - list of PolicyTypes: Policy types to scope the ticket lookup.
+    - searchTerm - System.String: Optional substring filter for ticket numbers.
+When omitted, the most recent distinct ticket
+numbers are returned.
+- Returns list of System.Strings.
 ### securitypolicies
 All security policies.
 
@@ -132,6 +157,21 @@ The full details of a policy and its definition.
     - includeViolationInsights - System.Boolean: Include violated hits.
     - policyType - PolicyType: Policy type.
 - Returns PolicyResult.
+### sidspolicyhitssummary
+Returns the policy summary for security identifiers.
+
+- There are 10 arguments.
+    - sids - list of System.Strings: List of security identifiers.
+    - day - System.String: Date in the format (YYYY-MM-DD).
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
+    - policyId - System.String: Policy id.
+    - objectIdsFilter - list of System.Strings: Object IDs to filter.
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - sortBy - SidPolicySummarySortBy: Field on which to perform the sorting operation.
+    - platformCategoryFilter - list of PlatformCategorys: Platform category to filter.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - shouldCalculateAggregatedDataTypeLevelResults - System.Boolean: Specifies whether aggregated data type level results should be calculated.
+- Returns SidsPolicyHitsSummaries.
 ### topriskpolicysummaries
 Retrieve most risky policies.
 

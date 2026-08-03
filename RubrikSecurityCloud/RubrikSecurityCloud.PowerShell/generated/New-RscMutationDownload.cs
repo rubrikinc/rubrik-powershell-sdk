@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 25
+    /// Create a new RscQuery object for any of the 26
     /// operations in the 'Report Download' API domain:
-    /// ActiveDirectorySnapshotFromLocation, AnomalyDetailsCsv, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesFromFusionComputeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, FusionComputeSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, OpenstackSnapshotFromLocation, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, ThreatHuntV2ResultsCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// ActiveDirectorySnapshotFromLocation, AnomalyDetailsCsv, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesFromFusionComputeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, FusionComputeSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, OpenstackSnapshotFromLocation, PureStorageProtectionGroupSnapshotFromLocation, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, ThreatHuntV2ResultsCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// </summary>
     /// <description>
     /// New-RscMutationDownload creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 25 operations
+    /// There are 26 operations
     /// in the 'Report Download' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ActiveDirectorySnapshotFromLocation, AnomalyDetailsCsv, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesFromFusionComputeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, FusionComputeSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, OpenstackSnapshotFromLocation, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, ThreatHuntV2ResultsCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
+    /// one of: ActiveDirectorySnapshotFromLocation, AnomalyDetailsCsv, AuditLogCsvAsync, CdmTprConfigurationAsync, ExchangeSnapshot, ExchangeSnapshotV2, FilesFromFusionComputeSnapshot, FilesetSnapshot, FilesetSnapshotFromLocation, FromArchiveV2, FusionComputeSnapshotFromLocation, ObjectFilesCsv, ObjectsListCsv, OpenstackSnapshotFromLocation, PureStorageProtectionGroupSnapshotFromLocation, ReportCsvAsync, ReportPdfAsync, ResultsCsv, SapHanaSnapshot, SapHanaSnapshotFromLocation, SapHanaSnapshotsForPointInTimeRecovery, SnapshotResultsCsv, ThreatHuntCsv, ThreatHuntV2ResultsCsv, VolumeGroupSnapshotFiles, or VolumeGroupSnapshotFromLocation.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -754,6 +754,44 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	snapshotId = $someString
+    /// 	# OPTIONAL
+    /// 	downloadConfig = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PureStorageProtectionGroupSnapshotFromLocation operation
+    /// of the 'Report Download' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Download
+    /// # API Operation: PureStorageProtectionGroupSnapshotFromLocation
+    /// 
+    /// $query = New-RscMutationDownload -Operation PureStorageProtectionGroupSnapshotFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// 	# OPTIONAL
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
@@ -1625,6 +1663,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ObjectFilesCsv",
                 "ObjectsListCsv",
                 "OpenstackSnapshotFromLocation",
+                "PureStorageProtectionGroupSnapshotFromLocation",
                 "ReportCsvAsync",
                 "ReportPdfAsync",
                 "ResultsCsv",
@@ -1692,6 +1731,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "OpenstackSnapshotFromLocation":
                         this.ProcessRecord_OpenstackSnapshotFromLocation();
+                        break;
+                    case "PureStorageProtectionGroupSnapshotFromLocation":
+                        this.ProcessRecord_PureStorageProtectionGroupSnapshotFromLocation();
                         break;
                     case "ReportCsvAsync":
                         this.ProcessRecord_ReportCsvAsync();
@@ -1860,6 +1902,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -OpenstackSnapshotFromLocation";
             // Create new graphql operation downloadOpenstackSnapshotFromLocation
             InitMutationDownloadOpenstackSnapshotFromLocation();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // downloadPureStorageProtectionGroupSnapshotFromLocation.
+        internal void ProcessRecord_PureStorageProtectionGroupSnapshotFromLocation()
+        {
+            this._logger.name += " -PureStorageProtectionGroupSnapshotFromLocation";
+            // Create new graphql operation downloadPureStorageProtectionGroupSnapshotFromLocation
+            InitMutationDownloadPureStorageProtectionGroupSnapshotFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2537,6 +2588,36 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	snapshotId = $someString
+	# OPTIONAL
+	downloadConfig = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+	# REQUIRED
+	locationId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // downloadPureStorageProtectionGroupSnapshotFromLocation(input: DownloadPureStorageProtectionGroupSnapshotFromLocationInput!): AsyncRequestStatus!
+        internal void InitMutationDownloadPureStorageProtectionGroupSnapshotFromLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadPureStorageProtectionGroupSnapshotFromLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDownloadPureStorageProtectionGroupSnapshotFromLocation",
+                "($input: DownloadPureStorageProtectionGroupSnapshotFromLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.DownloadPureStorageProtectionGroupSnapshotFromLocation,
+                Mutation.DownloadPureStorageProtectionGroupSnapshotFromLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
 	# OPTIONAL
 	downloadConfig = @{
 		# OPTIONAL

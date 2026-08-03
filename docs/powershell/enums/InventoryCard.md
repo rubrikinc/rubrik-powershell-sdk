@@ -66,3 +66,6 @@ Inventory Card options that the user can select as a workload.
 - GLUE_ICEBERG - Inventory card is AWS Glue Iceberg.
 - GCP_BIGQUERY - Inventory card is GCP BigQuery.
 - POWER_PLATFORM - Inventory card is Microsoft Power Platform.
+- MARIADB - Inventory card is MariaDB.
+- S3_TABLES_ICEBERG - Inventory card is AWS S3 Tables Iceberg.
+- PING_FEDERATE - Inventory card is PingFederate.

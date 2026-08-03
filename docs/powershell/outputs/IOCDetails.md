@@ -17,5 +17,13 @@ Details of IOC for a matched file.
   - Source type of the intel feed, for example RUBRIK, CROWDSTRIKE, or
 TAXII_2_1. Used by clients to gate per-feed actions such as enabling
 or disabling IOC.
+- yaraRuleName: System.String
+  - YARA rule name associated with the indicator of compromise.
+- hasScopedDisable: System.Boolean
+  - Whether this IOC has at least one active scoped disable.
+- intelFeedId: System.String
+  - Unique ID of the intel feed for the IOC. Unlike intel_feed_name, this is
+stable and unique across providers; legacy matches map to the GTI feed's
+all-zero UUID.
 - iocStatus: FeedEntryStatus
   - Status of the feed entry.

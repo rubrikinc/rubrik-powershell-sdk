@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.String? LastSuccessfulUpgradeTime
+        // GraphQL -> lastSuccessfulUpgradeTime: String (scalar)
+        [JsonProperty("lastSuccessfulUpgradeTime")]
+        public System.String? LastSuccessfulUpgradeTime { get; set; }
+
         //      C# -> System.String? NetworkThrottle
         // GraphQL -> networkThrottle: String! (scalar)
         [JsonProperty("networkThrottle")]
@@ -74,6 +79,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> osName: String (scalar)
         [JsonProperty("osName")]
         public System.String? OsName { get; set; }
+
+        //      C# -> System.String? RbsVersion
+        // GraphQL -> rbsVersion: String (scalar)
+        [JsonProperty("rbsVersion")]
+        public System.String? RbsVersion { get; set; }
 
         //      C# -> System.String? ResourceInfo
         // GraphQL -> resourceInfo: String (scalar)
@@ -119,8 +129,10 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? DefaultCbt = null,
         List<System.String>? IpAddresses = null,
         System.Boolean? IsArchived = null,
+        System.String? LastSuccessfulUpgradeTime = null,
         System.String? NetworkThrottle = null,
         System.String? OsName = null,
+        System.String? RbsVersion = null,
         System.String? ResourceInfo = null,
         HostConnectionStatus? ConnectionStatus = null,
         MssqlSddDetail? MssqlSddDetail = null,
@@ -155,11 +167,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
         }
+        if ( LastSuccessfulUpgradeTime != null ) {
+            this.LastSuccessfulUpgradeTime = LastSuccessfulUpgradeTime;
+        }
         if ( NetworkThrottle != null ) {
             this.NetworkThrottle = NetworkThrottle;
         }
         if ( OsName != null ) {
             this.OsName = OsName;
+        }
+        if ( RbsVersion != null ) {
+            this.RbsVersion = RbsVersion;
         }
         if ( ResourceInfo != null ) {
             this.ResourceInfo = ResourceInfo;
@@ -271,6 +289,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isArchived\n" ;
             }
         }
+        //      C# -> System.String? LastSuccessfulUpgradeTime
+        // GraphQL -> lastSuccessfulUpgradeTime: String (scalar)
+        if (this.LastSuccessfulUpgradeTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastSuccessfulUpgradeTime\n" ;
+            } else {
+                s += ind + "lastSuccessfulUpgradeTime\n" ;
+            }
+        }
         //      C# -> System.String? NetworkThrottle
         // GraphQL -> networkThrottle: String! (scalar)
         if (this.NetworkThrottle != null) {
@@ -287,6 +314,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "osName\n" ;
             } else {
                 s += ind + "osName\n" ;
+            }
+        }
+        //      C# -> System.String? RbsVersion
+        // GraphQL -> rbsVersion: String (scalar)
+        if (this.RbsVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbsVersion\n" ;
+            } else {
+                s += ind + "rbsVersion\n" ;
             }
         }
         //      C# -> System.String? ResourceInfo
@@ -506,6 +542,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArchived = null;
         }
+        //      C# -> System.String? LastSuccessfulUpgradeTime
+        // GraphQL -> lastSuccessfulUpgradeTime: String (scalar)
+        if (ec.Includes("lastSuccessfulUpgradeTime",true))
+        {
+            if(this.LastSuccessfulUpgradeTime == null) {
+
+                this.LastSuccessfulUpgradeTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastSuccessfulUpgradeTime != null && ec.Excludes("lastSuccessfulUpgradeTime",true))
+        {
+            this.LastSuccessfulUpgradeTime = null;
+        }
         //      C# -> System.String? NetworkThrottle
         // GraphQL -> networkThrottle: String! (scalar)
         if (ec.Includes("networkThrottle",true))
@@ -539,6 +592,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsName != null && ec.Excludes("osName",true))
         {
             this.OsName = null;
+        }
+        //      C# -> System.String? RbsVersion
+        // GraphQL -> rbsVersion: String (scalar)
+        if (ec.Includes("rbsVersion",true))
+        {
+            if(this.RbsVersion == null) {
+
+                this.RbsVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbsVersion != null && ec.Excludes("rbsVersion",true))
+        {
+            this.RbsVersion = null;
         }
         //      C# -> System.String? ResourceInfo
         // GraphQL -> resourceInfo: String (scalar)

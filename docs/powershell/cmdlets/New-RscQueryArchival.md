@@ -52,6 +52,12 @@ Checks whether enabling Time-based, One-Time Password (TOTP) is mandatory in the
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
+### locationforecastrefreshstatus
+Returns whether an archival-forecast refresh is currently in
+progress for the caller's account.
+
+- The locationforecastrefreshstatus subcommand takes no arguments.
+- Returns ArchivalLocationForecastRefreshStatus.
 ### locationforecasts
 Returns forecasted archival storage for the requested locations.
 Data is aggregated per location across all protected objects.

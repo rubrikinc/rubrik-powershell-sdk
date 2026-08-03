@@ -25,11 +25,13 @@ each activity.
 types for each activity.
 - Returns ActivityEntryConnection.
 ### adgroupmembers
-Objects that match the specifications of the AD group.
+Returns members matching an AD group spec, in a given org.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - orgId - System.String: Org UUID.
     - adGroupSpec - AdGroupSpecInput: The Azure Active Directory group spec.
 - Returns O365AdGroupMemberConnection.
@@ -119,6 +121,30 @@ Results for Anomaly Investigations grouped by an argument.
     - filter - AnomalyResultFilterInput: Filter anomaly results by input.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns AnomalyResultGroupedDataConnection.
+### appaccessgraph
+GetAppAccessGraph returns aggregated counts for a user's app access paths.
+Shows how many apps the user can access directly and via groups.
+
+- There is a single argument of type AppAccessGraphInput.
+- Returns AppAccessGraph.
+### appaccessimpact
+Returns the app access impact of an identity event -- which apps a user
+gained or lost access to, and whether each change is a full access change
+or a path-only change.
+
+- There is a single argument of type AppAccessImpactInput.
+- Returns AppAccessImpact.
+### appaccessprincipals
+ListAppAccessPrincipals returns a list of principals (groups or apps) that
+participate in app access paths for a given user.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - AppAccessPrincipalsFilterInput: Filter to be applied when retrieving app access principals.
+- Returns AppAccessPrincipalConnection.
 ### aremultigeobackupsenabled
 Retrieves the status of multi-geo backups for the specified organization.
 
@@ -302,6 +328,13 @@ Checks whether the latest version of the Microsoft 365 Management App exists.
 
 - There is a single argument of type CheckLatestVersionMgmtAppExistsInput.
 - Returns CheckLatestVersionMgmtAppExistsReply.
+### classifiableassetcount
+Returns the count of classifiable assets by platform.
+
+- There are 2 arguments.
+    - day - System.String: Date in the format (YYYY-MM-DD).
+    - workloadTypes - list of DataGovObjectTypes: Types of workloads used for filtering the query results.
+- Returns list of ClassifiableAssetCounts.
 ### clouddirectchecksharepath
 CloudDirectCheckSharePath validates if a share path is accessible on the specified host.
 
@@ -391,6 +424,13 @@ labels for all virtual machines in a Cloud Direct cluster.
 
 - There is a single argument of type GetCoordinatorLabelsReq.
 - Returns CoordinatorLabelsReply.
+### coordinatorlabelsvalidation
+Checks whether the label configuration on a Cloud Direct cluster
+supports backup operations. Returns an error with a customer-friendly
+message when the configuration would prevent backups from running.
+
+- There is a single argument of type System.String.
+- Returns System.String.
 ### crawl
 Returns details for one crawl.
 
@@ -458,6 +498,17 @@ Returns hits grouped by analyzer and policy.
 
 - There is a single argument of type System.Boolean.
 - Returns GetDashboardSummaryReply.
+### dataaccessstats
+Aggregated access statistics with breakdown by access type and exposure
+information.
+
+- There is a single argument of type DataAccessStatsInput.
+- Returns DataAccessStatsResponse.
+### datadiscoveryobjectscount
+Returns the counts of objects that are assigned policies, objects that are not assigned policies, and objects that are not supported by Data Discovery.
+
+- The datadiscoveryobjectscount subcommand takes no arguments.
+- Returns DataDiscoveryObjectsCount.
 ### datagovsecdesc
 Returns permissions associated with a path.
 
@@ -473,13 +524,23 @@ Retrieve the list of data previews.
 
 - There is a single argument of type GetDataPreviewRequest.
 - Returns GetDataPreviewReply.
+### dataprotectioncoveragesummary
+Get data protection coverage summary for all platforms.
+
+- There is a single argument of type System.Int32.
+- Returns DataProtectionCoverageSummary.
 ### decryptexporturl
-Decrypt Export URL.
+Decrypts an encrypted Export URL Specs blob.
 
 - There are 2 arguments.
     - workloadFid - System.String: The FID of the workload.
-    - exportUrlSpecsEnc - System.String: Encrypted string of Export URL Specs containing arbitrary characters
+    - exportUrlSpecsEnc - System.String: Encrypted string of Export URL Specs containing arbitrary characters.
 - Returns ExportUrlSpecs.
+### defenderingestionstatuses
+Get Defender ingestion status.
+
+- The defenderingestionstatuses subcommand takes no arguments.
+- Returns list of DefenderIngestionStatuss.
 ### deploymentipaddresses
 All IP addresses on the Rubrik deployment.
 
@@ -561,6 +622,16 @@ Retrieve all custom distribution list event digests.
 
 - The distributionlistdigests subcommand takes no arguments.
 - Returns list of EventDigests.
+### documenttypes
+Returns all the document types for an account.
+
+- The documenttypes subcommand takes no arguments.
+- Returns list of DocumentAttributes.
+### documenttypesdetails
+Retrieve the list of document types and their details.
+
+- There is a single argument of type DocumentTypeStatusFilter.
+- Returns ListDocumentTypesDetailsReply.
 ### edgewindowstoollink
 Download link for Rubrik Edge Deployment Tool for Microsoft Windows.
 
@@ -571,6 +642,16 @@ Permissions assigned to the role that are in effect.
 
 - There is a single argument of type System.String.
 - Returns list of RbacPermissions.
+### entityinsights
+List entity insights.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - ListEntityInsightsFilterInput: Filter to be applied when retrieving entity insights.
+- Returns NotificationConnection.
 ### eventdigests
 Retrieve event digests for specific recipients.
 
@@ -632,6 +713,27 @@ List user activity for a specific file on a specific snapshot.
     - ListFileActivitiesInput - ListFileActivitiesInput: Request for getting user activity for a specific path on a specific snapshot.
     - FileActivitiesSort - FileActivitiesSort: Sorts to apply when listing a file's user activities.
 - Returns UserActivityResultConnection.
+### fileschemaresults
+Returns a paginated list of analyzed columns for a file's schema, filtered and
+sorted by data type relevance.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - dataTypeIdsFilter - list of System.Strings: Data type IDs to filter.
+    - snapshotFid - System.String: FID of the snapshot to analyze.
+    - snappableFid - System.String: FID of the object whose file schema results are requested.
+    - stdPath - System.String: The standard path of the file/directory to browse.
+    - filter - FileStructureFiltersInput: Optional filter for data type IDs.
+    - sort - FileStructureSortInput: Optional sort configuration.
+- Returns AnalyzedColumnConnection.
+### filesummariescount
+Returns the counts of used and unused files categorized by risk level.
+
+- There is a single argument of type System.String.
+- Returns FilesSummaryCountResultType.
 ### fusioncomputedatastore
 Summary of a FusionCompute datastore.
 
@@ -809,6 +911,13 @@ Get available versions on support portal for a cluster.
     - filterAfterSource - System.Boolean: Filter to include only the versions released after the source version.
     - sortOrder - SortOrder: Sorts the order of results.
 - Returns CdmUpgradeReleaseDetailsFromSupportPortalReply.
+### getcloudobjectscountbyregion
+Get the count of cloud objects by region.
+
+- There are 2 arguments.
+    - workloadTypes - list of ManagedObjectTypes: Workload type for the protection summary dashboard.
+    - awsServiceTypeFilter - list of AwsCloudAccountServiceTypes: Filter AWS objects by deployment model (BaaS / non-BaaS). Non-AWS objects pass through unfiltered. Empty or omitted disables the filter.
+- Returns GetCloudObjectsCountByRegionReply.
 ### getgroupcountbyprechecksstatus
 - The getgroupcountbyprechecksstatus subcommand takes no arguments.
 - Returns list of GroupCounts.
@@ -821,6 +930,18 @@ Get available versions on support portal for a cluster.
 ### getkorgtaskchainstatus
 - There is a single argument of type System.String.
 - Returns GetTaskchainStatusReply.
+### getlaminarfeaturestatus
+Retrieve the status of the Laminar feature enablement for various cloud types.
+
+- The getlaminarfeaturestatus subcommand takes no arguments.
+- Returns GetLaminarFeatureStatusReply.
+### getobjectprotectionandsensitivitysummary
+Get the object protection and sensitivity summary for the UCL Laminar dashboard.
+
+- There are 2 arguments.
+    - workloadTypes - list of ManagedObjectTypes: Workload type for the protection summary dashboard.
+    - awsServiceTypeFilter - list of AwsCloudAccountServiceTypes: Filter AWS objects by deployment model (BaaS / non-BaaS). Non-AWS objects pass through unfiltered. Empty or omitted disables the filter.
+- Returns GetObjectProtectionAndSensitivitySummaryReply.
 ### getpermissions
 Permissions assigned to the role that are in effect.
 
@@ -978,6 +1099,12 @@ Paginated list of help content snippets.
     - fids - list of System.Strings: The Rubrik UUIDs for the objects.
     - filter - list of Filters: Hierarchy object filter.
 - Returns list of HierarchyObjects.
+### hitsexposurestats
+hitsExposureStats returns the aggregated statistics for exposure of
+sensitive data.
+
+- There is a single argument of type GetHitsExposureStatsInput.
+- Returns GetHitsExposureStatsReply.
 ### identitydatalocationsencryptioninfo
 Retrieve the encryption information for identity data locations.
 
@@ -1045,12 +1172,28 @@ Retrieve settings of the IP allowlist.
 
 - The ipwhitelistsettings subcommand takes no arguments.
 - Returns IpWhitelistSettings.
+### isappaccessgraphready
+Checks whether app access data is available for a domain.
+Returns true when app assignment data is ready for the specified domain.
+
+- There is a single argument of type System.String.
+- Returns System.Boolean.
 ### isclouddirectsharepathvalid
 IsCloudDirectSharePathValid validates if a share path is
 accessible on the specified system.
 
 - There is a single argument of type CloudDirectValidateSharePathReq.
 - Returns CloudDirectValidateSharePathResp.
+### isidentitysecurityroleassignmentcomplete
+If IR room is configured.
+
+- The isidentitysecurityroleassignmentcomplete subcommand takes no arguments.
+- Returns System.Boolean.
+### isidpsetupcomplete
+Checks if any identity provider is set up.
+
+- There is a single argument of type list of ManagedObjectTypes.
+- Returns System.Boolean.
 ### isipmienabled
 Check if IPMI is enabled on the cluster.
 
@@ -1136,6 +1279,12 @@ Check if the cluster has at least 1 node with its bond interfaces configured wit
 ### lambdasettings
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
+### laminarssodetails
+SSO details required to deep link from RSC into the Laminar (DSPM) environment
+associated with the current account.
+
+- The laminarssodetails subcommand takes no arguments.
+- Returns GetLaminarSSODetailsReply.
 ### latestgposettings
 GetLatestGpoSettings returns the current GPO settings from the latest
 DC snapshot, without requiring a change event. Use this when the GPO
@@ -1149,11 +1298,45 @@ Information about the licenses at the product level.
 
 - The licensedproducts subcommand takes no arguments.
 - Returns GetLicensedProductsInfoReply.
+### listaccessgrantingidentities
+ListAccessGrantingIdentities returns a list of identities that grant access to resources
+based on the provided filter criteria.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - AccessFilter: Filter to be applied when retrieving access granting identities.
+- Returns PrincipalSummaryConnection.
 ### listalluploadrecords
 List all the upload records.
 
 - There is a single argument of type ListAllUploadRecordsInput.
 - Returns ListAllUploadRecordsReply.
+### listdataaccessidentities
+ListDataAccessIdentities returns a list of identities with access to resources
+based on the provided filter criteria.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - AccessFilter: Filter to be applied when retrieving access identities.
+- Returns PrincipalSummaryConnection.
+### listlinkedentitiesforgpo
+Returns a paginated list of AD structural entities (OUs, Domains, Sites)
+linked to a specific GPO, along with GPO link details.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - ListLinkedEntitiesForGpoFilterInput: Optional filter criteria for linked entities.
+    - gpoId - System.String: Identifies the GPO whose linked entities to list.
+- Returns LinkedEntityConnection.
 ### lockoutconfig
 Get the lockout configurations of the current organization.
 
@@ -1349,6 +1532,16 @@ Returns objects that have already been assigned to existing orgs.
     - allowedClusters - list of System.Strings: Allowed clusters in the org.
     - targetOrgId - System.String: The ID of the target organization to compare the rules of the current organization.
 - Returns list of ObjectIdsForHierarchyTypes.
+### objecttagkeys
+List of object tag keys.
+
+- The objecttagkeys subcommand takes no arguments.
+- Returns list of System.Strings.
+### objecttagvalues
+List of object tag values for a particular key.
+
+- There is a single argument of type System.String.
+- Returns list of System.Strings.
 ### objecttypeaccesssummary
 Returns total sensitive hits grouped by object type and also gives policy level breakdown for each object type.
 
@@ -1359,7 +1552,7 @@ Returns total sensitive hits grouped by object type and also gives policy level 
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - timelineDate - System.String: Date for which the results will be retrieved.
     - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - includeWhitelistedResults - System.Boolean: Specifies whether allowlisted results should be included.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - ObjectTypeSummariesFilter: Filter for object type summary.
     - sort - ObjectTypeAccessSummarySortBy: Field on which to perform the sorting operation.
@@ -1396,6 +1589,11 @@ Returns the list of organizations to which the principal has access.
 
 - There is a single argument of type System.String.
 - Returns OrgsForPrincipalReply.
+### ownersfiltervalues
+GetOwnersFilterValues returns potential owners for identity filters.
+
+- There is a single argument of type GetOwnersFilterValuesInput.
+- Returns GetOwnersFilterValuesReply.
 ### passkeyconfig
 Passkey config for current org.
 
@@ -1458,7 +1656,11 @@ Get the maximum 'Last evaluated at' timestamp for policies.
 ### policydetails
 Returns data categories for an account.
 
-- There are 8 arguments.
+- There are 12 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - dataCategoryIds - list of System.Strings: Filter for data category IDs.
     - dataTypeIds - list of System.Strings: Data type IDs to filter.
     - dataCategoryType - DataCategoryType: Filter for data category type.
@@ -1472,9 +1674,32 @@ Returns data categories for an account.
 Returns details for one policy object.
 
 - There are 3 arguments.
-    - snappableFid - System.String
-    - snapshotFid - System.String
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - snappableFid - System.String: The unique identifier of the workload.
+    - snapshotFid - System.String: The unique identifier of the snapshot.
+    - includeWhitelistedResults - System.Boolean: Specifies whether allowlisted results should be included.
+- Returns PolicyObj.
+### policyobjfolderchildren
+Browse the contents of a directory within a data governance policy object snapshot.
+
+- There are 10 arguments.
+    - workloadId - System.String: The ID of the workload.
+    - snapshotId - System.String: The ID of the snapshot.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - BrowseDirectoryFiltersInput: Filters for browsing directory contents.
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
+    - stdPath - System.String: The standard path of the directory to browse.
+    - timezone - System.String: The timezone in which to display timestamps.
+- Returns FileResultConnection.
+### policyobjopt
+Returns details for one policy object if it exists.
+
+- There are 3 arguments.
+    - snappableFid - System.String: The unique identifier of the workload.
+    - snapshotFid - System.String: The unique identifier of the snapshot.
+    - includeWhitelistedResults - System.Boolean: Specifies whether allowlisted results should be included.
 - Returns PolicyObj.
 ### policyobjs
 Returns status for all objects at a specified timestamp.
@@ -1491,7 +1716,7 @@ Returns status for all objects at a specified timestamp.
     - clusterIdsFilter - list of System.Strings: List of Rubrik clusters for filtering results.
     - searchObjectName - System.String: Object name to search.
     - subscriptionIdsFilter - list of System.Strings: List of subscriptions for filtering results.
-    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - includeWhitelistedResults - System.Boolean: Specifies whether allowlisted results should be included.
     - sids - list of System.Strings: Filter for the given list of security identifiers.
     - insightsMetadataId - System.String: Filter objects with insights metadata ID.
     - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
@@ -1534,6 +1759,19 @@ Get a single policy violation.
     - violationId - System.String: Violation ID.
     - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
 - Returns PolicyViolation.
+### policyviolationhistoryentries
+Get the lifecycle history of a single policy violation, including status
+changes and remediation activity, ordered by timestamp descending.
+
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - violationId - System.String: The ID of the policy violation.
+    - policyType - PolicyType: The policy type of the violation. Must match the
+violation's actual policy type.
+- Returns PolicyViolationHistoryEntryConnection.
 ### policyviolations
 Get a paginated list of policy violations.
 
@@ -1626,11 +1864,129 @@ Get status of last completed prechecks Job along with details of currently runni
 
 - There is a single argument of type System.String.
 - Returns PrechecksStatusReply.
+### principalapipermissions
+GetPrincipalApiPermissions returns API permissions information for a
+principal.
+
+- There is a single argument of type PrincipalApiPermissionsInput.
+- Returns PrincipalApiPermissionsReply.
+### principalcountssummaries
+Stats APIs
+Principal count summaries.
+
+- There are 2 arguments.
+    - filter - PrincipalCountsFilterInput: Filter to be applied when retrieving principal count summaries.
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
+- Returns GetPrincipalCountsReply.
+### principaldepartments
+Returns distinct department values across all principals, used to
+populate the department filter in the identity inventory UI.
+
+- There is a single argument of type System.String.
+- Returns list of System.Strings.
+### principaldetails
+Get principal details.
+
+- There are 3 arguments.
+    - sid - System.String: Security identifier.
+    - timelineDate - System.String: Date for which the results will be retrieved.
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+- Returns PrincipalDetails.
+### principalentities
+Principal entities.
+
+- There is a single argument of type PrincipalEntitiesFilterInput.
+- Returns list of PrincipalEntitys.
+### principalobjectsummaries
+List of principal object summaries.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sids - list of System.Strings: List of security identifiers.
+    - filter - PrincipalObjectSummariesFilterInput: Filter to be applied when retrieving principal object summaries.
+    - timelineDate - System.String: Date for which the results will be retrieved.
+    - includeCount - System.Boolean: Include counts in the results.
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+- Returns PrincipalObjectSummaryConnection.
+### principalriskchanges
+Return the principals whose risk has changed.
+
+- There are 5 arguments.
+    - principalRiskSummaryPrincipalType - PrincipalRiskySummaryPrincipalType: Specifies the type of principal.
+    - limit - System.Int32: Maximum number of entries in the response.
+    - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
+    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+- Returns GetPrincipalRiskChangesReply.
+### principalrisksummaries
+Get principal risk summaries.
+
+- There are 5 arguments.
+    - queryDate - System.String: Date for which the principal risk summary is retrieved.
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
+    - principalRiskSummaryPrincipalType - PrincipalRiskySummaryPrincipalType: Specifies the type of principal.
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - PrincipalSummaryFilterType - PrincipalSummaryFilter: Principal summary filter.
+- Returns GetPrincipalRiskSummaryReply.
+### principalrisktrend
+Return the date-wise risk summary of a principal.
+
+- There are 6 arguments.
+    - sid - System.String: Security identifier.
+    - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
+    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
+    - policyId - System.String: Policy id.
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
+- Returns GetPrincipalRiskTrendReply.
+### principalsummaries
+List of principal summaries.
+
+- There are 13 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - PrincipalSummariesFilterInput: Filter to be applied when retrieving principal summaries.
+    - timelineDate - System.String: Date for which the results will be retrieved.
+    - sort - ListPrincipalsSummarySortInput: Field on which to perform the sorting operation.
+    - includeCount - System.Boolean: Include counts in the results.
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+    - insightsMetadataId - System.String: Filter objects with insights metadata ID.
+    - includeInsightsMarker - System.Boolean: Specifies whether to include the insights marker.
+    - includeAdditionalMetadata - System.Boolean: Specifies whether to include additional metadata required for a feature.
+- Returns PrincipalSummaryConnection.
+### principalsummary
+principalSummary returns the principal summary.
+
+- There is a single argument of type GetPrincipalSummaryReqInput.
+- Returns GetPrincipalSummaryReply.
+### principaltagstats
+principalTagStats returns the aggregated statistics for principal tags.
+
+- There is a single argument of type GetPrincipalTagStatsInput.
+- Returns GetPrincipalTagStatsReply.
+### principaltitles
+Principal titles.
+
+- There is a single argument of type PrincipalTitlesFilterInput.
+- Returns list of System.Strings.
 ### privatecontainerregistry
 Retrieves the Private Container Registry (PCR) details for an Exocompute cloud account.
 
 - There is a single argument of type PrivateContainerRegistryInput.
 - Returns PrivateContainerRegistryReplyType.
+### privilegedprincipalsummaries
+Privileged Principal Summaries.
+
+- There are 2 arguments.
+    - filter - PrivilegedPrincipalFilterInput: Filter to be applied when retrieving privileged principal summaries.
+    - historicalDeltaDays - System.Int32: Number of historical days to go backward in time to calculate the delta.
+- Returns GetPrivilegedPrincipalsSummaryResp.
 ### productdocumentation
 A product documentation.
 
@@ -1662,6 +2018,44 @@ dashboard.
 
 - The protectionsummaryv2 subcommand takes no arguments.
 - Returns ProtectionSummaryV2.
+### purestorageprotectiongroupquiescecandidates
+List candidate quiesce targets for a Pure Storage protection group.
+
+Supported in v9.6
+Retrieve the discoverable VMware virtual machines (backed by the protection group's Pure volumes via VMFS datastores) and the connected RBA-installed hosts that the customer can select as quiesce targets for the protection group's app-consistent snapshot. The two streams are concatenated into a single ListResponse (VMware entries first, then RBA hosts) with stable per-source ordering so pagination is consistent across calls. Unreachable vCenters during discovery are logged at WARN server-side and silently skipped; the response carries no vCenter-status field because vCenter health is owned by the existing vCenter status surface. Authorization is the protection group's Read privilege; the caller's AuthorizationContext scopes both the virtual machine cross-check and the host listing so the response cannot be used to probe for objects the caller cannot already see.
+
+- There is a single argument of type PureStorageProtectionGroupQuiesceCandidatesInput.
+- Returns QuiesceCandidateListResponse.
+### purestorageprotectiongroupsv1
+Connection of Pure Storage protection groups.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns PureStorageProtectionGroupV1Connection.
+### purestorageprotectiongroupv1
+Details of a Pure Storage protection group for a given ID.
+
+- There is a single argument of type System.String.
+- Returns PureStorageProtectionGroupV1.
+### purestoragevolumesv1
+Connection of Pure Storage volumes.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns PureStorageVolumeV1Connection.
+### purestoragevolumev1
+Details of a Pure Storage volume for a given ID.
+
+- There is a single argument of type System.String.
+- Returns PureStorageVolumeV1.
 ### quarantineddetailsforworkload
 Quarantine details of a workload.
 
@@ -1696,6 +2090,20 @@ RSC prioritizes recovery_ids if they are passed in the filter. All the filters, 
     - recoveryNameSubstring - System.String: Filter by recovery name substring.
     - sortParam - RecoverySortParamInput: Sorting parameters for the recovery list.
 - Returns RecoveryConnection.
+### recoveryspecs
+List the workload recovery specifications associated with the given
+recovery plan.
+If recovery ID is provided it will retrieve recovery specifications
+specific to that recovery.
+Else it retrieves recovery specifications for the given recovery plan.
+
+- There is a single argument of type RecoverySpecsInput.
+- Returns RecoverySpecsReply.
+### regions
+List of regions.
+
+- There is a single argument of type System.String.
+- Returns list of System.Strings.
 ### remediationtypes
 Get the list of possible remediation types for targets.
 
@@ -1716,6 +2124,11 @@ Get the reset type of a node removal job.
 
 - There is a single argument of type ResetTypeOfRemovalJobInput.
 - Returns ResetTypeOfRemovalJob.
+### resourcegroups
+List of resource groups.
+
+- There is a single argument of type System.String.
+- Returns list of ResourceGroupInfos.
 ### resourcespecs
 Lists resource specifications for the specified Recovery Plan or recovery.
 If both a recovery ID and a Recovery Plan ID are provided, we return the
@@ -1746,6 +2159,22 @@ Synced cluster information for RSC permissions.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns RscPermsToCdmInfoOut.
+### rvcdeploymenttoollink
+Download links for the Rubrik Virtual Cluster Deployment Tool (Linux/Windows/MacOS).
+Shared by both RVC LS and RVC SS wizards because the RVCDT binaries are product-agnostic.
+
+- The rvcdeploymenttoollink subcommand takes no arguments.
+- Returns RvcDeploymentToolLink.
+### rvclsovadetails
+The Rubrik CDM OVA details for RVC Local Storage.
+
+- The rvclsovadetails subcommand takes no arguments.
+- Returns list of CdmOvaDetails.
+### rvcssovadetails
+The Rubrik CDM OVA details for RVC Shared Storage.
+
+- The rvcssovadetails subcommand takes no arguments.
+- Returns list of CdmOvaDetails.
 ### saasapporganizations
 List of SaaS app organization.
 
@@ -1813,6 +2242,16 @@ Gets the rolling upgrade enabled setting for the account.
 
 - The selfserverollingupgrade subcommand takes no arguments.
 - Returns GetSelfServeRollingUpgradeReply.
+### sensitivedatasummary
+sensitiveDataSummary returns the sensitive data summary for the given filter.
+
+- There is a single argument of type SensitiveDataSummaryInput.
+- Returns SensitiveDataSummary.
+### sensitivefiledetails
+Retrieve the details of a file.
+
+- There is a single argument of type SensitiveFileMetadataInput.
+- Returns SensitiveFileDetailsReply.
 ### signinlogdetails
 Get details for a specific sign-in event.
 
@@ -1866,6 +2305,11 @@ Lists the snoozed directories for the account.
     - directorySearchFilter - System.String: Optional directory search.
     - falsePositiveTypeFilter - list of AnomalyFalsePositiveTypes: Filter by false positive type.
 - Returns SnoozedDirectoryConnection.
+### sourcerecoveryspecsv2
+Lists recovery specifications for the source in the failback scenario.
+
+- There is a single argument of type ListSourceRecoverySpecsReq.
+- Returns list of SourceChildRecoverySpecMapV2s.
 ### sqlserversetupscriptsbulk
 The script to setup the SQL Server / Managed Instance for backups, given
 the list of object IDs.
@@ -1955,9 +2399,17 @@ Get task details.
 Checks the availability of the channel name in the Team.
 
 - There are 2 arguments.
-    - teamUUID - System.String
-    - channelName - System.String
+    - teamUUID - System.String: The UUID of the Team.
+    - channelName - System.String: The channel name whose availability is being checked.
 - Returns System.Boolean.
+### topriskprincipals
+Return policy summary for security identifiers.
+
+- There are 3 arguments.
+    - principalRiskSummaryPrincipalType - PrincipalRiskySummaryPrincipalType: Specifies the type of principal.
+    - limit - System.Int32: Maximum number of entries in the response.
+    - policyId - System.String: Policy id.
+- Returns TopRiskPrincipalsReply.
 ### totpconfigstatus
 Get TOTP configuration status for a user.
 
@@ -2065,6 +2517,23 @@ Gets the status for completed/running upgrade process.
 
 - There is a single argument of type System.String.
 - Returns UpgradeStatusReply.
+### useraccessinsights
+Return the user access insights for the given time range.
+
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - startTime - DateTime: Start time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
+    - endTime - DateTime: End time in ISO string format (YYYY-MM-DDThh:mm:ssZ).
+    - includeWhitelistedResults - System.Boolean: Specifies whether whitelisted results should be included.
+- Returns PrincipalInsightConnection.
+### useraccessmetrics
+User access metrics.
+
+- The useraccessmetrics subcommand takes no arguments.
+- Returns UserAccessMetrics.
 ### useractivities
 - There are 8 arguments.
     - filter - ListObjectFilesFiltersInput
@@ -2182,6 +2651,14 @@ Retrieve users from current and descendant organizations based on the specified 
     - shouldGetLocalUsersOnly - System.Boolean: Get local users only.
     - userDomainsFilter - list of UserDomainEnums: Filter users based on their authentication domain.
 - Returns UserConnection.
+### userssummary
+Returns the count of secure and insecure users.
+
+- There are 3 arguments.
+    - startDay - System.String: Start time, in string format (YYYY-MM-DD).
+    - endDay - System.String: End time, in string format (YYYY-MM-DD).
+    - filter - UsersSummaryFilterInput: Filter for users summary.
+- Returns GetUsersSummaryReply.
 ### validateadforesttransition
 Validates if given account is ready to transition from Active Directory domain inventory page to Active Directory forest inventory page.
 
@@ -2310,6 +2787,11 @@ Volume Group Live Mount Connection.
     - filters - list of VolumeGroupLiveMountFilterInputs: Filter for volume group live mounts.
     - sortBy - VolumeGroupLiveMountSortByInput: Sort by argument for volume group live mounts.
 - Returns VolumeGroupLiveMountConnection.
+### workdayingestionstatus
+Get Workday ingestion status.
+
+- The workdayingestionstatus subcommand takes no arguments.
+- Returns IntegrationIngestionStatus.
 ### workloadalertsetting
 Get whether alerts for a given workload are enabled.
 
@@ -2355,3 +2837,9 @@ type.
 
 - There is a single argument of type ListWorkloadResourceSpecsInput.
 - Returns list of WorkloadResourceSpecs.
+### workloadsrecoveryinfo
+GetAllWorkloadsRecoveryInfo returns information regarding all
+workloads that are part of a specific recovery.
+
+- There is a single argument of type AllWorkloadsRecoveryInfoInput.
+- Returns AllWorkloadsRecoveryInfoReply.

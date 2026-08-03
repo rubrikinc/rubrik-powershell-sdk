@@ -1,40 +1,64 @@
 ### CdmSnapshot
+A snapshot of a workload managed by a Rubrik cluster.
+
 - id: System.String
+  - Unique identifier for this snapshot.
 - date: DateTime
+  - Creation time of the snapshot.
 - expirationDate: DateTime
+  - Expiration date of the snapshot, if set.
 - expiryHint: System.Boolean
+  - Whether the snapshot uses an expiry hint.
+- snappableId: System.String
+  - The workload ID of the snapshot.
 - isCorrupted: System.Boolean
+  - Whether the snapshot is corrupted.
 - indexingAttempts: System.Int64
+  - Number of indexing attempts.
 - isIndexed: System.Boolean
+  - Whether the snapshot is indexed.
 - isUnindexable: System.Boolean
+  - Whether the snapshot is unindexable.
 - isOnDemandSnapshot: System.Boolean
+  - Whether the snapshot is on demand.
 - isRetentionLocked: System.Boolean
-  - Specifies whether the snapshot follows retention lock constraint.
+  - Whether the snapshot is retention locked.
 - retentionLockModeAcrossLocations: RetentionLockMode
-  - Specifies the mode of the retention lock if it's enabled across any locations.
+  - Retention lock mode across locations.
 - cdmId: System.String
+  - The CDM internal ID.
 - cdmVersion: System.String
+  - The CDM version.
 - snapshotRetentionInfo: CdmSnapshotRetentionInfo
+  - Snapshot retention info, if set.
 - isDownloadedSnapshot: System.Boolean
+  - Whether the snapshot was downloaded.
 - isSapHanaIncrementalSnapshot: System.Boolean
-  - Specifies whether the snapshot is an incremental SAP HANA snapshot.
+  - Whether the snapshot is a SAP HANA incremental snapshot.
 - legalHoldInfo: LegalHoldInfo
-  - Contains info regarding legal hold on snapshot, null otherwise.
+  - Legal hold info, if set.
 - resourceSpec: System.String
-  - Resource spec for a snapshot.
-- subObjs: list of SnapshotSubObjects
-  - Sub objects for the snapshot.
+  - Resource spec JSON, if present.
 - isCustomRetentionApplied: System.Boolean
-  - Specifies whether custom retention is applied on the snapshot.
+  - Whether custom retention is applied.
 - aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail
-  - Details of all the locations where the snapshot is present. This is available only in some APIs for some conditions, as the location information is part of CdmSnapshotRetentionInfo most of the times.
+  - Aggregate snapshot location detail, if set.
 - cluster: Cluster
-- isThreatDetected: System.Boolean
-  - Specifies whether a threat has been detected for this snapshot. This is true if the snapshot has any hash IOC match or YARA IOC match in the threat monitoring results.
-- isThreatAnalysisCompleted: System.Boolean
-  - Specifies whether a threat analysis has been completed on this snapshot. This is true if there is any entry in the threat monitoring results table for this snapshot.
-- parentSnapshotId: System.String
-  - The ID of the parent snapshot.
+  - The Rubrik cluster that owns the snapshot.
+- cloudState: SnapshotCloudState
+  - Cloud state of the snapshot.
+- pendingSnapshotDeletion: PendingSnapshotDeletion
+  - Mapping from snapshot to delete pending action status.
+- pendingSla: SlaDomain
+  - Non-null when a user has assigned a SLA to this snapshot, and the SLA assignment is in the process of being synced over to CDM.
+- hasDelta: System.Boolean
+  - Whether the snapshot has incremental delta changes.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.
 - sapHanaAppMetadata: SapHanaAppMetadata
   - SAP HANA specific metadata for the snapshot.
 - db2AppMetadata: Db2AppMetadata
@@ -47,6 +71,8 @@
   - Managed Volume specific metadata for the snapshot. Null if snapshot is not of a managed volume.
 - activeDirectoryAppMetadata: ActiveDirectoryAppMetadata
   - Active Directory specific metadata for the snapshot. Null if snapshot is not of a domain controller.
+- pingFederateAppMetadata: PingFederateAppMetadata
+  - PingFederate-specific metadata for the snapshot. Null if the snapshot is not of a PingFederate cluster.
 - postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata
   - PostgreSQL Database Cluster-specific metadata. Null if the snapshot is not of a PostgreSQL Database Cluster.
 - mysqldbInstanceAppMetadata: KosmosWorkloadAppMetadata
@@ -55,43 +81,45 @@
   - MySQL instance-specific extended metadata with version and database info. Null if the snapshot is not of a MySQL Instance.
 - k8sAppMetadata: K8sResourceSnapshotMetadata
   - K8S specific metadata for the snapshot.
+- k8sResourceSummary: K8sSnapshotResourceSummary
+  - Compact summary of the Kubernetes resources captured in the snapshot: namespaces and per-(apiGroup, resourceType) object counts. Use the k8sSnapshotResourceObjects connection for per-object listings.
+- subObjs: list of SnapshotSubObjects
+  - Sub objects for the snapshot.
+- cdmWorkloadSnapshot: CdmWorkloadSnapshot
+  - Snapshot of a Rubrik CDM workload.
+- snappableNew: CdmHierarchySnappableNew
+  - The workload this snapshot belongs to.
 - hypervVirtualMachineAppMetadata: HypervAppMetadata
   - Hyper-V virtual machine-specific metadata. Null if the snapshot is not of a Hyper-V virtual machine.
+- mssqlAppMetadata: MssqlAppMetadata
+  - Mssql specific metadata for the snapshot.
+- vappAppMetadata: list of VappAppMetadatas
+  - Vmware vApp specific snapshot metadata.
 - fileCount: System.Int64
   - Number of files in the snapshot.
-- pendingSnapshotDeletion: PendingSnapshotDeletion
-  - Mapping from snapshot to delete pending action status.
-- isAnomaly: System.Boolean
-  - Flag if the snapshot is an anomaly.
-- hasDelta: System.Boolean
-- snappableNew: CdmHierarchySnappableNew
-- replicationLocations: list of DataLocations
-- archivalLocations: list of DataLocations
-- cloudNativeLocations: list of DataLocations
-- localLocations: list of DataLocations
-- locations: list of DataLocations
 - consistencyLevel: ConsistencyLevelEnum
+  - Consistency level of the snapshot.
+- isThreatDetected: System.Boolean
+  - Specifies whether a threat has been detected for this snapshot. This is true if the snapshot has any hash IOC match or YARA IOC match in the threat monitoring results.
+- isThreatAnalysisCompleted: System.Boolean
+  - Specifies whether a threat analysis has been completed on this snapshot. This is true if there is any entry in the threat monitoring results table for this snapshot.
+- parentSnapshotId: System.String
+  - The ID of the parent snapshot.
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
 - slaDomain: SlaDomain
   - SLA domain of the snapshot.
 - childSnapshots: list of CdmSnapshots
   - Children snapshot ID list.
-- pendingSla: SlaDomain
-  - Non-null when a user has assigned a SLA to this snapshot, and the SLA assignment is in the process of being synced over to CDM.
+- replicationLocations: list of DataLocations
+  - Replication locations where the snapshot is present.
+- archivalLocations: list of DataLocations
+  - Archival locations where the snapshot is present.
+- cloudNativeLocations: list of DataLocations
+  - Cloud-native locations where the snapshot is present.
+- localLocations: list of DataLocations
+  - Local cluster locations where the snapshot is present.
+- locations: list of DataLocations
+  - All locations where the snapshot is present.
 - latestUserNote: LatestUserNote
   - Latest user note information.
-- vappAppMetadata: list of VappAppMetadatas
-  - Vmware vApp specific snapshot metadata.
-- cloudState: SnapshotCloudState
-  - Cloud state of the snapshot.
-- cdmWorkloadSnapshot: CdmWorkloadSnapshot
-  - Snapshot of a Rubrik CDM workload.
-- mssqlAppMetadata: MssqlAppMetadata
-  - Mssql specific metadata for the snapshot.
-- isExpired: System.Boolean
-  - Specifies whether or not the snapshot is expired.
-- snappableId: System.String
-  - The workload ID of the snapshot.
-- isQuarantineProcessing: System.Boolean
-  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
-- isQuarantined: System.Boolean
-  - Specifies whether the snapshot is quarantined.

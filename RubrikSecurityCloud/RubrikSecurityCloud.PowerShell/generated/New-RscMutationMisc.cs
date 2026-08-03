@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 234
+    /// Create a new RscQuery object for any of the 256
     /// operations in the 'Miscellaneous' API domain:
-    /// AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryScheduleV2, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// ActivateDataCategory, ActivateDataType, ActivateDocumentAttribute, AddAdGroupsToHierarchy, AddCloudDirectGenericS3TenantCredentials, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSupportTunnel, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateCustomDataType, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryPlanV2, CreateRecoveryScheduleV2, CreateRecoverySpecs, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeactivateDataType, DeactivateDocumentAttribute, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectGenericS3TenantCredential, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, ExportPermissions, ExportPrincipalsSummary, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RegisterProductInterest, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetIsIdentitySecurityRoleAssignmentComplete, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartRecovery, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomDataType, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateDocumentType, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdatePredefinedDataType, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdatePureStorageProtectionGroup, UpdatePureStorageProtectionGroupVolumeExclusions, UpdateRecoveryPlanV2, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// </summary>
     /// <description>
     /// New-RscMutationMisc creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 234 operations
+    /// There are 256 operations
     /// in the 'Miscellaneous' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddAdGroupsToHierarchy, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryScheduleV2, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
+    /// one of: ActivateDataCategory, ActivateDataType, ActivateDocumentAttribute, AddAdGroupsToHierarchy, AddCloudDirectGenericS3TenantCredentials, AddCloudDirectKerberosCredential, AddCloudDirectSharesToSystem, AddCloudDirectSystem, AddConfiguredGroupToHierarchy, AddCustomIntelFeed, AddIdentityProvider, AddInventoryWorkloads, AddIpWhitelistEntries, AddMysqlInstance, AddRoleAssignments, AddVlan, AddVmAppConsistentSpecs, AirGapStatus, ApproveTprRequest, ArchiveCrawl, AssignProtection, AssignVmName, BackupDevOpsRepository, BatchDeassignRoleFromUserGroups, BatchQuarantineOperations, BatchTriggerExocomputeHealthCheck, BulkCreateFusionComputeVmBackup, BulkCreateNasFilesets, BulkObjectPause, BulkUpdateNasNamespaces, BulkUpdateSupportTunnel, BulkUpdateSystemConfig, CancelDownloadPackage, CancelScheduledUpgrade, CancelTaskchain, CancelTprRequest, ChangeCurrentUserPassword, ChangePassword, CleanupRecoveries, CloudDirectAddSubdirBackup, CloudDirectSetKerberosEnforceConfig, CloudDirectSetWanThrottleSettings, CloudDirectSystemDelete, CloudDirectSystemRescan, CloudDirectValidateSubdir, CompleteGitHubAppInstallation, CompleteGitHubAppRegistration, CompleteUploadSession, ConfirmPartUpload, CreateAutomatedRestoreMysqldbInstance, CreateCustomAnalyzer, CreateCustomDataType, CreateDistributionListDigestBatch, CreateEventDigestBatch, CreateFusionComputeMount, CreateFusionComputeVmBackup, CreateGuestCredential, CreateLegalHold, CreateOnDemandGlueIcebergTableBackup, CreateOnDemandVolumeGroupBackup, CreateRecoveryPlanV2, CreateRecoveryScheduleV2, CreateRecoverySpecs, CreateSsoUsers, CreateVappsInstantRecovery, CreateViolationRemediation, CreateVrm, DeactivateCustomAnalyzer, DeactivateDataType, DeactivateDocumentAttribute, DeleteAdGroupsFromHierarchy, DeleteCephSetting, DeleteCloudDirectGenericS3TenantCredential, DeleteCloudDirectKerberosCredential, DeleteDistributionListDigestBatch, DeleteEventDigest, DeleteFusionComputeMount, DeleteFusionComputeVrm, DeleteGuestCredentialById, DeleteIdentityProviderById, DeleteIntelFeed, DeleteIpWhitelistEntries, DeleteMvcProfiles, DeleteMysqlInstance, DeleteMysqldbInstanceLiveMount, DeleteRecoveryPlansV2, DeleteRecoveryScheduleV2, DeleteVolumeGroupMount, DenyTprRequests, DeregisterPrivateContainerRegistry, DisableSupportUserAccess, DisableTprOrg, DissolveLegalHold, EnableAutomaticFmdUpload, EnableDisableAppConsistency, EnableSupportUserAccess, EnableTprOrg, ExcludeVmDisks, ExecuteTprRequests, ExpireSnoozedDirectories, ExportPermissions, ExportPrincipalsSummary, GenerateCdmTotpSecret, GenerateConfigProtectionRestoreForm, GeneratePresignedUrlForDownload, GeneratePresignedUrlForPartUpload, GenerateSupportBundle, GetDownloadUrl, HideRevealNasNamespaces, InitializeUploadSession, InstallIoFilter, InviteSsoGroup, LinuxRbsBulkInstall, ListCidrsForComputeSetting, LockCyberRecovery, LockUsersByAdmin, LogoutFromRubrikSupportPortal, MakePrimary, ManageProtectionForLinkedObjects, MigrateFusionComputeMount, MigrateVmDataStore, ModifyDistributionListDigestBatch, ModifyEventDigestBatch, ModifyIdentityProvider, ModifyIpmi, MountDisk, NotificationForGetLicense, PatchFusionComputeVm, PatchMysqlInstance, PitRestoreMysqlInstance, ProvisionCloudDirectCloudVm, RecoverCloudDirectMultiPaths, RecoverCloudDirectNasShare, RecoverCloudDirectPath, RecoverDevOpsRepository, RefreshDevOpsOrganizations, RefreshDomain, RefreshFusionComputeVrm, RefreshGlobalManagerConnectivityStatus, RefreshMysqlInstance, RegisterProductInterest, RemoveDisk, RemoveInventoryWorkloads, RemoveNodeForReplacement, RemovePrivateEndpointList, RemoveProxyConfig, RemoveUploadRecord, RemoveVlans, ReseedLogShippingSecondary, ResetAllOrgUsersPasswords, ResetUsersPasswordsWithUserIds, ResizeDisk, ResolveAnomaly, ResolveVolumeGroupsConflict, ResumeRecovery, RetryBackup, RetryDownloadPackageJob, RevokeAllOrgRoles, RunCustomAnalyzer, ScheduleUpgradeBatchJob, SetAnalyzerRisks, SetBundleApprovalStatus, SetCephSettings, SetCloudDirectNamespaceOverride, SetCloudDirectShareExclusions, SetCloudDirectSystemOverride, SetCoordinatorLabels, SetCustomerTags, SetDatastoreFreespaceThresholds, SetIpWhitelistEnabled, SetIpWhitelistSetting, SetIsIdentitySecurityRoleAssignmentComplete, SetMfaSetting, SetPrivateContainerRegistry, SetSelfServeRollingUpgrade, SetTotpConfig, SetUpgradeType, SetUserLevelTotpEnforcement, SetUserSessionManagementConfig, SetWorkloadAlertSetting, SetupCdmTotp, SetupDisk, StartCrawl, StartDownloadPackageBatchJob, StartExportRdsInstanceJob, StartGitHubAppSetup, StartPeriodicUpgradePrechecksOnDemandJob, StartRecovery, StartUpgradeBatchJob, StartVolumeGroupMount, StopJobInstance, StopJobInstanceFromEventSeries, SubmitTprRequest, SupportPortalLogin, SwitchProductToOnboardingMode, TriggerBliMigration, TriggerCloudComputeConnectivityCheck, TriggerExocomputeHealthCheck, UninstallGitHubApp, UninstallIoFilter, UnlockUsersByAdmin, UnmountDisk, UpdateAccountOwner, UpdateAdGroup, UpdateAgentDeploymentSetting, UpdateAgentDeploymentSettingInBatch, UpdateAgentDeploymentSettingInBatchNew, UpdateAuthDomainUsersHiddenStatus, UpdateBackupThrottleSetting, UpdateBackupTriggerForWorkloads, UpdateBadDiskLedStatus, UpdateCdmUser, UpdateCloudDirectKerberosCredential, UpdateConfiguredGroup, UpdateCustomAnalyzer, UpdateCustomDataType, UpdateCustomIntelFeed, UpdateCustomerAppPermissions, UpdateDistributionListDigest, UpdateDnsServersAndSearchDomains, UpdateDocumentType, UpdateEventDigest, UpdateFeed, UpdateFloatingIps, UpdateFusionComputeMount, UpdateFusionComputeVrm, UpdateGuestCredential, UpdateInsightState, UpdateIocStatus, UpdateIpWhitelist, UpdateIpWhitelistEntry, UpdateLambdaSettings, UpdateLockoutConfig, UpdateManagedIdentities, UpdateManagedIdentitiesAsync, UpdateNetworkThrottle, UpdatePredefinedDataType, UpdateProxmoxEnvironment, UpdateProxyConfig, UpdatePureStorageProtectionGroup, UpdatePureStorageProtectionGroupVolumeExclusions, UpdateRecoveryPlanV2, UpdateRecoveryScheduleV2, UpdateRoleAssignments, UpdateSupportUserAccess, UpdateTprConfiguration, UpdateTunnelStatus, UpdateVlan, UpdateVolumeGroup, UpdateWhitelistedAnalyzers, UpgradeIoFilter, UpgradeToRsc, ValidateAndSaveCustomerKmsInfo, VmMakePrimary, WarmSearchCache, or WindowsRbsBulkInstall.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationMisc -AddAdGroupsToHierarchy).Info().
+    /// (New-RscMutationMisc -ActivateDataCategory).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,108 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscMutationMisc -AddAdGroupsToHierarchy).Info().
+    /// (New-RscMutationMisc -ActivateDataCategory).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the ActivateDataCategory operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ActivateDataCategory
+    /// 
+    /// $query = New-RscMutationMisc -Operation ActivateDataCategory
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	dataCategoryId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ActivateDataCategoryReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ActivateDataType operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ActivateDataType
+    /// 
+    /// $query = New-RscMutationMisc -Operation ActivateDataType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	dataTypeIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ActivateDataTypeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ActivateDocumentAttribute operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ActivateDocumentAttribute
+    /// 
+    /// $query = New-RscMutationMisc -Operation ActivateDocumentAttribute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	attributeIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ActivateDocumentAttributeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the AddAdGroupsToHierarchy operation
@@ -128,6 +225,50 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AddCloudDirectGenericS3TenantCredentials operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: AddCloudDirectGenericS3TenantCredentials
+    /// 
+    /// $query = New-RscMutationMisc -Operation AddCloudDirectGenericS3TenantCredentials
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterId = $someString
+    /// 	# REQUIRED
+    /// 	systemId = $someString
+    /// 	# REQUIRED
+    /// 	credentials = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
     /// 
     /// 
     /// 
@@ -260,6 +401,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	certificateType = $someCloudDirectCertificateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectCertificateType]) for enum values.
     /// 	# OPTIONAL
     /// 	certificateKeyPassword = $someString
+    /// 	# OPTIONAL
+    /// 	creds = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			name = $someString
+    /// 			# REQUIRED
+    /// 			username = $someString
+    /// 			# REQUIRED
+    /// 			password = $someString
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -300,8 +452,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
-    /// 	workload = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-    /// 	# OPTIONAL
     /// 	groupFilterAttributes = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -316,6 +466,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	workload = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1352,6 +1504,46 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the BulkUpdateSupportTunnel operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: BulkUpdateSupportTunnel
+    /// 
+    /// $query = New-RscMutationMisc -Operation BulkUpdateSupportTunnel
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	clusterUuids = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	tunnelConfig = @{
+    /// 		# OPTIONAL
+    /// 		inactivityTimeoutInSeconds = $someInt64
+    /// 		# REQUIRED
+    /// 		isTunnelEnabled = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: BulkUpdateSupportTunnelReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the BulkUpdateSystemConfig operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -2137,6 +2329,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	excludeFieldNamePattern = $someString
     /// 	# OPTIONAL
     /// 	excludePathPattern = $someString
+    /// 	# OPTIONAL
+    /// 	excludeValueRegex = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2144,6 +2338,70 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: Analyzer
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateCustomDataType operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateCustomDataType
+    /// 
+    /// $query = New-RscMutationMisc -Operation CreateCustomDataType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	dataType = @{
+    /// 		# OPTIONAL
+    /// 		analyzerType = $someAnalyzerTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerTypeEnum]) for enum values.
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		dictionaryCsv = $someString
+    /// 		# OPTIONAL
+    /// 		regex = $someString
+    /// 		# OPTIONAL
+    /// 		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+    /// 		# REQUIRED
+    /// 		ruleTypes = @(
+    /// 			$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		keyRegex = $someString
+    /// 		# OPTIONAL
+    /// 		structuredValueRegex = $someString
+    /// 		# OPTIONAL
+    /// 		structuredDictionaryCsv = $someString
+    /// 		# OPTIONAL
+    /// 		structuredKeyDictionaryCsv = $someString
+    /// 		# OPTIONAL
+    /// 		proximityKeywordsRegex = $someString
+    /// 		# OPTIONAL
+    /// 		proximityDistance = $someInt
+    /// 		# OPTIONAL
+    /// 		excludeValueRegex = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	dataCategoryIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateCustomDataTypeReply
     /// 
     /// 
     /// 
@@ -2594,6 +2852,517 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreateRecoveryPlanV2 operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateRecoveryPlanV2
+    /// 
+    /// $query = New-RscMutationMisc -Operation CreateRecoveryPlanV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recoveryPlan = @{
+    /// 		# OPTIONAL
+    /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		version = $someInt64
+    /// 		# OPTIONAL
+    /// 		recoveryPlanType = $someRecoveryPlanType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPlanType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		workloadType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sourceLocation = @{
+    /// 			# OPTIONAL
+    /// 			locationId = $someString
+    /// 			# OPTIONAL
+    /// 			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		targetLocation = @{
+    /// 			# OPTIONAL
+    /// 			locationId = $someString
+    /// 			# OPTIONAL
+    /// 			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		isHydrationEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isHidden = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	recoverySpecMaps = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			targetLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			userData = $someString
+    /// 			# OPTIONAL
+    /// 			childRecoverySpecs = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					workloadRecoverySpec = @{
+    /// 						# REQUIRED
+    /// 						spec = @{
+    /// 							# OPTIONAL
+    /// 							vmwareVm = @{
+    /// 								# OPTIONAL
+    /// 								vcpus = $someInt
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										dataStoreId = $someString
+    /// 										# OPTIONAL
+    /// 										sizeGbs = $someSingle
+    /// 										# OPTIONAL
+    /// 										dataStoreCdmId = $someString
+    /// 										# OPTIONAL
+    /// 										datastoreClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										label = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										isPrimaryNic = $someBoolean
+    /// 										# OPTIONAL
+    /// 										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										networkId = $someString
+    /// 										# OPTIONAL
+    /// 										networkMoid = $someString
+    /// 										# OPTIONAL
+    /// 										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										ipv4Address = $someString
+    /// 										# OPTIONAL
+    /// 										ipv6Address = $someString
+    /// 										# OPTIONAL
+    /// 										dnsInfos = @(
+    /// 											$someString
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										gateway = $someString
+    /// 										# OPTIONAL
+    /// 										netmask = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								postScript = $someString
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									vcenterId = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterName = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterName = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolName = $someString
+    /// 									# OPTIONAL
+    /// 									hostId = $someString
+    /// 									# OPTIONAL
+    /// 									hostName = $someString
+    /// 									# OPTIONAL
+    /// 									hostCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterName = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								enableNetworkPreserve = $someBoolean
+    /// 								# OPTIONAL
+    /// 								enableMacPreserveOnly = $someBoolean
+    /// 								# OPTIONAL
+    /// 								postScriptTimestamp = $someString
+    /// 								# OPTIONAL
+    /// 								postScriptHash = $someString
+    /// 								# OPTIONAL
+    /// 								enableNetworkDisconnect = $someBoolean
+    /// 								# OPTIONAL
+    /// 								localAdminPassword = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							nutanixVm = @{
+    /// 								# OPTIONAL
+    /// 								vCpus = $someInt64
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt64
+    /// 								# OPTIONAL
+    /// 								clusterId = $someString
+    /// 								# OPTIONAL
+    /// 								removeAllNetwork = $someBoolean
+    /// 								# OPTIONAL
+    /// 								preserveMacAddress = $someBoolean
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										storageContainerId = $someString
+    /// 										# OPTIONAL
+    /// 										storageContainerName = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										networkName = $someString
+    /// 										# OPTIONAL
+    /// 										networkUuid = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									clusterId = $someString
+    /// 									# OPTIONAL
+    /// 									clusterName = $someString
+    /// 									# OPTIONAL
+    /// 									clusterHostname = $someString
+    /// 									# OPTIONAL
+    /// 									prismCentral = $someString
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							azureVm = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								sizeType = $someString
+    /// 								# OPTIONAL
+    /// 								availabilityZone = $someString
+    /// 								# OPTIONAL
+    /// 								shouldEnableAcceleratedNetworking = $someBoolean
+    /// 								# OPTIONAL
+    /// 								resourceGroup = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								networkSecurityGroupNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								availabilitySetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								diskEncryptionSetNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsEc2Instance = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								instanceType = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								sshKeyPairName = $someString
+    /// 								# OPTIONAL
+    /// 								iamInstanceProfileArn = $someString
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsRdsInstance = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								dbInstanceClass = $someString
+    /// 								# OPTIONAL
+    /// 								dbEngineVersion = $someString
+    /// 								# OPTIONAL
+    /// 								isMultiAz = $someBoolean
+    /// 								# OPTIONAL
+    /// 								primaryAz = $someString
+    /// 								# OPTIONAL
+    /// 								port = $someInt64
+    /// 								# OPTIONAL
+    /// 								storageType = $someString
+    /// 								# OPTIONAL
+    /// 								iops = $someInt64
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								subnetGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								isPubliclyAccessible = $someBoolean
+    /// 								# OPTIONAL
+    /// 								optionGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								parameterGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								clusterParameterGroupName = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							adfr = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								hostWorkloadFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostSnapshotFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostRecoveryPoint = $someInt64
+    /// 								# OPTIONAL
+    /// 								addc = @{
+    /// 									# OPTIONAL
+    /// 									version = $someInt64
+    /// 									# OPTIONAL
+    /// 									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 									# OPTIONAL
+    /// 									customDnsIps = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									shouldRebuildGc = $someBoolean
+    /// 									# OPTIONAL
+    /// 									shouldResetKerberos = $someBoolean
+    /// 									# OPTIONAL
+    /// 									winTimeServers = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									domainSid = $someString
+    /// 									# OPTIONAL
+    /// 									domainId = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								recoveryVlanId = $someInt
+    /// 								# OPTIONAL
+    /// 								hostSpec = @{
+    /// 									# OPTIONAL
+    /// 									vmwareVm = @{
+    /// 										# OPTIONAL
+    /// 										vcpus = $someInt
+    /// 										# OPTIONAL
+    /// 										memoryMbs = $someInt
+    /// 										# OPTIONAL
+    /// 										volumes = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												dataStoreId = $someString
+    /// 												# OPTIONAL
+    /// 												sizeGbs = $someSingle
+    /// 												# OPTIONAL
+    /// 												dataStoreCdmId = $someString
+    /// 												# OPTIONAL
+    /// 												datastoreClusterId = $someString
+    /// 												# OPTIONAL
+    /// 												label = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												isPrimaryNic = $someBoolean
+    /// 												# OPTIONAL
+    /// 												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												networkId = $someString
+    /// 												# OPTIONAL
+    /// 												networkMoid = $someString
+    /// 												# OPTIONAL
+    /// 												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												ipv4Address = $someString
+    /// 												# OPTIONAL
+    /// 												ipv6Address = $someString
+    /// 												# OPTIONAL
+    /// 												dnsInfos = @(
+    /// 													$someString
+    /// 												)
+    /// 												# OPTIONAL
+    /// 												gateway = $someString
+    /// 												# OPTIONAL
+    /// 												netmask = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										postScript = $someString
+    /// 										# OPTIONAL
+    /// 										target = @{
+    /// 											# OPTIONAL
+    /// 											vcenterId = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterName = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterName = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolName = $someString
+    /// 											# OPTIONAL
+    /// 											hostId = $someString
+    /// 											# OPTIONAL
+    /// 											hostName = $someString
+    /// 											# OPTIONAL
+    /// 											hostCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterName = $someString
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										enableNetworkPreserve = $someBoolean
+    /// 										# OPTIONAL
+    /// 										enableMacPreserveOnly = $someBoolean
+    /// 										# OPTIONAL
+    /// 										postScriptTimestamp = $someString
+    /// 										# OPTIONAL
+    /// 										postScriptHash = $someString
+    /// 										# OPTIONAL
+    /// 										enableNetworkDisconnect = $someBoolean
+    /// 										# OPTIONAL
+    /// 										localAdminPassword = $someString
+    /// 									}
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							addc = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								customDnsIps = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								shouldRebuildGc = $someBoolean
+    /// 								# OPTIONAL
+    /// 								shouldResetKerberos = $someBoolean
+    /// 								# OPTIONAL
+    /// 								winTimeServers = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								domainSid = $someString
+    /// 								# OPTIONAL
+    /// 								domainId = $someString
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					recoveryPoint = $someInt64
+    /// 					# REQUIRED
+    /// 					workloadId = $someString
+    /// 					# OPTIONAL
+    /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					postFailoverSlaId = $someString
+    /// 					# REQUIRED
+    /// 					bootPriority = $someInt
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			recoveryId = $someString
+    /// 			# OPTIONAL
+    /// 			sourceLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pauseBetweenPriorityGroups = @(
+    /// 				$someInt64
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			config = @{
+    /// 				# REQUIRED
+    /// 				configList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						key = $someString
+    /// 						# OPTIONAL
+    /// 						value = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateRecoveryPlanV2Reply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CreateRecoveryScheduleV2 operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -2639,6 +3408,488 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the CreateRecoverySpecs operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: CreateRecoverySpecs
+    /// 
+    /// $query = New-RscMutationMisc -Operation CreateRecoverySpecs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recoverySpecMaps = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			targetLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			userData = $someString
+    /// 			# OPTIONAL
+    /// 			childRecoverySpecs = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					workloadRecoverySpec = @{
+    /// 						# REQUIRED
+    /// 						spec = @{
+    /// 							# OPTIONAL
+    /// 							vmwareVm = @{
+    /// 								# OPTIONAL
+    /// 								vcpus = $someInt
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										dataStoreId = $someString
+    /// 										# OPTIONAL
+    /// 										sizeGbs = $someSingle
+    /// 										# OPTIONAL
+    /// 										dataStoreCdmId = $someString
+    /// 										# OPTIONAL
+    /// 										datastoreClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										label = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										isPrimaryNic = $someBoolean
+    /// 										# OPTIONAL
+    /// 										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										networkId = $someString
+    /// 										# OPTIONAL
+    /// 										networkMoid = $someString
+    /// 										# OPTIONAL
+    /// 										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										ipv4Address = $someString
+    /// 										# OPTIONAL
+    /// 										ipv6Address = $someString
+    /// 										# OPTIONAL
+    /// 										dnsInfos = @(
+    /// 											$someString
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										gateway = $someString
+    /// 										# OPTIONAL
+    /// 										netmask = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								postScript = $someString
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									vcenterId = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterName = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterName = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolName = $someString
+    /// 									# OPTIONAL
+    /// 									hostId = $someString
+    /// 									# OPTIONAL
+    /// 									hostName = $someString
+    /// 									# OPTIONAL
+    /// 									hostCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterName = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								enableNetworkPreserve = $someBoolean
+    /// 								# OPTIONAL
+    /// 								enableMacPreserveOnly = $someBoolean
+    /// 								# OPTIONAL
+    /// 								postScriptTimestamp = $someString
+    /// 								# OPTIONAL
+    /// 								postScriptHash = $someString
+    /// 								# OPTIONAL
+    /// 								enableNetworkDisconnect = $someBoolean
+    /// 								# OPTIONAL
+    /// 								localAdminPassword = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							nutanixVm = @{
+    /// 								# OPTIONAL
+    /// 								vCpus = $someInt64
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt64
+    /// 								# OPTIONAL
+    /// 								clusterId = $someString
+    /// 								# OPTIONAL
+    /// 								removeAllNetwork = $someBoolean
+    /// 								# OPTIONAL
+    /// 								preserveMacAddress = $someBoolean
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										storageContainerId = $someString
+    /// 										# OPTIONAL
+    /// 										storageContainerName = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										networkName = $someString
+    /// 										# OPTIONAL
+    /// 										networkUuid = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									clusterId = $someString
+    /// 									# OPTIONAL
+    /// 									clusterName = $someString
+    /// 									# OPTIONAL
+    /// 									clusterHostname = $someString
+    /// 									# OPTIONAL
+    /// 									prismCentral = $someString
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							azureVm = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								sizeType = $someString
+    /// 								# OPTIONAL
+    /// 								availabilityZone = $someString
+    /// 								# OPTIONAL
+    /// 								shouldEnableAcceleratedNetworking = $someBoolean
+    /// 								# OPTIONAL
+    /// 								resourceGroup = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								networkSecurityGroupNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								availabilitySetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								diskEncryptionSetNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsEc2Instance = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								instanceType = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								sshKeyPairName = $someString
+    /// 								# OPTIONAL
+    /// 								iamInstanceProfileArn = $someString
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsRdsInstance = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								dbInstanceClass = $someString
+    /// 								# OPTIONAL
+    /// 								dbEngineVersion = $someString
+    /// 								# OPTIONAL
+    /// 								isMultiAz = $someBoolean
+    /// 								# OPTIONAL
+    /// 								primaryAz = $someString
+    /// 								# OPTIONAL
+    /// 								port = $someInt64
+    /// 								# OPTIONAL
+    /// 								storageType = $someString
+    /// 								# OPTIONAL
+    /// 								iops = $someInt64
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								subnetGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								isPubliclyAccessible = $someBoolean
+    /// 								# OPTIONAL
+    /// 								optionGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								parameterGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								clusterParameterGroupName = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							adfr = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								hostWorkloadFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostSnapshotFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostRecoveryPoint = $someInt64
+    /// 								# OPTIONAL
+    /// 								addc = @{
+    /// 									# OPTIONAL
+    /// 									version = $someInt64
+    /// 									# OPTIONAL
+    /// 									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 									# OPTIONAL
+    /// 									customDnsIps = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									shouldRebuildGc = $someBoolean
+    /// 									# OPTIONAL
+    /// 									shouldResetKerberos = $someBoolean
+    /// 									# OPTIONAL
+    /// 									winTimeServers = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									domainSid = $someString
+    /// 									# OPTIONAL
+    /// 									domainId = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								recoveryVlanId = $someInt
+    /// 								# OPTIONAL
+    /// 								hostSpec = @{
+    /// 									# OPTIONAL
+    /// 									vmwareVm = @{
+    /// 										# OPTIONAL
+    /// 										vcpus = $someInt
+    /// 										# OPTIONAL
+    /// 										memoryMbs = $someInt
+    /// 										# OPTIONAL
+    /// 										volumes = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												dataStoreId = $someString
+    /// 												# OPTIONAL
+    /// 												sizeGbs = $someSingle
+    /// 												# OPTIONAL
+    /// 												dataStoreCdmId = $someString
+    /// 												# OPTIONAL
+    /// 												datastoreClusterId = $someString
+    /// 												# OPTIONAL
+    /// 												label = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												isPrimaryNic = $someBoolean
+    /// 												# OPTIONAL
+    /// 												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												networkId = $someString
+    /// 												# OPTIONAL
+    /// 												networkMoid = $someString
+    /// 												# OPTIONAL
+    /// 												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												ipv4Address = $someString
+    /// 												# OPTIONAL
+    /// 												ipv6Address = $someString
+    /// 												# OPTIONAL
+    /// 												dnsInfos = @(
+    /// 													$someString
+    /// 												)
+    /// 												# OPTIONAL
+    /// 												gateway = $someString
+    /// 												# OPTIONAL
+    /// 												netmask = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										postScript = $someString
+    /// 										# OPTIONAL
+    /// 										target = @{
+    /// 											# OPTIONAL
+    /// 											vcenterId = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterName = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterName = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolName = $someString
+    /// 											# OPTIONAL
+    /// 											hostId = $someString
+    /// 											# OPTIONAL
+    /// 											hostName = $someString
+    /// 											# OPTIONAL
+    /// 											hostCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterName = $someString
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										enableNetworkPreserve = $someBoolean
+    /// 										# OPTIONAL
+    /// 										enableMacPreserveOnly = $someBoolean
+    /// 										# OPTIONAL
+    /// 										postScriptTimestamp = $someString
+    /// 										# OPTIONAL
+    /// 										postScriptHash = $someString
+    /// 										# OPTIONAL
+    /// 										enableNetworkDisconnect = $someBoolean
+    /// 										# OPTIONAL
+    /// 										localAdminPassword = $someString
+    /// 									}
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							addc = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								customDnsIps = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								shouldRebuildGc = $someBoolean
+    /// 								# OPTIONAL
+    /// 								shouldResetKerberos = $someBoolean
+    /// 								# OPTIONAL
+    /// 								winTimeServers = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								domainSid = $someString
+    /// 								# OPTIONAL
+    /// 								domainId = $someString
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					recoveryPoint = $someInt64
+    /// 					# REQUIRED
+    /// 					workloadId = $someString
+    /// 					# OPTIONAL
+    /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					postFailoverSlaId = $someString
+    /// 					# REQUIRED
+    /// 					bootPriority = $someInt
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			recoveryId = $someString
+    /// 			# OPTIONAL
+    /// 			sourceLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pauseBetweenPriorityGroups = @(
+    /// 				$someInt64
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			config = @{
+    /// 				# REQUIRED
+    /// 				configList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						key = $someString
+    /// 						# OPTIONAL
+    /// 						value = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 	)
+    /// 	# REQUIRED
+    /// 	recoveryPlanId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: CreateRecoverySpecsReply
     /// 
     /// 
     /// 
@@ -2966,6 +4217,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the DeactivateDataType operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DeactivateDataType
+    /// 
+    /// $query = New-RscMutationMisc -Operation DeactivateDataType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	dataTypeIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeactivateDataTypeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeactivateDocumentAttribute operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DeactivateDocumentAttribute
+    /// 
+    /// $query = New-RscMutationMisc -Operation DeactivateDocumentAttribute
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	attributeIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: DeactivateDocumentAttributeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the DeleteAdGroupsFromHierarchy operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -3019,6 +4336,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	openstackAvailabilityZoneId = $someString
     /// 	# REQUIRED
     /// 	cephSettingId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the DeleteCloudDirectGenericS3TenantCredential operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: DeleteCloudDirectGenericS3TenantCredential
+    /// 
+    /// $query = New-RscMutationMisc -Operation DeleteCloudDirectGenericS3TenantCredential
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterId = $someString
+    /// 	# REQUIRED
+    /// 	systemId = $someString
+    /// 	# REQUIRED
+    /// 	namespaceUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3920,6 +5272,90 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ExpireSnoozedDirectoriesReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportPermissions operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ExportPermissions
+    /// 
+    /// $query = New-RscMutationMisc -Operation ExportPermissions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	objectId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotFid = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ExportPermissionsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportPrincipalsSummary operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: ExportPrincipalsSummary
+    /// 
+    /// $query = New-RscMutationMisc -Operation ExportPrincipalsSummary
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	riskLevel = @(
+    /// 		$someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	policyIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	principalName = $someString
+    /// 	# OPTIONAL
+    /// 	objectIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	principalSummaryCategory = $somePrincipalSummaryCategoryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrincipalSummaryCategoryType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	groupId = $someString
+    /// }
+    /// # REQUIRED
+    /// $query.Var.timelineDate = $someString
+    /// # REQUIRED
+    /// $query.Var.historicalDeltaDays = $someInt
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ExportPrincipalSummaryResp
     /// 
     /// 
     /// 
@@ -5546,6 +6982,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the RegisterProductInterest operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: RegisterProductInterest
+    /// 
+    /// $query = New-RscMutationMisc -Operation RegisterProductInterest
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	product = $someRubrikProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RubrikProduct]) for enum values.
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the RemoveDisk operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -6618,14 +8085,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	thresholds = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			clusterUuid = $someString
-    /// 			# REQUIRED
     /// 			datastoreFreespaceThreshold = @{
     /// 				# REQUIRED
     /// 				threshold = $someSingle
     /// 				# OPTIONAL
     /// 				vmId = $someString
     /// 			}
+    /// 			# REQUIRED
+    /// 			clusterUuid = $someString
     /// 		}
     /// 	)
     /// }
@@ -6694,6 +8161,34 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	mode = $someWhitelistModeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WhitelistModeEnum]) for enum values.
     /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: System.String
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the SetIsIdentitySecurityRoleAssignmentComplete operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: SetIsIdentitySecurityRoleAssignmentComplete
+    /// 
+    /// $query = New-RscMutationMisc -Operation SetIsIdentitySecurityRoleAssignmentComplete
+    /// 
+    /// # REQUIRED
+    /// $query.Var.irRoomConfigured = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -7109,7 +8604,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		snapshotFid = $someString
     /// }
     /// )
-    /// # REQUIRED
+    /// # OPTIONAL
     /// $query.Var.analyzerGroups = @(
     /// 	@{
     /// 		# OPTIONAL
@@ -7178,6 +8673,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				excludeFieldNamePattern = $someString
     /// 				# OPTIONAL
     /// 				excludePathPattern = $someString
+    /// 				# OPTIONAL
+    /// 				excludeValueRegex = $someString
     /// 			}
     /// 		)
     /// 		# OPTIONAL
@@ -7188,6 +8685,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// )
     /// # OPTIONAL
     /// $query.Var.extWhiteList = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.dataCategoryIds = @(
     /// 	$someString
     /// )
     /// 
@@ -7390,6 +8891,504 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: PrechecksJobReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the StartRecovery operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: StartRecovery
+    /// 
+    /// $query = New-RscMutationMisc -Operation StartRecovery
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recoveryName = $someString
+    /// 	# REQUIRED
+    /// 	dataTransferType = $someDataTransferType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataTransferType]) for enum values.
+    /// 	# REQUIRED
+    /// 	recoveryFailureAction = $someRecoveryFailureAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryFailureAction]) for enum values.
+    /// 	# OPTIONAL
+    /// 	triggeredFrom = $someRecoveryTriggeredFrom # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryTriggeredFrom]) for enum values.
+    /// 	# REQUIRED
+    /// 	recoveryPlanInfo = @{
+    /// 		# OPTIONAL
+    /// 		recoveryPlanId = $someString
+    /// 		# OPTIONAL
+    /// 		isAdhocRecovery = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	recoverySpecInfo = @{
+    /// 		# OPTIONAL
+    /// 		recoverySpecId = $someString
+    /// 		# OPTIONAL
+    /// 		recoverySpecMap = @{
+    /// 			# OPTIONAL
+    /// 			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			targetLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			userData = $someString
+    /// 			# OPTIONAL
+    /// 			childRecoverySpecs = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					workloadRecoverySpec = @{
+    /// 						# REQUIRED
+    /// 						spec = @{
+    /// 							# OPTIONAL
+    /// 							vmwareVm = @{
+    /// 								# OPTIONAL
+    /// 								vcpus = $someInt
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										dataStoreId = $someString
+    /// 										# OPTIONAL
+    /// 										sizeGbs = $someSingle
+    /// 										# OPTIONAL
+    /// 										dataStoreCdmId = $someString
+    /// 										# OPTIONAL
+    /// 										datastoreClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										label = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										isPrimaryNic = $someBoolean
+    /// 										# OPTIONAL
+    /// 										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										networkId = $someString
+    /// 										# OPTIONAL
+    /// 										networkMoid = $someString
+    /// 										# OPTIONAL
+    /// 										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										ipv4Address = $someString
+    /// 										# OPTIONAL
+    /// 										ipv6Address = $someString
+    /// 										# OPTIONAL
+    /// 										dnsInfos = @(
+    /// 											$someString
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										gateway = $someString
+    /// 										# OPTIONAL
+    /// 										netmask = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								postScript = $someString
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									vcenterId = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterName = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterName = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolName = $someString
+    /// 									# OPTIONAL
+    /// 									hostId = $someString
+    /// 									# OPTIONAL
+    /// 									hostName = $someString
+    /// 									# OPTIONAL
+    /// 									hostCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterName = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								enableNetworkPreserve = $someBoolean
+    /// 								# OPTIONAL
+    /// 								enableMacPreserveOnly = $someBoolean
+    /// 								# OPTIONAL
+    /// 								postScriptTimestamp = $someString
+    /// 								# OPTIONAL
+    /// 								postScriptHash = $someString
+    /// 								# OPTIONAL
+    /// 								enableNetworkDisconnect = $someBoolean
+    /// 								# OPTIONAL
+    /// 								localAdminPassword = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							nutanixVm = @{
+    /// 								# OPTIONAL
+    /// 								vCpus = $someInt64
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt64
+    /// 								# OPTIONAL
+    /// 								clusterId = $someString
+    /// 								# OPTIONAL
+    /// 								removeAllNetwork = $someBoolean
+    /// 								# OPTIONAL
+    /// 								preserveMacAddress = $someBoolean
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										storageContainerId = $someString
+    /// 										# OPTIONAL
+    /// 										storageContainerName = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										networkName = $someString
+    /// 										# OPTIONAL
+    /// 										networkUuid = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									clusterId = $someString
+    /// 									# OPTIONAL
+    /// 									clusterName = $someString
+    /// 									# OPTIONAL
+    /// 									clusterHostname = $someString
+    /// 									# OPTIONAL
+    /// 									prismCentral = $someString
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							azureVm = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								sizeType = $someString
+    /// 								# OPTIONAL
+    /// 								availabilityZone = $someString
+    /// 								# OPTIONAL
+    /// 								shouldEnableAcceleratedNetworking = $someBoolean
+    /// 								# OPTIONAL
+    /// 								resourceGroup = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								networkSecurityGroupNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								availabilitySetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								diskEncryptionSetNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsEc2Instance = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								instanceType = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								sshKeyPairName = $someString
+    /// 								# OPTIONAL
+    /// 								iamInstanceProfileArn = $someString
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsRdsInstance = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								dbInstanceClass = $someString
+    /// 								# OPTIONAL
+    /// 								dbEngineVersion = $someString
+    /// 								# OPTIONAL
+    /// 								isMultiAz = $someBoolean
+    /// 								# OPTIONAL
+    /// 								primaryAz = $someString
+    /// 								# OPTIONAL
+    /// 								port = $someInt64
+    /// 								# OPTIONAL
+    /// 								storageType = $someString
+    /// 								# OPTIONAL
+    /// 								iops = $someInt64
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								subnetGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								isPubliclyAccessible = $someBoolean
+    /// 								# OPTIONAL
+    /// 								optionGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								parameterGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								clusterParameterGroupName = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							adfr = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								hostWorkloadFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostSnapshotFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostRecoveryPoint = $someInt64
+    /// 								# OPTIONAL
+    /// 								addc = @{
+    /// 									# OPTIONAL
+    /// 									version = $someInt64
+    /// 									# OPTIONAL
+    /// 									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 									# OPTIONAL
+    /// 									customDnsIps = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									shouldRebuildGc = $someBoolean
+    /// 									# OPTIONAL
+    /// 									shouldResetKerberos = $someBoolean
+    /// 									# OPTIONAL
+    /// 									winTimeServers = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									domainSid = $someString
+    /// 									# OPTIONAL
+    /// 									domainId = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								recoveryVlanId = $someInt
+    /// 								# OPTIONAL
+    /// 								hostSpec = @{
+    /// 									# OPTIONAL
+    /// 									vmwareVm = @{
+    /// 										# OPTIONAL
+    /// 										vcpus = $someInt
+    /// 										# OPTIONAL
+    /// 										memoryMbs = $someInt
+    /// 										# OPTIONAL
+    /// 										volumes = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												dataStoreId = $someString
+    /// 												# OPTIONAL
+    /// 												sizeGbs = $someSingle
+    /// 												# OPTIONAL
+    /// 												dataStoreCdmId = $someString
+    /// 												# OPTIONAL
+    /// 												datastoreClusterId = $someString
+    /// 												# OPTIONAL
+    /// 												label = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												isPrimaryNic = $someBoolean
+    /// 												# OPTIONAL
+    /// 												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												networkId = $someString
+    /// 												# OPTIONAL
+    /// 												networkMoid = $someString
+    /// 												# OPTIONAL
+    /// 												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												ipv4Address = $someString
+    /// 												# OPTIONAL
+    /// 												ipv6Address = $someString
+    /// 												# OPTIONAL
+    /// 												dnsInfos = @(
+    /// 													$someString
+    /// 												)
+    /// 												# OPTIONAL
+    /// 												gateway = $someString
+    /// 												# OPTIONAL
+    /// 												netmask = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										postScript = $someString
+    /// 										# OPTIONAL
+    /// 										target = @{
+    /// 											# OPTIONAL
+    /// 											vcenterId = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterName = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterName = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolName = $someString
+    /// 											# OPTIONAL
+    /// 											hostId = $someString
+    /// 											# OPTIONAL
+    /// 											hostName = $someString
+    /// 											# OPTIONAL
+    /// 											hostCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterName = $someString
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										enableNetworkPreserve = $someBoolean
+    /// 										# OPTIONAL
+    /// 										enableMacPreserveOnly = $someBoolean
+    /// 										# OPTIONAL
+    /// 										postScriptTimestamp = $someString
+    /// 										# OPTIONAL
+    /// 										postScriptHash = $someString
+    /// 										# OPTIONAL
+    /// 										enableNetworkDisconnect = $someBoolean
+    /// 										# OPTIONAL
+    /// 										localAdminPassword = $someString
+    /// 									}
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							addc = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								customDnsIps = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								shouldRebuildGc = $someBoolean
+    /// 								# OPTIONAL
+    /// 								shouldResetKerberos = $someBoolean
+    /// 								# OPTIONAL
+    /// 								winTimeServers = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								domainSid = $someString
+    /// 								# OPTIONAL
+    /// 								domainId = $someString
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					recoveryPoint = $someInt64
+    /// 					# REQUIRED
+    /// 					workloadId = $someString
+    /// 					# OPTIONAL
+    /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					postFailoverSlaId = $someString
+    /// 					# REQUIRED
+    /// 					bootPriority = $someInt
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			recoveryId = $someString
+    /// 			# OPTIONAL
+    /// 			sourceLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pauseBetweenPriorityGroups = @(
+    /// 				$someInt64
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			config = @{
+    /// 				# REQUIRED
+    /// 				configList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						key = $someString
+    /// 						# OPTIONAL
+    /// 						value = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: StartRecoveryReply
     /// 
     /// 
     /// 
@@ -8533,6 +10532,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	excludeFieldNamePattern = $someString
     /// 	# OPTIONAL
     /// 	excludePathPattern = $someString
+    /// 	# OPTIONAL
+    /// 	excludeValueRegex = $someString
     /// }
     /// 
     /// # Execute the query
@@ -8540,6 +10541,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: Analyzer
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateCustomDataType operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateCustomDataType
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdateCustomDataType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	dataType = @{
+    /// 		# OPTIONAL
+    /// 		analyzerType = $someAnalyzerTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerTypeEnum]) for enum values.
+    /// 		# REQUIRED
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		dictionaryCsv = $someString
+    /// 		# OPTIONAL
+    /// 		regex = $someString
+    /// 		# OPTIONAL
+    /// 		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+    /// 		# REQUIRED
+    /// 		ruleTypes = @(
+    /// 			$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		keyRegex = $someString
+    /// 		# OPTIONAL
+    /// 		structuredValueRegex = $someString
+    /// 		# OPTIONAL
+    /// 		structuredDictionaryCsv = $someString
+    /// 		# OPTIONAL
+    /// 		structuredKeyDictionaryCsv = $someString
+    /// 		# OPTIONAL
+    /// 		proximityKeywordsRegex = $someString
+    /// 		# OPTIONAL
+    /// 		proximityDistance = $someInt
+    /// 		# OPTIONAL
+    /// 		excludeValueRegex = $someString
+    /// 	}
+    /// 	# REQUIRED
+    /// 	dataCategoryIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateCustomDataTypeReply
     /// 
     /// 
     /// 
@@ -8750,6 +10817,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ResponseSuccess
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateDocumentType operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateDocumentType
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdateDocumentType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	dataCategoryIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateDocumentTypeReply
     /// 
     /// 
     /// 
@@ -9434,6 +11538,43 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdatePredefinedDataType operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdatePredefinedDataType
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdatePredefinedDataType
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+    /// 	# REQUIRED
+    /// 	dataCategoryIds = @(
+    /// 		$someString
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdatePredefinedDataTypeReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateProxmoxEnvironment operation
     /// of the 'Miscellaneous' API domain.
     /// <code>
@@ -9508,6 +11649,596 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: UpdateProxyConfigReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdatePureStorageProtectionGroup operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdatePureStorageProtectionGroup
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdatePureStorageProtectionGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	updateProperties = @{
+    /// 		# OPTIONAL
+    /// 		snapshotConsistencyMandate = $somePureStorageProtectionGroupUpdateConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PureStorageProtectionGroupUpdateConfigSnapshotConsistencyMandate]) for enum values.
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdatePureStorageProtectionGroupReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdatePureStorageProtectionGroupVolumeExclusions operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdatePureStorageProtectionGroupVolumeExclusions
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdatePureStorageProtectionGroupVolumeExclusions
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	updateInfo = @{
+    /// 		# REQUIRED
+    /// 		volumes = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				volumeId = $someString
+    /// 				# REQUIRED
+    /// 				isExcludedFromSnapshots = $someBoolean
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdatePureStorageProtectionGroupVolumeExclusionsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateRecoveryPlanV2 operation
+    /// of the 'Miscellaneous' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Misc
+    /// # API Operation: UpdateRecoveryPlanV2
+    /// 
+    /// $query = New-RscMutationMisc -Operation UpdateRecoveryPlanV2
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	recoveryPlan = @{
+    /// 		# OPTIONAL
+    /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		name = $someString
+    /// 		# OPTIONAL
+    /// 		version = $someInt64
+    /// 		# OPTIONAL
+    /// 		recoveryPlanType = $someRecoveryPlanType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPlanType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		workloadType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		sourceLocation = @{
+    /// 			# OPTIONAL
+    /// 			locationId = $someString
+    /// 			# OPTIONAL
+    /// 			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		targetLocation = @{
+    /// 			# OPTIONAL
+    /// 			locationId = $someString
+    /// 			# OPTIONAL
+    /// 			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		isHydrationEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isHidden = $someBoolean
+    /// 	}
+    /// 	# REQUIRED
+    /// 	recoverySpecMaps = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			targetLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			userData = $someString
+    /// 			# OPTIONAL
+    /// 			childRecoverySpecs = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					workloadRecoverySpec = @{
+    /// 						# REQUIRED
+    /// 						spec = @{
+    /// 							# OPTIONAL
+    /// 							vmwareVm = @{
+    /// 								# OPTIONAL
+    /// 								vcpus = $someInt
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										dataStoreId = $someString
+    /// 										# OPTIONAL
+    /// 										sizeGbs = $someSingle
+    /// 										# OPTIONAL
+    /// 										dataStoreCdmId = $someString
+    /// 										# OPTIONAL
+    /// 										datastoreClusterId = $someString
+    /// 										# OPTIONAL
+    /// 										label = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										isPrimaryNic = $someBoolean
+    /// 										# OPTIONAL
+    /// 										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										networkId = $someString
+    /// 										# OPTIONAL
+    /// 										networkMoid = $someString
+    /// 										# OPTIONAL
+    /// 										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 										# OPTIONAL
+    /// 										ipv4Address = $someString
+    /// 										# OPTIONAL
+    /// 										ipv6Address = $someString
+    /// 										# OPTIONAL
+    /// 										dnsInfos = @(
+    /// 											$someString
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										gateway = $someString
+    /// 										# OPTIONAL
+    /// 										netmask = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								postScript = $someString
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									vcenterId = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterName = $someString
+    /// 									# OPTIONAL
+    /// 									vcenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									computeClusterName = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									resourcePoolName = $someString
+    /// 									# OPTIONAL
+    /// 									hostId = $someString
+    /// 									# OPTIONAL
+    /// 									hostName = $someString
+    /// 									# OPTIONAL
+    /// 									hostCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterCdmId = $someString
+    /// 									# OPTIONAL
+    /// 									datacenterName = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								enableNetworkPreserve = $someBoolean
+    /// 								# OPTIONAL
+    /// 								enableMacPreserveOnly = $someBoolean
+    /// 								# OPTIONAL
+    /// 								postScriptTimestamp = $someString
+    /// 								# OPTIONAL
+    /// 								postScriptHash = $someString
+    /// 								# OPTIONAL
+    /// 								enableNetworkDisconnect = $someBoolean
+    /// 								# OPTIONAL
+    /// 								localAdminPassword = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							nutanixVm = @{
+    /// 								# OPTIONAL
+    /// 								vCpus = $someInt64
+    /// 								# OPTIONAL
+    /// 								memoryMbs = $someInt64
+    /// 								# OPTIONAL
+    /// 								clusterId = $someString
+    /// 								# OPTIONAL
+    /// 								removeAllNetwork = $someBoolean
+    /// 								# OPTIONAL
+    /// 								preserveMacAddress = $someBoolean
+    /// 								# OPTIONAL
+    /// 								volumes = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										storageContainerId = $someString
+    /// 										# OPTIONAL
+    /// 										storageContainerName = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								nics = @(
+    /// 									@{
+    /// 										# OPTIONAL
+    /// 										key = $someString
+    /// 										# OPTIONAL
+    /// 										networkName = $someString
+    /// 										# OPTIONAL
+    /// 										networkUuid = $someString
+    /// 									}
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								target = @{
+    /// 									# OPTIONAL
+    /// 									clusterId = $someString
+    /// 									# OPTIONAL
+    /// 									clusterName = $someString
+    /// 									# OPTIONAL
+    /// 									clusterHostname = $someString
+    /// 									# OPTIONAL
+    /// 									prismCentral = $someString
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							azureVm = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								sizeType = $someString
+    /// 								# OPTIONAL
+    /// 								availabilityZone = $someString
+    /// 								# OPTIONAL
+    /// 								shouldEnableAcceleratedNetworking = $someBoolean
+    /// 								# OPTIONAL
+    /// 								resourceGroup = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								networkSecurityGroupNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								availabilitySetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								diskEncryptionSetNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsEc2Instance = @{
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								instanceType = $someString
+    /// 								# OPTIONAL
+    /// 								subnetNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								sshKeyPairName = $someString
+    /// 								# OPTIONAL
+    /// 								iamInstanceProfileArn = $someString
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							awsRdsInstance = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								kmsKeyId = $someString
+    /// 								# OPTIONAL
+    /// 								dbInstanceClass = $someString
+    /// 								# OPTIONAL
+    /// 								dbEngineVersion = $someString
+    /// 								# OPTIONAL
+    /// 								isMultiAz = $someBoolean
+    /// 								# OPTIONAL
+    /// 								primaryAz = $someString
+    /// 								# OPTIONAL
+    /// 								port = $someInt64
+    /// 								# OPTIONAL
+    /// 								storageType = $someString
+    /// 								# OPTIONAL
+    /// 								iops = $someInt64
+    /// 								# OPTIONAL
+    /// 								vpcNativeId = $someString
+    /// 								# OPTIONAL
+    /// 								securityGroupNativeIds = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								subnetGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								isPubliclyAccessible = $someBoolean
+    /// 								# OPTIONAL
+    /// 								optionGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								parameterGroupName = $someString
+    /// 								# OPTIONAL
+    /// 								clusterParameterGroupName = $someString
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							adfr = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								hostWorkloadFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostSnapshotFid = $someString
+    /// 								# OPTIONAL
+    /// 								hostRecoveryPoint = $someInt64
+    /// 								# OPTIONAL
+    /// 								addc = @{
+    /// 									# OPTIONAL
+    /// 									version = $someInt64
+    /// 									# OPTIONAL
+    /// 									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 									# OPTIONAL
+    /// 									customDnsIps = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									shouldRebuildGc = $someBoolean
+    /// 									# OPTIONAL
+    /// 									shouldResetKerberos = $someBoolean
+    /// 									# OPTIONAL
+    /// 									winTimeServers = @(
+    /// 										$someString
+    /// 									)
+    /// 									# OPTIONAL
+    /// 									domainSid = $someString
+    /// 									# OPTIONAL
+    /// 									domainId = $someString
+    /// 								}
+    /// 								# OPTIONAL
+    /// 								recoveryVlanId = $someInt
+    /// 								# OPTIONAL
+    /// 								hostSpec = @{
+    /// 									# OPTIONAL
+    /// 									vmwareVm = @{
+    /// 										# OPTIONAL
+    /// 										vcpus = $someInt
+    /// 										# OPTIONAL
+    /// 										memoryMbs = $someInt
+    /// 										# OPTIONAL
+    /// 										volumes = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												dataStoreId = $someString
+    /// 												# OPTIONAL
+    /// 												sizeGbs = $someSingle
+    /// 												# OPTIONAL
+    /// 												dataStoreCdmId = $someString
+    /// 												# OPTIONAL
+    /// 												datastoreClusterId = $someString
+    /// 												# OPTIONAL
+    /// 												label = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										nics = @(
+    /// 											@{
+    /// 												# OPTIONAL
+    /// 												key = $someString
+    /// 												# OPTIONAL
+    /// 												isPrimaryNic = $someBoolean
+    /// 												# OPTIONAL
+    /// 												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												networkId = $someString
+    /// 												# OPTIONAL
+    /// 												networkMoid = $someString
+    /// 												# OPTIONAL
+    /// 												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+    /// 												# OPTIONAL
+    /// 												ipv4Address = $someString
+    /// 												# OPTIONAL
+    /// 												ipv6Address = $someString
+    /// 												# OPTIONAL
+    /// 												dnsInfos = @(
+    /// 													$someString
+    /// 												)
+    /// 												# OPTIONAL
+    /// 												gateway = $someString
+    /// 												# OPTIONAL
+    /// 												netmask = $someString
+    /// 											}
+    /// 										)
+    /// 										# OPTIONAL
+    /// 										postScript = $someString
+    /// 										# OPTIONAL
+    /// 										target = @{
+    /// 											# OPTIONAL
+    /// 											vcenterId = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterName = $someString
+    /// 											# OPTIONAL
+    /// 											vcenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											computeClusterName = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											resourcePoolName = $someString
+    /// 											# OPTIONAL
+    /// 											hostId = $someString
+    /// 											# OPTIONAL
+    /// 											hostName = $someString
+    /// 											# OPTIONAL
+    /// 											hostCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterCdmId = $someString
+    /// 											# OPTIONAL
+    /// 											datacenterName = $someString
+    /// 										}
+    /// 										# OPTIONAL
+    /// 										enableNetworkPreserve = $someBoolean
+    /// 										# OPTIONAL
+    /// 										enableMacPreserveOnly = $someBoolean
+    /// 										# OPTIONAL
+    /// 										postScriptTimestamp = $someString
+    /// 										# OPTIONAL
+    /// 										postScriptHash = $someString
+    /// 										# OPTIONAL
+    /// 										enableNetworkDisconnect = $someBoolean
+    /// 										# OPTIONAL
+    /// 										localAdminPassword = $someString
+    /// 									}
+    /// 								}
+    /// 							}
+    /// 							# OPTIONAL
+    /// 							addc = @{
+    /// 								# OPTIONAL
+    /// 								version = $someInt64
+    /// 								# OPTIONAL
+    /// 								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+    /// 								# OPTIONAL
+    /// 								customDnsIps = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								shouldRebuildGc = $someBoolean
+    /// 								# OPTIONAL
+    /// 								shouldResetKerberos = $someBoolean
+    /// 								# OPTIONAL
+    /// 								winTimeServers = @(
+    /// 									$someString
+    /// 								)
+    /// 								# OPTIONAL
+    /// 								domainSid = $someString
+    /// 								# OPTIONAL
+    /// 								domainId = $someString
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 					# OPTIONAL
+    /// 					recoveryPoint = $someInt64
+    /// 					# REQUIRED
+    /// 					workloadId = $someString
+    /// 					# OPTIONAL
+    /// 					snapshotId = $someString
+    /// 					# OPTIONAL
+    /// 					postFailoverSlaId = $someString
+    /// 					# REQUIRED
+    /// 					bootPriority = $someInt
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+    /// 			# OPTIONAL
+    /// 			recoveryId = $someString
+    /// 			# OPTIONAL
+    /// 			sourceLocationInfo = @{
+    /// 				# OPTIONAL
+    /// 				locationId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			pauseBetweenPriorityGroups = @(
+    /// 				$someInt64
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			config = @{
+    /// 				# REQUIRED
+    /// 				configList = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						key = $someString
+    /// 						# OPTIONAL
+    /// 						value = $someString
+    /// 					}
+    /// 				)
+    /// 			}
+    /// 		}
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateRecoveryPlanV2Reply
     /// 
     /// 
     /// 
@@ -10098,7 +12829,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "ActivateDataCategory",
+                "ActivateDataType",
+                "ActivateDocumentAttribute",
                 "AddAdGroupsToHierarchy",
+                "AddCloudDirectGenericS3TenantCredentials",
                 "AddCloudDirectKerberosCredential",
                 "AddCloudDirectSharesToSystem",
                 "AddCloudDirectSystem",
@@ -10124,6 +12859,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "BulkCreateNasFilesets",
                 "BulkObjectPause",
                 "BulkUpdateNasNamespaces",
+                "BulkUpdateSupportTunnel",
                 "BulkUpdateSystemConfig",
                 "CancelDownloadPackage",
                 "CancelScheduledUpgrade",
@@ -10144,6 +12880,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ConfirmPartUpload",
                 "CreateAutomatedRestoreMysqldbInstance",
                 "CreateCustomAnalyzer",
+                "CreateCustomDataType",
                 "CreateDistributionListDigestBatch",
                 "CreateEventDigestBatch",
                 "CreateFusionComputeMount",
@@ -10152,14 +12889,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateLegalHold",
                 "CreateOnDemandGlueIcebergTableBackup",
                 "CreateOnDemandVolumeGroupBackup",
+                "CreateRecoveryPlanV2",
                 "CreateRecoveryScheduleV2",
+                "CreateRecoverySpecs",
                 "CreateSsoUsers",
                 "CreateVappsInstantRecovery",
                 "CreateViolationRemediation",
                 "CreateVrm",
                 "DeactivateCustomAnalyzer",
+                "DeactivateDataType",
+                "DeactivateDocumentAttribute",
                 "DeleteAdGroupsFromHierarchy",
                 "DeleteCephSetting",
+                "DeleteCloudDirectGenericS3TenantCredential",
                 "DeleteCloudDirectKerberosCredential",
                 "DeleteDistributionListDigestBatch",
                 "DeleteEventDigest",
@@ -10187,6 +12929,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "ExcludeVmDisks",
                 "ExecuteTprRequests",
                 "ExpireSnoozedDirectories",
+                "ExportPermissions",
+                "ExportPrincipalsSummary",
                 "GenerateCdmTotpSecret",
                 "GenerateConfigProtectionRestoreForm",
                 "GeneratePresignedUrlForDownload",
@@ -10225,6 +12969,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "RefreshFusionComputeVrm",
                 "RefreshGlobalManagerConnectivityStatus",
                 "RefreshMysqlInstance",
+                "RegisterProductInterest",
                 "RemoveDisk",
                 "RemoveInventoryWorkloads",
                 "RemoveNodeForReplacement",
@@ -10255,6 +13000,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SetDatastoreFreespaceThresholds",
                 "SetIpWhitelistEnabled",
                 "SetIpWhitelistSetting",
+                "SetIsIdentitySecurityRoleAssignmentComplete",
                 "SetMfaSetting",
                 "SetPrivateContainerRegistry",
                 "SetSelfServeRollingUpgrade",
@@ -10270,6 +13016,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "StartExportRdsInstanceJob",
                 "StartGitHubAppSetup",
                 "StartPeriodicUpgradePrechecksOnDemandJob",
+                "StartRecovery",
                 "StartUpgradeBatchJob",
                 "StartVolumeGroupMount",
                 "StopJobInstance",
@@ -10297,10 +13044,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateCloudDirectKerberosCredential",
                 "UpdateConfiguredGroup",
                 "UpdateCustomAnalyzer",
+                "UpdateCustomDataType",
                 "UpdateCustomIntelFeed",
                 "UpdateCustomerAppPermissions",
                 "UpdateDistributionListDigest",
                 "UpdateDnsServersAndSearchDomains",
+                "UpdateDocumentType",
                 "UpdateEventDigest",
                 "UpdateFeed",
                 "UpdateFloatingIps",
@@ -10316,8 +13065,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "UpdateManagedIdentities",
                 "UpdateManagedIdentitiesAsync",
                 "UpdateNetworkThrottle",
+                "UpdatePredefinedDataType",
                 "UpdateProxmoxEnvironment",
                 "UpdateProxyConfig",
+                "UpdatePureStorageProtectionGroup",
+                "UpdatePureStorageProtectionGroupVolumeExclusions",
+                "UpdateRecoveryPlanV2",
                 "UpdateRecoveryScheduleV2",
                 "UpdateRoleAssignments",
                 "UpdateSupportUserAccess",
@@ -10347,8 +13100,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "ActivateDataCategory":
+                        this.ProcessRecord_ActivateDataCategory();
+                        break;
+                    case "ActivateDataType":
+                        this.ProcessRecord_ActivateDataType();
+                        break;
+                    case "ActivateDocumentAttribute":
+                        this.ProcessRecord_ActivateDocumentAttribute();
+                        break;
                     case "AddAdGroupsToHierarchy":
                         this.ProcessRecord_AddAdGroupsToHierarchy();
+                        break;
+                    case "AddCloudDirectGenericS3TenantCredentials":
+                        this.ProcessRecord_AddCloudDirectGenericS3TenantCredentials();
                         break;
                     case "AddCloudDirectKerberosCredential":
                         this.ProcessRecord_AddCloudDirectKerberosCredential();
@@ -10425,6 +13190,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "BulkUpdateNasNamespaces":
                         this.ProcessRecord_BulkUpdateNasNamespaces();
                         break;
+                    case "BulkUpdateSupportTunnel":
+                        this.ProcessRecord_BulkUpdateSupportTunnel();
+                        break;
                     case "BulkUpdateSystemConfig":
                         this.ProcessRecord_BulkUpdateSystemConfig();
                         break;
@@ -10485,6 +13253,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateCustomAnalyzer":
                         this.ProcessRecord_CreateCustomAnalyzer();
                         break;
+                    case "CreateCustomDataType":
+                        this.ProcessRecord_CreateCustomDataType();
+                        break;
                     case "CreateDistributionListDigestBatch":
                         this.ProcessRecord_CreateDistributionListDigestBatch();
                         break;
@@ -10509,8 +13280,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateOnDemandVolumeGroupBackup":
                         this.ProcessRecord_CreateOnDemandVolumeGroupBackup();
                         break;
+                    case "CreateRecoveryPlanV2":
+                        this.ProcessRecord_CreateRecoveryPlanV2();
+                        break;
                     case "CreateRecoveryScheduleV2":
                         this.ProcessRecord_CreateRecoveryScheduleV2();
+                        break;
+                    case "CreateRecoverySpecs":
+                        this.ProcessRecord_CreateRecoverySpecs();
                         break;
                     case "CreateSsoUsers":
                         this.ProcessRecord_CreateSsoUsers();
@@ -10527,11 +13304,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "DeactivateCustomAnalyzer":
                         this.ProcessRecord_DeactivateCustomAnalyzer();
                         break;
+                    case "DeactivateDataType":
+                        this.ProcessRecord_DeactivateDataType();
+                        break;
+                    case "DeactivateDocumentAttribute":
+                        this.ProcessRecord_DeactivateDocumentAttribute();
+                        break;
                     case "DeleteAdGroupsFromHierarchy":
                         this.ProcessRecord_DeleteAdGroupsFromHierarchy();
                         break;
                     case "DeleteCephSetting":
                         this.ProcessRecord_DeleteCephSetting();
+                        break;
+                    case "DeleteCloudDirectGenericS3TenantCredential":
+                        this.ProcessRecord_DeleteCloudDirectGenericS3TenantCredential();
                         break;
                     case "DeleteCloudDirectKerberosCredential":
                         this.ProcessRecord_DeleteCloudDirectKerberosCredential();
@@ -10613,6 +13399,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "ExpireSnoozedDirectories":
                         this.ProcessRecord_ExpireSnoozedDirectories();
+                        break;
+                    case "ExportPermissions":
+                        this.ProcessRecord_ExportPermissions();
+                        break;
+                    case "ExportPrincipalsSummary":
+                        this.ProcessRecord_ExportPrincipalsSummary();
                         break;
                     case "GenerateCdmTotpSecret":
                         this.ProcessRecord_GenerateCdmTotpSecret();
@@ -10728,6 +13520,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "RefreshMysqlInstance":
                         this.ProcessRecord_RefreshMysqlInstance();
                         break;
+                    case "RegisterProductInterest":
+                        this.ProcessRecord_RegisterProductInterest();
+                        break;
                     case "RemoveDisk":
                         this.ProcessRecord_RemoveDisk();
                         break;
@@ -10818,6 +13613,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "SetIpWhitelistSetting":
                         this.ProcessRecord_SetIpWhitelistSetting();
                         break;
+                    case "SetIsIdentitySecurityRoleAssignmentComplete":
+                        this.ProcessRecord_SetIsIdentitySecurityRoleAssignmentComplete();
+                        break;
                     case "SetMfaSetting":
                         this.ProcessRecord_SetMfaSetting();
                         break;
@@ -10862,6 +13660,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartPeriodicUpgradePrechecksOnDemandJob":
                         this.ProcessRecord_StartPeriodicUpgradePrechecksOnDemandJob();
+                        break;
+                    case "StartRecovery":
+                        this.ProcessRecord_StartRecovery();
                         break;
                     case "StartUpgradeBatchJob":
                         this.ProcessRecord_StartUpgradeBatchJob();
@@ -10944,6 +13745,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UpdateCustomAnalyzer":
                         this.ProcessRecord_UpdateCustomAnalyzer();
                         break;
+                    case "UpdateCustomDataType":
+                        this.ProcessRecord_UpdateCustomDataType();
+                        break;
                     case "UpdateCustomIntelFeed":
                         this.ProcessRecord_UpdateCustomIntelFeed();
                         break;
@@ -10955,6 +13759,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "UpdateDnsServersAndSearchDomains":
                         this.ProcessRecord_UpdateDnsServersAndSearchDomains();
+                        break;
+                    case "UpdateDocumentType":
+                        this.ProcessRecord_UpdateDocumentType();
                         break;
                     case "UpdateEventDigest":
                         this.ProcessRecord_UpdateEventDigest();
@@ -11001,11 +13808,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "UpdateNetworkThrottle":
                         this.ProcessRecord_UpdateNetworkThrottle();
                         break;
+                    case "UpdatePredefinedDataType":
+                        this.ProcessRecord_UpdatePredefinedDataType();
+                        break;
                     case "UpdateProxmoxEnvironment":
                         this.ProcessRecord_UpdateProxmoxEnvironment();
                         break;
                     case "UpdateProxyConfig":
                         this.ProcessRecord_UpdateProxyConfig();
+                        break;
+                    case "UpdatePureStorageProtectionGroup":
+                        this.ProcessRecord_UpdatePureStorageProtectionGroup();
+                        break;
+                    case "UpdatePureStorageProtectionGroupVolumeExclusions":
+                        this.ProcessRecord_UpdatePureStorageProtectionGroupVolumeExclusions();
+                        break;
+                    case "UpdateRecoveryPlanV2":
+                        this.ProcessRecord_UpdateRecoveryPlanV2();
                         break;
                     case "UpdateRecoveryScheduleV2":
                         this.ProcessRecord_UpdateRecoveryScheduleV2();
@@ -11060,12 +13879,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // activateDataCategory.
+        internal void ProcessRecord_ActivateDataCategory()
+        {
+            this._logger.name += " -ActivateDataCategory";
+            // Create new graphql operation activateDataCategory
+            InitMutationActivateDataCategory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // activateDataType.
+        internal void ProcessRecord_ActivateDataType()
+        {
+            this._logger.name += " -ActivateDataType";
+            // Create new graphql operation activateDataType
+            InitMutationActivateDataType();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // activateDocumentAttribute.
+        internal void ProcessRecord_ActivateDocumentAttribute()
+        {
+            this._logger.name += " -ActivateDocumentAttribute";
+            // Create new graphql operation activateDocumentAttribute
+            InitMutationActivateDocumentAttribute();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // addAdGroupsToHierarchy.
         internal void ProcessRecord_AddAdGroupsToHierarchy()
         {
             this._logger.name += " -AddAdGroupsToHierarchy";
             // Create new graphql operation addAdGroupsToHierarchy
             InitMutationAddAdGroupsToHierarchy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // addCloudDirectGenericS3TenantCredentials.
+        internal void ProcessRecord_AddCloudDirectGenericS3TenantCredentials()
+        {
+            this._logger.name += " -AddCloudDirectGenericS3TenantCredentials";
+            // Create new graphql operation addCloudDirectGenericS3TenantCredentials
+            InitMutationAddCloudDirectGenericS3TenantCredentials();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11294,6 +14149,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // bulkUpdateSupportTunnel.
+        internal void ProcessRecord_BulkUpdateSupportTunnel()
+        {
+            this._logger.name += " -BulkUpdateSupportTunnel";
+            // Create new graphql operation bulkUpdateSupportTunnel
+            InitMutationBulkUpdateSupportTunnel();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // bulkUpdateSystemConfig.
         internal void ProcessRecord_BulkUpdateSystemConfig()
         {
@@ -11474,6 +14338,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createCustomDataType.
+        internal void ProcessRecord_CreateCustomDataType()
+        {
+            this._logger.name += " -CreateCustomDataType";
+            // Create new graphql operation createCustomDataType
+            InitMutationCreateCustomDataType();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createDistributionListDigestBatch.
         internal void ProcessRecord_CreateDistributionListDigestBatch()
         {
@@ -11546,12 +14419,30 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createRecoveryPlanV2.
+        internal void ProcessRecord_CreateRecoveryPlanV2()
+        {
+            this._logger.name += " -CreateRecoveryPlanV2";
+            // Create new graphql operation createRecoveryPlanV2
+            InitMutationCreateRecoveryPlanV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createRecoveryScheduleV2.
         internal void ProcessRecord_CreateRecoveryScheduleV2()
         {
             this._logger.name += " -CreateRecoveryScheduleV2";
             // Create new graphql operation createRecoveryScheduleV2
             InitMutationCreateRecoveryScheduleV2();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // createRecoverySpecs.
+        internal void ProcessRecord_CreateRecoverySpecs()
+        {
+            this._logger.name += " -CreateRecoverySpecs";
+            // Create new graphql operation createRecoverySpecs
+            InitMutationCreateRecoverySpecs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11600,6 +14491,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // deactivateDataType.
+        internal void ProcessRecord_DeactivateDataType()
+        {
+            this._logger.name += " -DeactivateDataType";
+            // Create new graphql operation deactivateDataType
+            InitMutationDeactivateDataType();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deactivateDocumentAttribute.
+        internal void ProcessRecord_DeactivateDocumentAttribute()
+        {
+            this._logger.name += " -DeactivateDocumentAttribute";
+            // Create new graphql operation deactivateDocumentAttribute
+            InitMutationDeactivateDocumentAttribute();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // deleteAdGroupsFromHierarchy.
         internal void ProcessRecord_DeleteAdGroupsFromHierarchy()
         {
@@ -11615,6 +14524,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -DeleteCephSetting";
             // Create new graphql operation deleteCephSetting
             InitMutationDeleteCephSetting();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteCloudDirectGenericS3TenantCredential.
+        internal void ProcessRecord_DeleteCloudDirectGenericS3TenantCredential()
+        {
+            this._logger.name += " -DeleteCloudDirectGenericS3TenantCredential";
+            // Create new graphql operation deleteCloudDirectGenericS3TenantCredential
+            InitMutationDeleteCloudDirectGenericS3TenantCredential();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -11858,6 +14776,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -ExpireSnoozedDirectories";
             // Create new graphql operation expireSnoozedDirectories
             InitMutationExpireSnoozedDirectories();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // exportPermissions.
+        internal void ProcessRecord_ExportPermissions()
+        {
+            this._logger.name += " -ExportPermissions";
+            // Create new graphql operation exportPermissions
+            InitMutationExportPermissions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // exportPrincipalsSummary.
+        internal void ProcessRecord_ExportPrincipalsSummary()
+        {
+            this._logger.name += " -ExportPrincipalsSummary";
+            // Create new graphql operation exportPrincipalsSummary
+            InitMutationExportPrincipalsSummary();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -12203,6 +15139,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // registerProductInterest.
+        internal void ProcessRecord_RegisterProductInterest()
+        {
+            this._logger.name += " -RegisterProductInterest";
+            // Create new graphql operation registerProductInterest
+            InitMutationRegisterProductInterest();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // removeDisk.
         internal void ProcessRecord_RemoveDisk()
         {
@@ -12473,6 +15418,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // setIsIdentitySecurityRoleAssignmentComplete.
+        internal void ProcessRecord_SetIsIdentitySecurityRoleAssignmentComplete()
+        {
+            this._logger.name += " -SetIsIdentitySecurityRoleAssignmentComplete";
+            // Create new graphql operation setIsIdentitySecurityRoleAssignmentComplete
+            InitMutationSetIsIdentitySecurityRoleAssignmentComplete();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // setMfaSetting.
         internal void ProcessRecord_SetMfaSetting()
         {
@@ -12605,6 +15559,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartPeriodicUpgradePrechecksOnDemandJob";
             // Create new graphql operation startPeriodicUpgradePrechecksOnDemandJob
             InitMutationStartPeriodicUpgradePrechecksOnDemandJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // startRecovery.
+        internal void ProcessRecord_StartRecovery()
+        {
+            this._logger.name += " -StartRecovery";
+            // Create new graphql operation startRecovery
+            InitMutationStartRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -12851,6 +15814,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // updateCustomDataType.
+        internal void ProcessRecord_UpdateCustomDataType()
+        {
+            this._logger.name += " -UpdateCustomDataType";
+            // Create new graphql operation updateCustomDataType
+            InitMutationUpdateCustomDataType();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateCustomIntelFeed.
         internal void ProcessRecord_UpdateCustomIntelFeed()
         {
@@ -12884,6 +15856,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateDnsServersAndSearchDomains";
             // Create new graphql operation updateDnsServersAndSearchDomains
             InitMutationUpdateDnsServersAndSearchDomains();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateDocumentType.
+        internal void ProcessRecord_UpdateDocumentType()
+        {
+            this._logger.name += " -UpdateDocumentType";
+            // Create new graphql operation updateDocumentType
+            InitMutationUpdateDocumentType();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -13022,6 +16003,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // updatePredefinedDataType.
+        internal void ProcessRecord_UpdatePredefinedDataType()
+        {
+            this._logger.name += " -UpdatePredefinedDataType";
+            // Create new graphql operation updatePredefinedDataType
+            InitMutationUpdatePredefinedDataType();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // updateProxmoxEnvironment.
         internal void ProcessRecord_UpdateProxmoxEnvironment()
         {
@@ -13037,6 +16027,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -UpdateProxyConfig";
             // Create new graphql operation updateProxyConfig
             InitMutationUpdateProxyConfig();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updatePureStorageProtectionGroup.
+        internal void ProcessRecord_UpdatePureStorageProtectionGroup()
+        {
+            this._logger.name += " -UpdatePureStorageProtectionGroup";
+            // Create new graphql operation updatePureStorageProtectionGroup
+            InitMutationUpdatePureStorageProtectionGroup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updatePureStorageProtectionGroupVolumeExclusions.
+        internal void ProcessRecord_UpdatePureStorageProtectionGroupVolumeExclusions()
+        {
+            this._logger.name += " -UpdatePureStorageProtectionGroupVolumeExclusions";
+            // Create new graphql operation updatePureStorageProtectionGroupVolumeExclusions
+            InitMutationUpdatePureStorageProtectionGroupVolumeExclusions();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateRecoveryPlanV2.
+        internal void ProcessRecord_UpdateRecoveryPlanV2()
+        {
+            this._logger.name += " -UpdateRecoveryPlanV2";
+            // Create new graphql operation updateRecoveryPlanV2
+            InitMutationUpdateRecoveryPlanV2();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -13167,6 +16184,79 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Mutation:
+        // activateDataCategory(input: ActivateDataCategoryInput!): ActivateDataCategoryReply!
+        internal void InitMutationActivateDataCategory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ActivateDataCategoryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationActivateDataCategory",
+                "($input: ActivateDataCategoryInput!)",
+                "ActivateDataCategoryReply",
+                Mutation.ActivateDataCategory,
+                Mutation.ActivateDataCategoryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	dataCategoryId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // activateDataType(input: ActivateDataTypeInput!): ActivateDataTypeReply!
+        internal void InitMutationActivateDataType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ActivateDataTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationActivateDataType",
+                "($input: ActivateDataTypeInput!)",
+                "ActivateDataTypeReply",
+                Mutation.ActivateDataType,
+                Mutation.ActivateDataTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	dataTypeIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // activateDocumentAttribute(input: ActivateDocumentAttributeInput!): ActivateDocumentAttributeReply!
+        internal void InitMutationActivateDocumentAttribute()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ActivateDocumentAttributeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationActivateDocumentAttribute",
+                "($input: ActivateDocumentAttributeInput!)",
+                "ActivateDocumentAttributeReply",
+                Mutation.ActivateDocumentAttribute,
+                Mutation.ActivateDocumentAttributeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	attributeIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // addAdGroupsToHierarchy(input: AddAdGroupsToHierarchyInput!): RequestStatus!
         internal void InitMutationAddAdGroupsToHierarchy()
         {
@@ -13211,6 +16301,42 @@ $query.Var.input = @{
 					dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 				}
 			)
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // addCloudDirectGenericS3TenantCredentials(input: AddCloudDirectGenericS3TenantCredentialsInput!): Void
+        internal void InitMutationAddCloudDirectGenericS3TenantCredentials()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddCloudDirectGenericS3TenantCredentialsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddCloudDirectGenericS3TenantCredentials",
+                "($input: AddCloudDirectGenericS3TenantCredentialsInput!)",
+                "System.String",
+                Mutation.AddCloudDirectGenericS3TenantCredentials,
+                Mutation.AddCloudDirectGenericS3TenantCredentialsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterId = $someString
+	# REQUIRED
+	systemId = $someString
+	# REQUIRED
+	credentials = @(
+		@{
+			# REQUIRED
+			name = $someString
+			# REQUIRED
+			username = $someString
+			# REQUIRED
+			password = $someString
 		}
 	)
 }"
@@ -13328,6 +16454,17 @@ $query.Var.input = @{
 	certificateType = $someCloudDirectCertificateType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudDirectCertificateType]) for enum values.
 	# OPTIONAL
 	certificateKeyPassword = $someString
+	# OPTIONAL
+	creds = @(
+		@{
+			# REQUIRED
+			name = $someString
+			# REQUIRED
+			username = $someString
+			# REQUIRED
+			password = $someString
+		}
+	)
 }"
             );
         }
@@ -13360,8 +16497,6 @@ $query.Var.input = @{
 		$someString
 	)
 	# OPTIONAL
-	workload = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
-	# OPTIONAL
 	groupFilterAttributes = @(
 		@{
 			# OPTIONAL
@@ -13376,6 +16511,8 @@ $query.Var.input = @{
 			dataType = $someAttributeDataType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeDataType]) for enum values.
 		}
 	)
+	# OPTIONAL
+	workload = $someWorkloadLevelHierarchy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkloadLevelHierarchy]) for enum values.
 }"
             );
         }
@@ -14236,6 +17373,38 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // bulkUpdateSupportTunnel(input: BulkUpdateSupportTunnelInput!): BulkUpdateSupportTunnelReply!
+        internal void InitMutationBulkUpdateSupportTunnel()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BulkUpdateSupportTunnelInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationBulkUpdateSupportTunnel",
+                "($input: BulkUpdateSupportTunnelInput!)",
+                "BulkUpdateSupportTunnelReply",
+                Mutation.BulkUpdateSupportTunnel,
+                Mutation.BulkUpdateSupportTunnelFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	clusterUuids = @(
+		$someString
+	)
+	# OPTIONAL
+	tunnelConfig = @{
+		# OPTIONAL
+		inactivityTimeoutInSeconds = $someInt64
+		# REQUIRED
+		isTunnelEnabled = $someBoolean
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // bulkUpdateSystemConfig(input: BulkUpdateSapHanaSystemConfigInput!): AsyncRequestStatus!
         internal void InitMutationBulkUpdateSystemConfig()
         {
@@ -14871,6 +18040,64 @@ $query.Var.input = @{
 	excludeFieldNamePattern = $someString
 	# OPTIONAL
 	excludePathPattern = $someString
+	# OPTIONAL
+	excludeValueRegex = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createCustomDataType(input: CreateCustomDataTypeInput!): CreateCustomDataTypeReply!
+        internal void InitMutationCreateCustomDataType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateCustomDataTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateCustomDataType",
+                "($input: CreateCustomDataTypeInput!)",
+                "CreateCustomDataTypeReply",
+                Mutation.CreateCustomDataType,
+                Mutation.CreateCustomDataTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	dataType = @{
+		# OPTIONAL
+		analyzerType = $someAnalyzerTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerTypeEnum]) for enum values.
+		# REQUIRED
+		name = $someString
+		# OPTIONAL
+		dictionaryCsv = $someString
+		# OPTIONAL
+		regex = $someString
+		# OPTIONAL
+		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+		# REQUIRED
+		ruleTypes = @(
+			$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+		)
+		# OPTIONAL
+		keyRegex = $someString
+		# OPTIONAL
+		structuredValueRegex = $someString
+		# OPTIONAL
+		structuredDictionaryCsv = $someString
+		# OPTIONAL
+		structuredKeyDictionaryCsv = $someString
+		# OPTIONAL
+		proximityKeywordsRegex = $someString
+		# OPTIONAL
+		proximityDistance = $someInt
+		# OPTIONAL
+		excludeValueRegex = $someString
+	}
+	# REQUIRED
+	dataCategoryIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -15254,6 +18481,509 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createRecoveryPlanV2(input: CreateRecoveryPlanV2Input!): CreateRecoveryPlanV2Reply!
+        internal void InitMutationCreateRecoveryPlanV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateRecoveryPlanV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateRecoveryPlanV2",
+                "($input: CreateRecoveryPlanV2Input!)",
+                "CreateRecoveryPlanV2Reply",
+                Mutation.CreateRecoveryPlanV2,
+                Mutation.CreateRecoveryPlanV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recoveryPlan = @{
+		# OPTIONAL
+		id = $someString
+		# OPTIONAL
+		name = $someString
+		# OPTIONAL
+		version = $someInt64
+		# OPTIONAL
+		recoveryPlanType = $someRecoveryPlanType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPlanType]) for enum values.
+		# OPTIONAL
+		workloadType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		# OPTIONAL
+		sourceLocation = @{
+			# OPTIONAL
+			locationId = $someString
+			# OPTIONAL
+			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+		}
+		# OPTIONAL
+		targetLocation = @{
+			# OPTIONAL
+			locationId = $someString
+			# OPTIONAL
+			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+		}
+		# OPTIONAL
+		isHydrationEnabled = $someBoolean
+		# OPTIONAL
+		isHidden = $someBoolean
+	}
+	# REQUIRED
+	recoverySpecMaps = @(
+		@{
+			# OPTIONAL
+			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+			# OPTIONAL
+			targetLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			userData = $someString
+			# OPTIONAL
+			childRecoverySpecs = @(
+				@{
+					# OPTIONAL
+					workloadRecoverySpec = @{
+						# REQUIRED
+						spec = @{
+							# OPTIONAL
+							vmwareVm = @{
+								# OPTIONAL
+								vcpus = $someInt
+								# OPTIONAL
+								memoryMbs = $someInt
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										dataStoreId = $someString
+										# OPTIONAL
+										sizeGbs = $someSingle
+										# OPTIONAL
+										dataStoreCdmId = $someString
+										# OPTIONAL
+										datastoreClusterId = $someString
+										# OPTIONAL
+										label = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										isPrimaryNic = $someBoolean
+										# OPTIONAL
+										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+										# OPTIONAL
+										networkId = $someString
+										# OPTIONAL
+										networkMoid = $someString
+										# OPTIONAL
+										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+										# OPTIONAL
+										ipv4Address = $someString
+										# OPTIONAL
+										ipv6Address = $someString
+										# OPTIONAL
+										dnsInfos = @(
+											$someString
+										)
+										# OPTIONAL
+										gateway = $someString
+										# OPTIONAL
+										netmask = $someString
+									}
+								)
+								# OPTIONAL
+								postScript = $someString
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									vcenterId = $someString
+									# OPTIONAL
+									vcenterName = $someString
+									# OPTIONAL
+									vcenterCdmId = $someString
+									# OPTIONAL
+									computeClusterId = $someString
+									# OPTIONAL
+									computeClusterCdmId = $someString
+									# OPTIONAL
+									computeClusterName = $someString
+									# OPTIONAL
+									resourcePoolId = $someString
+									# OPTIONAL
+									resourcePoolCdmId = $someString
+									# OPTIONAL
+									resourcePoolName = $someString
+									# OPTIONAL
+									hostId = $someString
+									# OPTIONAL
+									hostName = $someString
+									# OPTIONAL
+									hostCdmId = $someString
+									# OPTIONAL
+									datacenterId = $someString
+									# OPTIONAL
+									datacenterCdmId = $someString
+									# OPTIONAL
+									datacenterName = $someString
+								}
+								# OPTIONAL
+								enableNetworkPreserve = $someBoolean
+								# OPTIONAL
+								enableMacPreserveOnly = $someBoolean
+								# OPTIONAL
+								postScriptTimestamp = $someString
+								# OPTIONAL
+								postScriptHash = $someString
+								# OPTIONAL
+								enableNetworkDisconnect = $someBoolean
+								# OPTIONAL
+								localAdminPassword = $someString
+							}
+							# OPTIONAL
+							nutanixVm = @{
+								# OPTIONAL
+								vCpus = $someInt64
+								# OPTIONAL
+								memoryMbs = $someInt64
+								# OPTIONAL
+								clusterId = $someString
+								# OPTIONAL
+								removeAllNetwork = $someBoolean
+								# OPTIONAL
+								preserveMacAddress = $someBoolean
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										storageContainerId = $someString
+										# OPTIONAL
+										storageContainerName = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										networkName = $someString
+										# OPTIONAL
+										networkUuid = $someString
+									}
+								)
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									clusterId = $someString
+									# OPTIONAL
+									clusterName = $someString
+									# OPTIONAL
+									clusterHostname = $someString
+									# OPTIONAL
+									prismCentral = $someString
+								}
+							}
+							# OPTIONAL
+							azureVm = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								sizeType = $someString
+								# OPTIONAL
+								availabilityZone = $someString
+								# OPTIONAL
+								shouldEnableAcceleratedNetworking = $someBoolean
+								# OPTIONAL
+								resourceGroup = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								networkSecurityGroupNativeId = $someString
+								# OPTIONAL
+								availabilitySetNativeId = $someString
+								# OPTIONAL
+								diskEncryptionSetNativeId = $someString
+							}
+							# OPTIONAL
+							awsEc2Instance = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								instanceType = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								sshKeyPairName = $someString
+								# OPTIONAL
+								iamInstanceProfileArn = $someString
+								# OPTIONAL
+								vpcNativeId = $someString
+							}
+							# OPTIONAL
+							awsRdsInstance = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								dbInstanceClass = $someString
+								# OPTIONAL
+								dbEngineVersion = $someString
+								# OPTIONAL
+								isMultiAz = $someBoolean
+								# OPTIONAL
+								primaryAz = $someString
+								# OPTIONAL
+								port = $someInt64
+								# OPTIONAL
+								storageType = $someString
+								# OPTIONAL
+								iops = $someInt64
+								# OPTIONAL
+								vpcNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								subnetGroupName = $someString
+								# OPTIONAL
+								isPubliclyAccessible = $someBoolean
+								# OPTIONAL
+								optionGroupName = $someString
+								# OPTIONAL
+								parameterGroupName = $someString
+								# OPTIONAL
+								clusterParameterGroupName = $someString
+							}
+							# OPTIONAL
+							adfr = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								hostWorkloadFid = $someString
+								# OPTIONAL
+								hostSnapshotFid = $someString
+								# OPTIONAL
+								hostRecoveryPoint = $someInt64
+								# OPTIONAL
+								addc = @{
+									# OPTIONAL
+									version = $someInt64
+									# OPTIONAL
+									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+									# OPTIONAL
+									customDnsIps = @(
+										$someString
+									)
+									# OPTIONAL
+									shouldRebuildGc = $someBoolean
+									# OPTIONAL
+									shouldResetKerberos = $someBoolean
+									# OPTIONAL
+									winTimeServers = @(
+										$someString
+									)
+									# OPTIONAL
+									domainSid = $someString
+									# OPTIONAL
+									domainId = $someString
+								}
+								# OPTIONAL
+								recoveryVlanId = $someInt
+								# OPTIONAL
+								hostSpec = @{
+									# OPTIONAL
+									vmwareVm = @{
+										# OPTIONAL
+										vcpus = $someInt
+										# OPTIONAL
+										memoryMbs = $someInt
+										# OPTIONAL
+										volumes = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												dataStoreId = $someString
+												# OPTIONAL
+												sizeGbs = $someSingle
+												# OPTIONAL
+												dataStoreCdmId = $someString
+												# OPTIONAL
+												datastoreClusterId = $someString
+												# OPTIONAL
+												label = $someString
+											}
+										)
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												isPrimaryNic = $someBoolean
+												# OPTIONAL
+												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+												# OPTIONAL
+												networkId = $someString
+												# OPTIONAL
+												networkMoid = $someString
+												# OPTIONAL
+												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+												# OPTIONAL
+												ipv4Address = $someString
+												# OPTIONAL
+												ipv6Address = $someString
+												# OPTIONAL
+												dnsInfos = @(
+													$someString
+												)
+												# OPTIONAL
+												gateway = $someString
+												# OPTIONAL
+												netmask = $someString
+											}
+										)
+										# OPTIONAL
+										postScript = $someString
+										# OPTIONAL
+										target = @{
+											# OPTIONAL
+											vcenterId = $someString
+											# OPTIONAL
+											vcenterName = $someString
+											# OPTIONAL
+											vcenterCdmId = $someString
+											# OPTIONAL
+											computeClusterId = $someString
+											# OPTIONAL
+											computeClusterCdmId = $someString
+											# OPTIONAL
+											computeClusterName = $someString
+											# OPTIONAL
+											resourcePoolId = $someString
+											# OPTIONAL
+											resourcePoolCdmId = $someString
+											# OPTIONAL
+											resourcePoolName = $someString
+											# OPTIONAL
+											hostId = $someString
+											# OPTIONAL
+											hostName = $someString
+											# OPTIONAL
+											hostCdmId = $someString
+											# OPTIONAL
+											datacenterId = $someString
+											# OPTIONAL
+											datacenterCdmId = $someString
+											# OPTIONAL
+											datacenterName = $someString
+										}
+										# OPTIONAL
+										enableNetworkPreserve = $someBoolean
+										# OPTIONAL
+										enableMacPreserveOnly = $someBoolean
+										# OPTIONAL
+										postScriptTimestamp = $someString
+										# OPTIONAL
+										postScriptHash = $someString
+										# OPTIONAL
+										enableNetworkDisconnect = $someBoolean
+										# OPTIONAL
+										localAdminPassword = $someString
+									}
+								}
+							}
+							# OPTIONAL
+							addc = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+								# OPTIONAL
+								customDnsIps = @(
+									$someString
+								)
+								# OPTIONAL
+								shouldRebuildGc = $someBoolean
+								# OPTIONAL
+								shouldResetKerberos = $someBoolean
+								# OPTIONAL
+								winTimeServers = @(
+									$someString
+								)
+								# OPTIONAL
+								domainSid = $someString
+								# OPTIONAL
+								domainId = $someString
+							}
+						}
+					}
+					# OPTIONAL
+					recoveryPoint = $someInt64
+					# REQUIRED
+					workloadId = $someString
+					# OPTIONAL
+					snapshotId = $someString
+					# OPTIONAL
+					postFailoverSlaId = $someString
+					# REQUIRED
+					bootPriority = $someInt
+				}
+			)
+			# OPTIONAL
+			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+			# OPTIONAL
+			recoveryId = $someString
+			# OPTIONAL
+			sourceLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			pauseBetweenPriorityGroups = @(
+				$someInt64
+			)
+			# OPTIONAL
+			config = @{
+				# REQUIRED
+				configList = @(
+					@{
+						# OPTIONAL
+						key = $someString
+						# OPTIONAL
+						value = $someString
+					}
+				)
+			}
+		}
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createRecoveryScheduleV2(input: CreateRecoveryScheduleV2Input!): Void
         internal void InitMutationCreateRecoveryScheduleV2()
         {
@@ -15294,6 +19024,480 @@ $query.Var.input = @{
 		# OPTIONAL
 		excludeReportInEmail = $someBoolean
 	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // createRecoverySpecs(input: CreateRecoverySpecsInput!): CreateRecoverySpecsReply!
+        internal void InitMutationCreateRecoverySpecs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateRecoverySpecsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreateRecoverySpecs",
+                "($input: CreateRecoverySpecsInput!)",
+                "CreateRecoverySpecsReply",
+                Mutation.CreateRecoverySpecs,
+                Mutation.CreateRecoverySpecsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recoverySpecMaps = @(
+		@{
+			# OPTIONAL
+			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+			# OPTIONAL
+			targetLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			userData = $someString
+			# OPTIONAL
+			childRecoverySpecs = @(
+				@{
+					# OPTIONAL
+					workloadRecoverySpec = @{
+						# REQUIRED
+						spec = @{
+							# OPTIONAL
+							vmwareVm = @{
+								# OPTIONAL
+								vcpus = $someInt
+								# OPTIONAL
+								memoryMbs = $someInt
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										dataStoreId = $someString
+										# OPTIONAL
+										sizeGbs = $someSingle
+										# OPTIONAL
+										dataStoreCdmId = $someString
+										# OPTIONAL
+										datastoreClusterId = $someString
+										# OPTIONAL
+										label = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										isPrimaryNic = $someBoolean
+										# OPTIONAL
+										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+										# OPTIONAL
+										networkId = $someString
+										# OPTIONAL
+										networkMoid = $someString
+										# OPTIONAL
+										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+										# OPTIONAL
+										ipv4Address = $someString
+										# OPTIONAL
+										ipv6Address = $someString
+										# OPTIONAL
+										dnsInfos = @(
+											$someString
+										)
+										# OPTIONAL
+										gateway = $someString
+										# OPTIONAL
+										netmask = $someString
+									}
+								)
+								# OPTIONAL
+								postScript = $someString
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									vcenterId = $someString
+									# OPTIONAL
+									vcenterName = $someString
+									# OPTIONAL
+									vcenterCdmId = $someString
+									# OPTIONAL
+									computeClusterId = $someString
+									# OPTIONAL
+									computeClusterCdmId = $someString
+									# OPTIONAL
+									computeClusterName = $someString
+									# OPTIONAL
+									resourcePoolId = $someString
+									# OPTIONAL
+									resourcePoolCdmId = $someString
+									# OPTIONAL
+									resourcePoolName = $someString
+									# OPTIONAL
+									hostId = $someString
+									# OPTIONAL
+									hostName = $someString
+									# OPTIONAL
+									hostCdmId = $someString
+									# OPTIONAL
+									datacenterId = $someString
+									# OPTIONAL
+									datacenterCdmId = $someString
+									# OPTIONAL
+									datacenterName = $someString
+								}
+								# OPTIONAL
+								enableNetworkPreserve = $someBoolean
+								# OPTIONAL
+								enableMacPreserveOnly = $someBoolean
+								# OPTIONAL
+								postScriptTimestamp = $someString
+								# OPTIONAL
+								postScriptHash = $someString
+								# OPTIONAL
+								enableNetworkDisconnect = $someBoolean
+								# OPTIONAL
+								localAdminPassword = $someString
+							}
+							# OPTIONAL
+							nutanixVm = @{
+								# OPTIONAL
+								vCpus = $someInt64
+								# OPTIONAL
+								memoryMbs = $someInt64
+								# OPTIONAL
+								clusterId = $someString
+								# OPTIONAL
+								removeAllNetwork = $someBoolean
+								# OPTIONAL
+								preserveMacAddress = $someBoolean
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										storageContainerId = $someString
+										# OPTIONAL
+										storageContainerName = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										networkName = $someString
+										# OPTIONAL
+										networkUuid = $someString
+									}
+								)
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									clusterId = $someString
+									# OPTIONAL
+									clusterName = $someString
+									# OPTIONAL
+									clusterHostname = $someString
+									# OPTIONAL
+									prismCentral = $someString
+								}
+							}
+							# OPTIONAL
+							azureVm = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								sizeType = $someString
+								# OPTIONAL
+								availabilityZone = $someString
+								# OPTIONAL
+								shouldEnableAcceleratedNetworking = $someBoolean
+								# OPTIONAL
+								resourceGroup = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								networkSecurityGroupNativeId = $someString
+								# OPTIONAL
+								availabilitySetNativeId = $someString
+								# OPTIONAL
+								diskEncryptionSetNativeId = $someString
+							}
+							# OPTIONAL
+							awsEc2Instance = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								instanceType = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								sshKeyPairName = $someString
+								# OPTIONAL
+								iamInstanceProfileArn = $someString
+								# OPTIONAL
+								vpcNativeId = $someString
+							}
+							# OPTIONAL
+							awsRdsInstance = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								dbInstanceClass = $someString
+								# OPTIONAL
+								dbEngineVersion = $someString
+								# OPTIONAL
+								isMultiAz = $someBoolean
+								# OPTIONAL
+								primaryAz = $someString
+								# OPTIONAL
+								port = $someInt64
+								# OPTIONAL
+								storageType = $someString
+								# OPTIONAL
+								iops = $someInt64
+								# OPTIONAL
+								vpcNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								subnetGroupName = $someString
+								# OPTIONAL
+								isPubliclyAccessible = $someBoolean
+								# OPTIONAL
+								optionGroupName = $someString
+								# OPTIONAL
+								parameterGroupName = $someString
+								# OPTIONAL
+								clusterParameterGroupName = $someString
+							}
+							# OPTIONAL
+							adfr = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								hostWorkloadFid = $someString
+								# OPTIONAL
+								hostSnapshotFid = $someString
+								# OPTIONAL
+								hostRecoveryPoint = $someInt64
+								# OPTIONAL
+								addc = @{
+									# OPTIONAL
+									version = $someInt64
+									# OPTIONAL
+									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+									# OPTIONAL
+									customDnsIps = @(
+										$someString
+									)
+									# OPTIONAL
+									shouldRebuildGc = $someBoolean
+									# OPTIONAL
+									shouldResetKerberos = $someBoolean
+									# OPTIONAL
+									winTimeServers = @(
+										$someString
+									)
+									# OPTIONAL
+									domainSid = $someString
+									# OPTIONAL
+									domainId = $someString
+								}
+								# OPTIONAL
+								recoveryVlanId = $someInt
+								# OPTIONAL
+								hostSpec = @{
+									# OPTIONAL
+									vmwareVm = @{
+										# OPTIONAL
+										vcpus = $someInt
+										# OPTIONAL
+										memoryMbs = $someInt
+										# OPTIONAL
+										volumes = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												dataStoreId = $someString
+												# OPTIONAL
+												sizeGbs = $someSingle
+												# OPTIONAL
+												dataStoreCdmId = $someString
+												# OPTIONAL
+												datastoreClusterId = $someString
+												# OPTIONAL
+												label = $someString
+											}
+										)
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												isPrimaryNic = $someBoolean
+												# OPTIONAL
+												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+												# OPTIONAL
+												networkId = $someString
+												# OPTIONAL
+												networkMoid = $someString
+												# OPTIONAL
+												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+												# OPTIONAL
+												ipv4Address = $someString
+												# OPTIONAL
+												ipv6Address = $someString
+												# OPTIONAL
+												dnsInfos = @(
+													$someString
+												)
+												# OPTIONAL
+												gateway = $someString
+												# OPTIONAL
+												netmask = $someString
+											}
+										)
+										# OPTIONAL
+										postScript = $someString
+										# OPTIONAL
+										target = @{
+											# OPTIONAL
+											vcenterId = $someString
+											# OPTIONAL
+											vcenterName = $someString
+											# OPTIONAL
+											vcenterCdmId = $someString
+											# OPTIONAL
+											computeClusterId = $someString
+											# OPTIONAL
+											computeClusterCdmId = $someString
+											# OPTIONAL
+											computeClusterName = $someString
+											# OPTIONAL
+											resourcePoolId = $someString
+											# OPTIONAL
+											resourcePoolCdmId = $someString
+											# OPTIONAL
+											resourcePoolName = $someString
+											# OPTIONAL
+											hostId = $someString
+											# OPTIONAL
+											hostName = $someString
+											# OPTIONAL
+											hostCdmId = $someString
+											# OPTIONAL
+											datacenterId = $someString
+											# OPTIONAL
+											datacenterCdmId = $someString
+											# OPTIONAL
+											datacenterName = $someString
+										}
+										# OPTIONAL
+										enableNetworkPreserve = $someBoolean
+										# OPTIONAL
+										enableMacPreserveOnly = $someBoolean
+										# OPTIONAL
+										postScriptTimestamp = $someString
+										# OPTIONAL
+										postScriptHash = $someString
+										# OPTIONAL
+										enableNetworkDisconnect = $someBoolean
+										# OPTIONAL
+										localAdminPassword = $someString
+									}
+								}
+							}
+							# OPTIONAL
+							addc = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+								# OPTIONAL
+								customDnsIps = @(
+									$someString
+								)
+								# OPTIONAL
+								shouldRebuildGc = $someBoolean
+								# OPTIONAL
+								shouldResetKerberos = $someBoolean
+								# OPTIONAL
+								winTimeServers = @(
+									$someString
+								)
+								# OPTIONAL
+								domainSid = $someString
+								# OPTIONAL
+								domainId = $someString
+							}
+						}
+					}
+					# OPTIONAL
+					recoveryPoint = $someInt64
+					# REQUIRED
+					workloadId = $someString
+					# OPTIONAL
+					snapshotId = $someString
+					# OPTIONAL
+					postFailoverSlaId = $someString
+					# REQUIRED
+					bootPriority = $someInt
+				}
+			)
+			# OPTIONAL
+			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+			# OPTIONAL
+			recoveryId = $someString
+			# OPTIONAL
+			sourceLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			pauseBetweenPriorityGroups = @(
+				$someInt64
+			)
+			# OPTIONAL
+			config = @{
+				# REQUIRED
+				configList = @(
+					@{
+						# OPTIONAL
+						key = $someString
+						# OPTIONAL
+						value = $someString
+					}
+				)
+			}
+		}
+	)
+	# REQUIRED
+	recoveryPlanId = $someString
 }"
             );
         }
@@ -15579,6 +19783,56 @@ $query.Var.disableAnalyzer = $someBoolean"
         }
 
         // Create new GraphQL Mutation:
+        // deactivateDataType(input: DeactivateDataTypeInput!): DeactivateDataTypeReply!
+        internal void InitMutationDeactivateDataType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeactivateDataTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeactivateDataType",
+                "($input: DeactivateDataTypeInput!)",
+                "DeactivateDataTypeReply",
+                Mutation.DeactivateDataType,
+                Mutation.DeactivateDataTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	dataTypeIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deactivateDocumentAttribute(input: DeactivateDocumentAttributeInput!): DeactivateDocumentAttributeReply!
+        internal void InitMutationDeactivateDocumentAttribute()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeactivateDocumentAttributeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeactivateDocumentAttribute",
+                "($input: DeactivateDocumentAttributeInput!)",
+                "DeactivateDocumentAttributeReply",
+                Mutation.DeactivateDocumentAttribute,
+                Mutation.DeactivateDocumentAttributeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	attributeIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // deleteAdGroupsFromHierarchy(input: DeleteAdGroupsFromHierarchyInput!): RequestStatus!
         internal void InitMutationDeleteAdGroupsFromHierarchy()
         {
@@ -15626,6 +19880,33 @@ $query.Var.input = @{
 	openstackAvailabilityZoneId = $someString
 	# REQUIRED
 	cephSettingId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // deleteCloudDirectGenericS3TenantCredential(input: DeleteCloudDirectGenericS3TenantCredentialInput!): Void
+        internal void InitMutationDeleteCloudDirectGenericS3TenantCredential()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteCloudDirectGenericS3TenantCredentialInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationDeleteCloudDirectGenericS3TenantCredential",
+                "($input: DeleteCloudDirectGenericS3TenantCredentialInput!)",
+                "System.String",
+                Mutation.DeleteCloudDirectGenericS3TenantCredential,
+                Mutation.DeleteCloudDirectGenericS3TenantCredentialFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterId = $someString
+	# REQUIRED
+	systemId = $someString
+	# REQUIRED
+	namespaceUuid = $someString
 }"
             );
         }
@@ -16305,6 +20586,76 @@ $query.Var.input = @{
 		$someString
 	)
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportPermissions(input: ExportPermissionsInput!): ExportPermissionsReply!
+        internal void InitMutationExportPermissions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportPermissionsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportPermissions",
+                "($input: ExportPermissionsInput!)",
+                "ExportPermissionsReply",
+                Mutation.ExportPermissions,
+                Mutation.ExportPermissionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	objectId = $someString
+	# REQUIRED
+	snapshotFid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportPrincipalsSummary(filter: ExportPrincipalsSummaryFilterInput, timelineDate: String!, historicalDeltaDays: Int! = 0): ExportPrincipalSummaryResp!
+        internal void InitMutationExportPrincipalsSummary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("filter", "ExportPrincipalsSummaryFilterInput"),
+                Tuple.Create("timelineDate", "String!"),
+                Tuple.Create("historicalDeltaDays", "Int!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportPrincipalsSummary",
+                "($filter: ExportPrincipalsSummaryFilterInput,$timelineDate: String!,$historicalDeltaDays: Int!)",
+                "ExportPrincipalSummaryResp",
+                Mutation.ExportPrincipalsSummary,
+                Mutation.ExportPrincipalsSummaryFieldSpec,
+                @"# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	riskLevel = @(
+		$someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+	)
+	# OPTIONAL
+	policyIds = @(
+		$someString
+	)
+	# OPTIONAL
+	principalName = $someString
+	# OPTIONAL
+	objectIds = @(
+		$someString
+	)
+	# OPTIONAL
+	principalSummaryCategory = $somePrincipalSummaryCategoryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PrincipalSummaryCategoryType]) for enum values.
+	# OPTIONAL
+	groupId = $someString
+}
+# REQUIRED
+$query.Var.timelineDate = $someString
+# REQUIRED
+$query.Var.historicalDeltaDays = $someInt"
             );
         }
 
@@ -17622,6 +21973,29 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // registerProductInterest(input: RegisterProductInterestInput!): Void
+        internal void InitMutationRegisterProductInterest()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RegisterProductInterestInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRegisterProductInterest",
+                "($input: RegisterProductInterestInput!)",
+                "System.String",
+                Mutation.RegisterProductInterest,
+                Mutation.RegisterProductInterestFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	product = $someRubrikProduct # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RubrikProduct]) for enum values.
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // removeDisk(input: RemoveDiskInput!): ResponseSuccess!
         internal void InitMutationRemoveDisk()
         {
@@ -18492,14 +22866,14 @@ $query.Var.input = @{
 	thresholds = @(
 		@{
 			# REQUIRED
-			clusterUuid = $someString
-			# REQUIRED
 			datastoreFreespaceThreshold = @{
 				# REQUIRED
 				threshold = $someSingle
 				# OPTIONAL
 				vmId = $someString
 			}
+			# REQUIRED
+			clusterUuid = $someString
 		}
 	)
 }"
@@ -18552,6 +22926,26 @@ $query.Var.input = @{
 	# REQUIRED
 	mode = $someWhitelistModeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WhitelistModeEnum]) for enum values.
 }"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // setIsIdentitySecurityRoleAssignmentComplete(irRoomConfigured: Boolean!): Void
+        internal void InitMutationSetIsIdentitySecurityRoleAssignmentComplete()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("irRoomConfigured", "Boolean!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationSetIsIdentitySecurityRoleAssignmentComplete",
+                "($irRoomConfigured: Boolean!)",
+                "System.String",
+                Mutation.SetIsIdentitySecurityRoleAssignmentComplete,
+                Mutation.SetIsIdentitySecurityRoleAssignmentCompleteFieldSpec,
+                @"# REQUIRED
+$query.Var.irRoomConfigured = $someBoolean"
             );
         }
 
@@ -18857,22 +23251,24 @@ $query.Var.input = @{
         // startCrawl(
         //     name: String!
         //     resources: [ResourceInput!]!
-        //     analyzerGroups: [AnalyzerGroupInput!]!
+        //     analyzerGroups: [AnalyzerGroupInput!]
         //     extWhiteList: [String!]
+        //     dataCategoryIds: [String!]
         //   ): StartCrawlReply!
         internal void InitMutationStartCrawl()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("name", "String!"),
                 Tuple.Create("resources", "[ResourceInput!]!"),
-                Tuple.Create("analyzerGroups", "[AnalyzerGroupInput!]!"),
+                Tuple.Create("analyzerGroups", "[AnalyzerGroupInput!]"),
                 Tuple.Create("extWhiteList", "[String!]"),
+                Tuple.Create("dataCategoryIds", "[String!]"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationStartCrawl",
-                "($name: String!,$resources: [ResourceInput!]!,$analyzerGroups: [AnalyzerGroupInput!]!,$extWhiteList: [String!])",
+                "($name: String!,$resources: [ResourceInput!]!,$analyzerGroups: [AnalyzerGroupInput!],$extWhiteList: [String!],$dataCategoryIds: [String!])",
                 "StartCrawlReply",
                 Mutation.StartCrawl,
                 Mutation.StartCrawlFieldSpec,
@@ -18887,7 +23283,7 @@ $query.Var.resources = @(
 		snapshotFid = $someString
 }
 )
-# REQUIRED
+# OPTIONAL
 $query.Var.analyzerGroups = @(
 	@{
 		# OPTIONAL
@@ -18956,6 +23352,8 @@ $query.Var.analyzerGroups = @(
 				excludeFieldNamePattern = $someString
 				# OPTIONAL
 				excludePathPattern = $someString
+				# OPTIONAL
+				excludeValueRegex = $someString
 			}
 		)
 		# OPTIONAL
@@ -18966,6 +23364,10 @@ $query.Var.analyzerGroups = @(
 )
 # OPTIONAL
 $query.Var.extWhiteList = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.dataCategoryIds = @(
 	$someString
 )"
             );
@@ -19140,6 +23542,496 @@ $query.Var.input = @{
                 Mutation.StartPeriodicUpgradePrechecksOnDemandJobFieldSpec,
                 @"# REQUIRED
 $query.Var.clusterUuid = $someString"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // startRecovery(input: StartRecoveryInput!): StartRecoveryReply!
+        internal void InitMutationStartRecovery()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "StartRecoveryInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationStartRecovery",
+                "($input: StartRecoveryInput!)",
+                "StartRecoveryReply",
+                Mutation.StartRecovery,
+                Mutation.StartRecoveryFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recoveryName = $someString
+	# REQUIRED
+	dataTransferType = $someDataTransferType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataTransferType]) for enum values.
+	# REQUIRED
+	recoveryFailureAction = $someRecoveryFailureAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryFailureAction]) for enum values.
+	# OPTIONAL
+	triggeredFrom = $someRecoveryTriggeredFrom # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryTriggeredFrom]) for enum values.
+	# REQUIRED
+	recoveryPlanInfo = @{
+		# OPTIONAL
+		recoveryPlanId = $someString
+		# OPTIONAL
+		isAdhocRecovery = $someBoolean
+	}
+	# REQUIRED
+	recoverySpecInfo = @{
+		# OPTIONAL
+		recoverySpecId = $someString
+		# OPTIONAL
+		recoverySpecMap = @{
+			# OPTIONAL
+			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+			# OPTIONAL
+			targetLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			userData = $someString
+			# OPTIONAL
+			childRecoverySpecs = @(
+				@{
+					# OPTIONAL
+					workloadRecoverySpec = @{
+						# REQUIRED
+						spec = @{
+							# OPTIONAL
+							vmwareVm = @{
+								# OPTIONAL
+								vcpus = $someInt
+								# OPTIONAL
+								memoryMbs = $someInt
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										dataStoreId = $someString
+										# OPTIONAL
+										sizeGbs = $someSingle
+										# OPTIONAL
+										dataStoreCdmId = $someString
+										# OPTIONAL
+										datastoreClusterId = $someString
+										# OPTIONAL
+										label = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										isPrimaryNic = $someBoolean
+										# OPTIONAL
+										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+										# OPTIONAL
+										networkId = $someString
+										# OPTIONAL
+										networkMoid = $someString
+										# OPTIONAL
+										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+										# OPTIONAL
+										ipv4Address = $someString
+										# OPTIONAL
+										ipv6Address = $someString
+										# OPTIONAL
+										dnsInfos = @(
+											$someString
+										)
+										# OPTIONAL
+										gateway = $someString
+										# OPTIONAL
+										netmask = $someString
+									}
+								)
+								# OPTIONAL
+								postScript = $someString
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									vcenterId = $someString
+									# OPTIONAL
+									vcenterName = $someString
+									# OPTIONAL
+									vcenterCdmId = $someString
+									# OPTIONAL
+									computeClusterId = $someString
+									# OPTIONAL
+									computeClusterCdmId = $someString
+									# OPTIONAL
+									computeClusterName = $someString
+									# OPTIONAL
+									resourcePoolId = $someString
+									# OPTIONAL
+									resourcePoolCdmId = $someString
+									# OPTIONAL
+									resourcePoolName = $someString
+									# OPTIONAL
+									hostId = $someString
+									# OPTIONAL
+									hostName = $someString
+									# OPTIONAL
+									hostCdmId = $someString
+									# OPTIONAL
+									datacenterId = $someString
+									# OPTIONAL
+									datacenterCdmId = $someString
+									# OPTIONAL
+									datacenterName = $someString
+								}
+								# OPTIONAL
+								enableNetworkPreserve = $someBoolean
+								# OPTIONAL
+								enableMacPreserveOnly = $someBoolean
+								# OPTIONAL
+								postScriptTimestamp = $someString
+								# OPTIONAL
+								postScriptHash = $someString
+								# OPTIONAL
+								enableNetworkDisconnect = $someBoolean
+								# OPTIONAL
+								localAdminPassword = $someString
+							}
+							# OPTIONAL
+							nutanixVm = @{
+								# OPTIONAL
+								vCpus = $someInt64
+								# OPTIONAL
+								memoryMbs = $someInt64
+								# OPTIONAL
+								clusterId = $someString
+								# OPTIONAL
+								removeAllNetwork = $someBoolean
+								# OPTIONAL
+								preserveMacAddress = $someBoolean
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										storageContainerId = $someString
+										# OPTIONAL
+										storageContainerName = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										networkName = $someString
+										# OPTIONAL
+										networkUuid = $someString
+									}
+								)
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									clusterId = $someString
+									# OPTIONAL
+									clusterName = $someString
+									# OPTIONAL
+									clusterHostname = $someString
+									# OPTIONAL
+									prismCentral = $someString
+								}
+							}
+							# OPTIONAL
+							azureVm = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								sizeType = $someString
+								# OPTIONAL
+								availabilityZone = $someString
+								# OPTIONAL
+								shouldEnableAcceleratedNetworking = $someBoolean
+								# OPTIONAL
+								resourceGroup = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								networkSecurityGroupNativeId = $someString
+								# OPTIONAL
+								availabilitySetNativeId = $someString
+								# OPTIONAL
+								diskEncryptionSetNativeId = $someString
+							}
+							# OPTIONAL
+							awsEc2Instance = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								instanceType = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								sshKeyPairName = $someString
+								# OPTIONAL
+								iamInstanceProfileArn = $someString
+								# OPTIONAL
+								vpcNativeId = $someString
+							}
+							# OPTIONAL
+							awsRdsInstance = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								dbInstanceClass = $someString
+								# OPTIONAL
+								dbEngineVersion = $someString
+								# OPTIONAL
+								isMultiAz = $someBoolean
+								# OPTIONAL
+								primaryAz = $someString
+								# OPTIONAL
+								port = $someInt64
+								# OPTIONAL
+								storageType = $someString
+								# OPTIONAL
+								iops = $someInt64
+								# OPTIONAL
+								vpcNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								subnetGroupName = $someString
+								# OPTIONAL
+								isPubliclyAccessible = $someBoolean
+								# OPTIONAL
+								optionGroupName = $someString
+								# OPTIONAL
+								parameterGroupName = $someString
+								# OPTIONAL
+								clusterParameterGroupName = $someString
+							}
+							# OPTIONAL
+							adfr = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								hostWorkloadFid = $someString
+								# OPTIONAL
+								hostSnapshotFid = $someString
+								# OPTIONAL
+								hostRecoveryPoint = $someInt64
+								# OPTIONAL
+								addc = @{
+									# OPTIONAL
+									version = $someInt64
+									# OPTIONAL
+									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+									# OPTIONAL
+									customDnsIps = @(
+										$someString
+									)
+									# OPTIONAL
+									shouldRebuildGc = $someBoolean
+									# OPTIONAL
+									shouldResetKerberos = $someBoolean
+									# OPTIONAL
+									winTimeServers = @(
+										$someString
+									)
+									# OPTIONAL
+									domainSid = $someString
+									# OPTIONAL
+									domainId = $someString
+								}
+								# OPTIONAL
+								recoveryVlanId = $someInt
+								# OPTIONAL
+								hostSpec = @{
+									# OPTIONAL
+									vmwareVm = @{
+										# OPTIONAL
+										vcpus = $someInt
+										# OPTIONAL
+										memoryMbs = $someInt
+										# OPTIONAL
+										volumes = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												dataStoreId = $someString
+												# OPTIONAL
+												sizeGbs = $someSingle
+												# OPTIONAL
+												dataStoreCdmId = $someString
+												# OPTIONAL
+												datastoreClusterId = $someString
+												# OPTIONAL
+												label = $someString
+											}
+										)
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												isPrimaryNic = $someBoolean
+												# OPTIONAL
+												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+												# OPTIONAL
+												networkId = $someString
+												# OPTIONAL
+												networkMoid = $someString
+												# OPTIONAL
+												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+												# OPTIONAL
+												ipv4Address = $someString
+												# OPTIONAL
+												ipv6Address = $someString
+												# OPTIONAL
+												dnsInfos = @(
+													$someString
+												)
+												# OPTIONAL
+												gateway = $someString
+												# OPTIONAL
+												netmask = $someString
+											}
+										)
+										# OPTIONAL
+										postScript = $someString
+										# OPTIONAL
+										target = @{
+											# OPTIONAL
+											vcenterId = $someString
+											# OPTIONAL
+											vcenterName = $someString
+											# OPTIONAL
+											vcenterCdmId = $someString
+											# OPTIONAL
+											computeClusterId = $someString
+											# OPTIONAL
+											computeClusterCdmId = $someString
+											# OPTIONAL
+											computeClusterName = $someString
+											# OPTIONAL
+											resourcePoolId = $someString
+											# OPTIONAL
+											resourcePoolCdmId = $someString
+											# OPTIONAL
+											resourcePoolName = $someString
+											# OPTIONAL
+											hostId = $someString
+											# OPTIONAL
+											hostName = $someString
+											# OPTIONAL
+											hostCdmId = $someString
+											# OPTIONAL
+											datacenterId = $someString
+											# OPTIONAL
+											datacenterCdmId = $someString
+											# OPTIONAL
+											datacenterName = $someString
+										}
+										# OPTIONAL
+										enableNetworkPreserve = $someBoolean
+										# OPTIONAL
+										enableMacPreserveOnly = $someBoolean
+										# OPTIONAL
+										postScriptTimestamp = $someString
+										# OPTIONAL
+										postScriptHash = $someString
+										# OPTIONAL
+										enableNetworkDisconnect = $someBoolean
+										# OPTIONAL
+										localAdminPassword = $someString
+									}
+								}
+							}
+							# OPTIONAL
+							addc = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+								# OPTIONAL
+								customDnsIps = @(
+									$someString
+								)
+								# OPTIONAL
+								shouldRebuildGc = $someBoolean
+								# OPTIONAL
+								shouldResetKerberos = $someBoolean
+								# OPTIONAL
+								winTimeServers = @(
+									$someString
+								)
+								# OPTIONAL
+								domainSid = $someString
+								# OPTIONAL
+								domainId = $someString
+							}
+						}
+					}
+					# OPTIONAL
+					recoveryPoint = $someInt64
+					# REQUIRED
+					workloadId = $someString
+					# OPTIONAL
+					snapshotId = $someString
+					# OPTIONAL
+					postFailoverSlaId = $someString
+					# REQUIRED
+					bootPriority = $someInt
+				}
+			)
+			# OPTIONAL
+			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+			# OPTIONAL
+			recoveryId = $someString
+			# OPTIONAL
+			sourceLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			pauseBetweenPriorityGroups = @(
+				$someInt64
+			)
+			# OPTIONAL
+			config = @{
+				# REQUIRED
+				configList = @(
+					@{
+						# OPTIONAL
+						key = $someString
+						# OPTIONAL
+						value = $someString
+					}
+				)
+			}
+		}
+	}
+}"
             );
         }
 
@@ -20083,6 +24975,66 @@ $query.Var.input = @{
 	excludeFieldNamePattern = $someString
 	# OPTIONAL
 	excludePathPattern = $someString
+	# OPTIONAL
+	excludeValueRegex = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCustomDataType(input: UpdateCustomDataTypeInput!): UpdateCustomDataTypeReply!
+        internal void InitMutationUpdateCustomDataType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCustomDataTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCustomDataType",
+                "($input: UpdateCustomDataTypeInput!)",
+                "UpdateCustomDataTypeReply",
+                Mutation.UpdateCustomDataType,
+                Mutation.UpdateCustomDataTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	dataType = @{
+		# OPTIONAL
+		analyzerType = $someAnalyzerTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerTypeEnum]) for enum values.
+		# REQUIRED
+		name = $someString
+		# OPTIONAL
+		dictionaryCsv = $someString
+		# OPTIONAL
+		regex = $someString
+		# OPTIONAL
+		risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+		# REQUIRED
+		ruleTypes = @(
+			$someAnalyzerRuleType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AnalyzerRuleType]) for enum values.
+		)
+		# OPTIONAL
+		keyRegex = $someString
+		# OPTIONAL
+		structuredValueRegex = $someString
+		# OPTIONAL
+		structuredDictionaryCsv = $someString
+		# OPTIONAL
+		structuredKeyDictionaryCsv = $someString
+		# OPTIONAL
+		proximityKeywordsRegex = $someString
+		# OPTIONAL
+		proximityDistance = $someInt
+		# OPTIONAL
+		excludeValueRegex = $someString
+	}
+	# REQUIRED
+	dataCategoryIds = @(
+		$someString
+	)
 }"
             );
         }
@@ -20259,6 +25211,35 @@ $query.Var.input = @{
 	)
 	# REQUIRED
 	domains = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateDocumentType(input: UpdateDocumentTypeInput!): UpdateDocumentTypeReply!
+        internal void InitMutationUpdateDocumentType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateDocumentTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateDocumentType",
+                "($input: UpdateDocumentTypeInput!)",
+                "UpdateDocumentTypeReply",
+                Mutation.UpdateDocumentType,
+                Mutation.UpdateDocumentTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	id = $someString
+	# OPTIONAL
+	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+	# OPTIONAL
+	dataCategoryIds = @(
 		$someString
 	)
 }"
@@ -20825,6 +25806,35 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // updatePredefinedDataType(input: UpdatePredefinedDataTypeInput!): UpdatePredefinedDataTypeReply!
+        internal void InitMutationUpdatePredefinedDataType()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdatePredefinedDataTypeInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdatePredefinedDataType",
+                "($input: UpdatePredefinedDataTypeInput!)",
+                "UpdatePredefinedDataTypeReply",
+                Mutation.UpdatePredefinedDataType,
+                Mutation.UpdatePredefinedDataTypeFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	risk = $someRiskLevelType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RiskLevelType]) for enum values.
+	# REQUIRED
+	dataCategoryIds = @(
+		$someString
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // updateProxmoxEnvironment(input: UpdateProxmoxEnvironmentInput!): UpdateProxmoxEnvironmentReply!
         internal void InitMutationUpdateProxmoxEnvironment()
         {
@@ -20886,6 +25896,572 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	clusterUuid = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updatePureStorageProtectionGroup(input: UpdatePureStorageProtectionGroupInput!): UpdatePureStorageProtectionGroupReply!
+        internal void InitMutationUpdatePureStorageProtectionGroup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdatePureStorageProtectionGroupInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdatePureStorageProtectionGroup",
+                "($input: UpdatePureStorageProtectionGroupInput!)",
+                "UpdatePureStorageProtectionGroupReply",
+                Mutation.UpdatePureStorageProtectionGroup,
+                Mutation.UpdatePureStorageProtectionGroupFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	updateProperties = @{
+		# OPTIONAL
+		snapshotConsistencyMandate = $somePureStorageProtectionGroupUpdateConfigSnapshotConsistencyMandate # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PureStorageProtectionGroupUpdateConfigSnapshotConsistencyMandate]) for enum values.
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updatePureStorageProtectionGroupVolumeExclusions(input: UpdatePureStorageProtectionGroupVolumeExclusionsInput!): UpdatePureStorageProtectionGroupVolumeExclusionsReply!
+        internal void InitMutationUpdatePureStorageProtectionGroupVolumeExclusions()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdatePureStorageProtectionGroupVolumeExclusionsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdatePureStorageProtectionGroupVolumeExclusions",
+                "($input: UpdatePureStorageProtectionGroupVolumeExclusionsInput!)",
+                "UpdatePureStorageProtectionGroupVolumeExclusionsReply",
+                Mutation.UpdatePureStorageProtectionGroupVolumeExclusions,
+                Mutation.UpdatePureStorageProtectionGroupVolumeExclusionsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	updateInfo = @{
+		# REQUIRED
+		volumes = @(
+			@{
+				# REQUIRED
+				volumeId = $someString
+				# REQUIRED
+				isExcludedFromSnapshots = $someBoolean
+			}
+		)
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateRecoveryPlanV2(input: UpdateRecoveryPlanV2Input!): UpdateRecoveryPlanV2Reply!
+        internal void InitMutationUpdateRecoveryPlanV2()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateRecoveryPlanV2Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateRecoveryPlanV2",
+                "($input: UpdateRecoveryPlanV2Input!)",
+                "UpdateRecoveryPlanV2Reply",
+                Mutation.UpdateRecoveryPlanV2,
+                Mutation.UpdateRecoveryPlanV2FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	recoveryPlan = @{
+		# OPTIONAL
+		id = $someString
+		# OPTIONAL
+		name = $someString
+		# OPTIONAL
+		version = $someInt64
+		# OPTIONAL
+		recoveryPlanType = $someRecoveryPlanType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPlanType]) for enum values.
+		# OPTIONAL
+		workloadType = $someManagedObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedObjectType]) for enum values.
+		# OPTIONAL
+		sourceLocation = @{
+			# OPTIONAL
+			locationId = $someString
+			# OPTIONAL
+			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+		}
+		# OPTIONAL
+		targetLocation = @{
+			# OPTIONAL
+			locationId = $someString
+			# OPTIONAL
+			recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+		}
+		# OPTIONAL
+		isHydrationEnabled = $someBoolean
+		# OPTIONAL
+		isHidden = $someBoolean
+	}
+	# REQUIRED
+	recoverySpecMaps = @(
+		@{
+			# OPTIONAL
+			recoveryType = $someRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryType]) for enum values.
+			# OPTIONAL
+			targetLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			userData = $someString
+			# OPTIONAL
+			childRecoverySpecs = @(
+				@{
+					# OPTIONAL
+					workloadRecoverySpec = @{
+						# REQUIRED
+						spec = @{
+							# OPTIONAL
+							vmwareVm = @{
+								# OPTIONAL
+								vcpus = $someInt
+								# OPTIONAL
+								memoryMbs = $someInt
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										dataStoreId = $someString
+										# OPTIONAL
+										sizeGbs = $someSingle
+										# OPTIONAL
+										dataStoreCdmId = $someString
+										# OPTIONAL
+										datastoreClusterId = $someString
+										# OPTIONAL
+										label = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										isPrimaryNic = $someBoolean
+										# OPTIONAL
+										networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+										# OPTIONAL
+										networkId = $someString
+										# OPTIONAL
+										networkMoid = $someString
+										# OPTIONAL
+										adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+										# OPTIONAL
+										ipv4Address = $someString
+										# OPTIONAL
+										ipv6Address = $someString
+										# OPTIONAL
+										dnsInfos = @(
+											$someString
+										)
+										# OPTIONAL
+										gateway = $someString
+										# OPTIONAL
+										netmask = $someString
+									}
+								)
+								# OPTIONAL
+								postScript = $someString
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									vcenterId = $someString
+									# OPTIONAL
+									vcenterName = $someString
+									# OPTIONAL
+									vcenterCdmId = $someString
+									# OPTIONAL
+									computeClusterId = $someString
+									# OPTIONAL
+									computeClusterCdmId = $someString
+									# OPTIONAL
+									computeClusterName = $someString
+									# OPTIONAL
+									resourcePoolId = $someString
+									# OPTIONAL
+									resourcePoolCdmId = $someString
+									# OPTIONAL
+									resourcePoolName = $someString
+									# OPTIONAL
+									hostId = $someString
+									# OPTIONAL
+									hostName = $someString
+									# OPTIONAL
+									hostCdmId = $someString
+									# OPTIONAL
+									datacenterId = $someString
+									# OPTIONAL
+									datacenterCdmId = $someString
+									# OPTIONAL
+									datacenterName = $someString
+								}
+								# OPTIONAL
+								enableNetworkPreserve = $someBoolean
+								# OPTIONAL
+								enableMacPreserveOnly = $someBoolean
+								# OPTIONAL
+								postScriptTimestamp = $someString
+								# OPTIONAL
+								postScriptHash = $someString
+								# OPTIONAL
+								enableNetworkDisconnect = $someBoolean
+								# OPTIONAL
+								localAdminPassword = $someString
+							}
+							# OPTIONAL
+							nutanixVm = @{
+								# OPTIONAL
+								vCpus = $someInt64
+								# OPTIONAL
+								memoryMbs = $someInt64
+								# OPTIONAL
+								clusterId = $someString
+								# OPTIONAL
+								removeAllNetwork = $someBoolean
+								# OPTIONAL
+								preserveMacAddress = $someBoolean
+								# OPTIONAL
+								volumes = @(
+									@{
+										# OPTIONAL
+										storageContainerId = $someString
+										# OPTIONAL
+										storageContainerName = $someString
+									}
+								)
+								# OPTIONAL
+								nics = @(
+									@{
+										# OPTIONAL
+										key = $someString
+										# OPTIONAL
+										networkName = $someString
+										# OPTIONAL
+										networkUuid = $someString
+									}
+								)
+								# OPTIONAL
+								target = @{
+									# OPTIONAL
+									clusterId = $someString
+									# OPTIONAL
+									clusterName = $someString
+									# OPTIONAL
+									clusterHostname = $someString
+									# OPTIONAL
+									prismCentral = $someString
+								}
+							}
+							# OPTIONAL
+							azureVm = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								sizeType = $someString
+								# OPTIONAL
+								availabilityZone = $someString
+								# OPTIONAL
+								shouldEnableAcceleratedNetworking = $someBoolean
+								# OPTIONAL
+								resourceGroup = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								networkSecurityGroupNativeId = $someString
+								# OPTIONAL
+								availabilitySetNativeId = $someString
+								# OPTIONAL
+								diskEncryptionSetNativeId = $someString
+							}
+							# OPTIONAL
+							awsEc2Instance = @{
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								instanceType = $someString
+								# OPTIONAL
+								subnetNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								sshKeyPairName = $someString
+								# OPTIONAL
+								iamInstanceProfileArn = $someString
+								# OPTIONAL
+								vpcNativeId = $someString
+							}
+							# OPTIONAL
+							awsRdsInstance = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								snapshotType = $someSnapshotType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SnapshotType]) for enum values.
+								# OPTIONAL
+								kmsKeyId = $someString
+								# OPTIONAL
+								dbInstanceClass = $someString
+								# OPTIONAL
+								dbEngineVersion = $someString
+								# OPTIONAL
+								isMultiAz = $someBoolean
+								# OPTIONAL
+								primaryAz = $someString
+								# OPTIONAL
+								port = $someInt64
+								# OPTIONAL
+								storageType = $someString
+								# OPTIONAL
+								iops = $someInt64
+								# OPTIONAL
+								vpcNativeId = $someString
+								# OPTIONAL
+								securityGroupNativeIds = @(
+									$someString
+								)
+								# OPTIONAL
+								subnetGroupName = $someString
+								# OPTIONAL
+								isPubliclyAccessible = $someBoolean
+								# OPTIONAL
+								optionGroupName = $someString
+								# OPTIONAL
+								parameterGroupName = $someString
+								# OPTIONAL
+								clusterParameterGroupName = $someString
+							}
+							# OPTIONAL
+							adfr = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								hostWorkloadFid = $someString
+								# OPTIONAL
+								hostSnapshotFid = $someString
+								# OPTIONAL
+								hostRecoveryPoint = $someInt64
+								# OPTIONAL
+								addc = @{
+									# OPTIONAL
+									version = $someInt64
+									# OPTIONAL
+									dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+									# OPTIONAL
+									customDnsIps = @(
+										$someString
+									)
+									# OPTIONAL
+									shouldRebuildGc = $someBoolean
+									# OPTIONAL
+									shouldResetKerberos = $someBoolean
+									# OPTIONAL
+									winTimeServers = @(
+										$someString
+									)
+									# OPTIONAL
+									domainSid = $someString
+									# OPTIONAL
+									domainId = $someString
+								}
+								# OPTIONAL
+								recoveryVlanId = $someInt
+								# OPTIONAL
+								hostSpec = @{
+									# OPTIONAL
+									vmwareVm = @{
+										# OPTIONAL
+										vcpus = $someInt
+										# OPTIONAL
+										memoryMbs = $someInt
+										# OPTIONAL
+										volumes = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												dataStoreId = $someString
+												# OPTIONAL
+												sizeGbs = $someSingle
+												# OPTIONAL
+												dataStoreCdmId = $someString
+												# OPTIONAL
+												datastoreClusterId = $someString
+												# OPTIONAL
+												label = $someString
+											}
+										)
+										# OPTIONAL
+										nics = @(
+											@{
+												# OPTIONAL
+												key = $someString
+												# OPTIONAL
+												isPrimaryNic = $someBoolean
+												# OPTIONAL
+												networkType = $someNetworkType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkType]) for enum values.
+												# OPTIONAL
+												networkId = $someString
+												# OPTIONAL
+												networkMoid = $someString
+												# OPTIONAL
+												adapterType = $someNetworkAdapterType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NetworkAdapterType]) for enum values.
+												# OPTIONAL
+												ipv4Address = $someString
+												# OPTIONAL
+												ipv6Address = $someString
+												# OPTIONAL
+												dnsInfos = @(
+													$someString
+												)
+												# OPTIONAL
+												gateway = $someString
+												# OPTIONAL
+												netmask = $someString
+											}
+										)
+										# OPTIONAL
+										postScript = $someString
+										# OPTIONAL
+										target = @{
+											# OPTIONAL
+											vcenterId = $someString
+											# OPTIONAL
+											vcenterName = $someString
+											# OPTIONAL
+											vcenterCdmId = $someString
+											# OPTIONAL
+											computeClusterId = $someString
+											# OPTIONAL
+											computeClusterCdmId = $someString
+											# OPTIONAL
+											computeClusterName = $someString
+											# OPTIONAL
+											resourcePoolId = $someString
+											# OPTIONAL
+											resourcePoolCdmId = $someString
+											# OPTIONAL
+											resourcePoolName = $someString
+											# OPTIONAL
+											hostId = $someString
+											# OPTIONAL
+											hostName = $someString
+											# OPTIONAL
+											hostCdmId = $someString
+											# OPTIONAL
+											datacenterId = $someString
+											# OPTIONAL
+											datacenterCdmId = $someString
+											# OPTIONAL
+											datacenterName = $someString
+										}
+										# OPTIONAL
+										enableNetworkPreserve = $someBoolean
+										# OPTIONAL
+										enableMacPreserveOnly = $someBoolean
+										# OPTIONAL
+										postScriptTimestamp = $someString
+										# OPTIONAL
+										postScriptHash = $someString
+										# OPTIONAL
+										enableNetworkDisconnect = $someBoolean
+										# OPTIONAL
+										localAdminPassword = $someString
+									}
+								}
+							}
+							# OPTIONAL
+							addc = @{
+								# OPTIONAL
+								version = $someInt64
+								# OPTIONAL
+								dnsRecoveryType = $someDnsRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DnsRecoveryType]) for enum values.
+								# OPTIONAL
+								customDnsIps = @(
+									$someString
+								)
+								# OPTIONAL
+								shouldRebuildGc = $someBoolean
+								# OPTIONAL
+								shouldResetKerberos = $someBoolean
+								# OPTIONAL
+								winTimeServers = @(
+									$someString
+								)
+								# OPTIONAL
+								domainSid = $someString
+								# OPTIONAL
+								domainId = $someString
+							}
+						}
+					}
+					# OPTIONAL
+					recoveryPoint = $someInt64
+					# REQUIRED
+					workloadId = $someString
+					# OPTIONAL
+					snapshotId = $someString
+					# OPTIONAL
+					postFailoverSlaId = $someString
+					# REQUIRED
+					bootPriority = $someInt
+				}
+			)
+			# OPTIONAL
+			recoverySpecType = $someRecoverySpecTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoverySpecTypeV2]) for enum values.
+			# OPTIONAL
+			recoveryId = $someString
+			# OPTIONAL
+			sourceLocationInfo = @{
+				# OPTIONAL
+				locationId = $someString
+				# OPTIONAL
+				recoveryLocationType = $someRecoveryLocationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryLocationType]) for enum values.
+			}
+			# OPTIONAL
+			pauseBetweenPriorityGroups = @(
+				$someInt64
+			)
+			# OPTIONAL
+			config = @{
+				# REQUIRED
+				configList = @(
+					@{
+						# OPTIONAL
+						key = $someString
+						# OPTIONAL
+						value = $someString
+					}
+				)
+			}
+		}
+	)
 }"
             );
         }

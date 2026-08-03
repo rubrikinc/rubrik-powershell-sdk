@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 11
+    /// Create a new RscQuery object for any of the 12
     /// operations in the 'Cloud Account' API domain:
-    /// CloudAccount, CloudAccounts, CurrentFeaturePermissions, DevOpsListCurrentPermissions, DevOpsListLatestPermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
+    /// Accounts, CloudAccount, CloudAccounts, CurrentFeaturePermissions, DevOpsListCurrentPermissions, DevOpsListLatestPermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
     /// </summary>
     /// <description>
     /// New-RscQueryCloudAccount creates a new
@@ -35,15 +35,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 11 operations
+    /// There are 12 operations
     /// in the 'Cloud Account' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CloudAccount, CloudAccounts, CurrentFeaturePermissions, DevOpsListCurrentPermissions, DevOpsListLatestPermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
+    /// one of: Accounts, CloudAccount, CloudAccounts, CurrentFeaturePermissions, DevOpsListCurrentPermissions, DevOpsListLatestPermissions, ExocomputeMappings, GetListFilters, IamPairsByAndLocation, LatestFeaturePermissions, ListCertificateUsages, or WithExocomputeMappings.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCloudAccount -CloudAccount).Info().
+    /// (New-RscQueryCloudAccount -Accounts).Info().
     /// Each operation also has its own set of fields that can be
     /// selected for retrieval. If you do not specify any fields,
     /// a set of default fields will be selected. The selection is
@@ -70,11 +70,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// To know what [RubrikSecurityCloud.Types] object to use
     /// for a specific operation,
     /// call Info() on the object returned by this cmdlet, for example:
-    /// (New-RscQueryCloudAccount -CloudAccount).Info().
+    /// (New-RscQueryCloudAccount -Accounts).Info().
     /// You can combine a -Field parameter with patching parameters.
     /// -Field is applied first, then -FilePatch, -AddField and -RemoveField.
     ///
     /// </description>
+    ///
+    /// <example>
+    /// Runs the Accounts operation
+    /// of the 'Cloud Account' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudAccount
+    /// # API Operation: Accounts
+    /// 
+    /// $query = New-RscQueryCloudAccount -Operation Accounts
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;CloudAccountInfo&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
     ///
     /// <example>
     /// Runs the CloudAccount operation
@@ -506,6 +533,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
             [ValidateSet(
+                "Accounts",
                 "CloudAccount",
                 "CloudAccounts",
                 "CurrentFeaturePermissions",
@@ -532,6 +560,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             {
                 switch(this.GetOp().OpName())
                 {
+                    case "Accounts":
+                        this.ProcessRecord_Accounts();
+                        break;
                     case "CloudAccount":
                         this.ProcessRecord_CloudAccount();
                         break;
@@ -573,6 +604,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
            {
                 ThrowTerminatingException(ex);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // cloudAccounts.
+        internal void ProcessRecord_Accounts()
+        {
+            this._logger.name += " -Accounts";
+            // Create new graphql operation cloudAccounts
+            InitQueryCloudAccounts();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -674,6 +714,24 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitQueryAllAccountsWithExocomputeMappings();
         }
 
+
+        // Create new GraphQL Query:
+        // cloudAccounts: [CloudAccountInfo!]!
+        internal void InitQueryCloudAccounts()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryCloudAccounts",
+                "",
+                "List<CloudAccountInfo>",
+                Query.CloudAccounts,
+                Query.CloudAccountsFieldSpec,
+                @""
+            );
+        }
 
         // Create new GraphQL Query:
         // cloudAccount(cloudAccountId: UUID!): CloudAccount!

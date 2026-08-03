@@ -216,6 +216,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			shouldEnableGatewayKeyCreation = $someBoolean
     /// 			# OPTIONAL
     /// 			shouldEnableAutomatedKeySharing = $someBoolean
+    /// 			# OPTIONAL
+    /// 			gatewayKmsKeyArnByAccount = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					applicationCloudAccountId = $someString
+    /// 					# REQUIRED
+    /// 					gatewayKmsKeyArn = $someString
+    /// 				}
+    /// 			)
     /// 		}
     /// 	}
     /// }
@@ -598,6 +607,15 @@ $query.Var.input = @{
 			shouldEnableGatewayKeyCreation = $someBoolean
 			# OPTIONAL
 			shouldEnableAutomatedKeySharing = $someBoolean
+			# OPTIONAL
+			gatewayKmsKeyArnByAccount = @(
+				@{
+					# REQUIRED
+					applicationCloudAccountId = $someString
+					# REQUIRED
+					gatewayKmsKeyArn = $someString
+				}
+			)
 		}
 	}
 }"

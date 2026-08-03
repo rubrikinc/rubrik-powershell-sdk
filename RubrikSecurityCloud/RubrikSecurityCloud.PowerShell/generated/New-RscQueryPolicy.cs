@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 15
+    /// Create a new RscQuery object for any of the 19
     /// operations in the 'Policy' API domain:
-    /// CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyObjectUsages, SecurityPolicies, SecurityPolicy, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyFrameworks, PolicyObjectUsages, PolicyRiskSummaries, PolicyViolationTicketNumbers, SecurityPolicies, SecurityPolicy, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 15 operations
+    /// There are 19 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyObjectUsages, SecurityPolicies, SecurityPolicy, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// one of: CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyFrameworks, PolicyObjectUsages, PolicyRiskSummaries, PolicyViolationTicketNumbers, SecurityPolicies, SecurityPolicy, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -465,6 +465,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the PolicyFrameworks operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyFrameworks
+    /// 
+    /// $query = New-RscQueryPolicy -Operation PolicyFrameworks
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyTypes = @(
+    /// 	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the PolicyObjectUsages operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -487,6 +517,72 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: PolicyObjectUsageConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PolicyRiskSummaries operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyRiskSummaries
+    /// 
+    /// $query = New-RscQueryPolicy -Operation PolicyRiskSummaries
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyIds = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.summaryDate = $someString
+    /// # OPTIONAL
+    /// $query.Var.includeWhitelistedResults = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;PolicyRiskSummary&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the PolicyViolationTicketNumbers operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: PolicyViolationTicketNumbers
+    /// 
+    /// $query = New-RscQueryPolicy -Operation PolicyViolationTicketNumbers
+    /// 
+    /// # REQUIRED
+    /// $query.Var.policyTypes = @(
+    /// 	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.searchTerm = $someString
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: List&lt;System.String&gt;
     /// 
     /// 
     /// 
@@ -712,6 +808,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the SidsPolicyHitsSummary operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: SidsPolicyHitsSummary
+    /// 
+    /// $query = New-RscQueryPolicy -Operation SidsPolicyHitsSummary
+    /// 
+    /// # REQUIRED
+    /// $query.Var.sids = @(
+    /// 	$someString
+    /// )
+    /// # REQUIRED
+    /// $query.Var.day = $someString
+    /// # REQUIRED
+    /// $query.Var.historicalDeltaDays = $someInt
+    /// # OPTIONAL
+    /// $query.Var.policyId = $someString
+    /// # OPTIONAL
+    /// $query.Var.objectIdsFilter = @(
+    /// 	$someString
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.includeWhitelistedResults = $someBoolean
+    /// # OPTIONAL
+    /// $query.Var.sortBy = $someSidPolicySummarySortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SidPolicySummarySortBy]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.platformCategoryFilter = @(
+    /// 	$somePlatformCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PlatformCategory]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.shouldCalculateAggregatedDataTypeLevelResults = $someBoolean
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: SidsPolicyHitsSummaries
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TopRiskPolicySummaries operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -799,9 +947,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "PolicyCategories",
                 "PolicyFilterTypes",
                 "PolicyFilterValues",
+                "PolicyFrameworks",
                 "PolicyObjectUsages",
+                "PolicyRiskSummaries",
+                "PolicyViolationTicketNumbers",
                 "SecurityPolicies",
                 "SecurityPolicy",
+                "SidsPolicyHitsSummary",
                 "TopRiskPolicySummaries",
                 "TprPolicyDetail",
                 IgnoreCase = true)]
@@ -849,14 +1001,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "PolicyFilterValues":
                         this.ProcessRecord_PolicyFilterValues();
                         break;
+                    case "PolicyFrameworks":
+                        this.ProcessRecord_PolicyFrameworks();
+                        break;
                     case "PolicyObjectUsages":
                         this.ProcessRecord_PolicyObjectUsages();
+                        break;
+                    case "PolicyRiskSummaries":
+                        this.ProcessRecord_PolicyRiskSummaries();
+                        break;
+                    case "PolicyViolationTicketNumbers":
+                        this.ProcessRecord_PolicyViolationTicketNumbers();
                         break;
                     case "SecurityPolicies":
                         this.ProcessRecord_SecurityPolicies();
                         break;
                     case "SecurityPolicy":
                         this.ProcessRecord_SecurityPolicy();
+                        break;
+                    case "SidsPolicyHitsSummary":
+                        this.ProcessRecord_SidsPolicyHitsSummary();
                         break;
                     case "TopRiskPolicySummaries":
                         this.ProcessRecord_TopRiskPolicySummaries();
@@ -965,12 +1129,39 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allPolicyFrameworks.
+        internal void ProcessRecord_PolicyFrameworks()
+        {
+            this._logger.name += " -PolicyFrameworks";
+            // Create new graphql operation allPolicyFrameworks
+            InitQueryAllPolicyFrameworks();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // policyObjectUsages.
         internal void ProcessRecord_PolicyObjectUsages()
         {
             this._logger.name += " -PolicyObjectUsages";
             // Create new graphql operation policyObjectUsages
             InitQueryPolicyObjectUsages();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allPolicyRiskSummaries.
+        internal void ProcessRecord_PolicyRiskSummaries()
+        {
+            this._logger.name += " -PolicyRiskSummaries";
+            // Create new graphql operation allPolicyRiskSummaries
+            InitQueryAllPolicyRiskSummaries();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allPolicyViolationTicketNumbers.
+        internal void ProcessRecord_PolicyViolationTicketNumbers()
+        {
+            this._logger.name += " -PolicyViolationTicketNumbers";
+            // Create new graphql operation allPolicyViolationTicketNumbers
+            InitQueryAllPolicyViolationTicketNumbers();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -989,6 +1180,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SecurityPolicy";
             // Create new graphql operation securityPolicy
             InitQuerySecurityPolicy();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // sidsPolicyHitsSummary.
+        internal void ProcessRecord_SidsPolicyHitsSummary()
+        {
+            this._logger.name += " -SidsPolicyHitsSummary";
+            // Create new graphql operation sidsPolicyHitsSummary
+            InitQuerySidsPolicyHitsSummary();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1382,6 +1582,28 @@ $query.Var.eventProviders = @(
         }
 
         // Create new GraphQL Query:
+        // allPolicyFrameworks(policyTypes: [PolicyType!]!): [String!]!
+        internal void InitQueryAllPolicyFrameworks()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyTypes", "[PolicyType!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllPolicyFrameworks",
+                "($policyTypes: [PolicyType!]!)",
+                "List<System.String>",
+                Query.AllPolicyFrameworks,
+                Query.AllPolicyFrameworksFieldSpec,
+                @"# REQUIRED
+$query.Var.policyTypes = @(
+	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
         // policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
         internal void InitQueryPolicyObjectUsages()
         {
@@ -1400,6 +1622,59 @@ $query.Var.eventProviders = @(
 $query.Var.objectIds = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allPolicyRiskSummaries(policyIds: [String!]!, summaryDate: String!, includeWhitelistedResults: Boolean = true): [PolicyRiskSummary!]!
+        internal void InitQueryAllPolicyRiskSummaries()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyIds", "[String!]!"),
+                Tuple.Create("summaryDate", "String!"),
+                Tuple.Create("includeWhitelistedResults", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllPolicyRiskSummaries",
+                "($policyIds: [String!]!,$summaryDate: String!,$includeWhitelistedResults: Boolean)",
+                "List<PolicyRiskSummary>",
+                Query.AllPolicyRiskSummaries,
+                Query.AllPolicyRiskSummariesFieldSpec,
+                @"# REQUIRED
+$query.Var.policyIds = @(
+	$someString
+)
+# REQUIRED
+$query.Var.summaryDate = $someString
+# OPTIONAL
+$query.Var.includeWhitelistedResults = $someBoolean"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // allPolicyViolationTicketNumbers(policyTypes: [PolicyType!]!, searchTerm: String): [String!]!
+        internal void InitQueryAllPolicyViolationTicketNumbers()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("policyTypes", "[PolicyType!]!"),
+                Tuple.Create("searchTerm", "String"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryAllPolicyViolationTicketNumbers",
+                "($policyTypes: [PolicyType!]!,$searchTerm: String)",
+                "List<System.String>",
+                Query.AllPolicyViolationTicketNumbers,
+                Query.AllPolicyViolationTicketNumbersFieldSpec,
+                @"# REQUIRED
+$query.Var.policyTypes = @(
+	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
+)
+# OPTIONAL
+$query.Var.searchTerm = $someString"
             );
         }
 
@@ -1659,6 +1934,70 @@ $query.Var.policyId = $someString
 $query.Var.includeViolationInsights = $someBoolean
 # REQUIRED
 $query.Var.policyType = $somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values."
+            );
+        }
+
+        // Create new GraphQL Query:
+        // sidsPolicyHitsSummary(
+        //     sids: [String!]!
+        //     day: String!
+        //     historicalDeltaDays: Int! = 0
+        //     policyId: String
+        //     objectIdsFilter: [String!]
+        //     includeWhitelistedResults: Boolean = true
+        //     sortBy: SidPolicySummarySortBy
+        //     platformCategoryFilter: [PlatformCategory!]
+        //     sortOrder: SortOrder = DESC
+        //     shouldCalculateAggregatedDataTypeLevelResults: Boolean
+        //   ): SidsPolicyHitsSummaries!
+        internal void InitQuerySidsPolicyHitsSummary()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("sids", "[String!]!"),
+                Tuple.Create("day", "String!"),
+                Tuple.Create("historicalDeltaDays", "Int!"),
+                Tuple.Create("policyId", "String"),
+                Tuple.Create("objectIdsFilter", "[String!]"),
+                Tuple.Create("includeWhitelistedResults", "Boolean"),
+                Tuple.Create("sortBy", "SidPolicySummarySortBy"),
+                Tuple.Create("platformCategoryFilter", "[PlatformCategory!]"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("shouldCalculateAggregatedDataTypeLevelResults", "Boolean"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySidsPolicyHitsSummary",
+                "($sids: [String!]!,$day: String!,$historicalDeltaDays: Int!,$policyId: String,$objectIdsFilter: [String!],$includeWhitelistedResults: Boolean,$sortBy: SidPolicySummarySortBy,$platformCategoryFilter: [PlatformCategory!],$sortOrder: SortOrder,$shouldCalculateAggregatedDataTypeLevelResults: Boolean)",
+                "SidsPolicyHitsSummaries",
+                Query.SidsPolicyHitsSummary,
+                Query.SidsPolicyHitsSummaryFieldSpec,
+                @"# REQUIRED
+$query.Var.sids = @(
+	$someString
+)
+# REQUIRED
+$query.Var.day = $someString
+# REQUIRED
+$query.Var.historicalDeltaDays = $someInt
+# OPTIONAL
+$query.Var.policyId = $someString
+# OPTIONAL
+$query.Var.objectIdsFilter = @(
+	$someString
+)
+# OPTIONAL
+$query.Var.includeWhitelistedResults = $someBoolean
+# OPTIONAL
+$query.Var.sortBy = $someSidPolicySummarySortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SidPolicySummarySortBy]) for enum values.
+# OPTIONAL
+$query.Var.platformCategoryFilter = @(
+	$somePlatformCategory # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PlatformCategory]) for enum values.
+)
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+# OPTIONAL
+$query.Var.shouldCalculateAggregatedDataTypeLevelResults = $someBoolean"
             );
         }
 

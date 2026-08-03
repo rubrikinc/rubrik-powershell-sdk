@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PRIVILEGED_ACCESS_MANAGEMENT")]
         PRIVILEGED_ACCESS_MANAGEMENT,
 
+        [EnumMember(Value = "SAIL_POINT")]
+        SAIL_POINT,
+
         [EnumMember(Value = "SERVICENOW_ITSM")]
         SERVICENOW_ITSM,
 

@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOMAIN_SID")]
         DOMAIN_SID,
 
+        [EnumMember(Value = "FSMO_ROLE")]
+        FSMO_ROLE,
+
         [EnumMember(Value = "HOSTNAME")]
         HOSTNAME,
 

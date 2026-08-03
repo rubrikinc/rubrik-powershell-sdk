@@ -387,6 +387,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isDrEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	shouldUseV4 = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2110,6 +2112,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isDrEnabled = $someBoolean
+	# OPTIONAL
+	shouldUseV4 = $someBoolean
 }"
             );
         }

@@ -1,5 +1,5 @@
 ### AzureOauthConsentKickoffReply
-
+Reply for the Azure OAuth consent kickoff.
 
 - appClientId: System.String
   - The app client ID.

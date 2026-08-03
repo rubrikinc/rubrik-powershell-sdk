@@ -48,6 +48,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CDM_UPGRADES")]
         CDM_UPGRADES,
 
+        [EnumMember(Value = "CLOUD_COST_DAILY")]
+        CLOUD_COST_DAILY,
+
+        [EnumMember(Value = "CLOUD_COST_MONTHLY")]
+        CLOUD_COST_MONTHLY,
+
         [EnumMember(Value = "CLOUD_OVERLAP_OBJECTS")]
         CLOUD_OVERLAP_OBJECTS,
 
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IDENTITY_RISKS")]
         IDENTITY_RISKS,
+
+        [EnumMember(Value = "IDENTITY_SEGMENTATION_AUDIT")]
+        IDENTITY_SEGMENTATION_AUDIT,
 
         [EnumMember(Value = "INDEXING")]
         INDEXING,

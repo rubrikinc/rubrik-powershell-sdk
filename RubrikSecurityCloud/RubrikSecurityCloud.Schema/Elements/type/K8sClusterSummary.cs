@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastRefreshTime")]
         public DateTime? LastRefreshTime { get; set; }
 
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        [JsonProperty("maxConcurrentAgents")]
+        public System.Int32? MaxConcurrentAgents { get; set; }
+
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        [JsonProperty("maxPvcsPerAgent")]
+        public System.Int32? MaxPvcsPerAgent { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -44,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> onboardingType: String (scalar)
         [JsonProperty("onboardingType")]
         public System.String? OnboardingType { get; set; }
+
+        //      C# -> System.String? PvcGroupingStrategy
+        // GraphQL -> pvcGroupingStrategy: String (scalar)
+        [JsonProperty("pvcGroupingStrategy")]
+        public System.String? PvcGroupingStrategy { get; set; }
 
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)
@@ -93,8 +108,11 @@ namespace RubrikSecurityCloud.Types
         System.String? Distribution = null,
         System.String? Id = null,
         DateTime? LastRefreshTime = null,
+        System.Int32? MaxConcurrentAgents = null,
+        System.Int32? MaxPvcsPerAgent = null,
         System.String? Name = null,
         System.String? OnboardingType = null,
+        System.String? PvcGroupingStrategy = null,
         System.String? Region = null,
         System.String? Registry = null,
         System.String? Status = null,
@@ -113,11 +131,20 @@ namespace RubrikSecurityCloud.Types
         if ( LastRefreshTime != null ) {
             this.LastRefreshTime = LastRefreshTime;
         }
+        if ( MaxConcurrentAgents != null ) {
+            this.MaxConcurrentAgents = MaxConcurrentAgents;
+        }
+        if ( MaxPvcsPerAgent != null ) {
+            this.MaxPvcsPerAgent = MaxPvcsPerAgent;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
         if ( OnboardingType != null ) {
             this.OnboardingType = OnboardingType;
+        }
+        if ( PvcGroupingStrategy != null ) {
+            this.PvcGroupingStrategy = PvcGroupingStrategy;
         }
         if ( Region != null ) {
             this.Region = Region;
@@ -181,6 +208,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "lastRefreshTime\n" ;
             }
         }
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        if (this.MaxConcurrentAgents != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "maxConcurrentAgents\n" ;
+            } else {
+                s += ind + "maxConcurrentAgents\n" ;
+            }
+        }
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        if (this.MaxPvcsPerAgent != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "maxPvcsPerAgent\n" ;
+            } else {
+                s += ind + "maxPvcsPerAgent\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -197,6 +242,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "onboardingType\n" ;
             } else {
                 s += ind + "onboardingType\n" ;
+            }
+        }
+        //      C# -> System.String? PvcGroupingStrategy
+        // GraphQL -> pvcGroupingStrategy: String (scalar)
+        if (this.PvcGroupingStrategy != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pvcGroupingStrategy\n" ;
+            } else {
+                s += ind + "pvcGroupingStrategy\n" ;
             }
         }
         //      C# -> System.String? Region
@@ -329,6 +383,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.LastRefreshTime = null;
         }
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        if (ec.Includes("maxConcurrentAgents",true))
+        {
+            if(this.MaxConcurrentAgents == null) {
+
+                this.MaxConcurrentAgents = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxConcurrentAgents != null && ec.Excludes("maxConcurrentAgents",true))
+        {
+            this.MaxConcurrentAgents = null;
+        }
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        if (ec.Includes("maxPvcsPerAgent",true))
+        {
+            if(this.MaxPvcsPerAgent == null) {
+
+                this.MaxPvcsPerAgent = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxPvcsPerAgent != null && ec.Excludes("maxPvcsPerAgent",true))
+        {
+            this.MaxPvcsPerAgent = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -362,6 +450,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OnboardingType != null && ec.Excludes("onboardingType",true))
         {
             this.OnboardingType = null;
+        }
+        //      C# -> System.String? PvcGroupingStrategy
+        // GraphQL -> pvcGroupingStrategy: String (scalar)
+        if (ec.Includes("pvcGroupingStrategy",true))
+        {
+            if(this.PvcGroupingStrategy == null) {
+
+                this.PvcGroupingStrategy = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PvcGroupingStrategy != null && ec.Excludes("pvcGroupingStrategy",true))
+        {
+            this.PvcGroupingStrategy = null;
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)

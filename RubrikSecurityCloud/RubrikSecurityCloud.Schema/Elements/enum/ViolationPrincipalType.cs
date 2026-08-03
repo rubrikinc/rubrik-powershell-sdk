@@ -189,6 +189,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "TRUSTED_DOMAIN")]
         TRUSTED_DOMAIN,
 
+        [EnumMember(Value = "UNIDENTIFIED")]
+        UNIDENTIFIED,
+
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 

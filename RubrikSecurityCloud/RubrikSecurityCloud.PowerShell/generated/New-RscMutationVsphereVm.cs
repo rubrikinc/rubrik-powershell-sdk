@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 29
+    /// Create a new RscQuery object for any of the 28
     /// operations in the 'VMware vSphere VM' API domain:
-    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
+    /// BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
     /// </summary>
     /// <description>
     /// New-RscMutationVsphereVm creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 29 operations
+    /// There are 28 operations
     /// in the 'VMware vSphere VM' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, ListEsxiDatastores, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
+    /// one of: BatchExport, BatchExportV3, BatchInPlaceRecovery, DeleteSnapshot, DownloadSnapshot, DownloadSnapshotFiles, ExcludeVmDisks, ExportSnapshotV2, ExportSnapshotV3, ExportSnapshotWithDownloadFromCloud, InitiateBatchInstantRecovery, InitiateBatchLiveMountV2, InitiateDiskMount, InitiateInPlaceRecovery, InitiateInstantRecoveryV2, InitiateLiveMountV2, MountRelocate, MountRelocateV2, PowerOnOffLiveMount, RecoverFiles, RecoverFilesNew, RefreshAgent, RegisterAgent, RegisterAgentWithOrg, UnregisterAgent, Update, UpdateAgentCertificate, or UpdateUnmountTime.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1456,46 +1456,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
-    /// Runs the ListEsxiDatastores operation
-    /// of the 'VMware vSphere VM' API domain.
-    /// <code>
-    /// PS &gt;
-    ///
-    /// 
-    /// # Create an RscQuery object for:
-    /// # API Domain:    VsphereVm
-    /// # API Operation: ListEsxiDatastores
-    /// 
-    /// $query = New-RscMutationVsphereVm -Operation ListEsxiDatastores
-    /// 
-    /// # REQUIRED
-    /// $query.Var.input = @{
-    /// 	# REQUIRED
-    /// 	loginInfo = @{
-    /// 		# REQUIRED
-    /// 		ip = $someString
-    /// 		# REQUIRED
-    /// 		password = $someString
-    /// 		# REQUIRED
-    /// 		username = $someString
-    /// 	}
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// }
-    /// 
-    /// # Execute the query
-    /// 
-    /// $result = $query | Invoke-Rsc
-    /// 
-    /// Write-Host $result.GetType().Name # prints: VsphereVmListEsxiDatastoresReply
-    /// 
-    /// 
-    /// 
-    /// </code>
-    ///
-    /// </example>
-    ///
-    /// <example>
     /// Runs the MountRelocate operation
     /// of the 'VMware vSphere VM' API domain.
     /// <code>
@@ -2111,7 +2071,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "InitiateInPlaceRecovery",
                 "InitiateInstantRecoveryV2",
                 "InitiateLiveMountV2",
-                "ListEsxiDatastores",
                 "MountRelocate",
                 "MountRelocateV2",
                 "PowerOnOffLiveMount",
@@ -2186,9 +2145,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "InitiateLiveMountV2":
                         this.ProcessRecord_InitiateLiveMountV2();
-                        break;
-                    case "ListEsxiDatastores":
-                        this.ProcessRecord_ListEsxiDatastores();
                         break;
                     case "MountRelocate":
                         this.ProcessRecord_MountRelocate();
@@ -2378,15 +2334,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -InitiateLiveMountV2";
             // Create new graphql operation vsphereVmInitiateLiveMountV2
             InitMutationVsphereVmInitiateLiveMountV2();
-        }
-
-        // This parameter set invokes a single graphql operation:
-        // vsphereVmListEsxiDatastores.
-        internal void ProcessRecord_ListEsxiDatastores()
-        {
-            this._logger.name += " -ListEsxiDatastores";
-            // Create new graphql operation vsphereVmListEsxiDatastores
-            InitMutationVsphereVmListEsxiDatastores();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3745,38 +3692,6 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	id = $someString
-}"
-            );
-        }
-
-        // Create new GraphQL Mutation:
-        // vsphereVmListEsxiDatastores(input: VsphereVmListEsxiDatastoresInput!): VsphereVmListEsxiDatastoresReply!
-        internal void InitMutationVsphereVmListEsxiDatastores()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "VsphereVmListEsxiDatastoresInput!"),
-            };
-            Initialize(
-                argDefs,
-                "mutation",
-                "MutationVsphereVmListEsxiDatastores",
-                "($input: VsphereVmListEsxiDatastoresInput!)",
-                "VsphereVmListEsxiDatastoresReply",
-                Mutation.VsphereVmListEsxiDatastores,
-                Mutation.VsphereVmListEsxiDatastoresFieldSpec,
-                @"# REQUIRED
-$query.Var.input = @{
-	# REQUIRED
-	loginInfo = @{
-		# REQUIRED
-		ip = $someString
-		# REQUIRED
-		password = $someString
-		# REQUIRED
-		username = $someString
-	}
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }

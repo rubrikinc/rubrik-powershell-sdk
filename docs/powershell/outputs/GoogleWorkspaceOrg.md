@@ -19,6 +19,11 @@ Google Workspace organization.
   - List of onboarded app types.
 - rbacHierarchyNodes: list of SaasRbacHierarchyNodes
   - List of RBAC hierarchy nodes.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -53,6 +58,8 @@ Google Workspace organization.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - storageRegion: System.String
   - The RSC storage region for the organization.
 - backupJobsStats: backupJobsStats
@@ -65,7 +72,3 @@ Google Workspace organization.
   - The information of the Saas Apps organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

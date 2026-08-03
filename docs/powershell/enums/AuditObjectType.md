@@ -212,3 +212,11 @@ Represents all the object types for which we expect to see audits.
 - POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform classic workflow.
 - POWER_PLATFORM_BUSINESS_RULE - Power Platform business rule.
 - POWER_PLATFORM_CUSTOM_ACTION - Power Platform custom action.
+- S3_TABLES_ICEBERG_CATALOG - AWS S3 Tables Iceberg Catalog.
+- S3_TABLES_ICEBERG_NAMESPACE - AWS S3 Tables Iceberg Namespace.
+- S3_TABLES_ICEBERG_TABLE - AWS S3 Tables Iceberg Table.
+- AGENT_CLOUD_CONNECTION - Agent Cloud connection object.
+- IRISDB_INSTANCE - IrisDB instance object.
+- POWER_PLATFORM_ORGANIZATION - Power Platform organization.
+- POWER_PLATFORM_DIALOG - Power Platform dialog.
+- POWER_PLATFORM_AI_FLOW - Power Platform AI flow.

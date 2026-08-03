@@ -20,9 +20,7 @@ namespace RubrikSecurityCloud.Types
         #region members
 
         //      C# -> ThreatMonitoringEnablementStatusInput? Status
-        // GraphQL -> status: ThreatMonitoringEnablementStatusInput! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> status: ThreatMonitoringEnablementStatusInput (input)
         [JsonProperty("status")]
         public ThreatMonitoringEnablementStatusInput? Status { get; set; }
 
@@ -40,6 +38,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldScanAllFiles: Boolean (scalar)
         [JsonProperty("shouldScanAllFiles")]
         public System.Boolean? ShouldScanAllFiles { get; set; }
+
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean (scalar)
+        [JsonProperty("isSmartScanningEnabled")]
+        public System.Boolean? IsSmartScanningEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean (scalar)
+        [JsonProperty("isYaraProcessingEnabled")]
+        public System.Boolean? IsYaraProcessingEnabled { get; set; }
 
 
         #endregion

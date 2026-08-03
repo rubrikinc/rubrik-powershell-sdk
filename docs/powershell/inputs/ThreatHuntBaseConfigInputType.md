@@ -16,3 +16,8 @@ Base config for a threat hunt.
 - maxMatchesPerSnapshot: System.Int32
   - Indicator Of Compromise within a snapshot terminates once this number
 of matches have been detected.
+- shouldIncludeArchive: System.Boolean
+  - Whether to include archive-tier data when scanning object-store
+snapshots. When true, archived data is rehydrated on read. Only applies
+to object-store workloads (AWS S3 / Azure Blob); ignored for other
+workloads.

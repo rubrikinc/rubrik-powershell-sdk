@@ -5,10 +5,6 @@ Filters for list of Azure SQL Databases.
   - Filter by name substring.
 - effectiveSlaFilter: EffectiveSlaFilter
   - Filter by effective SLA Domain.
-- resourceGroupFilter: AzureSqlDatabaseResourceGroupFilter
-  - Filter by resource group name.
-- subscriptionFilter: AzureSqlDatabaseSubscriptionFilter
-  - Filter by subscription.
 - regionFilter: AzureNativeRegionFilter
   - Filter by region.
 - relicFilter: RelicFilter
@@ -23,7 +19,11 @@ Filters for list of Azure SQL Databases.
   - Filter by server.
 - serverId: System.String
   - Filter by managed object ID of the server.
-- azureNativeIsEligibleForSqlDatabaseDbProtectionFilter: AzureNativeIsEligibleForSqlDatabaseDbProtectionFilter
-  - Filter workloads based on their eligibility for protection (nested).
 - isEligibleForProtection: System.Boolean
   - Filter workloads based on their eligibility for protection.
+- resourceGroupFilter: AzureSqlDatabaseResourceGroupFilter
+  - Filter by resource group name.
+- subscriptionFilter: AzureSqlDatabaseSubscriptionFilter
+  - Filter by subscription.
+- azureNativeIsEligibleForSqlDatabaseDbProtectionFilter: AzureNativeIsEligibleForSqlDatabaseDbProtectionFilter
+  - Filter workloads based on their eligibility for protection (nested).

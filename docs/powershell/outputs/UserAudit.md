@@ -1,6 +1,8 @@
 ### UserAudit
 An audit triggered by a user.
 
+- id: System.String
+  - The ID of the user audit.
 - time: DateTime
   - The time the user audit occurred.
 - status: UserAuditStatusEnum
@@ -29,7 +31,5 @@ An audit triggered by a user.
   - The IP address of the user who triggered this audit.
 - actorType: ActorType
   - The kind of user that triggered this audit. Null when the user could not be classified.
-- id: System.String
-  - The ID of the user audit.
 - cluster: Cluster
   - The ID of the Rubrik cluster to which this user audit belongs.

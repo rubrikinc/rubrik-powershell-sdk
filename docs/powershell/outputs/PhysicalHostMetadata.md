@@ -15,6 +15,10 @@ Metadata details of a Physical Host.
   - Specifies the Oracle database Sensitive Data Monitoring details.
 - rbsUpgradeStatus: RbsUpgradeStatus
   - RBS upgrade status of the host.
+- rbsVersion: System.String
+  - Version of the Rubrik Backup Service (RBS) on the host.
+- lastSuccessfulUpgradeTime: System.String
+  - Timestamp of the last successful RBS upgrade on the host.
 - oracleSettings: OracleSettings
   - The Oracle settings, such as the SEPS configuration associated with this host.
 - resourceInfo: System.String

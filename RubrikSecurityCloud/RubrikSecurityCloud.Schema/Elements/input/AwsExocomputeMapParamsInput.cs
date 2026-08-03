@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldEnableAutomatedKeySharing")]
         public System.Boolean? ShouldEnableAutomatedKeySharing { get; set; }
 
+        //      C# -> List<AwsGatewayKmsKeyArnEntryInput>? GatewayKmsKeyArnByAccount
+        // GraphQL -> gatewayKmsKeyArnByAccount: [AwsGatewayKmsKeyArnEntryInput!] (input)
+        [JsonProperty("gatewayKmsKeyArnByAccount")]
+        public List<AwsGatewayKmsKeyArnEntryInput>? GatewayKmsKeyArnByAccount { get; set; }
+
 
         #endregion
 

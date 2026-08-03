@@ -17,3 +17,39 @@ Active Directory workload related app metadata for a snapshot.
   - CDM version of the cluster at the time of the snapshot.
 - stats: ActiveDirectorySnapshotStats
   - Stats related to the Active Directory snapshot (backed by managed volume).
+- ntdsDbDir: System.String
+  - NTDS database directory path.
+- ntdsLogDir: System.String
+  - NTDS log directory path.
+- sysvolDir: System.String
+  - Sysvol directory path.
+- configDir: System.String
+  - System32\config directory path.
+- osBuildVersionOpt: System.String
+  - OS build version string.
+- isDataIntegrityPerformed: System.Boolean
+  - Whether a data integrity check was performed.
+- isHashRecalculatedOnHost: System.Boolean
+  - Whether the hash was recalculated on the host.
+- isHashRecalculatedOnCluster: System.Boolean
+  - Whether the hash was recalculated on the cluster.
+- attributeVersionNumberOpt: System.Int32
+  - Attribute version number.
+- rubrikBackupServiceInstallPath: System.String
+  - Path of the Rubrik backup service install directory.
+- ntdsPageSize: System.Int64
+  - NTDS database page size.
+- dcMetadataOpt: DcMetadata
+  - Domain controller identity metadata for forest recovery.
+- firmwareTypeOpt: System.String
+  - Firmware type (UEFI or BIOS).
+- tlsAtSnapshotOpt: System.Boolean
+  - TLS state at the time of the snapshot.
+- snapshotDebugInfo: ActiveDirectorySnapshotDebugInfo
+  - Debug information for the snapshot.
+- isUmdUploaded: System.Boolean
+  - Whether the UMD was uploaded.
+- versionIdOpt: System.String
+  - Version ID.
+- umdFilePath: System.String
+  - UMD file path.

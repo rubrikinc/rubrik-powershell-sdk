@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("upgradeStatusCategory")]
         public List<System.String>? UpgradeStatusCategory { get; set; }
 
+        //      C# -> System.Boolean? IsAssignedByParentAccount
+        // GraphQL -> isAssignedByParentAccount: Boolean (scalar)
+        [JsonProperty("isAssignedByParentAccount")]
+        public System.Boolean? IsAssignedByParentAccount { get; set; }
+
         //      C# -> List<ClusterEosStatus>? EosStatus
         // GraphQL -> eosStatus: [ClusterEosStatus!] (enum)
         [JsonProperty("eosStatus")]

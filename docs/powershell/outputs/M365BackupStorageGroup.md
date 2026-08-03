@@ -25,6 +25,11 @@ M365 Backup Storage Groups from M365 Backup Storage hierarchy.
   - The authorized operations on the object.
 - id: System.String
   - Group ID of M365 Backup Storage Group object.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -57,6 +62,8 @@ M365 Backup Storage Groups from M365 Backup Storage hierarchy.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
@@ -73,7 +80,3 @@ M365 Backup Storage Groups from M365 Backup Storage hierarchy.
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

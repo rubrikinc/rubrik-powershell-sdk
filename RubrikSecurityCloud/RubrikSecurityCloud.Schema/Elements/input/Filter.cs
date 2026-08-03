@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("timeParam")]
         public DateTime? TimeParam { get; set; }
 
+        //      C# -> List<NativeTagFilterParams>? NativeTagFilterParams
+        // GraphQL -> nativeTagFilterParams: [NativeTagFilterParams!] (input)
+        [JsonProperty("nativeTagFilterParams")]
+        public List<NativeTagFilterParams>? NativeTagFilterParams { get; set; }
+
 
         #endregion
 

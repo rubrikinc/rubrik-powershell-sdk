@@ -64,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clearSuspensionServiceAccounts")]
         public List<System.String>? ClearSuspensionServiceAccounts { get; set; }
 
+        //      C# -> System.Boolean? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: Boolean (scalar)
+        [JsonProperty("isCdmEnforcementDisabled")]
+        public System.Boolean? IsCdmEnforcementDisabled { get; set; }
+
 
         #endregion
 

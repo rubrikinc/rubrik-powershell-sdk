@@ -25,3 +25,5 @@ Crowdstrike alert violation details.
   - Actor endpoint information.
 - actorEndpointIp: System.String
   - Actor endpoint IP.
+- patternId: System.String
+  - CrowdStrike Falcon pattern ID (the vendor detection taxonomy ID).

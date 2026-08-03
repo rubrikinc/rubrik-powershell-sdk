@@ -18,6 +18,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ANTHROPIC_CHAT")]
+        ANTHROPIC_CHAT,
+
+        [EnumMember(Value = "ANTHROPIC_CODE")]
+        ANTHROPIC_CODE,
+
+        [EnumMember(Value = "ANTHROPIC_COWORK")]
+        ANTHROPIC_COWORK,
+
+        [EnumMember(Value = "ANTHROPIC_SETTINGS")]
+        ANTHROPIC_SETTINGS,
+
         [EnumMember(Value = "ATLASSIAN_CONFLUENCE")]
         ATLASSIAN_CONFLUENCE,
 
@@ -50,6 +62,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OKTA")]
         OKTA,
+
+        [EnumMember(Value = "OKTA_FEDERATION")]
+        OKTA_FEDERATION,
 
         [EnumMember(Value = "ONEDRIVE")]
         ONEDRIVE,

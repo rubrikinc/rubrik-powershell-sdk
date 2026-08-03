@@ -2,7 +2,7 @@
 - ANALYZER_NAME
 - ComplianceStatus
 - BYTES_CREATED_COUNT - Count of created bytes.
-- SourceSiteName
+- SourceSiteName - Sort by the source site name.
 - BYTES_DELETED_COUNT - Count of deleted bytes.
 - PATH
 - ESTIMATED_RUNWAY - Estimated time before cluster runs out of storage.
@@ -39,13 +39,13 @@
 - POLICY_NAME
 - TransferredBytes
 - LogicalDataReduction
-- StartTime - Sort by start time.
+- StartTime - Sort by the start time of the failover.
 - ArchiveStorage
 - PREVIOUS_SNAPSHOT_ID - Id of the previous snapshot.
 - MissedSnapshots
 - ReplicaStorage
 - LatestArchivalSnapshot
-- AppBlueprintName
+- AppBlueprintName - Sort by the Recovery Plan name.
 - TOTAL_HITS
 - SlaDomainName
 - CLUSTER_LOCATION - Location of the Rubrik cluster.
@@ -56,7 +56,7 @@
 - PREVIOUS_SNAPSHOT_DATE - Date of the previous snapshot.
 - SNAPSHOT_DATE - Date of the snapshot.
 - FILES_WITH_HITS
-- TargetSiteName
+- TargetSiteName - Sort by the target site name.
 - IS_ANOMALY - Specifies whether the result is an anomaly.
 - ActivityStatus - Sort by activity status.
 - ArchivalSnapshotLag

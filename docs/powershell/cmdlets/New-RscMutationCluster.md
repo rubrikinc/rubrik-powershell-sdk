@@ -114,9 +114,11 @@ Releases all the persistent Exocompute clusters for a region configuration in a 
 - There is a single argument of type ReleasePersistentExoclustersInput.
 - Returns System.String.
 ### removecdm
+Removes a registered Rubrik cluster from the account.
+
 - There are 3 arguments.
     - clusterUUID - System.String: UUID of the Rubrik cluster.
-    - isForce - System.Boolean
+    - isForce - System.Boolean: Whether to force the removal of the Rubrik cluster.
     - expireInDays - System.Int64: Number of days after which data from Rubrik is removed.
 - Returns System.Boolean.
 ### removeclusternodes
@@ -188,7 +190,8 @@ Update Rubrik CDM cluster settings.
 - There is a single argument of type UpdateClusterSettingsInput.
 - Returns UpdateClusterSettingsReply.
 ### updatepreviewerclusterconfig
-Update previewer cluster configuration.
+Update previewer cluster configuration and return the updated Rubrik
+cluster.
 
 - There is a single argument of type PreviewerClusterConfigInput.
 - Returns Cluster.

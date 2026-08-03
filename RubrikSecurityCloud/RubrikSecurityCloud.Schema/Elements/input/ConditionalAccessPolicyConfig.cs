@@ -31,11 +31,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("idString")]
         public System.String? IdString { get; set; }
 
-        //      C# -> System.String? ExportedPolicyName
-        // GraphQL -> exportedPolicyName: String (scalar)
-        [JsonProperty("exportedPolicyName")]
-        public System.String? ExportedPolicyName { get; set; }
-
         //      C# -> AzureAdConditionalAccessPolicyStateEnumType? RecoveryState
         // GraphQL -> recoveryState: AzureAdConditionalAccessPolicyStateEnumType! (enum)
         [Required]
@@ -47,6 +42,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> recoveryMethod: AzureAdConditionalAccessPolicyRecoveryType (enum)
         [JsonProperty("recoveryMethod")]
         public AzureAdConditionalAccessPolicyRecoveryType? RecoveryMethod { get; set; }
+
+        //      C# -> System.String? ExportedPolicyName
+        // GraphQL -> exportedPolicyName: String (scalar)
+        [JsonProperty("exportedPolicyName")]
+        public System.String? ExportedPolicyName { get; set; }
 
 
         #endregion

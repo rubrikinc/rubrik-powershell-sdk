@@ -231,6 +231,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sAppMetadata")]
         public K8sResourceSnapshotMetadata? K8sAppMetadata { get; set; }
 
+        //      C# -> K8sSnapshotResourceSummary? K8sResourceSummary
+        // GraphQL -> k8sResourceSummary: K8sSnapshotResourceSummary (type)
+        [JsonProperty("k8sResourceSummary")]
+        public K8sSnapshotResourceSummary? K8sResourceSummary { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -280,6 +285,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)
         [JsonProperty("pendingSnapshotDeletion")]
         public PendingSnapshotDeletion? PendingSnapshotDeletion { get; set; }
+
+        //      C# -> PingFederateAppMetadata? PingFederateAppMetadata
+        // GraphQL -> pingFederateAppMetadata: PingFederateAppMetadata (type)
+        [JsonProperty("pingFederateAppMetadata")]
+        public PingFederateAppMetadata? PingFederateAppMetadata { get; set; }
 
         //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
         // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
@@ -368,6 +378,7 @@ namespace RubrikSecurityCloud.Types
         Db2AppMetadata? Db2AppMetadata = null,
         HypervAppMetadata? HypervVirtualMachineAppMetadata = null,
         K8sResourceSnapshotMetadata? K8sAppMetadata = null,
+        K8sSnapshotResourceSummary? K8sResourceSummary = null,
         LatestUserNote? LatestUserNote = null,
         LegalHoldInfo? LegalHoldInfo = null,
         List<DataLocation>? LocalLocations = null,
@@ -378,6 +389,7 @@ namespace RubrikSecurityCloud.Types
         KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata = null,
         MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2 = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
+        PingFederateAppMetadata? PingFederateAppMetadata = null,
         KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata = null,
         List<DataLocation>? ReplicationLocations = null,
         SapHanaAppMetadata? SapHanaAppMetadata = null,
@@ -513,6 +525,9 @@ namespace RubrikSecurityCloud.Types
         if ( K8sAppMetadata != null ) {
             this.K8sAppMetadata = K8sAppMetadata;
         }
+        if ( K8sResourceSummary != null ) {
+            this.K8sResourceSummary = K8sResourceSummary;
+        }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
         }
@@ -542,6 +557,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PendingSnapshotDeletion != null ) {
             this.PendingSnapshotDeletion = PendingSnapshotDeletion;
+        }
+        if ( PingFederateAppMetadata != null ) {
+            this.PingFederateAppMetadata = PingFederateAppMetadata;
         }
         if ( PostgresDbClusterAppMetadata != null ) {
             this.PostgresDbClusterAppMetadata = PostgresDbClusterAppMetadata;
@@ -998,6 +1016,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> K8sSnapshotResourceSummary? K8sResourceSummary
+        // GraphQL -> k8sResourceSummary: K8sSnapshotResourceSummary (type)
+        if (this.K8sResourceSummary != null) {
+            var fspec = this.K8sResourceSummary.AsFieldSpec(conf.Child("k8sResourceSummary"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "k8sResourceSummary" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
@@ -1115,6 +1145,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "pendingSnapshotDeletion" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PingFederateAppMetadata? PingFederateAppMetadata
+        // GraphQL -> pingFederateAppMetadata: PingFederateAppMetadata (type)
+        if (this.PingFederateAppMetadata != null) {
+            var fspec = this.PingFederateAppMetadata.AsFieldSpec(conf.Child("pingFederateAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pingFederateAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1964,6 +2006,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.K8sAppMetadata = null;
         }
+        //      C# -> K8sSnapshotResourceSummary? K8sResourceSummary
+        // GraphQL -> k8sResourceSummary: K8sSnapshotResourceSummary (type)
+        if (ec.Includes("k8sResourceSummary",false))
+        {
+            if(this.K8sResourceSummary == null) {
+
+                this.K8sResourceSummary = new K8sSnapshotResourceSummary();
+                this.K8sResourceSummary.ApplyExploratoryFieldSpec(ec.NewChild("k8sResourceSummary"));
+
+            } else {
+
+                this.K8sResourceSummary.ApplyExploratoryFieldSpec(ec.NewChild("k8sResourceSummary"));
+
+            }
+        }
+        else if (this.K8sResourceSummary != null && ec.Excludes("k8sResourceSummary",false))
+        {
+            this.K8sResourceSummary = null;
+        }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (ec.Includes("latestUserNote",false))
@@ -2153,6 +2214,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PendingSnapshotDeletion != null && ec.Excludes("pendingSnapshotDeletion",false))
         {
             this.PendingSnapshotDeletion = null;
+        }
+        //      C# -> PingFederateAppMetadata? PingFederateAppMetadata
+        // GraphQL -> pingFederateAppMetadata: PingFederateAppMetadata (type)
+        if (ec.Includes("pingFederateAppMetadata",false))
+        {
+            if(this.PingFederateAppMetadata == null) {
+
+                this.PingFederateAppMetadata = new PingFederateAppMetadata();
+                this.PingFederateAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("pingFederateAppMetadata"));
+
+            } else {
+
+                this.PingFederateAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("pingFederateAppMetadata"));
+
+            }
+        }
+        else if (this.PingFederateAppMetadata != null && ec.Excludes("pingFederateAppMetadata",false))
+        {
+            this.PingFederateAppMetadata = null;
         }
         //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
         // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)

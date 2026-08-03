@@ -49,11 +49,15 @@ protection of GitHub repositories and related workload.
 - GCP_BIGQUERY_PROTECTION - Cloud account feature is GCP BigQuery Protection.
 - GLUE_ICEBERG_PROTECTION - Cloud account feature is Glue Iceberg Protection.
 - GCP_BIGQUERY_RESERVATION - Cloud account feature is GCP BigQuery Reservation host.
+- AZURE_LOCAL_CLOUD_ACCOUNT - Cloud account feature is Azure Local (Azure Stack HCI) Cloud Account.
 - AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION - AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION refers to the feature
 enabling backup of non-repo Azure DevOps project content (work items,
 boards, sprints, wikis, teams).
 - CCES_BAAS - Cloud account feature is CCES BaaS or Rubrik-managed CCES clusters
 for database backup on customer-owned AWS accounts.
 - S3_TABLES_ICEBERG_PROTECTION - Cloud account feature is S3 Tables Iceberg Protection.
+- CLOUD_NATIVE_UEM_KEY_MANAGEMENT - Cloud account feature is Cloud Native UEM Key Management.
+- CLOUD_COST_REPORT - Cloud account feature is Cloud Cost Report (CUR + cost S3 bucket
+permissions for AWS billing data ingestion).
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

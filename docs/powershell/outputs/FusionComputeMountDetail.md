@@ -43,5 +43,8 @@ Details of a FusionCompute live mount.
   - Display name for the mount target. Holds the target host name when
 the mount is pinned to a specific host; falls back to the target
 cluster name when the mount was scheduled at cluster granularity.
+- unmountTimestamp: DateTime
+  - Scheduled auto-unmount time of the Live Mount. Set only when an
+auto-unmount (lease) is scheduled for the mount; null otherwise.
 - cluster: Cluster
   - Rubrik cluster of the FusionCompute live mount.

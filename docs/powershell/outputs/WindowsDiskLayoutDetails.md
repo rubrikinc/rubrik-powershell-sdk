@@ -5,3 +5,5 @@ Windows disk layout details of the domain controller at the time of the snapshot
   - List of physical disks on the domain controller.
 - volumes: list of WindowsVolumeInfos
   - List of volumes on the disks.
+- partitions: list of WindowsPartitionInfos
+  - List of partitions on the disks.

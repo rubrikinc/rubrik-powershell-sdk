@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ADVANCED_DIAGNOSTICS")]
+        ADVANCED_DIAGNOSTICS,
+
         [EnumMember(Value = "AKS_CUSTOM_PRIVATE_DNS_ZONE")]
         AKS_CUSTOM_PRIVATE_DNS_ZONE,
 
@@ -35,6 +38,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "BASIC")]
         BASIC,
+
+        [EnumMember(Value = "BASIC_2")]
+        BASIC_2,
 
         [EnumMember(Value = "CLOUDSQL")]
         CLOUDSQL,
@@ -81,8 +87,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FILE_LEVEL_RECOVERY")]
         FILE_LEVEL_RECOVERY,
 
+        [EnumMember(Value = "GATEWAY_KEY_CREATION")]
+        GATEWAY_KEY_CREATION,
+
         [EnumMember(Value = "GROUP_UNSPECIFIED")]
         GROUP_UNSPECIFIED,
+
+        [EnumMember(Value = "INVENTORY_GENERATION")]
+        INVENTORY_GENERATION,
 
         [EnumMember(Value = "KMS_KEY_SHARING")]
         KMS_KEY_SHARING,
@@ -95,6 +107,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
+
+        [EnumMember(Value = "RECOVERY_2")]
+        RECOVERY_2,
+
+        [EnumMember(Value = "RECOVERY_3")]
+        RECOVERY_3,
+
+        [EnumMember(Value = "RECOVERY_4")]
+        RECOVERY_4,
 
         [EnumMember(Value = "RECOVERY_NETWORKING")]
         RECOVERY_NETWORKING,
@@ -118,7 +139,10 @@ namespace RubrikSecurityCloud.Types
         SNAPSHOT_PRIVATE_ACCESS,
 
         [EnumMember(Value = "SQL_ARCHIVAL")]
-        SQL_ARCHIVAL
+        SQL_ARCHIVAL,
+
+        [EnumMember(Value = "SURGICAL_RECOVERY")]
+        SURGICAL_RECOVERY
 
 
     } // enum PermissionsGroup

@@ -11,6 +11,8 @@ SMB domain.
   - Specifies if the SMB domain is archived.
 - status: SmbAuthenticationStatus
   - Authentication status of the SMB domain.
+- dnsServers: list of System.Strings
+  - DNS servers authoritative for this SMB domain. Empty when per-domain DNS is not configured.
 - id: System.String
   - ID of the SMB domain.
 - cluster: Cluster

@@ -1,5 +1,5 @@
 ### CloudNativeTagPairOutput
-Cloud-native tag key-value pair.
+A cloud-native tag key-value pair.
 
 - key: System.String
   - Tag key.

@@ -50,6 +50,13 @@ Delete a TPR policy.
 
 - There is a single argument of type DeleteTprPolicyInput.
 - Returns System.String.
+### exportpolicyviolationscsv
+Trigger an asynchronous CSV export of policy violations matching the
+provided filters. Returns an identifier that can be used to poll for
+export status and retrieve the final download link.
+
+- There is a single argument of type ExportPolicyViolationsCsvInput.
+- Returns ExportPolicyViolationsCsvReply.
 ### failoverhapolicy
 Failover a failover group
 

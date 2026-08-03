@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("idpPolicyInfo")]
         public IdpPolicyInfo? IdpPolicyInfo { get; set; }
 
+        //      C# -> SigninAnomalyPolicyInfo? SigninAnomalyPolicyInfo
+        // GraphQL -> signinAnomalyPolicyInfo: SigninAnomalyPolicyInfo (type)
+        [JsonProperty("signinAnomalyPolicyInfo")]
+        public SigninAnomalyPolicyInfo? SigninAnomalyPolicyInfo { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public PolicyTypeInfo Set(
         IdentityEventPolicyInfo? IdentityEventPolicyInfo = null,
         IdentityPolicyInfo? IdentityPolicyInfo = null,
-        IdpPolicyInfo? IdpPolicyInfo = null
+        IdpPolicyInfo? IdpPolicyInfo = null,
+        SigninAnomalyPolicyInfo? SigninAnomalyPolicyInfo = null
     ) 
     {
         if ( IdentityEventPolicyInfo != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IdpPolicyInfo != null ) {
             this.IdpPolicyInfo = IdpPolicyInfo;
+        }
+        if ( SigninAnomalyPolicyInfo != null ) {
+            this.SigninAnomalyPolicyInfo = SigninAnomalyPolicyInfo;
         }
         return this;
     }
@@ -106,6 +115,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "idpPolicyInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SigninAnomalyPolicyInfo? SigninAnomalyPolicyInfo
+        // GraphQL -> signinAnomalyPolicyInfo: SigninAnomalyPolicyInfo (type)
+        if (this.SigninAnomalyPolicyInfo != null) {
+            var fspec = this.SigninAnomalyPolicyInfo.AsFieldSpec(conf.Child("signinAnomalyPolicyInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "signinAnomalyPolicyInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -172,6 +193,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IdpPolicyInfo != null && ec.Excludes("idpPolicyInfo",false))
         {
             this.IdpPolicyInfo = null;
+        }
+        //      C# -> SigninAnomalyPolicyInfo? SigninAnomalyPolicyInfo
+        // GraphQL -> signinAnomalyPolicyInfo: SigninAnomalyPolicyInfo (type)
+        if (ec.Includes("signinAnomalyPolicyInfo",false))
+        {
+            if(this.SigninAnomalyPolicyInfo == null) {
+
+                this.SigninAnomalyPolicyInfo = new SigninAnomalyPolicyInfo();
+                this.SigninAnomalyPolicyInfo.ApplyExploratoryFieldSpec(ec.NewChild("signinAnomalyPolicyInfo"));
+
+            } else {
+
+                this.SigninAnomalyPolicyInfo.ApplyExploratoryFieldSpec(ec.NewChild("signinAnomalyPolicyInfo"));
+
+            }
+        }
+        else if (this.SigninAnomalyPolicyInfo != null && ec.Excludes("signinAnomalyPolicyInfo",false))
+        {
+            this.SigninAnomalyPolicyInfo = null;
         }
     }
 

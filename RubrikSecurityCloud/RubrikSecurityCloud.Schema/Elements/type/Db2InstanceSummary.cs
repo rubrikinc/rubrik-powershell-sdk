@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> Db2InstanceSummaryInstanceType? InstanceType
+        // GraphQL -> instanceType: Db2InstanceSummaryInstanceType (enum)
+        [JsonProperty("instanceType")]
+        public Db2InstanceSummaryInstanceType? InstanceType { get; set; }
+
         //      C# -> Db2InstanceSummaryStatus? Status
         // GraphQL -> status: Db2InstanceSummaryStatus! (enum)
         [JsonProperty("status")]
@@ -110,6 +115,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Db2InstanceSummary Set(
+        Db2InstanceSummaryInstanceType? InstanceType = null,
         Db2InstanceSummaryStatus? Status = null,
         List<System.String>? DatabaseIds = null,
         List<System.String>? HadrDatabaseIds = null,
@@ -128,6 +134,9 @@ namespace RubrikSecurityCloud.Types
         System.String? Username = null
     ) 
     {
+        if ( InstanceType != null ) {
+            this.InstanceType = InstanceType;
+        }
         if ( Status != null ) {
             this.Status = Status;
         }
@@ -190,6 +199,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> Db2InstanceSummaryInstanceType? InstanceType
+        // GraphQL -> instanceType: Db2InstanceSummaryInstanceType (enum)
+        if (this.InstanceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "instanceType\n" ;
+            } else {
+                s += ind + "instanceType\n" ;
+            }
+        }
         //      C# -> Db2InstanceSummaryStatus? Status
         // GraphQL -> status: Db2InstanceSummaryStatus! (enum)
         if (this.Status != null) {
@@ -341,6 +359,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> Db2InstanceSummaryInstanceType? InstanceType
+        // GraphQL -> instanceType: Db2InstanceSummaryInstanceType (enum)
+        if (ec.Includes("instanceType",true))
+        {
+            if(this.InstanceType == null) {
+
+                this.InstanceType = new Db2InstanceSummaryInstanceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InstanceType != null && ec.Excludes("instanceType",true))
+        {
+            this.InstanceType = null;
+        }
         //      C# -> Db2InstanceSummaryStatus? Status
         // GraphQL -> status: Db2InstanceSummaryStatus! (enum)
         if (ec.Includes("status",true))

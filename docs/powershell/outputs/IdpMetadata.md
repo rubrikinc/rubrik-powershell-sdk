@@ -1,5 +1,5 @@
 ### IdpMetadata
-
+Metadata describing an IdP resource involved in a policy violation.
 
 - domainUniqueId: System.String
   - Domain UniqueID.

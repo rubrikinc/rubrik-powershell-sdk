@@ -1,5 +1,5 @@
 ### PerDayViolationSummary
-
+Summary of violations created and remediated on a single day.
 
 - summaryTimestamp: DateTime
   - Date timestamp of the summary.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Archival' API domain:
-    /// ArchivalPerObjectInfo, Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationForecasts, LocationsForFailoverGroup, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// ArchivalPerObjectInfo, Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationForecastRefreshStatus, LocationForecasts, LocationsForFailoverGroup, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// </summary>
     /// <description>
     /// New-RscQueryArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: ArchivalPerObjectInfo, Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationForecasts, LocationsForFailoverGroup, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
+    /// one of: ArchivalPerObjectInfo, Entities, FailoverGroupLocations, FeaturePermissionForDataCenterRoleBased, HierarchyObjectRecoveryTarget, IsTotpMandatoryInTargetVersion, LocationForecastRefreshStatus, LocationForecasts, LocationsForFailoverGroup, Migration, PerObjectInfo, RcsLocationsConsumptionStats, ReaderInfo, StorageUsage, Target, TargetMapping, TargetMappings, or Targets.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -304,6 +304,33 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: System.Boolean
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the LocationForecastRefreshStatus operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: LocationForecastRefreshStatus
+    /// 
+    /// $query = New-RscQueryArchival -Operation LocationForecastRefreshStatus
+    /// 
+    /// # No variables for this query.
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: ArchivalLocationForecastRefreshStatus
     /// 
     /// 
     /// 
@@ -747,6 +774,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "FeaturePermissionForDataCenterRoleBased",
                 "HierarchyObjectRecoveryTarget",
                 "IsTotpMandatoryInTargetVersion",
+                "LocationForecastRefreshStatus",
                 "LocationForecasts",
                 "LocationsForFailoverGroup",
                 "Migration",
@@ -790,6 +818,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "IsTotpMandatoryInTargetVersion":
                         this.ProcessRecord_IsTotpMandatoryInTargetVersion();
+                        break;
+                    case "LocationForecastRefreshStatus":
+                        this.ProcessRecord_LocationForecastRefreshStatus();
                         break;
                     case "LocationForecasts":
                         this.ProcessRecord_LocationForecasts();
@@ -886,6 +917,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -IsTotpMandatoryInTargetVersion";
             // Create new graphql operation isTotpMandatoryInTargetVersion
             InitQueryIsTotpMandatoryInTargetVersion();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // archivalLocationForecastRefreshStatus.
+        internal void ProcessRecord_LocationForecastRefreshStatus()
+        {
+            this._logger.name += " -LocationForecastRefreshStatus";
+            // Create new graphql operation archivalLocationForecastRefreshStatus
+            InitQueryArchivalLocationForecastRefreshStatus();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1216,6 +1256,24 @@ $query.Var.fid = $someString"
                 Query.IsTotpMandatoryInTargetVersionFieldSpec,
                 @"# REQUIRED
 $query.Var.version = $someString"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // archivalLocationForecastRefreshStatus: ArchivalLocationForecastRefreshStatus!
+        internal void InitQueryArchivalLocationForecastRefreshStatus()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryArchivalLocationForecastRefreshStatus",
+                "",
+                "ArchivalLocationForecastRefreshStatus",
+                Query.ArchivalLocationForecastRefreshStatus,
+                Query.ArchivalLocationForecastRefreshStatusFieldSpec,
+                @""
             );
         }
 

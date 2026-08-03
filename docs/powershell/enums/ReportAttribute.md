@@ -63,3 +63,13 @@ All reporting attributes.
 - NODE - The node in the report.
 - ANOMALY_DETECTION_SCAN_OUTCOME - The anomaly detection scan outcome in the report.
 - ANOMALY_DETECTION_UNSCANNED_REASON - The anomaly detection unscanned reason in the report.
+- CLOUD_ACCOUNT_NAME - The cloud account display name attribute in the report.
+- CLOUD_ACCOUNT_NATIVE_ID - The cloud account native ID attribute in the report.
+- CLOUD_PROVIDER - The cloud provider attribute in the report.
+- RESOURCE_GROUP - The cloud resource group attribute in the report (Azure resource group).
+- CLOUD_COST_PROVIDER - The cloud provider attribute (AWS, Azure, GCP) in the cloud cost report.
+- CLOUD_COST_ACCOUNT - The cloud account attribute in the cloud cost report.
+- CLOUD_COST_TYPE - The cost type/dimension attribute in the cloud cost report
+(Snapshot, Archival, Compute, Transient, Replication).
+- CLOUD_COST_ACCOUNT_ID - The raw native cloud account id attribute in the cloud cost report
+(e.g. the 12-digit AWS account number), unresolved to a name.

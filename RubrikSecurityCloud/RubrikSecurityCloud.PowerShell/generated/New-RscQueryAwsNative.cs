@@ -733,6 +733,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			timeParam = $someDateTime
+    /// 			# OPTIONAL
+    /// 			nativeTagFilterParams = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 					# OPTIONAL
+    /// 					nativeTagIds = @(
+    /// 						$someString
+    /// 					)
+    /// 				}
+    /// 			)
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1129,6 +1140,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			timeParam = $someDateTime
+    /// 			# OPTIONAL
+    /// 			nativeTagFilterParams = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 					# OPTIONAL
+    /// 					nativeTagIds = @(
+    /// 						$someString
+    /// 					)
+    /// 				}
+    /// 			)
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2328,6 +2350,17 @@ $query.Var.ec2InstanceFilters = @{
 			)
 			# OPTIONAL
 			timeParam = $someDateTime
+			# OPTIONAL
+			nativeTagFilterParams = @(
+				@{
+					# OPTIONAL
+					source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+					# OPTIONAL
+					nativeTagIds = @(
+						$someString
+					)
+				}
+			)
 		}
 	)
 	# OPTIONAL
@@ -2737,6 +2770,17 @@ $query.Var.rdsInstanceFilters = @{
 			)
 			# OPTIONAL
 			timeParam = $someDateTime
+			# OPTIONAL
+			nativeTagFilterParams = @(
+				@{
+					# OPTIONAL
+					source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+					# OPTIONAL
+					nativeTagIds = @(
+						$someString
+					)
+				}
+			)
 		}
 	)
 	# OPTIONAL

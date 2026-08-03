@@ -96,6 +96,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isExocomputeConfigured")]
         public System.Boolean? IsExocomputeConfigured { get; set; }
 
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        [JsonProperty("isInfrastructureAlertsEnabled")]
+        public System.Boolean? IsInfrastructureAlertsEnabled { get; set; }
+
         //      C# -> System.Boolean? IsOnboarding
         // GraphQL -> isOnboarding: Boolean! (scalar)
         [JsonProperty("isOnboarding")]
@@ -171,6 +176,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeAccountDetails")]
         public AwsNativeAccountDetails? AwsNativeAccountDetails { get; set; }
 
+        //      C# -> List<CloudNativeApplicationInfo>? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: [CloudNativeApplicationInfo!]! (type)
+        [JsonProperty("cloudNativeApplications")]
+        public List<CloudNativeApplicationInfo>? CloudNativeApplications { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -190,6 +200,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> newestSnapshot: PolarisSnapshot (type)
         [JsonProperty("newestSnapshot")]
         public PolarisSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -371,6 +386,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? EarliestRestoreTime = null,
         System.String? Id = null,
         System.Boolean? IsExocomputeConfigured = null,
+        System.Boolean? IsInfrastructureAlertsEnabled = null,
         System.Boolean? IsOnboarding = null,
         System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
@@ -386,10 +402,12 @@ namespace RubrikSecurityCloud.Types
         AwsNativeAccount? AwsAccount = null,
         AwsNativeAccount? AwsNativeAccount = null,
         AwsNativeAccountDetails? AwsNativeAccountDetails = null,
+        List<CloudNativeApplicationInfo>? CloudNativeApplications = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<PathNode>? LogicalPath = null,
         PolarisSnapshot? NewestIndexedSnapshot = null,
         PolarisSnapshot? NewestSnapshot = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
@@ -448,6 +466,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsExocomputeConfigured != null ) {
             this.IsExocomputeConfigured = IsExocomputeConfigured;
         }
+        if ( IsInfrastructureAlertsEnabled != null ) {
+            this.IsInfrastructureAlertsEnabled = IsInfrastructureAlertsEnabled;
+        }
         if ( IsOnboarding != null ) {
             this.IsOnboarding = IsOnboarding;
         }
@@ -493,6 +514,9 @@ namespace RubrikSecurityCloud.Types
         if ( AwsNativeAccountDetails != null ) {
             this.AwsNativeAccountDetails = AwsNativeAccountDetails;
         }
+        if ( CloudNativeApplications != null ) {
+            this.CloudNativeApplications = CloudNativeApplications;
+        }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
@@ -504,6 +528,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -699,6 +726,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isExocomputeConfigured\n" ;
             }
         }
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        if (this.IsInfrastructureAlertsEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInfrastructureAlertsEnabled\n" ;
+            } else {
+                s += ind + "isInfrastructureAlertsEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsOnboarding
         // GraphQL -> isOnboarding: Boolean! (scalar)
         if (this.IsOnboarding != null) {
@@ -849,6 +885,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<CloudNativeApplicationInfo>? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: [CloudNativeApplicationInfo!]! (type)
+        if (this.CloudNativeApplications != null) {
+            var fspec = this.CloudNativeApplications.AsFieldSpec(conf.Child("cloudNativeApplications"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudNativeApplications" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
@@ -894,6 +942,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1312,6 +1372,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsExocomputeConfigured = null;
         }
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        if (ec.Includes("isInfrastructureAlertsEnabled",true))
+        {
+            if(this.IsInfrastructureAlertsEnabled == null) {
+
+                this.IsInfrastructureAlertsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInfrastructureAlertsEnabled != null && ec.Excludes("isInfrastructureAlertsEnabled",true))
+        {
+            this.IsInfrastructureAlertsEnabled = null;
+        }
         //      C# -> System.Boolean? IsOnboarding
         // GraphQL -> isOnboarding: Boolean! (scalar)
         if (ec.Includes("isOnboarding",true))
@@ -1577,6 +1654,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.AwsNativeAccountDetails = null;
         }
+        //      C# -> List<CloudNativeApplicationInfo>? CloudNativeApplications
+        // GraphQL -> cloudNativeApplications: [CloudNativeApplicationInfo!]! (type)
+        if (ec.Includes("cloudNativeApplications",false))
+        {
+            if(this.CloudNativeApplications == null) {
+
+                this.CloudNativeApplications = new List<CloudNativeApplicationInfo>();
+                this.CloudNativeApplications.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeApplications"));
+
+            } else {
+
+                this.CloudNativeApplications.ApplyExploratoryFieldSpec(ec.NewChild("cloudNativeApplications"));
+
+            }
+        }
+        else if (this.CloudNativeApplications != null && ec.Excludes("cloudNativeApplications",false))
+        {
+            this.CloudNativeApplications = null;
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (ec.Includes("effectiveSlaSourceObject",false))
@@ -1652,6 +1748,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

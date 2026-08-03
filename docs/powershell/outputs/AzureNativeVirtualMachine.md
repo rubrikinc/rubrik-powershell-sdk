@@ -65,6 +65,11 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
   - Rubrik CDM host information for the Azure Virtual Machine added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
 - recoveryPlansInfo: list of RecoveryPlansInfos
   - List of Recovery Plans associated with the virtual machine.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -99,10 +104,8 @@ An Azure Native Virtual Machine that refers to the Azure infrastructure as a ser
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

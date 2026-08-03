@@ -194,13 +194,18 @@ Returns the oldest snapshot for a Cloud Direct object, such as a share or bucket
     - cloudDirectTargetId - System.String: The NAS Cloud Direct target ID.
 - Returns CloudDirectSnapshot.
 ### onedrivesearch
-- There are 6 arguments.
+Returns OneDrive folders and files inside a single snapshot, merged
+as a single O365OnedriveObject interface list (folders then files).
+
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
-    - onedriveSearchFilter - OnedriveSearchFilter
+    - onedriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
 - Returns O365OnedriveObjectConnection.
 ### polaris
 Returns the RSC snapshot according to ID.
@@ -231,6 +236,14 @@ Quarantine details of all snapshots.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of QuarantineSpecs.
+### querypurestorageprotectiongroup
+Get list of snapshots of a Pure Storage protection group
+
+Supported in v9.6+
+Retrieve summary information for the snapshots of a Pure Storage protection group.
+
+- There is a single argument of type QueryPureStorageProtectionGroupSnapshotInput.
+- Returns PureStorageProtectionGroupSnapshotSummaryListResponse.
 ### results
 Returns snapshot results for a workload.
 

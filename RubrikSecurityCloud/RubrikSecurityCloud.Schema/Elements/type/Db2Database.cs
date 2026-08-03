@@ -81,6 +81,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        [JsonProperty("backupCompressionLibraryPath")]
+        public System.String? BackupCompressionLibraryPath { get; set; }
+
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int! (scalar)
         [JsonProperty("backupParallelism")]
@@ -105,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean! (scalar)
+        [JsonProperty("isBackupCompressionEnabled")]
+        public System.Boolean? IsBackupCompressionEnabled { get; set; }
 
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -256,6 +266,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newestSnapshot")]
         public CdmSnapshot? NewestSnapshot { get; set; }
 
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -366,6 +381,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] missedSnapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "MissedSnapshotFilterInput"),
                 };
             this.MissedSnapshotConnection =
@@ -458,11 +475,13 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? BackupCompressionLibraryPath = null,
         System.Int32? BackupParallelism = null,
         System.Int32? BackupSessions = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? Id = null,
+        System.Boolean? IsBackupCompressionEnabled = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsReplica = null,
         DateTime? LastSyncTime = null,
@@ -493,6 +512,7 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         CdmSnapshot? OldestSnapshot = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
@@ -543,6 +563,9 @@ namespace RubrikSecurityCloud.Types
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
         }
+        if ( BackupCompressionLibraryPath != null ) {
+            this.BackupCompressionLibraryPath = BackupCompressionLibraryPath;
+        }
         if ( BackupParallelism != null ) {
             this.BackupParallelism = BackupParallelism;
         }
@@ -557,6 +580,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsBackupCompressionEnabled != null ) {
+            this.IsBackupCompressionEnabled = IsBackupCompressionEnabled;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -647,6 +673,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -826,6 +855,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        if (this.BackupCompressionLibraryPath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupCompressionLibraryPath\n" ;
+            } else {
+                s += ind + "backupCompressionLibraryPath\n" ;
+            }
+        }
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int! (scalar)
         if (this.BackupParallelism != null) {
@@ -869,6 +907,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean! (scalar)
+        if (this.IsBackupCompressionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isBackupCompressionEnabled\n" ;
+            } else {
+                s += ind + "isBackupCompressionEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsRelic
@@ -1192,6 +1239,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1580,6 +1639,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = null;
         }
+        //      C# -> System.String? BackupCompressionLibraryPath
+        // GraphQL -> backupCompressionLibraryPath: String (scalar)
+        if (ec.Includes("backupCompressionLibraryPath",true))
+        {
+            if(this.BackupCompressionLibraryPath == null) {
+
+                this.BackupCompressionLibraryPath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupCompressionLibraryPath != null && ec.Excludes("backupCompressionLibraryPath",true))
+        {
+            this.BackupCompressionLibraryPath = null;
+        }
         //      C# -> System.Int32? BackupParallelism
         // GraphQL -> backupParallelism: Int! (scalar)
         if (ec.Includes("backupParallelism",true))
@@ -1664,6 +1740,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsBackupCompressionEnabled
+        // GraphQL -> isBackupCompressionEnabled: Boolean! (scalar)
+        if (ec.Includes("isBackupCompressionEnabled",true))
+        {
+            if(this.IsBackupCompressionEnabled == null) {
+
+                this.IsBackupCompressionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsBackupCompressionEnabled != null && ec.Excludes("isBackupCompressionEnabled",true))
+        {
+            this.IsBackupCompressionEnabled = null;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -2210,6 +2303,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

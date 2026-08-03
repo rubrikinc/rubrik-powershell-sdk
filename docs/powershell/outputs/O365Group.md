@@ -29,6 +29,11 @@ O365 Groups from O365 hierarchy.
   - Recovery analysis job information for this group.
 - orgId: System.String
   - UUID of the O365 organization.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -61,6 +66,8 @@ O365 Groups from O365 hierarchy.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
@@ -77,7 +84,3 @@ O365 Groups from O365 hierarchy.
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

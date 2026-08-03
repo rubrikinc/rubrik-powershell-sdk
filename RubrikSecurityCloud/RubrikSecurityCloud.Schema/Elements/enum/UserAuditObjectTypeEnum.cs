@@ -24,6 +24,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST")]
         ACTIVE_DIRECTORY_FOREST,
 
+        [EnumMember(Value = "AGENT_CLOUD_ALERT")]
+        AGENT_CLOUD_ALERT,
+
+        [EnumMember(Value = "AGENT_CLOUD_CONNECTION")]
+        AGENT_CLOUD_CONNECTION,
+
+        [EnumMember(Value = "AGENT_CLOUD_POLICY")]
+        AGENT_CLOUD_POLICY,
+
+        [EnumMember(Value = "AGENT_CLOUD_VIOLATION")]
+        AGENT_CLOUD_VIOLATION,
+
         [EnumMember(Value = "AGENT_OPERATIONS_MODEL_ROUTER")]
         AGENT_OPERATIONS_MODEL_ROUTER,
 
@@ -182,6 +194,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "FederatedAccess")]
         FEDERATED_ACCESS,
+
+        [EnumMember(Value = "GCP_BIG_QUERY_DATASET")]
+        GCP_BIG_QUERY_DATASET,
 
         [EnumMember(Value = "GCP_CLOUD_SQL_INSTANCE")]
         GCP_CLOUD_SQL_INSTANCE,

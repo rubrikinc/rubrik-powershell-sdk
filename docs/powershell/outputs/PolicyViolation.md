@@ -45,22 +45,22 @@ origin platform.
 - violationSeverity: Severity
   - The severity of the violation itself, if set.
 SEVERITY_UNSPECIFIED when no violation-level severity override exists.
-- resourceViolationsCount: System.Int32
-  - Resource-level aggregate violation counts:
-- resourceCriticalViolationsCount: System.Int32
-  - 
-- resourceHighViolationsCount: System.Int32
-  - 
-- resourceMediumViolationsCount: System.Int32
-  - 
-- resourceLowViolationsCount: System.Int32
-  - 
-- resourceMaxSeverity: Severity
-  - 
 - details: ViolationDetailsUnion
   - Additional details about the policy violation.
 - resourceMetadata: ResourceMetadata
   - Metadata for the resource involved in the policy violation.
+- resourceViolationsCount: System.Int32
+  - Resource-level aggregate violation counts:
+- resourceCriticalViolationsCount: System.Int32
+  - Total number of critical-severity violations on the resource.
+- resourceHighViolationsCount: System.Int32
+  - Total number of high-severity violations on the resource.
+- resourceMediumViolationsCount: System.Int32
+  - Total number of medium-severity violations on the resource.
+- resourceLowViolationsCount: System.Int32
+  - Total number of low-severity violations on the resource.
+- resourceMaxSeverity: Severity
+  - The highest severity among the resource's violations.
 - userLastUpdated: User
   - The user who last updated the violation.
 - remediations: list of RemediationMetadatas

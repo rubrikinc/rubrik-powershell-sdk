@@ -1,5 +1,5 @@
 ### AzureResourceAvailabilityResp
-
+Reply indicating whether an Azure resource is available.
 
 - available: System.Boolean
   - Indicates whether the resource is available.

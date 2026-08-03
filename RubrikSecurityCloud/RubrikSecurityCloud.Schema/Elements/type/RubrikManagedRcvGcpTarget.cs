@@ -146,6 +146,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        [JsonProperty("proxySettings")]
+        public ProxySettings? ProxySettings { get; set; }
+
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)
         [JsonProperty("targetMapping")]
@@ -191,6 +196,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? ShouldBypassProxy = null,
         System.String? SyncFailureReason = null,
         Cluster? Cluster = null,
+        ProxySettings? ProxySettings = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
     ) 
@@ -269,6 +275,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( ProxySettings != null ) {
+            this.ProxySettings = ProxySettings;
         }
         if ( TargetMapping != null ) {
             this.TargetMapping = TargetMapping;
@@ -515,6 +524,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (this.ProxySettings != null) {
+            var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "proxySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -975,6 +996,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (ec.Includes("proxySettings",false))
+        {
+            if(this.ProxySettings == null) {
+
+                this.ProxySettings = new ProxySettings();
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            } else {
+
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            }
+        }
+        else if (this.ProxySettings != null && ec.Excludes("proxySettings",false))
+        {
+            this.ProxySettings = null;
         }
         //      C# -> TargetMappingBasic? TargetMapping
         // GraphQL -> targetMapping: TargetMappingBasic (type)

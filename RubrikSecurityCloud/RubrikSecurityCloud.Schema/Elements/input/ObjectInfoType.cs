@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureAdObjectType? AzureAdObjectType
+        // GraphQL -> azureAdObjectType: AzureAdObjectType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("azureAdObjectType")]
+        public AzureAdObjectType? AzureAdObjectType { get; set; }
+
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: UUID (scalar)
         [JsonProperty("objectId")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectIdString: String (scalar)
         [JsonProperty("objectIdString")]
         public System.String? ObjectIdString { get; set; }
-
-        //      C# -> AzureAdObjectType? AzureAdObjectType
-        // GraphQL -> azureAdObjectType: AzureAdObjectType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("azureAdObjectType")]
-        public AzureAdObjectType? AzureAdObjectType { get; set; }
 
 
         #endregion

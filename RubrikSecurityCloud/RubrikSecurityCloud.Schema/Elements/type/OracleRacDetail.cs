@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupNodes")]
         public List<System.String>? BackupNodes { get; set; }
 
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        [JsonProperty("excludedDbUniqueNames")]
+        public List<System.String>? ExcludedDbUniqueNames { get; set; }
+
         //      C# -> System.String? PrimaryNode
         // GraphQL -> primaryNode: String (scalar)
         [JsonProperty("primaryNode")]
@@ -61,6 +66,7 @@ namespace RubrikSecurityCloud.Types
 
     public OracleRacDetail Set(
         List<System.String>? BackupNodes = null,
+        List<System.String>? ExcludedDbUniqueNames = null,
         System.String? PrimaryNode = null,
         System.String? Scan = null,
         List<System.String>? SecondaryNodes = null,
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( BackupNodes != null ) {
             this.BackupNodes = BackupNodes;
+        }
+        if ( ExcludedDbUniqueNames != null ) {
+            this.ExcludedDbUniqueNames = ExcludedDbUniqueNames;
         }
         if ( PrimaryNode != null ) {
             this.PrimaryNode = PrimaryNode;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "backupNodes\n" ;
             } else {
                 s += ind + "backupNodes\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        if (this.ExcludedDbUniqueNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludedDbUniqueNames\n" ;
+            } else {
+                s += ind + "excludedDbUniqueNames\n" ;
             }
         }
         //      C# -> System.String? PrimaryNode
@@ -183,6 +201,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.BackupNodes != null && ec.Excludes("backupNodes",true))
         {
             this.BackupNodes = null;
+        }
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        if (ec.Includes("excludedDbUniqueNames",true))
+        {
+            if(this.ExcludedDbUniqueNames == null) {
+
+                this.ExcludedDbUniqueNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludedDbUniqueNames != null && ec.Excludes("excludedDbUniqueNames",true))
+        {
+            this.ExcludedDbUniqueNames = null;
         }
         //      C# -> System.String? PrimaryNode
         // GraphQL -> primaryNode: String (scalar)

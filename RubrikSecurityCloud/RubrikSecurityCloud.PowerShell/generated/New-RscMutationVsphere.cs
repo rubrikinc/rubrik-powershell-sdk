@@ -584,12 +584,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	vmUpdateProperties = @{
     /// 		# OPTIONAL
-    /// 		shouldRefreshCacheAfterUpdate = $someBoolean
-    /// 		# OPTIONAL
-    /// 		guestCredentialId = $someString
-    /// 		# OPTIONAL
-    /// 		shouldUseAgent = $someBoolean
-    /// 		# OPTIONAL
     /// 		guestCredential = @{
     /// 			# OPTIONAL
     /// 			domain = $someString
@@ -603,6 +597,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			description = $someString
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldRefreshCacheAfterUpdate = $someBoolean
+    /// 		# OPTIONAL
+    /// 		guestCredentialId = $someString
     /// 		# OPTIONAL
     /// 		virtualMachineUpdate = @{
     /// 			# OPTIONAL
@@ -659,6 +657,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
     /// 		}
+    /// 		# OPTIONAL
+    /// 		shouldUseAgent = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	clusterUuid = $someString
@@ -1296,12 +1296,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	vmUpdateProperties = @{
 		# OPTIONAL
-		shouldRefreshCacheAfterUpdate = $someBoolean
-		# OPTIONAL
-		guestCredentialId = $someString
-		# OPTIONAL
-		shouldUseAgent = $someBoolean
-		# OPTIONAL
 		guestCredential = @{
 			# OPTIONAL
 			domain = $someString
@@ -1315,6 +1309,10 @@ $query.Var.input = @{
 			# OPTIONAL
 			description = $someString
 		}
+		# OPTIONAL
+		shouldRefreshCacheAfterUpdate = $someBoolean
+		# OPTIONAL
+		guestCredentialId = $someString
 		# OPTIONAL
 		virtualMachineUpdate = @{
 			# OPTIONAL
@@ -1371,6 +1369,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			multiNodeBackupMode = $someMultiNodeBackupMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MultiNodeBackupMode]) for enum values.
 		}
+		# OPTIONAL
+		shouldUseAgent = $someBoolean
 	}
 	# OPTIONAL
 	clusterUuid = $someString

@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pathFilter")]
         public HuntScanPathFiltersInputType? PathFilter { get; set; }
 
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean (scalar)
+        [JsonProperty("shouldExpandArchiveFiles")]
+        public System.Boolean? ShouldExpandArchiveFiles { get; set; }
+
 
         #endregion
 

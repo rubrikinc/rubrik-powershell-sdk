@@ -63,6 +63,12 @@ FilterType represents the possible types of filters.
 - SECURITY_IDENTITY_HAS_ROLES - Identity has-roles filter (descendant of a role).
 - SECURITY_IDENTITY_HAS_API_PERMISSIONS - Identity has-API-permissions filter (NHI permissions).
 - SECURITY_IDENTITY_INSIGHT - Identity insight category filter (Is Privileged, At Risk, Highly Sensitive).
+- SECURITY_IDENTITY_LAST_SIGN_IN_TIME - Identity last successful sign-in time filter.
+- SECURITY_IDENTITY_APP_REG_NO_ACTIVE_USER_OWNER - Entra ID App Registration linked to this service principal has no active
+user owner.
+- SECURITY_GPO_NO_LM_HASH - Filter for GPOs that configure the "Do not store LAN Manager hash value"
+security option. Selects GPOs where the NoLMHash setting is configured
+to store LM hashes (NoLMHash = 0).
 - SECURITY_IDP_METADATA_LABEL - Identity Provider domain level metadata label filter.
 - SECURITY_IDP_HAS_GROUP_WITH_LABEL - Identity Provider domain has a group-with-label filter.
 - SECURITY_IDP_HAS_USER_WITH_LABEL - Identity Provider domain has a user-with-label filter.
@@ -94,3 +100,7 @@ FilterType represents the possible types of filters.
 - SECURITY_IDENTITY_EVENT_CHANGED_ATT_NEW_VAL - Identity event changed attribute new value.
 - SECURITY_IDENTITY_EVENT_TITLE - Identity event title attribute.
 - SECURITY_IDENTITY_EVENT_GROUP_IS_PRIVILEGED - Identity event group is privileged filter.
+- SECURITY_IDENTITY_EVENT_GPO_CHANGE_LABEL - Filters identity events by their Group Policy Object (GPO) change label.
+Applies to Active Directory events only.
+- SECURITY_IDENTITY_ACCOUNT_EXPIRY_TIME - Identity account expiry time filter.
+- SECURITY_SIGNIN_ANOMALY_PER_CAP_SPIKE - Sign-in failure spike attributed to a single Conditional Access Policy.

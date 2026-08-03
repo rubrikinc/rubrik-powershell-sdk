@@ -39,3 +39,5 @@ Object-specific configurations.
   - SLA Domain configuration for AWS DynamoDB table.
 - azurePostgresFlexibleServerConfig: AzurePostgresFlexibleServerConfig
   - SLA Domain configuration for Azure PostgreSQL Flexible Server.
+- mariadbSlaConfig: MariadbSlaConfig
+  - SLA Domain configuration for MariaDB object.

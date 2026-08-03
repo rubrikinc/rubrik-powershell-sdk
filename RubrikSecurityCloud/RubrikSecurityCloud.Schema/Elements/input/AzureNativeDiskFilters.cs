@@ -29,30 +29,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
-        //      C# -> AzureNativeDiskResourceGroupFilter? ResourceGroupFilter
-        // GraphQL -> resourceGroupFilter: AzureNativeDiskResourceGroupFilter (input)
-        [JsonProperty("resourceGroupFilter")]
-        public AzureNativeDiskResourceGroupFilter? ResourceGroupFilter { get; set; }
-
-        //      C# -> AzureNativeDiskSubscriptionFilter? SubscriptionFilter
-        // GraphQL -> subscriptionFilter: AzureNativeDiskSubscriptionFilter (input)
-        [JsonProperty("subscriptionFilter")]
-        public AzureNativeDiskSubscriptionFilter? SubscriptionFilter { get; set; }
-
         //      C# -> AzureNativeRegionFilter? RegionFilter
         // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
         [JsonProperty("regionFilter")]
         public AzureNativeRegionFilter? RegionFilter { get; set; }
-
-        //      C# -> AzureNativeDiskTypeFilter? DiskTypeFilter
-        // GraphQL -> diskTypeFilter: AzureNativeDiskTypeFilter (input)
-        [JsonProperty("diskTypeFilter")]
-        public AzureNativeDiskTypeFilter? DiskTypeFilter { get; set; }
-
-        //      C# -> AzureNativeAttachedVmFilter? AttachedVmFilter
-        // GraphQL -> attachedVmFilter: AzureNativeAttachedVmFilter (input)
-        [JsonProperty("attachedVmFilter")]
-        public AzureNativeAttachedVmFilter? AttachedVmFilter { get; set; }
 
         //      C# -> RelicFilter? RelicFilter
         // GraphQL -> relicFilter: RelicFilter (input)
@@ -74,11 +54,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tagFilter")]
         public AzureNativeTagFilter? TagFilter { get; set; }
 
-        //      C# -> AzureNativeDiskExocomputeConnectedFilter? ExocomputeConnectedFilter
-        // GraphQL -> exocomputeConnectedFilter: AzureNativeDiskExocomputeConnectedFilter (input)
-        [JsonProperty("exocomputeConnectedFilter")]
-        public AzureNativeDiskExocomputeConnectedFilter? ExocomputeConnectedFilter { get; set; }
-
         //      C# -> AzureNativeDiskFileIndexingFilter? FileIndexingFilter
         // GraphQL -> fileIndexingFilter: AzureNativeDiskFileIndexingFilter (input)
         [JsonProperty("fileIndexingFilter")]
@@ -98,6 +73,31 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isEligibleForProtection: Boolean (scalar)
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
+
+        //      C# -> AzureNativeAttachedVmFilter? AttachedVmFilter
+        // GraphQL -> attachedVmFilter: AzureNativeAttachedVmFilter (input)
+        [JsonProperty("attachedVmFilter")]
+        public AzureNativeAttachedVmFilter? AttachedVmFilter { get; set; }
+
+        //      C# -> AzureNativeDiskResourceGroupFilter? ResourceGroupFilter
+        // GraphQL -> resourceGroupFilter: AzureNativeDiskResourceGroupFilter (input)
+        [JsonProperty("resourceGroupFilter")]
+        public AzureNativeDiskResourceGroupFilter? ResourceGroupFilter { get; set; }
+
+        //      C# -> AzureNativeDiskTypeFilter? DiskTypeFilter
+        // GraphQL -> diskTypeFilter: AzureNativeDiskTypeFilter (input)
+        [JsonProperty("diskTypeFilter")]
+        public AzureNativeDiskTypeFilter? DiskTypeFilter { get; set; }
+
+        //      C# -> AzureNativeDiskExocomputeConnectedFilter? ExocomputeConnectedFilter
+        // GraphQL -> exocomputeConnectedFilter: AzureNativeDiskExocomputeConnectedFilter (input)
+        [JsonProperty("exocomputeConnectedFilter")]
+        public AzureNativeDiskExocomputeConnectedFilter? ExocomputeConnectedFilter { get; set; }
+
+        //      C# -> AzureNativeDiskSubscriptionFilter? SubscriptionFilter
+        // GraphQL -> subscriptionFilter: AzureNativeDiskSubscriptionFilter (input)
+        [JsonProperty("subscriptionFilter")]
+        public AzureNativeDiskSubscriptionFilter? SubscriptionFilter { get; set; }
 
 
         #endregion

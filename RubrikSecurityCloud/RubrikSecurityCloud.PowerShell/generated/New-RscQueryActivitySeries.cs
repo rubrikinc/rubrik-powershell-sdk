@@ -244,6 +244,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	startTimeGt = $someDateTime
     /// 	# OPTIONAL
     /// 	startTimeLt = $someDateTime
+    /// 	# OPTIONAL
+    /// 	objectNamePrefix = $someString
     /// }
     /// 
     /// # Execute the query
@@ -671,6 +673,8 @@ $query.Var.filters = @{
 	startTimeGt = $someDateTime
 	# OPTIONAL
 	startTimeLt = $someDateTime
+	# OPTIONAL
+	objectNamePrefix = $someString
 }"
             );
         }

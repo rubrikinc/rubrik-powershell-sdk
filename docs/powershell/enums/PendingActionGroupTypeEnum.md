@@ -14,3 +14,4 @@ The group type for the pending action.
 - OBJECT_BACKUP_WINDOW - Object Backup Window is used to perform per-object backup-window
 override operations.
 - PERSONAL_ACCESS_TOKEN - Group type for personal access token operations.
+- QAUTH - Group type for QAuth CDM enforcement operations.

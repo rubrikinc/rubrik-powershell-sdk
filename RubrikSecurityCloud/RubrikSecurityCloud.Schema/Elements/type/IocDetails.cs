@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("matchType")]
         public IndicatorOfCompromiseKind? MatchType { get; set; }
 
+        //      C# -> System.Boolean? HasScopedDisable
+        // GraphQL -> hasScopedDisable: Boolean! (scalar)
+        [JsonProperty("hasScopedDisable")]
+        public System.Boolean? HasScopedDisable { get; set; }
+
+        //      C# -> System.String? IntelFeedId
+        // GraphQL -> intelFeedId: String! (scalar)
+        [JsonProperty("intelFeedId")]
+        public System.String? IntelFeedId { get; set; }
+
         //      C# -> System.String? IntelFeedName
         // GraphQL -> intelFeedName: String! (scalar)
         [JsonProperty("intelFeedName")]
@@ -60,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("malwareName")]
         public System.String? MalwareName { get; set; }
 
+        //      C# -> System.String? YaraRuleName
+        // GraphQL -> yaraRuleName: String! (scalar)
+        [JsonProperty("yaraRuleName")]
+        public System.String? YaraRuleName { get; set; }
+
 
         #endregion
 
@@ -73,11 +88,14 @@ namespace RubrikSecurityCloud.Types
         FeedType? FeedType = null,
         FeedEntryStatus? IocStatus = null,
         IndicatorOfCompromiseKind? MatchType = null,
+        System.Boolean? HasScopedDisable = null,
+        System.String? IntelFeedId = null,
         System.String? IntelFeedName = null,
         System.String? IocHashHex = null,
         System.String? IocRuleAuthor = null,
         System.String? MalwareDescription = null,
-        System.String? MalwareName = null
+        System.String? MalwareName = null,
+        System.String? YaraRuleName = null
     ) 
     {
         if ( FeedType != null ) {
@@ -88,6 +106,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MatchType != null ) {
             this.MatchType = MatchType;
+        }
+        if ( HasScopedDisable != null ) {
+            this.HasScopedDisable = HasScopedDisable;
+        }
+        if ( IntelFeedId != null ) {
+            this.IntelFeedId = IntelFeedId;
         }
         if ( IntelFeedName != null ) {
             this.IntelFeedName = IntelFeedName;
@@ -103,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MalwareName != null ) {
             this.MalwareName = MalwareName;
+        }
+        if ( YaraRuleName != null ) {
+            this.YaraRuleName = YaraRuleName;
         }
         return this;
     }
@@ -143,6 +170,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "matchType\n" ;
             } else {
                 s += ind + "matchType\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasScopedDisable
+        // GraphQL -> hasScopedDisable: Boolean! (scalar)
+        if (this.HasScopedDisable != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasScopedDisable\n" ;
+            } else {
+                s += ind + "hasScopedDisable\n" ;
+            }
+        }
+        //      C# -> System.String? IntelFeedId
+        // GraphQL -> intelFeedId: String! (scalar)
+        if (this.IntelFeedId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "intelFeedId\n" ;
+            } else {
+                s += ind + "intelFeedId\n" ;
             }
         }
         //      C# -> System.String? IntelFeedName
@@ -188,6 +233,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "malwareName\n" ;
             } else {
                 s += ind + "malwareName\n" ;
+            }
+        }
+        //      C# -> System.String? YaraRuleName
+        // GraphQL -> yaraRuleName: String! (scalar)
+        if (this.YaraRuleName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "yaraRuleName\n" ;
+            } else {
+                s += ind + "yaraRuleName\n" ;
             }
         }
         return s;
@@ -247,6 +301,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.MatchType != null && ec.Excludes("matchType",true))
         {
             this.MatchType = null;
+        }
+        //      C# -> System.Boolean? HasScopedDisable
+        // GraphQL -> hasScopedDisable: Boolean! (scalar)
+        if (ec.Includes("hasScopedDisable",true))
+        {
+            if(this.HasScopedDisable == null) {
+
+                this.HasScopedDisable = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasScopedDisable != null && ec.Excludes("hasScopedDisable",true))
+        {
+            this.HasScopedDisable = null;
+        }
+        //      C# -> System.String? IntelFeedId
+        // GraphQL -> intelFeedId: String! (scalar)
+        if (ec.Includes("intelFeedId",true))
+        {
+            if(this.IntelFeedId == null) {
+
+                this.IntelFeedId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.IntelFeedId != null && ec.Excludes("intelFeedId",true))
+        {
+            this.IntelFeedId = null;
         }
         //      C# -> System.String? IntelFeedName
         // GraphQL -> intelFeedName: String! (scalar)
@@ -332,6 +420,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MalwareName != null && ec.Excludes("malwareName",true))
         {
             this.MalwareName = null;
+        }
+        //      C# -> System.String? YaraRuleName
+        // GraphQL -> yaraRuleName: String! (scalar)
+        if (ec.Includes("yaraRuleName",true))
+        {
+            if(this.YaraRuleName == null) {
+
+                this.YaraRuleName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.YaraRuleName != null && ec.Excludes("yaraRuleName",true))
+        {
+            this.YaraRuleName = null;
         }
     }
 

@@ -892,6 +892,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			backupRetentionInDays = $someInt
     /// 		}
+    /// 		# OPTIONAL
+    /// 		mariadbConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -928,6 +959,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			isComplianceImmutabilityEnabled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			databaseLogRetentionInfo = @{
+    /// 				# OPTIONAL
+    /// 				databaseLogRetentionConfigs = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						workloadType = $someString
+    /// 						# OPTIONAL
+    /// 						config = @{
+    /// 							# OPTIONAL
+    /// 							logRetentionInMs = $someInt64
+    /// 							# OPTIONAL
+    /// 							isDisabled = $someBoolean
+    /// 						}
+    /// 					}
+    /// 				)
+    /// 			}
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1002,6 +1050,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					targetClusterUuid = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			databaseLogRetentionInfo = @{
+    /// 				# OPTIONAL
+    /// 				databaseLogRetentionConfigs = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						workloadType = $someString
+    /// 						# OPTIONAL
+    /// 						config = @{
+    /// 							# OPTIONAL
+    /// 							logRetentionInMs = $someInt64
+    /// 							# OPTIONAL
+    /// 							isDisabled = $someBoolean
+    /// 						}
+    /// 					}
+    /// 				)
+    /// 			}
     /// 			# OPTIONAL
     /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
     /// 			# OPTIONAL
@@ -1156,6 +1221,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					)
     /// 					# OPTIONAL
     /// 					nfsSettings = @{
+    /// 						# OPTIONAL
+    /// 						isTlsEnabled = $someBoolean
     /// 						# OPTIONAL
     /// 						version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
     /// 					}
@@ -1914,6 +1981,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			backupRetentionInDays = $someInt
     /// 		}
+    /// 		# OPTIONAL
+    /// 		mariadbConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			differentialRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	shouldApplyToExistingSnapshots = @{
@@ -1962,6 +2060,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			isComplianceImmutabilityEnabled = $someBoolean
+    /// 			# OPTIONAL
+    /// 			databaseLogRetentionInfo = @{
+    /// 				# OPTIONAL
+    /// 				databaseLogRetentionConfigs = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						workloadType = $someString
+    /// 						# OPTIONAL
+    /// 						config = @{
+    /// 							# OPTIONAL
+    /// 							logRetentionInMs = $someInt64
+    /// 							# OPTIONAL
+    /// 							isDisabled = $someBoolean
+    /// 						}
+    /// 					}
+    /// 				)
+    /// 			}
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -2036,6 +2151,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					targetClusterUuid = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			databaseLogRetentionInfo = @{
+    /// 				# OPTIONAL
+    /// 				databaseLogRetentionConfigs = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						workloadType = $someString
+    /// 						# OPTIONAL
+    /// 						config = @{
+    /// 							# OPTIONAL
+    /// 							logRetentionInMs = $someInt64
+    /// 							# OPTIONAL
+    /// 							isDisabled = $someBoolean
+    /// 						}
+    /// 					}
+    /// 				)
+    /// 			}
     /// 			# OPTIONAL
     /// 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
     /// 			# OPTIONAL
@@ -3185,6 +3317,37 @@ $query.Var.input = @{
 			# OPTIONAL
 			backupRetentionInDays = $someInt
 		}
+		# OPTIONAL
+		mariadbConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -3221,6 +3384,23 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			isComplianceImmutabilityEnabled = $someBoolean
+			# OPTIONAL
+			databaseLogRetentionInfo = @{
+				# OPTIONAL
+				databaseLogRetentionConfigs = @(
+					@{
+						# OPTIONAL
+						workloadType = $someString
+						# OPTIONAL
+						config = @{
+							# OPTIONAL
+							logRetentionInMs = $someInt64
+							# OPTIONAL
+							isDisabled = $someBoolean
+						}
+					}
+				)
+			}
 		}
 	)
 	# OPTIONAL
@@ -3295,6 +3475,23 @@ $query.Var.input = @{
 					targetClusterUuid = $someString
 				}
 			)
+			# OPTIONAL
+			databaseLogRetentionInfo = @{
+				# OPTIONAL
+				databaseLogRetentionConfigs = @(
+					@{
+						# OPTIONAL
+						workloadType = $someString
+						# OPTIONAL
+						config = @{
+							# OPTIONAL
+							logRetentionInMs = $someInt64
+							# OPTIONAL
+							isDisabled = $someBoolean
+						}
+					}
+				)
+			}
 			# OPTIONAL
 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
 			# OPTIONAL
@@ -3434,6 +3631,8 @@ $query.Var.input = @{
 					)
 					# OPTIONAL
 					nfsSettings = @{
+						# OPTIONAL
+						isTlsEnabled = $someBoolean
 						# OPTIONAL
 						version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
 					}
@@ -4168,6 +4367,37 @@ $query.Var.input = @{
 			# OPTIONAL
 			backupRetentionInDays = $someInt
 		}
+		# OPTIONAL
+		mariadbConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			differentialRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	shouldApplyToExistingSnapshots = @{
@@ -4216,6 +4446,23 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			isComplianceImmutabilityEnabled = $someBoolean
+			# OPTIONAL
+			databaseLogRetentionInfo = @{
+				# OPTIONAL
+				databaseLogRetentionConfigs = @(
+					@{
+						# OPTIONAL
+						workloadType = $someString
+						# OPTIONAL
+						config = @{
+							# OPTIONAL
+							logRetentionInMs = $someInt64
+							# OPTIONAL
+							isDisabled = $someBoolean
+						}
+					}
+				)
+			}
 		}
 	)
 	# OPTIONAL
@@ -4290,6 +4537,23 @@ $query.Var.input = @{
 					targetClusterUuid = $someString
 				}
 			)
+			# OPTIONAL
+			databaseLogRetentionInfo = @{
+				# OPTIONAL
+				databaseLogRetentionConfigs = @(
+					@{
+						# OPTIONAL
+						workloadType = $someString
+						# OPTIONAL
+						config = @{
+							# OPTIONAL
+							logRetentionInMs = $someInt64
+							# OPTIONAL
+							isDisabled = $someBoolean
+						}
+					}
+				)
+			}
 			# OPTIONAL
 			awsRegion = $someAwsNativeRegionForReplication # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsNativeRegionForReplication]) for enum values.
 			# OPTIONAL

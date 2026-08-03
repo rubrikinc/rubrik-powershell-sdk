@@ -138,6 +138,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PERSONAL_ACCESS_TOKEN_SYNC")]
         PERSONAL_ACCESS_TOKEN_SYNC,
 
+        [EnumMember(Value = "QAUTH_POLICY_CDM_DELETE")]
+        QAUTH_POLICY_CDM_DELETE,
+
+        [EnumMember(Value = "QAUTH_POLICY_CDM_PUT")]
+        QAUTH_POLICY_CDM_PUT,
+
         [EnumMember(Value = "QSTAR_LOCATION_PUT")]
         QSTAR_LOCATION_PUT,
 

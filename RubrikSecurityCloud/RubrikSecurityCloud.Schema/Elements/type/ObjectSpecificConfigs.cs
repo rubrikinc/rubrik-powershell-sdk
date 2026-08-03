@@ -75,6 +75,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedVolumeSlaConfig")]
         public ManagedVolumeSlaConfig? ManagedVolumeSlaConfig { get; set; }
 
+        //      C# -> MariadbSlaConfig? MariadbSlaConfig
+        // GraphQL -> mariadbSlaConfig: MariadbSlaConfig (type)
+        [JsonProperty("mariadbSlaConfig")]
+        public MariadbSlaConfig? MariadbSlaConfig { get; set; }
+
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)
         [JsonProperty("mongoConfig")]
@@ -136,6 +141,7 @@ namespace RubrikSecurityCloud.Types
         GcpCloudSqlConfig? GcpCloudSqlConfig = null,
         InformixSlaConfig? InformixSlaConfig = null,
         ManagedVolumeSlaConfig? ManagedVolumeSlaConfig = null,
+        MariadbSlaConfig? MariadbSlaConfig = null,
         MongoConfig? MongoConfig = null,
         MssqlConfig? MssqlConfig = null,
         MysqldbSlaConfig? MysqldbSlaConfig = null,
@@ -178,6 +184,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ManagedVolumeSlaConfig != null ) {
             this.ManagedVolumeSlaConfig = ManagedVolumeSlaConfig;
+        }
+        if ( MariadbSlaConfig != null ) {
+            this.MariadbSlaConfig = MariadbSlaConfig;
         }
         if ( MongoConfig != null ) {
             this.MongoConfig = MongoConfig;
@@ -346,6 +355,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "managedVolumeSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MariadbSlaConfig? MariadbSlaConfig
+        // GraphQL -> mariadbSlaConfig: MariadbSlaConfig (type)
+        if (this.MariadbSlaConfig != null) {
+            var fspec = this.MariadbSlaConfig.AsFieldSpec(conf.Child("mariadbSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mariadbSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -660,6 +681,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManagedVolumeSlaConfig != null && ec.Excludes("managedVolumeSlaConfig",false))
         {
             this.ManagedVolumeSlaConfig = null;
+        }
+        //      C# -> MariadbSlaConfig? MariadbSlaConfig
+        // GraphQL -> mariadbSlaConfig: MariadbSlaConfig (type)
+        if (ec.Includes("mariadbSlaConfig",false))
+        {
+            if(this.MariadbSlaConfig == null) {
+
+                this.MariadbSlaConfig = new MariadbSlaConfig();
+                this.MariadbSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("mariadbSlaConfig"));
+
+            } else {
+
+                this.MariadbSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("mariadbSlaConfig"));
+
+            }
+        }
+        else if (this.MariadbSlaConfig != null && ec.Excludes("mariadbSlaConfig",false))
+        {
+            this.MariadbSlaConfig = null;
         }
         //      C# -> MongoConfig? MongoConfig
         // GraphQL -> mongoConfig: MongoConfig (type)

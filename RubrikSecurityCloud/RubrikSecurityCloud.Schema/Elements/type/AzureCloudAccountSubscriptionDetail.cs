@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int32? AzureLocalClusterCount
+        // GraphQL -> azureLocalClusterCount: Int (scalar)
+        [JsonProperty("azureLocalClusterCount")]
+        public System.Int32? AzureLocalClusterCount { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -55,6 +60,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureCloudAccountSubscriptionDetail Set(
+        System.Int32? AzureLocalClusterCount = null,
         System.String? Id = null,
         System.String? Name = null,
         System.String? NativeId = null,
@@ -62,6 +68,9 @@ namespace RubrikSecurityCloud.Types
         AzureManagementGroup? ManagementGroup = null
     ) 
     {
+        if ( AzureLocalClusterCount != null ) {
+            this.AzureLocalClusterCount = AzureLocalClusterCount;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -91,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int32? AzureLocalClusterCount
+        // GraphQL -> azureLocalClusterCount: Int (scalar)
+        if (this.AzureLocalClusterCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "azureLocalClusterCount\n" ;
+            } else {
+                s += ind + "azureLocalClusterCount\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
@@ -149,6 +167,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Int32? AzureLocalClusterCount
+        // GraphQL -> azureLocalClusterCount: Int (scalar)
+        if (ec.Includes("azureLocalClusterCount",true))
+        {
+            if(this.AzureLocalClusterCount == null) {
+
+                this.AzureLocalClusterCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.AzureLocalClusterCount != null && ec.Excludes("azureLocalClusterCount",true))
+        {
+            this.AzureLocalClusterCount = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (ec.Includes("id",true))

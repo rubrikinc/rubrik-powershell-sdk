@@ -61,3 +61,5 @@ that assigned objects inherit the SLA Domain from the tag.
 - PING_FEDERATE_OBJECT_TYPE - Ping Federate object.
 - POWER_PLATFORM_OBJECT_TYPE - Power Platform SLA object type. Covers the environment plus all
 Power Platform objects (canvas app, model-driven app, flow).
+- S3_TABLES_ICEBERG_TABLE_OBJECT_TYPE - S3 Tables Iceberg Table object.
+- MARIADB_OBJECT_TYPE - MariaDB object.

@@ -48,6 +48,27 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWAITING_FIRST_FULL")]
         AWAITING_FIRST_FULL,
 
+        [EnumMember(Value = "CLOUD_ACCOUNT_NAME")]
+        CLOUD_ACCOUNT_NAME,
+
+        [EnumMember(Value = "CLOUD_ACCOUNT_NATIVE_ID")]
+        CLOUD_ACCOUNT_NATIVE_ID,
+
+        [EnumMember(Value = "CLOUD_COST_ACCOUNT")]
+        CLOUD_COST_ACCOUNT,
+
+        [EnumMember(Value = "CLOUD_COST_ACCOUNT_ID")]
+        CLOUD_COST_ACCOUNT_ID,
+
+        [EnumMember(Value = "CLOUD_COST_PROVIDER")]
+        CLOUD_COST_PROVIDER,
+
+        [EnumMember(Value = "CLOUD_COST_TYPE")]
+        CLOUD_COST_TYPE,
+
+        [EnumMember(Value = "CLOUD_PROVIDER")]
+        CLOUD_PROVIDER,
+
         [EnumMember(Value = "CLUSTER")]
         CLUSTER,
 
@@ -149,6 +170,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "REPLICATION_TARGET")]
         REPLICATION_TARGET,
+
+        [EnumMember(Value = "RESOURCE_GROUP")]
+        RESOURCE_GROUP,
 
         [EnumMember(Value = "RISK_CATEGORY")]
         RISK_CATEGORY,

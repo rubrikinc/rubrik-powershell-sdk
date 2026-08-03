@@ -91,7 +91,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	status = @{
     /// 		# REQUIRED
     /// 		entityType = $someThreatMonitoringEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatMonitoringEnablementEntity]) for enum values.
@@ -99,6 +99,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		entityId = $someString
     /// 		# REQUIRED
     /// 		enabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isYaraProcessingEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		isSmartScanningEnabled = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	rootIds = @(
@@ -108,6 +112,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	isBatchEnabled = $someBoolean
     /// 	# OPTIONAL
     /// 	shouldScanAllFiles = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSmartScanningEnabled = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isYaraProcessingEnabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -194,7 +202,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 Mutation.EnableThreatMonitoringFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# REQUIRED
+	# OPTIONAL
 	status = @{
 		# REQUIRED
 		entityType = $someThreatMonitoringEnablementEntity # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ThreatMonitoringEnablementEntity]) for enum values.
@@ -202,6 +210,10 @@ $query.Var.input = @{
 		entityId = $someString
 		# REQUIRED
 		enabled = $someBoolean
+		# OPTIONAL
+		isYaraProcessingEnabled = $someBoolean
+		# OPTIONAL
+		isSmartScanningEnabled = $someBoolean
 	}
 	# OPTIONAL
 	rootIds = @(
@@ -211,6 +223,10 @@ $query.Var.input = @{
 	isBatchEnabled = $someBoolean
 	# OPTIONAL
 	shouldScanAllFiles = $someBoolean
+	# OPTIONAL
+	isSmartScanningEnabled = $someBoolean
+	# OPTIONAL
+	isYaraProcessingEnabled = $someBoolean
 }"
             );
         }

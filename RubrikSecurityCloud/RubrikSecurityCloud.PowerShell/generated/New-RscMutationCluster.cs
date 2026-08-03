@@ -177,6 +177,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				)
     /// 				# OPTIONAL
     /// 				chassisId = $someString
+    /// 				# OPTIONAL
+    /// 				networkZoneName = $someString
     /// 			}
     /// 		}
     /// 	)
@@ -352,7 +354,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		haClusterConfig = @{
     /// 			# REQUIRED
     /// 			haGroupName = $someString
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			replicas = @(
     /// 				@{
     /// 					# OPTIONAL
@@ -770,7 +772,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		haClusterConfig = @{
     /// 			# REQUIRED
     /// 			haGroupName = $someString
-    /// 			# REQUIRED
+    /// 			# OPTIONAL
     /// 			replicas = @(
     /// 				@{
     /// 					# OPTIONAL
@@ -2375,6 +2377,8 @@ $query.Var.AddClusterNodesInput = @{
 				)
 				# OPTIONAL
 				chassisId = $someString
+				# OPTIONAL
+				networkZoneName = $someString
 			}
 		}
 	)
@@ -2526,7 +2530,7 @@ $query.Var.input = @{
 		haClusterConfig = @{
 			# REQUIRED
 			haGroupName = $someString
-			# REQUIRED
+			# OPTIONAL
 			replicas = @(
 				@{
 					# OPTIONAL
@@ -2872,7 +2876,7 @@ $query.Var.input = @{
 		haClusterConfig = @{
 			# REQUIRED
 			haGroupName = $someString
-			# REQUIRED
+			# OPTIONAL
 			replicas = @(
 				@{
 					# OPTIONAL

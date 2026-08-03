@@ -1,26 +1,6 @@
 ### O365OnedriveFile
+A OneDrive, SharePoint drive, or SharePoint list file.
 
-
-- id: System.String
-  - The ID of the file.
-- parentFolderId: System.String
-  - The ID of the parent folder.
-- name: System.String
-  - The name of the file.
-- size: System.Int64
-  - The size of the file.
-- createTime: DateTime
-  - The time the file was created.
-- modifiedTime: DateTime
-  - The time the file was modified.
-- channelName: System.String
-  - The name of the Teams channel containing this file.
-- channelFolderName: System.String
-  - The folder name of the Teams channel containing this file.
-- channelMembershipType: ChannelMembershipType
-  - The membership type of the channel containing this file for Teams files.
-- path: System.String
-  - The path of the file from the root.
 - snapshotId: System.String
   - The ID of the snapshot containing this file.
 - snapshotNum: System.Int32
@@ -35,3 +15,23 @@
   - Quarantine information for the file.
 - fileType: System.String
   - The file type or extension of the file.
+- id: System.String
+  - The ID of the O365 OneDrive object.
+- parentFolderId: System.String
+  - The parent folder ID of the object (ROOT indicates root folder).
+- name: System.String
+  - The name of the OneDrive object.
+- size: System.Int64
+  - The size of the OneDrive object or its contents in bytes.
+- createTime: DateTime
+  - The creation time of the OneDrive object.
+- modifiedTime: DateTime
+  - The modified time of the OneDrive object.
+- channelName: System.String
+  - The display name of the Teams channel.
+- channelFolderName: System.String
+  - The name of the folder corresponding to the Teams channel.
+- channelMembershipType: ChannelMembershipType
+  - The membership type of the Teams channel.
+- path: System.String
+  - The path of the OneDrive object from the root of the document library.

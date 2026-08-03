@@ -44,6 +44,12 @@ Check if tag rule name is unique or not
     - ruleName - System.String: Name for the rule
     - objectType - CloudNativeTagObjectType: Type of managed object on which tag rule will be applied.
 - Returns IsCloudNativeTagRuleNameUniqueReply.
+### customersettings
+Returns the cloud-native customer settings for the calling account. If no
+settings have been configured, all toggles default to false.
+
+- The customersettings subcommand takes no arguments.
+- Returns CloudNativeCustomerSettings.
 ### customertags
 Retrieves the list of all customer-specified tags and the corresponding value indicating whether resource tags should be overridden by customer-specified tags for a specific cloud type.
 

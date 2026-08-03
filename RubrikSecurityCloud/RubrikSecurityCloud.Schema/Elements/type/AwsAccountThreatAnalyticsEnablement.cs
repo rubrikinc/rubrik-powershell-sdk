@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         [JsonProperty("accountName")]
@@ -39,6 +44,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isHealthy: Boolean! (scalar)
         [JsonProperty("isHealthy")]
         public System.Boolean? IsHealthy { get; set; }
+
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        [JsonProperty("isSmartScanningEnabled")]
+        public System.Boolean? IsSmartScanningEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        [JsonProperty("isYaraProcessingEnabled")]
+        public System.Boolean? IsYaraProcessingEnabled { get; set; }
 
         //      C# -> System.Boolean? ShouldScanAllFiles
         // GraphQL -> shouldScanAllFiles: Boolean! (scalar)
@@ -60,14 +75,20 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AwsAccountThreatAnalyticsEnablement Set(
+        AwsCloudAccountServiceType? ServiceType = null,
         System.String? AccountName = null,
         System.Boolean? DataThreatAnalyticsEnabled = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
+        System.Boolean? IsSmartScanningEnabled = null,
+        System.Boolean? IsYaraProcessingEnabled = null,
         System.Boolean? ShouldScanAllFiles = null,
         System.Boolean? ThreatMonitoringEnabled = null
     ) 
     {
+        if ( ServiceType != null ) {
+            this.ServiceType = ServiceType;
+        }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
         }
@@ -79,6 +100,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
+        }
+        if ( IsSmartScanningEnabled != null ) {
+            this.IsSmartScanningEnabled = IsSmartScanningEnabled;
+        }
+        if ( IsYaraProcessingEnabled != null ) {
+            this.IsYaraProcessingEnabled = IsYaraProcessingEnabled;
         }
         if ( ShouldScanAllFiles != null ) {
             this.ShouldScanAllFiles = ShouldScanAllFiles;
@@ -100,6 +127,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (this.ServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
+            }
+        }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName != null) {
@@ -136,6 +172,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isHealthy\n" ;
             }
         }
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        if (this.IsSmartScanningEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSmartScanningEnabled\n" ;
+            } else {
+                s += ind + "isSmartScanningEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        if (this.IsYaraProcessingEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isYaraProcessingEnabled\n" ;
+            } else {
+                s += ind + "isYaraProcessingEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? ShouldScanAllFiles
         // GraphQL -> shouldScanAllFiles: Boolean! (scalar)
         if (this.ShouldScanAllFiles != null) {
@@ -161,6 +215,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (ec.Includes("serviceType",true))
+        {
+            if(this.ServiceType == null) {
+
+                this.ServiceType = new AwsCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
+        }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (ec.Includes("accountName",true))
@@ -228,6 +299,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHealthy != null && ec.Excludes("isHealthy",true))
         {
             this.IsHealthy = null;
+        }
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        if (ec.Includes("isSmartScanningEnabled",true))
+        {
+            if(this.IsSmartScanningEnabled == null) {
+
+                this.IsSmartScanningEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSmartScanningEnabled != null && ec.Excludes("isSmartScanningEnabled",true))
+        {
+            this.IsSmartScanningEnabled = null;
+        }
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        if (ec.Includes("isYaraProcessingEnabled",true))
+        {
+            if(this.IsYaraProcessingEnabled == null) {
+
+                this.IsYaraProcessingEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsYaraProcessingEnabled != null && ec.Excludes("isYaraProcessingEnabled",true))
+        {
+            this.IsYaraProcessingEnabled = null;
         }
         //      C# -> System.Boolean? ShouldScanAllFiles
         // GraphQL -> shouldScanAllFiles: Boolean! (scalar)

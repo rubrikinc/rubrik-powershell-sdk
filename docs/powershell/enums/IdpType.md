@@ -9,3 +9,4 @@ Identity provider type of principal.
 - SHAREPOINT - SharePoint identity provider type.
 - SYSTEM - System identity provider type.
 - OKTA - Okta identity provider type.
+- PING_FEDERATE - PingFederate identity provider type.

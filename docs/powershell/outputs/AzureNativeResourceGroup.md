@@ -41,6 +41,11 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Whether the resource group is protectable for the specified protection features.
 - azureNativeVirtualMachines: AzureNativeVirtualMachineConnection
   - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -75,7 +80,5 @@ An Azure Native Resource Group. Refers to a collection of resources in which mul
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

@@ -2,5 +2,15 @@
 - vaultName: System.String
   - The name of the Rubrik Cloud Vault.
 - requestedAction: System.String
+- vaultId: System.String
+  - The ID of the Rubrik Cloud Vault.
+- currentTier: System.String
+  - The current tier of the Rubrik Cloud Vault, for tier conversion actions. Empty for actions that don't change the tier.
+- requestedTier: System.String
+  - The requested tier of the Rubrik Cloud Vault, for tier conversion actions. Empty for actions that don't change the tier.
+- currentRedundancy: System.String
+  - The current redundancy of the Rubrik Cloud Vault, for tier / redundancy conversion actions. Empty for actions that don't change it.
+- requestedRedundancy: System.String
+  - The requested redundancy of the Rubrik Cloud Vault, for tier / redundancy conversion actions. Empty for actions that don't change it.
 - templateName: System.String
   - Name of the requested changes template for quorum authorization.

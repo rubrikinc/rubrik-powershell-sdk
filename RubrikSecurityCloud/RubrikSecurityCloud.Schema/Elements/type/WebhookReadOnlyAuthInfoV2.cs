@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
+        //      C# -> WebhookReadOnlyOauth2InfoV2? Oauth2Info
+        // GraphQL -> oauth2Info: WebhookReadOnlyOauth2InfoV2 (type)
+        [JsonProperty("oauth2Info")]
+        public WebhookReadOnlyOauth2InfoV2? Oauth2Info { get; set; }
+
 
         #endregion
 
@@ -41,7 +46,8 @@ namespace RubrikSecurityCloud.Types
 
     public WebhookReadOnlyAuthInfoV2 Set(
         List<System.String>? HeaderKeys = null,
-        System.String? Username = null
+        System.String? Username = null,
+        WebhookReadOnlyOauth2InfoV2? Oauth2Info = null
     ) 
     {
         if ( HeaderKeys != null ) {
@@ -49,6 +55,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Username != null ) {
             this.Username = Username;
+        }
+        if ( Oauth2Info != null ) {
+            this.Oauth2Info = Oauth2Info;
         }
         return this;
     }
@@ -80,6 +89,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "username\n" ;
             } else {
                 s += ind + "username\n" ;
+            }
+        }
+        //      C# -> WebhookReadOnlyOauth2InfoV2? Oauth2Info
+        // GraphQL -> oauth2Info: WebhookReadOnlyOauth2InfoV2 (type)
+        if (this.Oauth2Info != null) {
+            var fspec = this.Oauth2Info.AsFieldSpec(conf.Child("oauth2Info"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "oauth2Info" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -122,6 +143,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Username != null && ec.Excludes("username",true))
         {
             this.Username = null;
+        }
+        //      C# -> WebhookReadOnlyOauth2InfoV2? Oauth2Info
+        // GraphQL -> oauth2Info: WebhookReadOnlyOauth2InfoV2 (type)
+        if (ec.Includes("oauth2Info",false))
+        {
+            if(this.Oauth2Info == null) {
+
+                this.Oauth2Info = new WebhookReadOnlyOauth2InfoV2();
+                this.Oauth2Info.ApplyExploratoryFieldSpec(ec.NewChild("oauth2Info"));
+
+            } else {
+
+                this.Oauth2Info.ApplyExploratoryFieldSpec(ec.NewChild("oauth2Info"));
+
+            }
+        }
+        else if (this.Oauth2Info != null && ec.Excludes("oauth2Info",false))
+        {
+            this.Oauth2Info = null;
         }
     }
 

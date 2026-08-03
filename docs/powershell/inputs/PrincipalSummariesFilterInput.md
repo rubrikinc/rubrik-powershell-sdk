@@ -1,16 +1,23 @@
 ### PrincipalSummariesFilterInput
-Filter to be applied when retrieving principal summaries.
+Filter criteria for the principalSummaries query. Narrows the returned
+principals by attributes such as type, risk level, policy, name, SIDs,
+object IDs, and GPO settings; the specified filters are combined using AND
+logic.
 
 - principalType: PrincipalRiskySummaryPrincipalType
   - Principal type to filter on.
 - riskLevel: list of RiskLevelTypes
   - Filter by risk levels.
+- policyIds: list of System.Strings
+  - Policy ids to filter on.
 - principalName: System.String
   - Principal name to filter on.
 - sids: list of System.Strings
   - Sids to filter on.
 - objectIds: list of System.Strings
   - Object IDs to filter on.
+- principalSummaryCategory: PrincipalSummaryCategoryType
+  - Principal summary category.
 - groupId: System.String
   - Group ID to filter principals by.
 - previousRiskLevel: list of RiskLevelTypes
@@ -52,6 +59,8 @@ principal.
   - Filter by native type.
 - newlyAdded: System.Boolean
   - Filter newly added identities.
+- nativeCreationTime: TimeRangeInput
+  - Filter by native creation time range.
 - entraMfaStrength: list of MfaStrengths
   - Filter by MFA strength for Entra principals.
 - linkedPrincipalId: System.String
@@ -73,9 +82,8 @@ principals whose department exactly matches one of the provided values.
 principal. AND-combines with all other filters in this message.
 An empty value means the filter is inactive. A value that does not
 identify a GPO with at least one editor returns an empty page.
-- policyIds: list of System.Strings
-  - Policy ids to filter on.
-- nativeCreationTime: TimeRangeInput
-  - Filter by native creation time range.
-- principalSummaryCategory: PrincipalSummaryCategoryType
-  - Principal summary category.
+- gpoSettingFilters: list of GpoSettingFilterInputs
+  - Filter by the Group Policy settings a GPO configures. The provided
+filters are combined using OR logic (a GPO matching any entry is
+returned). Only applicable when principalTypes includes GPO. An empty
+value means the filter is inactive.

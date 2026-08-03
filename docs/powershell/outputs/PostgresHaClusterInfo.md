@@ -6,4 +6,4 @@ HA cluster configuration and replica topology for a PostgreSQL database cluster.
 - activeReplicaId: System.String
   - ID of the currently active (primary data source) replica. Null when the active replica cannot be determined.
 - replicas: list of KosmosTopologyReplicaInfos
-  - Topology replicas in this HA cluster. Might be empty prior to first discovery run.
+  - Topology replicas in this HA cluster. Might be empty prior to the first discovery run.

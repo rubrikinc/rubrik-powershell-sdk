@@ -1,7 +1,7 @@
 ### PolarisSnapshotGroupByEnum
+- Day
+- Hour
 - Month
 - Quarter
-- Year
-- Day
 - Week
-- Hour
+- Year

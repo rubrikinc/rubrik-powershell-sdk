@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("tenantDomainName")]
         public System.String? TenantDomainName { get; set; }
 
+        //      C# -> System.Boolean? IsEntraIdInitiatedOnboarding
+        // GraphQL -> isEntraIdInitiatedOnboarding: Boolean (scalar)
+        [JsonProperty("isEntraIdInitiatedOnboarding")]
+        public System.Boolean? IsEntraIdInitiatedOnboarding { get; set; }
+
         //      C# -> AzureCloudType? AzureCloudType
         // GraphQL -> azureCloudType: AzureCloudType (enum)
         [JsonProperty("azureCloudType")]

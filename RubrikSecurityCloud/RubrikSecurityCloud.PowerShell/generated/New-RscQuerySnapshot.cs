@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 35
+    /// Create a new RscQuery object for any of the 36
     /// operations in the 'Snapshot' API domain:
-    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, FusionComputeMisseds, FusionComputeResourceSpec, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SSecurityInfo, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, FusionComputeMisseds, FusionComputeResourceSpec, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, QueryPureStorageProtectionGroup, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SSecurityInfo, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// </summary>
     /// <description>
     /// New-RscQuerySnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 35 operations
+    /// There are 36 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, FusionComputeMisseds, FusionComputeResourceSpec, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SSecurityInfo, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
+    /// one of: BrowseFileList, ByIds, ClosestToPointInTime, CloudDirect, CloudDirectExclusions, CloudDirects, EmailSearch, EventSearch, FilesDelta, FilesDeltaV2, Fileset, FilesetFiles, FusionComputeMisseds, FusionComputeResourceSpec, LegalHoldSnappable, ListDiffFilesFor, NewestForCloudDirectObject, OldestForCloudDirectObject, OnedriveSearch, Polaris, PossibleLocationsForObjects, Pvcs, QuarantinedDetails, QueryPureStorageProtectionGroup, Results, SOfCloudDirectBucket, SOfCloudDirectShare, SSecurityInfo, SnappableList, SnappablesList, SnappablesWithLegalHoldsSummary, Snapshot, TotalCloudDirectObject, UnmanagedObject, VappInstantRecoveryOptions, or VappTemplateExportOptions.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -1017,6 +1017,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -1223,6 +1227,37 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: List&lt;QuarantineSpec&gt;
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the QueryPureStorageProtectionGroup operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: QueryPureStorageProtectionGroup
+    /// 
+    /// $query = New-RscQuerySnapshot -Operation QueryPureStorageProtectionGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: PureStorageProtectionGroupSnapshotSummaryListResponse
     /// 
     /// 
     /// 
@@ -1940,6 +1975,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "PossibleLocationsForObjects",
                 "Pvcs",
                 "QuarantinedDetails",
+                "QueryPureStorageProtectionGroup",
                 "Results",
                 "SOfCloudDirectBucket",
                 "SOfCloudDirectShare",
@@ -2035,6 +2071,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "QuarantinedDetails":
                         this.ProcessRecord_QuarantinedDetails();
+                        break;
+                    case "QueryPureStorageProtectionGroup":
+                        this.ProcessRecord_QueryPureStorageProtectionGroup();
                         break;
                     case "Results":
                         this.ProcessRecord_Results();
@@ -2287,6 +2326,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -QuarantinedDetails";
             // Create new graphql operation allQuarantinedDetailsForSnapshots
             InitQueryAllQuarantinedDetailsForSnapshots();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // queryPureStorageProtectionGroupSnapshot.
+        internal void ProcessRecord_QueryPureStorageProtectionGroup()
+        {
+            this._logger.name += " -QueryPureStorageProtectionGroup";
+            // Create new graphql operation queryPureStorageProtectionGroupSnapshot
+            InitQueryQueryPureStorageProtectionGroupSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3341,6 +3389,8 @@ $query.Var.cloudDirectTargetId = $someString"
         // snapshotOnedriveSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     snapshotFid: UUID!
         //     orgId: UUID!
@@ -3351,6 +3401,8 @@ $query.Var.cloudDirectTargetId = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("snapshotFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
@@ -3360,7 +3412,7 @@ $query.Var.cloudDirectTargetId = $someString"
                 argDefs,
                 "query",
                 "QuerySnapshotOnedriveSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$onedriveSearchFilter: OnedriveSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$onedriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
                 Query.SnapshotOnedriveSearch,
                 Query.SnapshotOnedriveSearchFieldSpec,
@@ -3368,6 +3420,10 @@ $query.Var.cloudDirectTargetId = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
@@ -3538,6 +3594,29 @@ $query.Var.isReplica = $someBoolean"
 $query.Var.snapshotIds = @(
 	$someString
 )"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // queryPureStorageProtectionGroupSnapshot(input: QueryPureStorageProtectionGroupSnapshotInput!): PureStorageProtectionGroupSnapshotSummaryListResponse!
+        internal void InitQueryQueryPureStorageProtectionGroupSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryPureStorageProtectionGroupSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryQueryPureStorageProtectionGroupSnapshot",
+                "($input: QueryPureStorageProtectionGroupSnapshotInput!)",
+                "PureStorageProtectionGroupSnapshotSummaryListResponse",
+                Query.QueryPureStorageProtectionGroupSnapshot,
+                Query.QueryPureStorageProtectionGroupSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+}"
             );
         }
 

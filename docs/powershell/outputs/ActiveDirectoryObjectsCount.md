@@ -19,3 +19,7 @@ Count of different types of Active Directory objects in a snapshot.
   - Count of objects of type managed service accounts.
 - groupManagedServiceAccounts: System.Int64
   - Count of objects of type group managed service accounts.
+- trustedDomains: System.Int64
+  - Count of trusted domains.
+- sites: System.Int64
+  - Count of sites.

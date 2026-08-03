@@ -1,5 +1,5 @@
 ### ViolationCategorySummary
-
+Summary of violations for a single category.
 
 - category: Category
   - Category of the violation.

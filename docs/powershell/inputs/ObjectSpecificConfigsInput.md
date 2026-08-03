@@ -39,3 +39,5 @@ Object-specific configurations.
   - Input to configure the SLA Domain configuration for AWS DynamoDB table.
 - azurePostgresFlexibleServerConfigInput: AzurePostgresFlexibleServerConfigInput
   - Input to configure the SLA Domain for Azure PostgreSQL Flexible Server.
+- mariadbConfigInput: MariadbSlaConfigInput
+  - Input to configure the SLA Domain for MariaDB.

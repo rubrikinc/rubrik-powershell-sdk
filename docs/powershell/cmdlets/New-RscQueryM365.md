@@ -8,9 +8,11 @@ Returns usage of Microsoft backups storage for an account.
 ### backupstorageobjectrestorepoints
 Lists the Microsoft 365 backup storage object restore points.
 
-- There are 3 arguments.
+- There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - m365BackupStorageObjectRestorePointsInput - M365BackupStorageObjectRestorePointsInput: The input to list Microsoft 365 Backup Storage restore points.
 - Returns M365BackupStorageRestorePointConnection.
 ### daytodaymodestats

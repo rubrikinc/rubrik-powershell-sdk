@@ -15,3 +15,4 @@ data hits to prevent them from being exfiltrated.
 - SPLUNK - Represents a Splunk integration.
 - PAN_XSOAR - Represents a Palo Alto Networks XSOAR integration.
 - WORKDAY - Represents a Workday HRIS integration.
+- SAIL_POINT - Represents a SailPoint ISC (IGA) integration.

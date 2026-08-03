@@ -104,3 +104,9 @@ The in compliance count.
 - BACKUP_COUNT - The backup event count measure.
 - REPLICATION_COUNT - The replication event count measure.
 - RECOVERY_COUNT - The recovery event count measure.
+- TOTAL_CLOUD_COST - Total cloud cost across all dimensions.
+- SOURCE_SNAPSHOT_COST - Source snapshot cost (EC2, EBS, RDS backups).
+- ARCHIVAL_STORAGE_COST - Archival storage cost (S3 archival buckets).
+- COMPUTE_COST - Compute cost (exocompute, restore/export instances).
+- TRANSIENT_RESOURCE_COST - Transient resource cost (temporary EBS volumes).
+- REPLICATION_COST - Replication cost (replica buckets, DynamoDB).

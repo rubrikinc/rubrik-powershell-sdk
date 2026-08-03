@@ -54,16 +54,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("forceChangePasswordWithMfa")]
         public System.Boolean? ForceChangePasswordWithMfa { get; set; }
 
-        //      C# -> List<ObjectInfoType>? ObjectsToDelete
-        // GraphQL -> objectsToDelete: [ObjectInfoType!] (input)
-        [JsonProperty("objectsToDelete")]
-        public List<ObjectInfoType>? ObjectsToDelete { get; set; }
-
-        //      C# -> System.String? CleanRecoverySessionId
-        // GraphQL -> cleanRecoverySessionId: UUID (scalar)
-        [JsonProperty("cleanRecoverySessionId")]
-        public System.String? CleanRecoverySessionId { get; set; }
-
         //      C# -> AzureAdRelationshipRestoreModeEnumType? RelationshipRestoreMode
         // GraphQL -> relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType! (enum)
         [Required]
@@ -95,6 +85,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> relationshipConflictResolutionMode: RelationshipConflictResolutionState (enum)
         [JsonProperty("relationshipConflictResolutionMode")]
         public RelationshipConflictResolutionState? RelationshipConflictResolutionMode { get; set; }
+
+        //      C# -> List<ObjectInfoType>? ObjectsToDelete
+        // GraphQL -> objectsToDelete: [ObjectInfoType!] (input)
+        [JsonProperty("objectsToDelete")]
+        public List<ObjectInfoType>? ObjectsToDelete { get; set; }
+
+        //      C# -> System.String? CleanRecoverySessionId
+        // GraphQL -> cleanRecoverySessionId: UUID (scalar)
+        [JsonProperty("cleanRecoverySessionId")]
+        public System.String? CleanRecoverySessionId { get; set; }
 
 
         #endregion

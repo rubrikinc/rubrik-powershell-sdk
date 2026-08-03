@@ -330,6 +330,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INTEL_FEED")]
         INTEL_FEED,
 
+        [EnumMember(Value = "IRISDB_INSTANCE")]
+        IRISDB_INSTANCE,
+
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,
 
@@ -525,6 +528,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 
+        [EnumMember(Value = "POWER_PLATFORM_AI_FLOW")]
+        POWER_PLATFORM_AI_FLOW,
+
         [EnumMember(Value = "POWER_PLATFORM_BUSINESS_PROCESS_FLOW")]
         POWER_PLATFORM_BUSINESS_PROCESS_FLOW,
 
@@ -546,8 +552,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POWER_PLATFORM_DESKTOP_FLOW")]
         POWER_PLATFORM_DESKTOP_FLOW,
 
+        [EnumMember(Value = "POWER_PLATFORM_DIALOG")]
+        POWER_PLATFORM_DIALOG,
+
         [EnumMember(Value = "POWER_PLATFORM_MODEL_DRIVEN_APP")]
         POWER_PLATFORM_MODEL_DRIVEN_APP,
+
+        [EnumMember(Value = "POWER_PLATFORM_ORGANIZATION")]
+        POWER_PLATFORM_ORGANIZATION,
 
         [EnumMember(Value = "PRINCIPAL_ACCESS_POLICY")]
         PRINCIPAL_ACCESS_POLICY,
@@ -761,6 +773,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RubrikEc2Instance")]
         RUBRIK_EC2_INSTANCE,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_CATALOG")]
+        S3_TABLES_ICEBERG_CATALOG,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_NAMESPACE")]
+        S3_TABLES_ICEBERG_NAMESPACE,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG_TABLE")]
+        S3_TABLES_ICEBERG_TABLE,
 
         [EnumMember(Value = "SALESFORCE_METADATA")]
         SALESFORCE_METADATA,

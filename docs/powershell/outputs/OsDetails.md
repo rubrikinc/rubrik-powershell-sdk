@@ -9,3 +9,5 @@ Operating system details of the domain controller at the time of the snapshot.
   - Build number of the operating system.
 - hotFixDetails: list of HotFixDetails
   - List of hotfixes installed on the operating system.
+- ubrOpt: System.String
+  - Update Build Revision (UBR) of the operating system.

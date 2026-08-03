@@ -1,0 +1,5 @@
+### PureStorageProtectionGroupSummarySnapshotConsistencyMandate
+Snapshot consistency mandate for a Pure Storage protection group.
+
+- PURE_STORAGE_PROTECTION_GROUP_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_APP_CONSISTENT - Application-consistent snapshot consistency mandate.
+- PURE_STORAGE_PROTECTION_GROUP_SUMMARY_SNAPSHOT_CONSISTENCY_MANDATE_CRASH_CONSISTENT - Crash-consistent snapshot consistency mandate.

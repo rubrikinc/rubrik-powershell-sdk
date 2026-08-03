@@ -12,5 +12,7 @@ Filter snapshots.
 - textList: list of System.Strings
   - List of search texts for the filter type.
 - time: DateTime
+  - Time should be used only with filters where we want to pass a single
+timestamp. Cases can be BEFORE, AFTER or time equality filters.
 - customizationFilters: list of SnapshotCustomizations
   - Filter snapshot customizations.

@@ -11,6 +11,8 @@ A workload that has a snapshot or children with anomalous activity.
   - The FID of the snapshot which was determined to have anomalous activity.
 - anomalousSnapshotId: System.String
   - The Rubrik cluster ID of the snapshot determined to have anomalous activity.
+- anomalousSnapshotDate: DateTime
+  - The creation date of the snapshot determined to have anomalous activity.
 - createdFileCount: System.Int64
   - The number of files created within the snapshot.
 - deletedFileCount: System.Int64
@@ -46,15 +48,13 @@ to have anomalous activity.
   - The ID of the archival location where anomaly analysis was performed.
 - anomalyAnalysisLocationName: System.String
   - The name of the archival location where anomaly analysis was performed.
-- objectType: HierarchyObjectTypeEnum
-  - The object type of the workload.
-- anomalousSnapshotDate: DateTime
-  - The creation date of the snapshot determined to have anomalous activity.
-- cluster: Cluster
-  - The Rubrik cluster associated with the workload.
 - location: SnappableLocationType
   - The location of the workload.
-- previousPolicyObj: PolicyObj
-  - The Data Discovery results of the snapshot before the occurrence of the anomaly in the workload.
+- objectType: HierarchyObjectTypeEnum
+  - The object type of the workload.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly event.
+- cluster: Cluster
+  - The Rubrik cluster associated with the workload.
+- previousPolicyObj: PolicyObj
+  - The Data Discovery results of the snapshot before the occurrence of the anomaly in the workload.

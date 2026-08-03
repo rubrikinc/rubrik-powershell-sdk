@@ -15,8 +15,19 @@ Azure DevOps Project.
   - ID of the Azure DevOps project.
 - orgId: System.String
   - ID of the Azure DevOps organization associated with the project.
+- tenantId: System.String
+  - Tenant ID of the org this project belongs to (human-readable tenant domain).
+- fixedObjectId: System.String
+  - Managed object UUID of this project's fixed object. Returns null when the project fixed object has not been created yet.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
+- fixedObjectCounts: AzureDevOpsProjectFixedObjectCounts
+  - Developer-collaboration object counts for the project's fixed-object child. Returns null when the project has no fixed-object child.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -49,7 +60,5 @@ Azure DevOps Project.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

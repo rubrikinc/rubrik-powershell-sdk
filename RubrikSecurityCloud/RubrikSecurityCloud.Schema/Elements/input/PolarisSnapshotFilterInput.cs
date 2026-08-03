@@ -19,6 +19,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? ArchivalLocationId
+        // GraphQL -> archivalLocationId: [String!] (scalar)
+        [JsonProperty("archivalLocationId")]
+        public List<System.String>? ArchivalLocationId { get; set; }
+
+        //      C# -> System.Boolean? IsOnDemandSnapshot
+        // GraphQL -> isOnDemandSnapshot: Boolean (scalar)
+        [JsonProperty("isOnDemandSnapshot")]
+        public System.Boolean? IsOnDemandSnapshot { get; set; }
+
         //      C# -> List<System.String>? SnappableId
         // GraphQL -> snappableId: [String!] (scalar)
         [JsonProperty("snappableId")]
@@ -28,16 +38,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> timeRange: TimeRangeInput (input)
         [JsonProperty("timeRange")]
         public TimeRangeInput? TimeRange { get; set; }
-
-        //      C# -> System.Boolean? IsOnDemandSnapshot
-        // GraphQL -> isOnDemandSnapshot: Boolean (scalar)
-        [JsonProperty("isOnDemandSnapshot")]
-        public System.Boolean? IsOnDemandSnapshot { get; set; }
-
-        //      C# -> List<System.String>? ArchivalLocationId
-        // GraphQL -> archivalLocationId: [String!] (scalar)
-        [JsonProperty("archivalLocationId")]
-        public List<System.String>? ArchivalLocationId { get; set; }
 
 
         #endregion

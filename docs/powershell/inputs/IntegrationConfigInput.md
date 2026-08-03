@@ -25,3 +25,5 @@ with IntegrationType will be considered.
   - The Palo Alto Networks XSOAR configuration.
 - workday: WorkdayIntegrationConfigInput
   - The Workday configuration.
+- sailPoint: SailPointIntegrationConfigInput
+  - The SailPoint configuration.

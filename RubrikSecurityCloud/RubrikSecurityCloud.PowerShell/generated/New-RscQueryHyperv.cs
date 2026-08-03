@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 17
+    /// Create a new RscQuery object for any of the 18
     /// operations in the 'Microsoft Hyper-V' API domain:
-    /// Cluster, HostAsyncRequestStatus, HostVirtualSwitches, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachineLevelFileInfo, VirtualMachines, or VmDetail.
+    /// Cluster, HostAsyncRequestStatus, HostVirtualSwitches, HostsVirtualSwitches, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachineLevelFileInfo, VirtualMachines, or VmDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryHyperv creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 17 operations
+    /// There are 18 operations
     /// in the 'Microsoft Hyper-V' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Cluster, HostAsyncRequestStatus, HostVirtualSwitches, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachineLevelFileInfo, VirtualMachines, or VmDetail.
+    /// one of: Cluster, HostAsyncRequestStatus, HostVirtualSwitches, HostsVirtualSwitches, Mounts, Scvmm, ScvmmAsyncRequestStatus, Scvmms, Server, Servers, ServersPaginated, TopLevelDescendants, UniqueServersCount, VirtualMachine, VirtualMachineAsyncRequestStatus, VirtualMachineLevelFileInfo, VirtualMachines, or VmDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -161,6 +161,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: HypervVirtualSwitchesResponse
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the HostsVirtualSwitches operation
+    /// of the 'Microsoft Hyper-V' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Hyperv
+    /// # API Operation: HostsVirtualSwitches
+    /// 
+    /// $query = New-RscQueryHyperv -Operation HostsVirtualSwitches
+    /// 
+    /// # REQUIRED
+    /// $query.Var.hostIds = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HypervHostsVirtualSwitchesReply
     /// 
     /// 
     /// 
@@ -344,6 +374,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -501,6 +542,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -587,6 +639,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -661,6 +724,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -837,6 +911,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -902,6 +987,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "Cluster",
                 "HostAsyncRequestStatus",
                 "HostVirtualSwitches",
+                "HostsVirtualSwitches",
                 "Mounts",
                 "Scvmm",
                 "ScvmmAsyncRequestStatus",
@@ -939,6 +1025,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "HostVirtualSwitches":
                         this.ProcessRecord_HostVirtualSwitches();
+                        break;
+                    case "HostsVirtualSwitches":
+                        this.ProcessRecord_HostsVirtualSwitches();
                         break;
                     case "Mounts":
                         this.ProcessRecord_Mounts();
@@ -1017,6 +1106,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -HostVirtualSwitches";
             // Create new graphql operation hypervHostVirtualSwitches
             InitQueryHypervHostVirtualSwitches();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // hypervHostsVirtualSwitches.
+        internal void ProcessRecord_HostsVirtualSwitches()
+        {
+            this._logger.name += " -HostsVirtualSwitches";
+            // Create new graphql operation hypervHostsVirtualSwitches
+            InitQueryHypervHostsVirtualSwitches();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1215,6 +1313,28 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
+        // hypervHostsVirtualSwitches(hostIds: [UUID!]!): HypervHostsVirtualSwitchesReply!
+        internal void InitQueryHypervHostsVirtualSwitches()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("hostIds", "[UUID!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHypervHostsVirtualSwitches",
+                "($hostIds: [UUID!]!)",
+                "HypervHostsVirtualSwitchesReply",
+                Query.HypervHostsVirtualSwitches,
+                Query.HypervHostsVirtualSwitchesFieldSpec,
+                @"# REQUIRED
+$query.Var.hostIds = @(
+	$someString
+)"
+            );
+        }
+
+        // Create new GraphQL Query:
         // hypervMounts(
         //     first: Int
         //     after: String
@@ -1386,6 +1506,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );
@@ -1529,6 +1660,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );
@@ -1619,6 +1761,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );
@@ -1685,6 +1838,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );
@@ -1839,6 +2003,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );

@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("panXsoar")]
         public PanXsoarIntegrationConfig? PanXsoar { get; set; }
 
+        //      C# -> SailPointIntegrationConfig? SailPoint
+        // GraphQL -> sailPoint: SailPointIntegrationConfig (type)
+        [JsonProperty("sailPoint")]
+        public SailPointIntegrationConfig? SailPoint { get; set; }
+
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)
         [JsonProperty("serviceNowItsm")]
@@ -93,6 +98,7 @@ namespace RubrikSecurityCloud.Types
         OktaIntegrationConfig? Okta = null,
         PamIntegrationConfig? Pam = null,
         PanXsoarIntegrationConfig? PanXsoar = null,
+        SailPointIntegrationConfig? SailPoint = null,
         ServiceNowItsmIntegrationConfig? ServiceNowItsm = null,
         SplunkIntegrationConfig? Splunk = null,
         WorkdayIntegrationConfig? Workday = null
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PanXsoar != null ) {
             this.PanXsoar = PanXsoar;
+        }
+        if ( SailPoint != null ) {
+            this.SailPoint = SailPoint;
         }
         if ( ServiceNowItsm != null ) {
             this.ServiceNowItsm = ServiceNowItsm;
@@ -238,6 +247,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "panXsoar" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> SailPointIntegrationConfig? SailPoint
+        // GraphQL -> sailPoint: SailPointIntegrationConfig (type)
+        if (this.SailPoint != null) {
+            var fspec = this.SailPoint.AsFieldSpec(conf.Child("sailPoint"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "sailPoint" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -435,6 +456,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.PanXsoar != null && ec.Excludes("panXsoar",false))
         {
             this.PanXsoar = null;
+        }
+        //      C# -> SailPointIntegrationConfig? SailPoint
+        // GraphQL -> sailPoint: SailPointIntegrationConfig (type)
+        if (ec.Includes("sailPoint",false))
+        {
+            if(this.SailPoint == null) {
+
+                this.SailPoint = new SailPointIntegrationConfig();
+                this.SailPoint.ApplyExploratoryFieldSpec(ec.NewChild("sailPoint"));
+
+            } else {
+
+                this.SailPoint.ApplyExploratoryFieldSpec(ec.NewChild("sailPoint"));
+
+            }
+        }
+        else if (this.SailPoint != null && ec.Excludes("sailPoint",false))
+        {
+            this.SailPoint = null;
         }
         //      C# -> ServiceNowItsmIntegrationConfig? ServiceNowItsm
         // GraphQL -> serviceNowItsm: ServiceNowItsmIntegrationConfig (type)

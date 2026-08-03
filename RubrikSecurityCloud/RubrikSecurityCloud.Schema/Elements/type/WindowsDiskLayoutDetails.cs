@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("disks")]
         public List<WindowsDiskInfo>? Disks { get; set; }
 
+        //      C# -> List<WindowsPartitionInfo>? Partitions
+        // GraphQL -> partitions: [WindowsPartitionInfo!]! (type)
+        [JsonProperty("partitions")]
+        public List<WindowsPartitionInfo>? Partitions { get; set; }
+
         //      C# -> List<WindowsVolumeInfo>? Volumes
         // GraphQL -> volumes: [WindowsVolumeInfo!]! (type)
         [JsonProperty("volumes")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public WindowsDiskLayoutDetails Set(
         List<WindowsDiskInfo>? Disks = null,
+        List<WindowsPartitionInfo>? Partitions = null,
         List<WindowsVolumeInfo>? Volumes = null
     ) 
     {
         if ( Disks != null ) {
             this.Disks = Disks;
+        }
+        if ( Partitions != null ) {
+            this.Partitions = Partitions;
         }
         if ( Volumes != null ) {
             this.Volumes = Volumes;
@@ -73,6 +82,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "disks" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<WindowsPartitionInfo>? Partitions
+        // GraphQL -> partitions: [WindowsPartitionInfo!]! (type)
+        if (this.Partitions != null) {
+            var fspec = this.Partitions.AsFieldSpec(conf.Child("partitions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "partitions" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -113,6 +134,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Disks != null && ec.Excludes("disks",false))
         {
             this.Disks = null;
+        }
+        //      C# -> List<WindowsPartitionInfo>? Partitions
+        // GraphQL -> partitions: [WindowsPartitionInfo!]! (type)
+        if (ec.Includes("partitions",false))
+        {
+            if(this.Partitions == null) {
+
+                this.Partitions = new List<WindowsPartitionInfo>();
+                this.Partitions.ApplyExploratoryFieldSpec(ec.NewChild("partitions"));
+
+            } else {
+
+                this.Partitions.ApplyExploratoryFieldSpec(ec.NewChild("partitions"));
+
+            }
+        }
+        else if (this.Partitions != null && ec.Excludes("partitions",false))
+        {
+            this.Partitions = null;
         }
         //      C# -> List<WindowsVolumeInfo>? Volumes
         // GraphQL -> volumes: [WindowsVolumeInfo!]! (type)

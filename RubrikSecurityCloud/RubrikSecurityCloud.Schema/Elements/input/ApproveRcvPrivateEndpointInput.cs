@@ -34,11 +34,19 @@ namespace RubrikSecurityCloud.Types
         public System.String? PrivateEndpointId { get; set; }
 
         //      C# -> System.String? RequestMessage
-        // GraphQL -> requestMessage: UUID! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> requestMessage: UUID (scalar)
         [JsonProperty("requestMessage")]
         public System.String? RequestMessage { get; set; }
+
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        [JsonProperty("description")]
+        public System.String? Description { get; set; }
 
 
         #endregion

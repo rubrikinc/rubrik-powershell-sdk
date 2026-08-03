@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 29
+    /// Create a new RscQuery object for any of the 32
     /// operations in the 'Snapshot' API domain:
-    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreatePureStorageProtectionGroup, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, ExportPureStorageProtectionGroup, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RequestPureStorageProtectionGroupForceFull, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// </summary>
     /// <description>
     /// New-RscMutationSnapshot creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 29 operations
+    /// There are 32 operations
     /// in the 'Snapshot' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
+    /// one of: BatchQuarantine, BatchReleaseFromQuarantine, BulkTierExistings, CreateDomainController, CreateDownloadForVolumeGroup, CreateFileset, CreateOnDemandMysqldbInstance, CreatePureStorageProtectionGroup, CreateVapps, DeleteCloudWorkloadSnapshot, DeleteFilesetSnapshots, DeleteUnmanageds, DeletesOfUnmanagedObjects, ExportFusionCompute, ExportProxmoxVm, ExportPureStorageProtectionGroup, FilesetDownloadFiles, FilesetExportFiles, RecoverGlueIcebergTable, RequestPureStorageProtectionGroupForceFull, RestoreDomainController, RestoreFilesFromFusionCompute, RestoreOpenstackVmFiles, RestoreVolumeGroupFiles, StartEc2InstanceExportJob, StartRecoverS3Job, TakeCloudDirect, TakeOnDemand, TakeOnDemandSync, TakeSaasOnDemand, UploadDatabaseToBlobstore, or UploadOnDemand.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -353,6 +353,42 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the CreatePureStorageProtectionGroup operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: CreatePureStorageProtectionGroup
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation CreatePureStorageProtectionGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	config = @{
+    /// 		# OPTIONAL
+    /// 		slaId = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the CreateVapps operation
     /// of the 'Snapshot' API domain.
     /// <code>
@@ -611,6 +647,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		vmId = $someInt
     /// 		# OPTIONAL
+    /// 		powerOn = $someBoolean
+    /// 		# OPTIONAL
     /// 		storageId = $someString
     /// 		# OPTIONAL
     /// 		diskToStorageMap = @(
@@ -629,6 +667,48 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		networkId = $someString
     /// 		# OPTIONAL
     /// 		vmName = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ExportPureStorageProtectionGroup operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: ExportPureStorageProtectionGroup
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation ExportPureStorageProtectionGroup
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		arrayId = $someString
+    /// 		# OPTIONAL
+    /// 		protectionGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		snapshotVolumeIds = @(
+    /// 			$someString
+    /// 		)
     /// 	}
     /// }
     /// 
@@ -822,6 +902,49 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: RecoverGlueIcebergTableSnapshotReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the RequestPureStorageProtectionGroupForceFull operation
+    /// of the 'Snapshot' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snapshot
+    /// # API Operation: RequestPureStorageProtectionGroupForceFull
+    /// 
+    /// $query = New-RscMutationSnapshot -Operation RequestPureStorageProtectionGroupForceFull
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	forceFullRequest = @{
+    /// 		# OPTIONAL
+    /// 		volumeInfos = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				volumeId = $someString
+    /// 				# OPTIONAL
+    /// 				shouldDedupe = $someBoolean
+    /// 			}
+    /// 		)
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: RequestPureStorageProtectionGroupForceFullSnapshotReply
     /// 
     /// 
     /// 
@@ -1165,8 +1288,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	objectFid = $someString
     /// 	# OPTIONAL
@@ -1180,6 +1301,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			pattern = $someString
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1409,6 +1532,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "CreateDownloadForVolumeGroup",
                 "CreateFileset",
                 "CreateOnDemandMysqldbInstance",
+                "CreatePureStorageProtectionGroup",
                 "CreateVapps",
                 "DeleteCloudWorkloadSnapshot",
                 "DeleteFilesetSnapshots",
@@ -1416,9 +1540,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DeletesOfUnmanagedObjects",
                 "ExportFusionCompute",
                 "ExportProxmoxVm",
+                "ExportPureStorageProtectionGroup",
                 "FilesetDownloadFiles",
                 "FilesetExportFiles",
                 "RecoverGlueIcebergTable",
+                "RequestPureStorageProtectionGroupForceFull",
                 "RestoreDomainController",
                 "RestoreFilesFromFusionCompute",
                 "RestoreOpenstackVmFiles",
@@ -1467,6 +1593,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "CreateOnDemandMysqldbInstance":
                         this.ProcessRecord_CreateOnDemandMysqldbInstance();
                         break;
+                    case "CreatePureStorageProtectionGroup":
+                        this.ProcessRecord_CreatePureStorageProtectionGroup();
+                        break;
                     case "CreateVapps":
                         this.ProcessRecord_CreateVapps();
                         break;
@@ -1488,6 +1617,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "ExportProxmoxVm":
                         this.ProcessRecord_ExportProxmoxVm();
                         break;
+                    case "ExportPureStorageProtectionGroup":
+                        this.ProcessRecord_ExportPureStorageProtectionGroup();
+                        break;
                     case "FilesetDownloadFiles":
                         this.ProcessRecord_FilesetDownloadFiles();
                         break;
@@ -1496,6 +1628,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "RecoverGlueIcebergTable":
                         this.ProcessRecord_RecoverGlueIcebergTable();
+                        break;
+                    case "RequestPureStorageProtectionGroupForceFull":
+                        this.ProcessRecord_RequestPureStorageProtectionGroupForceFull();
                         break;
                     case "RestoreDomainController":
                         this.ProcessRecord_RestoreDomainController();
@@ -1607,6 +1742,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // createPureStorageProtectionGroupSnapshot.
+        internal void ProcessRecord_CreatePureStorageProtectionGroup()
+        {
+            this._logger.name += " -CreatePureStorageProtectionGroup";
+            // Create new graphql operation createPureStorageProtectionGroupSnapshot
+            InitMutationCreatePureStorageProtectionGroupSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createVappSnapshots.
         internal void ProcessRecord_CreateVapps()
         {
@@ -1670,6 +1814,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // exportPureStorageProtectionGroupSnapshot.
+        internal void ProcessRecord_ExportPureStorageProtectionGroup()
+        {
+            this._logger.name += " -ExportPureStorageProtectionGroup";
+            // Create new graphql operation exportPureStorageProtectionGroupSnapshot
+            InitMutationExportPureStorageProtectionGroupSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // filesetDownloadSnapshotFiles.
         internal void ProcessRecord_FilesetDownloadFiles()
         {
@@ -1694,6 +1847,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -RecoverGlueIcebergTable";
             // Create new graphql operation recoverGlueIcebergTableSnapshot
             InitMutationRecoverGlueIcebergTableSnapshot();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // requestPureStorageProtectionGroupForceFullSnapshot.
+        internal void ProcessRecord_RequestPureStorageProtectionGroupForceFull()
+        {
+            this._logger.name += " -RequestPureStorageProtectionGroupForceFull";
+            // Create new graphql operation requestPureStorageProtectionGroupForceFullSnapshot
+            InitMutationRequestPureStorageProtectionGroupForceFullSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2026,6 +2188,34 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
+        // createPureStorageProtectionGroupSnapshot(input: CreatePureStorageProtectionGroupSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationCreatePureStorageProtectionGroupSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreatePureStorageProtectionGroupSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationCreatePureStorageProtectionGroupSnapshot",
+                "($input: CreatePureStorageProtectionGroupSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.CreatePureStorageProtectionGroupSnapshot,
+                Mutation.CreatePureStorageProtectionGroupSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	config = @{
+		# OPTIONAL
+		slaId = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
         // createVappSnapshots(input: CreateVappSnapshotsInput!): CreateVappSnapshotsReply!
         internal void InitMutationCreateVappSnapshots()
         {
@@ -2238,6 +2428,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		vmId = $someInt
 		# OPTIONAL
+		powerOn = $someBoolean
+		# OPTIONAL
 		storageId = $someString
 		# OPTIONAL
 		diskToStorageMap = @(
@@ -2256,6 +2448,40 @@ $query.Var.input = @{
 		networkId = $someString
 		# OPTIONAL
 		vmName = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // exportPureStorageProtectionGroupSnapshot(input: ExportPureStorageProtectionGroupSnapshotInput!): AsyncRequestStatus!
+        internal void InitMutationExportPureStorageProtectionGroupSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ExportPureStorageProtectionGroupSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationExportPureStorageProtectionGroupSnapshot",
+                "($input: ExportPureStorageProtectionGroupSnapshotInput!)",
+                "AsyncRequestStatus",
+                Mutation.ExportPureStorageProtectionGroupSnapshot,
+                Mutation.ExportPureStorageProtectionGroupSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		arrayId = $someString
+		# OPTIONAL
+		protectionGroupName = $someString
+		# OPTIONAL
+		snapshotVolumeIds = @(
+			$someString
+		)
 	}
 }"
             );
@@ -2417,6 +2643,41 @@ $query.Var.input = @{
 		tableName = $someString
 		# REQUIRED
 		tableDataLocation = $someString
+	}
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // requestPureStorageProtectionGroupForceFullSnapshot(input: RequestPureStorageProtectionGroupForceFullSnapshotInput!): RequestPureStorageProtectionGroupForceFullSnapshotReply!
+        internal void InitMutationRequestPureStorageProtectionGroupForceFullSnapshot()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RequestPureStorageProtectionGroupForceFullSnapshotInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationRequestPureStorageProtectionGroupForceFullSnapshot",
+                "($input: RequestPureStorageProtectionGroupForceFullSnapshotInput!)",
+                "RequestPureStorageProtectionGroupForceFullSnapshotReply",
+                Mutation.RequestPureStorageProtectionGroupForceFullSnapshot,
+                Mutation.RequestPureStorageProtectionGroupForceFullSnapshotFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	forceFullRequest = @{
+		# OPTIONAL
+		volumeInfos = @(
+			@{
+				# REQUIRED
+				volumeId = $someString
+				# OPTIONAL
+				shouldDedupe = $someBoolean
+			}
+		)
 	}
 }"
             );
@@ -2712,8 +2973,6 @@ $query.Var.input = @{
                 Mutation.TakeCloudDirectSnapshotFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	userNote = $someString
 	# REQUIRED
 	objectFid = $someString
 	# OPTIONAL
@@ -2727,6 +2986,8 @@ $query.Var.input = @{
 			pattern = $someString
 		}
 	)
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }

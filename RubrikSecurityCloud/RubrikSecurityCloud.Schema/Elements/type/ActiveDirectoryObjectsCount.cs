@@ -60,6 +60,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("organizationalUnits")]
         public System.Int64? OrganizationalUnits { get; set; }
 
+        //      C# -> System.Int64? Sites
+        // GraphQL -> sites: Long (scalar)
+        [JsonProperty("sites")]
+        public System.Int64? Sites { get; set; }
+
+        //      C# -> System.Int64? TrustedDomains
+        // GraphQL -> trustedDomains: Long (scalar)
+        [JsonProperty("trustedDomains")]
+        public System.Int64? TrustedDomains { get; set; }
+
         //      C# -> System.Int64? Users
         // GraphQL -> users: Long (scalar)
         [JsonProperty("users")]
@@ -83,6 +93,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? Groups = null,
         System.Int64? ManagedServiceAccounts = null,
         System.Int64? OrganizationalUnits = null,
+        System.Int64? Sites = null,
+        System.Int64? TrustedDomains = null,
         System.Int64? Users = null
     ) 
     {
@@ -109,6 +121,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OrganizationalUnits != null ) {
             this.OrganizationalUnits = OrganizationalUnits;
+        }
+        if ( Sites != null ) {
+            this.Sites = Sites;
+        }
+        if ( TrustedDomains != null ) {
+            this.TrustedDomains = TrustedDomains;
         }
         if ( Users != null ) {
             this.Users = Users;
@@ -197,6 +215,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "organizationalUnits\n" ;
             } else {
                 s += ind + "organizationalUnits\n" ;
+            }
+        }
+        //      C# -> System.Int64? Sites
+        // GraphQL -> sites: Long (scalar)
+        if (this.Sites != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "sites\n" ;
+            } else {
+                s += ind + "sites\n" ;
+            }
+        }
+        //      C# -> System.Int64? TrustedDomains
+        // GraphQL -> trustedDomains: Long (scalar)
+        if (this.TrustedDomains != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "trustedDomains\n" ;
+            } else {
+                s += ind + "trustedDomains\n" ;
             }
         }
         //      C# -> System.Int64? Users
@@ -350,6 +386,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.OrganizationalUnits != null && ec.Excludes("organizationalUnits",true))
         {
             this.OrganizationalUnits = null;
+        }
+        //      C# -> System.Int64? Sites
+        // GraphQL -> sites: Long (scalar)
+        if (ec.Includes("sites",true))
+        {
+            if(this.Sites == null) {
+
+                this.Sites = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Sites != null && ec.Excludes("sites",true))
+        {
+            this.Sites = null;
+        }
+        //      C# -> System.Int64? TrustedDomains
+        // GraphQL -> trustedDomains: Long (scalar)
+        if (ec.Includes("trustedDomains",true))
+        {
+            if(this.TrustedDomains == null) {
+
+                this.TrustedDomains = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TrustedDomains != null && ec.Excludes("trustedDomains",true))
+        {
+            this.TrustedDomains = null;
         }
         //      C# -> System.Int64? Users
         // GraphQL -> users: Long (scalar)

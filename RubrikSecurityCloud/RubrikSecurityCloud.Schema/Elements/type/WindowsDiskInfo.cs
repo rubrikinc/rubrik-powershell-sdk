@@ -20,10 +20,25 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ControllerHardwareIdOpt
+        // GraphQL -> controllerHardwareIdOpt: String (scalar)
+        [JsonProperty("controllerHardwareIdOpt")]
+        public System.String? ControllerHardwareIdOpt { get; set; }
+
+        //      C# -> System.String? ControllerNameOpt
+        // GraphQL -> controllerNameOpt: String (scalar)
+        [JsonProperty("controllerNameOpt")]
+        public System.String? ControllerNameOpt { get; set; }
+
         //      C# -> System.Int32? DiskNumber
         // GraphQL -> diskNumber: Int! (scalar)
         [JsonProperty("diskNumber")]
         public System.Int32? DiskNumber { get; set; }
+
+        //      C# -> System.String? DiskTypeOpt
+        // GraphQL -> diskTypeOpt: String (scalar)
+        [JsonProperty("diskTypeOpt")]
+        public System.String? DiskTypeOpt { get; set; }
 
         //      C# -> System.String? PartitionStyle
         // GraphQL -> partitionStyle: String! (scalar)
@@ -45,13 +60,25 @@ namespace RubrikSecurityCloud.Types
     }
 
     public WindowsDiskInfo Set(
+        System.String? ControllerHardwareIdOpt = null,
+        System.String? ControllerNameOpt = null,
         System.Int32? DiskNumber = null,
+        System.String? DiskTypeOpt = null,
         System.String? PartitionStyle = null,
         System.Int64? Size = null
     ) 
     {
+        if ( ControllerHardwareIdOpt != null ) {
+            this.ControllerHardwareIdOpt = ControllerHardwareIdOpt;
+        }
+        if ( ControllerNameOpt != null ) {
+            this.ControllerNameOpt = ControllerNameOpt;
+        }
         if ( DiskNumber != null ) {
             this.DiskNumber = DiskNumber;
+        }
+        if ( DiskTypeOpt != null ) {
+            this.DiskTypeOpt = DiskTypeOpt;
         }
         if ( PartitionStyle != null ) {
             this.PartitionStyle = PartitionStyle;
@@ -73,6 +100,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ControllerHardwareIdOpt
+        // GraphQL -> controllerHardwareIdOpt: String (scalar)
+        if (this.ControllerHardwareIdOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "controllerHardwareIdOpt\n" ;
+            } else {
+                s += ind + "controllerHardwareIdOpt\n" ;
+            }
+        }
+        //      C# -> System.String? ControllerNameOpt
+        // GraphQL -> controllerNameOpt: String (scalar)
+        if (this.ControllerNameOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "controllerNameOpt\n" ;
+            } else {
+                s += ind + "controllerNameOpt\n" ;
+            }
+        }
         //      C# -> System.Int32? DiskNumber
         // GraphQL -> diskNumber: Int! (scalar)
         if (this.DiskNumber != null) {
@@ -80,6 +125,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "diskNumber\n" ;
             } else {
                 s += ind + "diskNumber\n" ;
+            }
+        }
+        //      C# -> System.String? DiskTypeOpt
+        // GraphQL -> diskTypeOpt: String (scalar)
+        if (this.DiskTypeOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "diskTypeOpt\n" ;
+            } else {
+                s += ind + "diskTypeOpt\n" ;
             }
         }
         //      C# -> System.String? PartitionStyle
@@ -107,6 +161,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? ControllerHardwareIdOpt
+        // GraphQL -> controllerHardwareIdOpt: String (scalar)
+        if (ec.Includes("controllerHardwareIdOpt",true))
+        {
+            if(this.ControllerHardwareIdOpt == null) {
+
+                this.ControllerHardwareIdOpt = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ControllerHardwareIdOpt != null && ec.Excludes("controllerHardwareIdOpt",true))
+        {
+            this.ControllerHardwareIdOpt = null;
+        }
+        //      C# -> System.String? ControllerNameOpt
+        // GraphQL -> controllerNameOpt: String (scalar)
+        if (ec.Includes("controllerNameOpt",true))
+        {
+            if(this.ControllerNameOpt == null) {
+
+                this.ControllerNameOpt = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ControllerNameOpt != null && ec.Excludes("controllerNameOpt",true))
+        {
+            this.ControllerNameOpt = null;
+        }
         //      C# -> System.Int32? DiskNumber
         // GraphQL -> diskNumber: Int! (scalar)
         if (ec.Includes("diskNumber",true))
@@ -123,6 +211,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DiskNumber != null && ec.Excludes("diskNumber",true))
         {
             this.DiskNumber = null;
+        }
+        //      C# -> System.String? DiskTypeOpt
+        // GraphQL -> diskTypeOpt: String (scalar)
+        if (ec.Includes("diskTypeOpt",true))
+        {
+            if(this.DiskTypeOpt == null) {
+
+                this.DiskTypeOpt = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskTypeOpt != null && ec.Excludes("diskTypeOpt",true))
+        {
+            this.DiskTypeOpt = null;
         }
         //      C# -> System.String? PartitionStyle
         // GraphQL -> partitionStyle: String! (scalar)

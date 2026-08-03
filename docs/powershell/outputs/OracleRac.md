@@ -21,6 +21,8 @@
   - Name of the RAC node designated as the primary backup node. Empty string when multi-node backup is not configured.
 - secondaryNodes: list of System.Strings
   - Ordered list of secondary RAC node names. Array position defines fallback priority when the primary node is unavailable (position 0 = first fallback). Empty when multi-node backup is not configured.
+- excludedDbUniqueNames: list of System.Strings
+  - The db_unique_names of the Oracle databases on this RAC that are excluded from discovery. An empty list means no databases are excluded.
 - nodeOrder: list of CdmOracleRacNodeOrders
   - The list of node order priority objects of the Oracle RAC.
 - descendantConnection: OracleRacDescendantTypeConnection
@@ -33,6 +35,35 @@
   - Effective log retention for the Oracle RAC.
 - effectiveHostLogRetention: Duration
   - Effective host log retention for the Oracle RAC. If the host log retention is indefinite, -1 is used.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because
+there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being
+communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by
+replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this
+object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this
+object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -67,25 +98,5 @@
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

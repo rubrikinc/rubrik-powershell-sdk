@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalTieringSpec")]
         public ArchivalTieringSpec? ArchivalTieringSpec { get; set; }
 
+        //      C# -> DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfoType (type)
+        [JsonProperty("databaseLogRetentionInfo")]
+        public DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo { get; set; }
+
         //      C# -> TargetMapping? StorageSetting
         // GraphQL -> storageSetting: TargetMapping (type)
         [JsonProperty("storageSetting")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? Threshold = null,
         List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping = null,
         ArchivalTieringSpec? ArchivalTieringSpec = null,
+        DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo = null,
         TargetMapping? StorageSetting = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivalTieringSpec != null ) {
             this.ArchivalTieringSpec = ArchivalTieringSpec;
+        }
+        if ( DatabaseLogRetentionInfo != null ) {
+            this.DatabaseLogRetentionInfo = DatabaseLogRetentionInfo;
         }
         if ( StorageSetting != null ) {
             this.StorageSetting = StorageSetting;
@@ -166,6 +175,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "archivalTieringSpec" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfoType (type)
+        if (this.DatabaseLogRetentionInfo != null) {
+            var fspec = this.DatabaseLogRetentionInfo.AsFieldSpec(conf.Child("databaseLogRetentionInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "databaseLogRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -293,6 +314,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalTieringSpec != null && ec.Excludes("archivalTieringSpec",false))
         {
             this.ArchivalTieringSpec = null;
+        }
+        //      C# -> DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfoType (type)
+        if (ec.Includes("databaseLogRetentionInfo",false))
+        {
+            if(this.DatabaseLogRetentionInfo == null) {
+
+                this.DatabaseLogRetentionInfo = new DatabaseLogRetentionInfoType();
+                this.DatabaseLogRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("databaseLogRetentionInfo"));
+
+            } else {
+
+                this.DatabaseLogRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("databaseLogRetentionInfo"));
+
+            }
+        }
+        else if (this.DatabaseLogRetentionInfo != null && ec.Excludes("databaseLogRetentionInfo",false))
+        {
+            this.DatabaseLogRetentionInfo = null;
         }
         //      C# -> TargetMapping? StorageSetting
         // GraphQL -> storageSetting: TargetMapping (type)

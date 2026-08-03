@@ -55,6 +55,9 @@ When true, applies Zero RPO redo logs after RMAN recovery to achieve maximum dat
 - targetRacHostIds: list of System.Strings
   - Supported in v9.0+
 List of RAC host simple IDs to recover the database during the clone.
+- shouldRestoreWithExactTime: System.Boolean
+  - Supported in v9.5+
+Clone (RMAN DUPLICATE) only. When false, the UNTIL TIME clause is omitted and RMAN recovers to the end of available archive logs. When the field is omitted, server-side behavior treats it as true (UNTIL TIME is included) for backward compatibility.
 - targetRacPrimaryHostId: System.String
   - Supported in v9.0+
 Specifies the host simple ID for the primary RAC node, which will be used for recovery. The provided host simple ID must be among the list of host simple IDs specified in `targetRacHostIds`.

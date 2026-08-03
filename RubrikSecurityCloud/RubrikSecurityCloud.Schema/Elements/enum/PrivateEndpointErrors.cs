@@ -34,7 +34,10 @@ namespace RubrikSecurityCloud.Types
         NO_ERR,
 
         [EnumMember(Value = "NO_PENDING_PE")]
-        NO_PENDING_PE
+        NO_PENDING_PE,
+
+        [EnumMember(Value = "PE_LOCATION_NOT_PAUSED")]
+        PE_LOCATION_NOT_PAUSED
 
 
     } // enum PrivateEndpointErrors

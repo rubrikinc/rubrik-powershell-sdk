@@ -19,6 +19,16 @@ Specific information for Rubrik Cloud Vault (RCV) AWS target created on Rubrik.
   - Specifies whether the proxy settings is bypassed for the RCV AWS archival target.
 - rcvConversion: list of RcvConversionTypes
   - List of conversions for this RCV location.
+- privateConnectivity: RcvAwsPrivateConnectivityEndpoints
+  - VPC interface endpoints configured for private connectivity.
+- allowList: ClusterIpMapping
+  - Customer IP allowlist for this location.
+- proxySettings: ProxySettings
+  - Proxy configuration used by the Rubrik cluster to reach this Rubrik
+Cloud Vault AWS location.
+- shouldBypassProxyForDatapaths: System.Boolean
+  - When enabled, S3 object (data path) traffic bypasses the configured
+proxy, while STS assume-role and KMS traffic continues to use it.
 - targetType: TargetType
   - The type of the target.
 - id: System.String

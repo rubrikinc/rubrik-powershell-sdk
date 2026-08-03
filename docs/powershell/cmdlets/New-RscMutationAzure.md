@@ -143,7 +143,8 @@ Completes an OAuth consent flow for Azure resource access.
 - There is a single argument of type AzureOauthConsentCompleteInput.
 - Returns RequestStatus.
 ### oauthconsentkickoff
-Kicks off an OAuth consent flow for Azure resource access.
+AzureOAuthConsentKickoff starts the first-leg of an Azure OAuth
+authorization code flow.
 
 - The oauthconsentkickoff subcommand takes no arguments.
 - Returns AzureOauthConsentKickoffReply.

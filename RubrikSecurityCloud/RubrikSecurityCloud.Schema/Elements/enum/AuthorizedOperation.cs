@@ -270,6 +270,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INSTANT_RECOVER")]
         INSTANT_RECOVER,
 
+        [EnumMember(Value = "ISSUE_ARCHIVAL_MIGRATION_DATA_MOVER_CREDENTIALS")]
+        ISSUE_ARCHIVAL_MIGRATION_DATA_MOVER_CREDENTIALS,
+
         [EnumMember(Value = "MANAGE_ACCESS")]
         MANAGE_ACCESS,
 

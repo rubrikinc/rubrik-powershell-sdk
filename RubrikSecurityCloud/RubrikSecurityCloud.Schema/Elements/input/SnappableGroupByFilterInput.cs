@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsServiceType")]
         public List<AwsServiceType>? AwsServiceType { get; set; }
 
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean (scalar)
+        [JsonProperty("isInfrastructureAlertsEnabled")]
+        public System.Boolean? IsInfrastructureAlertsEnabled { get; set; }
+
 
         #endregion
 

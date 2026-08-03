@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("databaseType")]
         public System.String? DatabaseType { get; set; }
 
+        //      C# -> System.Boolean? IsCompressionEnabled
+        // GraphQL -> isCompressionEnabled: Boolean! (scalar)
+        [JsonProperty("isCompressionEnabled")]
+        public System.Boolean? IsCompressionEnabled { get; set; }
+
         //      C# -> System.Int32? LogBackupIntervalSecs
         // GraphQL -> logBackupIntervalSecs: Int! (scalar)
         [JsonProperty("logBackupIntervalSecs")]
@@ -78,6 +83,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? ApproxDbSizeInMb = null,
         System.String? BackintPath = null,
         System.String? DatabaseType = null,
+        System.Boolean? IsCompressionEnabled = null,
         System.Int32? LogBackupIntervalSecs = null,
         System.String? LogMode = null,
         System.Int32? NumChannels = null,
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DatabaseType != null ) {
             this.DatabaseType = DatabaseType;
+        }
+        if ( IsCompressionEnabled != null ) {
+            this.IsCompressionEnabled = IsCompressionEnabled;
         }
         if ( LogBackupIntervalSecs != null ) {
             this.LogBackupIntervalSecs = LogBackupIntervalSecs;
@@ -152,6 +161,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "databaseType\n" ;
             } else {
                 s += ind + "databaseType\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsCompressionEnabled
+        // GraphQL -> isCompressionEnabled: Boolean! (scalar)
+        if (this.IsCompressionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCompressionEnabled\n" ;
+            } else {
+                s += ind + "isCompressionEnabled\n" ;
             }
         }
         //      C# -> System.Int32? LogBackupIntervalSecs
@@ -265,6 +283,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DatabaseType != null && ec.Excludes("databaseType",true))
         {
             this.DatabaseType = null;
+        }
+        //      C# -> System.Boolean? IsCompressionEnabled
+        // GraphQL -> isCompressionEnabled: Boolean! (scalar)
+        if (ec.Includes("isCompressionEnabled",true))
+        {
+            if(this.IsCompressionEnabled == null) {
+
+                this.IsCompressionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCompressionEnabled != null && ec.Excludes("isCompressionEnabled",true))
+        {
+            this.IsCompressionEnabled = null;
         }
         //      C# -> System.Int32? LogBackupIntervalSecs
         // GraphQL -> logBackupIntervalSecs: Int! (scalar)

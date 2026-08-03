@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CUSTOM_HEADER")]
         CUSTOM_HEADER,
 
+        [EnumMember(Value = "OAUTH2")]
+        OAUT_H2,
+
         [EnumMember(Value = "URL")]
         URL
 

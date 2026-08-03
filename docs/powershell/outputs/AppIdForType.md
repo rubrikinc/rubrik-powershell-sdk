@@ -1,5 +1,5 @@
 ### AppIdForType
-
+Azure Application ID paired with its application type.
 
 - appId: System.String
   - The app ID.

@@ -22,7 +22,7 @@ Represents the analyzer.
 - ruleTypes: list of AnalyzerRuleTypes
   - Represents the types of data you need to analyze using this analyzer.
 - keyRegex: System.String
-  - Regex to filter fields which need to be analyzed for structured data.
+  - Regex to filter fields that need to be analyzed for structured data.
 - structuredValueRegex: System.String
   - Regex to analyze the structured data.
 - structuredDictionaryCsv: System.String
@@ -43,3 +43,7 @@ Represents the analyzer.
   - Regex pattern to exclude fields by name.
 - excludePathPattern: System.String
   - Regex pattern to exclude files by path.
+- excludeValueRegex: System.String
+  - A matched value is excluded when it matches this regex. Users express
+alternation themselves with `|` (e.g. `^000-|^999-`). An empty value
+clears any existing pattern.

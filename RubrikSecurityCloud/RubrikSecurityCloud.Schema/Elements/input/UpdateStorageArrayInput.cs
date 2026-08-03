@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> StorageArrayDefinitionInput? Definition
+        // GraphQL -> definition: StorageArrayDefinitionInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("definition")]
+        public StorageArrayDefinitionInput? Definition { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
@@ -32,13 +39,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
-
-        //      C# -> StorageArrayDefinitionInput? Definition
-        // GraphQL -> definition: StorageArrayDefinitionInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("definition")]
-        public StorageArrayDefinitionInput? Definition { get; set; }
 
 
         #endregion

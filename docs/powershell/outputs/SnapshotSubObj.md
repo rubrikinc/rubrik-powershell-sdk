@@ -11,3 +11,5 @@ DataType representing the sub objects captured in a snapshot.
   - A virtual disk captured in a Nutanix virtual machine snapshot.
 - olvmVmSubObj: OlvmVmSubObject
   - A virtual disk captured in an OLVM virtual machine snapshot.
+- pureStorageProtectionGroupSubObj: PureStorageProtectionGroupSubObject
+  - A volume captured in a Pure Storage protection group snapshot.

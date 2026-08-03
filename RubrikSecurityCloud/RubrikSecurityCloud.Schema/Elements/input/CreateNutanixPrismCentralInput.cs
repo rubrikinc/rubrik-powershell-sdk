@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isDrEnabled")]
         public System.Boolean? IsDrEnabled { get; set; }
 
+        //      C# -> System.Boolean? ShouldUseV4
+        // GraphQL -> shouldUseV4: Boolean (scalar)
+        [JsonProperty("shouldUseV4")]
+        public System.Boolean? ShouldUseV4 { get; set; }
+
 
         #endregion
 

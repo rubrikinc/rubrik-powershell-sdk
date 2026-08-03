@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        [JsonProperty("excludedDbUniqueNames")]
+        public List<System.String>? ExcludedDbUniqueNames { get; set; }
+
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
         [JsonProperty("hostLogRetentionHours")]
@@ -186,6 +191,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
 
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
         [JsonProperty("objectPauseStatus")]
@@ -284,6 +294,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        List<System.String>? ExcludedDbUniqueNames = null,
         System.Int32? HostLogRetentionHours = null,
         System.String? Id = null,
         System.Boolean? IsReplica = null,
@@ -308,6 +319,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         OracleHostLogicalChildTypeConnection? LogicalChildConnection = null,
         List<PathNode>? LogicalPath = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -342,6 +354,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( ExcludedDbUniqueNames != null ) {
+            this.ExcludedDbUniqueNames = ExcludedDbUniqueNames;
         }
         if ( HostLogRetentionHours != null ) {
             this.HostLogRetentionHours = HostLogRetentionHours;
@@ -414,6 +429,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -546,6 +564,15 @@ namespace RubrikSecurityCloud.Types
                 } else {
                     s += ind + "replicatedObjects" + " " + "{\n" + fspec + ind + "}\n";
                 }
+            }
+        }
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        if (this.ExcludedDbUniqueNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludedDbUniqueNames\n" ;
+            } else {
+                s += ind + "excludedDbUniqueNames\n" ;
             }
         }
         //      C# -> System.Int32? HostLogRetentionHours
@@ -803,6 +830,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1067,6 +1106,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ReplicatedObjects != null && ec.Excludes("replicatedObjects",false))
         {
             this.ReplicatedObjects = null;
+        }
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        if (ec.Includes("excludedDbUniqueNames",true))
+        {
+            if(this.ExcludedDbUniqueNames == null) {
+
+                this.ExcludedDbUniqueNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludedDbUniqueNames != null && ec.Excludes("excludedDbUniqueNames",true))
+        {
+            this.ExcludedDbUniqueNames = null;
         }
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
@@ -1503,6 +1559,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

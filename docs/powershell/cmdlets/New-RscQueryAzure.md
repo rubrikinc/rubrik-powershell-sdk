@@ -18,12 +18,14 @@ Details of the Azure AD corresponding to the workload ID.
 ### adobjectsbytype
 Details of the Azure AD objects corresponding to the type.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
     - sortByOption - list of AzureAdObjectSearchTypes: Ordered list sorted by column names.
     - sortOrder - SortOrder: Sorts the order of results.
-    - input - AzureAdObjectTypeInput: Input for the azureAdObjectsByType API.
 - Returns AzureAdObjectConnection.
 ### armtemplatesbyfeature
 Retrieve ARM templates for role definition and role assignment.
@@ -372,9 +374,11 @@ Retrieves a list og all resource groups in the specified account.
 ### searchadsnapshot
 Search for azureAdObjects in a snapshot.
 
-- There are 3 arguments.
+- There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - input - SearchAzureAdSnapshotInput: Input for searching for Azure AD objects in a snapshot.
 - Returns AzureAdObjectConnection.
 ### sqldatabase

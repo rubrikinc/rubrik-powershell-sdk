@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterJobStatus")]
         public ClusterJobStatusTypeEnum? ClusterJobStatus { get; set; }
 
+        //      C# -> ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState
+        // GraphQL -> clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState (enum)
+        [JsonProperty("clusterUnsupportedWorkloadState")]
+        public ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState { get; set; }
+
         //      C# -> VersionStatus? VersionStatus
         // GraphQL -> versionStatus: VersionStatus (enum)
         [JsonProperty("versionStatus")]
@@ -145,6 +150,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lastUpgradeDuration")]
         public UpgradeDurationReply? LastUpgradeDuration { get; set; }
 
+        //      C# -> List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads
+        // GraphQL -> unsupportedWorkloads: [UnsupportedWorkloadTypeInfo!] (type)
+        [JsonProperty("unsupportedWorkloads")]
+        public List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads { get; set; }
+
         //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
         // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
         [JsonProperty("upgradeRecommendationInfo")]
@@ -166,6 +176,7 @@ namespace RubrikSecurityCloud.Types
 
     public CdmUpgradeInfo Set(
         ClusterJobStatusTypeEnum? ClusterJobStatus = null,
+        ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState = null,
         VersionStatus? VersionStatus = null,
         System.String? ClusterUuid = null,
         System.Single? CurrentStateProgress = null,
@@ -190,12 +201,16 @@ namespace RubrikSecurityCloud.Types
         List<CdmNodeDetail>? CdmClusterNodeDetails = null,
         CdmClusterStatus? ClusterStatus = null,
         UpgradeDurationReply? LastUpgradeDuration = null,
+        List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads = null,
         UpgradeRecommendationInfo? UpgradeRecommendationInfo = null,
         UpgradeStatusV2? UpgradeStatusV2 = null
     ) 
     {
         if ( ClusterJobStatus != null ) {
             this.ClusterJobStatus = ClusterJobStatus;
+        }
+        if ( ClusterUnsupportedWorkloadState != null ) {
+            this.ClusterUnsupportedWorkloadState = ClusterUnsupportedWorkloadState;
         }
         if ( VersionStatus != null ) {
             this.VersionStatus = VersionStatus;
@@ -269,6 +284,9 @@ namespace RubrikSecurityCloud.Types
         if ( LastUpgradeDuration != null ) {
             this.LastUpgradeDuration = LastUpgradeDuration;
         }
+        if ( UnsupportedWorkloads != null ) {
+            this.UnsupportedWorkloads = UnsupportedWorkloads;
+        }
         if ( UpgradeRecommendationInfo != null ) {
             this.UpgradeRecommendationInfo = UpgradeRecommendationInfo;
         }
@@ -296,6 +314,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "clusterJobStatus\n" ;
             } else {
                 s += ind + "clusterJobStatus\n" ;
+            }
+        }
+        //      C# -> ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState
+        // GraphQL -> clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState (enum)
+        if (this.ClusterUnsupportedWorkloadState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "clusterUnsupportedWorkloadState\n" ;
+            } else {
+                s += ind + "clusterUnsupportedWorkloadState\n" ;
             }
         }
         //      C# -> VersionStatus? VersionStatus
@@ -526,6 +553,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads
+        // GraphQL -> unsupportedWorkloads: [UnsupportedWorkloadTypeInfo!] (type)
+        if (this.UnsupportedWorkloads != null) {
+            var fspec = this.UnsupportedWorkloads.AsFieldSpec(conf.Child("unsupportedWorkloads"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "unsupportedWorkloads" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
         // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
         if (this.UpgradeRecommendationInfo != null) {
@@ -573,6 +612,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ClusterJobStatus != null && ec.Excludes("clusterJobStatus",true))
         {
             this.ClusterJobStatus = null;
+        }
+        //      C# -> ClusterUnsupportedWorkloadState? ClusterUnsupportedWorkloadState
+        // GraphQL -> clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState (enum)
+        if (ec.Includes("clusterUnsupportedWorkloadState",true))
+        {
+            if(this.ClusterUnsupportedWorkloadState == null) {
+
+                this.ClusterUnsupportedWorkloadState = new ClusterUnsupportedWorkloadState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClusterUnsupportedWorkloadState != null && ec.Excludes("clusterUnsupportedWorkloadState",true))
+        {
+            this.ClusterUnsupportedWorkloadState = null;
         }
         //      C# -> VersionStatus? VersionStatus
         // GraphQL -> versionStatus: VersionStatus (enum)
@@ -989,6 +1045,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LastUpgradeDuration != null && ec.Excludes("lastUpgradeDuration",false))
         {
             this.LastUpgradeDuration = null;
+        }
+        //      C# -> List<UnsupportedWorkloadTypeInfo>? UnsupportedWorkloads
+        // GraphQL -> unsupportedWorkloads: [UnsupportedWorkloadTypeInfo!] (type)
+        if (ec.Includes("unsupportedWorkloads",false))
+        {
+            if(this.UnsupportedWorkloads == null) {
+
+                this.UnsupportedWorkloads = new List<UnsupportedWorkloadTypeInfo>();
+                this.UnsupportedWorkloads.ApplyExploratoryFieldSpec(ec.NewChild("unsupportedWorkloads"));
+
+            } else {
+
+                this.UnsupportedWorkloads.ApplyExploratoryFieldSpec(ec.NewChild("unsupportedWorkloads"));
+
+            }
+        }
+        else if (this.UnsupportedWorkloads != null && ec.Excludes("unsupportedWorkloads",false))
+        {
+            this.UnsupportedWorkloads = null;
         }
         //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
         // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)

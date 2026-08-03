@@ -15,6 +15,39 @@ Hyper-V virtual machine details.
   - Stats for Hyper-V virtual machine (e.g., capacity).
 - hypervVmMountCount: System.Int32
   - Hyper-V virtual machine Live Count Connection.
+- subtype: HypervVmSubtype
+  - Subtype of the Hyper-V virtual machine (Hyper-V vs Azure Local). Drives the virtual machine type filter on the Hyper-V inventory page.
+- linkedNativeTags: list of LinkedNativeTags
+  - Raw native tags from the source system (e.g. SCVMM) attached to this virtual machine. Distinct from `allTags`, which exposes system tag (RSC tag) membership.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because
+there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being
+communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by
+replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this
+object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this
+object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -49,28 +82,8 @@ Hyper-V virtual machine details.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- cluster: Cluster
-  - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its source (primary) cluster. False if the object resides on its source cluster. Null when the source cluster is unknown.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
-- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
-  - Mapping from object ID to pending object deletion status.
-- replicatedObjects: list of CdmHierarchyObjects
-  - Objects either replicated by this object or related to this object by replication.
-- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
-  - Cross-account objects either replicated by this object or related to this object by replication.
-- latestUserNote: LatestUserNote
-  - Latest user note information.
-- replicatedObjectCount: System.Int32
-  - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - cdmLink: System.String
   - A link to view the workload on the CDM cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection

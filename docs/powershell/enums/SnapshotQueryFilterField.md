@@ -3,8 +3,10 @@ Filters to query snapshots.
 
 - SLA_ID - There is no concept of SLA ID on a snapshot. Hence, this
 filter field is deprecated and would be removed subsequently.
-- IS_ON_DEMAND
-- IS_DOWNLOADED
+- IS_ON_DEMAND - When true, returns on-demand snapshots (manually triggered by a user).
+When false, returns scheduled snapshots taken per the SLA Domain.
+- IS_DOWNLOADED - When true, returns snapshots downloaded to the cluster from an archival
+or replication location. When false, returns snapshots not downloaded.
 - SNAPSHOT_TYPE - Field to filter based on snapshot types. Snapshot types can only
 be on-demand or scheduled.
 - IS_SAP_HANA_INCREMENTAL_SNAPSHOT - When true, returns incremental snapshots of SAP HANA

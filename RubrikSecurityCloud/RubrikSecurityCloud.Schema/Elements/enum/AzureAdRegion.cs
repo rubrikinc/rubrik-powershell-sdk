@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EASTASIA")]
         EASTASIA,
 
+        [EnumMember(Value = "EASTUS")]
+        EASTUS,
+
         [EnumMember(Value = "EASTUS2")]
         EASTU_S2,
 

@@ -2,6 +2,6 @@
 Time range filter.
 
 - fromTime: DateTime
-  - Start of the time range (inclusive).
+  - Inclusive lower bound of the filter range.
 - untilTime: DateTime
-  - End of the time range (inclusive).
+  - Inclusive upper bound of the filter range.

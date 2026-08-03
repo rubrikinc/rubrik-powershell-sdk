@@ -1,0 +1,106 @@
+### PrincipalSummary
+Summary of a principal.
+
+- fullName: System.String
+  - Name of the principal.
+- principalId: System.String
+  - ID of the principal.
+- riskLevel: RiskLevelType
+  - Risk level for the principal.
+- sensitiveFiles: SensitiveFiles
+  - Sensitive file count for various risk levels.
+- totalSensitiveHits: SummaryHits
+  - Sensitive hits accumulated across different workloads for the user.
+- sensitiveObjectCount: SummaryCount
+  - Number of objects on which the user has sensitive hits.
+- upn: System.String
+  - Unique name for the principal (user or group).
+- numDescendants: System.Int32
+  - Number of descendants of the principal (user or group). For a user,
+this will always be 0.
+- domainId: System.String
+  - ID of the domain to which the principal belongs.
+- domainName: System.String
+  - Name of the domain to which the principal belongs.
+- riskReasons: PrincipalRiskReasons
+  - Risk reasons for a principal.
+- deltaSensitiveHits: SummaryHits
+  - Delta sensitive hits accumulated across different workloads for the user.
+- deltaSensitiveFiles: SensitiveFiles
+  - Delta sensitive file count for various risk levels.
+- hasInsights: System.Boolean
+  - Specifies whether the object has insights or not.
+- previousRiskLevel: RiskLevelType
+  - Previous risk level for the principal.
+- sensitiveHits: SensitiveHits
+  - Sensitive hits for various risk levels.
+- objectCount: System.Int32
+  - Count of objects to which the principal has access.
+- principalType: PrincipalRiskySummaryPrincipalType
+  - Type of principal.
+- privilegeType: PrivilegeType
+  - Type of privilege of the principal.
+- title: System.String
+  - Title of principal.
+- idpType: IdpType
+  - Source of principal.
+- dataTypeResults: list of DataTypeResults
+  - Data type results for principal.
+- dataCategoryResults: list of DataCategoryResults
+  - Data category results for principal.
+- cloudAccountInfo: CloudAccountInfo
+  - Cloud account to which the principal belongs.
+- principalOrigin: PrincipalOrigin
+  - Origin of principal.
+- domainFid: System.String
+  - Domain FID of principal.
+- entityId: System.String
+  - Entity ID of the principal.
+- entityName: System.String
+  - Entity name of the principal.
+- violationInfo: ViolationInfo
+  - Violation information of the principal.
+- uniqueIdentifier: System.String
+  - Unique identifier of the principal.
+- identityViolationInfo: ViolationInfo
+  - Identity violation information of the principal.
+- dataViolationInfo: ViolationInfo
+  - Data violation information of the principal.
+- rootDomainName: System.String
+  - Root domain name of the principal.
+- rootDomainId: System.String
+  - Root domain ID of the principal.
+- additionalMetadata: PrincipalSummaryAdditionalMetadata
+  - Additional metadata for the principal.
+- privilegedMembershipDetails: MembershipCount
+  - Membership count of the principal.
+- creationTime: System.Int64
+  - Determines the creation time of the principal.
+- accessTypeSummary: AccessTypeSummary
+  - Specifies the access type summary for a principal.
+- identityTags: list of IdentityTags
+  - Identity tags for the principal.
+- nativeType: NativeType
+  - Native type of the principal.
+- status: IdentityStatus
+  - Status of the principal.
+- isNewlyAdded: System.Boolean
+  - Determines whether the principal has been newly added.
+- department: System.String
+  - Department of the principal.
+- alertInfo: AlertInfo
+  - Alert information about the principal.
+- secretsMetadata: list of SecretMetaDatas
+  - Secrets metadata for non-human identities.
+- deletedAt: DateTime
+  - Deletion timestamp of the principal.
+- isComplete: System.Boolean
+  - Determines whether the principal is fully populated.
+- lastChanged: DateTime
+  - Determines the last changed time of the principal.
+- hybridState: HybridState
+  - Hybrid state of the principal.
+- isPrimary: System.Boolean
+  - Determines whether the principal is primary.
+- owners: list of OwnerInfos
+  - List of owners of this principal.

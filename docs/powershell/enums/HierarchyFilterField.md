@@ -592,8 +592,9 @@ by CDM (database_id column).
 A region is considered non-empty if any of its workload counters,
 such as ec2_instance_count, ebs_volume_count, rds_instance_count,
 s3_bucket_count, dynamo_db_table_count, glue_iceberg_catalog_count,
-glue_iceberg_database_count, or glue_iceberg_table_count, are
-greater than zero.
+glue_iceberg_database_count, glue_iceberg_table_count,
+s3_tables_iceberg_catalog_count, s3_tables_iceberg_namespace_count, or
+s3_tables_iceberg_table_count, are greater than zero.
 +mo:filter:db:table=aws_native_hierarchy_region
 +mo:filter:db:column=region_id
 +mo:filter:db:column=ec2_instance_count
@@ -604,6 +605,9 @@ greater than zero.
 +mo:filter:db:column=glue_iceberg_catalog_count
 +mo:filter:db:column=glue_iceberg_database_count
 +mo:filter:db:column=glue_iceberg_table_count
++mo:filter:db:column=s3_tables_iceberg_catalog_count
++mo:filter:db:column=s3_tables_iceberg_namespace_count
++mo:filter:db:column=s3_tables_iceberg_table_count
 +mo:filter:db:index:key=region_id
 +mo:filter:db:index:seq=1
 +mo:filter:db:index:type=BTREE
@@ -1272,31 +1276,99 @@ and the filter is always combined with the unique-keyed JOIN on
 already bounded by the JOIN's index lookup.
 +mo:filter:db:table=cdm_pve_node
 +mo:filter:db:column=rbs_configured
-- POWER_PLATFORM_APP_PUBLISHER - Filter Power Platform apps by publisher unique name.
+- POWER_PLATFORM_APP_PUBLISHER - Filter Power Platform apps by publisher (GUID).
 +mo:filter:db:table=saasapps_power_platform_apps
-+mo:filter:db:column=publisher_unique_name
++mo:filter:db:column=publisher_id
 +mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
 - POWER_PLATFORM_APP_TYPE - Filter Power Platform apps by app type.
 +mo:filter:db:table=managed_object
 +mo:filter:db:column=object_type
 +mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
 - POWER_PLATFORM_APP_STATUS - Filter Power Platform apps by status.
 +mo:filter:db:table=saasapps_power_platform_apps
 +mo:filter:db:column=status
 +mo:filter:db:index:key=NULL
-- POWER_PLATFORM_FLOW_PUBLISHER - Filter Power Platform flows by publisher unique name.
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_FLOW_PUBLISHER - Filter Power Platform flows by publisher (GUID).
 +mo:filter:db:table=saasapps_power_platform_flows
-+mo:filter:db:column=publisher_unique_name
++mo:filter:db:column=publisher_id
 +mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
 - POWER_PLATFORM_FLOW_TYPE - Filter Power Platform flows by flow type.
 +mo:filter:db:table=managed_object
 +mo:filter:db:column=object_type
 +mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
 - POWER_PLATFORM_FLOW_STATUS - Filter Power Platform flows by status.
 +mo:filter:db:table=saasapps_power_platform_flows
 +mo:filter:db:column=status
 +mo:filter:db:index:key=NULL
-- POWER_PLATFORM_FLOW_OWNER - Filter Power Platform flows by owner display name.
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_FLOW_OWNER - Filter Power Platform flows by a case-insensitive prefix match on the
+owner email.
 +mo:filter:db:table=saasapps_power_platform_flows
-+mo:filter:db:column=owner
++mo:filter:db:column=owner_email
 +mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- HYPERV_VM_BY_LINKED_NATIVE_TAG - Filter Hyper-V VMs by raw native tags from the source system
+(e.g. SCVMM). The accompanying nativeTagFilterParams on Filter
+carries the (source, nativeTagIds) pair. Source-agnostic so
+future native tag sources work without API churn.
+- HYPERV_VM_BY_SUBTYPE - Filter Hyper-V VMs by subtype (Hyper-V vs Azure Local).
+Pass HypervVmSubtype enum names in texts.
+- POWER_PLATFORM_APP_ID - Filter Power Platform apps by natural ID (the app's Power Platform GUID).
++mo:filter:db:table=saasapps_power_platform_apps
++mo:filter:db:column=natural_id
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_FLOW_ID - Filter Power Platform flows by natural ID (the flow's workflow GUID).
++mo:filter:db:table=saasapps_power_platform_flows
++mo:filter:db:column=natural_id
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_APP_LAST_MODIFIED_AFTER - Filter Power Platform apps modified on or after the given timestamp.
++mo:filter:db:table=saasapps_power_platform_apps
++mo:filter:db:column=last_modified_on
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_FLOW_LAST_MODIFIED_AFTER - Filter Power Platform flows modified on or after the given timestamp.
++mo:filter:db:table=saasapps_power_platform_flows
++mo:filter:db:column=last_modified_on
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_APP_OWNER - Filter Power Platform apps by a case-insensitive prefix match on the
+owner email. The value is empty or null for model-driven apps, which
+have no owner.
++mo:filter:db:table=saasapps_power_platform_apps
++mo:filter:db:column=owner_email
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_APP_DISPLAY_NAME - Filter Power Platform apps by a case-insensitive prefix match on the
+display name.
++mo:filter:db:table=saasapps_power_platform_apps
++mo:filter:db:column=display_name
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- POWER_PLATFORM_FLOW_DISPLAY_NAME - Filter Power Platform flows by a case-insensitive prefix match on the
+display name.
++mo:filter:db:table=saasapps_power_platform_flows
++mo:filter:db:column=display_name
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~10k rows)
+- SAASAPPS_IS_HIDDEN - Filter SaaS org objects by their is_hidden metadata flag. Hidden orgs
+remain fully functional for backup, restore, refresh, and delete; only
+UI visibility is affected. Stored in the saasapps_organizations.metadata
+JSON column at path $.isHidden.
++mo:filter:db:table=saasapps_organizations
++mo:filter:db:column=metadata
++mo:filter:db:index:key=NULL // no matching index for is_hidden
+- IS_INFRASTRUCTURE_ALERTS_ENABLED - Filters S3 buckets by whether infrastructure deletion alerts are enabled.
+- MYSQLDB_INSTANCE_CLUSTER_MODE - Filter MySQL instances by cluster mode. Pass texts = ["HA"] to keep
+only high-availability instances, or ["STANDALONE"] to keep only
+single-instance ones. Any instance that is not high-availability is
+treated as STANDALONE.
++mo:filter:db:table=cdm_mysqldb_instance
++mo:filter:db:column=app_metadata
++mo:filter:db:index:key=NULL // cluster mode is a derived value; no index

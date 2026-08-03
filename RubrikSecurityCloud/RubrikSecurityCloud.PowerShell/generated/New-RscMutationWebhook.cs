@@ -215,6 +215,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					headerValue = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			oauth2Info = @{
+    /// 				# REQUIRED
+    /// 				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+    /// 				# REQUIRED
+    /// 				tokenUrl = $someString
+    /// 				# REQUIRED
+    /// 				clientId = $someString
+    /// 				# REQUIRED
+    /// 				clientSecret = $someString
+    /// 				# OPTIONAL
+    /// 				scope = $someString
+    /// 				# OPTIONAL
+    /// 				audience = $someString
+    /// 				# OPTIONAL
+    /// 				resource = $someString
+    /// 				# OPTIONAL
+    /// 				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+    /// 			}
     /// 		}
     /// 		# REQUIRED
     /// 		subscriptionType = @{
@@ -319,6 +338,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					headerValue = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			oauth2Info = @{
+    /// 				# REQUIRED
+    /// 				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+    /// 				# REQUIRED
+    /// 				tokenUrl = $someString
+    /// 				# REQUIRED
+    /// 				clientId = $someString
+    /// 				# REQUIRED
+    /// 				clientSecret = $someString
+    /// 				# OPTIONAL
+    /// 				scope = $someString
+    /// 				# OPTIONAL
+    /// 				audience = $someString
+    /// 				# OPTIONAL
+    /// 				resource = $someString
+    /// 				# OPTIONAL
+    /// 				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+    /// 			}
     /// 		}
     /// 	}
     /// }
@@ -471,6 +509,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				headerValue = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		oauth2Info = @{
+    /// 			# REQUIRED
+    /// 			grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+    /// 			# REQUIRED
+    /// 			tokenUrl = $someString
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# OPTIONAL
+    /// 			scope = $someString
+    /// 			# OPTIONAL
+    /// 			audience = $someString
+    /// 			# OPTIONAL
+    /// 			resource = $someString
+    /// 			# OPTIONAL
+    /// 			clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	serverCertificate = $someString
@@ -498,6 +555,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				headerValue = $someString
     /// 			}
     /// 		)
+    /// 		# OPTIONAL
+    /// 		oauth2Info = @{
+    /// 			# REQUIRED
+    /// 			grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+    /// 			# REQUIRED
+    /// 			tokenUrl = $someString
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# OPTIONAL
+    /// 			scope = $someString
+    /// 			# OPTIONAL
+    /// 			audience = $someString
+    /// 			# OPTIONAL
+    /// 			resource = $someString
+    /// 			# OPTIONAL
+    /// 			clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -813,6 +889,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					headerValue = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			oauth2Info = @{
+    /// 				# REQUIRED
+    /// 				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+    /// 				# REQUIRED
+    /// 				tokenUrl = $someString
+    /// 				# REQUIRED
+    /// 				clientId = $someString
+    /// 				# REQUIRED
+    /// 				clientSecret = $someString
+    /// 				# OPTIONAL
+    /// 				scope = $someString
+    /// 				# OPTIONAL
+    /// 				audience = $someString
+    /// 				# OPTIONAL
+    /// 				resource = $someString
+    /// 				# OPTIONAL
+    /// 				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+    /// 			}
     /// 		}
     /// 		# REQUIRED
     /// 		subscriptionType = @{
@@ -917,6 +1012,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					headerValue = $someString
     /// 				}
     /// 			)
+    /// 			# OPTIONAL
+    /// 			oauth2Info = @{
+    /// 				# REQUIRED
+    /// 				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+    /// 				# REQUIRED
+    /// 				tokenUrl = $someString
+    /// 				# REQUIRED
+    /// 				clientId = $someString
+    /// 				# REQUIRED
+    /// 				clientSecret = $someString
+    /// 				# OPTIONAL
+    /// 				scope = $someString
+    /// 				# OPTIONAL
+    /// 				audience = $someString
+    /// 				# OPTIONAL
+    /// 				resource = $someString
+    /// 				# OPTIONAL
+    /// 				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+    /// 			}
     /// 		}
     /// 	}
     /// 	# OPTIONAL
@@ -1266,6 +1380,25 @@ $query.Var.input = @{
 					headerValue = $someString
 				}
 			)
+			# OPTIONAL
+			oauth2Info = @{
+				# REQUIRED
+				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+				# REQUIRED
+				tokenUrl = $someString
+				# REQUIRED
+				clientId = $someString
+				# REQUIRED
+				clientSecret = $someString
+				# OPTIONAL
+				scope = $someString
+				# OPTIONAL
+				audience = $someString
+				# OPTIONAL
+				resource = $someString
+				# OPTIONAL
+				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+			}
 		}
 		# REQUIRED
 		subscriptionType = @{
@@ -1370,6 +1503,25 @@ $query.Var.input = @{
 					headerValue = $someString
 				}
 			)
+			# OPTIONAL
+			oauth2Info = @{
+				# REQUIRED
+				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+				# REQUIRED
+				tokenUrl = $someString
+				# REQUIRED
+				clientId = $someString
+				# REQUIRED
+				clientSecret = $someString
+				# OPTIONAL
+				scope = $someString
+				# OPTIONAL
+				audience = $someString
+				# OPTIONAL
+				resource = $someString
+				# OPTIONAL
+				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+			}
 		}
 	}
 }"
@@ -1490,6 +1642,25 @@ $query.Var.input = @{
 				headerValue = $someString
 			}
 		)
+		# OPTIONAL
+		oauth2Info = @{
+			# REQUIRED
+			grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+			# REQUIRED
+			tokenUrl = $someString
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# OPTIONAL
+			scope = $someString
+			# OPTIONAL
+			audience = $someString
+			# OPTIONAL
+			resource = $someString
+			# OPTIONAL
+			clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+		}
 	}
 	# OPTIONAL
 	serverCertificate = $someString
@@ -1517,6 +1688,25 @@ $query.Var.input = @{
 				headerValue = $someString
 			}
 		)
+		# OPTIONAL
+		oauth2Info = @{
+			# REQUIRED
+			grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+			# REQUIRED
+			tokenUrl = $someString
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# OPTIONAL
+			scope = $someString
+			# OPTIONAL
+			audience = $someString
+			# OPTIONAL
+			resource = $someString
+			# OPTIONAL
+			clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+		}
 	}
 }"
             );
@@ -1784,6 +1974,25 @@ $query.Var.input = @{
 					headerValue = $someString
 				}
 			)
+			# OPTIONAL
+			oauth2Info = @{
+				# REQUIRED
+				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+				# REQUIRED
+				tokenUrl = $someString
+				# REQUIRED
+				clientId = $someString
+				# REQUIRED
+				clientSecret = $someString
+				# OPTIONAL
+				scope = $someString
+				# OPTIONAL
+				audience = $someString
+				# OPTIONAL
+				resource = $someString
+				# OPTIONAL
+				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+			}
 		}
 		# REQUIRED
 		subscriptionType = @{
@@ -1888,6 +2097,25 @@ $query.Var.input = @{
 					headerValue = $someString
 				}
 			)
+			# OPTIONAL
+			oauth2Info = @{
+				# REQUIRED
+				grantType = $someWebhookOauth2GrantTypeV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2GrantTypeV2]) for enum values.
+				# REQUIRED
+				tokenUrl = $someString
+				# REQUIRED
+				clientId = $someString
+				# REQUIRED
+				clientSecret = $someString
+				# OPTIONAL
+				scope = $someString
+				# OPTIONAL
+				audience = $someString
+				# OPTIONAL
+				resource = $someString
+				# OPTIONAL
+				clientAuthMethod = $someWebhookOauth2ClientAuthMethodV2 # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WebhookOauth2ClientAuthMethodV2]) for enum values.
+			}
 		}
 	}
 	# OPTIONAL

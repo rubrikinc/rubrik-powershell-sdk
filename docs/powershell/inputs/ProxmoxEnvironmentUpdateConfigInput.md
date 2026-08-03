@@ -2,6 +2,8 @@
 Configuration for updating a Proxmox environment.
 
 - apiToken: System.String
-  - The API token of the updated Proxmox environment.
+  - Supported in v9.5+
+The API token of the updated Proxmox environment.
 - caCerts: System.String
-  - Concatenated X.509 certificates in Base64 encoded DER format. Each certificate must start with -----BEGIN CERTIFICATE----- and end with -----END CERTIFICATE-----.
+  - Supported in v9.5+
+Concatenated X.509 certificates in Base64 encoded DER format. Each certificate must start with -----BEGIN CERTIFICATE----- and end with -----END CERTIFICATE-----.

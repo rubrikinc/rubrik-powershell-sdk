@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("osName")]
         public System.String? OsName { get; set; }
 
+        //      C# -> System.String? UbrOpt
+        // GraphQL -> ubrOpt: String (scalar)
+        [JsonProperty("ubrOpt")]
+        public System.String? UbrOpt { get; set; }
+
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         [JsonProperty("version")]
@@ -52,6 +57,7 @@ namespace RubrikSecurityCloud.Types
     public OsDetails Set(
         System.String? BuildNumber = null,
         System.String? OsName = null,
+        System.String? UbrOpt = null,
         System.String? Version = null,
         List<HotFixDetail>? HotFixDetails = null
     ) 
@@ -61,6 +67,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OsName != null ) {
             this.OsName = OsName;
+        }
+        if ( UbrOpt != null ) {
+            this.UbrOpt = UbrOpt;
         }
         if ( Version != null ) {
             this.Version = Version;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "osName\n" ;
             } else {
                 s += ind + "osName\n" ;
+            }
+        }
+        //      C# -> System.String? UbrOpt
+        // GraphQL -> ubrOpt: String (scalar)
+        if (this.UbrOpt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ubrOpt\n" ;
+            } else {
+                s += ind + "ubrOpt\n" ;
             }
         }
         //      C# -> System.String? Version
@@ -161,6 +179,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.OsName != null && ec.Excludes("osName",true))
         {
             this.OsName = null;
+        }
+        //      C# -> System.String? UbrOpt
+        // GraphQL -> ubrOpt: String (scalar)
+        if (ec.Includes("ubrOpt",true))
+        {
+            if(this.UbrOpt == null) {
+
+                this.UbrOpt = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.UbrOpt != null && ec.Excludes("ubrOpt",true))
+        {
+            this.UbrOpt = null;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)

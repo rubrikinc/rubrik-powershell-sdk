@@ -7,6 +7,11 @@ Microsoft 365 Backup Storage Organization.
   - Status of the Microsoft 365 Backup Storage Organization controller.
 - activationTime: DateTime
   - Time when the Microsoft 365 Backup Storage Organization controller will be activated.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -41,6 +46,8 @@ Microsoft 365 Backup Storage Organization.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
@@ -63,7 +70,3 @@ Microsoft 365 Backup Storage Organization.
   - Summary of Microsoft groups count.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

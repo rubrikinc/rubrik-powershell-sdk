@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 4
+    /// Create a new RscQuery object for any of the 6
     /// operations in the 'Storage Arrays' API domain:
-    /// Add, Delete, Refresh, or Update.
+    /// Add, AddV1, Delete, Refresh, Update, or UpdateV1.
     /// </summary>
     /// <description>
     /// New-RscMutationStorageArray creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 4 operations
+    /// There are 6 operations
     /// in the 'Storage Arrays' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: Add, Delete, Refresh, or Update.
+    /// one of: Add, AddV1, Delete, Refresh, Update, or UpdateV1.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -95,8 +95,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	configs = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			clusterUuid = $someString
-    /// 			# REQUIRED
     /// 			definition = @{
     /// 				# REQUIRED
     /// 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
@@ -111,6 +109,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				certificateId = $someString
     /// 			}
+    /// 			# REQUIRED
+    /// 			clusterUuid = $someString
     /// 		}
     /// 	)
     /// }
@@ -120,6 +120,58 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: AddStorageArraysReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the AddV1 operation
+    /// of the 'Storage Arrays' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    StorageArray
+    /// # API Operation: AddV1
+    /// 
+    /// $query = New-RscMutationStorageArray -Operation AddV1
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	definition = @{
+    /// 		# OPTIONAL
+    /// 		apiToken = $someString
+    /// 		# OPTIONAL
+    /// 		isVolumeProtectionEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		caCerts = $someString
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# OPTIONAL
+    /// 		isSnapshotOffloadingEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
     /// 
     /// 
     /// 
@@ -222,10 +274,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	configs = @(
     /// 		@{
     /// 			# REQUIRED
-    /// 			clusterUuid = $someString
-    /// 			# REQUIRED
-    /// 			id = $someString
-    /// 			# REQUIRED
     /// 			definition = @{
     /// 				# REQUIRED
     /// 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
@@ -240,6 +288,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				certificateId = $someString
     /// 			}
+    /// 			# REQUIRED
+    /// 			clusterUuid = $someString
+    /// 			# REQUIRED
+    /// 			id = $someString
     /// 		}
     /// 	)
     /// }
@@ -249,6 +301,60 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: UpdateStorageArraysReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the UpdateV1 operation
+    /// of the 'Storage Arrays' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    StorageArray
+    /// # API Operation: UpdateV1
+    /// 
+    /// $query = New-RscMutationStorageArray -Operation UpdateV1
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	definition = @{
+    /// 		# OPTIONAL
+    /// 		apiToken = $someString
+    /// 		# REQUIRED
+    /// 		isVolumeProtectionEnabled = $someBoolean
+    /// 		# REQUIRED
+    /// 		arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+    /// 		# OPTIONAL
+    /// 		caCerts = $someString
+    /// 		# OPTIONAL
+    /// 		certificateId = $someString
+    /// 		# REQUIRED
+    /// 		isSnapshotOffloadingEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# REQUIRED
+    /// 		hostname = $someString
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateStorageArrayV1Reply
     /// 
     /// 
     /// 
@@ -273,9 +379,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = true)]
             [ValidateSet(
                 "Add",
+                "AddV1",
                 "Delete",
                 "Refresh",
                 "Update",
+                "UpdateV1",
                 IgnoreCase = true)]
         public string Operation { get; set; } = "";
 
@@ -294,6 +402,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     case "Add":
                         this.ProcessRecord_Add();
                         break;
+                    case "AddV1":
+                        this.ProcessRecord_AddV1();
+                        break;
                     case "Delete":
                         this.ProcessRecord_Delete();
                         break;
@@ -302,6 +413,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "Update":
                         this.ProcessRecord_Update();
+                        break;
+                    case "UpdateV1":
+                        this.ProcessRecord_UpdateV1();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + this.GetOp().OpName());
@@ -320,6 +434,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -Add";
             // Create new graphql operation addStorageArrays
             InitMutationAddStorageArrays();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // addStorageArrayV1.
+        internal void ProcessRecord_AddV1()
+        {
+            this._logger.name += " -AddV1";
+            // Create new graphql operation addStorageArrayV1
+            InitMutationAddStorageArrayV1();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -349,6 +472,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             InitMutationUpdateStorageArrays();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // updateStorageArrayV1.
+        internal void ProcessRecord_UpdateV1()
+        {
+            this._logger.name += " -UpdateV1";
+            // Create new graphql operation updateStorageArrayV1
+            InitMutationUpdateStorageArrayV1();
+        }
+
 
         // Create new GraphQL Mutation:
         // addStorageArrays(input: AddStorageArraysInput!): AddStorageArraysReply!
@@ -371,8 +503,6 @@ $query.Var.input = @{
 	configs = @(
 		@{
 			# REQUIRED
-			clusterUuid = $someString
-			# REQUIRED
 			definition = @{
 				# REQUIRED
 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
@@ -387,8 +517,54 @@ $query.Var.input = @{
 				# OPTIONAL
 				certificateId = $someString
 			}
+			# REQUIRED
+			clusterUuid = $someString
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // addStorageArrayV1(input: AddStorageArrayV1Input!): AsyncRequestStatus!
+        internal void InitMutationAddStorageArrayV1()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "AddStorageArrayV1Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationAddStorageArrayV1",
+                "($input: AddStorageArrayV1Input!)",
+                "AsyncRequestStatus",
+                Mutation.AddStorageArrayV1,
+                Mutation.AddStorageArrayV1FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	definition = @{
+		# OPTIONAL
+		apiToken = $someString
+		# OPTIONAL
+		isVolumeProtectionEnabled = $someBoolean
+		# REQUIRED
+		arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+		# OPTIONAL
+		caCerts = $someString
+		# OPTIONAL
+		certificateId = $someString
+		# OPTIONAL
+		isSnapshotOffloadingEnabled = $someBoolean
+		# OPTIONAL
+		password = $someString
+		# REQUIRED
+		hostname = $someString
+		# OPTIONAL
+		username = $someString
+	}
 }"
             );
         }
@@ -474,10 +650,6 @@ $query.Var.input = @{
 	configs = @(
 		@{
 			# REQUIRED
-			clusterUuid = $someString
-			# REQUIRED
-			id = $someString
-			# REQUIRED
 			definition = @{
 				# REQUIRED
 				arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
@@ -492,8 +664,58 @@ $query.Var.input = @{
 				# OPTIONAL
 				certificateId = $someString
 			}
+			# REQUIRED
+			clusterUuid = $someString
+			# REQUIRED
+			id = $someString
 		}
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateStorageArrayV1(input: UpdateStorageArrayV1Input!): UpdateStorageArrayV1Reply!
+        internal void InitMutationUpdateStorageArrayV1()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateStorageArrayV1Input!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateStorageArrayV1",
+                "($input: UpdateStorageArrayV1Input!)",
+                "UpdateStorageArrayV1Reply",
+                Mutation.UpdateStorageArrayV1,
+                Mutation.UpdateStorageArrayV1FieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	definition = @{
+		# OPTIONAL
+		apiToken = $someString
+		# REQUIRED
+		isVolumeProtectionEnabled = $someBoolean
+		# REQUIRED
+		arrayType = $someStorageArrayType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.StorageArrayType]) for enum values.
+		# OPTIONAL
+		caCerts = $someString
+		# OPTIONAL
+		certificateId = $someString
+		# REQUIRED
+		isSnapshotOffloadingEnabled = $someBoolean
+		# OPTIONAL
+		password = $someString
+		# REQUIRED
+		hostname = $someString
+		# OPTIONAL
+		username = $someString
+	}
 }"
             );
         }

@@ -19,6 +19,8 @@ Basic information about the recovery plans.
   - Target location information.
 - numChildren: System.Int32
   - Number of non-archived child objects in the recovery plan.
+- isArchived: System.Boolean
+  - Whether the recovery plan is archived.
 - recoveryPlanStats: RecoveryPlanStats
   - Recovery statistics for this recovery plan.
 - targetConsistencyInfo: RecoveryPlanTargetConsistencyInfo
@@ -26,4 +28,4 @@ Basic information about the recovery plans.
 - recoverySchedule: RecoverySchedule
   - Recovery schedule associated with this recovery plan.
 - latestRecovery: Recovery
-  - The latest recovery for this recovery plan.
+  - The last completed recovery for this recovery plan.

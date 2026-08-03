@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<O365MvbWorkloadType>? WorkloadTypes
+        // GraphQL -> workloadTypes: [O365MvbWorkloadType!]! (enum)
+        [JsonProperty("workloadTypes")]
+        public List<O365MvbWorkloadType>? WorkloadTypes { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -30,10 +35,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Int32? LastNumberOfDays
+        // GraphQL -> lastNumberOfDays: Int! (scalar)
+        [JsonProperty("lastNumberOfDays")]
+        public System.Int32? LastNumberOfDays { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
+        //      C# -> M365RecoveryPlanConditionTree? ConditionTree
+        // GraphQL -> conditionTree: M365RecoveryPlanConditionTree (type)
+        [JsonProperty("conditionTree")]
+        public M365RecoveryPlanConditionTree? ConditionTree { get; set; }
 
 
         #endregion
@@ -45,19 +60,31 @@ namespace RubrikSecurityCloud.Types
     }
 
     public M365AbrRecoveryPlan Set(
+        List<O365MvbWorkloadType>? WorkloadTypes = null,
         System.String? Description = null,
         System.String? Id = null,
-        System.String? Name = null
+        System.Int32? LastNumberOfDays = null,
+        System.String? Name = null,
+        M365RecoveryPlanConditionTree? ConditionTree = null
     ) 
     {
+        if ( WorkloadTypes != null ) {
+            this.WorkloadTypes = WorkloadTypes;
+        }
         if ( Description != null ) {
             this.Description = Description;
         }
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( LastNumberOfDays != null ) {
+            this.LastNumberOfDays = LastNumberOfDays;
+        }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( ConditionTree != null ) {
+            this.ConditionTree = ConditionTree;
         }
         return this;
     }
@@ -73,6 +100,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<O365MvbWorkloadType>? WorkloadTypes
+        // GraphQL -> workloadTypes: [O365MvbWorkloadType!]! (enum)
+        if (this.WorkloadTypes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "workloadTypes\n" ;
+            } else {
+                s += ind + "workloadTypes\n" ;
+            }
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description != null) {
@@ -91,6 +127,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "id\n" ;
             }
         }
+        //      C# -> System.Int32? LastNumberOfDays
+        // GraphQL -> lastNumberOfDays: Int! (scalar)
+        if (this.LastNumberOfDays != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastNumberOfDays\n" ;
+            } else {
+                s += ind + "lastNumberOfDays\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -100,6 +145,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> M365RecoveryPlanConditionTree? ConditionTree
+        // GraphQL -> conditionTree: M365RecoveryPlanConditionTree (type)
+        if (this.ConditionTree != null) {
+            var fspec = this.ConditionTree.AsFieldSpec(conf.Child("conditionTree"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "conditionTree" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -107,6 +164,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<O365MvbWorkloadType>? WorkloadTypes
+        // GraphQL -> workloadTypes: [O365MvbWorkloadType!]! (enum)
+        if (ec.Includes("workloadTypes",true))
+        {
+            if(this.WorkloadTypes == null) {
+
+                this.WorkloadTypes = new List<O365MvbWorkloadType>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.WorkloadTypes != null && ec.Excludes("workloadTypes",true))
+        {
+            this.WorkloadTypes = null;
+        }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (ec.Includes("description",true))
@@ -141,6 +215,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Id = null;
         }
+        //      C# -> System.Int32? LastNumberOfDays
+        // GraphQL -> lastNumberOfDays: Int! (scalar)
+        if (ec.Includes("lastNumberOfDays",true))
+        {
+            if(this.LastNumberOfDays == null) {
+
+                this.LastNumberOfDays = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastNumberOfDays != null && ec.Excludes("lastNumberOfDays",true))
+        {
+            this.LastNumberOfDays = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -157,6 +248,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> M365RecoveryPlanConditionTree? ConditionTree
+        // GraphQL -> conditionTree: M365RecoveryPlanConditionTree (type)
+        if (ec.Includes("conditionTree",false))
+        {
+            if(this.ConditionTree == null) {
+
+                this.ConditionTree = new M365RecoveryPlanConditionTree();
+                this.ConditionTree.ApplyExploratoryFieldSpec(ec.NewChild("conditionTree"));
+
+            } else {
+
+                this.ConditionTree.ApplyExploratoryFieldSpec(ec.NewChild("conditionTree"));
+
+            }
+        }
+        else if (this.ConditionTree != null && ec.Excludes("conditionTree",false))
+        {
+            this.ConditionTree = null;
         }
     }
 

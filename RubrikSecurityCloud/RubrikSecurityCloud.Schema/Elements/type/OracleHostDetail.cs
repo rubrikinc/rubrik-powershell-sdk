@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        [JsonProperty("excludedDbUniqueNames")]
+        public List<System.String>? ExcludedDbUniqueNames { get; set; }
+
         //      C# -> OracleHostSummary? OracleHostSummary
         // GraphQL -> oracleHostSummary: OracleHostSummary (type)
         [JsonProperty("oracleHostSummary")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public OracleHostDetail Set(
+        List<System.String>? ExcludedDbUniqueNames = null,
         OracleHostSummary? OracleHostSummary = null,
         OracleNonSlaProperties? OracleNonSlaProperties = null
     ) 
     {
+        if ( ExcludedDbUniqueNames != null ) {
+            this.ExcludedDbUniqueNames = ExcludedDbUniqueNames;
+        }
         if ( OracleHostSummary != null ) {
             this.OracleHostSummary = OracleHostSummary;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        if (this.ExcludedDbUniqueNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "excludedDbUniqueNames\n" ;
+            } else {
+                s += ind + "excludedDbUniqueNames\n" ;
+            }
+        }
         //      C# -> OracleHostSummary? OracleHostSummary
         // GraphQL -> oracleHostSummary: OracleHostSummary (type)
         if (this.OracleHostSummary != null) {
@@ -95,6 +113,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> List<System.String>? ExcludedDbUniqueNames
+        // GraphQL -> excludedDbUniqueNames: [String!]! (scalar)
+        if (ec.Includes("excludedDbUniqueNames",true))
+        {
+            if(this.ExcludedDbUniqueNames == null) {
+
+                this.ExcludedDbUniqueNames = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExcludedDbUniqueNames != null && ec.Excludes("excludedDbUniqueNames",true))
+        {
+            this.ExcludedDbUniqueNames = null;
+        }
         //      C# -> OracleHostSummary? OracleHostSummary
         // GraphQL -> oracleHostSummary: OracleHostSummary (type)
         if (ec.Includes("oracleHostSummary",false))

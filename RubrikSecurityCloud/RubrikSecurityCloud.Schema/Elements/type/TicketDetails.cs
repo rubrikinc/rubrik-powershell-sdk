@@ -16,8 +16,7 @@ using RubrikSecurityCloud;
 namespace RubrikSecurityCloud.Types
 {
     #region TicketDetails
- 
-    public class TicketDetails: BaseType, RemediationDetailsUnion
+    public class TicketDetails: BaseType
     {
         #region members
 

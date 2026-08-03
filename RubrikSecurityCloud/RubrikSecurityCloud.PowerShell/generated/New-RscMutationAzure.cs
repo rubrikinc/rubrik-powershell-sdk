@@ -397,8 +397,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	backupLocationId = $someString
     /// 	# OPTIONAL
-    /// 	backupRegion = $someString
-    /// 	# OPTIONAL
     /// 	exocomputeCloudAccountId = $someString
     /// 	# REQUIRED
     /// 	sessionId = $someString
@@ -637,6 +635,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	shouldSkipPermissionChecks = $someBoolean
     /// 	# OPTIONAL
+    /// 	isEntraIdInitiatedOnboarding = $someBoolean
+    /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// 	# OPTIONAL
     /// 	resource = $someAzureOauthResource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureOauthResource]) for enum values.
@@ -874,6 +874,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
     /// 	# OPTIONAL
     /// 	rsaKey = $someString
+    /// 	# OPTIONAL
+    /// 	azureKeyVaultKey = @{
+    /// 		# REQUIRED
+    /// 		kmsKeyVaultId = $someString
+    /// 		# REQUIRED
+    /// 		keyName = $someString
+    /// 		# REQUIRED
+    /// 		keyVersion = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -950,6 +959,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
     /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	azureKeyVaultKey = @{
+    /// 		# REQUIRED
+    /// 		kmsKeyVaultId = $someString
+    /// 		# REQUIRED
+    /// 		keyName = $someString
+    /// 		# REQUIRED
+    /// 		keyVersion = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1836,29 +1854,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	objectTypeToIdMap = @(
     /// 		@{
+    /// 			# REQUIRED
+    /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 			# OPTIONAL
     /// 			objectId = $someString
     /// 			# OPTIONAL
     /// 			objectIdString = $someString
-    /// 			# REQUIRED
-    /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
     /// 		}
     /// 	)
     /// 	# REQUIRED
     /// 	forceChangePasswordWithMfa = $someBoolean
-    /// 	# OPTIONAL
-    /// 	objectsToDelete = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			objectId = $someString
-    /// 			# OPTIONAL
-    /// 			objectIdString = $someString
-    /// 			# REQUIRED
-    /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-    /// 		}
-    /// 	)
-    /// 	# OPTIONAL
-    /// 	cleanRecoverySessionId = $someString
     /// 	# REQUIRED
     /// 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
     /// 	# OPTIONAL
@@ -1887,12 +1892,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					id = $someString
     /// 					# OPTIONAL
     /// 					idString = $someString
-    /// 					# OPTIONAL
-    /// 					exportedPolicyName = $someString
     /// 					# REQUIRED
     /// 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
     /// 					# OPTIONAL
     /// 					recoveryMethod = $someAzureAdConditionalAccessPolicyRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyRecoveryType]) for enum values.
+    /// 					# OPTIONAL
+    /// 					exportedPolicyName = $someString
     /// 				}
     /// 			)
     /// 		}
@@ -1975,6 +1980,19 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	relationshipConflictResolutionMode = $someRelationshipConflictResolutionState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RelationshipConflictResolutionState]) for enum values.
+    /// 	# OPTIONAL
+    /// 	objectsToDelete = @(
+    /// 		@{
+    /// 			# REQUIRED
+    /// 			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			objectId = $someString
+    /// 			# OPTIONAL
+    /// 			objectIdString = $someString
+    /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	cleanRecoverySessionId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2139,6 +2157,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# OPTIONAL
     /// 	tenantDomainName = $someString
+    /// 	# OPTIONAL
+    /// 	isEntraIdInitiatedOnboarding = $someBoolean
     /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// 	# OPTIONAL
@@ -4232,8 +4252,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	backupLocationId = $someString
 	# OPTIONAL
-	backupRegion = $someString
-	# OPTIONAL
 	exocomputeCloudAccountId = $someString
 	# REQUIRED
 	sessionId = $someString
@@ -4431,6 +4449,8 @@ $query.Var.input = @{
 	appSecretKey = $someString
 	# REQUIRED
 	shouldSkipPermissionChecks = $someBoolean
+	# OPTIONAL
+	isEntraIdInitiatedOnboarding = $someBoolean
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 	# OPTIONAL
@@ -4637,6 +4657,15 @@ $query.Var.input = @{
 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 	# OPTIONAL
 	rsaKey = $someString
+	# OPTIONAL
+	azureKeyVaultKey = @{
+		# REQUIRED
+		kmsKeyVaultId = $someString
+		# REQUIRED
+		keyName = $someString
+		# REQUIRED
+		keyVersion = $someString
+	}
 }"
             );
         }
@@ -4705,6 +4734,15 @@ $query.Var.input = @{
 	sourceWorkloadCloud = $someSourceWorkloadCloud # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SourceWorkloadCloud]) for enum values.
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
+	# OPTIONAL
+	azureKeyVaultKey = @{
+		# REQUIRED
+		kmsKeyVaultId = $someString
+		# REQUIRED
+		keyName = $someString
+		# REQUIRED
+		keyVersion = $someString
+	}
 }"
             );
         }
@@ -5460,29 +5498,16 @@ $query.Var.input = @{
 	# REQUIRED
 	objectTypeToIdMap = @(
 		@{
+			# REQUIRED
+			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 			# OPTIONAL
 			objectId = $someString
 			# OPTIONAL
 			objectIdString = $someString
-			# REQUIRED
-			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
 		}
 	)
 	# REQUIRED
 	forceChangePasswordWithMfa = $someBoolean
-	# OPTIONAL
-	objectsToDelete = @(
-		@{
-			# OPTIONAL
-			objectId = $someString
-			# OPTIONAL
-			objectIdString = $someString
-			# REQUIRED
-			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
-		}
-	)
-	# OPTIONAL
-	cleanRecoverySessionId = $someString
 	# REQUIRED
 	relationshipRestoreMode = $someAzureAdRelationshipRestoreModeEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdRelationshipRestoreModeEnumType]) for enum values.
 	# OPTIONAL
@@ -5511,12 +5536,12 @@ $query.Var.input = @{
 					id = $someString
 					# OPTIONAL
 					idString = $someString
-					# OPTIONAL
-					exportedPolicyName = $someString
 					# REQUIRED
 					recoveryState = $someAzureAdConditionalAccessPolicyStateEnumType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyStateEnumType]) for enum values.
 					# OPTIONAL
 					recoveryMethod = $someAzureAdConditionalAccessPolicyRecoveryType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdConditionalAccessPolicyRecoveryType]) for enum values.
+					# OPTIONAL
+					exportedPolicyName = $someString
 				}
 			)
 		}
@@ -5599,6 +5624,19 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	relationshipConflictResolutionMode = $someRelationshipConflictResolutionState # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RelationshipConflictResolutionState]) for enum values.
+	# OPTIONAL
+	objectsToDelete = @(
+		@{
+			# REQUIRED
+			azureAdObjectType = $someAzureAdObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectType]) for enum values.
+			# OPTIONAL
+			objectId = $someString
+			# OPTIONAL
+			objectIdString = $someString
+		}
+	)
+	# OPTIONAL
+	cleanRecoverySessionId = $someString
 }"
             );
         }
@@ -5731,6 +5769,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# OPTIONAL
 	tenantDomainName = $someString
+	# OPTIONAL
+	isEntraIdInitiatedOnboarding = $someBoolean
 	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 	# OPTIONAL

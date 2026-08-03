@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean (scalar)
+        [JsonProperty("shouldExpandArchiveFiles")]
+        public System.Boolean? ShouldExpandArchiveFiles { get; set; }
+
         //      C# -> HuntScanFileSizeLimits? FileSizeLimits
         // GraphQL -> fileSizeLimits: HuntScanFileSizeLimits (type)
         [JsonProperty("fileSizeLimits")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HuntScanFileCriteria Set(
+        System.Boolean? ShouldExpandArchiveFiles = null,
         HuntScanFileSizeLimits? FileSizeLimits = null,
         HuntScanFileTimeLimits? FileTimeLimits = null,
         HuntScanPathFilters? PathFilter = null
     ) 
     {
+        if ( ShouldExpandArchiveFiles != null ) {
+            this.ShouldExpandArchiveFiles = ShouldExpandArchiveFiles;
+        }
         if ( FileSizeLimits != null ) {
             this.FileSizeLimits = FileSizeLimits;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean (scalar)
+        if (this.ShouldExpandArchiveFiles != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldExpandArchiveFiles\n" ;
+            } else {
+                s += ind + "shouldExpandArchiveFiles\n" ;
+            }
+        }
         //      C# -> HuntScanFileSizeLimits? FileSizeLimits
         // GraphQL -> fileSizeLimits: HuntScanFileSizeLimits (type)
         if (this.FileSizeLimits != null) {
@@ -116,6 +134,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean (scalar)
+        if (ec.Includes("shouldExpandArchiveFiles",true))
+        {
+            if(this.ShouldExpandArchiveFiles == null) {
+
+                this.ShouldExpandArchiveFiles = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldExpandArchiveFiles != null && ec.Excludes("shouldExpandArchiveFiles",true))
+        {
+            this.ShouldExpandArchiveFiles = null;
+        }
         //      C# -> HuntScanFileSizeLimits? FileSizeLimits
         // GraphQL -> fileSizeLimits: HuntScanFileSizeLimits (type)
         if (ec.Includes("fileSizeLimits",false))

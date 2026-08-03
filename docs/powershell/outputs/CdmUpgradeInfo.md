@@ -55,3 +55,7 @@ Rubrik cluster upgrade Information.
   - Whether the cluster supports Rolling Upgrade (RU).
 - ruUnsupportabilityReason: System.String
   - Reason why the cluster does not support Rolling Upgrade.
+- clusterUnsupportedWorkloadState: ClusterUnsupportedWorkloadState
+  - Self-service RU classification for the Rubrik cluster as a whole - one overall state summarizing its RU-unsupported workloads and their pause state.
+- unsupportedWorkloads: list of UnsupportedWorkloadTypeInfos
+  - One entry per RU-unsupported workload type present on the Rubrik cluster, with paused / non-paused counts.

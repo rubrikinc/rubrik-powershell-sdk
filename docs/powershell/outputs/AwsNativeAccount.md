@@ -23,6 +23,12 @@ AWS native account.
   - Count of Glue Iceberg databases in the AWS native account.
 - glueIcebergTableCount: System.Int32
   - Count of Glue Iceberg tables in the AWS native account.
+- s3TablesIcebergCatalogCount: System.Int32
+  - Count of S3 Tables Iceberg catalogs in the AWS native account.
+- s3TablesIcebergNamespaceCount: System.Int32
+  - Count of S3 Tables Iceberg namespaces in the AWS native account.
+- s3TablesIcebergTableCount: System.Int32
+  - Count of S3 Tables Iceberg tables in the AWS native account.
 - cloudType: AwsCloudType
   - AWS cloud type.
 - serviceType: AwsCloudAccountServiceType
@@ -51,6 +57,11 @@ AWS native account.
   - Whether the AWS account is protectable for the specified protection features.
 - featureDetails: list of FeatureDetails
   - Cloud account feature details including permissions groups for the AWS account.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -85,7 +96,5 @@ AWS native account.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

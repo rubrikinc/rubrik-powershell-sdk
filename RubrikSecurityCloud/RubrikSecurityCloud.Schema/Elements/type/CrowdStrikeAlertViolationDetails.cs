@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mitreTactic")]
         public System.String? MitreTactic { get; set; }
 
+        //      C# -> System.String? PatternId
+        // GraphQL -> patternId: String! (scalar)
+        [JsonProperty("patternId")]
+        public System.String? PatternId { get; set; }
+
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
         [JsonProperty("startTime")]
@@ -101,6 +106,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? EndTime = null,
         System.String? FalconHostLink = null,
         System.String? MitreTactic = null,
+        System.String? PatternId = null,
         DateTime? StartTime = null,
         System.String? TargetIdentityId = null
     ) 
@@ -134,6 +140,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MitreTactic != null ) {
             this.MitreTactic = MitreTactic;
+        }
+        if ( PatternId != null ) {
+            this.PatternId = PatternId;
         }
         if ( StartTime != null ) {
             this.StartTime = StartTime;
@@ -243,6 +252,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "mitreTactic\n" ;
             } else {
                 s += ind + "mitreTactic\n" ;
+            }
+        }
+        //      C# -> System.String? PatternId
+        // GraphQL -> patternId: String! (scalar)
+        if (this.PatternId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "patternId\n" ;
+            } else {
+                s += ind + "patternId\n" ;
             }
         }
         //      C# -> DateTime? StartTime
@@ -439,6 +457,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.MitreTactic != null && ec.Excludes("mitreTactic",true))
         {
             this.MitreTactic = null;
+        }
+        //      C# -> System.String? PatternId
+        // GraphQL -> patternId: String! (scalar)
+        if (ec.Includes("patternId",true))
+        {
+            if(this.PatternId == null) {
+
+                this.PatternId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.PatternId != null && ec.Excludes("patternId",true))
+        {
+            this.PatternId = null;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

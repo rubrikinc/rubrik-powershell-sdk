@@ -1,6 +1,6 @@
 ### GroupByFieldEnum
 - ComplianceStatus
-- FailoverStatus
+- FailoverStatus - Group by the failover status.
 - HOUR - Group by hour.
 - POLICY_VIOLATIONS
 - SEVERITY - Group by severity of the anomaly.
@@ -9,32 +9,32 @@
 - TaskDetailClusterType
 - TaskDetailObjectType
 - ProtectionStatus
-- Month
+- Month - Group by month.
 - SLA_DOMAIN
 - CLUSTER_UUID - The unique ID of the cluster.
 - MANAGED_ID - The managed ID of the object.
 - ClusterType
-- Quarter
-- Year
+- Quarter - Group by quarter.
+- Year - Group by year.
 - MONTH - Group by month.
-- Day
+- Day - Group by day.
 - YEAR - Group by year.
 - SlaDomain
 - UserAuditStatus
-- Source
+- Source - Group by the source site.
 - TIME_ISSUES
 - WEEK - Group by week.
-- Week
+- Week - Group by week.
 - TRANSFERRED_BYTES_OBJECT_TYPE - Bytes transferred group by object type.
 - IS_ANOMALY - Specifies whether the result is an anomaly.
 - UserAuditType
 - POLICY
 - FILE
 - CLUSTER
-- LastTestStatus
+- LastTestStatus - Group by the last test status.
 - ANALYZER
-- FailoverType
-- Hour
+- FailoverType - Group by the failover type.
+- Hour - Group by hour.
 - Cluster
 - STATUS_POLICY
 - TIME
@@ -43,6 +43,6 @@
 - ObjectType
 - LastActivityStatus
 - OBJECT_NAME
-- TargetSite
+- TargetSite - Group by the target site.
 - Status
 - Type

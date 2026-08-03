@@ -223,6 +223,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		sailPoint = @{
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# REQUIRED
+    /// 			baseUrl = $someString
+    /// 			# OPTIONAL
+    /// 			status = @{
+    /// 				# OPTIONAL
+    /// 				code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	settings = @{
@@ -399,6 +413,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					status = @{
     /// 						# OPTIONAL
     /// 						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				sailPoint = @{
+    /// 					# REQUIRED
+    /// 					clientId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
+    /// 					# REQUIRED
+    /// 					baseUrl = $someString
+    /// 					# OPTIONAL
+    /// 					status = @{
+    /// 						# OPTIONAL
+    /// 						code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
     /// 					}
     /// 				}
     /// 			}
@@ -675,6 +703,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		sailPoint = @{
+    /// 			# REQUIRED
+    /// 			clientId = $someString
+    /// 			# REQUIRED
+    /// 			clientSecret = $someString
+    /// 			# REQUIRED
+    /// 			baseUrl = $someString
+    /// 			# OPTIONAL
+    /// 			status = @{
+    /// 				# OPTIONAL
+    /// 				code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	settings = @{
@@ -853,6 +895,20 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 					status = @{
     /// 						# OPTIONAL
     /// 						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+    /// 					}
+    /// 				}
+    /// 				# OPTIONAL
+    /// 				sailPoint = @{
+    /// 					# REQUIRED
+    /// 					clientId = $someString
+    /// 					# REQUIRED
+    /// 					clientSecret = $someString
+    /// 					# REQUIRED
+    /// 					baseUrl = $someString
+    /// 					# OPTIONAL
+    /// 					status = @{
+    /// 						# OPTIONAL
+    /// 						code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
     /// 					}
     /// 				}
     /// 			}
@@ -1167,6 +1223,20 @@ $query.Var.input = @{
 				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
 			}
 		}
+		# OPTIONAL
+		sailPoint = @{
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# REQUIRED
+			baseUrl = $someString
+			# OPTIONAL
+			status = @{
+				# OPTIONAL
+				code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	settings = @{
@@ -1335,6 +1405,20 @@ $query.Var.input = @{
 					status = @{
 						# OPTIONAL
 						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+					}
+				}
+				# OPTIONAL
+				sailPoint = @{
+					# REQUIRED
+					clientId = $someString
+					# REQUIRED
+					clientSecret = $someString
+					# REQUIRED
+					baseUrl = $someString
+					# OPTIONAL
+					status = @{
+						# OPTIONAL
+						code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
 					}
 				}
 			}
@@ -1579,6 +1663,20 @@ $query.Var.input = @{
 				code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
 			}
 		}
+		# OPTIONAL
+		sailPoint = @{
+			# REQUIRED
+			clientId = $someString
+			# REQUIRED
+			clientSecret = $someString
+			# REQUIRED
+			baseUrl = $someString
+			# OPTIONAL
+			status = @{
+				# OPTIONAL
+				code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	settings = @{
@@ -1749,6 +1847,20 @@ $query.Var.input = @{
 					status = @{
 						# OPTIONAL
 						code = $someWorkdayStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.WorkdayStatusCode]) for enum values.
+					}
+				}
+				# OPTIONAL
+				sailPoint = @{
+					# REQUIRED
+					clientId = $someString
+					# REQUIRED
+					clientSecret = $someString
+					# REQUIRED
+					baseUrl = $someString
+					# OPTIONAL
+					status = @{
+						# OPTIONAL
+						code = $someSailPointStatusCode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SailPointStatusCode]) for enum values.
 					}
 				}
 			}

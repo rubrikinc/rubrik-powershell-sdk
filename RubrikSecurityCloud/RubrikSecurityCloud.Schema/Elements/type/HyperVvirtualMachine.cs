@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> HypervVmSubtype? Subtype
+        // GraphQL -> subtype: HypervVmSubtype (enum)
+        [JsonProperty("subtype")]
+        public HypervVmSubtype? Subtype { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -166,6 +171,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("latestUserNote")]
         public LatestUserNote? LatestUserNote { get; set; }
 
+        //      C# -> List<LinkedNativeTag>? LinkedNativeTags
+        // GraphQL -> linkedNativeTags: [LinkedNativeTag!]! (type)
+        [JsonProperty("linkedNativeTags")]
+        public List<LinkedNativeTag>? LinkedNativeTags { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -200,6 +210,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> newestSnapshot: CdmSnapshot (type)
         [JsonProperty("newestSnapshot")]
         public CdmSnapshot? NewestSnapshot { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -291,6 +306,8 @@ namespace RubrikSecurityCloud.Types
             Tuple<string, string>[] missedSnapshotConnectionArgs = {
                     Tuple.Create("first", "Int"),
                     Tuple.Create("after", "String"),
+                    Tuple.Create("last", "Int"),
+                    Tuple.Create("before", "String"),
                     Tuple.Create("filter", "MissedSnapshotFilterInput"),
                 };
             this.MissedSnapshotConnection =
@@ -364,6 +381,7 @@ namespace RubrikSecurityCloud.Types
         PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        HypervVmSubtype? Subtype = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -389,6 +407,7 @@ namespace RubrikSecurityCloud.Types
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
+        List<LinkedNativeTag>? LinkedNativeTags = null,
         List<PathNode>? LogicalPath = null,
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection = null,
@@ -396,6 +415,7 @@ namespace RubrikSecurityCloud.Types
         CdmSnapshot? NewestIndexedSnapshot = null,
         CdmSnapshot? NewestReplicatedSnapshot = null,
         CdmSnapshot? NewestSnapshot = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         CdmSnapshot? OldestSnapshot = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
@@ -420,6 +440,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( Subtype != null ) {
+            this.Subtype = Subtype;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -496,6 +519,9 @@ namespace RubrikSecurityCloud.Types
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
         }
+        if ( LinkedNativeTags != null ) {
+            this.LinkedNativeTags = LinkedNativeTags;
+        }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
         }
@@ -516,6 +542,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NewestSnapshot != null ) {
             this.NewestSnapshot = NewestSnapshot;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -598,6 +627,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaAssignment\n" ;
             } else {
                 s += ind + "slaAssignment\n" ;
+            }
+        }
+        //      C# -> HypervVmSubtype? Subtype
+        // GraphQL -> subtype: HypervVmSubtype (enum)
+        if (this.Subtype != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subtype\n" ;
+            } else {
+                s += ind + "subtype\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -866,6 +904,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> List<LinkedNativeTag>? LinkedNativeTags
+        // GraphQL -> linkedNativeTags: [LinkedNativeTag!]! (type)
+        if (this.LinkedNativeTags != null) {
+            var fspec = this.LinkedNativeTags.AsFieldSpec(conf.Child("linkedNativeTags"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "linkedNativeTags" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -947,6 +997,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "newestSnapshot" + "\n(" + this.Vars.NewestSnapshot.ToInlineArguments() + ")\n" + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1156,6 +1218,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
         {
             this.SlaAssignment = null;
+        }
+        //      C# -> HypervVmSubtype? Subtype
+        // GraphQL -> subtype: HypervVmSubtype (enum)
+        if (ec.Includes("subtype",true))
+        {
+            if(this.Subtype == null) {
+
+                this.Subtype = new HypervVmSubtype();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Subtype != null && ec.Excludes("subtype",true))
+        {
+            this.Subtype = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -1626,6 +1705,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.LatestUserNote = null;
         }
+        //      C# -> List<LinkedNativeTag>? LinkedNativeTags
+        // GraphQL -> linkedNativeTags: [LinkedNativeTag!]! (type)
+        if (ec.Includes("linkedNativeTags",false))
+        {
+            if(this.LinkedNativeTags == null) {
+
+                this.LinkedNativeTags = new List<LinkedNativeTag>();
+                this.LinkedNativeTags.ApplyExploratoryFieldSpec(ec.NewChild("linkedNativeTags"));
+
+            } else {
+
+                this.LinkedNativeTags.ApplyExploratoryFieldSpec(ec.NewChild("linkedNativeTags"));
+
+            }
+        }
+        else if (this.LinkedNativeTags != null && ec.Excludes("linkedNativeTags",false))
+        {
+            this.LinkedNativeTags = null;
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (ec.Includes("logicalPath",false))
@@ -1758,6 +1856,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NewestSnapshot != null && ec.Excludes("newestSnapshot",false))
         {
             this.NewestSnapshot = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

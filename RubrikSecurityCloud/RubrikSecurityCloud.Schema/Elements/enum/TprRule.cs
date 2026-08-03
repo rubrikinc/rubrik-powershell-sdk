@@ -66,6 +66,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EDIT_SLA")]
         EDIT_SLA,
 
+        [EnumMember(Value = "EDIT_TPR_BREAK_GLASS_CONFIG")]
+        EDIT_TPR_BREAK_GLASS_CONFIG,
+
         [EnumMember(Value = "EDIT_TPR_CONFIG")]
         EDIT_TPR_CONFIG,
 
@@ -95,6 +98,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MODIFY_PAM_INTEGRATION")]
         MODIFY_PAM_INTEGRATION,
+
+        [EnumMember(Value = "OBJECT_BACKUP_WINDOW_CHANGE")]
+        OBJECT_BACKUP_WINDOW_CHANGE,
 
         [EnumMember(Value = "OBJECT_PROTECTION_PAUSE")]
         OBJECT_PROTECTION_PAUSE,

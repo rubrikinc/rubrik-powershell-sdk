@@ -27,9 +27,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? HaGroupName { get; set; }
 
         //      C# -> List<PostgresHaReplicaConfigInput>? Replicas
-        // GraphQL -> replicas: [PostgresHaReplicaConfigInput!]! (input)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> replicas: [PostgresHaReplicaConfigInput!] (input)
         [JsonProperty("replicas")]
         public List<PostgresHaReplicaConfigInput>? Replicas { get; set; }
 

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DISCOVER")]
         DISCOVER,
 
+        [EnumMember(Value = "PAUSED")]
+        PAUSED,
+
         [EnumMember(Value = "RESTORE")]
         RESTORE
 

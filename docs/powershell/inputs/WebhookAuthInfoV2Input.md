@@ -9,3 +9,5 @@ The authentication type that the endpoint uses.
   - Authentication user credentials.
 - customHeaders: list of CustomHeaders
   - Authentication req headers.
+- oauth2Info: WebhookOauth2InfoV2Input
+  - OAuth 2.0 configuration, used when auth_type is OAUTH2.

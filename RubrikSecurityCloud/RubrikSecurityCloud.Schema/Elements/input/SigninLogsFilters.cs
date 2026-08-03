@@ -129,6 +129,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("eventIds")]
         public List<System.String>? EventIds { get; set; }
 
+        //      C# -> List<System.String>? CapIds
+        // GraphQL -> capIds: [String!] (scalar)
+        [JsonProperty("capIds")]
+        public List<System.String>? CapIds { get; set; }
+
 
         #endregion
 

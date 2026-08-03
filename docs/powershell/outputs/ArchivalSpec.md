@@ -15,3 +15,5 @@ Archiving specification.
   - Specifies whether compliance immutability, a fixed immutability lock for the retention period, is enabled for snapshot archiving to this location. It can be enabled for Compliance Retention Lock SLA Domains.
 - storageSetting: TargetMapping
   - Storage settings of an archival group.
+- databaseLogRetentionInfo: DatabaseLogRetentionInfoType
+  - Per-workload database transaction log retention policy for this location.

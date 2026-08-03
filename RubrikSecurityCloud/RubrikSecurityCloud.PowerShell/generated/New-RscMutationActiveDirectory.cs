@@ -287,6 +287,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		winTimeServers = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		recoveryPointInTime = $someDateTime
     /// 	}
     /// 	# REQUIRED
     /// 	domainConfigs = @(
@@ -734,6 +736,8 @@ $query.Var.input = @{
 		winTimeServers = @(
 			$someString
 		)
+		# OPTIONAL
+		recoveryPointInTime = $someDateTime
 	}
 	# REQUIRED
 	domainConfigs = @(

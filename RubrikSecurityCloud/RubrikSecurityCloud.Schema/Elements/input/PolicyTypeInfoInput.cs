@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("idpPolicyInfo")]
         public IdpPolicyInfoInput? IdpPolicyInfo { get; set; }
 
+        //      C# -> SigninAnomalyPolicyInfoInput? SigninAnomalyPolicyInfo
+        // GraphQL -> signinAnomalyPolicyInfo: SigninAnomalyPolicyInfoInput (input)
+        [JsonProperty("signinAnomalyPolicyInfo")]
+        public SigninAnomalyPolicyInfoInput? SigninAnomalyPolicyInfo { get; set; }
+
 
         #endregion
 

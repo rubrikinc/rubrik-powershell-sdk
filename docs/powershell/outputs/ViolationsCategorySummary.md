@@ -1,5 +1,5 @@
 ### ViolationsCategorySummary
-
+Summary of violations grouped by category.
 
 - categorySummary: list of ViolationCategorySummarys
   - Summary of violations in each category based on severity.

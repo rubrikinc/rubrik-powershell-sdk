@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("previousSnapshotId")]
         public System.String? PreviousSnapshotId { get; set; }
 
+        //      C# -> DateTime? ResourceDeletedAt
+        // GraphQL -> resourceDeletedAt: DateTime (scalar)
+        [JsonProperty("resourceDeletedAt")]
+        public DateTime? ResourceDeletedAt { get; set; }
+
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime! (scalar)
         [JsonProperty("snapshotDate")]
@@ -188,6 +193,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ManagedId = null,
         DateTime? PreviousSnapshotDate = null,
         System.String? PreviousSnapshotId = null,
+        DateTime? ResourceDeletedAt = null,
         DateTime? SnapshotDate = null,
         System.String? SnapshotFid = null,
         System.String? SnapshotId = null,
@@ -253,6 +259,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( PreviousSnapshotId != null ) {
             this.PreviousSnapshotId = PreviousSnapshotId;
+        }
+        if ( ResourceDeletedAt != null ) {
+            this.ResourceDeletedAt = ResourceDeletedAt;
         }
         if ( SnapshotDate != null ) {
             this.SnapshotDate = SnapshotDate;
@@ -458,6 +467,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "previousSnapshotId\n" ;
             } else {
                 s += ind + "previousSnapshotId\n" ;
+            }
+        }
+        //      C# -> DateTime? ResourceDeletedAt
+        // GraphQL -> resourceDeletedAt: DateTime (scalar)
+        if (this.ResourceDeletedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "resourceDeletedAt\n" ;
+            } else {
+                s += ind + "resourceDeletedAt\n" ;
             }
         }
         //      C# -> DateTime? SnapshotDate
@@ -871,6 +889,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.PreviousSnapshotId != null && ec.Excludes("previousSnapshotId",true))
         {
             this.PreviousSnapshotId = null;
+        }
+        //      C# -> DateTime? ResourceDeletedAt
+        // GraphQL -> resourceDeletedAt: DateTime (scalar)
+        if (ec.Includes("resourceDeletedAt",true))
+        {
+            if(this.ResourceDeletedAt == null) {
+
+                this.ResourceDeletedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ResourceDeletedAt != null && ec.Excludes("resourceDeletedAt",true))
+        {
+            this.ResourceDeletedAt = null;
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime! (scalar)

@@ -146,6 +146,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("s3BucketCount")]
         public System.Int32? S3BucketCount { get; set; }
 
+        //      C# -> System.Int32? S3TablesIcebergCatalogCount
+        // GraphQL -> s3TablesIcebergCatalogCount: Int! (scalar)
+        [JsonProperty("s3TablesIcebergCatalogCount")]
+        public System.Int32? S3TablesIcebergCatalogCount { get; set; }
+
+        //      C# -> System.Int32? S3TablesIcebergNamespaceCount
+        // GraphQL -> s3TablesIcebergNamespaceCount: Int! (scalar)
+        [JsonProperty("s3TablesIcebergNamespaceCount")]
+        public System.Int32? S3TablesIcebergNamespaceCount { get; set; }
+
+        //      C# -> System.Int32? S3TablesIcebergTableCount
+        // GraphQL -> s3TablesIcebergTableCount: Int! (scalar)
+        [JsonProperty("s3TablesIcebergTableCount")]
+        public System.Int32? S3TablesIcebergTableCount { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -205,6 +220,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -360,6 +380,9 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? RdsInstanceCount = null,
         System.Int32? S3BucketCount = null,
+        System.Int32? S3TablesIcebergCatalogCount = null,
+        System.Int32? S3TablesIcebergNamespaceCount = null,
+        System.Int32? S3TablesIcebergTableCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
@@ -372,6 +395,7 @@ namespace RubrikSecurityCloud.Types
         List<AwsNativeAccountEnabledFeature>? EnabledFeatures = null,
         List<FeatureDetail>? FeatureDetails = null,
         List<PathNode>? LogicalPath = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
         List<AwsNativeRegionSpec>? RegionSpecs = null,
@@ -456,6 +480,15 @@ namespace RubrikSecurityCloud.Types
         if ( S3BucketCount != null ) {
             this.S3BucketCount = S3BucketCount;
         }
+        if ( S3TablesIcebergCatalogCount != null ) {
+            this.S3TablesIcebergCatalogCount = S3TablesIcebergCatalogCount;
+        }
+        if ( S3TablesIcebergNamespaceCount != null ) {
+            this.S3TablesIcebergNamespaceCount = S3TablesIcebergNamespaceCount;
+        }
+        if ( S3TablesIcebergTableCount != null ) {
+            this.S3TablesIcebergTableCount = S3TablesIcebergTableCount;
+        }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
@@ -491,6 +524,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -764,6 +800,33 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "s3BucketCount\n" ;
             }
         }
+        //      C# -> System.Int32? S3TablesIcebergCatalogCount
+        // GraphQL -> s3TablesIcebergCatalogCount: Int! (scalar)
+        if (this.S3TablesIcebergCatalogCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "s3TablesIcebergCatalogCount\n" ;
+            } else {
+                s += ind + "s3TablesIcebergCatalogCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? S3TablesIcebergNamespaceCount
+        // GraphQL -> s3TablesIcebergNamespaceCount: Int! (scalar)
+        if (this.S3TablesIcebergNamespaceCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "s3TablesIcebergNamespaceCount\n" ;
+            } else {
+                s += ind + "s3TablesIcebergNamespaceCount\n" ;
+            }
+        }
+        //      C# -> System.Int32? S3TablesIcebergTableCount
+        // GraphQL -> s3TablesIcebergTableCount: Int! (scalar)
+        if (this.S3TablesIcebergTableCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "s3TablesIcebergTableCount\n" ;
+            } else {
+                s += ind + "s3TablesIcebergTableCount\n" ;
+            }
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
@@ -902,6 +965,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1442,6 +1517,57 @@ namespace RubrikSecurityCloud.Types
         {
             this.S3BucketCount = null;
         }
+        //      C# -> System.Int32? S3TablesIcebergCatalogCount
+        // GraphQL -> s3TablesIcebergCatalogCount: Int! (scalar)
+        if (ec.Includes("s3TablesIcebergCatalogCount",true))
+        {
+            if(this.S3TablesIcebergCatalogCount == null) {
+
+                this.S3TablesIcebergCatalogCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3TablesIcebergCatalogCount != null && ec.Excludes("s3TablesIcebergCatalogCount",true))
+        {
+            this.S3TablesIcebergCatalogCount = null;
+        }
+        //      C# -> System.Int32? S3TablesIcebergNamespaceCount
+        // GraphQL -> s3TablesIcebergNamespaceCount: Int! (scalar)
+        if (ec.Includes("s3TablesIcebergNamespaceCount",true))
+        {
+            if(this.S3TablesIcebergNamespaceCount == null) {
+
+                this.S3TablesIcebergNamespaceCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3TablesIcebergNamespaceCount != null && ec.Excludes("s3TablesIcebergNamespaceCount",true))
+        {
+            this.S3TablesIcebergNamespaceCount = null;
+        }
+        //      C# -> System.Int32? S3TablesIcebergTableCount
+        // GraphQL -> s3TablesIcebergTableCount: Int! (scalar)
+        if (ec.Includes("s3TablesIcebergTableCount",true))
+        {
+            if(this.S3TablesIcebergTableCount == null) {
+
+                this.S3TablesIcebergTableCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3TablesIcebergTableCount != null && ec.Excludes("s3TablesIcebergTableCount",true))
+        {
+            this.S3TablesIcebergTableCount = null;
+        }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (ec.Includes("slaPauseStatus",true))
@@ -1667,6 +1793,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

@@ -178,6 +178,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 		# OPTIONAL
     /// 		sslKeyfilePassword = $someString
+    /// 		# OPTIONAL
+    /// 		nodePreference = $someMongoNodePreference # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoNodePreference]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	clusterUuid = $someString
@@ -636,6 +638,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 		# OPTIONAL
     /// 		sslKeyfilePassword = $someString
+    /// 		# OPTIONAL
+    /// 		nodePreference = $someMongoNodePreference # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoNodePreference]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -878,6 +882,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
     /// 		# OPTIONAL
     /// 		sslKeyfilePassword = $someString
+    /// 		# OPTIONAL
+    /// 		nodePreference = $someMongoNodePreference # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoNodePreference]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	id = $someString
@@ -1254,6 +1260,8 @@ $query.Var.input = @{
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 		# OPTIONAL
 		sslKeyfilePassword = $someString
+		# OPTIONAL
+		nodePreference = $someMongoNodePreference # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoNodePreference]) for enum values.
 	}
 	# REQUIRED
 	clusterUuid = $someString
@@ -1625,6 +1633,8 @@ $query.Var.input = @{
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 		# OPTIONAL
 		sslKeyfilePassword = $someString
+		# OPTIONAL
+		nodePreference = $someMongoNodePreference # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoNodePreference]) for enum values.
 	}
 	# REQUIRED
 	id = $someString
@@ -1835,6 +1845,8 @@ $query.Var.input = @{
 		sourceAuthenticationType = $someMongoAuthenticationType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoAuthenticationType]) for enum values.
 		# OPTIONAL
 		sslKeyfilePassword = $someString
+		# OPTIONAL
+		nodePreference = $someMongoNodePreference # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MongoNodePreference]) for enum values.
 	}
 	# REQUIRED
 	id = $someString

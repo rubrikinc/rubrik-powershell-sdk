@@ -1,0 +1,86 @@
+### PureStorageArrayV1
+A Pure Storage array managed by Rubrik.
+
+- cdmId: System.String
+  - ID of the array on the Rubrik cluster.
+- clusterUuid: System.String
+  - UUID of CDM cluster.
+- primaryClusterUuid: System.String
+  - UUID of the Rubrik cluster managing this array.
+- pureStorageId: System.String
+  - ID of the array in Pure Storage.
+- hostName: System.String
+  - Hostname or IP address of the array.
+- connectionStatus: RefreshableObjectConnectionStatus
+  - Connection status between Rubrik and the array.
+- version: System.String
+  - Pure Storage software version of the array.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- descendantConnection: PureStorageArrayDescendantV1Connection
+  - List of descendants.
+- logicalChildConnection: PureStorageArrayLogicalChildTypeConnection
+  - List of logical children.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because
+there is no guarantee that Rubrik has knowledge about the source cluster.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being
+communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from object ID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by
+replication.
+- crossAccountReplicatedObjectInfos: list of CrossAccountReplicatedObjectInfos
+  - Cross-account objects either replicated by this object or related to this
+object by replication.
+- latestUserNote: LatestUserNote
+  - Latest user note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this
+object by replication.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

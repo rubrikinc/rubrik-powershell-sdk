@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("actorIpAddresses")]
         public List<System.String>? ActorIpAddresses { get; set; }
 
+        //      C# -> List<System.String>? ActorTypes
+        // GraphQL -> actorTypes: [String!] (scalar)
+        [JsonProperty("actorTypes")]
+        public List<System.String>? ActorTypes { get; set; }
+
 
         #endregion
 

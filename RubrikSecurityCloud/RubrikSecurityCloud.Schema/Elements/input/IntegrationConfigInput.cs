@@ -74,6 +74,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workday")]
         public WorkdayIntegrationConfigInput? Workday { get; set; }
 
+        //      C# -> SailPointIntegrationConfigInput? SailPoint
+        // GraphQL -> sailPoint: SailPointIntegrationConfigInput (input)
+        [JsonProperty("sailPoint")]
+        public SailPointIntegrationConfigInput? SailPoint { get; set; }
+
 
         #endregion
 

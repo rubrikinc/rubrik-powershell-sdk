@@ -85,6 +85,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslKeyfilePassword")]
         public System.String? SslKeyfilePassword { get; set; }
 
+        //      C# -> MongoNodePreference? NodePreference
+        // GraphQL -> nodePreference: MongoNodePreference (enum)
+        [JsonProperty("nodePreference")]
+        public MongoNodePreference? NodePreference { get; set; }
+
 
         #endregion
 

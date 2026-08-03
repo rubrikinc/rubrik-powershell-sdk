@@ -120,6 +120,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.m365BackupStorageObjectRestorePointsInput = @{
     /// 	# REQUIRED
@@ -747,19 +751,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         }
 
         // Create new GraphQL Query:
-        // m365BackupStorageObjectRestorePoints(first: Int, after: String, m365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectRestorePointsInput!): M365BackupStorageRestorePointConnection!
+        // m365BackupStorageObjectRestorePoints(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     m365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectRestorePointsInput!
+        //   ): M365BackupStorageRestorePointConnection!
         internal void InitQueryM365BackupStorageObjectRestorePoints()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("m365BackupStorageObjectRestorePointsInput", "M365BackupStorageObjectRestorePointsInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryM365BackupStorageObjectRestorePoints",
-                "($first: Int,$after: String,$m365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectRestorePointsInput!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$m365BackupStorageObjectRestorePointsInput: M365BackupStorageObjectRestorePointsInput!)",
                 "M365BackupStorageRestorePointConnection",
                 Query.M365BackupStorageObjectRestorePoints,
                 Query.M365BackupStorageObjectRestorePointsFieldSpec,
@@ -767,6 +779,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.m365BackupStorageObjectRestorePointsInput = @{
 	# REQUIRED

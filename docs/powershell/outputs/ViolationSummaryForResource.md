@@ -1,4 +1,6 @@
 ### ViolationSummaryForResource
+
+
 - activeViolationsCount: System.Int32
 - criticalSeverityViolationCount: System.Int32
 - highSeverityViolationCount: System.Int32

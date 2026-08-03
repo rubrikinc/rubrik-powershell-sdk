@@ -58,3 +58,15 @@ customer-onboarded cloud accounts (e.g., Azure, AWS, GCP).
 - CLOUD_COMPLIANCE_REPORT - Cloud Compliance Report - cloud-native workloads with dimensional model.
 - LICENSE_USAGE_REPORT - License usage report.
 - CONSOLIDATED_LICENSE_USAGE_REPORT - Consolidated per-child-account license usage report.
+- CNP_PROTECTION_TASKS_DETAIL_REPORT - Cloud Native Protection (CNP) protection tasks detail report. Scopes the
+protection tasks detail data to cloud-native (AWS, Azure, GCP) object
+types.
+- IDENTITY_SEGMENTATION_AUDIT_REPORT - Entra identity-segmentation audit report: per-user licensing
+classification for a selected month.
+- CNP_RECOVERY_TASKS_DETAIL_REPORT - Cloud Native Protection (CNP) recovery tasks detail report. Scopes the
+recovery tasks detail data to cloud-native (AWS, Azure, GCP) object
+types.
+- CLOUD_COST_REPORT - Cloud cost report for cloud-native protection cost analysis.
+Displays cost breakdown by cloud provider, account, and cost dimension
+with tag-level attribution. Supports time series and bar charts.
+- SCRIPT_REPORT - TBD.

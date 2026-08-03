@@ -89,14 +89,6 @@ Create a vSphere Live Mount from a snapshot or point-in-time.
 
 - There is a single argument of type VsphereVmInitiateLiveMountV2Input.
 - Returns AsyncRequestStatus.
-### listesxidatastores
-List ESXi datastores
-
-Supported in v5.0+
-Retrieve a list of the datastores for a specified ESXi host.
-
-- There is a single argument of type VsphereVmListEsxiDatastoresInput.
-- Returns VsphereVmListEsxiDatastoresReply.
 ### mountrelocate
 Relocate a virtual machine to another datastore
 

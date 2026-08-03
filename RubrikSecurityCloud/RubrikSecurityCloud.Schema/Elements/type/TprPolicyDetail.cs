@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("description")]
         public System.String? Description { get; set; }
 
+        //      C# -> System.Boolean? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: Boolean! (scalar)
+        [JsonProperty("isCdmEnforcementDisabled")]
+        public System.Boolean? IsCdmEnforcementDisabled { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -83,6 +88,7 @@ namespace RubrikSecurityCloud.Types
         TprPolicyScope? PolicyScope = null,
         DateTime? CreatedAt = null,
         System.String? Description = null,
+        System.Boolean? IsCdmEnforcementDisabled = null,
         System.String? Name = null,
         System.String? OrgId = null,
         System.String? PolicyId = null,
@@ -100,6 +106,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Description != null ) {
             this.Description = Description;
+        }
+        if ( IsCdmEnforcementDisabled != null ) {
+            this.IsCdmEnforcementDisabled = IsCdmEnforcementDisabled;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "description\n" ;
             } else {
                 s += ind + "description\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: Boolean! (scalar)
+        if (this.IsCdmEnforcementDisabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCdmEnforcementDisabled\n" ;
+            } else {
+                s += ind + "isCdmEnforcementDisabled\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -292,6 +310,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Description != null && ec.Excludes("description",true))
         {
             this.Description = null;
+        }
+        //      C# -> System.Boolean? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: Boolean! (scalar)
+        if (ec.Includes("isCdmEnforcementDisabled",true))
+        {
+            if(this.IsCdmEnforcementDisabled == null) {
+
+                this.IsCdmEnforcementDisabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCdmEnforcementDisabled != null && ec.Excludes("isCdmEnforcementDisabled",true))
+        {
+            this.IsCdmEnforcementDisabled = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

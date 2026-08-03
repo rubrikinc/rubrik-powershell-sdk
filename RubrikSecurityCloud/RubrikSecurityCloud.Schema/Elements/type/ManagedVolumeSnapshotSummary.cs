@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQueuedSnapshot")]
         public System.Boolean? IsQueuedSnapshot { get; set; }
 
+        //      C# -> System.Boolean? IsTlsEnabledAtSnapshot
+        // GraphQL -> isTlsEnabledAtSnapshot: Boolean (scalar)
+        [JsonProperty("isTlsEnabledAtSnapshot")]
+        public System.Boolean? IsTlsEnabledAtSnapshot { get; set; }
+
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         [JsonProperty("baseSnapshotSummary")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public ManagedVolumeSnapshotSummary Set(
         System.Boolean? IsQueuedSnapshot = null,
+        System.Boolean? IsTlsEnabledAtSnapshot = null,
         BaseSnapshotSummary? BaseSnapshotSummary = null,
         ManagedVolumeSnapshotLinks? Links = null
     ) 
     {
         if ( IsQueuedSnapshot != null ) {
             this.IsQueuedSnapshot = IsQueuedSnapshot;
+        }
+        if ( IsTlsEnabledAtSnapshot != null ) {
+            this.IsTlsEnabledAtSnapshot = IsTlsEnabledAtSnapshot;
         }
         if ( BaseSnapshotSummary != null ) {
             this.BaseSnapshotSummary = BaseSnapshotSummary;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isQueuedSnapshot\n" ;
             } else {
                 s += ind + "isQueuedSnapshot\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTlsEnabledAtSnapshot
+        // GraphQL -> isTlsEnabledAtSnapshot: Boolean (scalar)
+        if (this.IsTlsEnabledAtSnapshot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTlsEnabledAtSnapshot\n" ;
+            } else {
+                s += ind + "isTlsEnabledAtSnapshot\n" ;
             }
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
@@ -129,6 +147,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsQueuedSnapshot != null && ec.Excludes("isQueuedSnapshot",true))
         {
             this.IsQueuedSnapshot = null;
+        }
+        //      C# -> System.Boolean? IsTlsEnabledAtSnapshot
+        // GraphQL -> isTlsEnabledAtSnapshot: Boolean (scalar)
+        if (ec.Includes("isTlsEnabledAtSnapshot",true))
+        {
+            if(this.IsTlsEnabledAtSnapshot == null) {
+
+                this.IsTlsEnabledAtSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTlsEnabledAtSnapshot != null && ec.Excludes("isTlsEnabledAtSnapshot",true))
+        {
+            this.IsTlsEnabledAtSnapshot = null;
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)

@@ -15,3 +15,5 @@ Used when dns_recovery_type = DNS_RECOVERY_TYPE_CUSTOM_DNS.
   - Whether to reset Kerberos tickets.
 - winTimeServers: list of System.Strings
   - Windows time server addresses (optional).
+- recoveryPointInTime: DateTime
+  - Operator's chosen recovery point-in-time for the forest recovery.

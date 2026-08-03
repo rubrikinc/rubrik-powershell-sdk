@@ -229,3 +229,4 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - S3_TABLES_ICEBERG_CATALOG - S3 Tables Iceberg catalog.
 - S3_TABLES_ICEBERG_NAMESPACE - S3 Tables Iceberg namespace.
 - S3_TABLES_ICEBERG_TABLE - S3 Tables Iceberg table.
+- RSC_TAG - RSC system tag.

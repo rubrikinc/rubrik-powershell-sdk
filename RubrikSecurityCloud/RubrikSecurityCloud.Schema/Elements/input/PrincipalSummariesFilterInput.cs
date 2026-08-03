@@ -29,6 +29,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("riskLevel")]
         public List<RiskLevelType>? RiskLevel { get; set; }
 
+        //      C# -> List<System.String>? PolicyIds
+        // GraphQL -> policyIds: [String!]! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("policyIds")]
+        public List<System.String>? PolicyIds { get; set; }
+
         //      C# -> System.String? PrincipalName
         // GraphQL -> principalName: String (scalar)
         [JsonProperty("principalName")]
@@ -43,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> objectIds: [String!] (scalar)
         [JsonProperty("objectIds")]
         public List<System.String>? ObjectIds { get; set; }
+
+        //      C# -> PrincipalSummaryCategoryType? PrincipalSummaryCategory
+        // GraphQL -> principalSummaryCategory: PrincipalSummaryCategoryType (enum)
+        [JsonProperty("principalSummaryCategory")]
+        public PrincipalSummaryCategoryType? PrincipalSummaryCategory { get; set; }
 
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: String (scalar)
@@ -144,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("newlyAdded")]
         public System.Boolean? NewlyAdded { get; set; }
 
+        //      C# -> TimeRangeInput? NativeCreationTime
+        // GraphQL -> nativeCreationTime: TimeRangeInput (input)
+        [JsonProperty("nativeCreationTime")]
+        public TimeRangeInput? NativeCreationTime { get; set; }
+
         //      C# -> List<MfaStrength>? EntraMfaStrength
         // GraphQL -> entraMfaStrength: [MfaStrength!] (enum)
         [JsonProperty("entraMfaStrength")]
@@ -184,22 +201,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("editorsForGpo")]
         public System.String? EditorsForGpo { get; set; }
 
-        //      C# -> List<System.String>? PolicyIds
-        // GraphQL -> policyIds: [String!]! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("policyIds")]
-        public List<System.String>? PolicyIds { get; set; }
-
-        //      C# -> TimeRangeInput? NativeCreationTime
-        // GraphQL -> nativeCreationTime: TimeRangeInput (input)
-        [JsonProperty("nativeCreationTime")]
-        public TimeRangeInput? NativeCreationTime { get; set; }
-
-        //      C# -> PrincipalSummaryCategoryType? PrincipalSummaryCategory
-        // GraphQL -> principalSummaryCategory: PrincipalSummaryCategoryType (enum)
-        [JsonProperty("principalSummaryCategory")]
-        public PrincipalSummaryCategoryType? PrincipalSummaryCategory { get; set; }
+        //      C# -> List<GpoSettingFilterInput>? GpoSettingFilters
+        // GraphQL -> gpoSettingFilters: [GpoSettingFilterInput!] (input)
+        [JsonProperty("gpoSettingFilters")]
+        public List<GpoSettingFilterInput>? GpoSettingFilters { get; set; }
 
 
         #endregion

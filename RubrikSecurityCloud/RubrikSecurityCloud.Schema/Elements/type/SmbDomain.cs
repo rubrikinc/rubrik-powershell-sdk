@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("accountName")]
         public System.String? AccountName { get; set; }
 
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        [JsonProperty("dnsServers")]
+        public List<System.String>? DnsServers { get; set; }
+
         //      C# -> System.String? DomainId
         // GraphQL -> domainId: String! (scalar)
         [JsonProperty("domainId")]
@@ -67,6 +72,7 @@ namespace RubrikSecurityCloud.Types
     public SmbDomain Set(
         SmbAuthenticationStatus? Status = null,
         System.String? AccountName = null,
+        List<System.String>? DnsServers = null,
         System.String? DomainId = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
@@ -79,6 +85,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
+        }
+        if ( DnsServers != null ) {
+            this.DnsServers = DnsServers;
         }
         if ( DomainId != null ) {
             this.DomainId = DomainId;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountName\n" ;
             } else {
                 s += ind + "accountName\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (this.DnsServers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dnsServers\n" ;
+            } else {
+                s += ind + "dnsServers\n" ;
             }
         }
         //      C# -> System.String? DomainId
@@ -215,6 +233,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccountName != null && ec.Excludes("accountName",true))
         {
             this.AccountName = null;
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (ec.Includes("dnsServers",true))
+        {
+            if(this.DnsServers == null) {
+
+                this.DnsServers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DnsServers != null && ec.Excludes("dnsServers",true))
+        {
+            this.DnsServers = null;
         }
         //      C# -> System.String? DomainId
         // GraphQL -> domainId: String! (scalar)

@@ -1,5 +1,5 @@
 ### IdentityMetadata
-
+Metadata describing an identity resource involved in a policy violation.
 
 - displayName: System.String
   - Display name of the user.

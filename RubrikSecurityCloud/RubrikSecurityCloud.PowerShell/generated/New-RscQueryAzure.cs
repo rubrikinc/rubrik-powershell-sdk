@@ -143,6 +143,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// 
@@ -204,11 +215,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
-    /// $query.Var.sortByOption = @(
-    /// 	$someAzureAdObjectSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
-    /// )
+    /// $query.Var.last = $someInt
     /// # OPTIONAL
-    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
@@ -227,6 +236,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// }
+    /// # OPTIONAL
+    /// $query.Var.sortByOption = @(
+    /// 	$someAzureAdObjectSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+    /// )
+    /// # OPTIONAL
+    /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -982,6 +997,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// # OPTIONAL
@@ -1130,6 +1156,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// # OPTIONAL
@@ -1222,6 +1259,17 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 		# OPTIONAL
     /// 		timeParam = $someDateTime
+    /// 		# OPTIONAL
+    /// 		nativeTagFilterParams = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+    /// 				# OPTIONAL
+    /// 				nativeTagIds = @(
+    /// 					$someString
+    /// 				)
+    /// 			}
+    /// 		)
     /// }
     /// )
     /// # OPTIONAL
@@ -1805,6 +1853,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	resourceGroupFilter = @{
     /// 		# REQUIRED
     /// 		resourceGroupNames = @(
@@ -1816,13 +1871,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		subscriptionIds = @(
     /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
     /// 		)
     /// 	}
     /// }
@@ -2069,6 +2117,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
@@ -2266,6 +2318,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	regionFilter = @{
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
     /// 	resourceGroupFilter = @{
     /// 		# REQUIRED
     /// 		resourceGroupNames = @(
@@ -2280,19 +2341,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	regionFilter = @{
-    /// 		# REQUIRED
-    /// 		regions = @(
-    /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
     /// 	azureNativeIsEligibleForSqlDatabaseServerProtectionFilter = @{
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
-    /// 	# OPTIONAL
-    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2347,20 +2399,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	resourceGroupFilter = @{
-    /// 		# REQUIRED
-    /// 		resourceGroupNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
     /// 	regionFilter = @{
     /// 		# REQUIRED
     /// 		regions = @(
@@ -2410,12 +2448,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	serverId = $someString
     /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	resourceGroupFilter = @{
+    /// 		# REQUIRED
+    /// 		resourceGroupNames = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	subscriptionFilter = @{
+    /// 		# REQUIRED
+    /// 		subscriptionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	azureNativeIsEligibleForSqlDatabaseDbProtectionFilter = @{
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
-    /// 	# OPTIONAL
-    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -2502,20 +2554,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	resourceGroupFilter = @{
-    /// 		# REQUIRED
-    /// 		resourceGroupNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
     /// 	regionFilter = @{
     /// 		# REQUIRED
     /// 		regions = @(
@@ -2551,12 +2589,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	serverId = $someString
     /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	resourceGroupFilter = @{
+    /// 		# REQUIRED
+    /// 		resourceGroupNames = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	subscriptionFilter = @{
+    /// 		# REQUIRED
+    /// 		subscriptionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	azureNativeIsEligibleForSqlMiDbProtectionFilter = @{
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
-    /// 	# OPTIONAL
-    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -2675,20 +2727,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
-    /// 	resourceGroupFilter = @{
-    /// 		# REQUIRED
-    /// 		resourceGroupNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
     /// 	regionFilter = @{
     /// 		# REQUIRED
     /// 		regions = @(
@@ -2710,12 +2748,26 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
+    /// 	# OPTIONAL
+    /// 	resourceGroupFilter = @{
+    /// 		# REQUIRED
+    /// 		resourceGroupNames = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	subscriptionFilter = @{
+    /// 		# REQUIRED
+    /// 		subscriptionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	azureNativeIsEligibleForSqlMiServerProtectionFilter = @{
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
-    /// 	# OPTIONAL
-    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -4421,6 +4473,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )"
             );
@@ -4450,24 +4513,28 @@ $query.Var.workloadFid = $someString"
         // azureAdObjectsByType(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
+        //     input: AzureAdObjectTypeInput!
         //     sortByOption: [AzureAdObjectSearchType!]
         //     sortOrder: SortOrder
-        //     input: AzureAdObjectTypeInput!
         //   ): AzureAdObjectConnection!
         internal void InitQueryAzureAdObjectsByType()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("input", "AzureAdObjectTypeInput!"),
                 Tuple.Create("sortByOption", "[AzureAdObjectSearchType!]"),
                 Tuple.Create("sortOrder", "SortOrder"),
-                Tuple.Create("input", "AzureAdObjectTypeInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureAdObjectsByType",
-                "($first: Int,$after: String,$sortByOption: [AzureAdObjectSearchType!],$sortOrder: SortOrder,$input: AzureAdObjectTypeInput!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$input: AzureAdObjectTypeInput!,$sortByOption: [AzureAdObjectSearchType!],$sortOrder: SortOrder)",
                 "AzureAdObjectConnection",
                 Query.AzureAdObjectsByType,
                 Query.AzureAdObjectsByTypeFieldSpec,
@@ -4476,11 +4543,9 @@ $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
 # OPTIONAL
-$query.Var.sortByOption = @(
-	$someAzureAdObjectSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
-)
+$query.Var.last = $someInt
 # OPTIONAL
-$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.input = @{
 	# REQUIRED
@@ -4498,7 +4563,13 @@ $query.Var.input = @{
 			searchKeywordType = $someString
 		}
 	)
-}"
+}
+# OPTIONAL
+$query.Var.sortByOption = @(
+	$someAzureAdObjectSearchType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAdObjectSearchType]) for enum values.
+)
+# OPTIONAL
+$query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values."
             );
         }
 
@@ -5169,6 +5240,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )
 # OPTIONAL
@@ -5313,6 +5395,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )
 # OPTIONAL
@@ -5417,6 +5510,17 @@ $query.Var.filter = @(
 		)
 		# OPTIONAL
 		timeParam = $someDateTime
+		# OPTIONAL
+		nativeTagFilterParams = @(
+			@{
+				# OPTIONAL
+				source = $someNativeTagSource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.NativeTagSource]) for enum values.
+				# OPTIONAL
+				nativeTagIds = @(
+					$someString
+				)
+			}
+		)
 }
 )
 # OPTIONAL
@@ -5881,6 +5985,13 @@ $query.Var.azurePostgresFlexibleServerFilters = @{
 		)
 	}
 	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
 	resourceGroupFilter = @{
 		# REQUIRED
 		resourceGroupNames = @(
@@ -5892,13 +6003,6 @@ $query.Var.azurePostgresFlexibleServerFilters = @{
 		# REQUIRED
 		subscriptionIds = @(
 			$someString
-		)
-	}
-	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
 		)
 	}
 }"
@@ -6119,19 +6223,27 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
         }
 
         // Create new GraphQL Query:
-        // searchAzureAdSnapshot(first: Int, after: String, input: SearchAzureAdSnapshotInput!): AzureAdObjectConnection!
+        // searchAzureAdSnapshot(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     input: SearchAzureAdSnapshotInput!
+        //   ): AzureAdObjectConnection!
         internal void InitQuerySearchAzureAdSnapshot()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("input", "SearchAzureAdSnapshotInput!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySearchAzureAdSnapshot",
-                "($first: Int,$after: String,$input: SearchAzureAdSnapshotInput!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$input: SearchAzureAdSnapshotInput!)",
                 "AzureAdObjectConnection",
                 Query.SearchAzureAdSnapshot,
                 Query.SearchAzureAdSnapshotFieldSpec,
@@ -6139,6 +6251,10 @@ $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSe
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.input = @{
 	# REQUIRED
@@ -6327,6 +6443,15 @@ $query.Var.azureSqlDatabaseServerFilters = @{
 		)
 	}
 	# OPTIONAL
+	regionFilter = @{
+		# REQUIRED
+		regions = @(
+			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
+	# OPTIONAL
 	resourceGroupFilter = @{
 		# REQUIRED
 		resourceGroupNames = @(
@@ -6341,19 +6466,10 @@ $query.Var.azureSqlDatabaseServerFilters = @{
 		)
 	}
 	# OPTIONAL
-	regionFilter = @{
-		# REQUIRED
-		regions = @(
-			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
-		)
-	}
-	# OPTIONAL
 	azureNativeIsEligibleForSqlDatabaseServerProtectionFilter = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-	# OPTIONAL
-	isEligibleForProtection = $someBoolean
 }"
             );
         }
@@ -6416,20 +6532,6 @@ $query.Var.azureSqlDatabaseFilters = @{
 		)
 	}
 	# OPTIONAL
-	resourceGroupFilter = @{
-		# REQUIRED
-		resourceGroupNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
 	regionFilter = @{
 		# REQUIRED
 		regions = @(
@@ -6479,12 +6581,26 @@ $query.Var.azureSqlDatabaseFilters = @{
 	# OPTIONAL
 	serverId = $someString
 	# OPTIONAL
+	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	azureNativeIsEligibleForSqlDatabaseDbProtectionFilter = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-	# OPTIONAL
-	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -6572,20 +6688,6 @@ $query.Var.azureSqlManagedInstanceDatabaseFilters = @{
 		)
 	}
 	# OPTIONAL
-	resourceGroupFilter = @{
-		# REQUIRED
-		resourceGroupNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
 	regionFilter = @{
 		# REQUIRED
 		regions = @(
@@ -6621,12 +6723,26 @@ $query.Var.azureSqlManagedInstanceDatabaseFilters = @{
 	# OPTIONAL
 	serverId = $someString
 	# OPTIONAL
+	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	azureNativeIsEligibleForSqlMiDbProtectionFilter = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-	# OPTIONAL
-	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"
@@ -6743,20 +6859,6 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 		)
 	}
 	# OPTIONAL
-	resourceGroupFilter = @{
-		# REQUIRED
-		resourceGroupNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
 	regionFilter = @{
 		# REQUIRED
 		regions = @(
@@ -6778,12 +6880,26 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 		)
 	}
 	# OPTIONAL
+	isEligibleForProtection = $someBoolean
+	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	azureNativeIsEligibleForSqlMiServerProtectionFilter = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-	# OPTIONAL
-	isEligibleForProtection = $someBoolean
 }"
             );
         }

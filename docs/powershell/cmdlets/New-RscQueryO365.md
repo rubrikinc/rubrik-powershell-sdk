@@ -78,6 +78,9 @@ List of Mailboxes in the O365Org.
     - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365MailboxConnection.
 ### objectancestors
+GetO365ObjectAncestors returns the ancestor object summaries for the
+given object that the caller is implicitly authorized to view.
+
 - There is a single argument of type System.String.
 - Returns GetImplicitlyAuthorizedAncestorSummariesResponse.
 ### onedrive
@@ -125,6 +128,9 @@ Gets the status of each org in the account.
 - The orgstatuses subcommand takes no arguments.
 - Returns list of O365OrgInfos.
 ### orgsummaries
+GetO365OrgSummaries returns the O365 organizations that the caller is
+implicitly authorized to view.
+
 - The orgsummaries subcommand takes no arguments.
 - Returns GetImplicitlyAuthorizedObjectSummariesResponse.
 ### queryrecoveryanalysisresult
@@ -316,7 +322,9 @@ Name, id, object type, and mail address of user descendant object.
     - fid - System.String: Rubrik UUID for the object.
 - Returns O365UserDescendantMetadataConnection.
 ### userselfserviceinfo
-Returns the self service information for the logged-in user, which includes the user name and the M365 object details.
+GetSelfServiceInfoForCurrentUser returns the self service info for the
+currently logged-in user, including the user's name, OneDrive ID, and
+mailbox ID (if they exist).
 
 - The userselfserviceinfo subcommand takes no arguments.
 - Returns GetSelfServiceInfoForUserResp.

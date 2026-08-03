@@ -57,3 +57,5 @@ Anomaly analysis report from lambda service.
   - The analyzed snapshot.
 - ransomwareResult: RansomwareResult
   - The ransomware analysis result, including encryption.
+- resourceDeletedAt: DateTime
+  - The timestamp when the resource was deleted. Populated only when the anomaly was caused by accidental deletion. Null otherwise.

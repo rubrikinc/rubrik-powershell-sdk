@@ -314,8 +314,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
-    /// 	# OPTIONAL
-    /// 	userNote = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -331,6 +329,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 		)
     /// 	}
+    /// 	# OPTIONAL
+    /// 	userNote = $someString
     /// }
     /// 
     /// # Execute the query
@@ -557,14 +557,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	locationId = $someString
-    /// 	# REQUIRED
-    /// 	snapshotId = $someString
-    /// 	# REQUIRED
     /// 	downloadConfig = @{
     /// 		# OPTIONAL
     /// 		slaId = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	snapshotId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1000,8 +1000,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	scvmm = @{
     /// 		# REQUIRED
     /// 		hostname = $someString
@@ -1010,6 +1008,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		shouldDeployAgent = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1118,8 +1118,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	updateProperties = @{
     /// 		# OPTIONAL
     /// 		configuredSlaDomainId = $someString
@@ -1130,6 +1128,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		shouldDeployAgent = $someBoolean
     /// 	}
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1821,8 +1821,6 @@ $query.Var.input = @{
                 Mutation.BatchOnDemandBackupHypervVmFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
-	# OPTIONAL
-	userNote = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -1838,6 +1836,8 @@ $query.Var.input = @{
 			}
 		)
 	}
+	# OPTIONAL
+	userNote = $someString
 }"
             );
         }
@@ -2016,14 +2016,14 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	locationId = $someString
-	# REQUIRED
-	snapshotId = $someString
-	# REQUIRED
 	downloadConfig = @{
 		# OPTIONAL
 		slaId = $someString
 	}
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	snapshotId = $someString
 }"
             );
         }
@@ -2371,8 +2371,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	scvmm = @{
 		# REQUIRED
 		hostname = $someString
@@ -2381,6 +2379,8 @@ $query.Var.input = @{
 		# REQUIRED
 		shouldDeployAgent = $someBoolean
 	}
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }
@@ -2465,8 +2465,6 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	updateProperties = @{
 		# OPTIONAL
 		configuredSlaDomainId = $someString
@@ -2477,6 +2475,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		shouldDeployAgent = $someBoolean
 	}
+	# REQUIRED
+	id = $someString
 }"
             );
         }

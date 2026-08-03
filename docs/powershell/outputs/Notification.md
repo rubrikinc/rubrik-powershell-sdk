@@ -1,0 +1,31 @@
+### Notification
+All information regarding the notification.
+
+- id: System.String
+  - The UUID of the notification.
+- level: NotificationLevel
+  - The notification level.
+- priority: NotificationPriority
+  - The notification priority.
+- message: System.String
+  - Notification message with placeholders for dynamic values.
+- resourceId: System.String
+  - Resource ID associated with the notification.
+- resourceType: NotificationResourceType
+  - The resource type associated with the notification.
+- resourceSubtype: NotificationResourceSubtype
+  - The resource subtype associated with the notification and resource.
+- createdAt: DateTime
+  - Creation date of notification.
+- isRead: System.Boolean
+  - Read state of notification.
+- variables: System.String
+  - Values for the message placeholders.
+- subtype: NotificationSubtype
+  - Notification subtype.
+- application: NotificationApplication
+  - Application that sent the notification.
+- defaultAction: System.String
+  - Primary call to action of the notification.
+- metadata: System.String
+  - Metadata associated with the notification.

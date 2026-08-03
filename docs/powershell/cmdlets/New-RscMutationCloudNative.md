@@ -56,6 +56,13 @@ Create index of cloudnative snapshots
 
 - There is a single argument of type StartCloudNativeSnapshotsIndexJobInput.
 - Returns BatchAsyncJobStatus.
+### updatecustomersettings
+Updates the cloud-native customer settings for the calling account and
+returns the updated values. Only the fields provided in the input are
+persisted; omitted fields are left unchanged.
+
+- There is a single argument of type UpdateCloudNativeCustomerSettingsInput.
+- Returns UpdateCloudNativeCustomerSettingsReply.
 ### updateindexingstatus
 Update indexing status for cloudnative snappables
 

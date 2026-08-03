@@ -61,3 +61,7 @@ Name of product.
 - SONAR_BAAS - Sensitive Data Discovery on BaaS workloads (full AWS).
 - APPFLOWS_ADFR - AppFlows for Active Directory Forest Recovery.
 - OKTA_CIAM - Okta Customer Identity Access Management Recovery.
+- CLOUD_APPLICATION_RESILIENCE - Cloud Application Resilience.
+- RVC_LOCAL_STORAGE - Rubrik Virtual Cluster Local Storage deployment.
+- RVC_SHARED_STORAGE - Rubrik Virtual Cluster Shared Storage deployment.
+- SALESFORCE_ARCHIVAL - Salesforce archiving.

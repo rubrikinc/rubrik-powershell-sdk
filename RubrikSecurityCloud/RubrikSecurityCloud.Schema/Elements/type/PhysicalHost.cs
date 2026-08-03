@@ -156,6 +156,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isReplica")]
         public System.Boolean? IsReplica { get; set; }
 
+        //      C# -> System.String? LastSuccessfulUpgradeTime
+        // GraphQL -> lastSuccessfulUpgradeTime: String (scalar)
+        [JsonProperty("lastSuccessfulUpgradeTime")]
+        public System.String? LastSuccessfulUpgradeTime { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -200,6 +205,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> rbaPackageUpgradeInfo: String (scalar)
         [JsonProperty("rbaPackageUpgradeInfo")]
         public System.String? RbaPackageUpgradeInfo { get; set; }
+
+        //      C# -> System.String? RbsVersion
+        // GraphQL -> rbsVersion: String (scalar)
+        [JsonProperty("rbsVersion")]
+        public System.String? RbsVersion { get; set; }
 
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
@@ -280,6 +290,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> mssqlSddDetail: MssqlSddDetail (type)
         [JsonProperty("mssqlSddDetail")]
         public MssqlSddDetail? MssqlSddDetail { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -417,6 +432,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsMssqlHost = null,
         System.Boolean? IsOracleHost = null,
         System.Boolean? IsReplica = null,
+        System.String? LastSuccessfulUpgradeTime = null,
         System.String? Name = null,
         System.String? NasApiEndpoint = null,
         System.String? NasApiHostname = null,
@@ -426,6 +442,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? NumWorkloadDescendants = null,
         System.String? OsName = null,
         System.String? RbaPackageUpgradeInfo = null,
+        System.String? RbsVersion = null,
         System.Int32? ReplicatedObjectCount = null,
         System.String? ResourceInfo = null,
         System.Boolean? SlaPauseStatus = null,
@@ -442,6 +459,7 @@ namespace RubrikSecurityCloud.Types
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
         MssqlSddDetail? MssqlSddDetail = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         OracleSddDetail? OracleSddDetail = null,
         OracleSettings? OracleSettings = null,
@@ -535,6 +553,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsReplica != null ) {
             this.IsReplica = IsReplica;
         }
+        if ( LastSuccessfulUpgradeTime != null ) {
+            this.LastSuccessfulUpgradeTime = LastSuccessfulUpgradeTime;
+        }
         if ( Name != null ) {
             this.Name = Name;
         }
@@ -561,6 +582,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( RbaPackageUpgradeInfo != null ) {
             this.RbaPackageUpgradeInfo = RbaPackageUpgradeInfo;
+        }
+        if ( RbsVersion != null ) {
+            this.RbsVersion = RbsVersion;
         }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
@@ -609,6 +633,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( MssqlSddDetail != null ) {
             this.MssqlSddDetail = MssqlSddDetail;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -917,6 +944,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isReplica\n" ;
             }
         }
+        //      C# -> System.String? LastSuccessfulUpgradeTime
+        // GraphQL -> lastSuccessfulUpgradeTime: String (scalar)
+        if (this.LastSuccessfulUpgradeTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "lastSuccessfulUpgradeTime\n" ;
+            } else {
+                s += ind + "lastSuccessfulUpgradeTime\n" ;
+            }
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
@@ -996,6 +1032,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "rbaPackageUpgradeInfo\n" ;
             } else {
                 s += ind + "rbaPackageUpgradeInfo\n" ;
+            }
+        }
+        //      C# -> System.String? RbsVersion
+        // GraphQL -> rbsVersion: String (scalar)
+        if (this.RbsVersion != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "rbsVersion\n" ;
+            } else {
+                s += ind + "rbsVersion\n" ;
             }
         }
         //      C# -> System.Int32? ReplicatedObjectCount
@@ -1175,6 +1220,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "mssqlSddDetail" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1794,6 +1851,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsReplica = null;
         }
+        //      C# -> System.String? LastSuccessfulUpgradeTime
+        // GraphQL -> lastSuccessfulUpgradeTime: String (scalar)
+        if (ec.Includes("lastSuccessfulUpgradeTime",true))
+        {
+            if(this.LastSuccessfulUpgradeTime == null) {
+
+                this.LastSuccessfulUpgradeTime = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LastSuccessfulUpgradeTime != null && ec.Excludes("lastSuccessfulUpgradeTime",true))
+        {
+            this.LastSuccessfulUpgradeTime = null;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (ec.Includes("name",true))
@@ -1946,6 +2020,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.RbaPackageUpgradeInfo != null && ec.Excludes("rbaPackageUpgradeInfo",true))
         {
             this.RbaPackageUpgradeInfo = null;
+        }
+        //      C# -> System.String? RbsVersion
+        // GraphQL -> rbsVersion: String (scalar)
+        if (ec.Includes("rbsVersion",true))
+        {
+            if(this.RbsVersion == null) {
+
+                this.RbsVersion = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.RbsVersion != null && ec.Excludes("rbsVersion",true))
+        {
+            this.RbsVersion = null;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
@@ -2242,6 +2333,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.MssqlSddDetail != null && ec.Excludes("mssqlSddDetail",false))
         {
             this.MssqlSddDetail = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

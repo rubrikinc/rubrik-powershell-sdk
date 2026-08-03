@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public SlaDomain? EffectiveSlaDomain { get; set; }
 
+        //      C# -> System.String? FixedObjectId
+        // GraphQL -> fixedObjectId: UUID (scalar)
+        [JsonProperty("fixedObjectId")]
+        public System.String? FixedObjectId { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -101,6 +106,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
 
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String (scalar)
+        [JsonProperty("tenantId")]
+        public System.String? TenantId { get; set; }
+
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
         [JsonProperty("url")]
@@ -121,10 +131,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts
+        // GraphQL -> fixedObjectCounts: AzureDevOpsProjectFixedObjectCounts (type)
+        [JsonProperty("fixedObjectCounts")]
+        public AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -191,6 +211,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
+        System.String? FixedObjectId = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
         System.String? Name = null,
@@ -200,11 +221,14 @@ namespace RubrikSecurityCloud.Types
         System.String? OrgName = null,
         System.Int32? RepoCount = null,
         System.Boolean? SlaPauseStatus = null,
+        System.String? TenantId = null,
         System.String? Url = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
+        AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts = null,
         List<PathNode>? LogicalPath = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
@@ -233,6 +257,9 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
         }
+        if ( FixedObjectId != null ) {
+            this.FixedObjectId = FixedObjectId;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -260,6 +287,9 @@ namespace RubrikSecurityCloud.Types
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
         }
+        if ( TenantId != null ) {
+            this.TenantId = TenantId;
+        }
         if ( Url != null ) {
             this.Url = Url;
         }
@@ -272,8 +302,14 @@ namespace RubrikSecurityCloud.Types
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
         }
+        if ( FixedObjectCounts != null ) {
+            this.FixedObjectCounts = FixedObjectCounts;
+        }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -379,6 +415,15 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> System.String? FixedObjectId
+        // GraphQL -> fixedObjectId: UUID (scalar)
+        if (this.FixedObjectId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "fixedObjectId\n" ;
+            } else {
+                s += ind + "fixedObjectId\n" ;
+            }
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -460,6 +505,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "slaPauseStatus\n" ;
             }
         }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String (scalar)
+        if (this.TenantId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tenantId\n" ;
+            } else {
+                s += ind + "tenantId\n" ;
+            }
+        }
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
         if (this.Url != null) {
@@ -505,6 +559,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts
+        // GraphQL -> fixedObjectCounts: AzureDevOpsProjectFixedObjectCounts (type)
+        if (this.FixedObjectCounts != null) {
+            var fspec = this.FixedObjectCounts.AsFieldSpec(conf.Child("fixedObjectCounts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "fixedObjectCounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
@@ -514,6 +580,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -724,6 +802,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaDomain = null;
         }
+        //      C# -> System.String? FixedObjectId
+        // GraphQL -> fixedObjectId: UUID (scalar)
+        if (ec.Includes("fixedObjectId",true))
+        {
+            if(this.FixedObjectId == null) {
+
+                this.FixedObjectId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.FixedObjectId != null && ec.Excludes("fixedObjectId",true))
+        {
+            this.FixedObjectId = null;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (ec.Includes("id",true))
@@ -877,6 +972,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SlaPauseStatus = null;
         }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String (scalar)
+        if (ec.Includes("tenantId",true))
+        {
+            if(this.TenantId == null) {
+
+                this.TenantId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TenantId != null && ec.Excludes("tenantId",true))
+        {
+            this.TenantId = null;
+        }
         //      C# -> System.String? Url
         // GraphQL -> url: URL! (scalar)
         if (ec.Includes("url",true))
@@ -951,6 +1063,25 @@ namespace RubrikSecurityCloud.Types
         {
             this.EffectiveSlaSourceObject = null;
         }
+        //      C# -> AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts
+        // GraphQL -> fixedObjectCounts: AzureDevOpsProjectFixedObjectCounts (type)
+        if (ec.Includes("fixedObjectCounts",false))
+        {
+            if(this.FixedObjectCounts == null) {
+
+                this.FixedObjectCounts = new AzureDevOpsProjectFixedObjectCounts();
+                this.FixedObjectCounts.ApplyExploratoryFieldSpec(ec.NewChild("fixedObjectCounts"));
+
+            } else {
+
+                this.FixedObjectCounts.ApplyExploratoryFieldSpec(ec.NewChild("fixedObjectCounts"));
+
+            }
+        }
+        else if (this.FixedObjectCounts != null && ec.Excludes("fixedObjectCounts",false))
+        {
+            this.FixedObjectCounts = null;
+        }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (ec.Includes("logicalPath",false))
@@ -969,6 +1100,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

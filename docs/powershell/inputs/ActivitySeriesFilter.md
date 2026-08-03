@@ -33,3 +33,5 @@ Filters for list of event series.
   - Filter activities having start time after the specified value.
 - startTimeLt: DateTime
   - Filter activities having start time before the specified value.
+- objectNamePrefix: System.String
+  - Filter by object name prefix.

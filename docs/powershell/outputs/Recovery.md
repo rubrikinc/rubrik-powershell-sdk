@@ -35,7 +35,7 @@ Recovery contains information around a particular recovery.
   - Specifies how was recovery triggered.
 - isAdhocRecovery: System.Boolean
   - Whether this recovery is an adhoc recovery.
-- steps: StepsOneof
-  - Comprehensive recovery steps.
 - recoveryPlanBasicInfo: RecoveryPlanBasicInfo
   - Basic information about the recovery plan associated with this recovery.
+- steps: StepsOneof
+  - Comprehensive recovery steps.

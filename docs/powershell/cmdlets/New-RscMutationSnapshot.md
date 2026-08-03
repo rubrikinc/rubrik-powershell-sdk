@@ -50,6 +50,14 @@ Initiates a job to take an on-demand snapshot of a specified MySQL instance. You
 
 - There is a single argument of type CreateOnDemandMysqldbInstanceSnapshotV2Input.
 - Returns AsyncRequestStatus.
+### createpurestorageprotectiongroup
+Initiate an on-demand snapshot for a Pure Storage protection group
+
+Supported in v9.6+
+Creates an on-demand snapshot request for the specified Pure Storage protection group.
+
+- There is a single argument of type CreatePureStorageProtectionGroupSnapshotInput.
+- Returns AsyncRequestStatus.
 ### createvapps
 Create vApp Snapshots.
 
@@ -90,10 +98,18 @@ Export a FusionCompute virtual machine from a snapshot.
 ### exportproxmoxvm
 Export a Proxmox virtual machine
 
-Supported in v9.5
+Supported in v9.5+
 Export an Proxmox virtual machine from a snapshot.
 
 - There is a single argument of type ExportProxmoxVmSnapshotInput.
+- Returns AsyncRequestStatus.
+### exportpurestorageprotectiongroup
+Export a Pure Storage protection group snapshot.
+
+Supported in v9.6
+Export a Pure Storage protection group from a snapshot.
+
+- There is a single argument of type ExportPureStorageProtectionGroupSnapshotInput.
 - Returns AsyncRequestStatus.
 ### filesetdownloadfiles
 Download files from a fileset backup
@@ -118,6 +134,14 @@ today.
 
 - There is a single argument of type RecoverGlueIcebergTableSnapshotInput.
 - Returns RecoverGlueIcebergTableSnapshotReply.
+### requestpurestorageprotectiongroupforcefull
+Request a full snapshot for the next backup job of a Pure Storage protection group
+
+Supported in v9.6+
+Request a full snapshot to be taken for the next backup job of a Pure Storage protection group.
+
+- There is a single argument of type RequestPureStorageProtectionGroupForceFullSnapshotInput.
+- Returns RequestPureStorageProtectionGroupForceFullSnapshotReply.
 ### restoredomaincontroller
 Initiate Active Directory restore job
 

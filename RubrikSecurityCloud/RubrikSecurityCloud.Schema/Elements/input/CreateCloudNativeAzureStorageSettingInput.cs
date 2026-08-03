@@ -105,6 +105,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureCloudType")]
         public AzureCloudType? AzureCloudType { get; set; }
 
+        //      C# -> AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey
+        // GraphQL -> azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput (input)
+        [JsonProperty("azureKeyVaultKey")]
+        public AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey { get; set; }
+
 
         #endregion
 

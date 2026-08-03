@@ -1,5 +1,6 @@
 ### RestoreAzureAdObjectsWithPasswordsInput
-Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
+Configuration to initiate recovery of AzureAdDirectory with multiple
+passwords.
 
 - workloadFid: System.String
   - Workload Fid of the Azure AD Directory to recover.
@@ -11,10 +12,6 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Map of azureAdObjectType to object IDs.
 - forceChangePasswordWithMfa: System.Boolean
   - Specifies whether to enable MFA during the recovery of one or more users.
-- objectsToDelete: list of ObjectInfoTypes
-  - List of Entra ID objects to soft-delete from the target tenant after restore completes.
-- cleanRecoverySessionId: System.String
-  - Identifier of the clean-recovery session being committed. When set, the operator-approved set of objects and attributes is read from the granular-recovery data written during StartCleanRecovery, and the in-request selection is ignored.
 - relationshipRestoreMode: AzureAdRelationshipRestoreModeEnumType
   - Represents the modes for relationship restore for Azure AD objects.
 - objectRecoveryOptions: ObjectRecoveryOptionsType
@@ -27,3 +24,11 @@ Configuration to initiate recovery of AzureAdDirectory with multiple passwords.
   - Configuration for cross tenant recovery.
 - relationshipConflictResolutionMode: RelationshipConflictResolutionState
   - Deprecated, this field is no longer used and will be ignored.
+- objectsToDelete: list of ObjectInfoTypes
+  - List of Entra ID objects to soft-delete from the target tenant after
+restore completes.
+- cleanRecoverySessionId: System.String
+  - Identifier of the clean-recovery session being committed. When set, the
+operator-approved set of objects and attributes is read from the
+granular-recovery data written during StartCleanRecovery, and the
+in-request selection is ignored.

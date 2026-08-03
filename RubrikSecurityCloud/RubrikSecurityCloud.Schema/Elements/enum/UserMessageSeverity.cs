@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ERROR")]
         ERROR,
 
+        [EnumMember(Value = "INFO")]
+        INFO,
+
         [EnumMember(Value = "WARNING")]
         WARNING
 

@@ -159,6 +159,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectPauseStatus")]
         ObjectPauseStatus? ObjectPauseStatus { get; set; }
 
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
+
         //      C# -> EntityInfo? EntityInfo
         // GraphQL -> entityInfo: EntityInfo! (type)
         [JsonProperty("entityInfo")]

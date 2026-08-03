@@ -54,6 +54,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUDNATIVE")]
         CLOUDNATIVE,
 
+        [EnumMember(Value = "CLOUD_APPLICATION_RESILIENCE")]
+        CLOUD_APPLICATION_RESILIENCE,
+
         [EnumMember(Value = "CLOUD_UNSTRUCTURED")]
         CLOUD_UNSTRUCTURED,
 
@@ -150,8 +153,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RUBRIK_AGENT_CLOUD")]
         RUBRIK_AGENT_CLOUD,
 
+        [EnumMember(Value = "RVC_LOCAL_STORAGE")]
+        RVC_LOCAL_STORAGE,
+
+        [EnumMember(Value = "RVC_SHARED_STORAGE")]
+        RVC_SHARED_STORAGE,
+
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,
+
+        [EnumMember(Value = "SALESFORCE_ARCHIVAL")]
+        SALESFORCE_ARCHIVAL,
 
         [EnumMember(Value = "SALESFORCE_DEVOPS_ADD_ON")]
         SALESFORCE_DEVOPS_ADD_ON,

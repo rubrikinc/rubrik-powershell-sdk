@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("severity")]
         public MatchSeverity? Severity { get; set; }
 
+        //      C# -> System.String? ArchiveRelativePath
+        // GraphQL -> archiveRelativePath: String! (scalar)
+        [JsonProperty("archiveRelativePath")]
+        public System.String? ArchiveRelativePath { get; set; }
+
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
         [JsonProperty("detectedTime")]
@@ -75,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isFirstObservedSnapshotExpired")]
         public System.Boolean? IsFirstObservedSnapshotExpired { get; set; }
 
+        //      C# -> System.Boolean? IsInsideArchive
+        // GraphQL -> isInsideArchive: Boolean! (scalar)
+        [JsonProperty("isInsideArchive")]
+        public System.Boolean? IsInsideArchive { get; set; }
+
         //      C# -> System.Boolean? IsMatchedSnapshotExpired
         // GraphQL -> isMatchedSnapshotExpired: Boolean! (scalar)
         [JsonProperty("isMatchedSnapshotExpired")]
@@ -89,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isValidated: Boolean! (scalar)
         [JsonProperty("isValidated")]
         public System.Boolean? IsValidated { get; set; }
+
+        //      C# -> System.Boolean? IsValidationRequired
+        // GraphQL -> isValidationRequired: Boolean! (scalar)
+        [JsonProperty("isValidationRequired")]
+        public System.Boolean? IsValidationRequired { get; set; }
 
         //      C# -> System.Int64? MatchId
         // GraphQL -> matchId: Long! (scalar)
@@ -138,6 +153,7 @@ namespace RubrikSecurityCloud.Types
         IndicatorOfCompromiseKind? MatchType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         MatchSeverity? Severity = null,
+        System.String? ArchiveRelativePath = null,
         DateTime? DetectedTime = null,
         System.String? FileName = null,
         System.Int64? FileSize = null,
@@ -146,9 +162,11 @@ namespace RubrikSecurityCloud.Types
         System.String? FirstObservedSnapshotFid = null,
         System.Boolean? IsFileVersionQuarantined = null,
         System.Boolean? IsFirstObservedSnapshotExpired = null,
+        System.Boolean? IsInsideArchive = null,
         System.Boolean? IsMatchedSnapshotExpired = null,
         System.Boolean? IsQuarantinedInFirstObservedSnapshot = null,
         System.Boolean? IsValidated = null,
+        System.Boolean? IsValidationRequired = null,
         System.Int64? MatchId = null,
         DateTime? MatchedSnapshotDate = null,
         System.String? MatchedSnapshotFid = null,
@@ -166,6 +184,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Severity != null ) {
             this.Severity = Severity;
+        }
+        if ( ArchiveRelativePath != null ) {
+            this.ArchiveRelativePath = ArchiveRelativePath;
         }
         if ( DetectedTime != null ) {
             this.DetectedTime = DetectedTime;
@@ -191,6 +212,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsFirstObservedSnapshotExpired != null ) {
             this.IsFirstObservedSnapshotExpired = IsFirstObservedSnapshotExpired;
         }
+        if ( IsInsideArchive != null ) {
+            this.IsInsideArchive = IsInsideArchive;
+        }
         if ( IsMatchedSnapshotExpired != null ) {
             this.IsMatchedSnapshotExpired = IsMatchedSnapshotExpired;
         }
@@ -199,6 +223,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsValidated != null ) {
             this.IsValidated = IsValidated;
+        }
+        if ( IsValidationRequired != null ) {
+            this.IsValidationRequired = IsValidationRequired;
         }
         if ( MatchId != null ) {
             this.MatchId = MatchId;
@@ -260,6 +287,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "severity\n" ;
             } else {
                 s += ind + "severity\n" ;
+            }
+        }
+        //      C# -> System.String? ArchiveRelativePath
+        // GraphQL -> archiveRelativePath: String! (scalar)
+        if (this.ArchiveRelativePath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archiveRelativePath\n" ;
+            } else {
+                s += ind + "archiveRelativePath\n" ;
             }
         }
         //      C# -> DateTime? DetectedTime
@@ -334,6 +370,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isFirstObservedSnapshotExpired\n" ;
             }
         }
+        //      C# -> System.Boolean? IsInsideArchive
+        // GraphQL -> isInsideArchive: Boolean! (scalar)
+        if (this.IsInsideArchive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInsideArchive\n" ;
+            } else {
+                s += ind + "isInsideArchive\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsMatchedSnapshotExpired
         // GraphQL -> isMatchedSnapshotExpired: Boolean! (scalar)
         if (this.IsMatchedSnapshotExpired != null) {
@@ -359,6 +404,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isValidated\n" ;
             } else {
                 s += ind + "isValidated\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsValidationRequired
+        // GraphQL -> isValidationRequired: Boolean! (scalar)
+        if (this.IsValidationRequired != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isValidationRequired\n" ;
+            } else {
+                s += ind + "isValidationRequired\n" ;
             }
         }
         //      C# -> System.Int64? MatchId
@@ -484,6 +538,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Severity != null && ec.Excludes("severity",true))
         {
             this.Severity = null;
+        }
+        //      C# -> System.String? ArchiveRelativePath
+        // GraphQL -> archiveRelativePath: String! (scalar)
+        if (ec.Includes("archiveRelativePath",true))
+        {
+            if(this.ArchiveRelativePath == null) {
+
+                this.ArchiveRelativePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchiveRelativePath != null && ec.Excludes("archiveRelativePath",true))
+        {
+            this.ArchiveRelativePath = null;
         }
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
@@ -621,6 +692,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsFirstObservedSnapshotExpired = null;
         }
+        //      C# -> System.Boolean? IsInsideArchive
+        // GraphQL -> isInsideArchive: Boolean! (scalar)
+        if (ec.Includes("isInsideArchive",true))
+        {
+            if(this.IsInsideArchive == null) {
+
+                this.IsInsideArchive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInsideArchive != null && ec.Excludes("isInsideArchive",true))
+        {
+            this.IsInsideArchive = null;
+        }
         //      C# -> System.Boolean? IsMatchedSnapshotExpired
         // GraphQL -> isMatchedSnapshotExpired: Boolean! (scalar)
         if (ec.Includes("isMatchedSnapshotExpired",true))
@@ -671,6 +759,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsValidated != null && ec.Excludes("isValidated",true))
         {
             this.IsValidated = null;
+        }
+        //      C# -> System.Boolean? IsValidationRequired
+        // GraphQL -> isValidationRequired: Boolean! (scalar)
+        if (ec.Includes("isValidationRequired",true))
+        {
+            if(this.IsValidationRequired == null) {
+
+                this.IsValidationRequired = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsValidationRequired != null && ec.Excludes("isValidationRequired",true))
+        {
+            this.IsValidationRequired = null;
         }
         //      C# -> System.Int64? MatchId
         // GraphQL -> matchId: Long! (scalar)

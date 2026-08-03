@@ -25,3 +25,6 @@ Lambda configuration details of the Rubrik cluster.
   - Whether threat monitoring is enabled for Active Directory workloads.
 - threatMonitoringSortByOffset: System.Boolean
   - Whether FMD entries are sorted by physical disk offset before DPS scan.
+- isSmartScanningEnabled: System.Boolean
+  - Indicates whether threat monitoring uses extended file scan coverage for
+this Rubrik cluster.

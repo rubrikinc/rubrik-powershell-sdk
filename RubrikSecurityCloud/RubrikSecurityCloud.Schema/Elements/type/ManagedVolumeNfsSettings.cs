@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("version")]
         public ManagedVolumeNfsVersion? Version { get; set; }
 
+        //      C# -> System.Boolean? IsTlsEnabled
+        // GraphQL -> isTlsEnabled: Boolean (scalar)
+        [JsonProperty("isTlsEnabled")]
+        public System.Boolean? IsTlsEnabled { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ManagedVolumeNfsSettings Set(
-        ManagedVolumeNfsVersion? Version = null
+        ManagedVolumeNfsVersion? Version = null,
+        System.Boolean? IsTlsEnabled = null
     ) 
     {
         if ( Version != null ) {
             this.Version = Version;
+        }
+        if ( IsTlsEnabled != null ) {
+            this.IsTlsEnabled = IsTlsEnabled;
         }
         return this;
     }
@@ -62,6 +71,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "version\n" ;
             } else {
                 s += ind + "version\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTlsEnabled
+        // GraphQL -> isTlsEnabled: Boolean (scalar)
+        if (this.IsTlsEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTlsEnabled\n" ;
+            } else {
+                s += ind + "isTlsEnabled\n" ;
             }
         }
         return s;
@@ -87,6 +105,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Version != null && ec.Excludes("version",true))
         {
             this.Version = null;
+        }
+        //      C# -> System.Boolean? IsTlsEnabled
+        // GraphQL -> isTlsEnabled: Boolean (scalar)
+        if (ec.Includes("isTlsEnabled",true))
+        {
+            if(this.IsTlsEnabled == null) {
+
+                this.IsTlsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTlsEnabled != null && ec.Excludes("isTlsEnabled",true))
+        {
+            this.IsTlsEnabled = null;
         }
     }
 

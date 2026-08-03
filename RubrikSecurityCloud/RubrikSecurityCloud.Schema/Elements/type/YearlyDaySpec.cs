@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SlaMonth? MonthOfYear
+        // GraphQL -> monthOfYear: SlaMonth (enum)
+        [JsonProperty("monthOfYear")]
+        public SlaMonth? MonthOfYear { get; set; }
+
         //      C# -> SlaMonth? YearStartMonth
         // GraphQL -> yearStartMonth: SlaMonth! (enum)
         [JsonProperty("yearStartMonth")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public YearlyDaySpec Set(
+        SlaMonth? MonthOfYear = null,
         SlaMonth? YearStartMonth = null,
         System.Int32? MonthInYear = null,
         CdmMonthlyDaySpecification? DayInMonth = null
     ) 
     {
+        if ( MonthOfYear != null ) {
+            this.MonthOfYear = MonthOfYear;
+        }
         if ( YearStartMonth != null ) {
             this.YearStartMonth = YearStartMonth;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> SlaMonth? MonthOfYear
+        // GraphQL -> monthOfYear: SlaMonth (enum)
+        if (this.MonthOfYear != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "monthOfYear\n" ;
+            } else {
+                s += ind + "monthOfYear\n" ;
+            }
+        }
         //      C# -> SlaMonth? YearStartMonth
         // GraphQL -> yearStartMonth: SlaMonth! (enum)
         if (this.YearStartMonth != null) {
@@ -110,6 +128,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> SlaMonth? MonthOfYear
+        // GraphQL -> monthOfYear: SlaMonth (enum)
+        if (ec.Includes("monthOfYear",true))
+        {
+            if(this.MonthOfYear == null) {
+
+                this.MonthOfYear = new SlaMonth();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MonthOfYear != null && ec.Excludes("monthOfYear",true))
+        {
+            this.MonthOfYear = null;
+        }
         //      C# -> SlaMonth? YearStartMonth
         // GraphQL -> yearStartMonth: SlaMonth! (enum)
         if (ec.Includes("yearStartMonth",true))

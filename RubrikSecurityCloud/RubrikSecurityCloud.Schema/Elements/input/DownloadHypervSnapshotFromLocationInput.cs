@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HypervVirtualMachineSnapshotDownloadConfigInput? DownloadConfig
+        // GraphQL -> downloadConfig: HypervVirtualMachineSnapshotDownloadConfigInput! (input)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("downloadConfig")]
+        public HypervVirtualMachineSnapshotDownloadConfigInput? DownloadConfig { get; set; }
+
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         [Required]
@@ -32,13 +39,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
-
-        //      C# -> HypervVirtualMachineSnapshotDownloadConfigInput? DownloadConfig
-        // GraphQL -> downloadConfig: HypervVirtualMachineSnapshotDownloadConfigInput! (input)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("downloadConfig")]
-        public HypervVirtualMachineSnapshotDownloadConfigInput? DownloadConfig { get; set; }
 
 
         #endregion

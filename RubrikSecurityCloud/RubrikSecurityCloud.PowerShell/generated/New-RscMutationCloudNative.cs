@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 15
+    /// Create a new RscQuery object for any of the 16
     /// operations in the 'Cloud Native' API domain:
-    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
+    /// AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateCustomerSettings, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// </summary>
     /// <description>
     /// New-RscMutationCloudNative creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 15 operations
+    /// There are 16 operations
     /// in the 'Cloud Native' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
+    /// one of: AddSqlServerBackupCredentials, CheckRbaConnectivity, ClearSqlServerBackupCredentials, CreateLabelRule, CreateTagRule, DeleteLabelRule, DeleteTagRule, DownloadFiles, SetGatewayKmsKeys, SetupSqlServerBackup, StartSnapshotsIndexJob, UpdateCustomerSettings, UpdateIndexingStatus, UpdateLabelRule, UpdateRootThreatMonitoringEnablement, or UpdateTagRule.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -608,6 +608,40 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the UpdateCustomerSettings operation
+    /// of the 'Cloud Native' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    CloudNative
+    /// # API Operation: UpdateCustomerSettings
+    /// 
+    /// $query = New-RscMutationCloudNative -Operation UpdateCustomerSettings
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	settings = @{
+    /// 		# OPTIONAL
+    /// 		isS3GlacierIrTierEnabled = $someBoolean
+    /// 	}
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: UpdateCloudNativeCustomerSettingsReply
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the UpdateIndexingStatus operation
     /// of the 'Cloud Native' API domain.
     /// <code>
@@ -814,6 +848,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "SetGatewayKmsKeys",
                 "SetupSqlServerBackup",
                 "StartSnapshotsIndexJob",
+                "UpdateCustomerSettings",
                 "UpdateIndexingStatus",
                 "UpdateLabelRule",
                 "UpdateRootThreatMonitoringEnablement",
@@ -865,6 +900,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "StartSnapshotsIndexJob":
                         this.ProcessRecord_StartSnapshotsIndexJob();
+                        break;
+                    case "UpdateCustomerSettings":
+                        this.ProcessRecord_UpdateCustomerSettings();
                         break;
                     case "UpdateIndexingStatus":
                         this.ProcessRecord_UpdateIndexingStatus();
@@ -985,6 +1023,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -StartSnapshotsIndexJob";
             // Create new graphql operation startCloudNativeSnapshotsIndexJob
             InitMutationStartCloudNativeSnapshotsIndexJob();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateCloudNativeCustomerSettings.
+        internal void ProcessRecord_UpdateCustomerSettings()
+        {
+            this._logger.name += " -UpdateCustomerSettings";
+            // Create new graphql operation updateCloudNativeCustomerSettings
+            InitMutationUpdateCloudNativeCustomerSettings();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1463,6 +1510,32 @@ $query.Var.input = @{
 	snapshotIds = @(
 		$someString
 	)
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // updateCloudNativeCustomerSettings(input: UpdateCloudNativeCustomerSettingsInput!): UpdateCloudNativeCustomerSettingsReply!
+        internal void InitMutationUpdateCloudNativeCustomerSettings()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateCloudNativeCustomerSettingsInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationUpdateCloudNativeCustomerSettings",
+                "($input: UpdateCloudNativeCustomerSettingsInput!)",
+                "UpdateCloudNativeCustomerSettingsReply",
+                Mutation.UpdateCloudNativeCustomerSettings,
+                Mutation.UpdateCloudNativeCustomerSettingsFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# OPTIONAL
+	settings = @{
+		# OPTIONAL
+		isS3GlacierIrTierEnabled = $someBoolean
+	}
 }"
             );
         }

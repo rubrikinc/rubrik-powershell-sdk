@@ -4,6 +4,8 @@ Salesforce organization.
 - environmentType: SaasEnvironmentType
 - naturalId: System.String
   - ID of the Salesforce organization at the source.
+- archivalEnabled: System.Boolean
+  - Whether archival has been enabled (opted in) for this Salesforce organization.
 - orgUrl: System.String
   - The URL of the Salesforce organization.
 - status: SaasOrganizationStatus
@@ -14,10 +16,17 @@ Salesforce organization.
   - The time at which the Salesforce organization was last synced to Rubrik.
 - exocomputeId: System.String
   - Denotes the ID of the exocompute cluster associated with the org.
+- archivalExocomputeId: System.String
+  - Denotes the ID of the exocompute cluster used for archival. Non-null indicates archival setup is complete.
 - saasOrgType: SaasOrgType
   - The organization type that categorizes the SaaS provider.
 - metadataWorkloadID: System.String
   - Rubrik ID of the Salesforce metadata workload.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -52,6 +61,8 @@ Salesforce organization.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
 - storageRegion: System.String
   - The RSC storage region for the organization.
 - backupJobsStats: backupJobsStats
@@ -66,7 +77,3 @@ Salesforce organization.
   - The list of SaaS application types that are onboarded for the organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.

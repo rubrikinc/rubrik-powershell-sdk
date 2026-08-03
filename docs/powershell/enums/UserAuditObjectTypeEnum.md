@@ -163,3 +163,8 @@ User audit object type.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
 - AZURE_POSTGRES_FLEXIBLE_SERVER - Azure PostgreSQL Flexible Server.
 - FailoverGroup - Failover Group (HA Policy) type.
+- GCP_BIG_QUERY_DATASET - GCP BigQuery dataset type.
+- AGENT_CLOUD_POLICY - Agent Cloud policy object type.
+- AGENT_CLOUD_ALERT - Agent Cloud alert object type.
+- AGENT_CLOUD_VIOLATION - Agent Cloud violation object type.
+- AGENT_CLOUD_CONNECTION - Agent Cloud connection object type.

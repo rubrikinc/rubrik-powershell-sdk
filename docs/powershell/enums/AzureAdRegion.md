@@ -29,3 +29,4 @@ Represents regions for Entra ID.
 - ISRAELCENTRAL - Azure region is Israel Central.
 - USGOVTEXAS - Azure region is US Gov Texas.
 - USGOVARIZONA - Azure region is US Gov Arizona.
+- EASTUS - Azure region is East US.

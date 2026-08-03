@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> VmwareDatastoreFreespaceThresholdInput? DatastoreFreespaceThreshold
         // GraphQL -> datastoreFreespaceThreshold: VmwareDatastoreFreespaceThresholdInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("datastoreFreespaceThreshold")]
         public VmwareDatastoreFreespaceThresholdInput? DatastoreFreespaceThreshold { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

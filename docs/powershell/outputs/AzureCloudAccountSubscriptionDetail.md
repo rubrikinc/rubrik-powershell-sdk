@@ -11,3 +11,5 @@ Azure Cloud Account Subscription details for a given feature.
   - Management group to which this subscription belongs.
 - featureDetail: AzureCloudAccountFeatureDetail
   - One of the enabled features on this subscription.
+- azureLocalClusterCount: System.Int32
+  - Number of Azure Local clusters in this subscription. Populated only for Azure Local subscriptions; null otherwise.

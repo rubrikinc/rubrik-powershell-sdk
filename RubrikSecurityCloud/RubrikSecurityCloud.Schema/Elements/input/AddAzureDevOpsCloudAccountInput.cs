@@ -36,11 +36,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("backupLocationId")]
         public System.String? BackupLocationId { get; set; }
 
-        //      C# -> System.String? BackupRegion
-        // GraphQL -> backupRegion: String (scalar)
-        [JsonProperty("backupRegion")]
-        public System.String? BackupRegion { get; set; }
-
         //      C# -> System.String? ExocomputeCloudAccountId
         // GraphQL -> exocomputeCloudAccountId: UUID (scalar)
         [JsonProperty("exocomputeCloudAccountId")]

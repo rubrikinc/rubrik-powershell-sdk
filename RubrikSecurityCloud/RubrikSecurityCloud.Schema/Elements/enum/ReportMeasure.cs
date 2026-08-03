@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_SNAPSHOT_LAG_COUNT")]
         ARCHIVAL_SNAPSHOT_LAG_COUNT,
 
+        [EnumMember(Value = "ARCHIVAL_STORAGE_COST")]
+        ARCHIVAL_STORAGE_COST,
+
         [EnumMember(Value = "ARCHIVE_COUNT")]
         ARCHIVE_COUNT,
 
@@ -80,6 +83,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLUSTER_COUNT")]
         CLUSTER_COUNT,
+
+        [EnumMember(Value = "COMPUTE_COST")]
+        COMPUTE_COST,
 
         [EnumMember(Value = "DATA_TRANSFERRED")]
         DATA_TRANSFERRED,
@@ -231,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPLICATION_COMPLIANCE_RATE")]
         REPLICATION_COMPLIANCE_RATE,
 
+        [EnumMember(Value = "REPLICATION_COST")]
+        REPLICATION_COST,
+
         [EnumMember(Value = "REPLICATION_COUNT")]
         REPLICATION_COUNT,
 
@@ -267,6 +276,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SOURCE_SIZE")]
         SOURCE_SIZE,
 
+        [EnumMember(Value = "SOURCE_SNAPSHOT_COST")]
+        SOURCE_SNAPSHOT_COST,
+
         [EnumMember(Value = "SUCCEEDED_TASK_COUNT")]
         SUCCEEDED_TASK_COUNT,
 
@@ -291,6 +303,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "THREAT_FAMILIES_LIST")]
         THREAT_FAMILIES_LIST,
 
+        [EnumMember(Value = "TOTAL_CLOUD_COST")]
+        TOTAL_CLOUD_COST,
+
         [EnumMember(Value = "TOTAL_COMPLIANCE_RATE")]
         TOTAL_COMPLIANCE_RATE,
 
@@ -302,6 +317,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "TRANSFERRED_BYTES")]
         TRANSFERRED_BYTES,
+
+        [EnumMember(Value = "TRANSIENT_RESOURCE_COST")]
+        TRANSIENT_RESOURCE_COST,
 
         [EnumMember(Value = "UNREADABLE_OBJECT_COUNT")]
         UNREADABLE_OBJECT_COUNT,

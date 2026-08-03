@@ -58,6 +58,8 @@ or an inconsistent location state.
 - There is a single argument of type FinishArchivalMigrationInput.
 - Returns FinishArchivalMigrationReply.
 ### pausetarget
+Pauses an Archival Location.
+
 - There is a single argument of type PauseTargetInput.
 - Returns PauseTargetReply.
 ### promotereadertarget
@@ -77,6 +79,8 @@ location, by passing the source location id and target location details.
 - There is a single argument of type RegisterArchivalMigrationInput.
 - Returns RegisterArchivalMigrationReply.
 ### resumetarget
+Resumes an Archival Location.
+
 - There is a single argument of type ResumeTargetInput.
 - Returns ResumeTargetReply.
 ### terminatemigration
@@ -93,6 +97,22 @@ Edit a target of type Glacier on a Rubrik cluster.
 ### updatemanualtargetmapping
 - There is a single argument of type UpdateManualTargetMappingInput.
 - Returns TargetMapping.
+### updatepurestorageprotectiongroupquiescetargets
+Replace the persisted quiesce-target selection for a Pure Storage protection group.
+
+Supported in v9.6
+Replace the customer-selected list of quiesce targets (VMware virtual machines and RBA-installed hosts) persisted on the protection group. The request body is a full replacement of the prior selection; sending an empty list clears the selection. At snapshot time the pipeline runs pre/post scripts only on the entries in this list. A APP_CONSISTENT mandate with an empty selection downgrades the snapshot to CRASH_CONSISTENT and emits an AppConsistentEmptySelection audit event.
+
+Authorization is through Privilege.ManageBackupScripts, required unconditionally on every call to this endpoint, regardless of whether the request body includes any RBA scripts. The strict check matches the threat model that any PATCH to this endpoint can stage script runs at the next snapshot.
+
+Concurrent edits use last-write-wins; If-Match / ETag is not supported.
+
+Validation failures return 400 with a single uniform error code (PURE_STORAGE_QUIESCE_TARGET_VALIDATION_FAILURE) and a fixed message. Per-entry failure reasons are written to the cluster server log at WARN with the caller principal for audit; they are intentionally not echoed in the response to prevent unprivileged callers from probing for virtual machine or host existence through the error surface.
+
+Audit events: every successful PATCH emits the UpdatePureStorageProtectionGroupQuiesceTargetsAudit event unconditionally. When the cluster trusted-path check is turned off, a second backup-script-checks audit event is emitted in addition.
+
+- There is a single argument of type UpdatePureStorageProtectionGroupQuiesceTargetsInput.
+- Returns UpdatePureStorageProtectionGroupQuiesceTargetsReply.
 ### updates3compatibletarget
 - There is a single argument of type UpdateS3CompatibleTargetInput.
 - Returns Target.

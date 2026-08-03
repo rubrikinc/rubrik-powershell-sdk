@@ -34,30 +34,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
-        //      C# -> AzureNativeVmResourceGroupFilter? ResourceGroupFilter
-        // GraphQL -> resourceGroupFilter: AzureNativeVmResourceGroupFilter (input)
-        [JsonProperty("resourceGroupFilter")]
-        public AzureNativeVmResourceGroupFilter? ResourceGroupFilter { get; set; }
-
-        //      C# -> AzureNativeVmSubscriptionFilter? SubscriptionFilter
-        // GraphQL -> subscriptionFilter: AzureNativeVmSubscriptionFilter (input)
-        [JsonProperty("subscriptionFilter")]
-        public AzureNativeVmSubscriptionFilter? SubscriptionFilter { get; set; }
-
         //      C# -> AzureNativeRegionFilter? RegionFilter
         // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
         [JsonProperty("regionFilter")]
         public AzureNativeRegionFilter? RegionFilter { get; set; }
-
-        //      C# -> AzureNativeVmSizeFilter? VmSizeFilter
-        // GraphQL -> vmSizeFilter: AzureNativeVmSizeFilter (input)
-        [JsonProperty("vmSizeFilter")]
-        public AzureNativeVmSizeFilter? VmSizeFilter { get; set; }
-
-        //      C# -> AzureNativeVnetFilter? VnetFilter
-        // GraphQL -> vnetFilter: AzureNativeVnetFilter (input)
-        [JsonProperty("vnetFilter")]
-        public AzureNativeVnetFilter? VnetFilter { get; set; }
 
         //      C# -> RelicFilter? RelicFilter
         // GraphQL -> relicFilter: RelicFilter (input)
@@ -78,11 +58,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> tagFilter: AzureNativeTagFilter (input)
         [JsonProperty("tagFilter")]
         public AzureNativeTagFilter? TagFilter { get; set; }
-
-        //      C# -> AzureNativeVmExocomputeConnectedFilter? ExocomputeConnectedFilter
-        // GraphQL -> exocomputeConnectedFilter: AzureNativeVmExocomputeConnectedFilter (input)
-        [JsonProperty("exocomputeConnectedFilter")]
-        public AzureNativeVmExocomputeConnectedFilter? ExocomputeConnectedFilter { get; set; }
 
         //      C# -> AzureNativeVmFileIndexingFilter? FileIndexingFilter
         // GraphQL -> fileIndexingFilter: AzureNativeVmFileIndexingFilter (input)
@@ -114,15 +89,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hierarchyFilters")]
         public List<Filter>? HierarchyFilters { get; set; }
 
-        //      C# -> AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter
-        // GraphQL -> azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter (input)
-        [JsonProperty("azureNativeIsEligibleForVmProtectionFilter")]
-        public AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter { get; set; }
-
         //      C# -> System.Boolean? IsEligibleForProtection
         // GraphQL -> isEligibleForProtection: Boolean (scalar)
         [JsonProperty("isEligibleForProtection")]
         public System.Boolean? IsEligibleForProtection { get; set; }
+
+        //      C# -> AzureNativeVmExocomputeConnectedFilter? ExocomputeConnectedFilter
+        // GraphQL -> exocomputeConnectedFilter: AzureNativeVmExocomputeConnectedFilter (input)
+        [JsonProperty("exocomputeConnectedFilter")]
+        public AzureNativeVmExocomputeConnectedFilter? ExocomputeConnectedFilter { get; set; }
+
+        //      C# -> AzureNativeVmResourceGroupFilter? ResourceGroupFilter
+        // GraphQL -> resourceGroupFilter: AzureNativeVmResourceGroupFilter (input)
+        [JsonProperty("resourceGroupFilter")]
+        public AzureNativeVmResourceGroupFilter? ResourceGroupFilter { get; set; }
+
+        //      C# -> AzureNativeVmSubscriptionFilter? SubscriptionFilter
+        // GraphQL -> subscriptionFilter: AzureNativeVmSubscriptionFilter (input)
+        [JsonProperty("subscriptionFilter")]
+        public AzureNativeVmSubscriptionFilter? SubscriptionFilter { get; set; }
+
+        //      C# -> AzureNativeVmSizeFilter? VmSizeFilter
+        // GraphQL -> vmSizeFilter: AzureNativeVmSizeFilter (input)
+        [JsonProperty("vmSizeFilter")]
+        public AzureNativeVmSizeFilter? VmSizeFilter { get; set; }
+
+        //      C# -> AzureNativeVnetFilter? VnetFilter
+        // GraphQL -> vnetFilter: AzureNativeVnetFilter (input)
+        [JsonProperty("vnetFilter")]
+        public AzureNativeVnetFilter? VnetFilter { get; set; }
+
+        //      C# -> AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter
+        // GraphQL -> azureNativeIsEligibleForVmProtectionFilter: AzureNativeIsEligibleForVmProtectionFilter (input)
+        [JsonProperty("azureNativeIsEligibleForVmProtectionFilter")]
+        public AzureNativeIsEligibleForVmProtectionFilter? AzureNativeIsEligibleForVmProtectionFilter { get; set; }
 
 
         #endregion

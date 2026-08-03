@@ -1,6 +1,8 @@
 ### ThreatHuntDetails
 Details for the threat hunt.
 
+- config: ThreatHuntConfig
+  - The configuration of the malware scan.
 - startTime: DateTime
   - Start time of the threat hunt.
 - endTime: DateTime
@@ -13,7 +15,5 @@ Details for the threat hunt.
   - Flag indicating if the hash catalog hits limit has been breached for
 the threat hunt (applicable for turbo threat hunts). This can be used to
 provide a warning that the turbo threat hunt is not conclusive.
-- config: ThreatHuntConfig
-  - The configuration of the malware scan.
 - cluster: Cluster
   - The cluster of the scan.

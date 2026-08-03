@@ -131,15 +131,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldBypassProxy")]
         public System.Boolean? ShouldBypassProxy { get; set; }
 
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean! (scalar)
+        [JsonProperty("shouldBypassProxyForDatapaths")]
+        public System.Boolean? ShouldBypassProxyForDatapaths { get; set; }
+
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
         [JsonProperty("syncFailureReason")]
         public System.String? SyncFailureReason { get; set; }
 
+        //      C# -> ClusterIpMapping? AllowList
+        // GraphQL -> allowList: ClusterIpMapping (type)
+        [JsonProperty("allowList")]
+        public ClusterIpMapping? AllowList { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
+
+        //      C# -> RcvAwsPrivateConnectivityEndpoints? PrivateConnectivity
+        // GraphQL -> privateConnectivity: RcvAwsPrivateConnectivityEndpoints (type)
+        [JsonProperty("privateConnectivity")]
+        public RcvAwsPrivateConnectivityEndpoints? PrivateConnectivity { get; set; }
+
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        [JsonProperty("proxySettings")]
+        public ProxySettings? ProxySettings { get; set; }
 
         //      C# -> List<RcvConversionType>? RcvConversion
         // GraphQL -> rcvConversion: [RcvConversionType!] (type)
@@ -188,8 +208,12 @@ namespace RubrikSecurityCloud.Types
         System.String? Name = null,
         System.Int32? RunningTasks = null,
         System.Boolean? ShouldBypassProxy = null,
+        System.Boolean? ShouldBypassProxyForDatapaths = null,
         System.String? SyncFailureReason = null,
+        ClusterIpMapping? AllowList = null,
         Cluster? Cluster = null,
+        RcvAwsPrivateConnectivityEndpoints? PrivateConnectivity = null,
+        ProxySettings? ProxySettings = null,
         List<RcvConversionType>? RcvConversion = null,
         TargetMappingBasic? TargetMapping = null,
         List<TargetMappingBasic>? TargetMappingBasic = null
@@ -261,11 +285,23 @@ namespace RubrikSecurityCloud.Types
         if ( ShouldBypassProxy != null ) {
             this.ShouldBypassProxy = ShouldBypassProxy;
         }
+        if ( ShouldBypassProxyForDatapaths != null ) {
+            this.ShouldBypassProxyForDatapaths = ShouldBypassProxyForDatapaths;
+        }
         if ( SyncFailureReason != null ) {
             this.SyncFailureReason = SyncFailureReason;
         }
+        if ( AllowList != null ) {
+            this.AllowList = AllowList;
+        }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( PrivateConnectivity != null ) {
+            this.PrivateConnectivity = PrivateConnectivity;
+        }
+        if ( ProxySettings != null ) {
+            this.ProxySettings = ProxySettings;
         }
         if ( RcvConversion != null ) {
             this.RcvConversion = RcvConversion;
@@ -488,6 +524,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "shouldBypassProxy\n" ;
             }
         }
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean! (scalar)
+        if (this.ShouldBypassProxyForDatapaths != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldBypassProxyForDatapaths\n" ;
+            } else {
+                s += ind + "shouldBypassProxyForDatapaths\n" ;
+            }
+        }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
         if (this.SyncFailureReason != null) {
@@ -495,6 +540,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "syncFailureReason\n" ;
             } else {
                 s += ind + "syncFailureReason\n" ;
+            }
+        }
+        //      C# -> ClusterIpMapping? AllowList
+        // GraphQL -> allowList: ClusterIpMapping (type)
+        if (this.AllowList != null) {
+            var fspec = this.AllowList.AsFieldSpec(conf.Child("allowList"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "allowList" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> Cluster? Cluster
@@ -506,6 +563,30 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> RcvAwsPrivateConnectivityEndpoints? PrivateConnectivity
+        // GraphQL -> privateConnectivity: RcvAwsPrivateConnectivityEndpoints (type)
+        if (this.PrivateConnectivity != null) {
+            var fspec = this.PrivateConnectivity.AsFieldSpec(conf.Child("privateConnectivity"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "privateConnectivity" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (this.ProxySettings != null) {
+            var fspec = this.ProxySettings.AsFieldSpec(conf.Child("proxySettings"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "proxySettings" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -926,6 +1007,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.ShouldBypassProxy = null;
         }
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean! (scalar)
+        if (ec.Includes("shouldBypassProxyForDatapaths",true))
+        {
+            if(this.ShouldBypassProxyForDatapaths == null) {
+
+                this.ShouldBypassProxyForDatapaths = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldBypassProxyForDatapaths != null && ec.Excludes("shouldBypassProxyForDatapaths",true))
+        {
+            this.ShouldBypassProxyForDatapaths = null;
+        }
         //      C# -> System.String? SyncFailureReason
         // GraphQL -> syncFailureReason: String! (scalar)
         if (ec.Includes("syncFailureReason",true))
@@ -942,6 +1040,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SyncFailureReason != null && ec.Excludes("syncFailureReason",true))
         {
             this.SyncFailureReason = null;
+        }
+        //      C# -> ClusterIpMapping? AllowList
+        // GraphQL -> allowList: ClusterIpMapping (type)
+        if (ec.Includes("allowList",false))
+        {
+            if(this.AllowList == null) {
+
+                this.AllowList = new ClusterIpMapping();
+                this.AllowList.ApplyExploratoryFieldSpec(ec.NewChild("allowList"));
+
+            } else {
+
+                this.AllowList.ApplyExploratoryFieldSpec(ec.NewChild("allowList"));
+
+            }
+        }
+        else if (this.AllowList != null && ec.Excludes("allowList",false))
+        {
+            this.AllowList = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
@@ -961,6 +1078,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> RcvAwsPrivateConnectivityEndpoints? PrivateConnectivity
+        // GraphQL -> privateConnectivity: RcvAwsPrivateConnectivityEndpoints (type)
+        if (ec.Includes("privateConnectivity",false))
+        {
+            if(this.PrivateConnectivity == null) {
+
+                this.PrivateConnectivity = new RcvAwsPrivateConnectivityEndpoints();
+                this.PrivateConnectivity.ApplyExploratoryFieldSpec(ec.NewChild("privateConnectivity"));
+
+            } else {
+
+                this.PrivateConnectivity.ApplyExploratoryFieldSpec(ec.NewChild("privateConnectivity"));
+
+            }
+        }
+        else if (this.PrivateConnectivity != null && ec.Excludes("privateConnectivity",false))
+        {
+            this.PrivateConnectivity = null;
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (ec.Includes("proxySettings",false))
+        {
+            if(this.ProxySettings == null) {
+
+                this.ProxySettings = new ProxySettings();
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            } else {
+
+                this.ProxySettings.ApplyExploratoryFieldSpec(ec.NewChild("proxySettings"));
+
+            }
+        }
+        else if (this.ProxySettings != null && ec.Excludes("proxySettings",false))
+        {
+            this.ProxySettings = null;
         }
         //      C# -> List<RcvConversionType>? RcvConversion
         // GraphQL -> rcvConversion: [RcvConversionType!] (type)

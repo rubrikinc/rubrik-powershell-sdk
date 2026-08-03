@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("openstackVmSubObj")]
         public OpenstackVmSubObject? OpenstackVmSubObj { get; set; }
 
+        //      C# -> PureStorageProtectionGroupSubObject? PureStorageProtectionGroupSubObj
+        // GraphQL -> pureStorageProtectionGroupSubObj: PureStorageProtectionGroupSubObject (type)
+        [JsonProperty("pureStorageProtectionGroupSubObj")]
+        public PureStorageProtectionGroupSubObject? PureStorageProtectionGroupSubObj { get; set; }
+
         //      C# -> VmwareVmSubObject? VmwareVmSubObj
         // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)
         [JsonProperty("vmwareVmSubObj")]
@@ -58,6 +63,7 @@ namespace RubrikSecurityCloud.Types
         NutanixVmSubObject? NutanixVmSubObj = null,
         OlvmVmSubObject? OlvmVmSubObj = null,
         OpenstackVmSubObject? OpenstackVmSubObj = null,
+        PureStorageProtectionGroupSubObject? PureStorageProtectionGroupSubObj = null,
         VmwareVmSubObject? VmwareVmSubObj = null,
         VolumeGroupSubObject? VolumeGroupSubObj = null
     ) 
@@ -70,6 +76,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OpenstackVmSubObj != null ) {
             this.OpenstackVmSubObj = OpenstackVmSubObj;
+        }
+        if ( PureStorageProtectionGroupSubObj != null ) {
+            this.PureStorageProtectionGroupSubObj = PureStorageProtectionGroupSubObj;
         }
         if ( VmwareVmSubObj != null ) {
             this.VmwareVmSubObj = VmwareVmSubObj;
@@ -124,6 +133,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "openstackVmSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> PureStorageProtectionGroupSubObject? PureStorageProtectionGroupSubObj
+        // GraphQL -> pureStorageProtectionGroupSubObj: PureStorageProtectionGroupSubObject (type)
+        if (this.PureStorageProtectionGroupSubObj != null) {
+            var fspec = this.PureStorageProtectionGroupSubObj.AsFieldSpec(conf.Child("pureStorageProtectionGroupSubObj"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "pureStorageProtectionGroupSubObj" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -214,6 +235,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.OpenstackVmSubObj != null && ec.Excludes("openstackVmSubObj",false))
         {
             this.OpenstackVmSubObj = null;
+        }
+        //      C# -> PureStorageProtectionGroupSubObject? PureStorageProtectionGroupSubObj
+        // GraphQL -> pureStorageProtectionGroupSubObj: PureStorageProtectionGroupSubObject (type)
+        if (ec.Includes("pureStorageProtectionGroupSubObj",false))
+        {
+            if(this.PureStorageProtectionGroupSubObj == null) {
+
+                this.PureStorageProtectionGroupSubObj = new PureStorageProtectionGroupSubObject();
+                this.PureStorageProtectionGroupSubObj.ApplyExploratoryFieldSpec(ec.NewChild("pureStorageProtectionGroupSubObj"));
+
+            } else {
+
+                this.PureStorageProtectionGroupSubObj.ApplyExploratoryFieldSpec(ec.NewChild("pureStorageProtectionGroupSubObj"));
+
+            }
+        }
+        else if (this.PureStorageProtectionGroupSubObj != null && ec.Excludes("pureStorageProtectionGroupSubObj",false))
+        {
+            this.PureStorageProtectionGroupSubObj = null;
         }
         //      C# -> VmwareVmSubObject? VmwareVmSubObj
         // GraphQL -> vmwareVmSubObj: VmwareVmSubObject (type)

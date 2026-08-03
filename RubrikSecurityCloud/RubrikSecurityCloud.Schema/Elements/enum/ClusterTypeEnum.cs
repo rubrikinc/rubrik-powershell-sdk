@@ -30,6 +30,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "Robo")]
         ROBO,
 
+        [EnumMember(Value = "RvcLS")]
+        RVC_LS,
+
+        [EnumMember(Value = "RvcSS")]
+        RVC_SS,
+
         [EnumMember(Value = "Unknown")]
         UNKNOWN
 

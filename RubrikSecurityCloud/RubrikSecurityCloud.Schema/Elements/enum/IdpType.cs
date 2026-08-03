@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ON_PREM_AD")]
         ON_PREM_AD,
 
+        [EnumMember(Value = "PING_FEDERATE")]
+        PING_FEDERATE,
+
         [EnumMember(Value = "SHAREPOINT")]
         SHAREPOINT,
 

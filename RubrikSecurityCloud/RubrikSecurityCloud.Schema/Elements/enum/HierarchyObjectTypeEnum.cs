@@ -585,6 +585,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PhysicalHost")]
         PHYSICAL_HOST,
 
+        [EnumMember(Value = "RSC_TAG")]
+        RSC_TAG,
+
         [EnumMember(Value = "RubrikEbsVolume")]
         RUBRIK_EBS_VOLUME,
 

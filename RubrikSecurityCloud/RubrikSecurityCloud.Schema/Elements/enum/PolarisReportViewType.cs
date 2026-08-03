@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_COMPLIANCE_REPORT")]
         CLOUD_COMPLIANCE_REPORT,
 
+        [EnumMember(Value = "CLOUD_COST_REPORT")]
+        CLOUD_COST_REPORT,
+
         [EnumMember(Value = "CLOUD_OVERLAP_OBJECTS_REPORT")]
         CLOUD_OVERLAP_OBJECTS_REPORT,
 
@@ -47,6 +50,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CNP_OBJECT_CAPACITY_REPORT")]
         CNP_OBJECT_CAPACITY_REPORT,
+
+        [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_REPORT")]
+        CNP_PROTECTION_TASKS_DETAIL_REPORT,
+
+        [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_REPORT")]
+        CNP_RECOVERY_TASKS_DETAIL_REPORT,
 
         [EnumMember(Value = "COMPLIANCE_REPORT")]
         COMPLIANCE_REPORT,
@@ -71,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "IDENTITY_RISKS_REPORT")]
         IDENTITY_RISKS_REPORT,
+
+        [EnumMember(Value = "IDENTITY_SEGMENTATION_AUDIT_REPORT")]
+        IDENTITY_SEGMENTATION_AUDIT_REPORT,
 
         [EnumMember(Value = "INDEXING_REPORT")]
         INDEXING_REPORT,
@@ -128,6 +140,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "ROLE_REPORT")]
         ROLE_REPORT,
+
+        [EnumMember(Value = "SCRIPT_REPORT")]
+        SCRIPT_REPORT,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_REPORT")]
         SERVICE_ACCOUNT_REPORT,

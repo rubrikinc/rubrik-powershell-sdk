@@ -49,6 +49,15 @@ NAS Cloud Direct bucket.
   - Groups the missed snapshots of this NAS Cloud Direct bucket.
 - cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection
   - Groups the snapshots of this NAS Cloud Direct bucket.
+- cluster: Cluster
+  - NAS Cloud Direct cluster where this object originated.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during communication with the NAS Cloud
+Direct site.
+- cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for Cloud Direct objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - name: System.String
   - Name of the hierarchy object.
 - objectType: HierarchyObjectTypeEnum
@@ -81,11 +90,5 @@ NAS Cloud Direct bucket.
   - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
-- cluster: Cluster
-  - Cluster from which this workload originated.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during communication with the NAS Cloud Direct site.
-- cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for Cloud Direct objects.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.

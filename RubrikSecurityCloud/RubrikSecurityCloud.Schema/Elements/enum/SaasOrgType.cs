@@ -18,6 +18,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ANTHROPIC_CLOUD_ORG")]
+        ANTHROPIC_CLOUD_ORG,
+
+        [EnumMember(Value = "ANTHROPIC_ENDPOINT_ORG")]
+        ANTHROPIC_ENDPOINT_ORG,
+
         [EnumMember(Value = "ATLASSIAN_ORG")]
         ATLASSIAN_ORG,
 

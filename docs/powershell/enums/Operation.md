@@ -268,6 +268,7 @@ Operations defined in the RBAC system.
 - MANAGE_FEATURE_ENABLEMENT - Manage feature enablement.
 - VIEW_PAN_XSOAR_INTEGRATION - View Palo Alto Networks Cortex XSOAR integrations.
 - MANAGE_PAN_XSOAR_INTEGRATION - Manage Palo Alto Networks Cortex XSOAR integrations.
+- ISSUE_ARCHIVAL_MIGRATION_DATA_MOVER_CREDENTIALS - Issue temporary credentials for the Rubrik data mover to migrate archival data to Rubrik Cloud Vault (RCV).
 - CATEGORY_VIEW_DATA_SOURCE - View data source.
 - CATEGORY_MANAGE_DATA_SOURCE - Manage data source.
 - CATEGORY_PROTECTION - Manage protection.

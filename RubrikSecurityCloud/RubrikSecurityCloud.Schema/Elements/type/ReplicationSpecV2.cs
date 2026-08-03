@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public SlaReplicationCluster? Cluster { get; set; }
 
+        //      C# -> DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfoType (type)
+        [JsonProperty("databaseLogRetentionInfo")]
+        public DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo { get; set; }
+
         //      C# -> Duration? ReplicationLocalRetentionDuration
         // GraphQL -> replicationLocalRetentionDuration: Duration (type)
         [JsonProperty("replicationLocalRetentionDuration")]
@@ -86,6 +91,7 @@ namespace RubrikSecurityCloud.Types
         AzureReplicationTarget? AzureTarget = null,
         List<CascadingArchivalSpec>? CascadingArchivalSpecs = null,
         SlaReplicationCluster? Cluster = null,
+        DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo = null,
         Duration? ReplicationLocalRetentionDuration = null,
         List<SlaReplicationPair>? ReplicationPairs = null,
         Duration? RetentionDuration = null,
@@ -109,6 +115,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( DatabaseLogRetentionInfo != null ) {
+            this.DatabaseLogRetentionInfo = DatabaseLogRetentionInfo;
         }
         if ( ReplicationLocalRetentionDuration != null ) {
             this.ReplicationLocalRetentionDuration = ReplicationLocalRetentionDuration;
@@ -199,6 +208,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfoType (type)
+        if (this.DatabaseLogRetentionInfo != null) {
+            var fspec = this.DatabaseLogRetentionInfo.AsFieldSpec(conf.Child("databaseLogRetentionInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "databaseLogRetentionInfo" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -366,6 +387,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> DatabaseLogRetentionInfoType? DatabaseLogRetentionInfo
+        // GraphQL -> databaseLogRetentionInfo: DatabaseLogRetentionInfoType (type)
+        if (ec.Includes("databaseLogRetentionInfo",false))
+        {
+            if(this.DatabaseLogRetentionInfo == null) {
+
+                this.DatabaseLogRetentionInfo = new DatabaseLogRetentionInfoType();
+                this.DatabaseLogRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("databaseLogRetentionInfo"));
+
+            } else {
+
+                this.DatabaseLogRetentionInfo.ApplyExploratoryFieldSpec(ec.NewChild("databaseLogRetentionInfo"));
+
+            }
+        }
+        else if (this.DatabaseLogRetentionInfo != null && ec.Excludes("databaseLogRetentionInfo",false))
+        {
+            this.DatabaseLogRetentionInfo = null;
         }
         //      C# -> Duration? ReplicationLocalRetentionDuration
         // GraphQL -> replicationLocalRetentionDuration: Duration (type)

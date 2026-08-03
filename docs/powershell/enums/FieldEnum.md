@@ -1,16 +1,20 @@
 ### FieldEnum
-- ALL
-- IS_EXPIRED
-- IS_HINT_SET
-- IS_ON_DEMAND
-- IS_INDEXED
-- IS_INDEX_MERGED
-- IS_DELETED_FROM_SOURCE
-- IS_COMPLETE
-- TIME_RANGE_WITH_OFFSET
-- IS_CORRUPTED
-- IS_SKIPPED_FOR_REPLICATION
-- IS_REPLICA
+Field identifies which snapshot attribute a filter clause applies to.
+
+- ALL - ALL applies no filter and returns all snapshots.
+- IS_EXPIRED - IS_EXPIRED filters snapshots by expiry state.
+- IS_HINT_SET - IS_HINT_SET filters snapshots by whether an expiry hint time is set.
+- IS_ON_DEMAND - IS_ON_DEMAND filters snapshots by whether they are on-demand.
+- IS_INDEXED - IS_INDEXED filters snapshots by index state.
+- IS_INDEX_MERGED - IS_INDEX_MERGED filters snapshots by whether their index has been merged.
+- IS_DELETED_FROM_SOURCE - IS_DELETED_FROM_SOURCE filters snapshots by whether their source object
+has been deleted.
+- IS_COMPLETE - IS_COMPLETE filters snapshots by completion state.
+- TIME_RANGE_WITH_OFFSET - TIME_RANGE_WITH_OFFSET filters snapshots to a time range with an offset.
+- IS_CORRUPTED - IS_CORRUPTED filters snapshots by whether they are corrupted.
+- IS_SKIPPED_FOR_REPLICATION - IS_SKIPPED_FOR_REPLICATION filters snapshots by whether they are skipped
+for replication.
+- IS_REPLICA - IS_REPLICA filters snapshots by whether they are replicas.
 - HAS_UNEXPIRED_ARCHIVED_SNAPSHOTS - When true, returns snapshots that have unexpired archived snapshots.
 When false, returns snapshots that do not have any unexpired archived
 snapshots.

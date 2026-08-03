@@ -24,11 +24,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nameSubstringFilter")]
         public NameSubstringFilter? NameSubstringFilter { get; set; }
 
-        //      C# -> AzureNativeCommonRgSubscriptionFilter? SubscriptionFilter
-        // GraphQL -> subscriptionFilter: AzureNativeCommonRgSubscriptionFilter (input)
-        [JsonProperty("subscriptionFilter")]
-        public AzureNativeCommonRgSubscriptionFilter? SubscriptionFilter { get; set; }
-
         //      C# -> AzureNativeRegionFilter? RegionFilter
         // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
         [JsonProperty("regionFilter")]
@@ -38,6 +33,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> effectiveSlaFilter: AzureNativeRgSlaFilter (input)
         [JsonProperty("effectiveSlaFilter")]
         public AzureNativeRgSlaFilter? EffectiveSlaFilter { get; set; }
+
+        //      C# -> AzureNativeCommonRgSubscriptionFilter? SubscriptionFilter
+        // GraphQL -> subscriptionFilter: AzureNativeCommonRgSubscriptionFilter (input)
+        [JsonProperty("subscriptionFilter")]
+        public AzureNativeCommonRgSubscriptionFilter? SubscriptionFilter { get; set; }
 
 
         #endregion

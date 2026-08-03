@@ -99,6 +99,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("startTimeLt")]
         public DateTime? StartTimeLt { get; set; }
 
+        //      C# -> System.String? ObjectNamePrefix
+        // GraphQL -> objectNamePrefix: String (scalar)
+        [JsonProperty("objectNamePrefix")]
+        public System.String? ObjectNamePrefix { get; set; }
+
 
         #endregion
 

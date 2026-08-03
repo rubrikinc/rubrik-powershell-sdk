@@ -110,3 +110,21 @@ or surfaced by the CNP-OCOT report.
 - CLOUD_COMPLIANCE_BY_SLA_TABLE - Cloud Compliance Report grouped by SLA domain.
 - LICENSE_USAGE_TABLE - Table displaying object level license usage report.
 - CONSOLIDATED_LICENSE_USAGE_TABLE - Table displaying consolidated per-child-account license usage report.
+- CNP_PROTECTION_TASKS_DETAIL_TABLE - Detail table for the CNP protection tasks detail report.
+- CNP_PROTECTION_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE - CNP protection tasks detail report grouped by object type.
+- CNP_PROTECTION_TASKS_DETAIL_BY_LOCATION_TABLE - CNP protection tasks detail report grouped by location.
+- CNP_PROTECTION_TASKS_DETAIL_BY_TIME_TABLE - CNP protection tasks detail report grouped by time.
+- IDENTITY_SEGMENTATION_AUDIT_TABLE - Table displaying Entra identity-segmentation per-user licensing
+classification for a selected month.
+- CNP_RECOVERY_TASKS_DETAIL_TABLE - Detail table for the CNP recovery tasks detail report.
+- CNP_RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE - CNP recovery tasks detail report grouped by object type.
+- CNP_RECOVERY_TASKS_DETAIL_BY_LOCATION_TABLE - CNP recovery tasks detail report grouped by location.
+- CNP_RECOVERY_TASKS_DETAIL_BY_TIME_TABLE - CNP recovery tasks detail report grouped by time.
+- CLOUD_COMPLIANCE_BY_CLOUD_ACCOUNT_TABLE - Cloud Compliance Report grouped by cloud account name.
+- CLOUD_COST_TABLE - Table displaying cloud cost data per cloud account with tag attribution.
+- CLOUD_COST_EXPORT_TABLE - Cloud cost export table with per-tag cost breakdown.
+Used by the CSV export path -- includes a Tags column.
+- CLOUD_COST_BY_PROVIDER_TABLE - Cloud cost rolled up by cloud provider.
+- CLOUD_COST_BY_CLOUD_ACCOUNT_ID_TABLE - Cloud cost rolled up by raw native cloud account id.
+- CLOUD_COST_BY_ACCOUNT_NAME_TABLE - Cloud cost rolled up by cloud account, displayed by resolved account name.
+- SCRIPT_REPORT_TABLE - TBD.

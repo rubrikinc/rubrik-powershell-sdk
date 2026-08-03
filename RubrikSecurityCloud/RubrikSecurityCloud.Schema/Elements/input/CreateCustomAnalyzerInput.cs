@@ -124,6 +124,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excludePathPattern")]
         public System.String? ExcludePathPattern { get; set; }
 
+        //      C# -> System.String? ExcludeValueRegex
+        // GraphQL -> excludeValueRegex: String (scalar)
+        [JsonProperty("excludeValueRegex")]
+        public System.String? ExcludeValueRegex { get; set; }
+
 
         #endregion
 

@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PERSONAL_ACCESS_TOKEN")]
         PERSONAL_ACCESS_TOKEN,
 
+        [EnumMember(Value = "RUBRIK_AI")]
+        RUBRIK_AI,
+
         [EnumMember(Value = "SERVICE_ACCOUNT")]
         SERVICE_ACCOUNT
 

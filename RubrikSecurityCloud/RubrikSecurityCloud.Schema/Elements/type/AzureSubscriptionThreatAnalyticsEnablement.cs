@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isHealthy")]
         public System.Boolean? IsHealthy { get; set; }
 
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        [JsonProperty("isSmartScanningEnabled")]
+        public System.Boolean? IsSmartScanningEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        [JsonProperty("isYaraProcessingEnabled")]
+        public System.Boolean? IsYaraProcessingEnabled { get; set; }
+
         //      C# -> System.Boolean? ShouldScanAllFiles
         // GraphQL -> shouldScanAllFiles: Boolean! (scalar)
         [JsonProperty("shouldScanAllFiles")]
@@ -63,6 +73,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? DataThreatAnalyticsEnabled = null,
         System.String? Id = null,
         System.Boolean? IsHealthy = null,
+        System.Boolean? IsSmartScanningEnabled = null,
+        System.Boolean? IsYaraProcessingEnabled = null,
         System.Boolean? ShouldScanAllFiles = null,
         System.String? SubscriptionName = null,
         System.Boolean? ThreatMonitoringEnabled = null
@@ -76,6 +88,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
+        }
+        if ( IsSmartScanningEnabled != null ) {
+            this.IsSmartScanningEnabled = IsSmartScanningEnabled;
+        }
+        if ( IsYaraProcessingEnabled != null ) {
+            this.IsYaraProcessingEnabled = IsYaraProcessingEnabled;
         }
         if ( ShouldScanAllFiles != null ) {
             this.ShouldScanAllFiles = ShouldScanAllFiles;
@@ -125,6 +143,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isHealthy\n" ;
             } else {
                 s += ind + "isHealthy\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        if (this.IsSmartScanningEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSmartScanningEnabled\n" ;
+            } else {
+                s += ind + "isSmartScanningEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        if (this.IsYaraProcessingEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isYaraProcessingEnabled\n" ;
+            } else {
+                s += ind + "isYaraProcessingEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? ShouldScanAllFiles
@@ -211,6 +247,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsHealthy != null && ec.Excludes("isHealthy",true))
         {
             this.IsHealthy = null;
+        }
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        if (ec.Includes("isSmartScanningEnabled",true))
+        {
+            if(this.IsSmartScanningEnabled == null) {
+
+                this.IsSmartScanningEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSmartScanningEnabled != null && ec.Excludes("isSmartScanningEnabled",true))
+        {
+            this.IsSmartScanningEnabled = null;
+        }
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean! (scalar)
+        if (ec.Includes("isYaraProcessingEnabled",true))
+        {
+            if(this.IsYaraProcessingEnabled == null) {
+
+                this.IsYaraProcessingEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsYaraProcessingEnabled != null && ec.Excludes("isYaraProcessingEnabled",true))
+        {
+            this.IsYaraProcessingEnabled = null;
         }
         //      C# -> System.Boolean? ShouldScanAllFiles
         // GraphQL -> shouldScanAllFiles: Boolean! (scalar)

@@ -123,6 +123,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUMES_CDM")]
         MANAGED_VOLUMES_CDM,
 
+        [EnumMember(Value = "MARIADB")]
+        MARIADB,
+
         [EnumMember(Value = "MICROSOFT_365")]
         MICROSOFT_365,
 
@@ -168,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLE_DBS_CDM")]
         ORACLE_DBS_CDM,
 
+        [EnumMember(Value = "PING_FEDERATE")]
+        PING_FEDERATE,
+
         [EnumMember(Value = "POSTGRESQL")]
         POSTGRESQL,
 
@@ -179,6 +185,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PURE_STORAGE")]
         PURE_STORAGE,
+
+        [EnumMember(Value = "S3_TABLES_ICEBERG")]
+        S3_TABLES_ICEBERG,
 
         [EnumMember(Value = "SALESFORCE")]
         SALESFORCE,

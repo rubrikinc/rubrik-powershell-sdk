@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
         //      C# -> HypervScvmmRegisterInput? Scvmm
         // GraphQL -> scvmm: HypervScvmmRegisterInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("scvmm")]
         public HypervScvmmRegisterInput? Scvmm { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

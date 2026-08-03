@@ -124,6 +124,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				nfsSettings = @{
     /// 					# OPTIONAL
+    /// 					isTlsEnabled = $someBoolean
+    /// 					# OPTIONAL
     /// 					version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
     /// 				}
     /// 			}
@@ -545,6 +547,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				# OPTIONAL
     /// 				nfsSettings = @{
     /// 					# OPTIONAL
+    /// 					isTlsEnabled = $someBoolean
+    /// 					# OPTIONAL
     /// 					version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
     /// 				}
     /// 			}
@@ -691,6 +695,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 			# OPTIONAL
     /// 			nfsSettings = @{
+    /// 				# OPTIONAL
+    /// 				isTlsEnabled = $someBoolean
     /// 				# OPTIONAL
     /// 				version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
     /// 			}
@@ -1004,6 +1010,8 @@ $query.Var.input = @{
 				)
 				# OPTIONAL
 				nfsSettings = @{
+					# OPTIONAL
+					isTlsEnabled = $someBoolean
 					# OPTIONAL
 					version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
 				}
@@ -1362,6 +1370,8 @@ $query.Var.input = @{
 				# OPTIONAL
 				nfsSettings = @{
 					# OPTIONAL
+					isTlsEnabled = $someBoolean
+					# OPTIONAL
 					version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
 				}
 			}
@@ -1484,6 +1494,8 @@ $query.Var.input = @{
 			)
 			# OPTIONAL
 			nfsSettings = @{
+				# OPTIONAL
+				isTlsEnabled = $someBoolean
 				# OPTIONAL
 				version = $someManagedVolumeNFSVersion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ManagedVolumeNFSVersion]) for enum values.
 			}

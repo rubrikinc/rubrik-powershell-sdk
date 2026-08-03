@@ -1,0 +1,41 @@
+### RecoveryPlanV2
+Recovery plan.
+
+- id: System.String
+  - Recovery plan identifier.
+- name: System.String
+  - Recovery plan name.
+- version: System.Int64
+  - Version of the recovery plan.
+- recoveryPlanType: RecoveryPlanType
+  - Recovery plan type.
+- workloadType: ManagedObjectType
+  - Type of workloads over which this recovery plan is defined.
+- recoveryPlanStatus: RecoveryPlanStatus
+  - Current status of the recovery plan.
+- sourceLocation: RecoveryPlanLocation
+  - Source location information.
+- targetLocation: RecoveryPlanLocation
+  - Target location information.
+- children: list of RecoveryPlanChildV2s
+  - Children in the recovery plan.
+- isHydrationEnabled: System.Boolean
+  - If hydration is enabled.
+- isHidden: System.Boolean
+  - Whether the recovery plan is hidden.
+- recoveryPlanStats: RecoveryPlanStats
+  - Recovery statistics for this recovery plan.
+- recoverySpecs: RecoverySpecsReply
+  - Recovery specifications associated with this recovery plan.
+- targetConsistencyInfo: RecoveryPlanTargetConsistencyInfo
+  - Target consistency information for this recovery plan.
+- recoverySchedule: RecoverySchedule
+  - Recovery schedule associated with this recovery plan.
+- latestRecovery: Recovery
+  - The last completed recovery for this recovery plan.
+- localRpoLagInfo: RpoLagInfoV2
+  - Aggregated local RPO lag information for this recovery plan.
+- remoteRpoLagInfo: RpoLagInfoV2
+  - Aggregated remote RPO lag information for this recovery plan.
+- workloadsLastRecovery: list of WorkloadLastRecoverys
+  - The last recovery of each current workload in this recovery plan.

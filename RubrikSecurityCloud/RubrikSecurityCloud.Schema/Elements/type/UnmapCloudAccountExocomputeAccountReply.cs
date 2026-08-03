@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isSuccess")]
         public System.Boolean? IsSuccess { get; set; }
 
+        //      C# -> List<UnmapCloudAccountExocomputeAccountResult>? Results
+        // GraphQL -> results: [UnmapCloudAccountExocomputeAccountResult!]! (type)
+        [JsonProperty("results")]
+        public List<UnmapCloudAccountExocomputeAccountResult>? Results { get; set; }
+
 
         #endregion
 
@@ -35,11 +40,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public UnmapCloudAccountExocomputeAccountReply Set(
-        System.Boolean? IsSuccess = null
+        System.Boolean? IsSuccess = null,
+        List<UnmapCloudAccountExocomputeAccountResult>? Results = null
     ) 
     {
         if ( IsSuccess != null ) {
             this.IsSuccess = IsSuccess;
+        }
+        if ( Results != null ) {
+            this.Results = Results;
         }
         return this;
     }
@@ -62,6 +71,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isSuccess\n" ;
             } else {
                 s += ind + "isSuccess\n" ;
+            }
+        }
+        //      C# -> List<UnmapCloudAccountExocomputeAccountResult>? Results
+        // GraphQL -> results: [UnmapCloudAccountExocomputeAccountResult!]! (type)
+        if (this.Results != null) {
+            var fspec = this.Results.AsFieldSpec(conf.Child("results"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "results" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -87,6 +108,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsSuccess != null && ec.Excludes("isSuccess",true))
         {
             this.IsSuccess = null;
+        }
+        //      C# -> List<UnmapCloudAccountExocomputeAccountResult>? Results
+        // GraphQL -> results: [UnmapCloudAccountExocomputeAccountResult!]! (type)
+        if (ec.Includes("results",false))
+        {
+            if(this.Results == null) {
+
+                this.Results = new List<UnmapCloudAccountExocomputeAccountResult>();
+                this.Results.ApplyExploratoryFieldSpec(ec.NewChild("results"));
+
+            } else {
+
+                this.Results.ApplyExploratoryFieldSpec(ec.NewChild("results"));
+
+            }
+        }
+        else if (this.Results != null && ec.Excludes("results",false))
+        {
+            this.Results = null;
         }
     }
 

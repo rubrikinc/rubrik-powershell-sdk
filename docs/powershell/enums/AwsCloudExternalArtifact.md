@@ -15,3 +15,4 @@ Keywords for AWS external artifacts.
 - EXOCOMPUTE_EKS_LAMBDA_ROLE_ARN - Keyword to capture EKS Lambda role.
 - EXOCOMPUTE_FLUENTD_ROLE_ARN - Keyword to capture Exocompute Fluentd role.
 - ROLE_CHAINING_ROLE_ARN - Keyword to capture role chaining role ARN.
+- GATEWAY_KMS_KEY_ARN - Keyword to capture the customer-provided gateway KMS key ARN.

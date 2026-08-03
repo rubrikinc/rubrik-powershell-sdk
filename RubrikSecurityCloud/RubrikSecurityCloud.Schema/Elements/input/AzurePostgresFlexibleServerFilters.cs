@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
+        //      C# -> AzureNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public AzureNativeRegionFilter? RegionFilter { get; set; }
+
         //      C# -> AzurePostgresFlexibleServerResourceGroupFilter? ResourceGroupFilter
         // GraphQL -> resourceGroupFilter: AzurePostgresFlexibleServerResourceGroupFilter (input)
         [JsonProperty("resourceGroupFilter")]
@@ -38,11 +43,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subscriptionFilter: AzurePostgresFlexibleServerSubscriptionFilter (input)
         [JsonProperty("subscriptionFilter")]
         public AzurePostgresFlexibleServerSubscriptionFilter? SubscriptionFilter { get; set; }
-
-        //      C# -> AzureNativeRegionFilter? RegionFilter
-        // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
-        [JsonProperty("regionFilter")]
-        public AzureNativeRegionFilter? RegionFilter { get; set; }
 
 
         #endregion

@@ -40,6 +40,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enabled")]
         public System.Boolean? Enabled { get; set; }
 
+        //      C# -> System.Boolean? IsYaraProcessingEnabled
+        // GraphQL -> isYaraProcessingEnabled: Boolean (scalar)
+        [JsonProperty("isYaraProcessingEnabled")]
+        public System.Boolean? IsYaraProcessingEnabled { get; set; }
+
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean (scalar)
+        [JsonProperty("isSmartScanningEnabled")]
+        public System.Boolean? IsSmartScanningEnabled { get; set; }
+
 
         #endregion
 

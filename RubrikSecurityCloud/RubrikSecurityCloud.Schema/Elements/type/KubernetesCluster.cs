@@ -141,6 +141,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("k8sVersion")]
         public System.String? K8sVersion { get; set; }
 
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        [JsonProperty("maxConcurrentAgents")]
+        public System.Int32? MaxConcurrentAgents { get; set; }
+
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        [JsonProperty("maxPvcsPerAgent")]
+        public System.Int32? MaxPvcsPerAgent { get; set; }
+
         //      C# -> System.String? NadName
         // GraphQL -> nadName: String (scalar)
         [JsonProperty("nadName")]
@@ -250,6 +260,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
         public List<PathNode>? LogicalPath { get; set; }
+
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        [JsonProperty("objectBackupWindow")]
+        public ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -378,6 +393,8 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsReplica = null,
         System.String? K8sName = null,
         System.String? K8sVersion = null,
+        System.Int32? MaxConcurrentAgents = null,
+        System.Int32? MaxPvcsPerAgent = null,
         System.String? NadName = null,
         System.String? NadNamespace = null,
         System.String? Name = null,
@@ -400,6 +417,7 @@ namespace RubrikSecurityCloud.Types
         KubernetesVirtualMachineConnection? K8sDescendantVirtualMachines = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
+        ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
         PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus = null,
         List<PathNode>? PhysicalPath = null,
@@ -481,6 +499,12 @@ namespace RubrikSecurityCloud.Types
         if ( K8sVersion != null ) {
             this.K8sVersion = K8sVersion;
         }
+        if ( MaxConcurrentAgents != null ) {
+            this.MaxConcurrentAgents = MaxConcurrentAgents;
+        }
+        if ( MaxPvcsPerAgent != null ) {
+            this.MaxPvcsPerAgent = MaxPvcsPerAgent;
+        }
         if ( NadName != null ) {
             this.NadName = NadName;
         }
@@ -546,6 +570,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
+        }
+        if ( ObjectBackupWindow != null ) {
+            this.ObjectBackupWindow = ObjectBackupWindow;
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
@@ -818,6 +845,24 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "k8sVersion\n" ;
             }
         }
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        if (this.MaxConcurrentAgents != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "maxConcurrentAgents\n" ;
+            } else {
+                s += ind + "maxConcurrentAgents\n" ;
+            }
+        }
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        if (this.MaxPvcsPerAgent != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "maxPvcsPerAgent\n" ;
+            } else {
+                s += ind + "maxPvcsPerAgent\n" ;
+            }
+        }
         //      C# -> System.String? NadName
         // GraphQL -> nadName: String (scalar)
         if (this.NadName != null) {
@@ -1043,6 +1088,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "logicalPath" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (this.ObjectBackupWindow != null) {
+            var fspec = this.ObjectBackupWindow.AsFieldSpec(conf.Child("objectBackupWindow"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectBackupWindow" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1575,6 +1632,40 @@ namespace RubrikSecurityCloud.Types
         {
             this.K8sVersion = null;
         }
+        //      C# -> System.Int32? MaxConcurrentAgents
+        // GraphQL -> maxConcurrentAgents: Int (scalar)
+        if (ec.Includes("maxConcurrentAgents",true))
+        {
+            if(this.MaxConcurrentAgents == null) {
+
+                this.MaxConcurrentAgents = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxConcurrentAgents != null && ec.Excludes("maxConcurrentAgents",true))
+        {
+            this.MaxConcurrentAgents = null;
+        }
+        //      C# -> System.Int32? MaxPvcsPerAgent
+        // GraphQL -> maxPvcsPerAgent: Int (scalar)
+        if (ec.Includes("maxPvcsPerAgent",true))
+        {
+            if(this.MaxPvcsPerAgent == null) {
+
+                this.MaxPvcsPerAgent = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxPvcsPerAgent != null && ec.Excludes("maxPvcsPerAgent",true))
+        {
+            this.MaxPvcsPerAgent = null;
+        }
         //      C# -> System.String? NadName
         // GraphQL -> nadName: String (scalar)
         if (ec.Includes("nadName",true))
@@ -1968,6 +2059,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalPath != null && ec.Excludes("logicalPath",false))
         {
             this.LogicalPath = null;
+        }
+        //      C# -> ObjectBackupWindowStatus? ObjectBackupWindow
+        // GraphQL -> objectBackupWindow: ObjectBackupWindowStatus (type)
+        if (ec.Includes("objectBackupWindow",false))
+        {
+            if(this.ObjectBackupWindow == null) {
+
+                this.ObjectBackupWindow = new ObjectBackupWindowStatus();
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            } else {
+
+                this.ObjectBackupWindow.ApplyExploratoryFieldSpec(ec.NewChild("objectBackupWindow"));
+
+            }
+        }
+        else if (this.ObjectBackupWindow != null && ec.Excludes("objectBackupWindow",false))
+        {
+            this.ObjectBackupWindow = null;
         }
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)

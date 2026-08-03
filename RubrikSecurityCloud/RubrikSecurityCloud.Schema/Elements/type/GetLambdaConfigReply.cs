@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("enableThreatMonitoringFullScan")]
         public System.Boolean? EnableThreatMonitoringFullScan { get; set; }
 
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        [JsonProperty("isSmartScanningEnabled")]
+        public System.Boolean? IsSmartScanningEnabled { get; set; }
+
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
         [JsonProperty("isThreatMonitoringEnabled")]
@@ -96,6 +101,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? EnableAutomaticFmdUpload = null,
         System.Boolean? EnableFmdUploadForAllResources = null,
         System.Boolean? EnableThreatMonitoringFullScan = null,
+        System.Boolean? IsSmartScanningEnabled = null,
         System.Boolean? IsThreatMonitoringEnabled = null,
         System.Boolean? IsThreatMonitoringEnabledForActiveDirectory = null,
         System.Int32? MaxSnapshotsToUploadAutomatically = null,
@@ -121,6 +127,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EnableThreatMonitoringFullScan != null ) {
             this.EnableThreatMonitoringFullScan = EnableThreatMonitoringFullScan;
+        }
+        if ( IsSmartScanningEnabled != null ) {
+            this.IsSmartScanningEnabled = IsSmartScanningEnabled;
         }
         if ( IsThreatMonitoringEnabled != null ) {
             this.IsThreatMonitoringEnabled = IsThreatMonitoringEnabled;
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "enableThreatMonitoringFullScan\n" ;
             } else {
                 s += ind + "enableThreatMonitoringFullScan\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        if (this.IsSmartScanningEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isSmartScanningEnabled\n" ;
+            } else {
+                s += ind + "isSmartScanningEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
@@ -370,6 +388,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EnableThreatMonitoringFullScan != null && ec.Excludes("enableThreatMonitoringFullScan",true))
         {
             this.EnableThreatMonitoringFullScan = null;
+        }
+        //      C# -> System.Boolean? IsSmartScanningEnabled
+        // GraphQL -> isSmartScanningEnabled: Boolean! (scalar)
+        if (ec.Includes("isSmartScanningEnabled",true))
+        {
+            if(this.IsSmartScanningEnabled == null) {
+
+                this.IsSmartScanningEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsSmartScanningEnabled != null && ec.Excludes("isSmartScanningEnabled",true))
+        {
+            this.IsSmartScanningEnabled = null;
         }
         //      C# -> System.Boolean? IsThreatMonitoringEnabled
         // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)

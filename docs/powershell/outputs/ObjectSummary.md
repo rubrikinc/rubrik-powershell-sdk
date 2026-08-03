@@ -1,5 +1,5 @@
 ### ObjectSummary
-
+Summary of a managed object, identifying it and describing its type and state.
 
 - id: System.String
   - The object ID.

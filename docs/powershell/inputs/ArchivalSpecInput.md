@@ -16,3 +16,5 @@ Archiving specification.
 - isComplianceImmutabilityEnabled: System.Boolean
   - DEPRECATED: Compliance immutability for CNP has been reverted.
 This field is no longer read or written.
+- databaseLogRetentionInfo: DatabaseLogRetentionInfo
+  - Per-workload database transaction log retention policy for this location.

@@ -35,3 +35,5 @@ sub-type of the target scope.
 for scope disambiguation to avoid ID collisions across targets from different resources.
 - actorIpAddresses: list of System.Strings
   - The IP addresses of the actors to filter on.
+- actorTypes: list of System.Strings
+  - The actor types of the activity to filter on.
