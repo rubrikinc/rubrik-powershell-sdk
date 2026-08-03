@@ -5,8 +5,18 @@
 New Features:
 
 Fixes:
+- Fix `Set-RscMssqlLogShippingSecondary`: the cmdlet body was a copy-paste from
+  `Remove-RscMssqlLiveMount` and called the wrong mutation. It now correctly calls
+  `updateMssqlLogShippingConfiguration` (to configure automatic reseed via
+  `-AutomaticReseed`) and `updateMssqlLogShippingConfigurationV1` (to change
+  `-State` and `-DisconnectStandbyUsers`). The non-functional `-Force` parameter
+  has been replaced with `-AutomaticReseed`, `-State`, and `-DisconnectStandbyUsers`
+  (#260)
 
 Breaking Changes:
+- `Set-RscMssqlLogShippingSecondary`: the `-Force` parameter is removed.
+  Use `-AutomaticReseed` (to enable/disable automatic reseed) or `-State`/`-DisconnectStandbyUsers`
+  (to change the secondary's operating state) instead.
 
 ## Version 1.18.20260601
 
