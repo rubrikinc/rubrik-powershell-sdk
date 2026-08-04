@@ -12,5 +12,5 @@ This reflects the in-progress state of the SDK on GitHub, not the last published
 It drives the automated release process. Only the major version should be changed manually; optionally reset the minor version to 0 at the same time — if not, it will be reset to 0 automatically during the auto-release.
 
 ### Major Version: 1
-### Minor Version: 18
-### Schema Version: 20260601
+### Minor Version: 19
+### Schema Version: 20260727

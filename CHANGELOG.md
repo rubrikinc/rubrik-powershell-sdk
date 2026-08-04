@@ -1,6 +1,9 @@
 # Changelog
 
-## Version TBD
+## Version 1.19.20260727
+
+Schema Update:
+- Automatic schema update
 
 New Features:
 
@@ -899,4 +902,3 @@ Fixes:
 Breaking changes:
 
 - `-InputProfile DETAILS` is now `-InputProfile DETAIL`
-
