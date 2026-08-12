@@ -9,3 +9,4 @@ class of tasks.
 - PAUSED - The coordinator is paused. No new tasks are dispatched while this
 label is present. PAUSED may coexist with other labels -- unpausing
 removes only this label, restoring the previous assignment.
+- SENSITIVE_DATA_DISCOVERY - Tasks for sensitive data discovery (SDD) scans.

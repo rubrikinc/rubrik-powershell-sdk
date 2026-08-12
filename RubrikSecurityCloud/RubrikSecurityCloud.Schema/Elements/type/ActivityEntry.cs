@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("category")]
         public ActivityCategory? Category { get; set; }
 
+        //      C# -> ActivityClassification? Classification
+        // GraphQL -> classification: ActivityClassification (enum)
+        [JsonProperty("classification")]
+        public ActivityClassification? Classification { get; set; }
+
         //      C# -> ActivityOperation? Operation
         // GraphQL -> operation: ActivityOperation! (enum)
         [JsonProperty("operation")]
@@ -59,6 +64,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> actorIpAddress: String! (scalar)
         [JsonProperty("actorIpAddress")]
         public System.String? ActorIpAddress { get; set; }
+
+        //      C# -> DateTime? ClassifiedOn
+        // GraphQL -> classifiedOn: DateTime (scalar)
+        [JsonProperty("classifiedOn")]
+        public DateTime? ClassifiedOn { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -100,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("changeDetails")]
         public ActivityAuditorChangeDetails? ChangeDetails { get; set; }
 
+        //      C# -> List<ActivityClassificationSource>? ClassificationSources
+        // GraphQL -> classificationSources: [ActivityClassificationSource!]! (type)
+        [JsonProperty("classificationSources")]
+        public List<ActivityClassificationSource>? ClassificationSources { get; set; }
+
         //      C# -> ActivityAuditorPrimaryTargetEntity? PrimaryTargetEntity
         // GraphQL -> primaryTargetEntity: ActivityAuditorPrimaryTargetEntity (type)
         [JsonProperty("primaryTargetEntity")]
@@ -140,9 +155,11 @@ namespace RubrikSecurityCloud.Types
         LambdaEventType? ActivityType = null,
         ActorIdentificationState? ActorState = null,
         ActivityCategory? Category = null,
+        ActivityClassification? Classification = null,
         ActivityOperation? Operation = null,
         LambdaEventStatus? Status = null,
         System.String? ActorIpAddress = null,
+        DateTime? ClassifiedOn = null,
         System.String? Id = null,
         System.String? NativeCorrelationId = null,
         System.String? SourceId = null,
@@ -151,6 +168,7 @@ namespace RubrikSecurityCloud.Types
         ActivityAuditorEntity? ActorEntity = null,
         List<ActivityAuditorEntity>? AdditionalTargetEntities = null,
         ActivityAuditorChangeDetails? ChangeDetails = null,
+        List<ActivityClassificationSource>? ClassificationSources = null,
         ActivityAuditorPrimaryTargetEntity? PrimaryTargetEntity = null,
         List<ActivityRemediationStatus>? RemediationStatuses = null,
         List<RemediationAvailability>? RemediationTypes = null,
@@ -173,6 +191,9 @@ namespace RubrikSecurityCloud.Types
         if ( Category != null ) {
             this.Category = Category;
         }
+        if ( Classification != null ) {
+            this.Classification = Classification;
+        }
         if ( Operation != null ) {
             this.Operation = Operation;
         }
@@ -181,6 +202,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActorIpAddress != null ) {
             this.ActorIpAddress = ActorIpAddress;
+        }
+        if ( ClassifiedOn != null ) {
+            this.ClassifiedOn = ClassifiedOn;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -205,6 +229,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ChangeDetails != null ) {
             this.ChangeDetails = ChangeDetails;
+        }
+        if ( ClassificationSources != null ) {
+            this.ClassificationSources = ClassificationSources;
         }
         if ( PrimaryTargetEntity != null ) {
             this.PrimaryTargetEntity = PrimaryTargetEntity;
@@ -280,6 +307,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "category\n" ;
             }
         }
+        //      C# -> ActivityClassification? Classification
+        // GraphQL -> classification: ActivityClassification (enum)
+        if (this.Classification != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "classification\n" ;
+            } else {
+                s += ind + "classification\n" ;
+            }
+        }
         //      C# -> ActivityOperation? Operation
         // GraphQL -> operation: ActivityOperation! (enum)
         if (this.Operation != null) {
@@ -305,6 +341,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "actorIpAddress\n" ;
             } else {
                 s += ind + "actorIpAddress\n" ;
+            }
+        }
+        //      C# -> DateTime? ClassifiedOn
+        // GraphQL -> classifiedOn: DateTime (scalar)
+        if (this.ClassifiedOn != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "classifiedOn\n" ;
+            } else {
+                s += ind + "classifiedOn\n" ;
             }
         }
         //      C# -> System.String? Id
@@ -385,6 +430,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "changeDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<ActivityClassificationSource>? ClassificationSources
+        // GraphQL -> classificationSources: [ActivityClassificationSource!]! (type)
+        if (this.ClassificationSources != null) {
+            var fspec = this.ClassificationSources.AsFieldSpec(conf.Child("classificationSources"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "classificationSources" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -540,6 +597,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Category = null;
         }
+        //      C# -> ActivityClassification? Classification
+        // GraphQL -> classification: ActivityClassification (enum)
+        if (ec.Includes("classification",true))
+        {
+            if(this.Classification == null) {
+
+                this.Classification = new ActivityClassification();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Classification != null && ec.Excludes("classification",true))
+        {
+            this.Classification = null;
+        }
         //      C# -> ActivityOperation? Operation
         // GraphQL -> operation: ActivityOperation! (enum)
         if (ec.Includes("operation",true))
@@ -590,6 +664,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActorIpAddress != null && ec.Excludes("actorIpAddress",true))
         {
             this.ActorIpAddress = null;
+        }
+        //      C# -> DateTime? ClassifiedOn
+        // GraphQL -> classifiedOn: DateTime (scalar)
+        if (ec.Includes("classifiedOn",true))
+        {
+            if(this.ClassifiedOn == null) {
+
+                this.ClassifiedOn = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ClassifiedOn != null && ec.Excludes("classifiedOn",true))
+        {
+            this.ClassifiedOn = null;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -732,6 +823,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ChangeDetails != null && ec.Excludes("changeDetails",false))
         {
             this.ChangeDetails = null;
+        }
+        //      C# -> List<ActivityClassificationSource>? ClassificationSources
+        // GraphQL -> classificationSources: [ActivityClassificationSource!]! (type)
+        if (ec.Includes("classificationSources",false))
+        {
+            if(this.ClassificationSources == null) {
+
+                this.ClassificationSources = new List<ActivityClassificationSource>();
+                this.ClassificationSources.ApplyExploratoryFieldSpec(ec.NewChild("classificationSources"));
+
+            } else {
+
+                this.ClassificationSources.ApplyExploratoryFieldSpec(ec.NewChild("classificationSources"));
+
+            }
+        }
+        else if (this.ClassificationSources != null && ec.Excludes("classificationSources",false))
+        {
+            this.ClassificationSources = null;
         }
         //      C# -> ActivityAuditorPrimaryTargetEntity? PrimaryTargetEntity
         // GraphQL -> primaryTargetEntity: ActivityAuditorPrimaryTargetEntity (type)

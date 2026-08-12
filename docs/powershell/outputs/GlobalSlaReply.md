@@ -73,6 +73,8 @@ Metadata for rendering an SLA Domain.
   - Source clusters configured in the SLA Domain.
 - haPolicy: HaPolicy
   - HA policy of the HA SLA Domain.
+- assignedSystemTags: list of AssignedRscTags
+  - System tags that are directly assigned to this SLA Domain.
 - id: System.String
   - The ID of the SLA Domain.
 - name: System.String

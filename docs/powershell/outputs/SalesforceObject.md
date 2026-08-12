@@ -1,23 +1,6 @@
 ### SalesforceObject
 Salesforce object.
 
-- naturalId: System.String
-  - Natural ID of the Salesforce object.
-- label: System.String
-  - Label of the Salesforce object.
-- salesforceObjectType: System.String
-  - Salesforce object type. It could either be a standard or a custom object.
-- isRelic: System.Boolean
-  - True if the Salesforce object is a relic.
-- objectBackupType: SalesforceObjectBackupType
-  - Indicates whether the Salesforce object is recommended for backup. Objects matching certain patterns (e.g., *History, *Share, *Feed) are not recommended for backup.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -26,34 +9,53 @@ objects.
   - Type of this object.
 - slaAssignment: SlaAssignmentTypeEnum
   - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
   - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
   - Sequential list of the physical ancestors of this object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- isRelic: System.Boolean
+  - True if the Salesforce object is a relic.
+- label: System.String
+  - Label of the Salesforce object.
+- naturalId: System.String
+  - Natural ID of the Salesforce object.
+- salesforceObjectType: System.String
+  - Salesforce object type. It could either be a standard or a custom object.
+- objectBackupType: SalesforceObjectBackupType
+  - Indicates whether the Salesforce object is recommended for backup. Objects
+matching certain patterns (e.g., *History, *Share, *Feed) are not
+recommended for backup.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

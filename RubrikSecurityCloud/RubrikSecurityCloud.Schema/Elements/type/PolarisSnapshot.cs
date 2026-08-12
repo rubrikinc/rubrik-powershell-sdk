@@ -116,6 +116,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
 
+        //      C# -> System.Boolean? IsCompromised
+        // GraphQL -> isCompromised: Boolean (scalar)
+        [JsonProperty("isCompromised")]
+        public System.Boolean? IsCompromised { get; set; }
+
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         [JsonProperty("isCorrupted")]
@@ -221,6 +226,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivedSnapshots")]
         public List<ArchivedSnapshot>? ArchivedSnapshots { get; set; }
 
+        //      C# -> List<TriggeringAlert>? CompromisingAlerts
+        // GraphQL -> compromisingAlerts: [TriggeringAlert!] (type)
+        [JsonProperty("compromisingAlerts")]
+        public List<TriggeringAlert>? CompromisingAlerts { get; set; }
+
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         [JsonProperty("latestUserNote")]
@@ -270,6 +280,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAnomaly = null,
         System.Boolean? IsArchivalCopy = null,
         System.Boolean? IsArchived = null,
+        System.Boolean? IsCompromised = null,
         System.Boolean? IsCorrupted = null,
         System.Boolean? IsDeletedFromSource = null,
         System.Boolean? IsDownloadedSnapshot = null,
@@ -291,6 +302,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? UnexpiredArchivedSnapshotCount = null,
         System.Int32? UnexpiredReplicaCount = null,
         List<ArchivedSnapshot>? ArchivedSnapshots = null,
+        List<TriggeringAlert>? CompromisingAlerts = null,
         LatestUserNote? LatestUserNote = null,
         LegalHoldInfo? LegalHoldInfo = null,
         List<DataLocation>? ReplicationLocations = null,
@@ -354,6 +366,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsArchived != null ) {
             this.IsArchived = IsArchived;
         }
+        if ( IsCompromised != null ) {
+            this.IsCompromised = IsCompromised;
+        }
         if ( IsCorrupted != null ) {
             this.IsCorrupted = IsCorrupted;
         }
@@ -416,6 +431,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivedSnapshots != null ) {
             this.ArchivedSnapshots = ArchivedSnapshots;
+        }
+        if ( CompromisingAlerts != null ) {
+            this.CompromisingAlerts = CompromisingAlerts;
         }
         if ( LatestUserNote != null ) {
             this.LatestUserNote = LatestUserNote;
@@ -626,6 +644,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isArchived\n" ;
             }
         }
+        //      C# -> System.Boolean? IsCompromised
+        // GraphQL -> isCompromised: Boolean (scalar)
+        if (this.IsCompromised != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCompromised\n" ;
+            } else {
+                s += ind + "isCompromised\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (this.IsCorrupted != null) {
@@ -815,6 +842,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "archivedSnapshots" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TriggeringAlert>? CompromisingAlerts
+        // GraphQL -> compromisingAlerts: [TriggeringAlert!] (type)
+        if (this.CompromisingAlerts != null) {
+            var fspec = this.CompromisingAlerts.AsFieldSpec(conf.Child("compromisingAlerts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "compromisingAlerts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1217,6 +1256,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsArchived = null;
         }
+        //      C# -> System.Boolean? IsCompromised
+        // GraphQL -> isCompromised: Boolean (scalar)
+        if (ec.Includes("isCompromised",true))
+        {
+            if(this.IsCompromised == null) {
+
+                this.IsCompromised = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCompromised != null && ec.Excludes("isCompromised",true))
+        {
+            this.IsCompromised = null;
+        }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (ec.Includes("isCorrupted",true))
@@ -1575,6 +1631,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivedSnapshots != null && ec.Excludes("archivedSnapshots",false))
         {
             this.ArchivedSnapshots = null;
+        }
+        //      C# -> List<TriggeringAlert>? CompromisingAlerts
+        // GraphQL -> compromisingAlerts: [TriggeringAlert!] (type)
+        if (ec.Includes("compromisingAlerts",false))
+        {
+            if(this.CompromisingAlerts == null) {
+
+                this.CompromisingAlerts = new List<TriggeringAlert>();
+                this.CompromisingAlerts.ApplyExploratoryFieldSpec(ec.NewChild("compromisingAlerts"));
+
+            } else {
+
+                this.CompromisingAlerts.ApplyExploratoryFieldSpec(ec.NewChild("compromisingAlerts"));
+
+            }
+        }
+        else if (this.CompromisingAlerts != null && ec.Excludes("compromisingAlerts",false))
+        {
+            this.CompromisingAlerts = null;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

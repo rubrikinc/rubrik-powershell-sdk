@@ -37,3 +37,7 @@ and updated when set. This sentinel disambiguates "omitted" (= leave
 alone) from "explicit value" -- threshold_filter is a message type and
 proto3 cannot represent "explicitly null" on the wire. Mirrors
 PolicyUpdate.force_update_threshold_filter. See SPARK-775226.
+- anomalyDetectionConfig: AnomalyDetectionConfigInput
+  - Anomaly-detection tuning. Only valid for sign-in anomaly policies; rejected
+for any other policy type. When omitted, the existing configuration is
+preserved.

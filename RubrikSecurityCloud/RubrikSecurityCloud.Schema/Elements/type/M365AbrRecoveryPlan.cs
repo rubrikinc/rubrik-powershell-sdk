@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("conditionTree")]
         public M365RecoveryPlanConditionTree? ConditionTree { get; set; }
 
+        //      C# -> List<M365RecoveryPlanWorkloadSummary>? WorkloadSummaries
+        // GraphQL -> workloadSummaries: [M365RecoveryPlanWorkloadSummary!]! (type)
+        [JsonProperty("workloadSummaries")]
+        public List<M365RecoveryPlanWorkloadSummary>? WorkloadSummaries { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Int32? LastNumberOfDays = null,
         System.String? Name = null,
-        M365RecoveryPlanConditionTree? ConditionTree = null
+        M365RecoveryPlanConditionTree? ConditionTree = null,
+        List<M365RecoveryPlanWorkloadSummary>? WorkloadSummaries = null
     ) 
     {
         if ( WorkloadTypes != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ConditionTree != null ) {
             this.ConditionTree = ConditionTree;
+        }
+        if ( WorkloadSummaries != null ) {
+            this.WorkloadSummaries = WorkloadSummaries;
         }
         return this;
     }
@@ -154,6 +163,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "conditionTree" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<M365RecoveryPlanWorkloadSummary>? WorkloadSummaries
+        // GraphQL -> workloadSummaries: [M365RecoveryPlanWorkloadSummary!]! (type)
+        if (this.WorkloadSummaries != null) {
+            var fspec = this.WorkloadSummaries.AsFieldSpec(conf.Child("workloadSummaries"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "workloadSummaries" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,6 +288,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ConditionTree != null && ec.Excludes("conditionTree",false))
         {
             this.ConditionTree = null;
+        }
+        //      C# -> List<M365RecoveryPlanWorkloadSummary>? WorkloadSummaries
+        // GraphQL -> workloadSummaries: [M365RecoveryPlanWorkloadSummary!]! (type)
+        if (ec.Includes("workloadSummaries",false))
+        {
+            if(this.WorkloadSummaries == null) {
+
+                this.WorkloadSummaries = new List<M365RecoveryPlanWorkloadSummary>();
+                this.WorkloadSummaries.ApplyExploratoryFieldSpec(ec.NewChild("workloadSummaries"));
+
+            } else {
+
+                this.WorkloadSummaries.ApplyExploratoryFieldSpec(ec.NewChild("workloadSummaries"));
+
+            }
+        }
+        else if (this.WorkloadSummaries != null && ec.Excludes("workloadSummaries",false))
+        {
+            this.WorkloadSummaries = null;
         }
     }
 

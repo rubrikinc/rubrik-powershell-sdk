@@ -13,3 +13,6 @@ Per-account CloudFormation result for the KMS key sharing flow.
   - Inline IAM policy the customer attaches to their existing cross-account
 role to grant KMS key sharing. Set only for manually-onboarded accounts;
 empty for CFT accounts, which use cloudFormationUrl instead.
+- templateUrl: System.String
+  - Raw S3 URL of the CloudFormation template for download. Empty for manual
+accounts.

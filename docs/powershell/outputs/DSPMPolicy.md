@@ -49,3 +49,6 @@ and requires special handling by the UI.
 - policyTypeInfo: PolicyTypeInfo
   - Policy-type-specific configuration (e.g., event providers for identity
 event policies).
+- anomalyDetectionConfig: AnomalyDetectionConfig
+  - Anomaly-detection tuning for this policy. Populated only for sign-in
+anomaly policies; null for all other policy types.

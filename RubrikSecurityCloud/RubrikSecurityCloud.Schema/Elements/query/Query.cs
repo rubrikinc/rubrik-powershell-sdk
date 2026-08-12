@@ -4062,7 +4062,7 @@ namespace RubrikSecurityCloud.Types
         public static string AllSecurityPolicies(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nisPolicyEnabled: $isPolicyEnabled\nisCustomPolicy: $isCustomPolicy\npolicyCategories: $policyCategories\npolicySeverities: $policySeverities\nincludeViolationInsights: $includeViolationInsights\npolicyIds: $policyIds\nresourceIds: $resourceIds\nstatuses: $statuses\nstatusReasons: $statusReasons\npolicyViolationIds: $policyViolationIds\nresourceTypes: $resourceTypes\nsensitivityLevels: $sensitivityLevels\ndetectionDate: $detectionDate\nupdateDate: $updateDate\npolicyName: $policyName\nexactPolicyName: $exactPolicyName\npolicyUpdateDate: $policyUpdateDate\nparentViolationId: $parentViolationId\ndataTypeIds: $dataTypeIds\ndocumentTypeIds: $documentTypeIds\ndataCategoryIds: $dataCategoryIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nresourceMetadataFilter: $resourceMetadataFilter\npolicyViolationNameSearch: $policyViolationNameSearch\nviolationNames: $violationNames\npolicyFrameworks: $policyFrameworks\npolicyTypes: $policyTypes\n)";
+            string args = "\n(\nisPolicyEnabled: $isPolicyEnabled\nisCustomPolicy: $isCustomPolicy\npolicyCategories: $policyCategories\npolicySeverities: $policySeverities\nincludeViolationInsights: $includeViolationInsights\npolicyIds: $policyIds\nresourceIds: $resourceIds\nstatuses: $statuses\nstatusReasons: $statusReasons\npolicyViolationIds: $policyViolationIds\nresourceTypes: $resourceTypes\nsensitivityLevels: $sensitivityLevels\ndetectionDate: $detectionDate\nupdateDate: $updateDate\npolicyName: $policyName\nexactPolicyName: $exactPolicyName\npolicyUpdateDate: $policyUpdateDate\nparentViolationId: $parentViolationId\ndataTypeIds: $dataTypeIds\ndocumentTypeIds: $documentTypeIds\ndataCategoryIds: $dataCategoryIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nresourceMetadataFilter: $resourceMetadataFilter\npolicyViolationNameSearch: $policyViolationNameSearch\nviolationNames: $violationNames\npolicyFrameworks: $policyFrameworks\nidpTypes: $idpTypes\npolicyTypes: $policyTypes\n)";
             return "allSecurityPolicies" + args + "\n{\n" + fs + "}\n";
         }
         public static object AllSecurityPoliciesFieldSpec(AutofieldContext? ec=null)
@@ -5304,7 +5304,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureAdDirectories(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "azureAdDirectories" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureAdDirectoriesFieldSpec(AutofieldContext? ec=null)
@@ -6411,6 +6411,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new VnetConnection() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> BackupWindowsForObjectsReply? BackupWindowsForObjects
+        // GraphQL -> backupWindowsForObjects: BackupWindowsForObjectsReply! (type)
+        public static string BackupWindowsForObjects(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nobjectIds: $objectIds\nscope: $scope\n)";
+            return "backupWindowsForObjects" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object BackupWindowsForObjectsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new BackupWindowsForObjectsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8976,7 +8994,7 @@ namespace RubrikSecurityCloud.Types
         public static string DevOpsBackupJobInformation(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ndevopsOrgType: $devopsOrgType\n)";
+            string args = "\n(\ndevopsOrgType: $devopsOrgType\neventObjectTypes: $eventObjectTypes\n)";
             return "devOpsBackupJobInformation" + args + "\n{\n" + fs + "}\n";
         }
         public static object DevOpsBackupJobInformationFieldSpec(AutofieldContext? ec=null)
@@ -13922,7 +13940,7 @@ namespace RubrikSecurityCloud.Types
         }
 
         //      C# -> NcdBackEndCapacity? NcdBackEndCapacity
-        // GraphQL -> ncdBackEndCapacity: NcdBackEndCapacity (type)
+        // GraphQL -> ncdBackEndCapacity: NcdBackEndCapacity! (type)
         public static string NcdBackEndCapacity(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
@@ -13940,7 +13958,7 @@ namespace RubrikSecurityCloud.Types
         }
 
         //      C# -> NcdFrontEndCapacity? NcdFrontEndCapacity
-        // GraphQL -> ncdFrontEndCapacity: NcdFrontEndCapacity (type)
+        // GraphQL -> ncdFrontEndCapacity: NcdFrontEndCapacity! (type)
         public static string NcdFrontEndCapacity(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
@@ -13958,7 +13976,7 @@ namespace RubrikSecurityCloud.Types
         }
 
         //      C# -> NcdObjectProtectionStatus? NcdObjectProtectionStatus
-        // GraphQL -> ncdObjectProtectionStatus: NcdObjectProtectionStatus (type)
+        // GraphQL -> ncdObjectProtectionStatus: NcdObjectProtectionStatus! (type)
         public static string NcdObjectProtectionStatus(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
@@ -15996,7 +16014,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyViolations(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npolicyIds: $policyIds\nresourceIds: $resourceIds\nstatuses: $statuses\nstatusReasons: $statusReasons\npolicyTypes: $policyTypes\npolicyViolationIds: $policyViolationIds\npolicySeverities: $policySeverities\npolicyCategories: $policyCategories\nincludeDeletedPolicies: $includeDeletedPolicies\nresourceTypes: $resourceTypes\nsensitivityLevels: $sensitivityLevels\ndetectionDate: $detectionDate\nupdateDate: $updateDate\nincludeResourceCounts: $includeResourceCounts\nresourceMetadataFilter: $resourceMetadataFilter\nparentViolationId: $parentViolationId\ndataTypeIds: $dataTypeIds\ndocumentTypeIds: $documentTypeIds\ndataCategoryIds: $dataCategoryIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nprincipalFilter: $principalFilter\npolicyViolationNameSearch: $policyViolationNameSearch\npolicyFrameworks: $policyFrameworks\nticketNumbers: $ticketNumbers\nviolationNames: $violationNames\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\npolicyIds: $policyIds\nresourceIds: $resourceIds\nstatuses: $statuses\nstatusReasons: $statusReasons\npolicyTypes: $policyTypes\npolicyViolationIds: $policyViolationIds\npolicySeverities: $policySeverities\npolicyCategories: $policyCategories\nincludeDeletedPolicies: $includeDeletedPolicies\nresourceTypes: $resourceTypes\nsensitivityLevels: $sensitivityLevels\ndetectionDate: $detectionDate\nupdateDate: $updateDate\nlastSeenDate: $lastSeenDate\nincludeResourceCounts: $includeResourceCounts\nresourceMetadataFilter: $resourceMetadataFilter\nparentViolationId: $parentViolationId\ndataTypeIds: $dataTypeIds\ndocumentTypeIds: $documentTypeIds\ndataCategoryIds: $dataCategoryIds\nsortBy: $sortBy\nsortOrder: $sortOrder\nprincipalFilter: $principalFilter\npolicyViolationNameSearch: $policyViolationNameSearch\npolicyFrameworks: $policyFrameworks\nticketNumbers: $ticketNumbers\nviolationNames: $violationNames\n)";
             return "policyViolations" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyViolationsFieldSpec(AutofieldContext? ec=null)
@@ -16203,6 +16221,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new PrincipalApiPermissionsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> PrincipalAttributesConnection? PrincipalAttributes
+        // GraphQL -> principalAttributes: PrincipalAttributesConnection! (type)
+        public static string PrincipalAttributes(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\n)";
+            return "principalAttributes" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object PrincipalAttributesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new PrincipalAttributesConnection() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -17211,6 +17247,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new GetS3BucketStateForRecoveryReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> S3TablesIcebergInventoryStatsReply? S3TablesIcebergInventoryStats
+        // GraphQL -> s3TablesIcebergInventoryStats: S3TablesIcebergInventoryStatsReply! (type)
+        public static string S3TablesIcebergInventoryStats(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "s3TablesIcebergInventoryStats" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object S3TablesIcebergInventoryStatsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new S3TablesIcebergInventoryStatsReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

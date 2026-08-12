@@ -43,6 +43,10 @@ A snapshot of a workload managed by a Rubrik cluster.
   - Whether custom retention is applied.
 - aggregateSnapshotLocationDetail: AggregateSnapshotLocationDetail
   - Aggregate snapshot location detail, if set.
+- isOpenstackStorageSnapshot: System.Boolean
+  - For OpenStack virtual machine snapshots only: true = dataless Cinder storage
+snapshot, false = regular Rubrik backup. Returns null for all non-OpenStack
+workloads.
 - cluster: Cluster
   - The Rubrik cluster that owns the snapshot.
 - cloudState: SnapshotCloudState
@@ -123,3 +127,7 @@ A snapshot of a workload managed by a Rubrik cluster.
   - All locations where the snapshot is present.
 - latestUserNote: LatestUserNote
   - Latest user note information.
+- isCompromised: System.Boolean
+  - Whether this snapshot falls within a known identity-compromise window derived from identity threat alerts (Microsoft Defender for Identity or CrowdStrike Falcon Identity). A null or false value does not assert the snapshot is clean, only that no compromise is known.
+- compromisingAlerts: list of TriggeringAlerts
+  - The identity-compromise alerts that explain why this snapshot is marked as compromised. Absent or empty when the snapshot is not marked.

@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? BackupSubnetCidr
+        // GraphQL -> backupSubnetCidr: String (scalar)
+        [JsonProperty("backupSubnetCidr")]
+        public System.String? BackupSubnetCidr { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -115,6 +120,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> helmMinCdmVersion: String (scalar)
         [JsonProperty("helmMinCdmVersion")]
         public System.String? HelmMinCdmVersion { get; set; }
+
+        //      C# -> System.String? DataPathTransport
+        // GraphQL -> dataPathTransport: String (scalar)
+        [JsonProperty("dataPathTransport")]
+        public System.String? DataPathTransport { get; set; }
 
         //      C# -> System.String? Region
         // GraphQL -> region: String (scalar)

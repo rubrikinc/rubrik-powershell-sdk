@@ -53,3 +53,9 @@ Will be empty if no remediations exist for this activity.
 - actorIpAddress: System.String
   - The IP address of the actor who initiated the event (IPv4 or IPv6).
 Empty for events without IP information.
+- classification: ActivityClassification
+  - The classification assigned to this activity.
+- classificationSources: list of ActivityClassificationSources
+  - The sources that contributed evidence to the classification.
+- classifiedOn: DateTime
+  - The time the activity was classified.

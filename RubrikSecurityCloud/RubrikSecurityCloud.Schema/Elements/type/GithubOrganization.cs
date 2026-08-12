@@ -56,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> DevopsZeusState? ZeusState
+        // GraphQL -> zeusState: DevopsZeusState! (enum)
+        [JsonProperty("zeusState")]
+        public DevopsZeusState? ZeusState { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -221,6 +226,7 @@ namespace RubrikSecurityCloud.Types
         DevopsHostType? RepoHostType = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        DevopsZeusState? ZeusState = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -268,6 +274,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( ZeusState != null ) {
+            this.ZeusState = ZeusState;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -419,6 +428,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "slaAssignment\n" ;
             } else {
                 s += ind + "slaAssignment\n" ;
+            }
+        }
+        //      C# -> DevopsZeusState? ZeusState
+        // GraphQL -> zeusState: DevopsZeusState! (enum)
+        if (this.ZeusState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "zeusState\n" ;
+            } else {
+                s += ind + "zeusState\n" ;
             }
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
@@ -822,6 +840,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SlaAssignment != null && ec.Excludes("slaAssignment",true))
         {
             this.SlaAssignment = null;
+        }
+        //      C# -> DevopsZeusState? ZeusState
+        // GraphQL -> zeusState: DevopsZeusState! (enum)
+        if (ec.Includes("zeusState",true))
+        {
+            if(this.ZeusState == null) {
+
+                this.ZeusState = new DevopsZeusState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ZeusState != null && ec.Excludes("zeusState",true))
+        {
+            this.ZeusState = null;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)

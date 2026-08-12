@@ -46,6 +46,8 @@ objects.
   - Canonical organization URL, e.g. "https://github.com/my-org" or
 "https://acme.ghe.com/my-org" for GHEC data residency. Empty
 for legacy orgs that pre-date the GHEC data residency migration.
+- zeusState: DevopsZeusState
+  - Zeus provisioning lifecycle state of the GitHub organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - slaPauseStatus: System.Boolean

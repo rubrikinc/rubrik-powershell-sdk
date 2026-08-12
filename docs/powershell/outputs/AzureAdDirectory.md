@@ -1,6 +1,27 @@
 ### AzureAdDirectory
 Details of the Azure AD directory object.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - directoryId: System.String
   - The natural ID of the Azure AD Directory.
 - domainName: System.String
@@ -61,6 +82,8 @@ Details of the Azure AD directory object.
   - Count of PIM group active assignments from the latest snapshot.
 - isProvisioned: System.Boolean
   - Specifies whether the infrastructure has been provisioned to enable protection for this Azure AD.
+- provisioningState: AzureAdProvisioningState
+  - Specifies the provisioning state of the infrastructure for this Azure AD.
 - latestSnapshotTime: DateTime
   - Time of the latest snapshot.
 - appId: System.String
@@ -74,7 +97,7 @@ Details of the Azure AD directory object.
 - firstZeusSnapshotTime: DateTime
   - When enabled, time of the first snapshot saved to the Zeus store.
 - migratedFromColossus: System.Boolean
-  - Specifies whether the tenant was migrated from Colossus to the Zeusstore.
+  - Specifies whether the tenant was migrated from Colossus to the Zeus store.
 - firstDeviceSnapshotTime: DateTime
   - When enabled, time of the first snapshot that includes devices.
 - isJitEnabled: System.Boolean
@@ -89,49 +112,32 @@ Details of the Azure AD directory object.
   - Counts of Entra ID and Intune object types from the latest snapshot.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- id: System.String
-  - Object ID.
-- provisioningState: AzureAdProvisioningState
-  - Specifies the provisioning state of the infrastructure for this Azure AD.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
+- eventHubConnectionStatus: AzureAdEventHubConnectionStatus
+  - Whether Entra ID Event Hub ingestion is actively connected for this directory. Returns null if the status is currently unavailable.
+- isEventHubIngestionEnabled: System.Boolean
+  - Specifies whether Event Hub ingestion is active for this Entra ID directory.
+- doesEventHubIngestionRequireAzureSignIn: System.Boolean
+  - Specifies whether removing Event Hub ingestion for this Entra ID directory requires an interactive Azure sign-in.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection

@@ -182,6 +182,20 @@ Get all backup throttle settings.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of BackupThrottleSettings.
+### backupwindowsforobjects
+Returns backup window information for the specified managed objects.
+The optional `scope` argument selects which layer to return per object:
+OBJECT_LEVEL (the override only) or SLA_LEVEL (the SLA's window only).
+When omitted (UNSPECIFIED), the effective window is returned: the
+object-level override if set, else the SLA window. Each entry's `scope`
+discriminator reports the layer that supplied the returned window,
+always OBJECT_LEVEL or SLA_LEVEL.
+
+- There are 2 arguments.
+    - objectIds - list of System.Strings: Identifiers of the managed objects to look up.
+    - scope - BackupWindowScope: Which backup window layer to return: OBJECT_LEVEL or
+SLA_LEVEL. Defaults to effective behavior when omitted.
+- Returns BackupWindowsForObjectsReply.
 ### browsecalendar
 BrowseCalendarFolderItems returns the contents (calendar folders +
 events) of a calendar folder inside a single snapshot. Encapsulates
@@ -554,7 +568,10 @@ Polaris deployment version.
 ### devopsbackupjobinformation
 Retrieves account specific backup information.
 
-- There is a single argument of type DevopsOrgType.
+- There are 2 arguments.
+    - devopsOrgType - DevopsOrgType: Specifies the type of the DevOps organization.
+    - eventObjectTypes - list of EventObjectTypes: Specifies the event object types to scope the
+lookup to. Defaults to the repository types for the org when empty.
 - Returns DevOpsBackupJobInformation.
 ### devopsprotectedobjectcountsummary
 DevOps Protected object count summary.
@@ -1775,7 +1792,7 @@ violation's actual policy type.
 ### policyviolations
 Get a paginated list of policy violations.
 
-- There are 30 arguments.
+- There are 31 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -1793,6 +1810,7 @@ Get a paginated list of policy violations.
     - sensitivityLevels - list of SensitivityLevels: Sensitivity levels to filter by. If empty or null, the results will not be filtered.
     - detectionDate - TimeRangeInput: Detection date range to filter by. If null, the results will not be filtered.
     - updateDate - TimeRangeInput: Violation update date range to filter by.
+    - lastSeenDate - TimeRangeInput: Last seen date range to filter by. If null, the results will not be filtered.
     - includeResourceCounts - System.Boolean: Include resource-level total violation counts. If null, the data will not be included.
     - resourceMetadataFilter - ResourceMetadataFiltersInput: Resource metadata fields to filter by. If null, the results will not be filtered.
     - parentViolationId - System.String: Parent violation ID.
@@ -1870,6 +1888,28 @@ principal.
 
 - There is a single argument of type PrincipalApiPermissionsInput.
 - Returns PrincipalApiPermissionsReply.
+### principalattributes
+ListPrincipalAttributes returns per-principal directory attributes as a
+cursor-paginated connection. Joins userawareness_principals_version
+(UAPV) with userawareness_principals (UAP) on sid; returns one entry
+per principal carrying its identifying fields plus an open bag of
+attributes deserialized from UAPV.metadata (minus a server-side
+sensitive-attribute deny-list).
+
+v1 reality: only ON_PREM_AD principals carry populated attributes;
+non-AD principals return with an empty bag.
+
+Authorization: ViewIdentityResiliency, account-scoped (tenant
+isolation enforced by the per-account customer DB).
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - PrincipalAttributeFilter: Optional filter (IdP types, principal types, domains,
+prefix search on display name / SID).
+- Returns PrincipalAttributesConnection.
 ### principalcountssummaries
 Stats APIs
 Principal count summaries.
@@ -2067,8 +2107,9 @@ Query datastore threshold configurations.
 - There is a single argument of type list of QueryDatastoreFreespaceThresholdInputs.
 - Returns QueryDatastoreFreespaceThresholdsReply.
 ### recoveries
-Return list of recoveries corresponding to the filter passed.
+Return a paginated list of recoveries corresponding to the filter passed.
 RSC prioritizes recovery_ids if they are passed in the filter. All the filters, if passed, will work as AND logic.
+A maximum of 50 objects per page is supported.
 
 - There are 18 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -2175,6 +2216,12 @@ The Rubrik CDM OVA details for RVC Shared Storage.
 
 - The rvcssovadetails subcommand takes no arguments.
 - Returns list of CdmOvaDetails.
+### s3tablesiceberginventorystats
+Returns aggregate counts for the AWS S3 Tables Iceberg inventory card.
+Scoped to the caller's visible objects.
+
+- The s3tablesiceberginventorystats subcommand takes no arguments.
+- Returns S3TablesIcebergInventoryStatsReply.
 ### saasapporganizations
 List of SaaS app organization.
 

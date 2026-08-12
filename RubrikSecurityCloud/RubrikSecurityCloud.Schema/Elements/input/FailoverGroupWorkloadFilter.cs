@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("host")]
         public List<System.String>? Host { get; set; }
 
+        //      C# -> List<ManagedObjectType>? ManagedObjectTypeFilter
+        // GraphQL -> managedObjectTypeFilter: [ManagedObjectType!] (enum)
+        [JsonProperty("managedObjectTypeFilter")]
+        public List<ManagedObjectType>? ManagedObjectTypeFilter { get; set; }
+
 
         #endregion
 

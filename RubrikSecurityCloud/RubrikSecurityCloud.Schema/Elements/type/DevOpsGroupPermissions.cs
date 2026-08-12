@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> CloudAccountFeature? Feature
+        // GraphQL -> feature: CloudAccountFeature! (enum)
+        [JsonProperty("feature")]
+        public CloudAccountFeature? Feature { get; set; }
+
         //      C# -> PermissionsGroup? Group
         // GraphQL -> group: PermissionsGroup! (enum)
         [JsonProperty("group")]
@@ -45,11 +50,15 @@ namespace RubrikSecurityCloud.Types
     }
 
     public DevOpsGroupPermissions Set(
+        CloudAccountFeature? Feature = null,
         PermissionsGroup? Group = null,
         List<System.String>? Permissions = null,
         System.Int32? Version = null
     ) 
     {
+        if ( Feature != null ) {
+            this.Feature = Feature;
+        }
         if ( Group != null ) {
             this.Group = Group;
         }
@@ -73,6 +82,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> CloudAccountFeature? Feature
+        // GraphQL -> feature: CloudAccountFeature! (enum)
+        if (this.Feature != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "feature\n" ;
+            } else {
+                s += ind + "feature\n" ;
+            }
+        }
         //      C# -> PermissionsGroup? Group
         // GraphQL -> group: PermissionsGroup! (enum)
         if (this.Group != null) {
@@ -107,6 +125,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> CloudAccountFeature? Feature
+        // GraphQL -> feature: CloudAccountFeature! (enum)
+        if (ec.Includes("feature",true))
+        {
+            if(this.Feature == null) {
+
+                this.Feature = new CloudAccountFeature();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Feature != null && ec.Excludes("feature",true))
+        {
+            this.Feature = null;
+        }
         //      C# -> PermissionsGroup? Group
         // GraphQL -> group: PermissionsGroup! (enum)
         if (ec.Includes("group",true))

@@ -284,3 +284,10 @@ Enum representing all the possible object types which generate events.
 - POWER_PLATFORM_ORGANIZATION - Power Platform organization.
 - POWER_PLATFORM_DIALOG - Power Platform dialog.
 - POWER_PLATFORM_AI_FLOW - Power Platform AI flow.
+- ANTHROPIC_ORG - Anthropic org.
+- ANTHROPIC_ORG_SETTINGS - Anthropic org settings.
+- ANTHROPIC_CHILD_ORG - Anthropic child org.
+- ANTHROPIC_CHILD_ORG_SETTINGS - Anthropic child org settings.
+- ANTHROPIC_CHILD_ORG_USER - Anthropic child org user.
+- ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
+- ANTHROPIC_DEVICE - Anthropic device.

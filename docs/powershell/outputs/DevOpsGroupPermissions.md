@@ -7,3 +7,5 @@ Represents a group of permissions for Azure DevOps.
   - Represents the list of permissions in this group.
 - version: System.Int32
   - Represents the version of the permissions group.
+- feature: CloudAccountFeature
+  - Represents the feature this permissions group belongs to.

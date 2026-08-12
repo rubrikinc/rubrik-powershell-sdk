@@ -21,6 +21,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG_SETTINGS")]
+        ANTHROPIC_CHILD_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_DEVICE")]
+        ANTHROPIC_DEVICE,
+
+        [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
+        ANTHROPIC_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_USER_CLAUDE_CHAT")]
+        ANTHROPIC_USER_CLAUDE_CHAT,
+
         [EnumMember(Value = "AWS_NATIVE_CONFIG")]
         AWS_NATIVE_CONFIG,
 
@@ -32,6 +44,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
+
+        [EnumMember(Value = "AZURE_DEVOPS_PROJECT_FIXED_OBJECT")]
+        AZURE_DEVOPS_PROJECT_FIXED_OBJECT,
 
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
@@ -146,6 +161,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INFORMIX_INSTANCE")]
         INFORMIX_INSTANCE,
+
+        [EnumMember(Value = "IRISDB_INSTANCE")]
+        IRISDB_INSTANCE,
 
         [EnumMember(Value = "JIRA_FIXED_OBJECT")]
         JIRA_FIXED_OBJECT,

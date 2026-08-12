@@ -923,6 +923,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
     /// 			}
     /// 		}
+    /// 		# OPTIONAL
+    /// 		icebergSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			snapshotSelectionStrategy = $someIcebergSnapshotSelectionStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IcebergSnapshotSelectionStrategy]) for enum values.
+    /// 			# OPTIONAL
+    /// 			tagRegex = $someString
+    /// 			# OPTIONAL
+    /// 			fallbackToLatest = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		irisdbConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	archivalSpecs = @(
@@ -2006,6 +2032,32 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			differentialRetention = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		icebergSlaConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			snapshotSelectionStrategy = $someIcebergSnapshotSelectionStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IcebergSnapshotSelectionStrategy]) for enum values.
+    /// 			# OPTIONAL
+    /// 			tagRegex = $someString
+    /// 			# OPTIONAL
+    /// 			fallbackToLatest = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		irisdbConfigInput = @{
+    /// 			# OPTIONAL
+    /// 			logFrequency = @{
+    /// 				# OPTIONAL
+    /// 				duration = $someInt
+    /// 				# OPTIONAL
+    /// 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			logRetention = @{
     /// 				# OPTIONAL
     /// 				duration = $someInt
     /// 				# OPTIONAL
@@ -3348,6 +3400,32 @@ $query.Var.input = @{
 				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
 			}
 		}
+		# OPTIONAL
+		icebergSlaConfigInput = @{
+			# OPTIONAL
+			snapshotSelectionStrategy = $someIcebergSnapshotSelectionStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IcebergSnapshotSelectionStrategy]) for enum values.
+			# OPTIONAL
+			tagRegex = $someString
+			# OPTIONAL
+			fallbackToLatest = $someBoolean
+		}
+		# OPTIONAL
+		irisdbConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
 	}
 	# OPTIONAL
 	archivalSpecs = @(
@@ -4392,6 +4470,32 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			differentialRetention = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+		}
+		# OPTIONAL
+		icebergSlaConfigInput = @{
+			# OPTIONAL
+			snapshotSelectionStrategy = $someIcebergSnapshotSelectionStrategy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IcebergSnapshotSelectionStrategy]) for enum values.
+			# OPTIONAL
+			tagRegex = $someString
+			# OPTIONAL
+			fallbackToLatest = $someBoolean
+		}
+		# OPTIONAL
+		irisdbConfigInput = @{
+			# OPTIONAL
+			logFrequency = @{
+				# OPTIONAL
+				duration = $someInt
+				# OPTIONAL
+				unit = $someRetentionUnit # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RetentionUnit]) for enum values.
+			}
+			# OPTIONAL
+			logRetention = @{
 				# OPTIONAL
 				duration = $someInt
 				# OPTIONAL

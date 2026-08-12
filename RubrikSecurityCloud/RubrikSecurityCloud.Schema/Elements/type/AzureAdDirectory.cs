@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> AzureAdEventHubConnectionStatus? EventHubConnectionStatus
+        // GraphQL -> eventHubConnectionStatus: AzureAdEventHubConnectionStatus (enum)
+        [JsonProperty("eventHubConnectionStatus")]
+        public AzureAdEventHubConnectionStatus? EventHubConnectionStatus { get; set; }
+
         //      C# -> AzureAdExocomputeHostType? ExoHostType
         // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
         [JsonProperty("exoHostType")]
@@ -86,6 +91,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("directoryId")]
         public System.String? DirectoryId { get; set; }
 
+        //      C# -> System.Boolean? DoesEventHubIngestionRequireAzureSignIn
+        // GraphQL -> doesEventHubIngestionRequireAzureSignIn: Boolean! (scalar)
+        [JsonProperty("doesEventHubIngestionRequireAzureSignIn")]
+        public System.Boolean? DoesEventHubIngestionRequireAzureSignIn { get; set; }
+
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         [JsonProperty("domainName")]
@@ -115,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
+        //      C# -> System.Boolean? IsEventHubIngestionEnabled
+        // GraphQL -> isEventHubIngestionEnabled: Boolean! (scalar)
+        [JsonProperty("isEventHubIngestionEnabled")]
+        public System.Boolean? IsEventHubIngestionEnabled { get; set; }
 
         //      C# -> System.Boolean? IsIntuneEnabled
         // GraphQL -> isIntuneEnabled: Boolean! (scalar)
@@ -497,6 +512,7 @@ namespace RubrikSecurityCloud.Types
 
     public AzureAdDirectory Set(
         List<Operation>? AuthorizedOperations = null,
+        AzureAdEventHubConnectionStatus? EventHubConnectionStatus = null,
         AzureAdExocomputeHostType? ExoHostType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AzureAdProvisioningState? ProvisioningState = null,
@@ -509,12 +525,14 @@ namespace RubrikSecurityCloud.Types
         System.String? AppId = null,
         System.String? AppOwner = null,
         System.String? DirectoryId = null,
+        System.Boolean? DoesEventHubIngestionRequireAzureSignIn = null,
         System.String? DomainName = null,
         System.String? ExocomputeId = null,
         DateTime? FirstDeviceSnapshotTime = null,
         DateTime? FirstScopeSnapshotTime = null,
         DateTime? FirstZeusSnapshotTime = null,
         System.String? Id = null,
+        System.Boolean? IsEventHubIngestionEnabled = null,
         System.Boolean? IsIntuneEnabled = null,
         System.Boolean? IsJitEnabled = null,
         System.Boolean? IsProvisioned = null,
@@ -574,6 +592,9 @@ namespace RubrikSecurityCloud.Types
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
         }
+        if ( EventHubConnectionStatus != null ) {
+            this.EventHubConnectionStatus = EventHubConnectionStatus;
+        }
         if ( ExoHostType != null ) {
             this.ExoHostType = ExoHostType;
         }
@@ -610,6 +631,9 @@ namespace RubrikSecurityCloud.Types
         if ( DirectoryId != null ) {
             this.DirectoryId = DirectoryId;
         }
+        if ( DoesEventHubIngestionRequireAzureSignIn != null ) {
+            this.DoesEventHubIngestionRequireAzureSignIn = DoesEventHubIngestionRequireAzureSignIn;
+        }
         if ( DomainName != null ) {
             this.DomainName = DomainName;
         }
@@ -627,6 +651,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsEventHubIngestionEnabled != null ) {
+            this.IsEventHubIngestionEnabled = IsEventHubIngestionEnabled;
         }
         if ( IsIntuneEnabled != null ) {
             this.IsIntuneEnabled = IsIntuneEnabled;
@@ -813,6 +840,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "authorizedOperations\n" ;
             }
         }
+        //      C# -> AzureAdEventHubConnectionStatus? EventHubConnectionStatus
+        // GraphQL -> eventHubConnectionStatus: AzureAdEventHubConnectionStatus (enum)
+        if (this.EventHubConnectionStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "eventHubConnectionStatus\n" ;
+            } else {
+                s += ind + "eventHubConnectionStatus\n" ;
+            }
+        }
         //      C# -> AzureAdExocomputeHostType? ExoHostType
         // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
         if (this.ExoHostType != null) {
@@ -933,6 +969,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "directoryId\n" ;
             }
         }
+        //      C# -> System.Boolean? DoesEventHubIngestionRequireAzureSignIn
+        // GraphQL -> doesEventHubIngestionRequireAzureSignIn: Boolean! (scalar)
+        if (this.DoesEventHubIngestionRequireAzureSignIn != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "doesEventHubIngestionRequireAzureSignIn\n" ;
+            } else {
+                s += ind + "doesEventHubIngestionRequireAzureSignIn\n" ;
+            }
+        }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName != null) {
@@ -985,6 +1030,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsEventHubIngestionEnabled
+        // GraphQL -> isEventHubIngestionEnabled: Boolean! (scalar)
+        if (this.IsEventHubIngestionEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isEventHubIngestionEnabled\n" ;
+            } else {
+                s += ind + "isEventHubIngestionEnabled\n" ;
             }
         }
         //      C# -> System.Boolean? IsIntuneEnabled
@@ -1554,6 +1608,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.AuthorizedOperations = null;
         }
+        //      C# -> AzureAdEventHubConnectionStatus? EventHubConnectionStatus
+        // GraphQL -> eventHubConnectionStatus: AzureAdEventHubConnectionStatus (enum)
+        if (ec.Includes("eventHubConnectionStatus",true))
+        {
+            if(this.EventHubConnectionStatus == null) {
+
+                this.EventHubConnectionStatus = new AzureAdEventHubConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.EventHubConnectionStatus != null && ec.Excludes("eventHubConnectionStatus",true))
+        {
+            this.EventHubConnectionStatus = null;
+        }
         //      C# -> AzureAdExocomputeHostType? ExoHostType
         // GraphQL -> exoHostType: AzureAdExocomputeHostType! (enum)
         if (ec.Includes("exoHostType",true))
@@ -1779,6 +1850,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.DirectoryId = null;
         }
+        //      C# -> System.Boolean? DoesEventHubIngestionRequireAzureSignIn
+        // GraphQL -> doesEventHubIngestionRequireAzureSignIn: Boolean! (scalar)
+        if (ec.Includes("doesEventHubIngestionRequireAzureSignIn",true))
+        {
+            if(this.DoesEventHubIngestionRequireAzureSignIn == null) {
+
+                this.DoesEventHubIngestionRequireAzureSignIn = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.DoesEventHubIngestionRequireAzureSignIn != null && ec.Excludes("doesEventHubIngestionRequireAzureSignIn",true))
+        {
+            this.DoesEventHubIngestionRequireAzureSignIn = null;
+        }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (ec.Includes("domainName",true))
@@ -1880,6 +1968,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.Boolean? IsEventHubIngestionEnabled
+        // GraphQL -> isEventHubIngestionEnabled: Boolean! (scalar)
+        if (ec.Includes("isEventHubIngestionEnabled",true))
+        {
+            if(this.IsEventHubIngestionEnabled == null) {
+
+                this.IsEventHubIngestionEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsEventHubIngestionEnabled != null && ec.Excludes("isEventHubIngestionEnabled",true))
+        {
+            this.IsEventHubIngestionEnabled = null;
         }
         //      C# -> System.Boolean? IsIntuneEnabled
         // GraphQL -> isIntuneEnabled: Boolean! (scalar)

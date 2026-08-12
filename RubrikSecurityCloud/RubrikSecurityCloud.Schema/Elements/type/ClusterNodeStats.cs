@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cpuStat")]
         public System.Int64? CpuStat { get; set; }
 
+        //      C# -> System.Int64? DiskUtilBasisPoints
+        // GraphQL -> diskUtilBasisPoints: Long (scalar)
+        [JsonProperty("diskUtilBasisPoints")]
+        public System.Int64? DiskUtilBasisPoints { get; set; }
+
         //      C# -> System.Int64? IopsReadsPerSecond
         // GraphQL -> iopsReadsPerSecond: Long! (scalar)
         [JsonProperty("iopsReadsPerSecond")]
@@ -44,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> iopsWritesPerSecond: Long! (scalar)
         [JsonProperty("iopsWritesPerSecond")]
         public System.Int64? IopsWritesPerSecond { get; set; }
+
+        //      C# -> System.Int64? LoadAvg5MinMilli
+        // GraphQL -> loadAvg5MinMilli: Long (scalar)
+        [JsonProperty("loadAvg5MinMilli")]
+        public System.Int64? LoadAvg5MinMilli { get; set; }
 
         //      C# -> System.Int64? NetworkBytesReceived
         // GraphQL -> networkBytesReceived: Long! (scalar)
@@ -55,6 +65,31 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("networkBytesTransmitted")]
         public System.Int64? NetworkBytesTransmitted { get; set; }
 
+        //      C# -> System.Int64? NfacctTcpBackupAgentBytes
+        // GraphQL -> nfacctTcpBackupAgentBytes: Long (scalar)
+        [JsonProperty("nfacctTcpBackupAgentBytes")]
+        public System.Int64? NfacctTcpBackupAgentBytes { get; set; }
+
+        //      C# -> System.Int64? NfacctTcpEsxBytes
+        // GraphQL -> nfacctTcpEsxBytes: Long (scalar)
+        [JsonProperty("nfacctTcpEsxBytes")]
+        public System.Int64? NfacctTcpEsxBytes { get; set; }
+
+        //      C# -> System.Int64? NfacctTcpIscsiBytes
+        // GraphQL -> nfacctTcpIscsiBytes: Long (scalar)
+        [JsonProperty("nfacctTcpIscsiBytes")]
+        public System.Int64? NfacctTcpIscsiBytes { get; set; }
+
+        //      C# -> System.Int64? NfacctTcpNfsBytes
+        // GraphQL -> nfacctTcpNfsBytes: Long (scalar)
+        [JsonProperty("nfacctTcpNfsBytes")]
+        public System.Int64? NfacctTcpNfsBytes { get; set; }
+
+        //      C# -> System.Int64? NfacctTcpSmbBytes
+        // GraphQL -> nfacctTcpSmbBytes: Long (scalar)
+        [JsonProperty("nfacctTcpSmbBytes")]
+        public System.Int64? NfacctTcpSmbBytes { get; set; }
+
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         [JsonProperty("nodeId")]
@@ -65,10 +100,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("readThroughputBytesPerSecond")]
         public System.Int64? ReadThroughputBytesPerSecond { get; set; }
 
+        //      C# -> System.Int64? SnapshotStorageDelta
+        // GraphQL -> snapshotStorageDelta: Long (scalar)
+        [JsonProperty("snapshotStorageDelta")]
+        public System.Int64? SnapshotStorageDelta { get; set; }
+
+        //      C# -> System.Int64? SnapshotStorageIndex
+        // GraphQL -> snapshotStorageIndex: Long (scalar)
+        [JsonProperty("snapshotStorageIndex")]
+        public System.Int64? SnapshotStorageIndex { get; set; }
+
+        //      C# -> System.Int64? SnapshotStorageLive
+        // GraphQL -> snapshotStorageLive: Long (scalar)
+        [JsonProperty("snapshotStorageLive")]
+        public System.Int64? SnapshotStorageLive { get; set; }
+
+        //      C# -> System.Int64? SnapshotStorageMetadata
+        // GraphQL -> snapshotStorageMetadata: Long (scalar)
+        [JsonProperty("snapshotStorageMetadata")]
+        public System.Int64? SnapshotStorageMetadata { get; set; }
+
+        //      C# -> System.Int64? StorageEfficiencyRatio10k
+        // GraphQL -> storageEfficiencyRatio10k: Long (scalar)
+        [JsonProperty("storageEfficiencyRatio10k")]
+        public System.Int64? StorageEfficiencyRatio10k { get; set; }
+
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         [JsonProperty("time")]
         public DateTime? Time { get; set; }
+
+        //      C# -> System.Int64? UptimeSeconds
+        // GraphQL -> uptimeSeconds: Long (scalar)
+        [JsonProperty("uptimeSeconds")]
+        public System.Int64? UptimeSeconds { get; set; }
 
         //      C# -> System.Int32? UsedMemoryStat
         // GraphQL -> usedMemoryStat: Int! (scalar)
@@ -93,13 +158,26 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterId = null,
         System.Int64? ClusterPhysicalDataIngest = null,
         System.Int64? CpuStat = null,
+        System.Int64? DiskUtilBasisPoints = null,
         System.Int64? IopsReadsPerSecond = null,
         System.Int64? IopsWritesPerSecond = null,
+        System.Int64? LoadAvg5MinMilli = null,
         System.Int64? NetworkBytesReceived = null,
         System.Int64? NetworkBytesTransmitted = null,
+        System.Int64? NfacctTcpBackupAgentBytes = null,
+        System.Int64? NfacctTcpEsxBytes = null,
+        System.Int64? NfacctTcpIscsiBytes = null,
+        System.Int64? NfacctTcpNfsBytes = null,
+        System.Int64? NfacctTcpSmbBytes = null,
         System.String? NodeId = null,
         System.Int64? ReadThroughputBytesPerSecond = null,
+        System.Int64? SnapshotStorageDelta = null,
+        System.Int64? SnapshotStorageIndex = null,
+        System.Int64? SnapshotStorageLive = null,
+        System.Int64? SnapshotStorageMetadata = null,
+        System.Int64? StorageEfficiencyRatio10k = null,
         DateTime? Time = null,
+        System.Int64? UptimeSeconds = null,
         System.Int32? UsedMemoryStat = null,
         System.Int64? WriteThroughputBytesPerSecond = null
     ) 
@@ -113,11 +191,17 @@ namespace RubrikSecurityCloud.Types
         if ( CpuStat != null ) {
             this.CpuStat = CpuStat;
         }
+        if ( DiskUtilBasisPoints != null ) {
+            this.DiskUtilBasisPoints = DiskUtilBasisPoints;
+        }
         if ( IopsReadsPerSecond != null ) {
             this.IopsReadsPerSecond = IopsReadsPerSecond;
         }
         if ( IopsWritesPerSecond != null ) {
             this.IopsWritesPerSecond = IopsWritesPerSecond;
+        }
+        if ( LoadAvg5MinMilli != null ) {
+            this.LoadAvg5MinMilli = LoadAvg5MinMilli;
         }
         if ( NetworkBytesReceived != null ) {
             this.NetworkBytesReceived = NetworkBytesReceived;
@@ -125,14 +209,47 @@ namespace RubrikSecurityCloud.Types
         if ( NetworkBytesTransmitted != null ) {
             this.NetworkBytesTransmitted = NetworkBytesTransmitted;
         }
+        if ( NfacctTcpBackupAgentBytes != null ) {
+            this.NfacctTcpBackupAgentBytes = NfacctTcpBackupAgentBytes;
+        }
+        if ( NfacctTcpEsxBytes != null ) {
+            this.NfacctTcpEsxBytes = NfacctTcpEsxBytes;
+        }
+        if ( NfacctTcpIscsiBytes != null ) {
+            this.NfacctTcpIscsiBytes = NfacctTcpIscsiBytes;
+        }
+        if ( NfacctTcpNfsBytes != null ) {
+            this.NfacctTcpNfsBytes = NfacctTcpNfsBytes;
+        }
+        if ( NfacctTcpSmbBytes != null ) {
+            this.NfacctTcpSmbBytes = NfacctTcpSmbBytes;
+        }
         if ( NodeId != null ) {
             this.NodeId = NodeId;
         }
         if ( ReadThroughputBytesPerSecond != null ) {
             this.ReadThroughputBytesPerSecond = ReadThroughputBytesPerSecond;
         }
+        if ( SnapshotStorageDelta != null ) {
+            this.SnapshotStorageDelta = SnapshotStorageDelta;
+        }
+        if ( SnapshotStorageIndex != null ) {
+            this.SnapshotStorageIndex = SnapshotStorageIndex;
+        }
+        if ( SnapshotStorageLive != null ) {
+            this.SnapshotStorageLive = SnapshotStorageLive;
+        }
+        if ( SnapshotStorageMetadata != null ) {
+            this.SnapshotStorageMetadata = SnapshotStorageMetadata;
+        }
+        if ( StorageEfficiencyRatio10k != null ) {
+            this.StorageEfficiencyRatio10k = StorageEfficiencyRatio10k;
+        }
         if ( Time != null ) {
             this.Time = Time;
+        }
+        if ( UptimeSeconds != null ) {
+            this.UptimeSeconds = UptimeSeconds;
         }
         if ( UsedMemoryStat != null ) {
             this.UsedMemoryStat = UsedMemoryStat;
@@ -181,6 +298,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "cpuStat\n" ;
             }
         }
+        //      C# -> System.Int64? DiskUtilBasisPoints
+        // GraphQL -> diskUtilBasisPoints: Long (scalar)
+        if (this.DiskUtilBasisPoints != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "diskUtilBasisPoints\n" ;
+            } else {
+                s += ind + "diskUtilBasisPoints\n" ;
+            }
+        }
         //      C# -> System.Int64? IopsReadsPerSecond
         // GraphQL -> iopsReadsPerSecond: Long! (scalar)
         if (this.IopsReadsPerSecond != null) {
@@ -197,6 +323,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "iopsWritesPerSecond\n" ;
             } else {
                 s += ind + "iopsWritesPerSecond\n" ;
+            }
+        }
+        //      C# -> System.Int64? LoadAvg5MinMilli
+        // GraphQL -> loadAvg5MinMilli: Long (scalar)
+        if (this.LoadAvg5MinMilli != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "loadAvg5MinMilli\n" ;
+            } else {
+                s += ind + "loadAvg5MinMilli\n" ;
             }
         }
         //      C# -> System.Int64? NetworkBytesReceived
@@ -217,6 +352,51 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "networkBytesTransmitted\n" ;
             }
         }
+        //      C# -> System.Int64? NfacctTcpBackupAgentBytes
+        // GraphQL -> nfacctTcpBackupAgentBytes: Long (scalar)
+        if (this.NfacctTcpBackupAgentBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfacctTcpBackupAgentBytes\n" ;
+            } else {
+                s += ind + "nfacctTcpBackupAgentBytes\n" ;
+            }
+        }
+        //      C# -> System.Int64? NfacctTcpEsxBytes
+        // GraphQL -> nfacctTcpEsxBytes: Long (scalar)
+        if (this.NfacctTcpEsxBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfacctTcpEsxBytes\n" ;
+            } else {
+                s += ind + "nfacctTcpEsxBytes\n" ;
+            }
+        }
+        //      C# -> System.Int64? NfacctTcpIscsiBytes
+        // GraphQL -> nfacctTcpIscsiBytes: Long (scalar)
+        if (this.NfacctTcpIscsiBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfacctTcpIscsiBytes\n" ;
+            } else {
+                s += ind + "nfacctTcpIscsiBytes\n" ;
+            }
+        }
+        //      C# -> System.Int64? NfacctTcpNfsBytes
+        // GraphQL -> nfacctTcpNfsBytes: Long (scalar)
+        if (this.NfacctTcpNfsBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfacctTcpNfsBytes\n" ;
+            } else {
+                s += ind + "nfacctTcpNfsBytes\n" ;
+            }
+        }
+        //      C# -> System.Int64? NfacctTcpSmbBytes
+        // GraphQL -> nfacctTcpSmbBytes: Long (scalar)
+        if (this.NfacctTcpSmbBytes != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nfacctTcpSmbBytes\n" ;
+            } else {
+                s += ind + "nfacctTcpSmbBytes\n" ;
+            }
+        }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId != null) {
@@ -235,6 +415,51 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "readThroughputBytesPerSecond\n" ;
             }
         }
+        //      C# -> System.Int64? SnapshotStorageDelta
+        // GraphQL -> snapshotStorageDelta: Long (scalar)
+        if (this.SnapshotStorageDelta != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotStorageDelta\n" ;
+            } else {
+                s += ind + "snapshotStorageDelta\n" ;
+            }
+        }
+        //      C# -> System.Int64? SnapshotStorageIndex
+        // GraphQL -> snapshotStorageIndex: Long (scalar)
+        if (this.SnapshotStorageIndex != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotStorageIndex\n" ;
+            } else {
+                s += ind + "snapshotStorageIndex\n" ;
+            }
+        }
+        //      C# -> System.Int64? SnapshotStorageLive
+        // GraphQL -> snapshotStorageLive: Long (scalar)
+        if (this.SnapshotStorageLive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotStorageLive\n" ;
+            } else {
+                s += ind + "snapshotStorageLive\n" ;
+            }
+        }
+        //      C# -> System.Int64? SnapshotStorageMetadata
+        // GraphQL -> snapshotStorageMetadata: Long (scalar)
+        if (this.SnapshotStorageMetadata != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "snapshotStorageMetadata\n" ;
+            } else {
+                s += ind + "snapshotStorageMetadata\n" ;
+            }
+        }
+        //      C# -> System.Int64? StorageEfficiencyRatio10k
+        // GraphQL -> storageEfficiencyRatio10k: Long (scalar)
+        if (this.StorageEfficiencyRatio10k != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "storageEfficiencyRatio10k\n" ;
+            } else {
+                s += ind + "storageEfficiencyRatio10k\n" ;
+            }
+        }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         if (this.Time != null) {
@@ -242,6 +467,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "time\n" ;
             } else {
                 s += ind + "time\n" ;
+            }
+        }
+        //      C# -> System.Int64? UptimeSeconds
+        // GraphQL -> uptimeSeconds: Long (scalar)
+        if (this.UptimeSeconds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "uptimeSeconds\n" ;
+            } else {
+                s += ind + "uptimeSeconds\n" ;
             }
         }
         //      C# -> System.Int32? UsedMemoryStat
@@ -320,6 +554,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CpuStat = null;
         }
+        //      C# -> System.Int64? DiskUtilBasisPoints
+        // GraphQL -> diskUtilBasisPoints: Long (scalar)
+        if (ec.Includes("diskUtilBasisPoints",true))
+        {
+            if(this.DiskUtilBasisPoints == null) {
+
+                this.DiskUtilBasisPoints = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DiskUtilBasisPoints != null && ec.Excludes("diskUtilBasisPoints",true))
+        {
+            this.DiskUtilBasisPoints = null;
+        }
         //      C# -> System.Int64? IopsReadsPerSecond
         // GraphQL -> iopsReadsPerSecond: Long! (scalar)
         if (ec.Includes("iopsReadsPerSecond",true))
@@ -353,6 +604,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IopsWritesPerSecond != null && ec.Excludes("iopsWritesPerSecond",true))
         {
             this.IopsWritesPerSecond = null;
+        }
+        //      C# -> System.Int64? LoadAvg5MinMilli
+        // GraphQL -> loadAvg5MinMilli: Long (scalar)
+        if (ec.Includes("loadAvg5MinMilli",true))
+        {
+            if(this.LoadAvg5MinMilli == null) {
+
+                this.LoadAvg5MinMilli = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LoadAvg5MinMilli != null && ec.Excludes("loadAvg5MinMilli",true))
+        {
+            this.LoadAvg5MinMilli = null;
         }
         //      C# -> System.Int64? NetworkBytesReceived
         // GraphQL -> networkBytesReceived: Long! (scalar)
@@ -388,6 +656,91 @@ namespace RubrikSecurityCloud.Types
         {
             this.NetworkBytesTransmitted = null;
         }
+        //      C# -> System.Int64? NfacctTcpBackupAgentBytes
+        // GraphQL -> nfacctTcpBackupAgentBytes: Long (scalar)
+        if (ec.Includes("nfacctTcpBackupAgentBytes",true))
+        {
+            if(this.NfacctTcpBackupAgentBytes == null) {
+
+                this.NfacctTcpBackupAgentBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfacctTcpBackupAgentBytes != null && ec.Excludes("nfacctTcpBackupAgentBytes",true))
+        {
+            this.NfacctTcpBackupAgentBytes = null;
+        }
+        //      C# -> System.Int64? NfacctTcpEsxBytes
+        // GraphQL -> nfacctTcpEsxBytes: Long (scalar)
+        if (ec.Includes("nfacctTcpEsxBytes",true))
+        {
+            if(this.NfacctTcpEsxBytes == null) {
+
+                this.NfacctTcpEsxBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfacctTcpEsxBytes != null && ec.Excludes("nfacctTcpEsxBytes",true))
+        {
+            this.NfacctTcpEsxBytes = null;
+        }
+        //      C# -> System.Int64? NfacctTcpIscsiBytes
+        // GraphQL -> nfacctTcpIscsiBytes: Long (scalar)
+        if (ec.Includes("nfacctTcpIscsiBytes",true))
+        {
+            if(this.NfacctTcpIscsiBytes == null) {
+
+                this.NfacctTcpIscsiBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfacctTcpIscsiBytes != null && ec.Excludes("nfacctTcpIscsiBytes",true))
+        {
+            this.NfacctTcpIscsiBytes = null;
+        }
+        //      C# -> System.Int64? NfacctTcpNfsBytes
+        // GraphQL -> nfacctTcpNfsBytes: Long (scalar)
+        if (ec.Includes("nfacctTcpNfsBytes",true))
+        {
+            if(this.NfacctTcpNfsBytes == null) {
+
+                this.NfacctTcpNfsBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfacctTcpNfsBytes != null && ec.Excludes("nfacctTcpNfsBytes",true))
+        {
+            this.NfacctTcpNfsBytes = null;
+        }
+        //      C# -> System.Int64? NfacctTcpSmbBytes
+        // GraphQL -> nfacctTcpSmbBytes: Long (scalar)
+        if (ec.Includes("nfacctTcpSmbBytes",true))
+        {
+            if(this.NfacctTcpSmbBytes == null) {
+
+                this.NfacctTcpSmbBytes = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.NfacctTcpSmbBytes != null && ec.Excludes("nfacctTcpSmbBytes",true))
+        {
+            this.NfacctTcpSmbBytes = null;
+        }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (ec.Includes("nodeId",true))
@@ -422,6 +775,91 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReadThroughputBytesPerSecond = null;
         }
+        //      C# -> System.Int64? SnapshotStorageDelta
+        // GraphQL -> snapshotStorageDelta: Long (scalar)
+        if (ec.Includes("snapshotStorageDelta",true))
+        {
+            if(this.SnapshotStorageDelta == null) {
+
+                this.SnapshotStorageDelta = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotStorageDelta != null && ec.Excludes("snapshotStorageDelta",true))
+        {
+            this.SnapshotStorageDelta = null;
+        }
+        //      C# -> System.Int64? SnapshotStorageIndex
+        // GraphQL -> snapshotStorageIndex: Long (scalar)
+        if (ec.Includes("snapshotStorageIndex",true))
+        {
+            if(this.SnapshotStorageIndex == null) {
+
+                this.SnapshotStorageIndex = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotStorageIndex != null && ec.Excludes("snapshotStorageIndex",true))
+        {
+            this.SnapshotStorageIndex = null;
+        }
+        //      C# -> System.Int64? SnapshotStorageLive
+        // GraphQL -> snapshotStorageLive: Long (scalar)
+        if (ec.Includes("snapshotStorageLive",true))
+        {
+            if(this.SnapshotStorageLive == null) {
+
+                this.SnapshotStorageLive = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotStorageLive != null && ec.Excludes("snapshotStorageLive",true))
+        {
+            this.SnapshotStorageLive = null;
+        }
+        //      C# -> System.Int64? SnapshotStorageMetadata
+        // GraphQL -> snapshotStorageMetadata: Long (scalar)
+        if (ec.Includes("snapshotStorageMetadata",true))
+        {
+            if(this.SnapshotStorageMetadata == null) {
+
+                this.SnapshotStorageMetadata = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.SnapshotStorageMetadata != null && ec.Excludes("snapshotStorageMetadata",true))
+        {
+            this.SnapshotStorageMetadata = null;
+        }
+        //      C# -> System.Int64? StorageEfficiencyRatio10k
+        // GraphQL -> storageEfficiencyRatio10k: Long (scalar)
+        if (ec.Includes("storageEfficiencyRatio10k",true))
+        {
+            if(this.StorageEfficiencyRatio10k == null) {
+
+                this.StorageEfficiencyRatio10k = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StorageEfficiencyRatio10k != null && ec.Excludes("storageEfficiencyRatio10k",true))
+        {
+            this.StorageEfficiencyRatio10k = null;
+        }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
         if (ec.Includes("time",true))
@@ -438,6 +876,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Time != null && ec.Excludes("time",true))
         {
             this.Time = null;
+        }
+        //      C# -> System.Int64? UptimeSeconds
+        // GraphQL -> uptimeSeconds: Long (scalar)
+        if (ec.Includes("uptimeSeconds",true))
+        {
+            if(this.UptimeSeconds == null) {
+
+                this.UptimeSeconds = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UptimeSeconds != null && ec.Excludes("uptimeSeconds",true))
+        {
+            this.UptimeSeconds = null;
         }
         //      C# -> System.Int32? UsedMemoryStat
         // GraphQL -> usedMemoryStat: Int! (scalar)

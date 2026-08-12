@@ -19,5 +19,10 @@ Config as the input to start a threat hunt.
   - Limit which snapshots to include in the threat hunt.
 - clusterUuid: System.String
   - UUID used to identify the cluster the request goes to.
+- shouldExpandArchiveFiles: System.Boolean
+  - When true, the lambda engine expands zip/archive files during the threat
+hunt scan and runs YARA processors on each extracted inner file.
+Populated from HuntScanFileCriteria.should_expand_archive_files by the
+threat-hunt dispatcher.
 - objects: list of CdmHierarchySnappableNews
   - The objects to be scanned for malware.

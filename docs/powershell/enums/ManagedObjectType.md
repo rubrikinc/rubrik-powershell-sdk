@@ -230,6 +230,15 @@ organization and policy assignment (e.g., SLA Domain inheritance via tag).
 - MARIADB_INSTANCE - MariaDB Instance.
 - MARIADB_DATABASE - MariaDB Database.
 - AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps project-scoped fixed object to represent non repo entity.
+- ANTHROPIC_ORG - Anthropic organization (cloud or endpoint kind).
+- ANTHROPIC_ORG_SETTINGS - Anthropic organization settings (workload, leaf).
+- ANTHROPIC_CHILD_ORG - Anthropic child organization.
+- ANTHROPIC_CHILD_ORG_SETTINGS - Anthropic child organization settings (workload, leaf).
+- ANTHROPIC_CHILD_ORG_USER - Anthropic child organization user.
+- ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat (workload, leaf).
+- ANTHROPIC_DEVICE - Anthropic endpoint device (workload, leaf).
+- IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).
+- IRISDB_DATABASE - IRIS database (Epic EpicCare database).
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

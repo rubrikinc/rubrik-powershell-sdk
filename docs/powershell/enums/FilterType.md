@@ -69,6 +69,41 @@ user owner.
 - SECURITY_GPO_NO_LM_HASH - Filter for GPOs that configure the "Do not store LAN Manager hash value"
 security option. Selects GPOs where the NoLMHash setting is configured
 to store LM hashes (NoLMHash = 0).
+- SECURITY_GPO_LDAP_SIGNING - GPO "LDAP signing not required" filter. Selects GPOs that configure the
+LDAPServerIntegrity security option and flags those whose decrypted value
+is not 2 (Require signing). Values: 0 = None (insecure), 1 = Negotiate
+signing (accepts unsigned, insecure), 2 = Require signing (secure).
+- SECURITY_GPO_LLMNR_ENABLED - GPO "LLMNR explicitly enabled" filter. Selects GPOs that configure the
+EnableMulticast registry value under DNSClient to 1, explicitly re-enabling
+LLMNR and creating a credential interception risk.
+- SECURITY_GPO_RISKY_MACHINE_SCRIPT - GPO "risky machine script path" filter. Selects GPOs that configure a
+Startup or Shutdown machine script whose Command path falls outside the
+GPO's own SYSVOL directory (gPCFileSysPath), indicating an externally-
+sourced script that may be used for persistence or privilege escalation.
+- SECURITY_GPO_SE_DEBUG_PRIVILEGE - Filter for GPOs that grant the "Debug programs" (SeDebugPrivilege) user right to a
+non-default principal. Flags GPOs where the privilege membership includes
+an unexpected account.
+- SECURITY_GPO_SE_BACKUP_PRIVILEGE - Filter for GPOs that grant the "Back up files and directories" (SeBackupPrivilege) user
+right to a non-default principal.
+- SECURITY_GPO_SE_RESTORE_PRIVILEGE - Filter for GPOs that grant the "Restore files and directories" (SeRestorePrivilege) user
+right to a non-default principal.
+- SECURITY_GPO_SE_TAKE_OWNERSHIP_PRIVILEGE - Filter for GPOs that grant the "Take ownership of files or other objects"
+(SeTakeOwnershipPrivilege) user right to a non-default principal.
+- SECURITY_GPO_SE_LOAD_DRIVER_PRIVILEGE - Filter for GPOs that grant the "Load and unload device drivers" (SeLoadDriverPrivilege)
+user right to a non-default principal.
+- SECURITY_GPO_SE_IMPERSONATE_PRIVILEGE - Filter for GPOs that grant the "Impersonate a client after authentication"
+(SeImpersonatePrivilege) user right to a non-default principal.
+- SECURITY_GPO_SE_ASSIGN_PRIMARY_TOKEN_PRIVILEGE - Filter for GPOs that grant the "Replace a process level token"
+(SeAssignPrimaryTokenPrivilege) user right to a non-default principal.
+- SECURITY_GPO_SE_TRUSTED_CRED_MAN_ACCESS_PRIVILEGE - Filter for GPOs that grant the "Access Credential Manager as a trusted caller"
+(SeTrustedCredManAccessPrivilege) user right to a non-default principal.
+- SECURITY_GPO_SE_ENABLE_DELEGATION_PRIVILEGE - Filter for GPOs that grant the "Enable computer and user accounts to be trusted for
+delegation" (SeEnableDelegationPrivilege) user right to a non-default
+principal.
+- SECURITY_GPO_SE_REMOTE_INTERACTIVE_LOGON_RIGHT - Filter for GPOs that grant the "Allow log on through Remote Desktop Services"
+(SeRemoteInteractiveLogonRight) user right to a non-default principal.
+- SECURITY_GPO_SE_TCB_PRIVILEGE - Filter for GPOs that grant the "Act as part of the operating system" (SeTcbPrivilege) user
+right to a non-default principal.
 - SECURITY_IDP_METADATA_LABEL - Identity Provider domain level metadata label filter.
 - SECURITY_IDP_HAS_GROUP_WITH_LABEL - Identity Provider domain has a group-with-label filter.
 - SECURITY_IDP_HAS_USER_WITH_LABEL - Identity Provider domain has a user-with-label filter.
@@ -104,3 +139,5 @@ to store LM hashes (NoLMHash = 0).
 Applies to Active Directory events only.
 - SECURITY_IDENTITY_ACCOUNT_EXPIRY_TIME - Identity account expiry time filter.
 - SECURITY_SIGNIN_ANOMALY_PER_CAP_SPIKE - Sign-in failure spike attributed to a single Conditional Access Policy.
+- SECURITY_IDENTITY_EVENT_POLICY_INSIGHTS - Filters identity events by the policy insight surfaced by a Group Policy
+Object (GPO) change. Applies to Active Directory events only.

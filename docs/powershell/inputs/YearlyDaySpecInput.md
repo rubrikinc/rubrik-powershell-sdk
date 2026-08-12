@@ -7,4 +7,4 @@ month and a day within that month.
 - dayOfMonthSpecification: MonthlyDaySpecInput
   - Day of month specification within the selected month. Can be a
 specific date (using dateOffset) or a day-of-week pattern
-(e.g., Second Friday of March).
+(e.g., second Friday of March).

@@ -52,3 +52,5 @@ Inventory workloads that are supported on Rubrik.
 - PING_FEDERATE_ROOT - Ping Federate root.
 - POWER_PLATFORM_ROOT - Power Platform root.
 - MARIADB_ROOT - MariaDB root.
+- ANTHROPIC_ROOT - Anthropic root.
+- IRISDB_ROOT - The root of the IRIS DB sub-hierarchy.

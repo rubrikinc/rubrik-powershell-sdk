@@ -110,6 +110,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			tagBindings = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					scopeId = $someString
+    /// 					# OPTIONAL
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 							# OPTIONAL
+    /// 							key = $someString
+    /// 							# OPTIONAL
+    /// 							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 							# OPTIONAL
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			)
     /// 		}
     /// 	)
     /// }
@@ -195,6 +217,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			tagBindings = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					scopeId = $someString
+    /// 					# OPTIONAL
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 							# OPTIONAL
+    /// 							key = $someString
+    /// 							# OPTIONAL
+    /// 							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 							# OPTIONAL
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			)
     /// 		}
     /// 	)
     /// }
@@ -240,6 +284,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			tagBindings = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					scopeId = $someString
+    /// 					# OPTIONAL
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 							# OPTIONAL
+    /// 							key = $someString
+    /// 							# OPTIONAL
+    /// 							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 							# OPTIONAL
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
     /// 			)
     /// 		}
     /// 	)
@@ -396,6 +462,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			tagBindings = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					scopeId = $someString
+    /// 					# OPTIONAL
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 							# OPTIONAL
+    /// 							key = $someString
+    /// 							# OPTIONAL
+    /// 							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 							# OPTIONAL
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
     /// 			)
     /// 		}
     /// 	)
@@ -995,6 +1083,28 @@ $query.Var.input = @{
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
+			# OPTIONAL
+			tagBindings = @(
+				@{
+					# OPTIONAL
+					scopeId = $someString
+					# OPTIONAL
+					conditions = @(
+						@{
+							# OPTIONAL
+							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+							# OPTIONAL
+							key = $someString
+							# OPTIONAL
+							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+							# OPTIONAL
+							values = @(
+								$someString
+							)
+						}
+					)
+				}
+			)
 		}
 	)
 }"
@@ -1064,6 +1174,28 @@ $query.Var.input = @{
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
+			# OPTIONAL
+			tagBindings = @(
+				@{
+					# OPTIONAL
+					scopeId = $someString
+					# OPTIONAL
+					conditions = @(
+						@{
+							# OPTIONAL
+							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+							# OPTIONAL
+							key = $someString
+							# OPTIONAL
+							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+							# OPTIONAL
+							values = @(
+								$someString
+							)
+						}
+					)
+				}
+			)
 		}
 	)
 }"
@@ -1101,6 +1233,28 @@ $query.Var.input = @{
 			# OPTIONAL
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# OPTIONAL
+			tagBindings = @(
+				@{
+					# OPTIONAL
+					scopeId = $someString
+					# OPTIONAL
+					conditions = @(
+						@{
+							# OPTIONAL
+							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+							# OPTIONAL
+							key = $someString
+							# OPTIONAL
+							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+							# OPTIONAL
+							values = @(
+								$someString
+							)
+						}
+					)
+				}
 			)
 		}
 	)
@@ -1225,6 +1379,28 @@ $query.Var.input = @{
 			# OPTIONAL
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# OPTIONAL
+			tagBindings = @(
+				@{
+					# OPTIONAL
+					scopeId = $someString
+					# OPTIONAL
+					conditions = @(
+						@{
+							# OPTIONAL
+							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+							# OPTIONAL
+							key = $someString
+							# OPTIONAL
+							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+							# OPTIONAL
+							values = @(
+								$someString
+							)
+						}
+					)
+				}
 			)
 		}
 	)

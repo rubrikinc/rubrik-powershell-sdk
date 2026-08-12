@@ -128,3 +128,15 @@ Used by the CSV export path -- includes a Tags column.
 - CLOUD_COST_BY_CLOUD_ACCOUNT_ID_TABLE - Cloud cost rolled up by raw native cloud account id.
 - CLOUD_COST_BY_ACCOUNT_NAME_TABLE - Cloud cost rolled up by cloud account, displayed by resolved account name.
 - SCRIPT_REPORT_TABLE - TBD.
+- IDENTITY_INVENTORY_ALL_TABLE - Displays the identity inventory — all principals table view (users,
+groups, service accounts, computers, GPOs, conditional access
+policies).
+- GROUP_MEMBERSHIP_ALL_TABLE - Table displaying all direct group membership edges.
+- CNP_PROTECTION_TASKS_DETAIL_BY_CLOUD_ACCOUNT_TABLE - CNP protection tasks detail report grouped by cloud account.
+- CNP_RECOVERY_TASKS_DETAIL_BY_CLOUD_ACCOUNT_TABLE - CNP recovery tasks detail report grouped by cloud account.
+- PASSWORD_CHANGE_HISTORY_TABLE - Main table for the password change history report.
+- ACCOUNT_LOCKOUTS_TABLE - Main table for the account lockouts report.
+- ACCOUNT_LIFECYCLE_TABLE - Main table for the account lifecycle report.
+- GROUP_CHANGES_TABLE - Main table for the group changes report.
+- GPO_CAP_CHANGES_TABLE - Main table for the GPO/CAP changes report.
+- PRIVILEGED_IDENTITY_TABLE - Main table for the privileged identity report.

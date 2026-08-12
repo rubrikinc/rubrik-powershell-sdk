@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? BackupSubnetCidr
+        // GraphQL -> backupSubnetCidr: String (scalar)
+        [JsonProperty("backupSubnetCidr")]
+        public System.String? BackupSubnetCidr { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -84,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> maxConcurrentAgents: Int (scalar)
         [JsonProperty("maxConcurrentAgents")]
         public System.Int32? MaxConcurrentAgents { get; set; }
+
+        //      C# -> System.String? DataPathTransport
+        // GraphQL -> dataPathTransport: String (scalar)
+        [JsonProperty("dataPathTransport")]
+        public System.String? DataPathTransport { get; set; }
 
         //      C# -> ServiceAccountInputInput? ServiceAccount
         // GraphQL -> serviceAccount: ServiceAccountInputInput! (input)

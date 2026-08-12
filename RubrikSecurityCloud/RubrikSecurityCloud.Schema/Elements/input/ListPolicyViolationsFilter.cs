@@ -114,6 +114,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("violationNames")]
         public List<System.String>? ViolationNames { get; set; }
 
+        //      C# -> PolicyDateTimeRange? LastSeenAtDateRange
+        // GraphQL -> lastSeenAtDateRange: PolicyDateTimeRange (input)
+        [JsonProperty("lastSeenAtDateRange")]
+        public PolicyDateTimeRange? LastSeenAtDateRange { get; set; }
+
 
         #endregion
 

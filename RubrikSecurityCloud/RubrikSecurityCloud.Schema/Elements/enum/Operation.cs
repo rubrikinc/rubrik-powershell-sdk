@@ -288,6 +288,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_CDM_ADMIN")]
         MANAGE_CDM_ADMIN,
 
+        [EnumMember(Value = "MANAGE_CDM_USER")]
+        MANAGE_CDM_USER,
+
         [EnumMember(Value = "MANAGE_CDP_IO_FILTER")]
         MANAGE_CDP_IO_FILTER,
 
@@ -591,6 +594,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
 
+        [EnumMember(Value = "VIEW_AGENT_CLOUD_SESSIONS")]
+        VIEW_AGENT_CLOUD_SESSIONS,
+
         [EnumMember(Value = "VIEW_ALL_EVENTS")]
         VIEW_ALL_EVENTS,
 
@@ -632,6 +638,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_CDM_SYS_CONFIG")]
         VIEW_CDM_SYS_CONFIG,
+
+        [EnumMember(Value = "VIEW_CDM_USER")]
+        VIEW_CDM_USER,
 
         [EnumMember(Value = "VIEW_CERTIFICATE")]
         VIEW_CERTIFICATE,

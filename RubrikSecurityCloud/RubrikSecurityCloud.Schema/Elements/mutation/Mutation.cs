@@ -3115,6 +3115,24 @@ namespace RubrikSecurityCloud.Types
             return true ;
         }
 
+        //      C# -> System.String? SetObjectBackupWindows
+        // GraphQL -> setObjectBackupWindows: Void (scalar)
+        public static string SetObjectBackupWindows(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "setObjectBackupWindows" + args + "\n";
+        }
+        public static object SetObjectBackupWindowsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
         //      C# -> System.String? SetPasswordComplexityPolicy
         // GraphQL -> setPasswordComplexityPolicy: Void (scalar)
         public static string SetPasswordComplexityPolicy(object fsObj)
@@ -3628,6 +3646,24 @@ namespace RubrikSecurityCloud.Types
             return "updateFeed" + args + "\n";
         }
         public static object UpdateFeedFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            // there is no field spec for scalar types, but we still
+            // populate the fieldSpec so that caller can see the type 
+            return "FETCH" ;
+        }
+
+        //      C# -> System.String? UpdateFusionComputeUnmountTime
+        // GraphQL -> updateFusionComputeUnmountTime: Void (scalar)
+        public static string UpdateFusionComputeUnmountTime(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateFusionComputeUnmountTime" + args + "\n";
+        }
+        public static object UpdateFusionComputeUnmountTimeFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -4929,6 +4965,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AddVmAppConsistentSpecsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AirUpdateMcpGatewayReply? AirUpdateMcpGateway
+        // GraphQL -> airUpdateMcpGateway: AirUpdateMcpGatewayReply! (type)
+        public static string AirUpdateMcpGateway(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "airUpdateMcpGateway" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object AirUpdateMcpGatewayFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AirUpdateMcpGatewayReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7737,6 +7791,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> CreateOnDemandS3TablesIcebergTableBackupReply? CreateOnDemandS3TablesIcebergTableBackup
+        // GraphQL -> createOnDemandS3TablesIcebergTableBackup: CreateOnDemandS3TablesIcebergTableBackupReply! (type)
+        public static string CreateOnDemandS3TablesIcebergTableBackup(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "createOnDemandS3TablesIcebergTableBackup" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object CreateOnDemandS3TablesIcebergTableBackupFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new CreateOnDemandS3TablesIcebergTableBackupReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -12615,6 +12687,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RecoverS3TablesIcebergTableSnapshotReply? RecoverS3TablesIcebergTableSnapshot
+        // GraphQL -> recoverS3TablesIcebergTableSnapshot: RecoverS3TablesIcebergTableSnapshotReply! (type)
+        public static string RecoverS3TablesIcebergTableSnapshot(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "recoverS3TablesIcebergTableSnapshot" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RecoverS3TablesIcebergTableSnapshotFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RecoverS3TablesIcebergTableSnapshotReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

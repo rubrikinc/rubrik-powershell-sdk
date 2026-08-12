@@ -27,9 +27,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? DomainName { get; set; }
 
         //      C# -> System.String? StateToken
-        // GraphQL -> stateToken: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> stateToken: String (scalar)
         [JsonProperty("stateToken")]
         public System.String? StateToken { get; set; }
 
@@ -42,6 +40,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> uemKmsSpec: UemKmsSpecInput (input)
         [JsonProperty("uemKmsSpec")]
         public UemKmsSpecInput? UemKmsSpec { get; set; }
+
+        //      C# -> EntraIdEventHubOnboarding? EventHubOnboarding
+        // GraphQL -> eventHubOnboarding: EntraIdEventHubOnboarding (input)
+        [JsonProperty("eventHubOnboarding")]
+        public EntraIdEventHubOnboarding? EventHubOnboarding { get; set; }
+
+        //      C# -> EntraIdEventHubOnboardingWithoutOauth? EventHubOnboardingWithoutOauth
+        // GraphQL -> eventHubOnboardingWithoutOauth: EntraIdEventHubOnboardingWithoutOAuth (input)
+        [JsonProperty("eventHubOnboardingWithoutOauth")]
+        public EntraIdEventHubOnboardingWithoutOauth? EventHubOnboardingWithoutOauth { get; set; }
+
+        //      C# -> System.Boolean? EventHubOnly
+        // GraphQL -> eventHubOnly: Boolean (scalar)
+        [JsonProperty("eventHubOnly")]
+        public System.Boolean? EventHubOnly { get; set; }
 
 
         #endregion

@@ -250,7 +250,10 @@ namespace RubrikSecurityCloud.Types
         REPLICATION_TARGET_SETUP_UPDATE,
 
         [EnumMember(Value = "SAP_HANA_STATIC_RETENTION")]
-        SAP_HANA_STATIC_RETENTION
+        SAP_HANA_STATIC_RETENTION,
+
+        [EnumMember(Value = "VSPHERE_COMPUTE_VISIBILITY_DISABLED")]
+        VSPHERE_COMPUTE_VISIBILITY_DISABLED
 
 
     } // enum CdmFeatureFlagType

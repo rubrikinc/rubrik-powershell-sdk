@@ -36,6 +36,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "POLICY_VIOLATIONS_CSV")]
         POLICY_VIOLATIONS_CSV,
 
+        [EnumMember(Value = "RECOVERY_IMPACT_CSV")]
+        RECOVERY_IMPACT_CSV,
+
         [EnumMember(Value = "REMEDIATION_ACTIONS_LOG_CSV")]
         REMEDIATION_ACTIONS_LOG_CSV,
 

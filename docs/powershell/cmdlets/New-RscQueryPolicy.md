@@ -119,7 +119,7 @@ numbers are returned.
 ### securitypolicies
 All security policies.
 
-- There are 28 arguments.
+- There are 29 arguments.
     - isPolicyEnabled - System.Boolean: Is the policy enabled? If null, both enabled and disabled policies will be returned.
     - isCustomPolicy - System.Boolean: Is the policy custom, not built-in? If null, both custom and built-in policies will be returned.
     - policyCategories - list of Categorys: Policy categories to filter by. If empty or null, the results will not be filtered.
@@ -147,6 +147,7 @@ All security policies.
     - policyViolationNameSearch - System.String: Policy violation name to search for (substring match).
     - violationNames - list of System.Strings: Exact violation names to filter by. OR-combined with policyIds: a violation matches if its policyId is in policyIds OR its violationName is in violationNames. Distinct from policyViolationNameSearch (substring match, AND-combined).
     - policyFrameworks - list of System.Strings: Policy frameworks to filter by. If empty or null, the results will not be filtered.
+    - idpTypes - list of IdpTypes: IdP (identity provider) types to filter policies by. If empty or null, the results will not be filtered.
     - policyTypes - list of PolicyTypes: List of policy types. If empty, no results will be returned.
 - Returns list of PolicyResults.
 ### securitypolicy

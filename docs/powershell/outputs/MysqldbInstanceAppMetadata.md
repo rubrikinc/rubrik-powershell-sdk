@@ -7,3 +7,6 @@ MySQL instance workload related app metadata for a snapshot.
   - The metadata version of the MySQL instance snapshot.
 - databaseCdmIds: list of System.Strings
   - The CDM internal IDs of the databases in the MySQL instance snapshot.
+- hasCapturedSchemas: System.Boolean
+  - Whether the MySQL instance snapshot has captured per-database schema
+available for replay at restore time.

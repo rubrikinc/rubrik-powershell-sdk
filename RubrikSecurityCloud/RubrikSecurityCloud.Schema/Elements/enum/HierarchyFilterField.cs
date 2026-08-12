@@ -420,6 +420,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EC2_INSTANCE_TYPE")]
         EC2_INSTANCE_TYPE,
 
+        [EnumMember(Value = "EC2_INSTANCE_VPC_ID")]
+        EC2_INSTANCE_VPC_ID,
+
         [EnumMember(Value = "EFFECTIVE_RETENTION_SLA")]
         EFFECTIVE_RETENTION_SLA,
 
@@ -1055,6 +1058,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PROXMOX_NODE_RBS_CONFIGURED")]
         PROXMOX_NODE_RBS_CONFIGURED,
+
+        [EnumMember(Value = "RDS_INSTANCE_VPC_ID")]
+        RDS_INSTANCE_VPC_ID,
 
         [EnumMember(Value = "RECOVERY_PLAN_AWS_REGION")]
         RECOVERY_PLAN_AWS_REGION,

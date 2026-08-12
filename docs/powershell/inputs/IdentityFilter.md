@@ -11,3 +11,5 @@ activity feed excludes DNS_NODE and DNS_ZONE so that DNS activities
 surface only on the dedicated DNS page. A caller that scopes to DNS via
 target_entity_types overrides the default DNS exclusion and receives DNS
 rows.
+- targetPrivilegeTypes: list of PrivilegeTypes
+  - The privilege types of the target entity to filter on.

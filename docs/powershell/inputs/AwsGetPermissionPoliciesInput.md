@@ -1,6 +1,8 @@
 ### AwsGetPermissionPoliciesInput
 Input to retrieve the AWS permission policies.
 
+- awsNativeId: System.String
+  - AWS account native ID used to resolve the onboarded cloud account when rendering its permission policies.
 - cloudType: AwsCloudType
   - Cloud type (Standard/China) for the cloud account.
 - features: list of CloudAccountFeatures

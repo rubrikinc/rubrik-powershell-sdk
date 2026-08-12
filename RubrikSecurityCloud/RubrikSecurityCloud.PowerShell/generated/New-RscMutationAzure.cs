@@ -409,6 +409,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			tagBindings = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					scopeId = $someString
+    /// 					# OPTIONAL
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 							# OPTIONAL
+    /// 							key = $someString
+    /// 							# OPTIONAL
+    /// 							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 							# OPTIONAL
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			)
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -526,7 +548,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	domainName = $someString
-    /// 	# REQUIRED
+    /// 	# OPTIONAL
     /// 	stateToken = $someString
     /// 	# OPTIONAL
     /// 	kmsSpec = @{
@@ -554,6 +576,62 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		kmsKeyVersion = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	eventHubOnboarding = @{
+    /// 		# REQUIRED
+    /// 		subscriptionNativeId = $someString
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 		)
+    /// 		# REQUIRED
+    /// 		sessionId = $someString
+    /// 		# OPTIONAL
+    /// 		resourceGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		resourceGroupTags = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		eventHubTags = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				key = $someString
+    /// 				# REQUIRED
+    /// 				value = $someString
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		resourceGroupRegion = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 		# OPTIONAL
+    /// 		subscriptionName = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	eventHubOnboardingWithoutOauth = @{
+    /// 		# REQUIRED
+    /// 		subscriptionNativeId = $someString
+    /// 		# REQUIRED
+    /// 		regions = @(
+    /// 			$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 		)
+    /// 		# REQUIRED
+    /// 		namespace = $someString
+    /// 		# REQUIRED
+    /// 		eventHubName = $someString
+    /// 		# OPTIONAL
+    /// 		resourceGroupName = $someString
+    /// 		# OPTIONAL
+    /// 		resourceGroupRegion = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+    /// 		# OPTIONAL
+    /// 		subscriptionName = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	eventHubOnly = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1137,6 +1215,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAzResilient = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxyConfig = @{
+    /// 		# OPTIONAL
+    /// 		protocol = $someProxyProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProxyProtocol]) for enum values.
+    /// 		# OPTIONAL
+    /// 		server = $someString
+    /// 		# OPTIONAL
+    /// 		port = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		proxyPasswordSecretRef = @{
+    /// 			# OPTIONAL
+    /// 			awsSsm = @{
+    /// 				# OPTIONAL
+    /// 				parameterName = $someString
+    /// 				# OPTIONAL
+    /// 				region = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			azureKeyVault = @{
+    /// 				# OPTIONAL
+    /// 				vaultUri = $someString
+    /// 				# OPTIONAL
+    /// 				secretName = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			gcpSecretManager = @{
+    /// 				# OPTIONAL
+    /// 				projectId = $someString
+    /// 				# OPTIONAL
+    /// 				secretName = $someString
+    /// 			}
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -1459,6 +1572,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	workloadFid = $someString
+    /// 	# OPTIONAL
+    /// 	sessionId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -3219,6 +3334,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			permissionsGroups = @(
     /// 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
     /// 			)
+    /// 			# OPTIONAL
+    /// 			tagBindings = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					scopeId = $someString
+    /// 					# OPTIONAL
+    /// 					conditions = @(
+    /// 						@{
+    /// 							# OPTIONAL
+    /// 							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 							# OPTIONAL
+    /// 							key = $someString
+    /// 							# OPTIONAL
+    /// 							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 							# OPTIONAL
+    /// 							values = @(
+    /// 								$someString
+    /// 							)
+    /// 						}
+    /// 					)
+    /// 				}
+    /// 			)
     /// 		}
     /// 	)
     /// }
@@ -4264,6 +4401,28 @@ $query.Var.input = @{
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
 			)
+			# OPTIONAL
+			tagBindings = @(
+				@{
+					# OPTIONAL
+					scopeId = $someString
+					# OPTIONAL
+					conditions = @(
+						@{
+							# OPTIONAL
+							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+							# OPTIONAL
+							key = $someString
+							# OPTIONAL
+							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+							# OPTIONAL
+							values = @(
+								$someString
+							)
+						}
+					)
+				}
+			)
 		}
 	)
 	# OPTIONAL
@@ -4357,7 +4516,7 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	domainName = $someString
-	# REQUIRED
+	# OPTIONAL
 	stateToken = $someString
 	# OPTIONAL
 	kmsSpec = @{
@@ -4385,6 +4544,62 @@ $query.Var.input = @{
 		# OPTIONAL
 		kmsKeyVersion = $someString
 	}
+	# OPTIONAL
+	eventHubOnboarding = @{
+		# REQUIRED
+		subscriptionNativeId = $someString
+		# REQUIRED
+		regions = @(
+			$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+		)
+		# REQUIRED
+		sessionId = $someString
+		# OPTIONAL
+		resourceGroupName = $someString
+		# OPTIONAL
+		resourceGroupTags = @(
+			@{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				value = $someString
+			}
+		)
+		# OPTIONAL
+		eventHubTags = @(
+			@{
+				# REQUIRED
+				key = $someString
+				# REQUIRED
+				value = $someString
+			}
+		)
+		# OPTIONAL
+		resourceGroupRegion = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+		# OPTIONAL
+		subscriptionName = $someString
+	}
+	# OPTIONAL
+	eventHubOnboardingWithoutOauth = @{
+		# REQUIRED
+		subscriptionNativeId = $someString
+		# REQUIRED
+		regions = @(
+			$someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+		)
+		# REQUIRED
+		namespace = $someString
+		# REQUIRED
+		eventHubName = $someString
+		# OPTIONAL
+		resourceGroupName = $someString
+		# OPTIONAL
+		resourceGroupRegion = $someAzureCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudAccountRegion]) for enum values.
+		# OPTIONAL
+		subscriptionName = $someString
+	}
+	# OPTIONAL
+	eventHubOnly = $someBoolean
 }"
             );
         }
@@ -4904,6 +5119,41 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isAzResilient = $someBoolean
+	# OPTIONAL
+	proxyConfig = @{
+		# OPTIONAL
+		protocol = $someProxyProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProxyProtocol]) for enum values.
+		# OPTIONAL
+		server = $someString
+		# OPTIONAL
+		port = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		proxyPasswordSecretRef = @{
+			# OPTIONAL
+			awsSsm = @{
+				# OPTIONAL
+				parameterName = $someString
+				# OPTIONAL
+				region = $someString
+			}
+			# OPTIONAL
+			azureKeyVault = @{
+				# OPTIONAL
+				vaultUri = $someString
+				# OPTIONAL
+				secretName = $someString
+			}
+			# OPTIONAL
+			gcpSecretManager = @{
+				# OPTIONAL
+				projectId = $someString
+				# OPTIONAL
+				secretName = $someString
+			}
+		}
+	}
 }"
             );
         }
@@ -5193,6 +5443,8 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	workloadFid = $someString
+	# OPTIONAL
+	sessionId = $someString
 }"
             );
         }
@@ -6685,6 +6937,28 @@ $query.Var.input = @{
 			# OPTIONAL
 			permissionsGroups = @(
 				$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+			)
+			# OPTIONAL
+			tagBindings = @(
+				@{
+					# OPTIONAL
+					scopeId = $someString
+					# OPTIONAL
+					conditions = @(
+						@{
+							# OPTIONAL
+							keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+							# OPTIONAL
+							key = $someString
+							# OPTIONAL
+							operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+							# OPTIONAL
+							values = @(
+								$someString
+							)
+						}
+					)
+				}
 			)
 		}
 	)

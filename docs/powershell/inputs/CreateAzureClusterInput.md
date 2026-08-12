@@ -16,3 +16,6 @@ Input for creating an Azure cloud cluster.
 - isAzResilient: System.Boolean
   - Indicates whether the cluster should be deployed across multiple
 availability zones.
+- proxyConfig: CcesProxyConfig
+  - Optional proxy configuration for proxy-enabled CCES Rubrik cluster
+creation. Present only when the customer configures a web proxy.

@@ -41,3 +41,5 @@ Object-specific configurations.
   - SLA Domain configuration for Azure PostgreSQL Flexible Server.
 - mariadbSlaConfig: MariadbSlaConfig
   - SLA Domain configuration for MariaDB object.
+- icebergSlaConfig: IcebergSlaConfig
+  - SLA Domain configuration for Apache Iceberg table.

@@ -18,6 +18,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ACCOUNT_LIFECYCLE_TABLE")]
+        ACCOUNT_LIFECYCLE_TABLE,
+
+        [EnumMember(Value = "ACCOUNT_LOCKOUTS_TABLE")]
+        ACCOUNT_LOCKOUTS_TABLE,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST_RECOVERY_TABLE")]
         ACTIVE_DIRECTORY_FOREST_RECOVERY_TABLE,
 
@@ -111,6 +117,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CNP_OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE")]
         CNP_OBJECT_CAPACITY_OVERTIME_BY_TIME_TABLE,
 
+        [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_BY_CLOUD_ACCOUNT_TABLE")]
+        CNP_PROTECTION_TASKS_DETAIL_BY_CLOUD_ACCOUNT_TABLE,
+
         [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_BY_LOCATION_TABLE")]
         CNP_PROTECTION_TASKS_DETAIL_BY_LOCATION_TABLE,
 
@@ -122,6 +131,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CNP_PROTECTION_TASKS_DETAIL_TABLE")]
         CNP_PROTECTION_TASKS_DETAIL_TABLE,
+
+        [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_BY_CLOUD_ACCOUNT_TABLE")]
+        CNP_RECOVERY_TASKS_DETAIL_BY_CLOUD_ACCOUNT_TABLE,
 
         [EnumMember(Value = "CNP_RECOVERY_TASKS_DETAIL_BY_LOCATION_TABLE")]
         CNP_RECOVERY_TASKS_DETAIL_BY_LOCATION_TABLE,
@@ -177,8 +189,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EVENT_SERIES_BY_TIME_TABLE")]
         EVENT_SERIES_BY_TIME_TABLE,
 
+        [EnumMember(Value = "GPO_CAP_CHANGES_TABLE")]
+        GPO_CAP_CHANGES_TABLE,
+
+        [EnumMember(Value = "GROUP_CHANGES_TABLE")]
+        GROUP_CHANGES_TABLE,
+
+        [EnumMember(Value = "GROUP_MEMBERSHIP_ALL_TABLE")]
+        GROUP_MEMBERSHIP_ALL_TABLE,
+
         [EnumMember(Value = "IDENTITY_ACTIVITY_TABLE")]
         IDENTITY_ACTIVITY_TABLE,
+
+        [EnumMember(Value = "IDENTITY_INVENTORY_ALL_TABLE")]
+        IDENTITY_INVENTORY_ALL_TABLE,
 
         [EnumMember(Value = "IDENTITY_RISKS_TABLE")]
         IDENTITY_RISKS_TABLE,
@@ -264,6 +288,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_CAPACITY_OVERTIME_OBJECT_TYPE_TABLE")]
         OBJECT_CAPACITY_OVERTIME_OBJECT_TYPE_TABLE,
 
+        [EnumMember(Value = "PASSWORD_CHANGE_HISTORY_TABLE")]
+        PASSWORD_CHANGE_HISTORY_TABLE,
+
         [EnumMember(Value = "PAUSED_CLUSTERS_TABLE")]
         PAUSED_CLUSTERS_TABLE,
 
@@ -272,6 +299,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PAUSED_SLA_TABLE")]
         PAUSED_SLA_TABLE,
+
+        [EnumMember(Value = "PRIVILEGED_IDENTITY_TABLE")]
+        PRIVILEGED_IDENTITY_TABLE,
 
         [EnumMember(Value = "PROTECTION_ALL_TABLE")]
         PROTECTION_ALL_TABLE,

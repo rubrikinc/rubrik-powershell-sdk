@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldExpandArchiveFiles")]
         public System.Boolean? ShouldExpandArchiveFiles { get; set; }
 
+        //      C# -> System.Boolean? UseExtensionWhitelist
+        // GraphQL -> useExtensionWhitelist: Boolean (scalar)
+        [JsonProperty("useExtensionWhitelist")]
+        public System.Boolean? UseExtensionWhitelist { get; set; }
+
 
         #endregion
 

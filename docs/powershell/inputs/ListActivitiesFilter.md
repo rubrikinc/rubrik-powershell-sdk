@@ -37,3 +37,13 @@ for scope disambiguation to avoid ID collisions across targets from different re
   - The IP addresses of the actors to filter on.
 - actorTypes: list of System.Strings
   - The actor types of the activity to filter on.
+- policyInsights: list of PolicyInsights
+  - The policy insights to filter on. When set, only events whose insights
+include at least one of the requested values are returned. An empty list
+means no policy-insight filter is applied.
+- classifications: list of ActivityClassifications
+  - The classifications of the activity to filter on.
+- classificationSources: list of ActivityClassificationSourceTypes
+  - The classification sources to filter on.
+- classifiedOnRange: DateTimeRange
+  - The classified-on date range to filter on.

@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("localSnapshotsOnly")]
         public System.Boolean? LocalSnapshotsOnly { get; set; }
 
+        //      C# -> System.Boolean? IsOpenstackStorageSnapshot
+        // GraphQL -> isOpenstackStorageSnapshot: Boolean (scalar)
+        [JsonProperty("isOpenstackStorageSnapshot")]
+        public System.Boolean? IsOpenstackStorageSnapshot { get; set; }
+
 
         #endregion
 

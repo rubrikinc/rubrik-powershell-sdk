@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("notes")]
         public System.String? Notes { get; set; }
 
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean! (scalar)
+        [JsonProperty("shouldExpandArchiveFiles")]
+        public System.Boolean? ShouldExpandArchiveFiles { get; set; }
+
         //      C# -> System.Boolean? ShouldTrustFilesystemTimeInfo
         // GraphQL -> shouldTrustFilesystemTimeInfo: Boolean! (scalar)
         [JsonProperty("shouldTrustFilesystemTimeInfo")]
@@ -85,6 +90,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? MaxMatchesPerSnapshot = null,
         System.String? Name = null,
         System.String? Notes = null,
+        System.Boolean? ShouldExpandArchiveFiles = null,
         System.Boolean? ShouldTrustFilesystemTimeInfo = null,
         MalwareScanFileCriteria? FileScanCriteria = null,
         List<IndicatorOfCompromise>? IndicatorsOfCompromise = null,
@@ -106,6 +112,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Notes != null ) {
             this.Notes = Notes;
+        }
+        if ( ShouldExpandArchiveFiles != null ) {
+            this.ShouldExpandArchiveFiles = ShouldExpandArchiveFiles;
         }
         if ( ShouldTrustFilesystemTimeInfo != null ) {
             this.ShouldTrustFilesystemTimeInfo = ShouldTrustFilesystemTimeInfo;
@@ -183,6 +192,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "notes\n" ;
             } else {
                 s += ind + "notes\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean! (scalar)
+        if (this.ShouldExpandArchiveFiles != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldExpandArchiveFiles\n" ;
+            } else {
+                s += ind + "shouldExpandArchiveFiles\n" ;
             }
         }
         //      C# -> System.Boolean? ShouldTrustFilesystemTimeInfo
@@ -335,6 +353,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Notes != null && ec.Excludes("notes",true))
         {
             this.Notes = null;
+        }
+        //      C# -> System.Boolean? ShouldExpandArchiveFiles
+        // GraphQL -> shouldExpandArchiveFiles: Boolean! (scalar)
+        if (ec.Includes("shouldExpandArchiveFiles",true))
+        {
+            if(this.ShouldExpandArchiveFiles == null) {
+
+                this.ShouldExpandArchiveFiles = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldExpandArchiveFiles != null && ec.Excludes("shouldExpandArchiveFiles",true))
+        {
+            this.ShouldExpandArchiveFiles = null;
         }
         //      C# -> System.Boolean? ShouldTrustFilesystemTimeInfo
         // GraphQL -> shouldTrustFilesystemTimeInfo: Boolean! (scalar)

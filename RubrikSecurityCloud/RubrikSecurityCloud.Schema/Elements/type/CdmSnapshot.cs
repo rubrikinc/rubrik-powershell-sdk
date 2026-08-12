@@ -101,6 +101,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAnomaly")]
         public System.Boolean? IsAnomaly { get; set; }
 
+        //      C# -> System.Boolean? IsCompromised
+        // GraphQL -> isCompromised: Boolean (scalar)
+        [JsonProperty("isCompromised")]
+        public System.Boolean? IsCompromised { get; set; }
+
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         [JsonProperty("isCorrupted")]
@@ -130,6 +135,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
         [JsonProperty("isOnDemandSnapshot")]
         public System.Boolean? IsOnDemandSnapshot { get; set; }
+
+        //      C# -> System.Boolean? IsOpenstackStorageSnapshot
+        // GraphQL -> isOpenstackStorageSnapshot: Boolean (scalar)
+        [JsonProperty("isOpenstackStorageSnapshot")]
+        public System.Boolean? IsOpenstackStorageSnapshot { get; set; }
 
         //      C# -> System.Boolean? IsQuarantineProcessing
         // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
@@ -215,6 +225,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
+
+        //      C# -> List<TriggeringAlert>? CompromisingAlerts
+        // GraphQL -> compromisingAlerts: [TriggeringAlert!] (type)
+        [JsonProperty("compromisingAlerts")]
+        public List<TriggeringAlert>? CompromisingAlerts { get; set; }
 
         //      C# -> Db2AppMetadata? Db2AppMetadata
         // GraphQL -> db2AppMetadata: Db2AppMetadata (type)
@@ -352,12 +367,14 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Int64? IndexingAttempts = null,
         System.Boolean? IsAnomaly = null,
+        System.Boolean? IsCompromised = null,
         System.Boolean? IsCorrupted = null,
         System.Boolean? IsCustomRetentionApplied = null,
         System.Boolean? IsDownloadedSnapshot = null,
         System.Boolean? IsExpired = null,
         System.Boolean? IsIndexed = null,
         System.Boolean? IsOnDemandSnapshot = null,
+        System.Boolean? IsOpenstackStorageSnapshot = null,
         System.Boolean? IsQuarantineProcessing = null,
         System.Boolean? IsQuarantined = null,
         System.Boolean? IsRetentionLocked = null,
@@ -375,6 +392,7 @@ namespace RubrikSecurityCloud.Types
         List<CdmSnapshot>? ChildSnapshots = null,
         List<DataLocation>? CloudNativeLocations = null,
         Cluster? Cluster = null,
+        List<TriggeringAlert>? CompromisingAlerts = null,
         Db2AppMetadata? Db2AppMetadata = null,
         HypervAppMetadata? HypervVirtualMachineAppMetadata = null,
         K8sResourceSnapshotMetadata? K8sAppMetadata = null,
@@ -447,6 +465,9 @@ namespace RubrikSecurityCloud.Types
         if ( IsAnomaly != null ) {
             this.IsAnomaly = IsAnomaly;
         }
+        if ( IsCompromised != null ) {
+            this.IsCompromised = IsCompromised;
+        }
         if ( IsCorrupted != null ) {
             this.IsCorrupted = IsCorrupted;
         }
@@ -464,6 +485,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsOnDemandSnapshot != null ) {
             this.IsOnDemandSnapshot = IsOnDemandSnapshot;
+        }
+        if ( IsOpenstackStorageSnapshot != null ) {
+            this.IsOpenstackStorageSnapshot = IsOpenstackStorageSnapshot;
         }
         if ( IsQuarantineProcessing != null ) {
             this.IsQuarantineProcessing = IsQuarantineProcessing;
@@ -515,6 +539,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( CompromisingAlerts != null ) {
+            this.CompromisingAlerts = CompromisingAlerts;
         }
         if ( Db2AppMetadata != null ) {
             this.Db2AppMetadata = Db2AppMetadata;
@@ -752,6 +779,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isAnomaly\n" ;
             }
         }
+        //      C# -> System.Boolean? IsCompromised
+        // GraphQL -> isCompromised: Boolean (scalar)
+        if (this.IsCompromised != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCompromised\n" ;
+            } else {
+                s += ind + "isCompromised\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (this.IsCorrupted != null) {
@@ -804,6 +840,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isOnDemandSnapshot\n" ;
             } else {
                 s += ind + "isOnDemandSnapshot\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsOpenstackStorageSnapshot
+        // GraphQL -> isOpenstackStorageSnapshot: Boolean (scalar)
+        if (this.IsOpenstackStorageSnapshot != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isOpenstackStorageSnapshot\n" ;
+            } else {
+                s += ind + "isOpenstackStorageSnapshot\n" ;
             }
         }
         //      C# -> System.Boolean? IsQuarantineProcessing
@@ -977,6 +1022,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "cluster" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<TriggeringAlert>? CompromisingAlerts
+        // GraphQL -> compromisingAlerts: [TriggeringAlert!] (type)
+        if (this.CompromisingAlerts != null) {
+            var fspec = this.CompromisingAlerts.AsFieldSpec(conf.Child("compromisingAlerts"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "compromisingAlerts" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1544,6 +1601,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsAnomaly = null;
         }
+        //      C# -> System.Boolean? IsCompromised
+        // GraphQL -> isCompromised: Boolean (scalar)
+        if (ec.Includes("isCompromised",true))
+        {
+            if(this.IsCompromised == null) {
+
+                this.IsCompromised = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCompromised != null && ec.Excludes("isCompromised",true))
+        {
+            this.IsCompromised = null;
+        }
         //      C# -> System.Boolean? IsCorrupted
         // GraphQL -> isCorrupted: Boolean! (scalar)
         if (ec.Includes("isCorrupted",true))
@@ -1645,6 +1719,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsOnDemandSnapshot != null && ec.Excludes("isOnDemandSnapshot",true))
         {
             this.IsOnDemandSnapshot = null;
+        }
+        //      C# -> System.Boolean? IsOpenstackStorageSnapshot
+        // GraphQL -> isOpenstackStorageSnapshot: Boolean (scalar)
+        if (ec.Includes("isOpenstackStorageSnapshot",true))
+        {
+            if(this.IsOpenstackStorageSnapshot == null) {
+
+                this.IsOpenstackStorageSnapshot = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsOpenstackStorageSnapshot != null && ec.Excludes("isOpenstackStorageSnapshot",true))
+        {
+            this.IsOpenstackStorageSnapshot = null;
         }
         //      C# -> System.Boolean? IsQuarantineProcessing
         // GraphQL -> isQuarantineProcessing: Boolean! (scalar)
@@ -1948,6 +2039,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> List<TriggeringAlert>? CompromisingAlerts
+        // GraphQL -> compromisingAlerts: [TriggeringAlert!] (type)
+        if (ec.Includes("compromisingAlerts",false))
+        {
+            if(this.CompromisingAlerts == null) {
+
+                this.CompromisingAlerts = new List<TriggeringAlert>();
+                this.CompromisingAlerts.ApplyExploratoryFieldSpec(ec.NewChild("compromisingAlerts"));
+
+            } else {
+
+                this.CompromisingAlerts.ApplyExploratoryFieldSpec(ec.NewChild("compromisingAlerts"));
+
+            }
+        }
+        else if (this.CompromisingAlerts != null && ec.Excludes("compromisingAlerts",false))
+        {
+            this.CompromisingAlerts = null;
         }
         //      C# -> Db2AppMetadata? Db2AppMetadata
         // GraphQL -> db2AppMetadata: Db2AppMetadata (type)

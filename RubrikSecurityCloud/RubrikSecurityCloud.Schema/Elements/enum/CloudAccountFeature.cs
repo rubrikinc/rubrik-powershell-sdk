@@ -105,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_SQL_PROTECTION")]
         CLOUD_SQL_PROTECTION,
 
+        [EnumMember(Value = "CRITICAL_RESOURCE_PROTECTION")]
+        CRITICAL_RESOURCE_PROTECTION,
+
         [EnumMember(Value = "CYBERRECOVERY_DATA_CLASSIFICATION_DATA")]
         CYBERRECOVERY_DATA_CLASSIFICATION_DATA,
 
@@ -134,6 +137,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "GCP_SHARED_VPC_HOST")]
         GCP_SHARED_VPC_HOST,
+
+        [EnumMember(Value = "GITHUB_DEVELOPER_COLLABORATION_PROTECTION")]
+        GITHUB_DEVELOPER_COLLABORATION_PROTECTION,
 
         [EnumMember(Value = "GITHUB_REPOSITORY_PROTECTION")]
         GITHUB_REPOSITORY_PROTECTION,

@@ -1372,3 +1372,11 @@ treated as STANDALONE.
 +mo:filter:db:table=cdm_mysqldb_instance
 +mo:filter:db:column=app_metadata
 +mo:filter:db:index:key=NULL // cluster mode is a derived value; no index
+- EC2_INSTANCE_VPC_ID - Filter EC2 instances by VPC ID.
++mo:filter:db:table=aws_native_ec2_instances
++mo:filter:db:column=vpc_id
++mo:filter:db:index:key=NULL
+- RDS_INSTANCE_VPC_ID - Filter RDS instances by VPC ID.
++mo:filter:db:table=aws_native_rds_instances
++mo:filter:db:column=vpc_id
++mo:filter:db:index:key=NULL

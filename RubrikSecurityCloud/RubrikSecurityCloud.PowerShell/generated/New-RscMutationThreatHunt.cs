@@ -364,6 +364,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			shouldExpandArchiveFiles = $someBoolean
+    /// 			# OPTIONAL
+    /// 			useExtensionWhitelist = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		maxMatchesPerSnapshot = $someInt
@@ -495,6 +497,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 				# OPTIONAL
     /// 				shouldExpandArchiveFiles = $someBoolean
+    /// 				# OPTIONAL
+    /// 				useExtensionWhitelist = $someBoolean
     /// 			}
     /// 			# OPTIONAL
     /// 			maxMatchesPerSnapshot = $someInt
@@ -636,6 +640,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			}
     /// 			# OPTIONAL
     /// 			shouldExpandArchiveFiles = $someBoolean
+    /// 			# OPTIONAL
+    /// 			useExtensionWhitelist = $someBoolean
     /// 		}
     /// 		# OPTIONAL
     /// 		maxMatchesPerSnapshot = $someInt
@@ -1046,6 +1052,8 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			shouldExpandArchiveFiles = $someBoolean
+			# OPTIONAL
+			useExtensionWhitelist = $someBoolean
 		}
 		# OPTIONAL
 		maxMatchesPerSnapshot = $someInt
@@ -1169,6 +1177,8 @@ $query.Var.input = @{
 				}
 				# OPTIONAL
 				shouldExpandArchiveFiles = $someBoolean
+				# OPTIONAL
+				useExtensionWhitelist = $someBoolean
 			}
 			# OPTIONAL
 			maxMatchesPerSnapshot = $someInt
@@ -1302,6 +1312,8 @@ $query.Var.input = @{
 			}
 			# OPTIONAL
 			shouldExpandArchiveFiles = $someBoolean
+			# OPTIONAL
+			useExtensionWhitelist = $someBoolean
 		}
 		# OPTIONAL
 		maxMatchesPerSnapshot = $someInt

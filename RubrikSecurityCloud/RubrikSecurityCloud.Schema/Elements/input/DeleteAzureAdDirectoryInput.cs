@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadFid")]
         public System.String? WorkloadFid { get; set; }
 
+        //      C# -> System.String? SessionId
+        // GraphQL -> sessionId: String (scalar)
+        [JsonProperty("sessionId")]
+        public System.String? SessionId { get; set; }
+
 
         #endregion
 

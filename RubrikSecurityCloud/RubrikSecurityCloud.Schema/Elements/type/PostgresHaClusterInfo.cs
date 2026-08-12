@@ -30,10 +30,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("haGroupName")]
         public System.String? HaGroupName { get; set; }
 
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<PostgresTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [PostgresTopologyReplicaInfo!]! (type)
         [JsonProperty("replicas")]
-        public List<KosmosTopologyReplicaInfo>? Replicas { get; set; }
+        public List<PostgresTopologyReplicaInfo>? Replicas { get; set; }
 
 
         #endregion
@@ -47,7 +47,7 @@ namespace RubrikSecurityCloud.Types
     public PostgresHaClusterInfo Set(
         System.String? ActiveReplicaId = null,
         System.String? HaGroupName = null,
-        List<KosmosTopologyReplicaInfo>? Replicas = null
+        List<PostgresTopologyReplicaInfo>? Replicas = null
     ) 
     {
         if ( ActiveReplicaId != null ) {
@@ -91,8 +91,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "haGroupName\n" ;
             }
         }
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<PostgresTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [PostgresTopologyReplicaInfo!]! (type)
         if (this.Replicas != null) {
             var fspec = this.Replicas.AsFieldSpec(conf.Child("replicas"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -144,13 +144,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.HaGroupName = null;
         }
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<PostgresTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [PostgresTopologyReplicaInfo!]! (type)
         if (ec.Includes("replicas",false))
         {
             if(this.Replicas == null) {
 
-                this.Replicas = new List<KosmosTopologyReplicaInfo>();
+                this.Replicas = new List<PostgresTopologyReplicaInfo>();
                 this.Replicas.ApplyExploratoryFieldSpec(ec.NewChild("replicas"));
 
             } else {

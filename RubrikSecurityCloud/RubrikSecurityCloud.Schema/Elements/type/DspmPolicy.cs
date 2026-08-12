@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("updatedAt")]
         public DateTime? UpdatedAt { get; set; }
 
+        //      C# -> AnomalyDetectionConfig? AnomalyDetectionConfig
+        // GraphQL -> anomalyDetectionConfig: AnomalyDetectionConfig (type)
+        [JsonProperty("anomalyDetectionConfig")]
+        public AnomalyDetectionConfig? AnomalyDetectionConfig { get; set; }
+
         //      C# -> List<AutomationRule>? AutomationRules
         // GraphQL -> automationRules: [AutomationRule!]! (type)
         [JsonProperty("automationRules")]
@@ -163,6 +168,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PolicyId = null,
         System.String? ProbabilityOfCompromise = null,
         DateTime? UpdatedAt = null,
+        AnomalyDetectionConfig? AnomalyDetectionConfig = null,
         List<AutomationRule>? AutomationRules = null,
         PolicyFilter? Filter = null,
         List<FilterTypeLabelEntry>? Labels = null,
@@ -223,6 +229,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UpdatedAt != null ) {
             this.UpdatedAt = UpdatedAt;
+        }
+        if ( AnomalyDetectionConfig != null ) {
+            this.AnomalyDetectionConfig = AnomalyDetectionConfig;
         }
         if ( AutomationRules != null ) {
             this.AutomationRules = AutomationRules;
@@ -413,6 +422,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "updatedAt\n" ;
             } else {
                 s += ind + "updatedAt\n" ;
+            }
+        }
+        //      C# -> AnomalyDetectionConfig? AnomalyDetectionConfig
+        // GraphQL -> anomalyDetectionConfig: AnomalyDetectionConfig (type)
+        if (this.AnomalyDetectionConfig != null) {
+            var fspec = this.AnomalyDetectionConfig.AsFieldSpec(conf.Child("anomalyDetectionConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "anomalyDetectionConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AutomationRule>? AutomationRules
@@ -787,6 +808,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.UpdatedAt != null && ec.Excludes("updatedAt",true))
         {
             this.UpdatedAt = null;
+        }
+        //      C# -> AnomalyDetectionConfig? AnomalyDetectionConfig
+        // GraphQL -> anomalyDetectionConfig: AnomalyDetectionConfig (type)
+        if (ec.Includes("anomalyDetectionConfig",false))
+        {
+            if(this.AnomalyDetectionConfig == null) {
+
+                this.AnomalyDetectionConfig = new AnomalyDetectionConfig();
+                this.AnomalyDetectionConfig.ApplyExploratoryFieldSpec(ec.NewChild("anomalyDetectionConfig"));
+
+            } else {
+
+                this.AnomalyDetectionConfig.ApplyExploratoryFieldSpec(ec.NewChild("anomalyDetectionConfig"));
+
+            }
+        }
+        else if (this.AnomalyDetectionConfig != null && ec.Excludes("anomalyDetectionConfig",false))
+        {
+            this.AnomalyDetectionConfig = null;
         }
         //      C# -> List<AutomationRule>? AutomationRules
         // GraphQL -> automationRules: [AutomationRule!]! (type)

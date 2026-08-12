@@ -237,6 +237,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EC2_INSTANCE_TYPE")]
         EC2_INSTANCE_TYPE,
 
+        [EnumMember(Value = "EC2_INSTANCE_VPC_ID")]
+        EC2_INSTANCE_VPC_ID,
+
         [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
         EFFECTIVE_SLA_DOMAIN,
 
@@ -425,6 +428,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "POWER_PLATFORM_FLOW_TYPE")]
         POWER_PLATFORM_FLOW_TYPE,
+
+        [EnumMember(Value = "RDS_INSTANCE_VPC_ID")]
+        RDS_INSTANCE_VPC_ID,
 
         [EnumMember(Value = "S3_TABLES_ICEBERG_NAMESPACE_AWS_ACCOUNT_NAME")]
         S3_TABLES_ICEBERG_NAMESPACE_AWS_ACCOUNT_NAME,

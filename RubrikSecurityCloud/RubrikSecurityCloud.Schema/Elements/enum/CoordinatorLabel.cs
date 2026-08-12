@@ -31,7 +31,10 @@ namespace RubrikSecurityCloud.Types
         PAUSED,
 
         [EnumMember(Value = "RESTORE")]
-        RESTORE
+        RESTORE,
+
+        [EnumMember(Value = "SENSITIVE_DATA_DISCOVERY")]
+        SENSITIVE_DATA_DISCOVERY
 
 
     } // enum CoordinatorLabel

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authenticationPolicySettings")]
         public System.Int64? AuthenticationPolicySettings { get; set; }
 
+        //      C# -> System.Int64? CaCertificates
+        // GraphQL -> caCertificates: Long (scalar)
+        [JsonProperty("caCertificates")]
+        public System.Int64? CaCertificates { get; set; }
+
         //      C# -> System.Int64? DataStores
         // GraphQL -> dataStores: Long (scalar)
         [JsonProperty("dataStores")]
@@ -140,6 +145,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("sslServerKeyPairs")]
         public System.Int64? SslServerKeyPairs { get; set; }
 
+        //      C# -> System.Int64? VirtualHostNames
+        // GraphQL -> virtualHostNames: Long (scalar)
+        [JsonProperty("virtualHostNames")]
+        public System.Int64? VirtualHostNames { get; set; }
+
         //      C# -> System.Int64? WsTrustStsSettings
         // GraphQL -> wsTrustStsSettings: Long (scalar)
         [JsonProperty("wsTrustStsSettings")]
@@ -157,6 +167,7 @@ namespace RubrikSecurityCloud.Types
     public PingFederateObjectsCount Set(
         System.Int64? AuthenticationPolicyContracts = null,
         System.Int64? AuthenticationPolicySettings = null,
+        System.Int64? CaCertificates = null,
         System.Int64? DataStores = null,
         System.Int64? DefaultAuthenticationPolicy = null,
         System.Int64? GeneralSettings = null,
@@ -179,6 +190,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? SpConnections = null,
         System.Int64? SslClientKeyPairs = null,
         System.Int64? SslServerKeyPairs = null,
+        System.Int64? VirtualHostNames = null,
         System.Int64? WsTrustStsSettings = null
     ) 
     {
@@ -187,6 +199,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AuthenticationPolicySettings != null ) {
             this.AuthenticationPolicySettings = AuthenticationPolicySettings;
+        }
+        if ( CaCertificates != null ) {
+            this.CaCertificates = CaCertificates;
         }
         if ( DataStores != null ) {
             this.DataStores = DataStores;
@@ -254,6 +269,9 @@ namespace RubrikSecurityCloud.Types
         if ( SslServerKeyPairs != null ) {
             this.SslServerKeyPairs = SslServerKeyPairs;
         }
+        if ( VirtualHostNames != null ) {
+            this.VirtualHostNames = VirtualHostNames;
+        }
         if ( WsTrustStsSettings != null ) {
             this.WsTrustStsSettings = WsTrustStsSettings;
         }
@@ -287,6 +305,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "authenticationPolicySettings\n" ;
             } else {
                 s += ind + "authenticationPolicySettings\n" ;
+            }
+        }
+        //      C# -> System.Int64? CaCertificates
+        // GraphQL -> caCertificates: Long (scalar)
+        if (this.CaCertificates != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "caCertificates\n" ;
+            } else {
+                s += ind + "caCertificates\n" ;
             }
         }
         //      C# -> System.Int64? DataStores
@@ -487,6 +514,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "sslServerKeyPairs\n" ;
             }
         }
+        //      C# -> System.Int64? VirtualHostNames
+        // GraphQL -> virtualHostNames: Long (scalar)
+        if (this.VirtualHostNames != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "virtualHostNames\n" ;
+            } else {
+                s += ind + "virtualHostNames\n" ;
+            }
+        }
         //      C# -> System.Int64? WsTrustStsSettings
         // GraphQL -> wsTrustStsSettings: Long (scalar)
         if (this.WsTrustStsSettings != null) {
@@ -536,6 +572,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AuthenticationPolicySettings != null && ec.Excludes("authenticationPolicySettings",true))
         {
             this.AuthenticationPolicySettings = null;
+        }
+        //      C# -> System.Int64? CaCertificates
+        // GraphQL -> caCertificates: Long (scalar)
+        if (ec.Includes("caCertificates",true))
+        {
+            if(this.CaCertificates == null) {
+
+                this.CaCertificates = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CaCertificates != null && ec.Excludes("caCertificates",true))
+        {
+            this.CaCertificates = null;
         }
         //      C# -> System.Int64? DataStores
         // GraphQL -> dataStores: Long (scalar)
@@ -910,6 +963,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SslServerKeyPairs != null && ec.Excludes("sslServerKeyPairs",true))
         {
             this.SslServerKeyPairs = null;
+        }
+        //      C# -> System.Int64? VirtualHostNames
+        // GraphQL -> virtualHostNames: Long (scalar)
+        if (ec.Includes("virtualHostNames",true))
+        {
+            if(this.VirtualHostNames == null) {
+
+                this.VirtualHostNames = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.VirtualHostNames != null && ec.Excludes("virtualHostNames",true))
+        {
+            this.VirtualHostNames = null;
         }
         //      C# -> System.Int64? WsTrustStsSettings
         // GraphQL -> wsTrustStsSettings: Long (scalar)

@@ -119,6 +119,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mariadbConfigInput")]
         public MariadbSlaConfigInput? MariadbConfigInput { get; set; }
 
+        //      C# -> IcebergSlaConfigInput? IcebergSlaConfigInput
+        // GraphQL -> icebergSlaConfigInput: IcebergSlaConfigInput (input)
+        [JsonProperty("icebergSlaConfigInput")]
+        public IcebergSlaConfigInput? IcebergSlaConfigInput { get; set; }
+
+        //      C# -> IrisdbSlaConfigInput? IrisdbConfigInput
+        // GraphQL -> irisdbConfigInput: IrisdbSlaConfigInput (input)
+        [JsonProperty("irisdbConfigInput")]
+        public IrisdbSlaConfigInput? IrisdbConfigInput { get; set; }
+
 
         #endregion
 

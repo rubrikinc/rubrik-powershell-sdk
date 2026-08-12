@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeReaderLocationIds")]
         public List<System.String>? ActiveReaderLocationIds { get; set; }
 
+        //      C# -> List<System.String>? InactiveOwnerLocationIds
+        // GraphQL -> inactiveOwnerLocationIds: [String!]! (scalar)
+        [JsonProperty("inactiveOwnerLocationIds")]
+        public List<System.String>? InactiveOwnerLocationIds { get; set; }
+
         //      C# -> ReaderRefreshStatus? ReaderRefreshStatus
         // GraphQL -> readerRefreshStatus: ReaderRefreshStatus (type)
         [JsonProperty("readerRefreshStatus")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public GetArchivalReaderInfoResp Set(
         List<System.String>? ActiveOwnerLocationIds = null,
         List<System.String>? ActiveReaderLocationIds = null,
+        List<System.String>? InactiveOwnerLocationIds = null,
         ReaderRefreshStatus? ReaderRefreshStatus = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ActiveReaderLocationIds != null ) {
             this.ActiveReaderLocationIds = ActiveReaderLocationIds;
+        }
+        if ( InactiveOwnerLocationIds != null ) {
+            this.InactiveOwnerLocationIds = InactiveOwnerLocationIds;
         }
         if ( ReaderRefreshStatus != null ) {
             this.ReaderRefreshStatus = ReaderRefreshStatus;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "activeReaderLocationIds\n" ;
             } else {
                 s += ind + "activeReaderLocationIds\n" ;
+            }
+        }
+        //      C# -> List<System.String>? InactiveOwnerLocationIds
+        // GraphQL -> inactiveOwnerLocationIds: [String!]! (scalar)
+        if (this.InactiveOwnerLocationIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "inactiveOwnerLocationIds\n" ;
+            } else {
+                s += ind + "inactiveOwnerLocationIds\n" ;
             }
         }
         //      C# -> ReaderRefreshStatus? ReaderRefreshStatus
@@ -143,6 +161,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActiveReaderLocationIds != null && ec.Excludes("activeReaderLocationIds",true))
         {
             this.ActiveReaderLocationIds = null;
+        }
+        //      C# -> List<System.String>? InactiveOwnerLocationIds
+        // GraphQL -> inactiveOwnerLocationIds: [String!]! (scalar)
+        if (ec.Includes("inactiveOwnerLocationIds",true))
+        {
+            if(this.InactiveOwnerLocationIds == null) {
+
+                this.InactiveOwnerLocationIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.InactiveOwnerLocationIds != null && ec.Excludes("inactiveOwnerLocationIds",true))
+        {
+            this.InactiveOwnerLocationIds = null;
         }
         //      C# -> ReaderRefreshStatus? ReaderRefreshStatus
         // GraphQL -> readerRefreshStatus: ReaderRefreshStatus (type)

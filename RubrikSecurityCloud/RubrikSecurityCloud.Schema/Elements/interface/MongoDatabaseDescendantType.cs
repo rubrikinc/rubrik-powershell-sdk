@@ -59,15 +59,40 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
 
-        //      C# -> DataLocation? PrimaryClusterLocation
-        // GraphQL -> primaryClusterLocation: DataLocation! (type)
-        [JsonProperty("primaryClusterLocation")]
-        DataLocation? PrimaryClusterLocation { get; set; }
-
         //      C# -> System.Boolean? IsReplica
         // GraphQL -> isReplica: Boolean (scalar)
         [JsonProperty("isReplica")]
         System.Boolean? IsReplica { get; set; }
+
+        //      C# -> System.Boolean? SlaPauseStatus
+        // GraphQL -> slaPauseStatus: Boolean! (scalar)
+        [JsonProperty("slaPauseStatus")]
+        System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        [JsonProperty("effectiveSlaDomain")]
+        SlaDomain? EffectiveSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
+        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
+        [JsonProperty("effectiveRetentionSlaDomain")]
+        SlaDomain? EffectiveRetentionSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
+        [JsonProperty("configuredSlaDomain")]
+        SlaDomain? ConfiguredSlaDomain { get; set; }
+
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        [JsonProperty("cluster")]
+        Cluster? Cluster { get; set; }
+
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cdmPendingObjectPauseAssignment")]
+        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
 
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
@@ -104,35 +129,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         List<Operation>? AuthorizedOperations { get; set; }
 
-        //      C# -> System.Boolean? SlaPauseStatus
-        // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        [JsonProperty("slaPauseStatus")]
-        System.Boolean? SlaPauseStatus { get; set; }
-
-        //      C# -> SlaDomain? EffectiveSlaDomain
-        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        [JsonProperty("effectiveSlaDomain")]
-        SlaDomain? EffectiveSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
-        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        [JsonProperty("effectiveRetentionSlaDomain")]
-        SlaDomain? EffectiveRetentionSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? ConfiguredSlaDomain
-        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        [JsonProperty("configuredSlaDomain")]
-        SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> Cluster? Cluster
-        // GraphQL -> cluster: Cluster! (type)
-        [JsonProperty("cluster")]
-        Cluster? Cluster { get; set; }
-
-        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
-        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
-        [JsonProperty("cdmPendingObjectPauseAssignment")]
-        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
+        //      C# -> DataLocation? PrimaryClusterLocation
+        // GraphQL -> primaryClusterLocation: DataLocation! (type)
+        [JsonProperty("primaryClusterLocation")]
+        DataLocation? PrimaryClusterLocation { get; set; }
 
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

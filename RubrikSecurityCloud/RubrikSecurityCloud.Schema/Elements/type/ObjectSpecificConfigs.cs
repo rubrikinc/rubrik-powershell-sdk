@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("gcpCloudSqlConfig")]
         public GcpCloudSqlConfig? GcpCloudSqlConfig { get; set; }
 
+        //      C# -> IcebergSlaConfig? IcebergSlaConfig
+        // GraphQL -> icebergSlaConfig: IcebergSlaConfig (type)
+        [JsonProperty("icebergSlaConfig")]
+        public IcebergSlaConfig? IcebergSlaConfig { get; set; }
+
         //      C# -> InformixSlaConfig? InformixSlaConfig
         // GraphQL -> informixSlaConfig: InformixSlaConfig (type)
         [JsonProperty("informixSlaConfig")]
@@ -139,6 +144,7 @@ namespace RubrikSecurityCloud.Types
         AzureSqlManagedInstanceDbConfig? AzureSqlManagedInstanceDbConfig = null,
         Db2Config? Db2Config = null,
         GcpCloudSqlConfig? GcpCloudSqlConfig = null,
+        IcebergSlaConfig? IcebergSlaConfig = null,
         InformixSlaConfig? InformixSlaConfig = null,
         ManagedVolumeSlaConfig? ManagedVolumeSlaConfig = null,
         MariadbSlaConfig? MariadbSlaConfig = null,
@@ -178,6 +184,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GcpCloudSqlConfig != null ) {
             this.GcpCloudSqlConfig = GcpCloudSqlConfig;
+        }
+        if ( IcebergSlaConfig != null ) {
+            this.IcebergSlaConfig = IcebergSlaConfig;
         }
         if ( InformixSlaConfig != null ) {
             this.InformixSlaConfig = InformixSlaConfig;
@@ -331,6 +340,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "gcpCloudSqlConfig" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> IcebergSlaConfig? IcebergSlaConfig
+        // GraphQL -> icebergSlaConfig: IcebergSlaConfig (type)
+        if (this.IcebergSlaConfig != null) {
+            var fspec = this.IcebergSlaConfig.AsFieldSpec(conf.Child("icebergSlaConfig"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "icebergSlaConfig" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -643,6 +664,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GcpCloudSqlConfig != null && ec.Excludes("gcpCloudSqlConfig",false))
         {
             this.GcpCloudSqlConfig = null;
+        }
+        //      C# -> IcebergSlaConfig? IcebergSlaConfig
+        // GraphQL -> icebergSlaConfig: IcebergSlaConfig (type)
+        if (ec.Includes("icebergSlaConfig",false))
+        {
+            if(this.IcebergSlaConfig == null) {
+
+                this.IcebergSlaConfig = new IcebergSlaConfig();
+                this.IcebergSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("icebergSlaConfig"));
+
+            } else {
+
+                this.IcebergSlaConfig.ApplyExploratoryFieldSpec(ec.NewChild("icebergSlaConfig"));
+
+            }
+        }
+        else if (this.IcebergSlaConfig != null && ec.Excludes("icebergSlaConfig",false))
+        {
+            this.IcebergSlaConfig = null;
         }
         //      C# -> InformixSlaConfig? InformixSlaConfig
         // GraphQL -> informixSlaConfig: InformixSlaConfig (type)

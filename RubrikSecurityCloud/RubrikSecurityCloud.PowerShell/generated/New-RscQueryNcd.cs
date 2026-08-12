@@ -423,7 +423,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
 
         // Create new GraphQL Query:
-        // ncdBackEndCapacity(clusters: [UUID!]!): NcdBackEndCapacity
+        // ncdBackEndCapacity(clusters: [UUID!]!): NcdBackEndCapacity!
         internal void InitQueryNcdBackEndCapacity()
         {
             Tuple<string, string>[] argDefs = {
@@ -445,7 +445,7 @@ $query.Var.clusters = @(
         }
 
         // Create new GraphQL Query:
-        // ncdFrontEndCapacity(clusters: [UUID!]!): NcdFrontEndCapacity
+        // ncdFrontEndCapacity(clusters: [UUID!]!): NcdFrontEndCapacity!
         internal void InitQueryNcdFrontEndCapacity()
         {
             Tuple<string, string>[] argDefs = {
@@ -467,7 +467,7 @@ $query.Var.clusters = @(
         }
 
         // Create new GraphQL Query:
-        // ncdObjectProtectionStatus(clusters: [UUID!]!): NcdObjectProtectionStatus
+        // ncdObjectProtectionStatus(clusters: [UUID!]!): NcdObjectProtectionStatus!
         internal void InitQueryNcdObjectProtectionStatus()
         {
             Tuple<string, string>[] argDefs = {

@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("manualRolePolicyJson")]
         public System.String? ManualRolePolicyJson { get; set; }
 
+        //      C# -> System.String? TemplateUrl
+        // GraphQL -> templateUrl: String! (scalar)
+        [JsonProperty("templateUrl")]
+        public System.String? TemplateUrl { get; set; }
+
 
         #endregion
 
@@ -59,7 +64,8 @@ namespace RubrikSecurityCloud.Types
         System.String? CloudFormationUrl = null,
         System.String? ErrorMessage = null,
         System.Boolean? IsPendingApproval = null,
-        System.String? ManualRolePolicyJson = null
+        System.String? ManualRolePolicyJson = null,
+        System.String? TemplateUrl = null
     ) 
     {
         if ( ApplicationCloudAccountId != null ) {
@@ -76,6 +82,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ManualRolePolicyJson != null ) {
             this.ManualRolePolicyJson = ManualRolePolicyJson;
+        }
+        if ( TemplateUrl != null ) {
+            this.TemplateUrl = TemplateUrl;
         }
         return this;
     }
@@ -134,6 +143,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "manualRolePolicyJson\n" ;
             } else {
                 s += ind + "manualRolePolicyJson\n" ;
+            }
+        }
+        //      C# -> System.String? TemplateUrl
+        // GraphQL -> templateUrl: String! (scalar)
+        if (this.TemplateUrl != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "templateUrl\n" ;
+            } else {
+                s += ind + "templateUrl\n" ;
             }
         }
         return s;
@@ -227,6 +245,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManualRolePolicyJson != null && ec.Excludes("manualRolePolicyJson",true))
         {
             this.ManualRolePolicyJson = null;
+        }
+        //      C# -> System.String? TemplateUrl
+        // GraphQL -> templateUrl: String! (scalar)
+        if (ec.Includes("templateUrl",true))
+        {
+            if(this.TemplateUrl == null) {
+
+                this.TemplateUrl = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.TemplateUrl != null && ec.Excludes("templateUrl",true))
+        {
+            this.TemplateUrl = null;
         }
     }
 

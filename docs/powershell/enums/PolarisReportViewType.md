@@ -70,3 +70,13 @@ types.
 Displays cost breakdown by cloud provider, account, and cost dimension
 with tag-level attribution. Supports time series and bar charts.
 - SCRIPT_REPORT - TBD.
+- IDENTITY_INVENTORY_REPORT - Displays the identity inventory report — a current-state list of all
+principals (users, groups, service accounts, computers, GPOs,
+conditional access policies).
+- GROUP_MEMBERSHIP_REPORT - Group membership report — direct group-to-member edges.
+- PASSWORD_CHANGE_HISTORY_REPORT - Password change history report.
+- ACCOUNT_LOCKOUTS_REPORT - Account lockouts report.
+- ACCOUNT_LIFECYCLE_REPORT - Account lifecycle report.
+- GROUP_CHANGES_REPORT - Group changes report.
+- GPO_CAP_CHANGES_REPORT - GPO/CAP changes report.
+- PRIVILEGED_IDENTITY_REPORT - Privileged identity report.

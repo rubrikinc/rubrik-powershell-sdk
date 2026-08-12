@@ -41,3 +41,7 @@ Object-specific configurations.
   - Input to configure the SLA Domain for Azure PostgreSQL Flexible Server.
 - mariadbConfigInput: MariadbSlaConfigInput
   - Input to configure the SLA Domain for MariaDB.
+- icebergSlaConfigInput: IcebergSlaConfigInput
+  - Input to configure the SLA Domain for Apache Iceberg table.
+- irisdbConfigInput: IrisdbSlaConfigInput
+  - Input to configure the SLA Domain for IRIS DB instances.

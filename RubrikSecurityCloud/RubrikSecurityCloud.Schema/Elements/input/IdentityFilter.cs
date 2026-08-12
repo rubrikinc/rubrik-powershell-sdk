@@ -34,6 +34,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excludedTargetEntityTypes")]
         public List<PrincipalRiskySummaryPrincipalType>? ExcludedTargetEntityTypes { get; set; }
 
+        //      C# -> List<PrivilegeType>? TargetPrivilegeTypes
+        // GraphQL -> targetPrivilegeTypes: [PrivilegeType!] (enum)
+        [JsonProperty("targetPrivilegeTypes")]
+        public List<PrivilegeType>? TargetPrivilegeTypes { get; set; }
+
 
         #endregion
 

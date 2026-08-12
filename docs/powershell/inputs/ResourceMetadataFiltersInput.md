@@ -22,6 +22,9 @@ will not be filtered.
   - The list of sources to filter by. If empty, the results will not be filtered.
 - idpTypes: list of IdpTypes
   - The list of identity provider types to filter by. If empty, the results will not be filtered.
+This is a resource/violation-scoped filter: it narrows results by the IdP of the involved
+principal/resource, not by the policy's own configured IdP type. The policy-level IdP filter is
+the separate `idp_types` field on ListPoliciesFilter / ListPoliciesV2Request. Do not conflate the two.
 - originEventDateRange: TimeRangeInput
   - The date range of the origin event to filter by. If empty, the results will not be filtered.
 - identityTags: list of IdentityTags

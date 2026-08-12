@@ -13,3 +13,6 @@ Per-account CloudFormation result for the KMS key sharing revoke flow.
   - Inline IAM policy the customer re-attaches to their cross-account role with
 the KMS statements stripped. Set only for manually-onboarded accounts;
 empty for CFT accounts, which use cloudFormationUrl instead.
+- templateUrl: System.String
+  - Raw S3 URL of the revoke CloudFormation template for download. Empty for
+manual accounts.

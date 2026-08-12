@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("databaseCdmIds")]
         public List<System.String>? DatabaseCdmIds { get; set; }
 
+        //      C# -> System.Boolean? HasCapturedSchemas
+        // GraphQL -> hasCapturedSchemas: Boolean! (scalar)
+        [JsonProperty("hasCapturedSchemas")]
+        public System.Boolean? HasCapturedSchemas { get; set; }
+
         //      C# -> System.String? MetadataVersion
         // GraphQL -> metadataVersion: String (scalar)
         [JsonProperty("metadataVersion")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public MysqldbInstanceAppMetadata Set(
         List<System.String>? DatabaseCdmIds = null,
+        System.Boolean? HasCapturedSchemas = null,
         System.String? MetadataVersion = null,
         KosmosDataSnapshotStats? Stats = null
     ) 
     {
         if ( DatabaseCdmIds != null ) {
             this.DatabaseCdmIds = DatabaseCdmIds;
+        }
+        if ( HasCapturedSchemas != null ) {
+            this.HasCapturedSchemas = HasCapturedSchemas;
         }
         if ( MetadataVersion != null ) {
             this.MetadataVersion = MetadataVersion;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "databaseCdmIds\n" ;
             } else {
                 s += ind + "databaseCdmIds\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasCapturedSchemas
+        // GraphQL -> hasCapturedSchemas: Boolean! (scalar)
+        if (this.HasCapturedSchemas != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasCapturedSchemas\n" ;
+            } else {
+                s += ind + "hasCapturedSchemas\n" ;
             }
         }
         //      C# -> System.String? MetadataVersion
@@ -126,6 +144,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DatabaseCdmIds != null && ec.Excludes("databaseCdmIds",true))
         {
             this.DatabaseCdmIds = null;
+        }
+        //      C# -> System.Boolean? HasCapturedSchemas
+        // GraphQL -> hasCapturedSchemas: Boolean! (scalar)
+        if (ec.Includes("hasCapturedSchemas",true))
+        {
+            if(this.HasCapturedSchemas == null) {
+
+                this.HasCapturedSchemas = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasCapturedSchemas != null && ec.Excludes("hasCapturedSchemas",true))
+        {
+            this.HasCapturedSchemas = null;
         }
         //      C# -> System.String? MetadataVersion
         // GraphQL -> metadataVersion: String (scalar)

@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalSpecs")]
         public List<ArchivalSpec>? ArchivalSpecs { get; set; }
 
+        //      C# -> List<AssignedRscTag>? AssignedSystemTags
+        // GraphQL -> assignedSystemTags: [AssignedRscTag!]! (type)
+        [JsonProperty("assignedSystemTags")]
+        public List<AssignedRscTag>? AssignedSystemTags { get; set; }
+
         //      C# -> List<BackupLocationSpec>? BackupLocationSpecs
         // GraphQL -> backupLocationSpecs: [BackupLocationSpec!] (type)
         [JsonProperty("backupLocationSpecs")]
@@ -254,6 +259,7 @@ namespace RubrikSecurityCloud.Types
         List<ArchivalLocationUpgradeInfo>? ArchivalLocationsUpgradeInfo = null,
         ArchivalSpec? ArchivalSpec = null,
         List<ArchivalSpec>? ArchivalSpecs = null,
+        List<AssignedRscTag>? AssignedSystemTags = null,
         List<BackupLocationSpec>? BackupLocationSpecs = null,
         BackupWindowSpec? BackupWindowSpec = null,
         List<BackupWindow>? BackupWindows = null,
@@ -341,6 +347,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ArchivalSpecs != null ) {
             this.ArchivalSpecs = ArchivalSpecs;
+        }
+        if ( AssignedSystemTags != null ) {
+            this.AssignedSystemTags = AssignedSystemTags;
         }
         if ( BackupLocationSpecs != null ) {
             this.BackupLocationSpecs = BackupLocationSpecs;
@@ -626,6 +635,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "archivalSpecs" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<AssignedRscTag>? AssignedSystemTags
+        // GraphQL -> assignedSystemTags: [AssignedRscTag!]! (type)
+        if (this.AssignedSystemTags != null) {
+            var fspec = this.AssignedSystemTags.AsFieldSpec(conf.Child("assignedSystemTags"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "assignedSystemTags" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1240,6 +1261,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ArchivalSpecs != null && ec.Excludes("archivalSpecs",false))
         {
             this.ArchivalSpecs = null;
+        }
+        //      C# -> List<AssignedRscTag>? AssignedSystemTags
+        // GraphQL -> assignedSystemTags: [AssignedRscTag!]! (type)
+        if (ec.Includes("assignedSystemTags",false))
+        {
+            if(this.AssignedSystemTags == null) {
+
+                this.AssignedSystemTags = new List<AssignedRscTag>();
+                this.AssignedSystemTags.ApplyExploratoryFieldSpec(ec.NewChild("assignedSystemTags"));
+
+            } else {
+
+                this.AssignedSystemTags.ApplyExploratoryFieldSpec(ec.NewChild("assignedSystemTags"));
+
+            }
+        }
+        else if (this.AssignedSystemTags != null && ec.Excludes("assignedSystemTags",false))
+        {
+            this.AssignedSystemTags = null;
         }
         //      C# -> List<BackupLocationSpec>? BackupLocationSpecs
         // GraphQL -> backupLocationSpecs: [BackupLocationSpec!] (type)

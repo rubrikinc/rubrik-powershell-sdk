@@ -18,6 +18,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ACCOUNT_LIFECYCLE_REPORT")]
+        ACCOUNT_LIFECYCLE_REPORT,
+
+        [EnumMember(Value = "ACCOUNT_LOCKOUTS_REPORT")]
+        ACCOUNT_LOCKOUTS_REPORT,
+
         [EnumMember(Value = "ACTIVE_DIRECTORY_FOREST_RECOVERY_REPORT")]
         ACTIVE_DIRECTORY_FOREST_RECOVERY_REPORT,
 
@@ -75,8 +81,20 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILOVER_REPORT")]
         FAILOVER_REPORT,
 
+        [EnumMember(Value = "GPO_CAP_CHANGES_REPORT")]
+        GPO_CAP_CHANGES_REPORT,
+
+        [EnumMember(Value = "GROUP_CHANGES_REPORT")]
+        GROUP_CHANGES_REPORT,
+
+        [EnumMember(Value = "GROUP_MEMBERSHIP_REPORT")]
+        GROUP_MEMBERSHIP_REPORT,
+
         [EnumMember(Value = "IDENTITY_ACTIVITY_REPORT")]
         IDENTITY_ACTIVITY_REPORT,
+
+        [EnumMember(Value = "IDENTITY_INVENTORY_REPORT")]
+        IDENTITY_INVENTORY_REPORT,
 
         [EnumMember(Value = "IDENTITY_RISKS_REPORT")]
         IDENTITY_RISKS_REPORT,
@@ -108,6 +126,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OBJECT_CAPACITY_REPORT")]
         OBJECT_CAPACITY_REPORT,
 
+        [EnumMember(Value = "PASSWORD_CHANGE_HISTORY_REPORT")]
+        PASSWORD_CHANGE_HISTORY_REPORT,
+
         [EnumMember(Value = "PAUSED_CLUSTERS_REPORT")]
         PAUSED_CLUSTERS_REPORT,
 
@@ -116,6 +137,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "PAUSED_SLA_REPORT")]
         PAUSED_SLA_REPORT,
+
+        [EnumMember(Value = "PRIVILEGED_IDENTITY_REPORT")]
+        PRIVILEGED_IDENTITY_REPORT,
 
         [EnumMember(Value = "PROTECTION_REPORT")]
         PROTECTION_REPORT,

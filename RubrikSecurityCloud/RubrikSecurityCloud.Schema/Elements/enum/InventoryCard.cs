@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AHV_VMS_CDM")]
         AHV_VMS_CDM,
 
+        [EnumMember(Value = "ANTHROPIC")]
+        ANTHROPIC,
+
         [EnumMember(Value = "ATLASSIAN")]
         ATLASSIAN,
 

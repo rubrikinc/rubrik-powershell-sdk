@@ -109,3 +109,9 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - POWER_PLATFORM_DESKTOP_FLOW - Microsoft Power Platform desktop flow.
 - POWER_PLATFORM_AI_FLOW - Microsoft Power Platform AI flow.
 - S3_TABLES_ICEBERG_TABLE - S3 Tables Iceberg table.
+- ANTHROPIC_ORG_SETTINGS - Anthropic org settings.
+- ANTHROPIC_CHILD_ORG_SETTINGS - Anthropic child org settings.
+- ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
+- ANTHROPIC_DEVICE - Anthropic device.
+- AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps Developer Collaboration.
+- IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).

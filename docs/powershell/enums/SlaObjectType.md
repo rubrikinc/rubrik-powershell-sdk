@@ -63,3 +63,6 @@ that assigned objects inherit the SLA Domain from the tag.
 Power Platform objects (canvas app, model-driven app, flow).
 - S3_TABLES_ICEBERG_TABLE_OBJECT_TYPE - S3 Tables Iceberg Table object.
 - MARIADB_OBJECT_TYPE - MariaDB object.
+- ANTHROPIC_OBJECT_TYPE - Anthropic object.
+- IRISDB_INSTANCE_OBJECT_TYPE - IRIS DB instance object type. SLA Domains are assigned at the instance
+level; databases within the instance inherit the instance's SLA Domain.

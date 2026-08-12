@@ -5,6 +5,8 @@ Input to generate a manifest for the Kubernetes cluster.
 - id: System.String
   - Supported in v9.2+
 UUID of the Kubernetes cluster to be added.
+- backupSubnetCidr: System.String
+  - Comma-separated IPv4 CIDR(s) the per-node backup proxy binds its backup NIC within. Only used when dataPathTransport is pernodeproxy.
 - name: System.String
   - Required. Supported in v9.2+
 Name of the Kubernetes Cluster.
@@ -38,6 +40,8 @@ The namespace to which the network attachment definition object belongs.
 - maxConcurrentAgents: System.Int32
   - Supported in v9.6+
 Maximum number of kupr backup agents allowed to run concurrently against this Kubernetes cluster. Set to 0 (or omit) to leave the throttle unlimited.
+- dataPathTransport: System.String
+  - The transport type used for the RBA data movers. Set to pernodeproxy to include the per-node backup proxy DaemonSet in the generated manifest.
 - serviceAccount: ServiceAccountInputInput
   - Required. Supported in v9.2+
 The RSC service account used for onboarding.

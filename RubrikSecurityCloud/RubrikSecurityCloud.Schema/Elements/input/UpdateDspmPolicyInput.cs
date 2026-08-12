@@ -98,6 +98,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("forceUpdateThresholdFilter")]
         public System.Boolean? ForceUpdateThresholdFilter { get; set; }
 
+        //      C# -> AnomalyDetectionConfigInput? AnomalyDetectionConfig
+        // GraphQL -> anomalyDetectionConfig: AnomalyDetectionConfigInput (input)
+        [JsonProperty("anomalyDetectionConfig")]
+        public AnomalyDetectionConfigInput? AnomalyDetectionConfig { get; set; }
+
 
         #endregion
 

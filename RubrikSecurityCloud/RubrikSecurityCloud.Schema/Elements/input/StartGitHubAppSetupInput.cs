@@ -38,6 +38,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("organizationUrl")]
         public System.String? OrganizationUrl { get; set; }
 
+        //      C# -> List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups
+        // GraphQL -> featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] (input)
+        [JsonProperty("featuresWithPermissionsGroups")]
+        public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups { get; set; }
+
 
         #endregion
 

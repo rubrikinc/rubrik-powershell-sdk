@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? BackupSubnetCidr
+        // GraphQL -> backupSubnetCidr: String (scalar)
+        [JsonProperty("backupSubnetCidr")]
+        public System.String? BackupSubnetCidr { get; set; }
+
         //      C# -> System.String? Kubeconfig
         // GraphQL -> kubeconfig: String (scalar)
         [JsonProperty("kubeconfig")]
@@ -83,6 +88,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> accessToken: String (scalar)
         [JsonProperty("accessToken")]
         public System.String? AccessToken { get; set; }
+
+        //      C# -> System.String? DataPathTransport
+        // GraphQL -> dataPathTransport: String (scalar)
+        [JsonProperty("dataPathTransport")]
+        public System.String? DataPathTransport { get; set; }
 
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String (scalar)

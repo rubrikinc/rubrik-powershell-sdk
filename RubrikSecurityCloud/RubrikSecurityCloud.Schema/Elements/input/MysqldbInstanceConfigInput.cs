@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("connectionInfo")]
         public MysqldbConnectionInfoInput? ConnectionInfo { get; set; }
 
+        //      C# -> MysqldbHaClusterConfigInput? HaClusterConfig
+        // GraphQL -> haClusterConfig: MysqldbHaClusterConfigInput (input)
+        [JsonProperty("haClusterConfig")]
+        public MysqldbHaClusterConfigInput? HaClusterConfig { get; set; }
+
 
         #endregion
 

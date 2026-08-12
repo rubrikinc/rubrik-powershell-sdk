@@ -134,6 +134,13 @@ today.
 
 - There is a single argument of type RecoverGlueIcebergTableSnapshotInput.
 - Returns RecoverGlueIcebergTableSnapshotReply.
+### recovers3tablesicebergtable
+Schedules an on-demand job to recover an S3 Tables Iceberg table
+snapshot and returns the taskchain id. Per-arm, per-FID RBAC runs
+ahead of the handler.
+
+- There is a single argument of type RecoverS3TablesIcebergTableSnapshotInput.
+- Returns RecoverS3TablesIcebergTableSnapshotReply.
 ### requestpurestorageprotectiongroupforcefull
 Request a full snapshot for the next backup job of a Pure Storage protection group
 

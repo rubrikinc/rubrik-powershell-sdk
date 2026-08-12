@@ -95,6 +95,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		backupSubnetCidr = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# OPTIONAL
@@ -143,6 +145,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		accessToken = $someString
     /// 		# OPTIONAL
     /// 		helmMinCdmVersion = $someString
+    /// 		# OPTIONAL
+    /// 		dataPathTransport = $someString
     /// 		# OPTIONAL
     /// 		region = $someString
     /// 		# OPTIONAL
@@ -962,6 +966,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	config = @{
     /// 		# OPTIONAL
     /// 		id = $someString
+    /// 		# OPTIONAL
+    /// 		backupSubnetCidr = $someString
     /// 		# REQUIRED
     /// 		name = $someString
     /// 		# OPTIONAL
@@ -984,6 +990,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nadNamespace = $someString
     /// 		# OPTIONAL
     /// 		maxConcurrentAgents = $someInt
+    /// 		# OPTIONAL
+    /// 		dataPathTransport = $someString
     /// 		# REQUIRED
     /// 		serviceAccount = @{
     /// 			# REQUIRED
@@ -1402,6 +1410,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# OPTIONAL
+    /// 		backupSubnetCidr = $someString
+    /// 		# OPTIONAL
     /// 		kubeconfig = $someString
     /// 		# OPTIONAL
     /// 		registry = $someString
@@ -1434,6 +1444,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		maxConcurrentAgents = $someInt
     /// 		# OPTIONAL
     /// 		accessToken = $someString
+    /// 		# OPTIONAL
+    /// 		dataPathTransport = $someString
     /// 		# OPTIONAL
     /// 		cloudAccountId = $someString
     /// 		# OPTIONAL
@@ -1920,6 +1932,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		id = $someString
+		# OPTIONAL
+		backupSubnetCidr = $someString
 		# REQUIRED
 		name = $someString
 		# OPTIONAL
@@ -1968,6 +1982,8 @@ $query.Var.input = @{
 		accessToken = $someString
 		# OPTIONAL
 		helmMinCdmVersion = $someString
+		# OPTIONAL
+		dataPathTransport = $someString
 		# OPTIONAL
 		region = $someString
 		# OPTIONAL
@@ -2667,6 +2683,8 @@ $query.Var.input = @{
 	config = @{
 		# OPTIONAL
 		id = $someString
+		# OPTIONAL
+		backupSubnetCidr = $someString
 		# REQUIRED
 		name = $someString
 		# OPTIONAL
@@ -2689,6 +2707,8 @@ $query.Var.input = @{
 		nadNamespace = $someString
 		# OPTIONAL
 		maxConcurrentAgents = $someInt
+		# OPTIONAL
+		dataPathTransport = $someString
 		# REQUIRED
 		serviceAccount = @{
 			# REQUIRED
@@ -3043,6 +3063,8 @@ $query.Var.input = @{
 	# REQUIRED
 	config = @{
 		# OPTIONAL
+		backupSubnetCidr = $someString
+		# OPTIONAL
 		kubeconfig = $someString
 		# OPTIONAL
 		registry = $someString
@@ -3075,6 +3097,8 @@ $query.Var.input = @{
 		maxConcurrentAgents = $someInt
 		# OPTIONAL
 		accessToken = $someString
+		# OPTIONAL
+		dataPathTransport = $someString
 		# OPTIONAL
 		cloudAccountId = $someString
 		# OPTIONAL

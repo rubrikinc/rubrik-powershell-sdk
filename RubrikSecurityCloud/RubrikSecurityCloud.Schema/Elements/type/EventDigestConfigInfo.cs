@@ -55,6 +55,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("emailAddresses")]
         public List<System.String>? EmailAddresses { get; set; }
 
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!] (scalar)
+        [JsonProperty("objectIds")]
+        public List<System.String>? ObjectIds { get; set; }
+
 
         #endregion
 
@@ -71,7 +76,8 @@ namespace RubrikSecurityCloud.Types
         List<ActivityObjectTypeEnum>? ObjectType = null,
         List<System.String>? ActivityType = null,
         List<System.String>? Clusters = null,
-        List<System.String>? EmailAddresses = null
+        List<System.String>? EmailAddresses = null,
+        List<System.String>? ObjectIds = null
     ) 
     {
         if ( ActivitySeverity != null ) {
@@ -94,6 +100,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EmailAddresses != null ) {
             this.EmailAddresses = EmailAddresses;
+        }
+        if ( ObjectIds != null ) {
+            this.ObjectIds = ObjectIds;
         }
         return this;
     }
@@ -170,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "emailAddresses\n" ;
             } else {
                 s += ind + "emailAddresses\n" ;
+            }
+        }
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!] (scalar)
+        if (this.ObjectIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectIds\n" ;
+            } else {
+                s += ind + "objectIds\n" ;
             }
         }
         return s;
@@ -297,6 +315,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EmailAddresses != null && ec.Excludes("emailAddresses",true))
         {
             this.EmailAddresses = null;
+        }
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!] (scalar)
+        if (ec.Includes("objectIds",true))
+        {
+            if(this.ObjectIds == null) {
+
+                this.ObjectIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectIds != null && ec.Excludes("objectIds",true))
+        {
+            this.ObjectIds = null;
         }
     }
 

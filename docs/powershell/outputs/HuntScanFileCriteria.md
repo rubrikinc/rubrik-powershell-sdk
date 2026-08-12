@@ -14,3 +14,6 @@ ignored.
 - shouldExpandArchiveFiles: System.Boolean
   - When true, zip and archive files are expanded during the threat hunt scan
 so that inner files are scanned individually.
+- useExtensionWhitelist: System.Boolean
+  - When true, the backend applies the extension whitelist during the scan.
+Controlled by the extension whitelist checkbox in the Advance Hunt UI.

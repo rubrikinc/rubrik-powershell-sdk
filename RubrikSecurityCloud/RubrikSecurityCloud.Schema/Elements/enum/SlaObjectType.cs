@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_TYPE")]
         ACTIVE_DIRECTORY_OBJECT_TYPE,
 
+        [EnumMember(Value = "ANTHROPIC_OBJECT_TYPE")]
+        ANTHROPIC_OBJECT_TYPE,
+
         [EnumMember(Value = "ATLASSIAN_JIRA_OBJECT_TYPE")]
         ATLASSIAN_JIRA_OBJECT_TYPE,
 
@@ -104,6 +107,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INFORMIX_INSTANCE_OBJECT_TYPE")]
         INFORMIX_INSTANCE_OBJECT_TYPE,
+
+        [EnumMember(Value = "IRISDB_INSTANCE_OBJECT_TYPE")]
+        IRISDB_INSTANCE_OBJECT_TYPE,
 
         [EnumMember(Value = "K8S_OBJECT_TYPE")]
         K8S_OBJECT_TYPE,

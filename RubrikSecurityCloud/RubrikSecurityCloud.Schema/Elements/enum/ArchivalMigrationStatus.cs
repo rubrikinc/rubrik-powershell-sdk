@@ -52,7 +52,19 @@ namespace RubrikSecurityCloud.Types
         RCV_LOCATION_CREATION_IN_PROGRESS,
 
         [EnumMember(Value = "RCV_LOCATION_CREATION_SUCCESSFUL")]
-        RCV_LOCATION_CREATION_SUCCESSFUL
+        RCV_LOCATION_CREATION_SUCCESSFUL,
+
+        [EnumMember(Value = "SLA_UPDATE_FAILED")]
+        SLA_UPDATE_FAILED,
+
+        [EnumMember(Value = "SLA_UPDATE_IN_PROGRESS")]
+        SLA_UPDATE_IN_PROGRESS,
+
+        [EnumMember(Value = "SLA_UPDATE_PENDING")]
+        SLA_UPDATE_PENDING,
+
+        [EnumMember(Value = "SLA_UPDATE_SUCCESS")]
+        SLA_UPDATE_SUCCESS
 
 
     } // enum ArchivalMigrationStatus

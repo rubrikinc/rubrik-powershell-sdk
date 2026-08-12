@@ -758,6 +758,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.policyFrameworks = @(
     /// 	$someString
     /// )
+    /// # OPTIONAL
+    /// $query.Var.idpTypes = @(
+    /// 	$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
+    /// )
     /// # REQUIRED
     /// $query.Var.policyTypes = @(
     /// 	$somePolicyType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyType]) for enum values.
@@ -1707,6 +1711,7 @@ $query.Var.searchTerm = $someString"
         //     policyViolationNameSearch: String
         //     violationNames: [String!]
         //     policyFrameworks: [String!]
+        //     idpTypes: [IdpType!]
         //     policyTypes: [PolicyType!]!
         //   ): [PolicyResult!]!
         internal void InitQueryAllSecurityPolicies()
@@ -1739,13 +1744,14 @@ $query.Var.searchTerm = $someString"
                 Tuple.Create("policyViolationNameSearch", "String"),
                 Tuple.Create("violationNames", "[String!]"),
                 Tuple.Create("policyFrameworks", "[String!]"),
+                Tuple.Create("idpTypes", "[IdpType!]"),
                 Tuple.Create("policyTypes", "[PolicyType!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllSecurityPolicies",
-                "($isPolicyEnabled: Boolean,$isCustomPolicy: Boolean,$policyCategories: [Category!],$policySeverities: [Severity!],$includeViolationInsights: Boolean,$policyIds: [UUID!],$resourceIds: [String!],$statuses: [PolicyViolationStatus!],$statusReasons: [PolicyViolationStatusReason!],$policyViolationIds: [UUID!],$resourceTypes: [PolicyResourceType!],$sensitivityLevels: [SensitivityLevel!],$detectionDate: TimeRangeInput,$updateDate: TimeRangeInput,$policyName: String,$exactPolicyName: String,$policyUpdateDate: TimeRangeInput,$parentViolationId: UUID,$dataTypeIds: [String!],$documentTypeIds: [UUID!],$dataCategoryIds: [String!],$sortBy: PolicyViolationSortField,$sortOrder: SortOrder,$resourceMetadataFilter: ResourceMetadataFiltersInput,$policyViolationNameSearch: String,$violationNames: [String!],$policyFrameworks: [String!],$policyTypes: [PolicyType!]!)",
+                "($isPolicyEnabled: Boolean,$isCustomPolicy: Boolean,$policyCategories: [Category!],$policySeverities: [Severity!],$includeViolationInsights: Boolean,$policyIds: [UUID!],$resourceIds: [String!],$statuses: [PolicyViolationStatus!],$statusReasons: [PolicyViolationStatusReason!],$policyViolationIds: [UUID!],$resourceTypes: [PolicyResourceType!],$sensitivityLevels: [SensitivityLevel!],$detectionDate: TimeRangeInput,$updateDate: TimeRangeInput,$policyName: String,$exactPolicyName: String,$policyUpdateDate: TimeRangeInput,$parentViolationId: UUID,$dataTypeIds: [String!],$documentTypeIds: [UUID!],$dataCategoryIds: [String!],$sortBy: PolicyViolationSortField,$sortOrder: SortOrder,$resourceMetadataFilter: ResourceMetadataFiltersInput,$policyViolationNameSearch: String,$violationNames: [String!],$policyFrameworks: [String!],$idpTypes: [IdpType!],$policyTypes: [PolicyType!]!)",
                 "List<PolicyResult>",
                 Query.AllSecurityPolicies,
                 Query.AllSecurityPoliciesFieldSpec,
@@ -1903,6 +1909,10 @@ $query.Var.violationNames = @(
 # OPTIONAL
 $query.Var.policyFrameworks = @(
 	$someString
+)
+# OPTIONAL
+$query.Var.idpTypes = @(
+	$someIdpType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.IdpType]) for enum values.
 )
 # REQUIRED
 $query.Var.policyTypes = @(

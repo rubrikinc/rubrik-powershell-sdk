@@ -56,3 +56,6 @@ configuration.
 - OBJECT_BACKUP_WINDOW_CHANGE - Quorum authorization is required for changing the object-level backup
 window override (enabling, turning off, or editing the per-object backup
 window).
+- MANAGE_ENCRYPTION_SETTINGS - The TPR rule for managing encryption settings (Rubrik cluster key rotation and
+archival location rekey).
+- DELETE_PHYSICAL_HOST - Quorum authorization is required for deleting a physical host.

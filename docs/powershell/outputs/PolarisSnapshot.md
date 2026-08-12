@@ -90,3 +90,7 @@ additional fields for cloud-managed snapshots.
   - Indicates whether snapshot-level file search is available for this snapshot. Might return false while search indexing is actively in progress.
 - slaDomain: SlaDomain
   - The effective SLA Domain of this snapshot.
+- isCompromised: System.Boolean
+  - Whether this snapshot falls within a known identity-compromise window derived from identity threat alerts (Microsoft Defender for Identity or CrowdStrike Falcon Identity). A null or false value does not assert the snapshot is clean, only that no compromise is known.
+- compromisingAlerts: list of TriggeringAlerts
+  - The identity-compromise alerts that explain why this snapshot is marked as compromised. Absent or empty when the snapshot is not marked.

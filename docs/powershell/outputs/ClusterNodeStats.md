@@ -25,3 +25,29 @@ The node-level performance statistics of a Rubrik cluster.
   - Rubrik cluster UUID.
 - nodeId: System.String
   - Rubrik cluster node ID.
+- diskUtilBasisPoints: System.Int64
+  - Disk utilization on the node, in basis points (1/100th of a percent).
+- uptimeSeconds: System.Int64
+  - Node uptime, in seconds.
+- loadAvg5MinMilli: System.Int64
+  - Five-minute load average, in millis (loadavg * 1000).
+- storageEfficiencyRatio10k: System.Int64
+  - Storage efficiency as a ratio scaled x10000 (unbounded; a 2.0x reduction == 20000).
+- nfacctTcpEsxBytes: System.Int64
+  - TCP bytes accounted for the ESX backup protocol (nfacct).
+- nfacctTcpIscsiBytes: System.Int64
+  - TCP bytes accounted for the iSCSI backup protocol (nfacct).
+- nfacctTcpSmbBytes: System.Int64
+  - TCP bytes accounted for the SMB backup protocol (nfacct).
+- nfacctTcpNfsBytes: System.Int64
+  - TCP bytes accounted for the NFS backup protocol (nfacct).
+- nfacctTcpBackupAgentBytes: System.Int64
+  - TCP bytes accounted for the backup-agent protocol (nfacct).
+- snapshotStorageLive: System.Int64
+  - Snapshot storage -- live bytes.
+- snapshotStorageDelta: System.Int64
+  - Snapshot storage -- delta bytes.
+- snapshotStorageIndex: System.Int64
+  - Snapshot storage -- index bytes.
+- snapshotStorageMetadata: System.Int64
+  - Snapshot storage -- metadata bytes.

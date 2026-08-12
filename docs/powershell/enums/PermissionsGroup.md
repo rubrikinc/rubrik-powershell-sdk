@@ -130,3 +130,6 @@ snapshot relocation and cleanup operations
 ec2:ModifySnapshotAttribute, ec2:DescribeSnapshotAttribute), tag-gated on
 rk_component where AWS supports it. Applicable to the AWS Exocompute
 feature.
+- RECOVER_TO_S3 - Represents the least-privilege S3 write-set required to recover an RDS
+or Aurora PostgreSQL snapshot to S3. Applicable to the RDS protection
+feature.

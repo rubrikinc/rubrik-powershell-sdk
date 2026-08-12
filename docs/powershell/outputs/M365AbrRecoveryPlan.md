@@ -16,3 +16,5 @@ profile.
 - conditionTree: M365RecoveryPlanConditionTree
   - Typed filter condition expression currently saved on this Recovery Plan.
 Absent when no filters have been saved.
+- workloadSummaries: list of M365RecoveryPlanWorkloadSummarys
+  - Per-workload human-readable summaries of the saved filter.

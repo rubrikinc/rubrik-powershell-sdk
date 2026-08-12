@@ -51,3 +51,7 @@ Count of different types of PingFederate objects in a snapshot.
   - Count of outbound provisioning settings.
 - wsTrustStsSettings: System.Int64
   - Count of WS-Trust STS settings.
+- virtualHostNames: System.Int64
+  - Count of virtual host names.
+- caCertificates: System.Int64
+  - Count of trusted CA certificates.

@@ -99,6 +99,12 @@ Update the air-gap status of the Rubrik cluster.
 
 - There is a single argument of type AirGapStatusInput.
 - Returns System.String.
+### airupdatemcpgateway
+Update an MCP gateway in place: rename it and/or change its member MCP
+servers. The gateway id and endpoint stay stable across the update.
+
+- There is a single argument of type AirUpdateMcpGatewayInput.
+- Returns AirUpdateMcpGatewayReply.
 ### approvetprrequest
 Approve a two-person rule (TPR) request with optional comments.
 
@@ -336,6 +342,12 @@ Iceberg table.
 
 - There is a single argument of type CreateOnDemandGlueIcebergTableBackupInput.
 - Returns CreateOnDemandGlueIcebergTableBackupReply.
+### createondemands3tablesicebergtablebackup
+Schedules an on-demand job to take a backup snapshot of an S3 Tables
+Iceberg table.
+
+- There is a single argument of type CreateOnDemandS3TablesIcebergTableBackupInput.
+- Returns CreateOnDemandS3TablesIcebergTableBackupReply.
 ### createondemandvolumegroupbackup
 Create on-demand snapshot for the Volume Group
 
@@ -1001,6 +1013,15 @@ Return true when the operation succeeds.
 
 - There is a single argument of type SetMfaSettingInput.
 - Returns System.Boolean.
+### setobjectbackupwindows
+Sets a single object-level backup window override on a batch of
+managed objects. The same backup window group from the input is
+applied to every object identified by `objectIds` as an override of
+the SLA-level window. When the input's `backupWindowGroup` is unset,
+any existing object-level override on the listed objects is cleared.
+
+- There is a single argument of type SetObjectBackupWindowsInput.
+- Returns System.String.
 ### setprivatecontainerregistry
 Sets the Private Container Registry (PCR) details for an Exocompute cloud account. Updates the details if the registry already exists and creates a new entry if it does not exist.
 
@@ -1331,6 +1352,11 @@ Power a specified FusionCompute Live Mount virtual machine on or off. Pass **_tr
 
 - There is a single argument of type UpdateFusionComputeMountInput.
 - Returns UpdateFusionComputeMountReply.
+### updatefusioncomputeunmounttime
+Update the scheduled unmount time of a FusionCompute Live Mount. If no scheduled unmount job exists, a new one is created at the specified time.
+
+- There is a single argument of type UpdateFusionComputeUnmountTimeInput.
+- Returns System.String.
 ### updatefusioncomputevrm
 Update FusionCompute VRM instance
 

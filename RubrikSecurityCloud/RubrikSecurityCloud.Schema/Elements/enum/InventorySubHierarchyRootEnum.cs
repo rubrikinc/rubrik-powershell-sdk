@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_ROOT")]
         ACTIVE_DIRECTORY_ROOT,
 
+        [EnumMember(Value = "ANTHROPIC_ROOT")]
+        ANTHROPIC_ROOT,
+
         [EnumMember(Value = "APPFLOWS_ROOT")]
         APPFLOWS_ROOT,
 
@@ -83,6 +86,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INFORMIX_ROOT")]
         INFORMIX_ROOT,
+
+        [EnumMember(Value = "IRISDB_ROOT")]
+        IRISDB_ROOT,
 
         [EnumMember(Value = "K8S_ROOT")]
         K8S_ROOT,

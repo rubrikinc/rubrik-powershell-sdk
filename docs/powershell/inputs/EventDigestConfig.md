@@ -15,3 +15,7 @@ An event digest configuration.
   - Clusters to include in event digest.
 - emailAddresses: list of System.Strings
   - Email addresses of the event digest recipients.
+- objectIds: list of System.Strings
+  - Scopes the digest to specific objects by their unique identifiers. When
+empty, no object-level scoping is applied and all objects match, subject to
+the other filters.

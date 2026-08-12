@@ -80,3 +80,4 @@ Specifies all protection audit information for the single protected workload.
 per-user licensing classification for a selected month.
 - CLOUD_COST_DAILY - Cloud cost daily report -- raw daily costs per cloud account.
 - CLOUD_COST_MONTHLY - Cloud cost monthly report -- aggregated monthly costs per cloud account.
+- IDENTITY_INVENTORY - Specifies the Identity Inventory report information.

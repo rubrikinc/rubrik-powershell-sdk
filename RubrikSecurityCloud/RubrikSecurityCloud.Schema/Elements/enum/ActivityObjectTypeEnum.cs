@@ -30,6 +30,27 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AGENT_CLOUD_POLICY")]
         AGENT_CLOUD_POLICY,
 
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG")]
+        ANTHROPIC_CHILD_ORG,
+
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG_SETTINGS")]
+        ANTHROPIC_CHILD_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG_USER")]
+        ANTHROPIC_CHILD_ORG_USER,
+
+        [EnumMember(Value = "ANTHROPIC_DEVICE")]
+        ANTHROPIC_DEVICE,
+
+        [EnumMember(Value = "ANTHROPIC_ORG")]
+        ANTHROPIC_ORG,
+
+        [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
+        ANTHROPIC_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_USER_CLAUDE_CHAT")]
+        ANTHROPIC_USER_CLAUDE_CHAT,
+
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 

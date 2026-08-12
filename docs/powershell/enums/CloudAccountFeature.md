@@ -59,5 +59,10 @@ for database backup on customer-owned AWS accounts.
 - CLOUD_NATIVE_UEM_KEY_MANAGEMENT - Cloud account feature is Cloud Native UEM Key Management.
 - CLOUD_COST_REPORT - Cloud account feature is Cloud Cost Report (CUR + cost S3 bucket
 permissions for AWS billing data ingestion).
+- GITHUB_DEVELOPER_COLLABORATION_PROTECTION - GITHUB_DEVELOPER_COLLABORATION_PROTECTION refers to the GitHub Developer
+Collaboration feature.
+- CRITICAL_RESOURCE_PROTECTION - Cloud account feature is Critical Resource Protection -- real-time
+detection of deletions on customer-marked critical AWS resources,
+surfaced in the UI as Infrastructure Alerts.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

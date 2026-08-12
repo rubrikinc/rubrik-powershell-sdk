@@ -2,7 +2,7 @@
 A set of parameters to filter objects.
 
 - field: HierarchyFilterField
-  - 
+  - The hierarchy object attribute to filter on.
 - texts: list of System.Strings
   - The relationship between each string will be OR.
 - tagFilterParams: list of TagFilterParamss

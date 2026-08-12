@@ -13,3 +13,7 @@ Status of an archival migration.
 - CDM_METADATA_PERSIST_IN_PROGRESS - CDM metadata persist is in progress.
 - CDM_METADATA_PERSIST_SUCCESSFUL - CDM metadata persist completed successfully.
 - CDM_METADATA_PERSIST_FAILED - CDM metadata persist failed.
+- SLA_UPDATE_PENDING - SLA Domain update is pending.
+- SLA_UPDATE_IN_PROGRESS - SLA Domain update is in progress.
+- SLA_UPDATE_SUCCESS - SLA Domain update completed successfully.
+- SLA_UPDATE_FAILED - SLA Domain update failed.

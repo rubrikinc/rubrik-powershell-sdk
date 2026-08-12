@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("emailAddresses")]
         public List<System.String>? EmailAddresses { get; set; }
 
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!] (scalar)
+        [JsonProperty("objectIds")]
+        public List<System.String>? ObjectIds { get; set; }
+
 
         #endregion
 

@@ -43,3 +43,7 @@ If the field is not set, it will return primary violations.
 policy_ids: a row matches if its policy_id is in policy_ids OR its
 violation_name is in violation_names. Distinct from
 policy_violation_name_search (single substring, AND-combined).
+- lastSeenAtDateRange: PolicyDateTimeRange
+  - Date range filter for the last-seen time. Matches violations whose most
+recent observation falls within [start, end). If null, the results are not
+filtered by last-seen time.

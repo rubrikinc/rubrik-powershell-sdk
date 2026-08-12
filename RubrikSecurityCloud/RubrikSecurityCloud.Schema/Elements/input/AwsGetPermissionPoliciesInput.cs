@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AwsNativeId
+        // GraphQL -> awsNativeId: String (scalar)
+        [JsonProperty("awsNativeId")]
+        public System.String? AwsNativeId { get; set; }
+
         //      C# -> AwsCloudType? CloudType
         // GraphQL -> cloudType: AwsCloudType (enum)
         [JsonProperty("cloudType")]

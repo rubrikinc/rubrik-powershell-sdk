@@ -84,6 +84,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IDENTITY_ACTIVITY")]
         IDENTITY_ACTIVITY,
 
+        [EnumMember(Value = "IDENTITY_INVENTORY")]
+        IDENTITY_INVENTORY,
+
         [EnumMember(Value = "IDENTITY_RISKS")]
         IDENTITY_RISKS,
 

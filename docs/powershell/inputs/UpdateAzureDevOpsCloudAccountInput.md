@@ -9,8 +9,7 @@ configuration.
 calling the allTargetMappings GraphQL query and using the id field of
 the desired TargetMapping.
 - backupRegion: System.String
-  - Azure region for backup storage (e.g., "eastus", "westus2"). See
-addAzureDevOpsCloudAccount for details.
+  - Azure region where Azure DevOps backups are stored.
 - exocomputeCloudAccountId: System.String
   - UUID of the Azure cloud account configured for exocompute. Retrieve the
 ID by calling the allCloudAccountExocomputeMappings GraphQL query with

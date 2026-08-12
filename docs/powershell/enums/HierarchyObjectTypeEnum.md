@@ -230,3 +230,12 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - S3_TABLES_ICEBERG_NAMESPACE - S3 Tables Iceberg namespace.
 - S3_TABLES_ICEBERG_TABLE - S3 Tables Iceberg table.
 - RSC_TAG - RSC system tag.
+- ANTHROPIC_ORG - Anthropic organization.
+- ANTHROPIC_ORG_SETTINGS - Anthropic organization settings (workload, leaf).
+- ANTHROPIC_CHILD_ORG - Anthropic child organization.
+- ANTHROPIC_CHILD_ORG_SETTINGS - Anthropic child organization settings (workload, leaf).
+- ANTHROPIC_CHILD_ORG_USER - Anthropic child organization user.
+- ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat (workload, leaf).
+- ANTHROPIC_DEVICE - Anthropic endpoint device (workload, leaf).
+- IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).
+- IRISDB_DATABASE - IRIS database (a single IRIS database within an instance).

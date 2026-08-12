@@ -440,3 +440,11 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 +mo:sort:db:index:seq=1
 +mo:sort:db:index:type=BTREE
 +mo:sort:db:index:unique=false
+- EC2_INSTANCE_VPC_ID - Sort EC2 instances by VPC ID.
++mo:sort:db:table=aws_native_ec2_instances
++mo:sort:db:column=vpc_id
++mo:sort:db:index:key=NULL
+- RDS_INSTANCE_VPC_ID - Sort RDS instances by VPC ID.
++mo:sort:db:table=aws_native_rds_instances
++mo:sort:db:column=vpc_id
++mo:sort:db:index:key=NULL

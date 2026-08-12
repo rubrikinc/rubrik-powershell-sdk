@@ -7,3 +7,5 @@ Filter options for querying workloads within failover groups.
   - Object status filter for workloads.
 - host: list of System.Strings
   - Host filter for workloads.
+- managedObjectTypeFilter: list of ManagedObjectTypes
+  - Filters workloads by managed object type.

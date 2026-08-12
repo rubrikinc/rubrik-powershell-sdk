@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("permissionsGroups")]
         public List<PermissionsGroup>? PermissionsGroups { get; set; }
 
+        //      C# -> List<AwsFeatureTagBinding>? TagBindings
+        // GraphQL -> tagBindings: [AwsFeatureTagBinding!] (input)
+        [JsonProperty("tagBindings")]
+        public List<AwsFeatureTagBinding>? TagBindings { get; set; }
+
 
         #endregion
 

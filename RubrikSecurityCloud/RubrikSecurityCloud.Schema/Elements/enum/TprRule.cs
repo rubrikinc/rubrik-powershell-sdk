@@ -33,6 +33,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DELETE_DATA_SOURCE")]
         DELETE_DATA_SOURCE,
 
+        [EnumMember(Value = "DELETE_PHYSICAL_HOST")]
+        DELETE_PHYSICAL_HOST,
+
         [EnumMember(Value = "DELETE_RCV")]
         DELETE_RCV,
 
@@ -89,6 +92,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MANAGE_CUSTOM_CERTIFICATES")]
         MANAGE_CUSTOM_CERTIFICATES,
+
+        [EnumMember(Value = "MANAGE_ENCRYPTION_SETTINGS")]
+        MANAGE_ENCRYPTION_SETTINGS,
 
         [EnumMember(Value = "MANAGE_SECURITY_SETTINGS")]
         MANAGE_SECURITY_SETTINGS,

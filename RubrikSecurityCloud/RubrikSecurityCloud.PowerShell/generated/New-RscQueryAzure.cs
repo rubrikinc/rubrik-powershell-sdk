@@ -94,6 +94,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # OPTIONAL
     /// $query.Var.after = $someString
     /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -686,6 +690,28 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		permissionsGroups = @(
     /// 			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		tagBindings = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				scopeId = $someString
+    /// 				# OPTIONAL
+    /// 				conditions = @(
+    /// 					@{
+    /// 						# OPTIONAL
+    /// 						keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+    /// 						# OPTIONAL
+    /// 						key = $someString
+    /// 						# OPTIONAL
+    /// 						operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+    /// 						# OPTIONAL
+    /// 						values = @(
+    /// 							$someString
+    /// 						)
+    /// 					}
+    /// 				)
+    /// 			}
     /// 		)
     /// }
     /// )
@@ -3389,6 +3415,41 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAzResilient = $someBoolean
+    /// 	# OPTIONAL
+    /// 	proxyConfig = @{
+    /// 		# OPTIONAL
+    /// 		protocol = $someProxyProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProxyProtocol]) for enum values.
+    /// 		# OPTIONAL
+    /// 		server = $someString
+    /// 		# OPTIONAL
+    /// 		port = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		proxyPasswordSecretRef = @{
+    /// 			# OPTIONAL
+    /// 			awsSsm = @{
+    /// 				# OPTIONAL
+    /// 				parameterName = $someString
+    /// 				# OPTIONAL
+    /// 				region = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			azureKeyVault = @{
+    /// 				# OPTIONAL
+    /// 				vaultUri = $someString
+    /// 				# OPTIONAL
+    /// 				secretName = $someString
+    /// 			}
+    /// 			# OPTIONAL
+    /// 			gcpSecretManager = @{
+    /// 				# OPTIONAL
+    /// 				projectId = $someString
+    /// 				# OPTIONAL
+    /// 				secretName = $someString
+    /// 			}
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -4398,6 +4459,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         // azureAdDirectories(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     sortBy: HierarchySortByField
         //     sortOrder: SortOrder
         //     filter: [Filter!]
@@ -4407,6 +4470,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("sortBy", "HierarchySortByField"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("filter", "[Filter!]"),
@@ -4415,7 +4480,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 argDefs,
                 "query",
                 "QueryAzureAdDirectories",
-                "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])",
                 "AzureAdDirectoryConnection",
                 Query.AzureAdDirectories,
                 Query.AzureAdDirectoriesFieldSpec,
@@ -4423,6 +4488,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # OPTIONAL
 $query.Var.sortBy = $someHierarchySortByField # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchySortByField]) for enum values.
 # OPTIONAL
@@ -4928,6 +4997,28 @@ $query.Var.permissionsGroupFilters = @(
 		# OPTIONAL
 		permissionsGroups = @(
 			$somePermissionsGroup # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionsGroup]) for enum values.
+		)
+		# OPTIONAL
+		tagBindings = @(
+			@{
+				# OPTIONAL
+				scopeId = $someString
+				# OPTIONAL
+				conditions = @(
+					@{
+						# OPTIONAL
+						keyPrefix = $someTagConditionKeyPrefix # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionKeyPrefix]) for enum values.
+						# OPTIONAL
+						key = $someString
+						# OPTIONAL
+						operator = $someTagConditionOperator # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TagConditionOperator]) for enum values.
+						# OPTIONAL
+						values = @(
+							$someString
+						)
+					}
+				)
+			}
 		)
 }
 )"
@@ -7497,6 +7588,41 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	isAzResilient = $someBoolean
+	# OPTIONAL
+	proxyConfig = @{
+		# OPTIONAL
+		protocol = $someProxyProtocol # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ProxyProtocol]) for enum values.
+		# OPTIONAL
+		server = $someString
+		# OPTIONAL
+		port = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		proxyPasswordSecretRef = @{
+			# OPTIONAL
+			awsSsm = @{
+				# OPTIONAL
+				parameterName = $someString
+				# OPTIONAL
+				region = $someString
+			}
+			# OPTIONAL
+			azureKeyVault = @{
+				# OPTIONAL
+				vaultUri = $someString
+				# OPTIONAL
+				secretName = $someString
+			}
+			# OPTIONAL
+			gcpSecretManager = @{
+				# OPTIONAL
+				projectId = $someString
+				# OPTIONAL
+				secretName = $someString
+			}
+		}
+	}
 }"
             );
         }

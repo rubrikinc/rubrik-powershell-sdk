@@ -2,6 +2,8 @@
 Supported in v9.1+
 Input to update a Kubernetes cluster.
 
+- backupSubnetCidr: System.String
+  - Comma-separated IPv4 CIDR(s) the per-node backup proxy binds its backup NIC within. Only used when dataPathTransport is pernodeproxy. An empty string clears the field.
 - kubeconfig: System.String
   - Supported in v9.1+
 Kubeconfig is a YAML string to store Kubernetes cluster authentication information. You can get this config file directly from the cluster administrator or from a cloud platform if you are using managed Kubernetes cluster.
@@ -41,6 +43,8 @@ Maximum number of kupr backup agents allowed to run concurrently against this Ku
 - accessToken: System.String
   - Supported in v9.1+
 The access token for the service account.
+- dataPathTransport: System.String
+  - The transport type used for the RBA data movers. Defaults to the control-plane transport when unset. Set to pernodeproxy to route data movers through the per-node backup proxy. An empty string clears the field.
 - cloudAccountId: System.String
   - Supported in v9.1+
 The cloud account for the Rubrik cluster to establish a connection with the EKS Kubernetes cluster.

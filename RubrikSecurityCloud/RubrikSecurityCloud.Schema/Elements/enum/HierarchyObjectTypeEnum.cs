@@ -24,6 +24,27 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG")]
+        ANTHROPIC_CHILD_ORG,
+
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG_SETTINGS")]
+        ANTHROPIC_CHILD_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG_USER")]
+        ANTHROPIC_CHILD_ORG_USER,
+
+        [EnumMember(Value = "ANTHROPIC_DEVICE")]
+        ANTHROPIC_DEVICE,
+
+        [EnumMember(Value = "ANTHROPIC_ORG")]
+        ANTHROPIC_ORG,
+
+        [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
+        ANTHROPIC_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_USER_CLAUDE_CHAT")]
+        ANTHROPIC_USER_CLAUDE_CHAT,
+
         [EnumMember(Value = "ATLASSIAN_SITE")]
         ATLASSIAN_SITE,
 
@@ -284,6 +305,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INFORMIX_INSTANCE")]
         INFORMIX_INSTANCE,
+
+        [EnumMember(Value = "IRISDB_DATABASE")]
+        IRISDB_DATABASE,
+
+        [EnumMember(Value = "IRISDB_INSTANCE")]
+        IRISDB_INSTANCE,
 
         [EnumMember(Value = "JIRA_FIXED_OBJECT")]
         JIRA_FIXED_OBJECT,

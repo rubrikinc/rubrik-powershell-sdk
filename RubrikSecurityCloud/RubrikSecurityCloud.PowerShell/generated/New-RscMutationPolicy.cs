@@ -721,6 +721,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		violationNames = @(
     /// 			$someString
     /// 		)
+    /// 		# OPTIONAL
+    /// 		lastSeenAtDateRange = @{
+    /// 			# OPTIONAL
+    /// 			start = $someDateTime
+    /// 			# OPTIONAL
+    /// 			end = $someDateTime
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	policyFilters = @{
@@ -1548,6 +1555,25 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# OPTIONAL
     /// 	forceUpdateThresholdFilter = $someBoolean
+    /// 	# OPTIONAL
+    /// 	anomalyDetectionConfig = @{
+    /// 		# OPTIONAL
+    /// 		threshold = $someInt64
+    /// 		# OPTIONAL
+    /// 		quietPeriodMinutes = $someInt
+    /// 		# OPTIONAL
+    /// 		latenessBufferMinutes = $someInt
+    /// 		# OPTIONAL
+    /// 		windowMinutes = $someInt
+    /// 		# OPTIONAL
+    /// 		errorCodes = @(
+    /// 			$someInt
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		results = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2539,6 +2565,13 @@ $query.Var.input = @{
 		violationNames = @(
 			$someString
 		)
+		# OPTIONAL
+		lastSeenAtDateRange = @{
+			# OPTIONAL
+			start = $someDateTime
+			# OPTIONAL
+			end = $someDateTime
+		}
 	}
 	# OPTIONAL
 	policyFilters = @{
@@ -3286,6 +3319,25 @@ $query.Var.input = @{
 	}
 	# OPTIONAL
 	forceUpdateThresholdFilter = $someBoolean
+	# OPTIONAL
+	anomalyDetectionConfig = @{
+		# OPTIONAL
+		threshold = $someInt64
+		# OPTIONAL
+		quietPeriodMinutes = $someInt
+		# OPTIONAL
+		latenessBufferMinutes = $someInt
+		# OPTIONAL
+		windowMinutes = $someInt
+		# OPTIONAL
+		errorCodes = @(
+			$someInt
+		)
+		# OPTIONAL
+		results = @(
+			$someString
+		)
+	}
 }"
             );
         }

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldExpandArchiveFiles")]
         public System.Boolean? ShouldExpandArchiveFiles { get; set; }
 
+        //      C# -> System.Boolean? UseExtensionWhitelist
+        // GraphQL -> useExtensionWhitelist: Boolean (scalar)
+        [JsonProperty("useExtensionWhitelist")]
+        public System.Boolean? UseExtensionWhitelist { get; set; }
+
         //      C# -> HuntScanFileSizeLimits? FileSizeLimits
         // GraphQL -> fileSizeLimits: HuntScanFileSizeLimits (type)
         [JsonProperty("fileSizeLimits")]
@@ -51,6 +56,7 @@ namespace RubrikSecurityCloud.Types
 
     public HuntScanFileCriteria Set(
         System.Boolean? ShouldExpandArchiveFiles = null,
+        System.Boolean? UseExtensionWhitelist = null,
         HuntScanFileSizeLimits? FileSizeLimits = null,
         HuntScanFileTimeLimits? FileTimeLimits = null,
         HuntScanPathFilters? PathFilter = null
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( ShouldExpandArchiveFiles != null ) {
             this.ShouldExpandArchiveFiles = ShouldExpandArchiveFiles;
+        }
+        if ( UseExtensionWhitelist != null ) {
+            this.UseExtensionWhitelist = UseExtensionWhitelist;
         }
         if ( FileSizeLimits != null ) {
             this.FileSizeLimits = FileSizeLimits;
@@ -89,6 +98,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "shouldExpandArchiveFiles\n" ;
             } else {
                 s += ind + "shouldExpandArchiveFiles\n" ;
+            }
+        }
+        //      C# -> System.Boolean? UseExtensionWhitelist
+        // GraphQL -> useExtensionWhitelist: Boolean (scalar)
+        if (this.UseExtensionWhitelist != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "useExtensionWhitelist\n" ;
+            } else {
+                s += ind + "useExtensionWhitelist\n" ;
             }
         }
         //      C# -> HuntScanFileSizeLimits? FileSizeLimits
@@ -150,6 +168,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ShouldExpandArchiveFiles != null && ec.Excludes("shouldExpandArchiveFiles",true))
         {
             this.ShouldExpandArchiveFiles = null;
+        }
+        //      C# -> System.Boolean? UseExtensionWhitelist
+        // GraphQL -> useExtensionWhitelist: Boolean (scalar)
+        if (ec.Includes("useExtensionWhitelist",true))
+        {
+            if(this.UseExtensionWhitelist == null) {
+
+                this.UseExtensionWhitelist = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.UseExtensionWhitelist != null && ec.Excludes("useExtensionWhitelist",true))
+        {
+            this.UseExtensionWhitelist = null;
         }
         //      C# -> HuntScanFileSizeLimits? FileSizeLimits
         // GraphQL -> fileSizeLimits: HuntScanFileSizeLimits (type)

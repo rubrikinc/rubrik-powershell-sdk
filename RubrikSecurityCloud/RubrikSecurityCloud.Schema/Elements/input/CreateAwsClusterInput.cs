@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAzResilient")]
         public System.Boolean? IsAzResilient { get; set; }
 
+        //      C# -> CcesProxyConfig? ProxyConfig
+        // GraphQL -> proxyConfig: CcesProxyConfig (input)
+        [JsonProperty("proxyConfig")]
+        public CcesProxyConfig? ProxyConfig { get; set; }
+
 
         #endregion
 

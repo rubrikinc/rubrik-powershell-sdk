@@ -104,6 +104,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("actorTypes")]
         public List<System.String>? ActorTypes { get; set; }
 
+        //      C# -> List<PolicyInsight>? PolicyInsights
+        // GraphQL -> policyInsights: [PolicyInsight!] (enum)
+        [JsonProperty("policyInsights")]
+        public List<PolicyInsight>? PolicyInsights { get; set; }
+
+        //      C# -> List<ActivityClassification>? Classifications
+        // GraphQL -> classifications: [ActivityClassification!] (enum)
+        [JsonProperty("classifications")]
+        public List<ActivityClassification>? Classifications { get; set; }
+
+        //      C# -> List<ActivityClassificationSourceType>? ClassificationSources
+        // GraphQL -> classificationSources: [ActivityClassificationSourceType!] (enum)
+        [JsonProperty("classificationSources")]
+        public List<ActivityClassificationSourceType>? ClassificationSources { get; set; }
+
+        //      C# -> DateTimeRange? ClassifiedOnRange
+        // GraphQL -> classifiedOnRange: DateTimeRange (input)
+        [JsonProperty("classifiedOnRange")]
+        public DateTimeRange? ClassifiedOnRange { get; set; }
+
 
         #endregion
 
