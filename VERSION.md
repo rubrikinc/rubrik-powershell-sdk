@@ -13,4 +13,4 @@ It drives the automated release process. Only the major version should be change
 
 ### Major Version: 1
 ### Minor Version: 19
-### Schema Version: 20260727
+### Schema Version: 20260803
