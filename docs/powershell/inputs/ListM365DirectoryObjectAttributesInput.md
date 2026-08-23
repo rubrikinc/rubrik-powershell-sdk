@@ -2,7 +2,7 @@
 Configuration for the retrieval or directory object attributes.
 
 - orgId: System.String
-  - UUID of the org.
+  - Microsoft 365 organization ID identifying the customer's M365 tenant.
 - objectType: DirectoryObjectType
   - The directory object type applicable for attributes.
 - attributeType: AttributeType

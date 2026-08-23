@@ -21,6 +21,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENCRYPTION_TYPE_BYOK")]
         ENCRYPTION_TYPE_BYOK,
 
+        [EnumMember(Value = "ENCRYPTION_TYPE_NON_UEM_BYOK")]
+        ENCRYPTION_TYPE_NON_UEM_BYOK,
+
         [EnumMember(Value = "ENCRYPTION_TYPE_RUBRIK")]
         ENCRYPTION_TYPE_RUBRIK
 

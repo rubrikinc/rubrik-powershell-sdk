@@ -64,5 +64,6 @@ Collaboration feature.
 - CRITICAL_RESOURCE_PROTECTION - Cloud account feature is Critical Resource Protection -- real-time
 detection of deletions on customer-marked critical AWS resources,
 surfaced in the UI as Infrastructure Alerts.
+- AZURE_COSMOS_NOSQL_PROTECTION - Cloud account feature is Azure Cosmos NoSQL Protection.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

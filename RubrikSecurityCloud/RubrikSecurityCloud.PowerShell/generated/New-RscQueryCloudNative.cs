@@ -720,6 +720,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.limit = $someInt
     /// # REQUIRED
     /// $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.maxCacheStalenessSeconds = $someInt
     /// 
     /// # Execute the query
     /// 
@@ -828,6 +830,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.limit = $someInt
     /// # REQUIRED
     /// $query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
+    /// # REQUIRED
+    /// $query.Var.maxCacheStalenessSeconds = $someInt
     /// 
     /// # Execute the query
     /// 
@@ -1743,19 +1747,25 @@ $query.Var.cloudNativeObjectType = $someCloudNativeObjectType # Call [Enum]::Get
         }
 
         // Create new GraphQL Query:
-        // allCloudNativeTagKeys(keySubStr: String!, limit: Int!, objectType: CloudNativeTagObjectType!): [String!]!
+        // allCloudNativeTagKeys(
+        //     keySubStr: String!
+        //     limit: Int!
+        //     objectType: CloudNativeTagObjectType!
+        //     maxCacheStalenessSeconds: Int! = 0
+        //   ): [String!]!
         internal void InitQueryAllCloudNativeTagKeys()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("keySubStr", "String!"),
                 Tuple.Create("limit", "Int!"),
                 Tuple.Create("objectType", "CloudNativeTagObjectType!"),
+                Tuple.Create("maxCacheStalenessSeconds", "Int!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllCloudNativeTagKeys",
-                "($keySubStr: String!,$limit: Int!,$objectType: CloudNativeTagObjectType!)",
+                "($keySubStr: String!,$limit: Int!,$objectType: CloudNativeTagObjectType!,$maxCacheStalenessSeconds: Int!)",
                 "List<System.String>",
                 Query.AllCloudNativeTagKeys,
                 Query.AllCloudNativeTagKeysFieldSpec,
@@ -1764,7 +1774,9 @@ $query.Var.keySubStr = $someString
 # REQUIRED
 $query.Var.limit = $someInt
 # REQUIRED
-$query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values."
+$query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
+# REQUIRED
+$query.Var.maxCacheStalenessSeconds = $someInt"
             );
         }
 
@@ -1840,6 +1852,7 @@ $query.Var.input = @{
         //     key: String!
         //     limit: Int!
         //     objectType: CloudNativeTagObjectType!
+        //     maxCacheStalenessSeconds: Int! = 0
         //   ): [String!]!
         internal void InitQueryAllCloudNativeTagValues()
         {
@@ -1848,12 +1861,13 @@ $query.Var.input = @{
                 Tuple.Create("key", "String!"),
                 Tuple.Create("limit", "Int!"),
                 Tuple.Create("objectType", "CloudNativeTagObjectType!"),
+                Tuple.Create("maxCacheStalenessSeconds", "Int!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAllCloudNativeTagValues",
-                "($valueSubStr: String!,$key: String!,$limit: Int!,$objectType: CloudNativeTagObjectType!)",
+                "($valueSubStr: String!,$key: String!,$limit: Int!,$objectType: CloudNativeTagObjectType!,$maxCacheStalenessSeconds: Int!)",
                 "List<System.String>",
                 Query.AllCloudNativeTagValues,
                 Query.AllCloudNativeTagValuesFieldSpec,
@@ -1864,7 +1878,9 @@ $query.Var.key = $someString
 # REQUIRED
 $query.Var.limit = $someInt
 # REQUIRED
-$query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values."
+$query.Var.objectType = $someCloudNativeTagObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudNativeTagObjectType]) for enum values.
+# REQUIRED
+$query.Var.maxCacheStalenessSeconds = $someInt"
             );
         }
 

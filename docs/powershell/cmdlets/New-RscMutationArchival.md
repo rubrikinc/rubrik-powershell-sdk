@@ -44,6 +44,14 @@ Initiates a job to download one or more files or folders from an archived Filese
 
 - There is a single argument of type FilesetDownloadSnapshotFilesFromArchivalLocationInput.
 - Returns AsyncRequestStatus.
+### filesetexportsnapshotfilesfromlocation
+Initiate a job to export files or folders
+
+Supported in v8.0+
+Initiates a job to export one or more files or folders from an archived Fileset snapshot to a destination host. Returns the job instance ID.
+
+- There is a single argument of type FilesetExportSnapshotFilesFromArchivalLocationInput.
+- Returns AsyncRequestStatus.
 ### finishmigration
 Finishes an archival migration by swapping the source location's
 backing storage to point to the migration target.

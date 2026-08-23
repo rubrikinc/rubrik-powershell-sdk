@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldIncludeArchive")]
         public System.Boolean? ShouldIncludeArchive { get; set; }
 
+        //      C# -> List<RegistryPatternSpecInputType>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpecInputType!] (input)
+        [JsonProperty("registryPatterns")]
+        public List<RegistryPatternSpecInputType>? RegistryPatterns { get; set; }
+
 
         #endregion
 

@@ -35,6 +35,10 @@ Recovery contains information around a particular recovery.
   - Specifies how was recovery triggered.
 - isAdhocRecovery: System.Boolean
   - Whether this recovery is an adhoc recovery.
+- commitStatus: RecoveryCommitStatus
+  - Commit status of the recovery under DR Commit/Rollback. Committed and
+Commit Incomplete are both RecoveryStatus.DONE, so consumers discriminate
+on this field rather than on status.
 - recoveryPlanBasicInfo: RecoveryPlanBasicInfo
   - Basic information about the recovery plan associated with this recovery.
 - steps: StepsOneof

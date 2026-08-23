@@ -19,40 +19,10 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> AwsNativeEbsVolumeNameOrIdSubstringFilter? NameOrIdSubstringFilter
-        // GraphQL -> nameOrIdSubstringFilter: AwsNativeEbsVolumeNameOrIdSubstringFilter (input)
-        [JsonProperty("nameOrIdSubstringFilter")]
-        public AwsNativeEbsVolumeNameOrIdSubstringFilter? NameOrIdSubstringFilter { get; set; }
-
-        //      C# -> AwsNativeEbsVolumeFileRecoveryStatusFilter? FileRecoveryStatusFilter
-        // GraphQL -> fileRecoveryStatusFilter: AwsNativeEbsVolumeFileRecoveryStatusFilter (input)
-        [JsonProperty("fileRecoveryStatusFilter")]
-        public AwsNativeEbsVolumeFileRecoveryStatusFilter? FileRecoveryStatusFilter { get; set; }
-
-        //      C# -> AwsNativeEbsVolumeTypeFilter? TypeFilter
-        // GraphQL -> typeFilter: AwsNativeEbsVolumeTypeFilter (input)
-        [JsonProperty("typeFilter")]
-        public AwsNativeEbsVolumeTypeFilter? TypeFilter { get; set; }
-
-        //      C# -> AwsNativeAttachedInstanceFilter? AttachedInstanceFilter
-        // GraphQL -> attachedInstanceFilter: AwsNativeAttachedInstanceFilter (input)
-        [JsonProperty("attachedInstanceFilter")]
-        public AwsNativeAttachedInstanceFilter? AttachedInstanceFilter { get; set; }
-
         //      C# -> EffectiveSlaFilter? EffectiveSlaFilter
         // GraphQL -> effectiveSlaFilter: EffectiveSlaFilter (input)
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
-
-        //      C# -> AwsNativeAccountFilter? AccountFilter
-        // GraphQL -> accountFilter: AwsNativeAccountFilter (input)
-        [JsonProperty("accountFilter")]
-        public AwsNativeAccountFilter? AccountFilter { get; set; }
-
-        //      C# -> AwsNativeRegionFilter? RegionFilter
-        // GraphQL -> regionFilter: AwsNativeRegionFilter (input)
-        [JsonProperty("regionFilter")]
-        public AwsNativeRegionFilter? RegionFilter { get; set; }
 
         //      C# -> RelicFilter? RelicFilter
         // GraphQL -> relicFilter: RelicFilter (input)
@@ -74,15 +44,50 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectionStatusFilter")]
         public ProtectionStatusFilter? ProtectionStatusFilter { get; set; }
 
+        //      C# -> OrgFilter? OrgFilter
+        // GraphQL -> orgFilter: OrgFilter (input)
+        [JsonProperty("orgFilter")]
+        public OrgFilter? OrgFilter { get; set; }
+
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
+
+        //      C# -> AwsNativeAccountFilter? AccountFilter
+        // GraphQL -> accountFilter: AwsNativeAccountFilter (input)
+        [JsonProperty("accountFilter")]
+        public AwsNativeAccountFilter? AccountFilter { get; set; }
+
+        //      C# -> AwsNativeAttachedInstanceFilter? AttachedInstanceFilter
+        // GraphQL -> attachedInstanceFilter: AwsNativeAttachedInstanceFilter (input)
+        [JsonProperty("attachedInstanceFilter")]
+        public AwsNativeAttachedInstanceFilter? AttachedInstanceFilter { get; set; }
+
+        //      C# -> AwsNativeEbsVolumeFileRecoveryStatusFilter? FileRecoveryStatusFilter
+        // GraphQL -> fileRecoveryStatusFilter: AwsNativeEbsVolumeFileRecoveryStatusFilter (input)
+        [JsonProperty("fileRecoveryStatusFilter")]
+        public AwsNativeEbsVolumeFileRecoveryStatusFilter? FileRecoveryStatusFilter { get; set; }
+
+        //      C# -> AwsNativeEbsVolumeNameOrIdSubstringFilter? NameOrIdSubstringFilter
+        // GraphQL -> nameOrIdSubstringFilter: AwsNativeEbsVolumeNameOrIdSubstringFilter (input)
+        [JsonProperty("nameOrIdSubstringFilter")]
+        public AwsNativeEbsVolumeNameOrIdSubstringFilter? NameOrIdSubstringFilter { get; set; }
+
+        //      C# -> AwsNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: AwsNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public AwsNativeRegionFilter? RegionFilter { get; set; }
+
         //      C# -> AwsNativeTagFilter? TagFilter
         // GraphQL -> tagFilter: AwsNativeTagFilter (input)
         [JsonProperty("tagFilter")]
         public AwsNativeTagFilter? TagFilter { get; set; }
 
-        //      C# -> OrgFilter? OrgFilter
-        // GraphQL -> orgFilter: OrgFilter (input)
-        [JsonProperty("orgFilter")]
-        public OrgFilter? OrgFilter { get; set; }
+        //      C# -> AwsNativeEbsVolumeTypeFilter? TypeFilter
+        // GraphQL -> typeFilter: AwsNativeEbsVolumeTypeFilter (input)
+        [JsonProperty("typeFilter")]
+        public AwsNativeEbsVolumeTypeFilter? TypeFilter { get; set; }
 
         //      C# -> AwsNativeFeatureStatusFilter? AwsNativeFeatureStatusFilter
         // GraphQL -> awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter (input)
@@ -93,11 +98,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> awsNativeIsEligibleForEbsProtectionFilter: AwsNativeIsEligibleForEbsProtectionFilter (input)
         [JsonProperty("awsNativeIsEligibleForEbsProtectionFilter")]
         public AwsNativeIsEligibleForEbsProtectionFilter? AwsNativeIsEligibleForEbsProtectionFilter { get; set; }
-
-        //      C# -> System.Boolean? IsEligibleForProtection
-        // GraphQL -> isEligibleForProtection: Boolean (scalar)
-        [JsonProperty("isEligibleForProtection")]
-        public System.Boolean? IsEligibleForProtection { get; set; }
 
         //      C# -> AwsServiceTypeFilter? ServiceTypeFilter
         // GraphQL -> serviceTypeFilter: AwsServiceTypeFilter (input)

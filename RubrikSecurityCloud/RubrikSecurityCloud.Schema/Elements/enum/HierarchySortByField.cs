@@ -432,6 +432,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RDS_INSTANCE_VPC_ID")]
         RDS_INSTANCE_VPC_ID,
 
+        [EnumMember(Value = "RECOVERY_PLAN_LAST_RECOVERY_OUTCOME")]
+        RECOVERY_PLAN_LAST_RECOVERY_OUTCOME,
+
+        [EnumMember(Value = "RECOVERY_PLAN_STATUS")]
+        RECOVERY_PLAN_STATUS,
+
         [EnumMember(Value = "S3_TABLES_ICEBERG_NAMESPACE_AWS_ACCOUNT_NAME")]
         S3_TABLES_ICEBERG_NAMESPACE_AWS_ACCOUNT_NAME,
 

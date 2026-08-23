@@ -1,7 +1,7 @@
 ### HostRbsNetworkUpdateErrorInfo
 Error information for a host RBS network throttle update.
 
-- hostId: System.String
-  - ID of the host that failed to update.
 - networkThrottleUpdateStatus: RequestErrorInfo
-  - Status message describing why the update failed.
+  - Required. Status message describing why the update failed.
+- hostId: System.String
+  - Required. ID of the host that failed to update.

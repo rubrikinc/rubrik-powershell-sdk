@@ -78,6 +78,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DCA_LOCATION_READER_POST")]
         DCA_LOCATION_READER_POST,
 
+        [EnumMember(Value = "DELETE_SNAPSHOTS")]
+        DELETE_SNAPSHOTS,
+
+        [EnumMember(Value = "DELETE_SNAPSHOTS_OF_OBJECTS")]
+        DELETE_SNAPSHOTS_OF_OBJECTS,
+
         [EnumMember(Value = "DISABLE_REPLICATION_LOCATION_PUT")]
         DISABLE_REPLICATION_LOCATION_PUT,
 

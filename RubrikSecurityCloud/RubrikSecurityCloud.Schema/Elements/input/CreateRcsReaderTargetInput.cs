@@ -52,6 +52,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("archivalDataSourceIds")]
         public List<System.String>? ArchivalDataSourceIds { get; set; }
 
+        //      C# -> ProxySettingsInput? ProxySettings
+        // GraphQL -> proxySettings: ProxySettingsInput (input)
+        [JsonProperty("proxySettings")]
+        public ProxySettingsInput? ProxySettings { get; set; }
+
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean (scalar)
+        [JsonProperty("shouldBypassProxyForDatapaths")]
+        public System.Boolean? ShouldBypassProxyForDatapaths { get; set; }
+
 
         #endregion
 

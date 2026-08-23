@@ -36,3 +36,12 @@ Data for a matched file.
 - fileVersionMatchDetails: list of ThreatHuntFileVersionMatchDetailss
   - File version match details containing time-related metadata.
 There can be multiple file versions for a file match.
+- isInsideArchive: System.Boolean
+  - True when the matched file is an inner entry inside a compressed
+archive (e.g. zip) discovered via archive expansion.
+- archiveRelativePath: System.String
+  - Path of this file relative to the root of its parent archive.
+Empty string when the matched file is not inside an archive.
+- containerArchiveDetails: ContainerArchiveDetails
+  - Details of the archive container when the matched file is an inner entry
+discovered via archive expansion. Unset when is_inside_archive is false.

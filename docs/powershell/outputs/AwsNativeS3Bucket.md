@@ -35,6 +35,8 @@ AWS native S3 Bucket.
   - List of cloud native applications associated with this S3 bucket.
 - isInfrastructureAlertsEnabled: System.Boolean
   - Whether infrastructure deletion alerts are enabled for the S3 bucket.
+- latestCleanSnapshotTime: DateTime
+  - The date and time of the most recent snapshot that was not flagged as anomalous.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - awsNativeAccount: AwsNativeAccount

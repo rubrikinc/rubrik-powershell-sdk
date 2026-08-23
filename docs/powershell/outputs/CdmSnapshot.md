@@ -47,6 +47,11 @@ A snapshot of a workload managed by a Rubrik cluster.
   - For OpenStack virtual machine snapshots only: true = dataless Cinder storage
 snapshot, false = regular Rubrik backup. Returns null for all non-OpenStack
 workloads.
+- usedFsSize: System.Int64
+  - Total used size, in bytes, of the guest filesystems captured in the
+snapshot, measured when the snapshot was indexed. Returns null when the
+size is unavailable, for example when the snapshot is not indexed yet or
+its workload type does not report the value.
 - cluster: Cluster
   - The Rubrik cluster that owns the snapshot.
 - cloudState: SnapshotCloudState
@@ -77,7 +82,7 @@ workloads.
   - Active Directory specific metadata for the snapshot. Null if snapshot is not of a domain controller.
 - pingFederateAppMetadata: PingFederateAppMetadata
   - PingFederate-specific metadata for the snapshot. Null if the snapshot is not of a PingFederate cluster.
-- postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata
+- postgresDbClusterAppMetadata: PostgresDbClusterAppMetadata
   - PostgreSQL Database Cluster-specific metadata. Null if the snapshot is not of a PostgreSQL Database Cluster.
 - mysqldbInstanceAppMetadata: KosmosWorkloadAppMetadata
   - MySQL instance-specific metadata. Null if the snapshot is not of a MySQL Instance.

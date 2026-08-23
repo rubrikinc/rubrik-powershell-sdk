@@ -15,3 +15,4 @@ The group type for the pending action.
 override operations.
 - PERSONAL_ACCESS_TOKEN - Group type for personal access token operations.
 - QAUTH - Group type for QAuth CDM enforcement operations.
+- DELETION - Group type for snapshot deletion operations initiated from RSC.

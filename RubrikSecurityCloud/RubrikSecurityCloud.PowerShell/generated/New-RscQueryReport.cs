@@ -793,6 +793,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryReport -Operation SonarContent
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.groupBy = $someDiscoveryContentReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportGroupBy]) for enum values.
     /// # OPTIONAL
@@ -807,6 +815,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	policyIds = @(
     /// 		$someString
     /// 	)
+    /// 	# REQUIRED
+    /// 	objectTypes = @(
+    /// 		$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+    /// 	)
     /// 	# OPTIONAL
     /// 	clusterIds = @(
     /// 		$someString
@@ -817,10 +829,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	subscriptionIds = @(
     /// 		$someString
     /// 	)
-    /// 	# REQUIRED
-    /// 	objectTypes = @(
-    /// 		$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-    /// 	)
     /// }
     /// # REQUIRED
     /// $query.Var.day = $someString
@@ -830,14 +838,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.workloadTypes = @(
     /// 	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
     /// )
-    /// # OPTIONAL
-    /// $query.Var.first = $someInt
-    /// # OPTIONAL
-    /// $query.Var.after = $someString
-    /// # OPTIONAL
-    /// $query.Var.last = $someInt
-    /// # OPTIONAL
-    /// $query.Var.before = $someString
     /// 
     /// # Execute the query
     /// 
@@ -1902,6 +1902,10 @@ $query.Var.timeFilter = @{
 
         // Create new GraphQL Query:
         // sonarContentReport(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
         //     groupBy: DiscoveryContentReportGroupBy!
         //     sortBy: DiscoveryContentReportSortBy
         //     sortOrder: SortOrder
@@ -1909,14 +1913,14 @@ $query.Var.timeFilter = @{
         //     day: String!
         //     timezone: String!
         //     workloadTypes: [DataGovObjectType!]! = []
-        //     first: Int
-        //     after: String
-        //     last: Int
-        //     before: String
         //   ): SonarContentReportConnection!
         internal void InitQuerySonarContentReport()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("groupBy", "DiscoveryContentReportGroupBy!"),
                 Tuple.Create("sortBy", "DiscoveryContentReportSortBy"),
                 Tuple.Create("sortOrder", "SortOrder"),
@@ -1924,20 +1928,24 @@ $query.Var.timeFilter = @{
                 Tuple.Create("day", "String!"),
                 Tuple.Create("timezone", "String!"),
                 Tuple.Create("workloadTypes", "[DataGovObjectType!]!"),
-                Tuple.Create("first", "Int"),
-                Tuple.Create("after", "String"),
-                Tuple.Create("last", "Int"),
-                Tuple.Create("before", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QuerySonarContentReport",
-                "($groupBy: DiscoveryContentReportGroupBy!,$sortBy: DiscoveryContentReportSortBy,$sortOrder: SortOrder,$filters: SonarContentReportFilter,$day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!,$first: Int,$after: String,$last: Int,$before: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$groupBy: DiscoveryContentReportGroupBy!,$sortBy: DiscoveryContentReportSortBy,$sortOrder: SortOrder,$filters: SonarContentReportFilter,$day: String!,$timezone: String!,$workloadTypes: [DataGovObjectType!]!)",
                 "SonarContentReportConnection",
                 Query.SonarContentReport,
                 Query.SonarContentReportFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.groupBy = $someDiscoveryContentReportGroupBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportGroupBy]) for enum values.
 # OPTIONAL
 $query.Var.sortBy = $someDiscoveryContentReportSortBy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DiscoveryContentReportSortBy]) for enum values.
@@ -1951,6 +1959,10 @@ $query.Var.filters = @{
 	policyIds = @(
 		$someString
 	)
+	# REQUIRED
+	objectTypes = @(
+		$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
+	)
 	# OPTIONAL
 	clusterIds = @(
 		$someString
@@ -1961,10 +1973,6 @@ $query.Var.filters = @{
 	subscriptionIds = @(
 		$someString
 	)
-	# REQUIRED
-	objectTypes = @(
-		$someHierarchyObjectTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]) for enum values.
-	)
 }
 # REQUIRED
 $query.Var.day = $someString
@@ -1973,15 +1981,7 @@ $query.Var.timezone = $someString
 # REQUIRED
 $query.Var.workloadTypes = @(
 	$someDataGovObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DataGovObjectType]) for enum values.
-)
-# OPTIONAL
-$query.Var.first = $someInt
-# OPTIONAL
-$query.Var.after = $someString
-# OPTIONAL
-$query.Var.last = $someInt
-# OPTIONAL
-$query.Var.before = $someString"
+)"
             );
         }
 

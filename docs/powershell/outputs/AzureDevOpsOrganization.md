@@ -1,6 +1,27 @@
 ### AzureDevOpsOrganization
 Azure DevOps Organization.
 
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
 - nativeId: System.String
   - Native ID of the Azure DevOps organization.
 - isRelic: System.Boolean
@@ -21,66 +42,45 @@ Azure DevOps Organization.
   - Exocompute host name for the Azure DevOps organization.
 - backupRegion: System.String
   - Backup region for the Azure DevOps organization.
-- backupLocationName: System.String
-  - Name of the backup location associated with the Azure DevOps organization.
-- tenantId: System.String
-  - Tenant ID associated with the Azure DevOps organization.
-- authenticationMechanism: DevopsAuthMechanism
-  - Authentication mechanism (OAuth or non-OAuth) the organization's tenant was onboarded with. Derived per-tenant; UNSPECIFIED when it cannot be determined.
-- clientId: System.String
-  - Azure AD application (client) ID of the per-tenant application the organization's tenant was onboarded with. Populated only for non-OAuth tenants; empty otherwise.
-- repoHostType: DevopsHostType
-  - Exocompute host type of the Azure DevOps organization.
-- id: System.String
-  - ID of the Azure DevOps organization.
-- tenantUuid: System.String
-  - Azure AD tenant UUID for the Azure DevOps organization.
 - connectionStatus: DevopsConnectionStatus
   - Connection status of the Azure DevOps organization.
+- backupLocationName: System.String
+  - Name of the backup location associated with the Azure DevOps organization.
 - backupLocation: DevOpsBackupLocation
   - Backup location associated with the Azure DevOps organization.
+- tenantId: System.String
+  - Tenant ID associated with the Azure DevOps organization.
+- tenantUuid: System.String
+  - Azure AD tenant UUID for the Azure DevOps organization.
+- authenticationMechanism: DevopsAuthMechanism
+  - Authentication mechanism (OAuth or non-OAuth) the organization's tenant was onboarded with.
+- clientId: System.String
+  - Azure AD application (client) ID of the per-tenant application the organization's tenant was onboarded with.
 - cloudNativeExocompute: DevOpsCloudNativeExocompute
   - Cloud native exocompute associated with the Azure DevOps organization.
 - rubrikHostedExocompute: DevOpsRubrikHostedExocompute
   - Rubrik hosted exocompute associated with the Azure DevOps organization.
+- repoHostType: DevopsHostType
+  - Exocompute host type of the Azure DevOps organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

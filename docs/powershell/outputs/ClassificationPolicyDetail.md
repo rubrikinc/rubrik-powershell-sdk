@@ -2,25 +2,25 @@
 Detailed view of a data classification policy.
 
 - id: System.String
-  - 
+  - Unique identifier of the policy.
 - name: System.String
-  - 
+  - Human-readable name of the policy.
 - description: System.String
-  - 
+  - Description of the policy.
 - colorEnum: ClassificationPolicyColor
-  - 
+  - Display color of the policy.
 - createdTime: System.Int64
-  - 
+  - Creation time of the policy, in epoch seconds.
 - lastUpdatedTime: System.Int64
-  - 
+  - Time the policy was last updated, in epoch seconds.
 - mode: ClassificationPolicyMode
-  - 
+  - Operating mode of the policy.
 - hierarchyObjectIds: list of System.Strings
-  - 
+  - Identifiers of the hierarchy objects the policy is assigned to.
 - analyzers: list of Analyzers
-  - 
+  - Analyzers included in the policy.
 - deletable: System.Boolean
-  - 
+  - Whether the policy can be deleted.
 - dataCategoryResult: DataCategoryResult
   - Data category classification result.
 - documentTypes: list of DocumentAttributes
@@ -28,12 +28,18 @@ Detailed view of a data classification policy.
 - isInactive: System.Boolean
   - Data category is inactive or not.
 - creator: User
+  - The user who created this policy.
 - hierarchyObjectConnection: HierarchyObjectConnection
   - Connection on hierarchy objects.
 - assignmentResources: AssignmentResourceDetailsConnection
   - Connection on AssignmentResourceDetails.
 - hierarchyObjects: list of HierarchyObjects
+  - The objects assigned to this policy.
 - objectStatuses: list of ObjectStatuss
+  - Assignment status per object.
 - totalObjects: System.Int32
+  - Number of objects assigned to this policy.
 - numAnalyzers: System.Int32
+  - Number of analyzers in this policy.
 - whitelists: list of ClassificationPolicyWhitelistDetailedEntrys
+  - Whitelist entries for this policy.

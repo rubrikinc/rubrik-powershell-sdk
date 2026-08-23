@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("status")]
         public CrawlStatusEnum? Status { get; set; }
 
+        //      C# -> List<System.String>? DataCategoryIds
+        // GraphQL -> dataCategoryIds: [String!]! (scalar)
+        [JsonProperty("dataCategoryIds")]
+        public List<System.String>? DataCategoryIds { get; set; }
+
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
         [JsonProperty("endTime")]
@@ -157,6 +162,7 @@ namespace RubrikSecurityCloud.Types
 
     public Crawl Set(
         CrawlStatusEnum? Status = null,
+        List<System.String>? DataCategoryIds = null,
         System.Int64? EndTime = null,
         System.Int32? FailedObjectCount = null,
         System.Int64? FilesAnalyzeable = null,
@@ -179,6 +185,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( DataCategoryIds != null ) {
+            this.DataCategoryIds = DataCategoryIds;
         }
         if ( EndTime != null ) {
             this.EndTime = EndTime;
@@ -255,6 +264,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "status\n" ;
             } else {
                 s += ind + "status\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DataCategoryIds
+        // GraphQL -> dataCategoryIds: [String!]! (scalar)
+        if (this.DataCategoryIds != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dataCategoryIds\n" ;
+            } else {
+                s += ind + "dataCategoryIds\n" ;
             }
         }
         //      C# -> System.Int64? EndTime
@@ -463,6 +481,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Status != null && ec.Excludes("status",true))
         {
             this.Status = null;
+        }
+        //      C# -> List<System.String>? DataCategoryIds
+        // GraphQL -> dataCategoryIds: [String!]! (scalar)
+        if (ec.Includes("dataCategoryIds",true))
+        {
+            if(this.DataCategoryIds == null) {
+
+                this.DataCategoryIds = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DataCategoryIds != null && ec.Excludes("dataCategoryIds",true))
+        {
+            this.DataCategoryIds = null;
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)

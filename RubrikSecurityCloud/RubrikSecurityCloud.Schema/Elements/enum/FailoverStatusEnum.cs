@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "AWAITING_DECISION")]
+        AWAITING_DECISION,
+
         [EnumMember(Value = "CLEANUP_FAILED")]
         CLEANUP_FAILED,
 
@@ -26,6 +29,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLEANUP_SUCCEEDED")]
         CLEANUP_SUCCEEDED,
+
+        [EnumMember(Value = "COMMITTING")]
+        COMMITTING,
 
         [EnumMember(Value = "COMPLETED")]
         COMPLETED,

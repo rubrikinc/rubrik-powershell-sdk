@@ -26,6 +26,9 @@ A user-specified string that returns this host in searches.
 - isOracleHost: System.Boolean
   - Supported in v5.2+
 A Boolean that specifies whether to discover Oracle information at registration. A value of 'true' discovers Oracle information at registration.
+- id: System.String
+  - Supported in v9.7
+Optional caller-provided host UUID. When omitted, an identifier is generated automatically during registration.
 - oracleSepsSettings: OracleSepsWalletSettingsInput
   - Supported in v9.4+
 Oracle SEPS settings for the host.
@@ -49,6 +52,9 @@ Operating system of the specified host.
 - shouldOracleSddThroughRba: System.Boolean
   - Supported in v9.4+
 A Boolean flag that specifies whether to perform the Data Discovery and Classification data acquisition workflow for Oracle host through RBA.
+- cloudInstanceId: System.String
+  - Supported in v9.7
+Optional identifier of the cloud virtual machine backing this host, used to correlate the host with its underlying cloud virtual machine.
 - orgNetworkId: System.String
   - Supported in v8.1+
 The ID of the RSC orgNetwork to which the host is assigned. This field should only be set when the host registration is called by RSC and the host belongs to a RSC orgNetwork. This field should always be set to None in other cases. 1) The call is from CDM; or 2) the call is from RSC but the host does not belong to an orgNetwork.

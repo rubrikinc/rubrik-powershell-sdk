@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 21
+    /// Create a new RscQuery object for any of the 22
     /// operations in the 'Archival' API domain:
-    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FilesetExportSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// </summary>
     /// <description>
     /// New-RscMutationArchival creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 21 operations
+    /// There are 22 operations
     /// in the 'Archival' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
+    /// one of: CreateGlacierReaderTarget, CreateManualTargetMapping, CreateS3CompatibleReaderTarget, CreateS3CompatibleTarget, DeleteTarget, DeleteTargetMapping, DisableTarget, EnableTarget, FilesetDownloadSnapshotFilesFromLocation, FilesetExportSnapshotFilesFromLocation, FinishMigration, PauseTarget, PromoteReaderTarget, RefreshReaderTarget, RegisterMigration, ResumeTarget, TerminateMigration, UpdateGlacierTarget, UpdateManualTargetMapping, UpdatePureStorageProtectionGroupQuiesceTargets, UpdateS3CompatibleTarget, or UpgradeCdmManagedTarget.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -478,6 +478,84 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	zipPassword = $someString
     /// 	# REQUIRED
     /// 	locationId = $someString
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: AsyncRequestStatus
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the FilesetExportSnapshotFilesFromLocation operation
+    /// of the 'Archival' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Archival
+    /// # API Operation: FilesetExportSnapshotFilesFromLocation
+    /// 
+    /// $query = New-RscMutationArchival -Operation FilesetExportSnapshotFilesFromLocation
+    /// 
+    /// # REQUIRED
+    /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	id = $someString
+    /// 	# OPTIONAL
+    /// 	nextSnapshotId = $someString
+    /// 	# REQUIRED
+    /// 	locationId = $someString
+    /// 	# REQUIRED
+    /// 	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+    /// 	# REQUIRED
+    /// 	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+    /// 	# REQUIRED
+    /// 	config = @{
+    /// 		# REQUIRED
+    /// 		exportPathPairs = @(
+    /// 			@{
+    /// 				# OPTIONAL
+    /// 				exportPathPair = @{
+    /// 					# REQUIRED
+    /// 					dstPath = $someString
+    /// 					# REQUIRED
+    /// 					srcPath = $someString
+    /// 				}
+    /// 			}
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		hostId = $someString
+    /// 		# OPTIONAL
+    /// 		ignoreErrors = $someBoolean
+    /// 		# OPTIONAL
+    /// 		shareId = $someString
+    /// 		# OPTIONAL
+    /// 		excludePaths = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		recoveryPurpose = $someFilesetExportFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetExportFilesJobConfigRecoveryPurpose]) for enum values.
+    /// 		# OPTIONAL
+    /// 		shouldRecreateDirectoryStructure = $someBoolean
+    /// 		# OPTIONAL
+    /// 		postRestoreScript = $someString
+    /// 		# OPTIONAL
+    /// 		shouldRestoreOnlyAcls = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	deltaTypeFilter = @(
+    /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1019,6 +1097,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "DisableTarget",
                 "EnableTarget",
                 "FilesetDownloadSnapshotFilesFromLocation",
+                "FilesetExportSnapshotFilesFromLocation",
                 "FinishMigration",
                 "PauseTarget",
                 "PromoteReaderTarget",
@@ -1072,6 +1151,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "FilesetDownloadSnapshotFilesFromLocation":
                         this.ProcessRecord_FilesetDownloadSnapshotFilesFromLocation();
+                        break;
+                    case "FilesetExportSnapshotFilesFromLocation":
+                        this.ProcessRecord_FilesetExportSnapshotFilesFromLocation();
                         break;
                     case "FinishMigration":
                         this.ProcessRecord_FinishMigration();
@@ -1198,6 +1280,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -FilesetDownloadSnapshotFilesFromLocation";
             // Create new graphql operation filesetDownloadSnapshotFilesFromArchivalLocation
             InitMutationFilesetDownloadSnapshotFilesFromArchivalLocation();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // filesetExportSnapshotFilesFromArchivalLocation.
+        internal void ProcessRecord_FilesetExportSnapshotFilesFromLocation()
+        {
+            this._logger.name += " -FilesetExportSnapshotFilesFromLocation";
+            // Create new graphql operation filesetExportSnapshotFilesFromArchivalLocation
+            InitMutationFilesetExportSnapshotFilesFromArchivalLocation();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1649,6 +1740,76 @@ $query.Var.input = @{
 	zipPassword = $someString
 	# REQUIRED
 	locationId = $someString
+}"
+            );
+        }
+
+        // Create new GraphQL Mutation:
+        // filesetExportSnapshotFilesFromArchivalLocation(input: FilesetExportSnapshotFilesFromArchivalLocationInput!): AsyncRequestStatus!
+        internal void InitMutationFilesetExportSnapshotFilesFromArchivalLocation()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "FilesetExportSnapshotFilesFromArchivalLocationInput!"),
+            };
+            Initialize(
+                argDefs,
+                "mutation",
+                "MutationFilesetExportSnapshotFilesFromArchivalLocation",
+                "($input: FilesetExportSnapshotFilesFromArchivalLocationInput!)",
+                "AsyncRequestStatus",
+                Mutation.FilesetExportSnapshotFilesFromArchivalLocation,
+                Mutation.FilesetExportSnapshotFilesFromArchivalLocationFieldSpec,
+                @"# REQUIRED
+$query.Var.input = @{
+	# REQUIRED
+	id = $someString
+	# OPTIONAL
+	nextSnapshotId = $someString
+	# REQUIRED
+	locationId = $someString
+	# REQUIRED
+	osType = $someGuestOsType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.GuestOsType]) for enum values.
+	# REQUIRED
+	shareType = $someShareTypeEnum # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ShareTypeEnum]) for enum values.
+	# REQUIRED
+	config = @{
+		# REQUIRED
+		exportPathPairs = @(
+			@{
+				# OPTIONAL
+				exportPathPair = @{
+					# REQUIRED
+					dstPath = $someString
+					# REQUIRED
+					srcPath = $someString
+				}
+			}
+		)
+		# OPTIONAL
+		hostId = $someString
+		# OPTIONAL
+		ignoreErrors = $someBoolean
+		# OPTIONAL
+		shareId = $someString
+		# OPTIONAL
+		excludePaths = @(
+			$someString
+		)
+		# OPTIONAL
+		recoveryPurpose = $someFilesetExportFilesJobConfigRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.FilesetExportFilesJobConfigRecoveryPurpose]) for enum values.
+		# OPTIONAL
+		shouldRecreateDirectoryStructure = $someBoolean
+		# OPTIONAL
+		postRestoreScript = $someString
+		# OPTIONAL
+		shouldRestoreOnlyAcls = $someBoolean
+	}
+	# OPTIONAL
+	deltaTypeFilter = @(
+		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
+	)
+	# OPTIONAL
+	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
 }"
             );
         }

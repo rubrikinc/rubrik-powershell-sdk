@@ -1380,3 +1380,30 @@ treated as STANDALONE.
 +mo:filter:db:table=aws_native_rds_instances
 +mo:filter:db:column=vpc_id
 +mo:filter:db:index:key=NULL
+- SAP_HANA_ENABLE_COMPRESSION - Filter SAP HANA databases by whether native backup compression is enabled.
++mo:filter:db:table=cdm_sap_hana_database
++mo:filter:db:column=info
++mo:filter:db:index:key=NULL
++reason: cdm_sap_hana_database is small per customer account
+- D365_TABLE_LOGICAL_NAME - Filter by the D365 dataverse table logical name, the Dataverse API
+name of the table. Matching is case-insensitive.
++mo:filter:db:table=saasapps_d365_power_platform_dataverse_tables
++mo:filter:db:column=logical_name
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~2.5k rows)
+- RECOVERY_PLAN_LAST_RECOVERY_OUTCOME - Filter Recovery Plans by the most recent terminal recovery outcome.
+Only blueprint-level rows are considered (parent_recovery_id IS NULL).
+Plans with no recovery have no matching failover_summary row and are
+excluded by the INNER JOIN -- NOT_EXIST is intentionally not a filterable
+value; users filtering by outcome see only plans that have had at least
+one completed recovery.
+Uses a correlated MAX(created_at) subquery to select the latest terminal
+(non-IN_PROGRESS) row per blueprint; this pattern is necessary because
+a simple WHERE outcome IN (...) would match any row, not just the latest.
+The composite index failover_summary_bp_outcome_idx on
+(blueprint_id, parent_recovery_id, outcome, created_at) added in
+migration m0278 enables an index-only scan for this subquery.
++mo:filter:db:table=failover_summary
++mo:filter:db:column=outcome
++mo:filter:db:index:key=NULL
++reason: correlated scalar subquery on failover_summary; no single index covers the full predicate

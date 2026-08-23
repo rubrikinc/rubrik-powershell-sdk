@@ -2,8 +2,8 @@
 Object counts for developer-collaboration items in a project.
 
 - workItemCount: System.Int32
-  - Number of work items. Returns null when the count is temporarily unavailable.
+  - Number of work items; absent when the count is temporarily unavailable.
 - wikiCount: System.Int32
-  - Number of wikis. Returns null when the count is temporarily unavailable.
+  - Number of wikis; absent when the count is temporarily unavailable.
 - error: System.String
-  - An operator-safe diagnostic when the count is unavailable.
+  - Operator-safe diagnostic; absent when no error occurred.

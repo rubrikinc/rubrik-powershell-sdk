@@ -42,6 +42,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SHAREPOINT_SITE")]
         SHAREPOINT_SITE,
 
+        [EnumMember(Value = "TASKS")]
+        TASKS,
+
         [EnumMember(Value = "TEAMS")]
         TEAMS
 

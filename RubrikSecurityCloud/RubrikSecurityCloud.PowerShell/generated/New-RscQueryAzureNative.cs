@@ -626,6 +626,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		nameSubstring = $someString
     /// 	}
     /// 	# OPTIONAL
+    /// 	subscriptionFilter = @{
+    /// 		# REQUIRED
+    /// 		subscriptionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	regionFilter = @{
     /// 		# REQUIRED
     /// 		regions = @(
@@ -636,13 +643,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	effectiveSlaFilter = @{
     /// 		# REQUIRED
     /// 		effectiveSlaIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
     /// 			$someString
     /// 		)
     /// 	}
@@ -1083,10 +1083,38 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		)
     /// 	}
     /// 	# OPTIONAL
+    /// 	resourceGroupFilter = @{
+    /// 		# REQUIRED
+    /// 		resourceGroupNames = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	subscriptionFilter = @{
+    /// 		# REQUIRED
+    /// 		subscriptionIds = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
     /// 	regionFilter = @{
     /// 		# REQUIRED
     /// 		regions = @(
     /// 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vmSizeFilter = @{
+    /// 		# REQUIRED
+    /// 		vmSizes = @(
+    /// 			$someString
+    /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	vnetFilter = @{
+    /// 		# REQUIRED
+    /// 		vnetNames = @(
+    /// 			$someString
     /// 		)
     /// 	}
     /// 	# OPTIONAL
@@ -1121,6 +1149,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				tagValue = $someString
     /// 			}
     /// 		)
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	exocomputeConnectedFilter = @{
+    /// 		# REQUIRED
+    /// 		isConnected = $someBoolean
     /// 	}
     /// 	# OPTIONAL
     /// 	fileIndexingFilter = @{
@@ -1263,45 +1296,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	)
     /// 	# OPTIONAL
-    /// 	isEligibleForProtection = $someBoolean
-    /// 	# OPTIONAL
-    /// 	exocomputeConnectedFilter = @{
-    /// 		# REQUIRED
-    /// 		isConnected = $someBoolean
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	resourceGroupFilter = @{
-    /// 		# REQUIRED
-    /// 		resourceGroupNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	subscriptionFilter = @{
-    /// 		# REQUIRED
-    /// 		subscriptionIds = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vmSizeFilter = @{
-    /// 		# REQUIRED
-    /// 		vmSizes = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
-    /// 	vnetFilter = @{
-    /// 		# REQUIRED
-    /// 		vnetNames = @(
-    /// 			$someString
-    /// 		)
-    /// 	}
-    /// 	# OPTIONAL
     /// 	azureNativeIsEligibleForVmProtectionFilter = @{
     /// 		# REQUIRED
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
+    /// 	# OPTIONAL
+    /// 	isEligibleForProtection = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.includeSecurityMetadata = $someBoolean
@@ -2253,6 +2253,13 @@ $query.Var.commonResourceGroupFilters = @{
 		nameSubstring = $someString
 	}
 	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	regionFilter = @{
 		# REQUIRED
 		regions = @(
@@ -2263,13 +2270,6 @@ $query.Var.commonResourceGroupFilters = @{
 	effectiveSlaFilter = @{
 		# REQUIRED
 		effectiveSlaIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
 			$someString
 		)
 	}
@@ -2659,10 +2659,38 @@ $query.Var.virtualMachineFilters = @{
 		)
 	}
 	# OPTIONAL
+	resourceGroupFilter = @{
+		# REQUIRED
+		resourceGroupNames = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	subscriptionFilter = @{
+		# REQUIRED
+		subscriptionIds = @(
+			$someString
+		)
+	}
+	# OPTIONAL
 	regionFilter = @{
 		# REQUIRED
 		regions = @(
 			$someAzureNativeRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureNativeRegion]) for enum values.
+		)
+	}
+	# OPTIONAL
+	vmSizeFilter = @{
+		# REQUIRED
+		vmSizes = @(
+			$someString
+		)
+	}
+	# OPTIONAL
+	vnetFilter = @{
+		# REQUIRED
+		vnetNames = @(
+			$someString
 		)
 	}
 	# OPTIONAL
@@ -2697,6 +2725,11 @@ $query.Var.virtualMachineFilters = @{
 				tagValue = $someString
 			}
 		)
+	}
+	# OPTIONAL
+	exocomputeConnectedFilter = @{
+		# REQUIRED
+		isConnected = $someBoolean
 	}
 	# OPTIONAL
 	fileIndexingFilter = @{
@@ -2839,45 +2872,12 @@ $query.Var.virtualMachineFilters = @{
 		}
 	)
 	# OPTIONAL
-	isEligibleForProtection = $someBoolean
-	# OPTIONAL
-	exocomputeConnectedFilter = @{
-		# REQUIRED
-		isConnected = $someBoolean
-	}
-	# OPTIONAL
-	resourceGroupFilter = @{
-		# REQUIRED
-		resourceGroupNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	subscriptionFilter = @{
-		# REQUIRED
-		subscriptionIds = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	vmSizeFilter = @{
-		# REQUIRED
-		vmSizes = @(
-			$someString
-		)
-	}
-	# OPTIONAL
-	vnetFilter = @{
-		# REQUIRED
-		vnetNames = @(
-			$someString
-		)
-	}
-	# OPTIONAL
 	azureNativeIsEligibleForVmProtectionFilter = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
+	# OPTIONAL
+	isEligibleForProtection = $someBoolean
 }
 # OPTIONAL
 $query.Var.includeSecurityMetadata = $someBoolean"

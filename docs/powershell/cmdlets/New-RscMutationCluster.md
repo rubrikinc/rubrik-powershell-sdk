@@ -116,10 +116,11 @@ Releases all the persistent Exocompute clusters for a region configuration in a 
 ### removecdm
 Removes a registered Rubrik cluster from the account.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - clusterUUID - System.String: UUID of the Rubrik cluster.
     - isForce - System.Boolean: Whether to force the removal of the Rubrik cluster.
     - expireInDays - System.Int64: Number of days after which data from Rubrik is removed.
+    - shouldDeleteRcvLocations - System.Boolean: Whether to soft-delete the cluster's Rubrik Cloud Vault (RCV) locations before removal even if some lack an active reader.
 - Returns System.Boolean.
 ### removeclusternodes
 Remove healthy nodes from a cluster.

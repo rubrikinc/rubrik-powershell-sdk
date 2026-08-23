@@ -115,11 +115,6 @@ Archive a crawl.
 
 - There is a single argument of type System.String.
 - Returns System.String.
-### assignprotection
-Assign protection to cassandra objects.
-
-- There is a single argument of type AssignProtectionInput.
-- Returns SlaAssignResult.
 ### assignvmname
 AssignVmName assigns a user-defined display name to an NCD virtual machine
 device. Names must be unique within a cluster. Duplicate names within the

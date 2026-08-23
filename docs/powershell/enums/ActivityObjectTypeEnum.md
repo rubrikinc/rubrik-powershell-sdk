@@ -243,9 +243,9 @@ Represents different types of activity objects.
 - OPENSTACK_IMAGE - Openstack Image.
 - GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
 - PRINCIPAL_APP_ROLE - App Role principal type.
-- PURE_STORAGE_ARRAY - Pure Storage array.
-- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
-- PURE_STORAGE_VOLUME - Pure Storage volume.
+- PURE_STORAGE_ARRAY - Everpure FlashArray.
+- PURE_STORAGE_PROTECTION_GROUP - Everpure protection group.
+- PURE_STORAGE_VOLUME - Everpure volume.
 - GCP_BIG_QUERY_DATASET - GCP BigQuery Dataset.
 - PRINCIPAL_CONTRACT - Contract principal type.
 - PRINCIPAL_DEVICE - Device principal type.

@@ -39,6 +39,8 @@ AWS native account.
   - List of protection features enabled for the AWS account.
 - roleChainingDetails: AwsRoleChainingAccount
   - Details of the role chaining account associated with the AWS account.
+- nativeId: System.String
+  - The 12-digit AWS account number.
 - authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
   - The authorized operations on the object.
 - applicationCloudAccountExoConfigs: ApplicationCloudAccountToExocomputeConfig

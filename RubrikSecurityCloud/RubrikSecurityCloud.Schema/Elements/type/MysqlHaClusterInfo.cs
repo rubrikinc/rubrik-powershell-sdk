@@ -25,15 +25,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeReplicaId")]
         public System.String? ActiveReplicaId { get; set; }
 
-        //      C# -> System.String? HaGroupName
-        // GraphQL -> haGroupName: String! (scalar)
-        [JsonProperty("haGroupName")]
-        public System.String? HaGroupName { get; set; }
-
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         [JsonProperty("replicas")]
-        public List<KosmosTopologyReplicaInfo>? Replicas { get; set; }
+        public List<MysqlTopologyReplicaInfo>? Replicas { get; set; }
 
 
         #endregion
@@ -46,15 +41,11 @@ namespace RubrikSecurityCloud.Types
 
     public MysqlHaClusterInfo Set(
         System.String? ActiveReplicaId = null,
-        System.String? HaGroupName = null,
-        List<KosmosTopologyReplicaInfo>? Replicas = null
+        List<MysqlTopologyReplicaInfo>? Replicas = null
     ) 
     {
         if ( ActiveReplicaId != null ) {
             this.ActiveReplicaId = ActiveReplicaId;
-        }
-        if ( HaGroupName != null ) {
-            this.HaGroupName = HaGroupName;
         }
         if ( Replicas != null ) {
             this.Replicas = Replicas;
@@ -82,17 +73,8 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "activeReplicaId\n" ;
             }
         }
-        //      C# -> System.String? HaGroupName
-        // GraphQL -> haGroupName: String! (scalar)
-        if (this.HaGroupName != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "haGroupName\n" ;
-            } else {
-                s += ind + "haGroupName\n" ;
-            }
-        }
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         if (this.Replicas != null) {
             var fspec = this.Replicas.AsFieldSpec(conf.Child("replicas"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -127,30 +109,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.ActiveReplicaId = null;
         }
-        //      C# -> System.String? HaGroupName
-        // GraphQL -> haGroupName: String! (scalar)
-        if (ec.Includes("haGroupName",true))
-        {
-            if(this.HaGroupName == null) {
-
-                this.HaGroupName = "FETCH";
-
-            } else {
-
-
-            }
-        }
-        else if (this.HaGroupName != null && ec.Excludes("haGroupName",true))
-        {
-            this.HaGroupName = null;
-        }
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         if (ec.Includes("replicas",false))
         {
             if(this.Replicas == null) {
 
-                this.Replicas = new List<KosmosTopologyReplicaInfo>();
+                this.Replicas = new List<MysqlTopologyReplicaInfo>();
                 this.Replicas.ApplyExploratoryFieldSpec(ec.NewChild("replicas"));
 
             } else {

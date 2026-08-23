@@ -19,13 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? GcpNativeRegion
-        // GraphQL -> gcpNativeRegion: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("gcpNativeRegion")]
-        public System.String? GcpNativeRegion { get; set; }
-
         //      C# -> AwsNativeRegion? AwsNativeRegion
         // GraphQL -> awsNativeRegion: AwsNativeRegion! (enum)
         [Required]
@@ -39,6 +32,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("azureNativeRegion")]
         public AzureNativeRegion? AzureNativeRegion { get; set; }
+
+        //      C# -> System.String? GcpNativeRegion
+        // GraphQL -> gcpNativeRegion: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("gcpNativeRegion")]
+        public System.String? GcpNativeRegion { get; set; }
 
 
         #endregion

@@ -67,6 +67,8 @@ Get RBS network throttle limits for a host.
 - There is a single argument of type System.String.
 - Returns GetHostRbsNetworkThrottleResponse.
 ### search
+Search a host's file or path index.
+
 - There are 2 arguments.
     - id - System.String: ID of the host to search.
     - path - System.String: The path query. Either path prefix or filename prefix.

@@ -147,7 +147,8 @@ req_ctx.
 - There is a single argument of type RestoreO365SnappableInput.
 - Returns CreateOnDemandJobReply.
 ### restoreteamsconversations
-Restore Team conversations.
+Schedules an on-demand restore job for Teams channel conversations.
+The account, user, and RSC org id are resolved from req_ctx.
 
 - There is a single argument of type RestoreO365TeamsConversationsInput.
 - Returns CreateOnDemandJobReply.

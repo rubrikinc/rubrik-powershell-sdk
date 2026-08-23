@@ -278,6 +278,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQueryPolicy -Operation Policies
     /// 
     /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.policyObjectFilter = $somePolicyObjectFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyObjectFilter]) for enum values.
     /// # OPTIONAL
     /// $query.Var.excludeHierarchyObjectList = $someBoolean
@@ -507,6 +515,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryPolicy -Operation PolicyObjectUsages
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.objectIds = @(
     /// 	$someString
@@ -1385,10 +1401,21 @@ $query.Var.tprPolicyName = $someString"
         }
 
         // Create new GraphQL Query:
-        // policies(policyObjectFilter: PolicyObjectFilter, excludeHierarchyObjectList: Boolean): ClassificationPolicyDetailConnection!
+        // policies(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     policyObjectFilter: PolicyObjectFilter = ALL
+        //     excludeHierarchyObjectList: Boolean
+        //   ): ClassificationPolicyDetailConnection!
         internal void InitQueryPolicies()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("policyObjectFilter", "PolicyObjectFilter"),
                 Tuple.Create("excludeHierarchyObjectList", "Boolean"),
             };
@@ -1396,11 +1423,19 @@ $query.Var.tprPolicyName = $someString"
                 argDefs,
                 "query",
                 "QueryPolicies",
-                "($policyObjectFilter: PolicyObjectFilter,$excludeHierarchyObjectList: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$policyObjectFilter: PolicyObjectFilter,$excludeHierarchyObjectList: Boolean)",
                 "ClassificationPolicyDetailConnection",
                 Query.Policies,
                 Query.PoliciesFieldSpec,
                 @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
 $query.Var.policyObjectFilter = $somePolicyObjectFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyObjectFilter]) for enum values.
 # OPTIONAL
 $query.Var.excludeHierarchyObjectList = $someBoolean"
@@ -1608,21 +1643,39 @@ $query.Var.policyTypes = @(
         }
 
         // Create new GraphQL Query:
-        // policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
+        // policyObjectUsages(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     objectIds: [String!]! = []
+        //   ): PolicyObjectUsageConnection!
         internal void InitQueryPolicyObjectUsages()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("objectIds", "[String!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryPolicyObjectUsages",
-                "($objectIds: [String!]!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$objectIds: [String!]!)",
                 "PolicyObjectUsageConnection",
                 Query.PolicyObjectUsages,
                 Query.PolicyObjectUsagesFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.objectIds = @(
 	$someString
 )"

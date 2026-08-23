@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("includePipelines")]
         public System.Boolean? IncludePipelines { get; set; }
 
+        //      C# -> System.String? DeveloperCollaborationSnapshotId
+        // GraphQL -> developerCollaborationSnapshotId: UUID (scalar)
+        [JsonProperty("developerCollaborationSnapshotId")]
+        public System.String? DeveloperCollaborationSnapshotId { get; set; }
+
 
         #endregion
 

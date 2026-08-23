@@ -1,11 +1,11 @@
 ### DeleteTerminatedClusterOperationJobDataReply
-Status and progress of a Rubrik cluster operation job. 
+Progress details for a Rubrik cluster operation job.
 
-- jobProgress: System.Int32
-  - Job progress percentage.
-- message: System.String
-  - Job progress detail.
 - jobStatus: CdmJobStatus
   - Job status.
+- jobProgress: System.Int32
+  - Job progress.
+- message: System.String
+  - Job progress detail.
 - jobType: CcpJobType
   - Job type.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 13
+    /// Create a new RscQuery object for any of the 14
     /// operations in the 'Snappable' API domain:
-    /// CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByList, Hierarchy, List, OnedriveSearch, Search, SearchVersionedFiles, TeamsConversationsSearch, or TeamsDriveSearch.
+    /// CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByList, Hierarchy, List, OnedriveSearch, Search, SearchVersionedFiles, TaskSearch, TeamsConversationsSearch, or TeamsDriveSearch.
     /// </summary>
     /// <description>
     /// New-RscQuerySnappable creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 13 operations
+    /// There are 14 operations
     /// in the 'Snappable' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByList, Hierarchy, List, OnedriveSearch, Search, SearchVersionedFiles, TeamsConversationsSearch, or TeamsDriveSearch.
+    /// one of: CdmHierarchySnappableNew, CdmHierarchySnappablesNew, ContactSearch, EmailSearch, EventSearch, GroupByList, Hierarchy, List, OnedriveSearch, Search, SearchVersionedFiles, TaskSearch, TeamsConversationsSearch, or TeamsDriveSearch.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -940,6 +940,76 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the TaskSearch operation
+    /// of the 'Snappable' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Snappable
+    /// # API Operation: TaskSearch
+    /// 
+    /// $query = New-RscQuerySnappable -Operation TaskSearch
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # REQUIRED
+    /// $query.Var.snappableFid = $someString
+    /// # REQUIRED
+    /// $query.Var.orgId = $someString
+    /// # OPTIONAL
+    /// $query.Var.tasksSearchFilter = @{
+    /// 	# OPTIONAL
+    /// 	searchKeywordFilter = @{
+    /// 		# OPTIONAL
+    /// 		searchKeyword = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	searchObjectFilter = @{
+    /// 		# OPTIONAL
+    /// 		searchObjectType = $someTasksSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TasksSearchObjectType]) for enum values.
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	dueDate = $someDateTime
+    /// 	# OPTIONAL
+    /// 	lambdaFilters = @{
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePaths = $someBoolean
+    /// 		# OPTIONAL
+    /// 		enableAbsolutePathCachePreload = $someBoolean
+    /// 		# OPTIONAL
+    /// 		parentFolderIdBatch = @(
+    /// 			$someString
+    /// 		)
+    /// 		# OPTIONAL
+    /// 		searchRecurseFolderId = $someString
+    /// 		# OPTIONAL
+    /// 		includeAncestors = $someBoolean
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	skipRifItems = $someBoolean
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: O365ExchangeObjectConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the TeamsConversationsSearch operation
     /// of the 'Snappable' API domain.
     /// <code>
@@ -956,6 +1026,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -1166,6 +1240,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "OnedriveSearch",
                 "Search",
                 "SearchVersionedFiles",
+                "TaskSearch",
                 "TeamsConversationsSearch",
                 "TeamsDriveSearch",
                 IgnoreCase = true)]
@@ -1215,6 +1290,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "SearchVersionedFiles":
                         this.ProcessRecord_SearchVersionedFiles();
+                        break;
+                    case "TaskSearch":
+                        this.ProcessRecord_TaskSearch();
                         break;
                     case "TeamsConversationsSearch":
                         this.ProcessRecord_TeamsConversationsSearch();
@@ -1329,6 +1407,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -SearchVersionedFiles";
             // Create new graphql operation searchSnappableVersionedFiles
             InitQuerySearchSnappableVersionedFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // snappableTaskSearch.
+        internal void ProcessRecord_TaskSearch()
+        {
+            this._logger.name += " -TaskSearch";
+            // Create new graphql operation snappableTaskSearch
+            InitQuerySnappableTaskSearch();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2246,9 +2333,87 @@ $query.Var.usePrefixSearch = $someBoolean"
         }
 
         // Create new GraphQL Query:
+        // snappableTaskSearch(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     snappableFid: UUID!
+        //     orgId: UUID!
+        //     tasksSearchFilter: TasksSearchFilter
+        //   ): O365ExchangeObjectConnection!
+        internal void InitQuerySnappableTaskSearch()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("snappableFid", "UUID!"),
+                Tuple.Create("orgId", "UUID!"),
+                Tuple.Create("tasksSearchFilter", "TasksSearchFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QuerySnappableTaskSearch",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$tasksSearchFilter: TasksSearchFilter)",
+                "O365ExchangeObjectConnection",
+                Query.SnappableTaskSearch,
+                Query.SnappableTaskSearchFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
+$query.Var.snappableFid = $someString
+# REQUIRED
+$query.Var.orgId = $someString
+# OPTIONAL
+$query.Var.tasksSearchFilter = @{
+	# OPTIONAL
+	searchKeywordFilter = @{
+		# OPTIONAL
+		searchKeyword = $someString
+	}
+	# OPTIONAL
+	searchObjectFilter = @{
+		# OPTIONAL
+		searchObjectType = $someTasksSearchObjectType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TasksSearchObjectType]) for enum values.
+	}
+	# OPTIONAL
+	dueDate = $someDateTime
+	# OPTIONAL
+	lambdaFilters = @{
+		# OPTIONAL
+		enableAbsolutePaths = $someBoolean
+		# OPTIONAL
+		enableAbsolutePathCachePreload = $someBoolean
+		# OPTIONAL
+		parentFolderIdBatch = @(
+			$someString
+		)
+		# OPTIONAL
+		searchRecurseFolderId = $someString
+		# OPTIONAL
+		includeAncestors = $someBoolean
+	}
+	# OPTIONAL
+	skipRifItems = $someBoolean
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // snappableTeamsConversationsSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     orgId: UUID!
         //     snapshotFidOpt: UUID
@@ -2260,6 +2425,8 @@ $query.Var.usePrefixSearch = $someBoolean"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("snapshotFidOpt", "UUID"),
@@ -2270,7 +2437,7 @@ $query.Var.usePrefixSearch = $someBoolean"
                 argDefs,
                 "query",
                 "QuerySnappableTeamsConversationsSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$snapshotFidOpt: UUID,$teamConvChannels: [O365TeamConvChannelInput!]!,$teamsConversationsSearchFilter: TeamsConversationsSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$snapshotFidOpt: UUID,$teamConvChannels: [O365TeamConvChannelInput!]!,$teamsConversationsSearchFilter: TeamsConversationsSearchFilter)",
                 "O365TeamsConversationsConnection",
                 Query.SnappableTeamsConversationsSearch,
                 Query.SnappableTeamsConversationsSearchFieldSpec,
@@ -2278,6 +2445,10 @@ $query.Var.usePrefixSearch = $someBoolean"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED

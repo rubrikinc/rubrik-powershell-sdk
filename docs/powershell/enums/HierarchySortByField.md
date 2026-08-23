@@ -440,6 +440,27 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 +mo:sort:db:index:seq=1
 +mo:sort:db:index:type=BTREE
 +mo:sort:db:index:unique=false
+- RECOVERY_PLAN_STATUS - Sort Recovery Plans by blueprint status (CONFIGURED, PARTIAL, etc.).
++mo:sort:db:table=appflows_blueprint
++mo:sort:db:column=status
++mo:sort:db:index:key=status_idx
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- RECOVERY_PLAN_LAST_RECOVERY_OUTCOME - Sort Recovery Plans by the most recent terminal recovery outcome from
+failover_summary. Plans with no recovery sort to the end (NULL last).
+Uses a correlated MAX(created_at) subquery on failover_summary because
+the latest-terminal-row-per-blueprint selection cannot be expressed as a
+simple INNER JOIN + ORDER BY without a window function (unsupported in
+MySQL 5.7). The composite index failover_summary_bp_outcome_idx on
+(blueprint_id, parent_recovery_id, outcome, created_at) added in
+migration m0278 enables an index-only scan for this subquery.
++mo:sort:db:table=failover_summary
++mo:sort:db:column=outcome
++mo:sort:db:index:key=failover_summary_bp_outcome_idx
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
 - EC2_INSTANCE_VPC_ID - Sort EC2 instances by VPC ID.
 +mo:sort:db:table=aws_native_ec2_instances
 +mo:sort:db:column=vpc_id

@@ -1,5 +1,5 @@
 ### GenerateK8sManifestInput
-
+Input to generate the manifest for onboarding a Kubernetes cluster.
 
 - config: K8sManifestConfigInput
   - Required. The Kubernetes cluster manifest configuration.

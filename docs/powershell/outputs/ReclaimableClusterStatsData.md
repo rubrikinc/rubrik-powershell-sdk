@@ -22,3 +22,5 @@ downloaded_snapshots_storage, in bytes).
 - unprotectedObjectsStorage: System.Int64
   - Storage taken by unprotected objects excluding downloaded snapshots
 (in bytes).
+- version: System.String
+  - Rubrik cluster software version (e.g. "9.5.2-1234").

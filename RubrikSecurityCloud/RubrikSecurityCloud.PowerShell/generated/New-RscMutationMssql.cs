@@ -92,8 +92,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
     /// 	hosts = @(
     /// 		@{
     /// 			# OPTIONAL
@@ -163,6 +161,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			isOracleHost = $someBoolean
     /// 			# OPTIONAL
+    /// 			id = $someString
+    /// 			# OPTIONAL
     /// 			oracleSepsSettings = @{
     /// 				# OPTIONAL
     /// 				isOracleSepsWalletEnabled = $someBoolean
@@ -192,11 +192,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			shouldOracleSddThroughRba = $someBoolean
     /// 			# OPTIONAL
+    /// 			cloudInstanceId = $someString
+    /// 			# OPTIONAL
     /// 			orgNetworkId = $someString
     /// 			# OPTIONAL
     /// 			shouldMssqlSddThroughRba = $someBoolean
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1952,8 +1956,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
 	hosts = @(
 		@{
 			# OPTIONAL
@@ -2023,6 +2025,8 @@ $query.Var.input = @{
 			# OPTIONAL
 			isOracleHost = $someBoolean
 			# OPTIONAL
+			id = $someString
+			# OPTIONAL
 			oracleSepsSettings = @{
 				# OPTIONAL
 				isOracleSepsWalletEnabled = $someBoolean
@@ -2052,11 +2056,15 @@ $query.Var.input = @{
 			# OPTIONAL
 			shouldOracleSddThroughRba = $someBoolean
 			# OPTIONAL
+			cloudInstanceId = $someString
+			# OPTIONAL
 			orgNetworkId = $someString
 			# OPTIONAL
 			shouldMssqlSddThroughRba = $someBoolean
 		}
 	)
+	# REQUIRED
+	clusterUuid = $someString
 }"
             );
         }

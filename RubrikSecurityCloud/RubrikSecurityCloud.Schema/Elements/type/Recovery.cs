@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> RecoveryCommitStatus? CommitStatus
+        // GraphQL -> commitStatus: RecoveryCommitStatus! (enum)
+        [JsonProperty("commitStatus")]
+        public RecoveryCommitStatus? CommitStatus { get; set; }
+
         //      C# -> DataTransferType? DataTransferType
         // GraphQL -> dataTransferType: DataTransferType! (enum)
         [JsonProperty("dataTransferType")]
@@ -125,6 +130,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public Recovery Set(
+        RecoveryCommitStatus? CommitStatus = null,
         DataTransferType? DataTransferType = null,
         RecoveryFailureAction? RecoveryFailureAction = null,
         RecoveryOutcome? RecoveryOutcome = null,
@@ -146,6 +152,9 @@ namespace RubrikSecurityCloud.Types
         StepsOneof? Steps = null
     ) 
     {
+        if ( CommitStatus != null ) {
+            this.CommitStatus = CommitStatus;
+        }
         if ( DataTransferType != null ) {
             this.DataTransferType = DataTransferType;
         }
@@ -217,6 +226,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> RecoveryCommitStatus? CommitStatus
+        // GraphQL -> commitStatus: RecoveryCommitStatus! (enum)
+        if (this.CommitStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "commitStatus\n" ;
+            } else {
+                s += ind + "commitStatus\n" ;
+            }
+        }
         //      C# -> DataTransferType? DataTransferType
         // GraphQL -> dataTransferType: DataTransferType! (enum)
         if (this.DataTransferType != null) {
@@ -401,6 +419,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> RecoveryCommitStatus? CommitStatus
+        // GraphQL -> commitStatus: RecoveryCommitStatus! (enum)
+        if (ec.Includes("commitStatus",true))
+        {
+            if(this.CommitStatus == null) {
+
+                this.CommitStatus = new RecoveryCommitStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.CommitStatus != null && ec.Excludes("commitStatus",true))
+        {
+            this.CommitStatus = null;
+        }
         //      C# -> DataTransferType? DataTransferType
         // GraphQL -> dataTransferType: DataTransferType! (enum)
         if (ec.Includes("dataTransferType",true))

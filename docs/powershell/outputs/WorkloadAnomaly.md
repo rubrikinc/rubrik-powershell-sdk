@@ -54,6 +54,15 @@ to have anomalous activity.
   - The object type of the workload.
 - severity: ActivitySeverityEnum
   - Severity of the anomaly event.
+- impactedSensitivityInfo: SensitivityInfo
+  - Sensitive-data information for this anomaly, covering the files it impacted.
+By impacted, it refers to all modified/deleted files.
+- anomalyCategory: WorkloadAnomalyCategory
+  - The category this anomaly is grouped under for filtering.
+- isInfrastructureAlertsEnabled: System.Boolean
+  - Indicates whether this object is enrolled in infrastructure deletion
+alerting. Only populated for supported object types (e.g., AWS S3 buckets)
+when LIC_ENABLE_AWS_CRITICAL_RESOURCE_PROTECTION is enabled.
 - cluster: Cluster
   - The Rubrik cluster associated with the workload.
 - previousPolicyObj: PolicyObj

@@ -30,6 +30,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("haGroupName")]
         public System.String? HaGroupName { get; set; }
 
+        //      C# -> PostgresBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: PostgresBackupNodePreference (type)
+        [JsonProperty("backupNodePreference")]
+        public PostgresBackupNodePreference? BackupNodePreference { get; set; }
+
         //      C# -> List<PostgresTopologyReplicaInfo>? Replicas
         // GraphQL -> replicas: [PostgresTopologyReplicaInfo!]! (type)
         [JsonProperty("replicas")]
@@ -47,6 +52,7 @@ namespace RubrikSecurityCloud.Types
     public PostgresHaClusterInfo Set(
         System.String? ActiveReplicaId = null,
         System.String? HaGroupName = null,
+        PostgresBackupNodePreference? BackupNodePreference = null,
         List<PostgresTopologyReplicaInfo>? Replicas = null
     ) 
     {
@@ -55,6 +61,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HaGroupName != null ) {
             this.HaGroupName = HaGroupName;
+        }
+        if ( BackupNodePreference != null ) {
+            this.BackupNodePreference = BackupNodePreference;
         }
         if ( Replicas != null ) {
             this.Replicas = Replicas;
@@ -89,6 +98,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "haGroupName\n" ;
             } else {
                 s += ind + "haGroupName\n" ;
+            }
+        }
+        //      C# -> PostgresBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: PostgresBackupNodePreference (type)
+        if (this.BackupNodePreference != null) {
+            var fspec = this.BackupNodePreference.AsFieldSpec(conf.Child("backupNodePreference"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupNodePreference" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<PostgresTopologyReplicaInfo>? Replicas
@@ -143,6 +164,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.HaGroupName != null && ec.Excludes("haGroupName",true))
         {
             this.HaGroupName = null;
+        }
+        //      C# -> PostgresBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: PostgresBackupNodePreference (type)
+        if (ec.Includes("backupNodePreference",false))
+        {
+            if(this.BackupNodePreference == null) {
+
+                this.BackupNodePreference = new PostgresBackupNodePreference();
+                this.BackupNodePreference.ApplyExploratoryFieldSpec(ec.NewChild("backupNodePreference"));
+
+            } else {
+
+                this.BackupNodePreference.ApplyExploratoryFieldSpec(ec.NewChild("backupNodePreference"));
+
+            }
+        }
+        else if (this.BackupNodePreference != null && ec.Excludes("backupNodePreference",false))
+        {
+            this.BackupNodePreference = null;
         }
         //      C# -> List<PostgresTopologyReplicaInfo>? Replicas
         // GraphQL -> replicas: [PostgresTopologyReplicaInfo!]! (type)

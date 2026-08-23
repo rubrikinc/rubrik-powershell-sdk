@@ -80,5 +80,7 @@ Edit an existing global certificate.
 - There is a single argument of type UpdateGlobalCertificateInput.
 - Returns UpdateGlobalCertificateReply.
 ### updatehost
+Update the certificate for a single host.
+
 - There is a single argument of type UpdateCertificateHostInput.
 - Returns UpdateCertificateHostReply.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AzureOnboardingIneligibilityReason? IneligibilityReason
+        // GraphQL -> ineligibilityReason: AzureOnboardingIneligibilityReason! (enum)
+        [JsonProperty("ineligibilityReason")]
+        public AzureOnboardingIneligibilityReason? IneligibilityReason { get; set; }
+
         //      C# -> System.Boolean? IsEligible
         // GraphQL -> isEligible: Boolean! (scalar)
         [JsonProperty("isEligible")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public AzureManagementGroupEntity Set(
+        AzureOnboardingIneligibilityReason? IneligibilityReason = null,
         System.Boolean? IsEligible = null,
         EntityType? Entity = null
     ) 
     {
+        if ( IneligibilityReason != null ) {
+            this.IneligibilityReason = IneligibilityReason;
+        }
         if ( IsEligible != null ) {
             this.IsEligible = IsEligible;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> AzureOnboardingIneligibilityReason? IneligibilityReason
+        // GraphQL -> ineligibilityReason: AzureOnboardingIneligibilityReason! (enum)
+        if (this.IneligibilityReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ineligibilityReason\n" ;
+            } else {
+                s += ind + "ineligibilityReason\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsEligible
         // GraphQL -> isEligible: Boolean! (scalar)
         if (this.IsEligible != null) {
@@ -92,6 +110,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> AzureOnboardingIneligibilityReason? IneligibilityReason
+        // GraphQL -> ineligibilityReason: AzureOnboardingIneligibilityReason! (enum)
+        if (ec.Includes("ineligibilityReason",true))
+        {
+            if(this.IneligibilityReason == null) {
+
+                this.IneligibilityReason = new AzureOnboardingIneligibilityReason();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IneligibilityReason != null && ec.Excludes("ineligibilityReason",true))
+        {
+            this.IneligibilityReason = null;
+        }
         //      C# -> System.Boolean? IsEligible
         // GraphQL -> isEligible: Boolean! (scalar)
         if (ec.Includes("isEligible",true))

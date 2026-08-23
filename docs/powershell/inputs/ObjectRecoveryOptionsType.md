@@ -15,3 +15,5 @@ Configuration to retrieve Azure AD object recovery.
   - Specifies the recovery option for device configuration policies.
 - governanceRecoveryOption: GovernanceRecoveryOptionType
   - Specifies the governance-aware classifier configuration for Member, Owner, and RoleAssignment edge restore.
+- licenseRecoveryOption: LicenseRecoveryOptionInput
+  - Specifies the license recovery option for users and groups.

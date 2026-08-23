@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IOC_HASH")]
         IOC_HASH,
 
+        [EnumMember(Value = "IOC_REGISTRY")]
+        IOC_REGISTRY,
+
         [EnumMember(Value = "IOC_UNSPECIFIED")]
         IOC_UNSPECIFIED,
 

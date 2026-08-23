@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> List<System.String>? HostIds
-        // GraphQL -> hostIds: [String!] (scalar)
-        [JsonProperty("hostIds")]
-        public List<System.String>? HostIds { get; set; }
-
         //      C# -> HostRbsNetworkLimitsInput? NetworkThrottleLimits
         // GraphQL -> networkThrottleLimits: HostRbsNetworkLimitsInput (input)
         [JsonProperty("networkThrottleLimits")]
         public HostRbsNetworkLimitsInput? NetworkThrottleLimits { get; set; }
+
+        //      C# -> List<System.String>? HostIds
+        // GraphQL -> hostIds: [String!] (scalar)
+        [JsonProperty("hostIds")]
+        public List<System.String>? HostIds { get; set; }
 
 
         #endregion

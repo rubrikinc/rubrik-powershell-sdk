@@ -29,6 +29,13 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("policyIds")]
         public List<System.String>? PolicyIds { get; set; }
 
+        //      C# -> List<HierarchyObjectTypeEnum>? ObjectTypes
+        // GraphQL -> objectTypes: [HierarchyObjectTypeEnum!]! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("objectTypes")]
+        public List<HierarchyObjectTypeEnum>? ObjectTypes { get; set; }
+
         //      C# -> List<System.String>? ClusterIds
         // GraphQL -> clusterIds: [String!] (scalar)
         [JsonProperty("clusterIds")]
@@ -43,13 +50,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subscriptionIds: [String!] (scalar)
         [JsonProperty("subscriptionIds")]
         public List<System.String>? SubscriptionIds { get; set; }
-
-        //      C# -> List<HierarchyObjectTypeEnum>? ObjectTypes
-        // GraphQL -> objectTypes: [HierarchyObjectTypeEnum!]! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("objectTypes")]
-        public List<HierarchyObjectTypeEnum>? ObjectTypes { get; set; }
 
 
         #endregion

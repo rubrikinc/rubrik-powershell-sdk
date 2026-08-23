@@ -133,3 +133,7 @@ feature.
 - RECOVER_TO_S3 - Represents the least-privilege S3 write-set required to recover an RDS
 or Aurora PostgreSQL snapshot to S3. Applicable to the RDS protection
 feature.
+- RECOVERY_RDS_CONNECTIVITY - Represents the set of exocompute consumer-side permissions required to
+establish cross-account RDS recovery connectivity (VPC Lattice resource
+endpoint plus RAM share acceptance). Applicable only to the AWS
+Exocompute feature.

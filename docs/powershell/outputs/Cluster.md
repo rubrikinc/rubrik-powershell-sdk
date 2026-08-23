@@ -105,8 +105,6 @@ A Rubrik CDM Cluster.
   - Lambda feature history.
 - metadataPullScheduler: JobsReply
   - Metadata pull scheduler.
-- noSqlWorkloadCount: System.Int32
-  - Total number of protected NoSQL workloads.
 - licensedProducts: list of Products
   - The licensed products that belong to this cluster.
 - version: System.String

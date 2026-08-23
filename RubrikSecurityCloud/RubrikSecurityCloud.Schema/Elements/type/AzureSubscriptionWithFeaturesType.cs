@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nativeId")]
         public System.String? NativeId { get; set; }
 
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        [JsonProperty("app")]
+        public AzureCloudAccountTenantApp? App { get; set; }
+
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
         [JsonProperty("featureDetails")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.String? Name = null,
         System.String? NativeId = null,
+        AzureCloudAccountTenantApp? App = null,
         List<AzureCloudAccountFeatureDetail>? FeatureDetails = null,
         AzureManagementGroup? ManagementGroup = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NativeId != null ) {
             this.NativeId = NativeId;
+        }
+        if ( App != null ) {
+            this.App = App;
         }
         if ( FeatureDetails != null ) {
             this.FeatureDetails = FeatureDetails;
@@ -152,6 +161,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "nativeId\n" ;
             } else {
                 s += ind + "nativeId\n" ;
+            }
+        }
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        if (this.App != null) {
+            var fspec = this.App.AsFieldSpec(conf.Child("app"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "app" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
@@ -269,6 +290,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NativeId != null && ec.Excludes("nativeId",true))
         {
             this.NativeId = null;
+        }
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        if (ec.Includes("app",false))
+        {
+            if(this.App == null) {
+
+                this.App = new AzureCloudAccountTenantApp();
+                this.App.ApplyExploratoryFieldSpec(ec.NewChild("app"));
+
+            } else {
+
+                this.App.ApplyExploratoryFieldSpec(ec.NewChild("app"));
+
+            }
+        }
+        else if (this.App != null && ec.Excludes("app",false))
+        {
+            this.App = null;
         }
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)

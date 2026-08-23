@@ -285,6 +285,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SECURITY_IDP_DOMAIN")]
         SECURITY_IDP_DOMAIN,
 
+        [EnumMember(Value = "SECURITY_IDP_HAS_ENABLED_USER_WITH_LABEL")]
+        SECURITY_IDP_HAS_ENABLED_USER_WITH_LABEL,
+
         [EnumMember(Value = "SECURITY_IDP_HAS_GROUP_WITH_LABEL")]
         SECURITY_IDP_HAS_GROUP_WITH_LABEL,
 
@@ -326,6 +329,18 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SECURITY_IDP_WEAK_PASSWORD_POLICY")]
         SECURITY_IDP_WEAK_PASSWORD_POLICY,
+
+        [EnumMember(Value = "SECURITY_SAAS_ACTIVITY_ACTOR")]
+        SECURITY_SAAS_ACTIVITY_ACTOR,
+
+        [EnumMember(Value = "SECURITY_SAAS_ACTIVITY_ACTOR_TYPE")]
+        SECURITY_SAAS_ACTIVITY_ACTOR_TYPE,
+
+        [EnumMember(Value = "SECURITY_SAAS_ACTIVITY_ORG")]
+        SECURITY_SAAS_ACTIVITY_ORG,
+
+        [EnumMember(Value = "SECURITY_SAAS_ACTIVITY_TYPE")]
+        SECURITY_SAAS_ACTIVITY_TYPE,
 
         [EnumMember(Value = "SECURITY_SIGNIN_ANOMALY_PER_CAP_SPIKE")]
         SECURITY_SIGNIN_ANOMALY_PER_CAP_SPIKE,

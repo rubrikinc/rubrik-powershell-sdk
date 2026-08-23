@@ -4,7 +4,7 @@ Input for Fileset recover files.
 - snapshotFid: System.String
   - Corresponds to snapshot forever UUID in Rubrik tables.
 - osType: GuestOsType
-  - OS Type of the Fileset Host.
+  - OS type of the fileset host.
 - shareType: ShareTypeEnum
   - Share type of fileset.
 - restorePathPairList: list of OldRestorePathPairInputs

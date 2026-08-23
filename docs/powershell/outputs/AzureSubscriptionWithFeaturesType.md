@@ -15,3 +15,7 @@ Azure subscription with features.
   - Feature details for the cloud account.
 - managementGroup: AzureManagementGroup
   - Management group of the Azure subscription.
+- app: AzureCloudAccountTenantApp
+  - The Azure application backing this subscription, together with the
+authentication method it is bound to. Unset for a discovered subscription
+that is not yet onboarded.

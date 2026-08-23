@@ -377,6 +377,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.o365AppFilters = @(
     /// 	@{
@@ -3054,6 +3058,8 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
         // listO365Apps(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     o365AppFilters: [AppFilter!]!
         //     o365AppSortByParam: AppSortByParam
         //   ): O365AppConnection!
@@ -3062,6 +3068,8 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("o365AppFilters", "[AppFilter!]!"),
                 Tuple.Create("o365AppSortByParam", "AppSortByParam"),
             };
@@ -3069,7 +3077,7 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
                 argDefs,
                 "query",
                 "QueryListO365Apps",
-                "($first: Int,$after: String,$o365AppFilters: [AppFilter!]!,$o365AppSortByParam: AppSortByParam)",
+                "($first: Int,$after: String,$last: Int,$before: String,$o365AppFilters: [AppFilter!]!,$o365AppSortByParam: AppSortByParam)",
                 "O365AppConnection",
                 Query.ListO365Apps,
                 Query.ListO365AppsFieldSpec,
@@ -3077,6 +3085,10 @@ $query.Var.snappableType = $someSnappableType # Call [Enum]::GetValues([RubrikSe
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.o365AppFilters = @(
 	@{

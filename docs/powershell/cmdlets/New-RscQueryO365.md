@@ -55,11 +55,13 @@ Retrieve o365 licence details.
 ### listapps
 Lists the O365 apps.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - o365AppFilters - list of AppFilters
-    - o365AppSortByParam - AppSortByParam
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - o365AppFilters - list of AppFilters: Filters for the O365 app listing.
+    - o365AppSortByParam - AppSortByParam: Sort parameter for the O365 app listing.
 - Returns O365AppConnection.
 ### mailbox
 Details for the Exchange mailbox corresponding to the snappable ID.

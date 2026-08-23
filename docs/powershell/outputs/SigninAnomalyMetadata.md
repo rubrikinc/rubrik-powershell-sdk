@@ -23,3 +23,10 @@ changes behind the anomaly.
   - The time of the most recent observation of the sign-in anomaly.
 - creationTime: DateTime
   - The time the target was created. Empty when this information is unavailable.
+- domainFid: System.String
+  - Rubrik's identifier for the domain or tenant the target belongs to. This is
+the value the remediation APIs expect as the resource ID when reverting the
+conditional access policy changes behind this sign-in anomaly; the
+violation's own resource ID is the conditional access policy ID and does
+not resolve there. Distinct from the domain unique ID, which is the
+identity provider's own identifier for the same domain or tenant.

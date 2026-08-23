@@ -35,3 +35,6 @@ RDS Export defaults from AWS.
   - List of RDS DB Instance engine versions.
 - metadata: list of KeyValuePairs
   - Metadata for the RDS Instance as key-value pairs.
+- availableDbEngineVersions: list of DbEngineVersionInfos
+  - Lists the engine versions an export may target, each flagged for
+extended support and major-version change.

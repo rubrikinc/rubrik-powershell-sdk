@@ -50,6 +50,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostNames")]
         public List<System.String>? HostNames { get; set; }
 
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        [JsonProperty("location")]
+        public System.String? Location { get; set; }
+
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String! (scalar)
+        [JsonProperty("locationId")]
+        public System.String? LocationId { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -86,6 +96,8 @@ namespace RubrikSecurityCloud.Types
         List<System.String>? CounterpartIds = null,
         List<System.String>? HostIds = null,
         List<System.String>? HostNames = null,
+        System.String? Location = null,
+        System.String? LocationId = null,
         System.String? Name = null,
         System.String? PrimaryClusterUuid = null,
         System.String? StatusMessage = null,
@@ -109,6 +121,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HostNames != null ) {
             this.HostNames = HostNames;
+        }
+        if ( Location != null ) {
+            this.Location = Location;
+        }
+        if ( LocationId != null ) {
+            this.LocationId = LocationId;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -188,6 +206,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "hostNames\n" ;
             } else {
                 s += ind + "hostNames\n" ;
+            }
+        }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        if (this.Location != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "location\n" ;
+            } else {
+                s += ind + "location\n" ;
+            }
+        }
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String! (scalar)
+        if (this.LocationId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "locationId\n" ;
+            } else {
+                s += ind + "locationId\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -334,6 +370,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.HostNames != null && ec.Excludes("hostNames",true))
         {
             this.HostNames = null;
+        }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        if (ec.Includes("location",true))
+        {
+            if(this.Location == null) {
+
+                this.Location = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Location != null && ec.Excludes("location",true))
+        {
+            this.Location = null;
+        }
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String! (scalar)
+        if (ec.Includes("locationId",true))
+        {
+            if(this.LocationId == null) {
+
+                this.LocationId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.LocationId != null && ec.Excludes("locationId",true))
+        {
+            this.LocationId = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

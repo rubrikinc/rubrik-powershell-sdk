@@ -12,3 +12,6 @@ Recovery Status.
 - COMPLETED - Recovery status is Completed, further actions can be taken over the
 recovery.
 - DONE - Recovery status is Done, no further actions can be taken over the recovery.
+- AWAITING_DECISION - Recovery has reached the commit gate and is awaiting a commit/rollback
+decision.
+- COMMITTING - A commit is in progress.

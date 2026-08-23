@@ -170,17 +170,17 @@ Returns groupBy for SonarReport.
 Returns groupBy results for SonarContentReport.
 
 - There are 11 arguments.
-    - groupBy - DiscoveryContentReportGroupBy
-    - sortBy - DiscoveryContentReportSortBy
-    - sortOrder - SortOrder: Sorts the order of results.
-    - filters - SonarContentReportFilter
-    - day - System.String: Date in the format (YYYY-MM-DD).
-    - timezone - System.String: The timezone in which to display timestamps.
-    - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - groupBy - DiscoveryContentReportGroupBy: 
+    - sortBy - DiscoveryContentReportSortBy: 
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filters - SonarContentReportFilter: 
+    - day - System.String: Date in the format (YYYY-MM-DD).
+    - timezone - System.String: The timezone in which to display timestamps.
+    - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
 - Returns SonarContentReportConnection.
 ### sonarrow
 Endpoints for DC Reports

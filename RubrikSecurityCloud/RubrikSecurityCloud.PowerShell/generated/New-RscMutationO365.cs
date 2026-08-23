@@ -369,9 +369,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	appClientId = $someString
     /// 	# REQUIRED
-    /// 	stateToken = $someString
-    /// 	# REQUIRED
     /// 	tenantId = $someString
+    /// 	# REQUIRED
+    /// 	stateToken = $someString
     /// }
     /// 
     /// # Execute the query
@@ -402,9 +402,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	orgId = $someString
-    /// 	# REQUIRED
     /// 	appType = $someString
+    /// 	# REQUIRED
+    /// 	orgId = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2964,9 +2964,9 @@ $query.Var.input = @{
 	# REQUIRED
 	appClientId = $someString
 	# REQUIRED
-	stateToken = $someString
-	# REQUIRED
 	tenantId = $someString
+	# REQUIRED
+	stateToken = $someString
 }"
             );
         }
@@ -2989,9 +2989,9 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	orgId = $someString
-	# REQUIRED
 	appType = $someString
+	# REQUIRED
+	orgId = $someString
 }"
             );
         }

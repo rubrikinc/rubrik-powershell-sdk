@@ -191,6 +191,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snappableId")]
         public System.String? SnappableId { get; set; }
 
+        //      C# -> System.Int64? UsedFsSize
+        // GraphQL -> usedFsSize: Long (scalar)
+        [JsonProperty("usedFsSize")]
+        public System.Int64? UsedFsSize { get; set; }
+
         //      C# -> ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata
         // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
         [JsonProperty("activeDirectoryAppMetadata")]
@@ -306,10 +311,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pingFederateAppMetadata")]
         public PingFederateAppMetadata? PingFederateAppMetadata { get; set; }
 
-        //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
-        // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
+        //      C# -> PostgresDbClusterAppMetadata? PostgresDbClusterAppMetadata
+        // GraphQL -> postgresDbClusterAppMetadata: PostgresDbClusterAppMetadata (type)
         [JsonProperty("postgresDbClusterAppMetadata")]
-        public KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata { get; set; }
+        public PostgresDbClusterAppMetadata? PostgresDbClusterAppMetadata { get; set; }
 
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
@@ -385,6 +390,7 @@ namespace RubrikSecurityCloud.Types
         System.String? ParentSnapshotId = null,
         System.String? ResourceSpec = null,
         System.String? SnappableId = null,
+        System.Int64? UsedFsSize = null,
         ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata = null,
         AggregateSnapshotLocationDetail? AggregateSnapshotLocationDetail = null,
         List<DataLocation>? ArchivalLocations = null,
@@ -408,7 +414,7 @@ namespace RubrikSecurityCloud.Types
         MysqldbInstanceAppMetadata? MysqldbInstanceAppMetadataV2 = null,
         PendingSnapshotDeletion? PendingSnapshotDeletion = null,
         PingFederateAppMetadata? PingFederateAppMetadata = null,
-        KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata = null,
+        PostgresDbClusterAppMetadata? PostgresDbClusterAppMetadata = null,
         List<DataLocation>? ReplicationLocations = null,
         SapHanaAppMetadata? SapHanaAppMetadata = null,
         CdmSnapshotRetentionInfo? SnapshotRetentionInfo = null,
@@ -518,6 +524,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SnappableId != null ) {
             this.SnappableId = SnappableId;
+        }
+        if ( UsedFsSize != null ) {
+            this.UsedFsSize = UsedFsSize;
         }
         if ( ActiveDirectoryAppMetadata != null ) {
             this.ActiveDirectoryAppMetadata = ActiveDirectoryAppMetadata;
@@ -941,6 +950,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "snappableId\n" ;
             }
         }
+        //      C# -> System.Int64? UsedFsSize
+        // GraphQL -> usedFsSize: Long (scalar)
+        if (this.UsedFsSize != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "usedFsSize\n" ;
+            } else {
+                s += ind + "usedFsSize\n" ;
+            }
+        }
         //      C# -> ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata
         // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
         if (this.ActiveDirectoryAppMetadata != null) {
@@ -1217,8 +1235,8 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
-        //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
-        // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
+        //      C# -> PostgresDbClusterAppMetadata? PostgresDbClusterAppMetadata
+        // GraphQL -> postgresDbClusterAppMetadata: PostgresDbClusterAppMetadata (type)
         if (this.PostgresDbClusterAppMetadata != null) {
             var fspec = this.PostgresDbClusterAppMetadata.AsFieldSpec(conf.Child("postgresDbClusterAppMetadata"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -1907,6 +1925,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.SnappableId = null;
         }
+        //      C# -> System.Int64? UsedFsSize
+        // GraphQL -> usedFsSize: Long (scalar)
+        if (ec.Includes("usedFsSize",true))
+        {
+            if(this.UsedFsSize == null) {
+
+                this.UsedFsSize = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.UsedFsSize != null && ec.Excludes("usedFsSize",true))
+        {
+            this.UsedFsSize = null;
+        }
         //      C# -> ActiveDirectoryAppMetadata? ActiveDirectoryAppMetadata
         // GraphQL -> activeDirectoryAppMetadata: ActiveDirectoryAppMetadata (type)
         if (ec.Includes("activeDirectoryAppMetadata",false))
@@ -2344,13 +2379,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.PingFederateAppMetadata = null;
         }
-        //      C# -> KosmosWorkloadAppMetadata? PostgresDbClusterAppMetadata
-        // GraphQL -> postgresDbClusterAppMetadata: KosmosWorkloadAppMetadata (type)
+        //      C# -> PostgresDbClusterAppMetadata? PostgresDbClusterAppMetadata
+        // GraphQL -> postgresDbClusterAppMetadata: PostgresDbClusterAppMetadata (type)
         if (ec.Includes("postgresDbClusterAppMetadata",false))
         {
             if(this.PostgresDbClusterAppMetadata == null) {
 
-                this.PostgresDbClusterAppMetadata = new KosmosWorkloadAppMetadata();
+                this.PostgresDbClusterAppMetadata = new PostgresDbClusterAppMetadata();
                 this.PostgresDbClusterAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("postgresDbClusterAppMetadata"));
 
             } else {

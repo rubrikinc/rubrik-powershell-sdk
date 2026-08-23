@@ -18,3 +18,6 @@ profile.
 Absent when no filters have been saved.
 - workloadSummaries: list of M365RecoveryPlanWorkloadSummarys
   - Per-workload human-readable summaries of the saved filter.
+- analysisJob: MvcAnalysisJob
+  - This Recovery Plan's own latest FULL-mode analysis job. Null when the plan
+has never been analyzed in FULL mode.

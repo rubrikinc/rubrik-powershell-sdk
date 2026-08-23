@@ -315,6 +315,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_TYPE")]
         CLUSTER_TYPE,
 
+        [EnumMember(Value = "D365_TABLE_LOGICAL_NAME")]
+        D365_TABLE_LOGICAL_NAME,
+
         [EnumMember(Value = "D365_TABLE_TYPE")]
         D365_TABLE_TYPE,
 
@@ -1080,6 +1083,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION")]
         RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION,
 
+        [EnumMember(Value = "RECOVERY_PLAN_LAST_RECOVERY_OUTCOME")]
+        RECOVERY_PLAN_LAST_RECOVERY_OUTCOME,
+
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 
@@ -1139,6 +1145,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAP_HANA_DATABASE_CDM_ID")]
         SAP_HANA_DATABASE_CDM_ID,
+
+        [EnumMember(Value = "SAP_HANA_ENABLE_COMPRESSION")]
+        SAP_HANA_ENABLE_COMPRESSION,
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_ID")]
         SAP_HANA_SYSTEM_ID,

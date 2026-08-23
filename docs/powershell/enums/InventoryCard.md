@@ -70,3 +70,4 @@ Inventory Card options that the user can select as a workload.
 - S3_TABLES_ICEBERG - Inventory card is AWS S3 Tables Iceberg.
 - PING_FEDERATE - Inventory card is PingFederate.
 - ANTHROPIC - Inventory card is Anthropic.
+- IRISDB - Inventory card is IRIS DB.

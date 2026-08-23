@@ -151,11 +151,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> System.Int32? NoSqlWorkloadCount
-        // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        [JsonProperty("noSqlWorkloadCount")]
-        public System.Int32? NoSqlWorkloadCount { get; set; }
-
         //      C# -> System.Boolean? PassesConnectivityCheck
         // GraphQL -> passesConnectivityCheck: Boolean (scalar)
         [JsonProperty("passesConnectivityCheck")]
@@ -466,7 +461,6 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsTprEnabled = null,
         DateTime? LastConnectionTime = null,
         System.String? Name = null,
-        System.Int32? NoSqlWorkloadCount = null,
         System.Boolean? PassesConnectivityCheck = null,
         System.String? RawAddress = null,
         DateTime? RegistrationTime = null,
@@ -584,9 +578,6 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
-        }
-        if ( NoSqlWorkloadCount != null ) {
-            this.NoSqlWorkloadCount = NoSqlWorkloadCount;
         }
         if ( PassesConnectivityCheck != null ) {
             this.PassesConnectivityCheck = PassesConnectivityCheck;
@@ -948,15 +939,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
-            }
-        }
-        //      C# -> System.Int32? NoSqlWorkloadCount
-        // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        if (this.NoSqlWorkloadCount != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "noSqlWorkloadCount\n" ;
-            } else {
-                s += ind + "noSqlWorkloadCount\n" ;
             }
         }
         //      C# -> System.Boolean? PassesConnectivityCheck
@@ -1842,23 +1824,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
-        }
-        //      C# -> System.Int32? NoSqlWorkloadCount
-        // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        if (ec.Includes("noSqlWorkloadCount",true))
-        {
-            if(this.NoSqlWorkloadCount == null) {
-
-                this.NoSqlWorkloadCount = Int32.MinValue;
-
-            } else {
-
-
-            }
-        }
-        else if (this.NoSqlWorkloadCount != null && ec.Excludes("noSqlWorkloadCount",true))
-        {
-            this.NoSqlWorkloadCount = null;
         }
         //      C# -> System.Boolean? PassesConnectivityCheck
         // GraphQL -> passesConnectivityCheck: Boolean (scalar)

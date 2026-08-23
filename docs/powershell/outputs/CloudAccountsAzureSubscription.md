@@ -13,3 +13,11 @@ AzureSubscription is a representation of the native Azure subscription.
   - Tenant ID of the subscription.
 - cloudType: AzureCloudType
   - Cloud type in which the subscription is present.
+- app: AzureCloudAccountTenantApp
+  - The Azure application backing this subscription, together with the
+authentication method it is bound to. Unset for a discovered subscription
+that is not yet onboarded.
+- ineligibilityReason: AzureOnboardingIneligibilityReason
+  - The reason the subscription cannot be onboarded in the current pass, or
+UNSPECIFIED when it is eligible. This field is set in discovery responses
+only.

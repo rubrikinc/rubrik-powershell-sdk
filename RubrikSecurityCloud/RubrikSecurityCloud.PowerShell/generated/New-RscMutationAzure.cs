@@ -2055,6 +2055,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			recoverLinkedCatalogs = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		licenseRecoveryOption = @{
+    /// 			# OPTIONAL
+    /// 			shouldRestoreLicenses = $someBoolean
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
@@ -5835,6 +5840,11 @@ $query.Var.input = @{
 			newGovernanceEndTime = $someDateTime
 			# REQUIRED
 			recoverLinkedCatalogs = $someBoolean
+		}
+		# OPTIONAL
+		licenseRecoveryOption = @{
+			# OPTIONAL
+			shouldRestoreLicenses = $someBoolean
 		}
 	}
 	# OPTIONAL

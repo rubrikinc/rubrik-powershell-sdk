@@ -188,9 +188,9 @@ Represents all the object types for which we expect to see audits.
 - FUSION_COMPUTE_DATASTORE - FusionCompute datastore.
 - OPENSTACK_IMAGE - Openstack Image.
 - GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
-- PURE_STORAGE_ARRAY - Pure Storage array.
-- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
-- PURE_STORAGE_VOLUME - Pure Storage volume.
+- PURE_STORAGE_ARRAY - Everpure FlashArray.
+- PURE_STORAGE_PROTECTION_GROUP - Everpure protection group.
+- PURE_STORAGE_VOLUME - Everpure volume.
 - GCP_BIG_QUERY_DATASET - GCP BigQuery Dataset.
 - GOOGLE_WORKSPACE_GROUP - Google Workspace Group.
 - AZURE_POSTGRES_FLEXIBLE_SERVER - Azure PostgreSQL Flexible Server.

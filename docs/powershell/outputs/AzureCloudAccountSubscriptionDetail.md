@@ -9,6 +9,8 @@ Azure Cloud Account Subscription details for a given feature.
   - Subscription name as specified in Azure.
 - managementGroup: AzureManagementGroup
   - Management group to which this subscription belongs.
+- app: AzureCloudAccountTenantApp
+  - The Azure application backing this subscription, together with the authentication method it is bound to. Unset when the app cannot be resolved.
 - featureDetail: AzureCloudAccountFeatureDetail
   - One of the enabled features on this subscription.
 - azureLocalClusterCount: System.Int32

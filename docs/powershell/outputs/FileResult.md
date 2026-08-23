@@ -1,37 +1,75 @@
 ### FileResult
+Contains metadata and the counts and results for a single file.
+
 - nativePath: System.String
+  - The native path formatted for the OS or share type, composed as
+directory + native path separator + filename.
 - filename: System.String
+  - Name of the file, without its directory.
 - directory: System.String
+  - Directory containing the file.
 - mode: DataGovFileMode
+  - The file mode.
 - size: System.Int64
+  - Size of the file in bytes.
 - lastModifiedTime: System.Int64
+  - Time the file was last modified, in epoch seconds.
 - lastAccessTime: System.Int64
+  - Time the file was last accessed, in epoch seconds.
 - numDescendantFiles: System.Int32
+  - Number of files contained under this directory.
 - numDescendantErrorFiles: System.Int64
+  - Number of descendant files that could not be analyzed due to errors.
 - numDescendantSkippedExtFiles: System.Int64
+  - Number of descendant files skipped because of their extension.
 - numDescendantSkippedSizeFiles: System.Int64
+  - Number of descendant files skipped because of their size.
 - numDescendantFolders: System.Int64
+  - Number of folders contained under this directory.
 - analyzerResults: list of AnalyzerResults
+  - Per-analyzer classification result counts for the file.
 - analyzerGroupResults: list of AnalyzerGroupResults
+  - Per-analyzer-group classification result counts for the file.
 - paginationId: System.String
+  - A unique identifier for the file result object, used for paginating
+results.
 - hits: Hits
+  - Sum of hit counts across all analyzer groups.
 - stdPath: System.String
+  - Standardized path (Linux style). Use this path for any path-based query
+parameters.
 - errorCode: AnalyzerErrorCode
+  - Error encountered while analyzing the file, if any.
 - filesWithHits: Hits
+  - Represents files with sensitive hits.
 - staleFilesWithHits: Hits
+  - Represents stale files with sensitive hits.
 - openAccessFilesWithHits: Hits
+  - Represents open access files with sensitive hits.
 - staleFiles: Hits
+  - Represents total stale files.
 - openAccessFiles: Hits
+  - Represents open access files.
 - openAccessFolders: Hits
+  - Represents open access folders.
 - openAccessStaleFiles: Hits
+  - Represents open access stale files.
 - openAccessType: OpenAccessType
+  - Open-access classification of the file.
 - stalenessType: StalenessType
+  - Staleness classification of the file.
 - numActivities: System.Int64
+  - Number of access activities recorded for the file.
 - numActivitiesBreakdown: list of ActivityResults
+  - Breakdown of access activities by type.
 - numActivitiesDelta: System.Int64
+  - Change in activity count relative to the previous period.
 - owner: System.String
+  - Owner of the file.
 - snapshotFid: System.String
+  - The snapshot identifier for this file result.
 - snapshotTimestamp: System.Int64
+  - Snapshot time of the crawled data, in epoch seconds.
 - userAccessType: UserAccessType
   - Represents the type of user access for a file.
 - accessibleBySidsRepresentation: System.String
@@ -65,9 +103,11 @@
 - sensitiveHits: SensitiveHits
   - Represents sensitivity hits for various sensitivity levels.
 - totalHits: Hits
-  - Represents the total number of hits, including sensitive and non-sensitive hits.
+  - Represents the total number of hits, including sensitive and
+non-sensitive hits.
 - filesWithTotalHits: Hits
-  - Represents files with the total number of hits, including sensitive and non-sensitive hits.
+  - Represents files with the total number of hits, including sensitive and
+non-sensitive hits.
 - dbEntityType: DatabaseEntityType
   - Represents the type of database entity.
 - exposureSummary: list of ExposureSummarys
@@ -81,3 +121,4 @@
 - modifiedBy: System.String
   - Represents Identity who last modified the file.
 - snappable: HierarchyObject
+  - The workload that this file belongs to.

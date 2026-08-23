@@ -47,14 +47,6 @@ PostgreSQL database cluster details object.
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
-- hostsInfo: list of HostDiscoverableInfos
-  - The host information of the discoverable entity.
-- entityInfo: EntityInfo
-  - The basic entity information.
-- descendantConnection: KosmosParentHierarchyObjectDescendantTypeConnection
-  - List of descendants.
-- physicalChildConnection: KosmosParentHierarchyObjectPhysicalChildTypeConnection
-  - List of physical children.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
@@ -79,8 +71,16 @@ cluster. Null when the source cluster is unknown.
   - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
+- entityInfo: EntityInfo
+  - The basic entity information.
+- hostsInfo: list of HostDiscoverableInfos
+  - The host information of the discoverable entity.
+- descendantConnection: KosmosParentHierarchyObjectDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: KosmosParentHierarchyObjectPhysicalChildTypeConnection
+  - List of physical children.
 - isRelic: System.Boolean
-  - Indicates whether the workload type is Relic.
+  - Indicates whether the workload type is a relic.
 - liveMounts: KosmosWorkloadLiveMountConnection
   - The live mounts of the given workloads.
 - recoverableRanges: list of KosmosWorkloadRecoverableRanges

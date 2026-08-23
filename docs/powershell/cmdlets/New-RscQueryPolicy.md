@@ -40,15 +40,19 @@ Get the password complexity policy for the current organization.
 ### policies
 Returns active policies for an account.
 
-- There are 2 arguments.
-    - policyObjectFilter - PolicyObjectFilter
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - policyObjectFilter - PolicyObjectFilter: Filter policies based on whether they have objects attached.
     - excludeHierarchyObjectList - System.Boolean: Excludes hierarchy object IDs for each policy.
 - Returns ClassificationPolicyDetailConnection.
 ### policy
 Returns detailed policy information.
 
 - There are 14 arguments.
-    - policyId - System.String
+    - policyId - System.String: Identifier of the classification policy.
     - workloadTypes - list of DataGovObjectTypes: Types of workloads used for filtering the query results.
     - sortBy - PolicyDetailsSortBy: Name of the column to sort result by.
     - sortOrder - SortOrder: Sorts the order of results.
@@ -94,7 +98,12 @@ Get the list of possible policy frameworks.
 ### policyobjectusages
 Returns the policies assigned to each object.
 
-- There is a single argument of type list of System.Strings.
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - objectIds - list of System.Strings: Hierarchy object IDs to return policy usages for.
 - Returns PolicyObjectUsageConnection.
 ### policyrisksummaries
 List of policy risk summaries for the requested policies on a given date.

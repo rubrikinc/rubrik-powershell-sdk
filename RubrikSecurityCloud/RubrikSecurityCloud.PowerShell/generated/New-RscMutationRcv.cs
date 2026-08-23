@@ -156,6 +156,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	shouldBypassProxy = $someBoolean
     /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	shouldBypassProxyForDatapaths = $someBoolean
+    /// 	# OPTIONAL
     /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
     /// 	# OPTIONAL
     /// 	rsaKey = $someString
@@ -356,6 +371,21 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	shouldBypassProxy = $someBoolean
     /// 	# OPTIONAL
     /// 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+    /// 	# OPTIONAL
+    /// 	proxySettings = @{
+    /// 		# OPTIONAL
+    /// 		proxyServer = $someString
+    /// 		# OPTIONAL
+    /// 		portNumber = $someInt
+    /// 		# OPTIONAL
+    /// 		username = $someString
+    /// 		# OPTIONAL
+    /// 		password = $someString
+    /// 		# OPTIONAL
+    /// 		protocol = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	shouldBypassProxyForDatapaths = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -577,6 +607,21 @@ $query.Var.input = @{
 	# OPTIONAL
 	shouldBypassProxy = $someBoolean
 	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	shouldBypassProxyForDatapaths = $someBoolean
+	# OPTIONAL
 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
 	# OPTIONAL
 	rsaKey = $someString
@@ -737,6 +782,21 @@ $query.Var.input = @{
 	shouldBypassProxy = $someBoolean
 	# OPTIONAL
 	redundancy = $someRcvRedundancy # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RcvRedundancy]) for enum values.
+	# OPTIONAL
+	proxySettings = @{
+		# OPTIONAL
+		proxyServer = $someString
+		# OPTIONAL
+		portNumber = $someInt
+		# OPTIONAL
+		username = $someString
+		# OPTIONAL
+		password = $someString
+		# OPTIONAL
+		protocol = $someString
+	}
+	# OPTIONAL
+	shouldBypassProxyForDatapaths = $someBoolean
 }"
             );
         }

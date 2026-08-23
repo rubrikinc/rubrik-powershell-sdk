@@ -1214,6 +1214,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.isForce = $someBoolean
     /// # OPTIONAL
     /// $query.Var.expireInDays = $someInt64
+    /// # OPTIONAL
+    /// $query.Var.shouldDeleteRcvLocations = $someBoolean
     /// 
     /// # Execute the query
     /// 
@@ -3250,19 +3252,25 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Mutation:
-        // removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long): Boolean!
+        // removeCdmCluster(
+        //     clusterUUID: UUID!
+        //     isForce: Boolean!
+        //     expireInDays: Long
+        //     shouldDeleteRcvLocations: Boolean
+        //   ): Boolean!
         internal void InitMutationRemoveCdmCluster()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("clusterUUID", "UUID!"),
                 Tuple.Create("isForce", "Boolean!"),
                 Tuple.Create("expireInDays", "Long"),
+                Tuple.Create("shouldDeleteRcvLocations", "Boolean"),
             };
             Initialize(
                 argDefs,
                 "mutation",
                 "MutationRemoveCdmCluster",
-                "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long)",
+                "($clusterUUID: UUID!,$isForce: Boolean!,$expireInDays: Long,$shouldDeleteRcvLocations: Boolean)",
                 "System.Boolean",
                 Mutation.RemoveCdmCluster,
                 Mutation.RemoveCdmClusterFieldSpec,
@@ -3271,7 +3279,9 @@ $query.Var.clusterUUID = $someString
 # REQUIRED
 $query.Var.isForce = $someBoolean
 # OPTIONAL
-$query.Var.expireInDays = $someInt64"
+$query.Var.expireInDays = $someInt64
+# OPTIONAL
+$query.Var.shouldDeleteRcvLocations = $someBoolean"
             );
         }
 

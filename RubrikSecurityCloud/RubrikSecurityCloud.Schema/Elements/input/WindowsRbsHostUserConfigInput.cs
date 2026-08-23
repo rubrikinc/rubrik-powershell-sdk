@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("name")]
+        public System.String? Name { get; set; }
+
         //      C# -> System.String? HttpsThumbprint
         // GraphQL -> httpsThumbprint: String (scalar)
         [JsonProperty("httpsThumbprint")]
@@ -29,24 +36,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("password")]
         public System.String? Password { get; set; }
 
-        //      C# -> System.Int64? OperationTimeout
-        // GraphQL -> operationTimeout: Long (scalar)
-        [JsonProperty("operationTimeout")]
-        public System.Int64? OperationTimeout { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("name")]
-        public System.String? Name { get; set; }
-
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
+        //      C# -> System.Int64? OperationTimeout
+        // GraphQL -> operationTimeout: Long (scalar)
+        [JsonProperty("operationTimeout")]
+        public System.Int64? OperationTimeout { get; set; }
 
 
         #endregion

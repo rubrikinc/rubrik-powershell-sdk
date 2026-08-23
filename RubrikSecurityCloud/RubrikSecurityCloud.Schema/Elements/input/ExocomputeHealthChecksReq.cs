@@ -29,6 +29,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudVendor")]
         public ExocomputeCloudType? CloudVendor { get; set; }
 
+        //      C# -> System.Boolean? ShouldIncludeDiagnosticDetails
+        // GraphQL -> shouldIncludeDiagnosticDetails: Boolean (scalar)
+        [JsonProperty("shouldIncludeDiagnosticDetails")]
+        public System.Boolean? ShouldIncludeDiagnosticDetails { get; set; }
+
 
         #endregion
 

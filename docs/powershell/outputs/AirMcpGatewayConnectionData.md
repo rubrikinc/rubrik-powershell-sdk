@@ -12,5 +12,6 @@ MCP gateway connection data.
 - status: AirGatewayProvisioningState
   - Current provisioning state of the gateway deployment.
 - statusError: System.String
-  - Secret-free detail of the last deploy error, populated only when the
-gateway is in a failed state (FAILED or UPDATE_FAILED). Empty otherwise.
+  - Secret-free detail of the last deploy or teardown error, populated only
+when the gateway is in a failed state (FAILED, UPDATE_FAILED, or
+DELETION_FAILED). Empty otherwise.

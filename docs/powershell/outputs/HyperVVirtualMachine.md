@@ -19,6 +19,8 @@ Hyper-V virtual machine details.
   - Subtype of the Hyper-V virtual machine (Hyper-V vs Azure Local). Drives the virtual machine type filter on the Hyper-V inventory page.
 - linkedNativeTags: list of LinkedNativeTags
   - Raw native tags from the source system (e.g. SCVMM) attached to this virtual machine. Distinct from `allTags`, which exposes system tag (RSC tag) membership.
+- recoveryPlansInfo: list of RecoveryPlansInfos
+  - Recovery Plans that include this Hyper-V virtual machine.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation

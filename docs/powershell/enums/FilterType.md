@@ -122,6 +122,10 @@ right to a non-default principal.
 - SECURITY_IDP_PIM_MFA_FOR_PRIVILEGED_ROLES - IDP PIM MFA required for privileged role activation boolean filter.
 - SECURITY_IDP_PIM_APPROVAL_FOR_SENSITIVE_ROLES - IDP PIM approval required for sensitive role activation boolean filter.
 - SECURITY_IDP_INHERITANCE_ENABLED - IDP inheritance enabled boolean filter.
+- SECURITY_IDP_HAS_ENABLED_USER_WITH_LABEL - Identity Provider domain has an enabled user with the given label(s).
+Works the same as SECURITY_IDP_HAS_USER_WITH_LABEL but additionally
+requires the matched user's status to be enabled, excluding suspended,
+deprovisioned, and locked-out accounts.
 - SECURITY_IDENTITY_EVENT_TYPE - Identity event type filter.
 - SECURITY_IDENTITY_EVENT_ACTOR - Identity event actor filter.
 - SECURITY_IDENTITY_EVENT_ACTION_TYPE - Identity event action type.
@@ -141,3 +145,13 @@ Applies to Active Directory events only.
 - SECURITY_SIGNIN_ANOMALY_PER_CAP_SPIKE - Sign-in failure spike attributed to a single Conditional Access Policy.
 - SECURITY_IDENTITY_EVENT_POLICY_INSIGHTS - Filters identity events by the policy insight surfaced by a Group Policy
 Object (GPO) change. Applies to Active Directory events only.
+- SECURITY_SAAS_ACTIVITY_ACTOR - Filters SaaS activity events by the email of the actor that performed the
+activity.
+- SECURITY_SAAS_ACTIVITY_TYPE - Filters SaaS activity events by activity type, as reported by the SaaS
+provider. Values are free-form strings, not a closed enumeration.
+- SECURITY_SAAS_ACTIVITY_ORG - Filters SaaS activity events by RSC organization. Required on every SaaS
+activity policy: a customer may have several organizations, and an
+unscoped policy would match activity across all of them.
+- SECURITY_SAAS_ACTIVITY_ACTOR_TYPE - Filters SaaS activity events by the kind of actor that performed the
+activity, as reported by the SaaS provider. Values are free-form strings,
+not a closed enumeration, and are absent on some activities.

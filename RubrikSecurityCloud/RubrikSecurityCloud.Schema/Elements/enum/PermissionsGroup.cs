@@ -120,6 +120,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_NETWORKING")]
         RECOVERY_NETWORKING,
 
+        [EnumMember(Value = "RECOVERY_RDS_CONNECTIVITY")]
+        RECOVERY_RDS_CONNECTIVITY,
+
         [EnumMember(Value = "RECOVER_TO_S3")]
         RECOVER_TO_S3,
 
