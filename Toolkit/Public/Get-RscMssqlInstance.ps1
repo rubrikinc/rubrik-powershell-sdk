@@ -290,6 +290,12 @@ Return the query object instead of executing it.
                         }
                         foreach ($child in $childNodes) {
                             if ($child -is [RubrikSecurityCloud.Types.MssqlInstance] -and $seenIds.Add($child.id)) {
+                                # -Name defaults to MSSQLSERVER but is only applied when
+                                # the caller passed -Name / -InstanceName. Unfiltered
+                                # -HostName must still return every instance on the host.
+                                if ($PSBoundParameters.ContainsKey('Name') -and $child.Name -ne $Name) {
+                                    continue
+                                }
                                 $instances.Add($child)
                             }
                         }
