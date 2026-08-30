@@ -230,7 +230,11 @@ function Get-RscSnapshot {
             }
 
             if ($PSBoundParameters.ContainsKey('latest')) {
+                # Default snapshot order is oldest-first. Without an explicit
+                # CREATION_TIME DESC sort, first=1 is the oldest snapshot.
                 $query.var.first = 1
+                $query.var.sortBy = [RubrikSecurityCloud.Types.SnapshotQuerySortByField]::CREATION_TIME
+                $query.var.sortOrder = [RubrikSecurityCloud.Types.SortOrder]::DESC
             }
 
             if ($BeforeTime -and $AfterTime) {
