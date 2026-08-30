@@ -9,7 +9,7 @@ New Features:
 Fixes:
 - Fix `Get-RscSnapshot -Latest` returning the oldest snapshot. The query now
   sorts by creation time descending so `first = 1` is the most recent snapshot
-  (#218)
+  (#266)
 
 Breaking Changes:
 
