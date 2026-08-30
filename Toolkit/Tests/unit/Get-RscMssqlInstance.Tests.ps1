@@ -134,3 +134,45 @@ Describe 'Get-RscMssqlInstance -WindowsClusterName response flattening' {
         $result[0].Id | Should -Be 'wc-inst-1'
     }
 }
+
+Describe 'Get-RscMssqlInstance -Name / -InstanceName filter' {
+
+    BeforeAll {
+        Mock Invoke-Rsc -MockWith {
+            $inst1 = New-Object RubrikSecurityCloud.Types.MssqlInstance
+            $inst1.Id = 'inst-1'
+            $inst1.Name = 'INSTANCE-1'
+
+            $inst2 = New-Object RubrikSecurityCloud.Types.MssqlInstance
+            $inst2.Id = 'inst-2'
+            $inst2.Name = 'DEV01'
+
+            $ph = New-Object RubrikSecurityCloud.Types.PhysicalHost
+            $ph.ObjectType = [RubrikSecurityCloud.Types.HierarchyObjectTypeEnum]::PHYSICAL_HOST
+            $ph.DescendantConnection = New-Object RubrikSecurityCloud.Types.PhysicalHostDescendantTypeConnection
+            $ph.DescendantConnection.Nodes = New-Object -TypeName 'System.Collections.Generic.List[RubrikSecurityCloud.Types.PhysicalHostDescendantType]'
+            $ph.DescendantConnection.Nodes.Add($inst1)
+            $ph.DescendantConnection.Nodes.Add($inst2)
+
+            return [pscustomobject]@{ nodes = @($ph) }
+        }
+    }
+
+    It 'filters to the named instance when -Name is passed' {
+        $result = @(Get-RscMssqlInstance -HostName 'test-host' -Name DEV01)
+        $result.Count | Should -Be 1
+        $result[0].Id | Should -Be 'inst-2'
+        $result[0].Name | Should -Be 'DEV01'
+    }
+
+    It 'filters with the -InstanceName alias' {
+        $result = @(Get-RscMssqlInstance -HostName 'test-host' -InstanceName DEV01)
+        $result.Count | Should -Be 1
+        $result[0].Id | Should -Be 'inst-2'
+    }
+
+    It 'returns all instances on the host when -Name is omitted' {
+        $result = @(Get-RscMssqlInstance -HostName 'test-host')
+        $result.Count | Should -Be 2
+    }
+}
