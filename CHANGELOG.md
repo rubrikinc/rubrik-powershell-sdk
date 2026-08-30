@@ -9,7 +9,7 @@ New Features:
 Fixes:
 - Fix `Get-RscMssqlInstance -Name` / `-InstanceName` being ignored. Named
   instance lookups now return only that instance instead of every instance on
-  the host (#202)
+  the host (#267)
 
 Breaking Changes:
 
