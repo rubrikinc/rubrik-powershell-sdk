@@ -36,7 +36,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? IdpName { get; set; }
 
         //      C# -> System.String? IdpTenantId
-        // GraphQL -> idpTenantId: UUID! (scalar)
+        // GraphQL -> idpTenantId: String! (scalar)
         [JsonProperty("idpTenantId")]
         public System.String? IdpTenantId { get; set; }
 
@@ -128,7 +128,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> System.String? IdpTenantId
-        // GraphQL -> idpTenantId: UUID! (scalar)
+        // GraphQL -> idpTenantId: String! (scalar)
         if (this.IdpTenantId != null) {
             if (conf.Flat) {
                 s += conf.Prefix + "idpTenantId\n" ;
@@ -213,7 +213,7 @@ namespace RubrikSecurityCloud.Types
             this.IdpName = null;
         }
         //      C# -> System.String? IdpTenantId
-        // GraphQL -> idpTenantId: UUID! (scalar)
+        // GraphQL -> idpTenantId: String! (scalar)
         if (ec.Includes("idpTenantId",true))
         {
             if(this.IdpTenantId == null) {

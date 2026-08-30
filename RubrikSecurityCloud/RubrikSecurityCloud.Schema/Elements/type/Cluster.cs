@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isTprEnabled")]
         public System.Boolean? IsTprEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsTunnelEnabled
+        // GraphQL -> isTunnelEnabled: Boolean (scalar)
+        [JsonProperty("isTunnelEnabled")]
+        public System.Boolean? IsTunnelEnabled { get; set; }
+
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         [JsonProperty("lastConnectionTime")]
@@ -459,6 +464,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsClusterRemovalTprEnabled = null,
         System.Boolean? IsHealthy = null,
         System.Boolean? IsTprEnabled = null,
+        System.Boolean? IsTunnelEnabled = null,
         DateTime? LastConnectionTime = null,
         System.String? Name = null,
         System.Boolean? PassesConnectivityCheck = null,
@@ -572,6 +578,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsTprEnabled != null ) {
             this.IsTprEnabled = IsTprEnabled;
+        }
+        if ( IsTunnelEnabled != null ) {
+            this.IsTunnelEnabled = IsTunnelEnabled;
         }
         if ( LastConnectionTime != null ) {
             this.LastConnectionTime = LastConnectionTime;
@@ -921,6 +930,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isTprEnabled\n" ;
             } else {
                 s += ind + "isTprEnabled\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsTunnelEnabled
+        // GraphQL -> isTunnelEnabled: Boolean (scalar)
+        if (this.IsTunnelEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTunnelEnabled\n" ;
+            } else {
+                s += ind + "isTunnelEnabled\n" ;
             }
         }
         //      C# -> DateTime? LastConnectionTime
@@ -1790,6 +1808,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsTprEnabled != null && ec.Excludes("isTprEnabled",true))
         {
             this.IsTprEnabled = null;
+        }
+        //      C# -> System.Boolean? IsTunnelEnabled
+        // GraphQL -> isTunnelEnabled: Boolean (scalar)
+        if (ec.Includes("isTunnelEnabled",true))
+        {
+            if(this.IsTunnelEnabled == null) {
+
+                this.IsTunnelEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTunnelEnabled != null && ec.Excludes("isTunnelEnabled",true))
+        {
+            this.IsTunnelEnabled = null;
         }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)

@@ -20,6 +20,6 @@ Azure Cloud Account Feature details.
 - permissionsGroups: list of PermissionsGroups
   - Permissions Groups represents the list of permissions groups onboarded for this feature.
 - userAssignedManagedIdentity: AzureUserAssignedManagedIdentity
-  - User assigned managed identity. It is populated for Cloud Native Archival Encryption and Azure SQL DB Protection features.
+  - User assigned managed identity. It is populated for Cloud Native Archival Encryption, Azure SQL DB Protection, and Azure PostgreSQL Flexible Server Protection features.
 - specificDetails: AzureSpecificFeatureDetails
   - Specific details for the feature, varies based on the feature type.

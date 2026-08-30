@@ -636,6 +636,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INFORMIX_HOST_CONNECTION_STATUS")]
         INFORMIX_HOST_CONNECTION_STATUS,
 
+        [EnumMember(Value = "IRISDB_CONNECTION_STATUS")]
+        IRISDB_CONNECTION_STATUS,
+
+        [EnumMember(Value = "IRISDB_HOST_ID")]
+        IRISDB_HOST_ID,
+
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
 

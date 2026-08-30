@@ -198,7 +198,7 @@ Represents all the object types for which we expect to see audits.
 - GLUE_ICEBERG_CATALOG - AWS Glue Iceberg Catalog.
 - GLUE_ICEBERG_DATABASE - AWS Glue Iceberg Database.
 - GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
-- PING_FEDERATE_CLUSTER - Ping Federate Cluster.
+- PING_FEDERATE_CLUSTER - PingFederate Cluster.
 - AGENT_CLOUD_ALERT - Agent Cloud alert object.
 - AGENT_CLOUD_VIOLATION - Agent Cloud violation object.
 - AUTH0_TENANT - Auth0 tenant.
@@ -227,3 +227,5 @@ Represents all the object types for which we expect to see audits.
 - ANTHROPIC_CHILD_ORG_USER - Anthropic child org user.
 - ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
 - ANTHROPIC_DEVICE - Anthropic device.
+- OPENSTACK_TAG - OpenStack tag object.
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.

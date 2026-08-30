@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region O365Group
  
-    public class O365Group: BaseType, HierarchyObject, MicrosoftGroup, O365OrgDescendant, PolarisHierarchyObject
+    public class O365Group: BaseType, HierarchyObject, HierarchySnappable, MicrosoftGroup, O365OrgDescendant, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

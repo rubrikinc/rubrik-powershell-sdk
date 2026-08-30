@@ -5,3 +5,6 @@ Snapshot location information.
   - Id of the location.
 - name: System.String
   - Name of the location.
+- type: SnapshotLocType
+  - Type of the snapshot location. When the location type cannot be
+determined, the value is UNSPECIFIED.

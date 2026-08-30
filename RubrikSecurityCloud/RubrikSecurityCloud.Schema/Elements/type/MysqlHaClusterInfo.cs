@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeReplicaId")]
         public System.String? ActiveReplicaId { get; set; }
 
+        //      C# -> MysqlBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: MysqlBackupNodePreference (type)
+        [JsonProperty("backupNodePreference")]
+        public MysqlBackupNodePreference? BackupNodePreference { get; set; }
+
         //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
         // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         [JsonProperty("replicas")]
@@ -41,11 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public MysqlHaClusterInfo Set(
         System.String? ActiveReplicaId = null,
+        MysqlBackupNodePreference? BackupNodePreference = null,
         List<MysqlTopologyReplicaInfo>? Replicas = null
     ) 
     {
         if ( ActiveReplicaId != null ) {
             this.ActiveReplicaId = ActiveReplicaId;
+        }
+        if ( BackupNodePreference != null ) {
+            this.BackupNodePreference = BackupNodePreference;
         }
         if ( Replicas != null ) {
             this.Replicas = Replicas;
@@ -71,6 +80,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "activeReplicaId\n" ;
             } else {
                 s += ind + "activeReplicaId\n" ;
+            }
+        }
+        //      C# -> MysqlBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: MysqlBackupNodePreference (type)
+        if (this.BackupNodePreference != null) {
+            var fspec = this.BackupNodePreference.AsFieldSpec(conf.Child("backupNodePreference"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupNodePreference" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
@@ -108,6 +129,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ActiveReplicaId != null && ec.Excludes("activeReplicaId",true))
         {
             this.ActiveReplicaId = null;
+        }
+        //      C# -> MysqlBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: MysqlBackupNodePreference (type)
+        if (ec.Includes("backupNodePreference",false))
+        {
+            if(this.BackupNodePreference == null) {
+
+                this.BackupNodePreference = new MysqlBackupNodePreference();
+                this.BackupNodePreference.ApplyExploratoryFieldSpec(ec.NewChild("backupNodePreference"));
+
+            } else {
+
+                this.BackupNodePreference.ApplyExploratoryFieldSpec(ec.NewChild("backupNodePreference"));
+
+            }
+        }
+        else if (this.BackupNodePreference != null && ec.Excludes("backupNodePreference",false))
+        {
+            this.BackupNodePreference = null;
         }
         //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
         // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)

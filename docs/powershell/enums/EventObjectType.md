@@ -265,7 +265,7 @@ Enum representing all the possible object types which generate events.
 - GLUE_ICEBERG_DATABASE - AWS Glue Iceberg Database.
 - GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
 - PRINCIPAL_PKI_ENROLLMENT_SERVICE - PKI Enrollment Service (AD CS CA) principal type.
-- PING_FEDERATE_CLUSTER - Ping Federate Cluster.
+- PING_FEDERATE_CLUSTER - PingFederate Cluster.
 - AUTH0_TENANT - Auth0 tenant.
 - MARIADB_INSTANCE - MariaDB instance.
 - AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps Developer Collaboration (work items, boards, wikis) per project.
@@ -291,3 +291,7 @@ Enum representing all the possible object types which generate events.
 - ANTHROPIC_CHILD_ORG_USER - Anthropic child org user.
 - ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
 - ANTHROPIC_DEVICE - Anthropic device.
+- AZURE_LOCAL_SUBSCRIPTION - Azure Local subscription object.
+- OPENSTACK_TAG - OpenStack tag object.
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
+- K8S_POSTGRES_DATABASE - Kubernetes Postgres database.

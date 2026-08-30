@@ -1407,3 +1407,30 @@ migration m0278 enables an index-only scan for this subquery.
 +mo:filter:db:column=outcome
 +mo:filter:db:index:key=NULL
 +reason: correlated scalar subquery on failover_summary; no single index covers the full predicate
+- IRISDB_CONNECTION_STATUS - Filter IRIS DB instances by the Rubrik Backup Service (RBS)
+connection status of their host.
++mo:filter:db:table=cdm_irisdb_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- IRISDB_HOST_ID - Filter IRIS DB instances by host ID.
++mo:filter:db:table=cdm_irisdb_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true

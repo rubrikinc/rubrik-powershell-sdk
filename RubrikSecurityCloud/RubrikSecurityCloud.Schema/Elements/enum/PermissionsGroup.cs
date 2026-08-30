@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 
+        [EnumMember(Value = "EXPORT")]
+        EXPORT,
+
         [EnumMember(Value = "EXPORT_AND_RESTORE")]
         EXPORT_AND_RESTORE,
 

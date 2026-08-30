@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("createdAt")]
         public DateTime? CreatedAt { get; set; }
 
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        [JsonProperty("expirationDate")]
+        public DateTime? ExpirationDate { get; set; }
+
         //      C# -> System.Boolean? IsReplaced
         // GraphQL -> isReplaced: Boolean! (scalar)
         [JsonProperty("isReplaced")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         RcvTier? Tier = null,
         System.Single? Capacity = null,
         DateTime? CreatedAt = null,
+        DateTime? ExpirationDate = null,
         System.Boolean? IsReplaced = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( CreatedAt != null ) {
             this.CreatedAt = CreatedAt;
+        }
+        if ( ExpirationDate != null ) {
+            this.ExpirationDate = ExpirationDate;
         }
         if ( IsReplaced != null ) {
             this.IsReplaced = IsReplaced;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "createdAt\n" ;
             } else {
                 s += ind + "createdAt\n" ;
+            }
+        }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "expirationDate\n" ;
+            } else {
+                s += ind + "expirationDate\n" ;
             }
         }
         //      C# -> System.Boolean? IsReplaced
@@ -280,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CreatedAt != null && ec.Excludes("createdAt",true))
         {
             this.CreatedAt = null;
+        }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (ec.Includes("expirationDate",true))
+        {
+            if(this.ExpirationDate == null) {
+
+                this.ExpirationDate = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ExpirationDate != null && ec.Excludes("expirationDate",true))
+        {
+            this.ExpirationDate = null;
         }
         //      C# -> System.Boolean? IsReplaced
         // GraphQL -> isReplaced: Boolean! (scalar)

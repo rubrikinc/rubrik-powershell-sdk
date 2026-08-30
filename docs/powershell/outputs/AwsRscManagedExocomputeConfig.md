@@ -7,14 +7,14 @@ AWS RSC Managed Exocompute Configuration in a region.
   - Cluster security group ID.
 - nodeSecurityGroupId: System.String
   - Node security group ID.
+- areSecurityGroupsRscManaged: System.Boolean
+  - Specifies if the security groups are managed by RSC.
 - subnet1: AwsExocomputeSubnetType
   - First subnet.
 - subnet2: AwsExocomputeSubnetType
   - Second subnet.
 - optionalConfig: AwsExocomputeOptionalConfigInRegion
   - Optional configuration for the Exocompute cluster.
-- areSecurityGroupsRscManaged: System.Boolean
-  - Specifies if the security groups are managed by RSC.
 - configUuid: System.String
   - Exocompute configuration UUID.
 - message: System.String

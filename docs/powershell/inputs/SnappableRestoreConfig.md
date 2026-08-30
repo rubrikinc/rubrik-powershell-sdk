@@ -29,3 +29,5 @@ Represents the snappable contents to be restored.
   - Configuration for failed items recovery jobs.
 - relicRestoreConfig: RelicRestoreConfig
   - Relic restore configuration for restore jobs.
+- tasksRestoreConfig: TasksRestoreConfig
+  - Restore configuration for Microsoft To Do tasks jobs.

@@ -22,6 +22,18 @@ Queries high-availability policies for managing failover groups.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - filter - HaPolicyFilter: Filters to apply to the query.
 - Returns HaPolicyConnection.
+### harmfullifecyclepolicies
+Customer-managed lifecycle rules detected on datacenter archival
+locations that would tier or delete Rubrik-owned objects.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - HarmfulLifecyclePolicyFilter: The filters restricting which lifecycle policies are
+returned.
+- Returns HarmfulLifecyclePolicyConnection.
 ### isvalidtprpolicyname
 Validate the name of a TPR policy.
 

@@ -363,6 +363,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,
 
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER")]
+        K8S_POSTGRES_DB_CLUSTER,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
 
@@ -503,6 +506,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OPENSTACK_IMAGE")]
         OPENSTACK_IMAGE,
+
+        [EnumMember(Value = "OPENSTACK_TAG")]
+        OPENSTACK_TAG,
 
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,

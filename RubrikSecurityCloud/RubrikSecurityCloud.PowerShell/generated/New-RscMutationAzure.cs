@@ -1046,6 +1046,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# REQUIRED
     /// 		keyVersion = $someString
     /// 	}
+    /// 	# OPTIONAL
+    /// 	awsKmsKey = @{
+    /// 		# REQUIRED
+    /// 		keyManagerId = $someString
+    /// 		# REQUIRED
+    /// 		keyId = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -4962,6 +4969,13 @@ $query.Var.input = @{
 		keyName = $someString
 		# REQUIRED
 		keyVersion = $someString
+	}
+	# OPTIONAL
+	awsKmsKey = @{
+		# REQUIRED
+		keyManagerId = $someString
+		# REQUIRED
+		keyId = $someString
 	}
 }"
             );

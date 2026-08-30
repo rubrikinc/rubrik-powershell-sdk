@@ -145,7 +145,13 @@ namespace RubrikSecurityCloud.Types
         SCOPE_ROLE_ELIGIBLE_ASSIGNMENT,
 
         [EnumMember(Value = "SCOPE_TAG_ASSIGNMENT")]
-        SCOPE_TAG_ASSIGNMENT
+        SCOPE_TAG_ASSIGNMENT,
+
+        [EnumMember(Value = "SSO_POLICY_APPLIES_TO")]
+        SSO_POLICY_APPLIES_TO,
+
+        [EnumMember(Value = "SSO_POLICY_EXTENSION")]
+        SSO_POLICY_EXTENSION
 
 
     } // enum AzureAdRelationshipEnumType

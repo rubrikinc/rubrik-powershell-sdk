@@ -1,5 +1,6 @@
 ### AwsExocomputeSubnetInputType
-AWS Exocompute subnet input.
+AwsExocomputeSubnet is a subset of the message type Subnet with the fields
+required for exocompute.
 
 - subnetId: System.String
   - AWS ID of subnet.

@@ -1,19 +1,19 @@
 ### AwsCloudAccountInput
-Details of an AWS cloud account.
+Details of the AWS account.
 
 - id: System.String
-  - Rubrik ID of the AWS cloud account.
+  - Rubrik ID of the cloud account.
 - nativeId: System.String
-  - Native ID of cloud account.
+  - Native ID of the cloud account.
 - accountName: System.String
-  - Name of cloud account.
+  - Name of the cloud account.
 - seamlessFlowEnabled: System.Boolean
-  - Whether seamless setup flow is enabled on cloud account.
+  - Whether seamless flow is enabled on the cloud account.
+- cloudType: AwsCloudType
+  - Type of the cloud account.
 - orgName: System.String
   - The AWS organization name with which you onboarded the AWS account.
 - outpostAwsNativeId: System.String
-  - AWS Outpost account native ID uniquely identifies and manages specific Outpost resources within AWS.
+  - Native ID of the AWS Outpost account.
 - orgId: System.String
   - The UUID of the onboarded AWS organization.
-- cloudType: AwsCloudType
-  - Cloud type (Standard/China) for the cloud account.

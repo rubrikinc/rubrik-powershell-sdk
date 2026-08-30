@@ -153,6 +153,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "QUARANTINE")]
         QUARANTINE,
 
+        [EnumMember(Value = "REENCRYPTION")]
+        REENCRYPTION,
+
         [EnumMember(Value = "RadarAnalysis")]
         RADAR_ANALYSIS,
 

@@ -1128,6 +1128,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
@@ -2524,6 +2528,8 @@ $query.Var.teamsConversationsSearchFilter = @{
         // snappableTeamsDriveSearch(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     orgId: UUID!
         //     channelId: String
@@ -2535,6 +2541,8 @@ $query.Var.teamsConversationsSearchFilter = @{
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("channelId", "String"),
@@ -2545,7 +2553,7 @@ $query.Var.teamsConversationsSearchFilter = @{
                 argDefs,
                 "query",
                 "QuerySnappableTeamsDriveSearch",
-                "($first: Int,$after: String,$snappableFid: UUID!,$orgId: UUID!,$channelId: String,$channelFolderName: String,$teamsDriveSearchFilter: OnedriveSearchFilter)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$orgId: UUID!,$channelId: String,$channelFolderName: String,$teamsDriveSearchFilter: OnedriveSearchFilter)",
                 "O365OnedriveObjectConnection",
                 Query.SnappableTeamsDriveSearch,
                 Query.SnappableTeamsDriveSearchFieldSpec,
@@ -2553,6 +2561,10 @@ $query.Var.teamsConversationsSearchFilter = @{
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED

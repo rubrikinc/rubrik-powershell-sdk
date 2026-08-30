@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mysqldbAutomatedRestoreInstanceDetails")]
         public MysqldbAutomatedRestoreInstanceDetailsInput? MysqldbAutomatedRestoreInstanceDetails { get; set; }
 
+        //      C# -> System.Boolean? ShouldReplayCapturedSchema
+        // GraphQL -> shouldReplayCapturedSchema: Boolean (scalar)
+        [JsonProperty("shouldReplayCapturedSchema")]
+        public System.Boolean? ShouldReplayCapturedSchema { get; set; }
+
         //      C# -> System.String? TargetMysqldbInstanceId
         // GraphQL -> targetMysqldbInstanceId: String! (scalar)
         [Required]

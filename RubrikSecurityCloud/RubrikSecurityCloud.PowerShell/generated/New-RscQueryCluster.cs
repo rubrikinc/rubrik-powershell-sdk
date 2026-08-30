@@ -1663,6 +1663,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query = New-RscQueryCluster -Operation Missing
     /// 
     /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
     /// $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
     /// # OPTIONAL
     /// $query.Var.isExcluded = $someBoolean
@@ -4811,10 +4819,21 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
         }
 
         // Create new GraphQL Query:
-        // allMissingClusters(connectionStatus: MissingClusterConnectionStatus, isExcluded: Boolean): MissingClusterConnection!
+        // allMissingClusters(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     connectionStatus: MissingClusterConnectionStatus = CONNECTION_STATUS_NOT_SPECIFIED
+        //     isExcluded: Boolean
+        //   ): MissingClusterConnection!
         internal void InitQueryAllMissingClusters()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("connectionStatus", "MissingClusterConnectionStatus"),
                 Tuple.Create("isExcluded", "Boolean"),
             };
@@ -4822,11 +4841,19 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 argDefs,
                 "query",
                 "QueryAllMissingClusters",
-                "($connectionStatus: MissingClusterConnectionStatus,$isExcluded: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$connectionStatus: MissingClusterConnectionStatus,$isExcluded: Boolean)",
                 "MissingClusterConnection",
                 Query.AllMissingClusters,
                 Query.AllMissingClustersFieldSpec,
                 @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
 $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
 # OPTIONAL
 $query.Var.isExcluded = $someBoolean"

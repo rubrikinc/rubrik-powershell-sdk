@@ -1,5 +1,5 @@
 ### AwsAccountFeatureArtifact
-AWS Native ID to features/artifacts map.
+Details of the AWS account artifacts to be registered.
 
 - awsNativeId: System.String
   - AWS native ID of the account being onboarded.

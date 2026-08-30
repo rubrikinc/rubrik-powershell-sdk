@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subscriptionName")]
         public System.String? SubscriptionName { get; set; }
 
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        [JsonProperty("app")]
+        public AzureCloudAccountTenantApp? App { get; set; }
+
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         [JsonProperty("exocomputeConfigs")]
@@ -95,6 +100,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AzureSubscriptionRubrikId = null,
         List<System.String>? MappedCloudAccountIds = null,
         System.String? SubscriptionName = null,
+        AzureCloudAccountTenantApp? App = null,
         List<AzureExocomputeConfigDetails>? ExocomputeConfigs = null,
         AzureCloudAccountFeatureDetail? FeatureDetail = null,
         List<AzureExocomputeConfigDetails>? GlobalRegionExocomputeConfigs = null,
@@ -118,6 +124,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SubscriptionName != null ) {
             this.SubscriptionName = SubscriptionName;
+        }
+        if ( App != null ) {
+            this.App = App;
         }
         if ( ExocomputeConfigs != null ) {
             this.ExocomputeConfigs = ExocomputeConfigs;
@@ -197,6 +206,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "subscriptionName\n" ;
             } else {
                 s += ind + "subscriptionName\n" ;
+            }
+        }
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        if (this.App != null) {
+            var fspec = this.App.AsFieldSpec(conf.Child("app"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "app" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
@@ -374,6 +395,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SubscriptionName != null && ec.Excludes("subscriptionName",true))
         {
             this.SubscriptionName = null;
+        }
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        if (ec.Includes("app",false))
+        {
+            if(this.App == null) {
+
+                this.App = new AzureCloudAccountTenantApp();
+                this.App.ApplyExploratoryFieldSpec(ec.NewChild("app"));
+
+            } else {
+
+                this.App.ApplyExploratoryFieldSpec(ec.NewChild("app"));
+
+            }
+        }
+        else if (this.App != null && ec.Excludes("app",false))
+        {
+            this.App = null;
         }
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)

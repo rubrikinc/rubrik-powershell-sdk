@@ -72,6 +72,16 @@ Retrieves summary information for each of the snapshots of a specified Kubernete
 
 - There is a single argument of type QueryK8sSnapshotInput.
 - Returns K8sSnapshotSummaryListResponse.
+### recoverableclusters
+Summary of all Kubernetes recoverable clusters.
+
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filter.
+- Returns KubernetesClusterConnection.
 ### replicasnapshotinfos
 Information of all replicas for a Kubernetes snapshot.
 

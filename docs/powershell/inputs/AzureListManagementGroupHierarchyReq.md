@@ -26,3 +26,9 @@ the list is being requested.
 - searchText: System.String
   - Search text to filter out any subscriptions or management
 groups.
+- authType: AzureAuthType
+  - Auth type the discovery/migration/upgrade list is scoped to. Only honored
+when the Azure auth coexistence flag is on: ADD greys out subscriptions
+that conflict with this auth type, and MIGRATE/UPGRADE return only
+subscriptions onboarded with it. Ignored (auth type inferred from the
+session) when the flag is off.

@@ -281,6 +281,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("managedVolumeAppMetadata")]
         public ManagedVolumeAppMetadata? ManagedVolumeAppMetadata { get; set; }
 
+        //      C# -> MariadbInstanceAppMetadata? MariadbInstanceAppMetadata
+        // GraphQL -> mariadbInstanceAppMetadata: MariadbInstanceAppMetadata (type)
+        [JsonProperty("mariadbInstanceAppMetadata")]
+        public MariadbInstanceAppMetadata? MariadbInstanceAppMetadata { get; set; }
+
         //      C# -> MongoSourceAppMetadata? MongoSourceAppMetadata
         // GraphQL -> mongoSourceAppMetadata: MongoSourceAppMetadata (type)
         [JsonProperty("mongoSourceAppMetadata")]
@@ -408,6 +413,7 @@ namespace RubrikSecurityCloud.Types
         List<DataLocation>? LocalLocations = null,
         List<DataLocation>? Locations = null,
         ManagedVolumeAppMetadata? ManagedVolumeAppMetadata = null,
+        MariadbInstanceAppMetadata? MariadbInstanceAppMetadata = null,
         MongoSourceAppMetadata? MongoSourceAppMetadata = null,
         MssqlAppMetadata? MssqlAppMetadata = null,
         KosmosWorkloadAppMetadata? MysqldbInstanceAppMetadata = null,
@@ -578,6 +584,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ManagedVolumeAppMetadata != null ) {
             this.ManagedVolumeAppMetadata = ManagedVolumeAppMetadata;
+        }
+        if ( MariadbInstanceAppMetadata != null ) {
+            this.MariadbInstanceAppMetadata = MariadbInstanceAppMetadata;
         }
         if ( MongoSourceAppMetadata != null ) {
             this.MongoSourceAppMetadata = MongoSourceAppMetadata;
@@ -1160,6 +1169,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "managedVolumeAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> MariadbInstanceAppMetadata? MariadbInstanceAppMetadata
+        // GraphQL -> mariadbInstanceAppMetadata: MariadbInstanceAppMetadata (type)
+        if (this.MariadbInstanceAppMetadata != null) {
+            var fspec = this.MariadbInstanceAppMetadata.AsFieldSpec(conf.Child("mariadbInstanceAppMetadata"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "mariadbInstanceAppMetadata" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -2264,6 +2285,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManagedVolumeAppMetadata != null && ec.Excludes("managedVolumeAppMetadata",false))
         {
             this.ManagedVolumeAppMetadata = null;
+        }
+        //      C# -> MariadbInstanceAppMetadata? MariadbInstanceAppMetadata
+        // GraphQL -> mariadbInstanceAppMetadata: MariadbInstanceAppMetadata (type)
+        if (ec.Includes("mariadbInstanceAppMetadata",false))
+        {
+            if(this.MariadbInstanceAppMetadata == null) {
+
+                this.MariadbInstanceAppMetadata = new MariadbInstanceAppMetadata();
+                this.MariadbInstanceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mariadbInstanceAppMetadata"));
+
+            } else {
+
+                this.MariadbInstanceAppMetadata.ApplyExploratoryFieldSpec(ec.NewChild("mariadbInstanceAppMetadata"));
+
+            }
+        }
+        else if (this.MariadbInstanceAppMetadata != null && ec.Excludes("mariadbInstanceAppMetadata",false))
+        {
+            this.MariadbInstanceAppMetadata = null;
         }
         //      C# -> MongoSourceAppMetadata? MongoSourceAppMetadata
         // GraphQL -> mongoSourceAppMetadata: MongoSourceAppMetadata (type)

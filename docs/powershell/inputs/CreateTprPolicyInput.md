@@ -13,3 +13,6 @@ Create a TPR policy.
   - IDs of service accounts exempt from the TPR policy.
 - quorumRequirement: System.Int32
   - Quorum authorization requirement of the TPR policy.
+- isCdmEnforcementDisabled: System.Boolean
+  - Whether CDM enforcement is turned off for the policy; omit to enforce the
+policy on the CDM clusters in its scope.

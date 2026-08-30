@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DATABASE_TYPE_ORACLE")]
         DATABASE_TYPE_ORACLE,
 
+        [EnumMember(Value = "DATABASE_TYPE_SAP_HANA")]
+        DATABASE_TYPE_SAP_HANA,
+
         [EnumMember(Value = "DATABASE_TYPE_SQL")]
         DATABASE_TYPE_SQL
 

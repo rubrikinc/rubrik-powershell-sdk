@@ -239,6 +239,9 @@ organization and policy assignment (e.g., SLA Domain inheritance via tag).
 - ANTHROPIC_DEVICE - Anthropic endpoint device (workload, leaf).
 - IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).
 - IRISDB_DATABASE - IRIS database (Epic EpicCare database).
+- OPENSTACK_TAG - Openstack tag, one entity per (environment, project, Nova tag string).
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
+- K8S_POSTGRES_DATABASE - Kubernetes Postgres database.
 - FAKE_OBJECT_TYPE - Fake object type, used for testing only.
 - UNKNOWN_MANAGED_OBJECT_TYPE - Unsupported managed object type
 NB: ideally we should use 0, but we missed it.

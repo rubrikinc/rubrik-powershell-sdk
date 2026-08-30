@@ -113,6 +113,12 @@ Download file results in CSV format.
     - crawlId - System.String: Identifier of the crawl whose file results are downloaded.
     - downloadFilter - DownloadResultsCsvFiltersInput: Filters applied to the file results included in the CSV.
 - Returns DownloadResultsCsvReply.
+### salesforcepermissions
+Initiates an asynchronous job to export a ZIP report of the specified
+permissions (missing or excluded) for the Salesforce organization.
+
+- There is a single argument of type DownloadSalesforcePermissionsInput.
+- Returns DownloadSalesforcePermissionsReply.
 ### saphanasnapshot
 Download SAP HANA database snapshot from archive
 

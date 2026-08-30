@@ -13,6 +13,8 @@ AWS Exocompute configuration in a region.
   - Cluster security group ID.
 - nodeSecurityGroupId: System.String
   - Node security group ID.
+- areSecurityGroupsRscManaged: System.Boolean
+  - Specifies if the security groups are managed by Rubrik SaaS.
 - subnet1: AwsExocomputeSubnetType
   - First subnet.
 - subnet2: AwsExocomputeSubnetType
@@ -25,5 +27,3 @@ AWS Exocompute configuration in a region.
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String
   - URL of the user's PCR.
-- areSecurityGroupsRscManaged: System.Boolean
-  - Specifies if the security groups are managed by Rubrik SaaS.

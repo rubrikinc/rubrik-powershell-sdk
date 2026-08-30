@@ -62,7 +62,7 @@ By impacted, it refers to all modified/deleted files.
 - isInfrastructureAlertsEnabled: System.Boolean
   - Indicates whether this object is enrolled in infrastructure deletion
 alerting. Only populated for supported object types (e.g., AWS S3 buckets)
-when LIC_ENABLE_AWS_CRITICAL_RESOURCE_PROTECTION is enabled.
+when the critical resource protection feature is enabled.
 - cluster: Cluster
   - The Rubrik cluster associated with the workload.
 - previousPolicyObj: PolicyObj

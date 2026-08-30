@@ -7,3 +7,5 @@ Exchange activity analysis results for a user.
   - The number of calendar events for this user.
 - contactCount: System.Int64
   - The number of contacts for this user.
+- taskCount: System.Int64
+  - The number of Microsoft To Do tasks for this user.

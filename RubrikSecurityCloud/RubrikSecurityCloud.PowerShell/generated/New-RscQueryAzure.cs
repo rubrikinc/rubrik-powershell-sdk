@@ -1665,6 +1665,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
     /// 	# OPTIONAL
     /// 	searchText = $someString
+    /// 	# OPTIONAL
+    /// 	authType = $someAzureAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAuthType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2992,6 +2994,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryAzure -Operation Subnets
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
     /// # REQUIRED
@@ -5896,6 +5906,8 @@ $query.Var.input = @{
 	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
 	# OPTIONAL
 	searchText = $someString
+	# OPTIONAL
+	authType = $someAzureAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAuthType]) for enum values.
 }"
             );
         }
@@ -7181,10 +7193,22 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!): SubnetConnection!
+        // azureSubnets(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     tenantId: String!
+        //     subscriptionId: UUID!
+        //     vNetId: String!
+        //   ): SubnetConnection!
         internal void InitQueryAzureSubnets()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("tenantId", "String!"),
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("vNetId", "String!"),
@@ -7193,11 +7217,19 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryAzureSubnets",
-                "($tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
                 "SubnetConnection",
                 Query.AzureSubnets,
                 Query.AzureSubnetsFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.tenantId = $someString
 # REQUIRED
 $query.Var.subscriptionId = $someString

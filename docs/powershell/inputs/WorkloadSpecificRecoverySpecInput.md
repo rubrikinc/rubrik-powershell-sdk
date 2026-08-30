@@ -15,3 +15,5 @@ Platform-specific recovery specification.
   - Active Directory Forest Recovery specification.
 - addc: AddcRecoverySpecInput
   - Active Directory Domain Controller recovery specification.
+- hypervVm: HypervVmRecoverySpecInput
+  - HyperV virtual machine recovery specification.

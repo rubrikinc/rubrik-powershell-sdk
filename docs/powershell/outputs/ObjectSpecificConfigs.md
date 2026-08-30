@@ -43,3 +43,5 @@ Object-specific configurations.
   - SLA Domain configuration for MariaDB object.
 - icebergSlaConfig: IcebergSlaConfig
   - SLA Domain configuration for Apache Iceberg table.
+- irisdbSlaConfig: IrisdbSlaConfig
+  - SLA Domain configuration for IRIS DB instances.

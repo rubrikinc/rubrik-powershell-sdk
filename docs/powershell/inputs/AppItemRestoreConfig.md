@@ -1,0 +1,37 @@
+### AppItemRestoreConfig
+Represents the configuration for the items to be restored.
+
+- orgId: System.String
+  - ID of this workload's organization.
+- workloadId: System.String
+  - Deprecated, use itemRestoreInfo instead to specify this.
+- appItemTypeToken: System.String
+  - Deprecated, use itemRestoreInfo instead to specify this.
+- itemsToRestore: list of RestoreItemInfos
+  - Deprecated, use itemRestoreInfo instead to specify this.
+- itemCriteria: RestoreItemCriteria
+  - Deprecated, use itemRestoreInfo instead to specify this.
+- itemRestoreInfo: list of AppItemRestoreInfos
+  - List of information about the app items to be restored.
+- excludePaths: list of System.Strings
+  - List of paths that are excluded when restoring items that are cascaded from the selected items. A path is a list of appItemTypeToken as returned in the saasAppCascadingImpact query.
+- destinationOrgId: System.String
+  - The ID of the destination organization for the restore, if different from the source organization.
+- hierarchyDepth: System.Int32
+  - The maximum depth of the cascaded hierarchy. A larger value may result in a longer response time.
+- saasAppSpecificConfig: SaasAppSpecificRestoreConfig
+  - SaaS app-specific configuration for the restore.
+- shouldSkipOptionalParents: System.Boolean
+  - Optional, flag to skip optional parents during restore.
+- cascadingImpactOperationType: SaasAppsCascadingImpactOperationType
+  - Optional, operation type for the SaaS apps cascading impact job.
+- restoreDataType: RestoreDataType
+  - Optional, restore data type for the SaaS apps cascading impact job.
+- operationId: System.String
+  - Optional. Specifies the operation ID returned by the cascading job, used to retrieve cached cascading results from the metadata store.
+- fieldsToRestore: list of System.Strings
+  - Optional. The fields to restore. If specified, only these fields are restored.
+- restoreOperationType: RestoreOperationType
+  - The restore operation type for items to be restored.
+- dataMaskingConfig: DataMaskingConfigInput
+  - Optional. Configuration for data masking operations during restore. Includes data type mappings, field overrides, and exclusions.

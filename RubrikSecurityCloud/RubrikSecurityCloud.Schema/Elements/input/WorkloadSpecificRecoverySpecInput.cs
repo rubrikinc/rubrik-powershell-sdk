@@ -54,6 +54,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("addc")]
         public AddcRecoverySpecInput? Addc { get; set; }
 
+        //      C# -> HypervVmRecoverySpecInput? HypervVm
+        // GraphQL -> hypervVm: HypervVmRecoverySpecInput (input)
+        [JsonProperty("hypervVm")]
+        public HypervVmRecoverySpecInput? HypervVm { get; set; }
+
 
         #endregion
 

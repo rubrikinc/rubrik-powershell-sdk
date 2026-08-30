@@ -1,4 +1,35 @@
 ### GcpNativeDisk
+A GCP native persistent disk.
+
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- cloudNativeId: System.String
+  - GCP Native ID of the object.
+- isRelic: System.Boolean
+  - Whether the object is a relic.
+- nativeName: System.String
+  - GCP Native name of the object.
+- labels: list of Labels
+  - List of labels that are assigned to the object.
 - projectId: System.String
   - GCP project ID for the disk.
 - diskId: System.String
@@ -19,16 +50,21 @@
   - KMS key for the disk.
 - attachmentSpecs: list of GcpNativeDiskAttachmentSpecs
   - List of GCE instance details to which the disk is attached.
-- isRelic: System.Boolean
-  - Relic status of the disk.
-- labels: list of Labels
-  - Labels attached to the disk.
+- fileIndexingStatus: FileIndexingStatus
+  - Specifies the file indexing status for this GCP disk. When enabled, Rubrik
+scans the file structure within the GCP disk in a protected environment,
+where only the metadata such as folder structure, file names, and file
+sizes is accessible to Rubrik. If the status is not specified by the user,
+file indexing is automatically enabled when archival is configured.
 - isExocomputeConfigured: System.Boolean
-  - Specifies whether exocompute is configured for use by this disk. When the value is true, exocompute can be used to perform tasks like file indexing.
+  - Specifies whether exocompute is configured for use by this disk. When the
+value is true, exocompute can be used to perform tasks like file indexing.
 - gcpNativeProjectDetails: GcpNativeProjectDetails
   - Project details of the disk.
 - gcpProjectDetails: GcpNativeProjectDetails
   - Project details of the disk.
+- isProtectionOnboarded: System.Boolean
+  - Specifies whether a protection feature is onboarded for this disk.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - gcpNativeProject: GcpNativeProject
@@ -37,57 +73,34 @@
   - GCP Project of the disk.
 - attachedInstances: list of GcpNativeAttachmentDetailss
   - Instances to which the disk is attached.
-- fileIndexingStatus: FileIndexingStatus
-  - Specifies the file indexing status for this GCP disk. When enabled, Rubrik scans the file structure within the GCP disk in a protected environment, where only the metadata such as folder structure, file names, and file sizes is accessible to Rubrik. If the status is not specified by the user, file indexing is automatically enabled when archival is configured.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - effectiveRetentionSlaDomain: SlaDomain
   - Effective retention of the SLA Domain of the hierarchy object.
 - configuredSlaDomain: SlaDomain
   - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot
@@ -96,7 +109,3 @@ objects.
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
-- cloudNativeId: System.String
-  - GCP Native ID of the object.
-- nativeName: System.String
-  - GCP Native name of the object.

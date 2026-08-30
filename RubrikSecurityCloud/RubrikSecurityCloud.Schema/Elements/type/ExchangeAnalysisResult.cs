@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("emailCount")]
         public System.Int64? EmailCount { get; set; }
 
+        //      C# -> System.Int64? TaskCount
+        // GraphQL -> taskCount: Long! (scalar)
+        [JsonProperty("taskCount")]
+        public System.Int64? TaskCount { get; set; }
+
 
         #endregion
 
@@ -47,7 +52,8 @@ namespace RubrikSecurityCloud.Types
     public ExchangeAnalysisResult Set(
         System.Int64? CalendarEventCount = null,
         System.Int64? ContactCount = null,
-        System.Int64? EmailCount = null
+        System.Int64? EmailCount = null,
+        System.Int64? TaskCount = null
     ) 
     {
         if ( CalendarEventCount != null ) {
@@ -58,6 +64,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( EmailCount != null ) {
             this.EmailCount = EmailCount;
+        }
+        if ( TaskCount != null ) {
+            this.TaskCount = TaskCount;
         }
         return this;
     }
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "emailCount\n" ;
             } else {
                 s += ind + "emailCount\n" ;
+            }
+        }
+        //      C# -> System.Int64? TaskCount
+        // GraphQL -> taskCount: Long! (scalar)
+        if (this.TaskCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "taskCount\n" ;
+            } else {
+                s += ind + "taskCount\n" ;
             }
         }
         return s;
@@ -157,6 +175,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.EmailCount != null && ec.Excludes("emailCount",true))
         {
             this.EmailCount = null;
+        }
+        //      C# -> System.Int64? TaskCount
+        // GraphQL -> taskCount: Long! (scalar)
+        if (ec.Includes("taskCount",true))
+        {
+            if(this.TaskCount == null) {
+
+                this.TaskCount = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TaskCount != null && ec.Excludes("taskCount",true))
+        {
+            this.TaskCount = null;
         }
     }
 

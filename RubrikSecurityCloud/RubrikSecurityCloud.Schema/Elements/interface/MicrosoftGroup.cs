@@ -59,6 +59,56 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> System.String? GroupId
+        // GraphQL -> groupID: String! (scalar)
+        [JsonProperty("groupID")]
+        System.String? GroupId { get; set; }
+
+        //      C# -> System.String? DisplayName
+        // GraphQL -> displayName: String! (scalar)
+        [JsonProperty("displayName")]
+        System.String? DisplayName { get; set; }
+
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalID: String! (scalar)
+        [JsonProperty("naturalID")]
+        System.String? NaturalId { get; set; }
+
+        //      C# -> System.Int64? UserCount
+        // GraphQL -> userCount: Long! (scalar)
+        [JsonProperty("userCount")]
+        System.Int64? UserCount { get; set; }
+
+        //      C# -> System.Boolean? DeletedInAzure
+        // GraphQL -> deletedInAzure: Boolean! (scalar)
+        [JsonProperty("deletedInAzure")]
+        System.Boolean? DeletedInAzure { get; set; }
+
+        //      C# -> O365GroupType? GroupType
+        // GraphQL -> groupType: O365GroupType! (enum)
+        [JsonProperty("groupType")]
+        O365GroupType? GroupType { get; set; }
+
+        //      C# -> O365GroupSubType? GroupSubType
+        // GraphQL -> groupSubType: O365GroupSubType! (enum)
+        [JsonProperty("groupSubType")]
+        O365GroupSubType? GroupSubType { get; set; }
+
+        //      C# -> O365GroupMetadata? Metadata
+        // GraphQL -> metadata: O365GroupMetadata (type)
+        [JsonProperty("metadata")]
+        O365GroupMetadata? Metadata { get; set; }
+
+        //      C# -> O365ConfiguredGroupSpec? ConfiguredGroupSpecification
+        // GraphQL -> configuredGroupSpecification: O365ConfiguredGroupSpec! (type)
+        [JsonProperty("configuredGroupSpecification")]
+        O365ConfiguredGroupSpec? ConfiguredGroupSpecification { get; set; }
+
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> PolarisSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
         [JsonProperty("snapshotConnection")]
@@ -148,56 +198,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> System.String? GroupId
-        // GraphQL -> groupID: String! (scalar)
-        [JsonProperty("groupID")]
-        System.String? GroupId { get; set; }
-
-        //      C# -> System.String? DisplayName
-        // GraphQL -> displayName: String! (scalar)
-        [JsonProperty("displayName")]
-        System.String? DisplayName { get; set; }
-
-        //      C# -> System.String? NaturalId
-        // GraphQL -> naturalID: String! (scalar)
-        [JsonProperty("naturalID")]
-        System.String? NaturalId { get; set; }
-
-        //      C# -> System.Int64? UserCount
-        // GraphQL -> userCount: Long! (scalar)
-        [JsonProperty("userCount")]
-        System.Int64? UserCount { get; set; }
-
-        //      C# -> System.Boolean? DeletedInAzure
-        // GraphQL -> deletedInAzure: Boolean! (scalar)
-        [JsonProperty("deletedInAzure")]
-        System.Boolean? DeletedInAzure { get; set; }
-
-        //      C# -> O365GroupType? GroupType
-        // GraphQL -> groupType: O365GroupType! (enum)
-        [JsonProperty("groupType")]
-        O365GroupType? GroupType { get; set; }
-
-        //      C# -> O365GroupSubType? GroupSubType
-        // GraphQL -> groupSubType: O365GroupSubType! (enum)
-        [JsonProperty("groupSubType")]
-        O365GroupSubType? GroupSubType { get; set; }
-
-        //      C# -> O365GroupMetadata? Metadata
-        // GraphQL -> metadata: O365GroupMetadata (type)
-        [JsonProperty("metadata")]
-        O365GroupMetadata? Metadata { get; set; }
-
-        //      C# -> O365ConfiguredGroupSpec? ConfiguredGroupSpecification
-        // GraphQL -> configuredGroupSpecification: O365ConfiguredGroupSpec! (type)
-        [JsonProperty("configuredGroupSpecification")]
-        O365ConfiguredGroupSpec? ConfiguredGroupSpecification { get; set; }
-
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        List<Operation>? AuthorizedOperations { get; set; }
 
 
         #endregion

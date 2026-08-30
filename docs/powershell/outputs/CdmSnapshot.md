@@ -88,6 +88,8 @@ its workload type does not report the value.
   - MySQL instance-specific metadata. Null if the snapshot is not of a MySQL Instance.
 - mysqldbInstanceAppMetadataV2: MysqldbInstanceAppMetadata
   - MySQL instance-specific extended metadata with version and database info. Null if the snapshot is not of a MySQL Instance.
+- mariadbInstanceAppMetadata: MariadbInstanceAppMetadata
+  - MariaDB instance-specific metadata carrying the snapshot statistics and the full or differential snapshot type. Null if the snapshot is not of a MariaDB instance.
 - k8sAppMetadata: K8sResourceSnapshotMetadata
   - K8S specific metadata for the snapshot.
 - k8sResourceSummary: K8sSnapshotResourceSummary

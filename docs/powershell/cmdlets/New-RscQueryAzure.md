@@ -263,7 +263,8 @@ Checks if Microsoft Entra ID has relic snapshots.
 - There is a single argument of type HasRelicAzureAdSnapshotInput.
 - Returns HasRelicAzureAdSnapshotReplyType.
 ### hostedazureregions
-Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
+ListSupportedAzureRegionsV2 returns the Azure regions supported by
+Rubrik-Hosted SaaS protection for the caller's account.
 
 - The hostedazureregions subcommand takes no arguments.
 - Returns AzureRegionsResp.
@@ -528,12 +529,16 @@ List all Azure storage accounts by region.
 - There is a single argument of type AzureStorageAccountsByRegionInput.
 - Returns list of AzureStorageAccountCcprovisions.
 ### subnets
-Gets the subnets for the given subscription.
+Gets the subnets for the given VNet.
 
-- There are 3 arguments.
-    - tenantId - System.String
-    - subscriptionId - System.String
-    - vNetId - System.String
+- There are 7 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - tenantId - System.String: Azure tenant ID.
+    - subscriptionId - System.String: Azure subscription ID.
+    - vNetId - System.String: Azure VNet ID.
 - Returns SubnetConnection.
 ### subscriptions
 Gets the subscriptions for the given Azure tenant.

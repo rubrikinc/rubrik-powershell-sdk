@@ -108,6 +108,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_DEVOPS_REPOSITORY")]
         AZURE_DEVOPS_REPOSITORY,
 
+        [EnumMember(Value = "AZURE_LOCAL_SUBSCRIPTION")]
+        AZURE_LOCAL_SUBSCRIPTION,
+
         [EnumMember(Value = "AZURE_NATIVE_DISK")]
         AZURE_NATIVE_DISK,
 
@@ -354,6 +357,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,
 
+        [EnumMember(Value = "K8S_POSTGRES_DATABASE")]
+        K8S_POSTGRES_DATABASE,
+
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER")]
+        K8S_POSTGRES_DB_CLUSTER,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
 
@@ -536,6 +545,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OPENSTACK_IMAGE")]
         OPENSTACK_IMAGE,
+
+        [EnumMember(Value = "OPENSTACK_TAG")]
+        OPENSTACK_TAG,
 
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,

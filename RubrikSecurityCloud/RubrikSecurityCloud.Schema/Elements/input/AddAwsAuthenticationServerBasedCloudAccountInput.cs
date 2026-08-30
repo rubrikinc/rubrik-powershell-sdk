@@ -19,19 +19,19 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> AwsCloudType? CloudType
-        // GraphQL -> cloudType: AwsCloudType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudType")]
-        public AwsCloudType? CloudType { get; set; }
-
         //      C# -> System.String? AwsAccountName
         // GraphQL -> awsAccountName: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("awsAccountName")]
         public System.String? AwsAccountName { get; set; }
+
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("cloudType")]
+        public AwsCloudType? CloudType { get; set; }
 
         //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AwsRegions
         // GraphQL -> awsRegions: [AwsAuthServerBasedCloudAccountRegion!] (enum)
@@ -43,10 +43,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("features")]
         public List<CloudAccountFeature>? Features { get; set; }
 
-        //      C# -> System.String? NativeId
-        // GraphQL -> nativeId: String (scalar)
-        [JsonProperty("nativeId")]
-        public System.String? NativeId { get; set; }
+        //      C# -> System.String? AuthServerHostName
+        // GraphQL -> authServerHostName: String (scalar)
+        [JsonProperty("authServerHostName")]
+        public System.String? AuthServerHostName { get; set; }
 
         //      C# -> System.String? AgencyName
         // GraphQL -> agencyName: String (scalar)
@@ -57,11 +57,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> roleName: String (scalar)
         [JsonProperty("roleName")]
         public System.String? RoleName { get; set; }
-
-        //      C# -> System.String? AuthServerHostName
-        // GraphQL -> authServerHostName: String (scalar)
-        [JsonProperty("authServerHostName")]
-        public System.String? AuthServerHostName { get; set; }
 
         //      C# -> AwsAuthServerCertificateIdInput? AuthServerUserClientCertId
         // GraphQL -> authServerUserClientCertId: AwsAuthServerCertificateIdInput (input)
@@ -78,15 +73,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsCaCertId")]
         public AwsAuthServerCertificateIdInput? AwsCaCertId { get; set; }
 
-        //      C# -> List<ExternalArtifacts>? ExternalArtifactMap
-        // GraphQL -> externalArtifactMap: [ExternalArtifacts!] (input)
-        [JsonProperty("externalArtifactMap")]
-        public List<ExternalArtifacts>? ExternalArtifactMap { get; set; }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String (scalar)
+        [JsonProperty("nativeId")]
+        public System.String? NativeId { get; set; }
 
         //      C# -> List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups
         // GraphQL -> featuresWithPermissionsGroups: [FeatureWithPermissionsGroups!] (input)
         [JsonProperty("featuresWithPermissionsGroups")]
         public List<FeatureWithPermissionsGroups>? FeaturesWithPermissionsGroups { get; set; }
+
+        //      C# -> List<ExternalArtifacts>? ExternalArtifactMap
+        // GraphQL -> externalArtifactMap: [ExternalArtifacts!] (input)
+        [JsonProperty("externalArtifactMap")]
+        public List<ExternalArtifacts>? ExternalArtifactMap { get; set; }
 
 
         #endregion

@@ -35,6 +35,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ipmiIpAddress")]
         public System.String? IpmiIpAddress { get; set; }
 
+        //      C# -> System.String? NetworkZoneId
+        // GraphQL -> networkZoneId: String (scalar)
+        [JsonProperty("networkZoneId")]
+        public System.String? NetworkZoneId { get; set; }
+
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        [JsonProperty("networkZoneName")]
+        public System.String? NetworkZoneName { get; set; }
+
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         [JsonProperty("nodeId")]
@@ -58,6 +68,8 @@ namespace RubrikSecurityCloud.Types
         System.String? ClusterId = null,
         System.String? DataIpAddress = null,
         System.String? IpmiIpAddress = null,
+        System.String? NetworkZoneId = null,
+        System.String? NetworkZoneName = null,
         System.String? NodeId = null,
         DataAndManagementVlans? DataAndManagementVlans = null
     ) 
@@ -70,6 +82,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IpmiIpAddress != null ) {
             this.IpmiIpAddress = IpmiIpAddress;
+        }
+        if ( NetworkZoneId != null ) {
+            this.NetworkZoneId = NetworkZoneId;
+        }
+        if ( NetworkZoneName != null ) {
+            this.NetworkZoneName = NetworkZoneName;
         }
         if ( NodeId != null ) {
             this.NodeId = NodeId;
@@ -116,6 +134,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "ipmiIpAddress\n" ;
             } else {
                 s += ind + "ipmiIpAddress\n" ;
+            }
+        }
+        //      C# -> System.String? NetworkZoneId
+        // GraphQL -> networkZoneId: String (scalar)
+        if (this.NetworkZoneId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkZoneId\n" ;
+            } else {
+                s += ind + "networkZoneId\n" ;
+            }
+        }
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        if (this.NetworkZoneName != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "networkZoneName\n" ;
+            } else {
+                s += ind + "networkZoneName\n" ;
             }
         }
         //      C# -> System.String? NodeId
@@ -196,6 +232,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.IpmiIpAddress != null && ec.Excludes("ipmiIpAddress",true))
         {
             this.IpmiIpAddress = null;
+        }
+        //      C# -> System.String? NetworkZoneId
+        // GraphQL -> networkZoneId: String (scalar)
+        if (ec.Includes("networkZoneId",true))
+        {
+            if(this.NetworkZoneId == null) {
+
+                this.NetworkZoneId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkZoneId != null && ec.Excludes("networkZoneId",true))
+        {
+            this.NetworkZoneId = null;
+        }
+        //      C# -> System.String? NetworkZoneName
+        // GraphQL -> networkZoneName: String (scalar)
+        if (ec.Includes("networkZoneName",true))
+        {
+            if(this.NetworkZoneName == null) {
+
+                this.NetworkZoneName = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NetworkZoneName != null && ec.Excludes("networkZoneName",true))
+        {
+            this.NetworkZoneName = null;
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureCloudType")]
         public AzureCloudType? AzureCloudType { get; set; }
 
+        //      C# -> AzureNativeRegion? Region
+        // GraphQL -> region: AzureNativeRegion! (enum)
+        [JsonProperty("region")]
+        public AzureNativeRegion? Region { get; set; }
+
         //      C# -> AzureSubscriptionStatus? Status
         // GraphQL -> status: AzureSubscriptionStatus! (enum)
         [JsonProperty("status")]
@@ -56,6 +61,7 @@ namespace RubrikSecurityCloud.Types
 
     public RecoveryPlanAzureSubscription Set(
         AzureCloudType? AzureCloudType = null,
+        AzureNativeRegion? Region = null,
         AzureSubscriptionStatus? Status = null,
         System.String? Id = null,
         System.String? Name = null,
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( AzureCloudType != null ) {
             this.AzureCloudType = AzureCloudType;
+        }
+        if ( Region != null ) {
+            this.Region = Region;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "azureCloudType\n" ;
             } else {
                 s += ind + "azureCloudType\n" ;
+            }
+        }
+        //      C# -> AzureNativeRegion? Region
+        // GraphQL -> region: AzureNativeRegion! (enum)
+        if (this.Region != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
             }
         }
         //      C# -> AzureSubscriptionStatus? Status
@@ -162,6 +180,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureCloudType != null && ec.Excludes("azureCloudType",true))
         {
             this.AzureCloudType = null;
+        }
+        //      C# -> AzureNativeRegion? Region
+        // GraphQL -> region: AzureNativeRegion! (enum)
+        if (ec.Includes("region",true))
+        {
+            if(this.Region == null) {
+
+                this.Region = new AzureNativeRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> AzureSubscriptionStatus? Status
         // GraphQL -> status: AzureSubscriptionStatus! (enum)

@@ -249,16 +249,22 @@ previously performed in the GraphQL resolver `browseFolder`.
     - orgId - System.String: Org UUID.
 - Returns O365ExchangeObjectConnection.
 ### browseonedrive
-Browse OneDrive files and folders.
+BrowseOnedriveFolderItems returns the contents (folders and files) of a
+OneDrive folder inside a single snapshot. Encapsulates the snapshot-expiry
+gate, the quarantine lookup for the synthetic root, and the response
+shaping previously performed in the GraphQL resolver `browseOnedrive`.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the OneDrive workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
-    - onedriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
+    - folderId - System.String: The folder to browse. Empty means the OneDrive root,
+which is synthesized rather than fetched from the search service.
+    - onedriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
 - Returns O365OnedriveObjectConnection.
 ### browsetasks
 BrowseTaskFolderItems returns the contents (To-Do lists + tasks) of a
@@ -1315,6 +1321,8 @@ Check if the cluster has at least 1 node with its bond interfaces configured wit
     - clusterUuids - list of System.Strings: List of cluster UUIDs.
 - Returns LacpPresenceCheckConnection.
 ### lambdasettings
+Returns the anomaly detection settings for the account.
+
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
 ### laminarssodetails
@@ -1388,14 +1396,16 @@ Get multifactor authentication (MFA) settings for an account.
 ### microsoftgroups
 List of Microsoft Groups in the organization.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
     - o365OrgId - System.String: The FID for the O365 organization.
-    - microsoftObjectType - ManagedObjectType
+    - microsoftObjectType - ManagedObjectType: The type of Microsoft managed object to query.
     - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
 - Returns MicrosoftGroupConnection.
 ### microsoftsites
@@ -2235,8 +2245,17 @@ Scoped to the caller's visible objects.
 
 - The s3tablesiceberginventorystats subcommand takes no arguments.
 - Returns S3TablesIcebergInventoryStatsReply.
+### saasappcascadingimpact
+Returns the object types, and their record counts, that may be impacted or restored when restoring the selected objects. These object types and record counts are used to build the cascade selection tree. With cascadingImpactResolutionMode SYNCHRONOUS, the analysis is computed and returned inline; with ASYNCHRONOUS, it runs as a background job and returns an operationId, which is passed to saasAppCascadingImpactJobResult to poll for the result.
+
+- There are 4 arguments.
+    - saasAppType - SaasAppType: SaaS application type.
+    - restoreConfig - AppItemRestoreConfig: Configuration for the items to be restored.
+    - resolutionMode - CascadingImpactResolutionMode: The mode of cascading impact resolution. By default, the mode is set to `SYNCHRONOUS`.
+    - stateToken - System.String: Token storing the current state of the current flow.
+- Returns CascadingImpactResult.
 ### saasapporganizations
-List of SaaS app organization.
+A paginated list of SaaS app organizations.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -2682,6 +2701,8 @@ Get the session management configurations for the user account.
 - The usersessionmanagementconfig subcommand takes no arguments.
 - Returns GetUserSessionManagementConfigReply.
 ### usersettings
+Returns the settings for the specified user.
+
 - The usersettings subcommand takes no arguments.
 - Returns UserSettings.
 ### usersincurrentanddescendantorganization

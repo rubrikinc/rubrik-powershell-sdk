@@ -30,6 +30,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "APPLIED_POLICY")]
         APPLIED_POLICY,
 
+        [EnumMember(Value = "APPLIED_SSO_POLICY")]
+        APPLIED_SSO_POLICY,
+
         [EnumMember(Value = "BOUND_TO_CONFIG")]
         BOUND_TO_CONFIG,
 
@@ -38,6 +41,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "DIRECT_REPORT")]
         DIRECT_REPORT,
+
+        [EnumMember(Value = "EXTENDED_SSO_POLICY")]
+        EXTENDED_SSO_POLICY,
 
         [EnumMember(Value = "INCLUDED_IN_POLICY")]
         INCLUDED_IN_POLICY,

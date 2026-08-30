@@ -25,3 +25,5 @@ Azure Cloud Account Subscription with exocompute configurations for feature conf
   - Regions with protected objects that can be mapped to exocompute configurations.
 - managementGroup: AzureManagementGroup
   - Management group of the Azure subscription.
+- app: AzureCloudAccountTenantApp
+  - The Azure application backing this subscription, together with the authentication method it is bound to. Unset when the app cannot be resolved.

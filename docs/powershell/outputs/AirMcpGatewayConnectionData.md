@@ -4,7 +4,10 @@ MCP gateway connection data.
 - endpointUrl: System.String
   - Agent-facing gateway URL. Empty until the gateway is deployed.
 - idpTenantId: System.String
-  - Identity provider tenant the gateway federates to.
+  - Identity provider tenant the gateway federates to. Either an Entra
+tenant GUID or an Okta organization ID, so this is not UUID-typed on
+read -- matches the plain-string idp_tenant_id on
+McpGatewayConnectionDataInput.
 - mcpServerIds: list of System.Strings
   - IDs of the MCP servers attached to this gateway.
 - idpName: System.String

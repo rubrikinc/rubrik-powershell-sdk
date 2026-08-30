@@ -279,6 +279,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SOURCE_SNAPSHOT_COST")]
         SOURCE_SNAPSHOT_COST,
 
+        [EnumMember(Value = "SPARSE_AWARE_SIZE")]
+        SPARSE_AWARE_SIZE,
+
         [EnumMember(Value = "SUCCEEDED_TASK_COUNT")]
         SUCCEEDED_TASK_COUNT,
 

@@ -171,6 +171,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,
 
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER")]
+        K8S_POSTGRES_DB_CLUSTER,
+
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
 

@@ -50,6 +50,8 @@ for legacy orgs that pre-date the GHEC data residency migration.
   - Zeus provisioning lifecycle state of the GitHub organization.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
+- objectStats: DevOpsObjectStats
+  - DevOps object stats aggregated across this organization's repositories (storage, snapshot timestamps, pull request and issue counts).
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

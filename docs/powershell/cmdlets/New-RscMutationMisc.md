@@ -1122,6 +1122,17 @@ with the session ID to finalize the setup.
 
 - There is a single argument of type StartGitHubAppSetupInput.
 - Returns StartGitHubAppSetupReply.
+### startinplacedatamasking
+Initiates an asynchronous job to permanently mask sensitive field values in a
+live Salesforce organization using the specified masking template.
+
+Warning: This operation is irreversible and modifies production Salesforce
+data directly. It is distinct from restore-time masking, which masks a copy.
+
+Requires the Salesforce data masking feature to be enabled.
+
+- There is a single argument of type StartInPlaceDataMaskingInput.
+- Returns StartInPlaceDataMaskingReply.
 ### startperiodicupgradeprechecksondemandjob
 Starts an on demand periodic upgrade prechecks job in CDM cluster.
 
@@ -1132,6 +1143,12 @@ StartRecovery triggers a recovery job for the relevant recovery spec.
 
 - There is a single argument of type StartRecoveryInput.
 - Returns StartRecoveryReply.
+### startsalesforcepermissionassessment
+Initiates an asynchronous job to run an on-demand permission assessment for
+the specified Salesforce organization.
+
+- There is a single argument of type StartSalesforcePermissionAssessmentInput.
+- Returns StartSalesforcePermissionAssessmentReply.
 ### startupgradebatchjob
 Starts cdm upgrades instantly, monitors the upgrade until terminal state is reached.
 
@@ -1388,6 +1405,8 @@ Update an entry in the IP allowlist.
 - There is a single argument of type UpdateIpWhitelistEntryInput.
 - Returns System.String.
 ### updatelambdasettings
+Updates the anomaly detection settings for the account.
+
 - There are 3 arguments.
     - anomalyThreshold - System.Single: Probability threshold for anomaly detector.
     - ransomwareThreshold - System.Single: Probability threshold for ransomware detector.
@@ -1534,7 +1553,7 @@ Validate KMS input provided on O365 subscription setup.
 ### vmmakeprimary
 Make this cluster the primary for agents on a set of VMs
 
-Supported in v5.3+
+Supported in v6.0+
 Migrate the primary cluster with which the agent is able to communicate. For disaster recovery when migrating everything over from another cluster, the /host/make_primary endpoint can be used with the oldPrimaryClusterUuid parameter.
 
 - There is a single argument of type VmMakePrimaryInput.

@@ -3,37 +3,37 @@ Metadata details of a Physical Host.
 
 - cdmId: System.String
   - ID of the physical host in the Rubrik cluster.
+- clusterRelation: RbsClusterRelation
+  - The relation of the cluster to the primary cluster.
+- connectionStatus: HostConnectionStatus
+  - The connection status of the Physical Host.
 - ipAddresses: list of System.Strings
   - IP addresses associated with the Physical Host.
-- osName: System.String
-  - The name of the Physical Host's operating system.
 - isArchived: System.Boolean
   - Whether the Physical Host is archived.
+- networkThrottle: System.String
+  - Network throttle information associated with this physical host.
+- rbsUpgradeStatus: RbsUpgradeStatus
+  - RBS upgrade status of the host.
+- agentPrimaryClusterUuid: System.String
+  - The primary cluster UUID of the agent.
+- cbtStatus: System.String
+  - CBT status of this Physical Host.
+- lastSuccessfulUpgradeTime: System.String
+  - Timestamp of the last successful RBS upgrade on the host.
+- osName: System.String
+  - The name of the Physical Host's operating system.
+- rbsVersion: System.String
+  - Version of the Rubrik Backup Service (RBS) on the host.
+- resourceInfo: System.String
+  - Resource information associated with this physical host as a JSON string.
+- osType: GuestOsType
+  - The operating system type of the physical host.
 - mssqlSddDetail: MssqlSddDetail
   - Specifies the MSSQL SDD details.
 - oracleSddDetail: OracleSddDetail
   - Specifies the Oracle database Sensitive Data Monitoring details.
-- rbsUpgradeStatus: RbsUpgradeStatus
-  - RBS upgrade status of the host.
-- rbsVersion: System.String
-  - Version of the Rubrik Backup Service (RBS) on the host.
-- lastSuccessfulUpgradeTime: System.String
-  - Timestamp of the last successful RBS upgrade on the host.
 - oracleSettings: OracleSettings
   - The Oracle settings, such as the SEPS configuration associated with this host.
-- resourceInfo: System.String
-  - Resource information associated with this physical host as a JSON string.
-- networkThrottle: System.String
-  - Network throttle information associated with this physical host.
-- agentPrimaryClusterUuid: System.String
-  - The primary cluster UUID of the agent.
-- clusterRelation: RbsClusterRelation
-  - The relation of the cluster to the primary cluster.
-- osType: GuestOsType
-  - The operating system type of the physical host.
 - defaultCbt: System.Boolean
   - Default CBT status of this Physical Host.
-- cbtStatus: System.String
-  - CBT status of this Physical Host.
-- connectionStatus: HostConnectionStatus
-  - The connection status of the Physical Host.

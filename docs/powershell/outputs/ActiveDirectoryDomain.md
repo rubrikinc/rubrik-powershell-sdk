@@ -2,7 +2,7 @@
 Active Directory Domain.
 
 - cdmId: System.String
-  - ID of the Rubrik CDM cluster.
+  - ID of the Rubrik cluster.
 - domainName: System.String
   - Name of the Active Directory domain.
 - domainSid: System.String

@@ -24,3 +24,5 @@ The resource type associated with the notification.
 - HIGH_IMPACT_CHANGE - High impact change release group.
 - EXOCOMPUTE_CLUSTER - Exocompute cluster.
 - TPR_BREAK_GLASS_ENROLLMENT - Quorum Authorization break-glass approver enrollment.
+- SUPPORT_CASE - Rubrik support case.
+- ARCHIVAL_LOCATION - Data center archival location.

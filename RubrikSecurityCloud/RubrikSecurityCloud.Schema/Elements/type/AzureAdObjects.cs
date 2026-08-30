@@ -160,6 +160,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureAdUser")]
         public AzureAdUser? AzureAdUser { get; set; }
 
+        //      C# -> EntraIdClaimsMappingPolicy? EntraIdClaimsMappingPolicy
+        // GraphQL -> entraIdClaimsMappingPolicy: EntraIdClaimsMappingPolicy (type)
+        [JsonProperty("entraIdClaimsMappingPolicy")]
+        public EntraIdClaimsMappingPolicy? EntraIdClaimsMappingPolicy { get; set; }
+
+        //      C# -> EntraIdHomeRealmDiscoveryPolicy? EntraIdHomeRealmDiscoveryPolicy
+        // GraphQL -> entraIdHomeRealmDiscoveryPolicy: EntraIdHomeRealmDiscoveryPolicy (type)
+        [JsonProperty("entraIdHomeRealmDiscoveryPolicy")]
+        public EntraIdHomeRealmDiscoveryPolicy? EntraIdHomeRealmDiscoveryPolicy { get; set; }
+
+        //      C# -> EntraIdTokenIssuancePolicy? EntraIdTokenIssuancePolicy
+        // GraphQL -> entraIdTokenIssuancePolicy: EntraIdTokenIssuancePolicy (type)
+        [JsonProperty("entraIdTokenIssuancePolicy")]
+        public EntraIdTokenIssuancePolicy? EntraIdTokenIssuancePolicy { get; set; }
+
+        //      C# -> EntraIdTokenLifetimePolicy? EntraIdTokenLifetimePolicy
+        // GraphQL -> entraIdTokenLifetimePolicy: EntraIdTokenLifetimePolicy (type)
+        [JsonProperty("entraIdTokenLifetimePolicy")]
+        public EntraIdTokenLifetimePolicy? EntraIdTokenLifetimePolicy { get; set; }
+
         //      C# -> IntuneAppProtectionPolicy? IntuneAppProtectionPolicy
         // GraphQL -> intuneAppProtectionPolicy: IntuneAppProtectionPolicy (type)
         [JsonProperty("intuneAppProtectionPolicy")]
@@ -273,6 +293,10 @@ namespace RubrikSecurityCloud.Types
         AzureAdServicePrincipal? AzureAdServicePrincipal = null,
         AzureAdTermsOfUse? AzureAdTermsOfUse = null,
         AzureAdUser? AzureAdUser = null,
+        EntraIdClaimsMappingPolicy? EntraIdClaimsMappingPolicy = null,
+        EntraIdHomeRealmDiscoveryPolicy? EntraIdHomeRealmDiscoveryPolicy = null,
+        EntraIdTokenIssuancePolicy? EntraIdTokenIssuancePolicy = null,
+        EntraIdTokenLifetimePolicy? EntraIdTokenLifetimePolicy = null,
         IntuneAppProtectionPolicy? IntuneAppProtectionPolicy = null,
         IntuneAssignmentFilter? IntuneAssignmentFilter = null,
         IntuneAutopilotDeploymentProfile? IntuneAutopilotDeploymentProfile = null,
@@ -373,6 +397,18 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureAdUser != null ) {
             this.AzureAdUser = AzureAdUser;
+        }
+        if ( EntraIdClaimsMappingPolicy != null ) {
+            this.EntraIdClaimsMappingPolicy = EntraIdClaimsMappingPolicy;
+        }
+        if ( EntraIdHomeRealmDiscoveryPolicy != null ) {
+            this.EntraIdHomeRealmDiscoveryPolicy = EntraIdHomeRealmDiscoveryPolicy;
+        }
+        if ( EntraIdTokenIssuancePolicy != null ) {
+            this.EntraIdTokenIssuancePolicy = EntraIdTokenIssuancePolicy;
+        }
+        if ( EntraIdTokenLifetimePolicy != null ) {
+            this.EntraIdTokenLifetimePolicy = EntraIdTokenLifetimePolicy;
         }
         if ( IntuneAppProtectionPolicy != null ) {
             this.IntuneAppProtectionPolicy = IntuneAppProtectionPolicy;
@@ -766,6 +802,54 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureAdUser" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> EntraIdClaimsMappingPolicy? EntraIdClaimsMappingPolicy
+        // GraphQL -> entraIdClaimsMappingPolicy: EntraIdClaimsMappingPolicy (type)
+        if (this.EntraIdClaimsMappingPolicy != null) {
+            var fspec = this.EntraIdClaimsMappingPolicy.AsFieldSpec(conf.Child("entraIdClaimsMappingPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entraIdClaimsMappingPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> EntraIdHomeRealmDiscoveryPolicy? EntraIdHomeRealmDiscoveryPolicy
+        // GraphQL -> entraIdHomeRealmDiscoveryPolicy: EntraIdHomeRealmDiscoveryPolicy (type)
+        if (this.EntraIdHomeRealmDiscoveryPolicy != null) {
+            var fspec = this.EntraIdHomeRealmDiscoveryPolicy.AsFieldSpec(conf.Child("entraIdHomeRealmDiscoveryPolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entraIdHomeRealmDiscoveryPolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> EntraIdTokenIssuancePolicy? EntraIdTokenIssuancePolicy
+        // GraphQL -> entraIdTokenIssuancePolicy: EntraIdTokenIssuancePolicy (type)
+        if (this.EntraIdTokenIssuancePolicy != null) {
+            var fspec = this.EntraIdTokenIssuancePolicy.AsFieldSpec(conf.Child("entraIdTokenIssuancePolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entraIdTokenIssuancePolicy" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> EntraIdTokenLifetimePolicy? EntraIdTokenLifetimePolicy
+        // GraphQL -> entraIdTokenLifetimePolicy: EntraIdTokenLifetimePolicy (type)
+        if (this.EntraIdTokenLifetimePolicy != null) {
+            var fspec = this.EntraIdTokenLifetimePolicy.AsFieldSpec(conf.Child("entraIdTokenLifetimePolicy"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "entraIdTokenLifetimePolicy" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1487,6 +1571,82 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureAdUser != null && ec.Excludes("azureAdUser",false))
         {
             this.AzureAdUser = null;
+        }
+        //      C# -> EntraIdClaimsMappingPolicy? EntraIdClaimsMappingPolicy
+        // GraphQL -> entraIdClaimsMappingPolicy: EntraIdClaimsMappingPolicy (type)
+        if (ec.Includes("entraIdClaimsMappingPolicy",false))
+        {
+            if(this.EntraIdClaimsMappingPolicy == null) {
+
+                this.EntraIdClaimsMappingPolicy = new EntraIdClaimsMappingPolicy();
+                this.EntraIdClaimsMappingPolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdClaimsMappingPolicy"));
+
+            } else {
+
+                this.EntraIdClaimsMappingPolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdClaimsMappingPolicy"));
+
+            }
+        }
+        else if (this.EntraIdClaimsMappingPolicy != null && ec.Excludes("entraIdClaimsMappingPolicy",false))
+        {
+            this.EntraIdClaimsMappingPolicy = null;
+        }
+        //      C# -> EntraIdHomeRealmDiscoveryPolicy? EntraIdHomeRealmDiscoveryPolicy
+        // GraphQL -> entraIdHomeRealmDiscoveryPolicy: EntraIdHomeRealmDiscoveryPolicy (type)
+        if (ec.Includes("entraIdHomeRealmDiscoveryPolicy",false))
+        {
+            if(this.EntraIdHomeRealmDiscoveryPolicy == null) {
+
+                this.EntraIdHomeRealmDiscoveryPolicy = new EntraIdHomeRealmDiscoveryPolicy();
+                this.EntraIdHomeRealmDiscoveryPolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdHomeRealmDiscoveryPolicy"));
+
+            } else {
+
+                this.EntraIdHomeRealmDiscoveryPolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdHomeRealmDiscoveryPolicy"));
+
+            }
+        }
+        else if (this.EntraIdHomeRealmDiscoveryPolicy != null && ec.Excludes("entraIdHomeRealmDiscoveryPolicy",false))
+        {
+            this.EntraIdHomeRealmDiscoveryPolicy = null;
+        }
+        //      C# -> EntraIdTokenIssuancePolicy? EntraIdTokenIssuancePolicy
+        // GraphQL -> entraIdTokenIssuancePolicy: EntraIdTokenIssuancePolicy (type)
+        if (ec.Includes("entraIdTokenIssuancePolicy",false))
+        {
+            if(this.EntraIdTokenIssuancePolicy == null) {
+
+                this.EntraIdTokenIssuancePolicy = new EntraIdTokenIssuancePolicy();
+                this.EntraIdTokenIssuancePolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdTokenIssuancePolicy"));
+
+            } else {
+
+                this.EntraIdTokenIssuancePolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdTokenIssuancePolicy"));
+
+            }
+        }
+        else if (this.EntraIdTokenIssuancePolicy != null && ec.Excludes("entraIdTokenIssuancePolicy",false))
+        {
+            this.EntraIdTokenIssuancePolicy = null;
+        }
+        //      C# -> EntraIdTokenLifetimePolicy? EntraIdTokenLifetimePolicy
+        // GraphQL -> entraIdTokenLifetimePolicy: EntraIdTokenLifetimePolicy (type)
+        if (ec.Includes("entraIdTokenLifetimePolicy",false))
+        {
+            if(this.EntraIdTokenLifetimePolicy == null) {
+
+                this.EntraIdTokenLifetimePolicy = new EntraIdTokenLifetimePolicy();
+                this.EntraIdTokenLifetimePolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdTokenLifetimePolicy"));
+
+            } else {
+
+                this.EntraIdTokenLifetimePolicy.ApplyExploratoryFieldSpec(ec.NewChild("entraIdTokenLifetimePolicy"));
+
+            }
+        }
+        else if (this.EntraIdTokenLifetimePolicy != null && ec.Excludes("entraIdTokenLifetimePolicy",false))
+        {
+            this.EntraIdTokenLifetimePolicy = null;
         }
         //      C# -> IntuneAppProtectionPolicy? IntuneAppProtectionPolicy
         // GraphQL -> intuneAppProtectionPolicy: IntuneAppProtectionPolicy (type)

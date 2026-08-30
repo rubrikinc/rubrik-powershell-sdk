@@ -225,7 +225,11 @@ List of the available cluster objects.
 ### missing
 All missing clusters from the account.
 
-- There are 2 arguments.
+- There are 6 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - connectionStatus - MissingClusterConnectionStatus: Rubrik cluster connection status.
     - isExcluded - System.Boolean: Rubrik cluster exclusion status.
 - Returns MissingClusterConnection.

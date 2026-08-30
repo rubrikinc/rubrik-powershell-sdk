@@ -20,7 +20,7 @@ The specific subgroup type that defines the exact operation to be performed with
 - ENABLE_POLARIS_AS_REPLICATION_SOURCE - Enables Polaris as a replication source.
 - AWS_IAM_CUSTOMER_ACCOUNT_UPSERT - Creates or updates AWS IAM customer account configuration.
 - AWS_COMPUTE_SETTING_UPSERT - Creates or updates AWS compute settings.
-- AWS_ROLE_BASED_ARCHIVAL_LOCATION - Creates AWS role-based archival location.
+- AWS_ROLE_BASED_ARCHIVAL_LOCATION - Creates an AWS role-based archival location.
 - GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPPABLE - Assigns retention SLA to a snappable object.
 - GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT - Assigns retention SLA to a snapshot.
 - GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT_V2 - Assigns retention SLA to a snapshot using v2 API.

@@ -3,20 +3,16 @@ NAS Cloud Direct snapshot object.
 
 - id: System.String
   - Object ID.
-- cloudDirectId: System.String
-  - ID of the snapshot on the NAS Cloud Direct cluster.
 - date: DateTime
   - Timestamp of the snapshot.
 - expirationDate: DateTime
   - Date the snapshot will expire.
 - expiryHint: System.Boolean
   - Specifies whether the expiration hint is enabled.
-- clusterUuid: System.String
-  - NAS Cloud Direct cluster ID.
-- systemId: System.String
-  - ID of the NAS Cloud Direct System.
-- protocol: CloudDirectSnapshotProtocolType
-  - Protocol of the NAS Cloud Direct snapshot.
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
+- snappableId: System.String
+  - The workload ID of the snapshot.
 - isCorrupted: System.Boolean
   - Specifies whether the snapshot is corrupted.
 - indexingAttempts: System.Int64
@@ -27,45 +23,49 @@ NAS Cloud Direct snapshot object.
   - Specifies whether the snapshot can be unindexed.
 - isOnDemandSnapshot: System.Boolean
   - Specifies if the snapshot is on-demand.
-- completed: DateTime
-  - Time snapshot completed.
-- state: CloudDirectSnapshotSateType
-  - State of snapshot on NAS Cloud Direct.
-- type: CloudDirectSnapshotType
-  - Type of snapshot for NAS Cloud Direct.
-- policyName: System.String
-  - Name of policy assigned to the snapshot in NAS Cloud Direct.
-- summary: CloudDirectSnapshotSummary
-  - Summary of statistics for this snapshot.
-- isCustomRetentionApplied: System.Boolean
-  - Specifies whether the snapshot uses a custom retention period.
-- userExclusionDetails: CloudDirectExclusionSummary
-  - Summary of user-defined exclusions for this snapshot.
-- workloadId: System.String
-  - Rubrik ID of NAS Cloud Direct workload.
-- snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo
-  - Snapshot retention-related information.
-- slaDomain: SlaDomain
-  - SLA Domain of the snapshot.
-- pendingSla: SlaDomain
-  - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
-- isDownloadedSnapshot: System.Boolean
-  - Specifies whether the snapshot was downloaded.
+- isQuarantineProcessing: System.Boolean
+  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
 - isQuarantined: System.Boolean
   - Specifies whether the snapshot is quarantined.
 - isAnomaly: System.Boolean
   - Flag if the snapshot is an anomaly.
-- isQuarantineProcessing: System.Boolean
-  - Specifies whether RSC is processing the snapshot to determine its quarantine state.
+- cloudDirectId: System.String
+  - ID of the snapshot on the NAS Cloud Direct cluster.
+- clusterUuid: System.String
+  - NAS Cloud Direct cluster ID.
+- completed: DateTime
+  - Time snapshot completed.
+- isCustomRetentionApplied: System.Boolean
+  - Specifies whether the snapshot uses a custom retention period.
+- isDownloadedSnapshot: System.Boolean
+  - Specifies whether the snapshot was downloaded.
+- policyName: System.String
+  - Name of policy assigned to the snapshot in NAS Cloud Direct.
+- protocol: CloudDirectSnapshotProtocolType
+  - Protocol of the NAS Cloud Direct snapshot.
+- snapshotRetentionInfo: CloudDirectSnapshotRetentionInfo
+  - Snapshot retention-related information.
+- state: CloudDirectSnapshotSateType
+  - State of snapshot on NAS Cloud Direct.
+- summary: CloudDirectSnapshotSummary
+  - Summary of statistics for this snapshot.
+- systemId: System.String
+  - ID of the NAS Cloud Direct System.
 - target: System.String
   - The name of the target associated with this snapshot.
 - targetId: System.String
   - The ID of the target associated with this snapshot.
-- object: CloudDirectNasObject
-  - NAS Cloud Direct object (Bucket or Share) to which this snapshot belongs.
+- type: CloudDirectSnapshotType
+  - Type of snapshot for NAS Cloud Direct.
+- userExclusionDetails: CloudDirectExclusionSummary
+  - Summary of user-defined exclusions for this snapshot.
+- workloadId: System.String
+  - Rubrik ID of NAS Cloud Direct workload.
+- slaDomain: SlaDomain
+  - SLA Domain of the snapshot.
+- pendingSla: SlaDomain
+  - Specifies that the SLA Domain assignment is pending for this snapshot. The field is non-null when a user has assigned an SLA Domain, and the assignment is still in progress.
 - latestUserNote: LatestUserNote
   - Latest user note information.
-- isExpired: System.Boolean
-  - Specifies whether or not the snapshot is expired.
-- snappableId: System.String
-  - The workload ID of the snapshot.
+- object: CloudDirectNasObject
+  - NAS Cloud Direct object (Bucket or Share) to which this snapshot belongs.

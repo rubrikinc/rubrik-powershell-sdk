@@ -87,3 +87,11 @@ Entra ID object.
   - Access review schedule definition object.
 - azureAdGroupActiveAssignment: AzureAdGroupActiveAssignment
   - PIM group active assignment object.
+- entraIdClaimsMappingPolicy: EntraIdClaimsMappingPolicy
+  - Claims mapping policy object.
+- entraIdTokenIssuancePolicy: EntraIdTokenIssuancePolicy
+  - Token issuance policy object.
+- entraIdTokenLifetimePolicy: EntraIdTokenLifetimePolicy
+  - Token lifetime policy object.
+- entraIdHomeRealmDiscoveryPolicy: EntraIdHomeRealmDiscoveryPolicy
+  - Home realm discovery policy object.

@@ -1,5 +1,5 @@
 ### AzureNetworkSecurityGroupResp
-
+Response for CheckNetworkSecurityGroupOutboundRules.
 
 - rulesStatus: AzureNetworkSecurityRulesStatus
   - The network security rules status.

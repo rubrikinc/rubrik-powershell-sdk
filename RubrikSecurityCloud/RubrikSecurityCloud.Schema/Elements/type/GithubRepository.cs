@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectPauseStatus")]
         public ObjectPauseStatus? ObjectPauseStatus { get; set; }
 
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        [JsonProperty("objectStats")]
+        public DevOpsObjectStats? ObjectStats { get; set; }
+
         //      C# -> PolarisSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
         [JsonProperty("oldestSnapshot")]
@@ -320,6 +325,7 @@ namespace RubrikSecurityCloud.Types
         PolarisSnapshot? NewestSnapshot = null,
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
+        DevOpsObjectStats? ObjectStats = null,
         PolarisSnapshot? OldestSnapshot = null,
         List<PathNode>? PhysicalPath = null,
         CompactSlaDomain? RscNativeObjectPendingSla = null,
@@ -402,6 +408,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ObjectPauseStatus != null ) {
             this.ObjectPauseStatus = ObjectPauseStatus;
+        }
+        if ( ObjectStats != null ) {
+            this.ObjectStats = ObjectStats;
         }
         if ( OldestSnapshot != null ) {
             this.OldestSnapshot = OldestSnapshot;
@@ -693,6 +702,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "objectPauseStatus" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        if (this.ObjectStats != null) {
+            var fspec = this.ObjectStats.AsFieldSpec(conf.Child("objectStats"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "objectStats" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1255,6 +1276,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.ObjectPauseStatus != null && ec.Excludes("objectPauseStatus",false))
         {
             this.ObjectPauseStatus = null;
+        }
+        //      C# -> DevOpsObjectStats? ObjectStats
+        // GraphQL -> objectStats: DevOpsObjectStats (type)
+        if (ec.Includes("objectStats",false))
+        {
+            if(this.ObjectStats == null) {
+
+                this.ObjectStats = new DevOpsObjectStats();
+                this.ObjectStats.ApplyExploratoryFieldSpec(ec.NewChild("objectStats"));
+
+            } else {
+
+                this.ObjectStats.ApplyExploratoryFieldSpec(ec.NewChild("objectStats"));
+
+            }
+        }
+        else if (this.ObjectStats != null && ec.Excludes("objectStats",false))
+        {
+            this.ObjectStats = null;
         }
         //      C# -> PolarisSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: PolarisSnapshot (type)

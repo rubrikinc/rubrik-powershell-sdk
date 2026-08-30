@@ -5,3 +5,4 @@ Type of database.
 - DATABASE_TYPE_D_B2
 - DATABASE_TYPE_ORACLE - The database is an Oracle database.
 - DATABASE_TYPE_SQL - The database is a SQL Server database.
+- DATABASE_TYPE_SAP_HANA - The database is an SAP HANA database.

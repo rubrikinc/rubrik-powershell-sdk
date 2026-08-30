@@ -521,6 +521,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	quorumRequirement = $someInt
+    /// 	# OPTIONAL
+    /// 	isCdmEnforcementDisabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -2393,6 +2395,8 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	quorumRequirement = $someInt
+	# OPTIONAL
+	isCdmEnforcementDisabled = $someBoolean
 }"
             );
         }

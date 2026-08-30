@@ -115,3 +115,4 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - ANTHROPIC_DEVICE - Anthropic device.
 - AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps Developer Collaboration.
 - IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.

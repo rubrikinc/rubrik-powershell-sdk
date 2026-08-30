@@ -1,7 +1,7 @@
 ### ExternalArtifacts
-Key value pair for external artifacts associated with an AWS account.
+A map of an AWS artifact to its value.
 
 - externalArtifactKey: AwsCloudExternalArtifact
-  - Keyword for external artifacts.
+  - Keyword for external artifact.
 - externalArtifactValue: System.String
   - AWS unique identifier of the external artifact.

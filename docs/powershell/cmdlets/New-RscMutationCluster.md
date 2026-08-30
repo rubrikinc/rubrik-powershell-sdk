@@ -155,7 +155,7 @@ Initiates a job to mount the snapshot to the given host. The GET /postgresql/db_
 - There is a single argument of type RestorePostgresDbClusterSnapshotInput.
 - Returns RestorePostgresDbClusterSnapshotResponse.
 ### setmissingclusterstatus
-Update missing cluster connection status.
+Updates the connection status of a missing cluster.
 
 - There is a single argument of type SetMissingClusterStatusInput.
 - Returns SetMissingClusterStatusReply.

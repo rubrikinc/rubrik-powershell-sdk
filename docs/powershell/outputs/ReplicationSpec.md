@@ -1,5 +1,5 @@
 ### ReplicationSpec
-Replication specification.
+Replication specification. Use ReplicationSpecV2 instead.
 
 - replicationType: ReplicationType
   - Type of replication.

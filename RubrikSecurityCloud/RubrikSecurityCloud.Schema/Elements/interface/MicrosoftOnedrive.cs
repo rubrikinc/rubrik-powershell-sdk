@@ -59,6 +59,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> System.String? UserPrincipalName
+        // GraphQL -> userPrincipalName: String! (scalar)
+        [JsonProperty("userPrincipalName")]
+        System.String? UserPrincipalName { get; set; }
+
+        //      C# -> System.String? PreferredDataLocation
+        // GraphQL -> preferredDataLocation: String! (scalar)
+        [JsonProperty("preferredDataLocation")]
+        System.String? PreferredDataLocation { get; set; }
+
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> PolarisSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
         [JsonProperty("snapshotConnection")]
@@ -148,21 +163,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> System.String? UserPrincipalName
-        // GraphQL -> userPrincipalName: String! (scalar)
-        [JsonProperty("userPrincipalName")]
-        System.String? UserPrincipalName { get; set; }
-
-        //      C# -> System.String? PreferredDataLocation
-        // GraphQL -> preferredDataLocation: String! (scalar)
-        [JsonProperty("preferredDataLocation")]
-        System.String? PreferredDataLocation { get; set; }
-
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        List<Operation>? AuthorizedOperations { get; set; }
 
 
         #endregion

@@ -1,7 +1,7 @@
 ### PermissionsGroupWithVersionInput
-Azure permissions group with its associated version number.
+Represents a permissions group with its version.
 
 - permissionsGroup: PermissionsGroup
-  - Azure cloud account permissions group.
+  - Represents the permissions group.
 - version: System.Int32
-  - Policy version of the permissions group. If a policy version is not specified, the latest version will be used.
+  - Represents the version of the permissions group.

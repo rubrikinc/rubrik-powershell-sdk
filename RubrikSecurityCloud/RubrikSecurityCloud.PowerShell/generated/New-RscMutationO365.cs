@@ -1706,6 +1706,35 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			unused = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		tasksRestoreConfig = @{
+    /// 			# REQUIRED
+    /// 			tasksToRestore = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					taskId = $someString
+    /// 					# REQUIRED
+    /// 					snapshotId = $someString
+    /// 					# REQUIRED
+    /// 					snapshotNum = $someInt
+    /// 					# REQUIRED
+    /// 					sourceTaskListId = $someString
+    /// 				}
+    /// 			)
+    /// 			# REQUIRED
+    /// 			taskListsToRestore = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					listId = $someString
+    /// 					# REQUIRED
+    /// 					name = $someString
+    /// 					# REQUIRED
+    /// 					snapshotId = $someString
+    /// 					# REQUIRED
+    /// 					snapshotNum = $someInt
+    /// 				}
+    /// 			)
+    /// 		}
     /// 	}
     /// }
     /// 
@@ -4165,6 +4194,35 @@ $query.Var.input = @{
 		relicRestoreConfig = @{
 			# OPTIONAL
 			unused = $someBoolean
+		}
+		# OPTIONAL
+		tasksRestoreConfig = @{
+			# REQUIRED
+			tasksToRestore = @(
+				@{
+					# REQUIRED
+					taskId = $someString
+					# REQUIRED
+					snapshotId = $someString
+					# REQUIRED
+					snapshotNum = $someInt
+					# REQUIRED
+					sourceTaskListId = $someString
+				}
+			)
+			# REQUIRED
+			taskListsToRestore = @(
+				@{
+					# REQUIRED
+					listId = $someString
+					# REQUIRED
+					name = $someString
+					# REQUIRED
+					snapshotId = $someString
+					# REQUIRED
+					snapshotNum = $someInt
+				}
+			)
 		}
 	}
 }"

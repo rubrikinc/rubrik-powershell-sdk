@@ -18,11 +18,17 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "BACKFILL_ONBOARDING")]
+        BACKFILL_ONBOARDING,
+
         [EnumMember(Value = "DAY_TO_DAY_MODE")]
         DAY_TO_DAY_MODE,
 
         [EnumMember(Value = "ONBOARDING_MODE")]
-        ONBOARDING_MODE
+        ONBOARDING_MODE,
+
+        [EnumMember(Value = "PRIORITIZED_ONBOARDING")]
+        PRIORITIZED_ONBOARDING
 
 
     } // enum M365DashboardOperationMode

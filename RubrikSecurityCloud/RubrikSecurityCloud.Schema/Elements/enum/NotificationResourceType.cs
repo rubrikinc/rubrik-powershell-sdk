@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ARCHIVAL_LOCATION")]
+        ARCHIVAL_LOCATION,
+
         [EnumMember(Value = "AWS_PRIVATE_CONTAINER_REGISTRY")]
         AWS_PRIVATE_CONTAINER_REGISTRY,
 
@@ -77,6 +80,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SLA_AUTO_MIGRATION")]
         SLA_AUTO_MIGRATION,
+
+        [EnumMember(Value = "SUPPORT_CASE")]
+        SUPPORT_CASE,
 
         [EnumMember(Value = "THREAT_MONITORING_MATCH")]
         THREAT_MONITORING_MATCH,

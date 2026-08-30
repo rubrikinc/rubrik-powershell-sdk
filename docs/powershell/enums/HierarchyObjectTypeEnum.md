@@ -239,3 +239,6 @@ Hierarchy object type enum covering all CDM and RSC hierarchy objects.
 - ANTHROPIC_DEVICE - Anthropic endpoint device (workload, leaf).
 - IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).
 - IRISDB_DATABASE - IRIS database (a single IRIS database within an instance).
+- OPENSTACK_TAG - OpenStack tag.
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
+- K8S_POSTGRES_DATABASE - Kubernetes Postgres database.

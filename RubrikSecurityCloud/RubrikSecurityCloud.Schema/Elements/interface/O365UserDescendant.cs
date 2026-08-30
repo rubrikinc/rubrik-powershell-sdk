@@ -69,6 +69,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("rscPendingObjectPauseAssignment")]
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment { get; set; }
 
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -118,11 +123,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
         List<Org>? AllOrgs { get; set; }
-
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        List<Operation>? AuthorizedOperations { get; set; }
 
 
         #endregion

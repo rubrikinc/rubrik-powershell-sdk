@@ -71,14 +71,14 @@ Anomaly analysis report from lambda service.
   - The category this anomaly is grouped under for filtering.
 - cloudAuditEvent: CloudAuditEvent
   - The cloud provider audit log entry that recorded the deletion of the object. This field is only populated for AWS S3 buckets when the anomaly type is INFRASTRUCTURE_DELETION.
-- severity: ActivitySeverityEnum
-  - Severity of the anomaly.
-- objectType: ObjectTypeEnum
-  - The type of the object.
 - cluster: Cluster
   - The Rubrik cluster of the object.
 - location: System.String
   - The location of the object.
+- objectType: ObjectTypeEnum
+  - The type of the object.
+- severity: ActivitySeverityEnum
+  - Severity of the anomaly.
 - snapshot: CdmSnapshot
   - The analyzed snapshot.
 - previousSnapshot: CdmSnapshot

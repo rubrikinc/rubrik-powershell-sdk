@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RSCP")]
         RSCP,
 
+        [EnumMember(Value = "RSCP_VM")]
+        RSCP_VM,
+
         [EnumMember(Value = "UNSPECIFIED")]
         UNSPECIFIED
 

@@ -88,9 +88,9 @@ cluster. Null when the source cluster is unknown.
 - recoverableRanges: list of KosmosWorkloadRecoverableRanges
   - The recovery ranges for the current workload.
 - cdmId: System.String
-  - The ID of the workload on the Rubrik CDM cluster.
+  - The ID of the workload on the Rubrik cluster.
 - cdmLink: System.String
-  - A link to view the workload on the CDM cluster. For dev use only.
+  - A link to view the workload on the Rubrik cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
@@ -98,9 +98,9 @@ cluster. Null when the source cluster is unknown.
 - snapshotConnection: CdmSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: CdmSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestIndexedSnapshot: CdmSnapshot
   - The most recent indexed snapshot of this workload.
 - newestSnapshot: CdmSnapshot
@@ -112,4 +112,4 @@ cluster. Null when the source cluster is unknown.
 - newestArchivedSnapshot: CdmSnapshot
   - The newest snapshot archived to AWS.
 - newestReplicatedSnapshot: CdmSnapshot
-  - The newest snapshot replicated to a cluster.
+  - The newest snapshot replicated to a Rubrik cluster.

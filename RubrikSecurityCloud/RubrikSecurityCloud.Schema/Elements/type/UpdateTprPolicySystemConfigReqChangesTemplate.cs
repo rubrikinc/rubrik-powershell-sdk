@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("globalTprRules")]
         public TprRequestedChangeTprRuleEntry? GlobalTprRules { get; set; }
 
+        //      C# -> TprRequestedChangeEntry? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: TprRequestedChangeEntry (type)
+        [JsonProperty("isCdmEnforcementDisabled")]
+        public TprRequestedChangeEntry? IsCdmEnforcementDisabled { get; set; }
+
         //      C# -> TprRequestedChangeEntry? QuorumRequirement
         // GraphQL -> quorumRequirement: TprRequestedChangeEntry (type)
         [JsonProperty("quorumRequirement")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         TprRequestedChangeTprRuleEntry? ClusterTprRules = null,
         TprRequestedChangeServiceAccountEntry? ExemptServiceAccounts = null,
         TprRequestedChangeTprRuleEntry? GlobalTprRules = null,
+        TprRequestedChangeEntry? IsCdmEnforcementDisabled = null,
         TprRequestedChangeEntry? QuorumRequirement = null,
         TprRequestedChangeClusterSummaryEntry? SelectedClusters = null
     ) 
@@ -80,6 +86,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( GlobalTprRules != null ) {
             this.GlobalTprRules = GlobalTprRules;
+        }
+        if ( IsCdmEnforcementDisabled != null ) {
+            this.IsCdmEnforcementDisabled = IsCdmEnforcementDisabled;
         }
         if ( QuorumRequirement != null ) {
             this.QuorumRequirement = QuorumRequirement;
@@ -143,6 +152,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "globalTprRules" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> TprRequestedChangeEntry? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: TprRequestedChangeEntry (type)
+        if (this.IsCdmEnforcementDisabled != null) {
+            var fspec = this.IsCdmEnforcementDisabled.AsFieldSpec(conf.Child("isCdmEnforcementDisabled"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "isCdmEnforcementDisabled" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -250,6 +271,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.GlobalTprRules != null && ec.Excludes("globalTprRules",false))
         {
             this.GlobalTprRules = null;
+        }
+        //      C# -> TprRequestedChangeEntry? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: TprRequestedChangeEntry (type)
+        if (ec.Includes("isCdmEnforcementDisabled",false))
+        {
+            if(this.IsCdmEnforcementDisabled == null) {
+
+                this.IsCdmEnforcementDisabled = new TprRequestedChangeEntry();
+                this.IsCdmEnforcementDisabled.ApplyExploratoryFieldSpec(ec.NewChild("isCdmEnforcementDisabled"));
+
+            } else {
+
+                this.IsCdmEnforcementDisabled.ApplyExploratoryFieldSpec(ec.NewChild("isCdmEnforcementDisabled"));
+
+            }
+        }
+        else if (this.IsCdmEnforcementDisabled != null && ec.Excludes("isCdmEnforcementDisabled",false))
+        {
+            this.IsCdmEnforcementDisabled = null;
         }
         //      C# -> TprRequestedChangeEntry? QuorumRequirement
         // GraphQL -> quorumRequirement: TprRequestedChangeEntry (type)

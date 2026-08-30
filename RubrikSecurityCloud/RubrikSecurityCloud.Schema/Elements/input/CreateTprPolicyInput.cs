@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("quorumRequirement")]
         public System.Int32? QuorumRequirement { get; set; }
 
+        //      C# -> System.Boolean? IsCdmEnforcementDisabled
+        // GraphQL -> isCdmEnforcementDisabled: Boolean (scalar)
+        [JsonProperty("isCdmEnforcementDisabled")]
+        public System.Boolean? IsCdmEnforcementDisabled { get; set; }
+
 
         #endregion
 

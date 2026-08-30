@@ -10027,6 +10027,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadSalesforcePermissionsReply? DownloadSalesforcePermissions
+        // GraphQL -> downloadSalesforcePermissions: DownloadSalesforcePermissionsReply! (type)
+        public static string DownloadSalesforcePermissions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadSalesforcePermissions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadSalesforcePermissionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadSalesforcePermissionsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DownloadSapHanaSnapshot
         // GraphQL -> downloadSapHanaSnapshot: AsyncRequestStatus! (type)
         public static string DownloadSapHanaSnapshot(object fsObj)
@@ -14725,6 +14743,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> StartInPlaceDataMaskingReply? StartInPlaceDataMasking
+        // GraphQL -> startInPlaceDataMasking: StartInPlaceDataMaskingReply! (type)
+        public static string StartInPlaceDataMasking(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startInPlaceDataMasking" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartInPlaceDataMaskingFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartInPlaceDataMaskingReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? StartK8sDiagnosticsJob
         // GraphQL -> startK8sDiagnosticsJob: AsyncRequestStatus! (type)
         public static string StartK8sDiagnosticsJob(object fsObj)
@@ -14901,6 +14937,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartSalesforcePermissionAssessmentReply? StartSalesforcePermissionAssessment
+        // GraphQL -> startSalesforcePermissionAssessment: StartSalesforcePermissionAssessmentReply! (type)
+        public static string StartSalesforcePermissionAssessment(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startSalesforcePermissionAssessment" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartSalesforcePermissionAssessmentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartSalesforcePermissionAssessmentReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

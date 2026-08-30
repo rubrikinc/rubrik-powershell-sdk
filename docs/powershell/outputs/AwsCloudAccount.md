@@ -1,18 +1,18 @@
 ### AwsCloudAccount
-Details of AWS account.
+Details of the AWS account.
 
 - id: System.String
-  - Rubrik ID of cloud account.
+  - Rubrik ID of the cloud account.
 - nativeId: System.String
-  - Native ID of cloud account.
+  - Native ID of the cloud account.
 - accountName: System.String
-  - Name of cloud account.
+  - Name of the cloud account.
 - message: System.String
-  - Message for cloud account, in case of error.
+  - Message for the cloud account, in case of an error.
 - seamlessFlowEnabled: System.Boolean
-  - Whether seamless flow is enabled on cloud account.
+  - Whether seamless flow is enabled on the cloud account.
 - cloudType: AwsCloudType
-  - Type of cloud account.
+  - Type of the cloud account.
 - orgName: System.String
   - The AWS organization name with which you onboarded the AWS account.
 - outpostAwsNativeId: System.String

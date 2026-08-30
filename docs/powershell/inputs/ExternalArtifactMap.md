@@ -1,7 +1,7 @@
 ### ExternalArtifactMap
-Key value pair for external artifacts associated with an AWS account.
+A map of an AWS artifact to its value for feature artifact registration.
 
-- externalArtifactValue: System.String
-  - AWS unique identifier of the external artifact.
 - externalArtifactKey: AwsCloudExternalArtifact
   - Keyword for external artifacts.
+- externalArtifactValue: System.String
+  - AWS unique identifier of the external artifact.

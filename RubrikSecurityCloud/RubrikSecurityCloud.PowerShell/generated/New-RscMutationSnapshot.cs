@@ -1028,6 +1028,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				hostId = $someString
     /// 				# REQUIRED
     /// 				snapshotId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryMethod = $someRecoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryMethod]) for enum values.
+    /// 				# OPTIONAL
+    /// 				dsrmAdminPassword = $someString
     /// 			}
     /// 		)
     /// 		# REQUIRED
@@ -1160,8 +1164,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotFid = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -1182,6 +1184,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	deltaTypeFilter = @(
     /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotFid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2818,6 +2822,10 @@ $query.Var.input = @{
 				hostId = $someString
 				# REQUIRED
 				snapshotId = $someString
+				# OPTIONAL
+				recoveryMethod = $someRecoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryMethod]) for enum values.
+				# OPTIONAL
+				dsrmAdminPassword = $someString
 			}
 		)
 		# REQUIRED
@@ -2926,8 +2934,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
-	# OPTIONAL
-	nextSnapshotFid = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -2948,6 +2954,8 @@ $query.Var.input = @{
 	deltaTypeFilter = @(
 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 	)
+	# OPTIONAL
+	nextSnapshotFid = $someString
 }"
             );
         }

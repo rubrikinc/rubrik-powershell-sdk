@@ -26,17 +26,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsCloudAccountId")]
         public System.String? AwsCloudAccountId { get; set; }
 
+        //      C# -> AwsRegionsInput? AwsRegions
+        // GraphQL -> awsRegions: AwsRegionsInput (input)
+        [JsonProperty("awsRegions")]
+        public AwsRegionsInput? AwsRegions { get; set; }
+
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("feature")]
         public CloudAccountFeature? Feature { get; set; }
-
-        //      C# -> AwsRegionsInput? AwsRegions
-        // GraphQL -> awsRegions: AwsRegionsInput (input)
-        [JsonProperty("awsRegions")]
-        public AwsRegionsInput? AwsRegions { get; set; }
 
         //      C# -> AwsUserKeysInput? AwsUserKeys
         // GraphQL -> awsUserKeys: AwsUserKeysInput (input)

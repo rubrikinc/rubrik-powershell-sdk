@@ -158,12 +158,18 @@ for (1..10 entries).
 filter (posted time/by, keyword, etc.).
 - Returns O365TeamsConversationsConnection.
 ### teamsdrivesearch
-- There are 7 arguments.
+Returns Teams drive folders and files for the given Teams workload across
+all snapshots, merged as a single O365OnedriveObject interface list
+(folders then files), each stamped with its snapshot's time.
+
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the Teams workload.
     - orgId - System.String: Org UUID.
-    - channelId - System.String
-    - channelFolderName - System.String
-    - teamsDriveSearchFilter - OnedriveSearchFilter
+    - channelId - System.String: Optional Teams channel id; requires channelFolderName.
+    - channelFolderName - System.String: Optional Teams channel folder name.
+    - teamsDriveSearchFilter - OnedriveSearchFilter: Optional drive search filter.
 - Returns O365OnedriveObjectConnection.

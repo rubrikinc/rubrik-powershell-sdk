@@ -35,3 +35,6 @@ Rubrik cluster node.
   - Sub-status of the Rubrik cluster node providing additional status details.
 - lastStatusChangeTime: DateTime
   - Timestamp of the last status change for the node.
+- assetId: System.String
+  - Hardware serial number of the node. Absent for virtual and cloud nodes,
+and for Rubrik clusters below CDM 9.7.0.

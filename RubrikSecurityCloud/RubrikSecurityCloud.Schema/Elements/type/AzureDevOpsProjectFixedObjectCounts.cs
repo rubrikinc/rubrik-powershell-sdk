@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("error")]
         public System.String? Error { get; set; }
 
+        //      C# -> System.Int32? PullRequestCount
+        // GraphQL -> pullRequestCount: Int (scalar)
+        [JsonProperty("pullRequestCount")]
+        public System.Int32? PullRequestCount { get; set; }
+
         //      C# -> System.Int32? WikiCount
         // GraphQL -> wikiCount: Int (scalar)
         [JsonProperty("wikiCount")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public AzureDevOpsProjectFixedObjectCounts Set(
         System.String? Error = null,
+        System.Int32? PullRequestCount = null,
         System.Int32? WikiCount = null,
         System.Int32? WorkItemCount = null
     ) 
     {
         if ( Error != null ) {
             this.Error = Error;
+        }
+        if ( PullRequestCount != null ) {
+            this.PullRequestCount = PullRequestCount;
         }
         if ( WikiCount != null ) {
             this.WikiCount = WikiCount;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "error\n" ;
             } else {
                 s += ind + "error\n" ;
+            }
+        }
+        //      C# -> System.Int32? PullRequestCount
+        // GraphQL -> pullRequestCount: Int (scalar)
+        if (this.PullRequestCount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "pullRequestCount\n" ;
+            } else {
+                s += ind + "pullRequestCount\n" ;
             }
         }
         //      C# -> System.Int32? WikiCount
@@ -123,6 +141,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Error != null && ec.Excludes("error",true))
         {
             this.Error = null;
+        }
+        //      C# -> System.Int32? PullRequestCount
+        // GraphQL -> pullRequestCount: Int (scalar)
+        if (ec.Includes("pullRequestCount",true))
+        {
+            if(this.PullRequestCount == null) {
+
+                this.PullRequestCount = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PullRequestCount != null && ec.Excludes("pullRequestCount",true))
+        {
+            this.PullRequestCount = null;
         }
         //      C# -> System.Int32? WikiCount
         // GraphQL -> wikiCount: Int (scalar)

@@ -30,3 +30,5 @@ tag referenced by an Intune role assignment.
 - REVIEWER_OF - Access Review schedule definition on which the principal (User or Group) is a reviewer or fallback reviewer, either top-level or within stageSettings.
 - NOTIFICATION_RECIPIENT_OF - Access Review schedule definition for which the principal (User or Group) is an additional notification recipient.
 - DIRECT_REPORT - Direct report of a manager.
+- APPLIED_SSO_POLICY - Service principal or application that an SSO policy applies to.
+- EXTENDED_SSO_POLICY - Application that owns a directory extension used by a claims mapping policy.

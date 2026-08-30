@@ -1,21 +1,26 @@
 ### AwsAccountValidationResponse
-Validate given aws accounts.
+Details of the AWS account.
 
+- id: System.String
+  - Rubrik ID of the cloud account.
 - nativeId: System.String
-  - AWS account native ID.
+  - Native ID of the cloud account.
 - accountName: System.String
-  - AWS account name.
+  - Name of the cloud account.
 - message: System.String
-  - AWS account validation response message.
+  - Message for the cloud account, in case of an error.
 - seamlessFlowEnabled: System.Boolean
-  - Specfies whether seamless flow is enabled for this AWS account.
+  - Whether seamless flow is enabled on the cloud account.
 - cloudType: AwsCloudType
-  - AWS account cloud type.
+  - Type of the cloud account.
 - orgName: System.String
   - The AWS organization name with which you onboarded the AWS account.
 - outpostAwsNativeId: System.String
   - Native ID of the AWS Outpost account.
 - orgId: System.String
   - The UUID of the onboarded AWS organization.
+- serviceType: AwsCloudAccountServiceType
+  - Service type indicating whether the account is onboarded for BaaS or
+non-BaaS use case.
 - crossAccountRoleModel: CrossAccountRoleModel
-  - The cross-account role model for this account (SINGLE_ROLE or MULTI_ROLE).
+  - Cross-account role model: SINGLE_ROLE or MULTI_ROLE.

@@ -1,5 +1,5 @@
 ### GroupByFieldEnum
-- ComplianceStatus
+- ComplianceStatus - Group by the SLA compliance status of the workload.
 - FailoverStatus - Group by the failover status.
 - HOUR - Group by hour.
 - POLICY_VIOLATIONS
@@ -8,18 +8,18 @@
 - DAY - Group by day.
 - TaskDetailClusterType
 - TaskDetailObjectType
-- ProtectionStatus
+- ProtectionStatus - Group by the protection status of the workload.
 - Month - Group by month.
 - SLA_DOMAIN
 - CLUSTER_UUID - The unique ID of the cluster.
 - MANAGED_ID - The managed ID of the object.
-- ClusterType
+- ClusterType - Group by the type of the cluster that the workload belongs to.
 - Quarter - Group by quarter.
 - Year - Group by year.
 - MONTH - Group by month.
 - Day - Group by day.
 - YEAR - Group by year.
-- SlaDomain
+- SlaDomain - Group by the SLA Domain assigned to the workload.
 - UserAuditStatus
 - Source - Group by the source site.
 - TIME_ISSUES
@@ -35,12 +35,13 @@
 - ANALYZER
 - FailoverType - Group by the failover type.
 - Hour - Group by hour.
-- Cluster
+- Cluster - Group by the cluster that the workload belongs to.
 - STATUS_POLICY
 - TIME
-- PullTimeWithOffset
+- PullTimeWithOffset - Group by the time at which the workload data was pulled from the cluster,
+adjusted by the requested timezone offset.
 - TIME_VIOLATIONS
-- ObjectType
+- ObjectType - Group by the type of the workload.
 - LastActivityStatus
 - OBJECT_NAME
 - TargetSite - Group by the target site.

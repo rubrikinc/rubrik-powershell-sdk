@@ -31,3 +31,5 @@ Input for create storage settings for an account.
   - Cloud type of Azure cloud account.
 - azureKeyVaultKey: AzureKeyVaultKeyIdentifierInput
   - Azure Key Vault key for client-side encryption of the archival target.
+- awsKmsKey: AwsKmsKeyIdentifierInput
+  - AWS KMS key for client-side encryption of an AWS workload archived to this Azure target (cross-cloud archival). Mutually exclusive with azureKeyVaultKey; requires the archival group's source workload cloud to be AWS.

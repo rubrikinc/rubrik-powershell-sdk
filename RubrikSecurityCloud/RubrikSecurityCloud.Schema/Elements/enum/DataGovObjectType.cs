@@ -213,6 +213,21 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "PHYSICAL_HOST")]
         PHYSICAL_HOST,
 
+        [EnumMember(Value = "PROXMOX_CLUSTER")]
+        PROXMOX_CLUSTER,
+
+        [EnumMember(Value = "PROXMOX_ENVIRONMENT")]
+        PROXMOX_ENVIRONMENT,
+
+        [EnumMember(Value = "PROXMOX_NODE")]
+        PROXMOX_NODE,
+
+        [EnumMember(Value = "PROXMOX_ROOT")]
+        PROXMOX_ROOT,
+
+        [EnumMember(Value = "PROXMOX_VIRTUAL_MACHINE")]
+        PROXMOX_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "SALESFORCE_OBJECT")]
         SALESFORCE_OBJECT,
 

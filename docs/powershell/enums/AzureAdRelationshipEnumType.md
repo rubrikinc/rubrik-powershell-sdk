@@ -46,3 +46,5 @@ definition. Targets the scope tags constraining the role.
 - NOTIFICATION_RECIPIENT - Additional notification recipient (User or Group) for an Access Review schedule definition.
 - INTUNE_ROLE_ASSIGNMENT_MEMBER - Member (Group) of an Intune role assignment; resolves the assignments a group belongs to.
 - MANAGER - Manager relationship of an Entra ID object.
+- SSO_POLICY_APPLIES_TO - Service principals and applications an SSO policy is applied to.
+- SSO_POLICY_EXTENSION - The application that a claims mapping policy extends.

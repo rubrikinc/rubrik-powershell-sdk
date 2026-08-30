@@ -1,5 +1,5 @@
-### D365DataverseTable
-Dynamics 365 Dataverse table hierarchy object.
+### GcpBigQueryDataset
+Represents a GCP BigQuery dataset.
 
 - id: System.String
   - ID of the hierarchy object.
@@ -22,21 +22,39 @@ Dynamics 365 Dataverse table hierarchy object.
 objects.
 - rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for RSC objects.
-- naturalId: System.String
-  - Natural ID of the Dynamics 365 Dataverse table.
-- parentId: System.String
-  - Parent ID of the Dynamics 365 Dataverse table.
-- orgId: System.String
-  - Managed Object ID of the Dynamics 365 organization associated with the
-table.
-- tableType: System.String
-  - Type of the Dynamics 365 table.
+- cloudNativeId: System.String
+  - GCP Native ID of the object.
 - isRelic: System.Boolean
-  - True if Dynamics 365 table is a relic.
-- logicalName: System.String
-  - Logical name of the Dynamics 365 dataverse table.
-- authorizedOperations: list of Operations
+  - Whether the object is a relic.
+- nativeName: System.String
+  - GCP Native name of the object.
+- labels: list of Labels
+  - List of labels that are assigned to the object.
+- projectId: System.String
+  - ID of the GCP project containing this dataset.
+- nativeId: System.String
+  - Cloud provider's native ID for the dataset.
+- location: GcpBigQueryLocation
+  - Location of the BigQuery dataset.
+- gcpProjectDetails: GcpNativeProjectDetails
+  - Project details of the BigQuery dataset.
+- tables: list of GcpBigQueryTables
+  - Details of the tables in the BigQuery dataset.
+- views: list of GcpBigQueryViews
+  - Details of the views in the BigQuery dataset.
+- models: list of GcpBigQueryModels
+  - Details of the models in the BigQuery dataset.
+- routines: list of GcpBigQueryRoutines
+  - Details of the routines in the BigQuery dataset.
+- logicalSize: System.Int64
+  - Total logical size of native tables in the BigQuery dataset in bytes.
+uint64 rather than int64 so the GraphQL type is Long, not Int.
+- isProtectionOnboarded: System.Boolean
+  - Specifies whether a protection feature is onboarded for this BigQuery dataset.
+- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
+- gcpProject: GcpNativeProject
+  - GCP Project of the BigQuery dataset.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -62,9 +80,9 @@ table.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot

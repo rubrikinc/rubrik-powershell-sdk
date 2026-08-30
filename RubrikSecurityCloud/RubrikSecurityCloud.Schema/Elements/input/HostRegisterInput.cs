@@ -66,11 +66,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isOracleHost")]
         public System.Boolean? IsOracleHost { get; set; }
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String (scalar)
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> OracleSepsWalletSettingsInput? OracleSepsSettings
         // GraphQL -> oracleSepsSettings: OracleSepsWalletSettingsInput (input)
         [JsonProperty("oracleSepsSettings")]
@@ -110,11 +105,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> shouldOracleSddThroughRba: Boolean (scalar)
         [JsonProperty("shouldOracleSddThroughRba")]
         public System.Boolean? ShouldOracleSddThroughRba { get; set; }
-
-        //      C# -> System.String? CloudInstanceId
-        // GraphQL -> cloudInstanceId: String (scalar)
-        [JsonProperty("cloudInstanceId")]
-        public System.String? CloudInstanceId { get; set; }
 
         //      C# -> System.String? OrgNetworkId
         // GraphQL -> orgNetworkId: String (scalar)

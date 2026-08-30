@@ -1,6 +1,8 @@
 # New-RscMutationGcpNative
 ## Subcommands
 ### excludedisksfrominstancesnapshot
+Exclude GCP native disks from GCE instance snapshots.
+
 - There is a single argument of type GcpNativeExcludeDisksFromInstanceSnapshotInput.
 - Returns System.String.
 ### exportdisk

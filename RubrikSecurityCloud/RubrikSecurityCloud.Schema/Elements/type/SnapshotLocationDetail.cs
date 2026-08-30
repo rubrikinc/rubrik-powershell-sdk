@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> SnapshotLocType? Type
+        // GraphQL -> type: SnapshotLocType (enum)
+        [JsonProperty("type")]
+        public SnapshotLocType? Type { get; set; }
+
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         [JsonProperty("locationId")]
@@ -40,10 +45,14 @@ namespace RubrikSecurityCloud.Types
     }
 
     public SnapshotLocationDetail Set(
+        SnapshotLocType? Type = null,
         System.String? LocationId = null,
         System.String? Name = null
     ) 
     {
+        if ( Type != null ) {
+            this.Type = Type;
+        }
         if ( LocationId != null ) {
             this.LocationId = LocationId;
         }
@@ -64,6 +73,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> SnapshotLocType? Type
+        // GraphQL -> type: SnapshotLocType (enum)
+        if (this.Type != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "type\n" ;
+            } else {
+                s += ind + "type\n" ;
+            }
+        }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId != null) {
@@ -89,6 +107,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> SnapshotLocType? Type
+        // GraphQL -> type: SnapshotLocType (enum)
+        if (ec.Includes("type",true))
+        {
+            if(this.Type == null) {
+
+                this.Type = new SnapshotLocType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Type != null && ec.Excludes("type",true))
+        {
+            this.Type = null;
+        }
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         if (ec.Includes("locationId",true))

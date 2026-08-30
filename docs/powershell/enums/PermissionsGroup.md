@@ -97,7 +97,7 @@ These permissions are applicable to the GCP AlloyDB Protection feature.
 These permissions may be applicable to any feature that can run on BaaS.
 - KMS_KEY_SHARING - Represents the permissions for automated KMS key sharing with the
 exocompute account (kms:CreateGrant on customer CMKs). Applicable to the
-cloud native protection feature.
+AWS KMS key sharing feature.
 - ADVANCED_DIAGNOSTICS - Represents the set of read-only diagnostic permissions for Exocompute.
 These permissions let RSC surface Exocompute reachability, networking,
 scaling, and worker-node boot diagnostics. Currently applicable only to
@@ -122,8 +122,8 @@ Config Protection (App Resilience) split (EKS, IAM OIDC provider, and
 ServiceQuotas). Applicable to the cloud native config protection feature.
 - GATEWAY_KEY_CREATION - Represents the permissions for creating and replicating the RSC gateway
 KMS key (kms:ReplicateKey) used for automated key sharing. This
-permission group is applicable to the cloud native protection feature
-and implies KMS_KEY_SHARING.
+permission group is applicable to the AWS KMS key sharing feature and
+implies KMS_KEY_SHARING.
 - SURGICAL_RECOVERY - Represents the set of permissions required for surgical recovery:
 snapshot relocation and cleanup operations
 (ec2:CopySnapshot, ec2:CreateSnapshot, ec2:DeleteSnapshot,
@@ -137,3 +137,6 @@ feature.
 establish cross-account RDS recovery connectivity (VPC Lattice resource
 endpoint plus RAM share acceptance). Applicable only to the AWS
 Exocompute feature.
+- EXPORT - Represents the permissions required to export an S3 recovery to a newly
+created target bucket. These permissions are applicable to the
+CLOUD_NATIVE_S3_PROTECTION feature.

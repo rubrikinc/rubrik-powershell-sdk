@@ -60,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subscriptionCount")]
         public System.Int32? SubscriptionCount { get; set; }
 
+        //      C# -> List<AzureCloudAccountTenantApp>? Apps
+        // GraphQL -> apps: [AzureCloudAccountTenantApp!]! (type)
+        [JsonProperty("apps")]
+        public List<AzureCloudAccountTenantApp>? Apps { get; set; }
+
         //      C# -> List<AzureSubscriptionWithExoConfigs>? Subscriptions
         // GraphQL -> subscriptions: [AzureSubscriptionWithExoConfigs!]! (type)
         [JsonProperty("subscriptions")]
@@ -83,6 +88,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsAppRubrikManaged = null,
         System.String? RubrikId = null,
         System.Int32? SubscriptionCount = null,
+        List<AzureCloudAccountTenantApp>? Apps = null,
         List<AzureSubscriptionWithExoConfigs>? Subscriptions = null
     ) 
     {
@@ -109,6 +115,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SubscriptionCount != null ) {
             this.SubscriptionCount = SubscriptionCount;
+        }
+        if ( Apps != null ) {
+            this.Apps = Apps;
         }
         if ( Subscriptions != null ) {
             this.Subscriptions = Subscriptions;
@@ -197,6 +206,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "subscriptionCount\n" ;
             } else {
                 s += ind + "subscriptionCount\n" ;
+            }
+        }
+        //      C# -> List<AzureCloudAccountTenantApp>? Apps
+        // GraphQL -> apps: [AzureCloudAccountTenantApp!]! (type)
+        if (this.Apps != null) {
+            var fspec = this.Apps.AsFieldSpec(conf.Child("apps"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "apps" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<AzureSubscriptionWithExoConfigs>? Subscriptions
@@ -353,6 +374,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.SubscriptionCount != null && ec.Excludes("subscriptionCount",true))
         {
             this.SubscriptionCount = null;
+        }
+        //      C# -> List<AzureCloudAccountTenantApp>? Apps
+        // GraphQL -> apps: [AzureCloudAccountTenantApp!]! (type)
+        if (ec.Includes("apps",false))
+        {
+            if(this.Apps == null) {
+
+                this.Apps = new List<AzureCloudAccountTenantApp>();
+                this.Apps.ApplyExploratoryFieldSpec(ec.NewChild("apps"));
+
+            } else {
+
+                this.Apps.ApplyExploratoryFieldSpec(ec.NewChild("apps"));
+
+            }
+        }
+        else if (this.Apps != null && ec.Excludes("apps",false))
+        {
+            this.Apps = null;
         }
         //      C# -> List<AzureSubscriptionWithExoConfigs>? Subscriptions
         // GraphQL -> subscriptions: [AzureSubscriptionWithExoConfigs!]! (type)
