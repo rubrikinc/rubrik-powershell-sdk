@@ -469,3 +469,20 @@ migration m0278 enables an index-only scan for this subquery.
 +mo:sort:db:table=aws_native_rds_instances
 +mo:sort:db:column=vpc_id
 +mo:sort:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME - Sort Azure Cosmos NoSQL containers by the name of their parent database,
+denormalized onto the container as a property.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed
+- AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME - Sort Azure Cosmos NoSQL containers by the name of their ancestor account,
+denormalized onto the container as a property.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed
+- EXCHANGE_SERVER_HOST_NAME - Sort Exchange Servers by the name, IP address, or FQDN of the host they
+run on.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=1
++mo:sort:db:table=cdm_host
++mo:sort:db:column=name
++mo:sort:db:index:key=NULL

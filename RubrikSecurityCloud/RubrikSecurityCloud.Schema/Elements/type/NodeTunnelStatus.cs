@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? NodeIp
+        // GraphQL -> nodeIp: String! (scalar)
+        [JsonProperty("nodeIp")]
+        public System.String? NodeIp { get; set; }
+
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         [JsonProperty("status")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public NodeTunnelStatus Set(
         System.String? Id = null,
+        System.String? NodeIp = null,
         System.String? Status = null,
         SupportTunnelInfo? SupportTunnel = null
     ) 
     {
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( NodeIp != null ) {
+            this.NodeIp = NodeIp;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "id\n" ;
             } else {
                 s += ind + "id\n" ;
+            }
+        }
+        //      C# -> System.String? NodeIp
+        // GraphQL -> nodeIp: String! (scalar)
+        if (this.NodeIp != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nodeIp\n" ;
+            } else {
+                s += ind + "nodeIp\n" ;
             }
         }
         //      C# -> System.String? Status
@@ -126,6 +144,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Id != null && ec.Excludes("id",true))
         {
             this.Id = null;
+        }
+        //      C# -> System.String? NodeIp
+        // GraphQL -> nodeIp: String! (scalar)
+        if (ec.Includes("nodeIp",true))
+        {
+            if(this.NodeIp == null) {
+
+                this.NodeIp = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NodeIp != null && ec.Excludes("nodeIp",true))
+        {
+            this.NodeIp = null;
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)

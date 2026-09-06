@@ -44,6 +44,8 @@ domain).
   - The authorized operations on the object.
 - fixedObjectCounts: AzureDevOpsProjectFixedObjectCounts
   - Developer-collaboration object counts for the project's fixed-object child. Returns null when the project has no fixed-object child.
+- isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission
+  - True when the org has developer-collaboration protection enabled but this project has not yet been granted the required access.
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain

@@ -20,8 +20,6 @@ NAS Cloud Direct bucket.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during communication with the NAS Cloud
 Direct site.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
 - clusterUuid: System.String
   - NAS Cloud Direct cluster ID.
 - exportPath: System.String
@@ -76,6 +74,8 @@ Direct site.
   - NAS Cloud Direct cluster where this object originated.
 - cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for Cloud Direct objects.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
 - numWorkloadDescendants: System.Int32

@@ -12,4 +12,4 @@ Paginated list of FileResult objects. Each page of the results includes at most 
 - hasLatestData: System.Boolean
   - Specifies whether the response contains the latest indexed data or not.
 - indexingVersion: System.Int32
-  - Specifies the indexing version. 
+  - Specifies the indexing version.

@@ -39,6 +39,8 @@ cluster. Null when the source cluster is unknown.
   - Whether the FusionCompute VRM has been refreshed.
 - lastRefreshTime: DateTime
   - Last refresh time of the FusionCompute VRM.
+- version: System.String
+  - Version of the FusionCompute software, as of the last refresh.
 - descendantConnection: FusionComputeVrmDescendantConnection
   - List of descendants.
 - physicalChildConnection: FusionComputeVrmPhysicalChildTypeConnection

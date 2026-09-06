@@ -177,6 +177,12 @@ Get CDM release details from support portal for a given list of clusters.
     - filter - ClusterFilterInput: Filter by cluster.
     - timezoneOffset - System.Single: Offset based on the customer timezone.
 - Returns ClusterGroupByConnection.
+### imageclassificationclusterconfigs
+Retrieves image classification configurations for the specified Rubrik
+clusters.
+
+- There is a single argument of type list of System.Strings.
+- Returns GetImageClassificationClusterConfigsReply.
 ### ipmi
 Get IPMI details
 

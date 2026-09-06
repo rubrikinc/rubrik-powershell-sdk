@@ -21,3 +21,5 @@ Hostname of the node.
 Role of the node in the cluster.
 - subStatus: System.String
   - Supported in v9.4+
+- assetId: System.String
+  - System serial number of the node from dmidecode, used as the Salesforce asset ID. Absent for virtual and cloud nodes.

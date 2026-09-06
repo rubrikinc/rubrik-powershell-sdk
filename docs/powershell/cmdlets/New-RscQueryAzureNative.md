@@ -84,7 +84,7 @@ Retrieves a paginated list of all Azure Native Regions.
     - regionFilters - AzureNativeRegionFilters: Filters for list of Azure regions.
     - subscriptionId - System.String: Subscription ID.
     - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
-    - authorizedOperationFilter - Operation: Filters according to the operation given.
+    - authorizedOperationFilter - Operation: Filters the results to objects on which the caller is authorized to perform the specified operation. Only privilege operations are accepted.
 - Returns AzureNativeRegionManagedObjectConnection.
 ### resourcegroup
 Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
@@ -159,7 +159,7 @@ Retrieves a paginated list of all Azure Native Subscriptions.
     - sortBy - AzureNativeSubscriptionSortFields: Sort fields for list of Azure subscriptions.
     - sortOrder - SortOrder: Sorts the order of results.
     - subscriptionFilters - AzureNativeSubscriptionFilters
-    - authorizedOperationFilter - Operation: Filters according to the operation given.
+    - authorizedOperationFilter - Operation: Filters the results to objects on which the caller is authorized to perform the specified operation. Only privilege operations are accepted.
     - workloadHierarchy - WorkloadLevelHierarchy: Workload hierarchy.
     - azureNativeProtectionFeature - AzureNativeProtectionFeature: The type of Azure Native feature that RSC supports.
     - azureNativeProtectionFeatures - list of AzureNativeProtectionFeatures: The type of Azure Native features that RSC supports.

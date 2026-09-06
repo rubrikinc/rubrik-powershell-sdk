@@ -1182,7 +1182,7 @@ namespace RubrikSecurityCloud.Types
         public static string IsAwsS3BucketNameAvailable(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nbucketName: $bucketName\nawsAccountRubrikId: $awsAccountRubrikId\n)";
+            string args = "\n(\nbucketName: $bucketName\nawsAccountRubrikId: $awsAccountRubrikId\nfeature: $feature\n)";
             return "isAwsS3BucketNameAvailable" + args + "\n";
         }
         public static object IsAwsS3BucketNameAvailableFieldSpec(AutofieldContext? ec=null)
@@ -6168,7 +6168,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureSqlDatabaseServers(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseServerFilters: $azureSqlDatabaseServerFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlDatabaseServerFilters: $azureSqlDatabaseServerFilters\nauthorizedOperationFilter: $authorizedOperationFilter\n)";
             return "azureSqlDatabaseServers" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureSqlDatabaseServersFieldSpec(AutofieldContext? ec=null)
@@ -6276,7 +6276,7 @@ namespace RubrikSecurityCloud.Types
         public static string AzureSqlManagedInstanceServers(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceServerFilters: $azureSqlManagedInstanceServerFilters\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nazureSqlManagedInstanceServerFilters: $azureSqlManagedInstanceServerFilters\nauthorizedOperationFilter: $authorizedOperationFilter\n)";
             return "azureSqlManagedInstanceServers" + args + "\n{\n" + fs + "}\n";
         }
         public static object AzureSqlManagedInstanceServersFieldSpec(AutofieldContext? ec=null)
@@ -6492,7 +6492,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseO365TeamConvChannels(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFidOpt: $snapshotFidOpt\nexcludeArchived: $excludeArchived\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFidOpt: $snapshotFidOpt\nexcludeArchived: $excludeArchived\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "browseO365TeamConvChannels" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseO365TeamConvChannelsFieldSpec(AutofieldContext? ec=null)
@@ -6528,7 +6528,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseSharepointDrive(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\norgId: $orgId\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\nsiteChildType: $siteChildType\n)";
             return "browseSharepointDrive" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseSharepointDriveFieldSpec(AutofieldContext? ec=null)
@@ -6546,7 +6546,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseSharepointList(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\norgId: $orgId\nsiteChildId: $siteChildId\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nfolderId: $folderId\nsharepointDriveSearchFilter: $sharepointDriveSearchFilter\nsiteChildId: $siteChildId\n)";
             return "browseSharepointList" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseSharepointListFieldSpec(AutofieldContext? ec=null)
@@ -6600,7 +6600,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseTeamsChannels(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nchannelMembershipTypeFilter: $channelMembershipTypeFilter\nnameFilter: $nameFilter\n)";
             return "browseTeamsChannels" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseTeamsChannelsFieldSpec(AutofieldContext? ec=null)
@@ -6618,7 +6618,7 @@ namespace RubrikSecurityCloud.Types
         public static string BrowseTeamsDrive(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nfolderId: $folderId\nteamsDriveSearchFilter: $teamsDriveSearchFilter\norgId: $orgId\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\norgId: $orgId\nfolderId: $folderId\nteamsDriveSearchFilter: $teamsDriveSearchFilter\n)";
             return "browseTeamsDrive" + args + "\n{\n" + fs + "}\n";
         }
         public static object BrowseTeamsDriveFieldSpec(AutofieldContext? ec=null)
@@ -8220,7 +8220,7 @@ namespace RubrikSecurityCloud.Types
         public static string ConfiguredGroupMembers(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\norgId: $orgId\nwildcard: $wildcard\npdls: $pdls\nworkloadHierarchy: $workloadHierarchy\ngroupFilterAttributes: $groupFilterAttributes\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\norgId: $orgId\nwildcard: $wildcard\npdls: $pdls\nworkloadHierarchy: $workloadHierarchy\ngroupFilterAttributes: $groupFilterAttributes\n)";
             return "configuredGroupMembers" + args + "\n{\n" + fs + "}\n";
         }
         public static object ConfiguredGroupMembersFieldSpec(AutofieldContext? ec=null)
@@ -9624,7 +9624,7 @@ namespace RubrikSecurityCloud.Types
         public static string FilesetTemplates(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\n)";
             return "filesetTemplates" + args + "\n{\n" + fs + "}\n";
         }
         public static object FilesetTemplatesFieldSpec(AutofieldContext? ec=null)
@@ -11208,7 +11208,7 @@ namespace RubrikSecurityCloud.Types
         public static string HostShares(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "hostShares" + args + "\n{\n" + fs + "}\n";
         }
         public static object HostSharesFieldSpec(AutofieldContext? ec=null)
@@ -11563,6 +11563,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> GetImageClassificationClusterConfigsReply? ImageClassificationClusterConfigs
+        // GraphQL -> imageClassificationClusterConfigs: GetImageClassificationClusterConfigsReply! (type)
+        public static string ImageClassificationClusterConfigs(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\nclusterUuids: $clusterUuids\n)";
+            return "imageClassificationClusterConfigs" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object ImageClassificationClusterConfigsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new GetImageClassificationClusterConfigsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> List<InstalledVersionGroupCount>? InstalledVersionList
         // GraphQL -> installedVersionList: [InstalledVersionGroupCount!]! (type)
         public static string InstalledVersionList(object fsObj)
@@ -11892,7 +11910,7 @@ namespace RubrikSecurityCloud.Types
         public static string Issues(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nstatus: $status\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nstatus: $status\n)";
             return "issues" + args + "\n{\n" + fs + "}\n";
         }
         public static object IssuesFieldSpec(AutofieldContext? ec=null)
@@ -12630,7 +12648,7 @@ namespace RubrikSecurityCloud.Types
         public static string M365OnboardingModeBackupStats(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\norgId: $orgId\ndashboardWorkloadType: $dashboardWorkloadType\nbackupStatsTimeRange: $backupStatsTimeRange\n)";
+            string args = "\n(\norgId: $orgId\ndashboardWorkloadType: $dashboardWorkloadType\nbackupStatsTimeRange: $backupStatsTimeRange\noperationMode: $operationMode\n)";
             return "m365OnboardingModeBackupStats" + args + "\n{\n" + fs + "}\n";
         }
         public static object M365OnboardingModeBackupStatsFieldSpec(AutofieldContext? ec=null)
@@ -13800,7 +13818,7 @@ namespace RubrikSecurityCloud.Types
         public static string NodeTunnelStatuses(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
+            string args = "\n(\ninput: $input\ntunnelFilter: $tunnelFilter\n)";
             return "nodeTunnelStatuses" + args + "\n{\n" + fs + "}\n";
         }
         public static object NodeTunnelStatusesFieldSpec(AutofieldContext? ec=null)
@@ -14808,7 +14826,7 @@ namespace RubrikSecurityCloud.Types
         public static string ObjectFiles(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfilter: $filter\nsort: $sort\nday: $day\ntimezone: $timezone\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsort: $sort\nday: $day\ntimezone: $timezone\n)";
             return "objectFiles" + args + "\n{\n" + fs + "}\n";
         }
         public static object ObjectFilesFieldSpec(AutofieldContext? ec=null)
@@ -15420,7 +15438,7 @@ namespace RubrikSecurityCloud.Types
         public static string PhysicalHosts(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nhostRoot: $hostRoot\nisBulkPolicyAssignmentFlow: $isBulkPolicyAssignmentFlow\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nhostRoot: $hostRoot\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\nisBulkPolicyAssignmentFlow: $isBulkPolicyAssignmentFlow\n)";
             return "physicalHosts" + args + "\n{\n" + fs + "}\n";
         }
         public static object PhysicalHostsFieldSpec(AutofieldContext? ec=null)
@@ -15582,7 +15600,7 @@ namespace RubrikSecurityCloud.Types
         public static string PolicyObjFolderChildren(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nworkloadId: $workloadId\nsnapshotId: $snapshotId\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsort: $sort\nstdPath: $stdPath\ntimezone: $timezone\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nsnapshotId: $snapshotId\nfilter: $filter\nsort: $sort\nstdPath: $stdPath\ntimezone: $timezone\n)";
             return "policyObjFolderChildren" + args + "\n{\n" + fs + "}\n";
         }
         public static object PolicyObjFolderChildrenFieldSpec(AutofieldContext? ec=null)
@@ -16212,7 +16230,7 @@ namespace RubrikSecurityCloud.Types
         public static string PureStorageArraysV1(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "pureStorageArraysV1" + args + "\n{\n" + fs + "}\n";
         }
         public static object PureStorageArraysV1FieldSpec(AutofieldContext? ec=null)
@@ -16266,7 +16284,7 @@ namespace RubrikSecurityCloud.Types
         public static string PureStorageProtectionGroupsV1(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "pureStorageProtectionGroupsV1" + args + "\n{\n" + fs + "}\n";
         }
         public static object PureStorageProtectionGroupsV1FieldSpec(AutofieldContext? ec=null)
@@ -16302,7 +16320,7 @@ namespace RubrikSecurityCloud.Types
         public static string PureStorageVolumesV1(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfirst: $first\nafter: $after\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\nfilter: $filter\n)";
             return "pureStorageVolumesV1" + args + "\n{\n" + fs + "}\n";
         }
         public static object PureStorageVolumesV1FieldSpec(AutofieldContext? ec=null)
@@ -16887,6 +16905,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new RscPermsToCdmInfoOut() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> RscpUpgradeStatus? RscpUpgradeStatus
+        // GraphQL -> rscpUpgradeStatus: RscpUpgradeStatus! (type)
+        public static string RscpUpgradeStatus(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "";
+            return "rscpUpgradeStatus" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object RscpUpgradeStatusFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new RscpUpgradeStatus() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -19200,7 +19236,7 @@ namespace RubrikSecurityCloud.Types
         public static string UserActivities(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nfilter: $filter\nsort: $sort\ntimeRange: $timeRange\nuserId: $userId\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nfilter: $filter\nsort: $sort\ntimeRange: $timeRange\nuserId: $userId\n)";
             return "userActivities" + args + "\n{\n" + fs + "}\n";
         }
         public static object UserActivitiesFieldSpec(AutofieldContext? ec=null)

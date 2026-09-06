@@ -41,3 +41,5 @@ Filters for the cluster list.
   - Cyber Event Lockdown mode of the Rubrik cluster.
 - isAssignedByParentAccount: System.Boolean
   - Filter on shared (parent-assigned) clusters. When true, return only shared clusters; when false, exclude them; omit for no filter.
+- isSupportTunnelEnabled: System.Boolean
+  - Filter on the support tunnel state of the Rubrik cluster. When true, return only Rubrik clusters with at least one node whose support tunnel is open; when false, return only Rubrik clusters with no such node; omit for no filter.

@@ -66,3 +66,4 @@ Power Platform objects (canvas app, model-driven app, flow).
 - ANTHROPIC_OBJECT_TYPE - Anthropic object.
 - IRISDB_INSTANCE_OBJECT_TYPE - IRIS DB instance object type. SLA Domains are assigned at the instance
 level; databases within the instance inherit the instance's SLA Domain.
+- HVM_OBJECT_TYPE - HPE Virtual Machine Essentials SLA Domain object.

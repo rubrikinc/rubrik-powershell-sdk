@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> HvmEnvironmentDetails? HpeVme
+        // GraphQL -> hpeVme: HvmEnvironmentDetails (type)
+        [JsonProperty("hpeVme")]
+        public HvmEnvironmentDetails? HpeVme { get; set; }
+
         //      C# -> ProxmoxEnvironmentDetails? Proxmox
         // GraphQL -> proxmox: ProxmoxEnvironmentDetails (type)
         [JsonProperty("proxmox")]
@@ -35,9 +40,13 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervisorEnvironmentTypeOneof Set(
+        HvmEnvironmentDetails? HpeVme = null,
         ProxmoxEnvironmentDetails? Proxmox = null
     ) 
     {
+        if ( HpeVme != null ) {
+            this.HpeVme = HpeVme;
+        }
         if ( Proxmox != null ) {
             this.Proxmox = Proxmox;
         }
@@ -55,6 +64,18 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> HvmEnvironmentDetails? HpeVme
+        // GraphQL -> hpeVme: HvmEnvironmentDetails (type)
+        if (this.HpeVme != null) {
+            var fspec = this.HpeVme.AsFieldSpec(conf.Child("hpeVme"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hpeVme" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> ProxmoxEnvironmentDetails? Proxmox
         // GraphQL -> proxmox: ProxmoxEnvironmentDetails (type)
         if (this.Proxmox != null) {
@@ -74,6 +95,25 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> HvmEnvironmentDetails? HpeVme
+        // GraphQL -> hpeVme: HvmEnvironmentDetails (type)
+        if (ec.Includes("hpeVme",false))
+        {
+            if(this.HpeVme == null) {
+
+                this.HpeVme = new HvmEnvironmentDetails();
+                this.HpeVme.ApplyExploratoryFieldSpec(ec.NewChild("hpeVme"));
+
+            } else {
+
+                this.HpeVme.ApplyExploratoryFieldSpec(ec.NewChild("hpeVme"));
+
+            }
+        }
+        else if (this.HpeVme != null && ec.Excludes("hpeVme",false))
+        {
+            this.HpeVme = null;
+        }
         //      C# -> ProxmoxEnvironmentDetails? Proxmox
         // GraphQL -> proxmox: ProxmoxEnvironmentDetails (type)
         if (ec.Includes("proxmox",false))

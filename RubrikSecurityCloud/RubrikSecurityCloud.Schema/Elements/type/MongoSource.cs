@@ -196,10 +196,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crossAccountReplicatedObjectInfos")]
         public List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos { get; set; }
 
-        //      C# -> PhysicalHostConnection? DataHosts
-        // GraphQL -> dataHosts: PhysicalHostConnection! (type)
+        //      C# -> MongoDataHostsConnection? DataHosts
+        // GraphQL -> dataHosts: MongoDataHostsConnection! (type)
         [JsonProperty("dataHosts")]
-        public PhysicalHostConnection? DataHosts { get; set; }
+        public MongoDataHostsConnection? DataHosts { get; set; }
 
         //      C# -> MongoSourceDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: MongoSourceDescendantTypeConnection! (type)
@@ -512,7 +512,7 @@ namespace RubrikSecurityCloud.Types
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
         List<CrossAccountReplicatedObjectInfo>? CrossAccountReplicatedObjectInfos = null,
-        PhysicalHostConnection? DataHosts = null,
+        MongoDataHostsConnection? DataHosts = null,
         MongoSourceDescendantTypeConnection? DescendantConnection = null,
         PathNode? EffectiveSlaSourceObject = null,
         List<MongoHostDetail>? HostDetails = null,
@@ -1092,8 +1092,8 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
-        //      C# -> PhysicalHostConnection? DataHosts
-        // GraphQL -> dataHosts: PhysicalHostConnection! (type)
+        //      C# -> MongoDataHostsConnection? DataHosts
+        // GraphQL -> dataHosts: MongoDataHostsConnection! (type)
         if (this.DataHosts != null) {
             var fspec = this.DataHosts.AsFieldSpec(conf.Child("dataHosts"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -2068,13 +2068,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.CrossAccountReplicatedObjectInfos = null;
         }
-        //      C# -> PhysicalHostConnection? DataHosts
-        // GraphQL -> dataHosts: PhysicalHostConnection! (type)
+        //      C# -> MongoDataHostsConnection? DataHosts
+        // GraphQL -> dataHosts: MongoDataHostsConnection! (type)
         if (ec.Includes("dataHosts",false))
         {
             if(this.DataHosts == null) {
 
-                this.DataHosts = new PhysicalHostConnection();
+                this.DataHosts = new MongoDataHostsConnection();
                 this.DataHosts.ApplyExploratoryFieldSpec(ec.NewChild("dataHosts"));
 
             } else {

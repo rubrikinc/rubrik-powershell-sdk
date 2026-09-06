@@ -9,3 +9,5 @@ Configuration for the addition of an O365 org.
   - ID of the exocompute cluster.
 - appTypes: list of System.Strings
   - Types of the apps created in the flow.
+- prioritizedOnboardingSpec: PrioritizedOnboardingSpec
+  - Prioritized onboarding configuration.

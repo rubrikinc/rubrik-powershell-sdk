@@ -9,4 +9,5 @@ MySQL database instance configuration.
 - connectionInfo: MysqldbConnectionInfoInput
   - Supported in v9.3+
 - haClusterConfig: MysqldbHaClusterConfigInput
-  - Optional HA cluster configuration. Providing it marks this instance as an HA cluster; the instance-level connection and advanced settings then act as defaults that each replica can override.
+  - Supported in v9.6+
+Optional HA cluster configuration. Providing it marks this instance as an HA cluster; the instance-level connection and advanced settings then act as defaults that each replica can override.

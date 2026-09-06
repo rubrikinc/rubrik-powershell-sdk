@@ -2,4 +2,4 @@
 Cluster time zone.
 
 - timezone: ClusterTimezoneType
-  - Cluster time zone.
+  - The time zone of the Rubrik cluster.

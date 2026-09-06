@@ -8,17 +8,23 @@ All AD Groups belonging to the O365 organization.
     - adGroupSearchFilter - System.String: AD group search filter.
 - Returns list of AdGroups.
 ### browseteamconvchannels
-Browse channels in a Teams conversations snapshot.
+BrowseO365TeamConvChannels returns a paginated list of Teams conversation
+channels for the given workload. When no snapshot is specified, browses
+live channels; when a snapshot is specified, browses channels in that
+snapshot.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
-    - snapshotFidOpt - System.String: snapshotFid arg which is of optional type
-    - excludeArchived - System.Boolean
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The unique identifier for the Teams workload.
+    - snapshotFidOpt - System.String: Optional snapshot FID. When set, browses that snapshot.
+    - excludeArchived - System.Boolean: Whether archived channels are omitted from results.
+Must be false when snapshotFidOpt is absent; must be true when present.
     - orgId - System.String: Org UUID.
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
-    - nameFilter - System.String
+    - nameFilter - System.String: Optional display-name substring filter.
 - Returns O365TeamConvChannelConnection.
 ### calendar
 Details of the Exchange calendar pertaining to the snappable ID.

@@ -44,9 +44,7 @@ namespace RubrikSecurityCloud.Types
         public DateTime? ExportTime { get; set; }
 
         //      C# -> System.String? DbInstanceName
-        // GraphQL -> dbInstanceName: String! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> dbInstanceName: String (scalar)
         [JsonProperty("dbInstanceName")]
         public System.String? DbInstanceName { get; set; }
 
@@ -65,9 +63,7 @@ namespace RubrikSecurityCloud.Types
         public AwsNativeRegion? DestinationRegionNativeId { get; set; }
 
         //      C# -> AwsNativeRdsDbInstanceClass? DbInstanceClass
-        // GraphQL -> dbInstanceClass: AwsNativeRdsDbInstanceClass! (enum)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> dbInstanceClass: AwsNativeRdsDbInstanceClass (enum)
         [JsonProperty("dbInstanceClass")]
         public AwsNativeRdsDbInstanceClass? DbInstanceClass { get; set; }
 
@@ -82,9 +78,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? PrimaryAz { get; set; }
 
         //      C# -> System.Int64? Port
-        // GraphQL -> port: Long! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> port: Long (scalar)
         [JsonProperty("port")]
         public System.Int64? Port { get; set; }
 
@@ -119,23 +113,17 @@ namespace RubrikSecurityCloud.Types
         public System.Int32? Iops { get; set; }
 
         //      C# -> System.Boolean? IsPubliclyAccessible
-        // GraphQL -> isPubliclyAccessible: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> isPubliclyAccessible: Boolean (scalar)
         [JsonProperty("isPubliclyAccessible")]
         public System.Boolean? IsPubliclyAccessible { get; set; }
 
         //      C# -> System.Boolean? ShouldExportTags
-        // GraphQL -> shouldExportTags: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> shouldExportTags: Boolean (scalar)
         [JsonProperty("shouldExportTags")]
         public System.Boolean? ShouldExportTags { get; set; }
 
         //      C# -> System.Boolean? IsMultiAz
-        // GraphQL -> isMultiAz: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
+        // GraphQL -> isMultiAz: Boolean (scalar)
         [JsonProperty("isMultiAz")]
         public System.Boolean? IsMultiAz { get; set; }
 
@@ -183,6 +171,21 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> retrievalTier: AwsRetrievalTier (enum)
         [JsonProperty("retrievalTier")]
         public AwsRetrievalTier? RetrievalTier { get; set; }
+
+        //      C# -> System.Boolean? ShouldExportToS3
+        // GraphQL -> shouldExportToS3: Boolean (scalar)
+        [JsonProperty("shouldExportToS3")]
+        public System.Boolean? ShouldExportToS3 { get; set; }
+
+        //      C# -> System.String? ExportS3BucketName
+        // GraphQL -> exportS3BucketName: String (scalar)
+        [JsonProperty("exportS3BucketName")]
+        public System.String? ExportS3BucketName { get; set; }
+
+        //      C# -> System.Boolean? ShouldCreateS3Bucket
+        // GraphQL -> shouldCreateS3Bucket: Boolean (scalar)
+        [JsonProperty("shouldCreateS3Bucket")]
+        public System.Boolean? ShouldCreateS3Bucket { get; set; }
 
 
         #endregion

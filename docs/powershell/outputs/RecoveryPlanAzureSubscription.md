@@ -12,5 +12,5 @@ Identifying details for an Azure subscription used as a recovery plan location.
 - regionSpecs: list of AzureNativeRegionSpecs
   - Region specifications configured for the Azure subscription.
 - region: AzureNativeRegion
-  - Region this recovery plan location targets. Distinct from region_specs,
-which lists every region the subscription is registered with.
+  - The region this recovery plan location targets. This is distinct from
+regionSpecs, which lists every region the account is registered with.

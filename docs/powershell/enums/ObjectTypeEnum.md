@@ -116,3 +116,5 @@ ObjectTypeEnum covering all Rubrik cluster and RSC workload types.
 - AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps Developer Collaboration.
 - IRISDB_INSTANCE - IRIS DB instance (Epic EpicCare database host node).
 - K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
+- HVM_VIRTUAL_MACHINE - HPE Virtual Machine Essentials virtual machine.
+- AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.

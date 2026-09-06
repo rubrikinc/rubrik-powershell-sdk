@@ -430,7 +430,7 @@ Retrieves the list of elastic pools available for a SQL Database Server.For more
 ### sqldatabaseservers
 Retrieves a paginated list of all Azure SQL Database Servers.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -438,6 +438,7 @@ Retrieves a paginated list of all Azure SQL Database Servers.
     - sortBy - AzureSqlDatabaseServerSortFields: Sort fields for list of Azure SQL Database Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlDatabaseServerFilters - AzureSqlDatabaseServerFilters: Filters for listing Azure SQL Database Servers.
+    - authorizedOperationFilter - Operation: Filters the results to objects on which the caller is authorized to perform the specified operation. Only privilege operations are accepted.
 - Returns AzureSqlDatabaseServerConnection.
 ### sqlmanagedinstancedatabase
 Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
@@ -476,7 +477,7 @@ Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure S
 ### sqlmanagedinstanceservers
 Retrieves a paginated list of all Azure SQL Managed Instance Servers.
 
-- There are 7 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -484,6 +485,7 @@ Retrieves a paginated list of all Azure SQL Managed Instance Servers.
     - sortBy - AzureSqlManagedInstanceServerSortFields: Sort fields for list of Azure SQL Managed Instance Servers.
     - sortOrder - SortOrder: Sorts the order of results.
     - azureSqlManagedInstanceServerFilters - AzureSqlManagedInstanceServerFilters: Filters for listing Azure SQL Managed Instance Servers.
+    - authorizedOperationFilter - Operation: Filters the results to objects on which the caller is authorized to perform the specified operation. Only privilege operations are accepted.
 - Returns AzureSqlManagedInstanceServerConnection.
 ### storageaccountcontainers
 Retrieves the list of containers for the specified storage account.

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? BackupSource
+        // GraphQL -> backupSource: String (scalar)
+        [JsonProperty("backupSource")]
+        public System.String? BackupSource { get; set; }
+
         //      C# -> List<System.String>? DatabaseCdmIds
         // GraphQL -> databaseCdmIds: [String!] (scalar)
         [JsonProperty("databaseCdmIds")]
@@ -50,12 +55,16 @@ namespace RubrikSecurityCloud.Types
     }
 
     public MysqldbInstanceAppMetadata Set(
+        System.String? BackupSource = null,
         List<System.String>? DatabaseCdmIds = null,
         System.Boolean? HasCapturedSchemas = null,
         System.String? MetadataVersion = null,
         KosmosDataSnapshotStats? Stats = null
     ) 
     {
+        if ( BackupSource != null ) {
+            this.BackupSource = BackupSource;
+        }
         if ( DatabaseCdmIds != null ) {
             this.DatabaseCdmIds = DatabaseCdmIds;
         }
@@ -82,6 +91,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? BackupSource
+        // GraphQL -> backupSource: String (scalar)
+        if (this.BackupSource != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "backupSource\n" ;
+            } else {
+                s += ind + "backupSource\n" ;
+            }
+        }
         //      C# -> List<System.String>? DatabaseCdmIds
         // GraphQL -> databaseCdmIds: [String!] (scalar)
         if (this.DatabaseCdmIds != null) {
@@ -128,6 +146,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? BackupSource
+        // GraphQL -> backupSource: String (scalar)
+        if (ec.Includes("backupSource",true))
+        {
+            if(this.BackupSource == null) {
+
+                this.BackupSource = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.BackupSource != null && ec.Excludes("backupSource",true))
+        {
+            this.BackupSource = null;
+        }
         //      C# -> List<System.String>? DatabaseCdmIds
         // GraphQL -> databaseCdmIds: [String!] (scalar)
         if (ec.Includes("databaseCdmIds",true))

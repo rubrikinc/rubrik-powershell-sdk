@@ -14941,6 +14941,42 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> StartRscpPackageDownloadReply? StartRscpPackageDownload
+        // GraphQL -> startRscpPackageDownload: StartRscpPackageDownloadReply! (type)
+        public static string StartRscpPackageDownload(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startRscpPackageDownload" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartRscpPackageDownloadFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartRscpPackageDownloadReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartRscpUpgradeReply? StartRscpUpgrade
+        // GraphQL -> startRscpUpgrade: StartRscpUpgradeReply! (type)
+        public static string StartRscpUpgrade(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startRscpUpgrade" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartRscpUpgradeFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartRscpUpgradeReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> StartSalesforcePermissionAssessmentReply? StartSalesforcePermissionAssessment
         // GraphQL -> startSalesforcePermissionAssessment: StartSalesforcePermissionAssessmentReply! (type)
         public static string StartSalesforcePermissionAssessment(object fsObj)
@@ -16287,6 +16323,24 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new UpdateHypervVirtualMachineSnapshotMountReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> UpdateImageClassificationConfigReply? UpdateImageClassificationConfig
+        // GraphQL -> updateImageClassificationConfig: UpdateImageClassificationConfigReply! (type)
+        public static string UpdateImageClassificationConfig(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateImageClassificationConfig" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateImageClassificationConfigFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateImageClassificationConfigReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

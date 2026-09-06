@@ -1,5 +1,5 @@
 ### VmwareVmConfig
-SLA Domain configuration for VMware VM objects.
+SLA Domain configuration for VMware virtual machines.
 
 - logRetentionSeconds: System.Int64
-  - The duration in seconds for which VMware VM logs are retained.
+  - Duration in seconds for which VMware virtual machine logs are retained.

@@ -110,6 +110,9 @@ objects.
   - Specifies whether Intune protection is enabled for the tenant.
 - latestEntraObjectCounts: list of LatestEntraObjectCounts
   - Counts of Entra ID and Intune object types from the latest snapshot.
+- m365AccessRecoveryState: M365AccessRecoveryState
+  - Specifies the state of Automated M365 Access Recovery for the directory.
+A directory that has never been configured reports the default state.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
 - eventHubConnectionStatus: AzureAdEventHubConnectionStatus

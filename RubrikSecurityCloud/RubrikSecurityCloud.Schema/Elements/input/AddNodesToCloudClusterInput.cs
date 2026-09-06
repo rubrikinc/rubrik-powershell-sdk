@@ -19,10 +19,29 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: UUID (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
         //      C# -> System.Int32? NumberOfNodes
         // GraphQL -> numberOfNodes: Int (scalar)
         [JsonProperty("numberOfNodes")]
         public System.Int32? NumberOfNodes { get; set; }
+
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
+        //      C# -> System.Boolean? ShouldKeepResourcesOnFailure
+        // GraphQL -> shouldKeepResourcesOnFailure: Boolean! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("shouldKeepResourcesOnFailure")]
+        public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
 
         //      C# -> System.String? AwsImageId
         // GraphQL -> awsImageId: String (scalar)
@@ -44,32 +63,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("gcpImageId")]
         public System.String? GcpImageId { get; set; }
 
-        //      C# -> System.String? CloudAccountId
-        // GraphQL -> cloudAccountId: UUID (scalar)
-        [JsonProperty("cloudAccountId")]
-        public System.String? CloudAccountId { get; set; }
-
-        //      C# -> CcpVendorType? Vendor
-        // GraphQL -> vendor: CcpVendorType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("vendor")]
-        public CcpVendorType? Vendor { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
-
-        //      C# -> System.Boolean? ShouldKeepResourcesOnFailure
-        // GraphQL -> shouldKeepResourcesOnFailure: Boolean! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("shouldKeepResourcesOnFailure")]
-        public System.Boolean? ShouldKeepResourcesOnFailure { get; set; }
-
         //      C# -> System.String? CloudAccountIdV2
         // GraphQL -> cloudAccountIdV2: String (scalar)
         [JsonProperty("cloudAccountIdV2")]
@@ -79,6 +72,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> gcpTestImage: GcpTestImage (input)
         [JsonProperty("gcpTestImage")]
         public GcpTestImage? GcpTestImage { get; set; }
+
+        //      C# -> CcpVendorType? Vendor
+        // GraphQL -> vendor: CcpVendorType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("vendor")]
+        public CcpVendorType? Vendor { get; set; }
 
 
         #endregion

@@ -135,36 +135,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			value = @{
     /// 				# OPTIONAL
     /// 				dataIpConfig = @{
-    /// 					# OPTIONAL
-    /// 					vlan = $someInt
     /// 					# REQUIRED
     /// 					address = $someString
     /// 					# REQUIRED
     /// 					gateway = $someString
     /// 					# REQUIRED
     /// 					netmask = $someString
+    /// 					# OPTIONAL
+    /// 					vlan = $someInt
     /// 				}
     /// 				# REQUIRED
     /// 				ipmiIpConfig = @{
-    /// 					# OPTIONAL
-    /// 					vlan = $someInt
     /// 					# REQUIRED
     /// 					address = $someString
     /// 					# REQUIRED
     /// 					gateway = $someString
     /// 					# REQUIRED
     /// 					netmask = $someString
+    /// 					# OPTIONAL
+    /// 					vlan = $someInt
     /// 				}
     /// 				# REQUIRED
     /// 				managementIpConfig = @{
-    /// 					# OPTIONAL
-    /// 					vlan = $someInt
     /// 					# REQUIRED
     /// 					address = $someString
     /// 					# REQUIRED
     /// 					gateway = $someString
     /// 					# REQUIRED
     /// 					netmask = $someString
+    /// 					# OPTIONAL
+    /// 					vlan = $someInt
     /// 				}
     /// 				# OPTIONAL
     /// 				vlanIpConfigs = @(
@@ -267,7 +267,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
+    /// 	cloudAccountId = $someString
+    /// 	# OPTIONAL
     /// 	numberOfNodes = $someInt
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	shouldKeepResourcesOnFailure = $someBoolean
     /// 	# OPTIONAL
     /// 	awsImageId = $someString
     /// 	# OPTIONAL
@@ -277,14 +283,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	gcpImageId = $someString
     /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# REQUIRED
-    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
-    /// 	# REQUIRED
-    /// 	shouldKeepResourcesOnFailure = $someBoolean
-    /// 	# OPTIONAL
     /// 	cloudAccountIdV2 = $someString
     /// 	# OPTIONAL
     /// 	gcpTestImage = @{
@@ -293,6 +291,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		imageName = $someString
     /// 	}
+    /// 	# REQUIRED
+    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -685,8 +685,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	cloudAccountId = $someString
     /// 	# REQUIRED
-    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
-    /// 	# REQUIRED
     /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	batchSize = $someInt
@@ -707,6 +705,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			availabilityZone = $someString
     /// 		}
     /// 	)
+    /// 	# REQUIRED
+    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1244,16 +1244,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	nodeIds = @(
     /// 		$someString
     /// 	)
     /// 	# OPTIONAL
-    /// 	useQuickDrain = $someBoolean
+    /// 	cloudAccountId = $someString
     /// 	# OPTIONAL
-    /// 	removeCloudResources = $someBoolean
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
+    /// 	useQuickDrain = $someBoolean
     /// 	# OPTIONAL
     /// 	nodeMetadata = @(
     /// 		@{
@@ -1262,23 +1262,23 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			chassisId = $someString
     /// 			# OPTIONAL
-    /// 			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
-    /// 			# OPTIONAL
-    /// 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
-    /// 			# OPTIONAL
     /// 			useQuickDrain = $someBoolean
     /// 			# OPTIONAL
     /// 			resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
     /// 	resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
     /// 	# OPTIONAL
-    /// 	cloudAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+    /// 	removeCloudResources = $someBoolean
     /// 	# OPTIONAL
     /// 	cloudAccountIdV2 = $someString
+    /// 	# OPTIONAL
+    /// 	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -1308,12 +1308,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	clusterUuid = $someString
     /// 	# OPTIONAL
     /// 	newNodeId = $someString
     /// 	# OPTIONAL
     /// 	ipmiPassword = $someString
-    /// 	# REQUIRED
-    /// 	clusterUuid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1776,9 +1776,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		}
     /// 	}
     /// 	# REQUIRED
-    /// 	id = $someString
-    /// 	# REQUIRED
     /// 	clusterUuid = $someString
+    /// 	# REQUIRED
+    /// 	id = $someString
     /// }
     /// 
     /// # Execute the query
@@ -2337,36 +2337,36 @@ $query.Var.AddClusterNodesInput = @{
 			value = @{
 				# OPTIONAL
 				dataIpConfig = @{
-					# OPTIONAL
-					vlan = $someInt
 					# REQUIRED
 					address = $someString
 					# REQUIRED
 					gateway = $someString
 					# REQUIRED
 					netmask = $someString
+					# OPTIONAL
+					vlan = $someInt
 				}
 				# REQUIRED
 				ipmiIpConfig = @{
-					# OPTIONAL
-					vlan = $someInt
 					# REQUIRED
 					address = $someString
 					# REQUIRED
 					gateway = $someString
 					# REQUIRED
 					netmask = $someString
+					# OPTIONAL
+					vlan = $someInt
 				}
 				# REQUIRED
 				managementIpConfig = @{
-					# OPTIONAL
-					vlan = $someInt
 					# REQUIRED
 					address = $someString
 					# REQUIRED
 					gateway = $someString
 					# REQUIRED
 					netmask = $someString
+					# OPTIONAL
+					vlan = $someInt
 				}
 				# OPTIONAL
 				vlanIpConfigs = @(
@@ -2453,7 +2453,13 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
+	cloudAccountId = $someString
+	# OPTIONAL
 	numberOfNodes = $someInt
+	# REQUIRED
+	clusterUuid = $someString
+	# REQUIRED
+	shouldKeepResourcesOnFailure = $someBoolean
 	# OPTIONAL
 	awsImageId = $someString
 	# OPTIONAL
@@ -2463,14 +2469,6 @@ $query.Var.input = @{
 	# OPTIONAL
 	gcpImageId = $someString
 	# OPTIONAL
-	cloudAccountId = $someString
-	# REQUIRED
-	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
-	# REQUIRED
-	clusterUuid = $someString
-	# REQUIRED
-	shouldKeepResourcesOnFailure = $someBoolean
-	# OPTIONAL
 	cloudAccountIdV2 = $someString
 	# OPTIONAL
 	gcpTestImage = @{
@@ -2479,6 +2477,8 @@ $query.Var.input = @{
 		# OPTIONAL
 		imageName = $someString
 	}
+	# REQUIRED
+	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 }"
             );
         }
@@ -2799,8 +2799,6 @@ $query.Var.input = @{
 	# REQUIRED
 	cloudAccountId = $someString
 	# REQUIRED
-	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
-	# REQUIRED
 	clusterUuid = $someString
 	# OPTIONAL
 	batchSize = $someInt
@@ -2821,6 +2819,8 @@ $query.Var.input = @{
 			availabilityZone = $someString
 		}
 	)
+	# REQUIRED
+	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 }"
             );
         }
@@ -3302,16 +3302,16 @@ $query.Var.shouldDeleteRcvLocations = $someBoolean"
                 Mutation.RemoveClusterNodesFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	nodeIds = @(
 		$someString
 	)
 	# OPTIONAL
-	useQuickDrain = $someBoolean
+	cloudAccountId = $someString
 	# OPTIONAL
-	removeCloudResources = $someBoolean
-	# REQUIRED
-	clusterUuid = $someString
+	useQuickDrain = $someBoolean
 	# OPTIONAL
 	nodeMetadata = @(
 		@{
@@ -3320,23 +3320,23 @@ $query.Var.input = @{
 			# OPTIONAL
 			chassisId = $someString
 			# OPTIONAL
-			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
-			# OPTIONAL
-			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
-			# OPTIONAL
 			useQuickDrain = $someBoolean
 			# OPTIONAL
 			resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
+			# OPTIONAL
+			platform = $someClusterNodePlatformType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodePlatformType]) for enum values.
+			# OPTIONAL
+			status = $someClusterNodeStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ClusterNodeStatus]) for enum values.
 		}
 	)
 	# OPTIONAL
 	resetAfterRemoveType = $someResetAfterRemoveType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.ResetAfterRemoveType]) for enum values.
 	# OPTIONAL
-	cloudAccountId = $someString
-	# OPTIONAL
-	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
+	removeCloudResources = $someBoolean
 	# OPTIONAL
 	cloudAccountIdV2 = $someString
+	# OPTIONAL
+	vendor = $someCcpVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CcpVendorType]) for enum values.
 }"
             );
         }
@@ -3358,12 +3358,12 @@ $query.Var.input = @{
                 Mutation.ReplaceClusterNodeFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	clusterUuid = $someString
 	# OPTIONAL
 	newNodeId = $someString
 	# OPTIONAL
 	ipmiPassword = $someString
-	# REQUIRED
-	clusterUuid = $someString
 }"
             );
         }
@@ -3754,9 +3754,9 @@ $query.Var.input = @{
 		}
 	}
 	# REQUIRED
-	id = $someString
-	# REQUIRED
 	clusterUuid = $someString
+	# REQUIRED
+	id = $someString
 }"
             );
         }

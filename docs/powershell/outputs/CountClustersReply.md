@@ -11,3 +11,6 @@ Cluster Count grouped by status.
   - The number of Rubrik clusters that have a FATAL status.
 - disconnectedClusters: System.Int32
   - The number of Rubrik clusters that are in disconnected state.
+- tunnelEnabledClusters: System.Int32
+  - The number of Rubrik clusters with at least one node whose support
+tunnel is open.

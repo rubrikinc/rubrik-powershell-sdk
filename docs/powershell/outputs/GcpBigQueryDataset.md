@@ -47,10 +47,13 @@ objects.
 - routines: list of GcpBigQueryRoutines
   - Details of the routines in the BigQuery dataset.
 - logicalSize: System.Int64
-  - Total logical size of native tables in the BigQuery dataset in bytes.
-uint64 rather than int64 so the GraphQL type is Long, not Int.
+  - The total logical size of native tables in the BigQuery dataset, in
+bytes.
 - isProtectionOnboarded: System.Boolean
   - Specifies whether a protection feature is onboarded for this BigQuery dataset.
+- maxTimeTravelHours: System.Int64
+  - The dataset's time-travel window in hours (48-168). Zero means the
+BigQuery default of 168 hours applies.
 - authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
   - The authorized operations on the object.
 - gcpProject: GcpNativeProject

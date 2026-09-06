@@ -13,3 +13,6 @@ Entra ID service principal.
   - Number of app roles associated with the Entra ID service principal.
 - servicePrincipalType: AzureAdServicePrincipalEnumType
   - Type represented by Entra ID service principal.
+- hasSigningCert: System.Boolean
+  - Specifies whether a token-signing certificate is configured on the Entra
+ID service principal.

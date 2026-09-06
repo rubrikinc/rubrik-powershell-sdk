@@ -2374,6 +2374,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -2797,6 +2799,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -6499,6 +6503,7 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
         //     sortBy: AzureSqlDatabaseServerSortFields
         //     sortOrder: SortOrder
         //     azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters
+        //     authorizedOperationFilter: Operation
         //   ): AzureSqlDatabaseServerConnection!
         internal void InitQueryAzureSqlDatabaseServers()
         {
@@ -6510,12 +6515,13 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
                 Tuple.Create("sortBy", "AzureSqlDatabaseServerSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("azureSqlDatabaseServerFilters", "AzureSqlDatabaseServerFilters"),
+                Tuple.Create("authorizedOperationFilter", "Operation"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlDatabaseServers",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters,$authorizedOperationFilter: Operation)",
                 "AzureSqlDatabaseServerConnection",
                 Query.AzureSqlDatabaseServers,
                 Query.AzureSqlDatabaseServersFieldSpec,
@@ -6573,7 +6579,9 @@ $query.Var.azureSqlDatabaseServerFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-}"
+}
+# OPTIONAL
+$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
             );
         }
 
@@ -6915,6 +6923,7 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
         //     sortBy: AzureSqlManagedInstanceServerSortFields
         //     sortOrder: SortOrder
         //     azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters
+        //     authorizedOperationFilter: Operation
         //   ): AzureSqlManagedInstanceServerConnection!
         internal void InitQueryAzureSqlManagedInstanceServers()
         {
@@ -6926,12 +6935,13 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
                 Tuple.Create("sortBy", "AzureSqlManagedInstanceServerSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("azureSqlManagedInstanceServerFilters", "AzureSqlManagedInstanceServerFilters"),
+                Tuple.Create("authorizedOperationFilter", "Operation"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlManagedInstanceServers",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters,$authorizedOperationFilter: Operation)",
                 "AzureSqlManagedInstanceServerConnection",
                 Query.AzureSqlManagedInstanceServers,
                 Query.AzureSqlManagedInstanceServersFieldSpec,
@@ -7003,7 +7013,9 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-}"
+}
+# OPTIONAL
+$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
             );
         }
 

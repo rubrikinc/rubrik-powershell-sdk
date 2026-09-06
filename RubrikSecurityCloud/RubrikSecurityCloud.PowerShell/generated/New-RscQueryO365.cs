@@ -123,6 +123,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # OPTIONAL
@@ -2883,6 +2887,8 @@ $query.Var.adGroupSearchFilter = $someString"
         // browseO365TeamConvChannels(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     snapshotFidOpt: UUID
         //     excludeArchived: Boolean!
@@ -2895,6 +2901,8 @@ $query.Var.adGroupSearchFilter = $someString"
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("snapshotFidOpt", "UUID"),
                 Tuple.Create("excludeArchived", "Boolean!"),
@@ -2906,7 +2914,7 @@ $query.Var.adGroupSearchFilter = $someString"
                 argDefs,
                 "query",
                 "QueryBrowseO365TeamConvChannels",
-                "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFidOpt: UUID,$excludeArchived: Boolean!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFidOpt: UUID,$excludeArchived: Boolean!,$orgId: UUID!,$channelMembershipTypeFilter: ChannelMembershipType!,$nameFilter: String)",
                 "O365TeamConvChannelConnection",
                 Query.BrowseO365TeamConvChannels,
                 Query.BrowseO365TeamConvChannelsFieldSpec,
@@ -2914,6 +2922,10 @@ $query.Var.adGroupSearchFilter = $someString"
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # OPTIONAL

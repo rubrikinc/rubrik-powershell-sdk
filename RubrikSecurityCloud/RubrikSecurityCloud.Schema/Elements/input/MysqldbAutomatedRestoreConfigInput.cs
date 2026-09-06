@@ -43,6 +43,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("restoreInfo")]
         public RestoreInputInput? RestoreInfo { get; set; }
 
+        //      C# -> List<MysqldbPerReplicaRestoreSettingsInput>? MultiMysqldbRestoreSettings
+        // GraphQL -> multiMysqldbRestoreSettings: [MysqldbPerReplicaRestoreSettingsInput!] (input)
+        [JsonProperty("multiMysqldbRestoreSettings")]
+        public List<MysqldbPerReplicaRestoreSettingsInput>? MultiMysqldbRestoreSettings { get; set; }
+
         //      C# -> MysqldbAutomatedRestoreConnectionInfoInput? MysqldbAutomatedRestoreConnectionInfo
         // GraphQL -> mysqldbAutomatedRestoreConnectionInfo: MysqldbAutomatedRestoreConnectionInfoInput (input)
         [JsonProperty("mysqldbAutomatedRestoreConnectionInfo")]

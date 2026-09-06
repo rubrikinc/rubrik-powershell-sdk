@@ -12,5 +12,5 @@ Identifying details for an AWS account used as a recovery plan location.
 - regionSpecs: list of AwsNativeRegionSpecs
   - Region specifications configured for the AWS account.
 - region: AwsNativeRegion
-  - Region this recovery plan location targets. Distinct from region_specs,
-which lists every region the account is registered with.
+  - The region this recovery plan location targets. This is distinct from
+regionSpecs, which lists every region the account is registered with.

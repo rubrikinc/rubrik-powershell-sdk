@@ -49,10 +49,11 @@ ListMvcProfiles lists MVC profiles for an org.
 ### onboardingmodebackupstats
 Returns the backup statistics of an M365 organization product in onboarding mode.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - orgId - System.String: Org UUID.
     - dashboardWorkloadType - M365DashboardWorkloadType: Workload type for M365 dashboard.
     - backupStatsTimeRange - BackupStatsTimeRange: Time range for backup statistics.
+    - operationMode - M365DashboardOperationMode: Operation mode to scope the statistics to. Defaults to onboarding mode when omitted.
 - Returns OnboardingModeBackupStats.
 ### onboardingmodestats
 Returns the statistics of an M365 organization product in onboarding mode.

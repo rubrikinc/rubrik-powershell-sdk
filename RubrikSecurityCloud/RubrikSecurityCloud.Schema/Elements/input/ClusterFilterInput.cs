@@ -119,6 +119,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAssignedByParentAccount")]
         public System.Boolean? IsAssignedByParentAccount { get; set; }
 
+        //      C# -> System.Boolean? IsSupportTunnelEnabled
+        // GraphQL -> isSupportTunnelEnabled: Boolean (scalar)
+        [JsonProperty("isSupportTunnelEnabled")]
+        public System.Boolean? IsSupportTunnelEnabled { get; set; }
+
 
         #endregion
 

@@ -45,7 +45,7 @@ Information about MongoDB Source.
   - Count of active collections for this MongoDB source.
 - protectedCollectionCount: System.Int32
   - Count of protected collections for this MongoDB source.
-- dataHosts: PhysicalHostConnection
+- dataHosts: MongoDataHostsConnection
   - The list of data hosts associated with this MongoDB source.
 - primaryClusterLocation: DataLocation
   - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.

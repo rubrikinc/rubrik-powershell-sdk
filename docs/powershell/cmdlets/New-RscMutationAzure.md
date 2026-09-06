@@ -82,7 +82,7 @@ Creates reader type for Azure archival location on a CDM cluster.
 - There is a single argument of type CreateAzureReaderTargetInput.
 - Returns Target.
 ### createsaasappaad
-Create or get an Azure AAD application.
+Creates or gets the per-account Rubrik SaaS Azure AD application.
 
 - The createsaasappaad subcommand takes no arguments.
 - Returns CreateAzureSaasAppAadReply.
@@ -123,7 +123,8 @@ Updates the list of containers excluded from protection for the specified storag
 - There is a single argument of type ExcludeAzureStorageAccountContainersInput.
 - Returns System.String.
 ### getorcreatebyokapp
-Get or create an Azure BYOK (Bring Your Own Key) application.
+Gets or creates the per-account Rubrik SaaS Azure application used for Bring
+Your Own Key (BYOK) scenarios.
 
 - The getorcreatebyokapp subcommand takes no arguments.
 - Returns GetOrCreateByokAzureAppReply.

@@ -81,6 +81,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GOOGLE_WORKSPACE_ROOT")]
         GOOGLE_WORKSPACE_ROOT,
 
+        [EnumMember(Value = "HVM_ROOT")]
+        HVM_ROOT,
+
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
 

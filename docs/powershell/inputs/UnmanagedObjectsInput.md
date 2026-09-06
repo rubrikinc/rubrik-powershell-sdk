@@ -29,3 +29,5 @@ Input to query unmanaged objects.
   - Filter objects based on presence of downloaded snapshots. When not specified, all objects are returned. When true, only objects with downloaded snapshots are returned. When false, only objects without downloaded snapshots are returned.
 - hasLocalSnapshots: System.Boolean
   - Filter objects based on the presence of local snapshots. When not specified, all objects are returned. When true, only objects with local snapshots are returned. When false, only objects without local snapshots are returned.
+- namePrefixFilter: NamePrefixFilter
+  - Filter by name prefix.

@@ -1266,6 +1266,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+    /// 	# OPTIONAL
+    /// 	surgicalRecoveryConfig = @{
+    /// 		# OPTIONAL
+    /// 		quarantinedFiles = @{
+    /// 			# OPTIONAL
+    /// 			shouldSkipCleanVersionRecovery = $someBoolean
+    /// 			# OPTIONAL
+    /// 			skippedFilePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		encryptedFiles = @{
+    /// 			# OPTIONAL
+    /// 			shouldRecoverCleanVersions = $someBoolean
+    /// 			# OPTIONAL
+    /// 			excludedExtensions = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -3028,6 +3049,27 @@ $query.Var.input = @{
 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+	# OPTIONAL
+	surgicalRecoveryConfig = @{
+		# OPTIONAL
+		quarantinedFiles = @{
+			# OPTIONAL
+			shouldSkipCleanVersionRecovery = $someBoolean
+			# OPTIONAL
+			skippedFilePaths = @(
+				$someString
+			)
+		}
+		# OPTIONAL
+		encryptedFiles = @{
+			# OPTIONAL
+			shouldRecoverCleanVersions = $someBoolean
+			# OPTIONAL
+			excludedExtensions = @(
+				$someString
+			)
+		}
+	}
 }"
             );
         }

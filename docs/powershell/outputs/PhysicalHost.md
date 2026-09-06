@@ -1,5 +1,5 @@
 ### PhysicalHost
-
+A physical host managed by Rubrik CDM.
 
 - id: System.String
   - ID of the hierarchy object.
@@ -22,14 +22,21 @@
 source (primary) cluster. False if the object resides on its source
 cluster. Null when the source cluster is unknown.
 - cdmId: System.String
+  - Rubrik CDM ID of the physical host.
 - ipAddresses: list of System.Strings
+  - IP addresses of the physical host.
 - osName: System.String
+  - Name of the operating system running on the physical host.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - connectionStatus: HostConnectionStatus
+  - Connection status of the physical host.
 - hostVolumes: list of CdmHostVolumes
+  - Volumes on the physical host.
 - isArchived: System.Boolean
+  - Specifies whether the physical host is archived.
 - vfdState: System.String
+  - Volume Filter Driver (VFD) state of the physical host.
 - cbtStatus: System.String
   - The CBT status of this Physical Host.
 - isOracleHost: System.Boolean

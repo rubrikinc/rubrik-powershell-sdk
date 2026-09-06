@@ -43,3 +43,5 @@ Input to initiate an export job for an AWS native EC2 instance.
   - AWS Glacier retrieval tier to use when hydrating archived objects for this export. Only meaningful when exporting from a Glacier-tier archival location.
 - recoveryPurpose: RecoveryPurpose
   - Purpose of the recovery operation. Set to SURGICAL_RECOVERY to automatically exclude quarantined files from the exported instance (subject to feature availability for the account). Defaults to RECOVERY_PURPOSE_UNSPECIFIED, which preserves prior behavior.
+- surgicalRecoveryConfig: SurgicalRecoveryConfigInput
+  - Clean-version selections for a surgical recovery: which quarantined files keep their clean version restored, and which encrypted files are restored from their clean counterparts. Requires recoveryPurpose SURGICAL_RECOVERY and the surgical recovery V2 entitlement on the account. Omit to export with quarantined files excluded and encrypted files left as they stand.

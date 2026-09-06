@@ -3,8 +3,6 @@ Disk migration request for a cloud cluster.
 
 - cloudAccountId: System.String
   - Customer cloud account UUID.
-- vendor: CcpVendorType
-  - Cloud vendor type.
 - clusterUuid: System.String
   - Cluster UUID.
 - batchSize: System.Int32
@@ -16,6 +14,8 @@ Disk migration request for a cloud cluster.
 - newInstanceType: System.Int32
   - Instance type enum value for the choosen cloud vendor.
 - isAzMigration: System.Boolean
-  - Specifies whether RSC is migrating the cluster to AZ-resilient mode.
+  - Indicates whether the Rubrik cluster is being migrated to AZ-resilient mode.
 - subnetAzConfigs: list of SubnetAzConfigInputs
   - Target subnet and availability zone pairs for AZ-resilient migration.
+- vendor: CcpVendorType
+  - Cloud vendor type.

@@ -1143,6 +1143,17 @@ StartRecovery triggers a recovery job for the relevant recovery spec.
 
 - There is a single argument of type StartRecoveryInput.
 - Returns StartRecoveryReply.
+### startrscppackagedownload
+Downloads an uploaded RSC-P appliance upgrade package onto the appliance
+host and stages it.
+
+- There is a single argument of type StartRscpPackageDownloadInput.
+- Returns StartRscpPackageDownloadReply.
+### startrscpupgrade
+Starts an upgrade of the RSC-P appliance.
+
+- There is a single argument of type StartRscpUpgradeInput.
+- Returns StartRscpUpgradeReply.
 ### startsalesforcepermissionassessment
 Initiates an asynchronous job to run an on-demand permission assessment for
 the specified Salesforce organization.
@@ -1382,6 +1393,11 @@ Update guest OS credentials.
 
 - There is a single argument of type UpdateGuestCredentialInput.
 - Returns UpdateGuestCredentialReply.
+### updateimageclassificationconfig
+Update image classification configuration and return the updated Rubrik cluster.
+
+- There is a single argument of type UpdateImageClassificationConfigInput.
+- Returns UpdateImageClassificationConfigReply.
 ### updateinsightstate
 Toggle the dismissed state of an insight.
 
@@ -1546,7 +1562,7 @@ Converts a GPS account to an RSC account.
 - The upgradetorsc subcommand takes no arguments.
 - Returns System.String.
 ### validateandsavecustomerkmsinfo
-Validate KMS input provided on O365 subscription setup.
+Validates and saves the customer's KMS (Key Management Service) information.
 
 - There is a single argument of type ValidateAndSaveCustomerKmsInfoInput.
 - Returns ValidateAndSaveCustomerKmsInfoReply.

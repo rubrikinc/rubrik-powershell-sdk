@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("appRoles")]
         public List<AzureAdAppRole>? AppRoles { get; set; }
 
+        //      C# -> EntraIdLinkedServicePrincipal? LinkedServicePrincipal
+        // GraphQL -> linkedServicePrincipal: EntraIdLinkedServicePrincipal (type)
+        [JsonProperty("linkedServicePrincipal")]
+        public EntraIdLinkedServicePrincipal? LinkedServicePrincipal { get; set; }
+
 
         #endregion
 
@@ -65,7 +70,8 @@ namespace RubrikSecurityCloud.Types
         DateTime? CreatedDateTime = null,
         System.String? DisplayName = null,
         System.Boolean? SecretsExpired = null,
-        List<AzureAdAppRole>? AppRoles = null
+        List<AzureAdAppRole>? AppRoles = null,
+        EntraIdLinkedServicePrincipal? LinkedServicePrincipal = null
     ) 
     {
         if ( AppId != null ) {
@@ -85,6 +91,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AppRoles != null ) {
             this.AppRoles = AppRoles;
+        }
+        if ( LinkedServicePrincipal != null ) {
+            this.LinkedServicePrincipal = LinkedServicePrincipal;
         }
         return this;
     }
@@ -154,6 +163,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "appRoles" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> EntraIdLinkedServicePrincipal? LinkedServicePrincipal
+        // GraphQL -> linkedServicePrincipal: EntraIdLinkedServicePrincipal (type)
+        if (this.LinkedServicePrincipal != null) {
+            var fspec = this.LinkedServicePrincipal.AsFieldSpec(conf.Child("linkedServicePrincipal"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "linkedServicePrincipal" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -267,6 +288,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AppRoles != null && ec.Excludes("appRoles",false))
         {
             this.AppRoles = null;
+        }
+        //      C# -> EntraIdLinkedServicePrincipal? LinkedServicePrincipal
+        // GraphQL -> linkedServicePrincipal: EntraIdLinkedServicePrincipal (type)
+        if (ec.Includes("linkedServicePrincipal",false))
+        {
+            if(this.LinkedServicePrincipal == null) {
+
+                this.LinkedServicePrincipal = new EntraIdLinkedServicePrincipal();
+                this.LinkedServicePrincipal.ApplyExploratoryFieldSpec(ec.NewChild("linkedServicePrincipal"));
+
+            } else {
+
+                this.LinkedServicePrincipal.ApplyExploratoryFieldSpec(ec.NewChild("linkedServicePrincipal"));
+
+            }
+        }
+        else if (this.LinkedServicePrincipal != null && ec.Excludes("linkedServicePrincipal",false))
+        {
+            this.LinkedServicePrincipal = null;
         }
     }
 

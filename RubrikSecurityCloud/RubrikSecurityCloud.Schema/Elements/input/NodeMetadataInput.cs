@@ -29,16 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("chassisId")]
         public System.String? ChassisId { get; set; }
 
-        //      C# -> ClusterNodePlatformType? Platform
-        // GraphQL -> platform: ClusterNodePlatformType (enum)
-        [JsonProperty("platform")]
-        public ClusterNodePlatformType? Platform { get; set; }
-
-        //      C# -> ClusterNodeStatus? Status
-        // GraphQL -> status: ClusterNodeStatus (enum)
-        [JsonProperty("status")]
-        public ClusterNodeStatus? Status { get; set; }
-
         //      C# -> System.Boolean? UseQuickDrain
         // GraphQL -> useQuickDrain: Boolean (scalar)
         [JsonProperty("useQuickDrain")]
@@ -48,6 +38,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> resetAfterRemoveType: ResetAfterRemoveType (enum)
         [JsonProperty("resetAfterRemoveType")]
         public ResetAfterRemoveType? ResetAfterRemoveType { get; set; }
+
+        //      C# -> ClusterNodePlatformType? Platform
+        // GraphQL -> platform: ClusterNodePlatformType (enum)
+        [JsonProperty("platform")]
+        public ClusterNodePlatformType? Platform { get; set; }
+
+        //      C# -> ClusterNodeStatus? Status
+        // GraphQL -> status: ClusterNodeStatus (enum)
+        [JsonProperty("status")]
+        public ClusterNodeStatus? Status { get; set; }
 
 
         #endregion

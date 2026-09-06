@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "FAILED")]
         FAILED,
 
+        [EnumMember(Value = "PARTIALLY_SUCCEEDED")]
+        PARTIALLY_SUCCEEDED,
+
         [EnumMember(Value = "QUEUED")]
         QUEUED,
 

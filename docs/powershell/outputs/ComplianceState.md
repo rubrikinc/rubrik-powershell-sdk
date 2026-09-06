@@ -9,3 +9,5 @@ Stores the compliance status of a workload type.
   - Describes if a switch to onboarding mode can be allowed.
 - lastComplianceUpdateTime: DateTime
   - Returns the last compliance update time.
+- shouldAllowSwitchToBackfillOnboardingMode: System.Boolean
+  - Describes whether switching to backfill onboarding mode is allowed.

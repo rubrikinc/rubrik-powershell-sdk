@@ -101,6 +101,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	appTypes = @(
     /// 		$someString
     /// 	)
+    /// 	# OPTIONAL
+    /// 	prioritizedOnboardingSpec = @{
+    /// 		# REQUIRED
+    /// 		operationMode = $someO365SetupOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365SetupOperationMode]) for enum values.
+    /// 		# OPTIONAL
+    /// 		prioritizedOnboardingDays = $someInt
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2093,6 +2100,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	}
     /// 	# REQUIRED
     /// 	storeBackupInSameRegionAsData = $someBoolean
+    /// 	# OPTIONAL
+    /// 	prioritizedOnboardingSpec = @{
+    /// 		# REQUIRED
+    /// 		operationMode = $someO365SetupOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365SetupOperationMode]) for enum values.
+    /// 		# OPTIONAL
+    /// 		prioritizedOnboardingDays = $someInt
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2789,6 +2803,13 @@ $query.Var.input = @{
 	appTypes = @(
 		$someString
 	)
+	# OPTIONAL
+	prioritizedOnboardingSpec = @{
+		# REQUIRED
+		operationMode = $someO365SetupOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365SetupOperationMode]) for enum values.
+		# OPTIONAL
+		prioritizedOnboardingDays = $someInt
+	}
 }"
             );
         }
@@ -4549,6 +4570,13 @@ $query.Var.input = @{
 	}
 	# REQUIRED
 	storeBackupInSameRegionAsData = $someBoolean
+	# OPTIONAL
+	prioritizedOnboardingSpec = @{
+		# REQUIRED
+		operationMode = $someO365SetupOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.O365SetupOperationMode]) for enum values.
+		# OPTIONAL
+		prioritizedOnboardingDays = $someInt
+	}
 }"
             );
         }

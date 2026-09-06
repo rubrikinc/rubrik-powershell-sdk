@@ -26,13 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountId")]
         public System.String? CloudAccountId { get; set; }
 
-        //      C# -> CcpVendorType? Vendor
-        // GraphQL -> vendor: CcpVendorType! (enum)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("vendor")]
-        public CcpVendorType? Vendor { get; set; }
-
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
@@ -69,6 +62,13 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> subnetAzConfigs: [SubnetAzConfigInput!] (input)
         [JsonProperty("subnetAzConfigs")]
         public List<SubnetAzConfigInput>? SubnetAzConfigs { get; set; }
+
+        //      C# -> CcpVendorType? Vendor
+        // GraphQL -> vendor: CcpVendorType! (enum)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("vendor")]
+        public CcpVendorType? Vendor { get; set; }
 
 
         #endregion

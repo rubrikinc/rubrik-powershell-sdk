@@ -97,6 +97,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasLocalSnapshots")]
         public System.Boolean? HasLocalSnapshots { get; set; }
 
+        //      C# -> NamePrefixFilter? NamePrefixFilter
+        // GraphQL -> namePrefixFilter: NamePrefixFilter (input)
+        [JsonProperty("namePrefixFilter")]
+        public NamePrefixFilter? NamePrefixFilter { get; set; }
+
 
         #endregion
 

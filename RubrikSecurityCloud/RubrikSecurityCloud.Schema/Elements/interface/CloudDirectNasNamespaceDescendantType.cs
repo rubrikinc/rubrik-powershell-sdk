@@ -64,11 +64,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("pendingSla")]
         SlaDomain? PendingSla { get; set; }
 
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        List<Operation>? AuthorizedOperations { get; set; }
-
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -88,6 +83,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
         [JsonProperty("cloudDirectPendingObjectPauseAssignment")]
         PendingObjectPauseAssignmentStatus? CloudDirectPendingObjectPauseAssignment { get; set; }
+
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
 
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

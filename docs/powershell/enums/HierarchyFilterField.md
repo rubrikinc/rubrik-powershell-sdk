@@ -1365,6 +1365,13 @@ JSON column at path $.isHidden.
 +mo:filter:db:column=metadata
 +mo:filter:db:index:key=NULL // no matching index for is_hidden
 - IS_INFRASTRUCTURE_ALERTS_ENABLED - Filters S3 buckets by whether infrastructure deletion alerts are enabled.
++mo:filter:db:table=crp_critical_resource
++mo:filter:db:column=snappable_fid
++mo:filter:db:column=is_critical
++mo:filter:db:index:key=uq_crp_critical_resource_snappable_fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - MYSQLDB_INSTANCE_CLUSTER_MODE - Filter MySQL instances by cluster mode. Pass texts = ["HA"] to keep
 only high-availability instances, or ["STANDALONE"] to keep only
 single-instance ones. Any instance that is not high-availability is
@@ -1434,3 +1441,25 @@ connection status of their host.
 +mo:filter:db:index:seq=2
 +mo:filter:db:index:type=BTREE
 +mo:filter:db:index:unique=true
+- AZURE_COSMOS_NOSQL_CONTAINER_NAME_OR_NATIVE_ID - Filter Azure Cosmos NoSQL containers by native ID or name.
++mo:filter:db:table=cloud_native_resource
++mo:filter:db:column=native_uri,native_name
++mo:filter:db:index:key=native_uri_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME - Filter Azure Cosmos NoSQL containers by the name of their parent
+database, denormalized onto the container as a property.
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME - Filter Azure Cosmos NoSQL containers by the name of their ancestor
+account, denormalized onto the container as a property.
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_CONTAINER_CONTINUOUS_BACKUP_ENABLED - Filter Azure Cosmos NoSQL containers on whether the ancestor account
+uses continuous backup. Use texts param with values "true" or "false".
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=NULL

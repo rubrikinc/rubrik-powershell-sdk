@@ -324,6 +324,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.dashboardWorkloadType = $someM365DashboardWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardWorkloadType]) for enum values.
     /// # REQUIRED
     /// $query.Var.backupStatsTimeRange = $someBackupStatsTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupStatsTimeRange]) for enum values.
+    /// # OPTIONAL
+    /// $query.Var.operationMode = $someM365DashboardOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardOperationMode]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -942,19 +944,25 @@ $query.Var.includeArchived = $someBoolean"
         }
 
         // Create new GraphQL Query:
-        // m365OnboardingModeBackupStats(orgId: UUID!, dashboardWorkloadType: M365DashboardWorkloadType!, backupStatsTimeRange: BackupStatsTimeRange!): OnboardingModeBackupStats!
+        // m365OnboardingModeBackupStats(
+        //     orgId: UUID!
+        //     dashboardWorkloadType: M365DashboardWorkloadType!
+        //     backupStatsTimeRange: BackupStatsTimeRange!
+        //     operationMode: M365DashboardOperationMode
+        //   ): OnboardingModeBackupStats!
         internal void InitQueryM365OnboardingModeBackupStats()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("dashboardWorkloadType", "M365DashboardWorkloadType!"),
                 Tuple.Create("backupStatsTimeRange", "BackupStatsTimeRange!"),
+                Tuple.Create("operationMode", "M365DashboardOperationMode"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryM365OnboardingModeBackupStats",
-                "($orgId: UUID!,$dashboardWorkloadType: M365DashboardWorkloadType!,$backupStatsTimeRange: BackupStatsTimeRange!)",
+                "($orgId: UUID!,$dashboardWorkloadType: M365DashboardWorkloadType!,$backupStatsTimeRange: BackupStatsTimeRange!,$operationMode: M365DashboardOperationMode)",
                 "OnboardingModeBackupStats",
                 Query.M365OnboardingModeBackupStats,
                 Query.M365OnboardingModeBackupStatsFieldSpec,
@@ -963,7 +971,9 @@ $query.Var.orgId = $someString
 # REQUIRED
 $query.Var.dashboardWorkloadType = $someM365DashboardWorkloadType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardWorkloadType]) for enum values.
 # REQUIRED
-$query.Var.backupStatsTimeRange = $someBackupStatsTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupStatsTimeRange]) for enum values."
+$query.Var.backupStatsTimeRange = $someBackupStatsTimeRange # Call [Enum]::GetValues([RubrikSecurityCloud.Types.BackupStatsTimeRange]) for enum values.
+# OPTIONAL
+$query.Var.operationMode = $someM365DashboardOperationMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.M365DashboardOperationMode]) for enum values."
             );
         }
 

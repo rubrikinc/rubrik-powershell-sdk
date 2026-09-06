@@ -15,6 +15,10 @@ Azure Exocompute configuration.
   - Specifies if Exocompute is managed by RSC.
 - message: System.String
   - Specifies the error message received if any.
+- healthCheckStatus: ExocomputeHealthCheckStatus
+  - Status of the latest Exocompute health check.
+- latestExoclusterDetails: ExocomputeClusterDetails
+  - Details of the latest Exocompute cluster.
 - hasPcr: System.Boolean
   - Whether this Exocompute uses a Private Container Registry (PCR).
 - pcrUrl: System.String
@@ -27,9 +31,5 @@ Azure Exocompute configuration.
   - Cluster name of the customer-managed Exocompute.
 - byokClusterId: System.String
   - Cluster ID of the customer-managed Exocompute.
-- healthCheckStatus: ExocomputeHealthCheckStatus
-  - Status of the latest Exocompute health check.
-- latestExoclusterDetails: ExocomputeClusterDetails
-  - Details of the latest Exocompute cluster.
 - optionalConfig: AzureExocomputeOptionalConfigInRegion
   - Optional configurations for aks cluster.

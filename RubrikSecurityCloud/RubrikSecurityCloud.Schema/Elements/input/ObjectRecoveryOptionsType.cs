@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("licenseRecoveryOption")]
         public LicenseRecoveryOptionInput? LicenseRecoveryOption { get; set; }
 
+        //      C# -> SsoRecoveryOptionInput? SsoRecoveryOption
+        // GraphQL -> ssoRecoveryOption: SsoRecoveryOptionInput (input)
+        [JsonProperty("ssoRecoveryOption")]
+        public SsoRecoveryOptionInput? SsoRecoveryOption { get; set; }
+
 
         #endregion
 

@@ -724,6 +724,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.bucketName = $someString
     /// # REQUIRED
     /// $query.Var.awsAccountRubrikId = $someString
+    /// # OPTIONAL
+    /// $query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -2597,25 +2599,28 @@ $query.Var.region = $someString"
         }
 
         // Create new GraphQL Query:
-        // isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!): Boolean!
+        // isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!, feature: CloudAccountFeature = FEATURE_UNSPECIFIED): Boolean!
         internal void InitQueryIsAwsS3BucketNameAvailable()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("bucketName", "String!"),
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryIsAwsS3BucketNameAvailable",
-                "($bucketName: String!,$awsAccountRubrikId: UUID!)",
+                "($bucketName: String!,$awsAccountRubrikId: UUID!,$feature: CloudAccountFeature)",
                 "System.Boolean",
                 Query.IsAwsS3BucketNameAvailable,
                 Query.IsAwsS3BucketNameAvailableFieldSpec,
                 @"# REQUIRED
 $query.Var.bucketName = $someString
 # REQUIRED
-$query.Var.awsAccountRubrikId = $someString"
+$query.Var.awsAccountRubrikId = $someString
+# OPTIONAL
+$query.Var.feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values."
             );
         }
 

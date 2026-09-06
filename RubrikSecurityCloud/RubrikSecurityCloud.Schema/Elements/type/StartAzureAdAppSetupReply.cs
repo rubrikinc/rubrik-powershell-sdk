@@ -45,6 +45,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("excessivePermissions")]
         public List<System.String>? ExcessivePermissions { get; set; }
 
+        //      C# -> System.Boolean? IsExchangeAdminRoleAssigned
+        // GraphQL -> isExchangeAdminRoleAssigned: Boolean! (scalar)
+        [JsonProperty("isExchangeAdminRoleAssigned")]
+        public System.Boolean? IsExchangeAdminRoleAssigned { get; set; }
+
+        //      C# -> List<System.String>? MissingM365Permissions
+        // GraphQL -> missingM365Permissions: [String!]! (scalar)
+        [JsonProperty("missingM365Permissions")]
+        public List<System.String>? MissingM365Permissions { get; set; }
+
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
         [JsonProperty("missingPermissions")]
@@ -65,6 +75,8 @@ namespace RubrikSecurityCloud.Types
         System.String? AppId = null,
         System.String? CsrfToken = null,
         List<System.String>? ExcessivePermissions = null,
+        System.Boolean? IsExchangeAdminRoleAssigned = null,
+        List<System.String>? MissingM365Permissions = null,
         List<System.String>? MissingPermissions = null
     ) 
     {
@@ -82,6 +94,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExcessivePermissions != null ) {
             this.ExcessivePermissions = ExcessivePermissions;
+        }
+        if ( IsExchangeAdminRoleAssigned != null ) {
+            this.IsExchangeAdminRoleAssigned = IsExchangeAdminRoleAssigned;
+        }
+        if ( MissingM365Permissions != null ) {
+            this.MissingM365Permissions = MissingM365Permissions;
         }
         if ( MissingPermissions != null ) {
             this.MissingPermissions = MissingPermissions;
@@ -143,6 +161,24 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "excessivePermissions\n" ;
             } else {
                 s += ind + "excessivePermissions\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsExchangeAdminRoleAssigned
+        // GraphQL -> isExchangeAdminRoleAssigned: Boolean! (scalar)
+        if (this.IsExchangeAdminRoleAssigned != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isExchangeAdminRoleAssigned\n" ;
+            } else {
+                s += ind + "isExchangeAdminRoleAssigned\n" ;
+            }
+        }
+        //      C# -> List<System.String>? MissingM365Permissions
+        // GraphQL -> missingM365Permissions: [String!]! (scalar)
+        if (this.MissingM365Permissions != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "missingM365Permissions\n" ;
+            } else {
+                s += ind + "missingM365Permissions\n" ;
             }
         }
         //      C# -> List<System.String>? MissingPermissions
@@ -245,6 +281,40 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExcessivePermissions != null && ec.Excludes("excessivePermissions",true))
         {
             this.ExcessivePermissions = null;
+        }
+        //      C# -> System.Boolean? IsExchangeAdminRoleAssigned
+        // GraphQL -> isExchangeAdminRoleAssigned: Boolean! (scalar)
+        if (ec.Includes("isExchangeAdminRoleAssigned",true))
+        {
+            if(this.IsExchangeAdminRoleAssigned == null) {
+
+                this.IsExchangeAdminRoleAssigned = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsExchangeAdminRoleAssigned != null && ec.Excludes("isExchangeAdminRoleAssigned",true))
+        {
+            this.IsExchangeAdminRoleAssigned = null;
+        }
+        //      C# -> List<System.String>? MissingM365Permissions
+        // GraphQL -> missingM365Permissions: [String!]! (scalar)
+        if (ec.Includes("missingM365Permissions",true))
+        {
+            if(this.MissingM365Permissions == null) {
+
+                this.MissingM365Permissions = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MissingM365Permissions != null && ec.Excludes("missingM365Permissions",true))
+        {
+            this.MissingM365Permissions = null;
         }
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)

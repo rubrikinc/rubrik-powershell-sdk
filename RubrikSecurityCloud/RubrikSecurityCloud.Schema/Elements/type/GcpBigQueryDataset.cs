@@ -86,6 +86,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("logicalSize")]
         public System.Int64? LogicalSize { get; set; }
 
+        //      C# -> System.Int64? MaxTimeTravelHours
+        // GraphQL -> maxTimeTravelHours: Long! (scalar)
+        [JsonProperty("maxTimeTravelHours")]
+        public System.Int64? MaxTimeTravelHours { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -364,6 +369,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsProtectionOnboarded = null,
         System.Boolean? IsRelic = null,
         System.Int64? LogicalSize = null,
+        System.Int64? MaxTimeTravelHours = null,
         System.String? Name = null,
         System.String? NativeId = null,
         System.String? NativeName = null,
@@ -435,6 +441,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LogicalSize != null ) {
             this.LogicalSize = LogicalSize;
+        }
+        if ( MaxTimeTravelHours != null ) {
+            this.MaxTimeTravelHours = MaxTimeTravelHours;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -670,6 +679,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "logicalSize\n" ;
             } else {
                 s += ind + "logicalSize\n" ;
+            }
+        }
+        //      C# -> System.Int64? MaxTimeTravelHours
+        // GraphQL -> maxTimeTravelHours: Long! (scalar)
+        if (this.MaxTimeTravelHours != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "maxTimeTravelHours\n" ;
+            } else {
+                s += ind + "maxTimeTravelHours\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1271,6 +1289,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LogicalSize != null && ec.Excludes("logicalSize",true))
         {
             this.LogicalSize = null;
+        }
+        //      C# -> System.Int64? MaxTimeTravelHours
+        // GraphQL -> maxTimeTravelHours: Long! (scalar)
+        if (ec.Includes("maxTimeTravelHours",true))
+        {
+            if(this.MaxTimeTravelHours == null) {
+
+                this.MaxTimeTravelHours = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MaxTimeTravelHours != null && ec.Excludes("maxTimeTravelHours",true))
+        {
+            this.MaxTimeTravelHours = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

@@ -19,11 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.Int32? Vlan
-        // GraphQL -> vlan: Int (scalar)
-        [JsonProperty("vlan")]
-        public System.Int32? Vlan { get; set; }
-
         //      C# -> System.String? Address
         // GraphQL -> address: String! (scalar)
         [Required]
@@ -44,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("netmask")]
         public System.String? Netmask { get; set; }
+
+        //      C# -> System.Int32? Vlan
+        // GraphQL -> vlan: Int (scalar)
+        [JsonProperty("vlan")]
+        public System.Int32? Vlan { get; set; }
 
 
         #endregion
