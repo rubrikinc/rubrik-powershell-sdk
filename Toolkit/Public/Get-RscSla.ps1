@@ -253,18 +253,9 @@ function Get-RscSla {
                 $_t.Status                   = [RubrikSecurityCloud.Types.ArchivalLocationStatus]::UNKNOWN
                 $_t.UpgradeStatus            = [RubrikSecurityCloud.Types.UpgradeStatus]::UNKNOWN
                 $_t.TargetMapping            = Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")
-            }
-
-            # All target types have List<TargetMappingBasic> TargetMappingBasic in the DLL.
-            # Use New-Object + Add() instead of [List[T]]@() — the cast syntax fails in PowerShell 5.
-            foreach ($_t in @($_tAws, $_tAzure, $_tGcp, $_tNfs, $_tS3c,
-                              $_tDca, $_tGlacier, $_tLck, $_tTape,
-                              $_tCdmAws, $_tCdmAzure, $_tCdmGcp, $_tCdmNfs, $_tCdmS3c,
-                              $_tCdmDca, $_tCdmGlacier, $_tCdmLck, $_tCdmTape, $_tCdmGeneric,
-                              $_tRcvAws, $_tRcvGcp, $_tRcs)) {
                 $list = New-Object "System.Collections.Generic.List[RubrikSecurityCloud.Types.TargetMappingBasic]"
                 $list.Add((Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")))
-                $_t.TargetMappingBasic = $list
+                $_t.TargetMappingBasic       = $list
             }
 
             # ConnectionStatus is only defined on the RubrikManaged* targets, not the CDM-managed ones.
