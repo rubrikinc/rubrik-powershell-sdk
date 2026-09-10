@@ -138,6 +138,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("recoveryPurpose")]
         public RecoveryPurpose? RecoveryPurpose { get; set; }
 
+        //      C# -> SurgicalRecoveryConfigInput? SurgicalRecoveryConfig
+        // GraphQL -> surgicalRecoveryConfig: SurgicalRecoveryConfigInput (input)
+        [JsonProperty("surgicalRecoveryConfig")]
+        public SurgicalRecoveryConfigInput? SurgicalRecoveryConfig { get; set; }
+
 
         #endregion
 

@@ -105,6 +105,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "INFORMIX")]
         INFORMIX,
 
+        [EnumMember(Value = "IRISDB")]
+        IRISDB,
+
         [EnumMember(Value = "KUBERNETES")]
         KUBERNETES,
 

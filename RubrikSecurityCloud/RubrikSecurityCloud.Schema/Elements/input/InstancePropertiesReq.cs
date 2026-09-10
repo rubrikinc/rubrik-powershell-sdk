@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vendor")]
         public VendorType? Vendor { get; set; }
 
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String (scalar)
+        [JsonProperty("cdmVersion")]
+        public System.String? CdmVersion { get; set; }
+
 
         #endregion
 

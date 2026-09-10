@@ -1,7 +1,7 @@
 ### SetHostRbsNetworkLimitInput
 Request to set RBS network throttle limits for hosts.
 
-- hostIds: list of System.Strings
-  - List of host IDs to set RBS network throttle limits for.
 - networkThrottleLimits: HostRbsNetworkLimitsInput
-  - The network throttle limits to set for the hosts.
+  - Required. The network throttle limits to set for the hosts.
+- hostIds: list of System.Strings
+  - Required. List of host IDs to set RBS network throttle limits for.

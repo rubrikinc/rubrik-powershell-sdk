@@ -243,9 +243,9 @@ Represents different types of activity objects.
 - OPENSTACK_IMAGE - Openstack Image.
 - GCP_ALLOY_DB_CLUSTER - GCP AlloyDB Cluster.
 - PRINCIPAL_APP_ROLE - App Role principal type.
-- PURE_STORAGE_ARRAY - Pure Storage array.
-- PURE_STORAGE_PROTECTION_GROUP - Pure Storage protection group.
-- PURE_STORAGE_VOLUME - Pure Storage volume.
+- PURE_STORAGE_ARRAY - Everpure FlashArray.
+- PURE_STORAGE_PROTECTION_GROUP - Everpure protection group.
+- PURE_STORAGE_VOLUME - Everpure volume.
 - GCP_BIG_QUERY_DATASET - GCP BigQuery Dataset.
 - PRINCIPAL_CONTRACT - Contract principal type.
 - PRINCIPAL_DEVICE - Device principal type.
@@ -265,7 +265,7 @@ Represents different types of activity objects.
 - GLUE_ICEBERG_DATABASE - AWS Glue Iceberg Database.
 - GLUE_ICEBERG_TABLE - AWS Glue Iceberg Table.
 - PRINCIPAL_PKI_ENROLLMENT_SERVICE - PKI Enrollment Service (AD CS CA) principal type.
-- PING_FEDERATE_CLUSTER - Ping Federate Cluster.
+- PING_FEDERATE_CLUSTER - PingFederate Cluster.
 - AUTH0_TENANT - Auth0 tenant.
 - MARIADB_INSTANCE - MariaDB instance.
 - AZURE_DEVOPS_PROJECT_FIXED_OBJECT - Azure DevOps Developer Collaboration (work items, boards, wikis) per project.
@@ -291,3 +291,20 @@ Represents different types of activity objects.
 - ANTHROPIC_CHILD_ORG_USER - Anthropic child org user.
 - ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
 - ANTHROPIC_DEVICE - Anthropic device.
+- AZURE_LOCAL_SUBSCRIPTION - Azure Local subscription object.
+- OPENSTACK_TAG - OpenStack tag object.
+- K8S_POSTGRES_DB_CLUSTER - Kubernetes Postgres database cluster.
+- K8S_POSTGRES_DATABASE - Kubernetes Postgres database.
+- HVM_MANAGER - HPE Virtual Machine Essentials manager.
+- HVM_GROUP - HPE Virtual Machine Essentials group.
+- HVM_CLOUD - HPE Virtual Machine Essentials cloud.
+- HVM_CLUSTER - HPE Virtual Machine Essentials cluster.
+- HVM_HOST - HPE Virtual Machine Essentials host.
+- HVM_INSTANCE - HPE Virtual Machine Essentials instance. An inventory hierarchy level, not a protectable object.
+- HVM_VIRTUAL_MACHINE - HPE Virtual Machine Essentials virtual machine. The protectable object in this hierarchy.
+- HVM_DATASTORE - HPE Virtual Machine Essentials datastore.
+- HVM_NETWORK - HPE Virtual Machine Essentials network.
+- AZURE_COSMOS_NOSQL_ACCOUNT - Azure Cosmos NoSQL account.
+- AZURE_COSMOS_NOSQL_DATABASE - Azure Cosmos NoSQL database.
+- AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
+- AGENT_CLOUD_MCP_SERVER - Agent Cloud governed MCP server object.

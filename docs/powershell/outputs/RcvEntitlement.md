@@ -15,3 +15,5 @@ Rubrik Cloud Vault (RCV) entitlement tier wise details.
   - Rubrik Cloud Vault (RCV) entitlement revenue type.
 - isReplaced: System.Boolean
   - Specifies whether the Rubrik Cloud Vault (RCV) has been replaced.
+- expirationDate: DateTime
+  - Rubrik Cloud Vault (RCV) entitlement expiration date.

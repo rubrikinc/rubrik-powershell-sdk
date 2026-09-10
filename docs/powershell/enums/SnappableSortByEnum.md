@@ -1,34 +1,36 @@
 ### SnappableSortByEnum
-- ComplianceStatus
-- ReplicationSnapshotLag
-- Location
-- LocalSnapshots
-- Name
-- PhysicalBytes
-- ArchiveSnapshots
-- ProtectionStatus
-- ClusterName
-- ClusterType
-- ArchivalComplianceStatus
-- DataReduction
-- AwaitingFirstFull
-- LastSnapshot
-- TransferredBytes
-- LogicalDataReduction
-- ArchiveStorage
-- MissedSnapshots
-- ReplicaStorage
-- LatestArchivalSnapshot
-- SlaDomainName
-- ReplicationComplianceStatus
-- LocalSLASnapshots
-- ArchivalSnapshotLag
-- ReplicaSnapshots
-- LogicalBytes
-- PULL_TIME
-- LatestReplicationSnapshot
-- Cluster
-- TotalSnapshots
-- ObjectType
-- LocalOnDemandSnapshots
-- OBJECT_STATE
+Fields of a workload that results can be sorted by.
+
+- Cluster - Sort by the cluster that the workload belongs to.
+- ClusterName - Sort by the name of the cluster that the workload belongs to.
+- ClusterType - Sort by the type of the cluster that the workload belongs to.
+- Name - Sort by the name of the workload.
+- SlaDomainName - Sort by the name of the SLA Domain assigned to the workload.
+- ObjectType - Sort by the type of the workload.
+- OBJECT_STATE - Sort by the state of the workload.
+- ProtectionStatus - Sort by the protection status of the workload.
+- ComplianceStatus - Sort by the SLA compliance status of the workload.
+- LogicalBytes - Sort by the logical bytes used by snapshots of the workload.
+- PhysicalBytes - Sort by the physical bytes used by snapshots of the workload.
+- TransferredBytes - Sort by the bytes ingested over the network for the workload.
+- DataReduction - Sort by the data reduction ratio of the workload.
+- LogicalDataReduction - Sort by the logical data reduction ratio of the workload.
+- ArchiveStorage - Sort by the amount of storage used by archived snapshots.
+- ReplicaStorage - Sort by the amount of storage used by replicated snapshots.
+- LastSnapshot - Sort by the time of the most recent snapshot of the workload.
+- LatestArchivalSnapshot - Sort by the time of the most recent archived snapshot of the workload.
+- LatestReplicationSnapshot - Sort by the time of the most recent replicated snapshot of the workload.
+- LocalSnapshots - Sort by the number of local snapshots of the workload.
+- ReplicaSnapshots - Sort by the number of replicated snapshots of the workload.
+- ArchiveSnapshots - Sort by the number of archived snapshots of the workload.
+- TotalSnapshots - Sort by the total number of snapshots of the workload.
+- MissedSnapshots - Sort by the number of snapshots that were missed for the workload.
+- Location - Sort by the location of the workload.
+- LocalOnDemandSnapshots - Sort by the number of on-demand local snapshots of the workload.
+- LocalSLASnapshots - Sort by the number of local snapshots taken by an SLA Domain.
+- ArchivalSnapshotLag - Sort by the archival lag of the workload.
+- ReplicationSnapshotLag - Sort by the replication lag of the workload.
+- ArchivalComplianceStatus - Sort by the archival compliance status of the workload.
+- ReplicationComplianceStatus - Sort by the replication compliance status of the workload.
+- AwaitingFirstFull - Sort by whether the workload is awaiting its first full snapshot.
+- PULL_TIME - Sort by the time at which the workload data was pulled from the cluster.

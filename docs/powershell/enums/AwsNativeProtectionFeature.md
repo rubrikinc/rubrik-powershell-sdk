@@ -9,3 +9,6 @@ AWS native protection features.
 - CONFIG - AWS native protection feature is Config.
 - GLUE_ICEBERG - AWS native protection feature is Glue Iceberg.
 - S3_TABLES_ICEBERG - AWS native protection feature is S3 Tables Iceberg.
+- CLOUD_COST_REPORT - AWS native protection feature is Cloud Cost Report. Present so the
+feature can be removed through startAwsNativeAccountDisableJob, the same
+route CLOUD_DISCOVERY uses; it protects no workload of its own.

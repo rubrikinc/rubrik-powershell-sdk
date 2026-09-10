@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalClusters")]
         public System.Int32? TotalClusters { get; set; }
 
+        //      C# -> System.Int32? TunnelEnabledClusters
+        // GraphQL -> tunnelEnabledClusters: Int! (scalar)
+        [JsonProperty("tunnelEnabledClusters")]
+        public System.Int32? TunnelEnabledClusters { get; set; }
+
         //      C# -> System.Int32? WarningClusters
         // GraphQL -> warningClusters: Int! (scalar)
         [JsonProperty("warningClusters")]
@@ -59,6 +64,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? FatalClusters = null,
         System.Int32? OkClusters = null,
         System.Int32? TotalClusters = null,
+        System.Int32? TunnelEnabledClusters = null,
         System.Int32? WarningClusters = null
     ) 
     {
@@ -73,6 +79,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalClusters != null ) {
             this.TotalClusters = TotalClusters;
+        }
+        if ( TunnelEnabledClusters != null ) {
+            this.TunnelEnabledClusters = TunnelEnabledClusters;
         }
         if ( WarningClusters != null ) {
             this.WarningClusters = WarningClusters;
@@ -125,6 +134,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalClusters\n" ;
             } else {
                 s += ind + "totalClusters\n" ;
+            }
+        }
+        //      C# -> System.Int32? TunnelEnabledClusters
+        // GraphQL -> tunnelEnabledClusters: Int! (scalar)
+        if (this.TunnelEnabledClusters != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "tunnelEnabledClusters\n" ;
+            } else {
+                s += ind + "tunnelEnabledClusters\n" ;
             }
         }
         //      C# -> System.Int32? WarningClusters
@@ -210,6 +228,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalClusters != null && ec.Excludes("totalClusters",true))
         {
             this.TotalClusters = null;
+        }
+        //      C# -> System.Int32? TunnelEnabledClusters
+        // GraphQL -> tunnelEnabledClusters: Int! (scalar)
+        if (ec.Includes("tunnelEnabledClusters",true))
+        {
+            if(this.TunnelEnabledClusters == null) {
+
+                this.TunnelEnabledClusters = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.TunnelEnabledClusters != null && ec.Excludes("tunnelEnabledClusters",true))
+        {
+            this.TunnelEnabledClusters = null;
         }
         //      C# -> System.Int32? WarningClusters
         // GraphQL -> warningClusters: Int! (scalar)

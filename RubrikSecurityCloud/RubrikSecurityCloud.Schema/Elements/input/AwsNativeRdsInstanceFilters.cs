@@ -29,16 +29,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("effectiveSlaFilter")]
         public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
 
-        //      C# -> AwsNativeAccountFilter? AccountFilter
-        // GraphQL -> accountFilter: AwsNativeAccountFilter (input)
-        [JsonProperty("accountFilter")]
-        public AwsNativeAccountFilter? AccountFilter { get; set; }
-
-        //      C# -> AwsNativeVpcFilter? VpcFilter
-        // GraphQL -> vpcFilter: AwsNativeVpcFilter (input)
-        [JsonProperty("vpcFilter")]
-        public AwsNativeVpcFilter? VpcFilter { get; set; }
-
         //      C# -> RelicFilter? RelicFilter
         // GraphQL -> relicFilter: RelicFilter (input)
         [JsonProperty("relicFilter")]
@@ -59,15 +49,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("protectionStatusFilter")]
         public ProtectionStatusFilter? ProtectionStatusFilter { get; set; }
 
-        //      C# -> AwsNativeTagFilter? TagFilter
-        // GraphQL -> tagFilter: AwsNativeTagFilter (input)
-        [JsonProperty("tagFilter")]
-        public AwsNativeTagFilter? TagFilter { get; set; }
+        //      C# -> OrgFilter? OrgFilter
+        // GraphQL -> orgFilter: OrgFilter (input)
+        [JsonProperty("orgFilter")]
+        public OrgFilter? OrgFilter { get; set; }
 
-        //      C# -> AwsNativeRegionFilter? RegionFilter
-        // GraphQL -> regionFilter: AwsNativeRegionFilter (input)
-        [JsonProperty("regionFilter")]
-        public AwsNativeRegionFilter? RegionFilter { get; set; }
+        //      C# -> System.Boolean? IsEligibleForProtection
+        // GraphQL -> isEligibleForProtection: Boolean (scalar)
+        [JsonProperty("isEligibleForProtection")]
+        public System.Boolean? IsEligibleForProtection { get; set; }
+
+        //      C# -> List<Filter>? HierarchyFilters
+        // GraphQL -> hierarchyFilters: [Filter!] (input)
+        [JsonProperty("hierarchyFilters")]
+        public List<Filter>? HierarchyFilters { get; set; }
+
+        //      C# -> CloudNativeApplicationDiscoveryMethodFilter? DiscoveryMethodFilter
+        // GraphQL -> discoveryMethodFilter: CloudNativeApplicationDiscoveryMethodFilter (input)
+        [JsonProperty("discoveryMethodFilter")]
+        public CloudNativeApplicationDiscoveryMethodFilter? DiscoveryMethodFilter { get; set; }
+
+        //      C# -> AwsNativeAccountFilter? AccountFilter
+        // GraphQL -> accountFilter: AwsNativeAccountFilter (input)
+        [JsonProperty("accountFilter")]
+        public AwsNativeAccountFilter? AccountFilter { get; set; }
 
         //      C# -> AwsNativeRdsDbEngineFilter? DbEngineFilter
         // GraphQL -> dbEngineFilter: AwsNativeRdsDbEngineFilter (input)
@@ -79,10 +84,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbInstanceClassFilter")]
         public AwsNativeRdsDbInstanceClassFilter? DbInstanceClassFilter { get; set; }
 
-        //      C# -> OrgFilter? OrgFilter
-        // GraphQL -> orgFilter: OrgFilter (input)
-        [JsonProperty("orgFilter")]
-        public OrgFilter? OrgFilter { get; set; }
+        //      C# -> AwsNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: AwsNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public AwsNativeRegionFilter? RegionFilter { get; set; }
+
+        //      C# -> AwsNativeTagFilter? TagFilter
+        // GraphQL -> tagFilter: AwsNativeTagFilter (input)
+        [JsonProperty("tagFilter")]
+        public AwsNativeTagFilter? TagFilter { get; set; }
+
+        //      C# -> AwsNativeVpcFilter? VpcFilter
+        // GraphQL -> vpcFilter: AwsNativeVpcFilter (input)
+        [JsonProperty("vpcFilter")]
+        public AwsNativeVpcFilter? VpcFilter { get; set; }
 
         //      C# -> AwsNativeFeatureStatusFilter? AwsNativeFeatureStatusFilter
         // GraphQL -> awsNativeFeatureStatusFilter: AwsNativeFeatureStatusFilter (input)
@@ -94,25 +109,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("awsNativeIsEligibleForRdsProtectionFilter")]
         public AwsNativeIsEligibleForRdsProtectionFilter? AwsNativeIsEligibleForRdsProtectionFilter { get; set; }
 
-        //      C# -> System.Boolean? IsEligibleForProtection
-        // GraphQL -> isEligibleForProtection: Boolean (scalar)
-        [JsonProperty("isEligibleForProtection")]
-        public System.Boolean? IsEligibleForProtection { get; set; }
-
         //      C# -> AwsServiceTypeFilter? ServiceTypeFilter
         // GraphQL -> serviceTypeFilter: AwsServiceTypeFilter (input)
         [JsonProperty("serviceTypeFilter")]
         public AwsServiceTypeFilter? ServiceTypeFilter { get; set; }
-
-        //      C# -> List<Filter>? HierarchyFilters
-        // GraphQL -> hierarchyFilters: [Filter!] (input)
-        [JsonProperty("hierarchyFilters")]
-        public List<Filter>? HierarchyFilters { get; set; }
-
-        //      C# -> CloudNativeApplicationDiscoveryMethodFilter? DiscoveryMethodFilter
-        // GraphQL -> discoveryMethodFilter: CloudNativeApplicationDiscoveryMethodFilter (input)
-        [JsonProperty("discoveryMethodFilter")]
-        public CloudNativeApplicationDiscoveryMethodFilter? DiscoveryMethodFilter { get; set; }
 
 
         #endregion

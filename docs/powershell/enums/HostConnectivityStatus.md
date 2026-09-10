@@ -16,4 +16,4 @@ Connectivity status of a host.
 - REPLICATED_TARGET - Host is a replicated target.
 - DELETED - Host has been deleted.
 - SECONDARY_CLUSTER - Host is on a secondary cluster.
-- UNAUTHORIZED - Host is unauthorized.
+- UNAUTHORIZED - Host is not authorized.

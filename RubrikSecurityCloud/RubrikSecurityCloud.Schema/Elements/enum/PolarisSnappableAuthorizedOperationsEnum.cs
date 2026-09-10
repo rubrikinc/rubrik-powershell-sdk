@@ -24,6 +24,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "DOWNLOAD")]
         DOWNLOAD,
 
+        [EnumMember(Value = "EXPORT_FILES")]
+        EXPORT_FILES,
+
         [EnumMember(Value = "EXPORT_SNAPSHOTS")]
         EXPORT_SNAPSHOTS,
 

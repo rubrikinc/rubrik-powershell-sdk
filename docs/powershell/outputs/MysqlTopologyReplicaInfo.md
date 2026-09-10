@@ -1,0 +1,39 @@
+### MysqlTopologyReplicaInfo
+Per-replica details for a MySQL HA topology.
+
+- hostId: System.String
+  - Unique identifier of the host that runs this replica.
+- replicaId: System.String
+  - Stable identifier for the replica.
+- replicaName: System.String
+  - Display name for the replica.
+- role: KosmosTopologyReplicaRole
+  - Replica role within the HA topology.
+- status: KosmosTopologyReplicaStatus
+  - Current status of the replica.
+- statusMessages: list of System.Strings
+  - Free-form messages describing the replica status (e.g. validation failure reasons, replication lag warnings).
+- statusMessageDetails: list of KosmosUserMessages
+  - Structured messages describing the replica status (e.g. validation failure reasons, replication lag warnings). Superset of the data in statusMessages, carrying severity/messageCode/cause/remedy as separate fields instead of one formatted string.
+- mysqlVersion: System.String
+  - MySQL engine version string (e.g. "8.0.35"). Returns null when not yet discovered.
+- portNumber: System.Int32
+  - The port this replica's MySQL server listens on. Null when not overridden -- the replica uses the cluster-level default.
+- bindIpAddress: System.String
+  - Per-replica bind IP override. Null when not overridden.
+- socketFilePath: System.String
+  - Per-replica UNIX socket path override. Null when not overridden.
+- authenticationType: MysqldbInstanceAuthenticationType
+  - Per-replica authentication-type override. Null when not overridden.
+- systemUsername: System.String
+  - Per-replica OS user override. Null when not overridden.
+- sslCaCertFilePath: System.String
+  - Per-replica SSL CA certificate path override. Null when not overridden.
+- sslCertFilePath: System.String
+  - Per-replica SSL client certificate path override. Null when not overridden.
+- sslKeyFilePath: System.String
+  - Per-replica SSL client key path override. Null when not overridden.
+- mysqlBinaryPath: System.String
+  - Per-replica path to the directory containing MySQL client binaries. Null when not overridden.
+- username: System.String
+  - Per-replica DB username. Null when not overridden (uses the cluster-level credentials).

@@ -1,24 +1,25 @@
 ### RestoreO365TeamsConversationsInput
-Input for restoring O365 Teams channel conversations.
+Request for restoring Teams channel conversations. The account, user, and
+RSC org id are resolved from req_ctx.
 
 - teamUuid: System.String
-  -  Teams unique identifier of the channel.
+  - Teams unique identifier of the channel.
 - destTeamsChannelInfo: TeamsChannelInfo
-  -  Information about the destination Teams channel.
+  - Information about the destination Teams channel.
 - shouldCreateDestChannel: System.Boolean
-  -  Specifies whether a new destination channel needs to be created in Teams.
+  - Specifies whether a new destination channel needs to be created in Teams.
 - actionType: O365RestoreActionType
   - Recovery action type for the restore job.
 - inplaceRestoreConfig: InplaceRestoreConfig
   - In-place restore configuration for the restore job.
 - channelInfoForFullRestore: O365TeamConvChannelInput
-  -  Information about the destination channel conversation.
+  - Information about the destination channel conversation.
 - shouldRestoreFileAttachments: System.Boolean
-  -  Specifies whether file attachments in the conversation need to be restored.
+  - Specifies whether file attachments in the conversation need to be restored.
 - teamChannels: list of O365TeamConvChannelInputs
   - O365 Teams conversation channels to restore.
 - teamsConversationsSearchFilter: TeamsConversationsSearchFilter
-  -  Filters Teams conversations based on the time of posts in the conversations.
+  - Filters Teams conversations based on the time of posts in the conversations.
 - refreshTokenEncrypted: System.String
   - Encrypted refresh token.
 - o365AppId: System.String

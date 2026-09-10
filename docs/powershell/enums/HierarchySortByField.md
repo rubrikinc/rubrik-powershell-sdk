@@ -440,6 +440,27 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 +mo:sort:db:index:seq=1
 +mo:sort:db:index:type=BTREE
 +mo:sort:db:index:unique=false
+- RECOVERY_PLAN_STATUS - Sort Recovery Plans by blueprint status (CONFIGURED, PARTIAL, etc.).
++mo:sort:db:table=appflows_blueprint
++mo:sort:db:column=status
++mo:sort:db:index:key=status_idx
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
+- RECOVERY_PLAN_LAST_RECOVERY_OUTCOME - Sort Recovery Plans by the most recent terminal recovery outcome from
+failover_summary. Plans with no recovery sort to the end (NULL last).
+Uses a correlated MAX(created_at) subquery on failover_summary because
+the latest-terminal-row-per-blueprint selection cannot be expressed as a
+simple INNER JOIN + ORDER BY without a window function (unsupported in
+MySQL 5.7). The composite index failover_summary_bp_outcome_idx on
+(blueprint_id, parent_recovery_id, outcome, created_at) added in
+migration m0278 enables an index-only scan for this subquery.
++mo:sort:db:table=failover_summary
++mo:sort:db:column=outcome
++mo:sort:db:index:key=failover_summary_bp_outcome_idx
++mo:sort:db:index:seq=1
++mo:sort:db:index:type=BTREE
++mo:sort:db:index:unique=false
 - EC2_INSTANCE_VPC_ID - Sort EC2 instances by VPC ID.
 +mo:sort:db:table=aws_native_ec2_instances
 +mo:sort:db:column=vpc_id
@@ -447,4 +468,21 @@ IS_DIRECTLY_PAUSED filter is also provided as true.
 - RDS_INSTANCE_VPC_ID - Sort RDS instances by VPC ID.
 +mo:sort:db:table=aws_native_rds_instances
 +mo:sort:db:column=vpc_id
++mo:sort:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME - Sort Azure Cosmos NoSQL containers by the name of their parent database,
+denormalized onto the container as a property.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed
+- AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME - Sort Azure Cosmos NoSQL containers by the name of their ancestor account,
+denormalized onto the container as a property.
++mo:sort:db:table=cloud_native_object_properties
++mo:sort:db:column=property_value
++mo:sort:db:index:not_needed
+- EXCHANGE_SERVER_HOST_NAME - Sort Exchange Servers by the name, IP address, or FQDN of the host they
+run on.
++mo:sort:db:join=managed_hierarchy_descendant
++mo:sort:db:join_condition=ancestor_level=1
++mo:sort:db:table=cdm_host
++mo:sort:db:column=name
 +mo:sort:db:index:key=NULL

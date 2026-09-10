@@ -7,7 +7,7 @@ Legal hold query filter field.
 - SNAPPABLE_NAME - Workload name.
 - SNAPPABLE_TYPE - Workload type.
 - SNAPSHOT_TYPE - Snapshot type.
-- SNAPSHOT_CUSTOMIZATION
+- SNAPSHOT_CUSTOMIZATION - Snapshot customization.
 - CLOUD_VENDOR - Cloud vendor of the workload (AWS, Azure, or GCP).
 - CLOUD_REGION - Cloud region of the workload.
 - CLOUD_ACCOUNT_ID - Cloud account. Only valid for RSC native legal holds.

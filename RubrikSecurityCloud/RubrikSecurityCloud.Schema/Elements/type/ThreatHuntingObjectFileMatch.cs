@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ArchiveRelativePath
+        // GraphQL -> archiveRelativePath: String! (scalar)
+        [JsonProperty("archiveRelativePath")]
+        public System.String? ArchiveRelativePath { get; set; }
+
         //      C# -> DateTime? CreatedTime
         // GraphQL -> createdTime: DateTime (scalar)
         [JsonProperty("createdTime")]
@@ -39,6 +44,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filepath: String! (scalar)
         [JsonProperty("filepath")]
         public System.String? Filepath { get; set; }
+
+        //      C# -> System.Boolean? IsInsideArchive
+        // GraphQL -> isInsideArchive: Boolean! (scalar)
+        [JsonProperty("isInsideArchive")]
+        public System.Boolean? IsInsideArchive { get; set; }
 
         //      C# -> System.Boolean? IsQuarantinedInFirstObservedSnapshot
         // GraphQL -> isQuarantinedInFirstObservedSnapshot: Boolean! (scalar)
@@ -90,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalSnapshotsScanned")]
         public System.Int64? TotalSnapshotsScanned { get; set; }
 
+        //      C# -> ContainerArchiveDetails? ContainerArchiveDetails
+        // GraphQL -> containerArchiveDetails: ContainerArchiveDetails (type)
+        [JsonProperty("containerArchiveDetails")]
+        public ContainerArchiveDetails? ContainerArchiveDetails { get; set; }
+
         //      C# -> List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails
         // GraphQL -> fileVersionMatchDetails: [ThreatHuntFileVersionMatchDetails!]! (type)
         [JsonProperty("fileVersionMatchDetails")]
@@ -115,10 +130,12 @@ namespace RubrikSecurityCloud.Types
     }
 
     public ThreatHuntingObjectFileMatch Set(
+        System.String? ArchiveRelativePath = null,
         DateTime? CreatedTime = null,
         DateTime? EarliestMatchedSnapshotDate = null,
         System.String? Filename = null,
         System.String? Filepath = null,
+        System.Boolean? IsInsideArchive = null,
         System.Boolean? IsQuarantinedInFirstObservedSnapshot = null,
         DateTime? LatestMatchedSnapshotDate = null,
         DateTime? LatestSnapshotWithoutMatchDate = null,
@@ -129,11 +146,15 @@ namespace RubrikSecurityCloud.Types
         DateTime? ModifiedTime = null,
         System.Int64? TotalSnapshotsMatched = null,
         System.Int64? TotalSnapshotsScanned = null,
+        ContainerArchiveDetails? ContainerArchiveDetails = null,
         List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails = null,
         List<ThreatHuntIocDetails>? IocDetails = null,
         List<MatchedSnapshot>? MatchedSnapshots = null
     ) 
     {
+        if ( ArchiveRelativePath != null ) {
+            this.ArchiveRelativePath = ArchiveRelativePath;
+        }
         if ( CreatedTime != null ) {
             this.CreatedTime = CreatedTime;
         }
@@ -145,6 +166,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Filepath != null ) {
             this.Filepath = Filepath;
+        }
+        if ( IsInsideArchive != null ) {
+            this.IsInsideArchive = IsInsideArchive;
         }
         if ( IsQuarantinedInFirstObservedSnapshot != null ) {
             this.IsQuarantinedInFirstObservedSnapshot = IsQuarantinedInFirstObservedSnapshot;
@@ -176,6 +200,9 @@ namespace RubrikSecurityCloud.Types
         if ( TotalSnapshotsScanned != null ) {
             this.TotalSnapshotsScanned = TotalSnapshotsScanned;
         }
+        if ( ContainerArchiveDetails != null ) {
+            this.ContainerArchiveDetails = ContainerArchiveDetails;
+        }
         if ( FileVersionMatchDetails != null ) {
             this.FileVersionMatchDetails = FileVersionMatchDetails;
         }
@@ -199,6 +226,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? ArchiveRelativePath
+        // GraphQL -> archiveRelativePath: String! (scalar)
+        if (this.ArchiveRelativePath != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "archiveRelativePath\n" ;
+            } else {
+                s += ind + "archiveRelativePath\n" ;
+            }
+        }
         //      C# -> DateTime? CreatedTime
         // GraphQL -> createdTime: DateTime (scalar)
         if (this.CreatedTime != null) {
@@ -233,6 +269,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "filepath\n" ;
             } else {
                 s += ind + "filepath\n" ;
+            }
+        }
+        //      C# -> System.Boolean? IsInsideArchive
+        // GraphQL -> isInsideArchive: Boolean! (scalar)
+        if (this.IsInsideArchive != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInsideArchive\n" ;
+            } else {
+                s += ind + "isInsideArchive\n" ;
             }
         }
         //      C# -> System.Boolean? IsQuarantinedInFirstObservedSnapshot
@@ -325,6 +370,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "totalSnapshotsScanned\n" ;
             }
         }
+        //      C# -> ContainerArchiveDetails? ContainerArchiveDetails
+        // GraphQL -> containerArchiveDetails: ContainerArchiveDetails (type)
+        if (this.ContainerArchiveDetails != null) {
+            var fspec = this.ContainerArchiveDetails.AsFieldSpec(conf.Child("containerArchiveDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "containerArchiveDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails
         // GraphQL -> fileVersionMatchDetails: [ThreatHuntFileVersionMatchDetails!]! (type)
         if (this.FileVersionMatchDetails != null) {
@@ -368,6 +425,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? ArchiveRelativePath
+        // GraphQL -> archiveRelativePath: String! (scalar)
+        if (ec.Includes("archiveRelativePath",true))
+        {
+            if(this.ArchiveRelativePath == null) {
+
+                this.ArchiveRelativePath = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.ArchiveRelativePath != null && ec.Excludes("archiveRelativePath",true))
+        {
+            this.ArchiveRelativePath = null;
+        }
         //      C# -> DateTime? CreatedTime
         // GraphQL -> createdTime: DateTime (scalar)
         if (ec.Includes("createdTime",true))
@@ -435,6 +509,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Filepath != null && ec.Excludes("filepath",true))
         {
             this.Filepath = null;
+        }
+        //      C# -> System.Boolean? IsInsideArchive
+        // GraphQL -> isInsideArchive: Boolean! (scalar)
+        if (ec.Includes("isInsideArchive",true))
+        {
+            if(this.IsInsideArchive == null) {
+
+                this.IsInsideArchive = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInsideArchive != null && ec.Excludes("isInsideArchive",true))
+        {
+            this.IsInsideArchive = null;
         }
         //      C# -> System.Boolean? IsQuarantinedInFirstObservedSnapshot
         // GraphQL -> isQuarantinedInFirstObservedSnapshot: Boolean! (scalar)
@@ -605,6 +696,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalSnapshotsScanned != null && ec.Excludes("totalSnapshotsScanned",true))
         {
             this.TotalSnapshotsScanned = null;
+        }
+        //      C# -> ContainerArchiveDetails? ContainerArchiveDetails
+        // GraphQL -> containerArchiveDetails: ContainerArchiveDetails (type)
+        if (ec.Includes("containerArchiveDetails",false))
+        {
+            if(this.ContainerArchiveDetails == null) {
+
+                this.ContainerArchiveDetails = new ContainerArchiveDetails();
+                this.ContainerArchiveDetails.ApplyExploratoryFieldSpec(ec.NewChild("containerArchiveDetails"));
+
+            } else {
+
+                this.ContainerArchiveDetails.ApplyExploratoryFieldSpec(ec.NewChild("containerArchiveDetails"));
+
+            }
+        }
+        else if (this.ContainerArchiveDetails != null && ec.Excludes("containerArchiveDetails",false))
+        {
+            this.ContainerArchiveDetails = null;
         }
         //      C# -> List<ThreatHuntFileVersionMatchDetails>? FileVersionMatchDetails
         // GraphQL -> fileVersionMatchDetails: [ThreatHuntFileVersionMatchDetails!]! (type)

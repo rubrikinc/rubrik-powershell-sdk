@@ -8,6 +8,6 @@ Product enabled via Salesforce.
 - type: ProductType
   - The type of product - Revenue, Trial, POC.
 - state: ProductState
-  - State of the product - Acive, disabled, etc.
+  - State of the product - Active, disabled, etc.
 - expirationDate: DateTime
   - Date when product expires.

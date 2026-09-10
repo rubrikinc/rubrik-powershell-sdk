@@ -72,6 +72,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ENCRYPTION")]
         ENCRYPTION,
 
+        [EnumMember(Value = "EXPORT")]
+        EXPORT,
+
         [EnumMember(Value = "EXPORT_AND_RESTORE")]
         EXPORT_AND_RESTORE,
 
@@ -119,6 +122,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RECOVERY_NETWORKING")]
         RECOVERY_NETWORKING,
+
+        [EnumMember(Value = "RECOVERY_RDS_CONNECTIVITY")]
+        RECOVERY_RDS_CONNECTIVITY,
 
         [EnumMember(Value = "RECOVER_TO_S3")]
         RECOVER_TO_S3,

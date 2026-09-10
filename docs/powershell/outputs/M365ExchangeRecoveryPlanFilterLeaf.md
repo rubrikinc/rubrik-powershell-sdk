@@ -12,3 +12,7 @@ Exactly one primitive field must be set.
   - Filter by draft status.
 - isRead: System.Boolean
   - Filter by read status.
+- bccRecipients: M365StringListFilter
+  - Filter by blind-carbon-copy recipient addresses.
+- createdTime: RecoveryPlanFilterTimeRange
+  - Filter by creation time.

@@ -6,6 +6,8 @@ Create a reader target of type Glacier on a Rubrik cluster.
 - There is a single argument of type CreateGlacierReaderTargetInput.
 - Returns Target.
 ### createmanualtargetmapping
+Creates a manual target mapping scoped to the caller's account.
+
 - There is a single argument of type CreateManualTargetMappingInput.
 - Returns TargetMapping.
 ### creates3compatiblereadertarget
@@ -43,6 +45,14 @@ Supported in v8.0+
 Initiates a job to download one or more files or folders from an archived Fileset snapshot. Returns the job instance ID.
 
 - There is a single argument of type FilesetDownloadSnapshotFilesFromArchivalLocationInput.
+- Returns AsyncRequestStatus.
+### filesetexportsnapshotfilesfromlocation
+Create an export job to export files from a snapshot stored at an archival location.
+
+Starts a job that exports one or more files or folders from a fileset snapshot
+at an archival location to the destination host.
+
+- There is a single argument of type FilesetExportSnapshotFilesFromArchivalLocationInput.
 - Returns AsyncRequestStatus.
 ### finishmigration
 Finishes an archival migration by swapping the source location's
@@ -95,6 +105,8 @@ Edit a target of type Glacier on a Rubrik cluster.
 - There is a single argument of type UpdateGlacierTargetInput.
 - Returns Target.
 ### updatemanualtargetmapping
+Updates a manual target mapping scoped to the caller's account.
+
 - There is a single argument of type UpdateManualTargetMappingInput.
 - Returns TargetMapping.
 ### updatepurestorageprotectiongroupquiescetargets

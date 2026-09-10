@@ -6,6 +6,8 @@ List of cloud accounts.
 - The accounts subcommand takes no arguments.
 - Returns list of CloudAccountInfos.
 ### cloudaccount
+Get cloud account details for a given cloud account ID.
+
 - There is a single argument of type System.String.
 - Returns CloudAccount.
 ### cloudaccounts

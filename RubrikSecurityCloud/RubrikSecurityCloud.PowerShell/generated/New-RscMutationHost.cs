@@ -718,16 +718,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# OPTIONAL
-    /// 	hostIds = @(
-    /// 		$someString
-    /// 	)
-    /// 	# OPTIONAL
     /// 	networkThrottleLimits = @{
     /// 		# OPTIONAL
     /// 		throttleValue = $someInt64
     /// 		# OPTIONAL
     /// 		throttlePercent = $someInt
     /// 	}
+    /// 	# OPTIONAL
+    /// 	hostIds = @(
+    /// 		$someString
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -1486,16 +1486,16 @@ $query.Var.input = @{
                 @"# REQUIRED
 $query.Var.input = @{
 	# OPTIONAL
-	hostIds = @(
-		$someString
-	)
-	# OPTIONAL
 	networkThrottleLimits = @{
 		# OPTIONAL
 		throttleValue = $someInt64
 		# OPTIONAL
 		throttlePercent = $someInt
 	}
+	# OPTIONAL
+	hostIds = @(
+		$someString
+	)
 }"
             );
         }

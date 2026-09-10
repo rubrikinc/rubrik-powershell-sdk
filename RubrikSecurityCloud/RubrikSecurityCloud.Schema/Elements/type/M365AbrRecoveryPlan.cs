@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> MvcAnalysisJob? AnalysisJob
+        // GraphQL -> analysisJob: MvcAnalysisJob (type)
+        [JsonProperty("analysisJob")]
+        public MvcAnalysisJob? AnalysisJob { get; set; }
+
         //      C# -> M365RecoveryPlanConditionTree? ConditionTree
         // GraphQL -> conditionTree: M365RecoveryPlanConditionTree (type)
         [JsonProperty("conditionTree")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Id = null,
         System.Int32? LastNumberOfDays = null,
         System.String? Name = null,
+        MvcAnalysisJob? AnalysisJob = null,
         M365RecoveryPlanConditionTree? ConditionTree = null,
         List<M365RecoveryPlanWorkloadSummary>? WorkloadSummaries = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( AnalysisJob != null ) {
+            this.AnalysisJob = AnalysisJob;
         }
         if ( ConditionTree != null ) {
             this.ConditionTree = ConditionTree;
@@ -152,6 +161,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
+            }
+        }
+        //      C# -> MvcAnalysisJob? AnalysisJob
+        // GraphQL -> analysisJob: MvcAnalysisJob (type)
+        if (this.AnalysisJob != null) {
+            var fspec = this.AnalysisJob.AsFieldSpec(conf.Child("analysisJob"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "analysisJob" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> M365RecoveryPlanConditionTree? ConditionTree
@@ -269,6 +290,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
+        }
+        //      C# -> MvcAnalysisJob? AnalysisJob
+        // GraphQL -> analysisJob: MvcAnalysisJob (type)
+        if (ec.Includes("analysisJob",false))
+        {
+            if(this.AnalysisJob == null) {
+
+                this.AnalysisJob = new MvcAnalysisJob();
+                this.AnalysisJob.ApplyExploratoryFieldSpec(ec.NewChild("analysisJob"));
+
+            } else {
+
+                this.AnalysisJob.ApplyExploratoryFieldSpec(ec.NewChild("analysisJob"));
+
+            }
+        }
+        else if (this.AnalysisJob != null && ec.Excludes("analysisJob",false))
+        {
+            this.AnalysisJob = null;
         }
         //      C# -> M365RecoveryPlanConditionTree? ConditionTree
         // GraphQL -> conditionTree: M365RecoveryPlanConditionTree (type)

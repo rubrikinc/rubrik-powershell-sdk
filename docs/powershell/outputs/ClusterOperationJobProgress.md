@@ -1,11 +1,11 @@
 ### ClusterOperationJobProgress
-Status and progress of a Rubrik cluster operation job. 
+Progress details for a Rubrik cluster operation job.
 
+- jobStatus: CdmJobStatus
+  - Job status.
 - jobProgress: System.Int32
   - Job progress.
 - message: System.String
-  - Job progess detail.
-- jobStatus: CdmJobStatus
-  - Job status.
+  - Job progress detail.
 - jobType: CcpJobType
   - Job type.

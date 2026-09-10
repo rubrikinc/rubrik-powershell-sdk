@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? AssetId
+        // GraphQL -> assetId: String (scalar)
+        [JsonProperty("assetId")]
+        public System.String? AssetId { get; set; }
+
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         [JsonProperty("brikId")]
@@ -75,6 +80,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public NodeStatus Set(
+        System.String? AssetId = null,
         System.String? BrikId = null,
         System.Boolean? HasUnavailableDisks = null,
         System.String? Hostname = null,
@@ -86,6 +92,9 @@ namespace RubrikSecurityCloud.Types
         SupportTunnelInfo? SupportTunnel = null
     ) 
     {
+        if ( AssetId != null ) {
+            this.AssetId = AssetId;
+        }
         if ( BrikId != null ) {
             this.BrikId = BrikId;
         }
@@ -127,6 +136,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.String? AssetId
+        // GraphQL -> assetId: String (scalar)
+        if (this.AssetId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "assetId\n" ;
+            } else {
+                s += ind + "assetId\n" ;
+            }
+        }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         if (this.BrikId != null) {
@@ -218,6 +236,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.String? AssetId
+        // GraphQL -> assetId: String (scalar)
+        if (ec.Includes("assetId",true))
+        {
+            if(this.AssetId == null) {
+
+                this.AssetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AssetId != null && ec.Excludes("assetId",true))
+        {
+            this.AssetId = null;
+        }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         if (ec.Includes("brikId",true))

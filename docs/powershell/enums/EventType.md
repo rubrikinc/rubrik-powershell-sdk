@@ -72,3 +72,4 @@ Enum representing all the possible event types.
 - DISCOVER - Discover job event.
 - CLOUD_DIRECT_ARCHIVE - CloudDirect archive event.
 - AGENT_CLOUD_SECURITY_ALERT - Agent Cloud security alert event type.
+- REENCRYPTION - Reencryption (re-encrypt a snapshot with the customer-managed key) event type.

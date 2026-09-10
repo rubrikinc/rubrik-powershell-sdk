@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FileTypeEnumType
     {
+        [EnumMember(Value = "AD_REPORT")]
+        AD_REPORT,
+
         [EnumMember(Value = "ANOMALY_DETAILS_CSV")]
         ANOMALY_DETAILS_CSV,
 

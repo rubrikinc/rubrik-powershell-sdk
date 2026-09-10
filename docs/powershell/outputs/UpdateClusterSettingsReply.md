@@ -7,6 +7,8 @@ Response from updating CDM cluster settings.
   - REST API version.
 - geolocation: ClusterGeolocation
   - Cluster geolocation.
+- clusterUuid: System.String
+  - ID of the Rubrik cluster.
 - latestEulaVersion: System.String
   - Latest version of the EULA that must be accepted by admin.
 - name: System.String
@@ -15,9 +17,9 @@ Response from updating CDM cluster settings.
   - Cluster time zone.
 - version: System.String
   - Rubrik cluster software version.
-- clusterUuid: System.String
-  - ID of the Rubrik cluster.
 - registeredMode: RegisteredMode
-  - Mode of registration.
+  - Supported in v8.0+
+Mode of registration for the Rubrik cluster.
 - rubrikUrl: System.String
-  - Global manager URL.
+  - Supported in v8.0+
+Global manager URL.

@@ -19,6 +19,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType (enum)
+        [JsonProperty("cloudType")]
+        public AwsCloudType? CloudType { get; set; }
+
         //      C# -> List<AwsAccountFeatureArtifact>? AwsArtifacts
         // GraphQL -> awsArtifacts: [AwsAccountFeatureArtifact!]! (input)
         [Required]
@@ -30,11 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> roleChainingAccountId: UUID (scalar)
         [JsonProperty("roleChainingAccountId")]
         public System.String? RoleChainingAccountId { get; set; }
-
-        //      C# -> AwsCloudType? CloudType
-        // GraphQL -> cloudType: AwsCloudType (enum)
-        [JsonProperty("cloudType")]
-        public AwsCloudType? CloudType { get; set; }
 
 
         #endregion

@@ -119,23 +119,57 @@ List of all files in snapshots whose names match the specified search query.
     - searchQuery - System.String: Specifies the name or path prefix used to search for files within a workload.
     - usePrefixSearch - System.Boolean: Determines whether to use a prefix search.
 - Returns VersionedFileConnection.
-### teamsconversationssearch
+### tasksearch
+SearchSnappableTasks returns a paginated, GraphQL-shaped list of To-Do
+lists (task folders) and tasks for the given snappable across all
+snapshots. Dispatches the raw index hit to the search proxy's
+SnappableSearch RPC, then enriches each item with snapshot_time via the
+authz GetSnapshot lookup. Replaces the legacy GraphQL resolver
+`snappableTaskSearch`.
+
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - orgId - System.String: Org UUID.
-    - snapshotFidOpt - System.String: snapshotFid arg which is of optional type
-    - teamConvChannels - list of O365TeamConvChannelInputs: List of channel objects (naturalId and name).
-    - teamsConversationsSearchFilter - TeamsConversationsSearchFilter
+    - tasksSearchFilter - TasksSearchFilter: Search filter for tasks search.
+- Returns O365ExchangeObjectConnection.
+### teamsconversationssearch
+SearchTeamsConversations returns the per-channel conversation post
+counts for the given Teams workload. For each requested channel it
+issues a count-only search (no-snapshot or snapshot-scoped) and
+aggregates the results into one O365TeamsConversations entry per
+channel.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the Teams workload.
+    - orgId - System.String: Organization scope for the search.
+    - snapshotFidOpt - System.String: Optional snapshot FID. When set, the search
+is scoped to this snapshot.
+    - teamConvChannels - list of O365TeamConvChannelInputs: The channels to compute conversation counts
+for (1..10 entries).
+    - teamsConversationsSearchFilter - TeamsConversationsSearchFilter: Optional conversation search
+filter (posted time/by, keyword, etc.).
 - Returns O365TeamsConversationsConnection.
 ### teamsdrivesearch
-- There are 7 arguments.
+Returns Teams drive folders and files for the given Teams workload across
+all snapshots, merged as a single O365OnedriveObject interface list
+(folders then files), each stamped with its snapshot's time.
+
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the Teams workload.
     - orgId - System.String: Org UUID.
-    - channelId - System.String
-    - channelFolderName - System.String
-    - teamsDriveSearchFilter - OnedriveSearchFilter
+    - channelId - System.String: Optional Teams channel id; requires channelFolderName.
+    - channelFolderName - System.String: Optional Teams channel folder name.
+    - teamsDriveSearchFilter - OnedriveSearchFilter: Optional drive search filter.
 - Returns O365OnedriveObjectConnection.

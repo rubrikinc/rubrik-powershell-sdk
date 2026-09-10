@@ -138,9 +138,10 @@ All Rubrik CC-ES instance profiles in the AWS account.
 Specifies whether an S3 bucket name is available for use in AWS or not.
 When true, the bucket name is available for use.
 
-- There are 2 arguments.
+- There are 3 arguments.
     - bucketName - System.String: Name of the AWS S3 bucket.
     - awsAccountRubrikId - System.String: Rubrik ID for AWS account.
+    - feature - CloudAccountFeature: Cloud account feature whose IAM role is assumed to answer the query. Defaults to S3 protection.
 - Returns System.Boolean.
 ### kmsencryptionkeysbyregion
 List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.

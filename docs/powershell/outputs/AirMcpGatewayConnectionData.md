@@ -4,7 +4,10 @@ MCP gateway connection data.
 - endpointUrl: System.String
   - Agent-facing gateway URL. Empty until the gateway is deployed.
 - idpTenantId: System.String
-  - Identity provider tenant the gateway federates to.
+  - Identity provider tenant the gateway federates to. Either an Entra
+tenant GUID or an Okta organization ID, so this is not UUID-typed on
+read -- matches the plain-string idp_tenant_id on
+McpGatewayConnectionDataInput.
 - mcpServerIds: list of System.Strings
   - IDs of the MCP servers attached to this gateway.
 - idpName: System.String
@@ -12,5 +15,6 @@ MCP gateway connection data.
 - status: AirGatewayProvisioningState
   - Current provisioning state of the gateway deployment.
 - statusError: System.String
-  - Secret-free detail of the last deploy error, populated only when the
-gateway is in a failed state (FAILED or UPDATE_FAILED). Empty otherwise.
+  - Secret-free detail of the last deploy or teardown error, populated only
+when the gateway is in a failed state (FAILED, UPDATE_FAILED, or
+DELETION_FAILED). Empty otherwise.

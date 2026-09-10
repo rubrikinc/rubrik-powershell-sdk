@@ -20,7 +20,7 @@ The specific subgroup type that defines the exact operation to be performed with
 - ENABLE_POLARIS_AS_REPLICATION_SOURCE - Enables Polaris as a replication source.
 - AWS_IAM_CUSTOMER_ACCOUNT_UPSERT - Creates or updates AWS IAM customer account configuration.
 - AWS_COMPUTE_SETTING_UPSERT - Creates or updates AWS compute settings.
-- AWS_ROLE_BASED_ARCHIVAL_LOCATION - Creates AWS role-based archival location.
+- AWS_ROLE_BASED_ARCHIVAL_LOCATION - Creates an AWS role-based archival location.
 - GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPPABLE - Assigns retention SLA to a snappable object.
 - GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT - Assigns retention SLA to a snapshot.
 - GLOBAL_SLA_ASSIGN_RETENTION_SLA_TO_SNAPSHOT_V2 - Assigns retention SLA to a snapshot using v2 API.
@@ -61,3 +61,7 @@ The specific subgroup type that defines the exact operation to be performed with
 - QAUTH_POLICY_CDM_PUT - Subgroup used to put a QAuth policy block-list to CDM.
 - QAUTH_POLICY_CDM_DELETE - Subgroup used to delete a QAuth policy block-list from CDM.
 - QAUTH_BREAK_GLASS_CONFIG_PUT - Subgroup used to put the break-glass config blob to CDM.
+- DELETE_SNAPSHOTS - Subgroup used to delete specified snapshots at specific locations of
+an object from CDM (granular deletion mutation).
+- DELETE_SNAPSHOTS_OF_OBJECTS - Subgroup used to delete all snapshots of specified objects at specific
+locations from CDM (granular deletion of objects mutation).

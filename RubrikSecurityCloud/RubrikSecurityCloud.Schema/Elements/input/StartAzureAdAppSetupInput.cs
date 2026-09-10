@@ -48,6 +48,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("includeIntune")]
         public System.Boolean? IncludeIntune { get; set; }
 
+        //      C# -> M365AccessRecoveryConfig? M365AccessRecoveryConfig
+        // GraphQL -> m365AccessRecoveryConfig: M365AccessRecoveryConfig (input)
+        [JsonProperty("m365AccessRecoveryConfig")]
+        public M365AccessRecoveryConfig? M365AccessRecoveryConfig { get; set; }
+
 
         #endregion
 

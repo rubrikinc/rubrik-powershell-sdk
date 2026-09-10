@@ -715,6 +715,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isEntraIdInitiatedOnboarding = $someBoolean
     /// 	# OPTIONAL
+    /// 	workloadId = $someString
+    /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// 	# OPTIONAL
     /// 	resource = $someAzureOauthResource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureOauthResource]) for enum values.
@@ -1045,6 +1047,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		keyName = $someString
     /// 		# REQUIRED
     /// 		keyVersion = $someString
+    /// 	}
+    /// 	# OPTIONAL
+    /// 	awsKmsKey = @{
+    /// 		# REQUIRED
+    /// 		keyManagerId = $someString
+    /// 		# REQUIRED
+    /// 		keyId = $someString
     /// 	}
     /// }
     /// 
@@ -2055,6 +2064,31 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			recoverLinkedCatalogs = $someBoolean
     /// 		}
+    /// 		# OPTIONAL
+    /// 		licenseRecoveryOption = @{
+    /// 			# OPTIONAL
+    /// 			shouldRestoreLicenses = $someBoolean
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		ssoRecoveryOption = @{
+    /// 			# OPTIONAL
+    /// 			ssoSigningCertConfigs = @(
+    /// 				@{
+    /// 					# OPTIONAL
+    /// 					id = $someString
+    /// 					# OPTIONAL
+    /// 					appId = $someString
+    /// 					# OPTIONAL
+    /// 					uploadedCertificate = $someString
+    /// 					# OPTIONAL
+    /// 					password = $someString
+    /// 				}
+    /// 			)
+    /// 			# OPTIONAL
+    /// 			ssoSigningCertExpiryTime = $someDateTime
+    /// 			# OPTIONAL
+    /// 			shouldRecoverLinkedSsoPolicies = $someBoolean
+    /// 		}
     /// 	}
     /// 	# OPTIONAL
     /// 	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
@@ -2195,6 +2229,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	permissionAccessMode = $somePermissionAccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionAccessMode]) for enum values.
     /// 	# OPTIONAL
     /// 	includeIntune = $someBoolean
+    /// 	# OPTIONAL
+    /// 	m365AccessRecoveryConfig = @{
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		certificate = $someString
+    /// 		# OPTIONAL
+    /// 		privateKey = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2241,6 +2284,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	includeIntune = $someBoolean
+    /// 	# OPTIONAL
+    /// 	m365AccessRecoveryConfig = @{
+    /// 		# REQUIRED
+    /// 		isEnabled = $someBoolean
+    /// 		# OPTIONAL
+    /// 		certificate = $someString
+    /// 		# OPTIONAL
+    /// 		privateKey = $someString
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2275,9 +2327,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	isEntraIdInitiatedOnboarding = $someBoolean
     /// 	# OPTIONAL
+    /// 	workloadId = $someString
+    /// 	# OPTIONAL
     /// 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
     /// 	# OPTIONAL
     /// 	azureRubrikAppUseCase = $someAzureRubrikAppUseCase # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRubrikAppUseCase]) for enum values.
+    /// 	# OPTIONAL
+    /// 	resource = $someAzureOauthResource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureOauthResource]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -4667,6 +4723,8 @@ $query.Var.input = @{
 	# OPTIONAL
 	isEntraIdInitiatedOnboarding = $someBoolean
 	# OPTIONAL
+	workloadId = $someString
+	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 	# OPTIONAL
 	resource = $someAzureOauthResource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureOauthResource]) for enum values.
@@ -4957,6 +5015,13 @@ $query.Var.input = @{
 		keyName = $someString
 		# REQUIRED
 		keyVersion = $someString
+	}
+	# OPTIONAL
+	awsKmsKey = @{
+		# REQUIRED
+		keyManagerId = $someString
+		# REQUIRED
+		keyId = $someString
 	}
 }"
             );
@@ -5836,6 +5901,31 @@ $query.Var.input = @{
 			# REQUIRED
 			recoverLinkedCatalogs = $someBoolean
 		}
+		# OPTIONAL
+		licenseRecoveryOption = @{
+			# OPTIONAL
+			shouldRestoreLicenses = $someBoolean
+		}
+		# OPTIONAL
+		ssoRecoveryOption = @{
+			# OPTIONAL
+			ssoSigningCertConfigs = @(
+				@{
+					# OPTIONAL
+					id = $someString
+					# OPTIONAL
+					appId = $someString
+					# OPTIONAL
+					uploadedCertificate = $someString
+					# OPTIONAL
+					password = $someString
+				}
+			)
+			# OPTIONAL
+			ssoSigningCertExpiryTime = $someDateTime
+			# OPTIONAL
+			shouldRecoverLinkedSsoPolicies = $someBoolean
+		}
 	}
 	# OPTIONAL
 	attributeRecoveryMode = $someAttributeRecoveryMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AttributeRecoveryMode]) for enum values.
@@ -5960,6 +6050,15 @@ $query.Var.input = @{
 	permissionAccessMode = $somePermissionAccessMode # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PermissionAccessMode]) for enum values.
 	# OPTIONAL
 	includeIntune = $someBoolean
+	# OPTIONAL
+	m365AccessRecoveryConfig = @{
+		# REQUIRED
+		isEnabled = $someBoolean
+		# OPTIONAL
+		certificate = $someString
+		# OPTIONAL
+		privateKey = $someString
+	}
 }"
             );
         }
@@ -5998,6 +6097,15 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	includeIntune = $someBoolean
+	# OPTIONAL
+	m365AccessRecoveryConfig = @{
+		# REQUIRED
+		isEnabled = $someBoolean
+		# OPTIONAL
+		certificate = $someString
+		# OPTIONAL
+		privateKey = $someString
+	}
 }"
             );
         }
@@ -6024,9 +6132,13 @@ $query.Var.input = @{
 	# OPTIONAL
 	isEntraIdInitiatedOnboarding = $someBoolean
 	# OPTIONAL
+	workloadId = $someString
+	# OPTIONAL
 	azureCloudType = $someAzureCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureCloudType]) for enum values.
 	# OPTIONAL
 	azureRubrikAppUseCase = $someAzureRubrikAppUseCase # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureRubrikAppUseCase]) for enum values.
+	# OPTIONAL
+	resource = $someAzureOauthResource # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureOauthResource]) for enum values.
 }"
             );
         }

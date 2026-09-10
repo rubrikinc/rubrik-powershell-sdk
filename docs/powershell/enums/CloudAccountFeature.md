@@ -64,5 +64,10 @@ Collaboration feature.
 - CRITICAL_RESOURCE_PROTECTION - Cloud account feature is Critical Resource Protection -- real-time
 detection of deletions on customer-marked critical AWS resources,
 surfaced in the UI as Infrastructure Alerts.
+- AZURE_COSMOS_NOSQL_PROTECTION - Cloud account feature is Azure Cosmos NoSQL Protection.
+- AWS_KMS_KEY_SHARING - Cloud account feature is AWS KMS Key Sharing -- automated sharing of the
+customer's CMKs with the exocompute account and creation of the RSC
+gateway KMS key. Applies to any AWS workload backed up through
+exocompute, independently of which protection features are enabled.
 - ALL - All cloud account features.
 - FEATURE_UNSPECIFIED - Feature is not specified.

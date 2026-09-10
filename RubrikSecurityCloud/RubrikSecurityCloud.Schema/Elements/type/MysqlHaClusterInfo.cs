@@ -25,15 +25,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("activeReplicaId")]
         public System.String? ActiveReplicaId { get; set; }
 
-        //      C# -> System.String? HaGroupName
-        // GraphQL -> haGroupName: String! (scalar)
-        [JsonProperty("haGroupName")]
-        public System.String? HaGroupName { get; set; }
+        //      C# -> MysqlBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: MysqlBackupNodePreference (type)
+        [JsonProperty("backupNodePreference")]
+        public MysqlBackupNodePreference? BackupNodePreference { get; set; }
 
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         [JsonProperty("replicas")]
-        public List<KosmosTopologyReplicaInfo>? Replicas { get; set; }
+        public List<MysqlTopologyReplicaInfo>? Replicas { get; set; }
 
 
         #endregion
@@ -46,15 +46,15 @@ namespace RubrikSecurityCloud.Types
 
     public MysqlHaClusterInfo Set(
         System.String? ActiveReplicaId = null,
-        System.String? HaGroupName = null,
-        List<KosmosTopologyReplicaInfo>? Replicas = null
+        MysqlBackupNodePreference? BackupNodePreference = null,
+        List<MysqlTopologyReplicaInfo>? Replicas = null
     ) 
     {
         if ( ActiveReplicaId != null ) {
             this.ActiveReplicaId = ActiveReplicaId;
         }
-        if ( HaGroupName != null ) {
-            this.HaGroupName = HaGroupName;
+        if ( BackupNodePreference != null ) {
+            this.BackupNodePreference = BackupNodePreference;
         }
         if ( Replicas != null ) {
             this.Replicas = Replicas;
@@ -82,17 +82,20 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "activeReplicaId\n" ;
             }
         }
-        //      C# -> System.String? HaGroupName
-        // GraphQL -> haGroupName: String! (scalar)
-        if (this.HaGroupName != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "haGroupName\n" ;
-            } else {
-                s += ind + "haGroupName\n" ;
+        //      C# -> MysqlBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: MysqlBackupNodePreference (type)
+        if (this.BackupNodePreference != null) {
+            var fspec = this.BackupNodePreference.AsFieldSpec(conf.Child("backupNodePreference"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "backupNodePreference" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         if (this.Replicas != null) {
             var fspec = this.Replicas.AsFieldSpec(conf.Child("replicas"));
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -127,30 +130,32 @@ namespace RubrikSecurityCloud.Types
         {
             this.ActiveReplicaId = null;
         }
-        //      C# -> System.String? HaGroupName
-        // GraphQL -> haGroupName: String! (scalar)
-        if (ec.Includes("haGroupName",true))
+        //      C# -> MysqlBackupNodePreference? BackupNodePreference
+        // GraphQL -> backupNodePreference: MysqlBackupNodePreference (type)
+        if (ec.Includes("backupNodePreference",false))
         {
-            if(this.HaGroupName == null) {
+            if(this.BackupNodePreference == null) {
 
-                this.HaGroupName = "FETCH";
+                this.BackupNodePreference = new MysqlBackupNodePreference();
+                this.BackupNodePreference.ApplyExploratoryFieldSpec(ec.NewChild("backupNodePreference"));
 
             } else {
 
+                this.BackupNodePreference.ApplyExploratoryFieldSpec(ec.NewChild("backupNodePreference"));
 
             }
         }
-        else if (this.HaGroupName != null && ec.Excludes("haGroupName",true))
+        else if (this.BackupNodePreference != null && ec.Excludes("backupNodePreference",false))
         {
-            this.HaGroupName = null;
+            this.BackupNodePreference = null;
         }
-        //      C# -> List<KosmosTopologyReplicaInfo>? Replicas
-        // GraphQL -> replicas: [KosmosTopologyReplicaInfo!]! (type)
+        //      C# -> List<MysqlTopologyReplicaInfo>? Replicas
+        // GraphQL -> replicas: [MysqlTopologyReplicaInfo!]! (type)
         if (ec.Includes("replicas",false))
         {
             if(this.Replicas == null) {
 
-                this.Replicas = new List<KosmosTopologyReplicaInfo>();
+                this.Replicas = new List<MysqlTopologyReplicaInfo>();
                 this.Replicas.ApplyExploratoryFieldSpec(ec.NewChild("replicas"));
 
             } else {

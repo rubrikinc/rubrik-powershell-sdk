@@ -45,6 +45,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER")]
+        AZURE_COSMOS_NOSQL_CONTAINER,
+
         [EnumMember(Value = "AZURE_DEVOPS_PROJECT_FIXED_OBJECT")]
         AZURE_DEVOPS_PROJECT_FIXED_OBJECT,
 
@@ -153,6 +156,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GcpNativeGCEInstance")]
         GCP_NATIVE_GCE_INSTANCE,
 
+        [EnumMember(Value = "HVM_VIRTUAL_MACHINE")]
+        HVM_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "Hdfs")]
         HDFS,
 
@@ -170,6 +176,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,
+
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER")]
+        K8S_POSTGRES_DB_CLUSTER,
 
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,

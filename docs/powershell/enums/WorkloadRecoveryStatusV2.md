@@ -6,3 +6,4 @@ Workload recovery status.
 - SUCCEEDED - Workload recovery has succeeded.
 - QUEUED - Workload recovery is queued and waiting to start.
 - FAILED - Unable to perform workload recovery.
+- PARTIALLY_SUCCEEDED - Workload recovery completed with a mix of succeeded and failed items.

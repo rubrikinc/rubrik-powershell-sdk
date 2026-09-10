@@ -19,6 +19,56 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        [JsonProperty("id")]
+        System.String? Id { get; set; }
+
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        [JsonProperty("name")]
+        System.String? Name { get; set; }
+
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
+        [JsonProperty("objectType")]
+        HierarchyObjectTypeEnum? ObjectType { get; set; }
+
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        [JsonProperty("slaAssignment")]
+        SlaAssignmentTypeEnum? SlaAssignment { get; set; }
+
+        //      C# -> List<PathNode>? LogicalPath
+        // GraphQL -> logicalPath: [PathNode!]! (type)
+        [JsonProperty("logicalPath")]
+        List<PathNode>? LogicalPath { get; set; }
+
+        //      C# -> List<PathNode>? PhysicalPath
+        // GraphQL -> physicalPath: [PathNode!]! (type)
+        [JsonProperty("physicalPath")]
+        List<PathNode>? PhysicalPath { get; set; }
+
+        //      C# -> PathNode? EffectiveSlaSourceObject
+        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
+        [JsonProperty("effectiveSlaSourceObject")]
+        PathNode? EffectiveSlaSourceObject { get; set; }
+
+        //      C# -> SecurityMetadata? SecurityMetadata
+        // GraphQL -> securityMetadata: SecurityMetadata (type)
+        [JsonProperty("securityMetadata")]
+        SecurityMetadata? SecurityMetadata { get; set; }
+
+        //      C# -> System.Boolean? IsReplica
+        // GraphQL -> isReplica: Boolean (scalar)
+        [JsonProperty("isReplica")]
+        System.Boolean? IsReplica { get; set; }
+
+        //      C# -> EntityInfo? EntityInfo
+        // GraphQL -> entityInfo: EntityInfo! (type)
+        [JsonProperty("entityInfo")]
+        EntityInfo? EntityInfo { get; set; }
+
         //      C# -> KosmosParentHierarchyObjectDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: KosmosParentHierarchyObjectDescendantTypeConnection! (type)
         [JsonProperty("descendantConnection")]
@@ -29,20 +79,35 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("physicalChildConnection")]
         KosmosParentHierarchyObjectPhysicalChildTypeConnection? PhysicalChildConnection { get; set; }
 
+        //      C# -> System.Boolean? SlaPauseStatus
+        // GraphQL -> slaPauseStatus: Boolean! (scalar)
+        [JsonProperty("slaPauseStatus")]
+        System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        [JsonProperty("effectiveSlaDomain")]
+        SlaDomain? EffectiveSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
+        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
+        [JsonProperty("effectiveRetentionSlaDomain")]
+        SlaDomain? EffectiveRetentionSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
+        [JsonProperty("configuredSlaDomain")]
+        SlaDomain? ConfiguredSlaDomain { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         Cluster? Cluster { get; set; }
 
-        //      C# -> DataLocation? PrimaryClusterLocation
-        // GraphQL -> primaryClusterLocation: DataLocation! (type)
-        [JsonProperty("primaryClusterLocation")]
-        DataLocation? PrimaryClusterLocation { get; set; }
-
-        //      C# -> System.Boolean? IsReplica
-        // GraphQL -> isReplica: Boolean (scalar)
-        [JsonProperty("isReplica")]
-        System.Boolean? IsReplica { get; set; }
+        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
+        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
+        [JsonProperty("cdmPendingObjectPauseAssignment")]
+        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
 
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
@@ -74,95 +139,30 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjectCount")]
         System.Int32? ReplicatedObjectCount { get; set; }
 
-        //      C# -> PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment
-        // GraphQL -> cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus (enum)
-        [JsonProperty("cdmPendingObjectPauseAssignment")]
-        PendingObjectPauseAssignmentStatus? CdmPendingObjectPauseAssignment { get; set; }
-
         //      C# -> List<Operation>? AuthorizedOperations
         // GraphQL -> authorizedOperations: [Operation!]! (enum)
         [JsonProperty("authorizedOperations")]
         List<Operation>? AuthorizedOperations { get; set; }
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: UUID! (scalar)
-        [JsonProperty("id")]
-        System.String? Id { get; set; }
-
-        //      C# -> System.String? Name
-        // GraphQL -> name: String! (scalar)
-        [JsonProperty("name")]
-        System.String? Name { get; set; }
-
-        //      C# -> HierarchyObjectTypeEnum? ObjectType
-        // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        [JsonProperty("objectType")]
-        HierarchyObjectTypeEnum? ObjectType { get; set; }
-
-        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        [JsonProperty("slaAssignment")]
-        SlaAssignmentTypeEnum? SlaAssignment { get; set; }
-
-        //      C# -> SlaDomain? EffectiveSlaDomain
-        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        [JsonProperty("effectiveSlaDomain")]
-        SlaDomain? EffectiveSlaDomain { get; set; }
-
-        //      C# -> System.Boolean? SlaPauseStatus
-        // GraphQL -> slaPauseStatus: Boolean! (scalar)
-        [JsonProperty("slaPauseStatus")]
-        System.Boolean? SlaPauseStatus { get; set; }
+        //      C# -> DataLocation? PrimaryClusterLocation
+        // GraphQL -> primaryClusterLocation: DataLocation! (type)
+        [JsonProperty("primaryClusterLocation")]
+        DataLocation? PrimaryClusterLocation { get; set; }
 
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
         SnapshotDistribution? SnapshotDistribution { get; set; }
 
-        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
-        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        [JsonProperty("effectiveRetentionSlaDomain")]
-        SlaDomain? EffectiveRetentionSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? ConfiguredSlaDomain
-        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        [JsonProperty("configuredSlaDomain")]
-        SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> PathNode? EffectiveSlaSourceObject
-        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-        [JsonProperty("effectiveSlaSourceObject")]
-        PathNode? EffectiveSlaSourceObject { get; set; }
-
-        //      C# -> List<PathNode>? LogicalPath
-        // GraphQL -> logicalPath: [PathNode!]! (type)
-        [JsonProperty("logicalPath")]
-        List<PathNode>? LogicalPath { get; set; }
-
-        //      C# -> List<PathNode>? PhysicalPath
-        // GraphQL -> physicalPath: [PathNode!]! (type)
-        [JsonProperty("physicalPath")]
-        List<PathNode>? PhysicalPath { get; set; }
-
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         System.Int32? NumWorkloadDescendants { get; set; }
 
-        //      C# -> List<Org>? AllOrgs
-        // GraphQL -> allOrgs: [Org!]! (type)
-        [JsonProperty("allOrgs")]
-        List<Org>? AllOrgs { get; set; }
-
         //      C# -> List<AssignedRscTag>? AllTags
         // GraphQL -> allTags: [AssignedRscTag!]! (type)
         [JsonProperty("allTags")]
         List<AssignedRscTag>? AllTags { get; set; }
-
-        //      C# -> SecurityMetadata? SecurityMetadata
-        // GraphQL -> securityMetadata: SecurityMetadata (type)
-        [JsonProperty("securityMetadata")]
-        SecurityMetadata? SecurityMetadata { get; set; }
 
         //      C# -> ObjectPauseStatus? ObjectPauseStatus
         // GraphQL -> objectPauseStatus: ObjectPauseStatus (type)
@@ -174,10 +174,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectBackupWindow")]
         ObjectBackupWindowStatus? ObjectBackupWindow { get; set; }
 
-        //      C# -> EntityInfo? EntityInfo
-        // GraphQL -> entityInfo: EntityInfo! (type)
-        [JsonProperty("entityInfo")]
-        EntityInfo? EntityInfo { get; set; }
+        //      C# -> List<Org>? AllOrgs
+        // GraphQL -> allOrgs: [Org!]! (type)
+        [JsonProperty("allOrgs")]
+        List<Org>? AllOrgs { get; set; }
 
 
         #endregion

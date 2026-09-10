@@ -6,7 +6,7 @@ Input for Fileset export snapshot files.
 - id: System.String
   - Corresponds to snapshot forever UUID in Rubrik tables.
 - osType: GuestOsType
-  - OS Type of the Fileset Host.
+  - OS type of the fileset host.
 - shareType: ShareTypeEnum
   - Share type of fileset.
 - deltaTypeFilter: list of DeltaTypes

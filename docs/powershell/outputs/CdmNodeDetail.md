@@ -11,3 +11,8 @@ The node details of a Rubrik CDM cluster.
   - IPMI IP address of the Rubrik cluster node. Not available for virtual or cloud cluster nodes.
 - dataAndManagementVlans: DataAndManagementVlans
   - Data and management VLANs of the Rubrik cluster node.
+- networkZoneId: System.String
+  - Network zone ID of this node. Absent if the node has no zone assignment.
+- networkZoneName: System.String
+  - Human-readable name of the network zone.
+Absent if the zone has no name configured.

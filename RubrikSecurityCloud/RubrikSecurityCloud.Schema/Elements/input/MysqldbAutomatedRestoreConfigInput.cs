@@ -24,6 +24,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mysqldbAutomatedRestoreInstanceDetails")]
         public MysqldbAutomatedRestoreInstanceDetailsInput? MysqldbAutomatedRestoreInstanceDetails { get; set; }
 
+        //      C# -> System.Boolean? ShouldReplayCapturedSchema
+        // GraphQL -> shouldReplayCapturedSchema: Boolean (scalar)
+        [JsonProperty("shouldReplayCapturedSchema")]
+        public System.Boolean? ShouldReplayCapturedSchema { get; set; }
+
         //      C# -> System.String? TargetMysqldbInstanceId
         // GraphQL -> targetMysqldbInstanceId: String! (scalar)
         [Required]
@@ -37,6 +42,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("restoreInfo")]
         public RestoreInputInput? RestoreInfo { get; set; }
+
+        //      C# -> List<MysqldbPerReplicaRestoreSettingsInput>? MultiMysqldbRestoreSettings
+        // GraphQL -> multiMysqldbRestoreSettings: [MysqldbPerReplicaRestoreSettingsInput!] (input)
+        [JsonProperty("multiMysqldbRestoreSettings")]
+        public List<MysqldbPerReplicaRestoreSettingsInput>? MultiMysqldbRestoreSettings { get; set; }
 
         //      C# -> MysqldbAutomatedRestoreConnectionInfoInput? MysqldbAutomatedRestoreConnectionInfo
         // GraphQL -> mysqldbAutomatedRestoreConnectionInfo: MysqldbAutomatedRestoreConnectionInfoInput (input)

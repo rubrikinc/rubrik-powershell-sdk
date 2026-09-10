@@ -1,0 +1,291 @@
+// NicIpConfig.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using RubrikSecurityCloud;
+
+namespace RubrikSecurityCloud.Types
+{
+    #region NicIpConfig
+    public class NicIpConfig: BaseType
+    {
+        #region members
+
+        //      C# -> IpAllocationMethod? Method
+        // GraphQL -> method: IpAllocationMethod! (enum)
+        [JsonProperty("method")]
+        public IpAllocationMethod? Method { get; set; }
+
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        [JsonProperty("dnsServers")]
+        public List<System.String>? DnsServers { get; set; }
+
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String! (scalar)
+        [JsonProperty("gateway")]
+        public System.String? Gateway { get; set; }
+
+        //      C# -> System.String? Ipv4Address
+        // GraphQL -> ipv4Address: String! (scalar)
+        [JsonProperty("ipv4Address")]
+        public System.String? Ipv4Address { get; set; }
+
+        //      C# -> System.String? SubnetMask
+        // GraphQL -> subnetMask: String! (scalar)
+        [JsonProperty("subnetMask")]
+        public System.String? SubnetMask { get; set; }
+
+
+        #endregion
+
+    #region methods
+
+    public override string GetGqlTypeName() {
+        return "NicIpConfig";
+    }
+
+    public NicIpConfig Set(
+        IpAllocationMethod? Method = null,
+        List<System.String>? DnsServers = null,
+        System.String? Gateway = null,
+        System.String? Ipv4Address = null,
+        System.String? SubnetMask = null
+    ) 
+    {
+        if ( Method != null ) {
+            this.Method = Method;
+        }
+        if ( DnsServers != null ) {
+            this.DnsServers = DnsServers;
+        }
+        if ( Gateway != null ) {
+            this.Gateway = Gateway;
+        }
+        if ( Ipv4Address != null ) {
+            this.Ipv4Address = Ipv4Address;
+        }
+        if ( SubnetMask != null ) {
+            this.SubnetMask = SubnetMask;
+        }
+        return this;
+    }
+
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(FieldSpecConfig? conf=null)
+    {
+        conf=(conf==null)?new FieldSpecConfig():conf;
+        if (this.IsComposite() && ! conf.IgnoreComposition) {
+            return InterfaceHelper.CompositeAsFieldSpec((BaseType)this, conf);
+        }
+        string ind = conf.IndentStr();
+        string s = "";
+        //      C# -> IpAllocationMethod? Method
+        // GraphQL -> method: IpAllocationMethod! (enum)
+        if (this.Method != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "method\n" ;
+            } else {
+                s += ind + "method\n" ;
+            }
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (this.DnsServers != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "dnsServers\n" ;
+            } else {
+                s += ind + "dnsServers\n" ;
+            }
+        }
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String! (scalar)
+        if (this.Gateway != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "gateway\n" ;
+            } else {
+                s += ind + "gateway\n" ;
+            }
+        }
+        //      C# -> System.String? Ipv4Address
+        // GraphQL -> ipv4Address: String! (scalar)
+        if (this.Ipv4Address != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ipv4Address\n" ;
+            } else {
+                s += ind + "ipv4Address\n" ;
+            }
+        }
+        //      C# -> System.String? SubnetMask
+        // GraphQL -> subnetMask: String! (scalar)
+        if (this.SubnetMask != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "subnetMask\n" ;
+            } else {
+                s += ind + "subnetMask\n" ;
+            }
+        }
+        return s;
+    }
+
+
+    
+    public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
+    {
+        //      C# -> IpAllocationMethod? Method
+        // GraphQL -> method: IpAllocationMethod! (enum)
+        if (ec.Includes("method",true))
+        {
+            if(this.Method == null) {
+
+                this.Method = new IpAllocationMethod();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Method != null && ec.Excludes("method",true))
+        {
+            this.Method = null;
+        }
+        //      C# -> List<System.String>? DnsServers
+        // GraphQL -> dnsServers: [String!]! (scalar)
+        if (ec.Includes("dnsServers",true))
+        {
+            if(this.DnsServers == null) {
+
+                this.DnsServers = new List<System.String>();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DnsServers != null && ec.Excludes("dnsServers",true))
+        {
+            this.DnsServers = null;
+        }
+        //      C# -> System.String? Gateway
+        // GraphQL -> gateway: String! (scalar)
+        if (ec.Includes("gateway",true))
+        {
+            if(this.Gateway == null) {
+
+                this.Gateway = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Gateway != null && ec.Excludes("gateway",true))
+        {
+            this.Gateway = null;
+        }
+        //      C# -> System.String? Ipv4Address
+        // GraphQL -> ipv4Address: String! (scalar)
+        if (ec.Includes("ipv4Address",true))
+        {
+            if(this.Ipv4Address == null) {
+
+                this.Ipv4Address = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Ipv4Address != null && ec.Excludes("ipv4Address",true))
+        {
+            this.Ipv4Address = null;
+        }
+        //      C# -> System.String? SubnetMask
+        // GraphQL -> subnetMask: String! (scalar)
+        if (ec.Includes("subnetMask",true))
+        {
+            if(this.SubnetMask == null) {
+
+                this.SubnetMask = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.SubnetMask != null && ec.Excludes("subnetMask",true))
+        {
+            this.SubnetMask = null;
+        }
+    }
+
+
+    #endregion
+
+    } // class NicIpConfig
+    
+    #endregion
+
+    public static class ListNicIpConfigExtensions
+    {
+        // This SDK uses the convention of defining field specs as
+        // the collection of properties that are not null in an object.
+        // When creating a field spec for an object, we look at whether
+        // the object is a list or not, and whether it implements an interface
+        // or not. The following are the possible combinations:
+        // S or L: single object or list object
+        // SD or II: self-defined or interface-implementing
+        // | S/L | SD/II | How fied spec is created
+        // |-----|-------|-------------------------
+        // | S   | SD    | all properties (including nested objects) that are not null are included in the field spec.
+        // | L   | SD    | the field spec of the first item in the list is used. Other items are ignored.
+        // | S   | II    | same as S-SD if object is not composite. If object is composite, the field spec of each item in the composition is included as an inline fragment (... on)
+        // | L   | II    | the field spec of each item in the list is included as an inline fragment (... on)
+        //
+        // Note that L-II means that each item in the list is II (not the list itself).
+        // This function handles L-SD and L-II cases.
+        public static string AsFieldSpec(
+            this List<NicIpConfig> list,
+            FieldSpecConfig? conf=null)
+        {
+            conf=(conf==null)?new FieldSpecConfig():conf;
+            return list[0].AsFieldSpec(conf.Child(ignoreComposition: true)); // L-SD
+        }
+
+        public static List<string> SelectedFields(this List<NicIpConfig> list)
+        {
+            return StringUtils.FieldSpecStringToList(
+                list.AsFieldSpec(new FieldSpecConfig { Flat = true }));
+        }
+
+
+
+        public static void ApplyExploratoryFieldSpec(
+            this List<NicIpConfig> list, 
+            AutofieldContext ec)
+        {
+            if ( list.Count == 0 ) {
+                list.Add(new NicIpConfig());
+            }
+            list[0].ApplyExploratoryFieldSpec(ec);
+        }
+
+        public static void SelectForRetrieval(this List<NicIpConfig> list)
+        {
+            list.ApplyExploratoryFieldSpec(new AutofieldContext());
+        }
+    }
+
+
+} // namespace RubrikSecurityCloud.Types

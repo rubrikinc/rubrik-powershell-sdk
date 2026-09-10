@@ -110,3 +110,5 @@ The in compliance count.
 - COMPUTE_COST - Compute cost (exocompute, restore/export instances).
 - TRANSIENT_RESOURCE_COST - Transient resource cost (temporary EBS volumes).
 - REPLICATION_COST - Replication cost (replica buckets, DynamoDB).
+- SPARSE_AWARE_SIZE - Estimated size of data that would be restored, accounting for sparse-file
+optimization; can be smaller than the used size for objects with sparse files.

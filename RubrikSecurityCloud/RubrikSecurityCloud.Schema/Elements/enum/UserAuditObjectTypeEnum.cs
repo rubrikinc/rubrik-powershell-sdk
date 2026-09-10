@@ -408,6 +408,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "OracleRac")]
         ORACLE_RAC,
 
+        [EnumMember(Value = "PING_FEDERATE_CLUSTER")]
+        PING_FEDERATE_CLUSTER,
+
         [EnumMember(Value = "POSTGRES_DB_CLUSTER")]
         POSTGRES_DB_CLUSTER,
 

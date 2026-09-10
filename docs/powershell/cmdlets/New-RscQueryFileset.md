@@ -19,14 +19,18 @@ Information about a NAS share fileset.
 - There is a single argument of type System.String.
 - Returns ShareFileset.
 ### template
+Information about a fileset template.
+
 - There is a single argument of type System.String.
 - Returns FilesetTemplate.
 ### templates
 Get a summary of all fileset templates.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

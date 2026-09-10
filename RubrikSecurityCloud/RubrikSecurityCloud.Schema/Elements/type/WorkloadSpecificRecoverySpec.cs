@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureVm")]
         public AzureNativeVmRecoverySpec? AzureVm { get; set; }
 
+        //      C# -> HypervVmRecoverySpec? HypervVm
+        // GraphQL -> hypervVm: HypervVmRecoverySpec (type)
+        [JsonProperty("hypervVm")]
+        public HypervVmRecoverySpec? HypervVm { get; set; }
+
         //      C# -> NutanixVmRecoverySpec? NutanixVm
         // GraphQL -> nutanixVm: NutanixVmRecoverySpec (type)
         [JsonProperty("nutanixVm")]
@@ -70,6 +75,7 @@ namespace RubrikSecurityCloud.Types
         AwsEc2InstanceRecoverySpec? AwsEc2Instance = null,
         AwsRdsInstanceRecoverySpec? AwsRdsInstance = null,
         AzureNativeVmRecoverySpec? AzureVm = null,
+        HypervVmRecoverySpec? HypervVm = null,
         NutanixVmRecoverySpec? NutanixVm = null,
         VsphereVmRecoverySpec? VmwareVm = null
     ) 
@@ -88,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AzureVm != null ) {
             this.AzureVm = AzureVm;
+        }
+        if ( HypervVm != null ) {
+            this.HypervVm = HypervVm;
         }
         if ( NutanixVm != null ) {
             this.NutanixVm = NutanixVm;
@@ -166,6 +175,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "azureVm" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> HypervVmRecoverySpec? HypervVm
+        // GraphQL -> hypervVm: HypervVmRecoverySpec (type)
+        if (this.HypervVm != null) {
+            var fspec = this.HypervVm.AsFieldSpec(conf.Child("hypervVm"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "hypervVm" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -294,6 +315,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AzureVm != null && ec.Excludes("azureVm",false))
         {
             this.AzureVm = null;
+        }
+        //      C# -> HypervVmRecoverySpec? HypervVm
+        // GraphQL -> hypervVm: HypervVmRecoverySpec (type)
+        if (ec.Includes("hypervVm",false))
+        {
+            if(this.HypervVm == null) {
+
+                this.HypervVm = new HypervVmRecoverySpec();
+                this.HypervVm.ApplyExploratoryFieldSpec(ec.NewChild("hypervVm"));
+
+            } else {
+
+                this.HypervVm.ApplyExploratoryFieldSpec(ec.NewChild("hypervVm"));
+
+            }
+        }
+        else if (this.HypervVm != null && ec.Excludes("hypervVm",false))
+        {
+            this.HypervVm = null;
         }
         //      C# -> NutanixVmRecoverySpec? NutanixVm
         // GraphQL -> nutanixVm: NutanixVmRecoverySpec (type)

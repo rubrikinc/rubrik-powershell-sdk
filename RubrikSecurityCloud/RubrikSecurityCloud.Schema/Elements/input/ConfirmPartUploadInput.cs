@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("clusterUuids")]
         public List<System.String>? ClusterUuids { get; set; }
 
+        //      C# -> UpgradeTargetType? TargetType
+        // GraphQL -> targetType: UpgradeTargetType (enum)
+        [JsonProperty("targetType")]
+        public UpgradeTargetType? TargetType { get; set; }
+
 
         #endregion
 

@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("subStatus")]
         public ClusterNodeSubStatus? SubStatus { get; set; }
 
+        //      C# -> System.String? AssetId
+        // GraphQL -> assetId: String (scalar)
+        [JsonProperty("assetId")]
+        public System.String? AssetId { get; set; }
+
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         [JsonProperty("brikId")]
@@ -120,6 +125,7 @@ namespace RubrikSecurityCloud.Types
         ClusterNodeRole? Role = null,
         ClusterNodeStatus? Status = null,
         ClusterNodeSubStatus? SubStatus = null,
+        System.String? AssetId = null,
         System.String? BrikId = null,
         System.String? ClusterId = null,
         System.Int32? CpuCores = null,
@@ -148,6 +154,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SubStatus != null ) {
             this.SubStatus = SubStatus;
+        }
+        if ( AssetId != null ) {
+            this.AssetId = AssetId;
         }
         if ( BrikId != null ) {
             this.BrikId = BrikId;
@@ -242,6 +251,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "subStatus\n" ;
             } else {
                 s += ind + "subStatus\n" ;
+            }
+        }
+        //      C# -> System.String? AssetId
+        // GraphQL -> assetId: String (scalar)
+        if (this.AssetId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "assetId\n" ;
+            } else {
+                s += ind + "assetId\n" ;
             }
         }
         //      C# -> System.String? BrikId
@@ -449,6 +467,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.SubStatus != null && ec.Excludes("subStatus",true))
         {
             this.SubStatus = null;
+        }
+        //      C# -> System.String? AssetId
+        // GraphQL -> assetId: String (scalar)
+        if (ec.Includes("assetId",true))
+        {
+            if(this.AssetId == null) {
+
+                this.AssetId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.AssetId != null && ec.Excludes("assetId",true))
+        {
+            this.AssetId = null;
         }
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)

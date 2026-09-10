@@ -168,3 +168,4 @@ User audit object type.
 - AGENT_CLOUD_ALERT - Agent Cloud alert object type.
 - AGENT_CLOUD_VIOLATION - Agent Cloud violation object type.
 - AGENT_CLOUD_CONNECTION - Agent Cloud connection object type.
+- PING_FEDERATE_CLUSTER - PingFederate cluster type.

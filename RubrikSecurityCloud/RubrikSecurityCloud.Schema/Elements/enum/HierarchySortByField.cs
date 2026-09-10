@@ -66,6 +66,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT")]
         AZURE_BLOB_STORAGE_ACCOUNT_CONTAINER_COUNT,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME")]
+        AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME")]
+        AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME,
+
         [EnumMember(Value = "AZURE_DEVOPS_REPO_SIZE")]
         AZURE_DEVOPS_REPO_SIZE,
 
@@ -252,6 +258,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EMAIL_ADDRESS")]
         EMAIL_ADDRESS,
 
+        [EnumMember(Value = "EXCHANGE_SERVER_HOST_NAME")]
+        EXCHANGE_SERVER_HOST_NAME,
+
         [EnumMember(Value = "FAILOVER_CLUSTER_APP_CONNECTION_STATUS")]
         FAILOVER_CLUSTER_APP_CONNECTION_STATUS,
 
@@ -431,6 +440,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "RDS_INSTANCE_VPC_ID")]
         RDS_INSTANCE_VPC_ID,
+
+        [EnumMember(Value = "RECOVERY_PLAN_LAST_RECOVERY_OUTCOME")]
+        RECOVERY_PLAN_LAST_RECOVERY_OUTCOME,
+
+        [EnumMember(Value = "RECOVERY_PLAN_STATUS")]
+        RECOVERY_PLAN_STATUS,
 
         [EnumMember(Value = "S3_TABLES_ICEBERG_NAMESPACE_AWS_ACCOUNT_NAME")]
         S3_TABLES_ICEBERG_NAMESPACE_AWS_ACCOUNT_NAME,

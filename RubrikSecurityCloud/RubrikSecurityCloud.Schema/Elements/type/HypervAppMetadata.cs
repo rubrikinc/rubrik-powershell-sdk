@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.Int64? MemoryMb
+        // GraphQL -> memoryMb: Long (scalar)
+        [JsonProperty("memoryMb")]
+        public System.Int64? MemoryMb { get; set; }
+
+        //      C# -> System.Int32? NumVirtualCpus
+        // GraphQL -> numVirtualCpus: Int (scalar)
+        [JsonProperty("numVirtualCpus")]
+        public System.Int32? NumVirtualCpus { get; set; }
+
         //      C# -> List<HypervNetworkAdapter>? NetworkAdapters
         // GraphQL -> networkAdapters: [HypervNetworkAdapter!] (type)
         [JsonProperty("networkAdapters")]
@@ -35,9 +45,17 @@ namespace RubrikSecurityCloud.Types
     }
 
     public HypervAppMetadata Set(
+        System.Int64? MemoryMb = null,
+        System.Int32? NumVirtualCpus = null,
         List<HypervNetworkAdapter>? NetworkAdapters = null
     ) 
     {
+        if ( MemoryMb != null ) {
+            this.MemoryMb = MemoryMb;
+        }
+        if ( NumVirtualCpus != null ) {
+            this.NumVirtualCpus = NumVirtualCpus;
+        }
         if ( NetworkAdapters != null ) {
             this.NetworkAdapters = NetworkAdapters;
         }
@@ -55,6 +73,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> System.Int64? MemoryMb
+        // GraphQL -> memoryMb: Long (scalar)
+        if (this.MemoryMb != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "memoryMb\n" ;
+            } else {
+                s += ind + "memoryMb\n" ;
+            }
+        }
+        //      C# -> System.Int32? NumVirtualCpus
+        // GraphQL -> numVirtualCpus: Int (scalar)
+        if (this.NumVirtualCpus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "numVirtualCpus\n" ;
+            } else {
+                s += ind + "numVirtualCpus\n" ;
+            }
+        }
         //      C# -> List<HypervNetworkAdapter>? NetworkAdapters
         // GraphQL -> networkAdapters: [HypervNetworkAdapter!] (type)
         if (this.NetworkAdapters != null) {
@@ -74,6 +110,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> System.Int64? MemoryMb
+        // GraphQL -> memoryMb: Long (scalar)
+        if (ec.Includes("memoryMb",true))
+        {
+            if(this.MemoryMb == null) {
+
+                this.MemoryMb = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.MemoryMb != null && ec.Excludes("memoryMb",true))
+        {
+            this.MemoryMb = null;
+        }
+        //      C# -> System.Int32? NumVirtualCpus
+        // GraphQL -> numVirtualCpus: Int (scalar)
+        if (ec.Includes("numVirtualCpus",true))
+        {
+            if(this.NumVirtualCpus == null) {
+
+                this.NumVirtualCpus = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.NumVirtualCpus != null && ec.Excludes("numVirtualCpus",true))
+        {
+            this.NumVirtualCpus = null;
+        }
         //      C# -> List<HypervNetworkAdapter>? NetworkAdapters
         // GraphQL -> networkAdapters: [HypervNetworkAdapter!] (type)
         if (ec.Includes("networkAdapters",false))

@@ -30,10 +30,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("crossAccountRoleModel")]
         public CrossAccountRoleModel? CrossAccountRoleModel { get; set; }
 
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        [JsonProperty("serviceType")]
+        public AwsCloudAccountServiceType? ServiceType { get; set; }
+
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         [JsonProperty("accountName")]
         public System.String? AccountName { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
@@ -77,7 +87,9 @@ namespace RubrikSecurityCloud.Types
     public AwsAccountValidationResponse Set(
         AwsCloudType? CloudType = null,
         CrossAccountRoleModel? CrossAccountRoleModel = null,
+        AwsCloudAccountServiceType? ServiceType = null,
         System.String? AccountName = null,
+        System.String? Id = null,
         System.String? Message = null,
         System.String? NativeId = null,
         System.String? OrgId = null,
@@ -92,8 +104,14 @@ namespace RubrikSecurityCloud.Types
         if ( CrossAccountRoleModel != null ) {
             this.CrossAccountRoleModel = CrossAccountRoleModel;
         }
+        if ( ServiceType != null ) {
+            this.ServiceType = ServiceType;
+        }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
+        }
+        if ( Id != null ) {
+            this.Id = Id;
         }
         if ( Message != null ) {
             this.Message = Message;
@@ -145,6 +163,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "crossAccountRoleModel\n" ;
             }
         }
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (this.ServiceType != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "serviceType\n" ;
+            } else {
+                s += ind + "serviceType\n" ;
+            }
+        }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName != null) {
@@ -152,6 +179,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "accountName\n" ;
             } else {
                 s += ind + "accountName\n" ;
+            }
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "id\n" ;
+            } else {
+                s += ind + "id\n" ;
             }
         }
         //      C# -> System.String? Message
@@ -249,6 +285,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.CrossAccountRoleModel = null;
         }
+        //      C# -> AwsCloudAccountServiceType? ServiceType
+        // GraphQL -> serviceType: AwsCloudAccountServiceType! (enum)
+        if (ec.Includes("serviceType",true))
+        {
+            if(this.ServiceType == null) {
+
+                this.ServiceType = new AwsCloudAccountServiceType();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ServiceType != null && ec.Excludes("serviceType",true))
+        {
+            this.ServiceType = null;
+        }
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         if (ec.Includes("accountName",true))
@@ -265,6 +318,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.AccountName != null && ec.Excludes("accountName",true))
         {
             this.AccountName = null;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (ec.Includes("id",true))
+        {
+            if(this.Id == null) {
+
+                this.Id = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Id != null && ec.Excludes("id",true))
+        {
+            this.Id = null;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)

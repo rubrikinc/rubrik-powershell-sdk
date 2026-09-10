@@ -11,3 +11,10 @@ Unset when the location has no S3 endpoint configured.
   - STS interface VPC endpoint regional DNS name, e.g.
 vpce-0def5678-pq3r.sts.us-west-2.vpce.amazonaws.com.
 Unset when the location has no STS endpoint configured.
+- s3EndpointStatus: PrivateEndpointConnectionStatus
+  - The connection status of the S3 interface endpoint named by s3EndpointHost.
+Read-only: the status is owned by the endpoint lifecycle, not the caller.
+- stsEndpointStatus: PrivateEndpointConnectionStatus
+  - The connection status of the STS interface endpoint named by
+stsEndpointHost. Read-only: the status is owned by the endpoint lifecycle,
+not the caller.

@@ -411,6 +411,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MANAGE_RSCP_CLUSTER_SETTINGS")]
         MANAGE_RSCP_CLUSTER_SETTINGS,
 
+        [EnumMember(Value = "MANAGE_RSCP_UPGRADE")]
+        MANAGE_RSCP_UPGRADE,
+
         [EnumMember(Value = "MANAGE_RUBY")]
         MANAGE_RUBY,
 
@@ -770,6 +773,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_RSCP_CLUSTER")]
         VIEW_RSCP_CLUSTER,
+
+        [EnumMember(Value = "VIEW_RSCP_UPGRADE")]
+        VIEW_RSCP_UPGRADE,
 
         [EnumMember(Value = "VIEW_RUBY_INSIGHTS")]
         VIEW_RUBY_INSIGHTS,

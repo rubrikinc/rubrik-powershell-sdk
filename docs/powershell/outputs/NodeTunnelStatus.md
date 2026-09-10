@@ -7,3 +7,5 @@ Support tunnel status of a node.
   - Status of the node.
 - supportTunnel: SupportTunnelInfo
   - Support tunnel information.
+- nodeIp: System.String
+  - Data-network IP address of the node.

@@ -13,3 +13,5 @@ Configuration for the setup of a Rubrik-hosted subscription.
   - Azure KMS configuration, excluding the app secret.
 - storeBackupInSameRegionAsData: System.Boolean
   - Specifies whether the backups will be stored in the same region as the source data. When true, the regionName field represents the name of the central data location of the M365 organization.
+- prioritizedOnboardingSpec: PrioritizedOnboardingSpec
+  - Prioritized onboarding configuration.

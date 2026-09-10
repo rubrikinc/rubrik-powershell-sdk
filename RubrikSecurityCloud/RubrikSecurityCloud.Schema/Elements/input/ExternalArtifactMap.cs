@@ -19,17 +19,17 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
+        // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact (enum)
+        [JsonProperty("externalArtifactKey")]
+        public AwsCloudExternalArtifact? ExternalArtifactKey { get; set; }
+
         //      C# -> System.String? ExternalArtifactValue
         // GraphQL -> externalArtifactValue: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("externalArtifactValue")]
         public System.String? ExternalArtifactValue { get; set; }
-
-        //      C# -> AwsCloudExternalArtifact? ExternalArtifactKey
-        // GraphQL -> externalArtifactKey: AwsCloudExternalArtifact (enum)
-        [JsonProperty("externalArtifactKey")]
-        public AwsCloudExternalArtifact? ExternalArtifactKey { get; set; }
 
 
         #endregion

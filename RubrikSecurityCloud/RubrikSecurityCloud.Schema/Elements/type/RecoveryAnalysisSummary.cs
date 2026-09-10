@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("totalSharepointSites")]
         public System.Int64? TotalSharepointSites { get; set; }
 
+        //      C# -> System.Int64? TotalTasks
+        // GraphQL -> totalTasks: Long! (scalar)
+        [JsonProperty("totalTasks")]
+        public System.Int64? TotalTasks { get; set; }
+
         //      C# -> System.Int64? TotalUserCount
         // GraphQL -> totalUserCount: Long! (scalar)
         [JsonProperty("totalUserCount")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? TotalOnedriveFiles = null,
         System.Int64? TotalSharepointFiles = null,
         System.Int64? TotalSharepointSites = null,
+        System.Int64? TotalTasks = null,
         System.Int64? TotalUserCount = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( TotalSharepointSites != null ) {
             this.TotalSharepointSites = TotalSharepointSites;
+        }
+        if ( TotalTasks != null ) {
+            this.TotalTasks = TotalTasks;
         }
         if ( TotalUserCount != null ) {
             this.TotalUserCount = TotalUserCount;
@@ -161,6 +170,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "totalSharepointSites\n" ;
             } else {
                 s += ind + "totalSharepointSites\n" ;
+            }
+        }
+        //      C# -> System.Int64? TotalTasks
+        // GraphQL -> totalTasks: Long! (scalar)
+        if (this.TotalTasks != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "totalTasks\n" ;
+            } else {
+                s += ind + "totalTasks\n" ;
             }
         }
         //      C# -> System.Int64? TotalUserCount
@@ -280,6 +298,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.TotalSharepointSites != null && ec.Excludes("totalSharepointSites",true))
         {
             this.TotalSharepointSites = null;
+        }
+        //      C# -> System.Int64? TotalTasks
+        // GraphQL -> totalTasks: Long! (scalar)
+        if (ec.Includes("totalTasks",true))
+        {
+            if(this.TotalTasks == null) {
+
+                this.TotalTasks = new System.Int64();
+
+            } else {
+
+
+            }
+        }
+        else if (this.TotalTasks != null && ec.Excludes("totalTasks",true))
+        {
+            this.TotalTasks = null;
         }
         //      C# -> System.Int64? TotalUserCount
         // GraphQL -> totalUserCount: Long! (scalar)

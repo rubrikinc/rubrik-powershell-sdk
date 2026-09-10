@@ -115,11 +115,6 @@ Archive a crawl.
 
 - There is a single argument of type System.String.
 - Returns System.String.
-### assignprotection
-Assign protection to cassandra objects.
-
-- There is a single argument of type AssignProtectionInput.
-- Returns SlaAssignResult.
 ### assignvmname
 AssignVmName assigns a user-defined display name to an NCD virtual machine
 device. Names must be unique within a cluster. Duplicate names within the
@@ -1127,6 +1122,17 @@ with the session ID to finalize the setup.
 
 - There is a single argument of type StartGitHubAppSetupInput.
 - Returns StartGitHubAppSetupReply.
+### startinplacedatamasking
+Initiates an asynchronous job to permanently mask sensitive field values in a
+live Salesforce organization using the specified masking template.
+
+Warning: This operation is irreversible and modifies production Salesforce
+data directly. It is distinct from restore-time masking, which masks a copy.
+
+Requires the Salesforce data masking feature to be enabled.
+
+- There is a single argument of type StartInPlaceDataMaskingInput.
+- Returns StartInPlaceDataMaskingReply.
 ### startperiodicupgradeprechecksondemandjob
 Starts an on demand periodic upgrade prechecks job in CDM cluster.
 
@@ -1137,6 +1143,23 @@ StartRecovery triggers a recovery job for the relevant recovery spec.
 
 - There is a single argument of type StartRecoveryInput.
 - Returns StartRecoveryReply.
+### startrscppackagedownload
+Downloads an uploaded RSC-P appliance upgrade package onto the appliance
+host and stages it.
+
+- There is a single argument of type StartRscpPackageDownloadInput.
+- Returns StartRscpPackageDownloadReply.
+### startrscpupgrade
+Starts an upgrade of the RSC-P appliance.
+
+- There is a single argument of type StartRscpUpgradeInput.
+- Returns StartRscpUpgradeReply.
+### startsalesforcepermissionassessment
+Initiates an asynchronous job to run an on-demand permission assessment for
+the specified Salesforce organization.
+
+- There is a single argument of type StartSalesforcePermissionAssessmentInput.
+- Returns StartSalesforcePermissionAssessmentReply.
 ### startupgradebatchjob
 Starts cdm upgrades instantly, monitors the upgrade until terminal state is reached.
 
@@ -1370,6 +1393,11 @@ Update guest OS credentials.
 
 - There is a single argument of type UpdateGuestCredentialInput.
 - Returns UpdateGuestCredentialReply.
+### updateimageclassificationconfig
+Update image classification configuration and return the updated Rubrik cluster.
+
+- There is a single argument of type UpdateImageClassificationConfigInput.
+- Returns UpdateImageClassificationConfigReply.
 ### updateinsightstate
 Toggle the dismissed state of an insight.
 
@@ -1393,6 +1421,8 @@ Update an entry in the IP allowlist.
 - There is a single argument of type UpdateIpWhitelistEntryInput.
 - Returns System.String.
 ### updatelambdasettings
+Updates the anomaly detection settings for the account.
+
 - There are 3 arguments.
     - anomalyThreshold - System.Single: Probability threshold for anomaly detector.
     - ransomwareThreshold - System.Single: Probability threshold for ransomware detector.
@@ -1532,14 +1562,14 @@ Converts a GPS account to an RSC account.
 - The upgradetorsc subcommand takes no arguments.
 - Returns System.String.
 ### validateandsavecustomerkmsinfo
-Validate KMS input provided on O365 subscription setup.
+Validates and saves the customer's KMS (Key Management Service) information.
 
 - There is a single argument of type ValidateAndSaveCustomerKmsInfoInput.
 - Returns ValidateAndSaveCustomerKmsInfoReply.
 ### vmmakeprimary
 Make this cluster the primary for agents on a set of VMs
 
-Supported in v5.3+
+Supported in v6.0+
 Migrate the primary cluster with which the agent is able to communicate. For disaster recovery when migrating everything over from another cluster, the /host/make_primary endpoint can be used with the oldPrimaryClusterUuid parameter.
 
 - There is a single argument of type VmMakePrimaryInput.

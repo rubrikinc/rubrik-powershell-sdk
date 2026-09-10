@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> WorkloadAnomalyCategory? AnomalyCategory
+        // GraphQL -> anomalyCategory: WorkloadAnomalyCategory! (enum)
+        [JsonProperty("anomalyCategory")]
+        public WorkloadAnomalyCategory? AnomalyCategory { get; set; }
+
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         [JsonProperty("anomalyType")]
@@ -90,6 +95,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("detectionTime")]
         public DateTime? DetectionTime { get; set; }
 
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        [JsonProperty("isInfrastructureAlertsEnabled")]
+        public System.Boolean? IsInfrastructureAlertsEnabled { get; set; }
+
         //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
         // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
         [JsonProperty("isSensitiveDataDiscoverySupported")]
@@ -145,6 +155,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> SensitivityInfo? ImpactedSensitivityInfo
+        // GraphQL -> impactedSensitivityInfo: SensitivityInfo (type)
+        [JsonProperty("impactedSensitivityInfo")]
+        public SensitivityInfo? ImpactedSensitivityInfo { get; set; }
+
         //      C# -> PolicyObj? PreviousPolicyObj
         // GraphQL -> previousPolicyObj: PolicyObj (type)
         [JsonProperty("previousPolicyObj")]
@@ -165,6 +180,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public WorkloadAnomaly Set(
+        WorkloadAnomalyCategory? AnomalyCategory = null,
         AnomalyType? AnomalyType = null,
         EncryptionLevel? Encryption = null,
         HierarchyObjectTypeEnum? ObjectType = null,
@@ -179,6 +195,7 @@ namespace RubrikSecurityCloud.Types
         System.Int64? CreatedFileCount = null,
         System.Int64? DeletedFileCount = null,
         DateTime? DetectionTime = null,
+        System.Boolean? IsInfrastructureAlertsEnabled = null,
         System.Boolean? IsSensitiveDataDiscoverySupported = null,
         System.Int64? ModifiedFileCount = null,
         System.String? PreviousSnapshotFid = null,
@@ -190,10 +207,14 @@ namespace RubrikSecurityCloud.Types
         List<WorkloadAnomaly>? AnomalousChildren = null,
         AnomalyInfo? AnomalyInfo = null,
         Cluster? Cluster = null,
+        SensitivityInfo? ImpactedSensitivityInfo = null,
         PolicyObj? PreviousPolicyObj = null,
         SnappableLocationType? Location = null
     ) 
     {
+        if ( AnomalyCategory != null ) {
+            this.AnomalyCategory = AnomalyCategory;
+        }
         if ( AnomalyType != null ) {
             this.AnomalyType = AnomalyType;
         }
@@ -236,6 +257,9 @@ namespace RubrikSecurityCloud.Types
         if ( DetectionTime != null ) {
             this.DetectionTime = DetectionTime;
         }
+        if ( IsInfrastructureAlertsEnabled != null ) {
+            this.IsInfrastructureAlertsEnabled = IsInfrastructureAlertsEnabled;
+        }
         if ( IsSensitiveDataDiscoverySupported != null ) {
             this.IsSensitiveDataDiscoverySupported = IsSensitiveDataDiscoverySupported;
         }
@@ -269,6 +293,9 @@ namespace RubrikSecurityCloud.Types
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
+        if ( ImpactedSensitivityInfo != null ) {
+            this.ImpactedSensitivityInfo = ImpactedSensitivityInfo;
+        }
         if ( PreviousPolicyObj != null ) {
             this.PreviousPolicyObj = PreviousPolicyObj;
         }
@@ -289,6 +316,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> WorkloadAnomalyCategory? AnomalyCategory
+        // GraphQL -> anomalyCategory: WorkloadAnomalyCategory! (enum)
+        if (this.AnomalyCategory != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyCategory\n" ;
+            } else {
+                s += ind + "anomalyCategory\n" ;
+            }
+        }
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         if (this.AnomalyType != null) {
@@ -415,6 +451,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "detectionTime\n" ;
             }
         }
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        if (this.IsInfrastructureAlertsEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isInfrastructureAlertsEnabled\n" ;
+            } else {
+                s += ind + "isInfrastructureAlertsEnabled\n" ;
+            }
+        }
         //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
         // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
         if (this.IsSensitiveDataDiscoverySupported != null) {
@@ -523,6 +568,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> SensitivityInfo? ImpactedSensitivityInfo
+        // GraphQL -> impactedSensitivityInfo: SensitivityInfo (type)
+        if (this.ImpactedSensitivityInfo != null) {
+            var fspec = this.ImpactedSensitivityInfo.AsFieldSpec(conf.Child("impactedSensitivityInfo"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "impactedSensitivityInfo" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> PolicyObj? PreviousPolicyObj
         // GraphQL -> previousPolicyObj: PolicyObj (type)
         if (this.PreviousPolicyObj != null) {
@@ -554,6 +611,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> WorkloadAnomalyCategory? AnomalyCategory
+        // GraphQL -> anomalyCategory: WorkloadAnomalyCategory! (enum)
+        if (ec.Includes("anomalyCategory",true))
+        {
+            if(this.AnomalyCategory == null) {
+
+                this.AnomalyCategory = new WorkloadAnomalyCategory();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyCategory != null && ec.Excludes("anomalyCategory",true))
+        {
+            this.AnomalyCategory = null;
+        }
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         if (ec.Includes("anomalyType",true))
@@ -792,6 +866,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.DetectionTime = null;
         }
+        //      C# -> System.Boolean? IsInfrastructureAlertsEnabled
+        // GraphQL -> isInfrastructureAlertsEnabled: Boolean! (scalar)
+        if (ec.Includes("isInfrastructureAlertsEnabled",true))
+        {
+            if(this.IsInfrastructureAlertsEnabled == null) {
+
+                this.IsInfrastructureAlertsEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsInfrastructureAlertsEnabled != null && ec.Excludes("isInfrastructureAlertsEnabled",true))
+        {
+            this.IsInfrastructureAlertsEnabled = null;
+        }
         //      C# -> System.Boolean? IsSensitiveDataDiscoverySupported
         // GraphQL -> isSensitiveDataDiscoverySupported: Boolean! (scalar)
         if (ec.Includes("isSensitiveDataDiscoverySupported",true))
@@ -984,6 +1075,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Cluster != null && ec.Excludes("cluster",false))
         {
             this.Cluster = null;
+        }
+        //      C# -> SensitivityInfo? ImpactedSensitivityInfo
+        // GraphQL -> impactedSensitivityInfo: SensitivityInfo (type)
+        if (ec.Includes("impactedSensitivityInfo",false))
+        {
+            if(this.ImpactedSensitivityInfo == null) {
+
+                this.ImpactedSensitivityInfo = new SensitivityInfo();
+                this.ImpactedSensitivityInfo.ApplyExploratoryFieldSpec(ec.NewChild("impactedSensitivityInfo"));
+
+            } else {
+
+                this.ImpactedSensitivityInfo.ApplyExploratoryFieldSpec(ec.NewChild("impactedSensitivityInfo"));
+
+            }
+        }
+        else if (this.ImpactedSensitivityInfo != null && ec.Excludes("impactedSensitivityInfo",false))
+        {
+            this.ImpactedSensitivityInfo = null;
         }
         //      C# -> PolicyObj? PreviousPolicyObj
         // GraphQL -> previousPolicyObj: PolicyObj (type)

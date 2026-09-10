@@ -31,6 +31,8 @@ List of account owners.
 - The owners subcommand takes no arguments.
 - Returns list of Users.
 ### products
+Retrieves account products that match the specified filters.
+
 - There are 5 arguments.
     - nameFilter - list of ProductNames: Name of product (Data Protection, Ransomware Investigation, etc.).
     - typeFilter - list of ProductTypes: Type of product (Revenue, POC, etc.).

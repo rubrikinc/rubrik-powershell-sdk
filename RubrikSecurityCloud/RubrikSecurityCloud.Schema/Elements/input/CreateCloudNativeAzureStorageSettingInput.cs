@@ -110,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("azureKeyVaultKey")]
         public AzureKeyVaultKeyIdentifierInput? AzureKeyVaultKey { get; set; }
 
+        //      C# -> AwsKmsKeyIdentifierInput? AwsKmsKey
+        // GraphQL -> awsKmsKey: AwsKmsKeyIdentifierInput (input)
+        [JsonProperty("awsKmsKey")]
+        public AwsKmsKeyIdentifierInput? AwsKmsKey { get; set; }
+
 
         #endregion
 

@@ -11,3 +11,6 @@ Identifying details for an Azure subscription used as a recovery plan location.
   - Cloud partition the Azure subscription belongs to.
 - regionSpecs: list of AzureNativeRegionSpecs
   - Region specifications configured for the Azure subscription.
+- region: AzureNativeRegion
+  - The region this recovery plan location targets. This is distinct from
+regionSpecs, which lists every region the account is registered with.

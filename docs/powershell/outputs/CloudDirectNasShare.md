@@ -1,14 +1,31 @@
 ### CloudDirectNasShare
 NAS Cloud Direct share.
 
+- id: System.String
+  - Share ID.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during communication with the NAS Cloud
+Direct site.
 - clusterUuid: System.String
   - NAS Cloud Direct cluster ID.
 - exportPath: System.String
   - NAS Cloud Direct Share path.
 - protocol: CloudDirectNasProtocolType
   - NAS Cloud Direct share protocol.
-- ncdPolicyName: System.String
-  - NAS Cloud Direct share protecting the policy name.
 - systemId: System.String
   - SystemID of the system the NAS Cloud Direct share belongs to.
 - namespaceId: System.String
@@ -17,34 +34,34 @@ NAS Cloud Direct share.
   - Specifies whether the share is archived.
 - isHidden: System.Boolean
   - Specifies whether the share is hidden.
-- isStale: System.Boolean
-  - Specifies whether the share is stale.
 - isRelic: System.Boolean
   - Specifies whether the share is a relic.
-- isNasShareManuallyAdded: System.Boolean
-  - Specifies whether the share was added manually by the user.
+- isStale: System.Boolean
+  - Specifies whether the share is stale.
 - cloudDirectId: System.String
   - UUID of the NAS Cloud Direct share on the NCD cluster.
 - policyName: System.String
   - Name of the policy assigned to the NAS Cloud Direct share.
+- excludes: list of Excludes
+  - List of exclusions for the NAS share.
+- ncdPolicyName: System.String
+  - NAS Cloud Direct share protecting the policy name.
+- isNasShareManuallyAdded: System.Boolean
+  - Specifies whether the share was added manually by the user.
 - fullSnapshotNamePattern: System.String
   - Regex pattern for matching full snapshot names.
 - incrementalSnapshotNamePattern: System.String
   - Regex pattern for matching incremental snapshot names.
-- excludes: list of Excludes
-  - List of exclusions for the NAS share.
-- id: System.String
-  - Share ID.
 - cloudDirectNasSystem: CloudDirectNasSystem
   - The NAS Cloud Direct system to which this NAS share belongs.
 - cloudDirectNasNamespace: CloudDirectNasNamespace
   - The NAS Cloud Direct namespace to which this NAS share belongs.
 - childShares: CloudDirectNasShareConnection
   - Directory protection entries included in this share.
-- targets: CloudDirectObjectTargets
-  - Targets associated with the backups for this share.
 - parentShare: CloudDirectNasShare
   - The parent of this share.
+- targets: CloudDirectObjectTargets
+  - Targets associated with the backups for this share.
 - newestSnapshot: CloudDirectSnapshot
   - The most recent snapshot of this share.
 - oldestSnapshot: CloudDirectSnapshot
@@ -57,46 +74,29 @@ NAS Cloud Direct share.
   - Groups the missed snapshots of this NAS Cloud Direct share.
 - cloudDirectSnapshotGroupBySummary: CloudDirectSnapshotsGroupBySummaryConnection
   - Group the snapshots of this NAS Cloud Direct share.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
 - cluster: Cluster
   - NAS Cloud Direct cluster where this object originated.
-- pendingSla: SlaDomain
-  - SLA Domain assignment of the object during communication with the NAS Cloud
-Direct site.
 - cloudDirectPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
   - Object pause pending assignment details for Cloud Direct objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.

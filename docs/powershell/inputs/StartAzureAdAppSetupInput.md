@@ -11,3 +11,7 @@ Configuration to initiate Azure AD Application creation.
   - Access mode for the Azure AD app.
 - includeIntune: System.Boolean
   - Specifies whether Intune protection should be enabled.
+- m365AccessRecoveryConfig: M365AccessRecoveryConfig
+  - Specifies the Automated M365 Access Recovery configuration for the directory
+being onboarded. An absent configuration onboards the directory in the
+default state.

@@ -1,25 +1,25 @@
 ### SortByFieldEnum
 - ANALYZER_NAME
-- ComplianceStatus
+- ComplianceStatus - Sort by the SLA compliance status of the workload.
 - BYTES_CREATED_COUNT - Count of created bytes.
 - SourceSiteName - Sort by the source site name.
 - BYTES_DELETED_COUNT - Count of deleted bytes.
 - PATH
 - ESTIMATED_RUNWAY - Estimated time before cluster runs out of storage.
-- ReplicationSnapshotLag
+- ReplicationSnapshotLag - Sort by the replication lag of the workload.
 - Location - Sort by location.
 - IS_ENCRYPTED - Specifies whether the result is encrypted.
 - SEVERITY - Severity of the anomaly.
-- LocalSnapshots
-- Name
+- LocalSnapshots - Sort by the number of local snapshots of the workload.
+- Name - Sort by the name of the workload.
 - ANOMALY_PROBABILITY - Probability of anomaly.
-- PhysicalBytes
+- PhysicalBytes - Sort by the physical bytes used by snapshots of the workload.
 - INSTALLED_VERSION - Version of the installed Rubrik cluster.
-- ArchiveSnapshots
+- ArchiveSnapshots - Sort by the number of archived snapshots of the workload.
 - NUM_HIGH_RISK_LOCATIONS
 - FILES_CREATED_COUNT - Count of created files.
 - BYTES_NET_CHANGED_COUNT - Count of changed bytes.
-- ProtectionStatus
+- ProtectionStatus - Sort by the protection status of the workload.
 - POLICY_STATUS
 - FILE_NAME
 - NUM_VIOLATED_FILES
@@ -31,27 +31,27 @@
 - ClusterType - Rubrik cluster type.
 - AVAILABLE_SPACE_PERCENT - Percentage of available storage space in the cluster.
 - LastUpdated - Sort by last updated time.
-- ArchivalComplianceStatus
-- DataReduction
-- AwaitingFirstFull
+- ArchivalComplianceStatus - Sort by the archival compliance status of the workload.
+- DataReduction - Sort by the data reduction ratio of the workload.
+- AwaitingFirstFull - Sort by whether the workload is awaiting its first full snapshot.
 - SIZE
-- LastSnapshot
+- LastSnapshot - Sort by the time of the most recent snapshot of the workload.
 - POLICY_NAME
-- TransferredBytes
-- LogicalDataReduction
+- TransferredBytes - Sort by the bytes ingested over the network for the workload.
+- LogicalDataReduction - Sort by the logical data reduction ratio of the workload.
 - StartTime - Sort by the start time of the failover.
-- ArchiveStorage
+- ArchiveStorage - Sort by the amount of storage used by archived snapshots.
 - PREVIOUS_SNAPSHOT_ID - Id of the previous snapshot.
-- MissedSnapshots
-- ReplicaStorage
-- LatestArchivalSnapshot
+- MissedSnapshots - Sort by the number of snapshots that were missed for the workload.
+- ReplicaStorage - Sort by the amount of storage used by replicated snapshots.
+- LatestArchivalSnapshot - Sort by the time of the most recent archived snapshot of the workload.
 - AppBlueprintName - Sort by the Recovery Plan name.
 - TOTAL_HITS
-- SlaDomainName
+- SlaDomainName - Sort by the name of the SLA Domain assigned to the workload.
 - CLUSTER_LOCATION - Location of the Rubrik cluster.
 - ObjectName - Sort by object name.
-- ReplicationComplianceStatus
-- LocalSLASnapshots
+- ReplicationComplianceStatus - Sort by the replication compliance status of the workload.
+- LocalSLASnapshots - Sort by the number of local snapshots taken by an SLA Domain.
 - LOCATION
 - PREVIOUS_SNAPSHOT_DATE - Date of the previous snapshot.
 - SNAPSHOT_DATE - Date of the snapshot.
@@ -59,29 +59,29 @@
 - TargetSiteName - Sort by the target site name.
 - IS_ANOMALY - Specifies whether the result is an anomaly.
 - ActivityStatus - Sort by activity status.
-- ArchivalSnapshotLag
-- ReplicaSnapshots
+- ArchivalSnapshotLag - Sort by the archival lag of the workload.
+- ReplicaSnapshots - Sort by the number of replicated snapshots of the workload.
 - FILES_DELETED_COUNT - Count of deleted files.
 - NUM_VIOLATION
-- LogicalBytes
+- LogicalBytes - Sort by the logical bytes used by snapshots of the workload.
 - SNAPSHOT_TIME
 - SNAPSHOT_ID - Id of the snapshot.
 - RegisteredAt - Rubrik cluster registration date.
 - CLUSTER
 - FILES_MODIFIED_COUNT - Count of modified files.
 - OBJECT_TYPE - Type of the object.
-- PULL_TIME
-- LatestReplicationSnapshot
-- Cluster
+- PULL_TIME - Sort by the time at which the workload data was pulled from the cluster.
+- LatestReplicationSnapshot - Sort by the time of the most recent replicated snapshot of the workload.
+- Cluster - Sort by the cluster that the workload belongs to.
 - WORKLOAD_TYPE - Type of the object.
-- TotalSnapshots
+- TotalSnapshots - Sort by the total number of snapshots of the workload.
 - ObjectType - Sort by object type.
 - OBJECT_NAME
 - Time - Sort user audits by time.
 - SUSPICIOUS_FILES_COUNT - Count of suspicious files.
 - ActivityType - Sort by activity type.
 - Severity - Sort by severity.
-- LocalOnDemandSnapshots
+- LocalOnDemandSnapshots - Sort by the number of on-demand local snapshots of the workload.
 - WORKLOAD_NAME - Name of the object.
 - BYTES_MODIFIED_COUNT - Count of modified bytes.
-- OBJECT_STATE
+- OBJECT_STATE - Sort by the state of the workload.

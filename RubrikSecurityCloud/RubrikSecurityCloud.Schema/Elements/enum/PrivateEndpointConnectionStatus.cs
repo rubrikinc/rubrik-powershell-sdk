@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REJECTED")]
         REJECTED,
 
+        [EnumMember(Value = "REMOVAL_IN_PROGRESS")]
+        REMOVAL_IN_PROGRESS,
+
         [EnumMember(Value = "REMOVED")]
         REMOVED,
 

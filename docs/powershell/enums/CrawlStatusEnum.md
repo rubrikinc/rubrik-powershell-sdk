@@ -1,4 +1,6 @@
 ### CrawlStatusEnum
+The lifecycle state of a crawl.
+
 - IN_PROGRESS - Crawl is in progress.
 - COMPLETE - Crawl is complete.
 - IN_PROGRESS_WITH_FAIL - Crawl is in progress with failures.

@@ -70,6 +70,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("searchText")]
         public System.String? SearchText { get; set; }
 
+        //      C# -> AzureAuthType? AuthType
+        // GraphQL -> authType: AzureAuthType (enum)
+        [JsonProperty("authType")]
+        public AzureAuthType? AuthType { get; set; }
+
 
         #endregion
 

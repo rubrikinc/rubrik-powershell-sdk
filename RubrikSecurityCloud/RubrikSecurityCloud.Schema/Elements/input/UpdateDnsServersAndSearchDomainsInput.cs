@@ -19,13 +19,6 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? Id
-        // GraphQL -> id: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("id")]
-        public System.String? Id { get; set; }
-
         //      C# -> List<System.String>? Servers
         // GraphQL -> servers: [String!]! (scalar)
         [Required]
@@ -39,6 +32,13 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("domains")]
         public List<System.String>? Domains { get; set; }
+
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("id")]
+        public System.String? Id { get; set; }
 
 
         #endregion

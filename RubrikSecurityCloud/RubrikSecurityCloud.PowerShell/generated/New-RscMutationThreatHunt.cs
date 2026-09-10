@@ -371,6 +371,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		maxMatchesPerSnapshot = $someInt
     /// 		# OPTIONAL
     /// 		shouldIncludeArchive = $someBoolean
+    /// 		# OPTIONAL
+    /// 		registryPatterns = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				keyPattern = $someString
+    /// 				# OPTIONAL
+    /// 				valueNames = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				valueTypes = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				valueDataEq = $someString
+    /// 				# OPTIONAL
+    /// 				valueDataNotEq = $someString
+    /// 				# OPTIONAL
+    /// 				valueDataContains = $someString
+    /// 				# OPTIONAL
+    /// 				valueDataNotContains = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	objectFids = @(
@@ -504,6 +527,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			maxMatchesPerSnapshot = $someInt
     /// 			# OPTIONAL
     /// 			shouldIncludeArchive = $someBoolean
+    /// 			# OPTIONAL
+    /// 			registryPatterns = @(
+    /// 				@{
+    /// 					# REQUIRED
+    /// 					keyPattern = $someString
+    /// 					# OPTIONAL
+    /// 					valueNames = @(
+    /// 						$someString
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					valueTypes = @(
+    /// 						$someString
+    /// 					)
+    /// 					# OPTIONAL
+    /// 					valueDataEq = $someString
+    /// 					# OPTIONAL
+    /// 					valueDataNotEq = $someString
+    /// 					# OPTIONAL
+    /// 					valueDataContains = $someString
+    /// 					# OPTIONAL
+    /// 					valueDataNotContains = $someString
+    /// 				}
+    /// 			)
     /// 		}
     /// 		# OPTIONAL
     /// 		clusterIds = @(
@@ -647,6 +693,29 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		maxMatchesPerSnapshot = $someInt
     /// 		# OPTIONAL
     /// 		shouldIncludeArchive = $someBoolean
+    /// 		# OPTIONAL
+    /// 		registryPatterns = @(
+    /// 			@{
+    /// 				# REQUIRED
+    /// 				keyPattern = $someString
+    /// 				# OPTIONAL
+    /// 				valueNames = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				valueTypes = @(
+    /// 					$someString
+    /// 				)
+    /// 				# OPTIONAL
+    /// 				valueDataEq = $someString
+    /// 				# OPTIONAL
+    /// 				valueDataNotEq = $someString
+    /// 				# OPTIONAL
+    /// 				valueDataContains = $someString
+    /// 				# OPTIONAL
+    /// 				valueDataNotContains = $someString
+    /// 			}
+    /// 		)
     /// 	}
     /// 	# REQUIRED
     /// 	objectFids = @(
@@ -1059,6 +1128,29 @@ $query.Var.input = @{
 		maxMatchesPerSnapshot = $someInt
 		# OPTIONAL
 		shouldIncludeArchive = $someBoolean
+		# OPTIONAL
+		registryPatterns = @(
+			@{
+				# REQUIRED
+				keyPattern = $someString
+				# OPTIONAL
+				valueNames = @(
+					$someString
+				)
+				# OPTIONAL
+				valueTypes = @(
+					$someString
+				)
+				# OPTIONAL
+				valueDataEq = $someString
+				# OPTIONAL
+				valueDataNotEq = $someString
+				# OPTIONAL
+				valueDataContains = $someString
+				# OPTIONAL
+				valueDataNotContains = $someString
+			}
+		)
 	}
 	# REQUIRED
 	objectFids = @(
@@ -1184,6 +1276,29 @@ $query.Var.input = @{
 			maxMatchesPerSnapshot = $someInt
 			# OPTIONAL
 			shouldIncludeArchive = $someBoolean
+			# OPTIONAL
+			registryPatterns = @(
+				@{
+					# REQUIRED
+					keyPattern = $someString
+					# OPTIONAL
+					valueNames = @(
+						$someString
+					)
+					# OPTIONAL
+					valueTypes = @(
+						$someString
+					)
+					# OPTIONAL
+					valueDataEq = $someString
+					# OPTIONAL
+					valueDataNotEq = $someString
+					# OPTIONAL
+					valueDataContains = $someString
+					# OPTIONAL
+					valueDataNotContains = $someString
+				}
+			)
 		}
 		# OPTIONAL
 		clusterIds = @(
@@ -1319,6 +1434,29 @@ $query.Var.input = @{
 		maxMatchesPerSnapshot = $someInt
 		# OPTIONAL
 		shouldIncludeArchive = $someBoolean
+		# OPTIONAL
+		registryPatterns = @(
+			@{
+				# REQUIRED
+				keyPattern = $someString
+				# OPTIONAL
+				valueNames = @(
+					$someString
+				)
+				# OPTIONAL
+				valueTypes = @(
+					$someString
+				)
+				# OPTIONAL
+				valueDataEq = $someString
+				# OPTIONAL
+				valueDataNotEq = $someString
+				# OPTIONAL
+				valueDataContains = $someString
+				# OPTIONAL
+				valueDataNotContains = $someString
+			}
+		)
 	}
 	# REQUIRED
 	objectFids = @(

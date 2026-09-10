@@ -136,6 +136,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("fixedObjectCounts")]
         public AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts { get; set; }
 
+        //      C# -> AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess
+        // GraphQL -> isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission (type)
+        [JsonProperty("isMissingDeveloperCollaborationAccess")]
+        public AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess { get; set; }
+
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         [JsonProperty("logicalPath")]
@@ -227,6 +232,7 @@ namespace RubrikSecurityCloud.Types
         List<AssignedRscTag>? AllTags = null,
         PathNode? EffectiveSlaSourceObject = null,
         AzureDevOpsProjectFixedObjectCounts? FixedObjectCounts = null,
+        AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess = null,
         List<PathNode>? LogicalPath = null,
         ObjectBackupWindowStatus? ObjectBackupWindow = null,
         ObjectPauseStatus? ObjectPauseStatus = null,
@@ -304,6 +310,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( FixedObjectCounts != null ) {
             this.FixedObjectCounts = FixedObjectCounts;
+        }
+        if ( IsMissingDeveloperCollaborationAccess != null ) {
+            this.IsMissingDeveloperCollaborationAccess = IsMissingDeveloperCollaborationAccess;
         }
         if ( LogicalPath != null ) {
             this.LogicalPath = LogicalPath;
@@ -568,6 +577,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "fixedObjectCounts" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess
+        // GraphQL -> isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission (type)
+        if (this.IsMissingDeveloperCollaborationAccess != null) {
+            var fspec = this.IsMissingDeveloperCollaborationAccess.AsFieldSpec(conf.Child("isMissingDeveloperCollaborationAccess"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "isMissingDeveloperCollaborationAccess" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -1081,6 +1102,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.FixedObjectCounts != null && ec.Excludes("fixedObjectCounts",false))
         {
             this.FixedObjectCounts = null;
+        }
+        //      C# -> AzureDevOpsProjectMissingPermission? IsMissingDeveloperCollaborationAccess
+        // GraphQL -> isMissingDeveloperCollaborationAccess: AzureDevOpsProjectMissingPermission (type)
+        if (ec.Includes("isMissingDeveloperCollaborationAccess",false))
+        {
+            if(this.IsMissingDeveloperCollaborationAccess == null) {
+
+                this.IsMissingDeveloperCollaborationAccess = new AzureDevOpsProjectMissingPermission();
+                this.IsMissingDeveloperCollaborationAccess.ApplyExploratoryFieldSpec(ec.NewChild("isMissingDeveloperCollaborationAccess"));
+
+            } else {
+
+                this.IsMissingDeveloperCollaborationAccess.ApplyExploratoryFieldSpec(ec.NewChild("isMissingDeveloperCollaborationAccess"));
+
+            }
+        }
+        else if (this.IsMissingDeveloperCollaborationAccess != null && ec.Excludes("isMissingDeveloperCollaborationAccess",false))
+        {
+            this.IsMissingDeveloperCollaborationAccess = null;
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)

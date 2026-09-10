@@ -121,6 +121,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isVersioningEnabled")]
         public System.Boolean? IsVersioningEnabled { get; set; }
 
+        //      C# -> DateTime? LatestCleanSnapshotTime
+        // GraphQL -> latestCleanSnapshotTime: DateTime (scalar)
+        [JsonProperty("latestCleanSnapshotTime")]
+        public DateTime? LatestCleanSnapshotTime { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -391,6 +396,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsProtectable = null,
         System.Boolean? IsRelic = null,
         System.Boolean? IsVersioningEnabled = null,
+        DateTime? LatestCleanSnapshotTime = null,
         System.String? Name = null,
         System.String? NativeName = null,
         System.Int32? NumWorkloadDescendants = null,
@@ -480,6 +486,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsVersioningEnabled != null ) {
             this.IsVersioningEnabled = IsVersioningEnabled;
+        }
+        if ( LatestCleanSnapshotTime != null ) {
+            this.LatestCleanSnapshotTime = LatestCleanSnapshotTime;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -769,6 +778,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isVersioningEnabled\n" ;
             } else {
                 s += ind + "isVersioningEnabled\n" ;
+            }
+        }
+        //      C# -> DateTime? LatestCleanSnapshotTime
+        // GraphQL -> latestCleanSnapshotTime: DateTime (scalar)
+        if (this.LatestCleanSnapshotTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "latestCleanSnapshotTime\n" ;
+            } else {
+                s += ind + "latestCleanSnapshotTime\n" ;
             }
         }
         //      C# -> System.String? Name
@@ -1456,6 +1474,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsVersioningEnabled != null && ec.Excludes("isVersioningEnabled",true))
         {
             this.IsVersioningEnabled = null;
+        }
+        //      C# -> DateTime? LatestCleanSnapshotTime
+        // GraphQL -> latestCleanSnapshotTime: DateTime (scalar)
+        if (ec.Includes("latestCleanSnapshotTime",true))
+        {
+            if(this.LatestCleanSnapshotTime == null) {
+
+                this.LatestCleanSnapshotTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.LatestCleanSnapshotTime != null && ec.Excludes("latestCleanSnapshotTime",true))
+        {
+            this.LatestCleanSnapshotTime = null;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

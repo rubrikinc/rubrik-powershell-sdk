@@ -13,3 +13,11 @@ Response of the operation that initiates onboarding of Azure AD.
   - List of missing permissions for the Entra ID app.
 - excessivePermissions: list of System.Strings
   - List of excessive permissions for the Entra ID app.
+- missingM365Permissions: list of System.Strings
+  - Lists the missing M365 permissions (Exchange Online / SharePoint Online)
+required for Automated M365 Access Recovery.
+- isExchangeAdminRoleAssigned: System.Boolean
+  - Indicates whether the app's service principal already holds the Exchange
+Administrator directory role, as observed at setup kickoff. A
+customer-hosted app requires the tenant admin to grant the role; it is not
+granted by consent.

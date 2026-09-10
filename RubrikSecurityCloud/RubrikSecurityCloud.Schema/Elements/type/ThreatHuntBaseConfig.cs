@@ -50,6 +50,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("ioc")]
         public Ioc? Ioc { get; set; }
 
+        //      C# -> List<RegistryPatternSpec>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpec!]! (type)
+        [JsonProperty("registryPatterns")]
+        public List<RegistryPatternSpec>? RegistryPatterns { get; set; }
+
         //      C# -> HuntScanSnapshotLimit? SnapshotScanLimit
         // GraphQL -> snapshotScanLimit: HuntScanSnapshotLimit (type)
         [JsonProperty("snapshotScanLimit")]
@@ -71,6 +76,7 @@ namespace RubrikSecurityCloud.Types
         System.String? Notes = null,
         HuntScanFileCriteria? FileScanCriteria = null,
         Ioc? Ioc = null,
+        List<RegistryPatternSpec>? RegistryPatterns = null,
         HuntScanSnapshotLimit? SnapshotScanLimit = null
     ) 
     {
@@ -91,6 +97,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Ioc != null ) {
             this.Ioc = Ioc;
+        }
+        if ( RegistryPatterns != null ) {
+            this.RegistryPatterns = RegistryPatterns;
         }
         if ( SnapshotScanLimit != null ) {
             this.SnapshotScanLimit = SnapshotScanLimit;
@@ -166,6 +175,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "ioc" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RegistryPatternSpec>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpec!]! (type)
+        if (this.RegistryPatterns != null) {
+            var fspec = this.RegistryPatterns.AsFieldSpec(conf.Child("registryPatterns"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "registryPatterns" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -293,6 +314,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.Ioc != null && ec.Excludes("ioc",false))
         {
             this.Ioc = null;
+        }
+        //      C# -> List<RegistryPatternSpec>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpec!]! (type)
+        if (ec.Includes("registryPatterns",false))
+        {
+            if(this.RegistryPatterns == null) {
+
+                this.RegistryPatterns = new List<RegistryPatternSpec>();
+                this.RegistryPatterns.ApplyExploratoryFieldSpec(ec.NewChild("registryPatterns"));
+
+            } else {
+
+                this.RegistryPatterns.ApplyExploratoryFieldSpec(ec.NewChild("registryPatterns"));
+
+            }
+        }
+        else if (this.RegistryPatterns != null && ec.Excludes("registryPatterns",false))
+        {
+            this.RegistryPatterns = null;
         }
         //      C# -> HuntScanSnapshotLimit? SnapshotScanLimit
         // GraphQL -> snapshotScanLimit: HuntScanSnapshotLimit (type)

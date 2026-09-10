@@ -1,4 +1,6 @@
 ### CrawlObj
+
+
 - crawlId: System.String
 - snapshotFid: System.String
 - snapshotTime: System.Int64
@@ -15,5 +17,8 @@
 - error: System.String
 - totalHits: System.Int32
 - fileResultConnection: FileResultConnection
+  - Browses the file classification results within this crawl object.
 - cluster: Cluster
+  - The cluster that ran this crawl object's scan.
 - snappable: HierarchyObject
+  - The hierarchy object this crawl object scanned.

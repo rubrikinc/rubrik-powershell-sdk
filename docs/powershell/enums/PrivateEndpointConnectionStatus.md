@@ -6,3 +6,5 @@ Status of a private endpoint connection.
 - APPROVED - The private endpoint connection is approved.
 - REJECTED - The private endpoint connection is rejected.
 - REMOVED - The private endpoint connection is removed.
+- REMOVAL_IN_PROGRESS - The endpoint is being torn down. The private path is still in use until
+teardown completes.

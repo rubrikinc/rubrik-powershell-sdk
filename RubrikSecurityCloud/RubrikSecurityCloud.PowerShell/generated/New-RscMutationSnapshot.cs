@@ -1028,6 +1028,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				hostId = $someString
     /// 				# REQUIRED
     /// 				snapshotId = $someString
+    /// 				# OPTIONAL
+    /// 				recoveryMethod = $someRecoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryMethod]) for enum values.
+    /// 				# OPTIONAL
+    /// 				dsrmAdminPassword = $someString
     /// 			}
     /// 		)
     /// 		# REQUIRED
@@ -1160,8 +1164,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	id = $someString
-    /// 	# OPTIONAL
-    /// 	nextSnapshotFid = $someString
     /// 	# REQUIRED
     /// 	config = @{
     /// 		# REQUIRED
@@ -1182,6 +1184,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	deltaTypeFilter = @(
     /// 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
     /// 	)
+    /// 	# OPTIONAL
+    /// 	nextSnapshotFid = $someString
     /// }
     /// 
     /// # Execute the query
@@ -1262,6 +1266,27 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
     /// 	# OPTIONAL
     /// 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+    /// 	# OPTIONAL
+    /// 	surgicalRecoveryConfig = @{
+    /// 		# OPTIONAL
+    /// 		quarantinedFiles = @{
+    /// 			# OPTIONAL
+    /// 			shouldSkipCleanVersionRecovery = $someBoolean
+    /// 			# OPTIONAL
+    /// 			skippedFilePaths = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 		# OPTIONAL
+    /// 		encryptedFiles = @{
+    /// 			# OPTIONAL
+    /// 			shouldRecoverCleanVersions = $someBoolean
+    /// 			# OPTIONAL
+    /// 			excludedExtensions = @(
+    /// 				$someString
+    /// 			)
+    /// 		}
+    /// 	}
     /// }
     /// 
     /// # Execute the query
@@ -2818,6 +2843,10 @@ $query.Var.input = @{
 				hostId = $someString
 				# REQUIRED
 				snapshotId = $someString
+				# OPTIONAL
+				recoveryMethod = $someRecoveryMethod # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryMethod]) for enum values.
+				# OPTIONAL
+				dsrmAdminPassword = $someString
 			}
 		)
 		# REQUIRED
@@ -2926,8 +2955,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	id = $someString
-	# OPTIONAL
-	nextSnapshotFid = $someString
 	# REQUIRED
 	config = @{
 		# REQUIRED
@@ -2948,6 +2975,8 @@ $query.Var.input = @{
 	deltaTypeFilter = @(
 		$someDeltaType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.DeltaType]) for enum values.
 	)
+	# OPTIONAL
+	nextSnapshotFid = $someString
 }"
             );
         }
@@ -3020,6 +3049,27 @@ $query.Var.input = @{
 	retrievalTier = $someAwsRetrievalTier # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsRetrievalTier]) for enum values.
 	# OPTIONAL
 	recoveryPurpose = $someRecoveryPurpose # Call [Enum]::GetValues([RubrikSecurityCloud.Types.RecoveryPurpose]) for enum values.
+	# OPTIONAL
+	surgicalRecoveryConfig = @{
+		# OPTIONAL
+		quarantinedFiles = @{
+			# OPTIONAL
+			shouldSkipCleanVersionRecovery = $someBoolean
+			# OPTIONAL
+			skippedFilePaths = @(
+				$someString
+			)
+		}
+		# OPTIONAL
+		encryptedFiles = @{
+			# OPTIONAL
+			shouldRecoverCleanVersions = $someBoolean
+			# OPTIONAL
+			excludedExtensions = @(
+				$someString
+			)
+		}
+	}
 }"
             );
         }

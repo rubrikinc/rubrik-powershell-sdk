@@ -18,6 +18,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "CLOUD_COST_REPORT")]
+        CLOUD_COST_REPORT,
+
         [EnumMember(Value = "CLOUD_DISCOVERY")]
         CLOUD_DISCOVERY,
 

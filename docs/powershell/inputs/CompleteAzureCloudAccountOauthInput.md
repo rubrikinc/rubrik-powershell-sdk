@@ -19,6 +19,8 @@ Input for completing authentication of the Azure Cloud Accounts.
   - Specifies whether to skip permission checks of Azure subscriptions required for addition.
 - isEntraIdInitiatedOnboarding: System.Boolean
   - Indicates that this OAuth flow is an Entra ID initiated Event Hub onboarding, which is authorized in the Entra ID data-source domain rather than the cloud-native domain.
+- workloadId: System.String
+  - Rubrik ID of the workload the sign-in is being performed for. Used to scope authorization of the sign-in to that workload.
 - azureCloudType: AzureCloudType
   - Type of Azure Tenant. Possible values: Azure Public Cloud, Azure China Cloud.
 - resource: AzureOauthResource

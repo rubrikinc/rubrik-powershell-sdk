@@ -47,18 +47,22 @@ Summary of all FusionCompute hosts.
     - filter - list of Filters: Hierarchy object filter.
 - Returns FusionComputeHostConnection.
 ### physicalhost
+Details of a physical host for a given ID.
+
 - There is a single argument of type System.String.
 - Returns PhysicalHost.
 ### physicalhosts
 Get list of physical hosts.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - hostRoot - HostRoot: Host root type.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - hostRoot - HostRoot: Host root type.
     - isBulkPolicyAssignmentFlow - System.Boolean: Bulk policy assignment request.
 - Returns PhysicalHostConnection.
 ### rbsnetworklimit
@@ -67,19 +71,25 @@ Get RBS network throttle limits for a host.
 - There is a single argument of type System.String.
 - Returns GetHostRbsNetworkThrottleResponse.
 ### search
+Search a host's file or path index.
+
 - There are 2 arguments.
     - id - System.String: ID of the host to search.
     - path - System.String: The path query. Either path prefix or filename prefix.
 - Returns SearchResponseListResponse.
 ### share
+Returns information about a host share.
+
 - There is a single argument of type System.String.
 - Returns HostShare.
 ### shares
 Get all host shares.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

@@ -131,10 +131,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        [JsonProperty("nativeId")]
+        public System.String? NativeId { get; set; }
+
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
+
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String (scalar)
+        [JsonProperty("orgId")]
+        public System.String? OrgId { get; set; }
 
         //      C# -> System.Int32? RdsInstanceCount
         // GraphQL -> rdsInstanceCount: Int! (scalar)
@@ -377,7 +387,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsProtectable = null,
         DateTime? LastRefreshedAt = null,
         System.String? Name = null,
+        System.String? NativeId = null,
         System.Int32? NumWorkloadDescendants = null,
+        System.String? OrgId = null,
         System.Int32? RdsInstanceCount = null,
         System.Int32? S3BucketCount = null,
         System.Int32? S3TablesIcebergCatalogCount = null,
@@ -471,8 +483,14 @@ namespace RubrikSecurityCloud.Types
         if ( Name != null ) {
             this.Name = Name;
         }
+        if ( NativeId != null ) {
+            this.NativeId = NativeId;
+        }
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
+        }
+        if ( OrgId != null ) {
+            this.OrgId = OrgId;
         }
         if ( RdsInstanceCount != null ) {
             this.RdsInstanceCount = RdsInstanceCount;
@@ -773,6 +791,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "name\n" ;
             }
         }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        if (this.NativeId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "nativeId\n" ;
+            } else {
+                s += ind + "nativeId\n" ;
+            }
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants != null) {
@@ -780,6 +807,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "numWorkloadDescendants\n" ;
             } else {
                 s += ind + "numWorkloadDescendants\n" ;
+            }
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String (scalar)
+        if (this.OrgId != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "orgId\n" ;
+            } else {
+                s += ind + "orgId\n" ;
             }
         }
         //      C# -> System.Int32? RdsInstanceCount
@@ -1466,6 +1502,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.Name = null;
         }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        if (ec.Includes("nativeId",true))
+        {
+            if(this.NativeId == null) {
+
+                this.NativeId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.NativeId != null && ec.Excludes("nativeId",true))
+        {
+            this.NativeId = null;
+        }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (ec.Includes("numWorkloadDescendants",true))
@@ -1482,6 +1535,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.NumWorkloadDescendants != null && ec.Excludes("numWorkloadDescendants",true))
         {
             this.NumWorkloadDescendants = null;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String (scalar)
+        if (ec.Includes("orgId",true))
+        {
+            if(this.OrgId == null) {
+
+                this.OrgId = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.OrgId != null && ec.Excludes("orgId",true))
+        {
+            this.OrgId = null;
         }
         //      C# -> System.Int32? RdsInstanceCount
         // GraphQL -> rdsInstanceCount: Int! (scalar)

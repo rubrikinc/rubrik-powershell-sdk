@@ -33,6 +33,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AWS_CONFIG_PROTECTION")]
         AWS_CONFIG_PROTECTION,
 
+        [EnumMember(Value = "AWS_KMS_KEY_SHARING")]
+        AWS_KMS_KEY_SHARING,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_PROTECTION")]
+        AZURE_COSMOS_NOSQL_PROTECTION,
+
         [EnumMember(Value = "AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION")]
         AZURE_DEVOPS_DEVELOPER_COLLABORATION_PROTECTION,
 

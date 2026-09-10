@@ -66,11 +66,11 @@ Kicks off the creation flow for an O365 Azure AD App.
 Deletes an O365 Azure AD App from the account.
 
 - There are 2 arguments.
-    - o365AppClientId - System.String
-    - o365AppType - System.String
+    - o365AppClientId - System.String: The client ID of the Azure AD app to delete.
+    - o365AppType - System.String: The type of the Azure AD app to delete.
 - Returns RequestStatus.
 ### deleteorg
-Deletes an O365 org from the account.
+Deletes a Microsoft 365 org from the account.
 
 - There is a single argument of type System.String.
 - Returns CreateOnDemandJobReply.
@@ -147,7 +147,8 @@ req_ctx.
 - There is a single argument of type RestoreO365SnappableInput.
 - Returns CreateOnDemandJobReply.
 ### restoreteamsconversations
-Restore Team conversations.
+Schedules an on-demand restore job for Teams channel conversations.
+The account, user, and RSC org id are resolved from req_ctx.
 
 - There is a single argument of type RestoreO365TeamsConversationsInput.
 - Returns CreateOnDemandJobReply.
@@ -188,17 +189,18 @@ flow.
 - The setupkickoff subcommand takes no arguments.
 - Returns O365SetupKickoffResp.
 ### updateappauthstatus
-Update O365 App authentication status to applicable app version.
+Updates the Microsoft 365 app authentication status to the applicable app
+version.
 
 - There is a single argument of type UpdateO365AppAuthStatusInput.
 - Returns UpdateO365AppAuthStatusReply.
 ### updateapppermissions
-Update O365 Azure app permission in Azure AD portal.
+Updates the Azure AD app API permissions for a Microsoft 365 app.
 
 - There is a single argument of type UpdateO365AppPermissionsInput.
 - Returns System.String.
 ### updateorgcustomname
-Update the custom name for an O365 Organization.
+Updates the custom display name for an O365 organization.
 
 - There is a single argument of type UpdateO365OrgCustomNameInput.
 - Returns UpdateO365OrgCustomNameReply.

@@ -1,8 +1,14 @@
 ### AddNodesToCloudClusterInput
 Nodes add request for a cloud cluster.
 
+- cloudAccountId: System.String
+  - Customer cloud account UUID. This is not supported for OCI cloud clusters.
 - numberOfNodes: System.Int32
   - Number of nodes to add.
+- clusterUuid: System.String
+  - Cluster UUID.
+- shouldKeepResourcesOnFailure: System.Boolean
+  - Specifies whether node resources are preserved if the add node operation fails.
 - awsImageId: System.String
   - AWS AMI ID to deploy to add nodes to an AWS Cloud Cluster without the marketplace.
 - azureImageName: System.String
@@ -11,15 +17,9 @@ Nodes add request for a cloud cluster.
   - OCI Image ID to deploy to add nodes to an OCI Cloud Cluster without the marketplace.
 - gcpImageId: System.String
   - GCP image ID to deploy to add nodes to a Rubrik Cloud Cluster for GCP, without accessing the marketplace.
-- cloudAccountId: System.String
-  - Customer cloud account UUID. This is not supported for OCI cloud clusters.
-- vendor: CcpVendorType
-  - Cloud vendor type.
-- clusterUuid: System.String
-  - Cluster UUID.
-- shouldKeepResourcesOnFailure: System.Boolean
-  - Specifies whether node resources are preserved if the add node operation fails.
 - cloudAccountIdV2: System.String
   - ID of the customer cloud account.
 - gcpTestImage: GcpTestImage
   - GCP test image deployed for adding nodes to a Rubrik Cloud Cluster for GCP without accessing the marketplace.
+- vendor: CcpVendorType
+  - Cloud vendor type.

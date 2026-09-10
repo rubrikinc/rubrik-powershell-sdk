@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudType")]
         public AzureCloudType? CloudType { get; set; }
 
+        //      C# -> AzureOnboardingIneligibilityReason? IneligibilityReason
+        // GraphQL -> ineligibilityReason: AzureOnboardingIneligibilityReason! (enum)
+        [JsonProperty("ineligibilityReason")]
+        public AzureOnboardingIneligibilityReason? IneligibilityReason { get; set; }
+
         //      C# -> System.String? CustomerSubscriptionId
         // GraphQL -> customerSubscriptionId: String! (scalar)
         [JsonProperty("customerSubscriptionId")]
@@ -51,6 +56,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("nativeId")]
         public System.String? NativeId { get; set; }
 
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        [JsonProperty("app")]
+        public AzureCloudAccountTenantApp? App { get; set; }
+
 
         #endregion
 
@@ -62,15 +72,20 @@ namespace RubrikSecurityCloud.Types
 
     public CloudAccountsAzureSubscription Set(
         AzureCloudType? CloudType = null,
+        AzureOnboardingIneligibilityReason? IneligibilityReason = null,
         System.String? CustomerSubscriptionId = null,
         System.String? CustomerTenantId = null,
         System.Boolean? IsAuthorized = null,
         System.String? Name = null,
-        System.String? NativeId = null
+        System.String? NativeId = null,
+        AzureCloudAccountTenantApp? App = null
     ) 
     {
         if ( CloudType != null ) {
             this.CloudType = CloudType;
+        }
+        if ( IneligibilityReason != null ) {
+            this.IneligibilityReason = IneligibilityReason;
         }
         if ( CustomerSubscriptionId != null ) {
             this.CustomerSubscriptionId = CustomerSubscriptionId;
@@ -86,6 +101,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( NativeId != null ) {
             this.NativeId = NativeId;
+        }
+        if ( App != null ) {
+            this.App = App;
         }
         return this;
     }
@@ -108,6 +126,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudType\n" ;
             } else {
                 s += ind + "cloudType\n" ;
+            }
+        }
+        //      C# -> AzureOnboardingIneligibilityReason? IneligibilityReason
+        // GraphQL -> ineligibilityReason: AzureOnboardingIneligibilityReason! (enum)
+        if (this.IneligibilityReason != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "ineligibilityReason\n" ;
+            } else {
+                s += ind + "ineligibilityReason\n" ;
             }
         }
         //      C# -> System.String? CustomerSubscriptionId
@@ -155,6 +182,18 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "nativeId\n" ;
             }
         }
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        if (this.App != null) {
+            var fspec = this.App.AsFieldSpec(conf.Child("app"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "app" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         return s;
     }
 
@@ -178,6 +217,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudType != null && ec.Excludes("cloudType",true))
         {
             this.CloudType = null;
+        }
+        //      C# -> AzureOnboardingIneligibilityReason? IneligibilityReason
+        // GraphQL -> ineligibilityReason: AzureOnboardingIneligibilityReason! (enum)
+        if (ec.Includes("ineligibilityReason",true))
+        {
+            if(this.IneligibilityReason == null) {
+
+                this.IneligibilityReason = new AzureOnboardingIneligibilityReason();
+
+            } else {
+
+
+            }
+        }
+        else if (this.IneligibilityReason != null && ec.Excludes("ineligibilityReason",true))
+        {
+            this.IneligibilityReason = null;
         }
         //      C# -> System.String? CustomerSubscriptionId
         // GraphQL -> customerSubscriptionId: String! (scalar)
@@ -263,6 +319,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.NativeId != null && ec.Excludes("nativeId",true))
         {
             this.NativeId = null;
+        }
+        //      C# -> AzureCloudAccountTenantApp? App
+        // GraphQL -> app: AzureCloudAccountTenantApp (type)
+        if (ec.Includes("app",false))
+        {
+            if(this.App == null) {
+
+                this.App = new AzureCloudAccountTenantApp();
+                this.App.ApplyExploratoryFieldSpec(ec.NewChild("app"));
+
+            } else {
+
+                this.App.ApplyExploratoryFieldSpec(ec.NewChild("app"));
+
+            }
+        }
+        else if (this.App != null && ec.Excludes("app",false))
+        {
+            this.App = null;
         }
     }
 

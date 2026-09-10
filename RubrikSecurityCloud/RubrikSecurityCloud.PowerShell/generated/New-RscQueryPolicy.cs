@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 19
+    /// Create a new RscQuery object for any of the 20
     /// operations in the 'Policy' API domain:
-    /// CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyFrameworks, PolicyObjectUsages, PolicyRiskSummaries, PolicyViolationTicketNumbers, SecurityPolicies, SecurityPolicy, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// CustomTprPolicies, HaPolicies, HarmfulLifecyclePolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyFrameworks, PolicyObjectUsages, PolicyRiskSummaries, PolicyViolationTicketNumbers, SecurityPolicies, SecurityPolicy, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
     /// </summary>
     /// <description>
     /// New-RscQueryPolicy creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 19 operations
+    /// There are 20 operations
     /// in the 'Policy' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CustomTprPolicies, HaPolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyFrameworks, PolicyObjectUsages, PolicyRiskSummaries, PolicyViolationTicketNumbers, SecurityPolicies, SecurityPolicy, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
+    /// one of: CustomTprPolicies, HaPolicies, HarmfulLifecyclePolicies, IsValidTprPolicyName, OrgSecurityPolicy, PasswordComplexityPolicy, Policies, Policy, PolicyCategories, PolicyFilterTypes, PolicyFilterValues, PolicyFrameworks, PolicyObjectUsages, PolicyRiskSummaries, PolicyViolationTicketNumbers, SecurityPolicies, SecurityPolicy, SidsPolicyHitsSummary, TopRiskPolicySummaries, or TprPolicyDetail.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -183,6 +183,51 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// </example>
     ///
     /// <example>
+    /// Runs the HarmfulLifecyclePolicies operation
+    /// of the 'Policy' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Policy
+    /// # API Operation: HarmfulLifecyclePolicies
+    /// 
+    /// $query = New-RscQueryPolicy -Operation HarmfulLifecyclePolicies
+    /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
+    /// # OPTIONAL
+    /// $query.Var.filter = @{
+    /// 	# OPTIONAL
+    /// 	locationIds = @(
+    /// 		$someString
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	locationType = @(
+    /// 		$someTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TargetType]) for enum values.
+    /// 	)
+    /// }
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: HarmfulLifecyclePolicyConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
     /// Runs the IsValidTprPolicyName operation
     /// of the 'Policy' API domain.
     /// <code>
@@ -277,6 +322,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryPolicy -Operation Policies
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.policyObjectFilter = $somePolicyObjectFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyObjectFilter]) for enum values.
     /// # OPTIONAL
@@ -507,6 +560,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryPolicy -Operation PolicyObjectUsages
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.objectIds = @(
     /// 	$someString
@@ -943,6 +1004,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             [ValidateSet(
                 "CustomTprPolicies",
                 "HaPolicies",
+                "HarmfulLifecyclePolicies",
                 "IsValidTprPolicyName",
                 "OrgSecurityPolicy",
                 "PasswordComplexityPolicy",
@@ -980,6 +1042,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "HaPolicies":
                         this.ProcessRecord_HaPolicies();
+                        break;
+                    case "HarmfulLifecyclePolicies":
+                        this.ProcessRecord_HarmfulLifecyclePolicies();
                         break;
                     case "IsValidTprPolicyName":
                         this.ProcessRecord_IsValidTprPolicyName();
@@ -1058,6 +1123,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -HaPolicies";
             // Create new graphql operation haPolicies
             InitQueryHaPolicies();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // harmfulLifecyclePolicies.
+        internal void ProcessRecord_HarmfulLifecyclePolicies()
+        {
+            this._logger.name += " -HarmfulLifecyclePolicies";
+            // Create new graphql operation harmfulLifecyclePolicies
+            InitQueryHarmfulLifecyclePolicies();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1329,6 +1403,53 @@ $query.Var.filter = @{
         }
 
         // Create new GraphQL Query:
+        // harmfulLifecyclePolicies(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     filter: HarmfulLifecyclePolicyFilter
+        //   ): HarmfulLifecyclePolicyConnection!
+        internal void InitQueryHarmfulLifecyclePolicies()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("filter", "HarmfulLifecyclePolicyFilter"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryHarmfulLifecyclePolicies",
+                "($first: Int,$after: String,$last: Int,$before: String,$filter: HarmfulLifecyclePolicyFilter)",
+                "HarmfulLifecyclePolicyConnection",
+                Query.HarmfulLifecyclePolicies,
+                Query.HarmfulLifecyclePoliciesFieldSpec,
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
+$query.Var.filter = @{
+	# OPTIONAL
+	locationIds = @(
+		$someString
+	)
+	# OPTIONAL
+	locationType = @(
+		$someTargetType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.TargetType]) for enum values.
+	)
+}"
+            );
+        }
+
+        // Create new GraphQL Query:
         // isValidTprPolicyName(tprPolicyName: String!): Boolean!
         internal void InitQueryIsValidTprPolicyName()
         {
@@ -1385,10 +1506,21 @@ $query.Var.tprPolicyName = $someString"
         }
 
         // Create new GraphQL Query:
-        // policies(policyObjectFilter: PolicyObjectFilter, excludeHierarchyObjectList: Boolean): ClassificationPolicyDetailConnection!
+        // policies(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     policyObjectFilter: PolicyObjectFilter = ALL
+        //     excludeHierarchyObjectList: Boolean
+        //   ): ClassificationPolicyDetailConnection!
         internal void InitQueryPolicies()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("policyObjectFilter", "PolicyObjectFilter"),
                 Tuple.Create("excludeHierarchyObjectList", "Boolean"),
             };
@@ -1396,11 +1528,19 @@ $query.Var.tprPolicyName = $someString"
                 argDefs,
                 "query",
                 "QueryPolicies",
-                "($policyObjectFilter: PolicyObjectFilter,$excludeHierarchyObjectList: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$policyObjectFilter: PolicyObjectFilter,$excludeHierarchyObjectList: Boolean)",
                 "ClassificationPolicyDetailConnection",
                 Query.Policies,
                 Query.PoliciesFieldSpec,
                 @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
 $query.Var.policyObjectFilter = $somePolicyObjectFilter # Call [Enum]::GetValues([RubrikSecurityCloud.Types.PolicyObjectFilter]) for enum values.
 # OPTIONAL
 $query.Var.excludeHierarchyObjectList = $someBoolean"
@@ -1608,21 +1748,39 @@ $query.Var.policyTypes = @(
         }
 
         // Create new GraphQL Query:
-        // policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
+        // policyObjectUsages(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     objectIds: [String!]! = []
+        //   ): PolicyObjectUsageConnection!
         internal void InitQueryPolicyObjectUsages()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("objectIds", "[String!]!"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryPolicyObjectUsages",
-                "($objectIds: [String!]!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$objectIds: [String!]!)",
                 "PolicyObjectUsageConnection",
                 Query.PolicyObjectUsages,
                 Query.PolicyObjectUsagesFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.objectIds = @(
 	$someString
 )"

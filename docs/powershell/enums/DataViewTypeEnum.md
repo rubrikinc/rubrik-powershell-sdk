@@ -13,10 +13,10 @@ All reporting table schemas.
 - INDEXING - Indexing database schema.
 - OBJECT_AUDIT_LIST - Legacy object audit list database schema.
 - OBJECT_AUDIT_DETAIL - Legacy object audit detail database schema.
-- SLA_AUDIT_LIST - The DataView, which queries Audits DB table, lists the latest SLA
-audits for each SLA in the NG Alpha report framework.
-- SLA_AUDIT_DETAIL - The DataView, which queries Audits DB table, lists all SLA audits
-for the single SLA in the NG Alpha report framework.
+- SLA_AUDIT_LIST - The DataView, which queries the user_audits database table, lists the latest SLA
+audits for each SLA Domain in the NG Alpha report framework.
+- SLA_AUDIT_DETAIL - The DataView, which queries the user_audits database table, lists all SLA audits
+for the single SLA Domain in the NG Alpha report framework.
 - MONITORING_TASK_COUNT_TIME_SERIES - Monitoring task count over time.
 - SLA_COMPLIANCE - Sla Compliance.
 - CDM_UPGRADES - Cdm upgrades.

@@ -18,6 +18,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UNKNOWN")]
         UNKNOWN,
 
+        [EnumMember(Value = "ANTHROPIC_CHILD_ORG_SETTINGS")]
+        ANTHROPIC_CHILD_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_DEVICE")]
+        ANTHROPIC_DEVICE,
+
+        [EnumMember(Value = "ANTHROPIC_ORG_SETTINGS")]
+        ANTHROPIC_ORG_SETTINGS,
+
+        [EnumMember(Value = "ANTHROPIC_USER_CLAUDE_CHAT")]
+        ANTHROPIC_USER_CLAUDE_CHAT,
+
         [EnumMember(Value = "AUTH0_TENANT")]
         AUTH0_TENANT,
 
@@ -32,6 +44,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER")]
+        AZURE_COSMOS_NOSQL_CONTAINER,
 
         [EnumMember(Value = "AZURE_POSTGRES_FLEXIBLE_SERVER")]
         AZURE_POSTGRES_FLEXIBLE_SERVER,

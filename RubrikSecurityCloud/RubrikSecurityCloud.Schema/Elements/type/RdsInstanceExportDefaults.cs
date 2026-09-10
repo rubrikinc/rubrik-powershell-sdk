@@ -100,6 +100,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("vpcId")]
         public System.String? VpcId { get; set; }
 
+        //      C# -> List<DbEngineVersionInfo>? AvailableDbEngineVersions
+        // GraphQL -> availableDbEngineVersions: [DbEngineVersionInfo!]! (type)
+        [JsonProperty("availableDbEngineVersions")]
+        public List<DbEngineVersionInfo>? AvailableDbEngineVersions { get; set; }
+
         //      C# -> List<KeyValuePair>? Metadata
         // GraphQL -> metadata: [KeyValuePair!]! (type)
         [JsonProperty("metadata")]
@@ -131,6 +136,7 @@ namespace RubrikSecurityCloud.Types
         System.String? PrimaryAz = null,
         List<System.String>? SupportedDbEngineVersions = null,
         System.String? VpcId = null,
+        List<DbEngineVersionInfo>? AvailableDbEngineVersions = null,
         List<KeyValuePair>? Metadata = null
     ) 
     {
@@ -181,6 +187,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( VpcId != null ) {
             this.VpcId = VpcId;
+        }
+        if ( AvailableDbEngineVersions != null ) {
+            this.AvailableDbEngineVersions = AvailableDbEngineVersions;
         }
         if ( Metadata != null ) {
             this.Metadata = Metadata;
@@ -341,6 +350,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "vpcId\n" ;
             } else {
                 s += ind + "vpcId\n" ;
+            }
+        }
+        //      C# -> List<DbEngineVersionInfo>? AvailableDbEngineVersions
+        // GraphQL -> availableDbEngineVersions: [DbEngineVersionInfo!]! (type)
+        if (this.AvailableDbEngineVersions != null) {
+            var fspec = this.AvailableDbEngineVersions.AsFieldSpec(conf.Child("availableDbEngineVersions"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "availableDbEngineVersions" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> List<KeyValuePair>? Metadata
@@ -633,6 +654,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.VpcId != null && ec.Excludes("vpcId",true))
         {
             this.VpcId = null;
+        }
+        //      C# -> List<DbEngineVersionInfo>? AvailableDbEngineVersions
+        // GraphQL -> availableDbEngineVersions: [DbEngineVersionInfo!]! (type)
+        if (ec.Includes("availableDbEngineVersions",false))
+        {
+            if(this.AvailableDbEngineVersions == null) {
+
+                this.AvailableDbEngineVersions = new List<DbEngineVersionInfo>();
+                this.AvailableDbEngineVersions.ApplyExploratoryFieldSpec(ec.NewChild("availableDbEngineVersions"));
+
+            } else {
+
+                this.AvailableDbEngineVersions.ApplyExploratoryFieldSpec(ec.NewChild("availableDbEngineVersions"));
+
+            }
+        }
+        else if (this.AvailableDbEngineVersions != null && ec.Excludes("availableDbEngineVersions",false))
+        {
+            this.AvailableDbEngineVersions = null;
         }
         //      C# -> List<KeyValuePair>? Metadata
         // GraphQL -> metadata: [KeyValuePair!]! (type)

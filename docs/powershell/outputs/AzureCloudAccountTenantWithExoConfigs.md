@@ -19,3 +19,5 @@ Azure Cloud Account Tenant with details of exocompute configured for subscriptio
   - Object ID of the Entra ID group used for Entra ID authentication in Exocompute. Field will be empty for use cases other than exocompute or if customer has not onboarded to Entra ID authentication.
 - subscriptions: list of AzureSubscriptionWithExoConfigss
   - Details of subscriptions for the tenant.
+- apps: list of AzureCloudAccountTenantApps
+  - Contains every Azure application configured on this tenant, one per auth type present. On a mixed-auth tenant this has more than one entry. The scalar appName and clientId fields return the primary (first-onboarded) app for backward compatibility.

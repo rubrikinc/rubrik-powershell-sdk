@@ -9,11 +9,11 @@ Non-filesystem Anomaly analysis report from lambda service.
   - The name of the object.
 - detectionTime: DateTime
   - The time at which the anomaly was detected.
-- objectType: ObjectTypeEnum
-  - The type of the object.
 - isAnomaly: System.Boolean
   - Specifies whether the snapshot is anomalous.
 - cluster: Cluster
   - The Rubrik cluster of the object.
 - location: System.String
   - The location of the object.
+- objectType: ObjectTypeEnum
+  - The type of the object.

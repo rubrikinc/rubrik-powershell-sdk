@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("lowComplianceReason")]
         public System.String? LowComplianceReason { get; set; }
 
+        //      C# -> System.Boolean? ShouldAllowSwitchToBackfillOnboardingMode
+        // GraphQL -> shouldAllowSwitchToBackfillOnboardingMode: Boolean! (scalar)
+        [JsonProperty("shouldAllowSwitchToBackfillOnboardingMode")]
+        public System.Boolean? ShouldAllowSwitchToBackfillOnboardingMode { get; set; }
+
         //      C# -> System.Boolean? ShouldAllowSwitchToOnboardingMode
         // GraphQL -> shouldAllowSwitchToOnboardingMode: Boolean! (scalar)
         [JsonProperty("shouldAllowSwitchToOnboardingMode")]
@@ -53,6 +58,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? CompliancePercentage = null,
         DateTime? LastComplianceUpdateTime = null,
         System.String? LowComplianceReason = null,
+        System.Boolean? ShouldAllowSwitchToBackfillOnboardingMode = null,
         System.Boolean? ShouldAllowSwitchToOnboardingMode = null
     ) 
     {
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( LowComplianceReason != null ) {
             this.LowComplianceReason = LowComplianceReason;
+        }
+        if ( ShouldAllowSwitchToBackfillOnboardingMode != null ) {
+            this.ShouldAllowSwitchToBackfillOnboardingMode = ShouldAllowSwitchToBackfillOnboardingMode;
         }
         if ( ShouldAllowSwitchToOnboardingMode != null ) {
             this.ShouldAllowSwitchToOnboardingMode = ShouldAllowSwitchToOnboardingMode;
@@ -107,6 +116,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "lowComplianceReason\n" ;
             } else {
                 s += ind + "lowComplianceReason\n" ;
+            }
+        }
+        //      C# -> System.Boolean? ShouldAllowSwitchToBackfillOnboardingMode
+        // GraphQL -> shouldAllowSwitchToBackfillOnboardingMode: Boolean! (scalar)
+        if (this.ShouldAllowSwitchToBackfillOnboardingMode != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "shouldAllowSwitchToBackfillOnboardingMode\n" ;
+            } else {
+                s += ind + "shouldAllowSwitchToBackfillOnboardingMode\n" ;
             }
         }
         //      C# -> System.Boolean? ShouldAllowSwitchToOnboardingMode
@@ -175,6 +193,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.LowComplianceReason != null && ec.Excludes("lowComplianceReason",true))
         {
             this.LowComplianceReason = null;
+        }
+        //      C# -> System.Boolean? ShouldAllowSwitchToBackfillOnboardingMode
+        // GraphQL -> shouldAllowSwitchToBackfillOnboardingMode: Boolean! (scalar)
+        if (ec.Includes("shouldAllowSwitchToBackfillOnboardingMode",true))
+        {
+            if(this.ShouldAllowSwitchToBackfillOnboardingMode == null) {
+
+                this.ShouldAllowSwitchToBackfillOnboardingMode = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.ShouldAllowSwitchToBackfillOnboardingMode != null && ec.Excludes("shouldAllowSwitchToBackfillOnboardingMode",true))
+        {
+            this.ShouldAllowSwitchToBackfillOnboardingMode = null;
         }
         //      C# -> System.Boolean? ShouldAllowSwitchToOnboardingMode
         // GraphQL -> shouldAllowSwitchToOnboardingMode: Boolean! (scalar)

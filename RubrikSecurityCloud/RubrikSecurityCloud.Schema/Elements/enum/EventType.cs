@@ -159,6 +159,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY")]
         RECOVERY,
 
+        [EnumMember(Value = "REENCRYPTION")]
+        REENCRYPTION,
+
         [EnumMember(Value = "REPLICATION")]
         REPLICATION,
 

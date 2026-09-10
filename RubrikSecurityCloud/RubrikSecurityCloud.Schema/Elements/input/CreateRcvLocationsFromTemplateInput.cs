@@ -60,6 +60,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("shouldBypassProxy")]
         public System.Boolean? ShouldBypassProxy { get; set; }
 
+        //      C# -> ProxySettingsInput? ProxySettings
+        // GraphQL -> proxySettings: ProxySettingsInput (input)
+        [JsonProperty("proxySettings")]
+        public ProxySettingsInput? ProxySettings { get; set; }
+
+        //      C# -> System.Boolean? ShouldBypassProxyForDatapaths
+        // GraphQL -> shouldBypassProxyForDatapaths: Boolean (scalar)
+        [JsonProperty("shouldBypassProxyForDatapaths")]
+        public System.Boolean? ShouldBypassProxyForDatapaths { get; set; }
+
         //      C# -> RcvRedundancy? Redundancy
         // GraphQL -> redundancy: RcvRedundancy (enum)
         [JsonProperty("redundancy")]

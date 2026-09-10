@@ -31,6 +31,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
 
+        //      C# -> RecoveryMethod? RecoveryMethod
+        // GraphQL -> recoveryMethod: RecoveryMethod (enum)
+        [JsonProperty("recoveryMethod")]
+        public RecoveryMethod? RecoveryMethod { get; set; }
+
+        //      C# -> System.String? DsrmAdminPassword
+        // GraphQL -> dsrmAdminPassword: String (scalar)
+        [JsonProperty("dsrmAdminPassword")]
+        public System.String? DsrmAdminPassword { get; set; }
+
 
         #endregion
 

@@ -1,6 +1,8 @@
 ### VolumeGroupLiveMount
 Volume group live mount.
 
+- id: System.String
+  - Fid of the live mount.
 - name: System.String
   - Name of the live mount.
 - sourceVolumeGroupId: System.String
@@ -29,13 +31,11 @@ Volume group live mount.
   - IP of the node in the live mount.
 - nodeCompositeId: System.String
   - Composite Id of the node in the live mount.
-- sourceHost: PhysicalHost
-  - Source host of the live mount.
-- id: System.String
-  - Fid of the live mount.
-- sourceSnapshot: CdmSnapshot
-  - Source snapshot of the live mount.
 - cluster: Cluster
   - Cluster of the live mount.
+- sourceSnapshot: CdmSnapshot
+  - Source snapshot of the live mount.
+- sourceHost: PhysicalHost
+  - Source host of the live mount.
 - authorizedOperations: AuthorizedOperations
   - Operations that the user is authorized to perform.

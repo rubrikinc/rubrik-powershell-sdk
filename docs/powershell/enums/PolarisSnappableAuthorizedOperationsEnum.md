@@ -9,3 +9,4 @@ Authorized operations on protectable objects.
 - DELETE_SNAPSHOT - Delete snapshot operation.
 - DOWNLOAD - Download operation.
 - MOUNT - Mount operation.
+- EXPORT_FILES - Export files operation.

@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("relicRestoreConfig")]
         public RelicRestoreConfig? RelicRestoreConfig { get; set; }
 
+        //      C# -> TasksRestoreConfig? TasksRestoreConfig
+        // GraphQL -> tasksRestoreConfig: TasksRestoreConfig (input)
+        [JsonProperty("tasksRestoreConfig")]
+        public TasksRestoreConfig? TasksRestoreConfig { get; set; }
+
 
         #endregion
 

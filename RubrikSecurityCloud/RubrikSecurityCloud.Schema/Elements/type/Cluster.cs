@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isTprEnabled")]
         public System.Boolean? IsTprEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsTunnelEnabled
+        // GraphQL -> isTunnelEnabled: Boolean (scalar)
+        [JsonProperty("isTunnelEnabled")]
+        public System.Boolean? IsTunnelEnabled { get; set; }
+
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         [JsonProperty("lastConnectionTime")]
@@ -150,11 +155,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
-
-        //      C# -> System.Int32? NoSqlWorkloadCount
-        // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        [JsonProperty("noSqlWorkloadCount")]
-        public System.Int32? NoSqlWorkloadCount { get; set; }
 
         //      C# -> System.Boolean? PassesConnectivityCheck
         // GraphQL -> passesConnectivityCheck: Boolean (scalar)
@@ -464,9 +464,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsClusterRemovalTprEnabled = null,
         System.Boolean? IsHealthy = null,
         System.Boolean? IsTprEnabled = null,
+        System.Boolean? IsTunnelEnabled = null,
         DateTime? LastConnectionTime = null,
         System.String? Name = null,
-        System.Int32? NoSqlWorkloadCount = null,
         System.Boolean? PassesConnectivityCheck = null,
         System.String? RawAddress = null,
         DateTime? RegistrationTime = null,
@@ -579,14 +579,14 @@ namespace RubrikSecurityCloud.Types
         if ( IsTprEnabled != null ) {
             this.IsTprEnabled = IsTprEnabled;
         }
+        if ( IsTunnelEnabled != null ) {
+            this.IsTunnelEnabled = IsTunnelEnabled;
+        }
         if ( LastConnectionTime != null ) {
             this.LastConnectionTime = LastConnectionTime;
         }
         if ( Name != null ) {
             this.Name = Name;
-        }
-        if ( NoSqlWorkloadCount != null ) {
-            this.NoSqlWorkloadCount = NoSqlWorkloadCount;
         }
         if ( PassesConnectivityCheck != null ) {
             this.PassesConnectivityCheck = PassesConnectivityCheck;
@@ -932,6 +932,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isTprEnabled\n" ;
             }
         }
+        //      C# -> System.Boolean? IsTunnelEnabled
+        // GraphQL -> isTunnelEnabled: Boolean (scalar)
+        if (this.IsTunnelEnabled != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isTunnelEnabled\n" ;
+            } else {
+                s += ind + "isTunnelEnabled\n" ;
+            }
+        }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         if (this.LastConnectionTime != null) {
@@ -948,15 +957,6 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "name\n" ;
             } else {
                 s += ind + "name\n" ;
-            }
-        }
-        //      C# -> System.Int32? NoSqlWorkloadCount
-        // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        if (this.NoSqlWorkloadCount != null) {
-            if (conf.Flat) {
-                s += conf.Prefix + "noSqlWorkloadCount\n" ;
-            } else {
-                s += ind + "noSqlWorkloadCount\n" ;
             }
         }
         //      C# -> System.Boolean? PassesConnectivityCheck
@@ -1809,6 +1809,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsTprEnabled = null;
         }
+        //      C# -> System.Boolean? IsTunnelEnabled
+        // GraphQL -> isTunnelEnabled: Boolean (scalar)
+        if (ec.Includes("isTunnelEnabled",true))
+        {
+            if(this.IsTunnelEnabled == null) {
+
+                this.IsTunnelEnabled = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsTunnelEnabled != null && ec.Excludes("isTunnelEnabled",true))
+        {
+            this.IsTunnelEnabled = null;
+        }
         //      C# -> DateTime? LastConnectionTime
         // GraphQL -> lastConnectionTime: DateTime (scalar)
         if (ec.Includes("lastConnectionTime",true))
@@ -1842,23 +1859,6 @@ namespace RubrikSecurityCloud.Types
         else if (this.Name != null && ec.Excludes("name",true))
         {
             this.Name = null;
-        }
-        //      C# -> System.Int32? NoSqlWorkloadCount
-        // GraphQL -> noSqlWorkloadCount: Int! (scalar)
-        if (ec.Includes("noSqlWorkloadCount",true))
-        {
-            if(this.NoSqlWorkloadCount == null) {
-
-                this.NoSqlWorkloadCount = Int32.MinValue;
-
-            } else {
-
-
-            }
-        }
-        else if (this.NoSqlWorkloadCount != null && ec.Excludes("noSqlWorkloadCount",true))
-        {
-            this.NoSqlWorkloadCount = null;
         }
         //      C# -> System.Boolean? PassesConnectivityCheck
         // GraphQL -> passesConnectivityCheck: Boolean (scalar)

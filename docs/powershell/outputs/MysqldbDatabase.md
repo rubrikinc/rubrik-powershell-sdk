@@ -41,8 +41,6 @@ MySQL database details object.
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
-- parentEntity: KosmosParentHierarchyObjectType
-  - The parent object of the specified Kosmos hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
 - primaryClusterLocation: DataLocation
@@ -69,3 +67,5 @@ cluster. Null when the source cluster is unknown.
   - The authorized operations on the object.
 - entityInfo: EntityInfo
   - The basic entity information.
+- parentEntity: KosmosParentHierarchyObjectType
+  - The parent object of the specified Kosmos hierarchy object.

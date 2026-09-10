@@ -141,6 +141,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("username")]
         public System.String? Username { get; set; }
 
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
+
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         [JsonProperty("allOrgs")]
@@ -304,6 +309,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? Username = null,
+        System.String? Version = null,
         List<Org>? AllOrgs = null,
         List<AssignedRscTag>? AllTags = null,
         Cluster? Cluster = null,
@@ -393,6 +399,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Username != null ) {
             this.Username = Username;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -690,6 +699,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "username\n" ;
             } else {
                 s += ind + "username\n" ;
+            }
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
             }
         }
         //      C# -> List<Org>? AllOrgs
@@ -1328,6 +1346,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.Username != null && ec.Excludes("username",true))
         {
             this.Username = null;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

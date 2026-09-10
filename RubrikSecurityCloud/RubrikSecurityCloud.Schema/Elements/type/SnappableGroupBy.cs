@@ -53,8 +53,8 @@ namespace RubrikSecurityCloud.Types
                     Tuple.Create("after", "String"),
                     Tuple.Create("last", "Int"),
                     Tuple.Create("before", "String"),
-                    Tuple.Create("sortOrder", "SortOrder"),
                     Tuple.Create("sortBy", "SnappableSortByEnum"),
+                    Tuple.Create("sortOrder", "SortOrder"),
                 };
             this.SnappableConnection =
                 new RscGqlVars(null, snappableConnectionArgs, null, true);

@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> List<System.String>? NodeIds
         // GraphQL -> nodeIds: [String!] (scalar)
         [JsonProperty("nodeIds")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> useQuickDrain: Boolean (scalar)
         [JsonProperty("useQuickDrain")]
         public System.Boolean? UseQuickDrain { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
 
         //      C# -> List<NodeMetadataInput>? NodeMetadata
         // GraphQL -> nodeMetadata: [NodeMetadataInput!] (input)

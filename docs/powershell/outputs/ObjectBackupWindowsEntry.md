@@ -16,5 +16,6 @@ Always OBJECT_LEVEL or SLA_LEVEL, never null/unspecified. An unset
 no window.
 - pendingBackupWindowStatus: PendingBackupWindowAssignmentStatus
   - Pending dispatch state for the object's most recent object-level
-backup-window assignment. Only ever PENDING_ASSIGNMENT when `scope`
-resolved to OBJECT_LEVEL; always NO_PENDING for SLA_LEVEL reads.
+backup-window assignment. Set whenever an object-level assignment is in
+flight, even before the resulting override is recorded on the object;
+always NO_PENDING for SLA_LEVEL reads.

@@ -1,14 +1,12 @@
 ### RcvEntitlementWithExpirationDate
-Rubrik Cloud Vault (RCV) entitlement with expiration date.
+Rubrik Cloud Vault (RCV) entitlement tier wise details.
 
 - capacity: System.Single
-  - Rubrik Cloud Vault (RCV) entitlement capacity in TB.
-- expirationDate: DateTime
-  - Rubrik Cloud Vault (RCV) entitlement expiration date.
+  - Rubrik Cloud Vault (RCV) Entitlement capacity in TBs.
 - bundle: RcvRegionBundle
   - Rubrik Cloud Vault (RCV) region bundle.
 - tier: RcvTier
-  - Rubrik Cloud Vault (RCV) entitlement tier.
+  - Rubrik Cloud Vault (RCV) Entitlement tier.
 - redundancy: RcvRedundancy
   - Rubrik Cloud Vault (RCV) redundancy level.
 - createdAt: DateTime
@@ -16,4 +14,6 @@ Rubrik Cloud Vault (RCV) entitlement with expiration date.
 - revenueType: EntitlementType
   - Rubrik Cloud Vault (RCV) entitlement revenue type.
 - isReplaced: System.Boolean
-  - Rubrik Cloud Vault (RCV) is replaced or not.
+  - Specifies whether the Rubrik Cloud Vault (RCV) has been replaced.
+- expirationDate: DateTime
+  - Rubrik Cloud Vault (RCV) entitlement expiration date.

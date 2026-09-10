@@ -45,6 +45,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("displayName")]
         public System.String? DisplayName { get; set; }
 
+        //      C# -> System.Boolean? HasSigningCert
+        // GraphQL -> hasSigningCert: Boolean (scalar)
+        [JsonProperty("hasSigningCert")]
+        public System.Boolean? HasSigningCert { get; set; }
+
         //      C# -> List<AzureAdAppRole>? AppRoles
         // GraphQL -> appRoles: [AzureAdAppRole!]! (type)
         [JsonProperty("appRoles")]
@@ -65,6 +70,7 @@ namespace RubrikSecurityCloud.Types
         System.Int32? AppRolesCount = null,
         DateTime? CreatedDateTime = null,
         System.String? DisplayName = null,
+        System.Boolean? HasSigningCert = null,
         List<AzureAdAppRole>? AppRoles = null
     ) 
     {
@@ -82,6 +88,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
+        }
+        if ( HasSigningCert != null ) {
+            this.HasSigningCert = HasSigningCert;
         }
         if ( AppRoles != null ) {
             this.AppRoles = AppRoles;
@@ -143,6 +152,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "displayName\n" ;
             } else {
                 s += ind + "displayName\n" ;
+            }
+        }
+        //      C# -> System.Boolean? HasSigningCert
+        // GraphQL -> hasSigningCert: Boolean (scalar)
+        if (this.HasSigningCert != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "hasSigningCert\n" ;
+            } else {
+                s += ind + "hasSigningCert\n" ;
             }
         }
         //      C# -> List<AzureAdAppRole>? AppRoles
@@ -248,6 +266,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DisplayName != null && ec.Excludes("displayName",true))
         {
             this.DisplayName = null;
+        }
+        //      C# -> System.Boolean? HasSigningCert
+        // GraphQL -> hasSigningCert: Boolean (scalar)
+        if (ec.Includes("hasSigningCert",true))
+        {
+            if(this.HasSigningCert == null) {
+
+                this.HasSigningCert = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.HasSigningCert != null && ec.Excludes("hasSigningCert",true))
+        {
+            this.HasSigningCert = null;
         }
         //      C# -> List<AzureAdAppRole>? AppRoles
         // GraphQL -> appRoles: [AzureAdAppRole!]! (type)

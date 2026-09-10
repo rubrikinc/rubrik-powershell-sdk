@@ -59,6 +59,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("storeBackupInSameRegionAsData")]
         public System.Boolean? StoreBackupInSameRegionAsData { get; set; }
 
+        //      C# -> PrioritizedOnboardingSpec? PrioritizedOnboardingSpec
+        // GraphQL -> prioritizedOnboardingSpec: PrioritizedOnboardingSpec (input)
+        [JsonProperty("prioritizedOnboardingSpec")]
+        public PrioritizedOnboardingSpec? PrioritizedOnboardingSpec { get; set; }
+
 
         #endregion
 

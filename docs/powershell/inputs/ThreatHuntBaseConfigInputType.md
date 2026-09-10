@@ -21,3 +21,5 @@ of matches have been detected.
 snapshots. When true, archived data is rehydrated on read. Only applies
 to object-store workloads (AWS S3 / Azure Blob); ignored for other
 workloads.
+- registryPatterns: list of RegistryPatternSpecInputTypes
+  - Registry key patterns to search for in Windows snapshots (TH v1).

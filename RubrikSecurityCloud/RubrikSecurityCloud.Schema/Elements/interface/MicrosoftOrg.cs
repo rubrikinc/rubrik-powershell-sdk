@@ -59,6 +59,26 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("securityMetadata")]
         SecurityMetadata? SecurityMetadata { get; set; }
 
+        //      C# -> OrgStatus? Status
+        // GraphQL -> status: OrgStatus! (enum)
+        [JsonProperty("status")]
+        OrgStatus? Status { get; set; }
+
+        //      C# -> List<O365WorkloadSummary>? WorkloadSummary
+        // GraphQL -> workloadSummary: [O365WorkloadSummary!]! (type)
+        [JsonProperty("workloadSummary")]
+        List<O365WorkloadSummary>? WorkloadSummary { get; set; }
+
+        //      C# -> O365GroupsSummary? GroupsSummary
+        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
+        [JsonProperty("groupsSummary")]
+        O365GroupsSummary? GroupsSummary { get; set; }
+
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        List<Operation>? AuthorizedOperations { get; set; }
+
         //      C# -> PolarisSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
         [JsonProperty("snapshotConnection")]
@@ -148,26 +168,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
         SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> OrgStatus? Status
-        // GraphQL -> status: OrgStatus! (enum)
-        [JsonProperty("status")]
-        OrgStatus? Status { get; set; }
-
-        //      C# -> List<O365WorkloadSummary>? WorkloadSummary
-        // GraphQL -> workloadSummary: [O365WorkloadSummary!]! (type)
-        [JsonProperty("workloadSummary")]
-        List<O365WorkloadSummary>? WorkloadSummary { get; set; }
-
-        //      C# -> O365GroupsSummary? GroupsSummary
-        // GraphQL -> groupsSummary: O365GroupsSummary! (type)
-        [JsonProperty("groupsSummary")]
-        O365GroupsSummary? GroupsSummary { get; set; }
-
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        List<Operation>? AuthorizedOperations { get; set; }
 
 
         #endregion

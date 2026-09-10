@@ -66,3 +66,7 @@ Entra ID object types.
 - SUBTYPE_MOBILE_APP_CONFIGURATION - Sub-type of DEVICE_MANAGEMENT_CONFIGURATION_POLICY: mobile app configuration.
 - ACCESS_REVIEW_SCHEDULE_DEFINITION - Object type is access review schedule definition.
 - GROUP_ACTIVE_ASSIGNMENT - Object type is PIM group active assignment.
+- CLAIMS_MAPPING_POLICY - Object type is a claims mapping policy.
+- TOKEN_ISSUANCE_POLICY - Object type is a token issuance policy.
+- TOKEN_LIFETIME_POLICY - Object type is a token lifetime policy.
+- HOME_REALM_DISCOVERY_POLICY - Object type is a home realm discovery policy.

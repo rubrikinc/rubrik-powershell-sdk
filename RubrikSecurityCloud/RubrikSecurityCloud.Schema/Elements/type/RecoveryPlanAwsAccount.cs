@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudType")]
         public AwsCloudType? CloudType { get; set; }
 
+        //      C# -> AwsNativeRegion? Region
+        // GraphQL -> region: AwsNativeRegion! (enum)
+        [JsonProperty("region")]
+        public AwsNativeRegion? Region { get; set; }
+
         //      C# -> AwsAccountStatus? Status
         // GraphQL -> status: AwsAccountStatus! (enum)
         [JsonProperty("status")]
@@ -56,6 +61,7 @@ namespace RubrikSecurityCloud.Types
 
     public RecoveryPlanAwsAccount Set(
         AwsCloudType? CloudType = null,
+        AwsNativeRegion? Region = null,
         AwsAccountStatus? Status = null,
         System.String? Id = null,
         System.String? Name = null,
@@ -64,6 +70,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CloudType != null ) {
             this.CloudType = CloudType;
+        }
+        if ( Region != null ) {
+            this.Region = Region;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -98,6 +107,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "cloudType\n" ;
             } else {
                 s += ind + "cloudType\n" ;
+            }
+        }
+        //      C# -> AwsNativeRegion? Region
+        // GraphQL -> region: AwsNativeRegion! (enum)
+        if (this.Region != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "region\n" ;
+            } else {
+                s += ind + "region\n" ;
             }
         }
         //      C# -> AwsAccountStatus? Status
@@ -162,6 +180,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CloudType != null && ec.Excludes("cloudType",true))
         {
             this.CloudType = null;
+        }
+        //      C# -> AwsNativeRegion? Region
+        // GraphQL -> region: AwsNativeRegion! (enum)
+        if (ec.Includes("region",true))
+        {
+            if(this.Region == null) {
+
+                this.Region = new AwsNativeRegion();
+
+            } else {
+
+
+            }
+        }
+        else if (this.Region != null && ec.Excludes("region",true))
+        {
+            this.Region = null;
         }
         //      C# -> AwsAccountStatus? Status
         // GraphQL -> status: AwsAccountStatus! (enum)

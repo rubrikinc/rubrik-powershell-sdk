@@ -10,7 +10,9 @@ Input to trigger AWS native RDS Instance export job.
 - exportTime: DateTime
   - Export timestamp for Point in Time recovery of the instance.
 - dbInstanceName: System.String
-  - Name of the exported RDS DB instance.
+  - Name of the exported RDS DB instance. This field is required unless
+shouldExportToS3 is set, which writes to a bucket and launches no
+instance.
 - destinationAwsNativeAccountId: System.String
   - AWS account in which the exported RDS instance will be launched.
 - destinationRegionNativeId: AwsNativeRegion
@@ -22,7 +24,9 @@ Input to trigger AWS native RDS Instance export job.
 - primaryAz: System.String
   - Availability Zone (AZ) in which the exported RDS DB instance must be launched.
 - port: System.Int64
-  - Port on which the exported RDS DB instance accepts connections.
+  - Port on which the exported RDS DB instance accepts connections. This
+field is required unless shouldExportToS3 is set, which launches no
+instance.
 - optionGroupName: System.String
   - Name of the option group selected by the user for the new RDS instance.
 - parameterGroupName: System.String
@@ -36,11 +40,11 @@ Input to trigger AWS native RDS Instance export job.
 - iops: System.Int32
   - Input Output (I/O) per second of the exported RDS DB instance.
 - isPubliclyAccessible: System.Boolean
-  - Specifies whether the new RDS instance is publicly accessible or not.
+  - Specifies whether the new RDS instance is publicly accessible or not. This field is required for an instance export and does not apply to a recover-to-S3 export, which launches no instance.
 - shouldExportTags: System.Boolean
-  - Specifies whether tags will be exported to the new RDS instance.
+  - Specifies whether tags will be exported to the new RDS instance. This field is required for an instance export and does not apply to a recover-to-S3 export, which launches no instance.
 - isMultiAz: System.Boolean
-  - Specifies whether the exported RDS DB instance is multi-AZ or not.
+  - Specifies whether the exported RDS DB instance is multi-AZ or not. This field is required for an instance export and does not apply to a recover-to-S3 export, which launches no instance.
 - kmsKeyId: System.String
   - KMS Key ID of the exported RDS DB instance.
 - subnetIds: list of System.Strings
@@ -59,3 +63,9 @@ Input to trigger AWS native RDS Instance export job.
   - Specifies whether to resurrect an archived snapshot.
 - retrievalTier: AwsRetrievalTier
   - AWS Glacier retrieval tier to use when hydrating archived objects for this export. Only meaningful when exporting from a Glacier-tier archival location.
+- shouldExportToS3: System.Boolean
+  - Specifies whether the export target is an S3 bucket (recover to S3) rather than a launched RDS instance. The instance-launch parameters do not apply when this flag is set.
+- exportS3BucketName: System.String
+  - Specifies the destination S3 bucket for a recover-to-S3 export.
+- shouldCreateS3Bucket: System.Boolean
+  - Specifies whether the destination S3 bucket must be created rather than reused. This is only meaningful for a recover-to-S3 export.

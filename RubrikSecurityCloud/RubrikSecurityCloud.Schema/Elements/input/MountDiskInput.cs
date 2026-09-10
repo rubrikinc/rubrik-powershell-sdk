@@ -47,17 +47,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("mountDiskIds")]
         public List<System.String>? MountDiskIds { get; set; }
 
-        //      C# -> System.String? ArchivedSnapshotId
-        // GraphQL -> archivedSnapshotId: UUID (scalar)
-        [JsonProperty("archivedSnapshotId")]
-        public System.String? ArchivedSnapshotId { get; set; }
-
         //      C# -> CloudNativeObjectType? WorkloadType
         // GraphQL -> workloadType: CloudNativeObjectType! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("workloadType")]
         public CloudNativeObjectType? WorkloadType { get; set; }
+
+        //      C# -> System.String? ArchivedSnapshotId
+        // GraphQL -> archivedSnapshotId: UUID (scalar)
+        [JsonProperty("archivedSnapshotId")]
+        public System.String? ArchivedSnapshotId { get; set; }
 
 
         #endregion

@@ -72,6 +72,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudAccountIds")]
         public List<System.String>? CloudAccountIds { get; set; }
 
+        //      C# -> CloudVendor? ManagedBy
+        // GraphQL -> managedBy: CloudVendor (enum)
+        [JsonProperty("managedBy")]
+        public CloudVendor? ManagedBy { get; set; }
+
         //      C# -> BackupCopyType? BackupCopyType
         // GraphQL -> backupCopyType: BackupCopyType (enum)
         [JsonProperty("backupCopyType")]
@@ -92,10 +97,10 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hasLocalSnapshots")]
         public System.Boolean? HasLocalSnapshots { get; set; }
 
-        //      C# -> CloudVendor? ManagedBy
-        // GraphQL -> managedBy: CloudVendor (enum)
-        [JsonProperty("managedBy")]
-        public CloudVendor? ManagedBy { get; set; }
+        //      C# -> NamePrefixFilter? NamePrefixFilter
+        // GraphQL -> namePrefixFilter: NamePrefixFilter (input)
+        [JsonProperty("namePrefixFilter")]
+        public NamePrefixFilter? NamePrefixFilter { get; set; }
 
 
         #endregion

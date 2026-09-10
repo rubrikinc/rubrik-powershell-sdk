@@ -21,3 +21,7 @@ Input to create RCS location.
   - Specifies whether the proxy settings must be bypassed for  the RCV archival target.
 - redundancy: RcvRedundancy
   - Redundancy for the RCV location.
+- proxySettings: ProxySettingsInput
+  - Proxy configuration for the Rubrik cluster to reach this Rubrik Cloud Vault (RCV) Azure location.
+- shouldBypassProxyForDatapaths: System.Boolean
+  - When set, blob storage (data path) traffic bypasses the configured proxy while Azure AD authentication traffic continues to use it.

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("copyLogsToHostDuringLiveMount")]
         public HostConfigurationPropertyEnabled? CopyLogsToHostDuringLiveMount { get; set; }
 
+        //      C# -> HostConfigurationPropertyEnabled? DisableStrictSyncForMssqlLiveMount
+        // GraphQL -> disableStrictSyncForMssqlLiveMount: HostConfigurationPropertyEnabled (enum)
+        [JsonProperty("disableStrictSyncForMssqlLiveMount")]
+        public HostConfigurationPropertyEnabled? DisableStrictSyncForMssqlLiveMount { get; set; }
+
         //      C# -> HostConfigurationPropertyEnabled? EnableDatabaseBatchSnapshots
         // GraphQL -> enableDatabaseBatchSnapshots: HostConfigurationPropertyEnabled (enum)
         [JsonProperty("enableDatabaseBatchSnapshots")]
@@ -181,6 +186,7 @@ namespace RubrikSecurityCloud.Types
 
     public MssqlHostConfiguration Set(
         HostConfigurationPropertyEnabled? CopyLogsToHostDuringLiveMount = null,
+        HostConfigurationPropertyEnabled? DisableStrictSyncForMssqlLiveMount = null,
         HostConfigurationPropertyEnabled? EnableDatabaseBatchSnapshots = null,
         HostConfigurationPropertyEnabled? EnableGroupFetch = null,
         HostConfigurationPropertyEnabled? EnableMssqlMultiNodeBackup = null,
@@ -214,6 +220,9 @@ namespace RubrikSecurityCloud.Types
     {
         if ( CopyLogsToHostDuringLiveMount != null ) {
             this.CopyLogsToHostDuringLiveMount = CopyLogsToHostDuringLiveMount;
+        }
+        if ( DisableStrictSyncForMssqlLiveMount != null ) {
+            this.DisableStrictSyncForMssqlLiveMount = DisableStrictSyncForMssqlLiveMount;
         }
         if ( EnableDatabaseBatchSnapshots != null ) {
             this.EnableDatabaseBatchSnapshots = EnableDatabaseBatchSnapshots;
@@ -323,6 +332,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "copyLogsToHostDuringLiveMount\n" ;
             } else {
                 s += ind + "copyLogsToHostDuringLiveMount\n" ;
+            }
+        }
+        //      C# -> HostConfigurationPropertyEnabled? DisableStrictSyncForMssqlLiveMount
+        // GraphQL -> disableStrictSyncForMssqlLiveMount: HostConfigurationPropertyEnabled (enum)
+        if (this.DisableStrictSyncForMssqlLiveMount != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "disableStrictSyncForMssqlLiveMount\n" ;
+            } else {
+                s += ind + "disableStrictSyncForMssqlLiveMount\n" ;
             }
         }
         //      C# -> HostConfigurationPropertyEnabled? EnableDatabaseBatchSnapshots
@@ -609,6 +627,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.CopyLogsToHostDuringLiveMount != null && ec.Excludes("copyLogsToHostDuringLiveMount",true))
         {
             this.CopyLogsToHostDuringLiveMount = null;
+        }
+        //      C# -> HostConfigurationPropertyEnabled? DisableStrictSyncForMssqlLiveMount
+        // GraphQL -> disableStrictSyncForMssqlLiveMount: HostConfigurationPropertyEnabled (enum)
+        if (ec.Includes("disableStrictSyncForMssqlLiveMount",true))
+        {
+            if(this.DisableStrictSyncForMssqlLiveMount == null) {
+
+                this.DisableStrictSyncForMssqlLiveMount = new HostConfigurationPropertyEnabled();
+
+            } else {
+
+
+            }
+        }
+        else if (this.DisableStrictSyncForMssqlLiveMount != null && ec.Excludes("disableStrictSyncForMssqlLiveMount",true))
+        {
+            this.DisableStrictSyncForMssqlLiveMount = null;
         }
         //      C# -> HostConfigurationPropertyEnabled? EnableDatabaseBatchSnapshots
         // GraphQL -> enableDatabaseBatchSnapshots: HostConfigurationPropertyEnabled (enum)

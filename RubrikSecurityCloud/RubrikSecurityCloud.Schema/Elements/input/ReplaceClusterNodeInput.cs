@@ -19,6 +19,13 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("clusterUuid")]
+        public System.String? ClusterUuid { get; set; }
+
         //      C# -> System.String? NewNodeId
         // GraphQL -> newNodeId: String (scalar)
         [JsonProperty("newNodeId")]
@@ -28,13 +35,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> ipmiPassword: String (scalar)
         [JsonProperty("ipmiPassword")]
         public System.String? IpmiPassword { get; set; }
-
-        //      C# -> System.String? ClusterUuid
-        // GraphQL -> clusterUuid: UUID! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("clusterUuid")]
-        public System.String? ClusterUuid { get; set; }
 
 
         #endregion

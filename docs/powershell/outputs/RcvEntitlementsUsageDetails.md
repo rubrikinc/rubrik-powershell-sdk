@@ -7,3 +7,6 @@ Rubrik Cloud Vault (RCV) Entitlement and usage details.
   - Rubrik Cloud Vault (RCV) entitlement usage.
 - expectedUsedCapacity: System.Single
   - Rubrik Cloud Vault (RCV) expected entitlement usage.
+- overusageGraceStartedAt: DateTime
+  - Timestamp marking when the grace period for overusage started.
+Null if not in a grace period.

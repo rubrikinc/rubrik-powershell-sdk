@@ -15,3 +15,5 @@ Aggregate summary statistics across all users in the analysis.
   - The total number of SharePoint sites across all users.
 - totalSharepointFiles: System.Int64
   - The total number of SharePoint files across all users.
+- totalTasks: System.Int64
+  - The total number of Microsoft To Do tasks across all users.

@@ -18,7 +18,7 @@ Exchange Database details object.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
 - cdmId: System.String
-  - The ID of the workload on the Rubrik CDM cluster.
+  - The ID of the workload on the Rubrik cluster.
 - isReplica: System.Boolean
   - True if this object is a replica, its current cluster differs from its
 source (primary) cluster. False if the object resides on its source
@@ -75,7 +75,7 @@ snapshots present in CDM cluster.
 - allOrgs: list of Orgs
   - Organizations to which this hierarchy object belongs.
 - cdmLink: System.String
-  - A link to view the workload on the CDM cluster. For dev use only.
+  - A link to view the workload on the Rubrik cluster. For dev use only.
 - missedSnapshotConnection: MissedSnapshotCommonConnection
   - The list of missed snapshots for this workload.
 - missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
@@ -83,9 +83,9 @@ snapshots present in CDM cluster.
 - snapshotConnection: CdmSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: CdmSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestIndexedSnapshot: CdmSnapshot
   - The most recent indexed snapshot of this workload.
 - newestSnapshot: CdmSnapshot
@@ -97,4 +97,4 @@ snapshots present in CDM cluster.
 - newestArchivedSnapshot: CdmSnapshot
   - The newest snapshot archived to AWS.
 - newestReplicatedSnapshot: CdmSnapshot
-  - The newest snapshot replicated to a cluster.
+  - The newest snapshot replicated to a Rubrik cluster.

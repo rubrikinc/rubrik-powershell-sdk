@@ -29,15 +29,15 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("role")]
         public MysqldbHaReplicaConfigRole? Role { get; set; }
 
+        //      C# -> MysqldbReplicaConnectionInfoInput? PerReplicaConnectionInfo
+        // GraphQL -> perReplicaConnectionInfo: MysqldbReplicaConnectionInfoInput (input)
+        [JsonProperty("perReplicaConnectionInfo")]
+        public MysqldbReplicaConnectionInfoInput? PerReplicaConnectionInfo { get; set; }
+
         //      C# -> System.String? ReplicaId
         // GraphQL -> replicaId: String (scalar)
         [JsonProperty("replicaId")]
         public System.String? ReplicaId { get; set; }
-
-        //      C# -> MysqldbReplicaConnectionInfoInput? ConnectionInfo
-        // GraphQL -> connectionInfo: MysqldbReplicaConnectionInfoInput (input)
-        [JsonProperty("connectionInfo")]
-        public MysqldbReplicaConnectionInfoInput? ConnectionInfo { get; set; }
 
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)

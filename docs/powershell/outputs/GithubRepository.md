@@ -32,6 +32,8 @@ objects.
   - Size of the GitHub repository in bytes.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
+- objectStats: DevOpsObjectStats
+  - DevOps object stats for this repository (storage, snapshot timestamps, pull request and issue counts).
 - slaPauseStatus: System.Boolean
   - Pause status of the effective SLA Domain of the hierarchy object.
 - effectiveSlaDomain: SlaDomain
@@ -57,9 +59,9 @@ objects.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot

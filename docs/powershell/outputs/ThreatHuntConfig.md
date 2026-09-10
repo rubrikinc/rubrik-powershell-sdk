@@ -24,5 +24,7 @@ Config as the input to start a threat hunt.
 hunt scan and runs YARA processors on each extracted inner file.
 Populated from HuntScanFileCriteria.should_expand_archive_files by the
 threat-hunt dispatcher.
+- registryPatterns: list of RegistryPatternSpecs
+  - Registry key patterns to search for in Windows snapshots (TH v1).
 - objects: list of CdmHierarchySnappableNews
   - The objects to be scanned for malware.

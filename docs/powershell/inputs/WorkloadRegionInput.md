@@ -1,9 +1,9 @@
 ### WorkloadRegionInput
-Regions for which the workloads are to be shown.
+Region of the workload.
 
-- gcpNativeRegion: System.String
-  - Region of the GCP location.
 - awsNativeRegion: AwsNativeRegion
   - Region of the AWS location.
 - azureNativeRegion: AzureNativeRegion
   - Region of the Azure location.
+- gcpNativeRegion: System.String
+  - Region of the GCP location.

@@ -11,3 +11,7 @@ Input to update RCS automatic target mapping.
   - List of cluster UUIDs.
 - shouldBypassProxy: System.Boolean
   - Specifies whether the proxy settings must be bypassed  the RCV archival target.
+- proxySettings: ProxySettingsInput
+  - Proxy configuration. If omitted, the existing value is preserved.
+- shouldBypassProxyForDatapaths: System.Boolean
+  - When set, blob storage (data path) traffic bypasses the configured proxy while Azure AD authentication traffic continues to use it. If omitted, the existing value is preserved.

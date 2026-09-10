@@ -1,5 +1,5 @@
 ### CloudVendor
-Cloud provider type.
+CloudVendor identifies the cloud provider of a cloud account.
 
 - AWS - Cloud provider is AWS.
 - AZURE - Cloud provider is Azure.

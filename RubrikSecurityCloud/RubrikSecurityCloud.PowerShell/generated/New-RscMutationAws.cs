@@ -92,9 +92,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// # REQUIRED
     /// $query.Var.input = @{
     /// 	# REQUIRED
-    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-    /// 	# REQUIRED
     /// 	awsAccountName = $someString
+    /// 	# REQUIRED
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	# OPTIONAL
     /// 	awsRegions = @(
     /// 		$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
@@ -104,13 +104,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
     /// 	# OPTIONAL
-    /// 	nativeId = $someString
+    /// 	authServerHostName = $someString
     /// 	# OPTIONAL
     /// 	agencyName = $someString
     /// 	# OPTIONAL
     /// 	roleName = $someString
-    /// 	# OPTIONAL
-    /// 	authServerHostName = $someString
     /// 	# OPTIONAL
     /// 	authServerUserClientCertId = @{
     /// 		# REQUIRED
@@ -127,14 +125,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		id = $someInt64
     /// 	}
     /// 	# OPTIONAL
-    /// 	externalArtifactMap = @(
-    /// 		@{
-    /// 			# OPTIONAL
-    /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
-    /// 			# OPTIONAL
-    /// 			externalArtifactValue = $someString
-    /// 		}
-    /// 	)
+    /// 	nativeId = $someString
     /// 	# OPTIONAL
     /// 	featuresWithPermissionsGroups = @(
     /// 		@{
@@ -168,6 +159,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			)
     /// 		}
     /// 	)
+    /// 	# OPTIONAL
+    /// 	externalArtifactMap = @(
+    /// 		@{
+    /// 			# OPTIONAL
+    /// 			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 			# OPTIONAL
+    /// 			externalArtifactValue = $someString
+    /// 		}
+    /// 	)
     /// }
     /// 
     /// # Execute the query
@@ -197,6 +197,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# REQUIRED
+    /// 	cloudAccountName = $someString
+    /// 	# OPTIONAL
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	awsRegions = @(
+    /// 		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+    /// 	)
     /// 	# OPTIONAL
     /// 	features = @(
     /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -207,14 +215,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	secretKey = $someString
     /// 	# REQUIRED
     /// 	nativeId = $someString
-    /// 	# REQUIRED
-    /// 	cloudAccountName = $someString
-    /// 	# OPTIONAL
-    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-    /// 	# OPTIONAL
-    /// 	awsRegions = @(
-    /// 		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-    /// 	)
     /// 	# OPTIONAL
     /// 	roleArn = $someString
     /// 	# OPTIONAL
@@ -346,9 +346,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
     /// 		# OPTIONAL
-    /// 		lambdaRolePath = $someString
-    /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		permissionBoundaryName = $someString
     /// 		# OPTIONAL
@@ -1244,10 +1244,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
     /// 	# OPTIONAL
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
     /// 	awsAdminAccount = @{
     /// 		# OPTIONAL
     /// 		id = $someString
@@ -1258,13 +1254,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		seamlessFlowEnabled = $someBoolean
     /// 		# OPTIONAL
+    /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 		# OPTIONAL
     /// 		orgName = $someString
     /// 		# OPTIONAL
     /// 		outpostAwsNativeId = $someString
     /// 		# OPTIONAL
     /// 		orgId = $someString
-    /// 		# OPTIONAL
-    /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	awsChildAccounts = @(
@@ -1278,13 +1274,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			seamlessFlowEnabled = $someBoolean
     /// 			# OPTIONAL
+    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 			# OPTIONAL
     /// 			orgName = $someString
     /// 			# OPTIONAL
     /// 			outpostAwsNativeId = $someString
     /// 			# OPTIONAL
     /// 			orgId = $someString
-    /// 			# OPTIONAL
-    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
     /// 	)
     /// 	# OPTIONAL
@@ -1314,6 +1310,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 				}
     /// 			)
     /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
     /// 	# OPTIONAL
     /// 	featuresWithPermissionsGroups = @(
@@ -1460,8 +1460,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# REQUIRED
     /// 	awsCloudAccountId = $someString
-    /// 	# REQUIRED
-    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	# OPTIONAL
     /// 	awsRegions = @{
     /// 		# REQUIRED
@@ -1469,6 +1467,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
     /// 		)
     /// 	}
+    /// 	# REQUIRED
+    /// 	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	# OPTIONAL
     /// 	awsUserKeys = @{
     /// 		# REQUIRED
@@ -1544,9 +1544,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
     /// 		# OPTIONAL
-    /// 		lambdaRolePath = $someString
-    /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		permissionBoundaryName = $someString
     /// 		# OPTIONAL
@@ -1643,9 +1643,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
     /// 		# OPTIONAL
-    /// 		lambdaRolePath = $someString
-    /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		permissionBoundaryName = $someString
     /// 		# OPTIONAL
@@ -1682,6 +1682,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// # REQUIRED
     /// $query.Var.input = @{
+    /// 	# OPTIONAL
+    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	# REQUIRED
     /// 	awsArtifacts = @(
     /// 		@{
@@ -1690,10 +1692,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# REQUIRED
     /// 			externalArtifacts = @(
     /// 				@{
-    /// 					# REQUIRED
-    /// 					externalArtifactValue = $someString
     /// 					# OPTIONAL
     /// 					externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+    /// 					# REQUIRED
+    /// 					externalArtifactValue = $someString
     /// 				}
     /// 			)
     /// 			# REQUIRED
@@ -1737,8 +1739,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	roleChainingAccountId = $someString
-    /// 	# OPTIONAL
-    /// 	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2338,10 +2338,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# REQUIRED
     /// 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
     /// 	# OPTIONAL
-    /// 	features = @(
-    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-    /// 	)
-    /// 	# OPTIONAL
     /// 	awsAdminAccount = @{
     /// 		# OPTIONAL
     /// 		id = $someString
@@ -2352,13 +2348,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		seamlessFlowEnabled = $someBoolean
     /// 		# OPTIONAL
+    /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 		# OPTIONAL
     /// 		orgName = $someString
     /// 		# OPTIONAL
     /// 		outpostAwsNativeId = $someString
     /// 		# OPTIONAL
     /// 		orgId = $someString
-    /// 		# OPTIONAL
-    /// 		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 	}
     /// 	# REQUIRED
     /// 	awsChildAccounts = @(
@@ -2372,14 +2368,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 			# OPTIONAL
     /// 			seamlessFlowEnabled = $someBoolean
     /// 			# OPTIONAL
+    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+    /// 			# OPTIONAL
     /// 			orgName = $someString
     /// 			# OPTIONAL
     /// 			outpostAwsNativeId = $someString
     /// 			# OPTIONAL
     /// 			orgId = $someString
-    /// 			# OPTIONAL
-    /// 			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
     /// 		}
+    /// 	)
+    /// 	# OPTIONAL
+    /// 	features = @(
+    /// 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
     /// 	)
     /// 	# OPTIONAL
     /// 	awsRoleCustomization = @{
@@ -2402,9 +2402,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		ec2RecoveryRolePath = $someString
     /// 		# OPTIONAL
-    /// 		lambdaRolePath = $someString
-    /// 		# OPTIONAL
     /// 		lambdaRoleName = $someString
+    /// 		# OPTIONAL
+    /// 		lambdaRolePath = $someString
     /// 		# OPTIONAL
     /// 		permissionBoundaryName = $someString
     /// 		# OPTIONAL
@@ -3018,9 +3018,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 @"# REQUIRED
 $query.Var.input = @{
 	# REQUIRED
-	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	# REQUIRED
 	awsAccountName = $someString
+	# REQUIRED
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	# OPTIONAL
 	awsRegions = @(
 		$someAwsAuthServerBasedCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsAuthServerBasedCloudAccountRegion]) for enum values.
@@ -3030,13 +3030,11 @@ $query.Var.input = @{
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
-	nativeId = $someString
+	authServerHostName = $someString
 	# OPTIONAL
 	agencyName = $someString
 	# OPTIONAL
 	roleName = $someString
-	# OPTIONAL
-	authServerHostName = $someString
 	# OPTIONAL
 	authServerUserClientCertId = @{
 		# REQUIRED
@@ -3053,14 +3051,7 @@ $query.Var.input = @{
 		id = $someInt64
 	}
 	# OPTIONAL
-	externalArtifactMap = @(
-		@{
-			# OPTIONAL
-			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
-			# OPTIONAL
-			externalArtifactValue = $someString
-		}
-	)
+	nativeId = $someString
 	# OPTIONAL
 	featuresWithPermissionsGroups = @(
 		@{
@@ -3094,6 +3085,15 @@ $query.Var.input = @{
 			)
 		}
 	)
+	# OPTIONAL
+	externalArtifactMap = @(
+		@{
+			# OPTIONAL
+			externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+			# OPTIONAL
+			externalArtifactValue = $someString
+		}
+	)
 }"
             );
         }
@@ -3115,6 +3115,14 @@ $query.Var.input = @{
                 Mutation.AddAwsIamUserBasedCloudAccountFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# REQUIRED
+	cloudAccountName = $someString
+	# OPTIONAL
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+	# OPTIONAL
+	awsRegions = @(
+		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
+	)
 	# OPTIONAL
 	features = @(
 		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
@@ -3125,14 +3133,6 @@ $query.Var.input = @{
 	secretKey = $someString
 	# REQUIRED
 	nativeId = $someString
-	# REQUIRED
-	cloudAccountName = $someString
-	# OPTIONAL
-	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
-	# OPTIONAL
-	awsRegions = @(
-		$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
-	)
 	# OPTIONAL
 	roleArn = $someString
 	# OPTIONAL
@@ -3248,9 +3248,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
 		# OPTIONAL
-		lambdaRolePath = $someString
-		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
 		# OPTIONAL
 		permissionBoundaryName = $someString
 		# OPTIONAL
@@ -4050,10 +4050,6 @@ $query.Var.input = @{
 	# REQUIRED
 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
 	# OPTIONAL
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
 	awsAdminAccount = @{
 		# OPTIONAL
 		id = $someString
@@ -4064,13 +4060,13 @@ $query.Var.input = @{
 		# OPTIONAL
 		seamlessFlowEnabled = $someBoolean
 		# OPTIONAL
+		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		# OPTIONAL
 		orgName = $someString
 		# OPTIONAL
 		outpostAwsNativeId = $someString
 		# OPTIONAL
 		orgId = $someString
-		# OPTIONAL
-		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
 	awsChildAccounts = @(
@@ -4084,13 +4080,13 @@ $query.Var.input = @{
 			# OPTIONAL
 			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
+			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+			# OPTIONAL
 			orgName = $someString
 			# OPTIONAL
 			outpostAwsNativeId = $someString
 			# OPTIONAL
 			orgId = $someString
-			# OPTIONAL
-			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
 	)
 	# OPTIONAL
@@ -4120,6 +4116,10 @@ $query.Var.input = @{
 				}
 			)
 		}
+	)
+	# OPTIONAL
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
 	featuresWithPermissionsGroups = @(
@@ -4250,8 +4250,6 @@ $query.Var.input = @{
 $query.Var.input = @{
 	# REQUIRED
 	awsCloudAccountId = $someString
-	# REQUIRED
-	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	# OPTIONAL
 	awsRegions = @{
 		# REQUIRED
@@ -4259,6 +4257,8 @@ $query.Var.input = @{
 			$someAwsCloudAccountRegion # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudAccountRegion]) for enum values.
 		)
 	}
+	# REQUIRED
+	feature = $someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	# OPTIONAL
 	awsUserKeys = @{
 		# REQUIRED
@@ -4326,9 +4326,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
 		# OPTIONAL
-		lambdaRolePath = $someString
-		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
 		# OPTIONAL
 		permissionBoundaryName = $someString
 		# OPTIONAL
@@ -4417,9 +4417,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
 		# OPTIONAL
-		lambdaRolePath = $someString
-		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
 		# OPTIONAL
 		permissionBoundaryName = $someString
 		# OPTIONAL
@@ -4448,6 +4448,8 @@ $query.Var.input = @{
                 Mutation.RegisterAwsFeatureArtifactsFieldSpec,
                 @"# REQUIRED
 $query.Var.input = @{
+	# OPTIONAL
+	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	# REQUIRED
 	awsArtifacts = @(
 		@{
@@ -4456,10 +4458,10 @@ $query.Var.input = @{
 			# REQUIRED
 			externalArtifacts = @(
 				@{
-					# REQUIRED
-					externalArtifactValue = $someString
 					# OPTIONAL
 					externalArtifactKey = $someAwsCloudExternalArtifact # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudExternalArtifact]) for enum values.
+					# REQUIRED
+					externalArtifactValue = $someString
 				}
 			)
 			# REQUIRED
@@ -4503,8 +4505,6 @@ $query.Var.input = @{
 	)
 	# OPTIONAL
 	roleChainingAccountId = $someString
-	# OPTIONAL
-	cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 }"
             );
         }
@@ -5008,10 +5008,6 @@ $query.Var.input = @{
 	# REQUIRED
 	action = $someCloudAccountAction # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountAction]) for enum values.
 	# OPTIONAL
-	features = @(
-		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
-	)
-	# OPTIONAL
 	awsAdminAccount = @{
 		# OPTIONAL
 		id = $someString
@@ -5022,13 +5018,13 @@ $query.Var.input = @{
 		# OPTIONAL
 		seamlessFlowEnabled = $someBoolean
 		# OPTIONAL
+		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+		# OPTIONAL
 		orgName = $someString
 		# OPTIONAL
 		outpostAwsNativeId = $someString
 		# OPTIONAL
 		orgId = $someString
-		# OPTIONAL
-		cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 	}
 	# REQUIRED
 	awsChildAccounts = @(
@@ -5042,14 +5038,18 @@ $query.Var.input = @{
 			# OPTIONAL
 			seamlessFlowEnabled = $someBoolean
 			# OPTIONAL
+			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
+			# OPTIONAL
 			orgName = $someString
 			# OPTIONAL
 			outpostAwsNativeId = $someString
 			# OPTIONAL
 			orgId = $someString
-			# OPTIONAL
-			cloudType = $someAwsCloudType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AwsCloudType]) for enum values.
 		}
+	)
+	# OPTIONAL
+	features = @(
+		$someCloudAccountFeature # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountFeature]) for enum values.
 	)
 	# OPTIONAL
 	awsRoleCustomization = @{
@@ -5072,9 +5072,9 @@ $query.Var.input = @{
 		# OPTIONAL
 		ec2RecoveryRolePath = $someString
 		# OPTIONAL
-		lambdaRolePath = $someString
-		# OPTIONAL
 		lambdaRoleName = $someString
+		# OPTIONAL
+		lambdaRolePath = $someString
 		# OPTIONAL
 		permissionBoundaryName = $someString
 		# OPTIONAL

@@ -9,3 +9,5 @@ Input for generatePresignedUrlForPartUpload.
   - Number of times this specific part upload has been retried.
 - clusterUuids: list of System.Strings
   - List of cluster UUIDs.
+- targetType: UpgradeTargetType
+  - What this package is being uploaded for.

@@ -23,9 +23,9 @@ using RubrikSecurityCloud.PowerShell.Private;
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
-    /// Create a new RscQuery object for any of the 54
+    /// Create a new RscQuery object for any of the 55
     /// operations in the 'Cluster' API domain:
-    /// CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, ImageClassificationClusterConfigs, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// </summary>
     /// <description>
     /// New-RscQueryCluster creates a new
@@ -35,11 +35,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// connection to run. To execute the operation, either call Invoke()
     /// on the object returned by this cmdlet, or pass the object to
     /// Invoke-Rsc.
-    /// There are 54 operations
+    /// There are 55 operations
     /// in the 'Cluster' API domain. Select the operation this
     /// query is for by specifying the appropriate value for the
     /// -Operation parameter;
-    /// one of: CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
+    /// one of: CanIgnoreClusterRemovalPrechecks, CheckClusterRuSupport, CloudClusterInstanceProperties, CloudClusterNodesInstanceProperties, CloudClusterRecoveryValidation, CloudDirectClusterEndpoints, CloudDirectClusterLambdaConfig, Cluster, ClusterList, ComputeClusterStatus, Connected, Count, DefaultGateway, Dns, EncryptionInfo, ExocomputeGetClusterConnectionInfo, FloatingIps, FusionCompute, FusionComputeClusters, FusionComputeClustersAndHosts, FusionComputeRecoverableClustersAndHosts, GetCdmReleaseDetailsForClusterFromSupportPortal, GetGroupCountByCdmClusterStatus, GroupByList, ImageClassificationClusterConfigs, Ipmi, Ipv6Mode, IsCloudClusterDiskUpgradeAvailable, IsRemoveClusterTprConfigured, IsTotpAckNecessary, LicensesForClusterProductSummary, List, Missing, NetworkInterfaces, Nodes, NtpServers, OperationJobProgress, PostgreSqlDb, PostgreSqlDbClusters, PostgresDbClusterAsyncRequestStatus, PostgresDbClusterLiveMounts, Proxy, RadarClusterList, ReclaimableClusterStats, Refs, RegistrationProductInfo, ReplicationTargets, Routes, TotpAckStatus, TypeList, ValidateClusterLicenseCapacity, Vlans, WebCertsAndIpmis, Windows, or WithUpgradesInfo.
     /// Each operation has its own set of variables that can be set with
     /// the -Var parameter. For more info about the variables, 
     /// call Info() on the object returned by this cmdlet, for example:
@@ -149,6 +149,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.input = @{
     /// 	# OPTIONAL
     /// 	vendor = $someVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VendorType]) for enum values.
+    /// 	# OPTIONAL
+    /// 	cdmVersion = $someString
     /// }
     /// 
     /// # Execute the query
@@ -348,6 +350,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAssignedByParentAccount = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSupportTunnelEnabled = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -488,6 +492,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAssignedByParentAccount = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSupportTunnelEnabled = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -651,6 +657,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAssignedByParentAccount = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSupportTunnelEnabled = $someBoolean
     /// }
     /// 
     /// # Execute the query
@@ -1320,6 +1328,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAssignedByParentAccount = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSupportTunnelEnabled = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.timezoneOffset = $someSingle
@@ -1329,6 +1339,36 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $result = $query | Invoke-Rsc
     /// 
     /// Write-Host $result.GetType().Name # prints: ClusterGroupByConnection
+    /// 
+    /// 
+    /// 
+    /// </code>
+    ///
+    /// </example>
+    ///
+    /// <example>
+    /// Runs the ImageClassificationClusterConfigs operation
+    /// of the 'Cluster' API domain.
+    /// <code>
+    /// PS &gt;
+    ///
+    /// 
+    /// # Create an RscQuery object for:
+    /// # API Domain:    Cluster
+    /// # API Operation: ImageClassificationClusterConfigs
+    /// 
+    /// $query = New-RscQueryCluster -Operation ImageClassificationClusterConfigs
+    /// 
+    /// # REQUIRED
+    /// $query.Var.clusterUuids = @(
+    /// 	$someString
+    /// )
+    /// 
+    /// # Execute the query
+    /// 
+    /// $result = $query | Invoke-Rsc
+    /// 
+    /// Write-Host $result.GetType().Name # prints: GetImageClassificationClusterConfigsReply
     /// 
     /// 
     /// 
@@ -1631,6 +1671,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAssignedByParentAccount = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSupportTunnelEnabled = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -1662,6 +1704,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryCluster -Operation Missing
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # OPTIONAL
     /// $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
     /// # OPTIONAL
@@ -2128,6 +2178,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	)
     /// 	# OPTIONAL
     /// 	isAssignedByParentAccount = $someBoolean
+    /// 	# OPTIONAL
+    /// 	isSupportTunnelEnabled = $someBoolean
     /// }
     /// # OPTIONAL
     /// $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -2660,6 +2712,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 "GetCdmReleaseDetailsForClusterFromSupportPortal",
                 "GetGroupCountByCdmClusterStatus",
                 "GroupByList",
+                "ImageClassificationClusterConfigs",
                 "Ipmi",
                 "Ipv6Mode",
                 "IsCloudClusterDiskUpgradeAvailable",
@@ -2776,6 +2829,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         break;
                     case "GroupByList":
                         this.ProcessRecord_GroupByList();
+                        break;
+                    case "ImageClassificationClusterConfigs":
+                        this.ProcessRecord_ImageClassificationClusterConfigs();
                         break;
                     case "Ipmi":
                         this.ProcessRecord_Ipmi();
@@ -3091,6 +3147,15 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -GroupByList";
             // Create new graphql operation clusterGroupByConnection
             InitQueryClusterGroupByConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // imageClassificationClusterConfigs.
+        internal void ProcessRecord_ImageClassificationClusterConfigs()
+        {
+            this._logger.name += " -ImageClassificationClusterConfigs";
+            // Create new graphql operation imageClassificationClusterConfigs
+            InitQueryImageClassificationClusterConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3423,6 +3488,8 @@ $query.Var.clusterId = $someString"
 $query.Var.input = @{
 	# OPTIONAL
 	vendor = $someVendorType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.VendorType]) for enum values.
+	# OPTIONAL
+	cdmVersion = $someString
 }"
             );
         }
@@ -3604,6 +3671,8 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isAssignedByParentAccount = $someBoolean
+	# OPTIONAL
+	isSupportTunnelEnabled = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -3742,6 +3811,8 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isAssignedByParentAccount = $someBoolean
+	# OPTIONAL
+	isSupportTunnelEnabled = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -3881,6 +3952,8 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isAssignedByParentAccount = $someBoolean
+	# OPTIONAL
+	isSupportTunnelEnabled = $someBoolean
 }"
             );
         }
@@ -4533,9 +4606,33 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isAssignedByParentAccount = $someBoolean
+	# OPTIONAL
+	isSupportTunnelEnabled = $someBoolean
 }
 # OPTIONAL
 $query.Var.timezoneOffset = $someSingle"
+            );
+        }
+
+        // Create new GraphQL Query:
+        // imageClassificationClusterConfigs(clusterUuids: [String!]!): GetImageClassificationClusterConfigsReply!
+        internal void InitQueryImageClassificationClusterConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusterUuids", "[String!]!"),
+            };
+            Initialize(
+                argDefs,
+                "query",
+                "QueryImageClassificationClusterConfigs",
+                "($clusterUuids: [String!]!)",
+                "GetImageClassificationClusterConfigsReply",
+                Query.ImageClassificationClusterConfigs,
+                Query.ImageClassificationClusterConfigsFieldSpec,
+                @"# REQUIRED
+$query.Var.clusterUuids = @(
+	$someString
+)"
             );
         }
 
@@ -4802,6 +4899,8 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isAssignedByParentAccount = $someBoolean
+	# OPTIONAL
+	isSupportTunnelEnabled = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.
@@ -4811,10 +4910,21 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
         }
 
         // Create new GraphQL Query:
-        // allMissingClusters(connectionStatus: MissingClusterConnectionStatus, isExcluded: Boolean): MissingClusterConnection!
+        // allMissingClusters(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     connectionStatus: MissingClusterConnectionStatus = CONNECTION_STATUS_NOT_SPECIFIED
+        //     isExcluded: Boolean
+        //   ): MissingClusterConnection!
         internal void InitQueryAllMissingClusters()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("connectionStatus", "MissingClusterConnectionStatus"),
                 Tuple.Create("isExcluded", "Boolean"),
             };
@@ -4822,11 +4932,19 @@ $query.Var.sortBy = $someClusterSortByEnum # Call [Enum]::GetValues([RubrikSecur
                 argDefs,
                 "query",
                 "QueryAllMissingClusters",
-                "($connectionStatus: MissingClusterConnectionStatus,$isExcluded: Boolean)",
+                "($first: Int,$after: String,$last: Int,$before: String,$connectionStatus: MissingClusterConnectionStatus,$isExcluded: Boolean)",
                 "MissingClusterConnection",
                 Query.AllMissingClusters,
                 Query.AllMissingClustersFieldSpec,
                 @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# OPTIONAL
 $query.Var.connectionStatus = $someMissingClusterConnectionStatus # Call [Enum]::GetValues([RubrikSecurityCloud.Types.MissingClusterConnectionStatus]) for enum values.
 # OPTIONAL
 $query.Var.isExcluded = $someBoolean"
@@ -5245,6 +5363,8 @@ $query.Var.filter = @{
 	)
 	# OPTIONAL
 	isAssignedByParentAccount = $someBoolean
+	# OPTIONAL
+	isSupportTunnelEnabled = $someBoolean
 }
 # OPTIONAL
 $query.Var.sortOrder = $someSortOrder # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SortOrder]) for enum values.

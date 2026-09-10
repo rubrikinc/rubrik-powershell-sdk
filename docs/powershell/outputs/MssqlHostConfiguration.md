@@ -50,6 +50,9 @@ Maximum number of concurrent snapshots per physical host.
 - mssqlEnableCleanupOnRestoreFailure: HostConfigurationPropertyEnabled
   - Supported in v9.5+
 Specifies whether to delete orphaned database files (MDF/LDF) at the target restore path during cleanup of a failed restore job.
+- disableStrictSyncForMssqlLiveMount: HostConfigurationPropertyEnabled
+  - Supported in v9.6+
+When true, disables per-share strict_sync on MSSQL live mount SMB shares during mount for performance, then resets to the global default after mount completion.
 - maxNodesForMultiNodeBackup: System.Int32
   - Supported in v9.5+
 v9.5: Maximum number of Rubrik nodes to use for multi-node backup on this host. Overrides the global maxNodesForMultiNodeBackup setting. Valid range is from 1 to the total number of nodes available in the cluster.

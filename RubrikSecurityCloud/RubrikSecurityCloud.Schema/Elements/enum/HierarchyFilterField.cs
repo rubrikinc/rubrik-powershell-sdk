@@ -102,6 +102,18 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID")]
         AZURE_BLOB_STORAGE_ACCOUNT_SUBSCRIPTION_ID,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME")]
+        AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_CONTINUOUS_BACKUP_ENABLED")]
+        AZURE_COSMOS_NOSQL_CONTAINER_CONTINUOUS_BACKUP_ENABLED,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME")]
+        AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER_NAME_OR_NATIVE_ID")]
+        AZURE_COSMOS_NOSQL_CONTAINER_NAME_OR_NATIVE_ID,
+
         [EnumMember(Value = "AZURE_DISK_ATTACHED_VM")]
         AZURE_DISK_ATTACHED_VM,
 
@@ -314,6 +326,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLUSTER_TYPE")]
         CLUSTER_TYPE,
+
+        [EnumMember(Value = "D365_TABLE_LOGICAL_NAME")]
+        D365_TABLE_LOGICAL_NAME,
 
         [EnumMember(Value = "D365_TABLE_TYPE")]
         D365_TABLE_TYPE,
@@ -632,6 +647,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "INFORMIX_HOST_CONNECTION_STATUS")]
         INFORMIX_HOST_CONNECTION_STATUS,
+
+        [EnumMember(Value = "IRISDB_CONNECTION_STATUS")]
+        IRISDB_CONNECTION_STATUS,
+
+        [EnumMember(Value = "IRISDB_HOST_ID")]
+        IRISDB_HOST_ID,
 
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
@@ -1080,6 +1101,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION")]
         RECOVERY_PLAN_AZURE_TARGET_SUBSCRIPTION,
 
+        [EnumMember(Value = "RECOVERY_PLAN_LAST_RECOVERY_OUTCOME")]
+        RECOVERY_PLAN_LAST_RECOVERY_OUTCOME,
+
         [EnumMember(Value = "RECOVERY_PLAN_NAME")]
         RECOVERY_PLAN_NAME,
 
@@ -1139,6 +1163,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SAP_HANA_DATABASE_CDM_ID")]
         SAP_HANA_DATABASE_CDM_ID,
+
+        [EnumMember(Value = "SAP_HANA_ENABLE_COMPRESSION")]
+        SAP_HANA_ENABLE_COMPRESSION,
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_ID")]
         SAP_HANA_SYSTEM_ID,

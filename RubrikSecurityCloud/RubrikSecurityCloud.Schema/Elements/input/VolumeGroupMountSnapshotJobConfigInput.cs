@@ -46,6 +46,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("volumeConfigs")]
         public List<VolumeGroupVolumeMountConfigInput>? VolumeConfigs { get; set; }
 
+        //      C# -> List<System.String>? ExcludePaths
+        // GraphQL -> excludePaths: [String!] (scalar)
+        [JsonProperty("excludePaths")]
+        public List<System.String>? ExcludePaths { get; set; }
+
+        //      C# -> VolumeGroupMountSnapshotJobConfigRecoveryPurpose? RecoveryPurpose
+        // GraphQL -> recoveryPurpose: VolumeGroupMountSnapshotJobConfigRecoveryPurpose (enum)
+        [JsonProperty("recoveryPurpose")]
+        public VolumeGroupMountSnapshotJobConfigRecoveryPurpose? RecoveryPurpose { get; set; }
+
 
         #endregion
 

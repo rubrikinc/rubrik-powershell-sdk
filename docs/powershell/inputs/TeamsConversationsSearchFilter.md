@@ -4,10 +4,16 @@ Parameters for Teams conversations search.
 - postedTime: TimeRangeFilter
   - Filters on the time of posts.
 - channelNaturalId: System.String
+  - Filters on the natural ID of the Teams channel that holds the posts.
 - postedBy: System.String
+  - Filters on the sender of the posts.
 - snapshotId: System.String
+  - Filters on the Rubrik Security Cloud ID of the snapshot to search.
 - parentId: System.String
+  - Filters on the ID of the parent post, used to retrieve the replies of a
+single post.
 - convId: System.String
+  - Filters on the ID of the conversation that holds the posts.
 - snapshotNum: System.Int32
   - The snapshot sequence number.
 - includeArchived: System.Boolean

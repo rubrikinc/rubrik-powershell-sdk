@@ -17,7 +17,7 @@ namespace RubrikSecurityCloud.Types
 {
     #region M365BackupStorageGroup
  
-    public class M365BackupStorageGroup: BaseType, HierarchyObject, MicrosoftGroup, PolarisHierarchyObject
+    public class M365BackupStorageGroup: BaseType, HierarchyObject, HierarchySnappable, MicrosoftGroup, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
 

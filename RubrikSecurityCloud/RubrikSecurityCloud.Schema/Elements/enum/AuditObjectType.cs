@@ -111,6 +111,15 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "AZURE_AD_DIRECTORY")]
         AZURE_AD_DIRECTORY,
 
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_ACCOUNT")]
+        AZURE_COSMOS_NOSQL_ACCOUNT,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_CONTAINER")]
+        AZURE_COSMOS_NOSQL_CONTAINER,
+
+        [EnumMember(Value = "AZURE_COSMOS_NOSQL_DATABASE")]
+        AZURE_COSMOS_NOSQL_DATABASE,
+
         [EnumMember(Value = "AZURE_DEVOPS_ORGANIZATION")]
         AZURE_DEVOPS_ORGANIZATION,
 
@@ -321,6 +330,33 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HOST_FAILOVER_CLUSTER")]
         HOST_FAILOVER_CLUSTER,
 
+        [EnumMember(Value = "HVM_CLOUD")]
+        HVM_CLOUD,
+
+        [EnumMember(Value = "HVM_CLUSTER")]
+        HVM_CLUSTER,
+
+        [EnumMember(Value = "HVM_DATASTORE")]
+        HVM_DATASTORE,
+
+        [EnumMember(Value = "HVM_GROUP")]
+        HVM_GROUP,
+
+        [EnumMember(Value = "HVM_HOST")]
+        HVM_HOST,
+
+        [EnumMember(Value = "HVM_INSTANCE")]
+        HVM_INSTANCE,
+
+        [EnumMember(Value = "HVM_MANAGER")]
+        HVM_MANAGER,
+
+        [EnumMember(Value = "HVM_NETWORK")]
+        HVM_NETWORK,
+
+        [EnumMember(Value = "HVM_VIRTUAL_MACHINE")]
+        HVM_VIRTUAL_MACHINE,
+
         [EnumMember(Value = "HYPERV_SCVMM")]
         HYPERV_SCVMM,
 
@@ -362,6 +398,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "K8S_NAMESPACE_V2")]
         K8S_NAMESPACE_V2,
+
+        [EnumMember(Value = "K8S_POSTGRES_DB_CLUSTER")]
+        K8S_POSTGRES_DB_CLUSTER,
 
         [EnumMember(Value = "K8S_PROTECTION_SET")]
         K8S_PROTECTION_SET,
@@ -503,6 +542,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "OPENSTACK_IMAGE")]
         OPENSTACK_IMAGE,
+
+        [EnumMember(Value = "OPENSTACK_TAG")]
+        OPENSTACK_TAG,
 
         [EnumMember(Value = "OPENSTACK_VIRTUAL_MACHINE")]
         OPENSTACK_VIRTUAL_MACHINE,

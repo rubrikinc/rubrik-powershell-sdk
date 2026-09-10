@@ -19,3 +19,5 @@ Azure Tenant with details of subscriptions that are configured for a given featu
   - If Rubrik manages the application associated with this tenant, this field will be set to FALSE. However, if the application is customer-managed and the customers manually added the credentials,this field will have a different value.
 - entraIdGroupId: System.String
   - Object ID of the Entra ID group used for Entra ID authentication in Exocompute. Field will be empty for use cases other than exocompute or if customer has not onboarded to Entra ID authentication.
+- apps: list of AzureCloudAccountTenantApps
+  - Contains every Azure application configured on this tenant, one per auth type present. On a mixed-auth tenant this has more than one entry. The scalar appName and clientId fields return the primary (first-onboarded) app for backward compatibility.

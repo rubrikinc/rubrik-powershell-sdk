@@ -85,3 +85,8 @@ value and is added for maintaining backward compatability.
 - OPENSTACK_ROOT - Represents the OpenStack root.
 - OPENSTACK_DOMAIN - Represents the OpenStack domain.
 - OPENSTACK_PROJECT - Represents the OpenStack project.
+- PROXMOX_VIRTUAL_MACHINE - Represents the Proxmox virtual machine.
+- PROXMOX_ENVIRONMENT - Represents the Proxmox environment.
+- PROXMOX_CLUSTER - Represents the Proxmox cluster.
+- PROXMOX_NODE - Represents the Proxmox node.
+- PROXMOX_ROOT - Represents the Proxmox root.

@@ -47,6 +47,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("appTypes")]
         public List<System.String>? AppTypes { get; set; }
 
+        //      C# -> PrioritizedOnboardingSpec? PrioritizedOnboardingSpec
+        // GraphQL -> prioritizedOnboardingSpec: PrioritizedOnboardingSpec (input)
+        [JsonProperty("prioritizedOnboardingSpec")]
+        public PrioritizedOnboardingSpec? PrioritizedOnboardingSpec { get; set; }
+
 
         #endregion
 

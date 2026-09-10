@@ -138,10 +138,11 @@ Returns the script to setup backup for a SQL Server database.
 ### tagkeys
 List of cloud native tag keys matched by substring.
 
-- There are 3 arguments.
+- There are 4 arguments.
     - keySubStr - System.String: Key substring to filter by.
     - limit - System.Int32: Number of results to return.
     - objectType - CloudNativeTagObjectType: Type of managed object on which tag rule will be applied.
+    - maxCacheStalenessSeconds - System.Int32: Maximum tag-cache staleness the caller tolerates, in seconds. 0 uses the cache as-is; a positive value forces a fresh DB read (and cache refresh) when the cache is older than this.
 - Returns list of System.Strings.
 ### tagrules
 Cloud native tag rules.
@@ -161,11 +162,12 @@ native tag rule.
 ### tagvalues
 List of cloud native tag values matched by substring.
 
-- There are 4 arguments.
+- There are 5 arguments.
     - valueSubStr - System.String: Value substring to filter by.
     - key - System.String: Key value used only when searching for values.
     - limit - System.Int32: Number of results to return.
     - objectType - CloudNativeTagObjectType: Type of managed object on which tag rule will be applied.
+    - maxCacheStalenessSeconds - System.Int32: Maximum tag-cache staleness the caller tolerates, in seconds. 0 uses the cache as-is; a positive value forces a fresh DB read (and cache refresh) when the cache is older than this.
 - Returns list of System.Strings.
 ### workloadversionedfiles
 List all files and directories in a given snappable with the given prefix in name.

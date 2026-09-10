@@ -39,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("seamlessFlowEnabled")]
         public System.Boolean? SeamlessFlowEnabled { get; set; }
 
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType (enum)
+        [JsonProperty("cloudType")]
+        public AwsCloudType? CloudType { get; set; }
+
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
         [JsonProperty("orgName")]
@@ -53,11 +58,6 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> orgId: String (scalar)
         [JsonProperty("orgId")]
         public System.String? OrgId { get; set; }
-
-        //      C# -> AwsCloudType? CloudType
-        // GraphQL -> cloudType: AwsCloudType (enum)
-        [JsonProperty("cloudType")]
-        public AwsCloudType? CloudType { get; set; }
 
 
         #endregion

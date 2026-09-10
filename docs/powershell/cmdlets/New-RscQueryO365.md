@@ -8,17 +8,23 @@ All AD Groups belonging to the O365 organization.
     - adGroupSearchFilter - System.String: AD group search filter.
 - Returns list of AdGroups.
 ### browseteamconvchannels
-Browse channels in a Teams conversations snapshot.
+BrowseO365TeamConvChannels returns a paginated list of Teams conversation
+channels for the given workload. When no snapshot is specified, browses
+live channels; when a snapshot is specified, browses channels in that
+snapshot.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
-    - snapshotFidOpt - System.String: snapshotFid arg which is of optional type
-    - excludeArchived - System.Boolean
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The unique identifier for the Teams workload.
+    - snapshotFidOpt - System.String: Optional snapshot FID. When set, browses that snapshot.
+    - excludeArchived - System.Boolean: Whether archived channels are omitted from results.
+Must be false when snapshotFidOpt is absent; must be true when present.
     - orgId - System.String: Org UUID.
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
-    - nameFilter - System.String
+    - nameFilter - System.String: Optional display-name substring filter.
 - Returns O365TeamConvChannelConnection.
 ### calendar
 Details of the Exchange calendar pertaining to the snappable ID.
@@ -33,14 +39,16 @@ Display license consumption for M365 workloads.
 ### groups
 List of O365 Groups in the O365Org.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
     - o365OrgId - System.String: The FID for the O365 organization.
-    - snappableType - SnappableType
+    - snappableType - SnappableType: The type of workload.
 - Returns O365GroupConnection.
 ### hasaccesstoobjects
 HasAccessToO365Objects returns if user has access to any o365 objects.
@@ -50,28 +58,32 @@ HasAccessToO365Objects returns if user has access to any o365 objects.
 ### license
 Retrieve o365 licence details.
 
-- The license subcommand takes no arguments.
+- There is a single argument of type list of System.Strings.
 - Returns O365License.
 ### listapps
 Lists the O365 apps.
 
-- There are 4 arguments.
+- There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - o365AppFilters - list of AppFilters
-    - o365AppSortByParam - AppSortByParam
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - o365AppFilters - list of AppFilters: Filters for the O365 app listing.
+    - o365AppSortByParam - AppSortByParam: Sort parameter for the O365 app listing.
 - Returns O365AppConnection.
 ### mailbox
-Details for the Exchange mailbox corresponding to the snappable ID.
+Details for the Microsoft Exchange mailbox corresponding to the workload ID.
 
 - There is a single argument of type System.String.
 - Returns O365Mailbox.
 ### mailboxes
 List of Mailboxes in the O365Org.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -84,16 +96,18 @@ given object that the caller is implicitly authorized to view.
 - There is a single argument of type System.String.
 - Returns GetImplicitlyAuthorizedAncestorSummariesResponse.
 ### onedrive
-Details for the OneDrive corresponding to the snappable ID.
+Details for the OneDrive corresponding to the workload ID.
 
 - There is a single argument of type System.String.
 - Returns O365Onedrive.
 ### onedrives
 List of Onedrives in the O365Org.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -109,21 +123,23 @@ Details of the O365Org at snappable level, given the snappable type.
 
 - There are 2 arguments.
     - fid - System.String: Rubrik UUID for the object.
-    - snappableType - SnappableType
+    - snappableType - SnappableType: The type of the M365 workload.
 - Returns O365Org.
 ### orgs
 All O365 orgs for the account.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments. A value of 'None' represents the hierarchy of all workload types.
 - Returns O365OrgConnection.
 ### orgstatuses
-Gets the status of each org in the account.
+Returns the status of each O365 org the caller is authorized to view.
 
 - The orgstatuses subcommand takes no arguments.
 - Returns list of O365OrgInfos.
@@ -156,14 +172,16 @@ Details for the SharePoint drive corresponding to the snappable ID.
 - There is a single argument of type System.String.
 - Returns O365SharepointDrive.
 ### sharepointdrives
-List of sharepoint drives (document libraries) in the O365Org.
+List of SharePoint drives (document libraries) in the O365Org.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
+    - filter - list of Filters: Hierarchy object filters.
     - o365OrgId - System.String: The FID for the O365 organization.
 - Returns O365SharepointDriveConnection.
 ### sharepointlist
@@ -174,26 +192,31 @@ Details for the SharePoint list corresponding to the snappable ID.
 ### sharepointlists
 Paginated list of sharepoint lists in the O365Org.
 
-- There are 6 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of Filters: Hierarchy object filter.
-    - o365OrgId - System.String: The FID for the O365 organization.
-- Returns O365SharepointListConnection.
-### sharepointobjectlist
-Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
-
 - There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
+    - sortOrder - SortOrder: Sorts the order of results.
+    - filter - list of Filters: Hierarchy object filters.
+    - o365OrgId - System.String: The FID for the O365 organization.
+- Returns O365SharepointListConnection.
+### sharepointobjectlist
+Returns the sharepoint objects after filtering on the object types and
+includeEntireHierarchy.
+
+- There are 10 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
+    - fid - System.String: FID of the parent O365 org or SharePoint site.
     - includeEntireHierarchy - System.Boolean: If true, the entire hierarchy will be searched.
-    - fid - System.String: Rubrik UUID for the object.
 - Returns O365SharepointObjectConnection.
 ### sharepointobjects
 - There are 6 arguments.
@@ -205,17 +228,21 @@ Returns the sharepoint objects after filtering on the object types and includeEn
     - fid - System.String: Rubrik UUID for the object.
 - Returns O365SharepointObjectConnection.
 ### sharepointobjectsnew
-Compared to the endpoint o365SharepointObjectList, this endpoint retrieves and persists SharePoint site hierarchy from Microsoft directly. Returns the SharePoint objects after filtering by the object types.
+Loads and persists the SharePoint site hierarchy from Microsoft, then
+returns the SharePoint objects under the given parent, filtered by object
+type.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
     - objectTypeFilter - list of System.Strings: Types of objects to include.
-    - includeEntireHierarchy - System.Boolean: If true, the entire hierarchy will be searched.
-    - fid - System.String: Rubrik UUID for the object.
+    - includeEntireHierarchy - System.Boolean: Whether to include the entire hierarchy.
+    - fid - System.String: The FID of the parent O365Org or O365Site.
 - Returns O365SharepointObjectConnection.
 ### sharepointsite
 Details for the SharePoint site corresponding to the site ID.
@@ -225,9 +252,11 @@ Details for the SharePoint site corresponding to the site ID.
 ### sharepointsites
 Paginated list of sharepoint sites in the O365Org.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -239,11 +268,15 @@ Details for the SharePoint site corresponding to the snappable ID.
 - There is a single argument of type System.String.
 - Returns O365Site.
 ### sites
-List of sites in the O365Org.
+List of SharePoint sites in the O365Org. When exclude_child_sites is true,
+only direct child sites of the org are returned; otherwise all descendant
+sites are returned.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -256,7 +289,8 @@ Returns the storage stats of an O365 org.
 - There is a single argument of type System.String.
 - Returns GetO365StorageStatsResp.
 ### subscriptionsapptypecounts
-Returns the total number of apps of each type, for each O365 org.
+Returns the total number of apps of each type for each O365 subscription,
+aggregated across all apps in the account.
 
 - The subscriptionsapptypecounts subcommand takes no arguments.
 - Returns list of O365SubscriptionAppTypeCountss.
@@ -266,15 +300,20 @@ Details for the team corresponding to the snappable ID.
 - There is a single argument of type System.String.
 - Returns O365Teams.
 ### teamchannels
-List of Channels for the O365Team.
+GetTeamChannelsV2 returns a paginated, GraphQL-shaped list of channels for
+a Teams workload. Encapsulates the response shaping (TeamChannelInfo ->
+O365TeamsChannelObject, including the membership-type enum parse) that
+previously lived in the GraphQL resolver `o365TeamChannels`.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
-    - excludeArchived - System.Boolean
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the Teams workload.
+    - excludeArchived - System.Boolean: Whether archived channels are omitted.
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
-    - nameFilter - System.String
+    - nameFilter - System.String: Optional display-name substring filter.
 - Returns O365TeamsChannelConnection.
 ### teamconversationsfolderid
 ID for the conversations folder in the Team's Group Mailbox.
@@ -285,21 +324,26 @@ ID for the conversations folder in the Team's Group Mailbox.
     - o365OrgId - System.String: The FID for the O365 organization.
 - Returns System.String.
 ### teampostedby
-Users who have posted in a team.
+SearchTeamPostSenders returns the users who have posted in the given
+Teams workload, paginated.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the Teams workload.
     - o365OrgId - System.String: The FID for the O365 organization.
-    - nameFilter - System.String
+    - nameFilter - System.String: Optional display-name filter for post senders.
 - Returns O365TeamConversationsSenderConnection.
 ### teams
 List of O365 Teams in the O365Org.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -313,9 +357,11 @@ Details for the O365 user corresponding to the ID.
 ### userobjects
 Name, id, object type, and mail address of user descendant object.
 
-- There are 6 arguments.
+- There are 8 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.

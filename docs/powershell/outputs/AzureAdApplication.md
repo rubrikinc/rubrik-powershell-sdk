@@ -13,3 +13,6 @@ Entra ID application.
   - List of App Roles associated with the Entra ID application.
 - appRolesCount: System.Int32
   - Number of App Roles associated with the Entra ID application.
+- linkedServicePrincipal: EntraIdLinkedServicePrincipal
+  - Service principal that shares the app ID of the Entra ID application.
+Absent when the tenant has no service principal for the application.

@@ -1,30 +1,36 @@
 # New-RscQuerySharepoint
 ## Subcommands
 ### browsedrive
-Browse SharePoint  drive files and folders.
+BrowseSharepointDriveFolderItems returns the contents (folders and files)
+of a SharePoint Drive folder within a snapshot.
 
-- There are 9 arguments.
+- There are 11 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The unique identifier for the SharePoint Drive workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
-    - sharepointDriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
-    - siteChildId - System.String: The site child ID for SharePoint descendant objects.
-    - siteChildType - SharePointDescendantType: The site child type for SharePoint descendant objects.
+    - folderId - System.String: The folder to browse. Empty means the drive root.
+    - sharepointDriveSearchFilter - OnedriveSearchFilter: Optional OneDrive-compatible search filter.
+    - siteChildId - System.String: Optional sub-site ID for a library or list within the SharePoint site.
+    - siteChildType - SharePointDescendantType: Optional SharePoint descendant type; defaults to LIBRARY.
 - Returns O365OnedriveObjectConnection.
 ### browselist
-Browse list objects.
+BrowseSharepointListItems returns the contents (folders and files) of a
+SharePoint List folder within a snapshot.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The unique identifier for the SharePoint List workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
-    - sharepointDriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
+    - folderId - System.String: The folder to browse. Empty means the SharePoint List root.
+    - sharepointDriveSearchFilter - OnedriveSearchFilter: Optional OneDrive-compatible search filter.
     - siteChildId - System.String: The site child ID for SharePoint descendant objects.
 - Returns O365OnedriveObjectConnection.
 ### sitedescendants

@@ -26,11 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
-        //      C# -> System.String? NextSnapshotFid
-        // GraphQL -> nextSnapshotFid: UUID (scalar)
-        [JsonProperty("nextSnapshotFid")]
-        public System.String? NextSnapshotFid { get; set; }
-
         //      C# -> VolumeGroupRestoreFilesConfigInput? Config
         // GraphQL -> config: VolumeGroupRestoreFilesConfigInput! (input)
         [Required]
@@ -42,6 +37,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> deltaTypeFilter: [DeltaType!] (enum)
         [JsonProperty("deltaTypeFilter")]
         public List<DeltaType>? DeltaTypeFilter { get; set; }
+
+        //      C# -> System.String? NextSnapshotFid
+        // GraphQL -> nextSnapshotFid: UUID (scalar)
+        [JsonProperty("nextSnapshotFid")]
+        public System.String? NextSnapshotFid { get; set; }
 
 
         #endregion

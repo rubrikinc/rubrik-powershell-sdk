@@ -1,17 +1,6 @@
 ### M365BackupStorageOrg
 Microsoft 365 Backup Storage Organization.
 
-- status: OrgStatus
-  - Status of the Microsoft 365 Backup Storage Organization.
-- controllerStatus: ServiceAppStatus
-  - Status of the Microsoft 365 Backup Storage Organization controller.
-- activationTime: DateTime
-  - Time when the Microsoft 365 Backup Storage Organization controller will be activated.
-- rscNativeObjectPendingSla: CompactSlaDomain
-  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
-objects.
-- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for RSC objects.
 - id: System.String
   - ID of the hierarchy object.
 - name: System.String
@@ -20,42 +9,39 @@ objects.
   - Type of this object.
 - slaAssignment: SlaAssignmentTypeEnum
   - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
-- snapshotDistribution: SnapshotDistribution
-  - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
 - logicalPath: list of PathNodes
   - Sequential list of the logical ancestors of this object.
 - physicalPath: list of PathNodes
   - Sequential list of the physical ancestors of this object.
-- numWorkloadDescendants: System.Int32
-  - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
-- allTags: list of AssignedRscTags
-  - RSC tags to which this hierarchy object is assigned.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
 - securityMetadata: SecurityMetadata
   - Security posture metadata.
-- objectPauseStatus: ObjectPauseStatus
-  - Pause status of the hierarchy object.
-- objectBackupWindow: ObjectBackupWindowStatus
-  - Object-level backup window status of the hierarchy object.
+- status: OrgStatus
+  - Status of the Microsoft organization.
+- rscNativeObjectPendingSla: CompactSlaDomain
+  - SLA Domain assignment which is pending on the Rubrik Security Cloud native
+objects.
+- rscPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for RSC objects.
+- controllerStatus: ServiceAppStatus
+  - Status of the Microsoft 365 Backup Storage Organization controller.
+- activationTime: DateTime
+  - Time when the Microsoft 365 Backup Storage Organization controller will be activated.
+- workloadSummary: list of O365WorkloadSummarys
+  - Summary of workload by type.
+- groupsSummary: O365GroupsSummary
+  - Summary of Microsoft groups count.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
 - snapshotConnection: PolarisSnapshotConnection
   - The list of snapshots taken for this workload.
 - workloadSnapshotConnection: GenericSnapshotConnection
   - The list of snapshots taken for this workload.
 - snapshotGroupByConnection: PolarisSnapshotGroupByConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
-  - GroupBy connection for the snapshots of this workload.
+  - Group-by connection for the snapshots of this workload.
 - newestSnapshot: PolarisSnapshot
   - The most recent snapshot of this workload.
 - oldestSnapshot: PolarisSnapshot
@@ -64,9 +50,23 @@ objects.
   - The number of on-demand snapshots.
 - newestIndexedSnapshot: PolarisSnapshot
   - The latest snapshot that is indexed and unexpired, and therefore restorable.
-- workloadSummary: list of O365WorkloadSummarys
-  - Summary of workload by type.
-- groupsSummary: O365GroupsSummary
-  - Summary of Microsoft groups count.
-- authorizedOperations: list of Operations
-  - The authorized operations on the object.
+- snapshotDistribution: SnapshotDistribution
+  - Distribution of the snapshots of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - Number of descendant workloads of this object.
+- allTags: list of AssignedRscTags
+  - RSC tags to which this hierarchy object is assigned.
+- objectPauseStatus: ObjectPauseStatus
+  - Pause status of the hierarchy object.
+- objectBackupWindow: ObjectBackupWindowStatus
+  - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.

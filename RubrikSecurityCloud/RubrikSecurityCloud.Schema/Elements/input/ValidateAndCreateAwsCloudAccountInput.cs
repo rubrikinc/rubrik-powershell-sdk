@@ -26,11 +26,6 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("action")]
         public CloudAccountAction? Action { get; set; }
 
-        //      C# -> List<CloudAccountFeature>? Features
-        // GraphQL -> features: [CloudAccountFeature!] (enum)
-        [JsonProperty("features")]
-        public List<CloudAccountFeature>? Features { get; set; }
-
         //      C# -> AwsCloudAccountInput? AwsAdminAccount
         // GraphQL -> awsAdminAccount: AwsCloudAccountInput (input)
         [JsonProperty("awsAdminAccount")]
@@ -42,6 +37,11 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("awsChildAccounts")]
         public List<AwsCloudAccountInput>? AwsChildAccounts { get; set; }
+
+        //      C# -> List<CloudAccountFeature>? Features
+        // GraphQL -> features: [CloudAccountFeature!] (enum)
+        [JsonProperty("features")]
+        public List<CloudAccountFeature>? Features { get; set; }
 
         //      C# -> AwsRoleCustomization? AwsRoleCustomization
         // GraphQL -> awsRoleCustomization: AwsRoleCustomization (input)

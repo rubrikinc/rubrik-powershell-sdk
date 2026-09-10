@@ -249,40 +249,68 @@ previously performed in the GraphQL resolver `browseFolder`.
     - orgId - System.String: Org UUID.
 - Returns O365ExchangeObjectConnection.
 ### browseonedrive
-Browse OneDrive files and folders.
+BrowseOnedriveFolderItems returns the contents (folders and files) of a
+OneDrive folder inside a single snapshot. Encapsulates the snapshot-expiry
+gate, the quarantine lookup for the synthetic root, and the response
+shaping previously performed in the GraphQL resolver `browseOnedrive`.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The FID for the OneDrive workload.
+    - snapshotFid - System.String: The ID of the snapshot.
+    - orgId - System.String: Org UUID.
+    - folderId - System.String: The folder to browse. Empty means the OneDrive root,
+which is synthesized rather than fetched from the search service.
+    - onedriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
+- Returns O365OnedriveObjectConnection.
+### browsetasks
+BrowseTaskFolderItems returns the contents (To-Do lists + tasks) of a
+task folder inside a single snapshot. Encapsulates the snapshot-expiry
+data check and the tasks response shaping previously performed in the
+GraphQL resolver `browseTasks`.
+
+- There are 9 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
-    - onedriveSearchFilter - OnedriveSearchFilter
+    - folderId - System.String: The folder being browsed.
     - orgId - System.String: Org UUID.
-- Returns O365OnedriveObjectConnection.
+    - tasksSearchFilter - TasksSearchFilter: Search filter for tasks search.
+- Returns O365ExchangeObjectConnection.
 ### browseteamschannels
 Browse channels in a Teams files snapshot.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - snappableFid - System.String: The FID for the workload.
     - snapshotFid - System.String: The ID of the snapshot.
     - orgId - System.String: Org UUID.
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
-    - nameFilter - System.String
+    - nameFilter - System.String: Optional display-name substring filter.
 - Returns O365TeamsChannelConnection.
 ### browseteamsdrive
-Browse team files.
+BrowseTeamsDriveFolderItems returns the contents (folders and files) of a
+Teams Drive folder within a snapshot.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - snappableFid - System.String: The FID for the workload.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - snappableFid - System.String: The unique identifier for the Teams workload.
     - snapshotFid - System.String: The ID of the snapshot.
-    - folderId - System.String
-    - teamsDriveSearchFilter - OnedriveSearchFilter
     - orgId - System.String: Org UUID.
+    - folderId - System.String: The folder to browse. Empty means the Teams Drive root.
+    - teamsDriveSearchFilter - OnedriveSearchFilter: Optional OneDrive search filter.
 - Returns O365OnedriveObjectConnection.
 ### capsettingsdata
 GetCapSettings returns the current CAP configuration JSON for an
@@ -421,15 +449,19 @@ Retrieve systems managed by the Cloud Direct site.
 - There is a single argument of type CloudDirectSystemsInput.
 - Returns CloudDirectSystems.
 ### configuredgroupmembers
-Objects that match the specifications of a configured group.
+Returns objects that match the specifications of a configured group.
 
-- There are 7 arguments.
+- There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - orgId - System.String: Org UUID.
     - wildcard - System.String: A wildcard pattern that group members' names or URLs must match.
     - pdls - list of System.Strings: A list of preferred data locations that group members must match.
-    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a specific workload type for RBAC and SLA Domain assignments.  A value of 'None' represents the hierarchy of all workload types.
+    - workloadHierarchy - WorkloadLevelHierarchy: Each enumeration value represents the hierarchy of a
+specific workload type for RBAC and SLA Domain assignments.  A value of 'None'
+represents the hierarchy of all workload types.
     - groupFilterAttributes - list of GroupFilterAttributes: A list of attributes to filter out group members.
 - Returns O365ConfiguredGroupMemberConnection.
 ### coordinatorlabels
@@ -453,7 +485,11 @@ Returns details for one crawl.
 ### crawls
 Returns crawls for an account.
 
-- The crawls subcommand takes no arguments.
+- There are 4 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns CrawlConnection.
 ### crossaccountpairs
 Lists all cross-account pairs.
@@ -1240,11 +1276,11 @@ Returns details of one issue.
 Returns all issues filtered by status.
 
 - There are 5 arguments.
-    - status - IssueStatus
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - status - IssueStatus: Status of the issues to return.
 - Returns IssueConnection.
 ### issuesjobids
 List IDs of running issues jobs.
@@ -1294,6 +1330,8 @@ Check if the cluster has at least 1 node with its bond interfaces configured wit
     - clusterUuids - list of System.Strings: List of cluster UUIDs.
 - Returns LacpPresenceCheckConnection.
 ### lambdasettings
+Returns the anomaly detection settings for the account.
+
 - The lambdasettings subcommand takes no arguments.
 - Returns LambdaSettings.
 ### laminarssodetails
@@ -1367,14 +1405,16 @@ Get multifactor authentication (MFA) settings for an account.
 ### microsoftgroups
 List of Microsoft Groups in the organization.
 
-- There are 8 arguments.
+- There are 10 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
     - o365OrgId - System.String: The FID for the O365 organization.
-    - microsoftObjectType - ManagedObjectType
+    - microsoftObjectType - ManagedObjectType: The type of Microsoft managed object to query.
     - protectionType - ProtectionType: Protection type for Microsoft 365 protection.
 - Returns MicrosoftGroupConnection.
 ### microsoftsites
@@ -1511,18 +1551,12 @@ The ID of the Rubrik cluster node to replace.
 - There is a single argument of type NodeToReplaceInput.
 - Returns NodeToReplaceReply.
 ### nodetunnelstatuses
-List of node tunnel status.
+Support-tunnel status of every node in a Rubrik cluster. The status remains available while the cluster is disconnected.
 
-- There is a single argument of type GetNodesInput.
+- There are 2 arguments.
+    - input - GetNodesInput: Input for InternalGetNodes.
+    - tunnelFilter - NodeTunnelFilter: Restrict the result to nodes whose support tunnel is open or closed. When omitted, every node is returned.
 - Returns NodeTunnelStatusConnection.
-### nosqlstoragelocations
-List of Mosaic Storage Locations used for NoSQL backups
-
-- There are 3 arguments.
-    - sortBy - MosaicStorageLocationQuerySortByField: Specification on how to sort a list of Mosaic Storage Locations.
-    - sortOrder - SortOrder: Sorts the order of results.
-    - filter - list of MosaicStorageLocationFilterInputs: Specification on how to filter a list of Mosaic Storage Locations.
-- Returns list of MosaicStorageLocations.
 ### oauthcodesforedgereg
 Reply for request to download Rubrik Edge from Rubrik Security Cloud.
 
@@ -1531,15 +1565,17 @@ Reply for request to download Rubrik Edge from Rubrik Security Cloud.
     - cdmOvaLink - System.String: Input to enter the Rubrik CDM virtual cluster OVA package link.
 - Returns OauthCodesForEdgeRegReply.
 ### objectfiles
+Returns the classified files across objects for a given day.
+
 - There are 8 arguments.
-    - filter - ListObjectFilesFiltersInput
-    - sort - FileResultSortInput: Sorts to apply when listing file results.
-    - day - System.String: Date in the format (YYYY-MM-DD).
-    - timezone - System.String: The timezone in which to display timestamps.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - ListObjectFilesFiltersInput: Filters to apply when listing object files.
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
+    - day - System.String: Date in the format (YYYY-MM-DD).
+    - timezone - System.String: The timezone in which to display timestamps.
 - Returns FileResultConnection.
 ### objectsalreadyassignedtoorgs
 Returns objects that have already been assigned to existing orgs.
@@ -1699,12 +1735,12 @@ Returns details for one policy object.
 Browse the contents of a directory within a data governance policy object snapshot.
 
 - There are 10 arguments.
-    - workloadId - System.String: The ID of the workload.
-    - snapshotId - System.String: The ID of the snapshot.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - workloadId - System.String: The ID of the workload.
+    - snapshotId - System.String: The ID of the snapshot.
     - filter - BrowseDirectoryFiltersInput: Filters for browsing directory contents.
     - sort - FileResultSortInput: Sorts to apply when listing file results.
     - stdPath - System.String: The standard path of the directory to browse.
@@ -1722,6 +1758,10 @@ Returns details for one policy object if it exists.
 Returns status for all objects at a specified timestamp.
 
 - There are 46 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - day - System.String: Date in the format (YYYY-MM-DD).
     - timezone - System.String: The timezone in which to display timestamps.
     - workloadTypes - list of DataGovObjectTypes: Types of workloads that can be used for filtering query results.
@@ -1764,10 +1804,6 @@ Returns status for all objects at a specified timestamp.
     - accessTypeFilter - list of AccessVias: Access types to filter by.
     - accessGrantingIdFilter - System.String: Filter policy objects by access granting identity ID. This filter should only be applied when an identity ID filter is also present, as access granting entities are only relevant in the context of specific identities.
     - totalPrincipalCountsOnly - System.Boolean: When true, only total principal counts are computed, skipping per-risk-level breakdown.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that occur after the specified cursor.
-    - last - System.Int32: Returns the last n elements from the list.
-    - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns PolicyObjConnection.
 ### policyviolation
 Get a single policy violation.
@@ -2069,9 +2105,11 @@ Retrieve the discoverable VMware virtual machines (backed by the protection grou
 ### purestorageprotectiongroupsv1
 Connection of Pure Storage protection groups.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2084,9 +2122,11 @@ Details of a Pure Storage protection group for a given ID.
 ### purestoragevolumesv1
 Connection of Pure Storage volumes.
 
-- There are 5 arguments.
+- There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
+    - last - System.Int32: Returns the last n elements from the list.
+    - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - HierarchySortByField: Sort hierarchy objects according to the hierarchy field.
     - sortOrder - SortOrder: Sorts the order of results.
     - filter - list of Filters: Hierarchy object filter.
@@ -2200,6 +2240,11 @@ Synced cluster information for RSC permissions.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
 - Returns RscPermsToCdmInfoOut.
+### rscpupgradestatus
+Retrieves the upgrade status of the RSC-P appliance.
+
+- The rscpupgradestatus subcommand takes no arguments.
+- Returns RscpUpgradeStatus.
 ### rvcdeploymenttoollink
 Download links for the Rubrik Virtual Cluster Deployment Tool (Linux/Windows/MacOS).
 Shared by both RVC LS and RVC SS wizards because the RVCDT binaries are product-agnostic.
@@ -2222,8 +2267,17 @@ Scoped to the caller's visible objects.
 
 - The s3tablesiceberginventorystats subcommand takes no arguments.
 - Returns S3TablesIcebergInventoryStatsReply.
+### saasappcascadingimpact
+Returns the object types, and their record counts, that may be impacted or restored when restoring the selected objects. These object types and record counts are used to build the cascade selection tree. With cascadingImpactResolutionMode SYNCHRONOUS, the analysis is computed and returned inline; with ASYNCHRONOUS, it runs as a background job and returns an operationId, which is passed to saasAppCascadingImpactJobResult to poll for the result.
+
+- There are 4 arguments.
+    - saasAppType - SaasAppType: SaaS application type.
+    - restoreConfig - AppItemRestoreConfig: Configuration for the items to be restored.
+    - resolutionMode - CascadingImpactResolutionMode: The mode of cascading impact resolution. By default, the mode is set to `SYNCHRONOUS`.
+    - stateToken - System.String: Token storing the current state of the current flow.
+- Returns CascadingImpactResult.
 ### saasapporganizations
-List of SaaS app organization.
+A paginated list of SaaS app organizations.
 
 - There are 9 arguments.
     - first - System.Int32: Returns the first n elements from the list.
@@ -2582,15 +2636,17 @@ User access metrics.
 - The useraccessmetrics subcommand takes no arguments.
 - Returns UserAccessMetrics.
 ### useractivities
+Returns the file activities attributed to a user.
+
 - There are 8 arguments.
-    - filter - ListObjectFilesFiltersInput
-    - sort - FileResultSortInput: Sorts to apply when listing file results.
-    - timeRange - UserTimeRangeInput: Time range specified in the user's local timezone.
-    - userId - System.String
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
+    - filter - ListObjectFilesFiltersInput: Filters to apply when listing user activities.
+    - sort - FileResultSortInput: Sorts to apply when listing file results.
+    - timeRange - UserTimeRangeInput: Time range specified in the user's local timezone.
+    - userId - System.String: Identifier of the user whose activities are returned.
 - Returns FileResultConnection.
 ### useralreadyexists
 Determines if the user already exists in the account.
@@ -2624,7 +2680,7 @@ Paginated list of user audit data. Each page of the results will include at most
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortOrder - SortOrder: User audit sort order.
     - sortBy - UserAuditSortField: Sort user audit by field.
-    - filters - UserAuditFilter
+    - filters - UserAuditFilter: Filters to apply to the returned user audits.
 - Returns UserAuditConnection.
 ### userdetail
 Returns summary details for a single user, including identity information
@@ -2669,6 +2725,8 @@ Get the session management configurations for the user account.
 - The usersessionmanagementconfig subcommand takes no arguments.
 - Returns GetUserSessionManagementConfigReply.
 ### usersettings
+Returns the settings for the specified user.
+
 - The usersettings subcommand takes no arguments.
 - Returns UserSettings.
 ### usersincurrentanddescendantorganization
@@ -2849,7 +2907,7 @@ Get whether alerts for a given workload are enabled.
 ### workloadanomalies
 Specifies workloads that have an anomalous snapshot.
 
-- There are 20 arguments.
+- There are 21 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that occur after the specified cursor.
     - last - System.Int32: Returns the last n elements from the list.
@@ -2870,6 +2928,7 @@ Specifies workloads that have an anomalous snapshot.
     - locationsFilter - list of System.Strings: Filter results by their location.
     - resolutionStatusFilter - list of ResolutionStatuss: Filter by anomaly resolution.
     - riskLevelTypesFilter - list of RiskLevelTypes: Filter by risk level type.
+    - anomalyCategoryFilter - list of WorkloadAnomalyCategorys: Filter by the category the anomaly is grouped under.
 - Returns WorkloadAnomalyConnection.
 ### workloadforeverid
 Returns the RSC forever ID of a workload.

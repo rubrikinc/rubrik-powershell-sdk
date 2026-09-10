@@ -46,6 +46,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("displayName")]
         public System.String? DisplayName { get; set; }
 
+        //      C# -> System.String? DomainFid
+        // GraphQL -> domainFid: String! (scalar)
+        [JsonProperty("domainFid")]
+        public System.String? DomainFid { get; set; }
+
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         [JsonProperty("domainName")]
@@ -86,6 +91,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? CreationTime = null,
         DateTime? DetectedOn = null,
         System.String? DisplayName = null,
+        System.String? DomainFid = null,
         System.String? DomainName = null,
         System.String? DomainUniqueId = null,
         DateTime? LastSeen = null,
@@ -107,6 +113,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( DisplayName != null ) {
             this.DisplayName = DisplayName;
+        }
+        if ( DomainFid != null ) {
+            this.DomainFid = DomainFid;
         }
         if ( DomainName != null ) {
             this.DomainName = DomainName;
@@ -180,6 +189,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "displayName\n" ;
             } else {
                 s += ind + "displayName\n" ;
+            }
+        }
+        //      C# -> System.String? DomainFid
+        // GraphQL -> domainFid: String! (scalar)
+        if (this.DomainFid != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "domainFid\n" ;
+            } else {
+                s += ind + "domainFid\n" ;
             }
         }
         //      C# -> System.String? DomainName
@@ -321,6 +339,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.DisplayName != null && ec.Excludes("displayName",true))
         {
             this.DisplayName = null;
+        }
+        //      C# -> System.String? DomainFid
+        // GraphQL -> domainFid: String! (scalar)
+        if (ec.Includes("domainFid",true))
+        {
+            if(this.DomainFid == null) {
+
+                this.DomainFid = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.DomainFid != null && ec.Excludes("domainFid",true))
+        {
+            this.DomainFid = null;
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)

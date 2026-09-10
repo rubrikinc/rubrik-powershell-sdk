@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("indicatorsOfCompromise")]
         public List<IndicatorOfCompromise>? IndicatorsOfCompromise { get; set; }
 
+        //      C# -> List<RegistryPatternSpec>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpec!]! (type)
+        [JsonProperty("registryPatterns")]
+        public List<RegistryPatternSpec>? RegistryPatterns { get; set; }
+
         //      C# -> RequestedMatchDetails? RequestedMatchDetails
         // GraphQL -> requestedMatchDetails: RequestedMatchDetails (type)
         [JsonProperty("requestedMatchDetails")]
@@ -94,6 +99,7 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? ShouldTrustFilesystemTimeInfo = null,
         MalwareScanFileCriteria? FileScanCriteria = null,
         List<IndicatorOfCompromise>? IndicatorsOfCompromise = null,
+        List<RegistryPatternSpec>? RegistryPatterns = null,
         RequestedMatchDetails? RequestedMatchDetails = null,
         MalwareScanSnapshotLimit? SnapshotScanLimit = null
     ) 
@@ -124,6 +130,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IndicatorsOfCompromise != null ) {
             this.IndicatorsOfCompromise = IndicatorsOfCompromise;
+        }
+        if ( RegistryPatterns != null ) {
+            this.RegistryPatterns = RegistryPatterns;
         }
         if ( RequestedMatchDetails != null ) {
             this.RequestedMatchDetails = RequestedMatchDetails;
@@ -233,6 +242,18 @@ namespace RubrikSecurityCloud.Types
                     s += conf.Prefix + fspec;
                 } else {
                     s += ind + "indicatorsOfCompromise" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> List<RegistryPatternSpec>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpec!]! (type)
+        if (this.RegistryPatterns != null) {
+            var fspec = this.RegistryPatterns.AsFieldSpec(conf.Child("registryPatterns"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "registryPatterns" + " " + "{\n" + fspec + ind + "}\n" ;
                 }
             }
         }
@@ -425,6 +446,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.IndicatorsOfCompromise != null && ec.Excludes("indicatorsOfCompromise",false))
         {
             this.IndicatorsOfCompromise = null;
+        }
+        //      C# -> List<RegistryPatternSpec>? RegistryPatterns
+        // GraphQL -> registryPatterns: [RegistryPatternSpec!]! (type)
+        if (ec.Includes("registryPatterns",false))
+        {
+            if(this.RegistryPatterns == null) {
+
+                this.RegistryPatterns = new List<RegistryPatternSpec>();
+                this.RegistryPatterns.ApplyExploratoryFieldSpec(ec.NewChild("registryPatterns"));
+
+            } else {
+
+                this.RegistryPatterns.ApplyExploratoryFieldSpec(ec.NewChild("registryPatterns"));
+
+            }
+        }
+        else if (this.RegistryPatterns != null && ec.Excludes("registryPatterns",false))
+        {
+            this.RegistryPatterns = null;
         }
         //      C# -> RequestedMatchDetails? RequestedMatchDetails
         // GraphQL -> requestedMatchDetails: RequestedMatchDetails (type)

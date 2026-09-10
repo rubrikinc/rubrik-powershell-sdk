@@ -63,6 +63,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "BIT_LOCKER_KEY")]
         BIT_LOCKER_KEY,
 
+        [EnumMember(Value = "CLAIMS_MAPPING_POLICY")]
+        CLAIMS_MAPPING_POLICY,
+
         [EnumMember(Value = "COMPLIANCE_POLICY")]
         COMPLIANCE_POLICY,
 
@@ -138,6 +141,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "GROUP_ELIGIBLE_ASSIGNMENT")]
         GROUP_ELIGIBLE_ASSIGNMENT,
 
+        [EnumMember(Value = "HOME_REALM_DISCOVERY_POLICY")]
+        HOME_REALM_DISCOVERY_POLICY,
+
         [EnumMember(Value = "INTUNE_POLICY_ASSIGNMENT")]
         INTUNE_POLICY_ASSIGNMENT,
 
@@ -206,6 +212,12 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "TERMS_OF_USE")]
         TERMS_OF_USE,
+
+        [EnumMember(Value = "TOKEN_ISSUANCE_POLICY")]
+        TOKEN_ISSUANCE_POLICY,
+
+        [EnumMember(Value = "TOKEN_LIFETIME_POLICY")]
+        TOKEN_LIFETIME_POLICY,
 
         [EnumMember(Value = "UPDATE_RING")]
         UPDATE_RING,

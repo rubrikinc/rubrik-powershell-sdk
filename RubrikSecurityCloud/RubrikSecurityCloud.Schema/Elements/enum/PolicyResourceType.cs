@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RESOURCE_TYPE_OBJECT")]
         RESOURCE_TYPE_OBJECT,
 
+        [EnumMember(Value = "RESOURCE_TYPE_SAAS_ACTIVITY")]
+        RESOURCE_TYPE_SAAS_ACTIVITY,
+
         [EnumMember(Value = "RESOURCE_TYPE_UNSPECIFIED")]
         RESOURCE_TYPE_UNSPECIFIED
 

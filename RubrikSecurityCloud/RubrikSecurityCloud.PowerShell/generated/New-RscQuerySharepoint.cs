@@ -93,10 +93,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
+    /// # REQUIRED
+    /// $query.Var.orgId = $someString
     /// # OPTIONAL
     /// $query.Var.folderId = $someString
     /// # OPTIONAL
@@ -163,8 +169,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	itemId = $someString
     /// }
-    /// # REQUIRED
-    /// $query.Var.orgId = $someString
     /// # OPTIONAL
     /// $query.Var.siteChildId = $someString
     /// # OPTIONAL
@@ -199,10 +203,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// $query.Var.first = $someInt
     /// # OPTIONAL
     /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.snappableFid = $someString
     /// # REQUIRED
     /// $query.Var.snapshotFid = $someString
+    /// # REQUIRED
+    /// $query.Var.orgId = $someString
     /// # OPTIONAL
     /// $query.Var.folderId = $someString
     /// # OPTIONAL
@@ -269,8 +279,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	# OPTIONAL
     /// 	itemId = $someString
     /// }
-    /// # REQUIRED
-    /// $query.Var.orgId = $someString
     /// # OPTIONAL
     /// $query.Var.siteChildId = $someString
     /// 
@@ -958,11 +966,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         // browseSharepointDrive(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     snapshotFid: UUID!
+        //     orgId: UUID!
         //     folderId: String
         //     sharepointDriveSearchFilter: OnedriveSearchFilter
-        //     orgId: UUID!
         //     siteChildId: String
         //     siteChildType: SharePointDescendantType
         //   ): O365OnedriveObjectConnection!
@@ -971,11 +981,13 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("folderId", "String"),
                 Tuple.Create("sharepointDriveSearchFilter", "OnedriveSearchFilter"),
-                Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("siteChildId", "String"),
                 Tuple.Create("siteChildType", "SharePointDescendantType"),
             };
@@ -983,7 +995,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 argDefs,
                 "query",
                 "QueryBrowseSharepointDrive",
-                "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String,$sharepointDriveSearchFilter: OnedriveSearchFilter,$orgId: UUID!,$siteChildId: String,$siteChildType: SharePointDescendantType)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$folderId: String,$sharepointDriveSearchFilter: OnedriveSearchFilter,$siteChildId: String,$siteChildType: SharePointDescendantType)",
                 "O365OnedriveObjectConnection",
                 Query.BrowseSharepointDrive,
                 Query.BrowseSharepointDriveFieldSpec,
@@ -991,10 +1003,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
 $query.Var.snapshotFid = $someString
+# REQUIRED
+$query.Var.orgId = $someString
 # OPTIONAL
 $query.Var.folderId = $someString
 # OPTIONAL
@@ -1061,8 +1079,6 @@ $query.Var.sharepointDriveSearchFilter = @{
 	# OPTIONAL
 	itemId = $someString
 }
-# REQUIRED
-$query.Var.orgId = $someString
 # OPTIONAL
 $query.Var.siteChildId = $someString
 # OPTIONAL
@@ -1074,11 +1090,13 @@ $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValue
         // browseSharepointList(
         //     first: Int
         //     after: String
+        //     last: Int
+        //     before: String
         //     snappableFid: UUID!
         //     snapshotFid: UUID!
+        //     orgId: UUID!
         //     folderId: String
         //     sharepointDriveSearchFilter: OnedriveSearchFilter
-        //     orgId: UUID!
         //     siteChildId: String
         //   ): O365OnedriveObjectConnection!
         internal void InitQueryBrowseSharepointList()
@@ -1086,18 +1104,20 @@ $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValue
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("first", "Int"),
                 Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("snappableFid", "UUID!"),
                 Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("folderId", "String"),
                 Tuple.Create("sharepointDriveSearchFilter", "OnedriveSearchFilter"),
-                Tuple.Create("orgId", "UUID!"),
                 Tuple.Create("siteChildId", "String"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryBrowseSharepointList",
-                "($first: Int,$after: String,$snappableFid: UUID!,$snapshotFid: UUID!,$folderId: String,$sharepointDriveSearchFilter: OnedriveSearchFilter,$orgId: UUID!,$siteChildId: String)",
+                "($first: Int,$after: String,$last: Int,$before: String,$snappableFid: UUID!,$snapshotFid: UUID!,$orgId: UUID!,$folderId: String,$sharepointDriveSearchFilter: OnedriveSearchFilter,$siteChildId: String)",
                 "O365OnedriveObjectConnection",
                 Query.BrowseSharepointList,
                 Query.BrowseSharepointListFieldSpec,
@@ -1105,10 +1125,16 @@ $query.Var.siteChildType = $someSharePointDescendantType # Call [Enum]::GetValue
 $query.Var.first = $someInt
 # OPTIONAL
 $query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
 # REQUIRED
 $query.Var.snappableFid = $someString
 # REQUIRED
 $query.Var.snapshotFid = $someString
+# REQUIRED
+$query.Var.orgId = $someString
 # OPTIONAL
 $query.Var.folderId = $someString
 # OPTIONAL
@@ -1175,8 +1201,6 @@ $query.Var.sharepointDriveSearchFilter = @{
 	# OPTIONAL
 	itemId = $someString
 }
-# REQUIRED
-$query.Var.orgId = $someString
 # OPTIONAL
 $query.Var.siteChildId = $someString"
             );

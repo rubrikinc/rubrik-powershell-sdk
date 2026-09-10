@@ -24,3 +24,8 @@ snapshots for the repository using its workload ID.
 - includePipelines: System.Boolean
   - Whether to include CI/CD pipelines (e.g., Azure Pipelines YAML
 definitions) in the recovery.
+- developerCollaborationSnapshotId: System.String
+  - RSC-assigned UUID of the developer collaboration snapshot to recover
+developer collaboration tools (pull requests, issues, wikis, etc.) from.
+When set, these tools are recovered from the specified snapshot; when
+unset, they are not recovered.

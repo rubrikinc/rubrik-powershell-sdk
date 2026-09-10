@@ -10,3 +10,7 @@ Provisioning state of an MCP gateway deployment.
 - GATEWAY_PROVISIONING_STATE_UPDATE_FAILED - The last update did not apply; the previous deployment is still serving.
 - GATEWAY_PROVISIONING_STATE_DELETING - The gateway is being torn down; it no longer serves traffic and will be
 removed.
+- GATEWAY_PROVISIONING_STATE_DELETION_FAILED - Teardown of the gateway did not complete and is being retried; the gateway
+no longer serves traffic and will be removed once teardown succeeds.
+- GATEWAY_PROVISIONING_STATE_DELETED - The gateway has been fully torn down and removed.
+- UNRECOGNIZED - The value of this enum was not recognized by the API.

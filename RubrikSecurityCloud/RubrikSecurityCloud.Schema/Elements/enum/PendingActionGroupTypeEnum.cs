@@ -27,6 +27,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLOUD_ACCOUNTS")]
         CLOUD_ACCOUNTS,
 
+        [EnumMember(Value = "DELETION")]
+        DELETION,
+
         [EnumMember(Value = "GLOBAL_SLA")]
         GLOBAL_SLA,
 

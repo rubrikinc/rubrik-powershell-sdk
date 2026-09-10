@@ -15,3 +15,5 @@ Base config for a threat hunt.
   - Threat hunt file scan criteria.
 - maxMatchesPerSnapshot: System.Int32
   - Maximum number of matches per shapshot, per IOC.
+- registryPatterns: list of RegistryPatternSpecs
+  - Windows registry key search patterns for this hunt.

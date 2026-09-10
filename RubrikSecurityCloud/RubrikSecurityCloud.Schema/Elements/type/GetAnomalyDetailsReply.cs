@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> WorkloadAnomalyCategory? AnomalyCategory
+        // GraphQL -> anomalyCategory: WorkloadAnomalyCategory! (enum)
+        [JsonProperty("anomalyCategory")]
+        public WorkloadAnomalyCategory? AnomalyCategory { get; set; }
+
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         [JsonProperty("anomalyType")]
@@ -120,6 +125,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isAnomaly")]
         public System.Boolean? IsAnomaly { get; set; }
 
+        //      C# -> System.Boolean? IsCriticalResourceMonitored
+        // GraphQL -> isCriticalResourceMonitored: Boolean (scalar)
+        [JsonProperty("isCriticalResourceMonitored")]
+        public System.Boolean? IsCriticalResourceMonitored { get; set; }
+
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         [JsonProperty("location")]
@@ -129,6 +139,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> managedId: String! (scalar)
         [JsonProperty("managedId")]
         public System.String? ManagedId { get; set; }
+
+        //      C# -> DateTime? ObjectDeletedAt
+        // GraphQL -> objectDeletedAt: DateTime (scalar)
+        [JsonProperty("objectDeletedAt")]
+        public DateTime? ObjectDeletedAt { get; set; }
 
         //      C# -> List<System.String>? PotentialSnoozedDirectories
         // GraphQL -> potentialSnoozedDirectories: [String!]! (scalar)
@@ -190,6 +205,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("anomalyInfo")]
         public AnomalyInfo? AnomalyInfo { get; set; }
 
+        //      C# -> CloudAuditEvent? CloudAuditEvent
+        // GraphQL -> cloudAuditEvent: CloudAuditEvent (type)
+        [JsonProperty("cloudAuditEvent")]
+        public CloudAuditEvent? CloudAuditEvent { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -220,6 +240,7 @@ namespace RubrikSecurityCloud.Types
     }
 
     public GetAnomalyDetailsReply Set(
+        WorkloadAnomalyCategory? AnomalyCategory = null,
         AnomalyType? AnomalyType = null,
         EncryptionLevel? Encryption = null,
         ObjectTypeEnum? ObjectType = null,
@@ -240,8 +261,10 @@ namespace RubrikSecurityCloud.Types
         System.Int64? FilesModifiedCount = null,
         System.String? Id = null,
         System.Boolean? IsAnomaly = null,
+        System.Boolean? IsCriticalResourceMonitored = null,
         System.String? Location = null,
         System.String? ManagedId = null,
+        DateTime? ObjectDeletedAt = null,
         List<System.String>? PotentialSnoozedDirectories = null,
         DateTime? PreviousSnapshotDate = null,
         System.String? PreviousSnapshotFid = null,
@@ -254,12 +277,16 @@ namespace RubrikSecurityCloud.Types
         System.String? WorkloadId = null,
         System.String? WorkloadName = null,
         AnomalyInfo? AnomalyInfo = null,
+        CloudAuditEvent? CloudAuditEvent = null,
         Cluster? Cluster = null,
         CdmSnapshot? PreviousSnapshot = null,
         RansomwareResult? RansomwareResult = null,
         CdmSnapshot? Snapshot = null
     ) 
     {
+        if ( AnomalyCategory != null ) {
+            this.AnomalyCategory = AnomalyCategory;
+        }
         if ( AnomalyType != null ) {
             this.AnomalyType = AnomalyType;
         }
@@ -320,11 +347,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsAnomaly != null ) {
             this.IsAnomaly = IsAnomaly;
         }
+        if ( IsCriticalResourceMonitored != null ) {
+            this.IsCriticalResourceMonitored = IsCriticalResourceMonitored;
+        }
         if ( Location != null ) {
             this.Location = Location;
         }
         if ( ManagedId != null ) {
             this.ManagedId = ManagedId;
+        }
+        if ( ObjectDeletedAt != null ) {
+            this.ObjectDeletedAt = ObjectDeletedAt;
         }
         if ( PotentialSnoozedDirectories != null ) {
             this.PotentialSnoozedDirectories = PotentialSnoozedDirectories;
@@ -362,6 +395,9 @@ namespace RubrikSecurityCloud.Types
         if ( AnomalyInfo != null ) {
             this.AnomalyInfo = AnomalyInfo;
         }
+        if ( CloudAuditEvent != null ) {
+            this.CloudAuditEvent = CloudAuditEvent;
+        }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
         }
@@ -388,6 +424,15 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> WorkloadAnomalyCategory? AnomalyCategory
+        // GraphQL -> anomalyCategory: WorkloadAnomalyCategory! (enum)
+        if (this.AnomalyCategory != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "anomalyCategory\n" ;
+            } else {
+                s += ind + "anomalyCategory\n" ;
+            }
+        }
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         if (this.AnomalyType != null) {
@@ -568,6 +613,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "isAnomaly\n" ;
             }
         }
+        //      C# -> System.Boolean? IsCriticalResourceMonitored
+        // GraphQL -> isCriticalResourceMonitored: Boolean (scalar)
+        if (this.IsCriticalResourceMonitored != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "isCriticalResourceMonitored\n" ;
+            } else {
+                s += ind + "isCriticalResourceMonitored\n" ;
+            }
+        }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location != null) {
@@ -584,6 +638,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "managedId\n" ;
             } else {
                 s += ind + "managedId\n" ;
+            }
+        }
+        //      C# -> DateTime? ObjectDeletedAt
+        // GraphQL -> objectDeletedAt: DateTime (scalar)
+        if (this.ObjectDeletedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "objectDeletedAt\n" ;
+            } else {
+                s += ind + "objectDeletedAt\n" ;
             }
         }
         //      C# -> List<System.String>? PotentialSnoozedDirectories
@@ -697,6 +760,18 @@ namespace RubrikSecurityCloud.Types
                 }
             }
         }
+        //      C# -> CloudAuditEvent? CloudAuditEvent
+        // GraphQL -> cloudAuditEvent: CloudAuditEvent (type)
+        if (this.CloudAuditEvent != null) {
+            var fspec = this.CloudAuditEvent.AsFieldSpec(conf.Child("cloudAuditEvent"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "cloudAuditEvent" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
@@ -752,6 +827,23 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> WorkloadAnomalyCategory? AnomalyCategory
+        // GraphQL -> anomalyCategory: WorkloadAnomalyCategory! (enum)
+        if (ec.Includes("anomalyCategory",true))
+        {
+            if(this.AnomalyCategory == null) {
+
+                this.AnomalyCategory = new WorkloadAnomalyCategory();
+
+            } else {
+
+
+            }
+        }
+        else if (this.AnomalyCategory != null && ec.Excludes("anomalyCategory",true))
+        {
+            this.AnomalyCategory = null;
+        }
         //      C# -> AnomalyType? AnomalyType
         // GraphQL -> anomalyType: AnomalyType! (enum)
         if (ec.Includes("anomalyType",true))
@@ -1092,6 +1184,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsAnomaly = null;
         }
+        //      C# -> System.Boolean? IsCriticalResourceMonitored
+        // GraphQL -> isCriticalResourceMonitored: Boolean (scalar)
+        if (ec.Includes("isCriticalResourceMonitored",true))
+        {
+            if(this.IsCriticalResourceMonitored == null) {
+
+                this.IsCriticalResourceMonitored = true;
+
+            } else {
+
+
+            }
+        }
+        else if (this.IsCriticalResourceMonitored != null && ec.Excludes("isCriticalResourceMonitored",true))
+        {
+            this.IsCriticalResourceMonitored = null;
+        }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (ec.Includes("location",true))
@@ -1125,6 +1234,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ManagedId != null && ec.Excludes("managedId",true))
         {
             this.ManagedId = null;
+        }
+        //      C# -> DateTime? ObjectDeletedAt
+        // GraphQL -> objectDeletedAt: DateTime (scalar)
+        if (ec.Includes("objectDeletedAt",true))
+        {
+            if(this.ObjectDeletedAt == null) {
+
+                this.ObjectDeletedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.ObjectDeletedAt != null && ec.Excludes("objectDeletedAt",true))
+        {
+            this.ObjectDeletedAt = null;
         }
         //      C# -> List<System.String>? PotentialSnoozedDirectories
         // GraphQL -> potentialSnoozedDirectories: [String!]! (scalar)
@@ -1331,6 +1457,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.AnomalyInfo != null && ec.Excludes("anomalyInfo",false))
         {
             this.AnomalyInfo = null;
+        }
+        //      C# -> CloudAuditEvent? CloudAuditEvent
+        // GraphQL -> cloudAuditEvent: CloudAuditEvent (type)
+        if (ec.Includes("cloudAuditEvent",false))
+        {
+            if(this.CloudAuditEvent == null) {
+
+                this.CloudAuditEvent = new CloudAuditEvent();
+                this.CloudAuditEvent.ApplyExploratoryFieldSpec(ec.NewChild("cloudAuditEvent"));
+
+            } else {
+
+                this.CloudAuditEvent.ApplyExploratoryFieldSpec(ec.NewChild("cloudAuditEvent"));
+
+            }
+        }
+        else if (this.CloudAuditEvent != null && ec.Excludes("cloudAuditEvent",false))
+        {
+            this.CloudAuditEvent = null;
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

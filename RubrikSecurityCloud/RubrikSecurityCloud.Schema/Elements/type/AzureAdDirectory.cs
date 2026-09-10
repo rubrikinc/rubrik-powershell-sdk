@@ -36,6 +36,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("exoHostType")]
         public AzureAdExocomputeHostType? ExoHostType { get; set; }
 
+        //      C# -> M365AccessRecoveryState? M365AccessRecoveryState
+        // GraphQL -> m365AccessRecoveryState: M365AccessRecoveryState! (enum)
+        [JsonProperty("m365AccessRecoveryState")]
+        public M365AccessRecoveryState? M365AccessRecoveryState { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -514,6 +519,7 @@ namespace RubrikSecurityCloud.Types
         List<Operation>? AuthorizedOperations = null,
         AzureAdEventHubConnectionStatus? EventHubConnectionStatus = null,
         AzureAdExocomputeHostType? ExoHostType = null,
+        M365AccessRecoveryState? M365AccessRecoveryState = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         AzureAdProvisioningState? ProvisioningState = null,
         PendingObjectPauseAssignmentStatus? RscPendingObjectPauseAssignment = null,
@@ -597,6 +603,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ExoHostType != null ) {
             this.ExoHostType = ExoHostType;
+        }
+        if ( M365AccessRecoveryState != null ) {
+            this.M365AccessRecoveryState = M365AccessRecoveryState;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -856,6 +865,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "exoHostType\n" ;
             } else {
                 s += ind + "exoHostType\n" ;
+            }
+        }
+        //      C# -> M365AccessRecoveryState? M365AccessRecoveryState
+        // GraphQL -> m365AccessRecoveryState: M365AccessRecoveryState! (enum)
+        if (this.M365AccessRecoveryState != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "m365AccessRecoveryState\n" ;
+            } else {
+                s += ind + "m365AccessRecoveryState\n" ;
             }
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -1641,6 +1659,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExoHostType != null && ec.Excludes("exoHostType",true))
         {
             this.ExoHostType = null;
+        }
+        //      C# -> M365AccessRecoveryState? M365AccessRecoveryState
+        // GraphQL -> m365AccessRecoveryState: M365AccessRecoveryState! (enum)
+        if (ec.Includes("m365AccessRecoveryState",true))
+        {
+            if(this.M365AccessRecoveryState == null) {
+
+                this.M365AccessRecoveryState = new M365AccessRecoveryState();
+
+            } else {
+
+
+            }
+        }
+        else if (this.M365AccessRecoveryState != null && ec.Excludes("m365AccessRecoveryState",true))
+        {
+            this.M365AccessRecoveryState = null;
         }
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

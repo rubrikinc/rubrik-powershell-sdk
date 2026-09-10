@@ -29,17 +29,17 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("cloudNativeAccountId")]
         public System.String? CloudNativeAccountId { get; set; }
 
+        //      C# -> CloudType? CloudType
+        // GraphQL -> cloudType: CloudType (enum)
+        [JsonProperty("cloudType")]
+        public CloudType? CloudType { get; set; }
+
         //      C# -> List<System.String>? SelectedCertificateIds
         // GraphQL -> selectedCertificateIds: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("selectedCertificateIds")]
         public List<System.String>? SelectedCertificateIds { get; set; }
-
-        //      C# -> CloudType? CloudType
-        // GraphQL -> cloudType: CloudType (enum)
-        [JsonProperty("cloudType")]
-        public CloudType? CloudType { get; set; }
 
 
         #endregion

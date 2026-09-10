@@ -19,15 +19,15 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
-        //      C# -> System.String? SiteChildId
-        // GraphQL -> siteChildId: String (scalar)
-        [JsonProperty("siteChildId")]
-        public System.String? SiteChildId { get; set; }
-
         //      C# -> SharePointDescendantType? SiteChildType
         // GraphQL -> siteChildType: SharePointDescendantType (enum)
         [JsonProperty("siteChildType")]
         public SharePointDescendantType? SiteChildType { get; set; }
+
+        //      C# -> System.String? SiteChildId
+        // GraphQL -> siteChildId: String (scalar)
+        [JsonProperty("siteChildId")]
+        public System.String? SiteChildId { get; set; }
 
 
         #endregion

@@ -7,6 +7,7 @@ The O365 includes provision status and ID of O365 org.
   - Provision status of O365 subscription.
 - exchangeOnColossus: System.Boolean
   - Exchange colossus status.
+Deprecated: Do not use.
 - past1DayMailboxComplianceCount: System.Int32
   - Count of mailboxes compliant.
 - past1DayMailboxOutOfComplianceCount: System.Int32

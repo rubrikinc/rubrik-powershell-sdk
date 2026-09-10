@@ -21,3 +21,8 @@ Information about a workload in a failover group.
   - List of counterpart workload IDs on other clusters.
 - hostNames: list of System.Strings
   - List of host names for the hosts associated with this workload.
+- location: System.String
+  - Display name of the parent object that defines the workload's location
+(SQL Server instance name for MSSQL databases, host name for filesets).
+- locationId: System.String
+  - FID of the parent object that defines the location (e.g., SQL instance FID).

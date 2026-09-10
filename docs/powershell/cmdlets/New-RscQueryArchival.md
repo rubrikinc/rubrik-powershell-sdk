@@ -117,9 +117,15 @@ Storage usage of an archival location.
     - lookBackWindow - LookBackWindow: Lookback window defines how far back in time to look for a specific archival-related metric.
 - Returns list of ArchivalStorageUsages.
 ### target
+GetTarget returns a single archival location in the V2 shape, with its
+encryption details and Cloud Direct immutability mode resolved.
+
 - There is a single argument of type System.String.
 - Returns Target.
 ### targetmapping
+GetTargetMapping returns a single archival group (target mapping) in the
+V2 shape.
+
 - There is a single argument of type System.String.
 - Returns TargetMapping.
 ### targetmappings

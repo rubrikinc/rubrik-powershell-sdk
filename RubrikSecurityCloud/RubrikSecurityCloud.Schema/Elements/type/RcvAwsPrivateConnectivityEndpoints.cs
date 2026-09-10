@@ -20,6 +20,16 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> PrivateEndpointConnectionStatus? S3EndpointStatus
+        // GraphQL -> s3EndpointStatus: PrivateEndpointConnectionStatus! (enum)
+        [JsonProperty("s3EndpointStatus")]
+        public PrivateEndpointConnectionStatus? S3EndpointStatus { get; set; }
+
+        //      C# -> PrivateEndpointConnectionStatus? StsEndpointStatus
+        // GraphQL -> stsEndpointStatus: PrivateEndpointConnectionStatus! (enum)
+        [JsonProperty("stsEndpointStatus")]
+        public PrivateEndpointConnectionStatus? StsEndpointStatus { get; set; }
+
         //      C# -> System.String? S3EndpointHost
         // GraphQL -> s3EndpointHost: String (scalar)
         [JsonProperty("s3EndpointHost")]
@@ -40,10 +50,18 @@ namespace RubrikSecurityCloud.Types
     }
 
     public RcvAwsPrivateConnectivityEndpoints Set(
+        PrivateEndpointConnectionStatus? S3EndpointStatus = null,
+        PrivateEndpointConnectionStatus? StsEndpointStatus = null,
         System.String? S3EndpointHost = null,
         System.String? StsEndpointHost = null
     ) 
     {
+        if ( S3EndpointStatus != null ) {
+            this.S3EndpointStatus = S3EndpointStatus;
+        }
+        if ( StsEndpointStatus != null ) {
+            this.StsEndpointStatus = StsEndpointStatus;
+        }
         if ( S3EndpointHost != null ) {
             this.S3EndpointHost = S3EndpointHost;
         }
@@ -64,6 +82,24 @@ namespace RubrikSecurityCloud.Types
         }
         string ind = conf.IndentStr();
         string s = "";
+        //      C# -> PrivateEndpointConnectionStatus? S3EndpointStatus
+        // GraphQL -> s3EndpointStatus: PrivateEndpointConnectionStatus! (enum)
+        if (this.S3EndpointStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "s3EndpointStatus\n" ;
+            } else {
+                s += ind + "s3EndpointStatus\n" ;
+            }
+        }
+        //      C# -> PrivateEndpointConnectionStatus? StsEndpointStatus
+        // GraphQL -> stsEndpointStatus: PrivateEndpointConnectionStatus! (enum)
+        if (this.StsEndpointStatus != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "stsEndpointStatus\n" ;
+            } else {
+                s += ind + "stsEndpointStatus\n" ;
+            }
+        }
         //      C# -> System.String? S3EndpointHost
         // GraphQL -> s3EndpointHost: String (scalar)
         if (this.S3EndpointHost != null) {
@@ -89,6 +125,40 @@ namespace RubrikSecurityCloud.Types
     
     public override void ApplyExploratoryFieldSpec(AutofieldContext ec)
     {
+        //      C# -> PrivateEndpointConnectionStatus? S3EndpointStatus
+        // GraphQL -> s3EndpointStatus: PrivateEndpointConnectionStatus! (enum)
+        if (ec.Includes("s3EndpointStatus",true))
+        {
+            if(this.S3EndpointStatus == null) {
+
+                this.S3EndpointStatus = new PrivateEndpointConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.S3EndpointStatus != null && ec.Excludes("s3EndpointStatus",true))
+        {
+            this.S3EndpointStatus = null;
+        }
+        //      C# -> PrivateEndpointConnectionStatus? StsEndpointStatus
+        // GraphQL -> stsEndpointStatus: PrivateEndpointConnectionStatus! (enum)
+        if (ec.Includes("stsEndpointStatus",true))
+        {
+            if(this.StsEndpointStatus == null) {
+
+                this.StsEndpointStatus = new PrivateEndpointConnectionStatus();
+
+            } else {
+
+
+            }
+        }
+        else if (this.StsEndpointStatus != null && ec.Excludes("stsEndpointStatus",true))
+        {
+            this.StsEndpointStatus = null;
+        }
         //      C# -> System.String? S3EndpointHost
         // GraphQL -> s3EndpointHost: String (scalar)
         if (ec.Includes("s3EndpointHost",true))

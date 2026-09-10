@@ -19,6 +19,23 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? CloudAccountName
+        // GraphQL -> cloudAccountName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("cloudAccountName")]
+        public System.String? CloudAccountName { get; set; }
+
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType (enum)
+        [JsonProperty("cloudType")]
+        public AwsCloudType? CloudType { get; set; }
+
+        //      C# -> List<AwsCloudAccountRegion>? AwsRegions
+        // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
+        [JsonProperty("awsRegions")]
+        public List<AwsCloudAccountRegion>? AwsRegions { get; set; }
+
         //      C# -> List<CloudAccountFeature>? Features
         // GraphQL -> features: [CloudAccountFeature!] (enum)
         [JsonProperty("features")]
@@ -40,23 +57,6 @@ namespace RubrikSecurityCloud.Types
         [JsonRequired]
         [JsonProperty("nativeId")]
         public System.String? NativeId { get; set; }
-
-        //      C# -> System.String? CloudAccountName
-        // GraphQL -> cloudAccountName: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("cloudAccountName")]
-        public System.String? CloudAccountName { get; set; }
-
-        //      C# -> AwsCloudType? CloudType
-        // GraphQL -> cloudType: AwsCloudType (enum)
-        [JsonProperty("cloudType")]
-        public AwsCloudType? CloudType { get; set; }
-
-        //      C# -> List<AwsCloudAccountRegion>? AwsRegions
-        // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
-        [JsonProperty("awsRegions")]
-        public List<AwsCloudAccountRegion>? AwsRegions { get; set; }
 
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String (scalar)

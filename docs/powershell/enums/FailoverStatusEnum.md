@@ -29,3 +29,6 @@ The Recovery plan recovery statuses.
 - ISOLATED_RECOVERY_PROMOTION_SUCCEEDED - Cyber recovery promotion succeeded.
 - ISOLATED_RECOVERY_PROMOTION_FAILED - Cyber recovery promotion failed.
 - NOT_SUPPORTED - Status not supported.
+- AWAITING_DECISION - Recovery has reached the commit gate and is awaiting a commit/rollback
+decision.
+- COMMITTING - A commit is in progress.

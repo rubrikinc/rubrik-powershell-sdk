@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("expectedUsedCapacity")]
         public System.Single? ExpectedUsedCapacity { get; set; }
 
+        //      C# -> DateTime? OverusageGraceStartedAt
+        // GraphQL -> overusageGraceStartedAt: DateTime (scalar)
+        [JsonProperty("overusageGraceStartedAt")]
+        public DateTime? OverusageGraceStartedAt { get; set; }
+
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)
         [JsonProperty("usedCapacity")]
@@ -46,12 +51,16 @@ namespace RubrikSecurityCloud.Types
 
     public RcvEntitlementsUsageDetails Set(
         System.Single? ExpectedUsedCapacity = null,
+        DateTime? OverusageGraceStartedAt = null,
         System.Single? UsedCapacity = null,
         RcvEntitlement? Entitlement = null
     ) 
     {
         if ( ExpectedUsedCapacity != null ) {
             this.ExpectedUsedCapacity = ExpectedUsedCapacity;
+        }
+        if ( OverusageGraceStartedAt != null ) {
+            this.OverusageGraceStartedAt = OverusageGraceStartedAt;
         }
         if ( UsedCapacity != null ) {
             this.UsedCapacity = UsedCapacity;
@@ -80,6 +89,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "expectedUsedCapacity\n" ;
             } else {
                 s += ind + "expectedUsedCapacity\n" ;
+            }
+        }
+        //      C# -> DateTime? OverusageGraceStartedAt
+        // GraphQL -> overusageGraceStartedAt: DateTime (scalar)
+        if (this.OverusageGraceStartedAt != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "overusageGraceStartedAt\n" ;
+            } else {
+                s += ind + "overusageGraceStartedAt\n" ;
             }
         }
         //      C# -> System.Single? UsedCapacity
@@ -126,6 +144,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.ExpectedUsedCapacity != null && ec.Excludes("expectedUsedCapacity",true))
         {
             this.ExpectedUsedCapacity = null;
+        }
+        //      C# -> DateTime? OverusageGraceStartedAt
+        // GraphQL -> overusageGraceStartedAt: DateTime (scalar)
+        if (ec.Includes("overusageGraceStartedAt",true))
+        {
+            if(this.OverusageGraceStartedAt == null) {
+
+                this.OverusageGraceStartedAt = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.OverusageGraceStartedAt != null && ec.Excludes("overusageGraceStartedAt",true))
+        {
+            this.OverusageGraceStartedAt = null;
         }
         //      C# -> System.Single? UsedCapacity
         // GraphQL -> usedCapacity: Float! (scalar)

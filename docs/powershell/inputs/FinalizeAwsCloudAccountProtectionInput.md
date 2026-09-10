@@ -3,8 +3,6 @@ Input to finalize set up of an AWS cloud account.
 
 - action: CloudAccountAction
   - Action to be performed with cloud account.
-- features: list of CloudAccountFeatures
-  - List of features for native protection of cloud account.
 - awsAdminAccount: AwsCloudAccountInput
   - Admin account, required for bulk upload.
 - awsChildAccounts: list of AwsCloudAccountInputs
@@ -19,6 +17,8 @@ Input to finalize set up of an AWS cloud account.
   - External ID of the IAM role trust policy for the cloud account.
 - featureVersion: list of AwsCloudAccountFeatureVersionInputs
   - List of feature types to be protected for the cloud account.
+- features: list of CloudAccountFeatures
+  - List of features for native protection of cloud account.
 - featuresWithPermissionsGroups: list of FeatureWithPermissionsGroupss
   - List of features to onboard for the cloud account along with specific permissions groups. This list is a valid input only for customer-managed cluster users.
 - awsIamPairId: System.String

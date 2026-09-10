@@ -54,3 +54,4 @@ Inventory workloads that are supported on Rubrik.
 - MARIADB_ROOT - MariaDB root.
 - ANTHROPIC_ROOT - Anthropic root.
 - IRISDB_ROOT - The root of the IRIS DB sub-hierarchy.
+- HVM_ROOT - HPE Virtual Machine Essentials root.

@@ -9,8 +9,6 @@ Anomaly analysis report from lambda service.
   - The internal ID of the object.
 - workloadName: System.String
   - The name of the object.
-- objectType: ObjectTypeEnum
-  - The type of the object.
 - snapshotFid: System.String
   - The internal fid of the snapshot.
 - snapshotId: System.String
@@ -47,15 +45,17 @@ Anomaly analysis report from lambda service.
   - Internal managed ID of the object.
 - isEncrypted: System.Boolean
   - Specifies whether the snapshot is encrypted.
-- severity: ActivitySeverityEnum
-  - Severity of the anomaly.
+- resourceDeletedAt: DateTime
+  - The timestamp when the resource was deleted. Populated only when the anomaly was caused by accidental deletion. Null otherwise.
 - cluster: Cluster
   - The Rubrik cluster of the object.
 - location: System.String
   - The location of the object.
+- objectType: ObjectTypeEnum
+  - The type of the object.
+- severity: ActivitySeverityEnum
+  - Severity of the anomaly.
 - snapshot: CdmSnapshot
   - The analyzed snapshot.
 - ransomwareResult: RansomwareResult
   - The ransomware analysis result, including encryption.
-- resourceDeletedAt: DateTime
-  - The timestamp when the resource was deleted. Populated only when the anomaly was caused by accidental deletion. Null otherwise.

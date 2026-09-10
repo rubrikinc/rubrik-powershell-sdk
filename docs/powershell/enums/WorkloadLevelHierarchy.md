@@ -17,6 +17,7 @@
 - O365SharePointDrive
 - GCP_BIGQUERY_DATASET - GCP BigQuery Dataset.
 - AwsNativeEc2Instance
+- ANTHROPIC_CHILD_ORG_SETTINGS - Anthropic child org settings.
 - AWS_NATIVE_DYNAMODB_TABLE - AWS native DynamoDB table.
 - O365Mailbox
 - POWER_PLATFORM_CANVAS_APP - Power Platform canvas app.
@@ -24,9 +25,11 @@
 - AZURE_STORAGE_ACCOUNT - Azure storage account.
 - GcpNativeGCEInstance
 - AZURE_POSTGRES_FLEXIBLE_SERVER
+- AZURE_COSMOS_NOSQL_CONTAINER - Azure Cosmos NoSQL container.
 - AZURE_AD_DIRECTORY - Azure AD Directory.
 - POWER_PLATFORM_MODEL_DRIVEN_APP - Power Platform model-driven app.
 - AwsNativeEbsVolume
+- ANTHROPIC_DEVICE - Anthropic device.
 - AzureSqlDatabaseDb
 - GCP_CLOUD_SQL_INSTANCE - GCP Cloud SQL Instance.
 - OKTA_TENANT - Okta tenant.
@@ -36,11 +39,13 @@
 - POWER_PLATFORM_CUSTOM_ACTION - Power Platform custom action.
 - O365Site
 - M365_BACKUP_STORAGE_SHAREPOINT_SITE - Microsoft 365 Backup Storage SharePoint site.
+- ANTHROPIC_USER_CLAUDE_CHAT - Anthropic user Claude chat.
 - POWER_PLATFORM_DESKTOP_FLOW - Power Platform desktop flow.
 - AzureNativeVirtualMachine
 - POWER_PLATFORM_AI_FLOW - Power Platform AI flow.
 - GOOGLE_WORKSPACE_USER_DRIVE - Google Workspace User Drive.
 - POWER_PLATFORM_CLASSIC_WORKFLOW - Power Platform classic workflow.
+- ANTHROPIC_ORG_SETTINGS - Anthropic org settings.
 - AUTH0_TENANT - Auth0 tenant.
 - M365_BACKUP_STORAGE_ONEDRIVE - Microsoft 365 Backup Storage OneDrive.
 - GcpNativeDisk - GCP Native Disk.

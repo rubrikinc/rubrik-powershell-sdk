@@ -26,19 +26,19 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("appClientId")]
         public System.String? AppClientId { get; set; }
 
-        //      C# -> System.String? StateToken
-        // GraphQL -> stateToken: String! (scalar)
-        [Required]
-        [JsonRequired]
-        [JsonProperty("stateToken")]
-        public System.String? StateToken { get; set; }
-
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
+
+        //      C# -> System.String? StateToken
+        // GraphQL -> stateToken: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("stateToken")]
+        public System.String? StateToken { get; set; }
 
 
         #endregion

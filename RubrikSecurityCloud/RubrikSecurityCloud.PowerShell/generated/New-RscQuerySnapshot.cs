@@ -552,9 +552,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sharepointSiteReq = @{
     /// 			# OPTIONAL
-    /// 			siteChildId = $someString
-    /// 			# OPTIONAL
     /// 			siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			siteChildId = $someString
     /// 		}
     /// 	}
     /// }
@@ -645,9 +645,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		# OPTIONAL
     /// 		sharepointSiteReq = @{
     /// 			# OPTIONAL
-    /// 			siteChildId = $someString
-    /// 			# OPTIONAL
     /// 			siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values.
+    /// 			# OPTIONAL
+    /// 			siteChildId = $someString
     /// 		}
     /// 	}
     /// }
@@ -2962,9 +2962,9 @@ $query.Var.workloadFieldsArg = @{
 		# OPTIONAL
 		sharepointSiteReq = @{
 			# OPTIONAL
-			siteChildId = $someString
-			# OPTIONAL
 			siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values.
+			# OPTIONAL
+			siteChildId = $someString
 		}
 	}
 }"
@@ -3067,9 +3067,9 @@ $query.Var.workloadFieldsArg = @{
 		# OPTIONAL
 		sharepointSiteReq = @{
 			# OPTIONAL
-			siteChildId = $someString
-			# OPTIONAL
 			siteChildType = $someSharePointDescendantType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.SharePointDescendantType]) for enum values.
+			# OPTIONAL
+			siteChildId = $someString
 		}
 	}
 }"

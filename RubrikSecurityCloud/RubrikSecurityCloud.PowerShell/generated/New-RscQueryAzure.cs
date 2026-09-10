@@ -1665,6 +1665,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
     /// 	# OPTIONAL
     /// 	searchText = $someString
+    /// 	# OPTIONAL
+    /// 	authType = $someAzureAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAuthType]) for enum values.
     /// }
     /// 
     /// # Execute the query
@@ -2372,6 +2374,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -2795,6 +2799,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 		isEligibleForProtection = $someBoolean
     /// 	}
     /// }
+    /// # OPTIONAL
+    /// $query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values.
     /// 
     /// # Execute the query
     /// 
@@ -2992,6 +2998,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     /// 
     /// $query = New-RscQueryAzure -Operation Subnets
     /// 
+    /// # OPTIONAL
+    /// $query.Var.first = $someInt
+    /// # OPTIONAL
+    /// $query.Var.after = $someString
+    /// # OPTIONAL
+    /// $query.Var.last = $someInt
+    /// # OPTIONAL
+    /// $query.Var.before = $someString
     /// # REQUIRED
     /// $query.Var.tenantId = $someString
     /// # REQUIRED
@@ -5896,6 +5910,8 @@ $query.Var.input = @{
 	operationType = $someCloudAccountOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.CloudAccountOperation]) for enum values.
 	# OPTIONAL
 	searchText = $someString
+	# OPTIONAL
+	authType = $someAzureAuthType # Call [Enum]::GetValues([RubrikSecurityCloud.Types.AzureAuthType]) for enum values.
 }"
             );
         }
@@ -6487,6 +6503,7 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
         //     sortBy: AzureSqlDatabaseServerSortFields
         //     sortOrder: SortOrder
         //     azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters
+        //     authorizedOperationFilter: Operation
         //   ): AzureSqlDatabaseServerConnection!
         internal void InitQueryAzureSqlDatabaseServers()
         {
@@ -6498,12 +6515,13 @@ $query.Var.azureSqlDatabaseServerRubrikId = $someString"
                 Tuple.Create("sortBy", "AzureSqlDatabaseServerSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("azureSqlDatabaseServerFilters", "AzureSqlDatabaseServerFilters"),
+                Tuple.Create("authorizedOperationFilter", "Operation"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlDatabaseServers",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlDatabaseServerSortFields,$sortOrder: SortOrder,$azureSqlDatabaseServerFilters: AzureSqlDatabaseServerFilters,$authorizedOperationFilter: Operation)",
                 "AzureSqlDatabaseServerConnection",
                 Query.AzureSqlDatabaseServers,
                 Query.AzureSqlDatabaseServersFieldSpec,
@@ -6561,7 +6579,9 @@ $query.Var.azureSqlDatabaseServerFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-}"
+}
+# OPTIONAL
+$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
             );
         }
 
@@ -6903,6 +6923,7 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
         //     sortBy: AzureSqlManagedInstanceServerSortFields
         //     sortOrder: SortOrder
         //     azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters
+        //     authorizedOperationFilter: Operation
         //   ): AzureSqlManagedInstanceServerConnection!
         internal void InitQueryAzureSqlManagedInstanceServers()
         {
@@ -6914,12 +6935,13 @@ $query.Var.azureSqlManagedInstanceServerRubrikId = $someString"
                 Tuple.Create("sortBy", "AzureSqlManagedInstanceServerSortFields"),
                 Tuple.Create("sortOrder", "SortOrder"),
                 Tuple.Create("azureSqlManagedInstanceServerFilters", "AzureSqlManagedInstanceServerFilters"),
+                Tuple.Create("authorizedOperationFilter", "Operation"),
             };
             Initialize(
                 argDefs,
                 "query",
                 "QueryAzureSqlManagedInstanceServers",
-                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters)",
+                "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AzureSqlManagedInstanceServerSortFields,$sortOrder: SortOrder,$azureSqlManagedInstanceServerFilters: AzureSqlManagedInstanceServerFilters,$authorizedOperationFilter: Operation)",
                 "AzureSqlManagedInstanceServerConnection",
                 Query.AzureSqlManagedInstanceServers,
                 Query.AzureSqlManagedInstanceServersFieldSpec,
@@ -6991,7 +7013,9 @@ $query.Var.azureSqlManagedInstanceServerFilters = @{
 		# REQUIRED
 		isEligibleForProtection = $someBoolean
 	}
-}"
+}
+# OPTIONAL
+$query.Var.authorizedOperationFilter = $someOperation # Call [Enum]::GetValues([RubrikSecurityCloud.Types.Operation]) for enum values."
             );
         }
 
@@ -7181,10 +7205,22 @@ $query.Var.input = @{
         }
 
         // Create new GraphQL Query:
-        // azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!): SubnetConnection!
+        // azureSubnets(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     tenantId: String!
+        //     subscriptionId: UUID!
+        //     vNetId: String!
+        //   ): SubnetConnection!
         internal void InitQueryAzureSubnets()
         {
             Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
                 Tuple.Create("tenantId", "String!"),
                 Tuple.Create("subscriptionId", "UUID!"),
                 Tuple.Create("vNetId", "String!"),
@@ -7193,11 +7229,19 @@ $query.Var.input = @{
                 argDefs,
                 "query",
                 "QueryAzureSubnets",
-                "($tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
+                "($first: Int,$after: String,$last: Int,$before: String,$tenantId: String!,$subscriptionId: UUID!,$vNetId: String!)",
                 "SubnetConnection",
                 Query.AzureSubnets,
                 Query.AzureSubnetsFieldSpec,
-                @"# REQUIRED
+                @"# OPTIONAL
+$query.Var.first = $someInt
+# OPTIONAL
+$query.Var.after = $someString
+# OPTIONAL
+$query.Var.last = $someInt
+# OPTIONAL
+$query.Var.before = $someString
+# REQUIRED
 $query.Var.tenantId = $someString
 # REQUIRED
 $query.Var.subscriptionId = $someString

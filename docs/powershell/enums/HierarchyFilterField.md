@@ -1365,6 +1365,13 @@ JSON column at path $.isHidden.
 +mo:filter:db:column=metadata
 +mo:filter:db:index:key=NULL // no matching index for is_hidden
 - IS_INFRASTRUCTURE_ALERTS_ENABLED - Filters S3 buckets by whether infrastructure deletion alerts are enabled.
++mo:filter:db:table=crp_critical_resource
++mo:filter:db:column=snappable_fid
++mo:filter:db:column=is_critical
++mo:filter:db:index:key=uq_crp_critical_resource_snappable_fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
 - MYSQLDB_INSTANCE_CLUSTER_MODE - Filter MySQL instances by cluster mode. Pass texts = ["HA"] to keep
 only high-availability instances, or ["STANDALONE"] to keep only
 single-instance ones. Any instance that is not high-availability is
@@ -1379,4 +1386,80 @@ treated as STANDALONE.
 - RDS_INSTANCE_VPC_ID - Filter RDS instances by VPC ID.
 +mo:filter:db:table=aws_native_rds_instances
 +mo:filter:db:column=vpc_id
++mo:filter:db:index:key=NULL
+- SAP_HANA_ENABLE_COMPRESSION - Filter SAP HANA databases by whether native backup compression is enabled.
++mo:filter:db:table=cdm_sap_hana_database
++mo:filter:db:column=info
++mo:filter:db:index:key=NULL
++reason: cdm_sap_hana_database is small per customer account
+- D365_TABLE_LOGICAL_NAME - Filter by the D365 dataverse table logical name, the Dataverse API
+name of the table. Matching is case-insensitive.
++mo:filter:db:table=saasapps_d365_power_platform_dataverse_tables
++mo:filter:db:column=logical_name
++mo:filter:db:index:key=NULL
++reason: table is small per customer account (~2.5k rows)
+- RECOVERY_PLAN_LAST_RECOVERY_OUTCOME - Filter Recovery Plans by the most recent terminal recovery outcome.
+Only blueprint-level rows are considered (parent_recovery_id IS NULL).
+Plans with no recovery have no matching failover_summary row and are
+excluded by the INNER JOIN -- NOT_EXIST is intentionally not a filterable
+value; users filtering by outcome see only plans that have had at least
+one completed recovery.
+Uses a correlated MAX(created_at) subquery to select the latest terminal
+(non-IN_PROGRESS) row per blueprint; this pattern is necessary because
+a simple WHERE outcome IN (...) would match any row, not just the latest.
+The composite index failover_summary_bp_outcome_idx on
+(blueprint_id, parent_recovery_id, outcome, created_at) added in
+migration m0278 enables an index-only scan for this subquery.
++mo:filter:db:table=failover_summary
++mo:filter:db:column=outcome
++mo:filter:db:index:key=NULL
++reason: correlated scalar subquery on failover_summary; no single index covers the full predicate
+- IRISDB_CONNECTION_STATUS - Filter IRIS DB instances by the Rubrik Backup Service (RBS)
+connection status of their host.
++mo:filter:db:table=cdm_irisdb_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- IRISDB_HOST_ID - Filter IRIS DB instances by host ID.
++mo:filter:db:table=cdm_irisdb_instance
++mo:filter:db:column=fid
++mo:filter:db:index:key=fid
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
++mo:filter:db:table=cdm_host
++mo:filter:db:column=id
++mo:filter:db:index:key=id_index
++mo:filter:db:index:seq=2
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=true
+- AZURE_COSMOS_NOSQL_CONTAINER_NAME_OR_NATIVE_ID - Filter Azure Cosmos NoSQL containers by native ID or name.
++mo:filter:db:table=cloud_native_resource
++mo:filter:db:column=native_uri,native_name
++mo:filter:db:index:key=native_uri_index
++mo:filter:db:index:seq=1
++mo:filter:db:index:type=BTREE
++mo:filter:db:index:unique=false
+- AZURE_COSMOS_NOSQL_CONTAINER_DATABASE_NAME - Filter Azure Cosmos NoSQL containers by the name of their parent
+database, denormalized onto the container as a property.
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_CONTAINER_ACCOUNT_NAME - Filter Azure Cosmos NoSQL containers by the name of their ancestor
+account, denormalized onto the container as a property.
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
++mo:filter:db:index:key=NULL
+- AZURE_COSMOS_NOSQL_CONTAINER_CONTINUOUS_BACKUP_ENABLED - Filter Azure Cosmos NoSQL containers on whether the ancestor account
+uses continuous backup. Use texts param with values "true" or "false".
++mo:filter:db:table=cloud_native_object_properties
++mo:filter:db:column=property_value
 +mo:filter:db:index:key=NULL

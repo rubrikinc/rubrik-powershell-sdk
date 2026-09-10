@@ -5,3 +5,4 @@ Supported Indicators Of Compromise are Yara, File Hash, and File Pattern.
 - IOC_HASH - Match for files with specified hash.
 - IOC_FILE_PATTERN - Matching file patterns.
 - IOC_YARA - Matching Yara rules.
+- IOC_REGISTRY - Match for Windows registry key patterns.

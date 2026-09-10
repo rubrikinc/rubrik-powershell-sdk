@@ -30,6 +30,21 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("workloadType")]
         public M365DashboardWorkloadType? WorkloadType { get; set; }
 
+        //      C# -> System.Int32? PrioritizedOnboardingDays
+        // GraphQL -> prioritizedOnboardingDays: Int! (scalar)
+        [JsonProperty("prioritizedOnboardingDays")]
+        public System.Int32? PrioritizedOnboardingDays { get; set; }
+
+        //      C# -> DateTime? PrioritizedOnboardingEndTime
+        // GraphQL -> prioritizedOnboardingEndTime: DateTime (scalar)
+        [JsonProperty("prioritizedOnboardingEndTime")]
+        public DateTime? PrioritizedOnboardingEndTime { get; set; }
+
+        //      C# -> DateTime? PrioritizedOnboardingStartTime
+        // GraphQL -> prioritizedOnboardingStartTime: DateTime (scalar)
+        [JsonProperty("prioritizedOnboardingStartTime")]
+        public DateTime? PrioritizedOnboardingStartTime { get; set; }
+
 
         #endregion
 
@@ -41,7 +56,10 @@ namespace RubrikSecurityCloud.Types
 
     public M365ProductOperationMode Set(
         M365DashboardOperationMode? OperationMode = null,
-        M365DashboardWorkloadType? WorkloadType = null
+        M365DashboardWorkloadType? WorkloadType = null,
+        System.Int32? PrioritizedOnboardingDays = null,
+        DateTime? PrioritizedOnboardingEndTime = null,
+        DateTime? PrioritizedOnboardingStartTime = null
     ) 
     {
         if ( OperationMode != null ) {
@@ -49,6 +67,15 @@ namespace RubrikSecurityCloud.Types
         }
         if ( WorkloadType != null ) {
             this.WorkloadType = WorkloadType;
+        }
+        if ( PrioritizedOnboardingDays != null ) {
+            this.PrioritizedOnboardingDays = PrioritizedOnboardingDays;
+        }
+        if ( PrioritizedOnboardingEndTime != null ) {
+            this.PrioritizedOnboardingEndTime = PrioritizedOnboardingEndTime;
+        }
+        if ( PrioritizedOnboardingStartTime != null ) {
+            this.PrioritizedOnboardingStartTime = PrioritizedOnboardingStartTime;
         }
         return this;
     }
@@ -80,6 +107,33 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "workloadType\n" ;
             } else {
                 s += ind + "workloadType\n" ;
+            }
+        }
+        //      C# -> System.Int32? PrioritizedOnboardingDays
+        // GraphQL -> prioritizedOnboardingDays: Int! (scalar)
+        if (this.PrioritizedOnboardingDays != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prioritizedOnboardingDays\n" ;
+            } else {
+                s += ind + "prioritizedOnboardingDays\n" ;
+            }
+        }
+        //      C# -> DateTime? PrioritizedOnboardingEndTime
+        // GraphQL -> prioritizedOnboardingEndTime: DateTime (scalar)
+        if (this.PrioritizedOnboardingEndTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prioritizedOnboardingEndTime\n" ;
+            } else {
+                s += ind + "prioritizedOnboardingEndTime\n" ;
+            }
+        }
+        //      C# -> DateTime? PrioritizedOnboardingStartTime
+        // GraphQL -> prioritizedOnboardingStartTime: DateTime (scalar)
+        if (this.PrioritizedOnboardingStartTime != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "prioritizedOnboardingStartTime\n" ;
+            } else {
+                s += ind + "prioritizedOnboardingStartTime\n" ;
             }
         }
         return s;
@@ -122,6 +176,57 @@ namespace RubrikSecurityCloud.Types
         else if (this.WorkloadType != null && ec.Excludes("workloadType",true))
         {
             this.WorkloadType = null;
+        }
+        //      C# -> System.Int32? PrioritizedOnboardingDays
+        // GraphQL -> prioritizedOnboardingDays: Int! (scalar)
+        if (ec.Includes("prioritizedOnboardingDays",true))
+        {
+            if(this.PrioritizedOnboardingDays == null) {
+
+                this.PrioritizedOnboardingDays = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrioritizedOnboardingDays != null && ec.Excludes("prioritizedOnboardingDays",true))
+        {
+            this.PrioritizedOnboardingDays = null;
+        }
+        //      C# -> DateTime? PrioritizedOnboardingEndTime
+        // GraphQL -> prioritizedOnboardingEndTime: DateTime (scalar)
+        if (ec.Includes("prioritizedOnboardingEndTime",true))
+        {
+            if(this.PrioritizedOnboardingEndTime == null) {
+
+                this.PrioritizedOnboardingEndTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrioritizedOnboardingEndTime != null && ec.Excludes("prioritizedOnboardingEndTime",true))
+        {
+            this.PrioritizedOnboardingEndTime = null;
+        }
+        //      C# -> DateTime? PrioritizedOnboardingStartTime
+        // GraphQL -> prioritizedOnboardingStartTime: DateTime (scalar)
+        if (ec.Includes("prioritizedOnboardingStartTime",true))
+        {
+            if(this.PrioritizedOnboardingStartTime == null) {
+
+                this.PrioritizedOnboardingStartTime = new DateTime();
+
+            } else {
+
+
+            }
+        }
+        else if (this.PrioritizedOnboardingStartTime != null && ec.Excludes("prioritizedOnboardingStartTime",true))
+        {
+            this.PrioritizedOnboardingStartTime = null;
         }
     }
 

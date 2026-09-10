@@ -1,29 +1,72 @@
 ### PhysicalHost
+A physical host managed by Rubrik CDM.
+
+- id: System.String
+  - ID of the hierarchy object.
+- name: System.String
+  - Name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - Type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - SLA Domain assignment type for this object.
+- logicalPath: list of PathNodes
+  - Sequential list of the logical ancestors of this object.
+- physicalPath: list of PathNodes
+  - Sequential list of the physical ancestors of this object.
+- effectiveSlaSourceObject: PathNode
+  - Path node of the effective SLA Domain source.
+- securityMetadata: SecurityMetadata
+  - Security posture metadata.
+- isReplica: System.Boolean
+  - True if this object is a replica, its current cluster differs from its
+source (primary) cluster. False if the object resides on its source
+cluster. Null when the source cluster is unknown.
 - cdmId: System.String
+  - Rubrik CDM ID of the physical host.
 - ipAddresses: list of System.Strings
+  - IP addresses of the physical host.
 - osName: System.String
+  - Name of the operating system running on the physical host.
+- osType: GuestOsType
+  - The operating system type of the physical host.
 - connectionStatus: HostConnectionStatus
+  - Connection status of the physical host.
 - hostVolumes: list of CdmHostVolumes
+  - Volumes on the physical host.
 - isArchived: System.Boolean
+  - Specifies whether the physical host is archived.
 - vfdState: System.String
+  - Volume Filter Driver (VFD) state of the physical host.
+- cbtStatus: System.String
+  - The CBT status of this Physical Host.
 - isOracleHost: System.Boolean
   - Specifies if Physical Host is an Oracle Host.
-- oracleUserDetails: OracleUserDetails
-  - The Oracle User details of this Physical Host.
-- nasVendorType: System.String
-  - Specifies the NAS vendor, which can be ISILON, NETAPP, FLASHBLADE, or NUTANIX.
+- isMssqlHost: System.Boolean
+  - Specifies if the physical host is a SQL Server database host.
+- isExchangeHost: System.Boolean
+  - Specifies if the physical host is a Microsoft Exchange host.
 - isChangelistEnabled: System.Boolean
   - Specifies whether the Changelist option is enabled.
-- agentId: System.String
-  - ID of the Rubrik Backup Service (RBS) installed on the host.
+- oracleUserDetails: OracleUserDetails
+  - The Oracle User details of this Physical Host.
+- oracleSddDetail: OracleSddDetail
+  - Specifies the Oracle database Sensitive Data Monitoring details.
+- oracleSettings: OracleSettings
+  - The Oracle settings, such as the SEPS configuration associated with this host.
+- mssqlSddDetail: MssqlSddDetail
+  - Specifies the MSSQL SDD details.
+- nasVendorType: System.String
+  - Specifies the NAS vendor, which can be ISILON, NETAPP, FLASHBLADE, or NUTANIX.
 - nasApiEndpoint: System.String
   - Specifies the NAS API endpoint.
 - nasApiHostname: System.String
   - Specifies the NAS API hostname.
-- mssqlSddDetail: MssqlSddDetail
-  - Specifies the MSSQL SDD details.
-- oracleSddDetail: OracleSddDetail
-  - Specifies the Oracle database Sensitive Data Monitoring details.
+- adDomain: System.String
+  - Active Directory domain name for Windows hosts.
+- agentId: System.String
+  - ID of the Rubrik Backup Service (RBS) installed on the host.
+- agentPrimaryClusterUuid: System.String
+  - The primary cluster UUID of the agent.
 - rbaPackageUpgradeInfo: System.String
   - Specifies the Rubrik Backup Service (RBS) upgrade status on the host.
 - rbsUpgradeStatus: RbsUpgradeStatus
@@ -32,28 +75,16 @@
   - Version of the Rubrik Backup Service (RBS) on the host.
 - lastSuccessfulUpgradeTime: System.String
   - Timestamp of the last successful RBS upgrade on the host.
-- oracleSettings: OracleSettings
-  - The Oracle settings, such as the SEPS configuration associated with this host.
 - resourceInfo: System.String
   - Resource information associated with this physical host as a JSON string.
 - networkThrottle: System.String
   - Network throttle information associated with this physical host.
-- isMssqlHost: System.Boolean
-  - Specifies if the physical host is a SQL Server database host.
-- isExchangeHost: System.Boolean
-  - Specifies if the physical host is a Microsoft Exchange host.
-- adDomain: System.String
-  - Active Directory domain name for Windows hosts.
-- agentPrimaryClusterUuid: System.String
-  - The primary cluster UUID of the agent.
 - clusterRelation: RbsClusterRelation
   - The relation of the cluster to the primary cluster.
-- osType: GuestOsType
-  - The operating system type of the physical host.
+- hostRbaCertificate: GlobalCertificate
+  - The RBA certificate of the host.
 - defaultCbt: System.Boolean
   - The default CBT status of this Physical Host.
-- cbtStatus: System.String
-  - The CBT status of this Physical Host.
 - nasMigrationInfo: System.String
   - Information pertaining to switching the NAS host from Rubrik CDM to RSC.
 - cdmLink: System.String
@@ -62,16 +93,18 @@
   - List of descendants.
 - physicalChildConnection: PhysicalHostPhysicalChildTypeConnection
   - List of physical children.
-- hostRbaCertificate: GlobalCertificate
-  - The RBA certificate of the host.
+- slaPauseStatus: System.Boolean
+  - Pause status of the effective SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - Effective SLA Domain of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - Effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - SLA Domain configured for the hierarchy object.
 - cluster: Cluster
   - Rubrik cluster where this object originated.
-- primaryClusterLocation: DataLocation
-  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
-- isReplica: System.Boolean
-  - True if this object is a replica, its current cluster differs from its
-source (primary) cluster. False if the object resides on its source
-cluster. Null when the source cluster is unknown.
+- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
+  - Object pause pending assignment details for CDM objects.
 - pendingSla: SlaDomain
   - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
 - pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
@@ -84,43 +117,19 @@ cluster. Null when the source cluster is unknown.
   - Latest user note information.
 - replicatedObjectCount: System.Int32
   - The number of objects either replicated by this object or related to this object by replication.
-- cdmPendingObjectPauseAssignment: PendingObjectPauseAssignmentStatus
-  - Object pause pending assignment details for CDM objects.
 - authorizedOperations: list of Operations
   - The authorized operations on the object.
-- id: System.String
-  - ID of the hierarchy object.
-- name: System.String
-  - Name of the hierarchy object.
-- objectType: HierarchyObjectTypeEnum
-  - Type of this object.
-- slaAssignment: SlaAssignmentTypeEnum
-  - SLA Domain assignment type for this object.
-- effectiveSlaDomain: SlaDomain
-  - Effective SLA Domain of the hierarchy object.
-- slaPauseStatus: System.Boolean
-  - Pause status of the effective SLA Domain of the hierarchy object.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
 - snapshotDistribution: SnapshotDistribution
   - Distribution of the snapshots of the hierarchy object.
-- effectiveRetentionSlaDomain: SlaDomain
-  - Effective retention of the SLA Domain of the hierarchy object.
-- configuredSlaDomain: SlaDomain
-  - SLA Domain configured for the hierarchy object.
-- effectiveSlaSourceObject: PathNode
-  - Path node of the effective SLA Domain source.
-- logicalPath: list of PathNodes
-  - Sequential list of the logical ancestors of this object.
-- physicalPath: list of PathNodes
-  - Sequential list of the physical ancestors of this object.
 - numWorkloadDescendants: System.Int32
   - Number of descendant workloads of this object.
-- allOrgs: list of Orgs
-  - Organizations to which this hierarchy object belongs.
 - allTags: list of AssignedRscTags
   - RSC tags to which this hierarchy object is assigned.
-- securityMetadata: SecurityMetadata
-  - Security posture metadata.
 - objectPauseStatus: ObjectPauseStatus
   - Pause status of the hierarchy object.
 - objectBackupWindow: ObjectBackupWindowStatus
   - Object-level backup window status of the hierarchy object.
+- allOrgs: list of Orgs
+  - Organizations to which this hierarchy object belongs.

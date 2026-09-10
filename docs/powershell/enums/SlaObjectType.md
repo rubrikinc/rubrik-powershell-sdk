@@ -40,7 +40,7 @@ Type of objects managed by SLA Domains.
 - D365_OBJECT_TYPE - D365 Object.
 - NCD_OBJECT_TYPE - NAS Cloud Direct object.
 - AWS_DYNAMODB_OBJECT_TYPE - AWS DynamoDB object.
-- OPENSTACK_OBJECT_TYPE
+- OPENSTACK_OBJECT_TYPE - OpenStack object.
 - GOOGLE_WORKSPACE_OBJECT_TYPE - Google Workspace object.
 - INFORMIX_INSTANCE_OBJECT_TYPE - Informix object.
 - AZURE_DEVOPS_OBJECT_TYPE - Azure DevOps object.
@@ -66,3 +66,4 @@ Power Platform objects (canvas app, model-driven app, flow).
 - ANTHROPIC_OBJECT_TYPE - Anthropic object.
 - IRISDB_INSTANCE_OBJECT_TYPE - IRIS DB instance object type. SLA Domains are assigned at the instance
 level; databases within the instance inherit the instance's SLA Domain.
+- HVM_OBJECT_TYPE - HPE Virtual Machine Essentials SLA Domain object.

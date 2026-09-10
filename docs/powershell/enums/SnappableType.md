@@ -11,3 +11,4 @@ Snappable type.
 - EXCHANGE - Exchange snappable. Used for recovery of any subsnappable
 (Mailbox, Calendar, Contacts) objects.
 - CONTACTS - Used for search of the Contacts subsnappable of Exchange.
+- TASKS - Used for search of the Exchange Tasks workload.

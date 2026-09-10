@@ -1,5 +1,5 @@
 ### BrowseDirectoryFiltersInput
-
+Filters applied when browsing the contents of a directory.
 
 - analyzerGroupIds: list of System.Strings
   - List of data categories ids to filter the paths.

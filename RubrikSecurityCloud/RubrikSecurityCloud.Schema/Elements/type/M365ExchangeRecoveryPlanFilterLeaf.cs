@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isRead")]
         public System.Boolean? IsRead { get; set; }
 
+        //      C# -> M365StringListFilter? BccRecipients
+        // GraphQL -> bccRecipients: M365StringListFilter (type)
+        [JsonProperty("bccRecipients")]
+        public M365StringListFilter? BccRecipients { get; set; }
+
+        //      C# -> RecoveryPlanFilterTimeRange? CreatedTime
+        // GraphQL -> createdTime: RecoveryPlanFilterTimeRange (type)
+        [JsonProperty("createdTime")]
+        public RecoveryPlanFilterTimeRange? CreatedTime { get; set; }
+
         //      C# -> M365StringListFilter? Importance
         // GraphQL -> importance: M365StringListFilter (type)
         [JsonProperty("importance")]
@@ -57,6 +67,8 @@ namespace RubrikSecurityCloud.Types
     public M365ExchangeRecoveryPlanFilterLeaf Set(
         System.Boolean? IsDraft = null,
         System.Boolean? IsRead = null,
+        M365StringListFilter? BccRecipients = null,
+        RecoveryPlanFilterTimeRange? CreatedTime = null,
         M365StringListFilter? Importance = null,
         M365StringListFilter? Sender = null,
         M365StringListFilter? ToRecipients = null
@@ -67,6 +79,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( IsRead != null ) {
             this.IsRead = IsRead;
+        }
+        if ( BccRecipients != null ) {
+            this.BccRecipients = BccRecipients;
+        }
+        if ( CreatedTime != null ) {
+            this.CreatedTime = CreatedTime;
         }
         if ( Importance != null ) {
             this.Importance = Importance;
@@ -107,6 +125,30 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "isRead\n" ;
             } else {
                 s += ind + "isRead\n" ;
+            }
+        }
+        //      C# -> M365StringListFilter? BccRecipients
+        // GraphQL -> bccRecipients: M365StringListFilter (type)
+        if (this.BccRecipients != null) {
+            var fspec = this.BccRecipients.AsFieldSpec(conf.Child("bccRecipients"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "bccRecipients" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
+            }
+        }
+        //      C# -> RecoveryPlanFilterTimeRange? CreatedTime
+        // GraphQL -> createdTime: RecoveryPlanFilterTimeRange (type)
+        if (this.CreatedTime != null) {
+            var fspec = this.CreatedTime.AsFieldSpec(conf.Child("createdTime"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "createdTime" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         //      C# -> M365StringListFilter? Importance
@@ -185,6 +227,44 @@ namespace RubrikSecurityCloud.Types
         else if (this.IsRead != null && ec.Excludes("isRead",true))
         {
             this.IsRead = null;
+        }
+        //      C# -> M365StringListFilter? BccRecipients
+        // GraphQL -> bccRecipients: M365StringListFilter (type)
+        if (ec.Includes("bccRecipients",false))
+        {
+            if(this.BccRecipients == null) {
+
+                this.BccRecipients = new M365StringListFilter();
+                this.BccRecipients.ApplyExploratoryFieldSpec(ec.NewChild("bccRecipients"));
+
+            } else {
+
+                this.BccRecipients.ApplyExploratoryFieldSpec(ec.NewChild("bccRecipients"));
+
+            }
+        }
+        else if (this.BccRecipients != null && ec.Excludes("bccRecipients",false))
+        {
+            this.BccRecipients = null;
+        }
+        //      C# -> RecoveryPlanFilterTimeRange? CreatedTime
+        // GraphQL -> createdTime: RecoveryPlanFilterTimeRange (type)
+        if (ec.Includes("createdTime",false))
+        {
+            if(this.CreatedTime == null) {
+
+                this.CreatedTime = new RecoveryPlanFilterTimeRange();
+                this.CreatedTime.ApplyExploratoryFieldSpec(ec.NewChild("createdTime"));
+
+            } else {
+
+                this.CreatedTime.ApplyExploratoryFieldSpec(ec.NewChild("createdTime"));
+
+            }
+        }
+        else if (this.CreatedTime != null && ec.Excludes("createdTime",false))
+        {
+            this.CreatedTime = null;
         }
         //      C# -> M365StringListFilter? Importance
         // GraphQL -> importance: M365StringListFilter (type)

@@ -6,7 +6,8 @@ Input to add a Kubernetes cluster.
   - Supported in v9.1+
 UUID of the to be added Kubernetes cluster.
 - backupSubnetCidr: System.String
-  - Comma-separated IPv4 CIDR(s) the per-node backup proxy binds its backup NIC within. Only used when dataPathTransport is pernodeproxy.
+  - Supported in v9.6+
+Comma-separated IPv4 CIDR(s) the per-node backup proxy binds its backup NIC within. Only used when dataPathTransport is pernodeproxy.
 - name: System.String
   - Required. Supported in v9.0+
 Name of the Kubernetes cluster to be added.
@@ -61,7 +62,8 @@ The access token for the service account.
   - Supported in v9.6+
 Minimum CDM version required by the Helm chart being installed. Empty for non-Helm onboarding.
 - dataPathTransport: System.String
-  - The transport type used for the RBA data movers. Defaults to the control-plane transport when unset. Set to pernodeproxy to route data movers through the per-node backup proxy.
+  - Supported in v9.6+
+The transport type used for the RBA data movers. Defaults to the control-plane transport when unset. Set to pernodeproxy to route data movers through the per-node backup proxy.
 - region: System.String
   - Supported in v9.1+
 Region of the Kubernetes cluster to be added.

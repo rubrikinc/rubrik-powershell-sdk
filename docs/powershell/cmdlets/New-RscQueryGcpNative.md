@@ -15,7 +15,7 @@ List of GCP disks.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - GcpNativeDiskSortFields: Sort fields for list of GCP disks.
     - sortOrder - SortOrder: Sorts the order of results.
-    - diskFilters - GcpNativeDiskFilters
+    - diskFilters - GcpNativeDiskFilters: Filters for list of GCP disks.
 - Returns GcpNativeDiskConnection.
 ### gceinstance
 Get details of a GCE Instance
@@ -32,7 +32,7 @@ List of GCE instances.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - GcpNativeGceInstanceSortFields: Sort fields for list of GCP GCE instances.
     - sortOrder - SortOrder: Sorts the order of results.
-    - gceInstanceFilters - GcpNativeGceInstanceFilters
+    - gceInstanceFilters - GcpNativeGceInstanceFilters: Filters for list of GCP GCE instances.
 - Returns GcpNativeGceInstanceConnection.
 ### project
 Get details of a GCP Project
@@ -49,8 +49,8 @@ List of GCP projects.
     - before - System.String: Returns the elements in the list that occur before the specified cursor.
     - sortBy - GcpNativeProjectSortFields: Sort fields for list of GCP projects.
     - sortOrder - SortOrder: Sorts the order of results.
-    - projectFilters - GcpNativeProjectFilters
-    - authorizedOperationFilter - Operation
+    - projectFilters - GcpNativeProjectFilters: Filters for list of GCP projects.
+    - authorizedOperationFilter - Operation: Restricts the list to projects the caller may perform the given operation on.
     - workloadHierarchy - WorkloadLevelHierarchy: Provide optional workload hierarchy for RBAC and SLA, none value is assumed to be All workload hierarchy.
     - gcpNativeProtectionFeatures - list of GcpNativeProtectionFeatures: List of GCP native protection features.
 - Returns GcpNativeProjectConnection.

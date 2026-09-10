@@ -65,6 +65,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("unprotectedObjectsStorage")]
         public System.Int64? UnprotectedObjectsStorage { get; set; }
 
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        [JsonProperty("version")]
+        public System.String? Version { get; set; }
+
 
         #endregion
 
@@ -83,7 +88,8 @@ namespace RubrikSecurityCloud.Types
         System.Int64? RelicStorage = null,
         System.Int64? TotalCapacity = null,
         System.Int64? TotalUsedStorage = null,
-        System.Int64? UnprotectedObjectsStorage = null
+        System.Int64? UnprotectedObjectsStorage = null,
+        System.String? Version = null
     ) 
     {
         if ( ClusterName != null ) {
@@ -112,6 +118,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( UnprotectedObjectsStorage != null ) {
             this.UnprotectedObjectsStorage = UnprotectedObjectsStorage;
+        }
+        if ( Version != null ) {
+            this.Version = Version;
         }
         return this;
     }
@@ -206,6 +215,15 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "unprotectedObjectsStorage\n" ;
             } else {
                 s += ind + "unprotectedObjectsStorage\n" ;
+            }
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "version\n" ;
+            } else {
+                s += ind + "version\n" ;
             }
         }
         return s;
@@ -367,6 +385,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.UnprotectedObjectsStorage != null && ec.Excludes("unprotectedObjectsStorage",true))
         {
             this.UnprotectedObjectsStorage = null;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (ec.Includes("version",true))
+        {
+            if(this.Version == null) {
+
+                this.Version = "FETCH";
+
+            } else {
+
+
+            }
+        }
+        else if (this.Version != null && ec.Excludes("version",true))
+        {
+            this.Version = null;
         }
     }
 

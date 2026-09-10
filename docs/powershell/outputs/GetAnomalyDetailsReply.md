@@ -63,14 +63,22 @@ Anomaly analysis report from lambda service.
   - The ID of the archival location where Ransomware Investigation was performed.
 - anomalyAnalysisLocationName: System.String
   - The name of the archival location where Ransomware Investigation was performed.
-- severity: ActivitySeverityEnum
-  - Severity of the anomaly.
-- objectType: ObjectTypeEnum
-  - The type of the object.
+- isCriticalResourceMonitored: System.Boolean
+  - Indicates whether this object is enrolled in critical resource protection monitoring. Only populated for supported object types, such as AWS S3 buckets.
+- objectDeletedAt: DateTime
+  - The timestamp when the object was deleted due to infrastructure deletion. This field is only populated for AWS S3 buckets when the anomaly type is INFRASTRUCTURE_DELETION.
+- anomalyCategory: WorkloadAnomalyCategory
+  - The category this anomaly is grouped under for filtering.
+- cloudAuditEvent: CloudAuditEvent
+  - The cloud provider audit log entry that recorded the deletion of the object. This field is only populated for AWS S3 buckets when the anomaly type is INFRASTRUCTURE_DELETION.
 - cluster: Cluster
   - The Rubrik cluster of the object.
 - location: System.String
   - The location of the object.
+- objectType: ObjectTypeEnum
+  - The type of the object.
+- severity: ActivitySeverityEnum
+  - Severity of the anomaly.
 - snapshot: CdmSnapshot
   - The analyzed snapshot.
 - previousSnapshot: CdmSnapshot

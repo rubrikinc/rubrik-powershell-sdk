@@ -35,6 +35,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("hostId")]
         public System.String? HostId { get; set; }
 
+        //      C# -> System.Int32? PortNumber
+        // GraphQL -> portNumber: Int (scalar)
+        [JsonProperty("portNumber")]
+        public System.Int32? PortNumber { get; set; }
+
         //      C# -> System.String? PostgresVersion
         // GraphQL -> postgresVersion: String (scalar)
         [JsonProperty("postgresVersion")]
@@ -55,6 +60,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("statusMessages")]
         public List<System.String>? StatusMessages { get; set; }
 
+        //      C# -> List<KosmosUserMessage>? StatusMessageDetails
+        // GraphQL -> statusMessageDetails: [KosmosUserMessage!]! (type)
+        [JsonProperty("statusMessageDetails")]
+        public List<KosmosUserMessage>? StatusMessageDetails { get; set; }
+
 
         #endregion
 
@@ -68,10 +78,12 @@ namespace RubrikSecurityCloud.Types
         KosmosTopologyReplicaRole? Role = null,
         KosmosTopologyReplicaStatus? Status = null,
         System.String? HostId = null,
+        System.Int32? PortNumber = null,
         System.String? PostgresVersion = null,
         System.String? ReplicaId = null,
         System.String? ReplicaName = null,
-        List<System.String>? StatusMessages = null
+        List<System.String>? StatusMessages = null,
+        List<KosmosUserMessage>? StatusMessageDetails = null
     ) 
     {
         if ( Role != null ) {
@@ -82,6 +94,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( HostId != null ) {
             this.HostId = HostId;
+        }
+        if ( PortNumber != null ) {
+            this.PortNumber = PortNumber;
         }
         if ( PostgresVersion != null ) {
             this.PostgresVersion = PostgresVersion;
@@ -94,6 +109,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( StatusMessages != null ) {
             this.StatusMessages = StatusMessages;
+        }
+        if ( StatusMessageDetails != null ) {
+            this.StatusMessageDetails = StatusMessageDetails;
         }
         return this;
     }
@@ -136,6 +154,15 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "hostId\n" ;
             }
         }
+        //      C# -> System.Int32? PortNumber
+        // GraphQL -> portNumber: Int (scalar)
+        if (this.PortNumber != null) {
+            if (conf.Flat) {
+                s += conf.Prefix + "portNumber\n" ;
+            } else {
+                s += ind + "portNumber\n" ;
+            }
+        }
         //      C# -> System.String? PostgresVersion
         // GraphQL -> postgresVersion: String (scalar)
         if (this.PostgresVersion != null) {
@@ -170,6 +197,18 @@ namespace RubrikSecurityCloud.Types
                 s += conf.Prefix + "statusMessages\n" ;
             } else {
                 s += ind + "statusMessages\n" ;
+            }
+        }
+        //      C# -> List<KosmosUserMessage>? StatusMessageDetails
+        // GraphQL -> statusMessageDetails: [KosmosUserMessage!]! (type)
+        if (this.StatusMessageDetails != null) {
+            var fspec = this.StatusMessageDetails.AsFieldSpec(conf.Child("statusMessageDetails"));
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                if (conf.Flat) {
+                    s += conf.Prefix + fspec;
+                } else {
+                    s += ind + "statusMessageDetails" + " " + "{\n" + fspec + ind + "}\n" ;
+                }
             }
         }
         return s;
@@ -229,6 +268,23 @@ namespace RubrikSecurityCloud.Types
         else if (this.HostId != null && ec.Excludes("hostId",true))
         {
             this.HostId = null;
+        }
+        //      C# -> System.Int32? PortNumber
+        // GraphQL -> portNumber: Int (scalar)
+        if (ec.Includes("portNumber",true))
+        {
+            if(this.PortNumber == null) {
+
+                this.PortNumber = Int32.MinValue;
+
+            } else {
+
+
+            }
+        }
+        else if (this.PortNumber != null && ec.Excludes("portNumber",true))
+        {
+            this.PortNumber = null;
         }
         //      C# -> System.String? PostgresVersion
         // GraphQL -> postgresVersion: String (scalar)
@@ -297,6 +353,25 @@ namespace RubrikSecurityCloud.Types
         else if (this.StatusMessages != null && ec.Excludes("statusMessages",true))
         {
             this.StatusMessages = null;
+        }
+        //      C# -> List<KosmosUserMessage>? StatusMessageDetails
+        // GraphQL -> statusMessageDetails: [KosmosUserMessage!]! (type)
+        if (ec.Includes("statusMessageDetails",false))
+        {
+            if(this.StatusMessageDetails == null) {
+
+                this.StatusMessageDetails = new List<KosmosUserMessage>();
+                this.StatusMessageDetails.ApplyExploratoryFieldSpec(ec.NewChild("statusMessageDetails"));
+
+            } else {
+
+                this.StatusMessageDetails.ApplyExploratoryFieldSpec(ec.NewChild("statusMessageDetails"));
+
+            }
+        }
+        else if (this.StatusMessageDetails != null && ec.Excludes("statusMessageDetails",false))
+        {
+            this.StatusMessageDetails = null;
         }
     }
 

@@ -2706,7 +2706,7 @@ namespace RubrikSecurityCloud.Types
         public static string RemoveCdmCluster(object fsObj)
         {
             var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\nclusterUUID: $clusterUUID\nisForce: $isForce\nexpireInDays: $expireInDays\n)";
+            string args = "\n(\nclusterUUID: $clusterUUID\nisForce: $isForce\nexpireInDays: $expireInDays\nshouldDeleteRcvLocations: $shouldDeleteRcvLocations\n)";
             return "removeCdmCluster" + args + "\n";
         }
         public static object RemoveCdmClusterFieldSpec(AutofieldContext? ec=null)
@@ -5095,24 +5095,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> SlaAssignResult? AssignProtection
-        // GraphQL -> assignProtection: SlaAssignResult! (type)
-        public static string AssignProtection(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "assignProtection" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object AssignProtectionFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new SlaAssignResult() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> SlaAssignResult? AssignRetentionSlaToSnappables
         // GraphQL -> assignRetentionSLAToSnappables: SlaAssignResult! (type)
         public static string AssignRetentionSlaToSnappables(object fsObj)
@@ -5833,24 +5815,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> MosaicAsyncResponse? BulkDeleteCassandraSources
-        // GraphQL -> bulkDeleteCassandraSources: MosaicAsyncResponse! (type)
-        public static string BulkDeleteCassandraSources(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "bulkDeleteCassandraSources" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object BulkDeleteCassandraSourcesFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> ResponseSuccess? BulkDeleteFailoverCluster
         // GraphQL -> bulkDeleteFailoverCluster: ResponseSuccess! (type)
         public static string BulkDeleteFailoverCluster(object fsObj)
@@ -5937,24 +5901,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new ResponseSuccess() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? BulkDeleteMongodbSources
-        // GraphQL -> bulkDeleteMongodbSources: MosaicAsyncResponse! (type)
-        public static string BulkDeleteMongodbSources(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "bulkDeleteMongodbSources" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object BulkDeleteMongodbSourcesFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -7003,24 +6949,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> MosaicAsyncResponse? CreateCassandraSource
-        // GraphQL -> createCassandraSource: MosaicAsyncResponse! (type)
-        public static string CreateCassandraSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "createCassandraSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object CreateCassandraSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> CreateCloudNativeAwsStorageSettingReply? CreateCloudNativeAwsStorageSetting
         // GraphQL -> createCloudNativeAwsStorageSetting: CreateCloudNativeAwsStorageSettingReply! (type)
         public static string CreateCloudNativeAwsStorageSetting(object fsObj)
@@ -7521,24 +7449,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new TargetMapping() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? CreateMongodbSource
-        // GraphQL -> createMongodbSource: MosaicAsyncResponse! (type)
-        public static string CreateMongodbSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "createMongodbSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object CreateMongodbSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -8443,24 +8353,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> MosaicAsyncResponse? DeleteCassandraSource
-        // GraphQL -> deleteCassandraSource: MosaicAsyncResponse! (type)
-        public static string DeleteCassandraSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "deleteCassandraSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object DeleteCassandraSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> AsyncRequestStatus? DeleteDb2Database
         // GraphQL -> deleteDb2Database: AsyncRequestStatus! (type)
         public static string DeleteDb2Database(object fsObj)
@@ -8799,24 +8691,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? DeleteMongodbSource
-        // GraphQL -> deleteMongodbSource: MosaicAsyncResponse! (type)
-        public static string DeleteMongodbSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "deleteMongodbSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object DeleteMongodbSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -10153,6 +10027,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> DownloadSalesforcePermissionsReply? DownloadSalesforcePermissions
+        // GraphQL -> downloadSalesforcePermissions: DownloadSalesforcePermissionsReply! (type)
+        public static string DownloadSalesforcePermissions(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "downloadSalesforcePermissions" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object DownloadSalesforcePermissionsFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new DownloadSalesforcePermissionsReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? DownloadSapHanaSnapshot
         // GraphQL -> downloadSapHanaSnapshot: AsyncRequestStatus! (type)
         public static string DownloadSapHanaSnapshot(object fsObj)
@@ -10990,6 +10882,24 @@ namespace RubrikSecurityCloud.Types
             return "filesetExportSnapshotFiles" + args + "\n{\n" + fs + "}\n";
         }
         public static object FilesetExportSnapshotFilesFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new AsyncRequestStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> AsyncRequestStatus? FilesetExportSnapshotFilesFromArchivalLocation
+        // GraphQL -> filesetExportSnapshotFilesFromArchivalLocation: AsyncRequestStatus! (type)
+        public static string FilesetExportSnapshotFilesFromArchivalLocation(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "filesetExportSnapshotFilesFromArchivalLocation" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object FilesetExportSnapshotFilesFromArchivalLocationFieldSpec(AutofieldContext? ec=null)
         {
             if(ec==null) {
                 ec = new AutofieldContext();
@@ -12511,24 +12421,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> MosaicAsyncResponse? RecoverCassandraSource
-        // GraphQL -> recoverCassandraSource: MosaicAsyncResponse! (type)
-        public static string RecoverCassandraSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "recoverCassandraSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object RecoverCassandraSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> CcProvisionJobReply? RecoverCloudCluster
         // GraphQL -> recoverCloudCluster: CcProvisionJobReply! (type)
         public static string RecoverCloudCluster(object fsObj)
@@ -12651,24 +12543,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncRequestStatus() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? RecoverMongodbSource
-        // GraphQL -> recoverMongodbSource: MosaicAsyncResponse! (type)
-        public static string RecoverMongodbSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "recoverMongodbSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object RecoverMongodbSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -14869,6 +14743,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> StartInPlaceDataMaskingReply? StartInPlaceDataMasking
+        // GraphQL -> startInPlaceDataMasking: StartInPlaceDataMaskingReply! (type)
+        public static string StartInPlaceDataMasking(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startInPlaceDataMasking" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartInPlaceDataMaskingFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartInPlaceDataMaskingReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> AsyncRequestStatus? StartK8sDiagnosticsJob
         // GraphQL -> startK8sDiagnosticsJob: AsyncRequestStatus! (type)
         public static string StartK8sDiagnosticsJob(object fsObj)
@@ -15045,6 +14937,60 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new AsyncJobStatus() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartRscpPackageDownloadReply? StartRscpPackageDownload
+        // GraphQL -> startRscpPackageDownload: StartRscpPackageDownloadReply! (type)
+        public static string StartRscpPackageDownload(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startRscpPackageDownload" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartRscpPackageDownloadFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartRscpPackageDownloadReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartRscpUpgradeReply? StartRscpUpgrade
+        // GraphQL -> startRscpUpgrade: StartRscpUpgradeReply! (type)
+        public static string StartRscpUpgrade(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startRscpUpgrade" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartRscpUpgradeFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartRscpUpgradeReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
+        //      C# -> StartSalesforcePermissionAssessmentReply? StartSalesforcePermissionAssessment
+        // GraphQL -> startSalesforcePermissionAssessment: StartSalesforcePermissionAssessmentReply! (type)
+        public static string StartSalesforcePermissionAssessment(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "startSalesforcePermissionAssessment" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object StartSalesforcePermissionAssessmentFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new StartSalesforcePermissionAssessmentReply() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }
@@ -15769,24 +15715,6 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
-        //      C# -> MosaicAsyncResponse? UpdateCassandraSource
-        // GraphQL -> updateCassandraSource: MosaicAsyncResponse! (type)
-        public static string UpdateCassandraSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "updateCassandraSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object UpdateCassandraSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
         //      C# -> UpdateCdmUserReply? UpdateCdmUser
         // GraphQL -> updateCdmUser: UpdateCdmUserReply! (type)
         public static string UpdateCdmUser(object fsObj)
@@ -16399,6 +16327,24 @@ namespace RubrikSecurityCloud.Types
             return fieldSpecObj;
         }
 
+        //      C# -> UpdateImageClassificationConfigReply? UpdateImageClassificationConfig
+        // GraphQL -> updateImageClassificationConfig: UpdateImageClassificationConfigReply! (type)
+        public static string UpdateImageClassificationConfig(object fsObj)
+        {
+            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
+            string args = "\n(\ninput: $input\n)";
+            return "updateImageClassificationConfig" + args + "\n{\n" + fs + "}\n";
+        }
+        public static object UpdateImageClassificationConfigFieldSpec(AutofieldContext? ec=null)
+        {
+            if(ec==null) {
+                ec = new AutofieldContext();
+            }
+            var fieldSpecObj = new UpdateImageClassificationConfigReply() ;
+            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
+            return fieldSpecObj;
+        }
+
         //      C# -> UpdateInsightStateReply? UpdateInsightState
         // GraphQL -> updateInsightState: UpdateInsightStateReply! (type)
         public static string UpdateInsightState(object fsObj)
@@ -16557,24 +16503,6 @@ namespace RubrikSecurityCloud.Types
                 ec = new AutofieldContext();
             }
             var fieldSpecObj = new TargetMapping() ;
-            fieldSpecObj.ApplyExploratoryFieldSpec(ec);
-            return fieldSpecObj;
-        }
-
-        //      C# -> MosaicAsyncResponse? UpdateMongodbSource
-        // GraphQL -> updateMongodbSource: MosaicAsyncResponse! (type)
-        public static string UpdateMongodbSource(object fsObj)
-        {
-            var fs = ReflectionUtils.GetObjFieldSpec(fsObj);
-            string args = "\n(\ninput: $input\n)";
-            return "updateMongodbSource" + args + "\n{\n" + fs + "}\n";
-        }
-        public static object UpdateMongodbSourceFieldSpec(AutofieldContext? ec=null)
-        {
-            if(ec==null) {
-                ec = new AutofieldContext();
-            }
-            var fieldSpecObj = new MosaicAsyncResponse() ;
             fieldSpecObj.ApplyExploratoryFieldSpec(ec);
             return fieldSpecObj;
         }

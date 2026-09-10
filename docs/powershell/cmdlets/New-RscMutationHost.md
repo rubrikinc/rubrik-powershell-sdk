@@ -1,6 +1,8 @@
 # New-RscMutationHost
 ## Subcommands
 ### bulkdelete
+Deregister multiple hosts in bulk.
+
 - There is a single argument of type BulkDeleteHostInput.
 - Returns ResponseSuccess.
 ### bulkrefresh
@@ -30,6 +32,8 @@ BulkRegisterSecondaryHosts is used to register secondary hosts in bulk.
 - There is a single argument of type BulkRegisterSecondaryHostsInput.
 - Returns BulkRegisterSecondaryHostsReply.
 ### bulkupdate
+Update properties for multiple hosts in bulk.
+
 - There is a single argument of type BulkUpdateHostInput.
 - Returns BulkUpdateHostReply.
 ### changevfd
@@ -43,6 +47,8 @@ Clear RBS network throttle limits for hosts.
 - There is a single argument of type ClearHostRbsNetworkLimitInput.
 - Returns ClearHostRbsNetworkLimitReply.
 ### refresh
+Refresh a single host.
+
 - There is a single argument of type RefreshHostInput.
 - Returns RefreshHostReply.
 ### setrbsnetworklimit
