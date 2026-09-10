@@ -255,11 +255,13 @@ function Get-RscSla {
                 $_t.TargetMapping            = Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")
             }
 
-            # TargetMappingBasic is a list field ([TargetMappingBasic!]) only present on CDM-managed
-            # target types. Non-CDM types (RubrikManaged*, Rcv*, Rcs) only have the scalar TargetMapping.
+            # All target types have List<TargetMappingBasic> TargetMappingBasic in the DLL.
             # Use New-Object + Add() instead of [List[T]]@() — the cast syntax fails in PowerShell 5.
-            foreach ($_t in @($_tCdmAws, $_tCdmAzure, $_tCdmGcp, $_tCdmNfs, $_tCdmS3c,
-                              $_tCdmDca, $_tCdmGlacier, $_tCdmLck, $_tCdmTape, $_tCdmGeneric)) {
+            foreach ($_t in @($_tAws, $_tAzure, $_tGcp, $_tNfs, $_tS3c,
+                              $_tDca, $_tGlacier, $_tLck, $_tTape,
+                              $_tCdmAws, $_tCdmAzure, $_tCdmGcp, $_tCdmNfs, $_tCdmS3c,
+                              $_tCdmDca, $_tCdmGlacier, $_tCdmLck, $_tCdmTape, $_tCdmGeneric,
+                              $_tRcvAws, $_tRcvGcp, $_tRcs)) {
                 $list = New-Object "System.Collections.Generic.List[RubrikSecurityCloud.Types.TargetMappingBasic]"
                 $list.Add((Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")))
                 $_t.TargetMappingBasic = $list
