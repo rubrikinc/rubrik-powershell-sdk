@@ -253,7 +253,9 @@ function Get-RscSla {
                 $_t.Status                   = [RubrikSecurityCloud.Types.ArchivalLocationStatus]::UNKNOWN
                 $_t.UpgradeStatus            = [RubrikSecurityCloud.Types.UpgradeStatus]::UNKNOWN
                 $_t.TargetMapping            = Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")
-                $_t.TargetMappingBasic       = @((Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")))
+                $list = New-Object "System.Collections.Generic.List[RubrikSecurityCloud.Types.TargetMappingBasic]"
+                $list.Add((Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")))
+                $_t.TargetMappingBasic       = $list
             }
 
             # ConnectionStatus is only defined on the RubrikManaged* targets, not the CDM-managed ones.
