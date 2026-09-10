@@ -1,5 +1,18 @@
 # Changelog
 
+## Version TBD
+
+New Features:
+
+Fixes:
+- Fix `Get-RscSla`: resolve `SetValueInvocationException` / `ConvertToFinalInvalidCastException`
+  errors thrown for every SLA with an archival configuration. The `TargetMappingBasic` property
+  is a `List<TargetMappingBasic>` in the generated .NET types, but the previous assignment used
+  PowerShell's `@(...)` array syntax which cannot be coerced into a generic list in PowerShell 5.
+  Replaced with `New-Object` + `.Add()` for correct PowerShell 5 compatibility. (#264)
+
+Breaking Changes:
+
 ## Version 1.19.20260803
 
 Schema Update:
