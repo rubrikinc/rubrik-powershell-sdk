@@ -257,11 +257,12 @@ function Get-RscSla {
 
             # TargetMappingBasic is a list field ([TargetMappingBasic!]) only present on CDM-managed
             # target types. Non-CDM types (RubrikManaged*, Rcv*, Rcs) only have the scalar TargetMapping.
+            # Use New-Object + Add() instead of [List[T]]@() — the cast syntax fails in PowerShell 5.
             foreach ($_t in @($_tCdmAws, $_tCdmAzure, $_tCdmGcp, $_tCdmNfs, $_tCdmS3c,
                               $_tCdmDca, $_tCdmGlacier, $_tCdmLck, $_tCdmTape, $_tCdmGeneric)) {
-                $_t.TargetMappingBasic = [System.Collections.Generic.List[RubrikSecurityCloud.Types.TargetMappingBasic]]@(
-                    (Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name"))
-                )
+                $list = New-Object "System.Collections.Generic.List[RubrikSecurityCloud.Types.TargetMappingBasic]"
+                $list.Add((Get-RscType -Name TargetMappingBasic -InitialProperties @("id", "name")))
+                $_t.TargetMappingBasic = $list
             }
 
             # ConnectionStatus is only defined on the RubrikManaged* targets, not the CDM-managed ones.
